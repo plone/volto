@@ -1,0 +1,33 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "mocha": true,
+    "jasmine": true,
+    "protractor": true,
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "react/jsx-closing-bracket-location": 0,
+    "valid-jsdoc": 2,
+    "require-jsdoc": ["error", {
+      "require": {
+        "FunctionDeclaration": true,
+        "MethodDefinition": true,
+        "ClassDeclaration": true,
+      }
+    }],
+  },
+  "globals": {
+    "root": true,
+    "__DEVELOPMENT__": true,
+    "__CLIENT__": true,
+    "__SERVER__": true,
+    "__DISABLE_SSR__": true,
+    "__DEVTOOLS__": true,
+    "socket": true,
+    "webpackIsomorphicTools": true,
+  },
+}

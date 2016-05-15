@@ -1,0 +1,11 @@
+# Node
+node_modules
+coverage
+jsdoc
+webpack-assets.json
+webpack-stats.json
+npm-debug.log
+dist
+
+# Other
+.DS_Store
