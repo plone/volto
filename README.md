@@ -1,5 +1,5 @@
-Mosaic Editor
-=============
+Plone in React
+==============
 
 ### Installation
 
