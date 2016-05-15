@@ -25,7 +25,7 @@ export default class Layout extends Component {
    * @static
    */
   static propTypes = {
-    layout: PropTypes.object.isRequired,
+    layout: PropTypes.array.isRequired,
   }
 
   /**

@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { getPage } from 'actions';
+import { Toolbar } from 'components';
 
 @connect(
   state => ({
@@ -56,6 +57,7 @@ export default class View extends Component {
     return (
       <div id="page-home">
         <Helmet title="Home" />
+        <Toolbar path={this.props.location.pathname} selected="view" />
         <div className="container">
           <h1>{this.props.page && this.props.page.content.title}</h1>
           <p className="description">{this.props.page && this.props.page.content.description }</p>

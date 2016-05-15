@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { Link } from 'react-router'
 
 /**
  * Navigation component class.
@@ -18,10 +19,10 @@ const Navigation = () => (
           <div className="plone-collapse plone-navbar-collapse" id="portal-globalnav-collapse">
             <ul className="plone-nav plone-navbar-nav" id="portal-globalnav">
               <li id="portaltab-index_html" className="selected">
-                <a href="/home">Home</a>
+                <Link to="/home">Home</Link>
               </li>
               <li id="portaltab-news">
-                <a href="/about">About</a>
+                <Link to="/about">About</Link>
               </li>
             </ul>
           </div>

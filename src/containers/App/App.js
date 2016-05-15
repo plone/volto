@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { routeActions } from 'react-router-redux';
 
 import config from 'config';
-import { Breadcrumbs, Footer, Header, Navigation, Toolbar } from 'components';
+import { Breadcrumbs, Footer, Header, Navigation } from 'components';
 
 /**
  * This class defines the app container.
@@ -21,7 +21,6 @@ import { Breadcrumbs, Footer, Header, Navigation, Toolbar } from 'components';
 const App = ({ children }) => (
   <div>
     <Helmet { ...config.app.head } />
-    <Toolbar />
     <div className="outer-wrapper">
       <Header />
       <Navigation />
