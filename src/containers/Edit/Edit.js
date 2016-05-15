@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { getPage } from 'actions';
-import { Layout, Toolbar } from 'components';
+import { Layout } from 'components';
 
 @connect(
   state => ({
@@ -54,13 +54,10 @@ export default class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const path = this.props.location.pathname.split('/edit')[0];
-
     if (this.props.page && this.props.page.layout) {
       return (
         <div id="page-home">
           <Helmet title="Home" />
-          <Toolbar path={path} selected="edit" />
           <Layout layout={this.props.page.layout} />
         </div>
       );
@@ -69,7 +66,6 @@ export default class Edit extends Component {
       return (
         <div id="page-home">
           <Helmet title="Home" />
-          <Toolbar path={path} selected="edit" />
           <div className="container">
             <div className="field" data-fieldname="form.widgets.IDublinCore.title" id="formfield-form-widgets-IDublinCore-title">
               <label forHtml="form-widgets-IDublinCore-title" className="horizontal">

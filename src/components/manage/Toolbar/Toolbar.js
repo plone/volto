@@ -19,13 +19,13 @@ const Toolbar = ({ path, selected }) =>
     <div className="plone-toolbar-container">
       <nav>
         <ul className="plone-toolbar-main" >
-          <li>
+          <li className={selected === 'view' ? 'active' : ''}>
             <Link to={path}>
               <span aria-hidden="true" className="icon-view" />
               <span>View</span>
             </Link>
           </li>
-          <li>
+          <li className={selected === 'edit' ? 'active' : ''}>
             <Link to={`${path}/edit`}>
               <span aria-hidden="true" className="icon-edit" />
               <span>Edit</span>
