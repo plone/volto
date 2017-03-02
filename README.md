@@ -4,22 +4,22 @@ Plone in React
 ### Installation
 
 **Prerequisites**
-* [Node.js](https://nodejs.org/)
+* [Node.js==6.9.1](https://nodejs.org/)
 * [Git](http://git-scm.com/)
 
 **Install dependencies**
 
-    npm install
+    yarn
 
 ### Development
 
-    npm run dev
+    yarn dev
 
 ## Testing
 
-    $ npm run test
-    $ npm run test:unit
-    $ npm run test:e2e
+    $ yarn test
+    $ yarn test:unit
+    $ yarn test:e2e
 
 If chromedriver could not be found, make sure to update with:
 

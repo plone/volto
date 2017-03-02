@@ -104,5 +104,3 @@ export default class Edit extends Component {
 Edit.propTypes = {
   location: PropTypes.object.isRequired,
 };
-
-export default Edit;

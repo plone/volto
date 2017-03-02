@@ -5,7 +5,7 @@
 
 import {
   GET_PAGE, GET_PAGE_SUCCESS, GET_PAGE_FAIL,
-} from 'constants/ActionTypes';
+} from '../constants/ActionTypes';
 
 /**
  * Get page function.

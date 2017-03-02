@@ -4,16 +4,16 @@
  */
 
 import 'babel-polyfill';
-import { Api } from 'helpers';
+import { Api } from '../helpers';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { ReduxAsyncConnect } from 'redux-async-connect';
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
-import createStore from 'store';
+import createStore from '../store';
 
-import getRoutes from 'routes';
+import getRoutes from '../routes';
 
 const api = new Api();
 const history = useScroll(() => browserHistory)();
@@ -28,9 +28,9 @@ const store = createStore(history, api, window.__data);
  */
 const render = props =>
   <ReduxAsyncConnect
-    { ...props }
+    {...props}
     helpers={{ api }}
-    filter={ item => !item.deferred }
+    filter={item => !item.deferred}
   />;
 
 /**
@@ -48,7 +48,7 @@ ReactDOM.render(
   <Provider store={store} key="provider">
     {component}
   </Provider>,
-  dest
+  dest,
 );
 
 if (process.env.NODE_ENV !== 'production') {
@@ -70,6 +70,6 @@ if (__DEVTOOLS__ && !window.devToolsExtension) {
         <DevTools />
       </div>
     </Provider>,
-    dest
+    dest,
   );
 }

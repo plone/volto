@@ -116,5 +116,3 @@ export default class Layout extends Component {
       selectTile={::this.selectTile} setTileContent={::this.setTileContent} />;
   }
 }
-
-export default Layout;

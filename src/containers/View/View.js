@@ -74,5 +74,3 @@ export default class View extends Component {
 View.propTypes = {
   location: PropTypes.object.isRequired,
 };
-
-export default View;

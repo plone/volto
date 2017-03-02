@@ -6,6 +6,7 @@ webpack-assets.json
 webpack-stats.json
 npm-debug.log
 dist
+yarn.lock
 
 # Other
 .DS_Store
