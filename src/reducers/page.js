@@ -4,6 +4,7 @@
  */
 
 import { GET_PAGE, GET_PAGE_SUCCESS, GET_PAGE_FAIL } from 'constants/ActionTypes';
+import config from 'config';
 
 const initialState = {
   loaded: false,
@@ -34,7 +35,13 @@ export default function page(state = initialState, action = {}) {
         ...state,
         loading: false,
         loaded: true,
-        page: action.result,
+        page: {
+          ...action.result,
+          items: action.result.items && action.result.items.map(item => ({
+            ...item,
+            url: item['@id'].replace(config.apiPath, ''),
+          })),
+        },
         error: null,
       };
     case GET_PAGE_FAIL:

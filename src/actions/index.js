@@ -4,9 +4,23 @@
  */
 
 import {
+  GET_NAVIGATION, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL,
   GET_PAGE, GET_PAGE_SUCCESS, GET_PAGE_FAIL,
   LOGIN, LOGIN_SUCCESS, LOGIN_FAIL,
 } from '../constants/ActionTypes';
+
+/**
+ * Get navigation.
+ * @function getNavigation
+ * @param {string} url Page url.
+ * @returns {Object} Get navigation action.
+ */
+export function getNavigation(url) {
+  return {
+    types: [GET_NAVIGATION, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL],
+    promise: api => api.get(`${url}/@components/navigation`),
+  };
+}
 
 /**
  * Get page function.

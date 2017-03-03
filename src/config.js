@@ -26,7 +26,8 @@ const environment = {
  */
 module.exports = Object.assign({
   host: process.env.HOST || 'localhost',
-  port: process.env.PORT || 8080,
+  port: process.env.PORT || 4300,
+  apiPath: process.env.API_APTH || 'http://localhost:8080/Plone',
   app: {
     title: 'Plone',
     description: 'Plone',

@@ -4,17 +4,18 @@
  */
 
 import React, { PropTypes, Component } from 'react';
-import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { getPage } from 'actions';
+import { SummaryView, DocumentView } from 'containers';
 
 @connect(
   state => ({
     loaded: state.page.loaded,
     error: state.page.error,
     page: state.page.page,
+    location: state.routing.location,
   }),
   dispatch => bindActionCreators({ getPage }, dispatch),
 )
@@ -48,29 +49,32 @@ export default class View extends Component {
   }
 
   /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location.pathname !== this.props.location.pathname) {
+      this.props.getPage(nextProps.location.pathname);
+    }
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    return (
-      <div id="page-home">
-        <Helmet title="Home" />
-        <div className="container">
-          <h1>{this.props.page && this.props.page.content.title}</h1>
-          <p className="description">{this.props.page && this.props.page.content.description }</p>
-          <p className="body" dangerouslySetInnerHTML={this.props.page && {__html: this.props.page.content.body}} />
-        </div>
-      </div>
-    );
+    if (!this.props.page) {
+      return <span />;
+    }
+
+    switch (this.props.page['@type']) {
+    case 'Folder':
+      return <SummaryView page={this.props.page} />;
+    case 'Document':
+      return <DocumentView page={this.props.page} />;
+    }
   }
 }
-
-/**
- * Property types.
- * @property {Object} propTypes Property types.
- * @static
- */
-View.propTypes = {
-  location: PropTypes.object.isRequired,
-};

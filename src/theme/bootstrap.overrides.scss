@@ -5499,7 +5499,7 @@ body.template-logged_out #content-core .portletFooter {
     position: relative;
   }
   /* line 421, http://localhost:8080/Plone/++plone++static/patterns/toolbar/src/css/toolbar.plone.less */
-  .plone-toolbar-left #edit-zone #personal-bar-container {
+  #edit-zone #personal-bar-container {
     position: absolute;
     bottom: 0;
     background-color: black;
@@ -5507,7 +5507,7 @@ body.template-logged_out #content-core .portletFooter {
     box-shadow: -6px 2px 6px 2px #dddddd;
   }
   /* line 427, http://localhost:8080/Plone/++plone++static/patterns/toolbar/src/css/toolbar.plone.less */
-  .plone-toolbar-left #edit-zone #personal-bar-container ul {
+  #edit-zone #personal-bar-container ul {
     position: fixed;
     height: 100%;
     top: 0;

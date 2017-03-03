@@ -5,6 +5,8 @@
 
 import superagent from 'superagent';
 
+import config from 'config';
+
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
 /**
@@ -15,7 +17,7 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  */
 function formatUrl(path) {
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
-  return `http://localhost:8080/Plone${adjustedPath}`;
+  return `${config.apiPath}${adjustedPath}`;
 }
 
 /**

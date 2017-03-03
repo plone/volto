@@ -10,6 +10,7 @@ import { reducer as form } from 'redux-form';
 
 import page from 'reducers/page';
 import login from 'reducers/login';
+import navigation from 'reducers/navigation';
 
 /**
  * Root reducer.
@@ -24,4 +25,5 @@ export default combineReducers({
   form,
   page,
   login,
+  navigation,
 });

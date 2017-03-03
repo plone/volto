@@ -15,26 +15,35 @@ import { Link } from 'react-router';
  * @returns {string} Markup of the component.
  */
 const Toolbar = ({ path, selected }) =>
-  <div id="edit-zone" role="toolbar" className="pat-toolbar initialized">
-    <div className="plone-toolbar-container">
-      <nav>
-        <ul className="plone-toolbar-main" >
-          <li className={selected === 'view' ? 'active' : ''}>
-            <Link to={path}>
-              <span aria-hidden="true" className="icon-view" />
-              <span>View</span>
-            </Link>
-          </li>
-          <li className={selected === 'edit' ? 'active' : ''}>
-            <Link to={`${path}/edit`}>
-              <span aria-hidden="true" className="icon-edit" />
-              <span>Edit</span>
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>;
+  localStorage.getItem('auth_token') &&
+    <div id="edit-zone" role="toolbar" className="pat-toolbar initialized">
+      <div className="plone-toolbar-container">
+        <nav>
+          <ul className="plone-toolbar-main" >
+            <li className={selected === 'view' ? 'active' : ''}>
+              <Link to={path}>
+                <span aria-hidden="true" className="icon-view" />
+                <span>View</span>
+              </Link>
+            </li>
+            <li className={selected === 'edit' ? 'active' : ''}>
+              <Link to={`${path}/edit`}>
+                <span aria-hidden="true" className="icon-edit" />
+                <span>Edit</span>
+              </Link>
+            </li>
+          </ul>
+          <ul id="personal-bar-container">
+            <li>
+              <Link to="/logout">
+                <span aria-hidden="true" className="icon-user" />
+                <span>Log out</span>
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>;
 
 /**
  * Property types.

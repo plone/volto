@@ -67,7 +67,6 @@ export default class Login extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    console.log(this.props.error);
     return (
       <div id="page-login">
         <Helmet title="Login" />
