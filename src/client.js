@@ -4,20 +4,20 @@
  */
 
 import 'babel-polyfill';
-import { Api } from '../helpers';
+import { Api } from './helpers';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { ReduxAsyncConnect } from 'redux-async-connect';
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
-import createStore from '../store';
+import createStore from './store';
 
-import getRoutes from '../routes';
+import getRoutes from './routes';
 
 const api = new Api();
 const history = useScroll(() => browserHistory)();
-const dest = document.getElementById('content');
+const dest = document.getElementById('main');
 const store = createStore(history, api, window.__data);
 
 /**

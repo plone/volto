@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { Link } from 'react-router';
 
 import LogoImage from './Logo.png';
 
@@ -13,9 +14,9 @@ import LogoImage from './Logo.png';
  * @returns {string} Markup of the component.
  */
 const Logo = () => (
-  <a id="portal-logo" title="Site" href="">
+  <Link id="portal-logo" title="Site" to="/">
     <img src={LogoImage} alt="Plone site" title="Plone site" />
-  </a>
+  </Link>
 );
 
 export default Logo;

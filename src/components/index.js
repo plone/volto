@@ -10,6 +10,7 @@ export Layout from './mosaic/Layout/Layout';
 export Row from './mosaic/Row/Row';
 export Tile from './mosaic/Tile/Tile';
 
+export Anontools from './theme/Anontools/Anontools';
 export Breadcrumbs from './theme/Breadcrumbs/Breadcrumbs';
 export Footer from './theme/Footer/Footer';
 export Header from './theme/Header/Header';

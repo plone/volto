@@ -15,7 +15,7 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  */
 function formatUrl(path) {
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
-  return `/api${adjustedPath}`;
+  return `http://localhost:8080/Plone${adjustedPath}`;
 }
 
 /**
@@ -34,6 +34,7 @@ export default class Api {
     methods.forEach(method => {
       this[method] = (path, { params, data, type } = {}) => new Promise((resolve, reject) => {
         const request = superagent[method](formatUrl(path));
+        const auth_token = localStorage.getItem('auth_token');
 
         if (params) {
           request.query(params);
@@ -41,6 +42,12 @@ export default class Api {
 
         if (__SERVER__ && req.get('cookie')) {
           request.set('cookie', req.get('cookie'));
+        }
+        request.set('Access-Control-Request-Headers', 'content-type');
+        request.set('Accept', 'application/json');
+
+        if (auth_token) {
+          request.set('Authorization', `Bearer ${auth_token}`);
         }
 
         if (type) {

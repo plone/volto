@@ -9,6 +9,7 @@ import { reducer as reduxAsyncConnect } from 'redux-async-connect';
 import { reducer as form } from 'redux-form';
 
 import page from 'reducers/page';
+import login from 'reducers/login';
 
 /**
  * Root reducer.
@@ -22,4 +23,5 @@ export default combineReducers({
   reduxAsyncConnect,
   form,
   page,
+  login,
 });

@@ -5,7 +5,7 @@
 
 import React from 'react';
 
-import { Logo, Search } from 'components';
+import { Anontools, Logo, Search } from 'components';
 
 /**
  * Header component class.
@@ -17,9 +17,8 @@ const Header = () => (
     <div className="container">
       <div id="portal-header">
         <Logo />
-        <div id="portal-searchbox">
-          <Search />
-        </div>
+        <Search />
+        <Anontools />
       </div>
     </div>
   </header>

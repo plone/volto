@@ -60,7 +60,7 @@ const Html = ({ assets, component, store }) => {
         }
       </head>
       <body>
-        <div id="content" dangerouslySetInnerHTML={ { __html: content } } />
+        <div id="main" dangerouslySetInnerHTML={ { __html: content } } />
         <script dangerouslySetInnerHTML={
             { __html: `window.__data=${serialize(store.getState())};` }
           } charSet="UTF-8"
