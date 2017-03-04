@@ -9,9 +9,9 @@ import { reducer as reduxAsyncConnect } from 'redux-async-connect';
 import { reducer as form } from 'redux-form';
 
 import content from 'reducers/content';
-import login from 'reducers/login';
 import navigation from 'reducers/navigation';
 import schema from 'reducers/schema';
+import userSession from 'reducers/userSession';
 
 /**
  * Root reducer.
@@ -25,7 +25,7 @@ export default combineReducers({
   reduxAsyncConnect,
   form,
   content,
-  login,
   navigation,
   schema,
+  userSession,
 });

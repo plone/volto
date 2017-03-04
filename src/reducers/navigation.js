@@ -29,7 +29,6 @@ export default function navigation(state = initialState, action = {}) {
         ...state,
         loading: true,
         loaded: false,
-        items: [],
         error: null,
       };
     case GET_NAVIGATION_SUCCESS:

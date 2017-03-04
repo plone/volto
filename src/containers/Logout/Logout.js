@@ -3,11 +3,18 @@
  * @module components/
  */
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import { Login } from 'containers';
+import { Login } from '../../containers';
+import { logout } from '../../actions';
 
+@connect(
+  state => ({}),
+  dispatch => bindActionCreators({ logout }, dispatch),
+)
 /**
  * Logout container class.
  * @class Logout
@@ -16,12 +23,21 @@ import { Login } from 'containers';
 export default class Logout extends Component {
 
   /**
+   * Property types.
+   * @property {Object} propTypes Property types.
+   * @static
+   */
+  static propTypes = {
+    logout: PropTypes.func.isRequired,
+  }
+
+  /**
    * Component will mount
    * @method componentWillMount
    * @returns {undefined}
    */
   componentWillMount() {
-    localStorage.removeItem('auth_token');
+    this.props.logout();
   }
 
   /**

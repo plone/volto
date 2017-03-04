@@ -54,6 +54,22 @@ export default class Navigation extends Component {
   }
 
   /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location.pathname !== this.props.location.pathname) {
+      this.props.getNavigation(
+        this.props.location.pathname
+          .replace('/add', '')
+          .replace('/edit', '')
+      );
+    }
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.

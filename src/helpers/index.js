@@ -6,3 +6,4 @@
 
 export Api from './Api/Api';
 export Html from './Html/Html';
+export { getAuthToken, persistAuthToken } from './AuthToken/AuthToken';

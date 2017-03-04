@@ -26,3 +26,5 @@ export const GET_SCHEMA_FAIL = 'GET_SCHEMA_FAIL';
 export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
+
+export const LOGOUT = 'LOGOUT';

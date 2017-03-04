@@ -117,7 +117,6 @@
     "serve-favicon": "2.4.1",
     "socket.io": "1.7.3",
     "socket.io-client": "1.7.3",
-    "store2": "2.5.0",
     "url-loader": "0.5.8",
     "warning": "3.0.0",
     "webpack-isomorphic-tools": "2.2.37"

@@ -11,14 +11,21 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { ReduxAsyncConnect } from 'redux-async-connect';
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
-import createStore from './store';
 
+import createStore from './store';
 import getRoutes from './routes';
+import { persistAuthToken } from './helpers';
 
 const api = new Api();
 const history = useScroll(() => browserHistory)();
 const dest = document.getElementById('main');
+let data = window.__data;
+const auth_token = window.localStorage.getItem('auth_token');
+if (auth_token) {
+  data.userSession.token = auth_token;
+}
 const store = createStore(history, api, window.__data);
+persistAuthToken(store);
 
 /**
  * Render method.

@@ -3,23 +3,46 @@
  * @module components/Anontools
  */
 
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+@connect(
+  state => ({
+    token: state.userSession.token,
+  }),
+)
 /**
- * Anontools component class.
- * @function Anontools
- * @returns {string} Markup of the component.
+ * Anontools container class.
+ * @class Anontools
+ * @extends Component
  */
-const Anontools = () => (
-  !localStorage.getItem('auth_token') &&
-    <div id="portal-anontools">
-      <ul>
-        <li>
-          <Link to="/login" id="personaltools-login">Log in</Link>
-        </li>
-      </ul>
-    </div>
-);
+export default class Anontools extends Component {
 
-export default Anontools;
+  /**
+   * Property types.
+   * @property {Object} propTypes Property types.
+   * @static
+   */
+  static propTypes = {
+    token: PropTypes.string,
+  }
+
+  /**
+   * Render method.
+   * @method render
+   * @returns {string} Markup for the component.
+   */
+  render() {
+    return (
+      !this.props.token &&
+        <div id="portal-anontools">
+          <ul>
+            <li>
+              <Link to="/login" id="personaltools-login">Log in</Link>
+            </li>
+          </ul>
+        </div>
+    );
+  }
+}

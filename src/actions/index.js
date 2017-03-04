@@ -10,6 +10,7 @@ import {
   GET_CONTENT, GET_CONTENT_SUCCESS, GET_CONTENT_FAIL,
   GET_SCHEMA, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL,
   LOGIN, LOGIN_SUCCESS, LOGIN_FAIL,
+  LOGOUT,
 } from '../constants/ActionTypes';
 
 /**
@@ -90,5 +91,16 @@ export function login(login, password) {
   return {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
     promise: api => api.post('@login', { data: { login, password }}),
+  };
+}
+
+/**
+ * Logout function.
+ * @function logout
+ * @returns {Object} Logout action.
+ */
+export function logout() {
+  return {
+    type: LOGOUT,
   };
 }

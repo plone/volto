@@ -66,7 +66,7 @@ export default class View extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    if (!this.props.loaded) {
+    if (!this.props.content) {
       return <span />;
     }
 

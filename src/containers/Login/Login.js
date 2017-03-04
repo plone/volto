@@ -9,13 +9,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 
-import { login } from 'actions';
+import { login } from '../../actions';
 
 @connect(
   state => ({
-    loaded: state.login.loaded,
-    error: state.login.error,
-    token: state.login.token,
+    loaded: state.userSession.login.loaded,
+    error: state.userSession.login.error,
+    token: state.userSession.token,
   }),
   dispatch => bindActionCreators({ login }, dispatch),
 )
@@ -46,7 +46,6 @@ export default class Login extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.token) {
-      localStorage.setItem('auth_token', nextProps.token);
       browserHistory.push('/');
     }
   }

@@ -53,7 +53,6 @@ export default function content(state = initialState, action = {}) {
     case GET_CONTENT:
       return {
         ...state,
-        content: null,
         [getRequestKey(action.type)]: {
           loading: true,
           loaded: false,
