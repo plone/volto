@@ -28,6 +28,10 @@ Plone in React
 
     $ yarn dev
 
+### Browsing
+
+    go to [http://localhost:4300](http://localhost:4300) in your browser
+
 ### Testing
 
     $ yarn test
