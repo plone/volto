@@ -15,3 +15,4 @@ export Logout from './Logout/Logout';
 export NotFound from './NotFound/NotFound';
 export SummaryView from './View/SummaryView';
 export View from './View/View';
+export WysiwygWidget from './WysiwygWidget/WysiwygWidget';

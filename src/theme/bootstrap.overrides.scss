@@ -2,6 +2,13 @@
  * Override Bootstrap styles that you can't modify via variables here.
  */
 
+.wysiwyg-widget {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-height: 9em;
+  padding: 6px 12px;
+}
 
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
@@ -536,7 +543,7 @@ pre code {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 970px;
   }
 }
 .container-fluid {
@@ -3962,7 +3969,7 @@ a.plone-toolbar-logo {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 970px;
   }
 }
 @media (min-width: 768px) {

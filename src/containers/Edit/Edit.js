@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 
-import { Form } from '../../containers';
+import { Form, Editor } from '../../containers';
 import { editContent, getContent, getSchema } from '../../actions';
 import { Layout } from '../../components';
 import config from '../../config';
@@ -46,6 +46,8 @@ export default class Edit extends Component {
     content: PropTypes.object,
     schema: PropTypes.object,
   }
+
+  state = {};
 
   /**
    * Component will mount
