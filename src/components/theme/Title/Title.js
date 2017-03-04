@@ -1,6 +1,6 @@
 /**
  * Title component.
- * @module components/Title
+ * @module components/theme/Title/Title
  */
 
 import React, { PropTypes } from 'react';

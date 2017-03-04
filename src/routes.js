@@ -6,7 +6,7 @@
 import React from 'react';
 import { IndexRoute, Route } from 'react-router';
 
-import { Add, App, Edit, View, NotFound, Layout, Login, Logout } from './containers';
+import { Add, App, Edit, View, NotFound, Layout, Login, Logout } from './components';
 
 /**
  * Routes function.

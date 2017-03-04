@@ -1,6 +1,6 @@
 /**
  * Edit container.
- * @module components/
+ * @module components/manage/Edit/Edit
  */
 
 import React, { PropTypes, Component } from 'react';
@@ -9,10 +9,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 
-import { Form, Editor } from '../../containers';
-import { editContent, getContent, getSchema } from '../../actions';
-import { Layout } from '../../components';
-import config from '../../config';
+import { Form, Editor, Layout } from '../../../components';
+import { editContent, getContent, getSchema } from '../../../actions';
+import config from '../../../config';
 
 @connect(
   state => ({

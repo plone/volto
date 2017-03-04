@@ -1,6 +1,6 @@
 /**
  * Navigation components.
- * @module components/Navigation
+ * @module components/theme/Navigation/Navigation
  */
 
 import React, { PropTypes, Component } from 'react';

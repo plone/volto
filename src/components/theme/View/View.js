@@ -1,6 +1,6 @@
 /**
  * View container.
- * @module components/
+ * @module components/theme/View/View
  */
 
 import React, { PropTypes, Component } from 'react';
@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { getContent } from 'actions';
-import { SummaryView, DocumentView } from 'containers';
+import { SummaryView, DocumentView } from '../../../components';
 
 @connect(
   state => ({

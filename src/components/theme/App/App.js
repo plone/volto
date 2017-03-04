@@ -1,6 +1,6 @@
 /**
  * App container.
- * @module containers/App
+ * @module components/theme/App/App
  */
 
 import React, { PropTypes } from 'react';
@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { routeActions } from 'react-router-redux';
 
 import config from 'config';
-import { Breadcrumbs, Footer, Header, Navigation, Toolbar } from 'components';
+import { Breadcrumbs, Footer, Header, Navigation, Toolbar } from '../../../components';
 
 /**
  * This class defines the app container.

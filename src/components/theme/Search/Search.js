@@ -1,6 +1,6 @@
 /**
  * Search component.
- * @module components/Search
+ * @module components/theme/Search/Search
  */
 
 import React from 'react';

@@ -1,6 +1,6 @@
 /**
  * Anontools component.
- * @module components/Anontools
+ * @module components/theme/Anontools/Anontools
  */
 
 import React, { PropTypes, Component } from 'react';

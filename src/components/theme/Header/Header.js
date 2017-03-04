@@ -1,11 +1,11 @@
 /**
  * Header component.
- * @module components/Header
+ * @module components/theme/Header/Header
  */
 
 import React from 'react';
 
-import { Anontools, Logo, Search } from 'components';
+import { Anontools, Logo, Search } from '../../../components';
 
 /**
  * Header component class.

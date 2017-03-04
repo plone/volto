@@ -1,6 +1,6 @@
 /**
  * Breadcrumbs component.
- * @module components/Breadcrumbs
+ * @module components/theme/Breadcrumbs/Breadcrumbs
  */
 
 import React from 'react';

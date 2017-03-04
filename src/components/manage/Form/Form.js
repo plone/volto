@@ -1,17 +1,13 @@
 /**
  * Form component.
- * @module containers/Form
+ * @module components/manage/Form/Form
  */
 
 import React from 'react';
 import SchemaForm from 'react-jsonschema-form';
 import { omitBy } from 'lodash';
 
-import { WysiwygWidget } from '../../containers';
-
-const widgets = {
-  WysiwygWidget,
-};
+import { WysiwygWidget } from '../../../components';
 
 /**
  * Form component class.
@@ -29,7 +25,6 @@ const Form = ({ schema, formData, onSubmit }) => (
                 }
               }}
               formData={omitBy(formData, item => item === null)}
-              widgets={widgets}
               onSubmit={onSubmit}>
     <div className="formControls">
       <button className="context" type="submit">Save</button>

@@ -1,6 +1,6 @@
 /**
  * Add container.
- * @module components/
+ * @module components/manage/Add/Add
  */
 
 import React, { PropTypes, Component } from 'react';
@@ -9,10 +9,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 
-import { addContent, getSchema } from '../../actions';
-import { Layout } from '../../components';
-import { Form } from '../../containers';
-import config from '../../config';
+import { addContent, getSchema } from '../../../actions';
+import { Layout, Form } from '../../../components';
+import config from '../../../config';
 
 @connect(
   state => ({

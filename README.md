@@ -1,21 +1,34 @@
 Plone in React
 ==============
 
-### Installation
+## Installation
 
-**Prerequisites**
+### Prerequisites
 * [Node.js==6.9.1](https://nodejs.org/)
+* [Python==2.7.x](https://python.org/)
 * [Git](http://git-scm.com/)
 
-**Install dependencies**
+### Install dependencies
 
-    yarn
+    $ yarn
 
-### Development
+### Install backend
 
-    yarn dev
+    $ cd api
+    $ python bootstrap-buildout.py
+    $ ./bin/buildout
 
-## Testing
+## Development
+
+### Run backend
+
+    $ ./bin/instance fg
+
+### Run frontend
+
+    $ yarn dev
+
+### Testing
 
     $ yarn test
     $ yarn test:unit

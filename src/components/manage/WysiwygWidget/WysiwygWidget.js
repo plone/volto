@@ -1,6 +1,6 @@
 /**
  * WysiwygEditor container.
- * @module containers/WysiwygEditor
+ * @module components/manage/WysiwygEditor/WysiwygEditor
  */
 
 import React, { PropTypes, Component } from 'react';

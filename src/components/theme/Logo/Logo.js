@@ -1,6 +1,6 @@
 /**
  * Logo component.
- * @module components/Logo
+ * @module components/theme/Logo/Logo
  */
 
 import React from 'react';

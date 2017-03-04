@@ -1,6 +1,6 @@
 /**
  * Summary view component.
- * @module containers/SummaryView
+ * @module components/theme/View/SummaryView
  */
 
 import React from 'react';

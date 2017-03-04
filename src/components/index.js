@@ -18,5 +18,16 @@ export Logo from './theme/Logo/Logo';
 export Navigation from './theme/Navigation/Navigation';
 export Search from './theme/Search/Search';
 export Title from './theme/Title/Title';
+export App from './theme/App/App';
+export DocumentView from './theme/View/DocumentView';
+export Login from './theme/Login/Login';
+export Logout from './theme/Logout/Logout';
+export NotFound from './theme/NotFound/NotFound';
+export SummaryView from './theme/View/SummaryView';
+export View from './theme/View/View';
 
 export Toolbar from './manage/Toolbar/Toolbar';
+export Add from './manage/Add/Add';
+export Edit from './manage/Edit/Edit';
+export Form from './manage/Form/Form';
+export WysiwygWidget from './manage/WysiwygWidget/WysiwygWidget';

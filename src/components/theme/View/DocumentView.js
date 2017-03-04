@@ -1,6 +1,6 @@
 /**
  * Document view component.
- * @module containers/DocumentView
+ * @module components/theme/View/DocumentView
  */
 
 import React from 'react';

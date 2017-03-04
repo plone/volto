@@ -99,9 +99,6 @@ export default class Layout extends Component {
    */
   render() {
     const { layout, selected } = this.state;
-
-//    const selection = window.getSelection().getRangeAt(0).getBoundingClientRect();
-
     const rows = layout.map((row, rowIndex) =>
       row.map((tile, tileIndex) =>
         ({

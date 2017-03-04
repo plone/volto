@@ -1,6 +1,6 @@
 /**
  * Footer component.
- * @module components/Footer
+ * @module components/theme/Footer/Footer
  */
 
 import React from 'react';

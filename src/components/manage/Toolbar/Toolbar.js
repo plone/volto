@@ -1,6 +1,6 @@
 /**
  * Toolbar component.
- * @module components/Toolbar
+ * @module components/manage/Toolbar/Toolbar
  */
 
 import React, { PropTypes, Component } from 'react';

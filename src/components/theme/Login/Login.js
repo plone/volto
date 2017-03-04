@@ -1,6 +1,6 @@
 /**
  * Login container.
- * @module components/
+ * @module components/theme/Login/Login
  */
 
 import React, { PropTypes, Component } from 'react';
@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 
-import { login } from '../../actions';
+import { login } from '../../../actions';
 
 @connect(
   state => ({

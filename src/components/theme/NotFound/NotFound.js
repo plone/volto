@@ -1,6 +1,6 @@
 /**
  * Home container.
- * @module components/NotFound
+ * @module components/theme/NotFound/NotFound
  */
 
 import React from 'react';

@@ -1,6 +1,6 @@
 /**
  * Login container.
- * @module components/
+ * @module components/theme/Logout/Logout
  */
 
 import React, { Component, PropTypes } from 'react';
@@ -8,8 +8,8 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { Login } from '../../containers';
-import { logout } from '../../actions';
+import { Login } from '../../../components';
+import { logout } from '../../../actions';
 
 @connect(
   state => ({}),
