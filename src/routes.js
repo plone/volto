@@ -6,7 +6,7 @@
 import React from 'react';
 import { IndexRoute, Route } from 'react-router';
 
-import { App, Edit, View, NotFound, Layout, Login, Logout } from 'containers';
+import { Add, App, Edit, View, NotFound, Layout, Login, Logout } from './containers';
 
 /**
  * Routes function.
@@ -19,6 +19,7 @@ export default () => (
       <IndexRoute component={View} />
       <Route path="/login" component={Login} />
       <Route path="/logout" component={Logout} />
+      <Route path="/**/add" component={Add} />
       <Route path="/**/edit" component={Edit} />
       <Route path="/**/layout" component={Layout} />
       <Route path="/**" component={View} />

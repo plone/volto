@@ -46,7 +46,11 @@ export default class Navigation extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    this.props.getNavigation(this.props.location.pathname);
+    this.props.getNavigation(
+      this.props.location.pathname
+        .replace('/add', '')
+        .replace('/edit', '')
+    );
   }
 
   /**
@@ -65,7 +69,7 @@ export default class Navigation extends Component {
                   {this.props.items.map(item =>
                     <li key={item.url}
                         id="portaltab-index_html"
-                        className={this.props.location.pathname === item.url ? 'selected': ''}>
+                        className={this.props.location.pathname.indexOf(item.url) !== -1 ? 'selected': ''}>
                       <Link to={item.url}>{item.title}</Link>
                     </li>
                   )}

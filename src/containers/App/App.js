@@ -21,7 +21,8 @@ import { Breadcrumbs, Footer, Header, Navigation, Toolbar } from 'components';
  */
 const App = ({ children, location }) => {
   const path = location.pathname.split('/edit')[0];
-  const action = location.pathname.indexOf('/edit') === -1 ? 'view' : 'edit';
+  const action = location.pathname.indexOf('/edit') === -1 ?
+    (location.pathname.indexOf('/add') === -1 ? 'view' : 'add') : 'edit';
 
   return (
     <div>

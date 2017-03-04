@@ -7,17 +7,17 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { getPage } from 'actions';
+import { getContent } from 'actions';
 import { SummaryView, DocumentView } from 'containers';
 
 @connect(
   state => ({
-    loaded: state.page.loaded,
-    error: state.page.error,
-    page: state.page.page,
+    loaded: state.content.get.loaded,
+    error: state.content.error,
+    content: state.content.content,
     location: state.routing.location,
   }),
-  dispatch => bindActionCreators({ getPage }, dispatch),
+  dispatch => bindActionCreators({ getContent }, dispatch),
 )
 /**
  * View container class.
@@ -32,11 +32,11 @@ export default class View extends Component {
    * @static
    */
   static propTypes = {
-    getPage: PropTypes.func.isRequired,
+    getContent: PropTypes.func.isRequired,
     location: PropTypes.object,
     loaded: PropTypes.bool.isRequired,
     error: PropTypes.object,
-    page: PropTypes.object,
+    content: PropTypes.object,
   }
 
   /**
@@ -45,7 +45,7 @@ export default class View extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    this.props.getPage(this.props.location.pathname);
+    this.props.getContent(this.props.location.pathname);
   }
 
   /**
@@ -56,7 +56,7 @@ export default class View extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.location.pathname !== this.props.location.pathname) {
-      this.props.getPage(nextProps.location.pathname);
+      this.props.getContent(nextProps.location.pathname);
     }
   }
 
@@ -66,15 +66,16 @@ export default class View extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    if (!this.props.page) {
+    if (!this.props.loaded) {
       return <span />;
     }
 
-    switch (this.props.page['@type']) {
+    switch (this.props.content['@type']) {
     case 'Folder':
-      return <SummaryView page={this.props.page} />;
+      return <SummaryView content={this.props.content} />;
     case 'Document':
-      return <DocumentView page={this.props.page} />;
+      return <DocumentView content={this.props.content} />;
     }
+    return <span />;
   }
 }

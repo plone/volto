@@ -9,16 +9,16 @@ import Helmet from 'react-helmet';
 /**
  * Document view component class.
  * @function DocumentView
- * @params {object} page Page object.
+ * @params {object} content Content object.
  * @returns {string} Markup of the component.
  */
-const DocumentView = ({ page }) => (
+const DocumentView = ({ content }) => (
   <div id="page-home">
-    <Helmet title={page.title} />
+    <Helmet title={content.title} />
     <div className="container">
-      <h1 className="documentFirstHeading">{page.title}</h1>
-      <div className="documentDescription description">{page.description}</div>
-      <p className="body" dangerouslySetInnerHTML={{__html: page.text.data}} />
+      <h1 className="documentFirstHeading">{content.title}</h1>
+      <div className="documentDescription description">{content.description}</div>
+      {content.text && <p className="body" dangerouslySetInnerHTML={{__html: content.text.data}} />}
     </div>
   </div>
 );

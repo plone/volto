@@ -10,20 +10,20 @@ import { Link } from 'react-router';
 /**
  * Summary view component class.
  * @function SummaryView
- * @params {object} page Page object.
+ * @params {object} content Content object.
  * @returns {string} Markup of the component.
  */
-const SummaryView = ({ page }) => (
+const SummaryView = ({ content }) => (
   <div id="page-home">
-    <Helmet title={page.title} />
+    <Helmet title={content.title} />
     <div className="container">
       <article id="content">
         <header>
-          <h1 className="documentFirstHeading">{page.title}</h1>
-          {page.description && <div className="documentDescription description">{page.description}</div>}
+          <h1 className="documentFirstHeading">{content.title}</h1>
+          {content.description && <div className="documentDescription description">{content.description}</div>}
         </header>
         <section id="content-core">
-          {page.items.map(item =>
+          {content.items.map(item =>
             <article className="tileItem"
                      key={item.url}>
               <h2 className="tileHeadline">

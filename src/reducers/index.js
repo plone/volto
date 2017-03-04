@@ -8,9 +8,10 @@ import { combineReducers } from 'redux';
 import { reducer as reduxAsyncConnect } from 'redux-async-connect';
 import { reducer as form } from 'redux-form';
 
-import page from 'reducers/page';
+import content from 'reducers/content';
 import login from 'reducers/login';
 import navigation from 'reducers/navigation';
+import schema from 'reducers/schema';
 
 /**
  * Root reducer.
@@ -23,7 +24,8 @@ export default combineReducers({
   routing: routeReducer,
   reduxAsyncConnect,
   form,
-  page,
+  content,
   login,
   navigation,
+  schema,
 });

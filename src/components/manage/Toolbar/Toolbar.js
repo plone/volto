@@ -32,6 +32,12 @@ const Toolbar = ({ path, selected }) =>
                 <span>Edit</span>
               </Link>
             </li>
+            <li className={selected === 'add' ? 'active' : ''}>
+              <Link to={`${path}/add`}>
+                <span aria-hidden="true" className="icon-add" />
+                <span>Add</span>
+              </Link>
+            </li>
           </ul>
           <ul id="personal-bar-container">
             <li>

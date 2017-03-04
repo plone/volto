@@ -4,15 +4,18 @@
  */
 
 import {
+  ADD_CONTENT, ADD_CONTENT_SUCCESS, ADD_CONTENT_FAIL,
+  EDIT_CONTENT, EDIT_CONTENT_SUCCESS, EDIT_CONTENT_FAIL,
   GET_NAVIGATION, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL,
-  GET_PAGE, GET_PAGE_SUCCESS, GET_PAGE_FAIL,
+  GET_CONTENT, GET_CONTENT_SUCCESS, GET_CONTENT_FAIL,
+  GET_SCHEMA, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL,
   LOGIN, LOGIN_SUCCESS, LOGIN_FAIL,
 } from '../constants/ActionTypes';
 
 /**
  * Get navigation.
  * @function getNavigation
- * @param {string} url Page url.
+ * @param {string} url Content url.
  * @returns {Object} Get navigation action.
  */
 export function getNavigation(url) {
@@ -23,15 +26,56 @@ export function getNavigation(url) {
 }
 
 /**
- * Get page function.
- * @function getPage
- * @param {string} url Page url.
- * @returns {Object} Get page action.
+ * Get content function.
+ * @function getContent
+ * @param {string} url Content url.
+ * @returns {Object} Get content action.
  */
-export function getPage(url) {
+export function getContent(url) {
   return {
-    types: [GET_PAGE, GET_PAGE_SUCCESS, GET_PAGE_FAIL],
+    types: [GET_CONTENT, GET_CONTENT_SUCCESS, GET_CONTENT_FAIL],
     promise: api => api.get(url),
+  };
+}
+
+/**
+ * Add content function.
+ * @function addContent
+ * @param {string} url Parent url.
+ * @param {Object} content Content data.
+ * @returns {Object} Add content action.
+ */
+export function addContent(url, content) {
+  return {
+    types: [ADD_CONTENT, ADD_CONTENT_SUCCESS, ADD_CONTENT_FAIL],
+    promise: api => api.post(url, { data: content }),
+  };
+}
+
+/**
+ * Edit content function.
+ * @function editContent
+ * @param {string} url Content url.
+ * @param {Object} content Content data.
+ * @returns {Object} Edit content action.
+ */
+export function editContent(url, content) {
+  return {
+    types: [EDIT_CONTENT, EDIT_CONTENT_SUCCESS, EDIT_CONTENT_FAIL],
+    promise: api => api.patch(url, { data: content }),
+  };
+}
+
+/**
+ * Get schema function.
+ * @function getSchema
+ * @param {string} type Content type.
+ * @returns {Object} Get schema action.
+ */
+export function getSchema(type) {
+  return {
+    types: [GET_SCHEMA, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL],
+    promise: api => api.get(`/@types/${type}`),
   };
 }
 
