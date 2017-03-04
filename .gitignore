@@ -10,3 +10,11 @@ yarn.lock
 
 # Other
 .DS_Store
+
+# Python
+/api/eggs/
+/api/develop-eggs/
+/api/.installed.cfg
+/api/var/
+/api/bin/
+/api/parts/

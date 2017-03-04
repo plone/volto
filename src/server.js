@@ -21,7 +21,6 @@ import config from 'config';
 import { Api, Html } from 'helpers';
 import getRoutes from 'routes';
 import createStore from 'store';
-import { app as apiApp } from '../api/api';
 
 const debug = debugLogger('mosaic:server');
 const pretty = new PrettyError();
@@ -32,8 +31,6 @@ app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 
 app.use(Express.static(path.join(__dirname, '..', 'static')));
-
-app.use('/api', apiApp);
 
 app.use((req, res) => {
   if (__DEVELOPMENT__) {
