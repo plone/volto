@@ -30,7 +30,7 @@ Plone in React
 
 ### Browsing
 
-    go to [http://localhost:4300](http://localhost:4300) in your browser
+Go to [http://localhost:4300](http://localhost:4300) in your browser.
 
 ### Testing
 
