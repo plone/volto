@@ -46,8 +46,6 @@ export default class Edit extends Component {
     schema: PropTypes.object,
   }
 
-  state = {};
-
   /**
    * Component will mount
    * @method componentWillMount

@@ -5,6 +5,7 @@
 
 import {
   ADD_CONTENT, ADD_CONTENT_SUCCESS, ADD_CONTENT_FAIL,
+  DELETE_CONTENT, DELETE_CONTENT_SUCCESS, DELETE_CONTENT_FAIL,
   EDIT_CONTENT, EDIT_CONTENT_SUCCESS, EDIT_CONTENT_FAIL,
   GET_BREADCRUMBS, GET_BREADCRUMBS_SUCCESS, GET_BREADCRUMBS_FAIL,
   GET_NAVIGATION, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL,
@@ -64,6 +65,19 @@ export function addContent(url, content) {
   return {
     types: [ADD_CONTENT, ADD_CONTENT_SUCCESS, ADD_CONTENT_FAIL],
     promise: api => api.post(url, { data: content }),
+  };
+}
+
+/**
+ * Delete content function.
+ * @function deleteContent
+ * @param {string} url Content url.
+ * @returns {Object} Delete content action.
+ */
+export function deleteContent(url) {
+  return {
+    types: [DELETE_CONTENT, DELETE_CONTENT_SUCCESS, DELETE_CONTENT_FAIL],
+    promise: api => api.del(url),
   };
 }
 

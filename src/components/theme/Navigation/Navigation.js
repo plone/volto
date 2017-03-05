@@ -49,6 +49,7 @@ export default class Navigation extends Component {
     this.props.getNavigation(
       this.props.location.pathname
         .replace('/add', '')
+        .replace('/delete', '')
         .replace('/edit', '')
         .replace('/login', '')
         .replace('/logout', '')
@@ -66,6 +67,7 @@ export default class Navigation extends Component {
       this.props.getNavigation(
         nextProps.location.pathname
           .replace('/add', '')
+          .replace('/delete', '')
           .replace('/edit', '')
           .replace('/login', '')
           .replace('/logout', '')

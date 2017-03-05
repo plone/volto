@@ -20,9 +20,15 @@ import { Breadcrumbs, Footer, Header, Navigation, Toolbar } from '../../../compo
  * @returns {string} Markup for the component.
  */
 const App = ({ children, location }) => {
-  const path = location.pathname.split('/edit')[0];
+  const path = location.pathname
+                .replace('/add', '')
+                .replace('/delete', '')
+                .replace('/edit', '')
+                .replace('/login', '')
+                .replace('/logout', '');
   const action = location.pathname.indexOf('/edit') === -1 ?
-    (location.pathname.indexOf('/add') === -1 ? 'view' : 'add') : 'edit';
+    (location.pathname.indexOf('/add') === -1 ?
+      (location.pathname.indexOf('/delete') === -1 ? 'view' : 'delete') : 'add') : 'edit';
 
   return (
     <div>

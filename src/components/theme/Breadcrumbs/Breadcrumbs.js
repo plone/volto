@@ -49,6 +49,7 @@ export default class Breadcrumbs extends Component {
     this.props.getBreadcrumbs(
       this.props.location.pathname
         .replace('/add', '')
+        .replace('/delete', '')
         .replace('/edit', '')
         .replace('/login', '')
         .replace('/logout', '')
@@ -66,6 +67,7 @@ export default class Breadcrumbs extends Component {
       this.props.getBreadcrumbs(
         nextProps.location.pathname
           .replace('/add', '')
+          .replace('/delete', '')
           .replace('/edit', '')
           .replace('/login', '')
           .replace('/logout', '')
@@ -88,7 +90,7 @@ export default class Breadcrumbs extends Component {
               <Link to="/">Home</Link>
             </li>
             {this.props.items.map((item, index, items) =>
-              <li id={`breadcrumbs-${index + 1}`}>
+              <li key={index} id={`breadcrumbs-${index + 1}`}>
                 {(index < items.length - 1) && <Link to={item.url}>{item.title}</Link>}
                 {(index === items.length - 1) && <span className="breadcrumbs-current">{item.title}</span>}
               </li>

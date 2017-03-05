@@ -5,6 +5,7 @@
 
 import {
   ADD_CONTENT, ADD_CONTENT_SUCCESS, ADD_CONTENT_FAIL,
+  DELETE_CONTENT, DELETE_CONTENT_SUCCESS, DELETE_CONTENT_FAIL,
   EDIT_CONTENT, EDIT_CONTENT_SUCCESS, EDIT_CONTENT_FAIL,
   GET_CONTENT, GET_CONTENT_SUCCESS, GET_CONTENT_FAIL,
 } from 'constants/ActionTypes';
@@ -16,12 +17,17 @@ const initialState = {
     loading: false,
     error: null,
   },
-  get: {
+  delete: {
     loaded: false,
     loading: false,
     error: null,
   },
   edit: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  get: {
     loaded: false,
     loading: false,
     error: null,
@@ -49,6 +55,7 @@ function getRequestKey(actionType) {
 export default function content(state = initialState, action = {}) {
   switch (action.type) {
     case ADD_CONTENT:
+    case DELETE_CONTENT:
     case EDIT_CONTENT:
     case GET_CONTENT:
       return {
@@ -60,6 +67,7 @@ export default function content(state = initialState, action = {}) {
         },
       };
     case ADD_CONTENT_SUCCESS:
+    case DELETE_CONTENT_SUCCESS:
     case EDIT_CONTENT_SUCCESS:
     case GET_CONTENT_SUCCESS:
       return {
@@ -78,6 +86,7 @@ export default function content(state = initialState, action = {}) {
         },
       };
     case ADD_CONTENT_FAIL:
+    case DELETE_CONTENT_FAIL:
     case EDIT_CONTENT_FAIL:
     case GET_CONTENT_FAIL:
       return {

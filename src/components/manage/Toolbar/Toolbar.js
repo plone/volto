@@ -54,6 +54,12 @@ export default class Toolbar extends Component {
                     <span>Edit</span>
                   </Link>
                 </li>
+                <li className={this.props.selected === 'delete' ? 'active' : ''}>
+                  <Link to={`${this.props.path}/delete`}>
+                    <span aria-hidden="true" className="icon-delete" />
+                    <span>Delete</span>
+                  </Link>
+                </li>
                 <li className={this.props.selected === 'add' ? 'active' : ''}>
                   <Link to={`${this.props.path}/add`}>
                     <span aria-hidden="true" className="icon-add" />
