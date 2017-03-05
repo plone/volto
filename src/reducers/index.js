@@ -8,6 +8,7 @@ import { combineReducers } from 'redux';
 import { reducer as reduxAsyncConnect } from 'redux-async-connect';
 import { reducer as form } from 'redux-form';
 
+import breadcrumbs from 'reducers/breadcrumbs';
 import content from 'reducers/content';
 import navigation from 'reducers/navigation';
 import schema from 'reducers/schema';
@@ -24,6 +25,7 @@ export default combineReducers({
   routing: routeReducer,
   reduxAsyncConnect,
   form,
+  breadcrumbs,
   content,
   navigation,
   schema,

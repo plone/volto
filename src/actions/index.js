@@ -6,12 +6,26 @@
 import {
   ADD_CONTENT, ADD_CONTENT_SUCCESS, ADD_CONTENT_FAIL,
   EDIT_CONTENT, EDIT_CONTENT_SUCCESS, EDIT_CONTENT_FAIL,
+  GET_BREADCRUMBS, GET_BREADCRUMBS_SUCCESS, GET_BREADCRUMBS_FAIL,
   GET_NAVIGATION, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL,
   GET_CONTENT, GET_CONTENT_SUCCESS, GET_CONTENT_FAIL,
   GET_SCHEMA, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL,
   LOGIN, LOGIN_SUCCESS, LOGIN_FAIL,
   LOGOUT,
 } from '../constants/ActionTypes';
+
+/**
+ * Get breadcrumbs.
+ * @function getBreadcrumbs
+ * @param {string} url Content url.
+ * @returns {Object} Get breadcrumbs action.
+ */
+export function getBreadcrumbs(url) {
+  return {
+    types: [GET_BREADCRUMBS, GET_BREADCRUMBS_SUCCESS, GET_BREADCRUMBS_FAIL],
+    promise: api => api.get(`${url}/@components/breadcrumbs`),
+  };
+}
 
 /**
  * Get navigation.
