@@ -9,6 +9,140 @@
   padding: 6px 12px;
 }
 
+@font-face {
+  font-family: 'fontello';
+  src: url('plone-fontello.eot');
+  src: url('plone-fontello.eot') format('embedded-opentype'),
+       url('plone-fontello.woff') format('woff'),
+       url('plone-fontello.ttf') format('truetype'),
+       url('plone-fontello.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+ 
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+ 
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+/* Default Menu Icon */
+.toolbar-menu-icon:before { content: '\e834'; }
+
+.icon-user:before { content: '\e800'; } /* '' */
+.icon-folderContents:before { content: '\e801'; } /* '' */
+.icon-edit:before { content: '\e802'; } /* '' */
+.icon-logout:before { content: '\e803'; } /* '' */
+.icon-local_roles:before { content: '\e804'; } /* '' */
+.icon-history:before { content: '\e805'; } /* '' */
+.icon-link:before { content: '\e806'; } /* '' */
+.icon-view:before { content: '\e807'; } /* '' */
+.icon-collection:before { content: '\e808'; } /* '' */
+.icon-event:before { content: '\e809'; } /* '' */
+.icon-plone-contentmenu-factories:before { content: '\e80a'; } /* '' */
+.icon-contentInfo:before { content: '\e80b'; } /* '' */
+.icon-plone-contentmenu-workflow:before { content: '\e80c'; } /* '' */
+.icon-moreOptions:before { content: '\e80d'; } /* '' */
+.icon-document:before { content: '\e80e'; } /* '' */
+.icon-news:before { content: '\e80f'; } /* '' */
+.icon-image:before { content: '\e810'; } /* '' */
+.icon-file:before { content: '\e811'; } /* '' */
+.icon-addon:before { content: '\e812'; } /* '' */
+.icon-datetime:before { content: '\e813'; } /* '' */
+.icon-caching:before { content: '\e814'; } /* '' */
+.icon-markup:before { content: '\e815'; } /* '' */
+.icon-editing:before { content: '\e816'; } /* '' */
+.icon-errors:before { content: '\e817'; } /* '' */
+.icon-imageHandling:before { content: '\e818'; } /* '' */
+.icon-filtering:before { content: '\e819'; } /* '' */
+.icon-language:before { content: '\e81a'; } /* '' */
+.icon-dexterityTypes:before { content: '\e81b'; } /* '' */
+.icon-mail:before { content: '\e81c'; } /* '' */
+.icon-maintenance:before { content: '\e81d'; } /* '' */
+.icon-navigation:before { content: '\e81e'; } /* '' */
+.icon-search:before { content: '\e81f'; } /* '' */
+.icon-security:before { content: '\e820'; } /* '' */
+.icon-theming:before { content: '\e821'; } /* '' */
+.icon-rss:before { content: '\e822'; } /* '' */
+.icon-siteSettings:before { content: '\e823'; } /* '' */
+.icon-userGroups:before { content: '\e824'; } /* '' */
+.icon-zope:before { content: '\e825'; } /* '' */
+.icon-types:before { content: '\e826'; } /* '' */
+.icon-syndication:before { content: '\e827'; } /* '' */
+.icon-contentrules:before { content: '\e828'; } /* '' */
+.icon-lock:before { content: '\e829'; } /* '' */
+.icon-plone-contentmenu-actions:before { content: '\e82a'; } /* '' */
+.icon-plone-contentmenu-portletmanager:before { content: '\e82b'; } /* '' */
+.icon-plone-contentmenu-display:before { content: '\e82c'; } /* '' */
+.icon-calendar-empty:before { content: '\e82d'; } /* '' */
+[class^="icon-controlpanel-"]:before { content: '\e849'; } /* '' */
+.icon-controlpanel-plone_app_caching:before { content: '\e82e'; } /* '' */
+.icon-controlpanel-plone_app_registry:before { content: '\e82f'; } /* '' */
+.icon-controlpanel-dexterity-types:before { content: '\e830'; } /* '' */
+.icon-controlpanel-discussion:before { content: '\e831'; } /* '' */
+.icon-controlpanel-ImagingSettings:before { content: '\e832'; } /* '' */
+.icon-controlpanel-plone_app_theming:before { content: '\e833'; } /* '' */
+.icon-controlpanel-QuickInstaller:before { content: '\e834'; } /* '' */
+.icon-controlpanel-DateAndTime:before { content: '\e835'; } /* '' */
+.icon-controlpanel-LanguageSettings:before { content: '\e836'; } /* '' */
+.icon-controlpanel-MailHost:before { content: '\e837'; } /* '' */
+.icon-controlpanel-NavigationSettings:before { content: '\e838'; } /* '' */
+.icon-controlpanel-PloneReconfig:before { content: '\e839'; } /* '' */
+.icon-controlpanel-SearchSettings:before { content: '\e83a'; } /* '' */
+.icon-controlpanel-socialmedia:before { content: '\e83b'; } /* '' */
+.icon-controlpanel-syndication:before { content: '\e83c'; } /* '' */
+.icon-controlpanel-ContentRules:before { content: '\e83d'; } /* '' */
+.icon-controlpanel-EditingSettings:before { content: '\e83e'; } /* '' */
+.icon-controlpanel-MarkupSettings:before { content: '\e83f'; } /* '' */
+.icon-controlpanel-tinymce:before { content: '\e840'; } /* '' */
+.icon-controlpanel-TypesSettings:before { content: '\e841'; } /* '' */
+.icon-controlpanel-UsersGroups:before { content: '\e842'; } /* '' */
+.icon-controlpanel-errorLog:before { content: '\e843'; } /* '' */
+.icon-controlpanel-FilterSettings:before { content: '\e844'; } /* '' */
+.icon-controlpanel-SecuritySettings:before { content: '\e845'; } /* '' */
+.icon-controlpanel-resourceregistries:before { content: '\e846'; } /* '' */
+.icon-emptyset:before { content: '\e847'; } /* '' */
+.icon-controlpanel-ZMI:before { content: '\e848'; } /* '' */
+.icon-controlpanel-Maintenance:before { content: '\e849'; } /* '' */
+.icon-up:before { content: '\e84a'; } /* '' */
+.icon-down:before { content: '\e84b'; } /* '' */
+
+/* Unicode icons used in the same places */
+.icon-parent:before {
+    content: '↩';
+    position: relative;
+    top: 3px;
+}
+
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;

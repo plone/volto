@@ -119,7 +119,7 @@ export default class Workflow extends Component {
             </span>
           </a>
           {this.state.menuOpen &&
-            <ul style={{ top: '200px' }} aria-hidden={this.state.menuOpen ? 'true' : 'false'}>
+            <ul style={{ top: '250px' }} aria-hidden={this.state.menuOpen ? 'true' : 'false'}>
               <li className="plone-toolbar-submenu-header">
                 <span>
                   <span>State:</span> <span className={`state-${current}`}>{current}</span>

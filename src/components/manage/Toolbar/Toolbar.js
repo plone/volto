@@ -9,6 +9,8 @@ import { Link } from 'react-router';
 
 import { Workflow } from 'components';
 
+import logo from './plone-toolbarlogo.svg';
+
 @connect(
   state => ({
     token: state.userSession.token,
@@ -42,6 +44,9 @@ export default class Toolbar extends Component {
       this.props.token &&
         <div id="edit-zone" role="toolbar" className="pat-toolbar initialized">
           <div className="plone-toolbar-container">
+            <a className="plone-toolbar-logo">
+              <img alt="Plone Toolbar" src={logo} />
+            </a>
             <nav>
               <ul className="plone-toolbar-main" >
                 <li className={this.props.selected === 'view' ? 'active' : ''}>
@@ -58,13 +63,13 @@ export default class Toolbar extends Component {
                 </li>
                 <li className={this.props.selected === 'delete' ? 'active' : ''}>
                   <Link to={`${this.props.path}/delete`}>
-                    <span aria-hidden="true" className="icon-delete" />
+                    <span aria-hidden="true" className="icon-plone-contentmenu-actions" />
                     <span>Delete</span>
                   </Link>
                 </li>
                 <li className={this.props.selected === 'add' ? 'active' : ''}>
                   <Link to={`${this.props.path}/add`}>
-                    <span aria-hidden="true" className="icon-add" />
+                    <span aria-hidden="true" className="icon-plone-contentmenu-factories" />
                     <span>Add</span>
                   </Link>
                 </li>
