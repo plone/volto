@@ -45,7 +45,6 @@ export default class Api {
         if (__SERVER__ && req.get('cookie')) {
           request.set('cookie', req.get('cookie'));
         }
-        request.set('Access-Control-Request-Headers', 'content-type');
         request.set('Accept', 'application/json');
 
         if (auth_token) {

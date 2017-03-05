@@ -77,7 +77,7 @@ export default class Login extends Component {
             </div>
           }
           <div className="field">
-            <label forHtml="login" className="horizontal">
+            <label htmlFor="login" className="horizontal">
               Login Name <span className="required horizontal" title="Required">&nbsp;</span>
             </label>
               
@@ -85,7 +85,7 @@ export default class Login extends Component {
           </div>
 
           <div className="field">
-            <label forHtml="password" className="horizontal">
+            <label htmlFor="password" className="horizontal">
               Password <span className="required horizontal" title="Required">&nbsp;</span>
             </label>
               
