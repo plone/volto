@@ -10,6 +10,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 
 import { getBreadcrumbs } from 'actions';
+import { getBaseUrl } from 'helpers';
 
 @connect(
   state => ({
@@ -46,14 +47,7 @@ export default class Breadcrumbs extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    this.props.getBreadcrumbs(
-      this.props.location.pathname
-        .replace('/add', '')
-        .replace('/delete', '')
-        .replace('/edit', '')
-        .replace('/login', '')
-        .replace('/logout', '')
-    );
+    this.props.getBreadcrumbs(getBaseUrl(this.props.location.pathname));
   }
 
   /**
@@ -64,14 +58,7 @@ export default class Breadcrumbs extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.location.pathname !== this.props.location.pathname) {
-      this.props.getBreadcrumbs(
-        nextProps.location.pathname
-          .replace('/add', '')
-          .replace('/delete', '')
-          .replace('/edit', '')
-          .replace('/login', '')
-          .replace('/logout', '')
-      );
+      this.props.getBreadcrumbs(getBaseUrl(nextProps.location.pathname));
     }
   }
 

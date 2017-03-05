@@ -31,7 +31,7 @@ const App = ({ children, location }) => {
       (location.pathname.indexOf('/delete') === -1 ? 'view' : 'delete') : 'add') : 'edit';
 
   return (
-    <div>
+    <div className="plone-toolbar-expanded">
       <Helmet { ...config.app.head } />
       <Toolbar path={path} selected={action} />
       <div className="outer-wrapper">

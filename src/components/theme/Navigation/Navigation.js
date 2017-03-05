@@ -4,12 +4,12 @@
  */
 
 import React, { PropTypes, Component } from 'react';
-import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 
 import { getNavigation } from 'actions';
+import { getBaseUrl } from 'helpers';
 
 @connect(
   state => ({
@@ -46,14 +46,7 @@ export default class Navigation extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    this.props.getNavigation(
-      this.props.location.pathname
-        .replace('/add', '')
-        .replace('/delete', '')
-        .replace('/edit', '')
-        .replace('/login', '')
-        .replace('/logout', '')
-    );
+    this.props.getNavigation(getBaseUrl(this.props.location.pathname));
   }
 
   /**
@@ -64,14 +57,7 @@ export default class Navigation extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.location.pathname !== this.props.location.pathname) {
-      this.props.getNavigation(
-        nextProps.location.pathname
-          .replace('/add', '')
-          .replace('/delete', '')
-          .replace('/edit', '')
-          .replace('/login', '')
-          .replace('/logout', '')
-      );
+      this.props.getNavigation(getBaseUrl(nextProps.location.pathname));
     }
   }
 

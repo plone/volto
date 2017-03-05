@@ -32,3 +32,4 @@ export Edit from './manage/Edit/Edit';
 export Delete from './manage/Delete/Delete';
 export Form from './manage/Form/Form';
 export WysiwygWidget from './manage/WysiwygWidget/WysiwygWidget';
+export Workflow from './manage/Workflow/Workflow';

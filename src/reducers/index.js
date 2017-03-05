@@ -13,6 +13,7 @@ import content from 'reducers/content';
 import navigation from 'reducers/navigation';
 import schema from 'reducers/schema';
 import userSession from 'reducers/userSession';
+import workflow from 'reducers/workflow';
 
 /**
  * Root reducer.
@@ -30,4 +31,5 @@ export default combineReducers({
   navigation,
   schema,
   userSession,
+  workflow,
 });

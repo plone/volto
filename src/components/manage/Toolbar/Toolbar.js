@@ -7,6 +7,8 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import { Workflow } from 'components';
+
 @connect(
   state => ({
     token: state.userSession.token,
@@ -66,6 +68,7 @@ export default class Toolbar extends Component {
                     <span>Add</span>
                   </Link>
                 </li>
+                <Workflow />
               </ul>
               <ul id="personal-bar-container">
                 <li>

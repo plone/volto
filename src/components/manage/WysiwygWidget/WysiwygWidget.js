@@ -15,6 +15,12 @@ import { convertFromHTML, EditorState, ContentState } from 'draft-js';
  */
 export default class WysiwygEditor extends Component {
 
+  /**
+   * Constructor
+   * @method constructor
+   * @param {Object} props Component properties
+   * @constructs WysiwygEditor
+   */
   constructor(props) {
     super(props);
 

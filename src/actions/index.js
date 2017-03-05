@@ -11,8 +11,10 @@ import {
   GET_NAVIGATION, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL,
   GET_CONTENT, GET_CONTENT_SUCCESS, GET_CONTENT_FAIL,
   GET_SCHEMA, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL,
+  GET_WORKFLOW, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL,
   LOGIN, LOGIN_SUCCESS, LOGIN_FAIL,
   LOGOUT,
+  TRANSITION_WORKFLOW, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL,
 } from '../constants/ActionTypes';
 
 /**
@@ -38,6 +40,19 @@ export function getNavigation(url) {
   return {
     types: [GET_NAVIGATION, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL],
     promise: api => api.get(`${url}/@components/navigation`),
+  };
+}
+
+/**
+ * Get workflow function.
+ * @function getWorkflow
+ * @param {string} url Workflow url.
+ * @returns {Object} Get workflow action.
+ */
+export function getWorkflow(url) {
+  return {
+    types: [GET_WORKFLOW, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL],
+    promise: api => api.get(`${url}/@workflow`),
   };
 }
 
@@ -119,6 +134,19 @@ export function login(login, password) {
   return {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
     promise: api => api.post('@login', { data: { login, password }}),
+  };
+}
+
+/**
+ * Transition workflow.
+ * @function transitionWorkflow
+ * @param {string} url Content url.
+ * @returns {Object} Transition workflow action.
+ */
+export function transitionWorkflow(url) {
+  return {
+    types: [TRANSITION_WORKFLOW, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL],
+    promise: api => api.post(url),
   };
 }
 
