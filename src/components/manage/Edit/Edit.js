@@ -80,7 +80,7 @@ export default class Edit extends Component {
    */
   onSubmit(data) {
     this.props.editContent(this.props.location.pathname.replace('/edit', ''),
-                           data.formData);
+                           data);
     return false;
   }
 

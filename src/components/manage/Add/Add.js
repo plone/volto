@@ -72,7 +72,7 @@ export default class Add extends Component {
    */
   onSubmit(data) {
     this.props.addContent(this.props.location.pathname.replace('/add', ''),
-                          { ...data.formData, '@type': 'Document' });
+                          { ...data, '@type': 'Document' });
     return false;
   }
 
