@@ -16,7 +16,7 @@ export Footer from './theme/Footer/Footer';
 export Header from './theme/Header/Header';
 export Logo from './theme/Logo/Logo';
 export Navigation from './theme/Navigation/Navigation';
-export Search from './theme/Search/Search';
+export SearchWidget from './theme/SearchWidget/SearchWidget';
 export Title from './theme/Title/Title';
 export App from './theme/App/App';
 export DocumentView from './theme/View/DocumentView';
@@ -24,6 +24,7 @@ export Login from './theme/Login/Login';
 export Logout from './theme/Logout/Logout';
 export NotFound from './theme/NotFound/NotFound';
 export SummaryView from './theme/View/SummaryView';
+export Search from './theme/Search/Search';
 export View from './theme/View/View';
 
 export Toolbar from './manage/Toolbar/Toolbar';

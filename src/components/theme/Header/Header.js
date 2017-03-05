@@ -5,7 +5,7 @@
 
 import React from 'react';
 
-import { Anontools, Logo, Search } from '../../../components';
+import { Anontools, Logo, SearchWidget } from '../../../components';
 
 /**
  * Header component class.
@@ -17,7 +17,7 @@ const Header = () => (
     <div className="container">
       <div id="portal-header">
         <Logo />
-        <Search />
+        <SearchWidget />
         <Anontools />
       </div>
     </div>

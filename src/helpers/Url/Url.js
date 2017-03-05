@@ -15,5 +15,6 @@ export function getBaseUrl(url) {
           .replace('/delete', '')
           .replace('/edit', '')
           .replace('/login', '')
-          .replace('/logout', '');
+          .replace('/logout', '')
+          .replace('/search', '');
 }

@@ -14,6 +14,7 @@ import {
   GET_WORKFLOW, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL,
   LOGIN, LOGIN_SUCCESS, LOGIN_FAIL,
   LOGOUT,
+  SEARCH_CONTENT, SEARCH_CONTENT_SUCCESS, SEARCH_CONTENT_FAIL,
   TRANSITION_WORKFLOW, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL,
 } from '../constants/ActionTypes';
 
@@ -107,6 +108,19 @@ export function editContent(url, content) {
   return {
     types: [EDIT_CONTENT, EDIT_CONTENT_SUCCESS, EDIT_CONTENT_FAIL],
     promise: api => api.patch(url, { data: content }),
+  };
+}
+
+/**
+ * Search content function.
+ * @function searchContent
+ * @param {string} text Search text.
+ * @returns {Object} Search content action.
+ */
+export function searchContent(text) {
+  return {
+    types: [SEARCH_CONTENT, SEARCH_CONTENT_SUCCESS, SEARCH_CONTENT_FAIL],
+    promise: api => api.get(`/@search?SearchableText=${text}`),
   };
 }
 

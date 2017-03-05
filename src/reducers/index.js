@@ -12,6 +12,7 @@ import breadcrumbs from 'reducers/breadcrumbs';
 import content from 'reducers/content';
 import navigation from 'reducers/navigation';
 import schema from 'reducers/schema';
+import search from 'reducers/search';
 import userSession from 'reducers/userSession';
 import workflow from 'reducers/workflow';
 
@@ -30,6 +31,7 @@ export default combineReducers({
   content,
   navigation,
   schema,
+  search,
   userSession,
   workflow,
 });
