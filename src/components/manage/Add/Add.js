@@ -77,6 +77,15 @@ export default class Add extends Component {
   }
 
   /**
+   * Cancel handler
+   * @method onCancel
+   * @returns {undefined}
+   */
+  onCancel(data) {
+    browserHistory.push(this.props.location.pathname.replace('/edit', ''));
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -88,7 +97,8 @@ export default class Add extends Component {
           <Helmet title="Add: Document" />
           <div className="container">
             <Form schema={this.props.schema}
-                  onSubmit={::this.onSubmit} />
+                  onSubmit={::this.onSubmit}
+                  onCancel={::this.onCancel} />
           </div>
         </div>
       );

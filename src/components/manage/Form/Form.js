@@ -14,7 +14,7 @@ import { WysiwygWidget } from '../../../components';
  * @function Form
  * @returns {string} Markup of the component.
  */
-const Form = ({ schema, formData, onSubmit }) => (
+const Form = ({ schema, formData, onSubmit, onCancel }) => (
   <SchemaForm schema={{
                 ...schema,
                 required: ['title'],
@@ -29,7 +29,7 @@ const Form = ({ schema, formData, onSubmit }) => (
     <div className="formControls">
       <button className="context" type="submit">Save</button>
       &nbsp;
-      <button type="button">Cancel</button>
+      <button type="button" onClick={onCancel}>Cancel</button>
     </div>
   </SchemaForm>
 );

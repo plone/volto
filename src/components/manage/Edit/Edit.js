@@ -85,6 +85,15 @@ export default class Edit extends Component {
   }
 
   /**
+   * Cancel handler
+   * @method onCancel
+   * @returns {undefined}
+   */
+  onCancel(data) {
+    browserHistory.push(this.props.location.pathname.replace('/edit', ''));
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -100,7 +109,8 @@ export default class Edit extends Component {
                     ...this.props.content,
                     text: this.props.content.text ? this.props.content.text.data : '',
                   }}
-                  onSubmit={::this.onSubmit} />
+                  onSubmit={::this.onSubmit}
+                  onCancel={::this.onCancel} />
           </div>
         </div>
       );
