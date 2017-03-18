@@ -4,18 +4,39 @@
  */
 
 import React, { PropTypes, Component } from 'react';
+import { asyncConnect } from 'redux-connect';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
-import { getContent } from '../../../actions';
+import { getContent, getNavigation, getBreadcrumbs } from '../../../actions';
 import { SummaryView, DocumentView } from '../../../components';
+import { getBaseUrl } from '../../../helpers';
 
+@asyncConnect(
+  [
+    {
+      key: 'content',
+      promise: ({ store: { dispatch, getState } }) =>
+        dispatch(getContent(getState().routing.locationBeforeTransitions.pathname)),
+    },
+    {
+      key: 'navigation',
+      promise: ({ store: { dispatch, getState } }) =>
+        dispatch(getNavigation(getBaseUrl(getState().routing.locationBeforeTransitions.pathname))),
+    },
+    {
+      key: 'breadcrumbs',
+      promise: ({ store: { dispatch, getState } }) =>
+        dispatch(getBreadcrumbs(getBaseUrl(getState().routing.locationBeforeTransitions.pathname))),
+    },
+  ],
+)
 @connect(
   state => ({
-    content: state.content.content,
+    content: state.content.data,
     pathname: state.routing.locationBeforeTransitions.pathname,
+  }), ({
+    getContent,
   }),
-  dispatch => bindActionCreators({ getContent }, dispatch),
 )
 /**
  * View container class.
@@ -87,3 +108,4 @@ export default class View extends Component {
     }
   }
 }
+

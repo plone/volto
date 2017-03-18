@@ -14,7 +14,7 @@ import { editContent, getContent, getSchema } from '../../../actions';
 
 @connect(
   state => ({
-    content: state.content.content,
+    content: state.content.data,
     schema: state.schema.schema,
     pathname: state.routing.locationBeforeTransitions.pathname,
     getRequest: state.content.get,

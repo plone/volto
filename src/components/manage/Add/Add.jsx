@@ -16,7 +16,7 @@ import config from '../../../config';
 @connect(
   state => ({
     request: state.content.add,
-    content: state.content.content,
+    content: state.content.data,
     schema: state.schema.schema,
     pathname: state.routing.locationBeforeTransitions.pathname,
   }),

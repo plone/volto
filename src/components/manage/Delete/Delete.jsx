@@ -13,7 +13,7 @@ import { deleteContent, getContent } from '../../../actions';
 
 @connect(
   state => ({
-    content: state.content.content,
+    content: state.content.data,
     pathname: state.routing.locationBeforeTransitions.pathname,
     deleteRequest: state.content.delete,
   }),

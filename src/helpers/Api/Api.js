@@ -36,7 +36,6 @@ export default class Api {
     methods.forEach((method) => {
       this[method] = (path, { params, data, type } = {}) => new Promise((resolve, reject) => {
         const request = superagent[method](formatUrl(path));
-        const authToken = localStorage.getItem('auth_token');
 
         if (params) {
           request.query(params);
@@ -47,8 +46,11 @@ export default class Api {
         }
         request.set('Accept', 'application/json');
 
-        if (authToken) {
-          request.set('Authorization', `Bearer ${authToken}`);
+        if (!__SERVER__) {
+          const authToken = localStorage.getItem('auth_token');
+          if (authToken) {
+            request.set('Authorization', `Bearer ${authToken}`);
+          }
         }
 
         if (type) {

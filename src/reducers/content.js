@@ -32,7 +32,7 @@ const initialState = {
     loading: false,
     error: null,
   },
-  content: null,
+  data: null,
 };
 
 /**
@@ -72,7 +72,7 @@ export default function content(state = initialState, action = {}) {
     case GET_CONTENT_SUCCESS:
       return {
         ...state,
-        content: {
+        data: {
           ...action.result,
           items: action.result && action.result.items && action.result.items.map(item => ({
             ...item,
@@ -91,7 +91,7 @@ export default function content(state = initialState, action = {}) {
     case GET_CONTENT_FAIL:
       return {
         ...state,
-        content: null,
+        data: null,
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: false,
