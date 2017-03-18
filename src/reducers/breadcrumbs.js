@@ -5,8 +5,8 @@
 
 import { map } from 'lodash';
 
-import { GET_BREADCRUMBS, GET_BREADCRUMBS_SUCCESS, GET_BREADCRUMBS_FAIL } from 'constants/ActionTypes';
-import config from 'config';
+import { GET_BREADCRUMBS, GET_BREADCRUMBS_SUCCESS, GET_BREADCRUMBS_FAIL } from '../constants/ActionTypes';
+import config from '../config';
 
 const initialState = {
   loaded: false,

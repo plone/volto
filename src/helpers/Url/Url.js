@@ -3,6 +3,8 @@
  * @module helpers/Url
  */
 
+import { last } from 'lodash';
+
 /**
  * Get base url.
  * @function getBaseUrl
@@ -17,4 +19,18 @@ export function getBaseUrl(url) {
           .replace('/login', '')
           .replace('/logout', '')
           .replace('/search', '');
+}
+
+/**
+ * Get view of an url.
+ * @function getView
+ * @param {string} url Url to be parsed.
+ * @return {string} View of content object.
+ */
+export function getView(url) {
+  const view = last(url.split('/'));
+  if (['add', 'edit', 'delete'].indexOf(view) === -1) {
+    return 'view';
+  }
+  return view;
 }

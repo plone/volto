@@ -5,8 +5,8 @@
 
 import { map } from 'lodash';
 
-import { GET_NAVIGATION, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL } from 'constants/ActionTypes';
-import config from 'config';
+import { GET_NAVIGATION, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL } from '../constants/ActionTypes';
+import config from '../config';
 
 const initialState = {
   loaded: false,

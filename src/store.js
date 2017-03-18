@@ -1,54 +1,54 @@
+import createLogger from 'redux-logger';
+import { createStore, compose, applyMiddleware } from 'redux';
+import { routerMiddleware } from 'react-router-redux';
+import thunk from 'redux-thunk';
+
+import { api } from './middleware';
+import reducer from './reducers';
+
 /**
- * Store.
- * @module store
+ * AddToMiddleWare.
+ * @function addToMiddleWare
+ * @param {Array} data Middleware Array
+ * @param {Object} logger Logger instance
+ * @returns {Array} middleware.
  */
-
-import { syncHistory } from 'react-router-redux';
-import { createStore as _createStore, applyMiddleware, compose } from 'redux';
-
-import api from './middleware/api';
+const addToMiddleWare = (data, logger) => {
+  if (!__DEBUG__) {
+    return data;
+  }
+  const devTools = (typeof window === 'object' && typeof window.devToolsExtension !== 'undefined') ? window.devToolsExtension() : f => f;
+  const debugLogger = (logger) ? applyMiddleware(createLogger()) : f => f;
+  return [...data, devTools, debugLogger];
+};
 
 /**
- * Create store.
- * @function createStore
- * @param {Object} history History object.
- * @param {Object} client Client object.
- * @param {Object} data Data object.
+ * Configure store.
+ * @function configureStore
+ * @param {Object} initialState state object
+ * @param {Object} history state object
+ * @param {bool} logger showLogger
+ * @param {Object} apiHelper ApiHelper
  * @returns {Object} Store.
  */
-export default function createStore(history, client, data) {
-  // Sync dispatched route actions to the history
-  const reduxRouterMiddleware = syncHistory(history);
+export default function configureStore(initialState, history, logger, apiHelper) {
+  const middlewares = addToMiddleWare([
+    applyMiddleware(
+      routerMiddleware(history),
+      thunk,
+      api(apiHelper),
+    ),
+  ], logger);
 
-  const middleware = [api(client), reduxRouterMiddleware];
+  const createStoreWithMiddleware = compose(...middlewares)(createStore);
+  const store = createStoreWithMiddleware(reducer, initialState);
 
-  let finalCreateStore;
-  if (__DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__) {
-    const { persistState } = require('redux-devtools');
-    if (window.devToolsExtension) {
-      finalCreateStore = compose(
-        applyMiddleware(...middleware),
-        window.devToolsExtension(),
-        persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
-      )(_createStore);
-    } else {
-      finalCreateStore = compose(
-        applyMiddleware(...middleware),
-        persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
-      )(_createStore);
-    }
-  } else {
-    finalCreateStore = applyMiddleware(...middleware)(_createStore);
-  }
-
-  const reducer = require('./reducers');
-  const store = finalCreateStore(reducer, data);
-
-  reduxRouterMiddleware.listenForReplays(store);
-
-  if (__DEVELOPMENT__ && module.hot) {
+  if (module.hot) {
+    // Enable Webpack hot module replacement for reducers
     module.hot.accept('./reducers', () => {
-      store.replaceReducer(require('./reducers'));
+      const nextRootReducer = require('./reducers/index'); // eslint-disable-line global-require
+
+      store.replaceReducer(nextRootReducer);
     });
   }
 

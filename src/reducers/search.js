@@ -5,8 +5,8 @@
 
 import { map } from 'lodash';
 
-import { SEARCH_CONTENT, SEARCH_CONTENT_SUCCESS, SEARCH_CONTENT_FAIL } from 'constants/ActionTypes';
-import config from 'config';
+import { SEARCH_CONTENT, SEARCH_CONTENT_SUCCESS, SEARCH_CONTENT_FAIL } from '../constants/ActionTypes';
+import config from '../config';
 
 const initialState = {
   loaded: false,

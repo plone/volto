@@ -3,18 +3,17 @@
  * @module reducers/root
  */
 
-import { routeReducer } from 'react-router-redux';
+import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
-import { reducer as reduxAsyncConnect } from 'redux-async-connect';
-import { reducer as form } from 'redux-form';
+import { reducer as reduxAsyncConnect } from 'redux-connect';
 
-import breadcrumbs from 'reducers/breadcrumbs';
-import content from 'reducers/content';
-import navigation from 'reducers/navigation';
-import schema from 'reducers/schema';
-import search from 'reducers/search';
-import userSession from 'reducers/userSession';
-import workflow from 'reducers/workflow';
+import breadcrumbs from './breadcrumbs';
+import content from './content';
+import navigation from './navigation';
+import schema from './schema';
+import search from './search';
+import userSession from './userSession';
+import workflow from './workflow';
 
 /**
  * Root reducer.
@@ -24,9 +23,8 @@ import workflow from 'reducers/workflow';
  * @returns {Object} New state.
  */
 export default combineReducers({
-  routing: routeReducer,
+  routing: routerReducer,
   reduxAsyncConnect,
-  form,
   breadcrumbs,
   content,
   navigation,

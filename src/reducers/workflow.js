@@ -6,8 +6,7 @@
 import {
   TRANSITION_WORKFLOW, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL,
   GET_WORKFLOW, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL,
-} from 'constants/ActionTypes';
-import config from 'config';
+} from '../constants/ActionTypes';
 
 const initialState = {
   get: {
@@ -29,7 +28,7 @@ const initialState = {
  * @function getRequestKey
  * @param {string} actionType Action type.
  * @returns {string} Request key.
- */ 
+ */
 function getRequestKey(actionType) {
   return actionType.split('_')[0].toLowerCase();
 }

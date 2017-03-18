@@ -140,14 +140,14 @@ export function getSchema(type) {
 /**
  * Login function.
  * @function login
- * @param {string} login Login.
+ * @param {string} username Username.
  * @param {string} password Password.
  * @returns {Object} Login action.
  */
-export function login(login, password) {
+export function login(username, password) {
   return {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
-    promise: api => api.post('@login', { data: { login, password }}),
+    promise: api => api.post('@login', { data: { login: username, password } }),
   };
 }
 

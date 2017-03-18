@@ -7,4 +7,4 @@
 export Api from './Api/Api';
 export Html from './Html/Html';
 export { getAuthToken, persistAuthToken } from './AuthToken/AuthToken';
-export { getBaseUrl } from './Url/Url';
+export { getBaseUrl, getView } from './Url/Url';

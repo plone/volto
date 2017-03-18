@@ -5,7 +5,7 @@
 
 import superagent from 'superagent';
 
-import config from 'config';
+import config from '../../config';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
@@ -33,10 +33,10 @@ export default class Api {
    * @constructs _Api
    */
   constructor(req) {
-    methods.forEach(method => {
+    methods.forEach((method) => {
       this[method] = (path, { params, data, type } = {}) => new Promise((resolve, reject) => {
         const request = superagent[method](formatUrl(path));
-        const auth_token = localStorage.getItem('auth_token');
+        const authToken = localStorage.getItem('auth_token');
 
         if (params) {
           request.query(params);
@@ -47,8 +47,8 @@ export default class Api {
         }
         request.set('Accept', 'application/json');
 
-        if (auth_token) {
-          request.set('Authorization', `Bearer ${auth_token}`);
+        if (authToken) {
+          request.set('Authorization', `Bearer ${authToken}`);
         }
 
         if (type) {

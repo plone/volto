@@ -5,6 +5,7 @@
     "transform-runtime",
     "add-module-exports",
     "transform-decorators-legacy",
+    "transform-class-properties",
     "transform-react-display-name"
   ],
 

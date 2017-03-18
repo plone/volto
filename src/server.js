@@ -1,106 +1,91 @@
-/**
- * Server.
- * @module server
- */
-
-import compression from 'compression';
-import Express from 'express';
-import http from 'http';
-import path from 'path';
-import PrettyError from 'pretty-error';
-import React from 'react';
-import ReactDOM from 'react-dom/server';
-import { Provider } from 'react-redux';
-import { match } from 'react-router';
-import createHistory from 'react-router/lib/createMemoryHistory';
-import { ReduxAsyncConnect, loadOnServer } from 'redux-async-connect';
-import favicon from 'serve-favicon';
+// server
+// import path from 'path';
+import express from 'express';
+import expressHealthcheck from 'express-healthcheck';
 import debugLogger from 'debug-logger';
+import frameguard from 'frameguard';
 
-import config from 'config';
-import { Api, Html } from 'helpers';
-import getRoutes from 'routes';
-import createStore from 'store';
+// SSR
+import React from 'react';
+import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
 
-const debug = debugLogger('mosaic:server');
-const pretty = new PrettyError();
-const app = new Express();
-const server = new http.Server(app);
+import { renderToStaticMarkup } from 'react-dom/server';
+import { Provider } from 'react-redux';
+import { match, createMemoryHistory, RouterContext } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 
-app.use(compression());
-app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
+import { Html, Api } from './helpers';
+import ErrorPage from './error';
+import getRoutes from './routes';
+import configureStore from './store';
+import config from './config';
 
-app.use(Express.static(path.join(__dirname, '..', 'static')));
+// Debug
+const debug = debugLogger('plone-react:server');
 
-app.use((req, res) => {
-  if (__DEVELOPMENT__) {
-    webpackIsomorphicTools.refresh();
-  }
-  const api = new Api(req);
-  const history = createHistory(req.originalUrl);
+export default (parameters) => {
+  const app = express();
+  const staticPath = __dirname;
 
-  const store = createStore(history, api);
+  app.use(frameguard({ action: 'deny' }));
 
-  /**
-   * Hydrate on client
-   * @function hydrateOnClient
-   * @returns {undefined}
-   */
-  function hydrateOnClient() {
-    res.send(
-      `<!doctype html>
-${ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} store={store} />)}`
-    );
-  }
+  // Serve static files
+  app.use(express.static(__dirname));
+  app.use('/assets', express.static(__dirname));
 
-  if (__DISABLE_SSR__) {
-    hydrateOnClient();
-    return;
-  }
+  app.use('/healthcheck', expressHealthcheck());
 
-  match({
-    history,
-    routes: getRoutes(store),
-    location: req.originalUrl,
-  }, (error, redirectLocation, renderProps) => {
-    if (redirectLocation) {
-      res.redirect(redirectLocation.pathname + redirectLocation.search);
-    } else if (error) {
-      debug.error('ROUTER ERROR:', pretty.render(error));
-      res.status(500);
-      hydrateOnClient();
-    } else if (renderProps) {
-      loadOnServer({ ...renderProps, store, helpers: { api } }).then(() => {
-        const component = (
-          <Provider store={store} key="provider">
-            <ReduxAsyncConnect {...renderProps} />
-          </Provider>
-        );
+  // React application rendering
+  app.use((req, res) => {
+    const api = new Api(req);
+    const memoryHistory = createMemoryHistory(req.path);
+    const store = configureStore({}, memoryHistory, false, api);
+    const history = syncHistoryWithStore(memoryHistory, store);
 
-        res.status(200);
-
-        global.navigator = { userAgent: req.headers['user-agent'] };
-
-        res.send(
-          `<!doctype html>
-${ReactDOM.renderToString(
-            <Html assets={webpackIsomorphicTools.assets()} component={component} store={store} />
-          )}`
-        );
-      });
-    } else {
-      res.status(404).send('Not found');
-    }
+    match({
+      history,
+      routes: getRoutes(store),
+      location: req.originalUrl,
+    }, (err, redirectInfo, routeState) => { // eslint-disable-line complexity
+      if (redirectInfo && redirectInfo.redirectInfo) {
+        res.redirect(redirectInfo.path);
+      } else if (err) {
+        res.error(err.message);
+      } else {
+        if (routeState) { // eslint-disable-line no-lonely-if
+          const statusCode = !routeState.params.splat ? 200 : 404;
+          if (__SSR__) {
+            loadOnServer({ ...routeState, store })
+              .then(() => {
+                const component = <Provider store={store}><ReduxAsyncConnect {...routeState} /></Provider>; // eslint-disable-line max-len
+                res.set({ 'Cache-Control': 'public, max-age=600, no-transform' });
+                res.status(statusCode).send(`<!doctype html> ${renderToStaticMarkup(<Html assets={parameters.chunks()} component={component} store={store} staticPath={staticPath} />)}`);
+              })
+              .catch((error) => {
+                const errorPage = <ErrorPage message={error.message} />;
+                res.set({ 'Cache-Control': 'public, max-age=60, no-transform' });
+                res.status(500).send(`<!doctype html> ${renderToStaticMarkup(errorPage)}`);
+              });
+          } else {
+            const component = <Provider store={store}><RouterContext {...routeState} /></Provider>; // eslint-disable-line max-len
+            res.set({ 'Cache-Control': 'public, max-age=60, no-transform' });
+            res.status(statusCode).send(`<!doctype html> ${renderToStaticMarkup(<Html assets={parameters.chunks()} component={component} store={store} staticPath={staticPath} />)}`);
+          }
+        } else {
+          res.set({ 'Cache-Control': 'public, max-age=3600, no-transform' });
+          res.sendStatus(404);
+        }
+      }
+    });
   });
-});
 
-if (config.port) {
-  server.listen(config.port, (err) => {
+  // Start the HTTP server
+  app.listen(config.port, (err) => {
     if (err) {
       debug.error(err);
+    } else {
+      debug.info('==> 🚧  Webpack development server listening on port %s', config.port);
     }
-    debug.info('==> 💻  Open http://%s:%s in a browser to view the app.', config.host, config.port);
   });
-} else {
-  debug.error('==>     ERROR: No PORT environment variable has been specified');
-}
+};
+

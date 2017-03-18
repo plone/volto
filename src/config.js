@@ -2,51 +2,16 @@
  * Config.
  * @module config
  */
+const _ = require('lodash');
 
-require('babel-polyfill');
-
-/**
- * Environment object.
- * @constant environment
- * @type {Object}
- */
-const environment = {
-  development: {
-    isProduction: false,
+module.exports = _.defaults({},
+  {
+    host: process.env.HOST,
+    port: process.env.PORT,
+    apiPath: process.env.API_APTH,
   },
-  production: {
-    isProduction: true,
-  },
-}[process.env.NODE_ENV || 'development'];
-
-/**
- * Config object.
- * @constant
- * @type {Object}
- */
-module.exports = Object.assign({
-  host: process.env.HOST || 'localhost',
-  port: process.env.PORT || 4300,
-  apiPath: process.env.API_APTH || 'http://localhost:8080/Plone',
-  app: {
-    title: 'Plone',
-    description: 'Plone',
-    head: {
-      titleTemplate: 'Plone: %s',
-      meta: [
-        { name: 'description', content: 'Plone' },
-        { charset: 'utf-8' },
-        { property: 'og:site_name', content: 'Plone' },
-        { property: 'og:image', content: 'http://localhost:8080/logo.png' },
-        { property: 'og:locale', content: 'en_US' },
-        { property: 'og:title', content: 'Plone' },
-        { property: 'og:description', content: 'Plone' },
-        { property: 'og:card', content: 'summary' },
-        { property: 'og:site', content: '@plone' },
-        { property: 'og:creator', content: '@robgietema' },
-        { property: 'og:image:width', content: '200' },
-        { property: 'og:image:height', content: '200' },
-      ],
-    },
-  },
-}, environment);
+  {
+    host: 'localhost',
+    port: '4300',
+    apiPath: 'http://localhost:8080/Plone',
+  });

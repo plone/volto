@@ -3,7 +3,7 @@
  * @module reducers/schema
  */
 
-import { GET_SCHEMA, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL } from 'constants/ActionTypes';
+import { GET_SCHEMA, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL } from '../constants/ActionTypes';
 
 const initialState = {
   loaded: false,

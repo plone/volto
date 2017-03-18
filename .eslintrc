@@ -10,7 +10,6 @@
   },
   "parser": "babel-eslint",
   "rules": {
-    "react/jsx-closing-bracket-location": 0,
     "valid-jsdoc": 2,
     "require-jsdoc": ["error", {
       "require": {
@@ -27,6 +26,8 @@
     "__SERVER__": true,
     "__DISABLE_SSR__": true,
     "__DEVTOOLS__": true,
+    "__DEBUG__": true,
+    "__SSR__": true,
     "socket": true,
     "webpackIsomorphicTools": true,
   },
