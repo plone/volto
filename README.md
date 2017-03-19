@@ -41,3 +41,12 @@ Go to [http://localhost:4300](http://localhost:4300) in your browser.
 If chromedriver could not be found, make sure to update with:
 
     ./node_modules/protractor/bin/webdriver-manager update
+
+### Todo
+* Redirect after SSR edit and add content
+* Form tabs
+* Select and array of strings widget
+* Unit / e2e tests
+* Documentation
+* Fill slots with react-slot-fill
+* Add other contenttypes
