@@ -23,12 +23,12 @@ import { editContent, getContent, getSchema } from '../../../actions';
   ],
 )
 @connect(
-  state => ({
+  (state, props) => ({
     content: state.content.data,
     schema: state.schema.schema,
-    pathname: state.routing.locationBeforeTransitions.pathname,
     getRequest: state.content.get,
     editRequest: state.content.edit,
+    pathname: props.location.pathname,
   }),
   dispatch => bindActionCreators({ editContent, getContent, getSchema }, dispatch),
 )

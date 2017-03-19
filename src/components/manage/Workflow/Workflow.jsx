@@ -18,7 +18,6 @@ import config from '../../../config';
     loaded: state.workflow.transition.loaded,
     history: state.workflow.history,
     transitions: state.workflow.transitions,
-    pathname: state.routing.locationBeforeTransitions.pathname,
   }),
   dispatch => bindActionCreators({ getWorkflow, transitionWorkflow }, dispatch),
 )

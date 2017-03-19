@@ -10,9 +10,9 @@ import { SummaryView, DocumentView } from '../../../components';
 import { getContent } from '../../../actions';
 
 @connect(
-  state => ({
+  (state, props) => ({
     content: state.content.data,
-    pathname: state.routing.locationBeforeTransitions.pathname,
+    pathname: props.location.pathname,
   }), ({
     getContent,
   }),

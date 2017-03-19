@@ -29,7 +29,7 @@ export default class Toolbar extends Component {
    * @static
    */
   static propTypes = {
-    path: PropTypes.string.isRequired,
+    pathname: PropTypes.string.isRequired,
     selected: PropTypes.string.isRequired,
     token: PropTypes.string,
   }
@@ -59,30 +59,30 @@ export default class Toolbar extends Component {
             <nav>
               <ul className="plone-toolbar-main" >
                 <li className={this.props.selected === 'view' ? 'active' : ''}>
-                  <Link to={this.props.path}>
+                  <Link to={this.props.pathname}>
                     <span aria-hidden="true" className="icon-view" />
                     <span>View</span>
                   </Link>
                 </li>
                 <li className={this.props.selected === 'edit' ? 'active' : ''}>
-                  <Link to={`${this.props.path}/edit`}>
+                  <Link to={`${this.props.pathname}/edit`}>
                     <span aria-hidden="true" className="icon-edit" />
                     <span>Edit</span>
                   </Link>
                 </li>
                 <li className={this.props.selected === 'delete' ? 'active' : ''}>
-                  <Link to={`${this.props.path}/delete`}>
+                  <Link to={`${this.props.pathname}/delete`}>
                     <span aria-hidden="true" className="icon-plone-contentmenu-actions" />
                     <span>Delete</span>
                   </Link>
                 </li>
                 <li className={this.props.selected === 'add' ? 'active' : ''}>
-                  <Link to={`${this.props.path}/add`}>
+                  <Link to={`${this.props.pathname}/add`}>
                     <span aria-hidden="true" className="icon-plone-contentmenu-factories" />
                     <span>Add</span>
                   </Link>
                 </li>
-                <Workflow />
+                <Workflow pathname={this.props.pathname} />
               </ul>
               <ul id="personal-bar-container">
                 <li>

@@ -14,7 +14,6 @@ import { getBaseUrl } from '../../../helpers';
 @connect(
   state => ({
     items: state.breadcrumbs.items,
-    pathname: state.routing.locationBeforeTransitions.pathname,
   }),
   dispatch => bindActionCreators({ getBreadcrumbs }, dispatch),
 )

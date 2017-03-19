@@ -24,11 +24,11 @@ import config from '../../../config';
   ],
 )
 @connect(
-  state => ({
+  (state, props) => ({
     request: state.content.add,
     content: state.content.data,
     schema: state.schema.schema,
-    pathname: state.routing.locationBeforeTransitions.pathname,
+    pathname: props.location.pathname,
   }),
   dispatch => bindActionCreators({ addContent, getSchema }, dispatch),
 )

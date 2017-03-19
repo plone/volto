@@ -26,13 +26,13 @@ const App = ({ pathname, children }) => {
 
   return (
     <div className="plone-toolbar-expanded">
-      <Toolbar path={path} selected={action} />
+      <Toolbar pathname={path} selected={action} />
       <div className="outer-wrapper">
         <Header />
-        <Navigation path={path} />
+        <Navigation pathname={path} />
         <div id="above-content-wrapper">
           <section id="viewlet-above-content">
-            <Breadcrumbs />
+            <Breadcrumbs pathname={path} />
           </section>
         </div>
         <div className="container">
@@ -68,30 +68,30 @@ export default compose(
     [
       {
         key: 'content',
-        promise: ({ store: { dispatch, getState } }) =>
-          dispatch(getContent(getBaseUrl(getState().routing.locationBeforeTransitions.pathname))),
+        promise: ({ location, store: { dispatch } }) =>
+          dispatch(getContent(getBaseUrl(location.pathname))),
       },
       {
         key: 'navigation',
-        promise: ({ store: { dispatch, getState } }) =>
+        promise: ({ location, store: { dispatch } }) =>
           dispatch(
-            getNavigation(getBaseUrl(getState().routing.locationBeforeTransitions.pathname))),
+            getNavigation(getBaseUrl(location.pathname))),
       },
       {
         key: 'breadcrumbs',
-        promise: ({ store: { dispatch, getState } }) =>
+        promise: ({ location, store: { dispatch } }) =>
           dispatch(
-            getBreadcrumbs(getBaseUrl(getState().routing.locationBeforeTransitions.pathname))),
+            getBreadcrumbs(getBaseUrl(location.pathname))),
       },
       {
         key: 'workflow',
-        promise: ({ store: { dispatch, getState } }) =>
+        promise: ({ location, store: { dispatch } }) =>
           dispatch(
-            getWorkflow(getBaseUrl(getState().routing.locationBeforeTransitions.pathname))),
+            getWorkflow(getBaseUrl(location.pathname))),
       },
     ],
   ),
   connect(
-    state => ({ pathname: state.routing.locationBeforeTransitions.pathname }),
+    (state, props) => ({ pathname: props.location.pathname }),
   ),
 )(App);

@@ -8,14 +8,24 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
+import { asyncConnect } from 'redux-connect';
 
 import { searchContent } from '../../../actions';
 
+@asyncConnect(
+  [
+    {
+      key: 'search',
+      promise: ({ location, store: { dispatch } }) =>
+        dispatch(searchContent(location.query.SearchableText)),
+    },
+  ],
+)
 @connect(
-  state => ({
+  (state, props) => ({
     loaded: state.search.loaded,
     items: state.search.items,
-    searchableText: state.routing.location.query.SearchableText,
+    searchableText: props.location.query.SearchableText,
   }),
   dispatch => bindActionCreators({ searchContent }, dispatch),
 )
@@ -33,7 +43,7 @@ export default class Search extends Component {
    */
   static propTypes = {
     searchContent: PropTypes.func.isRequired,
-    searchableText: PropTypes.string.isRequired,
+    searchableText: PropTypes.string,
     loaded: PropTypes.bool.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape({
       '@id': PropTypes.string,
@@ -50,6 +60,7 @@ export default class Search extends Component {
    */
   static defaultProps = {
     items: [],
+    searchableText: null,
   }
 
   /**

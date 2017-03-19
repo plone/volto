@@ -14,7 +14,6 @@ import { getBaseUrl } from '../../../helpers';
 @connect(
   state => ({
     items: state.navigation.items,
-    pathname: state.routing.locationBeforeTransitions.pathname,
   }),
   dispatch => bindActionCreators({ getNavigation }, dispatch),
 )

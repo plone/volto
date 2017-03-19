@@ -12,10 +12,10 @@ import { browserHistory } from 'react-router';
 import { deleteContent, getContent } from '../../../actions';
 
 @connect(
-  state => ({
+  (state, props) => ({
     content: state.content.data,
-    pathname: state.routing.locationBeforeTransitions.pathname,
     deleteRequest: state.content.delete,
+    pathname: props.location.pathname,
   }),
   dispatch => bindActionCreators({ deleteContent, getContent }, dispatch),
 )

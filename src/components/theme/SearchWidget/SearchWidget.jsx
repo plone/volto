@@ -15,7 +15,7 @@ const SearchWidget = () => (
   <div id="portal-searchbox">
     <form
       id="searchGadget_form"
-      action=""
+      action="/search"
       role="search"
       className="pat-livesearch"
       onSubmit={(e) => {
