@@ -35,7 +35,7 @@ export default class Login extends Component {
     error: PropTypes.shape({
       message: PropTypes.string,
     }),
-    token: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
+    token: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
   }
 
   /**
@@ -45,6 +45,7 @@ export default class Login extends Component {
    */
   static defaultProps = {
     error: null,
+    token: null,
   }
 
   /**

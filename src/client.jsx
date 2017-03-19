@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { ReduxAsyncConnect } from 'redux-connect';
 import { browserHistory, Router } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import cookie from 'react-cookie';
 
 import configureStore from './store';
 import getRoutes from './routes';
@@ -13,7 +14,7 @@ import { Api, persistAuthToken } from './helpers';
 
 const api = new Api();
 const initialState = window.__data;  // eslint-disable-line no-underscore-dangle
-const authToken = window.localStorage.getItem('auth_token');
+const authToken = cookie.load('auth_token');
 if (authToken) {
   initialState.userSession.token = authToken;
 }

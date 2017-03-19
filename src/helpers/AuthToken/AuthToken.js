@@ -3,13 +3,16 @@
  * @module helpers/AuthToken
  */
 
+import cookie from 'react-cookie';
+import jwtDecode from 'jwt-decode';
+
 /**
  * Get auth token method.
  * @method getAuthToken
  * @returns {undefined}
  */
 export function getAuthToken() {
-  return localStorage.getItem('auth_token');
+  return cookie.load('auth_token');
 }
 
 /**
@@ -33,9 +36,16 @@ export function persistAuthToken(store) {
 
     if (previousValue !== currentValue) {
       if (currentValue === null) {
-        localStorage.removeItem('auth_token');
+        cookie.remove('auth_token', { path: '/' });
       } else {
-        localStorage.setItem('auth_token', currentValue);
+        cookie.save(
+          'auth_token',
+          currentValue,
+          {
+            path: '/',
+            expires: new Date(jwtDecode(currentValue).exp * 1000),
+          },
+        );
       }
     }
   }

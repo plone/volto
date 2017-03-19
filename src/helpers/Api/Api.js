@@ -4,6 +4,7 @@
  */
 
 import superagent from 'superagent';
+import cookie from 'react-cookie';
 
 import config from '../../config';
 
@@ -47,7 +48,7 @@ export default class Api {
         request.set('Accept', 'application/json');
 
         if (!__SERVER__) {
-          const authToken = localStorage.getItem('auth_token');
+          const authToken = cookie.load('auth_token');
           if (authToken) {
             request.set('Authorization', `Bearer ${authToken}`);
           }
