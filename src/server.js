@@ -10,13 +10,15 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { match, createMemoryHistory, RouterContext } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import cookie, { setRawCookie } from 'react-cookie';
+import cookie, { plugToRequest } from 'react-cookie';
+import { urlencoded } from 'body-parser';
 
-import { Html, Api } from './helpers';
+import { Html, Api, persistAuthToken } from './helpers';
 import ErrorPage from './error';
 import getRoutes from './routes';
 import configureStore from './store';
 import config from './config';
+import userSession from './reducers/userSession';
 
 // Debug
 const debug = debugLogger('plone-react:server');
@@ -26,6 +28,7 @@ export default (parameters) => {
   const staticPath = __dirname;
 
   app.use(frameguard({ action: 'deny' }));
+  app.use(urlencoded({ extended: false }));
 
   // Serve static files
   app.use(express.static(__dirname));
@@ -35,12 +38,16 @@ export default (parameters) => {
 
   // React application rendering
   app.use((req, res) => {
-    setRawCookie(req.get('cookie'));
+    plugToRequest(req, res);
     const api = new Api(req);
     const authToken = cookie.load('auth_token');
-    const initialState = authToken ? { userSession: { token: authToken } } : {};
+    const initialState = {
+      userSession: { ...userSession(), token: authToken },
+      form: req.body,
+    };
     const memoryHistory = createMemoryHistory(req.path);
     const store = configureStore(initialState, memoryHistory, false, api);
+    persistAuthToken(store);
     const history = syncHistoryWithStore(memoryHistory, store);
 
     match({

@@ -6,10 +6,19 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { asyncConnect } from 'redux-connect';
 
 import { Login } from '../../../components';
 import { logout } from '../../../actions';
 
+@asyncConnect(
+  [
+    {
+      key: 'userSession',
+      promise: ({ store: { dispatch } }) => dispatch(logout()),
+    },
+  ],
+)
 @connect(
   () => ({}),
   dispatch => bindActionCreators({ logout }, dispatch),

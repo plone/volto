@@ -5,12 +5,28 @@
 
 import React, { PropTypes, Component } from 'react';
 import Helmet from 'react-helmet';
+import { asyncConnect } from 'redux-connect';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
+import { isEmpty } from 'lodash';
 
 import { login } from '../../../actions';
 
+@asyncConnect(
+  [
+    {
+      key: 'userSession',
+      promise: ({ store: { dispatch, getState } }) => {
+        const form = getState().form;
+        if (!isEmpty(form)) {
+          return dispatch(login(form.login, form.password));
+        }
+        return Promise.resolve({});
+      },
+    },
+  ],
+)
 @connect(
   state => ({
     error: state.userSession.login.error,
@@ -74,11 +90,13 @@ export default class Login extends Component {
   /**
    * On login handler
    * @method onLogin
+   * @param {Object} event Event object.
    * @returns {undefined}
    */
-  onLogin() {
+  onLogin(event) {
     this.props.login(document.getElementById('login').value,
                      document.getElementById('password').value);
+    event.preventDefault();
   }
 
   /**
@@ -97,23 +115,25 @@ export default class Login extends Component {
               {this.props.error.message}
             </div>
           }
-          <div className="field">
-            <label htmlFor="login" className="horizontal">
-              Login Name <span className="required horizontal" title="Required">&nbsp;</span>
-            </label>
-            <input id="login" name="login" className="text-widget required textline-field" type="text" />
-          </div>
+          <form method="post">
+            <div className="field">
+              <label htmlFor="login" className="horizontal">
+                Login Name <span className="required horizontal" title="Required">&nbsp;</span>
+              </label>
+              <input id="login" name="login" className="text-widget required textline-field" type="text" />
+            </div>
 
-          <div className="field">
-            <label htmlFor="password" className="horizontal">
-              Password <span className="required horizontal" title="Required">&nbsp;</span>
-            </label>
-            <input id="password" name="password" className="text-widget required textline-field" type="password" />
-          </div>
+            <div className="field">
+              <label htmlFor="password" className="horizontal">
+                Password <span className="required horizontal" title="Required">&nbsp;</span>
+              </label>
+              <input id="password" name="password" className="text-widget required textline-field" type="password" />
+            </div>
 
-          <div className="formControls">
-            <button className="context" onClick={this.onLogin}>Log In</button>
-          </div>
+            <div className="formControls">
+              <button className="context" onClick={this.onLogin}>Log In</button>
+            </div>
+          </form>
         </div>
       </div>
     );

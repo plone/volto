@@ -1,6 +1,6 @@
 /**
- * Login reducer.
- * @module reducers/login
+ * User session reducer.
+ * @module reducers/userSession
  */
 
 import { LOGIN, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from '../constants/ActionTypes';
@@ -15,13 +15,13 @@ const initialState = {
 };
 
 /**
- * Login reducer.
- * @function login
+ * User session reducer.
+ * @function userSession
  * @param {Object} state Current state.
  * @param {Object} action Action to be handled.
  * @returns {Object} New state.
  */
-export default function login(state = initialState, action = {}) {
+export default function userSession(state = initialState, action = {}) {
   switch (action.type) {
     case LOGIN:
       return {
