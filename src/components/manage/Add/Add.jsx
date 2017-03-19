@@ -9,10 +9,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import { asyncConnect } from 'redux-connect';
+import { isEmpty, pick } from 'lodash';
 
 import { addContent, getSchema } from '../../../actions';
 import { Form } from '../../../components';
 import config from '../../../config';
+import { getBaseUrl } from '../../../helpers';
 
 @asyncConnect(
   [
@@ -20,6 +22,19 @@ import config from '../../../config';
       key: 'schema',
       promise: ({ store: { dispatch } }) =>
         dispatch(getSchema('Document')),
+    },
+    {
+      key: 'content',
+      promise: ({ location, store: { dispatch, getState } }) => {
+        const form = getState().form;
+        if (!isEmpty(form)) {
+          return dispatch(addContent(
+            getBaseUrl(location.pathname),
+            { ...pick(form, ['title', 'description', 'text']), '@type': 'Document' },
+          ));
+        }
+        return Promise.resolve(getState().content);
+      },
     },
   ],
 )
@@ -108,7 +123,7 @@ export default class Add extends Component {
    * @returns {bool} Should continue.
    */
   onSubmit(data) {
-    this.props.addContent(this.props.pathname.replace('/add', ''),
+    this.props.addContent(getBaseUrl(this.props.pathname),
                           { ...data, '@type': 'Document' });
     return false;
   }
@@ -119,7 +134,7 @@ export default class Add extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.push(this.props.pathname.replace('/edit', ''));
+    browserHistory.push(getBaseUrl(this.props.pathname));
   }
 
   /**

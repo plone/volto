@@ -7,6 +7,7 @@ import React, { Component, PropTypes } from 'react';
 import Editor from 'draft-js-editor';
 import { stateToHTML } from 'draft-js-export-html';
 import { convertFromHTML, EditorState, ContentState } from 'draft-js';
+import { drop } from 'lodash';
 
 /**
  * WysiwygEditor container class.
@@ -21,6 +22,7 @@ export default class WysiwygEditor extends Component {
    * @static
    */
   static propTypes = {
+    id: PropTypes.string.isRequired,
     value: PropTypes.string,
     onChange: PropTypes.func.isRequired,
   }
@@ -31,7 +33,7 @@ export default class WysiwygEditor extends Component {
    * @static
    */
   static defaultProps = {
-    value: null,
+    value: '',
   }
 
   /**
@@ -77,9 +79,12 @@ export default class WysiwygEditor extends Component {
   render() {
     if (__SERVER__) {
       return (
-        <textarea>
-          {this.props.value}
-        </textarea>
+        <textarea
+          id={this.props.id}
+          name={drop(this.props.id.split('_'), 2).join('_')}
+          value={this.props.value}
+          onChange={({ target }) => this.props.onChange(target.value === '' ? undefined : target.value)}
+        />
       );
     }
     return (

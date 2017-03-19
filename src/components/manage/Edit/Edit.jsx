@@ -29,7 +29,7 @@ import { getBaseUrl } from '../../../helpers';
         if (!isEmpty(form)) {
           return dispatch(editContent(
             getBaseUrl(location.pathname),
-            pick(form, ['title'])),
+            pick(form, ['title', 'description', 'text'])),
           );
         }
         return Promise.resolve(getState().content);
@@ -109,7 +109,7 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.getContent(this.props.pathname.split('/edit')[0]);
+    this.props.getContent(getBaseUrl(this.props.pathname));
   }
 
   /**
@@ -123,7 +123,7 @@ export default class Edit extends Component {
       this.props.getSchema(nextProps.content['@type']);
     }
     if (this.props.editRequest.loading && nextProps.editRequest.loaded) {
-      browserHistory.push(this.props.pathname.replace('/edit', ''));
+      browserHistory.push(getBaseUrl(this.props.pathname));
     }
   }
 
@@ -134,8 +134,7 @@ export default class Edit extends Component {
    * @returns {bool} Should continue.
    */
   onSubmit(data) {
-    this.props.editContent(this.props.pathname.replace('/edit', ''),
-                           data);
+    this.props.editContent(getBaseUrl(this.props.pathname), data);
     return false;
   }
 
@@ -145,7 +144,7 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.push(this.props.pathname.replace('/edit', ''));
+    browserHistory.push(getBaseUrl(this.props.pathname));
   }
 
   /**
