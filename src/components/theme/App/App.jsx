@@ -5,9 +5,12 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { asyncConnect } from 'redux-connect';
+import { compose } from 'redux';
 
 import { Breadcrumbs, Footer, Header, Navigation, Toolbar } from '../../../components';
 import { getBaseUrl, getView } from '../../../helpers';
+import { getContent, getNavigation, getBreadcrumbs, getWorkflow } from '../../../actions';
 
 /**
  * This function defines the app component.
@@ -60,6 +63,35 @@ App.propTypes = {
   pathname: PropTypes.string.isRequired,
 };
 
-export default connect(
-  state => ({ pathname: state.routing.locationBeforeTransitions.pathname }),
+export default compose(
+  asyncConnect(
+    [
+      {
+        key: 'content',
+        promise: ({ store: { dispatch, getState } }) =>
+          dispatch(getContent(getState().routing.locationBeforeTransitions.pathname)),
+      },
+      {
+        key: 'navigation',
+        promise: ({ store: { dispatch, getState } }) =>
+          dispatch(
+            getNavigation(getBaseUrl(getState().routing.locationBeforeTransitions.pathname))),
+      },
+      {
+        key: 'breadcrumbs',
+        promise: ({ store: { dispatch, getState } }) =>
+          dispatch(
+            getBreadcrumbs(getBaseUrl(getState().routing.locationBeforeTransitions.pathname))),
+      },
+      {
+        key: 'workflow',
+        promise: ({ store: { dispatch, getState } }) =>
+          dispatch(
+            getWorkflow(getBaseUrl(getState().routing.locationBeforeTransitions.pathname))),
+      },
+    ],
+  ),
+  connect(
+    state => ({ pathname: state.routing.locationBeforeTransitions.pathname }),
+  ),
 )(App);

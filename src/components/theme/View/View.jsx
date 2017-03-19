@@ -4,32 +4,11 @@
  */
 
 import React, { PropTypes, Component } from 'react';
-import { asyncConnect } from 'redux-connect';
 import { connect } from 'react-redux';
 
-import { getContent, getNavigation, getBreadcrumbs } from '../../../actions';
 import { SummaryView, DocumentView } from '../../../components';
-import { getBaseUrl } from '../../../helpers';
+import { getContent } from '../../../actions';
 
-@asyncConnect(
-  [
-    {
-      key: 'content',
-      promise: ({ store: { dispatch, getState } }) =>
-        dispatch(getContent(getState().routing.locationBeforeTransitions.pathname)),
-    },
-    {
-      key: 'navigation',
-      promise: ({ store: { dispatch, getState } }) =>
-        dispatch(getNavigation(getBaseUrl(getState().routing.locationBeforeTransitions.pathname))),
-    },
-    {
-      key: 'breadcrumbs',
-      promise: ({ store: { dispatch, getState } }) =>
-        dispatch(getBreadcrumbs(getBaseUrl(getState().routing.locationBeforeTransitions.pathname))),
-    },
-  ],
-)
 @connect(
   state => ({
     content: state.content.data,
