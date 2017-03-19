@@ -43,17 +43,18 @@ export default class WysiwygEditor extends Component {
   constructor(props) {
     super(props);
 
-    let editorState;
-
-    if (props.value) {
-      const blocksFromHTML = convertFromHTML(props.value);
-      const contentState = ContentState.createFromBlockArray(blocksFromHTML);
-      editorState = EditorState.createWithContent(contentState);
-    } else {
-      editorState = EditorState.createEmpty();
+    if (!__SERVER__) {
+      let editorState;
+      if (props.value) {
+        const blocksFromHTML = convertFromHTML(props.value);
+        const contentState = ContentState.createFromBlockArray(blocksFromHTML);
+        editorState = EditorState.createWithContent(contentState);
+      } else {
+        editorState = EditorState.createEmpty();
+      }
+      this.state = { editorState };
     }
 
-    this.state = { editorState };
     this.onChange = this.onChange.bind(this);
   }
 
@@ -74,6 +75,13 @@ export default class WysiwygEditor extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    if (__SERVER__) {
+      return (
+        <textarea>
+          {this.props.value}
+        </textarea>
+      );
+    }
     return (
       <div className="wysiwyg-widget">
         <Editor

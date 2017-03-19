@@ -47,6 +47,7 @@ const Form = ({ schema, formData, onSubmit, onCancel }) => {
 
   return (
     <SchemaForm
+      method="post"
       schema={parsedSchema}
       uiSchema={{
         default: {

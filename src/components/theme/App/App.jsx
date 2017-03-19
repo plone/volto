@@ -69,7 +69,7 @@ export default compose(
       {
         key: 'content',
         promise: ({ store: { dispatch, getState } }) =>
-          dispatch(getContent(getState().routing.locationBeforeTransitions.pathname)),
+          dispatch(getContent(getBaseUrl(getState().routing.locationBeforeTransitions.pathname))),
       },
       {
         key: 'navigation',

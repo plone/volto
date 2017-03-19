@@ -8,11 +8,21 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
+import { asyncConnect } from 'redux-connect';
 
 import { addContent, getSchema } from '../../../actions';
 import { Form } from '../../../components';
 import config from '../../../config';
 
+@asyncConnect(
+  [
+    {
+      key: 'schema',
+      promise: ({ store: { dispatch } }) =>
+        dispatch(getSchema('Document')),
+    },
+  ],
+)
 @connect(
   state => ({
     request: state.content.add,
