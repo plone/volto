@@ -1737,6 +1737,7 @@ fieldset[disabled] input[type="checkbox"] {
 .formHelp {
   margin-top: 0;
   margin-bottom: 0;
+  margin-left: 6px;
   color: #666666;
   font-weight: 400;
   font-style: italic;

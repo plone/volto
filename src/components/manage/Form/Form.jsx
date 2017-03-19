@@ -7,7 +7,7 @@ import React, { PropTypes } from 'react';
 import SchemaForm from 'react-jsonschema-form';
 import { merge, values, omitBy, zipObject, map } from 'lodash';
 
-import { WysiwygWidget } from '../../../components';
+import { Field, TextWidget, WysiwygWidget } from '../../../components';
 
 /**
  * Form component class.
@@ -49,12 +49,16 @@ const Form = ({ schema, formData, onSubmit, onCancel }) => {
     <SchemaForm
       method="post"
       schema={parsedSchema}
+      FieldTemplate={Field}
       uiSchema={{
         default: {
           text: {
             'ui:widget': WysiwygWidget,
           },
         },
+      }}
+      widgets={{
+        TextWidget,
       }}
       formData={parsedFormData}
       onSubmit={data => onSubmit(merge(...values(data.formData)))}

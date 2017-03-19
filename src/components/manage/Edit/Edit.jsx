@@ -9,9 +9,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import { asyncConnect } from 'redux-connect';
+import { isEmpty, pick } from 'lodash';
 
 import { Form } from '../../../components';
 import { editContent, getContent, getSchema } from '../../../actions';
+import { getBaseUrl } from '../../../helpers';
 
 @asyncConnect(
   [
@@ -19,6 +21,19 @@ import { editContent, getContent, getSchema } from '../../../actions';
       key: 'schema',
       promise: ({ store: { dispatch, getState } }) =>
         dispatch(getSchema(getState().content.data['@type'])),
+    },
+    {
+      key: 'content',
+      promise: ({ location, store: { dispatch, getState } }) => {
+        const form = getState().form;
+        if (!isEmpty(form)) {
+          return dispatch(editContent(
+            getBaseUrl(location.pathname),
+            pick(form, ['title'])),
+          );
+        }
+        return Promise.resolve(getState().content);
+      },
     },
   ],
 )
