@@ -4,15 +4,13 @@ import express from 'express';
 import expressHealthcheck from 'express-healthcheck';
 import debugLogger from 'debug-logger';
 import frameguard from 'frameguard';
-
-// SSR
 import React from 'react';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
-
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { match, createMemoryHistory, RouterContext } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import cookie, { setRawCookie } from 'react-cookie';
 
 import { Html, Api } from './helpers';
 import ErrorPage from './error';
@@ -37,9 +35,12 @@ export default (parameters) => {
 
   // React application rendering
   app.use((req, res) => {
+    setRawCookie(req.get('cookie'));
     const api = new Api(req);
+    const authToken = cookie.load('auth_token');
+    const initialState = authToken ? { userSession: { token: authToken } } : {};
     const memoryHistory = createMemoryHistory(req.path);
-    const store = configureStore({}, memoryHistory, false, api);
+    const store = configureStore(initialState, memoryHistory, false, api);
     const history = syncHistoryWithStore(memoryHistory, store);
 
     match({
@@ -53,13 +54,12 @@ export default (parameters) => {
         res.error(err.message);
       } else {
         if (routeState) { // eslint-disable-line no-lonely-if
-          const statusCode = !routeState.params.splat ? 200 : 404;
           if (__SSR__) {
             loadOnServer({ ...routeState, store })
               .then(() => {
                 const component = <Provider store={store}><ReduxAsyncConnect {...routeState} /></Provider>; // eslint-disable-line max-len
                 res.set({ 'Cache-Control': 'public, max-age=600, no-transform' });
-                res.status(statusCode).send(`<!doctype html> ${renderToStaticMarkup(<Html assets={parameters.chunks()} component={component} store={store} staticPath={staticPath} />)}`);
+                res.status(200).send(`<!doctype html> ${renderToStaticMarkup(<Html assets={parameters.chunks()} component={component} store={store} staticPath={staticPath} />)}`);
               })
               .catch((error) => {
                 const errorPage = <ErrorPage message={error.message} />;
@@ -69,7 +69,7 @@ export default (parameters) => {
           } else {
             const component = <Provider store={store}><RouterContext {...routeState} /></Provider>; // eslint-disable-line max-len
             res.set({ 'Cache-Control': 'public, max-age=60, no-transform' });
-            res.status(statusCode).send(`<!doctype html> ${renderToStaticMarkup(<Html assets={parameters.chunks()} component={component} store={store} staticPath={staticPath} />)}`);
+            res.status(200).send(`<!doctype html> ${renderToStaticMarkup(<Html assets={parameters.chunks()} component={component} store={store} staticPath={staticPath} />)}`);
           }
         } else {
           res.set({ 'Cache-Control': 'public, max-age=3600, no-transform' });

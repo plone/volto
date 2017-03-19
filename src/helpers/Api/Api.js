@@ -30,10 +30,9 @@ export default class Api {
   /**
    * Constructor
    * @method constructor
-   * @param {Object} req Request object
    * @constructs _Api
    */
-  constructor(req) {
+  constructor() {
     methods.forEach((method) => {
       this[method] = (path, { params, data, type } = {}) => new Promise((resolve, reject) => {
         const request = superagent[method](formatUrl(path));
@@ -42,17 +41,12 @@ export default class Api {
           request.query(params);
         }
 
-        if (__SERVER__ && req.get('cookie')) {
-          request.set('cookie', req.get('cookie'));
+        const authToken = cookie.load('auth_token');
+        if (authToken) {
+          request.set('Authorization', `Bearer ${authToken}`);
         }
-        request.set('Accept', 'application/json');
 
-        if (!__SERVER__) {
-          const authToken = cookie.load('auth_token');
-          if (authToken) {
-            request.set('Authorization', `Bearer ${authToken}`);
-          }
-        }
+        request.set('Accept', 'application/json');
 
         if (type) {
           request.type(type);
