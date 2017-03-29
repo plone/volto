@@ -1,0 +1,6 @@
+exports[`test Renders 1`] = `
+<h1
+  className="documentFirstHeading">
+  test
+</h1>
+`;

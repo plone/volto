@@ -43,6 +43,21 @@
     "webdriver-update": "webdriver-manager update",
     "docs": "raml2html docs/api/index.raml > src/static/docs/index.html"
   },
+  "jest": {
+    "testRegex": "(/__tests__/.*|\\.(test))\\.(js|jsx)$",
+    "scriptPreprocessor": "./jest-preprocessor.js",
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "globals": {
+      "__CLIENT__": true
+    }
+  },
   "betterScripts": {
     "run_dev_client": {
       "command": "babel-node webpack/server.dev.js",
@@ -152,6 +167,8 @@
   "devDependencies": {
     "autoprefixer-loader": "3.2.0",
     "babel-eslint": "7.1.1",
+    "babel-jest": "16.0.0",
+    "babel-preset-jest": "16.0.0",
     "babel-plugin-react-transform": "2.0.2",
     "babel-plugin-typecheck": "3.9.0",
     "better-npm-run": "0.0.14",
@@ -174,6 +191,7 @@
     "extract-text-webpack-plugin": "1.0.1",
     "font-awesome": "4.7.0",
     "font-awesome-webpack": "0.0.5-beta.2",
+    "jest": "16.0.0",
     "jsdoc": "3.4.3",
     "json-loader": "0.5.4",
     "karma": "1.5.0",
