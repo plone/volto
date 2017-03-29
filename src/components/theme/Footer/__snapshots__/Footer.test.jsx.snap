@@ -1,0 +1,116 @@
+exports[`test renders a footer component 1`] = `
+<footer
+  className="plone-footer"
+  id="portal-footer-wrapper"
+  role="contentinfo">
+  <div
+    className="container"
+    id="portal-footer">
+    <div
+      className="row">
+      <div
+        className="col-xs-12">
+        <div
+          className="portletWrapper"
+          data-portlethash="706c6f6e652e666f6f746572706f72746c6574730a636f6e746578740a2f506c6f6e6531340a666f6f746572"
+          id="portletwrapper-706c6f6e652e666f6f746572706f72746c6574730a636f6e746578740a2f506c6f6e6531340a666f6f746572">
+          <section
+            className="portlet portletClassic"
+            id="portal-footer-signature">
+            <div
+              className="portletContent">
+              The
+              <a
+                href="http://plone.com">
+                Plone
+                <sup>
+                  ®
+                </sup>
+                 Open Source CMS/WCM
+              </a>
+              is 
+              <abbr
+                title="Copyright">
+                ©
+              </abbr>
+               2000-2016 by the
+              <a
+                href="http://plone.org/foundation">
+                Plone Foundation
+              </a>
+               and friends. Distributed under the
+              <a
+                href="http://creativecommons.org/licenses/GPL/2.0/">
+                GNU GPL license
+              </a>
+              .
+            </div>
+          </section>
+        </div>
+        <div
+          className="portletWrapper"
+          data-portlethash="706c6f6e652e666f6f746572706f72746c6574730a636f6e746578740a2f506c6f6e6531340a616374696f6e73"
+          id="portletwrapper-706c6f6e652e666f6f746572706f72746c6574730a636f6e746578740a2f506c6f6e6531340a616374696f6e73">
+          <section
+            className="portlet portletActions"
+            role="menu">
+            <section
+              className="portletContent">
+              <ul>
+                <li
+                  className="portletItem">
+                  <a
+                    href="http://localhost:8080/Plone14/sitemap">
+                    <span>
+                      Site Map
+                    </span>
+                  </a>
+                </li>
+                <li
+                  className="portletItem">
+                  <a
+                    href="http://localhost:8080/Plone14/accessibility-info">
+                    <span>
+                      Accessibility
+                    </span>
+                  </a>
+                </li>
+                <li
+                  className="portletItem">
+                  <a
+                    className="pat-plone-modal"
+                    data-pat-plone-modal="{}"
+                    href="http://localhost:8080/Plone14/contact-info">
+                    <span>
+                      Contact
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </section>
+          </section>
+        </div>
+        <div
+          className="portletWrapper"
+          data-portlethash="706c6f6e652e666f6f746572706f72746c6574730a636f6e746578740a2f506c6f6e6531340a636f6c6f70686f6e"
+          id="portletwrapper-706c6f6e652e666f6f746572706f72746c6574730a636f6e746578740a2f506c6f6e6531340a636f6c6f70686f6e">
+          <section
+            className="portlet portletClassic"
+            id="portal-colophon">
+            <div
+              className="portletContent">
+              <a
+                href="http://plone.com"
+                rel="noopener noreferrer"
+                target="_blank"
+                title="This site was built using the Plone Open Source CMS/WCM.">
+                Powered by Plone & Python
+              </a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+`;

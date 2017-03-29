@@ -1,0 +1,12 @@
+exports[`test renders a logo component 1`] = `
+<a
+  id="portal-logo"
+  onClick={[Function]}
+  style={Object {}}
+  title="Site">
+  <img
+    alt="Plone site"
+    src={Object {}}
+    title="Plone site" />
+</a>
+`;

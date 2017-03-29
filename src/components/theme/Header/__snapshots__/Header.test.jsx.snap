@@ -1,0 +1,14 @@
+exports[`test renders a header component 1`] = `
+<header
+  id="content-header">
+  <div
+    className="container">
+    <div
+      id="portal-header">
+      <div />
+      <div />
+      <div />
+    </div>
+  </div>
+</header>
+`;
