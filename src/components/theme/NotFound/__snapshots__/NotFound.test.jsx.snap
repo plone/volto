@@ -1,6 +1,9 @@
-exports[`test renders a not found component 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a not found component 1`] = `
 <div
-  className="container">
+  className="container"
+>
   <h1>
     Doh! 404!
   </h1>

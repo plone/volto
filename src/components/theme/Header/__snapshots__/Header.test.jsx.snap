@@ -1,10 +1,15 @@
-exports[`test renders a header component 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a header component 1`] = `
 <header
-  id="content-header">
+  id="content-header"
+>
   <div
-    className="container">
+    className="container"
+  >
     <div
-      id="portal-header">
+      id="portal-header"
+    >
       <div />
       <div />
       <div />

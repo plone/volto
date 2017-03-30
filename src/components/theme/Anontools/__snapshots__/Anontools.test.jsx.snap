@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Anontools renders an anontools component when no token is specified 1`] = `
+<div
+  id="portal-anontools"
+>
+  <ul>
+    <li>
+      <a
+        id="personaltools-login"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Log in
+      </a>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Anontools should not render an anontools component when a token is specified 1`] = `null`;
