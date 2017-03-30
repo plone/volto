@@ -36,9 +36,9 @@
     "lint": "eslint -c .eslintrc src",
     "lint:fix": "eslint -c .eslintrc src --fix",
     "watch:test:unit": "better-npm-run watch_test_unit",
-    "test:src:unit": "better-npm-run test_unit",
-    "pretest:src:e2e": "npm-run-all webdriver-update wait-for-frontend",
-    "test:src:e2e": "protractor ./protractor.conf.js",
+    "test:unit": "better-npm-run test_unit",
+    "pretest:e2e": "npm-run-all webdriver-update wait-for-frontend",
+    "test:e2e": "protractor ./protractor.conf.js",
     "wait-for-frontend": "wget --retry-connrefused --spider ${PROTRACTOR_URL:-http://localhost:4300}",
     "webdriver-update": "webdriver-manager update",
     "docs": "raml2html docs/api/index.raml > src/static/docs/index.html"
