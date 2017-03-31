@@ -12,11 +12,11 @@ describe('Navigation action', () => {
       expect(action.types).toEqual([GET_NAVIGATION, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL]);
 
       const apiMock = {
-        get: jest.fn()
+        get: jest.fn(),
       };
       action.promise(apiMock);
 
       expect(apiMock.get).toBeCalledWith(`${url}/@components/navigation`);
     });
   });
-})
+});

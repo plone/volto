@@ -14,7 +14,7 @@ describe('User session action', () => {
       expect(action.types).toEqual([LOGIN, LOGIN_SUCCESS, LOGIN_FAIL]);
 
       const apiMock = {
-        post: jest.fn()
+        post: jest.fn(),
       };
       action.promise(apiMock);
 
@@ -29,4 +29,4 @@ describe('User session action', () => {
       expect(action.type).toEqual(LOGOUT);
     });
   });
-})
+});

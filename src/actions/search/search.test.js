@@ -12,11 +12,11 @@ describe('Search action', () => {
       expect(action.types).toEqual([SEARCH_CONTENT, SEARCH_CONTENT_SUCCESS, SEARCH_CONTENT_FAIL]);
 
       const apiMock = {
-        get: jest.fn()
+        get: jest.fn(),
       };
       action.promise(apiMock);
 
       expect(apiMock.get).toBeCalledWith(`/@search?SearchableText=${text}`);
     });
   });
-})
+});

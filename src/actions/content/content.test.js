@@ -16,7 +16,7 @@ describe('Content action', () => {
       expect(action.types).toEqual([ADD_CONTENT, ADD_CONTENT_SUCCESS, ADD_CONTENT_FAIL]);
 
       const apiMock = {
-        post: jest.fn()
+        post: jest.fn(),
       };
       action.promise(apiMock);
 
@@ -32,7 +32,7 @@ describe('Content action', () => {
       expect(action.types).toEqual([DELETE_CONTENT, DELETE_CONTENT_SUCCESS, DELETE_CONTENT_FAIL]);
 
       const apiMock = {
-        del: jest.fn()
+        del: jest.fn(),
       };
       action.promise(apiMock);
 
@@ -49,7 +49,7 @@ describe('Content action', () => {
       expect(action.types).toEqual([EDIT_CONTENT, EDIT_CONTENT_SUCCESS, EDIT_CONTENT_FAIL]);
 
       const apiMock = {
-        patch: jest.fn()
+        patch: jest.fn(),
       };
       action.promise(apiMock);
 
@@ -65,11 +65,11 @@ describe('Content action', () => {
       expect(action.types).toEqual([GET_CONTENT, GET_CONTENT_SUCCESS, GET_CONTENT_FAIL]);
 
       const apiMock = {
-        get: jest.fn()
+        get: jest.fn(),
       };
       action.promise(apiMock);
 
       expect(apiMock.get).toBeCalledWith(url);
     });
   });
-})
+});

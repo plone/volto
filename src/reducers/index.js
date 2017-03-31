@@ -7,14 +7,14 @@ import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
 import { reducer as reduxAsyncConnect } from 'redux-connect';
 
-import breadcrumbs from './breadcrumbs';
-import content from './content';
-import form from './form';
-import navigation from './navigation';
-import schema from './schema';
-import search from './search';
-import userSession from './userSession';
-import workflow from './workflow';
+import breadcrumbs from './breadcrumbs/breadcrumbs';
+import content from './content/content';
+import form from './form/form';
+import navigation from './navigation/navigation';
+import schema from './schema/schema';
+import search from './search/search';
+import userSession from './userSession/userSession';
+import workflow from './workflow/workflow';
 
 /**
  * Root reducer.

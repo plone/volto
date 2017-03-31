@@ -6,7 +6,7 @@
 import {
   TRANSITION_WORKFLOW, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL,
   GET_WORKFLOW, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL,
-} from '../constants/ActionTypes';
+} from '../../constants/ActionTypes';
 
 const initialState = {
   get: {
@@ -42,8 +42,8 @@ function getRequestKey(actionType) {
  */
 export default function content(state = initialState, action = {}) {
   switch (action.type) {
-    case TRANSITION_WORKFLOW:
     case GET_WORKFLOW:
+    case TRANSITION_WORKFLOW:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -52,8 +52,8 @@ export default function content(state = initialState, action = {}) {
           error: null,
         },
       };
-    case TRANSITION_WORKFLOW_SUCCESS:
     case GET_WORKFLOW_SUCCESS:
+    case TRANSITION_WORKFLOW_SUCCESS:
       return {
         ...state,
         history: action.result.history ? action.result.history : state.history,
@@ -64,8 +64,8 @@ export default function content(state = initialState, action = {}) {
           error: null,
         },
       };
-    case TRANSITION_WORKFLOW_FAIL:
     case GET_WORKFLOW_FAIL:
+    case TRANSITION_WORKFLOW_FAIL:
       return {
         ...state,
         history: [],

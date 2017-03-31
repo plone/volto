@@ -5,14 +5,14 @@
 
 import { map } from 'lodash';
 
-import { GET_NAVIGATION, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL } from '../constants/ActionTypes';
-import config from '../config';
+import { GET_NAVIGATION, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL } from '../../constants/ActionTypes';
+import config from '../../config';
 
 const initialState = {
+  error: null,
+  items: [],
   loaded: false,
   loading: false,
-  items: [],
-  error: null,
 };
 
 /**
@@ -27,29 +27,29 @@ export default function navigation(state = initialState, action = {}) {
     case GET_NAVIGATION:
       return {
         ...state,
-        loading: true,
-        loaded: false,
         error: null,
+        loaded: false,
+        loading: true,
       };
     case GET_NAVIGATION_SUCCESS:
       return {
         ...state,
-        loading: false,
-        loaded: true,
+        error: null,
         items: map(action.result[0].items,
                    item => ({
                      title: item.title,
                      url: item.url.replace(config.apiPath, ''),
                    })),
-        error: null,
+        loaded: true,
+        loading: false,
       };
     case GET_NAVIGATION_FAIL:
       return {
         ...state,
-        loading: false,
-        loaded: false,
-        items: [],
         error: action.error,
+        items: [],
+        loaded: false,
+        loading: false,
       };
     default:
       return state;

@@ -170,7 +170,8 @@
     "superagent": "3.5.0",
     "universal-webpack": "0.1.40",
     "url-loader": "0.5.8",
-    "warning": "3.0.0"
+    "warning": "3.0.0",
+    "webpack": "1.13.2"
   },
   "devDependencies": {
     "autoprefixer-loader": "3.2.0",
@@ -239,7 +240,6 @@
     "supertest": "3.0.0",
     "supertest-as-promised": "3.1.0",
     "timekeeper": "1.0.0",
-    "webpack": "1.13.2",
     "webpack-dev-middleware": "1.8.4",
     "webpack-hot-middleware": "2.12.2"
   },

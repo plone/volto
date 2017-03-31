@@ -18,7 +18,7 @@ import ErrorPage from './error';
 import getRoutes from './routes';
 import configureStore from './store';
 import config from './config';
-import userSession from './reducers/userSession';
+import userSession from './reducers/userSession/userSession';
 
 // Debug
 const debug = debugLogger('plone-react:server');

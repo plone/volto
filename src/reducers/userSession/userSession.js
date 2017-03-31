@@ -3,7 +3,7 @@
  * @module reducers/userSession
  */
 
-import { LOGIN, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from '../constants/ActionTypes';
+import { LOGIN, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from '../../constants/ActionTypes';
 
 const initialState = {
   token: null,

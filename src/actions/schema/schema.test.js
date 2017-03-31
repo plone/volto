@@ -12,11 +12,11 @@ describe('Schema action', () => {
       expect(action.types).toEqual([GET_SCHEMA, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL]);
 
       const apiMock = {
-        get: jest.fn()
+        get: jest.fn(),
       };
       action.promise(apiMock);
 
       expect(apiMock.get).toBeCalledWith(`/@types/${type}`);
     });
   });
-})
+});

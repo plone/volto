@@ -28,6 +28,7 @@
     "__DEVTOOLS__": true,
     "__DEBUG__": true,
     "__SSR__": true,
+    "jest": true,
     "socket": true,
     "webpackIsomorphicTools": true,
   },

@@ -13,7 +13,7 @@ describe('Workflow action', () => {
       expect(action.types).toEqual([GET_WORKFLOW, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL]);
 
       const apiMock = {
-        get: jest.fn()
+        get: jest.fn(),
       };
       action.promise(apiMock);
 
@@ -30,11 +30,11 @@ describe('Workflow action', () => {
         TRANSITION_WORKFLOW, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL]);
 
       const apiMock = {
-        post: jest.fn()
+        post: jest.fn(),
       };
       action.promise(apiMock);
 
       expect(apiMock.post).toBeCalledWith(url);
     });
   });
-})
+});

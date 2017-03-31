@@ -8,8 +8,8 @@ import {
   DELETE_CONTENT, DELETE_CONTENT_SUCCESS, DELETE_CONTENT_FAIL,
   EDIT_CONTENT, EDIT_CONTENT_SUCCESS, EDIT_CONTENT_FAIL,
   GET_CONTENT, GET_CONTENT_SUCCESS, GET_CONTENT_FAIL,
-} from '../constants/ActionTypes';
-import config from '../config';
+} from '../../constants/ActionTypes';
+import config from '../../config';
 
 const initialState = {
   add: {
