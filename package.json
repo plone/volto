@@ -189,7 +189,7 @@
     "concurrently": "3.4.0",
     "css-loader": "0.26.2",
     "dirty-chai": "1.2.2",
-    "eslint": "3.16.1",
+    "eslint": "3.19.0",
     "eslint-config-airbnb": "14.1.0",
     "eslint-loader": "1.6.3",
     "eslint-plugin-import": "2.2.0",
