@@ -33,6 +33,8 @@ export Edit from './manage/Edit/Edit';
 export Delete from './manage/Delete/Delete';
 export Form from './manage/Form/Form';
 export Field from './manage/Form/Field';
+export Tab from './manage/Tabs/Tab';
+export Tabs from './manage/Tabs/Tabs';
 export TextWidget from './manage/Widgets/TextWidget';
 export WysiwygWidget from './manage/Widgets/WysiwygWidget';
 export Workflow from './manage/Workflow/Workflow';
