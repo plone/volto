@@ -1,16 +1,16 @@
 /**
- * TextWidget component.
- * @module components/manage/Widgets/TextWidget
+ * SelectWidget component.
+ * @module components/manage/Widgets/SelectWidget
  */
 
 import React, { PropTypes } from 'react';
 
 /**
- * TextWidget component class.
- * @function TextWidget
+ * SelectWidget component class.
+ * @function SelectWidget
  * @returns {string} Markup of the component.
  */
-const TextWidget = ({ id, title, required, description, error, value, onChange }) =>
+const SelectWidget = ({ id, title, required, description, error, value, choices, onChange }) =>
   <div className={`field${error ? ' error' : ''}`}>
     <label htmlFor={`field-${id}`} className="horizontal">
       {title}
@@ -18,14 +18,18 @@ const TextWidget = ({ id, title, required, description, error, value, onChange }
       {required && <span className="required horizontal" title="Required">&nbsp;</span>}
     </label>
     {error && <div className="fieldErrorBox">{error}</div>}
-    <input
+    <select
       id={`field-${id}`}
       name={id}
-      type="text"
-      className="text-widget"
       value={value || ''}
       onChange={({ target }) => onChange(id, target.value === '' ? undefined : target.value)}
-    />
+      className="select-widget"
+    >
+      <option value="">No value</option>
+      {choices.map(option =>
+        <option key={option[0]} value={option[0]}>{option[1]}</option>,
+      )}
+    </select>
   </div>;
 
 /**
@@ -33,13 +37,14 @@ const TextWidget = ({ id, title, required, description, error, value, onChange }
  * @property {Object} propTypes Property types.
  * @static
  */
-TextWidget.propTypes = {
+SelectWidget.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.string,
   value: PropTypes.string,
+  choices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   onChange: PropTypes.func.isRequired,
 };
 
@@ -48,11 +53,12 @@ TextWidget.propTypes = {
  * @property {Object} defaultProps Default properties.
  * @static
  */
-TextWidget.defaultProps = {
+SelectWidget.defaultProps = {
   description: null,
   required: false,
   error: null,
-  value: null,
+  value: '',
+  choices: [],
 };
 
-export default TextWidget;
+export default SelectWidget;

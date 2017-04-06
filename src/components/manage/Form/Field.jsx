@@ -5,24 +5,46 @@
 
 import React, { PropTypes } from 'react';
 
+import {
+  ArrayWidget,
+  CheckboxWidget,
+  DatetimeWidget,
+  SelectWidget,
+  TextWidget,
+  TextareaWidget,
+  WysiwygWidget,
+} from '../../../components';
+
 /**
  * Field component class.
  * @function Field
+ * @param {Object} props Properties.
  * @returns {string} Markup of the component.
  */
-const Field = ({ id, classNames, label, help, required, rawDescription, rawErrors, children }) =>
-  <div className={`field ${classNames} ${rawErrors.length > 0 ? 'error' : ''}`}>
-    <label htmlFor={id} className="horizontal">
-      {label}
-      {required ? <span className="required horizontal" title="Required">&nbsp;</span> : null}
-      {rawDescription ? <span className="formHelp">{rawDescription}</span> : null}
-    </label>
-    {rawErrors.map(error =>
-      <div key={error} className="fieldErrorBox">{error}</div>,
-    )}
-    {children}
-    {help}
-  </div>;
+const Field = ((props) => {
+  if (props.widget) {
+    switch (props.widget) {
+      case 'richtext':
+        return <WysiwygWidget {...props} />;
+      case 'textarea':
+        return <TextareaWidget {...props} />;
+      case 'datetime':
+        return <DatetimeWidget {...props} />;
+      default:
+        return <TextWidget {...props} />;
+    }
+  }
+  if (props.choices) {
+    return <SelectWidget {...props} />;
+  }
+  if (props.type === 'boolean') {
+    return <CheckboxWidget {...props} />;
+  }
+  if (props.type === 'array') {
+    return <ArrayWidget {...props} />;
+  }
+  return <TextWidget {...props} />;
+});
 
 /**
  * Property types.
@@ -30,14 +52,9 @@ const Field = ({ id, classNames, label, help, required, rawDescription, rawError
  * @static
  */
 Field.propTypes = {
-  id: PropTypes.string.isRequired,
-  classNames: PropTypes.string.isRequired,
-  label: PropTypes.string,
-  help: PropTypes.element,
-  required: PropTypes.bool,
-  rawDescription: PropTypes.string,
-  rawErrors: PropTypes.arrayOf(PropTypes.string),
-  children: PropTypes.element.isRequired,
+  widget: PropTypes.string,
+  choices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  type: PropTypes.string,
 };
 
 /**
@@ -46,11 +63,9 @@ Field.propTypes = {
  * @static
  */
 Field.defaultProps = {
-  label: '',
-  help: null,
-  required: false,
-  rawDescription: '',
-  rawErrors: [],
+  widget: null,
+  choices: null,
+  type: 'string',
 };
 
 export default Field;

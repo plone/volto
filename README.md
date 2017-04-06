@@ -44,8 +44,7 @@ If chromedriver could not be found, make sure to update with:
 
 ### Todo
 * Redirect after SSR edit and add content
-* Form tabs
-* Select and array of strings widget
+* Form validation
 * Unit / e2e tests
 * Documentation
 * Fill slots with react-slot-fill

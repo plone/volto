@@ -17,9 +17,10 @@ const Tabs = ({ tabs, current, selectTab }) =>
     {tabs.map((tab, index) =>
       <Tab
         index={index}
-        label={tab}
+        title={tab}
         selectTab={selectTab}
         active={index === current}
+        key={tab}
       />,
     )}
   </nav>;

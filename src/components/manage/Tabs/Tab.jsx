@@ -19,7 +19,7 @@ export default class Tab extends Component {
    */
   static propTypes = {
     index: PropTypes.number.isRequired,
-    label: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     active: PropTypes.bool,
     selectTab: PropTypes.func.isRequired,
   }
@@ -61,7 +61,7 @@ export default class Tab extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { index, label, active } = this.props;
+    const { index, title, active } = this.props;
     return (
       <a
         id={`autotoc-item-autotoc-${index}`}
@@ -69,7 +69,7 @@ export default class Tab extends Component {
         className={`autotoc-level-1 ${active ? 'active' : ''}`}
         onClick={this.onClick}
       >
-        {label}
+        {title}
       </a>
     );
   }

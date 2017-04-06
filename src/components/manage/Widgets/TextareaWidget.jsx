@@ -1,16 +1,16 @@
 /**
- * TextWidget component.
- * @module components/manage/Widgets/TextWidget
+ * TextareaWidget component.
+ * @module components/manage/Widgets/TextareaWidget
  */
 
 import React, { PropTypes } from 'react';
 
 /**
- * TextWidget component class.
- * @function TextWidget
+ * TextareaWidget component class.
+ * @function TextareaWidget
  * @returns {string} Markup of the component.
  */
-const TextWidget = ({ id, title, required, description, error, value, onChange }) =>
+const TextareaWidget = ({ id, title, required, description, error, value, onChange }) =>
   <div className={`field${error ? ' error' : ''}`}>
     <label htmlFor={`field-${id}`} className="horizontal">
       {title}
@@ -18,11 +18,10 @@ const TextWidget = ({ id, title, required, description, error, value, onChange }
       {required && <span className="required horizontal" title="Required">&nbsp;</span>}
     </label>
     {error && <div className="fieldErrorBox">{error}</div>}
-    <input
+    <textarea
       id={`field-${id}`}
       name={id}
-      type="text"
-      className="text-widget"
+      className="textarea-widget"
       value={value || ''}
       onChange={({ target }) => onChange(id, target.value === '' ? undefined : target.value)}
     />
@@ -33,7 +32,7 @@ const TextWidget = ({ id, title, required, description, error, value, onChange }
  * @property {Object} propTypes Property types.
  * @static
  */
-TextWidget.propTypes = {
+TextareaWidget.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
@@ -48,11 +47,11 @@ TextWidget.propTypes = {
  * @property {Object} defaultProps Default properties.
  * @static
  */
-TextWidget.defaultProps = {
+TextareaWidget.defaultProps = {
   description: null,
   required: false,
   error: null,
   value: null,
 };
 
-export default TextWidget;
+export default TextareaWidget;
