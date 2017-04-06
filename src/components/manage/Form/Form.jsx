@@ -4,10 +4,9 @@
  */
 
 import React, { PropTypes, Component } from 'react';
-import SchemaForm from 'react-jsonschema-form';
-import { merge, values, omitBy, zipObject, map } from 'lodash';
+import { map } from 'lodash';
 
-import { Field, Fieldset, Tabs, TextWidget, WysiwygWidget } from '../../../components';
+import { Fieldset, Tabs } from '../../../components';
 
 /**
  * Form container class.
@@ -56,8 +55,38 @@ export default class Form extends Component {
     super(props);
     this.state = {
       currentTab: 0,
+      formData: props.formData,
     };
     this.selectTab = this.selectTab.bind(this);
+    this.onChangeField = this.onChangeField.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  /**
+   * Change field handler
+   * @method onChangeField
+   * @param {string} id Id of the field
+   * @param {*} value Value of the field
+   * @returns {undefined}
+   */
+  onChangeField(id, value) {
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        [id]: value,
+      },
+    });
+  }
+
+  /**
+   * Submit handler
+   * @method onSubmit
+   * @param {Object} event Event object.
+   * @returns {undefined}
+   */
+  onSubmit(event) {
+    this.props.onSubmit(this.state.formData);
+    event.preventDefault();
   }
 
   /**
@@ -78,17 +107,20 @@ export default class Form extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { schema, formData, onSubmit, onCancel } = this.props;
-
+    const { schema, onCancel } = this.props;
 
     const fieldsets = map(schema.fieldsets, fieldset => ({
       ...fieldset,
       fields: map(fieldset.fields, field => ({
         ...schema.properties[field],
-        value: formData[field],
+        id: field,
+        value: this.state.formData[field],
+        required: schema.required.indexOf(field) !== -1,
+        onChange: this.onChangeField,
       })),
     }));
 
+/*
     const parsedSchema = {
       ...schema,
       title: `Edit ${schema.title}`,
@@ -118,9 +150,10 @@ export default class Form extends Component {
         ),
       ),
     );
+*/
 
     return (
-      <div className="pat-autotoc autotabs">
+      <form className="pat-autotoc autotabs" onSubmit={this.onSubmit}>
         <Tabs
           tabs={map(schema.fieldsets, item => item.title)}
           current={this.state.currentTab}
@@ -132,32 +165,15 @@ export default class Form extends Component {
             title={fieldset.title}
             active={index === this.state.currentTab}
             fields={fieldset.fields}
+            key={fieldset.id}
           />,
         )}
-        <SchemaForm
-          method="post"
-          schema={parsedSchema}
-          FieldTemplate={Field}
-          uiSchema={{
-            default: {
-              text: {
-                'ui:widget': WysiwygWidget,
-              },
-            },
-          }}
-          widgets={{
-            TextWidget,
-          }}
-          formData={parsedFormData}
-          onSubmit={data => onSubmit(merge(...values(data.formData)))}
-        >
-          <div className="formControls">
-            <button className="context" type="submit">Save</button>
-            &nbsp;
-            <button type="button" onClick={onCancel}>Cancel</button>
-          </div>
-        </SchemaForm>
-      </div>
+        <div className="formControls">
+          <button className="context" type="submit">Save</button>
+          &nbsp;
+          <button type="button" onClick={onCancel}>Cancel</button>
+        </div>
+      </form>
     );
   }
 }

@@ -20,6 +20,7 @@ const Tabs = ({ tabs, current, selectTab }) =>
         title={tab}
         selectTab={selectTab}
         active={index === current}
+        key={tab}
       />,
     )}
   </nav>;

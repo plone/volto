@@ -7,7 +7,6 @@ import React, { Component, PropTypes } from 'react';
 import Editor from 'draft-js-editor';
 import { stateToHTML } from 'draft-js-export-html';
 import { convertFromHTML, EditorState, ContentState } from 'draft-js';
-import { drop } from 'lodash';
 
 /**
  * WysiwygEditor container class.
@@ -23,7 +22,15 @@ export default class WysiwygEditor extends Component {
    */
   static propTypes = {
     id: PropTypes.string.isRequired,
-    value: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    required: PropTypes.bool,
+    value: PropTypes.shape({
+      'content-type': PropTypes.string,
+      data: PropTypes.string,
+      encoding: PropTypes.string,
+    }),
+    error: PropTypes.string,
     onChange: PropTypes.func.isRequired,
   }
 
@@ -33,7 +40,14 @@ export default class WysiwygEditor extends Component {
    * @static
    */
   static defaultProps = {
-    value: '',
+    description: null,
+    required: false,
+    value: {
+      'content-type': 'text/html',
+      data: '',
+      encoding: 'utf8',
+    },
+    error: null,
   }
 
   /**
@@ -47,8 +61,8 @@ export default class WysiwygEditor extends Component {
 
     if (!__SERVER__) {
       let editorState;
-      if (props.value) {
-        const blocksFromHTML = convertFromHTML(props.value);
+      if (props.value.data) {
+        const blocksFromHTML = convertFromHTML(props.value.data);
         const contentState = ContentState.createFromBlockArray(blocksFromHTML);
         editorState = EditorState.createWithContent(contentState);
       } else {
@@ -68,7 +82,14 @@ export default class WysiwygEditor extends Component {
    */
   onChange(editorState) {
     this.setState({ editorState });
-    this.props.onChange(stateToHTML(editorState.getCurrentContent()));
+    this.props.onChange(
+      this.props.id,
+      {
+        'content-type': this.props.value['content-type'],
+        encoding: this.props.value.encoding,
+        data: stateToHTML(editorState.getCurrentContent()),
+      },
+    );
   }
 
   /**
@@ -77,22 +98,33 @@ export default class WysiwygEditor extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { id, title, description, required, value, error } = this.props;
+
     if (__SERVER__) {
       return (
         <textarea
-          id={this.props.id}
-          name={drop(this.props.id.split('_'), 2).join('_')}
-          value={this.props.value}
+          id={id}
+          name={id}
+          value={value.data}
           onChange={({ target }) => this.props.onChange(target.value === '' ? undefined : target.value)}
         />
       );
     }
     return (
-      <div className="wysiwyg-widget">
-        <Editor
-          onChange={this.onChange}
-          editorState={this.state.editorState}
-        />
+      <div className={`field${error ? ' error' : ''}`}>
+        <label htmlFor={`field-${id}`} className="horizontal">
+          {title}
+          {description && <span className="formHelp">{description}</span>}
+          {required && <span className="required horizontal" title="Required">&nbsp;</span>}
+        </label>
+        {error && <div className="fieldErrorBox">{error}</div>}
+        <div className="wysiwyg-widget">
+          <Editor
+            id={`field-${id}`}
+            onChange={this.onChange}
+            editorState={this.state.editorState}
+          />
+        </div>
       </div>
     );
   }

@@ -120,12 +120,11 @@ export default class Add extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
-   * @returns {bool} Should continue.
+   * @returns {undefined}
    */
   onSubmit(data) {
     this.props.addContent(getBaseUrl(this.props.pathname),
                           { ...data, '@type': 'Document' });
-    return false;
   }
 
   /**

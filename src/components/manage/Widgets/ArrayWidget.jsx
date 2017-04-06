@@ -1,16 +1,16 @@
 /**
- * TextWidget component.
- * @module components/manage/Widgets/TextWidget
+ * ArrayWidget component.
+ * @module components/manage/Widgets/ArrayWidget
  */
 
 import React, { PropTypes } from 'react';
 
 /**
- * TextWidget component class.
- * @function TextWidget
+ * ArrayWidget component class.
+ * @function ArrayWidget
  * @returns {string} Markup of the component.
  */
-const TextWidget = ({ id, title, required, description, error, value, onChange }) =>
+const ArrayWidget = ({ id, title, required, description, error, value, onChange }) =>
   <div className={`field${error ? ' error' : ''}`}>
     <label htmlFor={`field-${id}`} className="horizontal">
       {title}
@@ -18,13 +18,12 @@ const TextWidget = ({ id, title, required, description, error, value, onChange }
       {required && <span className="required horizontal" title="Required">&nbsp;</span>}
     </label>
     {error && <div className="fieldErrorBox">{error}</div>}
-    <input
+    <textarea
       id={`field-${id}`}
       name={id}
-      type="text"
-      className="text-widget"
-      value={value || ''}
-      onChange={({ target }) => onChange(id, target.value === '' ? undefined : target.value)}
+      className="textarea-widget"
+      value={value ? value.join('\n') : ''}
+      onChange={({ target }) => onChange(id, target.value === '' ? undefined : target.value.split('\n'))}
     />
   </div>;
 
@@ -33,13 +32,13 @@ const TextWidget = ({ id, title, required, description, error, value, onChange }
  * @property {Object} propTypes Property types.
  * @static
  */
-TextWidget.propTypes = {
+ArrayWidget.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.arrayOf(PropTypes.string),
   onChange: PropTypes.func.isRequired,
 };
 
@@ -48,11 +47,11 @@ TextWidget.propTypes = {
  * @property {Object} defaultProps Default properties.
  * @static
  */
-TextWidget.defaultProps = {
+ArrayWidget.defaultProps = {
   description: null,
   required: false,
   error: null,
   value: null,
 };
 
-export default TextWidget;
+export default ArrayWidget;

@@ -1,16 +1,16 @@
 /**
- * TextWidget component.
- * @module components/manage/Widgets/TextWidget
+ * DatetimeWidget component.
+ * @module components/manage/Widgets/DatetimeWidget
  */
 
 import React, { PropTypes } from 'react';
 
 /**
- * TextWidget component class.
- * @function TextWidget
+ * DatetimeWidget component class.
+ * @function DatetimeWidget
  * @returns {string} Markup of the component.
  */
-const TextWidget = ({ id, title, required, description, error, value, onChange }) =>
+const DatetimeWidget = ({ id, title, required, description, error, value, onChange }) =>
   <div className={`field${error ? ' error' : ''}`}>
     <label htmlFor={`field-${id}`} className="horizontal">
       {title}
@@ -21,8 +21,8 @@ const TextWidget = ({ id, title, required, description, error, value, onChange }
     <input
       id={`field-${id}`}
       name={id}
-      type="text"
-      className="text-widget"
+      type="datetime-local"
+      className="datetime-widget"
       value={value || ''}
       onChange={({ target }) => onChange(id, target.value === '' ? undefined : target.value)}
     />
@@ -33,7 +33,7 @@ const TextWidget = ({ id, title, required, description, error, value, onChange }
  * @property {Object} propTypes Property types.
  * @static
  */
-TextWidget.propTypes = {
+DatetimeWidget.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
@@ -48,11 +48,11 @@ TextWidget.propTypes = {
  * @property {Object} defaultProps Default properties.
  * @static
  */
-TextWidget.defaultProps = {
+DatetimeWidget.defaultProps = {
   description: null,
   required: false,
   error: null,
   value: null,
 };
 
-export default TextWidget;
+export default DatetimeWidget;

@@ -131,11 +131,10 @@ export default class Edit extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
-   * @returns {bool} Should continue.
+   * @returns {undefined}
    */
   onSubmit(data) {
     this.props.editContent(getBaseUrl(this.props.pathname), data);
-    return false;
   }
 
   /**
@@ -160,10 +159,7 @@ export default class Edit extends Component {
           <div className="container">
             <Form
               schema={this.props.schema}
-              formData={{
-                ...this.props.content,
-                text: this.props.content.text ? this.props.content.text.data : '',
-              }}
+              formData={this.props.content}
               onSubmit={this.onSubmit}
               onCancel={this.onCancel}
             />

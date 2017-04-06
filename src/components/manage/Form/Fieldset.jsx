@@ -5,6 +5,8 @@
 
 import React, { PropTypes } from 'react';
 
+import { Field } from '../../../components';
+
 /**
  * Fieldset component class.
  * @function Fieldset
@@ -17,7 +19,7 @@ const Fieldset = ({ id, title, active, fields }) =>
   >
     <legend id={`fieldsetlegend-${id}`}>{title}</legend>
     {fields.map(field =>
-      <div>{field.title}</div>,
+      <Field {...field} key={field.id} />,
     )}
   </fieldset>;
 

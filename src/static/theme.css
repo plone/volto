@@ -19,42 +19,42 @@
   font-weight: normal;
   font-style: normal;
 }
- 
+
  [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
   speak: none;
- 
+
   display: inline-block;
   text-decoration: inherit;
   width: 1em;
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
- 
+
   /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
- 
+
   /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
- 
+
   /* Animation center compensation - margins should be symmetric */
   /* remove if not needed */
   margin-left: .2em;
- 
+
   /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
- 
+
   /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- 
+
   /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
- 
+
 /* Default Menu Icon */
 .toolbar-menu-icon:before { content: '\e834'; }
 
@@ -443,18 +443,18 @@ ul.jqtree-tree .jqtree-moving > .jqtree-element .jqtree-title {
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
   -moz-box-shadow: 0 0 15px #666;
-  -webkit-box-shadow: 0 0 15px #666;  
+  -webkit-box-shadow: 0 0 15px #666;
 }
 
 /* head. contains title, prev/next month controls and possible month/year selectors */
-#calhead {  
+#calhead {
   padding:2px 0;
   height:22px;
-} 
+}
 
 #caltitle {
   font-size:14px;
-  color:#0150D1;  
+  color:#0150D1;
   float:left;
   text-align:center;
   width:155px;
@@ -477,12 +477,12 @@ ul.jqtree-tree .jqtree-moving > .jqtree-element .jqtree-title {
 }
 
 #calprev.caldisabled, #calnext.caldisabled {
-  visibility:hidden;  
+  visibility:hidden;
 }
 
 /* year/month selector */
 #caltitle select {
-  font-size:10px; 
+  font-size:10px;
 }
 
 /* names of the days */
@@ -523,8 +523,8 @@ ul.jqtree-tree .jqtree-moving > .jqtree-element .jqtree-title {
   line-height:20px;
   color:#666;
   -moz-border-radius:3px;
-  -webkit-border-radius:3px;    
-} 
+  -webkit-border-radius:3px;
+}
 
 /* different states */
 .calweek a:hover, .calfocus {
@@ -533,16 +533,16 @@ ul.jqtree-tree .jqtree-moving > .jqtree-element .jqtree-title {
 
 /* sunday */
 a.calsun {
-  color:red;    
+  color:red;
 }
 
 /* offmonth day */
 a.caloff {
-  color:#ccc;   
+  color:#ccc;
 }
 
 a.caloff:hover {
-  background-color:rgb(245, 245, 250);    
+  background-color:rgb(245, 245, 250);
 }
 
 
@@ -653,7 +653,7 @@ div.overlay .formTab {
 div.overlay .formTab.lastFormTab {
     margin-right:0em;
 }
-div.overlay .formControls a { 
+div.overlay .formControls a {
     display: block;
     margin: 0.75em;
 }
@@ -2088,6 +2088,7 @@ output {
 /*.form-control,*/
 input[type="text"],
 input[type="password"],
+input[type="datetime-local"],
 textarea,
 select {
   display: block;
@@ -6272,5 +6273,3 @@ body.template-logged_out #content-core .portletFooter {
   display: block;
 }
 /* small height devices <480 apanyo*/
-
-
