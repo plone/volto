@@ -7,7 +7,7 @@ import React, { PropTypes, Component } from 'react';
 import SchemaForm from 'react-jsonschema-form';
 import { merge, values, omitBy, zipObject, map } from 'lodash';
 
-import { Field, Tabs, TextWidget, WysiwygWidget } from '../../../components';
+import { Field, Fieldset, Tabs, TextWidget, WysiwygWidget } from '../../../components';
 
 /**
  * Form container class.
@@ -79,6 +79,16 @@ export default class Form extends Component {
    */
   render() {
     const { schema, formData, onSubmit, onCancel } = this.props;
+
+
+    const fieldsets = map(schema.fieldsets, fieldset => ({
+      ...fieldset,
+      fields: map(fieldset.fields, field => ({
+        ...schema.properties[field],
+        value: formData[field],
+      })),
+    }));
+
     const parsedSchema = {
       ...schema,
       title: `Edit ${schema.title}`,
@@ -110,12 +120,20 @@ export default class Form extends Component {
     );
 
     return (
-      <div className="autotabs">
+      <div className="pat-autotoc autotabs">
         <Tabs
           tabs={map(schema.fieldsets, item => item.title)}
           current={this.state.currentTab}
           selectTab={this.selectTab}
         />
+        {fieldsets.map((fieldset, index) =>
+          <Fieldset
+            id={fieldset.id}
+            title={fieldset.title}
+            active={index === this.state.currentTab}
+            fields={fieldset.fields}
+          />,
+        )}
         <SchemaForm
           method="post"
           schema={parsedSchema}

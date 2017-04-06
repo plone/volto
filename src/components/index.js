@@ -33,6 +33,7 @@ export Edit from './manage/Edit/Edit';
 export Delete from './manage/Delete/Delete';
 export Form from './manage/Form/Form';
 export Field from './manage/Form/Field';
+export Fieldset from './manage/Form/Fieldset';
 export Tab from './manage/Tabs/Tab';
 export Tabs from './manage/Tabs/Tabs';
 export TextWidget from './manage/Widgets/TextWidget';
