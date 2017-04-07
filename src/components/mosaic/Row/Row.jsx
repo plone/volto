@@ -23,7 +23,7 @@ const Row = ({ tiles, row, selectTile, setTileContent }) =>
   <div className={`${styles.row} row`}>
     {tiles.map((tile, index) =>
       <Tile
-        key={tile.content}
+        key={tile.url}
         row={row}
         column={index}
         selectTile={selectTile}

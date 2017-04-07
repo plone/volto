@@ -5,9 +5,11 @@
 
 import React, { PropTypes } from 'react';
 
-import { Editor } from '../../../components';
+import Editor from 'draft-js-editor';
 
 import styles from './Tile.scss';
+
+/* eslint jsx-a11y/no-static-element-interactions: 0 */
 
 /**
  * Tile component class.
@@ -24,12 +26,14 @@ import styles from './Tile.scss';
  */
 const Tile = ({ content, width, row, column, selected, selectTile, setTileContent }) =>
   <div className={`${styles.tile} col-xs-${width} ${selected ? styles.selected : ''}`}>
-    <button onClick={() => selectTile(row, column)} className={styles.content}>
-      <Editor
-        content={content}
-        setContent={newContent => setTileContent(row, column, newContent)}
-      />
-    </button>
+    <div onClick={() => selectTile(row, column)} className={styles.content}>
+      {!__SERVER__ &&
+        <Editor
+          onChange={newContent => setTileContent(row, column, newContent)}
+          editorState={content}
+        />
+      }
+    </div>
   </div>;
 
 /**
@@ -38,7 +42,9 @@ const Tile = ({ content, width, row, column, selected, selectTile, setTileConten
  * @static
  */
 Tile.propTypes = {
-  content: PropTypes.string.isRequired,
+  content: PropTypes.shape(
+    PropTypes.any,
+  ).isRequired,
   width: PropTypes.number.isRequired,
   row: PropTypes.number.isRequired,
   column: PropTypes.number.isRequired,

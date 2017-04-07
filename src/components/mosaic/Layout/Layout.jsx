@@ -6,7 +6,7 @@
 /* eslint react/prefer-stateless-function: 0 */
 
 import React, { Component, PropTypes } from 'react';
-import { EditorState, ContentState } from 'draft-js';
+import { convertFromHTML, EditorState, ContentState } from 'draft-js';
 
 import { Grid } from '../../../components';
 
@@ -28,6 +28,7 @@ export default class Layout extends Component {
         PropTypes.shape({
           width: PropTypes.number,
           content: PropTypes.string,
+          url: PropTypes.string,
         }),
       ),
     ).isRequired,
@@ -45,7 +46,9 @@ export default class Layout extends Component {
         row.map((tile, tileIndex) =>
           ({
             width: tile.width,
-            content: EditorState.createWithContent(ContentState.createFromText(tile.content)),
+            content: __SERVER__ ? tile.content : EditorState.createWithContent(
+              ContentState.createFromBlockArray(convertFromHTML(tile.content)),
+            ),
             selected: rowIndex === 0 && tileIndex === 0,
           }),
         ),
@@ -118,6 +121,7 @@ export default class Layout extends Component {
         }),
       ),
     );
+    console.log(rows);
 
     return (
       <Grid

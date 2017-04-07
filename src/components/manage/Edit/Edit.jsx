@@ -11,7 +11,10 @@ import { browserHistory } from 'react-router';
 import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
 
-import { Form } from '../../../components';
+import {
+  Form,
+//  Layout,
+} from '../../../components';
 import { editContent, getContent, getSchema } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
@@ -156,6 +159,31 @@ export default class Edit extends Component {
       return (
         <div id="page-edit">
           <Helmet title="Edit" />
+          { /*
+          <Layout
+            layout={[
+              [
+                {
+                  width: 4,
+                  content: '<p>Column <b>one</b></p>',
+                  url: './@@plone.app.standardtiles.html/1',
+                },
+                {
+                  width: 8,
+                  content: '<p>Column <b>two</b></p>',
+                  url: './@@plone.app.standardtiles.html/2',
+                },
+              ],
+              [
+                {
+                  width: 12,
+                  content: '<p>Column <b>full</b></p>',
+                  url: './@@plone.app.standardtiles.html/3',
+                },
+              ],
+            ]}
+          />
+          */ }
           <div className="container">
             <Form
               schema={this.props.schema}
@@ -167,16 +195,6 @@ export default class Edit extends Component {
         </div>
       );
     }
-    /*
-    if (this.props.content && this.props.content.layout) {
-      return (
-        <div id="page-home">
-          <Helmet title="Home" />
-          <Layout layout={this.props.content.layout} />
-        </div>
-      );
-    }
-    */
     return <div />;
   }
 }
