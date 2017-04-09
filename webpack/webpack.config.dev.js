@@ -59,7 +59,16 @@ reactTransform[1].transforms.push({
 });
 
 
-const BASE_CSS_LOADER = 'css?sourceMap&-minimize&modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]';
+const BASE_CSS_LOADER = {
+  loader: 'css-loader',
+  options: {
+    modules: true,
+    importLoaders: 2,
+    sourceMap: true,
+    '-minimize': true,
+    localIdentName: '[name]__[local]___[hash:base64:5]'
+  }
+};
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -76,63 +85,76 @@ module.exports = {
     publicPath: `http://${host}:${port}/dist/`,
   },
   module: {
-    // First, run the linter.
-    // It's important to do this before Babel processes the JS.
-    preLoaders: [
-      {
-        test: /^((?!config).)*\.(js|jsx)$/,
-        loader: 'eslint',
-        exclude: /node_modules/,
-      },
-    ],
-    loaders: [
-      // Process JS with Babel.
+    rules: [
       {
         test: /^((?!config).)*\.(js|jsx)$/,
         exclude: /node_modules/,
-        loaders: ['babel?' + JSON.stringify(babelLoaderQuery)], // react-hot
+        use: [
+          {
+            loader: 'babel-loader',
+            options: babelLoaderQuery,
+          }
+        ]
       },
-      { test: /\.json$/, loader: 'json-loader' },
-      { test: /\.less$/, loader: 'style-loader!css-loader?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!postcss-loader!less-loader?outputStyle=expanded&sourceMap' },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          BASE_CSS_LOADER,
+          {
+            loader: 'less-loader',
+            options: {
+              outputStyle: 'expanded',
+              sourceMap: true
+            }
+          }
+        ]
+      },
       {
         test: /\.scss$/,
-        loaders: [
-          'style-loader',
+        use: [
+          {
+            loader: 'style-loader'
+          },
           BASE_CSS_LOADER,
-          'postcss-loader',
-          'sass?sourceMap',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          },
         ]
       },
       {
         test: /\.css$/,
-        loaders: [
-          'style-loader',
+        use: [
+          {
+            loader: 'style-loader'
+          },
           BASE_CSS_LOADER,
-          'postcss-loader',
         ]
       },
-      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
-      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' },
-      { test: /\.png(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?mimetype=image/png' },
+      {
+        test: /\.(woff|woff2|ttf|eot|svg|png|gif|jpg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000
+            }
+          }
+        ]
+      }
     ],
   },
-  postcss: function (webpack) {
-    return [
-      require("postcss-import")({ addDependencyTo: webpack }),
-      require("postcss-url")({ url: 'inline', maxSize: 300, basePath: path.resolve(projectRootPath, './src') }),
-      require("postcss-cssnext")()
-    ]
-  },
-  progress: true,
   resolve: {
-    modulesDirectories: [
-      'src',
+    modules: [
+      path.join(__dirname, 'src'),
       'node_modules',
     ],
-    extensions: ['', '.json', '.js', '.jsx'],
+    extensions: ['.json', '.js', '.jsx'],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

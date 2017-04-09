@@ -2,10 +2,20 @@ import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import webpack from 'webpack';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
-import strip from 'strip-loader';
 
 const projectRootPath = path.resolve(__dirname, '../');
 const assetsPath = path.resolve(projectRootPath, './static/dist');
+
+const BASE_CSS_LOADER = {
+  loader: 'css-loader',
+  options: {
+    modules: true,
+    importLoaders: 2,
+    sourceMap: true,
+    '-minimize': true,
+    localIdentName: '[name]__[local]___[hash:base64:5]'
+  }
+};
 
 module.exports = {
   devtool: 'cheap-module-source-map',
@@ -22,65 +32,87 @@ module.exports = {
     publicPath: '/assets/'
   },
   module: {
-    loaders: [
-      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=10000' },
-      { test: /^((?!config).)*\.(js|jsx)$/, exclude: /node_modules/, loaders: [strip.loader('debug'), 'babel']},
-      { test: /\.json$/, loader: 'json-loader' },
-      { test: /\.less$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=2&sourceMap!postcss-loader!less-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true') },
+    rules: [
+      {
+        test: /^((?!config).)*\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          BASE_CSS_LOADER,
+          {
+            loader: 'less-loader',
+            options: {
+              outputStyle: 'expanded',
+              sourceMap: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          BASE_CSS_LOADER,
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+        ]
+      },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', [
-            'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 
-            'postcss-loader',
-        ]),
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          BASE_CSS_LOADER,
+        ]
       },
       {
-        test: /\.(scss|sass)$/,
-        loader: ExtractTextPlugin.extract('style', [
-          'css-loader?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]',
-          'postcss-loader',
-          'sass-loader'
-        ]),
-      },
-      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
-      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
-    ]
-  },
-  progress: true,
-  postcss: function (webpack) {
-    return [
-      require("postcss-import")({ addDependencyTo: webpack }),
-      require("postcss-url")({ url: 'inline', maxSize: 300, basePath: path.resolve(projectRootPath, './src') }),
-      require("postcss-cssnext")()
+        test: /\.(woff|woff2|ttf|eot|svg|png|gif|jpg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000
+            }
+          }
+        ]
+      }
     ]
   },
   resolve: {
-    modulesDirectories: [
-      'src',
-      'node_modules'
+    modules: [
+      path.join(__dirname, 'src'),
+      'node_modules',
     ],
-    extensions: ['', '.json', '.js', '.jsx']
+    extensions: ['.json', '.js', '.jsx'],
   },
   plugins: [
     // ignore dev config
     new webpack.IgnorePlugin(/\.\/dev/, /\/config$/),
     // css files from the extract-text-plugin loader
-    new ExtractTextPlugin('[name]-[chunkhash].css', { allChunks: true }),
+    new ExtractTextPlugin({ filename: '[name]-[chunkhash].css', disable: false, allChunks: true }),
     // optimizations
     new CopyWebpackPlugin([{
       context: 'src/static',
       from: '**/*',
       to: './'
     }]),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    }),
+    new webpack.optimize.UglifyJsPlugin(),
   ]
 };
