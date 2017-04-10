@@ -6,6 +6,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { Icon, Menu } from 'semantic-ui-react';
 
 import { Workflow } from '../../../components';
 
@@ -51,50 +52,25 @@ export default class Toolbar extends Component {
   render() {
     return (
       this.props.token &&
-        <div id="edit-zone" role="toolbar" className="pat-toolbar initialized">
-          <div className="plone-toolbar-container">
-            <a className="plone-toolbar-logo">
-              <img alt="Plone Toolbar" src={logo} />
-            </a>
-            <nav>
-              <ul className="plone-toolbar-main" >
-                <li className={this.props.selected === 'view' ? 'active' : ''}>
-                  <Link to={this.props.pathname}>
-                    <span aria-hidden="true" className="icon-view" />
-                    <span>View</span>
-                  </Link>
-                </li>
-                <li className={this.props.selected === 'edit' ? 'active' : ''}>
-                  <Link to={`${this.props.pathname}/edit`}>
-                    <span aria-hidden="true" className="icon-edit" />
-                    <span>Edit</span>
-                  </Link>
-                </li>
-                <li className={this.props.selected === 'delete' ? 'active' : ''}>
-                  <Link to={`${this.props.pathname}/delete`}>
-                    <span aria-hidden="true" className="icon-plone-contentmenu-actions" />
-                    <span>Delete</span>
-                  </Link>
-                </li>
-                <li className={this.props.selected === 'add' ? 'active' : ''}>
-                  <Link to={`${this.props.pathname}/add`}>
-                    <span aria-hidden="true" className="icon-plone-contentmenu-factories" />
-                    <span>Add</span>
-                  </Link>
-                </li>
-                <Workflow pathname={this.props.pathname} />
-              </ul>
-              <ul id="personal-bar-container">
-                <li>
-                  <Link to="/logout">
-                    <span aria-hidden="true" className="icon-user" />
-                    <span>Log out</span>
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
+        <Menu inverted vertical fixed="left">
+          <Menu.Item color="blue" active><img alt="Plone Toolbar" src={logo} /></Menu.Item>
+          <Link to={this.props.pathname} className={`item${this.props.selected === 'view' ? ' active' : ''}`}>
+            <Icon name="eye" />View
+          </Link>
+          <Link to={`${this.props.pathname}/edit`} className={`item${this.props.selected === 'edit' ? ' active' : ''}`}>
+            <Icon name="write" />Edit
+          </Link>
+          <Link to={`${this.props.pathname}/delete`} className={`item${this.props.selected === 'delete' ? ' active' : ''}`}>
+            <Icon name="trash" />Delete
+          </Link>
+          <Link to={`${this.props.pathname}/add`} className={`item${this.props.selected === 'add' ? ' active' : ''}`}>
+            <Icon name="add" />Add
+          </Link>
+          <Workflow pathname={this.props.pathname} />
+          <Link to="/logout" className="item">
+            <Icon name="user" />Log out
+          </Link>
+        </Menu>
     );
   }
 }

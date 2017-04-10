@@ -4,6 +4,7 @@
  */
 
 import React, { PropTypes } from 'react';
+import { Form, Input, Label } from 'semantic-ui-react';
 
 /**
  * DatetimeWidget component class.
@@ -11,22 +12,20 @@ import React, { PropTypes } from 'react';
  * @returns {string} Markup of the component.
  */
 const DatetimeWidget = ({ id, title, required, description, error, value, onChange }) =>
-  <div className={`field${error ? ' error' : ''}`}>
-    <label htmlFor={`field-${id}`} className="horizontal">
+  <Form.Field required={required} error={error}>
+    <label htmlFor={`field-${id}`}>
       {title}
-      {description && <span className="formHelp">{description}</span>}
-      {required && <span className="required horizontal" title="Required">&nbsp;</span>}
+      {description && <span className="help">{description}</span>}
     </label>
-    {error && <div className="fieldErrorBox">{error}</div>}
     <input
       id={`field-${id}`}
       name={id}
       type="datetime-local"
-      className="datetime-widget"
       value={value || ''}
       onChange={({ target }) => onChange(id, target.value === '' ? undefined : target.value)}
     />
-  </div>;
+    {error && <Label basic color="red" pointing="below">{error}</Label>}
+  </Form.Field>;
 
 /**
  * Property types.

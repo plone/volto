@@ -7,6 +7,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
+import { Container, Segment, Menu } from 'semantic-ui-react';
 
 import { getNavigation } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
@@ -60,33 +61,37 @@ export default class Navigation extends Component {
   }
 
   /**
+   * Check if menu is active
+   * @method isActive
+   * @returns {url} Url of the navigation item.
+   */
+  isActive(url) {
+    return ((url === '' && this.props.pathname === '/') ||
+            (url !== '' && this.props.pathname.indexOf(url) !== -1));
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
     return (
-      <div id="mainnavigation-wrapper">
-        <div id="mainnavigation">
-          <nav className="plone-navbar" id="portal-globalnav-wrapper" role="navigation">
-            <div className="container">
-              <div className="plone-collapse plone-navbar-collapse" id="portal-globalnav-collapse">
-                <ul className="plone-nav plone-navbar-nav" id="portal-globalnav">
-                  {this.props.items.map(item =>
-                    <li
-                      key={item.url}
-                      id="portaltab-index_html"
-                      className={this.props.pathname.indexOf(item.url) !== -1 ? 'selected' : ''}
-                    >
-                      <Link to={item.url}>{item.title}</Link>
-                    </li>,
-                  )}
-                </ul>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </div>
+      <Segment inverted color="blue" vertical>
+        <Container>
+          <Menu secondary inverted>
+            {this.props.items.map(item =>
+              <Link
+                to={item.url === '' ? '/' : item.url}
+                key={item.url}
+                className={`item${this.isActive(item.url) ? ' active' : ''}`}
+              >
+                {item.title}
+              </Link>,
+            )}
+          </Menu>
+        </Container>
+      </Segment>
     );
   }
 }

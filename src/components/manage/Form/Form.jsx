@@ -5,8 +5,9 @@
 
 import React, { PropTypes, Component } from 'react';
 import { map } from 'lodash';
+import { Button, Form as UiForm, Menu, Segment } from 'semantic-ui-react';
 
-import { Fieldset, Tabs } from '../../../components';
+import { Field, Tabs } from '../../../components';
 
 /**
  * Form container class.
@@ -92,12 +93,12 @@ export default class Form extends Component {
   /**
    * Select tab handler
    * @method selectTab
-   * @param {number} tab Selected tab
+   * @param {number} index Selected tab index.
    * @returns {undefined}
    */
-  selectTab(tab) {
+  selectTab(event, { index }) {
     this.setState({
-      currentTab: tab,
+      currentTab: index,
     });
   }
 
@@ -108,72 +109,41 @@ export default class Form extends Component {
    */
   render() {
     const { schema, onCancel } = this.props;
+    const currentFieldset = schema.fieldsets[this.state.currentTab];
 
-    const fieldsets = map(schema.fieldsets, fieldset => ({
-      ...fieldset,
-      fields: map(fieldset.fields, field => ({
-        ...schema.properties[field],
-        id: field,
-        value: this.state.formData[field],
-        required: schema.required.indexOf(field) !== -1,
-        onChange: this.onChangeField,
-      })),
+    const fields = map(currentFieldset.fields, field => ({
+      ...schema.properties[field],
+      id: field,
+      value: this.state.formData[field],
+      required: schema.required.indexOf(field) !== -1,
+      onChange: this.onChangeField,
     }));
 
-/*
-    const parsedSchema = {
-      ...schema,
-      title: `Edit ${schema.title}`,
-      required: [],
-      properties: zipObject(
-        map(schema.fieldsets, item => item.id),
-        map(schema.fieldsets, item => ({
-          title: item.title,
-          type: 'object',
-          properties: zipObject(
-            item.fields,
-            map(item.fields, field => schema.properties[field]),
-          ),
-        })),
-      ),
-    };
-
-    const parsedFormData = zipObject(
-      map(schema.fieldsets, item => item.id),
-      map(schema.fieldsets, item =>
-        omitBy(
-          zipObject(
-            item.fields,
-            map(item.fields, field => formData[field]),
-          ),
-          field => !field,
-        ),
-      ),
-    );
-*/
-
     return (
-      <form className="pat-autotoc autotabs" onSubmit={this.onSubmit}>
-        <Tabs
-          tabs={map(schema.fieldsets, item => item.title)}
-          current={this.state.currentTab}
-          selectTab={this.selectTab}
-        />
-        {fieldsets.map((fieldset, index) =>
-          <Fieldset
-            id={fieldset.id}
-            title={fieldset.title}
-            active={index === this.state.currentTab}
-            fields={fieldset.fields}
-            key={fieldset.id}
-          />,
-        )}
-        <div className="formControls">
-          <button className="context" type="submit">Save</button>
-          &nbsp;
-          <button type="button" onClick={onCancel}>Cancel</button>
-        </div>
-      </form>
+      <UiForm onSubmit={this.onSubmit}>
+        <Menu attached="top" tabular>
+          {map(schema.fieldsets, (item, index) =>
+            <Menu.Item
+              name={item.id}
+              index={index}
+              key={item.id}
+              active={this.state.currentTab === index}
+              onClick={this.selectTab}
+            >
+              {item.title}
+            </Menu.Item>
+          )}
+        </Menu>
+        <Segment attached>
+          {fields.map(field =>
+            <Field {...field} key={field.id} />,
+          )}
+        </Segment>
+        <Segment attached="bottom">
+          <Button primary type="submit">Save</Button>
+          <Button onClick={onCancel}>Cancel</Button>
+        </Segment>
+      </UiForm>
     );
   }
 }

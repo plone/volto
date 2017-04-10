@@ -8,6 +8,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
+import { Button, List } from 'semantic-ui-react';
 
 import { deleteContent, getContent } from '../../../actions';
 
@@ -115,14 +116,11 @@ export default class Delete extends Component {
         <div id="page-delete">
           <Helmet title="Delete" />
           <h1 className="documentFirstHeading">Do you really want to delete this item?</h1>
-          <ul>
-            <li>{this.props.content.title}</li>
-          </ul>
-          <div className="formControls">
-            <button className="context" onClick={this.onSubmit}>Ok</button>
-            &nbsp;
-            <button onClick={this.onCancel}>Cancel</button>
-          </div>
+          <List bulleted>
+            <List.Item>{this.props.content.title}</List.Item>
+          </List>
+          <Button primary onClick={this.onSubmit}>Ok</Button>
+          <Button onClick={this.onCancel}>Cancel</Button>
         </div>
       );
     }

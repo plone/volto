@@ -5,6 +5,7 @@
 
 import React from 'react';
 import { browserHistory } from 'react-router';
+import { Checkbox, Form, Input } from 'semantic-ui-react';
 
 /**
  * SearchWidget component class.
@@ -12,32 +13,21 @@ import { browserHistory } from 'react-router';
  * @returns {string} Markup of the component.
  */
 const SearchWidget = () => (
-  <div id="portal-searchbox">
-    <form
-      id="searchGadget_form"
-      action="/search"
-      role="search"
-      className="pat-livesearch"
-      onSubmit={(e) => {
-        browserHistory.push(`/search?SearchableText=${document.getElementById('searchGadget').value}`);
-        e.preventDefault();
-        return false;
-      }}
-    >
-      <div className="LSBox">
-        <label className="hiddenStructure" htmlFor="searchGadget">Search Site</label>
-
-        <input name="SearchableText" type="text" size="18" id="searchGadget" title="Search Site" placeholder="Search Site" className="searchField" autoComplete="off" /><ul className="livesearch-results" style={{ display: 'none' }} />
-
-        <input className="searchButton" type="submit" value="Search" />
-
-        <div className="searchSection">
-          <input id="searchbox_currentfolder_only" className="noborder" type="checkbox" name="path" value="/Plone18" />
-          <label htmlFor="searchbox_currentfolder_only" style={{ cursor: 'pointer' }}>only in current section</label>
-        </div>
-      </div>
-    </form>
-  </div>
+  <Form
+    action="/search"
+    onSubmit={(e) => {
+      browserHistory.push(`/search?SearchableText=${document.getElementsByName('SearchableText')[0].value}`);
+      e.preventDefault();
+      return false;
+    }}
+  >
+    <Form.Field>
+      <Input name="SearchableText" action="Search" placeholder="Search Site" />
+    </Form.Field>
+    <Form.Field>
+      <Checkbox label='only in current section' />
+    </Form.Field>
+  </Form>
 );
 
 export default SearchWidget;

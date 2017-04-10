@@ -7,6 +7,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
 import { compose } from 'redux';
+import { Segment, Container } from 'semantic-ui-react';
 
 import { Breadcrumbs, Footer, Header, Navigation, Toolbar } from '../../../components';
 import { getBaseUrl, getView } from '../../../helpers';
@@ -25,30 +26,19 @@ const App = ({ pathname, children }) => {
   const action = getView(pathname);
 
   return (
-    <div className="plone-toolbar-expanded">
+    <div>
       <Toolbar pathname={path} selected={action} />
-      <div className="outer-wrapper">
+      <div className="pusher">
         <Header />
         <Navigation pathname={path} />
-        <div id="above-content-wrapper">
-          <section id="viewlet-above-content">
-            <Breadcrumbs pathname={path} />
-          </section>
-        </div>
-        <div className="container">
-          <div className="row">
-            <aside id="global_statusmessage" />
-          </div>
-          <main id="main-container" className="row row-offcanvas row-offcanvas-right">
-            <div id="column1-container" />
-            <div id="content-container">
-              {children}
-            </div>
-            <div id="column2-container" />
-          </main>
-        </div>
+        <Breadcrumbs pathname={path} />
+        <Segment basic>
+          <Container>
+            {children}
+          </Container>
+        </Segment>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };

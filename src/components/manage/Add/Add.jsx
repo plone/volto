@@ -146,13 +146,12 @@ export default class Add extends Component {
       return (
         <div id="page-add">
           <Helmet title="Add: Document" />
-          <div className="container">
-            <Form
-              schema={this.props.schema}
-              onSubmit={this.onSubmit}
-              onCancel={this.onCancel}
-            />
-          </div>
+          <h1>Add {this.props.schema.title}</h1>
+          <Form
+            schema={this.props.schema}
+            onSubmit={this.onSubmit}
+            onCancel={this.onCancel}
+          />
         </div>
       );
     }

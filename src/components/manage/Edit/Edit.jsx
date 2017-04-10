@@ -184,14 +184,13 @@ export default class Edit extends Component {
             ]}
           />
           */ }
-          <div className="container">
-            <Form
-              schema={this.props.schema}
-              formData={this.props.content}
-              onSubmit={this.onSubmit}
-              onCancel={this.onCancel}
-            />
-          </div>
+          <h1>Edit {this.props.schema.title}</h1>
+          <Form
+            schema={this.props.schema}
+            formData={this.props.content}
+            onSubmit={this.onSubmit}
+            onCancel={this.onCancel}
+          />
         </div>
       );
     }

@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import { isEmpty } from 'lodash';
+import { Button, Form, Input, Segment } from 'semantic-ui-react';
 
 import { login } from '../../../actions';
 
@@ -94,8 +95,8 @@ export default class Login extends Component {
    * @returns {undefined}
    */
   onLogin(event) {
-    this.props.login(document.getElementById('login').value,
-                     document.getElementById('password').value);
+    this.props.login(document.getElementsByName('login')[0].value,
+                     document.getElementsByName('password')[0].value);
     event.preventDefault();
   }
 
@@ -115,25 +116,21 @@ export default class Login extends Component {
               {this.props.error.message}
             </div>
           }
-          <form method="post">
-            <div className="field">
-              <label htmlFor="login" className="horizontal">
-                Login Name <span className="required horizontal" title="Required">&nbsp;</span>
-              </label>
-              <input id="login" name="login" className="text-widget required textline-field" type="text" />
-            </div>
-
-            <div className="field">
-              <label htmlFor="password" className="horizontal">
-                Password <span className="required horizontal" title="Required">&nbsp;</span>
-              </label>
-              <input id="password" name="password" className="text-widget required textline-field" type="password" />
-            </div>
-
-            <div className="formControls">
-              <button className="context" onClick={this.onLogin}>Log In</button>
-            </div>
-          </form>
+          <Form method="post" onSubmit={this.onLogin}>
+            <Segment attached="top">
+              <Form.Field>
+                <label htmlFor="login">Login Name</label>
+                <Input id="login" name="login" />
+              </Form.Field>
+              <Form.Field>
+                <label htmlFor="password">Password</label>
+                <Input type="password" id="password" name="password" />
+              </Form.Field>
+            </Segment>
+            <Segment attached="bottom">
+              <Button primary type="submit">Log In</Button>
+            </Segment>
+          </Form>
         </div>
       </div>
     );

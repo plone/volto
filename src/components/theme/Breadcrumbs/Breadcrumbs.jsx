@@ -7,6 +7,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
+import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 
 import { getBreadcrumbs } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
@@ -66,22 +67,19 @@ export default class Breadcrumbs extends Component {
    */
   render() {
     return (
-      <nav id="portal-breadcrumbs" className="plone-breadcrumb" role="navigation">
-        <div className="container">
-          <span id="breadcrumbs-you-are-here" className="hiddenStructure">You are here:</span>
-          <ol aria-labelledby="breadcrumbs-you-are-here">
-            <li id="breadcrumbs-home">
-              <Link to="/">Home</Link>
-            </li>
-            {this.props.items.map((item, index, items) =>
-              <li key={item.url} id={`breadcrumbs-${index + 1}`}>
-                {(index < items.length - 1) && <Link to={item.url}>{item.title}</Link>}
-                {(index === items.length - 1) && <span className="breadcrumbs-current">{item.title}</span>}
-              </li>,
-            )}
-          </ol>
-        </div>
-      </nav>
+      <Segment secondary vertical>
+        <Container>
+          <Breadcrumb>
+            <Link to="/" className="section">Home</Link>
+            {this.props.items.map((item, index, items) => [
+              <Breadcrumb.Divider icon="right angle" key={`divider-${item.url}`}/>,
+              (index < items.length - 1) ?
+                <Link key={item.url} to={item.url} className="section">{item.title}</Link> :
+                <Breadcrumb.Section key={item.url} active>{item.title}</Breadcrumb.Section>,
+            ])}
+          </Breadcrumb>
+        </Container>
+      </Segment>
     );
   }
 }

@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { Container, Grid, Segment } from 'semantic-ui-react';
 
 import { Anontools, Logo, SearchWidget } from '../../../components';
 
@@ -13,15 +14,21 @@ import { Anontools, Logo, SearchWidget } from '../../../components';
  * @returns {string} Markup of the component.
  */
 const Header = () => (
-  <header id="content-header">
-    <div className="container">
-      <div id="portal-header">
-        <Logo />
-        <SearchWidget />
-        <Anontools />
-      </div>
-    </div>
-  </header>
+  <Segment basic>
+    <Container>
+      <Grid>
+        <Grid.Column width={8}>
+          <Logo />
+        </Grid.Column>
+        <Grid.Column width={3}>
+          <Anontools />
+        </Grid.Column>
+        <Grid.Column width={5}>
+          <SearchWidget />
+        </Grid.Column>
+      </Grid>
+    </Container>
+  </Segment>
 );
 
 export default Header;

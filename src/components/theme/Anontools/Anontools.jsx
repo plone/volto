@@ -6,6 +6,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { List } from 'semantic-ui-react';
 
 @connect(
   state => ({
@@ -45,13 +46,9 @@ export default class Anontools extends Component {
   render() {
     return (
       !this.props.token &&
-        <div id="portal-anontools">
-          <ul>
-            <li>
-              <Link to="/login" id="personaltools-login">Log in</Link>
-            </li>
-          </ul>
-        </div>
+        <List floated="right" horizontal>
+          <Link className="item" to="/login">Log in</Link>
+        </List>
     );
   }
 }

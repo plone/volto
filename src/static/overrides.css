@@ -1,0 +1,39 @@
+.ui.menu.left.fixed ~ .pusher {
+  margin-left: 210px;
+}
+
+.ui.form .field>label .help {
+  font-style: italic;
+  font-weight: 400;
+  color: #666666;
+  margin-left: 0.5em;
+}
+
+.ui.inverted.darkgrey.segment {
+  background-color: #2e3133;
+}
+
+/* override when sidebar is shown */
+@media only screen and (min-width: 1200px) {
+  .ui.container {
+    width: 917px; // 1127 - 210
+    margin-left: auto!important;
+    margin-right: auto!important;
+  }
+}
+
+@media only screen and (max-width: 1199px) and (min-width: 992px) {
+  .ui.container {
+    width: 723px; // 933 - 210
+    margin-left: auto!important;
+    margin-right: auto!important;
+  }
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+  .ui.container {
+    width: 513px; // 723 - 210
+    margin-left: auto!important;
+    margin-right: auto!important;
+  }
+}

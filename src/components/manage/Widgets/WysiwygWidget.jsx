@@ -7,6 +7,7 @@ import React, { Component, PropTypes } from 'react';
 import Editor from 'draft-js-editor';
 import { stateToHTML } from 'draft-js-export-html';
 import { convertFromHTML, EditorState, ContentState } from 'draft-js';
+import { Form, Label, Segment, TextArea } from 'semantic-ui-react';
 
 /**
  * WysiwygEditor container class.
@@ -102,30 +103,37 @@ export default class WysiwygEditor extends Component {
 
     if (__SERVER__) {
       return (
-        <textarea
-          id={id}
-          name={id}
-          value={value.data}
-          onChange={({ target }) => this.props.onChange(target.value === '' ? undefined : target.value)}
-        />
+        <Form.Field required={required} error={error}>
+          <label htmlFor={`field-${id}`}>
+            {title}
+            {description && <span className="help">{description}</span>}
+          </label>
+          {error && <div className="fieldErrorBox">{error}</div>}
+          <TextArea
+            id={id}
+            name={id}
+            value={value.data}
+          />
+          {error && <Label basic color="red" pointing="below">{error}</Label>}
+        </Form.Field>
       );
     }
     return (
-      <div className={`field${error ? ' error' : ''}`}>
-        <label htmlFor={`field-${id}`} className="horizontal">
+      <Form.Field required={required} error={error}>
+        <label htmlFor={`field-${id}`}>
           {title}
-          {description && <span className="formHelp">{description}</span>}
-          {required && <span className="required horizontal" title="Required">&nbsp;</span>}
+          {description && <span className="help">{description}</span>}
         </label>
         {error && <div className="fieldErrorBox">{error}</div>}
-        <div className="wysiwyg-widget">
+        <Segment>
           <Editor
             id={`field-${id}`}
             onChange={this.onChange}
             editorState={this.state.editorState}
           />
-        </div>
-      </div>
+        </Segment>
+        {error && <Label basic color="red" pointing="below">{error}</Label>}
+      </Form.Field>
     );
   }
 }

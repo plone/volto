@@ -51,7 +51,14 @@ const Html = ({ assets, component, store }) => {
           />,
         )}
         <link
-          href="/assets/theme.css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          media="screen, projection"
+          rel="stylesheet"
+          type="text/css"
+          charSet="UTF-8"
+        />
+        <link
+          href="/assets/overrides.css"
           media="screen, projection"
           rel="stylesheet"
           type="text/css"

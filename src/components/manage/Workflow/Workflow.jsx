@@ -7,10 +7,10 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { last } from 'lodash';
+import { Dropdown, Icon } from 'semantic-ui-react';
 
 import { getWorkflow, transitionWorkflow } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
-import { WorkflowItem } from '../../../components';
 import config from '../../../config';
 
 @connect(
@@ -65,8 +65,6 @@ export default class Workflow extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = { menuOpen: false };
-    this.toggleMenu = this.toggleMenu.bind(this);
     this.transition = this.transition.bind(this);
   }
 
@@ -95,29 +93,13 @@ export default class Workflow extends Component {
   }
 
   /**
-   * Toggle menu.
-   * @method toggleMenu
-   * @param {Object} event Event object.
-   * @returns {undefined}
-   */
-  toggleMenu(event) {
-    this.setState({
-      menuOpen: !this.state.menuOpen,
-    });
-    event.preventDefault();
-  }
-
-  /**
    * On transition handler
    * @method transition
    * @param {string} url Transition url
    * @returns {undefined}
    */
-  transition(url) {
-    this.setState({
-      menuOpen: false,
-    });
-    this.props.transitionWorkflow(url.replace(config.apiPath, ''));
+  transition(event, { value }) {
+    this.props.transitionWorkflow(value.replace(config.apiPath, ''));
   }
 
   /**
@@ -129,32 +111,18 @@ export default class Workflow extends Component {
     const current = this.props.history.length > 0 && last(this.props.history).review_state;
     return (
       this.props.history.length > 0 ?
-        <li className={this.state.menuOpen ? 'active' : ''}>
-          <a href="/manage_workflow" onClick={this.toggleMenu}>
-            <span aria-hidden="true" className="icon-plone-contentmenu-workflow" />
-            <span>
-              <span>State:</span><br />
-              <span>{current}</span>
-            </span>
-          </a>
-          {this.state.menuOpen &&
-            <ul style={{ top: '250px' }} aria-hidden={this.state.menuOpen ? 'true' : 'false'}>
-              <li className="plone-toolbar-submenu-header">
-                <span>
-                  <span>State:</span> <span className={`state-${current}`}>{current}</span>
-                </span>
-              </li>
-              {this.props.transitions.map(item =>
-                <WorkflowItem
-                  key={item['@id']}
-                  url={item['@id']}
-                  title={item.title}
-                  transition={this.transition}
-                />,
-              )}
-            </ul>
-          }
-        </li>
+        <Dropdown item text={`State: ${current}`} pointing="left">
+          <Dropdown.Menu>
+            {this.props.transitions.map(item =>
+              <Dropdown.Item
+                text={item.title}
+                value={item['@id']}
+                key={item['@id']}
+                onClick={this.transition}
+              />
+            )}
+          </Dropdown.Menu>
+        </Dropdown>
       : <span />
     );
   }
