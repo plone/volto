@@ -20,15 +20,14 @@ export default api => ({ dispatch, getState }) => next => (action) => {
     return next(action);
   }
 
-  const [REQUEST] = types;
-  next({ ...rest, type: REQUEST });
+  next({ ...rest, type: types[0] });
 
   const actionPromise = promise(api);
   actionPromise.then(
-    result => next({ ...rest, result, type: `${REQUEST}_SUCCESS` }),
-    error => next({ ...rest, error, type: `${REQUEST}_ERROR` }),
+    result => next({ ...rest, result, type: types[1] }),
+    error => next({ ...rest, error, type: types[2] }),
   ).catch((error) => {
-    next({ ...rest, error, type: `${REQUEST}_ERROR` });
+    next({ ...rest, error, type: types[2] });
   });
 
   return actionPromise;

@@ -4,8 +4,8 @@
  */
 
 import {
-  TRANSITION_WORKFLOW, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL,
-  GET_WORKFLOW, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL,
+  TRANSITION_WORKFLOW_PENDING, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL,
+  GET_WORKFLOW_PENDING, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL,
 } from '../../constants/ActionTypes';
 
 const initialState = {
@@ -42,8 +42,8 @@ function getRequestKey(actionType) {
  */
 export default function content(state = initialState, action = {}) {
   switch (action.type) {
-    case GET_WORKFLOW:
-    case TRANSITION_WORKFLOW:
+    case GET_WORKFLOW_PENDING:
+    case TRANSITION_WORKFLOW_PENDING:
       return {
         ...state,
         [getRequestKey(action.type)]: {

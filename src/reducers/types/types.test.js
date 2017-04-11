@@ -1,5 +1,5 @@
 import types from './types';
-import { GET_TYPES, GET_TYPES_SUCCESS, GET_TYPES_FAIL } from '../../constants/ActionTypes';
+import { GET_TYPES_PENDING, GET_TYPES_SUCCESS, GET_TYPES_FAIL } from '../../constants/ActionTypes';
 
 describe('Types reducer', () => {
   it('should return the initial state', () => {
@@ -13,10 +13,10 @@ describe('Types reducer', () => {
     });
   });
 
-  it('should handle GET_TYPES', () => {
+  it('should handle GET_TYPES_PENDING', () => {
     expect(
       types(undefined, {
-        type: GET_TYPES,
+        type: GET_TYPES_PENDING,
       }),
     ).toEqual({
       error: null,

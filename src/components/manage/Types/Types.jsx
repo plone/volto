@@ -32,6 +32,7 @@ export default class Types extends Component {
    * @static
    */
   static propTypes = {
+    pathname: PropTypes.string.isRequired,
     getTypes: PropTypes.func.isRequired,
     types: PropTypes.arrayOf(PropTypes.shape({
       '@id': PropTypes.string,
@@ -75,7 +76,7 @@ export default class Types extends Component {
           className={this.props.active ? 'active' : ''}
         >
           <Dropdown.Menu>
-            {map(filter(this.props.types, item => item.addable), item =>
+            {map(filter(this.props.types, ), item =>
               <Link
                 to={`${this.props.pathname}/add?type=${item.title}`}
                 className="item"

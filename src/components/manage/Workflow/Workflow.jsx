@@ -60,7 +60,7 @@ export default class Workflow extends Component {
    * Constructor
    * @method constructor
    * @param {Object} props Component properties
-   * @constructs WysiwygEditor
+   * @constructs Workflow
    */
   constructor(props) {
     super(props);

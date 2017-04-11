@@ -1,5 +1,9 @@
 import breadcrumbs from './breadcrumbs';
-import { GET_BREADCRUMBS, GET_BREADCRUMBS_SUCCESS, GET_BREADCRUMBS_FAIL } from '../../constants/ActionTypes';
+import {
+  GET_BREADCRUMBS_PENDING,
+  GET_BREADCRUMBS_SUCCESS,
+  GET_BREADCRUMBS_FAIL,
+} from '../../constants/ActionTypes';
 import config from '../../config';
 
 describe('Breadcrumbs reducer', () => {
@@ -14,10 +18,10 @@ describe('Breadcrumbs reducer', () => {
     });
   });
 
-  it('should handle GET_BREADCRUMBS', () => {
+  it('should handle GET_BREADCRUMBS_PENDING', () => {
     expect(
       breadcrumbs(undefined, {
-        type: GET_BREADCRUMBS,
+        type: GET_BREADCRUMBS_PENDING,
       }),
     ).toEqual({
       error: null,

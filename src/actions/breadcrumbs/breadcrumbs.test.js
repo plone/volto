@@ -1,6 +1,6 @@
 import getBreadcrumbs from './breadcrumbs';
 import {
-  GET_BREADCRUMBS, GET_BREADCRUMBS_SUCCESS, GET_BREADCRUMBS_FAIL,
+  GET_BREADCRUMBS_PENDING, GET_BREADCRUMBS_SUCCESS, GET_BREADCRUMBS_FAIL,
 } from '../../constants/ActionTypes';
 
 describe('Breadcrumbs action', () => {
@@ -10,7 +10,7 @@ describe('Breadcrumbs action', () => {
       const action = getBreadcrumbs(url);
 
       expect(action.types).toEqual([
-        GET_BREADCRUMBS,
+        GET_BREADCRUMBS_PENDING,
         GET_BREADCRUMBS_SUCCESS,
         GET_BREADCRUMBS_FAIL,
       ]);

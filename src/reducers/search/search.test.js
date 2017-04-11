@@ -1,5 +1,9 @@
 import search from './search';
-import { SEARCH_CONTENT, SEARCH_CONTENT_SUCCESS, SEARCH_CONTENT_FAIL } from '../../constants/ActionTypes';
+import {
+  SEARCH_CONTENT_PENDING,
+  SEARCH_CONTENT_SUCCESS,
+  SEARCH_CONTENT_FAIL,
+} from '../../constants/ActionTypes';
 import config from '../../config';
 
 describe('Search reducer', () => {
@@ -14,10 +18,10 @@ describe('Search reducer', () => {
     });
   });
 
-  it('should handle SEARCH_CONTENT', () => {
+  it('should handle SEARCH_CONTENT_PENDING', () => {
     expect(
       search(undefined, {
-        type: SEARCH_CONTENT,
+        type: SEARCH_CONTENT_PENDING,
       }),
     ).toEqual({
       error: null,

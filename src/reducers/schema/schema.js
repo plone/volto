@@ -3,7 +3,11 @@
  * @module reducers/schema
  */
 
-import { GET_SCHEMA, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL } from '../../constants/ActionTypes';
+import {
+  GET_SCHEMA_PENDING,
+  GET_SCHEMA_SUCCESS,
+  GET_SCHEMA_FAIL,
+} from '../../constants/ActionTypes';
 
 const initialState = {
   error: null,
@@ -21,7 +25,7 @@ const initialState = {
  */
 export default function schema(state = initialState, action = {}) {
   switch (action.type) {
-    case GET_SCHEMA:
+    case GET_SCHEMA_PENDING:
       return {
         ...state,
         error: null,

@@ -4,7 +4,7 @@
  */
 
 import {
-  GET_BREADCRUMBS, GET_BREADCRUMBS_SUCCESS, GET_BREADCRUMBS_FAIL,
+  GET_BREADCRUMBS_PENDING, GET_BREADCRUMBS_SUCCESS, GET_BREADCRUMBS_FAIL,
 } from '../../constants/ActionTypes';
 
 /**
@@ -15,7 +15,7 @@ import {
  */
 export default function getBreadcrumbs(url) {
   return {
-    types: [GET_BREADCRUMBS, GET_BREADCRUMBS_SUCCESS, GET_BREADCRUMBS_FAIL],
+    types: [GET_BREADCRUMBS_PENDING, GET_BREADCRUMBS_SUCCESS, GET_BREADCRUMBS_FAIL],
     promise: api => api.get(`${url}/@components/breadcrumbs`),
   };
 }

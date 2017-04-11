@@ -1,9 +1,9 @@
 import content from './content';
 import {
-  ADD_CONTENT, ADD_CONTENT_SUCCESS, ADD_CONTENT_FAIL,
-  DELETE_CONTENT, DELETE_CONTENT_SUCCESS, DELETE_CONTENT_FAIL,
-  EDIT_CONTENT, EDIT_CONTENT_SUCCESS, EDIT_CONTENT_FAIL,
-  GET_CONTENT, GET_CONTENT_SUCCESS, GET_CONTENT_FAIL,
+  ADD_CONTENT_PENDING, ADD_CONTENT_SUCCESS, ADD_CONTENT_FAIL,
+  DELETE_CONTENT_PENDING, DELETE_CONTENT_SUCCESS, DELETE_CONTENT_FAIL,
+  EDIT_CONTENT_PENDING, EDIT_CONTENT_SUCCESS, EDIT_CONTENT_FAIL,
+  GET_CONTENT_PENDING, GET_CONTENT_SUCCESS, GET_CONTENT_FAIL,
 } from '../../constants/ActionTypes';
 import config from '../../config';
 
@@ -36,10 +36,10 @@ describe('Content reducer', () => {
     });
   });
 
-  it('should handle ADD_CONTENT', () => {
+  it('should handle ADD_CONTENT_PENDING', () => {
     expect(
       content(undefined, {
-        type: ADD_CONTENT,
+        type: ADD_CONTENT_PENDING,
       }),
     ).toEqual({
       add: {
@@ -129,10 +129,10 @@ describe('Content reducer', () => {
     });
   });
 
-  it('should handle DELETE_CONTENT', () => {
+  it('should handle DELETE_CONTENT_PENDING', () => {
     expect(
       content(undefined, {
-        type: DELETE_CONTENT,
+        type: DELETE_CONTENT_PENDING,
       }),
     ).toEqual({
       add: {
@@ -222,10 +222,10 @@ describe('Content reducer', () => {
     });
   });
 
-  it('should handle EDIT_CONTENT', () => {
+  it('should handle EDIT_CONTENT_PENDING', () => {
     expect(
       content(undefined, {
-        type: EDIT_CONTENT,
+        type: EDIT_CONTENT_PENDING,
       }),
     ).toEqual({
       add: {
@@ -315,10 +315,10 @@ describe('Content reducer', () => {
     });
   });
 
-  it('should handle GET_CONTENT', () => {
+  it('should handle GET_CONTENT_PENDING', () => {
     expect(
       content(undefined, {
-        type: GET_CONTENT,
+        type: GET_CONTENT_PENDING,
       }),
     ).toEqual({
       add: {

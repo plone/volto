@@ -1,5 +1,9 @@
 import schema from './schema';
-import { GET_SCHEMA, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL } from '../../constants/ActionTypes';
+import {
+  GET_SCHEMA_PENDING,
+  GET_SCHEMA_SUCCESS,
+  GET_SCHEMA_FAIL,
+} from '../../constants/ActionTypes';
 
 describe('Schema reducer', () => {
   it('should return the initial state', () => {
@@ -13,10 +17,10 @@ describe('Schema reducer', () => {
     });
   });
 
-  it('should handle GET_SCHEMA', () => {
+  it('should handle GET_SCHEMA_PENDING', () => {
     expect(
       schema(undefined, {
-        type: GET_SCHEMA,
+        type: GET_SCHEMA_PENDING,
       }),
     ).toEqual({
       error: null,

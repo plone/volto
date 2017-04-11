@@ -5,7 +5,11 @@
 
 import { map } from 'lodash';
 
-import { GET_NAVIGATION, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL } from '../../constants/ActionTypes';
+import {
+  GET_NAVIGATION_PENDING,
+  GET_NAVIGATION_SUCCESS,
+  GET_NAVIGATION_FAIL,
+} from '../../constants/ActionTypes';
 import config from '../../config';
 
 const initialState = {
@@ -24,7 +28,7 @@ const initialState = {
  */
 export default function navigation(state = initialState, action = {}) {
   switch (action.type) {
-    case GET_NAVIGATION:
+    case GET_NAVIGATION_PENDING:
       return {
         ...state,
         error: null,

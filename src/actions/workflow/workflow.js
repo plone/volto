@@ -4,8 +4,8 @@
  */
 
 import {
-  GET_WORKFLOW, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL,
-  TRANSITION_WORKFLOW, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL,
+  GET_WORKFLOW_PENDING, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL,
+  TRANSITION_WORKFLOW_PENDING, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL,
 } from '../../constants/ActionTypes';
 
 /**
@@ -16,7 +16,7 @@ import {
  */
 export function getWorkflow(url) {
   return {
-    types: [GET_WORKFLOW, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL],
+    types: [GET_WORKFLOW_PENDING, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL],
     promise: api => api.get(`${url}/@workflow`),
   };
 }
@@ -29,7 +29,7 @@ export function getWorkflow(url) {
  */
 export function transitionWorkflow(url) {
   return {
-    types: [TRANSITION_WORKFLOW, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL],
+    types: [TRANSITION_WORKFLOW_PENDING, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL],
     promise: api => api.post(url),
   };
 }

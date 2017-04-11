@@ -1,6 +1,6 @@
 import getSchema from './schema';
 import {
-  GET_SCHEMA, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL,
+  GET_SCHEMA_PENDING, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL,
 } from '../../constants/ActionTypes';
 
 describe('Schema action', () => {
@@ -9,7 +9,7 @@ describe('Schema action', () => {
       const type = 'Document';
       const action = getSchema(type);
 
-      expect(action.types).toEqual([GET_SCHEMA, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL]);
+      expect(action.types).toEqual([GET_SCHEMA_PENDING, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL]);
 
       const apiMock = {
         get: jest.fn(),

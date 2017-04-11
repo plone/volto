@@ -4,7 +4,7 @@
  */
 
 import {
-  GET_TYPES, GET_TYPES_SUCCESS, GET_TYPES_FAIL,
+  GET_TYPES_PENDING, GET_TYPES_SUCCESS, GET_TYPES_FAIL,
 } from '../../constants/ActionTypes';
 
 /**
@@ -15,7 +15,7 @@ import {
  */
 export default function getTypes(url) {
   return {
-    types: [GET_TYPES, GET_TYPES_SUCCESS, GET_TYPES_FAIL],
+    types: [GET_TYPES_PENDING, GET_TYPES_SUCCESS, GET_TYPES_FAIL],
     promise: api => api.get(`${url}/@types`),
   };
 }

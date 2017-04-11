@@ -1,7 +1,7 @@
 import workflow from './workflow';
 import {
-  TRANSITION_WORKFLOW, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL,
-  GET_WORKFLOW, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL,
+  GET_WORKFLOW_PENDING, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL,
+  TRANSITION_WORKFLOW_PENDING, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL,
 } from '../../constants/ActionTypes';
 
 describe('Workflow reducer', () => {
@@ -24,10 +24,10 @@ describe('Workflow reducer', () => {
     });
   });
 
-  it('should handle GET_WORKFLOW', () => {
+  it('should handle GET_WORKFLOW_PENDING', () => {
     expect(
       workflow(undefined, {
-        type: GET_WORKFLOW,
+        type: GET_WORKFLOW_PENDING,
       }),
     ).toEqual({
       get: {
@@ -92,10 +92,10 @@ describe('Workflow reducer', () => {
     });
   });
 
-  it('should handle TRANSITION_WORKFLOW', () => {
+  it('should handle TRANSITION_WORKFLOW_PENDING', () => {
     expect(
       workflow(undefined, {
-        type: TRANSITION_WORKFLOW,
+        type: TRANSITION_WORKFLOW_PENDING,
       }),
     ).toEqual({
       get: {

@@ -4,7 +4,7 @@
  */
 
 import {
-  LOGIN, LOGIN_SUCCESS, LOGIN_FAIL,
+  LOGIN_PENDING, LOGIN_SUCCESS, LOGIN_FAIL,
   LOGOUT,
 } from '../../constants/ActionTypes';
 
@@ -17,7 +17,7 @@ import {
  */
 export function login(username, password) {
   return {
-    types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
+    types: [LOGIN_PENDING, LOGIN_SUCCESS, LOGIN_FAIL],
     promise: api => api.post('@login', { data: { login: username, password } }),
   };
 }

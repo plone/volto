@@ -48,3 +48,5 @@ If chromedriver could not be found, make sure to update with:
 * Unit / e2e tests
 * Documentation
 * Fill slots with react-slot-fill
+* Sharing
+* Actions

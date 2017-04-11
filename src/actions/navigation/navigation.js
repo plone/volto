@@ -4,7 +4,7 @@
  */
 
 import {
-  GET_NAVIGATION, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL,
+  GET_NAVIGATION_PENDING, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL,
 } from '../../constants/ActionTypes';
 
 /**
@@ -15,7 +15,7 @@ import {
  */
 export default function getNavigation(url) {
   return {
-    types: [GET_NAVIGATION, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL],
+    types: [GET_NAVIGATION_PENDING, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL],
     promise: api => api.get(`${url}/@components/navigation`),
   };
 }

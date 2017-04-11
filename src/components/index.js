@@ -27,7 +27,7 @@ export SummaryView from './theme/View/SummaryView';
 export Search from './theme/Search/Search';
 export View from './theme/View/View';
 
-export Toolbar from './manage/Toolbar/Toolbar';
+export Actions from './manage/Actions/Actions';
 export Add from './manage/Add/Add';
 export Edit from './manage/Edit/Edit';
 export Delete from './manage/Delete/Delete';
@@ -39,6 +39,7 @@ export DatetimeWidget from './manage/Widgets/DatetimeWidget';
 export SelectWidget from './manage/Widgets/SelectWidget';
 export TextareaWidget from './manage/Widgets/TextareaWidget';
 export TextWidget from './manage/Widgets/TextWidget';
+export Toolbar from './manage/Toolbar/Toolbar';
 export Types from './manage/Types/Types';
 export WysiwygWidget from './manage/Widgets/WysiwygWidget';
 export Workflow from './manage/Workflow/Workflow';

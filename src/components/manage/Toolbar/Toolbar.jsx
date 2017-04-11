@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Icon, Menu } from 'semantic-ui-react';
 
-import { Types, Workflow } from '../../../components';
+import { Actions, Types, Workflow } from '../../../components';
 
 import logo from './plone-toolbarlogo.svg';
 
@@ -54,17 +54,15 @@ export default class Toolbar extends Component {
       this.props.token &&
         <Menu inverted vertical fixed="left">
           <Menu.Item color="blue" active><img alt="Plone Toolbar" src={logo} /></Menu.Item>
-          <Link to={this.props.pathname} className={`item${this.props.selected === 'view' ? ' active' : ''}`}>
-            <span><Icon name="eye" /> View</span>
-          </Link>
           <Link to={`${this.props.pathname}/edit`} className={`item${this.props.selected === 'edit' ? ' active' : ''}`}>
             <span><Icon name="write" /> Edit</span>
           </Link>
-          <Link to={`${this.props.pathname}/delete`} className={`item${this.props.selected === 'delete' ? ' active' : ''}`}>
-            <span><Icon name="trash" /> Delete</span>
+          <Link to={this.props.pathname} className={`item${this.props.selected === 'view' ? ' active' : ''}`}>
+            <span><Icon name="eye" /> View</span>
           </Link>
           <Types pathname={this.props.pathname} active={this.props.selected === 'add'} />
           <Workflow pathname={this.props.pathname} />
+          <Actions pathname={this.props.pathname} />
           <Link to="/logout" className="item personal-bar">
             <span><Icon name="user" /> Log out</span>
           </Link>

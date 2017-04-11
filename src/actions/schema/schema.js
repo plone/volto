@@ -4,7 +4,7 @@
  */
 
 import {
-  GET_SCHEMA, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL,
+  GET_SCHEMA_PENDING, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL,
 } from '../../constants/ActionTypes';
 
 /**
@@ -15,7 +15,7 @@ import {
  */
 export default function getSchema(type) {
   return {
-    types: [GET_SCHEMA, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL],
+    types: [GET_SCHEMA_PENDING, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL],
     promise: api => api.get(`/@types/${type}`),
   };
 }

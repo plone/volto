@@ -4,10 +4,10 @@
  */
 
 import {
-  ADD_CONTENT, ADD_CONTENT_SUCCESS, ADD_CONTENT_FAIL,
-  DELETE_CONTENT, DELETE_CONTENT_SUCCESS, DELETE_CONTENT_FAIL,
-  EDIT_CONTENT, EDIT_CONTENT_SUCCESS, EDIT_CONTENT_FAIL,
-  GET_CONTENT, GET_CONTENT_SUCCESS, GET_CONTENT_FAIL,
+  ADD_CONTENT_PENDING, ADD_CONTENT_SUCCESS, ADD_CONTENT_FAIL,
+  DELETE_CONTENT_PENDING, DELETE_CONTENT_SUCCESS, DELETE_CONTENT_FAIL,
+  EDIT_CONTENT_PENDING, EDIT_CONTENT_SUCCESS, EDIT_CONTENT_FAIL,
+  GET_CONTENT_PENDING, GET_CONTENT_SUCCESS, GET_CONTENT_FAIL,
 } from '../../constants/ActionTypes';
 import config from '../../config';
 
@@ -54,10 +54,10 @@ function getRequestKey(actionType) {
  */
 export default function content(state = initialState, action = {}) {
   switch (action.type) {
-    case ADD_CONTENT:
-    case DELETE_CONTENT:
-    case EDIT_CONTENT:
-    case GET_CONTENT:
+    case ADD_CONTENT_PENDING:
+    case DELETE_CONTENT_PENDING:
+    case EDIT_CONTENT_PENDING:
+    case GET_CONTENT_PENDING:
       return {
         ...state,
         [getRequestKey(action.type)]: {

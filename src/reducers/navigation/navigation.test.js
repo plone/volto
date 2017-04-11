@@ -1,5 +1,9 @@
 import navigation from './navigation';
-import { GET_NAVIGATION, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL } from '../../constants/ActionTypes';
+import {
+  GET_NAVIGATION_PENDING,
+  GET_NAVIGATION_SUCCESS,
+  GET_NAVIGATION_FAIL,
+} from '../../constants/ActionTypes';
 import config from '../../config';
 
 describe('Navigation reducer', () => {
@@ -14,10 +18,10 @@ describe('Navigation reducer', () => {
     });
   });
 
-  it('should handle GET_NAVIGATION', () => {
+  it('should handle GET_NAVIGATION_PENDING', () => {
     expect(
       navigation(undefined, {
-        type: GET_NAVIGATION,
+        type: GET_NAVIGATION_PENDING,
       }),
     ).toEqual({
       error: null,
