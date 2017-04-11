@@ -13,9 +13,15 @@
   background-color: #2e3133;
 }
 
+.ui.menu .item.personal-bar {
+  width: 210px;
+  position: fixed;
+  bottom: 0;
+}
+
 /* override when sidebar is shown */
 @media only screen and (min-width: 1200px) {
-  .ui.container {
+  .ui.menu.fixed ~ .pusher .ui.container {
     width: 917px; // 1127 - 210
     margin-left: auto!important;
     margin-right: auto!important;
@@ -23,7 +29,7 @@
 }
 
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
-  .ui.container {
+  .ui.menu.fixed ~ .pusher .ui.container {
     width: 723px; // 933 - 210
     margin-left: auto!important;
     margin-right: auto!important;
@@ -31,7 +37,7 @@
 }
 
 @media only screen and (max-width: 991px) and (min-width: 768px) {
-  .ui.container {
+  .ui.menu.fixed ~ .pusher .ui.container {
     width: 513px; // 723 - 210
     margin-left: auto!important;
     margin-right: auto!important;

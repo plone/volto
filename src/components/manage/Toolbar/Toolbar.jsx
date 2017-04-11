@@ -55,20 +55,20 @@ export default class Toolbar extends Component {
         <Menu inverted vertical fixed="left">
           <Menu.Item color="blue" active><img alt="Plone Toolbar" src={logo} /></Menu.Item>
           <Link to={this.props.pathname} className={`item${this.props.selected === 'view' ? ' active' : ''}`}>
-            <Icon name="eye" />View
+            <span><Icon name="eye" /> View</span>
           </Link>
           <Link to={`${this.props.pathname}/edit`} className={`item${this.props.selected === 'edit' ? ' active' : ''}`}>
-            <Icon name="write" />Edit
+            <span><Icon name="write" /> Edit</span>
           </Link>
           <Link to={`${this.props.pathname}/delete`} className={`item${this.props.selected === 'delete' ? ' active' : ''}`}>
-            <Icon name="trash" />Delete
+            <span><Icon name="trash" /> Delete</span>
           </Link>
           <Link to={`${this.props.pathname}/add`} className={`item${this.props.selected === 'add' ? ' active' : ''}`}>
-            <Icon name="add" />Add
+            <span><Icon name="add" /> Add</span>
           </Link>
           <Workflow pathname={this.props.pathname} />
-          <Link to="/logout" className="item">
-            <Icon name="user" />Log out
+          <Link to="/logout" className="item personal-bar">
+            <span><Icon name="user" /> Log out</span>
           </Link>
         </Menu>
     );
