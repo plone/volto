@@ -12,7 +12,7 @@
   "keywords": [
     "mosaic"
   ],
-  "main": "bin/server.js",
+  "main": "src/server.jsx",
   "scripts": {
     "test:start": "DEBUG=plone-react:* npm-run-all -ln prestart start & npm-run-all -ln wait-for-frontend",
     "start": "NODE_ENV=production npm-run-all run:prod:server",
@@ -73,7 +73,7 @@
       "command": "webpack --config ./webpack/webpack.config.server.dev.entry.js --watch --hot --colors --display-error-details"
     },
     "run_dev_server": {
-      "command": "nodemon --watch ./src/server.js --watch ./src --watch ./static/dist/server.js ./src/start-server.js --exec babel-node",
+      "command": "nodemon --watch ./src/server.jsx --watch ./src --watch ./static/dist/server.js ./src/start-server.js --exec babel-node",
       "env": {
         "PORT": 4300,
         "DEBUG": "plone-react:*",
