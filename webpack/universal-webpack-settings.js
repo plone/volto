@@ -1,6 +1,6 @@
 module.exports = {
   server: {
-    input: './src/server.js',
+    input: './src/server.jsx',
     output: './static/dist/server.js',
   },
 };
