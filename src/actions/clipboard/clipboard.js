@@ -40,6 +40,7 @@ export function moveContent(source, target) {
 /**
  * Copy function.
  * @function copy
+ * @param {string} url Source url.
  * @returns {Object} Copy action.
  */
 export function copy(url) {
@@ -52,6 +53,7 @@ export function copy(url) {
 /**
  * Cut function.
  * @function cut
+ * @param {string} url Source url.
  * @returns {Object} Cut action.
  */
 export function cut(url) {

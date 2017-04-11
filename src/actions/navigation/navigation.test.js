@@ -9,7 +9,8 @@ describe('Navigation action', () => {
       const url = 'http://localhost';
       const action = getNavigation(url);
 
-      expect(action.types).toEqual([GET_NAVIGATION_PENDING, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL]);
+      expect(action.types).toEqual([
+        GET_NAVIGATION_PENDING, GET_NAVIGATION_SUCCESS, GET_NAVIGATION_FAIL]);
 
       const apiMock = {
         get: jest.fn(),
