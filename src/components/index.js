@@ -39,5 +39,6 @@ export DatetimeWidget from './manage/Widgets/DatetimeWidget';
 export SelectWidget from './manage/Widgets/SelectWidget';
 export TextareaWidget from './manage/Widgets/TextareaWidget';
 export TextWidget from './manage/Widgets/TextWidget';
+export Types from './manage/Types/Types';
 export WysiwygWidget from './manage/Widgets/WysiwygWidget';
 export Workflow from './manage/Workflow/Workflow';

@@ -4,7 +4,7 @@ import {
 } from '../../constants/ActionTypes';
 
 describe('Schema action', () => {
-  describe('getNavigation', () => {
+  describe('getSchema', () => {
     it('should create an action to get the schema', () => {
       const type = 'Document';
       const action = getSchema(type);

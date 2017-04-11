@@ -1,19 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a header component 1`] = `
-<header
-  id="content-header"
+<div
+  className="ui basic segment"
 >
   <div
-    className="container"
+    className="ui container"
   >
     <div
-      id="portal-header"
+      className="ui grid"
     >
-      <div />
-      <div />
-      <div />
+      <div
+        className="eight wide column"
+      >
+        <div />
+      </div>
+      <div
+        className="three wide column"
+      >
+        <div />
+      </div>
+      <div
+        className="five wide column"
+      >
+        <div />
+      </div>
     </div>
   </div>
-</header>
+</div>
 `;

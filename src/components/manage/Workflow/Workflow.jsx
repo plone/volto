@@ -10,7 +10,6 @@ import { last } from 'lodash';
 import { Dropdown, Icon } from 'semantic-ui-react';
 
 import { getWorkflow, transitionWorkflow } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
 import config from '../../../config';
 
 @connect(
@@ -74,7 +73,7 @@ export default class Workflow extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    this.props.getWorkflow(getBaseUrl(this.props.pathname));
+    this.props.getWorkflow(this.props.pathname);
   }
 
   /**
@@ -85,10 +84,10 @@ export default class Workflow extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.getWorkflow(getBaseUrl(nextProps.pathname));
+      this.props.getWorkflow(nextProps.pathname);
     }
     if (!this.props.loaded && nextProps.loaded) {
-      this.props.getWorkflow(getBaseUrl(nextProps.pathname));
+      this.props.getWorkflow(nextProps.pathname);
     }
   }
 

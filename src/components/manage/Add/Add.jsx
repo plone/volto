@@ -20,8 +20,8 @@ import { getBaseUrl } from '../../../helpers';
   [
     {
       key: 'schema',
-      promise: ({ store: { dispatch } }) =>
-        dispatch(getSchema('Document')),
+      promise: ({ location, store: { dispatch } }) =>
+        dispatch(getSchema(location.query.type)),
     },
     {
       key: 'content',
@@ -44,6 +44,7 @@ import { getBaseUrl } from '../../../helpers';
     content: state.content.data,
     schema: state.schema.schema,
     pathname: props.location.pathname,
+    type: props.location.query.type,
   }),
   dispatch => bindActionCreators({ addContent, getSchema }, dispatch),
 )
@@ -101,7 +102,7 @@ export default class Add extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    this.props.getSchema('Document');
+    this.props.getSchema(this.props.type);
   }
 
   /**
@@ -124,7 +125,7 @@ export default class Add extends Component {
    */
   onSubmit(data) {
     this.props.addContent(getBaseUrl(this.props.pathname),
-                          { ...data, '@type': 'Document' });
+                          { ...data, '@type': this.props.type });
   }
 
   /**
@@ -145,8 +146,8 @@ export default class Add extends Component {
     if (this.props.schema) {
       return (
         <div id="page-add">
-          <Helmet title="Add: Document" />
-          <h1>Add {this.props.schema.title}</h1>
+          <Helmet title={`Add ${this.props.type}`} />
+          <h1>Add {this.props.type}</h1>
           <Form
             schema={this.props.schema}
             onSubmit={this.onSubmit}

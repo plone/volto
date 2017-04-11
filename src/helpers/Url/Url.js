@@ -13,6 +13,7 @@ import { last } from 'lodash';
  */
 export function getBaseUrl(url) {
   return url
+          .replace(/\?.*$/, '')
           .replace('/add', '')
           .replace('/delete', '')
           .replace('/edit', '')
@@ -28,7 +29,7 @@ export function getBaseUrl(url) {
  * @return {string} View of content object.
  */
 export function getView(url) {
-  const view = last(url.split('/'));
+  const view = last(url.replace(/\?.*$/, '').split('/'));
   if (['add', 'edit', 'delete'].indexOf(view) === -1) {
     return 'view';
   }

@@ -2,19 +2,16 @@
 
 exports[`Anontools renders an anontools component when no token is specified 1`] = `
 <div
-  id="portal-anontools"
+  className="ui horizontal right floated list"
+  role="list"
 >
-  <ul>
-    <li>
-      <a
-        id="personaltools-login"
-        onClick={[Function]}
-        style={Object {}}
-      >
-        Log in
-      </a>
-    </li>
-  </ul>
+  <a
+    className="item"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    Log in
+  </a>
 </div>
 `;
 

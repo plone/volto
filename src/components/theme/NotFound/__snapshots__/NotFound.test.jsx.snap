@@ -2,7 +2,7 @@
 
 exports[`renders a not found component 1`] = `
 <div
-  className="container"
+  id="page-not-found"
 >
   <h1>
     Doh! 404!
