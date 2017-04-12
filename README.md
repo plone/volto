@@ -2,7 +2,10 @@ Plone in React
 ==============
 
 [![Build Status](https://travis-ci.org/plone/plone-react.svg?branch=master)](https://travis-ci.org/plone/plone-react)
-
+[![Coverage](https://img.shields.io/coveralls/plone/plone-react.svg)](https://coveralls.io/github/plone/plone-react)
+[![Dependencies](https://img.shields.io/david/plone/plone-react.svg)](https://github.com/plone/plone-react/blob/master/package.json)
+[![Dev Dependencies](https://img.shields.io/david/dev/plone/plone-react.svg)](https://github.com/plone/plone-react/blob/master/package.json)
+[![Node version](https://img.shields.io/badge/node-6.9.1-brightgreen.svg)](https://github.com/plone/plone-react/blob/master/.nvmrc)
 [![License](https://img.shields.io/github/license/plone/plone-react.svg)](https://github.com/plone/plone-react/blob/master/LICENCE.md)
 
 ## Installation

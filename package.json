@@ -20,7 +20,7 @@
     "url": "git@github.com:plone/plone-react.git"
   },
   "bugs": {
-  "url": "https://github.com/plone/plone-react/issues",
+    "url": "https://github.com/plone/plone-react/issues",
     "email": "plone-developers@lists.sourceforge.net"
   },
   "homepage": "https://plone.org",
@@ -52,6 +52,7 @@
     "watch:test:unit": "better-npm-run watch_test_unit",
     "test": "npm-run-all test:unit",
     "test:unit": "better-npm-run test_unit",
+    "coverage": "npm-run-all test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "pretest:e2e": "npm-run-all webdriver-update wait-for-frontend",
     "test:e2e": "protractor ./protractor.conf.js",
     "wait-for-frontend": "wget --retry-connrefused --spider ${PROTRACTOR_URL:-http://localhost:4300}",
@@ -129,6 +130,7 @@
     "client-sessions": "0.7.0",
     "compression": "1.6.2",
     "copy-webpack-plugin": "4.0.1",
+    "coveralls": "2.13.0",
     "debug": "2.6.3",
     "debug-logger": "0.4.1",
     "draft-js": "0.10.0",
