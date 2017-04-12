@@ -1,6 +1,8 @@
 // server
 // import path from 'path';
 import express from 'express';
+import http from 'http';
+import SocketIO from 'socket.io';
 import expressHealthcheck from 'express-healthcheck';
 import debugLogger from 'debug-logger';
 import frameguard from 'frameguard';
@@ -25,7 +27,13 @@ const debug = debugLogger('plone-react:server');
 
 export default (parameters) => {
   const app = express();
+  const server = http.Server(app);
+  const io = new SocketIO(server);
   const staticPath = __dirname;
+
+  io.on('connection', socket => {
+    console.log('user connected');
+  });
 
   app.use(frameguard({ action: 'deny' }));
   app.use(urlencoded({ extended: false }));
@@ -95,4 +103,3 @@ export default (parameters) => {
     }
   });
 };
-
