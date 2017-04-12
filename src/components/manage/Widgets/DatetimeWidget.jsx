@@ -3,7 +3,8 @@
  * @module components/manage/Widgets/DatetimeWidget
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Input, Label } from 'semantic-ui-react';
 
 /**

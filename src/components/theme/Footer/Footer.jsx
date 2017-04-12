@@ -12,7 +12,7 @@ import { Container, Divider, List, Segment } from 'semantic-ui-react';
  * @returns {string} Markup of the component.
  */
 const Footer = () => (
-  <Segment inverted color="darkgrey" vertical textAlign="center">
+  <Segment inverted vertical textAlign="center">
     <Container>
       The <a href="http://plone.com">Plone<sup>®</sup> Open Source
       CMS/WCM</a> is <abbr title="Copyright">©</abbr> 2000-2017 by

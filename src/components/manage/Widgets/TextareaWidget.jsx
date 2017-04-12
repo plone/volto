@@ -3,7 +3,8 @@
  * @module components/manage/Widgets/TextareaWidget
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Label, TextArea } from 'semantic-ui-react';
 
 /**

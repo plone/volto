@@ -51,3 +51,7 @@ If chromedriver could not be found, make sure to update with:
 * Sharing
 * Collaborative editing
 * Live updates
+* Make pages folderish / folders pagish / root also
+* Upgrade to React Router 4
+* Add Flow
+* Add Prettier

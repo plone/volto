@@ -4,7 +4,8 @@
  */
 
 import { Editor as DraftEditor } from 'draft-js';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Editor component class.

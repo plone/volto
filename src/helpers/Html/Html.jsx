@@ -3,7 +3,8 @@
  * @module helpers/Html
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom/server';
 import Helmet from 'react-helmet';
 import serialize from 'serialize-javascript';
@@ -25,7 +26,7 @@ import serialize from 'serialize-javascript';
  * @returns {string} Markup of the not found page.
  */
 const Html = ({ assets, component, store }) => {
-  const content = component ? ReactDOM.renderToString(component) : '';
+  const content = ReactDOM.renderToString(component);
   const head = Helmet.rewind();
 
   return (

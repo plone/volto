@@ -3,7 +3,8 @@
  * @module components/theme/View/View
  */
 
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { SummaryView, DocumentView } from '../../../components';
@@ -87,4 +88,3 @@ export default class View extends Component {
     }
   }
 }
-

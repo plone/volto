@@ -3,7 +3,8 @@
  * @module components/manage/Form/Field
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   ArrayWidget,

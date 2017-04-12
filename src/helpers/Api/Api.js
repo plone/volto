@@ -30,7 +30,7 @@ export default class Api {
   /**
    * Constructor
    * @method constructor
-   * @constructs _Api
+   * @constructs Api
    */
   constructor() {
     methods.forEach((method) => {

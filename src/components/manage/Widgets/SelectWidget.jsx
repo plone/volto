@@ -3,7 +3,8 @@
  * @module components/manage/Widgets/SelectWidget
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Select, Label } from 'semantic-ui-react';
 
 /**

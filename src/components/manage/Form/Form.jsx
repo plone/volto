@@ -3,7 +3,8 @@
  * @module components/manage/Form/Form
  */
 
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import { Button, Form as UiForm, Menu, Segment } from 'semantic-ui-react';
 

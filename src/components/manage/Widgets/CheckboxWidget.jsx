@@ -3,7 +3,8 @@
  * @module components/manage/Widgets/CheckboxWidget
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Label, Checkbox } from 'semantic-ui-react';
 
 /**

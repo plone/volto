@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a html component 1`] = `
+<html
+  lang="en"
+>
+  <head>
+    
+    
+    
+    
+    
+    <link
+      href="/favicon.ico"
+      rel="shortcut icon"
+    />
+    <meta
+      content="width=device-width, initial-scale=1"
+      name="viewport"
+    />
+    <link
+      charSet="UTF-8"
+      href="style.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      charSet="UTF-8"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      charSet="UTF-8"
+      href="/assets/overrides.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"1998851930\\"></div>",
+        }
+      }
+      id="main"
+    />
+    <script
+      charSet="UTF-8"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "window.__data=undefined;",
+        }
+      }
+    />
+    <script
+      charSet="UTF-8"
+      src="main.js"
+    />
+  </body>
+</html>
+`;

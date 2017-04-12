@@ -2,7 +2,7 @@
 
 exports[`renders a footer component 1`] = `
 <div
-  className="ui darkgrey inverted vertical center aligned segment"
+  className="ui inverted vertical center aligned segment"
 >
   <div
     className="ui container"

@@ -9,10 +9,6 @@
   margin-left: 0.5em;
 }
 
-.ui.inverted.darkgrey.segment {
-  background-color: #2e3133;
-}
-
 .ui.menu .item.personal-bar {
   width: 210px;
   position: fixed;

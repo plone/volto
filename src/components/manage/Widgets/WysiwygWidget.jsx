@@ -3,7 +3,8 @@
  * @module components/manage/WysiwygEditor/WysiwygEditor
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Editor from 'draft-js-editor';
 import { stateToHTML } from 'draft-js-export-html';
 import { convertFromHTML, EditorState, ContentState } from 'draft-js';

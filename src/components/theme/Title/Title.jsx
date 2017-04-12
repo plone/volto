@@ -3,7 +3,8 @@
  * @module components/theme/Title/Title
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Title component class.
