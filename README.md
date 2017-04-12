@@ -6,7 +6,6 @@ Plone in React
 ### Prerequisites
 * [Node.js==6.9.1](https://nodejs.org/)
 * [Python==2.7.x](https://python.org/)
-* [Git](http://git-scm.com/)
 
 ### Install dependencies
 
@@ -22,6 +21,7 @@ Plone in React
 
 ### Run backend
 
+    $ cd api
     $ ./bin/instance fg
 
 ### Run frontend
