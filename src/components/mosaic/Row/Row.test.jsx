@@ -14,7 +14,7 @@ test('renders a row component', () => {
       row={0}
       selectTile={() => {}}
       setTileContent={() => {}}
-    />
+    />,
   );
   const json = component.toJSON();
   expect(json).toMatchSnapshot();

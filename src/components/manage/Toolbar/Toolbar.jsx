@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Icon, Menu } from 'semantic-ui-react';
 
-import { Actions, Types, Workflow } from '../../../components';
+import { Actions, Display, Types, Workflow } from '../../../components';
 
 import logo from './plone-toolbarlogo.svg';
 
@@ -64,6 +64,7 @@ export default class Toolbar extends Component {
           <Types pathname={this.props.pathname} active={this.props.selected === 'add'} />
           <Workflow pathname={this.props.pathname} />
           <Actions pathname={this.props.pathname} />
+          <Display pathname={this.props.pathname} />
           <Link to="/logout" className="item personal-bar">
             <span><Icon name="user" /> Log out</span>
           </Link>

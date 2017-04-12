@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a array field 1`] = `
+<div
+  className="ArrayWidget"
+/>
+`;
+
+exports[`renders a boolean field 1`] = `
+<div
+  className="CheckboxWidget"
+/>
+`;
+
+exports[`renders a datetime field 1`] = `
+<div
+  className="DatetimeWidget"
+/>
+`;
+
+exports[`renders a fallback field 1`] = `
+<div
+  className="TextWidget"
+/>
+`;
+
+exports[`renders a richtext field 1`] = `
+<div
+  className="WysiwygWidget"
+/>
+`;
+
+exports[`renders a select field 1`] = `
+<div
+  className="SelectWidget"
+/>
+`;
+
+exports[`renders a text field 1`] = `
+<div
+  className="TextWidget"
+/>
+`;
+
+exports[`renders a textarea field 1`] = `
+<div
+  className="TextareaWidget"
+/>
+`;

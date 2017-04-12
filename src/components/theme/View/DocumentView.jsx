@@ -16,9 +16,9 @@ import Helmet from 'react-helmet';
 const DocumentView = ({ content }) => (
   <div id="page-home">
     <Helmet title={content.title} />
-    <h1 className="documentFirstHeading">{content.title}</h1>
-    <div className="documentDescription description">{content.description}</div>
-    {content.text && <p className="body" dangerouslySetInnerHTML={{ __html: content.text.data }} />}
+    <h1>{content.title}</h1>
+    <p>{content.description}</p>
+    {content.text && <p dangerouslySetInnerHTML={{ __html: content.text.data }} />}
   </div>
 );
 

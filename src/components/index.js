@@ -24,12 +24,14 @@ export Logout from './theme/Logout/Logout';
 export NotFound from './theme/NotFound/NotFound';
 export SummaryView from './theme/View/SummaryView';
 export Search from './theme/Search/Search';
+export TabularView from './theme/View/TabularView';
 export View from './theme/View/View';
 
 export Actions from './manage/Actions/Actions';
 export Add from './manage/Add/Add';
 export Edit from './manage/Edit/Edit';
 export Delete from './manage/Delete/Delete';
+export Display from './manage/Display/Display';
 export Form from './manage/Form/Form';
 export Field from './manage/Form/Field';
 export ArrayWidget from './manage/Widgets/ArrayWidget';

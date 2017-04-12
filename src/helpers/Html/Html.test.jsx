@@ -21,7 +21,7 @@ jest.mock(
       script: {
         toComponent: () => '',
       },
-    })
+    }),
   }),
 );
 
@@ -40,7 +40,7 @@ test('renders a html component', () => {
       store={{
         getState: () => {},
       }}
-    />
+    />,
   );
   const json = component.toJSON();
   expect(json).toMatchSnapshot();

@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a summary view component 1`] = `
+<div
+  id="page-home"
+>
+  <article
+    id="content"
+  >
+    <header>
+      <h1
+        className="documentFirstHeading"
+      >
+        Hello World!
+      </h1>
+      <p>
+        Hi
+      </p>
+    </header>
+    <section
+      id="content-core"
+    >
+      <article>
+        <h2>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+            title="Document"
+          >
+            My item
+          </a>
+        </h2>
+        <p>
+          My item description
+        </p>
+        <p>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            Read More…
+          </a>
+        </p>
+      </article>
+    </section>
+  </article>
+</div>
+`;

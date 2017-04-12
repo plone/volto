@@ -1,17 +1,19 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Grid from './Grid';
+import Tile from './Tile';
 
-jest.mock('../Row/Row',
+jest.mock('draft-js-editor',
   () => jest.fn(() => <div />));
+global.__SERVER__ = true; // eslint no-underscore-dangle: 0
 
-test('renders a grid component', () => {
+test('renders a tile component', () => {
   const component = renderer.create(
-    <Grid
-      rows={[
-        ['cell 1.1', 'cell 1.2'],
-        ['cell 2.1', 'cell 2.2'],
-      ]}
+    <Tile
+      content={ { data: '<h1>Hello World!</h1>'} }
+      width={4}
+      row={0}
+      column={0}
+      selected={true}
       selectTile={() => {}}
       setTileContent={() => {}}
     />

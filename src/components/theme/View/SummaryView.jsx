@@ -17,43 +17,29 @@ import { Link } from 'react-router';
 const SummaryView = ({ content }) => (
   <div id="page-home">
     <Helmet title={content.title} />
-    <div className="container">
-      <article id="content">
-        <header>
-          <h1 className="documentFirstHeading">{content.title}</h1>
-          {content.description && <div className="documentDescription description">{content.description}</div>}
-        </header>
-        <section id="content-core">
-          {content.items.map(item =>
-            <article
-              className="tileItem"
-              key={item.url}
-            >
-              <h2 className="tileHeadline">
-                <Link
-                  to={item.url}
-                  className="summary url"
-                  title={item['@type']}
-                >
-                  {item.title}
-                </Link>
-              </h2>
-              {item.description &&
-                <div className="tileBody">
-                  <span className="description">{item.description}</span>
-                </div>
-              }
-              <div className="tileFooter">
-                <Link to={item.url}>
-                  Read More…
-                </Link>
-              </div>
-              <div className="visualClear" />
-            </article>,
-          )}
-        </section>
-      </article>
-    </div>
+    <article id="content">
+      <header>
+        <h1 className="documentFirstHeading">{content.title}</h1>
+        {content.description && <p>{content.description}</p>}
+      </header>
+      <section id="content-core">
+        {content.items.map(item =>
+          <article key={item.url}>
+            <h2>
+              <Link to={item.url} title={item['@type']}>
+                {item.title}
+              </Link>
+            </h2>
+            {item.description && <p>{item.description}</p>}
+            <p>
+              <Link to={item.url}>
+                Read More…
+              </Link>
+            </p>
+          </article>,
+        )}
+      </section>
+    </article>
   </div>
 );
 

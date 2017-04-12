@@ -4,19 +4,10 @@ import jwtDecode from 'jwt-decode';
 
 import { getAuthToken, persistAuthToken } from './AuthToken';
 
-const store = {
-  subscribe: jest.fn(),
-  getState: jest.fn(() => ({
-    userSession: {
-      token: jwt.sign({ exp: 2 }, 'secret'),
-    }
-  })),
-}
-
 jest.mock(
   'react-cookie',
   () => ({
-    load: jest.fn(() => require('jsonwebtoken').sign({ exp: 1}, 'secret')),
+    load: jest.fn(() => require('jsonwebtoken').sign({ exp: 1 }, 'secret')),
     remove: jest.fn(),
     save: jest.fn(),
   }),
@@ -36,7 +27,6 @@ test('set same auth token', () => {
       },
     })),
   };
-  const token = store.getState().userSession.token;
 
   persistAuthToken(store);
   expect(cookie.save).toHaveBeenCalledTimes(0);

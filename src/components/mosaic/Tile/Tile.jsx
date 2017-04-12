@@ -43,9 +43,7 @@ const Tile = ({ content, width, row, column, selected, selectTile, setTileConten
  * @static
  */
 Tile.propTypes = {
-  content: PropTypes.shape(
-    PropTypes.any,
-  ).isRequired,
+  content: PropTypes.object.isRequired,
   width: PropTypes.number.isRequired,
   row: PropTypes.number.isRequired,
   column: PropTypes.number.isRequired,

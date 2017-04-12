@@ -1,22 +1,20 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Tile from './Tile';
+import Grid from './Grid';
 
-jest.mock('draft-js-editor',
+jest.mock('../Row/Row',
   () => jest.fn(() => <div />));
-global.__SERVER__ = true;
 
-test('renders a tile component', () => {
+test('renders a grid component', () => {
   const component = renderer.create(
-    <Tile
-      content={'<h1>Hello World!</h1>'}
-      width={4}
-      row={0}
-      column={0}
-      selected={true}
+    <Grid
+      rows={[
+        ['cell 1.1', 'cell 1.2'],
+        ['cell 2.1', 'cell 2.2'],
+      ]}
       selectTile={() => {}}
       setTileContent={() => {}}
-    />
+    />,
   );
   const json = component.toJSON();
   expect(json).toMatchSnapshot();

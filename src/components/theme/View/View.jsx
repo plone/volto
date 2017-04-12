@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { SummaryView, DocumentView } from '../../../components';
+import { SummaryView, TabularView, DocumentView } from '../../../components';
 import { getContent } from '../../../actions';
 
 @connect(
@@ -78,13 +78,13 @@ export default class View extends Component {
       return <span />;
     }
 
-    switch (this.props.content['@type']) {
-      case 'Folder':
+    switch (this.props.content.layout) {
+      case 'summary_view':
         return <SummaryView content={this.props.content} />;
-      case 'Document':
-        return <DocumentView content={this.props.content} />;
+      case 'tabular_view':
+        return <TabularView content={this.props.content} />;
       default:
-        return <span />;
+        return <DocumentView content={this.props.content} />;
     }
   }
 }
