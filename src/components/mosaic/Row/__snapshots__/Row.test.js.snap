@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a row component 1`] = `
+<div
+  className="undefined row"
+>
+  <div />
+</div>
+`;

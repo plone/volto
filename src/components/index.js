@@ -4,7 +4,6 @@
  * @example import { Field } from 'components';
  */
 
-export Editor from './mosaic/Editor/Editor';
 export Grid from './mosaic/Grid/Grid';
 export Layout from './mosaic/Layout/Layout';
 export Row from './mosaic/Row/Row';

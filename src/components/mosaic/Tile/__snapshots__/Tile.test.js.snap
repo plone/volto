@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a tile component 1`] = `
+<div
+  className="undefined col-xs-4 undefined"
+>
+  <div
+    className={undefined}
+    onClick={[Function]}
+  />
+</div>
+`;
