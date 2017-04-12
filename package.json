@@ -1,12 +1,27 @@
 {
   "name": "plone-react",
   "description": "Plone in React",
-  "author": "Rob Gietema <rob.gietema@gmail.com>",
-  "license": "UNLICENSED",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "email": "plone-developers@lists.sourceforge.net",
+      "url": "http://plone.org"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "BSD",
+      "url": "http://opensource.org/licenses/BSD-3-Clause"
+    }
+  ],
   "version": "0.0.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/plone-react.git"
+  },
+  "bugs": {
+  "url": "https://github.com/plone/plone-react/issues",
+    "email": "plone-developers@lists.sourceforge.net"
   },
   "homepage": "https://plone.org",
   "keywords": [

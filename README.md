@@ -1,6 +1,10 @@
 Plone in React
 ==============
 
+[![Build Status](https://travis-ci.org/plone/plone-react.svg?branch=master)](https://travis-ci.org/plone/plone-react)
+
+[![License](https://img.shields.io/github/license/plone/plone-react.svg)](https://github.com/plone/plone-react/blob/master/LICENCE.md)
+
 ## Installation
 
 ### Prerequisites
@@ -41,6 +45,11 @@ Go to [http://localhost:4300](http://localhost:4300) in your browser.
 If chromedriver could not be found, make sure to update with:
 
     ./node_modules/protractor/bin/webdriver-manager update
+
+### License
+
+The BSD 3-Clause License. Copyrights hold the Plone Foundation.
+See [LICENSE.rst](LICENSE.rst) for details.
 
 ### Todo
 * Redirect after SSR edit and add content
