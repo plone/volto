@@ -3,19 +3,26 @@ import renderer from 'react-test-renderer';
 import Field from './Field';
 
 jest.mock('../Widgets/ArrayWidget', () =>
-  jest.fn(() => <div className="ArrayWidget" />));
+  jest.fn(() => <div className="ArrayWidget" />),
+);
 jest.mock('../Widgets/CheckboxWidget', () =>
-  jest.fn(() => <div className="CheckboxWidget" />));
+  jest.fn(() => <div className="CheckboxWidget" />),
+);
 jest.mock('../Widgets/SelectWidget', () =>
-  jest.fn(() => <div className="SelectWidget" />));
+  jest.fn(() => <div className="SelectWidget" />),
+);
 jest.mock('../Widgets/TextWidget', () =>
-  jest.fn(() => <div className="TextWidget" />));
+  jest.fn(() => <div className="TextWidget" />),
+);
 jest.mock('../Widgets/TextareaWidget', () =>
-  jest.fn(() => <div className="TextareaWidget" />));
+  jest.fn(() => <div className="TextareaWidget" />),
+);
 jest.mock('../Widgets/DatetimeWidget', () =>
-  jest.fn(() => <div className="DatetimeWidget" />));
+  jest.fn(() => <div className="DatetimeWidget" />),
+);
 jest.mock('../Widgets/WysiwygWidget', () =>
-  jest.fn(() => <div className="WysiwygWidget" />));
+  jest.fn(() => <div className="WysiwygWidget" />),
+);
 
 test('renders a richtext field', () => {
   const component = renderer.create(<Field widget="richtext" />);

@@ -57,7 +57,7 @@ export default class Api {
           }
 
           request.end(
-            (err, { body } = {}) => err ? reject(body || err) : resolve(body),
+            (err, { body } = {}) => (err ? reject(body || err) : resolve(body)),
           );
         });
     });

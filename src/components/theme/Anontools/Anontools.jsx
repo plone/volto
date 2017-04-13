@@ -42,9 +42,11 @@ export default class Anontools extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return !this.props.token &&
+    return (
+      !this.props.token &&
       <List floated="right" horizontal>
         <Link className="item" to="/login">Log in</Link>
-      </List>;
+      </List>
+    );
   }
 }

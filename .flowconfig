@@ -1,0 +1,9 @@
+[ignore]
+.*/api/.*
+.*/node_modules/draft-js/.*
+
+[include]
+
+[libs]
+
+[options]

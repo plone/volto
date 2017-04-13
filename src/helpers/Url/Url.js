@@ -1,6 +1,7 @@
 /**
  * Url helper.
  * @module helpers/Url
+ * @flow
  */
 
 import { last } from 'lodash';
@@ -11,7 +12,7 @@ import { last } from 'lodash';
  * @param {string} url Url to be parsed.
  * @return {string} Base url of content object.
  */
-export function getBaseUrl(url) {
+export function getBaseUrl(url: string): string {
   return url
     .replace(/\?.*$/, '')
     .replace('/add', '')
@@ -28,7 +29,7 @@ export function getBaseUrl(url) {
  * @param {string} url Url to be parsed.
  * @return {string} View of content object.
  */
-export function getView(url) {
+export function getView(url: string): string {
   const view = last(url.replace(/\?.*$/, '').split('/'));
   if (['add', 'edit', 'delete'].indexOf(view) === -1) {
     return 'view';

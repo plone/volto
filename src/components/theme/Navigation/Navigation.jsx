@@ -68,8 +68,10 @@ export default class Navigation extends Component {
    * @returns {url} Url of the navigation item.
    */
   isActive(url) {
-    return (url === '' && this.props.pathname === '/') ||
-      (url !== '' && this.props.pathname.indexOf(url) !== -1);
+    return (
+      (url === '' && this.props.pathname === '/') ||
+      (url !== '' && this.props.pathname.indexOf(url) !== -1)
+    );
   }
 
   /**

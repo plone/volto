@@ -48,7 +48,8 @@ export default class Toolbar extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return this.props.token &&
+    return (
+      this.props.token &&
       <Menu inverted vertical fixed="left">
         <Menu.Item color="blue" active>
           <img alt="Plone Toolbar" src={logo} />
@@ -75,6 +76,7 @@ export default class Toolbar extends Component {
         <Link to="/logout" className="item personal-bar">
           <span><Icon name="user" /> Log out</span>
         </Link>
-      </Menu>;
+      </Menu>
+    );
   }
 }

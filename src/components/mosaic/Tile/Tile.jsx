@@ -25,13 +25,17 @@ import styles from './Tile.scss';
  * @param {func} props.setTileContent Set tile content method.
  * @returns {string} Markup of the tile.
  */
-const Tile = (
-  { content, width, row, column, selected, selectTile, setTileContent },
-) => (
+const Tile = ({
+  content,
+  width,
+  row,
+  column,
+  selected,
+  selectTile,
+  setTileContent,
+}) => (
   <div
-    className={
-      `${styles.tile} col-xs-${width} ${selected ? styles.selected : ''}`
-    }
+    className={`${styles.tile} col-xs-${width} ${selected ? styles.selected : ''}`}
   >
     <div onClick={() => selectTile(row, column)} className={styles.content}>
       {!__SERVER__ &&

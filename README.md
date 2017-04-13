@@ -64,4 +64,3 @@ See [LICENSE.md](LICENSE.md) for details.
 * Live updates
 * Make pages folderish / folders pagish / root also
 * Upgrade to React Router 4
-* Add Flow

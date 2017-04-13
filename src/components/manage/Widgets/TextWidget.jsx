@@ -12,9 +12,15 @@ import { Form, Input, Label } from 'semantic-ui-react';
  * @function TextWidget
  * @returns {string} Markup of the component.
  */
-const TextWidget = (
-  { id, title, required, description, error, value, onChange },
-) => (
+const TextWidget = ({
+  id,
+  title,
+  required,
+  description,
+  error,
+  value,
+  onChange,
+}) => (
   <Form.Field required={required} error={error}>
     <label htmlFor={`field-${id}`}>
       {title}

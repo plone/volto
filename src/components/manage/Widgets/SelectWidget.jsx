@@ -12,9 +12,16 @@ import { Form, Select, Label } from 'semantic-ui-react';
  * @function SelectWidget
  * @returns {string} Markup of the component.
  */
-const SelectWidget = (
-  { id, title, required, description, error, value, choices, onChange },
-) => (
+const SelectWidget = ({
+  id,
+  title,
+  required,
+  description,
+  error,
+  value,
+  choices,
+  onChange,
+}) => (
   <Form.Field required={required} error={error}>
     <label htmlFor={`field-${id}`}>
       {title}

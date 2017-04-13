@@ -12,9 +12,15 @@ import { Form, Label, Checkbox } from 'semantic-ui-react';
  * @function CheckboxWidget
  * @returns {string} Markup of the component.
  */
-const CheckboxWidget = (
-  { id, title, required, description, error, value, onChange },
-) => (
+const CheckboxWidget = ({
+  id,
+  title,
+  required,
+  description,
+  error,
+  value,
+  onChange,
+}) => (
   <Form.Field required={required} error={error}>
     <Checkbox
       id={`field-${id}`}

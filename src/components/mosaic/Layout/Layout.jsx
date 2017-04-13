@@ -53,7 +53,8 @@ export default class Layout extends Component {
                 ),
               ),
           selected: rowIndex === 0 && tileIndex === 0,
-        }))),
+        })),
+      ),
       selected: {
         row: 0,
         column: 0,
@@ -82,7 +83,8 @@ export default class Layout extends Component {
             };
           }
           return tile;
-        })),
+        }),
+      ),
     });
   }
 
@@ -94,9 +96,8 @@ export default class Layout extends Component {
    * @returns {undefined}
    */
   selectTile(row, column) {
-    this.state.layout[this.state.selected.row][
-      this.state.selected.column
-    ].selected = false;
+    this.state.layout[this.state.selected.row][this.state.selected.column]
+      .selected = false;
     this.state.layout[row][column].selected = true;
     this.setState({
       selected: {
@@ -119,7 +120,8 @@ export default class Layout extends Component {
         width: tile.width,
         content: tile.content,
         selected: tile.selected,
-      })));
+      })),
+    );
 
     return (
       <Grid
