@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a checkbox widget component 1`] = `
+<div
+  className="field"
+>
+  <div
+    className="ui checkbox"
+    id="field-my-field"
+    onChange={[Function]}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+  >
+    <input
+      checked={null}
+      className="hidden"
+      name="my-field"
+      readOnly={true}
+      tabIndex={0}
+      type="checkbox"
+      value={undefined}
+    />
+    <label>
+      My field
+    </label>
+  </div>
+</div>
+`;

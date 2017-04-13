@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a textarea widget component 1`] = `
+<div
+  className="field"
+>
+  <label
+    htmlFor="field-my-field"
+  >
+    My field
+  </label>
+  <textarea
+    id="field-my-field"
+    name="my-field"
+    onChange={[Function]}
+    value=""
+  />
+</div>
+`;

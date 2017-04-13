@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a select widget component 1`] = `
+<div
+  className="field"
+>
+  <label
+    htmlFor="field-my-field"
+  >
+    My field
+  </label>
+  <div
+    aria-busy={undefined}
+    aria-disabled={undefined}
+    aria-expanded={false}
+    aria-multiselectable={undefined}
+    className="ui selection dropdown"
+    id="field-my-field"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    role="listbox"
+    tabIndex={0}
+  >
+    <select
+      aria-hidden="true"
+      multiple={undefined}
+      name="my-field"
+      type="hidden"
+      value="no-value"
+    >
+      <option
+        value=""
+      />
+      <option
+        value="no-value"
+      >
+        No value
+      </option>
+    </select>
+    <div
+      className="text"
+    >
+      No value
+    </div>
+    <i
+      aria-hidden="true"
+      className="dropdown icon"
+    />
+    <div
+      className="menu transition"
+    >
+      <div
+        aria-checked={true}
+        aria-disabled={undefined}
+        aria-selected={true}
+        className="active selected item"
+        onClick={[Function]}
+        role="option"
+        style={
+          Object {
+            "pointerEvents": "all",
+          }
+        }
+      >
+        <span
+          className="text"
+        >
+          No value
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
