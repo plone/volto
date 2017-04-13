@@ -12,7 +12,9 @@ import { Form, Label, TextArea } from 'semantic-ui-react';
  * @function ArrayWidget
  * @returns {string} Markup of the component.
  */
-const ArrayWidget = ({ id, title, required, description, error, value, onChange }) =>
+const ArrayWidget = (
+  { id, title, required, description, error, value, onChange },
+) => (
   <Form.Field required={required} error={error}>
     <label htmlFor={`field-${id}`}>
       {title}
@@ -23,10 +25,15 @@ const ArrayWidget = ({ id, title, required, description, error, value, onChange 
       id={`field-${id}`}
       name={id}
       value={value ? value.join('\n') : ''}
-      onChange={({ target }) => onChange(id, target.value === '' ? undefined : target.value.split('\n'))}
+      onChange={({ target }) =>
+        onChange(
+          id,
+          target.value === '' ? undefined : target.value.split('\n'),
+        )}
     />
     {error && <Label basic color="red" pointing="below">{error}</Label>}
-  </Form.Field>;
+  </Form.Field>
+);
 
 /**
  * Property types.

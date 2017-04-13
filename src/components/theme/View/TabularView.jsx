@@ -34,7 +34,7 @@ const TabularView = ({ content }) => (
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {content.items.map(item =>
+            {content.items.map(item => (
               <Table.Row key={item.url}>
                 <Table.Cell>
                   <Link
@@ -48,8 +48,8 @@ const TabularView = ({ content }) => (
                 <Table.Cell>{item.description}</Table.Cell>
                 <Table.Cell>{item['@type']}</Table.Cell>
                 <Table.Cell>{item.review_state}</Table.Cell>
-              </Table.Row>,
-            )}
+              </Table.Row>
+            ))}
           </Table.Body>
         </Table>
       </section>

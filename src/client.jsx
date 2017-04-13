@@ -12,22 +12,15 @@ import getRoutes from './routes';
 import { Api, persistAuthToken } from './helpers';
 
 const api = new Api();
-const initialState = window.__data;  // eslint-disable-line no-underscore-dangle
+const initialState = window.__data; // eslint-disable-line no-underscore-dangle
 const store = configureStore(initialState, undefined, false, api);
 const history = syncHistoryWithStore(browserHistory, store);
 persistAuthToken(store);
 
 render(
-  <Provider
-    store={store}
-    key="provider"
-  >
+  <Provider store={store} key="provider">
     <Router
-      render={props =>
-        <ReduxAsyncConnect
-          helpers={{ api }}
-          {...props}
-        />}
+      render={props => <ReduxAsyncConnect helpers={{ api }} {...props} />}
       history={history}
     >
       {getRoutes(store)}

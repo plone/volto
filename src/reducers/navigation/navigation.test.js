@@ -8,9 +8,7 @@ import config from '../../config';
 
 describe('Navigation reducer', () => {
   it('should return the initial state', () => {
-    expect(
-      navigation(),
-    ).toEqual({
+    expect(navigation()).toEqual({
       error: null,
       items: [],
       loaded: false,
@@ -35,19 +33,25 @@ describe('Navigation reducer', () => {
     expect(
       navigation(undefined, {
         type: GET_NAVIGATION_SUCCESS,
-        result: [{
-          items: [{
-            title: 'Welcome to Plone!',
-            url: `${config.apiPath}/front-page`,
-          }],
-        }],
+        result: [
+          {
+            items: [
+              {
+                title: 'Welcome to Plone!',
+                url: `${config.apiPath}/front-page`,
+              },
+            ],
+          },
+        ],
       }),
     ).toEqual({
       error: null,
-      items: [{
-        title: 'Welcome to Plone!',
-        url: '/front-page',
-      }],
+      items: [
+        {
+          title: 'Welcome to Plone!',
+          url: '/front-page',
+        },
+      ],
       loaded: true,
       loading: false,
     });

@@ -4,14 +4,11 @@ import jwtDecode from 'jwt-decode';
 
 import { getAuthToken, persistAuthToken } from './AuthToken';
 
-jest.mock(
-  'react-cookie',
-  () => ({
-    load: jest.fn(() => require('jsonwebtoken').sign({ exp: 1 }, 'secret')),
-    remove: jest.fn(),
-    save: jest.fn(),
-  }),
-);
+jest.mock('react-cookie', () => ({
+  load: jest.fn(() => require('jsonwebtoken').sign({ exp: 1 }, 'secret')), // eslint-disable-line global-require
+  remove: jest.fn(),
+  save: jest.fn(),
+}));
 
 test('get auth token', () => {
   getAuthToken();
@@ -44,14 +41,10 @@ test('set new auth token', () => {
   const token = store.getState().userSession.token;
 
   persistAuthToken(store);
-  expect(cookie.save).toBeCalledWith(
-    'auth_token',
-    token,
-    {
-      path: '/',
-      expires: new Date(jwtDecode(token).exp * 1000),
-    },
-  );
+  expect(cookie.save).toBeCalledWith('auth_token', token, {
+    path: '/',
+    expires: new Date(jwtDecode(token).exp * 1000),
+  });
 });
 
 test('remove auth token', () => {

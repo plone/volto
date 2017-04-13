@@ -2,28 +2,25 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Html from './Html';
 
-jest.mock(
-  'react-helmet',
-  () => ({
-    rewind: () => ({
-      base: {
-        toComponent: () => '',
-      },
-      title: {
-        toComponent: () => '',
-      },
-      meta: {
-        toComponent: () => '',
-      },
-      link: {
-        toComponent: () => '',
-      },
-      script: {
-        toComponent: () => '',
-      },
-    }),
+jest.mock('react-helmet', () => ({
+  rewind: () => ({
+    base: {
+      toComponent: () => '',
+    },
+    title: {
+      toComponent: () => '',
+    },
+    meta: {
+      toComponent: () => '',
+    },
+    link: {
+      toComponent: () => '',
+    },
+    script: {
+      toComponent: () => '',
+    },
   }),
-);
+}));
 
 test('renders a html component', () => {
   const component = renderer.create(

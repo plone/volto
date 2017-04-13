@@ -22,7 +22,7 @@ import {
  * @param {Object} props Properties.
  * @returns {string} Markup of the component.
  */
-const Field = ((props) => {
+const Field = props => {
   if (props.widget) {
     switch (props.widget) {
       case 'richtext':
@@ -45,7 +45,7 @@ const Field = ((props) => {
     return <ArrayWidget {...props} />;
   }
   return <TextWidget {...props} />;
-});
+};
 
 /**
  * Property types.

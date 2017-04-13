@@ -18,7 +18,8 @@ const DocumentView = ({ content }) => (
     <Helmet title={content.title} />
     <h1>{content.title}</h1>
     <p>{content.description}</p>
-    {content.text && <p dangerouslySetInnerHTML={{ __html: content.text.data }} />}
+    {content.text &&
+      <p dangerouslySetInnerHTML={{ __html: content.text.data }} />}
   </div>
 );
 

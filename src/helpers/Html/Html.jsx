@@ -41,7 +41,7 @@ const Html = ({ assets, component, store }) => {
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* styles (will be present only in production with webpack extract text plugin) */}
-        {Object.keys(assets.styles).map(style =>
+        {Object.keys(assets.styles).map(style => (
           <link
             href={assets.styles[style]}
             key={assets.styles[style]}
@@ -49,8 +49,8 @@ const Html = ({ assets, component, store }) => {
             rel="stylesheet"
             type="text/css"
             charSet="UTF-8"
-          />,
-        )}
+          />
+        ))}
         <link
           href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
           media="screen, projection"
@@ -70,7 +70,9 @@ const Html = ({ assets, component, store }) => {
       <body>
         <div id="main" dangerouslySetInnerHTML={{ __html: content }} />
         <script
-          dangerouslySetInnerHTML={{ __html: `window.__data=${serialize(store.getState())};` }}
+          dangerouslySetInnerHTML={{
+            __html: `window.__data=${serialize(store.getState())};`,
+          }}
           charSet="UTF-8"
         />
         <script src={assets.javascript.main} charSet="UTF-8" />

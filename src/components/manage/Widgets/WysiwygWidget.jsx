@@ -16,7 +16,6 @@ import { Form, Label, Segment, TextArea } from 'semantic-ui-react';
  * @extends Component
  */
 export default class WysiwygEditor extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -34,7 +33,7 @@ export default class WysiwygEditor extends Component {
     }),
     error: PropTypes.string,
     onChange: PropTypes.func.isRequired,
-  }
+  };
 
   /**
    * Default properties
@@ -50,7 +49,7 @@ export default class WysiwygEditor extends Component {
       encoding: 'utf8',
     },
     error: null,
-  }
+  };
 
   /**
    * Constructor
@@ -84,14 +83,11 @@ export default class WysiwygEditor extends Component {
    */
   onChange(editorState) {
     this.setState({ editorState });
-    this.props.onChange(
-      this.props.id,
-      {
-        'content-type': this.props.value['content-type'],
-        encoding: this.props.value.encoding,
-        data: stateToHTML(editorState.getCurrentContent()),
-      },
-    );
+    this.props.onChange(this.props.id, {
+      'content-type': this.props.value['content-type'],
+      encoding: this.props.value.encoding,
+      data: stateToHTML(editorState.getCurrentContent()),
+    });
   }
 
   /**
@@ -110,11 +106,7 @@ export default class WysiwygEditor extends Component {
             {description && <span className="help">{description}</span>}
           </label>
           {error && <div className="fieldErrorBox">{error}</div>}
-          <TextArea
-            id={id}
-            name={id}
-            value={value.data}
-          />
+          <TextArea id={id} name={id} value={value.data} />
           {error && <Label basic color="red" pointing="below">{error}</Label>}
         </Form.Field>
       );

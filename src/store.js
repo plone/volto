@@ -17,8 +17,11 @@ const addToMiddleWare = (data, logger) => {
   if (!__DEBUG__) {
     return data;
   }
-  const devTools = (typeof window === 'object' && typeof window.devToolsExtension !== 'undefined') ? window.devToolsExtension() : f => f;
-  const debugLogger = (logger) ? applyMiddleware(createLogger()) : f => f;
+  const devTools = typeof window === 'object' &&
+    typeof window.devToolsExtension !== 'undefined'
+    ? window.devToolsExtension()
+    : f => f;
+  const debugLogger = logger ? applyMiddleware(createLogger()) : f => f;
   return [...data, devTools, debugLogger];
 };
 
@@ -31,14 +34,16 @@ const addToMiddleWare = (data, logger) => {
  * @param {Object} apiHelper ApiHelper
  * @returns {Object} Store.
  */
-export default function configureStore(initialState, history, logger, apiHelper) {
-  const middlewares = addToMiddleWare([
-    applyMiddleware(
-      routerMiddleware(history),
-      thunk,
-      api(apiHelper),
-    ),
-  ], logger);
+export default function configureStore(
+  initialState,
+  history,
+  logger,
+  apiHelper,
+) {
+  const middlewares = addToMiddleWare(
+    [applyMiddleware(routerMiddleware(history), thunk, api(apiHelper))],
+    logger,
+  );
 
   const createStoreWithMiddleware = compose(...middlewares)(createStore);
   const store = createStoreWithMiddleware(reducer, initialState);

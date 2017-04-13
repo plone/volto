@@ -7,7 +7,18 @@ import React from 'react';
 import { IndexRoute, Route } from 'react-router';
 import isMobile from 'ismobilejs';
 
-import { Add, App, Edit, Delete, View, NotFound, Layout, Login, Logout, Search } from './components';
+import {
+  Add,
+  App,
+  Edit,
+  Delete,
+  View,
+  NotFound,
+  Layout,
+  Login,
+  Logout,
+  Search,
+} from './components';
 
 /**
  * Routes function.
@@ -20,7 +31,7 @@ export default () => (
     component={App}
     onChange={(prevState, nextState) => {
       if (isMobile.any && nextState.location.action === 'PUSH') {
-        setTimeout(() => (window.scrollTo(0, 0)), 0);
+        setTimeout(() => window.scrollTo(0, 0), 0);
       }
     }}
   >

@@ -10,10 +10,11 @@ import React from 'react';
  * @function NotFound
  * @returns {string} Markup of the not found page.
  */
-const NotFound = () =>
+const NotFound = () => (
   <div id="page-not-found">
     <h1>Doh! 404!</h1>
     <p>These are <em>not</em> the droids you are looking for!</p>
-  </div>;
+  </div>
+);
 
 export default NotFound;

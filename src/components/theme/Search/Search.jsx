@@ -13,15 +13,18 @@ import { asyncConnect } from 'redux-connect';
 
 import { searchContent } from '../../../actions';
 
-@asyncConnect(
-  [
-    {
-      key: 'search',
-      promise: ({ location, store: { dispatch } }) =>
-        dispatch(searchContent(location.query.SearchableText)),
-    },
-  ],
-)
+/**
+ * Search component class.
+ * @class Search
+ * @extends Component
+ */
+@asyncConnect([
+  {
+    key: 'search',
+    promise: ({ location, store: { dispatch } }) =>
+      dispatch(searchContent(location.query.SearchableText)),
+  },
+])
 @connect(
   (state, props) => ({
     loaded: state.search.loaded,
@@ -30,13 +33,7 @@ import { searchContent } from '../../../actions';
   }),
   dispatch => bindActionCreators({ searchContent }, dispatch),
 )
-/**
- * Search component class.
- * @class Search
- * @extends Component
- */
 export default class Search extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -46,13 +43,15 @@ export default class Search extends Component {
     searchContent: PropTypes.func.isRequired,
     searchableText: PropTypes.string,
     loaded: PropTypes.bool.isRequired,
-    items: PropTypes.arrayOf(PropTypes.shape({
-      '@id': PropTypes.string,
-      '@type': PropTypes.string,
-      title: PropTypes.string,
-      description: PropTypes.string,
-    })),
-  }
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        '@id': PropTypes.string,
+        '@type': PropTypes.string,
+        title: PropTypes.string,
+        description: PropTypes.string,
+      }),
+    ),
+  };
 
   /**
    * Default properties.
@@ -62,7 +61,7 @@ export default class Search extends Component {
   static defaultProps = {
     items: [],
     searchableText: null,
-  }
+  };
 
   /**
    * Component will mount
@@ -101,14 +100,13 @@ export default class Search extends Component {
         <div className="container">
           <article id="content">
             <header>
-              <h1 className="documentFirstHeading">Search results for <strong>{this.props.searchableText}</strong></h1>
+              <h1 className="documentFirstHeading">
+                Search results for <strong>{this.props.searchableText}</strong>
+              </h1>
             </header>
             <section id="content-core">
-              {this.props.items.map(item =>
-                <article
-                  className="tileItem"
-                  key={item['@id']}
-                >
+              {this.props.items.map(item => (
+                <article className="tileItem" key={item['@id']}>
                   <h2 className="tileHeadline">
                     <Link
                       to={item['@id']}
@@ -121,16 +119,15 @@ export default class Search extends Component {
                   {item.description &&
                     <div className="tileBody">
                       <span className="description">{item.description}</span>
-                    </div>
-                  }
+                    </div>}
                   <div className="tileFooter">
                     <Link to={item['@id']}>
                       Read More…
                     </Link>
                   </div>
                   <div className="visualClear" />
-                </article>,
-              )}
+                </article>
+              ))}
             </section>
           </article>
         </div>

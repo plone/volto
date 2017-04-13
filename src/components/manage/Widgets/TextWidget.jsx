@@ -12,7 +12,9 @@ import { Form, Input, Label } from 'semantic-ui-react';
  * @function TextWidget
  * @returns {string} Markup of the component.
  */
-const TextWidget = ({ id, title, required, description, error, value, onChange }) =>
+const TextWidget = (
+  { id, title, required, description, error, value, onChange },
+) => (
   <Form.Field required={required} error={error}>
     <label htmlFor={`field-${id}`}>
       {title}
@@ -22,10 +24,12 @@ const TextWidget = ({ id, title, required, description, error, value, onChange }
       id={`field-${id}`}
       name={id}
       value={value || ''}
-      onChange={({ target }) => onChange(id, target.value === '' ? undefined : target.value)}
+      onChange={({ target }) =>
+        onChange(id, target.value === '' ? undefined : target.value)}
     />
     {error && <Label basic color="red" pointing="below">{error}</Label>}
-  </Form.Field>;
+  </Form.Field>
+);
 
 /**
  * Property types.

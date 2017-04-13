@@ -1,17 +1,23 @@
 import content from './content';
 import {
-  ADD_CONTENT_PENDING, ADD_CONTENT_SUCCESS, ADD_CONTENT_FAIL,
-  DELETE_CONTENT_PENDING, DELETE_CONTENT_SUCCESS, DELETE_CONTENT_FAIL,
-  EDIT_CONTENT_PENDING, EDIT_CONTENT_SUCCESS, EDIT_CONTENT_FAIL,
-  GET_CONTENT_PENDING, GET_CONTENT_SUCCESS, GET_CONTENT_FAIL,
+  ADD_CONTENT_PENDING,
+  ADD_CONTENT_SUCCESS,
+  ADD_CONTENT_FAIL,
+  DELETE_CONTENT_PENDING,
+  DELETE_CONTENT_SUCCESS,
+  DELETE_CONTENT_FAIL,
+  EDIT_CONTENT_PENDING,
+  EDIT_CONTENT_SUCCESS,
+  EDIT_CONTENT_FAIL,
+  GET_CONTENT_PENDING,
+  GET_CONTENT_SUCCESS,
+  GET_CONTENT_FAIL,
 } from '../../constants/ActionTypes';
 import config from '../../config';
 
 describe('Content reducer', () => {
   it('should return the initial state', () => {
-    expect(
-      content(),
-    ).toEqual({
+    expect(content()).toEqual({
       add: {
         loaded: false,
         loading: false,
@@ -350,9 +356,11 @@ describe('Content reducer', () => {
       content(undefined, {
         type: GET_CONTENT_SUCCESS,
         result: {
-          items: [{
-            '@id': `${config.apiPath}/home-page`,
-          }],
+          items: [
+            {
+              '@id': `${config.apiPath}/home-page`,
+            },
+          ],
         },
       }),
     ).toEqual({
@@ -377,10 +385,12 @@ describe('Content reducer', () => {
         error: null,
       },
       data: {
-        items: [{
-          '@id': `${config.apiPath}/home-page`,
-          url: '/home-page',
-        }],
+        items: [
+          {
+            '@id': `${config.apiPath}/home-page`,
+            url: '/home-page',
+          },
+        ],
       },
     });
   });

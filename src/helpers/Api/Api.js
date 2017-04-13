@@ -26,38 +26,40 @@ function formatUrl(path) {
  * @class Api
  */
 export default class Api {
-
   /**
    * Constructor
    * @method constructor
    * @constructs Api
    */
   constructor() {
-    methods.forEach((method) => {
-      this[method] = (path, { params, data, type } = {}) => new Promise((resolve, reject) => {
-        const request = superagent[method](formatUrl(path));
+    methods.forEach(method => {
+      this[method] = (path, { params, data, type } = {}) =>
+        new Promise((resolve, reject) => {
+          const request = superagent[method](formatUrl(path));
 
-        if (params) {
-          request.query(params);
-        }
+          if (params) {
+            request.query(params);
+          }
 
-        const authToken = cookie.load('auth_token');
-        if (authToken) {
-          request.set('Authorization', `Bearer ${authToken}`);
-        }
+          const authToken = cookie.load('auth_token');
+          if (authToken) {
+            request.set('Authorization', `Bearer ${authToken}`);
+          }
 
-        request.set('Accept', 'application/json');
+          request.set('Accept', 'application/json');
 
-        if (type) {
-          request.type(type);
-        }
+          if (type) {
+            request.type(type);
+          }
 
-        if (data) {
-          request.send(data);
-        }
+          if (data) {
+            request.send(data);
+          }
 
-        request.end((err, { body } = {}) => (err ? reject(body || err) : resolve(body)));
-      });
+          request.end(
+            (err, { body } = {}) => err ? reject(body || err) : resolve(body),
+          );
+        });
     });
   }
 }

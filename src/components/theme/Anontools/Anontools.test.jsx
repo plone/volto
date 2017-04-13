@@ -12,7 +12,7 @@ describe('Anontools', () => {
     const component = renderer.create(
       <Provider store={store}>
         <Anontools />
-      </Provider>
+      </Provider>,
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
@@ -23,9 +23,9 @@ describe('Anontools', () => {
     const component = renderer.create(
       <Provider store={store}>
         <Anontools />
-      </Provider>
+      </Provider>,
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
-})
+});

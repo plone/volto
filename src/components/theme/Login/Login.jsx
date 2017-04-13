@@ -15,20 +15,23 @@ import { Button, Form, Input, Segment } from 'semantic-ui-react';
 
 import { login } from '../../../actions';
 
-@asyncConnect(
-  [
-    {
-      key: 'userSession',
-      promise: ({ store: { dispatch, getState } }) => {
-        const form = getState().form;
-        if (!isEmpty(form)) {
-          return dispatch(login(form.login, form.password));
-        }
-        return Promise.resolve({});
-      },
+/**
+ * Login container class.
+ * @class Login
+ * @extends Component
+ */
+@asyncConnect([
+  {
+    key: 'userSession',
+    promise: ({ store: { dispatch, getState } }) => {
+      const form = getState().form;
+      if (!isEmpty(form)) {
+        return dispatch(login(form.login, form.password));
+      }
+      return Promise.resolve({});
     },
-  ],
-)
+  },
+])
 @connect(
   state => ({
     error: state.userSession.login.error,
@@ -36,13 +39,7 @@ import { login } from '../../../actions';
   }),
   dispatch => bindActionCreators({ login }, dispatch),
 )
-/**
- * Login container class.
- * @class Login
- * @extends Component
- */
 export default class Login extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -54,7 +51,7 @@ export default class Login extends Component {
       message: PropTypes.string,
     }),
     token: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
-  }
+  };
 
   /**
    * Default properties.
@@ -64,7 +61,7 @@ export default class Login extends Component {
   static defaultProps = {
     error: null,
     token: null,
-  }
+  };
 
   /**
    * Constructor
@@ -96,8 +93,10 @@ export default class Login extends Component {
    * @returns {undefined}
    */
   onLogin(event) {
-    this.props.login(document.getElementsByName('login')[0].value,
-                     document.getElementsByName('password')[0].value);
+    this.props.login(
+      document.getElementsByName('login')[0].value,
+      document.getElementsByName('password')[0].value,
+    );
     event.preventDefault();
   }
 
@@ -115,8 +114,7 @@ export default class Login extends Component {
             <div className="portalMessage error">
               <strong>Error</strong>
               {this.props.error.message}
-            </div>
-          }
+            </div>}
           <Form method="post" onSubmit={this.onLogin}>
             <Segment attached="top">
               <Form.Field>

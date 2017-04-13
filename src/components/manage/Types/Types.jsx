@@ -14,19 +14,18 @@ import { Dropdown, Icon } from 'semantic-ui-react';
 import { getTypes } from '../../../actions';
 import config from '../../../config';
 
-@connect(
-  state => ({
-    types: state.types.types,
-  }),
-  dispatch => bindActionCreators({ getTypes}, dispatch),
-)
 /**
  * Types container class.
  * @class Types
  * @extends Component
  */
+@connect(
+  state => ({
+    types: state.types.types,
+  }),
+  dispatch => bindActionCreators({ getTypes }, dispatch),
+)
 export default class Types extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -35,13 +34,15 @@ export default class Types extends Component {
   static propTypes = {
     pathname: PropTypes.string.isRequired,
     getTypes: PropTypes.func.isRequired,
-    types: PropTypes.arrayOf(PropTypes.shape({
-      '@id': PropTypes.string,
-      addable: PropTypes.bool,
-      title: PropTypes.string,
-    })),
+    types: PropTypes.arrayOf(
+      PropTypes.shape({
+        '@id': PropTypes.string,
+        addable: PropTypes.bool,
+        title: PropTypes.string,
+      }),
+    ),
     active: PropTypes.bool,
-  }
+  };
 
   /**
    * Default properties
@@ -51,7 +52,7 @@ export default class Types extends Component {
   static defaultProps = {
     types: [],
     active: false,
-  }
+  };
 
   /**
    * Component will mount
@@ -68,16 +69,15 @@ export default class Types extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return (
-      this.props.types.length > 0 ?
-        <Dropdown
+    return this.props.types.length > 0
+      ? <Dropdown
           item
           trigger={<span><Icon name="add" /> Add new...</span>}
           pointing="left"
           className={this.props.active ? 'active' : ''}
         >
           <Dropdown.Menu>
-            {map(filter(this.props.types, ), item =>
+            {map(filter(this.props.types), item => (
               <Link
                 to={`${this.props.pathname}/add?type=${item.title}`}
                 className="item"
@@ -85,10 +85,9 @@ export default class Types extends Component {
               >
                 {item.title}
               </Link>
-            )}
+            ))}
           </Dropdown.Menu>
         </Dropdown>
-      : <span />
-    );
+      : <span />;
   }
 }

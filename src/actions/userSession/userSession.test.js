@@ -1,6 +1,8 @@
 import { login, logout } from './userSession';
 import {
-  LOGIN_PENDING, LOGIN_SUCCESS, LOGIN_FAIL,
+  LOGIN_PENDING,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
   LOGOUT,
 } from '../../constants/ActionTypes';
 
@@ -18,7 +20,9 @@ describe('User session action', () => {
       };
       action.promise(apiMock);
 
-      expect(apiMock.post).toBeCalledWith('@login', { data: { login: username, password } });
+      expect(apiMock.post).toBeCalledWith('@login', {
+        data: { login: username, password },
+      });
     });
   });
 

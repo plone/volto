@@ -12,25 +12,19 @@ import { asyncConnect } from 'redux-connect';
 import { Login } from '../../../components';
 import { logout } from '../../../actions';
 
-@asyncConnect(
-  [
-    {
-      key: 'userSession',
-      promise: ({ store: { dispatch } }) => dispatch(logout()),
-    },
-  ],
-)
-@connect(
-  () => ({}),
-  dispatch => bindActionCreators({ logout }, dispatch),
-)
 /**
  * Logout container class.
  * @class Logout
  * @extends Component
  */
+@asyncConnect([
+  {
+    key: 'userSession',
+    promise: ({ store: { dispatch } }) => dispatch(logout()),
+  },
+])
+@connect(() => ({}), dispatch => bindActionCreators({ logout }, dispatch))
 export default class Logout extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -38,7 +32,7 @@ export default class Logout extends Component {
    */
   static propTypes = {
     logout: PropTypes.func.isRequired,
-  }
+  };
 
   /**
    * Component will mount

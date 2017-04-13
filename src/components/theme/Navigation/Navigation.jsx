@@ -13,19 +13,18 @@ import { Container, Segment, Menu } from 'semantic-ui-react';
 import { getNavigation } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
+/**
+ * Navigation container class.
+ * @class Navigation
+ * @extends Component
+ */
 @connect(
   state => ({
     items: state.navigation.items,
   }),
   dispatch => bindActionCreators({ getNavigation }, dispatch),
 )
-/**
- * Navigation container class.
- * @class Navigation
- * @extends Component
- */
 export default class Navigation extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -34,11 +33,13 @@ export default class Navigation extends Component {
   static propTypes = {
     getNavigation: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
-    items: PropTypes.arrayOf(PropTypes.shape({
-      title: PropTypes.string,
-      url: PropTypes.string,
-    })).isRequired,
-  }
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        url: PropTypes.string,
+      }),
+    ).isRequired,
+  };
 
   /**
    * Component will mount
@@ -67,8 +68,8 @@ export default class Navigation extends Component {
    * @returns {url} Url of the navigation item.
    */
   isActive(url) {
-    return ((url === '' && this.props.pathname === '/') ||
-            (url !== '' && this.props.pathname.indexOf(url) !== -1));
+    return (url === '' && this.props.pathname === '/') ||
+      (url !== '' && this.props.pathname.indexOf(url) !== -1);
   }
 
   /**
@@ -81,15 +82,15 @@ export default class Navigation extends Component {
       <Segment inverted color="blue" vertical>
         <Container>
           <Menu secondary inverted>
-            {this.props.items.map(item =>
+            {this.props.items.map(item => (
               <Link
                 to={item.url === '' ? '/' : item.url}
                 key={item.url}
                 className={`item${this.isActive(item.url) ? ' active' : ''}`}
               >
                 {item.title}
-              </Link>,
-            )}
+              </Link>
+            ))}
           </Menu>
         </Container>
       </Segment>

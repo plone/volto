@@ -39,11 +39,10 @@ export default function search(state = initialState, action = {}) {
       return {
         ...state,
         error: null,
-        items: map(action.result.items,
-                   item => ({
-                     title: item.title,
-                     '@id': item['@id'].replace(config.apiPath, ''),
-                   })),
+        items: map(action.result.items, item => ({
+          title: item.title,
+          '@id': item['@id'].replace(config.apiPath, ''),
+        })),
         loaded: true,
         loading: false,
       };

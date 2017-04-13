@@ -13,18 +13,15 @@ import { Actions, Display, Types, Workflow } from '../../../components';
 
 import logo from './plone-toolbarlogo.svg';
 
-@connect(
-  state => ({
-    token: state.userSession.token,
-  }),
-)
 /**
  * Toolbar container class.
  * @class Toolbar
  * @extends Component
  */
+@connect(state => ({
+  token: state.userSession.token,
+}))
 export default class Toolbar extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -34,7 +31,7 @@ export default class Toolbar extends Component {
     pathname: PropTypes.string.isRequired,
     selected: PropTypes.string.isRequired,
     token: PropTypes.string,
-  }
+  };
 
   /**
    * Default properties.
@@ -43,7 +40,7 @@ export default class Toolbar extends Component {
    */
   static defaultProps = {
     token: null,
-  }
+  };
 
   /**
    * Render method.
@@ -51,24 +48,33 @@ export default class Toolbar extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return (
-      this.props.token &&
-        <Menu inverted vertical fixed="left">
-          <Menu.Item color="blue" active><img alt="Plone Toolbar" src={logo} /></Menu.Item>
-          <Link to={`${this.props.pathname}/edit`} className={`item${this.props.selected === 'edit' ? ' active' : ''}`}>
-            <span><Icon name="write" /> Edit</span>
-          </Link>
-          <Link to={this.props.pathname} className={`item${this.props.selected === 'view' ? ' active' : ''}`}>
-            <span><Icon name="eye" /> View</span>
-          </Link>
-          <Types pathname={this.props.pathname} active={this.props.selected === 'add'} />
-          <Workflow pathname={this.props.pathname} />
-          <Actions pathname={this.props.pathname} />
-          <Display pathname={this.props.pathname} />
-          <Link to="/logout" className="item personal-bar">
-            <span><Icon name="user" /> Log out</span>
-          </Link>
-        </Menu>
-    );
+    return this.props.token &&
+      <Menu inverted vertical fixed="left">
+        <Menu.Item color="blue" active>
+          <img alt="Plone Toolbar" src={logo} />
+        </Menu.Item>
+        <Link
+          to={`${this.props.pathname}/edit`}
+          className={`item${this.props.selected === 'edit' ? ' active' : ''}`}
+        >
+          <span><Icon name="write" /> Edit</span>
+        </Link>
+        <Link
+          to={this.props.pathname}
+          className={`item${this.props.selected === 'view' ? ' active' : ''}`}
+        >
+          <span><Icon name="eye" /> View</span>
+        </Link>
+        <Types
+          pathname={this.props.pathname}
+          active={this.props.selected === 'add'}
+        />
+        <Workflow pathname={this.props.pathname} />
+        <Actions pathname={this.props.pathname} />
+        <Display pathname={this.props.pathname} />
+        <Link to="/logout" className="item personal-bar">
+          <span><Icon name="user" /> Log out</span>
+        </Link>
+      </Menu>;
   }
 }

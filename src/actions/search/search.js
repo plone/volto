@@ -4,7 +4,9 @@
  */
 
 import {
-  SEARCH_CONTENT_PENDING, SEARCH_CONTENT_SUCCESS, SEARCH_CONTENT_FAIL,
+  SEARCH_CONTENT_PENDING,
+  SEARCH_CONTENT_SUCCESS,
+  SEARCH_CONTENT_FAIL,
 } from '../../constants/ActionTypes';
 
 /**
@@ -15,7 +17,11 @@ import {
  */
 export default function searchContent(text) {
   return {
-    types: [SEARCH_CONTENT_PENDING, SEARCH_CONTENT_SUCCESS, SEARCH_CONTENT_FAIL],
+    types: [
+      SEARCH_CONTENT_PENDING,
+      SEARCH_CONTENT_SUCCESS,
+      SEARCH_CONTENT_FAIL,
+    ],
     promise: api => api.get(`/@search?SearchableText=${text}`),
   };
 }

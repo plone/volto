@@ -8,11 +8,13 @@ test('renders a tabular view component', () => {
       content={{
         title: 'Hello World!',
         description: 'Hi',
-        items: [{
-          title: 'My item',
-          description: 'My item description',
-          url: 'http://item',
-        }],
+        items: [
+          {
+            title: 'My item',
+            description: 'My item description',
+            url: 'http://item',
+          },
+        ],
       }}
     />,
   );

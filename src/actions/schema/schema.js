@@ -4,7 +4,9 @@
  */
 
 import {
-  GET_SCHEMA_PENDING, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL,
+  GET_SCHEMA_PENDING,
+  GET_SCHEMA_SUCCESS,
+  GET_SCHEMA_FAIL,
 } from '../../constants/ActionTypes';
 
 /**

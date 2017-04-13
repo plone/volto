@@ -12,7 +12,9 @@ import { Form, Select, Label } from 'semantic-ui-react';
  * @function SelectWidget
  * @returns {string} Markup of the component.
  */
-const SelectWidget = ({ id, title, required, description, error, value, choices, onChange }) =>
+const SelectWidget = (
+  { id, title, required, description, error, value, choices, onChange },
+) => (
   <Form.Field required={required} error={error}>
     <label htmlFor={`field-${id}`}>
       {title}
@@ -22,7 +24,8 @@ const SelectWidget = ({ id, title, required, description, error, value, choices,
       id={`field-${id}`}
       name={id}
       value={value || 'no-value'}
-      onChange={(event, { value }) => onChange(id, value === 'no-value' ? undefined : value)}
+      onChange={(event, { value }) =>
+        onChange(id, value === 'no-value' ? undefined : value)}
       options={[
         { key: 'no-value', text: 'No value', value: 'no-value' },
         ...choices.map(option => ({
@@ -33,7 +36,8 @@ const SelectWidget = ({ id, title, required, description, error, value, choices,
       ]}
     />
     {error && <Label basic color="red" pointing="below">{error}</Label>}
-  </Form.Field>;
+  </Form.Field>
+);
 
 /**
  * Property types.

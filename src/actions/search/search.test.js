@@ -1,6 +1,8 @@
 import searchContent from './search';
 import {
-  SEARCH_CONTENT_PENDING, SEARCH_CONTENT_SUCCESS, SEARCH_CONTENT_FAIL,
+  SEARCH_CONTENT_PENDING,
+  SEARCH_CONTENT_SUCCESS,
+  SEARCH_CONTENT_FAIL,
 } from '../../constants/ActionTypes';
 
 describe('Search action', () => {

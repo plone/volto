@@ -8,14 +8,16 @@ test('renders a summary view component', () => {
       content={{
         title: 'Hello World!',
         description: 'Hi',
-        items: [{
-          title: 'My item',
-          description: 'My item description',
-          url: 'http://item',
-          '@type': 'Document',
-        }],
+        items: [
+          {
+            title: 'My item',
+            description: 'My item description',
+            url: 'http://item',
+            '@type': 'Document',
+          },
+        ],
       }}
-    />
+    />,
   );
   const json = component.toJSON();
   expect(json).toMatchSnapshot();

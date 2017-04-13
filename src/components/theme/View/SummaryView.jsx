@@ -23,7 +23,7 @@ const SummaryView = ({ content }) => (
         {content.description && <p>{content.description}</p>}
       </header>
       <section id="content-core">
-        {content.items.map(item =>
+        {content.items.map(item => (
           <article key={item.url}>
             <h2>
               <Link to={item.url} title={item['@type']}>
@@ -36,8 +36,8 @@ const SummaryView = ({ content }) => (
                 Read More…
               </Link>
             </p>
-          </article>,
-        )}
+          </article>
+        ))}
       </section>
     </article>
   </div>

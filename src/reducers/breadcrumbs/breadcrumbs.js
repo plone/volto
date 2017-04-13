@@ -39,11 +39,10 @@ export default function breadcrumbs(state = initialState, action = {}) {
       return {
         ...state,
         error: null,
-        items: map(action.result[0].items,
-                   item => ({
-                     title: item.title,
-                     url: item.url.replace(config.apiPath, ''),
-                   })),
+        items: map(action.result[0].items, item => ({
+          title: item.title,
+          url: item.url.replace(config.apiPath, ''),
+        })),
         loaded: true,
         loading: false,
       };

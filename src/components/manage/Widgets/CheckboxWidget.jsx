@@ -12,7 +12,9 @@ import { Form, Label, Checkbox } from 'semantic-ui-react';
  * @function CheckboxWidget
  * @returns {string} Markup of the component.
  */
-const CheckboxWidget = ({ id, title, required, description, error, value, onChange }) =>
+const CheckboxWidget = (
+  { id, title, required, description, error, value, onChange },
+) => (
   <Form.Field required={required} error={error}>
     <Checkbox
       id={`field-${id}`}
@@ -23,7 +25,8 @@ const CheckboxWidget = ({ id, title, required, description, error, value, onChan
     />
     {description && <div className="help">{description}</div>}
     {error && <Label basic color="red" pointing="below">{error}</Label>}
-  </Form.Field>;
+  </Form.Field>
+);
 
 /**
  * Property types.

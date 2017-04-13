@@ -6,7 +6,12 @@
 
 export getBreadcrumbs from './breadcrumbs/breadcrumbs';
 export { copy, cut, copyContent, moveContent } from './clipboard/clipboard';
-export { addContent, deleteContent, editContent, getContent } from './content/content';
+export {
+  addContent,
+  deleteContent,
+  editContent,
+  getContent,
+} from './content/content';
 export getNavigation from './navigation/navigation';
 export getSchema from './schema/schema';
 export getTypes from './types/types';

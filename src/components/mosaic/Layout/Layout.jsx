@@ -17,7 +17,6 @@ import { Grid } from '../../../components';
  * @extends Component
  */
 export default class Layout extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -33,7 +32,7 @@ export default class Layout extends Component {
         }),
       ),
     ).isRequired,
-  }
+  };
 
   /**
    * Construcor
@@ -44,16 +43,17 @@ export default class Layout extends Component {
     super(props);
     this.state = {
       layout: this.props.layout.map((row, rowIndex) =>
-        row.map((tile, tileIndex) =>
-          ({
-            width: tile.width,
-            content: __SERVER__ ? tile.content : EditorState.createWithContent(
-              ContentState.createFromBlockArray(convertFromHTML(tile.content)),
-            ),
-            selected: rowIndex === 0 && tileIndex === 0,
-          }),
-        ),
-      ),
+        row.map((tile, tileIndex) => ({
+          width: tile.width,
+          content: __SERVER__
+            ? tile.content
+            : EditorState.createWithContent(
+                ContentState.createFromBlockArray(
+                  convertFromHTML(tile.content),
+                ),
+              ),
+          selected: rowIndex === 0 && tileIndex === 0,
+        }))),
       selected: {
         row: 0,
         column: 0,
@@ -82,8 +82,7 @@ export default class Layout extends Component {
             };
           }
           return tile;
-        }),
-      ),
+        })),
     });
   }
 
@@ -95,7 +94,9 @@ export default class Layout extends Component {
    * @returns {undefined}
    */
   selectTile(row, column) {
-    this.state.layout[this.state.selected.row][this.state.selected.column].selected = false;
+    this.state.layout[this.state.selected.row][
+      this.state.selected.column
+    ].selected = false;
     this.state.layout[row][column].selected = true;
     this.setState({
       selected: {
@@ -114,15 +115,11 @@ export default class Layout extends Component {
   render() {
     const { layout } = this.state;
     const rows = layout.map(row =>
-      row.map(tile =>
-        ({
-          width: tile.width,
-          content: tile.content,
-          selected: tile.selected,
-        }),
-      ),
-    );
-    console.log(rows);
+      row.map(tile => ({
+        width: tile.width,
+        content: tile.content,
+        selected: tile.selected,
+      })));
 
     return (
       <Grid

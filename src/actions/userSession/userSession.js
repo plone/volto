@@ -4,7 +4,9 @@
  */
 
 import {
-  LOGIN_PENDING, LOGIN_SUCCESS, LOGIN_FAIL,
+  LOGIN_PENDING,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
   LOGOUT,
 } from '../../constants/ActionTypes';
 

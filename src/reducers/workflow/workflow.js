@@ -4,8 +4,12 @@
  */
 
 import {
-  TRANSITION_WORKFLOW_PENDING, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL,
-  GET_WORKFLOW_PENDING, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL,
+  TRANSITION_WORKFLOW_PENDING,
+  TRANSITION_WORKFLOW_SUCCESS,
+  TRANSITION_WORKFLOW_FAIL,
+  GET_WORKFLOW_PENDING,
+  GET_WORKFLOW_SUCCESS,
+  GET_WORKFLOW_FAIL,
 } from '../../constants/ActionTypes';
 
 const initialState = {
@@ -57,7 +61,9 @@ export default function content(state = initialState, action = {}) {
       return {
         ...state,
         history: action.result.history ? action.result.history : state.history,
-        transitions: action.result.transitions ? action.result.transitions : state.transitions,
+        transitions: action.result.transitions
+          ? action.result.transitions
+          : state.transitions,
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,

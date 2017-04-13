@@ -1,14 +1,16 @@
 import workflow from './workflow';
 import {
-  GET_WORKFLOW_PENDING, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL,
-  TRANSITION_WORKFLOW_PENDING, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL,
+  GET_WORKFLOW_PENDING,
+  GET_WORKFLOW_SUCCESS,
+  GET_WORKFLOW_FAIL,
+  TRANSITION_WORKFLOW_PENDING,
+  TRANSITION_WORKFLOW_SUCCESS,
+  TRANSITION_WORKFLOW_FAIL,
 } from '../../constants/ActionTypes';
 
 describe('Workflow reducer', () => {
   it('should return the initial state', () => {
-    expect(
-      workflow(),
-    ).toEqual({
+    expect(workflow()).toEqual({
       get: {
         loaded: false,
         loading: false,

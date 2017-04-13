@@ -4,9 +4,14 @@
  */
 
 import {
-  COPY_PENDING, COPY_SUCCESS, COPY_FAIL,
-  MOVE_PENDING, MOVE_SUCCESS, MOVE_FAIL,
-  COPY, CUT,
+  COPY_PENDING,
+  COPY_SUCCESS,
+  COPY_FAIL,
+  MOVE_PENDING,
+  MOVE_SUCCESS,
+  MOVE_FAIL,
+  COPY,
+  CUT,
 } from '../../constants/ActionTypes';
 
 /**

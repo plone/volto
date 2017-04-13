@@ -16,7 +16,6 @@ import { Field, Tabs } from '../../../components';
  * @extends Component
  */
 export default class Form extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -36,7 +35,7 @@ export default class Form extends Component {
     formData: PropTypes.objectOf(PropTypes.any),
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
-  }
+  };
 
   /**
    * Default properties.
@@ -45,7 +44,7 @@ export default class Form extends Component {
    */
   static defaultProps = {
     formData: {},
-  }
+  };
 
   /**
    * Constructor
@@ -123,7 +122,7 @@ export default class Form extends Component {
     return (
       <UiForm onSubmit={this.onSubmit}>
         <Menu attached="top" tabular>
-          {map(schema.fieldsets, (item, index) =>
+          {map(schema.fieldsets, (item, index) => (
             <Menu.Item
               name={item.id}
               index={index}
@@ -133,12 +132,10 @@ export default class Form extends Component {
             >
               {item.title}
             </Menu.Item>
-          )}
+          ))}
         </Menu>
         <Segment attached>
-          {fields.map(field =>
-            <Field {...field} key={field.id} />,
-          )}
+          {fields.map(field => <Field {...field} key={field.id} />)}
         </Segment>
         <Segment attached="bottom">
           <Button primary type="submit">Save</Button>

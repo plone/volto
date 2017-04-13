@@ -13,34 +13,38 @@ import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
 
 import {
-  Form,
-//  Layout,
+  Form, //  Layout,
 } from '../../../components';
 import { editContent, getContent, getSchema } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
-@asyncConnect(
-  [
-    {
-      key: 'schema',
-      promise: ({ store: { dispatch, getState } }) =>
-        dispatch(getSchema(getState().content.data['@type'])),
-    },
-    {
-      key: 'content',
-      promise: ({ location, store: { dispatch, getState } }) => {
-        const form = getState().form;
-        if (!isEmpty(form)) {
-          return dispatch(editContent(
+/**
+ * Edit container class.
+ * @class Edit
+ * @extends Component
+ */
+@asyncConnect([
+  {
+    key: 'schema',
+    promise: ({ store: { dispatch, getState } }) =>
+      dispatch(getSchema(getState().content.data['@type'])),
+  },
+  {
+    key: 'content',
+    promise: ({ location, store: { dispatch, getState } }) => {
+      const form = getState().form;
+      if (!isEmpty(form)) {
+        return dispatch(
+          editContent(
             getBaseUrl(location.pathname),
-            pick(form, ['title', 'description', 'text'])),
-          );
-        }
-        return Promise.resolve(getState().content);
-      },
+            pick(form, ['title', 'description', 'text']),
+          ),
+        );
+      }
+      return Promise.resolve(getState().content);
     },
-  ],
-)
+  },
+])
 @connect(
   (state, props) => ({
     content: state.content.data,
@@ -49,15 +53,10 @@ import { getBaseUrl } from '../../../helpers';
     editRequest: state.content.edit,
     pathname: props.location.pathname,
   }),
-  dispatch => bindActionCreators({ editContent, getContent, getSchema }, dispatch),
+  dispatch =>
+    bindActionCreators({ editContent, getContent, getSchema }, dispatch),
 )
-/**
- * Edit container class.
- * @class Edit
- * @extends Component
- */
 export default class Edit extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -83,7 +82,7 @@ export default class Edit extends Component {
       }),
     }),
     schema: PropTypes.objectOf(PropTypes.any),
-  }
+  };
 
   /**
    * Default properties
@@ -93,7 +92,7 @@ export default class Edit extends Component {
   static defaultProps = {
     schema: null,
     content: null,
-  }
+  };
 
   /**
    * Constructor
@@ -160,7 +159,7 @@ export default class Edit extends Component {
       return (
         <div id="page-edit">
           <Helmet title="Edit" />
-          { /*
+          {/*
           <Layout
             layout={[
               [
@@ -184,7 +183,7 @@ export default class Edit extends Component {
               ],
             ]}
           />
-          */ }
+          */}
           <h1>Edit {this.props.schema.title}</h1>
           <Form
             schema={this.props.schema}

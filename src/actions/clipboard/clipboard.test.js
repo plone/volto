@@ -1,8 +1,13 @@
 import { copy, cut, copyContent, moveContent } from './clipboard';
 import {
-  COPY_PENDING, COPY_SUCCESS, COPY_FAIL,
-  MOVE_PENDING, MOVE_SUCCESS, MOVE_FAIL,
-  COPY, CUT,
+  COPY_PENDING,
+  COPY_SUCCESS,
+  COPY_FAIL,
+  MOVE_PENDING,
+  MOVE_SUCCESS,
+  MOVE_FAIL,
+  COPY,
+  CUT,
 } from '../../constants/ActionTypes';
 
 describe('Clipboard action', () => {
@@ -19,7 +24,9 @@ describe('Clipboard action', () => {
       };
       action.promise(apiMock);
 
-      expect(apiMock.post).toBeCalledWith(`${target}/@copy`, { data: { source } });
+      expect(apiMock.post).toBeCalledWith(`${target}/@copy`, {
+        data: { source },
+      });
     });
   });
 
@@ -36,7 +43,9 @@ describe('Clipboard action', () => {
       };
       action.promise(apiMock);
 
-      expect(apiMock.post).toBeCalledWith(`${target}/@move`, { data: { source } });
+      expect(apiMock.post).toBeCalledWith(`${target}/@move`, {
+        data: { source },
+      });
     });
   });
 

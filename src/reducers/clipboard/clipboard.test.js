@@ -1,15 +1,18 @@
 import clipboard from './clipboard';
 import {
-  COPY, CUT,
-  COPY_PENDING, COPY_SUCCESS, COPY_FAIL,
-  MOVE_PENDING, MOVE_SUCCESS, MOVE_FAIL,
+  COPY,
+  CUT,
+  COPY_PENDING,
+  COPY_SUCCESS,
+  COPY_FAIL,
+  MOVE_PENDING,
+  MOVE_SUCCESS,
+  MOVE_FAIL,
 } from '../../constants/ActionTypes';
 
 describe('Clipboard reducer', () => {
   it('should return the initial state', () => {
-    expect(
-      clipboard(),
-    ).toEqual({
+    expect(clipboard()).toEqual({
       action: null,
       source: null,
       request: {

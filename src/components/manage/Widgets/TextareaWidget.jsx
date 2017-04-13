@@ -12,7 +12,9 @@ import { Form, Label, TextArea } from 'semantic-ui-react';
  * @function TextareaWidget
  * @returns {string} Markup of the component.
  */
-const TextareaWidget = ({ id, title, required, description, error, value, onChange }) =>
+const TextareaWidget = (
+  { id, title, required, description, error, value, onChange },
+) => (
   <Form.Field required={required} error={error}>
     <label htmlFor={`field-${id}`}>
       {title}
@@ -22,10 +24,12 @@ const TextareaWidget = ({ id, title, required, description, error, value, onChan
       id={`field-${id}`}
       name={id}
       value={value || ''}
-      onChange={({ target }) => onChange(id, target.value === '' ? undefined : target.value)}
+      onChange={({ target }) =>
+        onChange(id, target.value === '' ? undefined : target.value)}
     />
     {error && <Label basic color="red" pointing="below">{error}</Label>}
-  </Form.Field>;
+  </Form.Field>
+);
 
 /**
  * Property types.

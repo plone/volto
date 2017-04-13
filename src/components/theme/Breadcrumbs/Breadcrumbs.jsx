@@ -13,19 +13,18 @@ import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 import { getBreadcrumbs } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
+/**
+ * Breadcrumbs container class.
+ * @class Breadcrumbs
+ * @extends Component
+ */
 @connect(
   state => ({
     items: state.breadcrumbs.items,
   }),
   dispatch => bindActionCreators({ getBreadcrumbs }, dispatch),
 )
-/**
- * Breadcrumbs container class.
- * @class Breadcrumbs
- * @extends Component
- */
 export default class Breadcrumbs extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -34,11 +33,13 @@ export default class Breadcrumbs extends Component {
   static propTypes = {
     getBreadcrumbs: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
-    items: PropTypes.arrayOf(PropTypes.shape({
-      title: PropTypes.string,
-      url: PropTypes.string,
-    })).isRequired,
-  }
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        url: PropTypes.string,
+      }),
+    ).isRequired,
+  };
 
   /**
    * Component will mount
@@ -73,10 +74,17 @@ export default class Breadcrumbs extends Component {
           <Breadcrumb>
             <Link to="/" className="section">Home</Link>
             {this.props.items.map((item, index, items) => [
-              <Breadcrumb.Divider icon="right angle" key={`divider-${item.url}`}/>,
-              (index < items.length - 1) ?
-                <Link key={item.url} to={item.url} className="section">{item.title}</Link> :
-                <Breadcrumb.Section key={item.url} active>{item.title}</Breadcrumb.Section>,
+              <Breadcrumb.Divider
+                icon="right angle"
+                key={`divider-${item.url}`}
+              />,
+              index < items.length - 1
+                ? <Link key={item.url} to={item.url} className="section">
+                    {item.title}
+                  </Link>
+                : <Breadcrumb.Section key={item.url} active>
+                    {item.title}
+                  </Breadcrumb.Section>,
             ])}
           </Breadcrumb>
         </Container>

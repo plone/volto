@@ -13,8 +13,7 @@ import PropTypes from 'prop-types';
  * @param {string} props.title Title.
  * @returns {string} Markup of the component.
  */
-const Title = ({ title }) =>
-  <h1 className="documentFirstHeading">{title}</h1>;
+const Title = ({ title }) => <h1 className="documentFirstHeading">{title}</h1>;
 
 /**
  * Property types.

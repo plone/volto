@@ -13,13 +13,13 @@ import { last } from 'lodash';
  */
 export function getBaseUrl(url) {
   return url
-          .replace(/\?.*$/, '')
-          .replace('/add', '')
-          .replace('/delete', '')
-          .replace('/edit', '')
-          .replace('/login', '')
-          .replace('/logout', '')
-          .replace('/search', '');
+    .replace(/\?.*$/, '')
+    .replace('/add', '')
+    .replace('/delete', '')
+    .replace('/edit', '')
+    .replace('/login', '')
+    .replace('/logout', '')
+    .replace('/search', '');
 }
 
 /**

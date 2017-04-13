@@ -8,9 +8,7 @@ import config from '../../config';
 
 describe('Breadcrumbs reducer', () => {
   it('should return the initial state', () => {
-    expect(
-      breadcrumbs(),
-    ).toEqual({
+    expect(breadcrumbs()).toEqual({
       error: null,
       items: [],
       loaded: false,
@@ -35,19 +33,25 @@ describe('Breadcrumbs reducer', () => {
     expect(
       breadcrumbs(undefined, {
         type: GET_BREADCRUMBS_SUCCESS,
-        result: [{
-          items: [{
-            title: 'Welcome to Plone!',
-            url: `${config.apiPath}/front-page`,
-          }],
-        }],
+        result: [
+          {
+            items: [
+              {
+                title: 'Welcome to Plone!',
+                url: `${config.apiPath}/front-page`,
+              },
+            ],
+          },
+        ],
       }),
     ).toEqual({
       error: null,
-      items: [{
-        title: 'Welcome to Plone!',
-        url: '/front-page',
-      }],
+      items: [
+        {
+          title: 'Welcome to Plone!',
+          url: '/front-page',
+        },
+      ],
       loaded: true,
       loading: false,
     });

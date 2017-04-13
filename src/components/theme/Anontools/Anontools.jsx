@@ -9,18 +9,15 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { List } from 'semantic-ui-react';
 
-@connect(
-  state => ({
-    token: state.userSession.token,
-  }),
-)
 /**
  * Anontools container class.
  * @class Anontools
  * @extends Component
  */
+@connect(state => ({
+  token: state.userSession.token,
+}))
 export default class Anontools extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -28,7 +25,7 @@ export default class Anontools extends Component {
    */
   static propTypes = {
     token: PropTypes.string,
-  }
+  };
 
   /**
    * Default properties.
@@ -37,7 +34,7 @@ export default class Anontools extends Component {
    */
   static defaultProps = {
     token: null,
-  }
+  };
 
   /**
    * Render method.
@@ -45,11 +42,9 @@ export default class Anontools extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return (
-      !this.props.token &&
-        <List floated="right" horizontal>
-          <Link className="item" to="/login">Log in</Link>
-        </List>
-    );
+    return !this.props.token &&
+      <List floated="right" horizontal>
+        <Link className="item" to="/login">Log in</Link>
+      </List>;
   }
 }

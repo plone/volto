@@ -10,21 +10,21 @@ import { connect } from 'react-redux';
 import { SummaryView, TabularView, DocumentView } from '../../../components';
 import { getContent } from '../../../actions';
 
-@connect(
-  (state, props) => ({
-    content: state.content.data,
-    pathname: props.location.pathname,
-  }), ({
-    getContent,
-  }),
-)
 /**
  * View container class.
  * @class View
  * @extends Component
  */
+@connect(
+  (state, props) => ({
+    content: state.content.data,
+    pathname: props.location.pathname,
+  }),
+  {
+    getContent,
+  },
+)
 export default class View extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -36,7 +36,7 @@ export default class View extends Component {
     content: PropTypes.shape({
       '@type': PropTypes.string,
     }),
-  }
+  };
 
   /**
    * Default properties.
@@ -45,7 +45,7 @@ export default class View extends Component {
    */
   static defaultProps = {
     content: null,
-  }
+  };
 
   /**
    * Component will mount

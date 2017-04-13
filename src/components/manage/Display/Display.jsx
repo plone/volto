@@ -14,6 +14,11 @@ import { getSchema, editContent, getContent } from '../../../actions';
 import config from '../../../config';
 import layouts from '../../../constants/Layouts';
 
+/**
+ * Display container class.
+ * @class Display
+ * @extends Component
+ */
 @connect(
   state => ({
     loaded: state.content.edit.loaded,
@@ -21,15 +26,10 @@ import layouts from '../../../constants/Layouts';
     layout: state.content.data ? state.content.data.layout : '',
     type: state.content.data['@type'],
   }),
-  dispatch => bindActionCreators({ getSchema, editContent, getContent }, dispatch),
+  dispatch =>
+    bindActionCreators({ getSchema, editContent, getContent }, dispatch),
 )
-/**
- * Display container class.
- * @class Display
- * @extends Component
- */
 export default class Display extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -41,12 +41,10 @@ export default class Display extends Component {
     getContent: PropTypes.func.isRequired,
     loaded: PropTypes.bool.isRequired,
     pathname: PropTypes.string.isRequired,
-    layouts: PropTypes.arrayOf(
-      PropTypes.string,
-    ),
+    layouts: PropTypes.arrayOf(PropTypes.string),
     layout: PropTypes.string,
     type: PropTypes.string.isRequired,
-  }
+  };
 
   /**
    * Default properties
@@ -58,7 +56,7 @@ export default class Display extends Component {
     transitions: [],
     layouts: [],
     layout: '',
-  }
+  };
 
   /**
    * Constructor
@@ -102,12 +100,9 @@ export default class Display extends Component {
    * @returns {undefined}
    */
   setLayout(event, { value }) {
-    this.props.editContent(
-      this.props.pathname,
-      {
-        layout: value,
-      },
-    );
+    this.props.editContent(this.props.pathname, {
+      layout: value,
+    });
   }
 
   /**
@@ -117,9 +112,13 @@ export default class Display extends Component {
    */
   render() {
     return (
-      <Dropdown item trigger={<span><Icon name="block layout" /> Display</span>} pointing="left">
+      <Dropdown
+        item
+        trigger={<span><Icon name="block layout" /> Display</span>}
+        pointing="left"
+      >
         <Dropdown.Menu>
-          {this.props.layouts.map(item =>
+          {this.props.layouts.map(item => (
             <Dropdown.Item
               text={layouts[item] || item}
               value={item}
@@ -127,7 +126,7 @@ export default class Display extends Component {
               key={item}
               onClick={this.setLayout}
             />
-          )}
+          ))}
         </Dropdown.Menu>
       </Dropdown>
     );

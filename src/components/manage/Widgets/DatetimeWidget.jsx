@@ -12,7 +12,9 @@ import { Form, Input, Label } from 'semantic-ui-react';
  * @function DatetimeWidget
  * @returns {string} Markup of the component.
  */
-const DatetimeWidget = ({ id, title, required, description, error, value, onChange }) =>
+const DatetimeWidget = (
+  { id, title, required, description, error, value, onChange },
+) => (
   <Form.Field required={required} error={error}>
     <label htmlFor={`field-${id}`}>
       {title}
@@ -23,10 +25,12 @@ const DatetimeWidget = ({ id, title, required, description, error, value, onChan
       name={id}
       type="datetime-local"
       value={value || ''}
-      onChange={({ target }) => onChange(id, target.value === '' ? undefined : target.value)}
+      onChange={({ target }) =>
+        onChange(id, target.value === '' ? undefined : target.value)}
     />
     {error && <Label basic color="red" pointing="below">{error}</Label>}
-  </Form.Field>;
+  </Form.Field>
+);
 
 /**
  * Property types.

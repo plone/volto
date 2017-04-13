@@ -1,11 +1,13 @@
 import types from './types';
-import { GET_TYPES_PENDING, GET_TYPES_SUCCESS, GET_TYPES_FAIL } from '../../constants/ActionTypes';
+import {
+  GET_TYPES_PENDING,
+  GET_TYPES_SUCCESS,
+  GET_TYPES_FAIL,
+} from '../../constants/ActionTypes';
 
 describe('Types reducer', () => {
   it('should return the initial state', () => {
-    expect(
-      types(),
-    ).toEqual({
+    expect(types()).toEqual({
       error: null,
       loaded: false,
       loading: false,

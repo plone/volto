@@ -4,7 +4,9 @@
  */
 
 import {
-  GET_TYPES_PENDING, GET_TYPES_SUCCESS, GET_TYPES_FAIL,
+  GET_TYPES_PENDING,
+  GET_TYPES_SUCCESS,
+  GET_TYPES_FAIL,
 } from '../../constants/ActionTypes';
 
 /**

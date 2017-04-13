@@ -13,6 +13,11 @@ import { Button, List } from 'semantic-ui-react';
 
 import { deleteContent, getContent } from '../../../actions';
 
+/**
+ * Delete container class.
+ * @class Delete
+ * @extends Component
+ */
 @connect(
   (state, props) => ({
     content: state.content.data,
@@ -21,13 +26,7 @@ import { deleteContent, getContent } from '../../../actions';
   }),
   dispatch => bindActionCreators({ deleteContent, getContent }, dispatch),
 )
-/**
- * Delete container class.
- * @class Delete
- * @extends Component
- */
 export default class Delete extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -44,7 +43,7 @@ export default class Delete extends Component {
     content: PropTypes.shape({
       title: PropTypes.string,
     }),
-  }
+  };
 
   /**
    * Default properties
@@ -53,7 +52,7 @@ export default class Delete extends Component {
    */
   static defaultProps = {
     content: null,
-  }
+  };
 
   /**
    * Constructor
@@ -84,7 +83,9 @@ export default class Delete extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
-      browserHistory.push(this.props.pathname.replace('/delete', '').replace(/\/[^/]*$/, ''));
+      browserHistory.push(
+        this.props.pathname.replace('/delete', '').replace(/\/[^/]*$/, ''),
+      );
     }
   }
 
@@ -116,7 +117,9 @@ export default class Delete extends Component {
       return (
         <div id="page-delete">
           <Helmet title="Delete" />
-          <h1 className="documentFirstHeading">Do you really want to delete this item?</h1>
+          <h1 className="documentFirstHeading">
+            Do you really want to delete this item?
+          </h1>
           <List bulleted>
             <List.Item>{this.props.content.title}</List.Item>
           </List>

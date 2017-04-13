@@ -10,11 +10,12 @@ import React, { PropTypes } from 'react';
  * @function Error
  * @returns {string} Markup of the error page.
  */
-const Error = ({ message }) =>
+const Error = ({ message }) => (
   <div>
-    <span>Er is iets fout gegaan:&nbsp;</span>
+    <span>Something went wrong:&nbsp;</span>
     <span>{message}</span>
-  </div>;
+  </div>
+);
 
 Error.propTypes = {
   message: PropTypes.string.isRequired,

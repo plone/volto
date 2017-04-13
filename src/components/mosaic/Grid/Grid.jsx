@@ -17,18 +17,19 @@ import { Row } from '../../../components';
  * @param {func} props.setTileContent Set tile content method.
  * @returns {string} Markup of the row.
  */
-const Grid = ({ rows, selectTile, setTileContent }) =>
+const Grid = ({ rows, selectTile, setTileContent }) => (
   <div className="grid">
-    {rows.map((row, index) =>
+    {rows.map((row, index) => (
       <Row
         key={row}
         row={index}
         selectTile={selectTile}
         setTileContent={setTileContent}
         tiles={row}
-      />,
-    )}
-  </div>;
+      />
+    ))}
+  </div>
+);
 
 /**
  * Property types.

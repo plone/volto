@@ -15,8 +15,10 @@ import { Checkbox, Form, Input } from 'semantic-ui-react';
 const SearchWidget = () => (
   <Form
     action="/search"
-    onSubmit={(e) => {
-      browserHistory.push(`/search?SearchableText=${document.getElementsByName('SearchableText')[0].value}`);
+    onSubmit={e => {
+      browserHistory.push(
+        `/search?SearchableText=${document.getElementsByName('SearchableText')[0].value}`,
+      );
       e.preventDefault();
       return false;
     }}
@@ -25,7 +27,7 @@ const SearchWidget = () => (
       <Input name="SearchableText" action="Search" placeholder="Search Site" />
     </Form.Field>
     <Form.Field>
-      <Checkbox label='only in current section' />
+      <Checkbox label="only in current section" />
     </Form.Field>
   </Form>
 );

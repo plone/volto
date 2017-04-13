@@ -4,10 +4,18 @@
  */
 
 import {
-  ADD_CONTENT_PENDING, ADD_CONTENT_SUCCESS, ADD_CONTENT_FAIL,
-  DELETE_CONTENT_PENDING, DELETE_CONTENT_SUCCESS, DELETE_CONTENT_FAIL,
-  EDIT_CONTENT_PENDING, EDIT_CONTENT_SUCCESS, EDIT_CONTENT_FAIL,
-  GET_CONTENT_PENDING, GET_CONTENT_SUCCESS, GET_CONTENT_FAIL,
+  ADD_CONTENT_PENDING,
+  ADD_CONTENT_SUCCESS,
+  ADD_CONTENT_FAIL,
+  DELETE_CONTENT_PENDING,
+  DELETE_CONTENT_SUCCESS,
+  DELETE_CONTENT_FAIL,
+  EDIT_CONTENT_PENDING,
+  EDIT_CONTENT_SUCCESS,
+  EDIT_CONTENT_FAIL,
+  GET_CONTENT_PENDING,
+  GET_CONTENT_SUCCESS,
+  GET_CONTENT_FAIL,
 } from '../../constants/ActionTypes';
 import config from '../../config';
 
@@ -74,10 +82,12 @@ export default function content(state = initialState, action = {}) {
         ...state,
         data: {
           ...action.result,
-          items: action.result && action.result.items && action.result.items.map(item => ({
-            ...item,
-            url: item['@id'].replace(config.apiPath, ''),
-          })),
+          items: action.result &&
+            action.result.items &&
+            action.result.items.map(item => ({
+              ...item,
+              url: item['@id'].replace(config.apiPath, ''),
+            })),
         },
         [getRequestKey(action.type)]: {
           loading: false,

@@ -10,9 +10,20 @@ import { asyncConnect } from 'redux-connect';
 import { compose } from 'redux';
 import { Segment, Container } from 'semantic-ui-react';
 
-import { Breadcrumbs, Footer, Header, Navigation, Toolbar } from '../../../components';
+import {
+  Breadcrumbs,
+  Footer,
+  Header,
+  Navigation,
+  Toolbar,
+} from '../../../components';
 import { getBaseUrl, getView } from '../../../helpers';
-import { getContent, getNavigation, getBreadcrumbs, getWorkflow } from '../../../actions';
+import {
+  getContent,
+  getNavigation,
+  getBreadcrumbs,
+  getWorkflow,
+} from '../../../actions';
 
 /**
  * This function defines the app component.
@@ -55,34 +66,27 @@ App.propTypes = {
 };
 
 export default compose(
-  asyncConnect(
-    [
-      {
-        key: 'content',
-        promise: ({ location, store: { dispatch } }) =>
-          dispatch(getContent(getBaseUrl(location.pathname))),
-      },
-      {
-        key: 'navigation',
-        promise: ({ location, store: { dispatch } }) =>
-          dispatch(
-            getNavigation(getBaseUrl(location.pathname))),
-      },
-      {
-        key: 'breadcrumbs',
-        promise: ({ location, store: { dispatch } }) =>
-          dispatch(
-            getBreadcrumbs(getBaseUrl(location.pathname))),
-      },
-      {
-        key: 'workflow',
-        promise: ({ location, store: { dispatch } }) =>
-          dispatch(
-            getWorkflow(getBaseUrl(location.pathname))),
-      },
-    ],
-  ),
-  connect(
-    (state, props) => ({ pathname: props.location.pathname }),
-  ),
+  asyncConnect([
+    {
+      key: 'content',
+      promise: ({ location, store: { dispatch } }) =>
+        dispatch(getContent(getBaseUrl(location.pathname))),
+    },
+    {
+      key: 'navigation',
+      promise: ({ location, store: { dispatch } }) =>
+        dispatch(getNavigation(getBaseUrl(location.pathname))),
+    },
+    {
+      key: 'breadcrumbs',
+      promise: ({ location, store: { dispatch } }) =>
+        dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
+    },
+    {
+      key: 'workflow',
+      promise: ({ location, store: { dispatch } }) =>
+        dispatch(getWorkflow(getBaseUrl(location.pathname))),
+    },
+  ]),
+  connect((state, props) => ({ pathname: props.location.pathname })),
 )(App);

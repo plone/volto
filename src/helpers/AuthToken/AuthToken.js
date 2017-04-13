@@ -38,14 +38,10 @@ export function persistAuthToken(store) {
       if (currentValue === null) {
         cookie.remove('auth_token', { path: '/' });
       } else {
-        cookie.save(
-          'auth_token',
-          currentValue,
-          {
-            path: '/',
-            expires: new Date(jwtDecode(currentValue).exp * 1000),
-          },
-        );
+        cookie.save('auth_token', currentValue, {
+          path: '/',
+          expires: new Date(jwtDecode(currentValue).exp * 1000),
+        });
       }
     }
   }

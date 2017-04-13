@@ -1,7 +1,11 @@
 import { getWorkflow, transitionWorkflow } from './workflow';
 import {
-  GET_WORKFLOW_PENDING, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL,
-  TRANSITION_WORKFLOW_PENDING, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL,
+  GET_WORKFLOW_PENDING,
+  GET_WORKFLOW_SUCCESS,
+  GET_WORKFLOW_FAIL,
+  TRANSITION_WORKFLOW_PENDING,
+  TRANSITION_WORKFLOW_SUCCESS,
+  TRANSITION_WORKFLOW_FAIL,
 } from '../../constants/ActionTypes';
 
 describe('Workflow action', () => {
@@ -10,7 +14,11 @@ describe('Workflow action', () => {
       const url = 'http://localhost';
       const action = getWorkflow(url);
 
-      expect(action.types).toEqual([GET_WORKFLOW_PENDING, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL]);
+      expect(action.types).toEqual([
+        GET_WORKFLOW_PENDING,
+        GET_WORKFLOW_SUCCESS,
+        GET_WORKFLOW_FAIL,
+      ]);
 
       const apiMock = {
         get: jest.fn(),
@@ -27,7 +35,10 @@ describe('Workflow action', () => {
       const action = transitionWorkflow(url);
 
       expect(action.types).toEqual([
-        TRANSITION_WORKFLOW_PENDING, TRANSITION_WORKFLOW_SUCCESS, TRANSITION_WORKFLOW_FAIL]);
+        TRANSITION_WORKFLOW_PENDING,
+        TRANSITION_WORKFLOW_SUCCESS,
+        TRANSITION_WORKFLOW_FAIL,
+      ]);
 
       const apiMock = {
         post: jest.fn(),

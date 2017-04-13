@@ -20,9 +20,9 @@ import styles from './Row.scss';
  * @param {func} props.setTileContent Set tile content method.
  * @returns {string} Markup of the row.
  */
-const Row = ({ tiles, row, selectTile, setTileContent }) =>
+const Row = ({ tiles, row, selectTile, setTileContent }) => (
   <div className={`${styles.row} row`}>
-    {tiles.map((tile, index) =>
+    {tiles.map((tile, index) => (
       <Tile
         key={tile.url}
         row={row}
@@ -30,9 +30,10 @@ const Row = ({ tiles, row, selectTile, setTileContent }) =>
         selectTile={selectTile}
         setTileContent={setTileContent}
         {...tile}
-      />,
-    )}
-  </div>;
+      />
+    ))}
+  </div>
+);
 
 /**
  * Property types.

@@ -8,9 +8,7 @@ import config from '../../config';
 
 describe('Search reducer', () => {
   it('should return the initial state', () => {
-    expect(
-      search(),
-    ).toEqual({
+    expect(search()).toEqual({
       error: null,
       items: [],
       loaded: false,
@@ -36,18 +34,22 @@ describe('Search reducer', () => {
       search(undefined, {
         type: SEARCH_CONTENT_SUCCESS,
         result: {
-          items: [{
-            title: 'Welcome to Plone!',
-            '@id': `${config.apiPath}/front-page`,
-          }],
+          items: [
+            {
+              title: 'Welcome to Plone!',
+              '@id': `${config.apiPath}/front-page`,
+            },
+          ],
         },
       }),
     ).toEqual({
       error: null,
-      items: [{
-        title: 'Welcome to Plone!',
-        '@id': '/front-page',
-      }],
+      items: [
+        {
+          title: 'Welcome to Plone!',
+          '@id': '/front-page',
+        },
+      ],
       loaded: true,
       loading: false,
     });

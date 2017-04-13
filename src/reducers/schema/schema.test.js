@@ -7,9 +7,7 @@ import {
 
 describe('Schema reducer', () => {
   it('should return the initial state', () => {
-    expect(
-      schema(),
-    ).toEqual({
+    expect(schema()).toEqual({
       error: null,
       loaded: false,
       loading: false,

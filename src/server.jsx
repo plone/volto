@@ -25,7 +25,7 @@ import userSession from './reducers/userSession/userSession';
 // Debug
 const debug = debugLogger('plone-react:server');
 
-export default (parameters) => {
+export default parameters => {
   const app = express();
   const server = http.Server(app);
   const io = new SocketIO(server);
@@ -58,48 +58,78 @@ export default (parameters) => {
     persistAuthToken(store);
     const history = syncHistoryWithStore(memoryHistory, store);
 
-    match({
-      history,
-      routes: getRoutes(store),
-      location: req.originalUrl,
-    }, (err, redirectInfo, routeState) => { // eslint-disable-line complexity
-      if (redirectInfo && redirectInfo.redirectInfo) {
-        res.redirect(redirectInfo.path);
-      } else if (err) {
-        res.error(err.message);
-      } else {
-        if (routeState) { // eslint-disable-line no-lonely-if
-          if (__SSR__) {
-            loadOnServer({ ...routeState, store })
-              .then(() => {
-                const component = <Provider store={store}><ReduxAsyncConnect {...routeState} /></Provider>; // eslint-disable-line max-len
-                res.set({ 'Cache-Control': 'public, max-age=600, no-transform' });
-                res.status(200).send(`<!doctype html> ${renderToStaticMarkup(<Html assets={parameters.chunks()} component={component} store={store} staticPath={staticPath} />)}`);
-              })
-              .catch((error) => {
-                const errorPage = <ErrorPage message={error.message} />;
-                res.set({ 'Cache-Control': 'public, max-age=60, no-transform' });
-                res.status(500).send(`<!doctype html> ${renderToStaticMarkup(errorPage)}`);
-              });
-          } else {
-            const component = <Provider store={store}><RouterContext {...routeState} /></Provider>; // eslint-disable-line max-len
-            res.set({ 'Cache-Control': 'public, max-age=60, no-transform' });
-            res.status(200).send(`<!doctype html> ${renderToStaticMarkup(<Html assets={parameters.chunks()} component={component} store={store} staticPath={staticPath} />)}`);
-          }
+    match(
+      {
+        history,
+        routes: getRoutes(store),
+        location: req.originalUrl,
+      },
+      (err, redirectInfo, routeState) => {
+        // eslint-disable-line complexity
+        if (redirectInfo && redirectInfo.redirectInfo) {
+          res.redirect(redirectInfo.path);
+        } else if (err) {
+          res.error(err.message);
         } else {
-          res.set({ 'Cache-Control': 'public, max-age=3600, no-transform' });
-          res.sendStatus(404);
+          if (routeState) {
+            // eslint-disable-line no-lonely-if
+            if (__SSR__) {
+              loadOnServer({ ...routeState, store })
+                .then(() => {
+                  const component = (
+                    <Provider store={store}>
+                      <ReduxAsyncConnect {...routeState} />
+                    </Provider>
+                  ); // eslint-disable-line max-len
+                  res.set({
+                    'Cache-Control': 'public, max-age=600, no-transform',
+                  });
+                  res
+                    .status(200)
+                    .send(
+                      `<!doctype html> ${renderToStaticMarkup(<Html assets={parameters.chunks()} component={component} store={store} staticPath={staticPath} />)}`,
+                    );
+                })
+                .catch(error => {
+                  const errorPage = <ErrorPage message={error.message} />;
+                  res.set({
+                    'Cache-Control': 'public, max-age=60, no-transform',
+                  });
+                  res
+                    .status(500)
+                    .send(`<!doctype html> ${renderToStaticMarkup(errorPage)}`);
+                });
+            } else {
+              const component = (
+                <Provider store={store}>
+                  <RouterContext {...routeState} />
+                </Provider>
+              ); // eslint-disable-line max-len
+              res.set({ 'Cache-Control': 'public, max-age=60, no-transform' });
+              res
+                .status(200)
+                .send(
+                  `<!doctype html> ${renderToStaticMarkup(<Html assets={parameters.chunks()} component={component} store={store} staticPath={staticPath} />)}`,
+                );
+            }
+          } else {
+            res.set({ 'Cache-Control': 'public, max-age=3600, no-transform' });
+            res.sendStatus(404);
+          }
         }
-      }
-    });
+      },
+    );
   });
 
   // Start the HTTP server
-  app.listen(config.port, (err) => {
+  app.listen(config.port, err => {
     if (err) {
       debug.error(err);
     } else {
-      debug.info('==> 🚧  Webpack development server listening on port %s', config.port);
+      debug.info(
+        '==> 🚧  Webpack development server listening on port %s',
+        config.port,
+      );
     }
   });
 };

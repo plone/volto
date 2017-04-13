@@ -17,28 +17,33 @@ import { Form } from '../../../components';
 import config from '../../../config';
 import { getBaseUrl } from '../../../helpers';
 
-@asyncConnect(
-  [
-    {
-      key: 'schema',
-      promise: ({ location, store: { dispatch } }) =>
-        dispatch(getSchema(location.query.type)),
+/**
+ * Add container class.
+ * @class Add
+ * @extends Component
+ */
+@asyncConnect([
+  {
+    key: 'schema',
+    promise: ({ location, store: { dispatch } }) =>
+      dispatch(getSchema(location.query.type)),
+  },
+  {
+    key: 'content',
+    promise: ({ location, store: { dispatch, getState } }) => {
+      const form = getState().form;
+      if (!isEmpty(form)) {
+        return dispatch(
+          addContent(getBaseUrl(location.pathname), {
+            ...pick(form, ['title', 'description', 'text']),
+            '@type': 'Document',
+          }),
+        );
+      }
+      return Promise.resolve(getState().content);
     },
-    {
-      key: 'content',
-      promise: ({ location, store: { dispatch, getState } }) => {
-        const form = getState().form;
-        if (!isEmpty(form)) {
-          return dispatch(addContent(
-            getBaseUrl(location.pathname),
-            { ...pick(form, ['title', 'description', 'text']), '@type': 'Document' },
-          ));
-        }
-        return Promise.resolve(getState().content);
-      },
-    },
-  ],
-)
+  },
+])
 @connect(
   (state, props) => ({
     request: state.content.add,
@@ -49,13 +54,7 @@ import { getBaseUrl } from '../../../helpers';
   }),
   dispatch => bindActionCreators({ addContent, getSchema }, dispatch),
 )
-/**
- * Add container class.
- * @class Add
- * @extends Component
- */
 export default class Add extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -66,14 +65,15 @@ export default class Add extends Component {
     getSchema: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     schema: PropTypes.objectOf(PropTypes.any),
-    content: PropTypes.shape({ // eslint-disable-line react/no-unused-prop-types
+    content: PropTypes.shape({
+      // eslint-disable-line react/no-unused-prop-types
       '@id': PropTypes.string,
     }),
     request: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
-  }
+  };
 
   /**
    * Default properties
@@ -83,7 +83,7 @@ export default class Add extends Component {
   static defaultProps = {
     schema: null,
     content: null,
-  }
+  };
 
   /**
    * Constructor
@@ -125,8 +125,10 @@ export default class Add extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    this.props.addContent(getBaseUrl(this.props.pathname),
-                          { ...data, '@type': this.props.type });
+    this.props.addContent(getBaseUrl(this.props.pathname), {
+      ...data,
+      '@type': this.props.type,
+    });
   }
 
   /**

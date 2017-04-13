@@ -14,21 +14,21 @@ import { Dropdown, Icon } from 'semantic-ui-react';
 import { cut, copy, copyContent, moveContent } from '../../../actions';
 import config from '../../../config';
 
+/**
+ * Actions container class.
+ * @class Actions
+ * @extends Component
+ */
 @connect(
   state => ({
     loaded: state.clipboard.request.loaded,
     action: state.clipboard.action,
     source: state.clipboard.source,
   }),
-  dispatch => bindActionCreators({ cut, copy, copyContent, moveContent }, dispatch),
+  dispatch =>
+    bindActionCreators({ cut, copy, copyContent, moveContent }, dispatch),
 )
-/**
- * Actions container class.
- * @class Actions
- * @extends Component
- */
 export default class Actions extends Component {
-
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -43,7 +43,7 @@ export default class Actions extends Component {
     copy: PropTypes.func.isRequired,
     copyContent: PropTypes.func.isRequired,
     moveContent: PropTypes.func.isRequired,
-  }
+  };
 
   /**
    * Default properties
@@ -53,7 +53,7 @@ export default class Actions extends Component {
   static defaultProps = {
     action: null,
     source: null,
-  }
+  };
 
   /**
    * Constructor
@@ -113,25 +113,10 @@ export default class Actions extends Component {
         pointing="left"
       >
         <Dropdown.Menu>
-          <Dropdown.Item
-            icon="cut"
-            text="Cut"
-            onClick={this.cut}
-          />
-          <Dropdown.Item
-            icon="copy"
-            text="Copy"
-            onClick={this.copy}
-          />
-          <Dropdown.Item
-            icon="paste"
-            text="Paste"
-            onClick={this.paste}
-          />
-          <Link
-            to={`${this.props.pathname}/delete`}
-            className="item"
-          >
+          <Dropdown.Item icon="cut" text="Cut" onClick={this.cut} />
+          <Dropdown.Item icon="copy" text="Copy" onClick={this.copy} />
+          <Dropdown.Item icon="paste" text="Paste" onClick={this.paste} />
+          <Link to={`${this.props.pathname}/delete`} className="item">
             <Icon name="trash" />Delete
           </Link>
         </Dropdown.Menu>

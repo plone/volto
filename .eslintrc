@@ -18,6 +18,9 @@
         "ClassDeclaration": true,
       }
     }],
+    "arrow-parens": "off",    // Keep compatible with prettier
+    "no-confusing-arrow": 0,  // Keep compatible with prettier
+    "prettier/prettier": ["error", {"trailingComma": "all", "singleQuote": true}],
   },
   "globals": {
     "root": true,
@@ -32,4 +35,7 @@
     "socket": true,
     "webpackIsomorphicTools": true,
   },
+  "plugins": [
+    "prettier",
+  ],
 }
