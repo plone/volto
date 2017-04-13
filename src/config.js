@@ -2,9 +2,9 @@
  * Config.
  * @module config
  */
-const _ = require('lodash');
+import { defaults } from 'lodash';
 
-module.exports = _.defaults(
+export default defaults(
   {},
   {
     host: process.env.HOST,

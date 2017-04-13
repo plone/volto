@@ -87,7 +87,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /^((?!config).)*\.(js|jsx)$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [
           {
