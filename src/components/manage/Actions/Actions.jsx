@@ -21,7 +21,6 @@ import config from '../../../config';
  */
 @connect(
   state => ({
-    loaded: state.clipboard.request.loaded,
     action: state.clipboard.action,
     source: state.clipboard.source,
   }),
@@ -36,7 +35,6 @@ export default class Actions extends Component {
    */
   static propTypes = {
     pathname: PropTypes.string.isRequired,
-    loaded: PropTypes.bool.isRequired,
     action: PropTypes.string,
     source: PropTypes.string,
     cut: PropTypes.func.isRequired,

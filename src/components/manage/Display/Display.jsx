@@ -96,7 +96,7 @@ export default class Display extends Component {
   /**
    * On set layout handler
    * @method setLayout
-   * @param {string} layout New layout
+   * @param {Object} event Event object
    * @returns {undefined}
    */
   setLayout(event, { value }) {

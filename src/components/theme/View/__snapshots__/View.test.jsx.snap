@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`View renders a document view 1`] = `
+<div
+  id="DocumentView"
+/>
+`;
+
+exports[`View renders a summary view 1`] = `
+<div
+  id="SummaryView"
+/>
+`;
+
+exports[`View renders a tabular view 1`] = `
+<div
+  id="TabularView"
+/>
+`;
+
+exports[`View renders an empty view 1`] = `<span />`;

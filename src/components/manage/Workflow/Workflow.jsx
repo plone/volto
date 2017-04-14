@@ -98,7 +98,7 @@ export default class Workflow extends Component {
   /**
    * On transition handler
    * @method transition
-   * @param {string} url Transition url
+   * @param {string} event Event object
    * @returns {undefined}
    */
   transition(event, { value }) {

@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toolbar renders an actions component 1`] = `
+<div
+  className="ui inverted vertical left fixed menu"
+>
+  <div
+    className="blue active item"
+    onClick={[Function]}
+  >
+    <img
+      alt="Plone Toolbar"
+      src="plone-toolbarlogo.svg"
+    />
+  </div>
+  <a
+    className="item"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <span>
+      <i
+        aria-hidden="true"
+        className="write icon"
+      />
+       Edit
+    </span>
+  </a>
+  <a
+    className="item active"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <span>
+      <i
+        aria-hidden="true"
+        className="eye icon"
+      />
+       View
+    </span>
+  </a>
+  <div
+    id="types"
+  />
+  <div
+    id="workflow"
+  />
+  <div
+    id="actions"
+  />
+  <div
+    id="display"
+  />
+  <a
+    className="item personal-bar"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <span>
+      <i
+        aria-hidden="true"
+        className="user icon"
+      />
+       Log out
+    </span>
+  </a>
+</div>
+`;
