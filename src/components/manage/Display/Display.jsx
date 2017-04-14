@@ -7,11 +7,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { last } from 'lodash';
 import { Dropdown, Icon } from 'semantic-ui-react';
 
 import { getSchema, editContent, getContent } from '../../../actions';
-import config from '../../../config';
 import layouts from '../../../constants/Layouts';
 
 /**

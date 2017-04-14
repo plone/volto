@@ -34,7 +34,7 @@ export default class View extends Component {
     getContent: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     content: PropTypes.shape({
-      '@type': PropTypes.string,
+      layout: PropTypes.string,
     }),
   };
 

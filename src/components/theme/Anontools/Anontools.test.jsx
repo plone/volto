@@ -1,8 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Anontools from './Anontools';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
+
+import Anontools from './Anontools';
 
 const mockStore = configureStore();
 
