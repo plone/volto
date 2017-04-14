@@ -1,13 +1,19 @@
 import { getBaseUrl, getView } from './Url';
 
-test('removing view name from url', () => {
-  expect(getBaseUrl('http://localhost/edit')).toBe('http://localhost');
-});
+describe('Url', () => {
+  describe('getBaseUrl', () => {
+    it('can remove a view name from the url', () => {
+      expect(getBaseUrl('http://localhost/edit')).toBe('http://localhost');
+    });
+  });
 
-test('get edit view from url', () => {
-  expect(getView('http://localhost/edit')).toBe('edit');
-});
+  describe('getView', () => {
+    it('can get the edit view from the url', () => {
+      expect(getView('http://localhost/edit')).toBe('edit');
+    });
 
-test('get view view from url', () => {
-  expect(getView('http://localhost/my-blog')).toBe('view');
+    it('can get the view view from the url', () => {
+      expect(getView('http://localhost/my-blog')).toBe('view');
+    });
+  });
 });

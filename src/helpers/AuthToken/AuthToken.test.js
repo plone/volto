@@ -10,53 +10,59 @@ jest.mock('react-cookie', () => ({
   save: jest.fn(),
 }));
 
-test('get auth token', () => {
-  getAuthToken();
-  expect(cookie.load).toBeCalledWith('auth_token');
-});
-
-test('set same auth token', () => {
-  const store = {
-    subscribe: jest.fn(),
-    getState: jest.fn(() => ({
-      userSession: {
-        token: jwt.sign({ exp: 1 }, 'secret'),
-      },
-    })),
-  };
-
-  persistAuthToken(store);
-  expect(cookie.save).toHaveBeenCalledTimes(0);
-});
-
-test('set new auth token', () => {
-  const store = {
-    subscribe: jest.fn(),
-    getState: jest.fn(() => ({
-      userSession: {
-        token: jwt.sign({ exp: 2 }, 'secret'),
-      },
-    })),
-  };
-  const token = store.getState().userSession.token;
-
-  persistAuthToken(store);
-  expect(cookie.save).toBeCalledWith('auth_token', token, {
-    path: '/',
-    expires: new Date(jwtDecode(token).exp * 1000),
+describe('AuthToken', () => {
+  describe('getAuthToken', () => {
+    it('can get the auth token', () => {
+      getAuthToken();
+      expect(cookie.load).toBeCalledWith('auth_token');
+    });
   });
-});
 
-test('remove auth token', () => {
-  const store = {
-    subscribe: jest.fn(),
-    getState: jest.fn(() => ({
-      userSession: {
-        token: null,
-      },
-    })),
-  };
+  describe('persistAuthToken', () => {
+    it('can set the same auth token', () => {
+      const store = {
+        subscribe: jest.fn(),
+        getState: jest.fn(() => ({
+          userSession: {
+            token: jwt.sign({ exp: 1 }, 'secret'),
+          },
+        })),
+      };
 
-  persistAuthToken(store);
-  expect(cookie.remove).toBeCalledWith('auth_token', { path: '/' });
+      persistAuthToken(store);
+      expect(cookie.save).toHaveBeenCalledTimes(0);
+    });
+
+    it('can set a new auth token', () => {
+      const store = {
+        subscribe: jest.fn(),
+        getState: jest.fn(() => ({
+          userSession: {
+            token: jwt.sign({ exp: 2 }, 'secret'),
+          },
+        })),
+      };
+      const token = store.getState().userSession.token;
+
+      persistAuthToken(store);
+      expect(cookie.save).toBeCalledWith('auth_token', token, {
+        path: '/',
+        expires: new Date(jwtDecode(token).exp * 1000),
+      });
+    });
+
+    it('can remove an auth token', () => {
+      const store = {
+        subscribe: jest.fn(),
+        getState: jest.fn(() => ({
+          userSession: {
+            token: null,
+          },
+        })),
+      };
+
+      persistAuthToken(store);
+      expect(cookie.remove).toBeCalledWith('auth_token', { path: '/' });
+    });
+  });
 });

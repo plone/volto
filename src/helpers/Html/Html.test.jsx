@@ -22,23 +22,25 @@ jest.mock('react-helmet', () => ({
   }),
 }));
 
-test('renders a html component', () => {
-  const component = renderer.create(
-    <Html
-      assets={{
-        styles: {
-          main: 'style.css',
-        },
-        javascript: {
-          main: 'main.js',
-        },
-      }}
-      component={<div />}
-      store={{
-        getState: () => {},
-      }}
-    />,
-  );
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+describe('Html', () => {
+  it('renders a html component', () => {
+    const component = renderer.create(
+      <Html
+        assets={{
+          styles: {
+            main: 'style.css',
+          },
+          javascript: {
+            main: 'main.js',
+          },
+        }}
+        component={<div />}
+        store={{
+          getState: () => {},
+        }}
+      />,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });
