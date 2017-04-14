@@ -5,11 +5,7 @@
 
 import { map } from 'lodash';
 
-import {
-  SEARCH_CONTENT_PENDING,
-  SEARCH_CONTENT_SUCCESS,
-  SEARCH_CONTENT_FAIL,
-} from '../../constants/ActionTypes';
+import { SEARCH_CONTENT } from '../../constants/ActionTypes';
 import config from '../../config';
 
 const initialState = {
@@ -28,14 +24,14 @@ const initialState = {
  */
 export default function search(state = initialState, action = {}) {
   switch (action.type) {
-    case SEARCH_CONTENT_PENDING:
+    case `${SEARCH_CONTENT}_PENDING`:
       return {
         ...state,
         error: null,
         loading: true,
         loaded: false,
       };
-    case SEARCH_CONTENT_SUCCESS:
+    case `${SEARCH_CONTENT}_SUCCESS`:
       return {
         ...state,
         error: null,
@@ -46,7 +42,7 @@ export default function search(state = initialState, action = {}) {
         loaded: true,
         loading: false,
       };
-    case SEARCH_CONTENT_FAIL:
+    case `${SEARCH_CONTENT}_FAIL`:
       return {
         ...state,
         error: action.error,

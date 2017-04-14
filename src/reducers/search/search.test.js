@@ -1,9 +1,5 @@
 import search from './search';
-import {
-  SEARCH_CONTENT_PENDING,
-  SEARCH_CONTENT_SUCCESS,
-  SEARCH_CONTENT_FAIL,
-} from '../../constants/ActionTypes';
+import { SEARCH_CONTENT } from '../../constants/ActionTypes';
 import config from '../../config';
 
 describe('Search reducer', () => {
@@ -19,7 +15,7 @@ describe('Search reducer', () => {
   it('should handle SEARCH_CONTENT_PENDING', () => {
     expect(
       search(undefined, {
-        type: SEARCH_CONTENT_PENDING,
+        type: `${SEARCH_CONTENT}_PENDING`,
       }),
     ).toEqual({
       error: null,
@@ -32,7 +28,7 @@ describe('Search reducer', () => {
   it('should handle SEARCH_CONTENT_SUCCESS', () => {
     expect(
       search(undefined, {
-        type: SEARCH_CONTENT_SUCCESS,
+        type: `${SEARCH_CONTENT}_SUCCESS`,
         result: {
           items: [
             {
@@ -58,7 +54,7 @@ describe('Search reducer', () => {
   it('should handle SEARCH_CONTENT_FAIL', () => {
     expect(
       search(undefined, {
-        type: SEARCH_CONTENT_FAIL,
+        type: `${SEARCH_CONTENT}_FAIL`,
         error: 'failed',
       }),
     ).toEqual({

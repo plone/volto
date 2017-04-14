@@ -3,14 +3,7 @@
  * @module actions/workflow/workflow
  */
 
-import {
-  GET_WORKFLOW_PENDING,
-  GET_WORKFLOW_SUCCESS,
-  GET_WORKFLOW_FAIL,
-  TRANSITION_WORKFLOW_PENDING,
-  TRANSITION_WORKFLOW_SUCCESS,
-  TRANSITION_WORKFLOW_FAIL,
-} from '../../constants/ActionTypes';
+import { GET_WORKFLOW, TRANSITION_WORKFLOW } from '../../constants/ActionTypes';
 
 /**
  * Get workflow function.
@@ -20,7 +13,7 @@ import {
  */
 export function getWorkflow(url) {
   return {
-    types: [GET_WORKFLOW_PENDING, GET_WORKFLOW_SUCCESS, GET_WORKFLOW_FAIL],
+    type: GET_WORKFLOW,
     promise: api => api.get(`${url}/@workflow`),
   };
 }
@@ -33,11 +26,7 @@ export function getWorkflow(url) {
  */
 export function transitionWorkflow(url) {
   return {
-    types: [
-      TRANSITION_WORKFLOW_PENDING,
-      TRANSITION_WORKFLOW_SUCCESS,
-      TRANSITION_WORKFLOW_FAIL,
-    ],
+    type: TRANSITION_WORKFLOW,
     promise: api => api.post(url),
   };
 }

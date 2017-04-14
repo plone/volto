@@ -3,12 +3,7 @@
  * @module actions/search/search
  */
 
-import {
-  LOGIN_PENDING,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT,
-} from '../../constants/ActionTypes';
+import { LOGIN, LOGOUT } from '../../constants/ActionTypes';
 
 /**
  * Login function.
@@ -19,7 +14,7 @@ import {
  */
 export function login(username, password) {
   return {
-    types: [LOGIN_PENDING, LOGIN_SUCCESS, LOGIN_FAIL],
+    type: LOGIN,
     promise: api => api.post('@login', { data: { login: username, password } }),
   };
 }

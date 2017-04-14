@@ -3,11 +3,7 @@
  * @module actions/breadcrumbs/breadcrumbs
  */
 
-import {
-  GET_BREADCRUMBS_PENDING,
-  GET_BREADCRUMBS_SUCCESS,
-  GET_BREADCRUMBS_FAIL,
-} from '../../constants/ActionTypes';
+import { GET_BREADCRUMBS } from '../../constants/ActionTypes';
 
 /**
  * Get breadcrumbs.
@@ -17,11 +13,7 @@ import {
  */
 export default function getBreadcrumbs(url) {
   return {
-    types: [
-      GET_BREADCRUMBS_PENDING,
-      GET_BREADCRUMBS_SUCCESS,
-      GET_BREADCRUMBS_FAIL,
-    ],
+    type: GET_BREADCRUMBS,
     promise: api => api.get(`${url}/@components/breadcrumbs`),
   };
 }

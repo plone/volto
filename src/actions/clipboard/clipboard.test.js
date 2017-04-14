@@ -1,11 +1,7 @@
 import { copy, cut, copyContent, moveContent } from './clipboard';
 import {
-  COPY_PENDING,
-  COPY_SUCCESS,
-  COPY_FAIL,
-  MOVE_PENDING,
-  MOVE_SUCCESS,
-  MOVE_FAIL,
+  COPY_CONTENT,
+  MOVE_CONTENT,
   COPY,
   CUT,
 } from '../../constants/ActionTypes';
@@ -17,7 +13,7 @@ describe('Clipboard action', () => {
       const target = 'http://target';
       const action = copyContent(source, target);
 
-      expect(action.types).toEqual([COPY_PENDING, COPY_SUCCESS, COPY_FAIL]);
+      expect(action.type).toEqual(COPY_CONTENT);
 
       const apiMock = {
         post: jest.fn(),
@@ -36,7 +32,7 @@ describe('Clipboard action', () => {
       const target = 'http://target';
       const action = moveContent(source, target);
 
-      expect(action.types).toEqual([MOVE_PENDING, MOVE_SUCCESS, MOVE_FAIL]);
+      expect(action.type).toEqual(MOVE_CONTENT);
 
       const apiMock = {
         post: jest.fn(),

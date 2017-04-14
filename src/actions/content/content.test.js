@@ -1,17 +1,9 @@
 import { addContent, deleteContent, editContent, getContent } from './content';
 import {
-  ADD_CONTENT_PENDING,
-  ADD_CONTENT_SUCCESS,
-  ADD_CONTENT_FAIL,
-  DELETE_CONTENT_PENDING,
-  DELETE_CONTENT_SUCCESS,
-  DELETE_CONTENT_FAIL,
-  EDIT_CONTENT_PENDING,
-  EDIT_CONTENT_SUCCESS,
-  EDIT_CONTENT_FAIL,
-  GET_CONTENT_PENDING,
-  GET_CONTENT_SUCCESS,
-  GET_CONTENT_FAIL,
+  ADD_CONTENT,
+  DELETE_CONTENT,
+  EDIT_CONTENT,
+  GET_CONTENT,
 } from '../../constants/ActionTypes';
 
 describe('Content action', () => {
@@ -21,11 +13,7 @@ describe('Content action', () => {
       const content = 'Hello World!';
       const action = addContent(url, content);
 
-      expect(action.types).toEqual([
-        ADD_CONTENT_PENDING,
-        ADD_CONTENT_SUCCESS,
-        ADD_CONTENT_FAIL,
-      ]);
+      expect(action.type).toEqual(ADD_CONTENT);
 
       const apiMock = {
         post: jest.fn(),
@@ -41,11 +29,7 @@ describe('Content action', () => {
       const url = 'http://localhost';
       const action = deleteContent(url);
 
-      expect(action.types).toEqual([
-        DELETE_CONTENT_PENDING,
-        DELETE_CONTENT_SUCCESS,
-        DELETE_CONTENT_FAIL,
-      ]);
+      expect(action.type).toEqual(DELETE_CONTENT);
 
       const apiMock = {
         del: jest.fn(),
@@ -62,11 +46,7 @@ describe('Content action', () => {
       const content = 'Hello World!';
       const action = editContent(url, content);
 
-      expect(action.types).toEqual([
-        EDIT_CONTENT_PENDING,
-        EDIT_CONTENT_SUCCESS,
-        EDIT_CONTENT_FAIL,
-      ]);
+      expect(action.type).toEqual(EDIT_CONTENT);
 
       const apiMock = {
         patch: jest.fn(),
@@ -82,11 +62,7 @@ describe('Content action', () => {
       const url = 'http://localhost';
       const action = getContent(url);
 
-      expect(action.types).toEqual([
-        GET_CONTENT_PENDING,
-        GET_CONTENT_SUCCESS,
-        GET_CONTENT_FAIL,
-      ]);
+      expect(action.type).toEqual(GET_CONTENT);
 
       const apiMock = {
         get: jest.fn(),

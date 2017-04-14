@@ -73,6 +73,7 @@ export default class Add extends Component {
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
+    type: PropTypes.string,
   };
 
   /**
@@ -83,6 +84,7 @@ export default class Add extends Component {
   static defaultProps = {
     schema: null,
     content: null,
+    type: 'Default',
   };
 
   /**

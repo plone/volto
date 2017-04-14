@@ -4,18 +4,10 @@
  */
 
 import {
-  ADD_CONTENT_PENDING,
-  ADD_CONTENT_SUCCESS,
-  ADD_CONTENT_FAIL,
-  DELETE_CONTENT_PENDING,
-  DELETE_CONTENT_SUCCESS,
-  DELETE_CONTENT_FAIL,
-  EDIT_CONTENT_PENDING,
-  EDIT_CONTENT_SUCCESS,
-  EDIT_CONTENT_FAIL,
-  GET_CONTENT_PENDING,
-  GET_CONTENT_SUCCESS,
-  GET_CONTENT_FAIL,
+  ADD_CONTENT,
+  DELETE_CONTENT,
+  EDIT_CONTENT,
+  GET_CONTENT,
 } from '../../constants/ActionTypes';
 
 /**
@@ -27,7 +19,7 @@ import {
  */
 export function addContent(url, content) {
   return {
-    types: [ADD_CONTENT_PENDING, ADD_CONTENT_SUCCESS, ADD_CONTENT_FAIL],
+    type: ADD_CONTENT,
     promise: api => api.post(url, { data: content }),
   };
 }
@@ -40,11 +32,7 @@ export function addContent(url, content) {
  */
 export function deleteContent(url) {
   return {
-    types: [
-      DELETE_CONTENT_PENDING,
-      DELETE_CONTENT_SUCCESS,
-      DELETE_CONTENT_FAIL,
-    ],
+    type: DELETE_CONTENT,
     promise: api => api.del(url),
   };
 }
@@ -58,7 +46,7 @@ export function deleteContent(url) {
  */
 export function editContent(url, content) {
   return {
-    types: [EDIT_CONTENT_PENDING, EDIT_CONTENT_SUCCESS, EDIT_CONTENT_FAIL],
+    type: EDIT_CONTENT,
     promise: api => api.patch(url, { data: content }),
   };
 }
@@ -71,7 +59,7 @@ export function editContent(url, content) {
  */
 export function getContent(url) {
   return {
-    types: [GET_CONTENT_PENDING, GET_CONTENT_SUCCESS, GET_CONTENT_FAIL],
+    type: GET_CONTENT,
     promise: api => api.get(url),
   };
 }

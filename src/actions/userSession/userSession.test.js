@@ -1,10 +1,5 @@
 import { login, logout } from './userSession';
-import {
-  LOGIN_PENDING,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT,
-} from '../../constants/ActionTypes';
+import { LOGIN, LOGOUT } from '../../constants/ActionTypes';
 
 describe('User session action', () => {
   describe('login', () => {
@@ -13,7 +8,7 @@ describe('User session action', () => {
       const password = 'admin';
       const action = login(username, password);
 
-      expect(action.types).toEqual([LOGIN_PENDING, LOGIN_SUCCESS, LOGIN_FAIL]);
+      expect(action.type).toEqual(LOGIN);
 
       const apiMock = {
         post: jest.fn(),

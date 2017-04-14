@@ -1,9 +1,5 @@
 import navigation from './navigation';
-import {
-  GET_NAVIGATION_PENDING,
-  GET_NAVIGATION_SUCCESS,
-  GET_NAVIGATION_FAIL,
-} from '../../constants/ActionTypes';
+import { GET_NAVIGATION } from '../../constants/ActionTypes';
 import config from '../../config';
 
 describe('Navigation reducer', () => {
@@ -19,7 +15,7 @@ describe('Navigation reducer', () => {
   it('should handle GET_NAVIGATION_PENDING', () => {
     expect(
       navigation(undefined, {
-        type: GET_NAVIGATION_PENDING,
+        type: `${GET_NAVIGATION}_PENDING`,
       }),
     ).toEqual({
       error: null,
@@ -32,7 +28,7 @@ describe('Navigation reducer', () => {
   it('should handle GET_NAVIGATION_SUCCESS', () => {
     expect(
       navigation(undefined, {
-        type: GET_NAVIGATION_SUCCESS,
+        type: `${GET_NAVIGATION}_SUCCESS`,
         result: [
           {
             items: [
@@ -60,7 +56,7 @@ describe('Navigation reducer', () => {
   it('should handle GET_NAVIGATION_FAIL', () => {
     expect(
       navigation(undefined, {
-        type: GET_NAVIGATION_FAIL,
+        type: `${GET_NAVIGATION}_FAIL`,
         error: 'failed',
       }),
     ).toEqual({

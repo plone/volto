@@ -5,11 +5,7 @@
 
 import { map } from 'lodash';
 
-import {
-  GET_BREADCRUMBS_PENDING,
-  GET_BREADCRUMBS_SUCCESS,
-  GET_BREADCRUMBS_FAIL,
-} from '../../constants/ActionTypes';
+import { GET_BREADCRUMBS } from '../../constants/ActionTypes';
 import config from '../../config';
 
 const initialState = {
@@ -28,14 +24,14 @@ const initialState = {
  */
 export default function breadcrumbs(state = initialState, action = {}) {
   switch (action.type) {
-    case GET_BREADCRUMBS_PENDING:
+    case `${GET_BREADCRUMBS}_PENDING`:
       return {
         ...state,
         error: null,
         loaded: false,
         loading: true,
       };
-    case GET_BREADCRUMBS_SUCCESS:
+    case `${GET_BREADCRUMBS}_SUCCESS`:
       return {
         ...state,
         error: null,
@@ -46,7 +42,7 @@ export default function breadcrumbs(state = initialState, action = {}) {
         loaded: true,
         loading: false,
       };
-    case GET_BREADCRUMBS_FAIL:
+    case `${GET_BREADCRUMBS}_FAIL`:
       return {
         ...state,
         error: action.error,

@@ -3,11 +3,7 @@
  * @module reducers/schema
  */
 
-import {
-  GET_SCHEMA_PENDING,
-  GET_SCHEMA_SUCCESS,
-  GET_SCHEMA_FAIL,
-} from '../../constants/ActionTypes';
+import { GET_SCHEMA } from '../../constants/ActionTypes';
 
 const initialState = {
   error: null,
@@ -25,7 +21,7 @@ const initialState = {
  */
 export default function schema(state = initialState, action = {}) {
   switch (action.type) {
-    case GET_SCHEMA_PENDING:
+    case `${GET_SCHEMA}_PENDING`:
       return {
         ...state,
         error: null,
@@ -33,7 +29,7 @@ export default function schema(state = initialState, action = {}) {
         loaded: false,
         schema: null,
       };
-    case GET_SCHEMA_SUCCESS:
+    case `${GET_SCHEMA}_SUCCESS`:
       return {
         ...state,
         error: null,
@@ -41,7 +37,7 @@ export default function schema(state = initialState, action = {}) {
         loaded: true,
         schema: action.result,
       };
-    case GET_SCHEMA_FAIL:
+    case `${GET_SCHEMA}_FAIL`:
       return {
         ...state,
         error: action.error,

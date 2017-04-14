@@ -1,9 +1,5 @@
 import getTypes from './types';
-import {
-  GET_TYPES_PENDING,
-  GET_TYPES_SUCCESS,
-  GET_TYPES_FAIL,
-} from '../../constants/ActionTypes';
+import { GET_TYPES } from '../../constants/ActionTypes';
 
 describe('Types action', () => {
   describe('getTypes', () => {
@@ -11,11 +7,7 @@ describe('Types action', () => {
       const url = '/blog';
       const action = getTypes(url);
 
-      expect(action.types).toEqual([
-        GET_TYPES_PENDING,
-        GET_TYPES_SUCCESS,
-        GET_TYPES_FAIL,
-      ]);
+      expect(action.type).toEqual(GET_TYPES);
 
       const apiMock = {
         get: jest.fn(),

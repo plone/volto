@@ -3,12 +3,7 @@
  * @module reducers/userSession
  */
 
-import {
-  LOGIN_PENDING,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT,
-} from '../../constants/ActionTypes';
+import { LOGIN, LOGOUT } from '../../constants/ActionTypes';
 
 const initialState = {
   token: null,
@@ -28,7 +23,7 @@ const initialState = {
  */
 export default function userSession(state = initialState, action = {}) {
   switch (action.type) {
-    case LOGIN_PENDING:
+    case `${LOGIN}_PENDING`:
       return {
         ...state,
         token: null,
@@ -38,7 +33,7 @@ export default function userSession(state = initialState, action = {}) {
           error: null,
         },
       };
-    case LOGIN_SUCCESS:
+    case `${LOGIN}_SUCCESS`:
       return {
         ...state,
         token: action.result.token,
@@ -48,7 +43,7 @@ export default function userSession(state = initialState, action = {}) {
           error: null,
         },
       };
-    case LOGIN_FAIL:
+    case `${LOGIN}_FAIL`:
       return {
         ...state,
         token: null,

@@ -3,11 +3,7 @@
  * @module actions/navigation/navigation
  */
 
-import {
-  GET_NAVIGATION_PENDING,
-  GET_NAVIGATION_SUCCESS,
-  GET_NAVIGATION_FAIL,
-} from '../../constants/ActionTypes';
+import { GET_NAVIGATION } from '../../constants/ActionTypes';
 
 /**
  * Get navigation.
@@ -17,11 +13,7 @@ import {
  */
 export default function getNavigation(url) {
   return {
-    types: [
-      GET_NAVIGATION_PENDING,
-      GET_NAVIGATION_SUCCESS,
-      GET_NAVIGATION_FAIL,
-    ],
+    type: GET_NAVIGATION,
     promise: api => api.get(`${url}/@components/navigation`),
   };
 }

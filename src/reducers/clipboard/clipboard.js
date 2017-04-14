@@ -6,12 +6,8 @@
 import {
   COPY,
   CUT,
-  COPY_PENDING,
-  COPY_SUCCESS,
-  COPY_FAIL,
-  MOVE_PENDING,
-  MOVE_SUCCESS,
-  MOVE_FAIL,
+  COPY_CONTENT,
+  MOVE_CONTENT,
 } from '../../constants/ActionTypes';
 
 const initialState = {
@@ -45,8 +41,8 @@ export default function clipboard(state = initialState, action = {}) {
         action: 'cut',
         source: action.source,
       };
-    case COPY_PENDING:
-    case MOVE_PENDING:
+    case `${COPY_CONTENT}_PENDING`:
+    case `${MOVE_CONTENT}_PENDING`:
       return {
         ...state,
         request: {
@@ -55,8 +51,8 @@ export default function clipboard(state = initialState, action = {}) {
           error: null,
         },
       };
-    case COPY_SUCCESS:
-    case MOVE_SUCCESS:
+    case `${COPY_CONTENT}_SUCCESS`:
+    case `${MOVE_CONTENT}_SUCCESS`:
       return {
         ...state,
         request: {
@@ -65,8 +61,8 @@ export default function clipboard(state = initialState, action = {}) {
           error: null,
         },
       };
-    case COPY_FAIL:
-    case MOVE_FAIL:
+    case `${COPY_CONTENT}_FAIL`:
+    case `${MOVE_CONTENT}_FAIL`:
       return {
         ...state,
         request: {

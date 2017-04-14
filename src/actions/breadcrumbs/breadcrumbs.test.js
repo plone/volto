@@ -1,9 +1,5 @@
 import getBreadcrumbs from './breadcrumbs';
-import {
-  GET_BREADCRUMBS_PENDING,
-  GET_BREADCRUMBS_SUCCESS,
-  GET_BREADCRUMBS_FAIL,
-} from '../../constants/ActionTypes';
+import { GET_BREADCRUMBS } from '../../constants/ActionTypes';
 
 describe('Breadcrumbs action', () => {
   describe('getBreadcrumbs', () => {
@@ -11,11 +7,7 @@ describe('Breadcrumbs action', () => {
       const url = 'http://localhost';
       const action = getBreadcrumbs(url);
 
-      expect(action.types).toEqual([
-        GET_BREADCRUMBS_PENDING,
-        GET_BREADCRUMBS_SUCCESS,
-        GET_BREADCRUMBS_FAIL,
-      ]);
+      expect(action.type).toEqual(GET_BREADCRUMBS);
 
       const apiMock = {
         get: jest.fn(),

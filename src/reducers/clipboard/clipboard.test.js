@@ -2,12 +2,8 @@ import clipboard from './clipboard';
 import {
   COPY,
   CUT,
-  COPY_PENDING,
-  COPY_SUCCESS,
-  COPY_FAIL,
-  MOVE_PENDING,
-  MOVE_SUCCESS,
-  MOVE_FAIL,
+  COPY_CONTENT,
+  MOVE_CONTENT,
 } from '../../constants/ActionTypes';
 
 describe('Clipboard reducer', () => {
@@ -23,10 +19,10 @@ describe('Clipboard reducer', () => {
     });
   });
 
-  it('should handle COPY_PENDING', () => {
+  it('should handle COPY_CONTENT_PENDING', () => {
     expect(
       clipboard(undefined, {
-        type: COPY_PENDING,
+        type: `${COPY_CONTENT}_PENDING`,
       }),
     ).toEqual({
       action: null,
@@ -39,10 +35,10 @@ describe('Clipboard reducer', () => {
     });
   });
 
-  it('should handle COPY_SUCCESS', () => {
+  it('should handle COPY_CONTENT_SUCCESS', () => {
     expect(
       clipboard(undefined, {
-        type: COPY_SUCCESS,
+        type: `${COPY_CONTENT}_SUCCESS`,
       }),
     ).toEqual({
       action: null,
@@ -55,10 +51,10 @@ describe('Clipboard reducer', () => {
     });
   });
 
-  it('should handle COPY_FAIL', () => {
+  it('should handle COPY_CONTENT_FAIL', () => {
     expect(
       clipboard(undefined, {
-        type: COPY_FAIL,
+        type: `${COPY_CONTENT}_FAIL`,
         error: {
           error: 'failed',
         },
@@ -74,10 +70,10 @@ describe('Clipboard reducer', () => {
     });
   });
 
-  it('should handle MOVE_PENDING', () => {
+  it('should handle MOVE_CONTENT_PENDING', () => {
     expect(
       clipboard(undefined, {
-        type: MOVE_PENDING,
+        type: `${MOVE_CONTENT}_PENDING`,
       }),
     ).toEqual({
       action: null,
@@ -90,10 +86,10 @@ describe('Clipboard reducer', () => {
     });
   });
 
-  it('should handle MOVE_SUCCESS', () => {
+  it('should handle MOVE_CONTENT_SUCCESS', () => {
     expect(
       clipboard(undefined, {
-        type: MOVE_SUCCESS,
+        type: `${MOVE_CONTENT}_SUCCESS`,
       }),
     ).toEqual({
       action: null,
@@ -106,10 +102,10 @@ describe('Clipboard reducer', () => {
     });
   });
 
-  it('should handle MOVE_FAIL', () => {
+  it('should handle MOVE_CONTENT_FAIL', () => {
     expect(
       clipboard(undefined, {
-        type: MOVE_FAIL,
+        type: `${MOVE_CONTENT}_FAIL`,
         error: {
           error: 'failed',
         },

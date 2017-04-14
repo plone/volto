@@ -1,9 +1,5 @@
 import breadcrumbs from './breadcrumbs';
-import {
-  GET_BREADCRUMBS_PENDING,
-  GET_BREADCRUMBS_SUCCESS,
-  GET_BREADCRUMBS_FAIL,
-} from '../../constants/ActionTypes';
+import { GET_BREADCRUMBS } from '../../constants/ActionTypes';
 import config from '../../config';
 
 describe('Breadcrumbs reducer', () => {
@@ -19,7 +15,7 @@ describe('Breadcrumbs reducer', () => {
   it('should handle GET_BREADCRUMBS_PENDING', () => {
     expect(
       breadcrumbs(undefined, {
-        type: GET_BREADCRUMBS_PENDING,
+        type: `${GET_BREADCRUMBS}_PENDING`,
       }),
     ).toEqual({
       error: null,
@@ -32,7 +28,7 @@ describe('Breadcrumbs reducer', () => {
   it('should handle GET_BREADCRUMBS_SUCCESS', () => {
     expect(
       breadcrumbs(undefined, {
-        type: GET_BREADCRUMBS_SUCCESS,
+        type: `${GET_BREADCRUMBS}_SUCCESS`,
         result: [
           {
             items: [
@@ -60,7 +56,7 @@ describe('Breadcrumbs reducer', () => {
   it('should handle GET_BREADCRUMBS_FAIL', () => {
     expect(
       breadcrumbs(undefined, {
-        type: GET_BREADCRUMBS_FAIL,
+        type: `${GET_BREADCRUMBS}_FAIL`,
         error: 'failed',
       }),
     ).toEqual({

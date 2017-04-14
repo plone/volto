@@ -3,11 +3,7 @@
  * @module actions/search/search
  */
 
-import {
-  SEARCH_CONTENT_PENDING,
-  SEARCH_CONTENT_SUCCESS,
-  SEARCH_CONTENT_FAIL,
-} from '../../constants/ActionTypes';
+import { SEARCH_CONTENT } from '../../constants/ActionTypes';
 
 /**
  * Search content function.
@@ -17,11 +13,7 @@ import {
  */
 export default function searchContent(text) {
   return {
-    types: [
-      SEARCH_CONTENT_PENDING,
-      SEARCH_CONTENT_SUCCESS,
-      SEARCH_CONTENT_FAIL,
-    ],
+    type: SEARCH_CONTENT,
     promise: api => api.get(`/@search?SearchableText=${text}`),
   };
 }

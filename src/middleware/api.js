@@ -14,22 +14,22 @@ export default api => ({ dispatch, getState }) => next => action => {
     return action(dispatch, getState);
   }
 
-  const { promise, types, ...rest } = action;
+  const { promise, type, ...rest } = action;
 
   if (!promise) {
     return next(action);
   }
 
-  next({ ...rest, type: types[0] });
+  next({ ...rest, type: `${type}_PENDING` });
 
   const actionPromise = promise(api);
   actionPromise
     .then(
-      result => next({ ...rest, result, type: types[1] }),
-      error => next({ ...rest, error, type: types[2] }),
+      result => next({ ...rest, result, type: `${type}_SUCCESS` }),
+      error => next({ ...rest, error, type: `${type}_ERROR` }),
     )
     .catch(error => {
-      next({ ...rest, error, type: types[2] });
+      next({ ...rest, error, type: `${type}_ERROR` });
     });
 
   return actionPromise;

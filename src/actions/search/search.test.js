@@ -1,9 +1,5 @@
 import searchContent from './search';
-import {
-  SEARCH_CONTENT_PENDING,
-  SEARCH_CONTENT_SUCCESS,
-  SEARCH_CONTENT_FAIL,
-} from '../../constants/ActionTypes';
+import { SEARCH_CONTENT } from '../../constants/ActionTypes';
 
 describe('Search action', () => {
   describe('searchContent', () => {
@@ -11,11 +7,7 @@ describe('Search action', () => {
       const text = 'cows';
       const action = searchContent(text);
 
-      expect(action.types).toEqual([
-        SEARCH_CONTENT_PENDING,
-        SEARCH_CONTENT_SUCCESS,
-        SEARCH_CONTENT_FAIL,
-      ]);
+      expect(action.type).toEqual(SEARCH_CONTENT);
 
       const apiMock = {
         get: jest.fn(),

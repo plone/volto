@@ -8,11 +8,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
-import { filter, last, map } from 'lodash';
+import { filter, map } from 'lodash';
 import { Dropdown, Icon } from 'semantic-ui-react';
 
 import { getTypes } from '../../../actions';
-import config from '../../../config';
 
 /**
  * Types container class.

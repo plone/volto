@@ -1,12 +1,5 @@
 import workflow from './workflow';
-import {
-  GET_WORKFLOW_PENDING,
-  GET_WORKFLOW_SUCCESS,
-  GET_WORKFLOW_FAIL,
-  TRANSITION_WORKFLOW_PENDING,
-  TRANSITION_WORKFLOW_SUCCESS,
-  TRANSITION_WORKFLOW_FAIL,
-} from '../../constants/ActionTypes';
+import { GET_WORKFLOW, TRANSITION_WORKFLOW } from '../../constants/ActionTypes';
 
 describe('Workflow reducer', () => {
   it('should return the initial state', () => {
@@ -29,7 +22,7 @@ describe('Workflow reducer', () => {
   it('should handle GET_WORKFLOW_PENDING', () => {
     expect(
       workflow(undefined, {
-        type: GET_WORKFLOW_PENDING,
+        type: `${GET_WORKFLOW}_PENDING`,
       }),
     ).toEqual({
       get: {
@@ -50,7 +43,7 @@ describe('Workflow reducer', () => {
   it('should handle GET_WORKFLOW_SUCCESS', () => {
     expect(
       workflow(undefined, {
-        type: GET_WORKFLOW_SUCCESS,
+        type: `${GET_WORKFLOW}_SUCCESS`,
         result: {
           history: 'history',
           transitions: 'transitions',
@@ -75,7 +68,7 @@ describe('Workflow reducer', () => {
   it('should handle GET_WORKFLOW_FAIL', () => {
     expect(
       workflow(undefined, {
-        type: GET_WORKFLOW_FAIL,
+        type: `${GET_WORKFLOW}_FAIL`,
         error: 'failed',
       }),
     ).toEqual({
@@ -97,7 +90,7 @@ describe('Workflow reducer', () => {
   it('should handle TRANSITION_WORKFLOW_PENDING', () => {
     expect(
       workflow(undefined, {
-        type: TRANSITION_WORKFLOW_PENDING,
+        type: `${TRANSITION_WORKFLOW}_PENDING`,
       }),
     ).toEqual({
       get: {
@@ -118,7 +111,7 @@ describe('Workflow reducer', () => {
   it('should handle TRANSITION_WORKFLOW_SUCCESS', () => {
     expect(
       workflow(undefined, {
-        type: TRANSITION_WORKFLOW_SUCCESS,
+        type: `${TRANSITION_WORKFLOW}_SUCCESS`,
         result: {},
       }),
     ).toEqual({
@@ -140,7 +133,7 @@ describe('Workflow reducer', () => {
   it('should handle TRANSITION_WORKFLOW_FAIL', () => {
     expect(
       workflow(undefined, {
-        type: TRANSITION_WORKFLOW_FAIL,
+        type: `${TRANSITION_WORKFLOW}_FAIL`,
         error: 'failed',
       }),
     ).toEqual({

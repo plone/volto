@@ -3,11 +3,7 @@
  * @module actions/schema/schema
  */
 
-import {
-  GET_SCHEMA_PENDING,
-  GET_SCHEMA_SUCCESS,
-  GET_SCHEMA_FAIL,
-} from '../../constants/ActionTypes';
+import { GET_SCHEMA } from '../../constants/ActionTypes';
 
 /**
  * Get schema function.
@@ -17,7 +13,7 @@ import {
  */
 export default function getSchema(type) {
   return {
-    types: [GET_SCHEMA_PENDING, GET_SCHEMA_SUCCESS, GET_SCHEMA_FAIL],
+    type: GET_SCHEMA,
     promise: api => api.get(`/@types/${type}`),
   };
 }

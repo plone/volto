@@ -4,12 +4,8 @@
  */
 
 import {
-  COPY_PENDING,
-  COPY_SUCCESS,
-  COPY_FAIL,
-  MOVE_PENDING,
-  MOVE_SUCCESS,
-  MOVE_FAIL,
+  COPY_CONTENT,
+  MOVE_CONTENT,
   COPY,
   CUT,
 } from '../../constants/ActionTypes';
@@ -23,7 +19,7 @@ import {
  */
 export function copyContent(source, target) {
   return {
-    types: [COPY_PENDING, COPY_SUCCESS, COPY_FAIL],
+    type: COPY_CONTENT,
     promise: api => api.post(`${target}/@copy`, { data: { source } }),
   };
 }
@@ -37,7 +33,7 @@ export function copyContent(source, target) {
  */
 export function moveContent(source, target) {
   return {
-    types: [MOVE_PENDING, MOVE_SUCCESS, MOVE_FAIL],
+    type: MOVE_CONTENT,
     promise: api => api.post(`${target}/@move`, { data: { source } }),
   };
 }

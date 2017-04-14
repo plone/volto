@@ -1,10 +1,5 @@
 import userSession from './userSession';
-import {
-  LOGIN_PENDING,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT,
-} from '../../constants/ActionTypes';
+import { LOGIN, LOGOUT } from '../../constants/ActionTypes';
 
 describe('User session reducer', () => {
   it('should return the initial state', () => {
@@ -21,7 +16,7 @@ describe('User session reducer', () => {
   it('should handle LOGIN_PENDING', () => {
     expect(
       userSession(undefined, {
-        type: LOGIN_PENDING,
+        type: `${LOGIN}_PENDING`,
       }),
     ).toEqual({
       token: null,
@@ -36,7 +31,7 @@ describe('User session reducer', () => {
   it('should handle LOGIN_SUCCESS', () => {
     expect(
       userSession(undefined, {
-        type: LOGIN_SUCCESS,
+        type: `${LOGIN}_SUCCESS`,
         result: {
           token: '1234',
         },
@@ -54,7 +49,7 @@ describe('User session reducer', () => {
   it('should handle LOGIN_FAIL', () => {
     expect(
       userSession(undefined, {
-        type: LOGIN_FAIL,
+        type: `${LOGIN}_FAIL`,
         error: {
           error: 'failed',
         },

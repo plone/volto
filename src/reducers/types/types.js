@@ -3,11 +3,7 @@
  * @module reducers/types
  */
 
-import {
-  GET_TYPES_PENDING,
-  GET_TYPES_SUCCESS,
-  GET_TYPES_FAIL,
-} from '../../constants/ActionTypes';
+import { GET_TYPES } from '../../constants/ActionTypes';
 
 const initialState = {
   error: null,
@@ -25,7 +21,7 @@ const initialState = {
  */
 export default function types(state = initialState, action = {}) {
   switch (action.type) {
-    case GET_TYPES_PENDING:
+    case `${GET_TYPES}_PENDING`:
       return {
         ...state,
         error: null,
@@ -33,7 +29,7 @@ export default function types(state = initialState, action = {}) {
         loaded: false,
         types: [],
       };
-    case GET_TYPES_SUCCESS:
+    case `${GET_TYPES}_SUCCESS`:
       return {
         ...state,
         error: null,
@@ -41,7 +37,7 @@ export default function types(state = initialState, action = {}) {
         loaded: true,
         types: action.result,
       };
-    case GET_TYPES_FAIL:
+    case `${GET_TYPES}_FAIL`:
       return {
         ...state,
         error: action.error,
