@@ -65,7 +65,8 @@ export default class Navigation extends Component {
   /**
    * Check if menu is active
    * @method isActive
-   * @returns {url} Url of the navigation item.
+   * @param {string} url Url of the navigation item.
+   * @returns {bool} Is menu active?
    */
   isActive(url) {
     return (

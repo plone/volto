@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
+<div
+  className="ui secondary vertical segment"
+>
+  <div
+    className="ui container"
+  >
+    <div
+      className="ui breadcrumb"
+    >
+      <a
+        className="section"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Home
+      </a>
+      <i
+        aria-hidden="true"
+        className="right angle icon divider"
+      />
+      <a
+        className="section"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Blog
+      </a>
+      <i
+        aria-hidden="true"
+        className="right angle icon divider"
+      />
+      <div
+        className="active section"
+        href={undefined}
+        onClick={[Function]}
+      >
+        My first blog
+      </div>
+    </div>
+  </div>
+</div>
+`;

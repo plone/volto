@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Delete renders a delete component 1`] = `
+<div
+  id="page-delete"
+>
+  <h1
+    className="documentFirstHeading"
+  >
+    Do you really want to delete this item?
+  </h1>
+  <div
+    className="ui bulleted list"
+    role="list"
+  >
+    <div
+      className="item"
+      data-value={undefined}
+      role="listitem"
+    >
+      Blog
+    </div>
+  </div>
+  <button
+    className="ui primary button"
+    onClick={[Function]}
+    tabIndex={undefined}
+  >
+    Ok
+  </button>
+  <button
+    className="ui button"
+    onClick={[Function]}
+    tabIndex={undefined}
+  >
+    Cancel
+  </button>
+</div>
+`;
+
+exports[`Delete renders an empty delete component 1`] = `<div />`;

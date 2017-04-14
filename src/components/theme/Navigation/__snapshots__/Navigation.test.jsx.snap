@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation renders a navigation component 1`] = `
+<div
+  className="ui blue inverted vertical segment"
+>
+  <div
+    className="ui container"
+  >
+    <div
+      className="ui inverted secondary menu"
+    >
+      <a
+        className="item active"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Blog
+      </a>
+      <a
+        className="item"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Users
+      </a>
+    </div>
+  </div>
+</div>
+`;
