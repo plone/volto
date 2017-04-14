@@ -96,8 +96,9 @@ export default class Layout extends Component {
    * @returns {undefined}
    */
   selectTile(row, column) {
-    this.state.layout[this.state.selected.row][this.state.selected.column]
-      .selected = false;
+    this.state.layout[this.state.selected.row][
+      this.state.selected.column
+    ].selected = false;
     this.state.layout[row][column].selected = true;
     this.setState({
       selected: {
