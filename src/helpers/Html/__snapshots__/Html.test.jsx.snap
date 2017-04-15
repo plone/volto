@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a html component 1`] = `
+exports[`Html renders a html component 1`] = `
 <html
   lang="en"
 >

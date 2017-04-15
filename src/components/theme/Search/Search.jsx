@@ -18,13 +18,6 @@ import { searchContent } from '../../../actions';
  * @class Search
  * @extends Component
  */
-@asyncConnect([
-  {
-    key: 'search',
-    promise: ({ location, store: { dispatch } }) =>
-      dispatch(searchContent(location.query.SearchableText)),
-  },
-])
 @connect(
   (state, props) => ({
     loaded: state.search.loaded,
@@ -33,7 +26,7 @@ import { searchContent } from '../../../actions';
   }),
   dispatch => bindActionCreators({ searchContent }, dispatch),
 )
-export default class Search extends Component {
+export class Search extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -135,3 +128,11 @@ export default class Search extends Component {
     );
   }
 }
+
+export default asyncConnect([
+  {
+    key: 'search',
+    promise: ({ location, store: { dispatch } }) =>
+      dispatch(searchContent(location.query.SearchableText)),
+  },
+])(Search);
