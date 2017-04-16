@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add renders an add component 1`] = `
+<div
+  id="page-edit"
+>
+  <h1>
+    Edit 
+  </h1>
+  <div
+    className="Form"
+  />
+</div>
+`;
+
+exports[`Add renders an empty add component 1`] = `<div />`;

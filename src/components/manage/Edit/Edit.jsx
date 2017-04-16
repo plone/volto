@@ -56,9 +56,6 @@ export class EditComponent extends Component {
     pathname: PropTypes.string.isRequired,
     content: PropTypes.shape({
       '@type': PropTypes.string,
-      text: PropTypes.shape({
-        data: PropTypes.string,
-      }),
     }),
     schema: PropTypes.objectOf(PropTypes.any),
   };

@@ -28,7 +28,9 @@ describe('App', () => {
     const store = mockStore();
     const component = renderer.create(
       <Provider store={store}>
-        <App pathname="/blog/edit" />
+        <App pathname="/blog/edit">
+          <div />
+        </App>
       </Provider>,
     );
     const json = component.toJSON();
