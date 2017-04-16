@@ -31,6 +31,7 @@ export default class Form extends Component {
         }),
       ),
       properties: PropTypes.objectOf(PropTypes.any),
+      required: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
     formData: PropTypes.objectOf(PropTypes.any),
     onSubmit: PropTypes.func.isRequired,
@@ -93,6 +94,7 @@ export default class Form extends Component {
   /**
    * Select tab handler
    * @method selectTab
+   * @param {Object} event Event object.
    * @param {number} index Selected tab index.
    * @returns {undefined}
    */

@@ -24,50 +24,52 @@ jest.mock('../Widgets/WysiwygWidget', () =>
   jest.fn(() => <div className="WysiwygWidget" />),
 );
 
-test('renders a richtext field', () => {
-  const component = renderer.create(<Field widget="richtext" />);
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
-});
+describe('Field', () => {
+  it('renders a richtext field', () => {
+    const component = renderer.create(<Field widget="richtext" />);
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 
-test('renders a textarea field', () => {
-  const component = renderer.create(<Field widget="textarea" />);
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
-});
+  it('renders a textarea field', () => {
+    const component = renderer.create(<Field widget="textarea" />);
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 
-test('renders a datetime field', () => {
-  const component = renderer.create(<Field widget="datetime" />);
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
-});
+  it('renders a datetime field', () => {
+    const component = renderer.create(<Field widget="datetime" />);
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 
-test('renders a text field', () => {
-  const component = renderer.create(<Field widget="text" />);
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
-});
+  it('renders a text field', () => {
+    const component = renderer.create(<Field widget="text" />);
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 
-test('renders a select field', () => {
-  const component = renderer.create(<Field choices={[]} />);
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
-});
+  it('renders a select field', () => {
+    const component = renderer.create(<Field choices={[]} />);
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 
-test('renders a boolean field', () => {
-  const component = renderer.create(<Field type="boolean" />);
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
-});
+  it('renders a boolean field', () => {
+    const component = renderer.create(<Field type="boolean" />);
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 
-test('renders a array field', () => {
-  const component = renderer.create(<Field type="array" />);
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
-});
+  it('renders a array field', () => {
+    const component = renderer.create(<Field type="array" />);
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 
-test('renders a fallback field', () => {
-  const component = renderer.create(<Field />);
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+  it('renders a fallback field', () => {
+    const component = renderer.create(<Field />);
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });

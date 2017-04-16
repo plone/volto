@@ -16,6 +16,7 @@ exports[`Delete renders a delete component 1`] = `
     <div
       className="item"
       data-value={undefined}
+      onClick={[Function]}
       role="listitem"
     >
       Blog

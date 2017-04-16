@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form renders a form component 1`] = `
+<form
+  className="ui form"
+  onSubmit={[Function]}
+>
+  <div
+    className="ui top attached tabular menu"
+  >
+    <a
+      className="active item"
+      onClick={[Function]}
+    >
+      Default
+    </a>
+  </div>
+  <div
+    className="ui attached segment"
+  >
+    <div
+      className="Field"
+    />
+  </div>
+  <div
+    className="ui bottom attached segment"
+  >
+    <button
+      className="ui primary button"
+      onClick={[Function]}
+      tabIndex={undefined}
+      type="submit"
+    >
+      Save
+    </button>
+    <button
+      className="ui button"
+      onClick={[Function]}
+      tabIndex={undefined}
+    >
+      Cancel
+    </button>
+  </div>
+</form>
+`;
