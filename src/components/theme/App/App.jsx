@@ -27,13 +27,13 @@ import {
 
 /**
  * This function defines the app component.
- * @function App
+ * @function AppComponent
  * @params {Object} props Properties.
  * @params {string} props.pathname Current pathname.
  * @params {object} props.children Child objects.
  * @returns {string} Markup of the component.
  */
-const App = ({ pathname, children }) => {
+export const AppComponent = ({ pathname, children }) => {
   const path = getBaseUrl(pathname);
   const action = getView(pathname);
 
@@ -60,7 +60,7 @@ const App = ({ pathname, children }) => {
  * @property {Object} propTypes Property types.
  * @static
  */
-App.propTypes = {
+AppComponent.propTypes = {
   children: PropTypes.element.isRequired,
   pathname: PropTypes.string.isRequired,
 };
@@ -89,4 +89,4 @@ export default compose(
     },
   ]),
   connect((state, props) => ({ pathname: props.location.pathname })),
-)(App);
+)(AppComponent);

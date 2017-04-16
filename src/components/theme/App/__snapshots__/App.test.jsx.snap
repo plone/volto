@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders a app component 1`] = `
+<div>
+  <div
+    id="toolbar"
+  />
+  <div
+    className="pusher"
+  >
+    <div
+      id="toolbar"
+    />
+    <div
+      id="navigation"
+    />
+    <div
+      id="breadcrumbs"
+    />
+    <div
+      id="segment"
+    />
+    <div
+      id="footer"
+    />
+  </div>
+</div>
+`;

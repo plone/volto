@@ -14,8 +14,8 @@ import { asyncConnect } from 'redux-connect';
 import { searchContent } from '../../../actions';
 
 /**
- * Search component class.
- * @class Search
+ * SearchComponent class.
+ * @class SearchComponent
  * @extends Component
  */
 @connect(
@@ -26,7 +26,7 @@ import { searchContent } from '../../../actions';
   }),
   dispatch => bindActionCreators({ searchContent }, dispatch),
 )
-export class Search extends Component {
+export class SearchComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -135,4 +135,4 @@ export default asyncConnect([
     promise: ({ location, store: { dispatch } }) =>
       dispatch(searchContent(location.query.SearchableText)),
   },
-])(Search);
+])(SearchComponent);

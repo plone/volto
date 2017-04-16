@@ -1,17 +1,9 @@
-/*
-describe('Search', () => {
-  it('dummy', () => {
-    expect(1).toBe(1);
-  });
-});
-*/
-
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 
-import { Search } from './Search';
+import { SearchComponent as Search } from './Search';
 
 const mockStore = configureStore();
 

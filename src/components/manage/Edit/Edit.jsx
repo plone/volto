@@ -13,38 +13,17 @@ import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
 
 import {
-  Form, //  Layout,
+  Form, // Layout,
 } from '../../../components';
 import { editContent, getContent, getSchema } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
 /**
- * Edit container class.
- * @class Edit
+ * EditComponent class.
+ * @class EditComponent
  * @extends Component
  */
-@asyncConnect([
-  {
-    key: 'schema',
-    promise: ({ store: { dispatch, getState } }) =>
-      dispatch(getSchema(getState().content.data['@type'])),
-  },
-  {
-    key: 'content',
-    promise: ({ location, store: { dispatch, getState } }) => {
-      const form = getState().form;
-      if (!isEmpty(form)) {
-        return dispatch(
-          editContent(
-            getBaseUrl(location.pathname),
-            pick(form, ['title', 'description', 'text']),
-          ),
-        );
-      }
-      return Promise.resolve(getState().content);
-    },
-  },
-])
+
 @connect(
   (state, props) => ({
     content: state.content.data,
@@ -56,7 +35,7 @@ import { getBaseUrl } from '../../../helpers';
   dispatch =>
     bindActionCreators({ editContent, getContent, getSchema }, dispatch),
 )
-export default class Edit extends Component {
+export class EditComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -197,3 +176,26 @@ export default class Edit extends Component {
     return <div />;
   }
 }
+
+export default asyncConnect([
+  {
+    key: 'schema',
+    promise: ({ store: { dispatch, getState } }) =>
+      dispatch(getSchema(getState().content.data['@type'])),
+  },
+  {
+    key: 'content',
+    promise: ({ location, store: { dispatch, getState } }) => {
+      const form = getState().form;
+      if (!isEmpty(form)) {
+        return dispatch(
+          editContent(
+            getBaseUrl(location.pathname),
+            pick(form, ['title', 'description', 'text']),
+          ),
+        );
+      }
+      return Promise.resolve(getState().content);
+    },
+  },
+])(EditComponent);

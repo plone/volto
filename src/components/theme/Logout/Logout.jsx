@@ -13,18 +13,12 @@ import { Login } from '../../../components';
 import { logout } from '../../../actions';
 
 /**
- * Logout container class.
- * @class Logout
+ * LogoutComponent class.
+ * @class LogoutComponent
  * @extends Component
  */
-@asyncConnect([
-  {
-    key: 'userSession',
-    promise: ({ store: { dispatch } }) => dispatch(logout()),
-  },
-])
 @connect(() => ({}), dispatch => bindActionCreators({ logout }, dispatch))
-export default class Logout extends Component {
+export class LogoutComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -52,3 +46,10 @@ export default class Logout extends Component {
     return <Login />;
   }
 }
+
+export default asyncConnect([
+  {
+    key: 'userSession',
+    promise: ({ store: { dispatch } }) => dispatch(logout()),
+  },
+])(LogoutComponent);

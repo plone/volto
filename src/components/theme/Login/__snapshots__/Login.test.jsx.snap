@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login renders a login component 1`] = `
+<div
+  id="page-login"
+>
+  <div
+    className="container"
+  >
+    <form
+      className="ui form"
+      method="post"
+      onSubmit={[Function]}
+    >
+      <div
+        className="ui top attached segment"
+      >
+        <div
+          className="field"
+        >
+          <label
+            htmlFor="login"
+          >
+            Login Name
+          </label>
+          <div
+            className="ui input"
+            id="login"
+          >
+            <input
+              name="login"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          className="field"
+        >
+          <label
+            htmlFor="password"
+          >
+            Password
+          </label>
+          <div
+            className="ui input"
+            id="password"
+          >
+            <input
+              name="password"
+              type="password"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="ui bottom attached segment"
+      >
+        <button
+          className="ui primary button"
+          onClick={[Function]}
+          tabIndex={undefined}
+          type="submit"
+        >
+          Log In
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+`;

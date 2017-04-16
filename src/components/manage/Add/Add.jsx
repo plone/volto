@@ -18,32 +18,10 @@ import config from '../../../config';
 import { getBaseUrl } from '../../../helpers';
 
 /**
- * Add container class.
- * @class Add
+ * AddComponent class.
+ * @class AddComponent
  * @extends Component
  */
-@asyncConnect([
-  {
-    key: 'schema',
-    promise: ({ location, store: { dispatch } }) =>
-      dispatch(getSchema(location.query.type)),
-  },
-  {
-    key: 'content',
-    promise: ({ location, store: { dispatch, getState } }) => {
-      const form = getState().form;
-      if (!isEmpty(form)) {
-        return dispatch(
-          addContent(getBaseUrl(location.pathname), {
-            ...pick(form, ['title', 'description', 'text']),
-            '@type': 'Document',
-          }),
-        );
-      }
-      return Promise.resolve(getState().content);
-    },
-  },
-])
 @connect(
   (state, props) => ({
     request: state.content.add,
@@ -54,7 +32,7 @@ import { getBaseUrl } from '../../../helpers';
   }),
   dispatch => bindActionCreators({ addContent, getSchema }, dispatch),
 )
-export default class Add extends Component {
+export class AddComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -164,3 +142,26 @@ export default class Add extends Component {
     return <div />;
   }
 }
+
+export default asyncConnect([
+  {
+    key: 'schema',
+    promise: ({ location, store: { dispatch } }) =>
+      dispatch(getSchema(location.query.type)),
+  },
+  {
+    key: 'content',
+    promise: ({ location, store: { dispatch, getState } }) => {
+      const form = getState().form;
+      if (!isEmpty(form)) {
+        return dispatch(
+          addContent(getBaseUrl(location.pathname), {
+            ...pick(form, ['title', 'description', 'text']),
+            '@type': 'Document',
+          }),
+        );
+      }
+      return Promise.resolve(getState().content);
+    },
+  },
+])(AddComponent);

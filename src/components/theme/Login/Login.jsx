@@ -16,22 +16,10 @@ import { Button, Form, Input, Segment } from 'semantic-ui-react';
 import { login } from '../../../actions';
 
 /**
- * Login container class.
- * @class Login
+ * LoginComponent class.
+ * @class LoginComponent
  * @extends Component
  */
-@asyncConnect([
-  {
-    key: 'userSession',
-    promise: ({ store: { dispatch, getState } }) => {
-      const form = getState().form;
-      if (!isEmpty(form)) {
-        return dispatch(login(form.login, form.password));
-      }
-      return Promise.resolve({});
-    },
-  },
-])
 @connect(
   state => ({
     error: state.userSession.login.error,
@@ -39,7 +27,7 @@ import { login } from '../../../actions';
   }),
   dispatch => bindActionCreators({ login }, dispatch),
 )
-export default class Login extends Component {
+export class LoginComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -135,3 +123,16 @@ export default class Login extends Component {
     );
   }
 }
+
+export default asyncConnect([
+  {
+    key: 'userSession',
+    promise: ({ store: { dispatch, getState } }) => {
+      const form = getState().form;
+      if (!isEmpty(form)) {
+        return dispatch(login(form.login, form.password));
+      }
+      return Promise.resolve({});
+    },
+  },
+])(LoginComponent);
