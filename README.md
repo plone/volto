@@ -54,13 +54,16 @@ The BSD 3-Clause License. Copyrights hold the Plone Foundation.
 See [LICENSE.md](LICENSE.md) for details.
 
 ### Todo
-* Redirect after SSR edit and add content
 * Form validation
-* Unit / e2e tests
+* e2e tests
 * Documentation
 * Fill slots with react-slot-fill
 * Sharing
+* Portlets / viewlets?
+* Integrate semantic-ui-less
+* Customize theme (create-react-app/jbot)
 * Collaborative editing
 * Live updates
 * Make pages folderish / folders pagish / root also
 * Upgrade to React Router 4
+* Redirect after SSR edit and add content

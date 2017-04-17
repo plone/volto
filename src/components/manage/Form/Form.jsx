@@ -122,7 +122,7 @@ export default class Form extends Component {
     }));
 
     return (
-      <UiForm onSubmit={this.onSubmit}>
+      <UiForm method="post" onSubmit={this.onSubmit}>
         <Menu attached="top" tabular>
           {map(schema.fieldsets, (item, index) => (
             <Menu.Item
