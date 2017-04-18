@@ -111,7 +111,12 @@ export default class Actions extends Component {
         <Dropdown.Menu>
           <Dropdown.Item icon="cut" text="Cut" onClick={this.cut} />
           <Dropdown.Item icon="copy" text="Copy" onClick={this.copy} />
-          <Dropdown.Item icon="paste" text="Paste" onClick={this.paste} />
+          <Dropdown.Item
+            icon="paste"
+            text="Paste"
+            onClick={this.paste}
+            disabled={this.props.action === null}
+          />
           <Link to={`${this.props.pathname}/delete`} className="item">
             <Icon name="trash" />Delete
           </Link>

@@ -18,6 +18,7 @@ import {
   Login,
   Logout,
   Search,
+  Sharing,
 } from './components';
 
 /**
@@ -43,6 +44,7 @@ export default () => (
     <Route path="/**/delete" component={Delete} />
     <Route path="/**/edit" component={Edit} />
     <Route path="/**/layout" component={Layout} />
+    <Route path="/**/sharing" component={Sharing} />
     <Route path="/**" component={View} />
     <Route path="*" component={NotFound} status={404} />
   </Route>

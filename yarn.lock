@@ -2351,9 +2351,9 @@ dotenv@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-2.0.0.tgz#bd759c357aaa70365e01c96b7b0bec08a6e0d949"
 
-draft-js-editor@1.8.16:
-  version "1.8.16"
-  resolved "https://registry.yarnpkg.com/draft-js-editor/-/draft-js-editor-1.8.16.tgz#5078131381a8de7a40fad87385e95d6e2099aa3a"
+draft-js-editor@1.8.19:
+  version "1.8.19"
+  resolved "https://registry.yarnpkg.com/draft-js-editor/-/draft-js-editor-1.8.19.tgz#a13fbd78e9d01209b69fa5bb0479bdf67155a031"
   dependencies:
     fbjs "^0.8.3"
     immutable "^3.8.1"
@@ -3078,9 +3078,9 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
-flow-bin@0.44.0:
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.44.0.tgz#b291f147e5dae1cc8a116f834f24d9402ed96a52"
+flow-bin@0.44.2:
+  version "0.44.2"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.44.2.tgz#3893c7db5de043ed82674f327a04b1309db208b5"
 
 flow-parser@0.43.0:
   version "0.43.0"
@@ -4909,9 +4909,9 @@ lru-cache@^4.0.1:
     pseudomap "^1.0.1"
     yallist "^2.0.0"
 
-lru-memoize@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/lru-memoize/-/lru-memoize-1.0.1.tgz#25afa87290562ab6addac4f323d16e8724306a9d"
+lru-memoize@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/lru-memoize/-/lru-memoize-1.0.2.tgz#f5ae84d288e7d55fec8388ec0bd725621bc815d0"
 
 macaddress@^0.2.8:
   version "0.2.8"

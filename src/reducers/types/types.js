@@ -27,7 +27,6 @@ export default function types(state = initialState, action = {}) {
         error: null,
         loading: true,
         loaded: false,
-        types: [],
       };
     case `${GET_TYPES}_SUCCESS`:
       return {

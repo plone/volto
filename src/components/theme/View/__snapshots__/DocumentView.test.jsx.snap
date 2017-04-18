@@ -7,7 +7,9 @@ exports[`renders a document view component 1`] = `
   <h1>
     Hello World!
   </h1>
-  <p>
+  <p
+    className="description"
+  >
     Hi
   </p>
   <p

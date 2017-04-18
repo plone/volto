@@ -7,7 +7,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { Icon, Menu } from 'semantic-ui-react';
+import { Dropdown, Icon, Menu } from 'semantic-ui-react';
+import jwtDecode from 'jwt-decode';
 
 import { Actions, Display, Types, Workflow } from '../../../components';
 
@@ -20,6 +21,7 @@ import logo from './plone-toolbarlogo.svg';
  */
 @connect(state => ({
   token: state.userSession.token,
+  fullname: jwtDecode(state.userSession.token).fullname,
 }))
 export default class Toolbar extends Component {
   /**
@@ -31,6 +33,7 @@ export default class Toolbar extends Component {
     pathname: PropTypes.string.isRequired,
     selected: PropTypes.string.isRequired,
     token: PropTypes.string,
+    fullname: PropTypes.string,
   };
 
   /**
@@ -40,6 +43,7 @@ export default class Toolbar extends Component {
    */
   static defaultProps = {
     token: null,
+    fullname: '',
   };
 
   /**
@@ -73,9 +77,24 @@ export default class Toolbar extends Component {
         <Workflow pathname={this.props.pathname} />
         <Actions pathname={this.props.pathname} />
         <Display pathname={this.props.pathname} />
-        <Link to="/logout" className="item personal-bar">
-          <span><Icon name="user" /> Log out</span>
+        <Link
+          to={`${this.props.pathname}/sharing`}
+          className={`item${this.props.selected === 'sharing' ? ' active' : ''}`}
+        >
+          <span><Icon name="users" /> Sharing</span>
         </Link>
+        <Dropdown
+          className="personal-bar"
+          item
+          trigger={<span><Icon name="user" /> {this.props.fullname}</span>}
+          pointing="left"
+        >
+          <Dropdown.Menu>
+            <Link to="/logout" className="item">
+              <span><Icon name="sign out" /> Log out</span>
+            </Link>
+          </Dropdown.Menu>
+        </Dropdown>
       </Menu>
     );
   }

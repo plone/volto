@@ -52,17 +52,61 @@ exports[`Toolbar renders an actions component 1`] = `
     id="display"
   />
   <a
-    className="item personal-bar"
+    className="item"
     onClick={[Function]}
     style={Object {}}
   >
     <span>
       <i
         aria-hidden="true"
-        className="user icon"
+        className="users icon"
       />
-       Log out
+       Sharing
     </span>
   </a>
+  <div
+    aria-busy={undefined}
+    aria-disabled={undefined}
+    aria-expanded={false}
+    aria-multiselectable={undefined}
+    className="ui item left pointing personal-bar dropdown"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    role="listbox"
+    tabIndex={0}
+  >
+    <span>
+      <i
+        aria-hidden="true"
+        className="user icon"
+      />
+       
+      John Doe
+    </span>
+    <i
+      aria-hidden="true"
+      className="dropdown icon"
+    />
+    <div
+      className="menu transition"
+    >
+      <a
+        className="item"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <span>
+          <i
+            aria-hidden="true"
+            className="sign out icon"
+          />
+           Log out
+        </span>
+      </a>
+    </div>
+  </div>
 </div>
 `;

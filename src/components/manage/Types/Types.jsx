@@ -39,7 +39,7 @@ export default class Types extends Component {
         addable: PropTypes.bool,
         title: PropTypes.string,
       }),
-    ),
+    ).isRequired,
     active: PropTypes.bool,
   };
 
@@ -49,7 +49,6 @@ export default class Types extends Component {
    * @static
    */
   static defaultProps = {
-    types: [],
     active: false,
   };
 

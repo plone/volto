@@ -14,6 +14,7 @@ import form from './form/form';
 import navigation from './navigation/navigation';
 import schema from './schema/schema';
 import search from './search/search';
+import sharing from './sharing/sharing';
 import types from './types/types';
 import userSession from './userSession/userSession';
 import workflow from './workflow/workflow';
@@ -35,6 +36,7 @@ export default combineReducers({
   navigation,
   schema,
   search,
+  sharing,
   types,
   userSession,
   workflow,

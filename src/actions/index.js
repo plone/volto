@@ -16,5 +16,6 @@ export getNavigation from './navigation/navigation';
 export getSchema from './schema/schema';
 export getTypes from './types/types';
 export searchContent from './search/search';
+export { editSharing, getSharing } from './sharing/sharing';
 export { login, logout } from './userSession/userSession';
 export { getWorkflow, transitionWorkflow } from './workflow/workflow';

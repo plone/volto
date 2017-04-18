@@ -19,9 +19,10 @@ import {
 } from '../../../components';
 import { getBaseUrl, getView } from '../../../helpers';
 import {
+  getBreadcrumbs,
   getContent,
   getNavigation,
-  getBreadcrumbs,
+  getTypes,
   getWorkflow,
 } from '../../../actions';
 
@@ -68,6 +69,11 @@ AppComponent.propTypes = {
 export default compose(
   asyncConnect([
     {
+      key: 'breadcrumbs',
+      promise: ({ location, store: { dispatch } }) =>
+        dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
+    },
+    {
       key: 'content',
       promise: ({ location, store: { dispatch } }) =>
         dispatch(getContent(getBaseUrl(location.pathname))),
@@ -78,9 +84,9 @@ export default compose(
         dispatch(getNavigation(getBaseUrl(location.pathname))),
     },
     {
-      key: 'breadcrumbs',
+      key: 'types',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
+        dispatch(getTypes(getBaseUrl(location.pathname))),
     },
     {
       key: 'workflow',

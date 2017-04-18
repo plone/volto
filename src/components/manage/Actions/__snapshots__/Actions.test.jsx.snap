@@ -67,9 +67,9 @@ exports[`Actions renders an actions component 1`] = `
     </div>
     <div
       aria-checked={undefined}
-      aria-disabled={undefined}
+      aria-disabled={true}
       aria-selected={undefined}
-      className="item"
+      className="disabled item"
       onClick={[Function]}
       role="option"
     >

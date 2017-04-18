@@ -22,7 +22,7 @@ import layouts from '../../../constants/Layouts';
     loaded: state.content.edit.loaded,
     layouts: state.schema.schema ? state.schema.schema.layouts : [],
     layout: state.content.data ? state.content.data.layout : '',
-    type: state.content.data['@type'],
+    type: state.content.data ? state.content.data['@type'] : '',
   }),
   dispatch =>
     bindActionCreators({ getSchema, editContent, getContent }, dispatch),
@@ -40,7 +40,7 @@ export default class Display extends Component {
     loaded: PropTypes.bool.isRequired,
     pathname: PropTypes.string.isRequired,
     layouts: PropTypes.arrayOf(PropTypes.string),
-    layout: PropTypes.string,
+    layout: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
   };
 
@@ -53,7 +53,6 @@ export default class Display extends Component {
     history: [],
     transitions: [],
     layouts: [],
-    layout: '',
   };
 
   /**

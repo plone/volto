@@ -13,7 +13,9 @@ exports[`renders a summary view component 1`] = `
       >
         Hello World!
       </h1>
-      <p>
+      <p
+        className="description"
+      >
         Hi
       </p>
     </header>

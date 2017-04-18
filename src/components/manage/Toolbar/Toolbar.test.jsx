@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
+import jwt from 'jsonwebtoken';
 
 import Toolbar from './Toolbar';
 
@@ -14,7 +15,11 @@ jest.mock('../Workflow/Workflow', () => jest.fn(() => <div id="workflow" />));
 
 describe('Toolbar', () => {
   it('renders an actions component', () => {
-    const store = mockStore({ userSession: { token: '1234' } });
+    const store = mockStore({
+      userSession: {
+        token: jwt.sign({ fullname: 'John Doe' }, 'secret'),
+      },
+    });
     const component = renderer.create(
       <Provider store={store}>
         <Toolbar pathname="/test" selected="view" />

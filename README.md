@@ -55,6 +55,7 @@ See [LICENSE.md](LICENSE.md) for details.
 
 ### Todo
 * Form validation
+* SSR form
 * e2e tests
 * Documentation
 * Fill slots with react-slot-fill
@@ -67,3 +68,7 @@ See [LICENSE.md](LICENSE.md) for details.
 * Make pages folderish / folders pagish / root also
 * Upgrade to React Router 4
 * Redirect after SSR edit and add content
+* i18n
+* Collapse toolbar / mobile toolbar
+* Folder contents
+* Snackbar like notifications

@@ -38,6 +38,7 @@ export ArrayWidget from './manage/Widgets/ArrayWidget';
 export CheckboxWidget from './manage/Widgets/CheckboxWidget';
 export DatetimeWidget from './manage/Widgets/DatetimeWidget';
 export SelectWidget from './manage/Widgets/SelectWidget';
+export Sharing from './manage/Sharing/Sharing';
 export TextareaWidget from './manage/Widgets/TextareaWidget';
 export TextWidget from './manage/Widgets/TextWidget';
 export Toolbar from './manage/Toolbar/Toolbar';
