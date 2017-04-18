@@ -3,6 +3,7 @@
 exports[`Form renders a form component 1`] = `
 <form
   className="ui form"
+  method="post"
   onSubmit={[Function]}
 >
   <div
