@@ -1,3 +1,19 @@
+.ui.vertical.menu.collapsed {
+  width: 4rem;
+}
+
+.ui.menu.collapsed .item {
+  padding: .92857143em 0em 0.92857143em 1.14285714em;
+}
+
+.ui.vertical.menu.collapsed .dropdown.item > .icon {
+  margin-left: 0;
+}
+
+.ui.menu.collapsed.left.fixed ~ .pusher {
+  margin-left: 4rem;
+}
+
 .ui.menu.left.fixed ~ .pusher {
   margin-left: 210px;
 }
@@ -19,6 +35,10 @@
   width: 210px;
   position: fixed;
   bottom: 0;
+}
+
+.ui.menu.collapsed .item.personal-bar {
+  width: 4rem;
 }
 
 /* override when sidebar is shown */

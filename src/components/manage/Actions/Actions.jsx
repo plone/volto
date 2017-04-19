@@ -39,6 +39,7 @@ export default class Actions extends Component {
     copy: PropTypes.func.isRequired,
     copyContent: PropTypes.func.isRequired,
     moveContent: PropTypes.func.isRequired,
+    expanded: PropTypes.bool,
   };
 
   /**
@@ -49,6 +50,7 @@ export default class Actions extends Component {
   static defaultProps = {
     action: null,
     source: null,
+    expanded: true,
   };
 
   /**
@@ -105,7 +107,11 @@ export default class Actions extends Component {
     return (
       <Dropdown
         item
-        trigger={<span><Icon name="lightning" /> Actions</span>}
+        trigger={
+          <span>
+            <Icon name="lightning" />{this.props.expanded && ' Actions'}
+          </span>
+        }
         pointing="left"
       >
         <Dropdown.Menu>

@@ -69,6 +69,6 @@ See [LICENSE.md](LICENSE.md) for details.
 * Upgrade to React Router 4
 * Redirect after SSR edit and add content
 * i18n
-* Collapse toolbar / mobile toolbar
+* Mobile toolbar
 * Folder contents
 * Snackbar like notifications

@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Dropdown, Icon, Menu } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
+import cookie from 'react-cookie';
 
 import { Actions, Display, Types, Workflow } from '../../../components';
 
@@ -21,7 +22,9 @@ import logo from './plone-toolbarlogo.svg';
  */
 @connect(state => ({
   token: state.userSession.token,
-  fullname: jwtDecode(state.userSession.token).fullname,
+  fullname: state.userSession.token
+    ? jwtDecode(state.userSession.token).fullname
+    : '',
 }))
 export default class Toolbar extends Component {
   /**
@@ -47,46 +50,85 @@ export default class Toolbar extends Component {
   };
 
   /**
+   * Constructor
+   * @method constructor
+   * @param {Object} props Component properties
+   * @constructs Toolbar
+   */
+  constructor(props) {
+    super(props);
+    this.onToggleExpanded = this.onToggleExpanded.bind(this);
+    this.state = {
+      expanded: cookie.load('toolbar_expanded') !== 'false',
+    };
+  }
+
+  /**
+   * On toggle expanded handler
+   * @method onToggleExpanded
+   * @returns {undefined}
+   */
+  onToggleExpanded() {
+    cookie.save('toolbar_expanded', !this.state.expanded, {
+      expires: new Date((2 ** 31 - 1) * 1000),
+    });
+    this.setState({
+      expanded: !this.state.expanded,
+    });
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
+    const expanded = this.state.expanded;
     return (
       this.props.token &&
-      <Menu inverted vertical fixed="left">
-        <Menu.Item color="blue" active>
+      <Menu
+        inverted
+        vertical
+        fixed="left"
+        className={!expanded ? 'collapsed' : ''}
+      >
+        <Menu.Item color="blue" active onClick={this.onToggleExpanded}>
           <img alt="Plone Toolbar" src={logo} />
         </Menu.Item>
         <Link
           to={`${this.props.pathname}/edit`}
           className={`item${this.props.selected === 'edit' ? ' active' : ''}`}
         >
-          <span><Icon name="write" /> Edit</span>
+          <span><Icon name="write" />{expanded && ' Edit'}</span>
         </Link>
         <Link
           to={this.props.pathname}
           className={`item${this.props.selected === 'view' ? ' active' : ''}`}
         >
-          <span><Icon name="eye" /> View</span>
+          <span><Icon name="eye" />{expanded && ' View'}</span>
         </Link>
         <Types
           pathname={this.props.pathname}
           active={this.props.selected === 'add'}
+          expanded={expanded}
         />
-        <Workflow pathname={this.props.pathname} />
-        <Actions pathname={this.props.pathname} />
-        <Display pathname={this.props.pathname} />
+        <Workflow pathname={this.props.pathname} expanded={expanded} />
+        <Actions pathname={this.props.pathname} expanded={expanded} />
+        <Display pathname={this.props.pathname} expanded={expanded} />
         <Link
           to={`${this.props.pathname}/sharing`}
           className={`item${this.props.selected === 'sharing' ? ' active' : ''}`}
         >
-          <span><Icon name="users" /> Sharing</span>
+          <span><Icon name="users" />{expanded && ' Sharing'}</span>
         </Link>
         <Dropdown
           className="personal-bar"
           item
-          trigger={<span><Icon name="user" /> {this.props.fullname}</span>}
+          trigger={
+            <span>
+              <Icon name="user" />{expanded && ` ${this.props.fullname}`}
+            </span>
+          }
           pointing="left"
         >
           <Dropdown.Menu>

@@ -41,6 +41,7 @@ export default class Types extends Component {
       }),
     ).isRequired,
     active: PropTypes.bool,
+    expanded: PropTypes.bool,
   };
 
   /**
@@ -50,6 +51,7 @@ export default class Types extends Component {
    */
   static defaultProps = {
     active: false,
+    expanded: true,
   };
 
   /**
@@ -70,7 +72,11 @@ export default class Types extends Component {
     return this.props.types.length > 0
       ? <Dropdown
           item
-          trigger={<span><Icon name="add" /> Add new...</span>}
+          trigger={
+            <span>
+              <Icon name="add" />{this.props.expanded && ' Add new...'}
+            </span>
+          }
           pointing="left"
           className={this.props.active ? 'active' : ''}
         >

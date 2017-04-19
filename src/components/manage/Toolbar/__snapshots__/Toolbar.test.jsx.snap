@@ -4,7 +4,7 @@ exports[`Toolbar renders an actions component 1`] = `
 <div
   className="ui inverted vertical left fixed menu"
 >
-  <div
+  <a
     className="blue active item"
     onClick={[Function]}
   >
@@ -12,7 +12,7 @@ exports[`Toolbar renders an actions component 1`] = `
       alt="Plone Toolbar"
       src="plone-toolbarlogo.svg"
     />
-  </div>
+  </a>
   <a
     className="item"
     onClick={[Function]}
@@ -83,8 +83,7 @@ exports[`Toolbar renders an actions component 1`] = `
         aria-hidden="true"
         className="user icon"
       />
-       
-      John Doe
+       John Doe
     </span>
     <i
       aria-hidden="true"

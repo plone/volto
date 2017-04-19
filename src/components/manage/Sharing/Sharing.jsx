@@ -73,7 +73,7 @@ export default class SharingComponent extends Component {
    * Constructor
    * @method constructor
    * @param {Object} props Component properties
-   * @constructs WysiwygEditor
+   * @constructs Sharing
    */
   constructor(props) {
     super(props);

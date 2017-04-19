@@ -42,6 +42,7 @@ export default class Display extends Component {
     layouts: PropTypes.arrayOf(PropTypes.string),
     layout: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
+    expanded: PropTypes.bool,
   };
 
   /**
@@ -53,6 +54,7 @@ export default class Display extends Component {
     history: [],
     transitions: [],
     layouts: [],
+    expanded: true,
   };
 
   /**
@@ -111,7 +113,11 @@ export default class Display extends Component {
     return (
       <Dropdown
         item
-        trigger={<span><Icon name="block layout" /> Display</span>}
+        trigger={
+          <span>
+            <Icon name="block layout" />{this.props.expanded && ' Display'}
+          </span>
+        }
         pointing="left"
       >
         <Dropdown.Menu>

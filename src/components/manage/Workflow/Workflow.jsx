@@ -48,6 +48,7 @@ export default class Workflow extends Component {
         title: PropTypes.string,
       }),
     ),
+    expanded: PropTypes.bool,
   };
 
   /**
@@ -58,6 +59,7 @@ export default class Workflow extends Component {
   static defaultProps = {
     history: [],
     transitions: [],
+    expanded: true,
   };
 
   /**
@@ -116,7 +118,12 @@ export default class Workflow extends Component {
     return this.props.history.length > 0
       ? <Dropdown
           item
-          trigger={<span><Icon name="random" /> State: {current}</span>}
+          trigger={
+            <span>
+              <Icon name="random" />
+              {this.props.expanded && ` State: ${current}`}
+            </span>
+          }
           pointing="left"
         >
           <Dropdown.Menu>
