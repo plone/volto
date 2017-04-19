@@ -84,7 +84,7 @@ export default class Navigation extends Component {
     return (
       <Segment inverted color="blue" vertical>
         <Container>
-          <Menu secondary inverted>
+          <Menu secondary inverted stackable>
             {this.props.items.map(item => (
               <Link
                 to={item.url === '' ? '/' : item.url}

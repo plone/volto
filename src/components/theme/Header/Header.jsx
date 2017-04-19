@@ -16,7 +16,7 @@ import { Anontools, Logo, SearchWidget } from '../../../components';
 const Header = () => (
   <Segment basic>
     <Container>
-      <Grid>
+      <Grid stackable>
         <Grid.Column width={8}>
           <Logo />
         </Grid.Column>

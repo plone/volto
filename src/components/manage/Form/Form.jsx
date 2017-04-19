@@ -123,7 +123,7 @@ export default class Form extends Component {
 
     return (
       <UiForm method="post" onSubmit={this.onSubmit}>
-        <Menu attached="top" tabular>
+        <Menu attached="top" tabular stackable>
           {map(schema.fieldsets, (item, index) => (
             <Menu.Item
               name={item.id}
