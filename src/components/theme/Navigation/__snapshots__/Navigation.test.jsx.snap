@@ -8,7 +8,7 @@ exports[`Navigation renders a navigation component 1`] = `
     className="ui container"
   >
     <div
-      className="ui inverted secondary menu"
+      className="ui inverted secondary stackable menu"
     >
       <a
         className="item active"

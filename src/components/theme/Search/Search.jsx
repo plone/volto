@@ -20,7 +20,6 @@ import { searchContent } from '../../../actions';
  */
 @connect(
   (state, props) => ({
-    loaded: state.search.loaded,
     items: state.search.items,
     searchableText: props.location.query.SearchableText,
   }),
@@ -35,7 +34,6 @@ export class SearchComponent extends Component {
   static propTypes = {
     searchContent: PropTypes.func.isRequired,
     searchableText: PropTypes.string,
-    loaded: PropTypes.bool.isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
         '@id': PropTypes.string,
@@ -62,7 +60,7 @@ export class SearchComponent extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    this.props.searchContent(this.props.searchableText);
+    this.props.searchContent('', { SearchableText: this.props.searchableText });
   }
 
   /**
@@ -73,7 +71,9 @@ export class SearchComponent extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.searchableText !== this.props.searchableText) {
-      this.props.searchContent(nextProps.searchableText);
+      this.props.searchContent('', {
+        SearchableText: nextProps.searchableText,
+      });
     }
   }
 
@@ -83,10 +83,6 @@ export class SearchComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    if (!this.props.loaded) {
-      return <span />;
-    }
-
     return (
       <div id="page-search">
         <Helmet title="Search" />
@@ -94,7 +90,7 @@ export class SearchComponent extends Component {
           <article id="content">
             <header>
               <h1 className="documentFirstHeading">
-                Search results for <strong>{this.props.searchableText}</strong>
+                Search results for <q>{this.props.searchableText}</q>
               </h1>
             </header>
             <section id="content-core">
@@ -133,6 +129,8 @@ export default asyncConnect([
   {
     key: 'search',
     promise: ({ location, store: { dispatch } }) =>
-      dispatch(searchContent(location.query.SearchableText)),
+      dispatch(
+        searchContent('', { SearchableText: location.query.SearchableText }),
+      ),
   },
 ])(SearchComponent);

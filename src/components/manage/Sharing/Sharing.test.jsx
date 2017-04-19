@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
+import jwt from 'jsonwebtoken';
 
 import Sharing from './Sharing';
 
@@ -10,6 +11,9 @@ const mockStore = configureStore();
 describe('Sharing', () => {
   it('renders a sharing component', () => {
     const store = mockStore({
+      userSession: {
+        token: jwt.sign({ sub: 'john-doe' }, 'secret'),
+      },
       sharing: {
         data: {
           entries: [

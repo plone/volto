@@ -29,9 +29,10 @@ export View from './theme/View/View';
 
 export Actions from './manage/Actions/Actions';
 export Add from './manage/Add/Add';
-export Edit from './manage/Edit/Edit';
+export Contents from './manage/Contents/Contents';
 export Delete from './manage/Delete/Delete';
 export Display from './manage/Display/Display';
+export Edit from './manage/Edit/Edit';
 export Form from './manage/Form/Form';
 export Field from './manage/Form/Field';
 export ArrayWidget from './manage/Widgets/ArrayWidget';

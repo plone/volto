@@ -41,6 +41,18 @@
   width: 4rem;
 }
 
+.ui.dropdown .menu.left {
+  left: auto;
+  right: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .ui.menu.stackable > .menu,
+  .ui.menu.stackable > .menu.right {
+    display: block;
+  }
+}
+
 /* override when sidebar is shown */
 @media only screen and (min-width: 1200px) {
   .ui.menu.fixed ~ .pusher .ui.container {

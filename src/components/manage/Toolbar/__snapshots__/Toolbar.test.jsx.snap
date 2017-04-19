@@ -21,6 +21,19 @@ exports[`Toolbar renders an actions component 1`] = `
     <span>
       <i
         aria-hidden="true"
+        className="folder open icon"
+      />
+       Contents
+    </span>
+  </a>
+  <a
+    className="item"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <span>
+      <i
+        aria-hidden="true"
         className="write icon"
       />
        Edit

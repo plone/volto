@@ -96,6 +96,12 @@ export default class Toolbar extends Component {
           <img alt="Plone Toolbar" src={logo} />
         </Menu.Item>
         <Link
+          to={`${this.props.pathname}/contents`}
+          className={`item${this.props.selected === 'contents' ? ' active' : ''}`}
+        >
+          <span><Icon name="folder open" />{expanded && ' Contents'}</span>
+        </Link>
+        <Link
           to={`${this.props.pathname}/edit`}
           className={`item${this.props.selected === 'edit' ? ' active' : ''}`}
         >

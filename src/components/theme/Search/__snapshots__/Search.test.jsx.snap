@@ -15,7 +15,7 @@ exports[`Search renders a search component 1`] = `
           className="documentFirstHeading"
         >
           Search results for 
-          <strong />
+          <q />
         </h1>
       </header>
       <section
@@ -65,4 +65,28 @@ exports[`Search renders a search component 1`] = `
 </div>
 `;
 
-exports[`Search renders an empty search component 1`] = `<span />`;
+exports[`Search renders an empty search component 1`] = `
+<div
+  id="page-search"
+>
+  <div
+    className="container"
+  >
+    <article
+      id="content"
+    >
+      <header>
+        <h1
+          className="documentFirstHeading"
+        >
+          Search results for 
+          <q />
+        </h1>
+      </header>
+      <section
+        id="content-core"
+      />
+    </article>
+  </div>
+</div>
+`;

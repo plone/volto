@@ -59,7 +59,6 @@ See [LICENSE.md](LICENSE.md) for details.
 * e2e tests
 * Documentation
 * Fill slots with react-slot-fill
-* Sharing
 * Portlets / viewlets?
 * Integrate semantic-ui-less
 * Customize theme (create-react-app/jbot)
@@ -72,3 +71,6 @@ See [LICENSE.md](LICENSE.md) for details.
 * Mobile toolbar
 * Folder contents
 * Snackbar like notifications
+* Content rules
+* Multi langual
+* History

@@ -89,7 +89,7 @@ exports[`Sharing renders a sharing component 1`] = `
             className=""
           >
             <div
-              className="ui checked fitted checkbox"
+              className="ui checked disabled fitted checkbox"
               onChange={[Function]}
               onClick={[Function]}
               onMouseDown={[Function]}
@@ -99,7 +99,7 @@ exports[`Sharing renders a sharing component 1`] = `
                 className="hidden"
                 name={undefined}
                 readOnly={true}
-                tabIndex={0}
+                tabIndex={-1}
                 type="checkbox"
                 value="john-doe.Contributer"
               />

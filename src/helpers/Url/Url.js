@@ -16,6 +16,7 @@ export function getBaseUrl(url: string): string {
   return url
     .replace(/\?.*$/, '')
     .replace('/add', '')
+    .replace('/contents', '')
     .replace('/delete', '')
     .replace('/edit', '')
     .replace('/login', '')
@@ -32,7 +33,7 @@ export function getBaseUrl(url: string): string {
  */
 export function getView(url: string): string {
   const view = last(url.replace(/\?.*$/, '').split('/'));
-  if (['add', 'edit', 'delete', 'sharing'].indexOf(view) === -1) {
+  if (['add', 'contents', 'edit', 'delete', 'sharing'].indexOf(view) === -1) {
     return 'view';
   }
   return view;

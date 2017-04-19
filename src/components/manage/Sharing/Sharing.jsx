@@ -9,8 +9,9 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
-import { find, isEqual, pickBy, map } from 'lodash';
+import { find, isEqual, map } from 'lodash';
 import { Button, Checkbox, Form, Icon, Input, Table } from 'semantic-ui-react';
+import jwtDecode from 'jwt-decode';
 
 import { editSharing, getSharing } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
@@ -28,6 +29,9 @@ import { getBaseUrl } from '../../../helpers';
     editRequest: state.sharing.edit,
     pathname: props.location.pathname,
     title: state.content.data.title,
+    login: state.userSession.token
+      ? jwtDecode(state.userSession.token).sub
+      : '',
   }),
   dispatch => bindActionCreators({ editSharing, getSharing }, dispatch),
 )
@@ -48,7 +52,6 @@ export default class SharingComponent extends Component {
     entries: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string,
-        disabled: PropTypes.bool,
         login: PropTypes.string,
         roles: PropTypes.object,
         title: PropTypes.string,
@@ -58,6 +61,7 @@ export default class SharingComponent extends Component {
     available_roles: PropTypes.arrayOf(PropTypes.string).isRequired,
     inherit: PropTypes.bool,
     title: PropTypes.string.isRequired,
+    login: PropTypes.string,
   };
 
   /**
@@ -67,6 +71,7 @@ export default class SharingComponent extends Component {
    */
   static defaultProps = {
     inherit: null,
+    login: '',
   };
 
   /**
@@ -277,7 +282,7 @@ export default class SharingComponent extends Component {
                           onChange={this.onChange}
                           value={`${entry.id}.${role}`}
                           checked={entry.roles[role]}
-                          disabled={entry.disabled}
+                          disabled={entry.login === this.props.login}
                         />}
                     </Table.Cell>
                   ))}

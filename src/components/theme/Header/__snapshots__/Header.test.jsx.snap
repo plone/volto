@@ -8,7 +8,7 @@ exports[`renders a header component 1`] = `
     className="ui container"
   >
     <div
-      className="ui grid"
+      className="ui stackable grid"
     >
       <div
         className="eight wide column"

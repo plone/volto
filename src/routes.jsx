@@ -10,6 +10,7 @@ import isMobile from 'ismobilejs';
 import {
   Add,
   App,
+  Contents,
   Edit,
   Delete,
   View,
@@ -41,6 +42,7 @@ export default () => (
     <Route path="/logout" component={Logout} />
     <Route path="/search" component={Search} />
     <Route path="/**/add" component={Add} />
+    <Route path="/**/contents" component={Contents} />
     <Route path="/**/delete" component={Delete} />
     <Route path="/**/edit" component={Edit} />
     <Route path="/**/layout" component={Layout} />

@@ -5,7 +5,8 @@ describe('Search action', () => {
   describe('searchContent', () => {
     it('should create an action to get the search results', () => {
       const text = 'cows';
-      const action = searchContent(text);
+      const url = '/blog';
+      const action = searchContent(url, { SearchableText: text });
 
       expect(action.type).toEqual(SEARCH_CONTENT);
 
@@ -14,7 +15,9 @@ describe('Search action', () => {
       };
       action.promise(apiMock);
 
-      expect(apiMock.get).toBeCalledWith(`/@search?SearchableText=${text}`);
+      expect(apiMock.get).toBeCalledWith(
+        `${url}/@search?SearchableText=${text}`,
+      );
     });
   });
 });
