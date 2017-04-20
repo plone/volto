@@ -1,6 +1,6 @@
 # Change Log
 
-## [Unreleased]
+## 0.1.0 (2017-04-20)
 ### Added
 - Folder contents @robgietema
 - Sharing menu and view @robgietema
