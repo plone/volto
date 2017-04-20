@@ -14,8 +14,10 @@ exports[`renders a not found component 1`] = `
     >
       <input
         name="SearchableText"
+        onChange={[Function]}
         placeholder="Search Site"
         type="text"
+        value=""
       />
       <button
         className="ui button button"

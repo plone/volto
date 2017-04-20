@@ -30,8 +30,6 @@ export function getSharing(url, search = '') {
   return {
     type: GET_SHARING,
     promise: api =>
-      api.get(
-        `${url}/@sharing${search !== '' ? `?search_term=${search}` : ''}`,
-      ),
+      api.get(`${url}/@sharing${search !== '' ? `?search=${search}` : ''}`),
   };
 }

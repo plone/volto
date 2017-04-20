@@ -13,7 +13,7 @@ import {
 /**
  * Copy content function.
  * @function copyContent
- * @param {string} source Source url.
+ * @param {array} source Source urls.
  * @param {string} target Target url.
  * @returns {Object} Copy content action.
  */
@@ -27,7 +27,7 @@ export function copyContent(source, target) {
 /**
  * Move content function.
  * @function moveContent
- * @param {string} source Source url.
+ * @param {array} source Source urls.
  * @param {string} target Target url.
  * @returns {Object} Move content action.
  */
@@ -41,25 +41,25 @@ export function moveContent(source, target) {
 /**
  * Copy function.
  * @function copy
- * @param {string} url Source url.
+ * @param {array} urls Source urls.
  * @returns {Object} Copy action.
  */
-export function copy(url) {
+export function copy(urls) {
   return {
     type: COPY,
-    source: url,
+    source: urls,
   };
 }
 
 /**
  * Cut function.
  * @function cut
- * @param {string} url Source url.
+ * @param {array} urls Source urls.
  * @returns {Object} Cut action.
  */
-export function cut(url) {
+export function cut(urls) {
   return {
     type: CUT,
-    source: url,
+    source: urls,
   };
 }

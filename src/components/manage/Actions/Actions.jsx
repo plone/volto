@@ -11,6 +11,7 @@ import { bindActionCreators } from 'redux';
 import { Dropdown, Icon } from 'semantic-ui-react';
 
 import { cut, copy, copyContent, moveContent } from '../../../actions';
+import { getBaseUrl } from '../../../helpers';
 
 /**
  * Actions container class.
@@ -34,7 +35,7 @@ export default class Actions extends Component {
   static propTypes = {
     pathname: PropTypes.string.isRequired,
     action: PropTypes.string,
-    source: PropTypes.string,
+    source: PropTypes.arrayOf(PropTypes.string),
     cut: PropTypes.func.isRequired,
     copy: PropTypes.func.isRequired,
     copyContent: PropTypes.func.isRequired,
@@ -72,7 +73,7 @@ export default class Actions extends Component {
    * @returns {undefined}
    */
   cut() {
-    this.props.cut(this.props.pathname);
+    this.props.cut([getBaseUrl(this.props.pathname)]);
   }
 
   /**
@@ -81,7 +82,7 @@ export default class Actions extends Component {
    * @returns {undefined}
    */
   copy() {
-    this.props.copy(this.props.pathname);
+    this.props.copy([getBaseUrl(this.props.pathname)]);
   }
 
   /**
@@ -91,10 +92,16 @@ export default class Actions extends Component {
    */
   paste() {
     if (this.props.action === 'copy') {
-      this.props.copyContent(this.props.source, this.props.pathname);
+      this.props.copyContent(
+        this.props.source,
+        getBaseUrl(this.props.pathname),
+      );
     }
     if (this.props.action === 'cut') {
-      this.props.moveContent(this.props.source, this.props.pathname);
+      this.props.moveContent(
+        this.props.source,
+        getBaseUrl(this.props.pathname),
+      );
     }
   }
 

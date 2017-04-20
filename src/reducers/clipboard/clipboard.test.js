@@ -125,11 +125,11 @@ describe('Clipboard reducer', () => {
     expect(
       clipboard(undefined, {
         type: COPY,
-        source: 'http://source',
+        source: ['http://source'],
       }),
     ).toEqual({
       action: 'copy',
-      source: 'http://source',
+      source: ['http://source'],
       request: {
         loaded: false,
         loading: false,
@@ -142,11 +142,11 @@ describe('Clipboard reducer', () => {
     expect(
       clipboard(undefined, {
         type: CUT,
-        source: 'http://source',
+        source: ['http://source'],
       }),
     ).toEqual({
       action: 'cut',
-      source: 'http://source',
+      source: ['http://source'],
       request: {
         loaded: false,
         loading: false,

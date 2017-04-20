@@ -5,6 +5,7 @@
 
 import React from 'react';
 import { Container, Grid, Segment } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 import { Anontools, Logo, SearchWidget } from '../../../components';
 
@@ -13,7 +14,7 @@ import { Anontools, Logo, SearchWidget } from '../../../components';
  * @function Field
  * @returns {string} Markup of the component.
  */
-const Header = () => (
+const Header = ({ pathname }) => (
   <Segment basic>
     <Container>
       <Grid stackable>
@@ -24,11 +25,20 @@ const Header = () => (
           <Anontools />
         </Grid.Column>
         <Grid.Column width={5}>
-          <SearchWidget />
+          <SearchWidget pathname={pathname} />
         </Grid.Column>
       </Grid>
     </Container>
   </Segment>
 );
+
+/**
+ * Property types.
+ * @property {Object} propTypes Property types.
+ * @static
+ */
+Header.propTypes = {
+  pathname: PropTypes.string.isRequired,
+};
 
 export default Header;

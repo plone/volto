@@ -23,7 +23,6 @@ import { getBaseUrl } from '../../../helpers';
  * @class EditComponent
  * @extends Component
  */
-
 @connect(
   (state, props) => ({
     content: state.content.data,

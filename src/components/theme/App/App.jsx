@@ -42,7 +42,7 @@ export const AppComponent = ({ pathname, children }) => {
     <div>
       <Toolbar pathname={path} selected={action} />
       <div className="pusher">
-        <Header />
+        <Header pathname={path} />
         <Navigation pathname={path} />
         <Breadcrumbs pathname={path} />
         <Segment basic>

@@ -3,33 +3,108 @@
  * @module components/theme/SearchWidget/SearchWidget
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { Checkbox, Form, Input } from 'semantic-ui-react';
+import { PropTypes } from 'prop-types';
+
+import { getBaseUrl } from '../../../helpers';
 
 /**
  * SearchWidget component class.
- * @function SearchWidget
- * @returns {string} Markup of the component.
+ * @class SearchWidget
+ * @extends Component
  */
-const SearchWidget = () => (
-  <Form
-    action="/search"
-    onSubmit={e => {
-      browserHistory.push(
-        `/search?SearchableText=${document.getElementsByName('SearchableText')[0].value}`,
-      );
-      e.preventDefault();
-      return false;
-    }}
-  >
-    <Form.Field>
-      <Input name="SearchableText" action="Search" placeholder="Search Site" />
-    </Form.Field>
-    <Form.Field>
-      <Checkbox label="only in current section" />
-    </Form.Field>
-  </Form>
-);
+export default class SearchWidget extends Component {
+  /**
+   * Property types.
+   * @property {Object} propTypes Property types.
+   * @static
+   */
+  static propTypes = {
+    pathname: PropTypes.string.isRequired,
+  };
 
-export default SearchWidget;
+  /**
+   * Constructor
+   * @method constructor
+   * @param {Object} props Component properties
+   * @constructs WysiwygEditor
+   */
+  constructor(props) {
+    super(props);
+    this.onChangeText = this.onChangeText.bind(this);
+    this.onChangeSection = this.onChangeSection.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.state = {
+      text: '',
+      section: false,
+    };
+  }
+
+  /**
+   * On change text
+   * @method onChangeText
+   * @param {object} event Event object.
+   * @param {string} value Text value.
+   * @returns {undefined}
+   */
+  onChangeText(event, { value }) {
+    this.setState({
+      text: value,
+    });
+  }
+
+  /**
+   * On change section
+   * @method onChangeSection
+   * @param {object} event Event object.
+   * @param {bool} checked Section checked.
+   * @returns {undefined}
+   */
+  onChangeSection(event, { checked }) {
+    this.setState({
+      section: checked,
+    });
+  }
+
+  /**
+   * Submit handler
+   * @method onSubmit
+   * @param {event} event Event object.
+   * @returns {undefined}
+   */
+  onSubmit(event) {
+    const section = this.state.section ? `&path=${this.props.pathname}` : '';
+    browserHistory.push(`/search?SearchableText=${this.state.text}${section}`);
+    event.preventDefault();
+  }
+
+  /**
+   * Render method.
+   * @method render
+   * @returns {string} Markup for the component.
+   */
+  render() {
+    return (
+      <Form action="/search" onSubmit={this.onSubmit}>
+        <Form.Field>
+          <Input
+            onChange={this.onChangeText}
+            name="SearchableText"
+            value={this.state.text}
+            action="Search"
+            placeholder="Search Site"
+          />
+        </Form.Field>
+        <Form.Field>
+          <Checkbox
+            onChange={this.onChangeSection}
+            checked={this.state.section}
+            label="only in current section"
+          />
+        </Form.Field>
+      </Form>
+    );
+  }
+}

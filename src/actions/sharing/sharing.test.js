@@ -48,9 +48,7 @@ describe('Sharing action', () => {
       };
       action.promise(apiMock);
 
-      expect(apiMock.get).toBeCalledWith(
-        `${url}/@sharing?search_term=${search}`,
-      );
+      expect(apiMock.get).toBeCalledWith(`${url}/@sharing?search=${search}`);
     });
   });
 });

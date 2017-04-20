@@ -38,3 +38,27 @@ export function getView(url: string): string {
   }
   return view;
 }
+
+/**
+ * Get icon
+ * @method getIcon
+ * @param {string} type Type of the item.
+ * @param {bool} isFolderish Is folderish.
+ * @returns {string} Icon name.
+ */
+export function getIcon(type: string, isFolderish: boolean): string {
+  switch (type) {
+    case 'Document':
+      return 'file text outline';
+    case 'Image':
+      return 'file image outline';
+    case 'File':
+      return 'attach';
+    case 'Link':
+      return 'linkify';
+    case 'Event':
+      return 'calendar';
+    default:
+      return isFolderish ? 'folder open outline' : 'file outline';
+  }
+}

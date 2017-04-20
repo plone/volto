@@ -22,6 +22,7 @@ import { searchContent } from '../../../actions';
   (state, props) => ({
     items: state.search.items,
     searchableText: props.location.query.SearchableText,
+    path: props.location.query.path,
   }),
   dispatch => bindActionCreators({ searchContent }, dispatch),
 )
@@ -34,6 +35,7 @@ export class SearchComponent extends Component {
   static propTypes = {
     searchContent: PropTypes.func.isRequired,
     searchableText: PropTypes.string,
+    path: PropTypes.string,
     items: PropTypes.arrayOf(
       PropTypes.shape({
         '@id': PropTypes.string,
@@ -52,6 +54,7 @@ export class SearchComponent extends Component {
   static defaultProps = {
     items: [],
     searchableText: null,
+    path: null,
   };
 
   /**
@@ -60,7 +63,10 @@ export class SearchComponent extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    this.props.searchContent('', { SearchableText: this.props.searchableText });
+    this.props.searchContent('', {
+      SearchableText: this.props.searchableText,
+      path: this.props.path,
+    });
   }
 
   /**
@@ -73,6 +79,7 @@ export class SearchComponent extends Component {
     if (nextProps.searchableText !== this.props.searchableText) {
       this.props.searchContent('', {
         SearchableText: nextProps.searchableText,
+        path: this.props.path,
       });
     }
   }

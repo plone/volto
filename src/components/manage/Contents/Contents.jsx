@@ -8,11 +8,22 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
-import { Dropdown, Header, Menu, Icon, Input, Table } from 'semantic-ui-react';
+import { Confirm, Dropdown, Menu, Icon, Input, Table } from 'semantic-ui-react';
 import { Link } from 'react-router';
+import { concat, indexOf, keys, map, mapValues, pull } from 'lodash';
+import moment from 'moment';
 
-import { searchContent } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
+import {
+  searchContent,
+  cut,
+  copy,
+  copyContent,
+  moveContent,
+} from '../../../actions';
+import { getIcon, getBaseUrl } from '../../../helpers';
+import Indexes from '../../../constants/Indexes';
+
+const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
 
 /**
  * ContentsComponent class.
@@ -21,11 +32,17 @@ import { getBaseUrl } from '../../../helpers';
  */
 @connect(
   (state, props) => ({
-    loaded: state.search.loaded,
     items: state.search.items,
     pathname: props.location.pathname,
+    action: state.clipboard.action,
+    source: state.clipboard.source,
+    clipboardRequest: state.clipboard.request,
   }),
-  dispatch => bindActionCreators({ searchContent }, dispatch),
+  dispatch =>
+    bindActionCreators(
+      { searchContent, cut, copy, copyContent, moveContent },
+      dispatch,
+    ),
 )
 export default class ContentsComponent extends Component {
   /**
@@ -34,8 +51,17 @@ export default class ContentsComponent extends Component {
    * @static
    */
   static propTypes = {
+    action: PropTypes.string,
+    source: PropTypes.arrayOf(PropTypes.string),
     searchContent: PropTypes.func.isRequired,
-    loaded: PropTypes.bool.isRequired,
+    cut: PropTypes.func.isRequired,
+    copy: PropTypes.func.isRequired,
+    copyContent: PropTypes.func.isRequired,
+    moveContent: PropTypes.func.isRequired,
+    clipboardRequest: PropTypes.shape({
+      loading: PropTypes.bool,
+      loaded: PropTypes.bool,
+    }).isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
         '@id': PropTypes.string,
@@ -54,7 +80,46 @@ export default class ContentsComponent extends Component {
    */
   static defaultProps = {
     items: [],
+    action: null,
+    source: null,
   };
+
+  /**
+   * Constructor
+   * @method constructor
+   * @param {Object} props Component properties
+   * @constructs WysiwygEditor
+   */
+  constructor(props) {
+    super(props);
+    this.onDeselect = this.onDeselect.bind(this);
+    this.onSelect = this.onSelect.bind(this);
+    this.onSelectAll = this.onSelectAll.bind(this);
+    this.onSelectIndex = this.onSelectIndex.bind(this);
+    this.onSelectNone = this.onSelectNone.bind(this);
+    this.onDeleteOk = this.onDeleteOk.bind(this);
+    this.onDeleteCancel = this.onDeleteCancel.bind(this);
+    this.onChangeFilter = this.onChangeFilter.bind(this);
+    this.cut = this.cut.bind(this);
+    this.copy = this.copy.bind(this);
+    this.delete = this.delete.bind(this);
+    this.paste = this.paste.bind(this);
+    this.fetchContents = this.fetchContents.bind(this);
+    this.state = {
+      selected: [],
+      showDelete: false,
+      filesToDelete: [],
+      filter: '',
+      index: {
+        order: keys(Indexes),
+        values: mapValues(Indexes, (value, key) => ({
+          ...value,
+          selected: indexOf(defaultIndexes, key) !== -1,
+        })),
+        selectedCount: defaultIndexes.length + 1,
+      },
+    };
+  }
 
   /**
    * Component will mount
@@ -62,10 +127,213 @@ export default class ContentsComponent extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    this.props.searchContent(getBaseUrl(this.props.pathname), {
+    this.fetchContents();
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (
+      (this.props.clipboardRequest.loading &&
+        nextProps.clipboardRequest.loaded) ||
+      this.props.pathname !== nextProps.pathname
+    ) {
+      this.fetchContents(nextProps.pathname);
+    }
+  }
+
+  /**
+   * On deselect handler
+   * @method onDeselect
+   * @param {object} event Event object
+   * @param {string} value Value
+   * @returns {undefined}
+   */
+  onDeselect(event, { value }) {
+    this.setState({
+      selected: pull(this.state.selected, value),
+    });
+  }
+
+  /**
+   * On select handler
+   * @method onSelect
+   * @param {object} event Event object
+   * @returns {undefined}
+   */
+  onSelect(event) {
+    const id = event.target.getAttribute('value');
+    if (indexOf(this.state.selected, id) === -1) {
+      this.setState({
+        selected: concat(this.state.selected, id),
+      });
+    } else {
+      this.setState({
+        selected: pull(this.state.selected, id),
+      });
+    }
+  }
+
+  /**
+   * On select all handler
+   * @method onSelectAll
+   * @returns {undefined}
+   */
+  onSelectAll() {
+    this.setState({
+      selected: map(this.props.items, item => item['@id']),
+    });
+  }
+
+  /**
+   * On select none handler
+   * @method onSelectNone
+   * @returns {undefined}
+   */
+  onSelectNone() {
+    this.setState({
+      selected: [],
+    });
+  }
+
+  /**
+   * On select index
+   * @method onSelectIndex
+   * @param {object} event Event object.
+   * @param {string} value Index value.
+   * @returns {undefined}
+   */
+  onSelectIndex(event, { value }) {
+    this.setState({
+      index: {
+        ...this.state.index,
+        selectedCount: this.state.index.selectedCount +
+          (this.state.index.values[value].selected ? -1 : 1),
+        values: mapValues(this.state.index.values, (indexValue, indexKey) => ({
+          ...indexValue,
+          selected: indexKey === value
+            ? !indexValue.selected
+            : indexValue.selected,
+        })),
+      },
+    });
+  }
+
+  /**
+   * On change filter
+   * @method onChangeFilter
+   * @param {object} event Event object.
+   * @param {string} value Filter value.
+   * @returns {undefined}
+   */
+  onChangeFilter(event, { value }) {
+    this.setState(
+      {
+        filter: value,
+      },
+      () => this.fetchContents(),
+    );
+  }
+
+  /**
+   * On delete ok
+   * @method onDeleteOk
+   * @returns {undefined}
+   */
+  onDeleteOk() {
+    this.setState({
+      showDelete: false,
+      filesToDelete: [],
+    });
+  }
+
+  /**
+   * On delete cancel
+   * @method onDeleteCancel
+   * @returns {undefined}
+   */
+  onDeleteCancel() {
+    this.setState({
+      showDelete: false,
+      filesToDelete: [],
+    });
+  }
+
+  /**
+   * Fetch contents handler
+   * @method fetchContents
+   * @param {string} pathname Pathname to fetch contents.
+   * @returns {undefined}
+   */
+  fetchContents(pathname) {
+    this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
       'path.depth': 1,
       sort_on: 'getObjPositionInParent',
+      metadata_fields: '_all',
+      SearchableText: this.state.filter ? `${this.state.filter}*` : '',
     });
+  }
+
+  /**
+   * Cut handler
+   * @method cut
+   * @param {Object} event Event object.
+   * @param {string} value Value of the event.
+   * @returns {undefined}
+   */
+  cut(event, { value }) {
+    this.props.cut(value ? [value] : this.state.selected);
+    this.onSelectNone();
+  }
+
+  /**
+   * Copy handler
+   * @method copy
+   * @param {Object} event Event object.
+   * @param {string} value Value of the event.
+   * @returns {undefined}
+   */
+  copy(event, { value }) {
+    this.props.copy(value ? [value] : this.state.selected);
+    this.onSelectNone();
+  }
+
+  /**
+   * Delete handler
+   * @method delete
+   * @param {Object} event Event object.
+   * @param {string} value Value of the event.
+   * @returns {undefined}
+   */
+  delete(event, { value }) {
+    this.setState({
+      showDelete: true,
+      filesToDelete: value ? [value] : this.state.selected,
+    });
+  }
+
+  /**
+   * Paste handler
+   * @method paste
+   * @returns {undefined}
+   */
+  paste() {
+    if (this.props.action === 'copy') {
+      this.props.copyContent(
+        this.props.source,
+        getBaseUrl(this.props.pathname),
+      );
+    }
+    if (this.props.action === 'cut') {
+      this.props.moveContent(
+        this.props.source,
+        getBaseUrl(this.props.pathname),
+      );
+    }
   }
 
   /**
@@ -74,15 +342,25 @@ export default class ContentsComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    if (!this.props.loaded) {
-      return <span />;
-    }
-
+    const selected = this.state.selected.length > 0;
     return (
       <div id="page-contents">
         <Helmet title="Contents" />
         <div className="container">
           <article id="content">
+            <Confirm
+              open={this.state.showDelete}
+              header="Do you really want to delete the following items?"
+              content={
+                <div className="content">
+                  <ul className="content">
+                    {map(this.state.filesToDelete, file => <li>{file}</li>)}
+                  </ul>
+                </div>
+              }
+              onCancel={this.onDeleteCancel}
+              onConfirm={this.onDeleteOk}
+            />
             <h1>Contents</h1>
             <section id="content-core">
               <Menu stackable>
@@ -91,17 +369,24 @@ export default class ContentsComponent extends Component {
                     <Icon name="sort content ascending" /> Rearrange
                   </Menu.Item>
                   <Menu.Item><Icon name="upload" /> Upload</Menu.Item>
-
                 </Menu.Menu>
-
                 <Menu.Menu position="right">
-                  <Menu.Item><Icon name="cut" /> Cut</Menu.Item>
-                  <Menu.Item><Icon name="copy" /> Copy</Menu.Item>
-                  <Menu.Item><Icon name="paste" /> Paste</Menu.Item>
-                  <Menu.Item><Icon name="trash" /> Delete</Menu.Item>
+                  <Menu.Item onClick={this.cut} disabled={!selected}>
+                    <Icon name="cut" /> Cut
+                  </Menu.Item>
+                  <Menu.Item onClick={this.copy} disabled={!selected}>
+                    <Icon name="copy" /> Copy
+                  </Menu.Item>
+                  <Menu.Item onClick={this.paste} disabled={!this.props.action}>
+                    <Icon name="paste" /> Paste
+                  </Menu.Item>
+                  <Menu.Item onClick={this.delete} disabled={!selected}>
+                    <Icon name="trash" /> Delete
+                  </Menu.Item>
                   <Dropdown
                     item
                     trigger={<span><Icon name="write" /> Batch</span>}
+                    disabled={!selected}
                   >
                     <Dropdown.Menu>
                       <Dropdown.Item>
@@ -120,10 +405,12 @@ export default class ContentsComponent extends Component {
                   </Dropdown>
                   <div className="ui right aligned category search item">
                     <div className="ui transparent icon input">
-                      <input
+                      <Input
                         className="prompt"
                         type="text"
                         placeholder="Filter..."
+                        value={this.state.filter}
+                        onChange={this.onChangeFilter}
                       />
                       <i className="search link icon" />
                     </div>
@@ -136,19 +423,35 @@ export default class ContentsComponent extends Component {
                   <Table.Row>
                     <Table.HeaderCell>
                       <Dropdown
-                        trigger={<Icon name="minus square" color="blue" />}
+                        trigger={
+                          <Icon
+                            name={
+                              this.state.selected.length === 0
+                                ? 'square outline'
+                                : this.state.selected.length ===
+                                    this.props.items.length
+                                    ? 'check square'
+                                    : 'minus square'
+                            }
+                            color={
+                              this.state.selected.length > 0 ? 'blue' : 'black'
+                            }
+                          />
+                        }
                         icon={null}
                       >
                         <Dropdown.Menu>
                           <Dropdown.Header content="Select..." />
-                          <Dropdown.Item>
+                          <Dropdown.Item onClick={this.onSelectAll}>
                             <Icon name="check square" color="blue" /> All
                           </Dropdown.Item>
-                          <Dropdown.Item>
+                          <Dropdown.Item onClick={this.onSelectNone}>
                             <Icon name="square outline" /> None
                           </Dropdown.Item>
                           <Dropdown.Divider />
-                          <Dropdown.Header content="12 selected" />
+                          <Dropdown.Header
+                            content={`${this.state.selected.length} selected`}
+                          />
                           <Input
                             icon="search"
                             iconPosition="left"
@@ -156,76 +459,53 @@ export default class ContentsComponent extends Component {
                             placeholder="Filter..."
                           />
                           <Dropdown.Menu scrolling>
-                            <Dropdown.Item>
-                              <Icon name="delete" /> My first blog entry!
-                            </Dropdown.Item>
-                            <Dropdown.Item>
-                              <Icon name="delete" /> My first blog entry!
-                            </Dropdown.Item>
-                            <Dropdown.Item>
-                              <Icon name="delete" /> My first blog entry!
-                            </Dropdown.Item>
-                            <Dropdown.Item>
-                              <Icon name="delete" /> My first blog entry!
-                            </Dropdown.Item>
-                            <Dropdown.Item>
-                              <Icon name="delete" /> My first blog entry!
-                            </Dropdown.Item>
-                            <Dropdown.Item>
-                              <Icon name="delete" /> My first blog entry!
-                            </Dropdown.Item>
-                            <Dropdown.Item>
-                              <Icon name="delete" /> My first blog entry!
-                            </Dropdown.Item>
-                            <Dropdown.Item>
-                              <Icon name="delete" /> My first blog entry!
-                            </Dropdown.Item>
-                            <Dropdown.Item>
-                              <Icon name="delete" /> My first blog entry!
-                            </Dropdown.Item>
-                            <Dropdown.Item>
-                              <Icon name="delete" /> My first blog entry!
-                            </Dropdown.Item>
-                            <Dropdown.Item>
-                              <Icon name="delete" /> My first blog entry!
-                            </Dropdown.Item>
+                            {map(this.state.selected, item => (
+                              <Dropdown.Item
+                                key={item}
+                                value={item}
+                                onClick={this.onDeselect}
+                              >
+                                <Icon name="delete" /> {item}
+                              </Dropdown.Item>
+                            ))}
                           </Dropdown.Menu>
                         </Dropdown.Menu>
                       </Dropdown>
                     </Table.HeaderCell>
-                    <Table.HeaderCell width="6">Title</Table.HeaderCell>
-                    <Table.HeaderCell width="5">Type</Table.HeaderCell>
-                    <Table.HeaderCell width="5">Review state</Table.HeaderCell>
+                    <Table.HeaderCell
+                      width={Math.ceil(16 / this.state.index.selectedCount)}
+                    >
+                      Title
+                    </Table.HeaderCell>
+                    {map(
+                      this.state.index.order,
+                      index =>
+                        this.state.index.values[index].selected &&
+                        <Table.HeaderCell
+                          key={index}
+                          width={Math.ceil(16 / this.state.index.selectedCount)}
+                        >
+                          {this.state.index.values[index].label}
+                        </Table.HeaderCell>,
+                    )}
                     <Table.HeaderCell textAlign="right">
                       <Dropdown icon="ellipsis vertical">
                         <Dropdown.Menu className="left">
                           <Dropdown.Header content="Select columns to show" />
-                          <Dropdown.Item>
-                            <Icon name="square outline" /> ID
-                          </Dropdown.Item>
-                          <Dropdown.Item>
-                            <Icon name="check square" color="blue" /> Title
-                          </Dropdown.Item>
-                          <Dropdown.Item>
-                            <Icon name="check square" color="blue" /> Type
-                          </Dropdown.Item>
-                          <Dropdown.Item>
-                            <Icon name="check square" color="blue" />
-                            {' '}
-                            Review state
-                          </Dropdown.Item>
-                          <Dropdown.Item>
-                            <Icon name="square outline" /> Created on
-                          </Dropdown.Item>
-                          <Dropdown.Item>
-                            <Icon name="square outline" /> Tags
-                          </Dropdown.Item>
-                          <Dropdown.Item>
-                            <Icon name="square outline" /> Object Size
-                          </Dropdown.Item>
-                          <Dropdown.Item>
-                            <Icon name="square outline" /> Creator
-                          </Dropdown.Item>
+                          <Dropdown.Menu scrolling>
+                            {map(this.state.index.order, index => (
+                              <Dropdown.Item
+                                key={index}
+                                value={index}
+                                onClick={this.onSelectIndex}
+                              >
+                                {this.state.index.values[index].selected
+                                  ? <Icon name="check square" color="blue" />
+                                  : <Icon name="square outline" />}
+                                {this.state.index.values[index].label}
+                              </Dropdown.Item>
+                            ))}
+                          </Dropdown.Menu>
                         </Dropdown.Menu>
                       </Dropdown>
                     </Table.HeaderCell>
@@ -235,25 +515,94 @@ export default class ContentsComponent extends Component {
                   {this.props.items.map(item => (
                     <Table.Row key={item['@id']}>
                       <Table.Cell verticalAlign="bottom">
-                        <Icon name="check square" color="blue" />
+                        <Icon
+                          name={
+                            indexOf(this.state.selected, item['@id']) === -1
+                              ? 'square outline'
+                              : 'check square'
+                          }
+                          color={
+                            indexOf(this.state.selected, item['@id']) === -1
+                              ? 'black'
+                              : 'blue'
+                          }
+                          value={item['@id']}
+                          onClick={this.onSelect}
+                        />
                       </Table.Cell>
                       <Table.Cell>
-                        <Link to="/"><Icon name="folder" /> {item.title}</Link>
+                        <Link
+                          to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
+                        >
+                          <Icon
+                            name={getIcon(item['@type'], item.is_folderish)}
+                          />
+                          {' '}
+                          {item.title}
+                        </Link>
                       </Table.Cell>
-                      <Table.Cell>{item['@type']}</Table.Cell>
-                      <Table.Cell>{item.review_state}</Table.Cell>
+                      {map(
+                        this.state.index.order,
+                        index =>
+                          this.state.index.values[index].selected &&
+                          <Table.Cell key={index}>
+                            {this.state.index.values[index].type ===
+                              'boolean' && (item[index] ? 'Yes' : 'No')}
+                            {this.state.index.values[index].type === 'string' &&
+                              item[index]}
+                            {this.state.index.values[index].type === 'date' &&
+                              <span
+                                title={
+                                  item[index] !== 'None'
+                                    ? moment(item[index]).format('LLLL')
+                                    : 'None'
+                                }
+                              >
+                                {item[index] !== 'None'
+                                  ? moment(item[index]).fromNow()
+                                  : 'None'}
+                              </span>}
+                          </Table.Cell>,
+                      )}
                       <Table.Cell textAlign="right">
                         <Dropdown icon="ellipsis vertical">
                           <Dropdown.Menu className="left">
-                            <Dropdown.Item text="Edit" />
-                            <Dropdown.Item text="View" />
+                            <Link className="item" to={`${item['@id']}/edit`}>
+                              <Icon name="write" /> Edit
+                            </Link>
+                            <Link className="item" to={item['@id']}>
+                              <Icon name="eye" /> View
+                            </Link>
                             <Dropdown.Divider />
-                            <Dropdown.Item text="Cut" />
-                            <Dropdown.Item text="Copy" />
-                            <Dropdown.Item text="Delete" />
+                            <Dropdown.Item
+                              onClick={this.cut}
+                              value={item['@id']}
+                            >
+                              <Icon name="cut" /> Cut
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                              onClick={this.copy}
+                              value={item['@id']}
+                            >
+                              <Icon name="copy" /> Copy
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                              onClick={this.delete}
+                              value={item['@id']}
+                            >
+                              <Icon name="trash" /> Delete
+                            </Dropdown.Item>
                             <Dropdown.Divider />
-                            <Dropdown.Item text="Move to top of folder" />
-                            <Dropdown.Item text="Move to bottom of folder" />
+                            <Dropdown.Item>
+                              <Icon name="long arrow up" />
+                              {' '}
+                              Move to top of folder
+                            </Dropdown.Item>
+                            <Dropdown.Item>
+                              <Icon name="long arrow down" />
+                              {' '}
+                              Move to bottom of folder
+                            </Dropdown.Item>
                           </Dropdown.Menu>
                         </Dropdown>
                       </Table.Cell>

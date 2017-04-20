@@ -41,36 +41,8 @@ Go to [http://localhost:4300](http://localhost:4300) in your browser.
 ### Testing
 
     $ yarn test
-    $ yarn test:unit
-    $ yarn test:e2e
-
-If chromedriver could not be found, make sure to update with:
-
-    ./node_modules/protractor/bin/webdriver-manager update
 
 ### License
 
 The BSD 3-Clause License. Copyrights hold the Plone Foundation.
 See [LICENSE.md](LICENSE.md) for details.
-
-### Todo
-* Form validation
-* SSR form
-* e2e tests
-* Documentation
-* Fill slots with react-slot-fill
-* Portlets / viewlets?
-* Integrate semantic-ui-less
-* Customize theme (create-react-app/jbot)
-* Collaborative editing
-* Live updates
-* Make pages folderish / folders pagish / root also
-* Upgrade to React Router 4
-* Redirect after SSR edit and add content
-* i18n
-* Mobile toolbar
-* Folder contents
-* Snackbar like notifications
-* Content rules
-* Multi langual
-* History
