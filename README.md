@@ -5,7 +5,7 @@ Plone in React
 [![Coverage](https://img.shields.io/coveralls/plone/plone-react.svg)](https://coveralls.io/github/plone/plone-react)
 [![Dependencies](https://img.shields.io/david/plone/plone-react.svg)](https://github.com/plone/plone-react/blob/master/package.json)
 [![Dev Dependencies](https://img.shields.io/david/dev/plone/plone-react.svg)](https://github.com/plone/plone-react/blob/master/package.json)
-[![License](https://img.shields.io/github/license/plone/plone-react.svg)](https://github.com/plone/plone-react/blob/master/LICENCE.md)
+[![NPM](https://img.shields.io/npm/v/@plone/plone-react.svg)](https://www.npmjs.com/package/@plone/plone-react)
 
 ## Installation
 
