@@ -183,9 +183,7 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
-      data: {
-        items: undefined,
-      },
+      data: null,
     });
   });
 

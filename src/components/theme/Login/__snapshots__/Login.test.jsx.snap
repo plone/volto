@@ -25,9 +25,9 @@ exports[`Login renders a login component 1`] = `
           </label>
           <div
             className="ui input"
-            id="login"
           >
             <input
+              id="login"
               name="login"
               type="text"
             />
@@ -43,9 +43,9 @@ exports[`Login renders a login component 1`] = `
           </label>
           <div
             className="ui input"
-            id="password"
           >
             <input
+              id="password"
               name="password"
               type="password"
             />

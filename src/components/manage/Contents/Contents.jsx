@@ -10,7 +10,7 @@ import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Confirm, Dropdown, Menu, Icon, Input, Table } from 'semantic-ui-react';
 import { Link } from 'react-router';
-import { concat, indexOf, keys, map, mapValues, pull } from 'lodash';
+import { concat, find, indexOf, keys, map, mapValues, pull } from 'lodash';
 import moment from 'moment';
 
 import {
@@ -18,6 +18,7 @@ import {
   cut,
   copy,
   copyContent,
+  deleteContent,
   moveContent,
 } from '../../../actions';
 import { getIcon, getBaseUrl } from '../../../helpers';
@@ -37,10 +38,11 @@ const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
     action: state.clipboard.action,
     source: state.clipboard.source,
     clipboardRequest: state.clipboard.request,
+    deleteRequest: state.content.delete,
   }),
   dispatch =>
     bindActionCreators(
-      { searchContent, cut, copy, copyContent, moveContent },
+      { searchContent, cut, copy, copyContent, deleteContent, moveContent },
       dispatch,
     ),
 )
@@ -57,8 +59,13 @@ export default class ContentsComponent extends Component {
     cut: PropTypes.func.isRequired,
     copy: PropTypes.func.isRequired,
     copyContent: PropTypes.func.isRequired,
+    deleteContent: PropTypes.func.isRequired,
     moveContent: PropTypes.func.isRequired,
     clipboardRequest: PropTypes.shape({
+      loading: PropTypes.bool,
+      loaded: PropTypes.bool,
+    }).isRequired,
+    deleteRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
@@ -108,7 +115,7 @@ export default class ContentsComponent extends Component {
     this.state = {
       selected: [],
       showDelete: false,
-      filesToDelete: [],
+      itemsToDelete: [],
       filter: '',
       index: {
         order: keys(Indexes),
@@ -140,6 +147,7 @@ export default class ContentsComponent extends Component {
     if (
       (this.props.clipboardRequest.loading &&
         nextProps.clipboardRequest.loaded) ||
+      (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
       this.props.pathname !== nextProps.pathname
     ) {
       this.fetchContents(nextProps.pathname);
@@ -245,9 +253,11 @@ export default class ContentsComponent extends Component {
    * @returns {undefined}
    */
   onDeleteOk() {
+    this.props.deleteContent(this.state.itemsToDelete);
     this.setState({
       showDelete: false,
-      filesToDelete: [],
+      itemsToDelete: [],
+      selected: [],
     });
   }
 
@@ -259,8 +269,18 @@ export default class ContentsComponent extends Component {
   onDeleteCancel() {
     this.setState({
       showDelete: false,
-      filesToDelete: [],
+      itemsToDelete: [],
     });
+  }
+
+  /**
+   * Get title by id
+   * @method getTitleById
+   * @param {string} id Id of object
+   * @returns {string} Title of object
+   */
+  getTitleById(id) {
+    return find(this.props.items, { '@id': id }).title || id;
   }
 
   /**
@@ -312,7 +332,7 @@ export default class ContentsComponent extends Component {
   delete(event, { value }) {
     this.setState({
       showDelete: true,
-      filesToDelete: value ? [value] : this.state.selected,
+      itemsToDelete: value ? [value] : this.state.selected,
     });
   }
 
@@ -354,7 +374,9 @@ export default class ContentsComponent extends Component {
               content={
                 <div className="content">
                   <ul className="content">
-                    {map(this.state.filesToDelete, file => <li>{file}</li>)}
+                    {map(this.state.itemsToDelete, item => (
+                      <li key={item}>{this.getTitleById(item)}</li>
+                    ))}
                   </ul>
                 </div>
               }
@@ -465,7 +487,7 @@ export default class ContentsComponent extends Component {
                                 value={item}
                                 onClick={this.onDeselect}
                               >
-                                <Icon name="delete" /> {item}
+                                <Icon name="delete" /> {this.getTitleById(item)}
                               </Dropdown.Item>
                             ))}
                           </Dropdown.Menu>

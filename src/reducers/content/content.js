@@ -67,7 +67,6 @@ export default function content(state = initialState, action = {}) {
         },
       };
     case `${ADD_CONTENT}_SUCCESS`:
-    case `${DELETE_CONTENT}_SUCCESS`:
     case `${EDIT_CONTENT}_SUCCESS`:
     case `${GET_CONTENT}_SUCCESS`:
       return {
@@ -81,6 +80,15 @@ export default function content(state = initialState, action = {}) {
               url: item['@id'].replace(config.apiPath, ''),
             })),
         },
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+      };
+    case `${DELETE_CONTENT}_SUCCESS`:
+      return {
+        ...state,
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,

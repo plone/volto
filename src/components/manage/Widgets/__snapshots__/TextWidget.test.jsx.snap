@@ -11,9 +11,9 @@ exports[`renders a text widget component 1`] = `
   </label>
   <div
     className="ui input"
-    id="field-my-field"
   >
     <input
+      id="field-my-field"
       name="my-field"
       onChange={[Function]}
       type="text"

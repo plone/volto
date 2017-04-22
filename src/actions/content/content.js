@@ -27,13 +27,15 @@ export function addContent(url, content) {
 /**
  * Delete content function.
  * @function deleteContent
- * @param {string} url Content url.
+ * @param {string|Array} urls Content url(s).
  * @returns {Object} Delete content action.
  */
-export function deleteContent(url) {
+export function deleteContent(urls) {
   return {
     type: DELETE_CONTENT,
-    promise: api => api.del(url),
+    promise: typeof urls === 'string'
+      ? api => api.del(urls)
+      : api => Promise.all(urls.map(url => api.del(url))),
   };
 }
 
