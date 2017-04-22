@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Pagination in folder contents @robgietema
 - Delete in folder contents @robgietema
 
 ## 0.1.0 (2017-04-20)

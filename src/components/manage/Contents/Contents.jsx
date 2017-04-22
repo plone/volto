@@ -23,6 +23,7 @@ import {
 } from '../../../actions';
 import { getIcon, getBaseUrl } from '../../../helpers';
 import Indexes from '../../../constants/Indexes';
+import { Pagination } from '../../../components';
 
 const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
 
@@ -34,6 +35,7 @@ const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
 @connect(
   (state, props) => ({
     items: state.search.items,
+    total: state.search.total,
     pathname: props.location.pathname,
     action: state.clipboard.action,
     source: state.clipboard.source,
@@ -77,6 +79,7 @@ export default class ContentsComponent extends Component {
         description: PropTypes.string,
       }),
     ),
+    total: PropTypes.number.isRequired,
     pathname: PropTypes.string.isRequired,
   };
 
@@ -107,6 +110,8 @@ export default class ContentsComponent extends Component {
     this.onDeleteOk = this.onDeleteOk.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
     this.onChangeFilter = this.onChangeFilter.bind(this);
+    this.onChangePage = this.onChangePage.bind(this);
+    this.onChangePageSize = this.onChangePageSize.bind(this);
     this.cut = this.cut.bind(this);
     this.copy = this.copy.bind(this);
     this.delete = this.delete.bind(this);
@@ -117,6 +122,8 @@ export default class ContentsComponent extends Component {
       showDelete: false,
       itemsToDelete: [],
       filter: '',
+      currentPage: 0,
+      pageSize: 15,
       index: {
         order: keys(Indexes),
         values: mapValues(Indexes, (value, key) => ({
@@ -248,6 +255,39 @@ export default class ContentsComponent extends Component {
   }
 
   /**
+   * On change page
+   * @method onChangePage
+   * @param {object} event Event object.
+   * @param {string} value Page value.
+   * @returns {undefined}
+   */
+  onChangePage(event, { value }) {
+    this.setState(
+      {
+        currentPage: value,
+      },
+      () => this.fetchContents(),
+    );
+  }
+
+  /**
+   * On change page size
+   * @method onChangePageSize
+   * @param {object} event Event object.
+   * @param {string} value Page size value.
+   * @returns {undefined}
+   */
+  onChangePageSize(event, { value }) {
+    this.setState(
+      {
+        pageSize: value,
+        currentPage: 0,
+      },
+      () => this.fetchContents(),
+    );
+  }
+
+  /**
    * On delete ok
    * @method onDeleteOk
    * @returns {undefined}
@@ -295,6 +335,8 @@ export default class ContentsComponent extends Component {
       sort_on: 'getObjPositionInParent',
       metadata_fields: '_all',
       SearchableText: this.state.filter ? `${this.state.filter}*` : '',
+      b_size: this.state.pageSize,
+      b_start: this.state.currentPage * this.state.pageSize,
     });
   }
 
@@ -632,6 +674,15 @@ export default class ContentsComponent extends Component {
                   ))}
                 </Table.Body>
               </Table>
+
+              <Pagination
+                current={this.state.currentPage}
+                total={Math.ceil(this.props.total / this.state.pageSize)}
+                pageSize={this.state.pageSize}
+                pageSizes={[15, 30, 50]}
+                onChangePage={this.onChangePage}
+                onChangePageSize={this.onChangePageSize}
+              />
             </section>
           </article>
         </div>

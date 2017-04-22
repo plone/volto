@@ -7,6 +7,7 @@ describe('Search reducer', () => {
     expect(search()).toEqual({
       error: null,
       items: [],
+      total: 0,
       loaded: false,
       loading: false,
     });
@@ -20,6 +21,7 @@ describe('Search reducer', () => {
     ).toEqual({
       error: null,
       items: [],
+      total: 0,
       loaded: false,
       loading: true,
     });
@@ -36,6 +38,7 @@ describe('Search reducer', () => {
               '@id': `${config.apiPath}/front-page`,
             },
           ],
+          items_total: 1,
         },
       }),
     ).toEqual({
@@ -46,6 +49,7 @@ describe('Search reducer', () => {
           '@id': '/front-page',
         },
       ],
+      total: 1,
       loaded: true,
       loading: false,
     });
@@ -60,6 +64,7 @@ describe('Search reducer', () => {
     ).toEqual({
       error: 'failed',
       items: [],
+      total: 0,
       loaded: false,
       loading: false,
     });

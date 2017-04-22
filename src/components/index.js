@@ -22,6 +22,7 @@ export DocumentView from './theme/View/DocumentView';
 export Login from './theme/Login/Login';
 export Logout from './theme/Logout/Logout';
 export NotFound from './theme/NotFound/NotFound';
+export Pagination from './theme/Pagination/Pagination';
 export SummaryView from './theme/View/SummaryView';
 export Search from './theme/Search/Search';
 export TabularView from './theme/View/TabularView';

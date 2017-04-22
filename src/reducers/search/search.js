@@ -11,6 +11,7 @@ import config from '../../config';
 const initialState = {
   error: null,
   items: [],
+  total: 0,
   loaded: false,
   loading: false,
 };
@@ -39,6 +40,7 @@ export default function search(state = initialState, action = {}) {
           ...item,
           '@id': item['@id'].replace(config.apiPath, ''),
         })),
+        total: action.result.items_total,
         loaded: true,
         loading: false,
       };
@@ -47,6 +49,7 @@ export default function search(state = initialState, action = {}) {
         ...state,
         error: action.error,
         items: [],
+        total: 0,
         loading: false,
         loaded: false,
       };
