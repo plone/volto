@@ -28,16 +28,6 @@ exports[`Contents renders a contents component 1`] = `
             >
               <i
                 aria-hidden="true"
-                className="sort content ascending icon"
-              />
-               Rearrange
-            </div>
-            <div
-              className="item"
-              onClick={[Function]}
-            >
-              <i
-                aria-hidden="true"
                 className="upload icon"
               />
                Upload
@@ -207,6 +197,14 @@ exports[`Contents renders a contents component 1`] = `
             <tr
               className=""
             >
+              <th
+                className=""
+              >
+                <i
+                  aria-hidden="true"
+                  className="sort content ascending icon"
+                />
+              </th>
               <th
                 className=""
               >
@@ -635,10 +633,22 @@ exports[`Contents renders a contents component 1`] = `
             className=""
           >
             <tr
-              className=""
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
             >
               <td
-                className="bottom aligned"
+                className=""
+              >
+                <i
+                  aria-hidden="true"
+                  className="grey content icon drag handle"
+                />
+              </td>
+              <td
+                className=""
               >
                 <i
                   aria-hidden="true"

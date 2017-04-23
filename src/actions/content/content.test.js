@@ -1,4 +1,10 @@
-import { addContent, deleteContent, editContent, getContent } from './content';
+import {
+  addContent,
+  deleteContent,
+  editContent,
+  getContent,
+  orderContent,
+} from './content';
 import {
   ADD_CONTENT,
   DELETE_CONTENT,
@@ -71,6 +77,33 @@ describe('Content action', () => {
       action.promise(apiMock);
 
       expect(apiMock.patch).toBeCalledWith(url, { data: content });
+    });
+  });
+
+  describe('orderContent', () => {
+    it('should create an action to order content', () => {
+      const parent = '/blog';
+      const url = '/blog/my-post';
+      const delta = 1;
+      const subset = [];
+      const action = orderContent(parent, url, delta, subset);
+
+      expect(action.type).toEqual(EDIT_CONTENT);
+
+      const apiMock = {
+        patch: jest.fn(),
+      };
+      action.promise(apiMock);
+
+      expect(apiMock.patch).toBeCalledWith(parent, {
+        data: {
+          ordering: {
+            obj_id: url,
+            delta,
+            subset_ids: subset,
+          },
+        },
+      });
     });
   });
 

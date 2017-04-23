@@ -66,8 +66,6 @@ export default function content(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${ADD_CONTENT}_SUCCESS`:
-    case `${EDIT_CONTENT}_SUCCESS`:
     case `${GET_CONTENT}_SUCCESS`:
       return {
         ...state,
@@ -86,6 +84,8 @@ export default function content(state = initialState, action = {}) {
           error: null,
         },
       };
+    case `${ADD_CONTENT}_SUCCESS`:
+    case `${EDIT_CONTENT}_SUCCESS`:
     case `${DELETE_CONTENT}_SUCCESS`:
       return {
         ...state,

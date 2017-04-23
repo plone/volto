@@ -31,6 +31,7 @@ export View from './theme/View/View';
 export Actions from './manage/Actions/Actions';
 export Add from './manage/Add/Add';
 export Contents from './manage/Contents/Contents';
+export ContentsItem from './manage/Contents/ContentsItem';
 export Delete from './manage/Delete/Delete';
 export Display from './manage/Display/Display';
 export Edit from './manage/Edit/Edit';

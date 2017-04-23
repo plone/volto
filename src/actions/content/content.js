@@ -54,6 +54,25 @@ export function editContent(url, content) {
 }
 
 /**
+ * Order content function
+ * @function orderContent
+ * @param {string} parent Parent url
+ * @param {string} url Content url
+ * @param {string|number} delta Order delta
+ * @param {Array} subset Subset ids
+ * @returns {Object} Edit content action
+ */
+export function orderContent(parent, url, delta, subset) {
+  return {
+    type: EDIT_CONTENT,
+    promise: api =>
+      api.patch(parent, {
+        data: { ordering: { obj_id: url, delta, subset_ids: subset } },
+      }),
+  };
+}
+
+/**
  * Get content function.
  * @function getContent
  * @param {string} url Content url.

@@ -90,9 +90,7 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
-      data: {
-        items: undefined,
-      },
+      data: null,
     });
   });
 
@@ -274,9 +272,7 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
-      data: {
-        items: undefined,
-      },
+      data: null,
     });
   });
 

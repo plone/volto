@@ -9,9 +9,19 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Confirm, Dropdown, Menu, Icon, Input, Table } from 'semantic-ui-react';
-import { Link } from 'react-router';
-import { concat, find, indexOf, keys, map, mapValues, pull } from 'lodash';
-import moment from 'moment';
+import {
+  concat,
+  filter,
+  find,
+  indexOf,
+  keys,
+  map,
+  mapValues,
+  pull,
+} from 'lodash';
+import move from 'lodash-move';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 import {
   searchContent,
@@ -20,10 +30,11 @@ import {
   copyContent,
   deleteContent,
   moveContent,
+  orderContent,
 } from '../../../actions';
-import { getIcon, getBaseUrl } from '../../../helpers';
+import { getBaseUrl } from '../../../helpers';
 import Indexes from '../../../constants/Indexes';
-import { Pagination } from '../../../components';
+import { ContentsItem, Pagination } from '../../../components';
 
 const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
 
@@ -32,10 +43,15 @@ const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
  * @class ContentsComponent
  * @extends Component
  */
+@DragDropContext(HTML5Backend)
 @connect(
   (state, props) => ({
     items: state.search.items,
     total: state.search.total,
+    searchRequest: {
+      loading: state.search.loading,
+      loaded: state.search.loaded,
+    },
     pathname: props.location.pathname,
     action: state.clipboard.action,
     source: state.clipboard.source,
@@ -44,7 +60,15 @@ const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
   }),
   dispatch =>
     bindActionCreators(
-      { searchContent, cut, copy, copyContent, deleteContent, moveContent },
+      {
+        searchContent,
+        cut,
+        copy,
+        copyContent,
+        deleteContent,
+        moveContent,
+        orderContent,
+      },
       dispatch,
     ),
 )
@@ -63,11 +87,16 @@ export default class ContentsComponent extends Component {
     copyContent: PropTypes.func.isRequired,
     deleteContent: PropTypes.func.isRequired,
     moveContent: PropTypes.func.isRequired,
+    orderContent: PropTypes.func.isRequired,
     clipboardRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
     deleteRequest: PropTypes.shape({
+      loading: PropTypes.bool,
+      loaded: PropTypes.bool,
+    }).isRequired,
+    searchRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
@@ -112,6 +141,9 @@ export default class ContentsComponent extends Component {
     this.onChangeFilter = this.onChangeFilter.bind(this);
     this.onChangePage = this.onChangePage.bind(this);
     this.onChangePageSize = this.onChangePageSize.bind(this);
+    this.onOrderItem = this.onOrderItem.bind(this);
+    this.onMoveToTop = this.onMoveToTop.bind(this);
+    this.onMoveToBottom = this.onMoveToBottom.bind(this);
     this.cut = this.cut.bind(this);
     this.copy = this.copy.bind(this);
     this.delete = this.delete.bind(this);
@@ -121,6 +153,7 @@ export default class ContentsComponent extends Component {
       selected: [],
       showDelete: false,
       itemsToDelete: [],
+      items: this.props.items,
       filter: '',
       currentPage: 0,
       pageSize: 15,
@@ -158,6 +191,11 @@ export default class ContentsComponent extends Component {
       this.props.pathname !== nextProps.pathname
     ) {
       this.fetchContents(nextProps.pathname);
+    }
+    if (this.props.searchRequest.loading && nextProps.searchRequest.loaded) {
+      this.setState({
+        items: nextProps.items,
+      });
     }
   }
 
@@ -200,7 +238,7 @@ export default class ContentsComponent extends Component {
    */
   onSelectAll() {
     this.setState({
-      selected: map(this.props.items, item => item['@id']),
+      selected: map(this.state.items, item => item['@id']),
     });
   }
 
@@ -288,6 +326,47 @@ export default class ContentsComponent extends Component {
   }
 
   /**
+   * On change filter
+   * @method onChangeFilter
+   * @param {number} itemIndex Item index
+   * @param {number} delta Delta
+   * @returns {undefined}
+   */
+  onOrderItem(itemIndex, delta) {
+    this.props.orderContent(
+      getBaseUrl(this.props.pathname),
+      this.state.items[itemIndex]['@id'].replace(/^.*\//, ''),
+      delta,
+      map(this.state.items, item => item['@id'].replace(/^.*\//, '')),
+    );
+    this.setState({
+      items: move(this.state.items, itemIndex, itemIndex + delta),
+    });
+  }
+
+  /**
+   * On move to top
+   * @method onMoveToTop
+   * @param {object} event Event object
+   * @param {string} value Item index
+   * @returns {undefined}
+   */
+  onMoveToTop(event, { value }) {
+    this.onOrderItem(value, -value);
+  }
+
+  /**
+   * On move to bottom
+   * @method onMoveToBottom
+   * @param {object} event Event object
+   * @param {string} value Item index
+   * @returns {undefined}
+   */
+  onMoveToBottom(event, { value }) {
+    this.onOrderItem(value, this.state.items.length - 1 - value);
+  }
+
+  /**
    * On delete ok
    * @method onDeleteOk
    * @returns {undefined}
@@ -320,7 +399,7 @@ export default class ContentsComponent extends Component {
    * @returns {string} Title of object
    */
   getTitleById(id) {
-    return find(this.props.items, { '@id': id }).title || id;
+    return find(this.state.items, { '@id': id }).title || id;
   }
 
   /**
@@ -429,9 +508,6 @@ export default class ContentsComponent extends Component {
             <section id="content-core">
               <Menu stackable>
                 <Menu.Menu>
-                  <Menu.Item>
-                    <Icon name="sort content ascending" /> Rearrange
-                  </Menu.Item>
                   <Menu.Item><Icon name="upload" /> Upload</Menu.Item>
                 </Menu.Menu>
                 <Menu.Menu position="right">
@@ -486,6 +562,9 @@ export default class ContentsComponent extends Component {
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>
+                      <Icon name="sort content ascending" />
+                    </Table.HeaderCell>
+                    <Table.HeaderCell>
                       <Dropdown
                         trigger={
                           <Icon
@@ -493,7 +572,7 @@ export default class ContentsComponent extends Component {
                               this.state.selected.length === 0
                                 ? 'square outline'
                                 : this.state.selected.length ===
-                                    this.props.items.length
+                                    this.state.items.length
                                     ? 'check square'
                                     : 'minus square'
                             }
@@ -576,101 +655,29 @@ export default class ContentsComponent extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {this.props.items.map(item => (
-                    <Table.Row key={item['@id']}>
-                      <Table.Cell verticalAlign="bottom">
-                        <Icon
-                          name={
-                            indexOf(this.state.selected, item['@id']) === -1
-                              ? 'square outline'
-                              : 'check square'
-                          }
-                          color={
-                            indexOf(this.state.selected, item['@id']) === -1
-                              ? 'black'
-                              : 'blue'
-                          }
-                          value={item['@id']}
-                          onClick={this.onSelect}
-                        />
-                      </Table.Cell>
-                      <Table.Cell>
-                        <Link
-                          to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
-                        >
-                          <Icon
-                            name={getIcon(item['@type'], item.is_folderish)}
-                          />
-                          {' '}
-                          {item.title}
-                        </Link>
-                      </Table.Cell>
-                      {map(
-                        this.state.index.order,
-                        index =>
-                          this.state.index.values[index].selected &&
-                          <Table.Cell key={index}>
-                            {this.state.index.values[index].type ===
-                              'boolean' && (item[index] ? 'Yes' : 'No')}
-                            {this.state.index.values[index].type === 'string' &&
-                              item[index]}
-                            {this.state.index.values[index].type === 'date' &&
-                              <span
-                                title={
-                                  item[index] !== 'None'
-                                    ? moment(item[index]).format('LLLL')
-                                    : 'None'
-                                }
-                              >
-                                {item[index] !== 'None'
-                                  ? moment(item[index]).fromNow()
-                                  : 'None'}
-                              </span>}
-                          </Table.Cell>,
+                  {this.state.items.map((item, order) => (
+                    <ContentsItem
+                      key={item['@id']}
+                      item={item}
+                      order={order}
+                      selected={
+                        indexOf(this.state.selected, item['@id']) !== -1
+                      }
+                      onClick={this.onSelect}
+                      indexes={filter(
+                        map(this.state.index.order, index => ({
+                          id: index,
+                          type: this.state.index.values[index].type,
+                        })),
+                        index => this.state.index.values[index.id].selected,
                       )}
-                      <Table.Cell textAlign="right">
-                        <Dropdown icon="ellipsis vertical">
-                          <Dropdown.Menu className="left">
-                            <Link className="item" to={`${item['@id']}/edit`}>
-                              <Icon name="write" /> Edit
-                            </Link>
-                            <Link className="item" to={item['@id']}>
-                              <Icon name="eye" /> View
-                            </Link>
-                            <Dropdown.Divider />
-                            <Dropdown.Item
-                              onClick={this.cut}
-                              value={item['@id']}
-                            >
-                              <Icon name="cut" /> Cut
-                            </Dropdown.Item>
-                            <Dropdown.Item
-                              onClick={this.copy}
-                              value={item['@id']}
-                            >
-                              <Icon name="copy" /> Copy
-                            </Dropdown.Item>
-                            <Dropdown.Item
-                              onClick={this.delete}
-                              value={item['@id']}
-                            >
-                              <Icon name="trash" /> Delete
-                            </Dropdown.Item>
-                            <Dropdown.Divider />
-                            <Dropdown.Item>
-                              <Icon name="long arrow up" />
-                              {' '}
-                              Move to top of folder
-                            </Dropdown.Item>
-                            <Dropdown.Item>
-                              <Icon name="long arrow down" />
-                              {' '}
-                              Move to bottom of folder
-                            </Dropdown.Item>
-                          </Dropdown.Menu>
-                        </Dropdown>
-                      </Table.Cell>
-                    </Table.Row>
+                      onCut={this.cut}
+                      onCopy={this.copy}
+                      onDelete={this.delete}
+                      onOrderItem={this.onOrderItem}
+                      onMoveToTop={this.onMoveToTop}
+                      onMoveToBottom={this.onMoveToBottom}
+                    />
                   ))}
                 </Table.Body>
               </Table>
