@@ -1,0 +1,828 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Contents renders a contents component 1`] = `
+<div
+  id="page-contents"
+>
+  <div
+    className="container"
+  >
+    <article
+      id="content"
+    >
+      <h1>
+        Contents
+      </h1>
+      <section
+        id="content-core"
+      >
+        <div
+          className="ui stackable menu"
+        >
+          <div
+            className="menu"
+          >
+            <div
+              className="item"
+              onClick={[Function]}
+            >
+              <i
+                aria-hidden="true"
+                className="sort content ascending icon"
+              />
+               Rearrange
+            </div>
+            <div
+              className="item"
+              onClick={[Function]}
+            >
+              <i
+                aria-hidden="true"
+                className="upload icon"
+              />
+               Upload
+            </div>
+          </div>
+          <div
+            className="right menu"
+          >
+            <a
+              className="disabled item"
+              onClick={[Function]}
+            >
+              <i
+                aria-hidden="true"
+                className="cut icon"
+              />
+               Cut
+            </a>
+            <a
+              className="disabled item"
+              onClick={[Function]}
+            >
+              <i
+                aria-hidden="true"
+                className="copy icon"
+              />
+               Copy
+            </a>
+            <a
+              className="item"
+              onClick={[Function]}
+            >
+              <i
+                aria-hidden="true"
+                className="paste icon"
+              />
+               Paste
+            </a>
+            <a
+              className="disabled item"
+              onClick={[Function]}
+            >
+              <i
+                aria-hidden="true"
+                className="trash icon"
+              />
+               Delete
+            </a>
+            <div
+              aria-busy={undefined}
+              aria-disabled={true}
+              aria-expanded={false}
+              aria-multiselectable={undefined}
+              className="ui disabled item dropdown"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              role="listbox"
+              tabIndex={-1}
+            >
+              <span>
+                <i
+                  aria-hidden="true"
+                  className="write icon"
+                />
+                 Batch
+              </span>
+              <i
+                aria-hidden="true"
+                className="dropdown icon"
+              />
+              <div
+                className="menu transition"
+              >
+                <div
+                  aria-checked={undefined}
+                  aria-disabled={undefined}
+                  aria-selected={undefined}
+                  className="item"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="text cursor icon"
+                  />
+                   Rename
+                </div>
+                <div
+                  aria-checked={undefined}
+                  aria-disabled={undefined}
+                  aria-selected={undefined}
+                  className="item"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="tags icon"
+                  />
+                   Tags
+                </div>
+                <div
+                  aria-checked={undefined}
+                  aria-disabled={undefined}
+                  aria-selected={undefined}
+                  className="item"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="random icon"
+                  />
+                   State
+                </div>
+                <div
+                  aria-checked={undefined}
+                  aria-disabled={undefined}
+                  aria-selected={undefined}
+                  className="item"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="edit icon"
+                  />
+                   Properties
+                </div>
+              </div>
+            </div>
+            <div
+              className="ui right aligned category search item"
+            >
+              <div
+                className="ui transparent icon input"
+              >
+                <div
+                  className="ui input prompt"
+                >
+                  <input
+                    onChange={[Function]}
+                    placeholder="Filter..."
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <i
+                  className="search link icon"
+                />
+              </div>
+              <div
+                className="results"
+              />
+            </div>
+          </div>
+        </div>
+        <table
+          className="ui selectable single line compact table"
+        >
+          <thead
+            className=""
+          >
+            <tr
+              className=""
+            >
+              <th
+                className=""
+              >
+                <div
+                  aria-busy={undefined}
+                  aria-disabled={undefined}
+                  aria-expanded={false}
+                  aria-multiselectable={undefined}
+                  className="ui dropdown"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  role="listbox"
+                  tabIndex={0}
+                >
+                  <i
+                    aria-hidden="true"
+                    className="black square outline icon"
+                  />
+                  <div
+                    className="menu transition"
+                  >
+                    <div
+                      className="header"
+                    >
+                      Select...
+                    </div>
+                    <div
+                      aria-checked={undefined}
+                      aria-disabled={undefined}
+                      aria-selected={undefined}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <i
+                        aria-hidden="true"
+                        className="blue check square icon"
+                      />
+                       All
+                    </div>
+                    <div
+                      aria-checked={undefined}
+                      aria-disabled={undefined}
+                      aria-selected={undefined}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <i
+                        aria-hidden="true"
+                        className="square outline icon"
+                      />
+                       None
+                    </div>
+                    <div
+                      className="divider"
+                    />
+                    <div
+                      className="header"
+                    >
+                      0 selected
+                    </div>
+                    <div
+                      className="ui left icon input search"
+                    >
+                      <i
+                        aria-hidden="true"
+                        className="search icon"
+                      />
+                      <input
+                        placeholder="Filter..."
+                        type="text"
+                      />
+                    </div>
+                    <div
+                      className="scrolling menu transition"
+                    />
+                  </div>
+                </div>
+              </th>
+              <th
+                className="four wide"
+              >
+                Title
+              </th>
+              <th
+                className="four wide"
+              >
+                Last modified
+              </th>
+              <th
+                className="four wide"
+              >
+                Publication date
+              </th>
+              <th
+                className="four wide"
+              >
+                Review state
+              </th>
+              <th
+                className="right aligned"
+              >
+                <div
+                  aria-busy={undefined}
+                  aria-disabled={undefined}
+                  aria-expanded={false}
+                  aria-multiselectable={undefined}
+                  className="ui dropdown"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  role="listbox"
+                  tabIndex={0}
+                >
+                  <div
+                    className="text"
+                  />
+                  <i
+                    aria-hidden="true"
+                    className="ellipsis vertical icon"
+                  />
+                  <div
+                    className="menu transition left"
+                  >
+                    <div
+                      className="header"
+                    >
+                      Select columns to show
+                    </div>
+                    <div
+                      className="scrolling menu transition"
+                    >
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="blue check square icon"
+                        />
+                        Last modified
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="blue check square icon"
+                        />
+                        Publication date
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="blue check square icon"
+                        />
+                        Review state
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        ID
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        Expiration date
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        Created on
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        Tags
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        Type
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        Folder
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        Excluded from navigation
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        Object Size
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        Last comment date
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        Total comments
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        End Date
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        Description
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        Creator
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        Location
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        UID
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        Start Date
+                      </div>
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        Type
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            className=""
+          >
+            <tr
+              className=""
+            >
+              <td
+                className="bottom aligned"
+              >
+                <i
+                  aria-hidden="true"
+                  className="black square outline icon"
+                  onClick={[Function]}
+                  value="/blog"
+                />
+              </td>
+              <td
+                className=""
+              >
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  <i
+                    aria-hidden="true"
+                    className="file outline icon"
+                  />
+                   
+                  Blog
+                </a>
+              </td>
+              <td
+                className=""
+              >
+                <span
+                  title="Sunday, April 23, 2017 3:38 AM"
+                >
+                  a few seconds ago
+                </span>
+              </td>
+              <td
+                className=""
+              >
+                <span
+                  title="Sunday, April 23, 2017 3:38 AM"
+                >
+                  a few seconds ago
+                </span>
+              </td>
+              <td
+                className=""
+              >
+                private
+              </td>
+              <td
+                className="right aligned"
+              >
+                <div
+                  aria-busy={undefined}
+                  aria-disabled={undefined}
+                  aria-expanded={false}
+                  aria-multiselectable={undefined}
+                  className="ui dropdown"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  role="listbox"
+                  tabIndex={0}
+                >
+                  <div
+                    className="text"
+                  />
+                  <i
+                    aria-hidden="true"
+                    className="ellipsis vertical icon"
+                  />
+                  <div
+                    className="menu transition left"
+                  >
+                    <a
+                      className="item"
+                      onClick={[Function]}
+                      style={Object {}}
+                    >
+                      <i
+                        aria-hidden="true"
+                        className="write icon"
+                      />
+                       Edit
+                    </a>
+                    <a
+                      className="item"
+                      onClick={[Function]}
+                      style={Object {}}
+                    >
+                      <i
+                        aria-hidden="true"
+                        className="eye icon"
+                      />
+                       View
+                    </a>
+                    <div
+                      className="divider"
+                    />
+                    <div
+                      aria-checked={undefined}
+                      aria-disabled={undefined}
+                      aria-selected={undefined}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <i
+                        aria-hidden="true"
+                        className="cut icon"
+                      />
+                       Cut
+                    </div>
+                    <div
+                      aria-checked={undefined}
+                      aria-disabled={undefined}
+                      aria-selected={undefined}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <i
+                        aria-hidden="true"
+                        className="copy icon"
+                      />
+                       Copy
+                    </div>
+                    <div
+                      aria-checked={undefined}
+                      aria-disabled={undefined}
+                      aria-selected={undefined}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <i
+                        aria-hidden="true"
+                        className="trash icon"
+                      />
+                       Delete
+                    </div>
+                    <div
+                      className="divider"
+                    />
+                    <div
+                      aria-checked={undefined}
+                      aria-disabled={undefined}
+                      aria-selected={undefined}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <i
+                        aria-hidden="true"
+                        className="long arrow up icon"
+                      />
+                       
+                      Move to top of folder
+                    </div>
+                    <div
+                      aria-checked={undefined}
+                      aria-disabled={undefined}
+                      aria-selected={undefined}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <i
+                        aria-hidden="true"
+                        className="long arrow down icon"
+                      />
+                       
+                      Move to bottom of folder
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div
+          className="Pagination"
+        />
+      </section>
+    </article>
+  </div>
+</div>
+`;

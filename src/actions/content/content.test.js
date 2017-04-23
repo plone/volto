@@ -40,6 +40,23 @@ describe('Content action', () => {
     });
   });
 
+  describe('deleteContent', () => {
+    it('should create an action to delete content for multiple urls', () => {
+      const urls = ['http://localhost/blog', 'http://locahost/users'];
+      const action = deleteContent(urls);
+
+      expect(action.type).toEqual(DELETE_CONTENT);
+
+      const apiMock = {
+        del: jest.fn(),
+      };
+      action.promise(apiMock);
+
+      expect(apiMock.del).toBeCalledWith(urls[0]);
+      expect(apiMock.del).toBeCalledWith(urls[1]);
+    });
+  });
+
   describe('editContent', () => {
     it('should create an action to edit content', () => {
       const url = 'http://localhost';

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a header component 1`] = `
+exports[`Header renders a header component 1`] = `
 <div
   className="ui basic segment"
 >

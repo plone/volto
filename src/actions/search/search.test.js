@@ -19,5 +19,19 @@ describe('Search action', () => {
         `${url}/@search?SearchableText=${text}`,
       );
     });
+
+    it('can be called without extra options', () => {
+      const url = '/blog';
+      const action = searchContent(url);
+
+      expect(action.type).toEqual(SEARCH_CONTENT);
+
+      const apiMock = {
+        get: jest.fn(),
+      };
+      action.promise(apiMock);
+
+      expect(apiMock.get).toBeCalledWith(`${url}/@search`);
+    });
   });
 });
