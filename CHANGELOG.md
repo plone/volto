@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Sorting of items in folder contents @robgietema
 - Upload files in folder contents @robgietema
 - Ordering of columns in folder contents @robgietema
 - Ordering of items in folder contents @robgietema
