@@ -34,7 +34,11 @@ import {
 } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import Indexes from '../../../constants/Indexes';
-import { ContentsItem, Pagination } from '../../../components';
+import {
+  ContentsIndexHeader,
+  ContentsItem,
+  Pagination,
+} from '../../../components';
 
 const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
 
@@ -141,6 +145,7 @@ export default class ContentsComponent extends Component {
     this.onChangeFilter = this.onChangeFilter.bind(this);
     this.onChangePage = this.onChangePage.bind(this);
     this.onChangePageSize = this.onChangePageSize.bind(this);
+    this.onOrderIndex = this.onOrderIndex.bind(this);
     this.onOrderItem = this.onOrderItem.bind(this);
     this.onMoveToTop = this.onMoveToTop.bind(this);
     this.onMoveToBottom = this.onMoveToBottom.bind(this);
@@ -326,8 +331,24 @@ export default class ContentsComponent extends Component {
   }
 
   /**
-   * On change filter
-   * @method onChangeFilter
+   * On order index
+   * @method onOrderIndex
+   * @param {number} index Index
+   * @param {number} delta Delta
+   * @returns {undefined}
+   */
+  onOrderIndex(index, delta) {
+    this.setState({
+      index: {
+        ...this.state.index,
+        order: move(this.state.index.order, index, index + delta),
+      },
+    });
+  }
+
+  /**
+   * On order item
+   * @method onOrderItem
    * @param {number} itemIndex Item index
    * @param {number} delta Delta
    * @returns {undefined}
@@ -562,7 +583,43 @@ export default class ContentsComponent extends Component {
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>
-                      <Icon name="sort content ascending" />
+                      <Dropdown
+                        trigger={<Icon name="sort content ascending" />}
+                        icon={null}
+                        simple
+                      >
+                        <Dropdown.Menu>
+                          <Dropdown.Header content="Rearrange items by..." />
+                          {map(
+                            [
+                              'Id',
+                              'Title',
+                              'Publication date',
+                              'Created on',
+                              'Last modified',
+                              'Type',
+                            ],
+                            index => (
+                              <Dropdown.Item key={index}>
+                                <Icon name="dropdown" />
+                                {index}
+                                <Dropdown.Menu>
+                                  <Dropdown.Item>
+                                    <Icon name="sort alphabet ascending" />
+                                    {' '}
+                                    Ascending
+                                  </Dropdown.Item>
+                                  <Dropdown.Item>
+                                    <Icon name="sort alphabet descending" />
+                                    {' '}
+                                    Descending
+                                  </Dropdown.Item>
+                                </Dropdown.Menu>
+                              </Dropdown.Item>
+                            ),
+                          )}
+                        </Dropdown.Menu>
+                      </Dropdown>
                     </Table.HeaderCell>
                     <Table.HeaderCell>
                       <Dropdown
@@ -622,14 +679,15 @@ export default class ContentsComponent extends Component {
                     </Table.HeaderCell>
                     {map(
                       this.state.index.order,
-                      index =>
+                      (index, order) =>
                         this.state.index.values[index].selected &&
-                        <Table.HeaderCell
+                        <ContentsIndexHeader
                           key={index}
                           width={Math.ceil(16 / this.state.index.selectedCount)}
-                        >
-                          {this.state.index.values[index].label}
-                        </Table.HeaderCell>,
+                          label={this.state.index.values[index].label}
+                          order={order}
+                          onOrderIndex={this.onOrderIndex}
+                        />,
                     )}
                     <Table.HeaderCell textAlign="right">
                       <Dropdown icon="ellipsis vertical">

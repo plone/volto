@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Ordering of columns in folder contents @robgietema
 - Ordering of items in folder contents @robgietema
 - Pagination in folder contents @robgietema
 - Delete in folder contents @robgietema

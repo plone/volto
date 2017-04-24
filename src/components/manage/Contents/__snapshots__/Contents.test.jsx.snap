@@ -200,10 +200,322 @@ exports[`Contents renders a contents component 1`] = `
               <th
                 className=""
               >
-                <i
-                  aria-hidden="true"
-                  className="sort content ascending icon"
-                />
+                <div
+                  aria-busy={undefined}
+                  aria-disabled={undefined}
+                  aria-expanded={false}
+                  aria-multiselectable={undefined}
+                  className="ui simple dropdown"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  role="listbox"
+                  tabIndex={0}
+                >
+                  <i
+                    aria-hidden="true"
+                    className="sort content ascending icon"
+                  />
+                  <div
+                    className="menu transition"
+                  >
+                    <div
+                      className="header"
+                    >
+                      Rearrange items by...
+                    </div>
+                    <div
+                      aria-checked={undefined}
+                      aria-disabled={undefined}
+                      aria-selected={undefined}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <i
+                        aria-hidden="true"
+                        className="dropdown icon"
+                      />
+                      Id
+                      <div
+                        className="menu transition"
+                      >
+                        <div
+                          aria-checked={undefined}
+                          aria-disabled={undefined}
+                          aria-selected={undefined}
+                          className="item"
+                          onClick={[Function]}
+                          role="option"
+                        >
+                          <i
+                            aria-hidden="true"
+                            className="sort alphabet ascending icon"
+                          />
+                           
+                          Ascending
+                        </div>
+                        <div
+                          aria-checked={undefined}
+                          aria-disabled={undefined}
+                          aria-selected={undefined}
+                          className="item"
+                          onClick={[Function]}
+                          role="option"
+                        >
+                          <i
+                            aria-hidden="true"
+                            className="sort alphabet descending icon"
+                          />
+                           
+                          Descending
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      aria-checked={undefined}
+                      aria-disabled={undefined}
+                      aria-selected={undefined}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <i
+                        aria-hidden="true"
+                        className="dropdown icon"
+                      />
+                      Title
+                      <div
+                        className="menu transition"
+                      >
+                        <div
+                          aria-checked={undefined}
+                          aria-disabled={undefined}
+                          aria-selected={undefined}
+                          className="item"
+                          onClick={[Function]}
+                          role="option"
+                        >
+                          <i
+                            aria-hidden="true"
+                            className="sort alphabet ascending icon"
+                          />
+                           
+                          Ascending
+                        </div>
+                        <div
+                          aria-checked={undefined}
+                          aria-disabled={undefined}
+                          aria-selected={undefined}
+                          className="item"
+                          onClick={[Function]}
+                          role="option"
+                        >
+                          <i
+                            aria-hidden="true"
+                            className="sort alphabet descending icon"
+                          />
+                           
+                          Descending
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      aria-checked={undefined}
+                      aria-disabled={undefined}
+                      aria-selected={undefined}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <i
+                        aria-hidden="true"
+                        className="dropdown icon"
+                      />
+                      Publication date
+                      <div
+                        className="menu transition"
+                      >
+                        <div
+                          aria-checked={undefined}
+                          aria-disabled={undefined}
+                          aria-selected={undefined}
+                          className="item"
+                          onClick={[Function]}
+                          role="option"
+                        >
+                          <i
+                            aria-hidden="true"
+                            className="sort alphabet ascending icon"
+                          />
+                           
+                          Ascending
+                        </div>
+                        <div
+                          aria-checked={undefined}
+                          aria-disabled={undefined}
+                          aria-selected={undefined}
+                          className="item"
+                          onClick={[Function]}
+                          role="option"
+                        >
+                          <i
+                            aria-hidden="true"
+                            className="sort alphabet descending icon"
+                          />
+                           
+                          Descending
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      aria-checked={undefined}
+                      aria-disabled={undefined}
+                      aria-selected={undefined}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <i
+                        aria-hidden="true"
+                        className="dropdown icon"
+                      />
+                      Created on
+                      <div
+                        className="menu transition"
+                      >
+                        <div
+                          aria-checked={undefined}
+                          aria-disabled={undefined}
+                          aria-selected={undefined}
+                          className="item"
+                          onClick={[Function]}
+                          role="option"
+                        >
+                          <i
+                            aria-hidden="true"
+                            className="sort alphabet ascending icon"
+                          />
+                           
+                          Ascending
+                        </div>
+                        <div
+                          aria-checked={undefined}
+                          aria-disabled={undefined}
+                          aria-selected={undefined}
+                          className="item"
+                          onClick={[Function]}
+                          role="option"
+                        >
+                          <i
+                            aria-hidden="true"
+                            className="sort alphabet descending icon"
+                          />
+                           
+                          Descending
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      aria-checked={undefined}
+                      aria-disabled={undefined}
+                      aria-selected={undefined}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <i
+                        aria-hidden="true"
+                        className="dropdown icon"
+                      />
+                      Last modified
+                      <div
+                        className="menu transition"
+                      >
+                        <div
+                          aria-checked={undefined}
+                          aria-disabled={undefined}
+                          aria-selected={undefined}
+                          className="item"
+                          onClick={[Function]}
+                          role="option"
+                        >
+                          <i
+                            aria-hidden="true"
+                            className="sort alphabet ascending icon"
+                          />
+                           
+                          Ascending
+                        </div>
+                        <div
+                          aria-checked={undefined}
+                          aria-disabled={undefined}
+                          aria-selected={undefined}
+                          className="item"
+                          onClick={[Function]}
+                          role="option"
+                        >
+                          <i
+                            aria-hidden="true"
+                            className="sort alphabet descending icon"
+                          />
+                           
+                          Descending
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      aria-checked={undefined}
+                      aria-disabled={undefined}
+                      aria-selected={undefined}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                    >
+                      <i
+                        aria-hidden="true"
+                        className="dropdown icon"
+                      />
+                      Type
+                      <div
+                        className="menu transition"
+                      >
+                        <div
+                          aria-checked={undefined}
+                          aria-disabled={undefined}
+                          aria-selected={undefined}
+                          className="item"
+                          onClick={[Function]}
+                          role="option"
+                        >
+                          <i
+                            aria-hidden="true"
+                            className="sort alphabet ascending icon"
+                          />
+                           
+                          Ascending
+                        </div>
+                        <div
+                          aria-checked={undefined}
+                          aria-disabled={undefined}
+                          aria-selected={undefined}
+                          className="item"
+                          onClick={[Function]}
+                          role="option"
+                        >
+                          <i
+                            aria-hidden="true"
+                            className="sort alphabet descending icon"
+                          />
+                           
+                          Descending
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </th>
               <th
                 className=""
@@ -295,16 +607,34 @@ exports[`Contents renders a contents component 1`] = `
               </th>
               <th
                 className="four wide"
+                style={
+                  Object {
+                    "cursor": "move",
+                    "opacity": 1,
+                  }
+                }
               >
                 Last modified
               </th>
               <th
                 className="four wide"
+                style={
+                  Object {
+                    "cursor": "move",
+                    "opacity": 1,
+                  }
+                }
               >
                 Publication date
               </th>
               <th
                 className="four wide"
+                style={
+                  Object {
+                    "cursor": "move",
+                    "opacity": 1,
+                  }
+                }
               >
                 Review state
               </th>
