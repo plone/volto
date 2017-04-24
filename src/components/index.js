@@ -33,6 +33,7 @@ export Add from './manage/Add/Add';
 export Contents from './manage/Contents/Contents';
 export ContentsIndexHeader from './manage/Contents/ContentsIndexHeader';
 export ContentsItem from './manage/Contents/ContentsItem';
+export ContentsUploadModal from './manage/Contents/ContentsUploadModal';
 export Delete from './manage/Delete/Delete';
 export Display from './manage/Display/Display';
 export Edit from './manage/Edit/Edit';

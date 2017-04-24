@@ -10,6 +10,9 @@ exports[`Contents renders a contents component 1`] = `
     <article
       id="content"
     >
+      <div
+        className="UploadModal"
+      />
       <h1>
         Contents
       </h1>
@@ -22,7 +25,7 @@ exports[`Contents renders a contents component 1`] = `
           <div
             className="menu"
           >
-            <div
+            <a
               className="item"
               onClick={[Function]}
             >
@@ -31,7 +34,7 @@ exports[`Contents renders a contents component 1`] = `
                 className="upload icon"
               />
                Upload
-            </div>
+            </a>
           </div>
           <div
             className="right menu"

@@ -37,6 +37,7 @@ import Indexes from '../../../constants/Indexes';
 import {
   ContentsIndexHeader,
   ContentsItem,
+  ContentsUploadModal,
   Pagination,
 } from '../../../components';
 
@@ -142,6 +143,8 @@ export default class ContentsComponent extends Component {
     this.onSelectNone = this.onSelectNone.bind(this);
     this.onDeleteOk = this.onDeleteOk.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
+    this.onUploadOk = this.onUploadOk.bind(this);
+    this.onUploadCancel = this.onUploadCancel.bind(this);
     this.onChangeFilter = this.onChangeFilter.bind(this);
     this.onChangePage = this.onChangePage.bind(this);
     this.onChangePageSize = this.onChangePageSize.bind(this);
@@ -152,11 +155,13 @@ export default class ContentsComponent extends Component {
     this.cut = this.cut.bind(this);
     this.copy = this.copy.bind(this);
     this.delete = this.delete.bind(this);
+    this.upload = this.upload.bind(this);
     this.paste = this.paste.bind(this);
     this.fetchContents = this.fetchContents.bind(this);
     this.state = {
       selected: [],
       showDelete: false,
+      showUpload: false,
       itemsToDelete: [],
       items: this.props.items,
       filter: '',
@@ -414,6 +419,29 @@ export default class ContentsComponent extends Component {
   }
 
   /**
+   * On upload ok
+   * @method onUploadOk
+   * @returns {undefined}
+   */
+  onUploadOk() {
+    this.fetchContents();
+    this.setState({
+      showUpload: false,
+    });
+  }
+
+  /**
+   * On upload cancel
+   * @method onUploadCancel
+   * @returns {undefined}
+   */
+  onUploadCancel() {
+    this.setState({
+      showUpload: false,
+    });
+  }
+
+  /**
    * Get title by id
    * @method getTitleById
    * @param {string} id Id of object
@@ -479,6 +507,17 @@ export default class ContentsComponent extends Component {
   }
 
   /**
+   * Upload handler
+   * @method upload
+   * @returns {undefined}
+   */
+  upload() {
+    this.setState({
+      showUpload: true,
+    });
+  }
+
+  /**
    * Paste handler
    * @method paste
    * @returns {undefined}
@@ -525,11 +564,19 @@ export default class ContentsComponent extends Component {
               onCancel={this.onDeleteCancel}
               onConfirm={this.onDeleteOk}
             />
+            <ContentsUploadModal
+              open={this.state.showUpload}
+              onCancel={this.onUploadCancel}
+              onOk={this.onUploadOk}
+              pathname={getBaseUrl(this.props.pathname)}
+            />
             <h1>Contents</h1>
             <section id="content-core">
               <Menu stackable>
                 <Menu.Menu>
-                  <Menu.Item><Icon name="upload" /> Upload</Menu.Item>
+                  <Menu.Item onClick={this.upload}>
+                    <Icon name="upload" /> Upload
+                  </Menu.Item>
                 </Menu.Menu>
                 <Menu.Menu position="right">
                   <Menu.Item onClick={this.cut} disabled={!selected}>

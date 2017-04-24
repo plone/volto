@@ -14,13 +14,15 @@ import {
  * Add content function.
  * @function addContent
  * @param {string} url Parent url.
- * @param {Object} content Content data.
+ * @param {Object|Array} content Content data.
  * @returns {Object} Add content action.
  */
 export function addContent(url, content) {
   return {
     type: ADD_CONTENT,
-    promise: api => api.post(url, { data: content }),
+    promise: Array.isArray(content)
+      ? api => Promise.all(content.map(item => api.post(url, { data: item })))
+      : api => api.post(url, { data: content }),
   };
 }
 

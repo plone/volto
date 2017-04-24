@@ -10,6 +10,9 @@ const mockStore = configureStore();
 jest.mock('../../theme/Pagination/Pagination', () =>
   jest.fn(() => <div className="Pagination" />),
 );
+jest.mock('./ContentsUploadModal', () =>
+  jest.fn(() => <div className="UploadModal" />),
+);
 
 jest.mock('moment', () =>
   jest.fn(() => ({

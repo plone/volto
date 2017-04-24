@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Upload files in folder contents @robgietema
 - Ordering of columns in folder contents @robgietema
 - Ordering of items in folder contents @robgietema
 - Pagination in folder contents @robgietema

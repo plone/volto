@@ -46,6 +46,11 @@
   right: 0;
 }
 
+.ui.segment.dashed {
+  border: 3px dashed #ccc;
+  box-shadow: none;
+}
+
 @media only screen and (max-width: 767px) {
   .ui.menu.stackable > .menu,
   .ui.menu.stackable > .menu.right {

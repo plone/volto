@@ -28,6 +28,22 @@ describe('Content action', () => {
 
       expect(apiMock.post).toBeCalledWith(url, { data: content });
     });
+
+    it('should create an action to add content for multiple objects', () => {
+      const url = 'http://localhost';
+      const content = ['Hello World!', 'Hello World2!'];
+      const action = addContent(url, content);
+
+      expect(action.type).toEqual(ADD_CONTENT);
+
+      const apiMock = {
+        post: jest.fn(),
+      };
+      action.promise(apiMock);
+
+      expect(apiMock.post).toBeCalledWith(url, { data: content[0] });
+      expect(apiMock.post).toBeCalledWith(url, { data: content[1] });
+    });
   });
 
   describe('deleteContent', () => {
@@ -44,9 +60,7 @@ describe('Content action', () => {
 
       expect(apiMock.del).toBeCalledWith(url);
     });
-  });
 
-  describe('deleteContent', () => {
     it('should create an action to delete content for multiple urls', () => {
       const urls = ['http://localhost/blog', 'http://locahost/users'];
       const action = deleteContent(urls);
