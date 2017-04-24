@@ -241,7 +241,7 @@ exports[`Contents renders a contents component 1`] = `
                         aria-hidden="true"
                         className="dropdown icon"
                       />
-                      Id
+                      ID
                       <div
                         className="menu transition"
                       >
@@ -676,6 +676,20 @@ exports[`Contents renders a contents component 1`] = `
                     <div
                       className="scrolling menu transition"
                     >
+                      <div
+                        aria-checked={undefined}
+                        aria-disabled={undefined}
+                        aria-selected={undefined}
+                        className="item"
+                        onClick={[Function]}
+                        role="option"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="square outline icon"
+                        />
+                        Title
+                      </div>
                       <div
                         aria-checked={undefined}
                         aria-disabled={undefined}

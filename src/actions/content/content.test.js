@@ -4,6 +4,7 @@ import {
   editContent,
   getContent,
   orderContent,
+  sortContent,
 } from './content';
 import {
   ADD_CONTENT,
@@ -115,6 +116,31 @@ describe('Content action', () => {
             obj_id: url,
             delta,
             subset_ids: subset,
+          },
+        },
+      });
+    });
+  });
+
+  describe('sortContent', () => {
+    it('should create an action to sort content', () => {
+      const url = '/blog';
+      const on = 'id';
+      const order = 'ascending';
+      const action = sortContent(url, on, order);
+
+      expect(action.type).toEqual(EDIT_CONTENT);
+
+      const apiMock = {
+        patch: jest.fn(),
+      };
+      action.promise(apiMock);
+
+      expect(apiMock.patch).toBeCalledWith(url, {
+        data: {
+          sort: {
+            on,
+            order,
           },
         },
       });

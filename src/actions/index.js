@@ -12,6 +12,7 @@ export {
   editContent,
   getContent,
   orderContent,
+  sortContent,
 } from './content/content';
 export getNavigation from './navigation/navigation';
 export getSchema from './schema/schema';

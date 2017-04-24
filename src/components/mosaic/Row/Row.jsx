@@ -8,8 +8,6 @@ import PropTypes from 'prop-types';
 
 import { Tile } from '../../../components';
 
-import styles from './Row.scss';
-
 /**
  * Row component class.
  * @function Row
@@ -21,7 +19,7 @@ import styles from './Row.scss';
  * @returns {string} Markup of the row.
  */
 const Row = ({ tiles, row, selectTile, setTileContent }) => (
-  <div className={`${styles.row} row`}>
+  <div className="row">
     {tiles.map((tile, index) => (
       <Tile
         key={tile.url}

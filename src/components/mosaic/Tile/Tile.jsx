@@ -8,8 +8,6 @@ import PropTypes from 'prop-types';
 
 import Editor from 'draft-js-editor';
 
-import styles from './Tile.scss';
-
 /* eslint jsx-a11y/no-static-element-interactions: 0 */
 
 /**
@@ -34,10 +32,8 @@ const Tile = ({
   selectTile,
   setTileContent,
 }) => (
-  <div
-    className={`${styles.tile} col-xs-${width} ${selected ? styles.selected : ''}`}
-  >
-    <div onClick={() => selectTile(row, column)} className={styles.content}>
+  <div className={`tile col-xs-${width} ${selected ? 'selected' : ''}`}>
+    <div onClick={() => selectTile(row, column)} className="content">
       {!__SERVER__ &&
         <Editor
           onChange={newContent => setTileContent(row, column, newContent)}

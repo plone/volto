@@ -2,10 +2,10 @@
 
 exports[`renders a tile component 1`] = `
 <div
-  className="undefined col-xs-4 undefined"
+  className="tile col-xs-4 selected"
 >
   <div
-    className={undefined}
+    className="content"
     onClick={[Function]}
   />
 </div>

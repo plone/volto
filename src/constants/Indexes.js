@@ -4,6 +4,7 @@
  */
 
 export default {
+  sortable_title: { label: 'Title', type: 'string' },
   ModificationDate: { label: 'Last modified', type: 'date' },
   EffectiveDate: { label: 'Publication date', type: 'date' },
   review_state: { label: 'Review state', type: 'string' },

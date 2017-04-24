@@ -31,6 +31,7 @@ import {
   deleteContent,
   moveContent,
   orderContent,
+  sortContent,
 } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import Indexes from '../../../constants/Indexes';
@@ -73,6 +74,7 @@ const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
         deleteContent,
         moveContent,
         orderContent,
+        sortContent,
       },
       dispatch,
     ),
@@ -93,6 +95,7 @@ export default class ContentsComponent extends Component {
     deleteContent: PropTypes.func.isRequired,
     moveContent: PropTypes.func.isRequired,
     orderContent: PropTypes.func.isRequired,
+    sortContent: PropTypes.func.isRequired,
     clipboardRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -150,6 +153,7 @@ export default class ContentsComponent extends Component {
     this.onChangePageSize = this.onChangePageSize.bind(this);
     this.onOrderIndex = this.onOrderIndex.bind(this);
     this.onOrderItem = this.onOrderItem.bind(this);
+    this.onSortItems = this.onSortItems.bind(this);
     this.onMoveToTop = this.onMoveToTop.bind(this);
     this.onMoveToBottom = this.onMoveToBottom.bind(this);
     this.cut = this.cut.bind(this);
@@ -368,6 +372,22 @@ export default class ContentsComponent extends Component {
     this.setState({
       items: move(this.state.items, itemIndex, itemIndex + delta),
     });
+  }
+
+  /**
+   * On sort items
+   * @method onSortItems
+   * @param {object} event Event object
+   * @param {string} value Item index
+   * @returns {undefined}
+   */
+  onSortItems(event, { value }) {
+    const values = value.split('|');
+    this.props.sortContent(
+      getBaseUrl(this.props.pathname),
+      values[0],
+      values[1],
+    );
   }
 
   /**
@@ -639,24 +659,30 @@ export default class ContentsComponent extends Component {
                           <Dropdown.Header content="Rearrange items by..." />
                           {map(
                             [
-                              'Id',
-                              'Title',
-                              'Publication date',
-                              'Created on',
-                              'Last modified',
+                              'id',
+                              'sortable_title',
+                              'EffectiveDate',
+                              'CreationDate',
+                              'ModificationDate',
                               'Type',
                             ],
                             index => (
                               <Dropdown.Item key={index}>
                                 <Icon name="dropdown" />
-                                {index}
+                                {Indexes[index].label}
                                 <Dropdown.Menu>
-                                  <Dropdown.Item>
+                                  <Dropdown.Item
+                                    onClick={this.onSortItems}
+                                    value={`${index}|ascending`}
+                                  >
                                     <Icon name="sort alphabet ascending" />
                                     {' '}
                                     Ascending
                                   </Dropdown.Item>
-                                  <Dropdown.Item>
+                                  <Dropdown.Item
+                                    onClick={this.onSortItems}
+                                    value={`${index}|descending`}
+                                  >
                                     <Icon name="sort alphabet descending" />
                                     {' '}
                                     Descending

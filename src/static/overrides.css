@@ -87,6 +87,33 @@
   }
 }
 
+/* Mosaic */
+.row {
+  margin: 0;
+}
+
+.tile {
+  border: solid 2px transparent;
+  cursor: move;
+  padding: 0;
+  &:hover {
+    border: dashed 2px #3469d0;
+  }
+}
+
+.content {
+  z-index: 100;
+}
+
+.selected {
+  border: solid 2px #3469d0;
+  cursor: default;
+  background-color: #ffffe1;
+  &:hover {
+    border: solid 2px #3469d0;
+  }
+}
+
 /* Responsive visibility helper classes
 
 /* Mobile */

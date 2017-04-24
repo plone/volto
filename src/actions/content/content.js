@@ -75,6 +75,24 @@ export function orderContent(parent, url, delta, subset) {
 }
 
 /**
+ * Sort content function
+ * @function sortContent
+ * @param {string} url Content url
+ * @param {string} on Sort on index
+ * @param {string} order Sort order
+ * @returns {Object} Edit content action
+ */
+export function sortContent(url, on, order) {
+  return {
+    type: EDIT_CONTENT,
+    promise: api =>
+      api.patch(url, {
+        data: { sort: { on, order } },
+      }),
+  };
+}
+
+/**
  * Get content function.
  * @function getContent
  * @param {string} url Content url.
