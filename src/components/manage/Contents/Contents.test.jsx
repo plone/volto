@@ -51,6 +51,10 @@ describe('Contents', () => {
           loading: false,
           loaded: false,
         },
+        edit: {
+          loading: false,
+          loaded: false,
+        },
       },
     });
     const component = renderer.create(

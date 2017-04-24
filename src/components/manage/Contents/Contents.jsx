@@ -63,6 +63,7 @@ const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
     source: state.clipboard.source,
     clipboardRequest: state.clipboard.request,
     deleteRequest: state.content.delete,
+    editRequest: state.content.edit,
   }),
   dispatch =>
     bindActionCreators(
@@ -101,6 +102,10 @@ export default class ContentsComponent extends Component {
       loaded: PropTypes.bool,
     }).isRequired,
     deleteRequest: PropTypes.shape({
+      loading: PropTypes.bool,
+      loaded: PropTypes.bool,
+    }).isRequired,
+    editRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
@@ -202,6 +207,7 @@ export default class ContentsComponent extends Component {
       (this.props.clipboardRequest.loading &&
         nextProps.clipboardRequest.loaded) ||
       (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
+      (this.props.editRequest.loading && nextProps.editRequest.loaded) ||
       this.props.pathname !== nextProps.pathname
     ) {
       this.fetchContents(nextProps.pathname);
