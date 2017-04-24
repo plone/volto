@@ -112,8 +112,8 @@
         "PORT": 4300
       }
     },
-    "test_unit": "jest --no-cache",
-    "watch_test_unit": "jest --watch --no-cache"
+    "test_unit": "jest --no-cache --runInBand",
+    "watch_test_unit": "jest --watch --no-cache --runInBand"
   },
   "dependencies": {
     "babel-cli": "6.24.1",
