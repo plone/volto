@@ -22,5 +22,6 @@ export const GET_WORKFLOW = 'GET_WORKFLOW';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const MOVE_CONTENT = 'MOVE_CONTENT';
+export const REVERT_HISTORY = 'REVERT_HISTORY';
 export const SEARCH_CONTENT = 'SEARCH_CONTENT';
 export const TRANSITION_WORKFLOW = 'TRANSITION_WORKFLOW';

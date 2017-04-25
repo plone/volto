@@ -3,14 +3,31 @@
  * @module reducers/history
  */
 
-import { GET_HISTORY } from '../../constants/ActionTypes';
+import { GET_HISTORY, REVERT_HISTORY } from '../../constants/ActionTypes';
 
 const initialState = {
-  error: null,
   entries: [],
-  loaded: false,
-  loading: false,
+  get: {
+    error: null,
+    loaded: false,
+    loading: false,
+  },
+  revert: {
+    error: null,
+    loaded: false,
+    loading: false,
+  },
 };
+
+/**
+ * Get request key
+ * @function getRequestKey
+ * @param {string} actionType Action type.
+ * @returns {string} Request key.
+ */
+function getRequestKey(actionType) {
+  return actionType.split('_')[0].toLowerCase();
+}
 
 /**
  * History reducer.
@@ -22,27 +39,44 @@ const initialState = {
 export default function history(state = initialState, action = {}) {
   switch (action.type) {
     case `${GET_HISTORY}_PENDING`:
+    case `${REVERT_HISTORY}_PENDING`:
       return {
         ...state,
-        error: null,
-        loaded: false,
-        loading: true,
+        [getRequestKey(action.type)]: {
+          loading: true,
+          loaded: false,
+          error: null,
+        },
       };
     case `${GET_HISTORY}_SUCCESS`:
       return {
         ...state,
-        error: null,
         entries: action.result,
-        loaded: true,
-        loading: false,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
       };
-    case `${GET_HISTORY}_FAIL`:
+    case `${REVERT_HISTORY}_SUCCESS`:
       return {
         ...state,
-        error: action.error,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+      };
+    case `${GET_HISTORY}_FAIL`:
+    case `${REVERT_HISTORY}_FAIL`:
+      return {
+        ...state,
         entries: [],
-        loaded: false,
-        loading: false,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: false,
+          error: action.error,
+        },
       };
     default:
       return state;

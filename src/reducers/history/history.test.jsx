@@ -1,13 +1,20 @@
 import history from './history';
-import { GET_HISTORY } from '../../constants/ActionTypes';
+import { GET_HISTORY, REVERT_HISTORY } from '../../constants/ActionTypes';
 
 describe('History reducer', () => {
   it('should return the initial state', () => {
     expect(history()).toEqual({
-      error: null,
       entries: [],
-      loaded: false,
-      loading: false,
+      get: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      revert: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
     });
   });
 
@@ -17,10 +24,17 @@ describe('History reducer', () => {
         type: `${GET_HISTORY}_PENDING`,
       }),
     ).toEqual({
-      error: null,
       entries: [],
-      loaded: false,
-      loading: true,
+      get: {
+        error: null,
+        loaded: false,
+        loading: true,
+      },
+      revert: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
     });
   });
 
@@ -31,10 +45,17 @@ describe('History reducer', () => {
         result: 'result',
       }),
     ).toEqual({
-      error: null,
       entries: 'result',
-      loaded: true,
-      loading: false,
+      get: {
+        error: null,
+        loaded: true,
+        loading: false,
+      },
+      revert: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
     });
   });
 
@@ -45,10 +66,37 @@ describe('History reducer', () => {
         error: 'failed',
       }),
     ).toEqual({
-      error: 'failed',
       entries: [],
-      loaded: false,
-      loading: false,
+      get: {
+        error: 'failed',
+        loaded: false,
+        loading: false,
+      },
+      revert: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+    });
+  });
+
+  it('should handle REVERT_HISTORY_SUCCESS', () => {
+    expect(
+      history(undefined, {
+        type: `${REVERT_HISTORY}_SUCCESS`,
+      }),
+    ).toEqual({
+      entries: [],
+      get: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      revert: {
+        error: null,
+        loaded: true,
+        loading: false,
+      },
     });
   });
 });

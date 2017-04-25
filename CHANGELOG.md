@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Add revert to version @robgietema
 - Create view revision page @robgietema
 - Create history list view @robgietema
 - Sorting of items in folder contents @robgietema

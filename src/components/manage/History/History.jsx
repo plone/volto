@@ -13,8 +13,9 @@ import { Dropdown, Icon, Table } from 'semantic-ui-react';
 import { concat, map, reverse } from 'lodash';
 import moment from 'moment';
 
-import { getHistory } from '../../../actions';
+import { getHistory, revertHistory } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
+import config from '../../../config';
 
 /**
  * HistoryComponent class.
@@ -26,8 +27,9 @@ import { getBaseUrl } from '../../../helpers';
     entries: state.history.entries,
     pathname: props.location.pathname,
     title: state.content.data.title,
+    revertRequest: state.history.revert,
   }),
-  dispatch => bindActionCreators({ getHistory }, dispatch),
+  dispatch => bindActionCreators({ getHistory, revertHistory }, dispatch),
 )
 export default class HistoryComponent extends Component {
   /**
@@ -37,6 +39,11 @@ export default class HistoryComponent extends Component {
    */
   static propTypes = {
     getHistory: PropTypes.func.isRequired,
+    revertHistory: PropTypes.func.isRequired,
+    revertRequest: PropTypes.shape({
+      loaded: PropTypes.bool,
+      loading: PropTypes.bool,
+    }).isRequired,
     pathname: PropTypes.string.isRequired,
     entries: PropTypes.arrayOf(
       PropTypes.shape({
@@ -53,12 +60,47 @@ export default class HistoryComponent extends Component {
   };
 
   /**
+   * Constructor
+   * @method constructor
+   * @param {Object} props Component properties
+   * @constructs Workflow
+   */
+  constructor(props) {
+    super(props);
+    this.onRevert = this.onRevert.bind(this);
+  }
+
+  /**
    * Component did mount
    * @method componentDidMount
    * @returns {undefined}
    */
   componentDidMount() {
     this.props.getHistory(getBaseUrl(this.props.pathname));
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (this.props.revertRequest.loading && nextProps.revertRequest.loaded) {
+      this.props.getHistory(getBaseUrl(this.props.pathname));
+    }
+  }
+
+  /**
+   * On revert
+   * @method onRevert
+   * @param {object} event Event object
+   * @param {string} value Value
+   * @returns {undefined}
+   */
+  onRevert(event, { value }) {
+    this.props.revertHistory(value.replace(config.apiPath, ''));
+    console.log(value);
   }
 
   /**
@@ -122,9 +164,13 @@ export default class HistoryComponent extends Component {
                         >
                           <Icon name="eye" /> View this revision
                         </Link>}
-                      <Dropdown.Item>
-                        <Icon name="undo" /> Revert to this revision
-                      </Dropdown.Item>
+                      {entry.revert_url &&
+                        <Dropdown.Item
+                          value={entry.revert_url}
+                          onClick={this.onRevert}
+                        >
+                          <Icon name="undo" /> Revert to this revision
+                        </Dropdown.Item>}
                     </Dropdown.Menu>
                   </Dropdown>
                 </Table.Cell>

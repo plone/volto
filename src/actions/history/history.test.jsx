@@ -1,5 +1,5 @@
-import getHistory from './history';
-import { GET_HISTORY } from '../../constants/ActionTypes';
+import { getHistory, revertHistory } from './history';
+import { GET_HISTORY, REVERT_HISTORY } from '../../constants/ActionTypes';
 
 describe('History action', () => {
   describe('getHistory', () => {
@@ -15,6 +15,22 @@ describe('History action', () => {
       action.promise(apiMock);
 
       expect(apiMock.get).toBeCalledWith(`${url}/@history`);
+    });
+  });
+
+  describe('revertHistory', () => {
+    it('should create an action to revert history', () => {
+      const url = 'http://localhost';
+      const action = revertHistory(url);
+
+      expect(action.type).toEqual(REVERT_HISTORY);
+
+      const apiMock = {
+        get: jest.fn(),
+      };
+      action.promise(apiMock);
+
+      expect(apiMock.get).toBeCalledWith(url);
     });
   });
 });

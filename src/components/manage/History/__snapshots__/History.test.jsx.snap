@@ -125,34 +125,6 @@ exports[`History renders a history component 1`] = `
                 />
                  View changes
               </div>
-              <div
-                aria-checked={undefined}
-                aria-disabled={undefined}
-                aria-selected={undefined}
-                className="item"
-                onClick={[Function]}
-                role="option"
-              >
-                <i
-                  aria-hidden="true"
-                  className="eye icon"
-                />
-                 View this revision
-              </div>
-              <div
-                aria-checked={undefined}
-                aria-disabled={undefined}
-                aria-selected={undefined}
-                className="item"
-                onClick={[Function]}
-                role="option"
-              >
-                <i
-                  aria-hidden="true"
-                  className="undo icon"
-                />
-                 Revert to this revision
-              </div>
             </div>
           </div>
         </td>
@@ -228,34 +200,6 @@ exports[`History renders a history component 1`] = `
                   className="copy icon"
                 />
                  View changes
-              </div>
-              <div
-                aria-checked={undefined}
-                aria-disabled={undefined}
-                aria-selected={undefined}
-                className="item"
-                onClick={[Function]}
-                role="option"
-              >
-                <i
-                  aria-hidden="true"
-                  className="eye icon"
-                />
-                 View this revision
-              </div>
-              <div
-                aria-checked={undefined}
-                aria-disabled={undefined}
-                aria-selected={undefined}
-                className="item"
-                onClick={[Function]}
-                role="option"
-              >
-                <i
-                  aria-hidden="true"
-                  className="undo icon"
-                />
-                 Revert to this revision
               </div>
             </div>
           </div>
@@ -333,34 +277,6 @@ exports[`History renders a history component 1`] = `
                   className="copy icon"
                 />
                  View changes
-              </div>
-              <div
-                aria-checked={undefined}
-                aria-disabled={undefined}
-                aria-selected={undefined}
-                className="item"
-                onClick={[Function]}
-                role="option"
-              >
-                <i
-                  aria-hidden="true"
-                  className="eye icon"
-                />
-                 View this revision
-              </div>
-              <div
-                aria-checked={undefined}
-                aria-disabled={undefined}
-                aria-selected={undefined}
-                className="item"
-                onClick={[Function]}
-                role="option"
-              >
-                <i
-                  aria-hidden="true"
-                  className="undo icon"
-                />
-                 Revert to this revision
               </div>
             </div>
           </div>
