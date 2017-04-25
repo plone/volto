@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Create view revision page @robgietema
 - Create history list view @robgietema
 - Sorting of items in folder contents @robgietema
 - Upload files in folder contents @robgietema

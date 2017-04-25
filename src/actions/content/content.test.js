@@ -161,5 +161,20 @@ describe('Content action', () => {
 
       expect(apiMock.get).toBeCalledWith(url);
     });
+
+    it('should create an action to get content with version', () => {
+      const url = 'http://localhost';
+      const versionId = '0';
+      const action = getContent(url, versionId);
+
+      expect(action.type).toEqual(GET_CONTENT);
+
+      const apiMock = {
+        get: jest.fn(),
+      };
+      action.promise(apiMock);
+
+      expect(apiMock.get).toBeCalledWith(`${url}?version_id=${versionId}`);
+    });
   });
 });

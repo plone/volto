@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Dropdown, Icon, Table } from 'semantic-ui-react';
@@ -114,9 +115,13 @@ export default class HistoryComponent extends Component {
                       <Dropdown.Item>
                         <Icon name="copy" /> View changes
                       </Dropdown.Item>
-                      <Dropdown.Item>
-                        <Icon name="eye" /> View this revision
-                      </Dropdown.Item>
+                      {'version_id' in entry &&
+                        <Link
+                          className="item"
+                          to={`${getBaseUrl(this.props.pathname)}?version_id=${entry.version_id}`}
+                        >
+                          <Icon name="eye" /> View this revision
+                        </Link>}
                       <Dropdown.Item>
                         <Icon name="undo" /> Revert to this revision
                       </Dropdown.Item>

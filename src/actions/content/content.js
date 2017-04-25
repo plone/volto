@@ -93,14 +93,16 @@ export function sortContent(url, on, order) {
 }
 
 /**
- * Get content function.
+ * Get content function
  * @function getContent
- * @param {string} url Content url.
- * @returns {Object} Get content action.
+ * @param {string} url Content url
+ * @param {string} versionId Version id
+ * @returns {Object} Get content action
  */
-export function getContent(url) {
+export function getContent(url, versionId) {
   return {
     type: GET_CONTENT,
-    promise: api => api.get(url),
+    promise: api =>
+      api.get(`${url}${versionId ? `?version_id=${versionId}` : ''}`),
   };
 }

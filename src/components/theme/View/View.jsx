@@ -19,6 +19,7 @@ import { getContent } from '../../../actions';
   (state, props) => ({
     content: state.content.data,
     pathname: props.location.pathname,
+    versionId: props.location.query && props.location.query.version_id,
   }),
   {
     getContent,
@@ -33,6 +34,7 @@ export default class View extends Component {
   static propTypes = {
     getContent: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
+    versionId: PropTypes.string.isRequired,
     content: PropTypes.shape({
       layout: PropTypes.string,
     }),
@@ -53,7 +55,7 @@ export default class View extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    this.props.getContent(this.props.pathname);
+    this.props.getContent(this.props.pathname, this.props.versionId);
   }
 
   /**
@@ -64,7 +66,7 @@ export default class View extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.getContent(nextProps.pathname);
+      this.props.getContent(nextProps.pathname, this.props.versionId);
     }
   }
 
