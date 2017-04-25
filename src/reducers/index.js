@@ -11,6 +11,7 @@ import breadcrumbs from './breadcrumbs/breadcrumbs';
 import content from './content/content';
 import clipboard from './clipboard/clipboard';
 import form from './form/form';
+import history from './history/history';
 import navigation from './navigation/navigation';
 import schema from './schema/schema';
 import search from './search/search';
@@ -33,6 +34,7 @@ export default combineReducers({
   content,
   clipboard,
   form,
+  history,
   navigation,
   schema,
   search,

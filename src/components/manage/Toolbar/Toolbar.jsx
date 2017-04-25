@@ -122,6 +122,12 @@ export default class Toolbar extends Component {
         <Actions pathname={this.props.pathname} expanded={expanded} />
         <Display pathname={this.props.pathname} expanded={expanded} />
         <Link
+          to={`${this.props.pathname}/history`}
+          className={`item${this.props.selected === 'history' ? ' active' : ''}`}
+        >
+          <span><Icon name="clock" />{expanded && ' History'}</span>
+        </Link>
+        <Link
           to={`${this.props.pathname}/sharing`}
           className={`item${this.props.selected === 'sharing' ? ' active' : ''}`}
         >

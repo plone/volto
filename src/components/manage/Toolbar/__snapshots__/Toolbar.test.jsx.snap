@@ -72,6 +72,19 @@ exports[`Toolbar renders an actions component 1`] = `
     <span>
       <i
         aria-hidden="true"
+        className="clock icon"
+      />
+       History
+    </span>
+  </a>
+  <a
+    className="item"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <span>
+      <i
+        aria-hidden="true"
         className="users icon"
       />
        Sharing

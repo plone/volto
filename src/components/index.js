@@ -39,6 +39,7 @@ export Display from './manage/Display/Display';
 export Edit from './manage/Edit/Edit';
 export Form from './manage/Form/Form';
 export Field from './manage/Form/Field';
+export History from './manage/History/History';
 export ArrayWidget from './manage/Widgets/ArrayWidget';
 export CheckboxWidget from './manage/Widgets/CheckboxWidget';
 export DatetimeWidget from './manage/Widgets/DatetimeWidget';

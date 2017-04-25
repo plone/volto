@@ -13,6 +13,7 @@ import {
   Contents,
   Edit,
   Delete,
+  History,
   View,
   NotFound,
   Layout,
@@ -45,6 +46,7 @@ export default () => (
     <Route path="/**/contents" component={Contents} />
     <Route path="/**/delete" component={Delete} />
     <Route path="/**/edit" component={Edit} />
+    <Route path="/**/history" component={History} />
     <Route path="/**/layout" component={Layout} />
     <Route path="/**/sharing" component={Sharing} />
     <Route path="/**" component={View} />

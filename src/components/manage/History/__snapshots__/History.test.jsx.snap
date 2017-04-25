@@ -1,0 +1,372 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`History renders a history component 1`] = `
+<div
+  id="page-history"
+>
+  <h1>
+    History of 
+    <q>
+      Blog
+    </q>
+  </h1>
+  <p
+    className="description"
+  >
+    You can view the history of your item below.
+  </p>
+  <table
+    className="ui selectable single line compact table"
+  >
+    <thead
+      className=""
+    >
+      <tr
+        className=""
+      >
+        <th
+          className="four wide"
+        >
+          What
+        </th>
+        <th
+          className="four wide"
+        >
+          Who
+        </th>
+        <th
+          className="four wide"
+        >
+          When
+        </th>
+        <th
+          className="four wide"
+        >
+          Change Note
+        </th>
+        <th
+          className=""
+        />
+      </tr>
+    </thead>
+    <tbody
+      className=""
+    >
+      <tr
+        className=""
+      >
+        <td
+          className=""
+        >
+          <a
+            href="#"
+          >
+            Publish
+             (Private → Published)
+          </a>
+        </td>
+        <td
+          className=""
+        >
+          Web Admin
+        </td>
+        <td
+          className=""
+        >
+          <span
+            title="Sunday, April 23, 2017 3:38 AM"
+          >
+            a few seconds ago
+          </span>
+        </td>
+        <td
+          className=""
+        >
+          
+        </td>
+        <td
+          className=""
+        >
+          <div
+            aria-busy={undefined}
+            aria-disabled={undefined}
+            aria-expanded={false}
+            aria-multiselectable={undefined}
+            className="ui dropdown"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseDown={[Function]}
+            role="listbox"
+            tabIndex={0}
+          >
+            <div
+              className="text"
+            />
+            <i
+              aria-hidden="true"
+              className="ellipsis vertical icon"
+            />
+            <div
+              className="menu transition left"
+            >
+              <div
+                aria-checked={undefined}
+                aria-disabled={undefined}
+                aria-selected={undefined}
+                className="item"
+                onClick={[Function]}
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  className="copy icon"
+                />
+                 View changes
+              </div>
+              <div
+                aria-checked={undefined}
+                aria-disabled={undefined}
+                aria-selected={undefined}
+                className="item"
+                onClick={[Function]}
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  className="eye icon"
+                />
+                 View this revision
+              </div>
+              <div
+                aria-checked={undefined}
+                aria-disabled={undefined}
+                aria-selected={undefined}
+                className="item"
+                onClick={[Function]}
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  className="undo icon"
+                />
+                 Revert to this revision
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        className=""
+      >
+        <td
+          className=""
+        >
+          <a
+            href="#"
+          >
+            Edited
+          </a>
+        </td>
+        <td
+          className=""
+        >
+          Web Admin
+        </td>
+        <td
+          className=""
+        >
+          <span
+            title="Sunday, April 23, 2017 3:38 AM"
+          >
+            a few seconds ago
+          </span>
+        </td>
+        <td
+          className=""
+        >
+          Changed text
+        </td>
+        <td
+          className=""
+        >
+          <div
+            aria-busy={undefined}
+            aria-disabled={undefined}
+            aria-expanded={false}
+            aria-multiselectable={undefined}
+            className="ui dropdown"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseDown={[Function]}
+            role="listbox"
+            tabIndex={0}
+          >
+            <div
+              className="text"
+            />
+            <i
+              aria-hidden="true"
+              className="ellipsis vertical icon"
+            />
+            <div
+              className="menu transition left"
+            >
+              <div
+                aria-checked={undefined}
+                aria-disabled={undefined}
+                aria-selected={undefined}
+                className="item"
+                onClick={[Function]}
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  className="copy icon"
+                />
+                 View changes
+              </div>
+              <div
+                aria-checked={undefined}
+                aria-disabled={undefined}
+                aria-selected={undefined}
+                className="item"
+                onClick={[Function]}
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  className="eye icon"
+                />
+                 View this revision
+              </div>
+              <div
+                aria-checked={undefined}
+                aria-disabled={undefined}
+                aria-selected={undefined}
+                className="item"
+                onClick={[Function]}
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  className="undo icon"
+                />
+                 Revert to this revision
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        className=""
+      >
+        <td
+          className=""
+        >
+          <a
+            href="#"
+          >
+            Create
+             (Private)
+          </a>
+        </td>
+        <td
+          className=""
+        >
+          Web Admin
+        </td>
+        <td
+          className=""
+        >
+          <span
+            title="Sunday, April 23, 2017 3:38 AM"
+          >
+            a few seconds ago
+          </span>
+        </td>
+        <td
+          className=""
+        >
+          
+        </td>
+        <td
+          className=""
+        >
+          <div
+            aria-busy={undefined}
+            aria-disabled={undefined}
+            aria-expanded={false}
+            aria-multiselectable={undefined}
+            className="ui dropdown"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseDown={[Function]}
+            role="listbox"
+            tabIndex={0}
+          >
+            <div
+              className="text"
+            />
+            <i
+              aria-hidden="true"
+              className="ellipsis vertical icon"
+            />
+            <div
+              className="menu transition left"
+            >
+              <div
+                aria-checked={undefined}
+                aria-disabled={undefined}
+                aria-selected={undefined}
+                className="item"
+                onClick={[Function]}
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  className="copy icon"
+                />
+                 View changes
+              </div>
+              <div
+                aria-checked={undefined}
+                aria-disabled={undefined}
+                aria-selected={undefined}
+                className="item"
+                onClick={[Function]}
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  className="eye icon"
+                />
+                 View this revision
+              </div>
+              <div
+                aria-checked={undefined}
+                aria-disabled={undefined}
+                aria-selected={undefined}
+                className="item"
+                onClick={[Function]}
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  className="undo icon"
+                />
+                 Revert to this revision
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

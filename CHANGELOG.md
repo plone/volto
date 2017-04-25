@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Create history list view @robgietema
 - Sorting of items in folder contents @robgietema
 - Upload files in folder contents @robgietema
 - Ordering of columns in folder contents @robgietema
