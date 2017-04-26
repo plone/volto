@@ -44,14 +44,19 @@ export function deleteContent(urls) {
 /**
  * Edit content function.
  * @function editContent
- * @param {string} url Content url.
- * @param {Object} content Content data.
+ * @param {string|Array} urls Content url(s).
+ * @param {Object|Array} content Content data.
  * @returns {Object} Edit content action.
  */
-export function editContent(url, content) {
+export function editContent(urls, content) {
   return {
     type: EDIT_CONTENT,
-    promise: api => api.patch(url, { data: content }),
+    promise: typeof urls === 'string'
+      ? api => api.patch(urls, { data: content })
+      : api =>
+          Promise.all(
+            urls.map((url, index) => api.patch(url, { data: content[index] })),
+          ),
   };
 }
 

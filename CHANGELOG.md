@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Batch rename in folder contents @robgietema
 - Diff view @robgietema
 - Add revert to version @robgietema
 - Create view revision page @robgietema

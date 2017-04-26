@@ -1,0 +1,41 @@
+import React from 'react';
+import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
+
+import ContentsRenameModal from './ContentsRenameModal';
+
+const mockStore = configureStore();
+
+jest.mock('../Form/ModalForm', () => jest.fn(() => <div id="modalform" />));
+
+describe('ContentsRenameModal', () => {
+  it('renders a contents rename modal component', () => {
+    const store = mockStore({
+      content: {
+        edit: {
+          loading: false,
+          loaded: true,
+        },
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <ContentsRenameModal
+          open
+          onOk={() => {}}
+          onCancel={() => {}}
+          items={[
+            {
+              id: 'blog',
+              title: 'Blog',
+              url: '/blog',
+            },
+          ]}
+        />
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+});

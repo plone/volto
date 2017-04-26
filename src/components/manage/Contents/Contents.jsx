@@ -38,6 +38,7 @@ import Indexes from '../../../constants/Indexes';
 import {
   ContentsIndexHeader,
   ContentsItem,
+  ContentsRenameModal,
   ContentsUploadModal,
   Pagination,
 } from '../../../components';
@@ -153,6 +154,8 @@ export default class ContentsComponent extends Component {
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
     this.onUploadOk = this.onUploadOk.bind(this);
     this.onUploadCancel = this.onUploadCancel.bind(this);
+    this.onRenameOk = this.onRenameOk.bind(this);
+    this.onRenameCancel = this.onRenameCancel.bind(this);
     this.onChangeFilter = this.onChangeFilter.bind(this);
     this.onChangePage = this.onChangePage.bind(this);
     this.onChangePageSize = this.onChangePageSize.bind(this);
@@ -165,12 +168,14 @@ export default class ContentsComponent extends Component {
     this.copy = this.copy.bind(this);
     this.delete = this.delete.bind(this);
     this.upload = this.upload.bind(this);
+    this.rename = this.rename.bind(this);
     this.paste = this.paste.bind(this);
     this.fetchContents = this.fetchContents.bind(this);
     this.state = {
       selected: [],
       showDelete: false,
       showUpload: false,
+      showRename: false,
       itemsToDelete: [],
       items: this.props.items,
       filter: '',
@@ -468,13 +473,39 @@ export default class ContentsComponent extends Component {
   }
 
   /**
-   * Get title by id
-   * @method getTitleById
-   * @param {string} id Id of object
-   * @returns {string} Title of object
+   * On rename ok
+   * @method onRenameOk
+   * @returns {undefined}
    */
-  getTitleById(id) {
-    return find(this.state.items, { '@id': id }).title || id;
+  onRenameOk() {
+    this.fetchContents();
+    this.setState({
+      showRename: false,
+      selected: [],
+    });
+  }
+
+  /**
+   * On rename cancel
+   * @method onRenameCancel
+   * @returns {undefined}
+   */
+  onRenameCancel() {
+    this.setState({
+      showRename: false,
+    });
+  }
+
+  /**
+   * Get field by id
+   * @method getFieldById
+   * @param {string} id Id of object
+   * @param {string} field Field of object
+   * @returns {string} Field of object
+   */
+  getFieldById(id, field) {
+    const item = find(this.state.items, { '@id': id });
+    return item ? item[field] : '';
   }
 
   /**
@@ -544,6 +575,17 @@ export default class ContentsComponent extends Component {
   }
 
   /**
+   * Rename handler
+   * @method rename
+   * @returns {undefined}
+   */
+  rename() {
+    this.setState({
+      showRename: true,
+    });
+  }
+
+  /**
    * Paste handler
    * @method paste
    * @returns {undefined}
@@ -582,7 +624,7 @@ export default class ContentsComponent extends Component {
                 <div className="content">
                   <ul className="content">
                     {map(this.state.itemsToDelete, item => (
-                      <li key={item}>{this.getTitleById(item)}</li>
+                      <li key={item}>{this.getFieldById(item, 'title')}</li>
                     ))}
                   </ul>
                 </div>
@@ -595,6 +637,16 @@ export default class ContentsComponent extends Component {
               onCancel={this.onUploadCancel}
               onOk={this.onUploadOk}
               pathname={getBaseUrl(this.props.pathname)}
+            />
+            <ContentsRenameModal
+              open={this.state.showRename}
+              onCancel={this.onRenameCancel}
+              onOk={this.onRenameOk}
+              items={map(this.state.selected, item => ({
+                url: item,
+                title: this.getFieldById(item, 'title'),
+                id: this.getFieldById(item, 'id'),
+              }))}
             />
             <h1>Contents</h1>
             <section id="content-core">
@@ -623,7 +675,7 @@ export default class ContentsComponent extends Component {
                     disabled={!selected}
                   >
                     <Dropdown.Menu>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={this.rename}>
                         <Icon name="text cursor" /> Rename
                       </Dropdown.Item>
                       <Dropdown.Item>
@@ -744,7 +796,9 @@ export default class ContentsComponent extends Component {
                                 value={item}
                                 onClick={this.onDeselect}
                               >
-                                <Icon name="delete" /> {this.getTitleById(item)}
+                                <Icon name="delete" />
+                                {' '}
+                                {this.getFieldById(item, 'title')}
                               </Dropdown.Item>
                             ))}
                           </Dropdown.Menu>

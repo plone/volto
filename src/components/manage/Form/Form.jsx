@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import { Button, Form as UiForm, Menu, Segment } from 'semantic-ui-react';
 
-import { Field, Tabs } from '../../../components';
+import { Field } from '../../../components';
 
 /**
  * Form container class.

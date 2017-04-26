@@ -93,6 +93,22 @@ describe('Content action', () => {
 
       expect(apiMock.patch).toBeCalledWith(url, { data: content });
     });
+
+    it('should create an action to edit content for multiple urls', () => {
+      const urls = ['http://localhost/blog', 'http://locahost/users'];
+      const content = ['Hello World!', 'Hello World2!'];
+      const action = editContent(urls, content);
+
+      expect(action.type).toEqual(EDIT_CONTENT);
+
+      const apiMock = {
+        patch: jest.fn(),
+      };
+      action.promise(apiMock);
+
+      expect(apiMock.patch).toBeCalledWith(urls[0], { data: content[0] });
+      expect(apiMock.patch).toBeCalledWith(urls[1], { data: content[1] });
+    });
   });
 
   describe('orderContent', () => {
