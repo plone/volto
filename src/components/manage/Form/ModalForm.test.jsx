@@ -24,6 +24,7 @@ describe('ModalForm', () => {
         onSubmit={() => {}}
         onCancel={() => {}}
         open={false}
+        title="Rename items"
       />,
     );
     const json = component.toJSON();

@@ -1,20 +1,20 @@
 /**
- * Contents rename modal.
- * @module components/manage/Contents/ContentsRenameModal
+ * Contents tags modal.
+ * @module components/manage/Contents/ContentsTagsModal
  */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { concat, merge, map } from 'lodash';
+import { without, union, map } from 'lodash';
 
 import { editContent } from '../../../actions';
 import { ModalForm } from '../../../components';
 
 /**
- * ContentsRenameModal class.
- * @class ContentsRenameModal
+ * ContentsTagsModal class.
+ * @class ContentsTagsModal
  * @extends Component
  */
 @connect(
@@ -23,7 +23,7 @@ import { ModalForm } from '../../../components';
   }),
   dispatch => bindActionCreators({ editContent }, dispatch),
 )
-export default class ContentsRenameModal extends Component {
+export default class ContentsTagsModal extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -33,8 +33,7 @@ export default class ContentsRenameModal extends Component {
     editContent: PropTypes.func.isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string,
-        title: PropTypes.string,
+        subjects: PropTypes.arrayOf(PropTypes.string),
         url: PropTypes.string,
       }),
     ).isRequired,
@@ -79,9 +78,11 @@ export default class ContentsRenameModal extends Component {
   onSubmit(data) {
     this.props.editContent(
       map(this.props.items, item => item.url),
-      map(this.props.items, (item, index) => ({
-        id: data[`${index}_id`],
-        title: data[`${index}_title`],
+      map(this.props.items, item => ({
+        subjects: union(
+          without(item.subjects, ...data.tags_to_remove),
+          data.tags_to_add,
+        ),
       })),
     );
   }
@@ -98,40 +99,29 @@ export default class ContentsRenameModal extends Component {
         open={this.props.open}
         onSubmit={this.onSubmit}
         onCancel={this.props.onCancel}
-        formData={merge(
-          ...map(this.props.items, (item, index) => ({
-            [`${index}_title`]: item.title,
-            [`${index}_id`]: item.id,
-          })),
-        )}
-        title="Rename items"
+        title="Tags"
+        formData={{
+          tags_to_remove: [],
+          tags_to_add: [],
+        }}
         schema={{
           fieldsets: [
             {
               id: 'default',
               title: 'Default',
-              fields: concat(
-                ...map(this.props.items, (item, index) => [
-                  `${index}_title`,
-                  `${index}_id`,
-                ]),
-              ),
+              fields: ['tags_to_remove', 'tags_to_add'],
             },
           ],
-          properties: merge(
-            ...map(this.props.items, (item, index) => ({
-              [`${index}_title`]: {
-                title: 'Title',
-                type: 'string',
-                description: '',
-              },
-              [`${index}_id`]: {
-                title: 'Short name',
-                type: 'string',
-                description: 'This name will be displayed in the URL.',
-              },
-            })),
-          ),
+          properties: {
+            tags_to_remove: {
+              type: 'array',
+              title: 'Tags to remove',
+            },
+            tags_to_add: {
+              type: 'array',
+              title: 'Tags to add',
+            },
+          },
           required: [],
         }}
       />

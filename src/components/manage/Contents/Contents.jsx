@@ -40,6 +40,7 @@ import {
   ContentsItem,
   ContentsRenameModal,
   ContentsUploadModal,
+  ContentsTagsModal,
   Pagination,
 } from '../../../components';
 
@@ -156,6 +157,8 @@ export default class ContentsComponent extends Component {
     this.onUploadCancel = this.onUploadCancel.bind(this);
     this.onRenameOk = this.onRenameOk.bind(this);
     this.onRenameCancel = this.onRenameCancel.bind(this);
+    this.onTagsOk = this.onTagsOk.bind(this);
+    this.onTagsCancel = this.onTagsCancel.bind(this);
     this.onChangeFilter = this.onChangeFilter.bind(this);
     this.onChangePage = this.onChangePage.bind(this);
     this.onChangePageSize = this.onChangePageSize.bind(this);
@@ -169,6 +172,7 @@ export default class ContentsComponent extends Component {
     this.delete = this.delete.bind(this);
     this.upload = this.upload.bind(this);
     this.rename = this.rename.bind(this);
+    this.tags = this.tags.bind(this);
     this.paste = this.paste.bind(this);
     this.fetchContents = this.fetchContents.bind(this);
     this.state = {
@@ -176,6 +180,7 @@ export default class ContentsComponent extends Component {
       showDelete: false,
       showUpload: false,
       showRename: false,
+      showTags: false,
       itemsToDelete: [],
       items: this.props.items,
       filter: '',
@@ -497,6 +502,30 @@ export default class ContentsComponent extends Component {
   }
 
   /**
+   * On tags ok
+   * @method onTagsOk
+   * @returns {undefined}
+   */
+  onTagsOk() {
+    this.fetchContents();
+    this.setState({
+      showTags: false,
+      selected: [],
+    });
+  }
+
+  /**
+   * On tags cancel
+   * @method onTagsCancel
+   * @returns {undefined}
+   */
+  onTagsCancel() {
+    this.setState({
+      showTags: false,
+    });
+  }
+
+  /**
    * Get field by id
    * @method getFieldById
    * @param {string} id Id of object
@@ -586,6 +615,17 @@ export default class ContentsComponent extends Component {
   }
 
   /**
+   * Tags handler
+   * @method tags
+   * @returns {undefined}
+   */
+  tags() {
+    this.setState({
+      showTags: true,
+    });
+  }
+
+  /**
    * Paste handler
    * @method paste
    * @returns {undefined}
@@ -648,6 +688,15 @@ export default class ContentsComponent extends Component {
                 id: this.getFieldById(item, 'id'),
               }))}
             />
+            <ContentsTagsModal
+              open={this.state.showTags}
+              onCancel={this.onTagsCancel}
+              onOk={this.onTagsOk}
+              items={map(this.state.selected, item => ({
+                url: item,
+                subjects: this.getFieldById(item, 'Subject'),
+              }))}
+            />
             <h1>Contents</h1>
             <section id="content-core">
               <Menu stackable>
@@ -678,7 +727,7 @@ export default class ContentsComponent extends Component {
                       <Dropdown.Item onClick={this.rename}>
                         <Icon name="text cursor" /> Rename
                       </Dropdown.Item>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={this.tags}>
                         <Icon name="tags" /> Tags
                       </Dropdown.Item>
                       <Dropdown.Item>

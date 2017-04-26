@@ -33,6 +33,7 @@ export default class FormModal extends Component {
       properties: PropTypes.objectOf(PropTypes.any),
       required: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
+    title: PropTypes.string.isRequired,
     formData: PropTypes.objectOf(PropTypes.any),
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
@@ -124,7 +125,7 @@ export default class FormModal extends Component {
 
     return (
       <Modal open={this.props.open}>
-        <Header>Rename items</Header>
+        <Header>{this.props.title}</Header>
         <Modal.Content>
           <UiForm method="post" onSubmit={this.onSubmit}>
             {schema.fieldsets.length > 1 &&
