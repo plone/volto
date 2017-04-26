@@ -7,6 +7,12 @@ import Diff from './Diff';
 
 const mockStore = configureStore();
 
+jest.mock('moment', () =>
+  jest.fn(() => ({
+    format: jest.fn(() => 'Sunday, April 23, 2017 3:38 AM'),
+  })),
+);
+
 describe('Diff', () => {
   it('renders a diff component', () => {
     const store = mockStore({

@@ -110,7 +110,7 @@ exports[`DiffField renders a datetime field 1`] = `
         <span
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<span class=\\"deletion\\">Tues</span><span class=\\"addition\\">Mon</span><span>day, April 25, 201</span><span class=\\"deletion\\">7</span><span class=\\"addition\\">6</span><span> 4:14 PM</span>",
+              "__html": "<span>Sunday, April 23, 2017 3:38 AM</span>",
             }
           }
         />

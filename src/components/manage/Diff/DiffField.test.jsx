@@ -3,6 +3,12 @@ import renderer from 'react-test-renderer';
 
 import DiffField from './DiffField';
 
+jest.mock('moment', () =>
+  jest.fn(() => ({
+    format: jest.fn(() => 'Sunday, April 23, 2017 3:38 AM'),
+  })),
+);
+
 describe('DiffField', () => {
   it('renders a diff field in split mode', () => {
     const component = renderer.create(
