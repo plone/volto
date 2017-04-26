@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 ### Added
+- Batch properties in folder contents @robgietema
+- Batch tags in folder contents @robgietema
 - Batch rename in folder contents @robgietema
 - Diff view @robgietema
 - Add revert to version @robgietema

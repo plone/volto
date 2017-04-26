@@ -41,6 +41,7 @@ import {
   ContentsRenameModal,
   ContentsUploadModal,
   ContentsTagsModal,
+  ContentsPropertiesModal,
   Pagination,
 } from '../../../components';
 
@@ -159,6 +160,8 @@ export default class ContentsComponent extends Component {
     this.onRenameCancel = this.onRenameCancel.bind(this);
     this.onTagsOk = this.onTagsOk.bind(this);
     this.onTagsCancel = this.onTagsCancel.bind(this);
+    this.onPropertiesOk = this.onPropertiesOk.bind(this);
+    this.onPropertiesCancel = this.onPropertiesCancel.bind(this);
     this.onChangeFilter = this.onChangeFilter.bind(this);
     this.onChangePage = this.onChangePage.bind(this);
     this.onChangePageSize = this.onChangePageSize.bind(this);
@@ -173,6 +176,7 @@ export default class ContentsComponent extends Component {
     this.upload = this.upload.bind(this);
     this.rename = this.rename.bind(this);
     this.tags = this.tags.bind(this);
+    this.properties = this.properties.bind(this);
     this.paste = this.paste.bind(this);
     this.fetchContents = this.fetchContents.bind(this);
     this.state = {
@@ -181,6 +185,7 @@ export default class ContentsComponent extends Component {
       showUpload: false,
       showRename: false,
       showTags: false,
+      showProperties: false,
       itemsToDelete: [],
       items: this.props.items,
       filter: '',
@@ -526,6 +531,30 @@ export default class ContentsComponent extends Component {
   }
 
   /**
+   * On properties ok
+   * @method onPropertiesOk
+   * @returns {undefined}
+   */
+  onPropertiesOk() {
+    this.fetchContents();
+    this.setState({
+      showProperties: false,
+      selected: [],
+    });
+  }
+
+  /**
+   * On properties cancel
+   * @method onPropertiesCancel
+   * @returns {undefined}
+   */
+  onPropertiesCancel() {
+    this.setState({
+      showProperties: false,
+    });
+  }
+
+  /**
    * Get field by id
    * @method getFieldById
    * @param {string} id Id of object
@@ -626,6 +655,17 @@ export default class ContentsComponent extends Component {
   }
 
   /**
+   * Properties handler
+   * @method properties
+   * @returns {undefined}
+   */
+  properties() {
+    this.setState({
+      showProperties: true,
+    });
+  }
+
+  /**
    * Paste handler
    * @method paste
    * @returns {undefined}
@@ -697,6 +737,12 @@ export default class ContentsComponent extends Component {
                 subjects: this.getFieldById(item, 'Subject'),
               }))}
             />
+            <ContentsPropertiesModal
+              open={this.state.showProperties}
+              onCancel={this.onPropertiesCancel}
+              onOk={this.onPropertiesOk}
+              items={this.state.selected}
+            />
             <h1>Contents</h1>
             <section id="content-core">
               <Menu stackable>
@@ -733,7 +779,7 @@ export default class ContentsComponent extends Component {
                       <Dropdown.Item>
                         <Icon name="random" /> State
                       </Dropdown.Item>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={this.properties}>
                         <Icon name="edit" /> Properties
                       </Dropdown.Item>
                     </Dropdown.Menu>
