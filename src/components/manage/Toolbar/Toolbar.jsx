@@ -25,6 +25,7 @@ import logo from './plone-toolbarlogo.svg';
   fullname: state.userSession.token
     ? jwtDecode(state.userSession.token).fullname
     : '',
+  content: state.content.data,
 }))
 export default class Toolbar extends Component {
   /**
@@ -37,6 +38,9 @@ export default class Toolbar extends Component {
     selected: PropTypes.string.isRequired,
     token: PropTypes.string,
     fullname: PropTypes.string,
+    content: PropTypes.shape({
+      '@type': PropTypes.string,
+    }),
   };
 
   /**
@@ -47,6 +51,7 @@ export default class Toolbar extends Component {
   static defaultProps = {
     token: null,
     fullname: '',
+    content: null,
   };
 
   /**
@@ -84,6 +89,10 @@ export default class Toolbar extends Component {
    */
   render() {
     const expanded = this.state.expanded;
+
+    // Needs to be replaced with is_folderish on the content when available
+    // in the API.
+    const isFolderish = this.props.content['@type'] === 'Folder';
     return (
       this.props.token &&
       <Menu
@@ -95,12 +104,13 @@ export default class Toolbar extends Component {
         <Menu.Item color="blue" active onClick={this.onToggleExpanded}>
           <img alt="Plone Toolbar" src={logo} />
         </Menu.Item>
-        <Link
-          to={`${this.props.pathname}/contents`}
-          className={`item${this.props.selected === 'contents' ? ' active' : ''}`}
-        >
-          <span><Icon name="folder open" />{expanded && ' Contents'}</span>
-        </Link>
+        {isFolderish &&
+          <Link
+            to={`${this.props.pathname}/contents`}
+            className={`item${this.props.selected === 'contents' ? ' active' : ''}`}
+          >
+            <span><Icon name="folder open" />{expanded && ' Contents'}</span>
+          </Link>}
         <Link
           to={`${this.props.pathname}/edit`}
           className={`item${this.props.selected === 'edit' ? ' active' : ''}`}
@@ -113,11 +123,12 @@ export default class Toolbar extends Component {
         >
           <span><Icon name="eye" />{expanded && ' View'}</span>
         </Link>
-        <Types
-          pathname={this.props.pathname}
-          active={this.props.selected === 'add'}
-          expanded={expanded}
-        />
+        {isFolderish &&
+          <Types
+            pathname={this.props.pathname}
+            active={this.props.selected === 'add'}
+            expanded={expanded}
+          />}
         <Workflow pathname={this.props.pathname} expanded={expanded} />
         <Actions pathname={this.props.pathname} expanded={expanded} />
         <Display pathname={this.props.pathname} expanded={expanded} />

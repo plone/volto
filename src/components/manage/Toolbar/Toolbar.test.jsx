@@ -19,6 +19,11 @@ describe('Toolbar', () => {
       userSession: {
         token: jwt.sign({ fullname: 'John Doe' }, 'secret'),
       },
+      content: {
+        data: {
+          '@type': 'Folder',
+        },
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
