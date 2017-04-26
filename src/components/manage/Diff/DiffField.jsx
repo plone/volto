@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { diffChars } from 'diff';
+import { diffWords } from 'diff';
 import { join, map } from 'lodash';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
@@ -23,25 +23,25 @@ const DiffField = ({ one, two, view, schema }) => {
   if (schema.widget) {
     switch (schema.widget) {
       case 'richtext':
-        parts = diffChars(one.data, two.data);
+        parts = diffWords(one.data, two.data);
         break;
       case 'datetime':
-        parts = diffChars(
+        parts = diffWords(
           moment(one).format('LLLL'),
           moment(two).format('LLLL'),
         );
         break;
       case 'textarea':
       default:
-        parts = diffChars(one, two);
+        parts = diffWords(one, two);
         break;
     }
   } else if (schema.type === 'boolean') {
-    parts = diffChars(one ? 'Yes' : 'No', two ? 'Yes' : 'No');
+    parts = diffWords(one ? 'Yes' : 'No', two ? 'Yes' : 'No');
   } else if (schema.type === 'array') {
-    parts = diffChars(join(one, ', '), join(two, ', '));
+    parts = diffWords(join(one, ', '), join(two, ', '));
   } else {
-    parts = diffChars(one, two);
+    parts = diffWords(one, two);
   }
   return (
     <Table compact>

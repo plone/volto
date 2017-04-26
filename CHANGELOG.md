@@ -15,6 +15,7 @@
 
 ### Changed
 - Only show add and contents in the toolbar when folderish @robgietema
+- Diff on words not chars @robgietema
 
 ## 0.1.0 (2017-04-20)
 ### Added

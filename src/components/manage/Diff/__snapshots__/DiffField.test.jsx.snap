@@ -321,7 +321,7 @@ exports[`DiffField renders an array field 1`] = `
         <span
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<span>one, t</span><span class=\\"deletion\\">wo</span><span class=\\"addition\\">hree</span>",
+              "__html": "<span>one, </span><span class=\\"deletion\\">two</span><span class=\\"addition\\">three</span>",
             }
           }
         />
