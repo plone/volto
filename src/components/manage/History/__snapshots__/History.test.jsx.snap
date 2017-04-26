@@ -58,12 +58,10 @@ exports[`History renders a history component 1`] = `
         <td
           className=""
         >
-          <a
-            href="#"
-          >
+          <span>
             Publish
              (Private → Published)
-          </a>
+          </span>
         </td>
         <td
           className=""
@@ -86,48 +84,7 @@ exports[`History renders a history component 1`] = `
         </td>
         <td
           className=""
-        >
-          <div
-            aria-busy={undefined}
-            aria-disabled={undefined}
-            aria-expanded={false}
-            aria-multiselectable={undefined}
-            className="ui dropdown"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseDown={[Function]}
-            role="listbox"
-            tabIndex={0}
-          >
-            <div
-              className="text"
-            />
-            <i
-              aria-hidden="true"
-              className="ellipsis vertical icon"
-            />
-            <div
-              className="menu transition left"
-            >
-              <div
-                aria-checked={undefined}
-                aria-disabled={undefined}
-                aria-selected={undefined}
-                className="item"
-                onClick={[Function]}
-                role="option"
-              >
-                <i
-                  aria-hidden="true"
-                  className="copy icon"
-                />
-                 View changes
-              </div>
-            </div>
-          </div>
-        </td>
+        />
       </tr>
       <tr
         className=""
@@ -135,11 +92,9 @@ exports[`History renders a history component 1`] = `
         <td
           className=""
         >
-          <a
-            href="#"
-          >
+          <span>
             Edited
-          </a>
+          </span>
         </td>
         <td
           className=""
@@ -186,22 +141,7 @@ exports[`History renders a history component 1`] = `
             />
             <div
               className="menu transition left"
-            >
-              <div
-                aria-checked={undefined}
-                aria-disabled={undefined}
-                aria-selected={undefined}
-                className="item"
-                onClick={[Function]}
-                role="option"
-              >
-                <i
-                  aria-hidden="true"
-                  className="copy icon"
-                />
-                 View changes
-              </div>
-            </div>
+            />
           </div>
         </td>
       </tr>
@@ -211,12 +151,10 @@ exports[`History renders a history component 1`] = `
         <td
           className=""
         >
-          <a
-            href="#"
-          >
+          <span>
             Create
              (Private)
-          </a>
+          </span>
         </td>
         <td
           className=""
@@ -239,48 +177,7 @@ exports[`History renders a history component 1`] = `
         </td>
         <td
           className=""
-        >
-          <div
-            aria-busy={undefined}
-            aria-disabled={undefined}
-            aria-expanded={false}
-            aria-multiselectable={undefined}
-            className="ui dropdown"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseDown={[Function]}
-            role="listbox"
-            tabIndex={0}
-          >
-            <div
-              className="text"
-            />
-            <i
-              aria-hidden="true"
-              className="ellipsis vertical icon"
-            />
-            <div
-              className="menu transition left"
-            >
-              <div
-                aria-checked={undefined}
-                aria-disabled={undefined}
-                aria-selected={undefined}
-                className="item"
-                onClick={[Function]}
-                role="option"
-              >
-                <i
-                  aria-hidden="true"
-                  className="copy icon"
-                />
-                 View changes
-              </div>
-            </div>
-          </div>
-        </td>
+        />
       </tr>
     </tbody>
   </table>

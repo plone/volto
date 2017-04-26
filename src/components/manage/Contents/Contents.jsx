@@ -140,7 +140,7 @@ export default class ContentsComponent extends Component {
    * Constructor
    * @method constructor
    * @param {Object} props Component properties
-   * @constructs WysiwygEditor
+   * @constructs ContentsComponent
    */
   constructor(props) {
     super(props);

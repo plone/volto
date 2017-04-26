@@ -14,6 +14,7 @@ export {
   orderContent,
   sortContent,
 } from './content/content';
+export getDiff from './diff/diff';
 export { getHistory, revertHistory } from './history/history';
 export getNavigation from './navigation/navigation';
 export getSchema from './schema/schema';

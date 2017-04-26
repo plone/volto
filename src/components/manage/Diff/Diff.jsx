@@ -1,0 +1,273 @@
+/**
+ * Diff component.
+ * @module components/manage/Diff/Diff
+ */
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { filter, isEqual, map } from 'lodash';
+import { Button, Dropdown, Grid, Table } from 'semantic-ui-react';
+import { browserHistory } from 'react-router';
+import moment from 'moment';
+
+import { getDiff, getSchema, getHistory } from '../../../actions';
+import { getBaseUrl } from '../../../helpers';
+import { DiffField } from '../../../components';
+
+/**
+ * DiffComponent class.
+ * @class DiffComponent
+ * @extends Component
+ */
+@connect(
+  (state, props) => ({
+    data: state.diff.data,
+    history: state.history.entries,
+    schema: state.schema.schema,
+    pathname: props.location.pathname,
+    one: props.location.query.one,
+    two: props.location.query.two,
+    view: props.location.query.view || 'split',
+    title: state.content.data.title,
+    type: state.content.data['@type'],
+  }),
+  dispatch => bindActionCreators({ getDiff, getSchema, getHistory }, dispatch),
+)
+export default class DiffComponent extends Component {
+  /**
+   * Property types.
+   * @property {Object} propTypes Property types.
+   * @static
+   */
+  static propTypes = {
+    getDiff: PropTypes.func.isRequired,
+    getSchema: PropTypes.func.isRequired,
+    getHistory: PropTypes.func.isRequired,
+    schema: PropTypes.objectOf(PropTypes.any),
+    pathname: PropTypes.string.isRequired,
+    one: PropTypes.string.isRequired,
+    two: PropTypes.string.isRequired,
+    view: PropTypes.string.isRequired,
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        '@id': PropTypes.string,
+      }),
+    ).isRequired,
+    history: PropTypes.arrayOf(
+      PropTypes.shape({
+        version_id: PropTypes.number,
+        time: PropTypes.string,
+        actor: PropTypes.shape({ fullname: PropTypes.string }),
+      }),
+    ).isRequired,
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+  };
+
+  /**
+   * Default properties
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    schema: null,
+  };
+
+  /**
+   * Constructor
+   * @method constructor
+   * @param {Object} props Component properties
+   * @constructs DiffComponent
+   */
+  constructor(props) {
+    super(props);
+    this.onChangeOne = this.onChangeOne.bind(this);
+    this.onChangeTwo = this.onChangeTwo.bind(this);
+    this.onSelectView = this.onSelectView.bind(this);
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    this.props.getSchema(this.props.type);
+    this.props.getHistory(getBaseUrl(this.props.pathname));
+    this.props.getDiff(
+      getBaseUrl(this.props.pathname),
+      this.props.one,
+      this.props.two,
+    );
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (
+      this.props.pathname !== nextProps.pathname ||
+      this.props.one !== nextProps.one ||
+      this.props.two !== nextProps.two
+    ) {
+      this.props.getDiff(
+        getBaseUrl(nextProps.pathname),
+        nextProps.one,
+        nextProps.two,
+      );
+    }
+  }
+
+  /**
+   * On select view handler
+   * @method onSelectView
+   * @param {object} event Event object
+   * @param {string} value Value
+   * @returns {undefined}
+   */
+  onSelectView(event, { value }) {
+    browserHistory.push(
+      `${this.props.pathname}?one=${this.props.one}&two=${this.props.two}&view=${value}`,
+    );
+  }
+
+  /**
+   * On change one handler
+   * @method onChangeOne
+   * @param {object} event Event object
+   * @param {string} value Value
+   * @returns {undefined}
+   */
+  onChangeOne(event, { value }) {
+    browserHistory.push(
+      `${this.props.pathname}?one=${value}&two=${this.props.two}&view=${this.props.view}`,
+    );
+  }
+
+  /**
+   * On change two handler
+   * @method onChangeTwo
+   * @param {object} event Event object
+   * @param {string} value Value
+   * @returns {undefined}
+   */
+  onChangeTwo(event, { value }) {
+    browserHistory.push(
+      `${this.props.pathname}?one=${this.props.one}&two=${value}&view=${this.props.view}`,
+    );
+  }
+
+  /**
+   * Render method.
+   * @method render
+   * @returns {string} Markup for the component.
+   */
+  render() {
+    const versions = map(
+      filter(this.props.history, entry => 'version_id' in entry),
+      (entry, index) => ({
+        text: `${index === 0 ? 'Current' : entry.version_id} (${moment(entry.time).format('LLLL')}, ${entry.actor.fullname})`,
+        value: `${entry.version_id}`,
+        key: `${entry.version_id}`,
+      }),
+    );
+    return (
+      <div id="page-diff">
+        <Helmet title="Diff" />
+        <h1>
+          Difference between revision
+          {' '}
+          {this.props.one}
+          {' '}
+          and
+          {' '}
+          {this.props.two}
+          {' '}
+          of
+          {' '}
+          <q>{this.props.title}</q>
+          {' '}
+        </h1>
+        <Grid>
+          <Grid.Column width={12}>
+            <p className="description">
+              You can view the difference of the revisions below.
+            </p>
+          </Grid.Column>
+          <Grid.Column width={4} textAlign="right">
+
+            <Button.Group>
+              {map(
+                [
+                  { id: 'split', label: 'Split' },
+                  { id: 'unified', label: 'Unified' },
+                ],
+                view => (
+                  <Button
+                    key={view.id}
+                    value={view.id}
+                    active={this.props.view === view.id}
+                    onClick={this.onSelectView}
+                  >
+                    {view.label}
+                  </Button>
+                ),
+              )}
+            </Button.Group>
+          </Grid.Column>
+        </Grid>
+        {this.props.history.length > 0 &&
+          <Table basic="very">
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell width={8}>
+                  Base
+                  <Dropdown
+                    onChange={this.onChangeOne}
+                    value={this.props.one}
+                    selection
+                    fluid
+                    options={versions}
+                  />
+                </Table.HeaderCell>
+                <Table.HeaderCell width={8}>
+                  Compare
+                  <Dropdown
+                    onChange={this.onChangeTwo}
+                    value={this.props.two}
+                    selection
+                    fluid
+                    options={versions}
+                  />
+                </Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+          </Table>}
+        {this.props.schema &&
+          this.props.data.length > 0 &&
+          map(this.props.schema.fieldsets, fieldset =>
+            map(
+              fieldset.fields,
+              field =>
+                !isEqual(
+                  this.props.data[0][field],
+                  this.props.data[1][field],
+                ) &&
+                <DiffField
+                  one={this.props.data[0][field]}
+                  two={this.props.data[1][field]}
+                  schema={this.props.schema.properties[field]}
+                  view={this.props.view}
+                />,
+            ),
+          )}
+      </div>
+    );
+  }
+}

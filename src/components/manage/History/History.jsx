@@ -138,11 +138,19 @@ export default class HistoryComponent extends Component {
             {map(entries, entry => (
               <Table.Row key={entry.time}>
                 <Table.Cell>
-                  <a href="#">
-                    {entry.transition_title}
-                    {entry.type === 'workflow' &&
-                      ` (${entry.action ? `${entry.prev_state_title} → ` : ''}${entry.state_title})`}
-                  </a>
+                  {('version_id' in entry &&
+                    entry.version_id > 0 &&
+                    <Link
+                      className="item"
+                      to={`${getBaseUrl(this.props.pathname)}/diff?one=${entry.version_id - 1}&two=${entry.version_id}`}
+                    >
+                      {entry.transition_title}
+                    </Link>) ||
+                    <span>
+                      {entry.transition_title}
+                      {entry.type === 'workflow' &&
+                        ` (${entry.action ? `${entry.prev_state_title} → ` : ''}${entry.state_title})`}
+                    </span>}
                 </Table.Cell>
                 <Table.Cell>{entry.actor.fullname}</Table.Cell>
                 <Table.Cell>
@@ -152,27 +160,33 @@ export default class HistoryComponent extends Component {
                 </Table.Cell>
                 <Table.Cell>{entry.comments}</Table.Cell>
                 <Table.Cell>
-                  <Dropdown icon="ellipsis vertical">
-                    <Dropdown.Menu className="left">
-                      <Dropdown.Item>
-                        <Icon name="copy" /> View changes
-                      </Dropdown.Item>
-                      {'version_id' in entry &&
-                        <Link
-                          className="item"
-                          to={`${getBaseUrl(this.props.pathname)}?version_id=${entry.version_id}`}
-                        >
-                          <Icon name="eye" /> View this revision
-                        </Link>}
-                      {entry.revert_url &&
-                        <Dropdown.Item
-                          value={entry.revert_url}
-                          onClick={this.onRevert}
-                        >
-                          <Icon name="undo" /> Revert to this revision
-                        </Dropdown.Item>}
-                    </Dropdown.Menu>
-                  </Dropdown>
+                  {entry.type === 'versioning' &&
+                    <Dropdown icon="ellipsis vertical">
+                      <Dropdown.Menu className="left">
+                        {'version_id' in entry &&
+                          entry.version_id > 0 &&
+                          <Link
+                            className="item"
+                            to={`${getBaseUrl(this.props.pathname)}/diff?one=${entry.version_id - 1}&two=${entry.version_id}`}
+                          >
+                            <Icon name="copy" /> View changes
+                          </Link>}
+                        {'version_id' in entry &&
+                          <Link
+                            className="item"
+                            to={`${getBaseUrl(this.props.pathname)}?version_id=${entry.version_id}`}
+                          >
+                            <Icon name="eye" /> View this revision
+                          </Link>}
+                        {entry.revert_url &&
+                          <Dropdown.Item
+                            value={entry.revert_url}
+                            onClick={this.onRevert}
+                          >
+                            <Icon name="undo" /> Revert to this revision
+                          </Dropdown.Item>}
+                      </Dropdown.Menu>
+                    </Dropdown>}
                 </Table.Cell>
               </Table.Row>
             ))}

@@ -10,6 +10,7 @@ import { reducer as reduxAsyncConnect } from 'redux-connect';
 import breadcrumbs from './breadcrumbs/breadcrumbs';
 import content from './content/content';
 import clipboard from './clipboard/clipboard';
+import diff from './diff/diff';
 import form from './form/form';
 import history from './history/history';
 import navigation from './navigation/navigation';
@@ -33,6 +34,7 @@ export default combineReducers({
   breadcrumbs,
   content,
   clipboard,
+  diff,
   form,
   history,
   navigation,

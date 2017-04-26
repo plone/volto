@@ -1,0 +1,303 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Diff renders a diff component 1`] = `
+<div
+  id="page-diff"
+>
+  <h1>
+    Difference between revision
+     
+    0
+     
+    and
+     
+    1 
+     
+    of
+     
+    <q>
+      Blog
+    </q>
+     
+  </h1>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="twelve wide column"
+    >
+      <p
+        className="description"
+      >
+        You can view the difference of the revisions below.
+      </p>
+    </div>
+    <div
+      className="right aligned four wide column"
+    >
+      <div
+        className="ui buttons"
+      >
+        <button
+          className="ui active button"
+          onClick={[Function]}
+          tabIndex={undefined}
+          value="split"
+        >
+          Split
+        </button>
+        <button
+          className="ui button"
+          onClick={[Function]}
+          tabIndex={undefined}
+          value="unified"
+        >
+          Unified
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    className="ui very basic table"
+  >
+    <thead
+      className=""
+    >
+      <tr
+        className=""
+      >
+        <th
+          className="eight wide"
+        >
+          Base
+          <div
+            aria-busy={undefined}
+            aria-disabled={undefined}
+            aria-expanded={false}
+            aria-multiselectable={undefined}
+            className="ui fluid selection dropdown"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseDown={[Function]}
+            role="listbox"
+            tabIndex={0}
+          >
+            <select
+              aria-hidden="true"
+              multiple={undefined}
+              name={undefined}
+              type="hidden"
+              value="0"
+            >
+              <option
+                value=""
+              />
+              <option
+                value="1"
+              >
+                Current (Wednesday, April 19, 2017 2:09 PM, Web Admin)
+              </option>
+              <option
+                value="0"
+              >
+                0 (Wednesday, April 19, 2017 2:09 PM, Web Admin)
+              </option>
+            </select>
+            <div
+              className="text"
+            >
+              0 (Wednesday, April 19, 2017 2:09 PM, Web Admin)
+            </div>
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+            />
+            <div
+              className="menu transition"
+            >
+              <div
+                aria-checked={false}
+                aria-disabled={undefined}
+                aria-selected={false}
+                className="item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  Current (Wednesday, April 19, 2017 2:09 PM, Web Admin)
+                </span>
+              </div>
+              <div
+                aria-checked={true}
+                aria-disabled={undefined}
+                aria-selected={true}
+                className="active selected item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  0 (Wednesday, April 19, 2017 2:09 PM, Web Admin)
+                </span>
+              </div>
+            </div>
+          </div>
+        </th>
+        <th
+          className="eight wide"
+        >
+          Compare
+          <div
+            aria-busy={undefined}
+            aria-disabled={undefined}
+            aria-expanded={false}
+            aria-multiselectable={undefined}
+            className="ui fluid selection dropdown"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseDown={[Function]}
+            role="listbox"
+            tabIndex={0}
+          >
+            <select
+              aria-hidden="true"
+              multiple={undefined}
+              name={undefined}
+              type="hidden"
+              value="1 "
+            >
+              <option
+                value=""
+              />
+              <option
+                value="1"
+              >
+                Current (Wednesday, April 19, 2017 2:09 PM, Web Admin)
+              </option>
+              <option
+                value="0"
+              >
+                0 (Wednesday, April 19, 2017 2:09 PM, Web Admin)
+              </option>
+            </select>
+            <div
+              className="text"
+            />
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+            />
+            <div
+              className="menu transition"
+            >
+              <div
+                aria-checked={false}
+                aria-disabled={undefined}
+                aria-selected={true}
+                className="selected item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  Current (Wednesday, April 19, 2017 2:09 PM, Web Admin)
+                </span>
+              </div>
+              <div
+                aria-checked={false}
+                aria-disabled={undefined}
+                aria-selected={false}
+                className="item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  0 (Wednesday, April 19, 2017 2:09 PM, Web Admin)
+                </span>
+              </div>
+            </div>
+          </div>
+        </th>
+      </tr>
+    </thead>
+  </table>
+  <table
+    className="ui compact table"
+  >
+    <thead
+      className=""
+    >
+      <tr
+        className=""
+      >
+        <th
+          className=""
+          colSpan={2}
+        >
+          Title
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      className=""
+    >
+      <tr
+        className=""
+      >
+        <td
+          className="top aligned eight wide"
+        >
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<span>My </span><span class=\\"deletion\\">old</span><span> title</span>",
+              }
+            }
+          />
+        </td>
+        <td
+          className="top aligned eight wide"
+        >
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<span>My </span><span class=\\"addition\\">new</span><span> title</span><span class=\\"addition\\">,</span>",
+              }
+            }
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

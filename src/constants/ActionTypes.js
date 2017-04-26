@@ -12,6 +12,7 @@ export const EDIT_CONTENT = 'EDIT_CONTENT';
 export const EDIT_SHARING = 'EDIT_SHARING';
 export const GET_BREADCRUMBS = 'GET_BREADCRUMBS';
 export const GET_CONTENT = 'GET_CONTENT';
+export const GET_DIFF = 'GET_DIFF';
 export const GET_HISTORY = 'GET_HISTORY';
 export const GET_NAVIGATION = 'GET_NAVIGATION';
 export const GET_PRINCIPALS = 'GET_PRINCIPALS';

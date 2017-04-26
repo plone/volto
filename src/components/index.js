@@ -35,6 +35,8 @@ export ContentsIndexHeader from './manage/Contents/ContentsIndexHeader';
 export ContentsItem from './manage/Contents/ContentsItem';
 export ContentsUploadModal from './manage/Contents/ContentsUploadModal';
 export Delete from './manage/Delete/Delete';
+export Diff from './manage/Diff/Diff';
+export DiffField from './manage/Diff/DiffField';
 export Display from './manage/Display/Display';
 export Edit from './manage/Edit/Edit';
 export Form from './manage/Form/Form';

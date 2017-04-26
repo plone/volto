@@ -34,7 +34,7 @@ export default class View extends Component {
   static propTypes = {
     getContent: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
-    versionId: PropTypes.string.isRequired,
+    versionId: PropTypes.string,
     content: PropTypes.shape({
       layout: PropTypes.string,
     }),
@@ -47,6 +47,7 @@ export default class View extends Component {
    */
   static defaultProps = {
     content: null,
+    versionId: null,
   };
 
   /**

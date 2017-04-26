@@ -31,6 +31,14 @@
   color: #696969;
 }
 
+.deletion {
+  background-color: #f8cbcb;
+}
+
+.addition {
+  background-color: #a6f3a6;
+}
+
 .ui.menu .item.personal-bar {
   width: 210px;
   position: fixed;

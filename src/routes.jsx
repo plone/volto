@@ -12,6 +12,7 @@ import {
   App,
   Contents,
   Edit,
+  Diff,
   Delete,
   History,
   View,
@@ -45,6 +46,7 @@ export default () => (
     <Route path="/**/add" component={Add} />
     <Route path="/**/contents" component={Contents} />
     <Route path="/**/delete" component={Delete} />
+    <Route path="/**/diff" component={Diff} />
     <Route path="/**/edit" component={Edit} />
     <Route path="/**/history" component={History} />
     <Route path="/**/layout" component={Layout} />

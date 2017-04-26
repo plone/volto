@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Diff view @robgietema
 - Add revert to version @robgietema
 - Create view revision page @robgietema
 - Create history list view @robgietema

@@ -136,6 +136,7 @@
     "coveralls": "2.13.0",
     "debug": "2.6.4",
     "debug-logger": "0.4.1",
+    "diff": "3.2.0",
     "draft-js": "0.10.0",
     "draft-js-editor": "1.8.19",
     "draft-js-export-html": "0.5.2",

@@ -46,6 +46,10 @@ describe('History', () => {
             actor: { fullname: 'Web Admin' },
           },
         ],
+        revert: {
+          loading: false,
+          loaded: false,
+        },
       },
       content: {
         data: {
