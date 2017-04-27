@@ -7,9 +7,16 @@ import Actions from './Actions';
 
 const mockStore = configureStore();
 
+jest.mock('../Contents/ContentsRenameModal', () =>
+  jest.fn(() => <div className="RenameModal" />),
+);
+
 describe('Actions', () => {
   it('renders an actions component', () => {
-    const store = mockStore({ clipboard: {} });
+    const store = mockStore({
+      clipboard: {},
+      content: { data: { id: 'blog', title: 'Blog' } },
+    });
     const component = renderer.create(
       <Provider store={store}>
         <Actions pathname="/test" />

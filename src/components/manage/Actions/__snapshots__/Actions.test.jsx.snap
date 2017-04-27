@@ -94,6 +94,27 @@ exports[`Actions renders an actions component 1`] = `
       />
       Delete
     </a>
+    <div
+      aria-checked={undefined}
+      aria-disabled={undefined}
+      aria-selected={undefined}
+      className="item"
+      onClick={[Function]}
+      role="option"
+    >
+      <i
+        aria-hidden="true"
+        className="text cursor icon"
+      />
+      <span
+        className="text"
+      >
+        Rename
+      </span>
+    </div>
+    <div
+      className="RenameModal"
+    />
   </div>
 </div>
 `;
