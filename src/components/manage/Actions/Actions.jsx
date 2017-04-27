@@ -12,6 +12,7 @@ import { Dropdown, Icon } from 'semantic-ui-react';
 
 import { cut, copy, copyContent, moveContent } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
+import { ContentsRenameModal } from '../../../components';
 
 /**
  * Actions container class.
@@ -22,6 +23,8 @@ import { getBaseUrl } from '../../../helpers';
   state => ({
     action: state.clipboard.action,
     source: state.clipboard.source,
+    id: state.content.data.id,
+    title: state.content.data.title,
   }),
   dispatch =>
     bindActionCreators({ cut, copy, copyContent, moveContent }, dispatch),
@@ -34,6 +37,8 @@ export default class Actions extends Component {
    */
   static propTypes = {
     pathname: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     action: PropTypes.string,
     source: PropTypes.arrayOf(PropTypes.string),
     cut: PropTypes.func.isRequired,
@@ -65,6 +70,34 @@ export default class Actions extends Component {
     this.cut = this.cut.bind(this);
     this.copy = this.copy.bind(this);
     this.paste = this.paste.bind(this);
+    this.rename = this.rename.bind(this);
+    this.onRenameOk = this.onRenameOk.bind(this);
+    this.onRenameCancel = this.onRenameCancel.bind(this);
+    this.state = {
+      showRename: false,
+    };
+  }
+
+  /**
+   * On rename ok
+   * @method onRenameOk
+   * @returns {undefined}
+   */
+  onRenameOk() {
+    this.setState({
+      showRename: false,
+    });
+  }
+
+  /**
+   * On rename cancel
+   * @method onRenameCancel
+   * @returns {undefined}
+   */
+  onRenameCancel() {
+    this.setState({
+      showRename: false,
+    });
   }
 
   /**
@@ -106,6 +139,17 @@ export default class Actions extends Component {
   }
 
   /**
+   * Rename handler
+   * @method rename
+   * @returns {undefined}
+   */
+  rename() {
+    this.setState({
+      showRename: true,
+    });
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -133,6 +177,23 @@ export default class Actions extends Component {
           <Link to={`${this.props.pathname}/delete`} className="item">
             <Icon name="trash" />Delete
           </Link>
+          <Dropdown.Item
+            icon="text cursor"
+            text="Rename"
+            onClick={this.rename}
+          />
+          <ContentsRenameModal
+            open={this.state.showRename}
+            onCancel={this.onRenameCancel}
+            onOk={this.onRenameOk}
+            items={[
+              {
+                url: this.props.pathname,
+                title: this.props.title,
+                id: this.props.id,
+              },
+            ]}
+          />
         </Dropdown.Menu>
       </Dropdown>
     );
