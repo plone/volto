@@ -1,5 +1,9 @@
 import workflow from './workflow';
-import { GET_WORKFLOW, TRANSITION_WORKFLOW } from '../../constants/ActionTypes';
+import {
+  GET_WORKFLOW,
+  GET_WORKFLOW_MULTIPLE,
+  TRANSITION_WORKFLOW,
+} from '../../constants/ActionTypes';
 
 describe('Workflow reducer', () => {
   it('should return the initial state', () => {
@@ -16,6 +20,7 @@ describe('Workflow reducer', () => {
       },
       history: [],
       transitions: [],
+      multiple: [],
     });
   });
 
@@ -37,6 +42,7 @@ describe('Workflow reducer', () => {
       },
       history: [],
       transitions: [],
+      multiple: [],
     });
   });
 
@@ -62,6 +68,7 @@ describe('Workflow reducer', () => {
       },
       history: 'history',
       transitions: 'transitions',
+      multiple: [],
     });
   });
 
@@ -84,6 +91,75 @@ describe('Workflow reducer', () => {
       },
       history: [],
       transitions: [],
+      multiple: [],
+    });
+  });
+
+  it('should handle GET_WORKFLOW_MULTIPLE_PENDING', () => {
+    expect(
+      workflow(undefined, {
+        type: `${GET_WORKFLOW_MULTIPLE}_PENDING`,
+      }),
+    ).toEqual({
+      get: {
+        loaded: false,
+        loading: true,
+        error: null,
+      },
+      transition: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      history: [],
+      transitions: [],
+      multiple: [],
+    });
+  });
+
+  it('should handle GET_WORKFLOW_MULTIPLE_SUCCESS', () => {
+    expect(
+      workflow(undefined, {
+        type: `${GET_WORKFLOW_MULTIPLE}_SUCCESS`,
+        result: 'result',
+      }),
+    ).toEqual({
+      get: {
+        loaded: true,
+        loading: false,
+        error: null,
+      },
+      transition: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      history: [],
+      transitions: [],
+      multiple: 'result',
+    });
+  });
+
+  it('should handle GET_WORKFLOW_MULTIPLE_FAIL', () => {
+    expect(
+      workflow(undefined, {
+        type: `${GET_WORKFLOW_MULTIPLE}_FAIL`,
+        error: 'failed',
+      }),
+    ).toEqual({
+      get: {
+        loaded: false,
+        loading: false,
+        error: 'failed',
+      },
+      transition: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      history: [],
+      transitions: [],
+      multiple: [],
     });
   });
 
@@ -105,6 +181,7 @@ describe('Workflow reducer', () => {
       },
       history: [],
       transitions: [],
+      multiple: [],
     });
   });
 
@@ -127,6 +204,7 @@ describe('Workflow reducer', () => {
       },
       history: [],
       transitions: [],
+      multiple: [],
     });
   });
 
@@ -149,6 +227,7 @@ describe('Workflow reducer', () => {
       },
       history: [],
       transitions: [],
+      multiple: [],
     });
   });
 });

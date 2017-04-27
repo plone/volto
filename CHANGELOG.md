@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Batch state in folder contents @robgietema
 - Batch properties in folder contents @robgietema
 - Batch tags in folder contents @robgietema
 - Batch rename in folder contents @robgietema

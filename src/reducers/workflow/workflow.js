@@ -3,7 +3,11 @@
  * @module reducers/workflow
  */
 
-import { TRANSITION_WORKFLOW, GET_WORKFLOW } from '../../constants/ActionTypes';
+import {
+  TRANSITION_WORKFLOW,
+  GET_WORKFLOW,
+  GET_WORKFLOW_MULTIPLE,
+} from '../../constants/ActionTypes';
 
 const initialState = {
   get: {
@@ -18,6 +22,7 @@ const initialState = {
   },
   history: [],
   transitions: [],
+  multiple: [],
 };
 
 /**
@@ -40,6 +45,7 @@ function getRequestKey(actionType) {
 export default function content(state = initialState, action = {}) {
   switch (action.type) {
     case `${GET_WORKFLOW}_PENDING`:
+    case `${GET_WORKFLOW_MULTIPLE}_PENDING`:
     case `${TRANSITION_WORKFLOW}_PENDING`:
       return {
         ...state,
@@ -63,12 +69,32 @@ export default function content(state = initialState, action = {}) {
           error: null,
         },
       };
+    case `${GET_WORKFLOW_MULTIPLE}_SUCCESS`:
+      return {
+        ...state,
+        multiple: action.result,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+      };
     case `${GET_WORKFLOW}_FAIL`:
     case `${TRANSITION_WORKFLOW}_FAIL`:
       return {
         ...state,
         history: [],
         transitions: [],
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: false,
+          error: action.error,
+        },
+      };
+    case `${GET_WORKFLOW_MULTIPLE}_FAIL`:
+      return {
+        ...state,
+        multiple: [],
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: false,

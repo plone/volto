@@ -36,6 +36,7 @@ export ContentsItem from './manage/Contents/ContentsItem';
 export ContentsUploadModal from './manage/Contents/ContentsUploadModal';
 export ContentsPropertiesModal from './manage/Contents/ContentsPropertiesModal';
 export ContentsRenameModal from './manage/Contents/ContentsRenameModal';
+export ContentsWorkflowModal from './manage/Contents/ContentsWorkflowModal';
 export ContentsTagsModal from './manage/Contents/ContentsTagsModal';
 export Delete from './manage/Delete/Delete';
 export Diff from './manage/Diff/Diff';

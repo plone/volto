@@ -3,30 +3,38 @@
  * @module actions/workflow/workflow
  */
 
-import { GET_WORKFLOW, TRANSITION_WORKFLOW } from '../../constants/ActionTypes';
+import {
+  GET_WORKFLOW,
+  GET_WORKFLOW_MULTIPLE,
+  TRANSITION_WORKFLOW,
+} from '../../constants/ActionTypes';
 
 /**
  * Get workflow function.
  * @function getWorkflow
- * @param {string} url Workflow url.
+ * @param {string|Array} urls Workflow url(s).
  * @returns {Object} Get workflow action.
  */
-export function getWorkflow(url) {
+export function getWorkflow(urls) {
   return {
-    type: GET_WORKFLOW,
-    promise: api => api.get(`${url}/@workflow`),
+    type: typeof urls === 'string' ? GET_WORKFLOW : GET_WORKFLOW_MULTIPLE,
+    promise: typeof urls === 'string'
+      ? api => api.get(`${urls}/@workflow`)
+      : api => Promise.all(urls.map(url => api.get(`${url}/@workflow`))),
   };
 }
 
 /**
  * Transition workflow.
  * @function transitionWorkflow
- * @param {string} url Content url.
+ * @param {string} urls Content url(s).
  * @returns {Object} Transition workflow action.
  */
-export function transitionWorkflow(url) {
+export function transitionWorkflow(urls) {
   return {
     type: TRANSITION_WORKFLOW,
-    promise: api => api.post(url),
+    promise: typeof urls === 'string'
+      ? api => api.post(urls)
+      : api => Promise.all(urls.map(url => api.post(url))),
   };
 }

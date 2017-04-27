@@ -20,6 +20,7 @@ export const GET_SCHEMA = 'GET_SCHEMA';
 export const GET_SHARING = 'GET_SHARING';
 export const GET_TYPES = 'GET_TYPES';
 export const GET_WORKFLOW = 'GET_WORKFLOW';
+export const GET_WORKFLOW_MULTIPLE = 'GET_WORKFLOW_MULTIPLE';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const MOVE_CONTENT = 'MOVE_CONTENT';

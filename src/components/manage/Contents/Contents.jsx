@@ -40,6 +40,7 @@ import {
   ContentsItem,
   ContentsRenameModal,
   ContentsUploadModal,
+  ContentsWorkflowModal,
   ContentsTagsModal,
   ContentsPropertiesModal,
   Pagination,
@@ -162,6 +163,8 @@ export default class ContentsComponent extends Component {
     this.onTagsCancel = this.onTagsCancel.bind(this);
     this.onPropertiesOk = this.onPropertiesOk.bind(this);
     this.onPropertiesCancel = this.onPropertiesCancel.bind(this);
+    this.onWorkflowOk = this.onWorkflowOk.bind(this);
+    this.onWorkflowCancel = this.onWorkflowCancel.bind(this);
     this.onChangeFilter = this.onChangeFilter.bind(this);
     this.onChangePage = this.onChangePage.bind(this);
     this.onChangePageSize = this.onChangePageSize.bind(this);
@@ -177,6 +180,7 @@ export default class ContentsComponent extends Component {
     this.rename = this.rename.bind(this);
     this.tags = this.tags.bind(this);
     this.properties = this.properties.bind(this);
+    this.workflow = this.workflow.bind(this);
     this.paste = this.paste.bind(this);
     this.fetchContents = this.fetchContents.bind(this);
     this.state = {
@@ -186,6 +190,7 @@ export default class ContentsComponent extends Component {
       showRename: false,
       showTags: false,
       showProperties: false,
+      showWorkflow: false,
       itemsToDelete: [],
       items: this.props.items,
       filter: '',
@@ -488,7 +493,6 @@ export default class ContentsComponent extends Component {
    * @returns {undefined}
    */
   onRenameOk() {
-    this.fetchContents();
     this.setState({
       showRename: false,
       selected: [],
@@ -512,7 +516,6 @@ export default class ContentsComponent extends Component {
    * @returns {undefined}
    */
   onTagsOk() {
-    this.fetchContents();
     this.setState({
       showTags: false,
       selected: [],
@@ -536,7 +539,6 @@ export default class ContentsComponent extends Component {
    * @returns {undefined}
    */
   onPropertiesOk() {
-    this.fetchContents();
     this.setState({
       showProperties: false,
       selected: [],
@@ -551,6 +553,30 @@ export default class ContentsComponent extends Component {
   onPropertiesCancel() {
     this.setState({
       showProperties: false,
+    });
+  }
+
+  /**
+   * On workflow ok
+   * @method onWorkflowOk
+   * @returns {undefined}
+   */
+  onWorkflowOk() {
+    this.fetchContents();
+    this.setState({
+      showWorkflow: false,
+      selected: [],
+    });
+  }
+
+  /**
+   * On workflow cancel
+   * @method onWorkflowCancel
+   * @returns {undefined}
+   */
+  onWorkflowCancel() {
+    this.setState({
+      showWorkflow: false,
     });
   }
 
@@ -666,6 +692,17 @@ export default class ContentsComponent extends Component {
   }
 
   /**
+   * Workflow handler
+   * @method workflow
+   * @returns {undefined}
+   */
+  workflow() {
+    this.setState({
+      showWorkflow: true,
+    });
+  }
+
+  /**
    * Paste handler
    * @method paste
    * @returns {undefined}
@@ -743,6 +780,13 @@ export default class ContentsComponent extends Component {
               onOk={this.onPropertiesOk}
               items={this.state.selected}
             />
+            {this.state.showWorkflow &&
+              <ContentsWorkflowModal
+                open={this.state.showWorkflow}
+                onCancel={this.onWorkflowCancel}
+                onOk={this.onWorkflowOk}
+                items={this.state.selected}
+              />}
             <h1>Contents</h1>
             <section id="content-core">
               <Menu stackable>
@@ -776,7 +820,7 @@ export default class ContentsComponent extends Component {
                       <Dropdown.Item onClick={this.tags}>
                         <Icon name="tags" /> Tags
                       </Dropdown.Item>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={this.workflow}>
                         <Icon name="random" /> State
                       </Dropdown.Item>
                       <Dropdown.Item onClick={this.properties}>
