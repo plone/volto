@@ -1,6 +1,6 @@
 # Change Log
 
-## [Unreleased]
+## 0.2.0 (2017-04-27)
 ### Added
 - Batch state in folder contents @robgietema
 - Batch properties in folder contents @robgietema
