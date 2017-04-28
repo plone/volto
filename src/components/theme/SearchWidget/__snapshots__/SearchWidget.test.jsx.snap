@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a not found component 1`] = `
+exports[`SearchWidget renders a search widget component 1`] = `
 <form
   action="/search"
   className="ui form"

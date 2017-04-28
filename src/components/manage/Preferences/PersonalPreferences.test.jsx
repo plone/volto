@@ -3,12 +3,12 @@ import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 
-import SearchWidget from './SearchWidget';
+import PersonalPreferences from './PersonalPreferences';
 
 const mockStore = configureStore();
 
-describe('SearchWidget', () => {
-  it('renders a search widget component', () => {
+describe('PersonalPreferences', () => {
+  it('renders a personal preferences component', () => {
     const store = mockStore({
       intl: {
         locale: 'en',
@@ -17,7 +17,7 @@ describe('SearchWidget', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <SearchWidget pathname="/blog" />
+        <PersonalPreferences />
       </Provider>,
     );
     const json = component.toJSON();

@@ -76,6 +76,7 @@ export default class Toolbar extends Component {
   onToggleExpanded() {
     cookie.save('toolbar_expanded', !this.state.expanded, {
       expires: new Date((2 ** 31 - 1) * 1000),
+      path: '/',
     });
     this.setState({
       expanded: !this.state.expanded,
@@ -147,6 +148,7 @@ export default class Toolbar extends Component {
         <Dropdown
           className="personal-bar"
           item
+          upward
           trigger={
             <span>
               <Icon name="user" />{expanded && ` ${this.props.fullname}`}
@@ -155,6 +157,9 @@ export default class Toolbar extends Component {
           pointing="left"
         >
           <Dropdown.Menu>
+            <Link to="/personal-preferences" className="item">
+              <span><Icon name="setting" /> Preferences</span>
+            </Link>
             <Link to="/logout" className="item">
               <span><Icon name="sign out" /> Log out</span>
             </Link>

@@ -14,7 +14,7 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/theme/SearchWidget/SearchWidget
 msgid "Add {type}"
-msgstr ""
+msgstr "Voeg {type} toe"
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
@@ -22,8 +22,8 @@ msgstr "Zoek"
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
-msgstr ""
+msgstr "Website doorzoeken"
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "only in current section"
-msgstr ""
+msgstr "alleen binnen huidige sectie"

@@ -32,7 +32,7 @@
     "test:start": "DEBUG=plone-react:* npm-run-all -ln prestart start & npm-run-all -ln wait-for-frontend",
     "start": "NODE_ENV=production npm-run-all run:prod:server",
     "dev": "NODE_ENV=development npm-run-all dev:build",
-    "dev:build": "npm-run-all -ln clear:dist prepare:dev:build development",
+    "dev:build": "npm-run-all -ln clear:dist prepare:dev:build i18n:build development",
     "development": "npm-run-all -ln --parallel build:dev:client build:dev:server run:dev:server",
     "prepare:dev:build": "universal-webpack --settings ./webpack/universal-webpack-settings.js prepare",
     "build:dev:client": "better-npm-run run_dev_client",
@@ -61,7 +61,9 @@
     "wait-for-frontend": "wget --retry-connrefused --spider ${PROTRACTOR_URL:-http://localhost:4300}",
     "webdriver-update": "webdriver-manager update",
     "docs": "raml2html docs/api/index.raml > src/static/docs/index.html",
-    "i18n": "babel-node scripts/i18n.js"
+    "i18n": "npm-run-all i18n:sync i18n:build",
+    "i18n:sync": "babel-node scripts/i18n.js sync",
+    "i18n:build": "babel-node scripts/i18n.js build"
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test))\\.(js|jsx)$",
@@ -161,6 +163,7 @@
     "jwt-decode": "2.2.0",
     "less": "2.7.2",
     "less-loader": "4.0.3",
+    "locale": "0.1.0",
     "lodash": "4.17.4",
     "lodash-move": "1.1.1",
     "lru-memoize": "1.0.2",

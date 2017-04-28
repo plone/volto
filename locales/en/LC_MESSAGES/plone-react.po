@@ -1,33 +1,29 @@
-# Testing
-# Some more
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
+"POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: \n"
 "Language-Team: \n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"MIME-Version: 1.0\n"
-"X-Generator: react-intl-po\n"
 
 #: components/manage/Add/Add
 #: components/theme/SearchWidget/SearchWidget
 msgid "Add {type}"
-msgstr "{type} hinzufügen"
+msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
-msgstr "Suche"
+msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
-msgstr "Website durchsuchen"
+msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "only in current section"
-msgstr "nur im aktuellen Bereich"
+msgstr ""

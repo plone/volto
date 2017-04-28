@@ -20,6 +20,7 @@ import {
   Layout,
   Login,
   Logout,
+  PersonalPreferences,
   Search,
   Sharing,
 } from './components';
@@ -43,6 +44,7 @@ export default () => (
     <Route path="/login" component={Login} />
     <Route path="/logout" component={Logout} />
     <Route path="/search" component={Search} />
+    <Route path="/personal-preferences" component={PersonalPreferences} />
     <Route path="/**/add" component={Add} />
     <Route path="/**/contents" component={Contents} />
     <Route path="/**/delete" component={Delete} />

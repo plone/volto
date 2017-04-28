@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-intl-redux';
 
 import { AddComponent as Add } from './Add';
 
@@ -21,6 +21,10 @@ describe('Add', () => {
           loading: false,
           loaded: true,
         },
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
       },
     });
     const component = renderer.create(
@@ -45,6 +49,10 @@ describe('Add', () => {
           loading: false,
           loaded: true,
         },
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
       },
     });
     const component = renderer.create(

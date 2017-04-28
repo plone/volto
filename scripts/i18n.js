@@ -154,9 +154,12 @@ ${map(pot.items, item => {
 }
 
 // Write pot
-fs.writeFileSync(
-  'locales/plone-react.pot',
-  `${potHeader()}${messagesToPot(getMessages())}`,
-);
-syncPoByPot();
-poToJson();
+if (process.argv[2] === 'sync') {
+  fs.writeFileSync(
+    'locales/plone-react.pot',
+    `${potHeader()}${messagesToPot(getMessages())}`,
+  );
+  syncPoByPot();
+} else {
+  poToJson();
+}
