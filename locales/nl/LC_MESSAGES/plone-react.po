@@ -1,0 +1,29 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#: components/manage/Add/Add
+#: components/theme/SearchWidget/SearchWidget
+msgid "Add {type}"
+msgstr ""
+
+#: components/theme/SearchWidget/SearchWidget
+msgid "Search"
+msgstr "Zoek"
+
+#: components/theme/SearchWidget/SearchWidget
+msgid "Search Site"
+msgstr ""
+
+#: components/theme/SearchWidget/SearchWidget
+msgid "only in current section"
+msgstr ""

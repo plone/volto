@@ -6,6 +6,7 @@
 import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
 import { reducer as reduxAsyncConnect } from 'redux-connect';
+import { intlReducer } from 'react-intl-redux';
 
 import breadcrumbs from './breadcrumbs/breadcrumbs';
 import content from './content/content';
@@ -30,6 +31,7 @@ import workflow from './workflow/workflow';
  */
 export default combineReducers({
   routing: routerReducer,
+  intl: intlReducer,
   reduxAsyncConnect,
   breadcrumbs,
   content,

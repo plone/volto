@@ -2,7 +2,7 @@ import 'babel-polyfill';
 
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-intl-redux';
 import { ReduxAsyncConnect } from 'redux-connect';
 import { browserHistory, Router } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';

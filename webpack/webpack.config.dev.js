@@ -6,7 +6,7 @@ import fs from 'fs';
 
 const projectRootPath = path.resolve(__dirname, '../');
 
-const assetsPath = path.resolve(__dirname, '../static/dist');
+const assetsPath = path.resolve(__dirname, '../dist');
 const host = 'localhost';
 const port = process.env.PORT || 4301;
 

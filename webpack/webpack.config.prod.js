@@ -4,7 +4,7 @@ import webpack from 'webpack';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 const projectRootPath = path.resolve(__dirname, '../');
-const assetsPath = path.resolve(projectRootPath, './static/dist');
+const assetsPath = path.resolve(projectRootPath, './dist');
 
 const BASE_CSS_LOADER = {
   loader: 'css-loader',

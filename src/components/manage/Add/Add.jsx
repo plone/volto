@@ -11,6 +11,7 @@ import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
+import { FormattedMessage } from 'react-intl';
 
 import { addContent, getSchema } from '../../../actions';
 import { Form } from '../../../components';
@@ -130,7 +131,13 @@ export class AddComponent extends Component {
       return (
         <div id="page-add">
           <Helmet title={`Add ${this.props.type}`} />
-          <h1>Add {this.props.type}</h1>
+          <h1>
+            <FormattedMessage
+              id="Add {type}"
+              defaultMessage="Add {type}"
+              values={{ type: this.props.type }}
+            />
+          </h1>
           <Form
             schema={this.props.schema}
             onSubmit={this.onSubmit}
