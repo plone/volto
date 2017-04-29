@@ -19,6 +19,7 @@ import schema from './schema/schema';
 import search from './search/search';
 import sharing from './sharing/sharing';
 import types from './types/types';
+import users from './users/users';
 import userSession from './userSession/userSession';
 import workflow from './workflow/workflow';
 
@@ -44,6 +45,7 @@ export default combineReducers({
   search,
   sharing,
   types,
+  users,
   userSession,
   workflow,
 });

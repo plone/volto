@@ -21,6 +21,7 @@ import {
   Layout,
   Login,
   Logout,
+  // PersonalInformation,
   PersonalPreferences,
   Search,
   Sharing,
@@ -46,6 +47,7 @@ export default () => (
     <Route path="/logout" component={Logout} />
     <Route path="/search" component={Search} />
     <Route path="/change-password" component={ChangePassword} />
+    <Route path="/personal-information" component={PersonalPreferences} />
     <Route path="/personal-preferences" component={PersonalPreferences} />
     <Route path="/**/add" component={Add} />
     <Route path="/**/contents" component={Contents} />
