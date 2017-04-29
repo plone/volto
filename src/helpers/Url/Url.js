@@ -25,6 +25,7 @@ export function getBaseUrl(url: string): string {
     .replace('/logout', '')
     .replace('/sharing', '')
     .replace('/search', '')
+    .replace('/change-password', '')
     .replace('/personal-preferences', '');
 }
 

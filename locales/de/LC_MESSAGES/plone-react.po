@@ -78,6 +78,10 @@ msgstr "Abbrechen"
 msgid "Change Note"
 msgstr "Änderungsnotiz"
 
+#: components/manage/Preferences/ChangePassword
+msgid "Change Password"
+msgstr "Passwort ändern"
+
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change State"
 msgstr "Statusänderung"
@@ -85,6 +89,10 @@ msgstr "Statusänderung"
 #: components/manage/Diff/Diff
 msgid "Compare"
 msgstr "Vergleichen"
+
+#: components/manage/Preferences/ChangePassword
+msgid "Confirm password"
+msgstr "Passwort bestätigen"
 
 #: components/theme/Footer/Footer
 msgid "Contact"
@@ -113,6 +121,10 @@ msgstr "Informationen über die Urheber- und Nutzungsrechte an diesem Artikel."
 msgid "Creators"
 msgstr "Ersteller"
 
+#: components/manage/Preferences/ChangePassword
+msgid "Current password"
+msgstr "Aktuelles Passwort"
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
@@ -123,6 +135,7 @@ msgstr "Schneiden"
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
 #: components/manage/Contents/ContentsWorkflowModal
+#: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
 msgid "Default"
 msgstr "Standard"
@@ -178,6 +191,14 @@ msgstr "Bearbeiten"
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "{title} bearbeiten"
+
+#: components/manage/Preferences/ChangePassword
+msgid "Enter your current password."
+msgstr "Geben Sie Ihr aktuelles Passwort ein."
+
+#: components/manage/Preferences/ChangePassword
+msgid "Enter your new password. Minimum 5 characters."
+msgstr "Geben Sie ihr neues Passwort ein. Mindestens 5 Zeichen."
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Exclude from navigation"
@@ -264,6 +285,10 @@ msgstr "Zum Unterseite des Ordners wechseln"
 msgid "Name"
 msgstr "Name"
 
+#: components/manage/Preferences/ChangePassword
+msgid "New password"
+msgstr "Neues Passwort"
+
 #: components/manage/Contents/Contents
 msgid "None"
 msgstr "Keiner"
@@ -272,6 +297,7 @@ msgstr "Keiner"
 msgid "Ok"
 msgstr "OK"
 
+#: components/manage/Preferences/PersonalPreferences
 #: components/theme/Login/Login
 msgid "Password"
 msgstr "Passwort"
@@ -281,6 +307,12 @@ msgstr "Passwort"
 msgid "Paste"
 msgstr "Einfügen"
 
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalPreferences
+msgid "Personal Information"
+msgstr "Persönliche Informationen"
+
+#: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
 msgid "Personal Preferences"
 msgstr "Meine Einstellungen"
@@ -325,6 +357,10 @@ msgstr "Eigenschaften"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Publishing Date"
 msgstr "Freigabedatum"
+
+#: components/manage/Preferences/ChangePassword
+msgid "Re-enter the password. Make sure the passwords are identical."
+msgstr "Geben Sie das gleiche Passwort erneut ein."
 
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView

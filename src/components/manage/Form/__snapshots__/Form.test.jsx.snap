@@ -7,16 +7,6 @@ exports[`Form renders a form component 1`] = `
   onSubmit={[Function]}
 >
   <div
-    className="ui stackable top attached tabular menu"
-  >
-    <a
-      className="active item"
-      onClick={[Function]}
-    >
-      Default
-    </a>
-  </div>
-  <div
     className="ui attached segment"
   >
     <div

@@ -8,12 +8,18 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 import { updateIntl } from 'react-intl-redux';
 import { map, keys } from 'lodash';
 import cookie from 'react-cookie';
 import request from 'superagent';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
+import { Menu } from 'semantic-ui-react';
 
 import { Form } from '../../../components';
 import languages from '../../../constants/Languages';
@@ -39,7 +45,7 @@ const messages = defineMessages({
 
 /**
  * PersonalPreferences class.
- * @class AddComponent
+ * @class PersonalPreferences
  * @extends Component
  */
 @injectIntl
@@ -105,10 +111,25 @@ export default class PersonalPreferences extends Component {
    */
   render() {
     return (
-      <div id="page-add">
+      <div id="page-personal-preferences">
         <Helmet
           title={this.props.intl.formatMessage(messages.personalPreferences)}
         />
+        <Menu attached="top" tabular stackable>
+          <Link to="/personal-information" className="item">
+            <FormattedMessage
+              id="Personal Information"
+              defaultMessage="Personal Information"
+            />
+          </Link>
+          <Menu.Item
+            name={this.props.intl.formatMessage(messages.personalPreferences)}
+            active
+          />
+          <Link to="/change-password" className="item">
+            <FormattedMessage id="Password" defaultMessage="Password" />
+          </Link>
+        </Menu>
         <Form
           formData={{ language: cookie.load('lang') || '' }}
           schema={{

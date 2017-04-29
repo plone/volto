@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2017-04-29T15:29:54.835Z\n"
+"POT-Creation-Date: 2017-04-29T19:22:06.799Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -77,6 +77,11 @@ msgstr ""
 msgid "Change Note"
 msgstr ""
 
+#: components/manage/Preferences/ChangePassword
+# defaultMessage: Change Password
+msgid "Change Password"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Change State
 msgid "Change State"
@@ -85,6 +90,11 @@ msgstr ""
 #: components/manage/Diff/Diff
 # defaultMessage: Compare
 msgid "Compare"
+msgstr ""
+
+#: components/manage/Preferences/ChangePassword
+# defaultMessage: Confirm password
+msgid "Confirm password"
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -120,6 +130,11 @@ msgstr ""
 msgid "Creators"
 msgstr ""
 
+#: components/manage/Preferences/ChangePassword
+# defaultMessage: Current password
+msgid "Current password"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
@@ -131,6 +146,7 @@ msgstr ""
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
 #: components/manage/Contents/ContentsWorkflowModal
+#: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Default
 msgid "Default"
@@ -198,6 +214,16 @@ msgstr ""
 #: components/manage/Edit/Edit
 # defaultMessage: Edit {title}
 msgid "Edit {title}"
+msgstr ""
+
+#: components/manage/Preferences/ChangePassword
+# defaultMessage: Enter your current password.
+msgid "Enter your current password."
+msgstr ""
+
+#: components/manage/Preferences/ChangePassword
+# defaultMessage: Enter your new password. Minimum 5 characters.
+msgid "Enter your new password. Minimum 5 characters."
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
@@ -306,6 +332,11 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+#: components/manage/Preferences/ChangePassword
+# defaultMessage: New password
+msgid "New password"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: None
 msgid "None"
@@ -316,6 +347,7 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
+#: components/manage/Preferences/PersonalPreferences
 #: components/theme/Login/Login
 # defaultMessage: Password
 msgid "Password"
@@ -327,6 +359,13 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalPreferences
+# defaultMessage: Personal Information
+msgid "Personal Information"
+msgstr ""
+
+#: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Personal Preferences
 msgid "Personal Preferences"
@@ -381,6 +420,11 @@ msgstr ""
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Publishing Date
 msgid "Publishing Date"
+msgstr ""
+
+#: components/manage/Preferences/ChangePassword
+# defaultMessage: Re-enter the password. Make sure the passwords are identical.
+msgid "Re-enter the password. Make sure the passwords are identical."
 msgstr ""
 
 #: components/theme/Search/Search

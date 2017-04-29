@@ -825,7 +825,9 @@ export default class ContentsComponent extends Component {
                 onOk={this.onWorkflowOk}
                 items={this.state.selected}
               />}
-            <h1>Contents</h1>
+            <h1>
+              <FormattedMessage id="Contents" defaultMessage="Contents" />
+            </h1>
             <section id="content-core">
               <Menu stackable>
                 <Menu.Menu>

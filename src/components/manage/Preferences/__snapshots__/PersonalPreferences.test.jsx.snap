@@ -2,23 +2,41 @@
 
 exports[`PersonalPreferences renders a personal preferences component 1`] = `
 <div
-  id="page-add"
+  id="page-personal-preferences"
 >
+  <div
+    className="ui stackable top attached tabular menu"
+  >
+    <a
+      className="item"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span>
+        Personal Information
+      </span>
+    </a>
+    <div
+      className="active item"
+      onClick={[Function]}
+    >
+      Personal Preferences
+    </div>
+    <a
+      className="item"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span>
+        Password
+      </span>
+    </a>
+  </div>
   <form
     className="ui form"
     method="post"
     onSubmit={[Function]}
   >
-    <div
-      className="ui stackable top attached tabular menu"
-    >
-      <a
-        className="active item"
-        onClick={[Function]}
-      >
-        Default
-      </a>
-    </div>
     <div
       className="ui attached segment"
     >
