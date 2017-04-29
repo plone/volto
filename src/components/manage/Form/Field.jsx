@@ -10,6 +10,7 @@ import {
   ArrayWidget,
   CheckboxWidget,
   DatetimeWidget,
+  PasswordWidget,
   SelectWidget,
   TextWidget,
   TextareaWidget,
@@ -31,6 +32,8 @@ const Field = props => {
         return <TextareaWidget {...props} />;
       case 'datetime':
         return <DatetimeWidget {...props} />;
+      case 'password':
+        return <PasswordWidget {...props} />;
       default:
         return <TextWidget {...props} />;
     }

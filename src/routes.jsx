@@ -10,6 +10,7 @@ import isMobile from 'ismobilejs';
 import {
   Add,
   App,
+  ChangePassword,
   Contents,
   Edit,
   Diff,
@@ -44,6 +45,7 @@ export default () => (
     <Route path="/login" component={Login} />
     <Route path="/logout" component={Logout} />
     <Route path="/search" component={Search} />
+    <Route path="/change-password" component={ChangePassword} />
     <Route path="/personal-preferences" component={PersonalPreferences} />
     <Route path="/**/add" component={Add} />
     <Route path="/**/contents" component={Contents} />

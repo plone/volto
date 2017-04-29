@@ -8,6 +8,9 @@ jest.mock('../Widgets/ArrayWidget', () =>
 jest.mock('../Widgets/CheckboxWidget', () =>
   jest.fn(() => <div className="CheckboxWidget" />),
 );
+jest.mock('../Widgets/PasswordWidget', () =>
+  jest.fn(() => <div className="PasswordWidget" />),
+);
 jest.mock('../Widgets/SelectWidget', () =>
   jest.fn(() => <div className="SelectWidget" />),
 );
@@ -39,6 +42,12 @@ describe('Field', () => {
 
   it('renders a datetime field', () => {
     const component = renderer.create(<Field widget="datetime" />);
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
+  it('renders a password field', () => {
+    const component = renderer.create(<Field widget="password" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });

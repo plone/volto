@@ -76,11 +76,15 @@ msgstr "Standaard worden de rechten overgenomen van de bovenliggende map.  Als u
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 msgid "Cancel"
-msgstr "Afbreken"
+msgstr "Annuleren"
 
 #: components/manage/History/History
 msgid "Change Note"
 msgstr "Beschrijf de wijzigingen"
+
+#: components/manage/Preferences/ChangePassword
+msgid "Change Password"
+msgstr "Wachtwoord wijzigen"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change State"
@@ -89,6 +93,10 @@ msgstr "Status wijzigen"
 #: components/manage/Diff/Diff
 msgid "Compare"
 msgstr "Vergelijken"
+
+#: components/manage/Preferences/ChangePassword
+msgid "Confirm password"
+msgstr "Wachtwoord bevestigen"
 
 #: components/theme/Footer/Footer
 msgid "Contact"
@@ -117,6 +125,10 @@ msgstr "Auteursrechten of andere rechtsinformatie van dit item."
 msgid "Creators"
 msgstr "Auteurs"
 
+#: components/manage/Preferences/ChangePassword
+msgid "Current password"
+msgstr "Huidig wachtwoord"
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
@@ -127,6 +139,7 @@ msgstr "Knippen"
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
 #: components/manage/Contents/ContentsWorkflowModal
+#: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
 msgid "Default"
 msgstr "Standaard"
@@ -182,6 +195,14 @@ msgstr "Bewerken"
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "{title} bewerken"
+
+#: components/manage/Preferences/ChangePassword
+msgid "Enter your current password."
+msgstr "Voer uw huidige wachtwoord in."
+
+#: components/manage/Preferences/ChangePassword
+msgid "Enter your new password. Minimum 5 characters."
+msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Exclude from navigation"
@@ -268,6 +289,10 @@ msgstr "Verplaats naar boven in de map"
 msgid "Name"
 msgstr "Naam"
 
+#: components/manage/Preferences/ChangePassword
+msgid "New password"
+msgstr "Nieuw wachtwoord"
+
 #: components/manage/Contents/Contents
 msgid "None"
 msgstr "Niks"
@@ -276,6 +301,7 @@ msgstr "Niks"
 msgid "Ok"
 msgstr "Ok"
 
+#: components/manage/Preferences/PersonalPreferences
 #: components/theme/Login/Login
 msgid "Password"
 msgstr "Wachtwoord"
@@ -285,6 +311,12 @@ msgstr "Wachtwoord"
 msgid "Paste"
 msgstr "Plakken"
 
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalPreferences
+msgid "Personal Information"
+msgstr "Persoonlijke gegevens"
+
+#: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
 msgid "Personal Preferences"
 msgstr "Persoonlijke voorkeuren"
@@ -329,6 +361,10 @@ msgstr "Eigenschappen"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Publishing Date"
 msgstr "Ingangsdatum"
+
+#: components/manage/Preferences/ChangePassword
+msgid "Re-enter the password. Make sure the passwords are identical."
+msgstr "Voer het wachtwoord nogmaals in. Zorg dat de wachtwoorden identiek zijn."
 
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView

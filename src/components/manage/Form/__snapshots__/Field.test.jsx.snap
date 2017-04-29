@@ -24,6 +24,12 @@ exports[`Field renders a fallback field 1`] = `
 />
 `;
 
+exports[`Field renders a password field 1`] = `
+<div
+  className="PasswordWidget"
+/>
+`;
+
 exports[`Field renders a richtext field 1`] = `
 <div
   className="WysiwygWidget"

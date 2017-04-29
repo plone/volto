@@ -148,7 +148,7 @@ function syncPoByPot() {
 ${map(pot.items, item => {
         const poItem = find(po.items, { msgid: item.msgid });
         return [`${map(item.references, ref => `#: ${ref}`).join('\n')}`, `msgid "${item.msgid}"`, `msgstr "${poItem ? poItem.msgstr : ''}"`].join('\n');
-      }).join('\n\n')}`,
+      }).join('\n\n')}\n`,
     );
   });
 }
@@ -157,7 +157,7 @@ ${map(pot.items, item => {
 if (process.argv[2] === 'sync') {
   fs.writeFileSync(
     'locales/plone-react.pot',
-    `${potHeader()}${messagesToPot(getMessages())}`,
+    `${potHeader()}${messagesToPot(getMessages())}\n`,
   );
   syncPoByPot();
 } else {

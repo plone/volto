@@ -124,19 +124,20 @@ export default class Form extends Component {
 
     return (
       <UiForm method="post" onSubmit={this.onSubmit}>
-        <Menu attached="top" tabular stackable>
-          {map(schema.fieldsets, (item, index) => (
-            <Menu.Item
-              name={item.id}
-              index={index}
-              key={item.id}
-              active={this.state.currentTab === index}
-              onClick={this.selectTab}
-            >
-              {item.title}
-            </Menu.Item>
-          ))}
-        </Menu>
+        {schema.fieldsets.length > 1 &&
+          <Menu attached="top" tabular stackable>
+            {map(schema.fieldsets, (item, index) => (
+              <Menu.Item
+                name={item.id}
+                index={index}
+                key={item.id}
+                active={this.state.currentTab === index}
+                onClick={this.selectTab}
+              >
+                {item.title}
+              </Menu.Item>
+            ))}
+          </Menu>}
         <Segment attached>
           {fields.map(field => <Field {...field} key={field.id} />)}
         </Segment>

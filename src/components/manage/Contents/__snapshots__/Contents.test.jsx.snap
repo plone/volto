@@ -14,7 +14,9 @@ exports[`Contents renders a contents component 1`] = `
         className="UploadModal"
       />
       <h1>
-        Contents
+        <span>
+          Contents
+        </span>
       </h1>
       <section
         id="content-core"
