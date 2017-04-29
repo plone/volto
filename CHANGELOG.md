@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Change password @robgietema
 - I18n support and translations @robgietema
 - Personal preferences @robgietema
 - Rename action @robgietema
