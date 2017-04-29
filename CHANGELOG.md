@@ -1,6 +1,6 @@
 # Change Log
 
-## [Unreleased]
+## 0.3.0 (2017-04-29)
 ### Added
 - Personal information @robgietema
 - Change password @robgietema
