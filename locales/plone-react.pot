@@ -1,0 +1,639 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"POT-Creation-Date: 2017-04-29T15:29:54.835Z\n"
+"Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: plone-react\n"
+
+#: components/theme/Footer/Footer
+# defaultMessage: Accessibility
+msgid "Accessibility"
+msgstr ""
+
+#: components/manage/Actions/Actions
+# defaultMessage: Actions
+msgid "Actions"
+msgstr ""
+
+#: components/manage/Types/Types
+# defaultMessage: Add new…
+msgid "Add new…"
+msgstr ""
+
+#: components/manage/Add/Add
+# defaultMessage: Add {type}
+msgid "Add {type}"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: All
+msgid "All"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Ascending
+msgid "Ascending"
+msgstr ""
+
+#: components/manage/Diff/Diff
+# defaultMessage: Base
+msgid "Base"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Batch
+msgid "Batch"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Browse
+msgid "Browse"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator.
+msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+#: components/manage/Delete/Delete
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
+# defaultMessage: Cancel
+msgid "Cancel"
+msgstr ""
+
+#: components/manage/History/History
+# defaultMessage: Change Note
+msgid "Change Note"
+msgstr ""
+
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Change State
+msgid "Change State"
+msgstr ""
+
+#: components/manage/Diff/Diff
+# defaultMessage: Compare
+msgid "Compare"
+msgstr ""
+
+#: components/theme/Footer/Footer
+# defaultMessage: Contact
+msgid "Contact"
+msgstr ""
+
+#: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Contents
+msgid "Contents"
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Copy
+msgid "Copy"
+msgstr ""
+
+#: components/theme/Footer/Footer
+# defaultMessage: Copyright
+msgid "Copyright"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Copyright statement or other rights information on this item.
+msgid "Copyright statement or other rights information on this item."
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Creators
+msgid "Creators"
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Cut
+msgid "Cut"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+#: components/manage/Contents/ContentsRenameModal
+#: components/manage/Contents/ContentsTagsModal
+#: components/manage/Contents/ContentsWorkflowModal
+#: components/manage/Preferences/PersonalPreferences
+# defaultMessage: Default
+msgid "Default"
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+#: components/manage/Delete/Delete
+# defaultMessage: Delete
+msgid "Delete"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Descending
+msgid "Descending"
+msgstr ""
+
+#: components/theme/View/TabularView
+# defaultMessage: Description
+msgid "Description"
+msgstr ""
+
+#: components/manage/Diff/Diff
+# defaultMessage: Diff
+msgid "Diff"
+msgstr ""
+
+#: components/manage/Diff/Diff
+# defaultMessage: Difference between revision {one} and {two} of {title}
+msgid "Difference between revision {one} and {two} of {title}"
+msgstr ""
+
+#: components/manage/Display/Display
+# defaultMessage: Display
+msgid "Display"
+msgstr ""
+
+#: components/theme/Footer/Footer
+# defaultMessage: Distributed under the {license}.
+msgid "Distributed under the {license}."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Do you really want to delete the following items?
+msgid "Do you really want to delete the following items?"
+msgstr ""
+
+#: components/manage/Delete/Delete
+# defaultMessage: Do you really want to delete this item?
+msgid "Do you really want to delete this item?"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
+msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Edit
+msgid "Edit"
+msgstr ""
+
+#: components/manage/Edit/Edit
+# defaultMessage: Edit {title}
+msgid "Edit {title}"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Exclude from navigation
+msgid "Exclude from navigation"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Expiration Date
+msgid "Expiration Date"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: File size
+msgid "File size"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Filename
+msgid "Filename"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Filter…
+msgid "Filter…"
+msgstr ""
+
+#: components/theme/Footer/Footer
+# defaultMessage: GNU GPL license
+msgid "GNU GPL license"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: History
+msgid "History"
+msgstr ""
+
+#: components/manage/History/History
+# defaultMessage: History of {title}
+msgid "History of {title}"
+msgstr ""
+
+#: components/theme/Breadcrumbs/Breadcrumbs
+# defaultMessage: Home
+msgid "Home"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: If selected, this item will not appear in the navigation tree
+msgid "If selected, this item will not appear in the navigation tree"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: If this date is in the future, the content will not show up in listings and searches until this date.
+msgid "If this date is in the future, the content will not show up in listings and searches until this date."
+msgstr ""
+
+#: components/theme/NotFound/NotFound
+# defaultMessage: If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}.
+msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Inherit permissions from higher levels
+msgid "Inherit permissions from higher levels"
+msgstr ""
+
+#: components/manage/Preferences/PersonalPreferences
+# defaultMessage: Language
+msgid "Language"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Last modified
+msgid "Last modified"
+msgstr ""
+
+#: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
+# defaultMessage: Log in
+msgid "Log in"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Log out
+msgid "Log out"
+msgstr ""
+
+#: components/theme/Login/Login
+# defaultMessage: Login Name
+msgid "Login Name"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Move to bottom of folder
+msgid "Move to bottom of folder"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Move to top of folder
+msgid "Move to top of folder"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Name
+msgid "Name"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: None
+msgid "None"
+msgstr ""
+
+#: components/manage/Delete/Delete
+# defaultMessage: Ok
+msgid "Ok"
+msgstr ""
+
+#: components/theme/Login/Login
+# defaultMessage: Password
+msgid "Password"
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+# defaultMessage: Paste
+msgid "Paste"
+msgstr ""
+
+#: components/manage/Preferences/PersonalPreferences
+# defaultMessage: Personal Preferences
+msgid "Personal Preferences"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
+msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
+msgstr ""
+
+#: components/theme/Footer/Footer
+# defaultMessage: Plone Foundation
+msgid "Plone Foundation"
+msgstr ""
+
+#: components/theme/Logo/Logo
+# defaultMessage: Plone Site
+msgid "Plone Site"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Plone Toolbar
+msgid "Plone Toolbar"
+msgstr ""
+
+#: components/theme/Footer/Footer
+# defaultMessage: Plone{reg} Open Source CMS/WCM
+msgid "Plone{reg} Open Source CMS/WCM"
+msgstr ""
+
+#: components/theme/Footer/Footer
+# defaultMessage: Powered by Plone & Python
+msgid "Powered by Plone & Python"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Preferences
+msgid "Preferences"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Preview
+msgid "Preview"
+msgstr ""
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Properties
+msgid "Properties"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Publishing Date
+msgid "Publishing Date"
+msgstr ""
+
+#: components/theme/Search/Search
+#: components/theme/View/SummaryView
+# defaultMessage: Read More…
+msgid "Read More…"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Rearrange items by…
+msgid "Rearrange items by…"
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+# defaultMessage: Rename
+msgid "Rename"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
+# defaultMessage: Rename items
+msgid "Rename items"
+msgstr ""
+
+#: components/manage/History/History
+# defaultMessage: Revert to this revision
+msgid "Revert to this revision"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: Rights
+msgid "Rights"
+msgstr ""
+
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
+# defaultMessage: Save
+msgid "Save"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+#: components/theme/SearchWidget/SearchWidget
+# defaultMessage: Search
+msgid "Search"
+msgstr ""
+
+#: components/theme/SearchWidget/SearchWidget
+# defaultMessage: Search Site
+msgid "Search Site"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Search for user or group
+msgid "Search for user or group"
+msgstr ""
+
+#: components/theme/Search/Search
+# defaultMessage: Search results for {term}
+msgid "Search results for {term}"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Select columns to show
+msgid "Select columns to show"
+msgstr ""
+
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Select the transition to be used for modifying the items state.
+msgid "Select the transition to be used for modifying the items state."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Select…
+msgid "Select…"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Sharing
+msgid "Sharing"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Sharing for {title}
+msgid "Sharing for {title}"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
+# defaultMessage: Short name
+msgid "Short name"
+msgstr ""
+
+#: components/theme/Logo/Logo
+# defaultMessage: Site
+msgid "Site"
+msgstr ""
+
+#: components/theme/NotFound/NotFound
+# defaultMessage: Site Administration
+msgid "Site Administration"
+msgstr ""
+
+#: components/theme/Footer/Footer
+# defaultMessage: Site Map
+msgid "Site Map"
+msgstr ""
+
+#: components/manage/Contents/Contents
+#: components/theme/View/TabularView
+# defaultMessage: State
+msgid "State"
+msgstr ""
+
+#: components/manage/Workflow/Workflow
+# defaultMessage: State: {current}
+msgid "State: {current}"
+msgstr ""
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsTagsModal
+# defaultMessage: Tags
+msgid "Tags"
+msgstr ""
+
+#: components/manage/Contents/ContentsTagsModal
+# defaultMessage: Tags to add
+msgid "Tags to add"
+msgstr ""
+
+#: components/manage/Contents/ContentsTagsModal
+# defaultMessage: Tags to remove
+msgid "Tags to remove"
+msgstr ""
+
+#: components/theme/NotFound/NotFound
+# defaultMessage: Thank you.
+msgid "Thank you."
+msgstr ""
+
+#: components/theme/Footer/Footer
+# defaultMessage: The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends.
+msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
+# defaultMessage: This name will be displayed in the URL.
+msgid "This name will be displayed in the URL."
+msgstr ""
+
+#: components/theme/NotFound/NotFound
+# defaultMessage: This page does not seem to exist…
+msgid "This page does not seem to exist…"
+msgstr ""
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsRenameModal
+#: components/theme/View/TabularView
+# defaultMessage: Title
+msgid "Title"
+msgstr ""
+
+#: components/theme/View/TabularView
+# defaultMessage: Type
+msgid "Type"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Upload
+msgid "Upload"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Upload files
+msgid "Upload files"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Upload {count, plural, one {# file} other {# files}}
+msgid "Upload {count, plural, one {# file} other {# files}}"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+# defaultMessage: Uploading files
+msgid "Uploading files"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: View
+msgid "View"
+msgstr ""
+
+#: components/manage/History/History
+# defaultMessage: View changes
+msgid "View changes"
+msgstr ""
+
+#: components/manage/History/History
+# defaultMessage: View this revision
+msgid "View this revision"
+msgstr ""
+
+#: components/theme/NotFound/NotFound
+# defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
+msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
+msgstr ""
+
+#: components/manage/History/History
+# defaultMessage: What
+msgid "What"
+msgstr ""
+
+#: components/manage/History/History
+# defaultMessage: When
+msgid "When"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+# defaultMessage: When this date is reached, the content will nolonger be visible in listings and searches.
+msgid "When this date is reached, the content will nolonger be visible in listings and searches."
+msgstr ""
+
+#: components/manage/History/History
+# defaultMessage: Who
+msgid "Who"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: You can control who can view and edit your item using the list below.
+msgid "You can control who can view and edit your item using the list below."
+msgstr ""
+
+#: components/manage/Diff/Diff
+# defaultMessage: You can view the difference of the revisions below.
+msgid "You can view the difference of the revisions below."
+msgstr ""
+
+#: components/manage/History/History
+# defaultMessage: You can view the history of your item below.
+msgid "You can view the history of your item below."
+msgstr ""
+
+#: components/manage/Preferences/PersonalPreferences
+# defaultMessage: Your preferred language
+msgid "Your preferred language"
+msgstr ""
+
+#: components/theme/SearchWidget/SearchWidget
+# defaultMessage: only in current section
+msgid "only in current section"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: {count} selected
+msgid "{count} selected"
+msgstr ""

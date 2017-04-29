@@ -1,44 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a footer component 1`] = `
+exports[`Footer renders a footer component 1`] = `
 <div
   className="ui inverted vertical center aligned segment"
 >
   <div
     className="ui container"
   >
-    The 
-    <a
-      href="http://plone.com"
-    >
-      Plone
-      <sup>
-        ®
-      </sup>
-       Open Source CMS/WCM
-    </a>
-     is 
-    <abbr
-      title="Copyright"
-    >
-      ©
-    </abbr>
-     2000-2017 by the
+    <span>
+      The 
+      <span>
+        Plone
+        <sup>
+          ®
+        </sup>
+         Open Source CMS/WCM
+      </span>
+       is 
+      <abbr
+        title="Copyright"
+      >
+        ©
+      </abbr>
+       2000-2017 by the 
+      <a
+        href="http://plone.org/foundation"
+      >
+        <span>
+          Plone Foundation
+        </span>
+      </a>
+       and friends.
+    </span>
      
-    <a
-      href="http://plone.org/foundation"
-    >
-      Plone Foundation
-    </a>
-     
-    and friends. Distributed under the
-     
-    <a
-      href="http://creativecommons.org/licenses/GPL/2.0/"
-    >
-      GNU GPL license
-    </a>
-    .
+    <span>
+      Distributed under the 
+      <a
+        href="http://creativecommons.org/licenses/GPL/2.0/"
+      >
+        <span>
+          GNU GPL license
+        </span>
+      </a>
+      .
+    </span>
     <div
       className="ui divider"
     />
@@ -53,7 +58,9 @@ exports[`renders a footer component 1`] = `
         onClick={[Function]}
         role="listitem"
       >
-        Site Map
+        <span>
+          Site Map
+        </span>
       </a>
       <a
         className="item"
@@ -62,7 +69,9 @@ exports[`renders a footer component 1`] = `
         onClick={[Function]}
         role="listitem"
       >
-        Accessibility
+        <span>
+          Accessibility
+        </span>
       </a>
       <a
         className="item"
@@ -71,7 +80,9 @@ exports[`renders a footer component 1`] = `
         onClick={[Function]}
         role="listitem"
       >
-        Contact
+        <span>
+          Contact
+        </span>
       </a>
       <a
         className="item"
@@ -80,7 +91,9 @@ exports[`renders a footer component 1`] = `
         onClick={[Function]}
         role="listitem"
       >
-        Powered by Plone & Python
+        <span>
+          Powered by Plone & Python
+        </span>
       </a>
     </div>
   </div>

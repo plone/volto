@@ -47,6 +47,7 @@ export Form from './manage/Form/Form';
 export Field from './manage/Form/Field';
 export ModalForm from './manage/Form/ModalForm';
 export History from './manage/History/History';
+export PersonalPreferences from './manage/Preferences/PersonalPreferences';
 export ArrayWidget from './manage/Widgets/ArrayWidget';
 export CheckboxWidget from './manage/Widgets/CheckboxWidget';
 export DatetimeWidget from './manage/Widgets/DatetimeWidget';

@@ -7,7 +7,9 @@ exports[`Delete renders a delete component 1`] = `
   <h1
     className="documentFirstHeading"
   >
-    Do you really want to delete this item?
+    <span>
+      Do you really want to delete this item?
+    </span>
   </h1>
   <div
     className="ui bulleted list"
@@ -27,14 +29,18 @@ exports[`Delete renders a delete component 1`] = `
     onClick={[Function]}
     tabIndex={undefined}
   >
-    Ok
+    <span>
+      Ok
+    </span>
   </button>
   <button
     className="ui button"
     onClick={[Function]}
     tabIndex={undefined}
   >
-    Cancel
+    <span>
+      Cancel
+    </span>
   </button>
 </div>
 `;

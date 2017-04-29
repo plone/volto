@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a contents item component 1`] = `
+exports[`ContentsItem renders a contents item component 1`] = `
 <tr
   style={
     Object {
@@ -82,7 +82,10 @@ exports[`renders a contents item component 1`] = `
             aria-hidden="true"
             className="write icon"
           />
-           Edit
+           
+          <span>
+            Edit
+          </span>
         </a>
         <a
           className="item"
@@ -93,7 +96,10 @@ exports[`renders a contents item component 1`] = `
             aria-hidden="true"
             className="eye icon"
           />
-           View
+           
+          <span>
+            View
+          </span>
         </a>
         <div
           className="divider"
@@ -110,7 +116,10 @@ exports[`renders a contents item component 1`] = `
             aria-hidden="true"
             className="cut icon"
           />
-           Cut
+           
+          <span>
+            Cut
+          </span>
         </div>
         <div
           aria-checked={undefined}
@@ -124,7 +133,10 @@ exports[`renders a contents item component 1`] = `
             aria-hidden="true"
             className="copy icon"
           />
-           Copy
+           
+          <span>
+            Copy
+          </span>
         </div>
         <div
           aria-checked={undefined}
@@ -138,7 +150,10 @@ exports[`renders a contents item component 1`] = `
             aria-hidden="true"
             className="trash icon"
           />
-           Delete
+           
+          <span>
+            Delete
+          </span>
         </div>
         <div
           className="divider"
@@ -156,7 +171,9 @@ exports[`renders a contents item component 1`] = `
             className="long arrow up icon"
           />
            
-          Move to top of folder
+          <span>
+            Move to top of folder
+          </span>
         </div>
         <div
           aria-checked={undefined}
@@ -171,7 +188,9 @@ exports[`renders a contents item component 1`] = `
             className="long arrow down icon"
           />
            
-          Move to bottom of folder
+          <span>
+            Move to bottom of folder
+          </span>
         </div>
       </div>
     </div>

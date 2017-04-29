@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-intl-redux';
 
 import Delete from './Delete';
 
@@ -16,6 +16,10 @@ describe('Delete', () => {
           loading: false,
           loaded: true,
         },
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
       },
     });
     const component = renderer.create(
@@ -37,6 +41,10 @@ describe('Delete', () => {
           loading: false,
           loaded: true,
         },
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
       },
     });
     const component = renderer.create(

@@ -5,20 +5,9 @@ exports[`Diff renders a diff component 1`] = `
   id="page-diff"
 >
   <h1>
-    Difference between revision
-     
-    0
-     
-    and
-     
-    1 
-     
-    of
-     
-    <q>
-      Blog
-    </q>
-     
+    <span>
+      Difference between revision 0 and 1  of Blog
+    </span>
   </h1>
   <div
     className="ui grid"
@@ -29,7 +18,9 @@ exports[`Diff renders a diff component 1`] = `
       <p
         className="description"
       >
-        You can view the difference of the revisions below.
+        <span>
+          You can view the difference of the revisions below.
+        </span>
       </p>
     </div>
     <div
@@ -69,7 +60,9 @@ exports[`Diff renders a diff component 1`] = `
         <th
           className="eight wide"
         >
-          Base
+          <span>
+            Base
+          </span>
           <div
             aria-busy={undefined}
             aria-disabled={undefined}
@@ -161,7 +154,9 @@ exports[`Diff renders a diff component 1`] = `
         <th
           className="eight wide"
         >
-          Compare
+          <span>
+            Compare
+          </span>
           <div
             aria-busy={undefined}
             aria-disabled={undefined}

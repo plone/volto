@@ -1,11 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Add renders an add component 1`] = `
+exports[`Edit renders an add component 1`] = `
 <div
   id="page-edit"
 >
   <h1>
-    Edit 
+    <span>
+      Edit 
+    </span>
   </h1>
   <div
     className="Form"
@@ -13,4 +15,4 @@ exports[`Add renders an add component 1`] = `
 </div>
 `;
 
-exports[`Add renders an empty add component 1`] = `<div />`;
+exports[`Edit renders an empty add component 1`] = `<div />`;

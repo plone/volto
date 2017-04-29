@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { last } from 'lodash';
 import { Dropdown, Icon } from 'semantic-ui-react';
+import { FormattedMessage } from 'react-intl';
 
 import { getWorkflow, transitionWorkflow } from '../../../actions';
 import config from '../../../config';
@@ -120,8 +121,13 @@ export default class Workflow extends Component {
           item
           trigger={
             <span>
-              <Icon name="random" />
-              {this.props.expanded && ` State: ${current}`}
+              <Icon name="random" />{' '}
+              {this.props.expanded &&
+                <FormattedMessage
+                  id="State: {current}"
+                  defaultMessage="State: {current}"
+                  values={{ current }}
+                />}
             </span>
           }
           pointing="left"

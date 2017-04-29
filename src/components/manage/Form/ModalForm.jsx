@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import { Button, Form as UiForm, Header, Menu, Modal } from 'semantic-ui-react';
+import { FormattedMessage } from 'react-intl';
 
 import { Field } from '../../../components';
 
@@ -146,8 +147,12 @@ export default class FormModal extends Component {
           </UiForm>
         </Modal.Content>
         <Modal.Actions>
-          <Button primary onClick={this.onSubmit}>Save</Button>
-          <Button onClick={onCancel}>Cancel</Button>
+          <Button primary onClick={this.onSubmit}>
+            <FormattedMessage id="Save" defaultMessage="Save" />
+          </Button>
+          <Button onClick={onCancel}>
+            <FormattedMessage id="Cancel" defaultMessage="Cancel" />
+          </Button>
         </Modal.Actions>
       </Modal>
     );

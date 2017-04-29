@@ -33,7 +33,10 @@ exports[`Contents renders a contents component 1`] = `
                 aria-hidden="true"
                 className="upload icon"
               />
-               Upload
+               
+              <span>
+                Upload
+              </span>
             </a>
           </div>
           <div
@@ -47,7 +50,10 @@ exports[`Contents renders a contents component 1`] = `
                 aria-hidden="true"
                 className="cut icon"
               />
-               Cut
+               
+              <span>
+                Cut
+              </span>
             </a>
             <a
               className="disabled item"
@@ -57,7 +63,10 @@ exports[`Contents renders a contents component 1`] = `
                 aria-hidden="true"
                 className="copy icon"
               />
-               Copy
+               
+              <span>
+                Copy
+              </span>
             </a>
             <a
               className="item"
@@ -67,7 +76,10 @@ exports[`Contents renders a contents component 1`] = `
                 aria-hidden="true"
                 className="paste icon"
               />
-               Paste
+               
+              <span>
+                Paste
+              </span>
             </a>
             <a
               className="disabled item"
@@ -77,7 +89,10 @@ exports[`Contents renders a contents component 1`] = `
                 aria-hidden="true"
                 className="trash icon"
               />
-               Delete
+               
+              <span>
+                Delete
+              </span>
             </a>
             <div
               aria-busy={undefined}
@@ -98,7 +113,10 @@ exports[`Contents renders a contents component 1`] = `
                   aria-hidden="true"
                   className="write icon"
                 />
-                 Batch
+                 
+                <span>
+                  Batch
+                </span>
               </span>
               <i
                 aria-hidden="true"
@@ -119,7 +137,10 @@ exports[`Contents renders a contents component 1`] = `
                     aria-hidden="true"
                     className="text cursor icon"
                   />
-                   Rename
+                   
+                  <span>
+                    Rename
+                  </span>
                 </div>
                 <div
                   aria-checked={undefined}
@@ -133,7 +154,10 @@ exports[`Contents renders a contents component 1`] = `
                     aria-hidden="true"
                     className="tags icon"
                   />
-                   Tags
+                   
+                  <span>
+                    Tags
+                  </span>
                 </div>
                 <div
                   aria-checked={undefined}
@@ -147,7 +171,10 @@ exports[`Contents renders a contents component 1`] = `
                     aria-hidden="true"
                     className="random icon"
                   />
-                   State
+                   
+                  <span>
+                    State
+                  </span>
                 </div>
                 <div
                   aria-checked={undefined}
@@ -161,7 +188,10 @@ exports[`Contents renders a contents component 1`] = `
                     aria-hidden="true"
                     className="edit icon"
                   />
-                   Properties
+                   
+                  <span>
+                    Properties
+                  </span>
                 </div>
               </div>
             </div>
@@ -176,7 +206,7 @@ exports[`Contents renders a contents component 1`] = `
                 >
                   <input
                     onChange={[Function]}
-                    placeholder="Filter..."
+                    placeholder="Filter…"
                     type="text"
                     value=""
                   />
@@ -227,7 +257,7 @@ exports[`Contents renders a contents component 1`] = `
                     <div
                       className="header"
                     >
-                      Rearrange items by...
+                      Rearrange items by…
                     </div>
                     <div
                       aria-checked={undefined}
@@ -258,7 +288,9 @@ exports[`Contents renders a contents component 1`] = `
                             className="sort alphabet ascending icon"
                           />
                            
-                          Ascending
+                          <span>
+                            Ascending
+                          </span>
                         </div>
                         <div
                           aria-checked={undefined}
@@ -273,7 +305,9 @@ exports[`Contents renders a contents component 1`] = `
                             className="sort alphabet descending icon"
                           />
                            
-                          Descending
+                          <span>
+                            Descending
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -306,7 +340,9 @@ exports[`Contents renders a contents component 1`] = `
                             className="sort alphabet ascending icon"
                           />
                            
-                          Ascending
+                          <span>
+                            Ascending
+                          </span>
                         </div>
                         <div
                           aria-checked={undefined}
@@ -321,7 +357,9 @@ exports[`Contents renders a contents component 1`] = `
                             className="sort alphabet descending icon"
                           />
                            
-                          Descending
+                          <span>
+                            Descending
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -354,7 +392,9 @@ exports[`Contents renders a contents component 1`] = `
                             className="sort alphabet ascending icon"
                           />
                            
-                          Ascending
+                          <span>
+                            Ascending
+                          </span>
                         </div>
                         <div
                           aria-checked={undefined}
@@ -369,7 +409,9 @@ exports[`Contents renders a contents component 1`] = `
                             className="sort alphabet descending icon"
                           />
                            
-                          Descending
+                          <span>
+                            Descending
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -402,7 +444,9 @@ exports[`Contents renders a contents component 1`] = `
                             className="sort alphabet ascending icon"
                           />
                            
-                          Ascending
+                          <span>
+                            Ascending
+                          </span>
                         </div>
                         <div
                           aria-checked={undefined}
@@ -417,7 +461,9 @@ exports[`Contents renders a contents component 1`] = `
                             className="sort alphabet descending icon"
                           />
                            
-                          Descending
+                          <span>
+                            Descending
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -450,7 +496,9 @@ exports[`Contents renders a contents component 1`] = `
                             className="sort alphabet ascending icon"
                           />
                            
-                          Ascending
+                          <span>
+                            Ascending
+                          </span>
                         </div>
                         <div
                           aria-checked={undefined}
@@ -465,7 +513,9 @@ exports[`Contents renders a contents component 1`] = `
                             className="sort alphabet descending icon"
                           />
                            
-                          Descending
+                          <span>
+                            Descending
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -498,7 +548,9 @@ exports[`Contents renders a contents component 1`] = `
                             className="sort alphabet ascending icon"
                           />
                            
-                          Ascending
+                          <span>
+                            Ascending
+                          </span>
                         </div>
                         <div
                           aria-checked={undefined}
@@ -513,7 +565,9 @@ exports[`Contents renders a contents component 1`] = `
                             className="sort alphabet descending icon"
                           />
                            
-                          Descending
+                          <span>
+                            Descending
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -547,7 +601,7 @@ exports[`Contents renders a contents component 1`] = `
                     <div
                       className="header"
                     >
-                      Select...
+                      Select…
                     </div>
                     <div
                       aria-checked={undefined}
@@ -561,7 +615,10 @@ exports[`Contents renders a contents component 1`] = `
                         aria-hidden="true"
                         className="blue check square icon"
                       />
-                       All
+                       
+                      <span>
+                        All
+                      </span>
                     </div>
                     <div
                       aria-checked={undefined}
@@ -575,7 +632,10 @@ exports[`Contents renders a contents component 1`] = `
                         aria-hidden="true"
                         className="square outline icon"
                       />
-                       None
+                       
+                      <span>
+                        None
+                      </span>
                     </div>
                     <div
                       className="divider"
@@ -583,7 +643,7 @@ exports[`Contents renders a contents component 1`] = `
                     <div
                       className="header"
                     >
-                      0 selected
+                       selected
                     </div>
                     <div
                       className="ui left icon input search"
@@ -593,7 +653,7 @@ exports[`Contents renders a contents component 1`] = `
                         className="search icon"
                       />
                       <input
-                        placeholder="Filter..."
+                        placeholder="Filter…"
                         type="text"
                       />
                     </div>
@@ -606,7 +666,9 @@ exports[`Contents renders a contents component 1`] = `
               <th
                 className="four wide"
               >
-                Title
+                <span>
+                  Title
+                </span>
               </th>
               <th
                 className="four wide"
@@ -1078,7 +1140,10 @@ exports[`Contents renders a contents component 1`] = `
                         aria-hidden="true"
                         className="write icon"
                       />
-                       Edit
+                       
+                      <span>
+                        Edit
+                      </span>
                     </a>
                     <a
                       className="item"
@@ -1089,7 +1154,10 @@ exports[`Contents renders a contents component 1`] = `
                         aria-hidden="true"
                         className="eye icon"
                       />
-                       View
+                       
+                      <span>
+                        View
+                      </span>
                     </a>
                     <div
                       className="divider"
@@ -1106,7 +1174,10 @@ exports[`Contents renders a contents component 1`] = `
                         aria-hidden="true"
                         className="cut icon"
                       />
-                       Cut
+                       
+                      <span>
+                        Cut
+                      </span>
                     </div>
                     <div
                       aria-checked={undefined}
@@ -1120,7 +1191,10 @@ exports[`Contents renders a contents component 1`] = `
                         aria-hidden="true"
                         className="copy icon"
                       />
-                       Copy
+                       
+                      <span>
+                        Copy
+                      </span>
                     </div>
                     <div
                       aria-checked={undefined}
@@ -1134,7 +1208,10 @@ exports[`Contents renders a contents component 1`] = `
                         aria-hidden="true"
                         className="trash icon"
                       />
-                       Delete
+                       
+                      <span>
+                        Delete
+                      </span>
                     </div>
                     <div
                       className="divider"
@@ -1152,7 +1229,9 @@ exports[`Contents renders a contents component 1`] = `
                         className="long arrow up icon"
                       />
                        
-                      Move to top of folder
+                      <span>
+                        Move to top of folder
+                      </span>
                     </div>
                     <div
                       aria-checked={undefined}
@@ -1167,7 +1246,9 @@ exports[`Contents renders a contents component 1`] = `
                         className="long arrow down icon"
                       />
                        
-                      Move to bottom of folder
+                      <span>
+                        Move to bottom of folder
+                      </span>
                     </div>
                   </div>
                 </div>

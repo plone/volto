@@ -20,7 +20,10 @@ exports[`Actions renders an actions component 1`] = `
       aria-hidden="true"
       className="lightning icon"
     />
-     Actions
+     
+    <span>
+      Actions
+    </span>
   </span>
   <i
     aria-hidden="true"
@@ -92,7 +95,9 @@ exports[`Actions renders an actions component 1`] = `
         aria-hidden="true"
         className="trash icon"
       />
-      Delete
+      <span>
+        Delete
+      </span>
     </a>
     <div
       aria-checked={undefined}

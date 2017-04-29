@@ -20,7 +20,10 @@ exports[`Workflow renders a workflow component 1`] = `
       aria-hidden="true"
       className="random icon"
     />
-     State: private
+     
+    <span>
+      State: private
+    </span>
   </span>
   <i
     aria-hidden="true"

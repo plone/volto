@@ -12,6 +12,7 @@ import { bindActionCreators } from 'redux';
 import { Dropdown, Icon, Table } from 'semantic-ui-react';
 import { concat, map, reverse } from 'lodash';
 import moment from 'moment';
+import { FormattedMessage } from 'react-intl';
 
 import { getHistory, revertHistory } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
@@ -100,7 +101,6 @@ export default class HistoryComponent extends Component {
    */
   onRevert(event, { value }) {
     this.props.revertHistory(value.replace(config.apiPath, ''));
-    console.log(value);
   }
 
   /**
@@ -119,18 +119,40 @@ export default class HistoryComponent extends Component {
     return (
       <div id="page-history">
         <Helmet title="History" />
-        <h1>History of <q>{this.props.title}</q></h1>
+        <h1>
+          <FormattedMessage
+            id="History of {title}"
+            defaultMessage="History of {title}"
+            values={{
+              title: <q>{this.props.title}</q>,
+            }}
+          />
+        </h1>
         <p className="description">
-          You can view the history of your item below.
+          <FormattedMessage
+            id="You can view the history of your item below."
+            defaultMessage="You can view the history of your item below."
+          />
         </p>
 
         <Table selectable compact singleLine>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell width={4}>What</Table.HeaderCell>
-              <Table.HeaderCell width={4}>Who</Table.HeaderCell>
-              <Table.HeaderCell width={4}>When</Table.HeaderCell>
-              <Table.HeaderCell width={4}>Change Note</Table.HeaderCell>
+              <Table.HeaderCell width={4}>
+                <FormattedMessage id="What" defaultMessage="What" />
+              </Table.HeaderCell>
+              <Table.HeaderCell width={4}>
+                <FormattedMessage id="Who" defaultMessage="Who" />
+              </Table.HeaderCell>
+              <Table.HeaderCell width={4}>
+                <FormattedMessage id="When" defaultMessage="When" />
+              </Table.HeaderCell>
+              <Table.HeaderCell width={4}>
+                <FormattedMessage
+                  id="Change Note"
+                  defaultMessage="Change Note"
+                />
+              </Table.HeaderCell>
               <Table.HeaderCell />
             </Table.Row>
           </Table.Header>
@@ -169,21 +191,36 @@ export default class HistoryComponent extends Component {
                             className="item"
                             to={`${getBaseUrl(this.props.pathname)}/diff?one=${entry.version_id - 1}&two=${entry.version_id}`}
                           >
-                            <Icon name="copy" /> View changes
+                            <Icon name="copy" />
+                            {' '}
+                            <FormattedMessage
+                              id="View changes"
+                              defaultMessage="View changes"
+                            />
                           </Link>}
                         {'version_id' in entry &&
                           <Link
                             className="item"
                             to={`${getBaseUrl(this.props.pathname)}?version_id=${entry.version_id}`}
                           >
-                            <Icon name="eye" /> View this revision
+                            <Icon name="eye" />
+                            {' '}
+                            <FormattedMessage
+                              id="View this revision"
+                              defaultMessage="View this revision"
+                            />
                           </Link>}
                         {entry.revert_url &&
                           <Dropdown.Item
                             value={entry.revert_url}
                             onClick={this.onRevert}
                           >
-                            <Icon name="undo" /> Revert to this revision
+                            <Icon name="undo" />
+                            {' '}
+                            <FormattedMessage
+                              id="Revert to this revision"
+                              defaultMessage="Revert to this revision"
+                            />
                           </Dropdown.Item>}
                       </Dropdown.Menu>
                     </Dropdown>}

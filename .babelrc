@@ -1,6 +1,5 @@
 {
   "presets": ["flow", "react", "es2015", "stage-0"],
-
   "plugins": [
     "transform-runtime",
     "add-module-exports",
@@ -8,7 +7,6 @@
     "transform-class-properties",
     "transform-react-display-name"
   ],
-
   "env": {
     "development": {
       "plugins": [
@@ -19,6 +17,9 @@
                 "imports": ["react", "redbox-react"]
               }
             ]
+        }],
+        ["react-intl", {
+          "messagesDir": "./dist/messages/"
         }]
       ]
     }

@@ -10,6 +10,7 @@ import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import { asyncConnect } from 'redux-connect';
+import { FormattedMessage } from 'react-intl';
 
 import { searchContent } from '../../../actions';
 
@@ -97,7 +98,13 @@ export class SearchComponent extends Component {
           <article id="content">
             <header>
               <h1 className="documentFirstHeading">
-                Search results for <q>{this.props.searchableText}</q>
+                <FormattedMessage
+                  id="Search results for {term}"
+                  defaultMessage="Search results for {term}"
+                  values={{
+                    term: <q>{this.props.searchableText}</q>,
+                  }}
+                />
               </h1>
             </header>
             <section id="content-core">
@@ -118,7 +125,10 @@ export class SearchComponent extends Component {
                     </div>}
                   <div className="tileFooter">
                     <Link to={item['@id']}>
-                      Read More…
+                      <FormattedMessage
+                        id="Read More…"
+                        defaultMessage="Read More…"
+                      />
                     </Link>
                   </div>
                   <div className="visualClear" />

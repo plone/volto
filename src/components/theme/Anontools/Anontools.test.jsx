@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-intl-redux';
 
 import Anontools from './Anontools';
 
@@ -9,7 +9,13 @@ const mockStore = configureStore();
 
 describe('Anontools', () => {
   it('renders an anontools component when no token is specified', () => {
-    const store = mockStore({ userSession: { token: null } });
+    const store = mockStore({
+      userSession: { token: null },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
     const component = renderer.create(
       <Provider store={store}>
         <Anontools />
@@ -20,7 +26,13 @@ describe('Anontools', () => {
   });
 
   it('should not render an anontools component when a token is specified', () => {
-    const store = mockStore({ userSession: { token: '1234' } });
+    const store = mockStore({
+      userSession: { token: '1234' },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
     const component = renderer.create(
       <Provider store={store}>
         <Anontools />

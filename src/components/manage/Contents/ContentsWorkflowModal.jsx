@@ -8,15 +8,32 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { concat, filter, last, map, uniqBy } from 'lodash';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 import { getWorkflow, transitionWorkflow } from '../../../actions';
 import { ModalForm } from '../../../components';
+
+const messages = defineMessages({
+  default: {
+    id: 'Default',
+    defaultMessage: 'Default',
+  },
+  stateTitle: {
+    id: 'Change State',
+    defaultMessage: 'Change State',
+  },
+  stateDescription: {
+    id: 'Select the transition to be used for modifying the items state.',
+    defaultMessage: 'Select the transition to be used for modifying the items state.',
+  },
+});
 
 /**
  * ContentsWorkflowModal class.
  * @class ContentsWorkflowModal
  * @extends Component
  */
+@injectIntl
 @connect(
   state => ({
     request: state.workflow.transition,
@@ -49,6 +66,7 @@ export default class ContentsWorkflowModal extends Component {
     open: PropTypes.bool.isRequired,
     onOk: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -120,19 +138,21 @@ export default class ContentsWorkflowModal extends Component {
         open={this.props.open}
         onSubmit={this.onSubmit}
         onCancel={this.props.onCancel}
-        title="State"
+        title={this.props.intl.formatMessage(messages.stateTitle)}
         schema={{
           fieldsets: [
             {
               id: 'default',
-              title: 'Default',
+              title: this.props.intl.formatMessage(messages.default),
               fields: ['state'],
             },
           ],
           properties: {
             state: {
-              description: 'Select the transition to be used for modifying the items state.',
-              title: 'Change State',
+              description: this.props.intl.formatMessage(
+                messages.stateDescription,
+              ),
+              title: this.props.intl.formatMessage(messages.stateTitle),
               type: 'string',
               choices: map(
                 uniqBy(

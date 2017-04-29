@@ -15,7 +15,9 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
         onClick={[Function]}
         style={Object {}}
       >
-        Home
+        <span>
+          Home
+        </span>
       </a>
       <i
         aria-hidden="true"

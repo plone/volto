@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a summary view component 1`] = `
+exports[`TabularView renders a summary view component 1`] = `
 <div
   id="page-home"
 >
@@ -40,7 +40,9 @@ exports[`renders a summary view component 1`] = `
             onClick={[Function]}
             style={Object {}}
           >
-            Read More…
+            <span>
+              Read More…
+            </span>
           </a>
         </p>
       </article>

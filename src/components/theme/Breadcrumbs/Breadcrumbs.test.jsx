@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-intl-redux';
 
 import Breadcrumbs from './Breadcrumbs';
 
@@ -15,6 +15,10 @@ describe('Breadcrumbs', () => {
           { title: 'Blog', url: '/blog' },
           { title: 'My first blog', url: '/blog/my-first-blog' },
         ],
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
       },
     });
     const component = renderer.create(

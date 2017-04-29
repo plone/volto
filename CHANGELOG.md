@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 ### Added
+- I18n support and translations @robgietema
+- Personal preferences @robgietema
 - Rename action @robgietema
 
 ## 0.2.0 (2017-04-27)

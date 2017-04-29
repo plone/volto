@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-intl-redux';
 import jwt from 'jsonwebtoken';
 
 import Toolbar from './Toolbar';
@@ -23,6 +23,10 @@ describe('Toolbar', () => {
         data: {
           '@type': 'Folder',
         },
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
       },
     });
     const component = renderer.create(

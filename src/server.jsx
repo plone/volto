@@ -1,5 +1,4 @@
 // server
-// import path from 'path';
 import express from 'express';
 import http from 'http';
 import SocketIO from 'socket.io';
@@ -9,11 +8,17 @@ import frameguard from 'frameguard';
 import React from 'react';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-intl-redux';
 import { match, createMemoryHistory, RouterContext } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import cookie, { plugToRequest } from 'react-cookie';
 import { urlencoded } from 'body-parser';
+import locale from 'locale';
+import { keys } from 'lodash';
+
+import nlLocale from '../dist/locales/nl.json';
+import deLocale from '../dist/locales/de.json';
+import enLocale from '../dist/locales/en.json';
 
 import { Html, Api, persistAuthToken } from './helpers';
 import ErrorPage from './error';
@@ -21,9 +26,15 @@ import getRoutes from './routes';
 import configureStore from './store';
 import config from './config';
 import userSession from './reducers/userSession/userSession';
+import languages from './constants/Languages';
 
-// Debug
 const debug = debugLogger('plone-react:server');
+const supported = new locale.Locales(keys(languages), 'en');
+const locales = {
+  en: enLocale,
+  nl: nlLocale,
+  de: deLocale,
+};
 
 export default parameters => {
   const app = express();
@@ -47,11 +58,21 @@ export default parameters => {
   // React application rendering
   app.use((req, res) => {
     plugToRequest(req, res);
+    const lang = new locale.Locales(
+      cookie.load('lang') || req.headers['accept-language'],
+    )
+      .best(supported)
+      .toString();
     const api = new Api(req);
     const authToken = cookie.load('auth_token');
     const initialState = {
       userSession: { ...userSession(), token: authToken },
       form: req.body,
+      intl: {
+        defaultLocale: 'en',
+        locale: lang,
+        messages: locales[lang],
+      },
     };
     const memoryHistory = createMemoryHistory(req.path);
     const store = configureStore(initialState, memoryHistory, false, api);
@@ -80,7 +101,7 @@ export default parameters => {
                     <Provider store={store}>
                       <ReduxAsyncConnect {...routeState} />
                     </Provider>
-                  ); // eslint-disable-line max-len
+                  );
                   res.set({
                     'Cache-Control': 'public, max-age=600, no-transform',
                   });

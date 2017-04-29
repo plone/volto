@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a tabular view component 1`] = `
+exports[`TabularView renders a tabular view component 1`] = `
 <div
   id="page-home"
 >
@@ -34,22 +34,30 @@ exports[`renders a tabular view component 1`] = `
             <th
               className=""
             >
-              Title
+              <span>
+                Title
+              </span>
             </th>
             <th
               className=""
             >
-              Description
+              <span>
+                Description
+              </span>
             </th>
             <th
               className=""
             >
-              Type
+              <span>
+                Type
+              </span>
             </th>
             <th
               className=""
             >
-              State
+              <span>
+                State
+              </span>
             </th>
           </tr>
         </thead>

@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-intl-redux';
 
 import ContentsPropertiesModal from './ContentsPropertiesModal';
 
@@ -17,6 +17,10 @@ describe('ContentsPropertiesModal', () => {
           loading: false,
           loaded: true,
         },
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
       },
     });
     const component = renderer.create(

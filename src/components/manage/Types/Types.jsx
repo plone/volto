@@ -10,6 +10,7 @@ import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { filter, map } from 'lodash';
 import { Dropdown, Icon } from 'semantic-ui-react';
+import { FormattedMessage } from 'react-intl';
 
 import { getTypes } from '../../../actions';
 
@@ -74,7 +75,10 @@ export default class Types extends Component {
           item
           trigger={
             <span>
-              <Icon name="add" />{this.props.expanded && ' Add new...'}
+              <Icon name="add" />
+              {' '}
+              {this.props.expanded &&
+                <FormattedMessage id="Add new…" defaultMessage="Add new…" />}
             </span>
           }
           pointing="left"

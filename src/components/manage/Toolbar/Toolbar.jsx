@@ -10,16 +10,30 @@ import { Link } from 'react-router';
 import { Dropdown, Icon, Menu } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 import cookie from 'react-cookie';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 
 import { Actions, Display, Types, Workflow } from '../../../components';
 
 import logo from './plone-toolbarlogo.svg';
+
+const messages = defineMessages({
+  ploneToolbar: {
+    id: 'Plone Toolbar',
+    defaultMessage: 'Plone Toolbar',
+  },
+});
 
 /**
  * Toolbar container class.
  * @class Toolbar
  * @extends Component
  */
+@injectIntl
 @connect(state => ({
   token: state.userSession.token,
   fullname: state.userSession.token
@@ -41,6 +55,7 @@ export default class Toolbar extends Component {
     content: PropTypes.shape({
       '@type': PropTypes.string,
     }),
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -76,6 +91,7 @@ export default class Toolbar extends Component {
   onToggleExpanded() {
     cookie.save('toolbar_expanded', !this.state.expanded, {
       expires: new Date((2 ** 31 - 1) * 1000),
+      path: '/',
     });
     this.setState({
       expanded: !this.state.expanded,
@@ -102,26 +118,39 @@ export default class Toolbar extends Component {
         className={!expanded ? 'collapsed' : ''}
       >
         <Menu.Item color="blue" active onClick={this.onToggleExpanded}>
-          <img alt="Plone Toolbar" src={logo} />
+          <img
+            alt={this.props.intl.formatMessage(messages.ploneToolbar)}
+            src={logo}
+          />
         </Menu.Item>
         {isFolderish &&
           <Link
             to={`${this.props.pathname}/contents`}
             className={`item${this.props.selected === 'contents' ? ' active' : ''}`}
           >
-            <span><Icon name="folder open" />{expanded && ' Contents'}</span>
+            <span>
+              <Icon name="folder open" />{' '}
+              {expanded &&
+                <FormattedMessage id="Contents" defaultMessage="Contents" />}
+            </span>
           </Link>}
         <Link
           to={`${this.props.pathname}/edit`}
           className={`item${this.props.selected === 'edit' ? ' active' : ''}`}
         >
-          <span><Icon name="write" />{expanded && ' Edit'}</span>
+          <span>
+            <Icon name="write" />{' '}
+            {expanded && <FormattedMessage id="Edit" defaultMessage="Edit" />}
+          </span>
         </Link>
         <Link
           to={this.props.pathname}
           className={`item${this.props.selected === 'view' ? ' active' : ''}`}
         >
-          <span><Icon name="eye" />{expanded && ' View'}</span>
+          <span>
+            <Icon name="eye" />{' '}
+            {expanded && <FormattedMessage id="View" defaultMessage="View" />}
+          </span>
         </Link>
         {isFolderish &&
           <Types
@@ -136,17 +165,26 @@ export default class Toolbar extends Component {
           to={`${this.props.pathname}/history`}
           className={`item${this.props.selected === 'history' ? ' active' : ''}`}
         >
-          <span><Icon name="clock" />{expanded && ' History'}</span>
+          <span>
+            <Icon name="clock" />{' '}
+            {expanded &&
+              <FormattedMessage id="History" defaultMessage="History" />}
+          </span>
         </Link>
         <Link
           to={`${this.props.pathname}/sharing`}
           className={`item${this.props.selected === 'sharing' ? ' active' : ''}`}
         >
-          <span><Icon name="users" />{expanded && ' Sharing'}</span>
+          <span>
+            <Icon name="users" />{' '}
+            {expanded &&
+              <FormattedMessage id="Sharing" defaultMessage="Sharing" />}
+          </span>
         </Link>
         <Dropdown
           className="personal-bar"
           item
+          upward
           trigger={
             <span>
               <Icon name="user" />{expanded && ` ${this.props.fullname}`}
@@ -155,8 +193,22 @@ export default class Toolbar extends Component {
           pointing="left"
         >
           <Dropdown.Menu>
+            <Link to="/personal-preferences" className="item">
+              <span>
+                <Icon name="setting" />
+                {' '}
+                <FormattedMessage
+                  id="Preferences"
+                  defaultMessage="Preferences"
+                />
+              </span>
+            </Link>
             <Link to="/logout" className="item">
-              <span><Icon name="sign out" /> Log out</span>
+              <span>
+                <Icon name="sign out" />
+                {' '}
+                <FormattedMessage id="Log out" defaultMessage="Log out" />
+              </span>
             </Link>
           </Dropdown.Menu>
         </Dropdown>

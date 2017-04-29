@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-intl-redux';
 
 import Types from './Types';
 
@@ -9,7 +9,13 @@ const mockStore = configureStore();
 
 describe('Types', () => {
   it('renders an empty types component', () => {
-    const store = mockStore({ types: { types: [] } });
+    const store = mockStore({
+      types: { types: [] },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
     const component = renderer.create(
       <Provider store={store}>
         <Types pathname="/test" />
@@ -20,7 +26,13 @@ describe('Types', () => {
   });
 
   it('renders a types component', () => {
-    const store = mockStore({ types: { types: [{ title: 'Document' }] } });
+    const store = mockStore({
+      types: { types: [{ title: 'Document' }] },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
     const component = renderer.create(
       <Provider store={store}>
         <Types pathname="/test" />
@@ -31,7 +43,13 @@ describe('Types', () => {
   });
 
   it('renders an active types component', () => {
-    const store = mockStore({ types: { types: [{ title: 'Document' }] } });
+    const store = mockStore({
+      types: { types: [{ title: 'Document' }] },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
     const component = renderer.create(
       <Provider store={store}>
         <Types pathname="/test" active />

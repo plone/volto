@@ -8,15 +8,36 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { without, union, map } from 'lodash';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 import { editContent } from '../../../actions';
 import { ModalForm } from '../../../components';
+
+const messages = defineMessages({
+  default: {
+    id: 'Default',
+    defaultMessage: 'Default',
+  },
+  tags: {
+    id: 'Tags',
+    defaultMessage: 'Tags',
+  },
+  tagsToRemove: {
+    id: 'Tags to remove',
+    defaultMessage: 'Tags to remove',
+  },
+  tagsToAdd: {
+    id: 'Tags to add',
+    defaultMessage: 'Tags to add',
+  },
+});
 
 /**
  * ContentsTagsModal class.
  * @class ContentsTagsModal
  * @extends Component
  */
+@injectIntl
 @connect(
   state => ({
     request: state.content.edit,
@@ -44,6 +65,7 @@ export default class ContentsTagsModal extends Component {
     open: PropTypes.bool.isRequired,
     onOk: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -99,7 +121,7 @@ export default class ContentsTagsModal extends Component {
         open={this.props.open}
         onSubmit={this.onSubmit}
         onCancel={this.props.onCancel}
-        title="Tags"
+        title={this.props.intl.formatMessage(messages.tags)}
         formData={{
           tags_to_remove: [],
           tags_to_add: [],
@@ -108,18 +130,18 @@ export default class ContentsTagsModal extends Component {
           fieldsets: [
             {
               id: 'default',
-              title: 'Default',
+              title: this.props.intl.formatMessage(messages.default),
               fields: ['tags_to_remove', 'tags_to_add'],
             },
           ],
           properties: {
             tags_to_remove: {
               type: 'array',
-              title: 'Tags to remove',
+              title: this.props.intl.formatMessage(messages.tagsToRemove),
             },
             tags_to_add: {
               type: 'array',
-              title: 'Tags to add',
+              title: this.props.intl.formatMessage(messages.tagsToAdd),
             },
           },
           required: [],

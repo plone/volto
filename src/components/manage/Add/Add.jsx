@@ -11,17 +11,31 @@ import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 
 import { addContent, getSchema } from '../../../actions';
 import { Form } from '../../../components';
 import config from '../../../config';
 import { getBaseUrl } from '../../../helpers';
 
+const messages = defineMessages({
+  add: {
+    id: 'Add {type}',
+    defaultMessage: 'Add {type}',
+  },
+});
+
 /**
  * AddComponent class.
  * @class AddComponent
  * @extends Component
  */
+@injectIntl
 @connect(
   (state, props) => ({
     request: state.content.add,
@@ -52,6 +66,7 @@ export class AddComponent extends Component {
       loaded: PropTypes.bool,
     }).isRequired,
     type: PropTypes.string,
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -129,8 +144,18 @@ export class AddComponent extends Component {
     if (this.props.schema) {
       return (
         <div id="page-add">
-          <Helmet title={`Add ${this.props.type}`} />
-          <h1>Add {this.props.type}</h1>
+          <Helmet
+            title={this.props.intl.formatMessage(messages.add, {
+              type: this.props.type,
+            })}
+          />
+          <h1>
+            <FormattedMessage
+              id="Add {type}"
+              defaultMessage="Add {type}"
+              values={{ type: this.props.type }}
+            />
+          </h1>
           <Form
             schema={this.props.schema}
             onSubmit={this.onSubmit}

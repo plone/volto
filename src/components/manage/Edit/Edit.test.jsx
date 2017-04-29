@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-intl-redux';
 
 import { EditComponent as Edit } from './Edit';
 
@@ -9,7 +9,7 @@ const mockStore = configureStore();
 
 jest.mock('../Form/Form', () => jest.fn(() => <div className="Form" />));
 
-describe('Add', () => {
+describe('Edit', () => {
   it('renders an empty add component', () => {
     const store = mockStore({
       schema: {
@@ -25,6 +25,10 @@ describe('Add', () => {
           loading: false,
           loaded: true,
         },
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
       },
     });
     const component = renderer.create(
@@ -53,6 +57,10 @@ describe('Add', () => {
           loading: false,
           loaded: true,
         },
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
       },
     });
     const component = renderer.create(

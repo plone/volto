@@ -11,7 +11,7 @@ exports[`Html renders a html component 1`] = `
     
     
     <link
-      href="/favicon.ico"
+      href="/assets/favicon.ico"
       rel="shortcut icon"
     />
     <meta

@@ -1,0 +1,533 @@
+# Translation of plone.pot to German
+# Jan Ulrich Hasecke <jan.ulrich@hasecke.com>, 2003-2010.
+# Simon Eisenmann <simon@struktur.de>, 2003.
+# Hanno Schlichting <plone@hannosch.info>, 2003-2008.
+# Dominik Bittl <dominik@umount.org>, 2005.
+# Christian Ullrich <chris@chrullrich.de>, 2005.
+# Thomas Lotze <tl@gocept.com>, 2005-2008.
+# Sven Deichmann <deichmann@werkbank.com>, 2008-2010.
+# Harald Friessnegger <harald@webmeisterei.com>, 2011.
+# Andreas Jung <info@zopyx.com>, 2012
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
+"PO-Revision-Date: 2016-10-22 16:41-0500\n"
+"Last-Translator: German <plone-i18n@lists.sf.net>\n"
+"Language: de\n"
+"Language-Team: German <plone-i18n@lists.sf.net>\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Language-Code: de\n"
+"Language-Name: Deutsch\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"X-Is-Fallback-For: de-at de-li de-lu de-ch de-de\n"
+
+#: components/theme/Footer/Footer
+msgid "Accessibility"
+msgstr "Barrierefreiheit"
+
+#: components/manage/Actions/Actions
+msgid "Actions"
+msgstr "Aktionen"
+
+#: components/manage/Types/Types
+msgid "Add new…"
+msgstr "Hinzufügen…"
+
+#: components/manage/Add/Add
+msgid "Add {type}"
+msgstr "{type} hinzufügen"
+
+#: components/manage/Contents/Contents
+msgid "All"
+msgstr "Alle"
+
+#: components/manage/Contents/Contents
+msgid "Ascending"
+msgstr "Aufsteigend"
+
+#: components/manage/Diff/Diff
+msgid "Base"
+msgstr "Basis"
+
+#: components/manage/Contents/Contents
+msgid "Batch"
+msgstr "Stapelwiese"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Browse"
+msgstr "Blättern"
+
+#: components/manage/Sharing/Sharing
+msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ihm befindlichen Artikel vererbt. Wenn Sie dies deaktivieren, sind nur die explizit definierten Zugriffsberechtigungen gültig. In der Übersicht zeigt das Symbol ${image_confirm_icon} einen ererbten Wert an. Das Symbol ${image_link_icon} zeigt eine globale Funktion an, die vom Administrator verwaltet wird."
+
+#: components/manage/Contents/ContentsUploadModal
+#: components/manage/Delete/Delete
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: components/manage/History/History
+msgid "Change Note"
+msgstr "Änderungsnotiz"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change State"
+msgstr "Statusänderung"
+
+#: components/manage/Diff/Diff
+msgid "Compare"
+msgstr "Vergleichen"
+
+#: components/theme/Footer/Footer
+msgid "Contact"
+msgstr "Kontakt"
+
+#: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
+msgid "Contents"
+msgstr "Inhaltsverzeichnis"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+msgid "Copy"
+msgstr "Kopieren"
+
+#: components/theme/Footer/Footer
+msgid "Copyright"
+msgstr "Urheberrecht"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Copyright statement or other rights information on this item."
+msgstr "Informationen über die Urheber- und Nutzungsrechte an diesem Artikel."
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Creators"
+msgstr "Ersteller"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+msgid "Cut"
+msgstr "Schneiden"
+
+#: components/manage/Contents/ContentsPropertiesModal
+#: components/manage/Contents/ContentsRenameModal
+#: components/manage/Contents/ContentsTagsModal
+#: components/manage/Contents/ContentsWorkflowModal
+#: components/manage/Preferences/PersonalPreferences
+msgid "Default"
+msgstr "Standard"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+#: components/manage/Delete/Delete
+msgid "Delete"
+msgstr "Löschen"
+
+#: components/manage/Contents/Contents
+msgid "Descending"
+msgstr "Absteigend"
+
+#: components/theme/View/TabularView
+msgid "Description"
+msgstr "Beschreibung"
+
+#: components/manage/Diff/Diff
+msgid "Diff"
+msgstr "Unterschied"
+
+#: components/manage/Diff/Diff
+msgid "Difference between revision {one} and {two} of {title}"
+msgstr "Unterschied zwischen Version {one} and {two} von {title}"
+
+#: components/manage/Display/Display
+msgid "Display"
+msgstr "Darstellung"
+
+#: components/theme/Footer/Footer
+msgid "Distributed under the {license}."
+msgstr "Lizensiert unter der {license}."
+
+#: components/manage/Contents/Contents
+msgid "Do you really want to delete the following items?"
+msgstr "Möchten Sie den Artikel wirklich löschen?"
+
+#: components/manage/Delete/Delete
+msgid "Do you really want to delete this item?"
+msgstr "Möchten Sie den Artikel wirklich löschen?"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
+msgstr "Drag & Drop Dateien von Ihrem Computer auf diesen Bereich oder drück den “Blättern” Knopf"
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Toolbar/Toolbar
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: components/manage/Edit/Edit
+msgid "Edit {title}"
+msgstr "{title} bearbeiten"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Exclude from navigation"
+msgstr "Von der Navigation ausschließen"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Expiration Date"
+msgstr "Ablaufdatum"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "File size"
+msgstr "Dateigröße"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Filename"
+msgstr "Dateiname"
+
+#: components/manage/Contents/Contents
+msgid "Filter…"
+msgstr "Filter…"
+
+#: components/theme/Footer/Footer
+msgid "GNU GPL license"
+msgstr "GNU-GPL-Lizenz"
+
+#: components/manage/Toolbar/Toolbar
+msgid "History"
+msgstr "Historie"
+
+#: components/manage/History/History
+msgid "History of {title}"
+msgstr "Historie von {title}"
+
+#: components/theme/Breadcrumbs/Breadcrumbs
+msgid "Home"
+msgstr "Startseite"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "If selected, this item will not appear in the navigation tree"
+msgstr "Bestimmt, ob der Artikel nicht in der Navigation auftauchen soll."
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "If this date is in the future, the content will not show up in listings and searches until this date."
+msgstr ""
+
+#: components/theme/NotFound/NotFound
+msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
+msgstr "Wenn Sie sicher sind, dass Sie die richtige Adresse eingegeben haben, kontaktieren Sie bitte den {site_admin}."
+
+#: components/manage/Sharing/Sharing
+msgid "Inherit permissions from higher levels"
+msgstr "Berechtigungen von übergeordneten Ordnern übernehmen"
+
+#: components/manage/Preferences/PersonalPreferences
+msgid "Language"
+msgstr "Sprache"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Last modified"
+msgstr "Letzte Änderung"
+
+#: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
+msgid "Log in"
+msgstr "Anmelden"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Log out"
+msgstr "Abmelden"
+
+#: components/theme/Login/Login
+msgid "Login Name"
+msgstr "Benutzername"
+
+#: components/manage/Contents/ContentsItem
+msgid "Move to bottom of folder"
+msgstr "Zum Anfang des Ordners wechseln"
+
+#: components/manage/Contents/ContentsItem
+msgid "Move to top of folder"
+msgstr "Zum Unterseite des Ordners wechseln"
+
+#: components/manage/Sharing/Sharing
+msgid "Name"
+msgstr "Name"
+
+#: components/manage/Contents/Contents
+msgid "None"
+msgstr "Keiner"
+
+#: components/manage/Delete/Delete
+msgid "Ok"
+msgstr "OK"
+
+#: components/theme/Login/Login
+msgid "Password"
+msgstr "Passwort"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+msgid "Paste"
+msgstr "Einfügen"
+
+#: components/manage/Preferences/PersonalPreferences
+msgid "Personal Preferences"
+msgstr "Meine Einstellungen"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
+msgstr "Eine Liste von Personen, die an der Erstellung dieses Artikels beteiligt waren. Bitte geben Sie einen Benutzernamen pro Zeile ein. Der Hauptverantwortliche sollte zuerst genannt werden."
+
+#: components/theme/Footer/Footer
+msgid "Plone Foundation"
+msgstr "Plone Foundation"
+
+#: components/theme/Logo/Logo
+msgid "Plone Site"
+msgstr "Website"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Plone Toolbar"
+msgstr "Plone Toolbar"
+
+#: components/theme/Footer/Footer
+msgid "Plone{reg} Open Source CMS/WCM"
+msgstr "Plone{reg} Open Source Content Management System"
+
+#: components/theme/Footer/Footer
+msgid "Powered by Plone & Python"
+msgstr "Powered by Plone & Python"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Preferences"
+msgstr "Meine Einstellungen"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Preview"
+msgstr "Vorschau"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Properties"
+msgstr "Eigenschaften"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Publishing Date"
+msgstr "Freigabedatum"
+
+#: components/theme/Search/Search
+#: components/theme/View/SummaryView
+msgid "Read More…"
+msgstr "Mehr…"
+
+#: components/manage/Contents/Contents
+msgid "Rearrange items by…"
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+msgid "Rename"
+msgstr "Umbenennen"
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "Rename items"
+msgstr "Artikel umbenennen"
+
+#: components/manage/History/History
+msgid "Revert to this revision"
+msgstr "Durch diese Version ersetzen"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Rights"
+msgstr "Rechte"
+
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
+msgid "Save"
+msgstr "Speichern"
+
+#: components/manage/Sharing/Sharing
+#: components/theme/SearchWidget/SearchWidget
+msgid "Search"
+msgstr "Suche"
+
+#: components/theme/SearchWidget/SearchWidget
+msgid "Search Site"
+msgstr "Website durchsuchen"
+
+#: components/manage/Sharing/Sharing
+msgid "Search for user or group"
+msgstr "Nach Benutzer oder Gruppe suchen"
+
+#: components/theme/Search/Search
+msgid "Search results for {term}"
+msgstr "Suchergebnisse für {term}"
+
+#: components/manage/Contents/Contents
+msgid "Select columns to show"
+msgstr ""
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Select the transition to be used for modifying the items state."
+msgstr "Wählen Sie den Statuswechsel, der benutzt werden soll, um den Status des Artikels zu ändern."
+
+#: components/manage/Contents/Contents
+msgid "Select…"
+msgstr "Wähle…"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Sharing"
+msgstr "Freigabe"
+
+#: components/manage/Sharing/Sharing
+msgid "Sharing for {title}"
+msgstr "Freigabe für"
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "Short name"
+msgstr "Kurzname"
+
+#: components/theme/Logo/Logo
+msgid "Site"
+msgstr "Website"
+
+#: components/theme/NotFound/NotFound
+msgid "Site Administration"
+msgstr "Website-Administrator"
+
+#: components/theme/Footer/Footer
+msgid "Site Map"
+msgstr "Übersicht"
+
+#: components/manage/Contents/Contents
+#: components/theme/View/TabularView
+msgid "State"
+msgstr "Status"
+
+#: components/manage/Workflow/Workflow
+msgid "State: {current}"
+msgstr "Status: {current}"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsTagsModal
+msgid "Tags"
+msgstr "Tags"
+
+#: components/manage/Contents/ContentsTagsModal
+msgid "Tags to add"
+msgstr "Hinzuzufügende Tags"
+
+#: components/manage/Contents/ContentsTagsModal
+msgid "Tags to remove"
+msgstr "Zu entfernende Tags"
+
+#: components/theme/NotFound/NotFound
+msgid "Thank you."
+msgstr "Vielen Dank."
+
+#: components/theme/Footer/Footer
+msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
+msgstr "{plonecms} {copyright} 2000-{current_year} {plonefoundation} und Freunde."
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "This name will be displayed in the URL."
+msgstr "Dieser Name wird in der Adressleiste des Browsers angezeigt."
+
+#: components/theme/NotFound/NotFound
+msgid "This page does not seem to exist…"
+msgstr "Die Seite existiert leider nicht…"
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsRenameModal
+#: components/theme/View/TabularView
+msgid "Title"
+msgstr "Titel"
+
+#: components/theme/View/TabularView
+msgid "Type"
+msgstr "Typ"
+
+#: components/manage/Contents/Contents
+msgid "Upload"
+msgstr "Hochladen"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Upload files"
+msgstr "Datei hochladen"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Upload {count, plural, one {# file} other {# files}}"
+msgstr "Lade {count, plural, one {# Datei} other {# Dateien}} hoch"
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Uploading files"
+msgstr "Dateien hochladen"
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Toolbar/Toolbar
+msgid "View"
+msgstr "Anzeigen"
+
+#: components/manage/History/History
+msgid "View changes"
+msgstr "Änderungen anzeigen"
+
+#: components/manage/History/History
+msgid "View this revision"
+msgstr "Diese revision ansehen"
+
+#: components/theme/NotFound/NotFound
+msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
+msgstr "Entschuldigung, aber die Webseite die Sie versucht haben zu erreichen ist hier nicht verfügbar. Bitte benutzen Sie die aufgeführten Verweise um zu finden was Sie gesucht haben."
+
+#: components/manage/History/History
+msgid "What"
+msgstr "Was"
+
+#: components/manage/History/History
+msgid "When"
+msgstr "Wann"
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "When this date is reached, the content will nolonger be visible in listings and searches."
+msgstr ""
+
+#: components/manage/History/History
+msgid "Who"
+msgstr "Wer"
+
+#: components/manage/Sharing/Sharing
+msgid "You can control who can view and edit your item using the list below."
+msgstr "Sie können mit der folgenden Liste bestimmen, wer Ihren Artikel sehen und bearbeiten kann."
+
+#: components/manage/Diff/Diff
+msgid "You can view the difference of the revisions below."
+msgstr ""
+
+#: components/manage/History/History
+msgid "You can view the history of your item below."
+msgstr ""
+
+#: components/manage/Preferences/PersonalPreferences
+msgid "Your preferred language"
+msgstr "Ihre bevorzugte Sprache"
+
+#: components/theme/SearchWidget/SearchWidget
+msgid "only in current section"
+msgstr "nur im aktuellen Bereich"
+
+#: components/manage/Contents/Contents
+msgid "{count} selected"
+msgstr "{count} ausgewählt"

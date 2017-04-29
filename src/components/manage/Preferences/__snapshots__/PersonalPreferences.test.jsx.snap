@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonalPreferences renders a personal preferences component 1`] = `
+<div
+  id="page-add"
+>
+  <form
+    className="ui form"
+    method="post"
+    onSubmit={[Function]}
+  >
+    <div
+      className="ui stackable top attached tabular menu"
+    >
+      <a
+        className="active item"
+        onClick={[Function]}
+      >
+        Default
+      </a>
+    </div>
+    <div
+      className="ui attached segment"
+    >
+      <div
+        className="field"
+      >
+        <label
+          htmlFor="field-language"
+        >
+          Language
+          <span
+            className="help"
+          >
+            Your preferred language
+          </span>
+        </label>
+        <div
+          aria-busy={undefined}
+          aria-disabled={undefined}
+          aria-expanded={false}
+          aria-multiselectable={undefined}
+          className="ui selection dropdown"
+          id="field-language"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseDown={[Function]}
+          role="listbox"
+          tabIndex={0}
+        >
+          <select
+            aria-hidden="true"
+            multiple={undefined}
+            name="language"
+            type="hidden"
+            value="no-value"
+          >
+            <option
+              value=""
+            />
+            <option
+              value="no-value"
+            >
+              No value
+            </option>
+            <option
+              value="en"
+            >
+              English
+            </option>
+            <option
+              value="de"
+            >
+              Deutsch
+            </option>
+            <option
+              value="nl"
+            >
+              Nederlands
+            </option>
+          </select>
+          <div
+            className="text"
+          >
+            No value
+          </div>
+          <i
+            aria-hidden="true"
+            className="dropdown icon"
+          />
+          <div
+            className="menu transition"
+          >
+            <div
+              aria-checked={true}
+              aria-disabled={undefined}
+              aria-selected={true}
+              className="active selected item"
+              onClick={[Function]}
+              role="option"
+              style={
+                Object {
+                  "pointerEvents": "all",
+                }
+              }
+            >
+              <span
+                className="text"
+              >
+                No value
+              </span>
+            </div>
+            <div
+              aria-checked={false}
+              aria-disabled={undefined}
+              aria-selected={false}
+              className="item"
+              onClick={[Function]}
+              role="option"
+              style={
+                Object {
+                  "pointerEvents": "all",
+                }
+              }
+            >
+              <span
+                className="text"
+              >
+                English
+              </span>
+            </div>
+            <div
+              aria-checked={false}
+              aria-disabled={undefined}
+              aria-selected={false}
+              className="item"
+              onClick={[Function]}
+              role="option"
+              style={
+                Object {
+                  "pointerEvents": "all",
+                }
+              }
+            >
+              <span
+                className="text"
+              >
+                Deutsch
+              </span>
+            </div>
+            <div
+              aria-checked={false}
+              aria-disabled={undefined}
+              aria-selected={false}
+              className="item"
+              onClick={[Function]}
+              role="option"
+              style={
+                Object {
+                  "pointerEvents": "all",
+                }
+              }
+            >
+              <span
+                className="text"
+              >
+                Nederlands
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="ui bottom attached segment"
+    >
+      <button
+        className="ui primary button"
+        onClick={[Function]}
+        tabIndex={undefined}
+        type="submit"
+      >
+        <span>
+          Save
+        </span>
+      </button>
+      <button
+        className="ui button"
+        onClick={[Function]}
+        tabIndex={undefined}
+      >
+        <span>
+          Cancel
+        </span>
+      </button>
+    </div>
+  </form>
+</div>
+`;

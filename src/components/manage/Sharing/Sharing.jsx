@@ -2,7 +2,6 @@
  * Sharing container.
  * @module components/manage/Sharing/Sharing
  */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
@@ -12,15 +11,37 @@ import { browserHistory } from 'react-router';
 import { find, isEqual, map } from 'lodash';
 import { Button, Checkbox, Form, Icon, Input, Table } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 
 import { editSharing, getSharing } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
+
+const messages = defineMessages({
+  search: {
+    id: 'Search',
+    defaultMessage: 'Search',
+  },
+  searchForUserOrGroup: {
+    id: 'Search for user or group',
+    defaultMessage: 'Search for user or group',
+  },
+  inherit: {
+    id: 'Inherit permissions from higher levels',
+    defaultMessage: 'Inherit permissions from higher levels',
+  },
+});
 
 /**
  * SharingComponent class.
  * @class SharingComponent
  * @extends Component
  */
+@injectIntl
 @connect(
   (state, props) => ({
     entries: state.sharing.data.entries,
@@ -62,6 +83,7 @@ export default class SharingComponent extends Component {
     inherit: PropTypes.bool,
     title: PropTypes.string.isRequired,
     login: PropTypes.string,
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -226,16 +248,27 @@ export default class SharingComponent extends Component {
     return (
       <div id="page-sharing">
         <Helmet title="Sharing" />
-        <h1>Sharing for <q>{this.props.title}</q></h1>
+        <h1>
+          <FormattedMessage
+            id="Sharing for {title}"
+            defaultMessage="Sharing for {title}"
+            values={{ title: <q>{this.props.title}</q> }}
+          />
+        </h1>
         <p className="description">
-          You can control who can view and edit your item using the list below.
+          <FormattedMessage
+            id="You can control who can view and edit your item using the list below."
+            defaultMessage="You can control who can view and edit your item using the list below."
+          />
         </p>
         <Form onSubmit={this.onSearch}>
           <Form.Field>
             <Input
               name="SearchableText"
-              action="Search"
-              placeholder="Search for user or group"
+              action={this.props.intl.formatMessage(messages.search)}
+              placeholder={this.props.intl.formatMessage(
+                messages.searchForUserOrGroup,
+              )}
               onChange={this.onChangeSearch}
             />
           </Form.Field>
@@ -245,7 +278,9 @@ export default class SharingComponent extends Component {
           <Table celled padded striped>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Name</Table.HeaderCell>
+                <Table.HeaderCell>
+                  <FormattedMessage id="Name" defaultMessage="Name" />
+                </Table.HeaderCell>
                 {this.props.available_roles.map(role => (
                   <Table.HeaderCell key={role}>{role}</Table.HeaderCell>
                 ))}
@@ -294,25 +329,25 @@ export default class SharingComponent extends Component {
             <Checkbox
               checked={this.state.inherit}
               onChange={this.onToggleInherit}
-              label="Inherit permissions from higher levels"
+              label={this.props.intl.formatMessage(messages.inherit)}
             />
           </Form.Field>
           <p className="help">
-            By default, permissions from the container of this item are
-            inherited. If you disable this, only the explicitly defined sharing
-            permissions will be valid. In the overview, the symbol
-            {' '}
-            <Icon name="check circle" color="green" />
-            {' '}
-            indicates an inherited value. Similarly, the symbol
-            {' '}
-            <Icon name="check circle outline" color="blue" />
-            {' '}
-            indicates a
-            global role, which is managed by the site administrator.
+            <FormattedMessage
+              id="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+              defaultMessage="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+              values={{
+                inherited: <Icon name="check circle" color="green" />,
+                global: <Icon name="check circle outline" color="blue" />,
+              }}
+            />
           </p>
-          <Button primary type="submit">Save</Button>
-          <Button onClick={this.onCancel}>Cancel</Button>
+          <Button primary type="submit">
+            <FormattedMessage id="Save" defaultMessage="Save" />
+          </Button>
+          <Button onClick={this.onCancel}>
+            <FormattedMessage id="Cancel" defaultMessage="Cancel" />
+          </Button>
         </Form>
       </div>
     );

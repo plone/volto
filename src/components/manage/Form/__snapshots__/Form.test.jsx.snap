@@ -32,14 +32,18 @@ exports[`Form renders a form component 1`] = `
       tabIndex={undefined}
       type="submit"
     >
-      Save
+      <span>
+        Save
+      </span>
     </button>
     <button
       className="ui button"
       onClick={[Function]}
       tabIndex={undefined}
     >
-      Cancel
+      <span>
+        Cancel
+      </span>
     </button>
   </div>
 </form>

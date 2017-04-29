@@ -7,14 +7,29 @@ import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { Checkbox, Form, Input } from 'semantic-ui-react';
 import { PropTypes } from 'prop-types';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
-import { getBaseUrl } from '../../../helpers';
+const messages = defineMessages({
+  search: {
+    id: 'Search',
+    defaultMessage: 'Search',
+  },
+  searchSite: {
+    id: 'Search Site',
+    defaultMessage: 'Search Site',
+  },
+  section: {
+    id: 'only in current section',
+    defaultMessage: 'only in current section',
+  },
+});
 
 /**
  * SearchWidget component class.
  * @class SearchWidget
  * @extends Component
  */
+@injectIntl
 export default class SearchWidget extends Component {
   /**
    * Property types.
@@ -23,6 +38,7 @@ export default class SearchWidget extends Component {
    */
   static propTypes = {
     pathname: PropTypes.string.isRequired,
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -93,15 +109,15 @@ export default class SearchWidget extends Component {
             onChange={this.onChangeText}
             name="SearchableText"
             value={this.state.text}
-            action="Search"
-            placeholder="Search Site"
+            action={this.props.intl.formatMessage(messages.search)}
+            placeholder={this.props.intl.formatMessage(messages.searchSite)}
           />
         </Form.Field>
         <Form.Field>
           <Checkbox
             onChange={this.onChangeSection}
             checked={this.state.section}
-            label="only in current section"
+            label={this.props.intl.formatMessage(messages.section)}
           />
         </Form.Field>
       </Form>

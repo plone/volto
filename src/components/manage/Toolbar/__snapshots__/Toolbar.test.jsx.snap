@@ -23,7 +23,10 @@ exports[`Toolbar renders an actions component 1`] = `
         aria-hidden="true"
         className="folder open icon"
       />
-       Contents
+       
+      <span>
+        Contents
+      </span>
     </span>
   </a>
   <a
@@ -36,7 +39,10 @@ exports[`Toolbar renders an actions component 1`] = `
         aria-hidden="true"
         className="write icon"
       />
-       Edit
+       
+      <span>
+        Edit
+      </span>
     </span>
   </a>
   <a
@@ -49,7 +55,10 @@ exports[`Toolbar renders an actions component 1`] = `
         aria-hidden="true"
         className="eye icon"
       />
-       View
+       
+      <span>
+        View
+      </span>
     </span>
   </a>
   <div
@@ -74,7 +83,10 @@ exports[`Toolbar renders an actions component 1`] = `
         aria-hidden="true"
         className="clock icon"
       />
-       History
+       
+      <span>
+        History
+      </span>
     </span>
   </a>
   <a
@@ -87,7 +99,10 @@ exports[`Toolbar renders an actions component 1`] = `
         aria-hidden="true"
         className="users icon"
       />
-       Sharing
+       
+      <span>
+        Sharing
+      </span>
     </span>
   </a>
   <div
@@ -95,7 +110,7 @@ exports[`Toolbar renders an actions component 1`] = `
     aria-disabled={undefined}
     aria-expanded={false}
     aria-multiselectable={undefined}
-    className="ui item left pointing personal-bar dropdown"
+    className="ui item upward left pointing personal-bar dropdown"
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
@@ -126,9 +141,28 @@ exports[`Toolbar renders an actions component 1`] = `
         <span>
           <i
             aria-hidden="true"
+            className="setting icon"
+          />
+           
+          <span>
+            Preferences
+          </span>
+        </span>
+      </a>
+      <a
+        className="item"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <span>
+          <i
+            aria-hidden="true"
             className="sign out icon"
           />
-           Log out
+           
+          <span>
+            Log out
+          </span>
         </span>
       </a>
     </div>
