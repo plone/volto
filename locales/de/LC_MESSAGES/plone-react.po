@@ -187,7 +187,7 @@ msgstr "Drag & Drop Dateien von Ihrem Computer auf diesen Bereich oder drück de
 
 #: components/manage/Preferences/PersonalInformation
 msgid "E-mail"
-msgstr ""
+msgstr "E-Mail"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Toolbar/Toolbar
@@ -200,7 +200,7 @@ msgstr "{title} bearbeiten"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Enter full name, e.g. John Smith."
-msgstr ""
+msgstr "Tragen Sie bitte Ihren vollen Namen ein."
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
@@ -232,7 +232,7 @@ msgstr "Filter…"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Full Name"
-msgstr ""
+msgstr "Vor- und Nachname"
 
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
@@ -252,7 +252,7 @@ msgstr "Startseite"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Home page"
-msgstr ""
+msgstr "Homepage"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If selected, this item will not appear in the navigation tree"
@@ -280,7 +280,7 @@ msgstr "Letzte Änderung"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
-msgstr ""
+msgstr "Ort"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
@@ -499,7 +499,7 @@ msgstr "Vielen Dank."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
-msgstr ""
+msgstr "Die URL Ihrer externen Homepage, sollten Sie eine besitzen."
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
@@ -590,7 +590,7 @@ msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr ""
+msgstr "Ihr Standort - entweder eine Stadt und ein Land - oder im Rahmen einer Firma, wo Ihr Büro ist."
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Your preferred language"

@@ -191,7 +191,7 @@ msgstr "Drag en drop bestanden van uw computer naar dit gebied of klik op de “
 
 #: components/manage/Preferences/PersonalInformation
 msgid "E-mail"
-msgstr ""
+msgstr "E-mailadres"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Toolbar/Toolbar
@@ -204,7 +204,7 @@ msgstr "{title} bewerken"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Enter full name, e.g. John Smith."
-msgstr ""
+msgstr "Vul de volledige naam in, bijvoorbeeld Jan Smit."
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
@@ -236,7 +236,7 @@ msgstr "Filter…"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Full Name"
-msgstr ""
+msgstr "Volledige naam"
 
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
@@ -256,7 +256,7 @@ msgstr "Home"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Home page"
-msgstr ""
+msgstr "Homepage"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If selected, this item will not appear in the navigation tree"
@@ -284,7 +284,7 @@ msgstr "Laatst gewijzigd"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
-msgstr ""
+msgstr "Locatie"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
@@ -503,7 +503,7 @@ msgstr "Bedankt."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
-msgstr ""
+msgstr "Het internet adres van uw externe home page, indien u die heeft."
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
@@ -562,7 +562,7 @@ msgstr "Onze excuses voor het ongemak, maar de pagina die u probeerde te bereike
 
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
-msgstr ""
+msgstr "Wij gebruiken dit adres wanneer u uw wachtwoord wilt terugkrijgen"
 
 #: components/manage/History/History
 msgid "What"
@@ -594,7 +594,7 @@ msgstr "U kunt de geschiedenis van uw item hieronder bekijken."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr ""
+msgstr "Uw woonplaats - stad en land - of als u vanuit een bedrijf werkt, waar uw kantoor is gevestigd."
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Your preferred language"
