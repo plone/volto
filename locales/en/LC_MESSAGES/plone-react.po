@@ -64,6 +64,7 @@ msgid "Change Note"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
 msgid "Change Password"
 msgstr ""
 
@@ -121,6 +122,7 @@ msgstr ""
 #: components/manage/Contents/ContentsTagsModal
 #: components/manage/Contents/ContentsWorkflowModal
 #: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 msgid "Default"
 msgstr ""
@@ -168,6 +170,10 @@ msgstr ""
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
+#: components/manage/Preferences/PersonalInformation
+msgid "E-mail"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 #: components/manage/Toolbar/Toolbar
 msgid "Edit"
@@ -175,6 +181,10 @@ msgstr ""
 
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
+msgstr ""
+
+#: components/manage/Preferences/PersonalInformation
+msgid "Enter full name, e.g. John Smith."
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -205,6 +215,10 @@ msgstr ""
 msgid "Filter…"
 msgstr ""
 
+#: components/manage/Preferences/PersonalInformation
+msgid "Full Name"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
 msgstr ""
@@ -219,6 +233,10 @@ msgstr ""
 
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Home"
+msgstr ""
+
+#: components/manage/Preferences/PersonalInformation
+msgid "Home page"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
@@ -243,6 +261,10 @@ msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
+msgstr ""
+
+#: components/manage/Preferences/PersonalInformation
+msgid "Location"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
@@ -293,11 +315,13 @@ msgid "Paste"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 msgid "Personal Information"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 msgid "Personal Preferences"
 msgstr ""
@@ -458,6 +482,10 @@ msgstr ""
 msgid "Thank you."
 msgstr ""
 
+#: components/manage/Preferences/PersonalInformation
+msgid "The URL for your external home page, if you have one."
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr ""
@@ -513,6 +541,10 @@ msgstr ""
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr ""
 
+#: components/manage/Preferences/PersonalInformation
+msgid "We will use this address if you need to recover your password"
+msgstr ""
+
 #: components/manage/History/History
 msgid "What"
 msgstr ""
@@ -539,6 +571,10 @@ msgstr ""
 
 #: components/manage/History/History
 msgid "You can view the history of your item below."
+msgstr ""
+
+#: components/manage/Preferences/PersonalInformation
+msgid "Your location - either city and country - or in a company setting, where your office is located."
 msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences

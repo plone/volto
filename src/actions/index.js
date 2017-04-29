@@ -21,6 +21,6 @@ export getSchema from './schema/schema';
 export getTypes from './types/types';
 export searchContent from './search/search';
 export { editSharing, getSharing } from './sharing/sharing';
-export { geUser, editUser, editPassword } from './users/users';
+export { getUser, editUser, editPassword } from './users/users';
 export { login, logout } from './userSession/userSession';
 export { getWorkflow, transitionWorkflow } from './workflow/workflow';

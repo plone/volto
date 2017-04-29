@@ -2,10 +2,15 @@
 
 ## [Unreleased]
 ### Added
+- Personal information @robgietema
 - Change password @robgietema
+- Password widget @robgietema
 - I18n support and translations @robgietema
 - Personal preferences @robgietema
 - Rename action @robgietema
+
+### Changed
+- Fixed favicon @robgietema
 
 ## 0.2.0 (2017-04-27)
 ### Added

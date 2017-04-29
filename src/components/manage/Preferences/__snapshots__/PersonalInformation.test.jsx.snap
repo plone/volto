@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonalInformation renders a personal information component 1`] = `
+<div
+  id="page-personal-information"
+>
+  <div
+    className="ui stackable top attached tabular menu"
+  >
+    <div
+      className="active item"
+      onClick={[Function]}
+    >
+      Personal Information
+    </div>
+    <a
+      className="item"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span>
+        Personal Preferences
+      </span>
+    </a>
+    <a
+      className="item"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <span>
+        Change Password
+      </span>
+    </a>
+  </div>
+  <form
+    className="ui form"
+    method="post"
+    onSubmit={[Function]}
+  >
+    <div
+      className="ui attached segment"
+    >
+      <div
+        className="field"
+      >
+        <label
+          htmlFor="field-fullname"
+        >
+          Full Name
+          <span
+            className="help"
+          >
+            Enter full name, e.g. John Smith.
+          </span>
+        </label>
+        <div
+          className="ui input"
+        >
+          <input
+            id="field-fullname"
+            name="fullname"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        className="required field"
+      >
+        <label
+          htmlFor="field-email"
+        >
+          E-mail
+          <span
+            className="help"
+          >
+            We will use this address if you need to recover your password
+          </span>
+        </label>
+        <div
+          className="ui input"
+        >
+          <input
+            id="field-email"
+            name="email"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          htmlFor="field-home_page"
+        >
+          Home page
+          <span
+            className="help"
+          >
+            The URL for your external home page, if you have one.
+          </span>
+        </label>
+        <div
+          className="ui input"
+        >
+          <input
+            id="field-home_page"
+            name="home_page"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        className="field"
+      >
+        <label
+          htmlFor="field-location"
+        >
+          Location
+          <span
+            className="help"
+          >
+            Your location - either city and country - or in a company setting, where your office is located.
+          </span>
+        </label>
+        <div
+          className="ui input"
+        >
+          <input
+            id="field-location"
+            name="location"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ui bottom attached segment"
+    >
+      <button
+        className="ui primary button"
+        onClick={[Function]}
+        tabIndex={undefined}
+        type="submit"
+      >
+        <span>
+          Save
+        </span>
+      </button>
+      <button
+        className="ui button"
+        onClick={[Function]}
+        tabIndex={undefined}
+      >
+        <span>
+          Cancel
+        </span>
+      </button>
+    </div>
+  </form>
+</div>
+`;

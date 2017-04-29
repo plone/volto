@@ -149,7 +149,7 @@
     "express": "4.15.2",
     "express-healthcheck": "0.1.0",
     "file-loader": "0.11.1",
-    "filesize": "3.5.8",
+    "filesize": "3.5.6",
     "frameguard": "3.0.0",
     "glob": "7.1.1",
     "hoist-non-react-statics": "1.2.0",
