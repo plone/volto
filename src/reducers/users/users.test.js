@@ -1,9 +1,5 @@
 import users from './users';
-import {
-  GET_USER,
-  EDIT_USER,
-  EDIT_PASSWORD,
-} from '../../constants/ActionTypes';
+import { GET_USER, EDIT_USER } from '../../constants/ActionTypes';
 
 describe('Users reducer', () => {
   it('should return the initial state', () => {
