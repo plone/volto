@@ -79,6 +79,7 @@ msgid "Change Note"
 msgstr "Änderungsnotiz"
 
 #: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
 msgid "Change Password"
 msgstr "Passwort ändern"
 
@@ -136,6 +137,7 @@ msgstr "Schneiden"
 #: components/manage/Contents/ContentsTagsModal
 #: components/manage/Contents/ContentsWorkflowModal
 #: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 msgid "Default"
 msgstr "Standard"
@@ -183,6 +185,10 @@ msgstr "Möchten Sie den Artikel wirklich löschen?"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Drag & Drop Dateien von Ihrem Computer auf diesen Bereich oder drück den “Blättern” Knopf"
 
+#: components/manage/Preferences/PersonalInformation
+msgid "E-mail"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 #: components/manage/Toolbar/Toolbar
 msgid "Edit"
@@ -191,6 +197,10 @@ msgstr "Bearbeiten"
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "{title} bearbeiten"
+
+#: components/manage/Preferences/PersonalInformation
+msgid "Enter full name, e.g. John Smith."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
@@ -220,6 +230,10 @@ msgstr "Dateiname"
 msgid "Filter…"
 msgstr "Filter…"
 
+#: components/manage/Preferences/PersonalInformation
+msgid "Full Name"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
 msgstr "GNU-GPL-Lizenz"
@@ -235,6 +249,10 @@ msgstr "Historie von {title}"
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Home"
 msgstr "Startseite"
+
+#: components/manage/Preferences/PersonalInformation
+msgid "Home page"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If selected, this item will not appear in the navigation tree"
@@ -259,6 +277,10 @@ msgstr "Sprache"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Letzte Änderung"
+
+#: components/manage/Preferences/PersonalInformation
+msgid "Location"
+msgstr ""
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
@@ -308,11 +330,13 @@ msgid "Paste"
 msgstr "Einfügen"
 
 #: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 msgid "Personal Information"
 msgstr "Persönliche Informationen"
 
 #: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 msgid "Personal Preferences"
 msgstr "Meine Einstellungen"
@@ -473,6 +497,10 @@ msgstr "Zu entfernende Tags"
 msgid "Thank you."
 msgstr "Vielen Dank."
 
+#: components/manage/Preferences/PersonalInformation
+msgid "The URL for your external home page, if you have one."
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "{plonecms} {copyright} 2000-{current_year} {plonefoundation} und Freunde."
@@ -528,6 +556,10 @@ msgstr "Diese revision ansehen"
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Entschuldigung, aber die Webseite die Sie versucht haben zu erreichen ist hier nicht verfügbar. Bitte benutzen Sie die aufgeführten Verweise um zu finden was Sie gesucht haben."
 
+#: components/manage/Preferences/PersonalInformation
+msgid "We will use this address if you need to recover your password"
+msgstr ""
+
 #: components/manage/History/History
 msgid "What"
 msgstr "Was"
@@ -554,6 +586,10 @@ msgstr ""
 
 #: components/manage/History/History
 msgid "You can view the history of your item below."
+msgstr ""
+
+#: components/manage/Preferences/PersonalInformation
+msgid "Your location - either city and country - or in a company setting, where your office is located."
 msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences

@@ -128,7 +128,7 @@ export default class PersonalInformation extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    this.props.editUser(data);
+    this.props.editUser(this.props.userId, data);
   }
 
   /**
@@ -194,7 +194,7 @@ export default class PersonalInformation extends Component {
                   title: this.props.intl.formatMessage(messages.emailTitle),
                   type: 'string',
                 },
-                homePage: {
+                home_page: {
                   description: this.props.intl.formatMessage(
                     messages.homePageDescription,
                   ),

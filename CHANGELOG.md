@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Personal information @robgietema
 - Change password @robgietema
 - Password widget @robgietema
 - I18n support and translations @robgietema
