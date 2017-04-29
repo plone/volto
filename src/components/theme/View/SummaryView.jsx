@@ -7,6 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
+import { FormattedMessage } from 'react-intl';
 
 /**
  * Summary view component class.
@@ -34,7 +35,7 @@ const SummaryView = ({ content }) => (
             {item.description && <p>{item.description}</p>}
             <p>
               <Link to={item.url}>
-                Read More…
+                <FormattedMessage id="Read More…" defaultMessage="Read More…" />
               </Link>
             </p>
           </article>

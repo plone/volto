@@ -11,11 +11,331 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#: components/theme/Footer/Footer
+msgid "Accessibility"
+msgstr ""
+
+#: components/manage/Actions/Actions
+msgid "Actions"
+msgstr ""
+
+#: components/manage/Types/Types
+msgid "Add new…"
+msgstr ""
+
 #: components/manage/Add/Add
-#: components/theme/SearchWidget/SearchWidget
 msgid "Add {type}"
 msgstr ""
 
+#: components/manage/Contents/Contents
+msgid "All"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Ascending"
+msgstr ""
+
+#: components/manage/Diff/Diff
+msgid "Base"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Batch"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Browse"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+#: components/manage/Delete/Delete
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
+msgid "Cancel"
+msgstr ""
+
+#: components/manage/History/History
+msgid "Change Note"
+msgstr ""
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change State"
+msgstr ""
+
+#: components/manage/Diff/Diff
+msgid "Compare"
+msgstr ""
+
+#: components/theme/Footer/Footer
+msgid "Contact"
+msgstr ""
+
+#: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
+msgid "Contents"
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+msgid "Copy"
+msgstr ""
+
+#: components/theme/Footer/Footer
+msgid "Copyright"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Copyright statement or other rights information on this item."
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Creators"
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+msgid "Cut"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+#: components/manage/Contents/ContentsRenameModal
+#: components/manage/Contents/ContentsTagsModal
+#: components/manage/Contents/ContentsWorkflowModal
+#: components/manage/Preferences/PersonalPreferences
+msgid "Default"
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
+#: components/manage/Delete/Delete
+msgid "Delete"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Descending"
+msgstr ""
+
+#: components/theme/View/TabularView
+msgid "Description"
+msgstr ""
+
+#: components/manage/Diff/Diff
+msgid "Diff"
+msgstr ""
+
+#: components/manage/Diff/Diff
+msgid "Difference between revision {one} and {two} of {title}"
+msgstr ""
+
+#: components/manage/Display/Display
+msgid "Display"
+msgstr ""
+
+#: components/theme/Footer/Footer
+msgid "Distributed under the {license}."
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Do you really want to delete the following items?"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Toolbar/Toolbar
+msgid "Edit"
+msgstr ""
+
+#: components/manage/Edit/Edit
+msgid "Edit {title}"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Exclude from navigation"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Expiration Date"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "File size"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Filename"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Filter…"
+msgstr ""
+
+#: components/theme/Footer/Footer
+msgid "GNU GPL license"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+msgid "History"
+msgstr ""
+
+#: components/manage/History/History
+msgid "History of {title}"
+msgstr ""
+
+#: components/theme/Breadcrumbs/Breadcrumbs
+msgid "Home"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "If selected, this item will not appear in the navigation tree"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "If this date is in the future, the content will not show up in listings and searches until this date."
+msgstr ""
+
+#: components/theme/NotFound/NotFound
+msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Inherit permissions from higher levels"
+msgstr ""
+
+#: components/manage/Preferences/PersonalPreferences
+msgid "Language"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Last modified"
+msgstr ""
+
+#: components/theme/Anontools/Anontools
+#: components/theme/Login/Login
+msgid "Log in"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+msgid "Log out"
+msgstr ""
+
+#: components/theme/Login/Login
+msgid "Login Name"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "Move to bottom of folder"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "Move to top of folder"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Name"
+msgstr ""
+
+#: components/manage/Delete/Delete
+msgid "Ok"
+msgstr ""
+
+#: components/theme/Login/Login
+msgid "Password"
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+msgid "Paste"
+msgstr ""
+
+#: components/manage/Preferences/PersonalPreferences
+msgid "Personal Preferences"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
+msgstr ""
+
+#: components/theme/Footer/Footer
+msgid "Plone Foundation"
+msgstr ""
+
+#: components/theme/Logo/Logo
+msgid "Plone Site"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+msgid "Plone Toolbar"
+msgstr ""
+
+#: components/theme/Footer/Footer
+msgid "Plone{reg} Open Source CMS/WCM"
+msgstr ""
+
+#: components/theme/Footer/Footer
+msgid "Powered by Plone & Python"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+msgid "Preferences"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Preview"
+msgstr ""
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Properties"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Publishing Date"
+msgstr ""
+
+#: components/theme/Search/Search
+#: components/theme/View/SummaryView
+msgid "Read More…"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Rearrange items by…"
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+msgid "Rename"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "Rename items"
+msgstr ""
+
+#: components/manage/History/History
+msgid "Revert to this revision"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "Rights"
+msgstr ""
+
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+#: components/manage/Sharing/Sharing
+msgid "Save"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
 msgstr ""
@@ -24,6 +344,159 @@ msgstr ""
 msgid "Search Site"
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+msgid "Search for user or group"
+msgstr ""
+
+#: components/theme/Search/Search
+msgid "Search results for {term}"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Select columns to show"
+msgstr ""
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Select the transition to be used for modifying the items state."
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Select…"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+msgid "Sharing"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Sharing for {title}"
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "Short name"
+msgstr ""
+
+#: components/theme/Logo/Logo
+msgid "Site"
+msgstr ""
+
+#: components/theme/NotFound/NotFound
+msgid "Site Administration"
+msgstr ""
+
+#: components/theme/Footer/Footer
+msgid "Site Map"
+msgstr ""
+
+#: components/manage/Contents/Contents
+#: components/theme/View/TabularView
+msgid "State"
+msgstr ""
+
+#: components/manage/Workflow/Workflow
+msgid "State: {current}"
+msgstr ""
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsTagsModal
+msgid "Tags"
+msgstr ""
+
+#: components/manage/Contents/ContentsTagsModal
+msgid "Tags to add"
+msgstr ""
+
+#: components/manage/Contents/ContentsTagsModal
+msgid "Tags to remove"
+msgstr ""
+
+#: components/theme/NotFound/NotFound
+msgid "Thank you."
+msgstr ""
+
+#: components/theme/Footer/Footer
+msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
+msgstr ""
+
+#: components/manage/Contents/ContentsRenameModal
+msgid "This name will be displayed in the URL."
+msgstr ""
+
+#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsRenameModal
+#: components/theme/View/TabularView
+msgid "Title"
+msgstr ""
+
+#: components/theme/View/TabularView
+msgid "Type"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Upload"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Upload files"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Upload {count, plural, one {# file} other {# files}}"
+msgstr ""
+
+#: components/manage/Contents/ContentsUploadModal
+msgid "Uploading files"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+#: components/manage/Toolbar/Toolbar
+msgid "View"
+msgstr ""
+
+#: components/manage/History/History
+msgid "View changes"
+msgstr ""
+
+#: components/manage/History/History
+msgid "View this revision"
+msgstr ""
+
+#: components/theme/NotFound/NotFound
+msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
+msgstr ""
+
+#: components/manage/History/History
+msgid "What"
+msgstr ""
+
+#: components/manage/History/History
+msgid "When"
+msgstr ""
+
+#: components/manage/Contents/ContentsPropertiesModal
+msgid "When this date is reached, the content will nolonger be visible in listings and searches."
+msgstr ""
+
+#: components/manage/History/History
+msgid "Who"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "You can control who can view and edit your item using the list below."
+msgstr ""
+
+#: components/manage/Diff/Diff
+msgid "You can view the difference of the revisions below."
+msgstr ""
+
+#: components/manage/Preferences/PersonalPreferences
+msgid "Your preferred language"
+msgstr ""
+
 #: components/theme/SearchWidget/SearchWidget
 msgid "only in current section"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "{count} selected"
 msgstr ""

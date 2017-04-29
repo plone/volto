@@ -4,6 +4,8 @@
  */
 
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import { Link } from 'react-router';
 
 /**
  * Not found function.
@@ -12,8 +14,35 @@ import React from 'react';
  */
 const NotFound = () => (
   <div id="page-not-found">
-    <h1>Doh! 404!</h1>
-    <p>These are <em>not</em> the droids you are looking for!</p>
+    <h1>
+      <FormattedMessage
+        id="This page does not seem to exist..."
+        description="This page does not seem to exist..."
+      />
+    </h1>
+    <p className="description">
+      <FormattedMessage
+        id="We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
+        defaultMessage="We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
+      />
+    </p>
+    <p>
+      <FormattedMessage
+        id="If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
+        defaultMessage="If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
+        values={{
+          site_admin: (
+            <Link to="/contact-info">
+              <FormattedMessage
+                id="Site Administration"
+                defaultMessage="Site Administration"
+              />
+            </Link>
+          ),
+        }}
+      />
+    </p>
+    <p><FormattedMessage id="Thank you." defaultMessage="Thank you." /></p>
   </div>
 );
 

@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import moment from 'moment';
 import { DragSource, DropTarget } from 'react-dnd';
+import { FormattedMessage } from 'react-intl';
 
 import { getIcon } from '../../../helpers';
 
@@ -79,31 +80,47 @@ export const ContentsItemComponent = ({
           <Dropdown icon="ellipsis vertical">
             <Dropdown.Menu className="left">
               <Link className="item" to={`${item['@id']}/edit`}>
-                <Icon name="write" /> Edit
+                <Icon name="write" />
+                {' '}
+                <FormattedMessage id="Edit" defaultMessage="Edit" />
               </Link>
               <Link className="item" to={item['@id']}>
-                <Icon name="eye" /> View
+                <Icon name="eye" />
+                {' '}
+                <FormattedMessage id="View" defaultMessage="View" />
               </Link>
               <Dropdown.Divider />
               <Dropdown.Item onClick={onCut} value={item['@id']}>
-                <Icon name="cut" /> Cut
+                <Icon name="cut" />
+                {' '}
+                <FormattedMessage id="Cut" defaultMessage="Cut" />
               </Dropdown.Item>
               <Dropdown.Item onClick={onCopy} value={item['@id']}>
-                <Icon name="copy" /> Copy
+                <Icon name="copy" />
+                {' '}
+                <FormattedMessage id="Copy" defaultMessage="Copy" />
               </Dropdown.Item>
               <Dropdown.Item onClick={onDelete} value={item['@id']}>
-                <Icon name="trash" /> Delete
+                <Icon name="trash" />
+                {' '}
+                <FormattedMessage id="Delete" defaultMessage="Delete" />
               </Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown.Item onClick={onMoveToTop} value={order}>
                 <Icon name="long arrow up" />
                 {' '}
-                Move to top of folder
+                <FormattedMessage
+                  id="Move to top of folder"
+                  defaultMessage="Move to top of folder"
+                />
               </Dropdown.Item>
               <Dropdown.Item onClick={onMoveToBottom} value={order}>
                 <Icon name="long arrow down" />
                 {' '}
-                Move to bottom of folder
+                <FormattedMessage
+                  id="Move to bottom of folder"
+                  defaultMessage="Move to bottom of folder"
+                />
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>

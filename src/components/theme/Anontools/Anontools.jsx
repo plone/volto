@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { List } from 'semantic-ui-react';
+import { FormattedMessage } from 'react-intl';
 
 /**
  * Anontools container class.
@@ -45,7 +46,9 @@ export default class Anontools extends Component {
     return (
       !this.props.token &&
       <List floated="right" horizontal>
-        <Link className="item" to="/login">Log in</Link>
+        <Link className="item" to="/login">
+          <FormattedMessage id="Log in" defaultMessage="Log in" />
+        </Link>
       </List>
     );
   }

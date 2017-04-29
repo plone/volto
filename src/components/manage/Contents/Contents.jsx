@@ -22,6 +22,12 @@ import {
 import move from 'lodash-move';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 
 import {
   searchContent,
@@ -47,6 +53,36 @@ import {
 } from '../../../components';
 
 const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
+const messages = defineMessages({
+  contents: {
+    id: 'Contents',
+    defaultMessage: 'Contents',
+  },
+  deleteConfirm: {
+    id: 'Do you really want to delete the following items?',
+    defaultMessage: 'Do you really want to delete the following items?',
+  },
+  filter: {
+    id: 'Filter…',
+    defaultMessage: 'Filter…',
+  },
+  rearrangeBy: {
+    id: 'Rearrange items by…',
+    defaultMessage: 'Rearrange items by…',
+  },
+  select: {
+    id: 'Select…',
+    defaultMessage: 'Select…',
+  },
+  selected: {
+    id: '{count} selected',
+    defaultMessage: '{count} selected',
+  },
+  selectColumns: {
+    id: 'Select columns to show',
+    defaultMessage: 'Select columns to show',
+  },
+});
 
 /**
  * ContentsComponent class.
@@ -54,6 +90,7 @@ const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
  * @extends Component
  */
 @DragDropContext(HTML5Backend)
+@injectIntl
 @connect(
   (state, props) => ({
     items: state.search.items,
@@ -127,6 +164,7 @@ export default class ContentsComponent extends Component {
     ),
     total: PropTypes.number.isRequired,
     pathname: PropTypes.string.isRequired,
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -731,12 +769,12 @@ export default class ContentsComponent extends Component {
     const selected = this.state.selected.length > 0;
     return (
       <div id="page-contents">
-        <Helmet title="Contents" />
+        <Helmet title={this.props.intl.formatMessage(messages.contents)} />
         <div className="container">
           <article id="content">
             <Confirm
               open={this.state.showDelete}
-              header="Do you really want to delete the following items?"
+              header={this.props.intl.formatMessage(messages.deleteConfirm)}
               content={
                 <div className="content">
                   <ul className="content">
@@ -792,39 +830,66 @@ export default class ContentsComponent extends Component {
               <Menu stackable>
                 <Menu.Menu>
                   <Menu.Item onClick={this.upload}>
-                    <Icon name="upload" /> Upload
+                    <Icon name="upload" />
+                    {' '}
+                    <FormattedMessage id="Upload" defaultMessage="Upload" />
                   </Menu.Item>
                 </Menu.Menu>
                 <Menu.Menu position="right">
                   <Menu.Item onClick={this.cut} disabled={!selected}>
-                    <Icon name="cut" /> Cut
+                    <Icon name="cut" />
+                    {' '}
+                    <FormattedMessage id="Cut" defaultMessage="Cut" />
                   </Menu.Item>
                   <Menu.Item onClick={this.copy} disabled={!selected}>
-                    <Icon name="copy" /> Copy
+                    <Icon name="copy" />
+                    {' '}
+                    <FormattedMessage id="Copy" defaultMessage="Copy" />
                   </Menu.Item>
                   <Menu.Item onClick={this.paste} disabled={!this.props.action}>
-                    <Icon name="paste" /> Paste
+                    <Icon name="paste" />
+                    {' '}
+                    <FormattedMessage id="Paste" defaultMessage="Paste" />
                   </Menu.Item>
                   <Menu.Item onClick={this.delete} disabled={!selected}>
-                    <Icon name="trash" /> Delete
+                    <Icon name="trash" />
+                    {' '}
+                    <FormattedMessage id="Delete" defaultMessage="Delete" />
                   </Menu.Item>
                   <Dropdown
                     item
-                    trigger={<span><Icon name="write" /> Batch</span>}
+                    trigger={
+                      <span>
+                        <Icon name="write" />
+                        {' '}
+                        <FormattedMessage id="Batch" defaultMessage="Batch" />
+                      </span>
+                    }
                     disabled={!selected}
                   >
                     <Dropdown.Menu>
                       <Dropdown.Item onClick={this.rename}>
-                        <Icon name="text cursor" /> Rename
+                        <Icon name="text cursor" />
+                        {' '}
+                        <FormattedMessage id="Rename" defaultMessage="Rename" />
                       </Dropdown.Item>
                       <Dropdown.Item onClick={this.tags}>
-                        <Icon name="tags" /> Tags
+                        <Icon name="tags" />
+                        {' '}
+                        <FormattedMessage id="Tags" defaultMessage="Tags" />
                       </Dropdown.Item>
                       <Dropdown.Item onClick={this.workflow}>
-                        <Icon name="random" /> State
+                        <Icon name="random" />
+                        {' '}
+                        <FormattedMessage id="State" defaultMessage="State" />
                       </Dropdown.Item>
                       <Dropdown.Item onClick={this.properties}>
-                        <Icon name="edit" /> Properties
+                        <Icon name="edit" />
+                        {' '}
+                        <FormattedMessage
+                          id="Properties"
+                          defaultMessage="Properties"
+                        />
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
@@ -833,7 +898,9 @@ export default class ContentsComponent extends Component {
                       <Input
                         className="prompt"
                         type="text"
-                        placeholder="Filter..."
+                        placeholder={this.props.intl.formatMessage(
+                          messages.filter,
+                        )}
                         value={this.state.filter}
                         onChange={this.onChangeFilter}
                       />
@@ -853,7 +920,11 @@ export default class ContentsComponent extends Component {
                         simple
                       >
                         <Dropdown.Menu>
-                          <Dropdown.Header content="Rearrange items by..." />
+                          <Dropdown.Header
+                            content={this.props.intl.formatMessage(
+                              messages.rearrangeBy,
+                            )}
+                          />
                           {map(
                             [
                               'id',
@@ -874,7 +945,10 @@ export default class ContentsComponent extends Component {
                                   >
                                     <Icon name="sort alphabet ascending" />
                                     {' '}
-                                    Ascending
+                                    <FormattedMessage
+                                      id="Ascending"
+                                      defaultMessage="Ascending"
+                                    />
                                   </Dropdown.Item>
                                   <Dropdown.Item
                                     onClick={this.onSortItems}
@@ -882,7 +956,10 @@ export default class ContentsComponent extends Component {
                                   >
                                     <Icon name="sort alphabet descending" />
                                     {' '}
-                                    Descending
+                                    <FormattedMessage
+                                      id="Descending"
+                                      defaultMessage="Descending"
+                                    />
                                   </Dropdown.Item>
                                 </Dropdown.Menu>
                               </Dropdown.Item>
@@ -911,22 +988,35 @@ export default class ContentsComponent extends Component {
                         icon={null}
                       >
                         <Dropdown.Menu>
-                          <Dropdown.Header content="Select..." />
+                          <Dropdown.Header
+                            content={this.props.intl.formatMessage(
+                              messages.select,
+                            )}
+                          />
                           <Dropdown.Item onClick={this.onSelectAll}>
-                            <Icon name="check square" color="blue" /> All
+                            <Icon name="check square" color="blue" />
+                            {' '}
+                            <FormattedMessage id="All" defaultMessage="All" />
                           </Dropdown.Item>
                           <Dropdown.Item onClick={this.onSelectNone}>
-                            <Icon name="square outline" /> None
+                            <Icon name="square outline" />
+                            {' '}
+                            <FormattedMessage id="None" values="None" />
                           </Dropdown.Item>
                           <Dropdown.Divider />
                           <Dropdown.Header
-                            content={`${this.state.selected.length} selected`}
+                            content={this.props.intl.formatMessage(
+                              messages.selected,
+                              { count: this.state.selected.length },
+                            )}
                           />
                           <Input
                             icon="search"
                             iconPosition="left"
                             className="search"
-                            placeholder="Filter..."
+                            placeholder={this.props.intl.formatMessage(
+                              messages.filter,
+                            )}
                           />
                           <Dropdown.Menu scrolling>
                             {map(this.state.selected, item => (
@@ -947,7 +1037,7 @@ export default class ContentsComponent extends Component {
                     <Table.HeaderCell
                       width={Math.ceil(16 / this.state.index.selectedCount)}
                     >
-                      Title
+                      <FormattedMessage id="Title" defaultMessage="Title" />
                     </Table.HeaderCell>
                     {map(
                       this.state.index.order,
@@ -964,7 +1054,11 @@ export default class ContentsComponent extends Component {
                     <Table.HeaderCell textAlign="right">
                       <Dropdown icon="ellipsis vertical">
                         <Dropdown.Menu className="left">
-                          <Dropdown.Header content="Select columns to show" />
+                          <Dropdown.Header
+                            content={this.props.intl.formatMessage(
+                              messages.selectColumns,
+                            )}
+                          />
                           <Dropdown.Menu scrolling>
                             {map(this.state.index.order, index => (
                               <Dropdown.Item

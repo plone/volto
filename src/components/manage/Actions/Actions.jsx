@@ -9,16 +9,42 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { Dropdown, Icon } from 'semantic-ui-react';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 
 import { cut, copy, copyContent, moveContent } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import { ContentsRenameModal } from '../../../components';
+
+const messages = defineMessages({
+  cut: {
+    id: 'Cut',
+    defaultMessage: 'Cut',
+  },
+  copy: {
+    id: 'Copy',
+    defaultMessage: 'Copy',
+  },
+  paste: {
+    id: 'Paste',
+    defaultMessage: 'Paste',
+  },
+  rename: {
+    id: 'Rename',
+    defaultMessage: 'Rename',
+  },
+});
 
 /**
  * Actions container class.
  * @class Actions
  * @extends Component
  */
+@injectIntl
 @connect(
   state => ({
     action: state.clipboard.action,
@@ -46,6 +72,7 @@ export default class Actions extends Component {
     copyContent: PropTypes.func.isRequired,
     moveContent: PropTypes.func.isRequired,
     expanded: PropTypes.bool,
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -160,14 +187,24 @@ export default class Actions extends Component {
         item
         trigger={
           <span>
-            <Icon name="lightning" />{this.props.expanded && ' Actions'}
+            <Icon name="lightning" />{' '}
+            {this.props.expanded &&
+              <FormattedMessage id="Actions" defaultMessage="Actions" />}
           </span>
         }
         pointing="left"
       >
         <Dropdown.Menu>
-          <Dropdown.Item icon="cut" text="Cut" onClick={this.cut} />
-          <Dropdown.Item icon="copy" text="Copy" onClick={this.copy} />
+          <Dropdown.Item
+            icon="cut"
+            text={this.props.intl.formatMessage(messages.cut)}
+            onClick={this.cut}
+          />
+          <Dropdown.Item
+            icon="copy"
+            text={this.props.intl.formatMessage(messages.copy)}
+            onClick={this.copy}
+          />
           <Dropdown.Item
             icon="paste"
             text="Paste"
@@ -175,11 +212,12 @@ export default class Actions extends Component {
             disabled={this.props.action === null}
           />
           <Link to={`${this.props.pathname}/delete`} className="item">
-            <Icon name="trash" />Delete
+            <Icon name="trash" />
+            <FormattedMessage id="Delete" defaultMessage="Delete" />
           </Link>
           <Dropdown.Item
             icon="text cursor"
-            text="Rename"
+            text={this.props.intl.formatMessage(messages.rename)}
             onClick={this.rename}
           />
           <ContentsRenameModal

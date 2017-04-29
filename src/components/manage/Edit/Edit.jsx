@@ -11,6 +11,12 @@ import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 
 import {
   Form, // Layout,
@@ -18,11 +24,19 @@ import {
 import { editContent, getContent, getSchema } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
+const messages = defineMessages({
+  edit: {
+    id: 'Edit {title}',
+    defaultMessage: 'Edit {title}',
+  },
+});
+
 /**
  * EditComponent class.
  * @class EditComponent
  * @extends Component
  */
+@injectIntl
 @connect(
   (state, props) => ({
     content: state.content.data,
@@ -57,6 +71,7 @@ export class EditComponent extends Component {
       '@type': PropTypes.string,
     }),
     schema: PropTypes.objectOf(PropTypes.any),
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -133,7 +148,11 @@ export class EditComponent extends Component {
     if (this.props.schema && this.props.content) {
       return (
         <div id="page-edit">
-          <Helmet title="Edit" />
+          <Helmet
+            title={this.props.intl.formatMessage(messages.edit, {
+              title: this.props.schema.title,
+            })}
+          />
           {/*
           <Layout
             layout={[
@@ -159,7 +178,15 @@ export class EditComponent extends Component {
             ]}
           />
           */}
-          <h1>Edit {this.props.schema.title}</h1>
+          <h1>
+            <FormattedMessage
+              id="Edit {title}"
+              defaultMessage="Edit {title}"
+              values={{
+                title: this.props.schema.title,
+              }}
+            />
+          </h1>
           <Form
             schema={this.props.schema}
             formData={this.props.content}

@@ -12,16 +12,30 @@ import { filter, isEqual, map } from 'lodash';
 import { Button, Dropdown, Grid, Table } from 'semantic-ui-react';
 import { browserHistory } from 'react-router';
 import moment from 'moment';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 
 import { getDiff, getSchema, getHistory } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import { DiffField } from '../../../components';
+
+const messages = defineMessages({
+  diff: {
+    id: 'Diff',
+    defaultMessage: 'Diff',
+  },
+});
 
 /**
  * DiffComponent class.
  * @class DiffComponent
  * @extends Component
  */
+@injectIntl
 @connect(
   (state, props) => ({
     data: state.diff.data,
@@ -65,6 +79,7 @@ export default class DiffComponent extends Component {
     ).isRequired,
     title: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -179,25 +194,25 @@ export default class DiffComponent extends Component {
     );
     return (
       <div id="page-diff">
-        <Helmet title="Diff" />
+        <Helmet title={this.props.intl.formatMessage(messages.diff)} />
         <h1>
-          Difference between revision
-          {' '}
-          {this.props.one}
-          {' '}
-          and
-          {' '}
-          {this.props.two}
-          {' '}
-          of
-          {' '}
-          <q>{this.props.title}</q>
-          {' '}
+          <FormattedMessage
+            id="Difference between revision {one} and {two} of {title}"
+            defaultMessage="Difference between revision {one} and {two} of {title}"
+            values={{
+              one: this.props.one,
+              two: this.props.two,
+              title: this.props.title,
+            }}
+          />
         </h1>
         <Grid>
           <Grid.Column width={12}>
             <p className="description">
-              You can view the difference of the revisions below.
+              <FormattedMessage
+                id="You can view the difference of the revisions below."
+                defaultMessage="You can view the difference of the revisions below."
+              />
             </p>
           </Grid.Column>
           <Grid.Column width={4} textAlign="right">
@@ -227,7 +242,7 @@ export default class DiffComponent extends Component {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell width={8}>
-                  Base
+                  <FormattedMessage id="Base" defaultMessage="Base" />
                   <Dropdown
                     onChange={this.onChangeOne}
                     value={this.props.one}
@@ -237,7 +252,7 @@ export default class DiffComponent extends Component {
                   />
                 </Table.HeaderCell>
                 <Table.HeaderCell width={8}>
-                  Compare
+                  <FormattedMessage id="Compare" defaultMessage="Compare" />
                   <Dropdown
                     onChange={this.onChangeTwo}
                     value={this.props.two}

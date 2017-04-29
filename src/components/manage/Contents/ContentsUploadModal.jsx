@@ -23,6 +23,7 @@ import { concat, filter, map } from 'lodash';
 import moment from 'moment';
 import filesize from 'filesize';
 import { readAsDataURL } from 'promise-file-reader';
+import { FormattedMessage } from 'react-intl';
 
 import { addContent } from '../../../actions';
 
@@ -165,9 +166,16 @@ export default class ContentsUploadModal extends Component {
     return (
       this.props.open &&
       <Modal open={this.props.open}>
-        <Header>Upload files</Header>
+        <Header>
+          <FormattedMessage id="Upload files" defaultMessage="Upload files" />
+        </Header>
         <Dimmer active={this.props.request.loading}>
-          <Loader>Uploading files</Loader>
+          <Loader>
+            <FormattedMessage
+              id="Uploading files"
+              defaultMessage="Uploading files"
+            />
+          </Loader>
         </Dimmer>
         <Modal.Content>
           <Dropzone onDrop={this.onDrop} className="dropzone">
@@ -176,11 +184,15 @@ export default class ContentsUploadModal extends Component {
                 <Table.Body>
                   <Table.Row>
                     <Table.Cell>
-                      Drag and drop files from your computer onto this area or click the
-                      “Browse” button.
+                      <FormattedMessage
+                        id="Drag and drop files from your computer onto this area or click the “Browse” button."
+                        defaultMessage="Drag and drop files from your computer onto this area or click the “Browse” button."
+                      />
                     </Table.Cell>
                     <Table.Cell>
-                      <Button primary floated="right">Browse</Button>
+                      <Button primary floated="right">
+                        <FormattedMessage id="Browse" defaultMessage="Browse" />
+                      </Button>
                     </Table.Cell>
                   </Table.Row>
                 </Table.Body>
@@ -191,10 +203,24 @@ export default class ContentsUploadModal extends Component {
             <Table compact singleLine>
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell width={8}>Filename</Table.HeaderCell>
-                  <Table.HeaderCell width={4}>Last modified</Table.HeaderCell>
-                  <Table.HeaderCell width={4}>File size</Table.HeaderCell>
-                  <Table.HeaderCell width={4}>Preview</Table.HeaderCell>
+                  <Table.HeaderCell width={8}>
+                    <FormattedMessage id="Filename" defaultMessage="Filename" />
+                  </Table.HeaderCell>
+                  <Table.HeaderCell width={4}>
+                    <FormattedMessage
+                      id="Last modified"
+                      defaultMessage="Last modified"
+                    />
+                  </Table.HeaderCell>
+                  <Table.HeaderCell width={4}>
+                    <FormattedMessage
+                      id="File size"
+                      defaultMessage="File size"
+                    />
+                  </Table.HeaderCell>
+                  <Table.HeaderCell width={4}>
+                    <FormattedMessage id="Preview" defaultMessage="Preview" />
+                  </Table.HeaderCell>
                   <Table.HeaderCell />
                 </Table.Row>
               </Table.Header>
@@ -229,14 +255,17 @@ export default class ContentsUploadModal extends Component {
         <Modal.Actions>
           {this.state.files.length > 0 &&
             <Button primary onClick={this.onSubmit}>
-              Upload
-              {' '}
-              {this.state.files.length}
-              {' '}
-              file
-              {this.state.files.length === 1 ? '' : 's'}
+              <FormattedMessage
+                id="Upload {count, plural, one {# file} other {# files}}"
+                defaultMessage="Upload {count, plural, one {# file} other {# files}}"
+                values={{
+                  count: this.state.files.length,
+                }}
+              />
             </Button>}
-          <Button onClick={this.onCancel}>Cancel</Button>
+          <Button onClick={this.onCancel}>
+            <FormattedMessage id="Cancel" defaultMessage="Cancel" />
+          </Button>
         </Modal.Actions>
       </Modal>
     );

@@ -13,15 +13,36 @@ import { updateIntl } from 'react-intl-redux';
 import { map, keys } from 'lodash';
 import cookie from 'react-cookie';
 import request from 'superagent';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 import { Form } from '../../../components';
 import languages from '../../../constants/Languages';
+
+const messages = defineMessages({
+  personalPreferences: {
+    id: 'Personal Preferences',
+    defaultMessage: 'Personal Preferences',
+  },
+  default: {
+    id: 'Default',
+    defaultMessage: 'Default',
+  },
+  language: {
+    id: 'Language',
+    defaultMessage: 'Language',
+  },
+  languageDescription: {
+    id: 'Your preferred language',
+    defaultMessage: 'Your preferred language',
+  },
+});
 
 /**
  * PersonalPreferences class.
  * @class AddComponent
  * @extends Component
  */
+@injectIntl
 @connect(() => {}, dispatch => bindActionCreators({ updateIntl }, dispatch))
 export default class PersonalPreferences extends Component {
   /**
@@ -31,6 +52,7 @@ export default class PersonalPreferences extends Component {
    */
   static propTypes = {
     updateIntl: PropTypes.func.isRequired,
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -84,21 +106,25 @@ export default class PersonalPreferences extends Component {
   render() {
     return (
       <div id="page-add">
-        <Helmet title="Personal Preferences" />
+        <Helmet
+          title={this.props.intl.formatMessage(messages.personalPreferences)}
+        />
         <Form
           formData={{ language: cookie.load('lang') || '' }}
           schema={{
             fieldsets: [
               {
                 id: 'default',
-                title: 'Default',
+                title: this.props.intl.formatMessage(messages.default),
                 fields: ['language'],
               },
             ],
             properties: {
               language: {
-                description: 'Your preferred language',
-                title: 'Language',
+                description: this.props.intl.formatMessage(
+                  messages.languageDescription,
+                ),
+                title: this.props.intl.formatMessage(messages.language),
                 type: 'string',
                 choices: map(keys(languages), lang => [lang, languages[lang]]),
               },

@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
+import { FormattedMessage } from 'react-intl';
 
 import { getBreadcrumbs } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
@@ -72,7 +73,9 @@ export default class Breadcrumbs extends Component {
       <Segment secondary vertical>
         <Container>
           <Breadcrumb>
-            <Link to="/" className="section">Home</Link>
+            <Link to="/" className="section">
+              <FormattedMessage id="Home" defaultMessage="Home" />
+            </Link>
             {this.props.items.map((item, index, items) => [
               <Breadcrumb.Divider
                 icon="right angle"

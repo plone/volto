@@ -10,14 +10,28 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import { Button, List } from 'semantic-ui-react';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 
 import { deleteContent, getContent } from '../../../actions';
+
+const messages = defineMessages({
+  delete: {
+    id: 'Delete',
+    defaultMessage: 'Delete',
+  },
+});
 
 /**
  * Delete container class.
  * @class Delete
  * @extends Component
  */
+@injectIntl
 @connect(
   (state, props) => ({
     content: state.content.data,
@@ -43,6 +57,7 @@ export default class Delete extends Component {
     content: PropTypes.shape({
       title: PropTypes.string,
     }),
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -116,15 +131,22 @@ export default class Delete extends Component {
     if (this.props.content) {
       return (
         <div id="page-delete">
-          <Helmet title="Delete" />
+          <Helmet title={this.props.intl.formatMessage(messages.delete)} />
           <h1 className="documentFirstHeading">
-            Do you really want to delete this item?
+            <formatMessage
+              id="Do you really want to delete this item?"
+              defaultMessage="Do you really want to delete this item?"
+            />
           </h1>
           <List bulleted>
             <List.Item>{this.props.content.title}</List.Item>
           </List>
-          <Button primary onClick={this.onSubmit}>Ok</Button>
-          <Button onClick={this.onCancel}>Cancel</Button>
+          <Button primary onClick={this.onSubmit}>
+            <FormattedMessage id="Ok" defaultMessage="Ok" />
+          </Button>
+          <Button onClick={this.onCancel}>
+            <FormattedMessage id="Cancel" defaultMessage="Cancel" />
+          </Button>
         </div>
       );
     }

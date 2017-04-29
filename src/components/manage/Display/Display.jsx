@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Dropdown, Icon } from 'semantic-ui-react';
+import { FormattedMessage } from 'react-intl';
 
 import { getSchema, editContent, getContent } from '../../../actions';
 import layouts from '../../../constants/Layouts';
@@ -115,7 +116,9 @@ export default class Display extends Component {
         item
         trigger={
           <span>
-            <Icon name="block layout" />{this.props.expanded && ' Display'}
+            <Icon name="block layout" />{' '}
+            {this.props.expanded &&
+              <FormattedMessage id="Display" defaultMessage="Display" />}
           </span>
         }
         pointing="left"

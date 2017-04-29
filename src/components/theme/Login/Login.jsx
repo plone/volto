@@ -12,6 +12,7 @@ import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import { isEmpty } from 'lodash';
 import { Button, Form, Input, Segment } from 'semantic-ui-react';
+import { FormattedMessage } from 'react-intl';
 
 import { login } from '../../../actions';
 
@@ -106,16 +107,25 @@ export class LoginComponent extends Component {
           <Form method="post" onSubmit={this.onLogin}>
             <Segment attached="top">
               <Form.Field>
-                <label htmlFor="login">Login Name</label>
+                <label htmlFor="login">
+                  <FormattedMessage
+                    id="Login Name"
+                    defaultMessage="Login Name"
+                  />
+                </label>
                 <Input id="login" name="login" />
               </Form.Field>
               <Form.Field>
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">
+                  <FormattedMessage id="Password" defaultMessage="Password" />
+                </label>
                 <Input type="password" id="password" name="password" />
               </Form.Field>
             </Segment>
             <Segment attached="bottom">
-              <Button primary type="submit">Log In</Button>
+              <Button primary type="submit">
+                <FormattedMessage id="Log in" defaultMessage="Log in" />
+              </Button>
             </Segment>
           </Form>
         </div>

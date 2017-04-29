@@ -8,15 +8,40 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { concat, merge, map } from 'lodash';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 import { editContent } from '../../../actions';
 import { ModalForm } from '../../../components';
+
+const messages = defineMessages({
+  renameItems: {
+    id: 'Rename items',
+    defaultMessage: 'Rename items',
+  },
+  default: {
+    id: 'Default',
+    defaultMessage: 'Default',
+  },
+  title: {
+    id: 'Title',
+    defaultMessage: 'Title',
+  },
+  shortName: {
+    id: 'Short name',
+    defaultMessage: 'Short name',
+  },
+  shortNameDescription: {
+    id: 'This name will be displayed in the URL.',
+    defaultMessage: 'This name will be displayed in the URL.',
+  },
+});
 
 /**
  * ContentsRenameModal class.
  * @class ContentsRenameModal
  * @extends Component
  */
+@injectIntl
 @connect(
   state => ({
     request: state.content.edit,
@@ -45,6 +70,7 @@ export default class ContentsRenameModal extends Component {
     open: PropTypes.bool.isRequired,
     onOk: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -104,12 +130,12 @@ export default class ContentsRenameModal extends Component {
             [`${index}_id`]: item.id,
           })),
         )}
-        title="Rename items"
+        title={this.props.intl.formatMessage(messages.renameItems)}
         schema={{
           fieldsets: [
             {
               id: 'default',
-              title: 'Default',
+              title: this.props.intl.formatMessage(messages.default),
               fields: concat(
                 ...map(this.props.items, (item, index) => [
                   `${index}_title`,
@@ -121,14 +147,16 @@ export default class ContentsRenameModal extends Component {
           properties: merge(
             ...map(this.props.items, (item, index) => ({
               [`${index}_title`]: {
-                title: 'Title',
+                title: this.props.intl.formatMessage(messages.title),
                 type: 'string',
                 description: '',
               },
               [`${index}_id`]: {
-                title: 'Short name',
+                title: this.props.intl.formatMessage(messages.shortName),
                 type: 'string',
-                description: 'This name will be displayed in the URL.',
+                description: this.props.intl.formatMessage(
+                  messages.shortNameDescription,
+                ),
               },
             })),
           ),

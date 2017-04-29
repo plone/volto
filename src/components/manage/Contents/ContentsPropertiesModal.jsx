@@ -8,15 +8,68 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { isEmpty, map } from 'lodash';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 import { editContent } from '../../../actions';
 import { ModalForm } from '../../../components';
+
+const messages = defineMessages({
+  properties: {
+    id: 'Properties',
+    defaultMessage: 'Properties',
+  },
+  default: {
+    id: 'Default',
+    defaultMessage: 'Default',
+  },
+  effectiveTitle: {
+    id: 'Publishing Date',
+    defaultMessage: 'Publishing Date',
+  },
+  effectiveDescription: {
+    id: 'If this date is in the future, the content will not show up in listings and searches until this date.',
+    defaultMessage: 'If this date is in the future, the content will not show up in listings and searches until this date.',
+  },
+  expiresTitle: {
+    id: 'Expiration Date',
+    defaultMessage: 'Expiration Date',
+  },
+  expiresDescription: {
+    id: 'When this date is reached, the content will nolonger be visible in listings and searches.',
+    defaultMessage: 'When this date is reached, the content will nolonger be visible in listings and searches.',
+  },
+  rightsTitle: {
+    id: 'Rights',
+    defaultMessage: 'Rights',
+  },
+  rightsDescription: {
+    id: 'Copyright statement or other rights information on this item.',
+    defaultMessage: 'Copyright statement or other rights information on this item.',
+  },
+  creatorsTitle: {
+    id: 'Creators',
+    defaultMessage: 'Creators',
+  },
+  creatorsDescription: {
+    id: 'Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.',
+    defaultMessage: 'Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.',
+  },
+  excludeFromNavTitle: {
+    id: 'Exclude from navigation',
+    defaultMessage: 'Exclude from navigation',
+  },
+  excludeFromNavDescription: {
+    id: 'If selected, this item will not appear in the navigation tree',
+    defaultMessage: 'If selected, this item will not appear in the navigation tree',
+  },
+});
 
 /**
  * ContentsPropertiesModal class.
  * @class ContentsPropertiesModal
  * @extends Component
  */
+@injectIntl
 @connect(
   state => ({
     request: state.content.edit,
@@ -39,6 +92,7 @@ export default class ContentsPropertiesModal extends Component {
     open: PropTypes.bool.isRequired,
     onOk: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -93,12 +147,12 @@ export default class ContentsPropertiesModal extends Component {
         open={this.props.open}
         onSubmit={this.onSubmit}
         onCancel={this.props.onCancel}
-        title="Properties"
+        title={this.props.intl.formatMessage(messages.properties)}
         schema={{
           fieldsets: [
             {
               id: 'default',
-              title: 'Default',
+              title: this.props.intl.formatMessage(messages.default),
               fields: [
                 'effective',
                 'expires',
@@ -110,32 +164,44 @@ export default class ContentsPropertiesModal extends Component {
           ],
           properties: {
             effective: {
-              description: 'If this date is in the future, the content will not show up in listings and searches until this date.',
-              title: 'Publishing Date',
+              description: this.props.intl.formatMessage(
+                messages.effectiveDescription,
+              ),
+              title: this.props.intl.formatMessage(messages.effectiveTitle),
               type: 'string',
               widget: 'datetime',
             },
             expires: {
-              description: 'When this date is reached, the content will nolonger be visible in listings and searches.',
-              title: 'Expiration Date',
+              description: this.props.intl.formatMessage(
+                messages.expiresDescription,
+              ),
+              title: this.props.intl.formatMessage(messages.expiresTitle),
               type: 'string',
               widget: 'datetime',
             },
             rights: {
-              description: 'Copyright statement or other rights information on this item.',
-              title: 'Rights',
+              description: this.props.intl.formatMessage(
+                messages.rightsDescription,
+              ),
+              title: this.props.intl.formatMessage(messages.rightsTitle),
               type: 'string',
               widget: 'textarea',
             },
             creators: {
-              description: 'Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.',
-              title: 'Creators',
+              description: this.props.intl.formatMessage(
+                messages.creatorsDescription,
+              ),
+              title: this.props.intl.formatMessage(messages.creatorsTitle),
               type: 'array',
             },
             exclude_from_nav: {
               default: false,
-              description: 'If selected, this item will not appear in the navigation tree',
-              title: 'Exclude from navigation',
+              description: this.props.intl.formatMessage(
+                messages.excludeFromNavDescription,
+              ),
+              title: this.props.intl.formatMessage(
+                messages.excludeFromNavTitle,
+              ),
               type: 'boolean',
             },
           },

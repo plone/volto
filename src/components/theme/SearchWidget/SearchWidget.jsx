@@ -22,10 +22,6 @@ const messages = defineMessages({
     id: 'only in current section',
     defaultMessage: 'only in current section',
   },
-  add: {
-    id: 'Add {type}',
-    defaultMessage: 'Add {type}',
-  },
 });
 
 /**

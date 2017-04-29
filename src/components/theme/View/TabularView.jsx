@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import { Table } from 'semantic-ui-react';
+import { FormattedMessage } from 'react-intl';
 
 /**
  * Tabular view component class.
@@ -28,10 +29,21 @@ const TabularView = ({ content }) => (
         <Table celled padded>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Title</Table.HeaderCell>
-              <Table.HeaderCell>Description</Table.HeaderCell>
-              <Table.HeaderCell>Type</Table.HeaderCell>
-              <Table.HeaderCell>State</Table.HeaderCell>
+              <Table.HeaderCell>
+                <FormattedMessage id="Title" defaultMessage="Title" />
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                <FormattedMessage
+                  id="Description"
+                  defaultMessage="Description"
+                />
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                <FormattedMessage id="Type" defaultMessage="Type" />
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                <FormattedMessage id="State" defaultMessage="State" />
+              </Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
