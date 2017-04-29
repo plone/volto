@@ -131,7 +131,7 @@ export default class HistoryComponent extends Component {
         <p className="description">
           <FormattedMessage
             id="You can view the history of your item below."
-            defaultValue="You can view the history of your item below."
+            defaultMessage="You can view the history of your item below."
           />
         </p>
 

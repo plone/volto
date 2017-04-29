@@ -1,9 +1,24 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-intl-redux';
+
 import Logo from './Logo';
 
-test('renders a logo component', () => {
-  const component = renderer.create(<Logo />);
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+const mockStore = configureStore();
+
+describe('Logo', () => {
+  it('renders a logo component', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}><Logo /></Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });

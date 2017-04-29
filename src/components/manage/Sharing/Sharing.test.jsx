@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-intl-redux';
 import jwt from 'jsonwebtoken';
 
 import Sharing from './Sharing';
@@ -40,6 +40,10 @@ describe('Sharing', () => {
         data: {
           title: 'Blog',
         },
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
       },
     });
     const component = renderer.create(

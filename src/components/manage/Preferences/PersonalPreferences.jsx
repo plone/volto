@@ -43,7 +43,7 @@ const messages = defineMessages({
  * @extends Component
  */
 @injectIntl
-@connect(() => {}, dispatch => bindActionCreators({ updateIntl }, dispatch))
+@connect(() => ({}), dispatch => bindActionCreators({ updateIntl }, dispatch))
 export default class PersonalPreferences extends Component {
   /**
    * Property types.

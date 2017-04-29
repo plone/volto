@@ -21,7 +21,9 @@ exports[`Login renders a login component 1`] = `
           <label
             htmlFor="login"
           >
-            Login Name
+            <span>
+              Login Name
+            </span>
           </label>
           <div
             className="ui input"
@@ -39,7 +41,9 @@ exports[`Login renders a login component 1`] = `
           <label
             htmlFor="password"
           >
-            Password
+            <span>
+              Password
+            </span>
           </label>
           <div
             className="ui input"
@@ -61,7 +65,9 @@ exports[`Login renders a login component 1`] = `
           tabIndex={undefined}
           type="submit"
         >
-          Log In
+          <span>
+            Log in
+          </span>
         </button>
       </div>
     </form>

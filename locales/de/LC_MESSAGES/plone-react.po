@@ -162,6 +162,10 @@ msgstr "Lizensiert unter der {license}."
 msgid "Do you really want to delete the following items?"
 msgstr "Möchten Sie den Artikel wirklich löschen?"
 
+#: components/manage/Delete/Delete
+msgid "Do you really want to delete this item?"
+msgstr "Möchten Sie den Artikel wirklich löschen?"
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Drag & Drop Dateien von Ihrem Computer auf diesen Bereich oder drück den “Blättern” Knopf"
@@ -259,6 +263,10 @@ msgstr "Zum Unterseite des Ordners wechseln"
 #: components/manage/Sharing/Sharing
 msgid "Name"
 msgstr "Name"
+
+#: components/manage/Contents/Contents
+msgid "None"
+msgstr "Keiner"
 
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -437,6 +445,10 @@ msgstr "{plonecms} {copyright} 2000-{current_year} {plonefoundation} und Freunde
 msgid "This name will be displayed in the URL."
 msgstr "Dieser Name wird in der Adressleiste des Browsers angezeigt."
 
+#: components/theme/NotFound/NotFound
+msgid "This page does not seem to exist…"
+msgstr "Die Seite existiert leider nicht…"
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/theme/View/TabularView
@@ -502,6 +514,10 @@ msgstr "Sie können mit der folgenden Liste bestimmen, wer Ihren Artikel sehen u
 
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
+msgstr ""
+
+#: components/manage/History/History
+msgid "You can view the history of your item below."
 msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences

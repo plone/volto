@@ -166,6 +166,10 @@ msgstr "Gedistribueerd onder de {license}."
 msgid "Do you really want to delete the following items?"
 msgstr "Weet u zeker dat u de volgende items wilt verwijderen?"
 
+#: components/manage/Delete/Delete
+msgid "Do you really want to delete this item?"
+msgstr "Weet u zeker dat u dit item wilt verwijderen?"
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Drag en drop bestanden van uw computer naar dit gebied of klik op de “Bladeren” knop."
@@ -263,6 +267,10 @@ msgstr "Verplaats naar boven in de map"
 #: components/manage/Sharing/Sharing
 msgid "Name"
 msgstr "Naam"
+
+#: components/manage/Contents/Contents
+msgid "None"
+msgstr "Niks"
 
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -441,6 +449,10 @@ msgstr "Het {plonecms} is {copyright} 2000-{current_year} door de {plonefoundati
 msgid "This name will be displayed in the URL."
 msgstr "Deze naam wordt getoond in de URL."
 
+#: components/theme/NotFound/NotFound
+msgid "This page does not seem to exist…"
+msgstr "Het spijt ons, maar deze pagina bestaat niet…"
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/theme/View/TabularView
@@ -507,6 +519,10 @@ msgstr "U kunt in de onderstaande lijst beheren wie de content kan bekijken en b
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
 msgstr "U kunt de verschillen tussen de revisies hieronder bekijken."
+
+#: components/manage/History/History
+msgid "You can view the history of your item below."
+msgstr "U kunt de geschiedenis van uw item hieronder bekijken."
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Your preferred language"

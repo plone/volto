@@ -133,7 +133,7 @@ export default class Delete extends Component {
         <div id="page-delete">
           <Helmet title={this.props.intl.formatMessage(messages.delete)} />
           <h1 className="documentFirstHeading">
-            <formatMessage
+            <FormattedMessage
               id="Do you really want to delete this item?"
               defaultMessage="Do you really want to delete this item?"
             />

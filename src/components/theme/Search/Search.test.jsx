@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-intl-redux';
 
 import { SearchComponent as Search } from './Search';
 
@@ -12,6 +12,10 @@ describe('Search', () => {
     const store = mockStore({
       search: {
         loaded: false,
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
       },
     });
     const component = renderer.create(
@@ -35,6 +39,10 @@ describe('Search', () => {
             description: 'My blog',
           },
         ],
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
       },
     });
     const component = renderer.create(

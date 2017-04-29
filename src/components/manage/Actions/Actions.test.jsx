@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-intl-redux';
 
 import Actions from './Actions';
 
@@ -16,6 +16,10 @@ describe('Actions', () => {
     const store = mockStore({
       clipboard: {},
       content: { data: { id: 'blog', title: 'Blog' } },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
     });
     const component = renderer.create(
       <Provider store={store}>

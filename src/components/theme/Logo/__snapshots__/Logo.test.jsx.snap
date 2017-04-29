@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a logo component 1`] = `
+exports[`Logo renders a logo component 1`] = `
 <a
   id="portal-logo"
   onClick={[Function]}
@@ -8,9 +8,9 @@ exports[`renders a logo component 1`] = `
   title="Site"
 >
   <img
-    alt="Plone site"
+    alt="Plone Site"
     src="Logo.png"
-    title="Plone site"
+    title="Plone Site"
   />
 </a>
 `;

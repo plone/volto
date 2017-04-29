@@ -16,8 +16,8 @@ const NotFound = () => (
   <div id="page-not-found">
     <h1>
       <FormattedMessage
-        id="This page does not seem to exist..."
-        description="This page does not seem to exist..."
+        id="This page does not seem to exist…"
+        defaultMessage="This page does not seem to exist…"
       />
     </h1>
     <p className="description">

@@ -20,7 +20,10 @@ exports[`Display renders an actions component 1`] = `
       aria-hidden="true"
       className="block layout icon"
     />
-     Display
+     
+    <span>
+      Display
+    </span>
   </span>
   <i
     aria-hidden="true"

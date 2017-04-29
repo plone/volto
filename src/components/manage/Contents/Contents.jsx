@@ -1001,7 +1001,7 @@ export default class ContentsComponent extends Component {
                           <Dropdown.Item onClick={this.onSelectNone}>
                             <Icon name="square outline" />
                             {' '}
-                            <FormattedMessage id="None" values="None" />
+                            <FormattedMessage id="None" defaultMessage="None" />
                           </Dropdown.Item>
                           <Dropdown.Divider />
                           <Dropdown.Header

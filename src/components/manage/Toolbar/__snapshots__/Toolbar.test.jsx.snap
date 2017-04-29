@@ -23,7 +23,10 @@ exports[`Toolbar renders an actions component 1`] = `
         aria-hidden="true"
         className="folder open icon"
       />
-       Contents
+       
+      <span>
+        Contents
+      </span>
     </span>
   </a>
   <a
@@ -36,7 +39,10 @@ exports[`Toolbar renders an actions component 1`] = `
         aria-hidden="true"
         className="write icon"
       />
-       Edit
+       
+      <span>
+        Edit
+      </span>
     </span>
   </a>
   <a
@@ -49,7 +55,10 @@ exports[`Toolbar renders an actions component 1`] = `
         aria-hidden="true"
         className="eye icon"
       />
-       View
+       
+      <span>
+        View
+      </span>
     </span>
   </a>
   <div
@@ -74,7 +83,10 @@ exports[`Toolbar renders an actions component 1`] = `
         aria-hidden="true"
         className="clock icon"
       />
-       History
+       
+      <span>
+        History
+      </span>
     </span>
   </a>
   <a
@@ -87,7 +99,10 @@ exports[`Toolbar renders an actions component 1`] = `
         aria-hidden="true"
         className="users icon"
       />
-       Sharing
+       
+      <span>
+        Sharing
+      </span>
     </span>
   </a>
   <div
@@ -128,7 +143,10 @@ exports[`Toolbar renders an actions component 1`] = `
             aria-hidden="true"
             className="setting icon"
           />
-           Preferences
+           
+          <span>
+            Preferences
+          </span>
         </span>
       </a>
       <a
@@ -141,7 +159,10 @@ exports[`Toolbar renders an actions component 1`] = `
             aria-hidden="true"
             className="sign out icon"
           />
-           Log out
+           
+          <span>
+            Log out
+          </span>
         </span>
       </a>
     </div>

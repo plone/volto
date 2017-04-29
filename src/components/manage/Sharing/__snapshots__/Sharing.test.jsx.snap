@@ -5,15 +5,19 @@ exports[`Sharing renders a sharing component 1`] = `
   id="page-sharing"
 >
   <h1>
-    Sharing for 
-    <q>
-      Blog
-    </q>
+    <span>
+      Sharing for 
+      <q>
+        Blog
+      </q>
+    </span>
   </h1>
   <p
     className="description"
   >
-    You can control who can view and edit your item using the list below.
+    <span>
+      You can control who can view and edit your item using the list below.
+    </span>
   </p>
   <form
     className="ui form"
@@ -58,7 +62,9 @@ exports[`Sharing renders a sharing component 1`] = `
           <th
             className=""
           >
-            Name
+            <span>
+              Name
+            </span>
           </th>
           <th
             className=""
@@ -135,21 +141,19 @@ exports[`Sharing renders a sharing component 1`] = `
     <p
       className="help"
     >
-      By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol
-       
-      <i
-        aria-hidden="true"
-        className="green check circle icon"
-      />
-       
-      indicates an inherited value. Similarly, the symbol
-       
-      <i
-        aria-hidden="true"
-        className="blue check circle outline icon"
-      />
-       
-      indicates a global role, which is managed by the site administrator.
+      <span>
+        By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol 
+        <i
+          aria-hidden="true"
+          className="green check circle icon"
+        />
+         indicates an inherited value. Similarly, the symbol 
+        <i
+          aria-hidden="true"
+          className="blue check circle outline icon"
+        />
+         indicates a global role, which is managed by the site administrator.
+      </span>
     </p>
     <button
       className="ui primary button"
@@ -157,14 +161,18 @@ exports[`Sharing renders a sharing component 1`] = `
       tabIndex={undefined}
       type="submit"
     >
-      Save
+      <span>
+        Save
+      </span>
     </button>
     <button
       className="ui button"
       onClick={[Function]}
       tabIndex={undefined}
     >
-      Cancel
+      <span>
+        Cancel
+      </span>
     </button>
   </form>
 </div>

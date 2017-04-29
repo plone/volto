@@ -10,7 +10,9 @@ exports[`Anontools renders an anontools component when no token is specified 1`]
     onClick={[Function]}
     style={Object {}}
   >
-    Log in
+    <span>
+      Log in
+    </span>
   </a>
 </div>
 `;

@@ -5,15 +5,19 @@ exports[`History renders a history component 1`] = `
   id="page-history"
 >
   <h1>
-    History of 
-    <q>
-      Blog
-    </q>
+    <span>
+      History of 
+      <q>
+        Blog
+      </q>
+    </span>
   </h1>
   <p
     className="description"
   >
-    You can view the history of your item below.
+    <span>
+      You can view the history of your item below.
+    </span>
   </p>
   <table
     className="ui selectable single line compact table"
@@ -27,22 +31,30 @@ exports[`History renders a history component 1`] = `
         <th
           className="four wide"
         >
-          What
+          <span>
+            What
+          </span>
         </th>
         <th
           className="four wide"
         >
-          Who
+          <span>
+            Who
+          </span>
         </th>
         <th
           className="four wide"
         >
-          When
+          <span>
+            When
+          </span>
         </th>
         <th
           className="four wide"
         >
-          Change Note
+          <span>
+            Change Note
+          </span>
         </th>
         <th
           className=""

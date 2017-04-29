@@ -147,6 +147,10 @@ msgstr ""
 msgid "Do you really want to delete the following items?"
 msgstr ""
 
+#: components/manage/Delete/Delete
+msgid "Do you really want to delete this item?"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
@@ -243,6 +247,10 @@ msgstr ""
 
 #: components/manage/Sharing/Sharing
 msgid "Name"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "None"
 msgstr ""
 
 #: components/manage/Delete/Delete
@@ -422,6 +430,10 @@ msgstr ""
 msgid "This name will be displayed in the URL."
 msgstr ""
 
+#: components/theme/NotFound/NotFound
+msgid "This page does not seem to exist…"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/theme/View/TabularView
@@ -487,6 +499,10 @@ msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
+msgstr ""
+
+#: components/manage/History/History
+msgid "You can view the history of your item below."
 msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences

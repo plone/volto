@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-intl-redux';
 
 import { LoginComponent as Login } from './Login';
 
@@ -12,6 +12,10 @@ describe('Login', () => {
     const store = mockStore({
       userSession: {
         login: {},
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
       },
     });
     const component = renderer.create(
