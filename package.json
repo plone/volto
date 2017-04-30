@@ -204,6 +204,7 @@
     "superagent": "3.5.2",
     "universal-webpack": "0.3.9",
     "url-loader": "0.5.8",
+    "uuid": "3.0.1",
     "warning": "3.0.0",
     "webpack": "2.4.1"
   },

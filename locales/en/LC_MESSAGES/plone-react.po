@@ -72,6 +72,12 @@ msgstr ""
 msgid "Change State"
 msgstr ""
 
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Preferences/PersonalPreferences
+msgid "Changes saved"
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Compare"
 msgstr ""
@@ -253,6 +259,19 @@ msgstr ""
 
 #: components/manage/Sharing/Sharing
 msgid "Inherit permissions from higher levels"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Item(s) copied."
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Item(s) cut."
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+msgid "Item(s) pasted."
 msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences
@@ -587,4 +606,20 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"
+msgstr ""
+
+#: components/manage/Actions/Actions
+msgid "{title} copied."
+msgstr ""
+
+#: components/manage/Actions/Actions
+msgid "{title} cut."
+msgstr ""
+
+#: components/manage/Actions/Actions
+msgid "{title} has been deleted."
+msgstr ""
+
+#: components/manage/Actions/Actions
+msgid "{title} renamed."
 msgstr ""

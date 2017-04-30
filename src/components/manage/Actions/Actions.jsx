@@ -16,7 +16,13 @@ import {
   intlShape,
 } from 'react-intl';
 
-import { cut, copy, copyContent, moveContent } from '../../../actions';
+import {
+  cut,
+  copy,
+  copyContent,
+  moveContent,
+  addMessage,
+} from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import { ContentsRenameModal } from '../../../components';
 
@@ -37,6 +43,26 @@ const messages = defineMessages({
     id: 'Rename',
     defaultMessage: 'Rename',
   },
+  messageCopied: {
+    id: '{title} copied.',
+    defaultMessage: '{title} copied.',
+  },
+  messageCut: {
+    id: '{title} cut.',
+    defaultMessage: '{title} cut.',
+  },
+  messageDeleted: {
+    id: '{title} has been deleted.',
+    defaultMessage: '{title} has been deleted.',
+  },
+  messagePasted: {
+    id: 'Item(s) pasted.',
+    defaultMessage: 'Item(s) pasted.',
+  },
+  messageRenamed: {
+    id: '{title} renamed.',
+    defaultMessage: '{title} renamed.',
+  },
 });
 
 /**
@@ -53,7 +79,10 @@ const messages = defineMessages({
     title: state.content.data.title,
   }),
   dispatch =>
-    bindActionCreators({ cut, copy, copyContent, moveContent }, dispatch),
+    bindActionCreators(
+      { cut, copy, copyContent, moveContent, addMessage },
+      dispatch,
+    ),
 )
 export default class Actions extends Component {
   /**
@@ -71,6 +100,7 @@ export default class Actions extends Component {
     copy: PropTypes.func.isRequired,
     copyContent: PropTypes.func.isRequired,
     moveContent: PropTypes.func.isRequired,
+    addMessage: PropTypes.func.isRequired,
     expanded: PropTypes.bool,
     intl: intlShape.isRequired,
   };
@@ -114,6 +144,13 @@ export default class Actions extends Component {
     this.setState({
       showRename: false,
     });
+    this.props.addMessage(
+      null,
+      this.props.intl.formatMessage(messages.messageRenamed, {
+        title: this.props.title,
+      }),
+      'success',
+    );
   }
 
   /**
@@ -134,6 +171,13 @@ export default class Actions extends Component {
    */
   cut() {
     this.props.cut([getBaseUrl(this.props.pathname)]);
+    this.props.addMessage(
+      null,
+      this.props.intl.formatMessage(messages.messageCut, {
+        title: this.props.title,
+      }),
+      'success',
+    );
   }
 
   /**
@@ -143,6 +187,13 @@ export default class Actions extends Component {
    */
   copy() {
     this.props.copy([getBaseUrl(this.props.pathname)]);
+    this.props.addMessage(
+      null,
+      this.props.intl.formatMessage(messages.messageCopied, {
+        title: this.props.title,
+      }),
+      'success',
+    );
   }
 
   /**
@@ -163,6 +214,11 @@ export default class Actions extends Component {
         getBaseUrl(this.props.pathname),
       );
     }
+    this.props.addMessage(
+      null,
+      this.props.intl.formatMessage(messages.messagePasted),
+      'success',
+    );
   }
 
   /**

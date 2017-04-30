@@ -2,6 +2,7 @@
 
 ## 0.3.0 (2017-04-29)
 ### Added
+- Notification messages @robgietema
 - Personal information @robgietema
 - Change password @robgietema
 - Password widget @robgietema

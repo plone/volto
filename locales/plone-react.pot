@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2017-04-29T20:45:53.998Z\n"
+"POT-Creation-Date: 2017-04-30T08:55:34.147Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -86,6 +86,13 @@ msgstr ""
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Change State
 msgid "Change State"
+msgstr ""
+
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Preferences/PersonalPreferences
+# defaultMessage: Changes saved
+msgid "Changes saved"
 msgstr ""
 
 #: components/manage/Diff/Diff
@@ -311,6 +318,22 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
 msgid "Inherit permissions from higher levels"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) copied.
+msgid "Item(s) copied."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) cut.
+msgid "Item(s) cut."
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+# defaultMessage: Item(s) pasted.
+msgid "Item(s) pasted."
 msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences
@@ -724,4 +747,24 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: {count} selected
 msgid "{count} selected"
+msgstr ""
+
+#: components/manage/Actions/Actions
+# defaultMessage: {title} copied.
+msgid "{title} copied."
+msgstr ""
+
+#: components/manage/Actions/Actions
+# defaultMessage: {title} cut.
+msgid "{title} cut."
+msgstr ""
+
+#: components/manage/Actions/Actions
+# defaultMessage: {title} has been deleted.
+msgid "{title} has been deleted."
+msgstr ""
+
+#: components/manage/Actions/Actions
+# defaultMessage: {title} renamed.
+msgid "{title} renamed."
 msgstr ""

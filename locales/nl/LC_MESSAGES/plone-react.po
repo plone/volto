@@ -91,6 +91,12 @@ msgstr "Wachtwoord wijzigen"
 msgid "Change State"
 msgstr "Status wijzigen"
 
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Preferences/PersonalPreferences
+msgid "Changes saved"
+msgstr "Wijzigingen zijn opgeslagen"
+
 #: components/manage/Diff/Diff
 msgid "Compare"
 msgstr "Vergelijken"
@@ -273,6 +279,19 @@ msgstr "Indien u er zeker van bent dat u het webadres goed heeft, maar toch een 
 #: components/manage/Sharing/Sharing
 msgid "Inherit permissions from higher levels"
 msgstr "Rechten overnemen van bovenliggende map"
+
+#: components/manage/Contents/Contents
+msgid "Item(s) copied."
+msgstr "Item(s) gekopieerd"
+
+#: components/manage/Contents/Contents
+msgid "Item(s) cut."
+msgstr "Item(d) geknipt."
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+msgid "Item(s) pasted."
+msgstr "Item(s) geplakt."
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
@@ -607,3 +626,19 @@ msgstr "alleen binnen huidige sectie"
 #: components/manage/Contents/Contents
 msgid "{count} selected"
 msgstr "{count} geselecteerd"
+
+#: components/manage/Actions/Actions
+msgid "{title} copied."
+msgstr "{title} gekopieerd."
+
+#: components/manage/Actions/Actions
+msgid "{title} cut."
+msgstr "{title} geknipt."
+
+#: components/manage/Actions/Actions
+msgid "{title} has been deleted."
+msgstr "{title} is verwijderd."
+
+#: components/manage/Actions/Actions
+msgid "{title} renamed."
+msgstr "{title} hernoemd"

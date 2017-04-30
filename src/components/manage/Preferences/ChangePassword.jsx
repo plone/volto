@@ -19,7 +19,7 @@ import { Menu } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 
 import { Form } from '../../../components';
-import { editPassword } from '../../../actions';
+import { editPassword, addMessage } from '../../../actions';
 
 const messages = defineMessages({
   changePassword: {
@@ -54,6 +54,10 @@ const messages = defineMessages({
     id: 'Re-enter the password. Make sure the passwords are identical.',
     defaultMessage: 'Re-enter the password. Make sure the passwords are identical.',
   },
+  saved: {
+    id: 'Changes saved',
+    defaultMessage: 'Changes saved',
+  },
 });
 
 /**
@@ -68,7 +72,7 @@ const messages = defineMessages({
       ? jwtDecode(state.userSession.token).sub
       : '',
   }),
-  dispatch => bindActionCreators({ editPassword }, dispatch),
+  dispatch => bindActionCreators({ editPassword, addMessage }, dispatch),
 )
 export default class ChangePassword extends Component {
   /**
@@ -79,6 +83,7 @@ export default class ChangePassword extends Component {
   static propTypes = {
     userId: PropTypes.string.isRequired,
     editPassword: PropTypes.func.isRequired,
+    addMessage: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
 
@@ -106,6 +111,11 @@ export default class ChangePassword extends Component {
         this.props.userId,
         data.oldPassword,
         data.newPassword,
+      );
+      this.props.addMessage(
+        null,
+        this.props.intl.formatMessage(messages.saved),
+        'success',
       );
     }
   }
