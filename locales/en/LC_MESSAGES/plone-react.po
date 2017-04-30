@@ -274,6 +274,11 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr ""
 
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+msgid "Items must be unique."
+msgstr ""
+
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
 msgstr ""
@@ -297,6 +302,11 @@ msgstr ""
 
 #: components/theme/Login/Login
 msgid "Login Name"
+msgstr ""
+
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+msgid "Minimum length is {len}."
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -408,6 +418,11 @@ msgstr ""
 msgid "Rename items"
 msgstr ""
 
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+msgid "Required input is missing."
+msgstr ""
+
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr ""
@@ -507,6 +522,11 @@ msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
+msgstr ""
+
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+msgid "There were some errors."
 msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
@@ -618,8 +638,4 @@ msgstr ""
 
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
-msgstr ""
-
-#: components/manage/Actions/Actions
-msgid "{title} renamed."
 msgstr ""

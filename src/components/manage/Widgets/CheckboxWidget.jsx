@@ -6,6 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Label, Checkbox } from 'semantic-ui-react';
+import { map } from 'lodash';
 
 /**
  * CheckboxWidget component class.
@@ -21,7 +22,7 @@ const CheckboxWidget = ({
   value,
   onChange,
 }) => (
-  <Form.Field required={required} error={error}>
+  <Form.Field required={required} error={error.length > 0}>
     <Checkbox
       id={`field-${id}`}
       name={id}
@@ -30,7 +31,9 @@ const CheckboxWidget = ({
       onChange={(event, { checked }) => onChange(id, checked)}
     />
     {description && <div className="help">{description}</div>}
-    {error && <Label basic color="red" pointing="below">{error}</Label>}
+    {map(error, message => (
+      <Label key={message} basic color="red" pointing>{message}</Label>
+    ))}
   </Form.Field>
 );
 
@@ -44,7 +47,7 @@ CheckboxWidget.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   required: PropTypes.bool,
-  error: PropTypes.string,
+  error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
 };
@@ -57,7 +60,7 @@ CheckboxWidget.propTypes = {
 CheckboxWidget.defaultProps = {
   description: null,
   required: false,
-  error: null,
+  error: [],
   value: null,
 };
 

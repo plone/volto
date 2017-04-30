@@ -5,17 +5,44 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { map } from 'lodash';
-import { Button, Form as UiForm, Menu, Segment } from 'semantic-ui-react';
-import { FormattedMessage } from 'react-intl';
+import { keys, map, uniq } from 'lodash';
+import {
+  Button,
+  Form as UiForm,
+  Menu,
+  Segment,
+  Message,
+} from 'semantic-ui-react';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 
 import { Field } from '../../../components';
+
+const messages = defineMessages({
+  required: {
+    id: 'Required input is missing.',
+    defaultMessage: 'Required input is missing.',
+  },
+  minLength: {
+    id: 'Minimum length is {len}.',
+    defaultMessage: 'Minimum length is {len}.',
+  },
+  uniqueItems: {
+    id: 'Items must be unique.',
+    defaultMessage: 'Items must be unique.',
+  },
+});
 
 /**
  * Form container class.
  * @class Form
  * @extends Component
  */
+@injectIntl
 export default class Form extends Component {
   /**
    * Property types.
@@ -37,6 +64,7 @@ export default class Form extends Component {
     formData: PropTypes.objectOf(PropTypes.any),
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -59,6 +87,7 @@ export default class Form extends Component {
     this.state = {
       currentTab: 0,
       formData: props.formData,
+      errors: {},
     };
     this.selectTab = this.selectTab.bind(this);
     this.onChangeField = this.onChangeField.bind(this);
@@ -88,8 +117,43 @@ export default class Form extends Component {
    * @returns {undefined}
    */
   onSubmit(event) {
-    this.props.onSubmit(this.state.formData);
     event.preventDefault();
+    const errors = {};
+    map(this.props.schema.fieldsets, fieldset =>
+      map(fieldset.fields, fieldId => {
+        const field = this.props.schema.properties[fieldId];
+        const data = this.state.formData[fieldId];
+        if (this.props.schema.required.indexOf(fieldId) !== -1) {
+          if (field.type !== 'boolean' && !data) {
+            errors[fieldId] = errors[field] || [];
+            errors[fieldId].push(
+              this.props.intl.formatMessage(messages.required),
+            );
+          }
+          if (field.minLength && data.length < field.minLength) {
+            errors[fieldId] = errors[field] || [];
+            errors[fieldId].push(
+              this.props.intl.formatMessage(messages.minLength, {
+                len: field.minLength,
+              }),
+            );
+          }
+        }
+        if (field.uniqueItems && data && uniq(data).length !== data.length) {
+          errors[fieldId] = errors[field] || [];
+          errors[fieldId].push(
+            this.props.intl.formatMessage(messages.uniqueItems),
+          );
+        }
+      }),
+    );
+    if (keys(errors).length > 0) {
+      this.setState({
+        errors,
+      });
+    } else {
+      this.props.onSubmit(this.state.formData);
+    }
   }
 
   /**
@@ -123,7 +187,17 @@ export default class Form extends Component {
     }));
 
     return (
-      <UiForm method="post" onSubmit={this.onSubmit}>
+      <UiForm
+        method="post"
+        onSubmit={this.onSubmit}
+        error={keys(this.state.errors).length > 0}
+      >
+        <Message error>
+          <FormattedMessage
+            id="There were some errors."
+            defaultMessage="There were some errors."
+          />
+        </Message>
         {schema.fieldsets.length > 1 &&
           <Menu attached="top" tabular stackable>
             {map(schema.fieldsets, (item, index) => (
@@ -139,7 +213,13 @@ export default class Form extends Component {
             ))}
           </Menu>}
         <Segment attached>
-          {fields.map(field => <Field {...field} key={field.id} />)}
+          {fields.map(field => (
+            <Field
+              {...field}
+              key={field.id}
+              error={this.state.errors[field.id]}
+            />
+          ))}
         </Segment>
         <Segment attached="bottom">
           <Button primary type="submit">

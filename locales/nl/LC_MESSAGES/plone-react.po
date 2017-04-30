@@ -293,6 +293,11 @@ msgstr "Item(d) geknipt."
 msgid "Item(s) pasted."
 msgstr "Item(s) geplakt."
 
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+msgid "Items must be unique."
+msgstr "Items moeten uniek zijn."
+
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
 msgstr "Taal"
@@ -317,6 +322,11 @@ msgstr "Uitloggen"
 #: components/theme/Login/Login
 msgid "Login Name"
 msgstr "Gebruikersnaam"
+
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+msgid "Minimum length is {len}."
+msgstr "Minimum lengte is {len}"
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to bottom of folder"
@@ -427,6 +437,11 @@ msgstr "Naam wijzigen"
 msgid "Rename items"
 msgstr "Naam wijzigen"
 
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+msgid "Required input is missing."
+msgstr "Verplichte waarde mist."
+
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr "Deze rivisie herstellen"
@@ -527,6 +542,11 @@ msgstr "Het internet adres van uw externe home page, indien u die heeft."
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "Het {plonecms} is {copyright} 2000-{current_year} door de {plonefoundation} et al."
+
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+msgid "There were some errors."
+msgstr "Er zijn fouten opgetreden."
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
@@ -638,7 +658,3 @@ msgstr "{title} geknipt."
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
 msgstr "{title} is verwijderd."
-
-#: components/manage/Actions/Actions
-msgid "{title} renamed."
-msgstr "{title} hernoemd"

@@ -6,6 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Select, Label } from 'semantic-ui-react';
+import { map } from 'lodash';
 
 /**
  * SelectWidget component class.
@@ -22,7 +23,7 @@ const SelectWidget = ({
   choices,
   onChange,
 }) => (
-  <Form.Field required={required} error={error}>
+  <Form.Field required={required} error={error.length > 0}>
     <label htmlFor={`field-${id}`}>
       {title}
       {description && <span className="help">{description}</span>}
@@ -42,7 +43,9 @@ const SelectWidget = ({
         })),
       ]}
     />
-    {error && <Label basic color="red" pointing="below">{error}</Label>}
+    {map(error, message => (
+      <Label key={message} basic color="red" pointing>{message}</Label>
+    ))}
   </Form.Field>
 );
 
@@ -56,7 +59,7 @@ SelectWidget.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   required: PropTypes.bool,
-  error: PropTypes.string,
+  error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.string,
   choices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   onChange: PropTypes.func.isRequired,
@@ -70,7 +73,7 @@ SelectWidget.propTypes = {
 SelectWidget.defaultProps = {
   description: null,
   required: false,
-  error: null,
+  error: [],
   value: '',
   choices: [],
 };

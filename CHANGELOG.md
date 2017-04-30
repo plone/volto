@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Form validation @robgietema
 - Notification messages @robgietema
 
 ## 0.3.0 (2017-04-29)

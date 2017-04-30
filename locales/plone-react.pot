@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2017-04-30T08:55:34.147Z\n"
+"POT-Creation-Date: 2017-04-30T16:20:43.407Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -336,6 +336,12 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr ""
 
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+# defaultMessage: Items must be unique.
+msgid "Items must be unique."
+msgstr ""
+
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Language
 msgid "Language"
@@ -365,6 +371,12 @@ msgstr ""
 #: components/theme/Login/Login
 # defaultMessage: Login Name
 msgid "Login Name"
+msgstr ""
+
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+# defaultMessage: Minimum length is {len}.
+msgid "Minimum length is {len}."
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -501,6 +513,12 @@ msgstr ""
 msgid "Rename items"
 msgstr ""
 
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+# defaultMessage: Required input is missing.
+msgid "Required input is missing."
+msgstr ""
+
 #: components/manage/History/History
 # defaultMessage: Revert to this revision
 msgid "Revert to this revision"
@@ -624,6 +642,12 @@ msgstr ""
 #: components/theme/Footer/Footer
 # defaultMessage: The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends.
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
+msgstr ""
+
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+# defaultMessage: There were some errors.
+msgid "There were some errors."
 msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
@@ -762,9 +786,4 @@ msgstr ""
 #: components/manage/Actions/Actions
 # defaultMessage: {title} has been deleted.
 msgid "{title} has been deleted."
-msgstr ""
-
-#: components/manage/Actions/Actions
-# defaultMessage: {title} renamed.
-msgid "{title} renamed."
 msgstr ""

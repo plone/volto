@@ -9,6 +9,7 @@ import Editor from 'draft-js-editor';
 import { stateToHTML } from 'draft-js-export-html';
 import { convertFromHTML, EditorState, ContentState } from 'draft-js';
 import { Form, Label, Segment, TextArea } from 'semantic-ui-react';
+import { map } from 'lodash';
 
 /**
  * WysiwygEditor container class.
@@ -31,7 +32,7 @@ export default class WysiwygEditor extends Component {
       data: PropTypes.string,
       encoding: PropTypes.string,
     }),
-    error: PropTypes.string,
+    error: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func.isRequired,
   };
 
@@ -48,7 +49,7 @@ export default class WysiwygEditor extends Component {
       data: '',
       encoding: 'utf8',
     },
-    error: null,
+    error: [],
   };
 
   /**
@@ -100,24 +101,24 @@ export default class WysiwygEditor extends Component {
 
     if (__SERVER__) {
       return (
-        <Form.Field required={required} error={error}>
+        <Form.Field required={required} error={error.length > 0}>
           <label htmlFor={`field-${id}`}>
             {title}
             {description && <span className="help">{description}</span>}
           </label>
-          {error && <div className="fieldErrorBox">{error}</div>}
           <TextArea id={id} name={id} value={value.data} />
-          {error && <Label basic color="red" pointing="below">{error}</Label>}
+          {map(error, message => (
+            <Label key={message} basic color="red" pointing>{message}</Label>
+          ))}
         </Form.Field>
       );
     }
     return (
-      <Form.Field required={required} error={error}>
+      <Form.Field required={required} error={error.length > 0}>
         <label htmlFor={`field-${id}`}>
           {title}
           {description && <span className="help">{description}</span>}
         </label>
-        {error && <div className="fieldErrorBox">{error}</div>}
         <Segment>
           <Editor
             id={`field-${id}`}
@@ -125,7 +126,9 @@ export default class WysiwygEditor extends Component {
             editorState={this.state.editorState}
           />
         </Segment>
-        {error && <Label basic color="red" pointing="below">{error}</Label>}
+        {map(error, message => (
+          <Label key={message} basic color="red" pointing>{message}</Label>
+        ))}
       </Form.Field>
     );
   }
