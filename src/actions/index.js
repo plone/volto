@@ -16,6 +16,7 @@ export {
 } from './content/content';
 export getDiff from './diff/diff';
 export { getHistory, revertHistory } from './history/history';
+export { addMessage, removeMessage } from './messages/messages';
 export getNavigation from './navigation/navigation';
 export getSchema from './schema/schema';
 export getTypes from './types/types';

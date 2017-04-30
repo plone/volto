@@ -4,6 +4,7 @@
  */
 
 export const ADD_CONTENT = 'ADD_CONTENT';
+export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const COPY = 'COPY';
 export const COPY_CONTENT = 'COPY_CONTENT';
 export const CUT = 'CUT';
@@ -27,6 +28,7 @@ export const GET_WORKFLOW_MULTIPLE = 'GET_WORKFLOW_MULTIPLE';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const MOVE_CONTENT = 'MOVE_CONTENT';
+export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
 export const REVERT_HISTORY = 'REVERT_HISTORY';
 export const SEARCH_CONTENT = 'SEARCH_CONTENT';
 export const TRANSITION_WORKFLOW = 'TRANSITION_WORKFLOW';

@@ -47,6 +47,7 @@ export Form from './manage/Form/Form';
 export Field from './manage/Form/Field';
 export ModalForm from './manage/Form/ModalForm';
 export History from './manage/History/History';
+export Messages from './manage/Messages/Messages';
 export ChangePassword from './manage/Preferences/ChangePassword';
 export PersonalPreferences from './manage/Preferences/PersonalPreferences';
 export PersonalInformation from './manage/Preferences/PersonalInformation';

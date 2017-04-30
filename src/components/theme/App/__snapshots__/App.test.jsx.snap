@@ -24,5 +24,8 @@ exports[`App renders a app component 1`] = `
       id="footer"
     />
   </div>
+  <div
+    id="messages"
+  />
 </div>
 `;

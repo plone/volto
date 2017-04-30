@@ -19,7 +19,7 @@ import { Menu } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 
 import { Form } from '../../../components';
-import { getUser, editUser } from '../../../actions';
+import { getUser, editUser, addMessage } from '../../../actions';
 
 const messages = defineMessages({
   personalInformation: {
@@ -62,6 +62,10 @@ const messages = defineMessages({
     id: 'Your location - either city and country - or in a company setting, where your office is located.',
     defaultMessage: 'Your location - either city and country - or in a company setting, where your office is located.',
   },
+  saved: {
+    id: 'Changes saved',
+    defaultMessage: 'Changes saved',
+  },
 });
 
 /**
@@ -78,7 +82,7 @@ const messages = defineMessages({
       : '',
     loaded: state.users.get.loaded,
   }),
-  dispatch => bindActionCreators({ getUser, editUser }, dispatch),
+  dispatch => bindActionCreators({ addMessage, getUser, editUser }, dispatch),
 )
 export default class PersonalInformation extends Component {
   /**
@@ -95,6 +99,7 @@ export default class PersonalInformation extends Component {
     }).isRequired,
     editUser: PropTypes.func.isRequired,
     getUser: PropTypes.func.isRequired,
+    addMessage: PropTypes.func.isRequired,
     userId: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
     loaded: PropTypes.bool.isRequired,
@@ -129,6 +134,11 @@ export default class PersonalInformation extends Component {
    */
   onSubmit(data) {
     this.props.editUser(this.props.userId, data);
+    this.props.addMessage(
+      null,
+      this.props.intl.formatMessage(messages.saved),
+      'success',
+    );
   }
 
   /**

@@ -87,6 +87,12 @@ msgstr "Passwort ändern"
 msgid "Change State"
 msgstr "Statusänderung"
 
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Preferences/PersonalPreferences
+msgid "Changes saved"
+msgstr "Änderungen gespeichert"
+
 #: components/manage/Diff/Diff
 msgid "Compare"
 msgstr "Vergleichen"
@@ -269,6 +275,19 @@ msgstr "Wenn Sie sicher sind, dass Sie die richtige Adresse eingegeben haben, ko
 #: components/manage/Sharing/Sharing
 msgid "Inherit permissions from higher levels"
 msgstr "Berechtigungen von übergeordneten Ordnern übernehmen"
+
+#: components/manage/Contents/Contents
+msgid "Item(s) copied."
+msgstr "Artikel kopiert."
+
+#: components/manage/Contents/Contents
+msgid "Item(s) cut."
+msgstr "Artikel ausgeschnitten."
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+msgid "Item(s) pasted."
+msgstr "Artikel eingefügt."
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
@@ -603,3 +622,19 @@ msgstr "nur im aktuellen Bereich"
 #: components/manage/Contents/Contents
 msgid "{count} selected"
 msgstr "{count} ausgewählt"
+
+#: components/manage/Actions/Actions
+msgid "{title} copied."
+msgstr "{title} kopiert."
+
+#: components/manage/Actions/Actions
+msgid "{title} cut."
+msgstr "{title} ausgeschnitten."
+
+#: components/manage/Actions/Actions
+msgid "{title} has been deleted."
+msgstr "{title} wurde gelöscht."
+
+#: components/manage/Actions/Actions
+msgid "{title} renamed."
+msgstr "{title} umbenannt."

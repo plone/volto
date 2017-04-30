@@ -38,6 +38,7 @@ import {
   moveContent,
   orderContent,
   sortContent,
+  addMessage,
 } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import Indexes from '../../../constants/Indexes';
@@ -82,6 +83,18 @@ const messages = defineMessages({
     id: 'Select columns to show',
     defaultMessage: 'Select columns to show',
   },
+  messageCopied: {
+    id: 'Item(s) copied.',
+    defaultMessage: 'Item(s) copied.',
+  },
+  messageCut: {
+    id: 'Item(s) cut.',
+    defaultMessage: 'Item(s) cut.',
+  },
+  messagePasted: {
+    id: 'Item(s) pasted.',
+    defaultMessage: 'Item(s) pasted.',
+  },
 });
 
 /**
@@ -117,6 +130,7 @@ const messages = defineMessages({
         moveContent,
         orderContent,
         sortContent,
+        addMessage,
       },
       dispatch,
     ),
@@ -138,6 +152,7 @@ export default class ContentsComponent extends Component {
     moveContent: PropTypes.func.isRequired,
     orderContent: PropTypes.func.isRequired,
     sortContent: PropTypes.func.isRequired,
+    addMessage: PropTypes.func.isRequired,
     clipboardRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -657,6 +672,11 @@ export default class ContentsComponent extends Component {
   cut(event, { value }) {
     this.props.cut(value ? [value] : this.state.selected);
     this.onSelectNone();
+    this.props.addMessage(
+      null,
+      this.props.intl.formatMessage(messages.messageCut),
+      'success',
+    );
   }
 
   /**
@@ -669,6 +689,11 @@ export default class ContentsComponent extends Component {
   copy(event, { value }) {
     this.props.copy(value ? [value] : this.state.selected);
     this.onSelectNone();
+    this.props.addMessage(
+      null,
+      this.props.intl.formatMessage(messages.messageCopied),
+      'success',
+    );
   }
 
   /**
@@ -758,6 +783,11 @@ export default class ContentsComponent extends Component {
         getBaseUrl(this.props.pathname),
       );
     }
+    this.props.addMessage(
+      null,
+      this.props.intl.formatMessage(messages.messagePasted),
+      'success',
+    );
   }
 
   /**

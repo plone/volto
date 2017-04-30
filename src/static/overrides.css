@@ -70,6 +70,13 @@
   cursor: move;
 }
 
+.ui.segment.messages {
+  width: 300px;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
 /* override when sidebar is shown */
 @media only screen and (min-width: 1200px) {
   .ui.menu.fixed ~ .pusher .ui.container {

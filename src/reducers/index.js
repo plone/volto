@@ -14,6 +14,7 @@ import clipboard from './clipboard/clipboard';
 import diff from './diff/diff';
 import form from './form/form';
 import history from './history/history';
+import messages from './messages/messages';
 import navigation from './navigation/navigation';
 import schema from './schema/schema';
 import search from './search/search';
@@ -40,6 +41,7 @@ export default combineReducers({
   diff,
   form,
   history,
+  messages,
   navigation,
   schema,
   search,

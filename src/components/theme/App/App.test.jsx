@@ -17,6 +17,9 @@ jest.mock('../Navigation/Navigation', () =>
 jest.mock('../Breadcrumbs/Breadcrumbs', () =>
   jest.fn(() => <div id="breadcrumbs" />),
 );
+jest.mock('../../manage/Messages/Messages', () =>
+  jest.fn(() => <div id="messages" />),
+);
 jest.mock('semantic-ui-react', () => ({
   Segment: jest.fn(() => <div id="segment" />),
   Container: jest.fn(() => <div id="container" />),

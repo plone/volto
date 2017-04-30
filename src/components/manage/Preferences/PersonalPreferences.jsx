@@ -23,6 +23,7 @@ import { Menu } from 'semantic-ui-react';
 
 import { Form } from '../../../components';
 import languages from '../../../constants/Languages';
+import { addMessage } from '../../../actions';
 
 const messages = defineMessages({
   personalPreferences: {
@@ -41,6 +42,10 @@ const messages = defineMessages({
     id: 'Your preferred language',
     defaultMessage: 'Your preferred language',
   },
+  saved: {
+    id: 'Changes saved',
+    defaultMessage: 'Changes saved',
+  },
 });
 
 /**
@@ -49,7 +54,10 @@ const messages = defineMessages({
  * @extends Component
  */
 @injectIntl
-@connect(() => ({}), dispatch => bindActionCreators({ updateIntl }, dispatch))
+@connect(
+  () => ({}),
+  dispatch => bindActionCreators({ updateIntl, addMessage }, dispatch),
+)
 export default class PersonalPreferences extends Component {
   /**
    * Property types.
@@ -58,6 +66,7 @@ export default class PersonalPreferences extends Component {
    */
   static propTypes = {
     updateIntl: PropTypes.func.isRequired,
+    addMessage: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
 
@@ -87,12 +96,17 @@ export default class PersonalPreferences extends Component {
     request(
       'GET',
       `/assets/locales/${data.language || 'en'}.json`,
-    ).then(locale =>
+    ).then(locale => {
       this.props.updateIntl({
         locale: locale.language || 'en',
         messages: locale.body,
-      }),
-    );
+      });
+      this.props.addMessage(
+        null,
+        this.props.intl.formatMessage(messages.saved),
+        'success',
+      );
+    });
   }
 
   /**

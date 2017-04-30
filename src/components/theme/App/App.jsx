@@ -14,6 +14,7 @@ import {
   Breadcrumbs,
   Footer,
   Header,
+  Messages,
   Navigation,
   Toolbar,
 } from '../../../components';
@@ -29,9 +30,9 @@ import {
 /**
  * This function defines the app component.
  * @function AppComponent
- * @params {Object} props Properties.
- * @params {string} props.pathname Current pathname.
- * @params {object} props.children Child objects.
+ * @param {Object} props Properties.
+ * @param {string} props.pathname Current pathname.
+ * @param {object} props.children Child objects.
  * @returns {string} Markup of the component.
  */
 export const AppComponent = ({ pathname, children }) => {
@@ -52,6 +53,7 @@ export const AppComponent = ({ pathname, children }) => {
         </Segment>
         <Footer />
       </div>
+      <Messages />
     </div>
   );
 };
