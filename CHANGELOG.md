@@ -1,8 +1,11 @@
 # Change Log
 
-## 0.3.0 (2017-04-29)
+## [Unreleased]
 ### Added
 - Notification messages @robgietema
+
+## 0.3.0 (2017-04-29)
+### Added
 - Personal information @robgietema
 - Change password @robgietema
 - Password widget @robgietema
