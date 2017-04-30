@@ -289,6 +289,11 @@ msgstr "Artikel ausgeschnitten."
 msgid "Item(s) pasted."
 msgstr "Artikel eingefügt."
 
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+msgid "Items must be unique."
+msgstr ""
+
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
 msgstr "Sprache"
@@ -313,6 +318,11 @@ msgstr "Abmelden"
 #: components/theme/Login/Login
 msgid "Login Name"
 msgstr "Benutzername"
+
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+msgid "Minimum length is {len}."
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to bottom of folder"
@@ -423,6 +433,11 @@ msgstr "Umbenennen"
 msgid "Rename items"
 msgstr "Artikel umbenennen"
 
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+msgid "Required input is missing."
+msgstr ""
+
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr "Durch diese Version ersetzen"
@@ -523,6 +538,11 @@ msgstr "Die URL Ihrer externen Homepage, sollten Sie eine besitzen."
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "{plonecms} {copyright} 2000-{current_year} {plonefoundation} und Freunde."
+
+#: components/manage/Form/Form
+#: components/manage/Form/ModalForm
+msgid "There were some errors."
+msgstr "Es gab Fehler."
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
@@ -634,7 +654,3 @@ msgstr "{title} ausgeschnitten."
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
 msgstr "{title} wurde gelöscht."
-
-#: components/manage/Actions/Actions
-msgid "{title} renamed."
-msgstr "{title} umbenannt."

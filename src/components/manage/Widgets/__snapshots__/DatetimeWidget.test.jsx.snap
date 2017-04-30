@@ -9,12 +9,16 @@ exports[`renders a datetime widget component 1`] = `
   >
     My field
   </label>
-  <input
-    id="field-my-field"
-    name="my-field"
-    onChange={[Function]}
-    type="datetime-local"
-    value=""
-  />
+  <div
+    className="ui input"
+  >
+    <input
+      id="field-my-field"
+      name="my-field"
+      onChange={[Function]}
+      type="datetime-local"
+      value=""
+    />
+  </div>
 </div>
 `;

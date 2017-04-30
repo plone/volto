@@ -5,17 +5,45 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { map } from 'lodash';
-import { Button, Form as UiForm, Header, Menu, Modal } from 'semantic-ui-react';
-import { FormattedMessage } from 'react-intl';
+import { keys, map } from 'lodash';
+import {
+  Button,
+  Form as UiForm,
+  Header,
+  Menu,
+  Message,
+  Modal,
+} from 'semantic-ui-react';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 
 import { Field } from '../../../components';
+
+const messages = defineMessages({
+  required: {
+    id: 'Required input is missing.',
+    defaultMessage: 'Required input is missing.',
+  },
+  minLength: {
+    id: 'Minimum length is {len}.',
+    defaultMessage: 'Minimum length is {len}.',
+  },
+  uniqueItems: {
+    id: 'Items must be unique.',
+    defaultMessage: 'Items must be unique.',
+  },
+});
 
 /**
  * Modal form container class.
  * @class ModalForm
  * @extends Component
  */
+@injectIntl
 export default class FormModal extends Component {
   /**
    * Property types.
@@ -39,6 +67,7 @@ export default class FormModal extends Component {
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -60,6 +89,7 @@ export default class FormModal extends Component {
     super(props);
     this.state = {
       currentTab: 0,
+      errors: {},
       formData: props.formData,
     };
     this.selectTab = this.selectTab.bind(this);
@@ -90,8 +120,43 @@ export default class FormModal extends Component {
    * @returns {undefined}
    */
   onSubmit(event) {
-    this.props.onSubmit(this.state.formData);
     event.preventDefault();
+    const errors = {};
+    map(this.props.schema.fieldsets, fieldset =>
+      map(fieldset.fields, fieldId => {
+        const field = this.props.schema.properties[fieldId];
+        const data = this.state.formData[fieldId];
+        if (this.props.schema.required.indexOf(fieldId) !== -1) {
+          if (field.type !== 'boolean' && !data) {
+            errors[fieldId] = errors[field] || [];
+            errors[fieldId].push(
+              this.props.intl.formatMessage(messages.required),
+            );
+          }
+          if (field.minLength && data.length < field.minLength) {
+            errors[fieldId] = errors[field] || [];
+            errors[fieldId].push(
+              this.props.intl.formatMessage(messages.minLength, {
+                len: field.minLength,
+              }),
+            );
+          }
+        }
+        if (field.uniqueItems && data && uniq(data).length !== data.length) {
+          errors[fieldId] = errors[field] || [];
+          errors[fieldId].push(
+            this.props.intl.formatMessage(messages.uniqueItems),
+          );
+        }
+      }),
+    );
+    if (keys(errors).length > 0) {
+      this.setState({
+        errors,
+      });
+    } else {
+      this.props.onSubmit(this.state.formData);
+    }
   }
 
   /**
@@ -128,7 +193,17 @@ export default class FormModal extends Component {
       <Modal open={this.props.open}>
         <Header>{this.props.title}</Header>
         <Modal.Content>
-          <UiForm method="post" onSubmit={this.onSubmit}>
+          <UiForm
+            method="post"
+            onSubmit={this.onSubmit}
+            error={keys(this.state.errors).length > 0}
+          >
+            <Message error>
+              <FormattedMessage
+                id="There were some errors."
+                defaultMessage="There were some errors."
+              />
+            </Message>
             {schema.fieldsets.length > 1 &&
               <Menu tabular stackable>
                 {map(schema.fieldsets, (item, index) => (

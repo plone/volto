@@ -59,10 +59,6 @@ const messages = defineMessages({
     id: 'Item(s) pasted.',
     defaultMessage: 'Item(s) pasted.',
   },
-  messageRenamed: {
-    id: '{title} renamed.',
-    defaultMessage: '{title} renamed.',
-  },
 });
 
 /**
@@ -144,13 +140,6 @@ export default class Actions extends Component {
     this.setState({
       showRename: false,
     });
-    this.props.addMessage(
-      null,
-      this.props.intl.formatMessage(messages.messageRenamed, {
-        title: this.props.title,
-      }),
-      'success',
-    );
   }
 
   /**

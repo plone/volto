@@ -6,6 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Label, TextArea } from 'semantic-ui-react';
+import { map } from 'lodash';
 
 /**
  * ArrayWidget component class.
@@ -21,12 +22,11 @@ const ArrayWidget = ({
   value,
   onChange,
 }) => (
-  <Form.Field required={required} error={error}>
+  <Form.Field required={required} error={error.length > 0}>
     <label htmlFor={`field-${id}`}>
       {title}
       {description && <span className="help">{description}</span>}
     </label>
-    {error && <div className="fieldErrorBox">{error}</div>}
     <TextArea
       id={`field-${id}`}
       name={id}
@@ -37,7 +37,9 @@ const ArrayWidget = ({
           target.value === '' ? undefined : target.value.split('\n'),
         )}
     />
-    {error && <Label basic color="red" pointing="below">{error}</Label>}
+    {map(error, message => (
+      <Label key={message} basic color="red" pointing>{message}</Label>
+    ))}
   </Form.Field>
 );
 
@@ -51,7 +53,7 @@ ArrayWidget.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   required: PropTypes.bool,
-  error: PropTypes.string,
+  error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.arrayOf(PropTypes.string),
   onChange: PropTypes.func.isRequired,
 };
@@ -64,7 +66,7 @@ ArrayWidget.propTypes = {
 ArrayWidget.defaultProps = {
   description: null,
   required: false,
-  error: null,
+  error: [],
   value: null,
 };
 

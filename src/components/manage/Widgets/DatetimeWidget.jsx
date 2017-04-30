@@ -6,6 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Label } from 'semantic-ui-react';
+import { map } from 'lodash';
 
 /**
  * DatetimeWidget component class.
@@ -21,12 +22,12 @@ const DatetimeWidget = ({
   value,
   onChange,
 }) => (
-  <Form.Field required={required} error={error}>
+  <Form.Field required={required} error={error.length > 0}>
     <label htmlFor={`field-${id}`}>
       {title}
       {description && <span className="help">{description}</span>}
     </label>
-    <input
+    <Input
       id={`field-${id}`}
       name={id}
       type="datetime-local"
@@ -34,7 +35,9 @@ const DatetimeWidget = ({
       onChange={({ target }) =>
         onChange(id, target.value === '' ? undefined : target.value)}
     />
-    {error && <Label basic color="red" pointing="below">{error}</Label>}
+    {map(error, message => (
+      <Label key={message} basic color="red" pointing>{message}</Label>
+    ))}
   </Form.Field>
 );
 
@@ -48,7 +51,7 @@ DatetimeWidget.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   required: PropTypes.bool,
-  error: PropTypes.string,
+  error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
@@ -61,7 +64,7 @@ DatetimeWidget.propTypes = {
 DatetimeWidget.defaultProps = {
   description: null,
   required: false,
-  error: null,
+  error: [],
   value: null,
 };
 

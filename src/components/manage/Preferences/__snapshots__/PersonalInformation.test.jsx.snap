@@ -38,6 +38,13 @@ exports[`PersonalInformation renders a personal information component 1`] = `
     onSubmit={[Function]}
   >
     <div
+      className="ui error message"
+    >
+      <span>
+        There were some errors.
+      </span>
+    </div>
+    <div
       className="ui attached segment"
     >
       <div
