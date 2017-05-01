@@ -20,12 +20,12 @@ describe('Diff', () => {
         entries: [
           {
             time: '2017-04-19T14:09:36+02:00',
-            version_id: 1,
+            version: 1,
             actor: { fullname: 'Web Admin' },
           },
           {
             time: '2017-04-19T14:09:35+02:00',
-            version_id: 0,
+            version: 0,
             actor: { fullname: 'Web Admin' },
           },
         ],

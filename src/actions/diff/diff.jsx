@@ -18,8 +18,8 @@ export default function getDiff(url, one, two) {
     type: GET_DIFF,
     promise: api =>
       Promise.all([
-        api.get(`${url}?version_id=${one}`),
-        api.get(`${url}?version_id=${two}`),
+        api.get(`${url}/@history/${one}`),
+        api.get(`${url}/@history/${two}`),
       ]),
   };
 }

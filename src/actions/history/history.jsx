@@ -21,12 +21,13 @@ export function getHistory(url) {
 /**
  * Revert history function.
  * @function reverHistory
- * @param {string} url Revert url.
+ * @param {string} url Content url.
+ * @param {number} version Revert version.
  * @returns {Object} Revet history action.
  */
-export function revertHistory(url) {
+export function revertHistory(url, version) {
   return {
     type: REVERT_HISTORY,
-    promise: api => api.get(url),
+    promise: api => api.patch(`${url}/@history`, { data: { version } }),
   };
 }

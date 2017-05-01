@@ -101,13 +101,12 @@ export function sortContent(url, on, order) {
  * Get content function
  * @function getContent
  * @param {string} url Content url
- * @param {string} versionId Version id
+ * @param {string} version Version id
  * @returns {Object} Get content action
  */
-export function getContent(url, versionId) {
+export function getContent(url, version) {
   return {
     type: GET_CONTENT,
-    promise: api =>
-      api.get(`${url}${versionId ? `?version_id=${versionId}` : ''}`),
+    promise: api => api.get(`${url}${version ? `/@history/${version}` : ''}`),
   };
 }
