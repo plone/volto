@@ -8,6 +8,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { convertFromHTML, EditorState, ContentState } from 'draft-js';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 import { Grid } from '../../../components';
 
@@ -16,6 +18,7 @@ import { Grid } from '../../../components';
  * @class Layout
  * @extends Component
  */
+@DragDropContext(HTML5Backend)
 export default class Layout extends Component {
   /**
    * Property types.
@@ -45,6 +48,7 @@ export default class Layout extends Component {
       layout: this.props.layout.map((row, rowIndex) =>
         row.map((tile, tileIndex) => ({
           width: tile.width,
+          type: tile.type,
           content: __SERVER__
             ? tile.content
             : EditorState.createWithContent(
@@ -53,14 +57,21 @@ export default class Layout extends Component {
                 ),
               ),
           selected: rowIndex === 0 && tileIndex === 0,
+          hovered: null,
         })),
       ),
       selected: {
         row: 0,
         column: 0,
       },
+      hovered: {
+        row: -1,
+        column: -1,
+        direction: '',
+      },
     };
     this.selectTile = this.selectTile.bind(this);
+    this.setHovered = this.setHovered.bind(this);
     this.setTileContent = this.setTileContent.bind(this);
   }
 
@@ -89,6 +100,33 @@ export default class Layout extends Component {
   }
 
   /**
+   * Set hovered.
+   * @function setHovered
+   * @param {number} row Row index.
+   * @param {number} column Column index.
+   * @param {string} direction Direction.
+   * @returns {undefined}
+   */
+  setHovered(row, column, direction) {
+    if (this.state.hovered.row !== -1) {
+      this.state.layout[this.state.hovered.row][
+        this.state.hovered.column
+      ].hovered = null;
+    }
+    if (row !== -1) {
+      this.state.layout[row][column].hovered = direction;
+    }
+    this.setState({
+      hovered: {
+        row,
+        column,
+        direction,
+      },
+      layout: this.state.layout,
+    });
+  }
+
+  /**
    * Select tile.
    * @function selectTile
    * @param {number} row Row index.
@@ -96,10 +134,14 @@ export default class Layout extends Component {
    * @returns {undefined}
    */
   selectTile(row, column) {
-    this.state.layout[this.state.selected.row][
-      this.state.selected.column
-    ].selected = false;
-    this.state.layout[row][column].selected = true;
+    if (this.state.selected.row !== -1) {
+      this.state.layout[this.state.selected.row][
+        this.state.selected.column
+      ].selected = false;
+    }
+    if (row !== -1) {
+      this.state.layout[row][column].selected = true;
+    }
     this.setState({
       selected: {
         row,
@@ -119,8 +161,10 @@ export default class Layout extends Component {
     const rows = layout.map(row =>
       row.map(tile => ({
         width: tile.width,
+        type: tile.type,
         content: tile.content,
         selected: tile.selected,
+        hovered: tile.hovered,
       })),
     );
 
@@ -128,6 +172,7 @@ export default class Layout extends Component {
       <Grid
         rows={rows}
         selectTile={this.selectTile}
+        setHovered={this.setHovered}
         setTileContent={this.setTileContent}
       />
     );
