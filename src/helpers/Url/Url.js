@@ -21,6 +21,7 @@ export function getBaseUrl(url: string): string {
     .replace('/diff', '')
     .replace('/edit', '')
     .replace('/history', '')
+    .replace('/layout', '')
     .replace('/login', '')
     .replace('/logout', '')
     .replace('/sharing', '')
