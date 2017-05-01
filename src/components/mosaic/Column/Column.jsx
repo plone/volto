@@ -17,8 +17,10 @@ import { Tile } from '../../../components';
  * @param {Array} props.tiles Array of tiles.
  * @param {number} props.row Row index.
  * @param {number} props.column Column index.
+ * @param {string} props.hovered Hovered state.
  * @param {func} props.selectTile Select tile method.
- * @param {func} props.setHoverd Set hovered tile method.
+ * @param {func} props.setHovered Set hovered tile method.
+ * @param {func} props.handleDrop Handle tile drop event.
  * @param {func} props.setTileContent Set tile content method.
  * @returns {string} Markup of the row.
  */
@@ -27,19 +29,24 @@ const Column = ({
   tiles,
   row,
   column,
+  hovered,
   selectTile,
   setHovered,
+  handleDrop,
   setTileContent,
 }) => (
-  <Grid.Column width={width}>
+  <Grid.Column width={width} className={hovered || ''}>
     {tiles.map((tile, index) => (
       <Tile
         key={tile.url}
         row={row}
         column={column}
         tile={index}
+        first={index === 0}
+        last={index === tiles.length - 1}
         selectTile={selectTile}
         setHovered={setHovered}
+        handleDrop={handleDrop}
         setTileContent={setTileContent}
         url={tile.url}
         content={tile.content}
@@ -67,9 +74,20 @@ Column.propTypes = {
   ).isRequired,
   column: PropTypes.number.isRequired,
   row: PropTypes.number.isRequired,
+  hovered: PropTypes.string,
   selectTile: PropTypes.func.isRequired,
   setHovered: PropTypes.func.isRequired,
+  handleDrop: PropTypes.func.isRequired,
   setTileContent: PropTypes.func.isRequired,
+};
+
+/**
+ * Default props.
+ * @property {Object} defaultProps Default properties.
+ * @static
+ */
+Column.defaultProps = {
+  hovered: null,
 };
 
 export default Column;

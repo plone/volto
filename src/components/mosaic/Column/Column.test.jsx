@@ -20,6 +20,7 @@ test('renders a column component', () => {
       column={0}
       selectTile={() => {}}
       setHovered={() => {}}
+      handleDrop={() => {}}
       setTileContent={() => {}}
     />,
   );

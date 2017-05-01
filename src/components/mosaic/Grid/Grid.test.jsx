@@ -10,6 +10,7 @@ test('renders a grid component', () => {
       rows={[{ colums: [] }]}
       selectTile={() => {}}
       setHovered={() => {}}
+      handleDrop={() => {}}
       setTileContent={() => {}}
     />,
   );

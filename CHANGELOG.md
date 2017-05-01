@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 ### Added
+- Drag and drop of tiles @robgietema
+- Basic mosaic grid rendering @robgietema
 - Form validation @robgietema
 - Notification messages @robgietema
 

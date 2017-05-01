@@ -24,8 +24,11 @@ import Editor from 'draft-js-editor';
  * @param {number} props.row Row index.
  * @param {number} props.column Column index.
  * @param {number} props.tile Tile index.
+ * @param {bool} props.first True if first item.
+ * @param {bool} props.last True if last item.
  * @param {func} props.selectTile Select tile method.
  * @param {func} props.setHovered Set hovered tile method.
+ * @param {func} props.handleDrop Handle tile drop event.
  * @param {func} props.setTileContent Set tile content method.
  * @returns {string} Markup of the tile.
  */
@@ -49,7 +52,7 @@ const Tile = ({
         className={`tile ${selected ? 'selected' : ''} ${isDragging ? 'dragging' : ''} ${hovered || ''}`}
         onClick={() => selectTile(row, column, tile)}
       >
-        <Label color="blue" pointing="below">{type}</Label>
+        {selected && <Label color="blue" pointing="below">{type}</Label>}
         {!__SERVER__ &&
           <Editor
             onChange={newContent =>
@@ -75,6 +78,7 @@ Tile.propTypes = {
   tile: PropTypes.number.isRequired,
   selectTile: PropTypes.func.isRequired,
   setHovered: PropTypes.func.isRequired,
+  handleDrop: PropTypes.func.isRequired,
   setTileContent: PropTypes.func.isRequired,
 };
 
@@ -91,12 +95,11 @@ export default DropTarget(
   'tile',
   {
     hover(props, monitor, component) {
-      const dragRow = monitor.getItem().row;
-      const dragColumn = monitor.getItem().column;
-      const hoverRow = props.row;
-      const hoverColumn = props.column;
-
-      if (dragRow === hoverRow && dragColumn === hoverColumn) {
+      if (
+        monitor.getItem().row === props.row &&
+        monitor.getItem().column === props.column &&
+        monitor.getItem().tile === props.tile
+      ) {
         return;
       }
 
@@ -112,17 +115,17 @@ export default DropTarget(
       const xFactor = x / (width / 2);
 
       let direction;
+      let type;
       if (Math.abs(xFactor) > Math.abs(yFactor)) {
         direction = xFactor > 0 ? 'right' : 'left';
+        type = 'column';
       } else {
         direction = yFactor > 0 ? 'top' : 'bottom';
+        type = (props.first && yFactor > 0.8) || (props.last && yFactor < -0.8)
+          ? 'row'
+          : 'tile';
       }
-      if (props.hovered !== direction) {
-        props.setHovered(props.row, props.column, props.tile, direction);
-      }
-    },
-    drop(props) {
-      props.setHovered(-1, -1, -1, null);
+      props.setHovered(props.row, props.column, props.tile, type, direction);
     },
   },
   connect => ({
@@ -133,12 +136,15 @@ export default DropTarget(
     'tile',
     {
       beginDrag(props) {
-        props.selectTile(-1, -1);
+        props.selectTile(-1, -1, -1);
         return {
           row: props.row,
           column: props.column,
           tile: props.tile,
         };
+      },
+      endDrag(props) {
+        props.handleDrop(props.row, props.column, props.tile);
       },
     },
     (connect, monitor) => ({

@@ -4,7 +4,6 @@ exports[`Edit renders an add component 1`] = `
 <div
   id="page-edit"
 >
-  <div />
   <h1>
     <span>
       Edit 

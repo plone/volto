@@ -103,53 +103,66 @@
 }
 
 /* Mosaic */
-.tile {
+.mosaic .tile {
   cursor: move;
   border: solid 2px transparent;
   position: relative;
+  margin: -2px;
 }
 
-.tile .ui.label {
-  display: none;
+.mosaic .tile .ui.label {
   position: absolute;
   top: -34px;
 }
-.tile.selected .ui.label,
-.tile:hover .ui.label {
-  display: inline-block;
-}
 
-.tile:hover {
+.mosaic .tile:hover {
   border: dashed 2px #3469d0;
 }
 
-.tile.selected {
+.mosaic .tile.selected {
   border: solid 2px #3469d0;
   cursor: default;
   background-color: #ffffe1;
 }
 
-.tile.selected:hover {
+.mosaic .tile.selected:hover {
   border: solid 2px #3469d0;
 }
 
-.tile.top {
+.mosaic .row {
+  border-top: solid 2px transparent;
+  border-bottom: solid 2px transparent;
+  margin-top: -2px;
+  margin-bottom: -2px;
+}
+
+.mosaic .tile.top,
+.mosaic .row.top {
   border-top: solid 2px #3469d0;
 }
 
-.tile.bottom {
+.mosaic .tile.bottom,
+.mosaic .row.bottom {
   border-bottom: solid 2px #3469d0;
 }
 
-.tile.left {
+.mosaic .column {
+  border-left: solid 2px transparent;
+  border-right: solid 2px transparent;
+  margin-left: -2px;
+  margin-right: -2px;
+}
+
+.mosaic .column.left {
   border-left: solid 2px #3469d0;
 }
 
-.tile.right {
+.mosaic .column.right {
   border-right: solid 2px #3469d0;
+  margin-right: -2px;
 }
 
-.tile.dragging {
+.mosaic .tile.dragging {
   opacity: 0.5;
 }
 
