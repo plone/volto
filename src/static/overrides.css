@@ -103,24 +103,20 @@
 }
 
 /* Mosaic */
-.ui.grid>.row>.column {
-  margin-top: -1rem;
-  margin-bottom: -1rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .tile {
   cursor: move;
   border: solid 2px transparent;
+  position: relative;
 }
 
-.tile .ui.blue.ribbon.label {
+.tile .ui.label {
   display: none;
+  position: absolute;
+  top: -34px;
 }
-.tile.selected .ui.blue.ribbon.label,
-.tile:hover .ui.blue.ribbon.label {
-  display: block;
+.tile.selected .ui.label,
+.tile:hover .ui.label {
+  display: inline-block;
 }
 
 .tile:hover {
@@ -153,11 +149,10 @@
   border-right: solid 2px #3469d0;
 }
 
-.ui[class*="right ribbon"].label {
-  left: calc(100% + 1.2em + 2px);
-  position: absolute;
-  top: 8px;
+.tile.dragging {
+  opacity: 0.5;
 }
+
 /* Responsive visibility helper classes
 
 /* Mobile */

@@ -18,7 +18,6 @@ import {
   History,
   View,
   NotFound,
-  Layout,
   Login,
   Logout,
   PersonalInformation,
@@ -55,7 +54,6 @@ export default () => (
     <Route path="/**/diff" component={Diff} />
     <Route path="/**/edit" component={Edit} />
     <Route path="/**/history" component={History} />
-    <Route path="/**/layout" component={Layout} />
     <Route path="/**/sharing" component={Sharing} />
     <Route path="/**" component={View} />
     <Route path="*" component={NotFound} status={404} />

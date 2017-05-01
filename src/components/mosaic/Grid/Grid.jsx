@@ -23,12 +23,11 @@ const Grid = ({ rows, selectTile, setHovered, setTileContent }) => (
   <UIGrid>
     {rows.map((row, index) => (
       <Row
-        key={row}
         row={index}
         selectTile={selectTile}
         setHovered={setHovered}
         setTileContent={setTileContent}
-        tiles={row}
+        columns={row.columns}
       />
     ))}
   </UIGrid>
@@ -40,7 +39,8 @@ const Grid = ({ rows, selectTile, setHovered, setTileContent }) => (
  * @static
  */
 Grid.propTypes = {
-  rows: PropTypes.arrayOf(PropTypes.array).isRequired,
+  rows: PropTypes.arrayOf(PropTypes.shape({ columns: PropTypes.array }))
+    .isRequired,
   selectTile: PropTypes.func.isRequired,
   setHovered: PropTypes.func.isRequired,
   setTileContent: PropTypes.func.isRequired,

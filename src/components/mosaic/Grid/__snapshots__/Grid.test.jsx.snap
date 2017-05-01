@@ -2,9 +2,8 @@
 
 exports[`renders a grid component 1`] = `
 <div
-  className="grid"
+  className="ui grid"
 >
-  <div />
   <div />
 </div>
 `;

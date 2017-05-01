@@ -1,19 +1,23 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Row from './Row';
 
-jest.mock('../Column/Column', () => jest.fn(() => <div />));
+import Column from './Column';
 
-test('renders a row component', () => {
+jest.mock('../Tile/Tile', () => jest.fn(() => <div />));
+
+test('renders a column component', () => {
   const component = renderer.create(
-    <Row
-      columns={[
+    <Column
+      width={1}
+      tiles={[
         {
-          width: 2,
-          tiles: [],
+          url: '/blog',
+          content: {},
+          type: 'Title',
         },
       ]}
       row={0}
+      column={0}
       selectTile={() => {}}
       setHovered={() => {}}
       setTileContent={() => {}}

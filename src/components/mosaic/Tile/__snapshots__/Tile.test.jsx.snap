@@ -1,12 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a tile component 1`] = `
-<div
-  className="tile col-xs-4 selected"
->
+<div>
   <div
-    className="content"
+    className="tile selected  "
     onClick={[Function]}
-  />
+  >
+    <div
+      className="ui blue pointing below label"
+      onClick={[Function]}
+    >
+      Title
+    </div>
+  </div>
 </div>
 `;

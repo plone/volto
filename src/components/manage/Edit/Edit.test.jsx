@@ -8,6 +8,7 @@ import { EditComponent as Edit } from './Edit';
 const mockStore = configureStore();
 
 jest.mock('../Form/Form', () => jest.fn(() => <div className="Form" />));
+jest.mock('../../mosaic/Layout/Layout', () => jest.fn(() => <div />));
 
 describe('Edit', () => {
   it('renders an empty add component', () => {

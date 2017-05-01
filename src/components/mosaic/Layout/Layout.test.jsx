@@ -9,15 +9,24 @@ global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 test('renders a layout component', () => {
   const component = renderer.create(
     <Layout
-      layout={[
-        [
+      layout={{
+        rows: [
           {
-            width: 12,
-            content: '<h1>Hello World!',
-            url: 'http://item',
+            columns: [
+              {
+                width: 16,
+                tiles: [
+                  {
+                    content: '<p>Column <b>one</b></p>',
+                    url: './@@plone.app.standardtiles.html/1',
+                    type: 'Title',
+                  },
+                ],
+              },
+            ],
           },
         ],
-      ]}
+      }}
     />,
   );
   const json = component.toJSON();

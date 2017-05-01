@@ -152,30 +152,53 @@ export class EditComponent extends Component {
             })}
           />
           <Layout
-            layout={[
-              [
+            layout={{
+              rows: [
                 {
-                  width: 6,
-                  content: '<p>Column <b>one</b></p>',
-                  url: './@@plone.app.standardtiles.html/1',
-                  type: 'Title',
+                  columns: [
+                    {
+                      width: 6,
+                      tiles: [
+                        {
+                          content: '<p>Column <b>one</b></p>',
+                          url: './@@plone.app.standardtiles.html/1',
+                          type: 'Title',
+                        },
+                        {
+                          content: 'Document by line',
+                          url: './@@plone.app.standardtiles.html/2',
+                          type: 'Document by line',
+                        },
+                      ],
+                    },
+                    {
+                      width: 10,
+                      tiles: [
+                        {
+                          content: '<p>Column <b>two</b></p>',
+                          url: './@@plone.app.standardtiles.html/3',
+                          type: 'Description',
+                        },
+                      ],
+                    },
+                  ],
                 },
                 {
-                  width: 10,
-                  content: '<p>Column <b>two</b></p>',
-                  url: './@@plone.app.standardtiles.html/2',
-                  type: 'Description',
+                  columns: [
+                    {
+                      width: 16,
+                      tiles: [
+                        {
+                          content: '<p>Column <b>full</b></p>',
+                          url: './@@plone.app.standardtiles.html/4',
+                          type: 'Text',
+                        },
+                      ],
+                    },
+                  ],
                 },
               ],
-              [
-                {
-                  width: 16,
-                  content: '<p>Column <b>full</b></p>',
-                  url: './@@plone.app.standardtiles.html/3',
-                  type: 'Text',
-                },
-              ],
-            ]}
+            }}
           />
           <h1>
             <FormattedMessage

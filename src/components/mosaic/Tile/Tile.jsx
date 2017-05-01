@@ -11,25 +11,6 @@ import { findDOMNode } from 'react-dom';
 
 import Editor from 'draft-js-editor';
 
-const widthValues = [
-  'one',
-  'two',
-  'three',
-  'four',
-  'five',
-  'six',
-  'seven',
-  'eight',
-  'nine',
-  'ten',
-  'eleven',
-  'twelve',
-  'thirteen',
-  'fourteen',
-  'fiveteen',
-  'sixteen',
-];
-
 /* eslint jsx-a11y/no-static-element-interactions: 0 */
 
 /**
@@ -38,11 +19,11 @@ const widthValues = [
  * @param {Object} props Component properties.
  * @param {Object} props.content Content of the tile.
  * @param {string} props.type Type of the tile.
- * @param {number} props.width Width of the tile.
  * @param {bool} props.selected True if tile is selected.
  * @param {string} props.hovered Hovered direction.
  * @param {number} props.row Row index.
  * @param {number} props.column Column index.
+ * @param {number} props.tile Tile index.
  * @param {func} props.selectTile Select tile method.
  * @param {func} props.setHovered Set hovered tile method.
  * @param {func} props.setTileContent Set tile content method.
@@ -51,11 +32,11 @@ const widthValues = [
 const Tile = ({
   content,
   type,
-  width,
-  row,
-  column,
   selected,
   hovered,
+  row,
+  column,
+  tile,
   selectTile,
   setTileContent,
   connectDragSource,
@@ -65,14 +46,14 @@ const Tile = ({
   connectDropTarget(
     connectDragSource(
       <div
-        className={`tile column ${widthValues[width - 1]} wide ${selected ? 'selected' : ''} ${hovered || ''}`}
-        onClick={() => selectTile(row, column)}
-        style={{ opacity: isDragging ? 0.5 : 1 }}
+        className={`tile ${selected ? 'selected' : ''} ${isDragging ? 'dragging' : ''} ${hovered || ''}`}
+        onClick={() => selectTile(row, column, tile)}
       >
-        <Label as="a" color="blue" ribbon="right">{type}</Label>
+        <Label color="blue" pointing="below">{type}</Label>
         {!__SERVER__ &&
           <Editor
-            onChange={newContent => setTileContent(row, column, newContent)}
+            onChange={newContent =>
+              setTileContent(row, column, tile, newContent)}
             editorState={content}
           />}
       </div>,
@@ -87,14 +68,23 @@ const Tile = ({
 Tile.propTypes = {
   content: PropTypes.object.isRequired,
   type: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired,
+  selected: PropTypes.bool.isRequired,
+  hovered: PropTypes.string,
   row: PropTypes.number.isRequired,
   column: PropTypes.number.isRequired,
-  selected: PropTypes.bool.isRequired,
-  hovered: PropTypes.string.isRequired,
+  tile: PropTypes.number.isRequired,
   selectTile: PropTypes.func.isRequired,
   setHovered: PropTypes.func.isRequired,
   setTileContent: PropTypes.func.isRequired,
+};
+
+/**
+ * Default props.
+ * @property {Object} defaultProps Default properties.
+ * @static
+ */
+Tile.defaultProps = {
+  hovered: null,
 };
 
 export default DropTarget(
@@ -128,11 +118,11 @@ export default DropTarget(
         direction = yFactor > 0 ? 'top' : 'bottom';
       }
       if (props.hovered !== direction) {
-        props.setHovered(props.row, props.column, direction);
+        props.setHovered(props.row, props.column, props.tile, direction);
       }
     },
     drop(props) {
-      props.setHovered(-1, -1, null);
+      props.setHovered(-1, -1, -1, null);
     },
   },
   connect => ({
@@ -147,6 +137,7 @@ export default DropTarget(
         return {
           row: props.row,
           column: props.column,
+          tile: props.tile,
         };
       },
     },

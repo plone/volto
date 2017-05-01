@@ -7,8 +7,9 @@ jest.mock('../Row/Row', () => jest.fn(() => <div />));
 test('renders a grid component', () => {
   const component = renderer.create(
     <Grid
-      rows={[['cell 1.1', 'cell 1.2'], ['cell 2.1', 'cell 2.2']]}
+      rows={[{ colums: [] }]}
       selectTile={() => {}}
+      setHovered={() => {}}
       setTileContent={() => {}}
     />,
   );
