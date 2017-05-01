@@ -15,6 +15,7 @@ test('renders a row component', () => {
       ]}
       row={0}
       selectTile={() => {}}
+      deleteTile={() => {}}
       setHovered={() => {}}
       handleDrop={() => {}}
       setTileContent={() => {}}

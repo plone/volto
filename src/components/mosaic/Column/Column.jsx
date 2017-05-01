@@ -19,6 +19,7 @@ import { Tile } from '../../../components';
  * @param {number} props.column Column index.
  * @param {string} props.hovered Hovered state.
  * @param {func} props.selectTile Select tile method.
+ * @param {func} props.deleteTile Delete tile method.
  * @param {func} props.setHovered Set hovered tile method.
  * @param {func} props.handleDrop Handle tile drop event.
  * @param {func} props.setTileContent Set tile content method.
@@ -31,6 +32,7 @@ const Column = ({
   column,
   hovered,
   selectTile,
+  deleteTile,
   setHovered,
   handleDrop,
   setTileContent,
@@ -45,6 +47,7 @@ const Column = ({
         first={index === 0}
         last={index === tiles.length - 1}
         selectTile={selectTile}
+        deleteTile={deleteTile}
         setHovered={setHovered}
         handleDrop={handleDrop}
         setTileContent={setTileContent}
@@ -76,6 +79,7 @@ Column.propTypes = {
   row: PropTypes.number.isRequired,
   hovered: PropTypes.string,
   selectTile: PropTypes.func.isRequired,
+  deleteTile: PropTypes.func.isRequired,
   setHovered: PropTypes.func.isRequired,
   handleDrop: PropTypes.func.isRequired,
   setTileContent: PropTypes.func.isRequired,

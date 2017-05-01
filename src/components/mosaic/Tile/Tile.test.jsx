@@ -24,6 +24,7 @@ test('renders a tile component', () => {
         tile={0}
         selected
         selectTile={() => {}}
+        deleteTile={() => {}}
         setHovered={() => {}}
         handleDrop={() => {}}
         setTileContent={() => {}}

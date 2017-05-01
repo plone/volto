@@ -12,6 +12,11 @@ exports[`renders a tile component 1`] = `
     >
       Title
     </div>
+    <i
+      aria-hidden="true"
+      className="close icon"
+      onClick={[Function]}
+    />
   </div>
 </div>
 `;

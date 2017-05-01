@@ -19,6 +19,7 @@ test('renders a column component', () => {
       row={0}
       column={0}
       selectTile={() => {}}
+      deleteTile={() => {}}
       setHovered={() => {}}
       handleDrop={() => {}}
       setTileContent={() => {}}

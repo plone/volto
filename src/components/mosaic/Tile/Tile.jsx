@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Label } from 'semantic-ui-react';
+import { Icon, Label } from 'semantic-ui-react';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 
@@ -27,6 +27,7 @@ import Editor from 'draft-js-editor';
  * @param {bool} props.first True if first item.
  * @param {bool} props.last True if last item.
  * @param {func} props.selectTile Select tile method.
+ * @param {func} props.deleteTile Delete tile method.
  * @param {func} props.setHovered Set hovered tile method.
  * @param {func} props.handleDrop Handle tile drop event.
  * @param {func} props.setTileContent Set tile content method.
@@ -41,6 +42,7 @@ const Tile = ({
   column,
   tile,
   selectTile,
+  deleteTile,
   setTileContent,
   connectDragSource,
   connectDropTarget,
@@ -53,6 +55,14 @@ const Tile = ({
         onClick={() => selectTile(row, column, tile)}
       >
         {selected && <Label color="blue" pointing="below">{type}</Label>}
+        {selected &&
+          <Icon
+            name="close"
+            onClick={event => {
+              event.stopPropagation();
+              deleteTile(row, column, tile);
+            }}
+          />}
         {!__SERVER__ &&
           <Editor
             onChange={newContent =>
@@ -77,6 +87,7 @@ Tile.propTypes = {
   column: PropTypes.number.isRequired,
   tile: PropTypes.number.isRequired,
   selectTile: PropTypes.func.isRequired,
+  deleteTile: PropTypes.func.isRequired,
   setHovered: PropTypes.func.isRequired,
   handleDrop: PropTypes.func.isRequired,
   setTileContent: PropTypes.func.isRequired,

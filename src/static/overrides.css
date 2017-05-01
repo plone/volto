@@ -110,9 +110,18 @@
   margin: -2px;
 }
 
-.mosaic .tile .ui.label {
+.mosaic .tile .ui.label.below {
   position: absolute;
   top: -34px;
+}
+
+.mosaic .tile .close.icon {
+  cursor: pointer;
+  position: absolute;
+  margin: 0;
+  top: 0;
+  right: 0;
+  z-index: 1;
 }
 
 .mosaic .tile:hover {
@@ -149,8 +158,6 @@
 .mosaic .column {
   border-left: solid 2px transparent;
   border-right: solid 2px transparent;
-  margin-left: -2px;
-  margin-right: -2px;
 }
 
 .mosaic .column.left {
@@ -159,7 +166,6 @@
 
 .mosaic .column.right {
   border-right: solid 2px #3469d0;
-  margin-right: -2px;
 }
 
 .mosaic .tile.dragging {

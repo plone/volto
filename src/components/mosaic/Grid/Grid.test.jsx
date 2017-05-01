@@ -9,6 +9,7 @@ test('renders a grid component', () => {
     <Grid
       rows={[{ colums: [] }]}
       selectTile={() => {}}
+      deleteTile={() => {}}
       setHovered={() => {}}
       handleDrop={() => {}}
       setTileContent={() => {}}

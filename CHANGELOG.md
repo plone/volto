@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Deletion of tiles @robgietema
 - Drag and drop of tiles @robgietema
 - Basic mosaic grid rendering @robgietema
 - Form validation @robgietema

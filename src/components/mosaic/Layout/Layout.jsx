@@ -152,6 +152,7 @@ export default class Layout extends Component {
       },
     };
     this.selectTile = this.selectTile.bind(this);
+    this.deleteTile = this.deleteTile.bind(this);
     this.setHovered = this.setHovered.bind(this);
     this.setTileContent = this.setTileContent.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
@@ -417,6 +418,20 @@ export default class Layout extends Component {
   }
 
   /**
+   * Delete tile.
+   * @function deleteTile
+   * @param {number} row Row index.
+   * @param {number} column Column index.
+   * @param {number} tile Tile index.
+   * @returns {undefined}
+   */
+  deleteTile(row, column, tile) {
+    this.selectTile(-1, -1, -1);
+    this.state.layout.rows[row].columns[column].tiles.splice(tile, 1);
+    this.cleanupLayout();
+  }
+
+  /**
    * Render method.
    * @function render
    * @returns {string} Markup of the container.
@@ -426,6 +441,7 @@ export default class Layout extends Component {
       <Grid
         rows={this.state.layout.rows}
         selectTile={this.selectTile}
+        deleteTile={this.deleteTile}
         setHovered={this.setHovered}
         handleDrop={this.handleDrop}
         setTileContent={this.setTileContent}
