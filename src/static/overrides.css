@@ -145,6 +145,8 @@
   margin-bottom: -2px;
 }
 
+
+
 .mosaic .tile.top,
 .mosaic .row.top {
   border-top: solid 2px #3469d0;
@@ -170,6 +172,39 @@
 
 .mosaic .tile.dragging {
   opacity: 0.5;
+}
+
+.mosaic .divider {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  margin: -10px;
+  z-index: 1;
+  cursor: col-resize;
+}
+
+.mosaic .divider:hover .inner {
+  border-right: dashed 4px #3469d0;
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  width: 12px;
+}
+
+.mosaic .resize.helper {
+  background-color: #3469d0;
+  position: fixed;
+  width: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+.mosaic .row.resize {
+  opacity: 0.5;
+}
+
+.mosaic .row.resize .divider {
+  opacity: 0;
 }
 
 /* Responsive visibility helper classes

@@ -59,7 +59,7 @@ export default class Layout extends Component {
         {
           columns: [
             {
-              width: 6,
+              width: 5,
               tiles: [
                 {
                   content: '<p>Column <b>one</b></p>',
@@ -74,7 +74,7 @@ export default class Layout extends Component {
               ],
             },
             {
-              width: 10,
+              width: 11,
               tiles: [
                 {
                   content: '<p>Column <b>two</b></p>',
@@ -118,6 +118,7 @@ export default class Layout extends Component {
     this.state = {
       layout: {
         rows: map(this.props.layout.rows, (row, rowIndex) => ({
+          resize: false,
           hovered: null,
           columns: map(row.columns, (column, columnIndex) => ({
             width: column.width,
@@ -156,6 +157,28 @@ export default class Layout extends Component {
     this.setHovered = this.setHovered.bind(this);
     this.setTileContent = this.setTileContent.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
+    this.startResize = this.startResize.bind(this);
+    this.endResize = this.endResize.bind(this);
+    this.deselectOnDocumentClick = this.deselectOnDocumentClick.bind(this);
+    this.handleRef = this.handleRef.bind(this);
+  }
+
+  /**
+   * Component did mount
+   * @function componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    document.addEventListener('mousedown', this.deselectOnDocumentClick);
+  }
+
+  /**
+   * Component will unmount
+   * @function componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.deselectOnDocumentClick);
   }
 
   /**
@@ -432,20 +455,90 @@ export default class Layout extends Component {
   }
 
   /**
+   * Start resize.
+   * @function startResize
+   * @param {number} row Row index.
+   * @returns {undefined}
+   */
+  startResize(row) {
+    this.selectTile(-1, -1, -1);
+    this.state.layout.rows[row].resize = true;
+    this.setState({
+      layout: this.state.layout,
+    });
+  }
+
+  /**
+   * End resize.
+   * @function endResize
+   * @param {number} row Row index.
+   * @param {number} column Column index.
+   * @param {number} position New position.
+   * @returns {undefined}
+   */
+  endResize(row, column, position) {
+    let layout;
+
+    if (this.state.layout.rows[row].columns.length === 2) {
+      layout = [[4, 12], [5, 11], [8, 8], [11, 5], [12, 4]][position];
+    } else if (column === 0) {
+      layout = [[4, 8, 4], [5, 6, 5], [8, 4, 4]][position];
+    } else {
+      layout = [[4, 4, 8], [5, 6, 5], [4, 8, 4]][position];
+    }
+    map(
+      layout,
+      (width, index) =>
+        (this.state.layout.rows[row].columns[index].width = width),
+    );
+
+    this.state.layout.rows[row].resize = false;
+    this.setState({
+      layout: this.state.layout,
+    });
+  }
+
+  /**
+   * Handle ref
+   * @function handleRef
+   * @param {Object} node Ref object.
+   * @returns {undefined}
+   */
+  handleRef(node) {
+    this.ref = node;
+  }
+
+  /**
+   * Deselect on document click method.
+   * @function deselectOnDocumentClick
+   * @param {Object} event Event object.
+   * @returns {undefined}
+   */
+  deselectOnDocumentClick(event) {
+    if (this.ref && !this.ref.contains(event.target)) {
+      this.selectTile(-1, -1, -1);
+    }
+  }
+
+  /**
    * Render method.
    * @function render
    * @returns {string} Markup of the container.
    */
   render() {
     return (
-      <Grid
-        rows={this.state.layout.rows}
-        selectTile={this.selectTile}
-        deleteTile={this.deleteTile}
-        setHovered={this.setHovered}
-        handleDrop={this.handleDrop}
-        setTileContent={this.setTileContent}
-      />
+      <div ref={this.handleRef}>
+        <Grid
+          rows={this.state.layout.rows}
+          selectTile={this.selectTile}
+          deleteTile={this.deleteTile}
+          setHovered={this.setHovered}
+          handleDrop={this.handleDrop}
+          setTileContent={this.setTileContent}
+          startResize={this.startResize}
+          endResize={this.endResize}
+        />
+      </div>
     );
   }
 }

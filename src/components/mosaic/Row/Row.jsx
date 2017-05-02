@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
 
-import { Column } from '../../../components';
+import { Column, ColumnResize } from '../../../components';
 
 /**
  * Row component class.
@@ -16,25 +16,31 @@ import { Column } from '../../../components';
  * @param {Object} props.columns Column data.
  * @param {number} props.row Row index.
  * @param {string} props.hovered Hovered state.
+ * @param {string} props.resize Resize state.
  * @param {func} props.selectTile Select tile method.
  * @param {func} props.deleteTile Delete tile method.
  * @param {func} props.setHoverd Set hovered tile method.
  * @param {func} props.handleDrop Handle tile drop event.
  * @param {func} props.setTileContent Set tile content method.
+ * @param {func} props.startResize Start resize method.
+ * @param {func} props.endResize Start resize method.
  * @returns {string} Markup of the row.
  */
 const Row = ({
   columns,
   row,
   hovered,
+  resize,
   selectTile,
   deleteTile,
   setHovered,
   handleDrop,
   setTileContent,
+  startResize,
+  endResize,
 }) => (
-  <Grid.Row className={hovered || ''}>
-    {columns.map((column, index) => (
+  <Grid.Row className={`${hovered || ''}${resize ? ' resize' : ''}`}>
+    {columns.map((column, index) => [
       <Column
         row={row}
         column={index}
@@ -46,8 +52,17 @@ const Row = ({
         setHovered={setHovered}
         handleDrop={handleDrop}
         setTileContent={setTileContent}
-      />
-    ))}
+      />,
+      index < columns.length - 1 &&
+        columns.length < 4 &&
+        <ColumnResize
+          row={row}
+          column={index}
+          columns={columns.length}
+          startResize={startResize}
+          endResize={endResize}
+        />,
+    ])}
   </Grid.Row>
 );
 
@@ -60,11 +75,14 @@ Row.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
   row: PropTypes.number.isRequired,
   hovered: PropTypes.string,
+  resize: PropTypes.bool.isRequired,
   selectTile: PropTypes.func.isRequired,
   deleteTile: PropTypes.func.isRequired,
   setHovered: PropTypes.func.isRequired,
   handleDrop: PropTypes.func.isRequired,
   setTileContent: PropTypes.func.isRequired,
+  startResize: PropTypes.func.isRequired,
+  endResize: PropTypes.func.isRequired,
 };
 
 /**

@@ -5,6 +5,8 @@
  */
 
 export Column from './mosaic/Column/Column';
+export ColumnResize from './mosaic/Column/ColumnResize';
+export ColumnResizeHelper from './mosaic/Column/ColumnResizeHelper';
 export Grid from './mosaic/Grid/Grid';
 export Layout from './mosaic/Layout/Layout';
 export Row from './mosaic/Row/Row';

@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Resizing of tiles @robgietema
 - Deletion of tiles @robgietema
 - Drag and drop of tiles @robgietema
 - Basic mosaic grid rendering @robgietema
@@ -10,6 +11,7 @@
 
 ### Changes
 - Updated to new history api @robgietema
+- Deselect on click outside grid @robgietema
 
 ## 0.3.0 (2017-04-29)
 ### Added

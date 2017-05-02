@@ -31,6 +31,7 @@ import Editor from 'draft-js-editor';
  * @param {func} props.setHovered Set hovered tile method.
  * @param {func} props.handleDrop Handle tile drop event.
  * @param {func} props.setTileContent Set tile content method.
+ * @param {bool} props.isDragging Is dragging.
  * @returns {string} Markup of the tile.
  */
 const Tile = ({

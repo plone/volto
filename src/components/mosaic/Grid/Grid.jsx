@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid as UIGrid } from 'semantic-ui-react';
 
-import { Row } from '../../../components';
+import { ColumnResizeHelper, Row } from '../../../components';
 
 /**
  * Grid component class.
@@ -19,6 +19,8 @@ import { Row } from '../../../components';
  * @param {func} props.setHovered Set hovered tile method.
  * @param {func} props.handleDrop Handle drop tile event.
  * @param {func} props.setTileContent Set tile content method.
+ * @param {func} props.startResize Start resize method.
+ * @param {func} props.endResize Start resize method.
  * @returns {string} Markup of the row.
  */
 const Grid = ({
@@ -28,6 +30,8 @@ const Grid = ({
   setHovered,
   handleDrop,
   setTileContent,
+  startResize,
+  endResize,
 }) => (
   <UIGrid className="mosaic">
     {rows.map((row, index) => (
@@ -40,8 +44,12 @@ const Grid = ({
         setTileContent={setTileContent}
         columns={row.columns}
         hovered={row.hovered}
+        resize={row.resize}
+        startResize={startResize}
+        endResize={endResize}
       />
     ))}
+    <ColumnResizeHelper />
   </UIGrid>
 );
 
@@ -58,6 +66,8 @@ Grid.propTypes = {
   setHovered: PropTypes.func.isRequired,
   handleDrop: PropTypes.func.isRequired,
   setTileContent: PropTypes.func.isRequired,
+  startResize: PropTypes.func.isRequired,
+  endResize: PropTypes.func.isRequired,
 };
 
 export default Grid;

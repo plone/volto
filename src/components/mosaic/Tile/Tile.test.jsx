@@ -12,25 +12,27 @@ const Wrapper = DragDropContext(HTML5Backend)(({ children }) => (
   <div>{children}</div>
 ));
 
-test('renders a tile component', () => {
-  const component = renderer.create(
-    <Wrapper>
-      <Tile
-        content={{ data: '<h1>Hello World!</h1>' }}
-        type="Title"
-        width={4}
-        row={0}
-        column={0}
-        tile={0}
-        selected
-        selectTile={() => {}}
-        deleteTile={() => {}}
-        setHovered={() => {}}
-        handleDrop={() => {}}
-        setTileContent={() => {}}
-      />
-    </Wrapper>,
-  );
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+describe('Tile', () => {
+  it('renders a tile component', () => {
+    const component = renderer.create(
+      <Wrapper>
+        <Tile
+          content={{ data: '<h1>Hello World!</h1>' }}
+          type="Title"
+          width={4}
+          row={0}
+          column={0}
+          tile={0}
+          selected
+          selectTile={() => {}}
+          deleteTile={() => {}}
+          setHovered={() => {}}
+          handleDrop={() => {}}
+          setTileContent={() => {}}
+        />
+      </Wrapper>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });

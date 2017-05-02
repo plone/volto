@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a tile component 1`] = `
+exports[`Tile renders a tile component 1`] = `
 <div>
   <div
     className="tile selected  "
