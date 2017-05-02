@@ -77,6 +77,13 @@
   right: 0;
 }
 
+.editbar {
+  position: fixed;
+  top: 60px;
+  left: 400px;
+  z-index: 10;
+}
+
 /* override when sidebar is shown */
 @media only screen and (min-width: 1200px) {
   .ui.menu.fixed ~ .pusher .ui.container {

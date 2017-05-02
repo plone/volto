@@ -11,6 +11,7 @@ export Grid from './mosaic/Grid/Grid';
 export Layout from './mosaic/Layout/Layout';
 export Row from './mosaic/Row/Row';
 export Tile from './mosaic/Tile/Tile';
+export Editbar from './mosaic/Editbar/Editbar';
 
 export Anontools from './theme/Anontools/Anontools';
 export Breadcrumbs from './theme/Breadcrumbs/Breadcrumbs';

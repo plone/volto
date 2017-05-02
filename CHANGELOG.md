@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Added
+- Adding tiles @robgietema
 - Handle different tiles @robgietema
 - Resizing of tiles @robgietema
 - Deletion of tiles @robgietema

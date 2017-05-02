@@ -12,8 +12,9 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { isEqual, map, reduce, remove } from 'lodash';
 import move from 'lodash-move';
+import { v4 as uuid } from 'uuid';
 
-import { Grid } from '../../../components';
+import { Grid, Editbar } from '../../../components';
 
 const tileTypes = {
   title: {
@@ -179,6 +180,7 @@ export default class Layout extends Component {
     this.endResize = this.endResize.bind(this);
     this.deselectOnDocumentClick = this.deselectOnDocumentClick.bind(this);
     this.handleRef = this.handleRef.bind(this);
+    this.insertTile = this.insertTile.bind(this);
   }
 
   /**
@@ -539,6 +541,41 @@ export default class Layout extends Component {
   }
 
   /**
+   * Insert a tile.
+   * @function insertTile
+   * @param {string} type Type of tile.
+   * @returns {undefined}
+   */
+  insertTile(type) {
+    this.state.layout.rows.push({
+      resize: false,
+      hovered: null,
+      columns: [
+        {
+          width: 16,
+          hovered: null,
+          tiles: [
+            {
+              url: uuid(),
+              type,
+              label: tileTypes[type].label,
+              content: EditorState.createWithContent(
+                ContentState.createFromBlockArray(convertFromHTML('<p></p>')),
+              ),
+              selected: true,
+              hovered: null,
+            },
+          ],
+        },
+      ],
+    });
+    this.setState({
+      layout: this.state.layout,
+    });
+    this.selectTile(this.state.layout.rows.length - 1, 0, 0);
+  }
+
+  /**
    * Render method.
    * @function render
    * @returns {string} Markup of the container.
@@ -556,6 +593,7 @@ export default class Layout extends Component {
           startResize={this.startResize}
           endResize={this.endResize}
         />
+        <Editbar insertTile={this.insertTile} />
       </div>
     );
   }

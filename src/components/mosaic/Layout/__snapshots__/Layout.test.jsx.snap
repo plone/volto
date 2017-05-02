@@ -3,5 +3,6 @@
 exports[`Layout renders a layout component 1`] = `
 <div>
   <div />
+  <div />
 </div>
 `;

@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import Layout from './Layout';
 
 jest.mock('../Grid/Grid', () => jest.fn(() => <div />));
+jest.mock('../Editbar/Editbar', () => jest.fn(() => <div />));
 
 global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
