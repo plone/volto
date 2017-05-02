@@ -20,7 +20,7 @@ describe('Layout', () => {
                     {
                       content: '<p>Column <b>one</b></p>',
                       url: './@@plone.app.standardtiles.html/1',
-                      type: 'Title',
+                      type: 'title',
                     },
                   ],
                 },

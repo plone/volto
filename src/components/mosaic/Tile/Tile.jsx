@@ -13,12 +13,28 @@ import Editor from 'draft-js-editor';
 
 /* eslint jsx-a11y/no-static-element-interactions: 0 */
 
+const buttons = {
+  title: {
+    inline: [],
+    block: [],
+  },
+  description: {
+    inline: [],
+    block: [],
+  },
+  text: {
+    inline: undefined,
+    block: undefined,
+  },
+};
+
 /**
  * Tile component class.
  * @function Tile
  * @param {Object} props Component properties.
  * @param {Object} props.content Content of the tile.
  * @param {string} props.type Type of the tile.
+ * @param {string} props.label Label of the tile.
  * @param {bool} props.selected True if tile is selected.
  * @param {string} props.hovered Hovered direction.
  * @param {number} props.row Row index.
@@ -37,6 +53,7 @@ import Editor from 'draft-js-editor';
 const Tile = ({
   content,
   type,
+  label,
   selected,
   hovered,
   row,
@@ -52,10 +69,10 @@ const Tile = ({
   connectDropTarget(
     connectDragSource(
       <div
-        className={`tile ${selected ? 'selected' : ''} ${isDragging ? 'dragging' : ''} ${hovered || ''}`}
+        className={`tile ${type}${hovered ? ` ${hovered}` : ''}${selected ? ' selected' : ''}${isDragging ? ' dragging' : ''}`}
         onClick={() => selectTile(row, column, tile)}
       >
-        {selected && <Label color="blue" pointing="below">{type}</Label>}
+        {selected && <Label color="blue" pointing="below">{label}</Label>}
         {selected &&
           <Icon
             name="close"
@@ -66,6 +83,14 @@ const Tile = ({
           />}
         {!__SERVER__ &&
           <Editor
+            popoverStyle={{
+              color: 'rgba(0,0,0,.6)',
+              backgroundColor: '#E8E8E8',
+            }}
+            iconColor={buttons[type].block ? 'transparent' : 'black'}
+            iconSelectedColor="#3469d0"
+            inlineButtons={buttons[type].inline}
+            blockButtons={buttons[type].block}
             onChange={newContent =>
               setTileContent(row, column, tile, newContent)}
             editorState={content}
@@ -82,6 +107,7 @@ const Tile = ({
 Tile.propTypes = {
   content: PropTypes.object.isRequired,
   type: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,
   hovered: PropTypes.string,
   row: PropTypes.number.isRequired,

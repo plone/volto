@@ -18,7 +18,8 @@ describe('Tile', () => {
       <Wrapper>
         <Tile
           content={{ data: '<h1>Hello World!</h1>' }}
-          type="Title"
+          type="title"
+          label="Title"
           width={4}
           row={0}
           column={0}

@@ -54,6 +54,7 @@ const Column = ({
         url={tile.url}
         content={tile.content}
         type={tile.type}
+        label={tile.label}
         selected={tile.selected}
         hovered={tile.hovered}
       />
@@ -72,7 +73,8 @@ Column.propTypes = {
     PropTypes.shape({
       url: PropTypes.string,
       content: PropTypes.object,
-      type: PropTypes.type,
+      type: PropTypes.string,
+      label: PropTypes.string,
     }),
   ).isRequired,
   column: PropTypes.number.isRequired,

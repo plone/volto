@@ -15,6 +15,21 @@ import move from 'lodash-move';
 
 import { Grid } from '../../../components';
 
+const tileTypes = {
+  title: {
+    label: 'Title',
+    content: content => `<h1>${content}</h1>`,
+  },
+  description: {
+    label: 'Description',
+    content: content => `<p class="description">${content}</p>`,
+  },
+  text: {
+    label: 'Text',
+    content: content => content,
+  },
+};
+
 /**
  * Layout component class.
  * @class Layout
@@ -62,14 +77,14 @@ export default class Layout extends Component {
               width: 5,
               tiles: [
                 {
-                  content: '<p>Column <b>one</b></p>',
+                  content: 'My blog post',
                   url: './@@plone.app.standardtiles.html/1',
-                  type: 'Title',
+                  type: 'title',
                 },
                 {
-                  content: 'Document by line',
+                  content: 'This is the description',
                   url: './@@plone.app.standardtiles.html/2',
-                  type: 'Document by line',
+                  type: 'description',
                 },
               ],
             },
@@ -79,7 +94,7 @@ export default class Layout extends Component {
                 {
                   content: '<p>Column <b>two</b></p>',
                   url: './@@plone.app.standardtiles.html/3',
-                  type: 'Description',
+                  type: 'text',
                 },
               ],
             },
@@ -93,12 +108,12 @@ export default class Layout extends Component {
                 {
                   content: '<p>Column <b>full</b></p>',
                   url: './@@plone.app.standardtiles.html/4',
-                  type: 'Text',
+                  type: 'text',
                 },
                 {
                   content: '<p>Column <b>full 2</b></p>',
                   url: './@@plone.app.standardtiles.html/5',
-                  type: 'Text',
+                  type: 'text',
                 },
               ],
             },
@@ -126,11 +141,14 @@ export default class Layout extends Component {
             tiles: map(column.tiles, (tile, tileIndex) => ({
               url: tile.url,
               type: tile.type,
+              label: tileTypes[tile.type].label,
               content: __SERVER__
                 ? tile.content
                 : EditorState.createWithContent(
                     ContentState.createFromBlockArray(
-                      convertFromHTML(tile.content),
+                      convertFromHTML(
+                        tileTypes[tile.type].content(tile.content),
+                      ),
                     ),
                   ),
               selected: rowIndex === 0 && columnIndex === 0 && tileIndex === 0,

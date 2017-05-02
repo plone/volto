@@ -3,7 +3,7 @@
 exports[`Tile renders a tile component 1`] = `
 <div>
   <div
-    className="tile selected  "
+    className="tile title selected"
     onClick={[Function]}
   >
     <div
