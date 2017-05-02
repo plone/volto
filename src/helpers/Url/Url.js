@@ -40,13 +40,20 @@ export function getBaseUrl(url: string): string {
 export function getView(url: string): string {
   const view = last(url.replace(/\?.*$/, '').split('/'));
   if (
-    ['add', 'contents', 'edit', 'delete', 'diff', 'history', 'sharing'].indexOf(
-      view,
-    ) === -1
+    [
+      'add',
+      'layout',
+      'contents',
+      'edit',
+      'delete',
+      'diff',
+      'history',
+      'sharing',
+    ].indexOf(view) === -1
   ) {
     return 'view';
   }
-  return view;
+  return view === 'layout' ? 'edit' : view;
 }
 
 /**
