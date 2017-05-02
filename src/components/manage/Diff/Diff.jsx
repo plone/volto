@@ -72,7 +72,7 @@ export default class DiffComponent extends Component {
     ).isRequired,
     history: PropTypes.arrayOf(
       PropTypes.shape({
-        version_id: PropTypes.number,
+        version: PropTypes.number,
         time: PropTypes.string,
         actor: PropTypes.shape({ fullname: PropTypes.string }),
       }),
@@ -185,11 +185,11 @@ export default class DiffComponent extends Component {
    */
   render() {
     const versions = map(
-      filter(this.props.history, entry => 'version_id' in entry),
+      filter(this.props.history, entry => 'version' in entry),
       (entry, index) => ({
-        text: `${index === 0 ? 'Current' : entry.version_id} (${moment(entry.time).format('LLLL')}, ${entry.actor.fullname})`,
-        value: `${entry.version_id}`,
-        key: `${entry.version_id}`,
+        text: `${index === 0 ? 'Current' : entry.version} (${moment(entry.time).format('LLLL')}, ${entry.actor.fullname})`,
+        value: `${entry.version}`,
+        key: `${entry.version}`,
       }),
     );
     return (

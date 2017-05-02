@@ -108,7 +108,8 @@ export default class Toolbar extends Component {
 
     // Needs to be replaced with is_folderish on the content when available
     // in the API.
-    const isFolderish = this.props.content['@type'] === 'Folder';
+    const isFolderish =
+      ['Folder', 'Plone Site'].indexOf(this.props.content['@type']) !== -1;
     return (
       this.props.token &&
       <Menu

@@ -1,22 +1,29 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Grid from './Grid';
 
-jest.mock('../Row/Row', () => jest.fn(() => <div />));
-jest.mock('../Column/ColumnResizeHelper', () => jest.fn(() => <div />));
+import Column from './Column';
 
-describe('Grid', () => {
-  it('renders a grid component', () => {
+jest.mock('../Tile/Tile', () => jest.fn(() => <div />));
+
+describe('Column', () => {
+  it('renders a column component', () => {
     const component = renderer.create(
-      <Grid
-        rows={[{ colums: [] }]}
+      <Column
+        width={1}
+        tiles={[
+          {
+            url: '/blog',
+            content: {},
+            type: 'Title',
+          },
+        ]}
+        row={0}
+        column={0}
         selectTile={() => {}}
         deleteTile={() => {}}
         setHovered={() => {}}
         handleDrop={() => {}}
         setTileContent={() => {}}
-        startResize={() => {}}
-        endResize={() => {}}
       />,
     );
     const json = component.toJSON();

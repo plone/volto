@@ -16,8 +16,8 @@ describe('Diff action', () => {
       };
       action.promise(apiMock);
 
-      expect(apiMock.get).toBeCalledWith(`${url}?version_id=${one}`);
-      expect(apiMock.get).toBeCalledWith(`${url}?version_id=${two}`);
+      expect(apiMock.get).toBeCalledWith(`${url}/@history/${one}`);
+      expect(apiMock.get).toBeCalledWith(`${url}/@history/${two}`);
     });
   });
 });

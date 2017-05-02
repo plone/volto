@@ -18,9 +18,7 @@ import {
   intlShape,
 } from 'react-intl';
 
-import {
-  Form, // Layout,
-} from '../../../components';
+import { Form } from '../../../components';
 import { editContent, getContent, getSchema } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
@@ -153,31 +151,6 @@ export class EditComponent extends Component {
               title: this.props.schema.title,
             })}
           />
-          {/*
-          <Layout
-            layout={[
-              [
-                {
-                  width: 4,
-                  content: '<p>Column <b>one</b></p>',
-                  url: './@@plone.app.standardtiles.html/1',
-                },
-                {
-                  width: 8,
-                  content: '<p>Column <b>two</b></p>',
-                  url: './@@plone.app.standardtiles.html/2',
-                },
-              ],
-              [
-                {
-                  width: 12,
-                  content: '<p>Column <b>full</b></p>',
-                  url: './@@plone.app.standardtiles.html/3',
-                },
-              ],
-            ]}
-          />
-          */}
           <h1>
             <FormattedMessage
               id="Edit {title}"

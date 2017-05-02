@@ -21,16 +21,19 @@ describe('History action', () => {
   describe('revertHistory', () => {
     it('should create an action to revert history', () => {
       const url = 'http://localhost';
-      const action = revertHistory(url);
+      const version = 0;
+      const action = revertHistory(url, version);
 
       expect(action.type).toEqual(REVERT_HISTORY);
 
       const apiMock = {
-        get: jest.fn(),
+        patch: jest.fn(),
       };
       action.promise(apiMock);
 
-      expect(apiMock.get).toBeCalledWith(url);
+      expect(apiMock.patch).toBeCalledWith(`${url}/@history`, {
+        data: { version },
+      });
     });
   });
 });

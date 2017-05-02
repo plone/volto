@@ -77,6 +77,13 @@
   right: 0;
 }
 
+.editbar {
+  position: fixed;
+  top: 60px;
+  left: 400px;
+  z-index: 10;
+}
+
 /* override when sidebar is shown */
 @media only screen and (min-width: 1200px) {
   .ui.menu.fixed ~ .pusher .ui.container {
@@ -103,30 +110,108 @@
 }
 
 /* Mosaic */
-.row {
-  margin: 0;
-}
-
-.tile {
-  border: solid 2px transparent;
+.mosaic .tile {
   cursor: move;
-  padding: 0;
-  &:hover {
-    border: dashed 2px #3469d0;
-  }
+  border: solid 2px transparent;
+  position: relative;
+  margin: -2px;
 }
 
-.content {
-  z-index: 100;
+.mosaic .tile .ui.label.below {
+  position: absolute;
+  top: -34px;
 }
 
-.selected {
+.mosaic .tile .close.icon {
+  cursor: pointer;
+  position: absolute;
+  margin: 0;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.mosaic .tile:hover {
+  border: dashed 2px #3469d0;
+}
+
+.mosaic .tile.selected {
   border: solid 2px #3469d0;
   cursor: default;
   background-color: #ffffe1;
-  &:hover {
-    border: solid 2px #3469d0;
-  }
+}
+
+.mosaic .tile.selected:hover {
+  border: solid 2px #3469d0;
+}
+
+.mosaic .row {
+  border-top: solid 2px transparent;
+  border-bottom: solid 2px transparent;
+  margin-top: -2px;
+  margin-bottom: -2px;
+}
+
+
+
+.mosaic .tile.top,
+.mosaic .row.top {
+  border-top: solid 2px #3469d0;
+}
+
+.mosaic .tile.bottom,
+.mosaic .row.bottom {
+  border-bottom: solid 2px #3469d0;
+}
+
+.mosaic .column {
+  border-left: solid 2px transparent;
+  border-right: solid 2px transparent;
+}
+
+.mosaic .column.left {
+  border-left: solid 2px #3469d0;
+}
+
+.mosaic .column.right {
+  border-right: solid 2px #3469d0;
+}
+
+.mosaic .tile.dragging {
+  opacity: 0.5;
+}
+
+.mosaic .divider {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  margin: -10px;
+  z-index: 1;
+  cursor: col-resize;
+}
+
+.mosaic .divider:hover .inner {
+  border-right: dashed 4px #3469d0;
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  width: 12px;
+}
+
+.mosaic .resize.helper {
+  background-color: #3469d0;
+  position: fixed;
+  width: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+.mosaic .row.resize {
+  opacity: 0.5;
+}
+
+.mosaic .row.resize .divider {
+  opacity: 0;
 }
 
 /* Responsive visibility helper classes

@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a grid component 1`] = `
+exports[`Grid renders a grid component 1`] = `
 <div
-  className="grid"
+  className="ui grid mosaic"
 >
   <div />
   <div />

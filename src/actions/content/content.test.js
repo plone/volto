@@ -180,8 +180,8 @@ describe('Content action', () => {
 
     it('should create an action to get content with version', () => {
       const url = 'http://localhost';
-      const versionId = '0';
-      const action = getContent(url, versionId);
+      const version = '0';
+      const action = getContent(url, version);
 
       expect(action.type).toEqual(GET_CONTENT);
 
@@ -190,7 +190,7 @@ describe('Content action', () => {
       };
       action.promise(apiMock);
 
-      expect(apiMock.get).toBeCalledWith(`${url}?version_id=${versionId}`);
+      expect(apiMock.get).toBeCalledWith(`${url}/@history/${version}`);
     });
   });
 });

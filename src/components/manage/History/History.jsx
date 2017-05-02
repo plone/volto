@@ -96,11 +96,11 @@ export default class HistoryComponent extends Component {
    * On revert
    * @method onRevert
    * @param {object} event Event object
-   * @param {string} value Value
+   * @param {number} value Value
    * @returns {undefined}
    */
   onRevert(event, { value }) {
-    this.props.revertHistory(value.replace(config.apiPath, ''));
+    this.props.revertHistory(getBaseUrl(this.props.pathname), value);
   }
 
   /**
@@ -160,11 +160,11 @@ export default class HistoryComponent extends Component {
             {map(entries, entry => (
               <Table.Row key={entry.time}>
                 <Table.Cell>
-                  {('version_id' in entry &&
-                    entry.version_id > 0 &&
+                  {('version' in entry &&
+                    entry.version > 0 &&
                     <Link
                       className="item"
-                      to={`${getBaseUrl(this.props.pathname)}/diff?one=${entry.version_id - 1}&two=${entry.version_id}`}
+                      to={`${getBaseUrl(this.props.pathname)}/diff?one=${entry.version - 1}&two=${entry.version}`}
                     >
                       {entry.transition_title}
                     </Link>) ||
@@ -185,11 +185,11 @@ export default class HistoryComponent extends Component {
                   {entry.type === 'versioning' &&
                     <Dropdown icon="ellipsis vertical">
                       <Dropdown.Menu className="left">
-                        {'version_id' in entry &&
-                          entry.version_id > 0 &&
+                        {'version' in entry &&
+                          entry.version > 0 &&
                           <Link
                             className="item"
-                            to={`${getBaseUrl(this.props.pathname)}/diff?one=${entry.version_id - 1}&two=${entry.version_id}`}
+                            to={`${getBaseUrl(this.props.pathname)}/diff?one=${entry.version - 1}&two=${entry.version}`}
                           >
                             <Icon name="copy" />
                             {' '}
@@ -198,10 +198,10 @@ export default class HistoryComponent extends Component {
                               defaultMessage="View changes"
                             />
                           </Link>}
-                        {'version_id' in entry &&
+                        {'version' in entry &&
                           <Link
                             className="item"
-                            to={`${getBaseUrl(this.props.pathname)}?version_id=${entry.version_id}`}
+                            to={`${getBaseUrl(this.props.pathname)}?version=${entry.version}`}
                           >
                             <Icon name="eye" />
                             {' '}
@@ -210,9 +210,9 @@ export default class HistoryComponent extends Component {
                               defaultMessage="View this revision"
                             />
                           </Link>}
-                        {entry.revert_url &&
+                        {'version' in entry &&
                           <Dropdown.Item
-                            value={entry.revert_url}
+                            value={entry.version}
                             onClick={this.onRevert}
                           >
                             <Icon name="undo" />
