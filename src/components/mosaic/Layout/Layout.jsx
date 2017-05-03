@@ -75,25 +75,39 @@ export default class Layout extends Component {
         {
           columns: [
             {
-              width: 5,
+              width: 16,
               tiles: [
                 {
-                  content: 'My blog post',
+                  content: 'My first blog post',
                   url: './@@plone.app.standardtiles.html/1',
                   type: 'title',
                 },
                 {
-                  content: 'This is the description',
+                  content: 'Fusce imperdiet risus turpis, a facilisis dui pharetra sit amet. Maecenas ut malesuada diam. Nulla porta ut dui in ultrices. Maecenas eget dictum tortor, vulputate vulputate mi. Aenean pulvinar a est et sagittis. Nam at venenatis nunc. Pellentesque quis porta enim.',
                   url: './@@plone.app.standardtiles.html/2',
                   type: 'description',
                 },
               ],
             },
+          ],
+        },
+        {
+          columns: [
             {
-              width: 11,
+              width: 8,
               tiles: [
                 {
-                  content: '<p>Column <b>two</b></p>',
+                  content: '<h2>Nam et convallis lorem</h2><p>Suspendisse vestibulum quis lorem in luctus. Cras consequat sit amet elit aliquam rhoncus. Nunc quis faucibus orci, vitae gravida risus. Nulla semper nisi velit, et ullamcorper magna volutpat eget. Nam euismod libero sit amet arcu imperdiet, quis malesuada metus congue. Sed magna massa, gravida a ornare eu, suscipit auctor nisl. Nulla laoreet dolor ut viverra consectetur. Praesent aliquet ante sit amet ante maximus aliquet. Integer a ex vel nisl cursus interdum. Donec sollicitudin venenatis leo at rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dignissim augue ac neque ornare, sed venenatis augue dignissim. Pellentesque gravida vel arcu quis venenatis.</p><p></p><p>Fusce imperdiet risus turpis, a facilisis dui pharetra sit amet. Maecenas ut malesuada diam. Nulla porta ut dui in ultrices. Maecenas eget dictum tortor, vulputate vulputate mi. Aenean pulvinar a est et sagittis. Nam at venenatis nunc. Pellentesque quis porta enim.</p>',
+                  url: './@@plone.app.standardtiles.html/4',
+                  type: 'text',
+                },
+              ],
+            },
+            {
+              width: 8,
+              tiles: [
+                {
+                  content: '<h2>Nam euismod libero sit amet</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a augue eget dui dignissim hendrerit vitae eget velit. Aenean nec rhoncus turpis. Nullam varius magna metus, nec elementum leo ornare ac. Nam tincidunt vel ex id consectetur. Curabitur faucibus et ante nec molestie. Sed eget fringilla mi. Sed sed tristique tellus.</p><p>Nam et convallis lorem. Suspendisse finibus erat quis erat consectetur ultricies. Nulla mattis arcu nec dignissim pharetra. Ut fermentum ipsum eget ante consectetur eleifend. Nulla commodo pellentesque rhoncus. Nunc vitae odio sed dui aliquam gravida gravida sit amet ante. Integer aliquam aliquet cursus. Nam convallis laoreet nunc ut dictum.</p><p>Quisque fermentum, ligula quis venenatis sagittis, eros nisl scelerisque lorem, eget mollis tellus ex ut purus. Vivamus ut imperdiet odio. Integer sodales suscipit mauris eget tristique. Proin non tellus tempus felis lacinia blandit a at erat. Suspendisse at elit sodales, malesuada eros at, pulvinar nisl. Mauris at odio lacinia, placerat tellus sit amet, luctus est. Ut sit amet ligula pharetra, dignissim augue nec, volutpat eros.</p>',
                   url: './@@plone.app.standardtiles.html/3',
                   type: 'text',
                 },
@@ -107,13 +121,8 @@ export default class Layout extends Component {
               width: 16,
               tiles: [
                 {
-                  content: '<p>Column <b>full</b></p>',
-                  url: './@@plone.app.standardtiles.html/4',
-                  type: 'text',
-                },
-                {
-                  content: '<p>Column <b>full 2</b></p>',
-                  url: './@@plone.app.standardtiles.html/5',
+                  content: '<h2>Quisque fermentum</h2><ul><li>Ligula quis venenatis sagittis</li><li>Eros nisl scelerisque lorem</li><li>Eget mollis tellus ex ut purus</li><li>Vivamus ut imperdiet odio</li><li>Integer sodales suscipit mauris eget tristique.</li><li>Proin non tellus tempus felis lacinia blandit a at erat</li><li>Suspendisse at elit sodales</li><li>Malesuada eros at, pulvinar nisl.</li><li>Mauris at odio lacinia, placerat tellus sit amet, luctus est.</li><li>Ut sit amet ligula pharetra, dignissim augue nec, volutpat eros.</li></ul>',
+                  url: './@@plone.app.standardtiles.html/10',
                   type: 'text',
                 },
               ],
