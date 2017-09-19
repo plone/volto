@@ -645,7 +645,7 @@ exports[`Contents renders a contents component 1`] = `
                     <div
                       className="header"
                     >
-                       selected
+                      0 selected
                     </div>
                     <div
                       className="ui left icon input search"
