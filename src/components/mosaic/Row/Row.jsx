@@ -54,14 +54,15 @@ const Row = ({
         setTileContent={setTileContent}
       />,
       index < columns.length - 1 &&
-        columns.length < 4 &&
-        <ColumnResize
-          row={row}
-          column={index}
-          columns={columns.length}
-          startResize={startResize}
-          endResize={endResize}
-        />,
+        columns.length < 4 && (
+          <ColumnResize
+            row={row}
+            column={index}
+            columns={columns.length}
+            startResize={startResize}
+            endResize={endResize}
+          />
+        ),
     ])}
   </Grid.Row>
 );

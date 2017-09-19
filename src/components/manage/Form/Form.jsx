@@ -198,7 +198,7 @@ export default class Form extends Component {
             defaultMessage="There were some errors."
           />
         </Message>
-        {schema.fieldsets.length > 1 &&
+        {schema.fieldsets.length > 1 && (
           <Menu attached="top" tabular stackable>
             {map(schema.fieldsets, (item, index) => (
               <Menu.Item
@@ -211,7 +211,8 @@ export default class Form extends Component {
                 {item.title}
               </Menu.Item>
             ))}
-          </Menu>}
+          </Menu>
+        )}
         <Segment attached>
           {fields.map(field => (
             <Field

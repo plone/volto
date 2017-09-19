@@ -1,8 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {
-  ContentsIndexHeaderComponent as ContentsIndexHeader,
-} from './ContentsIndexHeader';
+import { ContentsIndexHeaderComponent as ContentsIndexHeader } from './ContentsIndexHeader';
 
 test('renders a contents item component', () => {
   const component = renderer.create(

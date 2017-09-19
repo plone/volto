@@ -119,10 +119,11 @@ export class SearchComponent extends Component {
                       {item.title}
                     </Link>
                   </h2>
-                  {item.description &&
+                  {item.description && (
                     <div className="tileBody">
                       <span className="description">{item.description}</span>
-                    </div>}
+                    </div>
+                  )}
                   <div className="tileFooter">
                     <Link to={item['@id']}>
                       <FormattedMessage

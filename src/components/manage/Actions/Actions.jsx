@@ -233,8 +233,9 @@ export default class Actions extends Component {
         trigger={
           <span>
             <Icon name="lightning" />{' '}
-            {this.props.expanded &&
-              <FormattedMessage id="Actions" defaultMessage="Actions" />}
+            {this.props.expanded && (
+              <FormattedMessage id="Actions" defaultMessage="Actions" />
+            )}
           </span>
         }
         pointing="left"

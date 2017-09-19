@@ -71,7 +71,8 @@ export default function content(state = initialState, action = {}) {
         ...state,
         data: {
           ...action.result,
-          items: action.result &&
+          items:
+            action.result &&
             action.result.items &&
             action.result.items.map(item => ({
               ...item,

@@ -77,12 +77,10 @@ export default class ColumnResizeHelper extends Component {
     }
 
     // Determine possible options
-    const threeColOptions = item.column === 0
-      ? [0.25, 0.33, 0.5]
-      : [0.5, 0.66, 0.75];
-    const options = item.columns === 2
-      ? [0.25, 0.33, 0.5, 0.66, 0.75]
-      : threeColOptions;
+    const threeColOptions =
+      item.column === 0 ? [0.25, 0.33, 0.5] : [0.5, 0.66, 0.75];
+    const options =
+      item.columns === 2 ? [0.25, 0.33, 0.5, 0.66, 0.75] : threeColOptions;
 
     // Calc percentage
     const percentage = (currentOffset.x - item.gridX) / item.gridWidth;

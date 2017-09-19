@@ -116,33 +116,36 @@ export default class Workflow extends Component {
   render() {
     const current =
       this.props.history.length > 0 && last(this.props.history).review_state;
-    return this.props.history.length > 0
-      ? <Dropdown
-          item
-          trigger={
-            <span>
-              <Icon name="random" />{' '}
-              {this.props.expanded &&
-                <FormattedMessage
-                  id="State: {current}"
-                  defaultMessage="State: {current}"
-                  values={{ current }}
-                />}
-            </span>
-          }
-          pointing="left"
-        >
-          <Dropdown.Menu>
-            {this.props.transitions.map(item => (
-              <Dropdown.Item
-                text={item.title}
-                value={item['@id']}
-                key={item['@id']}
-                onClick={this.transition}
+    return this.props.history.length > 0 ? (
+      <Dropdown
+        item
+        trigger={
+          <span>
+            <Icon name="random" />{' '}
+            {this.props.expanded && (
+              <FormattedMessage
+                id="State: {current}"
+                defaultMessage="State: {current}"
+                values={{ current }}
               />
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
-      : <span />;
+            )}
+          </span>
+        }
+        pointing="left"
+      >
+        <Dropdown.Menu>
+          {this.props.transitions.map(item => (
+            <Dropdown.Item
+              text={item.title}
+              value={item['@id']}
+              key={item['@id']}
+              onClick={this.transition}
+            />
+          ))}
+        </Dropdown.Menu>
+      </Dropdown>
+    ) : (
+      <span />
+    );
   }
 }

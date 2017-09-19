@@ -116,37 +116,38 @@ export default class ContentsTagsModal extends Component {
    */
   render() {
     return (
-      this.props.open &&
-      <ModalForm
-        open={this.props.open}
-        onSubmit={this.onSubmit}
-        onCancel={this.props.onCancel}
-        title={this.props.intl.formatMessage(messages.tags)}
-        formData={{
-          tags_to_remove: [],
-          tags_to_add: [],
-        }}
-        schema={{
-          fieldsets: [
-            {
-              id: 'default',
-              title: this.props.intl.formatMessage(messages.default),
-              fields: ['tags_to_remove', 'tags_to_add'],
+      this.props.open && (
+        <ModalForm
+          open={this.props.open}
+          onSubmit={this.onSubmit}
+          onCancel={this.props.onCancel}
+          title={this.props.intl.formatMessage(messages.tags)}
+          formData={{
+            tags_to_remove: [],
+            tags_to_add: [],
+          }}
+          schema={{
+            fieldsets: [
+              {
+                id: 'default',
+                title: this.props.intl.formatMessage(messages.default),
+                fields: ['tags_to_remove', 'tags_to_add'],
+              },
+            ],
+            properties: {
+              tags_to_remove: {
+                type: 'array',
+                title: this.props.intl.formatMessage(messages.tagsToRemove),
+              },
+              tags_to_add: {
+                type: 'array',
+                title: this.props.intl.formatMessage(messages.tagsToAdd),
+              },
             },
-          ],
-          properties: {
-            tags_to_remove: {
-              type: 'array',
-              title: this.props.intl.formatMessage(messages.tagsToRemove),
-            },
-            tags_to_add: {
-              type: 'array',
-              title: this.props.intl.formatMessage(messages.tagsToAdd),
-            },
-          },
-          required: [],
-        }}
-      />
+            required: [],
+          }}
+        />
+      )
     );
   }
 }

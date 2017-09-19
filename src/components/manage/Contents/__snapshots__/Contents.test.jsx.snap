@@ -123,6 +123,7 @@ exports[`Contents renders a contents component 1`] = `
               <i
                 aria-hidden="true"
                 className="dropdown icon"
+                onClick={[Function]}
               />
               <div
                 className="menu transition"
@@ -207,8 +208,10 @@ exports[`Contents renders a contents component 1`] = `
                   className="ui input prompt"
                 >
                   <input
+                    disabled={undefined}
                     onChange={[Function]}
                     placeholder="Filter…"
+                    tabIndex={undefined}
                     type="text"
                     value=""
                   />
@@ -655,7 +658,10 @@ exports[`Contents renders a contents component 1`] = `
                         className="search icon"
                       />
                       <input
+                        disabled={undefined}
+                        onChange={[Function]}
                         placeholder="Filter…"
+                        tabIndex={undefined}
                         type="text"
                       />
                     </div>
@@ -723,11 +729,14 @@ exports[`Contents renders a contents component 1`] = `
                   tabIndex={0}
                 >
                   <div
+                    aria-live="polite"
                     className="text"
+                    role="alert"
                   />
                   <i
                     aria-hidden="true"
                     className="ellipsis vertical icon"
+                    onClick={[Function]}
                   />
                   <div
                     className="menu transition left"
@@ -1124,11 +1133,14 @@ exports[`Contents renders a contents component 1`] = `
                   tabIndex={0}
                 >
                   <div
+                    aria-live="polite"
                     className="text"
+                    role="alert"
                   />
                   <i
                     aria-hidden="true"
                     className="ellipsis vertical icon"
+                    onClick={[Function]}
                   />
                   <div
                     className="menu transition left"

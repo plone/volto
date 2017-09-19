@@ -37,12 +37,10 @@ import { map } from 'lodash';
       const item = monitor.getItem();
       const currentOffset = monitor.getSourceClientOffset();
 
-      const threeColOptions = props.column === 0
-        ? [0.25, 0.33, 0.5]
-        : [0.5, 0.67, 0.75];
-      const options = props.columns === 2
-        ? [0.25, 0.33, 0.5, 0.67, 0.75]
-        : threeColOptions;
+      const threeColOptions =
+        props.column === 0 ? [0.25, 0.33, 0.5] : [0.5, 0.67, 0.75];
+      const options =
+        props.columns === 2 ? [0.25, 0.33, 0.5, 0.67, 0.75] : threeColOptions;
 
       const percentage = (currentOffset.x - item.gridX) / item.gridWidth;
       const diff = map(options, option => Math.abs(percentage - option));

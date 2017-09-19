@@ -26,7 +26,9 @@ exports[`Delete renders a delete component 1`] = `
   </div>
   <button
     className="ui primary button"
+    disabled={undefined}
     onClick={[Function]}
+    role="button"
     tabIndex={undefined}
   >
     <span>
@@ -35,7 +37,9 @@ exports[`Delete renders a delete component 1`] = `
   </button>
   <button
     className="ui button"
+    disabled={undefined}
     onClick={[Function]}
+    role="button"
     tabIndex={undefined}
   >
     <span>

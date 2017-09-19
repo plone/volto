@@ -28,6 +28,7 @@ exports[`Types renders a types component 1`] = `
   <i
     aria-hidden="true"
     className="dropdown icon"
+    onClick={[Function]}
   />
   <div
     className="menu transition"
@@ -49,7 +50,7 @@ exports[`Types renders an active types component 1`] = `
   aria-disabled={undefined}
   aria-expanded={false}
   aria-multiselectable={undefined}
-  className="ui item left pointing active dropdown"
+  className="ui item left pointing dropdown active"
   onBlur={[Function]}
   onChange={[Function]}
   onClick={[Function]}
@@ -71,6 +72,7 @@ exports[`Types renders an active types component 1`] = `
   <i
     aria-hidden="true"
     className="dropdown icon"
+    onClick={[Function]}
   />
   <div
     className="menu transition"

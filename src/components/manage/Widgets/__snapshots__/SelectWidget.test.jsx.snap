@@ -16,6 +16,7 @@ exports[`renders a select widget component 1`] = `
     aria-multiselectable={undefined}
     className="ui selection dropdown"
     id="field-my-field"
+    name="my-field"
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
@@ -24,30 +25,17 @@ exports[`renders a select widget component 1`] = `
     role="listbox"
     tabIndex={0}
   >
-    <select
-      aria-hidden="true"
-      multiple={undefined}
-      name="my-field"
-      type="hidden"
-      value="no-value"
-    >
-      <option
-        value=""
-      />
-      <option
-        value="no-value"
-      >
-        No value
-      </option>
-    </select>
     <div
+      aria-live="polite"
       className="text"
+      role="alert"
     >
       No value
     </div>
     <i
       aria-hidden="true"
       className="dropdown icon"
+      onClick={[Function]}
     />
     <div
       className="menu transition"

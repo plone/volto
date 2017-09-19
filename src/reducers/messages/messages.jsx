@@ -38,9 +38,9 @@ export default function messages(state = initialState, action = {}) {
         messages: filter(
           state.messages,
           (message, index) =>
-            (action.index === -1
+            action.index === -1
               ? index !== state.messages.length - 1
-              : index !== action.index),
+              : index !== action.index,
         ),
       };
     default:

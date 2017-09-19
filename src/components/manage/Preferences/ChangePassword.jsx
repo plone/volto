@@ -52,7 +52,8 @@ const messages = defineMessages({
   },
   newPasswordRepeatDescription: {
     id: 'Re-enter the password. Make sure the passwords are identical.',
-    defaultMessage: 'Re-enter the password. Make sure the passwords are identical.',
+    defaultMessage:
+      'Re-enter the password. Make sure the passwords are identical.',
   },
   saved: {
     id: 'Changes saved',

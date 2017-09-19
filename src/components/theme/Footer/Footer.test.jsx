@@ -16,7 +16,9 @@ describe('Footer', () => {
       },
     });
     const component = renderer.create(
-      <Provider store={store}><Footer /></Provider>,
+      <Provider store={store}>
+        <Footer />
+      </Provider>,
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();

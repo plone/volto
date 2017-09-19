@@ -111,109 +111,120 @@ export default class Toolbar extends Component {
     const isFolderish =
       ['Folder', 'Plone Site'].indexOf(this.props.content['@type']) !== -1;
     return (
-      this.props.token &&
-      <Menu
-        inverted
-        vertical
-        fixed="left"
-        className={!expanded ? 'collapsed' : ''}
-      >
-        <Menu.Item color="blue" active onClick={this.onToggleExpanded}>
-          <img
-            alt={this.props.intl.formatMessage(messages.ploneToolbar)}
-            src={logo}
-          />
-        </Menu.Item>
-        {isFolderish &&
+      this.props.token && (
+        <Menu
+          inverted
+          vertical
+          fixed="left"
+          className={!expanded ? 'collapsed' : ''}
+        >
+          <Menu.Item color="blue" active onClick={this.onToggleExpanded}>
+            <img
+              alt={this.props.intl.formatMessage(messages.ploneToolbar)}
+              src={logo}
+            />
+          </Menu.Item>
+          {isFolderish && (
+            <Link
+              to={`${this.props.pathname}/contents`}
+              className={`item${this.props.selected === 'contents'
+                ? ' active'
+                : ''}`}
+            >
+              <span>
+                <Icon name="folder open" />{' '}
+                {expanded && (
+                  <FormattedMessage id="Contents" defaultMessage="Contents" />
+                )}
+              </span>
+            </Link>
+          )}
           <Link
-            to={`${this.props.pathname}/contents`}
-            className={`item${this.props.selected === 'contents' ? ' active' : ''}`}
+            to={`${this.props.pathname}/edit`}
+            className={`item${this.props.selected === 'edit' ? ' active' : ''}`}
           >
             <span>
-              <Icon name="folder open" />{' '}
-              {expanded &&
-                <FormattedMessage id="Contents" defaultMessage="Contents" />}
+              <Icon name="write" />{' '}
+              {expanded && <FormattedMessage id="Edit" defaultMessage="Edit" />}
             </span>
-          </Link>}
-        <Link
-          to={`${this.props.pathname}/edit`}
-          className={`item${this.props.selected === 'edit' ? ' active' : ''}`}
-        >
-          <span>
-            <Icon name="write" />{' '}
-            {expanded && <FormattedMessage id="Edit" defaultMessage="Edit" />}
-          </span>
-        </Link>
-        <Link
-          to={this.props.pathname}
-          className={`item${this.props.selected === 'view' ? ' active' : ''}`}
-        >
-          <span>
-            <Icon name="eye" />{' '}
-            {expanded && <FormattedMessage id="View" defaultMessage="View" />}
-          </span>
-        </Link>
-        {isFolderish &&
-          <Types
-            pathname={this.props.pathname}
-            active={this.props.selected === 'add'}
-            expanded={expanded}
-          />}
-        <Workflow pathname={this.props.pathname} expanded={expanded} />
-        <Actions pathname={this.props.pathname} expanded={expanded} />
-        <Display pathname={this.props.pathname} expanded={expanded} />
-        <Link
-          to={`${this.props.pathname}/history`}
-          className={`item${this.props.selected === 'history' ? ' active' : ''}`}
-        >
-          <span>
-            <Icon name="clock" />{' '}
-            {expanded &&
-              <FormattedMessage id="History" defaultMessage="History" />}
-          </span>
-        </Link>
-        <Link
-          to={`${this.props.pathname}/sharing`}
-          className={`item${this.props.selected === 'sharing' ? ' active' : ''}`}
-        >
-          <span>
-            <Icon name="users" />{' '}
-            {expanded &&
-              <FormattedMessage id="Sharing" defaultMessage="Sharing" />}
-          </span>
-        </Link>
-        <Dropdown
-          className="personal-bar"
-          item
-          upward
-          trigger={
+          </Link>
+          <Link
+            to={this.props.pathname}
+            className={`item${this.props.selected === 'view' ? ' active' : ''}`}
+          >
             <span>
-              <Icon name="user" />{expanded && ` ${this.props.fullname}`}
+              <Icon name="eye" />{' '}
+              {expanded && <FormattedMessage id="View" defaultMessage="View" />}
             </span>
-          }
-          pointing="left"
-        >
-          <Dropdown.Menu>
-            <Link to="/personal-preferences" className="item">
+          </Link>
+          {isFolderish && (
+            <Types
+              pathname={this.props.pathname}
+              active={this.props.selected === 'add'}
+              expanded={expanded}
+            />
+          )}
+          <Workflow pathname={this.props.pathname} expanded={expanded} />
+          <Actions pathname={this.props.pathname} expanded={expanded} />
+          <Display pathname={this.props.pathname} expanded={expanded} />
+          <Link
+            to={`${this.props.pathname}/history`}
+            className={`item${this.props.selected === 'history'
+              ? ' active'
+              : ''}`}
+          >
+            <span>
+              <Icon name="clock" />{' '}
+              {expanded && (
+                <FormattedMessage id="History" defaultMessage="History" />
+              )}
+            </span>
+          </Link>
+          <Link
+            to={`${this.props.pathname}/sharing`}
+            className={`item${this.props.selected === 'sharing'
+              ? ' active'
+              : ''}`}
+          >
+            <span>
+              <Icon name="users" />{' '}
+              {expanded && (
+                <FormattedMessage id="Sharing" defaultMessage="Sharing" />
+              )}
+            </span>
+          </Link>
+          <Dropdown
+            className="personal-bar"
+            item
+            upward
+            trigger={
               <span>
-                <Icon name="setting" />
-                {' '}
-                <FormattedMessage
-                  id="Preferences"
-                  defaultMessage="Preferences"
-                />
+                <Icon name="user" />
+                {expanded && ` ${this.props.fullname}`}
               </span>
-            </Link>
-            <Link to="/logout" className="item">
-              <span>
-                <Icon name="sign out" />
-                {' '}
-                <FormattedMessage id="Log out" defaultMessage="Log out" />
-              </span>
-            </Link>
-          </Dropdown.Menu>
-        </Dropdown>
-      </Menu>
+            }
+            pointing="left"
+          >
+            <Dropdown.Menu>
+              <Link to="/personal-preferences" className="item">
+                <span>
+                  <Icon name="setting" />{' '}
+                  <FormattedMessage
+                    id="Preferences"
+                    defaultMessage="Preferences"
+                  />
+                </span>
+              </Link>
+              <Link to="/logout" className="item">
+                <span>
+                  <Icon name="sign out" />{' '}
+                  <FormattedMessage id="Log out" defaultMessage="Log out" />
+                </span>
+              </Link>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Menu>
+      )
     );
   }
 }

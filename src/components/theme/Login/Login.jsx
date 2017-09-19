@@ -99,11 +99,12 @@ export class LoginComponent extends Component {
       <div id="page-login">
         <Helmet title="Login" />
         <div className="container">
-          {this.props.error &&
+          {this.props.error && (
             <div className="portalMessage error">
               <strong>Error</strong>
               {this.props.error.message}
-            </div>}
+            </div>
+          )}
           <Form method="post" onSubmit={this.onLogin}>
             <Segment attached="top">
               <Form.Field>

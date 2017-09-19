@@ -17,10 +17,11 @@ const addToMiddleWare = (data, logger) => {
   if (!__DEBUG__) {
     return data;
   }
-  const devTools = typeof window === 'object' &&
+  const devTools =
+    typeof window === 'object' &&
     typeof window.devToolsExtension !== 'undefined'
-    ? window.devToolsExtension()
-    : f => f;
+      ? window.devToolsExtension()
+      : f => f;
   const debugLogger = logger ? applyMiddleware(createLogger()) : f => f;
   return [...data, devTools, debugLogger];
 };

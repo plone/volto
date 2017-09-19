@@ -20,6 +20,7 @@
     }],
     "arrow-parens": "off",    // Keep compatible with prettier
     "no-confusing-arrow": 0,  // Keep compatible with prettier
+    "indent": 0,              // Keep compatible with prettier
     "prettier/prettier": ["error", {"trailingComma": "all", "singleQuote": true}],
   },
   "globals": {

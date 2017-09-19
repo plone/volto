@@ -24,7 +24,8 @@ const messages = defineMessages({
   },
   stateDescription: {
     id: 'Select the transition to be used for modifying the items state.',
-    defaultMessage: 'Select the transition to be used for modifying the items state.',
+    defaultMessage:
+      'Select the transition to be used for modifying the items state.',
   },
 });
 
@@ -133,44 +134,45 @@ export default class ContentsWorkflowModal extends Component {
   render() {
     return (
       this.props.open &&
-      this.props.workflows.length > 0 &&
-      <ModalForm
-        open={this.props.open}
-        onSubmit={this.onSubmit}
-        onCancel={this.props.onCancel}
-        title={this.props.intl.formatMessage(messages.stateTitle)}
-        schema={{
-          fieldsets: [
-            {
-              id: 'default',
-              title: this.props.intl.formatMessage(messages.default),
-              fields: ['state'],
-            },
-          ],
-          properties: {
-            state: {
-              description: this.props.intl.formatMessage(
-                messages.stateDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.stateTitle),
-              type: 'string',
-              choices: map(
-                uniqBy(
-                  concat(
-                    ...map(
-                      this.props.workflows,
-                      workflow => workflow.transitions,
-                    ),
-                  ),
-                  x => x.title,
+      this.props.workflows.length > 0 && (
+        <ModalForm
+          open={this.props.open}
+          onSubmit={this.onSubmit}
+          onCancel={this.props.onCancel}
+          title={this.props.intl.formatMessage(messages.stateTitle)}
+          schema={{
+            fieldsets: [
+              {
+                id: 'default',
+                title: this.props.intl.formatMessage(messages.default),
+                fields: ['state'],
+              },
+            ],
+            properties: {
+              state: {
+                description: this.props.intl.formatMessage(
+                  messages.stateDescription,
                 ),
-                y => [last(y['@id'].split('/')), y.title],
-              ),
+                title: this.props.intl.formatMessage(messages.stateTitle),
+                type: 'string',
+                choices: map(
+                  uniqBy(
+                    concat(
+                      ...map(
+                        this.props.workflows,
+                        workflow => workflow.transitions,
+                      ),
+                    ),
+                    x => x.title,
+                  ),
+                  y => [last(y['@id'].split('/')), y.title],
+                ),
+              },
             },
-          },
-          required: [],
-        }}
-      />
+            required: [],
+          }}
+        />
+      )
     );
   }
 }

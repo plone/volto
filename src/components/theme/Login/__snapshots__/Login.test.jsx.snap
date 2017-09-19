@@ -8,6 +8,7 @@ exports[`Login renders a login component 1`] = `
     className="container"
   >
     <form
+      action={undefined}
       className="ui form"
       method="post"
       onSubmit={[Function]}
@@ -29,8 +30,11 @@ exports[`Login renders a login component 1`] = `
             className="ui input"
           >
             <input
+              disabled={undefined}
               id="login"
               name="login"
+              onChange={[Function]}
+              tabIndex={undefined}
               type="text"
             />
           </div>
@@ -49,8 +53,11 @@ exports[`Login renders a login component 1`] = `
             className="ui input"
           >
             <input
+              disabled={undefined}
               id="password"
               name="password"
+              onChange={[Function]}
+              tabIndex={undefined}
               type="password"
             />
           </div>
@@ -61,7 +68,9 @@ exports[`Login renders a login component 1`] = `
       >
         <button
           className="ui primary button"
+          disabled={undefined}
           onClick={[Function]}
+          role="button"
           tabIndex={undefined}
           type="submit"
         >

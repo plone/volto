@@ -16,7 +16,9 @@ describe('NotFound', () => {
       },
     });
     const component = renderer.create(
-      <Provider store={store}><NotFound /></Provider>,
+      <Provider store={store}>
+        <NotFound />
+      </Provider>,
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();

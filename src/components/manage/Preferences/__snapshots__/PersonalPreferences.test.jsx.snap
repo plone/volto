@@ -33,6 +33,7 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
     </a>
   </div>
   <form
+    action={undefined}
     className="ui form"
     method="post"
     onSubmit={[Function]}
@@ -67,6 +68,7 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
           aria-multiselectable={undefined}
           className="ui selection dropdown"
           id="field-language"
+          name="language"
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -75,45 +77,17 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
           role="listbox"
           tabIndex={0}
         >
-          <select
-            aria-hidden="true"
-            multiple={undefined}
-            name="language"
-            type="hidden"
-            value="no-value"
-          >
-            <option
-              value=""
-            />
-            <option
-              value="no-value"
-            >
-              No value
-            </option>
-            <option
-              value="en"
-            >
-              English
-            </option>
-            <option
-              value="de"
-            >
-              Deutsch
-            </option>
-            <option
-              value="nl"
-            >
-              Nederlands
-            </option>
-          </select>
           <div
+            aria-live="polite"
             className="text"
+            role="alert"
           >
             No value
           </div>
           <i
             aria-hidden="true"
             className="dropdown icon"
+            onClick={[Function]}
           />
           <div
             className="menu transition"
@@ -203,7 +177,9 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
     >
       <button
         className="ui primary button"
+        disabled={undefined}
         onClick={[Function]}
+        role="button"
         tabIndex={undefined}
         type="submit"
       >
@@ -213,7 +189,9 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
       </button>
       <button
         className="ui button"
+        disabled={undefined}
         onClick={[Function]}
+        role="button"
         tabIndex={undefined}
       >
         <span>

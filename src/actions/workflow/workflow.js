@@ -18,9 +18,10 @@ import {
 export function getWorkflow(urls) {
   return {
     type: typeof urls === 'string' ? GET_WORKFLOW : GET_WORKFLOW_MULTIPLE,
-    promise: typeof urls === 'string'
-      ? api => api.get(`${urls}/@workflow`)
-      : api => Promise.all(urls.map(url => api.get(`${url}/@workflow`))),
+    promise:
+      typeof urls === 'string'
+        ? api => api.get(`${urls}/@workflow`)
+        : api => Promise.all(urls.map(url => api.get(`${url}/@workflow`))),
   };
 }
 
@@ -33,8 +34,9 @@ export function getWorkflow(urls) {
 export function transitionWorkflow(urls) {
   return {
     type: TRANSITION_WORKFLOW,
-    promise: typeof urls === 'string'
-      ? api => api.post(urls)
-      : api => Promise.all(urls.map(url => api.post(url))),
+    promise:
+      typeof urls === 'string'
+        ? api => api.post(urls)
+        : api => Promise.all(urls.map(url => api.post(url))),
   };
 }

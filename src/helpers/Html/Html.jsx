@@ -65,7 +65,6 @@ const Html = ({ assets, component, store }) => {
           type="text/css"
           charSet="UTF-8"
         />
-
       </head>
       <body>
         <div id="main" dangerouslySetInnerHTML={{ __html: content }} />

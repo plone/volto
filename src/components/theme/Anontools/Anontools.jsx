@@ -44,12 +44,13 @@ export default class Anontools extends Component {
    */
   render() {
     return (
-      !this.props.token &&
-      <List floated="right" horizontal>
-        <Link className="item" to="/login">
-          <FormattedMessage id="Log in" defaultMessage="Log in" />
-        </Link>
-      </List>
+      !this.props.token && (
+        <List floated="right" horizontal>
+          <Link className="item" to="/login">
+            <FormattedMessage id="Log in" defaultMessage="Log in" />
+          </Link>
+        </List>
+      )
     );
   }
 }

@@ -204,7 +204,7 @@ export default class FormModal extends Component {
                 defaultMessage="There were some errors."
               />
             </Message>
-            {schema.fieldsets.length > 1 &&
+            {schema.fieldsets.length > 1 && (
               <Menu tabular stackable>
                 {map(schema.fieldsets, (item, index) => (
                   <Menu.Item
@@ -217,7 +217,8 @@ export default class FormModal extends Component {
                     {item.title}
                   </Menu.Item>
                 ))}
-              </Menu>}
+              </Menu>
+            )}
             {fields.map(field => <Field {...field} key={field.id} />)}
           </UiForm>
         </Modal.Content>

@@ -110,7 +110,7 @@ exports[`Toolbar renders an actions component 1`] = `
     aria-disabled={undefined}
     aria-expanded={false}
     aria-multiselectable={undefined}
-    className="ui item upward left pointing personal-bar dropdown"
+    className="ui item upward left pointing dropdown personal-bar"
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
@@ -129,6 +129,7 @@ exports[`Toolbar renders an actions component 1`] = `
     <i
       aria-hidden="true"
       className="dropdown icon"
+      onClick={[Function]}
     />
     <div
       className="menu transition"

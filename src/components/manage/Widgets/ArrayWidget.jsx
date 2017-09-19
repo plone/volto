@@ -38,7 +38,9 @@ const ArrayWidget = ({
         )}
     />
     {map(error, message => (
-      <Label key={message} basic color="red" pointing>{message}</Label>
+      <Label key={message} basic color="red" pointing>
+        {message}
+      </Label>
     ))}
   </Form.Field>
 );

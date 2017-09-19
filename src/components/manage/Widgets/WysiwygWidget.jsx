@@ -108,7 +108,9 @@ export default class WysiwygEditor extends Component {
           </label>
           <TextArea id={id} name={id} value={value.data} />
           {map(error, message => (
-            <Label key={message} basic color="red" pointing>{message}</Label>
+            <Label key={message} basic color="red" pointing>
+              {message}
+            </Label>
           ))}
         </Form.Field>
       );
@@ -127,7 +129,9 @@ export default class WysiwygEditor extends Component {
           />
         </Segment>
         {map(error, message => (
-          <Label key={message} basic color="red" pointing>{message}</Label>
+          <Label key={message} basic color="red" pointing>
+            {message}
+          </Label>
         ))}
       </Form.Field>
     );

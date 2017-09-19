@@ -70,32 +70,34 @@ export default class Types extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return this.props.types.length > 0
-      ? <Dropdown
-          item
-          trigger={
-            <span>
-              <Icon name="add" />
-              {' '}
-              {this.props.expanded &&
-                <FormattedMessage id="Add new…" defaultMessage="Add new…" />}
-            </span>
-          }
-          pointing="left"
-          className={this.props.active ? 'active' : ''}
-        >
-          <Dropdown.Menu>
-            {map(filter(this.props.types), item => (
-              <Link
-                to={`${this.props.pathname}/add?type=${item.title}`}
-                className="item"
-                key={item.title}
-              >
-                {item.title}
-              </Link>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
-      : <span />;
+    return this.props.types.length > 0 ? (
+      <Dropdown
+        item
+        trigger={
+          <span>
+            <Icon name="add" />{' '}
+            {this.props.expanded && (
+              <FormattedMessage id="Add new…" defaultMessage="Add new…" />
+            )}
+          </span>
+        }
+        pointing="left"
+        className={this.props.active ? 'active' : ''}
+      >
+        <Dropdown.Menu>
+          {map(filter(this.props.types), item => (
+            <Link
+              to={`${this.props.pathname}/add?type=${item.title}`}
+              className="item"
+              key={item.title}
+            >
+              {item.title}
+            </Link>
+          ))}
+        </Dropdown.Menu>
+      </Dropdown>
+    ) : (
+      <span />
+    );
   }
 }

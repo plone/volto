@@ -13,15 +13,19 @@ exports[`SearchWidget renders a search widget component 1`] = `
       className="ui action input"
     >
       <input
+        disabled={undefined}
         name="SearchableText"
         onChange={[Function]}
         placeholder="Search Site"
+        tabIndex={undefined}
         type="text"
         value=""
       />
       <button
-        className="ui button button"
+        className="ui button"
+        disabled={undefined}
         onClick={[Function]}
+        role="button"
         tabIndex={undefined}
       >
         Search

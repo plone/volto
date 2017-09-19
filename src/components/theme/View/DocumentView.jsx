@@ -17,10 +17,12 @@ const DocumentView = ({ content }) => (
   <div id="page-home">
     <Helmet title={content.title} />
     <h1>{content.title}</h1>
-    {content.description &&
-      <p className="description">{content.description}</p>}
-    {content.text &&
-      <p dangerouslySetInnerHTML={{ __html: content.text.data }} />}
+    {content.description && (
+      <p className="description">{content.description}</p>
+    )}
+    {content.text && (
+      <p dangerouslySetInnerHTML={{ __html: content.text.data }} />
+    )}
   </div>
 );
 

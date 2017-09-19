@@ -42,8 +42,8 @@ export default parameters => {
   const io = new SocketIO(server);
   const staticPath = __dirname;
 
-  io.on('connection', socket => {
-    console.log('user connected');
+  io.on('connection', () => {
+    debug.info('user connected');
   });
 
   app.use(frameguard({ action: 'deny' }));
@@ -91,52 +91,64 @@ export default parameters => {
           res.redirect(redirectInfo.path);
         } else if (err) {
           res.error(err.message);
-        } else {
-          if (routeState) {
-            // eslint-disable-line no-lonely-if
-            if (__SSR__) {
-              loadOnServer({ ...routeState, store })
-                .then(() => {
-                  const component = (
-                    <Provider store={store}>
-                      <ReduxAsyncConnect {...routeState} />
-                    </Provider>
-                  );
-                  res.set({
-                    'Cache-Control': 'public, max-age=600, no-transform',
-                  });
-                  res
-                    .status(200)
-                    .send(
-                      `<!doctype html> ${renderToStaticMarkup(<Html assets={parameters.chunks()} component={component} store={store} staticPath={staticPath} />)}`,
-                    );
-                })
-                .catch(error => {
-                  const errorPage = <ErrorPage message={error.message} />;
-                  res.set({
-                    'Cache-Control': 'public, max-age=60, no-transform',
-                  });
-                  res
-                    .status(500)
-                    .send(`<!doctype html> ${renderToStaticMarkup(errorPage)}`);
-                });
-            } else {
-              const component = (
-                <Provider store={store}>
-                  <RouterContext {...routeState} />
-                </Provider>
-              ); // eslint-disable-line max-len
-              res.set({ 'Cache-Control': 'public, max-age=60, no-transform' });
-              res
-                .status(200)
-                .send(
-                  `<!doctype html> ${renderToStaticMarkup(<Html assets={parameters.chunks()} component={component} store={store} staticPath={staticPath} />)}`,
+        } else if (routeState) {
+          // eslint-disable-line no-lonely-if
+          if (__SSR__) {
+            loadOnServer({ ...routeState, store })
+              .then(() => {
+                const component = (
+                  <Provider store={store}>
+                    <ReduxAsyncConnect {...routeState} />
+                  </Provider>
                 );
-            }
+                res.set({
+                  'Cache-Control': 'public, max-age=600, no-transform',
+                });
+                res
+                  .status(200)
+                  .send(
+                    `<!doctype html> ${renderToStaticMarkup(
+                      <Html
+                        assets={parameters.chunks()}
+                        component={component}
+                        store={store}
+                        staticPath={staticPath}
+                      />,
+                    )}`,
+                  );
+              })
+              .catch(error => {
+                const errorPage = <ErrorPage message={error.message} />;
+                res.set({
+                  'Cache-Control': 'public, max-age=60, no-transform',
+                });
+                res
+                  .status(500)
+                  .send(`<!doctype html> ${renderToStaticMarkup(errorPage)}`);
+              });
           } else {
-            res.set({ 'Cache-Control': 'public, max-age=3600, no-transform' });
-            res.sendStatus(404);
+            const component = (
+              <Provider store={store}>
+                <RouterContext {...routeState} />
+              </Provider>
+            ); // eslint-disable-line max-len
+            res.set({ 'Cache-Control': 'public, max-age=60, no-transform' });
+            res
+              .status(200)
+              .send(
+                `<!doctype html> ${renderToStaticMarkup(
+                  <Html
+                    assets={parameters.chunks()}
+                    component={component}
+                    store={store}
+                    staticPath={staticPath}
+                  />,
+                )}`,
+              );
           }
+        } else {
+          res.set({ 'Cache-Control': 'public, max-age=3600, no-transform' });
+          res.sendStatus(404);
         }
       },
     );

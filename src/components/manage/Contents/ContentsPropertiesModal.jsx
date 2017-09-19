@@ -27,16 +27,20 @@ const messages = defineMessages({
     defaultMessage: 'Publishing Date',
   },
   effectiveDescription: {
-    id: 'If this date is in the future, the content will not show up in listings and searches until this date.',
-    defaultMessage: 'If this date is in the future, the content will not show up in listings and searches until this date.',
+    id:
+      'If this date is in the future, the content will not show up in listings and searches until this date.',
+    defaultMessage:
+      'If this date is in the future, the content will not show up in listings and searches until this date.',
   },
   expiresTitle: {
     id: 'Expiration Date',
     defaultMessage: 'Expiration Date',
   },
   expiresDescription: {
-    id: 'When this date is reached, the content will nolonger be visible in listings and searches.',
-    defaultMessage: 'When this date is reached, the content will nolonger be visible in listings and searches.',
+    id:
+      'When this date is reached, the content will nolonger be visible in listings and searches.',
+    defaultMessage:
+      'When this date is reached, the content will nolonger be visible in listings and searches.',
   },
   rightsTitle: {
     id: 'Rights',
@@ -44,15 +48,18 @@ const messages = defineMessages({
   },
   rightsDescription: {
     id: 'Copyright statement or other rights information on this item.',
-    defaultMessage: 'Copyright statement or other rights information on this item.',
+    defaultMessage:
+      'Copyright statement or other rights information on this item.',
   },
   creatorsTitle: {
     id: 'Creators',
     defaultMessage: 'Creators',
   },
   creatorsDescription: {
-    id: 'Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.',
-    defaultMessage: 'Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.',
+    id:
+      'Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.',
+    defaultMessage:
+      'Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.',
   },
   excludeFromNavTitle: {
     id: 'Exclude from navigation',
@@ -60,7 +67,8 @@ const messages = defineMessages({
   },
   excludeFromNavDescription: {
     id: 'If selected, this item will not appear in the navigation tree',
-    defaultMessage: 'If selected, this item will not appear in the navigation tree',
+    defaultMessage:
+      'If selected, this item will not appear in the navigation tree',
   },
 });
 
@@ -142,72 +150,73 @@ export default class ContentsPropertiesModal extends Component {
    */
   render() {
     return (
-      this.props.open &&
-      <ModalForm
-        open={this.props.open}
-        onSubmit={this.onSubmit}
-        onCancel={this.props.onCancel}
-        title={this.props.intl.formatMessage(messages.properties)}
-        schema={{
-          fieldsets: [
-            {
-              id: 'default',
-              title: this.props.intl.formatMessage(messages.default),
-              fields: [
-                'effective',
-                'expires',
-                'rights',
-                'creators',
-                'exclude_from_nav',
-              ],
+      this.props.open && (
+        <ModalForm
+          open={this.props.open}
+          onSubmit={this.onSubmit}
+          onCancel={this.props.onCancel}
+          title={this.props.intl.formatMessage(messages.properties)}
+          schema={{
+            fieldsets: [
+              {
+                id: 'default',
+                title: this.props.intl.formatMessage(messages.default),
+                fields: [
+                  'effective',
+                  'expires',
+                  'rights',
+                  'creators',
+                  'exclude_from_nav',
+                ],
+              },
+            ],
+            properties: {
+              effective: {
+                description: this.props.intl.formatMessage(
+                  messages.effectiveDescription,
+                ),
+                title: this.props.intl.formatMessage(messages.effectiveTitle),
+                type: 'string',
+                widget: 'datetime',
+              },
+              expires: {
+                description: this.props.intl.formatMessage(
+                  messages.expiresDescription,
+                ),
+                title: this.props.intl.formatMessage(messages.expiresTitle),
+                type: 'string',
+                widget: 'datetime',
+              },
+              rights: {
+                description: this.props.intl.formatMessage(
+                  messages.rightsDescription,
+                ),
+                title: this.props.intl.formatMessage(messages.rightsTitle),
+                type: 'string',
+                widget: 'textarea',
+              },
+              creators: {
+                description: this.props.intl.formatMessage(
+                  messages.creatorsDescription,
+                ),
+                title: this.props.intl.formatMessage(messages.creatorsTitle),
+                type: 'array',
+              },
+              exclude_from_nav: {
+                default: false,
+                description: this.props.intl.formatMessage(
+                  messages.excludeFromNavDescription,
+                ),
+                title: this.props.intl.formatMessage(
+                  messages.excludeFromNavTitle,
+                ),
+                type: 'boolean',
+              },
             },
-          ],
-          properties: {
-            effective: {
-              description: this.props.intl.formatMessage(
-                messages.effectiveDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.effectiveTitle),
-              type: 'string',
-              widget: 'datetime',
-            },
-            expires: {
-              description: this.props.intl.formatMessage(
-                messages.expiresDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.expiresTitle),
-              type: 'string',
-              widget: 'datetime',
-            },
-            rights: {
-              description: this.props.intl.formatMessage(
-                messages.rightsDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.rightsTitle),
-              type: 'string',
-              widget: 'textarea',
-            },
-            creators: {
-              description: this.props.intl.formatMessage(
-                messages.creatorsDescription,
-              ),
-              title: this.props.intl.formatMessage(messages.creatorsTitle),
-              type: 'array',
-            },
-            exclude_from_nav: {
-              default: false,
-              description: this.props.intl.formatMessage(
-                messages.excludeFromNavDescription,
-              ),
-              title: this.props.intl.formatMessage(
-                messages.excludeFromNavTitle,
-              ),
-              type: 'boolean',
-            },
-          },
-          required: [],
-        }}
-      />
+            required: [],
+          }}
+        />
+      )
     );
   }
 }

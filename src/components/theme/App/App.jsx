@@ -47,9 +47,7 @@ export const AppComponent = ({ pathname, children }) => {
         <Navigation pathname={path} />
         <Breadcrumbs pathname={path} />
         <Segment basic>
-          <Container>
-            {children}
-          </Container>
+          <Container>{children}</Container>
         </Segment>
         <Footer />
       </div>

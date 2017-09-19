@@ -117,8 +117,9 @@ export default class Display extends Component {
         trigger={
           <span>
             <Icon name="block layout" />{' '}
-            {this.props.expanded &&
-              <FormattedMessage id="Display" defaultMessage="Display" />}
+            {this.props.expanded && (
+              <FormattedMessage id="Display" defaultMessage="Display" />
+            )}
           </span>
         }
         pointing="left"

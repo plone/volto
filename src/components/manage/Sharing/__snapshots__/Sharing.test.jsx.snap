@@ -20,6 +20,7 @@ exports[`Sharing renders a sharing component 1`] = `
     </span>
   </p>
   <form
+    action={undefined}
     className="ui form"
     onSubmit={[Function]}
   >
@@ -30,14 +31,18 @@ exports[`Sharing renders a sharing component 1`] = `
         className="ui action input"
       >
         <input
+          disabled={undefined}
           name="SearchableText"
           onChange={[Function]}
           placeholder="Search for user or group"
+          tabIndex={undefined}
           type="text"
         />
         <button
-          className="ui button button"
+          className="ui button"
+          disabled={undefined}
           onClick={[Function]}
+          role="button"
           tabIndex={undefined}
         >
           Search
@@ -47,6 +52,7 @@ exports[`Sharing renders a sharing component 1`] = `
   </form>
   <br />
   <form
+    action={undefined}
     className="ui form"
     onSubmit={[Function]}
   >
@@ -157,7 +163,9 @@ exports[`Sharing renders a sharing component 1`] = `
     </p>
     <button
       className="ui primary button"
+      disabled={undefined}
       onClick={[Function]}
+      role="button"
       tabIndex={undefined}
       type="submit"
     >
@@ -167,7 +175,9 @@ exports[`Sharing renders a sharing component 1`] = `
     </button>
     <button
       className="ui button"
+      disabled={undefined}
       onClick={[Function]}
+      role="button"
       tabIndex={undefined}
     >
       <span>

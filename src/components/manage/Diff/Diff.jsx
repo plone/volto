@@ -148,7 +148,8 @@ export default class DiffComponent extends Component {
    */
   onSelectView(event, { value }) {
     browserHistory.push(
-      `${this.props.pathname}?one=${this.props.one}&two=${this.props.two}&view=${value}`,
+      `${this.props.pathname}?one=${this.props.one}&two=${this.props
+        .two}&view=${value}`,
     );
   }
 
@@ -161,7 +162,8 @@ export default class DiffComponent extends Component {
    */
   onChangeOne(event, { value }) {
     browserHistory.push(
-      `${this.props.pathname}?one=${value}&two=${this.props.two}&view=${this.props.view}`,
+      `${this.props.pathname}?one=${value}&two=${this.props.two}&view=${this
+        .props.view}`,
     );
   }
 
@@ -174,7 +176,8 @@ export default class DiffComponent extends Component {
    */
   onChangeTwo(event, { value }) {
     browserHistory.push(
-      `${this.props.pathname}?one=${this.props.one}&two=${value}&view=${this.props.view}`,
+      `${this.props.pathname}?one=${this.props.one}&two=${value}&view=${this
+        .props.view}`,
     );
   }
 
@@ -187,7 +190,9 @@ export default class DiffComponent extends Component {
     const versions = map(
       filter(this.props.history, entry => 'version' in entry),
       (entry, index) => ({
-        text: `${index === 0 ? 'Current' : entry.version} (${moment(entry.time).format('LLLL')}, ${entry.actor.fullname})`,
+        text: `${index === 0 ? 'Current' : entry.version} (${moment(
+          entry.time,
+        ).format('LLLL')}, ${entry.actor.fullname})`,
         value: `${entry.version}`,
         key: `${entry.version}`,
       }),
@@ -216,7 +221,6 @@ export default class DiffComponent extends Component {
             </p>
           </Grid.Column>
           <Grid.Column width={4} textAlign="right">
-
             <Button.Group>
               {map(
                 [
@@ -237,7 +241,7 @@ export default class DiffComponent extends Component {
             </Button.Group>
           </Grid.Column>
         </Grid>
-        {this.props.history.length > 0 &&
+        {this.props.history.length > 0 && (
           <Table basic="very">
             <Table.Header>
               <Table.Row>
@@ -263,7 +267,8 @@ export default class DiffComponent extends Component {
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-          </Table>}
+          </Table>
+        )}
         {this.props.schema &&
           this.props.data.length > 0 &&
           map(this.props.schema.fieldsets, fieldset =>
@@ -273,13 +278,14 @@ export default class DiffComponent extends Component {
                 !isEqual(
                   this.props.data[0][field],
                   this.props.data[1][field],
-                ) &&
-                <DiffField
-                  one={this.props.data[0][field]}
-                  two={this.props.data[1][field]}
-                  schema={this.props.schema.properties[field]}
-                  view={this.props.view}
-                />,
+                ) && (
+                  <DiffField
+                    one={this.props.data[0][field]}
+                    two={this.props.data[1][field]}
+                    schema={this.props.schema.properties[field]}
+                    view={this.props.view}
+                  />
+                ),
             ),
           )}
       </div>

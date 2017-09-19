@@ -137,9 +137,8 @@ export default class SharingComponent extends Component {
       this.props.getSharing(getBaseUrl(this.props.pathname), this.state.search);
     }
     this.setState({
-      inherit: this.props.inherit === null
-        ? nextProps.inherit
-        : this.state.inherit,
+      inherit:
+        this.props.inherit === null ? nextProps.inherit : this.state.inherit,
       entries: map(nextProps.entries, entry => {
         const values = find(this.state.entries, { id: entry.id });
         return {
@@ -220,12 +219,13 @@ export default class SharingComponent extends Component {
     this.setState({
       entries: map(this.state.entries, entry => ({
         ...entry,
-        roles: entry.id === principal
-          ? {
-              ...entry.roles,
-              [role]: !entry.roles[role],
-            }
-          : entry.roles,
+        roles:
+          entry.id === principal
+            ? {
+                ...entry.roles,
+                [role]: !entry.roles[role],
+              }
+            : entry.roles,
       })),
     });
   }
@@ -293,32 +293,34 @@ export default class SharingComponent extends Component {
                     <Icon
                       name={entry.type === 'user' ? 'user' : 'users'}
                       title={entry.type === 'user' ? 'User' : 'Group'}
-                    />
-                    {' '}
+                    />{' '}
                     {entry.title}
                     {entry.login && ` (${entry.login})`}
                   </Table.Cell>
                   {this.props.available_roles.map(role => (
                     <Table.Cell key={role}>
-                      {entry.roles[role] === 'global' &&
+                      {entry.roles[role] === 'global' && (
                         <Icon
                           name="check circle outline"
                           title="Global role"
                           color="blue"
-                        />}
-                      {entry.roles[role] === 'acquired' &&
+                        />
+                      )}
+                      {entry.roles[role] === 'acquired' && (
                         <Icon
                           name="check circle"
                           color="green"
                           title="Inherited value"
-                        />}
-                      {typeof entry.roles[role] === 'boolean' &&
+                        />
+                      )}
+                      {typeof entry.roles[role] === 'boolean' && (
                         <Checkbox
                           onChange={this.onChange}
                           value={`${entry.id}.${role}`}
                           checked={entry.roles[role]}
                           disabled={entry.login === this.props.login}
-                        />}
+                        />
+                      )}
                     </Table.Cell>
                   ))}
                 </Table.Row>

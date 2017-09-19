@@ -42,7 +42,9 @@ const NotFound = () => (
         }}
       />
     </p>
-    <p><FormattedMessage id="Thank you." defaultMessage="Thank you." /></p>
+    <p>
+      <FormattedMessage id="Thank you." defaultMessage="Thank you." />
+    </p>
   </div>
 );
 

@@ -28,6 +28,7 @@ exports[`Display renders an actions component 1`] = `
   <i
     aria-hidden="true"
     className="dropdown icon"
+    onClick={[Function]}
   />
   <div
     className="menu transition"

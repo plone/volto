@@ -2,6 +2,7 @@
 
 exports[`Form renders a form component 1`] = `
 <form
+  action={undefined}
   className="ui form"
   method="post"
   onSubmit={[Function]}
@@ -25,7 +26,9 @@ exports[`Form renders a form component 1`] = `
   >
     <button
       className="ui primary button"
+      disabled={undefined}
       onClick={[Function]}
+      role="button"
       tabIndex={undefined}
       type="submit"
     >
@@ -35,7 +38,9 @@ exports[`Form renders a form component 1`] = `
     </button>
     <button
       className="ui button"
+      disabled={undefined}
       onClick={[Function]}
+      role="button"
       tabIndex={undefined}
     >
       <span>

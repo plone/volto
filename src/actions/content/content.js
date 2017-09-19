@@ -35,9 +35,10 @@ export function addContent(url, content) {
 export function deleteContent(urls) {
   return {
     type: DELETE_CONTENT,
-    promise: typeof urls === 'string'
-      ? api => api.del(urls)
-      : api => Promise.all(urls.map(url => api.del(url))),
+    promise:
+      typeof urls === 'string'
+        ? api => api.del(urls)
+        : api => Promise.all(urls.map(url => api.del(url))),
   };
 }
 
@@ -51,12 +52,15 @@ export function deleteContent(urls) {
 export function editContent(urls, content) {
   return {
     type: EDIT_CONTENT,
-    promise: typeof urls === 'string'
-      ? api => api.patch(urls, { data: content })
-      : api =>
-          Promise.all(
-            urls.map((url, index) => api.patch(url, { data: content[index] })),
-          ),
+    promise:
+      typeof urls === 'string'
+        ? api => api.patch(urls, { data: content })
+        : api =>
+            Promise.all(
+              urls.map((url, index) =>
+                api.patch(url, { data: content[index] }),
+              ),
+            ),
   };
 }
 

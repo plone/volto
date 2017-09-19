@@ -53,8 +53,7 @@ export const ContentsItemComponent = ({
         </Table.Cell>
         <Table.Cell>
           <Link to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}>
-            <Icon name={getIcon(item['@type'], item.is_folderish)} />
-            {' '}
+            <Icon name={getIcon(item['@type'], item.is_folderish)} />{' '}
             {item.title}
           </Link>
         </Table.Cell>
@@ -62,7 +61,7 @@ export const ContentsItemComponent = ({
           <Table.Cell key={index.id}>
             {index.type === 'boolean' && (item[index.id] ? 'Yes' : 'No')}
             {index.type === 'string' && item[index.id]}
-            {index.type === 'date' &&
+            {index.type === 'date' && (
               <span
                 title={
                   item[index.id] !== 'None'
@@ -73,50 +72,44 @@ export const ContentsItemComponent = ({
                 {item[index.id] !== 'None'
                   ? moment(item[index.id]).fromNow()
                   : 'None'}
-              </span>}
+              </span>
+            )}
           </Table.Cell>
         ))}
         <Table.Cell textAlign="right">
           <Dropdown icon="ellipsis vertical">
             <Dropdown.Menu className="left">
               <Link className="item" to={`${item['@id']}/edit`}>
-                <Icon name="write" />
-                {' '}
+                <Icon name="write" />{' '}
                 <FormattedMessage id="Edit" defaultMessage="Edit" />
               </Link>
               <Link className="item" to={item['@id']}>
-                <Icon name="eye" />
-                {' '}
+                <Icon name="eye" />{' '}
                 <FormattedMessage id="View" defaultMessage="View" />
               </Link>
               <Dropdown.Divider />
               <Dropdown.Item onClick={onCut} value={item['@id']}>
-                <Icon name="cut" />
-                {' '}
+                <Icon name="cut" />{' '}
                 <FormattedMessage id="Cut" defaultMessage="Cut" />
               </Dropdown.Item>
               <Dropdown.Item onClick={onCopy} value={item['@id']}>
-                <Icon name="copy" />
-                {' '}
+                <Icon name="copy" />{' '}
                 <FormattedMessage id="Copy" defaultMessage="Copy" />
               </Dropdown.Item>
               <Dropdown.Item onClick={onDelete} value={item['@id']}>
-                <Icon name="trash" />
-                {' '}
+                <Icon name="trash" />{' '}
                 <FormattedMessage id="Delete" defaultMessage="Delete" />
               </Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown.Item onClick={onMoveToTop} value={order}>
-                <Icon name="long arrow up" />
-                {' '}
+                <Icon name="long arrow up" />{' '}
                 <FormattedMessage
                   id="Move to top of folder"
                   defaultMessage="Move to top of folder"
                 />
               </Dropdown.Item>
               <Dropdown.Item onClick={onMoveToBottom} value={order}>
-                <Icon name="long arrow down" />
-                {' '}
+                <Icon name="long arrow down" />{' '}
                 <FormattedMessage
                   id="Move to bottom of folder"
                   defaultMessage="Move to bottom of folder"

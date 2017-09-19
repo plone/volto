@@ -81,13 +81,15 @@ export default class Breadcrumbs extends Component {
                 icon="right angle"
                 key={`divider-${item.url}`}
               />,
-              index < items.length - 1
-                ? <Link key={item.url} to={item.url} className="section">
-                    {item.title}
-                  </Link>
-                : <Breadcrumb.Section key={item.url} active>
-                    {item.title}
-                  </Breadcrumb.Section>,
+              index < items.length - 1 ? (
+                <Link key={item.url} to={item.url} className="section">
+                  {item.title}
+                </Link>
+              ) : (
+                <Breadcrumb.Section key={item.url} active>
+                  {item.title}
+                </Breadcrumb.Section>
+              ),
             ])}
           </Breadcrumb>
         </Container>

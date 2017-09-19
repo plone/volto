@@ -357,13 +357,13 @@ export default class ContentsComponent extends Component {
     this.setState({
       index: {
         ...this.state.index,
-        selectedCount: this.state.index.selectedCount +
+        selectedCount:
+          this.state.index.selectedCount +
           (this.state.index.values[value].selected ? -1 : 1),
         values: mapValues(this.state.index.values, (indexValue, indexKey) => ({
           ...indexValue,
-          selected: indexKey === value
-            ? !indexValue.selected
-            : indexValue.selected,
+          selected:
+            indexKey === value ? !indexValue.selected : indexValue.selected,
         })),
       },
     });
@@ -848,13 +848,14 @@ export default class ContentsComponent extends Component {
               onOk={this.onPropertiesOk}
               items={this.state.selected}
             />
-            {this.state.showWorkflow &&
+            {this.state.showWorkflow && (
               <ContentsWorkflowModal
                 open={this.state.showWorkflow}
                 onCancel={this.onWorkflowCancel}
                 onOk={this.onWorkflowOk}
                 items={this.state.selected}
-              />}
+              />
+            )}
             <h1>
               <FormattedMessage id="Contents" defaultMessage="Contents" />
             </h1>
@@ -862,38 +863,32 @@ export default class ContentsComponent extends Component {
               <Menu stackable>
                 <Menu.Menu>
                   <Menu.Item onClick={this.upload}>
-                    <Icon name="upload" />
-                    {' '}
+                    <Icon name="upload" />{' '}
                     <FormattedMessage id="Upload" defaultMessage="Upload" />
                   </Menu.Item>
                 </Menu.Menu>
                 <Menu.Menu position="right">
                   <Menu.Item onClick={this.cut} disabled={!selected}>
-                    <Icon name="cut" />
-                    {' '}
+                    <Icon name="cut" />{' '}
                     <FormattedMessage id="Cut" defaultMessage="Cut" />
                   </Menu.Item>
                   <Menu.Item onClick={this.copy} disabled={!selected}>
-                    <Icon name="copy" />
-                    {' '}
+                    <Icon name="copy" />{' '}
                     <FormattedMessage id="Copy" defaultMessage="Copy" />
                   </Menu.Item>
                   <Menu.Item onClick={this.paste} disabled={!this.props.action}>
-                    <Icon name="paste" />
-                    {' '}
+                    <Icon name="paste" />{' '}
                     <FormattedMessage id="Paste" defaultMessage="Paste" />
                   </Menu.Item>
                   <Menu.Item onClick={this.delete} disabled={!selected}>
-                    <Icon name="trash" />
-                    {' '}
+                    <Icon name="trash" />{' '}
                     <FormattedMessage id="Delete" defaultMessage="Delete" />
                   </Menu.Item>
                   <Dropdown
                     item
                     trigger={
                       <span>
-                        <Icon name="write" />
-                        {' '}
+                        <Icon name="write" />{' '}
                         <FormattedMessage id="Batch" defaultMessage="Batch" />
                       </span>
                     }
@@ -901,23 +896,19 @@ export default class ContentsComponent extends Component {
                   >
                     <Dropdown.Menu>
                       <Dropdown.Item onClick={this.rename}>
-                        <Icon name="text cursor" />
-                        {' '}
+                        <Icon name="text cursor" />{' '}
                         <FormattedMessage id="Rename" defaultMessage="Rename" />
                       </Dropdown.Item>
                       <Dropdown.Item onClick={this.tags}>
-                        <Icon name="tags" />
-                        {' '}
+                        <Icon name="tags" />{' '}
                         <FormattedMessage id="Tags" defaultMessage="Tags" />
                       </Dropdown.Item>
                       <Dropdown.Item onClick={this.workflow}>
-                        <Icon name="random" />
-                        {' '}
+                        <Icon name="random" />{' '}
                         <FormattedMessage id="State" defaultMessage="State" />
                       </Dropdown.Item>
                       <Dropdown.Item onClick={this.properties}>
-                        <Icon name="edit" />
-                        {' '}
+                        <Icon name="edit" />{' '}
                         <FormattedMessage
                           id="Properties"
                           defaultMessage="Properties"
@@ -975,8 +966,7 @@ export default class ContentsComponent extends Component {
                                     onClick={this.onSortItems}
                                     value={`${index}|ascending`}
                                   >
-                                    <Icon name="sort alphabet ascending" />
-                                    {' '}
+                                    <Icon name="sort alphabet ascending" />{' '}
                                     <FormattedMessage
                                       id="Ascending"
                                       defaultMessage="Ascending"
@@ -986,8 +976,7 @@ export default class ContentsComponent extends Component {
                                     onClick={this.onSortItems}
                                     value={`${index}|descending`}
                                   >
-                                    <Icon name="sort alphabet descending" />
-                                    {' '}
+                                    <Icon name="sort alphabet descending" />{' '}
                                     <FormattedMessage
                                       id="Descending"
                                       defaultMessage="Descending"
@@ -1008,9 +997,9 @@ export default class ContentsComponent extends Component {
                               this.state.selected.length === 0
                                 ? 'square outline'
                                 : this.state.selected.length ===
-                                    this.state.items.length
-                                    ? 'check square'
-                                    : 'minus square'
+                                  this.state.items.length
+                                  ? 'check square'
+                                  : 'minus square'
                             }
                             color={
                               this.state.selected.length > 0 ? 'blue' : 'black'
@@ -1026,13 +1015,11 @@ export default class ContentsComponent extends Component {
                             )}
                           />
                           <Dropdown.Item onClick={this.onSelectAll}>
-                            <Icon name="check square" color="blue" />
-                            {' '}
+                            <Icon name="check square" color="blue" />{' '}
                             <FormattedMessage id="All" defaultMessage="All" />
                           </Dropdown.Item>
                           <Dropdown.Item onClick={this.onSelectNone}>
-                            <Icon name="square outline" />
-                            {' '}
+                            <Icon name="square outline" />{' '}
                             <FormattedMessage id="None" defaultMessage="None" />
                           </Dropdown.Item>
                           <Dropdown.Divider />
@@ -1057,8 +1044,7 @@ export default class ContentsComponent extends Component {
                                 value={item}
                                 onClick={this.onDeselect}
                               >
-                                <Icon name="delete" />
-                                {' '}
+                                <Icon name="delete" />{' '}
                                 {this.getFieldById(item, 'title')}
                               </Dropdown.Item>
                             ))}
@@ -1074,14 +1060,17 @@ export default class ContentsComponent extends Component {
                     {map(
                       this.state.index.order,
                       (index, order) =>
-                        this.state.index.values[index].selected &&
-                        <ContentsIndexHeader
-                          key={index}
-                          width={Math.ceil(16 / this.state.index.selectedCount)}
-                          label={this.state.index.values[index].label}
-                          order={order}
-                          onOrderIndex={this.onOrderIndex}
-                        />,
+                        this.state.index.values[index].selected && (
+                          <ContentsIndexHeader
+                            key={index}
+                            width={Math.ceil(
+                              16 / this.state.index.selectedCount,
+                            )}
+                            label={this.state.index.values[index].label}
+                            order={order}
+                            onOrderIndex={this.onOrderIndex}
+                          />
+                        ),
                     )}
                     <Table.HeaderCell textAlign="right">
                       <Dropdown icon="ellipsis vertical">
@@ -1098,9 +1087,11 @@ export default class ContentsComponent extends Component {
                                 value={index}
                                 onClick={this.onSelectIndex}
                               >
-                                {this.state.index.values[index].selected
-                                  ? <Icon name="check square" color="blue" />
-                                  : <Icon name="square outline" />}
+                                {this.state.index.values[index].selected ? (
+                                  <Icon name="check square" color="blue" />
+                                ) : (
+                                  <Icon name="square outline" />
+                                )}
                                 {this.state.index.values[index].label}
                               </Dropdown.Item>
                             ))}

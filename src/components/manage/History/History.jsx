@@ -161,18 +161,24 @@ export default class HistoryComponent extends Component {
               <Table.Row key={entry.time}>
                 <Table.Cell>
                   {('version' in entry &&
-                    entry.version > 0 &&
-                    <Link
-                      className="item"
-                      to={`${getBaseUrl(this.props.pathname)}/diff?one=${entry.version - 1}&two=${entry.version}`}
-                    >
-                      {entry.transition_title}
-                    </Link>) ||
-                    <span>
-                      {entry.transition_title}
-                      {entry.type === 'workflow' &&
-                        ` (${entry.action ? `${entry.prev_state_title} → ` : ''}${entry.state_title})`}
-                    </span>}
+                    entry.version > 0 && (
+                      <Link
+                        className="item"
+                        to={`${getBaseUrl(
+                          this.props.pathname,
+                        )}/diff?one=${entry.version - 1}&two=${entry.version}`}
+                      >
+                        {entry.transition_title}
+                      </Link>
+                    )) || (
+                      <span>
+                        {entry.transition_title}
+                        {entry.type === 'workflow' &&
+                          ` (${entry.action
+                            ? `${entry.prev_state_title} → `
+                            : ''}${entry.state_title})`}
+                      </span>
+                    )}
                 </Table.Cell>
                 <Table.Cell>{entry.actor.fullname}</Table.Cell>
                 <Table.Cell>
@@ -182,48 +188,54 @@ export default class HistoryComponent extends Component {
                 </Table.Cell>
                 <Table.Cell>{entry.comments}</Table.Cell>
                 <Table.Cell>
-                  {entry.type === 'versioning' &&
+                  {entry.type === 'versioning' && (
                     <Dropdown icon="ellipsis vertical">
                       <Dropdown.Menu className="left">
                         {'version' in entry &&
-                          entry.version > 0 &&
+                          entry.version > 0 && (
+                            <Link
+                              className="item"
+                              to={`${getBaseUrl(
+                                this.props.pathname,
+                              )}/diff?one=${entry.version -
+                                1}&two=${entry.version}`}
+                            >
+                              <Icon name="copy" />{' '}
+                              <FormattedMessage
+                                id="View changes"
+                                defaultMessage="View changes"
+                              />
+                            </Link>
+                          )}
+                        {'version' in entry && (
                           <Link
                             className="item"
-                            to={`${getBaseUrl(this.props.pathname)}/diff?one=${entry.version - 1}&two=${entry.version}`}
+                            to={`${getBaseUrl(
+                              this.props.pathname,
+                            )}?version=${entry.version}`}
                           >
-                            <Icon name="copy" />
-                            {' '}
-                            <FormattedMessage
-                              id="View changes"
-                              defaultMessage="View changes"
-                            />
-                          </Link>}
-                        {'version' in entry &&
-                          <Link
-                            className="item"
-                            to={`${getBaseUrl(this.props.pathname)}?version=${entry.version}`}
-                          >
-                            <Icon name="eye" />
-                            {' '}
+                            <Icon name="eye" />{' '}
                             <FormattedMessage
                               id="View this revision"
                               defaultMessage="View this revision"
                             />
-                          </Link>}
-                        {'version' in entry &&
+                          </Link>
+                        )}
+                        {'version' in entry && (
                           <Dropdown.Item
                             value={entry.version}
                             onClick={this.onRevert}
                           >
-                            <Icon name="undo" />
-                            {' '}
+                            <Icon name="undo" />{' '}
                             <FormattedMessage
                               id="Revert to this revision"
                               defaultMessage="Revert to this revision"
                             />
-                          </Dropdown.Item>}
+                          </Dropdown.Item>
+                        )}
                       </Dropdown.Menu>
-                    </Dropdown>}
+                    </Dropdown>
+                  )}
                 </Table.Cell>
               </Table.Row>
             ))}

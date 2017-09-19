@@ -44,7 +44,8 @@ const messages = defineMessages({
   },
   emailDescription: {
     id: 'We will use this address if you need to recover your password',
-    defaultMessage: 'We will use this address if you need to recover your password',
+    defaultMessage:
+      'We will use this address if you need to recover your password',
   },
   homePageTitle: {
     id: 'Home page',
@@ -59,8 +60,10 @@ const messages = defineMessages({
     defaultMessage: 'Location',
   },
   locationDescription: {
-    id: 'Your location - either city and country - or in a company setting, where your office is located.',
-    defaultMessage: 'Your location - either city and country - or in a company setting, where your office is located.',
+    id:
+      'Your location - either city and country - or in a company setting, where your office is located.',
+    defaultMessage:
+      'Your location - either city and country - or in a company setting, where your office is located.',
   },
   saved: {
     id: 'Changes saved',
@@ -156,75 +159,77 @@ export default class PersonalInformation extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return this.props.loaded
-      ? <div id="page-personal-information">
-          <Helmet
-            title={this.props.intl.formatMessage(messages.personalInformation)}
+    return this.props.loaded ? (
+      <div id="page-personal-information">
+        <Helmet
+          title={this.props.intl.formatMessage(messages.personalInformation)}
+        />
+        <Menu attached="top" tabular stackable>
+          <Menu.Item
+            name={this.props.intl.formatMessage(messages.personalInformation)}
+            active
           />
-          <Menu attached="top" tabular stackable>
-            <Menu.Item
-              name={this.props.intl.formatMessage(messages.personalInformation)}
-              active
+          <Link to="/personal-preferences" className="item">
+            <FormattedMessage
+              id="Personal Preferences"
+              defaultMessage="Personal Preferences"
             />
-            <Link to="/personal-preferences" className="item">
-              <FormattedMessage
-                id="Personal Preferences"
-                defaultMessage="Personal Preferences"
-              />
-            </Link>
-            <Link to="/change-password" className="item">
-              <FormattedMessage
-                id="Change Password"
-                defaultMessage="Change Password"
-              />
-            </Link>
-          </Menu>
-          <Form
-            formData={this.props.user}
-            schema={{
-              fieldsets: [
-                {
-                  id: 'default',
-                  title: this.props.intl.formatMessage(messages.default),
-                  fields: ['fullname', 'email', 'home_page', 'location'],
-                },
-              ],
-              properties: {
-                fullname: {
-                  description: this.props.intl.formatMessage(
-                    messages.fullnameDescription,
-                  ),
-                  title: this.props.intl.formatMessage(messages.fullnameTitle),
-                  type: 'string',
-                },
-                email: {
-                  description: this.props.intl.formatMessage(
-                    messages.emailDescription,
-                  ),
-                  title: this.props.intl.formatMessage(messages.emailTitle),
-                  type: 'string',
-                },
-                home_page: {
-                  description: this.props.intl.formatMessage(
-                    messages.homePageDescription,
-                  ),
-                  title: this.props.intl.formatMessage(messages.homePageTitle),
-                  type: 'string',
-                },
-                location: {
-                  description: this.props.intl.formatMessage(
-                    messages.locationDescription,
-                  ),
-                  title: this.props.intl.formatMessage(messages.locationTitle),
-                  type: 'string',
-                },
+          </Link>
+          <Link to="/change-password" className="item">
+            <FormattedMessage
+              id="Change Password"
+              defaultMessage="Change Password"
+            />
+          </Link>
+        </Menu>
+        <Form
+          formData={this.props.user}
+          schema={{
+            fieldsets: [
+              {
+                id: 'default',
+                title: this.props.intl.formatMessage(messages.default),
+                fields: ['fullname', 'email', 'home_page', 'location'],
               },
-              required: ['email'],
-            }}
-            onSubmit={this.onSubmit}
-            onCancel={this.onCancel}
-          />
-        </div>
-      : <div />;
+            ],
+            properties: {
+              fullname: {
+                description: this.props.intl.formatMessage(
+                  messages.fullnameDescription,
+                ),
+                title: this.props.intl.formatMessage(messages.fullnameTitle),
+                type: 'string',
+              },
+              email: {
+                description: this.props.intl.formatMessage(
+                  messages.emailDescription,
+                ),
+                title: this.props.intl.formatMessage(messages.emailTitle),
+                type: 'string',
+              },
+              home_page: {
+                description: this.props.intl.formatMessage(
+                  messages.homePageDescription,
+                ),
+                title: this.props.intl.formatMessage(messages.homePageTitle),
+                type: 'string',
+              },
+              location: {
+                description: this.props.intl.formatMessage(
+                  messages.locationDescription,
+                ),
+                title: this.props.intl.formatMessage(messages.locationTitle),
+                type: 'string',
+              },
+            },
+            required: ['email'],
+          }}
+          onSubmit={this.onSubmit}
+          onCancel={this.onCancel}
+        />
+      </div>
+    ) : (
+      <div />
+    );
   }
 }

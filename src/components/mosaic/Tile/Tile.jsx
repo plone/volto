@@ -69,19 +69,26 @@ const Tile = ({
   connectDropTarget(
     connectDragSource(
       <div
-        className={`tile ${type}${hovered ? ` ${hovered}` : ''}${selected ? ' selected' : ''}${isDragging ? ' dragging' : ''}`}
+        className={`tile ${type}${hovered ? ` ${hovered}` : ''}${selected
+          ? ' selected'
+          : ''}${isDragging ? ' dragging' : ''}`}
         onClick={() => selectTile(row, column, tile)}
       >
-        {selected && <Label color="blue" pointing="below">{label}</Label>}
-        {selected &&
+        {selected && (
+          <Label color="blue" pointing="below">
+            {label}
+          </Label>
+        )}
+        {selected && (
           <Icon
             name="close"
             onClick={event => {
               event.stopPropagation();
               deleteTile(row, column, tile);
             }}
-          />}
-        {!__SERVER__ &&
+          />
+        )}
+        {!__SERVER__ && (
           <Editor
             popoverStyle={{
               color: 'rgba(0,0,0,.6)',
@@ -94,7 +101,8 @@ const Tile = ({
             onChange={newContent =>
               setTileContent(row, column, tile, newContent)}
             editorState={content}
-          />}
+          />
+        )}
       </div>,
     ),
   );
@@ -159,9 +167,10 @@ export default DropTarget(
         type = 'column';
       } else {
         direction = yFactor > 0 ? 'top' : 'bottom';
-        type = (props.first && yFactor > 0.8) || (props.last && yFactor < -0.8)
-          ? 'row'
-          : 'tile';
+        type =
+          (props.first && yFactor > 0.8) || (props.last && yFactor < -0.8)
+            ? 'row'
+            : 'tile';
       }
       props.setHovered(props.row, props.column, props.tile, type, direction);
     },

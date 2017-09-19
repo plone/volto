@@ -29,47 +29,59 @@ const Pagination = ({
 }) => (
   <Menu secondary>
     <Menu.Menu>
-      {current > 0 &&
+      {current > 0 && (
         <Menu.Item
           value={current - 1}
           icon="chevron left"
           onClick={onChangePage}
-        />}
-      {current > 2 && <Menu.Item value={0} onClick={onChangePage}>1</Menu.Item>}
+        />
+      )}
+      {current > 2 && (
+        <Menu.Item value={0} onClick={onChangePage}>
+          1
+        </Menu.Item>
+      )}
       {current > 3 && <Menu.Item disabled>...</Menu.Item>}
-      {current > 1 &&
+      {current > 1 && (
         <Menu.Item value={current - 2} onClick={onChangePage}>
           {current - 1}
-        </Menu.Item>}
-      {current > 0 &&
+        </Menu.Item>
+      )}
+      {current > 0 && (
         <Menu.Item value={current - 1} onClick={onChangePage}>
           {current}
-        </Menu.Item>}
-      {total > 1 &&
+        </Menu.Item>
+      )}
+      {total > 1 && (
         <Menu.Item value={current} active onClick={onChangePage}>
           {current + 1}
-        </Menu.Item>}
-      {total > current + 1 &&
+        </Menu.Item>
+      )}
+      {total > current + 1 && (
         <Menu.Item value={current + 1} onClick={onChangePage}>
           {current + 2}
-        </Menu.Item>}
-      {total > current + 2 &&
+        </Menu.Item>
+      )}
+      {total > current + 2 && (
         <Menu.Item value={current + 2} onClick={onChangePage}>
           {current + 3}
-        </Menu.Item>}
+        </Menu.Item>
+      )}
       {total > current + 4 && <Menu.Item disabled>...</Menu.Item>}
-      {total > current + 3 &&
+      {total > current + 3 && (
         <Menu.Item value={total - 1} onClick={onChangePage}>
           {total}
-        </Menu.Item>}
-      {current < total - 1 &&
+        </Menu.Item>
+      )}
+      {current < total - 1 && (
         <Menu.Item
           value={current + 1}
           icon="chevron right"
           onClick={onChangePage}
-        />}
+        />
+      )}
     </Menu.Menu>
-    {pageSize &&
+    {pageSize && (
       <Menu.Menu position="right">
         <Menu.Item>Show:</Menu.Item>
         {map(pageSizes, size => (
@@ -82,7 +94,8 @@ const Pagination = ({
             {size}
           </Menu.Item>
         ))}
-      </Menu.Menu>}
+      </Menu.Menu>
+    )}
   </Menu>
 );
 

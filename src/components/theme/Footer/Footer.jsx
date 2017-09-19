@@ -40,9 +40,7 @@ const Footer = ({ intl }) => (
             />
           ),
           copyright: (
-            <abbr title={intl.formatMessage(messages.copyright)}>
-              ©
-            </abbr>
+            <abbr title={intl.formatMessage(messages.copyright)}>©</abbr>
           ),
           current_year: new Date().getFullYear(),
           plonefoundation: (
@@ -54,8 +52,7 @@ const Footer = ({ intl }) => (
             </a>
           ),
         }}
-      />
-      {' '}
+      />{' '}
       <FormattedMessage
         id="Distributed under the {license}."
         defaultMessage="Distributed under the {license}."
@@ -70,7 +67,6 @@ const Footer = ({ intl }) => (
           ),
         }}
       />
-
       <Divider />
       <List horizontal>
         <List.Item href="/sitemap">

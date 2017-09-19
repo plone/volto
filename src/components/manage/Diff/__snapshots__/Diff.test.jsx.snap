@@ -31,7 +31,9 @@ exports[`Diff renders a diff component 1`] = `
       >
         <button
           className="ui active button"
+          disabled={undefined}
           onClick={[Function]}
+          role="button"
           tabIndex={undefined}
           value="split"
         >
@@ -39,7 +41,9 @@ exports[`Diff renders a diff component 1`] = `
         </button>
         <button
           className="ui button"
+          disabled={undefined}
           onClick={[Function]}
+          role="button"
           tabIndex={undefined}
           value="unified"
         >
@@ -77,35 +81,17 @@ exports[`Diff renders a diff component 1`] = `
             role="listbox"
             tabIndex={0}
           >
-            <select
-              aria-hidden="true"
-              multiple={undefined}
-              name={undefined}
-              type="hidden"
-              value="0"
-            >
-              <option
-                value=""
-              />
-              <option
-                value="1"
-              >
-                Current (Sunday, April 23, 2017 3:38 AM, Web Admin)
-              </option>
-              <option
-                value="0"
-              >
-                0 (Sunday, April 23, 2017 3:38 AM, Web Admin)
-              </option>
-            </select>
             <div
+              aria-live="polite"
               className="text"
+              role="alert"
             >
               0 (Sunday, April 23, 2017 3:38 AM, Web Admin)
             </div>
             <i
               aria-hidden="true"
               className="dropdown icon"
+              onClick={[Function]}
             />
             <div
               className="menu transition"
@@ -171,33 +157,15 @@ exports[`Diff renders a diff component 1`] = `
             role="listbox"
             tabIndex={0}
           >
-            <select
-              aria-hidden="true"
-              multiple={undefined}
-              name={undefined}
-              type="hidden"
-              value="1 "
-            >
-              <option
-                value=""
-              />
-              <option
-                value="1"
-              >
-                Current (Sunday, April 23, 2017 3:38 AM, Web Admin)
-              </option>
-              <option
-                value="0"
-              >
-                0 (Sunday, April 23, 2017 3:38 AM, Web Admin)
-              </option>
-            </select>
             <div
+              aria-live="polite"
               className="text"
+              role="alert"
             />
             <i
               aria-hidden="true"
               className="dropdown icon"
+              onClick={[Function]}
             />
             <div
               className="menu transition"

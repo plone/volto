@@ -119,50 +119,51 @@ export default class ContentsRenameModal extends Component {
    */
   render() {
     return (
-      this.props.open &&
-      <ModalForm
-        open={this.props.open}
-        onSubmit={this.onSubmit}
-        onCancel={this.props.onCancel}
-        formData={merge(
-          ...map(this.props.items, (item, index) => ({
-            [`${index}_title`]: item.title,
-            [`${index}_id`]: item.id,
-          })),
-        )}
-        title={this.props.intl.formatMessage(messages.renameItems)}
-        schema={{
-          fieldsets: [
-            {
-              id: 'default',
-              title: this.props.intl.formatMessage(messages.default),
-              fields: concat(
-                ...map(this.props.items, (item, index) => [
-                  `${index}_title`,
-                  `${index}_id`,
-                ]),
-              ),
-            },
-          ],
-          properties: merge(
+      this.props.open && (
+        <ModalForm
+          open={this.props.open}
+          onSubmit={this.onSubmit}
+          onCancel={this.props.onCancel}
+          formData={merge(
             ...map(this.props.items, (item, index) => ({
-              [`${index}_title`]: {
-                title: this.props.intl.formatMessage(messages.title),
-                type: 'string',
-                description: '',
-              },
-              [`${index}_id`]: {
-                title: this.props.intl.formatMessage(messages.shortName),
-                type: 'string',
-                description: this.props.intl.formatMessage(
-                  messages.shortNameDescription,
+              [`${index}_title`]: item.title,
+              [`${index}_id`]: item.id,
+            })),
+          )}
+          title={this.props.intl.formatMessage(messages.renameItems)}
+          schema={{
+            fieldsets: [
+              {
+                id: 'default',
+                title: this.props.intl.formatMessage(messages.default),
+                fields: concat(
+                  ...map(this.props.items, (item, index) => [
+                    `${index}_title`,
+                    `${index}_id`,
+                  ]),
                 ),
               },
-            })),
-          ),
-          required: [],
-        }}
-      />
+            ],
+            properties: merge(
+              ...map(this.props.items, (item, index) => ({
+                [`${index}_title`]: {
+                  title: this.props.intl.formatMessage(messages.title),
+                  type: 'string',
+                  description: '',
+                },
+                [`${index}_id`]: {
+                  title: this.props.intl.formatMessage(messages.shortName),
+                  type: 'string',
+                  description: this.props.intl.formatMessage(
+                    messages.shortNameDescription,
+                  ),
+                },
+              })),
+            ),
+            required: [],
+          }}
+        />
+      )
     );
   }
 }

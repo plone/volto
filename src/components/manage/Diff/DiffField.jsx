@@ -51,7 +51,7 @@ const DiffField = ({ one, two, view, schema }) => {
         </Table.Row>
       </Table.Header>
       <Table.Body>
-        {view === 'split' &&
+        {view === 'split' && (
           <Table.Row>
             <Table.Cell width={8} verticalAlign="top">
               <span
@@ -87,8 +87,9 @@ const DiffField = ({ one, two, view, schema }) => {
                 }}
               />
             </Table.Cell>
-          </Table.Row>}
-        {view === 'unified' &&
+          </Table.Row>
+        )}
+        {view === 'unified' && (
           <Table.Row>
             <Table.Cell width={16} verticalAlign="top">
               <span
@@ -108,7 +109,8 @@ const DiffField = ({ one, two, view, schema }) => {
                 }}
               />
             </Table.Cell>
-          </Table.Row>}
+          </Table.Row>
+        )}
       </Table.Body>
     </Table>
   );

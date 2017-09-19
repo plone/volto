@@ -28,6 +28,7 @@ exports[`Workflow renders a workflow component 1`] = `
   <i
     aria-hidden="true"
     className="dropdown icon"
+    onClick={[Function]}
   />
   <div
     className="menu transition"
