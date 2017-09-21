@@ -64,10 +64,8 @@ reactTransform[1].transforms.push({
 const BASE_CSS_LOADER = {
   loader: 'css-loader',
   options: {
-    modules: true,
     importLoaders: 2,
     sourceMap: true,
-    '-minimize': true,
     localIdentName: '[name]__[local]___[hash:base64:5]'
   }
 };
