@@ -145,36 +145,6 @@ module.exports = {
           BASE_CSS_LOADER,
         ]
       },
-      // {
-      //   test: /\.(woff|woff2|ttf|eot|svg|png|gif|jpg)(\?v=\d+\.\d+\.\d+)?$/,
-      //   use: [
-      //     {
-      //       loader: 'url-loader',
-      //       options: {
-      //         limit: 10000
-      //       }
-      //     }
-      //   ]
-      // },
-      // {
-      //   test: /\.(gif|jpg)(\?v=\d+\.\d+\.\d+)?$/,
-      //   use: [
-      //     {
-      //       loader: 'url-loader',
-      //       options: {
-      //         limit: 10000
-      //       }
-      //     }
-      //   ]
-      // },
-
-      // // this handles .less translation
-      // {
-      //   use: ExtractTextPlugin.extract({
-      //     use: ['css-loader', 'less-loader']
-      //   }),
-      //   test: /\.less$/
-      // },
       {
         test: /\.jpe?g$|\.gif$|\.png$|\.ttf$|\.eot$|\.svg$/,
         use: 'file-loader?name=[name].[ext]?[hash]'
@@ -183,7 +153,6 @@ module.exports = {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'url-loader?limit=10000&mimetype=application/fontwoff'
       }
-
     ],
   },
   resolve: {
@@ -194,7 +163,7 @@ module.exports = {
     ],
     extensions: ['.json', '.js', '.jsx'],
     alias: {
-      '../../theme.config$': path.join(__dirname, '../my-semantic-theme/theme.config')
+      '../../theme.config$': path.join(__dirname, '../theme/theme.config')
     }
   },
   plugins: [
