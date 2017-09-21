@@ -3,6 +3,8 @@ import webpack from 'webpack';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import fs from 'fs';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+
 
 const projectRootPath = path.resolve(__dirname, '../');
 
@@ -145,25 +147,57 @@ module.exports = {
           BASE_CSS_LOADER,
         ]
       },
+      // {
+      //   test: /\.(woff|woff2|ttf|eot|svg|png|gif|jpg)(\?v=\d+\.\d+\.\d+)?$/,
+      //   use: [
+      //     {
+      //       loader: 'url-loader',
+      //       options: {
+      //         limit: 10000
+      //       }
+      //     }
+      //   ]
+      // },
+      // {
+      //   test: /\.(gif|jpg)(\?v=\d+\.\d+\.\d+)?$/,
+      //   use: [
+      //     {
+      //       loader: 'url-loader',
+      //       options: {
+      //         limit: 10000
+      //       }
+      //     }
+      //   ]
+      // },
+
+      // // this handles .less translation
+      // {
+      //   use: ExtractTextPlugin.extract({
+      //     use: ['css-loader', 'less-loader']
+      //   }),
+      //   test: /\.less$/
+      // },
       {
-        test: /\.(woff|woff2|ttf|eot|svg|png|gif|jpg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000
-            }
-          }
-        ]
+        test: /\.jpe?g$|\.gif$|\.png$|\.ttf$|\.eot$|\.svg$/,
+        use: 'file-loader?name=[name].[ext]?[hash]'
+      },
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/fontwoff'
       }
+
     ],
   },
   resolve: {
     modules: [
       path.join(__dirname, 'src'),
       'node_modules',
+      'semantic-ui-less',
     ],
     extensions: ['.json', '.js', '.jsx'],
+    alias: {
+      '../../theme.config$': path.join(__dirname, '../my-semantic-theme/theme.config')
+    }
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
