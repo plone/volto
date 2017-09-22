@@ -159,7 +159,6 @@ module.exports = {
     modules: [
       path.join(__dirname, 'src'),
       'node_modules',
-      'semantic-ui-less',
     ],
     extensions: ['.json', '.js', '.jsx'],
     alias: {
