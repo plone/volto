@@ -91,7 +91,7 @@ export default class Controlpanels extends Component {
           />
         </p>
         {map(groups, group => (
-          <div>
+          <div key={group}>
             <Header as="h2" attached="top">
               {group}
             </Header>
@@ -99,7 +99,7 @@ export default class Controlpanels extends Component {
               <Grid columns={6}>
                 <Grid.Row>
                   {map(filter(controlpanels, { group }), controlpanel => (
-                    <Grid.Column>
+                    <Grid.Column key={controlpanel.id}>
                       <Link to={`/controlpanel/${controlpanel.id}`}>
                         <Header as="h3" icon textAlign="center">
                           <Icon name={Icons[controlpanel.id] || 'setting'} />
