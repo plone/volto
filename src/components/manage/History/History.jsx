@@ -74,7 +74,7 @@ export default class HistoryComponent extends Component {
   /**
    * Component did mount
    * @method componentDidMount
-   * @returns {undefined}
+   * 
    */
   componentDidMount() {
     this.props.getHistory(getBaseUrl(this.props.pathname));
@@ -84,7 +84,7 @@ export default class HistoryComponent extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
+   * 
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.revertRequest.loading && nextProps.revertRequest.loaded) {
@@ -97,7 +97,7 @@ export default class HistoryComponent extends Component {
    * @method onRevert
    * @param {object} event Event object
    * @param {number} value Value
-   * @returns {undefined}
+   * 
    */
   onRevert(event, { value }) {
     this.props.revertHistory(getBaseUrl(this.props.pathname), value);

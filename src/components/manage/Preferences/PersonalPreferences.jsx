@@ -86,7 +86,7 @@ export default class PersonalPreferences extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
-   * @returns {undefined}
+   * 
    */
   onSubmit(data) {
     cookie.save('lang', data.language || '', {
@@ -112,7 +112,7 @@ export default class PersonalPreferences extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
+   * 
    */
   onCancel() {
     browserHistory.goBack();

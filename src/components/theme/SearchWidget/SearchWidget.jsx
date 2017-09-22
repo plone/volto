@@ -63,7 +63,7 @@ export default class SearchWidget extends Component {
    * @method onChangeText
    * @param {object} event Event object.
    * @param {string} value Text value.
-   * @returns {undefined}
+   * 
    */
   onChangeText(event, { value }) {
     this.setState({
@@ -76,7 +76,7 @@ export default class SearchWidget extends Component {
    * @method onChangeSection
    * @param {object} event Event object.
    * @param {bool} checked Section checked.
-   * @returns {undefined}
+   * 
    */
   onChangeSection(event, { checked }) {
     this.setState({
@@ -88,7 +88,7 @@ export default class SearchWidget extends Component {
    * Submit handler
    * @method onSubmit
    * @param {event} event Event object.
-   * @returns {undefined}
+   * 
    */
   onSubmit(event) {
     const section = this.state.section ? `&path=${this.props.pathname}` : '';

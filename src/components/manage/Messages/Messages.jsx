@@ -55,7 +55,7 @@ export default class Messages extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
+   * 
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.messages.length > this.props.messages.length) {
@@ -72,7 +72,7 @@ export default class Messages extends Component {
    * @method onDismiss
    * @param {Object} event Event object
    * @param {number} value Index of message
-   * @returns {undefined}
+   * 
    */
   onDismiss(event, { value }) {
     this.props.removeMessage(value);

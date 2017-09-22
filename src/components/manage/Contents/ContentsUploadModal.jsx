@@ -77,7 +77,7 @@ export default class ContentsUploadModal extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
+   * 
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.request.loading && nextProps.request.loaded) {
@@ -92,7 +92,7 @@ export default class ContentsUploadModal extends Component {
    * Remove file handler
    * @method onRemoveFile
    * @param {Object} event Event object
-   * @returns {undefined}
+   * 
    */
   onRemoveFile(event) {
     this.setState({
@@ -108,7 +108,7 @@ export default class ContentsUploadModal extends Component {
    * Drop handler
    * @method onDrop
    * @param {array} files File objects
-   * @returns {undefined}
+   * 
    */
   onDrop(files) {
     this.setState({
@@ -119,7 +119,7 @@ export default class ContentsUploadModal extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
+   * 
    */
   onCancel() {
     this.props.onCancel();
@@ -131,7 +131,7 @@ export default class ContentsUploadModal extends Component {
   /**
    * Submit handler
    * @method onSubmit
-   * @returns {undefined}
+   * 
    */
   onSubmit() {
     Promise.all(

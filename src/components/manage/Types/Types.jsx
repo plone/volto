@@ -58,7 +58,7 @@ export default class Types extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
+   * 
    */
   componentWillMount() {
     this.props.getTypes(this.props.pathname);

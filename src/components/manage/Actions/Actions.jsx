@@ -134,7 +134,6 @@ export default class Actions extends Component {
   /**
    * On rename ok
    * @method onRenameOk
-   * @returns {undefined}
    */
   onRenameOk() {
     this.setState({
@@ -145,7 +144,6 @@ export default class Actions extends Component {
   /**
    * On rename cancel
    * @method onRenameCancel
-   * @returns {undefined}
    */
   onRenameCancel() {
     this.setState({
@@ -156,7 +154,6 @@ export default class Actions extends Component {
   /**
    * Cut handler
    * @method cut
-   * @returns {undefined}
    */
   cut() {
     this.props.cut([getBaseUrl(this.props.pathname)]);
@@ -172,7 +169,6 @@ export default class Actions extends Component {
   /**
    * Copy handler
    * @method copy
-   * @returns {undefined}
    */
   copy() {
     this.props.copy([getBaseUrl(this.props.pathname)]);
@@ -188,7 +184,6 @@ export default class Actions extends Component {
   /**
    * Paste handler
    * @method paste
-   * @returns {undefined}
    */
   paste() {
     if (this.props.action === 'copy') {
@@ -213,7 +208,6 @@ export default class Actions extends Component {
   /**
    * Rename handler
    * @method rename
-   * @returns {undefined}
    */
   rename() {
     this.setState({

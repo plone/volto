@@ -104,7 +104,7 @@ export default class ChangePassword extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
-   * @returns {undefined}
+   * 
    */
   onSubmit(data) {
     if (data.newPassword === data.newPasswordRepeat) {
@@ -124,7 +124,7 @@ export default class ChangePassword extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
+   * 
    */
   onCancel() {
     browserHistory.goBack();
