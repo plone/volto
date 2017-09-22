@@ -22,6 +22,8 @@ const history = syncHistoryWithStore(browserHistory, store);
 addLocaleData([...nlLocaleData, ...deLocaleData, ...enLocaleData]);
 persistAuthToken(store);
 
+import 'semantic-ui-less/semantic.less';
+
 render(
   <Provider store={store} key="provider">
     <Router

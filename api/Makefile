@@ -9,7 +9,7 @@ all: .installed.cfg
 	bin/buildout
 
 bin/buildout: bin/pip
-	wget https://raw.githubusercontent.com/plone/buildout.coredev/5.1/requirements.txt
+	curl https://raw.githubusercontent.com/plone/buildout.coredev/5.1/requirements.txt -O
 	bin/pip install -r requirements.txt
 	@touch -c $@
 

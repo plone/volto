@@ -27,13 +27,6 @@ exports[`Html renders a html component 1`] = `
     />
     <link
       charSet="UTF-8"
-      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
-      media="screen, projection"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      charSet="UTF-8"
       href="/assets/overrides.css"
       media="screen, projection"
       rel="stylesheet"

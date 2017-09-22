@@ -19,3 +19,7 @@ dist
 /api/bin/
 /api/parts/
 /api/src/
+api/.Python
+api/include
+api/lib
+api/pip-selfcheck.json
