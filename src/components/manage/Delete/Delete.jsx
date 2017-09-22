@@ -84,7 +84,7 @@ export default class Delete extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
+   * 
    */
   componentWillMount() {
     this.props.getContent(this.props.pathname.split('/delete')[0]);
@@ -94,7 +94,7 @@ export default class Delete extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
+   * 
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
@@ -107,7 +107,7 @@ export default class Delete extends Component {
   /**
    * Submit handler
    * @method onSubmit
-   * @returns {undefined}
+   * 
    */
   onSubmit() {
     this.props.deleteContent(this.props.pathname.replace('/delete', ''));
@@ -116,7 +116,7 @@ export default class Delete extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
+   * 
    */
   onCancel() {
     browserHistory.push(this.props.pathname.replace('/delete', ''));

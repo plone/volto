@@ -44,7 +44,7 @@ export default class Navigation extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
+   * 
    */
   componentWillMount() {
     this.props.getNavigation(getBaseUrl(this.props.pathname));
@@ -54,7 +54,7 @@ export default class Navigation extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
+   * 
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {

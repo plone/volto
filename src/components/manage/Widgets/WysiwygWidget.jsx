@@ -80,7 +80,7 @@ export default class WysiwygEditor extends Component {
    * Change handler
    * @method onChange
    * @param {object} editorState Editor state.
-   * @returns {undefined}
+   * 
    */
   onChange(editorState) {
     this.setState({ editorState });

@@ -199,7 +199,7 @@ export default class Layout extends Component {
   /**
    * Component did mount
    * @function componentDidMount
-   * @returns {undefined}
+   * 
    */
   componentDidMount() {
     document.addEventListener('mousedown', this.deselectOnDocumentClick);
@@ -208,7 +208,7 @@ export default class Layout extends Component {
   /**
    * Component will unmount
    * @function componentWillUnmount
-   * @returns {undefined}
+   * 
    */
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.deselectOnDocumentClick);
@@ -221,7 +221,7 @@ export default class Layout extends Component {
    * @param {number} column Column index.
    * @param {number} tile Tile index.
    * @param {Object} content New content.
-   * @returns {undefined}
+   * 
    */
   setTileContent(row, column, tile, content) {
     this.state.layout.rows[row].columns[column].tiles[tile].content = content;
@@ -239,7 +239,7 @@ export default class Layout extends Component {
    * @param {number} tile Column index.
    * @param {string} type Selected type (row/column/tile).
    * @param {string} direction Direction.
-   * @returns {undefined}
+   * 
    */
   setHovered(row, column, tile, type, direction) {
     if (isEqual(this.state.hovered, { row, column, tile, type, direction })) {
@@ -300,7 +300,7 @@ export default class Layout extends Component {
    * @param {number} row Row index.
    * @param {number} column Column index.
    * @param {number} tile Tile index.
-   * @returns {undefined}
+   * 
    */
   handleDrop(row, column, tile) {
     const hovered = {
@@ -393,7 +393,7 @@ export default class Layout extends Component {
   /**
    * Cleanup layout.
    * @function cleanupLayout
-   * @returns {undefined}
+   * 
    */
   cleanupLayout() {
     // Clean up empty columns
@@ -450,7 +450,7 @@ export default class Layout extends Component {
    * @param {number} row Row index.
    * @param {number} column Column index.
    * @param {number} tile Tile index.
-   * @returns {undefined}
+   * 
    */
   selectTile(row, column, tile) {
     if (this.state.selected.row !== -1) {
@@ -477,7 +477,7 @@ export default class Layout extends Component {
    * @param {number} row Row index.
    * @param {number} column Column index.
    * @param {number} tile Tile index.
-   * @returns {undefined}
+   * 
    */
   deleteTile(row, column, tile) {
     this.selectTile(-1, -1, -1);
@@ -489,7 +489,7 @@ export default class Layout extends Component {
    * Start resize.
    * @function startResize
    * @param {number} row Row index.
-   * @returns {undefined}
+   * 
    */
   startResize(row) {
     this.selectTile(-1, -1, -1);
@@ -505,7 +505,7 @@ export default class Layout extends Component {
    * @param {number} row Row index.
    * @param {number} column Column index.
    * @param {number} position New position.
-   * @returns {undefined}
+   * 
    */
   endResize(row, column, position) {
     let layout;
@@ -533,7 +533,7 @@ export default class Layout extends Component {
    * Handle ref
    * @function handleRef
    * @param {Object} node Ref object.
-   * @returns {undefined}
+   * 
    */
   handleRef(node) {
     this.ref = node;
@@ -543,7 +543,7 @@ export default class Layout extends Component {
    * Deselect on document click method.
    * @function deselectOnDocumentClick
    * @param {Object} event Event object.
-   * @returns {undefined}
+   * 
    */
   deselectOnDocumentClick(event) {
     if (this.ref && !this.ref.contains(event.target)) {
@@ -555,7 +555,7 @@ export default class Layout extends Component {
    * Insert a tile.
    * @function insertTile
    * @param {string} type Type of tile.
-   * @returns {undefined}
+   * 
    */
   insertTile(type) {
     this.state.layout.rows.push({

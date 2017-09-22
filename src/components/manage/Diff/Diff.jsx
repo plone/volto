@@ -107,7 +107,7 @@ export default class DiffComponent extends Component {
   /**
    * Component did mount
    * @method componentDidMount
-   * @returns {undefined}
+   * 
    */
   componentDidMount() {
     this.props.getSchema(this.props.type);
@@ -123,7 +123,7 @@ export default class DiffComponent extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
+   * 
    */
   componentWillReceiveProps(nextProps) {
     if (
@@ -144,7 +144,7 @@ export default class DiffComponent extends Component {
    * @method onSelectView
    * @param {object} event Event object
    * @param {string} value Value
-   * @returns {undefined}
+   * 
    */
   onSelectView(event, { value }) {
     browserHistory.push(
@@ -158,7 +158,7 @@ export default class DiffComponent extends Component {
    * @method onChangeOne
    * @param {object} event Event object
    * @param {string} value Value
-   * @returns {undefined}
+   * 
    */
   onChangeOne(event, { value }) {
     browserHistory.push(
@@ -172,7 +172,7 @@ export default class DiffComponent extends Component {
    * @method onChangeTwo
    * @param {object} event Event object
    * @param {string} value Value
-   * @returns {undefined}
+   * 
    */
   onChangeTwo(event, { value }) {
     browserHistory.push(

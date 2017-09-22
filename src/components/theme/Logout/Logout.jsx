@@ -31,7 +31,7 @@ export class LogoutComponent extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
+   * 
    */
   componentWillMount() {
     this.props.logout();

@@ -120,7 +120,7 @@ export default class SharingComponent extends Component {
   /**
    * Component did mount
    * @method componentDidMount
-   * @returns {undefined}
+   * 
    */
   componentDidMount() {
     this.props.getSharing(getBaseUrl(this.props.pathname), this.state.search);
@@ -130,7 +130,7 @@ export default class SharingComponent extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
+   * 
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.editRequest.loading && nextProps.editRequest.loaded) {
@@ -153,7 +153,7 @@ export default class SharingComponent extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} event Event object.
-   * @returns {undefined}
+   * 
    */
   onSubmit(event) {
     const data = { entries: [] };
@@ -177,7 +177,7 @@ export default class SharingComponent extends Component {
    * Search handler
    * @method onSearch
    * @param {object} event Event object.
-   * @returns {undefined}
+   * 
    */
   onSearch(event) {
     event.preventDefault();
@@ -188,7 +188,7 @@ export default class SharingComponent extends Component {
    * On change search handler
    * @method onChangeSearch
    * @param {object} event Event object.
-   * @returns {undefined}
+   * 
    */
   onChangeSearch(event) {
     this.setState({
@@ -199,7 +199,7 @@ export default class SharingComponent extends Component {
   /**
    * On toggle inherit handler
    * @method onToggleInherit
-   * @returns {undefined}
+   * 
    */
   onToggleInherit() {
     this.setState({
@@ -212,7 +212,7 @@ export default class SharingComponent extends Component {
    * @method onChange
    * @param {object} event Event object
    * @param {string} value Entry value
-   * @returns {undefined}
+   * 
    */
   onChange(event, { value }) {
     const [principal, role] = value.split('.');
@@ -233,7 +233,7 @@ export default class SharingComponent extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
+   * 
    */
   onCancel() {
     browserHistory.push(getBaseUrl(this.props.pathname));

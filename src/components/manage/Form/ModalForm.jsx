@@ -102,7 +102,7 @@ export default class FormModal extends Component {
    * @method onChangeField
    * @param {string} id Id of the field
    * @param {*} value Value of the field
-   * @returns {undefined}
+   * 
    */
   onChangeField(id, value) {
     this.setState({
@@ -117,7 +117,7 @@ export default class FormModal extends Component {
    * Submit handler
    * @method onSubmit
    * @param {Object} event Event object.
-   * @returns {undefined}
+   * 
    */
   onSubmit(event) {
     event.preventDefault();
@@ -164,7 +164,7 @@ export default class FormModal extends Component {
    * @method selectTab
    * @param {Object} event Event object.
    * @param {number} index Selected tab index.
-   * @returns {undefined}
+   * 
    */
   selectTab(event, { index }) {
     this.setState({

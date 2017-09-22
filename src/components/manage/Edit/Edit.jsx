@@ -97,7 +97,7 @@ export class EditComponent extends Component {
   /**
    * Component did mount
    * @method componentDidMount
-   * @returns {undefined}
+   * 
    */
   componentDidMount() {
     this.props.getContent(getBaseUrl(this.props.pathname));
@@ -107,7 +107,7 @@ export class EditComponent extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
+   * 
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.getRequest.loading && nextProps.getRequest.loaded) {
@@ -122,7 +122,7 @@ export class EditComponent extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
-   * @returns {undefined}
+   * 
    */
   onSubmit(data) {
     this.props.editContent(getBaseUrl(this.props.pathname), data);
@@ -131,7 +131,7 @@ export class EditComponent extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
+   * 
    */
   onCancel() {
     browserHistory.push(getBaseUrl(this.props.pathname));

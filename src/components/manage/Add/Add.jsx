@@ -53,19 +53,40 @@ export class AddComponent extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Main action handler.
+     */
     addContent: PropTypes.func.isRequired,
+    /**
+     * Get scheme callback.
+     */
     getSchema: PropTypes.func.isRequired,
+    /**
+     * Pathname of the current object.
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * Scheme of the current object.
+     */
     schema: PropTypes.objectOf(PropTypes.any),
     content: PropTypes.shape({
       // eslint-disable-line react/no-unused-prop-types
       '@id': PropTypes.string,
     }),
+    /**
+     * Load status object.
+     */
     request: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
+    /**
+     * Type of the object.
+     */
     type: PropTypes.string,
+    /**
+     * I18n object.
+     */
     intl: intlShape.isRequired,
   };
 
@@ -95,7 +116,7 @@ export class AddComponent extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
+   * 
    */
   componentWillMount() {
     this.props.getSchema(this.props.type);
@@ -105,7 +126,7 @@ export class AddComponent extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
+   * 
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.request.loading && nextProps.request.loaded) {
@@ -117,7 +138,7 @@ export class AddComponent extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
-   * @returns {undefined}
+   * 
    */
   onSubmit(data) {
     this.props.addContent(getBaseUrl(this.props.pathname), {
@@ -129,7 +150,7 @@ export class AddComponent extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
+   * 
    */
   onCancel() {
     browserHistory.push(getBaseUrl(this.props.pathname));

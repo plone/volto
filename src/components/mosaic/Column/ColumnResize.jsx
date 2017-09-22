@@ -75,7 +75,7 @@ export default class ColumnResize extends Component {
   /**
    * Component did mount
    * @method componentDidMount
-   * @returns {undefined}
+   * 
    */
   componentDidMount() {
     this.props.connectDragPreview(getEmptyImage(), {

@@ -63,7 +63,9 @@
     "docs": "raml2html docs/api/index.raml > src/static/docs/index.html",
     "i18n": "npm-run-all i18n:sync i18n:build",
     "i18n:sync": "babel-node scripts/i18n.js sync",
-    "i18n:build": "babel-node scripts/i18n.js build"
+    "i18n:build": "babel-node scripts/i18n.js build",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build"
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test))\\.(js|jsx)$",
@@ -191,6 +193,7 @@
     "react-redux": "5.0.6",
     "react-router": "3.0.5",
     "react-router-redux": "4.0.8",
+    "react-styleguidist": "^6.0.25",
     "redux": "3.7.2",
     "redux-connect": "5.1.0",
     "redux-logger": "3.0.6",
@@ -277,6 +280,6 @@
     "webpack-hot-middleware": "2.19.1"
   },
   "engines": {
-    "node": "6.9.1"
+    "node": ">6.9.1"
   }
 }
