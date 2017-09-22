@@ -16,6 +16,7 @@ describe('Row', () => {
           },
         ]}
         row={0}
+        resize={false}
         selectTile={() => {}}
         deleteTile={() => {}}
         setHovered={() => {}}

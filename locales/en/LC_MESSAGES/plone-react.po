@@ -82,6 +82,10 @@ msgstr ""
 msgid "Compare"
 msgstr ""
 
+#: components/manage/Controlpanels/Controlpanels
+msgid "Configuration area for Plone and add-on Products."
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 msgid "Confirm password"
 msgstr ""
@@ -488,6 +492,11 @@ msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "Site Map"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/Toolbar
+msgid "Site Setup"
 msgstr ""
 
 #: components/manage/Contents/Contents

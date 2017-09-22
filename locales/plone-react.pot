@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2017-04-30T16:20:43.407Z\n"
+"POT-Creation-Date: 2017-09-22T16:01:26.754Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -98,6 +98,11 @@ msgstr ""
 #: components/manage/Diff/Diff
 # defaultMessage: Compare
 msgid "Compare"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Configuration area for Plone and add-on Products.
+msgid "Configuration area for Plone and add-on Products."
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -600,6 +605,12 @@ msgstr ""
 #: components/theme/Footer/Footer
 # defaultMessage: Site Map
 msgid "Site Map"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Site Setup
+msgid "Site Setup"
 msgstr ""
 
 #: components/manage/Contents/Contents

@@ -12,6 +12,7 @@ import {
   App,
   ChangePassword,
   Contents,
+  Controlpanels,
   Edit,
   Diff,
   Delete,
@@ -47,6 +48,7 @@ export default () => (
     <Route path="/logout" component={Logout} />
     <Route path="/search" component={Search} />
     <Route path="/change-password" component={ChangePassword} />
+    <Route path="/controlpanel" component={Controlpanels} />
     <Route path="/personal-information" component={PersonalInformation} />
     <Route path="/personal-preferences" component={PersonalPreferences} />
     <Route path="/**/add" component={Add} />

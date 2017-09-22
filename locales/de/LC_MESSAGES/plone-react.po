@@ -97,6 +97,10 @@ msgstr "Änderungen gespeichert"
 msgid "Compare"
 msgstr "Vergleichen"
 
+#: components/manage/Controlpanels/Controlpanels
+msgid "Configuration area for Plone and add-on Products."
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 msgid "Confirm password"
 msgstr "Passwort bestätigen"
@@ -504,6 +508,11 @@ msgstr "Website-Administrator"
 #: components/theme/Footer/Footer
 msgid "Site Map"
 msgstr "Übersicht"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/Toolbar
+msgid "Site Setup"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/theme/View/TabularView

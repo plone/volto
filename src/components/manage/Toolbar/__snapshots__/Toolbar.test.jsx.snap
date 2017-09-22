@@ -158,6 +158,22 @@ exports[`Toolbar renders an actions component 1`] = `
         <span>
           <i
             aria-hidden="true"
+            className="settings icon"
+          />
+           
+          <span>
+            Site Setup
+          </span>
+        </span>
+      </a>
+      <a
+        className="item"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <span>
+          <i
+            aria-hidden="true"
             className="sign out icon"
           />
            
