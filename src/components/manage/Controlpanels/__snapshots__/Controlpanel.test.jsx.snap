@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Controlpanel renders a controlpanel component 1`] = `
+<div
+  id="page-controlpanel"
+>
+  <div
+    className="container"
+  >
+    <button
+      className="ui button"
+      disabled={undefined}
+      onClick={[Function]}
+      role="button"
+      tabIndex={undefined}
+    >
+      <i
+        aria-hidden="true"
+        className="angle left icon"
+      />
+       
+      <span>
+        Site Setup
+      </span>
+    </button>
+    <article
+      id="content"
+    >
+      <header>
+        <h1
+          className="documentFirstHeading"
+        >
+          Date and Time
+        </h1>
+      </header>
+      <section
+        id="content-core"
+      >
+        <div
+          id="form"
+        />
+      </section>
+    </article>
+  </div>
+</div>
+`;

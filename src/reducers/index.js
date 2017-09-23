@@ -10,6 +10,7 @@ import { intlReducer } from 'react-intl-redux';
 
 import breadcrumbs from './breadcrumbs/breadcrumbs';
 import content from './content/content';
+import controlpanel from './controlpanel/controlpanel';
 import controlpanels from './controlpanels/controlpanels';
 import clipboard from './clipboard/clipboard';
 import diff from './diff/diff';
@@ -38,6 +39,7 @@ export default combineReducers({
   reduxAsyncConnect,
   breadcrumbs,
   content,
+  controlpanel,
   controlpanels,
   clipboard,
   diff,

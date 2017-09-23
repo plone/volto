@@ -68,7 +68,6 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Delete/Delete
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 msgid "Cancel"
@@ -92,6 +91,10 @@ msgstr "Statusänderung"
 #: components/manage/Preferences/PersonalPreferences
 msgid "Changes saved"
 msgstr "Änderungen gespeichert"
+
+#: components/manage/Controlpanels/Controlpanel
+msgid "Changes saved."
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Compare"
@@ -450,7 +453,6 @@ msgstr "Durch diese Version ersetzen"
 msgid "Rights"
 msgstr "Rechte"
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 msgid "Save"

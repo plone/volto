@@ -53,7 +53,6 @@ msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Delete/Delete
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 msgid "Cancel"
@@ -76,6 +75,10 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 msgid "Changes saved"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanel
+msgid "Changes saved."
 msgstr ""
 
 #: components/manage/Diff/Diff
@@ -435,7 +438,6 @@ msgstr ""
 msgid "Rights"
 msgstr ""
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 msgid "Save"

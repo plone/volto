@@ -72,7 +72,6 @@ msgstr "Standaard worden de rechten overgenomen van de bovenliggende map.  Als u
 
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Delete/Delete
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 msgid "Cancel"
@@ -96,6 +95,10 @@ msgstr "Status wijzigen"
 #: components/manage/Preferences/PersonalPreferences
 msgid "Changes saved"
 msgstr "Wijzigingen zijn opgeslagen"
+
+#: components/manage/Controlpanels/Controlpanel
+msgid "Changes saved."
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Compare"
@@ -454,7 +457,6 @@ msgstr "Deze rivisie herstellen"
 msgid "Rights"
 msgstr "Rechten"
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 msgid "Save"

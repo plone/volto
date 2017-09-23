@@ -25,27 +25,29 @@ exports[`Form renders a form component 1`] = `
     className="ui bottom attached segment"
   >
     <button
-      className="ui primary button"
+      className="ui brown large icon button"
+      disabled={undefined}
+      onClick={[Function]}
+      role="button"
+      tabIndex={undefined}
+    >
+      <i
+        aria-hidden="true"
+        className="icon-clear icon"
+      />
+    </button>
+    <button
+      className="ui blue large icon button"
       disabled={undefined}
       onClick={[Function]}
       role="button"
       tabIndex={undefined}
       type="submit"
     >
-      <span>
-        Save
-      </span>
-    </button>
-    <button
-      className="ui button"
-      disabled={undefined}
-      onClick={[Function]}
-      role="button"
-      tabIndex={undefined}
-    >
-      <span>
-        Cancel
-      </span>
+      <i
+        aria-hidden="true"
+        className="icon-ahead icon"
+      />
     </button>
   </div>
 </form>

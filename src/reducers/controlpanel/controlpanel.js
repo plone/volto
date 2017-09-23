@@ -3,14 +3,35 @@
  * @module reducers/controlpanel
  */
 
-import { GET_CONTROLPANEL } from '../../constants/ActionTypes';
+import {
+  EDIT_CONTROLPANEL,
+  GET_CONTROLPANEL,
+} from '../../constants/ActionTypes';
+import config from '../../config';
 
 const initialState = {
-  error: null,
-  loaded: false,
-  loading: false,
+  edit: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  get: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
   controlpanel: null,
 };
+
+/**
+ * Get request key
+ * @function getRequestKey
+ * @param {string} actionType Action type.
+ * @returns {string} Request key.
+ */
+function getRequestKey(actionType) {
+  return actionType.split('_')[0].toLowerCase();
+}
 
 /**
  * Controlpanel reducer.
@@ -21,29 +42,48 @@ const initialState = {
  */
 export default function controlpanel(state = initialState, action = {}) {
   switch (action.type) {
+    case `${EDIT_CONTROLPANEL}_PENDING`:
     case `${GET_CONTROLPANEL}_PENDING`:
       return {
         ...state,
-        error: null,
-        loading: true,
-        loaded: false,
-        controlpanel: null,
+        [getRequestKey(action.type)]: {
+          loading: true,
+          loaded: false,
+          error: null,
+        },
       };
     case `${GET_CONTROLPANEL}_SUCCESS`:
       return {
         ...state,
-        error: null,
-        loading: false,
-        loaded: true,
-        controlpanel: action.result,
+        controlpanel: {
+          ...action.result,
+          '@id': action.result['@id'].replace(config.apiPath, ''),
+        },
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
       };
+    case `${EDIT_CONTROLPANEL}_SUCCESS`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+      };
+    case `${EDIT_CONTROLPANEL}_FAIL`:
     case `${GET_CONTROLPANEL}_FAIL`:
       return {
         ...state,
-        error: action.error,
-        loading: false,
-        loaded: false,
         controlpanel: null,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: false,
+          error: action.error,
+        },
       };
     default:
       return state;

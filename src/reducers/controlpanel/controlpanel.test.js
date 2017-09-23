@@ -1,12 +1,23 @@
 import controlpanel from './controlpanel';
-import { GET_CONTROLPANEL } from '../../constants/ActionTypes';
+import {
+  EDIT_CONTROLPANEL,
+  GET_CONTROLPANEL,
+} from '../../constants/ActionTypes';
+import config from '../../config';
 
 describe('Controlpanel reducer', () => {
   it('should return the initial state', () => {
     expect(controlpanel()).toEqual({
-      error: null,
-      loaded: false,
-      loading: false,
+      edit: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      get: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
       controlpanel: null,
     });
   });
@@ -17,10 +28,17 @@ describe('Controlpanel reducer', () => {
         type: `${GET_CONTROLPANEL}_PENDING`,
       }),
     ).toEqual({
-      error: null,
+      edit: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      get: {
+        loaded: false,
+        loading: true,
+        error: null,
+      },
       controlpanel: null,
-      loaded: false,
-      loading: true,
     });
   });
 
@@ -28,13 +46,24 @@ describe('Controlpanel reducer', () => {
     expect(
       controlpanel(undefined, {
         type: `${GET_CONTROLPANEL}_SUCCESS`,
-        result: 'My controlpanel',
+        result: {
+          '@id': `${config.apiPath}/@controlpanels/mail`,
+        },
       }),
     ).toEqual({
-      error: null,
-      loaded: true,
-      loading: false,
-      controlpanel: 'My controlpanel',
+      edit: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      get: {
+        loaded: true,
+        loading: false,
+        error: null,
+      },
+      controlpanel: {
+        '@id': '/@controlpanels/mail',
+      },
     });
   });
 
@@ -45,9 +74,77 @@ describe('Controlpanel reducer', () => {
         error: 'failed',
       }),
     ).toEqual({
-      error: 'failed',
-      loaded: false,
-      loading: false,
+      edit: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      get: {
+        loaded: false,
+        loading: false,
+        error: 'failed',
+      },
+      controlpanel: null,
+    });
+  });
+
+  it('should handle EDIT_CONTROLPANEL_PENDING', () => {
+    expect(
+      controlpanel(undefined, {
+        type: `${EDIT_CONTROLPANEL}_PENDING`,
+      }),
+    ).toEqual({
+      edit: {
+        loaded: false,
+        loading: true,
+        error: null,
+      },
+      get: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      controlpanel: null,
+    });
+  });
+
+  it('should handle EDIT_CONTROLPANEL_SUCCESS', () => {
+    expect(
+      controlpanel(undefined, {
+        type: `${EDIT_CONTROLPANEL}_SUCCESS`,
+      }),
+    ).toEqual({
+      edit: {
+        loaded: true,
+        loading: false,
+        error: null,
+      },
+      get: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      controlpanel: null,
+    });
+  });
+
+  it('should handle EDIT_CONTROLPANEL_FAIL', () => {
+    expect(
+      controlpanel(undefined, {
+        type: `${EDIT_CONTROLPANEL}_FAIL`,
+        error: 'failed',
+      }),
+    ).toEqual({
+      edit: {
+        loaded: false,
+        loading: false,
+        error: 'failed',
+      },
+      get: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
       controlpanel: null,
     });
   });
