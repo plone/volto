@@ -9,6 +9,7 @@ import { keys, map, uniq } from 'lodash';
 import {
   Button,
   Form as UiForm,
+  Icon,
   Menu,
   Segment,
   Message,
@@ -223,11 +224,11 @@ export default class Form extends Component {
           ))}
         </Segment>
         <Segment attached="bottom">
-          <Button primary type="submit">
-            <FormattedMessage id="Save" defaultMessage="Save" />
+          <Button icon onClick={onCancel} color="brown" size="large">
+            <Icon name="icon-clear" />
           </Button>
-          <Button onClick={onCancel}>
-            <FormattedMessage id="Cancel" defaultMessage="Cancel" />
+          <Button icon type="submit" color="blue" size="large">
+            <Icon name="icon-ahead" />
           </Button>
         </Segment>
       </UiForm>
