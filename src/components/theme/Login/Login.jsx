@@ -67,7 +67,6 @@ export class LoginComponent extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.token) {
@@ -79,7 +78,6 @@ export class LoginComponent extends Component {
    * On login handler
    * @method onLogin
    * @param {Object} event Event object.
-   * @returns {undefined}
    */
   onLogin(event) {
     this.props.login(

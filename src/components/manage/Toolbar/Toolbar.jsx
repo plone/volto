@@ -86,7 +86,6 @@ export default class Toolbar extends Component {
   /**
    * On toggle expanded handler
    * @method onToggleExpanded
-   * @returns {undefined}
    */
   onToggleExpanded() {
     cookie.save('toolbar_expanded', !this.state.expanded, {

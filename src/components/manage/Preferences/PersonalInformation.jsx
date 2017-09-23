@@ -123,7 +123,6 @@ export default class PersonalInformation extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getUser(this.props.userId);
@@ -133,7 +132,6 @@ export default class PersonalInformation extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
-   * @returns {undefined}
    */
   onSubmit(data) {
     this.props.editUser(this.props.userId, data);
@@ -147,7 +145,6 @@ export default class PersonalInformation extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
    */
   onCancel() {
     browserHistory.goBack();

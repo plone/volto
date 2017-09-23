@@ -61,7 +61,6 @@ export class SearchComponent extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
    */
   componentWillMount() {
     this.props.searchContent('', {
@@ -74,7 +73,6 @@ export class SearchComponent extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.searchableText !== this.props.searchableText) {

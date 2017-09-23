@@ -4,6 +4,7 @@
 ### Added
 - Added pastanaga theme package @jaroel, @robgietema
 - Added registry based controlpanels @robgietema
+- Added component documentation @robgietema
 
 ## 0.4.0 (2017-05-03)
 ### Added

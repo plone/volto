@@ -72,7 +72,6 @@ export default class Display extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getSchema(this.props.type);
@@ -82,7 +81,6 @@ export default class Display extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
@@ -97,7 +95,6 @@ export default class Display extends Component {
    * On set layout handler
    * @method setLayout
    * @param {Object} event Event object
-   * @returns {undefined}
    */
   setLayout(event, { value }) {
     this.props.editContent(this.props.pathname, {

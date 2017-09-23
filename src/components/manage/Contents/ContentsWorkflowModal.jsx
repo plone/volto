@@ -84,7 +84,6 @@ export default class ContentsWorkflowModal extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getWorkflow(this.props.items);
@@ -94,7 +93,6 @@ export default class ContentsWorkflowModal extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.request.loading && nextProps.request.loaded) {
@@ -106,7 +104,6 @@ export default class ContentsWorkflowModal extends Component {
    * Submit handler
    * @method onSubmit
    * @param {string} state New state
-   * @returns {undefined}
    */
   onSubmit({ state }) {
     if (!state) {

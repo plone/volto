@@ -25,6 +25,9 @@ export default class Anontools extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * User session token
+     */
     token: PropTypes.string,
   };
 

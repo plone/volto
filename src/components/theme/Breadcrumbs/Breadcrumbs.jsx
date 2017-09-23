@@ -45,7 +45,6 @@ export default class Breadcrumbs extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getBreadcrumbs(getBaseUrl(this.props.pathname));
@@ -55,7 +54,6 @@ export default class Breadcrumbs extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {

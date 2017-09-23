@@ -118,7 +118,6 @@ export default class ContentsPropertiesModal extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.request.loading && nextProps.request.loaded) {
@@ -130,7 +129,6 @@ export default class ContentsPropertiesModal extends Component {
    * Submit handler
    * @method onSubmit
    * @param {Object} data Form data
-   * @returns {undefined}
    */
   onSubmit(data) {
     if (isEmpty(data)) {

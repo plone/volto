@@ -77,7 +77,6 @@ export default class Workflow extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getWorkflow(this.props.pathname);
@@ -87,7 +86,6 @@ export default class Workflow extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
@@ -102,7 +100,6 @@ export default class Workflow extends Component {
    * On transition handler
    * @method transition
    * @param {string} event Event object
-   * @returns {undefined}
    */
   transition(event, { value }) {
     this.props.transitionWorkflow(value.replace(config.apiPath, ''));

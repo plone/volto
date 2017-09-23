@@ -89,7 +89,6 @@ export default class Controlpanel extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getControlpanel(this.props.id);
@@ -99,7 +98,6 @@ export default class Controlpanel extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.editRequest.loading && nextProps.editRequest.loaded) {
@@ -115,7 +113,6 @@ export default class Controlpanel extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
-   * @returns {undefined}
    */
   onSubmit(data) {
     this.props.editControlpanel(this.props.controlpanel['@id'], data);
@@ -124,7 +121,6 @@ export default class Controlpanel extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
    */
   onCancel() {
     browserHistory.goBack();
@@ -133,7 +129,6 @@ export default class Controlpanel extends Component {
   /**
    * Site setup handler
    * @method onSiteSetup
-   * @returns {undefined}
    */
   onSiteSetup() {
     browserHistory.push('/controlpanel');

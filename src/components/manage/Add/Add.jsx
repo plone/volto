@@ -95,7 +95,6 @@ export class AddComponent extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getSchema(this.props.type);
@@ -105,7 +104,6 @@ export class AddComponent extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.request.loading && nextProps.request.loaded) {
@@ -117,7 +115,6 @@ export class AddComponent extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
-   * @returns {undefined}
    */
   onSubmit(data) {
     this.props.addContent(getBaseUrl(this.props.pathname), {
@@ -129,7 +126,6 @@ export class AddComponent extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
    */
   onCancel() {
     browserHistory.push(getBaseUrl(this.props.pathname));
