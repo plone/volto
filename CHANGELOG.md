@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.5.0 (unreleased)
+### Added
+- Added pastanaga theme package @jaroel, @robgietema
+- Added registry based controlpanels @robgietema
+
 ## 0.4.0 (2017-05-03)
 ### Added
 - Adding tiles @robgietema
