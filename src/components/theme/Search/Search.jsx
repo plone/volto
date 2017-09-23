@@ -14,11 +14,6 @@ import { FormattedMessage } from 'react-intl';
 
 import { searchContent } from '../../../actions';
 
-/**
- * SearchComponent class.
- * @class SearchComponent
- * @extends Component
- */
 @connect(
   (state, props) => ({
     items: state.search.items,
@@ -27,6 +22,11 @@ import { searchContent } from '../../../actions';
   }),
   dispatch => bindActionCreators({ searchContent }, dispatch),
 )
+/**
+ * Component to display the search view.
+ * @class SearchComponent
+ * @extends Component
+ */
 export class SearchComponent extends Component {
   /**
    * Property types.
@@ -34,14 +34,38 @@ export class SearchComponent extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to search for content
+     */
     searchContent: PropTypes.func.isRequired,
+    /**
+     * Text to search for
+     */
     searchableText: PropTypes.string,
+    /**
+     * Path used to search for items
+     */
     path: PropTypes.string,
+    /**
+     * Search result items
+     */
     items: PropTypes.arrayOf(
       PropTypes.shape({
+        /**
+         * Id of the item
+         */
         '@id': PropTypes.string,
+        /**
+         * Type of the item
+         */
         '@type': PropTypes.string,
+        /**
+         * Title of the item
+         */
         title: PropTypes.string,
+        /**
+         * Description of the item
+         */
         description: PropTypes.string,
       }),
     ),

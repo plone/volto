@@ -10,11 +10,6 @@ import { findDOMNode } from 'react-dom';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { map } from 'lodash';
 
-/**
- * ColumnResize component class.
- * @class ColumnResize
- * @extends Component
- */
 @DragSource(
   'column',
   {
@@ -55,6 +50,11 @@ import { map } from 'lodash';
     isDragging: monitor.isDragging(),
   }),
 )
+/**
+ * Component to display a column resize handle.
+ * @class ColumnResize
+ * @extends Component
+ */
 export default class ColumnResize extends Component {
   /**
    * Property types.
@@ -62,13 +62,37 @@ export default class ColumnResize extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Row index in the grid
+     */
     row: PropTypes.number.isRequired,
+    /**
+     * Column index in the row
+     */
     column: PropTypes.number.isRequired,
+    /**
+     * Number of columns
+     */
     columns: PropTypes.number.isRequired,
+    /**
+     * Is currently dragging state
+     */
     isDragging: PropTypes.bool.isRequired,
+    /**
+     * Handler called when the resize is starting
+     */
     startResize: PropTypes.func.isRequired,
+    /**
+     * Handler called when the resize ends
+     */
     endResize: PropTypes.func.isRequired,
+    /**
+     * Handler to connect a drag source
+     */
     connectDragSource: PropTypes.func.isRequired,
+    /**
+     * Handler to connect a drag preview
+     */
     connectDragPreview: PropTypes.func.isRequired,
   };
 

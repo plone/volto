@@ -263,6 +263,7 @@ export default class ContentsComponent extends Component {
   /**
    * Component will mount
    * @method componentWillMount
+   * @returns {undefined}
    */
   componentWillMount() {
     this.fetchContents();
@@ -272,6 +273,31 @@ export default class ContentsComponent extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (
+      (this.props.clipboardRequest.loading &&
+        nextProps.clipboardRequest.loaded) ||
+      (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
+      (this.props.editRequest.loading && nextProps.editRequest.loaded) ||
+      this.props.pathname !== nextProps.pathname
+    ) {
+      this.fetchContents(nextProps.pathname);
+    }
+    if (this.props.searchRequest.loading && nextProps.searchRequest.loaded) {
+      this.setState({
+        items: nextProps.items,
+      });
+    }
+  }
+
+  /**
+   * On deselect handler
+   * @method onDeselect
+   * @param {object} event Event object
+   * @param {string} value Value
+   * @returns {undefined}
    */
   onDeselect(event, { value }) {
     this.setState({
@@ -283,6 +309,7 @@ export default class ContentsComponent extends Component {
    * On select handler
    * @method onSelect
    * @param {object} event Event object
+   * @returns {undefined}
    */
   onSelect(event) {
     const id = event.target.getAttribute('value');
@@ -300,6 +327,7 @@ export default class ContentsComponent extends Component {
   /**
    * On select all handler
    * @method onSelectAll
+   * @returns {undefined}
    */
   onSelectAll() {
     this.setState({
@@ -310,6 +338,7 @@ export default class ContentsComponent extends Component {
   /**
    * On select none handler
    * @method onSelectNone
+   * @returns {undefined}
    */
   onSelectNone() {
     this.setState({
@@ -322,6 +351,7 @@ export default class ContentsComponent extends Component {
    * @method onSelectIndex
    * @param {object} event Event object.
    * @param {string} value Index value.
+   * @returns {undefined}
    */
   onSelectIndex(event, { value }) {
     this.setState({
@@ -344,6 +374,7 @@ export default class ContentsComponent extends Component {
    * @method onChangeFilter
    * @param {object} event Event object.
    * @param {string} value Filter value.
+   * @returns {undefined}
    */
   onChangeFilter(event, { value }) {
     this.setState(
@@ -359,6 +390,7 @@ export default class ContentsComponent extends Component {
    * @method onChangePage
    * @param {object} event Event object.
    * @param {string} value Page value.
+   * @returns {undefined}
    */
   onChangePage(event, { value }) {
     this.setState(
@@ -374,6 +406,7 @@ export default class ContentsComponent extends Component {
    * @method onChangePageSize
    * @param {object} event Event object.
    * @param {string} value Page size value.
+   * @returns {undefined}
    */
   onChangePageSize(event, { value }) {
     this.setState(
@@ -390,6 +423,7 @@ export default class ContentsComponent extends Component {
    * @method onOrderIndex
    * @param {number} index Index
    * @param {number} delta Delta
+   * @returns {undefined}
    */
   onOrderIndex(index, delta) {
     this.setState({
@@ -405,6 +439,7 @@ export default class ContentsComponent extends Component {
    * @method onOrderItem
    * @param {number} itemIndex Item index
    * @param {number} delta Delta
+   * @returns {undefined}
    */
   onOrderItem(itemIndex, delta) {
     this.props.orderContent(
@@ -423,6 +458,7 @@ export default class ContentsComponent extends Component {
    * @method onSortItems
    * @param {object} event Event object
    * @param {string} value Item index
+   * @returns {undefined}
    */
   onSortItems(event, { value }) {
     const values = value.split('|');
@@ -438,6 +474,7 @@ export default class ContentsComponent extends Component {
    * @method onMoveToTop
    * @param {object} event Event object
    * @param {string} value Item index
+   * @returns {undefined}
    */
   onMoveToTop(event, { value }) {
     this.onOrderItem(value, -value);
@@ -448,6 +485,7 @@ export default class ContentsComponent extends Component {
    * @method onMoveToBottom
    * @param {object} event Event object
    * @param {string} value Item index
+   * @returns {undefined}
    */
   onMoveToBottom(event, { value }) {
     this.onOrderItem(value, this.state.items.length - 1 - value);
@@ -456,6 +494,7 @@ export default class ContentsComponent extends Component {
   /**
    * On delete ok
    * @method onDeleteOk
+   * @returns {undefined}
    */
   onDeleteOk() {
     this.props.deleteContent(this.state.itemsToDelete);
@@ -469,6 +508,7 @@ export default class ContentsComponent extends Component {
   /**
    * On delete cancel
    * @method onDeleteCancel
+   * @returns {undefined}
    */
   onDeleteCancel() {
     this.setState({
@@ -480,6 +520,7 @@ export default class ContentsComponent extends Component {
   /**
    * On upload ok
    * @method onUploadOk
+   * @returns {undefined}
    */
   onUploadOk() {
     this.fetchContents();
@@ -491,6 +532,7 @@ export default class ContentsComponent extends Component {
   /**
    * On upload cancel
    * @method onUploadCancel
+   * @returns {undefined}
    */
   onUploadCancel() {
     this.setState({
@@ -501,6 +543,7 @@ export default class ContentsComponent extends Component {
   /**
    * On rename ok
    * @method onRenameOk
+   * @returns {undefined}
    */
   onRenameOk() {
     this.setState({
@@ -512,6 +555,7 @@ export default class ContentsComponent extends Component {
   /**
    * On rename cancel
    * @method onRenameCancel
+   * @returns {undefined}
    */
   onRenameCancel() {
     this.setState({
@@ -522,6 +566,7 @@ export default class ContentsComponent extends Component {
   /**
    * On tags ok
    * @method onTagsOk
+   * @returns {undefined}
    */
   onTagsOk() {
     this.setState({
@@ -533,6 +578,7 @@ export default class ContentsComponent extends Component {
   /**
    * On tags cancel
    * @method onTagsCancel
+   * @returns {undefined}
    */
   onTagsCancel() {
     this.setState({
@@ -543,6 +589,7 @@ export default class ContentsComponent extends Component {
   /**
    * On properties ok
    * @method onPropertiesOk
+   * @returns {undefined}
    */
   onPropertiesOk() {
     this.setState({
@@ -554,6 +601,7 @@ export default class ContentsComponent extends Component {
   /**
    * On properties cancel
    * @method onPropertiesCancel
+   * @returns {undefined}
    */
   onPropertiesCancel() {
     this.setState({
@@ -564,6 +612,7 @@ export default class ContentsComponent extends Component {
   /**
    * On workflow ok
    * @method onWorkflowOk
+   * @returns {undefined}
    */
   onWorkflowOk() {
     this.fetchContents();
@@ -576,6 +625,7 @@ export default class ContentsComponent extends Component {
   /**
    * On workflow cancel
    * @method onWorkflowCancel
+   * @returns {undefined}
    */
   onWorkflowCancel() {
     this.setState({
@@ -599,6 +649,7 @@ export default class ContentsComponent extends Component {
    * Fetch contents handler
    * @method fetchContents
    * @param {string} pathname Pathname to fetch contents.
+   * @returns {undefined}
    */
   fetchContents(pathname) {
     this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
@@ -616,6 +667,7 @@ export default class ContentsComponent extends Component {
    * @method cut
    * @param {Object} event Event object.
    * @param {string} value Value of the event.
+   * @returns {undefined}
    */
   cut(event, { value }) {
     this.props.cut(value ? [value] : this.state.selected);
@@ -632,6 +684,7 @@ export default class ContentsComponent extends Component {
    * @method copy
    * @param {Object} event Event object.
    * @param {string} value Value of the event.
+   * @returns {undefined}
    */
   copy(event, { value }) {
     this.props.copy(value ? [value] : this.state.selected);
@@ -648,6 +701,7 @@ export default class ContentsComponent extends Component {
    * @method delete
    * @param {Object} event Event object.
    * @param {string} value Value of the event.
+   * @returns {undefined}
    */
   delete(event, { value }) {
     this.setState({
@@ -659,6 +713,7 @@ export default class ContentsComponent extends Component {
   /**
    * Upload handler
    * @method upload
+   * @returns {undefined}
    */
   upload() {
     this.setState({
@@ -669,6 +724,7 @@ export default class ContentsComponent extends Component {
   /**
    * Rename handler
    * @method rename
+   * @returns {undefined}
    */
   rename() {
     this.setState({
@@ -679,6 +735,7 @@ export default class ContentsComponent extends Component {
   /**
    * Tags handler
    * @method tags
+   * @returns {undefined}
    */
   tags() {
     this.setState({
@@ -689,6 +746,7 @@ export default class ContentsComponent extends Component {
   /**
    * Properties handler
    * @method properties
+   * @returns {undefined}
    */
   properties() {
     this.setState({
@@ -699,6 +757,7 @@ export default class ContentsComponent extends Component {
   /**
    * Workflow handler
    * @method workflow
+   * @returns {undefined}
    */
   workflow() {
     this.setState({
@@ -709,6 +768,7 @@ export default class ContentsComponent extends Component {
   /**
    * Paste handler
    * @method paste
+   * @returns {undefined}
    */
   paste() {
     if (this.props.action === 'copy') {

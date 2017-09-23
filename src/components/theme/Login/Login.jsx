@@ -16,11 +16,6 @@ import { FormattedMessage } from 'react-intl';
 
 import { login } from '../../../actions';
 
-/**
- * LoginComponent class.
- * @class LoginComponent
- * @extends Component
- */
 @connect(
   state => ({
     error: state.userSession.login.error,
@@ -28,6 +23,11 @@ import { login } from '../../../actions';
   }),
   dispatch => bindActionCreators({ login }, dispatch),
 )
+/**
+ * Component to display a login form.
+ * @class LoginComponent
+ * @extends Component
+ */
 export class LoginComponent extends Component {
   /**
    * Property types.
@@ -35,10 +35,22 @@ export class LoginComponent extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to login
+     */
     login: PropTypes.func.isRequired,
+    /**
+     * Error object
+     */
     error: PropTypes.shape({
+      /**
+       * Error messages
+       */
       message: PropTypes.string,
     }),
+    /**
+     * User session token
+     */
     token: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
   };
 

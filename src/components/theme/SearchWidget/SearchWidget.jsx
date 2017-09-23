@@ -24,12 +24,12 @@ const messages = defineMessages({
   },
 });
 
+@injectIntl
 /**
- * SearchWidget component class.
+ * Component to display the search widget.
  * @class SearchWidget
  * @extends Component
  */
-@injectIntl
 export default class SearchWidget extends Component {
   /**
    * Property types.
@@ -37,7 +37,13 @@ export default class SearchWidget extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Pathname of the current object
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 

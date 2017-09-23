@@ -31,12 +31,12 @@ const tileTypes = {
   },
 };
 
+@DragDropContext(HTML5Backend)
 /**
- * Layout component class.
+ * Component to display a layout.
  * @class Layout
  * @extends Component
  */
-@DragDropContext(HTML5Backend)
 export default class Layout extends Component {
   /**
    * Property types.
@@ -44,16 +44,40 @@ export default class Layout extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Layout object
+     */
     layout: PropTypes.shape({
+      /**
+       * Rows in the layout
+       */
       rows: PropTypes.arrayOf(
         PropTypes.shape({
+          /**
+           * Columns in the grid
+           */
           columns: PropTypes.arrayOf(
             PropTypes.shape({
+              /**
+               * Width of the column
+               */
               width: PropTypes.number,
+              /**
+               * Tiles in the column
+               */
               tiles: PropTypes.arrayOf(
                 PropTypes.shape({
+                  /**
+                   * Content of the tile
+                   */
                   content: PropTypes.string,
+                  /**
+                   * Url of the tile
+                   */
                   url: PropTypes.string,
+                  /**
+                   * Type of the tile
+                   */
                   type: PropTypes.string,
                 }),
               ),

@@ -13,17 +13,17 @@ import { Container, Segment, Menu } from 'semantic-ui-react';
 import { getNavigation } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
-/**
- * Navigation container class.
- * @class Navigation
- * @extends Component
- */
 @connect(
   state => ({
     items: state.navigation.items,
   }),
   dispatch => bindActionCreators({ getNavigation }, dispatch),
 )
+/**
+ * Component to display the navigation bar.
+ * @class Navigation
+ * @extends Component
+ */
 export default class Navigation extends Component {
   /**
    * Property types.
@@ -31,11 +31,26 @@ export default class Navigation extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to get the navigation
+     */
     getNavigation: PropTypes.func.isRequired,
+    /**
+     * Pathname of the current object
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * List of navigation items
+     */
     items: PropTypes.arrayOf(
       PropTypes.shape({
+        /**
+         * Title of the navigation item
+         */
         title: PropTypes.string,
+        /**
+         * Url of the navigation item
+         */
         url: PropTypes.string,
       }),
     ).isRequired,
