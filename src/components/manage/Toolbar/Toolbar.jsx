@@ -215,6 +215,15 @@ export default class Toolbar extends Component {
                   />
                 </span>
               </Link>
+              <Link to="/controlpanel" className="item">
+                <span>
+                  <Icon name="settings" />{' '}
+                  <FormattedMessage
+                    id="Site Setup"
+                    defaultMessage="Site Setup"
+                  />
+                </span>
+              </Link>
               <Link to="/logout" className="item">
                 <span>
                   <Icon name="sign out" />{' '}

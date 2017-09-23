@@ -68,7 +68,6 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Delete/Delete
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 msgid "Cancel"
@@ -93,9 +92,17 @@ msgstr "Statusänderung"
 msgid "Changes saved"
 msgstr "Änderungen gespeichert"
 
+#: components/manage/Controlpanels/Controlpanel
+msgid "Changes saved."
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Compare"
 msgstr "Vergleichen"
+
+#: components/manage/Controlpanels/Controlpanels
+msgid "Configuration area for Plone and add-on Products."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Confirm password"
@@ -446,7 +453,6 @@ msgstr "Durch diese Version ersetzen"
 msgid "Rights"
 msgstr "Rechte"
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 msgid "Save"
@@ -504,6 +510,11 @@ msgstr "Website-Administrator"
 #: components/theme/Footer/Footer
 msgid "Site Map"
 msgstr "Übersicht"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/Toolbar
+msgid "Site Setup"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/theme/View/TabularView

@@ -53,7 +53,6 @@ msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Delete/Delete
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 msgid "Cancel"
@@ -78,8 +77,16 @@ msgstr ""
 msgid "Changes saved"
 msgstr ""
 
+#: components/manage/Controlpanels/Controlpanel
+msgid "Changes saved."
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Compare"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+msgid "Configuration area for Plone and add-on Products."
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -431,7 +438,6 @@ msgstr ""
 msgid "Rights"
 msgstr ""
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 msgid "Save"
@@ -488,6 +494,11 @@ msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "Site Map"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/Toolbar
+msgid "Site Setup"
 msgstr ""
 
 #: components/manage/Contents/Contents

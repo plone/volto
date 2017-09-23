@@ -72,7 +72,6 @@ msgstr "Standaard worden de rechten overgenomen van de bovenliggende map.  Als u
 
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Delete/Delete
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 msgid "Cancel"
@@ -97,9 +96,17 @@ msgstr "Status wijzigen"
 msgid "Changes saved"
 msgstr "Wijzigingen zijn opgeslagen"
 
+#: components/manage/Controlpanels/Controlpanel
+msgid "Changes saved."
+msgstr ""
+
 #: components/manage/Diff/Diff
 msgid "Compare"
 msgstr "Vergelijken"
+
+#: components/manage/Controlpanels/Controlpanels
+msgid "Configuration area for Plone and add-on Products."
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Confirm password"
@@ -450,7 +457,6 @@ msgstr "Deze rivisie herstellen"
 msgid "Rights"
 msgstr "Rechten"
 
-#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 msgid "Save"
@@ -508,6 +514,11 @@ msgstr "Sitebeheerder"
 #: components/theme/Footer/Footer
 msgid "Site Map"
 msgstr "Sitemap"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/Toolbar
+msgid "Site Setup"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/theme/View/TabularView

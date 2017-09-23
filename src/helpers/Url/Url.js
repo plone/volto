@@ -27,6 +27,8 @@ export function getBaseUrl(url: string): string {
     .replace('/sharing', '')
     .replace('/search', '')
     .replace('/change-password', '')
+    .replace(/\/controlpanel\/.*$/, '')
+    .replace('/controlpanel', '')
     .replace('/personal-information', '')
     .replace('/personal-preferences', '');
 }

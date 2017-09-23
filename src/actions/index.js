@@ -14,6 +14,8 @@ export {
   orderContent,
   sortContent,
 } from './content/content';
+export { editControlpanel, getControlpanel } from './controlpanel/controlpanel';
+export getControlpanels from './controlpanels/controlpanels';
 export getDiff from './diff/diff';
 export { getHistory, revertHistory } from './history/history';
 export { addMessage, removeMessage } from './messages/messages';
