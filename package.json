@@ -24,19 +24,17 @@
     "email": "plone-developers@lists.sourceforge.net"
   },
   "homepage": "https://plone.org",
-  "keywords": ["mosaic"],
+  "keywords": [
+    "mosaic"
+  ],
   "main": "src/server.jsx",
   "scripts": {
-    "test:start":
-      "DEBUG=plone-react:* npm-run-all -ln prestart start & npm-run-all -ln wait-for-frontend",
+    "test:start": "DEBUG=plone-react:* npm-run-all -ln prestart start & npm-run-all -ln wait-for-frontend",
     "start": "NODE_ENV=production npm-run-all run:prod:server",
     "dev": "NODE_ENV=development npm-run-all dev:build",
-    "dev:build":
-      "npm-run-all -ln clear:dist prepare:dev:build i18n:build development",
-    "development":
-      "npm-run-all -ln --parallel build:dev:client build:dev:server run:dev:server",
-    "prepare:dev:build":
-      "universal-webpack --settings ./webpack/universal-webpack-settings.js prepare",
+    "dev:build": "npm-run-all -ln clear:dist prepare:dev:build i18n:build development",
+    "development": "npm-run-all -ln --parallel build:dev:client build:dev:server run:dev:server",
+    "prepare:dev:build": "universal-webpack --settings ./webpack/universal-webpack-settings.js prepare",
     "build:dev:client": "better-npm-run run_dev_client",
     "build:dev:server": "better-npm-run build_dev_server",
     "run:dev:server": "better-npm-run run_dev_server",
@@ -51,20 +49,16 @@
     "jsdoc:api": "jsdoc -c jsdoc.api.json; : 'ignore minor errors'",
     "lint": "eslint -c .eslintrc src",
     "lint:fix": "eslint -c .eslintrc src --fix",
-    "prettier":
-      "prettier -l --single-quote --trailing-comma all 'src/**/*.js' 'src/**/*.jsx'",
-    "prettier:fix":
-      "prettier --write --single-quote --trailing-comma all 'src/**/*.js' 'src/**/*.jsx'",
+    "prettier": "prettier -l --single-quote --trailing-comma all 'src/**/*.js' 'src/**/*.jsx'",
+    "prettier:fix": "prettier --write --single-quote --trailing-comma all 'src/**/*.js' 'src/**/*.jsx'",
     "flow": "./node_modules/flow-bin/cli.js",
     "watch:test:unit": "better-npm-run watch_test_unit",
     "test": "npm-run-all prettier lint flow test:unit",
     "test:unit": "better-npm-run test_unit",
-    "coverage":
-      "npm-run-all test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "coverage": "npm-run-all test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "pretest:e2e": "npm-run-all webdriver-update wait-for-frontend",
     "test:e2e": "protractor ./protractor.conf.js",
-    "wait-for-frontend":
-      "wget --retry-connrefused --spider ${PROTRACTOR_URL:-http://localhost:4300}",
+    "wait-for-frontend": "wget --retry-connrefused --spider ${PROTRACTOR_URL:-http://localhost:4300}",
     "webdriver-update": "webdriver-manager update",
     "docs": "raml2html docs/api/index.raml > src/static/docs/index.html",
     "i18n": "npm-run-all i18n:sync i18n:build",
@@ -100,12 +94,10 @@
       }
     },
     "build_dev_server": {
-      "command":
-        "webpack --config ./webpack/webpack.config.server.dev.entry.js --watch --hot --colors --display-error-details"
+      "command": "webpack --config ./webpack/webpack.config.server.dev.entry.js --watch --hot --colors --display-error-details"
     },
     "run_dev_server": {
-      "command":
-        "nodemon --watch ./src/server.jsx --watch ./src --watch ./dist/server.js ./src/start-server.js --exec babel-node",
+      "command": "nodemon --watch ./src/server.jsx --watch ./src --watch ./dist/server.js ./src/start-server.js --exec babel-node",
       "env": {
         "PORT": 4300,
         "DEBUG": "plone-react:*",
@@ -113,12 +105,10 @@
       }
     },
     "build_prod_client": {
-      "command":
-        "webpack --colors --display-error-details --config ./webpack/webpack.config.client.prod.entry.js"
+      "command": "webpack --colors --display-error-details --config ./webpack/webpack.config.client.prod.entry.js"
     },
     "build_prod_server": {
-      "command":
-        "webpack --colors --display-error-details --config ./webpack/webpack.config.server.prod.entry.js"
+      "command": "webpack --colors --display-error-details --config ./webpack/webpack.config.server.prod.entry.js"
     },
     "run_prod_server": {
       "command": "./node_modules/.bin/babel-node ./src/start-server-prod.js",
@@ -246,7 +236,7 @@
     "estraverse": "4.2.0",
     "estraverse-fb": "1.3.2",
     "extract-text-webpack-plugin": "3.0.0",
-    "flow-bin": "0.54.1",
+    "flow-bin": "0.55.0",
     "font-awesome": "4.7.0",
     "font-awesome-webpack": "0.0.5-beta.2",
     "jest": "21.1.0",
