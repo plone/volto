@@ -10,7 +10,7 @@ Output:
 ```jsx noeditor
 var IntlProvider = require('react-intl').IntlProvider;
 
-<IntlProvider lang="en">
+<IntlProvider locale="en">
     <Logo />
 </IntlProvider>
 ```
