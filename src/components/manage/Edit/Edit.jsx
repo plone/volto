@@ -29,11 +29,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * EditComponent class.
- * @class EditComponent
- * @extends Component
- */
 @injectIntl
 @connect(
   (state, props) => ({
@@ -46,6 +41,11 @@ const messages = defineMessages({
   dispatch =>
     bindActionCreators({ editContent, getContent, getSchema }, dispatch),
 )
+/**
+ * Component to display the edit form.
+ * @class EditComponent
+ * @extends Component
+ */
 export class EditComponent extends Component {
   /**
    * Property types.
@@ -53,22 +53,64 @@ export class EditComponent extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to edit content
+     */
     editContent: PropTypes.func.isRequired,
+    /**
+     * Action to get content
+     */
     getContent: PropTypes.func.isRequired,
+    /**
+     * Action to get the schema
+     */
     getSchema: PropTypes.func.isRequired,
+    /**
+     * Edit request status
+     */
     editRequest: PropTypes.shape({
+      /**
+       * Loading status
+       */
       loading: PropTypes.bool,
+      /**
+       * Loaded status
+       */
       loaded: PropTypes.bool,
     }).isRequired,
+    /**
+     * Edit request status
+     */
     getRequest: PropTypes.shape({
+      /**
+       * Loading status
+       */
       loading: PropTypes.bool,
+      /**
+       * Loaded status
+       */
       loaded: PropTypes.bool,
     }).isRequired,
+    /**
+     * Pathname of the object
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * Content of the object
+     */
     content: PropTypes.shape({
+      /**
+       * Type of the object
+       */
       '@type': PropTypes.string,
     }),
+    /**
+     * Schema of the object
+     */
     schema: PropTypes.objectOf(PropTypes.any),
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 

@@ -9,7 +9,7 @@ import { Form, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
 
 /**
- * TextareaWidget component class.
+ * Component to display a textarea widget.
  * @function TextareaWidget
  * @returns {string} Markup of the component.
  */
@@ -48,12 +48,33 @@ const TextareaWidget = ({
  * @static
  */
 TextareaWidget.propTypes = {
+  /**
+   * Id of the field
+   */
   id: PropTypes.string.isRequired,
+  /**
+   * Title of the field
+   */
   title: PropTypes.string.isRequired,
+  /**
+   * Description of the field
+   */
   description: PropTypes.string,
+  /**
+   * True if field is required
+   */
   required: PropTypes.bool,
+  /**
+   * List of error messages
+   */
   error: PropTypes.arrayOf(PropTypes.string),
-  value: PropTypes.string,
+  /**
+   * Value of the field
+   */
+  value: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * On change handler
+   */
   onChange: PropTypes.func.isRequired,
 };
 

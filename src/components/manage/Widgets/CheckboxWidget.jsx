@@ -9,7 +9,7 @@ import { Form, Label, Checkbox } from 'semantic-ui-react';
 import { map } from 'lodash';
 
 /**
- * CheckboxWidget component class.
+ * Component to display a checkbox widget.
  * @function CheckboxWidget
  * @returns {string} Markup of the component.
  */
@@ -45,12 +45,33 @@ const CheckboxWidget = ({
  * @static
  */
 CheckboxWidget.propTypes = {
+  /**
+   * Id of the field
+   */
   id: PropTypes.string.isRequired,
+  /**
+   * Title of the field
+   */
   title: PropTypes.string.isRequired,
+  /**
+   * Description of the field
+   */
   description: PropTypes.string,
+  /**
+   * True if field is required
+   */
   required: PropTypes.bool,
+  /**
+   * List of error messages
+   */
   error: PropTypes.arrayOf(PropTypes.string),
-  value: PropTypes.bool,
+  /**
+   * Value of the field
+   */
+  value: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * On change handler
+   */
   onChange: PropTypes.func.isRequired,
 };
 

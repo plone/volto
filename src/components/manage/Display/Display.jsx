@@ -13,11 +13,6 @@ import { FormattedMessage } from 'react-intl';
 import { getSchema, editContent, getContent } from '../../../actions';
 import layouts from '../../../constants/Layouts';
 
-/**
- * Display container class.
- * @class Display
- * @extends Component
- */
 @connect(
   state => ({
     loaded: state.content.edit.loaded,
@@ -28,6 +23,11 @@ import layouts from '../../../constants/Layouts';
   dispatch =>
     bindActionCreators({ getSchema, editContent, getContent }, dispatch),
 )
+/**
+ * Component to display the display menu.
+ * @class Display
+ * @extends Component
+ */
 export default class Display extends Component {
   /**
    * Property types.
@@ -35,14 +35,41 @@ export default class Display extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to get the schema
+     */
     getSchema: PropTypes.func.isRequired,
+    /**
+     * Action to edit content
+     */
     editContent: PropTypes.func.isRequired,
+    /**
+     * Action to get content
+     */
     getContent: PropTypes.func.isRequired,
+    /**
+     * Loaded status
+     */
     loaded: PropTypes.bool.isRequired,
+    /**
+     * Pathname of the object
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * Available layouts
+     */
     layouts: PropTypes.arrayOf(PropTypes.string),
+    /**
+     * Current layout
+     */
     layout: PropTypes.string.isRequired,
+    /**
+     * Type of the object
+     */
     type: PropTypes.string.isRequired,
+    /**
+     * True if menu is expanded
+     */
     expanded: PropTypes.bool,
   };
 

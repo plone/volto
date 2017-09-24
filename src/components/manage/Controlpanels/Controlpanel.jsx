@@ -32,11 +32,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Controlpanel class.
- * @class Controlpanel
- * @extends Component
- */
 @injectIntl
 @connect(
   (state, props) => ({
@@ -50,6 +45,11 @@ const messages = defineMessages({
       dispatch,
     ),
 )
+/**
+ * Component to display a controlpanel.
+ * @class Controlpanel
+ * @extends Component
+ */
 export default class Controlpanel extends Component {
   /**
    * Property types.
@@ -57,20 +57,59 @@ export default class Controlpanel extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to add a notification message
+     */
     addMessage: PropTypes.func.isRequired,
+    /**
+     * Action to edit a controlpanel
+     */
     editControlpanel: PropTypes.func.isRequired,
+    /**
+     * Action to get controlpanel data
+     */
     getControlpanel: PropTypes.func.isRequired,
+    /**
+     * Id of the controlpanel
+     */
     id: PropTypes.string.isRequired,
+    /**
+     * Edit request status
+     */
     editRequest: PropTypes.shape({
+      /**
+       * Loading status
+       */
       loading: PropTypes.bool,
+      /**
+       * Loaded status
+       */
       loaded: PropTypes.bool,
     }).isRequired,
+    /**
+     * Controlpanel data
+     */
     controlpanel: PropTypes.shape({
+      /**
+       * Id of the controlpanel
+       */
       '@id': PropTypes.string,
+      /**
+       * Values of the controlpanel
+       */
       data: PropTypes.Object,
+      /**
+       * Schema of the controlpanel
+       */
       schema: PropTypes.Object,
+      /**
+       * Title of the controlpanel
+       */
       title: PropTypes.string,
-    }),
+    }).isRequired,
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 

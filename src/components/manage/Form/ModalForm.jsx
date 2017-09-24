@@ -38,12 +38,12 @@ const messages = defineMessages({
   },
 });
 
+@injectIntl
 /**
- * Modal form container class.
+ * Component to display a modal form.
  * @class ModalForm
  * @extends Component
  */
-@injectIntl
 export default class FormModal extends Component {
   /**
    * Property types.
@@ -51,22 +51,61 @@ export default class FormModal extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Schema used in the form
+     */
     schema: PropTypes.shape({
+      /**
+       * Fieldsets of the schema
+       */
       fieldsets: PropTypes.arrayOf(
         PropTypes.shape({
+          /**
+           * Fields in the fieldset
+           */
           fields: PropTypes.arrayOf(PropTypes.string),
+          /**
+           * Id of the fieldset
+           */
           id: PropTypes.string,
+          /**
+           * Title of the fieldset
+           */
           title: PropTypes.string,
         }),
       ),
+      /**
+       * Property values
+       */
       properties: PropTypes.objectOf(PropTypes.any),
+      /**
+       * List of required fields
+       */
       required: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
+    /**
+     * Title of the modal
+     */
     title: PropTypes.string.isRequired,
+    /**
+     * Form data
+     */
     formData: PropTypes.objectOf(PropTypes.any),
+    /**
+     * Handler when submitting the form
+     */
     onSubmit: PropTypes.func.isRequired,
+    /**
+     * Handler when cancelling the form
+     */
     onCancel: PropTypes.func.isRequired,
+    /**
+     * True when the modal is open
+     */
     open: PropTypes.bool.isRequired,
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 

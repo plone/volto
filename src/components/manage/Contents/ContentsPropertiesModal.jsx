@@ -72,11 +72,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * ContentsPropertiesModal class.
- * @class ContentsPropertiesModal
- * @extends Component
- */
 @injectIntl
 @connect(
   state => ({
@@ -84,6 +79,11 @@ const messages = defineMessages({
   }),
   dispatch => bindActionCreators({ editContent }, dispatch),
 )
+/**
+ * Component to display the properties modal in the folder contents.
+ * @class ContentsPropertiesModal
+ * @extends Component
+ */
 export default class ContentsPropertiesModal extends Component {
   /**
    * Property types.
@@ -91,15 +91,42 @@ export default class ContentsPropertiesModal extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to edit content
+     */
     editContent: PropTypes.func.isRequired,
+    /**
+     * List of items
+     */
     items: PropTypes.arrayOf(PropTypes.string).isRequired,
+    /**
+     * Request status
+     */
     request: PropTypes.shape({
+      /**
+       * Loading status
+       */
       loading: PropTypes.bool,
+      /**
+       * Loaded status
+       */
       loaded: PropTypes.bool,
     }).isRequired,
+    /**
+     * True when modal is open
+     */
     open: PropTypes.bool.isRequired,
+    /**
+     * Handler when ok button is pressed
+     */
     onOk: PropTypes.func.isRequired,
+    /**
+     * Handler when cancel button is pressed
+     */
     onCancel: PropTypes.func.isRequired,
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 

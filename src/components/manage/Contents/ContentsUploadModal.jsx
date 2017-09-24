@@ -27,17 +27,17 @@ import { FormattedMessage } from 'react-intl';
 
 import { addContent } from '../../../actions';
 
-/**
- * ContentsUploadModal class.
- * @class ContentsUploadModal
- * @extends Component
- */
 @connect(
   state => ({
     request: state.content.add,
   }),
   dispatch => bindActionCreators({ addContent }, dispatch),
 )
+/**
+ * Component to display an upload modal in the folder contents.
+ * @class ContentsUploadModal
+ * @extends Component
+ */
 export default class ContentsUploadModal extends Component {
   /**
    * Property types.
@@ -45,14 +45,38 @@ export default class ContentsUploadModal extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to add content
+     */
     addContent: PropTypes.func.isRequired,
+    /**
+     * Pathname of the current object
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * Request status
+     */
     request: PropTypes.shape({
+      /**
+       * Loading status
+       */
       loading: PropTypes.bool,
+      /**
+       * Loaded status
+       */
       loaded: PropTypes.bool,
     }).isRequired,
+    /**
+     * True when modal is open
+     */
     open: PropTypes.bool.isRequired,
+    /**
+     * Handler when ok button is pressed
+     */
     onOk: PropTypes.func.isRequired,
+    /**
+     * Handler when cancel button is pressed
+     */
     onCancel: PropTypes.func.isRequired,
   };
 

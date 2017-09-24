@@ -9,7 +9,7 @@ import { Form, Input, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
 
 /**
- * DatetimeWidget component class.
+ * Component to display a datetime widget.
  * @function DatetimeWidget
  * @returns {string} Markup of the component.
  */

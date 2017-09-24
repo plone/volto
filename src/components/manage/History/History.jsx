@@ -18,11 +18,6 @@ import { getHistory, revertHistory } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import config from '../../../config';
 
-/**
- * HistoryComponent class.
- * @class HistoryComponent
- * @extends Component
- */
 @connect(
   (state, props) => ({
     entries: state.history.entries,
@@ -32,6 +27,11 @@ import config from '../../../config';
   }),
   dispatch => bindActionCreators({ getHistory, revertHistory }, dispatch),
 )
+/**
+ * Component to display the history view.
+ * @class HistoryComponent
+ * @extends Component
+ */
 export default class HistoryComponent extends Component {
   /**
    * Property types.
@@ -39,24 +39,69 @@ export default class HistoryComponent extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to get the history
+     */
     getHistory: PropTypes.func.isRequired,
+    /**
+     * Action to revert history
+     */
     revertHistory: PropTypes.func.isRequired,
+    /**
+     * Revert request status
+     */
     revertRequest: PropTypes.shape({
+      /**
+       * Loaded status
+       */
       loaded: PropTypes.bool,
+      /**
+       * Loading status
+       */
       loading: PropTypes.bool,
     }).isRequired,
+    /**
+     * Pathname of the object
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * History entries
+     */
     entries: PropTypes.arrayOf(
       PropTypes.shape({
+        /**
+         * Transition title
+         */
         transition_title: PropTypes.string,
+        /**
+         * Type of the history entry
+         */
         type: PropTypes.string,
+        /**
+         * Action of the history entry
+         */
         action: PropTypes.string,
+        /**
+         * State title of the history entry
+         */
         state_title: PropTypes.string,
+        /**
+         * Time of the history item
+         */
         time: PropTypes.string,
+        /**
+         * Comments of the history item
+         */
         comments: PropTypes.string,
+        /**
+         * Actor of the history item
+         */
         actor: PropTypes.shape({ fullname: PropTypes.string }),
       }),
     ).isRequired,
+    /**
+     * Title of the object
+     */
     title: PropTypes.string.isRequired,
   };
 

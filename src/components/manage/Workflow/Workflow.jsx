@@ -14,11 +14,6 @@ import { FormattedMessage } from 'react-intl';
 import { getWorkflow, transitionWorkflow } from '../../../actions';
 import config from '../../../config';
 
-/**
- * Workflow container class.
- * @class Workflow
- * @extends Component
- */
 @connect(
   state => ({
     loaded: state.workflow.transition.loaded,
@@ -27,6 +22,11 @@ import config from '../../../config';
   }),
   dispatch => bindActionCreators({ getWorkflow, transitionWorkflow }, dispatch),
 )
+/**
+ * Workflow container class.
+ * @class Workflow
+ * @extends Component
+ */
 export default class Workflow extends Component {
   /**
    * Property types.
@@ -34,21 +34,51 @@ export default class Workflow extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to get workflow
+     */
     getWorkflow: PropTypes.func.isRequired,
+    /**
+     * Action to transition workflow
+     */
     transitionWorkflow: PropTypes.func.isRequired,
+    /**
+     * Loaded status
+     */
     loaded: PropTypes.bool.isRequired,
+    /**
+     * Pathname of the object
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * History of the object
+     */
     history: PropTypes.arrayOf(
       PropTypes.shape({
+        /**
+         * Review state of the history entry
+         */
         review_state: PropTypes.string,
       }),
     ),
+    /**
+     * List of transitions
+     */
     transitions: PropTypes.arrayOf(
       PropTypes.shape({
+        /**
+         * Id of the transition
+         */
         '@id': PropTypes.string,
+        /**
+         * Title of the transition
+         */
         title: PropTypes.string,
       }),
     ),
+    /**
+     * True if menu is expanded
+     */
     expanded: PropTypes.bool,
   };
 

@@ -12,7 +12,7 @@ import { Form, Label, Segment, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
 
 /**
- * WysiwygEditor container class.
+ * Component to display a wysiwyg widget.
  * @class WysiwygEditor
  * @extends Component
  */
@@ -23,16 +23,46 @@ export default class WysiwygEditor extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Id of the field
+     */
     id: PropTypes.string.isRequired,
+    /**
+     * Title of the field
+     */
     title: PropTypes.string.isRequired,
+    /**
+     * Description of the field
+     */
     description: PropTypes.string,
+    /**
+     * True if field is required
+     */
     required: PropTypes.bool,
+    /**
+     * List of error messages
+     */
+    error: PropTypes.arrayOf(PropTypes.string),
+    /**
+     * Value of the field
+     */
     value: PropTypes.shape({
+      /**
+       * Content type of the value
+       */
       'content-type': PropTypes.string,
+      /**
+       * Data of the value
+       */
       data: PropTypes.string,
+      /**
+       * Encoding of the value
+       */
       encoding: PropTypes.string,
     }),
-    error: PropTypes.arrayOf(PropTypes.string),
+    /**
+     * On change handler
+     */
     onChange: PropTypes.func.isRequired,
   };
 

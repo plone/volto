@@ -71,11 +71,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * PersonalInformation class.
- * @class PersonalInformation
- * @extends Component
- */
 @injectIntl
 @connect(
   state => ({
@@ -87,6 +82,11 @@ const messages = defineMessages({
   }),
   dispatch => bindActionCreators({ addMessage, getUser, editUser }, dispatch),
 )
+/**
+ * Component to display the personal information view.
+ * @class PersonalInformation
+ * @extends Component
+ */
 export default class PersonalInformation extends Component {
   /**
    * Property types.
@@ -94,17 +94,50 @@ export default class PersonalInformation extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * User data
+     */
     user: PropTypes.shape({
+      /**
+       * Fullname of the user
+       */
       fullname: PropTypes.string,
+      /**
+       * Email address of the user
+       */
       email: PropTypes.string,
+      /**
+       * Homepage of the user
+       */
       home_page: PropTypes.string,
+      /**
+       * Location of the user
+       */
       location: PropTypes.string,
     }).isRequired,
+    /**
+     * Action to edit the user
+     */
     editUser: PropTypes.func.isRequired,
+    /**
+     * Action to get the user
+     */
     getUser: PropTypes.func.isRequired,
+    /**
+     * Action to add a notification message
+     */
     addMessage: PropTypes.func.isRequired,
+    /**
+     * User id
+     */
     userId: PropTypes.string.isRequired,
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
+    /**
+     * Loaded status
+     */
     loaded: PropTypes.bool.isRequired,
   };
 

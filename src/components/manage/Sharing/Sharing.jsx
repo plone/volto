@@ -36,11 +36,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * SharingComponent class.
- * @class SharingComponent
- * @extends Component
- */
 @injectIntl
 @connect(
   (state, props) => ({
@@ -56,6 +51,11 @@ const messages = defineMessages({
   }),
   dispatch => bindActionCreators({ editSharing, getSharing }, dispatch),
 )
+/**
+ * Component to display the sharing view.
+ * @class SharingComponent
+ * @extends Component
+ */
 export default class SharingComponent extends Component {
   /**
    * Property types.
@@ -63,26 +63,77 @@ export default class SharingComponent extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to edit sharing
+     */
     editSharing: PropTypes.func.isRequired,
+    /**
+     * Action to get sharing settings
+     */
     getSharing: PropTypes.func.isRequired,
+    /**
+     * Edit request status
+     */
     editRequest: PropTypes.shape({
+      /**
+       * Loading status
+       */
       loading: PropTypes.bool,
+      /**
+       * Loaded status
+       */
       loaded: PropTypes.bool,
     }).isRequired,
+    /**
+     * Pathname of the object
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * Sharing entries
+     */
     entries: PropTypes.arrayOf(
       PropTypes.shape({
+        /**
+         * Id of the entry
+         */
         id: PropTypes.string,
+        /**
+         * Login of the entry
+         */
         login: PropTypes.string,
+        /**
+         * Roles of the entry
+         */
         roles: PropTypes.object,
+        /**
+         * Title of the entry
+         */
         title: PropTypes.string,
+        /**
+         * Type of the entry
+         */
         type: PropTypes.string,
       }),
     ).isRequired,
+    /**
+     * List of available roles
+     */
     available_roles: PropTypes.arrayOf(PropTypes.string).isRequired,
+    /**
+     * True if sharing is inherited from folder up
+     */
     inherit: PropTypes.bool,
+    /**
+     * Title of the object
+     */
     title: PropTypes.string.isRequired,
+    /**
+     * Login of the user
+     */
     login: PropTypes.string,
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 
