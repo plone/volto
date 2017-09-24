@@ -6,11 +6,12 @@ Logo example source, with `intl` auto-injected.
 
 Output:
 
-[comment]: # (import statement babel-style are not supported)
 ```jsx noeditor
 var IntlProvider = require('react-intl').IntlProvider;
 
-<IntlProvider locale="en">
-    <Logo />
-</IntlProvider>
+<div className={'rsg--pre-42'}>
+    <IntlProvider locale="en">
+        <Logo />
+    </IntlProvider>
+</div>
 ```
