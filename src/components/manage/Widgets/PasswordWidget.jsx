@@ -72,7 +72,7 @@ PasswordWidget.propTypes = {
   /**
    * Value of the field
    */
-  value: PropTypes.arrayOf(PropTypes.string),
+  value: PropTypes.string,
   /**
    * On change handler
    */

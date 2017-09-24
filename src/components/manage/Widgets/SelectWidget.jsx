@@ -80,7 +80,7 @@ SelectWidget.propTypes = {
   /**
    * Value of the field
    */
-  value: PropTypes.arrayOf(PropTypes.string),
+  value: PropTypes.string,
   /**
    * List of choices
    */

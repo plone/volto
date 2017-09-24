@@ -68,7 +68,7 @@ CheckboxWidget.propTypes = {
   /**
    * Value of the field
    */
-  value: PropTypes.arrayOf(PropTypes.string),
+  value: PropTypes.bool,
   /**
    * On change handler
    */
