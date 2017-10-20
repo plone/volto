@@ -171,6 +171,8 @@
     "moment": "2.18.1",
     "multireducer": "3.1.0",
     "npm-run-all": "4.1.1",
+    "pastanaga": "git+ssh://git@github.com:plone/pastanaga.git",
+    "pastanaga-theme": "git+ssh://git@github.com:plone/pastanaga-theme.git",
     "path": "0.12.7",
     "piping": "1.0.0-rc.4",
     "pofile": "1.0.9",
