@@ -7,7 +7,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { SummaryView, TabularView, DocumentView, ListView } from '../../../components';
+import {
+  SummaryView,
+  TabularView,
+  DocumentView,
+  ListingView,
+} from '../../../components';
 import { getContent } from '../../../actions';
 
 /**
@@ -87,7 +92,7 @@ export default class View extends Component {
       case 'tabular_view':
         return <TabularView content={this.props.content} />;
       case 'listing_view':
-        return <ListView content={this.props.content} />;
+        return <ListingView content={this.props.content} />;
       default:
         return <DocumentView content={this.props.content} />;
     }

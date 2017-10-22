@@ -1,6 +1,6 @@
 /**
  * Document view component.
- * @module components/theme/View/ListView
+ * @module components/theme/View/ListingView
  */
 
 import React from 'react';
@@ -9,11 +9,11 @@ import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 /**
  * List view component class.
- * @function ListView
+ * @function ListingView
  * @params {object} content Content object.
  * @returns {string} Markup of the component.
  */
-const ListView = ({ content }) => (
+const ListingView = ({ content }) => (
   <div id="page-home">
     <Helmet title={content.title} />
     <section id="content-core">
@@ -36,7 +36,7 @@ const ListView = ({ content }) => (
  * @property {Object} propTypes Property types.
  * @static
  */
-ListView.propTypes = {
+ListingView.propTypes = {
   content: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
@@ -47,10 +47,10 @@ ListView.propTypes = {
         description: PropTypes.string,
         review_state: PropTypes.string,
         title: PropTypes.string,
-        url: PropTypes.string
-      })
-    )
+        url: PropTypes.string,
+      }),
+    ),
   }).isRequired,
 };
 
-export default ListView;
+export default ListingView;
