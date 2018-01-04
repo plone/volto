@@ -8,12 +8,7 @@
       "url": "http://plone.org"
     }
   ],
-  "licenses": [
-    {
-      "type": "BSD",
-      "url": "http://opensource.org/licenses/BSD-2-Clause"
-    }
-  ],
+  "license": "MIT",
   "version": "0.4.0",
   "repository": {
     "type": "git",
