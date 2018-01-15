@@ -287,6 +287,6 @@
     "webpack-hot-middleware": "2.19.1"
   },
   "engines": {
-    "node": "8.9.4"
+    "node": "6.11.4"
   }
 }
