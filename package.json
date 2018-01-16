@@ -54,6 +54,7 @@
     "watch:test:unit": "better-npm-run watch_test_unit",
     "test": "npm-run-all prettier lint flow test:unit",
     "test:unit": "better-npm-run test_unit",
+    "test:unit:fix": "yarn run test:unit -- -u", 
     "coverage":
       "npm-run-all test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "pretest:e2e": "npm-run-all webdriver-update wait-for-frontend",
