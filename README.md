@@ -32,6 +32,7 @@ Plone in React
 
 ### Run frontend
 
+	$ yarn add git+ssh://git@github.com:plone/pastanaga-theme.git
     $ yarn dev
 
 ### Browsing
