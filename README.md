@@ -41,6 +41,69 @@ Go to [http://localhost:4300](http://localhost:4300) in your browser.
 ### Testing
 
     $ yarn test
+    
+### Static Code Analysis
+#### Prettier
+Please refer this [link](https://prettier.io/docs/en/cli.html) for all usages.
+##### CLI
+Run Prettier through the CLI with this script. Run it without any arguments to see the [options](https://prettier.io/docs/en/options.html).
+
+To format a file in-place, use ```--write```. You may want to consider committing your code before doing that, just in case.
+```prettier [opts] [filename ...]```
+In practice, this may look something like:<br />
+`prettier --single-quote --trailing-comma es5 --write "{app,__{tests,mocks}__}/**/*.js"`
+
+##### Using Plugins
+Plugins are automatically loaded if you have them installed in your package.json. Prettier plugin package names must start with `@prettier/plugin- or prettier-plugin-` to be registered.
+If the plugin is unable to be found automatically, you can load them with:
+
+1. The CLI, via the --plugin flag:
+
+` prettier --write main.foo --plugin=./foo-plugin`
+1. Or the API, via the plugins field:
+```prettier.format("code", {
+  parser: "foo",
+  plugins: ["./foo-plugin"]
+});
+```
+
+##### Pre commit hook
+You can use Prettier with a pre-commit tool. This can re-format your files that are marked as "staged" via `git add` before you commit.
+
+1. <b>Lint staged</b> Use Case: Useful for when you need to use other tools on top of Prettier (e.g. ESLint)
+
+Install it along with husky:
+
+`yarn add lint-staged husky --dev`
+
+and add this config to your ```package.json```:
+```
+{
+  "scripts": {
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
+  }
+}
+```
+1. <b>Pretty-quick</b> Use Case: Great for when you want an entire file formatting on your changed/staged files.
+
+`yarn add pretty-quick husky --dev`
+
+and add this config to your package.json:
+
+```
+{
+  "scripts": {
+    "precommit": "pretty-quick --staged"
+  }
+}
+```
+More Precommit hooks can be found [here](https://prettier.io/docs/en/precommit.html)
+
+
+
 
 ### License
 
