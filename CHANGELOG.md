@@ -9,6 +9,7 @@
 - Added component documentation examples @VaysseB
 - Added folder listing view @cekk
 - Fix textwidget proptypes @cekk
+- Remove phantomjs @tulikavijay
 
 ## 0.4.0 (2017-05-03)
 ### Added

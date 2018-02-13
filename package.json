@@ -54,7 +54,7 @@
     "watch:test:unit": "better-npm-run watch_test_unit",
     "test": "npm-run-all prettier lint flow test:unit",
     "test:unit": "better-npm-run test_unit",
-    "test:unit:fix": "yarn run test:unit -- -u", 
+    "test:unit:fix": "yarn run test:unit -- -u",
     "coverage":
       "npm-run-all test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "pretest:e2e": "npm-run-all webdriver-update wait-for-frontend",
@@ -260,8 +260,6 @@
     "mocha": "3.5.3",
     "node-sass": "4.5.3",
     "nodemon": "1.12.1",
-    "phantomjs": "2.1.7",
-    "phantomjs-polyfill": "0.0.2",
     "protractor": "5.1.2",
     "react-a11y": "0.3.4",
     "react-addons-test-utils": "15.6.0",
