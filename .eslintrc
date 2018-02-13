@@ -6,22 +6,30 @@
     "node": true,
     "mocha": true,
     "jasmine": true,
-    "protractor": true,
+    "protractor": true
   },
   "parser": "babel-eslint",
   "rules": {
     "valid-jsdoc": 2,
-    "require-jsdoc": ["error", {
-      "require": {
-        "FunctionDeclaration": true,
-        "MethodDefinition": true,
-        "ClassDeclaration": true,
+    "require-jsdoc": [
+      "error",
+      {
+        "require": {
+          "FunctionDeclaration": true,
+          "MethodDefinition": true,
+          "ClassDeclaration": true
+        }
       }
-    }],
-    "arrow-parens": "off",    // Keep compatible with prettier
-    "no-confusing-arrow": 0,  // Keep compatible with prettier
-    "indent": 0,              // Keep compatible with prettier
-    "prettier/prettier": ["error", {"trailingComma": "all", "singleQuote": true}],
+    ],
+    "arrow-parens": "off", // Keep compatible with prettier
+    "no-confusing-arrow": 0, // Keep compatible with prettier
+    "indent": 0, // Keep compatible with prettier
+    "prettier/prettier": [
+      "error",
+      { "trailingComma": "all", "singleQuote": true }
+    ],
+    "function-paren-newline": 0,
+    "jsx-a11y/anchor-is-valid": [ "error", { "components": [ "Link" ], "specialLink": [ "to" ] } ]
   },
   "globals": {
     "root": true,
@@ -34,9 +42,7 @@
     "__SSR__": true,
     "jest": true,
     "socket": true,
-    "webpackIsomorphicTools": true,
+    "webpackIsomorphicTools": true
   },
-  "plugins": [
-    "prettier",
-  ],
+  "plugins": ["prettier"]
 }

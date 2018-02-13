@@ -33,7 +33,8 @@ const DatetimeWidget = ({
       type="datetime-local"
       value={value || ''}
       onChange={({ target }) =>
-        onChange(id, target.value === '' ? undefined : target.value)}
+        onChange(id, target.value === '' ? undefined : target.value)
+      }
     />
     {map(error, message => (
       <Label key={message} basic color="red" pointing>

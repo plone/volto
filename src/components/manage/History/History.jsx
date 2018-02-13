@@ -213,14 +213,14 @@ export default class HistoryComponent extends Component {
                         {entry.transition_title}
                       </Link>
                     )) || (
-                      <span>
-                        {entry.transition_title}
-                        {entry.type === 'workflow' &&
-                          ` (${entry.action
-                            ? `${entry.prev_state_title} → `
-                            : ''}${entry.state_title})`}
-                      </span>
-                    )}
+                    <span>
+                      {entry.transition_title}
+                      {entry.type === 'workflow' &&
+                        ` (${
+                          entry.action ? `${entry.prev_state_title} → ` : ''
+                        }${entry.state_title})`}
+                    </span>
+                  )}
                 </Table.Cell>
                 <Table.Cell>{entry.actor.fullname}</Table.Cell>
                 <Table.Cell>
@@ -239,8 +239,9 @@ export default class HistoryComponent extends Component {
                               className="item"
                               to={`${getBaseUrl(
                                 this.props.pathname,
-                              )}/diff?one=${entry.version -
-                                1}&two=${entry.version}`}
+                              )}/diff?one=${entry.version - 1}&two=${
+                                entry.version
+                              }`}
                             >
                               <Icon name="copy" />{' '}
                               <FormattedMessage
@@ -252,9 +253,9 @@ export default class HistoryComponent extends Component {
                         {'version' in entry && (
                           <Link
                             className="item"
-                            to={`${getBaseUrl(
-                              this.props.pathname,
-                            )}?version=${entry.version}`}
+                            to={`${getBaseUrl(this.props.pathname)}?version=${
+                              entry.version
+                            }`}
                           >
                             <Icon name="eye" />{' '}
                             <FormattedMessage

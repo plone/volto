@@ -33,7 +33,8 @@ const SelectWidget = ({
       name={id}
       value={value || 'no-value'}
       onChange={(event, { value }) =>
-        onChange(id, value === 'no-value' ? undefined : value)}
+        onChange(id, value === 'no-value' ? undefined : value)
+      }
       options={[
         { key: 'no-value', text: 'No value', value: 'no-value' },
         ...choices.map(option => ({

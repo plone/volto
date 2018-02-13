@@ -28,10 +28,10 @@ import { map } from 'lodash';
  */
 export default class ColumnResizeHelper extends Component {
   /**
-    * Property types.
-    * @property {Object} propTypes Property types.
-    * @static
-    */
+   * Property types.
+   * @property {Object} propTypes Property types.
+   * @static
+   */
   static propTypes = {
     /**
      * Item to be dragged
@@ -86,10 +86,10 @@ export default class ColumnResizeHelper extends Component {
   };
 
   /**
-    * Render method.
-    * @function render
-    * @returns {string} Markup of the container.
-    */
+   * Render method.
+   * @function render
+   * @returns {string} Markup of the container.
+   */
   render() {
     const {
       isDragging,

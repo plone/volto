@@ -6,9 +6,12 @@ webpack-assets.json
 webpack-stats.json
 npm-debug.log
 dist
+junit.xml
+eslint.xml
 
 # Other
 .DS_Store
+lighthouse-report.html
 
 # Python
 /api/eggs/

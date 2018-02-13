@@ -147,9 +147,9 @@ export default class Toolbar extends Component {
           {isFolderish && (
             <Link
               to={`${this.props.pathname}/contents`}
-              className={`item${this.props.selected === 'contents'
-                ? ' active'
-                : ''}`}
+              className={`item${
+                this.props.selected === 'contents' ? ' active' : ''
+              }`}
             >
               <span>
                 <Icon name="folder open" />{' '}
@@ -189,9 +189,9 @@ export default class Toolbar extends Component {
           <Display pathname={this.props.pathname} expanded={expanded} />
           <Link
             to={`${this.props.pathname}/history`}
-            className={`item${this.props.selected === 'history'
-              ? ' active'
-              : ''}`}
+            className={`item${
+              this.props.selected === 'history' ? ' active' : ''
+            }`}
           >
             <span>
               <Icon name="clock" />{' '}
@@ -202,9 +202,9 @@ export default class Toolbar extends Component {
           </Link>
           <Link
             to={`${this.props.pathname}/sharing`}
-            className={`item${this.props.selected === 'sharing'
-              ? ' active'
-              : ''}`}
+            className={`item${
+              this.props.selected === 'sharing' ? ' active' : ''
+            }`}
           >
             <span>
               <Icon name="users" />{' '}

@@ -153,27 +153,27 @@ export default class ContentsUploadModal extends Component {
    * @method onSubmit
    */
   onSubmit() {
-    Promise.all(
-      map(this.state.files, file => readAsDataURL(file)),
-    ).then(files => {
-      this.props.addContent(
-        this.props.pathname,
-        map(this.state.files, (file, index) => {
-          const fields = files[index].match(/^data:(.*);(.*),(.*)$/);
-          const image = fields[1].split('/')[0] === 'image';
-          return {
-            '@type': image ? 'Image' : 'File',
-            title: file.name,
-            [image ? 'image' : 'file']: {
-              data: fields[3],
-              encoding: fields[2],
-              'content-type': fields[1],
-              filename: file.name,
-            },
-          };
-        }),
-      );
-    });
+    Promise.all(map(this.state.files, file => readAsDataURL(file))).then(
+      files => {
+        this.props.addContent(
+          this.props.pathname,
+          map(this.state.files, (file, index) => {
+            const fields = files[index].match(/^data:(.*);(.*),(.*)$/);
+            const image = fields[1].split('/')[0] === 'image';
+            return {
+              '@type': image ? 'Image' : 'File',
+              title: file.name,
+              [image ? 'image' : 'file']: {
+                data: fields[3],
+                encoding: fields[2],
+                'content-type': fields[1],
+                filename: file.name,
+              },
+            };
+          }),
+        );
+      },
+    );
   }
 
   /**

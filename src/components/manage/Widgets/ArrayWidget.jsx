@@ -32,10 +32,8 @@ const ArrayWidget = ({
       name={id}
       value={value ? value.join('\n') : ''}
       onChange={({ target }) =>
-        onChange(
-          id,
-          target.value === '' ? undefined : target.value.split('\n'),
-        )}
+        onChange(id, target.value === '' ? undefined : target.value.split('\n'))
+      }
     />
     {map(error, message => (
       <Label key={message} basic color="red" pointing>
