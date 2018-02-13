@@ -5,7 +5,6 @@ import HTML5Backend from 'react-dnd-html5-backend';
 
 import Tile from './Tile';
 
-jest.mock('draft-js-editor', () => jest.fn(() => <div />));
 global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
 const Wrapper = DragDropContext(HTML5Backend)(({ children }) => (

@@ -5,14 +5,59 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Editor from 'draft-js-editor';
+import Editor from 'draft-js-plugins-editor';
 import { stateToHTML } from 'draft-js-export-html';
 import { convertFromHTML, EditorState, ContentState } from 'draft-js';
-import { Form, Label, Segment, TextArea } from 'semantic-ui-react';
+import { Form, Grid, Label, Segment, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
+import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
+import BlockTypeSelect from 'draft-js-side-toolbar-plugin/lib/components/BlockTypeSelect';
+import {
+  ItalicButton,
+  BoldButton,
+  UnderlineButton,
+  HeadlineOneButton,
+  HeadlineTwoButton,
+  BlockquoteButton,
+  UnorderedListButton,
+  OrderedListButton,
+} from 'draft-js-buttons';
+import createBlockStyleButton from 'draft-js-buttons/lib/utils/createBlockStyleButton';
+import createLinkPlugin from 'draft-js-anchor-plugin';
+
+const CodeBlockButton = createBlockStyleButton({
+  blockType: 'code-block',
+  children: <span>!</span>,
+});
+const linkPlugin = createLinkPlugin();
+const inlineToolbarPlugin = createInlineToolbarPlugin({
+  structure: [BoldButton, ItalicButton, UnderlineButton, linkPlugin.LinkButton],
+});
+const sideToolbarPlugin = createSideToolbarPlugin({
+  structure: [
+    ({ getEditorState, setEditorState, theme }) => (
+      <BlockTypeSelect
+        getEditorState={getEditorState}
+        setEditorState={setEditorState}
+        theme={theme}
+        structure={[
+          HeadlineOneButton,
+          HeadlineTwoButton,
+          UnorderedListButton,
+          OrderedListButton,
+          BlockquoteButton,
+          CodeBlockButton,
+        ]}
+      />
+    ),
+  ],
+});
+const { InlineToolbar } = inlineToolbarPlugin;
+const { SideToolbar } = sideToolbarPlugin;
 
 /**
- * Component to display a wysiwyg widget.
+ * WysiwygEditor container class.
  * @class WysiwygEditor
  * @extends Component
  */
@@ -40,10 +85,6 @@ export default class WysiwygEditor extends Component {
      */
     required: PropTypes.bool,
     /**
-     * List of error messages
-     */
-    error: PropTypes.arrayOf(PropTypes.string),
-    /**
      * Value of the field
      */
     value: PropTypes.shape({
@@ -60,6 +101,10 @@ export default class WysiwygEditor extends Component {
        */
       encoding: PropTypes.string,
     }),
+    /**
+     * List of error messages
+     */
+    error: PropTypes.arrayOf(PropTypes.string),
     /**
      * On change handler
      */
@@ -93,7 +138,7 @@ export default class WysiwygEditor extends Component {
 
     if (!__SERVER__) {
       let editorState;
-      if (props.value.data) {
+      if (props.value && props.value.data) {
         const blocksFromHTML = convertFromHTML(props.value.data);
         const contentState = ContentState.createFromBlockArray(blocksFromHTML);
         editorState = EditorState.createWithContent(contentState);
@@ -110,12 +155,15 @@ export default class WysiwygEditor extends Component {
    * Change handler
    * @method onChange
    * @param {object} editorState Editor state.
+   * @returns {undefined}
    */
   onChange(editorState) {
     this.setState({ editorState });
     this.props.onChange(this.props.id, {
-      'content-type': this.props.value['content-type'],
-      encoding: this.props.value.encoding,
+      'content-type': this.props.value
+        ? this.props.value['content-type']
+        : 'text/html',
+      encoding: this.props.value ? this.props.value.encoding : 'utf8',
       data: stateToHTML(editorState.getCurrentContent()),
     });
   }
@@ -130,38 +178,69 @@ export default class WysiwygEditor extends Component {
 
     if (__SERVER__) {
       return (
-        <Form.Field required={required} error={error.length > 0}>
-          <label htmlFor={`field-${id}`}>
-            {title}
-            {description && <span className="help">{description}</span>}
-          </label>
-          <TextArea id={id} name={id} value={value.data} />
-          {map(error, message => (
-            <Label key={message} basic color="red" pointing>
-              {message}
-            </Label>
-          ))}
+        <Form.Field
+          inline
+          required={required}
+          error={error.length > 0}
+          className={description ? 'help' : ''}
+        >
+          <div className="wrapper">
+            <label htmlFor={`field-${id}`}>{title}</label>
+            <TextArea id={id} name={id} value={value.data} />
+            {description && <p className="help">{description}</p>}
+            {map(error, message => (
+              <Label key={message} basic color="red" pointing>
+                {message}
+              </Label>
+            ))}
+          </div>
         </Form.Field>
       );
     }
     return (
-      <Form.Field required={required} error={error.length > 0}>
-        <label htmlFor={`field-${id}`}>
-          {title}
-          {description && <span className="help">{description}</span>}
-        </label>
-        <Segment>
-          <Editor
-            id={`field-${id}`}
-            onChange={this.onChange}
-            editorState={this.state.editorState}
-          />
-        </Segment>
-        {map(error, message => (
-          <Label key={message} basic color="red" pointing>
-            {message}
-          </Label>
-        ))}
+      <Form.Field
+        inline
+        required={required}
+        error={error.length > 0}
+        className={description ? 'help' : ''}
+      >
+        <Grid>
+          <Grid.Row stretched>
+            <Grid.Column width="4">
+              <label htmlFor={`field-${id}`}>{title}</label>
+            </Grid.Column>
+            <Grid.Column width="8">
+              <Segment>
+                <div style={{ boxSizing: 'initial' }}>
+                  <Editor
+                    id={`field-${id}`}
+                    onChange={this.onChange}
+                    editorState={this.state.editorState}
+                    plugins={[
+                      inlineToolbarPlugin,
+                      sideToolbarPlugin,
+                      linkPlugin,
+                    ]}
+                  />
+                </div>
+              </Segment>
+              {map(error, message => (
+                <Label key={message} basic color="red" pointing>
+                  {message}
+                </Label>
+              ))}
+            </Grid.Column>
+          </Grid.Row>
+          {description && (
+            <Grid.Row stretched>
+              <Grid.Column stretched width="12">
+                <span className="help">{description}</span>
+              </Grid.Column>
+            </Grid.Row>
+          )}
+        </Grid>
+        <InlineToolbar />
+        <SideToolbar />
       </Form.Field>
     );
   }

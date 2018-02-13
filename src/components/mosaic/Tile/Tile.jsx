@@ -8,28 +8,19 @@ import PropTypes from 'prop-types';
 import { Icon, Label } from 'semantic-ui-react';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
+import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
+import Editor from 'draft-js-plugins-editor';
 
-import Editor from 'draft-js-editor';
+const inlineToolbarPlugin = createInlineToolbarPlugin();
+const sideToolbarPlugin = createSideToolbarPlugin();
+const { InlineToolbar } = inlineToolbarPlugin;
+const { SideToolbar } = sideToolbarPlugin;
 
 /* eslint jsx-a11y/no-static-element-interactions: 0 */
 
-const buttons = {
-  title: {
-    inline: [],
-    block: [],
-  },
-  description: {
-    inline: [],
-    block: [],
-  },
-  text: {
-    inline: undefined,
-    block: undefined,
-  },
-};
-
 /**
- * Component to display a tile.
+ * Tile component class.
  * @function Tile
  * @param {Object} props Component properties.
  * @param {Object} props.content Content of the tile.
@@ -90,18 +81,11 @@ const Tile = ({
         )}
         {!__SERVER__ && (
           <Editor
-            popoverStyle={{
-              color: 'rgba(0,0,0,.6)',
-              backgroundColor: '#E8E8E8',
-            }}
-            iconColor={buttons[type].block ? 'transparent' : 'black'}
-            iconSelectedColor="#3469d0"
-            inlineButtons={buttons[type].inline}
-            blockButtons={buttons[type].block}
             onChange={newContent =>
               setTileContent(row, column, tile, newContent)
             }
             editorState={content}
+            plugins={[inlineToolbarPlugin, sideToolbarPlugin]}
           />
         )}
       </div>,

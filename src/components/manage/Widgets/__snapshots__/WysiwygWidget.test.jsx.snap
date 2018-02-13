@@ -2,25 +2,29 @@
 
 exports[`renders a wysiwyg widget component 1`] = `
 <div
-  className="field"
+  className="inline field"
 >
-  <label
-    htmlFor="field-my-field"
+  <div
+    className="wrapper"
   >
-    My field
-  </label>
-  <textarea
-    id="my-field"
-    name="my-field"
-    onChange={[Function]}
-    onInput={[Function]}
-    rows={3}
-    style={
-      Object {
-        "resize": "",
+    <label
+      htmlFor="field-my-field"
+    >
+      My field
+    </label>
+    <textarea
+      id="my-field"
+      name="my-field"
+      onChange={[Function]}
+      onInput={[Function]}
+      rows={3}
+      style={
+        Object {
+          "resize": "",
+        }
       }
-    }
-    value=""
-  />
+      value=""
+    />
+  </div>
 </div>
 `;
