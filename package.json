@@ -192,6 +192,7 @@
     "react-redux": "5.0.6",
     "react-router": "3.0.5",
     "react-router-redux": "4.0.8",
+    "react-styleguidist": "^6.0.25",
     "redux": "3.7.2",
     "redux-connect": "5.1.0",
     "redux-logger": "3.0.6",
@@ -278,6 +279,6 @@
     "webpack-hot-middleware": "2.19.1"
   },
   "engines": {
-    "node": "6.9.1"
+    "node": ">=6.9.1"
   }
 }

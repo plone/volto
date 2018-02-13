@@ -7,16 +7,23 @@ module.exports = {
   showUsage: true,
   sections: [
     {
+      name: 'Introduction',
+      content: 'docs/introduction.md',
+    },
+    {
       name: 'Theme',
       components: 'src/components/theme/**/*.jsx',
+      content: 'docs/theme.md',
     },
     {
       name: 'Manage',
       components: 'src/components/manage/**/*.jsx',
+      content: 'docs/manage.md',
     },
     {
       name: 'Mosaic',
       components: 'src/components/mosaic/**/*.jsx',
+      content: 'docs/mosaic.md',
     },
   ],
   webpackConfig: {
