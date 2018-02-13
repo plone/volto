@@ -9,6 +9,16 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
+      delete: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      edit: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
       get: {
         loaded: false,
         loading: false,
@@ -29,6 +39,16 @@ describe('Content reducer', () => {
         loading: true,
         error: null,
       },
+      delete: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      edit: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
       get: {
         loaded: false,
         loading: false,
@@ -48,6 +68,16 @@ describe('Content reducer', () => {
         loaded: true,
         loading: false,
         error: null,
+      },
+      delete: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      edit: {
+        error: null,
+        loaded: false,
+        loading: false,
       },
       get: {
         loaded: false,
@@ -70,6 +100,16 @@ describe('Content reducer', () => {
         loading: false,
         error: 'failed',
       },
+      delete: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      edit: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
       get: {
         loaded: false,
         loading: false,
@@ -89,6 +129,16 @@ describe('Content reducer', () => {
         loaded: false,
         loading: false,
         error: null,
+      },
+      delete: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      edit: {
+        error: null,
+        loaded: false,
+        loading: false,
       },
       get: {
         loaded: false,
@@ -111,6 +161,16 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
+      delete: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      edit: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
       get: {
         loaded: true,
         loading: false,
@@ -131,6 +191,16 @@ describe('Content reducer', () => {
         loaded: false,
         loading: false,
         error: null,
+      },
+      delete: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      edit: {
+        error: null,
+        loaded: false,
+        loading: false,
       },
       get: {
         loaded: false,
