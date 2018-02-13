@@ -10,6 +10,7 @@
 - Added folder listing view @cekk
 - Fix textwidget proptypes @cekk
 - Remove phantomjs @tulikavijay
+- Prettier docs for SCA @nileshgulia1
 
 ## 0.4.0 (2017-05-03)
 ### Added
