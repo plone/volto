@@ -19,9 +19,9 @@ Plone in React
 
 ### Install backend
 
-    $ cd api
-    $ python bootstrap-buildout.py
-    $ ./bin/buildout
+    $ virtualenv .
+    $ bin/pip install -r requirements.txt
+    $ bin/buildout
 
 ## Development
 
