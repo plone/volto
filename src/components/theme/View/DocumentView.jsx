@@ -8,9 +8,9 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
 /**
- * Document view component class.
+ * Component to display the document view.
  * @function DocumentView
- * @params {object} content Content object.
+ * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
 const DocumentView = ({ content }) => (
@@ -32,10 +32,25 @@ const DocumentView = ({ content }) => (
  * @static
  */
 DocumentView.propTypes = {
+  /**
+   * Content of the object
+   */
   content: PropTypes.shape({
+    /**
+     * Title of the object
+     */
     title: PropTypes.string,
+    /**
+     * Description of the object
+     */
     description: PropTypes.string,
+    /**
+     * Text of the object
+     */
     text: PropTypes.shape({
+      /**
+       * Data of the text of the object
+       */
       data: PropTypes.string,
     }),
   }).isRequired,

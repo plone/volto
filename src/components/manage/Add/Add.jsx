@@ -30,11 +30,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * AddComponent class.
- * @class AddComponent
- * @extends Component
- */
 @injectIntl
 @connect(
   (state, props) => ({
@@ -46,6 +41,11 @@ const messages = defineMessages({
   }),
   dispatch => bindActionCreators({ addContent, getSchema }, dispatch),
 )
+/**
+ * Component to display an add view.
+ * @class AddComponent
+ * @extends Component
+ */
 export class AddComponent extends Component {
   /**
    * Property types.
@@ -53,19 +53,51 @@ export class AddComponent extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to add content
+     */
     addContent: PropTypes.func.isRequired,
+    /**
+     * Action to get a schema
+     */
     getSchema: PropTypes.func.isRequired,
+    /**
+     * Pathname of the parent of the object to be added
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * Schema of the object to be added
+     */
     schema: PropTypes.objectOf(PropTypes.any),
+    /**
+     * Content of the object to be added
+     */
     content: PropTypes.shape({
-      // eslint-disable-line react/no-unused-prop-types
-      '@id': PropTypes.string,
+      /**
+       * Id of the object
+       */
+      '@id': PropTypes.string, // eslint-disable-line react/no-unused-prop-types
     }),
+    /**
+     * Request status of the actions
+     */
     request: PropTypes.shape({
+      /**
+       * Loading state
+       */
       loading: PropTypes.bool,
+      /**
+       * Loaded state
+       */
       loaded: PropTypes.bool,
     }).isRequired,
+    /**
+     * Type to be added
+     */
     type: PropTypes.string,
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 
@@ -95,7 +127,6 @@ export class AddComponent extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getSchema(this.props.type);
@@ -105,7 +136,6 @@ export class AddComponent extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.request.loading && nextProps.request.loaded) {
@@ -117,7 +147,6 @@ export class AddComponent extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
-   * @returns {undefined}
    */
   onSubmit(data) {
     this.props.addContent(getBaseUrl(this.props.pathname), {
@@ -129,7 +158,6 @@ export class AddComponent extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
    */
   onCancel() {
     browserHistory.push(getBaseUrl(this.props.pathname));

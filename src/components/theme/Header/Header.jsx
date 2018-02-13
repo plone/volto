@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { Anontools, Logo, SearchWidget } from '../../../components';
 
 /**
- * Header component class.
+ * Component to display the header.
  * @function Field
  * @returns {string} Markup of the component.
  */
@@ -38,6 +38,9 @@ const Header = ({ pathname }) => (
  * @static
  */
 Header.propTypes = {
+  /**
+   * Pathname of the current object
+   */
   pathname: PropTypes.string.isRequired,
 };
 

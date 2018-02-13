@@ -43,5 +43,5 @@ Go to [http://localhost:4300](http://localhost:4300) in your browser.
 
 ### License
 
-The BSD 3-Clause License. Copyrights hold the Plone Foundation.
+MIT License. Copyrights hold the Plone Foundation.
 See [LICENSE.md](LICENSE.md) for details.

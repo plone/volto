@@ -11,9 +11,9 @@ import { Table } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
 /**
- * Tabular view component class.
+ * Component to display the tabular view.
  * @function TabularView
- * @params {object} content Content object.
+ * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
 const TabularView = ({ content }) => (
@@ -77,15 +77,42 @@ const TabularView = ({ content }) => (
  * @static
  */
 TabularView.propTypes = {
+  /**
+   * Content of the object
+   */
   content: PropTypes.shape({
+    /**
+     * Title of the object
+     */
     title: PropTypes.string,
+    /**
+     * Description of the object
+     */
     description: PropTypes.string,
+    /**
+     * Child items of the object
+     */
     items: PropTypes.arrayOf(
       PropTypes.shape({
+        /**
+         * Title of the item
+         */
         title: PropTypes.string,
+        /**
+         * Description of the item
+         */
         description: PropTypes.string,
+        /**
+         * Url of the item
+         */
         url: PropTypes.string,
+        /**
+         * Review state of the item
+         */
         review_state: PropTypes.string,
+        /**
+         * Type of the item
+         */
         '@type': PropTypes.string,
       }),
     ),

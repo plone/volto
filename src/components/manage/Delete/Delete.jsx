@@ -26,11 +26,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Delete container class.
- * @class Delete
- * @extends Component
- */
 @injectIntl
 @connect(
   (state, props) => ({
@@ -40,6 +35,11 @@ const messages = defineMessages({
   }),
   dispatch => bindActionCreators({ deleteContent, getContent }, dispatch),
 )
+/**
+ * Component to display the delete view.
+ * @class Delete
+ * @extends Component
+ */
 export default class Delete extends Component {
   /**
    * Property types.
@@ -47,16 +47,43 @@ export default class Delete extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to delete content
+     */
     deleteContent: PropTypes.func.isRequired,
+    /**
+     * Action to get content
+     */
     getContent: PropTypes.func.isRequired,
+    /**
+     * Delete request status
+     */
     deleteRequest: PropTypes.shape({
+      /**
+       * Loading status
+       */
       loading: PropTypes.bool,
+      /**
+       * Loaded status
+       */
       loaded: PropTypes.bool,
     }).isRequired,
+    /**
+     * Pathname of the object
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * Data of the object
+     */
     content: PropTypes.shape({
+      /**
+       * Title of the object
+       */
       title: PropTypes.string,
     }),
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 
@@ -84,7 +111,6 @@ export default class Delete extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getContent(this.props.pathname.split('/delete')[0]);
@@ -94,7 +120,6 @@ export default class Delete extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
@@ -107,7 +132,6 @@ export default class Delete extends Component {
   /**
    * Submit handler
    * @method onSubmit
-   * @returns {undefined}
    */
   onSubmit() {
     this.props.deleteContent(this.props.pathname.replace('/delete', ''));
@@ -116,7 +140,6 @@ export default class Delete extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
    */
   onCancel() {
     browserHistory.push(this.props.pathname.replace('/delete', ''));

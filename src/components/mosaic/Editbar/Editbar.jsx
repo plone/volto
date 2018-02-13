@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Icon, Menu } from 'semantic-ui-react';
 
 /**
- * Editbar component class.
+ * Component to display an editbar.
  * @function Editbar
  * @param {Object} props Component properties.
  * @param {func} props.insertTile Insert tile method.
@@ -54,6 +54,9 @@ const Editbar = ({ insertTile }) => (
  * @static
  */
 Editbar.propTypes = {
+  /**
+   * Action to insert a tile
+   */
   insertTile: PropTypes.func.isRequired,
 };
 

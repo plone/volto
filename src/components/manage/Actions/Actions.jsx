@@ -61,11 +61,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Actions container class.
- * @class Actions
- * @extends Component
- */
 @injectIntl
 @connect(
   state => ({
@@ -80,6 +75,11 @@ const messages = defineMessages({
       dispatch,
     ),
 )
+/**
+ * Component to display actions.
+ * @class Actions
+ * @extends Component
+ */
 export default class Actions extends Component {
   /**
    * Property types.
@@ -87,17 +87,53 @@ export default class Actions extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Pathname of the current object
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * Id of the current object
+     */
     id: PropTypes.string.isRequired,
+    /**
+     * Title of the current object
+     */
     title: PropTypes.string.isRequired,
+    /**
+     * Previously executed action, can be cut or copy
+     */
     action: PropTypes.string,
+    /**
+     * Ids of the source objects of the action
+     */
     source: PropTypes.arrayOf(PropTypes.string),
+    /**
+     * Action to handle cut
+     */
     cut: PropTypes.func.isRequired,
+    /**
+     * Action to handle copy
+     */
     copy: PropTypes.func.isRequired,
+    /**
+     * Action to handle copy content
+     */
     copyContent: PropTypes.func.isRequired,
+    /**
+     * Action to handle move content
+     */
     moveContent: PropTypes.func.isRequired,
+    /**
+     * Action to add a notification message
+     */
     addMessage: PropTypes.func.isRequired,
+    /**
+     * Expanded state
+     */
     expanded: PropTypes.bool,
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 
@@ -134,7 +170,6 @@ export default class Actions extends Component {
   /**
    * On rename ok
    * @method onRenameOk
-   * @returns {undefined}
    */
   onRenameOk() {
     this.setState({
@@ -145,7 +180,6 @@ export default class Actions extends Component {
   /**
    * On rename cancel
    * @method onRenameCancel
-   * @returns {undefined}
    */
   onRenameCancel() {
     this.setState({
@@ -156,7 +190,6 @@ export default class Actions extends Component {
   /**
    * Cut handler
    * @method cut
-   * @returns {undefined}
    */
   cut() {
     this.props.cut([getBaseUrl(this.props.pathname)]);
@@ -172,7 +205,6 @@ export default class Actions extends Component {
   /**
    * Copy handler
    * @method copy
-   * @returns {undefined}
    */
   copy() {
     this.props.copy([getBaseUrl(this.props.pathname)]);
@@ -188,7 +220,6 @@ export default class Actions extends Component {
   /**
    * Paste handler
    * @method paste
-   * @returns {undefined}
    */
   paste() {
     if (this.props.action === 'copy') {
@@ -213,7 +244,6 @@ export default class Actions extends Component {
   /**
    * Rename handler
    * @method rename
-   * @returns {undefined}
    */
   rename() {
     this.setState({

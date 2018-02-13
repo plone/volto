@@ -11,7 +11,7 @@ import { Table } from 'semantic-ui-react';
 import moment from 'moment';
 
 /**
- * Diff field component.
+ * Component to display a diff field.
  * @function DiffField
  * @param {*} one Field one
  * @param {*} two Field two
@@ -122,12 +122,33 @@ const DiffField = ({ one, two, view, schema }) => {
  * @static
  */
 DiffField.propTypes = {
+  /**
+   * First field to compare
+   */
   one: PropTypes.any.isRequired,
+  /**
+   * Second field to compare
+   */
   two: PropTypes.any.isRequired,
+  /**
+   * View of the diff (split or unified)
+   */
   view: PropTypes.string.isRequired,
+  /**
+   * Schema of the field to be compared
+   */
   schema: PropTypes.shape({
+    /**
+     * Widget of the field
+     */
     widget: PropTypes.string,
+    /**
+     * Type of the field
+     */
     type: PropTypes.string,
+    /**
+     * Title of the field
+     */
     title: PropTypes.string,
   }).isRequired,
 };

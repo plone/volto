@@ -15,7 +15,7 @@ import { FormattedMessage } from 'react-intl';
 import { getIcon } from '../../../helpers';
 
 /**
- * Contents item component class.
+ * Component to display a folder contents item.
  * @function ContentsItemComponent
  * @returns {string} Markup of the component.
  */
@@ -128,30 +128,93 @@ export const ContentsItemComponent = ({
  * @static
  */
 ContentsItemComponent.propTypes = {
+  /**
+   * Item data
+   */
   item: PropTypes.shape({
+    /**
+     * Id of the item
+     */
     '@id': PropTypes.string,
+    /**
+     * Title of the item
+     */
     title: PropTypes.string,
+    /**
+     * Is the item folderish?
+     */
     is_folderish: PropTypes.bool,
+    /**
+     * Type of the item
+     */
     '@type': PropTypes.string,
   }).isRequired,
+  /**
+   * Is the item selected?
+   */
   selected: PropTypes.bool.isRequired,
+  /**
+   * Handler when item is being clicked on
+   */
   onClick: PropTypes.func.isRequired,
+  /**
+   * Columns to show in the folder listing
+   */
   indexes: PropTypes.arrayOf(
     PropTypes.shape({
+      /**
+       * Id of the index
+       */
       id: PropTypes.string,
+      /**
+       * Type of the index
+       */
       type: PropTypes.string,
     }),
   ).isRequired,
+  /**
+   * Action called when cutting an item
+   */
   onCut: PropTypes.func.isRequired,
+  /**
+   * Action called when copying an item
+   */
   onCopy: PropTypes.func.isRequired,
+  /**
+   * Action called when deleting an item
+   */
   onDelete: PropTypes.func.isRequired,
+  /**
+   * Action called when moving an item to the top
+   */
   onMoveToTop: PropTypes.func.isRequired,
+  /**
+   * Action called when moving an item to the bottom
+   */
   onMoveToBottom: PropTypes.func.isRequired,
+  /**
+   * Handler to connect a drag preview
+   */
   connectDragPreview: PropTypes.func.isRequired,
+  /**
+   * Handler to connect a drag source
+   */
   connectDragSource: PropTypes.func.isRequired,
+  /**
+   * Handler to connect a drop target
+   */
   connectDropTarget: PropTypes.func.isRequired,
+  /**
+   * Dragging status
+   */
   isDragging: PropTypes.bool.isRequired,
+  /**
+   * Order of the item in the folder
+   */
   order: PropTypes.number.isRequired,
+  /**
+   * Action to order an item in the folder
+   */
   onOrderItem: PropTypes.func.isRequired,
 };
 

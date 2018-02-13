@@ -97,11 +97,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * ContentsComponent class.
- * @class ContentsComponent
- * @extends Component
- */
 @DragDropContext(HTML5Backend)
 @injectIntl
 @connect(
@@ -135,6 +130,11 @@ const messages = defineMessages({
       dispatch,
     ),
 )
+/**
+ * Component to list the folder contents.
+ * @class ContentsComponent
+ * @extends Component
+ */
 export default class ContentsComponent extends Component {
   /**
    * Property types.
@@ -142,43 +142,136 @@ export default class ContentsComponent extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action which was executed (cut, copy or none)
+     */
     action: PropTypes.string,
+    /**
+     * Source id's of the action
+     */
     source: PropTypes.arrayOf(PropTypes.string),
+    /**
+     * Action to search content
+     */
     searchContent: PropTypes.func.isRequired,
+    /**
+     * Action to cut an object
+     */
     cut: PropTypes.func.isRequired,
+    /**
+     * Action to copy an object
+     */
     copy: PropTypes.func.isRequired,
+    /**
+     * Action to copy content
+     */
     copyContent: PropTypes.func.isRequired,
+    /**
+     * Action to delete content
+     */
     deleteContent: PropTypes.func.isRequired,
+    /**
+     * Action to move content
+     */
     moveContent: PropTypes.func.isRequired,
+    /**
+     * Action to order content
+     */
     orderContent: PropTypes.func.isRequired,
+    /**
+     * Action to sort content
+     */
     sortContent: PropTypes.func.isRequired,
+    /**
+     * Action to display a notification message
+     */
     addMessage: PropTypes.func.isRequired,
+    /**
+     * Clipboard request status
+     */
     clipboardRequest: PropTypes.shape({
+      /**
+       * Loading status
+       */
       loading: PropTypes.bool,
+      /**
+       * Loaded status
+       */
       loaded: PropTypes.bool,
     }).isRequired,
+    /**
+     * Delete request status
+     */
     deleteRequest: PropTypes.shape({
+      /**
+       * Loading status
+       */
       loading: PropTypes.bool,
+      /**
+       * Loaded status
+       */
       loaded: PropTypes.bool,
     }).isRequired,
+    /**
+     * Edit request status
+     */
     editRequest: PropTypes.shape({
+      /**
+       * Loading status
+       */
       loading: PropTypes.bool,
+      /**
+       * Loaded status
+       */
       loaded: PropTypes.bool,
     }).isRequired,
+    /**
+     * Search request status
+     */
     searchRequest: PropTypes.shape({
+      /**
+       * Loading status
+       */
       loading: PropTypes.bool,
+      /**
+       * Loaded status
+       */
       loaded: PropTypes.bool,
     }).isRequired,
+    /**
+     * Items in the content listing
+     */
     items: PropTypes.arrayOf(
       PropTypes.shape({
+        /**
+         * Id of the item
+         */
         '@id': PropTypes.string,
+        /**
+         * Type of the item
+         */
         '@type': PropTypes.string,
+        /**
+         * Title of the item
+         */
         title: PropTypes.string,
+        /**
+         * Description of the item
+         */
         description: PropTypes.string,
       }),
     ),
+    /**
+     * Total number of items
+     */
     total: PropTypes.number.isRequired,
+    /**
+     * Pathname of the current location
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 

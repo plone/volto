@@ -10,7 +10,7 @@ import { Grid as UIGrid } from 'semantic-ui-react';
 import { ColumnResizeHelper, Row } from '../../../components';
 
 /**
- * Grid component class.
+ * Component to display a grid.
  * @function Grid
  * @param {Object} props Component properties.
  * @param {Object[]} props.rows Rows in the grid.
@@ -59,14 +59,44 @@ const Grid = ({
  * @static
  */
 Grid.propTypes = {
-  rows: PropTypes.arrayOf(PropTypes.shape({ columns: PropTypes.array }))
-    .isRequired,
+  /**
+   * Rows in the grid
+   */
+  rows: PropTypes.arrayOf(
+    PropTypes.shape({
+      /**
+       * Columns in the row
+       */
+      columns: PropTypes.array,
+    }),
+  ).isRequired,
+  /**
+   * Action to select a tile
+   */
   selectTile: PropTypes.func.isRequired,
+  /**
+   * Actoin to delete a tile
+   */
   deleteTile: PropTypes.func.isRequired,
+  /**
+   * Action to set the hovered state
+   */
   setHovered: PropTypes.func.isRequired,
+  /**
+   * Action to handle the drop event
+   */
   handleDrop: PropTypes.func.isRequired,
+  /**
+   * Action to set the tile content
+   */
   setTileContent: PropTypes.func.isRequired,
+  /**
+   * Handler called when resizing starts
+   */
   startResize: PropTypes.func.isRequired,
+  /**
+   * Handler called when resizig ends
+   */
   endResize: PropTypes.func.isRequired,
 };
 

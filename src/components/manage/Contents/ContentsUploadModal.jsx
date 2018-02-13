@@ -27,17 +27,17 @@ import { FormattedMessage } from 'react-intl';
 
 import { addContent } from '../../../actions';
 
-/**
- * ContentsUploadModal class.
- * @class ContentsUploadModal
- * @extends Component
- */
 @connect(
   state => ({
     request: state.content.add,
   }),
   dispatch => bindActionCreators({ addContent }, dispatch),
 )
+/**
+ * Component to display an upload modal in the folder contents.
+ * @class ContentsUploadModal
+ * @extends Component
+ */
 export default class ContentsUploadModal extends Component {
   /**
    * Property types.
@@ -45,14 +45,38 @@ export default class ContentsUploadModal extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to add content
+     */
     addContent: PropTypes.func.isRequired,
+    /**
+     * Pathname of the current object
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * Request status
+     */
     request: PropTypes.shape({
+      /**
+       * Loading status
+       */
       loading: PropTypes.bool,
+      /**
+       * Loaded status
+       */
       loaded: PropTypes.bool,
     }).isRequired,
+    /**
+     * True when modal is open
+     */
     open: PropTypes.bool.isRequired,
+    /**
+     * Handler when ok button is pressed
+     */
     onOk: PropTypes.func.isRequired,
+    /**
+     * Handler when cancel button is pressed
+     */
     onCancel: PropTypes.func.isRequired,
   };
 
@@ -77,7 +101,6 @@ export default class ContentsUploadModal extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.request.loading && nextProps.request.loaded) {
@@ -92,7 +115,6 @@ export default class ContentsUploadModal extends Component {
    * Remove file handler
    * @method onRemoveFile
    * @param {Object} event Event object
-   * @returns {undefined}
    */
   onRemoveFile(event) {
     this.setState({
@@ -108,7 +130,6 @@ export default class ContentsUploadModal extends Component {
    * Drop handler
    * @method onDrop
    * @param {array} files File objects
-   * @returns {undefined}
    */
   onDrop(files) {
     this.setState({
@@ -119,7 +140,6 @@ export default class ContentsUploadModal extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
    */
   onCancel() {
     this.props.onCancel();
@@ -131,7 +151,6 @@ export default class ContentsUploadModal extends Component {
   /**
    * Submit handler
    * @method onSubmit
-   * @returns {undefined}
    */
   onSubmit() {
     Promise.all(

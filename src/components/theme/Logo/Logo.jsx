@@ -21,7 +21,7 @@ const messages = defineMessages({
 });
 
 /**
- * Logo component class.
+ * Component to display a logo.
  * @function Logo
  * @param {Object} intl Intl object
  * @returns {string} Markup of the component.
@@ -42,6 +42,9 @@ const Logo = ({ intl }) => (
  * @static
  */
 Logo.propTypes = {
+  /**
+   * i18n object
+   */
   intl: intlShape.isRequired,
 };
 
