@@ -71,7 +71,7 @@ TextWidget.propTypes = {
   /**
    * Value of the field
    */
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   /**
    * On change handler
    */

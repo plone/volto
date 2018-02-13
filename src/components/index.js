@@ -23,6 +23,7 @@ export SearchWidget from './theme/SearchWidget/SearchWidget';
 export Title from './theme/Title/Title';
 export App from './theme/App/App';
 export DocumentView from './theme/View/DocumentView';
+export ListingView from './theme/View/ListingView';
 export Login from './theme/Login/Login';
 export Logout from './theme/Logout/Logout';
 export NotFound from './theme/NotFound/NotFound';

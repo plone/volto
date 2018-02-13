@@ -22,7 +22,7 @@ exports[`Footer renders a footer component 1`] = `
       >
         ©
       </abbr>
-       2000-2017 by the 
+       2000-2018 by the 
       <a
         href="http://plone.org/foundation"
       >
