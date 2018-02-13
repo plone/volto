@@ -4,10 +4,25 @@
  */
 
 import {
+  ADD_USER,
   GET_USER,
   EDIT_USER,
   EDIT_PASSWORD,
+  INITIAL_PASSWORD,
 } from '../../constants/ActionTypes';
+
+/**
+ * Add user function.
+ * @function addUser
+ * @param {Object|Array} content User data.
+ * @returns {Object} Add user action.
+ */
+export function addUser(content) {
+  return {
+    type: ADD_USER,
+    promise: api => api.post('/@users', { data: content }),
+  };
+}
 
 /**
  * Get user function
@@ -51,6 +66,27 @@ export function editPassword(id, oldPassword, newPassword) {
       api.post(`/@users/${id}/reset-password`, {
         data: {
           old_password: oldPassword,
+          new_password: newPassword,
+        },
+      }),
+  };
+}
+
+/**
+ * Set initial password function
+ * @function setInitialPassword
+ * @param {string} id User id
+ * @param {string} token One time user token.
+ * @param {string} newPassword New password.
+ * @returns {Object} Set initial password action.
+ */
+export function setInitialPassword(id, token, newPassword) {
+  return {
+    type: INITIAL_PASSWORD,
+    promise: api =>
+      api.post(`/@users/${id}/reset-password`, {
+        data: {
+          reset_token: token,
           new_password: newPassword,
         },
       }),

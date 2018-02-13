@@ -2,8 +2,11 @@ import { getBaseUrl, getIcon, getView } from './Url';
 
 describe('Url', () => {
   describe('getBaseUrl', () => {
-    it('can remove a view name from the url', () => {
+    it('can remove a view name from an absolute url', () => {
       expect(getBaseUrl('http://localhost/edit')).toBe('http://localhost');
+    });
+    it('can remove a view name from a relative url', () => {
+      expect(getBaseUrl('/contents')).toBe('/');
     });
   });
 

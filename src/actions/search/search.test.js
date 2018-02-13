@@ -1,5 +1,8 @@
-import searchContent from './search';
-import { SEARCH_CONTENT } from '../../constants/ActionTypes';
+import { resetSearchContent, searchContent } from './search';
+import {
+  RESET_SEARCH_CONTENT,
+  SEARCH_CONTENT,
+} from '../../constants/ActionTypes';
 
 describe('Search action', () => {
   describe('searchContent', () => {
@@ -32,6 +35,14 @@ describe('Search action', () => {
       action.promise(apiMock);
 
       expect(apiMock.get).toBeCalledWith(`${url}/@search`);
+    });
+  });
+
+  describe('resetSearchContent', () => {
+    it('can be called', () => {
+      const action = resetSearchContent();
+
+      expect(action.type).toEqual(RESET_SEARCH_CONTENT);
     });
   });
 });

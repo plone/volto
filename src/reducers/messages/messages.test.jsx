@@ -1,5 +1,9 @@
 import messages from './messages';
-import { ADD_MESSAGE, REMOVE_MESSAGE } from '../../constants/ActionTypes';
+import {
+  ADD_MESSAGE,
+  REMOVE_MESSAGE,
+  PURGE_MESSAGES,
+} from '../../constants/ActionTypes';
 
 describe('Messages reducer', () => {
   it('should return the initial state', () => {
@@ -54,6 +58,32 @@ describe('Messages reducer', () => {
       ),
     ).toEqual({
       messages: [0],
+    });
+  });
+
+  it('should handle PURGE_MESSAGES ready to dismiss on next purge', () => {
+    expect(
+      messages(
+        { messages: [{ show: true }] },
+        {
+          type: PURGE_MESSAGES,
+        },
+      ),
+    ).toEqual({
+      messages: [{ show: false }],
+    });
+  });
+
+  it('should handle PURGE_MESSAGES by effectively purging all ready to purge messages', () => {
+    expect(
+      messages(
+        { messages: [{ show: false }] },
+        {
+          type: PURGE_MESSAGES,
+        },
+      ),
+    ).toEqual({
+      messages: [],
     });
   });
 });

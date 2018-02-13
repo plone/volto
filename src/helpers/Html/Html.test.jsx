@@ -31,6 +31,8 @@ describe('Html', () => {
             main: 'style.css',
           },
           javascript: {
+            vendor: 'vendor.js',
+            manifest: 'manifest.js',
             main: 'main.js',
           },
         }}

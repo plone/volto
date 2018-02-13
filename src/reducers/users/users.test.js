@@ -5,6 +5,11 @@ describe('Users reducer', () => {
   it('should return the initial state', () => {
     expect(users()).toEqual({
       user: {},
+      add: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
       get: {
         error: null,
         loaded: false,
@@ -20,6 +25,11 @@ describe('Users reducer', () => {
         loaded: false,
         loading: false,
       },
+      initial: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
     });
   });
 
@@ -30,6 +40,11 @@ describe('Users reducer', () => {
       }),
     ).toEqual({
       user: {},
+      add: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
       get: {
         error: null,
         loaded: false,
@@ -45,6 +60,11 @@ describe('Users reducer', () => {
         loaded: false,
         loading: false,
       },
+      initial: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
     });
   });
 
@@ -56,6 +76,11 @@ describe('Users reducer', () => {
       }),
     ).toEqual({
       user: 'result',
+      add: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
       get: {
         error: null,
         loaded: true,
@@ -71,6 +96,11 @@ describe('Users reducer', () => {
         loaded: false,
         loading: false,
       },
+      initial: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
     });
   });
 
@@ -78,10 +108,17 @@ describe('Users reducer', () => {
     expect(
       users(undefined, {
         type: `${GET_USER}_FAIL`,
-        error: 'failed',
+        error: {
+          error: 'failed',
+        },
       }),
     ).toEqual({
       user: {},
+      add: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
       get: {
         error: 'failed',
         loaded: false,
@@ -93,6 +130,11 @@ describe('Users reducer', () => {
         loading: false,
       },
       password: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      initial: {
         error: null,
         loaded: false,
         loading: false,
@@ -107,6 +149,11 @@ describe('Users reducer', () => {
       }),
     ).toEqual({
       user: {},
+      add: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
       get: {
         error: null,
         loaded: false,
@@ -122,6 +169,11 @@ describe('Users reducer', () => {
         loaded: false,
         loading: false,
       },
+      initial: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
     });
   });
 
@@ -129,10 +181,17 @@ describe('Users reducer', () => {
     expect(
       users(undefined, {
         type: `${EDIT_USER}_FAIL`,
-        error: 'failed',
+        error: {
+          error: 'failed',
+        },
       }),
     ).toEqual({
       user: {},
+      add: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
       get: {
         error: null,
         loaded: false,
@@ -144,6 +203,11 @@ describe('Users reducer', () => {
         loading: false,
       },
       password: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      initial: {
         error: null,
         loaded: false,
         loading: false,

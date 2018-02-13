@@ -1,5 +1,8 @@
 import search from './search';
-import { SEARCH_CONTENT } from '../../constants/ActionTypes';
+import {
+  RESET_SEARCH_CONTENT,
+  SEARCH_CONTENT,
+} from '../../constants/ActionTypes';
 import config from '../../config';
 
 describe('Search reducer', () => {
@@ -63,6 +66,20 @@ describe('Search reducer', () => {
       }),
     ).toEqual({
       error: 'failed',
+      items: [],
+      total: 0,
+      loaded: false,
+      loading: false,
+    });
+  });
+
+  it('should handle RESET_SEARCH_CONTENT', () => {
+    expect(
+      search(undefined, {
+        type: RESET_SEARCH_CONTENT,
+      }),
+    ).toEqual({
+      error: null,
       items: [],
       total: 0,
       loaded: false,

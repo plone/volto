@@ -1,43 +1,37 @@
 /**
- * Users reducer.
- * @module reducers/users
+ * Comments reducer.
+ * @module reducers/comments
  */
 
 import {
-  ADD_USER,
-  GET_USER,
-  EDIT_USER,
-  EDIT_PASSWORD,
-  INITIAL_PASSWORD,
+  ADD_COMMENT,
+  DELETE_COMMENT,
+  EDIT_COMMENT,
+  GET_COMMENTS,
 } from '../../constants/ActionTypes';
 
 const initialState = {
-  user: {},
   add: {
-    error: null,
     loaded: false,
     loading: false,
+    error: null,
   },
-  get: {
-    error: null,
+  delete: {
     loaded: false,
     loading: false,
+    error: null,
   },
   edit: {
-    error: null,
     loaded: false,
     loading: false,
-  },
-  password: {
     error: null,
+  },
+  get: {
     loaded: false,
     loading: false,
-  },
-  initial: {
     error: null,
-    loaded: false,
-    loading: false,
   },
+  items: [],
 };
 
 /**
@@ -51,19 +45,18 @@ function getRequestKey(actionType) {
 }
 
 /**
- * Users reducer.
- * @function users
+ * Comments reducer.
+ * @function comments
  * @param {Object} state Current state.
  * @param {Object} action Action to be handled.
  * @returns {Object} New state.
  */
-export default function users(state = initialState, action = {}) {
+export default function comments(state = initialState, action = {}) {
   switch (action.type) {
-    case `${ADD_USER}_PENDING`:
-    case `${GET_USER}_PENDING`:
-    case `${EDIT_USER}_PENDING`:
-    case `${EDIT_PASSWORD}_PENDING`:
-    case `${INITIAL_PASSWORD}_PENDING`:
+    case `${ADD_COMMENT}_PENDING`:
+    case `${DELETE_COMMENT}_PENDING`:
+    case `${EDIT_COMMENT}_PENDING`:
+    case `${GET_COMMENTS}_PENDING`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -72,20 +65,19 @@ export default function users(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${GET_USER}_SUCCESS`:
+    case `${GET_COMMENTS}_SUCCESS`:
       return {
         ...state,
-        user: action.result,
+        items: action.result.items,
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,
           error: null,
         },
       };
-    case `${ADD_USER}_SUCCESS`:
-    case `${EDIT_USER}_SUCCESS`:
-    case `${EDIT_PASSWORD}_SUCCESS`:
-    case `${INITIAL_PASSWORD}_SUCCESS`:
+    case `${ADD_COMMENT}_SUCCESS`:
+    case `${DELETE_COMMENT}_SUCCESS`:
+    case `${EDIT_COMMENT}_SUCCESS`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -94,26 +86,15 @@ export default function users(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${GET_USER}_FAIL`:
+    case `${ADD_COMMENT}_FAIL`:
+    case `${GET_COMMENTS}_FAIL`:
       return {
         ...state,
-        user: {},
+        items: [],
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: false,
-          error: action.error.error,
-        },
-      };
-    case `${ADD_USER}_FAIL`:
-    case `${EDIT_USER}_FAIL`:
-    case `${EDIT_PASSWORD}_FAIL`:
-    case `${INITIAL_PASSWORD}_FAIL`:
-      return {
-        ...state,
-        [getRequestKey(action.type)]: {
-          loading: false,
-          loaded: false,
-          error: action.error.error,
+          error: action.error,
         },
       };
     default:

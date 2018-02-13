@@ -14,7 +14,7 @@ describe('Navigation action', () => {
       };
       action.promise(apiMock);
 
-      expect(apiMock.get).toBeCalledWith(`${url}/@components/navigation`);
+      expect(apiMock.get).toBeCalledWith(`${url}/@navigation`);
     });
   });
 });

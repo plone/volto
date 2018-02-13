@@ -14,7 +14,7 @@ describe('Breadcrumbs action', () => {
       };
       action.promise(apiMock);
 
-      expect(apiMock.get).toBeCalledWith(`${url}/@components/breadcrumbs`);
+      expect(apiMock.get).toBeCalledWith(`${url}/@breadcrumbs`);
     });
   });
 });

@@ -1,11 +1,28 @@
-import { getUser, editUser, editPassword } from './users';
+import { addUser, getUser, editUser, editPassword } from './users';
 import {
+  ADD_USER,
   GET_USER,
   EDIT_USER,
   EDIT_PASSWORD,
 } from '../../constants/ActionTypes';
 
 describe('Users action', () => {
+  describe('addUser', () => {
+    it('should create an action to add a user', () => {
+      const content = 'Hello World!';
+      const action = addUser(content);
+
+      expect(action.type).toEqual(ADD_USER);
+
+      const apiMock = {
+        post: jest.fn(),
+      };
+      action.promise(apiMock);
+
+      expect(apiMock.post).toBeCalledWith('/@users', { data: content });
+    });
+  });
+
   describe('getEdit', () => {
     it('should create an action to get a user', () => {
       const id = 'john';

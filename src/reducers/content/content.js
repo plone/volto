@@ -8,6 +8,7 @@ import {
   DELETE_CONTENT,
   EDIT_CONTENT,
   GET_CONTENT,
+  ORDER_CONTENT,
 } from '../../constants/ActionTypes';
 import config from '../../config';
 
@@ -28,6 +29,11 @@ const initialState = {
     error: null,
   },
   get: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  order: {
     loaded: false,
     loading: false,
     error: null,
@@ -58,6 +64,7 @@ export default function content(state = initialState, action = {}) {
     case `${DELETE_CONTENT}_PENDING`:
     case `${EDIT_CONTENT}_PENDING`:
     case `${GET_CONTENT}_PENDING`:
+    case `${ORDER_CONTENT}_PENDING`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -66,6 +73,7 @@ export default function content(state = initialState, action = {}) {
           error: null,
         },
       };
+    case `${ADD_CONTENT}_SUCCESS`:
     case `${GET_CONTENT}_SUCCESS`:
       return {
         ...state,
@@ -85,9 +93,9 @@ export default function content(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${ADD_CONTENT}_SUCCESS`:
     case `${EDIT_CONTENT}_SUCCESS`:
     case `${DELETE_CONTENT}_SUCCESS`:
+    case `${ORDER_CONTENT}_SUCCESS`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -100,6 +108,7 @@ export default function content(state = initialState, action = {}) {
     case `${DELETE_CONTENT}_FAIL`:
     case `${EDIT_CONTENT}_FAIL`:
     case `${GET_CONTENT}_FAIL`:
+    case `${ORDER_CONTENT}_FAIL`:
       return {
         ...state,
         data: null,

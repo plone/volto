@@ -28,6 +28,11 @@ import serialize from 'serialize-javascript';
 const Html = ({ assets, component, store }) => {
   const content = ReactDOM.renderToString(component);
   const head = Helmet.rewind();
+  // Workaround for testing
+  // Otherwise we get TypeError: _reactHelmet2.default.renderStatic is not a function
+  const helmet =
+    process.env.NODE_ENV === 'production' ? Helmet.renderStatic() : null;
+  const bodyAttrs = helmet && helmet.bodyAttributes.toComponent();
 
   return (
     <html lang="en">
@@ -59,7 +64,7 @@ const Html = ({ assets, component, store }) => {
           charSet="UTF-8"
         />
       </head>
-      <body>
+      <body {...bodyAttrs}>
         <div id="main" dangerouslySetInnerHTML={{ __html: content }} />
         <script
           dangerouslySetInnerHTML={{
@@ -67,6 +72,8 @@ const Html = ({ assets, component, store }) => {
           }}
           charSet="UTF-8"
         />
+        <script src={assets.javascript.manifest} charSet="UTF-8" />
+        <script src={assets.javascript.vendor} charSet="UTF-8" />
         <script src={assets.javascript.main} charSet="UTF-8" />
       </body>
     </html>

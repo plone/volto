@@ -9,7 +9,7 @@ export default defaults(
   {
     host: process.env.HOST,
     port: process.env.PORT,
-    apiPath: process.env.API_APTH,
+    apiPath: process.env.API_PATH,
   },
   {
     host: 'localhost',

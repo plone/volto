@@ -1,6 +1,6 @@
 /**
  * Content actions.
- * @module actions/search/search
+ * @module actions/content/content
  */
 
 import {
@@ -8,6 +8,7 @@ import {
   DELETE_CONTENT,
   EDIT_CONTENT,
   GET_CONTENT,
+  ORDER_CONTENT,
 } from '../../constants/ActionTypes';
 
 /**
@@ -75,7 +76,7 @@ export function editContent(urls, content) {
  */
 export function orderContent(parent, url, delta, subset) {
   return {
-    type: EDIT_CONTENT,
+    type: ORDER_CONTENT,
     promise: api =>
       api.patch(parent, {
         data: { ordering: { obj_id: url, delta, subset_ids: subset } },
@@ -111,6 +112,7 @@ export function sortContent(url, on, order) {
 export function getContent(url, version) {
   return {
     type: GET_CONTENT,
-    promise: api => api.get(`${url}${version ? `/@history/${version}` : ''}`),
+    promise: api =>
+      api.get(`${url}${version ? `/@history/${version}` : ''}?fullobjects`),
   };
 }

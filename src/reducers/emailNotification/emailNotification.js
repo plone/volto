@@ -1,48 +1,45 @@
 /**
- * Schema reducer.
- * @module reducers/schema
+ * emailNotification reducer.
+ * @module reducers/emailNotification
  */
 
-import { GET_SCHEMA } from '../../constants/ActionTypes';
+import { EMAIL_NOTIFICATION } from '../../constants/ActionTypes';
 
 const initialState = {
   error: null,
   loaded: false,
   loading: false,
-  schema: null,
 };
 
 /**
- * Schema reducer.
- * @function schema
+ * emailNotification reducer.
+ * @function emailNotification
  * @param {Object} state Current state.
  * @param {Object} action Action to be handled.
  * @returns {Object} New state.
  */
-export default function schema(state = initialState, action = {}) {
+export default function emailNotification(state = initialState, action = {}) {
   switch (action.type) {
-    case `${GET_SCHEMA}_PENDING`:
+    case `${EMAIL_NOTIFICATION}_PENDING`:
       return {
         ...state,
         error: null,
-        loading: true,
         loaded: false,
+        loading: true,
       };
-    case `${GET_SCHEMA}_SUCCESS`:
+    case `${EMAIL_NOTIFICATION}_SUCCESS`:
       return {
         ...state,
         error: null,
-        loading: false,
         loaded: true,
-        schema: action.result,
+        loading: false,
       };
-    case `${GET_SCHEMA}_FAIL`:
+    case `${EMAIL_NOTIFICATION}_FAIL`:
       return {
         ...state,
         error: action.error,
-        loading: false,
         loaded: false,
-        schema: null,
+        loading: false,
       };
     default:
       return state;

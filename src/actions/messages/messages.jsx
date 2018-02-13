@@ -4,7 +4,11 @@
  */
 import { v4 as uuid } from 'uuid';
 
-import { ADD_MESSAGE, REMOVE_MESSAGE } from '../../constants/ActionTypes';
+import {
+  ADD_MESSAGE,
+  REMOVE_MESSAGE,
+  PURGE_MESSAGES,
+} from '../../constants/ActionTypes';
 
 /**
  * Add message function
@@ -21,6 +25,7 @@ export function addMessage(title, body, level) {
     title,
     body,
     level,
+    show: true,
   };
 }
 
@@ -34,5 +39,16 @@ export function removeMessage(index) {
   return {
     type: REMOVE_MESSAGE,
     index,
+  };
+}
+
+/**
+ * Purge all messages function
+ * @function purgeMessages
+ * @returns {Object} Add message action.
+ */
+export function purgeMessages() {
+  return {
+    type: PURGE_MESSAGES,
   };
 }
