@@ -4,6 +4,7 @@
 ### Added
 - Added pastanaga theme package @jaroel, @robgietema
 - Added registry based controlpanels @robgietema
+- Update plone api versions / bootstrap process @thet
 - Added component documentation @robgietema
 - Added component documentation examples @VaysseB
 - Added folder listing view @cekk

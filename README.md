@@ -20,8 +20,7 @@ Plone in React
 ### Install backend
 
     $ cd api
-    $ python bootstrap-buildout.py
-    $ ./bin/buildout
+    $ ./bootstrap.sh
 
 ## Development
 
