@@ -14,6 +14,7 @@
 * Remove phantomjs @tulikavijay
 * Prettier docs for SCA @nileshgulia1
 * Upgrade to node 8 @robgietema
+* Added comments, email notification and vocabularies reducers @robgietema
 
 ## 0.4.0 (2017-05-03)
 
