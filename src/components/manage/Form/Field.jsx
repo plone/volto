@@ -18,7 +18,7 @@ import {
 } from '../../../components';
 
 /**
- * Field component class.
+ * Component to display a field.
  * @function Field
  * @param {Object} props Properties.
  * @returns {string} Markup of the component.
@@ -56,8 +56,17 @@ const Field = props => {
  * @static
  */
 Field.propTypes = {
+  /**
+   * Widget of the field
+   */
   widget: PropTypes.string,
+  /**
+   * Choices of the field
+   */
   choices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  /**
+   * Type of the field
+   */
   type: PropTypes.string,
 };
 

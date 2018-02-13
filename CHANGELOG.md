@@ -4,6 +4,8 @@
 ### Added
 - Added pastanaga theme package @jaroel, @robgietema
 - Added registry based controlpanels @robgietema
+- Added component documentation @robgietema
+- Added component documentation examples @VaysseB
 - Added folder listing view @cekk
 - Fix textwidget proptypes @cekk
 

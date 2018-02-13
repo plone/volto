@@ -12,12 +12,12 @@ import { asyncConnect } from 'redux-connect';
 import { Login } from '../../../components';
 import { logout } from '../../../actions';
 
+@connect(() => ({}), dispatch => bindActionCreators({ logout }, dispatch))
 /**
- * LogoutComponent class.
+ * Component to display the logout view.
  * @class LogoutComponent
  * @extends Component
  */
-@connect(() => ({}), dispatch => bindActionCreators({ logout }, dispatch))
 export class LogoutComponent extends Component {
   /**
    * Property types.
@@ -25,13 +25,15 @@ export class LogoutComponent extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to logout
+     */
     logout: PropTypes.func.isRequired,
   };
 
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
    */
   componentWillMount() {
     this.props.logout();

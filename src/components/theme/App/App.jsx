@@ -28,7 +28,7 @@ import {
 } from '../../../actions';
 
 /**
- * This function defines the app component.
+ * Component to display the app.
  * @function AppComponent
  * @param {Object} props Properties.
  * @param {string} props.pathname Current pathname.
@@ -62,7 +62,13 @@ export const AppComponent = ({ pathname, children }) => {
  * @static
  */
 AppComponent.propTypes = {
+  /**
+   * Child components
+   */
   children: PropTypes.element.isRequired,
+  /**
+   * Pathname of the current object
+   */
   pathname: PropTypes.string.isRequired,
 };
 

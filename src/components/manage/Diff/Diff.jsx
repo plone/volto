@@ -30,11 +30,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * DiffComponent class.
- * @class DiffComponent
- * @extends Component
- */
 @injectIntl
 @connect(
   (state, props) => ({
@@ -50,6 +45,11 @@ const messages = defineMessages({
   }),
   dispatch => bindActionCreators({ getDiff, getSchema, getHistory }, dispatch),
 )
+/**
+ * Component to display the diff view.
+ * @class DiffComponent
+ * @extends Component
+ */
 export default class DiffComponent extends Component {
   /**
    * Property types.
@@ -57,28 +57,79 @@ export default class DiffComponent extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to get a diff
+     */
     getDiff: PropTypes.func.isRequired,
+    /**
+     * Action to get a schema
+     */
     getSchema: PropTypes.func.isRequired,
+    /**
+     * Action to get the history
+     */
     getHistory: PropTypes.func.isRequired,
+    /**
+     * Schema of the object
+     */
     schema: PropTypes.objectOf(PropTypes.any),
+    /**
+     * Pathname of the object
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * Url of the first item to compare
+     */
     one: PropTypes.string.isRequired,
+    /**
+     * Url of the second item to compare
+     */
     two: PropTypes.string.isRequired,
+    /**
+     * Type of diff view to display
+     */
     view: PropTypes.string.isRequired,
+    /**
+     * Diff data
+     */
     data: PropTypes.arrayOf(
       PropTypes.shape({
+        /**
+         * Id of the diff data
+         */
         '@id': PropTypes.string,
       }),
     ).isRequired,
+    /**
+     * History of the item
+     */
     history: PropTypes.arrayOf(
       PropTypes.shape({
+        /**
+         * Version of the history item
+         */
         version: PropTypes.number,
+        /**
+         * Time of the history item
+         */
         time: PropTypes.string,
+        /**
+         * Actor of the history items
+         */
         actor: PropTypes.shape({ fullname: PropTypes.string }),
       }),
     ).isRequired,
+    /**
+     * Title of the object
+     */
     title: PropTypes.string.isRequired,
+    /**
+     * Type of the object
+     */
     type: PropTypes.string.isRequired,
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 
@@ -107,7 +158,6 @@ export default class DiffComponent extends Component {
   /**
    * Component did mount
    * @method componentDidMount
-   * @returns {undefined}
    */
   componentDidMount() {
     this.props.getSchema(this.props.type);
@@ -123,7 +173,6 @@ export default class DiffComponent extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (
@@ -144,7 +193,6 @@ export default class DiffComponent extends Component {
    * @method onSelectView
    * @param {object} event Event object
    * @param {string} value Value
-   * @returns {undefined}
    */
   onSelectView(event, { value }) {
     browserHistory.push(
@@ -158,7 +206,6 @@ export default class DiffComponent extends Component {
    * @method onChangeOne
    * @param {object} event Event object
    * @param {string} value Value
-   * @returns {undefined}
    */
   onChangeOne(event, { value }) {
     browserHistory.push(
@@ -172,7 +219,6 @@ export default class DiffComponent extends Component {
    * @method onChangeTwo
    * @param {object} event Event object
    * @param {string} value Value
-   * @returns {undefined}
    */
   onChangeTwo(event, { value }) {
     browserHistory.push(

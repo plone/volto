@@ -61,11 +61,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * ChangePassword class.
- * @class ChangePassword
- * @extends Component
- */
 @injectIntl
 @connect(
   state => ({
@@ -75,6 +70,11 @@ const messages = defineMessages({
   }),
   dispatch => bindActionCreators({ editPassword, addMessage }, dispatch),
 )
+/**
+ * Component to display the change password view.
+ * @class ChangePassword
+ * @extends Component
+ */
 export default class ChangePassword extends Component {
   /**
    * Property types.
@@ -82,9 +82,21 @@ export default class ChangePassword extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Id of the user
+     */
     userId: PropTypes.string.isRequired,
+    /**
+     * Action to edit the password
+     */
     editPassword: PropTypes.func.isRequired,
+    /**
+     * Action to add a notification message
+     */
     addMessage: PropTypes.func.isRequired,
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 
@@ -104,7 +116,6 @@ export default class ChangePassword extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
-   * @returns {undefined}
    */
   onSubmit(data) {
     if (data.newPassword === data.newPasswordRepeat) {
@@ -124,7 +135,6 @@ export default class ChangePassword extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
    */
   onCancel() {
     browserHistory.goBack();

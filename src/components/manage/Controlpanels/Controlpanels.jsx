@@ -28,11 +28,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Controlpanels container class.
- * @class Controlpanels
- * @extends Component
- */
 @injectIntl
 @connect(
   state => ({
@@ -40,6 +35,11 @@ const messages = defineMessages({
   }),
   dispatch => bindActionCreators({ getControlpanels }, dispatch),
 )
+/**
+ * Component to dispay an overview of the controlpanels.
+ * @class Controlpanels
+ * @extends Component
+ */
 export default class Controlpanels extends Component {
   /**
    * Property types.
@@ -47,14 +47,32 @@ export default class Controlpanels extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to get controlpanels
+     */
     getControlpanels: PropTypes.func.isRequired,
+    /**
+     * List of the controlpanels
+     */
     controlpanels: PropTypes.arrayOf(
       PropTypes.shape({
+        /**
+         * Id of the controlpanel
+         */
         '@id': PropTypes.string,
+        /**
+         * Group of the controlpanel
+         */
         group: PropTypes.string,
+        /**
+         * Title of the controlpanel
+         */
         title: PropTypes.string,
       }),
     ).isRequired,
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 

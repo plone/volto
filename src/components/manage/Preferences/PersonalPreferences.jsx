@@ -48,16 +48,16 @@ const messages = defineMessages({
   },
 });
 
-/**
- * PersonalPreferences class.
- * @class PersonalPreferences
- * @extends Component
- */
 @injectIntl
 @connect(
   () => ({}),
   dispatch => bindActionCreators({ updateIntl, addMessage }, dispatch),
 )
+/**
+ * Component to display the personal preferences view.
+ * @class PersonalPreferences
+ * @extends Component
+ */
 export default class PersonalPreferences extends Component {
   /**
    * Property types.
@@ -65,8 +65,17 @@ export default class PersonalPreferences extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to update the i18n
+     */
     updateIntl: PropTypes.func.isRequired,
+    /**
+     * Action to add a notification message
+     */
     addMessage: PropTypes.func.isRequired,
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 
@@ -86,7 +95,6 @@ export default class PersonalPreferences extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
-   * @returns {undefined}
    */
   onSubmit(data) {
     cookie.save('lang', data.language || '', {
@@ -112,7 +120,6 @@ export default class PersonalPreferences extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
    */
   onCancel() {
     browserHistory.goBack();

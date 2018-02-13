@@ -28,11 +28,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Toolbar container class.
- * @class Toolbar
- * @extends Component
- */
 @injectIntl
 @connect(state => ({
   token: state.userSession.token,
@@ -41,6 +36,11 @@ const messages = defineMessages({
     : '',
   content: state.content.data,
 }))
+/**
+ * Component to diplay the toolbar.
+ * @class Toolbar
+ * @extends Component
+ */
 export default class Toolbar extends Component {
   /**
    * Property types.
@@ -48,13 +48,34 @@ export default class Toolbar extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Pathname of the object
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * Selected toolbar item
+     */
     selected: PropTypes.string.isRequired,
+    /**
+     * User token
+     */
     token: PropTypes.string,
+    /**
+     * Fullname of the user
+     */
     fullname: PropTypes.string,
+    /**
+     * Content data
+     */
     content: PropTypes.shape({
+      /**
+       * Type of the content
+       */
       '@type': PropTypes.string,
     }),
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 
@@ -86,7 +107,6 @@ export default class Toolbar extends Component {
   /**
    * On toggle expanded handler
    * @method onToggleExpanded
-   * @returns {undefined}
    */
   onToggleExpanded() {
     cookie.save('toolbar_expanded', !this.state.expanded, {

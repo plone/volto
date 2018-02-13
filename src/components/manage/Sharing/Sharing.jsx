@@ -36,11 +36,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * SharingComponent class.
- * @class SharingComponent
- * @extends Component
- */
 @injectIntl
 @connect(
   (state, props) => ({
@@ -56,6 +51,11 @@ const messages = defineMessages({
   }),
   dispatch => bindActionCreators({ editSharing, getSharing }, dispatch),
 )
+/**
+ * Component to display the sharing view.
+ * @class SharingComponent
+ * @extends Component
+ */
 export default class SharingComponent extends Component {
   /**
    * Property types.
@@ -63,26 +63,77 @@ export default class SharingComponent extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to edit sharing
+     */
     editSharing: PropTypes.func.isRequired,
+    /**
+     * Action to get sharing settings
+     */
     getSharing: PropTypes.func.isRequired,
+    /**
+     * Edit request status
+     */
     editRequest: PropTypes.shape({
+      /**
+       * Loading status
+       */
       loading: PropTypes.bool,
+      /**
+       * Loaded status
+       */
       loaded: PropTypes.bool,
     }).isRequired,
+    /**
+     * Pathname of the object
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * Sharing entries
+     */
     entries: PropTypes.arrayOf(
       PropTypes.shape({
+        /**
+         * Id of the entry
+         */
         id: PropTypes.string,
+        /**
+         * Login of the entry
+         */
         login: PropTypes.string,
+        /**
+         * Roles of the entry
+         */
         roles: PropTypes.object,
+        /**
+         * Title of the entry
+         */
         title: PropTypes.string,
+        /**
+         * Type of the entry
+         */
         type: PropTypes.string,
       }),
     ).isRequired,
+    /**
+     * List of available roles
+     */
     available_roles: PropTypes.arrayOf(PropTypes.string).isRequired,
+    /**
+     * True if sharing is inherited from folder up
+     */
     inherit: PropTypes.bool,
+    /**
+     * Title of the object
+     */
     title: PropTypes.string.isRequired,
+    /**
+     * Login of the user
+     */
     login: PropTypes.string,
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 
@@ -120,7 +171,6 @@ export default class SharingComponent extends Component {
   /**
    * Component did mount
    * @method componentDidMount
-   * @returns {undefined}
    */
   componentDidMount() {
     this.props.getSharing(getBaseUrl(this.props.pathname), this.state.search);
@@ -130,7 +180,6 @@ export default class SharingComponent extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.editRequest.loading && nextProps.editRequest.loaded) {
@@ -153,7 +202,6 @@ export default class SharingComponent extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} event Event object.
-   * @returns {undefined}
    */
   onSubmit(event) {
     const data = { entries: [] };
@@ -177,7 +225,6 @@ export default class SharingComponent extends Component {
    * Search handler
    * @method onSearch
    * @param {object} event Event object.
-   * @returns {undefined}
    */
   onSearch(event) {
     event.preventDefault();
@@ -188,7 +235,6 @@ export default class SharingComponent extends Component {
    * On change search handler
    * @method onChangeSearch
    * @param {object} event Event object.
-   * @returns {undefined}
    */
   onChangeSearch(event) {
     this.setState({
@@ -199,7 +245,6 @@ export default class SharingComponent extends Component {
   /**
    * On toggle inherit handler
    * @method onToggleInherit
-   * @returns {undefined}
    */
   onToggleInherit() {
     this.setState({
@@ -212,7 +257,6 @@ export default class SharingComponent extends Component {
    * @method onChange
    * @param {object} event Event object
    * @param {string} value Entry value
-   * @returns {undefined}
    */
   onChange(event, { value }) {
     const [principal, role] = value.split('.');
@@ -233,7 +277,6 @@ export default class SharingComponent extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
    */
   onCancel() {
     browserHistory.push(getBaseUrl(this.props.pathname));

@@ -9,7 +9,7 @@ import { Form, Input, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
 
 /**
- * PasswordWidget component class.
+ * Component to display a password widget.
  * @function PasswordWidget
  * @returns {string} Markup of the component.
  */
@@ -49,12 +49,33 @@ const PasswordWidget = ({
  * @static
  */
 PasswordWidget.propTypes = {
+  /**
+   * Id of the field
+   */
   id: PropTypes.string.isRequired,
+  /**
+   * Title of the field
+   */
   title: PropTypes.string.isRequired,
+  /**
+   * Description of the field
+   */
   description: PropTypes.string,
+  /**
+   * True if field is required
+   */
   required: PropTypes.bool,
+  /**
+   * List of error messages
+   */
   error: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * Value of the field
+   */
   value: PropTypes.string,
+  /**
+   * On change handler
+   */
   onChange: PropTypes.func.isRequired,
 };
 

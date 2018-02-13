@@ -8,8 +8,15 @@ import PropTypes from 'prop-types';
 import { DragLayer } from 'react-dnd';
 import { map } from 'lodash';
 
+@DragLayer(monitor => ({
+  item: monitor.getItem(),
+  itemType: monitor.getItemType(),
+  initialOffset: monitor.getInitialSourceClientOffset(),
+  currentOffset: monitor.getSourceClientOffset(),
+  isDragging: monitor.isDragging(),
+}))
 /**
- * ColumnResizeHelper component class.
+ * Component to display a column resize helper.
  * @function ColumnResizeHelper
  * @param {Object} props Component properties.
  * @param {Object} props.item Item to be dragged.
@@ -19,13 +26,6 @@ import { map } from 'lodash';
  * @param {bool} props.isDragging Is dragging.
  * @returns {string} Markup of the component.
  */
-@DragLayer(monitor => ({
-  item: monitor.getItem(),
-  itemType: monitor.getItemType(),
-  initialOffset: monitor.getInitialSourceClientOffset(),
-  currentOffset: monitor.getSourceClientOffset(),
-  isDragging: monitor.isDragging(),
-}))
 export default class ColumnResizeHelper extends Component {
   /**
     * Property types.
@@ -33,16 +33,43 @@ export default class ColumnResizeHelper extends Component {
     * @static
     */
   static propTypes = {
+    /**
+     * Item to be dragged
+     */
     item: PropTypes.shape(PropTypes.any),
+    /**
+     * Item type to be dragged
+     */
     itemType: PropTypes.string,
+    /**
+     * Initial offset
+     */
     initialOffset: PropTypes.shape({
+      /**
+       * X-coordinate
+       */
       x: PropTypes.number,
+      /**
+       * Y-coordinate
+       */
       y: PropTypes.number,
     }),
+    /**
+     * Current offset
+     */
     currentOffset: PropTypes.shape({
+      /**
+       * X-coordinate
+       */
       x: PropTypes.number,
+      /**
+       * Y-coordinate
+       */
       y: PropTypes.number,
     }),
+    /**
+     * Is dragging state
+     */
     isDragging: PropTypes.bool.isRequired,
   };
 

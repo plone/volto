@@ -1,0 +1,26 @@
+
+To create the documentation for a component, 
+you have to create a markdown file with the same name in the same folder as the component.
+Example:
+    Footer/
+        Footer.jsx              << Component
+        Footer.md               << Documentation example
+        Footer.test.jsx         << Test of the component
+
+
+----
+
+The documentation file is markdown, and it can contains code example.
+
+Situation A, with code showcase. The code will be highlighted and display as given.
+```js static
+<Footer />
+```
+
+Situation B, with live example. The code will be renderer by Styleguidist in React, but without any way to control the rendering.
+New import (like 'import Name from 'name') doesn't work.
+```js noeditor
+<Footer />
+```
+TODO: currently 'reduxAsyncConnect' is blocking some components to render live
+

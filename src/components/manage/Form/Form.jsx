@@ -38,12 +38,12 @@ const messages = defineMessages({
   },
 });
 
+@injectIntl
 /**
- * Form container class.
+ * Component to render a form.
  * @class Form
  * @extends Component
  */
-@injectIntl
 export default class Form extends Component {
   /**
    * Property types.
@@ -51,20 +51,53 @@ export default class Form extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Schema used in the form
+     */
     schema: PropTypes.shape({
+      /**
+       * Fieldsets of the schema
+       */
       fieldsets: PropTypes.arrayOf(
         PropTypes.shape({
+          /**
+           * Fields in the fieldset
+           */
           fields: PropTypes.arrayOf(PropTypes.string),
+          /**
+           * Id of the fieldset
+           */
           id: PropTypes.string,
+          /**
+           * Title of the fieldset
+           */
           title: PropTypes.string,
         }),
       ),
+      /**
+       * Property values
+       */
       properties: PropTypes.objectOf(PropTypes.any),
+      /**
+       * List of required fields
+       */
       required: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
+    /**
+     * Form data
+     */
     formData: PropTypes.objectOf(PropTypes.any),
+    /**
+     * Handler when submitting the form
+     */
     onSubmit: PropTypes.func.isRequired,
+    /**
+     * Handler when cancelling the form
+     */
     onCancel: PropTypes.func.isRequired,
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 
@@ -100,7 +133,6 @@ export default class Form extends Component {
    * @method onChangeField
    * @param {string} id Id of the field
    * @param {*} value Value of the field
-   * @returns {undefined}
    */
   onChangeField(id, value) {
     this.setState({
@@ -115,7 +147,6 @@ export default class Form extends Component {
    * Submit handler
    * @method onSubmit
    * @param {Object} event Event object.
-   * @returns {undefined}
    */
   onSubmit(event) {
     event.preventDefault();
@@ -162,7 +193,6 @@ export default class Form extends Component {
    * @method selectTab
    * @param {Object} event Event object.
    * @param {number} index Selected tab index.
-   * @returns {undefined}
    */
   selectTab(event, { index }) {
     this.setState({

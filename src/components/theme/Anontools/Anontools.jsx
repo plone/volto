@@ -10,14 +10,14 @@ import { Link } from 'react-router';
 import { List } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
-/**
- * Anontools container class.
- * @class Anontools
- * @extends Component
- */
 @connect(state => ({
   token: state.userSession.token,
 }))
+/**
+ * Component to display anonymous tools.
+ * @class Anontools
+ * @extends Component
+ */
 export default class Anontools extends Component {
   /**
    * Property types.
@@ -25,6 +25,9 @@ export default class Anontools extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * User session token
+     */
     token: PropTypes.string,
   };
 

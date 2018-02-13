@@ -20,7 +20,7 @@ const messages = defineMessages({
 });
 
 /**
- * Footer component class.
+ * Component to display the footer.
  * @function Footer
  * @param {Object} intl Intl object
  * @returns {string} Markup of the component
@@ -95,6 +95,9 @@ const Footer = ({ intl }) => (
  * @static
  */
 Footer.propTypes = {
+  /**
+   * i18n object
+   */
   intl: intlShape.isRequired,
 };
 

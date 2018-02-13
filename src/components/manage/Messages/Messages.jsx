@@ -12,17 +12,17 @@ import { map } from 'lodash';
 
 import { removeMessage } from '../../../actions';
 
-/**
- * Messages container class.
- * @class Messages
- * @extends Component
- */
 @connect(
   state => ({
     messages: state.messages.messages,
   }),
   dispatch => bindActionCreators({ removeMessage }, dispatch),
 )
+/**
+ * Messages container class.
+ * @class Messages
+ * @extends Component
+ */
 export default class Messages extends Component {
   /**
    * Property types.
@@ -30,11 +30,26 @@ export default class Messages extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to remove message
+     */
     removeMessage: PropTypes.func.isRequired,
+    /**
+     * List of messages
+     */
     messages: PropTypes.arrayOf(
       PropTypes.shape({
+        /**
+         * Title of the message
+         */
         title: PropTypes.string,
+        /**
+         * Body of the message
+         */
         body: PropTypes.string,
+        /**
+         * Level of the message
+         */
         level: PropTypes.string,
       }),
     ).isRequired,
@@ -55,7 +70,6 @@ export default class Messages extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.messages.length > this.props.messages.length) {
@@ -72,7 +86,6 @@ export default class Messages extends Component {
    * @method onDismiss
    * @param {Object} event Event object
    * @param {number} value Index of message
-   * @returns {undefined}
    */
   onDismiss(event, { value }) {
     this.props.removeMessage(value);
