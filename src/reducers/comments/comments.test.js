@@ -1,217 +1,213 @@
-import users from './users';
-import { GET_USER, EDIT_USER } from '../../constants/ActionTypes';
+import comments from './comments';
+import { ADD_COMMENT, GET_COMMENTS } from '../../constants/ActionTypes';
 
-describe('Users reducer', () => {
+describe('Content reducer', () => {
   it('should return the initial state', () => {
-    expect(users()).toEqual({
-      user: {},
+    expect(comments()).toEqual({
       add: {
-        error: null,
         loaded: false,
         loading: false,
+        error: null,
       },
-      get: {
-        error: null,
+      delete: {
         loaded: false,
         loading: false,
+        error: null,
       },
       edit: {
-        error: null,
         loaded: false,
         loading: false,
-      },
-      password: {
         error: null,
+      },
+      get: {
         loaded: false,
         loading: false,
-      },
-      initial: {
         error: null,
-        loaded: false,
-        loading: false,
       },
+      items: [],
     });
   });
 
-  it('should handle GET_USER_PENDING', () => {
+  it('should handle ADD_COMMENT_PENDING', () => {
     expect(
-      users(undefined, {
-        type: `${GET_USER}_PENDING`,
+      comments(undefined, {
+        type: `${ADD_COMMENT}_PENDING`,
       }),
     ).toEqual({
-      user: {},
       add: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
-      get: {
-        error: null,
         loaded: false,
         loading: true,
+        error: null,
+      },
+      delete: {
+        error: null,
+        loaded: false,
+        loading: false,
       },
       edit: {
         error: null,
         loaded: false,
         loading: false,
       },
-      password: {
-        error: null,
+      get: {
         loaded: false,
         loading: false,
-      },
-      initial: {
         error: null,
-        loaded: false,
-        loading: false,
       },
+      items: [],
     });
   });
 
-  it('should handle GET_USER_SUCCESS', () => {
+  it('should handle ADD_COMMENT_SUCCESS', () => {
     expect(
-      users(undefined, {
-        type: `${GET_USER}_SUCCESS`,
-        result: 'result',
+      comments(undefined, {
+        type: `${ADD_COMMENT}_SUCCESS`,
       }),
     ).toEqual({
-      user: 'result',
       add: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
-      get: {
-        error: null,
         loaded: true,
         loading: false,
+        error: null,
+      },
+      delete: {
+        error: null,
+        loaded: false,
+        loading: false,
       },
       edit: {
         error: null,
         loaded: false,
         loading: false,
       },
-      password: {
-        error: null,
+      get: {
         loaded: false,
         loading: false,
-      },
-      initial: {
         error: null,
-        loaded: false,
-        loading: false,
       },
+      items: [],
     });
   });
 
-  it('should handle GET_USER_FAIL', () => {
+  it('should handle ADD_COMMENT_FAIL', () => {
     expect(
-      users(undefined, {
-        type: `${GET_USER}_FAIL`,
-        error: {
-          error: 'failed',
-        },
-      }),
-    ).toEqual({
-      user: {},
-      add: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
-      get: {
+      comments(undefined, {
+        type: `${ADD_COMMENT}_FAIL`,
         error: 'failed',
+      }),
+    ).toEqual({
+      add: {
+        loaded: false,
+        loading: false,
+        error: 'failed',
+      },
+      delete: {
+        error: null,
         loaded: false,
         loading: false,
       },
       edit: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
-      password: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
-      initial: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
-    });
-  });
-
-  it('should handle EDIT_USER_SUCCESS', () => {
-    expect(
-      users(undefined, {
-        type: `${EDIT_USER}_SUCCESS`,
-      }),
-    ).toEqual({
-      user: {},
-      add: {
         error: null,
         loaded: false,
         loading: false,
       },
       get: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      items: [],
+    });
+  });
+
+  it('should handle GET_COMMENTS_PENDING', () => {
+    expect(
+      comments(undefined, {
+        type: `${GET_COMMENTS}_PENDING`,
+      }),
+    ).toEqual({
+      add: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      delete: {
         error: null,
         loaded: false,
         loading: false,
       },
       edit: {
         error: null,
+        loaded: false,
+        loading: false,
+      },
+      get: {
+        loaded: false,
+        loading: true,
+        error: null,
+      },
+      items: [],
+    });
+  });
+
+  it('should handle GET_COMMENTS_SUCCESS', () => {
+    expect(
+      comments(undefined, {
+        type: `${GET_COMMENTS}_SUCCESS`,
+        result: { items: 'comments' },
+      }),
+    ).toEqual({
+      add: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      delete: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      edit: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      get: {
         loaded: true,
         loading: false,
-      },
-      password: {
         error: null,
-        loaded: false,
-        loading: false,
       },
-      initial: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
+      items: 'comments',
     });
   });
 
-  it('should handle EDIT_USER_FAIL', () => {
+  it('should handle GET_COMMENTS_FAIL', () => {
     expect(
-      users(undefined, {
-        type: `${EDIT_USER}_FAIL`,
-        error: {
-          error: 'failed',
-        },
+      comments(undefined, {
+        type: `${GET_COMMENTS}_FAIL`,
+        error: 'failed',
       }),
     ).toEqual({
-      user: {},
       add: {
-        error: null,
         loaded: false,
         loading: false,
+        error: null,
       },
-      get: {
+      delete: {
         error: null,
         loaded: false,
         loading: false,
       },
       edit: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      get: {
+        loaded: false,
+        loading: false,
         error: 'failed',
-        loaded: false,
-        loading: false,
       },
-      password: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
-      initial: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
+      items: [],
     });
   });
 });

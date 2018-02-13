@@ -2,9 +2,13 @@
  * Messages reducer.
  * @module reducers/messages
  */
-import { concat, filter } from 'lodash';
+import { map, concat, filter } from 'lodash';
 
-import { ADD_MESSAGE, REMOVE_MESSAGE } from '../../constants/ActionTypes';
+import {
+  ADD_MESSAGE,
+  REMOVE_MESSAGE,
+  PURGE_MESSAGES,
+} from '../../constants/ActionTypes';
 
 const initialState = {
   messages: [],
@@ -28,6 +32,7 @@ export default function messages(state = initialState, action = {}) {
               title: action.title,
               body: action.body,
               level: action.level,
+              show: action.show,
             },
           ],
           state.messages,
@@ -41,6 +46,16 @@ export default function messages(state = initialState, action = {}) {
             action.index === -1
               ? index !== state.messages.length - 1
               : index !== action.index,
+        ),
+      };
+    case PURGE_MESSAGES:
+      return {
+        messages: map(
+          filter(state.messages, message => message.show),
+          message => ({
+            ...message,
+            show: false,
+          }),
         ),
       };
     default:

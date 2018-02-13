@@ -30,6 +30,11 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
+      order: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
       data: null,
     });
   });
@@ -60,6 +65,11 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
+      order: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
       data: null,
     });
   });
@@ -68,6 +78,13 @@ describe('Content reducer', () => {
     expect(
       content(undefined, {
         type: `${ADD_CONTENT}_SUCCESS`,
+        result: {
+          items: [
+            {
+              '@id': `${config.apiPath}/home-page`,
+            },
+          ],
+        },
       }),
     ).toEqual({
       add: {
@@ -90,7 +107,19 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
-      data: null,
+      order: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      data: {
+        items: [
+          {
+            '@id': `${config.apiPath}/home-page`,
+            url: '/home-page',
+          },
+        ],
+      },
     });
   });
 
@@ -117,6 +146,11 @@ describe('Content reducer', () => {
         error: null,
       },
       get: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      order: {
         loaded: false,
         loading: false,
         error: null,
@@ -151,6 +185,11 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
+      order: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
       data: null,
     });
   });
@@ -177,6 +216,11 @@ describe('Content reducer', () => {
         error: null,
       },
       get: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      order: {
         loaded: false,
         loading: false,
         error: null,
@@ -212,6 +256,11 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
+      order: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
       data: null,
     });
   });
@@ -242,6 +291,11 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
+      order: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
       data: null,
     });
   });
@@ -268,6 +322,11 @@ describe('Content reducer', () => {
         error: null,
       },
       get: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      order: {
         loaded: false,
         loading: false,
         error: null,
@@ -303,6 +362,11 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
+      order: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
       data: null,
     });
   });
@@ -331,6 +395,11 @@ describe('Content reducer', () => {
       get: {
         loaded: false,
         loading: true,
+        error: null,
+      },
+      order: {
+        loaded: false,
+        loading: false,
         error: null,
       },
       data: null,
@@ -367,6 +436,11 @@ describe('Content reducer', () => {
       },
       get: {
         loaded: true,
+        loading: false,
+        error: null,
+      },
+      order: {
+        loaded: false,
         loading: false,
         error: null,
       },
@@ -407,6 +481,11 @@ describe('Content reducer', () => {
         loaded: false,
         loading: false,
         error: 'failed',
+      },
+      order: {
+        loaded: false,
+        loading: false,
+        error: null,
       },
       data: null,
     });

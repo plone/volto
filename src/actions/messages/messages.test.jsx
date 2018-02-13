@@ -1,5 +1,9 @@
-import { addMessage, removeMessage } from './messages';
-import { ADD_MESSAGE, REMOVE_MESSAGE } from '../../constants/ActionTypes';
+import { addMessage, removeMessage, purgeMessages } from './messages';
+import {
+  ADD_MESSAGE,
+  REMOVE_MESSAGE,
+  PURGE_MESSAGES,
+} from '../../constants/ActionTypes';
 
 describe('Messages action', () => {
   describe('addMessage', () => {
@@ -23,6 +27,14 @@ describe('Messages action', () => {
 
       expect(action.type).toEqual(REMOVE_MESSAGE);
       expect(action.index).toEqual(0);
+    });
+  });
+
+  describe('purgeMessages', () => {
+    it('should create an action to purge the messages', () => {
+      const action = purgeMessages();
+
+      expect(action.type).toEqual(PURGE_MESSAGES);
     });
   });
 });

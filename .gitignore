@@ -8,6 +8,7 @@ npm-debug.log
 dist
 junit.xml
 eslint.xml
+yarn-error.log
 
 # Other
 .DS_Store

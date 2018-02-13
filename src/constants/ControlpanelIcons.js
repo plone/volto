@@ -10,9 +10,10 @@ export default {
   navigation: 'sitemap',
   site: 'browser',
   search: 'search',
-  'social-media': 'announcement',
+  socialmedia: 'announcement',
   editing: 'write',
-  'image-handling': 'image',
+  imaging: 'image',
   markup: 'code',
+  'moderate-comments': 'comments',
   security: 'lock',
 };

@@ -29,16 +29,14 @@ describe('Navigation reducer', () => {
     expect(
       navigation(undefined, {
         type: `${GET_NAVIGATION}_SUCCESS`,
-        result: [
-          {
-            items: [
-              {
-                title: 'Welcome to Plone!',
-                url: `${config.apiPath}/front-page`,
-              },
-            ],
-          },
-        ],
+        result: {
+          items: [
+            {
+              title: 'Welcome to Plone!',
+              '@id': `${config.apiPath}/front-page`,
+            },
+          ],
+        },
       }),
     ).toEqual({
       error: null,

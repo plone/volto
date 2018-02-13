@@ -11,6 +11,7 @@ import {
   DELETE_CONTENT,
   EDIT_CONTENT,
   GET_CONTENT,
+  ORDER_CONTENT,
 } from '../../constants/ActionTypes';
 
 describe('Content action', () => {
@@ -119,7 +120,7 @@ describe('Content action', () => {
       const subset = [];
       const action = orderContent(parent, url, delta, subset);
 
-      expect(action.type).toEqual(EDIT_CONTENT);
+      expect(action.type).toEqual(ORDER_CONTENT);
 
       const apiMock = {
         patch: jest.fn(),
@@ -175,7 +176,7 @@ describe('Content action', () => {
       };
       action.promise(apiMock);
 
-      expect(apiMock.get).toBeCalledWith(url);
+      expect(apiMock.get).toBeCalledWith(`${url}?fullobjects`);
     });
 
     it('should create an action to get content with version', () => {
@@ -190,7 +191,9 @@ describe('Content action', () => {
       };
       action.promise(apiMock);
 
-      expect(apiMock.get).toBeCalledWith(`${url}/@history/${version}`);
+      expect(apiMock.get).toBeCalledWith(
+        `${url}/@history/${version}?fullobjects`,
+      );
     });
   });
 });

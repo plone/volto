@@ -5,6 +5,7 @@
  */
 
 export getBreadcrumbs from './breadcrumbs/breadcrumbs';
+export getVocabulary from './vocabularies/vocabularies';
 export { copy, cut, copyContent, moveContent } from './clipboard/clipboard';
 export {
   addContent,
@@ -14,16 +15,29 @@ export {
   orderContent,
   sortContent,
 } from './content/content';
+export {
+  addComment,
+  deleteComment,
+  getComments,
+  editComment,
+} from './comments/comments';
 export { editControlpanel, getControlpanel } from './controlpanel/controlpanel';
 export getControlpanels from './controlpanels/controlpanels';
 export getDiff from './diff/diff';
+export emailNotification from './emailNotification/emailNotification';
 export { getHistory, revertHistory } from './history/history';
-export { addMessage, removeMessage } from './messages/messages';
+export { addMessage, removeMessage, purgeMessages } from './messages/messages';
 export getNavigation from './navigation/navigation';
 export getSchema from './schema/schema';
 export getTypes from './types/types';
-export searchContent from './search/search';
+export { resetSearchContent, searchContent } from './search/search';
 export { editSharing, getSharing } from './sharing/sharing';
-export { getUser, editUser, editPassword } from './users/users';
+export {
+  addUser,
+  getUser,
+  editUser,
+  editPassword,
+  setInitialPassword,
+} from './users/users';
 export { login, logout } from './userSession/userSession';
 export { getWorkflow, transitionWorkflow } from './workflow/workflow';

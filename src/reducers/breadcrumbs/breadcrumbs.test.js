@@ -29,16 +29,14 @@ describe('Breadcrumbs reducer', () => {
     expect(
       breadcrumbs(undefined, {
         type: `${GET_BREADCRUMBS}_SUCCESS`,
-        result: [
-          {
-            items: [
-              {
-                title: 'Welcome to Plone!',
-                url: `${config.apiPath}/front-page`,
-              },
-            ],
-          },
-        ],
+        result: {
+          items: [
+            {
+              title: 'Welcome to Plone!',
+              '@id': `${config.apiPath}/front-page`,
+            },
+          ],
+        },
       }),
     ).toEqual({
       error: null,

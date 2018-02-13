@@ -14,6 +14,6 @@ import { GET_NAVIGATION } from '../../constants/ActionTypes';
 export default function getNavigation(url) {
   return {
     type: GET_NAVIGATION,
-    promise: api => api.get(`${url}/@components/navigation`),
+    promise: api => api.get(`${url}/@navigation`),
   };
 }

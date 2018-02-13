@@ -9,11 +9,13 @@ import { reducer as reduxAsyncConnect } from 'redux-connect';
 import { intlReducer } from 'react-intl-redux';
 
 import breadcrumbs from './breadcrumbs/breadcrumbs';
+import comments from './comments/comments';
 import content from './content/content';
 import controlpanel from './controlpanel/controlpanel';
 import controlpanels from './controlpanels/controlpanels';
 import clipboard from './clipboard/clipboard';
 import diff from './diff/diff';
+import emailNotification from './emailNotification/emailNotification';
 import form from './form/form';
 import history from './history/history';
 import messages from './messages/messages';
@@ -24,6 +26,7 @@ import sharing from './sharing/sharing';
 import types from './types/types';
 import users from './users/users';
 import userSession from './userSession/userSession';
+import vocabularies from './vocabularies/vocabularies';
 import workflow from './workflow/workflow';
 
 /**
@@ -38,11 +41,13 @@ export default combineReducers({
   intl: intlReducer,
   reduxAsyncConnect,
   breadcrumbs,
+  comments,
   content,
   controlpanel,
   controlpanels,
   clipboard,
   diff,
+  emailNotification,
   form,
   history,
   messages,
@@ -53,5 +58,6 @@ export default combineReducers({
   types,
   users,
   userSession,
+  vocabularies,
   workflow,
 });

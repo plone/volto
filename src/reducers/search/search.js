@@ -5,7 +5,10 @@
 
 import { map } from 'lodash';
 
-import { SEARCH_CONTENT } from '../../constants/ActionTypes';
+import {
+  RESET_SEARCH_CONTENT,
+  SEARCH_CONTENT,
+} from '../../constants/ActionTypes';
 import config from '../../config';
 
 const initialState = {
@@ -48,6 +51,15 @@ export default function search(state = initialState, action = {}) {
       return {
         ...state,
         error: action.error,
+        items: [],
+        total: 0,
+        loading: false,
+        loaded: false,
+      };
+    case RESET_SEARCH_CONTENT:
+      return {
+        ...state,
+        error: null,
         items: [],
         total: 0,
         loading: false,
