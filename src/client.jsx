@@ -10,6 +10,7 @@ import nlLocaleData from 'react-intl/locale-data/nl';
 import deLocaleData from 'react-intl/locale-data/de';
 import enLocaleData from 'react-intl/locale-data/en';
 import { addLocaleData } from 'react-intl';
+import 'semantic-ui-less/semantic.less';
 
 import configureStore from './store';
 import getRoutes from './routes';
@@ -21,8 +22,6 @@ const store = configureStore(initialState, undefined, false, api);
 const history = syncHistoryWithStore(browserHistory, store);
 addLocaleData([...nlLocaleData, ...deLocaleData, ...enLocaleData]);
 persistAuthToken(store);
-
-import 'semantic-ui-less/semantic.less';
 
 render(
   <Provider store={store} key="provider">

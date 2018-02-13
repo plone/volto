@@ -5,7 +5,6 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import fs from 'fs';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-
 const projectRootPath = path.resolve(__dirname, '../');
 
 const assetsPath = path.resolve(__dirname, '../dist');
@@ -22,17 +21,24 @@ try {
   console.error(err);
 }
 
-const babelrcObjectDevelopment = babelrcObject.env && babelrcObject.env.development || {};
+const babelrcObjectDevelopment =
+  (babelrcObject.env && babelrcObject.env.development) || {};
 
 // merge global and dev-only plugins
 let combinedPlugins = babelrcObject.plugins || [];
 combinedPlugins = combinedPlugins.concat(babelrcObjectDevelopment.plugins);
 
-const babelLoaderQuery = Object.assign({}, babelrcObjectDevelopment, babelrcObject, {plugins: combinedPlugins});
+const babelLoaderQuery = Object.assign(
+  {},
+  babelrcObjectDevelopment,
+  babelrcObject,
+  { plugins: combinedPlugins },
+);
 delete babelLoaderQuery.env;
 
-// Since we use .babelrc for client and server, and we don't want HMR enabled on the server, we have to add
-// the babel plugin react-transform-hmr manually here.
+// Since we use .babelrc for client and server, and we don't want HMR enabled
+// on the server, we have to add the babel plugin react-transform-hmr manually
+// here.
 
 // make sure react-transform is enabled
 babelLoaderQuery.plugins = babelLoaderQuery.plugins || [];
@@ -45,29 +51,28 @@ for (let i = 0; i < babelLoaderQuery.plugins.length; ++i) {
 }
 
 if (!reactTransform) {
-  reactTransform = ['react-transform', {transforms: []}];
+  reactTransform = ['react-transform', { transforms: [] }];
   babelLoaderQuery.plugins.push(reactTransform);
 }
 
 if (!reactTransform[1] || !reactTransform[1].transforms) {
-  reactTransform[1] = Object.assign({}, reactTransform[1], {transforms: []});
+  reactTransform[1] = Object.assign({}, reactTransform[1], { transforms: [] });
 }
 
 // make sure react-transform-hmr is enabled
 reactTransform[1].transforms.push({
   transform: 'react-transform-hmr',
   imports: ['react'],
-  locals: ['module']
+  locals: ['module'],
 });
-
 
 const BASE_CSS_LOADER = {
   loader: 'css-loader',
   options: {
     importLoaders: 2,
     sourceMap: true,
-    localIdentName: '[name]__[local]___[hash:base64:5]'
-  }
+    localIdentName: '[name]__[local]___[hash:base64:5]',
+  },
 };
 
 module.exports = {
@@ -93,8 +98,8 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: babelLoaderQuery,
-          }
-        ]
+          },
+        ],
       },
       {
         test: /\.(json)$/,
@@ -102,76 +107,75 @@ module.exports = {
         use: [
           {
             loader: 'json-loader',
-          }
-        ]
+          },
+        ],
       },
       {
         test: /\.less$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: 'style-loader',
           },
           BASE_CSS_LOADER,
           {
             loader: 'less-loader',
             options: {
               outputStyle: 'expanded',
-              sourceMap: true
-            }
-          }
-        ]
+              sourceMap: true,
+            },
+          },
+        ],
       },
       {
         test: /\.scss$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: 'style-loader',
           },
           BASE_CSS_LOADER,
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
-        ]
+        ],
       },
       {
         test: /\.css$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: 'style-loader',
           },
           BASE_CSS_LOADER,
-        ]
+        ],
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$|\.ttf$|\.eot$|\.svg$/,
-        use: 'file-loader?name=[name].[ext]?[hash]'
+        use: 'file-loader?name=[name].[ext]?[hash]',
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/fontwoff'
-      }
+        loader: 'url-loader?limit=10000&mimetype=application/fontwoff',
+      },
     ],
   },
   resolve: {
-    modules: [
-      path.join(__dirname, 'src'),
-      'node_modules',
-    ],
+    modules: [path.join(__dirname, 'src'), 'node_modules'],
     extensions: ['.json', '.js', '.jsx'],
     alias: {
-      '../../theme.config$': path.join(__dirname, '../theme/theme.config')
-    }
+      '../../theme.config$': path.join(__dirname, '../theme/site/theme.config'),
+    },
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new CaseSensitivePathsPlugin(),
-    new CopyWebpackPlugin([{
-      context: 'src/static',
-      from: '**/*',
-      to: './'
-    }])
+    new CopyWebpackPlugin([
+      {
+        context: 'src/static',
+        from: '**/*',
+        to: './',
+      },
+    ]),
   ],
 };
