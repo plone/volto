@@ -9,7 +9,7 @@ import { Form, Input, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
 
 /**
- * TextWidget component class.
+ * Component to display a text widget.
  * @function TextWidget
  * @returns {string} Markup of the component.
  */
@@ -48,12 +48,33 @@ const TextWidget = ({
  * @static
  */
 TextWidget.propTypes = {
+  /**
+   * Id of the field
+   */
   id: PropTypes.string.isRequired,
+  /**
+   * Title of the field
+   */
   title: PropTypes.string.isRequired,
+  /**
+   * Description of the field
+   */
   description: PropTypes.string,
+  /**
+   * True if field is required
+   */
   required: PropTypes.bool,
+  /**
+   * List of error messages
+   */
   error: PropTypes.arrayOf(PropTypes.string),
-  value: PropTypes.string,
+  /**
+   * Value of the field
+   */
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  /**
+   * On change handler
+   */
   onChange: PropTypes.func.isRequired,
 };
 

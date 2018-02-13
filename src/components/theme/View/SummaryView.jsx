@@ -10,9 +10,9 @@ import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 
 /**
- * Summary view component class.
+ * Component to display the summary view.
  * @function SummaryView
- * @params {object} content Content object.
+ * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
 const SummaryView = ({ content }) => (
@@ -52,14 +52,38 @@ const SummaryView = ({ content }) => (
  * @static
  */
 SummaryView.propTypes = {
+  /**
+   * Content of the object
+   */
   content: PropTypes.shape({
+    /**
+     * Title of the object
+     */
     title: PropTypes.string,
+    /**
+     * Description of the object
+     */
     description: PropTypes.string,
+    /**
+     * Child items of the object
+     */
     items: PropTypes.arrayOf(
       PropTypes.shape({
+        /**
+         * Title of the item
+         */
         title: PropTypes.string,
+        /**
+         * Description of the item
+         */
         description: PropTypes.string,
+        /**
+         * Url of the item
+         */
         url: PropTypes.string,
+        /**
+         * Type of the item
+         */
         '@type': PropTypes.string,
       }),
     ),

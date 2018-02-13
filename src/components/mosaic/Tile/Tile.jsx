@@ -29,7 +29,7 @@ const buttons = {
 };
 
 /**
- * Tile component class.
+ * Component to display a tile.
  * @function Tile
  * @param {Object} props Component properties.
  * @param {Object} props.content Content of the tile.
@@ -113,18 +113,57 @@ const Tile = ({
  * @static
  */
 Tile.propTypes = {
+  /**
+   * Content of the tile
+   */
   content: PropTypes.object.isRequired,
+  /**
+   * Type of the tile
+   */
   type: PropTypes.string.isRequired,
+  /**
+   * Label of the tile
+   */
   label: PropTypes.string.isRequired,
+  /**
+   * Selected state of the tile
+   */
   selected: PropTypes.bool.isRequired,
+  /**
+   * Hovered state of the tile (left, right, top, bottom or none)
+   */
   hovered: PropTypes.string,
+  /**
+   * Index of the row in the grid
+   */
   row: PropTypes.number.isRequired,
+  /**
+   * Index of the column in the row
+   */
   column: PropTypes.number.isRequired,
+  /**
+   * Index of the tile in the column
+   */
   tile: PropTypes.number.isRequired,
+  /**
+   * Action to select a tile
+   */
   selectTile: PropTypes.func.isRequired,
+  /**
+   * Action to delete a tile
+   */
   deleteTile: PropTypes.func.isRequired,
+  /**
+   * Action to set the hovered state
+   */
   setHovered: PropTypes.func.isRequired,
+  /**
+   * Action to handle a drop
+   */
   handleDrop: PropTypes.func.isRequired,
+  /**
+   * Action to set the tile content
+   */
   setTileContent: PropTypes.func.isRequired,
 };
 

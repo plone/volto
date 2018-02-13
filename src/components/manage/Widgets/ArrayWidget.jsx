@@ -9,7 +9,7 @@ import { Form, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
 
 /**
- * ArrayWidget component class.
+ * Component to display an array widget.
  * @function ArrayWidget
  * @returns {string} Markup of the component.
  */
@@ -51,12 +51,33 @@ const ArrayWidget = ({
  * @static
  */
 ArrayWidget.propTypes = {
+  /**
+   * Id of the field
+   */
   id: PropTypes.string.isRequired,
+  /**
+   * Title of the field
+   */
   title: PropTypes.string.isRequired,
+  /**
+   * Description of the field
+   */
   description: PropTypes.string,
+  /**
+   * True if field is required
+   */
   required: PropTypes.bool,
+  /**
+   * List of error messages
+   */
   error: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * Value of the field
+   */
   value: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * On change handler
+   */
   onChange: PropTypes.func.isRequired,
 };
 

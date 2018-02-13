@@ -32,11 +32,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Controlpanel class.
- * @class Controlpanel
- * @extends Component
- */
 @injectIntl
 @connect(
   (state, props) => ({
@@ -50,6 +45,11 @@ const messages = defineMessages({
       dispatch,
     ),
 )
+/**
+ * Component to display a controlpanel.
+ * @class Controlpanel
+ * @extends Component
+ */
 export default class Controlpanel extends Component {
   /**
    * Property types.
@@ -57,20 +57,59 @@ export default class Controlpanel extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to add a notification message
+     */
     addMessage: PropTypes.func.isRequired,
+    /**
+     * Action to edit a controlpanel
+     */
     editControlpanel: PropTypes.func.isRequired,
+    /**
+     * Action to get controlpanel data
+     */
     getControlpanel: PropTypes.func.isRequired,
+    /**
+     * Id of the controlpanel
+     */
     id: PropTypes.string.isRequired,
+    /**
+     * Edit request status
+     */
     editRequest: PropTypes.shape({
+      /**
+       * Loading status
+       */
       loading: PropTypes.bool,
+      /**
+       * Loaded status
+       */
       loaded: PropTypes.bool,
     }).isRequired,
+    /**
+     * Controlpanel data
+     */
     controlpanel: PropTypes.shape({
+      /**
+       * Id of the controlpanel
+       */
       '@id': PropTypes.string,
+      /**
+       * Values of the controlpanel
+       */
       data: PropTypes.Object,
+      /**
+       * Schema of the controlpanel
+       */
       schema: PropTypes.Object,
+      /**
+       * Title of the controlpanel
+       */
       title: PropTypes.string,
-    }),
+    }).isRequired,
+    /**
+     * i18n object
+     */
     intl: intlShape.isRequired,
   };
 
@@ -89,7 +128,6 @@ export default class Controlpanel extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getControlpanel(this.props.id);
@@ -99,7 +137,6 @@ export default class Controlpanel extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.editRequest.loading && nextProps.editRequest.loaded) {
@@ -115,7 +152,6 @@ export default class Controlpanel extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
-   * @returns {undefined}
    */
   onSubmit(data) {
     this.props.editControlpanel(this.props.controlpanel['@id'], data);
@@ -124,7 +160,6 @@ export default class Controlpanel extends Component {
   /**
    * Cancel handler
    * @method onCancel
-   * @returns {undefined}
    */
   onCancel() {
     browserHistory.goBack();
@@ -133,7 +168,6 @@ export default class Controlpanel extends Component {
   /**
    * Site setup handler
    * @method onSiteSetup
-   * @returns {undefined}
    */
   onSiteSetup() {
     browserHistory.push('/controlpanel');

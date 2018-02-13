@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { map } from 'lodash';
 
 /**
- * Pagination component class.
+ * Component to display pagination.
  * @function Pagination
  * @param {number} current Current page
  * @param {number} total Total amount of pages
@@ -105,11 +105,29 @@ const Pagination = ({
  * @static
  */
 Pagination.propTypes = {
+  /**
+   * Current page
+   */
   current: PropTypes.number.isRequired,
+  /**
+   * Total number of pages
+   */
   total: PropTypes.number.isRequired,
+  /**
+   * Number of items per page
+   */
   pageSize: PropTypes.number,
+  /**
+   * Page sizes to choose from
+   */
   pageSizes: PropTypes.arrayOf(PropTypes.number),
+  /**
+   * Handler called when changing the page
+   */
   onChangePage: PropTypes.func.isRequired,
+  /**
+   * Handler called when changing the pagesize
+   */
   onChangePageSize: PropTypes.func,
 };
 

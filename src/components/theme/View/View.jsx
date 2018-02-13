@@ -15,11 +15,6 @@ import {
 } from '../../../components';
 import { getContent } from '../../../actions';
 
-/**
- * View container class.
- * @class View
- * @extends Component
- */
 @connect(
   (state, props) => ({
     content: state.content.data,
@@ -30,6 +25,11 @@ import { getContent } from '../../../actions';
     getContent,
   },
 )
+/**
+ * View container class.
+ * @class View
+ * @extends Component
+ */
 export default class View extends Component {
   /**
    * Property types.
@@ -37,10 +37,25 @@ export default class View extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to get the content
+     */
     getContent: PropTypes.func.isRequired,
+    /**
+     * Pathname of the object
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * Version id of the object
+     */
     versionId: PropTypes.string,
+    /**
+     * Content of the object
+     */
     content: PropTypes.shape({
+      /**
+       * Layout of the object
+       */
       layout: PropTypes.string,
     }),
   };
@@ -58,7 +73,6 @@ export default class View extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getContent(this.props.pathname, this.props.versionId);
@@ -68,7 +82,6 @@ export default class View extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {

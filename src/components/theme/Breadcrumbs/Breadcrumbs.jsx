@@ -14,17 +14,17 @@ import { FormattedMessage } from 'react-intl';
 import { getBreadcrumbs } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
-/**
- * Breadcrumbs container class.
- * @class Breadcrumbs
- * @extends Component
- */
 @connect(
   state => ({
     items: state.breadcrumbs.items,
   }),
   dispatch => bindActionCreators({ getBreadcrumbs }, dispatch),
 )
+/**
+ * Component to display breadcrumbs
+ * @class Breadcrumbs
+ * @extends Component
+ */
 export default class Breadcrumbs extends Component {
   /**
    * Property types.
@@ -32,11 +32,26 @@ export default class Breadcrumbs extends Component {
    * @static
    */
   static propTypes = {
+    /**
+     * Action to get breadcrumbs
+     */
     getBreadcrumbs: PropTypes.func.isRequired,
+    /**
+     * Pathname of the current object
+     */
     pathname: PropTypes.string.isRequired,
+    /**
+     * List of breadcrumb items
+     */
     items: PropTypes.arrayOf(
       PropTypes.shape({
+        /**
+         * Title of the breadcrumb
+         */
         title: PropTypes.string,
+        /**
+         * Url of the breadcrumb
+         */
         url: PropTypes.string,
       }),
     ).isRequired,
@@ -45,7 +60,6 @@ export default class Breadcrumbs extends Component {
   /**
    * Component will mount
    * @method componentWillMount
-   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getBreadcrumbs(getBaseUrl(this.props.pathname));
@@ -55,7 +69,6 @@ export default class Breadcrumbs extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
-   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
