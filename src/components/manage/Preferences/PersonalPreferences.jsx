@@ -101,20 +101,19 @@ export default class PersonalPreferences extends Component {
       expires: new Date((2 ** 31 - 1) * 1000),
       path: '/',
     });
-    request(
-      'GET',
-      `/assets/locales/${data.language || 'en'}.json`,
-    ).then(locale => {
-      this.props.updateIntl({
-        locale: locale.language || 'en',
-        messages: locale.body,
-      });
-      this.props.addMessage(
-        null,
-        this.props.intl.formatMessage(messages.saved),
-        'success',
-      );
-    });
+    request('GET', `/assets/locales/${data.language || 'en'}.json`).then(
+      locale => {
+        this.props.updateIntl({
+          locale: locale.language || 'en',
+          messages: locale.body,
+        });
+        this.props.addMessage(
+          null,
+          this.props.intl.formatMessage(messages.saved),
+          'success',
+        );
+      },
+    );
   }
 
   /**

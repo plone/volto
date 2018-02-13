@@ -69,9 +69,9 @@ const Tile = ({
   connectDropTarget(
     connectDragSource(
       <div
-        className={`tile ${type}${hovered ? ` ${hovered}` : ''}${selected
-          ? ' selected'
-          : ''}${isDragging ? ' dragging' : ''}`}
+        className={`tile ${type}${hovered ? ` ${hovered}` : ''}${
+          selected ? ' selected' : ''
+        }${isDragging ? ' dragging' : ''}`}
         onClick={() => selectTile(row, column, tile)}
       >
         {selected && (
@@ -99,7 +99,8 @@ const Tile = ({
             inlineButtons={buttons[type].inline}
             blockButtons={buttons[type].block}
             onChange={newContent =>
-              setTileContent(row, column, tile, newContent)}
+              setTileContent(row, column, tile, newContent)
+            }
             editorState={content}
           />
         )}

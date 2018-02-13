@@ -196,8 +196,9 @@ export default class DiffComponent extends Component {
    */
   onSelectView(event, { value }) {
     browserHistory.push(
-      `${this.props.pathname}?one=${this.props.one}&two=${this.props
-        .two}&view=${value}`,
+      `${this.props.pathname}?one=${this.props.one}&two=${
+        this.props.two
+      }&view=${value}`,
     );
   }
 
@@ -209,8 +210,9 @@ export default class DiffComponent extends Component {
    */
   onChangeOne(event, { value }) {
     browserHistory.push(
-      `${this.props.pathname}?one=${value}&two=${this.props.two}&view=${this
-        .props.view}`,
+      `${this.props.pathname}?one=${value}&two=${this.props.two}&view=${
+        this.props.view
+      }`,
     );
   }
 
@@ -222,8 +224,9 @@ export default class DiffComponent extends Component {
    */
   onChangeTwo(event, { value }) {
     browserHistory.push(
-      `${this.props.pathname}?one=${this.props.one}&two=${value}&view=${this
-        .props.view}`,
+      `${this.props.pathname}?one=${this.props.one}&two=${value}&view=${
+        this.props.view
+      }`,
     );
   }
 
