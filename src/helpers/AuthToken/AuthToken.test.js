@@ -42,7 +42,7 @@ describe('AuthToken', () => {
           },
         })),
       };
-      const token = store.getState().userSession.token;
+      const { token } = store.getState().userSession;
 
       persistAuthToken(store);
       expect(cookie.save).toBeCalledWith('auth_token', token, {
