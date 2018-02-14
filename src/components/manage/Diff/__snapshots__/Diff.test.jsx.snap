@@ -13,7 +13,7 @@ exports[`Diff renders a diff component 1`] = `
     className="ui grid"
   >
     <div
-      className="twelve wide column"
+      className="nine wide column"
     >
       <p
         className="description"
@@ -24,7 +24,7 @@ exports[`Diff renders a diff component 1`] = `
       </p>
     </div>
     <div
-      className="right aligned four wide column"
+      className="right aligned three wide column"
     >
       <div
         className="ui buttons"

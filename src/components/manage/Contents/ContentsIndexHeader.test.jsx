@@ -6,7 +6,7 @@ test('renders a contents item component', () => {
   const component = renderer.create(
     <ContentsIndexHeader
       width={1}
-      label={'Title'}
+      label="Title"
       onOrderIndex={() => {}}
       connectDragSource={x => x}
       connectDropTarget={x => x}

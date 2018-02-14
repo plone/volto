@@ -10,18 +10,19 @@ import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { filter, map } from 'lodash';
 import { Dropdown, Icon } from 'semantic-ui-react';
-import { FormattedMessage } from 'react-intl';
 
 import { getTypes } from '../../../actions';
+import { getBaseUrl } from '../../../helpers';
 
 @connect(
   state => ({
-    types: state.types.types,
+    types: filter(state.types.types, 'addable'),
+    type: state.content.data['@type'],
   }),
   dispatch => bindActionCreators({ getTypes }, dispatch),
 )
 /**
- * Component to display the adding objects view.
+ * Types container class.
  * @class Types
  * @extends Component
  */
@@ -32,41 +33,17 @@ export default class Types extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Pathname of the object
-     */
     pathname: PropTypes.string.isRequired,
-    /**
-     * Action to get the types
-     */
     getTypes: PropTypes.func.isRequired,
-    /**
-     * List of the types
-     */
     types: PropTypes.arrayOf(
       PropTypes.shape({
-        /**
-         * Id of the type
-         */
         '@id': PropTypes.string,
-        /**
-         * True if type is addable
-         */
         addable: PropTypes.bool,
-        /**
-         * Title of the type
-         */
         title: PropTypes.string,
       }),
     ).isRequired,
-    /**
-     * True if menu is active
-     */
+    type: PropTypes.string,
     active: PropTypes.bool,
-    /**
-     * True if menu is expanded
-     */
-    expanded: PropTypes.bool,
   };
 
   /**
@@ -76,15 +53,28 @@ export default class Types extends Component {
    */
   static defaultProps = {
     active: false,
-    expanded: true,
+    type: '',
   };
 
   /**
    * Component will mount
    * @method componentWillMount
+   * @returns {undefined}
    */
   componentWillMount() {
-    this.props.getTypes(this.props.pathname);
+    this.props.getTypes(getBaseUrl(this.props.pathname));
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.pathname !== this.props.pathname) {
+      this.props.getTypes(getBaseUrl(nextProps.pathname));
+    }
   }
 
   /**
@@ -95,22 +85,21 @@ export default class Types extends Component {
   render() {
     return this.props.types.length > 0 ? (
       <Dropdown
+        id="toolbar-add"
         item
-        trigger={
-          <span>
-            <Icon name="add" />{' '}
-            {this.props.expanded && (
-              <FormattedMessage id="Add new…" defaultMessage="Add new…" />
-            )}
-          </span>
-        }
-        pointing="left"
+        trigger={<Icon size="big" name="add" />}
         className={this.props.active ? 'active' : ''}
       >
         <Dropdown.Menu>
           {map(filter(this.props.types), item => (
             <Link
-              to={`${this.props.pathname}/add?type=${item.title}`}
+              to={`${this.props.pathname}/add?type=${
+                item['@id'].split('@types/')[1]
+              }`.replace(/\/\//g, '/')}
+              id={`toolbar-add-${item['@id']
+                .split('@types/')[1]
+                .toLowerCase()
+                .replace(' ', '-')}`}
               className="item"
               key={item.title}
             >

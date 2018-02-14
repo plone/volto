@@ -24,7 +24,7 @@ import layouts from '../../../constants/Layouts';
     bindActionCreators({ getSchema, editContent, getContent }, dispatch),
 )
 /**
- * Component to display the display menu.
+ * Display container class.
  * @class Display
  * @extends Component
  */
@@ -35,42 +35,14 @@ export default class Display extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Action to get the schema
-     */
     getSchema: PropTypes.func.isRequired,
-    /**
-     * Action to edit content
-     */
     editContent: PropTypes.func.isRequired,
-    /**
-     * Action to get content
-     */
     getContent: PropTypes.func.isRequired,
-    /**
-     * Loaded status
-     */
     loaded: PropTypes.bool.isRequired,
-    /**
-     * Pathname of the object
-     */
     pathname: PropTypes.string.isRequired,
-    /**
-     * Available layouts
-     */
     layouts: PropTypes.arrayOf(PropTypes.string),
-    /**
-     * Current layout
-     */
-    layout: PropTypes.string.isRequired,
-    /**
-     * Type of the object
-     */
+    layout: PropTypes.string,
     type: PropTypes.string.isRequired,
-    /**
-     * True if menu is expanded
-     */
-    expanded: PropTypes.bool,
   };
 
   /**
@@ -82,7 +54,7 @@ export default class Display extends Component {
     history: [],
     transitions: [],
     layouts: [],
-    expanded: true,
+    layout: '',
   };
 
   /**
@@ -99,6 +71,7 @@ export default class Display extends Component {
   /**
    * Component will mount
    * @method componentWillMount
+   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getSchema(this.props.type);
@@ -108,6 +81,7 @@ export default class Display extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
+   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
@@ -122,6 +96,7 @@ export default class Display extends Component {
    * On set layout handler
    * @method setLayout
    * @param {Object} event Event object
+   * @returns {undefined}
    */
   setLayout(event, { value }) {
     this.props.editContent(this.props.pathname, {
@@ -138,15 +113,13 @@ export default class Display extends Component {
     return (
       <Dropdown
         item
+        id="toolbar-display"
         trigger={
           <span>
-            <Icon name="block layout" />{' '}
-            {this.props.expanded && (
-              <FormattedMessage id="Display" defaultMessage="Display" />
-            )}
+            <Icon name="block layout" size="big" />{' '}
+            <FormattedMessage id="Display" defaultMessage="Display" />
           </span>
         }
-        pointing="left"
       >
         <Dropdown.Menu>
           {this.props.layouts.map(item => (

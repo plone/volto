@@ -9,14 +9,8 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
-import { Link } from 'react-router';
-import { Icon, Button } from 'semantic-ui-react';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { Button, Container } from 'semantic-ui-react';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 import { Form } from '../../../components';
 import {
@@ -46,7 +40,7 @@ const messages = defineMessages({
     ),
 )
 /**
- * Component to display a controlpanel.
+ * Controlpanel class.
  * @class Controlpanel
  * @extends Component
  */
@@ -57,60 +51,30 @@ export default class Controlpanel extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Action to add a notification message
-     */
     addMessage: PropTypes.func.isRequired,
-    /**
-     * Action to edit a controlpanel
-     */
     editControlpanel: PropTypes.func.isRequired,
-    /**
-     * Action to get controlpanel data
-     */
     getControlpanel: PropTypes.func.isRequired,
-    /**
-     * Id of the controlpanel
-     */
     id: PropTypes.string.isRequired,
-    /**
-     * Edit request status
-     */
     editRequest: PropTypes.shape({
-      /**
-       * Loading status
-       */
       loading: PropTypes.bool,
-      /**
-       * Loaded status
-       */
       loaded: PropTypes.bool,
     }).isRequired,
-    /**
-     * Controlpanel data
-     */
     controlpanel: PropTypes.shape({
-      /**
-       * Id of the controlpanel
-       */
       '@id': PropTypes.string,
-      /**
-       * Values of the controlpanel
-       */
       data: PropTypes.Object,
-      /**
-       * Schema of the controlpanel
-       */
       schema: PropTypes.Object,
-      /**
-       * Title of the controlpanel
-       */
       title: PropTypes.string,
-    }).isRequired,
-    /**
-     * i18n object
-     */
+    }),
     intl: intlShape.isRequired,
+  };
+
+  /**
+   * Default properties.
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    controlpanel: null,
   };
 
   /**
@@ -128,6 +92,7 @@ export default class Controlpanel extends Component {
   /**
    * Component will mount
    * @method componentWillMount
+   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getControlpanel(this.props.id);
@@ -137,6 +102,7 @@ export default class Controlpanel extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
+   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.editRequest.loading && nextProps.editRequest.loaded) {
@@ -152,6 +118,7 @@ export default class Controlpanel extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
+   * @returns {undefined}
    */
   onSubmit(data) {
     this.props.editControlpanel(this.props.controlpanel['@id'], data);
@@ -160,6 +127,7 @@ export default class Controlpanel extends Component {
   /**
    * Cancel handler
    * @method onCancel
+   * @returns {undefined}
    */
   onCancel() {
     browserHistory.goBack();
@@ -168,6 +136,7 @@ export default class Controlpanel extends Component {
   /**
    * Site setup handler
    * @method onSiteSetup
+   * @returns {undefined}
    */
   onSiteSetup() {
     browserHistory.push('/controlpanel');
@@ -183,27 +152,22 @@ export default class Controlpanel extends Component {
       return (
         <div id="page-controlpanel">
           <Helmet title={this.props.controlpanel.title} />
-          <div className="container">
-            <Button onClick={this.onSiteSetup}>
-              <Icon name="angle left" />{' '}
-              <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />
-            </Button>
-            <article id="content">
-              <header>
-                <h1 className="documentFirstHeading">
-                  {this.props.controlpanel.title}
-                </h1>
-              </header>
-              <section id="content-core">
-                <Form
-                  schema={this.props.controlpanel.schema}
-                  formData={this.props.controlpanel.data}
-                  onSubmit={this.onSubmit}
-                  onCancel={this.onCancel}
-                />
-              </section>
-            </article>
-          </div>
+          <Container>
+            <Button
+              onClick={this.onSiteSetup}
+              icon="arrow left"
+              circular
+              basic
+            />
+            <Form
+              title={this.props.controlpanel.title}
+              schema={this.props.controlpanel.schema}
+              formData={this.props.controlpanel.data}
+              onSubmit={this.onSubmit}
+              onCancel={this.onCancel}
+              loading={this.props.editRequest.loading}
+            />
+          </Container>
         </div>
       );
     }

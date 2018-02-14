@@ -10,6 +10,7 @@ import {
   ArrayWidget,
   CheckboxWidget,
   DatetimeWidget,
+  FileWidget,
   PasswordWidget,
   SelectWidget,
   TextWidget,
@@ -18,7 +19,7 @@ import {
 } from '../../../components';
 
 /**
- * Component to display a field.
+ * Field component class.
  * @function Field
  * @param {Object} props Properties.
  * @returns {string} Markup of the component.
@@ -47,6 +48,9 @@ const Field = props => {
   if (props.type === 'array') {
     return <ArrayWidget {...props} />;
   }
+  if (props.type === 'object') {
+    return <FileWidget {...props} />;
+  }
   return <TextWidget {...props} />;
 };
 
@@ -56,18 +60,10 @@ const Field = props => {
  * @static
  */
 Field.propTypes = {
-  /**
-   * Widget of the field
-   */
   widget: PropTypes.string,
-  /**
-   * Choices of the field
-   */
   choices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
-  /**
-   * Type of the field
-   */
   type: PropTypes.string,
+  id: PropTypes.string,
 };
 
 /**

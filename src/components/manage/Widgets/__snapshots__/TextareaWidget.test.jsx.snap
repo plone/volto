@@ -2,25 +2,45 @@
 
 exports[`renders a textarea widget component 1`] = `
 <div
-  className="field"
+  className="inline field textarea"
 >
-  <label
-    htmlFor="field-my-field"
+  <div
+    className="ui grid"
   >
-    My field
-  </label>
-  <textarea
-    id="field-my-field"
-    name="my-field"
-    onChange={[Function]}
-    onInput={[Function]}
-    rows={3}
-    style={
-      Object {
-        "resize": "",
-      }
-    }
-    value=""
-  />
+    <div
+      className="stretched row"
+    >
+      <div
+        className="four wide column"
+      >
+        <div
+          className="wrapper"
+        >
+          <label
+            htmlFor="field-my-field"
+          >
+            My field
+          </label>
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
+        <textarea
+          id="field-my-field"
+          name="my-field"
+          onChange={[Function]}
+          onInput={[Function]}
+          rows={3}
+          style={
+            Object {
+              "resize": "",
+            }
+          }
+          value=""
+        />
+      </div>
+    </div>
+  </div>
 </div>
 `;

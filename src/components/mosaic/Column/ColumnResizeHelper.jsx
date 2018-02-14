@@ -16,7 +16,7 @@ import { map } from 'lodash';
   isDragging: monitor.isDragging(),
 }))
 /**
- * Component to display a column resize helper.
+ * ColumnResizeHelper component class.
  * @function ColumnResizeHelper
  * @param {Object} props Component properties.
  * @param {Object} props.item Item to be dragged.
@@ -33,43 +33,16 @@ export default class ColumnResizeHelper extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Item to be dragged
-     */
     item: PropTypes.shape(PropTypes.any),
-    /**
-     * Item type to be dragged
-     */
     itemType: PropTypes.string,
-    /**
-     * Initial offset
-     */
     initialOffset: PropTypes.shape({
-      /**
-       * X-coordinate
-       */
       x: PropTypes.number,
-      /**
-       * Y-coordinate
-       */
       y: PropTypes.number,
     }),
-    /**
-     * Current offset
-     */
     currentOffset: PropTypes.shape({
-      /**
-       * X-coordinate
-       */
       x: PropTypes.number,
-      /**
-       * Y-coordinate
-       */
       y: PropTypes.number,
     }),
-    /**
-     * Is dragging state
-     */
     isDragging: PropTypes.bool.isRequired,
   };
 

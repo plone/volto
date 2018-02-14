@@ -19,6 +19,9 @@ describe('PersonalInformation', () => {
         get: {
           loaded: true,
         },
+        edit: {
+          loading: false,
+        },
       },
       intl: {
         locale: 'en',

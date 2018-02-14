@@ -4,11 +4,6 @@ exports[`Add renders an add component 1`] = `
 <div
   id="page-add"
 >
-  <h1>
-    <span>
-      Add Document
-    </span>
-  </h1>
   <div
     className="Form"
   />

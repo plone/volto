@@ -40,7 +40,7 @@ const messages = defineMessages({
   dispatch => bindActionCreators({ editContent }, dispatch),
 )
 /**
- * Component to display the tags modal in folder contents.
+ * ContentsTagsModal class.
  * @class ContentsTagsModal
  * @extends Component
  */
@@ -51,53 +51,20 @@ export default class ContentsTagsModal extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Action to edit content
-     */
     editContent: PropTypes.func.isRequired,
-    /**
-     * List of items
-     */
     items: PropTypes.arrayOf(
       PropTypes.shape({
-        /**
-         * Tags of the item
-         */
         subjects: PropTypes.arrayOf(PropTypes.string),
-        /**
-         * Url of the item
-         */
         url: PropTypes.string,
       }),
     ).isRequired,
-    /**
-     * Request status
-     */
     request: PropTypes.shape({
-      /**
-       * Loading status
-       */
       loading: PropTypes.bool,
-      /**
-       * Loaded status
-       */
       loaded: PropTypes.bool,
     }).isRequired,
-    /**
-     * True when modal is open
-     */
     open: PropTypes.bool.isRequired,
-    /**
-     * Handler when ok button is pressed
-     */
     onOk: PropTypes.func.isRequired,
-    /**
-     * Handler when cancel button is pressed
-     */
     onCancel: PropTypes.func.isRequired,
-    /**
-     * i18n object
-     */
     intl: intlShape.isRequired,
   };
 
@@ -116,6 +83,7 @@ export default class ContentsTagsModal extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
+   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.request.loading && nextProps.request.loaded) {
@@ -127,6 +95,7 @@ export default class ContentsTagsModal extends Component {
    * Submit handler
    * @method onSubmit
    * @param {Object} data Form data
+   * @returns {undefined}
    */
   onSubmit(data) {
     this.props.editContent(

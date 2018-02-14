@@ -10,7 +10,7 @@ import { Grid } from 'semantic-ui-react';
 import { Tile } from '../../../components';
 
 /**
- * Component to display a column.
+ * Column component class.
  * @function Column
  * @param {Object} props Component properties.
  * @param {number} props.width Column width.
@@ -68,64 +68,22 @@ const Column = ({
  * @static
  */
 Column.propTypes = {
-  /**
-   * Width of the column
-   */
   width: PropTypes.number.isRequired,
-  /**
-   * Tiles in the column
-   */
   tiles: PropTypes.arrayOf(
     PropTypes.shape({
-      /**
-       * Url of the tile
-       */
       url: PropTypes.string,
-      /**
-       * Content of the tile
-       */
       content: PropTypes.object,
-      /**
-       * Type of the tile
-       */
       type: PropTypes.string,
-      /**
-       * Label of the tile
-       */
       label: PropTypes.string,
     }),
   ).isRequired,
-  /**
-   * Column index in the row
-   */
   column: PropTypes.number.isRequired,
-  /**
-   * Row index in the grid
-   */
   row: PropTypes.number.isRequired,
-  /**
-   * Hovered state of the tile (left, right, top, bottom or none)
-   */
   hovered: PropTypes.string,
-  /**
-   * Action to select a tile
-   */
   selectTile: PropTypes.func.isRequired,
-  /**
-   * Action to delete a tile
-   */
   deleteTile: PropTypes.func.isRequired,
-  /**
-   * Action to set the hovered tile
-   */
   setHovered: PropTypes.func.isRequired,
-  /**
-   * Action to handle a drop
-   */
   handleDrop: PropTypes.func.isRequired,
-  /**
-   * Action to set tile content
-   */
   setTileContent: PropTypes.func.isRequired,
 };
 

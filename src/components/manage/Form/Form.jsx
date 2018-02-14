@@ -7,19 +7,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { keys, map, uniq } from 'lodash';
 import {
+  Accordion,
   Button,
   Form as UiForm,
   Icon,
-  Menu,
   Segment,
   Message,
 } from 'semantic-ui-react';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 import { Field } from '../../../components';
 
@@ -36,11 +31,27 @@ const messages = defineMessages({
     id: 'Items must be unique.',
     defaultMessage: 'Items must be unique.',
   },
+  save: {
+    id: 'Save',
+    defaultMessage: 'Save',
+  },
+  cancel: {
+    id: 'Cancel',
+    defaultMessage: 'Cancel',
+  },
+  error: {
+    id: 'Error',
+    defaultMessage: 'Error',
+  },
+  thereWereSomeErrors: {
+    id: 'There were some errors.',
+    defaultMessage: 'There were some errors.',
+  },
 });
 
 @injectIntl
 /**
- * Component to render a form.
+ * Form container class.
  * @class Form
  * @extends Component
  */
@@ -51,54 +62,29 @@ export default class Form extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Schema used in the form
-     */
     schema: PropTypes.shape({
-      /**
-       * Fieldsets of the schema
-       */
       fieldsets: PropTypes.arrayOf(
         PropTypes.shape({
-          /**
-           * Fields in the fieldset
-           */
           fields: PropTypes.arrayOf(PropTypes.string),
-          /**
-           * Id of the fieldset
-           */
           id: PropTypes.string,
-          /**
-           * Title of the fieldset
-           */
           title: PropTypes.string,
         }),
       ),
-      /**
-       * Property values
-       */
       properties: PropTypes.objectOf(PropTypes.any),
-      /**
-       * List of required fields
-       */
       required: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
-    /**
-     * Form data
-     */
     formData: PropTypes.objectOf(PropTypes.any),
-    /**
-     * Handler when submitting the form
-     */
     onSubmit: PropTypes.func.isRequired,
-    /**
-     * Handler when cancelling the form
-     */
-    onCancel: PropTypes.func.isRequired,
-    /**
-     * i18n object
-     */
+    onCancel: PropTypes.func,
+    submitLabel: PropTypes.string,
+    resetAfterSubmit: PropTypes.bool,
     intl: intlShape.isRequired,
+    title: PropTypes.string,
+    error: PropTypes.shape({
+      message: PropTypes.string,
+    }),
+    loading: PropTypes.bool,
+    description: PropTypes.string,
   };
 
   /**
@@ -108,6 +94,13 @@ export default class Form extends Component {
    */
   static defaultProps = {
     formData: {},
+    onCancel: null,
+    submitLabel: null,
+    resetAfterSubmit: false,
+    title: null,
+    description: null,
+    error: null,
+    loading: null,
   };
 
   /**
@@ -133,6 +126,7 @@ export default class Form extends Component {
    * @method onChangeField
    * @param {string} id Id of the field
    * @param {*} value Value of the field
+   * @returns {undefined}
    */
   onChangeField(id, value) {
     this.setState({
@@ -147,6 +141,7 @@ export default class Form extends Component {
    * Submit handler
    * @method onSubmit
    * @param {Object} event Event object.
+   * @returns {undefined}
    */
   onSubmit(event) {
     event.preventDefault();
@@ -185,6 +180,11 @@ export default class Form extends Component {
       });
     } else {
       this.props.onSubmit(this.state.formData);
+      if (this.props.resetAfterSubmit) {
+        this.setState({
+          formData: this.props.formData,
+        });
+      }
     }
   }
 
@@ -193,6 +193,7 @@ export default class Form extends Component {
    * @method selectTab
    * @param {Object} event Event object.
    * @param {number} index Selected tab index.
+   * @returns {undefined}
    */
   selectTab(event, { index }) {
     this.setState({
@@ -209,58 +210,111 @@ export default class Form extends Component {
     const { schema, onCancel } = this.props;
     const currentFieldset = schema.fieldsets[this.state.currentTab];
 
-    const fields = map(currentFieldset.fields, field => ({
-      ...schema.properties[field],
-      id: field,
-      value: this.state.formData[field],
-      required: schema.required.indexOf(field) !== -1,
-      onChange: this.onChangeField,
-    }));
-
     return (
       <UiForm
         method="post"
         onSubmit={this.onSubmit}
         error={keys(this.state.errors).length > 0}
       >
-        <Message error>
-          <FormattedMessage
-            id="There were some errors."
-            defaultMessage="There were some errors."
-          />
-        </Message>
-        {schema.fieldsets.length > 1 && (
-          <Menu attached="top" tabular stackable>
-            {map(schema.fieldsets, (item, index) => (
-              <Menu.Item
-                name={item.id}
-                index={index}
-                key={item.id}
-                active={this.state.currentTab === index}
-                onClick={this.selectTab}
-              >
-                {item.title}
-              </Menu.Item>
-            ))}
-          </Menu>
-        )}
-        <Segment attached>
-          {fields.map(field => (
-            <Field
-              {...field}
-              key={field.id}
-              error={this.state.errors[field.id]}
+        <Segment.Group raised>
+          {this.props.title && (
+            <Segment className="primary">{this.props.title}</Segment>
+          )}
+          {keys(this.state.errors).length > 0 && (
+            <Message
+              icon="warning"
+              negative
+              attached
+              header={this.props.intl.formatMessage(messages.error)}
+              content={this.props.intl.formatMessage(
+                messages.thereWereSomeErrors,
+              )}
             />
-          ))}
-        </Segment>
-        <Segment attached="bottom">
-          <Button icon onClick={onCancel} color="brown" size="large">
-            <Icon name="icon-clear" />
-          </Button>
-          <Button icon type="submit" color="blue" size="large">
-            <Icon name="icon-ahead" />
-          </Button>
-        </Segment>
+          )}
+          {this.props.error && (
+            <Message
+              icon="warning"
+              negative
+              attached
+              header={this.props.intl.formatMessage(messages.error)}
+              content={this.props.error.message}
+            />
+          )}
+          {this.props.description && (
+            <Segment secondary>{this.props.description}</Segment>
+          )}
+          {schema.fieldsets.length > 1 && (
+            <Accordion styled fluid exclusive={false}>
+              {map(schema.fieldsets, (item, index) => [
+                <Accordion.Title
+                  index={index}
+                  onClick={this.selectTab}
+                  active={this.state.currentTab === index}
+                >
+                  {item.title}
+                  <Icon color="black" name="dropdown" />
+                </Accordion.Title>,
+                <Accordion.Content active={this.state.currentTab === index}>
+                  {map(item.fields, field => (
+                    <Field
+                      {...schema.properties[field]}
+                      id={field}
+                      value={this.state.formData[field]}
+                      required={schema.required.indexOf(field) !== -1}
+                      onChange={this.onChangeField}
+                      key={field}
+                      error={this.state.errors[field]}
+                    />
+                  ))}
+                </Accordion.Content>,
+              ])}
+            </Accordion>
+          )}
+          {schema.fieldsets.length === 1 && (
+            <Segment>
+              {map(currentFieldset.fields, field => (
+                <Field
+                  {...schema.properties[field]}
+                  id={field}
+                  value={this.state.formData[field]}
+                  required={schema.required.indexOf(field) !== -1}
+                  onChange={this.onChangeField}
+                  key={field}
+                  error={this.state.errors[field]}
+                />
+              ))}
+            </Segment>
+          )}
+          <Segment className="actions" clearing>
+            <Button
+              basic
+              circular
+              primary
+              floated="right"
+              icon="arrow right"
+              type="submit"
+              title={
+                this.props.submitLabel
+                  ? this.props.submitLabel
+                  : this.props.intl.formatMessage(messages.save)
+              }
+              size="big"
+              loading={this.props.loading}
+            />
+            {onCancel && (
+              <Button
+                basic
+                circular
+                secondary
+                icon="remove"
+                title={this.props.intl.formatMessage(messages.cancel)}
+                floated="right"
+                size="big"
+                onClick={onCancel}
+              />
+            )}
+          </Segment>
+        </Segment.Group>
       </UiForm>
     );
   }

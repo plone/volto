@@ -2,62 +2,82 @@
 
 exports[`renders a select widget component 1`] = `
 <div
-  className="field"
+  className="inline field"
 >
-  <label
-    htmlFor="field-my-field"
-  >
-    My field
-  </label>
   <div
-    aria-busy={undefined}
-    aria-disabled={undefined}
-    aria-expanded={false}
-    aria-multiselectable={undefined}
-    className="ui selection dropdown"
-    id="field-my-field"
-    name="my-field"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onMouseDown={[Function]}
-    role="listbox"
-    tabIndex={0}
+    className="ui grid"
   >
     <div
-      aria-live="polite"
-      className="text"
-      role="alert"
-    >
-      No value
-    </div>
-    <i
-      aria-hidden="true"
-      className="dropdown icon"
-      onClick={[Function]}
-    />
-    <div
-      className="menu transition"
+      className="stretched row"
     >
       <div
-        aria-checked={true}
-        aria-disabled={undefined}
-        aria-selected={true}
-        className="active selected item"
-        onClick={[Function]}
-        role="option"
-        style={
-          Object {
-            "pointerEvents": "all",
-          }
-        }
+        className="four wide column"
       >
-        <span
-          className="text"
+        <div
+          className="wrapper"
         >
-          No value
-        </span>
+          <label
+            htmlFor="field-my-field"
+          >
+            My field
+          </label>
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
+        <div
+          aria-busy={undefined}
+          aria-disabled={undefined}
+          aria-expanded={false}
+          aria-multiselectable={undefined}
+          className="ui selection dropdown"
+          id="field-my-field"
+          name="my-field"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseDown={[Function]}
+          role="listbox"
+          tabIndex={0}
+        >
+          <div
+            aria-live="polite"
+            className="text"
+            role="alert"
+          >
+            No value
+          </div>
+          <i
+            aria-hidden="true"
+            className="dropdown icon"
+            onClick={[Function]}
+          />
+          <div
+            className="menu transition"
+          >
+            <div
+              aria-checked={true}
+              aria-disabled={undefined}
+              aria-selected={true}
+              className="active selected item"
+              onClick={[Function]}
+              role="option"
+              style={
+                Object {
+                  "pointerEvents": "all",
+                }
+              }
+            >
+              <span
+                className="text"
+              >
+                No value
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

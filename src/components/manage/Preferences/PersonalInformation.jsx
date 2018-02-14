@@ -71,6 +71,11 @@ const messages = defineMessages({
   },
 });
 
+/**
+ * PersonalInformation class.
+ * @class PersonalInformation
+ * @extends Component
+ */
 @injectIntl
 @connect(
   state => ({
@@ -79,14 +84,10 @@ const messages = defineMessages({
       ? jwtDecode(state.userSession.token).sub
       : '',
     loaded: state.users.get.loaded,
+    loading: state.users.edit.loading,
   }),
   dispatch => bindActionCreators({ addMessage, getUser, editUser }, dispatch),
 )
-/**
- * Component to display the personal information view.
- * @class PersonalInformation
- * @extends Component
- */
 export default class PersonalInformation extends Component {
   /**
    * Property types.
@@ -94,51 +95,19 @@ export default class PersonalInformation extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * User data
-     */
     user: PropTypes.shape({
-      /**
-       * Fullname of the user
-       */
       fullname: PropTypes.string,
-      /**
-       * Email address of the user
-       */
       email: PropTypes.string,
-      /**
-       * Homepage of the user
-       */
       home_page: PropTypes.string,
-      /**
-       * Location of the user
-       */
       location: PropTypes.string,
     }).isRequired,
-    /**
-     * Action to edit the user
-     */
     editUser: PropTypes.func.isRequired,
-    /**
-     * Action to get the user
-     */
     getUser: PropTypes.func.isRequired,
-    /**
-     * Action to add a notification message
-     */
     addMessage: PropTypes.func.isRequired,
-    /**
-     * User id
-     */
     userId: PropTypes.string.isRequired,
-    /**
-     * i18n object
-     */
     intl: intlShape.isRequired,
-    /**
-     * Loaded status
-     */
     loaded: PropTypes.bool.isRequired,
+    loading: PropTypes.bool,
   };
 
   /**
@@ -156,6 +125,7 @@ export default class PersonalInformation extends Component {
   /**
    * Component will mount
    * @method componentWillMount
+   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getUser(this.props.userId);
@@ -165,6 +135,7 @@ export default class PersonalInformation extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
+   * @returns {undefined}
    */
   onSubmit(data) {
     this.props.editUser(this.props.userId, data);
@@ -178,6 +149,7 @@ export default class PersonalInformation extends Component {
   /**
    * Cancel handler
    * @method onCancel
+   * @returns {undefined}
    */
   onCancel() {
     browserHistory.goBack();
@@ -256,6 +228,7 @@ export default class PersonalInformation extends Component {
           }}
           onSubmit={this.onSubmit}
           onCancel={this.onCancel}
+          loading={this.props.loading}
         />
       </div>
     ) : (

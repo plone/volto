@@ -2,7 +2,7 @@
 
 exports[`Messages renders an messages component 1`] = `
 <div
-  className="ui basic segment messages"
+  className="ui container messages"
 >
   <div
     className="ui success message"

@@ -2,25 +2,45 @@
 
 exports[`renders a text widget component 1`] = `
 <div
-  className="field"
+  className="inline field"
 >
-  <label
-    htmlFor="field-my-field"
-  >
-    My field
-  </label>
   <div
-    className="ui input"
+    className="ui grid"
   >
-    <input
-      disabled={undefined}
-      id="field-my-field"
-      name="my-field"
-      onChange={[Function]}
-      tabIndex={undefined}
-      type="text"
-      value=""
-    />
+    <div
+      className="stretched row"
+    >
+      <div
+        className="four wide column"
+      >
+        <div
+          className="wrapper"
+        >
+          <label
+            htmlFor="field-my-field"
+          >
+            My field
+          </label>
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
+        <div
+          className="ui input"
+        >
+          <input
+            disabled={undefined}
+            id="field-my-field"
+            name="my-field"
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

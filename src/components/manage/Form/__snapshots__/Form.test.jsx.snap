@@ -8,47 +8,46 @@ exports[`Form renders a form component 1`] = `
   onSubmit={[Function]}
 >
   <div
-    className="ui error message"
-  >
-    <span>
-      There were some errors.
-    </span>
-  </div>
-  <div
-    className="ui attached segment"
+    className="ui raised segments"
   >
     <div
-      className="Field"
-    />
-  </div>
-  <div
-    className="ui bottom attached segment"
-  >
-    <button
-      className="ui brown large icon button"
-      disabled={undefined}
-      onClick={[Function]}
-      role="button"
-      tabIndex={undefined}
+      className="ui segment"
     >
-      <i
-        aria-hidden="true"
-        className="icon-clear icon"
+      <div
+        className="Field"
       />
-    </button>
-    <button
-      className="ui blue large icon button"
-      disabled={undefined}
-      onClick={[Function]}
-      role="button"
-      tabIndex={undefined}
-      type="submit"
+    </div>
+    <div
+      className="ui clearing segment actions"
     >
-      <i
-        aria-hidden="true"
-        className="icon-ahead icon"
-      />
-    </button>
+      <button
+        className="ui big basic circular icon primary right floated button"
+        disabled={undefined}
+        onClick={[Function]}
+        role="button"
+        tabIndex={undefined}
+        title="Save"
+        type="submit"
+      >
+        <i
+          aria-hidden="true"
+          className="arrow right icon"
+        />
+      </button>
+      <button
+        className="ui big basic circular icon secondary right floated button"
+        disabled={undefined}
+        onClick={[Function]}
+        role="button"
+        tabIndex={undefined}
+        title="Cancel"
+      >
+        <i
+          aria-hidden="true"
+          className="remove icon"
+        />
+      </button>
+    </div>
   </div>
 </form>
 `;

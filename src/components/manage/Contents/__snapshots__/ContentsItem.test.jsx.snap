@@ -70,7 +70,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
       />
       <i
         aria-hidden="true"
-        className="ellipsis vertical icon"
+        className="ellipsis horizontal icon"
         onClick={[Function]}
       />
       <div

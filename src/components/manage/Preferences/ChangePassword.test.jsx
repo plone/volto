@@ -18,6 +18,11 @@ describe('ChangePassword', () => {
         locale: 'en',
         messages: {},
       },
+      users: {
+        edit: {
+          loading: false,
+        },
+      },
     });
     const component = renderer.create(
       <Provider store={store}>

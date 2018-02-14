@@ -1,0 +1,63 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.dropdown.right {
+  float: right;
+}
+
+// This fixes the special height of all Pastanaga inputs in tags widget
+.ui.multiple.search.dropdown > input.search {
+  height: initial;
+}
+
+.ui.selection.dropdown:not(.multiple):not(.search) > .dropdown.icon {
+  // custom padding for dropdowns
+  font-size: 2em;
+  position: static;
+}
+
+.ui.selection.dropdown {
+  border-bottom: 1px solid @borderColor;
+}
+
+.ui.selection.dropdown:not(.multiple) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ui.active.selection.dropdown {
+  border: none;
+  border-bottom: 1px dotted #b8c6c8;
+}
+
+.ui.selection.active.dropdown .menu {
+  margin-top: 1px;
+  border: none;
+
+  &:hover {
+    border: none;
+  }
+
+  &:last-child {
+    border-bottom: 1px solid @blue;
+  }
+}
+
+.ui.form .ui.dropdown:not(.multiple):not(.search) .menu .selected.item:after {
+  font-family: 'Icons';
+  content: '\e929';
+  float: right;
+}
+
+.ui.form .ui.dropdown .menu .item:hover:after {
+  font-family: 'Icons';
+  color: @dropdownTextColor;
+  content: '\e929';
+  float: right;
+}
+
+.ui.dropdown.multiple .menu .selected.item:hover {
+  background: @subtleTransparentBlack;
+}

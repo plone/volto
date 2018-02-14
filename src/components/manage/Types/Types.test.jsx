@@ -11,6 +11,7 @@ describe('Types', () => {
   it('renders an empty types component', () => {
     const store = mockStore({
       types: { types: [] },
+      content: { data: {} },
       intl: {
         locale: 'en',
         messages: {},
@@ -28,6 +29,7 @@ describe('Types', () => {
   it('renders a types component', () => {
     const store = mockStore({
       types: { types: [{ title: 'Document' }] },
+      content: { data: {} },
       intl: {
         locale: 'en',
         messages: {},
@@ -45,6 +47,7 @@ describe('Types', () => {
   it('renders an active types component', () => {
     const store = mockStore({
       types: { types: [{ title: 'Document' }] },
+      content: { data: {} },
       intl: {
         locale: 'en',
         messages: {},

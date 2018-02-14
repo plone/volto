@@ -22,6 +22,7 @@ describe('Toolbar', () => {
       content: {
         data: {
           '@type': 'Folder',
+          is_folderish: true,
         },
       },
       intl: {

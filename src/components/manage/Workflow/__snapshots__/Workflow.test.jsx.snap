@@ -6,7 +6,7 @@ exports[`Workflow renders a workflow component 1`] = `
   aria-disabled={undefined}
   aria-expanded={false}
   aria-multiselectable={undefined}
-  className="ui item left pointing dropdown"
+  className="ui item dropdown"
   onBlur={[Function]}
   onChange={[Function]}
   onClick={[Function]}
@@ -18,7 +18,7 @@ exports[`Workflow renders a workflow component 1`] = `
   <span>
     <i
       aria-hidden="true"
-      className="random icon"
+      className="random big icon"
     />
      
     <span>

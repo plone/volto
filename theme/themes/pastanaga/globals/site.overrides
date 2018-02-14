@@ -1,0 +1,16 @@
+/*******************************
+        Global Overrides
+*******************************/
+
+.documentFirstHeading {
+  border-bottom: 2px solid @purpleBackground;
+  position: relative;
+  &::before {
+    border-bottom: 3px solid @pink;
+    bottom: -3px;
+    content: '';
+    left: 0;
+    position: absolute;
+    width: 30px;
+  }
+}

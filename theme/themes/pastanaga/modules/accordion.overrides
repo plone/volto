@@ -1,0 +1,26 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+/* Dropdown Icon */
+.ui.accordion .title .dropdown.icon,
+.ui.accordion .accordion .title .dropdown.icon {
+  float: right;
+}
+
+.ui.accordion .title .dropdown.icon:before,
+.ui.accordion .accordion .title .dropdown.icon:before {
+  content: '\e904';
+}
+
+.ui.accordion .active.title .dropdown.icon:before,
+.ui.accordion .accordion .active.title .dropdown.icon:before {
+  content: '\e9ce';
+}
+
+.ui.styled.accordion .title,
+.ui.styled.accordion .accordion .title {
+  background: @darkWhite;
+  font-size: @12px;
+  text-transform: uppercase;
+}

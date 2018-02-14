@@ -39,167 +39,194 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
     onSubmit={[Function]}
   >
     <div
-      className="ui error message"
-    >
-      <span>
-        There were some errors.
-      </span>
-    </div>
-    <div
-      className="ui attached segment"
+      className="ui raised segments"
     >
       <div
-        className="field"
+        className="ui segment"
       >
-        <label
-          htmlFor="field-language"
-        >
-          Language
-          <span
-            className="help"
-          >
-            Your preferred language
-          </span>
-        </label>
         <div
-          aria-busy={undefined}
-          aria-disabled={undefined}
-          aria-expanded={false}
-          aria-multiselectable={undefined}
-          className="ui selection dropdown"
-          id="field-language"
-          name="language"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onMouseDown={[Function]}
-          role="listbox"
-          tabIndex={0}
+          className="inline field help"
         >
           <div
-            aria-live="polite"
-            className="text"
-            role="alert"
-          >
-            No value
-          </div>
-          <i
-            aria-hidden="true"
-            className="dropdown icon"
-            onClick={[Function]}
-          />
-          <div
-            className="menu transition"
+            className="ui grid"
           >
             <div
-              aria-checked={true}
-              aria-disabled={undefined}
-              aria-selected={true}
-              className="active selected item"
-              onClick={[Function]}
-              role="option"
-              style={
-                Object {
-                  "pointerEvents": "all",
-                }
-              }
+              className="stretched row"
             >
-              <span
-                className="text"
+              <div
+                className="four wide column"
               >
-                No value
-              </span>
+                <div
+                  className="wrapper"
+                >
+                  <label
+                    htmlFor="field-language"
+                  >
+                    Language
+                  </label>
+                </div>
+              </div>
+              <div
+                className="eight wide column"
+              >
+                <div
+                  aria-busy={undefined}
+                  aria-disabled={undefined}
+                  aria-expanded={false}
+                  aria-multiselectable={undefined}
+                  className="ui selection dropdown"
+                  id="field-language"
+                  name="language"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseDown={[Function]}
+                  role="listbox"
+                  tabIndex={0}
+                >
+                  <div
+                    aria-live="polite"
+                    className="text"
+                    role="alert"
+                  >
+                    No value
+                  </div>
+                  <i
+                    aria-hidden="true"
+                    className="dropdown icon"
+                    onClick={[Function]}
+                  />
+                  <div
+                    className="menu transition"
+                  >
+                    <div
+                      aria-checked={true}
+                      aria-disabled={undefined}
+                      aria-selected={true}
+                      className="active selected item"
+                      onClick={[Function]}
+                      role="option"
+                      style={
+                        Object {
+                          "pointerEvents": "all",
+                        }
+                      }
+                    >
+                      <span
+                        className="text"
+                      >
+                        No value
+                      </span>
+                    </div>
+                    <div
+                      aria-checked={false}
+                      aria-disabled={undefined}
+                      aria-selected={false}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                      style={
+                        Object {
+                          "pointerEvents": "all",
+                        }
+                      }
+                    >
+                      <span
+                        className="text"
+                      >
+                        English
+                      </span>
+                    </div>
+                    <div
+                      aria-checked={false}
+                      aria-disabled={undefined}
+                      aria-selected={false}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                      style={
+                        Object {
+                          "pointerEvents": "all",
+                        }
+                      }
+                    >
+                      <span
+                        className="text"
+                      >
+                        Deutsch
+                      </span>
+                    </div>
+                    <div
+                      aria-checked={false}
+                      aria-disabled={undefined}
+                      aria-selected={false}
+                      className="item"
+                      onClick={[Function]}
+                      role="option"
+                      style={
+                        Object {
+                          "pointerEvents": "all",
+                        }
+                      }
+                    >
+                      <span
+                        className="text"
+                      >
+                        Nederlands
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div
-              aria-checked={false}
-              aria-disabled={undefined}
-              aria-selected={false}
-              className="item"
-              onClick={[Function]}
-              role="option"
-              style={
-                Object {
-                  "pointerEvents": "all",
-                }
-              }
+              className="stretched row"
             >
-              <span
-                className="text"
+              <div
+                className="stretched twelve wide column"
               >
-                English
-              </span>
-            </div>
-            <div
-              aria-checked={false}
-              aria-disabled={undefined}
-              aria-selected={false}
-              className="item"
-              onClick={[Function]}
-              role="option"
-              style={
-                Object {
-                  "pointerEvents": "all",
-                }
-              }
-            >
-              <span
-                className="text"
-              >
-                Deutsch
-              </span>
-            </div>
-            <div
-              aria-checked={false}
-              aria-disabled={undefined}
-              aria-selected={false}
-              className="item"
-              onClick={[Function]}
-              role="option"
-              style={
-                Object {
-                  "pointerEvents": "all",
-                }
-              }
-            >
-              <span
-                className="text"
-              >
-                Nederlands
-              </span>
+                <p
+                  className="help"
+                >
+                  Your preferred language
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div
-      className="ui bottom attached segment"
-    >
-      <button
-        className="ui brown large icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+      <div
+        className="ui clearing segment actions"
       >
-        <i
-          aria-hidden="true"
-          className="icon-clear icon"
-        />
-      </button>
-      <button
-        className="ui blue large icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
-        type="submit"
-      >
-        <i
-          aria-hidden="true"
-          className="icon-ahead icon"
-        />
-      </button>
+        <button
+          className="ui big basic circular icon primary right floated button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+          title="Save"
+          type="submit"
+        >
+          <i
+            aria-hidden="true"
+            className="arrow right icon"
+          />
+        </button>
+        <button
+          className="ui big basic circular icon secondary right floated button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+          title="Cancel"
+        >
+          <i
+            aria-hidden="true"
+            className="remove icon"
+          />
+        </button>
+      </div>
     </div>
   </form>
 </div>
