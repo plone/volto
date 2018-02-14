@@ -18,4 +18,4 @@ before_script:
   - sudo mv chromedriver /usr/local/bin
 script:
   - yarn coverage
-  - pybot tests/test.robot
+
