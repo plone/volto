@@ -1,0 +1,4 @@
+robotframework==3.0
+robotframework-selenium2library==1.7.4
+robotframework-debuglibrary==0.4
+Selenium==2.53.1
