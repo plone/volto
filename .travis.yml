@@ -18,7 +18,5 @@ before_script:
   - unzip chromedriver_linux64.zip
   - sudo mv chromedriver /usr/local/bin
 script:
-  -
-script:
   - yarn coverage
   - pybot tests/test.robot
