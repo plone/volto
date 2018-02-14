@@ -16,6 +16,5 @@ before_script:
   - wget "http://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip"
   - unzip chromedriver_linux64.zip
   - sudo mv chromedriver /usr/local/bin
-script:
-  - yarn coverage
+script: yarn coverage
 
