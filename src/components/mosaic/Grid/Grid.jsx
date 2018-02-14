@@ -6,11 +6,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid as UIGrid } from 'semantic-ui-react';
+import { join, map } from 'lodash';
 
 import { ColumnResizeHelper, Row } from '../../../components';
 
 /**
- * Component to display a grid.
+ * Grid component class.
  * @function Grid
  * @param {Object} props Component properties.
  * @param {Object[]} props.rows Rows in the grid.
@@ -36,6 +37,12 @@ const Grid = ({
   <UIGrid className="mosaic">
     {rows.map((row, index) => (
       <Row
+        key={join(
+          map(row.columns, column =>
+            join(map(column.tiles, tile => tile.url), '|'),
+          ),
+          '-',
+        )}
         row={index}
         selectTile={selectTile}
         deleteTile={deleteTile}
@@ -59,44 +66,14 @@ const Grid = ({
  * @static
  */
 Grid.propTypes = {
-  /**
-   * Rows in the grid
-   */
-  rows: PropTypes.arrayOf(
-    PropTypes.shape({
-      /**
-       * Columns in the row
-       */
-      columns: PropTypes.array,
-    }),
-  ).isRequired,
-  /**
-   * Action to select a tile
-   */
+  rows: PropTypes.arrayOf(PropTypes.shape({ columns: PropTypes.array }))
+    .isRequired,
   selectTile: PropTypes.func.isRequired,
-  /**
-   * Actoin to delete a tile
-   */
   deleteTile: PropTypes.func.isRequired,
-  /**
-   * Action to set the hovered state
-   */
   setHovered: PropTypes.func.isRequired,
-  /**
-   * Action to handle the drop event
-   */
   handleDrop: PropTypes.func.isRequired,
-  /**
-   * Action to set the tile content
-   */
   setTileContent: PropTypes.func.isRequired,
-  /**
-   * Handler called when resizing starts
-   */
   startResize: PropTypes.func.isRequired,
-  /**
-   * Handler called when resizig ends
-   */
   endResize: PropTypes.func.isRequired,
 };
 

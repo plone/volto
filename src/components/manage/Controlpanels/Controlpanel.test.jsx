@@ -22,6 +22,10 @@ describe('Controlpanel', () => {
           },
           data: {},
         },
+        edit: {
+          loading: false,
+          loaded: true,
+        },
       },
       intl: {
         locale: 'en',

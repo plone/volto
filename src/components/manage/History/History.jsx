@@ -9,14 +9,13 @@ import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Dropdown, Icon, Table } from 'semantic-ui-react';
+import { Dropdown, Icon, Segment, Table } from 'semantic-ui-react';
 import { concat, map, reverse } from 'lodash';
 import moment from 'moment';
 import { FormattedMessage } from 'react-intl';
 
 import { getHistory, revertHistory } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
-import config from '../../../config';
 
 @connect(
   (state, props) => ({
@@ -28,7 +27,7 @@ import config from '../../../config';
   dispatch => bindActionCreators({ getHistory, revertHistory }, dispatch),
 )
 /**
- * Component to display the history view.
+ * HistoryComponent class.
  * @class HistoryComponent
  * @extends Component
  */
@@ -39,69 +38,24 @@ export default class HistoryComponent extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Action to get the history
-     */
     getHistory: PropTypes.func.isRequired,
-    /**
-     * Action to revert history
-     */
     revertHistory: PropTypes.func.isRequired,
-    /**
-     * Revert request status
-     */
     revertRequest: PropTypes.shape({
-      /**
-       * Loaded status
-       */
       loaded: PropTypes.bool,
-      /**
-       * Loading status
-       */
       loading: PropTypes.bool,
     }).isRequired,
-    /**
-     * Pathname of the object
-     */
     pathname: PropTypes.string.isRequired,
-    /**
-     * History entries
-     */
     entries: PropTypes.arrayOf(
       PropTypes.shape({
-        /**
-         * Transition title
-         */
         transition_title: PropTypes.string,
-        /**
-         * Type of the history entry
-         */
         type: PropTypes.string,
-        /**
-         * Action of the history entry
-         */
         action: PropTypes.string,
-        /**
-         * State title of the history entry
-         */
         state_title: PropTypes.string,
-        /**
-         * Time of the history item
-         */
         time: PropTypes.string,
-        /**
-         * Comments of the history item
-         */
         comments: PropTypes.string,
-        /**
-         * Actor of the history item
-         */
         actor: PropTypes.shape({ fullname: PropTypes.string }),
       }),
     ).isRequired,
-    /**
-     * Title of the object
-     */
     title: PropTypes.string.isRequired,
   };
 
@@ -119,6 +73,7 @@ export default class HistoryComponent extends Component {
   /**
    * Component did mount
    * @method componentDidMount
+   * @returns {undefined}
    */
   componentDidMount() {
     this.props.getHistory(getBaseUrl(this.props.pathname));
@@ -128,6 +83,7 @@ export default class HistoryComponent extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
+   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.revertRequest.loading && nextProps.revertRequest.loaded) {
@@ -140,6 +96,7 @@ export default class HistoryComponent extends Component {
    * @method onRevert
    * @param {object} event Event object
    * @param {number} value Value
+   * @returns {undefined}
    */
   onRevert(event, { value }) {
     this.props.revertHistory(getBaseUrl(this.props.pathname), value);
@@ -161,129 +118,135 @@ export default class HistoryComponent extends Component {
     return (
       <div id="page-history">
         <Helmet title="History" />
-        <h1>
-          <FormattedMessage
-            id="History of {title}"
-            defaultMessage="History of {title}"
-            values={{
-              title: <q>{this.props.title}</q>,
-            }}
-          />
-        </h1>
-        <p className="description">
-          <FormattedMessage
-            id="You can view the history of your item below."
-            defaultMessage="You can view the history of your item below."
-          />
-        </p>
-
-        <Table selectable compact singleLine>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell width={4}>
-                <FormattedMessage id="What" defaultMessage="What" />
-              </Table.HeaderCell>
-              <Table.HeaderCell width={4}>
-                <FormattedMessage id="Who" defaultMessage="Who" />
-              </Table.HeaderCell>
-              <Table.HeaderCell width={4}>
-                <FormattedMessage id="When" defaultMessage="When" />
-              </Table.HeaderCell>
-              <Table.HeaderCell width={4}>
-                <FormattedMessage
-                  id="Change Note"
-                  defaultMessage="Change Note"
-                />
-              </Table.HeaderCell>
-              <Table.HeaderCell />
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {map(entries, entry => (
-              <Table.Row key={entry.time}>
-                <Table.Cell>
-                  {('version' in entry &&
-                    entry.version > 0 && (
-                      <Link
-                        className="item"
-                        to={`${getBaseUrl(
-                          this.props.pathname,
-                        )}/diff?one=${entry.version - 1}&two=${entry.version}`}
-                      >
+        <Segment.Group raised>
+          <Segment className="primary">
+            <Link to={getBaseUrl(this.props.pathname)}>
+              <Icon name="arrow left" />
+            </Link>
+            <FormattedMessage
+              id="History of {title}"
+              defaultMessage="History of {title}"
+              values={{
+                title: <q>{this.props.title}</q>,
+              }}
+            />
+          </Segment>
+          <Segment secondary>
+            <FormattedMessage
+              id="You can view the history of your item below."
+              defaultMessage="You can view the history of your item below."
+            />
+          </Segment>
+          <Table selectable compact singleLine attached>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell width={4}>
+                  <FormattedMessage id="What" defaultMessage="What" />
+                </Table.HeaderCell>
+                <Table.HeaderCell width={4}>
+                  <FormattedMessage id="Who" defaultMessage="Who" />
+                </Table.HeaderCell>
+                <Table.HeaderCell width={4}>
+                  <FormattedMessage id="When" defaultMessage="When" />
+                </Table.HeaderCell>
+                <Table.HeaderCell width={4}>
+                  <FormattedMessage
+                    id="Change Note"
+                    defaultMessage="Change Note"
+                  />
+                </Table.HeaderCell>
+                <Table.HeaderCell />
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {map(entries, entry => (
+                <Table.Row key={entry.time}>
+                  <Table.Cell>
+                    {('version' in entry &&
+                      entry.version > 0 && (
+                        <Link
+                          className="item"
+                          to={`${getBaseUrl(
+                            this.props.pathname,
+                          )}/diff?one=${entry.version - 1}&two=${
+                            entry.version
+                          }`}
+                        >
+                          {entry.transition_title}
+                        </Link>
+                      )) || (
+                      <span>
                         {entry.transition_title}
-                      </Link>
-                    )) || (
-                    <span>
-                      {entry.transition_title}
-                      {entry.type === 'workflow' &&
-                        ` (${
-                          entry.action ? `${entry.prev_state_title} → ` : ''
-                        }${entry.state_title})`}
+                        {entry.type === 'workflow' &&
+                          ` (${
+                            entry.action ? `${entry.prev_state_title} → ` : ''
+                          }${entry.state_title})`}
+                      </span>
+                    )}
+                  </Table.Cell>
+                  <Table.Cell>{entry.actor.fullname}</Table.Cell>
+                  <Table.Cell>
+                    <span title={moment(entry.time).format('LLLL')}>
+                      {moment(entry.time).fromNow()}
                     </span>
-                  )}
-                </Table.Cell>
-                <Table.Cell>{entry.actor.fullname}</Table.Cell>
-                <Table.Cell>
-                  <span title={moment(entry.time).format('LLLL')}>
-                    {moment(entry.time).fromNow()}
-                  </span>
-                </Table.Cell>
-                <Table.Cell>{entry.comments}</Table.Cell>
-                <Table.Cell>
-                  {entry.type === 'versioning' && (
-                    <Dropdown icon="ellipsis vertical">
-                      <Dropdown.Menu className="left">
-                        {'version' in entry &&
-                          entry.version > 0 && (
+                  </Table.Cell>
+                  <Table.Cell>{entry.comments}</Table.Cell>
+                  <Table.Cell>
+                    {entry.type === 'versioning' && (
+                      <Dropdown icon="ellipsis horizontal">
+                        <Dropdown.Menu className="left">
+                          {'version' in entry &&
+                            entry.version > 0 && (
+                              <Link
+                                className="item"
+                                to={`${getBaseUrl(
+                                  this.props.pathname,
+                                )}/diff?one=${entry.version - 1}&two=${
+                                  entry.version
+                                }`}
+                              >
+                                <Icon name="copy" />{' '}
+                                <FormattedMessage
+                                  id="View changes"
+                                  defaultMessage="View changes"
+                                />
+                              </Link>
+                            )}
+                          {'version' in entry && (
                             <Link
                               className="item"
-                              to={`${getBaseUrl(
-                                this.props.pathname,
-                              )}/diff?one=${entry.version - 1}&two=${
+                              to={`${getBaseUrl(this.props.pathname)}?version=${
                                 entry.version
                               }`}
                             >
-                              <Icon name="copy" />{' '}
+                              <Icon name="eye" />{' '}
                               <FormattedMessage
-                                id="View changes"
-                                defaultMessage="View changes"
+                                id="View this revision"
+                                defaultMessage="View this revision"
                               />
                             </Link>
                           )}
-                        {'version' in entry && (
-                          <Link
-                            className="item"
-                            to={`${getBaseUrl(this.props.pathname)}?version=${
-                              entry.version
-                            }`}
-                          >
-                            <Icon name="eye" />{' '}
-                            <FormattedMessage
-                              id="View this revision"
-                              defaultMessage="View this revision"
-                            />
-                          </Link>
-                        )}
-                        {'version' in entry && (
-                          <Dropdown.Item
-                            value={entry.version}
-                            onClick={this.onRevert}
-                          >
-                            <Icon name="undo" />{' '}
-                            <FormattedMessage
-                              id="Revert to this revision"
-                              defaultMessage="Revert to this revision"
-                            />
-                          </Dropdown.Item>
-                        )}
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  )}
-                </Table.Cell>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
+                          {'version' in entry && (
+                            <Dropdown.Item
+                              value={entry.version}
+                              onClick={this.onRevert}
+                            >
+                              <Icon name="undo" />{' '}
+                              <FormattedMessage
+                                id="Revert to this revision"
+                                defaultMessage="Revert to this revision"
+                              />
+                            </Dropdown.Item>
+                          )}
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    )}
+                  </Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+        </Segment.Group>
       </div>
     );
   }

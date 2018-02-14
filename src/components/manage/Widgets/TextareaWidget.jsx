@@ -5,11 +5,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Label, TextArea } from 'semantic-ui-react';
+import { Form, Grid, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
 
 /**
- * Component to display a textarea widget.
+ * TextareaWidget component class.
  * @function TextareaWidget
  * @returns {string} Markup of the component.
  */
@@ -22,24 +22,43 @@ const TextareaWidget = ({
   value,
   onChange,
 }) => (
-  <Form.Field required={required} error={error.length > 0}>
-    <label htmlFor={`field-${id}`}>
-      {title}
-      {description && <span className="help">{description}</span>}
-    </label>
-    <TextArea
-      id={`field-${id}`}
-      name={id}
-      value={value || ''}
-      onChange={({ target }) =>
-        onChange(id, target.value === '' ? undefined : target.value)
-      }
-    />
-    {map(error, message => (
-      <Label key={message} basic color="red" pointing>
-        {message}
-      </Label>
-    ))}
+  <Form.Field
+    inline
+    required={required}
+    error={error.length > 0}
+    className={description ? 'help textarea' : 'textarea'}
+  >
+    <Grid>
+      <Grid.Row stretched>
+        <Grid.Column width="4">
+          <div className="wrapper">
+            <label htmlFor={`field-${id}`}>{title}</label>
+          </div>
+        </Grid.Column>
+        <Grid.Column width="8">
+          <TextArea
+            id={`field-${id}`}
+            name={id}
+            value={value || ''}
+            onChange={({ target }) =>
+              onChange(id, target.value === '' ? undefined : target.value)
+            }
+          />
+          {map(error, message => (
+            <Label key={message} basic color="red" pointing>
+              {message}
+            </Label>
+          ))}
+        </Grid.Column>
+      </Grid.Row>
+      {description && (
+        <Grid.Row stretched>
+          <Grid.Column stretched width="12">
+            <p className="help">{description}</p>
+          </Grid.Column>
+        </Grid.Row>
+      )}
+    </Grid>
   </Form.Field>
 );
 
@@ -49,33 +68,12 @@ const TextareaWidget = ({
  * @static
  */
 TextareaWidget.propTypes = {
-  /**
-   * Id of the field
-   */
   id: PropTypes.string.isRequired,
-  /**
-   * Title of the field
-   */
   title: PropTypes.string.isRequired,
-  /**
-   * Description of the field
-   */
   description: PropTypes.string,
-  /**
-   * True if field is required
-   */
   required: PropTypes.bool,
-  /**
-   * List of error messages
-   */
   error: PropTypes.arrayOf(PropTypes.string),
-  /**
-   * Value of the field
-   */
   value: PropTypes.string,
-  /**
-   * On change handler
-   */
   onChange: PropTypes.func.isRequired,
 };
 

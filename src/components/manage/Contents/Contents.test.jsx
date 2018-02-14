@@ -38,6 +38,14 @@ describe('Contents', () => {
         ],
         total: 1,
       },
+      breadcrumbs: {
+        items: [
+          {
+            url: '/blog',
+            title: 'Blog',
+          },
+        ],
+      },
       clipboard: {
         action: 'copy',
         source: ['/blog'],

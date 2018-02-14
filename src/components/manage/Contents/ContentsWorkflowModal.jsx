@@ -38,7 +38,7 @@ const messages = defineMessages({
   dispatch => bindActionCreators({ getWorkflow, transitionWorkflow }, dispatch),
 )
 /**
- * Component to display a workflow modal in the folder contents.
+ * ContentsWorkflowModal class.
  * @class ContentsWorkflowModal
  * @extends Component
  */
@@ -49,66 +49,24 @@ export default class ContentsWorkflowModal extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Action to get workflow
-     */
     getWorkflow: PropTypes.func.isRequired,
-    /**
-     * Action to transition workflow
-     */
     transitionWorkflow: PropTypes.func.isRequired,
-    /**
-     * List of items
-     */
     items: PropTypes.arrayOf(PropTypes.string).isRequired,
-    /**
-     * Request status
-     */
     request: PropTypes.shape({
-      /**
-       * Loading status
-       */
       loading: PropTypes.bool,
-      /**
-       * Loaded status
-       */
       loaded: PropTypes.bool,
     }).isRequired,
-    /**
-     * List of workflows
-     */
     workflows: PropTypes.arrayOf(
       PropTypes.shape({
-        /**
-         * Workflow transition
-         */
         transition: PropTypes.shape({
-          /**
-           * Id of the transition
-           */
           '@id': PropTypes.string,
-          /**
-           * Title of the transition
-           */
           title: PropTypes.string,
         }),
       }),
     ).isRequired,
-    /**
-     * True when modal is open
-     */
     open: PropTypes.bool.isRequired,
-    /**
-     * Handler when ok button is pressed
-     */
     onOk: PropTypes.func.isRequired,
-    /**
-     * Handler when cancel button is pressed
-     */
     onCancel: PropTypes.func.isRequired,
-    /**
-     * i18n object
-     */
     intl: intlShape.isRequired,
   };
 
@@ -126,6 +84,7 @@ export default class ContentsWorkflowModal extends Component {
   /**
    * Component will mount
    * @method componentWillMount
+   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getWorkflow(this.props.items);
@@ -135,6 +94,7 @@ export default class ContentsWorkflowModal extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
+   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.request.loading && nextProps.request.loaded) {
@@ -146,6 +106,7 @@ export default class ContentsWorkflowModal extends Component {
    * Submit handler
    * @method onSubmit
    * @param {string} state New state
+   * @returns {undefined}
    */
   onSubmit({ state }) {
     if (!state) {

@@ -5,10 +5,10 @@ exports[`Controlpanel renders a controlpanel component 1`] = `
   id="page-controlpanel"
 >
   <div
-    className="container"
+    className="ui container"
   >
     <button
-      className="ui button"
+      className="ui basic circular icon button"
       disabled={undefined}
       onClick={[Function]}
       role="button"
@@ -16,31 +16,12 @@ exports[`Controlpanel renders a controlpanel component 1`] = `
     >
       <i
         aria-hidden="true"
-        className="angle left icon"
+        className="arrow left icon"
       />
-       
-      <span>
-        Site Setup
-      </span>
     </button>
-    <article
-      id="content"
-    >
-      <header>
-        <h1
-          className="documentFirstHeading"
-        >
-          Date and Time
-        </h1>
-      </header>
-      <section
-        id="content-core"
-      >
-        <div
-          id="form"
-        />
-      </section>
-    </article>
+    <div
+      id="form"
+    />
   </div>
 </div>
 `;

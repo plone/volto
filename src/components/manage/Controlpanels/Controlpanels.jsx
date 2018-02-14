@@ -8,10 +8,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
-import { filter, last, map, uniqBy } from 'lodash';
+import { concat, filter, last, map, uniqBy } from 'lodash';
 import Helmet from 'react-helmet';
-import { Grid, Header, Icon, Segment } from 'semantic-ui-react';
-import Icons from '../../../constants/ControlpanelIcons';
+import { Container, Grid, Header, Icon, Segment } from 'semantic-ui-react';
 import {
   FormattedMessage,
   defineMessages,
@@ -19,6 +18,7 @@ import {
   intlShape,
 } from 'react-intl';
 
+import Icons from '../../../constants/ControlpanelIcons';
 import { getControlpanels } from '../../../actions';
 
 const messages = defineMessages({
@@ -36,7 +36,7 @@ const messages = defineMessages({
   dispatch => bindActionCreators({ getControlpanels }, dispatch),
 )
 /**
- * Component to dispay an overview of the controlpanels.
+ * Controlpanels container class.
  * @class Controlpanels
  * @extends Component
  */
@@ -47,32 +47,14 @@ export default class Controlpanels extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Action to get controlpanels
-     */
     getControlpanels: PropTypes.func.isRequired,
-    /**
-     * List of the controlpanels
-     */
     controlpanels: PropTypes.arrayOf(
       PropTypes.shape({
-        /**
-         * Id of the controlpanel
-         */
         '@id': PropTypes.string,
-        /**
-         * Group of the controlpanel
-         */
         group: PropTypes.string,
-        /**
-         * Title of the controlpanel
-         */
         title: PropTypes.string,
       }),
     ).isRequired,
-    /**
-     * i18n object
-     */
     intl: intlShape.isRequired,
   };
 
@@ -91,46 +73,51 @@ export default class Controlpanels extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const groups = map(uniqBy(this.props.controlpanels, 'group'), 'group');
-    const controlpanels = map(this.props.controlpanels, controlpanel => ({
-      ...controlpanel,
-      id: last(controlpanel['@id'].split('/')),
-    }));
+    const controlpanels = map(
+      concat(this.props.controlpanels, [
+        {
+          '@id': '/moderate-comments',
+          group: 'Content',
+          title: 'Moderate Comments',
+        },
+      ]),
+      controlpanel => ({
+        ...controlpanel,
+        id: last(controlpanel['@id'].split('/')),
+      }),
+    );
+    const groups = map(uniqBy(controlpanels, 'group'), 'group');
     return (
-      <div id="page-home">
+      <div className="view-wrapper">
         <Helmet title={this.props.intl.formatMessage(messages.sitesetup)} />
-        <h1>
-          <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />
-        </h1>
-        <p className="description">
-          <FormattedMessage
-            id="Configuration area for Plone and add-on Products."
-            defaultMessage="Configuration area for Plone and add-on Products."
-          />
-        </p>
-        {map(groups, group => (
-          <div key={group}>
-            <Header as="h2" attached="top">
-              {group}
-            </Header>
-            <Segment attached>
-              <Grid columns={6}>
-                <Grid.Row>
-                  {map(filter(controlpanels, { group }), controlpanel => (
-                    <Grid.Column key={controlpanel.id}>
-                      <Link to={`/controlpanel/${controlpanel.id}`}>
-                        <Header as="h3" icon textAlign="center">
-                          <Icon name={Icons[controlpanel.id] || 'setting'} />
-                          <Header.Content>{controlpanel.title}</Header.Content>
-                        </Header>
-                      </Link>
-                    </Grid.Column>
-                  ))}
-                </Grid.Row>
-              </Grid>
+        <Container>
+          <Segment.Group raised>
+            <Segment className="primary">
+              <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />
             </Segment>
-          </div>
-        ))}
+            {map(groups, group => [
+              <Segment secondary>{group}</Segment>,
+              <Segment attached>
+                <Grid columns={6}>
+                  <Grid.Row>
+                    {map(filter(controlpanels, { group }), controlpanel => (
+                      <Grid.Column key={controlpanel.id}>
+                        <Link to={`/controlpanel/${controlpanel.id}`}>
+                          <Header as="h3" icon textAlign="center">
+                            <Icon name={Icons[controlpanel.id] || 'setting'} />
+                            <Header.Content>
+                              {controlpanel.title}
+                            </Header.Content>
+                          </Header>
+                        </Link>
+                      </Grid.Column>
+                    ))}
+                  </Grid.Row>
+                </Grid>
+              </Segment>,
+            ])}
+          </Segment.Group>
+        </Container>
       </div>
     );
   }

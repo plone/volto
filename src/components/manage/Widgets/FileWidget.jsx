@@ -1,19 +1,20 @@
 /**
- * DatetimeWidget component.
- * @module components/manage/Widgets/DatetimeWidget
+ * FileWidget component.
+ * @module components/manage/Widgets/FileWidget
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Input, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
+import { readAsDataURL } from 'promise-file-reader';
 
 /**
- * DatetimeWidget component class.
- * @function DatetimeWidget
+ * FileWidget component class.
+ * @function FileWidget
  * @returns {string} Markup of the component.
  */
-const DatetimeWidget = ({
+const FileWidget = ({
   id,
   title,
   required,
@@ -39,12 +40,21 @@ const DatetimeWidget = ({
           <Input
             id={`field-${id}`}
             name={id}
-            type="datetime-local"
-            value={value || ''}
-            onChange={({ target }) =>
-              onChange(id, target.value === '' ? undefined : target.value)
-            }
+            type="file"
+            onChange={({ target }) => {
+              const file = target.files[0];
+              readAsDataURL(file).then(data => {
+                const fields = data.match(/^data:(.*);(.*),(.*)$/);
+                onChange(id, {
+                  data: fields[3],
+                  encoding: fields[2],
+                  'content-type': fields[1],
+                  filename: file.name,
+                });
+              });
+            }}
           />
+          {value && value.filename}
           {map(error, message => (
             <Label key={message} basic color="red" pointing>
               {message}
@@ -68,13 +78,16 @@ const DatetimeWidget = ({
  * @property {Object} propTypes Property types.
  * @static
  */
-DatetimeWidget.propTypes = {
+FileWidget.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
-  value: PropTypes.string,
+  value: PropTypes.shape({
+    '@type': PropTypes.string,
+    title: PropTypes.string,
+  }),
   onChange: PropTypes.func.isRequired,
 };
 
@@ -83,11 +96,11 @@ DatetimeWidget.propTypes = {
  * @property {Object} defaultProps Default properties.
  * @static
  */
-DatetimeWidget.defaultProps = {
+FileWidget.defaultProps = {
   description: null,
   required: false,
   error: [],
   value: null,
 };
 
-export default DatetimeWidget;
+export default FileWidget;

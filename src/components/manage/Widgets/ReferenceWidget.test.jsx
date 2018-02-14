@@ -3,12 +3,13 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import ArrayWidget from './ArrayWidget';
+import ReferenceWidget from './ReferenceWidget';
 
 const mockStore = configureStore();
 
 test('renders an array widget component', () => {
   const store = mockStore({
+    search: {},
     intl: {
       locale: 'en',
       messages: {},
@@ -16,7 +17,7 @@ test('renders an array widget component', () => {
   });
   const component = renderer.create(
     <Provider store={store}>
-      <ArrayWidget id="my-field" title="My field" onChange={() => {}} />
+      <ReferenceWidget id="my-field" title="My field" onChange={() => {}} />
     </Provider>,
   );
   const json = component.toJSON();

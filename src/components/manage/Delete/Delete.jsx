@@ -9,7 +9,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
-import { Button, List } from 'semantic-ui-react';
+import { Button, Container, List, Segment } from 'semantic-ui-react';
 import {
   FormattedMessage,
   defineMessages,
@@ -24,6 +24,14 @@ const messages = defineMessages({
     id: 'Delete',
     defaultMessage: 'Delete',
   },
+  ok: {
+    id: 'Ok',
+    defaultMessage: 'Ok',
+  },
+  cancel: {
+    id: 'Cancel',
+    defaultMessage: 'Cancel',
+  },
 });
 
 @injectIntl
@@ -32,11 +40,12 @@ const messages = defineMessages({
     content: state.content.data,
     deleteRequest: state.content.delete,
     pathname: props.location.pathname,
+    returnUrl: props.location.query.return_url,
   }),
   dispatch => bindActionCreators({ deleteContent, getContent }, dispatch),
 )
 /**
- * Component to display the delete view.
+ * Delete container class.
  * @class Delete
  * @extends Component
  */
@@ -47,43 +56,17 @@ export default class Delete extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Action to delete content
-     */
     deleteContent: PropTypes.func.isRequired,
-    /**
-     * Action to get content
-     */
     getContent: PropTypes.func.isRequired,
-    /**
-     * Delete request status
-     */
     deleteRequest: PropTypes.shape({
-      /**
-       * Loading status
-       */
       loading: PropTypes.bool,
-      /**
-       * Loaded status
-       */
       loaded: PropTypes.bool,
     }).isRequired,
-    /**
-     * Pathname of the object
-     */
     pathname: PropTypes.string.isRequired,
-    /**
-     * Data of the object
-     */
     content: PropTypes.shape({
-      /**
-       * Title of the object
-       */
       title: PropTypes.string,
     }),
-    /**
-     * i18n object
-     */
+    returnUrl: PropTypes.string,
     intl: intlShape.isRequired,
   };
 
@@ -94,6 +77,7 @@ export default class Delete extends Component {
    */
   static defaultProps = {
     content: null,
+    returnUrl: null,
   };
 
   /**
@@ -111,6 +95,7 @@ export default class Delete extends Component {
   /**
    * Component will mount
    * @method componentWillMount
+   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getContent(this.props.pathname.split('/delete')[0]);
@@ -120,11 +105,13 @@ export default class Delete extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
+   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
       browserHistory.push(
-        this.props.pathname.replace('/delete', '').replace(/\/[^/]*$/, ''),
+        this.props.returnUrl ||
+          this.props.pathname.replace('/delete', '').replace(/\/[^/]*$/, ''),
       );
     }
   }
@@ -132,6 +119,7 @@ export default class Delete extends Component {
   /**
    * Submit handler
    * @method onSubmit
+   * @returns {undefined}
    */
   onSubmit() {
     this.props.deleteContent(this.props.pathname.replace('/delete', ''));
@@ -140,6 +128,7 @@ export default class Delete extends Component {
   /**
    * Cancel handler
    * @method onCancel
+   * @returns {undefined}
    */
   onCancel() {
     browserHistory.push(this.props.pathname.replace('/delete', ''));
@@ -155,21 +144,43 @@ export default class Delete extends Component {
       return (
         <div id="page-delete">
           <Helmet title={this.props.intl.formatMessage(messages.delete)} />
-          <h1 className="documentFirstHeading">
-            <FormattedMessage
-              id="Do you really want to delete this item?"
-              defaultMessage="Do you really want to delete this item?"
-            />
-          </h1>
-          <List bulleted>
-            <List.Item>{this.props.content.title}</List.Item>
-          </List>
-          <Button primary onClick={this.onSubmit}>
-            <FormattedMessage id="Ok" defaultMessage="Ok" />
-          </Button>
-          <Button onClick={this.onCancel}>
-            <FormattedMessage id="Cancel" defaultMessage="Cancel" />
-          </Button>
+          <Container>
+            <Segment.Group raised>
+              <Segment className="primary">
+                <FormattedMessage
+                  id="Do you really want to delete this item?"
+                  defaultMessage="Do you really want to delete this item?"
+                />
+              </Segment>
+              <Segment attached>
+                <List bulleted>
+                  <List.Item>{this.props.content.title}</List.Item>
+                </List>
+              </Segment>
+              <Segment className="actions" clearing>
+                <Button
+                  basic
+                  circular
+                  primary
+                  floated="right"
+                  icon="arrow right"
+                  title={this.props.intl.formatMessage(messages.ok)}
+                  size="big"
+                  onClick={this.onSubmit}
+                />
+                <Button
+                  basic
+                  circular
+                  secondary
+                  icon="remove"
+                  title={this.props.intl.formatMessage(messages.cancel)}
+                  floated="right"
+                  size="big"
+                  onClick={this.onCancel}
+                />
+              </Segment>
+            </Segment.Group>
+          </Container>
         </div>
       );
     }

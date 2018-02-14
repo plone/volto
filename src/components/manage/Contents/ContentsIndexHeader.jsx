@@ -27,7 +27,7 @@ const widthValues = [
 ];
 
 /**
- * Component to display a folder contents index header.
+ * Contents index header component class.
  * @function ContentsIndexHeaderComponent
  * @returns {string} Markup of the component.
  */
@@ -55,33 +55,12 @@ export const ContentsIndexHeaderComponent = ({
  * @static
  */
 ContentsIndexHeaderComponent.propTypes = {
-  /**
-   * Width of the column
-   */
   width: PropTypes.number.isRequired,
-  /**
-   * Label of the column
-   */
   label: PropTypes.string.isRequired,
-  /**
-   * Handler to connect a drag source
-   */
   connectDragSource: PropTypes.func.isRequired,
-  /**
-   * Handler to connect a drop source
-   */
   connectDropTarget: PropTypes.func.isRequired,
-  /**
-   * Dragging state
-   */
   isDragging: PropTypes.bool.isRequired,
-  /**
-   * Index number of the column
-   */
   order: PropTypes.number.isRequired,
-  /**
-   * Action called when ordering a column
-   */
   onOrderIndex: PropTypes.func.isRequired,
 };
 

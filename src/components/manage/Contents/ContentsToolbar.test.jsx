@@ -1,32 +1,23 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
-import jwt from 'jsonwebtoken';
+import { Provider } from 'react-intl-redux';
 
-import ChangePassword from './ChangePassword';
+import ContentsToolbar from './ContentsToolbar';
 
 const mockStore = configureStore();
 
-describe('ChangePassword', () => {
-  it('renders a change password component', () => {
+describe('ContentsToolbar', () => {
+  it('renders a contents toolbar component', () => {
     const store = mockStore({
-      userSession: {
-        token: jwt.sign({ sub: 'john' }, 'secret'),
-      },
       intl: {
         locale: 'en',
         messages: {},
       },
-      users: {
-        edit: {
-          loading: false,
-        },
-      },
     });
     const component = renderer.create(
       <Provider store={store}>
-        <ChangePassword />
+        <ContentsToolbar location={{ pathname: '/blog' }} />
       </Provider>,
     );
     const json = component.toJSON();

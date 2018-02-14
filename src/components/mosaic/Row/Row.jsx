@@ -10,7 +10,7 @@ import { Grid } from 'semantic-ui-react';
 import { Column, ColumnResize } from '../../../components';
 
 /**
- * Component to displa a row.
+ * Row component class.
  * @function Row
  * @param {Object} props Component properties.
  * @param {Object} props.columns Column data.
@@ -73,49 +73,16 @@ const Row = ({
  * @static
  */
 Row.propTypes = {
-  /**
-   * Column in the row
-   */
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
-  /**
-   * Row index in the grid
-   */
   row: PropTypes.number.isRequired,
-  /**
-   * Hovered state (left, right, top, bottom or none)
-   */
   hovered: PropTypes.string,
-  /**
-   * State if column in row is being resized
-   */
   resize: PropTypes.bool.isRequired,
-  /**
-   * Action to select a tile
-   */
   selectTile: PropTypes.func.isRequired,
-  /**
-   * Action to delete a tile
-   */
   deleteTile: PropTypes.func.isRequired,
-  /**
-   * Action to set the hovered state
-   */
   setHovered: PropTypes.func.isRequired,
-  /**
-   * Action to handle a drop
-   */
   handleDrop: PropTypes.func.isRequired,
-  /**
-   * Action to set the tile content
-   */
   setTileContent: PropTypes.func.isRequired,
-  /**
-   * Handler called when resizing starts
-   */
   startResize: PropTypes.func.isRequired,
-  /**
-   * Handler called when resizing ends
-   */
   endResize: PropTypes.func.isRequired,
 };
 

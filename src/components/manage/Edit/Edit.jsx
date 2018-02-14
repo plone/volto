@@ -11,12 +11,7 @@ import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 import { Form } from '../../../components';
 import { editContent, getContent, getSchema } from '../../../actions';
@@ -37,12 +32,20 @@ const messages = defineMessages({
     getRequest: state.content.get,
     editRequest: state.content.edit,
     pathname: props.location.pathname,
+    returnUrl: props.location.query.return_url,
   }),
   dispatch =>
-    bindActionCreators({ editContent, getContent, getSchema }, dispatch),
+    bindActionCreators(
+      {
+        editContent,
+        getContent,
+        getSchema,
+      },
+      dispatch,
+    ),
 )
 /**
- * Component to display the edit form.
+ * EditComponent class.
  * @class EditComponent
  * @extends Component
  */
@@ -53,64 +56,23 @@ export class EditComponent extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Action to edit content
-     */
     editContent: PropTypes.func.isRequired,
-    /**
-     * Action to get content
-     */
     getContent: PropTypes.func.isRequired,
-    /**
-     * Action to get the schema
-     */
     getSchema: PropTypes.func.isRequired,
-    /**
-     * Edit request status
-     */
     editRequest: PropTypes.shape({
-      /**
-       * Loading status
-       */
       loading: PropTypes.bool,
-      /**
-       * Loaded status
-       */
       loaded: PropTypes.bool,
     }).isRequired,
-    /**
-     * Edit request status
-     */
     getRequest: PropTypes.shape({
-      /**
-       * Loading status
-       */
       loading: PropTypes.bool,
-      /**
-       * Loaded status
-       */
       loaded: PropTypes.bool,
     }).isRequired,
-    /**
-     * Pathname of the object
-     */
     pathname: PropTypes.string.isRequired,
-    /**
-     * Content of the object
-     */
+    returnUrl: PropTypes.string,
     content: PropTypes.shape({
-      /**
-       * Type of the object
-       */
       '@type': PropTypes.string,
     }),
-    /**
-     * Schema of the object
-     */
     schema: PropTypes.objectOf(PropTypes.any),
-    /**
-     * i18n object
-     */
     intl: intlShape.isRequired,
   };
 
@@ -122,6 +84,7 @@ export class EditComponent extends Component {
   static defaultProps = {
     schema: null,
     content: null,
+    returnUrl: null,
   };
 
   /**
@@ -139,6 +102,7 @@ export class EditComponent extends Component {
   /**
    * Component did mount
    * @method componentDidMount
+   * @returns {undefined}
    */
   componentDidMount() {
     this.props.getContent(getBaseUrl(this.props.pathname));
@@ -148,13 +112,16 @@ export class EditComponent extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
+   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.getRequest.loading && nextProps.getRequest.loaded) {
       this.props.getSchema(nextProps.content['@type']);
     }
     if (this.props.editRequest.loading && nextProps.editRequest.loaded) {
-      browserHistory.push(getBaseUrl(this.props.pathname));
+      browserHistory.push(
+        this.props.returnUrl || getBaseUrl(this.props.pathname),
+      );
     }
   }
 
@@ -162,6 +129,7 @@ export class EditComponent extends Component {
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
+   * @returns {undefined}
    */
   onSubmit(data) {
     this.props.editContent(getBaseUrl(this.props.pathname), data);
@@ -170,9 +138,12 @@ export class EditComponent extends Component {
   /**
    * Cancel handler
    * @method onCancel
+   * @returns {undefined}
    */
   onCancel() {
-    browserHistory.push(getBaseUrl(this.props.pathname));
+    browserHistory.push(
+      this.props.returnUrl || getBaseUrl(this.props.pathname),
+    );
   }
 
   /**
@@ -189,20 +160,15 @@ export class EditComponent extends Component {
               title: this.props.schema.title,
             })}
           />
-          <h1>
-            <FormattedMessage
-              id="Edit {title}"
-              defaultMessage="Edit {title}"
-              values={{
-                title: this.props.schema.title,
-              }}
-            />
-          </h1>
           <Form
             schema={this.props.schema}
             formData={this.props.content}
             onSubmit={this.onSubmit}
             onCancel={this.onCancel}
+            title={this.props.intl.formatMessage(messages.edit, {
+              title: this.props.schema.title,
+            })}
+            loading={this.props.editRequest.loading}
           />
         </div>
       );
@@ -220,7 +186,7 @@ export default asyncConnect([
   {
     key: 'content',
     promise: ({ location, store: { dispatch, getState } }) => {
-      const form = getState().form;
+      const { form } = getState();
       if (!isEmpty(form)) {
         return dispatch(
           editContent(

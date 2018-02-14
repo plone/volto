@@ -4,197 +4,212 @@ exports[`History renders a history component 1`] = `
 <div
   id="page-history"
 >
-  <h1>
-    <span>
-      History of 
-      <q>
-        Blog
-      </q>
-    </span>
-  </h1>
-  <p
-    className="description"
+  <div
+    className="ui raised segments"
   >
-    <span>
-      You can view the history of your item below.
-    </span>
-  </p>
-  <table
-    className="ui selectable single line compact table"
-  >
-    <thead
-      className=""
+    <div
+      className="ui segment primary"
     >
-      <tr
-        className=""
+      <a
+        onClick={[Function]}
+        style={Object {}}
       >
-        <th
-          className="four wide"
-        >
-          <span>
-            What
-          </span>
-        </th>
-        <th
-          className="four wide"
-        >
-          <span>
-            Who
-          </span>
-        </th>
-        <th
-          className="four wide"
-        >
-          <span>
-            When
-          </span>
-        </th>
-        <th
-          className="four wide"
-        >
-          <span>
-            Change Note
-          </span>
-        </th>
-        <th
-          className=""
+        <i
+          aria-hidden="true"
+          className="arrow left icon"
         />
-      </tr>
-    </thead>
-    <tbody
-      className=""
+      </a>
+      <span>
+        History of 
+        <q>
+          Blog
+        </q>
+      </span>
+    </div>
+    <div
+      className="ui secondary segment"
     >
-      <tr
+      <span>
+        You can view the history of your item below.
+      </span>
+    </div>
+    <table
+      className="ui selectable single line attached compact table"
+    >
+      <thead
         className=""
       >
-        <td
+        <tr
           className=""
         >
-          <span>
-            Publish
-             (Private → Published)
-          </span>
-        </td>
-        <td
-          className=""
-        >
-          Web Admin
-        </td>
-        <td
-          className=""
-        >
-          <span
-            title="Sunday, April 23, 2017 3:38 AM"
+          <th
+            className="four wide"
           >
-            a few seconds ago
-          </span>
-        </td>
-        <td
-          className=""
-        >
-          
-        </td>
-        <td
-          className=""
-        />
-      </tr>
-      <tr
+            <span>
+              What
+            </span>
+          </th>
+          <th
+            className="four wide"
+          >
+            <span>
+              Who
+            </span>
+          </th>
+          <th
+            className="four wide"
+          >
+            <span>
+              When
+            </span>
+          </th>
+          <th
+            className="four wide"
+          >
+            <span>
+              Change Note
+            </span>
+          </th>
+          <th
+            className=""
+          />
+        </tr>
+      </thead>
+      <tbody
         className=""
       >
-        <td
+        <tr
           className=""
         >
-          <span>
-            Edited
-          </span>
-        </td>
-        <td
-          className=""
-        >
-          Web Admin
-        </td>
-        <td
-          className=""
-        >
-          <span
-            title="Sunday, April 23, 2017 3:38 AM"
+          <td
+            className=""
           >
-            a few seconds ago
-          </span>
-        </td>
-        <td
+            <span>
+              Publish
+               (Private → Published)
+            </span>
+          </td>
+          <td
+            className=""
+          >
+            Web Admin
+          </td>
+          <td
+            className=""
+          >
+            <span
+              title="Sunday, April 23, 2017 3:38 AM"
+            >
+              a few seconds ago
+            </span>
+          </td>
+          <td
+            className=""
+          >
+            
+          </td>
+          <td
+            className=""
+          />
+        </tr>
+        <tr
           className=""
         >
-          Changed text
-        </td>
-        <td
-          className=""
-        >
-          <div
-            aria-busy={undefined}
-            aria-disabled={undefined}
-            aria-expanded={false}
-            aria-multiselectable={undefined}
-            className="ui dropdown"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseDown={[Function]}
-            role="listbox"
-            tabIndex={0}
+          <td
+            className=""
+          >
+            <span>
+              Edited
+            </span>
+          </td>
+          <td
+            className=""
+          >
+            Web Admin
+          </td>
+          <td
+            className=""
+          >
+            <span
+              title="Sunday, April 23, 2017 3:38 AM"
+            >
+              a few seconds ago
+            </span>
+          </td>
+          <td
+            className=""
+          >
+            Changed text
+          </td>
+          <td
+            className=""
           >
             <div
-              aria-live="polite"
-              className="text"
-              role="alert"
-            />
-            <i
-              aria-hidden="true"
-              className="ellipsis vertical icon"
+              aria-busy={undefined}
+              aria-disabled={undefined}
+              aria-expanded={false}
+              aria-multiselectable={undefined}
+              className="ui dropdown"
+              onBlur={[Function]}
+              onChange={[Function]}
               onClick={[Function]}
-            />
-            <div
-              className="menu transition left"
-            />
-          </div>
-        </td>
-      </tr>
-      <tr
-        className=""
-      >
-        <td
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              role="listbox"
+              tabIndex={0}
+            >
+              <div
+                aria-live="polite"
+                className="text"
+                role="alert"
+              />
+              <i
+                aria-hidden="true"
+                className="ellipsis horizontal icon"
+                onClick={[Function]}
+              />
+              <div
+                className="menu transition left"
+              />
+            </div>
+          </td>
+        </tr>
+        <tr
           className=""
         >
-          <span>
-            Create
-             (Private)
-          </span>
-        </td>
-        <td
-          className=""
-        >
-          Web Admin
-        </td>
-        <td
-          className=""
-        >
-          <span
-            title="Sunday, April 23, 2017 3:38 AM"
+          <td
+            className=""
           >
-            a few seconds ago
-          </span>
-        </td>
-        <td
-          className=""
-        >
-          
-        </td>
-        <td
-          className=""
-        />
-      </tr>
-    </tbody>
-  </table>
+            <span>
+              Create
+               (Private)
+            </span>
+          </td>
+          <td
+            className=""
+          >
+            Web Admin
+          </td>
+          <td
+            className=""
+          >
+            <span
+              title="Sunday, April 23, 2017 3:38 AM"
+            >
+              a few seconds ago
+            </span>
+          </td>
+          <td
+            className=""
+          >
+            
+          </td>
+          <td
+            className=""
+          />
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 `;

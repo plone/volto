@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Message, Segment } from 'semantic-ui-react';
+import { Message, Container } from 'semantic-ui-react';
 import { map } from 'lodash';
 
 import { removeMessage } from '../../../actions';
@@ -30,26 +30,11 @@ export default class Messages extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Action to remove message
-     */
     removeMessage: PropTypes.func.isRequired,
-    /**
-     * List of messages
-     */
     messages: PropTypes.arrayOf(
       PropTypes.shape({
-        /**
-         * Title of the message
-         */
         title: PropTypes.string,
-        /**
-         * Body of the message
-         */
         body: PropTypes.string,
-        /**
-         * Level of the message
-         */
         level: PropTypes.string,
       }),
     ).isRequired,
@@ -66,26 +51,28 @@ export default class Messages extends Component {
     this.onDismiss = this.onDismiss.bind(this);
   }
 
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   */
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.messages.length > this.props.messages.length) {
-      window.setTimeout(() => {
-        if (this.props.messages.length > 0) {
-          this.props.removeMessage(-1);
-        }
-      }, 6000);
-    }
-  }
+  // /**
+  //  * Component will receive props
+  //  * @method componentWillReceiveProps
+  //  * @param {Object} nextProps Next properties
+  //  * @returns {undefined}
+  //  */
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.messages.length > this.props.messages.length) {
+  //     window.setTimeout(() => {
+  //       if (this.props.messages.length > 0) {
+  //         this.props.removeMessage(-1);
+  //       }
+  //     }, 6000);
+  //   }
+  // }
 
   /**
    * On dismiss
    * @method onDismiss
    * @param {Object} event Event object
    * @param {number} value Index of message
+   * @returns {undefined}
    */
   onDismiss(event, { value }) {
     this.props.removeMessage(value);
@@ -98,21 +85,23 @@ export default class Messages extends Component {
    */
   render() {
     return (
-      <Segment basic className="messages">
-        {map(this.props.messages, (message, index) => (
-          <Message
-            key={message.id}
-            value={index}
-            onDismiss={this.onDismiss}
-            error={message.level === 'error'}
-            success={message.level === 'success'}
-            warning={message.level === 'warning'}
-            info={message.level === 'info'}
-            header={message.title}
-            content={message.body}
-          />
-        ))}
-      </Segment>
+      this.props.messages && (
+        <Container className="messages">
+          {map(this.props.messages, (message, index) => (
+            <Message
+              key={message.id}
+              value={index}
+              onDismiss={this.onDismiss}
+              error={message.level === 'error'}
+              success={message.level === 'success'}
+              warning={message.level === 'warning'}
+              info={message.level === 'info'}
+              header={message.title}
+              content={message.body}
+            />
+          ))}
+        </Container>
+      )
     );
   }
 }

@@ -5,11 +5,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Label, Checkbox } from 'semantic-ui-react';
+import { Form, Grid, Label, Checkbox } from 'semantic-ui-react';
 import { map } from 'lodash';
 
 /**
- * Component to display a checkbox widget.
+ * CheckboxWidget component class.
  * @function CheckboxWidget
  * @returns {string} Markup of the component.
  */
@@ -22,20 +22,45 @@ const CheckboxWidget = ({
   value,
   onChange,
 }) => (
-  <Form.Field required={required} error={error.length > 0}>
-    <Checkbox
-      id={`field-${id}`}
-      name={id}
-      checked={value}
-      label={title}
-      onChange={(event, { checked }) => onChange(id, checked)}
-    />
-    {description && <div className="help">{description}</div>}
-    {map(error, message => (
-      <Label key={message} basic color="red" pointing>
-        {message}
-      </Label>
-    ))}
+  <Form.Field
+    inline
+    required={required}
+    error={error.length > 0}
+    className={description ? 'help' : ''}
+  >
+    <Grid>
+      <Grid.Row stretched>
+        <Grid.Column width="12">
+          <div className="wrapper">
+            <Checkbox
+              id={`field-${id}`}
+              name={id}
+              checked={value}
+              onChange={(event, { checked }) => onChange(id, checked)}
+            />
+            <Label
+              basic
+              horizontal
+              as="label"
+              htmlFor={`field-${id}`}
+              content={title}
+            />
+          </div>
+          {map(error, message => (
+            <Label key={message} basic color="red" pointing>
+              {message}
+            </Label>
+          ))}
+        </Grid.Column>
+      </Grid.Row>
+      {description && (
+        <Grid.Row stretched>
+          <Grid.Column stretched width="12">
+            <p className="help">{description}</p>
+          </Grid.Column>
+        </Grid.Row>
+      )}
+    </Grid>
   </Form.Field>
 );
 
@@ -45,33 +70,12 @@ const CheckboxWidget = ({
  * @static
  */
 CheckboxWidget.propTypes = {
-  /**
-   * Id of the field
-   */
   id: PropTypes.string.isRequired,
-  /**
-   * Title of the field
-   */
   title: PropTypes.string.isRequired,
-  /**
-   * Description of the field
-   */
   description: PropTypes.string,
-  /**
-   * True if field is required
-   */
   required: PropTypes.bool,
-  /**
-   * List of error messages
-   */
   error: PropTypes.arrayOf(PropTypes.string),
-  /**
-   * Value of the field
-   */
   value: PropTypes.bool,
-  /**
-   * On change handler
-   */
   onChange: PropTypes.func.isRequired,
 };
 

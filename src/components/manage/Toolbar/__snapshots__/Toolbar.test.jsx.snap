@@ -78,7 +78,7 @@ exports[`Toolbar renders an actions component 1`] = `
             aria-hidden="true"
             className="clock big icon"
           />
-
+           
           <span>
             History
           </span>
@@ -93,7 +93,7 @@ exports[`Toolbar renders an actions component 1`] = `
             aria-hidden="true"
             className="share big icon"
           />
-
+           
           <span>
             Sharing
           </span>
@@ -137,7 +137,7 @@ exports[`Toolbar renders an actions component 1`] = `
               aria-hidden="true"
               className="setting icon"
             />
-
+             
             <span>
               Preferences
             </span>
@@ -153,7 +153,7 @@ exports[`Toolbar renders an actions component 1`] = `
               aria-hidden="true"
               className="settings icon"
             />
-
+             
             <span>
               Site Setup
             </span>
@@ -169,7 +169,7 @@ exports[`Toolbar renders an actions component 1`] = `
               aria-hidden="true"
               className="comments icon"
             />
-
+             
             <span>
               Moderate comments
             </span>
@@ -186,7 +186,7 @@ exports[`Toolbar renders an actions component 1`] = `
               aria-hidden="true"
               className="sign out icon"
             />
-
+             
             <span>
               Log out
             </span>

@@ -6,7 +6,8 @@ exports[`Display renders an actions component 1`] = `
   aria-disabled={undefined}
   aria-expanded={false}
   aria-multiselectable={undefined}
-  className="ui item left pointing dropdown"
+  className="ui item dropdown"
+  id="toolbar-display"
   onBlur={[Function]}
   onChange={[Function]}
   onClick={[Function]}
@@ -18,7 +19,7 @@ exports[`Display renders an actions component 1`] = `
   <span>
     <i
       aria-hidden="true"
-      className="block layout icon"
+      className="block layout big icon"
     />
      
     <span>

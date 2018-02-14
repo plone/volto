@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { keys, map } from 'lodash';
+import { keys, map, uniq } from 'lodash';
 import {
   Button,
   Form as UiForm,
@@ -36,11 +36,19 @@ const messages = defineMessages({
     id: 'Items must be unique.',
     defaultMessage: 'Items must be unique.',
   },
+  save: {
+    id: 'Save',
+    defaultMessage: 'Save',
+  },
+  cancel: {
+    id: 'Cancel',
+    defaultMessage: 'Cancel',
+  },
 });
 
 @injectIntl
 /**
- * Component to display a modal form.
+ * Modal form container class.
  * @class ModalForm
  * @extends Component
  */
@@ -51,61 +59,23 @@ export default class FormModal extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Schema used in the form
-     */
     schema: PropTypes.shape({
-      /**
-       * Fieldsets of the schema
-       */
       fieldsets: PropTypes.arrayOf(
         PropTypes.shape({
-          /**
-           * Fields in the fieldset
-           */
           fields: PropTypes.arrayOf(PropTypes.string),
-          /**
-           * Id of the fieldset
-           */
           id: PropTypes.string,
-          /**
-           * Title of the fieldset
-           */
           title: PropTypes.string,
         }),
       ),
-      /**
-       * Property values
-       */
       properties: PropTypes.objectOf(PropTypes.any),
-      /**
-       * List of required fields
-       */
       required: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
-    /**
-     * Title of the modal
-     */
     title: PropTypes.string.isRequired,
-    /**
-     * Form data
-     */
     formData: PropTypes.objectOf(PropTypes.any),
-    /**
-     * Handler when submitting the form
-     */
     onSubmit: PropTypes.func.isRequired,
-    /**
-     * Handler when cancelling the form
-     */
-    onCancel: PropTypes.func.isRequired,
-    /**
-     * True when the modal is open
-     */
+    onCancel: PropTypes.func,
     open: PropTypes.bool.isRequired,
-    /**
-     * i18n object
-     */
+    submitLabel: PropTypes.string,
     intl: intlShape.isRequired,
   };
 
@@ -115,6 +85,8 @@ export default class FormModal extends Component {
    * @static
    */
   static defaultProps = {
+    submitLabel: null,
+    onCancel: null,
     formData: {},
   };
 
@@ -141,6 +113,7 @@ export default class FormModal extends Component {
    * @method onChangeField
    * @param {string} id Id of the field
    * @param {*} value Value of the field
+   * @returns {undefined}
    */
   onChangeField(id, value) {
     this.setState({
@@ -155,6 +128,7 @@ export default class FormModal extends Component {
    * Submit handler
    * @method onSubmit
    * @param {Object} event Event object.
+   * @returns {undefined}
    */
   onSubmit(event) {
     event.preventDefault();
@@ -201,6 +175,7 @@ export default class FormModal extends Component {
    * @method selectTab
    * @param {Object} event Event object.
    * @param {number} index Selected tab index.
+   * @returns {undefined}
    */
   selectTab(event, { index }) {
     this.setState({
@@ -259,12 +234,32 @@ export default class FormModal extends Component {
           </UiForm>
         </Modal.Content>
         <Modal.Actions>
-          <Button primary onClick={this.onSubmit}>
-            <FormattedMessage id="Save" defaultMessage="Save" />
-          </Button>
-          <Button onClick={onCancel}>
-            <FormattedMessage id="Cancel" defaultMessage="Cancel" />
-          </Button>
+          <Button
+            basic
+            circular
+            primary
+            floated="right"
+            icon="arrow right"
+            title={
+              this.props.submitLabel
+                ? this.props.submitLabel
+                : this.props.intl.formatMessage(messages.save)
+            }
+            size="big"
+            onClick={this.onSubmit}
+          />
+          {onCancel && (
+            <Button
+              basic
+              circular
+              secondary
+              icon="remove"
+              title={this.props.intl.formatMessage(messages.cancel)}
+              floated="right"
+              size="big"
+              onClick={onCancel}
+            />
+          )}
         </Modal.Actions>
       </Modal>
     );

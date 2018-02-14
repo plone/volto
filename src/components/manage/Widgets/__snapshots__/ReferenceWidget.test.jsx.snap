@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a select widget component 1`] = `
+exports[`renders an array widget component 1`] = `
 <div
   className="inline field"
 >
@@ -30,24 +30,35 @@ exports[`renders a select widget component 1`] = `
           aria-busy={undefined}
           aria-disabled={undefined}
           aria-expanded={false}
-          aria-multiselectable={undefined}
-          className="ui selection dropdown"
-          id="field-my-field"
-          name="my-field"
+          className="ui fluid search selection dropdown"
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseDown={[Function]}
-          role="listbox"
-          tabIndex={0}
+          role="combobox"
+          tabIndex={undefined}
         >
+          <input
+            aria-autocomplete="list"
+            autoComplete="off"
+            className="search"
+            onChange={[Function]}
+            style={
+              Object {
+                "width": undefined,
+              }
+            }
+            tabIndex={0}
+            type="text"
+            value=""
+          />
           <div
             aria-live="polite"
-            className="text"
+            className="default text"
             role="alert"
           >
-            No value
+            My field
           </div>
           <i
             aria-hidden="true"
@@ -55,26 +66,14 @@ exports[`renders a select widget component 1`] = `
             onClick={[Function]}
           />
           <div
+            aria-multiselectable={undefined}
             className="menu transition"
+            role="listbox"
           >
             <div
-              aria-checked={true}
-              aria-disabled={undefined}
-              aria-selected={true}
-              className="active selected item"
-              onClick={[Function]}
-              role="option"
-              style={
-                Object {
-                  "pointerEvents": "all",
-                }
-              }
+              className="message"
             >
-              <span
-                className="text"
-              >
-                No value
-              </span>
+              No results found.
             </div>
           </div>
         </div>

@@ -2,160 +2,179 @@
 
 exports[`Controlpanels renders a controlpanels component 1`] = `
 <div
-  id="page-home"
+  className="view-wrapper"
 >
-  <h1>
-    <span>
-      Site Setup
-    </span>
-  </h1>
-  <p
-    className="description"
+  <div
+    className="ui container"
   >
-    <span>
-      Configuration area for Plone and add-on Products.
-    </span>
-  </p>
-  <div>
-    <h2
-      className="ui top attached header"
-    >
-      General
-    </h2>
     <div
-      className="ui attached segment"
+      className="ui raised segments"
     >
       <div
-        className="ui six column grid"
+        className="ui segment primary"
+      >
+        <span>
+          Site Setup
+        </span>
+      </div>
+      <div
+        className="ui secondary segment"
+      >
+        General
+      </div>
+      <div
+        className="ui attached segment"
       >
         <div
-          className="row"
+          className="ui six column grid"
         >
           <div
-            className="column"
+            className="row"
           >
-            <a
-              onClick={[Function]}
-              style={Object {}}
+            <div
+              className="column"
             >
-              <h3
-                className="ui icon center aligned header"
+              <a
+                onClick={[Function]}
+                style={Object {}}
               >
-                <i
-                  aria-hidden="true"
-                  className="calendar icon"
-                />
-                <div
-                  className="content"
+                <h3
+                  className="ui icon center aligned header"
                 >
-                  Date and Time
-                </div>
-              </h3>
-            </a>
-          </div>
-          <div
-            className="column"
-          >
-            <a
-              onClick={[Function]}
-              style={Object {}}
+                  <i
+                    aria-hidden="true"
+                    className="calendar icon"
+                  />
+                  <div
+                    className="content"
+                  >
+                    Date and Time
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
             >
-              <h3
-                className="ui icon center aligned header"
+              <a
+                onClick={[Function]}
+                style={Object {}}
               >
-                <i
-                  aria-hidden="true"
-                  className="setting icon"
-                />
-                <div
-                  className="content"
+                <h3
+                  className="ui icon center aligned header"
                 >
-                  Language
-                </div>
-              </h3>
-            </a>
+                  <i
+                    aria-hidden="true"
+                    className="setting icon"
+                  />
+                  <div
+                    className="content"
+                  >
+                    Language
+                  </div>
+                </h3>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div>
-    <h2
-      className="ui top attached header"
-    >
-      Content
-    </h2>
-    <div
-      className="ui attached segment"
-    >
       <div
-        className="ui six column grid"
+        className="ui secondary segment"
+      >
+        Content
+      </div>
+      <div
+        className="ui attached segment"
       >
         <div
-          className="row"
+          className="ui six column grid"
         >
           <div
-            className="column"
+            className="row"
           >
-            <a
-              onClick={[Function]}
-              style={Object {}}
+            <div
+              className="column"
             >
-              <h3
-                className="ui icon center aligned header"
+              <a
+                onClick={[Function]}
+                style={Object {}}
               >
-                <i
-                  aria-hidden="true"
-                  className="write icon"
-                />
-                <div
-                  className="content"
+                <h3
+                  className="ui icon center aligned header"
                 >
-                  Editing
-                </div>
-              </h3>
-            </a>
+                  <i
+                    aria-hidden="true"
+                    className="write icon"
+                  />
+                  <div
+                    className="content"
+                  >
+                    Editing
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                onClick={[Function]}
+                style={Object {}}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="comments icon"
+                  />
+                  <div
+                    className="content"
+                  >
+                    Moderate Comments
+                  </div>
+                </h3>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div>
-    <h2
-      className="ui top attached header"
-    >
-      Security
-    </h2>
-    <div
-      className="ui attached segment"
-    >
       <div
-        className="ui six column grid"
+        className="ui secondary segment"
+      >
+        Security
+      </div>
+      <div
+        className="ui attached segment"
       >
         <div
-          className="row"
+          className="ui six column grid"
         >
           <div
-            className="column"
+            className="row"
           >
-            <a
-              onClick={[Function]}
-              style={Object {}}
+            <div
+              className="column"
             >
-              <h3
-                className="ui icon center aligned header"
+              <a
+                onClick={[Function]}
+                style={Object {}}
               >
-                <i
-                  aria-hidden="true"
-                  className="lock icon"
-                />
-                <div
-                  className="content"
+                <h3
+                  className="ui icon center aligned header"
                 >
-                  Security
-                </div>
-              </h3>
-            </a>
+                  <i
+                    aria-hidden="true"
+                    className="lock icon"
+                  />
+                  <div
+                    className="content"
+                  >
+                    Security
+                  </div>
+                </h3>
+              </a>
+            </div>
           </div>
         </div>
       </div>
