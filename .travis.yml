@@ -1,4 +1,24 @@
 language: node_js
 node_js:
 - 8.9.4
-script: yarn coverage
+cache:
+  directories:
+    - node_modules
+dist: trusty
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+install:
+  - sudo pip install -r tests/requirements.txt
+before_script:
+  - wget "http://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip"
+  - unzip chromedriver_linux64.zip
+  - sudo mv chromedriver /usr/local/bin
+script:
+  -
+script:
+  - yarn coverage
+  - pybot tests/test.robot
