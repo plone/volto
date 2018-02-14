@@ -12,9 +12,6 @@ exports[`App renders a app component 1`] = `
       id="toolbar"
     />
     <div
-      id="navigation"
-    />
-    <div
       id="breadcrumbs"
     />
     <div
@@ -24,8 +21,5 @@ exports[`App renders a app component 1`] = `
       id="footer"
     />
   </div>
-  <div
-    id="messages"
-  />
 </div>
 `;

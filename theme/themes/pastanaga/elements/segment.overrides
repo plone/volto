@@ -1,0 +1,44 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.primary.segment {
+  border-bottom: @4px solid @greyBorderColor;
+  font-size: @16px;
+  font-weight: @headerFontWeight;
+}
+
+.ui.secondary.segment {
+  font-size: @12px;
+}
+
+.ui.discreet.segment {
+  color: @lightGrey;
+  font-size: @12px;
+}
+
+.ui.form.segment {
+    padding: 0;
+
+    .ui.grid > .row {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+.ui.actions.segment {
+  border-top: @1px solid @lightGreyBorderColor;
+}
+
+.inverted.segment a.item {
+  color: @white;
+  text-decoration: underline;
+}
+
+.basic.inverted.discreet.segment {
+  color: @darkWhite !important;
+}
+
+.pusher > .ui.basic.segment {
+  padding-bottom: 0;
+}

@@ -1,0 +1,16 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.message .content {
+  font-size: @12px;
+}
+
+.ui.icon.message > .icon:not(.close) {
+  align-self: flex-start;
+  margin-top: -7px;
+}
+
+.ui.attached.message {
+  margin: 0;
+}

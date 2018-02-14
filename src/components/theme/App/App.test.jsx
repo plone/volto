@@ -11,9 +11,6 @@ jest.mock('../../manage/Toolbar/Toolbar', () =>
   jest.fn(() => <div id="toolbar" />),
 );
 jest.mock('../Header/Header', () => jest.fn(() => <div id="toolbar" />));
-jest.mock('../Navigation/Navigation', () =>
-  jest.fn(() => <div id="navigation" />),
-);
 jest.mock('../Breadcrumbs/Breadcrumbs', () =>
   jest.fn(() => <div id="breadcrumbs" />),
 );
@@ -31,9 +28,7 @@ describe('App', () => {
     const store = mockStore();
     const component = renderer.create(
       <Provider store={store}>
-        <App pathname="/blog/edit">
-          <div />
-        </App>
+        <App location={{ pathname: '/blog/edit' }} main={<div />} />
       </Provider>,
     );
     const json = component.toJSON();

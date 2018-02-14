@@ -1,0 +1,7 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.messages.container {
+  margin-bottom: 1em;
+}

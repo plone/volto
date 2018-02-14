@@ -1,0 +1,20 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.inverted.list > a.item {
+  text-decoration: underline;
+}
+
+.ui.grid > .row > .navigation.column {
+  margin-top: unit(-@relativeBig * 1.5, em);
+  .menu {
+    flex-wrap: wrap;
+  }
+}
+
+.header .tools.column .list .item {
+  color: @grey;
+  font-size: @13px;
+  font-weight: 100;
+}
