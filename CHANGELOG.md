@@ -16,6 +16,8 @@
 * Upgrade to node 8 @robgietema
 * Added comments, email notification and vocabularies reducers @robgietema
 * Switched to draft js plugins editor @robgietema
+* Added pastanaga theme @robgietema
+* Added pastanaga manage views @robgietema
 
 ## 0.4.0 (2017-05-03)
 
