@@ -6,8 +6,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { Image } from 'semantic-ui-react';
 
-import LogoImage from './Logo.png';
+import LogoImage from './Logo.svg';
 
 const messages = defineMessages({
   site: {
@@ -21,17 +22,18 @@ const messages = defineMessages({
 });
 
 /**
- * Component to display a logo.
+ * Logo component class.
  * @function Logo
  * @param {Object} intl Intl object
  * @returns {string} Markup of the component.
  */
 const Logo = ({ intl }) => (
-  <Link id="portal-logo" title={intl.formatMessage(messages.site)} to="/">
-    <img
+  <Link to="/" title={intl.formatMessage(messages.site)}>
+    <Image
       src={LogoImage}
       alt={intl.formatMessage(messages.plonesite)}
       title={intl.formatMessage(messages.plonesite)}
+      height={32}
     />
   </Link>
 );
@@ -42,9 +44,6 @@ const Logo = ({ intl }) => (
  * @static
  */
 Logo.propTypes = {
-  /**
-   * i18n object
-   */
   intl: intlShape.isRequired,
 };
 

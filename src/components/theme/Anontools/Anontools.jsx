@@ -10,11 +10,14 @@ import { Link } from 'react-router';
 import { List } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
+import config from '../../../config';
+
 @connect(state => ({
   token: state.userSession.token,
+  content: state.content.data,
 }))
 /**
- * Component to display anonymous tools.
+ * Anontools container class.
  * @class Anontools
  * @extends Component
  */
@@ -25,10 +28,10 @@ export default class Anontools extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * User session token
-     */
     token: PropTypes.string,
+    content: PropTypes.shape({
+      '@id': PropTypes.string,
+    }),
   };
 
   /**
@@ -38,6 +41,9 @@ export default class Anontools extends Component {
    */
   static defaultProps = {
     token: null,
+    content: {
+      '@id': null,
+    },
   };
 
   /**
@@ -49,8 +55,21 @@ export default class Anontools extends Component {
     return (
       !this.props.token && (
         <List floated="right" horizontal>
-          <Link className="item" to="/login">
+          <Link
+            className="item"
+            to={`/login${
+              this.props.content
+                ? `?return_url=${this.props.content['@id'].replace(
+                    config.apiPath,
+                    '',
+                  )}`
+                : ''
+            }`}
+          >
             <FormattedMessage id="Log in" defaultMessage="Log in" />
+          </Link>
+          <Link className="item" to="/register">
+            <FormattedMessage id="Register" defaultMessage="Register" />
           </Link>
         </List>
       )

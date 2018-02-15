@@ -8,7 +8,7 @@ import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router';
 
 /**
- * Component to display the 404 view.
+ * Not found function.
  * @function NotFound
  * @returns {string} Markup of the not found page.
  */

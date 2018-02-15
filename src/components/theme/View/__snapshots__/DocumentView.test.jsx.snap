@@ -4,7 +4,9 @@ exports[`renders a document view component 1`] = `
 <div
   id="page-home"
 >
-  <h1>
+  <h1
+    className="documentFirstHeading"
+  >
     Hello World!
   </h1>
   <p

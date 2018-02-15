@@ -10,11 +10,14 @@ import { bindActionCreators } from 'redux';
 import { asyncConnect } from 'redux-connect';
 
 import { Login } from '../../../components';
-import { logout } from '../../../actions';
+import { logout, purgeMessages } from '../../../actions';
 
-@connect(() => ({}), dispatch => bindActionCreators({ logout }, dispatch))
+@connect(
+  () => ({}),
+  dispatch => bindActionCreators({ logout, purgeMessages }, dispatch),
+)
 /**
- * Component to display the logout view.
+ * LogoutComponent class.
  * @class LogoutComponent
  * @extends Component
  */
@@ -25,18 +28,18 @@ export class LogoutComponent extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Action to logout
-     */
     logout: PropTypes.func.isRequired,
+    purgeMessages: PropTypes.func.isRequired,
   };
 
   /**
    * Component will mount
    * @method componentWillMount
+   * @returns {undefined}
    */
   componentWillMount() {
     this.props.logout();
+    this.props.purgeMessages();
   }
 
   /**
@@ -45,7 +48,7 @@ export class LogoutComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return <Login />;
+    return <Login location={{ query: {} }} />;
   }
 }
 

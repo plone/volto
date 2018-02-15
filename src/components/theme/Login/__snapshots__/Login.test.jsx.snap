@@ -5,7 +5,7 @@ exports[`Login renders a login component 1`] = `
   id="page-login"
 >
   <div
-    className="container"
+    className="ui text container"
   >
     <form
       action={undefined}
@@ -14,70 +14,194 @@ exports[`Login renders a login component 1`] = `
       onSubmit={[Function]}
     >
       <div
-        className="ui top attached segment"
+        className="ui raised segments"
       >
         <div
-          className="field"
-        >
-          <label
-            htmlFor="login"
-          >
-            <span>
-              Login Name
-            </span>
-          </label>
-          <div
-            className="ui input"
-          >
-            <input
-              disabled={undefined}
-              id="login"
-              name="login"
-              onChange={[Function]}
-              tabIndex={undefined}
-              type="text"
-            />
-          </div>
-        </div>
-        <div
-          className="field"
-        >
-          <label
-            htmlFor="password"
-          >
-            <span>
-              Password
-            </span>
-          </label>
-          <div
-            className="ui input"
-          >
-            <input
-              disabled={undefined}
-              id="password"
-              name="password"
-              onChange={[Function]}
-              tabIndex={undefined}
-              type="password"
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        className="ui bottom attached segment"
-      >
-        <button
-          className="ui primary button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-          type="submit"
+          className="ui segment primary"
         >
           <span>
-            Log in
+            Login Name
           </span>
-        </button>
+        </div>
+        <div
+          className="ui secondary segment"
+        >
+          <span>
+            Sign in to start session
+          </span>
+        </div>
+        <div
+          className="ui segment form"
+        >
+          <div
+            className="inline field help"
+          >
+            <div
+              className="ui grid"
+            >
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="four wide column"
+                >
+                  <div
+                    className="wrapper"
+                  >
+                    <label
+                      htmlFor="login"
+                    >
+                      <span>
+                        Login Name
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="eight wide column"
+                >
+                  <div
+                    className="ui input"
+                  >
+                    <input
+                      disabled={undefined}
+                      id="login"
+                      name="login"
+                      onChange={[Function]}
+                      placeholder="Login Name"
+                      tabIndex={1}
+                      type="text"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="stretched twelve wide column"
+                >
+                  <p
+                    className="help"
+                  >
+                    <span>
+                      If you you do not have an account here, head over to the 
+                      <a
+                        onClick={[Function]}
+                        style={Object {}}
+                      >
+                        <span>
+                          registration form
+                        </span>
+                      </a>
+                      .
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="inline field help"
+          >
+            <div
+              className="ui grid"
+            >
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="stretched four wide column"
+                >
+                  <div
+                    className="wrapper"
+                  >
+                    <label
+                      htmlFor="password"
+                    >
+                      <span>
+                        Password
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="stretched eight wide column"
+                >
+                  <div
+                    className="ui input"
+                  >
+                    <input
+                      disabled={undefined}
+                      id="password"
+                      name="password"
+                      onChange={[Function]}
+                      placeholder="Password"
+                      tabIndex={2}
+                      type="password"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="stretched twelve wide column"
+                >
+                  <p
+                    className="help"
+                  >
+                    <span>
+                      If you have forgotten your password, 
+                      <a
+                        href="#"
+                      >
+                        <span>
+                          we can send you a new one
+                        </span>
+                      </a>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="ui clearing segment actions"
+        >
+          <button
+            className="ui big basic circular icon primary right floated button"
+            disabled={undefined}
+            id="login-form-submit"
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+            title="Log in"
+            type="submit"
+          >
+            <i
+              aria-hidden="true"
+              className="arrow right icon"
+            />
+          </button>
+          <a
+            className="ui big basic circular icon secondary right floated button"
+            disabled={undefined}
+            id="login-form-cancel"
+            onClick={[Function]}
+            role="button"
+            style={Object {}}
+            tabIndex={undefined}
+            title="Cancel"
+          >
+            <i
+              aria-hidden="true"
+              className="remove icon"
+            />
+          </a>
+        </div>
       </div>
     </form>
   </div>

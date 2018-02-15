@@ -30,6 +30,7 @@ export NotFound from './theme/NotFound/NotFound';
 export Pagination from './theme/Pagination/Pagination';
 export SummaryView from './theme/View/SummaryView';
 export Search from './theme/Search/Search';
+export SearchTags from './theme/Search/SearchTags';
 export TabularView from './theme/View/TabularView';
 export View from './theme/View/View';
 

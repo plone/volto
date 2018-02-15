@@ -107,6 +107,7 @@
 }
 .ui.grid > .row > .search.column {
   margin-top: 0.4em;
+  padding-left: 0;
 }
 
 .ui.grid > .row > .tools.column .ui.list {
@@ -124,7 +125,7 @@
     text-transform: uppercase;
     @media only screen and (min-width: @tabletBreakpoint) {
       margin: 0 unit(@relativeLarge * 2, em) 0 0;
-      padding: unit(@relativeBig * 2, em) 0 @relativeBig;
+      padding: 1.7em 0 @relativeBig;
     }
   }
 }

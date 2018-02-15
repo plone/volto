@@ -2,15 +2,17 @@
 
 exports[`Logo renders a logo component 1`] = `
 <a
-  id="portal-logo"
   onClick={[Function]}
   style={Object {}}
   title="Site"
 >
   <img
     alt="Plone Site"
-    src="Logo.png"
+    className="ui image"
+    height={32}
+    src="Logo.svg"
     title="Plone Site"
+    width={undefined}
   />
 </a>
 `;
