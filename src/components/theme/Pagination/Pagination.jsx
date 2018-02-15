@@ -27,7 +27,7 @@ const Pagination = ({
   onChangePage,
   onChangePageSize,
 }) => (
-  <Menu secondary>
+  <Menu secondary attached>
     <Menu.Menu>
       {current > 0 && (
         <Menu.Item

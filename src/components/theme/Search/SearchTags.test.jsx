@@ -1,26 +1,24 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-intl-redux';
+import { Provider } from 'react-redux';
 
-import { LoginComponent as Login } from './Login';
+import SearchTags from './SearchTags';
 
 const mockStore = configureStore();
 
-describe('Login', () => {
-  it('renders a login component', () => {
+describe('SearchTags', () => {
+  it('renders a search tags component', () => {
     const store = mockStore({
-      userSession: {
-        login: {},
-      },
-      intl: {
-        locale: 'en',
-        messages: {},
+      vocabularies: {
+        'plone.app.vocabularies.Keywords': {
+          terms: [{ title: 'Tag 1' }, { title: 'Tag 2' }],
+        },
       },
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Login location={{ query: {} }} />
+        <SearchTags />
       </Provider>,
     );
     const json = component.toJSON();

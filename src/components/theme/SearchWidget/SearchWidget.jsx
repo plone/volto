@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
-import { Checkbox, Form, Input } from 'semantic-ui-react';
+import { Form, Input } from 'semantic-ui-react';
 import { PropTypes } from 'prop-types';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
@@ -18,15 +18,11 @@ const messages = defineMessages({
     id: 'Search Site',
     defaultMessage: 'Search Site',
   },
-  section: {
-    id: 'only in current section',
-    defaultMessage: 'only in current section',
-  },
 });
 
 @injectIntl
 /**
- * Component to display the search widget.
+ * SearchWidget component class.
  * @class SearchWidget
  * @extends Component
  */
@@ -37,13 +33,7 @@ export default class SearchWidget extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Pathname of the current object
-     */
     pathname: PropTypes.string.isRequired,
-    /**
-     * i18n object
-     */
     intl: intlShape.isRequired,
   };
 
@@ -69,6 +59,7 @@ export default class SearchWidget extends Component {
    * @method onChangeText
    * @param {object} event Event object.
    * @param {string} value Text value.
+   * @returns {undefined}
    */
   onChangeText(event, { value }) {
     this.setState({
@@ -81,6 +72,7 @@ export default class SearchWidget extends Component {
    * @method onChangeSection
    * @param {object} event Event object.
    * @param {bool} checked Section checked.
+   * @returns {undefined}
    */
   onChangeSection(event, { checked }) {
     this.setState({
@@ -92,6 +84,7 @@ export default class SearchWidget extends Component {
    * Submit handler
    * @method onSubmit
    * @param {event} event Event object.
+   * @returns {undefined}
    */
   onSubmit(event) {
     const section = this.state.section ? `&path=${this.props.pathname}` : '';
@@ -107,20 +100,15 @@ export default class SearchWidget extends Component {
   render() {
     return (
       <Form action="/search" onSubmit={this.onSubmit}>
-        <Form.Field>
+        <Form.Field className="searchbox">
           <Input
             onChange={this.onChangeText}
             name="SearchableText"
             value={this.state.text}
-            action={this.props.intl.formatMessage(messages.search)}
+            action={{ icon: 'search' }}
+            transparent
             placeholder={this.props.intl.formatMessage(messages.searchSite)}
-          />
-        </Form.Field>
-        <Form.Field>
-          <Checkbox
-            onChange={this.onChangeSection}
-            checked={this.state.section}
-            label={this.props.intl.formatMessage(messages.section)}
+            title={this.props.intl.formatMessage(messages.search)}
           />
         </Form.Field>
       </Form>

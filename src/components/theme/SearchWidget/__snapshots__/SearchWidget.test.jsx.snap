@@ -7,10 +7,11 @@ exports[`SearchWidget renders a search widget component 1`] = `
   onSubmit={[Function]}
 >
   <div
-    className="field"
+    className="field searchbox"
   >
     <div
-      className="ui action input"
+      className="ui transparent action input"
+      title="Search"
     >
       <input
         disabled={undefined}
@@ -22,37 +23,17 @@ exports[`SearchWidget renders a search widget component 1`] = `
         value=""
       />
       <button
-        className="ui button"
+        className="ui icon button"
         disabled={undefined}
         onClick={[Function]}
         role="button"
         tabIndex={undefined}
       >
-        Search
+        <i
+          aria-hidden="true"
+          className="search icon"
+        />
       </button>
-    </div>
-  </div>
-  <div
-    className="field"
-  >
-    <div
-      className="ui checkbox"
-      onChange={[Function]}
-      onClick={[Function]}
-      onMouseDown={[Function]}
-    >
-      <input
-        checked={false}
-        className="hidden"
-        name={undefined}
-        readOnly={true}
-        tabIndex={0}
-        type="checkbox"
-        value={undefined}
-      />
-      <label>
-        only in current section
-      </label>
     </div>
   </div>
 </form>

@@ -5,22 +5,39 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
+import { isMatch } from 'lodash';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
-import { Container, Segment, Menu } from 'semantic-ui-react';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { Menu, Segment } from 'semantic-ui-react';
 
+import { Anontools } from '../../../components';
 import { getNavigation } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
+const messages = defineMessages({
+  closeMobileMenu: {
+    id: 'Close menu',
+    defaultMessage: 'Close menu',
+  },
+  openMobileMenu: {
+    id: 'Open menu',
+    defaultMessage: 'Open menu',
+  },
+});
+
+@injectIntl
 @connect(
   state => ({
     items: state.navigation.items,
+    token: state.userSession.token,
   }),
   dispatch => bindActionCreators({ getNavigation }, dispatch),
 )
 /**
- * Component to display the navigation bar.
+ * Navigation container class.
  * @class Navigation
  * @extends Component
  */
@@ -31,34 +48,47 @@ export default class Navigation extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Action to get the navigation
-     */
     getNavigation: PropTypes.func.isRequired,
-    /**
-     * Pathname of the current object
-     */
     pathname: PropTypes.string.isRequired,
-    /**
-     * List of navigation items
-     */
     items: PropTypes.arrayOf(
       PropTypes.shape({
-        /**
-         * Title of the navigation item
-         */
         title: PropTypes.string,
-        /**
-         * Url of the navigation item
-         */
         url: PropTypes.string,
       }),
     ).isRequired,
+    token: PropTypes.string,
+    intl: intlShape.isRequired,
   };
+
+  /**
+   * Default properties.
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    token: null,
+  };
+
+  /**
+   * Constructor
+   * @method constructor
+   * @param {Object} props Component properties
+   * @constructs Navigation
+   */
+  constructor(props) {
+    super(props);
+    this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
+    this.closeMobileMenu = this.closeMobileMenu.bind(this);
+    this.state = {
+      isMobileMenuOpen: false,
+      bodyClasses: null,
+    };
+  }
 
   /**
    * Component will mount
    * @method componentWillMount
+   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getNavigation(getBaseUrl(this.props.pathname));
@@ -68,6 +98,7 @@ export default class Navigation extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
+   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
@@ -84,8 +115,37 @@ export default class Navigation extends Component {
   isActive(url) {
     return (
       (url === '' && this.props.pathname === '/') ||
-      (url !== '' && this.props.pathname.indexOf(url) !== -1)
+      (url !== '' && isMatch(this.props.pathname.split('/'), url.split('/')))
     );
+  }
+
+  /**
+   * Toggle mobile menu's open state
+   * @method toggleMobileMenu
+   * @returns {undefined}
+   */
+  toggleMobileMenu() {
+    this.setState({
+      bodyClasses:
+        Helmet.peek().bodyAttributes.class +
+        (!this.state.isMobileMenuOpen ? ' open-mobile-menu' : ''),
+    });
+    this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen });
+  }
+
+  /**
+   * Close mobile menu
+   * @method closeMobileMenu
+   * @returns {undefined}
+   */
+  closeMobileMenu() {
+    if (!this.state.isMobileMenuOpen) {
+      return;
+    }
+    this.setState({
+      bodyClasses: Helmet.peek().bodyAttributes.class,
+    });
+    this.setState({ isMobileMenuOpen: false });
   }
 
   /**
@@ -95,21 +155,59 @@ export default class Navigation extends Component {
    */
   render() {
     return (
-      <Segment inverted color="blue" vertical>
-        <Container>
-          <Menu secondary inverted stackable>
-            {this.props.items.map(item => (
-              <Link
-                to={item.url === '' ? '/' : item.url}
-                key={item.url}
-                className={`item${this.isActive(item.url) ? ' active' : ''}`}
-              >
-                {item.title}
-              </Link>
-            ))}
-          </Menu>
-        </Container>
-      </Segment>
+      <div>
+        {this.state.isMobileMenuOpen && (
+          <Helmet bodyAttributes={{ class: this.state.bodyClasses }} />
+        )}
+        <Segment basic className="mobile only">
+          <button
+            className={
+              this.state.isMobileMenuOpen ? 'hamburger active' : 'hamburger'
+            }
+            title={
+              this.state.isMobileMenuOpen
+                ? this.props.intl.formatMessage(messages.closeMobileMenu, {
+                    type: this.props.type,
+                  })
+                : this.props.intl.formatMessage(messages.openMobileMenu, {
+                    type: this.props.type,
+                  })
+            }
+            type="button"
+            onClick={this.toggleMobileMenu}
+          >
+            <span className="hamburger-box">
+              <span className="hamburger-inner" />
+            </span>
+          </button>
+        </Segment>
+        <Menu
+          stackable
+          pointing
+          secondary
+          className={
+            this.state.isMobileMenuOpen
+              ? 'open'
+              : 'tablet computer large screen widescreen only'
+          }
+          onClick={this.closeMobileMenu}
+        >
+          {this.props.items.map(item => (
+            <Link
+              to={item.url === '' ? '/' : item.url}
+              key={item.url}
+              className={this.isActive(item.url) ? 'item active' : 'item'}
+            >
+              {item.title}
+            </Link>
+          ))}
+          {!this.props.token && (
+            <Segment basic className="anontools mobile only">
+              <Anontools />
+            </Segment>
+          )}
+        </Menu>
+      </div>
     );
   }
 }

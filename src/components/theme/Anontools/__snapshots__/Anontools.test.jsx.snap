@@ -14,6 +14,15 @@ exports[`Anontools renders an anontools component when no token is specified 1`]
       Log in
     </span>
   </a>
+  <a
+    className="item"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <span>
+      Register
+    </span>
+  </a>
 </div>
 `;
 

@@ -2,53 +2,56 @@
 
 exports[`Footer renders a footer component 1`] = `
 <div
-  className="ui inverted vertical center aligned segment"
+  className="ui grey inverted vertical padded center aligned segment"
 >
   <div
     className="ui container"
   >
-    <span>
-      The 
+    <div
+      className="ui grey basic inverted segment discreet"
+    >
       <span>
-        Plone
-        <sup>
-          ®
-        </sup>
-         Open Source CMS/WCM
+        The 
+        <span>
+          Plone
+          <sup>
+            ®
+          </sup>
+           Open Source CMS/WCM
+        </span>
+         is 
+        <abbr
+          title="Copyright"
+        >
+          ©
+        </abbr>
+         2000-2018 by the 
+        <a
+          className="item"
+          href="http://plone.org/foundation"
+        >
+          <span>
+            Plone Foundation
+          </span>
+        </a>
+         and friends.
       </span>
-       is 
-      <abbr
-        title="Copyright"
-      >
-        ©
-      </abbr>
-       2000-2018 by the 
-      <a
-        href="http://plone.org/foundation"
-      >
-        <span>
-          Plone Foundation
-        </span>
-      </a>
-       and friends.
-    </span>
-     
-    <span>
-      Distributed under the 
-      <a
-        href="http://creativecommons.org/licenses/GPL/2.0/"
-      >
-        <span>
-          GNU GPL license
-        </span>
-      </a>
-      .
-    </span>
+       
+      <span>
+        Distributed under the 
+        <a
+          className="item"
+          href="http://creativecommons.org/licenses/GPL/2.0/"
+        >
+          <span>
+            GNU GPL license
+          </span>
+        </a>
+        .
+      </span>
+    </div>
     <div
-      className="ui divider"
-    />
-    <div
-      className="ui horizontal list"
+      className="ui horizontal inverted list"
       role="list"
     >
       <a

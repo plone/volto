@@ -16,7 +16,6 @@ import {
   Footer,
   Header,
   Messages,
-  Navigation,
   Toolbar,
 } from '../../../components';
 import { getBaseUrl, getView } from '../../../helpers';
@@ -91,7 +90,6 @@ export class AppComponent extends Component {
         <Toolbar pathname={path} selected={action} inner={this.props.toolbar} />
         <div className="pusher">
           <Header pathname={path} />
-          <Navigation pathname={path} />
           <Breadcrumbs pathname={path} />
           <Segment basic className="content-area">
             <Container as="main">

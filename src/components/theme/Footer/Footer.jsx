@@ -26,49 +26,53 @@ const messages = defineMessages({
  * @returns {string} Markup of the component
  */
 const Footer = ({ intl }) => (
-  <Segment inverted vertical textAlign="center">
+  <Segment vertical padded inverted color="grey" textAlign="center">
     <Container>
-      <FormattedMessage
-        id="The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
-        defaultMessage="The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
-        values={{
-          plonecms: (
-            <FormattedMessage
-              id="Plone{reg} Open Source CMS/WCM"
-              defaultMessage="Plone{reg} Open Source CMS/WCM"
-              values={{ reg: <sup>®</sup> }}
-            />
-          ),
-          copyright: (
-            <abbr title={intl.formatMessage(messages.copyright)}>©</abbr>
-          ),
-          current_year: new Date().getFullYear(),
-          plonefoundation: (
-            <a href="http://plone.org/foundation">
+      <Segment basic inverted color="grey" className="discreet">
+        <FormattedMessage
+          id="The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
+          defaultMessage="The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
+          values={{
+            plonecms: (
               <FormattedMessage
-                id="Plone Foundation"
-                defaultMessage="Plone Foundation"
+                id="Plone{reg} Open Source CMS/WCM"
+                defaultMessage="Plone{reg} Open Source CMS/WCM"
+                values={{ reg: <sup>®</sup> }}
               />
-            </a>
-          ),
-        }}
-      />{' '}
-      <FormattedMessage
-        id="Distributed under the {license}."
-        defaultMessage="Distributed under the {license}."
-        values={{
-          license: (
-            <a href="http://creativecommons.org/licenses/GPL/2.0/">
-              <FormattedMessage
-                id="GNU GPL license"
-                defaultMessage="GNU GPL license"
-              />
-            </a>
-          ),
-        }}
-      />
-      <Divider />
-      <List horizontal>
+            ),
+            copyright: (
+              <abbr title={intl.formatMessage(messages.copyright)}>©</abbr>
+            ),
+            current_year: new Date().getFullYear(),
+            plonefoundation: (
+              <a className="item" href="http://plone.org/foundation">
+                <FormattedMessage
+                  id="Plone Foundation"
+                  defaultMessage="Plone Foundation"
+                />
+              </a>
+            ),
+          }}
+        />{' '}
+        <FormattedMessage
+          id="Distributed under the {license}."
+          defaultMessage="Distributed under the {license}."
+          values={{
+            license: (
+              <a
+                className="item"
+                href="http://creativecommons.org/licenses/GPL/2.0/"
+              >
+                <FormattedMessage
+                  id="GNU GPL license"
+                  defaultMessage="GNU GPL license"
+                />
+              </a>
+            ),
+          }}
+        />
+      </Segment>
+      <List horizontal inverted>
         <List.Item href="/sitemap">
           <FormattedMessage id="Site Map" defaultMessage="Site Map" />
         </List.Item>

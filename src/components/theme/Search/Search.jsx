@@ -14,16 +14,19 @@ import { FormattedMessage } from 'react-intl';
 
 import { searchContent } from '../../../actions';
 
+import { SearchTags } from '../../../components';
+
 @connect(
   (state, props) => ({
     items: state.search.items,
     searchableText: props.location.query.SearchableText,
+    subject: props.location.query.Subject,
     path: props.location.query.path,
   }),
   dispatch => bindActionCreators({ searchContent }, dispatch),
 )
 /**
- * Component to display the search view.
+ * SearchComponent class.
  * @class SearchComponent
  * @extends Component
  */
@@ -34,38 +37,15 @@ export class SearchComponent extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Action to search for content
-     */
     searchContent: PropTypes.func.isRequired,
-    /**
-     * Text to search for
-     */
     searchableText: PropTypes.string,
-    /**
-     * Path used to search for items
-     */
+    subject: PropTypes.string,
     path: PropTypes.string,
-    /**
-     * Search result items
-     */
     items: PropTypes.arrayOf(
       PropTypes.shape({
-        /**
-         * Id of the item
-         */
         '@id': PropTypes.string,
-        /**
-         * Type of the item
-         */
         '@type': PropTypes.string,
-        /**
-         * Title of the item
-         */
         title: PropTypes.string,
-        /**
-         * Description of the item
-         */
         description: PropTypes.string,
       }),
     ),
@@ -79,16 +59,19 @@ export class SearchComponent extends Component {
   static defaultProps = {
     items: [],
     searchableText: null,
+    subject: null,
     path: null,
   };
 
   /**
    * Component will mount
    * @method componentWillMount
+   * @returns {undefined}
    */
   componentWillMount() {
     this.props.searchContent('', {
       SearchableText: this.props.searchableText,
+      Subject: this.props.subject,
       path: this.props.path,
     });
   }
@@ -97,11 +80,13 @@ export class SearchComponent extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
+   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.searchableText !== this.props.searchableText) {
       this.props.searchContent('', {
         SearchableText: nextProps.searchableText,
+        Subject: this.props.subject,
         path: this.props.path,
       });
     }
@@ -120,14 +105,22 @@ export class SearchComponent extends Component {
           <article id="content">
             <header>
               <h1 className="documentFirstHeading">
-                <FormattedMessage
-                  id="Search results for {term}"
-                  defaultMessage="Search results for {term}"
-                  values={{
-                    term: <q>{this.props.searchableText}</q>,
-                  }}
-                />
+                {this.props.searchableText ? (
+                  <FormattedMessage
+                    id="Search results for {term}"
+                    defaultMessage="Search results for {term}"
+                    values={{
+                      term: <q>{this.props.searchableText}</q>,
+                    }}
+                  />
+                ) : (
+                  <FormattedMessage
+                    id="Search results"
+                    defaultMessage="Search results"
+                  />
+                )}
               </h1>
+              <SearchTags />
             </header>
             <section id="content-core">
               {this.props.items.map(item => (
@@ -170,7 +163,10 @@ export default asyncConnect([
     key: 'search',
     promise: ({ location, store: { dispatch } }) =>
       dispatch(
-        searchContent('', { SearchableText: location.query.SearchableText }),
+        searchContent('', {
+          SearchableText: location.query.SearchableText,
+          Subject: location.query.Subject,
+        }),
       ),
   },
 ])(SearchComponent);
