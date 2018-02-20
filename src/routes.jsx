@@ -59,6 +59,9 @@ export default () => (
       path="/personal-preferences"
       components={{ main: PersonalPreferences }}
     />
+    <Route path="/add" components={{ main: Add }} />
+    <Route path="/contents" components={{ main: Contents }} />
+    <Route path="/sharing" components={{ main: Sharing }} />
     <Route path="/**/add" components={{ main: Add }} />
     <Route path="/**/contents" components={{ main: Contents }} />
     <Route path="/**/delete" components={{ main: Delete }} />
