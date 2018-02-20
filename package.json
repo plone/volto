@@ -73,6 +73,7 @@
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test))\\.(js|jsx)$",
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
       "^.+\\.scss$": "jest-css-modules",
