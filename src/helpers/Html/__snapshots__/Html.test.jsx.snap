@@ -37,7 +37,7 @@ exports[`Html renders a html component 1`] = `
     <div
       dangerouslySetInnerHTML={
         Object {
-          "__html": "<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"1998851930\\"></div>",
+          "__html": "<div data-reactroot=\\"\\"></div>",
         }
       }
       id="main"
