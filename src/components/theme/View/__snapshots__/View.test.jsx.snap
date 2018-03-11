@@ -2,20 +2,155 @@
 
 exports[`View renders a document view 1`] = `
 <div
-  id="DocumentView"
-/>
+  id="view"
+>
+  <div
+    id="DocumentView"
+  />
+  <div>
+    <br />
+    <div
+      className="SocialMediaShareButton SocialMediaShareButton--facebook"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      style={Object {}}
+      tabIndex="0"
+    >
+      <button
+        className="ui facebook mini button"
+        disabled={undefined}
+        onClick={[Function]}
+        role="button"
+        tabIndex={undefined}
+      >
+        Facebook
+      </button>
+    </div>
+    <div
+      className="SocialMediaShareButton SocialMediaShareButton--twitter"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      style={Object {}}
+      tabIndex="0"
+    >
+      <button
+        className="ui twitter mini button"
+        disabled={undefined}
+        onClick={[Function]}
+        role="button"
+        tabIndex={undefined}
+      >
+        Twitter
+      </button>
+    </div>
+    <br />
+    <br />
+  </div>
+</div>
 `;
 
 exports[`View renders a summary view 1`] = `
 <div
-  id="SummaryView"
-/>
+  id="view"
+>
+  <div
+    id="SummaryView"
+  />
+  <div>
+    <br />
+    <div
+      className="SocialMediaShareButton SocialMediaShareButton--facebook"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      style={Object {}}
+      tabIndex="0"
+    >
+      <button
+        className="ui facebook mini button"
+        disabled={undefined}
+        onClick={[Function]}
+        role="button"
+        tabIndex={undefined}
+      >
+        Facebook
+      </button>
+    </div>
+    <div
+      className="SocialMediaShareButton SocialMediaShareButton--twitter"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      style={Object {}}
+      tabIndex="0"
+    >
+      <button
+        className="ui twitter mini button"
+        disabled={undefined}
+        onClick={[Function]}
+        role="button"
+        tabIndex={undefined}
+      >
+        Twitter
+      </button>
+    </div>
+    <br />
+    <br />
+  </div>
+</div>
 `;
 
 exports[`View renders a tabular view 1`] = `
 <div
-  id="TabularView"
-/>
+  id="view"
+>
+  <div
+    id="TabularView"
+  />
+  <div>
+    <br />
+    <div
+      className="SocialMediaShareButton SocialMediaShareButton--facebook"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      style={Object {}}
+      tabIndex="0"
+    >
+      <button
+        className="ui facebook mini button"
+        disabled={undefined}
+        onClick={[Function]}
+        role="button"
+        tabIndex={undefined}
+      >
+        Facebook
+      </button>
+    </div>
+    <div
+      className="SocialMediaShareButton SocialMediaShareButton--twitter"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="button"
+      style={Object {}}
+      tabIndex="0"
+    >
+      <button
+        className="ui twitter mini button"
+        disabled={undefined}
+        onClick={[Function]}
+        role="button"
+        tabIndex={undefined}
+      >
+        Twitter
+      </button>
+    </div>
+    <br />
+    <br />
+  </div>
+</div>
 `;
 
 exports[`View renders an empty view 1`] = `<span />`;
