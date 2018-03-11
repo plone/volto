@@ -2,7 +2,7 @@
 
 exports[`TabularView renders a summary view component 1`] = `
 <div
-  id="page-home"
+  className="view-wrapper"
 >
   <article
     id="content"
@@ -27,11 +27,19 @@ exports[`TabularView renders a summary view component 1`] = `
           <a
             onClick={[Function]}
             style={Object {}}
-            title="Document"
+            title="News Item"
           >
             My item
           </a>
         </h2>
+        <img
+          alt="My image caption"
+          className="ui right floated image"
+          clearing={true}
+          height={undefined}
+          src="file:///preview.jpg"
+          width={undefined}
+        />
         <p>
           My item description
         </p>
