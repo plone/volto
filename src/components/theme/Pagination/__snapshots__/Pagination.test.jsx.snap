@@ -2,7 +2,7 @@
 
 exports[`Pagination renders no pagination when only 1 page 1`] = `
 <div
-  className="ui secondary menu"
+  className="ui secondary attached menu"
 >
   <div
     className="menu"
@@ -31,7 +31,7 @@ exports[`Pagination renders no pagination when only 1 page 1`] = `
 
 exports[`Pagination renders page size options when specified 1`] = `
 <div
-  className="ui secondary menu"
+  className="ui secondary attached menu"
 >
   <div
     className="menu"
@@ -91,7 +91,7 @@ exports[`Pagination renders page size options when specified 1`] = `
 
 exports[`Pagination renders pagination when multiple pages are specified 1`] = `
 <div
-  className="ui secondary menu"
+  className="ui secondary attached menu"
 >
   <div
     className="menu"

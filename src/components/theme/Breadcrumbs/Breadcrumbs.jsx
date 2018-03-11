@@ -8,12 +8,20 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
-import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
-import { FormattedMessage } from 'react-intl';
+import { Breadcrumb, Container, Icon, Segment } from 'semantic-ui-react';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 import { getBreadcrumbs } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
+const messages = defineMessages({
+  home: {
+    id: 'Home',
+    defaultMessage: 'Home',
+  },
+});
+
+@injectIntl
 @connect(
   state => ({
     items: state.breadcrumbs.items,
@@ -21,7 +29,7 @@ import { getBaseUrl } from '../../../helpers';
   dispatch => bindActionCreators({ getBreadcrumbs }, dispatch),
 )
 /**
- * Component to display breadcrumbs
+ * Breadcrumbs container class.
  * @class Breadcrumbs
  * @extends Component
  */
@@ -32,34 +40,21 @@ export default class Breadcrumbs extends Component {
    * @static
    */
   static propTypes = {
-    /**
-     * Action to get breadcrumbs
-     */
     getBreadcrumbs: PropTypes.func.isRequired,
-    /**
-     * Pathname of the current object
-     */
     pathname: PropTypes.string.isRequired,
-    /**
-     * List of breadcrumb items
-     */
     items: PropTypes.arrayOf(
       PropTypes.shape({
-        /**
-         * Title of the breadcrumb
-         */
         title: PropTypes.string,
-        /**
-         * Url of the breadcrumb
-         */
         url: PropTypes.string,
       }),
     ).isRequired,
+    intl: intlShape.isRequired,
   };
 
   /**
    * Component will mount
    * @method componentWillMount
+   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getBreadcrumbs(getBaseUrl(this.props.pathname));
@@ -69,6 +64,7 @@ export default class Breadcrumbs extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
+   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
@@ -83,17 +79,18 @@ export default class Breadcrumbs extends Component {
    */
   render() {
     return (
-      <Segment secondary vertical>
+      <Segment className="breadcrumbs" secondary vertical>
         <Container>
           <Breadcrumb>
-            <Link to="/" className="section">
-              <FormattedMessage id="Home" defaultMessage="Home" />
+            <Link
+              to="/"
+              className="section"
+              title={this.props.intl.formatMessage(messages.home)}
+            >
+              <Icon name="home" />
             </Link>
             {this.props.items.map((item, index, items) => [
-              <Breadcrumb.Divider
-                icon="right angle"
-                key={`divider-${item.url}`}
-              />,
+              <Breadcrumb.Divider key={`divider-${item.url}`} />,
               index < items.length - 1 ? (
                 <Link key={item.url} to={item.url} className="section">
                   {item.title}

@@ -2,7 +2,7 @@
 
 exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
 <div
-  className="ui secondary vertical segment"
+  className="ui secondary vertical segment breadcrumbs"
 >
   <div
     className="ui container"
@@ -14,15 +14,18 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
         className="section"
         onClick={[Function]}
         style={Object {}}
+        title="Home"
       >
-        <span>
-          Home
-        </span>
+        <i
+          aria-hidden="true"
+          className="home icon"
+        />
       </a>
-      <i
-        aria-hidden="true"
-        className="right angle icon divider"
-      />
+      <div
+        className="divider"
+      >
+        /
+      </div>
       <a
         className="section"
         onClick={[Function]}
@@ -30,10 +33,11 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
       >
         Blog
       </a>
-      <i
-        aria-hidden="true"
-        className="right angle icon divider"
-      />
+      <div
+        className="divider"
+      >
+        /
+      </div>
       <div
         className="active section"
         href={undefined}

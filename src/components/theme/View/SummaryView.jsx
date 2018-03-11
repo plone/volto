@@ -7,16 +7,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
+import { Image } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
 /**
- * Component to display the summary view.
+ * Summary view component class.
  * @function SummaryView
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
 const SummaryView = ({ content }) => (
-  <div id="page-home">
+  <div className="view-wrapper">
     <Helmet title={content.title} />
     <article id="content">
       <header>
@@ -33,6 +34,14 @@ const SummaryView = ({ content }) => (
                 {item.title}
               </Link>
             </h2>
+            {item.image && (
+              <Image
+                clearing
+                floated="right"
+                alt={item.image_caption ? item.image_caption : item.title}
+                src={item.image.scales.thumb.download}
+              />
+            )}
             {item.description && <p>{item.description}</p>}
             <p>
               <Link to={item.url}>
@@ -81,6 +90,14 @@ SummaryView.propTypes = {
          * Url of the item
          */
         url: PropTypes.string,
+        /**
+         * Image of the item
+         */
+        image: PropTypes.object,
+        /**
+         * Image caption of the item
+         */
+        image_caption: PropTypes.string,
         /**
          * Type of the item
          */

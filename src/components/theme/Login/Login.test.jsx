@@ -20,7 +20,7 @@ describe('Login', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Login />
+        <Login location={{ query: {} }} />
       </Provider>,
     );
     const json = component.toJSON();

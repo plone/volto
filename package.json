@@ -73,6 +73,7 @@
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test))\\.(js|jsx)$",
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
       "^.+\\.scss$": "jest-css-modules",
@@ -158,6 +159,7 @@
     "draft-js-anchor-plugin": "2.0.1",
     "draft-js-buttons": "2.0.1",
     "draft-js-export-html": "1.2.0",
+    "draft-js-import-html": "1.2.1",
     "draft-js-inline-toolbar-plugin": "2.0.1",
     "draft-js-plugins-editor": "2.0.4",
     "draft-js-side-toolbar-plugin": "2.0.1",
@@ -207,6 +209,7 @@
     "react-redux": "5.0.6",
     "react-router": "3.0.5",
     "react-router-redux": "4.0.8",
+    "react-share": "1.17.0",
     "react-styleguidist": "6.0.25",
     "redux": "3.7.2",
     "redux-connect": "5.1.0",
@@ -244,6 +247,9 @@
     "concurrently": "3.5.1",
     "css-loader": "0.28.7",
     "dirty-chai": "2.0.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-15": "^1.0.5",
+    "enzyme-to-json": "^3.3.1",
     "eslint": "4.14.0",
     "eslint-config-airbnb": "16.1.0",
     "eslint-loader": "1.9.0",

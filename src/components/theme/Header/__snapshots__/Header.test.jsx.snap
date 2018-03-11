@@ -11,19 +11,36 @@ exports[`Header renders a header component 1`] = `
       className="ui stackable grid"
     >
       <div
-        className="eight wide column"
+        className="row header"
       >
-        <div />
-      </div>
-      <div
-        className="three wide column"
-      >
-        <div />
-      </div>
-      <div
-        className="five wide column"
-      >
-        <div />
+        <div
+          className="two wide column logo"
+        >
+          <div
+            id="logo"
+          />
+        </div>
+        <div
+          className="five wide column navigation"
+        >
+          <div
+            id="navigation"
+          />
+        </div>
+        <div
+          className="two wide column tools"
+        >
+          <div
+            id="anontools"
+          />
+        </div>
+        <div
+          className="three wide column search"
+        >
+          <div
+            id="searchwidget"
+          />
+        </div>
       </div>
     </div>
   </div>

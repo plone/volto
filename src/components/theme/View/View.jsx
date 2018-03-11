@@ -5,13 +5,20 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 
 import {
+  Comments,
+  DocumentView,
+  FileView,
+  ImageView,
+  ListingView,
+  NewsItemView,
+  SocialSharing,
   SummaryView,
   TabularView,
-  DocumentView,
-  ListingView,
+  Tags,
 } from '../../../components';
 import { getContent } from '../../../actions';
 
@@ -57,6 +64,26 @@ export default class View extends Component {
        * Layout of the object
        */
       layout: PropTypes.string,
+      /**
+       * Allow discussion of the object
+       */
+      allow_discussion: PropTypes.bool,
+      /**
+       * Title of the object
+       */
+      title: PropTypes.string,
+      /**
+       * Description of the object
+       */
+      description: PropTypes.string,
+      /**
+       * Type of the object
+       */
+      '@type': PropTypes.string,
+      /**
+       * Subjects of the object
+       */
+      subjects: PropTypes.arrayOf(PropTypes.string),
     }),
   };
 
@@ -73,6 +100,7 @@ export default class View extends Component {
   /**
    * Component will mount
    * @method componentWillMount
+   * @returns {undefined}
    */
   componentWillMount() {
     this.props.getContent(this.props.pathname, this.props.versionId);
@@ -82,6 +110,7 @@ export default class View extends Component {
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
+   * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
@@ -99,15 +128,59 @@ export default class View extends Component {
       return <span />;
     }
 
+    let view;
+
     switch (this.props.content.layout) {
       case 'summary_view':
-        return <SummaryView content={this.props.content} />;
+        view = <SummaryView content={this.props.content} />;
+        break;
       case 'tabular_view':
-        return <TabularView content={this.props.content} />;
+        view = <TabularView content={this.props.content} />;
+        break;
       case 'listing_view':
-        return <ListingView content={this.props.content} />;
+        view = <ListingView content={this.props.content} />;
+        break;
+      case 'news_item_view':
+        view = <NewsItemView content={this.props.content} />;
+        break;
+      case 'file_view':
+        view = <FileView content={this.props.content} />;
+        break;
+      case 'image_view':
+        view = <ImageView content={this.props.content} />;
+        break;
       default:
-        return <DocumentView content={this.props.content} />;
+        view = <DocumentView content={this.props.content} />;
+        break;
     }
+
+    const viewName = view.type
+      ? view.type.WrappedComponent
+        ? view.type.WrappedComponent.name
+        : view.type.name
+      : view.constructor.name;
+
+    return (
+      <div id="view">
+        <Helmet
+          bodyAttributes={{
+            class: `view-${viewName.toLowerCase()}`,
+          }}
+        />
+        {view}
+        {this.props.content.subjects &&
+          this.props.content.subjects.length > 0 && (
+            <Tags tags={this.props.content.subjects} />
+          )}
+        <SocialSharing
+          url={typeof window === 'undefined' ? '' : window.location.href}
+          title={this.props.content.title}
+          description={this.props.content.description || ''}
+        />
+        {this.props.content.allow_discussion && (
+          <Comments pathname={this.props.pathname} />
+        )}
+      </div>
+    );
   }
 }

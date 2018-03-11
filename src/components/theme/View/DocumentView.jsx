@@ -6,6 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import { Image } from 'semantic-ui-react';
 
 /**
  * Component to display the document view.
@@ -16,9 +17,16 @@ import Helmet from 'react-helmet';
 const DocumentView = ({ content }) => (
   <div id="page-home">
     <Helmet title={content.title} />
-    <h1>{content.title}</h1>
+    <h1 className="documentFirstHeading">{content.title}</h1>
     {content.description && (
       <p className="description">{content.description}</p>
+    )}
+    {content.image && (
+      <Image
+        className="document-image"
+        src={content.image.scales.thumb.download}
+        floated="right"
+      />
     )}
     {content.text && (
       <p dangerouslySetInnerHTML={{ __html: content.text.data }} />

@@ -1,30 +1,176 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navigation renders a navigation component 1`] = `
-<div
-  className="ui blue inverted vertical segment"
->
+exports[`Navigation renders a navigation component with an active item 1`] = `
+<div>
   <div
-    className="ui container"
+    className="ui basic segment mobile only"
   >
-    <div
-      className="ui inverted secondary stackable menu"
+    <button
+      className="hamburger"
+      onClick={[Function]}
+      title="Open menu"
+      type="button"
     >
-      <a
-        className="item active"
-        onClick={[Function]}
-        style={Object {}}
+      <span
+        className="hamburger-box"
       >
-        Blog
-      </a>
-      <a
-        className="item"
-        onClick={[Function]}
-        style={Object {}}
+        <span
+          className="hamburger-inner"
+        />
+      </span>
+    </button>
+  </div>
+  <div
+    className="ui pointing secondary stackable tablet computer large screen widescreen only menu"
+    onClick={[Function]}
+  >
+    <a
+      className="item active"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      Blog
+    </a>
+    <a
+      className="item"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      Users
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Navigation renders a navigation component with an active item when its subchildren are accessed 1`] = `
+<div>
+  <div
+    className="ui basic segment mobile only"
+  >
+    <button
+      className="hamburger"
+      onClick={[Function]}
+      title="Open menu"
+      type="button"
+    >
+      <span
+        className="hamburger-box"
       >
-        Users
-      </a>
-    </div>
+        <span
+          className="hamburger-inner"
+        />
+      </span>
+    </button>
+  </div>
+  <div
+    className="ui pointing secondary stackable tablet computer large screen widescreen only menu"
+    onClick={[Function]}
+  >
+    <a
+      className="item active"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      Blog
+    </a>
+    <a
+      className="item"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      Users
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Navigation renders a navigation component with only one active item even if there are similar item names 1`] = `
+<div>
+  <div
+    className="ui basic segment mobile only"
+  >
+    <button
+      className="hamburger"
+      onClick={[Function]}
+      title="Open menu"
+      type="button"
+    >
+      <span
+        className="hamburger-box"
+      >
+        <span
+          className="hamburger-inner"
+        />
+      </span>
+    </button>
+  </div>
+  <div
+    className="ui pointing secondary stackable tablet computer large screen widescreen only menu"
+    onClick={[Function]}
+  >
+    <a
+      className="item active"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      Blog
+    </a>
+    <a
+      className="item"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      Blog of mine
+    </a>
+    <a
+      className="item"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      Users
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Navigation renders a navigation component without active items 1`] = `
+<div>
+  <div
+    className="ui basic segment mobile only"
+  >
+    <button
+      className="hamburger"
+      onClick={[Function]}
+      title="Open menu"
+      type="button"
+    >
+      <span
+        className="hamburger-box"
+      >
+        <span
+          className="hamburger-inner"
+        />
+      </span>
+    </button>
+  </div>
+  <div
+    className="ui pointing secondary stackable tablet computer large screen widescreen only menu"
+    onClick={[Function]}
+  >
+    <a
+      className="item"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      Blog
+    </a>
+    <a
+      className="item"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      Users
+    </a>
   </div>
 </div>
 `;

@@ -7,6 +7,8 @@ import { SearchComponent as Search } from './Search';
 
 const mockStore = configureStore();
 
+jest.mock('./SearchTags', () => jest.fn(() => <div id="search-tags" />));
+
 describe('Search', () => {
   it('renders an empty search component', () => {
     const store = mockStore({
@@ -20,7 +22,7 @@ describe('Search', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Search location={{ query: { searchableText: 'blog' } }} />
+        <Search location={{ query: { SearchableText: 'blog' } }} />
       </Provider>,
     );
     const json = component.toJSON();
@@ -47,7 +49,7 @@ describe('Search', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Search location={{ query: { searchableText: 'blog' } }} />
+        <Search location={{ query: { SearchableText: 'blog' } }} />
       </Provider>,
     );
     const json = component.toJSON();

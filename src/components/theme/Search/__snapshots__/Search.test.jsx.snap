@@ -16,9 +16,14 @@ exports[`Search renders a search component 1`] = `
         >
           <span>
             Search results for 
-            <q />
+            <q>
+              blog
+            </q>
           </span>
         </h1>
+        <div
+          id="search-tags"
+        />
       </header>
       <section
         id="content-core"
@@ -85,9 +90,14 @@ exports[`Search renders an empty search component 1`] = `
         >
           <span>
             Search results for 
-            <q />
+            <q>
+              blog
+            </q>
           </span>
         </h1>
+        <div
+          id="search-tags"
+        />
       </header>
       <section
         id="content-core"
