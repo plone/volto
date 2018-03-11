@@ -51,9 +51,9 @@
       "./node_modules/eslint/bin/eslint.js -c .eslintrc src --format checkstyle --output-file eslint.xml",
     "lint:fix": "./node_modules/eslint/bin/eslint.js -c .eslintrc src --fix",
     "prettier":
-      "./node_modules/prettier/bin/prettier.js -l 'src/**/*.js' 'src/**/*.jsx'",
+      "./node_modules/prettier/bin-prettier.js -l 'src/**/*.js' 'src/**/*.jsx'",
     "prettier:fix":
-      "./node_modules/prettier/bin/prettier.js --write 'src/**/*.js' 'src/**/*.jsx'",
+      "./node_modules/prettier/bin-prettier.js --write 'src/**/*.js' 'src/**/*.jsx'",
     "flow": "./node_modules/flow-bin/cli.js",
     "watch:test:unit": "better-npm-run watch_test_unit",
     "test": "npm-run-all prettier lint flow test:unit",
