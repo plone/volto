@@ -19,6 +19,8 @@
 * Added pastanaga theme @robgietema
 * Added pastanaga manage views @robgietema
 * Added pastanaga theme views @robgietema
+* Added callout styling to draftjs @robgietema
+* Fix paragraph styling in draftjs @robgietema
 
 ## 0.4.0 (2017-05-03)
 

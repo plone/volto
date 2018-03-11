@@ -4,10 +4,12 @@
  */
 
 import React, { Component } from 'react';
+import { Map } from 'immutable';
 import PropTypes from 'prop-types';
 import Editor from 'draft-js-plugins-editor';
 import { stateToHTML } from 'draft-js-export-html';
-import { convertFromHTML, EditorState, ContentState } from 'draft-js';
+import { stateFromHTML } from 'draft-js-import-html';
+import { DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { Form, Grid, Label, Segment, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
@@ -26,8 +28,19 @@ import {
 import createBlockStyleButton from 'draft-js-buttons/lib/utils/createBlockStyleButton';
 import createLinkPlugin from 'draft-js-anchor-plugin';
 
+const blockRenderMap = Map({
+  callout: {
+    element: 'p',
+  },
+  unstyled: {
+    element: 'p',
+  },
+});
+
+const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
+
 const CodeBlockButton = createBlockStyleButton({
-  blockType: 'code-block',
+  blockType: 'callout',
   children: <span>!</span>,
 });
 const linkPlugin = createLinkPlugin();
@@ -139,8 +152,16 @@ export default class WysiwygEditor extends Component {
     if (!__SERVER__) {
       let editorState;
       if (props.value && props.value.data) {
-        const blocksFromHTML = convertFromHTML(props.value.data);
-        const contentState = ContentState.createFromBlockArray(blocksFromHTML);
+        const contentState = stateFromHTML(props.value.data, {
+          customBlockFn: element => {
+            if (element.className === 'callout') {
+              return {
+                type: 'callout',
+              };
+            }
+            return null;
+          },
+        });
         editorState = EditorState.createWithContent(contentState);
       } else {
         editorState = EditorState.createEmpty();
@@ -164,7 +185,18 @@ export default class WysiwygEditor extends Component {
         ? this.props.value['content-type']
         : 'text/html',
       encoding: this.props.value ? this.props.value.encoding : 'utf8',
-      data: stateToHTML(editorState.getCurrentContent()),
+      data: stateToHTML(editorState.getCurrentContent(), {
+        blockStyleFn: block => {
+          if (block.get('type') === 'callout') {
+            return {
+              attributes: {
+                class: 'callout',
+              },
+            };
+          }
+          return null;
+        },
+      }),
     });
   }
 
@@ -221,6 +253,14 @@ export default class WysiwygEditor extends Component {
                       sideToolbarPlugin,
                       linkPlugin,
                     ]}
+                    blockRenderMap={extendedBlockRenderMap}
+                    blockStyleFn={contentBlock => {
+                      const type = contentBlock.getType();
+                      if (type === 'callout') {
+                        return 'callout';
+                      }
+                      return null;
+                    }}
                   />
                 </div>
               </Segment>
