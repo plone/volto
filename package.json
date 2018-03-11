@@ -149,6 +149,7 @@
     "babel-runtime": "6.26.0",
     "body-parser": "1.18.2",
     "client-sessions": "0.8.0",
+    "colors": "1.1.2",
     "compression": "1.7.0",
     "copy-webpack-plugin": "4.3.1",
     "coveralls": "3.0.0",
@@ -219,6 +220,7 @@
     "semantic-ui-react": "0.76.0",
     "serialize-javascript": "1.4.0",
     "serve-favicon": "2.4.5",
+    "shelljs": "0.8.1",
     "socket.io": "2.0.4",
     "socket.io-client": "2.0.4",
     "superagent": "3.8.1",
@@ -296,7 +298,8 @@
   "bin": {
     "better-npm-run": "./node_modules/better-npm-run/index.js",
     "npm-run-all": "./node_modules/npm-run-all/bin/npm-run-all/index.js",
-    "webpack": "./node_modules/webpack/bin/webpack.js"
+    "webpack": "./node_modules/webpack/bin/webpack.js",
+    "create-plone-app": "index.js"
   },
   "prettier": {
     "trailingComma": "all",
