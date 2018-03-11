@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a document view component 1`] = `
+<div
+  id="page-home"
+>
+  <h1
+    className="documentFirstHeading"
+  >
+    Hello World!
+  </h1>
+  <p
+    className="description"
+  >
+    Hi
+  </p>
+  <p
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>Hello World!",
+      }
+    }
+  />
+</div>
+`;

@@ -21,6 +21,8 @@
 * Added pastanaga theme views @robgietema
 * Added callout styling to draftjs @robgietema
 * Fix paragraph styling in draftjs @robgietema
+* Added image, file and news item view @robgietema
+* Fixed summary and tabular views @robgietema
 
 ## 0.4.0 (2017-05-03)
 
