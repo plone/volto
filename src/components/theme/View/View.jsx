@@ -12,6 +12,9 @@ import {
   TabularView,
   DocumentView,
   ListingView,
+  ImageView,
+  FileView,
+  NewsItemView,
 } from '../../../components';
 import { getContent } from '../../../actions';
 
@@ -106,6 +109,12 @@ export default class View extends Component {
         return <TabularView content={this.props.content} />;
       case 'listing_view':
         return <ListingView content={this.props.content} />;
+      case 'news_item_view':
+        return <NewsItemView content={this.props.content} />;
+      case 'file_view':
+        return <FileView content={this.props.content} />;
+      case 'image_view':
+        return <ImageView content={this.props.content} />;
       default:
         return <DocumentView content={this.props.content} />;
     }

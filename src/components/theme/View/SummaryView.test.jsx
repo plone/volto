@@ -26,7 +26,15 @@ describe('TabularView', () => {
                 title: 'My item',
                 description: 'My item description',
                 url: 'http://item',
-                '@type': 'Document',
+                image: {
+                  scales: {
+                    thumb: {
+                      download: 'file:///preview.jpg',
+                    },
+                  },
+                },
+                image_caption: 'My image caption',
+                '@type': 'News Item',
               },
             ],
           }}

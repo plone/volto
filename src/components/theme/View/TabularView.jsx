@@ -11,13 +11,13 @@ import { Table } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
 /**
- * Component to display the tabular view.
+ * Tabular view component class.
  * @function TabularView
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
 const TabularView = ({ content }) => (
-  <div id="page-home">
+  <div className="view-wrapper">
     <Helmet title={content.title} />
     <article id="content">
       <header>
