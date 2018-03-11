@@ -23,6 +23,9 @@
 * Fix paragraph styling in draftjs @robgietema
 * Added image, file and news item view @robgietema
 * Fixed summary and tabular views @robgietema
+* Added social sharing @robgietema
+* Added commenting @robgietema
+* Added tags @robgietema
 
 ## 0.4.0 (2017-05-03)
 
