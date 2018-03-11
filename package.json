@@ -159,6 +159,7 @@
     "draft-js-anchor-plugin": "2.0.1",
     "draft-js-buttons": "2.0.1",
     "draft-js-export-html": "1.2.0",
+    "draft-js-import-html": "1.2.1",
     "draft-js-inline-toolbar-plugin": "2.0.1",
     "draft-js-plugins-editor": "2.0.4",
     "draft-js-side-toolbar-plugin": "2.0.1",
