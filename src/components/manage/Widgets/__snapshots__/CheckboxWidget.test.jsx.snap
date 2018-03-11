@@ -18,7 +18,6 @@ exports[`renders a checkbox widget component 1`] = `
         >
           <div
             className="ui fitted checkbox"
-            id="field-my-field"
             onChange={[Function]}
             onClick={[Function]}
             onMouseDown={[Function]}
@@ -26,13 +25,17 @@ exports[`renders a checkbox widget component 1`] = `
             <input
               checked={null}
               className="hidden"
+              id="field-my-field"
               name="my-field"
+              onClick={[Function]}
               readOnly={true}
               tabIndex={0}
               type="checkbox"
               value={undefined}
             />
-            <label />
+            <label
+              htmlFor="field-my-field"
+            />
           </div>
           <label
             className="ui basic horizontal label"

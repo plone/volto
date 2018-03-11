@@ -129,13 +129,17 @@ exports[`Sharing renders a sharing component 1`] = `
                 <input
                   checked={true}
                   className="hidden"
+                  id={undefined}
                   name={undefined}
+                  onClick={[Function]}
                   readOnly={true}
                   tabIndex={-1}
                   type="checkbox"
                   value="john-doe.Contributer"
                 />
-                <label />
+                <label
+                  htmlFor={undefined}
+                />
               </div>
             </td>
           </tr>
@@ -156,13 +160,17 @@ exports[`Sharing renders a sharing component 1`] = `
             <input
               checked={true}
               className="hidden"
+              id={undefined}
               name={undefined}
+              onClick={[Function]}
               readOnly={true}
               tabIndex={0}
               type="checkbox"
               value={undefined}
             />
-            <label>
+            <label
+              htmlFor={undefined}
+            >
               Inherit permissions from higher levels
             </label>
           </div>
