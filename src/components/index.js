@@ -37,6 +37,7 @@ export SearchTags from './theme/Search/SearchTags';
 export TabularView from './theme/View/TabularView';
 export View from './theme/View/View';
 export Comments from './theme/Comments/Comments';
+export CommentEditModal from './theme/Comments/CommentEditModal';
 export SocialSharing from './theme/SocialSharing/SocialSharing';
 export Tags from './theme/Tags/Tags';
 
