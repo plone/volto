@@ -10146,7 +10146,7 @@ schema-utils@^0.3.0:
   dependencies:
     ajv "^5.0.0"
 
-schema-utils@^0.4.3, schema-utils@^0.4.5:
+schema-utils@^0.4.5:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-0.4.5.tgz#21836f0608aac17b78f9e3e24daff14a5ca13a3e"
   dependencies:
@@ -10885,12 +10885,12 @@ strip-outer@^1.0.0:
   dependencies:
     escape-string-regexp "^1.0.2"
 
-style-loader@0.20.1:
-  version "0.20.1"
-  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.20.1.tgz#33ac2bf4d5c65a8906bc586ad253334c246998d0"
+style-loader@0.20.3:
+  version "0.20.3"
+  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.20.3.tgz#ebef06b89dec491bcb1fdb3452e913a6fd1c10c4"
   dependencies:
     loader-utils "^1.1.0"
-    schema-utils "^0.4.3"
+    schema-utils "^0.4.5"
 
 style-loader@^0.19.1:
   version "0.19.1"
