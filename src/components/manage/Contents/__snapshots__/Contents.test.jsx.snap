@@ -945,16 +945,16 @@ exports[`Contents renders a contents component 1`] = `
                       <div
                         className="ui left icon input search"
                       >
-                        <i
-                          aria-hidden="true"
-                          className="search icon"
-                        />
                         <input
                           disabled={undefined}
                           onChange={[Function]}
                           placeholder="Filter…"
                           tabIndex={undefined}
                           type="text"
+                        />
+                        <i
+                          aria-hidden="true"
+                          className="search icon"
                         />
                       </div>
                       <div

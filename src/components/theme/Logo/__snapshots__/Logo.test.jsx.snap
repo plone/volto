@@ -12,7 +12,6 @@ exports[`Logo renders a logo component 1`] = `
     height={32}
     src="Logo.svg"
     title="Plone Site"
-    width={undefined}
   />
 </a>
 `;
