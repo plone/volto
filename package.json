@@ -196,6 +196,8 @@
     "pretty-error": "2.1.1",
     "promise-file-reader": "1.0.2",
     "prop-types": "15.6.1",
+    "raven": "2.4.2",
+    "raven-js": "3.23.1",
     "react": "16.2.0",
     "react-cookie": "1.0.5",
     "react-dnd": "2.5.4",

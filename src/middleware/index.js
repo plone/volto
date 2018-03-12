@@ -5,3 +5,4 @@
  */
 
 export api from './api';
+export crashReporter from './crashReporter';
