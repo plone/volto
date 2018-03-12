@@ -27,3 +27,15 @@ api/.Python
 api/include
 api/lib
 api/pip-selfcheck.json
+
+# Test
+tests/.Python
+tests/bin/
+tests/include/
+tests/lib/
+tests/log.html
+tests/output.xml
+tests/pip-selfcheck.json
+tests/report.html
+tests/selenium/
+
