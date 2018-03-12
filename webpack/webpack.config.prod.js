@@ -16,8 +16,7 @@ const BASE_CSS_LOADER = {
 };
 
 module.exports = {
-  // SourceMaps in production:
-  // https://webpack.js.org/configuration/devtool/#production
+  mode: 'production',
   devtool: 'source-map',
   context: path.resolve(__dirname, '..'),
   entry: {
@@ -37,15 +36,6 @@ module.exports = {
         use: [
           {
             loader: 'babel-loader',
-          },
-        ],
-      },
-      {
-        test: /\.(json)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'json-loader',
           },
         ],
       },
@@ -154,25 +144,18 @@ module.exports = {
       minimize: true,
       debug: false,
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        unused: true,
-        dead_code: true,
-        warnings: false,
-      },
-      sourceMap: true,
-    }),
     new webpack.HashedModuleIdsPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor.[hash].js',
-      minChunks(module, count) {
-        const { context } = module;
-        return context && context.indexOf('node_modules') >= 0;
-      },
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-    }),
   ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: 'initial',
+          test: path.resolve(__dirname, 'node_modules'),
+          name: 'vendor',
+          enforce: true,
+        },
+      },
+    },
+  },
 };
