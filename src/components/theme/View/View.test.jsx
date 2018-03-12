@@ -10,6 +10,11 @@ const mockStore = configureStore();
 jest.mock('./SummaryView', () => jest.fn(() => <div id="SummaryView" />));
 jest.mock('./TabularView', () => jest.fn(() => <div id="TabularView" />));
 jest.mock('./DocumentView', () => jest.fn(() => <div id="DocumentView" />));
+jest.mock('../SocialSharing/SocialSharing', () =>
+  jest.fn(() => <div id="SocialSharing" />),
+);
+jest.mock('../Comments/Comments', () => jest.fn(() => <div id="Comments" />));
+jest.mock('../Tags/Tags', () => jest.fn(() => <div id="Tags" />));
 
 describe('View', () => {
   it('renders an empty view', () => {

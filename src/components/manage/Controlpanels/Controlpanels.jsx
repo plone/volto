@@ -96,8 +96,10 @@ export default class Controlpanels extends Component {
               <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />
             </Segment>
             {map(groups, group => [
-              <Segment secondary>{group}</Segment>,
-              <Segment attached>
+              <Segment key={`header-${group}`} secondary>
+                {group}
+              </Segment>,
+              <Segment key={`body-${group}`} attached>
                 <Grid columns={6}>
                   <Grid.Row>
                     {map(filter(controlpanels, { group }), controlpanel => (

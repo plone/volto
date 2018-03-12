@@ -29,6 +29,7 @@
 * Upgrade to React 16 @sneridagh
 * Upgrade to Webpack 4 @sneridagh
 * Renew login token when almost expired @robgietema
+* Added actions reducers @robgietema
 
 ## 0.4.0 (2017-05-03)
 

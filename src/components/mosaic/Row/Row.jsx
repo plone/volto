@@ -6,6 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
+import { join, map } from 'lodash';
 
 import { Column, ColumnResize } from '../../../components';
 
@@ -42,6 +43,7 @@ const Row = ({
   <Grid.Row className={`${hovered || ''}${resize ? ' resize' : ''}`}>
     {columns.map((column, index) => [
       <Column
+        key={`col-${join(map(column.tiles, tile => tile.url), '-')}`}
         row={row}
         column={index}
         width={column.width}
@@ -56,6 +58,7 @@ const Row = ({
       index < columns.length - 1 &&
         columns.length < 4 && (
           <ColumnResize
+            key={`col-resize-${join(map(column.tiles, tile => tile.url), '-')}`}
             row={row}
             column={index}
             columns={columns.length}

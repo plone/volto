@@ -4,6 +4,7 @@
  * @example import { getSchema } from 'actions';
  */
 
+export getActions from './actions/actions';
 export getBreadcrumbs from './breadcrumbs/breadcrumbs';
 export getVocabulary from './vocabularies/vocabularies';
 export { copy, cut, copyContent, moveContent } from './clipboard/clipboard';

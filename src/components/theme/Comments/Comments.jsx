@@ -211,7 +211,7 @@ export default class Comments extends Component {
           text={this.state.editText}
         />
         {this.props.items.map(item => [
-          <div className="comment">
+          <div className="comment" key={item['@id']}>
             <Grid stackable>
               <Grid.Column width={6}>
                 <FormattedMessage

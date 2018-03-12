@@ -283,6 +283,7 @@ export default class DiffComponent extends Component {
                   this.props.data[1][field],
                 ) && (
                   <DiffField
+                    key={field}
                     one={this.props.data[0][field]}
                     two={this.props.data[1][field]}
                     schema={this.props.schema.properties[field]}
