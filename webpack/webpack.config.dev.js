@@ -76,6 +76,7 @@ const BASE_CSS_LOADER = {
 };
 
 module.exports = {
+  mode: 'development',
   devtool: 'inline-source-map',
   context: path.resolve(__dirname, '..'),
   entry: [
@@ -98,15 +99,6 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: babelLoaderQuery,
-          },
-        ],
-      },
-      {
-        test: /\.(json)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'json-loader',
           },
         ],
       },

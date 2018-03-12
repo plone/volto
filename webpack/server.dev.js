@@ -29,11 +29,15 @@ const app = express();
 app.use(webpackDevMiddleware(compiler, serverOptions));
 app.use(webpackHotMiddleware(compiler));
 
-app.listen(port, (err) => {
+app.listen(port, err => {
   if (err) {
     debug.error(err);
   } else {
     debug.info('==> 🚧  Webpack development server listening on port %s', port);
-    debug.info('==> 💻  Open http://%s:%s in a browser to view the app.', config.host, config.port);
+    debug.info(
+      '==> 💻  Open http://%s:%s in a browser to view the app.',
+      config.host,
+      config.port,
+    );
   }
 });
