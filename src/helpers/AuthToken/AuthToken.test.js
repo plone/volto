@@ -19,20 +19,6 @@ describe('AuthToken', () => {
   });
 
   describe('persistAuthToken', () => {
-    it('can set the same auth token', () => {
-      const store = {
-        subscribe: jest.fn(),
-        getState: jest.fn(() => ({
-          userSession: {
-            token: jwt.sign({ exp: 1 }, 'secret'),
-          },
-        })),
-      };
-
-      persistAuthToken(store);
-      expect(cookie.save).toHaveBeenCalledTimes(0);
-    });
-
     it('can set a new auth token', () => {
       const store = {
         subscribe: jest.fn(),

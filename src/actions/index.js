@@ -39,5 +39,5 @@ export {
   editPassword,
   setInitialPassword,
 } from './users/users';
-export { login, logout } from './userSession/userSession';
+export { login, loginRenew, logout } from './userSession/userSession';
 export { getWorkflow, transitionWorkflow } from './workflow/workflow';

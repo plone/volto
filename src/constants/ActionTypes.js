@@ -37,6 +37,7 @@ export const GET_VOCABULARY = 'GET_VOCABULARY';
 export const GET_WORKFLOW = 'GET_WORKFLOW';
 export const GET_WORKFLOW_MULTIPLE = 'GET_WORKFLOW_MULTIPLE';
 export const LOGIN = 'LOGIN';
+export const LOGIN_RENEW = 'LOGIN_RENEW';
 export const LOGOUT = 'LOGOUT';
 export const ORDER_CONTENT = 'ORDER_CONTENT';
 export const MOVE_CONTENT = 'MOVE_CONTENT';
