@@ -5,10 +5,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ShareButtons } from 'react-share';
 import { Button } from 'semantic-ui-react';
-
-const { FacebookShareButton, TwitterShareButton } = ShareButtons;
+import { FacebookShareButton, TwitterShareButton } from 'react-share';
 
 /**
  * Social sharing component class.
