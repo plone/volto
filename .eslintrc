@@ -1,5 +1,8 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb",
+    "prettier/react",
+    "eslint-config-prettier"
+  ],
   "env": {
     "es6": true,
     "browser": true,
@@ -23,7 +26,8 @@
     ],
     "arrow-parens": "off", // Keep compatible with prettier
     "no-confusing-arrow": 0, // Keep compatible with prettier
-    "no-mixed-operators": 0, // Keep compatible with prettier
+    "no-mixed-operators": 0,
+    "no-unexpected-multiline": 0, // Keep compatible with prettier
     "indent": 0, // Keep compatible with prettier
     "prettier/prettier": [
       "error",
