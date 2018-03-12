@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 
 import React from 'react';
-import { render } from 'react-dom';
+import { hydrate } from 'react-dom';
 import { Provider } from 'react-intl-redux';
 import { ReduxAsyncConnect } from 'redux-connect';
 import { browserHistory, Router } from 'react-router';
@@ -23,7 +23,7 @@ const history = syncHistoryWithStore(browserHistory, store);
 addLocaleData([...nlLocaleData, ...deLocaleData, ...enLocaleData]);
 persistAuthToken(store);
 
-render(
+hydrate(
   <Provider store={store} key="provider">
     <Router
       render={props => <ReduxAsyncConnect helpers={{ api }} {...props} />}
