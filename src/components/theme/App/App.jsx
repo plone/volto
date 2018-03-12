@@ -10,6 +10,9 @@ import { asyncConnect } from 'redux-connect';
 import Helmet from 'react-helmet';
 import { Segment, Container } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
+import Raven from 'raven-js';
+
+import Error from '../../../error';
 
 import {
   Breadcrumbs,
@@ -59,15 +62,51 @@ export class AppComponent extends Component {
     toolbar: null,
   };
 
+  state = {
+    hasError: false,
+    error: null,
+    errorInfo: null,
+  };
+
+  /**
+   * ComponentDidMount
+   * @method ComponentDidMount
+   * @param {string} error  The error
+   * @param {string} info The info
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    if (__CLIENT__ && process.env.SENTRY_DSN) {
+      Raven.config(process.env.SENTRY_DSN).install();
+    }
+  }
+
   /**
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
-    // We purge messages on each route change
     if (nextProps.pathname !== this.props.pathname) {
       this.props.purgeMessages();
+
+      if (this.state.hasError) {
+        this.setState({ hasError: false });
+      }
+    }
+  }
+
+  /**
+   * ComponentDidCatch
+   * @method ComponentDidCatch
+   * @param {string} error  The error
+   * @param {string} info The info
+   * @returns {undefined}
+   */
+  componentDidCatch(error, info) {
+    this.setState({ hasError: true, error, errorInfo: info });
+    if (__CLIENT__ && process.env.SENTRY_DSN) {
+      Raven.captureException(error, { extra: info });
     }
   }
 
@@ -94,7 +133,14 @@ export class AppComponent extends Component {
           <Segment basic className="content-area">
             <Container as="main">
               <Messages />
-              {this.props.main}
+              {this.state.hasError ? (
+                <Error
+                  message={this.state.error.message}
+                  stackTrace={this.state.errorInfo.componentStack}
+                />
+              ) : (
+                this.props.main
+              )}
             </Container>
           </Segment>
           <Footer />

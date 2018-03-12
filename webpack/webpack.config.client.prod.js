@@ -12,6 +12,12 @@ configuration.plugins.push(
       HOST: process.env.HOST && process.env.HOST,
       PORT: process.env.PORT,
       API_PATH: process.env.API_PATH && JSON.stringify(process.env.API_PATH),
+      // SENTRY_DSN - Enable Sentry error reporting
+      // You need to pass the (public) Sentry DSN for JS Raven to work
+      // Uncomment the next lines and replace the value with the DSN for your Sentry project
+      // SENTRY_DSN: JSON.stringify(
+      //   '<your_public_SentryDSN>',
+      // ),
     },
     __CLIENT__: true,
     __SERVER__: false,

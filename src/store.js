@@ -3,7 +3,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 
-import { api } from './middleware';
+import { api, crashReporter } from './middleware';
 import reducer from './reducers';
 
 /**
@@ -42,7 +42,14 @@ export default function configureStore(
   apiHelper,
 ) {
   const middlewares = addToMiddleWare(
-    [applyMiddleware(routerMiddleware(history), thunk, api(apiHelper))],
+    [
+      applyMiddleware(
+        routerMiddleware(history),
+        crashReporter,
+        thunk,
+        api(apiHelper),
+      ),
+    ],
     logger,
   );
 

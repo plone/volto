@@ -15,6 +15,7 @@ import cookie, { plugToRequest } from 'react-cookie';
 import { urlencoded } from 'body-parser';
 import locale from 'locale';
 import { keys } from 'lodash';
+import Raven from 'raven';
 
 import nlLocale from '../dist/locales/nl.json';
 import deLocale from '../dist/locales/de.json';
@@ -41,6 +42,10 @@ export default parameters => {
   const server = http.Server(app);
   const io = new SocketIO(server);
   const staticPath = __dirname;
+
+  if (process.env.SENTRY_DSN) {
+    Raven.config(process.env.SENTRY_DSN).install();
+  }
 
   io.on('connection', () => {
     debug.info('user connected');
@@ -119,6 +124,12 @@ export default parameters => {
               })
               .catch(error => {
                 const errorPage = <ErrorPage message={error.message} />;
+
+                if (process.env.SENTRY_DSN) {
+                  Raven.captureException(error.message, {
+                    extra: JSON.stringify(error),
+                  });
+                }
                 res.set({
                   'Cache-Control': 'public, max-age=60, no-transform',
                 });
