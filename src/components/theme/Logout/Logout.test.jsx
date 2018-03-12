@@ -14,7 +14,7 @@ describe('Logout', () => {
     const store = mockStore();
     const component = renderer.create(
       <Provider store={store}>
-        <Logout />
+        <Logout location={{}} />
       </Provider>,
     );
     const json = component.toJSON();

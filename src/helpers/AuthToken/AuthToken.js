@@ -5,6 +5,9 @@
 
 import cookie from 'react-cookie';
 import jwtDecode from 'jwt-decode';
+import { browserHistory } from 'react-router';
+
+import { loginRenew } from '../../actions';
 
 /**
  * Get auth token method.
@@ -27,25 +30,42 @@ export function persistAuthToken(store) {
   /**
    * handleChange method.
    * @method handleChange
+   * @param {bool} initial Initial call.
    * @returns {undefined}
    */
-  function handleChange() {
+  function handleChange(initial) {
     const previousValue = currentValue;
     const state = store.getState();
     currentValue = state.userSession.token;
-
-    if (previousValue !== currentValue) {
-      if (currentValue === null) {
+    if (previousValue !== currentValue || initial) {
+      if (!currentValue) {
         cookie.remove('auth_token', { path: '/' });
       } else {
         cookie.save('auth_token', currentValue, {
           path: '/',
           expires: new Date(jwtDecode(currentValue).exp * 1000),
         });
+        setTimeout(() => {
+          if (store.getState().userSession.token) {
+            if (
+              jwtDecode(store.getState().userSession.token).exp * 1000 >
+              new Date().getTime()
+            ) {
+              store.dispatch(loginRenew());
+            } else {
+              // Logout
+              browserHistory.push(
+                `/logout?return_url=${
+                  store.getState().routing.locationBeforeTransitions.pathname
+                }`,
+              );
+            }
+          }
+        }, (jwtDecode(store.getState().userSession.token).exp * 1000 - new Date().getTime()) * 0.9);
       }
     }
   }
 
   store.subscribe(handleChange);
-  handleChange();
+  handleChange(true);
 }

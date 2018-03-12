@@ -13,7 +13,9 @@ import { Login } from '../../../components';
 import { logout, purgeMessages } from '../../../actions';
 
 @connect(
-  () => ({}),
+  (state, props) => ({
+    query: props.location.query,
+  }),
   dispatch => bindActionCreators({ logout, purgeMessages }, dispatch),
 )
 /**
@@ -30,6 +32,18 @@ export class LogoutComponent extends Component {
   static propTypes = {
     logout: PropTypes.func.isRequired,
     purgeMessages: PropTypes.func.isRequired,
+    query: PropTypes.shape({
+      return_url: PropTypes.string,
+    }),
+  };
+
+  /**
+   * Default properties.
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    query: null,
   };
 
   /**
@@ -48,7 +62,7 @@ export class LogoutComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return <Login location={{ query: {} }} />;
+    return <Login location={{ query: this.props.location.query }} />;
   }
 }
 

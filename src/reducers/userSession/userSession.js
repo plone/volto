@@ -3,7 +3,7 @@
  * @module reducers/userSession
  */
 
-import { LOGIN, LOGOUT } from '../../constants/ActionTypes';
+import { LOGIN, LOGIN_RENEW, LOGOUT } from '../../constants/ActionTypes';
 
 const initialState = {
   token: null,
@@ -34,6 +34,7 @@ export default function userSession(state = initialState, action = {}) {
         },
       };
     case `${LOGIN}_SUCCESS`:
+    case `${LOGIN_RENEW}_SUCCESS`:
       return {
         ...state,
         token: action.result.token,
@@ -44,6 +45,7 @@ export default function userSession(state = initialState, action = {}) {
         },
       };
     case `${LOGIN}_FAIL`:
+    case `${LOGIN_RENEW}_FAIL`:
       return {
         ...state,
         token: null,

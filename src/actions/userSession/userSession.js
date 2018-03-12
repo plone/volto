@@ -3,7 +3,7 @@
  * @module actions/search/search
  */
 
-import { LOGIN, LOGOUT } from '../../constants/ActionTypes';
+import { LOGIN, LOGIN_RENEW, LOGOUT } from '../../constants/ActionTypes';
 
 /**
  * Login function.
@@ -16,6 +16,18 @@ export function login(username, password) {
   return {
     type: LOGIN,
     promise: api => api.post('@login', { data: { login: username, password } }),
+  };
+}
+
+/**
+ * Login renew function.
+ * @function loginRenew
+ * @returns {Object} Login renew action.
+ */
+export function loginRenew() {
+  return {
+    type: LOGIN_RENEW,
+    promise: api => api.post('@login-renew'),
   };
 }
 
