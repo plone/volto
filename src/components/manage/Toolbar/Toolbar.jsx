@@ -256,7 +256,7 @@ export default class Toolbar extends Component {
           </Menu.Item>
           <Button
             className={
-              this.props.content.review_state
+              this.props.content && this.props.content.review_state
                 ? `${this.props.content.review_state} trigger`
                 : 'trigger'
             }
