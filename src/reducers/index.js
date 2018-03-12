@@ -8,6 +8,7 @@ import { combineReducers } from 'redux';
 import { reducer as reduxAsyncConnect } from 'redux-connect';
 import { intlReducer } from 'react-intl-redux';
 
+import actions from './actions/actions';
 import breadcrumbs from './breadcrumbs/breadcrumbs';
 import comments from './comments/comments';
 import content from './content/content';
@@ -40,6 +41,7 @@ export default combineReducers({
   routing: routerReducer,
   intl: intlReducer,
   reduxAsyncConnect,
+  actions,
   breadcrumbs,
   comments,
   content,
