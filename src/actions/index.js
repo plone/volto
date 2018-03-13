@@ -30,6 +30,7 @@ export { getHistory, revertHistory } from './history/history';
 export { addMessage, removeMessage, purgeMessages } from './messages/messages';
 export getNavigation from './navigation/navigation';
 export getSchema from './schema/schema';
+export getTiles from './tiles/tiles';
 export getTypes from './types/types';
 export { resetSearchContent, searchContent } from './search/search';
 export { editSharing, getSharing } from './sharing/sharing';
