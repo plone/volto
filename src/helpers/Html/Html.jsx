@@ -74,7 +74,11 @@ const Html = ({ assets, component, store }) => {
           charSet="UTF-8"
         />
         {Object.keys(assets.javascript).map(script => (
-          <script src={assets.javascript[script]} charSet="UTF-8" />
+          <script
+            src={assets.javascript[script]}
+            key={assets.javascript[script]}
+            charSet="UTF-8"
+          />
         ))}
       </body>
     </html>
