@@ -17,9 +17,9 @@ ENV runDeps="libmagic-dev"
 RUN  apt-get update && apt-get install -y --no-install-recommends $buildDeps && \
      apt-get install -y --no-install-recommends $runDeps && \
      ./bin/pip install -r /plone/requirements.txt --no-cache-dir && \
+     ./bin/pip install -U https://github.com/zopefoundation/z3c.autoinclude/archive/pip.tar.gz#egg=z3c.autoinclude && \
      SUDO_FORCE_REMOVE=yes apt-get purge -y --auto-remove $buildDeps  && \
      rm -rf /var/lib/apt/lists/*
-RUN ./bin/pip install -U https://github.com/zopefoundation/z3c.autoinclude/archive/pip.tar.gz#egg=z3c.autoinclude
 
 COPY config_module /plone/src/config_module
 
