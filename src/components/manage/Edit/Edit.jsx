@@ -13,6 +13,7 @@ import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Portal } from 'react-portal';
+import { Button } from 'semantic-ui-react';
 
 import { Form, Toolbar } from '../../../components';
 import { editContent, getContent, getSchema } from '../../../actions';
@@ -162,17 +163,30 @@ export class EditComponent extends Component {
             })}
           />
           <Form
+            ref={instance => {
+              if (instance) {
+                this.form = instance.refs.wrappedInstance;
+              }
+            }}
             schema={this.props.schema}
             formData={this.props.content}
             onSubmit={this.onSubmit}
-            onCancel={this.onCancel}
+            hideActions
             title={this.props.intl.formatMessage(messages.edit, {
               title: this.props.schema.title,
             })}
             loading={this.props.editRequest.loading}
           />
           <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-            <Toolbar pathname={this.props.pathname} inner={<div>bla</div>} />
+            <Toolbar
+              pathname={this.props.pathname}
+              inner={
+                <div>
+                  <Button onClick={() => this.form.onSubmit()}>save</Button>
+                  <Button onClick={() => this.onCancel()}>cancel</Button>
+                </div>
+              }
+            />
           </Portal>
         </div>
       );
