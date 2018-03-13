@@ -64,6 +64,7 @@ const messages = defineMessages({
 @injectIntl
 @connect(
   state => ({
+    actions: state.actions.actions,
     action: state.clipboard.action,
     source: state.clipboard.source,
     id: state.content.data ? state.content.data.id : '',
@@ -93,6 +94,11 @@ export default class Actions extends Component {
    * @static
    */
   static propTypes = {
+    actions: PropTypes.shape({
+      object: PropTypes.arrayOf(PropTypes.object),
+      object_buttons: PropTypes.arrayOf(PropTypes.object),
+      user: PropTypes.arrayOf(PropTypes.object),
+    }),
     pathname: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -113,6 +119,7 @@ export default class Actions extends Component {
    */
   static defaultProps = {
     action: null,
+    actions: null,
     source: null,
   };
 
@@ -243,31 +250,62 @@ export default class Actions extends Component {
         }
       >
         <Dropdown.Menu>
-          <Dropdown.Item
-            icon="cut"
-            text={this.props.intl.formatMessage(messages.cut)}
-            onClick={this.cut}
-          />
-          <Dropdown.Item
-            icon="copy"
-            text={this.props.intl.formatMessage(messages.copy)}
-            onClick={this.copy}
-          />
-          <Dropdown.Item
-            icon="paste"
-            text="Paste"
-            onClick={this.paste}
-            disabled={this.props.action === null}
-          />
-          <Link to={`${this.props.pathname}/delete`} className="item">
-            <Icon name="trash" />
-            <FormattedMessage id="Delete" defaultMessage="Delete" />
-          </Link>
-          <Dropdown.Item
-            icon="text cursor"
-            text={this.props.intl.formatMessage(messages.rename)}
-            onClick={this.rename}
-          />
+          {this.props.actions.object_buttons &&
+            this.props.actions.object_buttons.map(item => {
+              switch (item.id) {
+                case 'cut':
+                  return (
+                    <Dropdown.Item
+                      key={item.id}
+                      icon="cut"
+                      text={item.title}
+                      onClick={this.cut}
+                    />
+                  );
+                case 'copy':
+                  return (
+                    <Dropdown.Item
+                      key={item.id}
+                      icon="copy"
+                      text={item.title}
+                      onClick={this.copy}
+                    />
+                  );
+                case 'paste':
+                  return (
+                    <Dropdown.Item
+                      key={item.id}
+                      icon="paste"
+                      text={item.title}
+                      onClick={this.paste}
+                      disabled={this.props.action === null}
+                    />
+                  );
+                case 'delete':
+                  return (
+                    <Link
+                      key={item.id}
+                      to={`${this.props.pathname}/delete`}
+                      className="item"
+                    >
+                      <Icon name="trash" />
+                      {item.title}
+                    </Link>
+                  );
+                case 'rename':
+                  return (
+                    <Dropdown.Item
+                      key={item.id}
+                      icon="text cursor"
+                      text={item.title}
+                      onClick={this.rename}
+                    />
+                  );
+                default:
+                  return null;
+              }
+            })}
+
           <ContentsRenameModal
             open={this.state.showRename}
             onCancel={this.onRenameCancel}
