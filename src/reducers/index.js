@@ -24,6 +24,7 @@ import navigation from './navigation/navigation';
 import schema from './schema/schema';
 import search from './search/search';
 import sharing from './sharing/sharing';
+import tiles from './tiles/tiles';
 import types from './types/types';
 import users from './users/users';
 import userSession from './userSession/userSession';
@@ -57,6 +58,7 @@ export default combineReducers({
   schema,
   search,
   sharing,
+  tiles,
   types,
   users,
   userSession,
