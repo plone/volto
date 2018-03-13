@@ -3,7 +3,7 @@
  * @module components/manage/Toolbar/Toolbar
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button, Divider, Menu } from 'semantic-ui-react';
@@ -91,30 +91,33 @@ export default class Toolbar extends Component {
 
     return (
       this.props.token && (
-        <Menu
-          vertical
-          borderless
-          icon
-          fixed="left"
-          className={!expanded ? 'collapsed' : ''}
-        >
-          {this.props.inner}
-          <Menu.Item className="logo">
-            <Divider />
-            <div
-              className="image"
-              style={{ backgroundImage: `url(${LogoImage})` }}
+        <Fragment>
+          <Menu
+            vertical
+            borderless
+            icon
+            fixed="left"
+            className={!expanded ? 'collapsed' : ''}
+          >
+            {this.props.inner}
+            <Menu.Item className="logo">
+              <Divider />
+              <div
+                className="image"
+                style={{ backgroundImage: `url(${LogoImage})` }}
+              />
+            </Menu.Item>
+            <Button
+              className={
+                this.props.content && this.props.content.review_state
+                  ? `${this.props.content.review_state} trigger`
+                  : 'trigger'
+              }
+              onClick={this.onToggleExpanded}
             />
-          </Menu.Item>
-          <Button
-            className={
-              this.props.content && this.props.content.review_state
-                ? `${this.props.content.review_state} trigger`
-                : 'trigger'
-            }
-            onClick={this.onToggleExpanded}
-          />
-        </Menu>
+          </Menu>
+          <div className={this.state.expanded ? 'pusher expanded' : 'pusher'} />
+        </Fragment>
       )
     );
   }

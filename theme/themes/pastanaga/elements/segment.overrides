@@ -2,6 +2,10 @@
          Theme Overrides
 *******************************/
 
+.ui.basic.segment.content-area {
+  flex: 1;
+}
+
 .ui.primary.segment {
   border-bottom: @4px solid @greyBorderColor;
   font-size: @16px;

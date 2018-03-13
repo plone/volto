@@ -3,7 +3,7 @@
  * @module components/theme/App/App
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
@@ -114,7 +114,7 @@ export class AppComponent extends Component {
     const action = getView(this.props.pathname);
 
     return (
-      <div>
+      <Fragment>
         <Helmet
           bodyAttributes={{
             class: `view-${action}view`,
@@ -136,7 +136,7 @@ export class AppComponent extends Component {
           </Container>
         </Segment>
         <Footer />
-      </div>
+      </Fragment>
     );
   }
 }
