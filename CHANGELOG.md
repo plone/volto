@@ -31,6 +31,7 @@
 * Renew login token when almost expired @robgietema
 * Added actions reducers @robgietema
 * Add error reporting with Sentry support on client (default ErrorBoundary), server and Redux middleware @sneridagh
+* Review chunks policy. Keep it in sync with Webpack 4 policy with entrypoint bundles @sneridagh
 
 ## 0.4.0 (2017-05-03)
 

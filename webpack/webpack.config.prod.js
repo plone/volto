@@ -146,16 +146,4 @@ module.exports = {
     }),
     new webpack.HashedModuleIdsPlugin(),
   ],
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          chunks: 'initial',
-          test: path.resolve(__dirname, 'node_modules'),
-          name: 'vendor',
-          enforce: true,
-        },
-      },
-    },
-  },
 };

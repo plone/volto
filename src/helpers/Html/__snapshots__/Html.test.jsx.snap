@@ -52,11 +52,11 @@ exports[`Html renders a html component 1`] = `
     />
     <script
       charSet="UTF-8"
-      src="manifest.js"
+      src="vendor.js"
     />
     <script
       charSet="UTF-8"
-      src="vendor.js"
+      src="manifest.js"
     />
     <script
       charSet="UTF-8"
