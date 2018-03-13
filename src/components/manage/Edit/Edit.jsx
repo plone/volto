@@ -13,7 +13,7 @@ import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Portal } from 'react-portal';
-import { Button } from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react';
 
 import { Form, Toolbar } from '../../../components';
 import { editContent, getContent, getSchema } from '../../../actions';
@@ -23,6 +23,14 @@ const messages = defineMessages({
   edit: {
     id: 'Edit {title}',
     defaultMessage: 'Edit {title}',
+  },
+  save: {
+    id: 'Save',
+    defaultMessage: 'Save',
+  },
+  cancel: {
+    id: 'Cancel',
+    defaultMessage: 'Cancel',
   },
 });
 
@@ -182,8 +190,22 @@ export class EditComponent extends Component {
               pathname={this.props.pathname}
               inner={
                 <div>
-                  <Button onClick={() => this.form.onSubmit()}>save</Button>
-                  <Button onClick={() => this.onCancel()}>cancel</Button>
+                  <a className="item" icon onClick={() => this.form.onSubmit()}>
+                    <Icon
+                      name="save"
+                      size="big"
+                      color="blue"
+                      title={this.props.intl.formatMessage(messages.save)}
+                    />
+                  </a>
+                  <a className="item" onClick={() => this.onCancel()}>
+                    <Icon
+                      name="close"
+                      size="big"
+                      color="red"
+                      title={this.props.intl.formatMessage(messages.cancel)}
+                    />
+                  </a>
                 </div>
               }
             />
