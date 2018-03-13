@@ -850,7 +850,7 @@ i.icon.linkify:before { content: "\f0c1"; }
 i.icon.cut:before { content: @icon-cut; }
 i.icon.copy:before { content: @icon-copy; }
 i.icon.attach:before { content: @icon-attachment; }
-i.icon.save:before { content: "\f0c7"; }
+i.icon.save:before { content: @icon-save; }
 i.icon.content:before { content: @icon-drag; }
 i.icon.unordered.list:before { content: "\f0ca"; }
 i.icon.ordered.list:before { content: "\f0cb"; }
