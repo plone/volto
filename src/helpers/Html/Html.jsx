@@ -65,7 +65,12 @@ const Html = ({ assets, component, store }) => {
         />
       </head>
       <body {...bodyAttrs}>
-        <div id="main" dangerouslySetInnerHTML={{ __html: content }} />
+        <div id="toolbar" />
+        <div
+          id="main"
+          dangerouslySetInnerHTML={{ __html: content }}
+          className="pusher"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.__data=${serialize(store.getState())};`,

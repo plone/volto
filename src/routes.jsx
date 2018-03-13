@@ -23,6 +23,7 @@ import {
   Layout,
   Login,
   Logout,
+  ModerateComments,
   PersonalInformation,
   PersonalPreferences,
   Search,
@@ -50,6 +51,10 @@ export default () => (
     <Route path="/search" components={{ main: Search }} />
     <Route path="/change-password" components={{ main: ChangePassword }} />
     <Route path="/controlpanel" components={{ main: Controlpanels }} />
+    <Route
+      path="/controlpanel/moderate-comments"
+      components={{ main: ModerateComments }}
+    />
     <Route path="/controlpanel/:id" components={{ main: Controlpanel }} />
     <Route
       path="/personal-information"

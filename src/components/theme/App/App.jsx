@@ -14,13 +14,7 @@ import Raven from 'raven-js';
 
 import Error from '../../../error';
 
-import {
-  Breadcrumbs,
-  Footer,
-  Header,
-  Messages,
-  Toolbar,
-} from '../../../components';
+import { Breadcrumbs, Footer, Header, Messages } from '../../../components';
 import { getBaseUrl, getView } from '../../../helpers';
 import {
   getBreadcrumbs,
@@ -126,25 +120,22 @@ export class AppComponent extends Component {
             class: `view-${action}view`,
           }}
         />
-        <Toolbar pathname={path} selected={action} inner={this.props.toolbar} />
-        <div className="pusher">
-          <Header pathname={path} />
-          <Breadcrumbs pathname={path} />
-          <Segment basic className="content-area">
-            <Container as="main">
-              <Messages />
-              {this.state.hasError ? (
-                <Error
-                  message={this.state.error.message}
-                  stackTrace={this.state.errorInfo.componentStack}
-                />
-              ) : (
-                this.props.main
-              )}
-            </Container>
-          </Segment>
-          <Footer />
-        </div>
+        <Header pathname={path} />
+        <Breadcrumbs pathname={path} />
+        <Segment basic className="content-area">
+          <Container as="main">
+            <Messages />
+            {this.state.hasError ? (
+              <Error
+                message={this.state.error.message}
+                stackTrace={this.state.errorInfo.componentStack}
+              />
+            ) : (
+              this.props.main
+            )}
+          </Container>
+        </Segment>
+        <Footer />
       </div>
     );
   }

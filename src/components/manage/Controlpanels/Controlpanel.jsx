@@ -6,23 +6,29 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
-import { Button, Container } from 'semantic-ui-react';
+import { Portal } from 'react-portal';
+import { Icon, Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
-import { Form } from '../../../components';
+import { Form, Toolbar } from '../../../components';
 import {
   addMessage,
   editControlpanel,
   getControlpanel,
 } from '../../../actions';
+import { getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
   changesSaved: {
     id: 'Changes saved.',
     defaultMessage: 'Changes saved.',
+  },
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
   },
 });
 
@@ -32,6 +38,7 @@ const messages = defineMessages({
     controlpanel: state.controlpanel.controlpanel,
     editRequest: state.controlpanel.edit,
     id: props.params.id,
+    pathname: props.location.pathname,
   }),
   dispatch =>
     bindActionCreators(
@@ -66,6 +73,7 @@ export default class Controlpanel extends Component {
       title: PropTypes.string,
     }),
     intl: intlShape.isRequired,
+    pathname: PropTypes.string.isRequired,
   };
 
   /**
@@ -134,15 +142,6 @@ export default class Controlpanel extends Component {
   }
 
   /**
-   * Site setup handler
-   * @method onSiteSetup
-   * @returns {undefined}
-   */
-  onSiteSetup() {
-    browserHistory.push('/controlpanel');
-  }
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -153,12 +152,6 @@ export default class Controlpanel extends Component {
         <div id="page-controlpanel">
           <Helmet title={this.props.controlpanel.title} />
           <Container>
-            <Button
-              onClick={this.onSiteSetup}
-              icon="arrow left"
-              circular
-              basic
-            />
             <Form
               title={this.props.controlpanel.title}
               schema={this.props.controlpanel.schema}
@@ -168,6 +161,24 @@ export default class Controlpanel extends Component {
               loading={this.props.editRequest.loading}
             />
           </Container>
+          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              inner={
+                <Link
+                  to={`${getBaseUrl(this.props.pathname)}controlpanel`}
+                  className="item"
+                >
+                  <Icon
+                    name="arrow left"
+                    size="big"
+                    color="blue"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              }
+            />
+          </Portal>
         </div>
       );
     }

@@ -9,8 +9,9 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { filter, isEqual, map } from 'lodash';
-import { Button, Dropdown, Grid, Table } from 'semantic-ui-react';
-import { browserHistory } from 'react-router';
+import { Icon, Button, Dropdown, Grid, Table } from 'semantic-ui-react';
+import { browserHistory, Link } from 'react-router';
+import { Portal } from 'react-portal';
 import moment from 'moment';
 import {
   FormattedMessage,
@@ -21,12 +22,16 @@ import {
 
 import { getDiff, getSchema, getHistory } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
-import { DiffField } from '../../../components';
+import { DiffField, Toolbar } from '../../../components';
 
 const messages = defineMessages({
   diff: {
     id: 'Diff',
     defaultMessage: 'Diff',
+  },
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
   },
 });
 
@@ -292,6 +297,24 @@ export default class DiffComponent extends Component {
                 ),
             ),
           )}
+        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          <Toolbar
+            pathname={this.props.pathname}
+            inner={
+              <Link
+                to={`${getBaseUrl(this.props.pathname)}/history`}
+                className="item"
+              >
+                <Icon
+                  name="arrow left"
+                  size="big"
+                  color="blue"
+                  title={this.props.intl.formatMessage(messages.back)}
+                />
+              </Link>
+            }
+          />
+        </Portal>
       </div>
     );
   }

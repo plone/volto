@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory, Link } from 'react-router';
 import { find, isEqual, map } from 'lodash';
+import { Portal } from 'react-portal';
 import {
   Button,
   Checkbox,
@@ -28,6 +29,7 @@ import {
 
 import { editSharing, getSharing } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
+import { Toolbar } from '../../../components';
 
 const messages = defineMessages({
   searchForUserOrGroup: {
@@ -45,6 +47,10 @@ const messages = defineMessages({
   cancel: {
     id: 'Cancel',
     defaultMessage: 'Cancel',
+  },
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
   },
 });
 
@@ -262,9 +268,6 @@ export default class SharingComponent extends Component {
         <Helmet title="Sharing" />
         <Segment.Group raised>
           <Segment className="primary">
-            <Link to={getBaseUrl(this.props.pathname)}>
-              <Icon name="arrow left" />
-            </Link>
             <FormattedMessage
               id="Sharing for {title}"
               defaultMessage="Sharing for {title}"
@@ -390,6 +393,21 @@ export default class SharingComponent extends Component {
             </Segment>
           </Form>
         </Segment.Group>
+        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          <Toolbar
+            pathname={this.props.pathname}
+            inner={
+              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
+                <Icon
+                  name="arrow left"
+                  size="big"
+                  color="blue"
+                  title={this.props.intl.formatMessage(messages.back)}
+                />
+              </Link>
+            }
+          />
+        </Portal>
       </div>
     );
   }

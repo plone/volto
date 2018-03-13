@@ -12,8 +12,9 @@ import { browserHistory } from 'react-router';
 import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { Portal } from 'react-portal';
 
-import { Form } from '../../../components';
+import { Form, Toolbar } from '../../../components';
 import { editContent, getContent, getSchema } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
@@ -170,6 +171,9 @@ export class EditComponent extends Component {
             })}
             loading={this.props.editRequest.loading}
           />
+          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+            <Toolbar pathname={this.props.pathname} inner={<div>bla</div>} />
+          </Portal>
         </div>
       );
     }
