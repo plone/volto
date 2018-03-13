@@ -12,13 +12,12 @@ import { stateFromHTML } from 'draft-js-import-html';
 import { DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { Form, Grid, Label, Segment, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
-import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
-import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
-import BlockTypeSelect from 'draft-js-side-toolbar-plugin/lib/components/BlockTypeSelect';
+import createInlineToolbarPlugin, {
+  Separator,
+} from 'draft-js-inline-toolbar-plugin';
 import {
   ItalicButton,
   BoldButton,
-  UnderlineButton,
   HeadlineOneButton,
   HeadlineTwoButton,
   BlockquoteButton,
@@ -39,35 +38,26 @@ const blockRenderMap = Map({
 
 const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
 
-const CodeBlockButton = createBlockStyleButton({
+const CalloutButton = createBlockStyleButton({
   blockType: 'callout',
   children: <span>!</span>,
 });
 const linkPlugin = createLinkPlugin();
 const inlineToolbarPlugin = createInlineToolbarPlugin({
-  structure: [BoldButton, ItalicButton, UnderlineButton, linkPlugin.LinkButton],
-});
-const sideToolbarPlugin = createSideToolbarPlugin({
   structure: [
-    ({ getEditorState, setEditorState, theme }) => (
-      <BlockTypeSelect
-        getEditorState={getEditorState}
-        setEditorState={setEditorState}
-        theme={theme}
-        structure={[
-          HeadlineOneButton,
-          HeadlineTwoButton,
-          UnorderedListButton,
-          OrderedListButton,
-          BlockquoteButton,
-          CodeBlockButton,
-        ]}
-      />
-    ),
+    BoldButton,
+    ItalicButton,
+    linkPlugin.LinkButton,
+    Separator,
+    HeadlineOneButton,
+    HeadlineTwoButton,
+    UnorderedListButton,
+    OrderedListButton,
+    BlockquoteButton,
+    CalloutButton,
   ],
 });
 const { InlineToolbar } = inlineToolbarPlugin;
-const { SideToolbar } = sideToolbarPlugin;
 
 /**
  * WysiwygEditor container class.
@@ -248,11 +238,7 @@ export default class WysiwygEditor extends Component {
                     id={`field-${id}`}
                     onChange={this.onChange}
                     editorState={this.state.editorState}
-                    plugins={[
-                      inlineToolbarPlugin,
-                      sideToolbarPlugin,
-                      linkPlugin,
-                    ]}
+                    plugins={[inlineToolbarPlugin, linkPlugin]}
                     blockRenderMap={extendedBlockRenderMap}
                     blockStyleFn={contentBlock => {
                       const type = contentBlock.getType();
@@ -280,7 +266,6 @@ export default class WysiwygEditor extends Component {
           )}
         </Grid>
         <InlineToolbar />
-        <SideToolbar />
       </Form.Field>
     );
   }

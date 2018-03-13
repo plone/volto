@@ -3581,17 +3581,6 @@ draft-js-plugins-editor@2.0.4:
     prop-types "^15.5.8"
     union-class-names "^1.0.0"
 
-draft-js-side-toolbar-plugin@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/draft-js-side-toolbar-plugin/-/draft-js-side-toolbar-plugin-2.0.1.tgz#15f36ed8691fa88a2280811ce5366767f69e0e27"
-  dependencies:
-    decorate-component-with-props "^1.0.2"
-    draft-js-buttons "^2.0.1"
-    find-with-regex "^1.0.2"
-    immutable "~3.7.4"
-    prop-types "^15.5.8"
-    union-class-names "^1.0.0"
-
 draft-js-utils@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/draft-js-utils/-/draft-js-utils-1.2.0.tgz#f5cb23eb167325ffed3d79882fdc317721d2fd12"

@@ -9,13 +9,10 @@ import { Icon, Label } from 'semantic-ui-react';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
-import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
 import Editor from 'draft-js-plugins-editor';
 
 const inlineToolbarPlugin = createInlineToolbarPlugin();
-const sideToolbarPlugin = createSideToolbarPlugin();
 const { InlineToolbar } = inlineToolbarPlugin;
-const { SideToolbar } = sideToolbarPlugin;
 
 /* eslint jsx-a11y/no-static-element-interactions: 0 */
 
@@ -85,7 +82,7 @@ const Tile = ({
               setTileContent(row, column, tile, newContent)
             }
             editorState={content}
-            plugins={[inlineToolbarPlugin, sideToolbarPlugin]}
+            plugins={[inlineToolbarPlugin]}
           />
         )}
       </div>,
