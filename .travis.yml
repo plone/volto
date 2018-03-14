@@ -13,10 +13,12 @@ addons:
     - google-chrome-stable
 before_install:
 - nvm install 8.9.4
+- mkdir webdriver
 - wget https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux64.tar.gz
-- mkdir geckodriver
-- tar -xzf geckodriver-v0.20.0-linux64.tar.gz -C geckodriver
-- export PATH=$PATH:$PWD/geckodriver
+- tar -xzf geckodriver-v0.20.0-linux64.tar.gz -C webdriver
+- wget https://chromedriver.storage.googleapis.com/2.36/chromedriver_linux64.zip
+- unzip chromedriver_linux64.zip -d webdriver
+- export PATH=$PATH:$(pwd)/webdriver
 install:
 - virtualenv env --python=$(which python) --no-site-packages
 - env/bin/pip install zc.recipe.egg==2.0.4 --no-cache-dir
@@ -26,4 +28,4 @@ install:
 - yarn build
 script:
 - yarn coverage
-- PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlessfirefox tests
+- PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome tests
