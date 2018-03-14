@@ -6,7 +6,7 @@ Library  SeleniumLibrary  timeout=10  implicit_wait=0
 
 ${FIXTURE}    plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 ${PLONE_URL}  http://localhost:4300/
-${BROWSER}    firefox
+${BROWSER}    chrome
 
 *** Keywords ***
 
