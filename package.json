@@ -19,25 +19,27 @@
     "email": "plone-developers@lists.sourceforge.net"
   },
   "homepage": "https://plone.org",
-  "keywords": [
-    "plone",
-    "react",
-    "mosaic"
-  ],
+  "keywords": ["plone", "react", "mosaic"],
   "main": "src/server.jsx",
   "scripts": {
-    "test:start": "DEBUG=plone-react:* npm-run-all -ln prestart start & npm-run-all -ln wait-for-frontend",
+    "test:start":
+      "DEBUG=plone-react:* npm-run-all -ln prestart start & npm-run-all -ln wait-for-frontend",
     "start": "NODE_ENV=production npm-run-all prod",
     "dev": "NODE_ENV=development npm-run-all dev:build",
-    "dev:build": "npm-run-all -ln clear:dist prepare:dev:build i18n:build development",
-    "development": "npm-run-all -ln --parallel build:dev:client build:dev:server run:dev:server",
-    "prepare:dev:build": "universal-webpack --settings ./webpack/universal-webpack-settings.js prepare",
+    "dev:build":
+      "npm-run-all -ln clear:dist prepare:dev:build i18n:build development",
+    "development":
+      "npm-run-all -ln --parallel build:dev:client build:dev:server run:dev:server",
+    "prepare:dev:build":
+      "universal-webpack --settings ./webpack/universal-webpack-settings.js prepare",
     "build:dev:client": "better-npm-run run_dev_client",
     "build:dev:server": "better-npm-run build_dev_server",
     "run:dev:server": "better-npm-run run_dev_server",
     "clear:dist": "rm -rf dist",
-    "build": "npm-run-all clear:dist prod:build:client i18n:build prod:build:server",
-    "build:analyse": "npm run build && node_modules/webpack-bundle-analyzer/lib/bin/analyzer.js dist/stats.json",
+    "build":
+      "npm-run-all clear:dist prod:build:client i18n:build prod:build:server",
+    "build:analyse":
+      "npm run build && node_modules/webpack-bundle-analyzer/lib/bin/analyzer.js dist/stats.json",
     "prod": "npm-run-all prod:build:client prod:build:server run:prod:server",
     "prod:build:client": "better-npm-run build_prod_client",
     "prod:build:server": "better-npm-run build_prod_server",
@@ -45,18 +47,23 @@
     "jsdoc": "npm-run-all 'jsdoc:*'",
     "jsdoc:src": "jsdoc -c jsdoc.src.json; : 'ignore minor errors'",
     "jsdoc:api": "jsdoc -c jsdoc.api.json; : 'ignore minor errors'",
-    "lint": "./node_modules/eslint/bin/eslint.js -c .eslintrc src --format checkstyle --output-file eslint.xml",
+    "lint":
+      "./node_modules/eslint/bin/eslint.js -c .eslintrc src --format checkstyle --output-file eslint.xml",
     "lint:fix": "./node_modules/eslint/bin/eslint.js -c .eslintrc src --fix",
-    "prettier": "./node_modules/prettier/bin-prettier.js -l 'src/**/*.js' 'src/**/*.jsx'",
-    "prettier:fix": "./node_modules/prettier/bin-prettier.js --write 'src/**/*.js' 'src/**/*.jsx'",
+    "prettier":
+      "./node_modules/prettier/bin-prettier.js -l 'src/**/*.js' 'src/**/*.jsx'",
+    "prettier:fix":
+      "./node_modules/prettier/bin-prettier.js --write 'src/**/*.js' 'src/**/*.jsx'",
     "flow": "./node_modules/flow-bin/cli.js",
     "watch:test:unit": "better-npm-run watch_test_unit",
     "test": "npm-run-all prettier lint flow test:unit",
     "test:unit": "better-npm-run test_unit",
     "test:unit:ci": "better-npm-run test_unit_ci",
     "test:unit:fix": "yarn run test:unit -- -u",
-    "coverage": "npm-run-all test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "wait-for-frontend": "wget --retry-connrefused --spider ${PROTRACTOR_URL:-http://localhost:4300}",
+    "coverage":
+      "npm-run-all test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "wait-for-frontend":
+      "wget --retry-connrefused --spider ${PROTRACTOR_URL:-http://localhost:4300}",
     "webdriver-update": "webdriver-manager update",
     "docs": "raml2html docs/api/index.raml > src/static/docs/index.html",
     "i18n": "npm-run-all i18n:sync i18n:build",
@@ -66,9 +73,7 @@
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test))\\.(js|jsx)$",
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
       "^.+\\.scss$": "jest-css-modules",
@@ -86,9 +91,7 @@
     "globals": {
       "__CLIENT__": true
     },
-    "setupFiles": [
-      "./test-setup.js"
-    ]
+    "setupFiles": ["./test-setup.js"]
   },
   "betterScripts": {
     "run_dev_client": {
@@ -98,10 +101,12 @@
       }
     },
     "build_dev_server": {
-      "command": "webpack --config ./webpack/webpack.config.server.dev.entry.js --watch --hot --colors --display-error-details"
+      "command":
+        "webpack --config ./webpack/webpack.config.server.dev.entry.js --watch --hot --colors --display-error-details"
     },
     "run_dev_server": {
-      "command": "nodemon --watch ./src/server.jsx --watch ./src --watch ./dist/server.js ./src/start-server.js --exec babel-node",
+      "command":
+        "nodemon --watch ./src/server.jsx --watch ./src --watch ./dist/server.js ./src/start-server.js --exec babel-node",
       "env": {
         "PORT": 4300,
         "DEBUG": "plone-react:*",
@@ -109,10 +114,12 @@
       }
     },
     "build_prod_client": {
-      "command": "webpack --colors --display-error-details --config ./webpack/webpack.config.client.prod.entry.js"
+      "command":
+        "webpack --colors --display-error-details --config ./webpack/webpack.config.client.prod.entry.js"
     },
     "build_prod_server": {
-      "command": "webpack --colors --display-error-details --config ./webpack/webpack.config.server.prod.entry.js"
+      "command":
+        "webpack --colors --display-error-details --config ./webpack/webpack.config.server.prod.entry.js"
     },
     "run_prod_server": {
       "command": "./node_modules/.bin/babel-node ./src/start-server-prod.js",
@@ -121,7 +128,8 @@
       }
     },
     "test_unit": "jest --no-cache --runInBand",
-    "test_unit_ci": "jest --no-cache --runInBand --testResultsProcessor='jest-junit' --coverage",
+    "test_unit_ci":
+      "jest --no-cache --runInBand --testResultsProcessor='jest-junit' --coverage",
     "watch_test_unit": "jest --watch --no-cache --runInBand"
   },
   "dependencies": {
@@ -147,7 +155,7 @@
     "debug": "3.1.0",
     "debug-logger": "0.4.1",
     "diff": "3.5.0",
-    "draft-js": "0.10.4",
+    "draft-js": "0.10.5",
     "draft-js-anchor-plugin": "2.0.1",
     "draft-js-buttons": "2.0.1",
     "draft-js-export-html": "1.2.0",
@@ -155,7 +163,7 @@
     "draft-js-inline-toolbar-plugin": "2.0.1",
     "draft-js-plugins-editor": "2.0.4",
     "es6-error": "4.1.1",
-    "express": "4.16.2",
+    "express": "4.16.3",
     "express-healthcheck": "0.1.0",
     "file-loader": "1.1.11",
     "filesize": "3.6.0",
@@ -165,7 +173,7 @@
     "http-proxy": "1.16.2",
     "immutability-helper": "2.6.6",
     "immutable": "3.8.2",
-    "invariant": "2.2.3",
+    "invariant": "2.2.4",
     "ismobilejs": "0.4.1",
     "jest-css-modules": "1.1.0",
     "jest-file": "1.0.0",
@@ -222,7 +230,7 @@
     "uuid": "3.2.1",
     "warning": "3.0.0",
     "webpack": "4.1.1",
-    "webpack-cli": "2.0.11"
+    "webpack-cli": "2.0.12"
   },
   "devDependencies": {
     "autoprefixer-loader": "3.2.0",
@@ -256,12 +264,12 @@
     "estraverse-fb": "1.3.2",
     "extract-text-webpack-plugin": "4.0.0-beta.0",
     "flow-bin": "0.67.1",
-    "image-webpack-loader": "4.1.0",
+    "image-webpack-loader": "4.2.0",
     "jest": "22.4.2",
     "jsdoc": "3.5.5",
     "json-loader": "0.5.7",
     "node-sass": "4.8.1",
-    "nodemon": "1.17.1",
+    "nodemon": "1.17.2",
     "npm-run-all": "4.1.2",
     "react-a11y": "1.0.0",
     "react-addons-test-utils": "15.6.2",
@@ -277,7 +285,7 @@
     "sass-loader": "6.0.7",
     "secure-random-string": "1.1.0",
     "style-loader": "0.20.3",
-    "stylelint": "9.1.1",
+    "stylelint": "9.1.2",
     "stylelint-config-standard": "18.2.0",
     "supertest": "3.0.0",
     "supertest-as-promised": "4.0.2",
