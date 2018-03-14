@@ -1,8 +1,9 @@
 *** Settings ***
 
-Library  DebugLibrary
-
 Resource  keywords.robot
+
+Suite Setup     Open default browser
+Suite Teardown  Close all browsers
 
 *** Test Cases ***
 

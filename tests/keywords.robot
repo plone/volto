@@ -5,7 +5,7 @@ Library  SeleniumLibrary  timeout=30  implicit_wait=0
 *** Variables ***
 
 ${FIXTURE}    plone.app.robotframework.testing.PLONE_ROBOT_TESTING
-${PLONE_URL}  http://localhost:4300/
+${FRONTEND_URL}  http://localhost:4300/
 ${BROWSER}    chrome
 
 *** Keywords ***
@@ -19,23 +19,33 @@ Test Setup
     Import library  plone.app.robotframework.Zope2Server
     Set Zope layer  ${FIXTURE}
     ZODB Setup
-
-    ${PREV} =  Register keyword to run on failure  Close Browser
-    Wait until keyword succeeds  60s  1s
-    ...  Open browser  ${PLONE_URL}  browser=${BROWSER}
-    Register keyword to run on failure  ${PREV}
-    Set window size  1200  900
+    Open default browser
 
 Test Teardown
     Import library  plone.app.robotframework.Zope2Server
-    Close all browsers
     Set Zope layer  ${FIXTURE}
     ZODB TearDown
+    Close all browsers
+
+###
+
+Create default browser
+    [Documentation]  Opens a new browser window based on configured ${BROWSER}
+    ${on_failure}=  Register keyword to run on failure  Close Browser
+    Wait until keyword succeeds  60s  1s
+    ...  Open browser  ${FRONTEND_URL}  browser=${BROWSER}  alias=default
+    Register keyword to run on failure  ${on_failure}
+    Set window size  1200  900
+
+Open default browser
+    [Documentation]  Opens a new browser window or switches to existing one
+    ${status}=  Run Keyword And Ignore Error  Switch browser  default
+    Run Keyword If  '${status[0]}' == 'FAIL'  Create default browser
 
 ###
 
 Frontpage
-    Go to  ${PLONE_URL}
+    Go to  ${FRONTEND_URL}
 
 Logged out
     Element should not be visible  css=.left.fixed.menu
