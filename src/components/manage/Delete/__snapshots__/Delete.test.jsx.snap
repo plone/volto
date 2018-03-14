@@ -66,6 +66,9 @@ exports[`Delete renders a delete component 1`] = `
       </div>
     </div>
   </div>
+  <div
+    id="Portal"
+  />
 </div>
 `;
 

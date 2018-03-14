@@ -12,8 +12,10 @@ import { browserHistory } from 'react-router';
 import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { Portal } from 'react-portal';
+import { Icon } from 'semantic-ui-react';
 
-import { Form } from '../../../components';
+import { Form, Toolbar } from '../../../components';
 import { editContent, getContent, getSchema } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
@@ -21,6 +23,14 @@ const messages = defineMessages({
   edit: {
     id: 'Edit {title}',
     defaultMessage: 'Edit {title}',
+  },
+  save: {
+    id: 'Save',
+    defaultMessage: 'Save',
+  },
+  cancel: {
+    id: 'Cancel',
+    defaultMessage: 'Cancel',
   },
 });
 
@@ -161,15 +171,45 @@ export class EditComponent extends Component {
             })}
           />
           <Form
+            ref={instance => {
+              if (instance) {
+                this.form = instance.refs.wrappedInstance;
+              }
+            }}
             schema={this.props.schema}
             formData={this.props.content}
             onSubmit={this.onSubmit}
-            onCancel={this.onCancel}
+            hideActions
             title={this.props.intl.formatMessage(messages.edit, {
               title: this.props.schema.title,
             })}
             loading={this.props.editRequest.loading}
           />
+          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              inner={
+                <div>
+                  <a className="item" icon onClick={() => this.form.onSubmit()}>
+                    <Icon
+                      name="save"
+                      size="big"
+                      color="blue"
+                      title={this.props.intl.formatMessage(messages.save)}
+                    />
+                  </a>
+                  <a className="item" onClick={() => this.onCancel()}>
+                    <Icon
+                      name="close"
+                      size="big"
+                      color="red"
+                      title={this.props.intl.formatMessage(messages.cancel)}
+                    />
+                  </a>
+                </div>
+              }
+            />
+          </Portal>
         </div>
       );
     }

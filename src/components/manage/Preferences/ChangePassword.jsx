@@ -9,17 +9,19 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory, Link } from 'react-router';
+import { Portal } from 'react-portal';
 import {
   FormattedMessage,
   defineMessages,
   injectIntl,
   intlShape,
 } from 'react-intl';
-import { Menu } from 'semantic-ui-react';
+import { Icon, Menu } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 
-import { Form } from '../../../components';
+import { Form, Toolbar } from '../../../components';
 import { editPassword, addMessage } from '../../../actions';
+import { getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
   changePassword: {
@@ -59,15 +61,20 @@ const messages = defineMessages({
     id: 'Changes saved',
     defaultMessage: 'Changes saved',
   },
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
+  },
 });
 
 @injectIntl
 @connect(
-  state => ({
+  (state, props) => ({
     userId: state.userSession.token
       ? jwtDecode(state.userSession.token).sub
       : '',
     loading: state.users.edit.loading,
+    pathname: props.location.pathname,
   }),
   dispatch => bindActionCreators({ editPassword, addMessage }, dispatch),
 )
@@ -87,6 +94,7 @@ export default class ChangePassword extends Component {
     loading: PropTypes.bool,
     editPassword: PropTypes.func.isRequired,
     addMessage: PropTypes.func.isRequired,
+    pathname: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
   };
 
@@ -204,6 +212,21 @@ export default class ChangePassword extends Component {
           onCancel={this.onCancel}
           loading={this.props.loading}
         />
+        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          <Toolbar
+            pathname={this.props.pathname}
+            inner={
+              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
+                <Icon
+                  name="arrow left"
+                  size="big"
+                  color="blue"
+                  title={this.props.intl.formatMessage(messages.back)}
+                />
+              </Link>
+            }
+          />
+        </Portal>
       </div>
     );
   }

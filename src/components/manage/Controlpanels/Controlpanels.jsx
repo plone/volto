@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { concat, filter, last, map, uniqBy } from 'lodash';
+import { Portal } from 'react-portal';
 import Helmet from 'react-helmet';
 import { Container, Grid, Header, Icon, Segment } from 'semantic-ui-react';
 import {
@@ -20,18 +21,25 @@ import {
 
 import Icons from '../../../constants/ControlpanelIcons';
 import { getControlpanels } from '../../../actions';
+import { Toolbar } from '../../../components';
+import { getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
   sitesetup: {
     id: 'Site Setup',
     defaultMessage: 'Site Setup',
   },
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
+  },
 });
 
 @injectIntl
 @connect(
-  state => ({
+  (state, props) => ({
     controlpanels: state.controlpanels.controlpanels,
+    pathname: props.location.pathname,
   }),
   dispatch => bindActionCreators({ getControlpanels }, dispatch),
 )
@@ -55,6 +63,7 @@ export default class Controlpanels extends Component {
         title: PropTypes.string,
       }),
     ).isRequired,
+    pathname: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
   };
 
@@ -120,6 +129,21 @@ export default class Controlpanels extends Component {
             ])}
           </Segment.Group>
         </Container>
+        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          <Toolbar
+            pathname={this.props.pathname}
+            inner={
+              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
+                <Icon
+                  name="arrow left"
+                  size="big"
+                  color="blue"
+                  title={this.props.intl.formatMessage(messages.back)}
+                />
+              </Link>
+            }
+          />
+        </Portal>
       </div>
     );
   }

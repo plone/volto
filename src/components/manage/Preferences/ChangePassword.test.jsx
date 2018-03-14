@@ -8,6 +8,10 @@ import ChangePassword from './ChangePassword';
 
 const mockStore = configureStore();
 
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
+
 describe('ChangePassword', () => {
   it('renders a change password component', () => {
     const store = mockStore({
@@ -26,7 +30,7 @@ describe('ChangePassword', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <ChangePassword />
+        <ChangePassword location={{ pathname: '/blog' }} />
       </Provider>,
     );
     const json = component.toJSON();

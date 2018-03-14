@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Portal } from 'react-portal';
 import { browserHistory, Link } from 'react-router';
 import {
   FormattedMessage,
@@ -15,11 +16,12 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
-import { Menu } from 'semantic-ui-react';
+import { Icon, Menu } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 
-import { Form } from '../../../components';
+import { Form, Toolbar } from '../../../components';
 import { getUser, editUser, addMessage } from '../../../actions';
+import { getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
   personalInformation: {
@@ -69,25 +71,30 @@ const messages = defineMessages({
     id: 'Changes saved',
     defaultMessage: 'Changes saved',
   },
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
+  },
 });
 
-/**
- * PersonalInformation class.
- * @class PersonalInformation
- * @extends Component
- */
 @injectIntl
 @connect(
-  state => ({
+  (state, props) => ({
     user: state.users.user,
     userId: state.userSession.token
       ? jwtDecode(state.userSession.token).sub
       : '',
     loaded: state.users.get.loaded,
     loading: state.users.edit.loading,
+    pathname: props.location.pathname,
   }),
   dispatch => bindActionCreators({ addMessage, getUser, editUser }, dispatch),
 )
+/**
+ * PersonalInformation class.
+ * @class PersonalInformation
+ * @extends Component
+ */
 export default class PersonalInformation extends Component {
   /**
    * Property types.
@@ -108,6 +115,7 @@ export default class PersonalInformation extends Component {
     intl: intlShape.isRequired,
     loaded: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
+    pathname: PropTypes.string.isRequired,
   };
 
   /**
@@ -230,6 +238,21 @@ export default class PersonalInformation extends Component {
           onCancel={this.onCancel}
           loading={this.props.loading}
         />
+        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          <Toolbar
+            pathname={this.props.pathname}
+            inner={
+              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
+                <Icon
+                  name="arrow left"
+                  size="big"
+                  color="blue"
+                  title={this.props.intl.formatMessage(messages.back)}
+                />
+              </Link>
+            }
+          />
+        </Portal>
       </div>
     ) : (
       <div />

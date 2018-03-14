@@ -53,6 +53,7 @@ export ContentsWorkflowModal from './manage/Contents/ContentsWorkflowModal';
 export ContentsTagsModal from './manage/Contents/ContentsTagsModal';
 export Controlpanel from './manage/Controlpanels/Controlpanel';
 export Controlpanels from './manage/Controlpanels/Controlpanels';
+export ModerateComments from './manage/Controlpanels/ModerateComments';
 export Delete from './manage/Delete/Delete';
 export Diff from './manage/Diff/Diff';
 export DiffField from './manage/Diff/DiffField';

@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Portal } from 'react-portal';
 import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
@@ -61,6 +62,7 @@ import {
   ContentsTagsModal,
   ContentsPropertiesModal,
   Pagination,
+  Toolbar,
 } from '../../../components';
 
 const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
@@ -858,6 +860,8 @@ export default class ContentsComponent extends Component {
    */
   render() {
     const selected = this.state.selected.length > 0;
+    const path = getBaseUrl(this.props.pathname);
+
     return (
       <div id="page-contents">
         <Helmet title={this.props.intl.formatMessage(messages.contents)} />
@@ -1251,6 +1255,21 @@ export default class ContentsComponent extends Component {
             </section>
           </article>
         </div>
+        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          <Toolbar
+            pathname={this.props.pathname}
+            inner={
+              <Link to={`${path}`} className="item">
+                <Icon
+                  name="arrow left"
+                  size="big"
+                  color="blue"
+                  title={this.props.intl.formatMessage(messages.back)}
+                />
+              </Link>
+            }
+          />
+        </Portal>
       </div>
     );
   }

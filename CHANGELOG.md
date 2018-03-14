@@ -34,6 +34,7 @@
 * Review chunks policy. Keep it in sync with Webpack 4 policy with entrypoint bundles @sneridagh
 * Added tiles reducers @robgietema
 * Merged block styling to inline toolbar @robgietema
+* Add context aware toolbar @robgietema
 
 ## 0.4.0 (2017-05-03)
 

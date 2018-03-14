@@ -7,18 +7,35 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router';
 import Helmet from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
-import { Button, Table } from 'semantic-ui-react';
+import { Portal } from 'react-portal';
+import { Icon, Button, Table } from 'semantic-ui-react';
 import moment from 'moment';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 
 import { deleteComment, searchContent } from '../../../actions';
-import { CommentEditModal } from '../../../components';
+import { Toolbar, CommentEditModal } from '../../../components';
+import { getBaseUrl } from '../../../helpers';
 
+const messages = defineMessages({
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
+  },
+});
+
+@injectIntl
 @connect(
-  state => ({
+  (state, props) => ({
     items: state.search.items,
     deleteRequest: state.comments.delete,
+    pathname: props.location.pathname,
   }),
   dispatch => bindActionCreators({ deleteComment, searchContent }, dispatch),
 )
@@ -52,6 +69,8 @@ export default class ModerateComments extends Component {
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
+    pathname: PropTypes.string.isRequired,
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -243,6 +262,24 @@ export default class ModerateComments extends Component {
             </section>
           </article>
         </div>
+        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          <Toolbar
+            pathname={this.props.pathname}
+            inner={
+              <Link
+                to={`${getBaseUrl(this.props.pathname)}controlpanel`}
+                className="item"
+              >
+                <Icon
+                  name="arrow left"
+                  size="big"
+                  color="blue"
+                  title={this.props.intl.formatMessage(messages.back)}
+                />
+              </Link>
+            }
+          />
+        </Portal>
       </div>
     );
   }

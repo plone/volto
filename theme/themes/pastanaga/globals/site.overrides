@@ -1,6 +1,15 @@
 /*******************************
         Global Overrides
 *******************************/
+body {
+  display: flex;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
 .documentFirstHeading {
   border-bottom: 2px solid @purpleBackground;

@@ -11,12 +11,27 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Dropdown, Icon, Segment, Table } from 'semantic-ui-react';
 import { concat, map, reverse } from 'lodash';
+import { Portal } from 'react-portal';
 import moment from 'moment';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 
+import { Toolbar } from '../../../components';
 import { getHistory, revertHistory } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
+const messages = defineMessages({
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
+  },
+});
+
+@injectIntl
 @connect(
   (state, props) => ({
     entries: state.history.entries,
@@ -57,6 +72,7 @@ export default class HistoryComponent extends Component {
       }),
     ).isRequired,
     title: PropTypes.string.isRequired,
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -120,9 +136,6 @@ export default class HistoryComponent extends Component {
         <Helmet title="History" />
         <Segment.Group raised>
           <Segment className="primary">
-            <Link to={getBaseUrl(this.props.pathname)}>
-              <Icon name="arrow left" />
-            </Link>
             <FormattedMessage
               id="History of {title}"
               defaultMessage="History of {title}"
@@ -247,6 +260,21 @@ export default class HistoryComponent extends Component {
             </Table.Body>
           </Table>
         </Segment.Group>
+        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          <Toolbar
+            pathname={this.props.pathname}
+            inner={
+              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
+                <Icon
+                  name="arrow left"
+                  size="big"
+                  color="blue"
+                  title={this.props.intl.formatMessage(messages.back)}
+                />
+              </Link>
+            }
+          />
+        </Portal>
       </div>
     );
   }

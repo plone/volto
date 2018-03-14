@@ -9,20 +9,12 @@
 }
 
 .ui.menu.left.fixed ~ .pusher {
-  margin-left: 80px;
-  transition: margin-left .3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-
-  @media only screen and (max-width: @largestMobileScreen) {
-    margin-right: -80px;
-  }
+  margin-right: 80px;
+  transition: margin-right .3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 .ui.menu.collapsed.left.fixed ~ .pusher {
-  margin-left: 20px;
-
-  @media only screen and (max-width: @largestMobileScreen) {
-    margin-right: -20px;
-  }
+  margin-right: 20px;
 }
 
 .ui.vertical.icon.menu {

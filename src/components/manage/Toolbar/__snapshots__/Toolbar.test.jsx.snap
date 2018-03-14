@@ -1,222 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Toolbar renders an actions component 1`] = `
-<div
-  className="ui borderless vertical icon left fixed menu"
->
-  <div>
-    <a
-      className="item"
-      id="toolbar-edit"
-      onClick={[Function]}
-      style={Object {}}
-    >
-      <i
-        aria-hidden="true"
-        className="blue write big icon"
-        title="Edit"
-      />
-    </a>
-    <a
-      className="item"
-      id="toolbar-folder-contents"
-      onClick={[Function]}
-      style={Object {}}
-    >
-      <i
-        aria-hidden="true"
-        className="folder open big icon"
-        title="Contents"
-      />
-    </a>
-    <div
-      id="types"
-    />
-    <div
-      aria-busy={undefined}
-      aria-disabled={undefined}
-      aria-expanded={false}
-      aria-multiselectable={undefined}
-      className="ui item dropdown"
-      id="toolbar-more"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onMouseDown={[Function]}
-      role="listbox"
-      tabIndex={0}
-    >
-      <i
-        aria-hidden="true"
-        className="ellipsis horizontal big icon"
-      />
-      <i
-        aria-hidden="true"
-        className="dropdown icon"
-        onClick={[Function]}
-      />
-      <div
-        className="menu transition"
-      >
-        <div
-          id="workflow"
-        />
-        <div
-          id="actions"
-        />
-        <div
-          id="display"
-        />
-        <a
-          className="item"
-          id="toolbar-history"
-          onClick={[Function]}
-          style={Object {}}
-        >
-          <i
-            aria-hidden="true"
-            className="clock big icon"
-          />
-           
-          <span>
-            History
-          </span>
-        </a>
-        <a
-          className="item"
-          id="toolbar-sharing"
-          onClick={[Function]}
-          style={Object {}}
-        >
-          <i
-            aria-hidden="true"
-            className="share big icon"
-          />
-           
-          <span>
-            Sharing
-          </span>
-        </a>
-      </div>
-    </div>
-    <div
-      aria-busy={undefined}
-      aria-disabled={undefined}
-      aria-expanded={false}
-      aria-multiselectable={undefined}
-      className="ui item upward dropdown personal-bar"
-      id="toolbar-personal"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onMouseDown={[Function]}
-      role="listbox"
-      tabIndex={0}
-    >
-      <i
-        aria-hidden="true"
-        className="user big icon"
-      />
-      <i
-        aria-hidden="true"
-        className="dropdown icon"
-        onClick={[Function]}
-      />
-      <div
-        className="menu transition"
-      >
-        <a
-          className="item"
-          onClick={[Function]}
-          style={Object {}}
-        >
-          <span>
-            <i
-              aria-hidden="true"
-              className="setting icon"
-            />
-             
-            <span>
-              Preferences
-            </span>
-          </span>
-        </a>
-        <a
-          className="item"
-          onClick={[Function]}
-          style={Object {}}
-        >
-          <span>
-            <i
-              aria-hidden="true"
-              className="settings icon"
-            />
-             
-            <span>
-              Site Setup
-            </span>
-          </span>
-        </a>
-        <a
-          className="item"
-          onClick={[Function]}
-          style={Object {}}
-        >
-          <span>
-            <i
-              aria-hidden="true"
-              className="comments icon"
-            />
-             
-            <span>
-              Moderate comments
-            </span>
-          </span>
-        </a>
-        <a
-          className="item"
-          id="toolbar-logout"
-          onClick={[Function]}
-          style={Object {}}
-        >
-          <span>
-            <i
-              aria-hidden="true"
-              className="sign out icon"
-            />
-             
-            <span>
-              Log out
-            </span>
-          </span>
-        </a>
-      </div>
-    </div>
-  </div>
+Array [
   <div
-    className="item logo"
-    onClick={[Function]}
+    className="ui borderless vertical icon left fixed menu"
   >
+    <span />
     <div
-      className="ui divider"
-    />
-    <div
-      className="image"
-      style={
-        Object {
-          "backgroundImage": "url(pastanaga.svg)",
+      className="item logo"
+      onClick={[Function]}
+    >
+      <div
+        className="ui divider"
+      />
+      <div
+        className="image"
+        style={
+          Object {
+            "backgroundImage": "url(pastanaga.svg)",
+          }
         }
-      }
+      />
+    </div>
+    <button
+      className="ui button trigger"
+      disabled={undefined}
+      onClick={[Function]}
+      role="button"
+      tabIndex={undefined}
     />
-  </div>
-  <button
-    className="ui button trigger"
-    disabled={undefined}
-    onClick={[Function]}
-    role="button"
-    tabIndex={undefined}
-  />
-</div>
+  </div>,
+  <div
+    className="pusher expanded"
+  />,
+]
 `;

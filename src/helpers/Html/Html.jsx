@@ -65,6 +65,7 @@ const Html = ({ assets, component, store }) => {
         />
       </head>
       <body {...bodyAttrs}>
+        <div id="toolbar" />
         <div id="main" dangerouslySetInnerHTML={{ __html: content }} />
         <script
           dangerouslySetInnerHTML={{

@@ -229,5 +229,9 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
       </div>
     </div>
   </form>
+   
+  <div
+    id="Portal"
+  />
 </div>
 `;

@@ -3,7 +3,7 @@
  * @module components/theme/App/App
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
@@ -14,13 +14,7 @@ import Raven from 'raven-js';
 
 import Error from '../../../error';
 
-import {
-  Breadcrumbs,
-  Footer,
-  Header,
-  Messages,
-  Toolbar,
-} from '../../../components';
+import { Breadcrumbs, Footer, Header, Messages } from '../../../components';
 import { getBaseUrl, getView } from '../../../helpers';
 import {
   getBreadcrumbs,
@@ -47,19 +41,9 @@ export class AppComponent extends Component {
    * @static
    */
   static propTypes = {
-    main: PropTypes.element.isRequired,
-    toolbar: PropTypes.element,
+    children: PropTypes.element.isRequired,
     pathname: PropTypes.string.isRequired,
     purgeMessages: PropTypes.func.isRequired,
-  };
-
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    toolbar: null,
   };
 
   state = {
@@ -120,32 +104,29 @@ export class AppComponent extends Component {
     const action = getView(this.props.pathname);
 
     return (
-      <div>
+      <Fragment>
         <Helmet
           bodyAttributes={{
             class: `view-${action}view`,
           }}
         />
-        <Toolbar pathname={path} selected={action} inner={this.props.toolbar} />
-        <div className="pusher">
-          <Header pathname={path} />
-          <Breadcrumbs pathname={path} />
-          <Segment basic className="content-area">
-            <Container as="main">
-              <Messages />
-              {this.state.hasError ? (
-                <Error
-                  message={this.state.error.message}
-                  stackTrace={this.state.errorInfo.componentStack}
-                />
-              ) : (
-                this.props.main
-              )}
-            </Container>
-          </Segment>
-          <Footer />
-        </div>
-      </div>
+        <Header pathname={path} />
+        <Breadcrumbs pathname={path} />
+        <Segment basic className="content-area">
+          <Container as="main">
+            <Messages />
+            {this.state.hasError ? (
+              <Error
+                message={this.state.error.message}
+                stackTrace={this.state.errorInfo.componentStack}
+              />
+            ) : (
+              this.props.children
+            )}
+          </Container>
+        </Segment>
+        <Footer />
+      </Fragment>
     );
   }
 }

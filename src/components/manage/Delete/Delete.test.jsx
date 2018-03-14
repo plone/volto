@@ -7,6 +7,10 @@ import Delete from './Delete';
 
 const mockStore = configureStore();
 
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
+
 describe('Delete', () => {
   it('renders an empty delete component', () => {
     const store = mockStore({

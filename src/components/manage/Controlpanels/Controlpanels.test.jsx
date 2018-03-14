@@ -7,6 +7,10 @@ import Controlpanels from './Controlpanels';
 
 const mockStore = configureStore();
 
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
+
 describe('Controlpanels', () => {
   it('renders a controlpanels component', () => {
     const store = mockStore({
@@ -41,7 +45,7 @@ describe('Controlpanels', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Controlpanels />
+        <Controlpanels location={{ pathname: '/blog' }} />
       </Provider>,
     );
     const json = component.toJSON();

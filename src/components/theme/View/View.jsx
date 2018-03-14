@@ -7,6 +7,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
+import { Portal } from 'react-portal';
+import { Link } from 'react-router';
+import { Dropdown, Icon } from 'semantic-ui-react';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 
 import {
   Comments,
@@ -19,9 +28,27 @@ import {
   SummaryView,
   TabularView,
   Tags,
+  Toolbar,
+  Actions,
+  Display,
+  Types,
+  Workflow,
 } from '../../../components';
 import { getContent } from '../../../actions';
+import { getBaseUrl } from '../../../helpers';
 
+const messages = defineMessages({
+  contents: {
+    id: 'Contents',
+    defaultMessage: 'Contents',
+  },
+  edit: {
+    id: 'Edit',
+    defaultMessage: 'Edit',
+  },
+});
+
+@injectIntl
 @connect(
   (state, props) => ({
     content: state.content.data,
@@ -84,7 +111,9 @@ export default class View extends Component {
        * Subjects of the object
        */
       subjects: PropTypes.arrayOf(PropTypes.string),
+      is_folderish: PropTypes.bool,
     }),
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -159,6 +188,7 @@ export default class View extends Component {
         ? view.type.WrappedComponent.name
         : view.type.name
       : view.constructor.name;
+    const path = getBaseUrl(this.props.pathname);
 
     return (
       <div id="view">
@@ -180,6 +210,115 @@ export default class View extends Component {
         {this.props.content.allow_discussion && (
           <Comments pathname={this.props.pathname} />
         )}
+
+        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          <Toolbar
+            pathname={this.props.pathname}
+            inner={
+              <div>
+                <Link to={`${path}/edit`} id="toolbar-edit" className="item">
+                  <Icon
+                    name="write"
+                    size="big"
+                    color="blue"
+                    title={this.props.intl.formatMessage(messages.edit)}
+                  />
+                </Link>
+                {this.props.content &&
+                  this.props.content.is_folderish && (
+                    <Link
+                      to={`${path}/contents`.replace(/\/\//g, '/')}
+                      id="toolbar-folder-contents"
+                      className="item"
+                    >
+                      <Icon
+                        name="folder open"
+                        size="big"
+                        title={this.props.intl.formatMessage(messages.contents)}
+                      />
+                    </Link>
+                  )}
+                {this.props.content &&
+                  this.props.content.is_folderish && <Types pathname={path} />}
+
+                <Dropdown
+                  id="toolbar-more"
+                  item
+                  trigger={<Icon name="ellipsis horizontal" size="big" />}
+                >
+                  <Dropdown.Menu>
+                    <Workflow pathname={path} />
+                    <Actions pathname={path} />
+                    <Display pathname={path} />
+                    <Link
+                      to={`${path}/history`}
+                      id="toolbar-history"
+                      className="item"
+                    >
+                      <Icon name="clock" size="big" />{' '}
+                      <FormattedMessage id="History" defaultMessage="History" />
+                    </Link>
+                    <Link
+                      to={`${path}/sharing`}
+                      id="toolbar-sharing"
+                      className="item"
+                    >
+                      <Icon name="share" size="big" />{' '}
+                      <FormattedMessage id="Sharing" defaultMessage="Sharing" />
+                    </Link>
+                  </Dropdown.Menu>
+                </Dropdown>
+
+                <Dropdown
+                  id="toolbar-personal"
+                  className="personal-bar"
+                  item
+                  upward
+                  trigger={<Icon name="user" size="big" />}
+                >
+                  <Dropdown.Menu>
+                    <Link to="/personal-preferences" className="item">
+                      <span>
+                        <Icon name="setting" />{' '}
+                        <FormattedMessage
+                          id="Preferences"
+                          defaultMessage="Preferences"
+                        />
+                      </span>
+                    </Link>
+                    <Link to="/controlpanel" className="item">
+                      <span>
+                        <Icon name="settings" />{' '}
+                        <FormattedMessage
+                          id="Site Setup"
+                          defaultMessage="Site Setup"
+                        />
+                      </span>
+                    </Link>
+                    <Link to="/controlpanel/moderate-comments" className="item">
+                      <span>
+                        <Icon name="comments" />{' '}
+                        <FormattedMessage
+                          id="Moderate comments"
+                          defaultMessage="Moderate comments"
+                        />
+                      </span>
+                    </Link>
+                    <Link to="/logout" id="toolbar-logout" className="item">
+                      <span>
+                        <Icon name="sign out" />{' '}
+                        <FormattedMessage
+                          id="Log out"
+                          defaultMessage="Log out"
+                        />
+                      </span>
+                    </Link>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div>
+            }
+          />
+        </Portal>
       </div>
     );
   }

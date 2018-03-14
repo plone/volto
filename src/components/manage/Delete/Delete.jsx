@@ -9,6 +9,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
+import { Portal } from 'react-portal';
 import { Button, Container, List, Segment } from 'semantic-ui-react';
 import {
   FormattedMessage,
@@ -18,6 +19,7 @@ import {
 } from 'react-intl';
 
 import { deleteContent, getContent } from '../../../actions';
+import { Toolbar } from '../../../components';
 
 const messages = defineMessages({
   delete: {
@@ -181,6 +183,9 @@ export default class Delete extends Component {
               </Segment>
             </Segment.Group>
           </Container>
+          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+            <Toolbar pathname={this.props.pathname} inner={<span />} />
+          </Portal>
         </div>
       );
     }

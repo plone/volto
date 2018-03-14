@@ -49,13 +49,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
 /**
  * Form container class.
  * @class Form
  * @extends Component
  */
-export default class Form extends Component {
+class Form extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -84,6 +83,7 @@ export default class Form extends Component {
       message: PropTypes.string,
     }),
     loading: PropTypes.bool,
+    hideActions: PropTypes.bool,
     description: PropTypes.string,
   };
 
@@ -101,6 +101,7 @@ export default class Form extends Component {
     description: null,
     error: null,
     loading: null,
+    hideActions: false,
   };
 
   /**
@@ -144,7 +145,9 @@ export default class Form extends Component {
    * @returns {undefined}
    */
   onSubmit(event) {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
     const errors = {};
     map(this.props.schema.fieldsets, fieldset =>
       map(fieldset.fields, fieldId => {
@@ -285,37 +288,41 @@ export default class Form extends Component {
               ))}
             </Segment>
           )}
-          <Segment className="actions" clearing>
-            <Button
-              basic
-              circular
-              primary
-              floated="right"
-              icon="arrow right"
-              type="submit"
-              title={
-                this.props.submitLabel
-                  ? this.props.submitLabel
-                  : this.props.intl.formatMessage(messages.save)
-              }
-              size="big"
-              loading={this.props.loading}
-            />
-            {onCancel && (
+          {!this.props.hideActions && (
+            <Segment className="actions" clearing>
               <Button
                 basic
                 circular
-                secondary
-                icon="remove"
-                title={this.props.intl.formatMessage(messages.cancel)}
+                primary
                 floated="right"
+                icon="arrow right"
+                type="submit"
+                title={
+                  this.props.submitLabel
+                    ? this.props.submitLabel
+                    : this.props.intl.formatMessage(messages.save)
+                }
                 size="big"
-                onClick={onCancel}
+                loading={this.props.loading}
               />
-            )}
-          </Segment>
+              {onCancel && (
+                <Button
+                  basic
+                  circular
+                  secondary
+                  icon="remove"
+                  title={this.props.intl.formatMessage(messages.cancel)}
+                  floated="right"
+                  size="big"
+                  onClick={onCancel}
+                />
+              )}
+            </Segment>
+          )}
         </Segment.Group>
       </UiForm>
     );
   }
 }
+
+export default injectIntl(Form, { withRef: true });

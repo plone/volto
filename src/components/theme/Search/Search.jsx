@@ -11,10 +11,11 @@ import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import { asyncConnect } from 'redux-connect';
 import { FormattedMessage } from 'react-intl';
+import { Portal } from 'react-portal';
 
 import { searchContent } from '../../../actions';
 
-import { SearchTags } from '../../../components';
+import { SearchTags, Toolbar } from '../../../components';
 
 @connect(
   (state, props) => ({
@@ -22,6 +23,7 @@ import { SearchTags } from '../../../components';
     searchableText: props.location.query.SearchableText,
     subject: props.location.query.Subject,
     path: props.location.query.path,
+    pathname: props.location.pathname,
   }),
   dispatch => bindActionCreators({ searchContent }, dispatch),
 )
@@ -49,6 +51,7 @@ export class SearchComponent extends Component {
         description: PropTypes.string,
       }),
     ),
+    pathname: PropTypes.string.isRequired,
   };
 
   /**
@@ -153,6 +156,9 @@ export class SearchComponent extends Component {
             </section>
           </article>
         </div>
+        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          <Toolbar pathname={this.props.pathname} inner={<span />} />
+        </Portal>{' '}
       </div>
     );
   }
