@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Navigation renders a navigation component with an active item 1`] = `
-<div>
+Array [
   <div
-    className="ui basic segment mobile only"
+    className="hamburger-wrapper mobile only"
   >
     <button
       className="hamburger"
@@ -19,7 +19,7 @@ exports[`Navigation renders a navigation component with an active item 1`] = `
         />
       </span>
     </button>
-  </div>
+  </div>,
   <div
     className="ui pointing secondary stackable tablet computer large screen widescreen only menu"
     onClick={[Function]}
@@ -38,14 +38,14 @@ exports[`Navigation renders a navigation component with an active item 1`] = `
     >
       Users
     </a>
-  </div>
-</div>
+  </div>,
+]
 `;
 
 exports[`Navigation renders a navigation component with an active item when its subchildren are accessed 1`] = `
-<div>
+Array [
   <div
-    className="ui basic segment mobile only"
+    className="hamburger-wrapper mobile only"
   >
     <button
       className="hamburger"
@@ -61,7 +61,7 @@ exports[`Navigation renders a navigation component with an active item when its 
         />
       </span>
     </button>
-  </div>
+  </div>,
   <div
     className="ui pointing secondary stackable tablet computer large screen widescreen only menu"
     onClick={[Function]}
@@ -80,14 +80,14 @@ exports[`Navigation renders a navigation component with an active item when its 
     >
       Users
     </a>
-  </div>
-</div>
+  </div>,
+]
 `;
 
 exports[`Navigation renders a navigation component with only one active item even if there are similar item names 1`] = `
-<div>
+Array [
   <div
-    className="ui basic segment mobile only"
+    className="hamburger-wrapper mobile only"
   >
     <button
       className="hamburger"
@@ -103,7 +103,7 @@ exports[`Navigation renders a navigation component with only one active item eve
         />
       </span>
     </button>
-  </div>
+  </div>,
   <div
     className="ui pointing secondary stackable tablet computer large screen widescreen only menu"
     onClick={[Function]}
@@ -129,14 +129,14 @@ exports[`Navigation renders a navigation component with only one active item eve
     >
       Users
     </a>
-  </div>
-</div>
+  </div>,
+]
 `;
 
 exports[`Navigation renders a navigation component without active items 1`] = `
-<div>
+Array [
   <div
-    className="ui basic segment mobile only"
+    className="hamburger-wrapper mobile only"
   >
     <button
       className="hamburger"
@@ -152,7 +152,7 @@ exports[`Navigation renders a navigation component without active items 1`] = `
         />
       </span>
     </button>
-  </div>
+  </div>,
   <div
     className="ui pointing secondary stackable tablet computer large screen widescreen only menu"
     onClick={[Function]}
@@ -171,6 +171,6 @@ exports[`Navigation renders a navigation component without active items 1`] = `
     >
       Users
     </a>
-  </div>
-</div>
+  </div>,
+]
 `;
