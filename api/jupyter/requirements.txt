@@ -1,5 +1,6 @@
 setuptools
 jupyter
+Pillow
 https://github.com/datakurre/robotkernel/archive/master.tar.gz#egg=robotkernel
 robotframework
 robotframework-seleniumlibrary
