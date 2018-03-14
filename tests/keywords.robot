@@ -41,7 +41,7 @@ Logged out
     Element should not be visible  css=.left.fixed.menu
 
 Logged in
-    Element should be visible  css=.left.fixed.menu
+    Wait until element is visible  css=.left.fixed.menu
 
 Log in
     [Arguments]   ${username}=admin  ${password}=secret
