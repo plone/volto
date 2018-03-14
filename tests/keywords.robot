@@ -1,6 +1,6 @@
 *** Settings ***
 
-Library  SeleniumLibrary  timeout=10  implicit_wait=0
+Library  SeleniumLibrary  timeout=30  implicit_wait=0
 
 *** Variables ***
 
