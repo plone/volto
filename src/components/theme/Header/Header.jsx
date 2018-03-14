@@ -45,29 +45,26 @@ export default class Header extends Component {
    */
   render() {
     return (
-      <Segment basic>
+      <Segment basic className="header-wrapper">
         <Container>
-          <Grid stackable>
-            <Grid.Row className="header">
-              <Grid.Column width={2} className="logo">
+          <div className="header">
+            <div className="logo-nav-wrapper">
+              <div className="logo">
                 <Logo />
-              </Grid.Column>
-              <Grid.Column
-                width={this.props.token ? 7 : 5}
-                className="navigation"
-              >
+              </div>
+              <div className="navigation">
                 <Navigation pathname={this.props.pathname} />
-              </Grid.Column>
-              {!this.props.token && (
-                <Grid.Column width={2} className="tools">
-                  <Anontools />
-                </Grid.Column>
-              )}
-              <Grid.Column width={3} className="search">
-                <SearchWidget pathname={this.props.pathname} />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+              </div>
+            </div>
+            {!this.props.token && (
+              <div className="tools">
+                <Anontools />
+              </div>
+            )}
+            <div className="search">
+              <SearchWidget pathname={this.props.pathname} />
+            </div>
+          </div>
         </Container>
       </Segment>
     );
