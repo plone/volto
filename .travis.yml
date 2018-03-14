@@ -27,5 +27,3 @@ install:
 script:
 - yarn coverage
 - PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlessfirefox tests
-after_failure:
-- cat output.xml
