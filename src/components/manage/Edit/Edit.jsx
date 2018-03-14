@@ -32,6 +32,14 @@ const messages = defineMessages({
     id: 'Cancel',
     defaultMessage: 'Cancel',
   },
+  properties: {
+    id: 'Properties',
+    defaultMessage: 'Properties',
+  },
+  visual: {
+    id: 'Visual',
+    defaultMessage: 'Visual',
+  },
 });
 
 @injectIntl
@@ -105,8 +113,12 @@ export class EditComponent extends Component {
    */
   constructor(props) {
     super(props);
+    this.state = {
+      visual: false,
+    };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onToggleVisual = this.onToggleVisual.bind(this);
   }
 
   /**
@@ -157,6 +169,17 @@ export class EditComponent extends Component {
   }
 
   /**
+   * Toggle visual
+   * @method onToggleVisual
+   * @returns {undefined}
+   */
+  onToggleVisual() {
+    this.setState({
+      visual: !this.state.visual,
+    });
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -180,10 +203,27 @@ export class EditComponent extends Component {
             formData={this.props.content}
             onSubmit={this.onSubmit}
             hideActions
+            visual={this.state.visual}
             title={this.props.intl.formatMessage(messages.edit, {
               title: this.props.schema.title,
             })}
             loading={this.props.editRequest.loading}
+            tiles={[
+              {
+                type: 'title',
+              },
+              {
+                type: 'text',
+                data: {
+                  text: {
+                    'content-type': 'text/html',
+                    data:
+                      '<h2>Some random header</h2><p>Some random text with <b>markup</b></p>',
+                    encoding: 'utf8',
+                  },
+                },
+              },
+            ]}
           />
           <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
             <Toolbar
@@ -196,6 +236,17 @@ export class EditComponent extends Component {
                       size="big"
                       color="blue"
                       title={this.props.intl.formatMessage(messages.save)}
+                    />
+                  </a>
+                  <a className="item" onClick={() => this.onToggleVisual()}>
+                    <Icon
+                      name={this.state.visual ? 'tasks' : 'block layout'}
+                      size="big"
+                      title={this.props.intl.formatMessage(
+                        this.state.visual
+                          ? messages.properties
+                          : messages.visual,
+                      )}
                     />
                   </a>
                   <a className="item" onClick={() => this.onCancel()}>

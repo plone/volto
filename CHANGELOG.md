@@ -35,6 +35,7 @@
 * Added tiles reducers @robgietema
 * Merged block styling to inline toolbar @robgietema
 * Add context aware toolbar @robgietema
+* Added editor prototype @robgietema
 
 ## 0.4.0 (2017-05-03)
 

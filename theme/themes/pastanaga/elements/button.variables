@@ -200,7 +200,7 @@
 @basicBackground: transparent none;
 @basicFontWeight: normal;
 @basicBorder: 1px solid @borderColor;
-@basicBoxShadow: 0px 0px 0px @basicBorderSize @borderColor inset;
+@basicBoxShadow: 0px 0px 0px @basicBorderSize @textColor inset;
 @basicLoadingColor: @offWhite;
 @basicTextTransform: none;
 
@@ -208,7 +208,7 @@
 @basicHoverBackground: #FFFFFF;
 @basicHoverTextColor: @hoveredTextColor;
 @basicHoverBoxShadow:
-  0px 0px 0px @basicBorderSize @selectedBorderColor inset,
+  0px 0px 0px @basicBorderSize @textColor inset,
   0px 0px 0px 0px @borderColor inset
 ;
 /* Basic Focus */
