@@ -31,7 +31,7 @@ Suite Setup
     Set Environment Variable  Z3C_AUTOINCLUDE_DEPENDENCIES_DISABLED  1
     Start Zope server  ${FIXTURE}
     Start Webpack  yarn start
-    ...            check=Executing script: run_prod_server
+    ...            check=to be executed: ./node_modules/.bin/babel-node ./src/start-server-prod.js
 
 Suite Teardown
     Stop Webpack

@@ -60,7 +60,7 @@
     "test:unit": "better-npm-run test_unit",
     "test:unit:ci": "better-npm-run test_unit_ci",
     "test:unit:fix": "yarn run test:unit -- -u",
-    "test:acceptance": "",
+    "test:acceptance": "make test-acceptance",
     "coverage":
       "npm-run-all test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "wait-for-frontend":
