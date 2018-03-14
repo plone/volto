@@ -346,7 +346,7 @@ i.icon.trophy:before { content: "\f091"; }
 i.icon.payment:before { content: "\f09d"; }
 i.icon.feed:before { content: "\f09e"; }
 i.icon.alarm.outline:before { content: "\f0a2"; }
-i.icon.tasks:before { content: "\f0ae"; }
+i.icon.tasks:before { content: @icon-properties; }
 i.icon.cloud:before { content: "\f0c2"; }
 i.icon.lab:before { content: "\f0c3"; }
 i.icon.mail:before { content: @icon-email; }

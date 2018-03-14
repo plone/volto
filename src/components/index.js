@@ -79,3 +79,6 @@ export Toolbar from './manage/Toolbar/Toolbar';
 export Types from './manage/Types/Types';
 export WysiwygWidget from './manage/Widgets/WysiwygWidget';
 export Workflow from './manage/Workflow/Workflow';
+
+export EditTitleTile from './manage/Tiles/Title/Edit';
+export EditTextTile from './manage/Tiles/Text/Edit';
