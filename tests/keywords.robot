@@ -46,11 +46,11 @@ Logged in
 Log in
     [Arguments]   ${username}=admin  ${password}=secret
     ...           ${selector}=.tools a[href^="/login"]
-    Page should contain element  css=${selector}
+    Wait until page contains element  css=${selector}
     Element should be visible  css=${selector}
     Element should contain  css=${selector}  Log in
     Click element  css=${selector}
-    Element should be visible  id=login
+    Wait until element is visible  id=login
     Element should be visible  id=password
     Element should be visible  id=login-form-submit
     Input text  id=login  ${username}
