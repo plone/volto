@@ -41,19 +41,9 @@ export class AppComponent extends Component {
    * @static
    */
   static propTypes = {
-    main: PropTypes.element.isRequired,
-    toolbar: PropTypes.element,
+    children: PropTypes.element.isRequired,
     pathname: PropTypes.string.isRequired,
     purgeMessages: PropTypes.func.isRequired,
-  };
-
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    toolbar: null,
   };
 
   state = {
@@ -131,7 +121,7 @@ export class AppComponent extends Component {
                 stackTrace={this.state.errorInfo.componentStack}
               />
             ) : (
-              this.props.main
+              this.props.children
             )}
           </Container>
         </Segment>

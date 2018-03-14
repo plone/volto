@@ -45,37 +45,31 @@ export default () => (
       }
     }}
   >
-    <IndexRoute components={{ main: View }} />
-    <Route path="/login" components={{ main: Login }} />
-    <Route path="/logout" components={{ main: Logout }} />
-    <Route path="/search" components={{ main: Search }} />
-    <Route path="/change-password" components={{ main: ChangePassword }} />
-    <Route path="/controlpanel" components={{ main: Controlpanels }} />
+    <IndexRoute component={View} />
+    <Route path="/login" component={Login} />
+    <Route path="/logout" component={Logout} />
+    <Route path="/search" component={Search} />
+    <Route path="/change-password" component={ChangePassword} />
+    <Route path="/controlpanel" component={Controlpanels} />
     <Route
       path="/controlpanel/moderate-comments"
-      components={{ main: ModerateComments }}
+      component={ModerateComments}
     />
-    <Route path="/controlpanel/:id" components={{ main: Controlpanel }} />
-    <Route
-      path="/personal-information"
-      components={{ main: PersonalInformation }}
-    />
-    <Route
-      path="/personal-preferences"
-      components={{ main: PersonalPreferences }}
-    />
-    <Route path="/add" components={{ main: Add }} />
-    <Route path="/contents" components={{ main: Contents }} />
-    <Route path="/sharing" components={{ main: Sharing }} />
-    <Route path="/**/add" components={{ main: Add }} />
-    <Route path="/**/contents" components={{ main: Contents }} />
-    <Route path="/**/delete" components={{ main: Delete }} />
-    <Route path="/**/diff" components={{ main: Diff }} />
-    <Route path="/**/edit" components={{ main: Edit }} />
-    <Route path="/**/history" components={{ main: History }} />
-    <Route path="/**/layout" components={{ main: Layout }} />
-    <Route path="/**/sharing" components={{ main: Sharing }} />
-    <Route path="/**" components={{ main: View }} />
-    <Route path="*" components={{ main: NotFound }} status={404} />
+    <Route path="/controlpanel/:id" component={Controlpanel} />
+    <Route path="/personal-information" component={PersonalInformation} />
+    <Route path="/personal-preferences" component={PersonalPreferences} />
+    <Route path="/add" component={Add} />
+    <Route path="/contents" component={Contents} />
+    <Route path="/sharing" component={Sharing} />
+    <Route path="/**/add" component={Add} />
+    <Route path="/**/contents" component={Contents} />
+    <Route path="/**/delete" component={Delete} />
+    <Route path="/**/diff" component={Diff} />
+    <Route path="/**/edit" component={Edit} />
+    <Route path="/**/history" component={History} />
+    <Route path="/**/layout" component={Layout} />
+    <Route path="/**/sharing" component={Sharing} />
+    <Route path="/**" component={View} />
+    <Route path="*" component={NotFound} status={404} />
   </Route>
 );
