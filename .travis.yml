@@ -28,4 +28,4 @@ install:
 - yarn build
 script:
 - yarn coverage
-- PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome tests
+- PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlessfirefox tests
