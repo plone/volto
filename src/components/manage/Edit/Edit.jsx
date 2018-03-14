@@ -13,7 +13,7 @@ import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Portal } from 'react-portal';
-import { Button, Icon } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 
 import { Form, Toolbar } from '../../../components';
 import { editContent, getContent, getSchema } from '../../../actions';
