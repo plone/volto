@@ -262,5 +262,8 @@ exports[`Diff renders a diff component 1`] = `
       </tr>
     </tbody>
   </table>
+  <div
+    id="Portal"
+  />
 </div>
 `;

@@ -180,5 +180,8 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
       </div>
     </div>
   </div>
+  <div
+    id="Portal"
+  />
 </div>
 `;

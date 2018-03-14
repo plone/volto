@@ -7,6 +7,9 @@ import Controlpanel from './Controlpanel';
 
 const mockStore = configureStore();
 
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
 jest.mock('../Form/Form', () => jest.fn(() => <div id="form" />));
 
 describe('Controlpanel', () => {
@@ -34,7 +37,10 @@ describe('Controlpanel', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Controlpanel params={{ id: 'date-and-time' }} />
+        <Controlpanel
+          params={{ id: 'date-and-time' }}
+          location={{ pathname: '/blog' }}
+        />
       </Provider>,
     );
     const json = component.toJSON();

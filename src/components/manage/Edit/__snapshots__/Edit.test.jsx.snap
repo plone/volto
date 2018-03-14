@@ -7,6 +7,9 @@ exports[`Edit renders an add component 1`] = `
   <div
     className="Form"
   />
+  <div
+    id="Portal"
+  />
 </div>
 `;
 

@@ -8,6 +8,10 @@ import PersonalInformation from './PersonalInformation';
 
 const mockStore = configureStore();
 
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
+
 describe('PersonalInformation', () => {
   it('renders a personal information component', () => {
     const store = mockStore({
@@ -30,7 +34,7 @@ describe('PersonalInformation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <PersonalInformation />
+        <PersonalInformation location={{ pathname: '/blog' }} />
       </Provider>,
     );
     const json = component.toJSON();

@@ -35,6 +35,9 @@ exports[`Html renders a html component 1`] = `
   </head>
   <body>
     <div
+      id="toolbar"
+    />
+    <div
       dangerouslySetInnerHTML={
         Object {
           "__html": "<div data-reactroot=\\"\\"></div>",

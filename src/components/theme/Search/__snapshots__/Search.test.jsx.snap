@@ -71,6 +71,10 @@ exports[`Search renders a search component 1`] = `
       </section>
     </article>
   </div>
+  <div
+    id="Portal"
+  />
+   
 </div>
 `;
 
@@ -104,5 +108,9 @@ exports[`Search renders an empty search component 1`] = `
       />
     </article>
   </div>
+  <div
+    id="Portal"
+  />
+   
 </div>
 `;

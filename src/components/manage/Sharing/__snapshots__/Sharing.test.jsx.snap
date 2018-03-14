@@ -10,15 +10,6 @@ exports[`Sharing renders a sharing component 1`] = `
     <div
       className="ui segment primary"
     >
-      <a
-        onClick={[Function]}
-        style={Object {}}
-      >
-        <i
-          aria-hidden="true"
-          className="arrow left icon"
-        />
-      </a>
       <span>
         Sharing for 
         <q>
@@ -226,5 +217,8 @@ exports[`Sharing renders a sharing component 1`] = `
       </div>
     </form>
   </div>
+  <div
+    id="Portal"
+  />
 </div>
 `;

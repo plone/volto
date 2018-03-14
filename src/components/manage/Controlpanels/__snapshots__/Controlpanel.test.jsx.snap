@@ -7,21 +7,12 @@ exports[`Controlpanel renders a controlpanel component 1`] = `
   <div
     className="ui container"
   >
-    <button
-      className="ui basic circular icon button"
-      disabled={undefined}
-      onClick={[Function]}
-      role="button"
-      tabIndex={undefined}
-    >
-      <i
-        aria-hidden="true"
-        className="arrow left icon"
-      />
-    </button>
     <div
       id="form"
     />
   </div>
+  <div
+    id="Portal"
+  />
 </div>
 `;

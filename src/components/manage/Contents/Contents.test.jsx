@@ -7,6 +7,9 @@ import Contents from './Contents';
 
 const mockStore = configureStore();
 
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
 jest.mock('../../theme/Pagination/Pagination', () =>
   jest.fn(() => <div className="Pagination" />),
 );

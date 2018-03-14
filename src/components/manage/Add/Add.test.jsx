@@ -7,6 +7,9 @@ import { AddComponent as Add } from './Add';
 
 const mockStore = configureStore();
 
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
 jest.mock('../Form/Form', () => jest.fn(() => <div className="Form" />));
 
 describe('Add', () => {

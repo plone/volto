@@ -10,6 +10,9 @@ exports[`View renders a document view 1`] = `
   <div
     id="SocialSharing"
   />
+  <div
+    id="Portal"
+  />
 </div>
 `;
 
@@ -23,6 +26,9 @@ exports[`View renders a summary view 1`] = `
   <div
     id="SocialSharing"
   />
+  <div
+    id="Portal"
+  />
 </div>
 `;
 
@@ -35,6 +41,9 @@ exports[`View renders a tabular view 1`] = `
   />
   <div
     id="SocialSharing"
+  />
+  <div
+    id="Portal"
   />
 </div>
 `;

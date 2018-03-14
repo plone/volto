@@ -7,6 +7,10 @@ import PersonalPreferences from './PersonalPreferences';
 
 const mockStore = configureStore();
 
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
+
 describe('PersonalPreferences', () => {
   it('renders a personal preferences component', () => {
     const store = mockStore({
@@ -17,7 +21,7 @@ describe('PersonalPreferences', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <PersonalPreferences />
+        <PersonalPreferences location={{ pathname: '/blog' }} />
       </Provider>,
     );
     const json = component.toJSON();

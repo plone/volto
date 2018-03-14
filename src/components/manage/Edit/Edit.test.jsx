@@ -7,6 +7,9 @@ import { EditComponent as Edit } from './Edit';
 
 const mockStore = configureStore();
 
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
 jest.mock('../Form/Form', () => jest.fn(() => <div className="Form" />));
 
 describe('Edit', () => {

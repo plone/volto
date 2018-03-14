@@ -8,6 +8,10 @@ import Sharing from './Sharing';
 
 const mockStore = configureStore();
 
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
+
 describe('Sharing', () => {
   it('renders a sharing component', () => {
     const store = mockStore({

@@ -10,15 +10,6 @@ exports[`History renders a history component 1`] = `
     <div
       className="ui segment primary"
     >
-      <a
-        onClick={[Function]}
-        style={Object {}}
-      >
-        <i
-          aria-hidden="true"
-          className="arrow left icon"
-        />
-      </a>
       <span>
         History of 
         <q>
@@ -211,5 +202,8 @@ exports[`History renders a history component 1`] = `
       </tbody>
     </table>
   </div>
+  <div
+    id="Portal"
+  />
 </div>
 `;
