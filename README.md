@@ -29,6 +29,10 @@
     $ cd api
     $ ./bin/instance fg
 
+    or
+
+    $ docker-compose -f api/docker-compose.yml up
+
 ### Run frontend
 
     $ yarn dev
@@ -40,6 +44,23 @@ Go to [http://localhost:4300](http://localhost:4300) in your browser.
 ### Testing
 
     $ yarn test
+
+### Acceptance testing
+
+    $ make test-acceptance
+
+    Alternatively individual acceptances test case files can be run with a pure Robot Framework virtual environment, assuming that backend and frontend is running
+
+    $ docker-compose -f api/docker-compose.yml up
+    $ yarn && yarn build && API_PATH=http://localhost:55001/plone yarn start
+
+    $ virtualenv robotenv --no-site-packages
+    $ robotenv/bin/pip install robotframework robotframework-seleniumlibrary robotframework-webpack
+    $ robotenv/bin/pybot tests/test_login.robot
+
+    Another alternative for developing Robot Framework acceptane tests is to use Jupyter notebook
+
+    $ make -C api/jupyter
 
 ### Static Code Analysis
 
