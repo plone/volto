@@ -12,6 +12,7 @@ yarn-error.log
 
 # Other
 .DS_Store
+.idea
 lighthouse-report.html
 
 # Python
@@ -23,7 +24,20 @@ lighthouse-report.html
 /api/bin/
 /api/parts/
 /api/src/
+/api/notebook/env/
 api/.Python
 api/include
 api/lib
 api/pip-selfcheck.json
+
+# Tests
+/tests/bin
+/tests/develop-eggs
+/tests/parts
+/tests/.installed.cfg
+*.pyc
+geckodriver.log
+log.html
+output.xml
+report.html
+selenium-screenshot-*.png

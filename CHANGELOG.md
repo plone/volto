@@ -35,6 +35,8 @@
 * Added tiles reducers @robgietema
 * Merged block styling to inline toolbar @robgietema
 * Add context aware toolbar @robgietema
+* Add hamburger menu navigation on mobile @sneridagh
+* Added editor prototype @robgietema
 * Actions aware toolbar @sneridagh
 
 ## 0.4.0 (2017-05-03)

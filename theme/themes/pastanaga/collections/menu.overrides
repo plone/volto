@@ -109,12 +109,19 @@
   }
 }
 
-.navigation.column .ui.secondary.pointing.menu {
+.navigation .ui.secondary.pointing.menu {
   border: 0;
+  margin: 0 0 0 40px;
+
+  @media only screen and (max-width: @tabletBreakpoint) {
+    margin-bottom: 20px;
+  }
+
   .item {
     margin: 0;
     padding-top: @relativeBig;
     text-transform: uppercase;
+
     @media only screen and (min-width: @tabletBreakpoint) {
       margin: 0 unit(@relativeLarge * 2, em) 0 0;
       padding: 1.7em 0 @relativeBig;

@@ -3,7 +3,7 @@
  * @module components/theme/Navigation/Navigation
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { isMatch } from 'lodash';
@@ -32,7 +32,6 @@ const messages = defineMessages({
 @connect(
   state => ({
     items: state.navigation.items,
-    token: state.userSession.token,
   }),
   dispatch => bindActionCreators({ getNavigation }, dispatch),
 )
@@ -56,17 +55,7 @@ export default class Navigation extends Component {
         url: PropTypes.string,
       }),
     ).isRequired,
-    token: PropTypes.string,
     intl: intlShape.isRequired,
-  };
-
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    token: null,
   };
 
   /**
@@ -155,11 +144,11 @@ export default class Navigation extends Component {
    */
   render() {
     return (
-      <div>
+      <Fragment>
         {this.state.isMobileMenuOpen && (
           <Helmet bodyAttributes={{ class: this.state.bodyClasses }} />
         )}
-        <Segment basic className="mobile only">
+        <div className="hamburger-wrapper mobile only">
           <button
             className={
               this.state.isMobileMenuOpen ? 'hamburger active' : 'hamburger'
@@ -180,7 +169,7 @@ export default class Navigation extends Component {
               <span className="hamburger-inner" />
             </span>
           </button>
-        </Segment>
+        </div>
         <Menu
           stackable
           pointing
@@ -201,13 +190,8 @@ export default class Navigation extends Component {
               {item.title}
             </Link>
           ))}
-          {!this.props.token && (
-            <Segment basic className="anontools mobile only">
-              <Anontools />
-            </Segment>
-          )}
         </Menu>
-      </div>
+      </Fragment>
     );
   }
 }

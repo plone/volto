@@ -16,7 +16,7 @@ import {
 } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
-import { Field } from '../../../components';
+import { EditTitleTile, EditTextTile, Field } from '../../../components';
 
 const messages = defineMessages({
   required: {
@@ -85,6 +85,8 @@ class Form extends Component {
     loading: PropTypes.bool,
     hideActions: PropTypes.bool,
     description: PropTypes.string,
+    visual: PropTypes.bool,
+    tiles: PropTypes.arrayOf(PropTypes.object),
   };
 
   /**
@@ -102,6 +104,8 @@ class Form extends Component {
     error: null,
     loading: null,
     hideActions: false,
+    visual: false,
+    tiles: [],
   };
 
   /**
@@ -119,6 +123,7 @@ class Form extends Component {
     };
     this.selectTab = this.selectTab.bind(this);
     this.onChangeField = this.onChangeField.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -136,6 +141,20 @@ class Form extends Component {
         [id]: value,
       },
     });
+  }
+
+  /**
+   * Change handler
+   * @method onChange
+   * @param {Object} data Data to change
+   * @returns {undefined}
+   */
+  onChange(data) {
+    if (data.properties) {
+      this.setState({
+        formData: data.properties,
+      });
+    }
   }
 
   /**
@@ -213,7 +232,38 @@ class Form extends Component {
     const { schema, onCancel } = this.props;
     const currentFieldset = schema.fieldsets[this.state.currentTab];
 
-    return (
+    return this.props.visual ? (
+      <div>
+        {map(this.props.tiles, tile => {
+          switch (tile.type) {
+            case 'title':
+              return (
+                <EditTitleTile
+                  onChange={this.onChange}
+                  properties={this.state.formData}
+                />
+              );
+            case 'text':
+              return <EditTextTile onChange={this.onChange} data={tile.data} />;
+            default:
+              break;
+          }
+          return <div />;
+        })}
+        <div>
+          <Button
+            basic
+            circular
+            icon="plus"
+            title={
+              this.props.submitLabel
+                ? this.props.submitLabel
+                : this.props.intl.formatMessage(messages.save)
+            }
+          />
+        </div>
+      </div>
+    ) : (
       <UiForm
         method="post"
         onSubmit={this.onSubmit}
