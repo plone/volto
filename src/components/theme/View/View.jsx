@@ -267,7 +267,7 @@ export default class View extends Component {
                   <Dropdown.Menu>
                     <Workflow pathname={path} />
                     {this.state.hasObjectButtons && <Actions pathname={path} />}
-                    <Display pathname={path} />
+                    {editAction && <Display pathname={path} />}
                     {historyAction && (
                       <Link
                         to={`${path}/history`}
