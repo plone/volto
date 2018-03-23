@@ -38,6 +38,7 @@
 * Add hamburger menu navigation on mobile @sneridagh
 * Added editor prototype @robgietema
 * Actions aware toolbar @sneridagh
+* Fix permissions on the toolbar display menu @sneridagh
 
 ## 0.4.0 (2017-05-03)
 
