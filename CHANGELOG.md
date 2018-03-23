@@ -5,6 +5,7 @@
 ### Added
 
 ### Changes
+* Replace ExtractionTextCSSPlugin with the new mini-css-extract-plugin, adapt universal-webpack config @sneridagh
 
 ## 0.5.0 (2018-03-23)
 
