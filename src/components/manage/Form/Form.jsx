@@ -138,7 +138,7 @@ class Form extends Component {
     this.setState({
       formData: {
         ...this.state.formData,
-        [id]: value,
+        [id]: value || null,
       },
     });
   }

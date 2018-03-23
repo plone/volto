@@ -37,6 +37,7 @@
 * Add context aware toolbar @robgietema
 * Add hamburger menu navigation on mobile @sneridagh
 * Added editor prototype @robgietema
+* Add support for null values when reseting a field value @sneridagh
 * Actions aware toolbar @sneridagh
 * Fix permissions on the toolbar display menu @sneridagh
 
