@@ -49,7 +49,7 @@
     "jsdoc:src": "jsdoc -c jsdoc.src.json; : 'ignore minor errors'",
     "jsdoc:api": "jsdoc -c jsdoc.api.json; : 'ignore minor errors'",
     "lint":
-      "./node_modules/eslint/bin/eslint.js -c .eslintrc src --format checkstyle --output-file eslint.xml",
+      "./node_modules/eslint/bin/eslint.js -c .eslintrc src --format checkstyle --output-file eslint.xml && npm run eslint-check",
     "lint:fix": "./node_modules/eslint/bin/eslint.js -c .eslintrc src --fix",
     "prettier":
       "./node_modules/prettier/bin-prettier.js -l 'src/**/*.js' 'src/**/*.jsx'",
