@@ -1,43 +1,46 @@
 # Change Log
 
-## 0.5.0 (unreleased)
+## 0.5.0 (2018-03-23)
 
 ### Added
 
-* Added pastanaga theme package @jaroel, @robgietema
-* Added registry based controlpanels @robgietema
+* Pastanaga theme package @jaroel, @robgietema
+* Registry based controlpanels @robgietema
+* Component documentation @robgietema
+* Component documentation examples @VaysseB
+* Folder listing view @cekk
+* Prettier docs for SCA @nileshgulia1
+* Comments, email notification and vocabularies reducers @robgietema
+* Pastanaga theme @robgietema
+* Pastanaga manage views @robgietema
+* Pastanaga theme views @robgietema
+* Callout styling to draftjs @robgietema
+* Image, file and news item view @robgietema
+* Social sharing @robgietema
+* Commenting @robgietema
+* Tags @robgietema
+* Renew login token when almost expired @robgietema
+* Cctions reducers @robgietema
+* Error reporting with Sentry support on client (default ErrorBoundary), server and Redux middleware @sneridagh
+* Tiles reducers @robgietema
+* Context aware toolbar @robgietema
+* Hamburger menu navigation on mobile @sneridagh
+* Editor prototype @robgietema
+* Support for null values when reseting a field value @sneridagh
+
+### Changes
+
 * Update plone api versions / bootstrap process @thet
-* Added component documentation @robgietema
-* Added component documentation examples @VaysseB
-* Added folder listing view @cekk
 * Fix textwidget proptypes @cekk
 * Remove phantomjs @tulikavijay
-* Prettier docs for SCA @nileshgulia1
 * Upgrade to node 8 @robgietema
-* Added comments, email notification and vocabularies reducers @robgietema
 * Switched to draft js plugins editor @robgietema
-* Added pastanaga theme @robgietema
-* Added pastanaga manage views @robgietema
-* Added pastanaga theme views @robgietema
-* Added callout styling to draftjs @robgietema
 * Fix paragraph styling in draftjs @robgietema
-* Added image, file and news item view @robgietema
 * Fixed summary and tabular views @robgietema
-* Added social sharing @robgietema
-* Added commenting @robgietema
-* Added tags @robgietema
 * Upgrade to React 16 @sneridagh
 * Upgrade to Webpack 4 @sneridagh
-* Renew login token when almost expired @robgietema
-* Added actions reducers @robgietema
-* Add error reporting with Sentry support on client (default ErrorBoundary), server and Redux middleware @sneridagh
 * Review chunks policy. Keep it in sync with Webpack 4 policy with entrypoint bundles @sneridagh
-* Added tiles reducers @robgietema
 * Merged block styling to inline toolbar @robgietema
-* Add context aware toolbar @robgietema
-* Add hamburger menu navigation on mobile @sneridagh
-* Added editor prototype @robgietema
-* Add support for null values when reseting a field value @sneridagh
 * Actions aware toolbar @sneridagh
 * Fix permissions on the toolbar display menu @sneridagh
 
