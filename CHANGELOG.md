@@ -6,6 +6,8 @@
 
 ### Changes
 
+* Styled wysiwyg widget @robgietema
+
 ## 0.5.0 (2018-03-23)
 
 ### Added

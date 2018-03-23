@@ -42,6 +42,10 @@
   }
 }
 
+.ui.form .DraftEditor-root {
+  border-bottom: @inputBorder;
+}
+
 // From the original, due to the wrapper around label
 .ui.form .field .wrapper > label {
   display: block;
