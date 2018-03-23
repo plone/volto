@@ -1,5 +1,5 @@
 import path from 'path';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
@@ -127,10 +127,8 @@ module.exports = {
     // ignore dev config
     new webpack.IgnorePlugin(/\.\/dev/, /\/config$/),
     // css files from the extract-text-plugin loader
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: '[name]-[chunkhash].css',
-      disable: false,
-      allChunks: true,
     }),
     // optimizations
     new CopyWebpackPlugin([
