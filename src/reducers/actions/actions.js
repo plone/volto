@@ -7,7 +7,14 @@ import { GET_ACTIONS } from '../../constants/ActionTypes';
 
 const initialState = {
   error: null,
-  actions: [],
+  actions: {
+    object: [],
+    object_buttons: [],
+    site_actions: [],
+    user: [],
+    document_actions: [],
+    portal_tabs: [],
+  },
   loaded: false,
   loading: false,
 };
@@ -32,7 +39,7 @@ export default function actions(state = initialState, action = {}) {
       return {
         ...state,
         error: null,
-        actions: action.result.actions,
+        actions: action.result,
         loaded: true,
         loading: false,
       };
@@ -40,7 +47,7 @@ export default function actions(state = initialState, action = {}) {
       return {
         ...state,
         error: action.error,
-        actions: [],
+        actions: {},
         loaded: false,
         loading: false,
       };

@@ -1,0 +1,8 @@
+# Requires: API_PATH=http://localhost:55001/plone
+version: '3'
+
+services:
+  api:
+    build: ./docker
+    ports:
+      - "55001:55001"

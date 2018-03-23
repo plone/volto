@@ -38,6 +38,7 @@
 * Add hamburger menu navigation on mobile @sneridagh
 * Added editor prototype @robgietema
 * Add support for null values when reseting a field value @sneridagh
+* Actions aware toolbar @sneridagh
 
 ## 0.4.0 (2017-05-03)
 

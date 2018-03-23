@@ -70,24 +70,6 @@ exports[`Actions renders an actions component 1`] = `
         Copy
       </span>
     </div>
-    <div
-      aria-checked={undefined}
-      aria-disabled={true}
-      aria-selected={undefined}
-      className="disabled item"
-      onClick={[Function]}
-      role="option"
-    >
-      <i
-        aria-hidden="true"
-        className="paste icon"
-      />
-      <span
-        className="text"
-      >
-        Paste
-      </span>
-    </div>
     <a
       className="item"
       onClick={[Function]}
@@ -97,9 +79,7 @@ exports[`Actions renders an actions component 1`] = `
         aria-hidden="true"
         className="trash icon"
       />
-      <span>
-        Delete
-      </span>
+      Delete
     </a>
     <div
       aria-checked={undefined}

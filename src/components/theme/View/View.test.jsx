@@ -19,9 +19,108 @@ jest.mock('../SocialSharing/SocialSharing', () =>
 jest.mock('../Comments/Comments', () => jest.fn(() => <div id="Comments" />));
 jest.mock('../Tags/Tags', () => jest.fn(() => <div id="Tags" />));
 
+const actions = {
+  document_actions: [],
+  object: [
+    {
+      icon: '',
+      id: 'view',
+      title: 'View',
+    },
+    {
+      icon: '',
+      id: 'edit',
+      title: 'Edit',
+    },
+    {
+      icon: '',
+      id: 'folderContents',
+      title: 'Contents',
+    },
+    {
+      icon: '',
+      id: 'history',
+      title: 'History',
+    },
+    {
+      icon: '',
+      id: 'local_roles',
+      title: 'Sharing',
+    },
+  ],
+  object_buttons: [
+    {
+      icon: '',
+      id: 'cut',
+      title: 'Cut',
+    },
+    {
+      icon: '',
+      id: 'copy',
+      title: 'Copy',
+    },
+    {
+      icon: '',
+      id: 'delete',
+      title: 'Delete',
+    },
+    {
+      icon: '',
+      id: 'rename',
+      title: 'Rename',
+    },
+    {
+      icon: '',
+      id: 'ical_import_enable',
+      title: 'Enable icalendar import',
+    },
+  ],
+  portal_tabs: [],
+  site_actions: [
+    {
+      icon: '',
+      id: 'sitemap',
+      title: 'Site Map',
+    },
+    {
+      icon: '',
+      id: 'accessibility',
+      title: 'Accessibility',
+    },
+    {
+      icon: '',
+      id: 'contact',
+      title: 'Contact',
+    },
+  ],
+  user: [
+    {
+      icon: '',
+      id: 'preferences',
+      title: 'Preferences',
+    },
+    {
+      icon: '',
+      id: 'dashboard',
+      title: 'Dashboard',
+    },
+    {
+      icon: '',
+      id: 'plone_setup',
+      title: 'Site Setup',
+    },
+    {
+      icon: '',
+      id: 'logout',
+      title: 'Log out',
+    },
+  ],
+};
+
 describe('View', () => {
   it('renders an empty view', () => {
     const store = mockStore({
+      actions: { actions },
       content: {},
       intl: {
         locale: 'en',
@@ -39,6 +138,7 @@ describe('View', () => {
 
   it('renders a summary view', () => {
     const store = mockStore({
+      actions: { actions },
       content: { data: { layout: 'summary_view' } },
       intl: {
         locale: 'en',
@@ -56,6 +156,7 @@ describe('View', () => {
 
   it('renders a tabular view', () => {
     const store = mockStore({
+      actions: { actions },
       content: { data: { layout: 'tabular_view' } },
       intl: {
         locale: 'en',
@@ -73,6 +174,7 @@ describe('View', () => {
 
   it('renders a document view', () => {
     const store = mockStore({
+      actions: { actions },
       content: { data: {} },
       intl: {
         locale: 'en',

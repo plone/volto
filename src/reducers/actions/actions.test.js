@@ -5,7 +5,14 @@ describe('Actions reducer', () => {
   it('should return the initial state', () => {
     expect(actions()).toEqual({
       error: null,
-      actions: [],
+      actions: {
+        object: [],
+        object_buttons: [],
+        site_actions: [],
+        user: [],
+        document_actions: [],
+        portal_tabs: [],
+      },
       loaded: false,
       loading: false,
     });
@@ -18,7 +25,14 @@ describe('Actions reducer', () => {
       }),
     ).toEqual({
       error: null,
-      actions: [],
+      actions: {
+        object: [],
+        object_buttons: [],
+        site_actions: [],
+        user: [],
+        document_actions: [],
+        portal_tabs: [],
+      },
       loaded: false,
       loading: true,
     });
@@ -29,12 +43,66 @@ describe('Actions reducer', () => {
       actions(undefined, {
         type: `${GET_ACTIONS}_SUCCESS`,
         result: {
-          actions: [],
+          object: [],
+          object_buttons: [],
+          site_actions: [],
+          user: [
+            {
+              icon: '',
+              id: 'preferences',
+              title: 'Preferences',
+            },
+            {
+              icon: '',
+              id: 'dashboard',
+              title: 'Dashboard',
+            },
+            {
+              icon: '',
+              id: 'plone_setup',
+              title: 'Site Setup',
+            },
+            {
+              icon: '',
+              id: 'logout',
+              title: 'Log out',
+            },
+          ],
+          document_actions: [],
+          portal_tabs: [],
         },
       }),
     ).toEqual({
       error: null,
-      actions: [],
+      actions: {
+        object: [],
+        object_buttons: [],
+        site_actions: [],
+        user: [
+          {
+            icon: '',
+            id: 'preferences',
+            title: 'Preferences',
+          },
+          {
+            icon: '',
+            id: 'dashboard',
+            title: 'Dashboard',
+          },
+          {
+            icon: '',
+            id: 'plone_setup',
+            title: 'Site Setup',
+          },
+          {
+            icon: '',
+            id: 'logout',
+            title: 'Log out',
+          },
+        ],
+        document_actions: [],
+        portal_tabs: [],
+      },
       loaded: true,
       loading: false,
     });
@@ -48,7 +116,7 @@ describe('Actions reducer', () => {
       }),
     ).toEqual({
       error: 'failed',
-      actions: [],
+      actions: {},
       loaded: false,
       loading: false,
     });

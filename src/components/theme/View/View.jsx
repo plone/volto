@@ -10,12 +10,8 @@ import { connect } from 'react-redux';
 import { Portal } from 'react-portal';
 import { Link } from 'react-router';
 import { Dropdown, Icon } from 'semantic-ui-react';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { injectIntl, intlShape } from 'react-intl';
+import { find } from 'lodash';
 
 import {
   Comments,
@@ -34,28 +30,19 @@ import {
   Types,
   Workflow,
 } from '../../../components';
-import { getContent } from '../../../actions';
+import { getActions, getContent } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
-
-const messages = defineMessages({
-  contents: {
-    id: 'Contents',
-    defaultMessage: 'Contents',
-  },
-  edit: {
-    id: 'Edit',
-    defaultMessage: 'Edit',
-  },
-});
 
 @injectIntl
 @connect(
   (state, props) => ({
+    actions: state.actions.actions,
     content: state.content.data,
     pathname: props.location.pathname,
     versionId: props.location.query && props.location.query.version_id,
   }),
   {
+    getActions,
     getContent,
   },
 )
@@ -71,6 +58,12 @@ export default class View extends Component {
    * @static
    */
   static propTypes = {
+    actions: PropTypes.shape({
+      object: PropTypes.arrayOf(PropTypes.object),
+      object_buttons: PropTypes.arrayOf(PropTypes.object),
+      user: PropTypes.arrayOf(PropTypes.object),
+    }),
+    getActions: PropTypes.func.isRequired,
     /**
      * Action to get the content
      */
@@ -122,8 +115,13 @@ export default class View extends Component {
    * @static
    */
   static defaultProps = {
+    actions: null,
     content: null,
     versionId: null,
+  };
+
+  state = {
+    hasObjectButtons: null,
   };
 
   /**
@@ -132,6 +130,7 @@ export default class View extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
+    this.props.getActions(this.props.pathname);
     this.props.getContent(this.props.pathname, this.props.versionId);
   }
 
@@ -143,7 +142,15 @@ export default class View extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
+      this.props.getActions(nextProps.pathname);
       this.props.getContent(nextProps.pathname, this.props.versionId);
+    }
+
+    if (nextProps.actions.object_buttons) {
+      const objectButtons = nextProps.actions.object_buttons;
+      this.setState({
+        hasObjectButtons: !!objectButtons.length,
+      });
     }
   }
 
@@ -189,6 +196,14 @@ export default class View extends Component {
         : view.type.name
       : view.constructor.name;
     const path = getBaseUrl(this.props.pathname);
+    const editAction = find(this.props.actions.object, { id: 'edit' });
+    const folderContentsAction = find(this.props.actions.object, {
+      id: 'folderContents',
+    });
+    const historyAction = find(this.props.actions.object, { id: 'history' });
+    const sharingAction = find(this.props.actions.object, {
+      id: 'local_roles',
+    });
 
     return (
       <div id="view">
@@ -216,16 +231,19 @@ export default class View extends Component {
             pathname={this.props.pathname}
             inner={
               <div>
-                <Link to={`${path}/edit`} id="toolbar-edit" className="item">
-                  <Icon
-                    name="write"
-                    size="big"
-                    color="blue"
-                    title={this.props.intl.formatMessage(messages.edit)}
-                  />
-                </Link>
+                {editAction && (
+                  <Link to={`${path}/edit`} id="toolbar-edit" className="item">
+                    <Icon
+                      name="write"
+                      size="big"
+                      color="blue"
+                      title={editAction.title}
+                    />
+                  </Link>
+                )}
                 {this.props.content &&
-                  this.props.content.is_folderish && (
+                  this.props.content.is_folderish &&
+                  folderContentsAction && (
                     <Link
                       to={`${path}/contents`.replace(/\/\//g, '/')}
                       id="toolbar-folder-contents"
@@ -234,7 +252,7 @@ export default class View extends Component {
                       <Icon
                         name="folder open"
                         size="big"
-                        title={this.props.intl.formatMessage(messages.contents)}
+                        title={folderContentsAction.title}
                       />
                     </Link>
                   )}
@@ -248,24 +266,26 @@ export default class View extends Component {
                 >
                   <Dropdown.Menu>
                     <Workflow pathname={path} />
-                    <Actions pathname={path} />
+                    {this.state.hasObjectButtons && <Actions pathname={path} />}
                     <Display pathname={path} />
-                    <Link
-                      to={`${path}/history`}
-                      id="toolbar-history"
-                      className="item"
-                    >
-                      <Icon name="clock" size="big" />{' '}
-                      <FormattedMessage id="History" defaultMessage="History" />
-                    </Link>
-                    <Link
-                      to={`${path}/sharing`}
-                      id="toolbar-sharing"
-                      className="item"
-                    >
-                      <Icon name="share" size="big" />{' '}
-                      <FormattedMessage id="Sharing" defaultMessage="Sharing" />
-                    </Link>
+                    {historyAction && (
+                      <Link
+                        to={`${path}/history`}
+                        id="toolbar-history"
+                        className="item"
+                      >
+                        <Icon name="clock" size="big" /> {historyAction.title}
+                      </Link>
+                    )}
+                    {sharingAction && (
+                      <Link
+                        to={`${path}/sharing`}
+                        id="toolbar-sharing"
+                        className="item"
+                      >
+                        <Icon name="share" size="big" /> {sharingAction.title}
+                      </Link>
+                    )}
                   </Dropdown.Menu>
                 </Dropdown>
 
@@ -277,42 +297,53 @@ export default class View extends Component {
                   trigger={<Icon name="user" size="big" />}
                 >
                   <Dropdown.Menu>
-                    <Link to="/personal-preferences" className="item">
-                      <span>
-                        <Icon name="setting" />{' '}
-                        <FormattedMessage
-                          id="Preferences"
-                          defaultMessage="Preferences"
-                        />
-                      </span>
-                    </Link>
-                    <Link to="/controlpanel" className="item">
-                      <span>
-                        <Icon name="settings" />{' '}
-                        <FormattedMessage
-                          id="Site Setup"
-                          defaultMessage="Site Setup"
-                        />
-                      </span>
-                    </Link>
-                    <Link to="/controlpanel/moderate-comments" className="item">
-                      <span>
-                        <Icon name="comments" />{' '}
-                        <FormattedMessage
-                          id="Moderate comments"
-                          defaultMessage="Moderate comments"
-                        />
-                      </span>
-                    </Link>
-                    <Link to="/logout" id="toolbar-logout" className="item">
-                      <span>
-                        <Icon name="sign out" />{' '}
-                        <FormattedMessage
-                          id="Log out"
-                          defaultMessage="Log out"
-                        />
-                      </span>
-                    </Link>
+                    {this.props.actions.user &&
+                      this.props.actions.user.map(item => {
+                        switch (item.id) {
+                          case 'preferences':
+                            return (
+                              <Link
+                                key={item.id}
+                                to="/personal-preferences"
+                                className="item"
+                              >
+                                <span>
+                                  <Icon name="setting" /> {item.title}
+                                </span>
+                              </Link>
+                            );
+
+                          case 'plone_setup':
+                            return (
+                              <Link
+                                key={item.id}
+                                to="/controlpanel"
+                                className="item"
+                              >
+                                <span>
+                                  <Icon name="settings" /> {item.title}
+                                </span>
+                              </Link>
+                            );
+
+                          case 'logout':
+                            return (
+                              <Link
+                                key={item.id}
+                                to="/logout"
+                                id="toolbar-logout"
+                                className="item"
+                              >
+                                <span>
+                                  <Icon name="sign out" /> {item.title}
+                                </span>
+                              </Link>
+                            );
+                          default: {
+                            return null;
+                          }
+                        }
+                      })}
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
