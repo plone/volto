@@ -224,32 +224,32 @@ export default class WysiwygEditor extends Component {
         inline
         required={required}
         error={error.length > 0}
-        className={description ? 'help' : ''}
+        className={description ? 'help wysiwyg' : 'wysiwyg'}
       >
         <Grid>
           <Grid.Row stretched>
             <Grid.Column width="4">
-              <label htmlFor={`field-${id}`}>{title}</label>
+              <div className="wrapper">
+                <label htmlFor={`field-${id}`}>{title}</label>
+              </div>
             </Grid.Column>
             <Grid.Column width="8">
-              <Segment>
-                <div style={{ boxSizing: 'initial' }}>
-                  <Editor
-                    id={`field-${id}`}
-                    onChange={this.onChange}
-                    editorState={this.state.editorState}
-                    plugins={[inlineToolbarPlugin, linkPlugin]}
-                    blockRenderMap={extendedBlockRenderMap}
-                    blockStyleFn={contentBlock => {
-                      const type = contentBlock.getType();
-                      if (type === 'callout') {
-                        return 'callout';
-                      }
-                      return null;
-                    }}
-                  />
-                </div>
-              </Segment>
+              <div style={{ boxSizing: 'initial' }}>
+                <Editor
+                  id={`field-${id}`}
+                  onChange={this.onChange}
+                  editorState={this.state.editorState}
+                  plugins={[inlineToolbarPlugin, linkPlugin]}
+                  blockRenderMap={extendedBlockRenderMap}
+                  blockStyleFn={contentBlock => {
+                    const type = contentBlock.getType();
+                    if (type === 'callout') {
+                      return 'callout';
+                    }
+                    return null;
+                  }}
+                />
+              </div>
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
                   {message}
@@ -264,8 +264,8 @@ export default class WysiwygEditor extends Component {
               </Grid.Column>
             </Grid.Row>
           )}
+          <InlineToolbar />
         </Grid>
-        <InlineToolbar />
       </Form.Field>
     );
   }

@@ -32,8 +32,17 @@
       display: block;
     }
     textarea {
-      min-height: 50px;
+      min-height: 60px;
       padding: 0;
+    }
+  }
+
+  &.wysiwyg {
+    .wrapper {
+      display: block;
+    }
+    .DraftEditor-root {
+      min-height: 60px;
     }
   }
 
