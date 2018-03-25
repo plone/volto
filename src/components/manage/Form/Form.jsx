@@ -7,11 +7,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { keys, map, uniq } from 'lodash';
 import {
-  Accordion,
   Button,
   Form as UiForm,
-  Icon,
   Segment,
+  Tab,
   Message,
 } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
@@ -73,7 +72,7 @@ class Form extends Component {
       required: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
     formData: PropTypes.objectOf(PropTypes.any),
-    onSubmit: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func,
     onCancel: PropTypes.func,
     submitLabel: PropTypes.string,
     resetAfterSubmit: PropTypes.bool,
@@ -96,6 +95,7 @@ class Form extends Component {
    */
   static defaultProps = {
     formData: {},
+    onSubmit: null,
     onCancel: null,
     submitLabel: null,
     resetAfterSubmit: false,
@@ -117,11 +117,9 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTab: 0,
       formData: props.formData,
       errors: {},
     };
-    this.selectTab = this.selectTab.bind(this);
     this.onChangeField = this.onChangeField.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -211,26 +209,12 @@ class Form extends Component {
   }
 
   /**
-   * Select tab handler
-   * @method selectTab
-   * @param {Object} event Event object.
-   * @param {number} index Selected tab index.
-   * @returns {undefined}
-   */
-  selectTab(event, { index }) {
-    this.setState({
-      currentTab: index,
-    });
-  }
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    const { schema, onCancel } = this.props;
-    const currentFieldset = schema.fieldsets[this.state.currentTab];
+    const { schema, onCancel, onSubmit } = this.props;
 
     return this.props.visual ? (
       <div>
@@ -270,45 +254,23 @@ class Form extends Component {
         error={keys(this.state.errors).length > 0}
       >
         <Segment.Group raised>
-          {this.props.title && (
-            <Segment className="primary">{this.props.title}</Segment>
-          )}
-          {keys(this.state.errors).length > 0 && (
-            <Message
-              icon="warning"
-              negative
-              attached
-              header={this.props.intl.formatMessage(messages.error)}
-              content={this.props.intl.formatMessage(
-                messages.thereWereSomeErrors,
-              )}
-            />
-          )}
-          {this.props.error && (
-            <Message
-              icon="warning"
-              negative
-              attached
-              header={this.props.intl.formatMessage(messages.error)}
-              content={this.props.error.message}
-            />
-          )}
-          {this.props.description && (
-            <Segment secondary>{this.props.description}</Segment>
-          )}
           {schema.fieldsets.length > 1 && (
-            <Accordion styled fluid exclusive={false}>
-              {map(schema.fieldsets, (item, index) => [
-                <Accordion.Title
-                  index={index}
-                  onClick={this.selectTab}
-                  active={this.state.currentTab === index}
-                >
-                  {item.title}
-                  <Icon color="black" name="dropdown" />
-                </Accordion.Title>,
-                <Accordion.Content active={this.state.currentTab === index}>
-                  {map(item.fields, field => (
+            <Tab
+              menu={{
+                secondary: true,
+                pointing: true,
+                attached: true,
+                tabular: true,
+              }}
+              panes={map(schema.fieldsets, item => ({
+                menuItem: item.title,
+                render: () => [
+                  this.props.title && (
+                    <Segment secondary attached>
+                      {this.props.title}
+                    </Segment>
+                  ),
+                  ...map(item.fields, field => (
                     <Field
                       {...schema.properties[field]}
                       id={field}
@@ -318,14 +280,40 @@ class Form extends Component {
                       key={field}
                       error={this.state.errors[field]}
                     />
-                  ))}
-                </Accordion.Content>,
-              ])}
-            </Accordion>
+                  )),
+                ],
+              }))}
+            />
           )}
           {schema.fieldsets.length === 1 && (
             <Segment>
-              {map(currentFieldset.fields, field => (
+              {this.props.title && (
+                <Segment className="primary">{this.props.title}</Segment>
+              )}
+              {this.props.description && (
+                <Segment secondary>{this.props.description}</Segment>
+              )}
+              {keys(this.state.errors).length > 0 && (
+                <Message
+                  icon="warning"
+                  negative
+                  attached
+                  header={this.props.intl.formatMessage(messages.error)}
+                  content={this.props.intl.formatMessage(
+                    messages.thereWereSomeErrors,
+                  )}
+                />
+              )}
+              {this.props.error && (
+                <Message
+                  icon="warning"
+                  negative
+                  attached
+                  header={this.props.intl.formatMessage(messages.error)}
+                  content={this.props.error.message}
+                />
+              )}
+              {map(schema.fieldsets[0].fields, field => (
                 <Field
                   {...schema.properties[field]}
                   id={field}
@@ -340,21 +328,23 @@ class Form extends Component {
           )}
           {!this.props.hideActions && (
             <Segment className="actions" clearing>
-              <Button
-                basic
-                circular
-                primary
-                floated="right"
-                icon="arrow right"
-                type="submit"
-                title={
-                  this.props.submitLabel
-                    ? this.props.submitLabel
-                    : this.props.intl.formatMessage(messages.save)
-                }
-                size="big"
-                loading={this.props.loading}
-              />
+              {onSubmit && (
+                <Button
+                  basic
+                  circular
+                  primary
+                  floated="right"
+                  icon="arrow right"
+                  type="submit"
+                  title={
+                    this.props.submitLabel
+                      ? this.props.submitLabel
+                      : this.props.intl.formatMessage(messages.save)
+                  }
+                  size="big"
+                  loading={this.props.loading}
+                />
+              )}
               {onCancel && (
                 <Button
                   basic

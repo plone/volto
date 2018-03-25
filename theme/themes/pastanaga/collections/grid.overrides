@@ -5,3 +5,7 @@
 .ui.grid > .header.row {
   padding-bottom: 0;
 }
+
+.ui.form .ui.grid > .row {
+  padding: 0;
+}

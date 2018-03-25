@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Label, TextArea } from 'semantic-ui-react';
+import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
 
 /**
@@ -21,6 +21,7 @@ const TextareaWidget = ({
   error,
   value,
   onChange,
+  onChangeSchema,
 }) => (
   <Form.Field
     inline
@@ -32,14 +33,30 @@ const TextareaWidget = ({
       <Grid.Row stretched>
         <Grid.Column width="4">
           <div className="wrapper">
-            <label htmlFor={`field-${id}`}>{title}</label>
+            <label htmlFor={`field-${id}`}>
+              {onChangeSchema && (
+                <i aria-hidden="true" className="grey bars icon drag handle" />
+              )}
+              {title}
+            </label>
           </div>
         </Grid.Column>
         <Grid.Column width="8">
+          {onChangeSchema && (
+            <div className="toolbar">
+              <a className="item" onClick={() => {}}>
+                <Icon name="write square" size="large" color="blue" />
+              </a>
+              <a className="item" onClick={() => {}}>
+                <Icon name="close" size="large" color="red" />
+              </a>
+            </div>
+          )}
           <TextArea
             id={`field-${id}`}
             name={id}
             value={value || ''}
+            disabled={onChangeSchema !== null}
             onChange={({ target }) =>
               onChange(id, target.value === '' ? undefined : target.value)
             }
@@ -75,6 +92,7 @@ TextareaWidget.propTypes = {
   error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  onChangeSchema: PropTypes.func,
 };
 
 /**
@@ -87,6 +105,7 @@ TextareaWidget.defaultProps = {
   required: false,
   error: [],
   value: null,
+  onChangeSchema: null,
 };
 
 export default TextareaWidget;

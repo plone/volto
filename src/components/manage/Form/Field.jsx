@@ -12,6 +12,7 @@ import {
   DatetimeWidget,
   FileWidget,
   PasswordWidget,
+  SchemaWidget,
   SelectWidget,
   TextWidget,
   TextareaWidget,
@@ -25,6 +26,9 @@ import {
  * @returns {string} Markup of the component.
  */
 const Field = props => {
+  if (props.id === 'schema') {
+    return <SchemaWidget {...props} />;
+  }
   if (props.widget) {
     switch (props.widget) {
       case 'richtext':
@@ -63,7 +67,7 @@ Field.propTypes = {
   widget: PropTypes.string,
   choices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   type: PropTypes.string,
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
 };
 
 /**

@@ -10,7 +10,7 @@ import Editor from 'draft-js-plugins-editor';
 import { stateToHTML } from 'draft-js-export-html';
 import { stateFromHTML } from 'draft-js-import-html';
 import { DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
-import { Form, Grid, Label, Segment, TextArea } from 'semantic-ui-react';
+import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
 import createInlineToolbarPlugin, {
   Separator,
@@ -112,6 +112,10 @@ export default class WysiwygEditor extends Component {
      * On change handler
      */
     onChange: PropTypes.func.isRequired,
+    /**
+     * On change handler
+     */
+    onChangeSchema: PropTypes.func,
   };
 
   /**
@@ -128,6 +132,7 @@ export default class WysiwygEditor extends Component {
       encoding: 'utf8',
     },
     error: [],
+    onChangeSchema: null,
   };
 
   /**
@@ -230,10 +235,28 @@ export default class WysiwygEditor extends Component {
           <Grid.Row stretched>
             <Grid.Column width="4">
               <div className="wrapper">
-                <label htmlFor={`field-${id}`}>{title}</label>
+                <label htmlFor={`field-${id}`}>
+                  {this.props.onChangeSchema && (
+                    <i
+                      aria-hidden="true"
+                      className="grey bars icon drag handle"
+                    />
+                  )}
+                  {title}
+                </label>
               </div>
             </Grid.Column>
             <Grid.Column width="8">
+              {this.props.onChangeSchema && (
+                <div className="toolbar">
+                  <a className="item" onClick={() => {}}>
+                    <Icon name="write square" size="large" color="blue" />
+                  </a>
+                  <a className="item" onClick={() => {}}>
+                    <Icon name="close" size="large" color="red" />
+                  </a>
+                </div>
+              )}
               <div style={{ boxSizing: 'initial' }}>
                 <Editor
                   id={`field-${id}`}

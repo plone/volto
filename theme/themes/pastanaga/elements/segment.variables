@@ -87,10 +87,10 @@
 /* Attached */
 @attachedTopOffset: 0px;
 @attachedBottomOffset: 0px;
-@attachedHorizontalOffset: -@borderWidth;
-@attachedWidth: ~"calc(100% + "-@attachedHorizontalOffset * 2~")";
+@attachedHorizontalOffset: 0;
+@attachedWidth: 100%;
 @attachedBoxShadow: none;
-@attachedBorder: @borderWidth solid @solidBorderColor;
+@attachedBorder: 0;
 @attachedBottomBoxShadow:
   @boxShadow,
   @attachedBoxShadow

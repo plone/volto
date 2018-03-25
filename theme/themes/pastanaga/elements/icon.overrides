@@ -452,7 +452,7 @@ i.icon.reply:before { content: "\f112"; }
 i.icon.reply.all:before { content: "\f122"; }
 i.icon.erase:before { content: "\f12d"; }
 i.icon.unlock.alternate:before { content: "\f13e"; }
-i.icon.write.square:before { content: "\f14b"; }
+i.icon.write.square:before { content: @icon-pen; }
 i.icon.share.square:before { content: "\f14d"; }
 i.icon.archive:before { content: "\f187"; }
 i.icon.translate:before { content: @icon-language; }
@@ -1118,7 +1118,7 @@ i.icon.linkify:before { content: @icon-link; }
 i.icon.chain:before { content: "\f0c1"; }
 i.icon.flask:before { content: "\f0c3"; }
 i.icon.sidebar:before { content: "\f0c9"; }
-i.icon.bars:before { content: "\f0c9"; }
+i.icon.bars:before { content: @icon-drag; }
 i.icon.list.ul:before { content: "\f0ca"; }
 i.icon.list.ol:before { content: "\f0cb"; }
 i.icon.numbered.list:before { content: "\f0cb"; }

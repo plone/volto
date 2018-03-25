@@ -128,3 +128,15 @@
     }
   }
 }
+
+.ui.secondary.attached.pointing.menu {
+  .item {
+    color: @blue;
+    padding: 1.4em 1em;
+    font-size: @large;
+  }
+  .active.item {
+    border-color: @teal;
+    color: @black;
+  }
+}

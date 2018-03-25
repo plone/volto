@@ -28,20 +28,26 @@
   }
 
   &.textarea {
-    .wrapper {
+    .wrapper,
+    .toolbar {
       display: block;
+      margin-top: 18px;
     }
     textarea {
       min-height: 60px;
       padding: 0;
+      margin-top: 18px;
     }
   }
 
   &.wysiwyg {
-    .wrapper {
+    .wrapper,
+    .toolbar {
       display: block;
+      margin-top: 18px;
     }
     .DraftEditor-root {
+      margin-top: 18px;
       min-height: 60px;
     }
   }
