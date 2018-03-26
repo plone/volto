@@ -16,6 +16,10 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { Field, ModalForm, SchemaWidgetFieldset } from '../../../components';
 
 const messages = defineMessages({
+  addField: {
+    id: 'Add field',
+    defaultMessage: 'Add field',
+  },
   addFieldset: {
     id: 'Add fieldset',
     defaultMessage: 'Add fieldset',
@@ -35,6 +39,22 @@ const messages = defineMessages({
   idDescription: {
     id: 'Used for programmatic access to the fieldset.',
     defaultMessage: 'Used for programmatic access to the fieldset.',
+  },
+  string: {
+    id: 'String',
+    defaultMessage: 'String',
+  },
+  text: {
+    id: 'Text',
+    defaultMessage: 'Text',
+  },
+  richtext: {
+    id: 'Richtext',
+    defaultMessage: 'Richtext',
+  },
+  type: {
+    id: 'Type',
+    defaultMessage: 'Type',
   },
   title: {
     id: 'Title',
@@ -110,9 +130,11 @@ export default class SchemaWidget extends Component {
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
+    this.onAddField = this.onAddField.bind(this);
     this.onAddFieldset = this.onAddFieldset.bind(this);
     this.onEditFieldset = this.onEditFieldset.bind(this);
     this.onDeleteFieldset = this.onDeleteFieldset.bind(this);
+    this.onShowAddField = this.onShowAddField.bind(this);
     this.onShowAddFieldset = this.onShowAddFieldset.bind(this);
     this.onShowEditFieldset = this.onShowEditFieldset.bind(this);
     this.onShowDeleteFieldset = this.onShowDeleteFieldset.bind(this);
@@ -120,11 +142,60 @@ export default class SchemaWidget extends Component {
     this.onOrderFieldset = this.onOrderFieldset.bind(this);
     this.onCancel = this.onCancel.bind(this);
     this.state = {
+      addField: null,
       addFieldset: null,
       editFieldset: null,
       deleteFieldset: null,
       currentFieldset: 0,
     };
+  }
+
+  /**
+   * Add field handler
+   * @method onAddField
+   * @param {Object} values Form values
+   * @returns {undefined}
+   */
+  onAddField(values) {
+    this.onChange({
+      ...this.props.value,
+      fieldsets: [
+        ...slice(this.props.value.fieldsets, 0, this.state.currentFieldset),
+        {
+          ...this.props.value.fieldsets[this.state.currentFieldset],
+          fields: [
+            ...this.props.value.fieldsets[this.state.currentFieldset].fields,
+            values.id,
+          ],
+        },
+        ...slice(this.props.value.fieldsets, this.state.currentFieldset + 1),
+      ],
+      properties: {
+        ...this.props.value.properties,
+        [values.id]: {
+          title: values.title,
+          ...(type => {
+            switch (type) {
+              case 'textarea':
+                return {
+                  type: 'string',
+                  widget: 'textarea',
+                };
+              case 'wysiwyg':
+                return {
+                  type: 'string',
+                  widget: 'richtext',
+                };
+              default:
+                return {
+                  type: 'string',
+                };
+            }
+          })(values.type),
+        },
+      },
+    });
+    this.onCancel();
   }
 
   /**
@@ -196,9 +267,21 @@ export default class SchemaWidget extends Component {
    */
   onCancel() {
     this.setState({
+      addField: null,
       addFieldset: null,
       editFieldset: null,
       deleteFieldset: null,
+    });
+  }
+
+  /**
+   * Show add field handler
+   * @method onShowAddField
+   * @returns {undefined}
+   */
+  onShowAddField() {
+    this.setState({
+      addField: true,
     });
   }
 
@@ -278,8 +361,6 @@ export default class SchemaWidget extends Component {
   render() {
     const { value, error } = this.props;
 
-    console.log(value);
-
     return (
       <Form method="post" error={keys(error).length > 0}>
         <Segment.Group raised>
@@ -296,11 +377,9 @@ export default class SchemaWidget extends Component {
                 onOrderFieldset={this.onOrderFieldset}
               />
             ))}
-            <Menu.Item key="add">
-              <a onClick={this.onShowAddFieldset}>
-                <Icon name="plus" size="large" />
-              </a>
-            </Menu.Item>
+            <a className="item" onClick={this.onShowAddFieldset}>
+              <Icon name="plus" size="large" />
+            </a>
           </div>
           {map(value.fieldsets[this.state.currentFieldset].fields, field => (
             <Field
@@ -319,13 +398,62 @@ export default class SchemaWidget extends Component {
                     <label>Add new field</label>
                   </div>
                   <div className="toolbar">
-                    <Icon name="plus" color="blue" size="large" />
+                    <a className="item" onClick={this.onShowAddField}>
+                      <Icon name="plus" color="blue" size="large" />
+                    </a>
                   </div>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
           </Form.Field>,
         </Segment.Group>
+        {this.state.addField !== null && (
+          <ModalForm
+            onSubmit={this.onAddField}
+            onCancel={this.onCancel}
+            title={this.props.intl.formatMessage(messages.addField)}
+            formData={{
+              type: '',
+              id: '',
+              title: '',
+            }}
+            schema={{
+              fieldsets: [
+                {
+                  id: 'default',
+                  title: this.props.intl.formatMessage(messages.default),
+                  fields: ['type', 'title', 'id'],
+                },
+              ],
+              properties: {
+                type: {
+                  type: 'string',
+                  title: this.props.intl.formatMessage(messages.type),
+                  choices: [
+                    ['text', this.props.intl.formatMessage(messages.string)],
+                    ['textarea', this.props.intl.formatMessage(messages.text)],
+                    [
+                      'wysiwyg',
+                      this.props.intl.formatMessage(messages.richtext),
+                    ],
+                  ],
+                },
+                id: {
+                  type: 'string',
+                  title: this.props.intl.formatMessage(messages.idTitle),
+                  description: this.props.intl.formatMessage(
+                    messages.idDescription,
+                  ),
+                },
+                title: {
+                  type: 'string',
+                  title: this.props.intl.formatMessage(messages.title),
+                },
+              },
+              required: ['type', 'id', 'title'],
+            }}
+          />
+        )}
         {this.state.addFieldset !== null && (
           <ModalForm
             onSubmit={this.onAddFieldset}

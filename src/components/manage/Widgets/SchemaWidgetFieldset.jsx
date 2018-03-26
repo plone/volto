@@ -27,7 +27,7 @@ export const SchemaWidgetFieldset = ({
 }) =>
   connectDropTarget(
     connectDragPreview(
-      <div
+      <a
         className={`item${active ? ' active' : ''}`}
         style={{ opacity: isDragging ? 0.5 : 1 }}
         onClick={() => onClick(order)}
@@ -52,7 +52,7 @@ export const SchemaWidgetFieldset = ({
         >
           <Icon name="close" size="large" color="red" />
         </a>
-      </div>,
+      </a>,
     ),
   );
 
