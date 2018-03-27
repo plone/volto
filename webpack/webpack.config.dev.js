@@ -3,7 +3,6 @@ import webpack from 'webpack';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import fs from 'fs';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const projectRootPath = path.resolve(__dirname, '../');
 

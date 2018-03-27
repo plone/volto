@@ -36,6 +36,7 @@ configuration.plugins.push(
 
 const options = {
   development: false,
+  useMiniCssExtractPlugin: true,
 };
 
 export default clientConfiguration(configuration, settings, options);
