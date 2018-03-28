@@ -13,7 +13,7 @@ import { Icon } from 'semantic-ui-react';
  * @function SchemaWidgetFieldset
  * @returns {string} Markup of the component.
  */
-export const SchemaWidgetFieldset = ({
+export const SchemaWidgetFieldsetComponent = ({
   connectDragSource,
   connectDragPreview,
   connectDropTarget,
@@ -61,7 +61,7 @@ export const SchemaWidgetFieldset = ({
  * @property {Object} propTypes Property types.
  * @static
  */
-SchemaWidgetFieldset.propTypes = {
+SchemaWidgetFieldsetComponent.propTypes = {
   connectDragPreview: PropTypes.func.isRequired,
   connectDragSource: PropTypes.func.isRequired,
   connectDropTarget: PropTypes.func.isRequired,
@@ -109,5 +109,5 @@ export default DropTarget(
       connectDragPreview: connect.dragPreview(),
       isDragging: monitor.isDragging(),
     }),
-  )(SchemaWidgetFieldset),
+  )(SchemaWidgetFieldsetComponent),
 );

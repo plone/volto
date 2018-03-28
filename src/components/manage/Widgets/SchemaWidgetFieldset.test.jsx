@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import { SchemaWidgetFieldset } from './SchemaWidgetFieldset';
+import { SchemaWidgetFieldsetComponent } from './SchemaWidgetFieldset';
 
 test('renders a contents item component', () => {
   const component = renderer.create(
-    <SchemaWidgetFieldset
+    <SchemaWidgetFieldsetComponent
       connectDragSource={x => x}
       connectDragPreview={x => x}
       connectDropTarget={x => x}
