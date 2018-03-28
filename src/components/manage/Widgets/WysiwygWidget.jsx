@@ -1,6 +1,6 @@
 /**
- * WysiwygEditor container.
- * @module components/manage/WysiwygEditor/WysiwygEditor
+ * WysiwygWidget container.
+ * @module components/manage/WysiwygWidget/WysiwygWidget
  */
 
 import React, { Component } from 'react';
@@ -26,6 +26,34 @@ import {
 } from 'draft-js-buttons';
 import createBlockStyleButton from 'draft-js-buttons/lib/utils/createBlockStyleButton';
 import createLinkPlugin from 'draft-js-anchor-plugin';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
+
+const messages = defineMessages({
+  default: {
+    id: 'Default',
+    defaultMessage: 'Default',
+  },
+  idTitle: {
+    id: 'Short Name',
+    defaultMessage: 'Short Name',
+  },
+  idDescription: {
+    id: 'Used for programmatic access to the fieldset.',
+    defaultMessage: 'Used for programmatic access to the fieldset.',
+  },
+  title: {
+    id: 'Title',
+    defaultMessage: 'Title',
+  },
+  description: {
+    id: 'Description',
+    defaultMessage: 'Description',
+  },
+  required: {
+    id: 'Required',
+    defaultMessage: 'Required',
+  },
+});
 
 const blockRenderMap = Map({
   callout: {
@@ -59,12 +87,13 @@ const inlineToolbarPlugin = createInlineToolbarPlugin({
 });
 const { InlineToolbar } = inlineToolbarPlugin;
 
+@injectIntl
 /**
- * WysiwygEditor container class.
- * @class WysiwygEditor
+ * WysiwygWidget container class.
+ * @class WysiwygWidget
  * @extends Component
  */
-export default class WysiwygEditor extends Component {
+export default class WysiwygWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -111,11 +140,19 @@ export default class WysiwygEditor extends Component {
     /**
      * On change handler
      */
-    onChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
     /**
-     * On change handler
+     * On delete handler
      */
-    onChangeSchema: PropTypes.func,
+    onDelete: PropTypes.func,
+    /**
+     * On edit handler
+     */
+    onEdit: PropTypes.func,
+    /**
+     * Internationalization
+     */
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -132,14 +169,16 @@ export default class WysiwygEditor extends Component {
       encoding: 'utf8',
     },
     error: [],
-    onChangeSchema: null,
+    onEdit: null,
+    onDelete: null,
+    onChange: null,
   };
 
   /**
    * Constructor
    * @method constructor
    * @param {Object} props Component properties
-   * @constructs WysiwygEditor
+   * @constructs WysiwygWidget
    */
   constructor(props) {
     super(props);
@@ -163,6 +202,37 @@ export default class WysiwygEditor extends Component {
       }
       this.state = { editorState };
     }
+
+    this.schema = {
+      fieldsets: [
+        {
+          id: 'default',
+          title: props.intl.formatMessage(messages.default),
+          fields: ['title', 'id', 'description', 'required'],
+        },
+      ],
+      properties: {
+        id: {
+          type: 'string',
+          title: props.intl.formatMessage(messages.idTitle),
+          description: props.intl.formatMessage(messages.idDescription),
+        },
+        title: {
+          type: 'string',
+          title: props.intl.formatMessage(messages.title),
+        },
+        description: {
+          type: 'string',
+          widget: 'textarea',
+          title: props.intl.formatMessage(messages.description),
+        },
+        required: {
+          type: 'boolean',
+          title: props.intl.formatMessage(messages.required),
+        },
+      },
+      required: ['id', 'title'],
+    };
 
     this.onChange = this.onChange.bind(this);
   }
@@ -201,7 +271,16 @@ export default class WysiwygEditor extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, title, description, required, value, error } = this.props;
+    const {
+      id,
+      title,
+      description,
+      required,
+      value,
+      error,
+      onEdit,
+      onDelete,
+    } = this.props;
 
     if (__SERVER__) {
       return (
@@ -236,7 +315,7 @@ export default class WysiwygEditor extends Component {
             <Grid.Column width="4">
               <div className="wrapper">
                 <label htmlFor={`field-${id}`}>
-                  {this.props.onChangeSchema && (
+                  {onEdit && (
                     <i
                       aria-hidden="true"
                       className="grey bars icon drag handle"
@@ -247,31 +326,35 @@ export default class WysiwygEditor extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              {this.props.onChangeSchema && (
+              {onEdit && (
                 <div className="toolbar">
-                  <a className="item" onClick={() => {}}>
+                  <a className="item" onClick={() => onEdit(id, this.schema)}>
                     <Icon name="write square" size="large" color="blue" />
                   </a>
-                  <a className="item" onClick={() => {}}>
+                  <a className="item" onClick={() => onDelete(id)}>
                     <Icon name="close" size="large" color="red" />
                   </a>
                 </div>
               )}
               <div style={{ boxSizing: 'initial' }}>
-                <Editor
-                  id={`field-${id}`}
-                  onChange={this.onChange}
-                  editorState={this.state.editorState}
-                  plugins={[inlineToolbarPlugin, linkPlugin]}
-                  blockRenderMap={extendedBlockRenderMap}
-                  blockStyleFn={contentBlock => {
-                    const type = contentBlock.getType();
-                    if (type === 'callout') {
-                      return 'callout';
-                    }
-                    return null;
-                  }}
-                />
+                {this.props.onChange ? (
+                  <Editor
+                    id={`field-${id}`}
+                    onChange={this.onChange}
+                    editorState={this.state.editorState}
+                    plugins={[inlineToolbarPlugin, linkPlugin]}
+                    blockRenderMap={extendedBlockRenderMap}
+                    blockStyleFn={contentBlock => {
+                      const type = contentBlock.getType();
+                      if (type === 'callout') {
+                        return 'callout';
+                      }
+                      return null;
+                    }}
+                  />
+                ) : (
+                  <div className="DraftEditor-root" />
+                )}
               </div>
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
@@ -287,7 +370,7 @@ export default class WysiwygEditor extends Component {
               </Grid.Column>
             </Grid.Row>
           )}
-          <InlineToolbar />
+          {this.props.onChange && <InlineToolbar />}
         </Grid>
       </Form.Field>
     );

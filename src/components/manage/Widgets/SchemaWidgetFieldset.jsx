@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
-import { Icon, Menu } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 
 /**
  * Schema widget fieldset component.
@@ -27,7 +27,7 @@ export const SchemaWidgetFieldset = ({
 }) =>
   connectDropTarget(
     connectDragPreview(
-      <a
+      <div
         className={`item${active ? ' active' : ''}`}
         style={{ opacity: isDragging ? 0.5 : 1 }}
         onClick={() => onClick(order)}
@@ -47,12 +47,12 @@ export const SchemaWidgetFieldset = ({
         <a
           onClick={event => {
             event.stopPropagation();
-            ShowDeleteFieldset(order);
+            onShowDeleteFieldset(order);
           }}
         >
           <Icon name="close" size="large" color="red" />
         </a>
-      </a>,
+      </div>,
     ),
   );
 

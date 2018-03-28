@@ -76,13 +76,13 @@ exports[`Comments renders a comments component 1`] = `
       className="ui raised segments"
     >
       <div
-        className="ui segment primary"
-      >
-        Comment
-      </div>
-      <div
         className="ui segment"
       >
+        <div
+          className="ui segment primary"
+        >
+          Comment
+        </div>
         <div
           className="inline required field textarea"
         >
@@ -109,6 +109,7 @@ exports[`Comments renders a comments component 1`] = `
                 className="eight wide column"
               >
                 <textarea
+                  disabled={false}
                   id="field-comment"
                   name="comment"
                   onChange={[Function]}

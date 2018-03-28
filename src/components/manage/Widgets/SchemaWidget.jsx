@@ -6,9 +6,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { findIndex, keys, map, omit, slice } from 'lodash';
+import { concat, findIndex, map, omit, slice, without } from 'lodash';
 import move from 'lodash-move';
-import { Confirm, Form, Grid, Icon, Menu, Segment } from 'semantic-ui-react';
+import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
@@ -23,6 +23,10 @@ const messages = defineMessages({
   addFieldset: {
     id: 'Add fieldset',
     defaultMessage: 'Add fieldset',
+  },
+  editField: {
+    id: 'Edit field',
+    defaultMessage: 'Edit field',
   },
   editFieldset: {
     id: 'Edit fieldset',
@@ -52,6 +56,10 @@ const messages = defineMessages({
     id: 'Richtext',
     defaultMessage: 'Richtext',
   },
+  checkbox: {
+    id: 'Checkbox',
+    defaultMessage: 'Checkbox',
+  },
   type: {
     id: 'Type',
     defaultMessage: 'Type',
@@ -60,10 +68,26 @@ const messages = defineMessages({
     id: 'Title',
     defaultMessage: 'Title',
   },
-  delete: {
+  description: {
+    id: 'Description',
+    defaultMessage: 'Description',
+  },
+  required: {
+    id: 'Required',
+    defaultMessage: 'Required',
+  },
+  deleteFieldset: {
     id: 'Are you sure you want to delete this fieldset including all fields?',
     defaultMessage:
       'Are you sure you want to delete this fieldset including all fields?',
+  },
+  deleteField: {
+    id: 'Are you sure you want to delete this field?',
+    defaultMessage: 'Are you sure you want to delete this field?',
+  },
+  error: {
+    id: 'Error',
+    defaultMessage: 'Error',
   },
 });
 
@@ -132,20 +156,27 @@ export default class SchemaWidget extends Component {
     this.onChange = this.onChange.bind(this);
     this.onAddField = this.onAddField.bind(this);
     this.onAddFieldset = this.onAddFieldset.bind(this);
+    this.onEditField = this.onEditField.bind(this);
     this.onEditFieldset = this.onEditFieldset.bind(this);
     this.onDeleteFieldset = this.onDeleteFieldset.bind(this);
+    this.onDeleteField = this.onDeleteField.bind(this);
     this.onShowAddField = this.onShowAddField.bind(this);
     this.onShowAddFieldset = this.onShowAddFieldset.bind(this);
     this.onShowEditFieldset = this.onShowEditFieldset.bind(this);
+    this.onShowEditField = this.onShowEditField.bind(this);
     this.onShowDeleteFieldset = this.onShowDeleteFieldset.bind(this);
+    this.onShowDeleteField = this.onShowDeleteField.bind(this);
     this.onSetCurrentFieldset = this.onSetCurrentFieldset.bind(this);
+    this.onOrderField = this.onOrderField.bind(this);
     this.onOrderFieldset = this.onOrderFieldset.bind(this);
     this.onCancel = this.onCancel.bind(this);
     this.state = {
       addField: null,
       addFieldset: null,
       editFieldset: null,
+      editField: null,
       deleteFieldset: null,
+      deleteField: null,
       currentFieldset: 0,
     };
   }
@@ -174,6 +205,7 @@ export default class SchemaWidget extends Component {
         ...this.props.value.properties,
         [values.id]: {
           title: values.title,
+          description: values.description,
           ...(type => {
             switch (type) {
               case 'textarea':
@@ -186,6 +218,10 @@ export default class SchemaWidget extends Component {
                   type: 'string',
                   widget: 'richtext',
                 };
+              case 'checkbox':
+                return {
+                  type: 'boolean',
+                };
               default:
                 return {
                   type: 'string',
@@ -194,6 +230,9 @@ export default class SchemaWidget extends Component {
           })(values.type),
         },
       },
+      required: values.required
+        ? [...this.props.value.required, values.id]
+        : this.props.value.required,
     });
     this.onCancel();
   }
@@ -231,6 +270,42 @@ export default class SchemaWidget extends Component {
   }
 
   /**
+   * Edit field handler
+   * @method onEditField
+   * @param {Object} values Field values
+   * @returns {undefined}
+   */
+  onEditField(values) {
+    this.onChange({
+      ...this.props.value,
+      fieldsets: [
+        ...slice(this.props.value.fieldsets, 0, this.state.currentFieldset),
+        {
+          ...this.props.value.fieldsets[this.state.currentFieldset],
+          fields: map(
+            this.props.value.fieldsets[this.state.currentFieldset].fields,
+            field => (field === this.state.editField.id ? values.id : field),
+          ),
+        },
+        ...slice(this.props.value.fieldsets, this.state.currentFieldset + 1),
+      ],
+      properties: {
+        ...omit(this.props.value.properties, [this.state.editField.id]),
+        [values.id]: {
+          ...this.props.value.properties[this.state.editField.id],
+          ...omit(values, ['id', 'required']),
+        },
+      },
+      required: values.required
+        ? concat(without(this.props.value.required, this.state.editField.id), [
+            values.id,
+          ])
+        : without(this.props.value.required, this.state.editField.id),
+    });
+    this.onCancel();
+  }
+
+  /**
    * Delete fieldset handler
    * @method onDeleteFieldset
    * @returns {undefined}
@@ -246,6 +321,30 @@ export default class SchemaWidget extends Component {
         this.props.value.properties,
         this.props.value.fieldsets[this.state.deleteFieldset].fields,
       ),
+    });
+    this.onCancel();
+  }
+
+  /**
+   * Delete field handler
+   * @method onDeleteField
+   * @returns {undefined}
+   */
+  onDeleteField() {
+    this.onChange({
+      ...this.props.value,
+      fieldsets: [
+        ...slice(this.props.value.fieldsets, 0, this.state.editFieldset),
+        {
+          ...this.props.value.fieldsets[this.state.currentFieldset],
+          fields: without(
+            this.props.value.fieldsets[this.state.currentFieldset].fields,
+            this.state.deleteField,
+          ),
+        },
+        ...slice(this.props.value.fieldsets, this.state.editFieldset + 1),
+      ],
+      properties: omit(this.props.value.properties, [this.state.deleteField]),
     });
     this.onCancel();
   }
@@ -270,7 +369,9 @@ export default class SchemaWidget extends Component {
       addField: null,
       addFieldset: null,
       editFieldset: null,
+      editField: null,
       deleteFieldset: null,
+      deleteField: null,
     });
   }
 
@@ -309,6 +410,22 @@ export default class SchemaWidget extends Component {
   }
 
   /**
+   * Show edit field handler
+   * @method onShowEditField
+   * @param {string} id Id of field
+   * @param {Object} schema Schema of the field
+   * @returns {undefined}
+   */
+  onShowEditField(id, schema) {
+    this.setState({
+      editField: {
+        id,
+        schema,
+      },
+    });
+  }
+
+  /**
    * Show delete fieldset handler
    * @method onShowDeleteFieldset
    * @param {Number} index Index of fieldset
@@ -322,6 +439,19 @@ export default class SchemaWidget extends Component {
   }
 
   /**
+   * Show delete field handler
+   * @method onShowDeleteField
+   * @param {String} field Field to delete
+   * @param {Object} event Event object
+   * @returns {undefined}
+   */
+  onShowDeleteField(field) {
+    this.setState({
+      deleteField: field,
+    });
+  }
+
+  /**
    * Set current fieldset handler
    * @method onSetCurrentFieldset
    * @param {Number} index Index of fieldset
@@ -330,6 +460,31 @@ export default class SchemaWidget extends Component {
   onSetCurrentFieldset(index) {
     this.setState({
       currentFieldset: index,
+    });
+  }
+
+  /**
+   * On order fieldset
+   * @method onOrderField
+   * @param {number} index Index
+   * @param {number} delta Delta
+   * @returns {undefined}
+   */
+  onOrderField(index, delta) {
+    this.onChange({
+      ...this.props.value,
+      fieldsets: [
+        ...slice(this.props.value.fieldsets, 0, this.state.currentFieldset),
+        {
+          ...this.props.value.fieldsets[this.state.currentFieldset],
+          fields: move(
+            this.props.value.fieldsets[this.state.currentFieldset].fields,
+            index,
+            index + delta,
+          ),
+        },
+        ...slice(this.props.value.fieldsets, this.state.currentFieldset + 1),
+      ],
     });
   }
 
@@ -362,8 +517,19 @@ export default class SchemaWidget extends Component {
     const { value, error } = this.props;
 
     return (
-      <Form method="post" error={keys(error).length > 0}>
+      <div>
         <Segment.Group raised>
+          {error.length > 0 &&
+            map(error, err => (
+              <Message
+                icon="warning"
+                key={err}
+                negative
+                attached
+                header={this.props.intl.formatMessage(messages.error)}
+                content={err}
+              />
+            ))}
           <div className="ui pointing secondary attached tabular menu">
             {map(value.fieldsets, (item, index) => (
               <SchemaWidgetFieldset
@@ -381,15 +547,21 @@ export default class SchemaWidget extends Component {
               <Icon name="plus" size="large" />
             </a>
           </div>
-          {map(value.fieldsets[this.state.currentFieldset].fields, field => (
-            <Field
-              {...value.properties[field]}
-              id={field}
-              required={value.required.indexOf(field) !== -1}
-              onChangeSchema={() => true}
-              key={field}
-            />
-          ))}
+          {map(
+            value.fieldsets[this.state.currentFieldset].fields,
+            (field, index) => (
+              <Field
+                {...value.properties[field]}
+                id={field}
+                required={value.required.indexOf(field) !== -1}
+                onOrder={this.onOrderField}
+                onEdit={this.onShowEditField}
+                order={index}
+                onDelete={this.onShowDeleteField}
+                key={field}
+              />
+            ),
+          )}
           <Form.Field inline>
             <Grid>
               <Grid.Row stretched>
@@ -405,7 +577,7 @@ export default class SchemaWidget extends Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-          </Form.Field>,
+          </Form.Field>
         </Segment.Group>
         {this.state.addField !== null && (
           <ModalForm
@@ -422,7 +594,7 @@ export default class SchemaWidget extends Component {
                 {
                   id: 'default',
                   title: this.props.intl.formatMessage(messages.default),
-                  fields: ['type', 'title', 'id'],
+                  fields: ['type', 'title', 'id', 'description', 'required'],
                 },
               ],
               properties: {
@@ -436,6 +608,10 @@ export default class SchemaWidget extends Component {
                       'wysiwyg',
                       this.props.intl.formatMessage(messages.richtext),
                     ],
+                    [
+                      'checkbox',
+                      this.props.intl.formatMessage(messages.checkbox),
+                    ],
                   ],
                 },
                 id: {
@@ -448,6 +624,15 @@ export default class SchemaWidget extends Component {
                 title: {
                   type: 'string',
                   title: this.props.intl.formatMessage(messages.title),
+                },
+                description: {
+                  type: 'string',
+                  widget: 'textarea',
+                  title: this.props.intl.formatMessage(messages.description),
+                },
+                required: {
+                  type: 'boolean',
+                  title: this.props.intl.formatMessage(messages.required),
                 },
               },
               required: ['type', 'id', 'title'],
@@ -488,6 +673,21 @@ export default class SchemaWidget extends Component {
             }}
           />
         )}
+        {this.state.editField !== null && (
+          <ModalForm
+            onSubmit={this.onEditField}
+            onCancel={this.onCancel}
+            title={this.props.intl.formatMessage(messages.editField)}
+            formData={{
+              ...this.props.value.properties[this.state.editField.id],
+              id: this.state.editField.id,
+              required:
+                this.props.value.required.indexOf(this.state.editField.id) !==
+                -1,
+            }}
+            schema={this.state.editField.schema}
+          />
+        )}
         {this.state.editFieldset !== null && (
           <ModalForm
             onSubmit={this.onEditFieldset}
@@ -525,12 +725,20 @@ export default class SchemaWidget extends Component {
         {this.state.deleteFieldset !== null && (
           <Confirm
             open
-            content={this.props.intl.formatMessage(messages.delete)}
+            content={this.props.intl.formatMessage(messages.deleteFieldset)}
             onCancel={this.onCancel}
             onConfirm={this.onDeleteFieldset}
           />
         )}
-      </Form>
+        {this.state.deleteField !== null && (
+          <Confirm
+            open
+            content={this.props.intl.formatMessage(messages.deleteField)}
+            onCancel={this.onCancel}
+            onConfirm={this.onDeleteField}
+          />
+        )}
+      </div>
     );
   }
 }

@@ -4,6 +4,8 @@
 
 ### Added
 
+* Schema widget @robgietema
+
 ### Changes
 
 * Styled wysiwyg widget @robgietema

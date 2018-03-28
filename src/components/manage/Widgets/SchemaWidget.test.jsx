@@ -3,11 +3,11 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import CheckboxWidget from './CheckboxWidget';
+import SchemaWidget from './SchemaWidget';
 
 const mockStore = configureStore();
 
-test('renders a checkbox widget component', () => {
+test('renders a schema widget component', () => {
   const store = mockStore({
     intl: {
       locale: 'en',
@@ -17,7 +17,12 @@ test('renders a checkbox widget component', () => {
 
   const component = renderer.create(
     <Provider store={store}>
-      <CheckboxWidget id="my-field" title="My field" onChange={() => {}} />
+      <SchemaWidget
+        id="my-field"
+        title="My field"
+        onChange={() => {}}
+        value={'{"fieldsets": [{"fields": []}]}'}
+      />
     </Provider>,
   );
   const json = component.toJSON();
