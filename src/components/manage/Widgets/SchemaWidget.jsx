@@ -255,7 +255,13 @@ export default class SchemaWidget extends Component {
   onAddFieldset(values) {
     this.onChange({
       ...this.props.value,
-      fieldsets: [...this.props.value.fieldsets, values],
+      fieldsets: [
+        ...this.props.value.fieldsets,
+        {
+          ...values,
+          fields: [],
+        },
+      ],
     });
     this.onCancel();
   }
@@ -348,7 +354,7 @@ export default class SchemaWidget extends Component {
     this.onChange({
       ...this.props.value,
       fieldsets: [
-        ...slice(this.props.value.fieldsets, 0, this.state.editFieldset),
+        ...slice(this.props.value.fieldsets, 0, this.state.currentFieldset),
         {
           ...this.props.value.fieldsets[this.state.currentFieldset],
           fields: without(
@@ -356,7 +362,7 @@ export default class SchemaWidget extends Component {
             this.state.deleteField,
           ),
         },
-        ...slice(this.props.value.fieldsets, this.state.editFieldset + 1),
+        ...slice(this.props.value.fieldsets, this.state.currentFieldset + 1),
       ],
       properties: omit(this.props.value.properties, [this.state.deleteField]),
     });
