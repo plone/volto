@@ -163,3 +163,7 @@
     }
   }
 }
+
+.ui.secondary.attached.segment {
+  text-transform: uppercase;
+}

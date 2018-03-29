@@ -73,7 +73,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
-                    disabled={undefined}
+                    disabled={false}
                     id="field-fullname"
                     name="fullname"
                     onChange={[Function]}
@@ -128,7 +128,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
-                    disabled={undefined}
+                    disabled={false}
                     id="field-email"
                     name="email"
                     onChange={[Function]}
@@ -183,7 +183,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
-                    disabled={undefined}
+                    disabled={false}
                     id="field-home_page"
                     name="home_page"
                     onChange={[Function]}
@@ -238,7 +238,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                   className="ui input"
                 >
                   <input
-                    disabled={undefined}
+                    disabled={false}
                     id="field-location"
                     name="location"
                     onChange={[Function]}

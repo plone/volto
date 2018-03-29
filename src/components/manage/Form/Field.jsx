@@ -5,6 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { DragSource, DropTarget } from 'react-dnd';
 
 import {
   ArrayWidget,
@@ -12,6 +13,7 @@ import {
   DatetimeWidget,
   FileWidget,
   PasswordWidget,
+  SchemaWidget,
   SelectWidget,
   TextWidget,
   TextareaWidget,
@@ -25,33 +27,94 @@ import {
  * @returns {string} Markup of the component.
  */
 const Field = props => {
-  if (props.widget) {
+  let Widget;
+  if (props.id === 'schema') {
+    Widget = SchemaWidget;
+  } else if (props.widget) {
     switch (props.widget) {
       case 'richtext':
-        return <WysiwygWidget {...props} />;
+        Widget = WysiwygWidget;
+        break;
       case 'textarea':
-        return <TextareaWidget {...props} />;
+        Widget = TextareaWidget;
+        break;
       case 'datetime':
-        return <DatetimeWidget {...props} />;
+        Widget = DatetimeWidget;
+        break;
       case 'password':
-        return <PasswordWidget {...props} />;
+        Widget = PasswordWidget;
+        break;
       default:
-        return <TextWidget {...props} />;
+        Widget = TextWidget;
+        break;
     }
+  } else if (props.choices) {
+    Widget = SelectWidget;
+  } else if (props.type === 'boolean') {
+    Widget = CheckboxWidget;
+  } else if (props.type === 'array') {
+    Widget = ArrayWidget;
+  } else if (props.type === 'object') {
+    Widget = FileWidget;
+  } else {
+    Widget = TextWidget;
   }
-  if (props.choices) {
-    return <SelectWidget {...props} />;
+  if (props.onOrder) {
+    const WrappedWidget = DropTarget(
+      'field',
+      {
+        hover(properties, monitor) {
+          const dragOrder = monitor.getItem().order;
+          const hoverOrder = properties.order;
+
+          if (dragOrder === hoverOrder) {
+            return;
+          }
+          properties.onOrder(dragOrder, hoverOrder - dragOrder);
+
+          monitor.getItem().order = hoverOrder;
+        },
+      },
+      connect => ({
+        connectDropTarget: connect.dropTarget(),
+      }),
+    )(
+      DragSource(
+        'field',
+        {
+          beginDrag(properties) {
+            return {
+              id: properties.label,
+              order: properties.order,
+            };
+          },
+        },
+        (connect, monitor) => ({
+          connectDragSource: connect.dragSource(),
+          connectDragPreview: connect.dragPreview(),
+          isDragging: monitor.isDragging(),
+        }),
+      )(
+        ({
+          connectDropTarget,
+          connectDragSource,
+          connectDragPreview,
+          ...rest
+        }) =>
+          connectDropTarget(
+            connectDragSource(
+              connectDragPreview(
+                <div>
+                  <Widget {...rest} />
+                </div>,
+              ),
+            ),
+          ),
+      ),
+    );
+    return <WrappedWidget {...props} />;
   }
-  if (props.type === 'boolean') {
-    return <CheckboxWidget {...props} />;
-  }
-  if (props.type === 'array') {
-    return <ArrayWidget {...props} />;
-  }
-  if (props.type === 'object') {
-    return <FileWidget {...props} />;
-  }
-  return <TextWidget {...props} />;
+  return <Widget {...props} />;
 };
 
 /**
@@ -63,7 +126,8 @@ Field.propTypes = {
   widget: PropTypes.string,
   choices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   type: PropTypes.string,
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  onOrder: PropTypes.func,
 };
 
 /**
@@ -75,6 +139,7 @@ Field.defaultProps = {
   widget: null,
   choices: null,
   type: 'string',
+  onOrder: null,
 };
 
 export default Field;

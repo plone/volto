@@ -4,6 +4,8 @@
 
 ### Added
 
+* Schema widget @robgietema
+
 ### Changes
 * Replace ExtractionTextCSSPlugin with the new mini-css-extract-plugin, adapt universal-webpack config @sneridagh
 

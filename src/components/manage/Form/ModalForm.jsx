@@ -74,7 +74,7 @@ export default class FormModal extends Component {
     formData: PropTypes.objectOf(PropTypes.any),
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func,
-    open: PropTypes.bool.isRequired,
+    open: PropTypes.bool,
     submitLabel: PropTypes.string,
     intl: intlShape.isRequired,
   };
@@ -88,6 +88,7 @@ export default class FormModal extends Component {
     submitLabel: null,
     onCancel: null,
     formData: {},
+    open: true,
   };
 
   /**

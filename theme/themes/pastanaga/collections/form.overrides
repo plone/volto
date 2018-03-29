@@ -55,3 +55,18 @@
   font-weight: @labelFontWeight;
   text-transform: @labelTextTransform;
 }
+
+.ui.form .toolbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+
+  .item {
+    cursor: pointer;
+  }
+}

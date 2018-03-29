@@ -29,55 +29,55 @@ jest.mock('../Widgets/WysiwygWidget', () =>
 
 describe('Field', () => {
   it('renders a richtext field', () => {
-    const component = renderer.create(<Field widget="richtext" />);
+    const component = renderer.create(<Field widget="richtext" id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders a textarea field', () => {
-    const component = renderer.create(<Field widget="textarea" />);
+    const component = renderer.create(<Field widget="textarea" id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders a datetime field', () => {
-    const component = renderer.create(<Field widget="datetime" />);
+    const component = renderer.create(<Field widget="datetime" id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders a password field', () => {
-    const component = renderer.create(<Field widget="password" />);
+    const component = renderer.create(<Field widget="password" id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders a text field', () => {
-    const component = renderer.create(<Field widget="text" />);
+    const component = renderer.create(<Field widget="text" id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders a select field', () => {
-    const component = renderer.create(<Field choices={[]} />);
+    const component = renderer.create(<Field choices={[]} id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders a boolean field', () => {
-    const component = renderer.create(<Field type="boolean" />);
+    const component = renderer.create(<Field type="boolean" id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders a array field', () => {
-    const component = renderer.create(<Field type="array" />);
+    const component = renderer.create(<Field type="array" id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders a fallback field', () => {
-    const component = renderer.create(<Field />);
+    const component = renderer.create(<Field id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });

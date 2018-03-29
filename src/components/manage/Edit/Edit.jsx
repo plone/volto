@@ -230,7 +230,7 @@ export class EditComponent extends Component {
               pathname={this.props.pathname}
               inner={
                 <div>
-                  <a className="item" icon onClick={() => this.form.onSubmit()}>
+                  <a className="item" onClick={() => this.form.onSubmit()}>
                     <Icon
                       name="save"
                       size="big"

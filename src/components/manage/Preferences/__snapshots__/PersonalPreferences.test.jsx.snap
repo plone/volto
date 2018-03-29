@@ -71,7 +71,7 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
               >
                 <div
                   aria-busy={undefined}
-                  aria-disabled={undefined}
+                  aria-disabled={false}
                   aria-expanded={false}
                   aria-multiselectable={undefined}
                   className="ui selection dropdown"

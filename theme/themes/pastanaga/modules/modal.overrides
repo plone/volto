@@ -9,3 +9,9 @@
   clear: both;
   visibility: hidden;
 }
+
+.ui.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
