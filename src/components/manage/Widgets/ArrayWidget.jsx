@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Label, Dropdown } from 'semantic-ui-react';
-import { map } from 'lodash';
+import { concat, map, uniqBy } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 const messages = defineMessages({
@@ -67,13 +67,25 @@ export default class ArrayWidget extends Component {
     super(props);
     this.onAddItem = this.onAddItem.bind(this);
     this.state = {
-      choices: props.items.choices
-        ? map(props.items.choices, choice => ({
-            key: choice[0],
-            text: choice[1],
-            value: choice[0],
-          }))
-        : [],
+      choices: uniqBy(
+        concat(
+          props.items.choices
+            ? map(props.items.choices, choice => ({
+                key: choice[0],
+                text: choice[1],
+                value: choice[0],
+              }))
+            : [],
+          props.value
+            ? map(props.value, value => ({
+                key: value,
+                text: value,
+                value,
+              }))
+            : [],
+        ),
+        'key',
+      ),
     };
   }
 

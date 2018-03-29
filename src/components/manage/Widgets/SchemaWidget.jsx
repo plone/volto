@@ -320,6 +320,11 @@ export default class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onDeleteFieldset() {
+    if (this.state.currentFieldset > this.props.value.fieldsets.length - 2) {
+      this.setState({
+        currentFieldset: this.state.currentFieldset - 1,
+      });
+    }
     this.onChange({
       ...this.props.value,
       fieldsets: [
