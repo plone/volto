@@ -60,6 +60,10 @@ const messages = defineMessages({
     id: 'Checkbox',
     defaultMessage: 'Checkbox',
   },
+  selection: {
+    id: 'Selection',
+    defaultMessage: 'Selection',
+  },
   type: {
     id: 'Type',
     defaultMessage: 'Type',
@@ -221,6 +225,11 @@ export default class SchemaWidget extends Component {
               case 'checkbox':
                 return {
                   type: 'boolean',
+                };
+              case 'selection':
+                return {
+                  type: 'string',
+                  choices: [],
                 };
               default:
                 return {
@@ -611,6 +620,10 @@ export default class SchemaWidget extends Component {
                     [
                       'checkbox',
                       this.props.intl.formatMessage(messages.checkbox),
+                    ],
+                    [
+                      'selection',
+                      this.props.intl.formatMessage(messages.selection),
                     ],
                   ],
                 },
