@@ -36,7 +36,6 @@
     "build:dev:server": "better-npm-run build_dev_server",
     "run:dev:server": "better-npm-run run_dev_server",
     "clear:dist": "rm -rf dist",
-    "eslint-check": "eslint --print-config .eslintrc | eslint-config-prettier-check",
     "build":
       "npm-run-all clear:dist prod:build:client i18n:build prod:build:server",
     "build:analyse":
@@ -49,7 +48,7 @@
     "jsdoc:src": "jsdoc -c jsdoc.src.json; : 'ignore minor errors'",
     "jsdoc:api": "jsdoc -c jsdoc.api.json; : 'ignore minor errors'",
     "lint":
-      "./node_modules/eslint/bin/eslint.js -c .eslintrc src --format checkstyle --output-file eslint.xml && npm run eslint-check",
+      "./node_modules/eslint/bin/eslint.js -c .eslintrc src --format checkstyle --output-file eslint.xml && eslint-config-prettier-check",
     "lint:fix": "./node_modules/eslint/bin/eslint.js -c .eslintrc src --fix",
     "prettier":
       "./node_modules/prettier/bin-prettier.js -l 'src/**/*.js' 'src/**/*.jsx'",
