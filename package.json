@@ -55,7 +55,7 @@
     "prettier:fix":
       "./node_modules/prettier/bin-prettier.js --write 'src/**/*.js' 'src/**/*.jsx'",
     "watch:test:unit": "better-npm-run watch_test_unit",
-    "test": "npm-run-all prettier lint test:unit",
+    "test": "npm-run-all lint test:unit",
     "test:unit": "better-npm-run test_unit",
     "test:unit:ci": "better-npm-run test_unit_ci",
     "test:unit:fix": "yarn run test:unit -- -u",
@@ -254,6 +254,7 @@
     "enzyme-to-json": "3.3.3",
     "eslint": "4.19.1",
     "eslint-config-airbnb": "16.1.0",
+    "eslint-config-prettier": "2.9.0",
     "eslint-loader": "2.0.0",
     "eslint-plugin-import": "2.10.0",
     "eslint-plugin-jsx-a11y": "6.0.3",

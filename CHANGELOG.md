@@ -11,6 +11,7 @@
 * Replace ExtractionTextCSSPlugin with the new mini-css-extract-plugin, adapt universal-webpack config @sneridagh
 * Styled wysiwyg widget @robgietema
 * Removed flow @robgietema
+* Fix eslint prettier config @robgietema
 
 ## 0.5.0 (2018-03-23)
 
