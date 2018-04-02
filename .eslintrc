@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb", "prettier"],
   "env": {
     "es6": true,
     "browser": true,
@@ -21,15 +21,10 @@
         }
       }
     ],
-    "arrow-parens": "off", // Keep compatible with prettier
-    "no-confusing-arrow": 0, // Keep compatible with prettier
-    "no-mixed-operators": 0, // Keep compatible with prettier
-    "indent": 0, // Keep compatible with prettier
     "prettier/prettier": [
       "error",
       { "trailingComma": "all", "singleQuote": true }
     ],
-    "function-paren-newline": 0,
     "jsx-a11y/anchor-is-valid": [ "error", { "components": [ "Link" ], "specialLink": [ "to" ] } ]
   },
   "globals": {
