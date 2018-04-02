@@ -7,9 +7,10 @@
 * Schema widget @robgietema
 
 ### Changes
-* Replace ExtractionTextCSSPlugin with the new mini-css-extract-plugin, adapt universal-webpack config @sneridagh
 
+* Replace ExtractionTextCSSPlugin with the new mini-css-extract-plugin, adapt universal-webpack config @sneridagh
 * Styled wysiwyg widget @robgietema
+* Removed flow @robgietema
 
 ## 0.5.0 (2018-03-23)
 

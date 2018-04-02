@@ -1,7 +1,6 @@
 /**
  * Url helper.
  * @module helpers/Url
- * @flow
  */
 
 import { last, memoize } from 'lodash';
@@ -13,7 +12,7 @@ import { last, memoize } from 'lodash';
  * @return {string} Base url of content object.
  */
 export const getBaseUrl = memoize(
-  (url: string): string =>
+  url =>
     url
       .replace(/\?.*$/, '')
       .replace('/add', '')
@@ -41,7 +40,7 @@ export const getBaseUrl = memoize(
  * @param {string} url Url to be parsed.
  * @return {string} View of content object.
  */
-export function getView(url: string): string {
+export function getView(url) {
   const view = last(url.replace(/\?.*$/, '').split('/'));
   if (
     [
@@ -67,7 +66,7 @@ export function getView(url: string): string {
  * @param {bool} isFolderish Is folderish.
  * @returns {string} Icon name.
  */
-export function getIcon(type: string, isFolderish: boolean): string {
+export function getIcon(type, isFolderish) {
   switch (type) {
     case 'Document':
       return 'file text outline';
