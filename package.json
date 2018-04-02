@@ -48,7 +48,7 @@
     "jsdoc:src": "jsdoc -c jsdoc.src.json; : 'ignore minor errors'",
     "jsdoc:api": "jsdoc -c jsdoc.api.json; : 'ignore minor errors'",
     "lint":
-      "./node_modules/eslint/bin/eslint.js -c .eslintrc src --format checkstyle --output-file eslint.xml",
+      "./node_modules/eslint/bin/eslint.js -c .eslintrc src --format checkstyle --output-file eslint.xml && eslint --print-config .eslintrc | eslint-config-prettier-check",
     "lint:fix": "./node_modules/eslint/bin/eslint.js -c .eslintrc src --fix",
     "prettier":
       "./node_modules/prettier/bin-prettier.js -l 'src/**/*.js' 'src/**/*.jsx'",
@@ -254,6 +254,7 @@
     "enzyme-to-json": "3.3.3",
     "eslint": "4.19.1",
     "eslint-config-airbnb": "16.1.0",
+    "eslint-config-prettier": "2.9.0",
     "eslint-loader": "2.0.0",
     "eslint-plugin-import": "2.10.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
