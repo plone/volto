@@ -8,6 +8,7 @@
 
 ### Changes
 
+* Upgrade to Node 8.11.1 @tisto
 * Replace ExtractionTextCSSPlugin with the new mini-css-extract-plugin, adapt universal-webpack config @sneridagh
 * Styled wysiwyg widget @robgietema
 * Removed flow @robgietema
