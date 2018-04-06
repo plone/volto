@@ -1,9 +1,22 @@
-import { addUser, getUser, editUser, editPassword } from './users';
+import {
+  addUser,
+  deleteUser,
+  editUser,
+  editPassword,
+  getUser,
+  getUsers,
+  setInitialPassword,
+  resetPassword,
+} from './users';
 import {
   ADD_USER,
+  DELETE_USER,
   GET_USER,
+  GET_USERS,
   EDIT_USER,
   EDIT_PASSWORD,
+  INITIAL_PASSWORD,
+  RESET_PASSWORD,
 } from '../../constants/ActionTypes';
 
 describe('Users action', () => {
@@ -23,7 +36,23 @@ describe('Users action', () => {
     });
   });
 
-  describe('getEdit', () => {
+  describe('deleteUser', () => {
+    it('should create an action to delete a user', () => {
+      const id = 'john';
+      const action = deleteUser(id);
+
+      expect(action.type).toEqual(DELETE_USER);
+
+      const apiMock = {
+        del: jest.fn(),
+      };
+      action.promise(apiMock);
+
+      expect(apiMock.del).toBeCalledWith(`/@users/${id}`);
+    });
+  });
+
+  describe('getUser', () => {
     it('should create an action to get a user', () => {
       const id = 'john';
       const action = getUser(id);
@@ -36,6 +65,37 @@ describe('Users action', () => {
       action.promise(apiMock);
 
       expect(apiMock.get).toBeCalledWith(`/@users/${id}`);
+    });
+  });
+
+  describe('getUsers', () => {
+    it('should create an action to get users', () => {
+      const action = getUsers();
+
+      expect(action.type).toEqual(GET_USERS);
+
+      const apiMock = {
+        get: jest.fn(),
+      };
+      action.promise(apiMock);
+
+      expect(apiMock.get).toBeCalledWith(`/@users`);
+    });
+  });
+
+  describe('getUsers', () => {
+    it('should create an action to get users with a query', () => {
+      const query = 'john';
+      const action = getUsers(query);
+
+      expect(action.type).toEqual(GET_USERS);
+
+      const apiMock = {
+        get: jest.fn(),
+      };
+      action.promise(apiMock);
+
+      expect(apiMock.get).toBeCalledWith(`/@users?query=${query}`);
     });
   });
 
@@ -73,6 +133,42 @@ describe('Users action', () => {
       expect(apiMock.post).toBeCalledWith(`/@users/${id}/reset-password`, {
         data: { old_password: oldPassword, new_password: newPassword },
       });
+    });
+  });
+
+  describe('setInitialPassword', () => {
+    it('should create an action to set the initial password', () => {
+      const id = 'john';
+      const resetToken = '1243';
+      const newPassword = 'verysecret';
+      const action = setInitialPassword(id, resetToken, newPassword);
+
+      expect(action.type).toEqual(INITIAL_PASSWORD);
+
+      const apiMock = {
+        post: jest.fn(),
+      };
+      action.promise(apiMock);
+
+      expect(apiMock.post).toBeCalledWith(`/@users/${id}/reset-password`, {
+        data: { reset_token: resetToken, new_password: newPassword },
+      });
+    });
+  });
+
+  describe('resetPassword', () => {
+    it('should create an action to reset the password', () => {
+      const id = 'john';
+      const action = resetPassword(id);
+
+      expect(action.type).toEqual(RESET_PASSWORD);
+
+      const apiMock = {
+        post: jest.fn(),
+      };
+      action.promise(apiMock);
+
+      expect(apiMock.post).toBeCalledWith(`/@users/${id}/reset-password`);
     });
   });
 });

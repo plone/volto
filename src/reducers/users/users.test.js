@@ -1,11 +1,22 @@
 import users from './users';
-import { GET_USER, EDIT_USER } from '../../constants/ActionTypes';
+import {
+  GET_USER,
+  GET_USERS,
+  EDIT_PASSWORD,
+  EDIT_USER,
+} from '../../constants/ActionTypes';
 
 describe('Users reducer', () => {
   it('should return the initial state', () => {
     expect(users()).toEqual({
       user: {},
+      users: [],
       add: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      delete: {
         error: null,
         loaded: false,
         loading: false,
@@ -15,7 +26,17 @@ describe('Users reducer', () => {
         loaded: false,
         loading: false,
       },
+      get_all: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
       edit: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      edit_password: {
         error: null,
         loaded: false,
         loading: false,
@@ -26,6 +47,11 @@ describe('Users reducer', () => {
         loading: false,
       },
       initial: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
+      reset: {
         error: null,
         loaded: false,
         loading: false,
@@ -38,32 +64,11 @@ describe('Users reducer', () => {
       users(undefined, {
         type: `${GET_USER}_PENDING`,
       }),
-    ).toEqual({
-      user: {},
-      add: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
+    ).toMatchObject({
       get: {
         error: null,
         loaded: false,
         loading: true,
-      },
-      edit: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
-      password: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
-      initial: {
-        error: null,
-        loaded: false,
-        loading: false,
       },
     });
   });
@@ -74,31 +79,11 @@ describe('Users reducer', () => {
         type: `${GET_USER}_SUCCESS`,
         result: 'result',
       }),
-    ).toEqual({
+    ).toMatchObject({
       user: 'result',
-      add: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
       get: {
         error: null,
         loaded: true,
-        loading: false,
-      },
-      edit: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
-      password: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
-      initial: {
-        error: null,
-        loaded: false,
         loading: false,
       },
     });
@@ -112,30 +97,44 @@ describe('Users reducer', () => {
           error: 'failed',
         },
       }),
-    ).toEqual({
+    ).toMatchObject({
       user: {},
-      add: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
       get: {
         error: 'failed',
         loaded: false,
         loading: false,
       },
-      edit: {
+    });
+  });
+
+  it('should handle GET_USERS_SUCCESS', () => {
+    expect(
+      users(undefined, {
+        type: `${GET_USERS}_SUCCESS`,
+        result: 'result',
+      }),
+    ).toMatchObject({
+      users: 'result',
+      get_all: {
         error: null,
-        loaded: false,
+        loaded: true,
         loading: false,
       },
-      password: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
-      initial: {
-        error: null,
+    });
+  });
+
+  it('should handle GET_USERS_FAIL', () => {
+    expect(
+      users(undefined, {
+        type: `${GET_USERS}_FAIL`,
+        error: {
+          error: 'failed',
+        },
+      }),
+    ).toMatchObject({
+      users: {},
+      get_all: {
+        error: 'failed',
         loaded: false,
         loading: false,
       },
@@ -147,32 +146,25 @@ describe('Users reducer', () => {
       users(undefined, {
         type: `${EDIT_USER}_SUCCESS`,
       }),
-    ).toEqual({
-      user: {},
-      add: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
-      get: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
+    ).toMatchObject({
       edit: {
         error: null,
         loaded: true,
         loading: false,
       },
-      password: {
+    });
+  });
+
+  it('should handle EDIT_PASSWORD_PENDING', () => {
+    expect(
+      users(undefined, {
+        type: `${EDIT_PASSWORD}_PENDING`,
+      }),
+    ).toMatchObject({
+      edit_password: {
         error: null,
         loaded: false,
-        loading: false,
-      },
-      initial: {
-        error: null,
-        loaded: false,
-        loading: false,
+        loading: true,
       },
     });
   });
@@ -185,30 +177,9 @@ describe('Users reducer', () => {
           error: 'failed',
         },
       }),
-    ).toEqual({
-      user: {},
-      add: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
-      get: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
+    ).toMatchObject({
       edit: {
         error: 'failed',
-        loaded: false,
-        loading: false,
-      },
-      password: {
-        error: null,
-        loaded: false,
-        loading: false,
-      },
-      initial: {
-        error: null,
         loaded: false,
         loading: false,
       },

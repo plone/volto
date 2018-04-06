@@ -5,6 +5,7 @@
 ### Added
 
 * Schema widget @robgietema
+* User actions and reducers @robgietema
 
 ### Changes
 
