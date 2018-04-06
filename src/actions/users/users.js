@@ -5,10 +5,13 @@
 
 import {
   ADD_USER,
+  DELETE_USER,
   GET_USER,
+  GET_USERS,
   EDIT_USER,
   EDIT_PASSWORD,
   INITIAL_PASSWORD,
+  RESET_PASSWORD,
 } from '../../constants/ActionTypes';
 
 /**
@@ -25,6 +28,19 @@ export function addUser(content) {
 }
 
 /**
+ * Delete user function.
+ * @function deleteUser
+ * @param {string} id User id
+ * @returns {Object} Delete user action.
+ */
+export function deleteUser(id) {
+  return {
+    type: DELETE_USER,
+    promise: api => api.del(`/@users/${id}`),
+  };
+}
+
+/**
  * Get user function
  * @function getUser
  * @param {string} id User id
@@ -34,6 +50,21 @@ export function getUser(id) {
   return {
     type: GET_USER,
     promise: api => api.get(`/@users/${id}`),
+  };
+}
+
+/**
+ * Get users function
+ * @function getUsers
+ * @param {string} query Query
+ * @returns {Object} Get users action
+ */
+export function getUsers(query) {
+  return {
+    type: GET_USERS,
+    promise: query
+      ? api => api.get(`/@users?query=${query}`)
+      : api => api.get('/@users'),
   };
 }
 
@@ -90,5 +121,18 @@ export function setInitialPassword(id, token, newPassword) {
           new_password: newPassword,
         },
       }),
+  };
+}
+
+/**
+ * Reset password function
+ * @function resetPassword
+ * @param {string} id User id
+ * @returns {Object} Reset password action.
+ */
+export function resetPassword(id) {
+  return {
+    type: RESET_PASSWORD,
+    promise: api => api.post(`/@users/${id}/reset-password`),
   };
 }
