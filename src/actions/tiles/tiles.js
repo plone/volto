@@ -10,7 +10,7 @@ import { GET_TILES } from '../../constants/ActionTypes';
  * @function getTiles
  * @returns {Object} Get tiles action.
  */
-export default function getTiles() {
+export function getTiles() {
   return {
     type: GET_TILES,
     promise: api => api.get('/@tiles'),

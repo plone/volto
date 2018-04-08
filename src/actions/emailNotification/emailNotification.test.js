@@ -1,4 +1,4 @@
-import emailNotification from './emailNotification';
+import { emailNotification } from './emailNotification';
 import { EMAIL_NOTIFICATION } from '../../constants/ActionTypes';
 
 describe('Send email notification', () => {

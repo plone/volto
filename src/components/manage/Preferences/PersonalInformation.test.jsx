@@ -23,7 +23,7 @@ describe('PersonalInformation', () => {
         get: {
           loaded: true,
         },
-        edit: {
+        update: {
           loading: false,
         },
       },

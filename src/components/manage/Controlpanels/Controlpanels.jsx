@@ -20,7 +20,7 @@ import {
 } from 'react-intl';
 
 import Icons from '../../../constants/ControlpanelIcons';
-import { getControlpanels } from '../../../actions';
+import { listControlpanels } from '../../../actions';
 import { Toolbar } from '../../../components';
 import { getBaseUrl } from '../../../helpers';
 
@@ -41,7 +41,7 @@ const messages = defineMessages({
     controlpanels: state.controlpanels.controlpanels,
     pathname: props.location.pathname,
   }),
-  dispatch => bindActionCreators({ getControlpanels }, dispatch),
+  dispatch => bindActionCreators({ listControlpanels }, dispatch),
 )
 /**
  * Controlpanels container class.
@@ -55,7 +55,7 @@ export default class Controlpanels extends Component {
    * @static
    */
   static propTypes = {
-    getControlpanels: PropTypes.func.isRequired,
+    listControlpanels: PropTypes.func.isRequired,
     controlpanels: PropTypes.arrayOf(
       PropTypes.shape({
         '@id': PropTypes.string,
@@ -73,7 +73,7 @@ export default class Controlpanels extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    this.props.getControlpanels();
+    this.props.listControlpanels();
   }
 
   /**

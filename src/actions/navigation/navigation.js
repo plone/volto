@@ -11,7 +11,7 @@ import { GET_NAVIGATION } from '../../constants/ActionTypes';
  * @param {string} url Content url.
  * @returns {Object} Get navigation action.
  */
-export default function getNavigation(url) {
+export function getNavigation(url) {
   return {
     type: GET_NAVIGATION,
     promise: api => api.get(`${url}/@navigation`),

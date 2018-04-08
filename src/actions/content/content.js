@@ -4,23 +4,23 @@
  */
 
 import {
-  ADD_CONTENT,
+  CREATE_CONTENT,
   DELETE_CONTENT,
-  EDIT_CONTENT,
+  UPDATE_CONTENT,
   GET_CONTENT,
   ORDER_CONTENT,
 } from '../../constants/ActionTypes';
 
 /**
- * Add content function.
- * @function addContent
+ * Create content function.
+ * @function createContent
  * @param {string} url Parent url.
  * @param {Object|Array} content Content data.
- * @returns {Object} Add content action.
+ * @returns {Object} Create content action.
  */
-export function addContent(url, content) {
+export function createContent(url, content) {
   return {
-    type: ADD_CONTENT,
+    type: CREATE_CONTENT,
     promise: Array.isArray(content)
       ? api => Promise.all(content.map(item => api.post(url, { data: item })))
       : api => api.post(url, { data: content }),
@@ -44,15 +44,15 @@ export function deleteContent(urls) {
 }
 
 /**
- * Edit content function.
- * @function editContent
+ * Update content function.
+ * @function updateContent
  * @param {string|Array} urls Content url(s).
  * @param {Object|Array} content Content data.
- * @returns {Object} Edit content action.
+ * @returns {Object} Update content action.
  */
-export function editContent(urls, content) {
+export function updateContent(urls, content) {
   return {
-    type: EDIT_CONTENT,
+    type: UPDATE_CONTENT,
     promise:
       typeof urls === 'string'
         ? api => api.patch(urls, { data: content })
@@ -72,7 +72,7 @@ export function editContent(urls, content) {
  * @param {string} url Content url
  * @param {string|number} delta Order delta
  * @param {Array} subset Subset ids
- * @returns {Object} Edit content action
+ * @returns {Object} Order content action
  */
 export function orderContent(parent, url, delta, subset) {
   return {
@@ -90,11 +90,11 @@ export function orderContent(parent, url, delta, subset) {
  * @param {string} url Content url
  * @param {string} on Sort on index
  * @param {string} order Sort order
- * @returns {Object} Edit content action
+ * @returns {Object} Sort content action
  */
 export function sortContent(url, on, order) {
   return {
-    type: EDIT_CONTENT,
+    type: UPDATE_CONTENT,
     promise: api =>
       api.patch(url, {
         data: { sort: { on, order } },

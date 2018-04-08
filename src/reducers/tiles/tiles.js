@@ -1,6 +1,6 @@
 /**
  * Tiles reducer.
- * @module reducers/tiles
+ * @module reducers/tiles/tiles
  */
 
 import { GET_TILES } from '../../constants/ActionTypes';

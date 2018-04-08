@@ -13,7 +13,7 @@ import { GET_DIFF } from '../../constants/ActionTypes';
  * @param {string} two Second version id
  * @returns {Object} Get diff action.
  */
-export default function getDiff(url, one, two) {
+export function getDiff(url, one, two) {
   return {
     type: GET_DIFF,
     promise: api =>

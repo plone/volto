@@ -1,6 +1,6 @@
 /**
  * Clipboard reducer.
- * @module reducers/clipboard
+ * @module reducers/clipboard/clipboard
  */
 
 import {

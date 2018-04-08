@@ -30,7 +30,7 @@ import {
   Types,
   Workflow,
 } from '../../../components';
-import { getActions, getContent } from '../../../actions';
+import { listActions, getContent } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
 @injectIntl
@@ -42,7 +42,7 @@ import { getBaseUrl } from '../../../helpers';
     versionId: props.location.query && props.location.query.version_id,
   }),
   {
-    getActions,
+    listActions,
     getContent,
   },
 )
@@ -63,7 +63,7 @@ export default class View extends Component {
       object_buttons: PropTypes.arrayOf(PropTypes.object),
       user: PropTypes.arrayOf(PropTypes.object),
     }),
-    getActions: PropTypes.func.isRequired,
+    listActions: PropTypes.func.isRequired,
     /**
      * Action to get the content
      */
@@ -130,7 +130,7 @@ export default class View extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    this.props.getActions(this.props.pathname);
+    this.props.listActions(this.props.pathname);
     this.props.getContent(this.props.pathname, this.props.versionId);
   }
 
@@ -142,7 +142,7 @@ export default class View extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.getActions(nextProps.pathname);
+      this.props.listActions(nextProps.pathname);
       this.props.getContent(nextProps.pathname, this.props.versionId);
     }
 

@@ -16,7 +16,7 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Form, Toolbar } from '../../../components';
 import {
   addMessage,
-  editControlpanel,
+  updateControlpanel,
   getControlpanel,
 } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
@@ -35,14 +35,14 @@ const messages = defineMessages({
 @injectIntl
 @connect(
   (state, props) => ({
-    controlpanel: state.controlpanel.controlpanel,
-    editRequest: state.controlpanel.edit,
+    controlpanel: state.controlpanels.controlpanel,
+    updateRequest: state.controlpanels.update,
     id: props.params.id,
     pathname: props.location.pathname,
   }),
   dispatch =>
     bindActionCreators(
-      { addMessage, editControlpanel, getControlpanel },
+      { addMessage, updateControlpanel, getControlpanel },
       dispatch,
     ),
 )
@@ -59,10 +59,10 @@ export default class Controlpanel extends Component {
    */
   static propTypes = {
     addMessage: PropTypes.func.isRequired,
-    editControlpanel: PropTypes.func.isRequired,
+    updateControlpanel: PropTypes.func.isRequired,
     getControlpanel: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
-    editRequest: PropTypes.shape({
+    updateRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
@@ -113,7 +113,7 @@ export default class Controlpanel extends Component {
    * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
-    if (this.props.editRequest.loading && nextProps.editRequest.loaded) {
+    if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       this.props.addMessage(
         null,
         this.props.intl.formatMessage(messages.changesSaved),
@@ -129,7 +129,7 @@ export default class Controlpanel extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    this.props.editControlpanel(this.props.controlpanel['@id'], data);
+    this.props.updateControlpanel(this.props.controlpanel['@id'], data);
   }
 
   /**
@@ -158,7 +158,7 @@ export default class Controlpanel extends Component {
               formData={this.props.controlpanel.data}
               onSubmit={this.onSubmit}
               onCancel={this.onCancel}
-              loading={this.props.editRequest.loading}
+              loading={this.props.updateRequest.loading}
             />
           </Container>
           <Portal node={__CLIENT__ && document.getElementById('toolbar')}>

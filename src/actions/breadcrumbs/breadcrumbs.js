@@ -11,7 +11,7 @@ import { GET_BREADCRUMBS } from '../../constants/ActionTypes';
  * @param {string} url Content url.
  * @returns {Object} Get breadcrumbs action.
  */
-export default function getBreadcrumbs(url) {
+export function getBreadcrumbs(url) {
   return {
     type: GET_BREADCRUMBS,
     promise: api => api.get(`${url}/@breadcrumbs`),

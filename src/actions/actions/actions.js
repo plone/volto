@@ -3,17 +3,17 @@
  * @module actions/actions/actions
  */
 
-import { GET_ACTIONS } from '../../constants/ActionTypes';
+import { LIST_ACTIONS } from '../../constants/ActionTypes';
 
 /**
- * Get actions.
- * @function getActions
+ * List actions.
+ * @function listActions
  * @param {string} url Content url.
- * @returns {Object} Get action action.
+ * @returns {Object} List actions action.
  */
-export default function getActions(url) {
+export function listActions(url) {
   return {
-    type: GET_ACTIONS,
+    type: LIST_ACTIONS,
     promise: api => api.get(`${url}/@actions`),
   };
 }

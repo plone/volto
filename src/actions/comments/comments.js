@@ -6,8 +6,8 @@
 import {
   ADD_COMMENT,
   DELETE_COMMENT,
-  EDIT_COMMENT,
-  GET_COMMENTS,
+  UPDATE_COMMENT,
+  LIST_COMMENTS,
 } from '../../constants/ActionTypes';
 
 /**
@@ -25,14 +25,14 @@ export function addComment(url, text) {
 }
 
 /**
- * Get comments function
- * @function getComments
+ * List comments function
+ * @function listComments
  * @param {string} url Content url
- * @returns {Object} Get comment action
+ * @returns {Object} List comment action
  */
-export function getComments(url) {
+export function listComments(url) {
   return {
-    type: GET_COMMENTS,
+    type: LIST_COMMENTS,
     promise: api => api.get(`${url}/@comments`),
   };
 }
@@ -51,15 +51,15 @@ export function deleteComment(url) {
 }
 
 /**
- * Edit comment function.
- * @function editComment
+ * Update comment function.
+ * @function updateComment
  * @param {string} url Content url(s).
  * @param {string} text Body of the comment.
- * @returns {Object} Edit content action.
+ * @returns {Object} Update content action.
  */
-export function editComment(url, text) {
+export function updateComment(url, text) {
   return {
-    type: EDIT_COMMENT,
+    type: UPDATE_COMMENT,
     promise: api => api.patch(url, { data: { text } }),
   };
 }

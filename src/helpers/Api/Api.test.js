@@ -1,6 +1,6 @@
 // import superagent from 'superagent';
 
-// import Api from './Api';
+// import { Api } from './Api';
 
 jest.mock('react-cookie', () => ({
   load: jest.fn(() => 'token'),

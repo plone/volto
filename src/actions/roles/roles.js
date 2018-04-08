@@ -10,7 +10,7 @@ import { LIST_ROLES } from '../../constants/ActionTypes';
  * @function listRoles
  * @returns {Object} List roles action.
  */
-export default function listRoles() {
+export function listRoles() {
   return {
     type: LIST_ROLES,
     promise: api => api.get('/@roles'),

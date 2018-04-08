@@ -1,4 +1,4 @@
-import getNavigation from './navigation';
+import { getNavigation } from './navigation';
 import { GET_NAVIGATION } from '../../constants/ActionTypes';
 
 describe('Navigation action', () => {

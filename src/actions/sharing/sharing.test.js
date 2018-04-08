@@ -1,14 +1,14 @@
-import { editSharing, getSharing } from './sharing';
-import { EDIT_SHARING, GET_SHARING } from '../../constants/ActionTypes';
+import { updateSharing, getSharing } from './sharing';
+import { UPDATE_SHARING, GET_SHARING } from '../../constants/ActionTypes';
 
 describe('Sharing action', () => {
-  describe('editSharing', () => {
-    it('should create an action to edit sharing', () => {
+  describe('updateSharing', () => {
+    it('should create an action to update sharing', () => {
       const url = 'http://localhost';
       const sharing = 'Hello World!';
-      const action = editSharing(url, sharing);
+      const action = updateSharing(url, sharing);
 
-      expect(action.type).toEqual(EDIT_SHARING);
+      expect(action.type).toEqual(UPDATE_SHARING);
 
       const apiMock = {
         post: jest.fn(),

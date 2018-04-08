@@ -1,8 +1,8 @@
 import content from './content';
 import {
-  ADD_CONTENT,
+  CREATE_CONTENT,
   DELETE_CONTENT,
-  EDIT_CONTENT,
+  UPDATE_CONTENT,
   GET_CONTENT,
 } from '../../constants/ActionTypes';
 import config from '../../config';
@@ -10,7 +10,7 @@ import config from '../../config';
 describe('Content reducer', () => {
   it('should return the initial state', () => {
     expect(content()).toEqual({
-      add: {
+      create: {
         loaded: false,
         loading: false,
         error: null,
@@ -20,7 +20,7 @@ describe('Content reducer', () => {
         loading: false,
         error: null,
       },
-      edit: {
+      update: {
         loaded: false,
         loading: false,
         error: null,
@@ -39,45 +39,24 @@ describe('Content reducer', () => {
     });
   });
 
-  it('should handle ADD_CONTENT_PENDING', () => {
+  it('should handle CREATE_CONTENT_PENDING', () => {
     expect(
       content(undefined, {
-        type: `${ADD_CONTENT}_PENDING`,
+        type: `${CREATE_CONTENT}_PENDING`,
       }),
-    ).toEqual({
-      add: {
+    ).toMatchObject({
+      create: {
         loaded: false,
         loading: true,
         error: null,
       },
-      delete: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      edit: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      get: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      order: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      data: null,
     });
   });
 
-  it('should handle ADD_CONTENT_SUCCESS', () => {
+  it('should handle CREATE_CONTENT_SUCCESS', () => {
     expect(
       content(undefined, {
-        type: `${ADD_CONTENT}_SUCCESS`,
+        type: `${CREATE_CONTENT}_SUCCESS`,
         result: {
           items: [
             {
@@ -86,29 +65,9 @@ describe('Content reducer', () => {
           ],
         },
       }),
-    ).toEqual({
-      add: {
+    ).toMatchObject({
+      create: {
         loaded: true,
-        loading: false,
-        error: null,
-      },
-      delete: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      edit: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      get: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      order: {
-        loaded: false,
         loading: false,
         error: null,
       },
@@ -123,37 +82,17 @@ describe('Content reducer', () => {
     });
   });
 
-  it('should handle ADD_CONTENT_FAIL', () => {
+  it('should handle CREATE_CONTENT_FAIL', () => {
     expect(
       content(undefined, {
-        type: `${ADD_CONTENT}_FAIL`,
+        type: `${CREATE_CONTENT}_FAIL`,
         error: 'failed',
       }),
-    ).toEqual({
-      add: {
+    ).toMatchObject({
+      create: {
         loaded: false,
         loading: false,
         error: 'failed',
-      },
-      delete: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      edit: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      get: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      order: {
-        loaded: false,
-        loading: false,
-        error: null,
       },
       data: null,
     });
@@ -164,33 +103,12 @@ describe('Content reducer', () => {
       content(undefined, {
         type: `${DELETE_CONTENT}_PENDING`,
       }),
-    ).toEqual({
-      add: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
+    ).toMatchObject({
       delete: {
         loaded: false,
         loading: true,
         error: null,
       },
-      edit: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      get: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      order: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      data: null,
     });
   });
 
@@ -199,33 +117,12 @@ describe('Content reducer', () => {
       content(undefined, {
         type: `${DELETE_CONTENT}_SUCCESS`,
       }),
-    ).toEqual({
-      add: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
+    ).toMatchObject({
       delete: {
         loaded: true,
         loading: false,
         error: null,
       },
-      edit: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      get: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      order: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      data: null,
     });
   });
 
@@ -235,139 +132,55 @@ describe('Content reducer', () => {
         type: `${DELETE_CONTENT}_FAIL`,
         error: 'failed',
       }),
-    ).toEqual({
-      add: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
+    ).toMatchObject({
       delete: {
         loaded: false,
         loading: false,
         error: 'failed',
       },
-      edit: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      get: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      order: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      data: null,
     });
   });
 
-  it('should handle EDIT_CONTENT_PENDING', () => {
+  it('should handle UPDATE_CONTENT_PENDING', () => {
     expect(
       content(undefined, {
-        type: `${EDIT_CONTENT}_PENDING`,
+        type: `${UPDATE_CONTENT}_PENDING`,
       }),
-    ).toEqual({
-      add: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      delete: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      edit: {
+    ).toMatchObject({
+      update: {
         loaded: false,
         loading: true,
         error: null,
       },
-      get: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      order: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      data: null,
     });
   });
 
-  it('should handle EDIT_CONTENT_SUCCESS', () => {
+  it('should handle UPDATE_CONTENT_SUCCESS', () => {
     expect(
       content(undefined, {
-        type: `${EDIT_CONTENT}_SUCCESS`,
+        type: `${UPDATE_CONTENT}_SUCCESS`,
       }),
-    ).toEqual({
-      add: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      delete: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      edit: {
+    ).toMatchObject({
+      update: {
         loaded: true,
         loading: false,
         error: null,
       },
-      get: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      order: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      data: null,
     });
   });
 
-  it('should handle EDIT_CONTENT_FAIL', () => {
+  it('should handle UPDATE_CONTENT_FAIL', () => {
     expect(
       content(undefined, {
-        type: `${EDIT_CONTENT}_FAIL`,
+        type: `${UPDATE_CONTENT}_FAIL`,
         error: 'failed',
       }),
-    ).toEqual({
-      add: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      delete: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      edit: {
+    ).toMatchObject({
+      update: {
         loaded: false,
         loading: false,
         error: 'failed',
       },
-      get: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      order: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      data: null,
     });
   });
 
@@ -376,30 +189,10 @@ describe('Content reducer', () => {
       content(undefined, {
         type: `${GET_CONTENT}_PENDING`,
       }),
-    ).toEqual({
-      add: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      delete: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      edit: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
+    ).toMatchObject({
       get: {
         loaded: false,
         loading: true,
-        error: null,
-      },
-      order: {
-        loaded: false,
-        loading: false,
         error: null,
       },
       data: null,
@@ -418,29 +211,9 @@ describe('Content reducer', () => {
           ],
         },
       }),
-    ).toEqual({
-      add: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      delete: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      edit: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
+    ).toMatchObject({
       get: {
         loaded: true,
-        loading: false,
-        error: null,
-      },
-      order: {
-        loaded: false,
         loading: false,
         error: null,
       },
@@ -461,31 +234,11 @@ describe('Content reducer', () => {
         type: `${GET_CONTENT}_FAIL`,
         error: 'failed',
       }),
-    ).toEqual({
-      add: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      delete: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
-      edit: {
-        loaded: false,
-        loading: false,
-        error: null,
-      },
+    ).toMatchObject({
       get: {
         loaded: false,
         loading: false,
         error: 'failed',
-      },
-      order: {
-        loaded: false,
-        loading: false,
-        error: null,
       },
       data: null,
     });

@@ -169,7 +169,7 @@ const messages = defineMessages({
     source: state.clipboard.source,
     clipboardRequest: state.clipboard.request,
     deleteRequest: state.content.delete,
-    editRequest: state.content.edit,
+    updateRequest: state.content.update,
   }),
   dispatch =>
     bindActionCreators(
@@ -218,7 +218,7 @@ export default class ContentsComponent extends Component {
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
-    editRequest: PropTypes.shape({
+    updateRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
@@ -343,7 +343,7 @@ export default class ContentsComponent extends Component {
       (this.props.clipboardRequest.loading &&
         nextProps.clipboardRequest.loaded) ||
       (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
-      (this.props.editRequest.loading && nextProps.editRequest.loaded) ||
+      (this.props.updateRequest.loading && nextProps.updateRequest.loaded) ||
       this.props.pathname !== nextProps.pathname
     ) {
       this.fetchContents(nextProps.pathname);

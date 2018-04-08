@@ -16,6 +16,7 @@
 * Styled wysiwyg widget @robgietema
 * Removed flow @robgietema
 * Fix eslint prettier config @robgietema
+* Refactor actions and reducers to match restapi docs naming @robgietema
 
 ## 0.5.0 (2018-03-23)
 

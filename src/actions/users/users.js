@@ -4,25 +4,25 @@
  */
 
 import {
-  ADD_USER,
+  CREATE_USER,
   DELETE_USER,
   GET_USER,
-  GET_USERS,
-  EDIT_USER,
-  EDIT_PASSWORD,
+  LIST_USERS,
+  UPDATE_USER,
+  UPDATE_PASSWORD,
   INITIAL_PASSWORD,
   RESET_PASSWORD,
 } from '../../constants/ActionTypes';
 
 /**
- * Add user function.
- * @function addUser
+ * Create user function.
+ * @function createUser
  * @param {Object|Array} content User data.
- * @returns {Object} Add user action.
+ * @returns {Object} Create user action.
  */
-export function addUser(content) {
+export function createUser(content) {
   return {
-    type: ADD_USER,
+    type: CREATE_USER,
     promise: api => api.post('/@users', { data: content }),
   };
 }
@@ -54,14 +54,14 @@ export function getUser(id) {
 }
 
 /**
- * Get users function
- * @function getUsers
+ * List users function
+ * @function listUsers
  * @param {string} query Query
- * @returns {Object} Get users action
+ * @returns {Object} List users action
  */
-export function getUsers(query) {
+export function listUsers(query) {
   return {
-    type: GET_USERS,
+    type: LIST_USERS,
     promise: query
       ? api => api.get(`/@users?query=${query}`)
       : api => api.get('/@users'),
@@ -69,30 +69,30 @@ export function getUsers(query) {
 }
 
 /**
- * Edit user function
- * @function editUser
+ * Update user function
+ * @function updateUser
  * @param {string} id User id
  * @param {Object} user User data.
- * @returns {Object} Edit user action.
+ * @returns {Object} Update user action.
  */
-export function editUser(id, user) {
+export function updateUser(id, user) {
   return {
-    type: EDIT_USER,
+    type: UPDATE_USER,
     promise: api => api.patch(`/@users/${id}`, { data: user }),
   };
 }
 
 /**
- * Edit password function
- * @function editPassword
+ * Update password function
+ * @function updatePassword
  * @param {string} id User id
  * @param {string} oldPassword Old password.
  * @param {string} newPassword New password.
- * @returns {Object} Edit password action.
+ * @returns {Object} Update password action.
  */
-export function editPassword(id, oldPassword, newPassword) {
+export function updatePassword(id, oldPassword, newPassword) {
   return {
-    type: EDIT_PASSWORD,
+    type: UPDATE_PASSWORD,
     promise: api =>
       api.post(`/@users/${id}/reset-password`, {
         data: {

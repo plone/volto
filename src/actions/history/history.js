@@ -20,7 +20,7 @@ export function getHistory(url) {
 
 /**
  * Revert history function.
- * @function reverHistory
+ * @function revertHistory
  * @param {string} url Content url.
  * @param {number} version Revert version.
  * @returns {Object} Revet history action.

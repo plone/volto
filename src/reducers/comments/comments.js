@@ -1,13 +1,13 @@
 /**
  * Comments reducer.
- * @module reducers/comments
+ * @module reducers/comments/comments
  */
 
 import {
   ADD_COMMENT,
   DELETE_COMMENT,
-  EDIT_COMMENT,
-  GET_COMMENTS,
+  UPDATE_COMMENT,
+  LIST_COMMENTS,
 } from '../../constants/ActionTypes';
 
 const initialState = {
@@ -21,12 +21,12 @@ const initialState = {
     loading: false,
     error: null,
   },
-  edit: {
+  update: {
     loaded: false,
     loading: false,
     error: null,
   },
-  get: {
+  list: {
     loaded: false,
     loading: false,
     error: null,
@@ -55,8 +55,8 @@ export default function comments(state = initialState, action = {}) {
   switch (action.type) {
     case `${ADD_COMMENT}_PENDING`:
     case `${DELETE_COMMENT}_PENDING`:
-    case `${EDIT_COMMENT}_PENDING`:
-    case `${GET_COMMENTS}_PENDING`:
+    case `${UPDATE_COMMENT}_PENDING`:
+    case `${LIST_COMMENTS}_PENDING`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -65,7 +65,7 @@ export default function comments(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${GET_COMMENTS}_SUCCESS`:
+    case `${LIST_COMMENTS}_SUCCESS`:
       return {
         ...state,
         items: action.result.items,
@@ -77,7 +77,7 @@ export default function comments(state = initialState, action = {}) {
       };
     case `${ADD_COMMENT}_SUCCESS`:
     case `${DELETE_COMMENT}_SUCCESS`:
-    case `${EDIT_COMMENT}_SUCCESS`:
+    case `${UPDATE_COMMENT}_SUCCESS`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -87,7 +87,7 @@ export default function comments(state = initialState, action = {}) {
         },
       };
     case `${ADD_COMMENT}_FAIL`:
-    case `${GET_COMMENTS}_FAIL`:
+    case `${LIST_COMMENTS}_FAIL`:
       return {
         ...state,
         items: [],

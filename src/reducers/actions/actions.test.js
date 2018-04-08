@@ -1,5 +1,5 @@
 import actions from './actions';
-import { GET_ACTIONS } from '../../constants/ActionTypes';
+import { LIST_ACTIONS } from '../../constants/ActionTypes';
 
 describe('Actions reducer', () => {
   it('should return the initial state', () => {
@@ -18,10 +18,10 @@ describe('Actions reducer', () => {
     });
   });
 
-  it('should handle GET_ACTIONS_PENDING', () => {
+  it('should handle LIST_ACTIONS_PENDING', () => {
     expect(
       actions(undefined, {
-        type: `${GET_ACTIONS}_PENDING`,
+        type: `${LIST_ACTIONS}_PENDING`,
       }),
     ).toEqual({
       error: null,
@@ -38,10 +38,10 @@ describe('Actions reducer', () => {
     });
   });
 
-  it('should handle GET_ACTIONS_SUCCESS', () => {
+  it('should handle LIST_ACTIONS_SUCCESS', () => {
     expect(
       actions(undefined, {
-        type: `${GET_ACTIONS}_SUCCESS`,
+        type: `${LIST_ACTIONS}_SUCCESS`,
         result: {
           object: [],
           object_buttons: [],
@@ -108,10 +108,10 @@ describe('Actions reducer', () => {
     });
   });
 
-  it('should handle GET_ACTIONS_FAIL', () => {
+  it('should handle LIST_ACTIONS_FAIL', () => {
     expect(
       actions(undefined, {
-        type: `${GET_ACTIONS}_FAIL`,
+        type: `${LIST_ACTIONS}_FAIL`,
         error: 'failed',
       }),
     ).toEqual({

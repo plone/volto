@@ -30,7 +30,7 @@ import {
   intlShape,
 } from 'react-intl';
 
-import { addContent } from '../../../actions';
+import { createContent } from '../../../actions';
 
 const messages = defineMessages({
   cancel: {
@@ -46,9 +46,9 @@ const messages = defineMessages({
 @injectIntl
 @connect(
   state => ({
-    request: state.content.add,
+    request: state.content.create,
   }),
-  dispatch => bindActionCreators({ addContent }, dispatch),
+  dispatch => bindActionCreators({ createContent }, dispatch),
 )
 /**
  * ContentsUploadModal class.
@@ -62,7 +62,7 @@ export default class ContentsUploadModal extends Component {
    * @static
    */
   static propTypes = {
-    addContent: PropTypes.func.isRequired,
+    createContent: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     request: PropTypes.shape({
       loading: PropTypes.bool,
@@ -154,7 +154,7 @@ export default class ContentsUploadModal extends Component {
   onSubmit() {
     Promise.all(map(this.state.files, file => readAsDataURL(file))).then(
       files => {
-        this.props.addContent(
+        this.props.createContent(
           this.props.pathname,
           map(this.state.files, (file, index) => {
             const fields = files[index].match(/^data:(.*);(.*),(.*)$/);

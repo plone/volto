@@ -23,7 +23,7 @@ describe('ChangePassword', () => {
         messages: {},
       },
       users: {
-        edit: {
+        update_password: {
           loading: false,
         },
       },

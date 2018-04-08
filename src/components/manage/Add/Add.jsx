@@ -15,7 +15,7 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Portal } from 'react-portal';
 import { Icon } from 'semantic-ui-react';
 
-import { addContent, getSchema } from '../../../actions';
+import { createContent, getSchema } from '../../../actions';
 import { Form, Toolbar } from '../../../components';
 import config from '../../../config';
 import { getBaseUrl } from '../../../helpers';
@@ -38,14 +38,14 @@ const messages = defineMessages({
 @injectIntl
 @connect(
   (state, props) => ({
-    request: state.content.add,
+    request: state.content.create,
     content: state.content.data,
     schema: state.schema.schema,
     pathname: props.location.pathname,
     returnUrl: props.location.query.return_url,
     type: props.location.query.type,
   }),
-  dispatch => bindActionCreators({ addContent, getSchema }, dispatch),
+  dispatch => bindActionCreators({ createContent, getSchema }, dispatch),
 )
 /**
  * AddComponent class.
@@ -59,7 +59,7 @@ export class AddComponent extends Component {
    * @static
    */
   static propTypes = {
-    addContent: PropTypes.func.isRequired,
+    createContent: PropTypes.func.isRequired,
     getSchema: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     schema: PropTypes.objectOf(PropTypes.any),
@@ -131,7 +131,7 @@ export class AddComponent extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    this.props.addContent(getBaseUrl(this.props.pathname), {
+    this.props.createContent(getBaseUrl(this.props.pathname), {
       ...data,
       '@type': this.props.type,
     });
@@ -218,7 +218,7 @@ export default asyncConnect([
       const { form } = getState();
       if (!isEmpty(form)) {
         return dispatch(
-          addContent(getBaseUrl(location.pathname), {
+          createContent(getBaseUrl(location.pathname), {
             ...pick(form, ['title', 'description', 'text']),
             '@type': 'Document',
           }),

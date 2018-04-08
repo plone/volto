@@ -15,7 +15,7 @@ jest.mock('../Form/Form', () => jest.fn(() => <div id="form" />));
 describe('Controlpanel', () => {
   it('renders a controlpanel component', () => {
     const store = mockStore({
-      controlpanel: {
+      controlpanels: {
         controlpanel: {
           '@id': 'http://localhost:8080/Plone/@controlpanels/date-and-time',
           title: 'Date and Time',
@@ -25,7 +25,7 @@ describe('Controlpanel', () => {
           },
           data: {},
         },
-        edit: {
+        update: {
           loading: false,
           loaded: true,
         },

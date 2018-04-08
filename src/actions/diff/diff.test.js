@@ -1,4 +1,4 @@
-import getDiff from './diff';
+import { getDiff } from './diff';
 import { GET_DIFF } from '../../constants/ActionTypes';
 
 describe('Diff action', () => {

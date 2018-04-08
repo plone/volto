@@ -1,4 +1,4 @@
-import getTiles from './tiles';
+import { getTiles } from './tiles';
 import { GET_TILES } from '../../constants/ActionTypes';
 
 describe('Tiles action', () => {

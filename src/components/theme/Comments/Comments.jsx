@@ -16,7 +16,7 @@ import {
 import moment from 'moment';
 import { Button, Grid, Segment } from 'semantic-ui-react';
 
-import { addComment, deleteComment, getComments } from '../../../actions';
+import { addComment, deleteComment, listComments } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import { CommentEditModal, Form } from '../../../components';
 import config from '../../../config';
@@ -46,7 +46,7 @@ const messages = defineMessages({
     deleteRequest: state.comments.delete,
   }),
   dispatch =>
-    bindActionCreators({ addComment, deleteComment, getComments }, dispatch),
+    bindActionCreators({ addComment, deleteComment, listComments }, dispatch),
 )
 /**
  * Comments container class.
@@ -62,7 +62,7 @@ export default class Comments extends Component {
   static propTypes = {
     addComment: PropTypes.func.isRequired,
     deleteComment: PropTypes.func.isRequired,
-    getComments: PropTypes.func.isRequired,
+    listComments: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
@@ -113,7 +113,7 @@ export default class Comments extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    this.props.getComments(getBaseUrl(this.props.pathname));
+    this.props.listComments(getBaseUrl(this.props.pathname));
   }
 
   /**
@@ -128,7 +128,7 @@ export default class Comments extends Component {
       (this.props.addRequest.loading && nextProps.addRequest.loaded) ||
       (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded)
     ) {
-      this.props.getComments(getBaseUrl(nextProps.pathname));
+      this.props.listComments(getBaseUrl(nextProps.pathname));
     }
   }
 
@@ -179,7 +179,7 @@ export default class Comments extends Component {
       editId: null,
       editText: null,
     });
-    this.props.getComments(getBaseUrl(this.props.pathname));
+    this.props.listComments(getBaseUrl(this.props.pathname));
   }
 
   /**

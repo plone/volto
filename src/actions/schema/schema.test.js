@@ -1,4 +1,4 @@
-import getSchema from './schema';
+import { getSchema } from './schema';
 import { GET_SCHEMA } from '../../constants/ActionTypes';
 
 describe('Schema action', () => {

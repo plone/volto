@@ -11,7 +11,7 @@ import { GET_SCHEMA } from '../../constants/ActionTypes';
  * @param {string} type Content type.
  * @returns {Object} Get schema action.
  */
-export default function getSchema(type) {
+export function getSchema(type) {
   return {
     type: GET_SCHEMA,
     promise: api => api.get(`/@types/${type}`),

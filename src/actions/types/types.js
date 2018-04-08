@@ -11,7 +11,7 @@ import { GET_TYPES } from '../../constants/ActionTypes';
  * @param {string} url Content url.
  * @returns {Object} Get types action.
  */
-export default function getTypes(url) {
+export function getTypes(url) {
   return {
     type: GET_TYPES,
     promise: api => api.get(`${url}/@types`),

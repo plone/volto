@@ -1,4 +1,4 @@
-import getBreadcrumbs from './breadcrumbs';
+import { getBreadcrumbs } from './breadcrumbs';
 import { GET_BREADCRUMBS } from '../../constants/ActionTypes';
 
 describe('Breadcrumbs action', () => {

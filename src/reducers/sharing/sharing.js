@@ -1,12 +1,12 @@
 /**
  * Sharing reducer.
- * @module reducers/sharing
+ * @module reducers/sharing/sharing
  */
 
-import { EDIT_SHARING, GET_SHARING } from '../../constants/ActionTypes';
+import { UPDATE_SHARING, GET_SHARING } from '../../constants/ActionTypes';
 
 const initialState = {
-  edit: {
+  update: {
     loaded: false,
     loading: false,
     error: null,
@@ -42,7 +42,7 @@ function getRequestKey(actionType) {
  */
 export default function sharing(state = initialState, action = {}) {
   switch (action.type) {
-    case `${EDIT_SHARING}_PENDING`:
+    case `${UPDATE_SHARING}_PENDING`:
     case `${GET_SHARING}_PENDING`:
       return {
         ...state,
@@ -52,7 +52,7 @@ export default function sharing(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${EDIT_SHARING}_SUCCESS`:
+    case `${UPDATE_SHARING}_SUCCESS`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -71,7 +71,7 @@ export default function sharing(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${EDIT_SHARING}_FAIL`:
+    case `${UPDATE_SHARING}_FAIL`:
       return {
         ...state,
         [getRequestKey(action.type)]: {

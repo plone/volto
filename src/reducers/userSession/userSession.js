@@ -1,6 +1,6 @@
 /**
  * User session reducer.
- * @module reducers/userSession
+ * @module reducers/userSession/userSession
  */
 
 import { LOGIN, LOGIN_RENEW, LOGOUT } from '../../constants/ActionTypes';

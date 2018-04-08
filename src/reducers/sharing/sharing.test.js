@@ -1,10 +1,10 @@
 import sharing from './sharing';
-import { EDIT_SHARING, GET_SHARING } from '../../constants/ActionTypes';
+import { UPDATE_SHARING, GET_SHARING } from '../../constants/ActionTypes';
 
 describe('Sharing reducer', () => {
   it('should return the initial state', () => {
     expect(sharing()).toEqual({
-      edit: {
+      update: {
         loaded: false,
         loading: false,
         error: null,
@@ -22,13 +22,13 @@ describe('Sharing reducer', () => {
     });
   });
 
-  it('should handle EDIT_SHARING_PENDING', () => {
+  it('should handle UPDATE_SHARING_PENDING', () => {
     expect(
       sharing(undefined, {
-        type: `${EDIT_SHARING}_PENDING`,
+        type: `${UPDATE_SHARING}_PENDING`,
       }),
     ).toEqual({
-      edit: {
+      update: {
         loaded: false,
         loading: true,
         error: null,
@@ -46,13 +46,13 @@ describe('Sharing reducer', () => {
     });
   });
 
-  it('should handle EDIT_SHARING_SUCCESS', () => {
+  it('should handle UPDATE_SHARING_SUCCESS', () => {
     expect(
       sharing(undefined, {
-        type: `${EDIT_SHARING}_SUCCESS`,
+        type: `${UPDATE_SHARING}_SUCCESS`,
       }),
     ).toEqual({
-      edit: {
+      update: {
         loaded: true,
         loading: false,
         error: null,
@@ -70,14 +70,14 @@ describe('Sharing reducer', () => {
     });
   });
 
-  it('should handle EDIT_SHARING_FAIL', () => {
+  it('should handle UPDATE_SHARING_FAIL', () => {
     expect(
       sharing(undefined, {
-        type: `${EDIT_SHARING}_FAIL`,
+        type: `${UPDATE_SHARING}_FAIL`,
         error: 'failed',
       }),
     ).toEqual({
-      edit: {
+      update: {
         loaded: false,
         loading: false,
         error: 'failed',
@@ -101,7 +101,7 @@ describe('Sharing reducer', () => {
         type: `${GET_SHARING}_PENDING`,
       }),
     ).toEqual({
-      edit: {
+      update: {
         loaded: false,
         loading: false,
         error: null,
@@ -126,7 +126,7 @@ describe('Sharing reducer', () => {
         result: 'result',
       }),
     ).toEqual({
-      edit: {
+      update: {
         loaded: false,
         loading: false,
         error: null,
@@ -147,7 +147,7 @@ describe('Sharing reducer', () => {
         error: 'failed',
       }),
     ).toEqual({
-      edit: {
+      update: {
         loaded: false,
         loading: false,
         error: null,

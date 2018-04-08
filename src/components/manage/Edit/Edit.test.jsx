@@ -24,7 +24,7 @@ describe('Edit', () => {
           loading: false,
           loaded: true,
         },
-        edit: {
+        update: {
           loading: false,
           loaded: true,
         },
@@ -56,7 +56,7 @@ describe('Edit', () => {
           loading: false,
           loaded: true,
         },
-        edit: {
+        update: {
           loading: false,
           loaded: true,
         },

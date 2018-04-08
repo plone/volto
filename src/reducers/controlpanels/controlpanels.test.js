@@ -1,54 +1,170 @@
 import controlpanels from './controlpanels';
-import { GET_CONTROLPANELS } from '../../constants/ActionTypes';
+import {
+  GET_CONTROLPANEL,
+  LIST_CONTROLPANELS,
+  UPDATE_CONTROLPANEL,
+} from '../../constants/ActionTypes';
+import config from '../../config';
 
 describe('Controlpanels reducer', () => {
   it('should return the initial state', () => {
     expect(controlpanels()).toEqual({
-      error: null,
-      loaded: false,
-      loading: false,
+      get: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      list: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      update: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      controlpanel: null,
       controlpanels: [],
     });
   });
 
-  it('should handle GET_CONTROLPANELS_PENDING', () => {
+  it('should handle GET_CONTROLPANEL_PENDING', () => {
     expect(
       controlpanels(undefined, {
-        type: `${GET_CONTROLPANELS}_PENDING`,
+        type: `${GET_CONTROLPANEL}_PENDING`,
       }),
-    ).toEqual({
-      error: null,
-      controlpanels: [],
-      loaded: false,
-      loading: true,
+    ).toMatchObject({
+      get: {
+        loaded: false,
+        loading: true,
+        error: null,
+      },
     });
   });
 
-  it('should handle GET_CONTROLPANELS_SUCCESS', () => {
+  it('should handle GET_CONTROLPANEL_SUCCESS', () => {
     expect(
       controlpanels(undefined, {
-        type: `${GET_CONTROLPANELS}_SUCCESS`,
-        result: 'My controlpanels',
+        type: `${GET_CONTROLPANEL}_SUCCESS`,
+        result: {
+          '@id': `${config.apiPath}/@controlpanels/mail`,
+        },
       }),
-    ).toEqual({
-      error: null,
-      loaded: true,
-      loading: false,
-      controlpanels: 'My controlpanels',
+    ).toMatchObject({
+      get: {
+        loaded: true,
+        loading: false,
+        error: null,
+      },
+      controlpanel: {
+        '@id': '/@controlpanels/mail',
+      },
     });
   });
 
-  it('should handle GET_CONTROLPANELS_FAIL', () => {
+  it('should handle GET_CONTROLPANEL_FAIL', () => {
     expect(
       controlpanels(undefined, {
-        type: `${GET_CONTROLPANELS}_FAIL`,
+        type: `${GET_CONTROLPANEL}_FAIL`,
         error: 'failed',
       }),
-    ).toEqual({
-      error: 'failed',
-      loaded: false,
-      loading: false,
+    ).toMatchObject({
+      get: {
+        loaded: false,
+        loading: false,
+        error: 'failed',
+      },
+      controlpanel: null,
+    });
+  });
+
+  it('should handle LIST_CONTROLPANELS_PENDING', () => {
+    expect(
+      controlpanels(undefined, {
+        type: `${LIST_CONTROLPANELS}_PENDING`,
+      }),
+    ).toMatchObject({
+      list: {
+        loaded: false,
+        loading: true,
+        error: null,
+      },
+    });
+  });
+
+  it('should handle LIST_CONTROLPANELS_SUCCESS', () => {
+    expect(
+      controlpanels(undefined, {
+        type: `${LIST_CONTROLPANELS}_SUCCESS`,
+        result: 'result',
+      }),
+    ).toMatchObject({
+      list: {
+        loaded: true,
+        loading: false,
+        error: null,
+      },
+      controlpanels: 'result',
+    });
+  });
+
+  it('should handle LIST_CONTROLPANELS_FAIL', () => {
+    expect(
+      controlpanels(undefined, {
+        type: `${LIST_CONTROLPANELS}_FAIL`,
+        error: 'failed',
+      }),
+    ).toMatchObject({
+      list: {
+        loaded: false,
+        loading: false,
+        error: 'failed',
+      },
       controlpanels: [],
+    });
+  });
+
+  it('should handle UPDATE_CONTROLPANEL_PENDING', () => {
+    expect(
+      controlpanels(undefined, {
+        type: `${UPDATE_CONTROLPANEL}_PENDING`,
+      }),
+    ).toMatchObject({
+      update: {
+        loaded: false,
+        loading: true,
+        error: null,
+      },
+    });
+  });
+
+  it('should handle UPDATE_CONTROLPANEL_SUCCESS', () => {
+    expect(
+      controlpanels(undefined, {
+        type: `${UPDATE_CONTROLPANEL}_SUCCESS`,
+      }),
+    ).toMatchObject({
+      update: {
+        loaded: true,
+        loading: false,
+        error: null,
+      },
+    });
+  });
+
+  it('should handle UPDATE_CONTROLPANEL_FAIL', () => {
+    expect(
+      controlpanels(undefined, {
+        type: `${UPDATE_CONTROLPANEL}_FAIL`,
+        error: 'failed',
+      }),
+    ).toMatchObject({
+      update: {
+        loaded: false,
+        loading: false,
+        error: 'failed',
+      },
     });
   });
 });

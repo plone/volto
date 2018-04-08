@@ -25,7 +25,7 @@ import serialize from 'serialize-javascript';
  * @param {Object} props.store Store object.
  * @returns {string} Markup of the not found page.
  */
-const Html = ({ assets, component, store }) => {
+export const Html = ({ assets, component, store }) => {
   const content = ReactDOM.renderToString(component);
   const head = Helmet.rewind();
   // Workaround for testing
@@ -102,5 +102,3 @@ Html.propTypes = {
     getState: PropTypes.func,
   }).isRequired,
 };
-
-export default Html;

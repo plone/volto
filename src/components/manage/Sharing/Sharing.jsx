@@ -27,7 +27,7 @@ import {
   intlShape,
 } from 'react-intl';
 
-import { editSharing, getSharing } from '../../../actions';
+import { updateSharing, getSharing } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import { Toolbar } from '../../../components';
 
@@ -60,14 +60,14 @@ const messages = defineMessages({
     entries: state.sharing.data.entries,
     inherit: state.sharing.data.inherit,
     available_roles: state.sharing.data.available_roles,
-    editRequest: state.sharing.edit,
+    updateRequest: state.sharing.update,
     pathname: props.location.pathname,
     title: state.content.data.title,
     login: state.userSession.token
       ? jwtDecode(state.userSession.token).sub
       : '',
   }),
-  dispatch => bindActionCreators({ editSharing, getSharing }, dispatch),
+  dispatch => bindActionCreators({ updateSharing, getSharing }, dispatch),
 )
 /**
  * SharingComponent class.
@@ -81,9 +81,9 @@ export default class SharingComponent extends Component {
    * @static
    */
   static propTypes = {
-    editSharing: PropTypes.func.isRequired,
+    updateSharing: PropTypes.func.isRequired,
     getSharing: PropTypes.func.isRequired,
-    editRequest: PropTypes.shape({
+    updateRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
@@ -151,7 +151,7 @@ export default class SharingComponent extends Component {
    * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
-    if (this.props.editRequest.loading && nextProps.editRequest.loaded) {
+    if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       this.props.getSharing(getBaseUrl(this.props.pathname), this.state.search);
     }
     this.setState({
@@ -188,7 +188,7 @@ export default class SharingComponent extends Component {
         });
       }
     }
-    this.props.editSharing(getBaseUrl(this.props.pathname), data);
+    this.props.updateSharing(getBaseUrl(this.props.pathname), data);
   }
 
   /**

@@ -1,31 +1,31 @@
 import {
-  addUser,
+  createUser,
   deleteUser,
-  editUser,
-  editPassword,
+  updateUser,
+  updatePassword,
   getUser,
-  getUsers,
+  listUsers,
   setInitialPassword,
   resetPassword,
 } from './users';
 import {
-  ADD_USER,
+  CREATE_USER,
   DELETE_USER,
   GET_USER,
-  GET_USERS,
-  EDIT_USER,
-  EDIT_PASSWORD,
+  LIST_USERS,
+  UPDATE_USER,
+  UPDATE_PASSWORD,
   INITIAL_PASSWORD,
   RESET_PASSWORD,
 } from '../../constants/ActionTypes';
 
 describe('Users action', () => {
-  describe('addUser', () => {
+  describe('createUser', () => {
     it('should create an action to add a user', () => {
       const content = 'Hello World!';
-      const action = addUser(content);
+      const action = createUser(content);
 
-      expect(action.type).toEqual(ADD_USER);
+      expect(action.type).toEqual(CREATE_USER);
 
       const apiMock = {
         post: jest.fn(),
@@ -68,11 +68,11 @@ describe('Users action', () => {
     });
   });
 
-  describe('getUsers', () => {
-    it('should create an action to get users', () => {
-      const action = getUsers();
+  describe('listUsers', () => {
+    it('should create an action to list users', () => {
+      const action = listUsers();
 
-      expect(action.type).toEqual(GET_USERS);
+      expect(action.type).toEqual(LIST_USERS);
 
       const apiMock = {
         get: jest.fn(),
@@ -81,14 +81,12 @@ describe('Users action', () => {
 
       expect(apiMock.get).toBeCalledWith(`/@users`);
     });
-  });
 
-  describe('getUsers', () => {
     it('should create an action to get users with a query', () => {
       const query = 'john';
-      const action = getUsers(query);
+      const action = listUsers(query);
 
-      expect(action.type).toEqual(GET_USERS);
+      expect(action.type).toEqual(LIST_USERS);
 
       const apiMock = {
         get: jest.fn(),
@@ -99,13 +97,13 @@ describe('Users action', () => {
     });
   });
 
-  describe('editUser', () => {
-    it('should create an action to edit a user', () => {
+  describe('updateUser', () => {
+    it('should create an action to update a user', () => {
       const id = 'john';
       const user = 'Hello World!';
-      const action = editUser(id, user);
+      const action = updateUser(id, user);
 
-      expect(action.type).toEqual(EDIT_USER);
+      expect(action.type).toEqual(UPDATE_USER);
 
       const apiMock = {
         patch: jest.fn(),
@@ -116,14 +114,14 @@ describe('Users action', () => {
     });
   });
 
-  describe('editPassword', () => {
-    it('should create an action to edit the password', () => {
+  describe('updatePassword', () => {
+    it('should create an action to update the password', () => {
       const id = 'john';
       const oldPassword = 'verysecret';
       const newPassword = 'verysecret';
-      const action = editPassword(id, oldPassword, newPassword);
+      const action = updatePassword(id, oldPassword, newPassword);
 
-      expect(action.type).toEqual(EDIT_PASSWORD);
+      expect(action.type).toEqual(UPDATE_PASSWORD);
 
       const apiMock = {
         post: jest.fn(),
