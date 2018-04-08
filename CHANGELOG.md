@@ -11,9 +11,10 @@
 
 ### Changes
 
+* Styled wysiwyg widget @robgietema
+* Switch from accordion to tabs in forms @robgietema
 * Upgrade to Node 8.11.1 @tisto
 * Replace ExtractionTextCSSPlugin with the new mini-css-extract-plugin, adapt universal-webpack config @sneridagh
-* Styled wysiwyg widget @robgietema
 * Removed flow @robgietema
 * Fix eslint prettier config @robgietema
 * Refactor actions and reducers to match restapi docs naming @robgietema
