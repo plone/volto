@@ -27,6 +27,13 @@ export getControlpanels from './controlpanels/controlpanels';
 export getDiff from './diff/diff';
 export emailNotification from './emailNotification/emailNotification';
 export { getHistory, revertHistory } from './history/history';
+export {
+  createGroup,
+  deleteGroup,
+  getGroup,
+  listGroups,
+  updateGroup,
+} from './groups/groups';
 export { addMessage, removeMessage, purgeMessages } from './messages/messages';
 export getNavigation from './navigation/navigation';
 export getSchema from './schema/schema';

@@ -19,6 +19,7 @@ import diff from './diff/diff';
 import emailNotification from './emailNotification/emailNotification';
 import form from './form/form';
 import history from './history/history';
+import groups from './groups/groups';
 import messages from './messages/messages';
 import navigation from './navigation/navigation';
 import schema from './schema/schema';
@@ -52,6 +53,7 @@ export default combineReducers({
   diff,
   emailNotification,
   form,
+  groups,
   history,
   messages,
   navigation,

@@ -6,6 +6,7 @@
 
 * Schema widget @robgietema
 * User actions and reducers @robgietema
+* Group actions and reducers @robgietema
 
 ### Changes
 
