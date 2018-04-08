@@ -12,7 +12,6 @@ import actions from './actions/actions';
 import breadcrumbs from './breadcrumbs/breadcrumbs';
 import comments from './comments/comments';
 import content from './content/content';
-import controlpanel from './controlpanel/controlpanel';
 import controlpanels from './controlpanels/controlpanels';
 import clipboard from './clipboard/clipboard';
 import diff from './diff/diff';
@@ -48,7 +47,6 @@ export default combineReducers({
   breadcrumbs,
   comments,
   content,
-  controlpanel,
   controlpanels,
   clipboard,
   diff,

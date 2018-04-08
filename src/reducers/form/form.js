@@ -1,7 +1,7 @@
 /**
  * Form reducer.
  * This reducer is prepopulated on the server based on post data.
- * @module reducers/form
+ * @module reducers/form/form
  */
 
 const initialState = {};

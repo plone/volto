@@ -1,6 +1,6 @@
 /**
  * Diff reducer.
- * @module reducers/diff
+ * @module reducers/diff/diff
  */
 
 import { GET_DIFF } from '../../constants/ActionTypes';

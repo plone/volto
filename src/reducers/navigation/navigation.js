@@ -1,6 +1,6 @@
 /**
  * Navigation reducer.
- * @module reducers/navigation
+ * @module reducers/navigation/navigation
  */
 
 import { map } from 'lodash';

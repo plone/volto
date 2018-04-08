@@ -14,7 +14,7 @@ import { EMAIL_NOTIFICATION } from '../../constants/ActionTypes';
  * @param {string} subject New password.
  * @returns {Object} Edit password action.
  */
-export default function emailNotification(from, message, name, subject) {
+export function emailNotification(from, message, name, subject) {
   return {
     type: EMAIL_NOTIFICATION,
     promise: api =>

@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
-import { editComment } from '../../../actions';
+import { updateComment } from '../../../actions';
 import { ModalForm } from '../../../components';
 
 const messages = defineMessages({
@@ -30,9 +30,9 @@ const messages = defineMessages({
 @injectIntl
 @connect(
   state => ({
-    request: state.comments.edit,
+    request: state.comments.update,
   }),
-  dispatch => bindActionCreators({ editComment }, dispatch),
+  dispatch => bindActionCreators({ updateComment }, dispatch),
 )
 /**
  * CommentEditModal class.
@@ -46,7 +46,7 @@ export default class CommentEditModal extends Component {
    * @static
    */
   static propTypes = {
-    editComment: PropTypes.func.isRequired,
+    updateComment: PropTypes.func.isRequired,
     id: PropTypes.string,
     text: PropTypes.string,
     request: PropTypes.shape({
@@ -99,7 +99,7 @@ export default class CommentEditModal extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    this.props.editComment(this.props.id, data.text);
+    this.props.updateComment(this.props.id, data.text);
   }
 
   /**

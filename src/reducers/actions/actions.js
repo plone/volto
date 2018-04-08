@@ -1,9 +1,9 @@
 /**
  * Actions reducer.
- * @module reducers/actions
+ * @module reducers/actions/actions
  */
 
-import { GET_ACTIONS } from '../../constants/ActionTypes';
+import { LIST_ACTIONS } from '../../constants/ActionTypes';
 
 const initialState = {
   error: null,
@@ -28,14 +28,14 @@ const initialState = {
  */
 export default function actions(state = initialState, action = {}) {
   switch (action.type) {
-    case `${GET_ACTIONS}_PENDING`:
+    case `${LIST_ACTIONS}_PENDING`:
       return {
         ...state,
         error: null,
         loaded: false,
         loading: true,
       };
-    case `${GET_ACTIONS}_SUCCESS`:
+    case `${LIST_ACTIONS}_SUCCESS`:
       return {
         ...state,
         error: null,
@@ -43,7 +43,7 @@ export default function actions(state = initialState, action = {}) {
         loaded: true,
         loading: false,
       };
-    case `${GET_ACTIONS}_FAIL`:
+    case `${LIST_ACTIONS}_FAIL`:
       return {
         ...state,
         error: action.error,

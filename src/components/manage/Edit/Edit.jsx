@@ -16,7 +16,7 @@ import { Portal } from 'react-portal';
 import { Icon } from 'semantic-ui-react';
 
 import { Form, Toolbar } from '../../../components';
-import { editContent, getContent, getSchema } from '../../../actions';
+import { updateContent, getContent, getSchema } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
@@ -48,14 +48,14 @@ const messages = defineMessages({
     content: state.content.data,
     schema: state.schema.schema,
     getRequest: state.content.get,
-    editRequest: state.content.edit,
+    updateRequest: state.content.update,
     pathname: props.location.pathname,
     returnUrl: props.location.query.return_url,
   }),
   dispatch =>
     bindActionCreators(
       {
-        editContent,
+        updateContent,
         getContent,
         getSchema,
       },
@@ -74,10 +74,10 @@ export class EditComponent extends Component {
    * @static
    */
   static propTypes = {
-    editContent: PropTypes.func.isRequired,
+    updateContent: PropTypes.func.isRequired,
     getContent: PropTypes.func.isRequired,
     getSchema: PropTypes.func.isRequired,
-    editRequest: PropTypes.shape({
+    updateRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
@@ -109,7 +109,7 @@ export class EditComponent extends Component {
    * Constructor
    * @method constructor
    * @param {Object} props Component properties
-   * @constructs WysiwygEditor
+   * @constructs EditComponent
    */
   constructor(props) {
     super(props);
@@ -140,7 +140,7 @@ export class EditComponent extends Component {
     if (this.props.getRequest.loading && nextProps.getRequest.loaded) {
       this.props.getSchema(nextProps.content['@type']);
     }
-    if (this.props.editRequest.loading && nextProps.editRequest.loaded) {
+    if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       browserHistory.push(
         this.props.returnUrl || getBaseUrl(this.props.pathname),
       );
@@ -154,7 +154,7 @@ export class EditComponent extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    this.props.editContent(getBaseUrl(this.props.pathname), data);
+    this.props.updateContent(getBaseUrl(this.props.pathname), data);
   }
 
   /**
@@ -207,7 +207,7 @@ export class EditComponent extends Component {
             title={this.props.intl.formatMessage(messages.edit, {
               title: this.props.schema.title,
             })}
-            loading={this.props.editRequest.loading}
+            loading={this.props.updateRequest.loading}
             tiles={[
               {
                 type: 'title',
@@ -280,7 +280,7 @@ export default asyncConnect([
       const { form } = getState();
       if (!isEmpty(form)) {
         return dispatch(
-          editContent(
+          updateContent(
             getBaseUrl(location.pathname),
             pick(form, ['title', 'description', 'text']),
           ),

@@ -13,7 +13,7 @@ describe('ContentsRenameModal', () => {
   it('renders a contents rename modal component', () => {
     const store = mockStore({
       content: {
-        edit: {
+        update: {
           loading: false,
           loaded: true,
         },

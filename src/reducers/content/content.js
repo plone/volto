@@ -1,19 +1,19 @@
 /**
  * Content reducer.
- * @module reducers/content
+ * @module reducers/content/content
  */
 
 import {
-  ADD_CONTENT,
+  CREATE_CONTENT,
   DELETE_CONTENT,
-  EDIT_CONTENT,
+  UPDATE_CONTENT,
   GET_CONTENT,
   ORDER_CONTENT,
 } from '../../constants/ActionTypes';
 import config from '../../config';
 
 const initialState = {
-  add: {
+  create: {
     loaded: false,
     loading: false,
     error: null,
@@ -23,7 +23,7 @@ const initialState = {
     loading: false,
     error: null,
   },
-  edit: {
+  update: {
     loaded: false,
     loading: false,
     error: null,
@@ -60,9 +60,9 @@ function getRequestKey(actionType) {
  */
 export default function content(state = initialState, action = {}) {
   switch (action.type) {
-    case `${ADD_CONTENT}_PENDING`:
+    case `${CREATE_CONTENT}_PENDING`:
     case `${DELETE_CONTENT}_PENDING`:
-    case `${EDIT_CONTENT}_PENDING`:
+    case `${UPDATE_CONTENT}_PENDING`:
     case `${GET_CONTENT}_PENDING`:
     case `${ORDER_CONTENT}_PENDING`:
       return {
@@ -73,7 +73,7 @@ export default function content(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${ADD_CONTENT}_SUCCESS`:
+    case `${CREATE_CONTENT}_SUCCESS`:
     case `${GET_CONTENT}_SUCCESS`:
       return {
         ...state,
@@ -93,7 +93,7 @@ export default function content(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${EDIT_CONTENT}_SUCCESS`:
+    case `${UPDATE_CONTENT}_SUCCESS`:
     case `${DELETE_CONTENT}_SUCCESS`:
     case `${ORDER_CONTENT}_SUCCESS`:
       return {
@@ -104,9 +104,9 @@ export default function content(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${ADD_CONTENT}_FAIL`:
+    case `${CREATE_CONTENT}_FAIL`:
     case `${DELETE_CONTENT}_FAIL`:
-    case `${EDIT_CONTENT}_FAIL`:
+    case `${UPDATE_CONTENT}_FAIL`:
     case `${GET_CONTENT}_FAIL`:
     case `${ORDER_CONTENT}_FAIL`:
       return {

@@ -1,6 +1,6 @@
 /**
  * Messages reducer.
- * @module reducers/messages
+ * @module reducers/messages/messages
  */
 import { map, concat, filter } from 'lodash';
 

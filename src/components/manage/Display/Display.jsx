@@ -10,18 +10,18 @@ import { bindActionCreators } from 'redux';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
-import { getSchema, editContent, getContent } from '../../../actions';
+import { getSchema, updateContent, getContent } from '../../../actions';
 import layouts from '../../../constants/Layouts';
 
 @connect(
   state => ({
-    loaded: state.content.edit.loaded,
+    loaded: state.content.update.loaded,
     layouts: state.schema.schema ? state.schema.schema.layouts : [],
     layout: state.content.data ? state.content.data.layout : '',
     type: state.content.data ? state.content.data['@type'] : '',
   }),
   dispatch =>
-    bindActionCreators({ getSchema, editContent, getContent }, dispatch),
+    bindActionCreators({ getSchema, updateContent, getContent }, dispatch),
 )
 /**
  * Display container class.
@@ -36,7 +36,7 @@ export default class Display extends Component {
    */
   static propTypes = {
     getSchema: PropTypes.func.isRequired,
-    editContent: PropTypes.func.isRequired,
+    updateContent: PropTypes.func.isRequired,
     getContent: PropTypes.func.isRequired,
     loaded: PropTypes.bool.isRequired,
     pathname: PropTypes.string.isRequired,
@@ -99,7 +99,7 @@ export default class Display extends Component {
    * @returns {undefined}
    */
   setLayout(event, { value }) {
-    this.props.editContent(this.props.pathname, {
+    this.props.updateContent(this.props.pathname, {
       layout: value,
     });
   }

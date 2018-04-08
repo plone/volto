@@ -1,4 +1,4 @@
-import listRoles from './roles';
+import { listRoles } from './roles';
 import { LIST_ROLES } from '../../constants/ActionTypes';
 
 describe('Roles action', () => {

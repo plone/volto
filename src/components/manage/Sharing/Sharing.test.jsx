@@ -35,7 +35,7 @@ describe('Sharing', () => {
           inherit: true,
           available_roles: ['Contributer'],
         },
-        edit: {
+        update: {
           loading: false,
           loaded: true,
         },

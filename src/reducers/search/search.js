@@ -1,6 +1,6 @@
 /**
  * Search reducer.
- * @module reducers/search
+ * @module reducers/search/search
  */
 
 import { map } from 'lodash';

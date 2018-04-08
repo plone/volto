@@ -1,6 +1,6 @@
 /**
  * Schema reducer.
- * @module reducers/schema
+ * @module reducers/schema/schema
  */
 
 import { GET_SCHEMA } from '../../constants/ActionTypes';

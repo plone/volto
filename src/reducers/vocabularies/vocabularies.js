@@ -1,6 +1,6 @@
 /**
  * Vocabularies reducer.
- * @module reducers/vocabularies
+ * @module reducers/vocabularies/vocabularies
  */
 
 import { GET_VOCABULARY } from '../../constants/ActionTypes';

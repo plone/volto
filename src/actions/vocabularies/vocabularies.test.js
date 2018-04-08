@@ -1,4 +1,4 @@
-import getVocabulary from './vocabularies';
+import { getVocabulary } from './vocabularies';
 import { GET_VOCABULARY } from '../../constants/ActionTypes';
 
 describe('Vocabularies actions', () => {

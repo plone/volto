@@ -1,6 +1,6 @@
 /**
  * Breadcrumbs reducer.
- * @module reducers/breadcrumbs
+ * @module reducers/breadcrumbs/breadcrumbs
  */
 
 import { map } from 'lodash';

@@ -4,7 +4,7 @@
  * @example import { Api, Html } from 'helpers';
  */
 
-export Api from './Api/Api';
-export Html from './Html/Html';
+export { Api } from './Api/Api';
+export { Html } from './Html/Html';
 export { getAuthToken, persistAuthToken } from './AuthToken/AuthToken';
 export { getBaseUrl, getIcon, getView } from './Url/Url';

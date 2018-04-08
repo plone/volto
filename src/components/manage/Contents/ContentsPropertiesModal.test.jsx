@@ -13,7 +13,7 @@ describe('ContentsPropertiesModal', () => {
   it('renders a contents properties modal component', () => {
     const store = mockStore({
       content: {
-        edit: {
+        update: {
           loading: false,
           loaded: true,
         },

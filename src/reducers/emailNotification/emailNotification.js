@@ -1,6 +1,6 @@
 /**
  * emailNotification reducer.
- * @module reducers/emailNotification
+ * @module reducers/emailNotification/emailNotification
  */
 
 import { EMAIL_NOTIFICATION } from '../../constants/ActionTypes';

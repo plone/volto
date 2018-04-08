@@ -4,29 +4,30 @@
  * @example import { getSchema } from 'actions';
  */
 
-export getActions from './actions/actions';
-export getBreadcrumbs from './breadcrumbs/breadcrumbs';
-export getVocabulary from './vocabularies/vocabularies';
+export { listActions } from './actions/actions';
+export { getBreadcrumbs } from './breadcrumbs/breadcrumbs';
 export { copy, cut, copyContent, moveContent } from './clipboard/clipboard';
 export {
-  addContent,
+  addComment,
+  deleteComment,
+  listComments,
+  updateComment,
+} from './comments/comments';
+export {
+  createContent,
   deleteContent,
-  editContent,
+  updateContent,
   getContent,
   orderContent,
   sortContent,
 } from './content/content';
 export {
-  addComment,
-  deleteComment,
-  getComments,
-  editComment,
-} from './comments/comments';
-export { editControlpanel, getControlpanel } from './controlpanel/controlpanel';
-export getControlpanels from './controlpanels/controlpanels';
-export getDiff from './diff/diff';
-export emailNotification from './emailNotification/emailNotification';
-export { getHistory, revertHistory } from './history/history';
+  getControlpanel,
+  listControlpanels,
+  updateControlpanel,
+} from './controlpanels/controlpanels';
+export { getDiff } from './diff/diff';
+export { emailNotification } from './emailNotification/emailNotification';
 export {
   createGroup,
   deleteGroup,
@@ -34,20 +35,25 @@ export {
   listGroups,
   updateGroup,
 } from './groups/groups';
+export { getHistory, revertHistory } from './history/history';
 export { addMessage, removeMessage, purgeMessages } from './messages/messages';
-export getNavigation from './navigation/navigation';
-export listRoles from './roles/roles';
-export getSchema from './schema/schema';
-export getTiles from './tiles/tiles';
-export getTypes from './types/types';
+export { getNavigation } from './navigation/navigation';
+export { listRoles } from './roles/roles';
+export { getSchema } from './schema/schema';
 export { resetSearchContent, searchContent } from './search/search';
-export { editSharing, getSharing } from './sharing/sharing';
+export { updateSharing, getSharing } from './sharing/sharing';
+export { getTiles } from './tiles/tiles';
+export { getTypes } from './types/types';
 export {
-  addUser,
+  createUser,
+  deleteUser,
   getUser,
-  editUser,
-  editPassword,
+  listUsers,
   setInitialPassword,
+  resetPassword,
+  updatePassword,
+  updateUser,
 } from './users/users';
 export { login, loginRenew, logout } from './userSession/userSession';
+export { getVocabulary } from './vocabularies/vocabularies';
 export { getWorkflow, transitionWorkflow } from './workflow/workflow';

@@ -1,4 +1,4 @@
-import getTypes from './types';
+import { getTypes } from './types';
 import { GET_TYPES } from '../../constants/ActionTypes';
 
 describe('Types action', () => {

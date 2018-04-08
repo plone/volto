@@ -36,7 +36,7 @@ describe('Comments', () => {
           loading: false,
           loaded: true,
         },
-        edit: {
+        update: {
           loading: false,
           loaded: true,
         },

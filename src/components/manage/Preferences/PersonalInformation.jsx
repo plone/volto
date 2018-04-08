@@ -20,7 +20,7 @@ import { Icon, Menu } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 
 import { Form, Toolbar } from '../../../components';
-import { getUser, editUser, addMessage } from '../../../actions';
+import { getUser, updateUser, addMessage } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
@@ -85,10 +85,10 @@ const messages = defineMessages({
       ? jwtDecode(state.userSession.token).sub
       : '',
     loaded: state.users.get.loaded,
-    loading: state.users.edit.loading,
+    loading: state.users.update.loading,
     pathname: props.location.pathname,
   }),
-  dispatch => bindActionCreators({ addMessage, getUser, editUser }, dispatch),
+  dispatch => bindActionCreators({ addMessage, getUser, updateUser }, dispatch),
 )
 /**
  * PersonalInformation class.
@@ -108,7 +108,7 @@ export default class PersonalInformation extends Component {
       home_page: PropTypes.string,
       location: PropTypes.string,
     }).isRequired,
-    editUser: PropTypes.func.isRequired,
+    updateUser: PropTypes.func.isRequired,
     getUser: PropTypes.func.isRequired,
     addMessage: PropTypes.func.isRequired,
     userId: PropTypes.string.isRequired,
@@ -146,7 +146,7 @@ export default class PersonalInformation extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
-    this.props.editUser(this.props.userId, data);
+    this.props.updateUser(this.props.userId, data);
     this.props.addMessage(
       null,
       this.props.intl.formatMessage(messages.saved),

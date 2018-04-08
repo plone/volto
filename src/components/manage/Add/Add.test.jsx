@@ -20,7 +20,7 @@ describe('Add', () => {
       },
       content: {
         data: {},
-        add: {
+        create: {
           loading: false,
           loaded: true,
         },
@@ -48,7 +48,7 @@ describe('Add', () => {
       },
       content: {
         data: {},
-        add: {
+        create: {
           loading: false,
           loaded: true,
         },

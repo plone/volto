@@ -1,6 +1,6 @@
 /**
  * Types reducer.
- * @module reducers/types
+ * @module reducers/types/types
  */
 
 import { GET_TYPES } from '../../constants/ActionTypes';

@@ -3,19 +3,25 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import CommentEditModal from './CommentEditModal';
+import ModerateComments from './ModerateComments';
 
 const mockStore = configureStore();
 
-jest.mock('../../manage/Form/ModalForm', () =>
-  jest.fn(() => <div id="modalform" />),
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
+jest.mock('../../theme/Comments/CommentEditModal', () =>
+  jest.fn(() => <div id="modal" />),
 );
 
-describe('CommentEditModal', () => {
-  it('renders a comment edit modal component', () => {
+describe('ModerateComments', () => {
+  it('renders a moderate comments component', () => {
     const store = mockStore({
+      search: {
+        items: [],
+      },
       comments: {
-        update: {
+        delete: {
           loading: false,
           loaded: true,
         },
@@ -27,13 +33,7 @@ describe('CommentEditModal', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <CommentEditModal
-          open
-          onOk={() => {}}
-          onCancel={() => {}}
-          id="someurl"
-          text="Comment body"
-        />
+        <ModerateComments location={{ pathname: '/blog' }} />
       </Provider>,
     );
     const json = component.toJSON();

@@ -62,7 +62,7 @@ describe('Contents', () => {
           loading: false,
           loaded: false,
         },
-        edit: {
+        update: {
           loading: false,
           loaded: false,
         },

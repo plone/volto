@@ -3,18 +3,18 @@
  * @module actions/sharing/sharing
  */
 
-import { EDIT_SHARING, GET_SHARING } from '../../constants/ActionTypes';
+import { UPDATE_SHARING, GET_SHARING } from '../../constants/ActionTypes';
 
 /**
- * Edit sharing function.
- * @function editSharing
+ * Update sharing function.
+ * @function updateSharing
  * @param {string} url Content url.
  * @param {Object} sharing Sharing data.
- * @returns {Object} Edit sharing action.
+ * @returns {Object} Update sharing action.
  */
-export function editSharing(url, sharing) {
+export function updateSharing(url, sharing) {
   return {
-    type: EDIT_SHARING,
+    type: UPDATE_SHARING,
     promise: api => api.post(`${url}/@sharing`, { data: sharing }),
   };
 }

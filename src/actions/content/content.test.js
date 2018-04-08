@@ -1,27 +1,27 @@
 import {
-  addContent,
+  createContent,
   deleteContent,
-  editContent,
+  updateContent,
   getContent,
   orderContent,
   sortContent,
 } from './content';
 import {
-  ADD_CONTENT,
+  CREATE_CONTENT,
   DELETE_CONTENT,
-  EDIT_CONTENT,
+  UPDATE_CONTENT,
   GET_CONTENT,
   ORDER_CONTENT,
 } from '../../constants/ActionTypes';
 
 describe('Content action', () => {
-  describe('addContent', () => {
+  describe('createContent', () => {
     it('should create an action to add content', () => {
       const url = 'http://localhost';
       const content = 'Hello World!';
-      const action = addContent(url, content);
+      const action = createContent(url, content);
 
-      expect(action.type).toEqual(ADD_CONTENT);
+      expect(action.type).toEqual(CREATE_CONTENT);
 
       const apiMock = {
         post: jest.fn(),
@@ -34,9 +34,9 @@ describe('Content action', () => {
     it('should create an action to add content for multiple objects', () => {
       const url = 'http://localhost';
       const content = ['Hello World!', 'Hello World2!'];
-      const action = addContent(url, content);
+      const action = createContent(url, content);
 
-      expect(action.type).toEqual(ADD_CONTENT);
+      expect(action.type).toEqual(CREATE_CONTENT);
 
       const apiMock = {
         post: jest.fn(),
@@ -79,13 +79,13 @@ describe('Content action', () => {
     });
   });
 
-  describe('editContent', () => {
-    it('should create an action to edit content', () => {
+  describe('updateContent', () => {
+    it('should create an action to update content', () => {
       const url = 'http://localhost';
       const content = 'Hello World!';
-      const action = editContent(url, content);
+      const action = updateContent(url, content);
 
-      expect(action.type).toEqual(EDIT_CONTENT);
+      expect(action.type).toEqual(UPDATE_CONTENT);
 
       const apiMock = {
         patch: jest.fn(),
@@ -95,12 +95,12 @@ describe('Content action', () => {
       expect(apiMock.patch).toBeCalledWith(url, { data: content });
     });
 
-    it('should create an action to edit content for multiple urls', () => {
+    it('should create an action to update content for multiple urls', () => {
       const urls = ['http://localhost/blog', 'http://locahost/users'];
       const content = ['Hello World!', 'Hello World2!'];
-      const action = editContent(urls, content);
+      const action = updateContent(urls, content);
 
-      expect(action.type).toEqual(EDIT_CONTENT);
+      expect(action.type).toEqual(UPDATE_CONTENT);
 
       const apiMock = {
         patch: jest.fn(),
@@ -146,7 +146,7 @@ describe('Content action', () => {
       const order = 'ascending';
       const action = sortContent(url, on, order);
 
-      expect(action.type).toEqual(EDIT_CONTENT);
+      expect(action.type).toEqual(UPDATE_CONTENT);
 
       const apiMock = {
         patch: jest.fn(),

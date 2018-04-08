@@ -1,26 +1,22 @@
 /**
- * Controlpanel reducer.
- * @module reducers/controlpanel
+ * History reducer.
+ * @module reducers/history/history
  */
 
-import {
-  EDIT_CONTROLPANEL,
-  GET_CONTROLPANEL,
-} from '../../constants/ActionTypes';
-import config from '../../config';
+import { GET_HISTORY, REVERT_HISTORY } from '../../constants/ActionTypes';
 
 const initialState = {
-  edit: {
-    loaded: false,
-    loading: false,
-    error: null,
-  },
+  entries: [],
   get: {
+    error: null,
     loaded: false,
     loading: false,
-    error: null,
   },
-  controlpanel: null,
+  revert: {
+    error: null,
+    loaded: false,
+    loading: false,
+  },
 };
 
 /**
@@ -34,16 +30,16 @@ function getRequestKey(actionType) {
 }
 
 /**
- * Controlpanel reducer.
- * @function controlpanel
+ * History reducer.
+ * @function history
  * @param {Object} state Current state.
  * @param {Object} action Action to be handled.
  * @returns {Object} New state.
  */
-export default function controlpanel(state = initialState, action = {}) {
+export default function history(state = initialState, action = {}) {
   switch (action.type) {
-    case `${EDIT_CONTROLPANEL}_PENDING`:
-    case `${GET_CONTROLPANEL}_PENDING`:
+    case `${GET_HISTORY}_PENDING`:
+    case `${REVERT_HISTORY}_PENDING`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -52,20 +48,17 @@ export default function controlpanel(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${GET_CONTROLPANEL}_SUCCESS`:
+    case `${GET_HISTORY}_SUCCESS`:
       return {
         ...state,
-        controlpanel: {
-          ...action.result,
-          '@id': action.result['@id'].replace(config.apiPath, ''),
-        },
+        entries: action.result,
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,
           error: null,
         },
       };
-    case `${EDIT_CONTROLPANEL}_SUCCESS`:
+    case `${REVERT_HISTORY}_SUCCESS`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -74,11 +67,11 @@ export default function controlpanel(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${EDIT_CONTROLPANEL}_FAIL`:
-    case `${GET_CONTROLPANEL}_FAIL`:
+    case `${GET_HISTORY}_FAIL`:
+    case `${REVERT_HISTORY}_FAIL`:
       return {
         ...state,
-        controlpanel: null,
+        entries: [],
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: false,

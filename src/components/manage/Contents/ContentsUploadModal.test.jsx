@@ -11,7 +11,7 @@ describe('ContentsUploadModal', () => {
   it('renders a contents upload modal component', () => {
     const store = mockStore({
       content: {
-        add: {
+        create: {
           loading: false,
           loaded: true,
         },

@@ -1,17 +1,17 @@
 /**
  * Users reducer.
- * @module reducers/users
+ * @module reducers/users/users
  */
 
 import { startsWith } from 'lodash';
 
 import {
-  ADD_USER,
+  CREATE_USER,
   DELETE_USER,
   GET_USER,
-  GET_USERS,
-  EDIT_USER,
-  EDIT_PASSWORD,
+  LIST_USERS,
+  UPDATE_PASSWORD,
+  UPDATE_USER,
   INITIAL_PASSWORD,
   RESET_PASSWORD,
 } from '../../constants/ActionTypes';
@@ -19,7 +19,7 @@ import {
 const initialState = {
   user: {},
   users: [],
-  add: {
+  create: {
     error: null,
     loaded: false,
     loading: false,
@@ -29,7 +29,7 @@ const initialState = {
     loaded: false,
     loading: false,
   },
-  get_all: {
+  list: {
     error: null,
     loaded: false,
     loading: false,
@@ -39,12 +39,12 @@ const initialState = {
     loaded: false,
     loading: false,
   },
-  edit: {
+  update: {
     error: null,
     loaded: false,
     loading: false,
   },
-  edit_password: {
+  update_password: {
     error: null,
     loaded: false,
     loading: false,
@@ -73,11 +73,8 @@ const initialState = {
  * @returns {string} Request key.
  */
 function getRequestKey(actionType) {
-  if (startsWith(actionType, 'EDIT_PASSWORD')) {
-    return 'edit_password';
-  }
-  if (startsWith(actionType, 'GET_USERS')) {
-    return 'get_all';
+  if (startsWith(actionType, 'UPDATE_PASSWORD')) {
+    return 'update_password';
   }
   return actionType.split('_')[0].toLowerCase();
 }
@@ -91,12 +88,12 @@ function getRequestKey(actionType) {
  */
 export default function users(state = initialState, action = {}) {
   switch (action.type) {
-    case `${ADD_USER}_PENDING`:
+    case `${CREATE_USER}_PENDING`:
     case `${DELETE_USER}_PENDING`:
     case `${GET_USER}_PENDING`:
-    case `${GET_USERS}_PENDING`:
-    case `${EDIT_USER}_PENDING`:
-    case `${EDIT_PASSWORD}_PENDING`:
+    case `${LIST_USERS}_PENDING`:
+    case `${UPDATE_USER}_PENDING`:
+    case `${UPDATE_PASSWORD}_PENDING`:
     case `${INITIAL_PASSWORD}_PENDING`:
     case `${RESET_PASSWORD}_PENDING`:
       return {
@@ -117,7 +114,7 @@ export default function users(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${GET_USERS}_SUCCESS`:
+    case `${LIST_USERS}_SUCCESS`:
       return {
         ...state,
         users: action.result,
@@ -127,10 +124,10 @@ export default function users(state = initialState, action = {}) {
           error: null,
         },
       };
-    case `${ADD_USER}_SUCCESS`:
+    case `${CREATE_USER}_SUCCESS`:
     case `${DELETE_USER}_SUCCESS`:
-    case `${EDIT_USER}_SUCCESS`:
-    case `${EDIT_PASSWORD}_SUCCESS`:
+    case `${UPDATE_USER}_SUCCESS`:
+    case `${UPDATE_PASSWORD}_SUCCESS`:
     case `${INITIAL_PASSWORD}_SUCCESS`:
     case `${RESET_PASSWORD}_SUCCESS`:
       return {
@@ -151,7 +148,7 @@ export default function users(state = initialState, action = {}) {
           error: action.error.error,
         },
       };
-    case `${GET_USERS}_FAIL`:
+    case `${LIST_USERS}_FAIL`:
       return {
         ...state,
         users: [],
@@ -161,10 +158,10 @@ export default function users(state = initialState, action = {}) {
           error: action.error.error,
         },
       };
-    case `${ADD_USER}_FAIL`:
+    case `${CREATE_USER}_FAIL`:
     case `${DELETE_USER}_FAIL`:
-    case `${EDIT_USER}_FAIL`:
-    case `${EDIT_PASSWORD}_FAIL`:
+    case `${UPDATE_USER}_FAIL`:
+    case `${UPDATE_PASSWORD}_FAIL`:
     case `${INITIAL_PASSWORD}_FAIL`:
     case `${RESET_PASSWORD}_FAIL`:
       return {

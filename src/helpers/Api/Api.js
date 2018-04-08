@@ -25,7 +25,7 @@ function formatUrl(path) {
  * Api class.
  * @class Api
  */
-export default class Api {
+export class Api {
   /**
    * Constructor
    * @method constructor

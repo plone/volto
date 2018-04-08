@@ -10,7 +10,7 @@ import { bindActionCreators } from 'redux';
 import { isEmpty, map } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
-import { editContent } from '../../../actions';
+import { updateContent } from '../../../actions';
 import { ModalForm } from '../../../components';
 
 const messages = defineMessages({
@@ -75,9 +75,9 @@ const messages = defineMessages({
 @injectIntl
 @connect(
   state => ({
-    request: state.content.edit,
+    request: state.content.update,
   }),
-  dispatch => bindActionCreators({ editContent }, dispatch),
+  dispatch => bindActionCreators({ updateContent }, dispatch),
 )
 /**
  * ContentsPropertiesModal class.
@@ -91,7 +91,7 @@ export default class ContentsPropertiesModal extends Component {
    * @static
    */
   static propTypes = {
-    editContent: PropTypes.func.isRequired,
+    updateContent: PropTypes.func.isRequired,
     items: PropTypes.arrayOf(PropTypes.string).isRequired,
     request: PropTypes.shape({
       loading: PropTypes.bool,
@@ -136,7 +136,7 @@ export default class ContentsPropertiesModal extends Component {
     if (isEmpty(data)) {
       this.props.onOk();
     } else {
-      this.props.editContent(
+      this.props.updateContent(
         this.props.items,
         map(this.props.items, () => data),
       );

@@ -1,6 +1,6 @@
 /**
  * Workflow reducer.
- * @module reducers/workflow
+ * @module reducers/workflow/workflow
  */
 
 import {

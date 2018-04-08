@@ -1,14 +1,14 @@
 import {
   addComment,
   deleteComment,
-  editComment,
-  getComments,
+  updateComment,
+  listComments,
 } from './comments';
 import {
   ADD_COMMENT,
   DELETE_COMMENT,
-  EDIT_COMMENT,
-  GET_COMMENTS,
+  UPDATE_COMMENT,
+  LIST_COMMENTS,
 } from '../../constants/ActionTypes';
 
 describe('Comments action', () => {
@@ -47,13 +47,13 @@ describe('Comments action', () => {
     });
   });
 
-  describe('editComment', () => {
-    it('should create an action to edit a comment', () => {
+  describe('updateComment', () => {
+    it('should create an action to update a comment', () => {
       const url = 'http://localhost';
       const text = 'Hello World!';
-      const action = editComment(url, text);
+      const action = updateComment(url, text);
 
-      expect(action.type).toEqual(EDIT_COMMENT);
+      expect(action.type).toEqual(UPDATE_COMMENT);
 
       const apiMock = {
         patch: jest.fn(),
@@ -66,12 +66,12 @@ describe('Comments action', () => {
     });
   });
 
-  describe('getComments', () => {
-    it('should create an action to get comments', () => {
+  describe('listComments', () => {
+    it('should create an action to list comments', () => {
       const url = 'http://localhost';
-      const action = getComments(url);
+      const action = listComments(url);
 
-      expect(action.type).toEqual(GET_COMMENTS);
+      expect(action.type).toEqual(LIST_COMMENTS);
 
       const apiMock = {
         get: jest.fn(),

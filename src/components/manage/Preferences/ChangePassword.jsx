@@ -20,7 +20,7 @@ import { Icon, Menu } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 
 import { Form, Toolbar } from '../../../components';
-import { editPassword, addMessage } from '../../../actions';
+import { updatePassword, addMessage } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
@@ -73,10 +73,10 @@ const messages = defineMessages({
     userId: state.userSession.token
       ? jwtDecode(state.userSession.token).sub
       : '',
-    loading: state.users.edit.loading,
+    loading: state.users.update_password.loading,
     pathname: props.location.pathname,
   }),
-  dispatch => bindActionCreators({ editPassword, addMessage }, dispatch),
+  dispatch => bindActionCreators({ updatePassword, addMessage }, dispatch),
 )
 /**
  * ChangePassword class.
@@ -91,8 +91,8 @@ export default class ChangePassword extends Component {
    */
   static propTypes = {
     userId: PropTypes.string.isRequired,
-    loading: PropTypes.bool,
-    editPassword: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
+    updatePassword: PropTypes.func.isRequired,
     addMessage: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
@@ -118,7 +118,7 @@ export default class ChangePassword extends Component {
    */
   onSubmit(data) {
     if (data.newPassword === data.newPasswordRepeat) {
-      this.props.editPassword(
+      this.props.updatePassword(
         this.props.userId,
         data.oldPassword,
         data.newPassword,
