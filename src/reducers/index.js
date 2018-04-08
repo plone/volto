@@ -22,6 +22,7 @@ import history from './history/history';
 import groups from './groups/groups';
 import messages from './messages/messages';
 import navigation from './navigation/navigation';
+import roles from './roles/roles';
 import schema from './schema/schema';
 import search from './search/search';
 import sharing from './sharing/sharing';
@@ -57,6 +58,7 @@ export default combineReducers({
   history,
   messages,
   navigation,
+  roles,
   schema,
   search,
   sharing,

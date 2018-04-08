@@ -36,6 +36,7 @@ export {
 } from './groups/groups';
 export { addMessage, removeMessage, purgeMessages } from './messages/messages';
 export getNavigation from './navigation/navigation';
+export listRoles from './roles/roles';
 export getSchema from './schema/schema';
 export getTiles from './tiles/tiles';
 export getTypes from './types/types';
