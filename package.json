@@ -192,6 +192,7 @@
     "raven-js": "3.24.0",
     "react": "16.3.0",
     "react-cookie": "1.0.5",
+    "react-dev-utils": "5.0.1",
     "react-dnd": "2.6.0",
     "react-dnd-html5-backend": "2.6.0",
     "react-dom": "16.3.0",
@@ -295,7 +296,8 @@
   "bin": {
     "better-npm-run": "./node_modules/better-npm-run/index.js",
     "npm-run-all": "./node_modules/npm-run-all/bin/npm-run-all/index.js",
-    "webpack": "./node_modules/webpack/bin/webpack.js"
+    "webpack": "./node_modules/webpack/bin/webpack.js",
+    "plone-react": "./bin/plone-react.js"
   },
   "prettier": {
     "trailingComma": "all",
@@ -304,5 +306,13 @@
   "stylelint": {
     "extends": "stylelint-config-standard"
   },
-  "sideEffects": false
+  "sideEffects": false,
+
+"files": [
+    "bin",
+    "config",
+    "scripts",
+    "template",
+    "utils"
+]
 }
