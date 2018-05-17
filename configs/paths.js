@@ -82,7 +82,7 @@ const useTemplate =
   appDirectory === fs.realpathSync(path.join(__dirname, '..'));
 
 checkForMonorepo = !useTemplate;
-
+//these will change after adding our own pastanaga UI components
 if (useTemplate) {
   module.exports = {
     dotenv: resolveOwn('template/.env'),
