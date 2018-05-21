@@ -29,8 +29,7 @@
 }
 
 .ui.basic.segment.content-area {
-  flex: 1;
-  flex-basis: auto; // IE11 fix
+  flex: 1 0 auto; // IE11 fix, can't barely use  flex: 1;
 }
 
 .ui.primary.segment {
