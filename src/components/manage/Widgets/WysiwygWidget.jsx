@@ -26,6 +26,7 @@ import {
 } from 'draft-js-buttons';
 import createBlockStyleButton from 'draft-js-buttons/lib/utils/createBlockStyleButton';
 import createLinkPlugin from 'draft-js-anchor-plugin';
+import createBlockBreakoutPlugin from 'draft-js-block-breakout-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 const messages = defineMessages({
@@ -71,6 +72,7 @@ const CalloutButton = createBlockStyleButton({
   children: <span>!</span>,
 });
 const linkPlugin = createLinkPlugin();
+const blockBreakoutPlugin = createBlockBreakoutPlugin();
 const inlineToolbarPlugin = createInlineToolbarPlugin({
   structure: [
     BoldButton,
@@ -342,7 +344,11 @@ export default class WysiwygWidget extends Component {
                     id={`field-${id}`}
                     onChange={this.onChange}
                     editorState={this.state.editorState}
-                    plugins={[inlineToolbarPlugin, linkPlugin]}
+                    plugins={[
+                      inlineToolbarPlugin,
+                      linkPlugin,
+                      blockBreakoutPlugin,
+                    ]}
                     blockRenderMap={extendedBlockRenderMap}
                     blockStyleFn={contentBlock => {
                       const type = contentBlock.getType();
