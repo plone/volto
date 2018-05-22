@@ -2,6 +2,7 @@ import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import autoprefixer from 'autoprefixer';
 
 const projectRootPath = path.resolve(__dirname, '../');
 const assetsPath = path.resolve(projectRootPath, './dist');
@@ -12,6 +13,27 @@ const BASE_CSS_LOADER = {
     importLoaders: 2,
     sourceMap: true,
     localIdentName: '[name]__[local]___[hash:base64:5]',
+  },
+};
+
+const POST_CSS_LOADER = {
+  loader: require.resolve('postcss-loader'),
+  options: {
+    // Necessary for external CSS imports to work
+    // https://github.com/facebookincubator/create-react-app/issues/2677
+    ident: 'postcss',
+    plugins: () => [
+      require('postcss-flexbugs-fixes'),
+      autoprefixer({
+        browsers: [
+          '>1%',
+          'last 4 versions',
+          'Firefox ESR',
+          'not ie < 9', // React doesn't support IE8 anyway
+        ],
+        flexbox: 'no-2009',
+      }),
+    ],
   },
 };
 
@@ -46,6 +68,7 @@ module.exports = {
             loader: 'style-loader',
           },
           BASE_CSS_LOADER,
+          POST_CSS_LOADER,
           {
             loader: 'less-loader',
             options: {
@@ -62,6 +85,7 @@ module.exports = {
             loader: 'style-loader',
           },
           BASE_CSS_LOADER,
+          POST_CSS_LOADER,
           {
             loader: 'sass-loader',
             options: {
@@ -77,6 +101,7 @@ module.exports = {
             loader: 'style-loader',
           },
           BASE_CSS_LOADER,
+          POST_CSS_LOADER,
         ],
       },
       {
