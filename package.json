@@ -92,7 +92,7 @@
   },
   "betterScripts": {
     "run_dev_client": {
-      "command": "babel-node webpack/server.dev.js",
+      "command": "babel-node scripts/start.js",
       "env": {
         "PORT": 4301
       }
