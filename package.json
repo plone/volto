@@ -29,9 +29,9 @@
     "test:start": "DEBUG=plone-react:* npm-run-all -ln prestart start & npm-run-all -ln wait-for-frontend",
     "start": "NODE_ENV=production npm-run-all prod",
     "dev": "NODE_ENV=development npm-run-all dev:build",
-    "dev:build": "npm-run-all -ln clear:dist prepare:dev:build i18n:build development",
+    "dev:build": "npm-run-all -ln clear:dist start:build prepare:dev:build i18n:build development",
     "development": "npm-run-all -ln --parallel build:dev:client build:dev:server run:dev:server",
-    "prepare:dev:build": "universal-webpack --settings ./webpack/universal-webpack-settings.js prepare",
+    "prepare:dev:build": "node scripts/start.js ",
     "build:dev:client": "better-npm-run run_dev_client",
     "build:dev:server": "better-npm-run build_dev_server",
     "run:dev:server": "better-npm-run run_dev_server",
@@ -62,6 +62,7 @@
     "i18n": "npm-run-all i18n:sync i18n:build",
     "i18n:sync": "babel-node scripts/i18n.js sync",
     "i18n:build": "babel-node scripts/i18n.js build",
+    "start:build": "babel-node scripts/start.js build",
     "styleguide": "styleguidist server"
   },
   "jest": {
