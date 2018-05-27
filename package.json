@@ -62,7 +62,8 @@
     "i18n": "npm-run-all i18n:sync i18n:build",
     "i18n:sync": "babel-node scripts/i18n.js sync",
     "i18n:build": "babel-node scripts/i18n.js build",
-    "styleguide": "styleguidist server"
+    "styleguide": "styleguidist server",
+    "start:build": "babel-node scripts/start.js"
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test))\\.(js|jsx)$",
@@ -92,7 +93,7 @@
   },
   "betterScripts": {
     "run_dev_client": {
-      "command": "babel-node scripts/start.js",
+      "command": "babel-node webpack/server.dev.js",
       "env": {
         "PORT": 4301
       }
@@ -229,6 +230,7 @@
     "semantic-ui-react": "0.79.0",
     "serialize-javascript": "1.4.0",
     "serve-favicon": "2.5.0",
+    "shelljs": "0.8.2",
     "socket.io": "2.1.0",
     "socket.io-client": "2.1.0",
     "superagent": "3.8.2",
@@ -326,11 +328,11 @@
     "extends": "stylelint-config-standard"
   },
   "sideEffects": false,
-"files": [
+  "files": [
     "bin",
     "config",
     "scripts",
     "template",
     "utils"
-]
+  ]
 }
