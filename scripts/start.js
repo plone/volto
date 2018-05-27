@@ -1,5 +1,6 @@
 // import { server } from 'universal-webpack';
 import webpack from 'webpack';
+import shell from 'shelljs';
 import settings from '../webpack/universal-webpack-settings';
 import configuration from '../webpack/webpack.config.dev';
 
@@ -61,4 +62,6 @@ app.listen(port, err => {
   }
 });
 
-// server(configuration, settings); run webpack and server.jsx seperately
+shell.exec(`yarn dev`, (code) => {
+  console.log("Exited with code ", code)});
+// server(configuration, settings); run webpack and server.jsx seperatefly
