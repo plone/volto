@@ -24,7 +24,7 @@ process.on('unhandledRejection', err => {
     case 'start':
     case 'test': {
       const result = spawn.sync(
-        'node',
+        'babel-node',
         nodeArgs
           .concat(require.resolve('../scripts/' + script))
           .concat(args.slice(scriptIndex + 1)),
