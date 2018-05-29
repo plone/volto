@@ -7,6 +7,18 @@
 [![NPM](https://img.shields.io/npm/v/@plone/plone-react.svg)](https://www.npmjs.com/package/@plone/plone-react)
 
 ## Installation
+### Install using Create-plone-react-app
+
+```
+yarn add --global create-plone-react-app
+create-plone-react-app <appName>
+cd <appName>
+yarn start //start the development server
+```
+#### Features
+- Free from configurations.
+- Fixed development stack.
+- Incredible fast website developing tool.
 
 ### Prerequisites
 
