@@ -38,7 +38,7 @@ import workflow from './workflow/workflow';
  * @param {Object} action Action to be handled.
  * @returns {Object} New state.
  */
-const ploneReducers = {
+const reducers = {
   routing: routerReducer,
   intl: intlReducer,
   reduxAsyncConnect,
@@ -67,4 +67,4 @@ const ploneReducers = {
   workflow,
 };
 
-export default ploneReducers;
+export default reducers;
