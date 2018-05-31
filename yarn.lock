@@ -3718,6 +3718,12 @@ draft-js-anchor-plugin@2.0.1:
     tlds "^1.197.0"
     union-class-names "^1.0.0"
 
+draft-js-block-breakout-plugin@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/draft-js-block-breakout-plugin/-/draft-js-block-breakout-plugin-2.0.1.tgz#a38e3bd68d9538d7af15d4d966844d6e6d2ad850"
+  dependencies:
+    immutable "~3.7.4"
+
 draft-js-buttons@2.0.1, draft-js-buttons@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/draft-js-buttons/-/draft-js-buttons-2.0.1.tgz#8e88c4d6c816c3b7c8ae08a3daa799afa94e14be"
