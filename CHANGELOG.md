@@ -8,6 +8,7 @@
 * User actions and reducers @robgietema
 * Group actions and reducers @robgietema
 * Roles actions and reducers @robgietema
+* Move combineReducers to the store creation level. This will ease the extensibility of them in Plone-React apps. @sneridagh
 
 ### Changes
 

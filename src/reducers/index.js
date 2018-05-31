@@ -4,7 +4,6 @@
  */
 
 import { routerReducer } from 'react-router-redux';
-import { combineReducers } from 'redux';
 import { reducer as reduxAsyncConnect } from 'redux-connect';
 import { intlReducer } from 'react-intl-redux';
 
@@ -39,7 +38,7 @@ import workflow from './workflow/workflow';
  * @param {Object} action Action to be handled.
  * @returns {Object} New state.
  */
-export default combineReducers({
+const reducers = {
   routing: routerReducer,
   intl: intlReducer,
   reduxAsyncConnect,
@@ -66,4 +65,6 @@ export default combineReducers({
   userSession,
   vocabularies,
   workflow,
-});
+};
+
+export default reducers;
