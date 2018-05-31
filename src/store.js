@@ -1,10 +1,10 @@
 import createLogger from 'redux-logger';
-import { createStore, compose, applyMiddleware } from 'redux';
+import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 
 import { api, crashReporter } from './middleware';
-import reducer from './reducers';
+import reducers from './reducers';
 
 /**
  * AddToMiddleWare.
@@ -54,7 +54,10 @@ export default function configureStore(
   );
 
   const createStoreWithMiddleware = compose(...middlewares)(createStore);
-  const store = createStoreWithMiddleware(reducer, initialState);
+  const store = createStoreWithMiddleware(
+    combineReducers(reducers),
+    initialState,
+  );
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
