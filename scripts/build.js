@@ -1,4 +1,4 @@
-import shell from 'shelljs';
+const shell = require('shelljs');
 
-shell.exec(`yarn prod`, (code) => {
+shell.exec(`cd node_modules/@plone/plone-react && yarn prod`, (code) => {
   console.log("Exited with code ", code)});
