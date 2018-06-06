@@ -12,7 +12,7 @@ addons:
     packages:
     - google-chrome-stable
 before_install:
-- nvm install 8.11.1
+- nvm install 8.11.2
 - mkdir webdriver
 - wget https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux64.tar.gz
 - tar -xzf geckodriver-v0.20.0-linux64.tar.gz -C webdriver
