@@ -89,6 +89,11 @@ export default class Controlpanels extends Component {
           group: 'Content',
           title: 'Moderate Comments',
         },
+        {
+          '@id': '/users',
+          group: 'Users',
+          title: 'Users and Groups',
+        },
       ]),
       controlpanel => ({
         ...controlpanel,
