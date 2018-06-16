@@ -28,6 +28,7 @@ import {
   PersonalPreferences,
   Search,
   Sharing,
+  UsersControlpanel,
 } from './components';
 
 /**
@@ -55,6 +56,7 @@ export default () => (
       path="/controlpanel/moderate-comments"
       component={ModerateComments}
     />
+    <Route path="/controlpanel/users" component={UsersControlpanel} />
     <Route path="/controlpanel/:id" component={Controlpanel} />
     <Route path="/personal-information" component={PersonalInformation} />
     <Route path="/personal-preferences" component={PersonalPreferences} />
