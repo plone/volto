@@ -71,6 +71,7 @@ export PersonalInformation from './manage/Preferences/PersonalInformation';
 export ArrayWidget from './manage/Widgets/ArrayWidget';
 export CheckboxWidget from './manage/Widgets/CheckboxWidget';
 export DatetimeWidget from './manage/Widgets/DatetimeWidget';
+export FileWidget from './manage/Widgets/FileWidget';
 export PasswordWidget from './manage/Widgets/PasswordWidget';
 export SchemaWidget from './manage/Widgets/SchemaWidget';
 export SchemaWidgetFieldset from './manage/Widgets/SchemaWidgetFieldset';

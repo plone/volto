@@ -11,6 +11,7 @@
 * Move combineReducers to the store creation level. This will ease the extensibility of them in Plone-React apps. @sneridagh
 * Upgrade node to 8.11.2 @sneridagh
 * Basic user listing in users controlpanel @robgietema
+* Add missing FileWidget import @sneridagh
 
 ### Changes
 
