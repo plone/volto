@@ -47,6 +47,7 @@ module.exports = {
   appBuildPublic: resolveApp('build/public'),
   appManifest: resolveApp('build/assets.json'),
   appPublic: resolveApp('public'),
+  apptheme: resolveApp('theme'),
   appNodeModules: resolveApp('node_modules'),
   appSrc: resolveApp('src'),
   appPackageJson: resolveApp('package.json'),
