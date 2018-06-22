@@ -188,7 +188,7 @@ export default class ReferenceWidget extends Component {
     if (data.searchQuery && data.searchQuery !== '') {
       this.props.searchContent('', {
         Title: `*${data.searchQuery}*`,
-        portal_type: 'Methode',
+        // portal_type: 'Methode',
       });
     } else {
       this.props.resetSearchContent();
