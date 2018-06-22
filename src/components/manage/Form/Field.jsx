@@ -56,6 +56,8 @@ const Field = props => {
     Widget = ArrayWidget;
   } else if (props.type === 'object') {
     Widget = FileWidget;
+  } else if (props.type === 'datetime') {
+    Widget = DatetimeWidget;
   } else {
     Widget = TextWidget;
   }
