@@ -6,7 +6,7 @@ describe('Url', () => {
       expect(getBaseUrl('http://localhost/edit')).toBe('http://localhost');
     });
     it('can remove a view name from a relative url', () => {
-      expect(getBaseUrl('/contents')).toBe('/');
+      expect(getBaseUrl('/contents')).toBe('');
     });
   });
 
