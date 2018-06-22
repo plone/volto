@@ -170,12 +170,6 @@ export default class ReferenceWidget extends Component {
             ],
           ),
         ),
-        novalue: {
-          key: 'novalue',
-          text: 'No value',
-          value: 'novalue',
-          data: null,
-        },
       },
     });
   }
