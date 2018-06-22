@@ -262,8 +262,7 @@ export default class View extends Component {
                       />
                     </Link>
                   )}
-                {this.props.content &&
-                  this.props.content.is_folderish && <Types pathname={path} />}
+                <Types pathname={path} />
 
                 <Dropdown
                   id="toolbar-more"
