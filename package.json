@@ -1,13 +1,11 @@
 {
   "name": "@plone/plone-react",
   "description": "Plone in React",
-  "maintainers": [
-    {
-      "name": "Plone Foundation",
-      "email": "plone-developers@lists.sourceforge.net",
-      "url": "http://plone.org"
-    }
-  ],
+  "maintainers": [{
+    "name": "Plone Foundation",
+    "email": "plone-developers@lists.sourceforge.net",
+    "url": "http://plone.org"
+  }],
   "license": "MIT",
   "version": "0.7.0",
   "repository": {
