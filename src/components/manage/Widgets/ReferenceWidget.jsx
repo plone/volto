@@ -185,6 +185,7 @@ export default class ReferenceWidget extends Component {
     if (data.searchQuery && data.searchQuery !== '') {
       this.props.searchContent('', {
         Title: `*${data.searchQuery}*`,
+        metadata_fields: ['is_folderish'],
         // portal_type: 'Methode',
       });
     } else {
