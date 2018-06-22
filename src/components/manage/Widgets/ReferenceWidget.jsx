@@ -89,7 +89,7 @@ export default class ReferenceWidget extends Component {
     super(props);
     this.onSearchChange = this.onSearchChange.bind(this);
     const hasValue = props.multiple
-      ? props.value.length > 0
+      ? props.value && props.value.length > 0
       : props.value !== undefined;
     this.state = {
       choices: hasValue
@@ -241,12 +241,12 @@ export default class ReferenceWidget extends Component {
                 )}
                 value={
                   multiple
-                    ? value.length
+                    ? value && value.length
                       ? map(value, item =>
                           item['@id'].replace(config.apiPath, ''),
                         )
                       : []
-                    : value.length > 0
+                    : value && value.length > 0
                       ? value['@id'].replace(config.apiPath, '')
                       : ''
                 }
