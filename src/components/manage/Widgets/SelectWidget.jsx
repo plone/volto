@@ -92,7 +92,6 @@ const SelectWidget = ({
     },
     required: ['id', 'title', 'choices'],
   };
-
   return (
     <Form.Field
       inline
@@ -173,7 +172,10 @@ SelectWidget.propTypes = {
   description: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.object),
+    PropTypes.string,
+  ]),
   choices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   onChange: PropTypes.func,
   onEdit: PropTypes.func,
