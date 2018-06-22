@@ -47,7 +47,7 @@ export default class ReferenceWidget extends Component {
     required: PropTypes.bool,
     multiple: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
-    value: PropTypes.oneOf([
+    value: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.object),
       PropTypes.object,
     ]),
@@ -76,7 +76,7 @@ export default class ReferenceWidget extends Component {
     error: [],
     search: [],
     value: null,
-    multiple: false,
+    multiple: true, // BBB: this need to be fixed. Now arrives a list
   };
 
   /**
@@ -88,8 +88,11 @@ export default class ReferenceWidget extends Component {
   constructor(props) {
     super(props);
     this.onSearchChange = this.onSearchChange.bind(this);
+    const hasValue = props.multiple
+      ? props.value.length > 0
+      : props.value !== undefined;
     this.state = {
-      choices: props.value
+      choices: hasValue
         ? props.multiple
           ? fromPairs(
               map(props.value, value => [
@@ -232,17 +235,20 @@ export default class ReferenceWidget extends Component {
                 search
                 selection
                 fluid
+                multiple
                 noResultsMessage={this.props.intl.formatMessage(
                   messages.no_results_found,
                 )}
                 value={
                   multiple
-                    ? value
+                    ? value.length
                       ? map(value, item =>
                           item['@id'].replace(config.apiPath, ''),
                         )
                       : []
-                    : value ? value['@id'].replace(config.apiPath, '') : ''
+                    : value.length > 0
+                      ? value['@id'].replace(config.apiPath, '')
+                      : ''
                 }
                 onChange={(event, data) =>
                   onChange(
