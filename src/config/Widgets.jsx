@@ -5,6 +5,7 @@ import CheckboxWidget from '../components/manage/Widgets/CheckboxWidget';
 import DatetimeWidget from '../components/manage/Widgets/DatetimeWidget';
 import FileWidget from '../components/manage/Widgets/FileWidget';
 import PasswordWidget from '../components/manage/Widgets/PasswordWidget';
+import ReferenceWidget from '../components/manage/Widgets/ReferenceWidget';
 import SchemaWidget from '../components/manage/Widgets/SchemaWidget';
 import SelectWidget from '../components/manage/Widgets/SelectWidget';
 import TextareaWidget from '../components/manage/Widgets/TextareaWidget';
@@ -21,6 +22,7 @@ export const widgetMapping = {
     textarea: TextareaWidget,
     datetime: DatetimeWidget,
     password: PasswordWidget,
+    relation: ReferenceWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Keywords': ArrayWidget,
