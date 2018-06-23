@@ -11,8 +11,8 @@ import { last, memoize } from 'lodash';
  * @param {string} url Url to be parsed.
  * @return {string} Base url of content object.
  */
-export const getBaseUrl = memoize(
-  url =>
+export const getBaseUrl = memoize(url => {
+  const adjustedUrl =
     url
       .replace(/\?.*$/, '')
       .replace('/add', '')
@@ -31,8 +31,9 @@ export const getBaseUrl = memoize(
       .replace(/\/controlpanel\/.*$/, '')
       .replace('/controlpanel', '')
       .replace('/personal-information', '')
-      .replace('/personal-preferences', '') || '/',
-);
+      .replace('/personal-preferences', '') || '/';
+  return adjustedUrl === '/' ? '' : adjustedUrl;
+});
 
 /**
  * Get view of an url.
