@@ -1,5 +1,5 @@
 /**
- * ReferenceWidget component.
+ * ReferenceWidgetItem component.
  * @module components/manage/Widgets/ReferenceWidget
  */
 
