@@ -4,7 +4,13 @@
 }
 
 .documentDescription {
-  color: #b8c6c8; /* @purpleBackground */
+  color: #b8c6c8;
+}
+
+.tile.selected {
+  outline-style: dashed;
+  outline-color: rgb(31, 189, 238);
+  outline-width: 1px;
 }
 
 .deletion {

@@ -30,7 +30,10 @@ export default class Edit extends Component {
    */
   static propTypes = {
     properties: PropTypes.objectOf(PropTypes.any).isRequired,
+    selected: PropTypes.bool.isRequired,
+    tile: PropTypes.string.isRequired,
     onChangeField: PropTypes.func.isRequired,
+    onSelectTile: PropTypes.func.isRequired,
   };
 
   /**
@@ -80,13 +83,18 @@ export default class Edit extends Component {
       return <div />;
     }
     return (
-      <Editor
-        onChange={this.onChange}
-        editorState={this.state.editorState}
-        blockRenderMap={extendedBlockRenderMap}
-        handleReturn={() => true}
-        blockStyleFn={() => 'documentFirstHeading'}
-      />
+      <div
+        onClick={() => this.props.onSelectTile(this.props.tile)}
+        className={`tile${this.props.selected ? ' selected' : ''}`}
+      >
+        <Editor
+          onChange={this.onChange}
+          editorState={this.state.editorState}
+          blockRenderMap={extendedBlockRenderMap}
+          handleReturn={() => true}
+          blockStyleFn={() => 'documentFirstHeading'}
+        />
+      </div>
     );
   }
 }

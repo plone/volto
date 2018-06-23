@@ -69,9 +69,11 @@ export default class Edit extends Component {
    * @static
    */
   static propTypes = {
+    selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     onChangeTile: PropTypes.func.isRequired,
+    onSelectTile: PropTypes.func.isRequired,
   };
 
   /**
@@ -145,7 +147,10 @@ export default class Edit extends Component {
       return <div />;
     }
     return (
-      <div>
+      <div
+        onClick={() => this.props.onSelectTile(this.props.tile)}
+        className={`tile${this.props.selected ? ' selected' : ''}`}
+      >
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}

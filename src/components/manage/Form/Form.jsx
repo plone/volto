@@ -117,7 +117,7 @@ class Form extends Component {
    * Constructor
    * @method constructor
    * @param {Object} props Component properties
-   * @constructs WysiwygEditor
+   * @constructs Form
    */
   constructor(props) {
     super(props);
@@ -150,9 +150,11 @@ class Form extends Component {
         return value;
       }),
       errors: {},
+      selected: null,
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeTile = this.onChangeTile.bind(this);
+    this.onSelectTile = this.onSelectTile.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -188,6 +190,18 @@ class Form extends Component {
           [id]: value || null,
         },
       },
+    });
+  }
+
+  /**
+   * Select tile handler
+   * @method onSelectTile
+   * @param {string} id Id of the field
+   * @returns {undefined}
+   */
+  onSelectTile(id) {
+    this.setState({
+      selected: id,
     });
   }
 
@@ -275,9 +289,11 @@ class Form extends Component {
               key={tile}
               onChangeTile={this.onChangeTile}
               onChangeField={this.onChangeField}
+              onSelectTile={this.onSelectTile}
               properties={formData}
               data={formData.tiles[tile]}
               tile={tile}
+              selected={this.state.selected === tile}
             />
           ) : (
             <div />

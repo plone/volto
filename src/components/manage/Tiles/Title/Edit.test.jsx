@@ -6,7 +6,11 @@ global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
 test('renders an edit title tile component', () => {
   const component = renderer.create(
-    <Edit properties={{ title: 'My Title' }} onChange={() => {}} />,
+    <Edit
+      properties={{ title: 'My Title' }}
+      onChange={() => {}}
+      onSelectTile={() => {}}
+    />,
   );
   const json = component.toJSON();
   expect(json).toMatchSnapshot();
