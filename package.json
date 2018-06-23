@@ -76,6 +76,9 @@
       "^.+\\.(png)$": "jest-file",
       "^.+\\.(svg)$": "./jest-svgsystem-transform.js"
     },
+    "moduleNameMapper": {
+      "~/config": "<rootDir>/src/config"
+    },
     "collectCoverage": true,
     "coverageThreshold": {
       "global": {
