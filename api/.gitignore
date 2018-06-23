@@ -16,6 +16,7 @@ include
 lib
 lib64
 local
+local.cfg
 node_modules
 package.json
 parts
