@@ -3,7 +3,13 @@
  * @module actions/search/search
  */
 
-import { join, map, toPairs, pickBy } from 'lodash';
+import {
+  join,
+  map,
+  toPairs,
+  pickBy,
+  isArray
+} from 'lodash';
 
 import {
   RESET_SEARCH_CONTENT,
@@ -18,9 +24,18 @@ import {
  * @returns {Object} Search content action.
  */
 export function searchContent(url, options) {
-  const querystring = options
-    ? join(map(toPairs(pickBy(options)), item => join(item, '=')), '&')
-    : '';
+  let querystring = '';
+  if (options) {
+    querystring = join(
+      map(toPairs(pickBy(options)), item => {
+        if (isArray(item[1])) {
+          return join(item[1].map(value => `${item[0]}=${value}`), '&');
+        }
+        return join(item, '=');
+      }),
+      '&',
+    );
+  }
   return {
     type: SEARCH_CONTENT,
     request: {

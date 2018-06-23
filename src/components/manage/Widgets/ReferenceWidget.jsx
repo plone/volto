@@ -156,9 +156,8 @@ export default class ReferenceWidget extends Component {
     if (data.path && data.path !== '') {
       query.path = data.path;
     }
-
     if (Object.keys(query).length > 0) {
-      query.metadata_fields = ['is_folderish', 'path'];
+      query.metadata_fields = ['is_folderish', 'getPath'];
       this.props.searchContent('', query);
     } else {
       this.props.resetSearchContent();
@@ -180,7 +179,7 @@ export default class ReferenceWidget extends Component {
         <ReferenceWidgetItem
           title={data.title}
           id={data['@id']}
-          path={data.path}
+          path={data.getPath}
           is_folderish={data.is_folderish}
           onSearchChange={this.onSearchChange}
         />
@@ -241,14 +240,14 @@ export default class ReferenceWidget extends Component {
                       ? value['@id'].replace(config.apiPath, '')
                       : ''
                 }
-                onChange={(event, data) =>
+                onChange={(event, data) => {
                   onChange(
                     id,
                     multiple
                       ? map(data.value, item => this.state.choices[item].data)
                       : this.state.choices[data.value].data,
-                  )
-                }
+                  );
+                }}
                 onSearchChange={this.onSearchChange}
               />
               {map(error, message => (

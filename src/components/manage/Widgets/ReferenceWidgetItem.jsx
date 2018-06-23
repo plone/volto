@@ -25,7 +25,13 @@ const ReferenceWidgetItem = ({ title, is_folderish, path, onSearchChange }) => (
     {title}
     <Header.Subheader>{path}</Header.Subheader>
     {is_folderish ? (
-      <Button onClick={e => onSearchChange(e, { path })}>
+      <Button
+        onClick={e => {
+          e.preventDefault();
+          e.stopPropagation();
+          onSearchChange(e, { path });
+        }}
+      >
         <Icon name="world" className="right floated" />
       </Button>
     ) : null}
