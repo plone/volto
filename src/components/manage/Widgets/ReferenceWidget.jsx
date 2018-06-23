@@ -97,43 +97,11 @@ export default class ReferenceWidget extends Component {
           ? fromPairs(
               map(props.value, value => [
                 value['@id'],
-                {
-                  key: value['@id'],
-                  text: value.title,
-                  value: value['@id'],
-                  // label: {
-                  //   content: value['@id'].replace(config.apiPath, ''),
-                  // },
-                  content: (
-                    <ReferenceWidgetItem
-                      title={value.title}
-                      id={value['@id']}
-                      description={value['@id'].replace(config.apiPath, '')}
-                      is_folderish={value.is_folderish}
-                    />
-                  ),
-                  data: value,
-                },
+                this.generateDropdownOptions(value),
               ]),
             )
           : {
-              [props.value['@id']]: {
-                key: props.value['@id'],
-                text: props.value.title,
-                value: props.value['@id'],
-                // label: {
-                //   content: props.value['@id'].replace(config.apiPath, ''),
-                // },
-                content: (
-                  <ReferenceWidgetItem
-                    title={props.value.title}
-                    id={props.value['@id']}
-                    description={props.value['@id'].replace(config.apiPath, '')}
-                    is_folderish={props.value.is_folderish}
-                  />
-                ),
-                data: props.value,
-              },
+              [props.value['@id']]: this.generateDropdownOptions(props.value),
             }
         : {},
     };
@@ -166,23 +134,7 @@ export default class ReferenceWidget extends Component {
               })),
               '@id',
             ),
-            value => [
-              value['@id'],
-              {
-                key: value['@id'],
-                text: value.title,
-                value: value['@id'],
-                content: (
-                  <ReferenceWidgetItem
-                    title={value.title}
-                    id={value['@id']}
-                    description={value['@id'].replace(config.apiPath, '')}
-                    is_folderish={value.is_folderish}
-                  />
-                ),
-                data: value,
-              },
-            ],
+            value => [value['@id'], this.generateDropdownOptions(value)],
           ),
         ),
       },
@@ -197,16 +149,45 @@ export default class ReferenceWidget extends Component {
    * @returns {undefined}
    */
   onSearchChange(event, data) {
+    const query = {};
     if (data.searchQuery && data.searchQuery !== '') {
-      this.props.searchContent('', {
-        Title: `*${data.searchQuery}*`,
-        metadata_fields: ['is_folderish'],
-        // portal_type: 'Methode',
-      });
+      query.Title = `*${data.searchQuery}*`;
+    }
+    if (data.path && data.path !== '') {
+      query.path = data.path;
+    }
+
+    if (Object.keys(query).length > 0) {
+      query.metadata_fields = ['is_folderish', 'path'];
+      this.props.searchContent('', query);
     } else {
       this.props.resetSearchContent();
     }
   }
+
+  /**
+   * Generate dropdown options
+   * @method generateDropdownOptions
+   * @param {object} data option data.
+   * @returns {object} option.
+   */
+  generateDropdownOptions = data => {
+    return {
+      key: data['@id'],
+      text: data.title,
+      value: data['@id'],
+      content: (
+        <ReferenceWidgetItem
+          title={data.title}
+          id={data['@id']}
+          path={data.path}
+          is_folderish={data.is_folderish}
+          onSearchChange={this.onSearchChange}
+        />
+      ),
+      data,
+    };
+  };
 
   /**
    * Render method.

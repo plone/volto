@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Header, Icon } from 'semantic-ui-react';
+import { Button, Header, Icon } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 const messages = defineMessages({
@@ -20,11 +20,15 @@ const messages = defineMessages({
  * @class ReferenceWidgetItem
  * @extends
  */
-const ReferenceWidgetItem = ({ title, is_folderish, description }) => (
-  <Header subheader={description}>
+const ReferenceWidgetItem = ({ title, is_folderish, path, onSearchChange }) => (
+  <Header>
     {title}
-    {description}
-    {is_folderish ? <Icon name="folder" className="right floated" /> : null}
+    <Header.Subheader>{path}</Header.Subheader>
+    {is_folderish ? (
+      <Button onClick={e => onSearchChange(e, { path })}>
+        <Icon name="world" className="right floated" />
+      </Button>
+    ) : null}
   </Header>
 );
 /**
@@ -33,7 +37,7 @@ const ReferenceWidgetItem = ({ title, is_folderish, description }) => (
  * @static
  */
 ReferenceWidgetItem.defaultProps = {
-  description: null,
+  path: null,
   review_state: null,
   type: null,
 };
@@ -48,8 +52,9 @@ ReferenceWidgetItem.propTypes = {
   type: PropTypes.string,
   is_folderish: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string,
+  path: PropTypes.string,
   review_state: PropTypes.string,
+  onSearchChange: PropTypes.func.isRequired,
   intl: intlShape.isRequired,
 };
 
