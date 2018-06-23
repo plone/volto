@@ -20,7 +20,7 @@ const messages = defineMessages({
  * @class ReferenceWidgetItem
  * @extends
  */
-const ReferenceWidgetItem = ({ title, is_folderish, path, onSearchChange }) => (
+const ReferenceWidgetItem = ({ title, is_folderish, path, onSelectFolder }) => (
   <Header>
     {title}
     <Header.Subheader>{path}</Header.Subheader>
@@ -29,7 +29,7 @@ const ReferenceWidgetItem = ({ title, is_folderish, path, onSearchChange }) => (
         onClick={e => {
           e.preventDefault();
           e.stopPropagation();
-          onSearchChange(e, { path });
+          onSelectFolder({ title, path });
         }}
       >
         <Icon name="world" className="right floated" />
@@ -60,7 +60,7 @@ ReferenceWidgetItem.propTypes = {
   title: PropTypes.string.isRequired,
   path: PropTypes.string,
   review_state: PropTypes.string,
-  onSearchChange: PropTypes.func.isRequired,
+  onSelectFolder: PropTypes.func.isRequired,
   intl: intlShape.isRequired,
 };
 

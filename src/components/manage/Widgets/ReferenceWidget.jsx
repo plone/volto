@@ -87,11 +87,13 @@ export default class ReferenceWidget extends Component {
    */
   constructor(props) {
     super(props);
-    this.onSearchChange = this.onSearchChange.bind(this);
+    // this.onSearchChange = this.onSearchChange.bind(this);
+    // this.onSelectFolder = this.onSelectFolder.bind(this);
     const hasValue = props.multiple
       ? props.value && props.value.length > 0
       : props.value !== undefined;
     this.state = {
+      selectedFolder: null,
       choices: hasValue
         ? props.multiple
           ? fromPairs(
@@ -148,13 +150,16 @@ export default class ReferenceWidget extends Component {
    * @param {object} data Event data.
    * @returns {undefined}
    */
-  onSearchChange(event, data) {
+  onSearchChange = (event, data) => {
     const query = {};
     if (data.searchQuery && data.searchQuery !== '') {
       query.Title = `*${data.searchQuery}*`;
     }
     if (data.path && data.path !== '') {
-      query.path = data.path;
+      query['path.query'] = data.path;
+      query['path.depth'] = 1;
+      query.sort_on = 'getObjPositionInParent';
+      query.sort_order = 'ascending';
     }
     if (Object.keys(query).length > 0) {
       query.metadata_fields = ['is_folderish', 'getPath'];
@@ -162,7 +167,18 @@ export default class ReferenceWidget extends Component {
     } else {
       this.props.resetSearchContent();
     }
-  }
+  };
+
+  /**
+   * On select folder handler
+   * @method onSelectFolder
+   * @param {object} data Event data.
+   * @returns {undefined}
+   */
+  onSelectFolder = data => {
+    this.setState({ ...this.state, selectedFolder: data });
+    this.onSearchChange(null, { path: data.path });
+  };
 
   /**
    * Generate dropdown options
@@ -181,7 +197,7 @@ export default class ReferenceWidget extends Component {
           id={data['@id']}
           path={data.getPath}
           is_folderish={data.is_folderish}
-          onSearchChange={this.onSearchChange}
+          onSelectFolder={this.onSelectFolder}
         />
       ),
       data,
@@ -226,6 +242,11 @@ export default class ReferenceWidget extends Component {
                 selection
                 fluid
                 multiple
+                header={
+                  this.state.selectedFolder
+                    ? this.state.selectedFolder.title
+                    : null
+                }
                 noResultsMessage={this.props.intl.formatMessage(
                   messages.no_results_found,
                 )}
