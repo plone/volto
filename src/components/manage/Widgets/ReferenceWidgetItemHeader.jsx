@@ -14,23 +14,22 @@ import { dropRight } from 'lodash';
  * @class ReferenceWidgetItemHeader
  * @extends
  */
-const ReferenceWidgetItemHeader = ({ title, path, onSelectFolder, id }) => {
+const ReferenceWidgetItemHeader = ({ path, onSelectFolder, id }) => {
   const parentPath = dropRight(path.split('/')).join('/');
+  const parentId = dropRight(id.split('/')).join('/');
   return (
     <Header>
-      {title}
-      <Header.Subheader>{path}</Header.Subheader>
+      {path}
+      {/* <Header.Subheader>{path}</Header.Subheader> */}
       <Button
         disabled={parentPath ? '' : 'disabled'}
         onClick={e => {
           e.preventDefault();
           e.stopPropagation();
-          console.log(parentPath);
-          onSelectFolder({ title, path: parentPath, id });
+          onSelectFolder({ path: parentPath, id: parentId });
         }}
-      >
-        <Icon name="world" className="right floated" />
-      </Button>
+        content="<"
+      />
     </Header>
   );
 };
@@ -42,7 +41,7 @@ const ReferenceWidgetItemHeader = ({ title, path, onSelectFolder, id }) => {
  */
 ReferenceWidgetItemHeader.propTypes = {
   id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   path: PropTypes.string.isRequired,
   onSelectFolder: PropTypes.func.isRequired,
 };

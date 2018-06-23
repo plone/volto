@@ -26,6 +26,7 @@ const messages = defineMessages({
 @connect(
   state => ({
     search: state.search.items,
+    context: state.content.data,
   }),
   dispatch =>
     bindActionCreators({ resetSearchContent, searchContent }, dispatch),
@@ -180,7 +181,7 @@ export default class ReferenceWidget extends Component {
    */
   onSelectFolder = data => {
     this.setState({ ...this.state, selectedFolder: data });
-    this.onSearchChange(null, { path: data.path, id: data.id });
+    this.onSearchChange(null, data);
   };
 
   /**
@@ -222,6 +223,7 @@ export default class ReferenceWidget extends Component {
       value,
       multiple,
       onChange,
+      context,
     } = this.props;
     const { selectedFolder } = this.state;
     return (
@@ -277,6 +279,12 @@ export default class ReferenceWidget extends Component {
                   );
                 }}
                 onSearchChange={this.onSearchChange}
+                onOpen={() =>
+                  this.onSearchChange(null, {
+                    path: context['@id'].replace(config.apiPath, ''),
+                    id: context['@id'],
+                  })
+                }
               />
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
