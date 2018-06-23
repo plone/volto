@@ -24,5 +24,54 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
   <td
     className=""
   />
+  <td
+    className="right aligned"
+  >
+    <div
+      aria-busy={undefined}
+      aria-disabled={undefined}
+      aria-expanded={false}
+      aria-multiselectable={undefined}
+      className="ui dropdown"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      role="listbox"
+      tabIndex={0}
+    >
+      <div
+        aria-live="polite"
+        className="text"
+        role="alert"
+      />
+      <i
+        aria-hidden="true"
+        className="ellipsis horizontal icon"
+        onClick={[Function]}
+      />
+      <div
+        className="menu transition left"
+      >
+        <div
+          aria-checked={undefined}
+          aria-disabled={undefined}
+          aria-selected={undefined}
+          className="item"
+          onClick={[Function]}
+          role="option"
+        >
+          <i
+            aria-hidden="true"
+            className="trash icon"
+          />
+          <span>
+            Delete
+          </span>
+        </div>
+      </div>
+    </div>
+  </td>
 </tr>
 `;

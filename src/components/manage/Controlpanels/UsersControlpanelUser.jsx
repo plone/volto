@@ -10,7 +10,7 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
-import { Icon, Table } from 'semantic-ui-react';
+import { Dropdown, Icon, Table } from 'semantic-ui-react';
 
 const messages = defineMessages({});
 
@@ -71,6 +71,19 @@ export default class UsersControlpanelUser extends Component {
             )}
           </Table.Cell>
         ))}
+        <Table.Cell textAlign="right">
+          <Dropdown icon="ellipsis horizontal">
+            <Dropdown.Menu className="left">
+              <Dropdown.Item
+                onClick={this.props.onDelete}
+                value={this.props.user['@id']}
+              >
+                <Icon name="trash" />
+                <FormattedMessage id="Delete" defaultMessage="Delete" />
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Table.Cell>
       </Table.Row>
     );
   }
