@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import { Map } from 'immutable';
 import PropTypes from 'prop-types';
+import { Button, Icon } from 'semantic-ui-react';
 import Editor from 'draft-js-plugins-editor';
 import { stateToHTML } from 'draft-js-export-html';
 import { stateFromHTML } from 'draft-js-import-html';
@@ -24,6 +25,14 @@ import {
 } from 'draft-js-buttons';
 import createBlockStyleButton from 'draft-js-buttons/lib/utils/createBlockStyleButton';
 import createLinkPlugin from 'draft-js-anchor-plugin';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
+
+const messages = defineMessages({
+  text: {
+    id: 'Add text...',
+    defaultMessage: 'Add text...',
+  },
+});
 
 const blockRenderMap = Map({
   callout: {
@@ -57,6 +66,7 @@ const inlineToolbarPlugin = createInlineToolbarPlugin({
 });
 const { InlineToolbar } = inlineToolbarPlugin;
 
+@injectIntl
 /**
  * Edit text tile class.
  * @class Edit
@@ -72,8 +82,10 @@ export default class Edit extends Component {
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
+    intl: intlShape.isRequired,
     onChangeTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
+    onDeleteTile: PropTypes.func.isRequired,
   };
 
   /**
@@ -149,8 +161,21 @@ export default class Edit extends Component {
     return (
       <div
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={`tile${this.props.selected ? ' selected' : ''}`}
+        className={`tile text${this.props.selected ? ' selected' : ''}`}
       >
+        {this.props.selected && (
+          <div className="toolbar">
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() => this.props.onDeleteTile(this.props.tile)}
+              >
+                <Icon name="trash" />
+              </Button>
+            </Button.Group>
+          </div>
+        )}
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}
@@ -163,6 +188,7 @@ export default class Edit extends Component {
             }
             return null;
           }}
+          placeholder={this.props.intl.formatMessage(messages.text)}
         />
         <InlineToolbar />
       </div>

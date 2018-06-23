@@ -7,10 +7,12 @@ import Edit from './Edit';
 
 const mockStore = configureStore();
 
-global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
-
-test('renders an edit title tile component', () => {
+test('renders an edit image tile component', () => {
   const store = mockStore({
+    content: {
+      create: {},
+      data: {},
+    },
     intl: {
       locale: 'en',
       messages: {},
@@ -18,11 +20,7 @@ test('renders an edit title tile component', () => {
   });
   const component = renderer.create(
     <Provider store={store}>
-      <Edit
-        properties={{ title: 'My Title' }}
-        onChange={() => {}}
-        onSelectTile={() => {}}
-      />
+      <Edit data={{ url: 'image' }} onChange={() => {}} />
     </Provider>,
   );
   const json = component.toJSON();

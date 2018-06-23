@@ -16,7 +16,7 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
-import { Icon, Menu } from 'semantic-ui-react';
+import { Container, Icon, Menu } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 
 import { Form, Toolbar } from '../../../components';
@@ -147,7 +147,7 @@ export default class ChangePassword extends Component {
    */
   render() {
     return (
-      <div id="page-change-password">
+      <Container id="page-change-password">
         <Helmet
           title={this.props.intl.formatMessage(messages.changePassword)}
         />
@@ -227,7 +227,7 @@ export default class ChangePassword extends Component {
             }
           />
         </Portal>
-      </div>
+      </Container>
     );
   }
 }

@@ -87,7 +87,9 @@ export Workflow from './manage/Workflow/Workflow';
 export EditDescriptionTile from './manage/Tiles/Description/Edit';
 export EditTitleTile from './manage/Tiles/Title/Edit';
 export EditTextTile from './manage/Tiles/Text/Edit';
+export EditImageTile from './manage/Tiles/Image/Edit';
 
 export ViewDescriptionTile from './manage/Tiles/Description/View';
 export ViewTitleTile from './manage/Tiles/Title/View';
 export ViewTextTile from './manage/Tiles/Text/View';
+export ViewImageTile from './manage/Tiles/Image/View';

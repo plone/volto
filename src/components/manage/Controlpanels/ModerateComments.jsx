@@ -10,7 +10,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import Helmet from 'react-helmet';
 import { Portal } from 'react-portal';
-import { Icon, Button, Table } from 'semantic-ui-react';
+import { Container, Icon, Button, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import {
   FormattedMessage,
@@ -191,7 +191,7 @@ export default class ModerateComments extends Component {
           text={this.state.editText}
         />
         <Helmet title="Moderate comments" />
-        <div className="container">
+        <Container>
           <article id="content">
             <header>
               <h1 className="documentFirstHeading">
@@ -261,7 +261,7 @@ export default class ModerateComments extends Component {
               </Table>
             </section>
           </article>
-        </div>
+        </Container>
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}

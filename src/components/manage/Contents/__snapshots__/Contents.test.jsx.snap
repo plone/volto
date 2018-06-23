@@ -2,6 +2,7 @@
 
 exports[`Contents renders a contents component 1`] = `
 <div
+  className="ui container"
   id="page-contents"
 >
   <div

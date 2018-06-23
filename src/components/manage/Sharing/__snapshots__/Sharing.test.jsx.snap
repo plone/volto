@@ -2,6 +2,7 @@
 
 exports[`Sharing renders a sharing component 1`] = `
 <div
+  className="ui container"
   id="page-sharing"
 >
   <div

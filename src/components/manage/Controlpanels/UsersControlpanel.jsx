@@ -9,7 +9,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { Portal } from 'react-portal';
-import { Form, Icon, Input, Segment, Table } from 'semantic-ui-react';
+import {
+  Container,
+  Form,
+  Icon,
+  Input,
+  Segment,
+  Table,
+} from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 import {
   FormattedMessage,
@@ -137,7 +144,7 @@ export default class UsersControlpanel extends Component {
    */
   render() {
     return (
-      <div id="page-users">
+      <Container id="page-users">
         <Helmet title="Users and Groups" />
         <Segment.Group raised>
           <Segment className="primary">
@@ -214,7 +221,7 @@ export default class UsersControlpanel extends Component {
             }
           />
         </Portal>
-      </div>
+      </Container>
     );
   }
 }

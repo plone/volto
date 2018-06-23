@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
-import { Table } from 'semantic-ui-react';
+import { Container, Table } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
 /**
@@ -17,7 +17,7 @@ import { FormattedMessage } from 'react-intl';
  * @returns {string} Markup of the component.
  */
 const TabularView = ({ content }) => (
-  <div className="view-wrapper">
+  <Container className="view-wrapper">
     <Helmet title={content.title} />
     <article id="content">
       <header>
@@ -68,7 +68,7 @@ const TabularView = ({ content }) => (
         </Table>
       </section>
     </article>
-  </div>
+  </Container>
 );
 
 /**

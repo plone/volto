@@ -24,6 +24,74 @@ body {
   }
 }
 
+.documentDescription {
+  color: #b8c6c8;
+  font-size: 1.125rem;
+}
+
+.tile.selected {
+  outline-style: dashed;
+  outline-color: rgb(31, 189, 238);
+  outline-width: 1px;
+}
+
+.tile .public-DraftEditorPlaceholder-inner {
+  position: absolute;
+  color: #aaaaaa;
+}
+
+.image.tile.align.left {
+  float: left;
+  width: 50%;
+  margin-right: 1em !important;
+  margin-left: 2em !important;
+}
+
+.image.tile.align.right {
+  float: right;
+  width: 50%;
+  margin-right: 2em !important;
+  margin-left: 1em !important;
+}
+
+.image.tile.align.full {
+  width: 100%;
+}
+
+.title.tile .public-DraftEditorPlaceholder-inner {
+  font-size: @h1;
+  font-weight: @headerFontWeight;
+  line-height: @headerLineHeight;
+}
+
+.tile {
+  h1:last-child,
+  h2:last-child,
+  h3:last-child,
+  h4:last-child,
+  h5:last-child {
+    margin: @headerMargin;
+  }
+  p {
+    margin: @paragraphMargin;
+  }
+  .toolbar {
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 1;
+    background-color: white;
+    box-shadow: @floatingShadow;
+  }
+  position: relative;
+}
+
+.description.tile .public-DraftEditorPlaceholder-inner {
+  font-size: 1.125rem;
+  line-height: @lineHeight;
+}
+
 .callout {
   box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
   margin: 1rem 0;

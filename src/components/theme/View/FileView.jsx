@@ -6,6 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import { Container } from 'semantic-ui-react';
 
 /**
  * File view component class.
@@ -14,7 +15,7 @@ import Helmet from 'react-helmet';
  * @returns {string} Markup of the component.
  */
 const FileView = ({ content }) => (
-  <div className="view-wrapper">
+  <Container className="view-wrapper">
     <Helmet title={content.title} />
     <h1 className="documentFirstHeading">
       {content.title}
@@ -24,7 +25,7 @@ const FileView = ({ content }) => (
       <p className="documentDescription">{content.description}</p>
     )}
     <a href={content.file.download}>{content.file.filename}</a>
-  </div>
+  </Container>
 );
 
 /**

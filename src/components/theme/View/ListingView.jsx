@@ -7,6 +7,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
+import { Container } from 'semantic-ui-react';
+
 /**
  * List view component class.
  * @function ListingView
@@ -14,7 +16,7 @@ import { Link } from 'react-router';
  * @returns {string} Markup of the component.
  */
 const ListingView = ({ content }) => (
-  <div id="page-home">
+  <Container id="page-home">
     <Helmet title={content.title} />
     <section id="content-core">
       {content.items.map(item => (
@@ -28,7 +30,7 @@ const ListingView = ({ content }) => (
         </article>
       ))}
     </section>
-  </div>
+  </Container>
 );
 
 /**

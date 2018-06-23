@@ -2,7 +2,7 @@
 
 exports[`renders a file view component 1`] = `
 <div
-  className="view-wrapper"
+  className="ui container view-wrapper"
 >
   <h1
     className="documentFirstHeading"

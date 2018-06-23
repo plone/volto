@@ -6,8 +6,17 @@
 import React, { Component } from 'react';
 import { Map } from 'immutable';
 import PropTypes from 'prop-types';
+import { Button, Icon } from 'semantic-ui-react';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
+
+const messages = defineMessages({
+  description: {
+    id: 'Description',
+    defaultMessage: 'Description',
+  },
+});
 
 const blockRenderMap = Map({
   unstyled: {
@@ -17,6 +26,7 @@ const blockRenderMap = Map({
 
 const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
 
+@injectIntl
 /**
  * Edit description tile class.
  * @class Edit
@@ -32,8 +42,10 @@ export default class Edit extends Component {
     properties: PropTypes.objectOf(PropTypes.any).isRequired,
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
+    intl: intlShape.isRequired,
     onChangeField: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
+    onDeleteTile: PropTypes.func.isRequired,
   };
 
   /**
@@ -57,6 +69,26 @@ export default class Edit extends Component {
     }
 
     this.onChange = this.onChange.bind(this);
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (
+      this.props.properties.description !== nextProps.properties.description &&
+      !this.props.selected
+    ) {
+      const contentState = stateFromHTML(nextProps.properties.description);
+      this.setState({
+        editorState: nextProps.properties.description
+          ? EditorState.createWithContent(contentState)
+          : EditorState.createEmpty(),
+      });
+    }
   }
 
   /**
@@ -85,12 +117,26 @@ export default class Edit extends Component {
     return (
       <div
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={`tile${this.props.selected ? ' selected' : ''}`}
+        className={`tile description${this.props.selected ? ' selected' : ''}`}
       >
+        {this.props.selected && (
+          <div className="toolbar">
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() => this.props.onDeleteTile(this.props.tile)}
+              >
+                <Icon name="trash" />
+              </Button>
+            </Button.Group>
+          </div>
+        )}
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}
           blockRenderMap={extendedBlockRenderMap}
+          placeholder={this.props.intl.formatMessage(messages.description)}
           handleReturn={() => true}
           blockStyleFn={() => 'documentDescription'}
         />

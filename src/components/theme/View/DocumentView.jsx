@@ -13,6 +13,7 @@ import {
   ViewTitleTile,
   ViewDescriptionTile,
   ViewTextTile,
+  ViewImageTile,
 } from '../../../components';
 
 /**
@@ -23,7 +24,7 @@ import {
  */
 const DocumentView = ({ content }) =>
   content.tiles ? (
-    <div id="page-home">
+    <div id="page-home" className="ui wrapper">
       <Helmet title={content.title} />
       {map(content.arrangement, tile => {
         let Tile = null;
@@ -36,6 +37,9 @@ const DocumentView = ({ content }) =>
             break;
           case 'text':
             Tile = ViewTextTile;
+            break;
+          case 'image':
+            Tile = ViewImageTile;
             break;
           default:
             break;

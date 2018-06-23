@@ -2,6 +2,7 @@
 
 exports[`History renders a history component 1`] = `
 <div
+  className="ui container"
   id="page-history"
 >
   <div

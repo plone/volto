@@ -215,27 +215,12 @@ export class EditComponent extends Component {
             formData={this.props.content}
             onSubmit={this.onSubmit}
             hideActions
+            pathname={this.props.pathname}
             visual={this.state.visual}
             title={this.props.intl.formatMessage(messages.edit, {
               title: this.props.schema.title,
             })}
             loading={this.props.updateRequest.loading}
-            tiles={[
-              {
-                type: 'title',
-              },
-              {
-                type: 'text',
-                data: {
-                  text: {
-                    'content-type': 'text/html',
-                    data:
-                      '<h2>Some random header</h2><p>Some random text with <b>markup</b></p>',
-                    encoding: 'utf8',
-                  },
-                },
-              },
-            ]}
           />
           <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
             <Toolbar

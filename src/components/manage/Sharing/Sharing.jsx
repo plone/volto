@@ -13,6 +13,7 @@ import { Portal } from 'react-portal';
 import {
   Button,
   Checkbox,
+  Container,
   Form,
   Icon,
   Input,
@@ -264,7 +265,7 @@ export default class SharingComponent extends Component {
    */
   render() {
     return (
-      <div id="page-sharing">
+      <Container id="page-sharing">
         <Helmet title="Sharing" />
         <Segment.Group raised>
           <Segment className="primary">
@@ -408,7 +409,7 @@ export default class SharingComponent extends Component {
             }
           />
         </Portal>
-      </div>
+      </Container>
     );
   }
 }

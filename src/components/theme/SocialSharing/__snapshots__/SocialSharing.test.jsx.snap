@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SocialSharing renders a social sharing component 1`] = `
-<div>
+<div
+  className="ui container"
+>
   <br />
   <div
     className="SocialMediaShareButton SocialMediaShareButton--facebook"

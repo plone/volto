@@ -12,6 +12,10 @@
 * Upgrade node to 8.11.2 @sneridagh
 * Basic user listing in users controlpanel @robgietema
 * Add missing FileWidget import @sneridagh
+* Option to delete tiles @robgietema
+* Option to add tiles @robgietema
+* Image tiles in editor @robgietema
+* Align images in editor @robgietema
 
 ### Changes
 
