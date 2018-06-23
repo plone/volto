@@ -10,7 +10,6 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { Portal } from 'react-portal';
 import { Form, Icon, Input, Segment, Table } from 'semantic-ui-react';
-import jwtDecode from 'jwt-decode';
 import {
   FormattedMessage,
   defineMessages,
@@ -20,7 +19,7 @@ import {
 
 import { listRoles, listUsers } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
-import { Toolbar } from '../../../components';
+import { Toolbar, UsersControlpanelUser } from '../../../components';
 
 const messages = defineMessages({
   searchUsers: {
@@ -92,6 +91,7 @@ export default class UsersControlpanel extends Component {
     super(props);
     this.onChangeSearch = this.onChangeSearch.bind(this);
     this.onSearch = this.onSearch.bind(this);
+    this.onDelete = this.onDelete.bind(this);
     this.state = {
       search: '',
     };
@@ -130,6 +130,13 @@ export default class UsersControlpanel extends Component {
     });
   }
 
+  /**
+   * Delete a user
+   * @method onDelete
+   * @param {object} event Event object.
+   * @returns {undefined}
+   */
+  onDelete(event) {}
   /**
    * Render method.
    * @method render
@@ -180,20 +187,12 @@ export default class UsersControlpanel extends Component {
               </Table.Header>
               <Table.Body>
                 {this.props.users.map(user => (
-                  <Table.Row key={user.username}>
-                    <Table.Cell>{user.fullname}</Table.Cell>
-                    {this.props.roles.map(role => (
-                      <Table.Cell key={role.id}>
-                        {user.roles.indexOf(role.id) !== -1 && (
-                          <Icon
-                            name="check circle outline"
-                            title="Global role"
-                            color="blue"
-                          />
-                        )}
-                      </Table.Cell>
-                    ))}
-                  </Table.Row>
+                  <UsersControlpanelUser
+                    key={user.id}
+                    onDelete={this.onDelete}
+                    roles={this.props.roles}
+                    user={user}
+                  />
                 ))}
               </Table.Body>
             </Table>

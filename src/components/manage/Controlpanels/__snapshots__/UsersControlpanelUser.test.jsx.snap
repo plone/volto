@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
+<tr
+  className=""
+>
+  <td
+    className=""
+  >
+    Test User
+  </td>
+  <td
+    className=""
+  >
+    <i
+      aria-hidden="true"
+      className="blue check circle outline icon"
+      title="Global role"
+    />
+  </td>
+  <td
+    className=""
+  />
+  <td
+    className=""
+  />
+</tr>
+`;
