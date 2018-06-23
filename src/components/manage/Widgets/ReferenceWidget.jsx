@@ -155,15 +155,14 @@ export default class ReferenceWidget extends Component {
     if (data.searchQuery && data.searchQuery !== '') {
       query.Title = `*${data.searchQuery}*`;
     }
-    if (data.path && data.path !== '') {
-      query['path.query'] = data.path;
+    if (data.path && data.path.length) {
       query['path.depth'] = 1;
       query.sort_on = 'getObjPositionInParent';
       query.sort_order = 'ascending';
     }
     if (Object.keys(query).length > 0) {
       query.metadata_fields = ['is_folderish', 'getPath'];
-      this.props.searchContent('', query);
+      this.props.searchContent(data.path ? data.id.replace(config.apiPath, '') : '', query);
     } else {
       this.props.resetSearchContent();
     }
@@ -177,7 +176,7 @@ export default class ReferenceWidget extends Component {
    */
   onSelectFolder = data => {
     this.setState({ ...this.state, selectedFolder: data });
-    this.onSearchChange(null, { path: data.path });
+    this.onSearchChange(null, { path: data.path, id: data.id });
   };
 
   /**

@@ -20,7 +20,7 @@ const messages = defineMessages({
  * @class ReferenceWidgetItem
  * @extends
  */
-const ReferenceWidgetItem = ({ title, is_folderish, path, onSelectFolder }) => (
+const ReferenceWidgetItem = ({ title, is_folderish, path, onSelectFolder, id }) => (
   <Header>
     {title}
     <Header.Subheader>{path}</Header.Subheader>
@@ -29,7 +29,7 @@ const ReferenceWidgetItem = ({ title, is_folderish, path, onSelectFolder }) => (
         onClick={e => {
           e.preventDefault();
           e.stopPropagation();
-          onSelectFolder({ title, path });
+          onSelectFolder({ title, path, id });
         }}
       >
         <Icon name="world" className="right floated" />
