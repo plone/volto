@@ -20,16 +20,17 @@ const ReferenceWidgetItemHeader = ({ title, path, onSelectFolder, id }) => {
     <Header>
       {title}
       <Header.Subheader>{path}</Header.Subheader>
-      {parentPath ? (
-        <Button
-          onClick={e => {
-            console.log(parentPath);
-            onSelectFolder({ title, path: parentPath, id });
-          }}
-        >
-          <Icon name="world" className="right floated" />
-        </Button>
-      ) : null}
+      <Button
+        disabled={parentPath ? '' : 'disabled'}
+        onClick={e => {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log(parentPath);
+          onSelectFolder({ title, path: parentPath, id });
+        }}
+      >
+        <Icon name="world" className="right floated" />
+      </Button>
     </Header>
   );
 };
