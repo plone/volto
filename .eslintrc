@@ -29,6 +29,13 @@
     "import/prefer-default-export": "off",
     "react/prefer-stateless-function": 0
   },
+  "settings": {
+    "import/resolver": {
+      "babel-plugin-root-import": {
+        "rootPathSuffix": "src"
+      }
+    }
+  },
   "globals": {
     "root": true,
     "__DEVELOPMENT__": true,

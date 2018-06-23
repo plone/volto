@@ -12,17 +12,11 @@ import { Link } from 'react-router';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import { injectIntl, intlShape } from 'react-intl';
 import { find } from 'lodash';
+import { defaultView, contentTypesViews, layoutViews } from '~/config';
 
 import {
   Comments,
-  DocumentView,
-  FileView,
-  ImageView,
-  ListingView,
-  NewsItemView,
   SocialSharing,
-  SummaryView,
-  TabularView,
   Tags,
   Toolbar,
   Actions,
@@ -161,6 +155,27 @@ export default class View extends Component {
   }
 
   /**
+   * Default fallback view
+   * @method getViewDefault
+   * @returns {string} Markup for component.
+   */
+  getViewDefault = () => defaultView;
+
+  /**
+   * Get view by content type
+   * @method getViewByType
+   * @returns {string} Markup for component.
+   */
+  getViewByType = () => contentTypesViews[this.props.content['@type']] || null;
+
+  /**
+   * Get view by content layout property
+   * @method getViewByLayout
+   * @returns {string} Markup for component.
+   */
+  getViewByLayout = () => layoutViews[this.props.content.layout] || null;
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -170,37 +185,9 @@ export default class View extends Component {
       return <span />;
     }
 
-    let view;
+    const RenderedView =
+      this.getViewByType() || this.getViewByLayout() || this.getViewDefault();
 
-    switch (this.props.content.layout) {
-      case 'summary_view':
-        view = <SummaryView content={this.props.content} />;
-        break;
-      case 'tabular_view':
-        view = <TabularView content={this.props.content} />;
-        break;
-      case 'listing_view':
-        view = <ListingView content={this.props.content} />;
-        break;
-      case 'news_item_view':
-        view = <NewsItemView content={this.props.content} />;
-        break;
-      case 'file_view':
-        view = <FileView content={this.props.content} />;
-        break;
-      case 'image_view':
-        view = <ImageView content={this.props.content} />;
-        break;
-      default:
-        view = <DocumentView content={this.props.content} />;
-        break;
-    }
-
-    const viewName = view.type
-      ? view.type.WrappedComponent
-        ? view.type.WrappedComponent.name
-        : view.type.name
-      : view.constructor.name;
     const path = getBaseUrl(this.props.pathname);
     const editAction = find(this.props.actions.object, { id: 'edit' });
     const folderContentsAction = find(this.props.actions.object, {
@@ -215,10 +202,12 @@ export default class View extends Component {
       <div id="view">
         <Helmet
           bodyAttributes={{
-            class: `view-${viewName.toLowerCase()}`,
+            class: `view-${RenderedView.displayName.toLowerCase()}`,
           }}
         />
-        {view}
+
+        <RenderedView content={this.props.content} />
+
         {this.props.content.subjects &&
           this.props.content.subjects.length > 0 && (
             <Tags tags={this.props.content.subjects} />
