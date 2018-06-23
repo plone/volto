@@ -38,7 +38,6 @@ export default class Edit extends Component {
     tile: PropTypes.string.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     content: PropTypes.objectOf(PropTypes.any).isRequired,
-    intl: intlShape.isRequired,
     request: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -60,6 +59,9 @@ export default class Edit extends Component {
     super(props);
 
     this.onUploadImage = this.onUploadImage.bind(this);
+    this.state = {
+      uploading: false,
+    };
   }
 
   /**
@@ -69,7 +71,14 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
-    if (this.props.request.loading && nextProps.request.loaded) {
+    if (
+      this.props.request.loading &&
+      nextProps.request.loaded &&
+      this.state.uploading
+    ) {
+      this.setState({
+        uploading: false,
+      });
       this.props.onChangeTile(this.props.tile, {
         ...this.props.data,
         url: nextProps.content['@id'],
@@ -86,6 +95,9 @@ export default class Edit extends Component {
     const file = target.files[0];
     readAsDataURL(file).then(data => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
+      this.setState({
+        uploading: true,
+      });
       this.props.createContent(getBaseUrl(this.props.pathname), {
         '@type': 'Image',
         image: {
