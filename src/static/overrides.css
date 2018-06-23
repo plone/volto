@@ -3,7 +3,7 @@
   display: inline-block;
 }
 
-.documentFirstHeading + .description {
+.documentDescription {
   color: #b8c6c8; /* @purpleBackground */
 }
 

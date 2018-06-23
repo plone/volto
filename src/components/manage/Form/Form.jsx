@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { keys, map, uniq } from 'lodash';
+import { keys, map, mapValues, uniq } from 'lodash';
 import {
   Button,
   Form as UiForm,
@@ -15,7 +15,12 @@ import {
 } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
-import { EditTitleTile, EditTextTile, Field } from '../../../components';
+import {
+  EditTitleTile,
+  EditDescriptionTile,
+  EditTextTile,
+  Field,
+} from '../../../components';
 
 const messages = defineMessages({
   required: {
@@ -117,11 +122,37 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      formData: props.formData,
+      formData: mapValues(props.formData, (value, key) => {
+        if (key === 'arrangement') {
+          return value || ['#title-1', '#description-1', '#text-1'];
+        }
+        if (key === 'tiles' && !value) {
+          return (
+            value || {
+              '#title-1': {
+                '@type': 'title',
+              },
+              '#description-1': {
+                '@type': 'description',
+              },
+              '#text-1': {
+                '@type': 'text',
+                text: {
+                  'content-type': 'text/html',
+                  data:
+                    '<h2>Some random header</h2><p>Some random text with <b>markup</b></p>',
+                  encoding: 'utf8',
+                },
+              },
+            }
+          );
+        }
+        return value;
+      }),
       errors: {},
     };
     this.onChangeField = this.onChangeField.bind(this);
-    this.onChange = this.onChange.bind(this);
+    this.onChangeTile = this.onChangeTile.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -142,17 +173,22 @@ class Form extends Component {
   }
 
   /**
-   * Change handler
-   * @method onChange
-   * @param {Object} data Data to change
+   * Change tile handler
+   * @method onChangeTile
+   * @param {string} id Id of the tile
+   * @param {*} value Value of the field
    * @returns {undefined}
    */
-  onChange(data) {
-    if (data.properties) {
-      this.setState({
-        formData: data.properties,
-      });
-    }
+  onChangeTile(id, value) {
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        tiles: {
+          ...this.state.formData.tiles,
+          [id]: value || null,
+        },
+      },
+    });
   }
 
   /**
@@ -215,24 +251,37 @@ class Form extends Component {
    */
   render() {
     const { schema, onCancel, onSubmit } = this.props;
+    const { formData } = this.state;
 
     return this.props.visual ? (
       <div>
-        {map(this.props.tiles, tile => {
-          switch (tile.type) {
+        {map(formData.arrangement, tile => {
+          let Tile = null;
+          switch (formData.tiles[tile]['@type']) {
             case 'title':
-              return (
-                <EditTitleTile
-                  onChange={this.onChange}
-                  properties={this.state.formData}
-                />
-              );
+              Tile = EditTitleTile;
+              break;
+            case 'description':
+              Tile = EditDescriptionTile;
+              break;
             case 'text':
-              return <EditTextTile onChange={this.onChange} data={tile.data} />;
+              Tile = EditTextTile;
+              break;
             default:
               break;
           }
-          return <div />;
+          return Tile !== null ? (
+            <Tile
+              key={tile}
+              onChangeTile={this.onChangeTile}
+              onChangeField={this.onChangeField}
+              properties={formData}
+              data={formData.tiles[tile]}
+              tile={tile}
+            />
+          ) : (
+            <div />
+          );
         })}
         <div>
           <Button

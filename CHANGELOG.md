@@ -23,6 +23,7 @@
 * Fix eslint prettier config @robgietema
 * Refactor actions and reducers to match restapi docs naming @robgietema
 * Fix site root api calls @robgietema
+* Change visual editor to use the new tiles api @robgietema
 
 ## 0.5.0 (2018-03-23)
 

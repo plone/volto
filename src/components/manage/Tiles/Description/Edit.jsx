@@ -1,6 +1,6 @@
 /**
- * Edit title tile.
- * @module components/manage/Tiles/Title/Edit
+ * Edit description tile.
+ * @module components/manage/Tiles/Description/Edit
  */
 
 import React, { Component } from 'react';
@@ -11,14 +11,14 @@ import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 
 const blockRenderMap = Map({
   unstyled: {
-    element: 'h1',
+    element: 'p',
   },
 });
 
 const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
 
 /**
- * Edit title tile class.
+ * Edit description tile class.
  * @class Edit
  * @extends Component
  */
@@ -44,8 +44,8 @@ export default class Edit extends Component {
 
     if (!__SERVER__) {
       let editorState;
-      if (props.properties && props.properties.title) {
-        const contentState = stateFromHTML(props.properties.title);
+      if (props.properties && props.properties.description) {
+        const contentState = stateFromHTML(props.properties.description);
         editorState = EditorState.createWithContent(contentState);
       } else {
         editorState = EditorState.createEmpty();
@@ -65,7 +65,7 @@ export default class Edit extends Component {
   onChange(editorState) {
     this.setState({ editorState });
     this.props.onChangeField(
-      'title',
+      'description',
       editorState.getCurrentContent().getPlainText(),
     );
   }
@@ -85,7 +85,7 @@ export default class Edit extends Component {
         editorState={this.state.editorState}
         blockRenderMap={extendedBlockRenderMap}
         handleReturn={() => true}
-        blockStyleFn={() => 'documentFirstHeading'}
+        blockStyleFn={() => 'documentDescription'}
       />
     );
   }

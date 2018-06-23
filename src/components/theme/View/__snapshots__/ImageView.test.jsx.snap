@@ -10,7 +10,7 @@ exports[`renders an image view component 1`] = `
     Hello World!
   </h1>
   <p
-    className="description"
+    className="documentDescription"
   >
     Hi
   </p>

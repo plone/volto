@@ -21,7 +21,7 @@ const FileView = ({ content }) => (
       {content.subtitle && ` - ${content.subtitle}`}
     </h1>
     {content.description && (
-      <p className="description">{content.description}</p>
+      <p className="documentDescription">{content.description}</p>
     )}
     <a href={content.file.download}>{content.file.filename}</a>
   </div>

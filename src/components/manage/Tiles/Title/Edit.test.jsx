@@ -4,7 +4,7 @@ import Edit from './Edit';
 
 global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
-test('renders a wysiwyg widget component', () => {
+test('renders an edit title tile component', () => {
   const component = renderer.create(
     <Edit properties={{ title: 'My Title' }} onChange={() => {}} />,
   );

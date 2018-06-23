@@ -69,8 +69,9 @@ export default class Edit extends Component {
    * @static
    */
   static propTypes = {
+    tile: PropTypes.string.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
-    onChange: PropTypes.func.isRequired,
+    onChangeTile: PropTypes.func.isRequired,
   };
 
   /**
@@ -113,9 +114,11 @@ export default class Edit extends Component {
    */
   onChange(editorState) {
     this.setState({ editorState });
-    this.props.onChange({
-      data: {
-        text: stateToHTML(editorState.getCurrentContent(), {
+    this.props.onChangeTile(this.props.tile, {
+      ...this.props.data,
+      text: {
+        'content-type': 'text/html',
+        data: stateToHTML(editorState.getCurrentContent(), {
           blockStyleFn: block => {
             if (block.get('type') === 'callout') {
               return {
@@ -127,6 +130,7 @@ export default class Edit extends Component {
             return null;
           },
         }),
+        encoding: 'utf8',
       },
     });
   }

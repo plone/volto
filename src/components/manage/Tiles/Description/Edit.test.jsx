@@ -4,9 +4,9 @@ import Edit from './Edit';
 
 global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
-test('renders an edit text tile component', () => {
+test('renders an edit description tile component', () => {
   const component = renderer.create(
-    <Edit data={{ text: '<p>body text</p>' }} onChange={() => {}} />,
+    <Edit properties={{ description: 'My Description' }} onChange={() => {}} />,
   );
   const json = component.toJSON();
   expect(json).toMatchSnapshot();

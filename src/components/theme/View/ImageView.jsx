@@ -21,7 +21,7 @@ const ImageView = ({ content }) => (
       {content.subtitle && ` - ${content.subtitle}`}
     </h1>
     {content.description && (
-      <p className="description">{content.description}</p>
+      <p className="documentDescription">{content.description}</p>
     )}
     <img alt={content.title} src={content.image.scales.preview.download} />
   </div>

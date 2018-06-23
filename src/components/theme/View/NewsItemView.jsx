@@ -24,7 +24,7 @@ const DocumentView = ({ content }) => (
       </h1>
     )}
     {content.description && (
-      <p className="description">{content.description}</p>
+      <p className="documentDescription">{content.description}</p>
     )}
     {content.image && (
       <Image
