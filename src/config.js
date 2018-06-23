@@ -28,6 +28,28 @@ export const contentTypesViews = {
   Image: ImageView,
 };
 
+// Non Content Routes/Views
+export const nonContentRoutes = [
+  /\?.*$/,
+  '/add',
+  '/contents',
+  '/delete',
+  '/diff',
+  '/edit',
+  '/history',
+  '/layout',
+  '/login',
+  '/logout',
+  '/register',
+  '/sharing',
+  '/search',
+  '/change-password',
+  /\/controlpanel\/.*$/,
+  '/controlpanel',
+  '/personal-information',
+  '/personal-preferences',
+];
+
 // Default view
 export const defaultView = DocumentView;
 
