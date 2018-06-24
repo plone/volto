@@ -75,6 +75,10 @@ const messages = defineMessages({
     id: 'Password',
     defaultMessage: 'Password',
   },
+  addUserFormRolesTitle: {
+    id: 'Roles',
+    defaultMessage: 'Roles',
+  },
 });
 
 @injectIntl
@@ -339,7 +343,13 @@ export default class UsersControlpanel extends Component {
                 {
                   id: 'default',
                   title: 'FIXME: User Data',
-                  fields: ['username', 'fullname', 'email', 'password'],
+                  fields: [
+                    'username',
+                    'fullname',
+                    'email',
+                    'password',
+                    'roles',
+                  ],
                 },
               ],
               properties: {
@@ -369,6 +379,16 @@ export default class UsersControlpanel extends Component {
                     messages.addUserFormPasswordTitle,
                   ),
                   type: 'string',
+                  description: '',
+                },
+                roles: {
+                  title: this.props.intl.formatMessage(
+                    messages.addUserFormRolesTitle,
+                  ),
+                  type: 'array',
+                  items: {
+                    choices: this.props.roles.map(role => [role.id, role.id]),
+                  },
                   description: '',
                 },
               },
