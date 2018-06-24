@@ -17,6 +17,7 @@
 * Image tiles in editor @robgietema
 * Align images in editor @robgietema
 * Video tiles in editor @robgietema
+* Sitemap.xml.gz view @robgietema
 
 ### Changes
 

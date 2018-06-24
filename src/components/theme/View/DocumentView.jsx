@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { Image } from 'semantic-ui-react';
+import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 
 import {
@@ -24,7 +24,7 @@ import {
  */
 const DocumentView = ({ content }) =>
   content.tiles ? (
-    <div id="page-home" className="ui wrapper">
+    <div id="page-document" className="ui wrapper">
       <Helmet title={content.title} />
       {map(content.arrangement, tile => {
         let Tile = null;
@@ -52,7 +52,7 @@ const DocumentView = ({ content }) =>
       })}
     </div>
   ) : (
-    <div id="page-home">
+    <Container id="page-document">
       <Helmet title={content.title} />
       <h1 className="documentFirstHeading">{content.title}</h1>
       {content.description && (
@@ -68,7 +68,7 @@ const DocumentView = ({ content }) =>
       {content.text && (
         <p dangerouslySetInnerHTML={{ __html: content.text.data }} />
       )}
-    </div>
+    </Container>
   );
 
 /**
