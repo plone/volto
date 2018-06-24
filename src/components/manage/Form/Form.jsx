@@ -145,7 +145,7 @@ class Form extends Component {
     this.state = {
       formData: mapValues(props.formData, (value, key) => {
         if (key === 'arrangement') {
-          return value || [ids.title, ids.description, ids.text];
+          return value || { items: [ids.title, ids.description, ids.text] };
         }
         if (key === 'tiles' && !value) {
           return (
@@ -237,7 +237,9 @@ class Form extends Component {
     this.setState({
       formData: {
         ...this.state.formData,
-        arrangement: without(this.state.formData.arrangement, id),
+        arrangement: {
+          items: without(this.state.formData.arrangement.items, id),
+        },
         tiles: omit(this.state.formData.tiles, [id]),
       },
       selected: null,
@@ -255,7 +257,9 @@ class Form extends Component {
     this.setState({
       formData: {
         ...this.state.formData,
-        arrangement: [...this.state.formData.arrangement, id],
+        arrangement: {
+          items: [...this.state.formData.arrangement.items, id],
+        },
         tiles: {
           ...this.state.formData.tiles,
           [id]: {
@@ -331,7 +335,7 @@ class Form extends Component {
 
     return this.props.visual ? (
       <div className="ui wrapper">
-        {map(formData.arrangement, tile => {
+        {map(formData.arrangement.items, tile => {
           let Tile = null;
           switch (formData.tiles[tile]['@type']) {
             case 'title':
