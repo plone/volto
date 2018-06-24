@@ -114,7 +114,7 @@ class Form extends Component {
    * @static
    */
   static defaultProps = {
-    formData: {},
+    formData: null,
     onSubmit: null,
     onCancel: null,
     submitLabel: null,
@@ -142,33 +142,35 @@ class Form extends Component {
       description: uuid(),
       text: uuid(),
     };
+    let { formData } = props;
+    if (formData === null) {
+      // get defaults from schema
+      formData = mapValues(props.schema.properties, 'default');
+      // defaults for block editor; should be moved to schema on server side
+      if ('arrangement' in formData) {
+        formData.arrangement = { items: [ids.title, ids.description, ids.text] };
+      }
+      if ('tiles' in formData) {
+        formData.tiles = {
+          [ids.title]: {
+            '@type': 'title',
+          },
+          [ids.description]: {
+            '@type': 'description',
+          },
+          [ids.text]: {
+            '@type': 'text',
+            text: {
+              'content-type': 'text/html',
+              data: '',
+              encoding: 'utf8',
+            },
+          },
+        };
+      }
+    }
     this.state = {
-      formData: mapValues(props.formData, (value, key) => {
-        if (key === 'arrangement') {
-          return value || { items: [ids.title, ids.description, ids.text] };
-        }
-        if (key === 'tiles' && !value) {
-          return (
-            value || {
-              [ids.title]: {
-                '@type': 'title',
-              },
-              [ids.description]: {
-                '@type': 'description',
-              },
-              [ids.text]: {
-                '@type': 'text',
-                text: {
-                  'content-type': 'text/html',
-                  data: '',
-                  encoding: 'utf8',
-                },
-              },
-            }
-          );
-        }
-        return value;
-      }),
+      formData,
       errors: {},
       selected: null,
     };
