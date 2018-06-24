@@ -146,28 +146,28 @@ class Form extends Component {
     if (formData === null) {
       // get defaults from schema
       formData = mapValues(props.schema.properties, 'default');
-      // defaults for block editor; should be moved to schema on server side
-      if ('arrangement' in formData) {
-        formData.arrangement = { items: [ids.title, ids.description, ids.text] };
-      }
-      if ('tiles' in formData) {
-        formData.tiles = {
-          [ids.title]: {
-            '@type': 'title',
+    }
+    // defaults for block editor; should be moved to schema on server side
+    if (!formData.arrangement) {
+      formData.arrangement = { items: [ids.title, ids.description, ids.text] };
+    }
+    if (!formData.tiles) {
+      formData.tiles = {
+        [ids.title]: {
+          '@type': 'title',
+        },
+        [ids.description]: {
+          '@type': 'description',
+        },
+        [ids.text]: {
+          '@type': 'text',
+          text: {
+            'content-type': 'text/html',
+            data: '',
+            encoding: 'utf8',
           },
-          [ids.description]: {
-            '@type': 'description',
-          },
-          [ids.text]: {
-            '@type': 'text',
-            text: {
-              'content-type': 'text/html',
-              data: '',
-              encoding: 'utf8',
-            },
-          },
-        };
-      }
+        },
+      };
     }
     this.state = {
       formData,
