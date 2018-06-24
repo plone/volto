@@ -28,6 +28,7 @@ import {
   EditDescriptionTile,
   EditTextTile,
   EditImageTile,
+  EditVideoTile,
   Field,
 } from '../../../components';
 
@@ -345,6 +346,9 @@ class Form extends Component {
             case 'image':
               Tile = EditImageTile;
               break;
+            case 'video':
+              Tile = EditVideoTile;
+              break;
             default:
               break;
           }
@@ -399,6 +403,9 @@ class Form extends Component {
               </Dropdown.Item>
               <Dropdown.Item onClick={this.onAddTile.bind(this, 'image')}>
                 <FormattedMessage id="Image" defaultMessage="Image" />
+              </Dropdown.Item>
+              <Dropdown.Item onClick={this.onAddTile.bind(this, 'video')}>
+                <FormattedMessage id="Video" defaultMessage="Video" />
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>

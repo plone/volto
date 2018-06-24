@@ -16,6 +16,7 @@
 * Option to add tiles @robgietema
 * Image tiles in editor @robgietema
 * Align images in editor @robgietema
+* Video tiles in editor @robgietema
 
 ### Changes
 

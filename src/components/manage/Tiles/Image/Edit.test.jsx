@@ -20,7 +20,21 @@ test('renders an edit image tile component', () => {
   });
   const component = renderer.create(
     <Provider store={store}>
-      <Edit data={{ url: 'image' }} onChange={() => {}} />
+      <Edit
+        data={{ url: 'image' }}
+        selected={false}
+        tile="1234"
+        content={{}}
+        request={{
+          loading: false,
+          loaded: false,
+        }}
+        pathname="/news"
+        onChangeTile={() => {}}
+        onSelectTile={() => {}}
+        onDeleteTile={() => {}}
+        createContent={() => {}}
+      />
     </Provider>,
   );
   const json = component.toJSON();

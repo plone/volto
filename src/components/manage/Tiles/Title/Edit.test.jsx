@@ -20,8 +20,11 @@ test('renders an edit title tile component', () => {
     <Provider store={store}>
       <Edit
         properties={{ title: 'My Title' }}
-        onChange={() => {}}
+        selected={false}
+        tile="1234"
+        onChangeField={() => {}}
         onSelectTile={() => {}}
+        onDeleteTile={() => {}}
       />
     </Provider>,
   );

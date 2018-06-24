@@ -40,21 +40,21 @@ body {
   color: #aaaaaa;
 }
 
-.image.tile.align.left {
+.tile.align.left {
   float: left;
   width: 50%;
   margin-right: 1em !important;
   margin-left: 2em !important;
 }
 
-.image.tile.align.right {
+.tile.align.right {
   float: right;
   width: 50%;
   margin-right: 2em !important;
   margin-left: 1em !important;
 }
 
-.image.tile.align.full {
+.tile.align.full {
   width: 100%;
 }
 
@@ -98,4 +98,11 @@ body {
   padding: 1em;
   border-radius: .28571429rem;
   border: 1px solid rgba(34,36,38,.15);
+}
+
+.ui.blocker {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
 }

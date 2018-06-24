@@ -7,9 +7,7 @@ import Edit from './Edit';
 
 const mockStore = configureStore();
 
-global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
-
-test('renders an edit text tile component', () => {
+test('renders an edit image tile component', () => {
   const store = mockStore({
     intl: {
       locale: 'en',
@@ -19,7 +17,7 @@ test('renders an edit text tile component', () => {
   const component = renderer.create(
     <Provider store={store}>
       <Edit
-        data={{ text: '<p>body text</p>' }}
+        data={{ url: 'https://youtu.be/KqjeO_ekW3g' }}
         selected={false}
         tile="1234"
         onChangeTile={() => {}}
