@@ -89,8 +89,6 @@ export default class ReferenceWidget extends Component {
    */
   constructor(props) {
     super(props);
-    // this.onSearchChange = this.onSearchChange.bind(this);
-    // this.onSelectFolder = this.onSelectFolder.bind(this);
     const hasValue = props.multiple
       ? props.value && props.value.length > 0
       : props.value !== undefined;
@@ -131,13 +129,7 @@ export default class ReferenceWidget extends Component {
       choices: {
         ...fromPairs(
           map(
-            uniqBy(
-              map(compact(concat(nextProps.value, nextProps.search)), item => ({
-                ...item,
-                '@id': item['@id'].replace(config.apiPath, ''),
-              })),
-              '@id',
-            ),
+            uniqBy(compact(concat(nextProps.value, nextProps.search)), '@id'),
             value => [value['@id'], this.generateDropdownOptions(value)],
           ),
         ),
@@ -158,8 +150,8 @@ export default class ReferenceWidget extends Component {
         Title: `*${data.searchQuery}*`,
         metadata_fields: ['is_folderish'],
       };
-      this.setState({ ...this.state, selectedFolder: null });
-      this.props.searchContent(null, query);
+      this.setState({ selectedFolder: null });
+      this.props.searchContent('', query);
     } else {
       this.props.resetSearchContent();
     }
@@ -172,7 +164,7 @@ export default class ReferenceWidget extends Component {
    * @returns {undefined}
    */
   onSelectFolder = data => {
-    this.setState({ ...this.state, selectedFolder: data });
+    this.setState({ selectedFolder: data });
     const query = {
       'path.depth': 1,
       sort_on: 'getObjPositionInParent',
@@ -255,13 +247,9 @@ export default class ReferenceWidget extends Component {
                 value={
                   multiple
                     ? value && value.length
-                      ? map(value, item =>
-                          item['@id'].replace(config.apiPath, ''),
-                        )
+                      ? map(value, item => item['@id'])
                       : []
-                    : value && value.length > 0
-                      ? value['@id'].replace(config.apiPath, '')
-                      : ''
+                    : value && value.length > 0 ? value['@id'] : ''
                 }
                 onChange={(event, data) => {
                   onChange(

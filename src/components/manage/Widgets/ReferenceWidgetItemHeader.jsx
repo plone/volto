@@ -16,21 +16,17 @@ import config from '../../../config';
  * @extends
  */
 const ReferenceWidgetItemHeader = ({ data, onSelectFolder }) => {
-  console.log(data);
-
   const path = data ? data['@id'].replace(config.apiPath, '') : '';
-  const parentPath = dropRight(path.split('/')).join('/');
-  const parentId = data ? dropRight(data['@id'].split('/')).join('/') : '';
+  const parent = data ? dropRight(data['@id'].split('/')) : [];
   return (
     <Header>
       {path}
-      {/* <Header.Subheader>{path}</Header.Subheader> */}
       <Button
-        disabled={parentPath ? '' : 'disabled'}
+        disabled={parent.length ? '' : 'disabled'}
         onClick={e => {
           e.preventDefault();
           e.stopPropagation();
-          onSelectFolder({ '@id': parentId });
+          onSelectFolder({ '@id': parent.join('/') });
         }}
         content="<"
       />

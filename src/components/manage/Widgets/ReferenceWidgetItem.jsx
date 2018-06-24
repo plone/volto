@@ -6,15 +6,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Header } from 'semantic-ui-react';
-// import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import config from '../../../config';
-
-// const messages = defineMessages({
-//   // no_results_found: {
-//   //   id: 'No results found.',
-//   //   defaultMessage: 'No results found.',
-//   // },
-// });
 
 /**
  * ReferenceWidget Item class.
@@ -24,9 +15,7 @@ import config from '../../../config';
 const ReferenceWidgetItem = ({ data, onSelectFolder }) => (
   <Header>
     {data.title}
-    <Header.Subheader>
-      {data['@id'].replace(config.apiPath, '')}
-    </Header.Subheader>
+    <Header.Subheader>{data['@id']}</Header.Subheader>
     {data.is_folderish ? (
       <Button
         content=">"
@@ -56,7 +45,6 @@ ReferenceWidgetItem.propTypes = {
     is_folderish: PropTypes.bool.isRequired,
   }).isRequired,
   onSelectFolder: PropTypes.func.isRequired,
-  // intl: intlShape.isRequired,
 };
 
 // export default injectIntl(ReferenceWidgetItem);
