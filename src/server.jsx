@@ -21,7 +21,7 @@ import nlLocale from '../dist/locales/nl.json';
 import deLocale from '../dist/locales/de.json';
 import enLocale from '../dist/locales/en.json';
 
-import { Html, Api, persistAuthToken } from './helpers';
+import { Html, Api, persistAuthToken, generateSitemap } from './helpers';
 import ErrorPage from './error';
 import getRoutes from './routes';
 import configureStore from './store';
@@ -99,44 +99,55 @@ export default parameters => {
         } else if (routeState) {
           // eslint-disable-line no-lonely-if
           if (__SSR__) {
-            loadOnServer({ ...routeState, store })
-              .then(() => {
-                const component = (
-                  <Provider store={store}>
-                    <ReduxAsyncConnect {...routeState} />
-                  </Provider>
+            if (req.path === '/sitemap.xml.gz') {
+              generateSitemap().then(sitemap => {
+                res.header('Content-Type: application/x-gzip');
+                res.header('Content-Encoding: gzip');
+                res.header(
+                  'Content-Disposition: attachment; filename="sitemap.xml.gz"',
                 );
-                res.set({
-                  'Cache-Control': 'public, max-age=600, no-transform',
-                });
-                res
-                  .status(200)
-                  .send(
-                    `<!doctype html> ${renderToStaticMarkup(
-                      <Html
-                        assets={parameters.chunks()}
-                        component={component}
-                        store={store}
-                        staticPath={staticPath}
-                      />,
-                    )}`,
-                  );
-              })
-              .catch(error => {
-                const errorPage = <ErrorPage message={error.message} />;
-
-                if (process.env.SENTRY_DSN) {
-                  Raven.captureException(error.message, {
-                    extra: JSON.stringify(error),
-                  });
-                }
-                res.set({
-                  'Cache-Control': 'public, max-age=60, no-transform',
-                });
-                res
-                  .status(500)
-                  .send(`<!doctype html> ${renderToStaticMarkup(errorPage)}`);
+                res.send(sitemap);
               });
+            } else {
+              loadOnServer({ ...routeState, store })
+                .then(() => {
+                  const component = (
+                    <Provider store={store}>
+                      <ReduxAsyncConnect {...routeState} />
+                    </Provider>
+                  );
+                  res.set({
+                    'Cache-Control': 'public, max-age=600, no-transform',
+                  });
+                  res
+                    .status(200)
+                    .send(
+                      `<!doctype html> ${renderToStaticMarkup(
+                        <Html
+                          assets={parameters.chunks()}
+                          component={component}
+                          store={store}
+                          staticPath={staticPath}
+                        />,
+                      )}`,
+                    );
+                })
+                .catch(error => {
+                  const errorPage = <ErrorPage message={error.message} />;
+
+                  if (process.env.SENTRY_DSN) {
+                    Raven.captureException(error.message, {
+                      extra: JSON.stringify(error),
+                    });
+                  }
+                  res.set({
+                    'Cache-Control': 'public, max-age=60, no-transform',
+                  });
+                  res
+                    .status(500)
+                    .send(`<!doctype html> ${renderToStaticMarkup(errorPage)}`);
+                });
+            }
           } else {
             const component = (
               <Provider store={store}>

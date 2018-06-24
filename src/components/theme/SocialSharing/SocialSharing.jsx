@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'semantic-ui-react';
+import { Button, Container } from 'semantic-ui-react';
 import { FacebookShareButton, TwitterShareButton } from 'react-share';
 
 /**
@@ -17,7 +17,7 @@ import { FacebookShareButton, TwitterShareButton } from 'react-share';
  * @returns {string} Markup of the component.
  */
 const SocialSharing = ({ url, title, description }) => (
-  <div>
+  <Container>
     <br />
     <FacebookShareButton url={url} quote={title}>
       <Button color="facebook" size="mini">
@@ -31,7 +31,7 @@ const SocialSharing = ({ url, title, description }) => (
     </TwitterShareButton>
     <br />
     <br />
-  </div>
+  </Container>
 );
 
 /**

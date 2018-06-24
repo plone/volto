@@ -6,6 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import { Container } from 'semantic-ui-react';
 
 /**
  * Image view component class.
@@ -14,17 +15,17 @@ import Helmet from 'react-helmet';
  * @returns {string} Markup of the component.
  */
 const ImageView = ({ content }) => (
-  <div className="view-wrapper">
+  <Container className="view-wrapper">
     <Helmet title={content.title} />
     <h1 className="documentFirstHeading">
       {content.title}
       {content.subtitle && ` - ${content.subtitle}`}
     </h1>
     {content.description && (
-      <p className="description">{content.description}</p>
+      <p className="documentDescription">{content.description}</p>
     )}
     <img alt={content.title} src={content.image.scales.preview.download} />
-  </div>
+  </Container>
 );
 
 /**

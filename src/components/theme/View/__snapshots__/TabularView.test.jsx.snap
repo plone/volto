@@ -2,7 +2,7 @@
 
 exports[`TabularView renders a tabular view component 1`] = `
 <div
-  className="view-wrapper"
+  className="ui container view-wrapper"
 >
   <article
     id="content"
@@ -14,7 +14,7 @@ exports[`TabularView renders a tabular view component 1`] = `
         Hello World!
       </h1>
       <p
-        className="description"
+        className="documentDescription"
       >
         Hi
       </p>

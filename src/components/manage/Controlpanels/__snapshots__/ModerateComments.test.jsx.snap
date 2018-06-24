@@ -8,7 +8,7 @@ exports[`ModerateComments renders a moderate comments component 1`] = `
     id="modal"
   />
   <div
-    className="container"
+    className="ui container"
   >
     <article
       id="content"

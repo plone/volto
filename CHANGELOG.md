@@ -12,6 +12,12 @@
 * Upgrade node to 8.11.2 @sneridagh
 * Basic user listing in users controlpanel @robgietema
 * Add missing FileWidget import @sneridagh
+* Option to delete tiles @robgietema
+* Option to add tiles @robgietema
+* Image tiles in editor @robgietema
+* Align images in editor @robgietema
+* Video tiles in editor @robgietema
+* Sitemap.xml.gz view @robgietema
 
 ### Changes
 
@@ -23,6 +29,7 @@
 * Fix eslint prettier config @robgietema
 * Refactor actions and reducers to match restapi docs naming @robgietema
 * Fix site root api calls @robgietema
+* Change visual editor to use the new tiles api @robgietema
 
 ## 0.5.0 (2018-03-23)
 
