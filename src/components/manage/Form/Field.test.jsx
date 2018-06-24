@@ -1,6 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-intl-redux';
+
 import Field from './Field';
+
+const mockStore = configureStore();
 
 jest.mock('../Widgets/ArrayWidget', () =>
   jest.fn(() => <div className="ArrayWidget" />),
@@ -28,64 +33,178 @@ jest.mock('../Widgets/WysiwygWidget', () =>
 );
 
 describe('Field', () => {
+  it('renders a field with a specific id', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <Field id="schema" />
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
   it('renders a `richtext` named field', () => {
-    const component = renderer.create(<Field widget="richtext" id="test" />);
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <Field widget="richtext" id="test" />
+      </Provider>,
+    );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders a `textarea` named field', () => {
-    const component = renderer.create(<Field widget="textarea" id="test" />);
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <Field widget="textarea" id="test" />
+      </Provider>,
+    );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders a `datetime` named field', () => {
-    const component = renderer.create(<Field widget="datetime" id="test" />);
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <Field widget="datetime" id="test" />
+      </Provider>,
+    );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders a `password` named field', () => {
-    const component = renderer.create(<Field widget="password" id="test" />);
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <Field widget="password" id="test" />
+      </Provider>,
+    );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders a `text` named field', () => {
-    const component = renderer.create(<Field widget="text" id="test" />);
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <Field widget="text" id="test" />
+      </Provider>,
+    );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders a select widget for a vocabulary-based field', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
     const component = renderer.create(
-      <Field vocabulary="plone.app.vocabularies.Keywords" id="test" />,
+      <Provider store={store}>
+        <Field vocabulary="plone.app.vocabularies.Keywords" id="test" />
+      </Provider>,
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders a select widget for a choices-based field', () => {
-    const component = renderer.create(<Field choices={[]} id="test" />);
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <Field choices={[]} id="test" />
+      </Provider>,
+    );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders a `boolean` type field', () => {
-    const component = renderer.create(<Field type="boolean" id="test" />);
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <Field type="boolean" id="test" />
+      </Provider>,
+    );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders an `array` type field', () => {
-    const component = renderer.create(<Field type="array" id="test" />);
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <Field type="array" id="test" />
+      </Provider>,
+    );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
   it('renders a fallback field', () => {
-    const component = renderer.create(<Field id="test" />);
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <Field id="test" />
+      </Provider>,
+    );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });

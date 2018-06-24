@@ -7,6 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
 import { defaultWidget, widgetMapping } from '~/config';
+import { injectIntl, intlShape } from 'react-intl';
 
 /**
  * Get widget by field's `id` attribute
@@ -66,7 +67,7 @@ const getWidgetDefault = () => defaultWidget;
  * @param {Object} props Properties.
  * @returns {string} Markup of the component.
  */
-const Field = props => {
+const Field = (props, { intl }) => {
   const Widget =
     getWidgetByFieldId(props.id) ||
     getWidgetByName(props.widget) ||
@@ -145,6 +146,7 @@ Field.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string.isRequired,
   onOrder: PropTypes.func,
+  intl: intlShape.isRequired,
 };
 
 /**
@@ -160,4 +162,4 @@ Field.defaultProps = {
   onOrder: null,
 };
 
-export default Field;
+export default injectIntl(Field);
