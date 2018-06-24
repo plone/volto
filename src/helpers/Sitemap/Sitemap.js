@@ -13,10 +13,12 @@ import config from '../../config';
 /**
  * Generate sitemap
  * @function generateSitemap
+ * @param {Object} req Request object
  * @return {string} Generated sitemap
  */
-export const generateSitemap = () =>
+export const generateSitemap = req =>
   new Promise(resolve => {
+    const url = `${req.protocol}://${req.get('Host')}`;
     const request = superagent.get(
       `${config.apiPath}/@search?metadata_fields=modified`,
     );
@@ -32,9 +34,10 @@ export const generateSitemap = () =>
         const items = map(
           body.items,
           item =>
-            `  <url>\n    <loc>${item['@id']}</loc>\n    <lastmod>${
-              item.modified
-            }</lastmod>\n  </url>`,
+            `  <url>\n    <loc>${item['@id'].replace(
+              config.apiPath,
+              url,
+            )}</loc>\n    <lastmod>${item.modified}</lastmod>\n  </url>`,
         );
         const result = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">\n${items.join(
           '\n',

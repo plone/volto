@@ -100,7 +100,7 @@ export default parameters => {
           // eslint-disable-line no-lonely-if
           if (__SSR__) {
             if (req.path === '/sitemap.xml.gz') {
-              generateSitemap().then(sitemap => {
+              generateSitemap(req).then(sitemap => {
                 res.header('Content-Type: application/x-gzip');
                 res.header('Content-Encoding: gzip');
                 res.header(
