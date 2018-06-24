@@ -1,3 +1,4 @@
+sudo: false
 language: python
 python:
 - 2.7.14
@@ -5,19 +6,11 @@ cache:
   pip: true
   directories:
    - node_modules
-addons:
-  apt:
-    sources:
-    - google-chrome
-    packages:
-    - google-chrome-stable
 before_install:
 - nvm install 8.11.2
 - mkdir webdriver
 - wget https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux64.tar.gz
 - tar -xzf geckodriver-v0.20.0-linux64.tar.gz -C webdriver
-- wget https://chromedriver.storage.googleapis.com/2.36/chromedriver_linux64.zip
-- unzip chromedriver_linux64.zip -d webdriver
 - export PATH=$PATH:$(pwd)/webdriver
 install:
 - virtualenv env --python=$(which python) --no-site-packages
