@@ -55,6 +55,26 @@ const messages = defineMessages({
     id: 'Add User',
     defaultMessage: 'Add User',
   },
+  addUserFormTitle: {
+    id: 'Add User',
+    defaultMessage: 'Add User',
+  },
+  addUserFormUsernameTitle: {
+    id: 'Username',
+    defaultMessage: 'Username',
+  },
+  addUserFormFullnameTitle: {
+    id: 'Fullname',
+    defaultMessage: 'Fullname',
+  },
+  addUserFormEmailTitle: {
+    id: 'Email',
+    defaultMessage: 'Email',
+  },
+  addUserFormPasswordTitle: {
+    id: 'Password',
+    defaultMessage: 'Password',
+  },
 });
 
 @injectIntl
@@ -118,9 +138,13 @@ export default class UsersControlpanel extends Component {
     this.onDeleteOk = this.onDeleteOk.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
     this.onAddUserSubmit = this.onAddUserSubmit.bind(this);
+    this.onAddUserError = this.onAddUserError.bind(this);
+    this.onAddUserSuccess = this.onAddUserSuccess.bind(this);
     this.state = {
       search: '',
       showAddUser: false,
+      showAddUserErrorConfirm: false,
+      addUserError: '',
       showDelete: false,
       userToDelete: undefined,
     };
@@ -142,6 +166,12 @@ export default class UsersControlpanel extends Component {
       (this.props.createRequest.loading && nextProps.createRequest.loaded)
     ) {
       this.props.listUsers(this.state.search);
+    }
+    if (this.props.createRequest.loading && nextProps.createRequest.loaded) {
+      this.onAddUserSuccess();
+    }
+    if (this.props.createRequest.loading && nextProps.createRequest.error) {
+      this.onAddUserError(nextProps.createRequest.error);
     }
   }
 
@@ -213,10 +243,46 @@ export default class UsersControlpanel extends Component {
     });
   }
 
-  onAddUserSubmit(data) {
+  /**
+   * Callback to be called by the ModalForm when the form is submitted.
+   *
+   * @param {object} data Form data from the ModalForm.
+   * @param {func} callback to set new form data in the ModalForm
+   * @returns {undefined}
+   */
+  onAddUserSubmit(data, callback) {
     this.props.createUser(data);
-    this.setState({ showAddUser: false });
+    this.setState({
+      addUserSetFormDataCallback: callback,
+    });
   }
+
+  /**
+   * Handle Errors after createUser()
+   *
+   * @param {object} error orbject. Requires the property .message
+   * @returns {undefined}
+   */
+  onAddUserError(error) {
+    this.setState({
+      addUserError: error.message,
+    });
+  }
+
+  /**
+   * Handle Success after createUser()
+   *
+   * @returns {undefined}
+   */
+  onAddUserSuccess() {
+    this.state.addUserSetFormDataCallback({});
+    this.setState({
+      showAddUser: false,
+      addUserError: undefined,
+      addUserSetFormDataCallback: undefined,
+    });
+  }
+
   /**
    * Render method.
    * @method render
@@ -264,8 +330,10 @@ export default class UsersControlpanel extends Component {
           <ModalForm
             open={this.state.showAddUser}
             onSubmit={this.onAddUserSubmit}
+            submitError={this.state.addUserError}
             onCancel={() => this.setState({ showAddUser: false })}
-            title="FIXME: Add User title"
+            title={this.props.intl.formatMessage(messages.addUserFormTitle)}
+            loading={this.props.createRequest.loading}
             schema={{
               fieldsets: [
                 {
@@ -276,22 +344,30 @@ export default class UsersControlpanel extends Component {
               ],
               properties: {
                 username: {
-                  title: 'FIXME: Username',
+                  title: this.props.intl.formatMessage(
+                    messages.addUserFormUsernameTitle,
+                  ),
                   type: 'string',
                   description: '',
                 },
                 fullname: {
-                  title: 'FIXME: Fullname',
+                  title: this.props.intl.formatMessage(
+                    messages.addUserFormFullnameTitle,
+                  ),
                   type: 'string',
                   description: '',
                 },
                 email: {
-                  title: 'FIXME: email',
+                  title: this.props.intl.formatMessage(
+                    messages.addUserFormEmailTitle,
+                  ),
                   type: 'string',
                   description: '',
                 },
                 password: {
-                  title: 'FIXME: password',
+                  title: this.props.intl.formatMessage(
+                    messages.addUserFormPasswordTitle,
+                  ),
                   type: 'string',
                   description: '',
                 },

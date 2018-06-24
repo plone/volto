@@ -72,11 +72,13 @@ export default class FormModal extends Component {
     }).isRequired,
     title: PropTypes.string.isRequired,
     formData: PropTypes.objectOf(PropTypes.any),
+    submitError: PropTypes.string,
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func,
     open: PropTypes.bool,
     submitLabel: PropTypes.string,
     intl: intlShape.isRequired,
+    loading: PropTypes.bool,
   };
 
   /**
@@ -89,6 +91,8 @@ export default class FormModal extends Component {
     onCancel: null,
     formData: {},
     open: true,
+    loading: null,
+    submitError: null,
   };
 
   /**
@@ -167,7 +171,10 @@ export default class FormModal extends Component {
         errors,
       });
     } else {
-      this.props.onSubmit(this.state.formData);
+      let setFormDataCallback = formData => {
+        this.setState({ formData: formData });
+      };
+      this.props.onSubmit(this.state.formData, setFormDataCallback);
     }
   }
 
@@ -201,6 +208,7 @@ export default class FormModal extends Component {
       onChange: this.onChangeField,
     }));
 
+    const state_errors = keys(this.state.errors).length > 0;
     return (
       <Modal open={this.props.open}>
         <Header>{this.props.title}</Header>
@@ -208,13 +216,18 @@ export default class FormModal extends Component {
           <UiForm
             method="post"
             onSubmit={this.onSubmit}
-            error={keys(this.state.errors).length > 0}
+            error={state_errors || Boolean(this.props.submitError)}
           >
             <Message error>
-              <FormattedMessage
-                id="There were some errors."
-                defaultMessage="There were some errors."
-              />
+              {state_errors ? (
+                <FormattedMessage
+                  id="There were some errors."
+                  defaultMessage="There were some errors."
+                />
+              ) : (
+                ''
+              )}
+              <div>{this.props.submitError}</div>
             </Message>
             {schema.fieldsets.length > 1 && (
               <Menu tabular stackable>
@@ -248,6 +261,7 @@ export default class FormModal extends Component {
             }
             size="big"
             onClick={this.onSubmit}
+            loading={this.props.loading}
           />
           {onCancel && (
             <Button
