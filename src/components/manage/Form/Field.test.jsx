@@ -28,49 +28,57 @@ jest.mock('../Widgets/WysiwygWidget', () =>
 );
 
 describe('Field', () => {
-  it('renders a richtext field', () => {
+  it('renders a `richtext` named field', () => {
     const component = renderer.create(<Field widget="richtext" id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
-  it('renders a textarea field', () => {
+  it('renders a `textarea` named field', () => {
     const component = renderer.create(<Field widget="textarea" id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
-  it('renders a datetime field', () => {
+  it('renders a `datetime` named field', () => {
     const component = renderer.create(<Field widget="datetime" id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
-  it('renders a password field', () => {
+  it('renders a `password` named field', () => {
     const component = renderer.create(<Field widget="password" id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
-  it('renders a text field', () => {
+  it('renders a `text` named field', () => {
     const component = renderer.create(<Field widget="text" id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
-  it('renders a select field', () => {
+  it('renders a select widget for a vocabulary-based field', () => {
+    const component = renderer.create(
+      <Field vocabulary="plone.app.vocabularies.Keywords" id="test" />,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
+  it('renders a select widget for a choices-based field', () => {
     const component = renderer.create(<Field choices={[]} id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
-  it('renders a boolean field', () => {
+  it('renders a `boolean` type field', () => {
     const component = renderer.create(<Field type="boolean" id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
 
-  it('renders a array field', () => {
+  it('renders an `array` type field', () => {
     const component = renderer.create(<Field type="array" id="test" />);
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
