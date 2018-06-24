@@ -60,9 +60,10 @@ describe('Content reducer', () => {
         result: {
           items: [
             {
-              '@id': `${config.apiPath}/home-page`,
+              '@id': '/home-page',
             },
           ],
+          '@id': '/',
         },
       }),
     ).toMatchObject({
@@ -74,10 +75,10 @@ describe('Content reducer', () => {
       data: {
         items: [
           {
-            '@id': `${config.apiPath}/home-page`,
-            url: '/home-page',
+            '@id': '/home-page',
           },
         ],
+        '@id': '/',
       },
     });
   });
@@ -206,9 +207,10 @@ describe('Content reducer', () => {
         result: {
           items: [
             {
-              '@id': `${config.apiPath}/home-page`,
+              '@id': '/home-page',
             },
           ],
+          '@id': '/',
         },
       }),
     ).toMatchObject({
@@ -220,10 +222,10 @@ describe('Content reducer', () => {
       data: {
         items: [
           {
-            '@id': `${config.apiPath}/home-page`,
-            url: '/home-page',
+            '@id': `/home-page`,
           },
         ],
+        '@id': '/',
       },
     });
   });

@@ -96,8 +96,12 @@ export default function content(state = initialState, action = {}) {
             action.result.items &&
             action.result.items.map(item => ({
               ...item,
-              url: item['@id'].replace(config.apiPath, ''),
+              '@id': item['@id'].replace(config.apiPath, ''),
             })),
+          '@id':
+            (action.result &&
+              action.result['@id'].replace(config.apiPath, '')) ||
+            null,
         },
         [getRequestKey(action.type)]: {
           loading: false,

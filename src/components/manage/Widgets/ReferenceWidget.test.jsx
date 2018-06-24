@@ -10,6 +10,7 @@ const mockStore = configureStore();
 test('renders an array widget component', () => {
   const store = mockStore({
     search: {},
+    content: {},
     intl: {
       locale: 'en',
       messages: {},
