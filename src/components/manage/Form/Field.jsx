@@ -22,7 +22,11 @@ const getWidgetByFieldId = id => widgetMapping.id[id] || null;
  * @param {string} widget Widget
  * @returns {string} Widget component.
  */
-const getWidgetByName = widget => widgetMapping.widget[widget] || null;
+const getWidgetByName = widget => {
+  return typeof widget === 'string'
+    ? widgetMapping.widget[widget] || getWidgetDefault()
+    : null;
+};
 
 /**
  * Get widget by field's `vocabulary` attribute
