@@ -153,21 +153,13 @@ export default class ReferenceWidget extends Component {
    * @returns {undefined}
    */
   onSearchChange = (event, data) => {
-    const query = {};
     if (data.searchQuery && data.searchQuery !== '') {
-      query.Title = `*${data.searchQuery}*`;
-    }
-    if (data.path && data.path.length) {
-      query['path.depth'] = 1;
-      query.sort_on = 'getObjPositionInParent';
-      query.sort_order = 'ascending';
-    }
-    if (Object.keys(query).length > 0) {
-      query.metadata_fields = ['is_folderish', 'getPath'];
-      this.props.searchContent(
-        data.path ? data.id.replace(config.apiPath, '') : '',
-        query,
-      );
+      const query = {
+        Title: `*${data.searchQuery}*`,
+        metadata_fields: ['is_folderish'],
+      };
+      this.setState({ ...this.state, selectedFolder: null });
+      this.props.searchContent(null, query);
     } else {
       this.props.resetSearchContent();
     }
@@ -176,12 +168,21 @@ export default class ReferenceWidget extends Component {
   /**
    * On select folder handler
    * @method onSelectFolder
-   * @param {object} data Event data.
+   * @param {object} data context data.
    * @returns {undefined}
    */
   onSelectFolder = data => {
     this.setState({ ...this.state, selectedFolder: data });
-    this.onSearchChange(null, data);
+    const query = {
+      'path.depth': 1,
+      sort_on: 'getObjPositionInParent',
+      sort_order: 'ascending',
+      metadata_fields: ['is_folderish'],
+    };
+    this.props.searchContent(
+      data ? data['@id'].replace(config.apiPath, '') : '',
+      query,
+    );
   };
 
   /**
@@ -196,13 +197,7 @@ export default class ReferenceWidget extends Component {
       text: data.title,
       value: data['@id'],
       content: (
-        <ReferenceWidgetItem
-          title={data.title}
-          id={data['@id']}
-          path={data.getPath}
-          is_folderish={data.is_folderish}
-          onSelectFolder={this.onSelectFolder}
-        />
+        <ReferenceWidgetItem data={data} onSelectFolder={this.onSelectFolder} />
       ),
       data,
     };
@@ -250,10 +245,8 @@ export default class ReferenceWidget extends Component {
                 multiple
                 header={
                   <ReferenceWidgetItemHeader
-                    title={selectedFolder ? selectedFolder.title : ''}
-                    path={selectedFolder ? selectedFolder.path : ''}
+                    data={selectedFolder}
                     onSelectFolder={this.onSelectFolder}
-                    id={selectedFolder ? selectedFolder.id : ''}
                   />
                 }
                 noResultsMessage={this.props.intl.formatMessage(
@@ -280,9 +273,8 @@ export default class ReferenceWidget extends Component {
                 }}
                 onSearchChange={this.onSearchChange}
                 onOpen={() =>
-                  this.onSearchChange(null, {
-                    path: context['@id'].replace(config.apiPath, ''),
-                    id: context['@id'],
+                  this.onSelectFolder({
+                    '@id': context['@id'],
                   })
                 }
               />

@@ -8,15 +8,19 @@ import PropTypes from 'prop-types';
 import { Button, Header, Icon } from 'semantic-ui-react';
 import { injectIntl } from 'react-intl';
 import { dropRight } from 'lodash';
+import config from '../../../config';
 
 /**
  * ReferenceWidgetItemHeader class.
  * @class ReferenceWidgetItemHeader
  * @extends
  */
-const ReferenceWidgetItemHeader = ({ path, onSelectFolder, id }) => {
+const ReferenceWidgetItemHeader = ({ data, onSelectFolder }) => {
+  console.log(data);
+
+  const path = data ? data['@id'].replace(config.apiPath, '') : '';
   const parentPath = dropRight(path.split('/')).join('/');
-  const parentId = dropRight(id.split('/')).join('/');
+  const parentId = data ? dropRight(data['@id'].split('/')).join('/') : '';
   return (
     <Header>
       {path}
@@ -26,7 +30,7 @@ const ReferenceWidgetItemHeader = ({ path, onSelectFolder, id }) => {
         onClick={e => {
           e.preventDefault();
           e.stopPropagation();
-          onSelectFolder({ path: parentPath, id: parentId });
+          onSelectFolder({ '@id': parentId });
         }}
         content="<"
       />
@@ -40,9 +44,13 @@ const ReferenceWidgetItemHeader = ({ path, onSelectFolder, id }) => {
  * @static
  */
 ReferenceWidgetItemHeader.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string,
-  path: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    '@id': PropTypes.string.isRequired,
+    '@type': PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    is_folderish: PropTypes.bool.isRequired,
+  }).isRequired,
   onSelectFolder: PropTypes.func.isRequired,
 };
 
