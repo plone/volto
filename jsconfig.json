@@ -4,5 +4,19 @@
     "module": "commonjs",
     "experimentalDecorators": true
   },
-  "exclude": ["node_modules", "**/node_modules/*"]
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*",
+    "api/include",
+    "api/lib",
+    "api/local",
+    "api/share",
+    "api/var",
+    "api/parts",
+    "api/packages",
+    "api/jupyter",
+    "api/docker",
+    "api/develop-eggs",
+    "dist"
+  ]
 }
