@@ -4,7 +4,7 @@
 
 ### Added
 
-* Refactor UserControlPanel and add delete action @csenger
+* Refactor UserControlPanel add delete and add user actions @csenger
 * Schema widget @robgietema
 * User actions and reducers @robgietema
 * Group actions and reducers @robgietema

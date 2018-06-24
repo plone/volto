@@ -9,7 +9,15 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { Portal } from 'react-portal';
-import { Confirm, Form, Icon, Input, Segment, Table } from 'semantic-ui-react';
+import {
+  Button,
+  Confirm,
+  Form,
+  Icon,
+  Input,
+  Segment,
+  Table,
+} from 'semantic-ui-react';
 import { find, map } from 'lodash';
 import {
   FormattedMessage,
@@ -18,9 +26,9 @@ import {
   intlShape,
 } from 'react-intl';
 
-import { deleteUser, listRoles, listUsers } from '../../../actions';
+import { createUser, deleteUser, listRoles, listUsers } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
-import { Toolbar, UsersControlpanelUser } from '../../../components';
+import { ModalForm, Toolbar, UsersControlpanelUser } from '../../../components';
 
 const messages = defineMessages({
   searchUsers: {
@@ -43,6 +51,10 @@ const messages = defineMessages({
     id: 'Delete User',
     defaultMessage: 'Delete User',
   },
+  addUserButtonTitle: {
+    id: 'Add User',
+    defaultMessage: 'Add User',
+  },
 });
 
 @injectIntl
@@ -52,9 +64,13 @@ const messages = defineMessages({
     users: state.users.users,
     pathname: props.location.pathname,
     deleteRequest: state.users.delete,
+    createRequest: state.users.create,
   }),
   dispatch =>
-    bindActionCreators({ listRoles, listUsers, deleteUser }, dispatch),
+    bindActionCreators(
+      { listRoles, listUsers, deleteUser, createUser },
+      dispatch,
+    ),
 )
 /**
  * UsersControlpanel class.
@@ -101,8 +117,10 @@ export default class UsersControlpanel extends Component {
     this.delete = this.delete.bind(this);
     this.onDeleteOk = this.onDeleteOk.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
+    this.onAddUserSubmit = this.onAddUserSubmit.bind(this);
     this.state = {
       search: '',
+      showAddUser: false,
       showDelete: false,
       userToDelete: undefined,
     };
@@ -119,7 +137,10 @@ export default class UsersControlpanel extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
+    if (
+      (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
+      (this.props.createRequest.loading && nextProps.createRequest.loaded)
+    ) {
       this.props.listUsers(this.state.search);
     }
   }
@@ -192,6 +213,10 @@ export default class UsersControlpanel extends Component {
     });
   }
 
+  onAddUserSubmit(data) {
+    this.props.createUser(data);
+    this.setState({ showAddUser: false });
+  }
   /**
    * Render method.
    * @method render
@@ -206,6 +231,12 @@ export default class UsersControlpanel extends Component {
       : '';
     return (
       <div id="page-users">
+        <Button
+          content={this.props.intl.formatMessage(messages.addUserButtonTitle)}
+          onClick={() => {
+            this.setState({ showAddUser: true });
+          }}
+        />
         <Helmet title="Users and Groups" />
         <div className="container">
           <Confirm
@@ -229,6 +260,44 @@ export default class UsersControlpanel extends Component {
             }
             onCancel={this.onDeleteCancel}
             onConfirm={this.onDeleteOk}
+          />
+          <ModalForm
+            open={this.state.showAddUser}
+            onSubmit={this.onAddUserSubmit}
+            onCancel={() => this.setState({ showAddUser: false })}
+            title="FIXME: Add User title"
+            schema={{
+              fieldsets: [
+                {
+                  id: 'default',
+                  title: 'FIXME: User Data',
+                  fields: ['username', 'fullname', 'email', 'password'],
+                },
+              ],
+              properties: {
+                username: {
+                  title: 'FIXME: Username',
+                  type: 'string',
+                  description: '',
+                },
+                fullname: {
+                  title: 'FIXME: Fullname',
+                  type: 'string',
+                  description: '',
+                },
+                email: {
+                  title: 'FIXME: email',
+                  type: 'string',
+                  description: '',
+                },
+                password: {
+                  title: 'FIXME: password',
+                  type: 'string',
+                  description: '',
+                },
+              },
+              required: ['username', 'fullname', 'email', 'password'],
+            }}
           />
         </div>
         <Segment.Group raised>
