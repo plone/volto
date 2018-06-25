@@ -10,6 +10,13 @@ import { defaultWidget, widgetMapping } from '~/config';
 import { injectIntl, intlShape } from 'react-intl';
 
 /**
+ * Get default widget
+ * @method getViewDefault
+ * @returns {string} Widget component.
+ */
+const getWidgetDefault = () => defaultWidget;
+
+/**
  * Get widget by field's `id` attribute
  * @method getWidgetById
  * @param {string} id Id
@@ -23,11 +30,10 @@ const getWidgetByFieldId = id => widgetMapping.id[id] || null;
  * @param {string} widget Widget
  * @returns {string} Widget component.
  */
-const getWidgetByName = widget => {
-  return typeof widget === 'string'
+const getWidgetByName = widget =>
+  typeof widget === 'string'
     ? widgetMapping.widget[widget] || getWidgetDefault()
     : null;
-};
 
 /**
  * Get widget by field's `vocabulary` attribute
@@ -53,13 +59,6 @@ const getWidgetByChoices = choices => (choices ? widgetMapping.choices : null);
  * @returns {string} Widget component.
  */
 const getWidgetByType = type => widgetMapping.type[type] || null;
-
-/**
- * Get default widget
- * @method getViewDefault
- * @returns {string} Widget component.
- */
-const getWidgetDefault = () => defaultWidget;
 
 /**
  * Field component class.
