@@ -42,7 +42,7 @@ describe('Field', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Field id="schema" />
+        <Field id="schema" value={'{"fieldsets": [{"fields": []}]}'} />
       </Provider>,
     );
     const json = component.toJSON();
