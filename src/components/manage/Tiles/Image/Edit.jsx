@@ -8,7 +8,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { readAsDataURL } from 'promise-file-reader';
-import { Button, Icon, Image, Message } from 'semantic-ui-react';
+import {
+  Button,
+  Dimmer,
+  Icon,
+  Image,
+  Loader,
+  Message,
+} from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 
 import { createContent } from '../../../../actions';
@@ -93,11 +100,11 @@ export default class Edit extends Component {
    */
   onUploadImage({ target }) {
     const file = target.files[0];
+    this.setState({
+      uploading: true,
+    });
     readAsDataURL(file).then(data => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      this.setState({
-        uploading: true,
-      });
       this.props.createContent(getBaseUrl(this.props.pathname), {
         '@type': 'Image',
         image: {
@@ -204,6 +211,11 @@ export default class Edit extends Component {
         ) : (
           <p>
             <Message>
+              {this.state.uploading && (
+                <Dimmer active>
+                  <Loader indeterminate>Uploading image</Loader>
+                </Dimmer>
+              )}
               <center>
                 <h4>Image</h4>
                 <p>Upload a new image</p>

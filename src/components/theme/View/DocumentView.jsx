@@ -14,6 +14,7 @@ import {
   ViewDescriptionTile,
   ViewTextTile,
   ViewImageTile,
+  ViewVideoTile,
 } from '../../../components';
 
 /**
@@ -40,6 +41,9 @@ const DocumentView = ({ content }) =>
             break;
           case 'image':
             Tile = ViewImageTile;
+            break;
+          case 'video':
+            Tile = ViewVideoTile;
             break;
           default:
             break;
