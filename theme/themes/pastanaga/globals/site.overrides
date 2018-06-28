@@ -35,9 +35,38 @@ body {
   outline-width: 1px;
 }
 
-.tile .public-DraftEditorPlaceholder-inner {
+.DraftEditor-editorContainer,
+.DraftEditor-root,
+.public-DraftEditor-content {
+  height: inherit;
+  text-align: initial;
+}
+
+.public-DraftEditor-content[contenteditable='true'] {
+  -webkit-user-modify: read-write-plaintext-only;
+}
+
+.DraftEditor-root {
+  position: relative;
+}
+
+.DraftEditor-editorContainer {
+  position: relative;
+  z-index: 1;
+}
+
+.public-DraftEditor-block {
+  position: relative;
+}
+
+.public-DraftEditorPlaceholder-root {
   position: absolute;
   color: #aaaaaa;
+  z-index: 1;
+}
+
+.DraftEditorPlaceholder-hidden {
+  display: none;
 }
 
 .tile.align.left {
