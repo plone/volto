@@ -26,7 +26,7 @@ const DocumentView = ({ content }) =>
   content.tiles ? (
     <div id="page-document" className="ui wrapper">
       <Helmet title={content.title} />
-      {map(content.arrangement.items, tile => {
+      {map(content.tiles_layout.items, tile => {
         let Tile = null;
         switch (content.tiles[tile]['@type']) {
           case 'title':

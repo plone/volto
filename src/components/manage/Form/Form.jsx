@@ -148,8 +148,8 @@ class Form extends Component {
       formData = mapValues(props.schema.properties, 'default');
     }
     // defaults for block editor; should be moved to schema on server side
-    if (!formData.arrangement) {
-      formData.arrangement = { items: [ids.title, ids.description, ids.text] };
+    if (!formData.tiles_layout) {
+      formData.tiles_layout = { items: [ids.title, ids.description, ids.text] };
     }
     if (!formData.tiles) {
       formData.tiles = {
@@ -239,8 +239,8 @@ class Form extends Component {
     this.setState({
       formData: {
         ...this.state.formData,
-        arrangement: {
-          items: without(this.state.formData.arrangement.items, id),
+        tiles_layout: {
+          items: without(this.state.formData.tiles_layout.items, id),
         },
         tiles: omit(this.state.formData.tiles, [id]),
       },
@@ -259,8 +259,8 @@ class Form extends Component {
     this.setState({
       formData: {
         ...this.state.formData,
-        arrangement: {
-          items: [...this.state.formData.arrangement.items, id],
+        tiles_layout: {
+          items: [...this.state.formData.tiles_layout.items, id],
         },
         tiles: {
           ...this.state.formData.tiles,
@@ -337,7 +337,7 @@ class Form extends Component {
 
     return this.props.visual ? (
       <div className="ui wrapper">
-        {map(formData.arrangement.items, tile => {
+        {map(formData.tiles_layout.items, tile => {
           let Tile = null;
           switch (formData.tiles[tile]['@type']) {
             case 'title':
