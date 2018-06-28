@@ -99,11 +99,12 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   onChange(editorState) {
-    this.setState({ editorState });
-    this.props.onChangeField(
-      'description',
-      editorState.getCurrentContent().getPlainText(),
-    );
+    this.setState({ editorState }, () => {
+      this.props.onChangeField(
+        'description',
+        editorState.getCurrentContent().getPlainText(),
+      );
+    });
   }
 
   /**
