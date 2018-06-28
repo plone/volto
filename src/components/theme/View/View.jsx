@@ -202,7 +202,9 @@ export default class View extends Component {
       <div id="view">
         <Helmet
           bodyAttributes={{
-            class: `view-${RenderedView.displayName.toLowerCase()}`,
+            class: RenderedView.displayName
+              ? `view-${RenderedView.displayName.toLowerCase()}`
+              : 'view-undefined',
           }}
         />
 
