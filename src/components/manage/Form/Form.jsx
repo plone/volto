@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { keys, map, mapValues, omit, uniq, without } from 'lodash';
+import move from 'lodash-move';
 import {
   Button,
   Container,
@@ -23,14 +24,7 @@ import {
 } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 
-import {
-  EditTitleTile,
-  EditDescriptionTile,
-  EditTextTile,
-  EditImageTile,
-  EditVideoTile,
-  Field,
-} from '../../../components';
+import { EditTile, Field } from '../../../components';
 
 const messages = defineMessages({
   addTile: {
@@ -179,6 +173,7 @@ class Form extends Component {
     this.onSelectTile = this.onSelectTile.bind(this);
     this.onDeleteTile = this.onDeleteTile.bind(this);
     this.onAddTile = this.onAddTile.bind(this);
+    this.onMoveTile = this.onMoveTile.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -327,6 +322,28 @@ class Form extends Component {
   }
 
   /**
+   * Move tile handler
+   * @method onMoveTile
+   * @param {number} dragIndex Drag index.
+   * @param {number} hoverIndex Hover index.
+   * @returns {undefined}
+   */
+  onMoveTile(dragIndex, hoverIndex) {
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        tiles_layout: {
+          items: move(
+            this.state.formData.tiles_layout.items,
+            dragIndex,
+            hoverIndex,
+          ),
+        },
+      },
+    });
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -337,44 +354,24 @@ class Form extends Component {
 
     return this.props.visual ? (
       <div className="ui wrapper">
-        {map(formData.tiles_layout.items, tile => {
-          let Tile = null;
-          switch (formData.tiles[tile]['@type']) {
-            case 'title':
-              Tile = EditTitleTile;
-              break;
-            case 'description':
-              Tile = EditDescriptionTile;
-              break;
-            case 'text':
-              Tile = EditTextTile;
-              break;
-            case 'image':
-              Tile = EditImageTile;
-              break;
-            case 'video':
-              Tile = EditVideoTile;
-              break;
-            default:
-              break;
-          }
-          return Tile !== null ? (
-            <Tile
-              key={tile}
-              onChangeTile={this.onChangeTile}
-              onChangeField={this.onChangeField}
-              onDeleteTile={this.onDeleteTile}
-              onSelectTile={this.onSelectTile}
-              properties={formData}
-              data={formData.tiles[tile]}
-              pathname={this.props.pathname}
-              tile={tile}
-              selected={this.state.selected === tile}
-            />
-          ) : (
-            <div />
-          );
-        })}
+        {map(formData.tiles_layout.items, (tile, index) => (
+          <EditTile
+            id={tile}
+            index={index}
+            type={formData.tiles[tile]['@type']}
+            key={tile}
+            onChangeTile={this.onChangeTile}
+            onChangeField={this.onChangeField}
+            onDeleteTile={this.onDeleteTile}
+            onSelectTile={this.onSelectTile}
+            onMoveTile={this.onMoveTile}
+            properties={formData}
+            data={formData.tiles[tile]}
+            pathname={this.props.pathname}
+            tile={tile}
+            selected={this.state.selected === tile}
+          />
+        ))}
         <div>
           <Dropdown
             trigger={

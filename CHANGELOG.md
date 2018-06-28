@@ -21,6 +21,7 @@
 * Upload image indicator @robgietema
 * Video tile view @robgietema
 * Option to reset image @robgietema
+* Drag and drop to reorder tiles @robgietema
 
 ### Changes
 

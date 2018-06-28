@@ -14,6 +14,8 @@ import { isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Portal } from 'react-portal';
 import { Icon } from 'semantic-ui-react';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 import { createContent, getSchema } from '../../../actions';
 import { Form, Toolbar } from '../../../components';
@@ -43,6 +45,7 @@ const messages = defineMessages({
   },
 });
 
+@DragDropContext(HTML5Backend)
 @injectIntl
 @connect(
   (state, props) => ({
