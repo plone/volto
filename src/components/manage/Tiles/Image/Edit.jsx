@@ -197,6 +197,20 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                onClick={() =>
+                  this.props.onChangeTile(this.props.tile, {
+                    ...this.props.data,
+                    url: '',
+                  })
+                }
+              >
+                <Icon name="upload" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
                 onClick={() => this.props.onDeleteTile(this.props.tile)}
               >
                 <Icon name="trash" />
