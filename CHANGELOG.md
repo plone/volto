@@ -30,6 +30,7 @@
 * Refactor actions and reducers to match restapi docs naming @robgietema
 * Fix site root api calls @robgietema
 * Change visual editor to use the new tiles api @robgietema
+* Fix bug with wrong order input @robgietema
 
 ## 0.5.0 (2018-03-23)
 

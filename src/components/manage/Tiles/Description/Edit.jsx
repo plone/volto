@@ -79,6 +79,7 @@ export default class Edit extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (
+      nextProps.properties.description &&
       this.props.properties.description !== nextProps.properties.description &&
       !this.props.selected
     ) {
