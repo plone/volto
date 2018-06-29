@@ -17,9 +17,7 @@ exports.help = function() {
 };
 
 exports.exampleHelp = function() {
-  return `Example from https://github.com/jaredpalmer/razzle/tree/master/examples/ ${output.param(
-    'example-path'
-  )}`;
+  return `Example from https://github.com/plone/plone-react`;
 };
 
 exports.missingProjectName = function() {
@@ -27,10 +25,10 @@ exports.missingProjectName = function() {
 Please specify the project directory:
   ${chalk.cyan(program.name)} ${chalk.green('<project-directory>')}
 For example:
-  ${chalk.cyan(program.name)} ${chalk.green('my-razzle-app')}
+  ${chalk.cyan(program.name)} ${chalk.green('my-plone-react-app')}
   ${chalk.cyan(program.name)} ${chalk.cyan(
-    '--example with-preact'
-  )} ${chalk.green('my-preact-app')}
+    '--example with-react'
+  )} ${chalk.green('my-rreact-app')}
 Run ${chalk.cyan(`${program.name} --help`)} to see all options.
 `;
 };
