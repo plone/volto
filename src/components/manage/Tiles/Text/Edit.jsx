@@ -24,9 +24,10 @@ import {
   OrderedListButton,
 } from 'draft-js-buttons';
 import createBlockStyleButton from 'draft-js-buttons/lib/utils/createBlockStyleButton';
-import createLinkPlugin from 'draft-js-anchor-plugin';
 import createBlockBreakoutPlugin from 'draft-js-block-breakout-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+
+import createLinkPlugin from '../../AnchorPlugin';
 
 const messages = defineMessages({
   text: {
