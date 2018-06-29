@@ -74,6 +74,20 @@ exports[`renders an array widget component 1`] = `
             role="listbox"
           >
             <div
+              className="ui header"
+            >
+              
+              <button
+                className="ui disabled button"
+                disabled={true}
+                onClick={[Function]}
+                role="button"
+                tabIndex={-1}
+              >
+                &lt;
+              </button>
+            </div>
+            <div
               className="message"
             >
               No results found.

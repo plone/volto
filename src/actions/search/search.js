@@ -2,15 +2,7 @@
  * Search actions.
  * @module actions/search/search
  */
-
-import {
-  join,
-  map,
-  toPairs,
-  pickBy,
-  isArray
-} from 'lodash';
-
+import { join, map, toPairs, pickBy, isArray } from 'lodash';
 import {
   RESET_SEARCH_CONTENT,
   SEARCH_CONTENT,
