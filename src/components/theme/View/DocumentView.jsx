@@ -54,10 +54,9 @@ const DocumentView = ({ content }) =>
   ) : (
     <Container id="page-document">
       <Helmet title={content.title} />
-      <h1 className="documentFirstHeading">{content.title}</h1>
-      {content.description && (
-        <p className="documentDescription">{content.description}</p>
-      )}
+      <Helmet title="Welcome to plone"/>
+      <h1 className="documentFirstHeading">Welcome to Plone</h1>
+        <p className="documentDescription">Congratulations! You have successfully installed Plone.</p>
       {content.image && (
         <Image
           className="document-image"
