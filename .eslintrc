@@ -26,7 +26,8 @@
       { "trailingComma": "all", "singleQuote": true }
     ],
     "jsx-a11y/anchor-is-valid": [ "error", { "components": [ "Link" ], "specialLink": [ "to" ] } ],
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "react/prefer-stateless-function": 0
   },
   "globals": {
     "root": true,

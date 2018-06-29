@@ -7,14 +7,16 @@
 }
 
 /* All Sizes */
-.ui.wrapper > * {
+.ui.wrapper > *,
+.ui.wrapper > .ui.inner > * {
   display: block;
   max-width: @maxWidth !important;
 }
 
 /* Mobile */
 @media only screen and (max-width: @largestMobileScreen) {
-  .ui.wrapper > * {
+  .ui.wrapper > *,
+  .ui.wrapper > .ui.inner > * {
     width: @mobileWidth !important;
     margin-left: @mobileGutter !important;
     margin-right: @mobileGutter !important;
@@ -23,7 +25,8 @@
 
 /* Tablet */
 @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
-  .ui.wrapper > * {
+  .ui.wrapper > *,
+  .ui.wrapper > .ui.inner > * {
     width: @tabletWidth;
     margin-left: @tabletGutter !important;
     margin-right: @tabletGutter !important;
@@ -32,7 +35,8 @@
 
 /* Small Monitor */
 @media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
-  .ui.wrapper > * {
+  .ui.wrapper > *,
+  .ui.wrapper > .ui.inner > * {
     width: @computerWidth;
     margin-left: @computerGutter !important;
     margin-right: @computerGutter !important;
@@ -41,9 +45,14 @@
 
 /* Large Monitor */
 @media only screen and (min-width: @largeMonitorBreakpoint) {
-  .ui.wrapper > * {
+  .ui.wrapper > *,
+  .ui.wrapper > .ui.inner > * {
     width: @largeMonitorWidth;
     margin-left: @largeMonitorGutter !important;
     margin-right: @largeMonitorGutter !important;
   }
+}
+
+.ui.wrapper > .ui.inner {
+  width: 100% !important;
 }

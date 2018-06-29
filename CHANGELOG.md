@@ -18,6 +18,10 @@
 * Align images in editor @robgietema
 * Video tiles in editor @robgietema
 * Sitemap.xml.gz view @robgietema
+* Upload image indicator @robgietema
+* Video tile view @robgietema
+* Option to reset image @robgietema
+* Drag and drop to reorder tiles @robgietema
 
 ### Changes
 
