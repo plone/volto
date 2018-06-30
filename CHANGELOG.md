@@ -18,6 +18,10 @@
 * Align images in editor @robgietema
 * Video tiles in editor @robgietema
 * Sitemap.xml.gz view @robgietema
+* Upload image indicator @robgietema
+* Video tile view @robgietema
+* Option to reset image @robgietema
+* Drag and drop to reorder tiles @robgietema
 
 ### Changes
 
@@ -30,6 +34,7 @@
 * Refactor actions and reducers to match restapi docs naming @robgietema
 * Fix site root api calls @robgietema
 * Change visual editor to use the new tiles api @robgietema
+* Fix bug with wrong order input @robgietema
 
 ## 0.5.0 (2018-03-23)
 

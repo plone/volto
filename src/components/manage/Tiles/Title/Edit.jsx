@@ -79,6 +79,7 @@ export default class Edit extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (
+      nextProps.properties.title &&
       this.props.properties.title !== nextProps.properties.title &&
       !this.props.selected
     ) {
@@ -98,11 +99,12 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   onChange(editorState) {
-    this.setState({ editorState });
-    this.props.onChangeField(
-      'title',
-      editorState.getCurrentContent().getPlainText(),
-    );
+    this.setState({ editorState }, () => {
+      this.props.onChangeField(
+        'title',
+        editorState.getCurrentContent().getPlainText(),
+      );
+    });
   }
 
   /**

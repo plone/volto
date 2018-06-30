@@ -35,9 +35,38 @@ body {
   outline-width: 1px;
 }
 
-.tile .public-DraftEditorPlaceholder-inner {
+.DraftEditor-editorContainer,
+.DraftEditor-root,
+.public-DraftEditor-content {
+  height: inherit;
+  text-align: initial;
+}
+
+.public-DraftEditor-content[contenteditable='true'] {
+  -webkit-user-modify: read-write-plaintext-only;
+}
+
+.DraftEditor-root {
+  position: relative;
+}
+
+.DraftEditor-editorContainer {
+  position: relative;
+  z-index: 1;
+}
+
+.public-DraftEditor-block {
+  position: relative;
+}
+
+.public-DraftEditorPlaceholder-root {
   position: absolute;
   color: #aaaaaa;
+  z-index: 1;
+}
+
+.DraftEditorPlaceholder-hidden {
+  display: none;
 }
 
 .tile.align.left {
@@ -55,7 +84,7 @@ body {
 }
 
 .tile.align.full {
-  width: 100%;
+  width: 100% !important;
 }
 
 .title.tile .public-DraftEditorPlaceholder-inner {
@@ -85,6 +114,25 @@ body {
     box-shadow: @floatingShadow;
   }
   position: relative;
+}
+
+.drag.tile.wrapper {
+  position: relative;
+}
+
+.drag.handle.wrapper {
+  position: absolute;
+  top: -1px;
+  left: 4px;
+  z-index: 1;
+  .icon {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+  }
+}
+
+.drag.tile.title .drag.handle.wrapper {
+  top: 5px;
 }
 
 .description.tile .public-DraftEditorPlaceholder-inner {

@@ -89,6 +89,7 @@ export EditTitleTile from './manage/Tiles/Title/Edit';
 export EditTextTile from './manage/Tiles/Text/Edit';
 export EditImageTile from './manage/Tiles/Image/Edit';
 export EditVideoTile from './manage/Tiles/Video/Edit';
+export EditTile from './manage/Tiles/Tile/Edit';
 
 export ViewDescriptionTile from './manage/Tiles/Description/View';
 export ViewTitleTile from './manage/Tiles/Title/View';
