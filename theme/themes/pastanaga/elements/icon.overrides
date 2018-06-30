@@ -839,10 +839,10 @@ i.icon.bold:before { content: "\f032"; }
 i.icon.italic:before { content: "\f033"; }
 i.icon.text.height:before { content: "\f034"; }
 i.icon.text.width:before { content: "\f035"; }
-i.icon.align.left:before { content: "\f036"; }
-i.icon.align.center:before { content: "\f037"; }
-i.icon.align.right:before { content: "\f038"; }
-i.icon.align.justify:before { content: "\f039"; }
+i.icon.align.left:before { content: @icon-align-left; }
+i.icon.align.center:before { content: @icon-align-center; }
+i.icon.align.right:before { content: @icon-align-right; }
+i.icon.align.justify:before { content: @icon-align-justify; }
 i.icon.list:before { content: "\f03a"; }
 i.icon.outdent:before { content: "\f03b"; }
 i.icon.indent:before { content: "\f03c"; }

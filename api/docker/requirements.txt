@@ -51,7 +51,7 @@ Products.ZopeVersionControl==1.1.3
 Products.contentmigration==2.1.19
 Products.statusmessages==5.0.2
 Products.validation==2.1
-PyJWT==1.6.4
+PyJWT==1.6.1
 Pygments==2.2.0
 Record==2.13.0
 RestrictedPython==3.6.0

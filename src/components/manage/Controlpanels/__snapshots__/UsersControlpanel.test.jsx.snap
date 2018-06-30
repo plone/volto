@@ -2,6 +2,7 @@
 
 exports[`UsersControlpanel renders a user control component 1`] = `
 <div
+  className="ui container"
   id="page-users"
 >
   <div

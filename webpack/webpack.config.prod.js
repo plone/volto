@@ -3,6 +3,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import autoprefixer from 'autoprefixer';
+import paths from '../configs/paths';
 
 const projectRootPath = path.resolve(__dirname, '../');
 const assetsPath = path.resolve(projectRootPath, './dist');
@@ -42,10 +43,10 @@ module.exports = {
   devtool: 'source-map',
   context: path.resolve(__dirname, '..'),
   entry: {
-    main: ['./src/client.jsx'],
+    main: paths.appClientIndexJs,
   },
   output: {
-    path: assetsPath,
+    path: paths.appBuild,
     filename: '[name]-[chunkhash].js',
     chunkFilename: '[name]-[chunkhash].js',
     publicPath: '/assets/',
@@ -54,6 +55,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
+        include: paths.appSrc,
         exclude: /node_modules/,
         use: [
           {
@@ -96,6 +98,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: paths.appBuild,
         use: [
           {
             loader: 'style-loader',
@@ -142,11 +145,14 @@ module.exports = {
     ],
   },
   resolve: {
-    modules: [path.join(__dirname, 'src'), 'node_modules'],
+    modules: [path.join(__dirname, 'src'), 'node_modules', paths.appNodeModules],
     extensions: ['.json', '.js', '.jsx'],
     alias: {
       '../../theme.config$': path.join(__dirname, '../theme/site/theme.config'),
     },
+  },
+  resolveLoader: {
+    modules: [paths.appNodeModules, paths.ownNodeModules],
   },
   plugins: [
     // ignore dev config

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
 import Helmet from 'react-helmet';
-import { Segment, Container } from 'semantic-ui-react';
+import { Segment } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import Raven from 'raven-js';
 
@@ -113,7 +113,7 @@ export class AppComponent extends Component {
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
         <Segment basic className="content-area">
-          <Container as="main">
+          <main>
             <Messages />
             {this.state.hasError ? (
               <Error
@@ -123,7 +123,7 @@ export class AppComponent extends Component {
             ) : (
               this.props.children
             )}
-          </Container>
+          </main>
         </Segment>
         <Footer />
       </Fragment>

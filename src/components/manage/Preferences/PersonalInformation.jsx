@@ -16,7 +16,7 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
-import { Icon, Menu } from 'semantic-ui-react';
+import { Container, Icon, Menu } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 
 import { Form, Toolbar } from '../../../components';
@@ -170,7 +170,7 @@ export default class PersonalInformation extends Component {
    */
   render() {
     return this.props.loaded ? (
-      <div id="page-personal-information">
+      <Container id="page-personal-information">
         <Helmet
           title={this.props.intl.formatMessage(messages.personalInformation)}
         />
@@ -253,7 +253,7 @@ export default class PersonalInformation extends Component {
             }
           />
         </Portal>
-      </div>
+      </Container>
     ) : (
       <div />
     );

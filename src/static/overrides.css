@@ -3,10 +3,6 @@
   display: inline-block;
 }
 
-.documentFirstHeading + .description {
-  color: #b8c6c8; /* @purpleBackground */
-}
-
 .deletion {
   background-color: #f8cbcb;
 }

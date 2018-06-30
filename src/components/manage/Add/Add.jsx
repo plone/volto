@@ -14,6 +14,8 @@ import { isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Portal } from 'react-portal';
 import { Icon } from 'semantic-ui-react';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 import { createContent, getSchema } from '../../../actions';
 import { Form, Toolbar } from '../../../components';
@@ -33,12 +35,22 @@ const messages = defineMessages({
     id: 'Cancel',
     defaultMessage: 'Cancel',
   },
+  properties: {
+    id: 'Properties',
+    defaultMessage: 'Properties',
+  },
+  visual: {
+    id: 'Visual',
+    defaultMessage: 'Visual',
+  },
 });
 
+@DragDropContext(HTML5Backend)
 @injectIntl
 @connect(
   (state, props) => ({
-    request: state.content.create,
+    createRequest: state.content.create,
+    schemaRequest: state.schema,
     content: state.content.data,
     schema: state.schema.schema,
     pathname: props.location.pathname,
@@ -66,9 +78,14 @@ export class AddComponent extends Component {
     content: PropTypes.shape({
       // eslint-disable-line react/no-unused-prop-types
       '@id': PropTypes.string,
+      '@type': PropTypes.string,
     }),
     returnUrl: PropTypes.string,
-    request: PropTypes.shape({
+    createRequest: PropTypes.shape({
+      loading: PropTypes.bool,
+      loaded: PropTypes.bool,
+    }).isRequired,
+    schemaRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
@@ -96,8 +113,12 @@ export class AddComponent extends Component {
    */
   constructor(props) {
     super(props);
+    this.state = {
+      visual: false,
+    };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onToggleVisual = this.onToggleVisual.bind(this);
   }
 
   /**
@@ -116,11 +137,22 @@ export class AddComponent extends Component {
    * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
-    if (this.props.request.loading && nextProps.request.loaded) {
+    if (
+      this.props.createRequest.loading &&
+      nextProps.createRequest.loaded &&
+      nextProps.content['@type'] === this.props.type
+    ) {
       browserHistory.push(
         this.props.returnUrl ||
           nextProps.content['@id'].replace(config.apiPath, ''),
       );
+    }
+    if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
+      if (nextProps.schema.properties.tiles) {
+        this.setState({
+          visual: true,
+        });
+      }
     }
   }
 
@@ -147,12 +179,23 @@ export class AddComponent extends Component {
   }
 
   /**
+   * Toggle visual
+   * @method onToggleVisual
+   * @returns {undefined}
+   */
+  onToggleVisual() {
+    this.setState({
+      visual: !this.state.visual,
+    });
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    if (this.props.schema) {
+    if (this.props.schemaRequest.loaded) {
       return (
         <div id="page-add">
           <Helmet
@@ -167,12 +210,15 @@ export class AddComponent extends Component {
               }
             }}
             schema={this.props.schema}
+            formData={{ tiles: null, tiles_layout: null }}
             onSubmit={this.onSubmit}
             hideActions
+            pathname={this.props.pathname}
+            visual={this.state.visual}
             title={this.props.intl.formatMessage(messages.add, {
               type: this.props.type,
             })}
-            loading={this.props.request.loading}
+            loading={this.props.createRequest.loading}
           />
           <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
             <Toolbar
@@ -187,6 +233,19 @@ export class AddComponent extends Component {
                       title={this.props.intl.formatMessage(messages.save)}
                     />
                   </a>
+                  {this.props.schema.properties.tiles && (
+                    <a className="item" onClick={() => this.onToggleVisual()}>
+                      <Icon
+                        name={this.state.visual ? 'tasks' : 'block layout'}
+                        size="big"
+                        title={this.props.intl.formatMessage(
+                          this.state.visual
+                            ? messages.properties
+                            : messages.visual,
+                        )}
+                      />
+                    </a>
+                  )}
                   <a className="item" onClick={() => this.onCancel()}>
                     <Icon
                       name="close"

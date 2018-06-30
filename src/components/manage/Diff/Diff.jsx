@@ -9,7 +9,14 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { filter, isEqual, map } from 'lodash';
-import { Icon, Button, Dropdown, Grid, Table } from 'semantic-ui-react';
+import {
+  Container,
+  Icon,
+  Button,
+  Dropdown,
+  Grid,
+  Table,
+} from 'semantic-ui-react';
 import { browserHistory, Link } from 'react-router';
 import { Portal } from 'react-portal';
 import moment from 'moment';
@@ -206,7 +213,7 @@ export default class DiffComponent extends Component {
       }),
     );
     return (
-      <div id="page-diff">
+      <Container id="page-diff">
         <Helmet title={this.props.intl.formatMessage(messages.diff)} />
         <h1>
           <FormattedMessage
@@ -315,7 +322,7 @@ export default class DiffComponent extends Component {
             }
           />
         </Portal>
-      </div>
+      </Container>
     );
   }
 }
