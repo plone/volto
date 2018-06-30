@@ -12,7 +12,6 @@ import { Link } from 'react-router';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import { injectIntl, intlShape } from 'react-intl';
 import { find } from 'lodash';
-import  DocumentPage from './DocumentPage';
 
 import {
   Comments,
