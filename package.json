@@ -72,6 +72,7 @@
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
       "^.+\\.scss$": "jest-css-modules",
+      "^.+\\.css$": "jest-css-modules",
       "^.+\\.(svg|png)$": "jest-file"
     },
     "collectCoverage": true,
