@@ -206,7 +206,9 @@ export default class AddLinkForm extends Component {
           </svg>
           <input
             className={className}
-            onBlur={this.onClose}
+            // TODO: The onBlur is somewhat happening before the onSelectItem method is called.
+            // Then the dialog is closed once you select the item without setting the link.
+            // onBlur={this.onClose}
             onChange={this.onChange}
             onKeyDown={this.onKeyDown}
             placeholder={placeholder}
@@ -223,7 +225,6 @@ export default class AddLinkForm extends Component {
                 onClick={e => this.onSelectItem(e, item['@id'])}
                 title={item['@id']}
                 role="link"
-                href="#"
               >
                 {item.title}
               </a>
