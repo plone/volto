@@ -53,21 +53,6 @@ const CalloutButton = createBlockStyleButton({
 });
 const linkPlugin = createLinkPlugin();
 const blockBreakoutPlugin = createBlockBreakoutPlugin();
-const inlineToolbarPlugin = createInlineToolbarPlugin({
-  structure: [
-    BoldButton,
-    ItalicButton,
-    linkPlugin.LinkButton,
-    Separator,
-    HeadlineOneButton,
-    HeadlineTwoButton,
-    UnorderedListButton,
-    OrderedListButton,
-    BlockquoteButton,
-    CalloutButton,
-  ],
-});
-const { InlineToolbar } = inlineToolbarPlugin;
 
 @injectIntl
 /**
@@ -117,7 +102,23 @@ export default class Edit extends Component {
       } else {
         editorState = EditorState.createEmpty();
       }
-      this.state = { editorState };
+
+      const inlineToolbarPlugin = createInlineToolbarPlugin({
+        structure: [
+          BoldButton,
+          ItalicButton,
+          linkPlugin.LinkButton,
+          Separator,
+          HeadlineOneButton,
+          HeadlineTwoButton,
+          UnorderedListButton,
+          OrderedListButton,
+          BlockquoteButton,
+          CalloutButton,
+        ],
+      });
+
+      this.state = { editorState, inlineToolbarPlugin };
     }
 
     this.onChange = this.onChange.bind(this);
@@ -161,6 +162,9 @@ export default class Edit extends Component {
     if (__SERVER__) {
       return <div />;
     }
+
+    const { InlineToolbar } = this.state.inlineToolbarPlugin;
+
     return (
       <div
         onClick={() => this.props.onSelectTile(this.props.tile)}
@@ -182,7 +186,11 @@ export default class Edit extends Component {
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}
-          plugins={[inlineToolbarPlugin, linkPlugin, blockBreakoutPlugin]}
+          plugins={[
+            this.state.inlineToolbarPlugin,
+            linkPlugin,
+            blockBreakoutPlugin,
+          ]}
           blockRenderMap={extendedBlockRenderMap}
           blockStyleFn={contentBlock => {
             const type = contentBlock.getType();
