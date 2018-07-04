@@ -6,6 +6,7 @@ const propTypes = {
   children: PropTypes.node.isRequired,
   entityKey: PropTypes.string,
   getEditorState: PropTypes.func.isRequired,
+  target: PropTypes.string,
 };
 
 const Link = ({ children, className, entityKey, getEditorState, target }) => {
@@ -29,4 +30,9 @@ const Link = ({ children, className, entityKey, getEditorState, target }) => {
 };
 
 Link.propTypes = propTypes;
+Link.defaultProps = {
+  className: null,
+  entityKey: null,
+  target: null,
+};
 export default Link;

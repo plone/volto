@@ -4,12 +4,23 @@ import unionClassNames from 'union-class-names';
 import EditorUtils from 'draft-js-plugins-utils';
 import AddLinkForm from './AddLinkForm';
 
+/**
+ * Add link form class.
+ * @class LinkButton
+ * @extends Component
+ */
 export default class LinkButton extends Component {
   static propTypes = {
     placeholder: PropTypes.string,
-    store: PropTypes.object.isRequired,
-    ownTheme: PropTypes.object.isRequired,
+    store: PropTypes.shape({}).isRequired,
+    theme: PropTypes.shape({}).isRequired,
+    ownTheme: PropTypes.shape({}).isRequired,
     onRemoveLinkAtSelection: PropTypes.func.isRequired,
+    onOverrideContent: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    placeholder: '',
   };
 
   onMouseDown = event => {
@@ -26,6 +37,11 @@ export default class LinkButton extends Component {
     onOverrideContent(content);
   };
 
+  /**
+   * Render method.
+   * @method render
+   * @returns {string} Markup for the component.
+   */
   render() {
     const { theme, onRemoveLinkAtSelection } = this.props;
     const hasLinkSelected = EditorUtils.hasEntity(
@@ -37,7 +53,11 @@ export default class LinkButton extends Component {
       : theme.button;
 
     return (
-      <div className={theme.buttonWrapper} onMouseDown={this.onMouseDown}>
+      <div
+        className={theme.buttonWrapper}
+        onMouseDown={this.onMouseDown}
+        role="presentation"
+      >
         <button
           className={className}
           onClick={
