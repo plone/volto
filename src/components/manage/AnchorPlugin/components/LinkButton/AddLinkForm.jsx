@@ -112,10 +112,12 @@ export default class AddLinkForm extends Component {
   /**
    * Select item handler
    * @method onSelectItem
+   * @param {string} e event
    * @param {string} url Url
    * @returns {undefined}
    */
-  onSelectItem(url) {
+  onSelectItem = (e, url) => {
+    e.preventDefault();
     this.setState({
       value: url,
       isInvalid: false,
@@ -126,16 +128,14 @@ export default class AddLinkForm extends Component {
     );
     this.input.blur();
     this.onClose();
-  }
+  };
 
   /**
    * Close handler
    * @method onClose
    * @returns {undefined}
    */
-  onClose() {
-    return this.props.onOverrideContent(undefined);
-  }
+  onClose = () => this.props.onOverrideContent(undefined);
 
   /**
    * Keydown handler
@@ -220,9 +220,10 @@ export default class AddLinkForm extends Component {
             <li style={{ padding: '5px' }}>
               <a
                 style={{ cursor: 'pointer' }}
-                onClick={this.onSelectItem.bind(this, item['@id'])}
+                onClick={e => this.onSelectItem(e, item['@id'])}
                 title={item['@id']}
                 role="link"
+                href="#"
               >
                 {item.title}
               </a>
