@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
-import { Image } from 'semantic-ui-react';
+import { Container, Image } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
 /**
@@ -17,13 +17,13 @@ import { FormattedMessage } from 'react-intl';
  * @returns {string} Markup of the component.
  */
 const SummaryView = ({ content }) => (
-  <div className="view-wrapper">
+  <Container className="view-wrapper">
     <Helmet title={content.title} />
     <article id="content">
       <header>
         <h1 className="documentFirstHeading">{content.title}</h1>
         {content.description && (
-          <p className="description">{content.description}</p>
+          <p className="documentDescription">{content.description}</p>
         )}
       </header>
       <section id="content-core">
@@ -52,7 +52,7 @@ const SummaryView = ({ content }) => (
         ))}
       </section>
     </article>
-  </div>
+  </Container>
 );
 
 /**

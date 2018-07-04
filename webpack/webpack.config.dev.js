@@ -4,6 +4,7 @@ import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import fs from 'fs';
 import autoprefixer from 'autoprefixer';
+import paths from '../configs/paths';
 
 const projectRootPath = path.resolve(__dirname, '../');
 
@@ -101,12 +102,12 @@ module.exports = {
   devtool: 'inline-source-map',
   context: path.resolve(__dirname, '..'),
   entry: [
-    `webpack-hot-middleware/client?path=http://${host}:${port}/__webpack_hmr`,
+    `webpack-hot-middleware/client?path=http://${host}:${port}/__webpack_hmr`, // Not sure it's needed 
     'webpack/hot/only-dev-server',
-    './src/client.jsx',
+    paths.appClientIndexJs,
   ],
   output: {
-    path: assetsPath,
+    path: paths.appBuild,
     filename: '[name]-[hash].js',
     chunkFilename: '[name]-[chunkhash].js',
     publicPath: `http://${host}:${port}/dist/`,
@@ -115,6 +116,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
+        include: paths.appSrc,
         exclude: /node_modules/,
         use: [
           {
@@ -158,6 +160,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: paths.appBuild,
         use: [
           {
             loader: 'style-loader',
@@ -177,11 +180,14 @@ module.exports = {
     ],
   },
   resolve: {
-    modules: [path.join(__dirname, 'src'), 'node_modules'],
+    modules: [path.join(__dirname, 'src'), 'node_modules', paths.appNodeModules],
     extensions: ['.json', '.js', '.jsx'],
     alias: {
       '../../theme.config$': path.join(__dirname, '../theme/site/theme.config'),
     },
+  },
+  resolveLoader: {
+    modules: [paths.appNodeModules, paths.ownNodeModules],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

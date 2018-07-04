@@ -13,7 +13,7 @@
 /* Devices */
 @mobileMinimumGutter: 0em;
 @mobileWidth: auto;
-@mobileGutter: 0;
+@mobileGutter: 1em;
 
 @tabletMinimumGutter: (@emSize  * 1);
 @tabletWidth: @tabletBreakpoint - (@tabletMinimumGutter * 2) - @scrollbarWidth;

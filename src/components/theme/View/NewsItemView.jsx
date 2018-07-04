@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { Image } from 'semantic-ui-react';
+import { Container, Image } from 'semantic-ui-react';
 
 /**
  * Document view component class.
@@ -15,7 +15,7 @@ import { Image } from 'semantic-ui-react';
  * @returns {string} Markup of the component.
  */
 const DocumentView = ({ content }) => (
-  <div className="view-wrapper">
+  <Container className="view-wrapper">
     <Helmet title={content.title} />
     {content.title && (
       <h1 className="documentFirstHeading">
@@ -24,7 +24,7 @@ const DocumentView = ({ content }) => (
       </h1>
     )}
     {content.description && (
-      <p className="description">{content.description}</p>
+      <p className="documentDescription">{content.description}</p>
     )}
     {content.image && (
       <Image
@@ -42,7 +42,7 @@ const DocumentView = ({ content }) => (
     {content.text && (
       <p dangerouslySetInnerHTML={{ __html: content.text.data }} />
     )}
-  </div>
+  </Container>
 );
 
 /**

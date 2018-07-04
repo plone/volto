@@ -16,4 +16,5 @@ export default {
   markup: 'code',
   'moderate-comments': 'comments',
   security: 'lock',
+  users: 'users',
 };

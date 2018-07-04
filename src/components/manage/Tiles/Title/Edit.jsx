@@ -8,6 +8,15 @@ import { Map } from 'immutable';
 import PropTypes from 'prop-types';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { Button, Icon } from 'semantic-ui-react';
+
+const messages = defineMessages({
+  title: {
+    id: 'Title',
+    defaultMessage: 'Title',
+  },
+});
 
 const blockRenderMap = Map({
   unstyled: {
@@ -17,6 +26,7 @@ const blockRenderMap = Map({
 
 const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
 
+@injectIntl
 /**
  * Edit title tile class.
  * @class Edit
@@ -30,7 +40,12 @@ export default class Edit extends Component {
    */
   static propTypes = {
     properties: PropTypes.objectOf(PropTypes.any).isRequired,
-    onChange: PropTypes.func.isRequired,
+    selected: PropTypes.bool.isRequired,
+    intl: intlShape.isRequired,
+    onChangeField: PropTypes.func.isRequired,
+    onSelectTile: PropTypes.func.isRequired,
+    onDeleteTile: PropTypes.func.isRequired,
+    tile: PropTypes.string.isRequired,
   };
 
   /**
@@ -57,17 +72,38 @@ export default class Edit extends Component {
   }
 
   /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (
+      nextProps.properties.title &&
+      this.props.properties.title !== nextProps.properties.title &&
+      !this.props.selected
+    ) {
+      const contentState = stateFromHTML(nextProps.properties.title);
+      this.setState({
+        editorState: nextProps.properties.title
+          ? EditorState.createWithContent(contentState)
+          : EditorState.createEmpty(),
+      });
+    }
+  }
+
+  /**
    * Change handler
    * @method onChange
    * @param {object} editorState Editor state.
    * @returns {undefined}
    */
   onChange(editorState) {
-    this.setState({ editorState });
-    this.props.onChange({
-      properties: {
-        title: editorState.getCurrentContent().getPlainText(),
-      },
+    this.setState({ editorState }, () => {
+      this.props.onChangeField(
+        'title',
+        editorState.getCurrentContent().getPlainText(),
+      );
     });
   }
 
@@ -81,13 +117,32 @@ export default class Edit extends Component {
       return <div />;
     }
     return (
-      <Editor
-        onChange={this.onChange}
-        editorState={this.state.editorState}
-        blockRenderMap={extendedBlockRenderMap}
-        handleReturn={() => true}
-        blockStyleFn={() => 'documentFirstHeading'}
-      />
+      <div
+        onClick={() => this.props.onSelectTile(this.props.tile)}
+        className={`tile title${this.props.selected ? ' selected' : ''}`}
+      >
+        {this.props.selected && (
+          <div className="toolbar">
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() => this.props.onDeleteTile(this.props.tile)}
+              >
+                <Icon name="trash" />
+              </Button>
+            </Button.Group>
+          </div>
+        )}
+        <Editor
+          onChange={this.onChange}
+          editorState={this.state.editorState}
+          blockRenderMap={extendedBlockRenderMap}
+          handleReturn={() => true}
+          placeholder={this.props.intl.formatMessage(messages.title)}
+          blockStyleFn={() => 'documentFirstHeading'}
+        />
+      </div>
     );
   }
 }

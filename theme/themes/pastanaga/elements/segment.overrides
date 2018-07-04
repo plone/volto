@@ -30,6 +30,8 @@
 
 .ui.basic.segment.content-area {
   flex: 1 0 auto; // IE11 fix, can't barely use  flex: 1;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .ui.primary.segment {

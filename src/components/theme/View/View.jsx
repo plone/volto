@@ -130,8 +130,11 @@ export default class View extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    this.props.listActions(this.props.pathname);
-    this.props.getContent(this.props.pathname, this.props.versionId);
+    this.props.listActions(getBaseUrl(this.props.pathname));
+    this.props.getContent(
+      getBaseUrl(this.props.pathname),
+      this.props.versionId,
+    );
   }
 
   /**
@@ -142,8 +145,11 @@ export default class View extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.listActions(nextProps.pathname);
-      this.props.getContent(nextProps.pathname, this.props.versionId);
+      this.props.listActions(getBaseUrl(nextProps.pathname));
+      this.props.getContent(
+        getBaseUrl(nextProps.pathname),
+        this.props.versionId,
+      );
     }
 
     if (nextProps.actions.object_buttons) {
@@ -256,8 +262,7 @@ export default class View extends Component {
                       />
                     </Link>
                   )}
-                {this.props.content &&
-                  this.props.content.is_folderish && <Types pathname={path} />}
+                <Types pathname={path} />
 
                 <Dropdown
                   id="toolbar-more"

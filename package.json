@@ -156,6 +156,7 @@
     "dotenv-expand": "4.2.0",
     "draft-js": "0.10.5",
     "draft-js-anchor-plugin": "2.0.1",
+    "draft-js-block-breakout-plugin": "2.0.1",
     "draft-js-buttons": "2.0.1",
     "draft-js-export-html": "1.2.0",
     "draft-js-import-html": "1.2.1",
@@ -203,12 +204,12 @@
     "prop-types": "15.6.1",
     "raven": "2.4.2",
     "raven-js": "3.24.0",
-    "react": "16.3.0",
+    "react": "16.4.1",
     "react-cookie": "1.0.5",
     "react-dev-utils": "5.0.1",
     "react-dnd": "2.6.0",
     "react-dnd-html5-backend": "2.6.0",
-    "react-dom": "16.3.0",
+    "react-dom": "16.4.1",
     "react-dropzone": "4.2.9",
     "react-helmet": "5.2.0",
     "react-inline-css": "2.3.1",
@@ -292,7 +293,7 @@
     "react-addons-test-utils": "15.6.2",
     "react-stateless-wrapper": "1.0.7",
     "react-templates": "0.6.1",
-    "react-test-renderer": "16.3.0",
+    "react-test-renderer": "16.4.1",
     "react-transform-catch-errors": "1.0.2",
     "react-transform-hmr": "1.0.4",
     "redbox-react": "1.5.0",
@@ -312,7 +313,7 @@
     "webpack-hot-middleware": "2.21.2"
   },
   "engines": {
-    "node": "8.11.1"
+    "node": "~8.11.2"
   },
   "bin": {
     "better-npm-run": "./node_modules/better-npm-run/index.js",

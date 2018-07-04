@@ -20,7 +20,7 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
-import { Icon, Menu } from 'semantic-ui-react';
+import { Container, Icon, Menu } from 'semantic-ui-react';
 
 import { Form, Toolbar } from '../../../components';
 import languages from '../../../constants/Languages';
@@ -133,7 +133,7 @@ export default class PersonalPreferences extends Component {
    */
   render() {
     return (
-      <div id="page-personal-preferences">
+      <Container id="page-personal-preferences">
         <Helmet
           title={this.props.intl.formatMessage(messages.personalPreferences)}
         />
@@ -192,7 +192,7 @@ export default class PersonalPreferences extends Component {
             }
           />
         </Portal>
-      </div>
+      </Container>
     );
   }
 }

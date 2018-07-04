@@ -9,7 +9,7 @@ import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Dropdown, Icon, Segment, Table } from 'semantic-ui-react';
+import { Container, Dropdown, Icon, Segment, Table } from 'semantic-ui-react';
 import { concat, map, reverse } from 'lodash';
 import { Portal } from 'react-portal';
 import moment from 'moment';
@@ -132,7 +132,7 @@ export default class HistoryComponent extends Component {
     }
     reverse(entries);
     return (
-      <div id="page-history">
+      <Container id="page-history">
         <Helmet title="History" />
         <Segment.Group raised>
           <Segment className="primary">
@@ -275,7 +275,7 @@ export default class HistoryComponent extends Component {
             }
           />
         </Portal>
-      </div>
+      </Container>
     );
   }
 }

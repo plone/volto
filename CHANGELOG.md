@@ -8,6 +8,20 @@
 * User actions and reducers @robgietema
 * Group actions and reducers @robgietema
 * Roles actions and reducers @robgietema
+* Move combineReducers to the store creation level. This will ease the extensibility of them in Plone-React apps. @sneridagh
+* Upgrade node to 8.11.2 @sneridagh
+* Basic user listing in users controlpanel @robgietema
+* Add missing FileWidget import @sneridagh
+* Option to delete tiles @robgietema
+* Option to add tiles @robgietema
+* Image tiles in editor @robgietema
+* Align images in editor @robgietema
+* Video tiles in editor @robgietema
+* Sitemap.xml.gz view @robgietema
+* Upload image indicator @robgietema
+* Video tile view @robgietema
+* Option to reset image @robgietema
+* Drag and drop to reorder tiles @robgietema
 
 ### Changes
 
@@ -18,6 +32,9 @@
 * Removed flow @robgietema
 * Fix eslint prettier config @robgietema
 * Refactor actions and reducers to match restapi docs naming @robgietema
+* Fix site root api calls @robgietema
+* Change visual editor to use the new tiles api @robgietema
+* Fix bug with wrong order input @robgietema
 
 ## 0.5.0 (2018-03-23)
 

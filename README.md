@@ -22,7 +22,7 @@ yarn start //start the development server
 
 ### Prerequisites
 
-* [Node.js==8.9.4](https://nodejs.org/)
+* [Node.js==8.11.2](https://nodejs.org/)
 * [Python==2.7.x](https://python.org/)
 
 ### Install dependencies
@@ -94,11 +94,11 @@ In practice, this may look something like:<br />
 Plugins are automatically loaded if you have them installed in your package.json. Prettier plugin package names must start with `@prettier/plugin- or prettier-plugin-` to be registered.
 If the plugin is unable to be found automatically, you can load them with:
 
-1. The CLI, via the --plugin flag:
+1.  The CLI, via the --plugin flag:
 
 `prettier --write main.foo --plugin=./foo-plugin`
 
-1. Or the API, via the plugins field:
+1.  Or the API, via the plugins field:
 
 ```prettier.format("code", {
   parser: "foo",
@@ -110,7 +110,7 @@ If the plugin is unable to be found automatically, you can load them with:
 
 You can use Prettier with a pre-commit tool. This can re-format your files that are marked as "staged" via `git add` before you commit.
 
-1. <b>Lint staged</b> Use Case: Useful for when you need to use other tools on top of Prettier (e.g. ESLint)
+1.  <b>Lint staged</b> Use Case: Useful for when you need to use other tools on top of Prettier (e.g. ESLint)
 
 Install it along with husky:
 
@@ -129,7 +129,7 @@ and add this config to your `package.json`:
 }
 ```
 
-1. <b>Pretty-quick</b> Use Case: Great for when you want an entire file formatting on your changed/staged files.
+1.  <b>Pretty-quick</b> Use Case: Great for when you want an entire file formatting on your changed/staged files.
 
 `yarn add pretty-quick husky --dev`
 

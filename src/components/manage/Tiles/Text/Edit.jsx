@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import { Map } from 'immutable';
 import PropTypes from 'prop-types';
+import { Button, Icon } from 'semantic-ui-react';
 import Editor from 'draft-js-plugins-editor';
 import { stateToHTML } from 'draft-js-export-html';
 import { stateFromHTML } from 'draft-js-import-html';
@@ -24,6 +25,15 @@ import {
 } from 'draft-js-buttons';
 import createBlockStyleButton from 'draft-js-buttons/lib/utils/createBlockStyleButton';
 import createLinkPlugin from 'draft-js-anchor-plugin';
+import createBlockBreakoutPlugin from 'draft-js-block-breakout-plugin';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
+
+const messages = defineMessages({
+  text: {
+    id: 'Add text...',
+    defaultMessage: 'Add text...',
+  },
+});
 
 const blockRenderMap = Map({
   callout: {
@@ -41,6 +51,7 @@ const CalloutButton = createBlockStyleButton({
   children: <span>!</span>,
 });
 const linkPlugin = createLinkPlugin();
+const blockBreakoutPlugin = createBlockBreakoutPlugin();
 const inlineToolbarPlugin = createInlineToolbarPlugin({
   structure: [
     BoldButton,
@@ -57,6 +68,7 @@ const inlineToolbarPlugin = createInlineToolbarPlugin({
 });
 const { InlineToolbar } = inlineToolbarPlugin;
 
+@injectIntl
 /**
  * Edit text tile class.
  * @class Edit
@@ -69,8 +81,13 @@ export default class Edit extends Component {
    * @static
    */
   static propTypes = {
+    selected: PropTypes.bool.isRequired,
+    tile: PropTypes.string.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
-    onChange: PropTypes.func.isRequired,
+    intl: intlShape.isRequired,
+    onChangeTile: PropTypes.func.isRequired,
+    onSelectTile: PropTypes.func.isRequired,
+    onDeleteTile: PropTypes.func.isRequired,
   };
 
   /**
@@ -113,9 +130,11 @@ export default class Edit extends Component {
    */
   onChange(editorState) {
     this.setState({ editorState });
-    this.props.onChange({
-      data: {
-        text: stateToHTML(editorState.getCurrentContent(), {
+    this.props.onChangeTile(this.props.tile, {
+      ...this.props.data,
+      text: {
+        'content-type': 'text/html',
+        data: stateToHTML(editorState.getCurrentContent(), {
           blockStyleFn: block => {
             if (block.get('type') === 'callout') {
               return {
@@ -127,6 +146,7 @@ export default class Edit extends Component {
             return null;
           },
         }),
+        encoding: 'utf8',
       },
     });
   }
@@ -141,11 +161,27 @@ export default class Edit extends Component {
       return <div />;
     }
     return (
-      <div>
+      <div
+        onClick={() => this.props.onSelectTile(this.props.tile)}
+        className={`tile text${this.props.selected ? ' selected' : ''}`}
+      >
+        {this.props.selected && (
+          <div className="toolbar">
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() => this.props.onDeleteTile(this.props.tile)}
+              >
+                <Icon name="trash" />
+              </Button>
+            </Button.Group>
+          </div>
+        )}
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}
-          plugins={[inlineToolbarPlugin, linkPlugin]}
+          plugins={[inlineToolbarPlugin, linkPlugin, blockBreakoutPlugin]}
           blockRenderMap={extendedBlockRenderMap}
           blockStyleFn={contentBlock => {
             const type = contentBlock.getType();
@@ -154,6 +190,7 @@ export default class Edit extends Component {
             }
             return null;
           }}
+          placeholder={this.props.intl.formatMessage(messages.text)}
         />
         <InlineToolbar />
       </div>
