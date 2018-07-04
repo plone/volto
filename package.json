@@ -72,6 +72,7 @@
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
       "^.+\\.scss$": "jest-css-modules",
+      "^.+\\.css$": "jest-css-modules",
       "^.+\\.(svg|png)$": "jest-file"
     },
     "collectCoverage": true,
@@ -155,6 +156,7 @@
     "draft-js-import-html": "1.2.1",
     "draft-js-inline-toolbar-plugin": "2.0.1",
     "draft-js-plugins-editor": "2.0.4",
+    "draft-js-plugins-utils": "2.0.2",
     "es6-error": "4.1.1",
     "express": "4.16.3",
     "express-healthcheck": "0.1.0",
@@ -184,6 +186,7 @@
     "path": "0.12.7",
     "piping": "1.0.0-rc.4",
     "pofile": "1.0.10",
+    "prepend-http": "2.0.0",
     "prettier": "1.11.1",
     "pretty-error": "2.1.1",
     "promise-file-reader": "1.0.2",
@@ -218,6 +221,8 @@
     "socket.io": "2.1.0",
     "socket.io-client": "2.1.0",
     "superagent": "3.8.2",
+    "tlds": "1.203.1",
+    "union-class-names": "1.0.0",
     "universal-webpack": "0.6.2",
     "url-loader": "1.0.1",
     "uuid": "3.2.1",

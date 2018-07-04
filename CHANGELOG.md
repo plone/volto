@@ -22,6 +22,7 @@
 * Video tile view @robgietema
 * Option to reset image @robgietema
 * Drag and drop to reorder tiles @robgietema
+* Enhanced DraftJS AnchorLink Plugin @robgietema @sneridagh
 
 ### Changes
 
