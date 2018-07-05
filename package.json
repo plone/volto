@@ -147,6 +147,7 @@
     "coveralls": "3.0.0",
     "debug": "3.1.0",
     "debug-logger": "0.4.1",
+    "decorate-component-with-props": "1.1.0",
     "diff": "3.5.0",
     "draft-js": "0.10.5",
     "draft-js-anchor-plugin": "2.0.1",

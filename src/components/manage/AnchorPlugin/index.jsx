@@ -4,7 +4,7 @@ import EditorUtils from 'draft-js-plugins-utils';
 import DefaultLink from './components/Link';
 import LinkButton from './components/LinkButton';
 import linkStrategy, { matchesEntityType } from './linkStrategy';
-import linkStyles from './linkStyles.css';
+import linkStyles from './linkStyles.module.css';
 
 export default (config = {}) => {
   const defaultTheme = linkStyles;
