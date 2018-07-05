@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Controlpanels renders a controlpanels component 1`] = `
+<div
+  className="view-wrapper"
+>
+  <div
+    className="ui container"
+  >
+    <div
+      className="ui raised segments"
+    >
+      <div
+        className="ui segment primary"
+      >
+        <span>
+          Site Setup
+        </span>
+      </div>
+      <div
+        className="ui secondary segment"
+      >
+        General
+      </div>
+      <div
+        className="ui attached segment"
+      >
+        <div
+          className="ui six column grid"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="column"
+            >
+              <a
+                onClick={[Function]}
+                style={Object {}}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="calendar icon"
+                  />
+                  <div
+                    className="content"
+                  >
+                    Date and Time
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                onClick={[Function]}
+                style={Object {}}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="setting icon"
+                  />
+                  <div
+                    className="content"
+                  >
+                    Language
+                  </div>
+                </h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ui secondary segment"
+      >
+        Content
+      </div>
+      <div
+        className="ui attached segment"
+      >
+        <div
+          className="ui six column grid"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="column"
+            >
+              <a
+                onClick={[Function]}
+                style={Object {}}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="write icon"
+                  />
+                  <div
+                    className="content"
+                  >
+                    Editing
+                  </div>
+                </h3>
+              </a>
+            </div>
+            <div
+              className="column"
+            >
+              <a
+                onClick={[Function]}
+                style={Object {}}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="comments icon"
+                  />
+                  <div
+                    className="content"
+                  >
+                    Moderate Comments
+                  </div>
+                </h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ui secondary segment"
+      >
+        Security
+      </div>
+      <div
+        className="ui attached segment"
+      >
+        <div
+          className="ui six column grid"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="column"
+            >
+              <a
+                onClick={[Function]}
+                style={Object {}}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="lock icon"
+                  />
+                  <div
+                    className="content"
+                  >
+                    Security
+                  </div>
+                </h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ui secondary segment"
+      >
+        Users
+      </div>
+      <div
+        className="ui attached segment"
+      >
+        <div
+          className="ui six column grid"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="column"
+            >
+              <a
+                onClick={[Function]}
+                style={Object {}}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="users icon"
+                  />
+                  <div
+                    className="content"
+                  >
+                    Users and Groups
+                  </div>
+                </h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    id="Portal"
+  />
+</div>
+`;

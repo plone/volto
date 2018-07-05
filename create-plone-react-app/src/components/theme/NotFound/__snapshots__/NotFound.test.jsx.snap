@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFound renders a not found component 1`] = `
+<div
+  id="page-not-found"
+>
+  <h1>
+    <span>
+      This page does not seem to exist…
+    </span>
+  </h1>
+  <p
+    className="description"
+  >
+    <span>
+      We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
+    </span>
+  </p>
+  <p>
+    <span>
+      If you are certain you have the correct web address but are encountering an error, please contact the 
+      <a
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <span>
+          Site Administration
+        </span>
+      </a>
+      .
+    </span>
+  </p>
+  <p>
+    <span>
+      Thank you.
+    </span>
+  </p>
+</div>
+`;

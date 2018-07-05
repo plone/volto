@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColumnResizeHelper renders a column resize helper component 1`] = `
+<div>
+  <span />
+</div>
+`;

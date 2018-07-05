@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toolbar renders an actions component 1`] = `
+Array [
+  <div
+    className="ui borderless vertical icon left fixed menu"
+  >
+    <span />
+    <div
+      className="item logo"
+      onClick={[Function]}
+    >
+      <div
+        className="ui divider"
+      />
+      <div
+        className="image"
+        style={
+          Object {
+            "backgroundImage": "url(pastanaga.svg)",
+          }
+        }
+      />
+    </div>
+    <button
+      className="ui button trigger"
+      disabled={undefined}
+      onClick={[Function]}
+      role="button"
+      tabIndex={undefined}
+    />
+  </div>,
+  <div
+    className="pusher expanded"
+  />,
+]
+`;

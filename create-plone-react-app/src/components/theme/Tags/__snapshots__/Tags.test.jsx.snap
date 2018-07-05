@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tags renders with tags 1`] = `
+<div>
+  <a
+    className="ui label"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    Tag 1
+  </a>
+  <a
+    className="ui label"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    Tag 2
+  </a>
+</div>
+`;
+
+exports[`Tags renders without tags 1`] = `<span />`;
