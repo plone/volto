@@ -3,6 +3,11 @@
 exports[`SocialSharing renders a social sharing component 1`] = `
 <div
   className="ui container"
+  style={
+    Object {
+      "clear": "both",
+    }
+  }
 >
   <br />
   <div
