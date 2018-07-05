@@ -13,6 +13,14 @@ const messages = defineMessages({
     id: 'Save',
     defaultMessage: 'Save',
   },
+  VideoFormDescription: {
+    id: 'Specify a youtube video or playlist url',
+    defaultMessage: 'Specify a youtube video or playlist url',
+  },
+  VideoTileInputPlaceholder: {
+    id: 'Enter Video URL',
+    defaultMessage: 'Enter Video URL',
+  },
 });
 
 @injectIntl
@@ -194,10 +202,17 @@ export default class Edit extends Component {
             <Message>
               <center>
                 <h4>Video</h4>
-                <p>Specify a youtube video or playlist url</p>
+                <p>
+                  {this.props.intl.formatMessage(messages.VideoFormDescription)}
+                </p>
                 <p>
                   <Form onSubmit={this.onSubmitUrl}>
-                    <Input onChange={this.onChangeUrl} />
+                    <Input
+                      onChange={this.onChangeUrl}
+                      placeholder={this.props.intl.formatMessage(
+                        messages.VideoTileInputPlaceholder,
+                      )}
+                    />
                     <Button
                       basic
                       circular
