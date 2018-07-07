@@ -1,0 +1,11 @@
+{
+    "name": "my-plone-react-app",
+    "version": "1.0.0",
+    "license": "MIT",
+    "scripts": {
+      "start": "plone-react start",
+      "build": "plone-react build",
+      "test": "plone-react test"
+    }
+  }
+  

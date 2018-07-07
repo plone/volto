@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo renders a logo component 1`] = `
+<a
+  onClick={[Function]}
+  style={Object {}}
+  title="Site"
+>
+  <img
+    alt="Plone Site"
+    className="ui image"
+    height={32}
+    src="Logo.svg"
+    title="Plone Site"
+  />
+</a>
+`;

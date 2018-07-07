@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Messages renders an messages component 1`] = `
+<div
+  className="ui container messages"
+>
+  <div
+    className="ui success message"
+    value={0}
+  >
+    <i
+      aria-hidden="true"
+      className="close icon"
+      onClick={[Function]}
+    />
+    <div
+      className="content"
+    >
+      <div
+        className="header"
+      >
+        Title
+      </div>
+      <p>
+        Body
+      </p>
+    </div>
+  </div>
+</div>
+`;

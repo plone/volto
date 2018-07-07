@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColumnResize renders a column resize component 1`] = `
+<div>
+  <div
+    className="divider"
+  >
+    <div
+      className="inner"
+    />
+  </div>
+</div>
+`;

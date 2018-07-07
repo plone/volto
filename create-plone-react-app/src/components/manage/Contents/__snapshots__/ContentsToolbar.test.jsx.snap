@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentsToolbar renders a contents toolbar component 1`] = `
+<div>
+  <a
+    className="item"
+    id="toolbar-cancel"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <i
+      aria-hidden="true"
+      className="red remove big icon"
+      title="Cancel"
+    />
+  </a>
+</div>
+`;

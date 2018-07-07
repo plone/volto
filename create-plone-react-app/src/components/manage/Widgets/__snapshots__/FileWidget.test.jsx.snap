@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a file widget component 1`] = `
+<div
+  className="inline field"
+>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="stretched row"
+    >
+      <div
+        className="four wide column"
+      >
+        <div
+          className="wrapper"
+        >
+          <label
+            htmlFor="field-my-field"
+          >
+            My field
+          </label>
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
+        <div
+          className="ui input"
+        >
+          <input
+            disabled={undefined}
+            id="field-my-field"
+            name="my-field"
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="file"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

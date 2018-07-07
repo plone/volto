@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search renders a search component 1`] = `
+<div
+  id="page-search"
+>
+  <div
+    className="container"
+  >
+    <article
+      id="content"
+    >
+      <header>
+        <h1
+          className="documentFirstHeading"
+        >
+          <span>
+            Search results for 
+            <q>
+              blog
+            </q>
+          </span>
+        </h1>
+        <div
+          id="search-tags"
+        />
+      </header>
+      <section
+        id="content-core"
+      >
+        <article
+          className="tileItem"
+        >
+          <h2
+            className="tileHeadline"
+          >
+            <a
+              className="summary url"
+              onClick={[Function]}
+              style={Object {}}
+              title="Folder"
+            >
+              Blog
+            </a>
+          </h2>
+          <div
+            className="tileBody"
+          >
+            <span
+              className="description"
+            >
+              My blog
+            </span>
+          </div>
+          <div
+            className="tileFooter"
+          >
+            <a
+              onClick={[Function]}
+              style={Object {}}
+            >
+              <span>
+                Read More…
+              </span>
+            </a>
+          </div>
+          <div
+            className="visualClear"
+          />
+        </article>
+      </section>
+    </article>
+  </div>
+  <div
+    id="Portal"
+  />
+   
+</div>
+`;
+
+exports[`Search renders an empty search component 1`] = `
+<div
+  id="page-search"
+>
+  <div
+    className="container"
+  >
+    <article
+      id="content"
+    >
+      <header>
+        <h1
+          className="documentFirstHeading"
+        >
+          <span>
+            Search results for 
+            <q>
+              blog
+            </q>
+          </span>
+        </h1>
+        <div
+          id="search-tags"
+        />
+      </header>
+      <section
+        id="content-core"
+      />
+    </article>
+  </div>
+  <div
+    id="Portal"
+  />
+   
+</div>
+`;

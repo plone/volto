@@ -1,0 +1,332 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DiffField renders a boolean field 1`] = `
+<table
+  className="ui compact table"
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        colSpan={2}
+      >
+        Text
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="top aligned sixteen wide"
+      >
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<span class=\\"deletion\\">Yes</span><span class=\\"addition\\">No</span>",
+            }
+          }
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`DiffField renders a boolean field with inverse values 1`] = `
+<table
+  className="ui compact table"
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        colSpan={2}
+      >
+        Text
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="top aligned sixteen wide"
+      >
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<span class=\\"deletion\\">No</span><span class=\\"addition\\">Yes</span>",
+            }
+          }
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`DiffField renders a datetime field 1`] = `
+<table
+  className="ui compact table"
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        colSpan={2}
+      >
+        Text
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="top aligned sixteen wide"
+      >
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<span>Sunday, April 23, 2017 3:38 AM</span>",
+            }
+          }
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`DiffField renders a diff field in split mode 1`] = `
+<table
+  className="ui compact table"
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        colSpan={2}
+      >
+        Title
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="top aligned eight wide"
+      >
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<span>My </span><span class=\\"deletion\\">old</span><span> string</span>",
+            }
+          }
+        />
+      </td>
+      <td
+        className="top aligned eight wide"
+      >
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<span>My </span><span class=\\"addition\\">new</span><span> string</span>",
+            }
+          }
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`DiffField renders a diff field in unified mode 1`] = `
+<table
+  className="ui compact table"
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        colSpan={2}
+      >
+        Title
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="top aligned sixteen wide"
+      >
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<span>My </span><span class=\\"deletion\\">old</span><span class=\\"addition\\">new</span><span> string</span>",
+            }
+          }
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`DiffField renders a richtext field 1`] = `
+<table
+  className="ui compact table"
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        colSpan={2}
+      >
+        Text
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="top aligned sixteen wide"
+      >
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<span>My </span><span class=\\"deletion\\">old</span><span class=\\"addition\\">new</span><span> string</span>",
+            }
+          }
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`DiffField renders a textarea field 1`] = `
+<table
+  className="ui compact table"
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        colSpan={2}
+      >
+        Text
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="top aligned sixteen wide"
+      >
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<span>My </span><span class=\\"deletion\\">old</span><span class=\\"addition\\">new</span><span> string</span>",
+            }
+          }
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`DiffField renders an array field 1`] = `
+<table
+  className="ui compact table"
+>
+  <thead
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <th
+        className=""
+        colSpan={2}
+      >
+        Text
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    className=""
+  >
+    <tr
+      className=""
+    >
+      <td
+        className="top aligned sixteen wide"
+      >
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<span>one, </span><span class=\\"deletion\\">two</span><span class=\\"addition\\">three</span>",
+            }
+          }
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

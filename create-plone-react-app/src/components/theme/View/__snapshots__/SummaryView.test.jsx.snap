@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabularView renders a summary view component 1`] = `
+<div
+  className="ui container view-wrapper"
+>
+  <article
+    id="content"
+  >
+    <header>
+      <h1
+        className="documentFirstHeading"
+      >
+        Hello World!
+      </h1>
+      <p
+        className="documentDescription"
+      >
+        Hi
+      </p>
+    </header>
+    <section
+      id="content-core"
+    >
+      <article>
+        <h2>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+            title="News Item"
+          >
+            My item
+          </a>
+        </h2>
+        <img
+          alt="My image caption"
+          className="ui right floated image"
+          clearing={true}
+          src="file:///preview.jpg"
+        />
+        <p>
+          My item description
+        </p>
+        <p>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+          >
+            <span>
+              Read More…
+            </span>
+          </a>
+        </p>
+      </article>
+    </section>
+  </article>
+</div>
+`;

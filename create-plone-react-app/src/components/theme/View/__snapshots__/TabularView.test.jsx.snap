@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabularView renders a tabular view component 1`] = `
+<div
+  className="ui container view-wrapper"
+>
+  <article
+    id="content"
+  >
+    <header>
+      <h1
+        className="documentFirstHeading"
+      >
+        Hello World!
+      </h1>
+      <p
+        className="documentDescription"
+      >
+        Hi
+      </p>
+    </header>
+    <section
+      id="content-core"
+    >
+      <table
+        className="ui celled padded table"
+      >
+        <thead
+          className=""
+        >
+          <tr
+            className=""
+          >
+            <th
+              className=""
+            >
+              <span>
+                Title
+              </span>
+            </th>
+            <th
+              className=""
+            >
+              <span>
+                Description
+              </span>
+            </th>
+            <th
+              className=""
+            >
+              <span>
+                Type
+              </span>
+            </th>
+            <th
+              className=""
+            >
+              <span>
+                State
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          className=""
+        >
+          <tr
+            className=""
+          >
+            <td
+              className=""
+            >
+              <a
+                className="summary url"
+                onClick={[Function]}
+                style={Object {}}
+                title={undefined}
+              >
+                My item
+              </a>
+            </td>
+            <td
+              className=""
+            >
+              My item description
+            </td>
+            <td
+              className=""
+            />
+            <td
+              className=""
+            />
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </article>
+</div>
+`;

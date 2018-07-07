@@ -10,7 +10,7 @@
   },
   "repository": "",
   "bin": {
-    "create-plone-react-app": "./bin/create-plone-react-app"
+    "create-plone-react-app": "./bin/create-plone-react-app.js"
   },
   "dependencies": {
     "ansi-escapes": "^2.0.0",

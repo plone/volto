@@ -15,8 +15,9 @@ create-plone-react-app <appName>
 cd <appName>
 yarn start //start the development server
 ```
+![peek 2018-07-07 08-24](https://user-images.githubusercontent.com/22280901/42406154-b3304600-81bf-11e8-8617-9890db5b8378.gif)
 #### Features
-- Free from configurations.
+- No configuration needed.
 - Fixed development stack.
 - Incredible fast website developing tool.
 

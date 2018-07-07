@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tile renders a tile component 1`] = `
+<div>
+  <div
+    className="tile title selected"
+    onClick={[Function]}
+  >
+    <div
+      className="ui blue pointing below label"
+      onClick={[Function]}
+    >
+      Title
+    </div>
+    <i
+      aria-hidden="true"
+      className="close icon"
+      onClick={[Function]}
+    />
+  </div>
+</div>
+`;
