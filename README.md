@@ -8,6 +8,7 @@
 
 ## Installation
 ### Install using Create-plone-react-app
+<b>Note:</b> Please use node `v8.9.4` for now.
 
 ```
 yarn add --global create-plone-react-app
