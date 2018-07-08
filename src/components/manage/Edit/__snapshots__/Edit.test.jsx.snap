@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Edit renders an add component 1`] = `<div />`;
-
-exports[`Edit renders an empty add component 1`] = `<div />`;

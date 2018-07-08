@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Layout renders a layout component 1`] = `
-<div>
-  <div />
-  <div />
-</div>
-`;
