@@ -6,8 +6,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Label, Dropdown } from 'semantic-ui-react';
-import { concat, map, uniqBy } from 'lodash';
+import { concat, debounce, map, uniqBy } from 'lodash';
+import { connect } from 'react-redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { bindActionCreators } from 'redux';
+
+import { getVocabulary } from '../../../actions';
 
 const messages = defineMessages({
   no_results_found: {
@@ -17,6 +21,21 @@ const messages = defineMessages({
 });
 
 @injectIntl
+@connect(
+  (state, props) => {
+    const vocabBaseUrl =
+      props.widgetOptions.vocabulary || props.items.vocabulary;
+    const vocabState = state.vocabularies[vocabBaseUrl];
+    if (vocabState) {
+      return {
+        choices: vocabState.items,
+        loading: Boolean(vocabState.loading),
+      };
+    }
+    return {};
+  },
+  dispatch => bindActionCreators({ getVocabulary }, dispatch),
+)
 /**
  * ArrayWidget component class.
  * @class ArrayWidget
@@ -34,8 +53,14 @@ export default class ArrayWidget extends Component {
     description: PropTypes.string,
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
+    getVocabulary: PropTypes.func.isRequired,
+    choices: PropTypes.arrayOf(PropTypes.object),
+    loading: PropTypes.bool,
     items: PropTypes.shape({
-      choices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+      vocabulary: PropTypes.string,
+    }),
+    widgetOptions: PropTypes.shape({
+      vocabulary: PropTypes.string,
     }),
     value: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func.isRequired,
@@ -51,9 +76,14 @@ export default class ArrayWidget extends Component {
     description: null,
     required: false,
     items: {
-      choices: [],
+      vocabulary: null,
+    },
+    widgetOptions: {
+      vocabulary: null,
     },
     error: [],
+    choices: [],
+    loading: false,
     value: null,
   };
 
@@ -66,26 +96,13 @@ export default class ArrayWidget extends Component {
   constructor(props) {
     super(props);
     this.onAddItem = this.onAddItem.bind(this);
+    this.getOptions = this.getOptions.bind(this);
+    this.search = this.search.bind(this);
+    this.vocabBaseUrl =
+      props.widgetOptions.vocabulary || props.items.vocabulary;
+    props.getVocabulary(this.vocabBaseUrl);
     this.state = {
-      choices: uniqBy(
-        concat(
-          props.items.choices
-            ? map(props.items.choices, choice => ({
-                key: choice[0],
-                text: choice[1],
-                value: choice[0],
-              }))
-            : [],
-          props.value
-            ? map(props.value, value => ({
-                key: value,
-                text: value,
-                value,
-              }))
-            : [],
-        ),
-        'key',
-      ),
+      choices: [],
     };
   }
 
@@ -103,6 +120,43 @@ export default class ArrayWidget extends Component {
   }
 
   /**
+   * Format options for semantic-ui Dropdown
+   * @returns {Array} Options.
+   */
+  getOptions() {
+    return uniqBy(
+      concat(
+        this.props.choices
+          ? map(this.props.choices, choice => ({
+              key: choice.token,
+              text: choice.title,
+              value: choice.token,
+            }))
+          : [],
+        this.props.value
+          ? map(this.props.value, value => ({
+              key: value,
+              text: value,
+              value,
+            }))
+          : [],
+      ),
+      'key',
+    );
+  }
+
+  /**
+   * Initiate search with new query
+   * @param {string} query Search query.
+   * @returns {undefined}
+   */
+  search(query) {
+    if (query.length > 1) {
+      this.props.getVocabulary(this.vocabBaseUrl, query);
+    }
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -116,6 +170,7 @@ export default class ArrayWidget extends Component {
       error,
       value,
       onChange,
+      loading,
     } = this.props;
     return (
       <Form.Field
@@ -133,7 +188,8 @@ export default class ArrayWidget extends Component {
             </Grid.Column>
             <Grid.Column width="8">
               <Dropdown
-                options={this.state.choices}
+                options={this.getOptions()}
+                loading={loading}
                 placeholder={title}
                 search
                 selection
@@ -146,6 +202,10 @@ export default class ArrayWidget extends Component {
                 value={value || []}
                 onAddItem={this.onAddItem}
                 onChange={(event, data) => onChange(id, data.value)}
+                onSearchChange={debounce(
+                  (event, data) => this.search(data.searchQuery),
+                  200,
+                )}
               />
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
