@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2017-09-23T14:11:57.276Z\n"
+"POT-Creation-Date: 2018-07-10T10:33:31.592Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -18,14 +18,35 @@ msgstr ""
 msgid "Accessibility"
 msgstr ""
 
+#: components/manage/Controlpanels/ModerateComments
+# defaultMessage: Action
+msgid "Action"
+msgstr ""
+
 #: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
 # defaultMessage: Actions
 msgid "Actions"
 msgstr ""
 
-#: components/manage/Types/Types
-# defaultMessage: Add new…
-msgid "Add new…"
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Add field
+msgid "Add field"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Add fieldset
+msgid "Add fieldset"
+msgstr ""
+
+#: components/manage/Tiles/Text/Edit
+# defaultMessage: Add text...
+msgid "Add text..."
+msgstr ""
+
+#: components/manage/Form/Form
+# defaultMessage: Add tile...
+msgid "Add tile..."
 msgstr ""
 
 #: components/manage/Add/Add
@@ -38,19 +59,39 @@ msgstr ""
 msgid "All"
 msgstr ""
 
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Are you sure you want to delete this field?
+msgid "Are you sure you want to delete this field?"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Are you sure you want to delete this fieldset including all fields?
+msgid "Are you sure you want to delete this fieldset including all fields?"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Ascending
 msgid "Ascending"
 msgstr ""
 
+#: components/manage/Contents/Contents
+#: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Diff/Diff
+#: components/manage/History/History
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Sharing/Sharing
+# defaultMessage: Back
+msgid "Back"
+msgstr ""
+
 #: components/manage/Diff/Diff
 # defaultMessage: Base
 msgid "Base"
-msgstr ""
-
-#: components/manage/Contents/Contents
-# defaultMessage: Batch
-msgid "Batch"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
@@ -63,10 +104,15 @@ msgstr ""
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr ""
 
+#: components/manage/Add/Add
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
+#: components/manage/Edit/Edit
+#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/theme/Login/Login
 # defaultMessage: Cancel
 msgid "Cancel"
 msgstr ""
@@ -99,14 +145,36 @@ msgstr ""
 msgid "Changes saved."
 msgstr ""
 
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Checkbox
+msgid "Checkbox"
+msgstr ""
+
+#: components/manage/Widgets/SelectWidget
+# defaultMessage: Choices
+msgid "Choices"
+msgstr ""
+
+#: components/theme/Navigation/Navigation
+# defaultMessage: Close menu
+msgid "Close menu"
+msgstr ""
+
+#: components/manage/Controlpanels/ModerateComments
+#: components/theme/Comments/CommentEditModal
+#: components/theme/Comments/Comments
+# defaultMessage: Comment
+msgid "Comment"
+msgstr ""
+
+#: components/manage/Controlpanels/ModerateComments
+# defaultMessage: Commenter
+msgid "Commenter"
+msgstr ""
+
 #: components/manage/Diff/Diff
 # defaultMessage: Compare
 msgid "Compare"
-msgstr ""
-
-#: components/manage/Controlpanels/Controlpanels
-# defaultMessage: Configuration area for Plone and add-on Products.
-msgid "Configuration area for Plone and add-on Products."
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -120,7 +188,6 @@ msgid "Contact"
 msgstr ""
 
 #: components/manage/Contents/Contents
-#: components/manage/Toolbar/Toolbar
 # defaultMessage: Contents
 msgid "Contents"
 msgstr ""
@@ -159,6 +226,11 @@ msgstr ""
 msgid "Cut"
 msgstr ""
 
+#: components/manage/Controlpanels/ModerateComments
+# defaultMessage: Date
+msgid "Date"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
@@ -166,14 +238,23 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
+#: components/theme/Comments/CommentEditModal
+#: components/theme/Comments/Comments
 # defaultMessage: Default
 msgid "Default"
 msgstr ""
 
-#: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ModerateComments
 #: components/manage/Delete/Delete
+#: components/theme/Comments/Comments
 # defaultMessage: Delete
 msgid "Delete"
 msgstr ""
@@ -183,6 +264,14 @@ msgstr ""
 msgid "Descending"
 msgstr ""
 
+#: components/manage/Form/Form
+#: components/manage/Tiles/Description/Edit
+#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 # defaultMessage: Description
 msgid "Description"
@@ -229,14 +318,35 @@ msgid "E-mail"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
-#: components/manage/Toolbar/Toolbar
+#: components/manage/Controlpanels/ModerateComments
+#: components/theme/Comments/Comments
 # defaultMessage: Edit
 msgid "Edit"
+msgstr ""
+
+#: components/theme/Comments/CommentEditModal
+# defaultMessage: Edit comment
+msgid "Edit comment"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Edit field
+msgid "Edit field"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Edit fieldset
+msgid "Edit fieldset"
 msgstr ""
 
 #: components/manage/Edit/Edit
 # defaultMessage: Edit {title}
 msgid "Edit {title}"
+msgstr ""
+
+#: components/manage/Tiles/Video/Edit
+# defaultMessage: Enter Video URL
+msgid "Enter Video URL"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -252,6 +362,13 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
+msgstr ""
+
+#: components/manage/Form/Form
+#: components/manage/Widgets/SchemaWidget
+#: components/theme/Login/Login
+# defaultMessage: Error
+msgid "Error"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
@@ -289,16 +406,12 @@ msgstr ""
 msgid "GNU GPL license"
 msgstr ""
 
-#: components/manage/Toolbar/Toolbar
-# defaultMessage: History
-msgid "History"
-msgstr ""
-
 #: components/manage/History/History
 # defaultMessage: History of {title}
 msgid "History of {title}"
 msgstr ""
 
+#: components/manage/Contents/Contents
 #: components/theme/Breadcrumbs/Breadcrumbs
 # defaultMessage: Home
 msgid "Home"
@@ -322,6 +435,21 @@ msgstr ""
 #: components/theme/NotFound/NotFound
 # defaultMessage: If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}.
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
+msgstr ""
+
+#: components/theme/Login/Login
+# defaultMessage: If you have forgotten your password, {forgotpassword}
+msgid "If you have forgotten your password, {forgotpassword}"
+msgstr ""
+
+#: components/theme/Login/Login
+# defaultMessage: If you you do not have an account here, head over to the {registrationform}.
+msgid "If you you do not have an account here, head over to the {registrationform}."
+msgstr ""
+
+#: components/manage/Form/Form
+# defaultMessage: Image
+msgid "Image"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
@@ -366,15 +494,15 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
+#: components/theme/Login/Login
+# defaultMessage: Login Name
+msgid "Log In"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 # defaultMessage: Log in
 msgid "Log in"
-msgstr ""
-
-#: components/manage/Toolbar/Toolbar
-# defaultMessage: Log out
-msgid "Log out"
 msgstr ""
 
 #: components/theme/Login/Login
@@ -386,6 +514,11 @@ msgstr ""
 #: components/manage/Form/ModalForm
 # defaultMessage: Minimum length is {len}.
 msgid "Minimum length is {len}."
+msgstr ""
+
+#: components/manage/Controlpanels/ModerateComments
+# defaultMessage: Moderate comments
+msgid "Moderate comments"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -408,6 +541,11 @@ msgstr ""
 msgid "New password"
 msgstr ""
 
+#: components/manage/Widgets/ArrayWidget
+# defaultMessage: No results found.
+msgid "No results found."
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: None
 msgid "None"
@@ -416,6 +554,11 @@ msgstr ""
 #: components/manage/Delete/Delete
 # defaultMessage: Ok
 msgid "Ok"
+msgstr ""
+
+#: components/theme/Navigation/Navigation
+# defaultMessage: Open menu
+msgid "Open menu"
 msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences
@@ -459,11 +602,6 @@ msgstr ""
 msgid "Plone Site"
 msgstr ""
 
-#: components/manage/Toolbar/Toolbar
-# defaultMessage: Plone Toolbar
-msgid "Plone Toolbar"
-msgstr ""
-
 #: components/theme/Footer/Footer
 # defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
@@ -474,18 +612,15 @@ msgstr ""
 msgid "Powered by Plone & Python"
 msgstr ""
 
-#: components/manage/Toolbar/Toolbar
-# defaultMessage: Preferences
-msgid "Preferences"
-msgstr ""
-
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Preview
 msgid "Preview"
 msgstr ""
 
+#: components/manage/Add/Add
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
+#: components/manage/Edit/Edit
 # defaultMessage: Properties
 msgid "Properties"
 msgstr ""
@@ -511,6 +646,11 @@ msgstr ""
 msgid "Rearrange items by…"
 msgstr ""
 
+#: components/theme/Anontools/Anontools
+# defaultMessage: Register
+msgid "Register"
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 # defaultMessage: Rename
@@ -520,6 +660,16 @@ msgstr ""
 #: components/manage/Contents/ContentsRenameModal
 # defaultMessage: Rename items
 msgid "Rename items"
+msgstr ""
+
+#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
+# defaultMessage: Required
+msgid "Required"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -533,18 +683,27 @@ msgstr ""
 msgid "Revert to this revision"
 msgstr ""
 
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Richtext
+msgid "Richtext"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Rights
 msgid "Rights"
 msgstr ""
 
+#: components/manage/Add/Add
+#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Edit/Edit
+#: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Tiles/Video/Edit
 # defaultMessage: Save
 msgid "Save"
 msgstr ""
 
-#: components/manage/Sharing/Sharing
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search
 msgid "Search"
@@ -561,8 +720,18 @@ msgid "Search for user or group"
 msgstr ""
 
 #: components/theme/Search/Search
+# defaultMessage: Search results
+msgid "Search results"
+msgstr ""
+
+#: components/theme/Search/Search
 # defaultMessage: Search results for {term}
 msgid "Search results for {term}"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Search users...
+msgid "Search users..."
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -575,14 +744,14 @@ msgstr ""
 msgid "Select the transition to be used for modifying the items state."
 msgstr ""
 
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Selection
+msgid "Selection"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Select…
 msgid "Select…"
-msgstr ""
-
-#: components/manage/Toolbar/Toolbar
-# defaultMessage: Sharing
-msgid "Sharing"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
@@ -590,9 +759,24 @@ msgstr ""
 msgid "Sharing for {title}"
 msgstr ""
 
+#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
+# defaultMessage: Short Name
+msgid "Short Name"
+msgstr ""
+
 #: components/manage/Contents/ContentsRenameModal
 # defaultMessage: Short name
 msgid "Short name"
+msgstr ""
+
+#: components/theme/Login/Login
+# defaultMessage: Sign in to start session
+msgid "Sign in to start session"
 msgstr ""
 
 #: components/theme/Logo/Logo
@@ -611,9 +795,13 @@ msgid "Site Map"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Toolbar/Toolbar
 # defaultMessage: Site Setup
 msgid "Site Setup"
+msgstr ""
+
+#: components/manage/Tiles/Video/Edit
+# defaultMessage: Specify a youtube video or playlist url
+msgid "Specify a youtube video or playlist url"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -625,6 +813,11 @@ msgstr ""
 #: components/manage/Workflow/Workflow
 # defaultMessage: State: {current}
 msgid "State: {current}"
+msgstr ""
+
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: String
+msgid "String"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -641,6 +834,12 @@ msgstr ""
 #: components/manage/Contents/ContentsTagsModal
 # defaultMessage: Tags to remove
 msgid "Tags to remove"
+msgstr ""
+
+#: components/manage/Form/Form
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Text
+msgid "Text"
 msgstr ""
 
 #: components/theme/NotFound/NotFound
@@ -676,11 +875,20 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Form/Form
+#: components/manage/Tiles/Title/Edit
+#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 # defaultMessage: Title
 msgid "Title"
 msgstr ""
 
+#: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
 msgid "Type"
@@ -706,8 +914,37 @@ msgstr ""
 msgid "Uploading files"
 msgstr ""
 
+#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/SchemaWidget
+#: components/manage/Widgets/SelectWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
+# defaultMessage: Used for programmatic access to the fieldset.
+msgid "Used for programmatic access to the fieldset."
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: User name
+msgid "User name"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Users
+msgid "Users"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Users and groups settings
+msgid "Users and groups settings"
+msgstr ""
+
+#: components/manage/Form/Form
+# defaultMessage: Video
+msgid "Video"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
-#: components/manage/Toolbar/Toolbar
 # defaultMessage: View
 msgid "View"
 msgstr ""
@@ -720,6 +957,12 @@ msgstr ""
 #: components/manage/History/History
 # defaultMessage: View this revision
 msgid "View this revision"
+msgstr ""
+
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
+# defaultMessage: Visual
+msgid "Visual"
 msgstr ""
 
 #: components/theme/NotFound/NotFound
@@ -752,6 +995,11 @@ msgstr ""
 msgid "Who"
 msgstr ""
 
+#: components/theme/Comments/Comments
+# defaultMessage: You can add a comment by filling out the form below. Plain text formatting.
+msgid "You can add a comment by filling out the form below. Plain text formatting."
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: You can control who can view and edit your item using the list below.
 msgid "You can control who can view and edit your item using the list below."
@@ -777,9 +1025,14 @@ msgstr ""
 msgid "Your preferred language"
 msgstr ""
 
-#: components/theme/SearchWidget/SearchWidget
-# defaultMessage: only in current section
-msgid "only in current section"
+#: components/theme/Login/Login
+# defaultMessage: registration form
+msgid "registration form"
+msgstr ""
+
+#: components/theme/Login/Login
+# defaultMessage: we can send you a new one
+msgid "we can send you a new one"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -800,4 +1053,9 @@ msgstr ""
 #: components/manage/Actions/Actions
 # defaultMessage: {title} has been deleted.
 msgid "{title} has been deleted."
+msgstr ""
+
+#: components/theme/Comments/Comments
+# defaultMessage: {user} says:
+msgid "{user} says:"
 msgstr ""
