@@ -23,6 +23,7 @@
 * Option to reset image @robgietema
 * Drag and drop to reorder tiles @robgietema
 * Enhanced DraftJS AnchorLink Plugin @robgietema @sneridagh
+* Added the configuration required in Webpack config to load CSS modules in the project, required by DraftJS AnchorLink plugin @sneridagh
 
 ### Changes
 
@@ -36,6 +37,10 @@
 * Fix site root api calls @robgietema
 * Change visual editor to use the new tiles api @robgietema
 * Fix bug with wrong order input @robgietema
+* Fix several problems in the DraftJS AnchorLink plugin @sneridagh
+* Replace DraftJS Toolbar plugin H1/H2 buttons for H2/H3 ones @sneridagh
+* Sync i18n translations @sneridagh
+* Fix CSS .input class scope intrusion on the project introduced by the AnchorLink plugin fork @sneridagh
 
 ## 0.5.0 (2018-03-23)
 
