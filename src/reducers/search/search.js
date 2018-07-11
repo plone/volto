@@ -49,7 +49,7 @@ export default function search(state = initialState, action = {}) {
         total: action.result.items_total,
         loaded: true,
         loading: false,
-        ...action.result.batching,
+        batching: { ...action.result.batching },
       };
     case `${SEARCH_CONTENT}_FAIL`:
       return {
