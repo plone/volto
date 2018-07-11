@@ -17,6 +17,7 @@ const initialState = {
   total: 0,
   loaded: false,
   loading: false,
+  batching: {},
 };
 
 /**
@@ -34,6 +35,8 @@ export default function search(state = initialState, action = {}) {
         error: null,
         loading: true,
         loaded: false,
+        batching: {},
+        total: 0,
       };
     case `${SEARCH_CONTENT}_SUCCESS`:
       return {
@@ -46,6 +49,7 @@ export default function search(state = initialState, action = {}) {
         total: action.result.items_total,
         loaded: true,
         loading: false,
+        ...action.result.batching,
       };
     case `${SEARCH_CONTENT}_FAIL`:
       return {
@@ -55,6 +59,7 @@ export default function search(state = initialState, action = {}) {
         total: 0,
         loading: false,
         loaded: false,
+        batching: {},
       };
     case RESET_SEARCH_CONTENT:
       return {
@@ -64,6 +69,7 @@ export default function search(state = initialState, action = {}) {
         total: 0,
         loading: false,
         loaded: false,
+        batching: {},
       };
     default:
       return state;
