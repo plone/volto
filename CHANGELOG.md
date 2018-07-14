@@ -42,6 +42,7 @@
 * Sync i18n translations @sneridagh
 * Fix CSS .input class scope intrusion on the project introduced by the AnchorLink plugin fork @sneridagh
 * Improve search reducer by adding the batching property in the search store.
+* Upgrade to Node 8.11.3 @sneridagh
 
 ## 0.5.0 (2018-03-23)
 
