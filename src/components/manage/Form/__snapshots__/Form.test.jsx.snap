@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form renders a form component 1`] = `
+<div
+  className="ui container"
+>
+  <form
+    action={undefined}
+    className="ui form"
+    method="post"
+    onSubmit={[Function]}
+  >
+    <div
+      className="ui raised segments"
+    >
+      <div
+        className="ui segment"
+      >
+        <div
+          className="Field"
+        />
+      </div>
+      <div
+        className="ui clearing segment actions"
+      >
+        <button
+          className="ui big basic circular icon primary right floated button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+          title="Save"
+          type="submit"
+        >
+          <i
+            aria-hidden="true"
+            className="arrow right icon"
+          />
+        </button>
+        <button
+          className="ui big basic circular icon secondary right floated button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+          title="Cancel"
+        >
+          <i
+            aria-hidden="true"
+            className="remove icon"
+          />
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+`;

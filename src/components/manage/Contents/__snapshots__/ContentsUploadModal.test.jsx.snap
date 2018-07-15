@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentsUploadModal renders a contents upload modal component 1`] = `null`;

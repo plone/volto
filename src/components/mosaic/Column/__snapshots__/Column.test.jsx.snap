@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Column renders a column component 1`] = `
+<div
+  className="one wide column"
+>
+  <div />
+</div>
+`;
