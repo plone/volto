@@ -4,30 +4,26 @@
  */
 
 import React, { Component } from 'react';
-import { Map } from 'immutable';
+import ReactDOMServer from 'react-dom/server';
 import PropTypes from 'prop-types';
 import Editor from 'draft-js-plugins-editor';
-import { stateToHTML } from 'draft-js-export-html';
 import { stateFromHTML } from 'draft-js-import-html';
-import { DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
+import { convertToRaw, EditorState } from 'draft-js';
+import redraft from 'redraft';
 import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
-import createInlineToolbarPlugin, {
-  Separator,
-} from 'draft-js-inline-toolbar-plugin';
-import {
-  ItalicButton,
-  BoldButton,
-  HeadlineTwoButton,
-  HeadlineThreeButton,
-  BlockquoteButton,
-  UnorderedListButton,
-  OrderedListButton,
-} from 'draft-js-buttons';
-import createBlockStyleButton from 'draft-js-buttons/lib/utils/createBlockStyleButton';
-import createLinkPlugin from 'draft-js-anchor-plugin';
-import createBlockBreakoutPlugin from 'draft-js-block-breakout-plugin';
+import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+
+import {
+  extendedBlockRenderMap,
+  blockStyleFn,
+  inlineToolbarButtons,
+  FromHTMLCustomBlockFn,
+  plugins,
+  ToHTMLRenderers,
+  ToHTMLOptions,
+} from '../../../config';
 
 const messages = defineMessages({
   default: {
@@ -55,39 +51,6 @@ const messages = defineMessages({
     defaultMessage: 'Required',
   },
 });
-
-const blockRenderMap = Map({
-  callout: {
-    element: 'p',
-  },
-  unstyled: {
-    element: 'p',
-  },
-});
-
-const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
-
-const CalloutButton = createBlockStyleButton({
-  blockType: 'callout',
-  children: <span>!</span>,
-});
-const linkPlugin = createLinkPlugin();
-const blockBreakoutPlugin = createBlockBreakoutPlugin();
-const inlineToolbarPlugin = createInlineToolbarPlugin({
-  structure: [
-    BoldButton,
-    ItalicButton,
-    linkPlugin.LinkButton,
-    Separator,
-    HeadlineTwoButton,
-    HeadlineThreeButton,
-    UnorderedListButton,
-    OrderedListButton,
-    BlockquoteButton,
-    CalloutButton,
-  ],
-});
-const { InlineToolbar } = inlineToolbarPlugin;
 
 @injectIntl
 /**
@@ -189,20 +152,18 @@ export default class WysiwygWidget extends Component {
       let editorState;
       if (props.value && props.value.data) {
         const contentState = stateFromHTML(props.value.data, {
-          customBlockFn: element => {
-            if (element.className === 'callout') {
-              return {
-                type: 'callout',
-              };
-            }
-            return null;
-          },
+          customBlockFn: FromHTMLCustomBlockFn,
         });
         editorState = EditorState.createWithContent(contentState);
       } else {
         editorState = EditorState.createEmpty();
       }
-      this.state = { editorState };
+
+      const inlineToolbarPlugin = createInlineToolbarPlugin({
+        structure: inlineToolbarButtons,
+      });
+
+      this.state = { editorState, inlineToolbarPlugin };
     }
 
     this.schema = {
@@ -252,18 +213,13 @@ export default class WysiwygWidget extends Component {
         ? this.props.value['content-type']
         : 'text/html',
       encoding: this.props.value ? this.props.value.encoding : 'utf8',
-      data: stateToHTML(editorState.getCurrentContent(), {
-        blockStyleFn: block => {
-          if (block.get('type') === 'callout') {
-            return {
-              attributes: {
-                class: 'callout',
-              },
-            };
-          }
-          return null;
-        },
-      }),
+      data: ReactDOMServer.renderToStaticMarkup(
+        redraft(
+          convertToRaw(editorState.getCurrentContent()),
+          ToHTMLRenderers,
+          ToHTMLOptions,
+        ),
+      ),
     });
   }
 
@@ -305,6 +261,8 @@ export default class WysiwygWidget extends Component {
         </Form.Field>
       );
     }
+    const { InlineToolbar } = this.state.inlineToolbarPlugin;
+
     return (
       <Form.Field
         inline
@@ -344,19 +302,9 @@ export default class WysiwygWidget extends Component {
                     id={`field-${id}`}
                     onChange={this.onChange}
                     editorState={this.state.editorState}
-                    plugins={[
-                      inlineToolbarPlugin,
-                      linkPlugin,
-                      blockBreakoutPlugin,
-                    ]}
+                    plugins={[this.state.inlineToolbarPlugin, ...plugins]}
                     blockRenderMap={extendedBlockRenderMap}
-                    blockStyleFn={contentBlock => {
-                      const type = contentBlock.getType();
-                      if (type === 'callout') {
-                        return 'callout';
-                      }
-                      return null;
-                    }}
+                    blockStyleFn={blockStyleFn}
                   />
                 ) : (
                   <div className="DraftEditor-root" />

@@ -6,10 +6,26 @@ import { defaults } from 'lodash';
 import { defaultWidget, widgetMapping } from './Widgets';
 import { layoutViews, contentTypesViews, defaultView } from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
+import ToHTMLRenderers, {
+  options as ToHTMLOptions,
+} from './RichTextEditor/ToHTML';
+import { extendedBlockRenderMap, blockStyleFn } from './RichTextEditor/Blocks';
+import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
+import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
 
 export { layoutViews, contentTypesViews, defaultView };
 export { widgetMapping, defaultWidget };
 export { nonContentRoutes };
+
+export {
+  extendedBlockRenderMap,
+  blockStyleFn,
+  FromHTMLCustomBlockFn,
+  inlineToolbarButtons,
+  plugins,
+  ToHTMLRenderers,
+  ToHTMLOptions,
+};
 
 export default defaults(
   {},
