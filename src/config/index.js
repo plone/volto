@@ -12,11 +12,11 @@ import ToHTMLRenderers, {
 import { extendedBlockRenderMap, blockStyleFn } from './RichTextEditor/Blocks';
 import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
 import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
+import { AvailableTiles, getDefaultEditTileView, messagesTiles } from './Tiles';
 
 export { layoutViews, contentTypesViews, defaultView };
 export { widgetMapping, defaultWidget };
 export { nonContentRoutes };
-
 export {
   extendedBlockRenderMap,
   blockStyleFn,
@@ -26,6 +26,7 @@ export {
   ToHTMLRenderers,
   ToHTMLOptions,
 };
+export { AvailableTiles, getDefaultEditTileView, messagesTiles };
 
 export default defaults(
   {},

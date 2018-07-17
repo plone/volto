@@ -16,15 +16,11 @@ import {
   Tab,
   Message,
 } from 'semantic-ui-react';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 
 import { EditTile, Field } from '../../../components';
+import { AvailableTiles, messagesTiles } from '../../../config';
 
 const messages = defineMessages({
   addTile: {
@@ -411,6 +407,34 @@ class Form extends Component {
             selected={this.state.selected === tile}
           />
         ))}
+        <div>
+          <Dropdown
+            trigger={
+              <Button
+                basic
+                circular
+                icon="plus"
+                title={
+                  this.props.submitLabel
+                    ? this.props.submitLabel
+                    : this.props.intl.formatMessage(messages.save)
+                }
+              />
+            }
+            icon={null}
+          >
+            <Dropdown.Menu>
+              <Dropdown.Header
+                content={this.props.intl.formatMessage(messages.addTile)}
+              />
+              {AvailableTiles.map(tile => (
+                <Dropdown.Item onClick={this.onAddTile.bind(this, tile.id)}>
+                  {this.props.intl.formatMessage(messagesTiles[tile.id])}
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
       </div>
     ) : (
       <Container>

@@ -24,6 +24,7 @@ const breakOutOptions = {
   breakoutBlocks: [
     'header-one',
     'header-two',
+    'header-three',
     'highlight',
     'blockquote',
     'callout',
