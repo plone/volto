@@ -44,16 +44,16 @@ Open default browser
 
 ###
 
-Frontpage
+the front page
     Go to  ${FRONTEND_URL}
 
-Logged out
+I am logged out
     Element should not be visible  css=.left.fixed.menu
 
-Logged in
+I am logged in
     Wait until element is visible  css=.left.fixed.menu
 
-Log in
+I log in
     [Arguments]   ${username}=admin  ${password}=secret
     ...           ${selector}=.tools a[href^="/login"]
     Wait until page contains element  css=${selector}
