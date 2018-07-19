@@ -28,13 +28,20 @@ describe('Schema reducer', () => {
     expect(
       schema(undefined, {
         type: `${GET_SCHEMA}_SUCCESS`,
-        result: 'My schema',
+        result: {
+          required: [],
+          properties: {},
+        },
       }),
     ).toEqual({
       error: null,
       loaded: true,
       loading: false,
-      schema: 'My schema',
+      schema: {
+        fieldsets: [],
+        required: [],
+        properties: {},
+      },
     });
   });
 
