@@ -5,6 +5,7 @@
 ### Added
 
 * Add Pastanaga Icon System @sneridagh
+* Support for nested schemas @robgietema
 
 ### Changes
 

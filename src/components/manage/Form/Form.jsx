@@ -82,6 +82,7 @@ class Form extends Component {
         }),
       ),
       properties: PropTypes.objectOf(PropTypes.any),
+      definitions: PropTypes.objectOf(PropTypes.any),
       required: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
     formData: PropTypes.objectOf(PropTypes.any),
@@ -185,12 +186,24 @@ class Form extends Component {
    * @returns {undefined}
    */
   onChangeField(id, value) {
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [id]: value || null,
-      },
-    });
+    if (id.indexOf('|') !== -1) {
+      this.setState({
+        formData: {
+          ...this.state.formData,
+          [id.split('|')[0]]: {
+            ...this.state.formData[id.split('|')[0]],
+            [id.split('|')[1]]: value || null,
+          },
+        },
+      });
+    } else {
+      this.setState({
+        formData: {
+          ...this.state.formData,
+          [id]: value || null,
+        },
+      });
+    }
   }
 
   /**
@@ -281,8 +294,18 @@ class Form extends Component {
     const errors = {};
     map(this.props.schema.fieldsets, fieldset =>
       map(fieldset.fields, fieldId => {
-        const field = this.props.schema.properties[fieldId];
-        const data = this.state.formData[fieldId];
+        const field =
+          fieldId.indexOf('|') !== -1
+            ? this.props.schema.definitions[fieldId.split('|')[0]].properties[
+                fieldId.split('|')[1]
+              ]
+            : this.props.schema.properties[fieldId];
+
+        const data =
+          fieldId.indexOf('|') !== -1
+            ? this.state.formData[fieldId.split('|')[0]] &&
+              this.state.formData[fieldId.split('|')[0]][fieldId.split('|')[1]]
+            : this.state.formData[fieldId];
         if (this.props.schema.required.indexOf(fieldId) !== -1) {
           if (field.type !== 'boolean' && !data) {
             errors[fieldId] = errors[field] || [];
@@ -440,9 +463,20 @@ class Form extends Component {
                     ),
                     ...map(item.fields, field => (
                       <Field
-                        {...schema.properties[field]}
+                        {...(field.indexOf('|') !== -1
+                          ? schema.definitions[field.split('|')[0]].properties[
+                              field.split('|')[1]
+                            ]
+                          : schema.properties[field])}
                         id={field}
-                        value={this.state.formData[field]}
+                        value={
+                          field.indexOf('|') !== -1
+                            ? this.state.formData[field.split('|')[0]] &&
+                              this.state.formData[field.split('|')[0]][
+                                field.split('|')[1]
+                              ]
+                            : this.state.formData[field]
+                        }
                         required={schema.required.indexOf(field) !== -1}
                         onChange={this.onChangeField}
                         key={field}
@@ -483,9 +517,19 @@ class Form extends Component {
                 )}
                 {map(schema.fieldsets[0].fields, field => (
                   <Field
-                    {...schema.properties[field]}
+                    {...(field.indexOf('|') !== -1
+                      ? schema.definitions[field.split('|')[0]].properties[
+                          field.split('|')[1]
+                        ]
+                      : schema.properties[field])}
                     id={field}
-                    value={this.state.formData[field]}
+                    value={
+                      field.indexOf('|') !== -1
+                        ? this.state.formData[field.split('|')[0]][
+                            field.split('|')[1]
+                          ]
+                        : this.state.formData[field]
+                    }
                     required={schema.required.indexOf(field) !== -1}
                     onChange={this.onChangeField}
                     key={field}
