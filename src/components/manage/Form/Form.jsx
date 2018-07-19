@@ -47,6 +47,10 @@ const messages = defineMessages({
     id: 'Save',
     defaultMessage: 'Save',
   },
+  default: {
+    id: 'Default',
+    defaultMessage: 'Default',
+  },
   cancel: {
     id: 'Cancel',
     defaultMessage: 'Cancel',
@@ -303,8 +307,12 @@ class Form extends Component {
 
         const data =
           fieldId.indexOf('|') !== -1
+<<<<<<< HEAD
             ? this.state.formData[fieldId.split('|')[0]] &&
               this.state.formData[fieldId.split('|')[0]][fieldId.split('|')[1]]
+=======
+            ? this.state.formData[fieldId.split('|')[0]][fieldId.split('|')[1]]
+>>>>>>> Added support for nested schemas.
             : this.state.formData[fieldId];
         if (this.props.schema.required.indexOf(fieldId) !== -1) {
           if (field.type !== 'boolean' && !data) {
@@ -471,8 +479,12 @@ class Form extends Component {
                         id={field}
                         value={
                           field.indexOf('|') !== -1
+<<<<<<< HEAD
                             ? this.state.formData[field.split('|')[0]] &&
                               this.state.formData[field.split('|')[0]][
+=======
+                            ? this.state.formData[field.split('|')[0]][
+>>>>>>> Added support for nested schemas.
                                 field.split('|')[1]
                               ]
                             : this.state.formData[field]
