@@ -85,7 +85,7 @@ export default function schema(state = initialState, action = {}) {
                       field => `${fieldset}|${field}`,
                     ),
                     id: fieldset,
-                    title: fieldset,
+                    title: action.result.definitions[fieldset].title,
                   }),
                 ),
               ],
