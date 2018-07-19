@@ -9,6 +9,8 @@
 
 ### Changes
 
+* Refactor actions @robgietema
+
 ## 0.6.0 (2018-07-14)
 
 ### Added
