@@ -1,5 +1,6 @@
 *** Settings ***
 
+Library  DebugLibrary
 Library  SeleniumLibrary  timeout=30  implicit_wait=0
 
 *** Variables ***
@@ -47,10 +48,10 @@ Open default browser
 the front page
     Go to  ${FRONTEND_URL}
 
-I am logged out
+I should be logged out
     Element should not be visible  css=.left.fixed.menu
 
-I am logged in
+I should be logged in
     Wait until element is visible  css=.left.fixed.menu
 
 I log in
@@ -67,3 +68,6 @@ I log in
     Input text  id=password  ${password}
     Click button  id=login-form-submit
     Wait until page does not contain  id=login-form-submit
+
+A logged in site-administrator
+  I log in

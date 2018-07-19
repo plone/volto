@@ -10,4 +10,4 @@ Suite Teardown  Close all browsers
 Scenario: Log into Plone
   Given the front page
    When I log in
-   Then I am logged in
+   Then I should be logged in
