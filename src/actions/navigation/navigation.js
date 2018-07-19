@@ -14,6 +14,9 @@ import { GET_NAVIGATION } from '../../constants/ActionTypes';
 export function getNavigation(url) {
   return {
     type: GET_NAVIGATION,
-    promise: api => api.get(`${url}/@navigation`),
+    request: {
+      op: 'get',
+      path: `${url}/@navigation`,
+    },
   };
 }

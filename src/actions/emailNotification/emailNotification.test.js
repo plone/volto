@@ -7,19 +7,13 @@ describe('Send email notification', () => {
       const action = emailNotification();
 
       expect(action.type).toEqual(EMAIL_NOTIFICATION);
-
-      const apiMock = {
-        post: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.post).toBeCalledWith('/@email-notification', {
-        data: {
-          from: undefined,
-          message: undefined,
-          name: undefined,
-          subject: undefined,
-        },
+      expect(action.request.op).toEqual('post');
+      expect(action.request.path).toEqual('/@email-notification');
+      expect(action.request.data).toEqual({
+        from: undefined,
+        message: undefined,
+        name: undefined,
+        subject: undefined,
       });
     });
   });

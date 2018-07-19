@@ -8,13 +8,8 @@ describe('Navigation action', () => {
       const action = getNavigation(url);
 
       expect(action.type).toEqual(GET_NAVIGATION);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`${url}/@navigation`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}/@navigation`);
     });
   });
 });

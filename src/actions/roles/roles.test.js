@@ -7,13 +7,8 @@ describe('Roles action', () => {
       const action = listRoles();
 
       expect(action.type).toEqual(LIST_ROLES);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith('/@roles');
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual('/@roles');
     });
   });
 });

@@ -13,6 +13,9 @@ import { LIST_ROLES } from '../../constants/ActionTypes';
 export function listRoles() {
   return {
     type: LIST_ROLES,
-    promise: api => api.get('/@roles'),
+    request: {
+      op: 'get',
+      path: '/@roles',
+    },
   };
 }

@@ -18,7 +18,10 @@ import {
 export function getControlpanel(id) {
   return {
     type: GET_CONTROLPANEL,
-    promise: api => api.get(`/@controlpanels/${id}`),
+    request: {
+      op: 'get',
+      path: `/@controlpanels/${id}`,
+    },
   };
 }
 
@@ -30,7 +33,10 @@ export function getControlpanel(id) {
 export function listControlpanels() {
   return {
     type: LIST_CONTROLPANELS,
-    promise: api => api.get('/@controlpanels'),
+    request: {
+      op: 'get',
+      path: '/@controlpanels',
+    },
   };
 }
 
@@ -44,6 +50,10 @@ export function listControlpanels() {
 export function updateControlpanel(url, data) {
   return {
     type: UPDATE_CONTROLPANEL,
-    promise: api => api.patch(url, { data }),
+    request: {
+      op: 'patch',
+      path: url,
+      data,
+    },
   };
 }
