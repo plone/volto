@@ -17,7 +17,7 @@ import { FacebookShareButton, TwitterShareButton } from 'react-share';
  * @returns {string} Markup of the component.
  */
 const SocialSharing = ({ url, title, description }) => (
-  <Container>
+  <Container style={{ clear: 'both' }}>
     <br />
     <FacebookShareButton url={url} quote={title}>
       <Button color="facebook" size="mini">

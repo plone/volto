@@ -13,6 +13,7 @@ describe('Search reducer', () => {
       total: 0,
       loaded: false,
       loading: false,
+      batching: {},
     });
   });
 
@@ -27,6 +28,7 @@ describe('Search reducer', () => {
       total: 0,
       loaded: false,
       loading: true,
+      batching: {},
     });
   });
 
@@ -42,6 +44,7 @@ describe('Search reducer', () => {
             },
           ],
           items_total: 1,
+          batching: {},
         },
       }),
     ).toEqual({
@@ -55,6 +58,7 @@ describe('Search reducer', () => {
       total: 1,
       loaded: true,
       loading: false,
+      batching: {},
     });
   });
 
@@ -70,6 +74,7 @@ describe('Search reducer', () => {
       total: 0,
       loaded: false,
       loading: false,
+      batching: {},
     });
   });
 
@@ -84,6 +89,7 @@ describe('Search reducer', () => {
       total: 0,
       loaded: false,
       loading: false,
+      batching: {},
     });
   });
 });

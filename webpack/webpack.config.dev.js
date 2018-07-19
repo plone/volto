@@ -157,13 +157,27 @@ module.exports = {
         ],
       },
       {
-        test: /\.css$/,
+        test: /^(?!.*?\.module).*\.css$/,
         use: [
           {
             loader: 'style-loader',
           },
           BASE_CSS_LOADER,
           POST_CSS_LOADER,
+        ],
+      },
+      // This enables the use of CSS modules in the build as long as they have the *.module.css extension
+      // Note the excusion also needed in the object above for not conflict with normal CSS
+      {
+        test: /\.module\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+            },
+          },
         ],
       },
       {
