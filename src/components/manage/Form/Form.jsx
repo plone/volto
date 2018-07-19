@@ -43,10 +43,6 @@ const messages = defineMessages({
     id: 'Save',
     defaultMessage: 'Save',
   },
-  default: {
-    id: 'Default',
-    defaultMessage: 'Default',
-  },
   cancel: {
     id: 'Cancel',
     defaultMessage: 'Cancel',
