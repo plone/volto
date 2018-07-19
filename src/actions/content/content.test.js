@@ -22,13 +22,9 @@ describe('Content action', () => {
       const action = createContent(url, content);
 
       expect(action.type).toEqual(CREATE_CONTENT);
-
-      const apiMock = {
-        post: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.post).toBeCalledWith(url, { data: content });
+      expect(action.request.op).toEqual('post');
+      expect(action.request.path).toEqual(url);
+      expect(action.request.data).toEqual(content);
     });
 
     it('should create an action to add content for multiple objects', () => {
@@ -37,14 +33,12 @@ describe('Content action', () => {
       const action = createContent(url, content);
 
       expect(action.type).toEqual(CREATE_CONTENT);
-
-      const apiMock = {
-        post: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.post).toBeCalledWith(url, { data: content[0] });
-      expect(apiMock.post).toBeCalledWith(url, { data: content[1] });
+      expect(action.request[0].op).toEqual('post');
+      expect(action.request[0].path).toEqual(url);
+      expect(action.request[0].data).toEqual(content[0]);
+      expect(action.request[1].op).toEqual('post');
+      expect(action.request[1].path).toEqual(url);
+      expect(action.request[1].data).toEqual(content[1]);
     });
   });
 
@@ -54,13 +48,8 @@ describe('Content action', () => {
       const action = deleteContent(url);
 
       expect(action.type).toEqual(DELETE_CONTENT);
-
-      const apiMock = {
-        del: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.del).toBeCalledWith(url);
+      expect(action.request.op).toEqual('del');
+      expect(action.request.path).toEqual(url);
     });
 
     it('should create an action to delete content for multiple urls', () => {
@@ -68,14 +57,10 @@ describe('Content action', () => {
       const action = deleteContent(urls);
 
       expect(action.type).toEqual(DELETE_CONTENT);
-
-      const apiMock = {
-        del: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.del).toBeCalledWith(urls[0]);
-      expect(apiMock.del).toBeCalledWith(urls[1]);
+      expect(action.request[0].op).toEqual('del');
+      expect(action.request[0].path).toEqual(urls[0]);
+      expect(action.request[1].op).toEqual('del');
+      expect(action.request[1].path).toEqual(urls[1]);
     });
   });
 
@@ -86,13 +71,9 @@ describe('Content action', () => {
       const action = updateContent(url, content);
 
       expect(action.type).toEqual(UPDATE_CONTENT);
-
-      const apiMock = {
-        patch: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.patch).toBeCalledWith(url, { data: content });
+      expect(action.request.op).toEqual('patch');
+      expect(action.request.path).toEqual(url);
+      expect(action.request.data).toEqual(content);
     });
 
     it('should create an action to update content for multiple urls', () => {
@@ -101,14 +82,12 @@ describe('Content action', () => {
       const action = updateContent(urls, content);
 
       expect(action.type).toEqual(UPDATE_CONTENT);
-
-      const apiMock = {
-        patch: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.patch).toBeCalledWith(urls[0], { data: content[0] });
-      expect(apiMock.patch).toBeCalledWith(urls[1], { data: content[1] });
+      expect(action.request[0].op).toEqual('patch');
+      expect(action.request[0].path).toEqual(urls[0]);
+      expect(action.request[0].data).toEqual(content[0]);
+      expect(action.request[1].op).toEqual('patch');
+      expect(action.request[1].path).toEqual(urls[1]);
+      expect(action.request[1].data).toEqual(content[1]);
     });
   });
 
@@ -121,19 +100,13 @@ describe('Content action', () => {
       const action = orderContent(parent, url, delta, subset);
 
       expect(action.type).toEqual(ORDER_CONTENT);
-
-      const apiMock = {
-        patch: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.patch).toBeCalledWith(parent, {
-        data: {
-          ordering: {
-            obj_id: url,
-            delta,
-            subset_ids: subset,
-          },
+      expect(action.request.op).toEqual('patch');
+      expect(action.request.path).toEqual(parent);
+      expect(action.request.data).toEqual({
+        ordering: {
+          obj_id: url,
+          delta,
+          subset_ids: subset,
         },
       });
     });
@@ -147,18 +120,12 @@ describe('Content action', () => {
       const action = sortContent(url, on, order);
 
       expect(action.type).toEqual(UPDATE_CONTENT);
-
-      const apiMock = {
-        patch: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.patch).toBeCalledWith(url, {
-        data: {
-          sort: {
-            on,
-            order,
-          },
+      expect(action.request.op).toEqual('patch');
+      expect(action.request.path).toEqual(url);
+      expect(action.request.data).toEqual({
+        sort: {
+          on,
+          order,
         },
       });
     });
@@ -170,13 +137,8 @@ describe('Content action', () => {
       const action = getContent(url);
 
       expect(action.type).toEqual(GET_CONTENT);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`${url}?fullobjects`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}?fullobjects`);
     });
 
     it('should create an action to get content with version', () => {
@@ -185,13 +147,8 @@ describe('Content action', () => {
       const action = getContent(url, version);
 
       expect(action.type).toEqual(GET_CONTENT);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(
         `${url}/@history/${version}?fullobjects`,
       );
     });

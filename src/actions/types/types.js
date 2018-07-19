@@ -14,6 +14,9 @@ import { GET_TYPES } from '../../constants/ActionTypes';
 export function getTypes(url) {
   return {
     type: GET_TYPES,
-    promise: api => api.get(`${url}/@types`),
+    request: {
+      op: 'get',
+      path: `${url}/@types`,
+    },
   };
 }

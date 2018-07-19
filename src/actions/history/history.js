@@ -14,7 +14,10 @@ import { GET_HISTORY, REVERT_HISTORY } from '../../constants/ActionTypes';
 export function getHistory(url) {
   return {
     type: GET_HISTORY,
-    promise: api => api.get(`${url}/@history`),
+    request: {
+      op: 'get',
+      path: `${url}/@history`,
+    },
   };
 }
 
@@ -28,6 +31,10 @@ export function getHistory(url) {
 export function revertHistory(url, version) {
   return {
     type: REVERT_HISTORY,
-    promise: api => api.patch(`${url}/@history`, { data: { version } }),
+    request: {
+      op: 'patch',
+      path: `${url}/@history`,
+      data: { version },
+    },
   };
 }

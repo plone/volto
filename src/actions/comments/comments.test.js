@@ -19,15 +19,9 @@ describe('Comments action', () => {
       const action = addComment(url, text);
 
       expect(action.type).toEqual(ADD_COMMENT);
-
-      const apiMock = {
-        post: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.post).toBeCalledWith(`${url}/@comments`, {
-        data: { text },
-      });
+      expect(action.request.op).toEqual('post');
+      expect(action.request.path).toEqual(`${url}/@comments`);
+      expect(action.request.data).toEqual({ text });
     });
   });
 
@@ -37,13 +31,8 @@ describe('Comments action', () => {
       const action = deleteComment(url);
 
       expect(action.type).toEqual(DELETE_COMMENT);
-
-      const apiMock = {
-        del: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.del).toBeCalledWith(url);
+      expect(action.request.op).toEqual('del');
+      expect(action.request.path).toEqual(url);
     });
   });
 
@@ -54,15 +43,9 @@ describe('Comments action', () => {
       const action = updateComment(url, text);
 
       expect(action.type).toEqual(UPDATE_COMMENT);
-
-      const apiMock = {
-        patch: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.patch).toBeCalledWith(url, {
-        data: { text },
-      });
+      expect(action.request.op).toEqual('patch');
+      expect(action.request.path).toEqual(url);
+      expect(action.request.data).toEqual({ text });
     });
   });
 
@@ -72,13 +55,8 @@ describe('Comments action', () => {
       const action = listComments(url);
 
       expect(action.type).toEqual(LIST_COMMENTS);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`${url}/@comments`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}/@comments`);
     });
   });
 });

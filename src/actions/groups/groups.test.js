@@ -20,15 +20,9 @@ describe('Groups action', () => {
       const action = createGroup(data);
 
       expect(action.type).toEqual(CREATE_GROUP);
-
-      const apiMock = {
-        post: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.post).toBeCalledWith('/@groups', {
-        data,
-      });
+      expect(action.request.op).toEqual('post');
+      expect(action.request.path).toEqual('/@groups');
+      expect(action.request.data).toEqual(data);
     });
   });
 
@@ -38,13 +32,8 @@ describe('Groups action', () => {
       const action = deleteGroup(id);
 
       expect(action.type).toEqual(DELETE_GROUP);
-
-      const apiMock = {
-        del: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.del).toBeCalledWith(`/@groups/${id}`);
+      expect(action.request.op).toEqual('del');
+      expect(action.request.path).toEqual(`/@groups/${id}`);
     });
   });
 
@@ -54,13 +43,8 @@ describe('Groups action', () => {
       const action = getGroup(id);
 
       expect(action.type).toEqual(GET_GROUP);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`/@groups/${id}`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`/@groups/${id}`);
     });
   });
 
@@ -69,13 +53,8 @@ describe('Groups action', () => {
       const action = listGroups();
 
       expect(action.type).toEqual(LIST_GROUPS);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith('/@groups');
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual('/@groups');
     });
   });
 
@@ -86,15 +65,9 @@ describe('Groups action', () => {
       const action = updateGroup(id, data);
 
       expect(action.type).toEqual(UPDATE_GROUP);
-
-      const apiMock = {
-        patch: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.patch).toBeCalledWith(`/@groups/${id}`, {
-        data,
-      });
+      expect(action.request.op).toEqual('patch');
+      expect(action.request.path).toEqual(`/@groups/${id}`);
+      expect(action.request.data).toEqual(data);
     });
   });
 });
