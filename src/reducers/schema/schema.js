@@ -85,7 +85,11 @@ export default function schema(state = initialState, action = {}) {
                       field => `${fieldset}|${field}`,
                     ),
                     id: fieldset,
+<<<<<<< HEAD
                     title: action.result.definitions[fieldset].title,
+=======
+                    title: fieldset,
+>>>>>>> Added support for nested schemas.
                   }),
                 ),
               ],
