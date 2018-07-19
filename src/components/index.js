@@ -17,6 +17,7 @@ export Anontools from './theme/Anontools/Anontools';
 export Breadcrumbs from './theme/Breadcrumbs/Breadcrumbs';
 export Footer from './theme/Footer/Footer';
 export Header from './theme/Header/Header';
+export Icon from './theme/Icon/Icon';
 export Logo from './theme/Logo/Logo';
 export Navigation from './theme/Navigation/Navigation';
 export SearchWidget from './theme/SearchWidget/SearchWidget';

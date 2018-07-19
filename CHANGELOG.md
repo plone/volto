@@ -4,6 +4,8 @@
 
 ### Added
 
+* Add Pastanaga Icon System @sneridagh
+
 ### Changes
 
 ## 0.6.0 (2018-07-14)
@@ -22,6 +24,7 @@
 * Option to add tiles @robgietema
 * Image tiles in editor @robgietema
 * Align images in editor @robgietema
+* Video tiles in editor @robgietema
 * Video tiles in editor @robgietema
 * Sitemap.xml.gz view @robgietema
 * Upload image indicator @robgietema

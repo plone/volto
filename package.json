@@ -71,9 +71,10 @@
     ],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
-      "^.+\\.scss$": "jest-css-modules",
       "^.+\\.css$": "jest-css-modules",
-      "^.+\\.(svg|png)$": "jest-file"
+      "^.+\\.scss$": "jest-css-modules",
+      "^.+\\.(png)$": "jest-file",
+      "^.+\\.(svg)$": "./jest-svgsystem-transform.js"
     },
     "collectCoverage": true,
     "coverageThreshold": {
@@ -290,6 +291,9 @@
     "stylelint-config-standard": "18.2.0",
     "supertest": "3.0.0",
     "supertest-as-promised": "4.0.2",
+    "svg-loader": "0.0.2",
+    "svgo": "1.0.5",
+    "svgo-loader": "2.1.0",
     "timekeeper": "2.1.0",
     "webpack-bundle-analyzer": "2.11.1",
     "webpack-dev-middleware": "3.1.0",
