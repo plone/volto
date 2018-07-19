@@ -31,8 +31,8 @@ import createLinkPlugin from '../../AnchorPlugin';
 
 const messages = defineMessages({
   text: {
-    id: 'Add text...',
-    defaultMessage: 'Add text...',
+    id: 'Type text…',
+    defaultMessage: 'Type text…',
   },
 });
 

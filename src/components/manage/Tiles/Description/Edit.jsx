@@ -13,8 +13,8 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 const messages = defineMessages({
   description: {
-    id: 'Description',
-    defaultMessage: 'Description',
+    id: 'Add a description…',
+    defaultMessage: 'Add a description…',
   },
 });
 

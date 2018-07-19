@@ -13,8 +13,8 @@ import { Button, Icon } from 'semantic-ui-react';
 
 const messages = defineMessages({
   title: {
-    id: 'Title',
-    defaultMessage: 'Title',
+    id: 'Type the title…',
+    defaultMessage: 'Type the title…',
   },
 });
 

@@ -78,7 +78,7 @@
 
 /* Input Text Color */
 @inputColor: @textColor;
-@inputPlaceholderColor: lighten(@inputColor, 75);
+@inputPlaceholderColor: #B8C6C8;
 @inputPlaceholderFocusColor: lighten(@inputColor, 45);
 
 /* Line Height Default For Inputs in Browser (Descendors are 17px at 14px base em) */
