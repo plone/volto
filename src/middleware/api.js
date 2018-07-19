@@ -14,24 +14,23 @@ export default api => ({ dispatch, getState }) => next => action => {
     return action(dispatch, getState);
   }
 
-  const { promise, type, ...rest } = action;
+  const { request, type, ...rest } = action;
 
-  if (!promise) {
+  if (!request) {
     return next(action);
   }
 
   next({ ...rest, type: `${type}_PENDING` });
 
-  const actionPromise = promise(api);
+  const actionPromise = Array.isArray(request)
+    ? Promise.all(
+        request.map(item => api[item.op](item.path, { data: item.data })),
+      )
+    : api[request.op](request.path, { data: request.data });
   actionPromise.then(
     result => next({ ...rest, result, type: `${type}_SUCCESS` }),
     error => next({ ...rest, error, type: `${type}_FAIL` }),
   );
-  /*
-    .catch(error => {
-      next({ ...rest, error, type: `${type}_ERROR` });
-    });
-    */
 
   return actionPromise;
 };
