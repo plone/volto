@@ -19,6 +19,9 @@ let socket = null;
  */
 function sendOnSocket(request) {
   return new Promise((resolve, reject) => {
+    console.log(socket.readyState);
+    console.log(socket.CONNECTING);
+    console.log(socket.OPEN);
     switch (socket.readyState) {
       case socket.CONNECTING:
         socket.addEventListener('open', () => resolve(socket));
@@ -31,7 +34,11 @@ function sendOnSocket(request) {
         reject();
         break;
     }
-  }).then(socket.send(JSON.stringify(request)));
+  }).then(() => {
+    console.log('send');
+    console.log(request);
+    socket.send(JSON.stringify(request));
+  });
 }
 
 /**
@@ -54,11 +61,7 @@ export default api => ({ dispatch, getState }) => next => action => {
 
   next({ ...rest, type: `${type}_PENDING` });
 
-  if (
-    socket && Array.isArray(request)
-      ? request[0].op === 'get'
-      : request.op === 'get'
-  ) {
+  if (socket) {
     actionPromise = Array.isArray(request)
       ? Promise.all(request.map(item => sendOnSocket(item)))
       : sendOnSocket(request);
