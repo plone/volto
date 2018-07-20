@@ -11,6 +11,7 @@ configuration.plugins.push(
       HOST: process.env.HOST && process.env.HOST,
       PORT: process.env.PORT,
       API_PATH: process.env.API_PATH && JSON.stringify(process.env.API_PATH),
+      WEBSOCKERTS: process.env.WEBSOCKERTS,
     },
     __CLIENT__: false,
     __SERVER__: true,

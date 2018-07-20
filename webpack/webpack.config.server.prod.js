@@ -11,6 +11,7 @@ configuration.plugins.push(
       HOST: process.env.HOST && process.env.HOST,
       PORT: process.env.PORT,
       API_PATH: process.env.API_PATH && JSON.stringify(process.env.API_PATH),
+      WEBSOCKETS: process.env.WEBSOCKETS,
       // SENTRY_DSN - Enable Sentry error reporting
       // You need the full Sentry DSN (private) configured here for Node Raven to work
       // Uncomment the next lines and replace the value with the private DSN for your Sentry project
