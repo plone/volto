@@ -28,6 +28,7 @@ the Plone site root
 # --- When -------------------------------------------------------------------
 
 I add a Page with the title '${title}'
+  Debug
   Wait until page contains element  css=#toolbar-add
   Click element  css=#toolbar-add
   Wait until page contains element  css=#toolbar-add-document
