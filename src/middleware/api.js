@@ -12,12 +12,12 @@ import config from '../config';
 let socket = null;
 
 /**
- * Wait for a connection to the backend.
- * @function waitForConnection
- * @param {Object} socket Websocket object.
- * @returns {Promise} established and open websocket connection
+ * Send a message on a websocket.
+ * @function sendOnSocket
+ * @param {Object} request Request object.
+ * @returns {Promise} message is send
  */
-function waitForConnection(socket) {
+function sendOnSocket(request) {
   return new Promise((resolve, reject) => {
     switch (socket.readyState) {
       case socket.CONNECTING:
@@ -31,7 +31,7 @@ function waitForConnection(socket) {
         reject();
         break;
     }
-  });
+  }).then(socket.send(JSON.stringify(request)));
 }
 
 /**
@@ -55,6 +55,9 @@ export default api => ({ dispatch, getState }) => next => action => {
   next({ ...rest, type: `${type}_PENDING` });
 
   if (socket) {
+    actionPromise = Array.isArray(request)
+      ? Promise.all(request.map(item => sendOnSocket(item)))
+      : sendOnSocket(request);
   } else {
     actionPromise = Array.isArray(request)
       ? Promise.all(
