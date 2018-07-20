@@ -54,7 +54,11 @@ export default api => ({ dispatch, getState }) => next => action => {
 
   next({ ...rest, type: `${type}_PENDING` });
 
-  if (socket) {
+  if (
+    socket && Array.isArray(request)
+      ? request[0].op === 'get'
+      : request.op === 'get'
+  ) {
     actionPromise = Array.isArray(request)
       ? Promise.all(request.map(item => sendOnSocket(item)))
       : sendOnSocket(request);
@@ -77,7 +81,15 @@ export default api => ({ dispatch, getState }) => next => action => {
                 res.token
               }`,
             );
-            socket.onmessage = msg => console.log(msg);
+            socket.onmessage = msg => {
+              /*
+              dispatch({
+                type: ???
+                result: msg.data,
+              })
+              */
+              console.log(msg);
+            };
             socket.onopen = () => console.log('open');
             socket.onclose = () => console.log('close');
             socket.onerror = e => console.log(e);
