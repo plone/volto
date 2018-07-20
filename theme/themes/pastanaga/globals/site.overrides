@@ -11,6 +11,22 @@ body {
   flex-direction: column;
 }
 
+::-moz-selection {
+  background-color: rgba(31, 189, 238, 0.5);
+  border-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj4KICA8ZyBmaWxsPSIjMUZCRUVGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIG9wYWNpdHk9Ii45NSI+CiAgICA8cGF0aCBkPSJNMTAgNjBDNC40NzcxNTI1IDYwIDAgNTUuNTI0MDYxOCAwIDUwIDMuNTUyNzEzNjhlLTE1IDQ0LjQ3NzE1MjUgNC40NzU5MzgxOCA0MCAxMCA0MEwyMCA0MCAyMCA1MEMyMCA1NS41MjI4NDc1IDE1LjUyNDA2MTggNjAgMTAgNjB6TTQwIDUwQzQwIDU1LjUyMjg0NzUgNDQuNDc1OTM4MiA2MCA1MCA2MEw1MCA2MEM1NS41MjI4NDc1IDYwIDYwIDU1LjUyNDA2MTggNjAgNTBMNjAgNTBDNjAgNDQuNDc3MTUyNSA1NS41MjQwNjE4IDQwIDUwIDQwTDQwIDQwIDQwIDUwIDQwIDUweiIvPgogIDwvZz4KPC9zdmc+Cg==')
+    20 fill repeat;
+  border-style: solid;
+  border-width: 20px;
+}
+
+::selection {
+  background-color: rgba(31, 189, 238, 0.5);
+  border-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj4KICA8ZyBmaWxsPSIjMUZCRUVGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIG9wYWNpdHk9Ii45NSI+CiAgICA8cGF0aCBkPSJNMTAgNjBDNC40NzcxNTI1IDYwIDAgNTUuNTI0MDYxOCAwIDUwIDMuNTUyNzEzNjhlLTE1IDQ0LjQ3NzE1MjUgNC40NzU5MzgxOCA0MCAxMCA0MEwyMCA0MCAyMCA1MEMyMCA1NS41MjI4NDc1IDE1LjUyNDA2MTggNjAgMTAgNjB6TTQwIDUwQzQwIDU1LjUyMjg0NzUgNDQuNDc1OTM4MiA2MCA1MCA2MEw1MCA2MEM1NS41MjI4NDc1IDYwIDYwIDU1LjUyNDA2MTggNjAgNTBMNjAgNTBDNjAgNDQuNDc3MTUyNSA1NS41MjQwNjE4IDQwIDUwIDQwTDQwIDQwIDQwIDUwIDQwIDUweiIvPgogIDwvZz4KPC9zdmc+Cg==')
+    20 fill repeat;
+  border-style: solid;
+  border-width: 20px;
+}
+
 .documentFirstHeading {
   position: relative;
   border-bottom: 2px solid @purpleBackground;
@@ -126,12 +142,30 @@ body {
   .toolbar {
     position: absolute;
     z-index: 1;
-    top: -28px;
+    top: -32px;
     left: 50%;
+    padding: 4px;
     background-color: rgba(255, 255, 255, 0.975);
     border-radius: 2px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
     transform: translate(-50%, 0);
+
+    .ui.icon.button {
+      padding: 4px;
+      margin-left: 4px;
+      border-radius: 1px;
+      color: #826a6a !important;
+
+      &:hover {
+        background-color: #edf1f2 !important;
+      }
+    }
+
+    .ui.buttons:first-child {
+      & .ui.icon.button {
+        margin-left: 0;
+      }
+    }
   }
 
   position: relative;
@@ -191,7 +225,7 @@ body {
 .draftJsToolbar__button__qi1gf {
   padding: 0;
   background: rgba(255, 255, 255, 0.975);
-  border-radius: 3px;
+  border-radius: 1px;
   color: #826a6a;
 }
 
@@ -202,4 +236,11 @@ body {
 .draftJsToolbar__button__qi1gf.draftJsToolbar__active__3qcpF {
   border: 1px solid @blue;
   color: @blue;
+}
+
+.separator {
+  display: inline-block;
+  height: 24px;
+  border-right: 1px solid #ddd;
+  margin: 0 0 0 4px;
 }

@@ -5,7 +5,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const defaultSize = '100%';
+const defaultSize = '36px';
 
 /**
  * Component to display an Icon.

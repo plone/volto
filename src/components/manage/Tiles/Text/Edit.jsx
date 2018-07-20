@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import { Map } from 'immutable';
 import PropTypes from 'prop-types';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import Editor from 'draft-js-plugins-editor';
 import { stateToHTML } from 'draft-js-export-html';
 import { stateFromHTML } from 'draft-js-import-html';
@@ -26,6 +26,8 @@ import {
 import createBlockStyleButton from 'draft-js-buttons/lib/utils/createBlockStyleButton';
 import createBlockBreakoutPlugin from 'draft-js-block-breakout-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { Icon } from '../../../../components';
+import trashSVG from '../../../../icons/delete.svg';
 
 import createLinkPlugin from '../../AnchorPlugin';
 
@@ -207,7 +209,7 @@ export default class Edit extends Component {
                 basic
                 onClick={() => this.props.onDeleteTile(this.props.tile)}
               >
-                <Icon name="trash" />
+                <Icon name={trashSVG} size="24px" color="#e40166" />
               </Button>
             </Button.Group>
           </div>

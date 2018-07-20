@@ -6,10 +6,12 @@
 import React, { Component } from 'react';
 import { Map } from 'immutable';
 import PropTypes from 'prop-types';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { Icon } from '../../../../components';
+import trashSVG from '../../../../icons/delete.svg';
 
 const messages = defineMessages({
   description: {
@@ -135,7 +137,7 @@ export default class Edit extends Component {
                 basic
                 onClick={() => this.props.onDeleteTile(this.props.tile)}
               >
-                <Icon name="trash" />
+                <Icon name={trashSVG} size="24px" color="#e40166" />
               </Button>
             </Button.Group>
           </div>
