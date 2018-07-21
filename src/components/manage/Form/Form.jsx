@@ -241,9 +241,10 @@ class Form extends Component {
    * Delete tile handler
    * @method onDeleteTile
    * @param {string} id Id of the field
+   * @param {bool} selectPrev True if previous should be selected
    * @returns {undefined}
    */
-  onDeleteTile(id) {
+  onDeleteTile(id, selectPrev) {
     this.setState({
       formData: {
         ...this.state.formData,
@@ -252,23 +253,35 @@ class Form extends Component {
         },
         tiles: omit(this.state.formData.tiles, [id]),
       },
-      selected: null,
+      selected: selectPrev
+        ? this.state.formData.tiles_layout.items[
+            this.state.formData.tiles_layout.items.indexOf(id) - 1
+          ]
+        : null,
     });
   }
 
   /**
-   * Select tile handler
-   * @method onSelectTile
+   * Add tile handler
+   * @method onAddTile
    * @param {string} type Type of the tile
-   * @returns {undefined}
+   * @param {Number} index Index where to add the tile
+   * @returns {string} Id of the tile
    */
-  onAddTile(type) {
+  onAddTile(type, index) {
     const id = uuid();
+    const insert =
+      index === -1 ? this.state.formData.tiles_layout.items.length : index;
+
     this.setState({
       formData: {
         ...this.state.formData,
         tiles_layout: {
-          items: [...this.state.formData.tiles_layout.items, id],
+          items: [
+            ...this.state.formData.tiles_layout.items.slice(0, insert),
+            id,
+            ...this.state.formData.tiles_layout.items.slice(insert),
+          ],
         },
         tiles: {
           ...this.state.formData.tiles,
@@ -279,6 +292,8 @@ class Form extends Component {
       },
       selected: id,
     });
+
+    return id;
   }
 
   /**
@@ -383,6 +398,7 @@ class Form extends Component {
             index={index}
             type={formData.tiles[tile]['@type']}
             key={tile}
+            onAddTile={this.onAddTile}
             onChangeTile={this.onChangeTile}
             onChangeField={this.onChangeField}
             onDeleteTile={this.onDeleteTile}
@@ -415,22 +431,24 @@ class Form extends Component {
               <Dropdown.Header
                 content={this.props.intl.formatMessage(messages.addTile)}
               />
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'title')}>
+              <Dropdown.Item onClick={this.onAddTile.bind(this, 'title', -1)}>
                 <FormattedMessage id="Title" defaultMessage="Title" />
               </Dropdown.Item>
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'description')}>
+              <Dropdown.Item
+                onClick={this.onAddTile.bind(this, 'description', -1)}
+              >
                 <FormattedMessage
                   id="Description"
                   defaultMessage="Description"
                 />
               </Dropdown.Item>
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'text')}>
+              <Dropdown.Item onClick={this.onAddTile.bind(this, 'text', -1)}>
                 <FormattedMessage id="Text" defaultMessage="Text" />
               </Dropdown.Item>
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'image')}>
+              <Dropdown.Item onClick={this.onAddTile.bind(this, 'image', -1)}>
                 <FormattedMessage id="Image" defaultMessage="Image" />
               </Dropdown.Item>
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'video')}>
+              <Dropdown.Item onClick={this.onAddTile.bind(this, 'video', -1)}>
                 <FormattedMessage id="Video" defaultMessage="Video" />
               </Dropdown.Item>
             </Dropdown.Menu>

@@ -43,9 +43,11 @@ export default class Edit extends Component {
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
+    index: PropTypes.number.isRequired,
     onChangeField: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    onAddTile: PropTypes.func.isRequired,
   };
 
   /**
@@ -89,6 +91,10 @@ export default class Edit extends Component {
           ? EditorState.createWithContent(contentState)
           : EditorState.createEmpty(),
       });
+    }
+
+    if (!this.props.selected && nextProps.selected) {
+      this.node.focus();
     }
   }
 
@@ -138,9 +144,25 @@ export default class Edit extends Component {
           onChange={this.onChange}
           editorState={this.state.editorState}
           blockRenderMap={extendedBlockRenderMap}
+          handleReturn={() => {
+            this.props.onSelectTile(
+              this.props.onAddTile('text', this.props.index + 1),
+            );
+            return 'handled';
+          }}
+          handleKeyCommand={(command, editorState) => {
+            if (
+              command === 'backspace' &&
+              editorState.getCurrentContent().getPlainText().length === 0
+            ) {
+              this.props.onDeleteTile(this.props.tile, true);
+            }
+          }}
           placeholder={this.props.intl.formatMessage(messages.description)}
-          handleReturn={() => true}
           blockStyleFn={() => 'documentDescription'}
+          ref={node => {
+            this.node = node;
+          }}
         />
       </div>
     );
