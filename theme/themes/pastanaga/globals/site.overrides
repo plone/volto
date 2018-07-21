@@ -52,7 +52,7 @@ body {
   left: -9px;
   width: ~'calc(100% + 18px)';
   height: ~'calc(100% + 18px)';
-  border: 2px solid rgba(120, 192, 215, 0);
+  border: 1px solid rgba(120, 192, 215, 0);
   border-radius: 3px;
   content: '';
 }
@@ -65,8 +65,10 @@ body {
   display: inline-block;
 }
 
-.tile.selected::after {
+.tile.selected::after,
+.tile.selected:hover::after {
   border-color: rgba(120, 192, 215, 0.5);
+  border-width: 2px;
 }
 
 .tile:hover::after {
@@ -75,6 +77,10 @@ body {
 
 .ui.drag.tile:not(:last-child) {
   margin-bottom: 2rem;
+}
+
+.tile .ui.image {
+  width: 100%;
 }
 
 .DraftEditor-editorContainer,
@@ -216,6 +222,11 @@ body {
     }
   }
 
+  .ui.active.basic.icon.button {
+    border: 1px solid #2996da;
+    background: transparent !important;
+  }
+
   position: relative;
 }
 
@@ -314,7 +325,10 @@ body {
 }
 
 .draftJsToolbar__button__qi1gf {
+  width: 32px;
+  height: 32px;
   padding: 0;
+  padding: 4px !important;
   background: rgba(255, 255, 255, 0.975);
   border-radius: 1px;
   color: #826a6a;
@@ -328,6 +342,10 @@ body {
   border-radius: 3px;
   box-shadow: inset 0 0 0 1px @blue;
   color: @blue;
+}
+
+.draftJsToolbar__separator__3U7qt {
+  height: 32px;
 }
 
 .separator {

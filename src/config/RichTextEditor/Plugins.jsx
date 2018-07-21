@@ -1,17 +1,17 @@
-import React from 'react';
 import { Separator } from 'draft-js-inline-toolbar-plugin';
-import {
-  ItalicButton,
-  BoldButton,
-  HeadlineTwoButton,
-  HeadlineThreeButton,
-  BlockquoteButton,
-  UnorderedListButton,
-  OrderedListButton,
-} from 'draft-js-buttons';
-import createBlockStyleButton from 'draft-js-buttons/lib/utils/createBlockStyleButton';
+
 import createBlockBreakoutPlugin from 'draft-js-block-breakout-plugin';
 import createLinkPlugin from '../../components/manage/AnchorPlugin';
+import {
+  BlockquoteButton,
+  BoldButton,
+  CalloutButton,
+  ItalicButton,
+  HeadlineTwoButton,
+  HeadlineThreeButton,
+  OrderedListButton,
+  UnorderedListButton,
+} from './Styles';
 
 const breakOutOptions = {
   doubleBreakoutBlocks: [
@@ -31,11 +31,6 @@ const breakOutOptions = {
 
 const blockBreakoutPlugin = createBlockBreakoutPlugin(breakOutOptions);
 const linkPlugin = createLinkPlugin();
-
-const CalloutButton = createBlockStyleButton({
-  blockType: 'callout',
-  children: <span>!</span>,
-});
 
 export const inlineToolbarButtons = [
   BoldButton,
