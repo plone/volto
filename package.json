@@ -153,6 +153,7 @@
     "debug-logger": "0.4.1",
     "decorate-component-with-props": "1.1.0",
     "diff": "3.5.0",
+    "diff-match-patch": "1.0.1",
     "draft-js": "0.10.5",
     "draft-js-anchor-plugin": "2.0.1",
     "draft-js-block-breakout-plugin": "2.0.1",

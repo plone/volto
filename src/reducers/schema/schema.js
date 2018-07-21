@@ -53,7 +53,7 @@ export default function schema(state = initialState, action = {}) {
               map(keys(pickBy(action.result.properties, isArray)), fieldset =>
                 map(
                   action.result.definitions[fieldset].required,
-                  required => `${fieldset}|${required}`,
+                  required => `${fieldset}.${required}`,
                 ),
               ),
             ),
