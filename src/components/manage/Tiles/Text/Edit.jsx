@@ -296,15 +296,6 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
-                onClick={this.props.onAddTile.bind(this, 'text')}
-              >
-                <Icon name={textSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
                 onClick={this.props.onAddTile.bind(this, 'image')}
               >
                 <Icon name={cameraSVG} size="24px" />

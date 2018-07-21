@@ -194,7 +194,7 @@ body {
     &.add-tile {
       z-index: 100;
       top: -10px;
-      left: 66px;
+      left: 49px;
     }
   }
 
