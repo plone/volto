@@ -5,9 +5,9 @@ Library  SeleniumLibrary  timeout=30  implicit_wait=0
 
 *** Variables ***
 
-${FIXTURE}    plone.app.robotframework.testing.PLONE_ROBOT_TESTING
-${FRONTEND_URL}  http://localhost:4300/
-${BROWSER}    chrome
+${FIXTURE}          plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+${FRONTEND_URL}     http://localhost:4300/
+${BROWSER}          headlesschrome
 
 *** Keywords ***
 
