@@ -31,6 +31,12 @@ import trashSVG from '../../../../icons/delete.svg';
 
 import createLinkPlugin from '../../AnchorPlugin';
 
+import addSVG from '../../../../icons/circle-plus.svg';
+import textSVG from '../../../../icons/text.svg';
+import cameraSVG from '../../../../icons/camera.svg';
+import videoSVG from '../../../../icons/videocamera.svg';
+import TemplatedTilesSVG from '../../../../icons/theme.svg';
+
 const messages = defineMessages({
   text: {
     id: 'Type text…',
@@ -122,7 +128,11 @@ export default class Edit extends Component {
         ],
       });
 
-      this.state = { editorState, inlineToolbarPlugin };
+      this.state = {
+        editorState,
+        inlineToolbarPlugin,
+        addNewTileOpened: false,
+      };
     }
 
     this.onChange = this.onChange.bind(this);
@@ -183,6 +193,11 @@ export default class Edit extends Component {
       },
     });
   }
+
+  toggleAddNewTile = () =>
+    this.setState(state => ({ addNewTileOpened: !state.addNewTileOpened }));
+
+  closeAddNewTile = () => this.setState(() => ({ addNewTileOpened: false }));
 
   /**
    * Render method.
@@ -263,6 +278,58 @@ export default class Edit extends Component {
           }}
         />
         <InlineToolbar />
+
+        {this.props.data.text.data === '<p><br></p>' && (
+          <Button
+            basic
+            icon
+            onClick={this.toggleAddNewTile}
+            className="tile-add-button"
+          >
+            <Icon name={addSVG} className="tile-add-button" />
+          </Button>
+        )}
+        {this.state.addNewTileOpened && (
+          <div className="add-tile toolbar">
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.props.onAddTile.bind(this, 'text')}
+              >
+                <Icon name={textSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.props.onAddTile.bind(this, 'image')}
+              >
+                <Icon name={cameraSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.props.onAddTile.bind(this, 'video')}
+              >
+                <Icon name={videoSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <div className="separator" />
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.props.onAddTile.bind(this, 'templatedtiles')}
+              >
+                <Icon name={TemplatedTilesSVG} size="24px" />
+              </Button>
+            </Button.Group>
+          </div>
+        )}
       </div>
     );
   }

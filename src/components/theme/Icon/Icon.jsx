@@ -18,12 +18,13 @@ const defaultSize = '36px';
  * @param {string} props.title Title (a11y).
  * @returns {string} Markup of the component.
  */
-const Icon = ({ name, size, color, className, title }) => (
+const Icon = ({ name, size, color, className, title, onClick }) => (
   <svg
     xmlns={name.attributes.xmlns}
     viewBox={name.attributes.viewBox}
     style={{ height: size, width: 'auto', fill: color || 'currentColor' }}
     className={className ? `icon ${className}` : 'icon'}
+    onClick={onClick}
     dangerouslySetInnerHTML={{
       __html: title ? `<title>${title}</title>${name.content}` : name.content,
     }}
@@ -45,6 +46,7 @@ Icon.propTypes = {
   color: PropTypes.string,
   className: PropTypes.string,
   title: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 /**
@@ -57,6 +59,7 @@ Icon.defaultProps = {
   color: null,
   className: null,
   title: null,
+  onClick: null,
 };
 
 export default Icon;

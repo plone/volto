@@ -140,12 +140,21 @@ export default class Edit extends Component {
       default:
         break;
     }
+    const hideHandler =
+      this.props.data['@type'] === 'text' &&
+      this.props.data.text.data === '<p><br></p>';
     return connectDropTarget(
       connectDragPreview(
         <div className={`ui drag tile inner ${type}`}>
           {selected &&
             connectDragSource(
-              <div className="drag handle wrapper">
+              <div
+                className={
+                  hideHandler
+                    ? 'drag handle wrapper hidden'
+                    : 'drag handle wrapper'
+                }
+              >
                 <Icon className="drag handle" name="content" size="large" />
               </div>,
             )}

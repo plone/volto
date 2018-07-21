@@ -411,6 +411,7 @@ class Form extends Component {
             selected={this.state.selected === tile}
           />
         ))}
+<<<<<<< HEAD
         <div>
           <Dropdown
             trigger={
@@ -454,6 +455,8 @@ class Form extends Component {
             </Dropdown.Menu>
           </Dropdown>
         </div>
+=======
+>>>>>>> Move tile button to the Text tile, add more features to the icon component
       </div>
     ) : (
       <Container>
