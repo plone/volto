@@ -44,7 +44,7 @@ Create default browser
     [Documentation]  Opens a new browser window based on configured ${BROWSER}
     ${on_failure}=  Register keyword to run on failure  Close Browser
     Wait until keyword succeeds  60s  1s
-    ...  Open headless browser  ${FRONTEND_URL}  browser=${BROWSER}  alias=default
+    ...  Open default browser  ${FRONTEND_URL}  browser=${BROWSER}  alias=default
     Register keyword to run on failure  ${on_failure}
     Set window size  1200  900
 
