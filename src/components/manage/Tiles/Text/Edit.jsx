@@ -71,9 +71,11 @@ export default class Edit extends Component {
     tile: PropTypes.string.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     intl: intlShape.isRequired,
+    index: PropTypes.number.isRequired,
     onChangeTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    onAddTile: PropTypes.func.isRequired,
   };
 
   /**
@@ -122,6 +124,33 @@ export default class Edit extends Component {
     }
 
     this.onChange = this.onChange.bind(this);
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    if (this.props.selected) {
+      this.node.focus();
+    }
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.selected && nextProps.selected) {
+      this.node.focus();
+      this.setState({
+        editorState: EditorState.moveFocusToEnd(this.state.editorState),
+      });
+    }
   }
 
   /**
@@ -200,6 +229,36 @@ export default class Edit extends Component {
             return null;
           }}
           placeholder={this.props.intl.formatMessage(messages.text)}
+          handleReturn={() => {
+            const selectionState = this.state.editorState.getSelection();
+            const anchorKey = selectionState.getAnchorKey();
+            const currentContent = this.state.editorState.getCurrentContent();
+            const currentContentBlock = currentContent.getBlockForKey(
+              anchorKey,
+            );
+            const blockType = currentContentBlock.getType();
+            if (
+              blockType !== 'unordered-list-item' &&
+              blockType !== 'ordered-list-item'
+            ) {
+              this.props.onSelectTile(
+                this.props.onAddTile('text', this.props.index + 1),
+              );
+              return 'handled';
+            }
+            return 'un-handled';
+          }}
+          handleKeyCommand={(command, editorState) => {
+            if (
+              command === 'backspace' &&
+              editorState.getCurrentContent().getPlainText().length === 0
+            ) {
+              this.props.onDeleteTile(this.props.tile, true);
+            }
+          }}
+          ref={node => {
+            this.node = node;
+          }}
         />
         <InlineToolbar />
       </div>
