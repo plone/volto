@@ -261,8 +261,7 @@ body {
   position: absolute;
   z-index: 1;
   top: 1px;
-  left: -46px;
-  margin-left: ~'calc(50vw - (1127px/2)) !important';
+  left: -77px;
   color: #b8c6c8;
 
   .icon {

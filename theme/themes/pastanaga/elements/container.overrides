@@ -56,3 +56,21 @@
 .ui.wrapper > .ui.inner {
   width: 100% !important;
 }
+
+.drag.handle.wrapper {
+  @media only screen and (max-width: @largestMobileScreen) {
+    margin-left: ~'calc(50vw - (' @mobileWidth + ~'/2)) !important';
+  }
+
+  @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+    margin-left: ~'calc(50vw - (' @tabletWidth + ~'/2)) !important';
+  }
+
+  @media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
+    margin-left: ~'calc(50vw - (' @computerWidth + ~'/2)) !important';
+  }
+
+  @media only screen and (min-width: @largeMonitorBreakpoint) {
+    margin-left: ~'calc(50vw - (' @largeMonitorWidth + ~'/2)) !important';
+  }
+}
