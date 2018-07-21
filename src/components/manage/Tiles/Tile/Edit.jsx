@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 import { getDefaultEditTileView } from '../../../../config';
+import { Icon } from '../../../../components';
 
 import dragSVG from '../../../../icons/drag.svg';
 
@@ -116,10 +117,11 @@ export default class Edit extends Component {
 
     let Tile = null;
     Tile = getDefaultEditTileView(type);
+
     const hideHandler =
       this.props.data['@type'] === 'text' &&
       this.props.data.text &&
-      this.props.data.text.data === '<p><br></p>';
+      this.props.data.text.data === '<p></p>';
 
     return connectDropTarget(
       connectDragPreview(

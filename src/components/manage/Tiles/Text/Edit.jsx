@@ -224,7 +224,7 @@ export default class Edit extends Component {
         <InlineToolbar />
 
         {this.props.data.text &&
-          this.props.data.text.data === '<p><br></p>' && (
+          this.props.data.text.data === '<p></p>' && (
             <Button
               basic
               icon

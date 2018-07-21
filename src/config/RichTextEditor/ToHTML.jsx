@@ -41,6 +41,7 @@ const getList = ordered => (children, { depth, keys }) =>
     </ul>
   );
 
+// Special function to deal with list clones
 const getSpecialList = type => (children, { depth, keys }) => (
   <ul key={keys[0]} keys={keys} depth={depth} className={type}>
     {children.map((child, i) => (
@@ -94,8 +95,6 @@ const blocks = {
         {child}
       </p>
     )),
-  arrowList: getSpecialList('arrow-list'),
-  checkmarksList: getSpecialList('checkmarks-list'),
 };
 
 const entities = {

@@ -9,14 +9,6 @@ const blockRenderMap = Map({
   unstyled: {
     element: 'p',
   },
-  arrowList: {
-    element: 'li',
-    wrapper: <ul className="arrow-list" />,
-  },
-  checkmarksList: {
-    element: 'li',
-    wrapper: <ul className="checkmarks-list" />,
-  },
 });
 
 const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
@@ -25,12 +17,6 @@ const blockStyleFn = contentBlock => {
   const type = contentBlock.getType();
   if (type === 'callout') {
     return 'callout';
-  }
-  if (type === 'arrowList') {
-    return 'arrow-list';
-  }
-  if (type === 'checkmarksList') {
-    return 'checkmarks-list';
   }
   return null;
 };

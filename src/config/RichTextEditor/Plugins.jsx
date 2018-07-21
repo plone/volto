@@ -18,8 +18,6 @@ const breakOutOptions = {
     'unordered-list-item',
     'ordered-list-item',
     'code-block',
-    'arrowList',
-    'checkmarksList',
   ],
   breakoutBlocks: [
     'header-one',
@@ -39,16 +37,6 @@ const CalloutButton = createBlockStyleButton({
   children: <span>!</span>,
 });
 
-const ArrowListButton = createBlockStyleButton({
-  blockType: 'arrowList',
-  children: <span>AL</span>,
-});
-
-const CheckMarksListButton = createBlockStyleButton({
-  blockType: 'checkmarksList',
-  children: <span>CL</span>,
-});
-
 export const inlineToolbarButtons = [
   BoldButton,
   ItalicButton,
@@ -60,8 +48,6 @@ export const inlineToolbarButtons = [
   OrderedListButton,
   BlockquoteButton,
   CalloutButton,
-  ArrowListButton,
-  CheckMarksListButton,
 ];
 
 const plugins = [linkPlugin, blockBreakoutPlugin];

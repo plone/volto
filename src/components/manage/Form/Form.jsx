@@ -407,34 +407,6 @@ class Form extends Component {
             selected={this.state.selected === tile}
           />
         ))}
-        <div>
-          <Dropdown
-            trigger={
-              <Button
-                basic
-                circular
-                icon="plus"
-                title={
-                  this.props.submitLabel
-                    ? this.props.submitLabel
-                    : this.props.intl.formatMessage(messages.save)
-                }
-              />
-            }
-            icon={null}
-          >
-            <Dropdown.Menu>
-              <Dropdown.Header
-                content={this.props.intl.formatMessage(messages.addTile)}
-              />
-              {AvailableTiles.map(tile => (
-                <Dropdown.Item onClick={this.onAddTile.bind(this, tile.id)}>
-                  {this.props.intl.formatMessage(messagesTiles[tile.id])}
-                </Dropdown.Item>
-              ))}
-            </Dropdown.Menu>
-          </Dropdown>
-        </div>
       </div>
     ) : (
       <Container>
