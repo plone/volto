@@ -23,8 +23,11 @@ import {
   intlShape,
 } from 'react-intl';
 import { v4 as uuid } from 'uuid';
+import DiffMatchPatch from 'diff-match-patch';
 
 import { EditTile, Field } from '../../../components';
+import config from '../../../config';
+import { Api, getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
   addTile: {
@@ -60,6 +63,27 @@ const messages = defineMessages({
     defaultMessage: 'There were some errors.',
   },
 });
+const dmp = new DiffMatchPatch();
+
+/**
+ * Split fieldname
+ * @function splitFieldname
+ * @param {string} field Field name``
+ * @returns {Object} values
+ */
+function splitFieldname(field) {
+  if (field.indexOf('.') === -1) {
+    return {
+      fieldset: null,
+      field,
+    };
+  }
+  const index = field.lastIndexOf('.');
+  return {
+    fieldset: field.slice(0, index),
+    field: field.slice(index + 1),
+  };
+}
 
 /**
  * Form container class.
@@ -179,30 +203,88 @@ class Form extends Component {
   }
 
   /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    new Api().get('/@wstoken').then(res => {
+      this.socket = new WebSocket(
+        `${config.apiPath}${getBaseUrl(
+          this.props.pathname,
+        )}/@ws-edit?ws_token=${res.token}`.replace('http', 'ws'),
+      );
+      this.socket.onopen = () => console.log('open');
+      this.socket.onclose = () => console.log('close');
+      this.socket.onmessage = message => {
+        console.log('message received');
+        const packet = JSON.parse(message);
+        if (packet.t === 'dmp') {
+          console.log('dmp received');
+          this.onChangeField(
+            packet.f,
+            dmp.patch_apply(
+              dmp.patch_fromText(packet.v),
+              this.state.formData[packet.f],
+            )[0],
+            false,
+          );
+        }
+        console.log(message);
+      };
+    });
+  }
+
+  /**
+   * Component will unmount
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    if (this.socket) {
+      this.socket.close();
+    }
+  }
+
+  /**
    * Change field handler
    * @method onChangeField
    * @param {string} id Id of the field
    * @param {*} value Value of the field
+   * @param {bool} send Send on socket
    * @returns {undefined}
    */
-  onChangeField(id, value) {
-    if (id.indexOf('|') !== -1) {
+  onChangeField(id, value, send = true) {
+    const { fieldset, field } = splitFieldname(id);
+    let oldValue;
+    if (fieldset) {
+      oldValue = this.state.formData[fieldset][field];
       this.setState({
         formData: {
           ...this.state.formData,
-          [id.split('|')[0]]: {
-            ...this.state.formData[id.split('|')[0]],
-            [id.split('|')[1]]: value || null,
+          [fieldset]: {
+            ...this.state.formData[fieldset],
+            [field]: value || null,
           },
         },
       });
     } else {
+      oldValue = this.state.formData[field];
       this.setState({
         formData: {
           ...this.state.formData,
-          [id]: value || null,
+          [field]: value || null,
         },
       });
+    }
+    if (send) {
+      const message = JSON.stringify({
+        t: 'dmp',
+        f: id,
+        v: dmp.patch_toText(dmp.patch_make(oldValue, value)),
+      });
+      console.log(message);
+      this.socket.send(message);
     }
   }
 
