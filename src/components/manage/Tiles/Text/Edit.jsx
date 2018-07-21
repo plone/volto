@@ -216,7 +216,7 @@ export default class Edit extends Component {
         onClick={() => this.props.onSelectTile(this.props.tile)}
         className={`tile text${this.props.selected ? ' selected' : ''}`}
       >
-        {this.props.selected && (
+        {/* {this.props.selected && (
           <div className="toolbar">
             <Button.Group>
               <Button
@@ -228,7 +228,7 @@ export default class Edit extends Component {
               </Button>
             </Button.Group>
           </div>
-        )}
+        )} */}
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}
@@ -330,6 +330,16 @@ export default class Edit extends Component {
               </Button>
             </Button.Group>
           </div>
+        )}
+        {this.props.selected && (
+          <Button
+            icon
+            basic
+            onClick={() => this.props.onDeleteTile(this.props.tile)}
+            className="tile-delete-button"
+          >
+            <Icon name={trashSVG} size="18px" />
+          </Button>
         )}
       </div>
     );

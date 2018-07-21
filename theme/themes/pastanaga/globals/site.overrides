@@ -201,7 +201,8 @@ body {
   position: relative;
 }
 
-.ui.basic.button.tile-add-button {
+.ui.basic.button.tile-add-button,
+.ui.basic.button.tile-delete-button {
   position: absolute;
   padding: 0;
   border: none;
@@ -217,6 +218,20 @@ body {
     -webkit-box-shadow: none;
     box-shadow: none;
     color: #826a6a !important;
+  }
+}
+
+.ui.basic.button.tile-delete-button {
+  top: 36px;
+  right: 0;
+  color: #b8c6b8 !important;
+  transform: translateX(40px);
+
+  &:hover,
+  &:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #e40166 !important;
   }
 }
 
@@ -293,7 +308,8 @@ body {
 }
 
 .draftJsToolbar__button__qi1gf.draftJsToolbar__active__3qcpF {
-  border: 1px solid @blue;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px @blue;
   color: @blue;
 }
 
