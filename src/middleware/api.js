@@ -19,9 +19,6 @@ let socket = null;
  */
 function sendOnSocket(request) {
   return new Promise((resolve, reject) => {
-    console.log(socket.readyState);
-    console.log(socket.CONNECTING);
-    console.log(socket.OPEN);
     switch (socket.readyState) {
       case socket.CONNECTING:
         socket.addEventListener('open', () => resolve(socket));
@@ -35,8 +32,6 @@ function sendOnSocket(request) {
         break;
     }
   }).then(() => {
-    console.log('send');
-    console.log(request);
     socket.send(JSON.stringify(request));
   });
 }
@@ -63,8 +58,8 @@ export default api => ({ dispatch, getState }) => next => action => {
 
   if (socket) {
     actionPromise = Array.isArray(request)
-      ? Promise.all(request.map(item => sendOnSocket(item)))
-      : sendOnSocket(request);
+      ? Promise.all(request.map(item => sendOnSocket({ ...item, id: type })))
+      : sendOnSocket({ ...request, id: type });
   } else {
     actionPromise = Array.isArray(request)
       ? Promise.all(
@@ -84,18 +79,20 @@ export default api => ({ dispatch, getState }) => next => action => {
                 res.token
               }`,
             );
-            socket.onmessage = msg => {
-              /*
-              dispatch({
-                type: ???
-                result: msg.data,
-              })
-              */
-              console.log(msg);
+            socket.onmessage = message => {
+              const packet = JSON.parse(message.data);
+              if (packet.error) {
+                dispatch({
+                  type: `${packet.id}_FAIL`,
+                  error: packet.error,
+                });
+              } else {
+                dispatch({
+                  type: `${packet.id}_SUCCESS`,
+                  result: JSON.parse(packet.data),
+                });
+              }
             };
-            socket.onopen = () => console.log('open');
-            socket.onclose = () => console.log('close');
-            socket.onerror = e => console.log(e);
           });
         }
         return next({ ...rest, result, type: `${type}_SUCCESS` });
