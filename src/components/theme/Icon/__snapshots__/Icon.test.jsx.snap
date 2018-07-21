@@ -8,6 +8,7 @@ exports[`Renders icon 1`] = `
       "__html": "<title>My Icon</title>Accessibility",
     }
   }
+  onClick={null}
   style={
     Object {
       "fill": "#007bc1",
