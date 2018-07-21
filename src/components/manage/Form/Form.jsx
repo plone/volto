@@ -286,13 +286,13 @@ class Form extends Component {
         v: dmp.patch_toText(dmp.patch_make(oldValue, value)),
       });
       new Promise((resolve, reject) => {
-        switch (socket.readyState) {
-          case socket.CONNECTING:
-            socket.addEventListener('open', () => resolve(socket));
-            socket.addEventListener('error', reject);
+        switch (this.socket.readyState) {
+          case this.socket.CONNECTING:
+            this.socket.addEventListener('open', () => resolve());
+            this.socket.addEventListener('error', reject);
             break;
-          case socket.OPEN:
-            resolve(socket);
+          case this.socket.OPEN:
+            resolve();
             break;
           default:
             reject();
