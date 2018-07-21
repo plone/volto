@@ -8,8 +8,8 @@ Suite Teardown  Close all browsers
 *** Test Cases ***
 
 Scenario: As a site administrator I can add a page
-  Given a logged-in site administrator
-   # and the Plone site root
+  Given the Plone site root
+    and a logged-in site administrator
    When I add a Page with the title 'My Page'
    # Then I should see a notification that 'My Page' has been created
     and I should see 'My Page' in the navigation
@@ -20,9 +20,6 @@ Scenario: As a site administrator I can add a page
 
 a logged-in site administrator
   I Log in
-
-the Plone site root
-  No operation
 
 
 # --- When -------------------------------------------------------------------

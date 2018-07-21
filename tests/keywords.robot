@@ -30,11 +30,21 @@ Test Teardown
 
 ###
 
+Open headless browser
+  [arguments]  ${URL}  ${BROWSER}  ${ALIAS}
+  ${options}=  Evaluate  sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
+  Call Method  ${options}  add_argument  headless
+  Call Method  ${options}  add_argument  disable-gpu
+  Call Method  ${options}  add_argument  disable-web-security
+  Call Method  ${options}  add_argument  window-size\=1280,1024
+  Call Method  ${options}  add_argument  remote-debugging-port\=9223
+  Create WebDriver  Chrome  chrome_options=${options}
+
 Create default browser
     [Documentation]  Opens a new browser window based on configured ${BROWSER}
     ${on_failure}=  Register keyword to run on failure  Close Browser
     Wait until keyword succeeds  60s  1s
-    ...  Open browser  ${FRONTEND_URL}  browser=${BROWSER}  alias=default
+    ...  Open headless browser  ${FRONTEND_URL}  browser=${BROWSER}  alias=default
     Register keyword to run on failure  ${on_failure}
     Set window size  1200  900
 
@@ -46,6 +56,9 @@ Open default browser
 ###
 
 the front page
+    Go to  ${FRONTEND_URL}
+
+the Plone site root
     Go to  ${FRONTEND_URL}
 
 I should be logged out
