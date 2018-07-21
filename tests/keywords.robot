@@ -5,9 +5,11 @@ Library  SeleniumLibrary  timeout=30  implicit_wait=0
 
 *** Variables ***
 
-${FIXTURE}          plone.app.robotframework.testing.PLONE_ROBOT_TESTING
-${FRONTEND_URL}     http://localhost:4300/
-${BROWSER}          headlesschrome
+${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+@{APPLY_PROFILES}      plone.app.contenttypes:plone-content
+...                    plone.restapi:tiles
+${FRONTEND_URL}        http://localhost:4300/
+${BROWSER}             headlesschrome
 
 *** Keywords ***
 
@@ -44,7 +46,7 @@ Create default browser
     [Documentation]  Opens a new browser window based on configured ${BROWSER}
     ${on_failure}=  Register keyword to run on failure  Close Browser
     Wait until keyword succeeds  60s  1s
-    ...  Open default browser  ${FRONTEND_URL}  browser=${BROWSER}  alias=default
+    ...  Open browser  ${FRONTEND_URL}  browser=${BROWSER}  alias=default
     Register keyword to run on failure  ${on_failure}
     Set window size  1200  900
 
