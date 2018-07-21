@@ -10,7 +10,6 @@ import move from 'lodash-move';
 import {
   Button,
   Container,
-  Dropdown,
   Form as UiForm,
   Segment,
   Tab,
@@ -21,7 +20,7 @@ import { v4 as uuid } from 'uuid';
 import DiffMatchPatch from 'diff-match-patch';
 
 import { EditTile, Field } from '../../../components';
-import config, { AvailableTiles, messagesTiles } from '../../../config';
+import config from '../../../config';
 import { Api, getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
