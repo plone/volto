@@ -1,6 +1,6 @@
 /**
- * Document view component.
- * @module components/theme/View/DocumentView
+ * NewsItemView view component.
+ * @module components/theme/View/NewsItemView
  */
 
 import React from 'react';
@@ -9,12 +9,12 @@ import Helmet from 'react-helmet';
 import { Container, Image } from 'semantic-ui-react';
 
 /**
- * Document view component class.
- * @function DocumentView
+ * NewsItemView view component class.
+ * @function NewsItemView
  * @params {object} content Content object.
  * @returns {string} Markup of the component.
  */
-const DocumentView = ({ content }) => (
+const NewsItemView = ({ content }) => (
   <Container className="view-wrapper">
     <Helmet title={content.title} />
     {content.title && (
@@ -50,7 +50,7 @@ const DocumentView = ({ content }) => (
  * @property {Object} propTypes Property types.
  * @static
  */
-DocumentView.propTypes = {
+NewsItemView.propTypes = {
   content: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
@@ -60,4 +60,4 @@ DocumentView.propTypes = {
   }).isRequired,
 };
 
-export default DocumentView;
+export default NewsItemView;

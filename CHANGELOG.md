@@ -10,6 +10,8 @@
 
 ### Changes
 * Pastanaga Editor look and feel improvements and polishment @sneridagh @albertcasado
+* Refactor configuration of routes, views and widgets for extensibility @sneridagh @davilima6
+* Fix view name class in body element @sneridagh @davilima6
 
 ## 0.6.0 (2018-07-14)
 

@@ -7,15 +7,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
-
-import {
-  EditTitleTile,
-  EditDescriptionTile,
-  EditTextTile,
-  EditImageTile,
-  EditVideoTile,
-  Icon,
-} from '../../../';
+import { getDefaultEditTileView } from '../../../../config';
+import { Icon } from '../../../../components';
 
 import dragSVG from '../../../../icons/drag.svg';
 
@@ -123,29 +116,13 @@ export default class Edit extends Component {
     } = this.props;
 
     let Tile = null;
-    switch (type) {
-      case 'title':
-        Tile = EditTitleTile;
-        break;
-      case 'description':
-        Tile = EditDescriptionTile;
-        break;
-      case 'text':
-        Tile = EditTextTile;
-        break;
-      case 'image':
-        Tile = EditImageTile;
-        break;
-      case 'video':
-        Tile = EditVideoTile;
-        break;
-      default:
-        break;
-    }
+    Tile = getDefaultEditTileView(type);
+
     const hideHandler =
       this.props.data['@type'] === 'text' &&
       this.props.data.text &&
-      this.props.data.text.data === '<p><br></p>';
+      this.props.data.text.data === '<p></p>';
+
     return connectDropTarget(
       connectDragPreview(
         <div className={`ui drag tile inner ${type}`}>

@@ -4,32 +4,27 @@
  */
 
 import React, { Component } from 'react';
-import { Map } from 'immutable';
+import ReactDOMServer from 'react-dom/server';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 import Editor from 'draft-js-plugins-editor';
-import { stateToHTML } from 'draft-js-export-html';
 import { stateFromHTML } from 'draft-js-import-html';
-import { DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
-import createInlineToolbarPlugin, {
-  Separator,
-} from 'draft-js-inline-toolbar-plugin';
-import {
-  ItalicButton,
-  BoldButton,
-  HeadlineTwoButton,
-  HeadlineThreeButton,
-  BlockquoteButton,
-  UnorderedListButton,
-  OrderedListButton,
-} from 'draft-js-buttons';
-import createBlockStyleButton from 'draft-js-buttons/lib/utils/createBlockStyleButton';
-import createBlockBreakoutPlugin from 'draft-js-block-breakout-plugin';
+import { convertToRaw, EditorState } from 'draft-js';
+import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+import redraft from 'redraft';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
 
-import createLinkPlugin from '../../AnchorPlugin';
+import {
+  extendedBlockRenderMap,
+  blockStyleFn,
+  inlineToolbarButtons,
+  FromHTMLCustomBlockFn,
+  plugins,
+  ToHTMLRenderers,
+  ToHTMLOptions,
+} from '../../../../config';
 
 import addSVG from '../../../../icons/circle-plus.svg';
 import textSVG from '../../../../icons/text.svg';
@@ -43,24 +38,6 @@ const messages = defineMessages({
     defaultMessage: 'Type text…',
   },
 });
-
-const blockRenderMap = Map({
-  callout: {
-    element: 'p',
-  },
-  unstyled: {
-    element: 'p',
-  },
-});
-
-const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
-
-const CalloutButton = createBlockStyleButton({
-  blockType: 'callout',
-  children: <span>!</span>,
-});
-const linkPlugin = createLinkPlugin();
-const blockBreakoutPlugin = createBlockBreakoutPlugin();
 
 @injectIntl
 /**
@@ -99,14 +76,7 @@ export default class Edit extends Component {
       let editorState;
       if (props.data && props.data.text) {
         const contentState = stateFromHTML(props.data.text.data, {
-          customBlockFn: element => {
-            if (element.className === 'callout') {
-              return {
-                type: 'callout',
-              };
-            }
-            return null;
-          },
+          customBlockFn: FromHTMLCustomBlockFn,
         });
         editorState = EditorState.createWithContent(contentState);
       } else {
@@ -114,18 +84,7 @@ export default class Edit extends Component {
       }
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: [
-          BoldButton,
-          ItalicButton,
-          linkPlugin.LinkButton,
-          Separator,
-          HeadlineTwoButton,
-          HeadlineThreeButton,
-          UnorderedListButton,
-          OrderedListButton,
-          BlockquoteButton,
-          CalloutButton,
-        ],
+        structure: inlineToolbarButtons,
       });
 
       this.state = {
@@ -177,19 +136,14 @@ export default class Edit extends Component {
       ...this.props.data,
       text: {
         'content-type': 'text/html',
-        data: stateToHTML(editorState.getCurrentContent(), {
-          blockStyleFn: block => {
-            if (block.get('type') === 'callout') {
-              return {
-                attributes: {
-                  class: 'callout',
-                },
-              };
-            }
-            return null;
-          },
-        }),
         encoding: 'utf8',
+        data: ReactDOMServer.renderToStaticMarkup(
+          redraft(
+            convertToRaw(editorState.getCurrentContent()),
+            ToHTMLRenderers,
+            ToHTMLOptions,
+          ),
+        ),
       },
     });
   }
@@ -232,19 +186,9 @@ export default class Edit extends Component {
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}
-          plugins={[
-            this.state.inlineToolbarPlugin,
-            linkPlugin,
-            blockBreakoutPlugin,
-          ]}
+          plugins={[this.state.inlineToolbarPlugin, ...plugins]}
           blockRenderMap={extendedBlockRenderMap}
-          blockStyleFn={contentBlock => {
-            const type = contentBlock.getType();
-            if (type === 'callout') {
-              return 'callout';
-            }
-            return null;
-          }}
+          blockStyleFn={blockStyleFn}
           placeholder={this.props.intl.formatMessage(messages.text)}
           handleReturn={() => {
             const selectionState = this.state.editorState.getSelection();
@@ -280,7 +224,7 @@ export default class Edit extends Component {
         <InlineToolbar />
 
         {this.props.data.text &&
-          this.props.data.text.data === '<p><br></p>' && (
+          this.props.data.text.data === '<p></p>' && (
             <Button
               basic
               icon
