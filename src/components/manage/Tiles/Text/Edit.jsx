@@ -287,7 +287,7 @@ export default class Edit extends Component {
               onClick={this.toggleAddNewTile}
               className="tile-add-button"
             >
-              <Icon name={addSVG} className="tile-add-button" />
+              <Icon name={addSVG} className="tile-add-button" size="24px" />
             </Button>
           )}
         {this.state.addNewTileOpened && (
