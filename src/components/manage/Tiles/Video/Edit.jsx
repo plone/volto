@@ -15,6 +15,8 @@ import imageLeftSVG from '../../../../icons/image-left.svg';
 import imageRightSVG from '../../../../icons/image-right.svg';
 import imageFitSVG from '../../../../icons/image-fit.svg';
 import imageFullSVG from '../../../../icons/image-full.svg';
+import videoSVG from '../../../../icons/videocamera.svg';
+import folderSVG from '../../../../icons/folder.svg';
 
 const messages = defineMessages({
   save: {
@@ -126,59 +128,75 @@ export default class Edit extends Component {
           .filter(e => !!e)
           .join(' ')}
       >
-        {this.props.selected && (
-          <div className="toolbar">
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.onAlignTile.bind(this, 'left')}
-                active={data.align === 'left'}
-              >
-                <Icon name={imageLeftSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.onAlignTile.bind(this, 'right')}
-                active={data.align === 'right'}
-              >
-                <Icon name={imageRightSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.onAlignTile.bind(this, 'center')}
-                active={data.align === 'center' || !data.align}
-              >
-                <Icon name={imageFitSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.onAlignTile.bind(this, 'full')}
-                active={data.align === 'full'}
-              >
-                <Icon name={imageFullSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.props.onDeleteTile(this.props.tile)}
-              >
-                <Icon name={trashSVG} size="24px" color="#e40166" />
-              </Button>
-            </Button.Group>
-          </div>
-        )}
+        {this.props.selected &&
+          !!this.props.data.url && (
+            <div className="toolbar">
+              <Button.Group>
+                <Button
+                  icon
+                  basic
+                  onClick={this.onAlignTile.bind(this, 'left')}
+                  active={data.align === 'left'}
+                >
+                  <Icon name={imageLeftSVG} size="24px" />
+                </Button>
+              </Button.Group>
+              <Button.Group>
+                <Button
+                  icon
+                  basic
+                  onClick={this.onAlignTile.bind(this, 'right')}
+                  active={data.align === 'right'}
+                >
+                  <Icon name={imageRightSVG} size="24px" />
+                </Button>
+              </Button.Group>
+              <Button.Group>
+                <Button
+                  icon
+                  basic
+                  onClick={this.onAlignTile.bind(this, 'center')}
+                  active={data.align === 'center' || !data.align}
+                >
+                  <Icon name={imageFitSVG} size="24px" />
+                </Button>
+              </Button.Group>
+              <Button.Group>
+                <Button
+                  icon
+                  basic
+                  onClick={this.onAlignTile.bind(this, 'full')}
+                  active={data.align === 'full'}
+                >
+                  <Icon name={imageFullSVG} size="24px" />
+                </Button>
+              </Button.Group>
+            </div>
+          )}
+        {this.props.selected &&
+          !this.props.data.url && (
+            <div className="toolbar">
+              <Icon name={videoSVG} size="24px" />
+              <form onSubmit={e => this.onSubmitUrl(e)}>
+                <Input
+                  onChange={this.onChangeUrl}
+                  placeholder={this.props.intl.formatMessage(
+                    messages.VideoTileInputPlaceholder,
+                  )}
+                />
+              </form>
+              {/* <Button.Group>
+                <label className="ui button basic icon">
+                  <Icon name={folderSVG} size="24px" />
+                  <input
+                    type="file"
+                    onChange={this.onUploadImage}
+                    style={{ display: 'none' }}
+                  />
+                </label>
+              </Button.Group> */}
+            </div>
+          )}
         {data.url ? (
           <p>
             <div className="ui blocker" />
@@ -206,38 +224,23 @@ export default class Edit extends Component {
             )}
           </p>
         ) : (
-          <p>
+          <div>
             <Message>
               <center>
-                <h4>Video</h4>
-                <p>
-                  {this.props.intl.formatMessage(messages.VideoFormDescription)}
-                </p>
-                <p>
-                  <Form onSubmit={this.onSubmitUrl}>
-                    <Input
-                      onChange={this.onChangeUrl}
-                      placeholder={this.props.intl.formatMessage(
-                        messages.VideoTileInputPlaceholder,
-                      )}
-                    />
-                    <Button
-                      basic
-                      circular
-                      primary
-                      icon="arrow right"
-                      type="submit"
-                      title={
-                        this.props.submitLabel
-                          ? this.props.submitLabel
-                          : this.props.intl.formatMessage(messages.save)
-                      }
-                    />
-                  </Form>
-                </p>
+                <Icon name={videoSVG} size="100px" color="#b8c6c8" />
               </center>
             </Message>
-          </p>
+          </div>
+        )}
+        {this.props.selected && (
+          <Button
+            icon
+            basic
+            onClick={() => this.props.onDeleteTile(this.props.tile)}
+            className="tile-delete-button"
+          >
+            <Icon name={trashSVG} size="18px" />
+          </Button>
         )}
       </div>
     );

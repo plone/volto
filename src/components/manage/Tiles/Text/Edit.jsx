@@ -27,7 +27,6 @@ import {
 } from '../../../../config';
 
 import addSVG from '../../../../icons/circle-plus.svg';
-import textSVG from '../../../../icons/text.svg';
 import cameraSVG from '../../../../icons/camera.svg';
 import videoSVG from '../../../../icons/videocamera.svg';
 import TemplatedTilesSVG from '../../../../icons/theme.svg';
