@@ -14,6 +14,9 @@ import { GET_SCHEMA } from '../../constants/ActionTypes';
 export function getSchema(type) {
   return {
     type: GET_SCHEMA,
-    promise: api => api.get(`/@types/${type}`),
+    request: {
+      op: 'get',
+      path: `/@types/${type}`,
+    },
   };
 }

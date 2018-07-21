@@ -8,13 +8,8 @@ describe('Breadcrumbs action', () => {
       const action = getBreadcrumbs(url);
 
       expect(action.type).toEqual(GET_BREADCRUMBS);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`${url}/@breadcrumbs`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}/@breadcrumbs`);
     });
   });
 });

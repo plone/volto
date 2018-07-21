@@ -23,8 +23,10 @@ export function searchContent(url, options) {
     : '';
   return {
     type: SEARCH_CONTENT,
-    promise: api =>
-      api.get(`${url}/@search${querystring ? `?${querystring}` : ''}`),
+    request: {
+      op: 'get',
+      path: `${url}/@search${querystring ? `?${querystring}` : ''}`,
+    },
   };
 }
 

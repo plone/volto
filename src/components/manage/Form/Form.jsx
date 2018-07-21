@@ -23,8 +23,11 @@ import {
   intlShape,
 } from 'react-intl';
 import { v4 as uuid } from 'uuid';
+import DiffMatchPatch from 'diff-match-patch';
 
 import { EditTile, Field } from '../../../components';
+import config from '../../../config';
+import { Api, getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
   addTile: {
@@ -60,6 +63,27 @@ const messages = defineMessages({
     defaultMessage: 'There were some errors.',
   },
 });
+const dmp = new DiffMatchPatch();
+
+/**
+ * Split fieldname
+ * @function splitFieldname
+ * @param {string} field Field name``
+ * @returns {Object} values
+ */
+function splitFieldname(field) {
+  if (field.indexOf('.') === -1) {
+    return {
+      fieldset: null,
+      field,
+    };
+  }
+  const index = field.lastIndexOf('.');
+  return {
+    fieldset: field.slice(0, index),
+    field: field.slice(index + 1),
+  };
+}
 
 /**
  * Form container class.
@@ -179,29 +203,104 @@ class Form extends Component {
   }
 
   /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    if (config.websockets) {
+      new Api().get('/@wstoken').then(res => {
+        this.socket = new WebSocket(
+          `${config.apiPath}${getBaseUrl(
+            this.props.pathname,
+          )}/@ws-edit?ws_token=${res.token}`.replace('http', 'ws'),
+        );
+        this.socket.onopen = () => console.log('open');
+        this.socket.onclose = () => console.log('close');
+        this.socket.onmessage = message => {
+          console.log('message received');
+          const packet = JSON.parse(message);
+          if (packet.t === 'dmp') {
+            console.log('dmp received');
+            this.onChangeField(
+              packet.f,
+              dmp.patch_apply(
+                dmp.patch_fromText(packet.v),
+                this.state.formData[packet.f],
+              )[0],
+              false,
+            );
+          }
+          console.log(message);
+        };
+      });
+    }
+  }
+
+  /**
+   * Component will unmount
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    if (this.socket) {
+      this.socket.close();
+    }
+  }
+
+  /**
    * Change field handler
    * @method onChangeField
    * @param {string} id Id of the field
    * @param {*} value Value of the field
+   * @param {bool} send Send on socket
    * @returns {undefined}
    */
-  onChangeField(id, value) {
-    if (id.indexOf('|') !== -1) {
+  onChangeField(id, value, send = true) {
+    const { fieldset, field } = splitFieldname(id);
+    let oldValue;
+    if (fieldset) {
+      oldValue = this.state.formData[fieldset][field];
       this.setState({
         formData: {
           ...this.state.formData,
-          [id.split('|')[0]]: {
-            ...this.state.formData[id.split('|')[0]],
-            [id.split('|')[1]]: value || null,
+          [fieldset]: {
+            ...this.state.formData[fieldset],
+            [field]: value || null,
           },
         },
       });
     } else {
+      oldValue = this.state.formData[field];
       this.setState({
         formData: {
           ...this.state.formData,
-          [id]: value || null,
+          [field]: value || null,
         },
+      });
+    }
+    if (config.websockets && send) {
+      const message = JSON.stringify({
+        t: 'dmp',
+        f: id,
+        v: dmp.patch_toText(dmp.patch_make(oldValue, value)),
+      });
+      new Promise((resolve, reject) => {
+        switch (socket.readyState) {
+          case socket.CONNECTING:
+            socket.addEventListener('open', () => resolve(socket));
+            socket.addEventListener('error', reject);
+            break;
+          case socket.OPEN:
+            resolve(socket);
+            break;
+          default:
+            reject();
+            break;
+        }
+      }).then(() => {
+        console.log(message);
+        this.socket.send(message);
       });
     }
   }
@@ -307,38 +406,39 @@ class Form extends Component {
       event.preventDefault();
     }
     const errors = {};
-    map(this.props.schema.fieldsets, fieldset =>
-      map(fieldset.fields, fieldId => {
-        const field =
-          fieldId.indexOf('|') !== -1
-            ? this.props.schema.definitions[fieldId.split('|')[0]].properties[
-                fieldId.split('|')[1]
-              ]
-            : this.props.schema.properties[fieldId];
+    map(this.props.schema.fieldsets, fieldsetObject =>
+      map(fieldsetObject.fields, fieldId => {
+        const { fieldset, field } = splitFieldname(fieldId);
+        const fieldObject = fieldset
+          ? this.props.schema.definitions[fieldset].properties[field]
+          : this.props.schema.properties[field];
 
-        const data =
-          fieldId.indexOf('|') !== -1
-            ? this.state.formData[fieldId.split('|')[0]] &&
-              this.state.formData[fieldId.split('|')[0]][fieldId.split('|')[1]]
-            : this.state.formData[fieldId];
+        const data = fieldset
+          ? this.state.formData[fieldset] &&
+            this.state.formData[fieldset][field]
+          : this.state.formData[field];
         if (this.props.schema.required.indexOf(fieldId) !== -1) {
-          if (field.type !== 'boolean' && !data) {
-            errors[fieldId] = errors[field] || [];
+          if (fieldObject.type !== 'boolean' && !data) {
+            errors[fieldId] = errors[fieldObject] || [];
             errors[fieldId].push(
               this.props.intl.formatMessage(messages.required),
             );
           }
-          if (field.minLength && data.length < field.minLength) {
-            errors[fieldId] = errors[field] || [];
+          if (fieldObject.minLength && data.length < fieldObject.minLength) {
+            errors[fieldId] = errors[fieldId] || [];
             errors[fieldId].push(
               this.props.intl.formatMessage(messages.minLength, {
-                len: field.minLength,
+                len: fieldObject.minLength,
               }),
             );
           }
         }
-        if (field.uniqueItems && data && uniq(data).length !== data.length) {
-          errors[fieldId] = errors[field] || [];
+        if (
+          fieldObject.uniqueItems &&
+          data &&
+          uniq(data).length !== data.length
+        ) {
+          errors[fieldId] = errors[fieldId] || [];
           errors[fieldId].push(
             this.props.intl.formatMessage(messages.uniqueItems),
           );
@@ -436,28 +536,27 @@ class Form extends Component {
                         {this.props.title}
                       </Segment>
                     ),
-                    ...map(item.fields, field => (
-                      <Field
-                        {...(field.indexOf('|') !== -1
-                          ? schema.definitions[field.split('|')[0]].properties[
-                              field.split('|')[1]
-                            ]
-                          : schema.properties[field])}
-                        id={field}
-                        value={
-                          field.indexOf('|') !== -1
-                            ? this.state.formData[field.split('|')[0]] &&
-                              this.state.formData[field.split('|')[0]][
-                                field.split('|')[1]
-                              ]
-                            : this.state.formData[field]
-                        }
-                        required={schema.required.indexOf(field) !== -1}
-                        onChange={this.onChangeField}
-                        key={field}
-                        error={this.state.errors[field]}
-                      />
-                    )),
+                    ...map(item.fields, id => {
+                      const { fieldset, field } = splitFieldname(id);
+                      return (
+                        <Field
+                          {...(fieldset
+                            ? schema.definitions[fieldset].properties[field]
+                            : schema.properties[field])}
+                          id={id}
+                          value={
+                            fieldset
+                              ? this.state.formData[fieldset] &&
+                                this.state.formData[fieldset][field]
+                              : this.state.formData[field]
+                          }
+                          required={schema.required.indexOf(id) !== -1}
+                          onChange={this.onChangeField}
+                          key={id}
+                          error={this.state.errors[id]}
+                        />
+                      );
+                    }),
                   ],
                 }))}
               />

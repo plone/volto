@@ -15,7 +15,11 @@ import { UPDATE_SHARING, GET_SHARING } from '../../constants/ActionTypes';
 export function updateSharing(url, sharing) {
   return {
     type: UPDATE_SHARING,
-    promise: api => api.post(`${url}/@sharing`, { data: sharing }),
+    request: {
+      op: 'post',
+      path: `${url}/@sharing`,
+      data: sharing,
+    },
   };
 }
 
@@ -29,7 +33,9 @@ export function updateSharing(url, sharing) {
 export function getSharing(url, search = '') {
   return {
     type: GET_SHARING,
-    promise: api =>
-      api.get(`${url}/@sharing${search !== '' ? `?search=${search}` : ''}`),
+    request: {
+      op: 'get',
+      path: `${url}/@sharing${search !== '' ? `?search=${search}` : ''}`,
+    },
   };
 }

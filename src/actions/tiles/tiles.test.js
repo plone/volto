@@ -7,13 +7,8 @@ describe('Tiles action', () => {
       const action = getTiles();
 
       expect(action.type).toEqual(GET_TILES);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith('/@tiles');
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual('/@tiles');
     });
   });
 });

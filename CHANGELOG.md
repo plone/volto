@@ -11,6 +11,8 @@
 ### Changes
 * Pastanaga Editor look and feel improvements and polishment @sneridagh @albertcasado
 
+* Refactor actions @robgietema
+
 ## 0.6.0 (2018-07-14)
 
 ### Added

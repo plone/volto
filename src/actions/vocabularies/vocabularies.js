@@ -15,6 +15,9 @@ export function getVocabulary(vocabulary) {
   return {
     type: GET_VOCABULARY,
     vocabulary,
-    promise: api => api.get(`/@vocabularies/${vocabulary}`),
+    request: {
+      op: 'get',
+      path: `/@vocabularies/${vocabulary}`,
+    },
   };
 }

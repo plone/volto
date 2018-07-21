@@ -17,14 +17,15 @@ import { EMAIL_NOTIFICATION } from '../../constants/ActionTypes';
 export function emailNotification(from, message, name, subject) {
   return {
     type: EMAIL_NOTIFICATION,
-    promise: api =>
-      api.post('/@email-notification', {
-        data: {
-          from,
-          message,
-          name,
-          subject,
-        },
-      }),
+    request: {
+      op: 'post',
+      path: '/@email-notification',
+      data: {
+        from,
+        message,
+        name,
+        subject,
+      },
+    },
   };
 }
