@@ -14,15 +14,9 @@ describe('Clipboard action', () => {
       const action = copyContent(source, target);
 
       expect(action.type).toEqual(COPY_CONTENT);
-
-      const apiMock = {
-        post: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.post).toBeCalledWith(`${target}/@copy`, {
-        data: { source },
-      });
+      expect(action.request.op).toEqual('post');
+      expect(action.request.path).toEqual(`${target}/@copy`);
+      expect(action.request.data).toEqual({ source });
     });
   });
 
@@ -33,15 +27,9 @@ describe('Clipboard action', () => {
       const action = moveContent(source, target);
 
       expect(action.type).toEqual(MOVE_CONTENT);
-
-      const apiMock = {
-        post: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.post).toBeCalledWith(`${target}/@move`, {
-        data: { source },
-      });
+      expect(action.request.op).toEqual('post');
+      expect(action.request.path).toEqual(`${target}/@move`);
+      expect(action.request.data).toEqual({ source });
     });
   });
 

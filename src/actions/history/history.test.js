@@ -8,13 +8,8 @@ describe('History action', () => {
       const action = getHistory(url);
 
       expect(action.type).toEqual(GET_HISTORY);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`${url}/@history`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}/@history`);
     });
   });
 
@@ -25,15 +20,9 @@ describe('History action', () => {
       const action = revertHistory(url, version);
 
       expect(action.type).toEqual(REVERT_HISTORY);
-
-      const apiMock = {
-        patch: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.patch).toBeCalledWith(`${url}/@history`, {
-        data: { version },
-      });
+      expect(action.request.op).toEqual('patch');
+      expect(action.request.path).toEqual(`${url}/@history`);
+      expect(action.request.data).toEqual({ version });
     });
   });
 });

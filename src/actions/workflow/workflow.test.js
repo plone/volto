@@ -12,13 +12,8 @@ describe('Workflow action', () => {
       const action = getWorkflow(url);
 
       expect(action.type).toEqual(GET_WORKFLOW);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`${url}/@workflow`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}/@workflow`);
     });
 
     it('should create an action to get multiple workflows', () => {
@@ -26,14 +21,10 @@ describe('Workflow action', () => {
       const action = getWorkflow(urls);
 
       expect(action.type).toEqual(GET_WORKFLOW_MULTIPLE);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`${urls[0]}/@workflow`);
-      expect(apiMock.get).toBeCalledWith(`${urls[1]}/@workflow`);
+      expect(action.request[0].op).toEqual('get');
+      expect(action.request[0].path).toEqual(`${urls[0]}/@workflow`);
+      expect(action.request[1].op).toEqual('get');
+      expect(action.request[1].path).toEqual(`${urls[1]}/@workflow`);
     });
   });
 
@@ -43,13 +34,8 @@ describe('Workflow action', () => {
       const action = transitionWorkflow(url);
 
       expect(action.type).toEqual(TRANSITION_WORKFLOW);
-
-      const apiMock = {
-        post: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.post).toBeCalledWith(url);
+      expect(action.request.op).toEqual('post');
+      expect(action.request.path).toEqual(url);
     });
 
     it('should create an action to transition multiple workflow', () => {
@@ -57,14 +43,10 @@ describe('Workflow action', () => {
       const action = transitionWorkflow(urls);
 
       expect(action.type).toEqual(TRANSITION_WORKFLOW);
-
-      const apiMock = {
-        post: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.post).toBeCalledWith(urls[0]);
-      expect(apiMock.post).toBeCalledWith(urls[1]);
+      expect(action.request[0].op).toEqual('post');
+      expect(action.request[0].path).toEqual(urls[0]);
+      expect(action.request[1].op).toEqual('post');
+      expect(action.request[1].path).toEqual(urls[1]);
     });
   });
 });

@@ -14,6 +14,9 @@ import { LIST_ACTIONS } from '../../constants/ActionTypes';
 export function listActions(url) {
   return {
     type: LIST_ACTIONS,
-    promise: api => api.get(`${url}/@actions`),
+    request: {
+      op: 'get',
+      path: `${url}/@actions`,
+    },
   };
 }

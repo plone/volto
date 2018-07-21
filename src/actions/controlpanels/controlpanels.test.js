@@ -16,13 +16,8 @@ describe('Controlpanels action', () => {
       const action = getControlpanel(url);
 
       expect(action.type).toEqual(GET_CONTROLPANEL);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`/@controlpanels/${url}`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`/@controlpanels/${url}`);
     });
   });
 
@@ -31,13 +26,8 @@ describe('Controlpanels action', () => {
       const action = listControlpanels();
 
       expect(action.type).toEqual(LIST_CONTROLPANELS);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith('/@controlpanels');
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual('/@controlpanels');
     });
   });
 
@@ -48,13 +38,9 @@ describe('Controlpanels action', () => {
       const action = updateControlpanel(url, data);
 
       expect(action.type).toEqual(UPDATE_CONTROLPANEL);
-
-      const apiMock = {
-        patch: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.patch).toBeCalledWith(url, { data });
+      expect(action.request.op).toEqual('patch');
+      expect(action.request.path).toEqual(url);
+      expect(action.request.data).toEqual(data);
     });
   });
 });

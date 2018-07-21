@@ -8,13 +8,8 @@ describe('Types action', () => {
       const action = getTypes(url);
 
       expect(action.type).toEqual(GET_TYPES);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`${url}/@types`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}/@types`);
     });
   });
 });

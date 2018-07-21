@@ -20,7 +20,11 @@ import {
 export function createGroup(data) {
   return {
     type: CREATE_GROUP,
-    promise: api => api.post('/@groups', { data }),
+    request: {
+      op: 'post',
+      path: '/@groups',
+      data,
+    },
   };
 }
 
@@ -33,7 +37,10 @@ export function createGroup(data) {
 export function deleteGroup(id) {
   return {
     type: DELETE_GROUP,
-    promise: api => api.del(`/@groups/${id}`),
+    request: {
+      op: 'del',
+      path: `/@groups/${id}`,
+    },
   };
 }
 
@@ -46,7 +53,10 @@ export function deleteGroup(id) {
 export function getGroup(id) {
   return {
     type: GET_GROUP,
-    promise: api => api.get(`/@groups/${id}`),
+    request: {
+      op: 'get',
+      path: `/@groups/${id}`,
+    },
   };
 }
 
@@ -58,7 +68,10 @@ export function getGroup(id) {
 export function listGroups() {
   return {
     type: LIST_GROUPS,
-    promise: api => api.get('/@groups'),
+    request: {
+      op: 'get',
+      path: '/@groups',
+    },
   };
 }
 
@@ -72,6 +85,10 @@ export function listGroups() {
 export function updateGroup(id, data) {
   return {
     type: UPDATE_GROUP,
-    promise: api => api.patch(`/@groups/${id}`, { data }),
+    request: {
+      op: 'patch',
+      path: `/@groups/${id}`,
+      data,
+    },
   };
 }

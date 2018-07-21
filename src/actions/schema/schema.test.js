@@ -8,13 +8,8 @@ describe('Schema action', () => {
       const action = getSchema(type);
 
       expect(action.type).toEqual(GET_SCHEMA);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`/@types/${type}`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`/@types/${type}`);
     });
   });
 });

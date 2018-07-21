@@ -9,13 +9,8 @@ describe('Vocabularies actions', () => {
 
       expect(action.type).toEqual(GET_VOCABULARY);
       expect(action.vocabulary).toEqual(vocabulary);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`/@vocabularies/${vocabulary}`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`/@vocabularies/${vocabulary}`);
     });
   });
 });

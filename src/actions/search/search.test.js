@@ -12,13 +12,8 @@ describe('Search action', () => {
       const action = searchContent(url, { SearchableText: text });
 
       expect(action.type).toEqual(SEARCH_CONTENT);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(
         `${url}/@search?SearchableText=${text}`,
       );
     });
@@ -28,13 +23,8 @@ describe('Search action', () => {
       const action = searchContent(url);
 
       expect(action.type).toEqual(SEARCH_CONTENT);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`${url}/@search`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}/@search`);
     });
   });
 
