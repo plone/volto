@@ -5,7 +5,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from 'semantic-ui-react';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 
@@ -15,7 +14,10 @@ import {
   EditTextTile,
   EditImageTile,
   EditVideoTile,
+  Icon,
 } from '../../../';
+
+import dragSVG from '../../../../icons/drag.svg';
 
 const itemSource = {
   beginDrag(props) {
@@ -140,13 +142,23 @@ export default class Edit extends Component {
       default:
         break;
     }
+    const hideHandler =
+      this.props.data['@type'] === 'text' &&
+      this.props.data.text &&
+      this.props.data.text.data === '<p><br></p>';
     return connectDropTarget(
       connectDragPreview(
         <div className={`ui drag tile inner ${type}`}>
           {selected &&
             connectDragSource(
-              <div className="drag handle wrapper">
-                <Icon className="drag handle" name="content" size="large" />
+              <div
+                className={
+                  hideHandler
+                    ? 'drag handle wrapper hidden'
+                    : 'drag handle wrapper'
+                }
+              >
+                <Icon className="drag handle" name={dragSVG} size="18px" />
               </div>,
             )}
           {Tile !== null ? <Tile {...this.props} /> : <div />}

@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import { Map } from 'immutable';
 import PropTypes from 'prop-types';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import Editor from 'draft-js-plugins-editor';
 import { stateToHTML } from 'draft-js-export-html';
 import { stateFromHTML } from 'draft-js-import-html';
@@ -26,13 +26,21 @@ import {
 import createBlockStyleButton from 'draft-js-buttons/lib/utils/createBlockStyleButton';
 import createBlockBreakoutPlugin from 'draft-js-block-breakout-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { Icon } from '../../../../components';
+import trashSVG from '../../../../icons/delete.svg';
 
 import createLinkPlugin from '../../AnchorPlugin';
 
+import addSVG from '../../../../icons/circle-plus.svg';
+import textSVG from '../../../../icons/text.svg';
+import cameraSVG from '../../../../icons/camera.svg';
+import videoSVG from '../../../../icons/videocamera.svg';
+import TemplatedTilesSVG from '../../../../icons/theme.svg';
+
 const messages = defineMessages({
   text: {
-    id: 'Add text...',
-    defaultMessage: 'Add text...',
+    id: 'Type text…',
+    defaultMessage: 'Type text…',
   },
 });
 
@@ -120,7 +128,11 @@ export default class Edit extends Component {
         ],
       });
 
-      this.state = { editorState, inlineToolbarPlugin };
+      this.state = {
+        editorState,
+        inlineToolbarPlugin,
+        addNewTileOpened: false,
+      };
     }
 
     this.onChange = this.onChange.bind(this);
@@ -182,6 +194,11 @@ export default class Edit extends Component {
     });
   }
 
+  toggleAddNewTile = () =>
+    this.setState(state => ({ addNewTileOpened: !state.addNewTileOpened }));
+
+  closeAddNewTile = () => this.setState(() => ({ addNewTileOpened: false }));
+
   /**
    * Render method.
    * @method render
@@ -199,7 +216,7 @@ export default class Edit extends Component {
         onClick={() => this.props.onSelectTile(this.props.tile)}
         className={`tile text${this.props.selected ? ' selected' : ''}`}
       >
-        {this.props.selected && (
+        {/* {this.props.selected && (
           <div className="toolbar">
             <Button.Group>
               <Button
@@ -207,11 +224,11 @@ export default class Edit extends Component {
                 basic
                 onClick={() => this.props.onDeleteTile(this.props.tile)}
               >
-                <Icon name="trash" />
+                <Icon name={trashSVG} size="24px" color="#e40166" />
               </Button>
             </Button.Group>
           </div>
-        )}
+        )} */}
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}
@@ -261,6 +278,60 @@ export default class Edit extends Component {
           }}
         />
         <InlineToolbar />
+
+        {this.props.data.text &&
+          this.props.data.text.data === '<p><br></p>' && (
+            <Button
+              basic
+              icon
+              onClick={this.toggleAddNewTile}
+              className="tile-add-button"
+            >
+              <Icon name={addSVG} className="tile-add-button" size="24px" />
+            </Button>
+          )}
+        {this.state.addNewTileOpened && (
+          <div className="add-tile toolbar">
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.props.onAddTile.bind(this, 'image')}
+              >
+                <Icon name={cameraSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.props.onAddTile.bind(this, 'video')}
+              >
+                <Icon name={videoSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <div className="separator" />
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.props.onAddTile.bind(this, 'templatedtiles')}
+              >
+                <Icon name={TemplatedTilesSVG} size="24px" />
+              </Button>
+            </Button.Group>
+          </div>
+        )}
+        {this.props.selected && (
+          <Button
+            icon
+            basic
+            onClick={() => this.props.onDeleteTile(this.props.tile)}
+            className="tile-delete-button"
+          >
+            <Icon name={trashSVG} size="18px" />
+          </Button>
+        )}
       </div>
     );
   }

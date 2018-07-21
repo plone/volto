@@ -10,7 +10,7 @@
 
 ### Prerequisites
 
-* [Node.js==8.11.2](https://nodejs.org/)
+* [Node.js==8.11.3](https://nodejs.org/)
 * [Python==2.7.x](https://python.org/)
 
 ### Install dependencies

@@ -190,6 +190,7 @@
     "pofile": "1.0.10",
     "prepend-http": "2.0.0",
     "prettier": "1.11.1",
+    "prettier-stylelint": "0.4.2",
     "pretty-error": "2.1.1",
     "promise-file-reader": "1.0.2",
     "prop-types": "15.6.1",
@@ -222,6 +223,7 @@
     "serve-favicon": "2.5.0",
     "socket.io": "2.1.0",
     "socket.io-client": "2.1.0",
+    "stylelint-config-idiomatic-order": "5.0.0",
     "superagent": "3.8.2",
     "tlds": "1.203.1",
     "union-class-names": "1.0.0",
@@ -312,7 +314,11 @@
     "singleQuote": true
   },
   "stylelint": {
-    "extends": "stylelint-config-standard"
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-idiomatic-order",
+      "./node_modules/prettier-stylelint/config.js"
+    ]
   },
   "sideEffects": false
 }

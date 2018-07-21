@@ -9,6 +9,7 @@
 * New block on return in editor @robgietema
 
 ### Changes
+* Pastanaga Editor look and feel improvements and polishment @sneridagh @albertcasado
 
 ## 0.6.0 (2018-07-14)
 

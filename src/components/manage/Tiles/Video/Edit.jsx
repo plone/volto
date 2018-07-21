@@ -6,7 +6,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Button, Form, Input, Icon, Embed, Message } from 'semantic-ui-react';
+import { Button, Form, Input, Embed, Message } from 'semantic-ui-react';
+
+import { Icon } from '../../../../components';
+import trashSVG from '../../../../icons/delete.svg';
+import clearSVG from '../../../../icons/clear.svg';
+import imageLeftSVG from '../../../../icons/image-left.svg';
+import imageRightSVG from '../../../../icons/image-right.svg';
+import imageFitSVG from '../../../../icons/image-fit.svg';
+import imageFullSVG from '../../../../icons/image-full.svg';
 
 const messages = defineMessages({
   save: {
@@ -127,7 +135,7 @@ export default class Edit extends Component {
                 onClick={this.onAlignTile.bind(this, 'left')}
                 active={data.align === 'left'}
               >
-                <Icon name="align left" />
+                <Icon name={imageLeftSVG} size="24px" />
               </Button>
             </Button.Group>
             <Button.Group>
@@ -137,7 +145,7 @@ export default class Edit extends Component {
                 onClick={this.onAlignTile.bind(this, 'right')}
                 active={data.align === 'right'}
               >
-                <Icon name="align right" />
+                <Icon name={imageRightSVG} size="24px" />
               </Button>
             </Button.Group>
             <Button.Group>
@@ -147,7 +155,7 @@ export default class Edit extends Component {
                 onClick={this.onAlignTile.bind(this, 'center')}
                 active={data.align === 'center' || !data.align}
               >
-                <Icon name="align center" />
+                <Icon name={imageFitSVG} size="24px" />
               </Button>
             </Button.Group>
             <Button.Group>
@@ -157,7 +165,7 @@ export default class Edit extends Component {
                 onClick={this.onAlignTile.bind(this, 'full')}
                 active={data.align === 'full'}
               >
-                <Icon name="align justify" />
+                <Icon name={imageFullSVG} size="24px" />
               </Button>
             </Button.Group>
             <Button.Group>
@@ -166,7 +174,7 @@ export default class Edit extends Component {
                 basic
                 onClick={() => this.props.onDeleteTile(this.props.tile)}
               >
-                <Icon name="trash" />
+                <Icon name={trashSVG} size="24px" color="#e40166" />
               </Button>
             </Button.Group>
           </div>
