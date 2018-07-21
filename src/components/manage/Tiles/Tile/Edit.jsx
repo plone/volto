@@ -142,6 +142,7 @@ export default class Edit extends Component {
     }
     const hideHandler =
       this.props.data['@type'] === 'text' &&
+      this.props.data.text &&
       this.props.data.text.data === '<p><br></p>';
     return connectDropTarget(
       connectDragPreview(

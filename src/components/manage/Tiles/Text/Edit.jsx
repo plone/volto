@@ -279,16 +279,17 @@ export default class Edit extends Component {
         />
         <InlineToolbar />
 
-        {this.props.data.text.data === '<p><br></p>' && (
-          <Button
-            basic
-            icon
-            onClick={this.toggleAddNewTile}
-            className="tile-add-button"
-          >
-            <Icon name={addSVG} className="tile-add-button" />
-          </Button>
-        )}
+        {this.props.data.text &&
+          this.props.data.text.data === '<p><br></p>' && (
+            <Button
+              basic
+              icon
+              onClick={this.toggleAddNewTile}
+              className="tile-add-button"
+            >
+              <Icon name={addSVG} className="tile-add-button" />
+            </Button>
+          )}
         {this.state.addNewTileOpened && (
           <div className="add-tile toolbar">
             <Button.Group>

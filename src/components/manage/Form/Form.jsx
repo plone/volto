@@ -411,52 +411,6 @@ class Form extends Component {
             selected={this.state.selected === tile}
           />
         ))}
-<<<<<<< HEAD
-        <div>
-          <Dropdown
-            trigger={
-              <Button
-                basic
-                circular
-                icon="plus"
-                title={
-                  this.props.submitLabel
-                    ? this.props.submitLabel
-                    : this.props.intl.formatMessage(messages.save)
-                }
-              />
-            }
-            icon={null}
-          >
-            <Dropdown.Menu>
-              <Dropdown.Header
-                content={this.props.intl.formatMessage(messages.addTile)}
-              />
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'title', -1)}>
-                <FormattedMessage id="Title" defaultMessage="Title" />
-              </Dropdown.Item>
-              <Dropdown.Item
-                onClick={this.onAddTile.bind(this, 'description', -1)}
-              >
-                <FormattedMessage
-                  id="Description"
-                  defaultMessage="Description"
-                />
-              </Dropdown.Item>
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'text', -1)}>
-                <FormattedMessage id="Text" defaultMessage="Text" />
-              </Dropdown.Item>
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'image', -1)}>
-                <FormattedMessage id="Image" defaultMessage="Image" />
-              </Dropdown.Item>
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'video', -1)}>
-                <FormattedMessage id="Video" defaultMessage="Video" />
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </div>
-=======
->>>>>>> Move tile button to the Text tile, add more features to the icon component
       </div>
     ) : (
       <Container>
