@@ -11,7 +11,7 @@ import { stateFromHTML } from 'draft-js-import-html';
 import { convertToRaw, EditorState } from 'draft-js';
 import redraft from 'redraft';
 import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
-import { map } from 'lodash';
+import { isEqual, map } from 'lodash';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 

@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Label, Dropdown } from 'semantic-ui-react';
-import { concat, map, uniqBy } from 'lodash';
+import { isEqual, concat, map, uniqBy } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 const messages = defineMessages({
@@ -15,6 +15,34 @@ const messages = defineMessages({
     defaultMessage: 'No results found.',
   },
 });
+
+/**
+ * Get choices
+ * @function getChoices
+ * @param {Object} props Properties
+ * @return {Array} Choices
+ */
+function getChoices(props) {
+  return uniqBy(
+    concat(
+      props.items.choices
+        ? map(props.items.choices, choice => ({
+            key: choice[0],
+            text: choice[1],
+            value: choice[0],
+          }))
+        : [],
+      props.value
+        ? map(props.value, value => ({
+            key: value,
+            text: value,
+            value,
+          }))
+        : [],
+    ),
+    'key',
+  );
+}
 
 @injectIntl
 /**
@@ -67,26 +95,22 @@ export default class ArrayWidget extends Component {
     super(props);
     this.onAddItem = this.onAddItem.bind(this);
     this.state = {
-      choices: uniqBy(
-        concat(
-          props.items.choices
-            ? map(props.items.choices, choice => ({
-                key: choice[0],
-                text: choice[1],
-                value: choice[0],
-              }))
-            : [],
-          props.value
-            ? map(props.value, value => ({
-                key: value,
-                text: value,
-                value,
-              }))
-            : [],
-        ),
-        'key',
-      ),
+      choices: getChoices(props),
     };
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (!isEqual(this.props.items, nextProps.items)) {
+      this.setState({
+        choices: getChoices(nextProps),
+      });
+    }
   }
 
   /**

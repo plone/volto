@@ -119,6 +119,7 @@ class Form extends Component {
     description: PropTypes.string,
     visual: PropTypes.bool,
     tiles: PropTypes.arrayOf(PropTypes.object),
+    liveUpdate: PropTypes.bool,
   };
 
   /**
@@ -140,6 +141,7 @@ class Form extends Component {
     visual: false,
     tiles: [],
     pathname: '',
+    liveUpdate: false,
   };
 
   /**
@@ -202,20 +204,16 @@ class Form extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (config.websockets) {
+    if (config.websockets && this.props.liveUpdate) {
       new Api().get('/@wstoken').then(res => {
         this.socket = new WebSocket(
           `${config.apiPath}${getBaseUrl(
             this.props.pathname,
           )}/@ws-edit?ws_token=${res.token}`.replace('http', 'ws'),
         );
-        this.socket.onopen = () => console.log('open');
-        this.socket.onclose = () => console.log('close');
         this.socket.onmessage = message => {
-          console.log('message received');
-          const packet = JSON.parse(message);
+          const packet = JSON.parse(message.data);
           if (packet.t === 'dmp') {
-            console.log('dmp received');
             this.onChangeField(
               packet.f,
               dmp.patch_apply(
@@ -225,7 +223,9 @@ class Form extends Component {
               false,
             );
           }
-          console.log(message);
+          if (packet.t === 'fdmp') {
+            this.onChangeField(packet.f, packet.v, false);
+          }
         };
       });
     }
@@ -253,8 +253,10 @@ class Form extends Component {
   onChangeField(id, value, send = true) {
     const { fieldset, field } = splitFieldname(id);
     let oldValue;
+    let fieldObject;
     if (fieldset) {
       oldValue = this.state.formData[fieldset][field];
+      fieldObject = this.props.schema.definitions[fieldset].properties[field];
       this.setState({
         formData: {
           ...this.state.formData,
@@ -266,6 +268,7 @@ class Form extends Component {
       });
     } else {
       oldValue = this.state.formData[field];
+      fieldObject = this.props.schema.properties[field];
       this.setState({
         formData: {
           ...this.state.formData,
@@ -273,13 +276,30 @@ class Form extends Component {
         },
       });
     }
-    if (config.websockets && send) {
-      const message = JSON.stringify({
-        t: 'dmp',
-        f: id,
-        v: dmp.patch_toText(dmp.patch_make(oldValue, value)),
-      });
+    if (config.websockets && send && this.props.liveUpdate) {
+      let message;
+      if (
+        fieldObject.widget === 'richtext' ||
+        fieldObject.type === 'datetime' ||
+        fieldObject.type === 'array' ||
+        !oldValue
+      ) {
+        message = {
+          t: 'fdmp',
+          f: id,
+          v: value,
+        };
+      } else {
+        message = {
+          t: 'dmp',
+          f: id,
+          v: dmp.patch_toText(dmp.patch_make(oldValue, value)),
+        };
+      }
       new Promise((resolve, reject) => {
+        if (!this.socket) {
+          reject();
+        }
         switch (this.socket.readyState) {
           case this.socket.CONNECTING:
             this.socket.addEventListener('open', () => resolve());
@@ -292,10 +312,11 @@ class Form extends Component {
             reject();
             break;
         }
-      }).then(() => {
-        console.log(message);
-        this.socket.send(message);
-      });
+      })
+        .then(() => {
+          this.socket.send(JSON.stringify(message));
+        })
+        .catch(() => {});
     }
   }
 

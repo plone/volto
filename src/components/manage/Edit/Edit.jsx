@@ -218,6 +218,7 @@ export class EditComponent extends Component {
             formData={this.props.content}
             onSubmit={this.onSubmit}
             hideActions
+            liveUpdate
             pathname={this.props.pathname}
             visual={this.state.visual}
             title={this.props.intl.formatMessage(messages.edit, {
