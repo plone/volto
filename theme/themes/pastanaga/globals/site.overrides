@@ -168,11 +168,29 @@ body {
     z-index: 1;
     top: -32px;
     left: 50%;
+    display: flex;
     padding: 4px;
     background-color: rgba(255, 255, 255, 0.975);
     border-radius: 2px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
     transform: translate(-50%, 0);
+
+    form {
+      display: flex;
+    }
+
+    & > svg {
+      display: inline-block !important;
+      box-sizing: content-box;
+      padding: 4px;
+      margin-right: 4px;
+      color: #826a6a !important;
+    }
+
+    .ui.input > input {
+      padding: 0;
+      border: none;
+    }
 
     .ui.icon.button {
       padding: 4px;

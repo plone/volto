@@ -240,7 +240,9 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
-                onClick={this.props.onAddTile.bind(this, 'image')}
+                onClick={this.props.onChangeTile.bind(this, this.props.tile, {
+                  '@type': 'image',
+                })}
               >
                 <Icon name={cameraSVG} size="24px" />
               </Button>
@@ -249,7 +251,9 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
-                onClick={this.props.onAddTile.bind(this, 'video')}
+                onClick={this.props.onChangeTile.bind(this, this.props.tile, {
+                  '@type': 'video',
+                })}
               >
                 <Icon name={videoSVG} size="24px" />
               </Button>

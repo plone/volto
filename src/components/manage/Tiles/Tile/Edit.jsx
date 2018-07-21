@@ -92,6 +92,7 @@ export default class Edit extends Component {
    */
   static propTypes = {
     type: PropTypes.string.isRequired,
+    data: PropTypes.objectOf(PropTypes.any).isRequired,
     selected: PropTypes.bool.isRequired,
     connectDragSource: PropTypes.func.isRequired,
     connectDragPreview: PropTypes.func.isRequired,
@@ -123,9 +124,18 @@ export default class Edit extends Component {
       this.props.data.text &&
       this.props.data.text.data === '<p></p>';
 
+    const imageAlign =
+      this.props.data['@type'] === 'image' &&
+      !!this.props.data.align &&
+      this.props.data.align;
+
     return connectDropTarget(
       connectDragPreview(
-        <div className={`ui drag tile inner ${type}`}>
+        <div
+          className={`ui drag tile inner ${type}${
+            !!imageAlign ? ` ${imageAlign}` : ''
+          }`}
+        >
           {selected &&
             connectDragSource(
               <div
