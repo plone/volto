@@ -13,6 +13,9 @@ import { GET_TILES } from '../../constants/ActionTypes';
 export function getTiles() {
   return {
     type: GET_TILES,
-    promise: api => api.get('/@tiles'),
+    request: {
+      op: 'get',
+      path: '/@tiles',
+    },
   };
 }

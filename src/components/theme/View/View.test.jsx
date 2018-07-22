@@ -10,9 +10,21 @@ const mockStore = configureStore();
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
-jest.mock('./SummaryView', () => jest.fn(() => <div id="SummaryView" />));
-jest.mock('./TabularView', () => jest.fn(() => <div id="TabularView" />));
-jest.mock('./DocumentView', () => jest.fn(() => <div id="DocumentView" />));
+jest.mock('./SummaryView', () => {
+  const dummyComponent = jest.fn(() => <div id="SummaryView" />);
+  dummyComponent.displayName = 'dummyComponent';
+  return dummyComponent;
+});
+jest.mock('./TabularView', () => {
+  const dummyComponent = jest.fn(() => <div id="TabularView" />);
+  dummyComponent.displayName = 'dummyComponent';
+  return dummyComponent;
+});
+jest.mock('./DocumentView', () => {
+  const dummyComponent = jest.fn(() => <div id="DocumentView" />);
+  dummyComponent.displayName = 'dummyComponent';
+  return dummyComponent;
+});
 jest.mock('../SocialSharing/SocialSharing', () =>
   jest.fn(() => <div id="SocialSharing" />),
 );

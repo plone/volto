@@ -10,14 +10,10 @@ describe('Diff action', () => {
       const action = getDiff(url, one, two);
 
       expect(action.type).toEqual(GET_DIFF);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`${url}/@history/${one}`);
-      expect(apiMock.get).toBeCalledWith(`${url}/@history/${two}`);
+      expect(action.request[0].op).toEqual('get');
+      expect(action.request[0].path).toEqual(`${url}/@history/${one}`);
+      expect(action.request[1].op).toEqual('get');
+      expect(action.request[1].path).toEqual(`${url}/@history/${two}`);
     });
   });
 });

@@ -70,6 +70,12 @@ A logged in site-administrator
 
 the front page
     Go to  ${FRONTEND_URL}
+    Wait until keyword succeeds  120s  1s
+    ...   Page fully loaded
+
+Page fully loaded
+    Go to  ${FRONTEND_URL}
+    Page should contain  Plone
 
 the Plone site root
     Log  the Plone site root  WARN

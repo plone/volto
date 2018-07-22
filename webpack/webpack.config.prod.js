@@ -119,7 +119,28 @@ module.exports = {
         ],
       },
       {
+        test: /\.svg$/,
+        include: path.resolve(__dirname, '../src/icons'),
+        use: [
+          {
+            loader: 'svg-loader',
+          },
+          {
+            loader: 'svgo-loader',
+            options: {
+              plugins: [
+                { removeTitle: true },
+                { convertPathData: false },
+                { removeUselessStrokeAndFill: true },
+                { removeViewBox: false },
+              ],
+            },
+          },
+        ],
+      },
+      {
         test: /\.jpe?g$|\.gif$|\.png$|\.ttf$|\.eot$|\.svg$/,
+        exclude: path.resolve(__dirname, '../src/icons'),
         use: [
           {
             loader: 'file-loader?name=[name].[ext]?[hash]',

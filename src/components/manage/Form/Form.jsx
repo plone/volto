@@ -10,18 +10,12 @@ import move from 'lodash-move';
 import {
   Button,
   Container,
-  Dropdown,
   Form as UiForm,
   Segment,
   Tab,
   Message,
 } from 'semantic-ui-react';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 
 import { EditTile, Field } from '../../../components';
@@ -82,6 +76,7 @@ class Form extends Component {
         }),
       ),
       properties: PropTypes.objectOf(PropTypes.any),
+      definitions: PropTypes.objectOf(PropTypes.any),
       required: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
     formData: PropTypes.objectOf(PropTypes.any),
@@ -155,11 +150,6 @@ class Form extends Component {
         },
         [ids.text]: {
           '@type': 'text',
-          text: {
-            'content-type': 'text/html',
-            data: '',
-            encoding: 'utf8',
-          },
         },
       };
     }
@@ -185,12 +175,24 @@ class Form extends Component {
    * @returns {undefined}
    */
   onChangeField(id, value) {
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        [id]: value || null,
-      },
-    });
+    if (id.indexOf('|') !== -1) {
+      this.setState({
+        formData: {
+          ...this.state.formData,
+          [id.split('|')[0]]: {
+            ...this.state.formData[id.split('|')[0]],
+            [id.split('|')[1]]: value || null,
+          },
+        },
+      });
+    } else {
+      this.setState({
+        formData: {
+          ...this.state.formData,
+          [id]: value || null,
+        },
+      });
+    }
   }
 
   /**
@@ -228,9 +230,10 @@ class Form extends Component {
    * Delete tile handler
    * @method onDeleteTile
    * @param {string} id Id of the field
+   * @param {bool} selectPrev True if previous should be selected
    * @returns {undefined}
    */
-  onDeleteTile(id) {
+  onDeleteTile(id, selectPrev) {
     this.setState({
       formData: {
         ...this.state.formData,
@@ -239,23 +242,35 @@ class Form extends Component {
         },
         tiles: omit(this.state.formData.tiles, [id]),
       },
-      selected: null,
+      selected: selectPrev
+        ? this.state.formData.tiles_layout.items[
+            this.state.formData.tiles_layout.items.indexOf(id) - 1
+          ]
+        : null,
     });
   }
 
   /**
-   * Select tile handler
-   * @method onSelectTile
+   * Add tile handler
+   * @method onAddTile
    * @param {string} type Type of the tile
-   * @returns {undefined}
+   * @param {Number} index Index where to add the tile
+   * @returns {string} Id of the tile
    */
-  onAddTile(type) {
+  onAddTile(type, index) {
     const id = uuid();
+    const insert =
+      index === -1 ? this.state.formData.tiles_layout.items.length : index;
+
     this.setState({
       formData: {
         ...this.state.formData,
         tiles_layout: {
-          items: [...this.state.formData.tiles_layout.items, id],
+          items: [
+            ...this.state.formData.tiles_layout.items.slice(0, insert),
+            id,
+            ...this.state.formData.tiles_layout.items.slice(insert),
+          ],
         },
         tiles: {
           ...this.state.formData.tiles,
@@ -266,6 +281,8 @@ class Form extends Component {
       },
       selected: id,
     });
+
+    return id;
   }
 
   /**
@@ -281,8 +298,18 @@ class Form extends Component {
     const errors = {};
     map(this.props.schema.fieldsets, fieldset =>
       map(fieldset.fields, fieldId => {
-        const field = this.props.schema.properties[fieldId];
-        const data = this.state.formData[fieldId];
+        const field =
+          fieldId.indexOf('|') !== -1
+            ? this.props.schema.definitions[fieldId.split('|')[0]].properties[
+                fieldId.split('|')[1]
+              ]
+            : this.props.schema.properties[fieldId];
+
+        const data =
+          fieldId.indexOf('|') !== -1
+            ? this.state.formData[fieldId.split('|')[0]] &&
+              this.state.formData[fieldId.split('|')[0]][fieldId.split('|')[1]]
+            : this.state.formData[fieldId];
         if (this.props.schema.required.indexOf(fieldId) !== -1) {
           if (field.type !== 'boolean' && !data) {
             errors[fieldId] = errors[field] || [];
@@ -360,6 +387,7 @@ class Form extends Component {
             index={index}
             type={formData.tiles[tile]['@type']}
             key={tile}
+            onAddTile={this.onAddTile}
             onChangeTile={this.onChangeTile}
             onChangeField={this.onChangeField}
             onDeleteTile={this.onDeleteTile}
@@ -372,47 +400,6 @@ class Form extends Component {
             selected={this.state.selected === tile}
           />
         ))}
-        <div>
-          <Dropdown
-            trigger={
-              <Button
-                basic
-                circular
-                icon="plus"
-                title={
-                  this.props.submitLabel
-                    ? this.props.submitLabel
-                    : this.props.intl.formatMessage(messages.save)
-                }
-              />
-            }
-            icon={null}
-          >
-            <Dropdown.Menu>
-              <Dropdown.Header
-                content={this.props.intl.formatMessage(messages.addTile)}
-              />
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'title')}>
-                <FormattedMessage id="Title" defaultMessage="Title" />
-              </Dropdown.Item>
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'description')}>
-                <FormattedMessage
-                  id="Description"
-                  defaultMessage="Description"
-                />
-              </Dropdown.Item>
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'text')}>
-                <FormattedMessage id="Text" defaultMessage="Text" />
-              </Dropdown.Item>
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'image')}>
-                <FormattedMessage id="Image" defaultMessage="Image" />
-              </Dropdown.Item>
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'video')}>
-                <FormattedMessage id="Video" defaultMessage="Video" />
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </div>
       </div>
     ) : (
       <Container>
@@ -440,9 +427,20 @@ class Form extends Component {
                     ),
                     ...map(item.fields, field => (
                       <Field
-                        {...schema.properties[field]}
+                        {...(field.indexOf('|') !== -1
+                          ? schema.definitions[field.split('|')[0]].properties[
+                              field.split('|')[1]
+                            ]
+                          : schema.properties[field])}
                         id={field}
-                        value={this.state.formData[field]}
+                        value={
+                          field.indexOf('|') !== -1
+                            ? this.state.formData[field.split('|')[0]] &&
+                              this.state.formData[field.split('|')[0]][
+                                field.split('|')[1]
+                              ]
+                            : this.state.formData[field]
+                        }
                         required={schema.required.indexOf(field) !== -1}
                         onChange={this.onChangeField}
                         key={field}
@@ -483,9 +481,19 @@ class Form extends Component {
                 )}
                 {map(schema.fieldsets[0].fields, field => (
                   <Field
-                    {...schema.properties[field]}
+                    {...(field.indexOf('|') !== -1
+                      ? schema.definitions[field.split('|')[0]].properties[
+                          field.split('|')[1]
+                        ]
+                      : schema.properties[field])}
                     id={field}
-                    value={this.state.formData[field]}
+                    value={
+                      field.indexOf('|') !== -1
+                        ? this.state.formData[field.split('|')[0]][
+                            field.split('|')[1]
+                          ]
+                        : this.state.formData[field]
+                    }
                     required={schema.required.indexOf(field) !== -1}
                     onChange={this.onChangeField}
                     key={field}

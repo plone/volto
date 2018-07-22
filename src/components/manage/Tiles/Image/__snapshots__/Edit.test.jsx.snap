@@ -9,7 +9,7 @@ exports[`renders an edit image tile component 1`] = `
     <img
       alt=""
       className="ui image"
-      src="image/@@images/image"
+      src="image"
     />
   </p>
 </div>

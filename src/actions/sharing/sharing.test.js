@@ -9,15 +9,9 @@ describe('Sharing action', () => {
       const action = updateSharing(url, sharing);
 
       expect(action.type).toEqual(UPDATE_SHARING);
-
-      const apiMock = {
-        post: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.post).toBeCalledWith(`${url}/@sharing`, {
-        data: sharing,
-      });
+      expect(action.request.op).toEqual('post');
+      expect(action.request.path).toEqual(`${url}/@sharing`);
+      expect(action.request.data).toEqual(sharing);
     });
   });
 
@@ -27,13 +21,8 @@ describe('Sharing action', () => {
       const action = getSharing(url);
 
       expect(action.type).toEqual(GET_SHARING);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`${url}/@sharing`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}/@sharing`);
     });
 
     it('should create an action to get sharing with search param', () => {
@@ -42,13 +31,8 @@ describe('Sharing action', () => {
       const action = getSharing(url, search);
 
       expect(action.type).toEqual(GET_SHARING);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`${url}/@sharing?search=${search}`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}/@sharing?search=${search}`);
     });
   });
 });

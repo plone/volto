@@ -20,7 +20,11 @@ import {
 export function copyContent(source, target) {
   return {
     type: COPY_CONTENT,
-    promise: api => api.post(`${target}/@copy`, { data: { source } }),
+    request: {
+      op: 'post',
+      path: `${target}/@copy`,
+      data: { source },
+    },
   };
 }
 
@@ -34,7 +38,11 @@ export function copyContent(source, target) {
 export function moveContent(source, target) {
   return {
     type: MOVE_CONTENT,
-    promise: api => api.post(`${target}/@move`, { data: { source } }),
+    request: {
+      op: 'post',
+      path: `${target}/@move`,
+      data: { source },
+    },
   };
 }
 

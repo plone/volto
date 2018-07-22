@@ -15,7 +15,11 @@ import { LOGIN, LOGIN_RENEW, LOGOUT } from '../../constants/ActionTypes';
 export function login(username, password) {
   return {
     type: LOGIN,
-    promise: api => api.post('@login', { data: { login: username, password } }),
+    request: {
+      op: 'post',
+      path: '@login',
+      data: { login: username, password },
+    },
   };
 }
 
@@ -27,7 +31,10 @@ export function login(username, password) {
 export function loginRenew() {
   return {
     type: LOGIN_RENEW,
-    promise: api => api.post('@login-renew'),
+    request: {
+      op: 'post',
+      path: '@login-renew',
+    },
   };
 }
 

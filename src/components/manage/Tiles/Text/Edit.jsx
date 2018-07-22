@@ -4,55 +4,34 @@
  */
 
 import React, { Component } from 'react';
-import { Map } from 'immutable';
 import PropTypes from 'prop-types';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
+import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import Editor from 'draft-js-plugins-editor';
-import { stateToHTML } from 'draft-js-export-html';
-import { stateFromHTML } from 'draft-js-import-html';
-import { DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
-import createInlineToolbarPlugin, {
-  Separator,
-} from 'draft-js-inline-toolbar-plugin';
-import {
-  ItalicButton,
-  BoldButton,
-  HeadlineTwoButton,
-  HeadlineThreeButton,
-  BlockquoteButton,
-  UnorderedListButton,
-  OrderedListButton,
-} from 'draft-js-buttons';
-import createBlockStyleButton from 'draft-js-buttons/lib/utils/createBlockStyleButton';
-import createBlockBreakoutPlugin from 'draft-js-block-breakout-plugin';
+import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
+import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { Icon } from '../../../../components';
+import trashSVG from '../../../../icons/delete.svg';
 
-import createLinkPlugin from '../../AnchorPlugin';
+import {
+  extendedBlockRenderMap,
+  blockStyleFn,
+  inlineToolbarButtons,
+  plugins,
+} from '../../../../config';
+
+import addSVG from '../../../../icons/circle-plus.svg';
+import cameraSVG from '../../../../icons/camera.svg';
+import videoSVG from '../../../../icons/videocamera.svg';
+import TemplatedTilesSVG from '../../../../icons/theme.svg';
 
 const messages = defineMessages({
   text: {
-    id: 'Add text...',
-    defaultMessage: 'Add text...',
+    id: 'Type text…',
+    defaultMessage: 'Type text…',
   },
 });
-
-const blockRenderMap = Map({
-  callout: {
-    element: 'p',
-  },
-  unstyled: {
-    element: 'p',
-  },
-});
-
-const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
-
-const CalloutButton = createBlockStyleButton({
-  blockType: 'callout',
-  children: <span>!</span>,
-});
-const linkPlugin = createLinkPlugin();
-const blockBreakoutPlugin = createBlockBreakoutPlugin();
 
 @injectIntl
 /**
@@ -71,9 +50,11 @@ export default class Edit extends Component {
     tile: PropTypes.string.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     intl: intlShape.isRequired,
+    index: PropTypes.number.isRequired,
     onChangeTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    onAddTile: PropTypes.func.isRequired,
   };
 
   /**
@@ -88,40 +69,64 @@ export default class Edit extends Component {
     if (!__SERVER__) {
       let editorState;
       if (props.data && props.data.text) {
-        const contentState = stateFromHTML(props.data.text.data, {
-          customBlockFn: element => {
-            if (element.className === 'callout') {
-              return {
-                type: 'callout',
-              };
-            }
-            return null;
-          },
-        });
-        editorState = EditorState.createWithContent(contentState);
+        editorState = EditorState.createWithContent(
+          convertFromRaw(props.data.text),
+        );
       } else {
         editorState = EditorState.createEmpty();
       }
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: [
-          BoldButton,
-          ItalicButton,
-          linkPlugin.LinkButton,
-          Separator,
-          HeadlineTwoButton,
-          HeadlineThreeButton,
-          UnorderedListButton,
-          OrderedListButton,
-          BlockquoteButton,
-          CalloutButton,
-        ],
+        structure: inlineToolbarButtons,
       });
 
-      this.state = { editorState, inlineToolbarPlugin };
+      this.state = {
+        editorState,
+        inlineToolbarPlugin,
+        addNewTileOpened: false,
+      };
     }
 
     this.onChange = this.onChange.bind(this);
+  }
+
+  /**
+   * Component will receive props
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    if (this.props.selected) {
+      this.node.focus();
+    }
+    document.addEventListener('mousedown', this.handleClickOutside, false);
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.selected && nextProps.selected) {
+      this.node.focus();
+      this.setState({
+        editorState: EditorState.moveFocusToEnd(this.state.editorState),
+      });
+    }
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    if (this.props.selected) {
+      this.node.focus();
+    }
+    document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
   /**
@@ -134,24 +139,17 @@ export default class Edit extends Component {
     this.setState({ editorState });
     this.props.onChangeTile(this.props.tile, {
       ...this.props.data,
-      text: {
-        'content-type': 'text/html',
-        data: stateToHTML(editorState.getCurrentContent(), {
-          blockStyleFn: block => {
-            if (block.get('type') === 'callout') {
-              return {
-                attributes: {
-                  class: 'callout',
-                },
-              };
-            }
-            return null;
-          },
-        }),
-        encoding: 'utf8',
-      },
+      text: convertToRaw(editorState.getCurrentContent()),
     });
   }
+
+  toggleAddNewTile = () =>
+    this.setState(state => ({ addNewTileOpened: !state.addNewTileOpened }));
+
+  handleClickOutside = e => {
+    if (this.ref && doesNodeContainClick(this.ref, e)) return;
+    this.setState(() => ({ addNewTileOpened: false }));
+  };
 
   /**
    * Render method.
@@ -169,39 +167,107 @@ export default class Edit extends Component {
       <div
         onClick={() => this.props.onSelectTile(this.props.tile)}
         className={`tile text${this.props.selected ? ' selected' : ''}`}
+        ref={node => (this.ref = node)}
       >
-        {this.props.selected && (
-          <div className="toolbar">
+        <Editor
+          onChange={this.onChange}
+          editorState={this.state.editorState}
+          plugins={[this.state.inlineToolbarPlugin, ...plugins]}
+          blockRenderMap={extendedBlockRenderMap}
+          blockStyleFn={blockStyleFn}
+          placeholder={this.props.intl.formatMessage(messages.text)}
+          handleReturn={() => {
+            const selectionState = this.state.editorState.getSelection();
+            const anchorKey = selectionState.getAnchorKey();
+            const currentContent = this.state.editorState.getCurrentContent();
+            const currentContentBlock = currentContent.getBlockForKey(
+              anchorKey,
+            );
+            const blockType = currentContentBlock.getType();
+            if (
+              blockType !== 'unordered-list-item' &&
+              blockType !== 'ordered-list-item'
+            ) {
+              this.props.onSelectTile(
+                this.props.onAddTile('text', this.props.index + 1),
+              );
+              return 'handled';
+            }
+            return 'un-handled';
+          }}
+          handleKeyCommand={(command, editorState) => {
+            if (
+              command === 'backspace' &&
+              editorState.getCurrentContent().getPlainText().length === 0
+            ) {
+              this.props.onDeleteTile(this.props.tile, true);
+            }
+          }}
+          ref={node => {
+            this.node = node;
+          }}
+        />
+        <InlineToolbar />
+
+        {this.props.data.text &&
+          this.props.data.text.blocks &&
+          this.props.data.text.blocks.length === 1 &&
+          this.props.data.text.blocks[0].text === '' && (
+            <Button
+              basic
+              icon
+              onClick={this.toggleAddNewTile}
+              className="tile-add-button"
+            >
+              <Icon name={addSVG} className="tile-add-button" size="24px" />
+            </Button>
+          )}
+        {this.state.addNewTileOpened && (
+          <div className="add-tile toolbar">
             <Button.Group>
               <Button
                 icon
                 basic
-                onClick={() => this.props.onDeleteTile(this.props.tile)}
+                onClick={this.props.onChangeTile.bind(this, this.props.tile, {
+                  '@type': 'image',
+                })}
               >
-                <Icon name="trash" />
+                <Icon name={cameraSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.props.onChangeTile.bind(this, this.props.tile, {
+                  '@type': 'video',
+                })}
+              >
+                <Icon name={videoSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <div className="separator" />
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.props.onAddTile.bind(this, 'templatedtiles')}
+              >
+                <Icon name={TemplatedTilesSVG} size="24px" />
               </Button>
             </Button.Group>
           </div>
         )}
-        <Editor
-          onChange={this.onChange}
-          editorState={this.state.editorState}
-          plugins={[
-            this.state.inlineToolbarPlugin,
-            linkPlugin,
-            blockBreakoutPlugin,
-          ]}
-          blockRenderMap={extendedBlockRenderMap}
-          blockStyleFn={contentBlock => {
-            const type = contentBlock.getType();
-            if (type === 'callout') {
-              return 'callout';
-            }
-            return null;
-          }}
-          placeholder={this.props.intl.formatMessage(messages.text)}
-        />
-        <InlineToolbar />
+        {this.props.selected && (
+          <Button
+            icon
+            basic
+            onClick={() => this.props.onDeleteTile(this.props.tile)}
+            className="tile-delete-button"
+          >
+            <Icon name={trashSVG} size="18px" />
+          </Button>
+        )}
       </div>
     );
   }

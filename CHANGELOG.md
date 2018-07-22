@@ -4,7 +4,17 @@
 
 ### Added
 
+* Add Pastanaga Icon System @sneridagh
+* Support for nested schemas @robgietema
+* New block on return in editor @robgietema
+
 ### Changes
+
+* Pastanaga Editor look and feel improvements and polishment @sneridagh @albertcasado
+* Refactor configuration of routes, views and widgets for extensibility @sneridagh @davilima6
+* Fix view name class in body element @sneridagh @davilima6
+* Refactor actions @robgietema
+* Store text tile data in json @robgietema
 
 ## 0.6.0 (2018-07-14)
 
@@ -22,6 +32,7 @@
 * Option to add tiles @robgietema
 * Image tiles in editor @robgietema
 * Align images in editor @robgietema
+* Video tiles in editor @robgietema
 * Video tiles in editor @robgietema
 * Sitemap.xml.gz view @robgietema
 * Upload image indicator @robgietema

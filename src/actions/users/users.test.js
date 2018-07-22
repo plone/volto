@@ -26,13 +26,9 @@ describe('Users action', () => {
       const action = createUser(content);
 
       expect(action.type).toEqual(CREATE_USER);
-
-      const apiMock = {
-        post: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.post).toBeCalledWith('/@users', { data: content });
+      expect(action.request.op).toEqual('post');
+      expect(action.request.path).toEqual('/@users');
+      expect(action.request.data).toEqual(content);
     });
   });
 
@@ -42,13 +38,8 @@ describe('Users action', () => {
       const action = deleteUser(id);
 
       expect(action.type).toEqual(DELETE_USER);
-
-      const apiMock = {
-        del: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.del).toBeCalledWith(`/@users/${id}`);
+      expect(action.request.op).toEqual('del');
+      expect(action.request.path).toEqual(`/@users/${id}`);
     });
   });
 
@@ -58,13 +49,8 @@ describe('Users action', () => {
       const action = getUser(id);
 
       expect(action.type).toEqual(GET_USER);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`/@users/${id}`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`/@users/${id}`);
     });
   });
 
@@ -73,13 +59,8 @@ describe('Users action', () => {
       const action = listUsers();
 
       expect(action.type).toEqual(LIST_USERS);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`/@users`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual('/@users');
     });
 
     it('should create an action to get users with a query', () => {
@@ -87,13 +68,8 @@ describe('Users action', () => {
       const action = listUsers(query);
 
       expect(action.type).toEqual(LIST_USERS);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`/@users?query=${query}`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`/@users?query=${query}`);
     });
   });
 
@@ -104,13 +80,9 @@ describe('Users action', () => {
       const action = updateUser(id, user);
 
       expect(action.type).toEqual(UPDATE_USER);
-
-      const apiMock = {
-        patch: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.patch).toBeCalledWith(`/@users/${id}`, { data: user });
+      expect(action.request.op).toEqual('patch');
+      expect(action.request.path).toEqual(`/@users/${id}`);
+      expect(action.request.data).toEqual(user);
     });
   });
 
@@ -122,14 +94,11 @@ describe('Users action', () => {
       const action = updatePassword(id, oldPassword, newPassword);
 
       expect(action.type).toEqual(UPDATE_PASSWORD);
-
-      const apiMock = {
-        post: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.post).toBeCalledWith(`/@users/${id}/reset-password`, {
-        data: { old_password: oldPassword, new_password: newPassword },
+      expect(action.request.op).toEqual('post');
+      expect(action.request.path).toEqual(`/@users/${id}/reset-password`);
+      expect(action.request.data).toEqual({
+        old_password: oldPassword,
+        new_password: newPassword,
       });
     });
   });
@@ -142,14 +111,11 @@ describe('Users action', () => {
       const action = setInitialPassword(id, resetToken, newPassword);
 
       expect(action.type).toEqual(INITIAL_PASSWORD);
-
-      const apiMock = {
-        post: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.post).toBeCalledWith(`/@users/${id}/reset-password`, {
-        data: { reset_token: resetToken, new_password: newPassword },
+      expect(action.request.op).toEqual('post');
+      expect(action.request.path).toEqual(`/@users/${id}/reset-password`);
+      expect(action.request.data).toEqual({
+        reset_token: resetToken,
+        new_password: newPassword,
       });
     });
   });
@@ -160,13 +126,8 @@ describe('Users action', () => {
       const action = resetPassword(id);
 
       expect(action.type).toEqual(RESET_PASSWORD);
-
-      const apiMock = {
-        post: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.post).toBeCalledWith(`/@users/${id}/reset-password`);
+      expect(action.request.op).toEqual('post');
+      expect(action.request.path).toEqual(`/@users/${id}/reset-password`);
     });
   });
 });

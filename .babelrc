@@ -5,7 +5,10 @@
     "add-module-exports",
     "transform-decorators-legacy",
     "transform-class-properties",
-    "transform-react-display-name"
+    "add-react-displayname",
+    ["babel-plugin-root-import", {
+      "rootPathSuffix": "src"
+    }]
   ],
   "env": {
     "development": {

@@ -8,13 +8,8 @@ describe('Actions action', () => {
       const action = listActions(url);
 
       expect(action.type).toEqual(LIST_ACTIONS);
-
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`${url}/@actions`);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}/@actions`);
     });
   });
 });

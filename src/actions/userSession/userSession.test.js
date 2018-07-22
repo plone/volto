@@ -9,15 +9,9 @@ describe('User session action', () => {
       const action = login(username, password);
 
       expect(action.type).toEqual(LOGIN);
-
-      const apiMock = {
-        post: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.post).toBeCalledWith('@login', {
-        data: { login: username, password },
-      });
+      expect(action.request.op).toEqual('post');
+      expect(action.request.path).toEqual('@login');
+      expect(action.request.data).toEqual({ login: username, password });
     });
   });
 
@@ -26,13 +20,8 @@ describe('User session action', () => {
       const action = loginRenew();
 
       expect(action.type).toEqual(LOGIN_RENEW);
-
-      const apiMock = {
-        post: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.post).toBeCalledWith('@login-renew');
+      expect(action.request.op).toEqual('post');
+      expect(action.request.path).toEqual('@login-renew');
     });
   });
 

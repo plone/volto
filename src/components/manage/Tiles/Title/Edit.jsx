@@ -9,12 +9,15 @@ import PropTypes from 'prop-types';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
+
+import { Icon } from '../../../../components';
+import trashSVG from '../../../../icons/delete.svg';
 
 const messages = defineMessages({
   title: {
-    id: 'Title',
-    defaultMessage: 'Title',
+    id: 'Type the title…',
+    defaultMessage: 'Type the title…',
   },
 });
 
@@ -42,9 +45,11 @@ export default class Edit extends Component {
     properties: PropTypes.objectOf(PropTypes.any).isRequired,
     selected: PropTypes.bool.isRequired,
     intl: intlShape.isRequired,
+    index: PropTypes.number.isRequired,
     onChangeField: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    onAddTile: PropTypes.func.isRequired,
     tile: PropTypes.string.isRequired,
   };
 
@@ -90,6 +95,10 @@ export default class Edit extends Component {
           : EditorState.createEmpty(),
       });
     }
+
+    if (!this.props.selected && nextProps.selected) {
+      this.node.focus();
+    }
   }
 
   /**
@@ -121,27 +130,32 @@ export default class Edit extends Component {
         onClick={() => this.props.onSelectTile(this.props.tile)}
         className={`tile title${this.props.selected ? ' selected' : ''}`}
       >
-        {this.props.selected && (
-          <div className="toolbar">
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.props.onDeleteTile(this.props.tile)}
-              >
-                <Icon name="trash" />
-              </Button>
-            </Button.Group>
-          </div>
-        )}
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}
           blockRenderMap={extendedBlockRenderMap}
-          handleReturn={() => true}
+          handleReturn={() => {
+            this.props.onSelectTile(
+              this.props.onAddTile('text', this.props.index + 1),
+            );
+            return 'handled';
+          }}
           placeholder={this.props.intl.formatMessage(messages.title)}
           blockStyleFn={() => 'documentFirstHeading'}
+          ref={node => {
+            this.node = node;
+          }}
         />
+        {this.props.selected && (
+          <Button
+            icon
+            basic
+            onClick={() => this.props.onDeleteTile(this.props.tile)}
+            className="tile-delete-button"
+          >
+            <Icon name={trashSVG} size="18px" />
+          </Button>
+        )}
       </div>
     );
   }
