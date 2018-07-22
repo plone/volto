@@ -57,5 +57,8 @@ I add a Page with the title '${title}'
 # --- Then -------------------------------------------------------------------
 
 I should see '${title}' in the navigation
+  Sleep  10
+  ${src}=  Get Source
+  Log  ${src}  WARN  html=yes
   Wait until page contains element  css=.navigation a
   Page should contain element  css=.navigation a[href='/my-page']
