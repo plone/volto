@@ -57,6 +57,9 @@ Logged in
 Log in
     [Arguments]   ${username}=admin  ${password}=secret
     ...           ${selector}=.tools a[href^="/login"]
+    Sleep  30
+    ${src}=  Get Source
+    Log  ${src}  WARN  html=yes
     Wait until page contains element  css=${selector}
     Element should be visible  css=${selector}
     Element should contain  css=${selector}  Log in
