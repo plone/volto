@@ -16,7 +16,7 @@ before_install:
 - mkdir webdriver
 - wget https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux64.tar.gz
 - tar -xzf geckodriver-v0.20.0-linux64.tar.gz -C webdriver
-- wget https://chromedriver.storage.googleapis.com/2.36/chromedriver_linux64.zip
+- wget https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip
 - unzip chromedriver_linux64.zip -d webdriver
 - export PATH=$PATH:$(pwd)/webdriver
 install:
@@ -28,4 +28,5 @@ install:
 - yarn build
 script:
 - yarn coverage
-- PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlessfirefox tests
+- PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome tests
+- openssl base64 -in selenium-screenshot-1.png

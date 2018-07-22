@@ -1,5 +1,6 @@
 *** Settings ***
 
+Library  DebugLibrary
 Library  SeleniumLibrary  timeout=30  implicit_wait=0
 
 *** Variables ***
@@ -46,6 +47,12 @@ Open default browser
 
 Frontpage
     Go to  ${FRONTEND_URL}
+    Wait until keyword succeeds  120s  1s
+    ...   Page fully loaded
+
+Page fully loaded
+    Go to  ${FRONTEND_URL}
+    Page should contain  Plone
 
 Logged out
     Element should not be visible  css=.left.fixed.menu
