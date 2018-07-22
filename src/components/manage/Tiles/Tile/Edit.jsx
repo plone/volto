@@ -122,7 +122,9 @@ export default class Edit extends Component {
     const hideHandler =
       this.props.data['@type'] === 'text' &&
       this.props.data.text &&
-      this.props.data.text.data === '<p></p>';
+      this.props.data.text.blocks &&
+      this.props.data.text.blocks.length === 1 &&
+      this.props.data.text.blocks[0].text === '';
 
     const imageAlign =
       this.props.data['@type'] === 'image' &&

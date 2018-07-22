@@ -14,6 +14,7 @@
 * Refactor configuration of routes, views and widgets for extensibility @sneridagh @davilima6
 * Fix view name class in body element @sneridagh @davilima6
 * Refactor actions @robgietema
+* Store text tile data in json @robgietema
 
 ## 0.6.0 (2018-07-14)
 

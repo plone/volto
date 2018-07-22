@@ -10,7 +10,6 @@ import move from 'lodash-move';
 import {
   Button,
   Container,
-  Dropdown,
   Form as UiForm,
   Segment,
   Tab,
@@ -20,7 +19,6 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 
 import { EditTile, Field } from '../../../components';
-import { AvailableTiles, messagesTiles } from '../../../config';
 
 const messages = defineMessages({
   addTile: {
@@ -152,11 +150,6 @@ class Form extends Component {
         },
         [ids.text]: {
           '@type': 'text',
-          text: {
-            'content-type': 'text/html',
-            data: '',
-            encoding: 'utf8',
-          },
         },
       };
     }
