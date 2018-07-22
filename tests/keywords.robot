@@ -86,6 +86,5 @@ I log in
     Wait until page does not contain  id=login-form-submit
 
 A logged in site-administrator
-  Wait until page contains  Home
-  Click link  Home
+  Go to  ${FRONTEND_URL}
   I log in
