@@ -9,7 +9,7 @@ ${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 @{APPLY_PROFILES}      plone.app.contenttypes:plone-content
 ...                    plone.restapi:tiles
 ${FRONTEND_URL}        http://localhost:4300/
-${BROWSER}             headlesschrome
+${BROWSER}             chrome
 
 *** Keywords ***
 

@@ -29,8 +29,8 @@ I add a Page with the title '${title}'
   Click element  css=#toolbar-add
   Wait until page contains element  css=#toolbar-add-document
   Click element  css=#toolbar-add-document
-  Wait until page contains element  name=title
-  Input Text  name=title  ${title}
+  Wait until page contains element  css=.public-DraftStyleDefault-block
+  Execute JavaScript  var textarea = document.getElementsByClassName('title')[0].getElementsByClassName('public-DraftEditor-content')[0]; var textEvent = document.createEvent('TextEvent'); textEvent.initTextEvent('textInput', true, true, null, 'My Page'); textarea.dispatchEvent(textEvent);
   Click element  css=*[title=Save]
 
 
