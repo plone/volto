@@ -7,11 +7,6 @@ Suite Teardown  Close all browsers
 
 *** Test Cases ***
 
-Scenario: Log into Plone
-  Given the front page
-   When I log in
-   Then I should be logged in
-
 Scenario: As a site administrator I can add a page
   Given a logged in site-administrator
     and the Plone site root
@@ -42,6 +37,7 @@ Scenario: As a site administrator I can add a page
 # --- When -------------------------------------------------------------------
 
 I add a Page with the title '${title}'
+  Log  I add a Page with the title '${title}'  WARN
   Wait until page contains element  css=#toolbar-add
   Click element  css=#toolbar-add
   Wait until page contains element  css=#toolbar-add-document
@@ -57,6 +53,7 @@ I add a Page with the title '${title}'
 # --- Then -------------------------------------------------------------------
 
 I should see '${title}' in the navigation
+  Log  I should see '${title}' in the navigation  WARN
   Sleep  10
   ${src}=  Get Source
   Log  ${src}  WARN  html=yes

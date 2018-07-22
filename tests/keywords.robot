@@ -64,6 +64,7 @@ Open default browser
 # action is carried out (e.g. 'the front page')
 
 A logged in site-administrator
+  Log  A logged in site-administrator  WARN
   Go to  ${FRONTEND_URL}
   I log in
 
@@ -71,6 +72,7 @@ the front page
     Go to  ${FRONTEND_URL}
 
 the Plone site root
+    Log  the Plone site root  WARN
     Wait until page contains  Home
     Click link  Home
 
