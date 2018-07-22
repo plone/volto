@@ -47,6 +47,8 @@ Open default browser
 Frontpage
     Go to  ${FRONTEND_URL}
     Sleep  30
+    ${src}=  Get Source
+    Log  ${src}  WARN  html=yes
     Wait until page contains  Plone
 
 Logged out
@@ -58,8 +60,6 @@ Logged in
 Log in
     [Arguments]   ${username}=admin  ${password}=secret
     ...           ${selector}=.tools a[href^="/login"]
-    ${src}=  Get Source
-    Log  ${src}  WARN  html=yes
     Wait until page contains element  css=${selector}
     Element should be visible  css=${selector}
     Element should contain  css=${selector}  Log in
