@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
+import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import Editor from 'draft-js-plugins-editor';
 import { stateFromHTML } from 'draft-js-import-html';
 import { convertToRaw, EditorState } from 'draft-js';
@@ -98,14 +99,14 @@ export default class Edit extends Component {
 
   /**
    * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
+   * @method componentDidMount
    * @returns {undefined}
    */
   componentDidMount() {
     if (this.props.selected) {
       this.node.focus();
     }
+    document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
   /**
@@ -121,6 +122,18 @@ export default class Edit extends Component {
         editorState: EditorState.moveFocusToEnd(this.state.editorState),
       });
     }
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    if (this.props.selected) {
+      this.node.focus();
+    }
+    document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
   /**
@@ -150,7 +163,10 @@ export default class Edit extends Component {
   toggleAddNewTile = () =>
     this.setState(state => ({ addNewTileOpened: !state.addNewTileOpened }));
 
-  closeAddNewTile = () => this.setState(() => ({ addNewTileOpened: false }));
+  handleClickOutside = e => {
+    if (this.ref && doesNodeContainClick(this.ref, e)) return;
+    this.setState(() => ({ addNewTileOpened: false }));
+  };
 
   /**
    * Render method.
@@ -168,6 +184,7 @@ export default class Edit extends Component {
       <div
         onClick={() => this.props.onSelectTile(this.props.tile)}
         className={`tile text${this.props.selected ? ' selected' : ''}`}
+        ref={node => (this.ref = node)}
       >
         {/* {this.props.selected && (
           <div className="toolbar">
