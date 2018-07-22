@@ -61,7 +61,8 @@ the front page
     Go to  ${FRONTEND_URL}
 
 the Plone site root
-    Go to  ${FRONTEND_URL}
+    Wait until page contains  Home
+    Click link  Home
 
 I should be logged out
     Element should not be visible  css=.left.fixed.menu
