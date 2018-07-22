@@ -26,6 +26,7 @@ ${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 *** Keywords ***
 
 Suite Setup
+    Log  Suite Setup  WARN
     ${PORT}=  Get Environment Variable  ZSERVER_PORT  55001
     Set Environment Variable  API_PATH  http://localhost:${PORT}/plone
     Set Environment Variable  Z3C_AUTOINCLUDE_DEPENDENCIES_DISABLED  1
@@ -34,5 +35,6 @@ Suite Setup
     ...            check=to be executed: ./node_modules/.bin/babel-node ./src/start-server-prod.js
 
 Suite Teardown
+    Log  Suite Teardown  WARN
     Stop Webpack
     Stop Zope server

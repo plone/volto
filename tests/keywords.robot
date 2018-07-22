@@ -1,6 +1,6 @@
 *** Settings ***
 
-Library  OperatingSystem
+Library  DebugLibrary
 Library  SeleniumLibrary  timeout=30  implicit_wait=0
 
 *** Variables ***
@@ -32,6 +32,7 @@ Test Teardown
 
 Create default browser
     [Documentation]  Opens a new browser window based on configured ${BROWSER}
+    Log  Open default browser  WARN
     ${on_failure}=  Register keyword to run on failure  Close Browser
     Wait until keyword succeeds  60s  1s
     ...  Open browser  ${FRONTEND_URL}  browser=${BROWSER}  alias=default
@@ -47,11 +48,14 @@ Open default browser
 
 Frontpage
     Go to  ${FRONTEND_URL}
+    Wait until keyword succeeds  120s  1s
+    ...   Page fully loaded
     ${src}=  Get Source
     Log  ${src}  WARN  html=yes
-    Wait until keyword succeeds  120s  1s
-    ...   Page should contain  Plone
 
+Page fully loaded
+    Go to  ${FRONTEND_URL}
+    Page should contain  Plone
 
 Logged out
     Element should not be visible  css=.left.fixed.menu
