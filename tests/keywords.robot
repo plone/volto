@@ -47,14 +47,11 @@ Open default browser
 
 Frontpage
     Go to  ${FRONTEND_URL}
-    Sleep  2
-    Go to  ${FRONTEND_URL}
-    Sleep  2
     ${src}=  Get Source
     Log  ${src}  WARN  html=yes
-    ${img}=  Run  openssl base64 -in ${CURDIR}/../selenium-screenshot-1.png
-    Log  ${img}  WARN
-    Wait until page contains  Plone
+    Wait until keyword succeeds  120s  1s
+    ...   Page should contain  Plone
+
 
 Logged out
     Element should not be visible  css=.left.fixed.menu
