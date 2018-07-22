@@ -46,6 +46,7 @@ Open default browser
 
 Frontpage
     Go to  ${FRONTEND_URL}
+    Wait until page contains  Plone
 
 Logged out
     Element should not be visible  css=.left.fixed.menu
