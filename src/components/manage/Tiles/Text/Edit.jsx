@@ -4,15 +4,12 @@
  */
 
 import React, { Component } from 'react';
-import ReactDOMServer from 'react-dom/server';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import Editor from 'draft-js-plugins-editor';
-import { stateFromHTML } from 'draft-js-import-html';
-import { convertToRaw, EditorState } from 'draft-js';
+import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
-import redraft from 'redraft';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
@@ -21,10 +18,7 @@ import {
   extendedBlockRenderMap,
   blockStyleFn,
   inlineToolbarButtons,
-  FromHTMLCustomBlockFn,
   plugins,
-  ToHTMLRenderers,
-  ToHTMLOptions,
 } from '../../../../config';
 
 import addSVG from '../../../../icons/circle-plus.svg';
@@ -75,10 +69,9 @@ export default class Edit extends Component {
     if (!__SERVER__) {
       let editorState;
       if (props.data && props.data.text) {
-        const contentState = stateFromHTML(props.data.text.data, {
-          customBlockFn: FromHTMLCustomBlockFn,
-        });
-        editorState = EditorState.createWithContent(contentState);
+        editorState = EditorState.createWithContent(
+          convertFromRaw(props.data.text),
+        );
       } else {
         editorState = EditorState.createEmpty();
       }
@@ -146,17 +139,7 @@ export default class Edit extends Component {
     this.setState({ editorState });
     this.props.onChangeTile(this.props.tile, {
       ...this.props.data,
-      text: {
-        'content-type': 'text/html',
-        encoding: 'utf8',
-        data: ReactDOMServer.renderToStaticMarkup(
-          redraft(
-            convertToRaw(editorState.getCurrentContent()),
-            ToHTMLRenderers,
-            ToHTMLOptions,
-          ),
-        ),
-      },
+      text: convertToRaw(editorState.getCurrentContent()),
     });
   }
 
@@ -186,19 +169,6 @@ export default class Edit extends Component {
         className={`tile text${this.props.selected ? ' selected' : ''}`}
         ref={node => (this.ref = node)}
       >
-        {/* {this.props.selected && (
-          <div className="toolbar">
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.props.onDeleteTile(this.props.tile)}
-              >
-                <Icon name={trashSVG} size="24px" color="#e40166" />
-              </Button>
-            </Button.Group>
-          </div>
-        )} */}
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}
@@ -240,7 +210,9 @@ export default class Edit extends Component {
         <InlineToolbar />
 
         {this.props.data.text &&
-          this.props.data.text.data === '<p></p>' && (
+          this.props.data.text.blocks &&
+          this.props.data.text.blocks.length === 1 &&
+          this.props.data.text.blocks[0].text === '' && (
             <Button
               basic
               icon
