@@ -85,6 +85,7 @@ the Plone site root
 I log in
     [Arguments]   ${username}=admin  ${password}=secret
     ...           ${selector}=.tools a[href^="/login"]
+    Sleep  10
     ${src}=  Get Source
     Log  ${src}  WARN  html=yes
     Wait until page contains element  css=${selector}
