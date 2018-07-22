@@ -7,17 +7,12 @@ Suite Teardown  Close all browsers
 
 *** Test Cases ***
 
-Scenario: Log into Plone
-  Given the front page
-   When I log in
-   Then I should be logged in
-
-# Scenario: As a site administrator I can add a page
-#   Given a logged in site-administrator
-#     and the Plone site root
-#    When I add a Page with the title 'My Page'
-#    # Then I should see a notification that 'My Page' has been created
-#     and I should see 'My Page' in the navigation
+Scenario: As a site administrator I can add a page
+  Given a logged in site-administrator
+    and the Plone site root
+   When I add a Page with the title 'My Page'
+   # Then I should see a notification that 'My Page' has been created
+    and I should see 'My Page' in the navigation
 
 # Scenario: As a site administrator I can add a text tile to a page
 #   Given a logged in site administrator
@@ -58,9 +53,5 @@ I add a Page with the title '${title}'
 # --- Then -------------------------------------------------------------------
 
 I should see '${title}' in the navigation
-  Log  I should see '${title}' in the navigation  WARN
-  Sleep  10
-  ${src}=  Get Source
-  Log  ${src}  WARN  html=yes
   Wait until page contains element  css=.navigation a
   Page should contain element  css=.navigation a[href='/my-page']

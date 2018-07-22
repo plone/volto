@@ -54,8 +54,10 @@ Open default browser
 # action is carried out (e.g. 'the front page')
 
 A logged in site-administrator
-  Go to  ${FRONTEND_URL}
-  I log in
+    Go to  ${FRONTEND_URL}
+    Wait until keyword succeeds  120s  1s
+    ...   Page fully loaded
+    I log in
 
 the front page
     Go to  ${FRONTEND_URL}
