@@ -55,7 +55,17 @@ Open default browser
     ${status}=  Run Keyword And Ignore Error  Switch browser  default
     Run Keyword If  '${status[0]}' == 'FAIL'  Create default browser
 
-###
+# --- Given ------------------------------------------------------------------
+# Given keywords are pre-conditions of the test.
+# Given keywords should not contain any Selenium code or actions.
+# The first Given keyword should always indicate which user carries out the
+# action (e.g. 'A logged in user')
+# The second Given keyword (with an 'and') should always indicate where the
+# action is carried out (e.g. 'the front page')
+
+A logged in site-administrator
+  Go to  ${FRONTEND_URL}
+  I log in
 
 the front page
     Go to  ${FRONTEND_URL}
@@ -64,15 +74,19 @@ the Plone site root
     Wait until page contains  Home
     Click link  Home
 
-I should be logged out
-    Element should not be visible  css=.left.fixed.menu
 
-I should be logged in
-    Wait until element is visible  css=.left.fixed.menu
+# --- When -------------------------------------------------------------------
+# When keywords declare the action under test.
+# When keywords should always start with 'I' to indicate the user action that
+# is carried out.
+# When keywords should be unique and not have an additional 'and' keyword.
+# We always want to test a single action.
 
 I log in
     [Arguments]   ${username}=admin  ${password}=secret
     ...           ${selector}=.tools a[href^="/login"]
+    ${src}=  Get Source
+    Log  ${src}  WARN  html=yes
     Wait until page contains element  css=${selector}
     Element should be visible  css=${selector}
     Element should contain  css=${selector}  Log in
@@ -85,6 +99,14 @@ I log in
     Click button  id=login-form-submit
     Wait until page does not contain  id=login-form-submit
 
-A logged in site-administrator
-  Go to  ${FRONTEND_URL}
-  I log in
+
+# --- Then -------------------------------------------------------------------
+# Then keywords should always be start with 'I should be' to indicate that
+# we check that something should have happend in the past
+# (in the 'When' keyword or action)
+
+I should be logged out
+    Element should not be visible  css=.left.fixed.menu
+
+I should be logged in
+    Wait until element is visible  css=.left.fixed.menu
