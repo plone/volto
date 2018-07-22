@@ -1,5 +1,6 @@
 *** Settings ***
 
+Library  OperatingSystem
 Library  SeleniumLibrary  timeout=30  implicit_wait=0
 
 *** Variables ***
@@ -46,9 +47,13 @@ Open default browser
 
 Frontpage
     Go to  ${FRONTEND_URL}
-    Sleep  30
+    Sleep  2
+    Go to  ${FRONTEND_URL}
+    Sleep  2
     ${src}=  Get Source
     Log  ${src}  WARN  html=yes
+    ${img}=  Run  openssl base64 -in ${CURDIR}/../selenium-screenshot-1.png
+    Log  ${img}  WARN
     Wait until page contains  Plone
 
 Logged out
