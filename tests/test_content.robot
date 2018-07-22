@@ -54,4 +54,5 @@ I add a Page with the title '${title}'
 
 I should see '${title}' in the navigation
   Wait until page contains element  css=.navigation a
+  Wait until page contains element  css=.navigation a[href='/my-page']
   Page should contain element  css=.navigation a[href='/my-page']
