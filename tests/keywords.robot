@@ -64,7 +64,6 @@ Open default browser
 # action is carried out (e.g. 'the front page')
 
 A logged in site-administrator
-  Log  A logged in site-administrator  WARN
   Go to  ${FRONTEND_URL}
   I log in
 
@@ -78,7 +77,6 @@ Page fully loaded
     Page should contain  Plone
 
 the Plone site root
-    Log  the Plone site root  WARN
     Wait until page contains  Home
     Click link  Home
 
@@ -93,9 +91,6 @@ the Plone site root
 I log in
     [Arguments]   ${username}=admin  ${password}=secret
     ...           ${selector}=.tools a[href^="/login"]
-    Sleep  10
-    ${src}=  Get Source
-    Log  ${src}  WARN  html=yes
     Wait until page contains element  css=${selector}
     Element should be visible  css=${selector}
     Element should contain  css=${selector}  Log in
