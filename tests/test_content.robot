@@ -7,6 +7,11 @@ Suite Teardown  Close all browsers
 
 *** Test Cases ***
 
+Scenario: Log into Plone
+  Given the front page
+   When I log in
+   Then I should be logged in
+
 Scenario: As a site administrator I can add a page
   Given a logged in site-administrator
     and the Plone site root
