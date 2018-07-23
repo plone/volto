@@ -23,7 +23,7 @@ import {
   plugins,
   ToHTMLRenderers,
   ToHTMLOptions,
-} from '../../../config';
+} from '~/config';
 
 const messages = defineMessages({
   default: {

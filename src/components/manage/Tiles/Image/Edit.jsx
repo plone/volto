@@ -17,6 +17,7 @@ import {
 } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import config from '~/config';
 
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
@@ -30,7 +31,6 @@ import imageFullSVG from '../../../../icons/image-full.svg';
 
 import { createContent } from '../../../../actions';
 import { getBaseUrl } from '../../../../helpers';
-import config from '../../../../config';
 
 const messages = defineMessages({
   ImageTileInputPlaceholder: {

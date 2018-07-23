@@ -6,7 +6,7 @@
 import PropTypes from 'prop-types';
 import redraft from 'redraft';
 
-import { ToHTMLRenderers, ToHTMLOptions } from '../../../../config';
+import { ToHTMLRenderers, ToHTMLOptions } from '~/config';
 
 /**
  * View text tile class.

@@ -8,7 +8,7 @@ import { map } from 'lodash';
 import cookie from 'react-cookie';
 import zlib from 'zlib';
 
-import config from '../../config';
+import config from '~/config';
 
 /**
  * Generate sitemap

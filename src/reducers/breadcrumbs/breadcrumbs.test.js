@@ -1,6 +1,6 @@
+import config from '~/config';
 import breadcrumbs from './breadcrumbs';
 import { GET_BREADCRUMBS } from '../../constants/ActionTypes';
-import config from '../../config';
 
 describe('Breadcrumbs reducer', () => {
   it('should return the initial state', () => {

@@ -4,9 +4,9 @@
  */
 
 import { map } from 'lodash';
+import config from '~/config';
 
 import { GET_NAVIGATION } from '../../constants/ActionTypes';
-import config from '../../config';
 
 const initialState = {
   error: null,

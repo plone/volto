@@ -1,9 +1,9 @@
+import config from '~/config';
 import search from './search';
 import {
   RESET_SEARCH_CONTENT,
   SEARCH_CONTENT,
 } from '../../constants/ActionTypes';
-import config from '../../config';
 
 describe('Search reducer', () => {
   it('should return the initial state', () => {

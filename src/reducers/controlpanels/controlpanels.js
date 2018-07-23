@@ -2,13 +2,12 @@
  * Controlpanels reducer.
  * @module reducers/controlpanels/controlpanels
  */
-
+import config from '~/config';
 import {
   GET_CONTROLPANEL,
   LIST_CONTROLPANELS,
   UPDATE_CONTROLPANEL,
 } from '../../constants/ActionTypes';
-import config from '../../config';
 
 const initialState = {
   get: {

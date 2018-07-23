@@ -4,12 +4,12 @@
  */
 
 import { map } from 'lodash';
+import config from '~/config';
 
 import {
   RESET_SEARCH_CONTENT,
   SEARCH_CONTENT,
 } from '../../constants/ActionTypes';
-import config from '../../config';
 
 const initialState = {
   error: null,

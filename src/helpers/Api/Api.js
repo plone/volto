@@ -6,7 +6,7 @@
 import superagent from 'superagent';
 import cookie from 'react-cookie';
 
-import config from '../../config';
+import config from '~/config';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 

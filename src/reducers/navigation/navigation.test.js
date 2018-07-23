@@ -1,6 +1,6 @@
+import config from '~/config';
 import navigation from './navigation';
 import { GET_NAVIGATION } from '../../constants/ActionTypes';
-import config from '../../config';
 
 describe('Navigation reducer', () => {
   it('should return the initial state', () => {

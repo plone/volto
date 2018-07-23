@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
-import { getDefaultEditTileView } from '../../../../config';
+import { getDefaultEditTileView } from '~/config';
 import { Icon } from '../../../../components';
 
 import dragSVG from '../../../../icons/drag.svg';

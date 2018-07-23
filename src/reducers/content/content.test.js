@@ -1,3 +1,4 @@
+import config from '~/config';
 import content from './content';
 import {
   CREATE_CONTENT,
@@ -5,7 +6,6 @@ import {
   UPDATE_CONTENT,
   GET_CONTENT,
 } from '../../constants/ActionTypes';
-import config from '../../config';
 
 describe('Content reducer', () => {
   it('should return the initial state', () => {

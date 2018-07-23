@@ -10,9 +10,9 @@ import { Form, Grid, Label, Dropdown } from 'semantic-ui-react';
 import { compact, concat, fromPairs, map, values, uniqBy } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { bindActionCreators } from 'redux';
+import config from '~/config';
 
 import { resetSearchContent, searchContent } from '../../../actions';
-import config from '../../../config';
 
 const messages = defineMessages({
   no_results_found: {
