@@ -16,10 +16,10 @@ import { Portal } from 'react-portal';
 import { Icon } from 'semantic-ui-react';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import config from '~/config';
 
 import { createContent, getSchema } from '../../../actions';
 import { Form, Toolbar } from '../../../components';
-import config from '../../../config';
 import { getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({

@@ -1,10 +1,10 @@
+import config from '~/config';
 import controlpanels from './controlpanels';
 import {
   GET_CONTROLPANEL,
   LIST_CONTROLPANELS,
   UPDATE_CONTROLPANEL,
 } from '../../constants/ActionTypes';
-import config from '../../config';
 
 describe('Controlpanels reducer', () => {
   it('should return the initial state', () => {

@@ -2,6 +2,7 @@
  * Content reducer.
  * @module reducers/content/content
  */
+import config from '~/config';
 
 import {
   CREATE_CONTENT,
@@ -10,7 +11,6 @@ import {
   GET_CONTENT,
   ORDER_CONTENT,
 } from '../../constants/ActionTypes';
-import config from '../../config';
 
 const initialState = {
   create: {

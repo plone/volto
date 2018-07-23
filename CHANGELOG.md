@@ -16,6 +16,7 @@
 * Refactor actions @robgietema
 * Store text tile data in json @robgietema
 * Fixed tile add menu @robgietema
+* Change to use root import on all config calls @sneridagh
 
 ## 0.6.0 (2018-07-14)
 

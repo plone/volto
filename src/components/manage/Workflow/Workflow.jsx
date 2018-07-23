@@ -10,9 +10,9 @@ import { bindActionCreators } from 'redux';
 import { last } from 'lodash';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
+import config from '~/config';
 
 import { getWorkflow, transitionWorkflow } from '../../../actions';
-import config from '../../../config';
 
 @connect(
   state => ({

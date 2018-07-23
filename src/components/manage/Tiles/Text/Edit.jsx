@@ -11,8 +11,6 @@ import Editor from 'draft-js-plugins-editor';
 import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Icon } from '../../../../components';
-import trashSVG from '../../../../icons/delete.svg';
 import { isEqual } from 'lodash';
 
 import {
@@ -20,8 +18,10 @@ import {
   blockStyleFn,
   inlineToolbarButtons,
   plugins,
-} from '../../../../config';
+} from '~/config';
 
+import { Icon } from '../../../../components';
+import trashSVG from '../../../../icons/delete.svg';
 import addSVG from '../../../../icons/circle-plus.svg';
 import cameraSVG from '../../../../icons/camera.svg';
 import videoSVG from '../../../../icons/videocamera.svg';

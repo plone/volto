@@ -15,11 +15,11 @@ import {
 } from 'react-intl';
 import moment from 'moment';
 import { Button, Grid, Segment } from 'semantic-ui-react';
+import config from '~/config';
 
 import { addComment, deleteComment, listComments } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import { CommentEditModal, Form } from '../../../components';
-import config from '../../../config';
 
 const messages = defineMessages({
   comment: {

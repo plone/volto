@@ -10,7 +10,7 @@ import { Link } from 'react-router';
 import { List } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
-import config from '../../../config';
+import config from '~/config';
 
 @connect(state => ({
   token: state.userSession.token,
