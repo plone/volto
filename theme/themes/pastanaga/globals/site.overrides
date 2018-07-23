@@ -46,7 +46,7 @@ body {
   font-size: 1.125rem;
 }
 
-.tile:not(.inner)::after {
+.tile .tile:not(.inner)::after {
   position: absolute;
   top: -9px;
   left: -9px;
@@ -65,13 +65,13 @@ body {
   display: inline-block;
 }
 
-.tile.selected::after,
-.tile.selected:hover::after {
+.tile .tile.selected::after,
+.tile .tile.selected:hover::after {
   border-color: rgba(120, 192, 215, 0.5);
   border-width: 2px;
 }
 
-.tile:hover::after {
+.tile .tile:hover::after {
   border-color: rgba(120, 192, 215, 0.25);
 }
 
