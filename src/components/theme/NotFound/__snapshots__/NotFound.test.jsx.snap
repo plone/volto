@@ -2,7 +2,7 @@
 
 exports[`NotFound renders a not found component 1`] = `
 <div
-  id="page-not-found"
+  className="ui container view-wrapper"
 >
   <h1>
     <span>

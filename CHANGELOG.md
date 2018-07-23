@@ -7,6 +7,7 @@
 * Add Pastanaga Icon System @sneridagh
 * Support for nested schemas @robgietema
 * New block on return in editor @robgietema
+* Added 404 page on page not found @robgietema
 
 ### Changes
 

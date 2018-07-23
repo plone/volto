@@ -120,7 +120,12 @@ export default parameters => {
                     'Cache-Control': 'public, max-age=600, no-transform',
                   });
                   res
-                    .status(200)
+                    .status(
+                      store.getState().content.get.error &&
+                      store.getState().content.get.error.type === 'NotFound'
+                        ? 404
+                        : 200,
+                    )
                     .send(
                       `<!doctype html> ${renderToStaticMarkup(
                         <Html

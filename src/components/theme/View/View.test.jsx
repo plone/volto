@@ -133,7 +133,7 @@ describe('View', () => {
   it('renders an empty view', () => {
     const store = mockStore({
       actions: { actions },
-      content: {},
+      content: { get: { error: null } },
       intl: {
         locale: 'en',
         messages: {},
@@ -151,7 +151,7 @@ describe('View', () => {
   it('renders a summary view', () => {
     const store = mockStore({
       actions: { actions },
-      content: { data: { layout: 'summary_view' } },
+      content: { data: { layout: 'summary_view' }, get: { error: null } },
       intl: {
         locale: 'en',
         messages: {},
@@ -169,7 +169,7 @@ describe('View', () => {
   it('renders a tabular view', () => {
     const store = mockStore({
       actions: { actions },
-      content: { data: { layout: 'tabular_view' } },
+      content: { data: { layout: 'tabular_view' }, get: { error: null } },
       intl: {
         locale: 'en',
         messages: {},
@@ -187,7 +187,7 @@ describe('View', () => {
   it('renders a document view', () => {
     const store = mockStore({
       actions: { actions },
-      content: { data: {} },
+      content: { data: {}, get: { error: null } },
       intl: {
         locale: 'en',
         messages: {},
