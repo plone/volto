@@ -21,6 +21,7 @@ import {
   Toolbar,
   Actions,
   Display,
+  NotFound,
   Types,
   Workflow,
 } from '../../../components';
@@ -32,6 +33,7 @@ import { getBaseUrl } from '../../../helpers';
   (state, props) => ({
     actions: state.actions.actions,
     content: state.content.data,
+    error: state.content.get.error,
     pathname: props.location.pathname,
     versionId: props.location.query && props.location.query.version_id,
   }),
@@ -100,6 +102,12 @@ export default class View extends Component {
       subjects: PropTypes.arrayOf(PropTypes.string),
       is_folderish: PropTypes.bool,
     }),
+    error: PropTypes.shape({
+      /**
+       * Error type
+       */
+      type: PropTypes.string,
+    }),
     intl: intlShape.isRequired,
   };
 
@@ -112,6 +120,7 @@ export default class View extends Component {
     actions: null,
     content: null,
     versionId: null,
+    error: null,
   };
 
   state = {
@@ -181,10 +190,16 @@ export default class View extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    if (this.props.error) {
+      return (
+        <div id="view">
+          <NotFound />
+        </div>
+      );
+    }
     if (!this.props.content) {
       return <span />;
     }
-
     const RenderedView =
       this.getViewByType() || this.getViewByLayout() || this.getViewDefault();
 

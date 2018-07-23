@@ -6,6 +6,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router';
+import { Container } from 'semantic-ui-react';
 
 /**
  * Not found function.
@@ -13,7 +14,7 @@ import { Link } from 'react-router';
  * @returns {string} Markup of the not found page.
  */
 const NotFound = () => (
-  <div id="page-not-found">
+  <Container className="view-wrapper">
     <h1>
       <FormattedMessage
         id="This page does not seem to exist…"
@@ -45,7 +46,7 @@ const NotFound = () => (
     <p>
       <FormattedMessage id="Thank you." defaultMessage="Thank you." />
     </p>
-  </div>
+  </Container>
 );
 
 export default NotFound;
