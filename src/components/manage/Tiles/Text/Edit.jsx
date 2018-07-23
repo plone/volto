@@ -13,6 +13,7 @@ import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
+import { isEqual } from 'lodash';
 
 import {
   extendedBlockRenderMap,
@@ -136,11 +137,18 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   onChange(editorState) {
+    if (
+      !isEqual(
+        convertToRaw(editorState.getCurrentContent()),
+        convertToRaw(this.state.editorState.getCurrentContent()),
+      )
+    ) {
+      this.props.onChangeTile(this.props.tile, {
+        ...this.props.data,
+        text: convertToRaw(editorState.getCurrentContent()),
+      });
+    }
     this.setState({ editorState });
-    this.props.onChangeTile(this.props.tile, {
-      ...this.props.data,
-      text: convertToRaw(editorState.getCurrentContent()),
-    });
   }
 
   toggleAddNewTile = () =>
@@ -209,19 +217,20 @@ export default class Edit extends Component {
         />
         <InlineToolbar />
 
-        {this.props.data.text &&
-          this.props.data.text.blocks &&
-          this.props.data.text.blocks.length === 1 &&
-          this.props.data.text.blocks[0].text === '' && (
-            <Button
-              basic
-              icon
-              onClick={this.toggleAddNewTile}
-              className="tile-add-button"
-            >
-              <Icon name={addSVG} className="tile-add-button" size="24px" />
-            </Button>
-          )}
+        {(!this.props.data.text ||
+          (this.props.data.text &&
+            this.props.data.text.blocks &&
+            this.props.data.text.blocks.length === 1 &&
+            this.props.data.text.blocks[0].text === '')) && (
+          <Button
+            basic
+            icon
+            onClick={this.toggleAddNewTile}
+            className="tile-add-button"
+          >
+            <Icon name={addSVG} className="tile-add-button" size="24px" />
+          </Button>
+        )}
         {this.state.addNewTileOpened && (
           <div className="add-tile toolbar">
             <Button.Group>

@@ -15,6 +15,7 @@
 * Fix view name class in body element @sneridagh @davilima6
 * Refactor actions @robgietema
 * Store text tile data in json @robgietema
+* Fixed tile add menu @robgietema
 
 ## 0.6.0 (2018-07-14)
 
