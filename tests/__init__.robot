@@ -21,7 +21,7 @@ ${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 ...                    plone.restapi
 ...                    config_module
 @{APPLY_PROFILES}      plone.app.contenttypes:plone-content
-...                    plone.restapi:default
+...                    plone.restapi:tiles
 
 *** Keywords ***
 

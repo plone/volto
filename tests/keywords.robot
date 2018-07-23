@@ -5,9 +5,11 @@ Library  SeleniumLibrary  timeout=30  implicit_wait=0
 
 *** Variables ***
 
-${FIXTURE}    plone.app.robotframework.testing.PLONE_ROBOT_TESTING
-${FRONTEND_URL}  http://localhost:4300/
-${BROWSER}    chrome
+${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+@{APPLY_PROFILES}      plone.app.contenttypes:plone-content
+...                    plone.restapi:tiles
+${FRONTEND_URL}        http://localhost:4300/
+${BROWSER}             chrome
 
 *** Keywords ***
 
@@ -43,9 +45,21 @@ Open default browser
     ${status}=  Run Keyword And Ignore Error  Switch browser  default
     Run Keyword If  '${status[0]}' == 'FAIL'  Create default browser
 
-###
+# --- Given ------------------------------------------------------------------
+# Given keywords are pre-conditions of the test.
+# Given keywords should not contain any Selenium code or actions.
+# The first Given keyword should always indicate which user carries out the
+# action (e.g. 'A logged in user')
+# The second Given keyword (with an 'and') should always indicate where the
+# action is carried out (e.g. 'the front page')
 
-Frontpage
+A logged in site-administrator
+    Go to  ${FRONTEND_URL}
+    Wait until keyword succeeds  120s  1s
+    ...   Page fully loaded
+    I log in
+
+the front page
     Go to  ${FRONTEND_URL}
     Wait until keyword succeeds  120s  1s
     ...   Page fully loaded
@@ -54,13 +68,19 @@ Page fully loaded
     Go to  ${FRONTEND_URL}
     Page should contain  Plone
 
-Logged out
-    Element should not be visible  css=.left.fixed.menu
+the Plone site root
+    Wait until page contains  Home
+    Click link  Home
 
-Logged in
-    Wait until element is visible  css=.left.fixed.menu
 
-Log in
+# --- When -------------------------------------------------------------------
+# When keywords declare the action under test.
+# When keywords should always start with 'I' to indicate the user action that
+# is carried out.
+# When keywords should be unique and not have an additional 'and' keyword.
+# We always want to test a single action.
+
+I log in
     [Arguments]   ${username}=admin  ${password}=secret
     ...           ${selector}=.tools a[href^="/login"]
     Wait until page contains element  css=${selector}
@@ -74,3 +94,15 @@ Log in
     Input text  id=password  ${password}
     Click button  id=login-form-submit
     Wait until page does not contain  id=login-form-submit
+
+
+# --- Then -------------------------------------------------------------------
+# Then keywords should always be start with 'I should be' to indicate that
+# we check that something should have happend in the past
+# (in the 'When' keyword or action)
+
+I should be logged out
+    Element should not be visible  css=.left.fixed.menu
+
+I should be logged in
+    Wait until element is visible  css=.left.fixed.menu

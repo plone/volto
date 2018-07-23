@@ -29,4 +29,3 @@ install:
 script:
 - yarn coverage
 - PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome tests
-- openssl base64 -in selenium-screenshot-1.png
