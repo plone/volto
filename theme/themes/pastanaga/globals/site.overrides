@@ -226,7 +226,8 @@ body {
     &.add-tile {
       z-index: 100;
       top: -10px;
-      left: 49px;
+      left: -9px;
+      transform: none;
     }
   }
 
