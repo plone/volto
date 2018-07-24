@@ -14,8 +14,9 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { isEqual } from 'lodash';
 
 import {
-  extendedBlockRenderMap,
   blockStyleFn,
+  customTiles,
+  extendedBlockRenderMap,
   inlineToolbarButtons,
   plugins,
 } from '~/config';
@@ -85,6 +86,7 @@ export default class Edit extends Component {
         editorState,
         inlineToolbarPlugin,
         addNewTileOpened: false,
+        customTilesOpened: false,
       };
     }
 
@@ -156,8 +158,13 @@ export default class Edit extends Component {
 
   handleClickOutside = e => {
     if (this.ref && doesNodeContainClick(this.ref, e)) return;
-    this.setState(() => ({ addNewTileOpened: false }));
+    this.setState(() => ({
+      addNewTileOpened: false,
+      customTilesOpened: false,
+    }));
   };
+
+  openCustomTileMenu = () => this.setState(() => ({ customTilesOpened: true }));
 
   /**
    * Render method.
@@ -231,42 +238,65 @@ export default class Edit extends Component {
             <Icon name={addSVG} className="tile-add-button" size="24px" />
           </Button>
         )}
-        {this.state.addNewTileOpened && (
-          <div className="add-tile toolbar">
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.props.onChangeTile.bind(this, this.props.tile, {
-                  '@type': 'image',
-                })}
-              >
-                <Icon name={cameraSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.props.onChangeTile.bind(this, this.props.tile, {
-                  '@type': 'video',
-                })}
-              >
-                <Icon name={videoSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <div className="separator" />
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.props.onAddTile.bind(this, 'templatedtiles')}
-              >
-                <Icon name={TemplatedTilesSVG} size="24px" />
-              </Button>
-            </Button.Group>
-          </div>
-        )}
+        {this.state.addNewTileOpened &&
+          !this.state.customTilesOpened && (
+            <div className="add-tile toolbar">
+              <Button.Group>
+                <Button
+                  icon
+                  basic
+                  onClick={this.props.onChangeTile.bind(this, this.props.tile, {
+                    '@type': 'image',
+                  })}
+                >
+                  <Icon name={cameraSVG} size="24px" />
+                </Button>
+              </Button.Group>
+              <Button.Group>
+                <Button
+                  icon
+                  basic
+                  onClick={this.props.onChangeTile.bind(this, this.props.tile, {
+                    '@type': 'video',
+                  })}
+                >
+                  <Icon name={videoSVG} size="24px" />
+                </Button>
+              </Button.Group>
+              {customTiles.length !== 0 && (
+                <React.Fragment>
+                  <div className="separator" />
+                  <Button.Group>
+                    <Button icon basic onClick={this.openCustomTileMenu}>
+                      <Icon name={TemplatedTilesSVG} size="24px" />
+                    </Button>
+                  </Button.Group>
+                </React.Fragment>
+              )}
+            </div>
+          )}
+        {this.state.addNewTileOpened &&
+          this.state.customTilesOpened && (
+            <div className="add-tile toolbar">
+              {customTiles.map(tile => (
+                <Button.Group>
+                  <Button
+                    icon
+                    basic
+                    onClick={this.props.onChangeTile.bind(
+                      this,
+                      this.props.tile,
+                      {
+                        '@type': tile.title,
+                      },
+                    )}
+                  >
+                    <Icon name={tile.icon} size="24px" />
+                  </Button>
+                </Button.Group>
+              ))}
+            </div>
+          )}
         {this.props.selected && (
           <Button
             icon

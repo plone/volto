@@ -8,6 +8,8 @@ import {
   EditVideoTile,
 } from '../components';
 
+const customTiles = [];
+
 const messagesTiles = defineMessages({
   title: {
     id: 'title',
@@ -31,24 +33,6 @@ const messagesTiles = defineMessages({
   },
 });
 
-const AvailableTiles = [
-  {
-    id: 'title',
-  },
-  {
-    id: 'description',
-  },
-  {
-    id: 'text',
-  },
-  {
-    id: 'image',
-  },
-  {
-    id: 'video',
-  },
-];
-
 const getDefaultEditTileView = type => {
   switch (type) {
     case 'title':
@@ -66,4 +50,4 @@ const getDefaultEditTileView = type => {
   }
 };
 
-export { AvailableTiles, getDefaultEditTileView, messagesTiles };
+export { customTiles, getDefaultEditTileView, messagesTiles };
