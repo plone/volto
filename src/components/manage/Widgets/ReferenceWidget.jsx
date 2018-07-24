@@ -47,7 +47,7 @@ export default class ReferenceWidget extends Component {
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
     required: PropTypes.bool,
-    multiple: PropTypes.bool,
+    uniqueItems: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     value: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.object),
@@ -78,7 +78,7 @@ export default class ReferenceWidget extends Component {
     error: [],
     search: [],
     value: null,
-    multiple: true, // BBB: this need to be fixed. Now arrives a list
+    uniqueItems: false, // BBB: this need to be fixed. Now arrives a list
   };
 
   /**
@@ -89,22 +89,22 @@ export default class ReferenceWidget extends Component {
    */
   constructor(props) {
     super(props);
-    const hasValue = props.multiple
-      ? props.value && props.value.length > 0
-      : props.value !== undefined;
+    const hasValue = props.uniqueItems
+      ? props.value !== undefined
+      : props.value && props.value.length > 0;
     this.state = {
       selectedFolder: null,
       choices: hasValue
-        ? props.multiple
-          ? fromPairs(
+        ? props.uniqueItems
+          ? {
+              [props.value['@id']]: this.generateDropdownOptions(props.value),
+            }
+          : fromPairs(
               map(props.value, value => [
                 value['@id'],
                 this.generateDropdownOptions(value),
               ]),
             )
-          : {
-              [props.value['@id']]: this.generateDropdownOptions(props.value),
-            }
         : {},
     };
   }
@@ -208,7 +208,7 @@ export default class ReferenceWidget extends Component {
       description,
       error,
       value,
-      multiple,
+      uniqueItems,
       onChange,
       context,
     } = this.props;
@@ -245,18 +245,18 @@ export default class ReferenceWidget extends Component {
                   messages.no_results_found,
                 )}
                 value={
-                  multiple
-                    ? value && value.length
+                  uniqueItems
+                    ? value && value.length > 0 ? value['@id'] : ''
+                    : value && value.length
                       ? map(value, item => item['@id'])
                       : []
-                    : value && value.length > 0 ? value['@id'] : ''
                 }
                 onChange={(event, data) => {
                   onChange(
                     id,
-                    multiple
-                      ? map(data.value, item => this.state.choices[item].data)
-                      : this.state.choices[data.value].data,
+                    uniqueItems
+                      ? this.state.choices[data.value].data
+                      : map(data.value, item => this.state.choices[item].data)
                   );
                 }}
                 onSearchChange={this.onSearchChange}
