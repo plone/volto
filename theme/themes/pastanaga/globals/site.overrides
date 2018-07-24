@@ -130,12 +130,20 @@ body {
     margin-right: 1em !important;
     float: left;
   }
+
+  .ui.image {
+    width: 50%;
+  }
 }
 
 .tile.align.right {
   img {
     margin-left: 1em !important;
     float: right;
+  }
+
+  .ui.image {
+    width: 50%;
   }
 }
 
