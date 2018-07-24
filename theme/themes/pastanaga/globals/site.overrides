@@ -132,7 +132,7 @@ body {
   }
 
   .ui.image {
-    width: 50%;
+    width: auto;
   }
 }
 
@@ -143,7 +143,7 @@ body {
   }
 
   .ui.image {
-    width: 50%;
+    width: auto;
   }
 }
 
