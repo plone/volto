@@ -24,16 +24,16 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
+#: components/manage/Tiles/Description/Edit
+msgid "Add a description…"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add fieldset"
-msgstr ""
-
-#: components/manage/Tiles/Text/Edit
-msgid "Add text..."
 msgstr ""
 
 #: components/manage/Form/Form
@@ -80,6 +80,10 @@ msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
+msgstr ""
+
+#: components/manage/Tiles/Image/Edit
+msgid "Browse or type URL"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
@@ -221,8 +225,6 @@ msgstr ""
 msgid "Descending"
 msgstr ""
 
-#: components/manage/Form/Form
-#: components/manage/Tiles/Description/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -368,10 +370,6 @@ msgstr ""
 
 #: components/theme/Login/Login
 msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr ""
-
-#: components/manage/Form/Form
-msgid "Image"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
@@ -688,7 +686,6 @@ msgstr ""
 msgid "Tags to remove"
 msgstr ""
 
-#: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr ""
@@ -720,8 +717,6 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
-#: components/manage/Form/Form
-#: components/manage/Tiles/Title/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -735,6 +730,14 @@ msgstr ""
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 msgid "Type"
+msgstr ""
+
+#: components/manage/Tiles/Text/Edit
+msgid "Type text…"
+msgstr ""
+
+#: components/manage/Tiles/Title/Edit
+msgid "Type the title…"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -772,10 +775,6 @@ msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
-msgstr ""
-
-#: components/manage/Form/Form
-msgid "Video"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -843,8 +842,28 @@ msgstr ""
 msgid "Your preferred language"
 msgstr ""
 
+#: config/Tiles
+msgid "description"
+msgstr ""
+
+#: config/Tiles
+msgid "image"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "registration form"
+msgstr ""
+
+#: config/Tiles
+msgid "text"
+msgstr ""
+
+#: config/Tiles
+msgid "title"
+msgstr ""
+
+#: config/Tiles
+msgid "video"
 msgstr ""
 
 #: components/theme/Login/Login

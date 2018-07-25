@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2018-07-10T10:33:31.592Z\n"
+"POT-Creation-Date: 2018-07-25T07:59:12.420Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -29,6 +29,11 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
+#: components/manage/Tiles/Description/Edit
+# defaultMessage: Add a description…
+msgid "Add a description…"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
 msgid "Add field"
@@ -37,11 +42,6 @@ msgstr ""
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add fieldset
 msgid "Add fieldset"
-msgstr ""
-
-#: components/manage/Tiles/Text/Edit
-# defaultMessage: Add text...
-msgid "Add text..."
 msgstr ""
 
 #: components/manage/Form/Form
@@ -97,6 +97,11 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Browse
 msgid "Browse"
+msgstr ""
+
+#: components/manage/Tiles/Image/Edit
+# defaultMessage: Browse or type URL
+msgid "Browse or type URL"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
@@ -264,8 +269,6 @@ msgstr ""
 msgid "Descending"
 msgstr ""
 
-#: components/manage/Form/Form
-#: components/manage/Tiles/Description/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -445,11 +448,6 @@ msgstr ""
 #: components/theme/Login/Login
 # defaultMessage: If you you do not have an account here, head over to the {registrationform}.
 msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr ""
-
-#: components/manage/Form/Form
-# defaultMessage: Image
-msgid "Image"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
@@ -836,7 +834,6 @@ msgstr ""
 msgid "Tags to remove"
 msgstr ""
 
-#: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Text
 msgid "Text"
@@ -875,8 +872,6 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
-#: components/manage/Form/Form
-#: components/manage/Tiles/Title/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -892,6 +887,16 @@ msgstr ""
 #: components/theme/View/TabularView
 # defaultMessage: Type
 msgid "Type"
+msgstr ""
+
+#: components/manage/Tiles/Text/Edit
+# defaultMessage: Type text…
+msgid "Type text…"
+msgstr ""
+
+#: components/manage/Tiles/Title/Edit
+# defaultMessage: Type the title…
+msgid "Type the title…"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -937,11 +942,6 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Users and groups settings
 msgid "Users and groups settings"
-msgstr ""
-
-#: components/manage/Form/Form
-# defaultMessage: Video
-msgid "Video"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -1025,9 +1025,34 @@ msgstr ""
 msgid "Your preferred language"
 msgstr ""
 
+#: config/Tiles
+# defaultMessage: Description
+msgid "description"
+msgstr ""
+
+#: config/Tiles
+# defaultMessage: Image
+msgid "image"
+msgstr ""
+
 #: components/theme/Login/Login
 # defaultMessage: registration form
 msgid "registration form"
+msgstr ""
+
+#: config/Tiles
+# defaultMessage: Text
+msgid "text"
+msgstr ""
+
+#: config/Tiles
+# defaultMessage: Title
+msgid "title"
+msgstr ""
+
+#: config/Tiles
+# defaultMessage: Video
+msgid "video"
 msgstr ""
 
 #: components/theme/Login/Login

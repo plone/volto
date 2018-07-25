@@ -39,16 +39,16 @@ msgstr ""
 msgid "Actions"
 msgstr "Aktionen"
 
+#: components/manage/Tiles/Description/Edit
+msgid "Add a description…"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add fieldset"
-msgstr ""
-
-#: components/manage/Tiles/Text/Edit
-msgid "Add text..."
 msgstr ""
 
 #: components/manage/Form/Form
@@ -96,6 +96,10 @@ msgstr "Basis"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
 msgstr "Blättern"
+
+#: components/manage/Tiles/Image/Edit
+msgid "Browse or type URL"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -236,8 +240,6 @@ msgstr "Löschen"
 msgid "Descending"
 msgstr "Absteigend"
 
-#: components/manage/Form/Form
-#: components/manage/Tiles/Description/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -379,15 +381,11 @@ msgstr "Wenn Sie sicher sind, dass Sie die richtige Adresse eingegeben haben, ko
 
 #: components/theme/Login/Login
 msgid "If you have forgotten your password, {forgotpassword}"
-msgstr ""
+msgstr "Klicken Sie bitte hier, falls Sie Ihr Passwort vergessen haben: {forgotpassword}"
 
 #: components/theme/Login/Login
 msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr ""
-
-#: components/manage/Form/Form
-msgid "Image"
-msgstr ""
+msgstr "Falls Sie noch keinen Zugang haben, {registrationform} Sie sich bitte zunächst."
 
 #: components/manage/Sharing/Sharing
 msgid "Inherit permissions from higher levels"
@@ -425,7 +423,7 @@ msgstr "Ort"
 
 #: components/theme/Login/Login
 msgid "Log In"
-msgstr ""
+msgstr "Anmelden"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
@@ -655,7 +653,7 @@ msgstr "Kurzname"
 
 #: components/theme/Login/Login
 msgid "Sign in to start session"
-msgstr ""
+msgstr "Loggen Sie sich ein"
 
 #: components/theme/Logo/Logo
 msgid "Site"
@@ -703,7 +701,6 @@ msgstr "Hinzuzufügende Tags"
 msgid "Tags to remove"
 msgstr "Zu entfernende Tags"
 
-#: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr ""
@@ -735,8 +732,6 @@ msgstr "Die Seite existiert leider nicht…"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
-#: components/manage/Form/Form
-#: components/manage/Tiles/Title/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -751,6 +746,14 @@ msgstr "Titel"
 #: components/theme/View/TabularView
 msgid "Type"
 msgstr "Typ"
+
+#: components/manage/Tiles/Text/Edit
+msgid "Type text…"
+msgstr ""
+
+#: components/manage/Tiles/Title/Edit
+msgid "Type the title…"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Upload"
@@ -787,10 +790,6 @@ msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
-msgstr ""
-
-#: components/manage/Form/Form
-msgid "Video"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -858,8 +857,28 @@ msgstr "Ihr Standort - entweder eine Stadt und ein Land - oder im Rahmen einer F
 msgid "Your preferred language"
 msgstr "Ihre bevorzugte Sprache"
 
+#: config/Tiles
+msgid "description"
+msgstr ""
+
+#: config/Tiles
+msgid "image"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "registration form"
+msgstr ""
+
+#: config/Tiles
+msgid "text"
+msgstr ""
+
+#: config/Tiles
+msgid "title"
+msgstr ""
+
+#: config/Tiles
+msgid "video"
 msgstr ""
 
 #: components/theme/Login/Login
