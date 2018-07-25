@@ -24,8 +24,11 @@ import {
   Login,
   Logout,
   ModerateComments,
+  PasswordReset,
   PersonalInformation,
   PersonalPreferences,
+  Register,
+  RequestPasswordReset,
   Search,
   Sharing,
   UsersControlpanel,
@@ -71,6 +74,9 @@ export default () => (
     <Route path="/**/history" component={History} />
     <Route path="/**/layout" component={Layout} />
     <Route path="/**/sharing" component={Sharing} />
+    <Route path="/register" component={Register} />
+    <Route path="/password-reset/:token" component={PasswordReset} />
+    <Route path="/password-reset" component={RequestPasswordReset} />
     <Route path="/**" component={View} />
     <Route path="*" component={NotFound} status={404} />
   </Route>

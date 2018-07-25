@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2018-07-25T07:59:12.420Z\n"
+"POT-Creation-Date: 2018-07-25T09:28:23.771Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,16 @@ msgstr ""
 #: components/theme/Footer/Footer
 # defaultMessage: Accessibility
 msgid "Accessibility"
+msgstr ""
+
+#: components/theme/Register/Register
+# defaultMessage: Account Registration Completed
+msgid "Account Registration Completed"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Account activation completed
+msgid "Account activation completed"
 msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
@@ -183,6 +193,7 @@ msgid "Compare"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Confirm password
 msgid "Confirm password"
 msgstr ""
@@ -251,6 +262,9 @@ msgstr ""
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
+#: components/theme/Register/Register
 # defaultMessage: Default
 msgid "Default"
 msgstr ""
@@ -316,8 +330,14 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
+#: components/theme/Register/Register
 # defaultMessage: E-mail
 msgid "E-mail"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: E-mail addresses do not match.
+msgid "E-mail addresses do not match."
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -352,7 +372,14 @@ msgstr ""
 msgid "Enter Video URL"
 msgstr ""
 
+#: components/theme/Register/Register
+# defaultMessage: Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
+msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
 msgstr ""
@@ -362,7 +389,13 @@ msgstr ""
 msgid "Enter your current password."
 msgstr ""
 
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Enter your email address for verification.
+msgid "Enter your email address for verification."
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
 msgstr ""
@@ -400,6 +433,8 @@ msgid "Filter…"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/Register/Register
 # defaultMessage: Full Name
 msgid "Full Name"
 msgstr ""
@@ -529,12 +564,18 @@ msgstr ""
 msgid "Move to top of folder"
 msgstr ""
 
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: My email address is
+msgid "My email address is"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Name
 msgid "Name"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
 # defaultMessage: New password
 msgid "New password"
 msgstr ""
@@ -565,6 +606,11 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Passwords do not match.
+msgid "Passwords do not match."
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 # defaultMessage: Paste
@@ -588,6 +634,11 @@ msgstr ""
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Please fill out the form below to set your password.
+msgid "Please fill out the form below to set your password."
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -629,6 +680,7 @@ msgid "Publishing Date"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Re-enter the password. Make sure the passwords are identical.
 msgid "Re-enter the password. Make sure the passwords are identical."
 msgstr ""
@@ -645,8 +697,14 @@ msgid "Rearrange items by…"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
+#: components/theme/Register/Register
 # defaultMessage: Register
 msgid "Register"
+msgstr ""
+
+#: components/theme/Register/Register
+# defaultMessage: Registration form
+msgid "Registration form"
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -752,6 +810,16 @@ msgstr ""
 msgid "Select…"
 msgstr ""
 
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Set my password
+msgid "Set my password"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Set your password
+msgid "Set your password"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 # defaultMessage: Sharing for {title}
 msgid "Sharing for {title}"
@@ -802,6 +870,11 @@ msgstr ""
 msgid "Specify a youtube video or playlist url"
 msgstr ""
 
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Start password reset
+msgid "Start password reset"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/theme/View/TabularView
 # defaultMessage: State
@@ -847,6 +920,11 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: The URL for your external home page, if you have one.
 msgid "The URL for your external home page, if you have one."
+msgstr ""
+
+#: components/theme/Register/Register
+# defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
+msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -1015,9 +1093,19 @@ msgstr ""
 msgid "You can view the history of your item below."
 msgstr ""
 
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your email is required for reset your password.
+msgid "Your email is required for reset your password."
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
 msgid "Your location - either city and country - or in a company setting, where your office is located."
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+# defaultMessage: Your password has been set successfully. You may now {link} with your new password.
+msgid "Your password has been set successfully. You may now {link} with your new password."
 msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences
@@ -1025,14 +1113,39 @@ msgstr ""
 msgid "Your preferred language"
 msgstr ""
 
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Forgot your password?
+msgid "box_forgot_password_option"
+msgstr ""
+
 #: config/Tiles
 # defaultMessage: Description
 msgid "description"
 msgstr ""
 
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password.
+msgid "description_lost_password"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Your password reset request has been mailed. It should arrive in your mailbox shortly. When you receive the message, visit the address it contains to reset your password.
+msgid "description_sent_password"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Password reset confirmation sent
+msgid "heading_sent_password"
+msgstr ""
+
 #: config/Tiles
 # defaultMessage: Image
 msgid "image"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: My email address is
+msgid "label_my_email_address_is"
 msgstr ""
 
 #: components/theme/Login/Login

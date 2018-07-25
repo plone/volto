@@ -245,12 +245,12 @@ export class LoginComponent extends Component {
                             defaultMessage="If you have forgotten your password, {forgotpassword}"
                             values={{
                               forgotpassword: (
-                                <a href="#">
+                                <Link to="/password-reset">
                                   <FormattedMessage
                                     id="we can send you a new one"
                                     defaultMessage="we can send you a new one"
                                   />
-                                </a>
+                                </Link>
                               ),
                             }}
                           />
