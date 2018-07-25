@@ -22,6 +22,7 @@
 * Change to use root import on all config calls @sneridagh
 * Fix CSS on tile image view @sneridagh
 * Fix broken CSS on alignments left/right @sneridagh
+* Tile DE literals translations @sneridagh
 
 ## 0.6.0 (2018-07-14)
 
