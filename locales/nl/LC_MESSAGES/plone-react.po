@@ -34,6 +34,14 @@ msgstr ""
 msgid "Accessibility"
 msgstr "Toegankelijkheid"
 
+#: components/theme/Register/Register
+msgid "Account Registration Completed"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+msgid "Account activation completed"
+msgstr ""
+
 #: components/manage/Controlpanels/ModerateComments
 msgid "Action"
 msgstr ""
@@ -171,6 +179,7 @@ msgid "Compare"
 msgstr "Vergelijken"
 
 #: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
 msgid "Confirm password"
 msgstr "Wachtwoord bevestigen"
 
@@ -229,6 +238,9 @@ msgstr ""
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
+#: components/theme/Register/Register
 msgid "Default"
 msgstr "Standaard"
 
@@ -283,8 +295,13 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Drag en drop bestanden van uw computer naar dit gebied of klik op de “Bladeren” knop."
 
 #: components/manage/Preferences/PersonalInformation
+#: components/theme/Register/Register
 msgid "E-mail"
 msgstr "E-mailadres"
+
+#: components/theme/PasswordReset/PasswordReset
+msgid "E-mail addresses do not match."
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
@@ -312,7 +329,13 @@ msgstr "{title} bewerken"
 msgid "Enter Video URL"
 msgstr ""
 
+#: components/theme/Register/Register
+msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
 msgstr "Vul de volledige naam in, bijvoorbeeld Jan Smit."
 
@@ -320,7 +343,12 @@ msgstr "Vul de volledige naam in, bijvoorbeeld Jan Smit."
 msgid "Enter your current password."
 msgstr "Voer uw huidige wachtwoord in."
 
+#: components/theme/PasswordReset/PasswordReset
+msgid "Enter your email address for verification."
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
 
@@ -351,6 +379,8 @@ msgid "Filter…"
 msgstr "Filter…"
 
 #: components/manage/Preferences/PersonalInformation
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/Register/Register
 msgid "Full Name"
 msgstr "Volledige naam"
 
@@ -455,11 +485,16 @@ msgstr "Verplaats naar onder in de map"
 msgid "Move to top of folder"
 msgstr "Verplaats naar boven in de map"
 
+#: components/theme/PasswordReset/PasswordReset
+msgid "My email address is"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 msgid "Name"
 msgstr "Naam"
 
 #: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
 msgid "New password"
 msgstr "Nieuw wachtwoord"
 
@@ -484,6 +519,10 @@ msgstr ""
 msgid "Password"
 msgstr "Wachtwoord"
 
+#: components/theme/PasswordReset/PasswordReset
+msgid "Passwords do not match."
+msgstr ""
+
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Paste"
@@ -504,6 +543,10 @@ msgstr "Persoonlijke voorkeuren"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Gebruikers die verantwoordelijk zijn voor de inhoud van dit item. De eindverantwoordelijke vermeldt u als eerste."
+
+#: components/theme/PasswordReset/PasswordReset
+msgid "Please fill out the form below to set your password."
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "Plone Foundation"
@@ -537,6 +580,7 @@ msgid "Publishing Date"
 msgstr "Ingangsdatum"
 
 #: components/manage/Preferences/ChangePassword
+#: components/theme/PasswordReset/PasswordReset
 msgid "Re-enter the password. Make sure the passwords are identical."
 msgstr "Voer het wachtwoord nogmaals in. Zorg dat de wachtwoorden identiek zijn."
 
@@ -550,7 +594,12 @@ msgid "Rearrange items by…"
 msgstr "Items rangschikken op…"
 
 #: components/theme/Anontools/Anontools
+#: components/theme/Register/Register
 msgid "Register"
+msgstr ""
+
+#: components/theme/Register/Register
+msgid "Registration form"
 msgstr ""
 
 #: components/manage/Actions/Actions
@@ -638,6 +687,14 @@ msgstr ""
 msgid "Select…"
 msgstr "Selecteer…"
 
+#: components/theme/PasswordReset/PasswordReset
+msgid "Set my password"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+msgid "Set your password"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 msgid "Sharing for {title}"
 msgstr "Delen van {title}"
@@ -679,6 +736,10 @@ msgstr ""
 msgid "Specify a youtube video or playlist url"
 msgstr ""
 
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "Start password reset"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/theme/View/TabularView
 msgid "State"
@@ -716,6 +777,10 @@ msgstr "Bedankt."
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
 msgstr "Het internet adres van uw externe home page, indien u die heeft."
+
+#: components/theme/Register/Register
+msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
@@ -853,20 +918,48 @@ msgstr "U kunt de verschillen tussen de revisies hieronder bekijken."
 msgid "You can view the history of your item below."
 msgstr "U kunt de geschiedenis van uw item hieronder bekijken."
 
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "Your email is required for reset your password."
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 msgid "Your location - either city and country - or in a company setting, where your office is located."
 msgstr "Uw woonplaats - stad en land - of als u vanuit een bedrijf werkt, waar uw kantoor is gevestigd."
+
+#: components/theme/PasswordReset/PasswordReset
+msgid "Your password has been set successfully. You may now {link} with your new password."
+msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Your preferred language"
 msgstr "De taal van uw voorkeur"
 
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "box_forgot_password_option"
+msgstr ""
+
 #: config/Tiles
 msgid "description"
 msgstr ""
 
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "description_lost_password"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "description_sent_password"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "heading_sent_password"
+msgstr ""
+
 #: config/Tiles
 msgid "image"
+msgstr ""
+
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "label_my_email_address_is"
 msgstr ""
 
 #: components/theme/Login/Login

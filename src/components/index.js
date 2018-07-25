@@ -41,6 +41,9 @@ export Comments from './theme/Comments/Comments';
 export CommentEditModal from './theme/Comments/CommentEditModal';
 export SocialSharing from './theme/SocialSharing/SocialSharing';
 export Tags from './theme/Tags/Tags';
+export Register from './theme/Register/Register';
+export PasswordReset from './theme/PasswordReset/PasswordReset';
+export RequestPasswordReset from './theme/PasswordReset/RequestPasswordReset';
 
 export Actions from './manage/Actions/Actions';
 export Add from './manage/Add/Add';

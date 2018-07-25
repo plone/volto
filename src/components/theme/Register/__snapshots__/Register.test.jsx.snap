@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login renders a login component 1`] = `
+exports[`Register renders a register component 1`] = `
 <div
-  id="page-login"
+  id="page-register"
 >
   <div
-    className="ui text container"
+    className="ui container"
   >
     <form
       action={undefined}
@@ -17,24 +17,15 @@ exports[`Login renders a login component 1`] = `
         className="ui raised segments"
       >
         <div
-          className="ui segment primary"
-        >
-          <span>
-            Login Name
-          </span>
-        </div>
-        <div
-          className="ui secondary segment"
-        >
-          <span>
-            Sign in to start session
-          </span>
-        </div>
-        <div
-          className="ui segment form"
+          className="ui segment"
         >
           <div
-            className="inline field help"
+            className="ui segment primary"
+          >
+            Registration form
+          </div>
+          <div
+            className="inline required field help"
           >
             <div
               className="ui grid"
@@ -49,11 +40,9 @@ exports[`Login renders a login component 1`] = `
                     className="wrapper"
                   >
                     <label
-                      htmlFor="login"
+                      htmlFor="field-fullname"
                     >
-                      <span>
-                        Login Name
-                      </span>
+                      Full Name
                     </label>
                   </div>
                 </div>
@@ -64,13 +53,13 @@ exports[`Login renders a login component 1`] = `
                     className="ui input"
                   >
                     <input
-                      disabled={undefined}
-                      id="login"
-                      name="login"
+                      disabled={false}
+                      id="field-fullname"
+                      name="fullname"
                       onChange={[Function]}
-                      placeholder="Login Name"
-                      tabIndex={1}
+                      tabIndex={undefined}
                       type="text"
+                      value=""
                     />
                   </div>
                 </div>
@@ -84,25 +73,14 @@ exports[`Login renders a login component 1`] = `
                   <p
                     className="help"
                   >
-                    <span>
-                      If you you do not have an account here, head over to the 
-                      <a
-                        onClick={[Function]}
-                        style={Object {}}
-                      >
-                        <span>
-                          registration form
-                        </span>
-                      </a>
-                      .
-                    </span>
+                    Enter full name, e.g. John Smith.
                   </p>
                 </div>
               </div>
             </div>
           </div>
           <div
-            className="inline field help"
+            className="inline required field help"
           >
             <div
               className="ui grid"
@@ -111,34 +89,32 @@ exports[`Login renders a login component 1`] = `
                 className="stretched row"
               >
                 <div
-                  className="stretched four wide column"
+                  className="four wide column"
                 >
                   <div
                     className="wrapper"
                   >
                     <label
-                      htmlFor="password"
+                      htmlFor="field-email"
                     >
-                      <span>
-                        Password
-                      </span>
+                      E-mail
                     </label>
                   </div>
                 </div>
                 <div
-                  className="stretched eight wide column"
+                  className="eight wide column"
                 >
                   <div
                     className="ui input"
                   >
                     <input
-                      disabled={undefined}
-                      id="password"
-                      name="password"
+                      disabled={false}
+                      id="field-email"
+                      name="email"
                       onChange={[Function]}
-                      placeholder="Password"
-                      tabIndex={2}
-                      type="password"
+                      tabIndex={undefined}
+                      type="text"
+                      value=""
                     />
                   </div>
                 </div>
@@ -152,17 +128,7 @@ exports[`Login renders a login component 1`] = `
                   <p
                     className="help"
                   >
-                    <span>
-                      If you have forgotten your password, 
-                      <a
-                        onClick={[Function]}
-                        style={Object {}}
-                      >
-                        <span>
-                          we can send you a new one
-                        </span>
-                      </a>
-                    </span>
+                    Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
                   </p>
                 </div>
               </div>
@@ -175,11 +141,10 @@ exports[`Login renders a login component 1`] = `
           <button
             className="ui big basic circular icon primary right floated button"
             disabled={undefined}
-            id="login-form-submit"
             onClick={[Function]}
             role="button"
             tabIndex={undefined}
-            title="Log in"
+            title="Register"
             type="submit"
           >
             <i
@@ -187,21 +152,6 @@ exports[`Login renders a login component 1`] = `
               className="arrow right icon"
             />
           </button>
-          <a
-            className="ui big basic circular icon secondary right floated button"
-            disabled={undefined}
-            id="login-form-cancel"
-            onClick={[Function]}
-            role="button"
-            style={Object {}}
-            tabIndex={undefined}
-            title="Cancel"
-          >
-            <i
-              aria-hidden="true"
-              className="remove icon"
-            />
-          </a>
         </div>
       </div>
     </form>

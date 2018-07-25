@@ -18,4 +18,6 @@ export const nonContentRoutes = [
   '/controlpanel',
   '/personal-information',
   '/personal-preferences',
+  'register',
+  'password-reset',
 ];
