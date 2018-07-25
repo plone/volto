@@ -734,7 +734,7 @@ msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
-msgstr ""
+msgstr "E-Mail anfordern"
 
 #: components/manage/Contents/Contents
 #: components/theme/View/TabularView
@@ -932,7 +932,7 @@ msgstr "Ihre bevorzugte Sprache"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
-msgstr ""
+msgstr "Passwort vergessen?"
 
 #: config/Tiles
 msgid "description"
@@ -940,7 +940,7 @@ msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_lost_password"
-msgstr ""
+msgstr "Aus Sicherheitsgründen speichern wir Ihr Passwort verschlüsselt und können es Ihnen daher nicht per E-Mail schicken. Um ein neues Passwort zu erhalten, tragen Sie unten bitte Ihren Benutzernamen ein. Wir werden Ihnen daraufhin eine E-Mail schicken, in der das weitere Vorgehen beschrieben ist."
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_sent_password"
@@ -956,11 +956,11 @@ msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
-msgstr ""
+msgstr "Meine E-Mail-Adresse lautet"
 
 #: components/theme/Login/Login
 msgid "registration form"
-msgstr ""
+msgstr "Registrierungsformular"
 
 #: config/Tiles
 msgid "text"
@@ -976,7 +976,7 @@ msgstr ""
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"
-msgstr ""
+msgstr "Wir schicken Ihnen gerne ein neues Passwort zu."
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"
