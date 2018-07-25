@@ -49,7 +49,7 @@ msgstr "Aktionen"
 
 #: components/manage/Tiles/Description/Edit
 msgid "Add a description…"
-msgstr "Fügen Sie eine Beschreibung hinzu…"
+msgstr "Beschreibung hinzufügen…"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
@@ -103,11 +103,11 @@ msgstr "Basis"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
-msgstr "Blättern"
+msgstr "Durchsuchen"
 
 #: components/manage/Tiles/Image/Edit
 msgid "Browse or type URL"
-msgstr "Durchsuchen oder URL eingeben"
+msgstr "Inhalte Durchsuchen oder URL eingeben"
 
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -323,7 +323,7 @@ msgstr "{title} bearbeiten"
 
 #: components/manage/Tiles/Video/Edit
 msgid "Enter Video URL"
-msgstr "Geben Sie die Video-URL ein"
+msgstr "Video-URL eingeben"
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -818,7 +818,7 @@ msgstr "Text eingeben…"
 
 #: components/manage/Tiles/Title/Edit
 msgid "Type the title…"
-msgstr "Gib den Titel ein…"
+msgstr "Titel eingeben…"
 
 #: components/manage/Contents/Contents
 msgid "Upload"
