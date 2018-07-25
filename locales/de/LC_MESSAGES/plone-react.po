@@ -32,11 +32,11 @@ msgstr "Barrierefreiheit"
 
 #: components/theme/Register/Register
 msgid "Account Registration Completed"
-msgstr ""
+msgstr "Die Registrierung Ihres Zugangs wurde erfolgreich abgeschlossen."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Account activation completed"
-msgstr ""
+msgstr "Passwort gesetzt."
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Action"
@@ -297,7 +297,7 @@ msgstr "E-Mail"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
-msgstr ""
+msgstr "E-Mail-Adressen stimmen nicht überein."
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
@@ -327,7 +327,7 @@ msgstr ""
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr ""
+msgstr "Tragen Sie Ihre E-Mail-Adresse ein, mit der Sie sich künftig anmelden müssen. Wir respektieren den Datenschutz und werden die E-Mail-Adresse nicht an Dritte weitergeben und auch nirgends anzeigen."
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
@@ -341,7 +341,7 @@ msgstr "Geben Sie Ihr aktuelles Passwort ein."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your email address for verification."
-msgstr ""
+msgstr "Tragen Sie zur Überprüfung Ihre E-Mail-Adresse ein."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -483,7 +483,7 @@ msgstr "Zum Unterseite des Ordners wechseln"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "My email address is"
-msgstr ""
+msgstr "Meine E-Mail-Adresse lautet"
 
 #: components/manage/Sharing/Sharing
 msgid "Name"
@@ -517,7 +517,7 @@ msgstr "Passwort"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Passwords do not match."
-msgstr ""
+msgstr "Die Passwörter stimmen nicht überein."
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -542,7 +542,7 @@ msgstr "Eine Liste von Personen, die an der Erstellung dieses Artikels beteiligt
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
-msgstr ""
+msgstr "Bitte füllen Sie das unten stehende Formular aus, um Ihr Passwort neu zu setzen."
 
 #: components/theme/Footer/Footer
 msgid "Plone Foundation"
@@ -592,11 +592,11 @@ msgstr ""
 #: components/theme/Anontools/Anontools
 #: components/theme/Register/Register
 msgid "Register"
-msgstr ""
+msgstr "Registrieren"
 
 #: components/theme/Register/Register
 msgid "Registration form"
-msgstr ""
+msgstr "Registrierungsformular"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -685,7 +685,7 @@ msgstr "Wähle…"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set my password"
-msgstr ""
+msgstr "Passwort neu setzen"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set your password"
@@ -776,7 +776,7 @@ msgstr "Die URL Ihrer externen Homepage, sollten Sie eine besitzen."
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
-msgstr ""
+msgstr "Bitte prüfen Sie Ihr E-Mail Postfach. Sie sollten eine E-Mail erhalten haben mit Anweisungen, wie Sie Ihren Zugang aktivieren können."
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
@@ -924,7 +924,7 @@ msgstr "Ihr Standort - entweder eine Stadt und ein Land - oder im Rahmen einer F
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Your password has been set successfully. You may now {link} with your new password."
-msgstr ""
+msgstr "Ihr Passwort wurde erfolgreich vergeben. Sie können sich jetzt mit Ihrem neuen Passwort {link}."
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Your preferred language"
@@ -944,11 +944,11 @@ msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_sent_password"
-msgstr ""
+msgstr "Der Link, um das Passwort neu zu setzen, wurde Ihnen zugesendet. Die E-Mail sollte in Kürze in Ihrem Postfach ankommen. Wenn Sie die Nachricht erhalten haben, klicken Sie auf den Link in der E-Mail, um zu der Webseite zu gelangen, wo Sie das Passwort neu setzen können."
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
-msgstr ""
+msgstr "Bestätigung für das Zurücksetzen des Passwortes wurde gesendet!"
 
 #: config/Tiles
 msgid "image"
