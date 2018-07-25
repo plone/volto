@@ -128,6 +128,7 @@ body {
 .tile.align.left {
   img {
     margin-right: 1em !important;
+    margin-bottom: 1em;
     float: left;
   }
 
@@ -138,6 +139,7 @@ body {
 
 .tile.align.right {
   img {
+    margin-bottom: 1em;
     margin-left: 1em !important;
     float: right;
   }
@@ -156,6 +158,10 @@ body {
 
 .tile.align.full {
   width: 100% !important;
+}
+
+.tile.align:not(.right):not(.left) {
+  clear: both;
 }
 
 .title.tile .public-DraftEditorPlaceholder-inner {
