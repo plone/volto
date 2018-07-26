@@ -90,9 +90,6 @@ exports.start = function(projectName) {
   
   To build a version for production:
     ${output.cmd(commands.build)}
-
-  To run the server in production:
-    ${output.cmd(commands.start)}
     
   Questions? Feedback? Please let us know!
   ${chalk.green('')}
