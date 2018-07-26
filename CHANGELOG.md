@@ -24,6 +24,7 @@
 * Fix CSS on tile image view @sneridagh
 * Fix broken CSS on alignments left/right @sneridagh
 * Tile DE literals translations @sneridagh
+* Pass location as prop to child views in main View component in case we require it in some views @sneridagh
 
 ## 0.6.0 (2018-07-14)
 
