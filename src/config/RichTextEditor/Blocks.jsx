@@ -1,4 +1,3 @@
-import React from 'react';
 import { Map } from 'immutable';
 import { DefaultDraftBlockRenderMap } from 'draft-js';
 
@@ -21,4 +20,6 @@ const blockStyleFn = contentBlock => {
   return null;
 };
 
-export { extendedBlockRenderMap, blockStyleFn };
+const listBlockTypes = ['unordered-list-item', 'ordered-list-item'];
+
+export { extendedBlockRenderMap, blockStyleFn, listBlockTypes };

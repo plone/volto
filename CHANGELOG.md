@@ -10,6 +10,7 @@
 * Added 404 page on page not found @robgietema
 * Custom tiles support @sneridagh
 * Add full register/password reset views @sneridagh
+* Make the list block types configurable @robgietema
 
 ### Changes
 

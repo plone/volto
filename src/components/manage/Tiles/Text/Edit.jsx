@@ -11,7 +11,7 @@ import Editor from 'draft-js-plugins-editor';
 import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { isEqual } from 'lodash';
+import { includes, isEqual } from 'lodash';
 
 import {
   blockStyleFn,
@@ -19,6 +19,7 @@ import {
   extendedBlockRenderMap,
   inlineToolbarButtons,
   plugins,
+  listBlockTypes,
 } from '~/config';
 
 import { Icon } from '../../../../components';
@@ -199,10 +200,7 @@ export default class Edit extends Component {
               anchorKey,
             );
             const blockType = currentContentBlock.getType();
-            if (
-              blockType !== 'unordered-list-item' &&
-              blockType !== 'ordered-list-item'
-            ) {
+            if (!includes(listBlockTypes, blockType)) {
               this.props.onSelectTile(
                 this.props.onAddTile('text', this.props.index + 1),
               );
