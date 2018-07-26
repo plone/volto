@@ -33,6 +33,7 @@ export Logout from '@plone/volto/components/theme/Logout/Logout';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
 export Pagination from '@plone/volto/components/theme/Pagination/Pagination';
 export SummaryView from '@plone/volto/components/theme/View/SummaryView';
+export AlbumView from '@plone/volto/components/theme/View/AlbumView';
 export Search from '@plone/volto/components/theme/Search/Search';
 export SearchTags from '@plone/volto/components/theme/Search/SearchTags';
 export TabularView from '@plone/volto/components/theme/View/TabularView';

@@ -1,3 +1,4 @@
+import AlbumView from '@plone/volto/components/theme/View/AlbumView';
 import DocumentView from '@plone/volto/components/theme/View/DocumentView';
 import FileView from '@plone/volto/components/theme/View/FileView';
 import ImageView from '@plone/volto/components/theme/View/ImageView';
@@ -11,6 +12,7 @@ export const layoutViews = {
   summary_view: SummaryView,
   tabular_view: TabularView,
   listing_view: ListingView,
+  album_view: AlbumView,
 };
 
 // Content Types View Registry

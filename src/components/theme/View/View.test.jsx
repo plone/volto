@@ -20,6 +20,11 @@ jest.mock('./TabularView', () => {
   dummyComponent.displayName = 'dummyComponent';
   return dummyComponent;
 });
+jest.mock('./AlbumView', () => {
+  const dummyComponent = jest.fn(() => <div id="AlbumView" />);
+  dummyComponent.displayName = 'dummyComponent';
+  return dummyComponent;
+});
 jest.mock('./DocumentView', () => {
   const dummyComponent = jest.fn(() => <div id="DocumentView" />);
   dummyComponent.displayName = 'dummyComponent';
@@ -170,6 +175,24 @@ describe('View', () => {
     const store = mockStore({
       actions: { actions },
       content: { data: { layout: 'tabular_view' }, get: { error: null } },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <View location={{ pathname: '/test' }} />
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
+  it('renders an album view', () => {
+    const store = mockStore({
+      actions: { actions },
+      content: { data: { layout: 'album_view' }, get: { error: null } },
       intl: {
         locale: 'en',
         messages: {},

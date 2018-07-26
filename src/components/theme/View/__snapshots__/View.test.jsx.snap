@@ -48,4 +48,20 @@ exports[`View renders a tabular view 1`] = `
 </div>
 `;
 
+exports[`View renders an album view 1`] = `
+<div
+  id="view"
+>
+  <div
+    id="AlbumView"
+  />
+  <div
+    id="SocialSharing"
+  />
+  <div
+    id="Portal"
+  />
+</div>
+`;
+
 exports[`View renders an empty view 1`] = `<span />`;

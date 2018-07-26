@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlbumView renders a AlbumView view component 1`] = `
+<div
+  id="page-home"
+>
+  <article
+    id="content"
+  >
+    <header>
+      <h1
+        className="documentFirstHeading"
+      >
+        Hello World!
+      </h1>
+      <p
+        className="description"
+      >
+        Hi
+      </p>
+    </header>
+    <section
+      id="content-core"
+    >
+      <div
+        className="ui doubling stackable cards"
+      >
+        <a
+          className="ui centered card"
+          href={undefined}
+          onClick={[Function]}
+          style={Object {}}
+          title="My item"
+        >
+          <div
+            className="image-wrapper"
+          >
+            <img
+              alt="My image caption"
+              className="ui image"
+              src="file:///preview.jpg"
+            />
+          </div>
+          <div
+            className="center aligned content"
+          >
+            <div
+              className="header"
+            >
+              My item
+            </div>
+            <div
+              className="description"
+            >
+              My item description
+            </div>
+          </div>
+        </a>
+        <div
+          className="ui card"
+          href={undefined}
+          onClick={[Function]}
+        />
+        <div
+          className="ui card"
+          href={undefined}
+          onClick={[Function]}
+        />
+        <div
+          className="ui card"
+          href={undefined}
+          onClick={[Function]}
+        />
+      </div>
+    </section>
+  </article>
+</div>
+`;
+
+exports[`AlbumView renders a AlbumView view component with SVGs 1`] = `
+<div
+  id="page-home"
+>
+  <article
+    id="content"
+  >
+    <header>
+      <h1
+        className="documentFirstHeading"
+      >
+        Hello World!
+      </h1>
+      <p
+        className="description"
+      >
+        Hi
+      </p>
+    </header>
+    <section
+      id="content-core"
+    >
+      <div
+        className="ui doubling stackable cards"
+      >
+        <a
+          className="ui centered card"
+          href={undefined}
+          onClick={[Function]}
+          style={Object {}}
+          title="My item"
+        >
+          <div
+            className="image-wrapper"
+          >
+            <img
+              alt="My image caption"
+              className="ui image"
+              src="file:///preview.svg"
+            />
+          </div>
+          <div
+            className="center aligned content"
+          >
+            <div
+              className="header"
+            >
+              My item
+            </div>
+            <div
+              className="description"
+            >
+              My item description
+            </div>
+          </div>
+        </a>
+        <div
+          className="ui card"
+          href={undefined}
+          onClick={[Function]}
+        />
+        <div
+          className="ui card"
+          href={undefined}
+          onClick={[Function]}
+        />
+        <div
+          className="ui card"
+          href={undefined}
+          onClick={[Function]}
+        />
+      </div>
+    </section>
+  </article>
+</div>
+`;
