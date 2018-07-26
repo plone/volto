@@ -9,7 +9,11 @@ import { nonContentRoutes } from './NonContentRoutes';
 import ToHTMLRenderers, {
   options as ToHTMLOptions,
 } from './RichTextEditor/ToHTML';
-import { extendedBlockRenderMap, blockStyleFn } from './RichTextEditor/Blocks';
+import {
+  extendedBlockRenderMap,
+  blockStyleFn,
+  listBlockTypes,
+} from './RichTextEditor/Blocks';
 import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
 import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
 import { customTiles, getDefaultEditTileView, messagesTiles } from './Tiles';
@@ -20,6 +24,7 @@ export { nonContentRoutes };
 export {
   extendedBlockRenderMap,
   blockStyleFn,
+  listBlockTypes,
   FromHTMLCustomBlockFn,
   inlineToolbarButtons,
   plugins,
