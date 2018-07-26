@@ -10,7 +10,7 @@ import { Button, Divider, Menu } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 import cookie from 'react-cookie';
 import { injectIntl } from 'react-intl';
-
+import { BodyClass } from '../../../helpers';
 import LogoImage from './pastanaga.svg';
 
 @injectIntl
@@ -92,6 +92,7 @@ export default class Toolbar extends Component {
     return (
       this.props.token && (
         <Fragment>
+          <BodyClass className="has-toolbar" />
           <Menu
             vertical
             borderless

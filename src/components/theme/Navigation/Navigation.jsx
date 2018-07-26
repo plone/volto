@@ -15,7 +15,7 @@ import { Menu, Segment } from 'semantic-ui-react';
 
 import { Anontools } from '../../../components';
 import { getNavigation } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
+import { BodyClass, getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -70,7 +70,6 @@ export default class Navigation extends Component {
     this.closeMobileMenu = this.closeMobileMenu.bind(this);
     this.state = {
       isMobileMenuOpen: false,
-      bodyClasses: null,
     };
   }
 
@@ -114,11 +113,6 @@ export default class Navigation extends Component {
    * @returns {undefined}
    */
   toggleMobileMenu() {
-    this.setState({
-      bodyClasses:
-        Helmet.peek().bodyAttributes.class +
-        (!this.state.isMobileMenuOpen ? ' open-mobile-menu' : ''),
-    });
     this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen });
   }
 
@@ -131,9 +125,6 @@ export default class Navigation extends Component {
     if (!this.state.isMobileMenuOpen) {
       return;
     }
-    this.setState({
-      bodyClasses: Helmet.peek().bodyAttributes.class,
-    });
     this.setState({ isMobileMenuOpen: false });
   }
 
@@ -145,9 +136,6 @@ export default class Navigation extends Component {
   render() {
     return (
       <Fragment>
-        {this.state.isMobileMenuOpen && (
-          <Helmet bodyAttributes={{ class: this.state.bodyClasses }} />
-        )}
         <div className="hamburger-wrapper mobile only">
           <button
             className={
