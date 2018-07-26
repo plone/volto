@@ -68,6 +68,10 @@ export default class View extends Component {
      * Pathname of the object
      */
     pathname: PropTypes.string.isRequired,
+    location: PropTypes.shape({
+      query: PropTypes.object,
+      pathname: PropTypes.string,
+    }).isRequired,
     /**
      * Version id of the object
      */
@@ -223,7 +227,10 @@ export default class View extends Component {
           }}
         />
 
-        <RenderedView content={this.props.content} />
+        <RenderedView
+          content={this.props.content}
+          location={this.props.location}
+        />
 
         {this.props.content.subjects &&
           this.props.content.subjects.length > 0 && (
