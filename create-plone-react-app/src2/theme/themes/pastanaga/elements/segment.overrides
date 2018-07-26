@@ -1,0 +1,171 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.basic.segment.header-wrapper {
+  margin-bottom: 0;
+}
+
+.ui.basic.segment .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .logo-nav-wrapper {
+    flex: 1;
+    align-items: center;
+    display: flex;
+  }
+
+  @media only screen and (max-width: @tabletBreakpoint) {
+    flex-direction: column;
+    align-items: initial;
+
+    .logo-nav-wrapper {
+      justify-content: space-between;
+      align-items: initial;
+    }
+  }
+}
+
+.ui.basic.segment.content-area {
+  flex: 1 0 auto; // IE11 fix, can't barely use  flex: 1;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.ui.primary.segment {
+  border-bottom: @4px solid @greyBorderColor;
+  font-size: @16px;
+  font-weight: @headerFontWeight;
+}
+
+.ui.secondary.segment {
+  font-size: @12px;
+}
+
+.ui.discreet.segment {
+  color: @lightGrey;
+  font-size: @12px;
+}
+
+.ui.form.segment {
+    padding: 0;
+
+    .ui.grid > .row {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+.ui.actions.segment {
+  border-top: @1px solid @lightGreyBorderColor;
+}
+
+.inverted.segment a.item {
+  color: @white;
+  text-decoration: underline;
+}
+
+.basic.inverted.discreet.segment {
+  color: @darkWhite !important;
+}
+
+.pusher > .ui.basic.segment {
+  padding-bottom: 0;
+}
+
+.hamburger-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hamburger {
+  background-color: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  overflow: visible;
+  padding: 12px 0 12px 12px;
+  position: relative !important; // To overwrite overrides.css
+  text-transform: none;
+  transition-duration: 1s;
+  transition-property: filter, opacity;
+  transition-timing-function: linear;
+  z-index: 10;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  .hamburger-box {
+    display: inline-block;
+    height: 16px;
+    position: relative;
+    width: 36px;
+  }
+
+  .hamburger-inner {
+    display: block;
+    margin-top: -2px;
+    top: 50%;
+
+    &,
+    &::before,
+    &::after {
+      background-color: @black;
+      border-radius: 3px;
+      height: 3px;
+      position: absolute;
+      transition: transform 0.15s ease;
+      width: 36px;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+    }
+
+    &::before {
+      top: -9px;
+    }
+  }
+
+  // Hamburger Slider from https://jonsuh.com/hamburgers/
+  & {
+    .hamburger-inner {
+      top: 2px;
+      &::before {
+        top: 9px;
+        transition-duration: 0.15s;
+        transition-property: opacity, transform;
+        transition-timing-function: ease;
+      }
+      &::after {
+        top: 18px;
+      }
+    }
+
+    &.active {
+      .hamburger-inner {
+        transform: translate3d(0, 9px, 0) rotate(45deg);
+        &::before {
+          opacity: 0;
+          transform: rotate(-45deg) translate3d(-6px, -6px, 0);
+        }
+        &::after {
+          transform: translate3d(0, -20px, 0) rotate(-90deg);
+        }
+      }
+    }
+  }
+}
+
+.ui.secondary.attached.segment {
+  text-transform: uppercase;
+}

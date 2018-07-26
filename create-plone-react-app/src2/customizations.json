@@ -1,0 +1,8 @@
+{
+    "./theme/App": "../../../../customizations/App",
+    "./theme/View/DocumentView": "../../../../customizations/View/DocumentView",
+    "./manage/Form/Field": "../../../../customizations/Form/Field",
+    "./manage/Tiles/Title/View": "../../../../customizations/Tiles/Title/View",
+    "./theme/Search/Search": "../../../../customizations/Search/Search",
+    "./manage/Tiles/Video/View": "../../../../customizations/Tiles/Video/View"
+}

@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        "experimentalDecorators": true,
+        "paths": {
+            "@plone/plone-react": [
+                "develop/plone-react"
+            ]
+        },
+        "baseUrl": "src"
+    },
+    "exclude": [
+        "node_modules",
+        "**/node_modules/*"
+    ]
+}

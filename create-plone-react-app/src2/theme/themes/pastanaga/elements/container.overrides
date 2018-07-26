@@ -1,0 +1,76 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.messages.container {
+  margin-bottom: 1em;
+}
+
+/* All Sizes */
+.ui.wrapper > *,
+.ui.wrapper > .ui.inner > * {
+  display: block;
+  max-width: @maxWidth !important;
+}
+
+/* Mobile */
+@media only screen and (max-width: @largestMobileScreen) {
+  .ui.wrapper > *,
+  .ui.wrapper > .ui.inner > *:not(.drag):not(.handle) {
+    width: @mobileWidth !important;
+    margin-right: @mobileGutter !important;
+    margin-left: @mobileGutter !important;
+  }
+}
+
+/* Tablet */
+@media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+  .ui.wrapper > *,
+  .ui.wrapper > .ui.inner > *:not(.drag):not(.handle) {
+    width: @tabletWidth;
+    margin-right: @tabletGutter !important;
+    margin-left: @tabletGutter !important;
+  }
+}
+
+/* Small Monitor */
+@media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
+  .ui.wrapper > *,
+  .ui.wrapper > .ui.inner > *:not(.drag):not(.handle) {
+    width: @computerWidth;
+    margin-right: @computerGutter !important;
+    margin-left: @computerGutter !important;
+  }
+}
+
+/* Large Monitor */
+@media only screen and (min-width: @largeMonitorBreakpoint) {
+  .ui.wrapper > *,
+  .ui.wrapper > .ui.inner > *:not(.drag):not(.handle) {
+    width: @largeMonitorWidth;
+    margin-right: @largeMonitorGutter !important;
+    margin-left: @largeMonitorGutter !important;
+  }
+}
+
+.ui.wrapper > .ui.inner {
+  width: 100% !important;
+}
+
+.drag.handle.wrapper {
+  @media only screen and (max-width: @largestMobileScreen) {
+    margin-left: ~'calc(50vw - (' @mobileWidth + ~'/2)) !important';
+  }
+
+  @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+    margin-left: ~'calc(50vw - (' @tabletWidth + ~'/2)) !important';
+  }
+
+  @media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
+    margin-left: ~'calc(50vw - (' @computerWidth + ~'/2)) !important';
+  }
+
+  @media only screen and (min-width: @largeMonitorBreakpoint) {
+    margin-left: ~'calc(50vw - (' @largeMonitorWidth + ~'/2)) !important';
+  }
+}

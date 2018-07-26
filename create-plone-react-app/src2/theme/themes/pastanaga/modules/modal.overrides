@@ -1,0 +1,17 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.modal > .actions:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.ui.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}

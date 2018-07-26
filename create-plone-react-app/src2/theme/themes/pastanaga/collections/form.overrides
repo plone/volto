@@ -1,0 +1,72 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.form .inline.field {
+  margin: 0;
+}
+
+.ui.form .inline.field.help .wrapper {
+  border-bottom: none;
+}
+
+.ui.form .inline.field.help {
+  padding-bottom: @15px;
+}
+
+.ui.form .inline.field .help {
+  border-bottom: 1px solid @lightGreyBorderColor;
+  padding-top: @10px;
+  padding-bottom: @10px;
+}
+
+.ui.form input:not([type]),
+.ui.form input[type="date"],
+.ui.form input[type="datetime-local"],
+.ui.form input[type="email"],
+.ui.form input[type="number"],
+.ui.form input[type="password"],
+.ui.form input[type="search"],
+.ui.form input[type="tel"],
+.ui.form input[type="time"],
+.ui.form input[type="text"],
+.ui.form input[type="file"],
+.ui.form input[type="url"],
+.ui.form textarea {
+  border-width: 0 0 @1px 0;
+  border-radius: 0;
+  height: 60px;
+
+  &:focus {
+      border-radius: 0;
+  }
+}
+
+.ui.form .DraftEditor-root {
+  border-bottom: @inputBorder;
+}
+
+// From the original, due to the wrapper around label
+.ui.form .field .wrapper > label {
+  display: block;
+  margin: @labelMargin;
+  color: @labelColor;
+  font-size: @labelFontSize;
+  font-weight: @labelFontWeight;
+  text-transform: @labelTextTransform;
+}
+
+.ui.form .toolbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+
+  .item {
+    cursor: pointer;
+  }
+}

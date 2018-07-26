@@ -1,0 +1,142 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.menu .item.personal-bar {
+  width: 80px;
+  position: fixed;
+  bottom: 68px;
+}
+
+.ui.menu.left.fixed ~ .pusher {
+  margin-right: 80px;
+  transition: margin-right .3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.ui.menu.collapsed.left.fixed ~ .pusher {
+  margin-right: 20px;
+}
+
+.ui.vertical.icon.menu {
+  width: 80px;
+}
+
+.ui.vertical.icon.menu .item {
+  padding: 14px 20px;
+}
+
+.ui.menu .item.logo {
+  width: 80px;
+  position: fixed;
+  bottom: 0;
+}
+
+.ui.menu .item.logo > .image {
+  margin: 4px -14px 0;
+  width: 64px;
+  height: 18px;
+  background-size: 64px 18px;
+  background-repeat: no-repeat;
+  transition: width .3s cubic-bezier(0.6, -0.28, 0.735, 0.045), margin .3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.ui.menu.collapsed .item.logo > .image {
+  width: 10px;
+  margin: 4px -14px 0 45px;
+}
+
+.ui.menu .trigger {
+  background: transparent;
+  position: absolute;
+  width: 20px;
+  height: 80px;
+  top: 50%;
+  margin-top: -40px;
+  left: 60px;
+  padding: 0;
+  border-radius: 0;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+
+.ui.menu .trigger:before {
+  background: @blue;
+  width: 4px;
+  height: 100%;
+  content: '';
+  display: block;
+  left: 8px;
+  position: relative;
+}
+
+// States
+.ui.menu .published.trigger:before {
+  background: @green;
+}
+
+.ui.menu .trigger.private:before {
+  background: @red;
+}
+
+.ui.menu.collapsed .trigger {
+  opacity: 1;
+}
+
+.ui[class*="left fixed"].menu{
+  transition: left .3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.ui[class*="left fixed"].menu.collapsed {
+  left: -60px;
+}
+
+.ui.grid > .row > .logo.column {
+  padding-bottom: 0 !important;
+}
+
+.ui.grid > .row > .tools.column {
+  margin-top: 0.6em;
+}
+.ui.grid > .row > .search.column {
+  margin-top: 0.4em;
+  padding-left: 0;
+}
+
+.ui.grid > .row > .tools.column .ui.list {
+  @media only screen and (max-width: (@tabletBreakpoint - 1px)) {
+    float: none;
+    font-size: 1em;
+  }
+}
+
+.navigation .ui.secondary.pointing.menu {
+  border: 0;
+  margin: 0 0 0 40px;
+
+  @media only screen and (max-width: @tabletBreakpoint) {
+    margin-bottom: 20px;
+  }
+
+  .item {
+    margin: 0;
+    padding-top: @relativeBig;
+    text-transform: uppercase;
+
+    @media only screen and (min-width: @tabletBreakpoint) {
+      margin: 0 unit(@relativeLarge * 2, em) 0 0;
+      padding: 1.7em 0 @relativeBig;
+    }
+  }
+}
+
+.ui.secondary.attached.pointing.menu {
+  .item {
+    color: @blue;
+    padding: 1.4em 1em;
+    font-size: @large;
+  }
+  .active.item {
+    border-color: @teal;
+    color: @black;
+  }
+}

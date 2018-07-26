@@ -1,0 +1,76 @@
+/*******************************
+         Theme Overrides
+*******************************/
+
+.ui.input input {
+  font-weight: @inputFontWeight;
+}
+
+.inline.field {
+  .wrapper {
+    align-items: center;
+    border-bottom: 1px solid @lightGreyBorderColor;
+    display: flex;
+    min-height: 60px;
+  }
+
+  &.required .wrapper {
+    label[for]::after,
+    .ui.label::after {
+      background-color: @pink;
+      content: '';
+      display: inline-block;
+      border-radius: 50%;
+      height: 10px;
+      margin-left: 5px;
+      width: 10px;
+    }
+  }
+
+  &.textarea {
+    .wrapper,
+    .toolbar {
+      display: block;
+      margin-top: 18px;
+    }
+    textarea {
+      min-height: 60px;
+      padding: 0;
+      margin-top: 18px;
+    }
+  }
+
+  &.wysiwyg {
+    .wrapper,
+    .toolbar {
+      display: block;
+      margin-top: 18px;
+    }
+    .DraftEditor-root {
+      margin-top: 18px;
+      min-height: 60px;
+    }
+  }
+
+  .ui.checkbox ~ .ui.basic.label {
+    border: 0;
+  }
+}
+
+.ui.form .searchbox.field {
+  border-left: 1px solid @purpleBackground;
+  display: flex;
+  padding-left: 1em;
+  .ui.input input {
+    height: auto;
+    line-height: initial;
+    width: 106px;
+  }
+  .ui.blue.button {
+    box-shadow: none;
+  }
+}
+
+.transparent {
+  line-height: initial;
+}
