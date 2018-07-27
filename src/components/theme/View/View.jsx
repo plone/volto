@@ -222,7 +222,7 @@ export default class View extends Component {
           className={
             RenderedView.displayName
               ? `view-${RenderedView.displayName.toLowerCase()}`
-              : 'view-undefined'
+              : null
           }
         />
 

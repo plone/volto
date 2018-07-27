@@ -23,11 +23,12 @@ class BodyClass extends Component {
 
 BodyClass.propTypes = {
   children: PropTypes.element,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
 BodyClass.defaultProps = {
   children: null,
+  className: null,
 };
 
 /**
@@ -39,7 +40,9 @@ BodyClass.defaultProps = {
 function reducePropsToState(propsList) {
   let classList = [];
   propsList.map(props => {
-    classList = classList.concat(props.className);
+    if (props.className) {
+      classList = classList.concat(props.className);
+    }
   });
   return classList;
 }
