@@ -214,7 +214,6 @@
     "react-router": "3.0.5",
     "react-router-redux": "4.0.8",
     "react-share": "2.1.0",
-    "react-side-effect": "1.1.5",
     "react-styleguidist": "7.0.1",
     "redraft": "0.10.1",
     "redux": "3.7.2",
