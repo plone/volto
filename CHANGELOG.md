@@ -11,7 +11,7 @@
 * Custom tiles support @sneridagh
 * Add full register/password reset views @sneridagh
 * Make the list block types configurable @robgietema
-
+* Add all missing German translations @tisto
 ### Changes
 
 * Pastanaga Editor look and feel improvements and polishment @sneridagh @albertcasado
