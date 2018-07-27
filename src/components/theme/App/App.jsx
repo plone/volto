@@ -7,6 +7,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
+import Helmet from 'react-helmet';
 import { Segment } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import Raven from 'raven-js';
@@ -14,7 +15,7 @@ import Raven from 'raven-js';
 import Error from '../../../error';
 
 import { Breadcrumbs, Footer, Header, Messages } from '../../../components';
-import { BodyClass, getBaseUrl, getView } from '../../../helpers';
+import { getBaseUrl, getView } from '../../../helpers';
 import {
   getBreadcrumbs,
   getContent,
@@ -104,7 +105,11 @@ export class AppComponent extends Component {
 
     return (
       <Fragment>
-        <BodyClass className={`view-${action}view`} />
+        <Helmet
+          bodyAttributes={{
+            class: `view-${action}view`,
+          }}
+        />
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
         <Segment basic className="content-area">

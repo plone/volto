@@ -22,10 +22,6 @@ jest.mock('react-helmet', () => ({
   }),
 }));
 
-jest.mock('../BodyClass/BodyClass', () => ({
-  rewind: () => ['class1', 'class2'],
-}));
-
 describe('Html', () => {
   it('renders a html component', () => {
     const component = renderer.create(

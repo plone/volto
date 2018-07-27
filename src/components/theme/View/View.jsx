@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { Portal } from 'react-portal';
 import { Link } from 'react-router';
@@ -25,7 +26,7 @@ import {
   Workflow,
 } from '../../../components';
 import { listActions, getContent } from '../../../actions';
-import { BodyClass, getBaseUrl } from '../../../helpers';
+import { getBaseUrl } from '../../../helpers';
 
 @injectIntl
 @connect(
@@ -218,12 +219,12 @@ export default class View extends Component {
 
     return (
       <div id="view">
-        <BodyClass
-          className={
-            RenderedView.displayName
+        <Helmet
+          bodyAttributes={{
+            class: RenderedView.displayName
               ? `view-${RenderedView.displayName.toLowerCase()}`
-              : null
-          }
+              : 'view-undefined',
+          }}
         />
 
         <RenderedView
