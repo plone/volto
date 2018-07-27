@@ -40,7 +40,7 @@ msgstr "Passwort gesetzt."
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Action"
-msgstr ""
+msgstr "Aktion"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -53,15 +53,15 @@ msgstr "Beschreibung hinzufügen…"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
-msgstr ""
+msgstr "Feld hinzufügen"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add fieldset"
-msgstr ""
+msgstr "Fieldset hinzufügen"
 
 #: components/manage/Form/Form
 msgid "Add tile..."
-msgstr ""
+msgstr "Tile hinzufügen"
 
 #: components/manage/Add/Add
 msgid "Add {type}"
@@ -73,11 +73,11 @@ msgstr "Alle"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
-msgstr ""
+msgstr "Sind Sie sicher, dass Sie dieses Feld löschen möchten?"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this fieldset including all fields?"
-msgstr ""
+msgstr "Sind Sie sicher, dass Sie dieses Fieldset löschen möchten?"
 
 #: components/manage/Contents/Contents
 msgid "Ascending"
@@ -95,7 +95,7 @@ msgstr "Aufsteigend"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 msgid "Back"
-msgstr ""
+msgstr "Zurück"
 
 #: components/manage/Diff/Diff
 msgid "Base"
@@ -146,29 +146,29 @@ msgstr "Änderungen gespeichert"
 
 #: components/manage/Controlpanels/Controlpanel
 msgid "Changes saved."
-msgstr ""
+msgstr "Änderungen gespeichert."
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Checkbox"
-msgstr ""
+msgstr "Checkbox"
 
 #: components/manage/Widgets/SelectWidget
 msgid "Choices"
-msgstr ""
+msgstr "Auswahlfeld"
 
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
-msgstr ""
+msgstr "Menu schließen"
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 msgid "Comment"
-msgstr ""
+msgstr "Kommentar"
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Commenter"
-msgstr ""
+msgstr "Kommentarautor"
 
 #: components/manage/Diff/Diff
 msgid "Compare"
@@ -217,7 +217,7 @@ msgstr "Schneiden"
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
@@ -307,15 +307,15 @@ msgstr "Bearbeiten"
 
 #: components/theme/Comments/CommentEditModal
 msgid "Edit comment"
-msgstr ""
+msgstr "Kommentar bearbeiten"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Edit field"
-msgstr ""
+msgstr "Feld bearbeiten"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Edit fieldset"
-msgstr ""
+msgstr "Fieldset bearbeiten"
 
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
@@ -352,7 +352,7 @@ msgstr "Geben Sie ihr neues Passwort ein. Mindestens 5 Zeichen."
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/Login/Login
 msgid "Error"
-msgstr ""
+msgstr "Fehler"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Exclude from navigation"
@@ -403,7 +403,7 @@ msgstr "Bestimmt, ob der Artikel nicht in der Navigation auftauchen soll."
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If this date is in the future, the content will not show up in listings and searches until this date."
-msgstr ""
+msgstr "Falls das Datum in der Zukunft liegt wird der Inhalt in Auflistungen und bei der Suche nicht auftauchen, bis zu dem Datum."
 
 #: components/theme/NotFound/NotFound
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
@@ -437,7 +437,7 @@ msgstr "Artikel eingefügt."
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Items must be unique."
-msgstr ""
+msgstr "Auswahl muss eindeutig sein."
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
@@ -467,11 +467,11 @@ msgstr "Benutzername"
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
-msgstr ""
+msgstr "Minimale Länge ist {len}"
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Moderate comments"
-msgstr ""
+msgstr "Kommentare moderieren"
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to bottom of folder"
@@ -496,7 +496,7 @@ msgstr "Neues Passwort"
 
 #: components/manage/Widgets/ArrayWidget
 msgid "No results found."
-msgstr ""
+msgstr "Keine Ergebnisse gefunden."
 
 #: components/manage/Contents/Contents
 msgid "None"
@@ -508,7 +508,7 @@ msgstr "OK"
 
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
-msgstr ""
+msgstr "Menü öffnen"
 
 #: components/manage/Preferences/PersonalPreferences
 #: components/theme/Login/Login
@@ -587,7 +587,7 @@ msgstr "Mehr…"
 
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
-msgstr ""
+msgstr "Elemente sortieren nach…"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Register/Register
@@ -614,12 +614,12 @@ msgstr "Artikel umbenennen"
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Required"
-msgstr ""
+msgstr "Notwendig"
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Required input is missing."
-msgstr ""
+msgstr "Notwendige Eingabe fehlt."
 
 #: components/manage/History/History
 msgid "Revert to this revision"
@@ -627,7 +627,7 @@ msgstr "Durch diese Version ersetzen"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
-msgstr ""
+msgstr "Richtext"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Rights"
@@ -657,7 +657,7 @@ msgstr "Nach Benutzer oder Gruppe suchen"
 
 #: components/theme/Search/Search
 msgid "Search results"
-msgstr ""
+msgstr "Suchergebnisse"
 
 #: components/theme/Search/Search
 msgid "Search results for {term}"
@@ -665,11 +665,11 @@ msgstr "Suchergebnisse für {term}"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Search users..."
-msgstr ""
+msgstr "Nutzer suchen..."
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
-msgstr ""
+msgstr "Spalten wählen die angezeigt werden"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
@@ -677,7 +677,7 @@ msgstr "Wählen Sie den Statuswechsel, der benutzt werden soll, um den Status de
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
-msgstr ""
+msgstr "Auswahl"
 
 #: components/manage/Contents/Contents
 msgid "Select…"
@@ -689,7 +689,7 @@ msgstr "Passwort neu setzen"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set your password"
-msgstr ""
+msgstr "Setzen Sie Ihr Passwort"
 
 #: components/manage/Sharing/Sharing
 msgid "Sharing for {title}"
@@ -702,7 +702,7 @@ msgstr "Freigabe für"
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Short Name"
-msgstr ""
+msgstr "Kurzname"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Short name"
@@ -726,11 +726,11 @@ msgstr "Übersicht"
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Site Setup"
-msgstr ""
+msgstr "Seiteneinstellungen"
 
 #: components/manage/Tiles/Video/Edit
 msgid "Specify a youtube video or playlist url"
-msgstr ""
+msgstr "Geben Sie ein YouTube-Video oder eine YouTube-Playlist URL ein"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
@@ -747,7 +747,7 @@ msgstr "Status: {current}"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
-msgstr ""
+msgstr "Text"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
@@ -764,7 +764,7 @@ msgstr "Zu entfernende Tags"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: components/theme/NotFound/NotFound
 msgid "Thank you."
@@ -785,7 +785,7 @@ msgstr "{plonecms} {copyright} 2000-{current_year} {plonefoundation} und Freunde
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "There were some errors."
-msgstr "Es gab Fehler."
+msgstr "Es sind Fehler aufgetreten."
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
@@ -843,19 +843,19 @@ msgstr "Dateien hochladen"
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
-msgstr ""
+msgstr "Wir für den programmierten Zugriff auf das Fieldset verwendet."
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "User name"
-msgstr ""
+msgstr "Benutzername"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users"
-msgstr ""
+msgstr "Nutzer"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
-msgstr ""
+msgstr "Nutzer- und Gruppeneinstellungen"
 
 #: components/manage/Contents/ContentsItem
 msgid "View"
@@ -872,7 +872,7 @@ msgstr "Diese revision ansehen"
 #: components/manage/Add/Add
 #: components/manage/Edit/Edit
 msgid "Visual"
-msgstr ""
+msgstr "Ansicht"
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
@@ -880,7 +880,7 @@ msgstr "Entschuldigung, aber die Webseite die Sie versucht haben zu erreichen is
 
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
-msgstr ""
+msgstr "Wir verwenden diese E-Mail Adresse wenn wir Ihr Passwort wiederherstellen müssen"
 
 #: components/manage/History/History
 msgid "What"
@@ -892,7 +892,7 @@ msgstr "Wann"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
-msgstr ""
+msgstr "Wenn dieses Datum erreicht wird, wird der Inhalt nicht länger in Auflistungen und in der Suche auftauchen."
 
 #: components/manage/History/History
 msgid "Who"
@@ -900,7 +900,7 @@ msgstr "Wer"
 
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
-msgstr ""
+msgstr "Sie können einen Kommentar abgeben wenn Sie das untenstehende Formular ausfüllen. Plain-Text-Formatierung."
 
 #: components/manage/Sharing/Sharing
 msgid "You can control who can view and edit your item using the list below."
@@ -908,15 +908,15 @@ msgstr "Sie können mit der folgenden Liste bestimmen, wer Ihren Artikel sehen u
 
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
-msgstr ""
+msgstr "Sie können die Unterschiede der verschiedenen Versionen unten sehen."
 
 #: components/manage/History/History
 msgid "You can view the history of your item below."
-msgstr ""
+msgstr "Sie können die Historie des Inhalts unten einsehen."
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
-msgstr ""
+msgstr "Ihre E-Mail Adresse ist notwendig um Ihr Passwort zurücksetzen zu können."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Your location - either city and country - or in a company setting, where your office is located."
@@ -936,7 +936,7 @@ msgstr "Passwort vergessen?"
 
 #: config/Tiles
 msgid "description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_lost_password"
@@ -952,7 +952,7 @@ msgstr "Bestätigung für das Zurücksetzen des Passwortes wurde gesendet!"
 
 #: config/Tiles
 msgid "image"
-msgstr ""
+msgstr "Bild"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
@@ -964,15 +964,15 @@ msgstr "Registrierungsformular"
 
 #: config/Tiles
 msgid "text"
-msgstr ""
+msgstr "Text"
 
 #: config/Tiles
 msgid "title"
-msgstr ""
+msgstr "Titel"
 
 #: config/Tiles
 msgid "video"
-msgstr ""
+msgstr "Video"
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"
@@ -996,4 +996,4 @@ msgstr "{title} wurde gelöscht."
 
 #: components/theme/Comments/Comments
 msgid "{user} says:"
-msgstr ""
+msgstr "{user} sagt:"
