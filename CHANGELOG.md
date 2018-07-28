@@ -26,6 +26,7 @@
 * Fix broken CSS on alignments left/right @sneridagh
 * Tile DE literals translations @sneridagh
 * Pass location as prop to child views in main View component in case we require it in some views @sneridagh
+* Fix computed displayName from add-display-name Babel plugin for connected components @sneridagh
 
 ## 0.6.0 (2018-07-14)
 
