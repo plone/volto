@@ -188,6 +188,19 @@ export default class View extends Component {
   getViewByLayout = () => layoutViews[this.props.content.layout] || null;
 
   /**
+   * Cleans the component displayName (specially for connected components)
+   * which have the Connect(componentDisplayName)
+   * @method cleanViewName
+   * @param  {string} dirtyDisplayName The displayName
+   * @returns {string} Clean displayName (no Connect(...)).
+   */
+  cleanViewName = dirtyDisplayName =>
+    dirtyDisplayName
+      .replace('Connect(', '')
+      .replace(')', '')
+      .toLowerCase();
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -221,7 +234,7 @@ export default class View extends Component {
         <BodyClass
           className={
             RenderedView.displayName
-              ? `view-${RenderedView.displayName.toLowerCase()}`
+              ? `view-${this.cleanViewName(RenderedView.displayName)}`
               : null
           }
         />
