@@ -8,6 +8,8 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom/server';
 import Helmet from 'react-helmet';
 import serialize from 'serialize-javascript';
+import { join } from 'lodash';
+import { BodyClass } from '../.';
 
 /**
  * Html class.
@@ -28,11 +30,7 @@ import serialize from 'serialize-javascript';
 export const Html = ({ assets, component, store }) => {
   const content = ReactDOM.renderToString(component);
   const head = Helmet.rewind();
-  // Workaround for testing
-  // Otherwise we get TypeError: _reactHelmet2.default.renderStatic is not a function
-  const helmet =
-    process.env.NODE_ENV === 'production' ? Helmet.renderStatic() : null;
-  const bodyAttrs = helmet && helmet.bodyAttributes.toComponent();
+  const bodyClass = join(BodyClass.rewind(), ' ');
 
   return (
     <html lang="en">
@@ -64,7 +62,7 @@ export const Html = ({ assets, component, store }) => {
           charSet="UTF-8"
         />
       </head>
-      <body {...bodyAttrs}>
+      <body className={bodyClass}>
         <div id="toolbar" />
         <div id="main" dangerouslySetInnerHTML={{ __html: content }} />
         <script

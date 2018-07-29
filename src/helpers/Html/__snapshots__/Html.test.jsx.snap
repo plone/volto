@@ -33,7 +33,9 @@ exports[`Html renders a html component 1`] = `
       type="text/css"
     />
   </head>
-  <body>
+  <body
+    className="class1 class2"
+  >
     <div
       id="toolbar"
     />
