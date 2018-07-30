@@ -11,6 +11,7 @@
 * Custom tiles support @sneridagh
 * Add full register/password reset views @sneridagh
 * Make the list block types configurable @robgietema
+* Add all missing German translations @tisto
 * Add helper `BodyClass` for appending classes to the `body` tag from View components @sneridagh
 
 ### Changes
