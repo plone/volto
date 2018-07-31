@@ -265,6 +265,21 @@ class Form extends Component {
     this.setState({
       formData: {
         ...this.state.formData,
+        'guillotina_cms.interfaces.tiles.ITiles': {
+          tiles_layout: {
+            items: [
+              ...this.state.formData.tiles_layout.items.slice(0, insert),
+              id,
+              ...this.state.formData.tiles_layout.items.slice(insert),
+            ],
+          },
+          tiles: {
+            ...this.state.formData.tiles,
+            [id]: {
+              '@type': type,
+            },
+          },  
+        },
         tiles_layout: {
           items: [
             ...this.state.formData.tiles_layout.items.slice(0, insert),
