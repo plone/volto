@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.8.0 (unreleased)
+
+### Added
+
+### Changes
+
 ## 0.7.0 (2018-07-31)
 
 ### Added
