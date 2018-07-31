@@ -149,7 +149,7 @@ export class EditComponent extends Component {
       this.props.getSchema(nextProps.content['@type']);
     }
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
-      if (nextProps.schema.properties.tiles) {
+      if (nextProps.schema.properties.tiles || nextProps.schema.definitions['guillotina_cms.interfaces.tiles.ITiles']) {
         this.setState({
           visual: true,
         });
@@ -238,7 +238,7 @@ export class EditComponent extends Component {
                       title={this.props.intl.formatMessage(messages.save)}
                     />
                   </a>
-                  {this.props.schema.properties.tiles && (
+                  {(this.props.schema.properties.tiles || this.props.schema.definitions['guillotina_cms.interfaces.tiles.ITiles'] )&& (
                     <a className="item" onClick={() => this.onToggleVisual()}>
                       <Icon
                         name={this.state.visual ? 'tasks' : 'block layout'}

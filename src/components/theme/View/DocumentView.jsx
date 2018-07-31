@@ -23,13 +23,17 @@ import {
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-const DocumentView = ({ content }) =>
-  content.tiles ? (
+const DocumentView = ({ content }) => {
+  const tiles = content.tiles ? content.tiles : content['guillotina_cms.interfaces.tiles.ITiles'] ? content['guillotina_cms.interfaces.tiles.ITiles'].tiles : false;
+  const tiles_layout = content.tiles_layout ? content.tiles_layout : content['guillotina_cms.interfaces.tiles.ITiles'] ? content['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout : false;
+  // const tiles = false;
+  // debugger
+  return tiles ? (
     <div id="page-document" className="ui wrapper">
       <Helmet title={content.title} />
-      {map(content.tiles_layout.items, tile => {
+      {map(tiles_layout.items, tile => {
         let Tile = null;
-        switch (content.tiles[tile]['@type']) {
+        switch (tiles[tile]['@type']) {
           case 'title':
             Tile = ViewTitleTile;
             break;
@@ -49,9 +53,9 @@ const DocumentView = ({ content }) =>
             break;
         }
         return Tile !== null ? (
-          <Tile key={tile} properties={content} data={content.tiles[tile]} />
+          <Tile key={tile} properties={content} data={tiles[tile]} />
         ) : (
-          <div>{JSON.stringify(content.tiles[tile]['@type'])}</div>
+          <div>{JSON.stringify(tiles[tile]['@type'])}</div>
         );
       })}
     </div>
@@ -74,6 +78,7 @@ const DocumentView = ({ content }) =>
       )}
     </Container>
   );
+}
 
 /**
  * Property types.
