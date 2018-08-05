@@ -22,7 +22,7 @@ module.exports = function createPloneApp(opts) {
   const projectPath = (opts.projectPath = process.cwd() + '/' + projectName);
 
 
-    const templatePath = path.resolve(__dirname, '../src');// problem is there
+    const templatePath = path.resolve(__dirname, '../src2');// problem is there
 
     copyDir({
       templatePath: templatePath,

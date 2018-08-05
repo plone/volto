@@ -1,14 +1,23 @@
 {
-  "name": "create-plone-react-app",
-  "version": "1.0.1",
+  "name": "@plone/create-plone-react-app",
+  "version": "1.0.2",
   "description": "Create plone react app with no configuration",
   "main": "index.js",
   "license": "MIT",
-  "author": "",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "email": "plone-developers@lists.sourceforge.net",
+      "url": "http://plone.org"
+    }
+],
   "engines": {
     "node": ">=6"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:plone/plone-react.git"
+},
   "bin": {
     "create-plone-react-app": "./bin/create-plone-react-app.js"
   },
