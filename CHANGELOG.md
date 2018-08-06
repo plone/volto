@@ -6,6 +6,8 @@
 
 ### Changes
 
+* Don't reset total and batching on pending search @robgietema
+
 ## 0.7.0 (2018-07-31)
 
 ### Added

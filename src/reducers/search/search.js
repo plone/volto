@@ -35,8 +35,6 @@ export default function search(state = initialState, action = {}) {
         error: null,
         loading: true,
         loaded: false,
-        batching: {},
-        total: 0,
       };
     case `${SEARCH_CONTENT}_SUCCESS`:
       return {
