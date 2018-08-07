@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
+import DefaultPage from './DefaultPage';
 
 import {
   ViewTitleTile,
@@ -23,6 +24,7 @@ import {
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
+
 const DocumentView = ({ content }) =>
   content.tiles ? (
     <div id="page-document" className="ui wrapper">
@@ -58,9 +60,12 @@ const DocumentView = ({ content }) =>
   ) : (
     <Container id="page-document">
       <Helmet title={content.title} />
-      <h1 className="documentFirstHeading">{content.title}</h1>
-      {content.description && (
+      <Helmet title="Welcome to plone"/>
+      <h1 className="documentFirstHeading">Welcome to Plone</h1>
+      {content.description ? (
         <p className="documentDescription">{content.description}</p>
+      ): (
+        <p className="documentDescription">Congratulations !! You have successfully installed Plone.</p>
       )}
       {content.image && (
         <Image
@@ -69,8 +74,10 @@ const DocumentView = ({ content }) =>
           floated="right"
         />
       )}
-      {content.text && (
+      {content.text ? (
         <p dangerouslySetInnerHTML={{ __html: content.text.data }} />
+      ) : (
+        <p dangerouslySetInnerHTML={DefaultPage()} />
       )}
     </Container>
   );

@@ -8,7 +8,7 @@ exports[`renders a document view component 1`] = `
   <h1
     className="documentFirstHeading"
   >
-    Hello World!
+    Welcome to Plone
   </h1>
   <p
     className="documentDescription"
