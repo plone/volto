@@ -14,9 +14,39 @@
 yarn add --global create-plone-react-app
 create-plone-react-app <appName>
 cd <appName>
-yarn start //start the development server
+yarn dev //start the development server
 ```
 ![peek 2018-07-07 08-24](https://user-images.githubusercontent.com/22280901/42406154-b3304600-81bf-11e8-8617-9890db5b8378.gif)
+
+#### Project Structure:
+
+```
+my-app
+├── README.md
+├── node_modules
+├── scripts
+├── locales
+├── theme
+├── webpack
+├── customization.json
+├── jest-preprocessor.js
+├── jsconfig.json
+├── test-setup.js
+├── package.json
+├── .gitignore
+└── src
+    └── config
+    └── reducers
+    └── static
+    └── client.jsx
+    └── server.jsx
+    └── error.jsx
+    └── routes.jsx
+    └── start-server-prod.js
+    └── store.js
+    └── start-server.js
+
+```
 #### Features
 - No configuration needed.
 - Fixed development stack.

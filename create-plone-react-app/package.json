@@ -1,5 +1,5 @@
 {
-  "name": "@plone/create-plone-react-app",
+  "name": "create-plone-react-app",
   "version": "1.0.2",
   "description": "Create plone react app with no configuration",
   "main": "index.js",
