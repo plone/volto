@@ -210,7 +210,6 @@ export class AddComponent extends Component {
               }
             }}
             schema={this.props.schema}
-            formData={{ tiles: null, tiles_layout: null }}
             onSubmit={this.onSubmit}
             hideActions
             pathname={this.props.pathname}

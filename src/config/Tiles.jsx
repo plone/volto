@@ -50,4 +50,25 @@ const getDefaultEditTileView = type => {
   }
 };
 
-export { customTiles, getDefaultEditTileView, messagesTiles };
+const getDefaultTiles = type => {
+  switch (type) {
+    case 'Document':
+      return {
+        'tiles': {
+          '#title-1': {
+            '@type': 'title'
+          },
+          '#text-1': {
+            '@type': 'text'
+          }
+        },
+        'layout': ['#title-1', '#text-1']
+      };
+    case 'News':
+      return {};
+    default:
+      return {};
+  }
+}
+
+export { customTiles, getDefaultEditTileView, messagesTiles, getDefaultTiles };

@@ -17,6 +17,7 @@ import {
 } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { v4 as uuid } from 'uuid';
+import { getDefaultTiles } from '~/config';
 
 import { EditTile, Field } from '../../../components';
 
@@ -126,37 +127,58 @@ class Form extends Component {
    */
   constructor(props) {
     super(props);
-    const ids = {
-      title: uuid(),
-      description: uuid(),
-      text: uuid(),
-    };
     let { formData } = props;
+    let guillotina = false;
+    if (props.schema.properties['guillotina_cms.interfaces.tiles.ITiles']) {
+      guillotina = true;
+    }
     if (formData === null) {
       // get defaults from schema
       formData = mapValues(props.schema.properties, 'default');
+      // get defaults from subschemas
+      for (let key in props.schema.definitions) {
+        formData[key] = mapValues(props.schema.definitions[key].properties, 'default')
+      }
     }
     // defaults for block editor; should be moved to schema on server side
-    if (!formData.tiles_layout) {
-      formData.tiles_layout = { items: [ids.title, ids.description, ids.text] };
-    }
-    if (!formData.tiles) {
-      formData.tiles = {
-        [ids.title]: {
-          '@type': 'title',
-        },
-        [ids.description]: {
-          '@type': 'description',
-        },
-        [ids.text]: {
-          '@type': 'text',
-        },
+    if (!guillotina) {
+      const ids = {
+        title: uuid(),
+        description: uuid(),
+        text: uuid(),
       };
+      if (!formData.tiles_layout) {
+        formData.tiles_layout = { items: [ids.title, ids.description, ids.text] };
+      }
+      if (!formData.tiles) {
+        formData.tiles = {
+          [ids.title]: {
+            '@type': 'title',
+          },
+          [ids.description]: {
+            '@type': 'description',
+          },
+          [ids.text]: {
+            '@type': 'text',
+          },
+        };
+      }
+    } else {
+      
+      if (!formData['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout || !formData['guillotina_cms.interfaces.tiles.ITiles'].tiles) {
+        let default_tiles = getDefaultTiles(props.schema['title']);
+        formData['guillotina_cms.interfaces.tiles.ITiles'].tiles = Object.assign({}, default_tiles.tiles);
+        formData['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout = default_tiles.layout.slice();
+        
+        formData.tiles_layout = formData['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout;
+        formData.tiles = formData['guillotina_cms.interfaces.tiles.ITiles'].tiles;
+      }
     }
     this.state = {
       formData,
       errors: {},
       selected: null,
+      guillotina: guillotina
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeTile = this.onChangeTile.bind(this);
@@ -265,21 +287,6 @@ class Form extends Component {
     this.setState({
       formData: {
         ...this.state.formData,
-        'guillotina_cms.interfaces.tiles.ITiles': {
-          tiles_layout: {
-            items: [
-              ...this.state.formData.tiles_layout.items.slice(0, insert),
-              id,
-              ...this.state.formData.tiles_layout.items.slice(insert),
-            ],
-          },
-          tiles: {
-            ...this.state.formData.tiles,
-            [id]: {
-              '@type': type,
-            },
-          },  
-        },
         tiles_layout: {
           items: [
             ...this.state.formData.tiles_layout.items.slice(0, insert),
@@ -310,6 +317,7 @@ class Form extends Component {
     if (event) {
       event.preventDefault();
     }
+    debugger;
     const errors = {};
     map(this.props.schema.fieldsets, fieldset =>
       map(fieldset.fields, fieldId => {
