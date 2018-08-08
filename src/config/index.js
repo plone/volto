@@ -16,7 +16,7 @@ import {
 } from './RichTextEditor/Blocks';
 import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
 import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
-import { customTiles, getDefaultEditTileView, messagesTiles } from './Tiles';
+import { customTiles, getDefaultEditTileView, messagesTiles, getDefaultTiles } from './Tiles';
 
 export { layoutViews, contentTypesViews, defaultView };
 export { widgetMapping, defaultWidget };
@@ -31,7 +31,7 @@ export {
   ToHTMLRenderers,
   ToHTMLOptions,
 };
-export { customTiles, getDefaultEditTileView, messagesTiles };
+export { customTiles, getDefaultEditTileView, messagesTiles, getDefaultTiles };
 
 export default defaults(
   {},
