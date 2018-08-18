@@ -36,11 +36,13 @@ export { customTiles, getDefaultEditTileView, messagesTiles, getDefaultTiles };
 export default defaults(
   {},
   {
+    api: process.env.API,
     host: process.env.HOST,
     port: process.env.PORT,
     apiPath: process.env.API_PATH,
   },
   {
+    api: 'guillotina',
     host: 'localhost',
     port: '4300',
     apiPath: 'http://localhost:8081/db/web',
