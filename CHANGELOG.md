@@ -4,6 +4,8 @@
 
 ### Added
 
+* Upgrade React to 16.4.2 to fix a server-side vunerability @tisto
+
 ### Changes
 
 * Don't reset total and batching on pending search @robgietema
