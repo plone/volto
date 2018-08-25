@@ -148,7 +148,10 @@ export class AddComponent extends Component {
       );
     }
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
-      if (nextProps.schema.properties.tiles || nextProps.schema.definitions['guillotina_cms.interfaces.tiles.ITiles']) {
+      if (
+        nextProps.schema.properties.tiles ||
+        nextProps.schema.definitions['guillotina_cms.interfaces.tiles.ITiles']
+      ) {
         this.setState({
           visual: true,
         });
@@ -232,7 +235,10 @@ export class AddComponent extends Component {
                       title={this.props.intl.formatMessage(messages.save)}
                     />
                   </a>
-                  {(this.props.schema.properties.tiles || this.props.schema.definitions['guillotina_cms.interfaces.tiles.ITiles']) && (
+                  {(this.props.schema.properties.tiles ||
+                    this.props.schema.definitions[
+                      'guillotina_cms.interfaces.tiles.ITiles'
+                    ]) && (
                     <a className="item" onClick={() => this.onToggleVisual()}>
                       <Icon
                         name={this.state.visual ? 'tasks' : 'block layout'}

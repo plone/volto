@@ -24,10 +24,17 @@ import {
  * @returns {string} Markup of the component.
  */
 const DocumentView = ({ content }) => {
-  const tiles = content.tiles ? content.tiles : content['guillotina_cms.interfaces.tiles.ITiles'] ? content['guillotina_cms.interfaces.tiles.ITiles'].tiles : false;
-  const tiles_layout = content.tiles_layout ? content.tiles_layout : content['guillotina_cms.interfaces.tiles.ITiles'] ? content['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout : false;
-  // const tiles = false;
-  // debugger
+  const tiles = content.tiles
+    ? content.tiles
+    : content['guillotina_cms.interfaces.tiles.ITiles']
+      ? content['guillotina_cms.interfaces.tiles.ITiles'].tiles
+      : false;
+  const tiles_layout = content.tiles_layout
+    ? content.tiles_layout
+    : content['guillotina_cms.interfaces.tiles.ITiles']
+      ? content['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout
+      : false;
+
   return tiles ? (
     <div id="page-document" className="ui wrapper">
       <Helmet title={content.title} />
@@ -78,7 +85,7 @@ const DocumentView = ({ content }) => {
       )}
     </Container>
   );
-}
+};
 
 /**
  * Property types.
