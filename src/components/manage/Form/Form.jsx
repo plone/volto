@@ -17,8 +17,7 @@ import {
 } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { v4 as uuid } from 'uuid';
-import { getDefaultTiles } from '~/config';
-import config from '~/config';
+import config, { getDefaultTiles } from '~/config';
 
 import { EditTile, Field } from '../../../components';
 
@@ -130,22 +129,31 @@ class Form extends Component {
     super(props);
     let { formData } = props;
     if (formData === null) {
-      // get defaults from schema
-      formData = mapValues(props.schema.properties, 'default');
-      // get defaults from subschemas
-      for (let key in props.schema.definitions) {
-        formData[key] = mapValues(props.schema.definitions[key].properties, 'default')
+      if (config.api !== 'guillotina') {
+        // get defaults from schema
+        formData = mapValues(props.schema.properties, 'default');
+      } else {
+        // get defaults from subschemas
+        formData = Object.assign({});
+        for (let key of Object.keys(props.schema.definitions)) {
+          formData[key] = mapValues(
+            props.schema.definitions[key].properties,
+            'default',
+          );
+        }
       }
     }
     // defaults for block editor; should be moved to schema on server side
-    if (config.api != 'guillotina') {
+    if (config.api !== 'guillotina') {
       const ids = {
         title: uuid(),
         description: uuid(),
         text: uuid(),
       };
       if (!formData.tiles_layout) {
-        formData.tiles_layout = { items: [ids.title, ids.description, ids.text] };
+        formData.tiles_layout = {
+          items: [ids.title, ids.description, ids.text],
+        };
       }
       if (!formData.tiles) {
         formData.tiles = {
@@ -161,16 +169,25 @@ class Form extends Component {
         };
       }
     } else {
-      if (!formData['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout || !formData['guillotina_cms.interfaces.tiles.ITiles'].tiles) {
-        let default_tiles = getDefaultTiles(props.schema['title']);
-        formData['guillotina_cms.interfaces.tiles.ITiles'].tiles = Object.assign({}, default_tiles.tiles);
-        formData['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout = { items: default_tiles.layout.slice() };
+      // eslint-disable-next-line
+      if (
+        formData['guillotina_cms.interfaces.tiles.ITiles'] &&
+        (!formData['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout ||
+          !formData['guillotina_cms.interfaces.tiles.ITiles'].tiles)
+      ) {
+        const defaultTiles = getDefaultTiles(props.schema.type_name);
+        formData[
+          'guillotina_cms.interfaces.tiles.ITiles'
+        ].tiles = Object.assign({}, defaultTiles.tiles);
+        formData['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout = {
+          items: defaultTiles.layout.slice(),
+        };
       }
     }
     this.state = {
       formData,
       errors: {},
-      selected: null
+      selected: null,
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeTile = this.onChangeTile.bind(this);
@@ -217,7 +234,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onChangeTile(id, value) {
-    if (config.api != 'guillotina') {
+    if (config.api !== 'guillotina') {
       this.setState({
         formData: {
           ...this.state.formData,
@@ -234,9 +251,10 @@ class Form extends Component {
           'guillotina_cms.interfaces.tiles.ITiles': {
             ...this.state.formData['guillotina_cms.interfaces.tiles.ITiles'],
             tiles: {
-              ...this.state.formData['guillotina_cms.interfaces.tiles.ITiles'].tiles,
+              ...this.state.formData['guillotina_cms.interfaces.tiles.ITiles']
+                .tiles,
               [id]: value || null,
-            }
+            },
           },
         },
       });
@@ -263,7 +281,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onDeleteTile(id, selectPrev) {
-    if (config.api != 'guillotina') {
+    if (config.api !== 'guillotina') {
       this.setState({
         formData: {
           ...this.state.formData,
@@ -285,14 +303,25 @@ class Form extends Component {
           'guillotina_cms.interfaces.tiles.ITiles': {
             ...this.state.formData['guillotina_cms.interfaces.tiles.ITiles'],
             tiles_layout: {
-              items: without(this.state.formData['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout.items, id),
+              items: without(
+                this.state.formData['guillotina_cms.interfaces.tiles.ITiles']
+                  .tiles_layout.items,
+                id,
+              ),
             },
-            tiles: omit(this.state.formData['guillotina_cms.interfaces.tiles.ITiles'].tiles, [id]),
+            tiles: omit(
+              this.state.formData['guillotina_cms.interfaces.tiles.ITiles']
+                .tiles,
+              [id],
+            ),
           },
         },
         selected: selectPrev
-          ? this.state.formData['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout.items[
-              this.state.formData['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout.items.indexOf(id) - 1
+          ? this.state.formData['guillotina_cms.interfaces.tiles.ITiles']
+              .tiles_layout.items[
+              this.state.formData[
+                'guillotina_cms.interfaces.tiles.ITiles'
+              ].tiles_layout.items.indexOf(id) - 1
             ]
           : null,
       });
@@ -308,11 +337,14 @@ class Form extends Component {
    */
   onAddTile(type, index) {
     const id = uuid();
-    const total_items = config.api != 'guillotina' ? this.state.formData.tiles_layout.items.length : this.state.formData['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout.items.length;
-    const insert =
-      index === -1 ? total_items : index;
+    const total_items =
+      config.api !== 'guillotina'
+        ? this.state.formData.tiles_layout.items.length
+        : this.state.formData['guillotina_cms.interfaces.tiles.ITiles']
+            .tiles_layout.items.length;
+    const insert = index === -1 ? total_items : index;
 
-    if (config.api != 'guillotina') {
+    if (config.api !== 'guillotina') {
       this.setState({
         formData: {
           ...this.state.formData,
@@ -340,18 +372,23 @@ class Form extends Component {
             ...this.state.formData['guillotina_cms.interfaces.tiles.ITiles'],
             tiles_layout: {
               items: [
-                ...this.state.formData['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout.items.slice(0, insert),
+                ...this.state.formData[
+                  'guillotina_cms.interfaces.tiles.ITiles'
+                ].tiles_layout.items.slice(0, insert),
                 id,
-                ...this.state.formData['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout.items.slice(insert),
+                ...this.state.formData[
+                  'guillotina_cms.interfaces.tiles.ITiles'
+                ].tiles_layout.items.slice(insert),
               ],
             },
             tiles: {
-              ...this.state.formData['guillotina_cms.interfaces.tiles.ITiles'].tiles,
+              ...this.state.formData['guillotina_cms.interfaces.tiles.ITiles']
+                .tiles,
               [id]: {
                 '@type': type,
               },
             },
-          },    
+          },
         },
         selected: id,
       });
@@ -431,7 +468,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onMoveTile(dragIndex, hoverIndex) {
-    if (config.api != 'guillotina') {
+    if (config.api !== 'guillotina') {
       this.setState({
         formData: {
           ...this.state.formData,
@@ -452,7 +489,8 @@ class Form extends Component {
             ...this.state.formData['guillotina_cms.interfaces.tiles.ITiles'],
             tiles_layout: {
               items: move(
-                this.state.formData['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout.items,
+                this.state.formData['guillotina_cms.interfaces.tiles.ITiles']
+                  .tiles_layout.items,
                 dragIndex,
                 hoverIndex,
               ),
@@ -471,15 +509,22 @@ class Form extends Component {
   render() {
     const { schema, onCancel, onSubmit } = this.props;
     const { formData } = this.state;
-    const render_tiles = config.api != 'guillotina' ? formData.tiles_layout.items : formData['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout.items;
-    const tiles_dict = config.api != 'guillotina' ? formData.tiles : formData['guillotina_cms.interfaces.tiles.ITiles'].tiles;
+    const renderTiles =
+      config.api !== 'guillotina'
+        ? formData.tiles_layout.items
+        : formData['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout.items;
+    const tilesDict =
+      config.api !== 'guillotina'
+        ? formData.tiles
+        : formData['guillotina_cms.interfaces.tiles.ITiles'].tiles;
+
     return this.props.visual ? (
       <div className="ui wrapper">
-        {map(render_tiles, (tile, index) => (
+        {map(renderTiles, (tile, index) => (
           <EditTile
             id={tile}
             index={index}
-            type={tiles_dict[tile]['@type']}
+            type={tilesDict[tile]['@type']}
             key={tile}
             onAddTile={this.onAddTile}
             onChangeTile={this.onChangeTile}
@@ -488,7 +533,7 @@ class Form extends Component {
             onSelectTile={this.onSelectTile}
             onMoveTile={this.onMoveTile}
             properties={formData}
-            data={tiles_dict[tile]}
+            data={tilesDict[tile]}
             pathname={this.props.pathname}
             tile={tile}
             selected={this.state.selected === tile}
