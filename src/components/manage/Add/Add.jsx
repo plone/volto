@@ -213,6 +213,16 @@ export class AddComponent extends Component {
               }
             }}
             schema={this.props.schema}
+            formData={
+              config.api !== 'guillotina'
+                ? { tiles: null, tiles_layout: null }
+                : {
+                    'guillotina_cms.interfaces.tiles.ITiles': {
+                      tiles: null,
+                      tiles_layout: null,
+                    },
+                  }
+            }
             onSubmit={this.onSubmit}
             hideActions
             pathname={this.props.pathname}
