@@ -112,8 +112,13 @@ export default class Workflow extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const current =
-      this.props.history.length > 0 && last(this.props.history).review_state;
+    let current = undefined;
+    if (config.api !== 'guillotina') {
+      current = this.props.history.length > 0 && last(this.props.history).review_state;
+    } else {
+      current =
+       this.props.history.length > 0 && last(this.props.history).data.review_state;
+    }
     return this.props.history.length > 0 ? (
       <Dropdown
         item
