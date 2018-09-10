@@ -43,7 +43,7 @@ I add a Page with the title '${title}'
   Wait until page contains element  css=#toolbar-add-document
   Click element  css=#toolbar-add-document
   Wait until page contains element  css=.public-DraftEditor-content
-  Input Tile  My Page
+  Input Tile  title  My Page
   Click element  css=*[title=Save]
 
 # I add a text tile with the content '${text}' to the page
@@ -58,5 +58,8 @@ I should see '${title}' in the navigation
   Page should contain element  css=.navigation a[href='/my-page']
 
 Input tile
-  [Arguments]  ${text}
-  Execute JavaScript  var textarea = document.getElementsByClassName('title')[0].getElementsByClassName('public-DraftEditor-content')[0]; var textEvent = document.createEvent('TextEvent'); textEvent.initTextEvent('textInput', true, true, null, '${text}'); textarea.dispatchEvent(textEvent);
+  [Arguments]  ${selector}  ${text}
+  Execute JavaScript  var textarea = document.getElementsByClassName('${selector}')[0].getElementsByClassName('public-DraftEditor-content')[0];
+  ...  var textEvent = document.createEvent('TextEvent');
+  ...  textEvent.initTextEvent('textInput', true, true, null, '${text}');
+  ...  textarea.dispatchEvent(textEvent);
