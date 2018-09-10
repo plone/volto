@@ -17,9 +17,9 @@ Scenario: As a site administrator I can add a page
 Scenario: As a site administrator I can add a text tile to a page
   Given a logged in site-administrator
     and a page
-#    When I add a text tile with the content 'My text tile' to the page
+   When I add a text tile with the content 'My text tile' to the page
 #    # Then I should see a notification that 'My Page' has been created
-#     and I should see 'My Page' in the navigation
+     and I should see 'My text tile' on the page view
 
 *** Keywords ***
 
@@ -31,7 +31,7 @@ a page
   Wait until page contains element  css=#toolbar-add-document
   Click element  css=#toolbar-add-document
   Wait until page contains element  css=.public-DraftStyleDefault-block
-  Execute JavaScript  var textarea = document.getElementsByClassName('title')[0].getElementsByClassName('public-DraftEditor-content')[0]; var textEvent = document.createEvent('TextEvent'); textEvent.initTextEvent('textInput', true, true, null, 'My Page'); textarea.dispatchEvent(textEvent);
+  Input tile  title  My page
 
 
 # --- When -------------------------------------------------------------------
@@ -43,12 +43,13 @@ I add a Page with the title '${title}'
   Wait until page contains element  css=#toolbar-add-document
   Click element  css=#toolbar-add-document
   Wait until page contains element  css=.public-DraftEditor-content
-  Input Tile  title  My Page
+  Input Tile  title  ${title}
   Click element  css=*[title=Save]
 
-# I add a text tile with the content '${text}' to the page
-#   Execute JavaScript  var textarea = document.getElementsByClassName('title')[0].getElementsByClassName('public-DraftEditor-content')[0]; var textEvent = document.createEvent('TextEvent'); textEvent.initTextEvent('textInput', true, true, null, 'My Page'); textarea.dispatchEvent(textEvent);
-#   Click element  css=*[title=Save]
+I add a text tile with the content '${text}' to the page
+  Input tile  text  ${text}
+  Click element  css=*[title=Save]
+
 
 # --- Then -------------------------------------------------------------------
 
@@ -56,6 +57,11 @@ I should see '${title}' in the navigation
   Wait until page contains element  css=.navigation a
   Wait until page contains element  css=.navigation a[href='/my-page']
   Page should contain element  css=.navigation a[href='/my-page']
+
+I should see '${text}' on the page view
+  Page should contain  ${text}
+
+# --- Helper -----------------------------------------------------------------
 
 Input tile
   [Arguments]  ${selector}  ${text}
