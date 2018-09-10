@@ -43,7 +43,7 @@ I add a Page with the title '${title}'
   Wait until page contains element  css=#toolbar-add-document
   Click element  css=#toolbar-add-document
   Wait until page contains element  css=.public-DraftEditor-content
-  Input Tile  title  ${title}
+  Input tile  title  ${title}
   Click element  css=*[title=Save]
 
 I add a text tile with the content '${text}' to the page
