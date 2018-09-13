@@ -1,6 +1,7 @@
 *** Settings ***
 
 Library  DebugLibrary
+Library  RequestsLibrary
 Library  SeleniumLibrary  timeout=30  implicit_wait=0
 
 *** Variables ***
@@ -54,10 +55,17 @@ Open default browser
 # action is carried out (e.g. 'the front page')
 
 A logged in site-administrator
-    Go to  ${FRONTEND_URL}
+    ${headers}  Create Dictionary  Accept  application/json  Content-Type  application/json
+    ${data}=  Create dictionary  login  admin  password  secret
+    Create Session  plone  http://localhost:55001/plone
+    ${resp}=	Post Request  plone  /@login  headers=${headers}  data=${data}
+    Should Be Equal As Strings	${resp.status_code}	 200
+    # Log  ${resp.json().get('token')}  WARN
+    Add Cookie  auth_token  ${resp.json().get('token')}  path=/  domain=localhost
+    Reload page
     Wait until keyword succeeds  120s  1s
     ...   Page fully loaded
-    I log in
+    Page should contain  Log out
 
 the front page
     Go to  ${FRONTEND_URL}
