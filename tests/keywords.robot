@@ -55,6 +55,7 @@ Open default browser
 # action is carried out (e.g. 'the front page')
 
 A logged in site-administrator
+    Go to  ${FRONTEND_URL}
     ${headers}  Create Dictionary  Accept  application/json  Content-Type  application/json
     ${data}=  Create dictionary  login  admin  password  secret
     Create Session  plone  http://localhost:55001/plone
