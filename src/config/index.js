@@ -49,9 +49,9 @@ export default defaults(
   {
     host: 'localhost',
     port: '4300',
-    api: 'Plone', // 'Plone' or 'guillotina'
-    // api: 'guillotina',
-    apiPath: 'http://localhost:8080/Plone', // for Plone
-    // apiPath: 'http://localhost:8081/db/web', // for guillotina
+    // api: 'Plone', // 'Plone' or 'guillotina'
+    api: 'guillotina',
+    // apiPath: 'http://localhost:8080/Plone', // for Plone
+    apiPath: '/db/web', // for guillotina
   },
 );

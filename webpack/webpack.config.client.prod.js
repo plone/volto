@@ -3,6 +3,7 @@ import BundleAnalyzerPlugin from 'webpack-bundle-analyzer';
 import webpack from 'webpack';
 import settings from './universal-webpack-settings';
 import configuration from './webpack.config.prod';
+import HtmlWebPackPlugin from 'html-webpack-plugin'
 
 configuration.plugins.push(
   new webpack.DefinePlugin({
@@ -31,6 +32,11 @@ configuration.plugins.push(
     reportFilename: 'report.html',
     generateStatsFile: true,
     openAnalyzer: false,
+  }),
+  new HtmlWebPackPlugin({
+    template: './src/index.html',
+    filename: './index.html',
+    publicPath: './'
   }),
 );
 

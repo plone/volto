@@ -48,7 +48,7 @@ module.exports = {
     path: assetsPath,
     filename: '[name]-[chunkhash].js',
     chunkFilename: '[name]-[chunkhash].js',
-    publicPath: '/assets/',
+    // publicPath: '/assets/',
   },
   module: {
     rules: [
