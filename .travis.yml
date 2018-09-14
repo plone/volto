@@ -5,6 +5,9 @@ cache:
   pip: true
   directories:
    - node_modules
+sudo: required
+services:
+  - docker
 addons:
   apt:
     sources:
@@ -19,6 +22,7 @@ before_install:
 - wget https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip
 - unzip chromedriver_linux64.zip -d webdriver
 - export PATH=$PATH:$(pwd)/webdriver
+- docker build -t plone/plone-react:latest .
 install:
 - virtualenv env --python=$(which python) --no-site-packages
 - env/bin/pip install zc.recipe.egg==2.0.4 --no-cache-dir
@@ -29,3 +33,8 @@ install:
 script:
 - yarn coverage
 - PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome tests
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: guillotina_pastanaga_editor
