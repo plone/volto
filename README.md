@@ -137,3 +137,12 @@ More Precommit hooks can be found [here](https://prettier.io/docs/en/precommit.h
 
 MIT License. Copyrights hold the Plone Foundation.
 See [LICENSE.md](LICENSE.md) for details.
+
+
+
+### Run guillotina tests
+
+- (setup python 3.6 env)
+- pip install git+https://github.com/plone/guillotina.git@rf
+- pip install -r robot-requirements.txt
+- genv/bin/pybot -v BROWSER:Chrome g-tests
