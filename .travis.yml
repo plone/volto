@@ -28,17 +28,13 @@ before_install:
 - if [ "$TEST_SUITE" == "guillotina" ]; then
   echo "Guillotina Before Install";
   psql -c 'create database guillotina;' -U postgres;
-  docker build -t plone/plone-react:$TRAVIS_BRANCH .;
   fi
-- if [ "$TEST_SUITE" == "plone" ]; then
-  echo "Guillotina Before Install";
-  mkdir webdriver;
-  wget https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux64.tar.gz;
-  tar -xzf geckodriver-v0.20.0-linux64.tar.gz -C webdriver;
-  wget https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip;
-  unzip chromedriver_linux64.zip -d webdriver;
-  export PATH=$PATH:$(pwd)/webdriver;
-  fi
+- mkdir webdriver;
+- wget https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux64.tar.gz;
+- tar -xzf geckodriver-v0.20.0-linux64.tar.gz -C webdriver;
+- wget https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip;
+- unzip chromedriver_linux64.zip -d webdriver;
+- export PATH=$PATH:$(pwd)/webdriver;
 install:
 - if [ "$TEST_SUITE" == "plone" ]; then
   virtualenv env --python=$(which python) --no-site-packages;
@@ -61,6 +57,7 @@ script:
   fi
 after_success:
 - if [ "$TEST_SUITE" == "guillotina" ]; then
+  docker build -t plone/plone-react:$TRAVIS_BRANCH .;
   echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
   docker push plone/plone-react:$TRAVIS_BRANCH;
   fi
