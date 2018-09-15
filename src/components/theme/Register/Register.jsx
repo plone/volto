@@ -9,11 +9,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
-import { browserHistory } from 'react-router';
+import createHistory from "history/createBrowserHistory";
 
 import { Form } from '../../../components';
 import { createUser, addMessage } from '../../../actions';
 
+let history = createHistory();
 const messages = defineMessages({
   title: {
     id: 'Registration form',
@@ -124,7 +125,7 @@ export default class Register extends Component {
         this.props.intl.formatMessage(messages.successRegisterCompletedBody),
         'success',
       );
-      browserHistory.push('/login');
+      history.push('/login');
     }
   }
 

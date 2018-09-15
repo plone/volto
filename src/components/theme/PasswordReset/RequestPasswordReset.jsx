@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+import createHistory from "history/createBrowserHistory";
 import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Container } from 'semantic-ui-react';
@@ -20,6 +20,7 @@ import {
 import { Form } from '../../../components';
 import { resetPassword } from '../../../actions';
 
+let history = createHistory();
 const messages = defineMessages({
   title: {
     id: 'box_forgot_password_option',
@@ -148,7 +149,7 @@ export default class RequestPasswordReset extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.goBack();
+    history.goBack();
   }
 
   /**

@@ -6,7 +6,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { browserHistory, Link } from 'react-router';
+import { Link } from 'react-router-dom';
+import createHistory from "history/createBrowserHistory";
 import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Container } from 'semantic-ui-react';
@@ -20,6 +21,7 @@ import {
 import { Form } from '../../../components';
 import { addMessage, setInitialPassword } from '../../../actions';
 
+let history = createHistory();
 const messages = defineMessages({
   title: {
     id: 'Set your password',
@@ -198,7 +200,7 @@ export default class PasswordReset extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.goBack();
+    history.goBack();
   }
 
   /**

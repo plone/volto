@@ -5,10 +5,11 @@
 
 import cookie from 'react-cookie';
 import jwtDecode from 'jwt-decode';
-import { browserHistory } from 'react-router';
+import createHistory from "history/createBrowserHistory";
 
 import { loginRenew } from '../../actions';
 
+let history = createHistory();
 /**
  * Get auth token method.
  * @method getAuthToken
@@ -54,7 +55,7 @@ export function persistAuthToken(store) {
               store.dispatch(loginRenew());
             } else {
               // Logout
-              browserHistory.push(
+              history.push(
                 `/logout?return_url=${
                   store.getState().routing.locationBeforeTransitions.pathname
                 }`,

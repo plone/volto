@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory } from 'react-router';
+import createHistory from "history/createBrowserHistory";
 import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
@@ -22,6 +22,7 @@ import { createContent, getSchema } from '../../../actions';
 import { Form, Toolbar } from '../../../components';
 import { getBaseUrl } from '../../../helpers';
 
+let history = createHistory();
 const messages = defineMessages({
   add: {
     id: 'Add {type}',
@@ -142,7 +143,7 @@ export class AddComponent extends Component {
       nextProps.createRequest.loaded &&
       nextProps.content['@type'] === this.props.type
     ) {
-      browserHistory.push(
+      history.push(
         this.props.returnUrl ||
           nextProps.content['@id'].replace(config.apiPath, ''),
       );
@@ -175,7 +176,7 @@ export class AddComponent extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.push(getBaseUrl(this.props.pathname));
+    history.push(getBaseUrl(this.props.pathname));
   }
 
   /**

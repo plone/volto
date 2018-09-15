@@ -9,7 +9,8 @@ import Helmet from 'react-helmet';
 import { asyncConnect } from 'redux-connect';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory, Link } from 'react-router';
+import { Link } from 'react-router-dom';
+import createHistory from "history/createBrowserHistory";
 import { isEmpty } from 'lodash';
 import {
   Container,
@@ -29,6 +30,7 @@ import {
 
 import { login, purgeMessages } from '../../../actions';
 
+let history = createHistory();
 const messages = defineMessages({
   login: {
     id: 'Log in',
@@ -116,7 +118,7 @@ export class LoginComponent extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.token) {
-      browserHistory.push(this.props.returnUrl || '/');
+      history.push(this.props.returnUrl || '/');
       this.props.purgeMessages();
     }
   }

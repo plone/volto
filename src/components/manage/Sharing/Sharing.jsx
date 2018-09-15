@@ -7,7 +7,8 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory, Link } from 'react-router';
+import { Link } from 'react-router-dom';
+import createHistory from "history/createBrowserHistory";
 import { find, isEqual, map } from 'lodash';
 import { Portal } from 'react-portal';
 import {
@@ -32,6 +33,7 @@ import { updateSharing, getSharing } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import { Toolbar } from '../../../components';
 
+let history = createHistory();
 const messages = defineMessages({
   searchForUserOrGroup: {
     id: 'Search for user or group',
@@ -255,7 +257,7 @@ export default class SharingComponent extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.push(getBaseUrl(this.props.pathname));
+    history.push(getBaseUrl(this.props.pathname));
   }
 
   /**

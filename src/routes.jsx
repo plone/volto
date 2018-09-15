@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { IndexRoute, Route } from 'react-router';
+import { Switch, Route } from 'react-router-dom';
 import isMobile from 'ismobilejs';
 
 import {
@@ -40,8 +40,9 @@ import {
  * @returns {Object} Routes.
  */
 export default () => (
+<Switch>
   <Route
-    path="/"
+    exact path="/"
     component={App}
     onChange={(prevState, nextState) => {
       if (isMobile.any && nextState.location.action === 'PUSH') {
@@ -49,7 +50,6 @@ export default () => (
       }
     }}
   >
-    <IndexRoute component={View} />
     <Route path="/login" component={Login} />
     <Route path="/logout" component={Logout} />
     <Route path="/search" component={Search} />
@@ -79,5 +79,7 @@ export default () => (
     <Route path="/password-reset" component={RequestPasswordReset} />
     <Route path="/**" component={View} />
     <Route path="*" component={NotFound} status={404} />
+    <Route exact path="/" component={View} />
   </Route>
+</Switch>
 );

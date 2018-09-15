@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory } from 'react-router';
+import createHistory from "history/createBrowserHistory";
 import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
@@ -21,6 +21,7 @@ import { Form, Toolbar } from '../../../components';
 import { updateContent, getContent, getSchema } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
+let history = createHistory();
 const messages = defineMessages({
   edit: {
     id: 'Edit {title}',
@@ -156,7 +157,7 @@ export class EditComponent extends Component {
       }
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      browserHistory.push(
+      history.push(
         this.props.returnUrl || getBaseUrl(this.props.pathname),
       );
     }
@@ -178,7 +179,7 @@ export class EditComponent extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.push(
+    history.push(
       this.props.returnUrl || getBaseUrl(this.props.pathname),
     );
   }

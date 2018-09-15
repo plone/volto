@@ -17,7 +17,8 @@ import {
   Grid,
   Table,
 } from 'semantic-ui-react';
-import { browserHistory, Link } from 'react-router';
+import { Link } from 'react-router-dom';
+import createHistory from "history/createBrowserHistory";
 import { Portal } from 'react-portal';
 import moment from 'moment';
 import {
@@ -31,6 +32,7 @@ import { getDiff, getSchema, getHistory } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import { DiffField, Toolbar } from '../../../components';
 
+let history = createHistory();
 const messages = defineMessages({
   diff: {
     id: 'Diff',
@@ -159,7 +161,7 @@ export default class DiffComponent extends Component {
    * @returns {undefined}
    */
   onSelectView(event, { value }) {
-    browserHistory.push(
+    history.push(
       `${this.props.pathname}?one=${this.props.one}&two=${
         this.props.two
       }&view=${value}`,
@@ -174,7 +176,7 @@ export default class DiffComponent extends Component {
    * @returns {undefined}
    */
   onChangeOne(event, { value }) {
-    browserHistory.push(
+    history.push(
       `${this.props.pathname}?one=${value}&two=${this.props.two}&view=${
         this.props.view
       }`,
@@ -189,7 +191,7 @@ export default class DiffComponent extends Component {
    * @returns {undefined}
    */
   onChangeTwo(event, { value }) {
-    browserHistory.push(
+    history.push(
       `${this.props.pathname}?one=${this.props.one}&two=${value}&view=${
         this.props.view
       }`,

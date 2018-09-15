@@ -8,7 +8,8 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory, Link } from 'react-router';
+import { Link } from 'react-router-dom';
+import createHistory from "history/createBrowserHistory";
 import { Portal } from 'react-portal';
 import { updateIntl } from 'react-intl-redux';
 import { map, keys } from 'lodash';
@@ -27,6 +28,7 @@ import languages from '../../../constants/Languages';
 import { addMessage } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
+let history = createHistory();
 const messages = defineMessages({
   personalPreferences: {
     id: 'Personal Preferences',
@@ -123,7 +125,7 @@ export default class PersonalPreferences extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.goBack();
+    history.goBack();
   }
 
   /**

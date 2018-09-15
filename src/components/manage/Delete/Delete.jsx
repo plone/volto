@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory } from 'react-router';
+import createHistory from "history/createBrowserHistory";
 import { Portal } from 'react-portal';
 import { Button, Container, List, Segment } from 'semantic-ui-react';
 import {
@@ -21,6 +21,7 @@ import {
 import { deleteContent, getContent } from '../../../actions';
 import { Toolbar } from '../../../components';
 
+let history = createHistory();
 const messages = defineMessages({
   delete: {
     id: 'Delete',
@@ -111,7 +112,7 @@ export default class Delete extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
-      browserHistory.push(
+      history.push(
         this.props.returnUrl ||
           this.props.pathname.replace('/delete', '').replace(/\/[^/]*$/, ''),
       );
@@ -133,7 +134,7 @@ export default class Delete extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.push(this.props.pathname.replace('/delete', ''));
+    history.push(this.props.pathname.replace('/delete', ''));
   }
 
   /**

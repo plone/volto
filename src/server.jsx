@@ -9,7 +9,7 @@ import React from 'react';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Provider } from 'react-intl-redux';
-import { match, createMemoryHistory, RouterContext } from 'react-router';
+import { match, createMemoryHistory, RouterContext } from 'react-router-dom';
 import { syncHistoryWithStore } from 'react-router-redux';
 import cookie, { plugToRequest } from 'react-cookie';
 import { urlencoded } from 'body-parser';

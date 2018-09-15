@@ -9,7 +9,8 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Portal } from 'react-portal';
-import { browserHistory, Link } from 'react-router';
+import { Link } from 'react-router-dom';
+import createHistory from "history/createBrowserHistory";
 import {
   FormattedMessage,
   defineMessages,
@@ -23,6 +24,7 @@ import { Form, Toolbar } from '../../../components';
 import { getUser, updateUser, addMessage } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
+let history = createHistory();
 const messages = defineMessages({
   personalInformation: {
     id: 'Personal Information',
@@ -160,7 +162,7 @@ export default class PersonalInformation extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.goBack();
+    history.goBack();
   }
 
   /**

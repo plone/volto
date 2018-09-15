@@ -6,7 +6,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { browserHistory, Link } from 'react-router';
+import { Link } from 'react-router-dom';
+import createHistory from "history/createBrowserHistory";
 import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Portal } from 'react-portal';
@@ -21,6 +22,7 @@ import {
 } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
+let history = createHistory();
 const messages = defineMessages({
   changesSaved: {
     id: 'Changes saved.',
@@ -138,7 +140,7 @@ export default class Controlpanel extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.goBack();
+    history.goBack();
   }
 
   /**
