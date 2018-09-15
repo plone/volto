@@ -6,6 +6,7 @@ matrix:
     env: TEST_SUITE=plone
   - name: "Guillotina Tests"
     python: 3.7
+    dist: xenial
     env: TEST_SUITE=guillotina
 cache:
   pip: true
@@ -14,15 +15,18 @@ cache:
 sudo: required
 services:
   - docker
+  - postgresql
 addons:
   apt:
     sources:
     - google-chrome
     packages:
     - google-chrome-stable
+  postgresql: "9.6"
 before_install:
 - if [ "$TEST_SUITE" == "guillotina" ]; then
   echo "Guillotina Before Install";
+  psql -c 'create database guillotina;' -U postgres;
   docker build -t plone/plone-react:$TRAVIS_BRANCH .;
   fi
 - if [ "$TEST_SUITE" == "plone" ]; then
