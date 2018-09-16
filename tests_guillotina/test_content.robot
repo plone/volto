@@ -7,12 +7,12 @@ Suite Teardown  Close all browsers
 
 *** Test Cases ***
 
-# Scenario: As a site administrator I can add a page
-#   Given a logged in site-administrator
-#     and the Plone site root
-#    When I add a Page with the title 'My Page'
-#    # Then I should see a notification that 'My Page' has been created
-#     and I should see 'My Page' in the navigation
+Scenario: As a site administrator I can add a page
+  Given a logged in site-administrator
+    and the Plone site root
+   When I add a Page with the title 'My Page'
+   # Then I should see a notification that 'My Page' has been created
+    and I should see 'My Page' in the navigation
 
 # Scenario: As a site administrator I can add a text tile to a page
 #   Given a logged in site administrator
@@ -36,15 +36,15 @@ Suite Teardown  Close all browsers
 
 # --- When -------------------------------------------------------------------
 
-# I add a Page with the title '${title}'
-#   Log  I add a Page with the title '${title}'  WARN
-#   Wait until page contains element  css=#toolbar-add
-#   Click element  css=#toolbar-add
-#   Wait until page contains element  css=#toolbar-add-document
-#   Click element  css=#toolbar-add-document
-#   Wait until page contains element  css=.public-DraftEditor-content
-#   Execute JavaScript  var textarea = document.getElementsByClassName('title')[0].getElementsByClassName('public-DraftEditor-content')[0]; var textEvent = document.createEvent('TextEvent'); textEvent.initTextEvent('textInput', true, true, null, 'My Page'); textarea.dispatchEvent(textEvent);
-#   Click element  css=*[title=Save]
+I add a Page with the title '${title}'
+  Log  I add a Page with the title '${title}'  WARN
+  Wait until page contains element  css=#toolbar-add
+  Click element  css=#toolbar-add
+  Wait until page contains element  css=#toolbar-add-document
+  Click element  css=#toolbar-add-document
+  Wait until page contains element  css=.public-DraftEditor-content
+  Execute JavaScript  var textarea = document.getElementsByClassName('title')[0].getElementsByClassName('public-DraftEditor-content')[0]; var textEvent = document.createEvent('TextEvent'); textEvent.initTextEvent('textInput', true, true, null, 'My Page'); textarea.dispatchEvent(textEvent);
+  Click element  css=*[title=Save]
 
 # I add a text tile with the content '${text}' to the page
 #   Execute JavaScript  var textarea = document.getElementsByClassName('title')[0].getElementsByClassName('public-DraftEditor-content')[0]; var textEvent = document.createEvent('TextEvent'); textEvent.initTextEvent('textInput', true, true, null, 'My Page'); textarea.dispatchEvent(textEvent);
@@ -52,7 +52,7 @@ Suite Teardown  Close all browsers
 
 # --- Then -------------------------------------------------------------------
 
-# I should see '${title}' in the navigation
-#   Wait until page contains element  css=.navigation a
-#   Wait until page contains element  css=.navigation a[href='/my-page']
-#   Page should contain element  css=.navigation a[href='/my-page']
+I should see '${title}' in the navigation
+  Wait until page contains element  css=.navigation a
+  Wait until page contains element  css=.navigation a[href='/my-page']
+  Page should contain element  css=.navigation a[href='/my-page']
