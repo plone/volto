@@ -18,6 +18,7 @@ Test Teardown   Test Teardown
 
 Suite Setup
     Set Environment Variable  API_PATH  http://localhost:8081/db/container
+    Log  Starting yarn
     Start Webpack  yarn start
     ...            check=to be executed: ./node_modules/.bin/babel-node ./src/start-server-prod.js
 

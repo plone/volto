@@ -7,3 +7,4 @@ robotframework-webpack==1.1.3
 robotsuite==2.0.0
 selenium==3.12.0
 requests==2.18.4
+prompt_toolkit==1.0.15

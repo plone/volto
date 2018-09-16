@@ -63,8 +63,8 @@ Page fully loaded
     Page should contain  Plone
 
 the Plone site root
-    Wait until page contains  Home
-    Click link  Home
+    Wait until page contains  container
+    Click link  xpath=//a[@title="Site"]
 
 
 # --- When -------------------------------------------------------------------
