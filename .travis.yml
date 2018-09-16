@@ -44,7 +44,7 @@ install:
   fi
 - if [ "$TEST_SUITE" == "guillotina" ]; then
   echo "Guillotina CMS Install";
-  docker-compose -f g-api/docker-compose.yml up -d
+  docker-compose -f g-api/docker-compose.yml up -d;
   fi
 - yarn
 - yarn build
