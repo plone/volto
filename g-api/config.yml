@@ -30,7 +30,7 @@ auth_token_validators:
 - guillotina_cms.validator.CMSJWTValidator
 redis:
   host: "redis"
-  port: 6379
+  port: 6380
 jwt:
   secret: secret
   algorithm: HS256
