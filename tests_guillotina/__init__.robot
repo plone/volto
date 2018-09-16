@@ -3,7 +3,6 @@
 *** Settings ***
 
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
-Library         plone.app.robotframework.Zope2Server
 Library         OperatingSystem
 Library         WebpackLibrary
 
@@ -15,24 +14,12 @@ Test Teardown   Test Teardown
 
 *** Variables ***
 
-${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
-@{CONFIGURE_PACKAGES}  plone.app.versioningbehavior
-...                    plone.app.contenttypes
-...                    plone.restapi
-...                    config_module
-@{APPLY_PROFILES}      plone.app.contenttypes:plone-content
-...                    plone.restapi:tiles
-
 *** Keywords ***
 
 Suite Setup
-    ${PORT}=  Get Environment Variable  ZSERVER_PORT  55001
-    Set Environment Variable  API_PATH  http://localhost:${PORT}/plone
-    Set Environment Variable  Z3C_AUTOINCLUDE_DEPENDENCIES_DISABLED  1
-    Start Zope server  ${FIXTURE}
+    Set Environment Variable  API_PATH  http://localhost:8081/db/container
     Start Webpack  yarn start
     ...            check=to be executed: ./node_modules/.bin/babel-node ./src/start-server-prod.js
 
 Suite Teardown
     Stop Webpack
-    Stop Zope server

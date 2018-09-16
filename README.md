@@ -139,10 +139,17 @@ MIT License. Copyrights hold the Plone Foundation.
 See [LICENSE.md](LICENSE.md) for details.
 
 
+### Running Guillotina Tests
 
-### Run guillotina tests
+First, start up Guillotina:
 
-- (setup python 3.6 env)
-- pip install git+https://github.com/plone/guillotina.git@rf
-- pip install -r robot-requirements.txt
-- genv/bin/pybot -v BROWSER:Chrome g-tests
+```
+docker-compose -f g-api/docker-compose.yml up -d
+```
+
+Then, run the tests:
+
+
+```
+PYTHONPATH=$(pwd)/tests_guillotina env/bin/pybot -v BROWSER:headlesschrome tests_guillotina;
+```

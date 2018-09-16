@@ -2,12 +2,11 @@
 
 Library  DebugLibrary
 Library  SeleniumLibrary  timeout=30  implicit_wait=0
+Library  GuillotinaLibrary
+
 
 *** Variables ***
 
-${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
-@{APPLY_PROFILES}      plone.app.contenttypes:plone-content
-...                    plone.restapi:tiles
 ${FRONTEND_URL}        http://localhost:4300/
 ${BROWSER}             chrome
 
@@ -19,15 +18,10 @@ ${BROWSER}             chrome
 ### files without Zope2Server in PYTHONPATH of pybot test runner.
 
 Test Setup
-    Import library  plone.app.robotframework.Zope2Server
-    Set Zope layer  ${FIXTURE}
-    ZODB Setup
+    Setup Guillotina  http://localhost:8081/db
     Open default browser
 
 Test Teardown
-    Import library  plone.app.robotframework.Zope2Server
-    Set Zope layer  ${FIXTURE}
-    ZODB TearDown
     Close all browsers
 
 ###
