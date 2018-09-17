@@ -18,7 +18,7 @@ services:
     image: redis
     container_name: redis
     ports:
-      - 6379:6379
+      - 6380:6379
   postgres:
     image: postgres:9.6
     container_name: postgres
