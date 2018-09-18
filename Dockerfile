@@ -11,7 +11,10 @@ RUN yarn install
 
 COPY . .
 
+RUN yarn build
+
 ENV API_PATH http://api/db/web
 ENV API guillotina
 
+ENTRYPOINT ["/opt/app/entrypoint.sh"]
 CMD yarn start

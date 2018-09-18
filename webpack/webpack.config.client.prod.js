@@ -11,8 +11,8 @@ configuration.plugins.push(
       BABEL_ENV: JSON.stringify('production/client'),
       HOST: process.env.HOST && process.env.HOST,
       PORT: process.env.PORT,
-      API: process.env.API && JSON.stringify(process.env.API),
-      API_PATH: process.env.API_PATH && JSON.stringify(process.env.API_PATH),
+      API: process.env.API ? JSON.stringify(process.env.API) : 'PLONE_REACT_API_SERVICE',
+      API_PATH: process.env.API_PATH ? JSON.stringify(process.env.API_PATH) : 'PLONE_REACT_API_PATH',
       // SENTRY_DSN - Enable Sentry error reporting
       // You need to pass the (public) Sentry DSN for JS Raven to work
       // Uncomment the next lines and replace the value with the DSN for your Sentry project
