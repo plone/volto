@@ -58,5 +58,7 @@ after_success:
 - if [ "$TEST_SUITE" == "guillotina" ]; then
   docker build -t plone/plone-react:$TRAVIS_BRANCH .;
   echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
-  docker push plone/plone-react:$TRAVIS_BRANCH;
+  docker push plone/plone-react:$TRAVIS_BRANCH.$TRAVIS_BUILD_NUMBER;
+  docker tag plone/plone-react:$TRAVIS_BRANCH.$TRAVIS_BUILD_NUMBER plone/plone-react:$TRAVIS_BRANCH.latest;
+  docker push plone/plone-react:$TRAVIS_BRANCH.latest;
   fi
