@@ -29,8 +29,8 @@ import {
  * @returns {string} Markup of the component.
  */
 const DocumentView = ({ content }) => {
-  const tilesFieldname = getTilesFieldname(this.state.formData);
-  const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+  const tilesFieldname = getTilesFieldname(content);
+  const tilesLayoutFieldname = getTilesLayoutFieldname(content);
 
   return hasTilesData(content) ? (
     <div id="page-document" className="ui wrapper">
