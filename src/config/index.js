@@ -36,7 +36,6 @@ export { customTiles, getDefaultEditTileView, messagesTiles };
 export default defaults(
   {},
   {
-    api: process.env.API,
     host: process.env.HOST,
     port: process.env.PORT,
     apiPath: process.env.API_PATH,
@@ -44,8 +43,6 @@ export default defaults(
   {
     host: 'localhost',
     port: '4300',
-    // api: 'Plone', // 'Plone' or 'guillotina'
-    api: 'guillotina',
     // apiPath: 'http://localhost:8080/Plone', // for Plone
     apiPath: 'http://localhost:8081/db/web', // for guillotina
   },
