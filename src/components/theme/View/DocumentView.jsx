@@ -16,6 +16,11 @@ import {
   ViewImageTile,
   ViewVideoTile,
 } from '../../../components';
+import {
+  getTilesFieldname,
+  getTilesLayoutFieldname,
+  hasTilesData,
+} from '../../../helpers';
 
 /**
  * Component to display the document view.
@@ -24,23 +29,15 @@ import {
  * @returns {string} Markup of the component.
  */
 const DocumentView = ({ content }) => {
-  const tiles = content.tiles
-    ? content.tiles
-    : content['guillotina_cms.interfaces.tiles.ITiles']
-      ? content['guillotina_cms.interfaces.tiles.ITiles'].tiles
-      : false;
-  const tiles_layout = content.tiles_layout
-    ? content.tiles_layout
-    : content['guillotina_cms.interfaces.tiles.ITiles']
-      ? content['guillotina_cms.interfaces.tiles.ITiles'].tiles_layout
-      : false;
+  const tilesFieldname = getTilesFieldname(this.state.formData);
+  const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
 
-  return tiles ? (
+  return hasTilesData(content) ? (
     <div id="page-document" className="ui wrapper">
       <Helmet title={content.title} />
-      {map(tiles_layout.items, tile => {
+      {map(content[tilesLayoutFieldname].items, tile => {
         let Tile = null;
-        switch (tiles[tile]['@type']) {
+        switch (content[tilesFieldname][tile]['@type']) {
           case 'title':
             Tile = ViewTitleTile;
             break;
@@ -60,9 +57,13 @@ const DocumentView = ({ content }) => {
             break;
         }
         return Tile !== null ? (
-          <Tile key={tile} properties={content} data={tiles[tile]} />
+          <Tile
+            key={tile}
+            properties={content}
+            data={content[tilesFieldname][tile]}
+          />
         ) : (
-          <div>{JSON.stringify(tiles[tile]['@type'])}</div>
+          <div>{JSON.stringify(content[tilesFieldname][tile]['@type'])}</div>
         );
       })}
     </div>

@@ -4,14 +4,12 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
 import Form from './Form';
-import config from '~/config';
 
 const mockStore = configureStore();
 
 jest.mock('./Field', () => jest.fn(() => <div className="Field" />));
 
 describe('Form', () => {
-  // config.api = 'Plone';
   it('renders a form component', () => {
     const store = mockStore({
       intl: {
