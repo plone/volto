@@ -20,7 +20,12 @@ import config from '~/config';
 
 import { createContent, getSchema } from '../../../actions';
 import { Form, Toolbar } from '../../../components';
-import { getBaseUrl, hasTilesData } from '../../../helpers';
+import {
+  getBaseUrl,
+  hasTilesData,
+  getTilesFieldname,
+  getTilesLayoutFieldname,
+} from '../../../helpers';
 
 const messages = defineMessages({
   add: {
@@ -210,6 +215,10 @@ export class AddComponent extends Component {
               }
             }}
             schema={this.props.schema}
+            formData={{
+              [getTilesFieldname(this.props.schema.properties)]: null,
+              [getTilesLayoutFieldname(this.props.schema.properties)]: null,
+            }}
             onSubmit={this.onSubmit}
             hideActions
             pathname={this.props.pathname}
