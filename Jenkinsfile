@@ -14,7 +14,7 @@ pipeline {
       steps {
         deleteDir()
         checkout scm
-        sh 'virtualenv env --no-site-packages'
+        sh '/srv/python2.7.15/bin/virtualenv env --no-site-packages'
         sh 'env/bin/pip install zc.recipe.egg==2.0.4 --no-cache-dir'
         sh 'env/bin/pip install -r api/docker/requirements.txt'
         sh 'env/bin/pip install -U https://github.com/zopefoundation/z3c.autoinclude/archive/pip.tar.gz#egg=z3c.autoinclude'
