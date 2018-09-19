@@ -10,7 +10,6 @@ configuration.plugins.push(
       BABEL_ENV: JSON.stringify('development/server'),
       HOST: process.env.HOST && process.env.HOST,
       PORT: process.env.PORT,
-      API: process.env.API && JSON.stringify(process.env.API),
       API_PATH: process.env.API_PATH && JSON.stringify(process.env.API_PATH),
     },
     __CLIENT__: false,

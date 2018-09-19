@@ -38,4 +38,4 @@ services:
      - redis
      - elasticsearch
     volumes:
-      - ${PWD}/g-api/config.yml:/usr/src/app/config.yml
+      - ${PWD}/g-api/config-local.yml:/usr/src/app/config.yml

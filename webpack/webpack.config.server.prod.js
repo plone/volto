@@ -10,7 +10,6 @@ configuration.plugins.push(
       BABEL_ENV: JSON.stringify('production/server'),
       HOST: process.env.HOST && process.env.HOST,
       PORT: process.env.PORT,
-      API: process.env.API ? JSON.stringify(process.env.API) : 'PLONE_REACT_API_SERVICE',
       API_PATH: process.env.API_PATH ? JSON.stringify(process.env.API_PATH) : 'PLONE_REACT_API_PATH',
       // SENTRY_DSN - Enable Sentry error reporting
       // You need the full Sentry DSN (private) configured here for Node Raven to work
