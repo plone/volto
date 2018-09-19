@@ -16,12 +16,7 @@ import {
 } from './RichTextEditor/Blocks';
 import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
 import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
-import {
-  customTiles,
-  getDefaultEditTileView,
-  messagesTiles,
-  getDefaultTiles,
-} from './Tiles';
+import { customTiles, getDefaultEditTileView, messagesTiles } from './Tiles';
 
 export { layoutViews, contentTypesViews, defaultView };
 export { widgetMapping, defaultWidget };
@@ -49,9 +44,9 @@ export default defaults(
   {
     host: 'localhost',
     port: '4300',
-    api: 'Plone', // 'Plone' or 'guillotina'
-    // api: 'guillotina',
-    apiPath: 'http://localhost:8080/Plone', // for Plone
-    // apiPath: 'http://localhost:8081/db/web', // for guillotina
+    // api: 'Plone', // 'Plone' or 'guillotina'
+    api: 'guillotina',
+    // apiPath: 'http://localhost:8080/Plone', // for Plone
+    apiPath: 'http://localhost:8081/db/web', // for guillotina
   },
 );

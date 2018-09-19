@@ -12,6 +12,8 @@ import {
   isPlainObject,
   isArray,
   map,
+  mapKeys,
+  merge,
 } from 'lodash';
 
 import { GET_SCHEMA } from '../../constants/ActionTypes';
@@ -53,11 +55,24 @@ export default function schema(state = initialState, action = {}) {
               map(keys(pickBy(action.result.properties, isArray)), fieldset =>
                 map(
                   action.result.definitions[fieldset].required,
-                  required => `${fieldset}|${required}`,
+                  required => `${fieldset}.${required}`,
                 ),
               ),
             ),
           ],
+          properties: {
+            ...action.result.properties,
+            ...merge(
+              ...map(
+                keys(pickBy(action.result.properties, isArray)),
+                fieldset =>
+                  mapKeys(
+                    action.result.definitions[fieldset].properties,
+                    (value, key) => `${fieldset}.${key}`,
+                  ),
+              ),
+            ),
+          },
           fieldsets:
             action.result.fieldsets ||
             filter(
@@ -82,7 +97,7 @@ export default function schema(state = initialState, action = {}) {
                   fieldset => ({
                     fields: map(
                       keys(action.result.definitions[fieldset].properties),
-                      field => `${fieldset}|${field}`,
+                      field => `${fieldset}.${field}`,
                     ),
                     id: fieldset,
                     title: action.result.definitions[fieldset].title,
