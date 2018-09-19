@@ -39,20 +39,20 @@ describe('Tiles', () => {
 
   describe('hasTilesData', () => {
     it('checks tiles data when there is none', () => {
-      expect(hasTilesData({ title: 'Example' })).toBeFalse();
+      expect(hasTilesData({ title: 'Example' })).toBe(false);
     });
 
     it('checks tiles data in the root', () => {
-      expect(hasTilesData({ title: 'Example', tiles: [] })).toBeTrue();
+      expect(hasTilesData({ title: 'Example', tiles: [] })).toBe(true);
     });
 
     it('checks tiles data in a nested schema', () => {
       expect(
         hasTilesData({
           title: 'Example',
-          'guillotina_cms.interfaces.tiles.ITiles.tiles_layout': [],
+          'guillotina_cms.interfaces.tiles.ITiles.tiles': [],
         }),
-      ).toBeTrue();
+      ).toBe(true);
     });
   });
 });

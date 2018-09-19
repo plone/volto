@@ -127,24 +127,27 @@ class Form extends Component {
    */
   constructor(props) {
     super(props);
-    let { formData } = props;
-    if (formData === null) {
-      // get defaults from schema
-      formData = mapValues(props.schema.properties, 'default');
-    }
-    // defaults for block editor; should be moved to schema on server side
     const ids = {
       title: uuid(),
       description: uuid(),
       text: uuid(),
     };
-    if (!formData.tiles_layout) {
-      formData.tiles_layout = {
+    let { formData } = props;
+    const tilesFieldname = getTilesFieldname(formData);
+    const tilesLayoutFieldname = getTilesLayoutFieldname(formData);
+
+    if (formData === null) {
+      // get defaults from schema
+      formData = mapValues(props.schema.properties, 'default');
+    }
+    // defaults for block editor; should be moved to schema on server side
+    if (!formData[tilesLayoutFieldname]) {
+      formData[tilesLayoutFieldname] = {
         items: [ids.title, ids.description, ids.text],
       };
     }
-    if (!formData.tiles) {
-      formData.tiles = {
+    if (!formData[tilesFieldname]) {
+      formData[tilesFieldname] = {
         [ids.title]: {
           '@type': 'title',
         },

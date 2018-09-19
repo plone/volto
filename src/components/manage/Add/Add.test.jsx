@@ -4,7 +4,6 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
 import { AddComponent as Add } from './Add';
-import config from '~/config';
 
 const mockStore = configureStore();
 
@@ -70,8 +69,6 @@ describe('Add', () => {
 });
 
 describe('[guillotina] Add', () => {
-  config.api = 'guillotina';
-
   it('renders an empty add component', () => {
     const store = mockStore({
       schema: {
