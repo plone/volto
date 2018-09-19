@@ -33,12 +33,12 @@ export class Api {
    */
   constructor() {
     methods.forEach(method => {
-      this[method] = (path, { match.params, data, type } = {}) =>
+      this[method] = (path, { params, data, type } = {}) =>
         new Promise((resolve, reject) => {
           const request = superagent[method](formatUrl(path));
 
-          if (match.params) {
-            request.query(match.params);
+          if (params) {
+            request.query(params);
           }
 
           const authToken = cookie.load('auth_token');
