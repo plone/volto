@@ -26,7 +26,7 @@ describe('Search', () => {
     const component = renderer.create(
       <Provider store={store}>
         <Search
-          location={{ pathname: '/blog', query: { SearchableText: 'blog' } }}
+          location={{ pathname: '/blog', search: { SearchableText: 'blog' } }}
         />
       </Provider>,
     );
@@ -55,7 +55,7 @@ describe('Search', () => {
     const component = renderer.create(
       <Provider store={store}>
         <Search
-          location={{ pathname: '/blog', query: { SearchableText: 'blog' } }}
+          location={{ pathname: '/blog', search: { SearchableText: 'blog' } }}
         />
       </Provider>,
     );

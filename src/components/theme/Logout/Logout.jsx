@@ -11,10 +11,11 @@ import { asyncConnect } from 'redux-connect';
 
 import { Login } from '../../../components';
 import { logout, purgeMessages } from '../../../actions';
+import queryString from 'query-string';
 
 @connect(
   (state, props) => ({
-    query: props.location.query,
+    query: queryString.parse(props.location.search),
   }),
   dispatch => bindActionCreators({ logout, purgeMessages }, dispatch),
 )
@@ -62,7 +63,7 @@ export class LogoutComponent extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return <Login location={{ query: this.props.location.query }} />;
+    return <Login location={{ search: queryString.parse(this.props.location.search) }} />;
   }
 }
 

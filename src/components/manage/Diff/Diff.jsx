@@ -31,6 +31,7 @@ import {
 import { getDiff, getSchema, getHistory } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import { DiffField, Toolbar } from '../../../components';
+import queryString from 'query-string';
 
 let history = createHistory();
 const messages = defineMessages({
@@ -51,9 +52,9 @@ const messages = defineMessages({
     history: state.history.entries,
     schema: state.schema.schema,
     pathname: props.location.pathname,
-    one: props.location.query.one,
-    two: props.location.query.two,
-    view: props.location.query.view || 'split',
+    one: queryString.parse(props.location.search).one,
+    two: queryString.parse(props.location.search).two,
+    view: queryString.parse(props.location.search).view || 'split',
     title: state.content.data.title,
     type: state.content.data['@type'],
   }),

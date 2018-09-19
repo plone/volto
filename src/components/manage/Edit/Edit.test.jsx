@@ -36,7 +36,7 @@ describe('Edit', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Edit location={{ pathname: '/blog', query: {} }} />
+        <Edit location={{ pathname: '/blog', search: {} }} />
       </Provider>,
     );
     const json = component.toJSON();
@@ -68,7 +68,7 @@ describe('Edit', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Edit location={{ pathname: '/blog', query: {} }} />
+        <Edit location={{ pathname: '/blog', search: {} }} />
       </Provider>,
     );
     const json = component.toJSON();

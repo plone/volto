@@ -32,7 +32,7 @@ describe('Add', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Add location={{ pathname: '/blog', query: { type: 'Document' } }} />
+        <Add location={{ pathname: '/blog', search: { type: 'Document' } }} />
       </Provider>,
     );
     const json = component.toJSON();
@@ -60,7 +60,7 @@ describe('Add', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Add location={{ pathname: '/blog', query: { type: 'Document' } }} />
+        <Add location={{ pathname: '/blog', search: { type: 'Document' } }} />
       </Provider>,
     );
     const json = component.toJSON();

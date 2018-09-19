@@ -39,7 +39,7 @@ const messages = defineMessages({
   (state, props) => ({
     controlpanel: state.controlpanels.controlpanel,
     updateRequest: state.controlpanels.update,
-    id: props.params.id,
+    id: props.match.params.id,
     pathname: props.location.pathname,
   }),
   dispatch =>

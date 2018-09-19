@@ -12,6 +12,7 @@ import { Dropdown, Icon } from 'semantic-ui-react';
 import { injectIntl, intlShape } from 'react-intl';
 import { find } from 'lodash';
 import { defaultView, contentTypesViews, layoutViews } from '~/config';
+import queryString from 'query-string';
 
 import {
   Comments,
@@ -34,7 +35,7 @@ import { BodyClass, getBaseUrl } from '../../../helpers';
     content: state.content.data,
     error: state.content.get.error,
     pathname: props.location.pathname,
-    versionId: props.location.query && props.location.query.version_id,
+    versionId: queryString.parse(props.location.search) && queryString.parse(props.location.search).version_id,
   }),
   {
     listActions,
@@ -68,7 +69,7 @@ export default class View extends Component {
      */
     pathname: PropTypes.string.isRequired,
     location: PropTypes.shape({
-      query: PropTypes.object,
+      search: PropTypes.string,
       pathname: PropTypes.string,
     }).isRequired,
     /**

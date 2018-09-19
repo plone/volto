@@ -72,7 +72,7 @@ describe('Diff', () => {
     const component = renderer.create(
       <Provider store={store}>
         <Diff
-          location={{ pathname: '/blog', query: { one: '0', two: '1 ' } }}
+          location={{ pathname: '/blog', search: { one: '0', two: '1 ' } }}
         />
       </Provider>,
     );

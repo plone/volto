@@ -16,13 +16,14 @@ import { Portal } from 'react-portal';
 import { searchContent } from '../../../actions';
 
 import { SearchTags, Toolbar } from '../../../components';
+import queryString from 'query-string';
 
 @connect(
   (state, props) => ({
     items: state.search.items,
-    searchableText: props.location.query.SearchableText,
-    subject: props.location.query.Subject,
-    path: props.location.query.path,
+    searchableText: queryString.parse(props.location.search).SearchableText,
+    subject: queryString.parse(props.location.search).Subject,
+    path: queryString.parse(props.location.search).path,
     pathname: props.location.pathname,
   }),
   dispatch => bindActionCreators({ searchContent }, dispatch),
@@ -170,8 +171,8 @@ export default asyncConnect([
     promise: ({ location, store: { dispatch } }) =>
       dispatch(
         searchContent('', {
-          SearchableText: location.query.SearchableText,
-          Subject: location.query.Subject,
+          SearchableText: queryString.parse(location.search).SearchableText,
+          Subject: queryString.parse(location.search).Subject,
         }),
       ),
   },

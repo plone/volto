@@ -27,6 +27,7 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
+import queryString from 'query-string';
 
 import { login, purgeMessages } from '../../../actions';
 
@@ -60,7 +61,7 @@ const messages = defineMessages({
     error: state.userSession.login.error,
     loading: state.userSession.login.loading,
     token: state.userSession.token,
-    returnUrl: props.location.query.return_url || '/',
+    returnUrl: queryString.parse(props.location.search).return_url || '/',
   }),
   dispatch => bindActionCreators({ login, purgeMessages }, dispatch),
 )

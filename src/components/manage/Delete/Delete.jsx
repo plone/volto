@@ -20,6 +20,7 @@ import {
 
 import { deleteContent, getContent } from '../../../actions';
 import { Toolbar } from '../../../components';
+import queryString from 'query-string';
 
 let history = createHistory();
 const messages = defineMessages({
@@ -43,7 +44,7 @@ const messages = defineMessages({
     content: state.content.data,
     deleteRequest: state.content.delete,
     pathname: props.location.pathname,
-    returnUrl: props.location.query.return_url,
+    returnUrl: queryString.parse(props.location.search).return_url,
   }),
   dispatch => bindActionCreators({ deleteContent, getContent }, dispatch),
 )

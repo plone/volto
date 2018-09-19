@@ -21,6 +21,7 @@ import config from '~/config';
 import { createContent, getSchema } from '../../../actions';
 import { Form, Toolbar } from '../../../components';
 import { getBaseUrl } from '../../../helpers';
+import queryString from 'query-string';
 
 let history = createHistory();
 const messages = defineMessages({
@@ -55,8 +56,8 @@ const messages = defineMessages({
     content: state.content.data,
     schema: state.schema.schema,
     pathname: props.location.pathname,
-    returnUrl: props.location.query.return_url,
-    type: props.location.query.type,
+    returnUrl: queryString.parse(props.location.search).return_url,
+    type: queryString.parse(props.location.search).type,
   }),
   dispatch => bindActionCreators({ createContent, getSchema }, dispatch),
 )
@@ -270,7 +271,7 @@ export default asyncConnect([
   {
     key: 'schema',
     promise: ({ location, store: { dispatch } }) =>
-      dispatch(getSchema(location.query.type)),
+      dispatch(getSchema(queryString.parse(location.search).type)),
   },
   {
     key: 'content',

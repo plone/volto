@@ -20,6 +20,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { Form, Toolbar } from '../../../components';
 import { updateContent, getContent, getSchema } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
+import queryString from 'query-string';
 
 let history = createHistory();
 const messages = defineMessages({
@@ -55,7 +56,7 @@ const messages = defineMessages({
     schemaRequest: state.schema,
     updateRequest: state.content.update,
     pathname: props.location.pathname,
-    returnUrl: props.location.query.return_url,
+    returnUrl: queryString.parse(props.location.search).return_url,
   }),
   dispatch =>
     bindActionCreators(
