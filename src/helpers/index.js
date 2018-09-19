@@ -9,5 +9,9 @@ export { Html } from './Html/Html';
 export { getAuthToken, persistAuthToken } from './AuthToken/AuthToken';
 export { getBaseUrl, getIcon, getView } from './Url/Url';
 export { generateSitemap } from './Sitemap/Sitemap';
-export { getTilesFieldname, getTilesLayoutFieldname } from './Tiles/Tiles';
+export {
+  getTilesFieldname,
+  getTilesLayoutFieldname,
+  hasTilesData,
+} from './Tiles/Tiles';
 export BodyClass from './BodyClass/BodyClass';

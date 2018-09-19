@@ -1,4 +1,8 @@
-import { getTilesFieldname, getTilesLayoutFieldname } from './Tiles';
+import {
+  getTilesFieldname,
+  getTilesLayoutFieldname,
+  hasTilesData,
+} from './Tiles';
 
 describe('Tiles', () => {
   describe('getTilesFieldname', () => {
@@ -18,18 +22,37 @@ describe('Tiles', () => {
 
   describe('getTilesLayoutFieldname', () => {
     it('can get the tiles layout field name from formdata', () => {
-      expect(getTilesFieldname({ title: 'Example', tiles_layout: [] })).toBe(
-        'tiles_layout',
-      );
+      expect(
+        getTilesLayoutFieldname({ title: 'Example', tiles_layout: [] }),
+      ).toBe('tiles_layout');
     });
 
     it('can get the tiles layout field name from formdata of a nested schema', () => {
       expect(
-        getTilesFieldname({
+        getTilesLayoutFieldname({
           title: 'Example',
           'guillotina_cms.interfaces.tiles.ITiles.tiles_layout': [],
         }),
       ).toBe('guillotina_cms.interfaces.tiles.ITiles.tiles_layout');
+    });
+  });
+
+  describe('hasTilesData', () => {
+    it('checks tiles data when there is none', () => {
+      expect(hasTilesData({ title: 'Example' })).toBeFalse();
+    });
+
+    it('checks tiles data in the root', () => {
+      expect(hasTilesData({ title: 'Example', tiles: [] })).toBeTrue();
+    });
+
+    it('checks tiles data in a nested schema', () => {
+      expect(
+        hasTilesData({
+          title: 'Example',
+          'guillotina_cms.interfaces.tiles.ITiles.tiles_layout': [],
+        }),
+      ).toBeTrue();
     });
   });
 });

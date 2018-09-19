@@ -31,7 +31,7 @@ export {
   ToHTMLRenderers,
   ToHTMLOptions,
 };
-export { customTiles, getDefaultEditTileView, messagesTiles, getDefaultTiles };
+export { customTiles, getDefaultEditTileView, messagesTiles };
 
 export default defaults(
   {},

@@ -26,3 +26,15 @@ export function getTilesLayoutFieldname(formData) {
     find(keys(formData), key => endsWith(key, 'tiles_layout')) || 'tiles_layout'
   );
 }
+
+/**
+ * Has tiles data.
+ * @function hasTilesData
+ * @param {Object} formData Form data.
+ * @return {boolean} True if it has tiles data.
+ */
+export function hasTilesData(formData) {
+  return (
+    find(keys(formData), key => endsWith(key, 'tiles_layout')) !== undefined
+  );
+}
