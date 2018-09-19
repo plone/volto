@@ -14,6 +14,8 @@ pipeline {
       steps {
         deleteDir()
         checkout scm
+        sh 'yarn install'
+        sh 'yarn build'
         sh '/srv/python2.7.15/bin/virtualenv env --no-site-packages'
         sh 'env/bin/pip install zc.recipe.egg==2.0.4 --no-cache-dir'
         sh 'env/bin/pip install -r api/docker/requirements.txt'
