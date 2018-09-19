@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import { asyncConnect } from 'redux-connect';
-import { isEmpty, pick } from 'lodash';
+import { keys, isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Portal } from 'react-portal';
 import { Icon } from 'semantic-ui-react';
@@ -170,6 +170,9 @@ export class AddComponent extends Component {
   onSubmit(data) {
     this.props.createContent(getBaseUrl(this.props.pathname), {
       ...data,
+      '@static_behaviors': this.props.schema.definitions
+        ? keys(this.props.schema.definitions)
+        : null,
       '@type': this.props.type,
     });
   }
