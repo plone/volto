@@ -2,7 +2,7 @@
 set -Ex
 
 function apply_path {
-    mainjs=./dist/main*.js
+    mainjs=./dist/*.js
     test -f $mainjs
 
     echo "Check that we have API_PATH and API vars"

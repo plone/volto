@@ -8,6 +8,8 @@ matrix:
     python: 3.7
     dist: xenial
     env: TEST_SUITE=guillotina
+  - name: "Unit Tests"
+    env: TEST_SUITE=unit
 cache:
   pip: true
   directories:
@@ -24,13 +26,15 @@ addons:
 before_install:
 - nvm install 8.11.3;
 - docker build -t plone/plone-react:testing .
-- mkdir webdriver;
-- wget https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux64.tar.gz;
-- tar -xzf geckodriver-v0.20.0-linux64.tar.gz -C webdriver;
-- wget https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip;
-- unzip chromedriver_linux64.zip -d webdriver;
-- export PATH=$PATH:$(pwd)/webdriver;
-- npm install -g surge
+- if [ "$TEST_SUITE" != "unit" ]; then
+  mkdir webdriver;
+  wget https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux64.tar.gz;
+  tar -xzf geckodriver-v0.20.0-linux64.tar.gz -C webdriver;
+  wget https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip;
+  unzip chromedriver_linux64.zip -d webdriver;
+  export PATH=$PATH:$(pwd)/webdriver;
+  npm install -g surge
+  fi
 install:
 - if [ "$TEST_SUITE" == "plone" ]; then
   virtualenv env --python=$(which python) --no-site-packages;
@@ -49,12 +53,14 @@ before_script:
 - "sh -e /etc/init.d/xvfb start"
 - sleep 3
 script:
-- docker run --name coverage_front plone/plone-react:testing -- yarn coverage
+- if [ "$TEST_SUITE" == "unit" ]; then
+  docker run --name coverage_front plone/plone-react:testing -- yarn coverage;
+  fi
 - if [ "$TEST_SUITE" == "guillotina" ]; then
-  PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome -v API:Guillotina --v TESTING:Docker tests;
+  PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome -v API:Guillotina --v TESTING:Native tests;
   fi
 - if [ "$TEST_SUITE" == "plone" ]; then
-  PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome -v API:Plone --v TESTING:Docker tests;
+  PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome -v API:Plone --v TESTING:Native tests;
   fi
 after_script:
 - mkdir robot-results

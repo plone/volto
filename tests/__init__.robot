@@ -39,8 +39,7 @@ Start Plone Backend
     Start Zope server  ${FIXTURE}
 
 Start Plone React Docker
-    Run  docker build -t plone/plone-react:testing .
-    Run  docker run --name local_testing plone/plone-react:testing -d
+    Run  docker run -p 4300:4300 -d --name local_testing -e API_PATH=\"http://localhost:8081/db/container\" plone/plone-react:testing yarn run:prod:server
 
 Start Plone React Native
     Start Webpack  yarn start
@@ -58,4 +57,4 @@ Suite Teardown
     Run Keyword If   '${TESTING}' == 'Native'   Stop Webpack
     Run Keyword If   '${TESTING}' == 'Docker'   Run  docker stop local_testing; docker rm local_testing
     Run Keyword If   '${API}' == 'Plone'  Stop Zope server
-    Run Keyword If   '${API}' == 'Guillotina'   Run  docker-compose -f g-api/docker-compose-local.yaml down
+    Run Keyword If   '${API}' == 'Guillotina'   Run  docker-compose -f g-api/docker-compose-local.yaml stop
