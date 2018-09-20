@@ -54,7 +54,7 @@ before_script:
 - sleep 3
 script:
 - if [ "$TEST_SUITE" == "unit" ]; then
-  docker run --name coverage_front plone/plone-react:testing -- yarn coverage;
+  docker run --name coverage_front -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" plone/plone-react:testing -- yarn coverage;
   fi
 - if [ "$TEST_SUITE" == "guillotina" ]; then
   PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome -v API:Guillotina --v TESTING:Native tests;
