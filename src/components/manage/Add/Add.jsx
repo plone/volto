@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import { asyncConnect } from 'redux-connect';
-import { isEmpty, pick } from 'lodash';
+import { keys, isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Portal } from 'react-portal';
 import { Icon } from 'semantic-ui-react';
@@ -20,7 +20,12 @@ import config from '~/config';
 
 import { createContent, getSchema } from '../../../actions';
 import { Form, Toolbar } from '../../../components';
-import { getBaseUrl } from '../../../helpers';
+import {
+  getBaseUrl,
+  hasTilesData,
+  getTilesFieldname,
+  getTilesLayoutFieldname,
+} from '../../../helpers';
 
 const messages = defineMessages({
   add: {
@@ -148,7 +153,7 @@ export class AddComponent extends Component {
       );
     }
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
-      if (nextProps.schema.properties.tiles) {
+      if (hasTilesData(nextProps.schema.properties)) {
         this.setState({
           visual: true,
         });
@@ -165,6 +170,9 @@ export class AddComponent extends Component {
   onSubmit(data) {
     this.props.createContent(getBaseUrl(this.props.pathname), {
       ...data,
+      '@static_behaviors': this.props.schema.definitions
+        ? keys(this.props.schema.definitions)
+        : null,
       '@type': this.props.type,
     });
   }
@@ -210,7 +218,10 @@ export class AddComponent extends Component {
               }
             }}
             schema={this.props.schema}
-            formData={{ tiles: null, tiles_layout: null }}
+            formData={{
+              [getTilesFieldname(this.props.schema.properties)]: null,
+              [getTilesLayoutFieldname(this.props.schema.properties)]: null,
+            }}
             onSubmit={this.onSubmit}
             hideActions
             pathname={this.props.pathname}
@@ -225,7 +236,7 @@ export class AddComponent extends Component {
               pathname={this.props.pathname}
               inner={
                 <div>
-                  <a className="item" icon onClick={() => this.form.onSubmit()}>
+                  <a className="item" onClick={() => this.form.onSubmit()}>
                     <Icon
                       name="save"
                       size="big"
@@ -233,7 +244,7 @@ export class AddComponent extends Component {
                       title={this.props.intl.formatMessage(messages.save)}
                     />
                   </a>
-                  {this.props.schema.properties.tiles && (
+                  {hasTilesData(this.props.schema.properties) && (
                     <a className="item" onClick={() => this.onToggleVisual()}>
                       <Icon
                         name={this.state.visual ? 'tasks' : 'block layout'}

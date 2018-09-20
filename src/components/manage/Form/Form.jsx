@@ -19,6 +19,7 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 
 import { EditTile, Field } from '../../../components';
+import { getTilesFieldname, getTilesLayoutFieldname } from '../../../helpers';
 
 const messages = defineMessages({
   addTile: {
@@ -132,16 +133,21 @@ class Form extends Component {
       text: uuid(),
     };
     let { formData } = props;
+    const tilesFieldname = getTilesFieldname(formData);
+    const tilesLayoutFieldname = getTilesLayoutFieldname(formData);
+
     if (formData === null) {
       // get defaults from schema
       formData = mapValues(props.schema.properties, 'default');
     }
     // defaults for block editor; should be moved to schema on server side
-    if (!formData.tiles_layout) {
-      formData.tiles_layout = { items: [ids.title, ids.description, ids.text] };
+    if (!formData[tilesLayoutFieldname]) {
+      formData[tilesLayoutFieldname] = {
+        items: [ids.title, ids.description, ids.text],
+      };
     }
-    if (!formData.tiles) {
-      formData.tiles = {
+    if (!formData[tilesFieldname]) {
+      formData[tilesFieldname] = {
         [ids.title]: {
           '@type': 'title',
         },
@@ -175,24 +181,12 @@ class Form extends Component {
    * @returns {undefined}
    */
   onChangeField(id, value) {
-    if (id.indexOf('|') !== -1) {
-      this.setState({
-        formData: {
-          ...this.state.formData,
-          [id.split('|')[0]]: {
-            ...this.state.formData[id.split('|')[0]],
-            [id.split('|')[1]]: value || null,
-          },
-        },
-      });
-    } else {
-      this.setState({
-        formData: {
-          ...this.state.formData,
-          [id]: value || null,
-        },
-      });
-    }
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        [id]: value || null,
+      },
+    });
   }
 
   /**
@@ -206,7 +200,7 @@ class Form extends Component {
     this.setState({
       formData: {
         ...this.state.formData,
-        tiles: {
+        [getTilesFieldname(this.state.formData)]: {
           ...this.state.formData.tiles,
           [id]: value || null,
         },
@@ -234,17 +228,20 @@ class Form extends Component {
    * @returns {undefined}
    */
   onDeleteTile(id, selectPrev) {
+    const tilesFieldname = getTilesFieldname(this.state.formData);
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+
     this.setState({
       formData: {
         ...this.state.formData,
-        tiles_layout: {
-          items: without(this.state.formData.tiles_layout.items, id),
+        [tilesLayoutFieldname]: {
+          items: without(this.state.formData[tilesLayoutFieldname].items, id),
         },
-        tiles: omit(this.state.formData.tiles, [id]),
+        tiles: omit(this.state.formData[tilesFieldname], [id]),
       },
       selected: selectPrev
-        ? this.state.formData.tiles_layout.items[
-            this.state.formData.tiles_layout.items.indexOf(id) - 1
+        ? this.state.formData[tilesLayoutFieldname].items[
+            this.state.formData[tilesLayoutFieldname].items.indexOf(id) - 1
           ]
         : null,
     });
@@ -259,21 +256,23 @@ class Form extends Component {
    */
   onAddTile(type, index) {
     const id = uuid();
-    const insert =
-      index === -1 ? this.state.formData.tiles_layout.items.length : index;
+    const tilesFieldname = getTilesFieldname(this.state.formData);
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+    const totalItems = this.state.formData[tilesLayoutFieldname].items.length;
+    const insert = index === -1 ? totalItems : index;
 
     this.setState({
       formData: {
         ...this.state.formData,
         tiles_layout: {
           items: [
-            ...this.state.formData.tiles_layout.items.slice(0, insert),
+            ...this.state.formData[tilesLayoutFieldname].items.slice(0, insert),
             id,
-            ...this.state.formData.tiles_layout.items.slice(insert),
+            ...this.state.formData[tilesLayoutFieldname].items.slice(insert),
           ],
         },
         tiles: {
-          ...this.state.formData.tiles,
+          ...this.state.formData[tilesFieldname],
           [id]: {
             '@type': type,
           },
@@ -298,18 +297,8 @@ class Form extends Component {
     const errors = {};
     map(this.props.schema.fieldsets, fieldset =>
       map(fieldset.fields, fieldId => {
-        const field =
-          fieldId.indexOf('|') !== -1
-            ? this.props.schema.definitions[fieldId.split('|')[0]].properties[
-                fieldId.split('|')[1]
-              ]
-            : this.props.schema.properties[fieldId];
-
-        const data =
-          fieldId.indexOf('|') !== -1
-            ? this.state.formData[fieldId.split('|')[0]] &&
-              this.state.formData[fieldId.split('|')[0]][fieldId.split('|')[1]]
-            : this.state.formData[fieldId];
+        const field = this.props.schema.properties[fieldId];
+        const data = this.state.formData[fieldId];
         if (this.props.schema.required.indexOf(fieldId) !== -1) {
           if (field.type !== 'boolean' && !data) {
             errors[fieldId] = errors[field] || [];
@@ -356,12 +345,14 @@ class Form extends Component {
    * @returns {undefined}
    */
   onMoveTile(dragIndex, hoverIndex) {
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+
     this.setState({
       formData: {
         ...this.state.formData,
         tiles_layout: {
           items: move(
-            this.state.formData.tiles_layout.items,
+            this.state.formData[tilesLayoutFieldname].items,
             dragIndex,
             hoverIndex,
           ),
@@ -378,14 +369,18 @@ class Form extends Component {
   render() {
     const { schema, onCancel, onSubmit } = this.props;
     const { formData } = this.state;
+    const tilesFieldname = getTilesFieldname(formData);
+    const tilesLayoutFieldname = getTilesLayoutFieldname(formData);
+    const renderTiles = formData[tilesLayoutFieldname].items;
+    const tilesDict = formData[tilesFieldname];
 
     return this.props.visual ? (
       <div className="ui wrapper">
-        {map(formData.tiles_layout.items, (tile, index) => (
+        {map(renderTiles, (tile, index) => (
           <EditTile
             id={tile}
             index={index}
-            type={formData.tiles[tile]['@type']}
+            type={tilesDict[tile]['@type']}
             key={tile}
             onAddTile={this.onAddTile}
             onChangeTile={this.onChangeTile}
@@ -394,7 +389,7 @@ class Form extends Component {
             onSelectTile={this.onSelectTile}
             onMoveTile={this.onMoveTile}
             properties={formData}
-            data={formData.tiles[tile]}
+            data={tilesDict[tile]}
             pathname={this.props.pathname}
             tile={tile}
             selected={this.state.selected === tile}
@@ -427,20 +422,9 @@ class Form extends Component {
                     ),
                     ...map(item.fields, field => (
                       <Field
-                        {...(field.indexOf('|') !== -1
-                          ? schema.definitions[field.split('|')[0]].properties[
-                              field.split('|')[1]
-                            ]
-                          : schema.properties[field])}
+                        {...schema.properties[field]}
                         id={field}
-                        value={
-                          field.indexOf('|') !== -1
-                            ? this.state.formData[field.split('|')[0]] &&
-                              this.state.formData[field.split('|')[0]][
-                                field.split('|')[1]
-                              ]
-                            : this.state.formData[field]
-                        }
+                        value={this.state.formData[field]}
                         required={schema.required.indexOf(field) !== -1}
                         onChange={this.onChangeField}
                         key={field}
@@ -481,19 +465,9 @@ class Form extends Component {
                 )}
                 {map(schema.fieldsets[0].fields, field => (
                   <Field
-                    {...(field.indexOf('|') !== -1
-                      ? schema.definitions[field.split('|')[0]].properties[
-                          field.split('|')[1]
-                        ]
-                      : schema.properties[field])}
+                    {...schema.properties[field]}
                     id={field}
-                    value={
-                      field.indexOf('|') !== -1
-                        ? this.state.formData[field.split('|')[0]][
-                            field.split('|')[1]
-                          ]
-                        : this.state.formData[field]
-                    }
+                    value={this.state.formData[field]}
                     required={schema.required.indexOf(field) !== -1}
                     onChange={this.onChangeField}
                     key={field}

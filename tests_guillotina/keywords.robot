@@ -1,14 +1,12 @@
 *** Settings ***
 
 Library  DebugLibrary
-Library  RequestsLibrary
 Library  SeleniumLibrary  timeout=30  implicit_wait=0
+Library  GuillotinaLibrary
+
 
 *** Variables ***
 
-${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
-@{APPLY_PROFILES}      plone.app.contenttypes:plone-content
-...                    plone.restapi:tiles
 ${FRONTEND_URL}        http://localhost:4300/
 ${BROWSER}             chrome
 
@@ -20,15 +18,10 @@ ${BROWSER}             chrome
 ### files without Zope2Server in PYTHONPATH of pybot test runner.
 
 Test Setup
-    Import library  plone.app.robotframework.Zope2Server
-    Set Zope layer  ${FIXTURE}
-    ZODB Setup
+    Setup Guillotina  http://localhost:8081/db
     Open default browser
 
 Test Teardown
-    Import library  plone.app.robotframework.Zope2Server
-    Set Zope layer  ${FIXTURE}
-    ZODB TearDown
     Close all browsers
 
 ###
@@ -55,18 +48,10 @@ Open default browser
 # action is carried out (e.g. 'the front page')
 
 A logged in site-administrator
-    ${headers}  Create Dictionary  Accept  application/json  Content-Type  application/json
-    ${data}=  Create dictionary  login  admin  password  secret
-    Create Session  plone  http://localhost:55001/plone
-    ${resp}=	Post Request  plone  /@login  headers=${headers}  data=${data}
-    Should Be Equal As Strings	${resp.status_code}	 200
-    # Log  ${resp.json().get('token')}  WARN
-    the front page
-    Add Cookie  auth_token  ${resp.json().get('token')}
-    Reload page
+    Go to  ${FRONTEND_URL}
     Wait until keyword succeeds  120s  1s
     ...   Page fully loaded
-    Page should contain  Log out
+    I log in
 
 the front page
     Go to  ${FRONTEND_URL}
@@ -78,8 +63,8 @@ Page fully loaded
     Page should contain  Plone
 
 the Plone site root
-    Wait until page contains  Home
-    Click link  Home
+    Wait until page contains  container
+    Click link  xpath=//a[@title="Site"]
 
 
 # --- When -------------------------------------------------------------------

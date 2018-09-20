@@ -19,7 +19,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 
 import { Form, Toolbar } from '../../../components';
 import { updateContent, getContent, getSchema } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
+import { getBaseUrl, hasTilesData } from '../../../helpers';
 
 const messages = defineMessages({
   edit: {
@@ -149,7 +149,7 @@ export class EditComponent extends Component {
       this.props.getSchema(nextProps.content['@type']);
     }
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
-      if (nextProps.schema.properties.tiles) {
+      if (hasTilesData(nextProps.schema.properties)) {
         this.setState({
           visual: true,
         });
@@ -238,7 +238,7 @@ export class EditComponent extends Component {
                       title={this.props.intl.formatMessage(messages.save)}
                     />
                   </a>
-                  {this.props.schema.properties.tiles && (
+                  {hasTilesData(this.props.schema.properties) && (
                     <a className="item" onClick={() => this.onToggleVisual()}>
                       <Icon
                         name={this.state.visual ? 'tasks' : 'block layout'}

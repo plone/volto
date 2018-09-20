@@ -10,6 +10,7 @@ import {
   GET_CONTENT,
   ORDER_CONTENT,
 } from '../../constants/ActionTypes';
+import { nestContent } from '../../helpers';
 
 /**
  * Create content function.
@@ -23,7 +24,7 @@ export function createContent(url, content) {
     type: CREATE_CONTENT,
     request: Array.isArray(content)
       ? content.map(item => ({ op: 'post', path: url, data: item }))
-      : { op: 'post', path: url, data: content },
+      : { op: 'post', path: url, data: nestContent(content) },
   };
 }
 
@@ -55,11 +56,11 @@ export function updateContent(urls, content) {
     type: UPDATE_CONTENT,
     request:
       typeof urls === 'string'
-        ? { op: 'patch', path: urls, data: content }
+        ? { op: 'patch', path: urls, data: nestContent(content) }
         : urls.map((url, index) => ({
             op: 'patch',
             path: url,
-            data: content[index],
+            data: nestContent(content[index]),
           })),
   };
 }
