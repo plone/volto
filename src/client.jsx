@@ -19,7 +19,7 @@ import 'semantic-ui-less/semantic.less';
 const history = createBrowserHistory();
 const api = new Api();
 
-const store = configureStore(window.__PRELOADED_STATE__, history, api);
+const store = configureStore(window.__data, history, api);
 addLocaleData([...nlLocaleData, ...deLocaleData, ...enLocaleData]);
 persistAuthToken(store);
 
