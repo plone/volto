@@ -4,35 +4,10 @@
  */
 
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import Route from 'react-router-dom';
 import isMobile from 'ismobilejs';
 
-import {
-  Add,
-  App,
-  ChangePassword,
-  Contents,
-  Controlpanel,
-  Controlpanels,
-  Edit,
-  Diff,
-  Delete,
-  History,
-  View,
-  NotFound,
-  Layout,
-  Login,
-  Logout,
-  ModerateComments,
-  PasswordReset,
-  PersonalInformation,
-  PersonalPreferences,
-  Register,
-  RequestPasswordReset,
-  Search,
-  Sharing,
-  UsersControlpanel,
-} from './components';
+import { App } from './components';
 
 /**
  * Routes function.
@@ -40,46 +15,13 @@ import {
  * @returns {Object} Routes.
  */
 export default () => (
-<Switch>
   <Route
-    exact path="/"
+    path="/"
     component={App}
     onChange={(prevState, nextState) => {
       if (isMobile.any && nextState.location.action === 'PUSH') {
         setTimeout(() => window.scrollTo(0, 0), 0);
       }
     }}
-  >
-    <Route path="/login" component={Login} />
-    <Route path="/logout" component={Logout} />
-    <Route path="/search" component={Search} />
-    <Route path="/change-password" component={ChangePassword} />
-    <Route path="/controlpanel" component={Controlpanels} />
-    <Route
-      path="/controlpanel/moderate-comments"
-      component={ModerateComments}
-    />
-    <Route path="/controlpanel/users" component={UsersControlpanel} />
-    <Route path="/controlpanel/:id" component={Controlpanel} />
-    <Route path="/personal-information" component={PersonalInformation} />
-    <Route path="/personal-preferences" component={PersonalPreferences} />
-    <Route path="/add" component={Add} />
-    <Route path="/contents" component={Contents} />
-    <Route path="/sharing" component={Sharing} />
-    <Route path="/**/add" component={Add} />
-    <Route path="/**/contents" component={Contents} />
-    <Route path="/**/delete" component={Delete} />
-    <Route path="/**/diff" component={Diff} />
-    <Route path="/**/edit" component={Edit} />
-    <Route path="/**/history" component={History} />
-    <Route path="/**/layout" component={Layout} />
-    <Route path="/**/sharing" component={Sharing} />
-    <Route path="/register" component={Register} />
-    <Route path="/password-reset/:token" component={PasswordReset} />
-    <Route path="/password-reset" component={RequestPasswordReset} />
-    <Route path="/**" component={View} />
-    <Route path="*" component={NotFound} status={404} />
-    <Route exact path="/" component={View} />
-  </Route>
-</Switch>
+  />
 );

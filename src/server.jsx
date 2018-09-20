@@ -9,13 +9,13 @@ import React from 'react';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Provider } from 'react-intl-redux';
-import { match, createMemoryHistory, RouterContext } from 'react-router-dom';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { match, RouterContext } from 'react-router-dom';
 import cookie, { plugToRequest } from 'react-cookie';
 import { urlencoded } from 'body-parser';
 import locale from 'locale';
 import { keys } from 'lodash';
 import Raven from 'raven';
+import createHistory from 'history/createMemoryHistory';
 
 import nlLocale from '../dist/locales/nl.json';
 import deLocale from '../dist/locales/de.json';
@@ -79,14 +79,13 @@ export default parameters => {
         messages: locales[lang],
       },
     };
-    const memoryHistory = createMemoryHistory(req.path);
+    const memoryHistory = createHistory(req.path);
     const store = configureStore(initialState, memoryHistory, false, api);
     persistAuthToken(store);
-    const history = syncHistoryWithStore(memoryHistory, store);
 
     match(
       {
-        history,
+        memoryHistory,
         routes: getRoutes(store),
         location: req.originalUrl,
       },

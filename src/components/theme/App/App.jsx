@@ -10,7 +10,7 @@ import { asyncConnect } from 'redux-connect';
 import { Segment } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import Raven from 'raven-js';
-
+import { Switch, Route } from 'react-router-dom';
 import Error from '../../../error';
 
 import { Breadcrumbs, Footer, Header, Messages } from '../../../components';
@@ -23,6 +23,31 @@ import {
   getWorkflow,
   purgeMessages,
 } from '../../../actions';
+import {
+  Add,
+  ChangePassword,
+  Contents,
+  Controlpanel,
+  Controlpanels,
+  Edit,
+  Diff,
+  Delete,
+  History,
+  View,
+  NotFound,
+  Layout,
+  Login,
+  Logout,
+  ModerateComments,
+  PasswordReset,
+  PersonalInformation,
+  PersonalPreferences,
+  Register,
+  RequestPasswordReset,
+  Search,
+  Sharing,
+  UsersControlpanel,
+} from '../components';
 
 @connect(
   (state, props) => ({ pathname: props.location.pathname }),
@@ -116,7 +141,38 @@ export class AppComponent extends Component {
                 stackTrace={this.state.errorInfo.componentStack}
               />
             ) : (
-              this.props.children
+              <Switch>
+                <Route path="/login" component={Login} />
+                <Route path="/logout" component={Logout} />
+                <Route path="/search" component={Search} />
+                <Route path="/change-password" component={ChangePassword} />
+                <Route path="/controlpanel" component={Controlpanels} />
+                <Route
+                path="/controlpanel/moderate-comments"
+                component={ModerateComments}
+                />
+                <Route path="/controlpanel/users" component={UsersControlpanel} />
+                <Route path="/controlpanel/:id" component={Controlpanel} />
+                <Route path="/personal-information" component={PersonalInformation} />
+                <Route path="/personal-preferences" component={PersonalPreferences} />
+                <Route path="/add" component={Add} />
+                <Route path="/contents" component={Contents} />
+                <Route path="/sharing" component={Sharing} />
+                <Route path="/**/add" component={Add} />
+                <Route path="/**/contents" component={Contents} />
+                <Route path="/**/delete" component={Delete} />
+                <Route path="/**/diff" component={Diff} />
+                <Route path="/**/edit" component={Edit} />
+                <Route path="/**/history" component={History} />
+                <Route path="/**/layout" component={Layout} />
+                <Route path="/**/sharing" component={Sharing} />
+                <Route path="/register" component={Register} />
+                <Route path="/password-reset/:token" component={PasswordReset} />
+                <Route path="/password-reset" component={RequestPasswordReset} />
+                <Route path="/**" component={View} />
+                <Route path="*" component={NotFound} status={404} />
+                <Route exact path="/" component={View} />
+              </Switch>
             )}
           </main>
         </Segment>
