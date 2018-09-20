@@ -19,6 +19,7 @@ before_install:
 - wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
 - unzip chromedriver_linux64.zip -d webdriver
 - export PATH=$PATH:$(pwd)/webdriver
+- npm install -g surge
 install:
 - virtualenv env --python=$(which python) --no-site-packages
 - env/bin/pip install zc.recipe.egg==2.0.4 --no-cache-dir
@@ -29,3 +30,11 @@ install:
 script:
 - yarn coverage
 - PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome tests
+after_script:
+- mkdir robot-results
+- mv log.html output.xml report.html selenium-screenshot-*.png robot-results
+- ls -al robot-results
+deploy:
+  provider: surge
+  project: ./robot-results/
+  domain: plone-react.surge.sh
