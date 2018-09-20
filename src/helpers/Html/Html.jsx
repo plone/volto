@@ -41,10 +41,14 @@ export const Html = ({ assets, markup, store }) => {
         {head.link.toComponent()}
         {head.script.toComponent()}
 
+<<<<<<< HEAD
         <link
           rel="shortcut icon"
           href={`${config.publicUrl}/assets/favicon.ico`}
         />
+=======
+        <link rel="shortcut icon" href="/favicon.ico" />
+>>>>>>> Update favicon's path
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* styles (will be present only in production with webpack extract text plugin) */}
         {/* {Object.keys(assets.styles).map(style => (
