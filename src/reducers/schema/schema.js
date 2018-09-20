@@ -73,39 +73,6 @@ export default function schema(state = initialState, action = {}) {
               ),
             ),
           },
-          fieldsets:
-            action.result.fieldsets ||
-            filter(
-              [
-                {
-                  fields: keys(
-                    omitBy(
-                      pickBy(action.result.properties, isPlainObject),
-                      field => field.readonly,
-                    ),
-                  ),
-                  id: 'default',
-                  title: 'Default',
-                },
-                ...map(
-                  keys(
-                    omitBy(
-                      pickBy(action.result.properties, isArray),
-                      field => field.readonly,
-                    ),
-                  ),
-                  fieldset => ({
-                    fields: map(
-                      keys(action.result.definitions[fieldset].properties),
-                      field => `${fieldset}.${field}`,
-                    ),
-                    id: fieldset,
-                    title: action.result.definitions[fieldset].title,
-                  }),
-                ),
-              ],
-              fieldset => fieldset.fields.length > 0,
-            ),
         },
       };
     case `${GET_SCHEMA}_FAIL`:
