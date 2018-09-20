@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
-import { browserHistory } from 'react-router';
+import { Router } from 'react-router-dom';
 
 import { Form } from '../../../components';
 import { createUser, addMessage } from '../../../actions';
@@ -124,7 +124,7 @@ export default class Register extends Component {
         this.props.intl.formatMessage(messages.successRegisterCompletedBody),
         'success',
       );
-      browserHistory.push('/login');
+      Router.push('/login');
     }
   }
 

@@ -9,7 +9,7 @@ import Helmet from 'react-helmet';
 import { isMatch } from 'lodash';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Menu, Segment } from 'semantic-ui-react';
 

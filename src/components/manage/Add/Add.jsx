@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory } from 'react-router';
+import { Router, withRouter } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
 import { keys, isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
@@ -16,6 +16,7 @@ import { Portal } from 'react-portal';
 import { Icon } from 'semantic-ui-react';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import qs from 'query-string';
 import config from '~/config';
 
 import { createContent, getSchema } from '../../../actions';
@@ -59,8 +60,8 @@ const messages = defineMessages({
     content: state.content.data,
     schema: state.schema.schema,
     pathname: props.location.pathname,
-    returnUrl: props.location.query.return_url,
-    type: props.location.query.type,
+    returnUrl: qs.parse(props.location.search).return_url,
+    type: qs.parse(props.location.search).type,
   }),
   dispatch => bindActionCreators({ createContent, getSchema }, dispatch),
 )
@@ -147,7 +148,7 @@ export class AddComponent extends Component {
       nextProps.createRequest.loaded &&
       nextProps.content['@type'] === this.props.type
     ) {
-      browserHistory.push(
+      this.props.history.push(
         this.props.returnUrl ||
           nextProps.content['@id'].replace(config.apiPath, ''),
       );
@@ -183,7 +184,7 @@ export class AddComponent extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.push(getBaseUrl(this.props.pathname));
+    this.props.history.push(getBaseUrl(this.props.pathname));
   }
 
   /**
@@ -280,7 +281,7 @@ export default asyncConnect([
   {
     key: 'schema',
     promise: ({ location, store: { dispatch } }) =>
-      dispatch(getSchema(location.query.type)),
+      dispatch(getSchema(qs.parse(location.search).type)),
   },
   {
     key: 'content',
@@ -297,4 +298,4 @@ export default asyncConnect([
       return Promise.resolve(getState().content);
     },
   },
-])(AddComponent);
+])(withRouter(AddComponent));

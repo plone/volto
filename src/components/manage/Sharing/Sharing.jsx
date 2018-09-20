@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory, Link } from 'react-router';
+import { Router, Link } from 'react-router-dom';
 import { find, isEqual, map } from 'lodash';
 import { Portal } from 'react-portal';
 import {
@@ -255,7 +255,7 @@ export default class SharingComponent extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.push(getBaseUrl(this.props.pathname));
+    Router.push(getBaseUrl(this.props.pathname));
   }
 
   /**

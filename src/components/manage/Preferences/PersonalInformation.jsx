@@ -9,7 +9,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Portal } from 'react-portal';
-import { browserHistory, Link } from 'react-router';
+import { Router, Link } from 'react-router-dom';
 import {
   FormattedMessage,
   defineMessages,
@@ -160,7 +160,7 @@ export default class PersonalInformation extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.goBack();
+    Router.goBack();
   }
 
   /**

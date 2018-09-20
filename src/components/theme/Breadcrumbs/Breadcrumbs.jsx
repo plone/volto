@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Breadcrumb, Container, Icon, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory, Link } from 'react-router';
+import { Router, Link } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import {
   FormattedMessage,
@@ -137,7 +137,7 @@ export default class ChangePassword extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.goBack();
+    Router.goBack();
   }
 
   /**

@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
+import { Router } from 'react-router-dom';
 import { Form, Input } from 'semantic-ui-react';
 import { PropTypes } from 'prop-types';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
@@ -88,7 +88,7 @@ export default class SearchWidget extends Component {
    */
   onSubmit(event) {
     const section = this.state.section ? `&path=${this.props.pathname}` : '';
-    browserHistory.push(`/search?SearchableText=${this.state.text}${section}`);
+    Router.push(`/search?SearchableText=${this.state.text}${section}`);
     event.preventDefault();
   }
 

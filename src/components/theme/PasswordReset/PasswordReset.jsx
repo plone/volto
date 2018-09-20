@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { browserHistory, Link } from 'react-router';
+import { Router, Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Container } from 'semantic-ui-react';
@@ -198,7 +198,7 @@ export default class PasswordReset extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.goBack();
+    Router.goBack();
   }
 
   /**

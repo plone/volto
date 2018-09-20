@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { Icon, Table, Dropdown } from 'semantic-ui-react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import moment from 'moment';
