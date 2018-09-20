@@ -3,18 +3,7 @@
  * @module reducers/schema/schema
  */
 
-import {
-  flatten,
-  filter,
-  keys,
-  omitBy,
-  pickBy,
-  isPlainObject,
-  isArray,
-  map,
-  mapKeys,
-  merge,
-} from 'lodash';
+import { flatten, keys, pickBy, isArray, map, mapKeys, merge } from 'lodash';
 
 import { GET_SCHEMA } from '../../constants/ActionTypes';
 
