@@ -26,7 +26,6 @@
   ],
   "main": "lib/",
   "scripts": {
-    "babel": "babel src -d lib",
     "test:start": "DEBUG=plone-react:* npm-run-all -ln prestart start & npm-run-all -ln wait-for-frontend",
     "start": "NODE_ENV=production npm-run-all prod",
     "dev": "NODE_ENV=development npm-run-all dev:build",
