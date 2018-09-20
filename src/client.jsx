@@ -26,6 +26,7 @@ persistAuthToken(store);
 hydrate(
   <Provider store={store} key="provider">
     <Router
+      basename={process.env.PUBLIC_URL}
       render={props => <ReduxAsyncConnect helpers={{ api }} {...props} />}
       history={history}
     >
