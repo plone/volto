@@ -18,5 +18,5 @@ function apply_path {
 # Should we monkey patch?
 test -n "$API_PATH" && apply_path
 
-echo "Starting Guillotina"
+echo "Starting Plone React"
 exec "$@"
