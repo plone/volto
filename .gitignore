@@ -1,6 +1,7 @@
 # Node
 node_modules
 coverage
+lib
 jsdoc
 webpack-assets.json
 webpack-stats.json
