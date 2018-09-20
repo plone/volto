@@ -16,26 +16,24 @@ import routes from '~/routes';
 
 import 'semantic-ui-less/semantic.less';
 
-export default function client() {
-  const history = createBrowserHistory();
-  const api = new Api();
+const history = createBrowserHistory();
+const api = new Api();
 
-  const store = configureStore(window.__PRELOADED_STATE__, history, api);
-  addLocaleData([...nlLocaleData, ...deLocaleData, ...enLocaleData]);
-  persistAuthToken(store);
+const store = configureStore(window.__PRELOADED_STATE__, history, api);
+addLocaleData([...nlLocaleData, ...deLocaleData, ...enLocaleData]);
+persistAuthToken(store);
 
-  hydrate(
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <BrowserRouter>
-          <ReduxAsyncConnect routes={routes} helpers={api} />
-        </BrowserRouter>
-      </ConnectedRouter>
-    </Provider>,
-    document.getElementById('main'),
-  );
+hydrate(
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <BrowserRouter>
+        <ReduxAsyncConnect routes={routes} helpers={api} />
+      </BrowserRouter>
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById('main'),
+);
 
-  if (module.hot) {
-    module.hot.accept();
-  }
+if (module.hot) {
+  module.hot.accept();
 }
