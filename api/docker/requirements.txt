@@ -208,6 +208,7 @@ requests==2.18.4
 robotframework==3.0.4
 robotframework-debuglibrary==1.1.4
 robotframework-react==1.0.0a2
+robotframework-requests==0.4.7
 robotframework-selenium2library==3.0.0
 robotframework-seleniumlibrary==3.1.1
 robotframework-webpack==1.1.3
