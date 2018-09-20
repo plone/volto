@@ -34,8 +34,4 @@ after_script:
 - mkdir robot-results
 - mv log.html output.xml report.html selenium-screenshot-*.png robot-results
 - ls -al robot-results
-deploy:
-  provider: surge
-  skip_cleanup: true
-  project: ./robot-results/
-  domain: plone-react.surge.sh
+- surge robot-results plone-react.surge.sh
