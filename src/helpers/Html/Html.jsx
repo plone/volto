@@ -5,7 +5,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom/server';
 import Helmet from 'react-helmet';
 import serialize from 'serialize-javascript';
 import { join } from 'lodash';
@@ -61,13 +60,6 @@ export const Html = ({ assets, markup, store }) => {
         {assets.client.css ? (
           <link rel="stylesheet" href={assets.client.css} />
         ) : null}
-        {/* <link
-          href="/assets/overrides.css"
-          media="screen, projection"
-          rel="stylesheet"
-          type="text/css"
-          charSet="UTF-8"
-        /> */}
         {process.env.NODE_ENV === 'production' ? (
           <script src={assets.client.js} defer />
         ) : (
@@ -107,7 +99,7 @@ Html.propTypes = {
       main: PropTypes.string,
     }),
   }).isRequired,
-  component: PropTypes.node.isRequired,
+  markup: PropTypes.string.isRequired,
   store: PropTypes.shape({
     getState: PropTypes.func,
   }).isRequired,
