@@ -61,7 +61,7 @@ A logged in site-administrator
     ${resp}=	Post Request  plone  /@login  headers=${headers}  data=${data}
     Should Be Equal As Strings	${resp.status_code}	 200
     # Log  ${resp.json().get('token')}  WARN
-    Go to  ${FRONTEND_URL}
+    the front page
     Add Cookie  auth_token  ${resp.json().get('token')}
     Reload page
     Wait until keyword succeeds  120s  1s
