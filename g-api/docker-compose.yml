@@ -1,0 +1,41 @@
+version: '3'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.3.0
+    container_name: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "network.publish_host=0.0.0.0"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - 6380:6379
+  postgres:
+    image: postgres:9.6
+    container_name: postgres
+    environment:
+        POSTGRES_DB: guillotina
+        POSTGRES_USER: guillotina
+    ports:
+    - 5432:5432
+  guillotina:
+    image: plone/guillotina_cms:master
+    command: sh -c "sleep 5 && g -c /usr/src/app/config.yml"
+    ports:
+    - "8081:8081"
+    - "50101:50101"
+    links:
+     - postgres
+     - redis
+     - elasticsearch
+    volumes:
+      - ${PWD}/g-api/config.yml:/usr/src/app/config.yml

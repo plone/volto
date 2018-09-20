@@ -29,6 +29,7 @@ describe('Schema reducer', () => {
       schema(undefined, {
         type: `${GET_SCHEMA}_SUCCESS`,
         result: {
+          fieldsets: [],
           required: [],
           properties: {},
         },

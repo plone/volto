@@ -16,6 +16,11 @@ import {
   ViewImageTile,
   ViewVideoTile,
 } from '../../../components';
+import {
+  getTilesFieldname,
+  getTilesLayoutFieldname,
+  hasTilesData,
+} from '../../../helpers';
 
 /**
  * Component to display the document view.
@@ -23,13 +28,16 @@ import {
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-const DocumentView = ({ content }) =>
-  content.tiles ? (
+const DocumentView = ({ content }) => {
+  const tilesFieldname = getTilesFieldname(content);
+  const tilesLayoutFieldname = getTilesLayoutFieldname(content);
+
+  return hasTilesData(content) ? (
     <div id="page-document" className="ui wrapper">
       <Helmet title={content.title} />
-      {map(content.tiles_layout.items, tile => {
+      {map(content[tilesLayoutFieldname].items, tile => {
         let Tile = null;
-        switch (content.tiles[tile]['@type']) {
+        switch (content[tilesFieldname][tile]['@type']) {
           case 'title':
             Tile = ViewTitleTile;
             break;
@@ -49,9 +57,13 @@ const DocumentView = ({ content }) =>
             break;
         }
         return Tile !== null ? (
-          <Tile key={tile} properties={content} data={content.tiles[tile]} />
+          <Tile
+            key={tile}
+            properties={content}
+            data={content[tilesFieldname][tile]}
+          />
         ) : (
-          <div>{JSON.stringify(content.tiles[tile]['@type'])}</div>
+          <div>{JSON.stringify(content[tilesFieldname][tile]['@type'])}</div>
         );
       })}
     </div>
@@ -74,6 +86,7 @@ const DocumentView = ({ content }) =>
       )}
     </Container>
   );
+};
 
 /**
  * Property types.

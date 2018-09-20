@@ -1,10 +1,20 @@
 language: python
-python:
-- 2.7.14
+matrix:
+  include:
+  - name: "Plone Tests"
+    python: 2.7.14
+    env: TEST_SUITE=plone
+  - name: "Guillotina Tests"
+    python: 3.7
+    dist: xenial
+    env: TEST_SUITE=guillotina
 cache:
   pip: true
   directories:
    - node_modules
+sudo: required
+services:
+  - docker
 addons:
   apt:
     sources:
@@ -12,19 +22,29 @@ addons:
     packages:
     - google-chrome-stable
 before_install:
-- nvm install 8.11.3
-- mkdir webdriver
-- wget https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux64.tar.gz
-- tar -xzf geckodriver-v0.20.0-linux64.tar.gz -C webdriver
-- wget https://chromedriver.storage.googleapis.com/2.42/chromedriver_linux64.zip
-- unzip chromedriver_linux64.zip -d webdriver
-- export PATH=$PATH:$(pwd)/webdriver
+- nvm install 8.11.3;
+- if [ "$TEST_SUITE" == "guillotina" ]; then
+  echo "Guillotina Before Install";
+  fi
+- mkdir webdriver;
+- wget https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux64.tar.gz;
+- tar -xzf geckodriver-v0.20.0-linux64.tar.gz -C webdriver;
+- wget https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip;
+- unzip chromedriver_linux64.zip -d webdriver;
+- export PATH=$PATH:$(pwd)/webdriver;
 - npm install -g surge
 install:
-- virtualenv env --python=$(which python) --no-site-packages
-- env/bin/pip install zc.recipe.egg==2.0.4 --no-cache-dir
-- env/bin/pip install -r api/docker/requirements.txt
-- env/bin/pip install -U https://github.com/zopefoundation/z3c.autoinclude/archive/pip.tar.gz#egg=z3c.autoinclude
+- if [ "$TEST_SUITE" == "plone" ]; then
+  virtualenv env --python=$(which python) --no-site-packages;
+  env/bin/pip install zc.recipe.egg==2.0.4 --no-cache-dir;
+  env/bin/pip install -r api/docker/requirements.txt;
+  env/bin/pip install -U https://github.com/zopefoundation/z3c.autoinclude/archive/pip.tar.gz#egg=z3c.autoinclude;
+  fi
+- if [ "$TEST_SUITE" == "guillotina" ]; then
+  echo "Guillotina CMS Install";
+  pip install -r g-api/requirements.txt;
+  docker-compose -f g-api/docker-compose.yml up -d;
+  fi
 - yarn
 - yarn build
 before_script:
@@ -33,9 +53,22 @@ before_script:
 - sleep 3
 script:
 - yarn coverage
-- PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome tests
+- if [ "$TEST_SUITE" == "plone" ]; then
+  PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome tests;
+  fi
+- if [ "$TEST_SUITE" == "guillotina" ]; then
+  PYTHONPATH=$(pwd)/tests_guillotina pybot -v BROWSER:headlesschrome tests_guillotina;
+  fi
 after_script:
 - mkdir robot-results
 - mv log.html output.xml report.html selenium-screenshot-*.png robot-results
 - ls -al robot-results
 - surge robot-results plone-react.surge.sh
+after_success:
+- if [ "$TEST_SUITE" == "guillotina" ]; then
+  docker build -t plone/plone-react:$TRAVIS_BRANCH .;
+  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
+  docker push plone/plone-react:$TRAVIS_BRANCH.$TRAVIS_BUILD_NUMBER;
+  docker tag plone/plone-react:$TRAVIS_BRANCH.$TRAVIS_BUILD_NUMBER plone/plone-react:$TRAVIS_BRANCH.latest;
+  docker push plone/plone-react:$TRAVIS_BRANCH.latest;
+  fi

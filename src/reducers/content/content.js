@@ -2,6 +2,9 @@
  * Content reducer.
  * @module reducers/content/content
  */
+
+import { omit, map, mapKeys } from 'lodash';
+
 import config from '~/config';
 
 import {
@@ -59,6 +62,7 @@ function getRequestKey(actionType) {
  * @returns {Object} New state.
  */
 export default function content(state = initialState, action = {}) {
+  let { result } = action;
   switch (action.type) {
     case `${CREATE_CONTENT}_PENDING`:
     case `${DELETE_CONTENT}_PENDING`:
@@ -75,10 +79,18 @@ export default function content(state = initialState, action = {}) {
       };
     case `${CREATE_CONTENT}_SUCCESS`:
     case `${GET_CONTENT}_SUCCESS`:
+      if (result['@static_behaviors']) {
+        map(result['@static_behaviors'], behavior => {
+          result = {
+            ...omit(result, behavior),
+            ...mapKeys(result[behavior], (value, key) => `${behavior}.${key}`),
+          };
+        });
+      }
       return {
         ...state,
         data: {
-          ...action.result,
+          ...result,
           items:
             action.result &&
             action.result.items &&
