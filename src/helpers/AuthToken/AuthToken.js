@@ -5,11 +5,11 @@
 
 import cookie from 'react-cookie';
 import jwtDecode from 'jwt-decode';
-import createHistory from "history/createBrowserHistory";
+import createHistory from 'history/createBrowserHistory';
 
 import { loginRenew } from '../../actions';
 
-let history = createHistory();
+const history = createHistory();
 /**
  * Get auth token method.
  * @method getAuthToken

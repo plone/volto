@@ -47,7 +47,7 @@ import {
   Search,
   Sharing,
   UsersControlpanel,
-} from '../components';
+} from '../../components';
 
 @connect(
   (state, props) => ({ pathname: props.location.pathname }),
