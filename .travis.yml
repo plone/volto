@@ -36,5 +36,6 @@ after_script:
 - ls -al robot-results
 deploy:
   provider: surge
+  skip_cleanup: true
   project: ./robot-results/
   domain: plone-react.surge.sh
