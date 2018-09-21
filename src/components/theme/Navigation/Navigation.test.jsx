@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-
+import { BrowserRouter as Router } from 'react-router-dom';
 import Navigation from './Navigation';
 
 const mockStore = configureStore();
@@ -24,7 +24,9 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Navigation pathname="/" />
+        <Router>
+          <Navigation pathname="/" />
+        </Router>
       </Provider>,
     );
     const json = component.toJSON();
@@ -47,7 +49,9 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Navigation pathname="/blog" />
+        <Router>
+          <Navigation pathname="/blog" />
+        </Router>
       </Provider>,
     );
     const json = component.toJSON();
