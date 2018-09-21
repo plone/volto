@@ -72,8 +72,8 @@ exports[`Actions renders an actions component 1`] = `
     </div>
     <a
       className="item"
+      href="/test/delete"
       onClick={[Function]}
-      style={Object {}}
     >
       <i
         aria-hidden="true"

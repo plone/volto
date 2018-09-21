@@ -93,10 +93,7 @@ exports[`Search renders an empty search component 1`] = `
           className="documentFirstHeading"
         >
           <span>
-            Search results for 
-            <q>
-              blog
-            </q>
+            Search results
           </span>
         </h1>
         <div
