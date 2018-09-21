@@ -50,6 +50,28 @@ Scenario: As a site administrator I can add a File
    # Then I should see a notification that 'My Page' has been created
     and I should see 'My File' in the navigation
 
+Scenario: As a site administrator I can add an Image
+  Given a logged in site-administrator
+    and the Plone site root
+   When I add an Image with the title 'My Image'
+   # Then I should see a notification that 'My Page' has been created
+    and I should see 'My Image' in the navigation
+
+# XXX: Links are not implemented in Plone-React yet
+# Scenario: As a site administrator I can add a Link
+#   Given a logged in site-administrator
+#     and the Plone site root
+#    When I add a Link with the title 'My Link'
+#    # Then I should see a notification that 'My Page' has been created
+#     and I should see 'My Link' in the navigation
+
+# XXX: Collections are not implemented in Plone-React yet
+# Scenario: As a site administrator I can add a Collection
+#   Given a logged in site-administrator
+#     and the Plone site root
+#    When I add a Collection with the title 'My Collection'
+#    # Then I should see a notification that 'My Page' has been created
+#     and I should see 'My Collection' in the navigation
 
 *** Keywords ***
 
@@ -115,6 +137,35 @@ I add a File with the title '${title}'
   Wait until page contains element  name=title
   Input text  name=title  ${title}
   Choose File  name=file  ${PATH_TO_TEST_FILES}/pixel.png
+  Click element  css=*[title=Save]
+
+I add an Image with the title '${title}'
+  Wait until page contains element  css=#toolbar-add
+  Click element  css=#toolbar-add
+  Wait until element is visible  css=#toolbar-add-image
+  Click element  css=#toolbar-add-image
+  Wait until page contains element  name=title
+  Input text  name=title  ${title}
+  Choose File  name=image  ${PATH_TO_TEST_FILES}/pixel.png
+  Click element  css=*[title=Save]
+
+I add a Link with the title '${title}'
+  Wait until page contains element  css=#toolbar-add
+  Click element  css=#toolbar-add
+  Wait until element is visible  css=#toolbar-add-link
+  Click element  css=#toolbar-add-link
+  Debug
+  Wait until page contains element  name=title
+  Input text  name=title  ${title}
+  Click element  css=*[title=Save]
+
+I add a Collection with the title '${title}'
+  Wait until page contains element  css=#toolbar-add
+  Click element  css=#toolbar-add
+  Wait until element is visible  css=#toolbar-add-collection
+  Click element  css=#toolbar-add-collection
+  Wait until page contains element  name=title
+  Input text  name=title  ${title}
   Click element  css=*[title=Save]
 
 
