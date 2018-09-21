@@ -21,12 +21,35 @@ Scenario: As a site administrator I can add a text tile to a page
 #    # Then I should see a notification that 'My Page' has been created
      and I should see 'My text tile' on the page view
 
-Scenario: As a site administrator I can add a news item
+Scenario: As a site administrator I can add a News Item
   Given a logged in site-administrator
     and the Plone site root
    When I add a News Item with the title 'My News Item'
    # Then I should see a notification that 'My Page' has been created
     and I should see 'My News Item' in the navigation
+
+# XXX: Event is broken in Plone-React
+# Scenario: As a site administrator I can add an Event
+#   Given a logged in site-administrator
+#     and the Plone site root
+#    When I add an Event with the title 'My Event'
+#    # Then I should see a notification that 'My Page' has been created
+#     and I should see 'My Event' in the navigation
+
+Scenario: As a site administrator I can add a Folder
+  Given a logged in site-administrator
+    and the Plone site root
+   When I add a Folder with the title 'My Folder'
+   # Then I should see a notification that 'My Page' has been created
+    and I should see 'My Folder' in the navigation
+
+Scenario: As a site administrator I can add a File
+  Given a logged in site-administrator
+    and the Plone site root
+   When I add a File with the title 'My File'
+   # Then I should see a notification that 'My Page' has been created
+    and I should see 'My File' in the navigation
+
 
 *** Keywords ***
 
@@ -63,7 +86,35 @@ I add a News Item with the title '${title}'
   Wait until page contains element  css=#toolbar-add-news-item
   Click element  css=#toolbar-add-news-item
   Wait until page contains element  name=title
-  Input text  name=title  My News Item
+  Input text  name=title  ${title}
+  Click element  css=*[title=Save]
+
+I add an Event with the title '${title}'
+  Wait until page contains element  css=#toolbar-add
+  Click element  css=#toolbar-add
+  Wait until page contains element  css=#toolbar-add-event
+  Click element  css=#toolbar-add-event
+  Wait until page contains element  name=title
+  Input text  name=title  ${title}
+  Click element  css=*[title=Save]
+
+I add a Folder with the title '${title}'
+  Wait until page contains element  css=#toolbar-add
+  Click element  css=#toolbar-add
+  Wait until element is visible  css=#toolbar-add-folder
+  Click element  css=#toolbar-add-folder
+  Wait until page contains element  name=title
+  Input text  name=title  ${title}
+  Click element  css=*[title=Save]
+
+I add a File with the title '${title}'
+  Wait until page contains element  css=#toolbar-add
+  Click element  css=#toolbar-add
+  Wait until element is visible  css=#toolbar-add-file
+  Click element  css=#toolbar-add-file
+  Wait until page contains element  name=title
+  Input text  name=title  ${title}
+  Choose File  name=file  ${PATH_TO_TEST_FILES}/pixel.png
   Click element  css=*[title=Save]
 
 
