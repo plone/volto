@@ -59,7 +59,7 @@ script:
   PYTHONPATH=$(pwd)/tests pybot -v BROWSER:headlesschrome -v API:Guillotina tests;
   fi
 - if [ "$TEST_SUITE" == "plone" ]; then
-  PYTHONPATH=$(pwd)/tests pybot -v BROWSER:headlesschrome -v API:Plone tests;
+  PYTHONPATH=$(pwd)/tests venv/bin/pybot -v BROWSER:headlesschrome -v API:Plone tests;
   fi
 after_script:
 - mkdir robot-results
