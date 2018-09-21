@@ -29,7 +29,6 @@ a page
   Wait until page contains element  css=#toolbar-add
   Click element  css=#toolbar-add
   Wait until page contains element  css=#toolbar-add-document
-  Debug
   Click element  css=#toolbar-add-document
   Wait until page contains element  css=.public-DraftStyleDefault-block
   Input tile  title  My page
@@ -49,6 +48,7 @@ I add a Page with the title '${title}'
 
 I add a text tile with the content '${text}' to the page
   Input tile  text  ${text}
+  Debug
   Click element  css=*[title=Save]
 
 
