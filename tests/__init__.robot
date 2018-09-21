@@ -6,6 +6,7 @@ Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Library         OperatingSystem
 Library         Process
 Library         WebpackLibrary
+Library         DebugLibrary
 
 Suite Setup     Suite Setup
 Suite Teardown  Suite Teardown
@@ -29,8 +30,9 @@ ${PORT}=  Get Environment Variable  ZSERVER_PORT  55001
 
 Start Guillotina Backend
     Set Environment Variable  API_PATH  http://localhost:8081/db/container
+    Log To Console  Starting Guillotina
     ${result} =  Run Process  docker-compose -f g-api/docker-compose-local.yml up -d  shell=True  stdout=${TEMPDIR}/stdout.txt	stderr=${TEMPDIR}/stderr.txt
-    Log  ${result.stdout}
+    Log To Console  ${result.stderr}
 
 Start Plone Backend
     Library         plone.app.robotframework.Zope2Server
@@ -38,23 +40,18 @@ Start Plone Backend
     Set Environment Variable  Z3C_AUTOINCLUDE_DEPENDENCIES_DISABLED  1
     Start Zope server  ${FIXTURE}
 
-Start Plone React Docker
-    Run  docker run -p 4300:4300 -d --name local_testing -e API_PATH=\"http://localhost:8081/db/container\" plone/plone-react:testing yarn run:prod:server
-
-Start Plone React Native
+Start Plone React
+    Log To Console  Starting Webpack
     Start Webpack  yarn start
     ...            check=to be executed: ./node_modules/.bin/babel-node ./src/start-server-prod.js
 
 Suite Setup
     Run Keyword If   '${API}' == 'Plone'   Start Plone Backend
     Run Keyword If   '${API}' == 'Guillotina'   Start Guillotina Backend	
+    Start Plone React
 
-    Run Keyword If   '${TESTING}' == 'Native'   Start Plone React Native
-    Run Keyword If   '${TESTING}' == 'Docker'   Start Plone React Docker
 
 Suite Teardown
-    
-    Run Keyword If   '${TESTING}' == 'Native'   Stop Webpack
-    Run Keyword If   '${TESTING}' == 'Docker'   Run  docker stop local_testing; docker rm local_testing
+    Stop Webpack
     Run Keyword If   '${API}' == 'Plone'  Stop Zope server
     Run Keyword If   '${API}' == 'Guillotina'   Run  docker-compose -f g-api/docker-compose-local.yaml stop

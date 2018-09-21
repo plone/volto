@@ -58,7 +58,7 @@ script:
 - if [ "$TEST_SUITE" == "guillotina" ]; then
   PYTHONPATH=$(pwd)/tests xvfb-run \
     --server-args="-screen 0 1920x1080x24 -ac" \
-    pabot \
+    pybot \
     --verbose \
     --processes 3 \
     --outputDir . \

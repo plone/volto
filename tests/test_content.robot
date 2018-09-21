@@ -1,5 +1,5 @@
 *** Settings ***
-
+Library  DebugLibrary
 Resource  keywords.robot
 
 Suite Setup     Open default browser
@@ -29,6 +29,7 @@ a page
   Wait until page contains element  css=#toolbar-add
   Click element  css=#toolbar-add
   Wait until page contains element  css=#toolbar-add-document
+  Debug
   Click element  css=#toolbar-add-document
   Wait until page contains element  css=.public-DraftStyleDefault-block
   Input tile  title  My page
