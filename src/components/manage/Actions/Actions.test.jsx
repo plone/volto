@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import Router from 'react-router-dom';
 
 import Actions from './Actions';
 
@@ -122,7 +123,9 @@ describe('Actions', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Actions pathname="/test" />
+        <Router>
+          <Actions pathname="/test" />
+        </Router>
       </Provider>,
     );
     const json = component.toJSON();
