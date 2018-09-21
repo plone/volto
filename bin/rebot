@@ -1,0 +1,6 @@
+#!/Users/ramon/floss/plone-react/bin/python3.7
+
+import sys
+from robot import rebot_cli
+
+rebot_cli(sys.argv[1:])

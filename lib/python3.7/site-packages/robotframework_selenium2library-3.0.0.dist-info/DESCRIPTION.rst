@@ -1,0 +1,94 @@
+Selenium2Library
+================
+
+Selenium2Library is a web testing library for `Robot Framework`_
+that uses the Selenium_ tool internally. The project is hosted on
+GitHub_ and downloads can be found from PyPI_.
+
+Starting from version 3.0, Selenium2Library is renamed to SeleniumLibrary_
+and this project exists mainly to help with transitioning.
+
+Versions
+--------
+
+Selenium2Library 3.0 and newer extend the new SeleniumLibrary_ and thus
+contain exactly the same code and functionality. There have been lot of
+internal changes in the library, but external functionality provided by
+keywords should be fully backwards compatible. Libraries and tools using
+Selenium2Library internally may need to be updated to support
+Selenium2Library 3.0, though. Selenium2Library 1.8 is the latest, and last,
+legacy version with the old architecture and code.
+
+Selenium2Library 3.0 supports Python 2.7 as well as Python 3.3 and newer.
+Selenium2Library 1.8 supports Python 2.6-2.7.
+
+Keyword documentation
+---------------------
+
+- `Selenium2Library 3.0`__ (latest)
+- `Selenium2Library 1.8`__ (legacy)
+
+__ http://robotframework.org/Selenium2Library/Selenium2Library.html
+__ http://robotframework.org/Selenium2Library/Selenium2Library-1.8.0.html
+
+Installation
+------------
+
+The recommended approach to install Selenium2Library, regardless the version,
+is using pip_.
+
+Install (or upgrade) the latest Selenium2Library version::
+
+    pip install --upgrade robotframework-selenium2library
+
+Install the legacy Selenium2Library 1.8.0 version::
+
+    pip install robotframework-selenium2library==1.8.0
+
+Migrating to SeleniumLibrary
+----------------------------
+
+Existing Selenium2Library users should start migrating to the
+SeleniumLibrary_. For most users this should be a simple procedure:
+
+1. Install the latest Selenium2Library as explained above. This installs
+   both SeleniumLibrary and Selenium2Library, and in fact Selenium2Library
+   is nowadays just a thin wrapper for SeleniumLibrary.
+
+2. Execute tests normally to see are there problems.
+
+3. If problems are encountered, try on investigate why they occur. Possible
+   problems can be divided into two categories:
+
+   - If a keyword provided by the library itself has changed, take a look at
+     `SeleniumLibrary 3.0 release notes`_ to see is it a known backwards
+     incompatible change. If it isn't, you may have encountered a regression
+     that ought to be reported to `SeleniumLibrary issue tracker`_.
+
+   - If a library using Selenium2Library does not work anymore, it is likely
+     due to the large internal changes in SeleniumLibrary 3.0. Report the
+     problem to the maintainers of the broken library or fix the problem
+     yourself if you are the maintainer.
+
+   Regardless the problem, you can always ask help on various `support
+   channels`_.
+
+4. If no problems occur or after problems have been resolved, you can start
+   changing library imports to use ``SeleniumLibrary`` instead of
+   ``Selenium2Library``. Also all keyword usages in form like
+   ``Selenium2Library.Title Should Be`` need to be updated.
+
+5. After test data has been updated, Selenium2Library installation can
+   be removed altogether.
+
+.. _Robot Framework: http://robotframework.org
+.. _Selenium: http://seleniumhq.org
+.. _PyPI: https://pypi.python.org/pypi/robotframework-selenium2library
+.. _GitHub: https://github.com/robotframework/Selenium2Library
+.. _SeleniumLibrary: https://github.com/robotframework/SeleniumLibrary
+.. _pip: http://pip-installer.org
+.. _SeleniumLibrary 3.0 release notes: https://github.com/robotframework/SeleniumLibrary/blob/master/docs/SeleniumLibrary-3.0.0.rst
+.. _SeleniumLibrary issue tracker: https://github.com/robotframework/SeleniumLibrary/issues
+.. _support channels: http://robotframework.org/#support
+
+
