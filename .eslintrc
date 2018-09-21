@@ -27,7 +27,9 @@
     ],
     "jsx-a11y/anchor-is-valid": [ "error", { "components": [ "Link" ], "specialLink": [ "to" ] } ],
     "import/prefer-default-export": "off",
-    "react/prefer-stateless-function": 0
+    "react/prefer-stateless-function": 0,
+    "import/no-unresolved": 0,
+    "import/extensions": 0
   },
   "settings": {
     "import/resolver": {
