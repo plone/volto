@@ -6,14 +6,14 @@
 import PropTypes from 'prop-types';
 import redraft from 'redraft';
 
-import { ToHTMLRenderers, ToHTMLOptions } from '~/config';
+import { settings } from '~/config';
 
 /**
  * View text tile class.
  * @class View
  * @extends Component
  */
-const View = ({ data }) => redraft(data.text, ToHTMLRenderers, ToHTMLOptions);
+const View = ({ data }) => redraft(data.text, settings.ToHTMLRenderers, settings.ToHTMLOptions);
 
 /**
  * Property types.

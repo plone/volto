@@ -4,7 +4,7 @@
  */
 
 import { last, memoize } from 'lodash';
-import { nonContentRoutes } from '~/config';
+import { settings } from '~/config';
 
 /**
  * Get base url.
@@ -13,7 +13,7 @@ import { nonContentRoutes } from '~/config';
  * @return {string} Base url of content object.
  */
 export const getBaseUrl = memoize(url => {
-  let adjustedUrl = nonContentRoutes.reduce(
+  let adjustedUrl = settings.nonContentRoutes.reduce(
     (acc, item) => acc.replace(item, ''),
     url,
   );

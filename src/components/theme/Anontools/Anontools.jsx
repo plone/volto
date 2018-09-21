@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { List } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
-import config from '~/config';
+import { settings } from '~/config';
 
 @connect(state => ({
   token: state.userSession.token,
@@ -60,7 +60,7 @@ export default class Anontools extends Component {
             to={`/login${
               this.props.content
                 ? `?return_url=${this.props.content['@id'].replace(
-                    config.apiPath,
+                    settings.apiPath,
                     '',
                   )}`
                 : ''

@@ -15,15 +15,7 @@ import { map } from 'lodash';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
-import {
-  extendedBlockRenderMap,
-  blockStyleFn,
-  inlineToolbarButtons,
-  FromHTMLCustomBlockFn,
-  plugins,
-  ToHTMLRenderers,
-  ToHTMLOptions,
-} from '~/config';
+import { settings } from '~/config';
 
 const messages = defineMessages({
   default: {
@@ -152,7 +144,7 @@ export default class WysiwygWidget extends Component {
       let editorState;
       if (props.value && props.value.data) {
         const contentState = stateFromHTML(props.value.data, {
-          customBlockFn: FromHTMLCustomBlockFn,
+          customBlockFn: settings.FromHTMLCustomBlockFn,
         });
         editorState = EditorState.createWithContent(contentState);
       } else {
@@ -160,7 +152,7 @@ export default class WysiwygWidget extends Component {
       }
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: inlineToolbarButtons,
+        structure: settings.richTextEditorInlineToolbarButtons,
       });
 
       this.state = { editorState, inlineToolbarPlugin };
@@ -216,8 +208,8 @@ export default class WysiwygWidget extends Component {
       data: ReactDOMServer.renderToStaticMarkup(
         redraft(
           convertToRaw(editorState.getCurrentContent()),
-          ToHTMLRenderers,
-          ToHTMLOptions,
+          settings.ToHTMLRenderers,
+          settings.ToHTMLOptions,
         ),
       ),
     });
@@ -302,9 +294,9 @@ export default class WysiwygWidget extends Component {
                     id={`field-${id}`}
                     onChange={this.onChange}
                     editorState={this.state.editorState}
-                    plugins={[this.state.inlineToolbarPlugin, ...plugins]}
-                    blockRenderMap={extendedBlockRenderMap}
-                    blockStyleFn={blockStyleFn}
+                    plugins={[this.state.inlineToolbarPlugin, ...settings.richTextEditorPlugins]}
+                    blockRenderMap={settings.extendedBlockRenderMap}
+                    blockStyleFn={settings.blockStyleFn}
                   />
                 ) : (
                   <div className="DraftEditor-root" />

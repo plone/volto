@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
-import { defaultWidget, widgetMapping } from '~/config';
+import { widgets } from '~/config';
 import { injectIntl, intlShape } from 'react-intl';
 
 /**
@@ -14,7 +14,7 @@ import { injectIntl, intlShape } from 'react-intl';
  * @method getViewDefault
  * @returns {string} Widget component.
  */
-const getWidgetDefault = () => defaultWidget;
+const getWidgetDefault = () => widgets.defaultWidget;
 
 /**
  * Get widget by field's `id` attribute
@@ -22,7 +22,7 @@ const getWidgetDefault = () => defaultWidget;
  * @param {string} id Id
  * @returns {string} Widget component.
  */
-const getWidgetByFieldId = id => widgetMapping.id[id] || null;
+const getWidgetByFieldId = id => widgets.widgetMapping.id[id] || null;
 
 /**
  * Get widget by field's `widget` attribute
@@ -32,7 +32,7 @@ const getWidgetByFieldId = id => widgetMapping.id[id] || null;
  */
 const getWidgetByName = widget =>
   typeof widget === 'string'
-    ? widgetMapping.widget[widget] || getWidgetDefault()
+    ? widgets.widgetMapping.widget[widget] || getWidgetDefault()
     : null;
 
 /**
@@ -42,7 +42,7 @@ const getWidgetByName = widget =>
  * @returns {string} Widget component.
  */
 const getWidgetByVocabulary = vocabulary =>
-  widgetMapping.vocabulary[vocabulary] || null;
+  widgets.widgetMapping.vocabulary[vocabulary] || null;
 
 /**
  * Get widget by field's `choices` attribute
@@ -50,7 +50,7 @@ const getWidgetByVocabulary = vocabulary =>
  * @param {string} choices Widget
  * @returns {string} Widget component.
  */
-const getWidgetByChoices = choices => (choices ? widgetMapping.choices : null);
+const getWidgetByChoices = choices => (choices ? widgets.widgetMapping.choices : null);
 
 /**
  * Get widget by field's `type` attribute
@@ -58,7 +58,7 @@ const getWidgetByChoices = choices => (choices ? widgetMapping.choices : null);
  * @param {string} type Type
  * @returns {string} Widget component.
  */
-const getWidgetByType = type => widgetMapping.type[type] || null;
+const getWidgetByType = type => widgets.widgetMapping.type[type] || null;
 
 /**
  * Field component class.

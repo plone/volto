@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import { injectIntl, intlShape } from 'react-intl';
 import { find } from 'lodash';
-import { defaultView, contentTypesViews, layoutViews } from '~/config';
+import { views } from '~/config';
 
 import {
   Comments,
@@ -171,21 +171,21 @@ export default class View extends Component {
    * @method getViewDefault
    * @returns {string} Markup for component.
    */
-  getViewDefault = () => defaultView;
+  getViewDefault = () => views.defaultView;
 
   /**
    * Get view by content type
    * @method getViewByType
    * @returns {string} Markup for component.
    */
-  getViewByType = () => contentTypesViews[this.props.content['@type']] || null;
+  getViewByType = () => views.contentTypesViews[this.props.content['@type']] || null;
 
   /**
    * Get view by content layout property
    * @method getViewByLayout
    * @returns {string} Markup for component.
    */
-  getViewByLayout = () => layoutViews[this.props.content.layout] || null;
+  getViewByLayout = () => views.layoutViews[this.props.content.layout] || null;
 
   /**
    * Cleans the component displayName (specially for connected components)

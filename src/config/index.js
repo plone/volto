@@ -2,7 +2,7 @@
  * Config.
  * @module config
  */
-import { defaults } from 'lodash';
+
 import { defaultWidget, widgetMapping } from './Widgets';
 import { layoutViews, contentTypesViews, defaultView } from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
@@ -18,38 +18,35 @@ import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
 import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
 import { customTiles, getDefaultEditTileView, messagesTiles } from './Tiles';
 
-export { layoutViews, contentTypesViews, defaultView };
-export { widgetMapping, defaultWidget };
-export { nonContentRoutes };
-export {
+export const settings = {
+  host: process.env.HOST || 'localhost',
+  port: process.env.PORT || '3000',
+  apiPath: process.env.API_PATH || 'http://localhost:8080/Plone', // for Plone
+  // apiPath: process.env.API_PATH || 'http://localhost:8081/db/web', // for guillotina
+  nonContentRoutes,
   extendedBlockRenderMap,
   blockStyleFn,
   listBlockTypes,
   FromHTMLCustomBlockFn,
-  inlineToolbarButtons,
-  plugins,
+  richTextEditorInlineToolbarButtons: inlineToolbarButtons,
+  richTextEditorPlugins: plugins,
   ToHTMLRenderers,
   ToHTMLOptions,
 };
-export { customTiles, getDefaultEditTileView, messagesTiles };
 
-export default defaults(
-  {},
-  {
-    host: process.env.HOST,
-    port: process.env.PORT,
-    apiPath: process.env.API_PATH,
-    publicUrl:
-      // eslint-disable-next-line
-      process.env.PUBLIC_URL === "PLONE_REACT_PUBLIC_URL"
-        ? ''
-        : process.env.PUBLIC_URL,
-  },
-  {
-    host: 'localhost',
-    port: '4300',
-    apiPath: 'http://localhost:8080/Plone', // for Plone
-    publicUrl: '',
-    // apiPath: 'http://localhost:8081/db/container', // for guillotina
-  },
-);
+export const widgets = {
+  widgetMapping,
+  defaultWidget,
+};
+
+export const views = {
+  layoutViews,
+  contentTypesViews,
+  defaultView,
+};
+
+export const tiles = {
+  customTiles,
+  getDefaultEditTileView,
+  messagesTiles,
+};

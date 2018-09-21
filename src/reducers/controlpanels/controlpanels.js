@@ -2,7 +2,7 @@
  * Controlpanels reducer.
  * @module reducers/controlpanels/controlpanels
  */
-import config from '~/config';
+import { settings } from '~/config';
 import {
   GET_CONTROLPANEL,
   LIST_CONTROLPANELS,
@@ -64,7 +64,7 @@ export default function controlpanels(state = initialState, action = {}) {
         ...state,
         controlpanel: {
           ...action.result,
-          '@id': action.result['@id'].replace(config.apiPath, ''),
+          '@id': action.result['@id'].replace(settings.apiPath, ''),
         },
         [getRequestKey(action.type)]: {
           loading: false,

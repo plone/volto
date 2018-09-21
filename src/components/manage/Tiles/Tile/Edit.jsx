@@ -7,8 +7,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
-import { getDefaultEditTileView } from '~/config';
-import { Icon } from '../../../../components';
+import { tiles } from '~/config';
+import Icon from '../../../../components/theme/Icon/Icon';
 
 import dragSVG from '../../../../icons/drag.svg';
 
@@ -117,7 +117,7 @@ export default class Edit extends Component {
     } = this.props;
 
     let Tile = null;
-    Tile = getDefaultEditTileView(type);
+    Tile = tiles.getDefaultEditTileView(type);
 
     const hideHandler =
       this.props.data['@type'] === 'text' &&

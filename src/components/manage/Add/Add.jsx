@@ -17,7 +17,7 @@ import { Icon } from 'semantic-ui-react';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import qs from 'query-string';
-import config from '~/config';
+import { settings } from '~/config';
 
 import { createContent, getSchema } from '../../../actions';
 import { Form, Toolbar } from '../../../components';
@@ -150,7 +150,7 @@ export class AddComponent extends Component {
     ) {
       this.props.history.push(
         this.props.returnUrl ||
-          nextProps.content['@id'].replace(config.apiPath, ''),
+          nextProps.content['@id'].replace(settings.apiPath, ''),
       );
     }
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
