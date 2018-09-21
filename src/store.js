@@ -3,8 +3,9 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 
-import { api, crashReporter } from './middleware';
 import reducers from '~/reducers';
+
+import { api, crashReporter } from './middleware';
 
 const configureStore = (initialState, history, apiHelper) => {
   const middlewares = composeWithDevTools(
