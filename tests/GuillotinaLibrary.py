@@ -1,5 +1,5 @@
 import os
-
+import logging
 import requests
 
 HEADERS = {
@@ -15,6 +15,14 @@ class GuillotinaLibrary(object):
         # delete existing container if there is one
         s = requests.Session()
         s.headers.update(HEADERS)
+        for i in range(10):
+            resp = s.get(base_url)
+            if resp.status_code != 200:
+                logger.warn('Waiting')
+                sleep(2)
+            else:
+                break
+
         s.delete(
             os.path.join(base_url, 'container'))
         resp = s.post(base_url, json={

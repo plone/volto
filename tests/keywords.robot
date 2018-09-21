@@ -1,5 +1,6 @@
 *** Settings ***
 
+Library  GuillotinaLibrary
 Library  DebugLibrary
 Library  RequestsLibrary
 Library  SeleniumLibrary  timeout=30  implicit_wait=0
@@ -20,15 +21,16 @@ ${BROWSER}             chrome
 ### files without Zope2Server in PYTHONPATH of pybot test runner.
 
 Test Setup
-    Import library  plone.app.robotframework.Zope2Server
-    Set Zope layer  ${FIXTURE}
-    ZODB Setup
+    Run Keyword If   '${API}' == 'Plone'   Import library  plone.app.robotframework.Zope2Server
+    Run Keyword If   '${API}' == 'Plone'   Set Zope layer  ${FIXTURE}
+    Run Keyword If   '${API}' == 'Plone'   ZODB Setup
+    Run Keyword If   '${API}' == 'Guillotina'   Setup Guillotina  http://localhost:8081/db
     Open default browser
 
 Test Teardown
-    Import library  plone.app.robotframework.Zope2Server
-    Set Zope layer  ${FIXTURE}
-    ZODB TearDown
+    Run Keyword If   '${API}' == 'Plone'   Import library  plone.app.robotframework.Zope2Server
+    Run Keyword If   '${API}' == 'Plone'   Set Zope layer  ${FIXTURE}
+    Run Keyword If   '${API}' == 'Plone'   ZODB TearDown
     Close all browsers
 
 ###
@@ -57,7 +59,8 @@ Open default browser
 A logged in site-administrator
     ${headers}  Create Dictionary  Accept  application/json  Content-Type  application/json
     ${data}=  Create dictionary  login  admin  password  secret
-    Create Session  plone  http://localhost:55001/plone
+    Run Keyword If   '${API}' == 'Guillotina'   Create Session  plone  http://localhost:8081/db/container
+    Run Keyword If   '${API}' == 'Plone'   Create Session  plone  http://localhost:55001/plone
     ${resp}=	Post Request  plone  /@login  headers=${headers}  data=${data}
     Should Be Equal As Strings	${resp.status_code}	 200
     # Log  ${resp.json().get('token')}  WARN
@@ -78,9 +81,10 @@ Page fully loaded
     Page should contain  Plone
 
 the Plone site root
-    Wait until page contains  Home
-    Click link  Home
-
+    Run Keyword If   '${API}' == 'Plone'   Wait until page contains  Home
+    Run Keyword If   '${API}' == 'Plone'   Click link  Home
+    Run Keyword If   '${API}' == 'Guillotina'    Wait until page contains  container
+    Run Keyword If   '${API}' == 'Guillotina'    Click link  xpath=//a[@title="Site"]
 
 # --- When -------------------------------------------------------------------
 # When keywords declare the action under test.
