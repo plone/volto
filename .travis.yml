@@ -42,10 +42,7 @@ install:
   env/bin/pip install -r api/docker/requirements.txt;
   env/bin/pip install -U https://github.com/zopefoundation/z3c.autoinclude/archive/pip.tar.gz#egg=z3c.autoinclude;
   fi
-- if [ "$TEST_SUITE" == "guillotina" ]; then
-  echo "Guillotina CMS Install";
-  pip install -r g-api/requirements.txt;
-  fi
+- pip install -r test-requirements.txt;
 - yarn
 - yarn build
 before_script:
@@ -54,10 +51,19 @@ before_script:
 - sleep 3
 script:
 - if [ "$TEST_SUITE" == "unit" ]; then
-  docker run --name coverage_front -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" plone/plone-react:testing -- yarn coverage;
+  docker run --name coverage_front -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" plone/plone-react:testing -- yarn test;
+  docker cp coverage_front:/opt/app/coverage/lcov.info .
+  cat lcov.info | coveralls
   fi
 - if [ "$TEST_SUITE" == "guillotina" ]; then
-  PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome -v API:Guillotina --v TESTING:Native tests;
+  PYTHONPATH=$(pwd)/tests xvfb-run \
+    --server-args="-screen 0 1920x1080x24 -ac" \
+    pabot \
+    --verbose \
+    --processes 3 \
+    --outputDir . \
+    -v BROWSER:headlesschrome -v API:Guillotina \
+    tests
   fi
 - if [ "$TEST_SUITE" == "plone" ]; then
   PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome -v API:Plone --v TESTING:Native tests;
