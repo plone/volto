@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-
+import { BrowserRouter as Router } from 'react-router-dom';
 import ContentsToolbar from './ContentsToolbar';
 
 const mockStore = configureStore();
@@ -17,7 +17,9 @@ describe('ContentsToolbar', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <ContentsToolbar location={{ pathname: '/blog' }} />
+        <Router>
+          <ContentsToolbar location={{ pathname: '/blog' }} />
+        </Router>
       </Provider>,
     );
     const json = component.toJSON();

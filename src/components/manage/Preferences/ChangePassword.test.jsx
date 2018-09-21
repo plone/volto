@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import jwt from 'jsonwebtoken';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import ChangePassword from './ChangePassword';
 
@@ -30,7 +31,9 @@ describe('ChangePassword', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <ChangePassword location={{ pathname: '/blog' }} />
+        <Router>
+          <ChangePassword location={{ pathname: '/blog' }} />
+        </Router>
       </Provider>,
     );
     const json = component.toJSON();

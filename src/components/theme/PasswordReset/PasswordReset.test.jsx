@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-
+import { BrowserRouter as Router } from 'react-router-dom';
 import PasswordReset from './PasswordReset';
 
 const mockStore = configureStore();
@@ -24,10 +24,12 @@ describe('PasswordReset', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <PasswordReset
-          match={{ token: 'a9dd24f9aab74bdea66aba6d80ef651b' }}
-          location={{ search: { userid: 'victor@plone.org' } }}
-        />
+        <Router>
+          <PasswordReset
+            match={{ token: 'a9dd24f9aab74bdea66aba6d80ef651b' }}
+            location={{ search: { userid: 'victor@plone.org' } }}
+          />
+        </Router>
       </Provider>,
     );
     const json = component.toJSON();

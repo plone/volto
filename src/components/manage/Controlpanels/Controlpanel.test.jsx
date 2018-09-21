@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-
+import { BrowserRouter as Router } from 'react-router-dom';
 import Controlpanel from './Controlpanel';
 
 const mockStore = configureStore();
@@ -37,10 +37,12 @@ describe('Controlpanel', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Controlpanel
-          match={{ params: { id: 'date-and-time' } }}
-          location={{ pathname: '/blog' }}
-        />
+        <Router>
+          <Controlpanel
+            match={{ params: { id: 'date-and-time' } }}
+            location={{ pathname: '/blog' }}
+          />
+        </Router>
       </Provider>,
     );
     const json = component.toJSON();

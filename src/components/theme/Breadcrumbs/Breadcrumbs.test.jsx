@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-
+import { BrowserRouter as Router } from 'react-router-dom';
 import Breadcrumbs from './Breadcrumbs';
 
 const mockStore = configureStore();
@@ -23,7 +23,9 @@ describe('Breadcrumbs', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Breadcrumbs pathname="/blog" />
+        <Router>
+          <Breadcrumbs pathname="/blog" />
+        </Router>
       </Provider>,
     );
     const json = component.toJSON();
