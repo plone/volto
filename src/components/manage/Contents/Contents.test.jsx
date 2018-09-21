@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-
+import { BrowserRouter as Router } from 'react-router-dom';
 import Contents from './Contents';
 
 const mockStore = configureStore();
@@ -74,7 +74,9 @@ describe('Contents', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Contents location={{ pathname: '/blog' }} />
+        <Router>
+          <Contents location={{ pathname: '/blog' }} />
+        </Router>
       </Provider>,
     );
     const json = component.toJSON();

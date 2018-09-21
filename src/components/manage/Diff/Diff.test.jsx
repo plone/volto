@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-
+import { BrowserRouter as Router } from 'react-router-dom';
 import Diff from './Diff';
 
 const mockStore = configureStore();
@@ -71,9 +71,11 @@ describe('Diff', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Diff
-          location={{ pathname: '/blog', search: { one: '0', two: '1 ' } }}
-        />
+        <Router>
+          <Diff
+            location={{ pathname: '/blog', search: { one: '0', two: '1 ' } }}
+          />
+        </Router>
       </Provider>,
     );
     const json = component.toJSON();
