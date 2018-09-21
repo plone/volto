@@ -6,7 +6,8 @@ Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Library         OperatingSystem
 Library         Process
 Library         WebpackLibrary
-Library         DebugLibrary
+Library         plone.app.robotframework.Zope2Server
+
 
 Suite Setup     Suite Setup
 Suite Teardown  Suite Teardown
@@ -35,7 +36,6 @@ Start Guillotina Backend
     Log To Console  ${result.stderr}
 
 Start Plone Backend
-    Library         plone.app.robotframework.Zope2Server
     Set Environment Variable  API_PATH  http://localhost:${PORT}/plone
     Set Environment Variable  Z3C_AUTOINCLUDE_DEPENDENCIES_DISABLED  1
     Start Zope server  ${FIXTURE}
