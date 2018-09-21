@@ -29,7 +29,7 @@ before_install:
 - mkdir webdriver;
 - wget https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux64.tar.gz;
 - tar -xzf geckodriver-v0.20.0-linux64.tar.gz -C webdriver;
-- wget https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip;
+- wget https://chromedriver.storage.googleapis.com/2.42/chromedriver_linux64.zip;
 - unzip chromedriver_linux64.zip -d webdriver;
 - export PATH=$PATH:$(pwd)/webdriver;
 - npm install -g surge

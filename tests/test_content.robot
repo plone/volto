@@ -21,7 +21,9 @@ Scenario: As a site administrator I can add a text tile to a page
 #    # Then I should see a notification that 'My Page' has been created
      and I should see 'My text tile' on the page view
 
+
 *** Keywords ***
+
 
 # --- Given ------------------------------------------------------------------
 
@@ -59,6 +61,7 @@ I should see '${title}' in the navigation
 
 I should see '${text}' on the page view
   Page should contain  ${text}
+
 
 # --- Helper -----------------------------------------------------------------
 
