@@ -6,7 +6,7 @@ Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Library         OperatingSystem
 Library         Process
 Library         WebpackLibrary
-Library         plone.app.robotframework.Zope2Server
+
 
 
 Suite Setup     Suite Setup
@@ -35,10 +35,15 @@ Start Guillotina Backend
     Log To Console  ${result.stderr}
 
 Start Plone Backend
+    Import Library    plone.app.robotframework.Zope2Server
     ${PORT}=  Get Environment Variable  ZSERVER_PORT  55001
     Set Environment Variable  API_PATH  http://localhost:${PORT}/plone
     Set Environment Variable  Z3C_AUTOINCLUDE_DEPENDENCIES_DISABLED  1
     Start Zope server  ${FIXTURE}
+
+Stop Plone Backend
+    Import Library    plone.app.robotframework.Zope2Server
+    Stop Zope server
 
 Start Plone React
     Log To Console  Starting Webpack
@@ -53,5 +58,5 @@ Suite Setup
 
 Suite Teardown
     Stop Webpack
-    Run Keyword If   '${API}' == 'Plone'  Stop Zope server
+    Run Keyword If   '${API}' == 'Plone'  Stop Plone Backend
     Run Keyword If   '${API}' == 'Guillotina'   Run  docker-compose -f g-api/docker-compose-local.yaml stop
