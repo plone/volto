@@ -16,5 +16,7 @@ RUN yarn build
 ENV API_PATH http://api/db/web
 ENV PUBLIC_URL /
 
+EXPOSE 4300
+
 ENTRYPOINT ["/opt/app/entrypoint.sh"]
-CMD yarn start
+CMD yarn run:prod:server

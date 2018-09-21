@@ -2,7 +2,7 @@
 set -Ex
 
 function apply_path {
-    mainjs=./dist/main*.js
+    mainjs=./dist/*.js
     test -f $mainjs
 
     echo "Check that we have API_PATH and API vars"
@@ -18,5 +18,5 @@ function apply_path {
 # Should we monkey patch?
 test -n "$API_PATH" && apply_path
 
-echo "Starting Guillotina"
+echo "Starting Plone React"
 exec "$@"

@@ -3,9 +3,11 @@
 *** Settings ***
 
 Library         SeleniumLibrary  timeout=10  implicit_wait=0
-Library         plone.app.robotframework.Zope2Server
 Library         OperatingSystem
+Library         Process
 Library         WebpackLibrary
+Library         plone.app.robotframework.Zope2Server
+
 
 Suite Setup     Suite Setup
 Suite Teardown  Suite Teardown
@@ -23,16 +25,33 @@ ${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 @{APPLY_PROFILES}      plone.app.contenttypes:plone-content
 ...                    plone.restapi:tiles
 
+
 *** Keywords ***
 
-Suite Setup
+Start Guillotina Backend
+    Set Environment Variable  API_PATH  http://localhost:8081/db/container
+    Log To Console  Starting Guillotina
+    ${result} =  Run Process  docker-compose -f g-api/docker-compose-local.yml up -d  shell=True  stdout=${TEMPDIR}/stdout.txt	stderr=${TEMPDIR}/stderr.txt
+    Log To Console  ${result.stderr}
+
+Start Plone Backend
     ${PORT}=  Get Environment Variable  ZSERVER_PORT  55001
     Set Environment Variable  API_PATH  http://localhost:${PORT}/plone
     Set Environment Variable  Z3C_AUTOINCLUDE_DEPENDENCIES_DISABLED  1
     Start Zope server  ${FIXTURE}
+
+Start Plone React
+    Log To Console  Starting Webpack
     Start Webpack  yarn start
     ...            check=to be executed: ./node_modules/.bin/babel-node ./src/start-server-prod.js
 
+Suite Setup
+    Run Keyword If   '${API}' == 'Plone'   Start Plone Backend
+    Run Keyword If   '${API}' == 'Guillotina'   Start Guillotina Backend	
+    Start Plone React
+
+
 Suite Teardown
     Stop Webpack
-    Stop Zope server
+    Run Keyword If   '${API}' == 'Plone'  Stop Zope server
+    Run Keyword If   '${API}' == 'Guillotina'   Run  docker-compose -f g-api/docker-compose-local.yaml stop
