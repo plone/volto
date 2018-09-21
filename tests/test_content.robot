@@ -1,5 +1,5 @@
 *** Settings ***
-Library  DebugLibrary
+
 Resource  keywords.robot
 
 Suite Setup     Open default browser
