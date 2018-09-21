@@ -16,8 +16,8 @@ exports[`PersonalInformation renders a personal information component 1`] = `
     </div>
     <a
       className="item"
+      href="/personal-preferences"
       onClick={[Function]}
-      style={Object {}}
     >
       <span>
         Personal Preferences
@@ -25,8 +25,8 @@ exports[`PersonalInformation renders a personal information component 1`] = `
     </a>
     <a
       className="item"
+      href="/change-password"
       onClick={[Function]}
-      style={Object {}}
     >
       <span>
         Change Password

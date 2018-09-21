@@ -87,8 +87,8 @@ exports[`Login renders a login component 1`] = `
                     <span>
                       If you you do not have an account here, head over to the 
                       <a
+                        href="/register"
                         onClick={[Function]}
-                        style={Object {}}
                       >
                         <span>
                           registration form
@@ -155,8 +155,8 @@ exports[`Login renders a login component 1`] = `
                     <span>
                       If you have forgotten your password, 
                       <a
+                        href="/password-reset"
                         onClick={[Function]}
-                        style={Object {}}
                       >
                         <span>
                           we can send you a new one
@@ -190,10 +190,10 @@ exports[`Login renders a login component 1`] = `
           <a
             className="ui big basic circular icon secondary right floated button"
             disabled={undefined}
+            href="/"
             id="login-form-cancel"
             onClick={[Function]}
             role="button"
-            style={Object {}}
             tabIndex={undefined}
             title="Cancel"
           >

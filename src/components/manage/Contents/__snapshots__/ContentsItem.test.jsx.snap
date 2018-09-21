@@ -30,8 +30,8 @@ exports[`ContentsItem renders a contents item component 1`] = `
     className=""
   >
     <a
+      href="/blog"
       onClick={[Function]}
-      style={Object {}}
     >
       <i
         aria-hidden="true"
@@ -78,8 +78,8 @@ exports[`ContentsItem renders a contents item component 1`] = `
       >
         <a
           className="item"
+          href="/blog/edit"
           onClick={[Function]}
-          style={Object {}}
         >
           <i
             aria-hidden="true"
@@ -92,8 +92,8 @@ exports[`ContentsItem renders a contents item component 1`] = `
         </a>
         <a
           className="item"
+          href="/blog"
           onClick={[Function]}
-          style={Object {}}
         >
           <i
             aria-hidden="true"

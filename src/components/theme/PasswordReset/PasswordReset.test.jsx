@@ -26,7 +26,7 @@ describe('PasswordReset', () => {
       <Provider store={store}>
         <Router>
           <PasswordReset
-            match={{ token: 'a9dd24f9aab74bdea66aba6d80ef651b' }}
+            match={{ params: { token: 'a9dd24f9aab74bdea66aba6d80ef651b' } }}
             location={{ search: { userid: 'victor@plone.org' } }}
           />
         </Router>

@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-
+import { BrowserRouter as Router } from 'react-router-dom';
 import Controlpanels from './Controlpanels';
 
 const mockStore = configureStore();
@@ -45,7 +45,9 @@ describe('Controlpanels', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Controlpanels location={{ pathname: '/blog' }} />
+        <Router>
+          <Controlpanels location={{ pathname: '/blog' }} />
+        </Router>
       </Provider>,
     );
     const json = component.toJSON();

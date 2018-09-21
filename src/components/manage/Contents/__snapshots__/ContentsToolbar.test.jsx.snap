@@ -4,9 +4,9 @@ exports[`ContentsToolbar renders a contents toolbar component 1`] = `
 <div>
   <a
     className="item"
+    href="/blog"
     id="toolbar-cancel"
     onClick={[Function]}
-    style={Object {}}
   >
     <i
       aria-hidden="true"

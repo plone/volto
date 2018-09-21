@@ -72,8 +72,8 @@ exports[`TabularView renders a tabular view component 1`] = `
             >
               <a
                 className="summary url"
+                href="http://item"
                 onClick={[Function]}
-                style={Object {}}
                 title={undefined}
               >
                 My item
