@@ -9,6 +9,7 @@
 
 ### Changes
 
+- Merged Guillotina and Plone robot tests @bloodbare
 - Don't reset total and batching on pending search @robgietema
 
 ## 0.7.0 (2018-07-31)
