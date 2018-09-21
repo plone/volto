@@ -1,6 +1,0 @@
-#!/Users/ramon/floss/plone-react/bin/python3.7
-
-from pabot.pabot import main
-import sys
-
-main(sys.argv[1:])

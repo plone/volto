@@ -24,7 +24,6 @@ ${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 ...                    config_module
 @{APPLY_PROFILES}      plone.app.contenttypes:plone-content
 ...                    plone.restapi:tiles
-${PORT}=  Get Environment Variable  ZSERVER_PORT  55001
 
 
 *** Keywords ***
@@ -36,6 +35,7 @@ Start Guillotina Backend
     Log To Console  ${result.stderr}
 
 Start Plone Backend
+    ${PORT}=  Get Environment Variable  ZSERVER_PORT  55001
     Set Environment Variable  API_PATH  http://localhost:${PORT}/plone
     Set Environment Variable  Z3C_AUTOINCLUDE_DEPENDENCIES_DISABLED  1
     Start Zope server  ${FIXTURE}

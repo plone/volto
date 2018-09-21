@@ -48,7 +48,6 @@ I add a Page with the title '${title}'
 
 I add a text tile with the content '${text}' to the page
   Input tile  text  ${text}
-  Debug
   Click element  css=*[title=Save]
 
 
