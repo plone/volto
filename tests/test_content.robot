@@ -21,6 +21,12 @@ Scenario: As a site administrator I can add a text tile to a page
 #    # Then I should see a notification that 'My Page' has been created
      and I should see 'My text tile' on the page view
 
+Scenario: As a site administrator I can add a news item
+  Given a logged in site-administrator
+    and the Plone site root
+   When I add a News Item with the title 'My News Item'
+   # Then I should see a notification that 'My Page' has been created
+    and I should see 'My News Item' in the navigation
 
 *** Keywords ***
 
@@ -51,13 +57,22 @@ I add a text tile with the content '${text}' to the page
   Input tile  text  ${text}
   Click element  css=*[title=Save]
 
+I add a News Item with the title '${title}'
+  Wait until page contains element  css=#toolbar-add
+  Click element  css=#toolbar-add
+  Wait until page contains element  css=#toolbar-add-news-item
+  Click element  css=#toolbar-add-news-item
+  Wait until page contains element  name=title
+  Input text  name=title  My News Item
+  Click element  css=*[title=Save]
+
 
 # --- Then -------------------------------------------------------------------
 
 I should see '${title}' in the navigation
   Wait until page contains element  css=.navigation a
-  Wait until page contains element  css=.navigation a[href='/my-page']
-  Page should contain element  css=.navigation a[href='/my-page']
+  Page should contain element  xpath=//*[contains(@class, 'navigation')]//*[contains(text(), '${title}')]
+
 
 I should see '${text}' on the page view
   Page should contain  ${text}
