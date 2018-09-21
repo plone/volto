@@ -74,7 +74,9 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Navigation pathname="/blog/2017/12/27" />
+        <Router>
+          <Navigation pathname="/blog/2017/12/27" />
+        </Router>
       </Provider>,
     );
     const json = component.toJSON();
@@ -98,7 +100,9 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Navigation pathname="/blog" />
+        <Router>
+          <Navigation pathname="/blog" />
+        </Router>
       </Provider>,
     );
     const json = component.toJSON();
