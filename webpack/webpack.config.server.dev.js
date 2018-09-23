@@ -11,7 +11,7 @@ configuration.plugins.push(
       HOST: process.env.HOST && process.env.HOST,
       PORT: process.env.PORT,
       API_PATH: process.env.API_PATH && JSON.stringify(process.env.API_PATH),
-      PUBLIC_URL: process.env.PUBLIC_URL && JSON.stringify(process.env.PUBLIC_URL),
+      PUBLIC_URL: process.env.PUBLIC_URL ? JSON.stringify(process.env.PUBLIC_URL) : '""'
     },
     __CLIENT__: false,
     __SERVER__: true,

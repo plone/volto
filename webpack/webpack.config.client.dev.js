@@ -8,6 +8,7 @@ configuration.plugins.push(
     'process.env': {
       NODE_ENV: JSON.stringify('development'),
       BABEL_ENV: JSON.stringify('development/client'),
+      PUBLIC_URL: process.env.PUBLIC_URL ? JSON.stringify(process.env.PUBLIC_URL) : '""'
     },
     __CLIENT__: true,
     __SERVER__: false,

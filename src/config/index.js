@@ -45,7 +45,7 @@ export default defaults(
     host: 'localhost',
     port: '4300',
     apiPath: 'http://localhost:8080/Plone', // for Plone
-    publicUrl: '/',
+    publicUrl: '',
     // apiPath: 'http://localhost:8081/db/web', // for guillotina
   },
 );
