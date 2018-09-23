@@ -3,7 +3,7 @@
  * @module reducers/root
  */
 
-import { routerReducer } from 'react-router-redux';
+import { routerReducer } from 'connected-react-router';
 import { reducer as reduxAsyncConnect } from 'redux-connect';
 import { intlReducer } from 'react-intl-redux';
 

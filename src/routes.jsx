@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import Route from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import isMobile from 'ismobilejs';
 
 import { App } from './components';

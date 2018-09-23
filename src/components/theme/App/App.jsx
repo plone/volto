@@ -12,8 +12,6 @@ import { bindActionCreators } from 'redux';
 import Raven from 'raven-js';
 import { Switch, Route } from 'react-router-dom';
 import Error from '../../../error';
-
-import { Breadcrumbs, Footer, Header, Messages } from '../../../components';
 import { BodyClass, getBaseUrl, getView } from '../../../helpers';
 import {
   getBreadcrumbs,
@@ -24,6 +22,10 @@ import {
   purgeMessages,
 } from '../../../actions';
 import {
+  Breadcrumbs,
+  Footer,
+  Header,
+  Messages,
   Add,
   ChangePassword,
   Contents,

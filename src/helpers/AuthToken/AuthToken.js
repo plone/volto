@@ -9,7 +9,6 @@ import createHistory from 'history/createBrowserHistory';
 
 import { loginRenew } from '../../actions';
 
-const history = createHistory();
 /**
  * Get auth token method.
  * @method getAuthToken
@@ -55,7 +54,7 @@ export function persistAuthToken(store) {
               store.dispatch(loginRenew());
             } else {
               // Logout
-              history.push(
+              createHistory().push(
                 `/logout?return_url=${
                   store.getState().routing.locationBeforeTransitions.pathname
                 }`,

@@ -1,6 +1,6 @@
 import createLogger from 'redux-logger';
 import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
-import { routerMiddleware } from 'react-router-redux';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 
 import { api, crashReporter } from './middleware';
@@ -55,7 +55,7 @@ export default function configureStore(
 
   const createStoreWithMiddleware = compose(...middlewares)(createStore);
   const store = createStoreWithMiddleware(
-    combineReducers(reducers),
+    connectRouter(history)(combineReducers(reducers)),
     initialState,
   );
 
