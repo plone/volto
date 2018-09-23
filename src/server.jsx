@@ -79,7 +79,7 @@ export default parameters => {
         messages: locales[lang],
       },
     };
-    const basename = process.env.PUBLIC_URL;
+    const basename = config.publicUrl;
     const memoryHistory = createMemoryHistory({
       entries: [req.path],
       basename,

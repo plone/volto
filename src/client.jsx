@@ -15,6 +15,7 @@ import 'semantic-ui-less/semantic.less';
 import configureStore from './store';
 import getRoutes from './routes';
 import { Api, persistAuthToken } from './helpers';
+import config from './config';
 
 const api = new Api();
 const initialState = window.__data; // eslint-disable-line no-underscore-dangle
@@ -26,7 +27,7 @@ persistAuthToken(store);
 hydrate(
   <Provider store={store} key="provider">
     <Router
-      basename={process.env.PUBLIC_URL}
+      basename={config.publicUrl}
       render={props => <ReduxAsyncConnect helpers={{ api }} {...props} />}
       history={history}
     >

@@ -39,7 +39,10 @@ export default defaults(
     host: process.env.HOST,
     port: process.env.PORT,
     apiPath: process.env.API_PATH,
-    publicUrl: process.env.PUBLIC_URL,
+    publicUrl:
+      process.env.PUBLIC_URL === '"PLONE_REACT_PUBLIC_URL"'
+        ? ''
+        : process.env.PUBLIC_URL,
   },
   {
     host: 'localhost',
