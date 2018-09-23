@@ -40,7 +40,7 @@ export default defaults(
     port: process.env.PORT,
     apiPath: process.env.API_PATH,
     publicUrl:
-      process.env.PUBLIC_URL === '"PLONE_REACT_PUBLIC_URL"'
+      process.env.PUBLIC_URL === "PLONE_REACT_PUBLIC_URL"
         ? ''
         : process.env.PUBLIC_URL,
   },
