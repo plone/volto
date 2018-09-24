@@ -10,7 +10,6 @@ import Helmet from 'react-helmet';
 import serialize from 'serialize-javascript';
 import { join } from 'lodash';
 import { BodyClass } from '../.';
-import config from '~/config';
 
 /**
  * Html class.
@@ -42,15 +41,12 @@ export const Html = ({ assets, component, store }) => {
         {head.link.toComponent()}
         {head.script.toComponent()}
 
-        <link
-          rel="shortcut icon"
-          href={`${config.publicUrl}/assets/favicon.ico`}
-        />
+        <link rel="shortcut icon" href="/assets/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* styles (will be present only in production with webpack extract text plugin) */}
         {Object.keys(assets.styles).map(style => (
           <link
-            href={config.publicUrl + assets.styles[style]}
+            href={assets.styles[style]}
             key={assets.styles[style]}
             media="screen, projection"
             rel="stylesheet"
@@ -59,7 +55,7 @@ export const Html = ({ assets, component, store }) => {
           />
         ))}
         <link
-          href={`${config.publicUrl}/assets/overrides.css`}
+          href="/assets/overrides.css"
           media="screen, projection"
           rel="stylesheet"
           type="text/css"
@@ -77,7 +73,7 @@ export const Html = ({ assets, component, store }) => {
         />
         {Object.keys(assets.javascript).map(script => (
           <script
-            src={config.publicUrl + assets.javascript[script]}
+            src={assets.javascript[script]}
             key={assets.javascript[script]}
             charSet="UTF-8"
           />

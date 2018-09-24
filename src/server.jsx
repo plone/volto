@@ -79,11 +79,7 @@ export default parameters => {
         messages: locales[lang],
       },
     };
-    const basename = config.publicUrl;
-    const memoryHistory = createMemoryHistory({
-      entries: [req.path],
-      basename,
-    });
+    const memoryHistory = createMemoryHistory(req.path);
     const store = configureStore(initialState, memoryHistory, false, api);
     persistAuthToken(store);
     const history = syncHistoryWithStore(memoryHistory, store);
