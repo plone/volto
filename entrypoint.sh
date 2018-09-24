@@ -10,7 +10,7 @@ function apply_path {
     test -n "$PUBLIC_URL"
 
     sed -i "s#PLONE_REACT_API_PATH#${API_PATH}#g" $mainjs
-    sed -i "s#PLONE_REACT_PUBLIC_URL#${PUBLIC_URL}#g" $mainjs
+    sed -i "s#DOCKER_PUBLIC_URL#${PUBLIC_URL}#g" $mainjs
 
     gzip -fk $mainjs
 }

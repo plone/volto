@@ -11,7 +11,7 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn build
+RUN PUBLIC_URL=DOCKER_PUBLIC_URL yarn build
 
 ENV API_PATH http://api/db/web
 ENV PUBLIC_URL /
