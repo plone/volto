@@ -38,6 +38,7 @@ module.exports = {
         ],
       },
     };
+
     const LESSLOADER = {
       test: /\.less$/,
       include: [path.resolve('./theme'), /node_modules\/semantic-ui-less/],
@@ -108,12 +109,12 @@ module.exports = {
     ];
 
     const eslintLoader = config.module.rules.find(eslintLoaderFinder);
-    eslintLoader.exclude = [path.join(path.resolve('.'), 'src', 'develop')];
+    eslintLoader.exclude = [path.join(path.resolve('.'), 'src', 'lib')];
 
     config.resolve.alias = {
       ...config.resolve.alias,
       '../../theme.config$': `${projectRootPath}/theme/theme.config`,
-      '@plone/plone-react': `${projectRootPath}/src/develop/plone-react/src/`,
+      '@plone/plone-react': `${projectRootPath}/src/lib/plone-react/src/`,
     };
 
     return config;
