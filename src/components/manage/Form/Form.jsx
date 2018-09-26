@@ -197,11 +197,12 @@ class Form extends Component {
    * @returns {undefined}
    */
   onChangeTile(id, value) {
+    const tilesFieldname = getTilesFieldname(this.state.formData);
     this.setState({
       formData: {
         ...this.state.formData,
         [getTilesFieldname(this.state.formData)]: {
-          ...this.state.formData.tiles,
+          ...this.state.formData[tilesFieldname],
           [id]: value || null,
         },
       },
@@ -373,7 +374,6 @@ class Form extends Component {
     const tilesLayoutFieldname = getTilesLayoutFieldname(formData);
     const renderTiles = formData[tilesLayoutFieldname].items;
     const tilesDict = formData[tilesFieldname];
-
     return this.props.visual ? (
       <div className="ui wrapper">
         {map(renderTiles, (tile, index) => (
