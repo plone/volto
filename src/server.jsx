@@ -152,6 +152,7 @@ export default parameters => {
                   res.set({
                     'Cache-Control': 'public, max-age=60, no-transform',
                   });
+                  console.log(error.stack);
                   res
                     .status(500)
                     .send(`<!doctype html> ${renderToStaticMarkup(errorPage)}`);

@@ -21,13 +21,13 @@ static:
 root_user:
   password: root
 auth_extractors:
-- guillotina_cms.extractors.CookiePolicy
+- guillotina.auth.extractors.CookiePolicy
 - guillotina.auth.extractors.BearerAuthPolicy
 - guillotina.auth.extractors.BasicAuthPolicy
 - guillotina.auth.extractors.WSTokenAuthPolicy
 auth_token_validators:
 - guillotina.auth.validators.SaltedHashPasswordValidator
-- guillotina_cms.validator.CMSJWTValidator
+- guillotina.auth.validators.CMSJWTValidator
 redis:
   host: "redis"
   port: 6380
