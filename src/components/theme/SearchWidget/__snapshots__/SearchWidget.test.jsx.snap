@@ -14,20 +14,16 @@ exports[`SearchWidget renders a search widget component 1`] = `
       title="Search"
     >
       <input
-        disabled={undefined}
         name="SearchableText"
         onChange={[Function]}
         placeholder="Search Site"
-        tabIndex={undefined}
         type="text"
         value=""
       />
       <button
         className="ui icon button"
-        disabled={undefined}
         onClick={[Function]}
         role="button"
-        tabIndex={undefined}
       >
         <i
           aria-hidden="true"

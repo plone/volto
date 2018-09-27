@@ -10,8 +10,8 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
   >
     <a
       className="item"
+      href="/personal-information"
       onClick={[Function]}
-      style={Object {}}
     >
       <span>
         Personal Information
@@ -25,8 +25,8 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
     </div>
     <a
       className="item"
+      href="/change-password"
       onClick={[Function]}
-      style={Object {}}
     >
       <span>
         Password
@@ -37,7 +37,6 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
     className="ui container"
   >
     <form
-      action={undefined}
       className="ui form"
       method="post"
       onSubmit={[Function]}
@@ -74,10 +73,8 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
                   className="eight wide column"
                 >
                   <div
-                    aria-busy={undefined}
                     aria-disabled={false}
                     aria-expanded={false}
-                    aria-multiselectable={undefined}
                     className="ui selection dropdown"
                     id="field-language"
                     name="language"
@@ -106,7 +103,6 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
                     >
                       <div
                         aria-checked={true}
-                        aria-disabled={undefined}
                         aria-selected={true}
                         className="active selected item"
                         onClick={[Function]}
@@ -125,7 +121,6 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
                       </div>
                       <div
                         aria-checked={false}
-                        aria-disabled={undefined}
                         aria-selected={false}
                         className="item"
                         onClick={[Function]}
@@ -144,7 +139,6 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
                       </div>
                       <div
                         aria-checked={false}
-                        aria-disabled={undefined}
                         aria-selected={false}
                         className="item"
                         onClick={[Function]}
@@ -163,7 +157,6 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
                       </div>
                       <div
                         aria-checked={false}
-                        aria-disabled={undefined}
                         aria-selected={false}
                         className="item"
                         onClick={[Function]}
@@ -205,10 +198,8 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
         >
           <button
             className="ui big basic circular icon primary right floated button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
             title="Save"
             type="submit"
           >
@@ -219,10 +210,8 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
           </button>
           <button
             className="ui big basic circular icon secondary right floated button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
             title="Cancel"
           >
             <i

@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import NotFound from './NotFound';
 
@@ -17,7 +18,9 @@ describe('NotFound', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <NotFound />
+        <MemoryRouter>
+          <NotFound />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

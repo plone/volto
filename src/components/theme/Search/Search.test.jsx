@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import { SearchComponent as Search } from './Search';
 
@@ -25,9 +26,11 @@ describe('Search', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Search
-          location={{ pathname: '/blog', query: { SearchableText: 'blog' } }}
-        />
+        <MemoryRouter>
+          <Search
+            location={{ pathname: '/blog', query: { SearchableText: 'blog' } }}
+          />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();
@@ -54,9 +57,11 @@ describe('Search', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Search
-          location={{ pathname: '/blog', query: { SearchableText: 'blog' } }}
-        />
+        <MemoryRouter>
+          <Search
+            location={{ pathname: '/blog', query: { SearchableText: 'blog' } }}
+          />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

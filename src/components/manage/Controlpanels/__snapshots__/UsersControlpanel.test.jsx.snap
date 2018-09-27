@@ -26,7 +26,6 @@ exports[`UsersControlpanel renders a user control component 1`] = `
       className="ui segment"
     >
       <form
-        action={undefined}
         className="ui form"
         onSubmit={[Function]}
       >
@@ -37,19 +36,15 @@ exports[`UsersControlpanel renders a user control component 1`] = `
             className="ui action input"
           >
             <input
-              disabled={undefined}
               name="SearchableText"
               onChange={[Function]}
               placeholder="Search users..."
-              tabIndex={undefined}
               type="text"
             />
             <button
               className="ui icon button"
-              disabled={undefined}
               onClick={[Function]}
               role="button"
-              tabIndex={undefined}
             >
               <i
                 aria-hidden="true"
@@ -61,7 +56,6 @@ exports[`UsersControlpanel renders a user control component 1`] = `
       </form>
     </div>
     <form
-      action={undefined}
       className="ui form"
       onSubmit={[Function]}
     >

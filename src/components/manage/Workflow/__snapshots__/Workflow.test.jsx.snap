@@ -2,10 +2,7 @@
 
 exports[`Workflow renders a workflow component 1`] = `
 <div
-  aria-busy={undefined}
-  aria-disabled={undefined}
   aria-expanded={false}
-  aria-multiselectable={undefined}
   className="ui item dropdown"
   onBlur={[Function]}
   onChange={[Function]}
@@ -34,9 +31,6 @@ exports[`Workflow renders a workflow component 1`] = `
     className="menu transition"
   >
     <div
-      aria-checked={undefined}
-      aria-disabled={undefined}
-      aria-selected={undefined}
       className="item"
       onClick={[Function]}
       role="option"

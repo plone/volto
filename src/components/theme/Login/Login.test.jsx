@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import { LoginComponent as Login } from './Login';
 
@@ -20,7 +21,9 @@ describe('Login', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Login location={{ query: {} }} />
+        <MemoryRouter>
+          <Login location={{ query: {} }} />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

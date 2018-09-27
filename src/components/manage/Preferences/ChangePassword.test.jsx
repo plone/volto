@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import jwt from 'jsonwebtoken';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import ChangePassword from './ChangePassword';
 
@@ -30,7 +31,9 @@ describe('ChangePassword', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <ChangePassword location={{ pathname: '/blog' }} />
+        <MemoryRouter>
+          <ChangePassword location={{ pathname: '/blog' }} />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

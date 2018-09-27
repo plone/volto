@@ -1,4 +1,4 @@
-import config from '~/config';
+import { settings } from '~/config';
 import search from './search';
 import {
   RESET_SEARCH_CONTENT,
@@ -40,7 +40,7 @@ describe('Search reducer', () => {
           items: [
             {
               title: 'Welcome to Plone!',
-              '@id': `${config.apiPath}/front-page`,
+              '@id': `${settings.apiPath}/front-page`,
             },
           ],
           items_total: 1,

@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import TabularView from './TabularView';
 
@@ -17,19 +18,21 @@ describe('TabularView', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <TabularView
-          content={{
-            title: 'Hello World!',
-            description: 'Hi',
-            items: [
-              {
-                title: 'My item',
-                description: 'My item description',
-                url: 'http://item',
-              },
-            ],
-          }}
-        />
+        <MemoryRouter>
+          <TabularView
+            content={{
+              title: 'Hello World!',
+              description: 'Hi',
+              items: [
+                {
+                  title: 'My item',
+                  description: 'My item description',
+                  url: '/item',
+                },
+              ],
+            }}
+          />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

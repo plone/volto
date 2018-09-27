@@ -8,7 +8,6 @@ exports[`Login renders a login component 1`] = `
     className="ui text container"
   >
     <form
-      action={undefined}
       className="ui form"
       method="post"
       onSubmit={[Function]}
@@ -64,7 +63,6 @@ exports[`Login renders a login component 1`] = `
                     className="ui input"
                   >
                     <input
-                      disabled={undefined}
                       id="login"
                       name="login"
                       onChange={[Function]}
@@ -87,8 +85,8 @@ exports[`Login renders a login component 1`] = `
                     <span>
                       If you you do not have an account here, head over to the 
                       <a
+                        href="/register"
                         onClick={[Function]}
-                        style={Object {}}
                       >
                         <span>
                           registration form
@@ -132,7 +130,6 @@ exports[`Login renders a login component 1`] = `
                     className="ui input"
                   >
                     <input
-                      disabled={undefined}
                       id="password"
                       name="password"
                       onChange={[Function]}
@@ -155,8 +152,8 @@ exports[`Login renders a login component 1`] = `
                     <span>
                       If you have forgotten your password, 
                       <a
+                        href="/password-reset"
                         onClick={[Function]}
-                        style={Object {}}
                       >
                         <span>
                           we can send you a new one
@@ -174,11 +171,9 @@ exports[`Login renders a login component 1`] = `
         >
           <button
             className="ui big basic circular icon primary right floated button"
-            disabled={undefined}
             id="login-form-submit"
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
             title="Log in"
             type="submit"
           >
@@ -189,12 +184,10 @@ exports[`Login renders a login component 1`] = `
           </button>
           <a
             className="ui big basic circular icon secondary right floated button"
-            disabled={undefined}
+            href="/"
             id="login-form-cancel"
             onClick={[Function]}
             role="button"
-            style={Object {}}
-            tabIndex={undefined}
             title="Cancel"
           >
             <i

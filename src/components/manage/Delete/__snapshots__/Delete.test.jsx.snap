@@ -26,7 +26,6 @@ exports[`Delete renders a delete component 1`] = `
         >
           <div
             className="item"
-            data-value={undefined}
             onClick={[Function]}
             role="listitem"
           >
@@ -39,10 +38,8 @@ exports[`Delete renders a delete component 1`] = `
       >
         <button
           className="ui big basic circular icon primary right floated button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
           title="Ok"
         >
           <i
@@ -52,10 +49,8 @@ exports[`Delete renders a delete component 1`] = `
         </button>
         <button
           className="ui big basic circular icon secondary right floated button"
-          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={undefined}
           title="Cancel"
         >
           <i

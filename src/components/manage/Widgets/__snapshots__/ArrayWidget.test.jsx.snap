@@ -27,8 +27,6 @@ exports[`renders an array widget component 1`] = `
         className="eight wide column"
       >
         <div
-          aria-busy={undefined}
-          aria-disabled={undefined}
           aria-expanded={false}
           className="ui fluid multiple search selection dropdown"
           onBlur={[Function]}
@@ -37,7 +35,6 @@ exports[`renders an array widget component 1`] = `
           onFocus={[Function]}
           onMouseDown={[Function]}
           role="combobox"
-          tabIndex={undefined}
         >
           <input
             aria-autocomplete="list"

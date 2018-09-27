@@ -36,8 +36,8 @@ exports[`Search renders a search component 1`] = `
           >
             <a
               className="summary url"
+              href="/blog"
               onClick={[Function]}
-              style={Object {}}
               title="Folder"
             >
               Blog
@@ -56,8 +56,8 @@ exports[`Search renders a search component 1`] = `
             className="tileFooter"
           >
             <a
+              href="/blog"
               onClick={[Function]}
-              style={Object {}}
             >
               <span>
                 Read More…

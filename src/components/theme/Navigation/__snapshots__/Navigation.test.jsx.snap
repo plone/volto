@@ -26,15 +26,15 @@ Array [
   >
     <a
       className="item active"
+      href="/blog"
       onClick={[Function]}
-      style={Object {}}
     >
       Blog
     </a>
     <a
       className="item"
+      href="/users"
       onClick={[Function]}
-      style={Object {}}
     >
       Users
     </a>
@@ -68,15 +68,15 @@ Array [
   >
     <a
       className="item active"
+      href="/blog"
       onClick={[Function]}
-      style={Object {}}
     >
       Blog
     </a>
     <a
       className="item"
+      href="/users"
       onClick={[Function]}
-      style={Object {}}
     >
       Users
     </a>
@@ -110,22 +110,22 @@ Array [
   >
     <a
       className="item active"
+      href="/blog"
       onClick={[Function]}
-      style={Object {}}
     >
       Blog
     </a>
     <a
       className="item"
+      href="/blog-of-mine"
       onClick={[Function]}
-      style={Object {}}
     >
       Blog of mine
     </a>
     <a
       className="item"
+      href="/users"
       onClick={[Function]}
-      style={Object {}}
     >
       Users
     </a>
@@ -159,15 +159,15 @@ Array [
   >
     <a
       className="item"
+      href="/blog"
       onClick={[Function]}
-      style={Object {}}
     >
       Blog
     </a>
     <a
       className="item"
+      href="/users"
       onClick={[Function]}
-      style={Object {}}
     >
       Users
     </a>

@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import { AppComponent as App } from './App';
 
@@ -31,9 +32,16 @@ describe('App', () => {
     const store = mockStore();
     const component = renderer.create(
       <Provider store={store}>
-        <App location={{ pathname: '/blog/edit' }}>
-          <div />
-        </App>
+        <MemoryRouter initialEntries={['/blog/edit']}>
+          <App
+            location={{ pathname: '/blog/edit' }}
+            route={{
+              routes: '',
+            }}
+          >
+            <div />
+          </App>
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

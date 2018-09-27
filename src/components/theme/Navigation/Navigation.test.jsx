@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import Navigation from './Navigation';
 
@@ -24,7 +25,9 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Navigation pathname="/" />
+        <MemoryRouter>
+          <Navigation pathname="/" />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();
@@ -47,7 +50,9 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Navigation pathname="/blog" />
+        <MemoryRouter>
+          <Navigation pathname="/blog" />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();
@@ -70,7 +75,9 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Navigation pathname="/blog/2017/12/27" />
+        <MemoryRouter>
+          <Navigation pathname="/blog/2017/12/27" />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();
@@ -94,7 +101,9 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Navigation pathname="/blog" />
+        <MemoryRouter>
+          <Navigation pathname="/blog" />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();
