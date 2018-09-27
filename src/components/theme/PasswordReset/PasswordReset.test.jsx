@@ -25,8 +25,8 @@ describe('PasswordReset', () => {
     const component = renderer.create(
       <Provider store={store}>
         <PasswordReset
-          params={{ token: 'a9dd24f9aab74bdea66aba6d80ef651b' }}
-          location={{ query: { userid: 'victor@plone.org' } }}
+          match={{ params: { token: 'a9dd24f9aab74bdea66aba6d80ef651b' } }}
+          location={{ search: { userid: 'victor@plone.org' } }}
         />
       </Provider>,
     );

@@ -22,7 +22,7 @@ describe('Login', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <Login location={{ query: {} }} />
+          <Login location={{ search: {} }} />
         </MemoryRouter>
       </Provider>,
     );

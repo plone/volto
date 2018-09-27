@@ -28,7 +28,7 @@ describe('Search', () => {
       <Provider store={store}>
         <MemoryRouter>
           <Search
-            location={{ pathname: '/blog', query: { SearchableText: 'blog' } }}
+            location={{ pathname: '/blog', search: '?SearchableText=blog' }}
           />
         </MemoryRouter>
       </Provider>,
@@ -59,7 +59,7 @@ describe('Search', () => {
       <Provider store={store}>
         <MemoryRouter>
           <Search
-            location={{ pathname: '/blog', query: { SearchableText: 'blog' } }}
+            location={{ pathname: '/blog', search: '?SearchableText=blog' }}
           />
         </MemoryRouter>
       </Provider>,

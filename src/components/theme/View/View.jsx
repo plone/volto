@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import { injectIntl, intlShape } from 'react-intl';
 import { find } from 'lodash';
+import qs from 'query-string';
 import { views } from '~/config';
 
 import {
@@ -34,7 +35,9 @@ import { BodyClass, getBaseUrl } from '../../../helpers';
     content: state.content.data,
     error: state.content.get.error,
     pathname: props.location.pathname,
-    versionId: props.location.query && props.location.query.version_id,
+    versionId:
+      qs.parse(props.location.search) &&
+      qs.parse(props.location.search).version_id,
   }),
   {
     listActions,
@@ -68,7 +71,7 @@ export default class View extends Component {
      */
     pathname: PropTypes.string.isRequired,
     location: PropTypes.shape({
-      query: PropTypes.object,
+      search: PropTypes.string,
       pathname: PropTypes.string,
     }).isRequired,
     /**
@@ -178,7 +181,8 @@ export default class View extends Component {
    * @method getViewByType
    * @returns {string} Markup for component.
    */
-  getViewByType = () => views.contentTypesViews[this.props.content['@type']] || null;
+  getViewByType = () =>
+    views.contentTypesViews[this.props.content['@type']] || null;
 
   /**
    * Get view by content layout property

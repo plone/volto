@@ -17,7 +17,7 @@ import {
   Grid,
   Table,
 } from 'semantic-ui-react';
-import { Router, Link } from 'react-router-dom';
+import { Router, Link, withRouter } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import moment from 'moment';
 import {
@@ -26,6 +26,7 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
+import qs from 'query-string';
 
 import { getDiff, getSchema, getHistory } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
@@ -49,9 +50,9 @@ const messages = defineMessages({
     history: state.history.entries,
     schema: state.schema.schema,
     pathname: props.location.pathname,
-    one: props.location.query.one,
-    two: props.location.query.two,
-    view: props.location.query.view || 'split',
+    one: qs.parse(props.location.search).one,
+    two: qs.parse(props.location.search).two,
+    view: qs.parse(props.location.search).view || 'split',
     title: state.content.data.title,
     type: state.content.data['@type'],
   }),
@@ -62,7 +63,7 @@ const messages = defineMessages({
  * @class DiffComponent
  * @extends Component
  */
-export default class DiffComponent extends Component {
+class DiffComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -159,7 +160,7 @@ export default class DiffComponent extends Component {
    * @returns {undefined}
    */
   onSelectView(event, { value }) {
-    Router.push(
+    this.props.history.push(
       `${this.props.pathname}?one=${this.props.one}&two=${
         this.props.two
       }&view=${value}`,
@@ -174,7 +175,7 @@ export default class DiffComponent extends Component {
    * @returns {undefined}
    */
   onChangeOne(event, { value }) {
-    Router.push(
+    this.props.history.push(
       `${this.props.pathname}?one=${value}&two=${this.props.two}&view=${
         this.props.view
       }`,
@@ -189,7 +190,7 @@ export default class DiffComponent extends Component {
    * @returns {undefined}
    */
   onChangeTwo(event, { value }) {
-    Router.push(
+    this.props.history.push(
       `${this.props.pathname}?one=${this.props.one}&two=${value}&view=${
         this.props.view
       }`,
@@ -326,3 +327,5 @@ export default class DiffComponent extends Component {
     );
   }
 }
+
+export default withRouter(DiffComponent);

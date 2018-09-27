@@ -96,7 +96,7 @@ const messages = defineMessages({
     loading: state.users.initial.loading,
     loaded: state.users.initial.loaded,
     error: state.users.initial.error,
-    token: props.params.token,
+    token: props.match.params.token,
   }),
   dispatch => bindActionCreators({ addMessage, setInitialPassword }, dispatch),
 )
@@ -118,7 +118,7 @@ export default class PasswordReset extends Component {
     token: PropTypes.string.isRequired,
     addMessage: PropTypes.func.isRequired,
     setInitialPassword: PropTypes.func.isRequired,
-    location: PropTypes.shape({ query: PropTypes.object }).isRequired,
+    location: PropTypes.shape({ search: PropTypes.string }).isRequired,
     intl: intlShape.isRequired,
   };
 

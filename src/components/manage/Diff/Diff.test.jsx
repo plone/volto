@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import Diff from './Diff';
 
@@ -71,9 +72,9 @@ describe('Diff', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Diff
-          location={{ pathname: '/blog', query: { one: '0', two: '1 ' } }}
-        />
+        <MemoryRouter>
+          <Diff location={{ pathname: '/blog', search: 'one=0&two=1' }} />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

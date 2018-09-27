@@ -28,7 +28,7 @@ describe('Delete', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Delete location={{ pathname: '/blog', query: {} }} />
+        <Delete location={{ pathname: '/blog', search: {} }} />
       </Provider>,
     );
     const json = component.toJSON();
@@ -53,7 +53,7 @@ describe('Delete', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Delete location={{ pathname: '/blog', query: {} }} />
+        <Delete location={{ pathname: '/blog', search: {} }} />
       </Provider>,
     );
     const json = component.toJSON();

@@ -38,7 +38,7 @@ describe('Controlpanel', () => {
     const component = renderer.create(
       <Provider store={store}>
         <Controlpanel
-          params={{ id: 'date-and-time' }}
+          match={{ params: { id: 'date-and-time' } }}
           location={{ pathname: '/blog' }}
         />
       </Provider>,

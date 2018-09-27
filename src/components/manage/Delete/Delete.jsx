@@ -17,6 +17,7 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
+import qs from 'query-string';
 
 import { deleteContent, getContent } from '../../../actions';
 import { Toolbar } from '../../../components';
@@ -42,7 +43,7 @@ const messages = defineMessages({
     content: state.content.data,
     deleteRequest: state.content.delete,
     pathname: props.location.pathname,
-    returnUrl: props.location.query.return_url,
+    returnUrl: qs.parse(props.location.search).return_url,
   }),
   dispatch => bindActionCreators({ deleteContent, getContent }, dispatch),
 )

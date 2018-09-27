@@ -8,13 +8,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { asyncConnect } from 'redux-connect';
+import qs from 'query-string';
 
 import { Login } from '../../../components';
 import { logout, purgeMessages } from '../../../actions';
 
 @connect(
   (state, props) => ({
-    query: props.location.query,
+    query: qs.parse(props.location.search),
   }),
   dispatch => bindActionCreators({ logout, purgeMessages }, dispatch),
 )

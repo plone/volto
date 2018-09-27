@@ -13,6 +13,7 @@ import { asyncConnect } from 'redux-connect';
 import { FormattedMessage } from 'react-intl';
 import { Portal } from 'react-portal';
 import { Container } from 'semantic-ui-react';
+import qs from 'query-string';
 
 import { searchContent } from '../../../actions';
 
@@ -21,9 +22,9 @@ import { SearchTags, Toolbar } from '../../../components';
 @connect(
   (state, props) => ({
     items: state.search.items,
-    searchableText: props.location.query.SearchableText,
-    subject: props.location.query.Subject,
-    path: props.location.query.path,
+    searchableText: qs.parse(props.location.search).SearchableText,
+    subject: qs.parse(props.location.search).Subject,
+    path: qs.parse(props.location.search).path,
     pathname: props.location.pathname,
   }),
   dispatch => bindActionCreators({ searchContent }, dispatch),
@@ -171,8 +172,8 @@ export default asyncConnect([
     promise: ({ location, store: { dispatch } }) =>
       dispatch(
         searchContent('', {
-          SearchableText: location.query.SearchableText,
-          Subject: location.query.Subject,
+          SearchableText: qs.parse(location.search).SearchableText,
+          Subject: qs.parse(location.search).Subject,
         }),
       ),
   },
