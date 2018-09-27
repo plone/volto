@@ -238,7 +238,7 @@ class Form extends Component {
         [tilesLayoutFieldname]: {
           items: without(this.state.formData[tilesLayoutFieldname].items, id),
         },
-        tiles: omit(this.state.formData[tilesFieldname], [id]),
+        [tilesFieldname]: omit(this.state.formData[tilesFieldname], [id]),
       },
       selected: selectPrev
         ? this.state.formData[tilesLayoutFieldname].items[
@@ -265,14 +265,14 @@ class Form extends Component {
     this.setState({
       formData: {
         ...this.state.formData,
-        tiles_layout: {
+        [tilesLayoutFieldname]: {
           items: [
             ...this.state.formData[tilesLayoutFieldname].items.slice(0, insert),
             id,
             ...this.state.formData[tilesLayoutFieldname].items.slice(insert),
           ],
         },
-        tiles: {
+        [tilesFieldname]: {
           ...this.state.formData[tilesFieldname],
           [id]: {
             '@type': type,
@@ -351,7 +351,7 @@ class Form extends Component {
     this.setState({
       formData: {
         ...this.state.formData,
-        tiles_layout: {
+        [tilesLayoutFieldname]: {
           items: move(
             this.state.formData[tilesLayoutFieldname].items,
             dragIndex,
