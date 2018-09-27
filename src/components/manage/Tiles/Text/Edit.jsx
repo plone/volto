@@ -201,7 +201,6 @@ export default class Edit extends Component {
             );
             const blockType = currentContentBlock.getType();
             if (!includes(listBlockTypes, blockType)) {
-              let ii = this.props.index;
               this.props.onSelectTile(
                 this.props.onAddTile('text', this.props.index + 1),
               );
