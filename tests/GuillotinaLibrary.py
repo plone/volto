@@ -44,7 +44,7 @@ class GuillotinaLibrary(object):
                 resp.status_code,
                 resp.content))
         resp = s.post(
-            os.path.join(base_url, 'container/@addons'),
+            os.path.join(base_url, 'container/@sharing'),
             json={
             "roleperm":
             [
