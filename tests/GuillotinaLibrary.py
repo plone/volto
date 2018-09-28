@@ -43,3 +43,25 @@ class GuillotinaLibrary(object):
             raise Exception('Warning, could not install cms {}: {}'.format(
                 resp.status_code,
                 resp.content))
+        resp = s.post(
+            os.path.join(base_url, 'container/@addons'),
+            json={
+            "roleperm":
+            [
+                {
+                    "setting": "AllowSingle",
+                    "role": "guillotina.Anonymous",
+                    "permission": "guillotina.ViewContent"
+                },
+                {
+                    "setting": "AllowSingle",
+                    "role": "guillotina.Anonymous",
+                    "permission": "guillotina.AccessContent"
+                }
+            ]
+        })
+        if resp.status_code not in (200, 201):
+            raise Exception('Warning, could not publish site {}: {}'.format(
+                resp.status_code,
+                resp.content))
+
