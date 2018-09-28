@@ -29,7 +29,8 @@
     "import/prefer-default-export": "off",
     "react/prefer-stateless-function": 0,
     "import/no-unresolved": 0,
-    "import/extensions": 0
+    "import/extensions": 0,
+    "import/no-extraneous-dependencies": ["error", {"packageDir": "./src/lib/plone-react"}]
   },
   "settings": {
     "import/resolver": {

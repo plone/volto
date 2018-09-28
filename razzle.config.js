@@ -7,6 +7,8 @@ const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
 
 const projectRootPath = path.resolve('.');
 
+const packageJson = require(path.join(projectRootPath, 'package.json'));
+
 module.exports = {
   modify: (config, { target, dev }, webpack) => {
     const BASE_CSS_LOADER = {
@@ -111,10 +113,15 @@ module.exports = {
     const eslintLoader = config.module.rules.find(eslintLoaderFinder);
     eslintLoader.exclude = [path.join(path.resolve('.'), 'src', 'lib')];
 
+    const customizations = packageJson.customizations
+      ? packageJson.customizations
+      : {};
+
     config.resolve.alias = {
       ...config.resolve.alias,
       '../../theme.config$': `${projectRootPath}/theme/theme.config`,
       '@plone/plone-react': `${projectRootPath}/src/lib/plone-react/src/`,
+      ...customizations,
     };
 
     return config;
