@@ -98,7 +98,7 @@ server
             res.status(200).send(
               `<!doctype html>
                 ${renderToString(
-                  <Html assets={assets} component={markup} store={store} />,
+                  <Html assets={assets} markup={markup} store={store} />,
                 )}
               `,
             );
