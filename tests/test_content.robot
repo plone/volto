@@ -1,5 +1,5 @@
 *** Settings ***
-
+Library  DebugLibrary
 Resource  keywords.robot
 
 Suite Setup     Open default browser
@@ -54,6 +54,8 @@ I add a text tile with the content '${text}' to the page
 # --- Then -------------------------------------------------------------------
 
 I should see '${title}' in the navigation
+  Go to  ${FRONTEND_URL}/my-page
+  Reload Page
   Wait until page contains element  css=.navigation a
   Wait until page contains element  css=.navigation a[href='/my-page']
   Page should contain element  css=.navigation a[href='/my-page']

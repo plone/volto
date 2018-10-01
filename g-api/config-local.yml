@@ -8,6 +8,7 @@ databases:
     pool_size: 100
 applications:
 - guillotina_swagger
+- guillotina_dbusers
 - guillotina_cms
 - guillotina_elasticsearch
 - guillotina_rediscache

@@ -43,6 +43,30 @@ class GuillotinaLibrary(object):
             raise Exception('Warning, could not install cms {}: {}'.format(
                 resp.status_code,
                 resp.content))
+
+        resp = s.post(
+            os.path.join(base_url, 'container/@addons'),
+            json={
+                "id": "dbusers"
+            })
+        if resp.status_code not in (200, 201):
+            raise Exception('Warning, could not install dbusers {}: {}'.format(
+                resp.status_code,
+                resp.content))
+
+        resp = s.post(
+            os.path.join(base_url, 'container/users'),
+            json={
+                "@type": "User",
+                "username": "admin",
+                "email": "foo@bar.com",
+                "password": "secret"
+            })
+        if resp.status_code not in (200, 201):
+            raise Exception('Warning, could not create admin user {}: {}'.format(
+                resp.status_code,
+                resp.content))
+
         resp = s.post(
             os.path.join(base_url, 'container/@sharing'),
             json={
@@ -58,6 +82,20 @@ class GuillotinaLibrary(object):
                     "role": "guillotina.Anonymous",
                     "permission": "guillotina.AccessContent"
                 }
+            ],
+            "prinrole":
+            [
+                {
+                    "setting": "Allow",
+                    "role": "guillotina.Manager",
+                    "principal": "admin"
+                },
+                {
+                    "setting": "Allow",
+                    "role": "guillotina.Owner",
+                    "principal": "admin"
+                }
+
             ]
         })
         if resp.status_code not in (200, 201):
