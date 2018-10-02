@@ -24,7 +24,6 @@
     "react",
     "mosaic"
   ],
-  "main": "src/",
   "scripts": {
     "start": "razzle start",
     "build": "razzle build",
@@ -134,7 +133,6 @@
     "jest-file": "1.0.0",
     "less": "2.7.3",
     "less-loader": "4.1.0",
-    "mr-developer": "1.2.0",
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-loader": "3.0.0",
     "prettier": "1.14.3",

@@ -2,19 +2,20 @@ import BrowserRouter from 'react-router-dom/BrowserRouter';
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-intl-redux';
-import configureStore from './store';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
-import { Api, persistAuthToken } from './helpers';
 import { ReduxAsyncConnect } from 'redux-connect';
 import nlLocaleData from 'react-intl/locale-data/nl';
 import deLocaleData from 'react-intl/locale-data/de';
 import enLocaleData from 'react-intl/locale-data/en';
 import { addLocaleData } from 'react-intl';
 
+import 'semantic-ui-less/semantic.less';
+
 import routes from '~/routes';
 
-import 'semantic-ui-less/semantic.less';
+import configureStore from './store';
+import { Api, persistAuthToken } from './helpers';
 
 const history = createBrowserHistory();
 const api = new Api();
