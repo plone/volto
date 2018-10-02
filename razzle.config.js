@@ -110,8 +110,10 @@ module.exports = {
       ...fileLoader.exclude,
     ];
 
-    const eslintLoader = config.module.rules.find(eslintLoaderFinder);
-    eslintLoader.exclude = [path.join(path.resolve('.'), 'src', 'lib')];
+    // const eslintLoader = config.module.rules.find(eslintLoaderFinder);
+    // eslintLoader.exclude = [path.join(path.resolve('.'), 'src', 'lib')];
+    // Disabling the ESlint pre loader
+    config.module.rules.splice(0, 1);
 
     const customizations = packageJson.customizations
       ? packageJson.customizations
