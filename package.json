@@ -31,7 +31,6 @@
     "start:prod": "NODE_ENV=production node build/server.js"
   },
   "jest": {
-    "testRegex": "(/__tests__/.*|\\.(test))\\.(js|jsx)$",
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
@@ -45,7 +44,6 @@
     "moduleNameMapper": {
       "~/config": "<rootDir>/src/config"
     },
-    "collectCoverage": true,
     "coverageThreshold": {
       "global": {
         "branches": 10,
@@ -53,9 +51,6 @@
         "lines": 10,
         "statements": 10
       }
-    },
-    "globals": {
-      "__CLIENT__": true
     },
     "setupFiles": [
       "./test-setup.js"
