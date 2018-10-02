@@ -6,15 +6,31 @@
 /* eslint react/prefer-stateless-function: 0 */
 
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
 import { convertFromHTML, EditorState, ContentState } from 'draft-js';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { isEqual, map, reduce, remove } from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
+import { Container, Icon } from 'semantic-ui-react';
+import { Portal } from 'react-portal';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
-import { Grid, Editbar } from '../../../components';
+import { Grid, Toolbar } from '../../../components';
+
+const messages = defineMessages({
+  save: {
+    id: 'Save',
+    defaultMessage: 'Save',
+  },
+  cancel: {
+    id: 'Cancel',
+    defaultMessage: 'Cancel',
+  },
+});
 
 const tileTypes = {
   title: {
@@ -31,12 +47,13 @@ const tileTypes = {
   },
 };
 
+@injectIntl
+@DragDropContext(HTML5Backend)
 /**
  * Layout component class.
  * @class Layout
  * @extends Component
  */
-@DragDropContext(HTML5Backend)
 export default class Layout extends Component {
   /**
    * Property types.
@@ -62,6 +79,7 @@ export default class Layout extends Component {
         }),
       ),
     }),
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -75,7 +93,7 @@ export default class Layout extends Component {
         {
           columns: [
             {
-              width: 16,
+              width: 12,
               tiles: [
                 {
                   content: 'My first blog post',
@@ -95,7 +113,7 @@ export default class Layout extends Component {
         {
           columns: [
             {
-              width: 8,
+              width: 6,
               tiles: [
                 {
                   content:
@@ -106,7 +124,7 @@ export default class Layout extends Component {
               ],
             },
             {
-              width: 8,
+              width: 6,
               tiles: [
                 {
                   content:
@@ -121,7 +139,7 @@ export default class Layout extends Component {
         {
           columns: [
             {
-              width: 16,
+              width: 12,
               tiles: [
                 {
                   content:
@@ -380,7 +398,7 @@ export default class Layout extends Component {
           hovered: null,
           columns: [
             {
-              width: 16,
+              width: 12,
               hovered: null,
               tiles: removed,
             },
@@ -421,26 +439,26 @@ export default class Layout extends Component {
         reduce(
           map(this.state.layout.rows[row].columns, column => column.width),
           (x, y) => x + y,
-        ) !== 16
+        ) !== 12
       ) {
         switch (this.state.layout.rows[row].columns.length) {
           case 1:
-            this.state.layout.rows[row].columns[0].width = 16;
+            this.state.layout.rows[row].columns[0].width = 12;
             break;
           case 2:
-            this.state.layout.rows[row].columns[0].width = 8;
-            this.state.layout.rows[row].columns[1].width = 8;
+            this.state.layout.rows[row].columns[0].width = 6;
+            this.state.layout.rows[row].columns[1].width = 6;
             break;
           case 3:
-            this.state.layout.rows[row].columns[0].width = 5;
-            this.state.layout.rows[row].columns[1].width = 6;
-            this.state.layout.rows[row].columns[2].width = 5;
-            break;
-          default:
             this.state.layout.rows[row].columns[0].width = 4;
             this.state.layout.rows[row].columns[1].width = 4;
             this.state.layout.rows[row].columns[2].width = 4;
-            this.state.layout.rows[row].columns[3].width = 4;
+            break;
+          default:
+            this.state.layout.rows[row].columns[0].width = 3;
+            this.state.layout.rows[row].columns[1].width = 3;
+            this.state.layout.rows[row].columns[2].width = 3;
+            this.state.layout.rows[row].columns[3].width = 3;
             break;
         }
       }
@@ -519,11 +537,11 @@ export default class Layout extends Component {
     let layout;
 
     if (this.state.layout.rows[row].columns.length === 2) {
-      layout = [[4, 12], [5, 11], [8, 8], [11, 5], [12, 4]][position];
+      layout = [[3, 9], [4, 8], [6, 6], [8, 4], [9, 3]][position];
     } else if (column === 0) {
-      layout = [[4, 8, 4], [5, 6, 5], [8, 4, 4]][position];
+      layout = [[3, 6, 3], [4, 4, 4], [6, 3, 3]][position];
     } else {
-      layout = [[4, 4, 8], [5, 6, 5], [4, 8, 4]][position];
+      layout = [[3, 3, 6], [4, 4, 4], [3, 6, 3]][position];
     }
     map(layout, (width, index) => {
       this.state.layout.rows[row].columns[index].width = width;
@@ -569,7 +587,7 @@ export default class Layout extends Component {
       hovered: null,
       columns: [
         {
-          width: 16,
+          width: 12,
           hovered: null,
           tiles: [
             {
@@ -599,19 +617,46 @@ export default class Layout extends Component {
    */
   render() {
     return (
-      <div ref={this.handleRef}>
-        <Grid
-          rows={this.state.layout.rows}
-          selectTile={this.selectTile}
-          deleteTile={this.deleteTile}
-          setHovered={this.setHovered}
-          handleDrop={this.handleDrop}
-          setTileContent={this.setTileContent}
-          startResize={this.startResize}
-          endResize={this.endResize}
-        />
-        <Editbar insertTile={this.insertTile} />
-      </div>
+      <Container>
+        <Helmet title="Layout" />
+        <div ref={this.handleRef}>
+          <Grid
+            rows={this.state.layout.rows}
+            selectTile={this.selectTile}
+            deleteTile={this.deleteTile}
+            setHovered={this.setHovered}
+            handleDrop={this.handleDrop}
+            setTileContent={this.setTileContent}
+            startResize={this.startResize}
+            endResize={this.endResize}
+          />
+        </div>
+        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          <Toolbar
+            pathname="/"
+            inner={
+              <div>
+                <a className="item" onClick={() => {}}>
+                  <Icon
+                    name="save"
+                    size="big"
+                    color="blue"
+                    title={this.props.intl.formatMessage(messages.save)}
+                  />
+                </a>
+                <a className="item" onClick={() => {}}>
+                  <Icon
+                    name="close"
+                    size="big"
+                    color="red"
+                    title={this.props.intl.formatMessage(messages.cancel)}
+                  />
+                </a>
+              </div>
+            }
+          />
+        </Portal>
+      </Container>
     );
   }
 }
