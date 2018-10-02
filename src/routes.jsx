@@ -2,10 +2,9 @@
  * Routes.
  * @module routes
  */
-import React from 'react';
-
 import {
   Add,
+  App,
   ChangePassword,
   Contents,
   Controlpanel,
@@ -31,11 +30,11 @@ import {
 } from './components';
 
 /**
- * Routes array.
+ * Default routes array.
  * @array
  * @returns {array} Routes.
  */
-const routes = [
+export const defaultRoutes = [
   {
     path: '/',
     component: View,
@@ -152,7 +151,20 @@ const routes = [
   {
     path: '*',
     component: NotFound,
-  }
+  },
+];
+
+/**
+ * Routes array.
+ * @array
+ * @returns {array} Routes.
+ */
+const routes = [
+  {
+    path: '/',
+    component: App,
+    routes: defaultRoutes,
+  },
 ];
 
 export default routes;
