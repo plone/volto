@@ -260,7 +260,7 @@ export default class DiffComponent extends Component {
           <Table basic="very">
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell width={8}>
+                <Table.HeaderCell width={6}>
                   <FormattedMessage id="Base" defaultMessage="Base" />
                   <Dropdown
                     onChange={this.onChangeOne}
@@ -270,7 +270,7 @@ export default class DiffComponent extends Component {
                     options={versions}
                   />
                 </Table.HeaderCell>
-                <Table.HeaderCell width={8}>
+                <Table.HeaderCell width={6}>
                   <FormattedMessage id="Compare" defaultMessage="Compare" />
                   <Dropdown
                     onChange={this.onChangeTwo}

@@ -12,6 +12,7 @@ import { Link } from 'react-router';
 import { asyncConnect } from 'redux-connect';
 import { FormattedMessage } from 'react-intl';
 import { Portal } from 'react-portal';
+import { Container } from 'semantic-ui-react';
 
 import { searchContent } from '../../../actions';
 
@@ -102,7 +103,7 @@ export class SearchComponent extends Component {
    */
   render() {
     return (
-      <div id="page-search">
+      <Container id="page-search">
         <Helmet title="Search" />
         <div className="container">
           <article id="content">
@@ -159,7 +160,7 @@ export class SearchComponent extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar pathname={this.props.pathname} inner={<span />} />
         </Portal>{' '}
-      </div>
+      </Container>
     );
   }
 }
