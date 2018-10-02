@@ -2,10 +2,11 @@
  * i18n script.
  * @module scripts/i18n
  */
-import { sync as glob } from 'glob';
-import fs from 'fs';
-import { find, keys, map, concat, reduce, zipObject } from 'lodash';
-import Pofile from 'pofile';
+
+const { find, keys, map, concat, reduce, zipObject } = require('lodash');
+const glob = require('glob').sync;
+const fs = require('fs');
+const Pofile = require('pofile');
 
 /**
  * Get messages from separate JSON files
@@ -15,10 +16,10 @@ import Pofile from 'pofile';
 function getMessages() {
   return reduce(
     concat(
-      ...map(glob('dist/messages/**/*.json'), filename =>
+      ...map(glob('build/messages/**/*.json'), filename =>
         map(JSON.parse(fs.readFileSync(filename, 'utf8')), message => ({
           ...message,
-          filename: filename.match(/dist\/messages\/src\/(.*).json$/)[1],
+          filename: filename.match(/build\/messages\/src\/(.*).json$/)[1],
         })),
       ),
     ),
@@ -93,14 +94,14 @@ msgstr ""
  * @return {undefined}
  */
 function poToJson() {
-  if (!fs.existsSync('dist/locales')) {
-    fs.mkdirSync('dist/locales');
+  if (!fs.existsSync('build/locales')) {
+    fs.mkdirSync('build/locales');
   }
   map(glob('locales/**/*.po'), filename => {
-    const items = Pofile.parse(fs.readFileSync(filename, 'utf8')).items;
+    const { items } = Pofile.parse(fs.readFileSync(filename, 'utf8'));
     const lang = filename.match(/locales\/(.*)\/LC_MESSAGES\//)[1];
     fs.writeFileSync(
-      `dist/locales/${lang}.json`,
+      `build/locales/${lang}.json`,
       JSON.stringify(
         zipObject(
           map(items, item => item.msgid),
@@ -147,19 +148,19 @@ function syncPoByPot() {
       `${formatHeader(po.comments, po.headers)}
 ${map(pot.items, item => {
         const poItem = find(po.items, { msgid: item.msgid });
-        return [`${map(item.references, ref => `#: ${ref}`).join('\n')}`, `msgid "${item.msgid}"`, `msgstr "${poItem ? poItem.msgstr : ''}"`].join('\n');
+        return [
+          `${map(item.references, ref => `#: ${ref}`).join('\n')}`,
+          `msgid "${item.msgid}"`,
+          `msgstr "${poItem ? poItem.msgstr : ''}"`,
+        ].join('\n');
       }).join('\n\n')}\n`,
     );
   });
 }
 
-// Write pot
-if (process.argv[2] === 'sync') {
-  fs.writeFileSync(
-    'locales/plone-react.pot',
-    `${potHeader()}${messagesToPot(getMessages())}\n`,
-  );
-  syncPoByPot();
-} else {
-  poToJson();
-}
+fs.writeFileSync(
+  'locales/plone-react.pot',
+  `${potHeader()}${messagesToPot(getMessages())}\n`,
+);
+syncPoByPot();
+poToJson();

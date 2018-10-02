@@ -8,5 +8,11 @@ module.exports = {
         rootPathSuffix: 'src',
       },
     ],
+    [
+      'react-intl',
+      {
+        messagesDir: './build/messages/',
+      },
+    ],
   ],
 };

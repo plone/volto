@@ -19,9 +19,9 @@ import locale from 'locale';
 
 import routes from '~/routes';
 import languages from './constants/Languages';
-import nlLocale from '~/../dist/locales/nl.json';
-import deLocale from '~/../dist/locales/de.json';
-import enLocale from '~/../dist/locales/en.json';
+import nlLocale from '~/../build/locales/nl.json';
+import deLocale from '~/../build/locales/de.json';
+import enLocale from '~/../build/locales/en.json';
 
 import configureStore from './store';
 
