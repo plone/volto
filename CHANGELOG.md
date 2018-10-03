@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.8.2 (2018-08-03)
+
+### Changes
+
+- Move all dev dependencies to dependencies @robgietema
+
 ## 0.8.1 (2018-08-03)
 
 ### Changes
