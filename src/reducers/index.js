@@ -3,7 +3,6 @@
  * @module reducers/root
  */
 
-import { routerReducer } from 'react-router-redux';
 import { reducer as reduxAsyncConnect } from 'redux-connect';
 import { intlReducer } from 'react-intl-redux';
 
@@ -39,7 +38,6 @@ import workflow from './workflow/workflow';
  * @returns {Object} New state.
  */
 const reducers = {
-  routing: routerReducer,
   intl: intlReducer,
   reduxAsyncConnect,
   actions,

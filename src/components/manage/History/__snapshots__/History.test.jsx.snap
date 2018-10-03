@@ -137,10 +137,7 @@ exports[`History renders a history component 1`] = `
             className=""
           >
             <div
-              aria-busy={undefined}
-              aria-disabled={undefined}
               aria-expanded={false}
-              aria-multiselectable={undefined}
               className="ui dropdown"
               onBlur={[Function]}
               onChange={[Function]}

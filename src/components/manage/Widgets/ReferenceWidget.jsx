@@ -10,7 +10,7 @@ import { Form, Grid, Label, Dropdown } from 'semantic-ui-react';
 import { compact, concat, fromPairs, map, values, uniqBy } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { bindActionCreators } from 'redux';
-import config from '~/config';
+import { settings } from '~/config';
 
 import { resetSearchContent, searchContent } from '../../../actions';
 
@@ -99,7 +99,7 @@ export default class ReferenceWidget extends Component {
                   text: value.title,
                   value: value['@id'],
                   label: {
-                    content: value['@id'].replace(config.apiPath, ''),
+                    content: value['@id'].replace(settings.apiPath, ''),
                   },
                   data: value,
                 },
@@ -111,7 +111,7 @@ export default class ReferenceWidget extends Component {
                 text: props.value.title,
                 value: props.value['@id'],
                 label: {
-                  content: props.value['@id'].replace(config.apiPath, ''),
+                  content: props.value['@id'].replace(settings.apiPath, ''),
                 },
                 data: props.value,
               },
@@ -149,7 +149,7 @@ export default class ReferenceWidget extends Component {
             uniqBy(
               map(compact(concat(nextProps.value, nextProps.search)), item => ({
                 ...item,
-                '@id': item['@id'].replace(config.apiPath, ''),
+                '@id': item['@id'].replace(settings.apiPath, ''),
               })),
               '@id',
             ),
@@ -239,10 +239,10 @@ export default class ReferenceWidget extends Component {
                   multiple
                     ? value
                       ? map(value, item =>
-                          item['@id'].replace(config.apiPath, ''),
+                          item['@id'].replace(settings.apiPath, ''),
                         )
                       : []
-                    : value ? value['@id'].replace(config.apiPath, '') : ''
+                    : value ? value['@id'].replace(settings.apiPath, '') : ''
                 }
                 onChange={(event, data) =>
                   onChange(

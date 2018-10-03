@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import SearchWidget from './SearchWidget';
 
@@ -17,7 +18,9 @@ describe('SearchWidget', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <SearchWidget pathname="/blog" />
+        <MemoryRouter>
+          <SearchWidget pathname="/blog" />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

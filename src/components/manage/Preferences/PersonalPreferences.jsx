@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory, Link } from 'react-router';
+import { Link, withRouter } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import { updateIntl } from 'react-intl-redux';
 import { map, keys } from 'lodash';
@@ -54,6 +54,11 @@ const messages = defineMessages({
   },
 });
 
+/**
+ * PersonalPreferences class.
+ * @class PersonalPreferences
+ * @extends Component
+ */
 @injectIntl
 @connect(
   (state, props) => ({
@@ -61,12 +66,7 @@ const messages = defineMessages({
   }),
   dispatch => bindActionCreators({ updateIntl, addMessage }, dispatch),
 )
-/**
- * PersonalPreferences class.
- * @class PersonalPreferences
- * @extends Component
- */
-export default class PersonalPreferences extends Component {
+class PersonalPreferences extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -123,7 +123,7 @@ export default class PersonalPreferences extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.goBack();
+    this.props.history.goBack();
   }
 
   /**
@@ -196,3 +196,5 @@ export default class PersonalPreferences extends Component {
     );
   }
 }
+
+export default withRouter(PersonalPreferences);

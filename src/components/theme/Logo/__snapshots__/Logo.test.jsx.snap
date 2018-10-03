@@ -2,8 +2,8 @@
 
 exports[`Logo renders a logo component 1`] = `
 <a
+  href="/"
   onClick={[Function]}
-  style={Object {}}
   title="Site"
 >
   <img

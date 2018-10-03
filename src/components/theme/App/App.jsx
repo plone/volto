@@ -10,6 +10,7 @@ import { asyncConnect } from 'redux-connect';
 import { Segment } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import Raven from 'raven-js';
+import renderRoutes from 'react-router-config/renderRoutes';
 
 import Error from '../../../error';
 
@@ -40,7 +41,6 @@ export class AppComponent extends Component {
    * @static
    */
   static propTypes = {
-    children: PropTypes.element.isRequired,
     pathname: PropTypes.string.isRequired,
     purgeMessages: PropTypes.func.isRequired,
   };
@@ -116,7 +116,7 @@ export class AppComponent extends Component {
                 stackTrace={this.state.errorInfo.componentStack}
               />
             ) : (
-              this.props.children
+              renderRoutes(this.props.route.routes)
             )}
           </main>
         </Segment>

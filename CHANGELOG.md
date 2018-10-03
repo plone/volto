@@ -1,11 +1,31 @@
 # Change Log
 
-## 0.8.0 (unreleased)
+## 0.8.3 (2018-08-03)
+
+### Changes
+
+- Fix i18n script for dependency @robgietema
+
+## 0.8.2 (2018-08-03)
+
+### Changes
+
+- Move all dev dependencies to dependencies @robgietema
+
+## 0.8.1 (2018-08-03)
+
+### Changes
+
+- Fix compiling when used as a library @robgietema
+
+## 0.8.0 (2018-08-03)
 
 ### Added
 
+- Move the webpack config to Razzle @sneridagh @robgietema
 - Upgrade React to 16.5 @tisto
 - Upgrade React to 16.4.2 to fix a server-side vulnerability @tisto
+- Support for base url @bloodbare
 
 ### Changes
 

@@ -30,8 +30,8 @@ exports[`ContentsItem renders a contents item component 1`] = `
     className=""
   >
     <a
+      href="/blog"
       onClick={[Function]}
-      style={Object {}}
     >
       <i
         aria-hidden="true"
@@ -50,10 +50,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
     className="right aligned"
   >
     <div
-      aria-busy={undefined}
-      aria-disabled={undefined}
       aria-expanded={false}
-      aria-multiselectable={undefined}
       className="ui dropdown"
       onBlur={[Function]}
       onChange={[Function]}
@@ -78,8 +75,8 @@ exports[`ContentsItem renders a contents item component 1`] = `
       >
         <a
           className="item"
+          href="/blog/edit"
           onClick={[Function]}
-          style={Object {}}
         >
           <i
             aria-hidden="true"
@@ -92,8 +89,8 @@ exports[`ContentsItem renders a contents item component 1`] = `
         </a>
         <a
           className="item"
+          href="/blog"
           onClick={[Function]}
-          style={Object {}}
         >
           <i
             aria-hidden="true"
@@ -108,9 +105,6 @@ exports[`ContentsItem renders a contents item component 1`] = `
           className="divider"
         />
         <div
-          aria-checked={undefined}
-          aria-disabled={undefined}
-          aria-selected={undefined}
           className="item"
           onClick={[Function]}
           role="option"
@@ -125,9 +119,6 @@ exports[`ContentsItem renders a contents item component 1`] = `
           </span>
         </div>
         <div
-          aria-checked={undefined}
-          aria-disabled={undefined}
-          aria-selected={undefined}
           className="item"
           onClick={[Function]}
           role="option"
@@ -142,9 +133,6 @@ exports[`ContentsItem renders a contents item component 1`] = `
           </span>
         </div>
         <div
-          aria-checked={undefined}
-          aria-disabled={undefined}
-          aria-selected={undefined}
           className="item"
           onClick={[Function]}
           role="option"
@@ -162,9 +150,6 @@ exports[`ContentsItem renders a contents item component 1`] = `
           className="divider"
         />
         <div
-          aria-checked={undefined}
-          aria-disabled={undefined}
-          aria-selected={undefined}
           className="item"
           onClick={[Function]}
           role="option"
@@ -179,9 +164,6 @@ exports[`ContentsItem renders a contents item component 1`] = `
           </span>
         </div>
         <div
-          aria-checked={undefined}
-          aria-disabled={undefined}
-          aria-selected={undefined}
           className="item"
           onClick={[Function]}
           role="option"

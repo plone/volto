@@ -56,7 +56,6 @@ exports[`Footer renders a footer component 1`] = `
     >
       <a
         className="item"
-        data-value={undefined}
         href="/sitemap"
         onClick={[Function]}
         role="listitem"
@@ -67,7 +66,6 @@ exports[`Footer renders a footer component 1`] = `
       </a>
       <a
         className="item"
-        data-value={undefined}
         href="/accessibility-info"
         onClick={[Function]}
         role="listitem"
@@ -78,7 +76,6 @@ exports[`Footer renders a footer component 1`] = `
       </a>
       <a
         className="item"
-        data-value={undefined}
         href="/contact"
         onClick={[Function]}
         role="listitem"
@@ -89,7 +86,6 @@ exports[`Footer renders a footer component 1`] = `
       </a>
       <a
         className="item"
-        data-value={undefined}
         href="http://plone.com"
         onClick={[Function]}
         role="listitem"

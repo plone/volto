@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2018-07-25T10:52:47.911Z\n"
+"POT-Creation-Date: 2018-10-03T07:49:25.846Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -120,6 +120,7 @@ msgid "By default, permissions from the container of this item are inherited. If
 msgstr ""
 
 #: components/manage/Add/Add
+#: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -581,6 +582,7 @@ msgid "New password"
 msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."
 msgstr ""

@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import SummaryView from './SummaryView';
 
@@ -17,28 +18,30 @@ describe('TabularView', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <SummaryView
-          content={{
-            title: 'Hello World!',
-            description: 'Hi',
-            items: [
-              {
-                title: 'My item',
-                description: 'My item description',
-                url: 'http://item',
-                image: {
-                  scales: {
-                    thumb: {
-                      download: 'file:///preview.jpg',
+        <MemoryRouter>
+          <SummaryView
+            content={{
+              title: 'Hello World!',
+              description: 'Hi',
+              items: [
+                {
+                  title: 'My item',
+                  description: 'My item description',
+                  url: '/item',
+                  image: {
+                    scales: {
+                      thumb: {
+                        download: 'file:///preview.jpg',
+                      },
                     },
                   },
+                  image_caption: 'My image caption',
+                  '@type': 'News Item',
                 },
-                image_caption: 'My image caption',
-                '@type': 'News Item',
-              },
-            ],
-          }}
-        />
+              ],
+            }}
+          />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

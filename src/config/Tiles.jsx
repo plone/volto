@@ -1,12 +1,10 @@
 import { defineMessages } from 'react-intl';
 
-import {
-  EditTitleTile,
-  EditDescriptionTile,
-  EditTextTile,
-  EditImageTile,
-  EditVideoTile,
-} from '../components';
+import EditTitleTile from '../components/manage/Tiles/Title/Edit';
+import EditDescriptionTile from '../components/manage/Tiles/Description/Edit';
+import EditTextTile from '../components/manage/Tiles/Text/Edit';
+import EditImageTile from '../components/manage/Tiles/Image/Edit';
+import EditVideoTile from '../components/manage/Tiles/Video/Edit';
 
 const customTiles = [];
 

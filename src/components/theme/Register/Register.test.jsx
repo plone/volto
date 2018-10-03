@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import Register from './Register';
 
@@ -24,7 +25,9 @@ describe('Register', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Register />
+        <MemoryRouter>
+          <Register />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

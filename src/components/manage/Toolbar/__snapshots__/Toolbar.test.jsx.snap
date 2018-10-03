@@ -24,10 +24,8 @@ Array [
     </div>
     <button
       className="ui button trigger"
-      disabled={undefined}
       onClick={[Function]}
       role="button"
-      tabIndex={undefined}
     />
   </div>,
   <div

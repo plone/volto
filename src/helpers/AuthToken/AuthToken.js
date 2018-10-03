@@ -5,7 +5,7 @@
 
 import cookie from 'react-cookie';
 import jwtDecode from 'jwt-decode';
-import { browserHistory } from 'react-router';
+import { Router } from 'react-router-dom';
 
 import { loginRenew } from '../../actions';
 
@@ -54,7 +54,7 @@ export function persistAuthToken(store) {
               store.dispatch(loginRenew());
             } else {
               // Logout
-              browserHistory.push(
+              Router.push(
                 `/logout?return_url=${
                   store.getState().routing.locationBeforeTransitions.pathname
                 }`,

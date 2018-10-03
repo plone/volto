@@ -1,4 +1,4 @@
-import config from '~/config';
+import { settings } from '~/config';
 import navigation from './navigation';
 import { GET_NAVIGATION } from '../../constants/ActionTypes';
 
@@ -33,7 +33,7 @@ describe('Navigation reducer', () => {
           items: [
             {
               title: 'Welcome to Plone!',
-              '@id': `${config.apiPath}/front-page`,
+              '@id': `${settings.apiPath}/front-page`,
             },
           ],
         },

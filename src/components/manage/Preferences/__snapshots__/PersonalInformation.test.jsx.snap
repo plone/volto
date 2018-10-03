@@ -16,8 +16,8 @@ exports[`PersonalInformation renders a personal information component 1`] = `
     </div>
     <a
       className="item"
+      href="/personal-preferences"
       onClick={[Function]}
-      style={Object {}}
     >
       <span>
         Personal Preferences
@@ -25,8 +25,8 @@ exports[`PersonalInformation renders a personal information component 1`] = `
     </a>
     <a
       className="item"
+      href="/change-password"
       onClick={[Function]}
-      style={Object {}}
     >
       <span>
         Change Password
@@ -37,7 +37,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
     className="ui container"
   >
     <form
-      action={undefined}
       className="ui form"
       method="post"
       onSubmit={[Function]}
@@ -81,7 +80,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                       id="field-fullname"
                       name="fullname"
                       onChange={[Function]}
-                      tabIndex={undefined}
                       type="text"
                       value=""
                     />
@@ -136,7 +134,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                       id="field-email"
                       name="email"
                       onChange={[Function]}
-                      tabIndex={undefined}
                       type="text"
                       value=""
                     />
@@ -191,7 +188,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                       id="field-home_page"
                       name="home_page"
                       onChange={[Function]}
-                      tabIndex={undefined}
                       type="text"
                       value=""
                     />
@@ -246,7 +242,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                       id="field-location"
                       name="location"
                       onChange={[Function]}
-                      tabIndex={undefined}
                       type="text"
                       value=""
                     />
@@ -274,10 +269,8 @@ exports[`PersonalInformation renders a personal information component 1`] = `
         >
           <button
             className="ui big basic circular icon primary right floated button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
             title="Save"
             type="submit"
           >
@@ -288,10 +281,8 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           </button>
           <button
             className="ui big basic circular icon secondary right floated button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
             title="Cancel"
           >
             <i

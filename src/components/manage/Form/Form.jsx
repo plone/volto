@@ -197,11 +197,12 @@ class Form extends Component {
    * @returns {undefined}
    */
   onChangeTile(id, value) {
+    const tilesFieldname = getTilesFieldname(this.state.formData);
     this.setState({
       formData: {
         ...this.state.formData,
         [getTilesFieldname(this.state.formData)]: {
-          ...this.state.formData.tiles,
+          ...this.state.formData[tilesFieldname],
           [id]: value || null,
         },
       },
@@ -237,7 +238,7 @@ class Form extends Component {
         [tilesLayoutFieldname]: {
           items: without(this.state.formData[tilesLayoutFieldname].items, id),
         },
-        tiles: omit(this.state.formData[tilesFieldname], [id]),
+        [tilesFieldname]: omit(this.state.formData[tilesFieldname], [id]),
       },
       selected: selectPrev
         ? this.state.formData[tilesLayoutFieldname].items[
@@ -264,14 +265,14 @@ class Form extends Component {
     this.setState({
       formData: {
         ...this.state.formData,
-        tiles_layout: {
+        [tilesLayoutFieldname]: {
           items: [
             ...this.state.formData[tilesLayoutFieldname].items.slice(0, insert),
             id,
             ...this.state.formData[tilesLayoutFieldname].items.slice(insert),
           ],
         },
-        tiles: {
+        [tilesFieldname]: {
           ...this.state.formData[tilesFieldname],
           [id]: {
             '@type': type,
@@ -350,7 +351,7 @@ class Form extends Component {
     this.setState({
       formData: {
         ...this.state.formData,
-        tiles_layout: {
+        [tilesLayoutFieldname]: {
           items: move(
             this.state.formData[tilesLayoutFieldname].items,
             dragIndex,
@@ -373,7 +374,6 @@ class Form extends Component {
     const tilesLayoutFieldname = getTilesLayoutFieldname(formData);
     const renderTiles = formData[tilesLayoutFieldname].items;
     const tilesDict = formData[tilesFieldname];
-
     return this.props.visual ? (
       <div className="ui wrapper">
         {map(renderTiles, (tile, index) => (

@@ -17,7 +17,7 @@ import {
 } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import config from '~/config';
+import { settings } from '~/config';
 
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
@@ -284,7 +284,7 @@ export default class Edit extends Component {
           <p>
             <Image
               src={
-                this.props.data.url.includes(config.apiPath)
+                this.props.data.url.includes(settings.apiPath)
                   ? `${this.props.data.url}/@@images/image`
                   : this.props.data.url
               }

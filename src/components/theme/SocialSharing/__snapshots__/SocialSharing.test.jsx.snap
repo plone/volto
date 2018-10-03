@@ -20,10 +20,8 @@ exports[`SocialSharing renders a social sharing component 1`] = `
   >
     <button
       className="ui facebook mini button"
-      disabled={undefined}
       onClick={[Function]}
       role="button"
-      tabIndex={undefined}
     >
       Facebook
     </button>
@@ -38,10 +36,8 @@ exports[`SocialSharing renders a social sharing component 1`] = `
   >
     <button
       className="ui twitter mini button"
-      disabled={undefined}
       onClick={[Function]}
       role="button"
-      tabIndex={undefined}
     >
       Twitter
     </button>

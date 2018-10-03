@@ -8,6 +8,7 @@ databases:
     pool_size: 100
 applications:
 - guillotina_swagger
+- guillotina_dbusers
 - guillotina_cms
 - guillotina_elasticsearch
 - guillotina_rediscache
@@ -21,13 +22,13 @@ static:
 root_user:
   password: root
 auth_extractors:
-- guillotina_cms.extractors.CookiePolicy
+- guillotina.auth.extractors.CookiePolicy
 - guillotina.auth.extractors.BearerAuthPolicy
 - guillotina.auth.extractors.BasicAuthPolicy
 - guillotina.auth.extractors.WSTokenAuthPolicy
 auth_token_validators:
 - guillotina.auth.validators.SaltedHashPasswordValidator
-- guillotina_cms.validator.CMSJWTValidator
+- guillotina.auth.validators.JWTValidator
 redis:
   host: "redis"
   port: 6380

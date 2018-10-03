@@ -10,8 +10,8 @@
 
 ### Prerequisites
 
-* [Node.js==8.11.3](https://nodejs.org/)
-* [Python==2.7.x](https://python.org/)
+- [Node.js==8.11.3](https://nodejs.org/)
+- [Python==2.7.x](https://python.org/)
 
 ### Install dependencies
 
@@ -35,11 +35,11 @@
 
 ### Run frontend
 
-    $ yarn dev
+    $ yarn start
 
 ### Browsing
 
-Go to [http://localhost:4300](http://localhost:4300) in your browser.
+Go to [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Testing
 
@@ -52,7 +52,7 @@ Go to [http://localhost:4300](http://localhost:4300) in your browser.
     Alternatively individual acceptances test case files can be run with a pure Robot Framework virtual environment, assuming that backend and frontend is running
 
     $ docker-compose -f api/docker-compose.yml up
-    $ yarn && yarn build && API_PATH=http://localhost:55001/plone yarn start
+    $ yarn && yarn build && API_PATH=http://localhost:55001/plone yarn start:prod
 
     $ virtualenv robotenv --no-site-packages
     $ robotenv/bin/pip install robotframework robotframework-seleniumlibrary robotframework-webpack
@@ -138,7 +138,6 @@ More Precommit hooks can be found [here](https://prettier.io/docs/en/precommit.h
 MIT License. Copyrights hold the Plone Foundation.
 See [LICENSE.md](LICENSE.md) for details.
 
-
 ### Running Guillotina Tests
 
 First, start up Guillotina:
@@ -148,7 +147,6 @@ docker-compose -f g-api/docker-compose.yml up -d
 ```
 
 Then, run the tests:
-
 
 ```
 PYTHONPATH=$(pwd)/tests_guillotina env/bin/pybot -v BROWSER:headlesschrome tests_guillotina;

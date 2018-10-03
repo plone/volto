@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import SearchTags from './SearchTags';
 
@@ -18,7 +19,9 @@ describe('SearchTags', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <SearchTags />
+        <MemoryRouter>
+          <SearchTags />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

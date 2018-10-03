@@ -11,8 +11,8 @@ exports[`ListingView renders a listing_view component 1`] = `
     <article>
       <h2>
         <a
+          href="/item"
           onClick={[Function]}
-          style={Object {}}
           title="Document"
         >
           My item
@@ -25,8 +25,8 @@ exports[`ListingView renders a listing_view component 1`] = `
     <article>
       <h2>
         <a
+          href="/item2"
           onClick={[Function]}
-          style={Object {}}
           title="Document"
         >
           Second item

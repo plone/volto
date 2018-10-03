@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import jwt from 'jsonwebtoken';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import PersonalInformation from './PersonalInformation';
 
@@ -34,7 +35,9 @@ describe('PersonalInformation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <PersonalInformation location={{ pathname: '/blog' }} />
+        <MemoryRouter>
+          <PersonalInformation location={{ pathname: '/blog' }} />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

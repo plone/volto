@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import unionClassNames from 'union-class-names';
 import EditorUtils from 'draft-js-plugins-utils';
 import AddLinkForm from './AddLinkForm';
-import { Icon } from '../../../../../components';
+import Icon from '../../../../../components/theme/Icon/Icon';
 
 import linkSVG from '../../../../../icons/link.svg';
 import unlinkSVG from '../../../../../icons/unlink.svg';

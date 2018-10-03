@@ -15,7 +15,7 @@ import {
 } from 'react-intl';
 import moment from 'moment';
 import { Button, Grid, Segment } from 'semantic-ui-react';
-import config from '~/config';
+import { settings } from '~/config';
 
 import { addComment, deleteComment, listComments } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
@@ -233,7 +233,7 @@ export default class Comments extends Component {
               {item.is_deletable && (
                 <Button
                   onClick={this.onDelete}
-                  value={item['@id'].replace(config.apiPath, '')}
+                  value={item['@id'].replace(settings.apiPath, '')}
                   color="red"
                   floated="right"
                 >
@@ -245,7 +245,7 @@ export default class Comments extends Component {
                   onClick={this.onEdit}
                   floated="right"
                   value={{
-                    id: item['@id'].replace(config.apiPath, ''),
+                    id: item['@id'].replace(settings.apiPath, ''),
                     text: item.text.data,
                   }}
                 >

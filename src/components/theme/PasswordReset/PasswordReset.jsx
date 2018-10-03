@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { browserHistory, Link } from 'react-router';
+import { Link, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Container } from 'semantic-ui-react';
@@ -18,7 +18,7 @@ import {
 } from 'react-intl';
 
 import { Form } from '../../../components';
-import { addMessage, setInitialPassword } from '../../../actions';
+import { setInitialPassword } from '../../../actions';
 
 const messages = defineMessages({
   title: {
@@ -96,16 +96,16 @@ const messages = defineMessages({
     loading: state.users.initial.loading,
     loaded: state.users.initial.loaded,
     error: state.users.initial.error,
-    token: props.params.token,
+    token: props.match.params.token,
   }),
-  dispatch => bindActionCreators({ addMessage, setInitialPassword }, dispatch),
+  dispatch => bindActionCreators({ setInitialPassword }, dispatch),
 )
 /**
  * PasswordReset class.
  * @class PasswordReset
  * @extends Component
  */
-export default class PasswordReset extends Component {
+export class PasswordResetComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -116,9 +116,7 @@ export default class PasswordReset extends Component {
     loaded: PropTypes.bool.isRequired,
     error: PropTypes.string,
     token: PropTypes.string.isRequired,
-    addMessage: PropTypes.func.isRequired,
     setInitialPassword: PropTypes.func.isRequired,
-    location: PropTypes.shape({ query: PropTypes.object }).isRequired,
     intl: intlShape.isRequired,
   };
 
@@ -198,7 +196,7 @@ export default class PasswordReset extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.goBack();
+    this.props.history.goBack();
   }
 
   /**
@@ -293,3 +291,5 @@ export default class PasswordReset extends Component {
     return <div />;
   }
 }
+
+export default withRouter(PasswordResetComponent);

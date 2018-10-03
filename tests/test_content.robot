@@ -1,5 +1,5 @@
 *** Settings ***
-
+Library  DebugLibrary
 Resource  keywords.robot
 
 Suite Setup     Open default browser
@@ -172,6 +172,8 @@ I add a Collection with the title '${title}'
 # --- Then -------------------------------------------------------------------
 
 I should see '${title}' in the navigation
+  Go to  ${FRONTEND_URL}/my-page
+  Reload Page
   Wait until page contains element  css=.navigation a
   Wait until page contains element  xpath=//*[contains(@class, 'navigation')]//*[contains(text(), '${title}')]
   Page should contain element  xpath=//*[contains(@class, 'navigation')]//*[contains(text(), '${title}')]
