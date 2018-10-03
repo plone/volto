@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.8.3 (2018-08-03)
+
+### Changes
+
+- Fix i18n script for dependency @robgietema
+
 ## 0.8.2 (2018-08-03)
 
 ### Changes

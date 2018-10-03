@@ -16,13 +16,11 @@ const babel = require('babel-core');
  */
 function extractMessages() {
   map(glob('src/**/*.js?(x)'), filename => {
-    if (filename.indexOf('src/lib/') === -1) {
-      babel.transformFileSync(filename, {}, err => {
-        if (err) {
-          console.log(err);
-        }
-      });
-    }
+    babel.transformFileSync(filename, {}, err => {
+      if (err) {
+        console.log(err);
+      }
+    });
   });
 }
 
@@ -35,7 +33,7 @@ function getMessages() {
   return reduce(
     concat(
       {},
-      ...map(glob('build/messages/**/*.json'), filename =>
+      ...map(glob('build/messages/src/**/*.json'), filename =>
         map(JSON.parse(fs.readFileSync(filename, 'utf8')), message => ({
           ...message,
           filename: filename.match(/build\/messages\/src\/(.*).json$/)[1],
@@ -115,7 +113,7 @@ msgstr ""
 function poToJson() {
   map(glob('locales/**/*.po'), filename => {
     let { items } = Pofile.parse(fs.readFileSync(filename, 'utf8'));
-    const lib = `src/lib/plone-react/${filename}`;
+    const lib = `node_modules/@plone/plone-react/${filename}`;
     if (fs.existsSync(lib)) {
       const libItems = Pofile.parse(fs.readFileSync(lib, 'utf8')).items;
       items = [...libItems, ...items];
