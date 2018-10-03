@@ -7,6 +7,22 @@ const { find, keys, map, concat, reduce, zipObject } = require('lodash');
 const glob = require('glob').sync;
 const fs = require('fs');
 const Pofile = require('pofile');
+const babel = require('babel-core');
+
+/**
+ * Extract messages into separate JSON files
+ * @function extractMessages
+ * @return {undefined}
+ */
+function extractMessages() {
+  map(glob('src/**/*.js?(x)'), filename => {
+    babel.transformFileSync(filename, {}, err => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  });
+}
 
 /**
  * Get messages from separate JSON files
@@ -158,9 +174,15 @@ ${map(pot.items, item => {
   });
 }
 
+console.log('Extracting messages from source files...');
+extractMessages();
+console.log('Synchronizing messages to pot file...');
 fs.writeFileSync(
   'locales/plone-react.pot',
   `${potHeader()}${messagesToPot(getMessages())}\n`,
 );
+console.log('Synchronizing messages to po files...');
 syncPoByPot();
+console.log('Generating the json files...');
 poToJson();
+console.log('done!');

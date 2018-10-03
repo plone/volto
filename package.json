@@ -29,7 +29,7 @@
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js",
-    "i18n": "node scripts/i18n.js"
+    "i18n": "NODE_ENV=production node src/i18n.js"
   },
   "jest": {
     "snapshotSerializers": [
@@ -65,6 +65,7 @@
     "node": "~8.11.3"
   },
   "dependencies": {
+    "babel-core": "6.26.3",
     "babel-loader": "8.0.2",
     "connected-react-router": "4.4.1",
     "draft-js": "0.10.5",

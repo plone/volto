@@ -118,6 +118,7 @@ msgid "By default, permissions from the container of this item are inherited. If
 msgstr "Standaard worden de rechten overgenomen van de bovenliggende map.  Als u dit uitgeschakeld, worden alleen de expliciet toegekende rechten gebruikt. In het overzicht geeft het symbool ${image_confirm_icon} een overgenomen waarde aan. Vergelijkbaar geeft het icoon ${image_link_icon} een globale rol aan, die wordt beheerd door de websitebeheerder."
 
 #: components/manage/Add/Add
+#: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -499,6 +500,7 @@ msgid "New password"
 msgstr "Nieuw wachtwoord"
 
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr ""
 
