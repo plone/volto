@@ -37,6 +37,7 @@ Start Plone Backend
     ${PORT}=  Get Environment Variable  ZSERVER_PORT  55001
     Set Environment Variable  API_PATH  http://localhost:${PORT}/plone
     Set Environment Variable  Z3C_AUTOINCLUDE_DEPENDENCIES_DISABLED  1
+    Log To Console  Starting Plone
     Start Zope server  ${FIXTURE}
 
 Stop Plone Backend
