@@ -4,6 +4,7 @@
 
 ### Added
 
+- Move the webpack config to Razzle @sneridagh @robgietema
 - Upgrade React to 16.5 @tisto
 - Upgrade React to 16.4.2 to fix a server-side vulnerability @tisto
 - Support for base url @bloodbare
