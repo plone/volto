@@ -5,7 +5,7 @@
 
 import { omit, map, mapKeys } from 'lodash';
 
-import config from '~/config';
+import { settings } from '~/config';
 
 import {
   CREATE_CONTENT,
@@ -96,7 +96,7 @@ export default function content(state = initialState, action = {}) {
             action.result.items &&
             action.result.items.map(item => ({
               ...item,
-              url: item['@id'].replace(config.apiPath, ''),
+              url: item['@id'].replace(settings.apiPath, ''),
             })),
         },
         [getRequestKey(action.type)]: {

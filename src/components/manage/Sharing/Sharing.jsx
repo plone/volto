@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory, Link } from 'react-router';
+import { Link, withRouter } from 'react-router-dom';
 import { find, isEqual, map } from 'lodash';
 import { Portal } from 'react-portal';
 import {
@@ -55,6 +55,11 @@ const messages = defineMessages({
   },
 });
 
+/**
+ * SharingComponent class.
+ * @class SharingComponent
+ * @extends Component
+ */
 @injectIntl
 @connect(
   (state, props) => ({
@@ -70,12 +75,7 @@ const messages = defineMessages({
   }),
   dispatch => bindActionCreators({ updateSharing, getSharing }, dispatch),
 )
-/**
- * SharingComponent class.
- * @class SharingComponent
- * @extends Component
- */
-export default class SharingComponent extends Component {
+class SharingComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -255,7 +255,7 @@ export default class SharingComponent extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.push(getBaseUrl(this.props.pathname));
+    this.props.history.push(getBaseUrl(this.props.pathname));
   }
 
   /**
@@ -413,3 +413,5 @@ export default class SharingComponent extends Component {
     );
   }
 }
+
+export default withRouter(SharingComponent);

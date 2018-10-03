@@ -99,6 +99,7 @@ msgid "By default, permissions from the container of this item are inherited. If
 msgstr ""
 
 #: components/manage/Add/Add
+#: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -480,6 +481,7 @@ msgid "New password"
 msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr ""
 

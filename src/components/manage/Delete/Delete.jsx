@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import { Button, Container, List, Segment } from 'semantic-ui-react';
 import {
@@ -17,6 +17,7 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
+import qs from 'query-string';
 
 import { deleteContent, getContent } from '../../../actions';
 import { Toolbar } from '../../../components';
@@ -36,22 +37,22 @@ const messages = defineMessages({
   },
 });
 
+/**
+ * Delete container class.
+ * @class Delete
+ * @extends Component
+ */
 @injectIntl
 @connect(
   (state, props) => ({
     content: state.content.data,
     deleteRequest: state.content.delete,
     pathname: props.location.pathname,
-    returnUrl: props.location.query.return_url,
+    returnUrl: qs.parse(props.location.search).return_url,
   }),
   dispatch => bindActionCreators({ deleteContent, getContent }, dispatch),
 )
-/**
- * Delete container class.
- * @class Delete
- * @extends Component
- */
-export default class Delete extends Component {
+class Delete extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -111,7 +112,7 @@ export default class Delete extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
-      browserHistory.push(
+      this.props.history.push(
         this.props.returnUrl ||
           this.props.pathname.replace('/delete', '').replace(/\/[^/]*$/, ''),
       );
@@ -133,7 +134,7 @@ export default class Delete extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.push(this.props.pathname.replace('/delete', ''));
+    this.props.history.push(this.props.pathname.replace('/delete', ''));
   }
 
   /**
@@ -192,3 +193,5 @@ export default class Delete extends Component {
     return <div />;
   }
 }
+
+export default withRouter(Delete);

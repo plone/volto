@@ -2,7 +2,7 @@ import React from 'react';
 import createInlineStyleButton from 'draft-js-buttons/lib/utils/createInlineStyleButton';
 import createBlockStyleButton from 'draft-js-buttons/lib/utils/createBlockStyleButton';
 
-import { Icon } from '../../components';
+import Icon from '../../components/theme/Icon/Icon';
 
 import boldSVG from '../../icons/bold.svg';
 import italicSVG from '../../icons/italic.svg';

@@ -2,11 +2,6 @@
  * Routes.
  * @module routes
  */
-
-import React from 'react';
-import { IndexRoute, Route } from 'react-router';
-import isMobile from 'ismobilejs';
-
 import {
   Add,
   App,
@@ -35,49 +30,140 @@ import {
 } from './components';
 
 /**
- * Routes function.
- * @function
- * @returns {Object} Routes.
+ * Default routes array.
+ * @array
+ * @returns {array} Routes.
  */
-export default () => (
-  <Route
-    path="/"
-    component={App}
-    onChange={(prevState, nextState) => {
-      if (isMobile.any && nextState.location.action === 'PUSH') {
-        setTimeout(() => window.scrollTo(0, 0), 0);
-      }
-    }}
-  >
-    <IndexRoute component={View} />
-    <Route path="/login" component={Login} />
-    <Route path="/logout" component={Logout} />
-    <Route path="/search" component={Search} />
-    <Route path="/change-password" component={ChangePassword} />
-    <Route path="/controlpanel" component={Controlpanels} />
-    <Route
-      path="/controlpanel/moderate-comments"
-      component={ModerateComments}
-    />
-    <Route path="/controlpanel/users" component={UsersControlpanel} />
-    <Route path="/controlpanel/:id" component={Controlpanel} />
-    <Route path="/personal-information" component={PersonalInformation} />
-    <Route path="/personal-preferences" component={PersonalPreferences} />
-    <Route path="/add" component={Add} />
-    <Route path="/contents" component={Contents} />
-    <Route path="/sharing" component={Sharing} />
-    <Route path="/**/add" component={Add} />
-    <Route path="/**/contents" component={Contents} />
-    <Route path="/**/delete" component={Delete} />
-    <Route path="/**/diff" component={Diff} />
-    <Route path="/**/edit" component={Edit} />
-    <Route path="/**/history" component={History} />
-    <Route path="/**/layout" component={Layout} />
-    <Route path="/**/sharing" component={Sharing} />
-    <Route path="/register" component={Register} />
-    <Route path="/password-reset/:token" component={PasswordReset} />
-    <Route path="/password-reset" component={RequestPasswordReset} />
-    <Route path="/**" component={View} />
-    <Route path="*" component={NotFound} status={404} />
-  </Route>
-);
+export const defaultRoutes = [
+  {
+    path: '/',
+    component: View,
+    exact: true,
+  },
+  {
+    path: '/login',
+    component: Login,
+  },
+  {
+    path: '/logout',
+    component: Logout,
+  },
+  {
+    path: '/search',
+    component: Search,
+  },
+  {
+    path: '/controlpanel',
+    exact: true,
+    component: Controlpanels,
+  },
+  {
+    path: '/controlpanel/moderate-comments',
+    component: ModerateComments,
+  },
+  {
+    path: '/controlpanel/users',
+    component: UsersControlpanel,
+  },
+  {
+    path: '/controlpanel/:id',
+    component: Controlpanel,
+  },
+  {
+    path: '/change-password',
+    component: ChangePassword,
+  },
+  {
+    path: '/personal-information',
+    component: PersonalInformation,
+  },
+  {
+    path: '/personal-preferences',
+    component: PersonalPreferences,
+  },
+  {
+    path: '/add',
+    component: Add,
+  },
+  {
+    path: '/contents',
+    component: Contents,
+  },
+  {
+    path: '/sharing',
+    component: Sharing,
+  },
+  {
+    path: '/**/add',
+    component: Add,
+  },
+  {
+    path: '/**/contents',
+    component: Contents,
+  },
+  {
+    path: '/**/sharing',
+    component: Sharing,
+  },
+  {
+    path: '/**/delete',
+    component: Delete,
+  },
+  {
+    path: '/**/diff',
+    component: Diff,
+  },
+  {
+    path: '/**/edit',
+    component: Edit,
+  },
+  {
+    path: '/**/history',
+    component: History,
+  },
+  {
+    path: '/**/layout',
+    component: Layout,
+  },
+  {
+    path: '/**/sharing',
+    component: Sharing,
+  },
+  {
+    path: '/register',
+    component: Register,
+  },
+  {
+    path: '/password-reset',
+    component: RequestPasswordReset,
+    exact: true,
+  },
+  {
+    path: '/password-reset/:token',
+    component: PasswordReset,
+    exact: true,
+  },
+  {
+    path: '/**',
+    component: View,
+  },
+  {
+    path: '*',
+    component: NotFound,
+  },
+];
+
+/**
+ * Routes array.
+ * @array
+ * @returns {array} Routes.
+ */
+const routes = [
+  {
+    path: '/',
+    component: App,
+    routes: defaultRoutes,
+  },
+];
+
+export default routes;

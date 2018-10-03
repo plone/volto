@@ -25,13 +25,13 @@ exports[`renders a checkbox widget component 1`] = `
             <input
               checked={null}
               className="hidden"
+              disabled={false}
               id="field-my-field"
               name="my-field"
               onClick={[Function]}
               readOnly={true}
               tabIndex={0}
               type="checkbox"
-              value={undefined}
             />
             <label
               htmlFor="field-my-field"

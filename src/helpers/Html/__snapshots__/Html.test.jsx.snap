@@ -5,13 +5,16 @@ exports[`Html renders a html component 1`] = `
   lang="en"
 >
   <head>
+    <meta
+      charSet="utf-8"
+    />
     
     
     
     
     
     <link
-      href="/assets/favicon.ico"
+      href="/favicon.ico"
       rel="shortcut icon"
     />
     <meta
@@ -19,18 +22,13 @@ exports[`Html renders a html component 1`] = `
       name="viewport"
     />
     <link
-      charSet="UTF-8"
       href="style.css"
-      media="screen, projection"
       rel="stylesheet"
-      type="text/css"
     />
-    <link
-      charSet="UTF-8"
-      href="/assets/overrides.css"
-      media="screen, projection"
-      rel="stylesheet"
-      type="text/css"
+    <script
+      crossOrigin="true"
+      defer={true}
+      src="bundle.js"
     />
   </head>
   <body
@@ -42,7 +40,7 @@ exports[`Html renders a html component 1`] = `
     <div
       dangerouslySetInnerHTML={
         Object {
-          "__html": "<div data-reactroot=\\"\\"></div>",
+          "__html": "<div />",
         }
       }
       id="main"
@@ -54,18 +52,6 @@ exports[`Html renders a html component 1`] = `
           "__html": "window.__data=undefined;",
         }
       }
-    />
-    <script
-      charSet="UTF-8"
-      src="vendor.js"
-    />
-    <script
-      charSet="UTF-8"
-      src="manifest.js"
-    />
-    <script
-      charSet="UTF-8"
-      src="main.js"
     />
   </body>
 </html>

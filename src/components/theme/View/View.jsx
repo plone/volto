@@ -7,11 +7,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Portal } from 'react-portal';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import { injectIntl, intlShape } from 'react-intl';
 import { find } from 'lodash';
-import { defaultView, contentTypesViews, layoutViews } from '~/config';
+import qs from 'query-string';
+import { views } from '~/config';
 
 import {
   Comments,
@@ -34,7 +35,9 @@ import { BodyClass, getBaseUrl } from '../../../helpers';
     content: state.content.data,
     error: state.content.get.error,
     pathname: props.location.pathname,
-    versionId: props.location.query && props.location.query.version_id,
+    versionId:
+      qs.parse(props.location.search) &&
+      qs.parse(props.location.search).version_id,
   }),
   {
     listActions,
@@ -68,7 +71,7 @@ export default class View extends Component {
      */
     pathname: PropTypes.string.isRequired,
     location: PropTypes.shape({
-      query: PropTypes.object,
+      search: PropTypes.string,
       pathname: PropTypes.string,
     }).isRequired,
     /**
@@ -171,21 +174,22 @@ export default class View extends Component {
    * @method getViewDefault
    * @returns {string} Markup for component.
    */
-  getViewDefault = () => defaultView;
+  getViewDefault = () => views.defaultView;
 
   /**
    * Get view by content type
    * @method getViewByType
    * @returns {string} Markup for component.
    */
-  getViewByType = () => contentTypesViews[this.props.content['@type']] || null;
+  getViewByType = () =>
+    views.contentTypesViews[this.props.content['@type']] || null;
 
   /**
    * Get view by content layout property
    * @method getViewByLayout
    * @returns {string} Markup for component.
    */
-  getViewByLayout = () => layoutViews[this.props.content.layout] || null;
+  getViewByLayout = () => views.layoutViews[this.props.content.layout] || null;
 
   /**
    * Cleans the component displayName (specially for connected components)

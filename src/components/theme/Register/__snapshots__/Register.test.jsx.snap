@@ -8,7 +8,6 @@ exports[`Register renders a register component 1`] = `
     className="ui container"
   >
     <form
-      action={undefined}
       className="ui form"
       method="post"
       onSubmit={[Function]}
@@ -57,7 +56,6 @@ exports[`Register renders a register component 1`] = `
                       id="field-fullname"
                       name="fullname"
                       onChange={[Function]}
-                      tabIndex={undefined}
                       type="text"
                       value=""
                     />
@@ -112,7 +110,6 @@ exports[`Register renders a register component 1`] = `
                       id="field-email"
                       name="email"
                       onChange={[Function]}
-                      tabIndex={undefined}
                       type="text"
                       value=""
                     />
@@ -140,10 +137,8 @@ exports[`Register renders a register component 1`] = `
         >
           <button
             className="ui big basic circular icon primary right floated button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
             title="Register"
             type="submit"
           >

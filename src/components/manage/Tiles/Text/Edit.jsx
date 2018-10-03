@@ -13,14 +13,7 @@ import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { includes, isEqual } from 'lodash';
 
-import {
-  blockStyleFn,
-  customTiles,
-  extendedBlockRenderMap,
-  inlineToolbarButtons,
-  plugins,
-  listBlockTypes,
-} from '~/config';
+import { settings } from '~/config';
 
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
@@ -80,7 +73,7 @@ export default class Edit extends Component {
       }
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: inlineToolbarButtons,
+        structure: settings.inlineToolbarButtons,
       });
 
       this.state = {
@@ -188,9 +181,9 @@ export default class Edit extends Component {
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}
-          plugins={[this.state.inlineToolbarPlugin, ...plugins]}
-          blockRenderMap={extendedBlockRenderMap}
-          blockStyleFn={blockStyleFn}
+          plugins={[this.state.inlineToolbarPlugin, ...settings.richTextEditorPlugins]}
+          blockRenderMap={settings.extendedBlockRenderMap}
+          blockStyleFn={settings.blockStyleFn}
           placeholder={this.props.intl.formatMessage(messages.text)}
           handleReturn={() => {
             const selectionState = this.state.editorState.getSelection();
@@ -200,7 +193,7 @@ export default class Edit extends Component {
               anchorKey,
             );
             const blockType = currentContentBlock.getType();
-            if (!includes(listBlockTypes, blockType)) {
+            if (!includes(settings.listBlockTypes, blockType)) {
               this.props.onSelectTile(
                 this.props.onAddTile('text', this.props.index + 1),
               );
@@ -261,7 +254,7 @@ export default class Edit extends Component {
                   <Icon name={videoSVG} size="24px" />
                 </Button>
               </Button.Group>
-              {customTiles.length !== 0 && (
+              {tiles.customTiles.length !== 0 && (
                 <React.Fragment>
                   <div className="separator" />
                   <Button.Group>
@@ -276,7 +269,7 @@ export default class Edit extends Component {
         {this.state.addNewTileOpened &&
           this.state.customTilesOpened && (
             <div className="add-tile toolbar">
-              {customTiles.map(tile => (
+              {tiles.customTiles.map(tile => (
                 <Button.Group>
                   <Button
                     icon

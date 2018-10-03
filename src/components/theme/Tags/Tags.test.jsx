@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import Tags from './Tags';
 
@@ -17,7 +18,9 @@ describe('Tags', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Tags />
+        <MemoryRouter>
+          <Tags />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();
@@ -33,7 +36,9 @@ describe('Tags', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Tags tags={['Tag 1', 'Tag 2']} />
+        <MemoryRouter>
+          <Tags tags={['Tag 1', 'Tag 2']} />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

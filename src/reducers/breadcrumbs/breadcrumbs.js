@@ -4,7 +4,7 @@
  */
 
 import { map } from 'lodash';
-import config from '~/config';
+import { settings } from '~/config';
 
 import { GET_BREADCRUMBS } from '../../constants/ActionTypes';
 
@@ -37,7 +37,7 @@ export default function breadcrumbs(state = initialState, action = {}) {
         error: null,
         items: map(action.result.items, item => ({
           title: item.title,
-          url: item['@id'].replace(config.apiPath, ''),
+          url: item['@id'].replace(settings.apiPath, ''),
         })),
         loaded: true,
         loading: false,

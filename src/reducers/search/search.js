@@ -4,7 +4,7 @@
  */
 
 import { map } from 'lodash';
-import config from '~/config';
+import { settings } from '~/config';
 
 import {
   RESET_SEARCH_CONTENT,
@@ -42,7 +42,7 @@ export default function search(state = initialState, action = {}) {
         error: null,
         items: map(action.result.items, item => ({
           ...item,
-          '@id': item['@id'].replace(config.apiPath, ''),
+          '@id': item['@id'].replace(settings.apiPath, ''),
         })),
         total: action.result.items_total,
         loaded: true,

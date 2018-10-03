@@ -10,7 +10,7 @@ import { bindActionCreators } from 'redux';
 import { last } from 'lodash';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
-import config from '~/config';
+import { settings } from '~/config';
 
 import { getWorkflow, transitionWorkflow } from '../../../actions';
 
@@ -103,7 +103,7 @@ export default class Workflow extends Component {
    * @returns {undefined}
    */
   transition(event, { value }) {
-    this.props.transitionWorkflow(value.replace(config.apiPath, ''));
+    this.props.transitionWorkflow(value.replace(settings.apiPath, ''));
   }
 
   /**

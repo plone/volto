@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory } from 'react-router';
+import { Router, withRouter } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
@@ -16,6 +16,7 @@ import { Portal } from 'react-portal';
 import { Icon } from 'semantic-ui-react';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import qs from 'query-string';
 
 import { Form, Toolbar } from '../../../components';
 import { updateContent, getContent, getSchema } from '../../../actions';
@@ -54,7 +55,7 @@ const messages = defineMessages({
     schemaRequest: state.schema,
     updateRequest: state.content.update,
     pathname: props.location.pathname,
-    returnUrl: props.location.query.return_url,
+    returnUrl: qs.parse(props.location.search).return_url,
   }),
   dispatch =>
     bindActionCreators(
@@ -156,7 +157,7 @@ export class EditComponent extends Component {
       }
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      browserHistory.push(
+      this.props.history.push(
         this.props.returnUrl || getBaseUrl(this.props.pathname),
       );
     }
@@ -178,7 +179,7 @@ export class EditComponent extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.push(
+    this.props.history.push(
       this.props.returnUrl || getBaseUrl(this.props.pathname),
     );
   }
@@ -291,4 +292,4 @@ export default asyncConnect([
       return Promise.resolve(getState().content);
     },
   },
-])(EditComponent);
+])(withRouter(EditComponent));

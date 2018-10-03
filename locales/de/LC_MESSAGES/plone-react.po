@@ -114,6 +114,7 @@ msgid "By default, permissions from the container of this item are inherited. If
 msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ihm befindlichen Artikel vererbt. Wenn Sie dies deaktivieren, sind nur die explizit definierten Zugriffsberechtigungen gültig. In der Übersicht zeigt das Symbol ${image_confirm_icon} einen ererbten Wert an. Das Symbol ${image_link_icon} zeigt eine globale Funktion an, die vom Administrator verwaltet wird."
 
 #: components/manage/Add/Add
+#: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -495,6 +496,7 @@ msgid "New password"
 msgstr "Neues Passwort"
 
 #: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "Keine Ergebnisse gefunden."
 

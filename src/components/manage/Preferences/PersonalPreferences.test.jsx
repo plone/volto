@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import PersonalPreferences from './PersonalPreferences';
 
@@ -21,7 +22,9 @@ describe('PersonalPreferences', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <PersonalPreferences location={{ pathname: '/blog' }} />
+        <MemoryRouter>
+          <PersonalPreferences location={{ pathname: '/blog' }} />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

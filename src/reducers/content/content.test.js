@@ -1,4 +1,4 @@
-import config from '~/config';
+import { settings } from '~/config';
 import content from './content';
 import {
   CREATE_CONTENT,
@@ -60,7 +60,7 @@ describe('Content reducer', () => {
         result: {
           items: [
             {
-              '@id': `${config.apiPath}/home-page`,
+              '@id': `${settings.apiPath}/home-page`,
             },
           ],
         },
@@ -74,7 +74,7 @@ describe('Content reducer', () => {
       data: {
         items: [
           {
-            '@id': `${config.apiPath}/home-page`,
+            '@id': `${settings.apiPath}/home-page`,
             url: '/home-page',
           },
         ],
@@ -206,7 +206,7 @@ describe('Content reducer', () => {
         result: {
           items: [
             {
-              '@id': `${config.apiPath}/home-page`,
+              '@id': `${settings.apiPath}/home-page`,
             },
           ],
         },
@@ -220,7 +220,7 @@ describe('Content reducer', () => {
       data: {
         items: [
           {
-            '@id': `${config.apiPath}/home-page`,
+            '@id': `${settings.apiPath}/home-page`,
             url: '/home-page',
           },
         ],

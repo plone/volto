@@ -27,10 +27,8 @@ exports[`renders a select widget component 1`] = `
         className="eight wide column"
       >
         <div
-          aria-busy={undefined}
           aria-disabled={false}
           aria-expanded={false}
-          aria-multiselectable={undefined}
           className="ui selection dropdown"
           id="field-my-field"
           name="my-field"
@@ -59,7 +57,6 @@ exports[`renders a select widget component 1`] = `
           >
             <div
               aria-checked={true}
-              aria-disabled={undefined}
               aria-selected={true}
               className="active selected item"
               onClick={[Function]}

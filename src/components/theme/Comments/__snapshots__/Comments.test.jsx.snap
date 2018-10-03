@@ -36,10 +36,8 @@ exports[`Comments renders a comments component 1`] = `
       Some comment
       <button
         className="ui red right floated button"
-        disabled={undefined}
         onClick={[Function]}
         role="button"
-        tabIndex={undefined}
         value="someurl"
       >
         <span>
@@ -48,10 +46,8 @@ exports[`Comments renders a comments component 1`] = `
       </button>
       <button
         className="ui right floated button"
-        disabled={undefined}
         onClick={[Function]}
         role="button"
-        tabIndex={undefined}
         value={
           Object {
             "id": "someurl",
@@ -70,7 +66,6 @@ exports[`Comments renders a comments component 1`] = `
     className="ui container"
   >
     <form
-      action={undefined}
       className="ui form"
       method="post"
       onSubmit={[Function]}
@@ -135,10 +130,8 @@ exports[`Comments renders a comments component 1`] = `
         >
           <button
             className="ui big basic circular icon primary right floated button"
-            disabled={undefined}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
             title="Comment"
             type="submit"
           >

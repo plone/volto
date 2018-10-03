@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Container, Table } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 

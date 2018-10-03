@@ -2,10 +2,7 @@
 
 exports[`Actions renders an actions component 1`] = `
 <div
-  aria-busy={undefined}
-  aria-disabled={undefined}
   aria-expanded={false}
-  aria-multiselectable={undefined}
   className="ui item dropdown"
   id="toolbar-actions"
   onBlur={[Function]}
@@ -35,9 +32,6 @@ exports[`Actions renders an actions component 1`] = `
     className="menu transition"
   >
     <div
-      aria-checked={undefined}
-      aria-disabled={undefined}
-      aria-selected={undefined}
       className="item"
       onClick={[Function]}
       role="option"
@@ -53,9 +47,6 @@ exports[`Actions renders an actions component 1`] = `
       </span>
     </div>
     <div
-      aria-checked={undefined}
-      aria-disabled={undefined}
-      aria-selected={undefined}
       className="item"
       onClick={[Function]}
       role="option"
@@ -72,8 +63,8 @@ exports[`Actions renders an actions component 1`] = `
     </div>
     <a
       className="item"
+      href="/test/delete"
       onClick={[Function]}
-      style={Object {}}
     >
       <i
         aria-hidden="true"
@@ -82,9 +73,6 @@ exports[`Actions renders an actions component 1`] = `
       Delete
     </a>
     <div
-      aria-checked={undefined}
-      aria-disabled={undefined}
-      aria-selected={undefined}
       className="item"
       onClick={[Function]}
       role="option"

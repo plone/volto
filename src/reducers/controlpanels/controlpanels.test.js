@@ -1,4 +1,4 @@
-import config from '~/config';
+import { settings } from '~/config';
 import controlpanels from './controlpanels';
 import {
   GET_CONTROLPANEL,
@@ -48,7 +48,7 @@ describe('Controlpanels reducer', () => {
       controlpanels(undefined, {
         type: `${GET_CONTROLPANEL}_SUCCESS`,
         result: {
-          '@id': `${config.apiPath}/@controlpanels/mail`,
+          '@id': `${settings.apiPath}/@controlpanels/mail`,
         },
       }),
     ).toMatchObject({
