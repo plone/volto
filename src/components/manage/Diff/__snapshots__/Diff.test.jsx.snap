@@ -59,7 +59,7 @@ exports[`Diff renders a diff component 1`] = `
         className=""
       >
         <th
-          className="eight wide"
+          className="six wide"
         >
           <span>
             Base
@@ -128,7 +128,7 @@ exports[`Diff renders a diff component 1`] = `
           </div>
         </th>
         <th
-          className="eight wide"
+          className="six wide"
         >
           <span>
             Compare

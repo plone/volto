@@ -2,6 +2,7 @@
 
 exports[`Search renders a search component 1`] = `
 <div
+  className="ui container"
   id="page-search"
 >
   <div
@@ -80,6 +81,7 @@ exports[`Search renders a search component 1`] = `
 
 exports[`Search renders an empty search component 1`] = `
 <div
+  className="ui container"
   id="page-search"
 >
   <div
