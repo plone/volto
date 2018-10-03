@@ -16,11 +16,13 @@ const babel = require('babel-core');
  */
 function extractMessages() {
   map(glob('src/**/*.js?(x)'), filename => {
-    babel.transformFileSync(filename, {}, err => {
-      if (err) {
-        console.log(err);
-      }
-    });
+    if (filename.indexOf('src/lib/') === -1) {
+      babel.transformFileSync(filename, {}, err => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    }
   });
 }
 
