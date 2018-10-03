@@ -34,6 +34,7 @@ function extractMessages() {
 function getMessages() {
   return reduce(
     concat(
+      {},
       ...map(glob('build/messages/**/*.json'), filename =>
         map(JSON.parse(fs.readFileSync(filename, 'utf8')), message => ({
           ...message,
@@ -112,17 +113,16 @@ msgstr ""
  * @return {undefined}
  */
 function poToJson() {
-  if (!fs.existsSync('build')) {
-    fs.mkdirSync('build');
-  }
-  if (!fs.existsSync('build/locales')) {
-    fs.mkdirSync('build/locales');
-  }
   map(glob('locales/**/*.po'), filename => {
-    const { items } = Pofile.parse(fs.readFileSync(filename, 'utf8'));
+    let { items } = Pofile.parse(fs.readFileSync(filename, 'utf8'));
+    const lib = `src/lib/plone-react/${filename}`;
+    if (fs.existsSync(lib)) {
+      const libItems = Pofile.parse(fs.readFileSync(lib, 'utf8')).items;
+      items = [...libItems, ...items];
+    }
     const lang = filename.match(/locales\/(.*)\/LC_MESSAGES\//)[1];
     fs.writeFileSync(
-      `build/locales/${lang}.json`,
+      `locales/${lang}.json`,
       JSON.stringify(
         zipObject(
           map(items, item => item.msgid),
@@ -178,7 +178,6 @@ ${map(pot.items, item => {
     );
   });
 }
-
 console.log('Extracting messages from source files...');
 extractMessages();
 console.log('Synchronizing messages to pot file...');
