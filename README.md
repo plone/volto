@@ -39,7 +39,7 @@
 
 ### Browsing
 
-Go to [http://localhost:4300](http://localhost:4300) in your browser.
+Go to [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Testing
 
@@ -52,7 +52,7 @@ Go to [http://localhost:4300](http://localhost:4300) in your browser.
     Alternatively individual acceptances test case files can be run with a pure Robot Framework virtual environment, assuming that backend and frontend is running
 
     $ docker-compose -f api/docker-compose.yml up
-    $ yarn && yarn build && API_PATH=http://localhost:55001/plone yarn start
+    $ yarn && yarn build && API_PATH=http://localhost:55001/plone yarn start:prod
 
     $ virtualenv robotenv --no-site-packages
     $ robotenv/bin/pip install robotframework robotframework-seleniumlibrary robotframework-webpack

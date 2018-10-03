@@ -5,7 +5,7 @@ dist:
 	yarn build
 
 start: dist
-	yarn start
+	yarn start:prod
 
 start-api-docker:
 	docker-compose -f api/docker-compose.yml up
@@ -20,7 +20,7 @@ test-acceptance-start-backend:
 	docker-compose -f api/docker-compose.yml up
 
 test-acceptance-start-frontend:
-	yarn && yarn build && API_PATH=http://localhost:55001/plone yarn start
+	yarn && yarn build && API_PATH=http://localhost:55001/plone yarn start:prod
 
 test-acceptance-build:
 	api/bin/pip install -r api/requirements-robot-framework.txt

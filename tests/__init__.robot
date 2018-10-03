@@ -45,12 +45,12 @@ Stop Plone Backend
 
 Start Plone React
     Log To Console  Starting Webpack
-    Start Webpack  yarn start
+    Start Webpack  yarn start:prod
     ...            check=to be executed: ./node_modules/.bin/babel-node ./src/start-server-prod.js
 
 Suite Setup
     Run Keyword If   '${API}' == 'Plone'   Start Plone Backend
-    Run Keyword If   '${API}' == 'Guillotina'   Start Guillotina Backend	
+    Run Keyword If   '${API}' == 'Guillotina'   Start Guillotina Backend
     Start Plone React
 
 

@@ -10,7 +10,7 @@ Library  SeleniumLibrary  timeout=30  implicit_wait=0
 ${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 @{APPLY_PROFILES}      plone.app.contenttypes:plone-content
 ...                    plone.restapi:tiles
-${FRONTEND_URL}        http://localhost:4300/
+${FRONTEND_URL}        http://localhost:3000/
 ${BROWSER}             chrome
 
 *** Keywords ***

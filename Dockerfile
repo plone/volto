@@ -1,6 +1,6 @@
 FROM node:8.11.4-slim
 
-RUN apt-get update -y 
+RUN apt-get update -y
 RUN apt-get install -y libpng12-dev
 
 WORKDIR /opt/app/
@@ -16,7 +16,7 @@ RUN yarn build
 ENV API_PATH http://api/db/web
 ENV PUBLIC_URL /
 
-EXPOSE 4300
+EXPOSE 3000
 
 ENTRYPOINT ["/opt/app/entrypoint.sh"]
-CMD yarn run:prod:server
+CMD yarn start:prod
