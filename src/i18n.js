@@ -112,6 +112,9 @@ msgstr ""
  * @return {undefined}
  */
 function poToJson() {
+  if (!fs.existsSync('build')) {
+    fs.mkdirSync('build');
+  }
   if (!fs.existsSync('build/locales')) {
     fs.mkdirSync('build/locales');
   }
