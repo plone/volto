@@ -55,12 +55,12 @@ script:
     docker cp coverage_front:/opt/app/coverage/lcov.info .;
     cat lcov.info | ./node_modules/coveralls/bin/coveralls.js;
     fi
-#  - if [ "$TEST_SUITE" == "guillotina" ]; then
-#    PYTHONPATH=$(pwd)/tests pybot -v BROWSER:headlesschrome -v API:Guillotina tests;
-#    fi
-#  - if [ "$TEST_SUITE" == "plone" ]; then
-#    PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome -v API:Plone tests;
-#    fi
+  - if [ "$TEST_SUITE" == "guillotina" ]; then
+    PYTHONPATH=$(pwd)/tests pybot -v BROWSER:headlesschrome -v API:Guillotina tests;
+    fi
+  - if [ "$TEST_SUITE" == "plone" ]; then
+    PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome -v API:Plone tests;
+    fi
 after_script:
   - mkdir robot-results
   - mv log.html output.xml report.html selenium-screenshot-*.png robot-results
