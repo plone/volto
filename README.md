@@ -10,8 +10,8 @@
 
 ### Prerequisites
 
-* [Node.js==8.11.3](https://nodejs.org/)
-* [Python==2.7.x](https://python.org/)
+- [Node.js==8.11.3](https://nodejs.org/)
+- [Python==2.7.x](https://python.org/)
 
 ### Install dependencies
 
@@ -35,7 +35,7 @@
 
 ### Run frontend
 
-    $ yarn dev
+    $ yarn start
 
 ### Browsing
 
@@ -138,7 +138,6 @@ More Precommit hooks can be found [here](https://prettier.io/docs/en/precommit.h
 MIT License. Copyrights hold the Plone Foundation.
 See [LICENSE.md](LICENSE.md) for details.
 
-
 ### Running Guillotina Tests
 
 First, start up Guillotina:
@@ -148,7 +147,6 @@ docker-compose -f g-api/docker-compose.yml up -d
 ```
 
 Then, run the tests:
-
 
 ```
 PYTHONPATH=$(pwd)/tests_guillotina env/bin/pybot -v BROWSER:headlesschrome tests_guillotina;

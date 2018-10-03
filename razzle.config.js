@@ -126,6 +126,11 @@ module.exports = {
       ...customizations,
     };
 
+    config.performance = {
+      maxAssetSize: 10000000,
+      maxEntrypointSize: 10000000,
+    };
+
     return config;
   },
 };
