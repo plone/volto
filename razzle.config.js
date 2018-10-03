@@ -1,6 +1,8 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
+const nodeExternals = require('webpack-node-externals');
+const fs = require('fs');
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
@@ -110,8 +112,6 @@ module.exports = {
       ...fileLoader.exclude,
     ];
 
-    // const eslintLoader = config.module.rules.find(eslintLoaderFinder);
-    // eslintLoader.exclude = [path.join(path.resolve('.'), 'src', 'lib')];
     // Disabling the ESlint pre loader
     config.module.rules.splice(0, 1);
 
@@ -122,7 +122,7 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '../../theme.config$': `${projectRootPath}/theme/theme.config`,
-      '@plone/plone-react': `${projectRootPath}/src/lib/plone-react/src/`,
+      '@plone/plone-react': `${projectRootPath}/node_modules/@plone/plone-react/src/`,
       ...customizations,
     };
 
@@ -130,6 +130,38 @@ module.exports = {
       maxAssetSize: 10000000,
       maxEntrypointSize: 10000000,
     };
+
+    const babelRuleIndex = config.module.rules.findIndex(
+      rule =>
+        rule.use &&
+        rule.use[0].loader &&
+        rule.use[0].loader.includes('babel-loader'),
+    );
+    const { include } = config.module.rules[babelRuleIndex];
+    if (fs.existsSync('./node_modules/@plone/plone-react/src')) {
+      include.push(fs.realpathSync('./node_modules/@plone/plone-react/src'));
+    }
+    config.module.rules[babelRuleIndex] = Object.assign(
+      config.module.rules[babelRuleIndex],
+      {
+        include,
+      },
+    );
+    config.externals =
+      target === 'node'
+        ? [
+            nodeExternals({
+              whitelist: [
+                dev ? 'webpack/hot/poll?300' : null,
+                /\.(eot|woff|woff2|ttf|otf)$/,
+                /\.(svg|png|jpg|jpeg|gif|ico)$/,
+                /\.(mp4|mp3|ogg|swf|webp)$/,
+                /\.(css|scss|sass|sss|less)$/,
+                /^@plone\/plone-react/,
+              ].filter(Boolean),
+            }),
+          ]
+        : [];
 
     return config;
   },

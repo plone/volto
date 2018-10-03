@@ -1,10 +1,10 @@
 # Change Log
 
-## 0.9.0 (unreleased)
-
-### Added
+## 0.8.1 (2018-08-03)
 
 ### Changes
+
+- Fix compiling when used as a library @robgietema
 
 ## 0.8.0 (2018-08-03)
 
