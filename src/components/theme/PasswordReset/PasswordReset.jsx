@@ -18,7 +18,7 @@ import {
 } from 'react-intl';
 
 import { Form } from '../../../components';
-import { addMessage, setInitialPassword } from '../../../actions';
+import { setInitialPassword } from '../../../actions';
 
 const messages = defineMessages({
   title: {
@@ -90,11 +90,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * PasswordReset class.
- * @class PasswordReset
- * @extends Component
- */
 @injectIntl
 @connect(
   (state, props) => ({
@@ -103,9 +98,14 @@ const messages = defineMessages({
     error: state.users.initial.error,
     token: props.match.params.token,
   }),
-  dispatch => bindActionCreators({ addMessage, setInitialPassword }, dispatch),
+  dispatch => bindActionCreators({ setInitialPassword }, dispatch),
 )
-class PasswordReset extends Component {
+/**
+ * PasswordReset class.
+ * @class PasswordReset
+ * @extends Component
+ */
+export class PasswordResetComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -116,9 +116,7 @@ class PasswordReset extends Component {
     loaded: PropTypes.bool.isRequired,
     error: PropTypes.string,
     token: PropTypes.string.isRequired,
-    addMessage: PropTypes.func.isRequired,
     setInitialPassword: PropTypes.func.isRequired,
-    location: PropTypes.shape({ search: PropTypes.string }).isRequired,
     intl: intlShape.isRequired,
   };
 
@@ -294,4 +292,4 @@ class PasswordReset extends Component {
   }
 }
 
-export default withRouter(PasswordReset);
+export default withRouter(PasswordResetComponent);

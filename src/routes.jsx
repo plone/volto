@@ -54,21 +54,20 @@ export const defaultRoutes = [
   },
   {
     path: '/controlpanel',
+    exact: true,
     component: Controlpanels,
-    routes: [
-      {
-        path: '/controlpanel/moderate-comments',
-        component: ModerateComments,
-      },
-      {
-        path: '/controlpanel/users',
-        component: UsersControlpanel,
-      },
-      {
-        path: '/controlpanel/:id',
-        component: Controlpanel,
-      },
-    ],
+  },
+  {
+    path: '/controlpanel/moderate-comments',
+    component: ModerateComments,
+  },
+  {
+    path: '/controlpanel/users',
+    component: UsersControlpanel,
+  },
+  {
+    path: '/controlpanel/:id',
+    component: Controlpanel,
   },
   {
     path: '/change-password',
@@ -137,13 +136,12 @@ export const defaultRoutes = [
   {
     path: '/password-reset',
     component: RequestPasswordReset,
-    routes: [
-      {
-        path: '/password-reset/:token',
-        component: PasswordReset,
-        exact: true,
-      },
-    ],
+    exact: true,
+  },
+  {
+    path: '/password-reset/:token',
+    component: PasswordReset,
+    exact: true,
   },
   {
     path: '/**',
