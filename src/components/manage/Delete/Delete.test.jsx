@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import Delete from './Delete';
 
@@ -28,7 +29,9 @@ describe('Delete', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Delete location={{ pathname: '/blog', search: {} }} />
+        <MemoryRouter>
+          <Delete location={{ pathname: '/blog', search: {} }} />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();
@@ -53,7 +56,9 @@ describe('Delete', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Delete location={{ pathname: '/blog', search: {} }} />
+        <MemoryRouter>
+          <Delete location={{ pathname: '/blog', search: {} }} />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

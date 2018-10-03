@@ -141,6 +141,7 @@ export const defaultRoutes = [
       {
         path: '/password-reset/:token',
         component: PasswordReset,
+        exact: true,
       },
     ],
   },

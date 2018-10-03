@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Router } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import { Form } from '../../../components';
 import { createUser, addMessage } from '../../../actions';
@@ -57,6 +57,11 @@ const messages = defineMessages({
   },
 });
 
+/**
+ * Register class.
+ * @class Register
+ * @extends Component
+ */
 @injectIntl
 @connect(
   state => ({
@@ -66,12 +71,7 @@ const messages = defineMessages({
   }),
   dispatch => bindActionCreators({ createUser, addMessage }, dispatch),
 )
-/**
- * Register class.
- * @class Register
- * @extends Component
- */
-export default class Register extends Component {
+class Register extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -124,7 +124,7 @@ export default class Register extends Component {
         this.props.intl.formatMessage(messages.successRegisterCompletedBody),
         'success',
       );
-      Router.push('/login');
+      this.props.history.push('/login');
     }
   }
 
@@ -191,3 +191,5 @@ export default class Register extends Component {
     );
   }
 }
+
+export default withRouter(Register);

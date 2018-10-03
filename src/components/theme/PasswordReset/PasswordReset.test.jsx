@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 
 import PasswordReset from './PasswordReset';
 
@@ -24,10 +25,12 @@ describe('PasswordReset', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <PasswordReset
-          match={{ params: { token: 'a9dd24f9aab74bdea66aba6d80ef651b' } }}
-          location={{ search: { userid: 'victor@plone.org' } }}
-        />
+        <MemoryRouter>
+          <PasswordReset
+            match={{ params: { token: 'a9dd24f9aab74bdea66aba6d80ef651b' } }}
+            location={{ search: { userid: 'victor@plone.org' } }}
+          />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Router } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import { Button, Container, List, Segment } from 'semantic-ui-react';
 import {
@@ -37,6 +37,11 @@ const messages = defineMessages({
   },
 });
 
+/**
+ * Delete container class.
+ * @class Delete
+ * @extends Component
+ */
 @injectIntl
 @connect(
   (state, props) => ({
@@ -47,12 +52,7 @@ const messages = defineMessages({
   }),
   dispatch => bindActionCreators({ deleteContent, getContent }, dispatch),
 )
-/**
- * Delete container class.
- * @class Delete
- * @extends Component
- */
-export default class Delete extends Component {
+class Delete extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -112,7 +112,7 @@ export default class Delete extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
-      Router.push(
+      this.props.history.push(
         this.props.returnUrl ||
           this.props.pathname.replace('/delete', '').replace(/\/[^/]*$/, ''),
       );
@@ -134,7 +134,7 @@ export default class Delete extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    Router.push(this.props.pathname.replace('/delete', ''));
+    this.props.history.push(this.props.pathname.replace('/delete', ''));
   }
 
   /**
@@ -193,3 +193,5 @@ export default class Delete extends Component {
     return <div />;
   }
 }
+
+export default withRouter(Delete);

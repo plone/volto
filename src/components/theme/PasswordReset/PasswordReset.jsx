@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Router, Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Container } from 'semantic-ui-react';
@@ -90,6 +90,11 @@ const messages = defineMessages({
   },
 });
 
+/**
+ * PasswordReset class.
+ * @class PasswordReset
+ * @extends Component
+ */
 @injectIntl
 @connect(
   (state, props) => ({
@@ -100,12 +105,7 @@ const messages = defineMessages({
   }),
   dispatch => bindActionCreators({ addMessage, setInitialPassword }, dispatch),
 )
-/**
- * PasswordReset class.
- * @class PasswordReset
- * @extends Component
- */
-export default class PasswordReset extends Component {
+class PasswordReset extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -198,7 +198,7 @@ export default class PasswordReset extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    Router.goBack();
+    this.props.history.goBack();
   }
 
   /**
@@ -293,3 +293,5 @@ export default class PasswordReset extends Component {
     return <div />;
   }
 }
+
+export default withRouter(PasswordReset);

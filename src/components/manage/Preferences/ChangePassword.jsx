@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Router, Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import {
   FormattedMessage,
@@ -67,6 +67,11 @@ const messages = defineMessages({
   },
 });
 
+/**
+ * ChangePassword class.
+ * @class ChangePassword
+ * @extends Component
+ */
 @injectIntl
 @connect(
   (state, props) => ({
@@ -78,12 +83,7 @@ const messages = defineMessages({
   }),
   dispatch => bindActionCreators({ updatePassword, addMessage }, dispatch),
 )
-/**
- * ChangePassword class.
- * @class ChangePassword
- * @extends Component
- */
-export default class ChangePassword extends Component {
+class ChangePassword extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -137,7 +137,7 @@ export default class ChangePassword extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    Router.goBack();
+    this.props.history.goBack();
   }
 
   /**
@@ -231,3 +231,5 @@ export default class ChangePassword extends Component {
     );
   }
 }
+
+export default withRouter(ChangePassword);

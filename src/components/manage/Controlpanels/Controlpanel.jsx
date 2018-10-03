@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Router, Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Portal } from 'react-portal';
@@ -32,6 +32,11 @@ const messages = defineMessages({
   },
 });
 
+/**
+ * Controlpanel class.
+ * @class Controlpanel
+ * @extends Component
+ */
 @injectIntl
 @connect(
   (state, props) => ({
@@ -46,12 +51,7 @@ const messages = defineMessages({
       dispatch,
     ),
 )
-/**
- * Controlpanel class.
- * @class Controlpanel
- * @extends Component
- */
-export default class Controlpanel extends Component {
+class Controlpanel extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -138,7 +138,7 @@ export default class Controlpanel extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    Router.goBack();
+    this.props.history.goBack();
   }
 
   /**
@@ -185,3 +185,5 @@ export default class Controlpanel extends Component {
     return <div />;
   }
 }
+
+export default withRouter(Controlpanel);
