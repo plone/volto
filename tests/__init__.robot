@@ -46,7 +46,7 @@ Stop Plone Backend
 Start Plone React
     Log To Console  Starting Webpack
     Start Webpack  yarn start:prod
-    ...            check=to be executed: NODE_ENV=production node build/server.js
+    ...            check=to be executed: node build/server.js
 
 Suite Setup
     Run Keyword If   '${API}' == 'Plone'   Start Plone Backend
