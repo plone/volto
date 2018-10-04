@@ -9,8 +9,8 @@ function apply_path {
     test -n "$API_PATH"
     test -n "$PUBLIC_URL"
 
-    sed -i "s#PLONE_REACT_API_PATH#${API_PATH}#g" $mainjs
-    sed -i "s#PLONE_REACT_PUBLIC_URL#${PUBLIC_URL}#g" $mainjs
+    sed -i "s#VOLTO_API_PATH#${API_PATH}#g" $mainjs
+    sed -i "s#VOLTO_PUBLIC_URL#${PUBLIC_URL}#g" $mainjs
 
     gzip -fk $mainjs
 }
@@ -18,5 +18,5 @@ function apply_path {
 # Should we monkey patch?
 test -n "$API_PATH" && apply_path
 
-echo "Starting Plone React"
+echo "Starting Volto"
 exec "$@"

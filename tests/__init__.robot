@@ -44,7 +44,7 @@ Stop Plone Backend
     Import Library  plone.app.robotframework.Zope2Server
     Stop Zope server
 
-Start Plone React
+Start Volto
     Log To Console  Starting Webpack
     Start Webpack  yarn start:prod
     ...            check=to be executed: node build/server.js
@@ -52,7 +52,7 @@ Start Plone React
 Suite Setup
     Run Keyword If   '${API}' == 'Plone'   Start Plone Backend
     Run Keyword If   '${API}' == 'Guillotina'   Start Guillotina Backend
-    Start Plone React
+    Start Volto
 
 
 Suite Teardown

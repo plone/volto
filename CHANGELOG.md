@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.9.0 (2018-08-04)
+
+### Changes
+
+- Renamed package to Volto @robgietema
+
 ## 0.8.3 (2018-08-03)
 
 ### Changes

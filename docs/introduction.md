@@ -1,11 +1,11 @@
-# Plone React-API
+# Volto
 
-This is the official frontend implementation of the Plone project.
+This is the Volto frontend implementation used by Plone and Guillotina.
 
-----
+---
 
 Components are structured in three groups:
 
-+ [`Theme`](#theme) is about read-only view components,
-+ [`Manage`](#manage) gathers all action components,
-+ and [`Mosaic`](#mosaic).
+- [`Theme`](#theme) is about read-only view components,
+- [`Manage`](#manage) gathers all action components,
+- and [`Mosaic`](#mosaic).

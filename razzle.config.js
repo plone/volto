@@ -122,7 +122,7 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '../../theme.config$': `${projectRootPath}/theme/theme.config`,
-      '@plone/plone-react': `${projectRootPath}/node_modules/@plone/plone-react/src/`,
+      '@plone/volto': `${projectRootPath}/node_modules/@plone/volto/src/`,
       ...customizations,
     };
 
@@ -138,8 +138,8 @@ module.exports = {
         rule.use[0].loader.includes('babel-loader'),
     );
     const { include } = config.module.rules[babelRuleIndex];
-    if (fs.existsSync('./node_modules/@plone/plone-react/src')) {
-      include.push(fs.realpathSync('./node_modules/@plone/plone-react/src'));
+    if (fs.existsSync('./node_modules/@plone/volto/src')) {
+      include.push(fs.realpathSync('./node_modules/@plone/volto/src'));
     }
     config.module.rules[babelRuleIndex] = Object.assign(
       config.module.rules[babelRuleIndex],
@@ -157,7 +157,7 @@ module.exports = {
                 /\.(svg|png|jpg|jpeg|gif|ico)$/,
                 /\.(mp4|mp3|ogg|swf|webp)$/,
                 /\.(css|scss|sass|sss|less)$/,
-                /^@plone\/plone-react/,
+                /^@plone\/volto/,
               ].filter(Boolean),
             }),
           ]

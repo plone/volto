@@ -1,6 +1,6 @@
 {
-  "name": "@plone/plone-react",
-  "description": "Plone in React",
+  "name": "@plone/volto",
+  "description": "Volto",
   "maintainers": [
     {
       "name": "Plone Foundation",
@@ -9,17 +9,18 @@
     }
   ],
   "license": "MIT",
-  "version": "0.8.3",
+  "version": "0.9.0",
   "repository": {
     "type": "git",
-    "url": "git@github.com:plone/plone-react.git"
+    "url": "git@github.com:plone/volto.git"
   },
   "bugs": {
-    "url": "https://github.com/plone/plone-react/issues",
+    "url": "https://github.com/plone/volto/issues",
     "email": "plone-developers@lists.sourceforge.net"
   },
   "homepage": "https://plone.org",
   "keywords": [
+    "volto",
     "plone",
     "react",
     "mosaic"
