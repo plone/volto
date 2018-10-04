@@ -12,7 +12,7 @@ import { addLocaleData } from 'react-intl';
 
 import 'semantic-ui-less/semantic.less';
 
-import routes from '~/routes';
+import routes from './routes';
 
 import configureStore from './store';
 import { Api, persistAuthToken } from './helpers';

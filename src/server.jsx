@@ -17,22 +17,28 @@ import ErrorPage from './error';
 
 import locale from 'locale';
 
-import routes from '~/routes';
+import routes from './routes';
 import languages from './constants/Languages';
-import nlLocale from '~/../locales/nl.json';
-import deLocale from '~/../locales/de.json';
-import enLocale from '~/../locales/en.json';
-
 import configureStore from './store';
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
+
+// configure localization
 const supported = new locale.Locales(keys(languages), 'en');
-const locales = {
-  en: enLocale,
-  nl: nlLocale,
-  de: deLocale,
-};
+let locales = {};
+
+['en', 'nl', 'de'].forEach(function(lang) {
+  try{
+    let definition = require('~/../locales/' + lang + '.json');
+    locales[lang] = definition;
+  }catch(e){
+    if (e.code !== 'MODULE_NOT_FOUND') {
+      throw e;
+    }
+  }
+});
+console.log(Object.keys(locales));
 
 const server = express();
 server
