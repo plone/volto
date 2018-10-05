@@ -89,9 +89,7 @@ export default class ReferenceWidget extends Component {
    */
   constructor(props) {
     super(props);
-    const hasValue = props.uniqueItems
-      ? props.value !== undefined
-      : props.value && props.value.length > 0;
+    const hasValue = (Array.isArray(props.value) && props.value.length > 0) || props.value;
     this.state = {
       selectedFolder: null,
       choices: hasValue
@@ -213,6 +211,11 @@ export default class ReferenceWidget extends Component {
       context,
     } = this.props;
     const { selectedFolder } = this.state;
+
+    let ddValue = value || [];
+    ddValue = Array.isArray(value) ? value : [value];
+    ddValue = map(value, item => item['@id']);
+
     return (
       <Form.Field
         inline
@@ -244,18 +247,12 @@ export default class ReferenceWidget extends Component {
                 noResultsMessage={this.props.intl.formatMessage(
                   messages.no_results_found,
                 )}
-                value={
-                  uniqueItems
-                    ? value && value.length > 0 ? value['@id'] : ''
-                    : value && value.length
-                      ? map(value, item => item['@id'])
-                      : []
-                }
+                value={ddValue}
                 onChange={(event, data) => {
                   onChange(
                     id,
                     uniqueItems
-                      ? this.state.choices[data.value].data
+                      ? this.state.choices[data.value[1] || data.value[0]].data
                       : map(data.value, item => this.state.choices[item].data)
                   );
                 }}
