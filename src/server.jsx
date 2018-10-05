@@ -17,7 +17,7 @@ import ErrorPage from './error';
 
 import locale from 'locale';
 
-import routes from './routes';
+import routes from '~/routes';
 import languages from './constants/Languages';
 import configureStore from './store';
 
