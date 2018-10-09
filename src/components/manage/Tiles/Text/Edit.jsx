@@ -13,7 +13,7 @@ import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { includes, isEqual } from 'lodash';
 
-import { settings } from '~/config';
+import { settings, tiles } from '~/config';
 
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
