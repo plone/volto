@@ -1,10 +1,10 @@
 import { defineMessages } from 'react-intl';
 
-import EditTitleTile from '../components/manage/Tiles/Title/Edit';
-import EditDescriptionTile from '../components/manage/Tiles/Description/Edit';
-import EditTextTile from '../components/manage/Tiles/Text/Edit';
-import EditImageTile from '../components/manage/Tiles/Image/Edit';
-import EditVideoTile from '../components/manage/Tiles/Video/Edit';
+import EditTitleTile from '@plone/volto/components/manage/Tiles/Title/Edit';
+import EditDescriptionTile from '@plone/volto/components/manage/Tiles/Description/Edit';
+import EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
+import EditImageTile from '@plone/volto/components/manage/Tiles/Image/Edit';
+import EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
 
 const customTiles = [];
 

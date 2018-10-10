@@ -6,6 +6,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Container } from 'semantic-ui-react';
 
 /**
  * Tags component class.
@@ -15,13 +16,13 @@ import PropTypes from 'prop-types';
  */
 const Tags = ({ tags }) =>
   tags && tags.length > 0 ? (
-    <div>
+    <Container>
       {tags.map(tag => (
         <Link className="ui label" to={`/search?Subject=${tag}`} key={tag}>
           {tag}
         </Link>
       ))}
-    </div>
+    </Container>
   ) : (
     <span />
   );

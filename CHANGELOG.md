@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.9.4 (2018-08-10)
+
+### Changes
+
+- Fix tags layout @robgietema @jaroel
+- Fix imports of views, widgets and tiles @robgietema @jaroel
+
 ## 0.9.3 (2018-08-10)
 
 ### Changes
