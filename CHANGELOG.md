@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.9.2 (2018-08-10)
+
+### Added
+
+- Automatic customization imports for images @robgietema @jaroel
+
 ## 0.9.1 (2018-08-10)
 
 ### Added
