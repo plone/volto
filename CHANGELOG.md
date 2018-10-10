@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.9.3 (2018-08-10)
+
+### Changes
+
+- Fix logo import path @robgietema @jaroel
+
 ## 0.9.2 (2018-08-10)
 
 ### Added
