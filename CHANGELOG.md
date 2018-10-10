@@ -23,6 +23,8 @@
 
 ### Added
 
+- Automatic customization imports @robgietema @jaroel
+
 ## 0.9.0 (2018-08-04)
 
 ### Changes
