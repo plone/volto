@@ -38,7 +38,7 @@ let locales = {};
     }
   }
 });
-console.log(Object.keys(locales));
+
 
 const server = express();
 server
