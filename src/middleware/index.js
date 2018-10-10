@@ -4,5 +4,5 @@
  * @example import { api } from 'middleware';
  */
 
-export api from './api';
-export crashReporter from './crashReporter';
+export api from '@plone/volto/middleware/api';
+export crashReporter from '@plone/volto/middleware/crashReporter';

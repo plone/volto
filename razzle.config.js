@@ -3,6 +3,8 @@ const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
 const fs = require('fs');
+const { fromPairs, map, mapValues } = require('lodash');
+const glob = require('glob').sync;
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
@@ -115,15 +117,40 @@ module.exports = {
     // Disabling the ESlint pre loader
     config.module.rules.splice(0, 1);
 
-    const customizations = packageJson.customizations
-      ? packageJson.customizations
-      : {};
+    const customizations = {};
+    map(
+      glob('src/customizations/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)'),
+      filename => {
+        const target = filename.replace('src/', `${projectRootPath}/src/`);
+        if (
+          fs.existsSync(
+            `node_modules/@plone/volto/${filename.replace(
+              'customizations/',
+              '',
+            )}`,
+          )
+        ) {
+          customizations[
+            filename
+              .replace('src/customizations/', '@plone/volto/')
+              .replace(/\.(js|jsx)$/, '')
+          ] = target;
+        } else {
+          console.log(
+            `The file ${filename} doesn't exist in the volto package (${target}), unable to customize.`,
+          );
+        }
+      },
+    );
 
     config.resolve.alias = {
+      ...customizations,
       ...config.resolve.alias,
       '../../theme.config$': `${projectRootPath}/theme/theme.config`,
-      '@plone/volto': `${projectRootPath}/node_modules/@plone/volto/src/`,
-      ...customizations,
+      '@plone/volto':
+        packageJson.name === '@plone/volto'
+          ? `${projectRootPath}/src/`
+          : `${projectRootPath}/node_modules/@plone/volto/src/`,
     };
 
     config.performance = {
