@@ -2,6 +2,7 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const fs = require('fs');
 const { fromPairs, map, mapValues } = require('lodash');
 const glob = require('glob').sync;
@@ -48,20 +49,42 @@ module.exports = {
     const LESSLOADER = {
       test: /\.less$/,
       include: [path.resolve('./theme'), /node_modules\/semantic-ui-less/],
-      use: [
-        {
-          loader: 'style-loader',
-        },
-        BASE_CSS_LOADER,
-        POST_CSS_LOADER,
-        {
-          loader: 'less-loader',
-          options: {
-            outputStyle: 'expanded',
-            sourceMap: true,
-          },
-        },
-      ],
+      use: dev
+        ? [
+            {
+              loader: 'style-loader',
+            },
+            BASE_CSS_LOADER,
+            POST_CSS_LOADER,
+            {
+              loader: 'less-loader',
+              options: {
+                outputStyle: 'expanded',
+                sourceMap: true,
+              },
+            },
+          ]
+        : [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2,
+                sourceMap: true,
+                modules: false,
+                minimize: true,
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              },
+            },
+            POST_CSS_LOADER,
+            {
+              loader: 'less-loader',
+              options: {
+                outputStyle: 'expanded',
+                sourceMap: true,
+              },
+            },
+          ],
     };
 
     const SVGLOADER = {
