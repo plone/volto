@@ -11,6 +11,7 @@
 
 - Fix tags layout @robgietema @jaroel
 - Fix imports of views, widgets and tiles @robgietema @jaroel
+- Fix FUOC (flash of unstyled content) in production mode @sneridagh
 
 ## 0.9.3 (2018-08-10)
 
