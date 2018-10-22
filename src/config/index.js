@@ -21,8 +21,8 @@ import { customTiles, getDefaultEditTileView, messagesTiles } from './Tiles';
 export const settings = {
   host: process.env.HOST || 'localhost',
   port: process.env.PORT || '3000',
-  apiPath: process.env.API_PATH || 'http://localhost:8080/Plone', // for Plone
-  // apiPath: process.env.API_PATH || 'http://localhost:8081/db/web', // for guillotina
+  apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8080/Plone', // for Plone
+  // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
   nonContentRoutes,
   extendedBlockRenderMap,
   blockStyleFn,

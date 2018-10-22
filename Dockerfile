@@ -13,7 +13,7 @@ COPY . .
 
 RUN yarn build
 
-ENV API_PATH http://api/db/web
+ENV RAZZLE_API_PATH http://api/db/web
 ENV PUBLIC_URL /
 
 EXPOSE 3000
