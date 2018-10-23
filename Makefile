@@ -20,7 +20,7 @@ test-acceptance-start-backend:
 	docker-compose -f api/docker-compose.yml up
 
 test-acceptance-start-frontend:
-	yarn && yarn build && API_PATH=http://localhost:55001/plone yarn start:prod
+	yarn && yarn build && RAZZLE_API_PATH=http://localhost:55001/plone yarn start:prod
 
 test-acceptance-build:
 	api/bin/pip install -r api/requirements-robot-framework.txt

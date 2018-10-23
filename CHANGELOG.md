@@ -1,4 +1,9 @@
 # Change Log
+## 0.9.5 (unreleased)
+
+### Changes
+
+- Fix API_PATH variable using RAZZLE_ prefix instead @sneridagh
 
 ## 0.9.4 (2018-08-10)
 
