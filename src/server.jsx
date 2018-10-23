@@ -27,7 +27,7 @@ const locales = {};
 
 ['en', 'nl', 'de'].forEach(lang => {
   try {
-    const definition = require(`~/../locales/${lang}.json`);
+    const definition = require('~/../locales/' + lang + '.json');
     locales[lang] = definition;
   } catch (e) {
     if (e.code !== 'MODULE_NOT_FOUND') {
