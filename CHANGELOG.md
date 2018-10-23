@@ -1,4 +1,10 @@
 # Change Log
+## 0.9.5 (unreleased)
+
+### Changes
+
+- Fix API_PATH variable using RAZZLE_ prefix instead @sneridagh
+- Fix FUOC (flash of unstyled content) in production mode @sneridagh
 
 ## 0.9.5 (unreleased)
 
