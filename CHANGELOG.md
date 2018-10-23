@@ -1,4 +1,9 @@
 # Change Log
+## 0.9.5 (unreleased)
+
+### Changes
+
+- Fix API_PATH variable using RAZZLE_ prefix instead @sneridagh
 
 ## 0.9.4 (2018-08-10)
 
@@ -6,7 +11,6 @@
 
 - Fix tags layout @robgietema @jaroel
 - Fix imports of views, widgets and tiles @robgietema @jaroel
-- Fix API_PATH variable using RAZZLE_ prefix instead @sneridagh
 
 ## 0.9.3 (2018-08-10)
 
