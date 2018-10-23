@@ -12,6 +12,7 @@ matrix:
       env: TEST_SUITE=unit
 cache:
   pip: true
+  yarn: true
   directories:
     - node_modules
 sudo: required
@@ -26,6 +27,9 @@ addons:
 before_install:
   - nvm install 8.11.3;
   - nvm use 8.11.3;
+  - curl -o- -L https://yarnpkg.com/install.sh | bash;
+  - yarn
+  - yarn build
   - docker build -t plone/plone-react:testing .
   - if [ "$TEST_SUITE" != "unit" ]; then
     mkdir webdriver;
