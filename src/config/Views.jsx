@@ -1,10 +1,10 @@
-import DocumentView from '../components/theme/View/DocumentView';
-import FileView from '../components/theme/View/FileView';
-import ImageView from '../components/theme/View/ImageView';
-import ListingView from '../components/theme/View/ListingView';
-import NewsItemView from '../components/theme/View/NewsItemView';
-import SummaryView from '../components/theme/View/SummaryView';
-import TabularView from '../components/theme/View/TabularView';
+import DocumentView from '@plone/volto/components/theme/View/DocumentView';
+import FileView from '@plone/volto/components/theme/View/FileView';
+import ImageView from '@plone/volto/components/theme/View/ImageView';
+import ListingView from '@plone/volto/components/theme/View/ListingView';
+import NewsItemView from '@plone/volto/components/theme/View/NewsItemView';
+import SummaryView from '@plone/volto/components/theme/View/SummaryView';
+import TabularView from '@plone/volto/components/theme/View/TabularView';
 
 // Layout View Registry
 export const layoutViews = {
