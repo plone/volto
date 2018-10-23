@@ -5,40 +5,36 @@ import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
-import { Html, Api, persistAuthToken, generateSitemap } from './helpers';
 import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
 import Raven from 'raven';
-
-import userSession from './reducers/userSession/userSession';
-
 import cookie, { plugToRequest } from 'react-cookie';
-import ErrorPage from './error';
-
 import locale from 'locale';
 
 import routes from '~/routes';
+
+import userSession from './reducers/userSession/userSession';
+import { Html, Api, persistAuthToken, generateSitemap } from './helpers';
+import ErrorPage from './error';
 import languages from './constants/Languages';
 import configureStore from './store';
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
-
 // configure localization
 const supported = new locale.Locales(keys(languages), 'en');
-let locales = {};
+const locales = {};
 
-['en', 'nl', 'de'].forEach(function(lang) {
-  try{
-    let definition = require('~/../locales/' + lang + '.json');
+['en', 'nl', 'de'].forEach(lang => {
+  try {
+    const definition = require(`~/../locales/${lang}.json`);
     locales[lang] = definition;
-  }catch(e){
+  } catch (e) {
     if (e.code !== 'MODULE_NOT_FOUND') {
       throw e;
     }
   }
 });
-
 
 const server = express();
 server
