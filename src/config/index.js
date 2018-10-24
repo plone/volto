@@ -35,8 +35,8 @@ export const settings = {
 };
 
 export const widgets = {
-  widgetMapping,
-  defaultWidget,
+  ...widgetMapping,
+  default: defaultWidget,
 };
 
 export const views = {

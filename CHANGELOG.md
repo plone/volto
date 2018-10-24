@@ -1,13 +1,15 @@
 # Change Log
+
 ## 0.9.5 (unreleased)
 
 ### Changes
 
-- Fix API_PATH variable using RAZZLE_ prefix instead @sneridagh
+- Fix API*PATH variable using RAZZLE* prefix instead @sneridagh
 - Fix FUOC (flash of unstyled content) in production mode @sneridagh
 - Fix missing buttons on RichText tiles @sneridagh
 - Fix original external `overrides.css` position in the cascade was applied in
   the wrong order in site.overrides in Pastanaga theme @sneridagh
+- Fatten widget config @robgietema
 
 ## 0.9.4 (2018-08-10)
 
