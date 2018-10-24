@@ -1,6 +1,6 @@
 # Change Log
 
-## 0.9.5 (unreleased)
+## 0.9.5 (2018-10-24)
 
 ### Changes
 
@@ -11,56 +11,56 @@
   the wrong order in site.overrides in Pastanaga theme @sneridagh
 - Fatten widget config @robgietema
 
-## 0.9.4 (2018-08-10)
+## 0.9.4 (2018-10-10)
 
 ### Changes
 
 - Fix tags layout @robgietema @jaroel
 - Fix imports of views, widgets and tiles @robgietema @jaroel
 
-## 0.9.3 (2018-08-10)
+## 0.9.3 (2018-10-10)
 
 ### Changes
 
 - Fix logo import path @robgietema @jaroel
 
-## 0.9.2 (2018-08-10)
+## 0.9.2 (2018-10-10)
 
 ### Added
 
 - Automatic customization imports for images @robgietema @jaroel
 
-## 0.9.1 (2018-08-10)
+## 0.9.1 (2018-10-10)
 
 ### Added
 
 - Automatic customization imports @robgietema @jaroel
 
-## 0.9.0 (2018-08-04)
+## 0.9.0 (2018-10-04)
 
 ### Changes
 
 - Renamed package to Volto @robgietema
 
-## 0.8.3 (2018-08-03)
+## 0.8.3 (2018-10-03)
 
 ### Changes
 
 - Fix i18n script for dependency @robgietema
 
-## 0.8.2 (2018-08-03)
+## 0.8.2 (2018-10-03)
 
 ### Changes
 
 - Move all dev dependencies to dependencies @robgietema
 
-## 0.8.1 (2018-08-03)
+## 0.8.1 (2018-10-03)
 
 ### Changes
 
 - Fix compiling when used as a library @robgietema
 
-## 0.8.0 (2018-08-03)
+## 0.8.0 (2018-10-03)
 
 ### Added
 
