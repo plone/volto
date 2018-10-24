@@ -294,7 +294,10 @@ export default class WysiwygWidget extends Component {
                     id={`field-${id}`}
                     onChange={this.onChange}
                     editorState={this.state.editorState}
-                    plugins={[this.state.inlineToolbarPlugin, ...settings.richTextEditorPlugins]}
+                    plugins={[
+                      this.state.inlineToolbarPlugin,
+                      ...settings.richTextEditorPlugins,
+                    ]}
                     blockRenderMap={settings.extendedBlockRenderMap}
                     blockStyleFn={settings.blockStyleFn}
                   />
