@@ -6,6 +6,10 @@
 [![Dev Dependencies](https://img.shields.io/david/dev/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 [![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
 
+## Documentation
+
+A training on how to create your own website using Volto is available as part of the Plone training at [https://training.plone.org/5/volto/index.html](https://training.plone.org/5/volto/index.html).
+
 ## Installation
 
 ### Prerequisites
@@ -133,11 +137,6 @@ and add this config to your package.json:
 
 More Precommit hooks can be found [here](https://prettier.io/docs/en/precommit.html)
 
-### License
-
-MIT License. Copyrights hold the Plone Foundation.
-See [LICENSE.md](LICENSE.md) for details.
-
 ### Running Guillotina Tests
 
 First, start up Guillotina:
@@ -151,3 +150,8 @@ Then, run the tests:
 ```
 PYTHONPATH=$(pwd)/tests_guillotina env/bin/pybot -v BROWSER:headlesschrome tests_guillotina;
 ```
+
+## License
+
+MIT License. Copyrights hold the Plone Foundation.
+See [LICENSE.md](LICENSE.md) for details.
