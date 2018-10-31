@@ -2,7 +2,9 @@
 
 ## 1.0.0 (2018-10-31)
 
-- Add training documentation link @robgietema
+### Added
+
+- Training documentation link @robgietema
 
 ## 0.9.5 (2018-10-24)
 
