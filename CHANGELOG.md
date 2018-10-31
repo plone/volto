@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.0.0 (unreleased)
+## 1.0.0 (2018-10-31)
 
 - Add training documentation link @robgietema
 
