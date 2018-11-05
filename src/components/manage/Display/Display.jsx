@@ -103,6 +103,7 @@ export default class Display extends Component {
    */
   setLayout(event, { value }) {
     this.props.updateContent(this.props.pathname, {
+      '@static_behaviors': ['guillotina_cms.interfaces.base.ICMSBehavior'],
       [this.props.layout_fieldname]: value,
     });
   }
