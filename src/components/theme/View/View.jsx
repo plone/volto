@@ -189,7 +189,10 @@ export default class View extends Component {
    * @method getViewByLayout
    * @returns {string} Markup for component.
    */
-  getViewByLayout = () => views.layoutViews[this.props.content[getLayoutFieldname(this.props.content)]] || null;
+  getViewByLayout = () =>
+    views.layoutViews[
+      this.props.content[getLayoutFieldname(this.props.content)]
+    ] || null;
 
   /**
    * Cleans the component displayName (specially for connected components)

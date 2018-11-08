@@ -7,6 +7,7 @@
 - Fix edit on root @robgietema
 - Fix sharing @robgietema
 - Fix error on token renew @robgietema
+- Fix layout fieldname @bloodbare
 
 ## 1.0.0 (2018-10-31)
 

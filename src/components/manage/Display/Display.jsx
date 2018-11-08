@@ -18,8 +18,12 @@ import { getLayoutFieldname } from '../../../helpers';
   state => ({
     loaded: state.content.update.loaded,
     layouts: state.schema.schema ? state.schema.schema.layouts : [],
-    layout: state.content.data ? state.content.data[getLayoutFieldname(state.content.data)] : '',
-    layout_fieldname: state.content.data ? getLayoutFieldname(state.content.data) : '',
+    layout: state.content.data
+      ? state.content.data[getLayoutFieldname(state.content.data)]
+      : '',
+    layout_fieldname: state.content.data
+      ? getLayoutFieldname(state.content.data)
+      : '',
     type: state.content.data ? state.content.data['@type'] : '',
   }),
   dispatch =>
@@ -44,7 +48,7 @@ export default class Display extends Component {
     pathname: PropTypes.string.isRequired,
     layouts: PropTypes.arrayOf(PropTypes.string),
     layout: PropTypes.string,
-    layout_fieldname: PropTypes.string,
+    layout_fieldname: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
   };
 
@@ -54,8 +58,6 @@ export default class Display extends Component {
    * @static
    */
   static defaultProps = {
-    history: [],
-    transitions: [],
     layouts: [],
     layout: '',
   };
