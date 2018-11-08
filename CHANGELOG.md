@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.1 (unreleased)
+
+### Change
+
+- Fix edit on root @robgietema
+- Fix sharing @robgietema
+- Fix error on token renew @robgietema
+
 ## 1.0.0 (2018-10-31)
 
 ### Added
