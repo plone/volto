@@ -11,7 +11,7 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn build
+RUN RAZZLE_API_PATH=VOLTO_API_PATH yarn build
 
 ENV API_PATH http://api/db/web
 ENV PUBLIC_URL /

@@ -1,4 +1,4 @@
-# Requires: API_PATH=http://localhost:55001/plone
+# Requires: RAZZLE_API_PATH=http://localhost:55001/plone
 version: '3'
 
 services:

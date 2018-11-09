@@ -12,7 +12,7 @@ export {
   deleteComment,
   listComments,
   updateComment,
-} from './comments/comments';
+} from '@plone/volto/actions/comments/comments';
 export {
   createContent,
   deleteContent,
@@ -20,30 +20,45 @@ export {
   getContent,
   orderContent,
   sortContent,
-} from './content/content';
+} from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
   listControlpanels,
   updateControlpanel,
-} from './controlpanels/controlpanels';
-export { getDiff } from './diff/diff';
-export { emailNotification } from './emailNotification/emailNotification';
+} from '@plone/volto/actions/controlpanels/controlpanels';
+export { getDiff } from '@plone/volto/actions/diff/diff';
+export {
+  emailNotification,
+} from '@plone/volto/actions/emailNotification/emailNotification';
 export {
   createGroup,
   deleteGroup,
   getGroup,
   listGroups,
   updateGroup,
-} from './groups/groups';
-export { getHistory, revertHistory } from './history/history';
-export { addMessage, removeMessage, purgeMessages } from './messages/messages';
-export { getNavigation } from './navigation/navigation';
-export { listRoles } from './roles/roles';
-export { getSchema } from './schema/schema';
-export { resetSearchContent, searchContent } from './search/search';
-export { updateSharing, getSharing } from './sharing/sharing';
-export { getTiles } from './tiles/tiles';
-export { getTypes } from './types/types';
+} from '@plone/volto/actions/groups/groups';
+export {
+  getHistory,
+  revertHistory,
+} from '@plone/volto/actions/history/history';
+export {
+  addMessage,
+  removeMessage,
+  purgeMessages,
+} from '@plone/volto/actions/messages/messages';
+export { getNavigation } from '@plone/volto/actions/navigation/navigation';
+export { listRoles } from '@plone/volto/actions/roles/roles';
+export { getSchema } from '@plone/volto/actions/schema/schema';
+export {
+  resetSearchContent,
+  searchContent,
+} from '@plone/volto/actions/search/search';
+export {
+  updateSharing,
+  getSharing,
+} from '@plone/volto/actions/sharing/sharing';
+export { getTiles } from '@plone/volto/actions/tiles/tiles';
+export { getTypes } from '@plone/volto/actions/types/types';
 export {
   createUser,
   deleteUser,
@@ -53,7 +68,14 @@ export {
   resetPassword,
   updatePassword,
   updateUser,
-} from './users/users';
-export { login, loginRenew, logout } from './userSession/userSession';
-export { getVocabulary } from './vocabularies/vocabularies';
-export { getWorkflow, transitionWorkflow } from './workflow/workflow';
+} from '@plone/volto/actions/users/users';
+export {
+  login,
+  loginRenew,
+  logout,
+} from '@plone/volto/actions/userSession/userSession';
+export { getVocabulary } from '@plone/volto/actions/vocabularies/vocabularies';
+export {
+  getWorkflow,
+  transitionWorkflow,
+} from '@plone/volto/actions/workflow/workflow';

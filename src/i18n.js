@@ -100,7 +100,7 @@ msgstr ""
 "Language-Code: en\\n"
 "Language-Name: English\\n"
 "Preferred-Encodings: utf-8\\n"
-"Domain: plone-react\\n"
+"Domain: volto\\n"
 
 `;
 }
@@ -113,7 +113,7 @@ msgstr ""
 function poToJson() {
   map(glob('locales/**/*.po'), filename => {
     let { items } = Pofile.parse(fs.readFileSync(filename, 'utf8'));
-    const lib = `node_modules/@plone/plone-react/${filename}`;
+    const lib = `node_modules/@plone/volto/${filename}`;
     if (fs.existsSync(lib)) {
       const libItems = Pofile.parse(fs.readFileSync(lib, 'utf8')).items;
       items = [...libItems, ...items];
@@ -157,7 +157,7 @@ function formatHeader(comments, headers) {
  * @return {undefined}
  */
 function syncPoByPot() {
-  const pot = Pofile.parse(fs.readFileSync('locales/plone-react.pot', 'utf8'));
+  const pot = Pofile.parse(fs.readFileSync('locales/volto.pot', 'utf8'));
 
   map(glob('locales/**/*.po'), filename => {
     const po = Pofile.parse(fs.readFileSync(filename, 'utf8'));
@@ -180,7 +180,7 @@ console.log('Extracting messages from source files...');
 extractMessages();
 console.log('Synchronizing messages to pot file...');
 fs.writeFileSync(
-  'locales/plone-react.pot',
+  'locales/volto.pot',
   `${potHeader()}${messagesToPot(getMessages())}\n`,
 );
 console.log('Synchronizing messages to po files...');

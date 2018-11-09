@@ -3,7 +3,7 @@
  * @module helpers/Content
  */
 
-import { omitBy, mapKeys, pickBy, map } from 'lodash';
+import { omitBy, mapKeys, pickBy, map, keys, endsWith, find } from 'lodash';
 
 /**
  * Nest content.
@@ -33,4 +33,14 @@ export function nestContent(props) {
     };
   });
   return nestedProps;
+}
+
+/**
+ * Get layout field.
+ * @function getLayoutFieldname
+ * @param {Object} props Properties.
+ * @return {string} Field name of the layout
+ */
+export function getLayoutFieldname(props) {
+  return find(keys(props), key => endsWith(key, 'content_layout')) || 'layout';
 }

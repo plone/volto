@@ -2,7 +2,7 @@ module.exports = {
   components: 'src/components/**/*.jsx',
   ignore: ['**/*.test.jsx', '**/Contents/Contents*jsx', '**/Tile/Tile.jsx'],
   verbose: true,
-  title: 'Plone React Style Guide',
+  title: 'Volto Style Guide',
   showCode: true,
   showUsage: true,
   sections: [

@@ -18,7 +18,7 @@ static:
 - swagger_static: guillotina_swagger:static
 # - pastanaga: pastanaga-angular/dist
 # - ng: plone-angular-demo/dist
-# - plone: plone-react
+# - plone: volto
 root_user:
   password: root
 auth_extractors:

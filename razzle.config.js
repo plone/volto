@@ -2,7 +2,10 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const fs = require('fs');
+const { fromPairs, map, mapValues } = require('lodash');
+const glob = require('glob').sync;
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
@@ -46,20 +49,42 @@ module.exports = {
     const LESSLOADER = {
       test: /\.less$/,
       include: [path.resolve('./theme'), /node_modules\/semantic-ui-less/],
-      use: [
-        {
-          loader: 'style-loader',
-        },
-        BASE_CSS_LOADER,
-        POST_CSS_LOADER,
-        {
-          loader: 'less-loader',
-          options: {
-            outputStyle: 'expanded',
-            sourceMap: true,
-          },
-        },
-      ],
+      use: dev
+        ? [
+            {
+              loader: 'style-loader',
+            },
+            BASE_CSS_LOADER,
+            POST_CSS_LOADER,
+            {
+              loader: 'less-loader',
+              options: {
+                outputStyle: 'expanded',
+                sourceMap: true,
+              },
+            },
+          ]
+        : [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2,
+                sourceMap: true,
+                modules: false,
+                minimize: true,
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              },
+            },
+            POST_CSS_LOADER,
+            {
+              loader: 'less-loader',
+              options: {
+                outputStyle: 'expanded',
+                sourceMap: true,
+              },
+            },
+          ],
     };
 
     const SVGLOADER = {
@@ -115,15 +140,40 @@ module.exports = {
     // Disabling the ESlint pre loader
     config.module.rules.splice(0, 1);
 
-    const customizations = packageJson.customizations
-      ? packageJson.customizations
-      : {};
+    const customizations = {};
+    map(
+      glob('src/customizations/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)'),
+      filename => {
+        const target = filename.replace('src/', `${projectRootPath}/src/`);
+        if (
+          fs.existsSync(
+            `node_modules/@plone/volto/${filename.replace(
+              'customizations/',
+              '',
+            )}`,
+          )
+        ) {
+          customizations[
+            filename
+              .replace('src/customizations/', '@plone/volto/')
+              .replace(/\.(js|jsx)$/, '')
+          ] = target;
+        } else {
+          console.log(
+            `The file ${filename} doesn't exist in the volto package (${target}), unable to customize.`,
+          );
+        }
+      },
+    );
 
     config.resolve.alias = {
+      ...customizations,
       ...config.resolve.alias,
       '../../theme.config$': `${projectRootPath}/theme/theme.config`,
-      '@plone/plone-react': `${projectRootPath}/node_modules/@plone/plone-react/src/`,
-      ...customizations,
+      '@plone/volto':
+        packageJson.name === '@plone/volto'
+          ? `${projectRootPath}/src/`
+          : `${projectRootPath}/node_modules/@plone/volto/src/`,
     };
 
     config.performance = {
@@ -138,8 +188,8 @@ module.exports = {
         rule.use[0].loader.includes('babel-loader'),
     );
     const { include } = config.module.rules[babelRuleIndex];
-    if (fs.existsSync('./node_modules/@plone/plone-react/src')) {
-      include.push(fs.realpathSync('./node_modules/@plone/plone-react/src'));
+    if (fs.existsSync('./node_modules/@plone/volto/src')) {
+      include.push(fs.realpathSync('./node_modules/@plone/volto/src'));
     }
     config.module.rules[babelRuleIndex] = Object.assign(
       config.module.rules[babelRuleIndex],
@@ -157,7 +207,7 @@ module.exports = {
                 /\.(svg|png|jpg|jpeg|gif|ico)$/,
                 /\.(mp4|mp3|ogg|swf|webp)$/,
                 /\.(css|scss|sass|sss|less)$/,
-                /^@plone\/plone-react/,
+                /^@plone\/volto/,
               ].filter(Boolean),
             }),
           ]

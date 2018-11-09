@@ -27,7 +27,7 @@ ${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 *** Keywords ***
 
 Start Guillotina Backend
-    Set Environment Variable  API_PATH  http://localhost:8081/db/container
+    Set Environment Variable  RAZZLE_API_PATH  http://localhost:8081/db/container
     Log To Console  Starting Guillotina
     ${result} =  Run Process  docker-compose -f g-api/docker-compose-local.yml up -d  shell=True  stdout=${TEMPDIR}/stdout.txt	stderr=${TEMPDIR}/stderr.txt
     Log To Console  ${result.stderr}
@@ -35,7 +35,7 @@ Start Guillotina Backend
 Start Plone Backend
     Import Library  plone.app.robotframework.Zope2Server
     ${PORT}=  Get Environment Variable  ZSERVER_PORT  55001
-    Set Environment Variable  API_PATH  http://localhost:${PORT}/plone
+    Set Environment Variable  RAZZLE_API_PATH  http://localhost:${PORT}/plone
     Set Environment Variable  Z3C_AUTOINCLUDE_DEPENDENCIES_DISABLED  1
     Log To Console  Starting Plone
     Start Zope server  ${FIXTURE}
@@ -44,7 +44,7 @@ Stop Plone Backend
     Import Library  plone.app.robotframework.Zope2Server
     Stop Zope server
 
-Start Plone React
+Start Volto
     Log To Console  Starting Webpack
     Start Webpack  yarn build && yarn start:prod
     ...            check=started
@@ -52,7 +52,7 @@ Start Plone React
 Suite Setup
     Run Keyword If   '${API}' == 'Plone'   Start Plone Backend
     Run Keyword If   '${API}' == 'Guillotina'   Start Guillotina Backend
-    Start Plone React
+    Start Volto
 
 
 Suite Teardown
