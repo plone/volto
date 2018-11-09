@@ -9,6 +9,10 @@
 - Fix error on token renew @robgietema
 - Fix layout fieldname @bloodbare
 
+## Added
+
+- Buildout for Python 3 @pbauer
+
 ## 1.0.0 (2018-10-31)
 
 ### Added
