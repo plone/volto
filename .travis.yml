@@ -40,6 +40,7 @@ install:
     virtualenv env --python=$(which python) --no-site-packages;
     env/bin/pip install zc.recipe.egg==2.0.4 --no-cache-dir;
     env/bin/pip install -r api/docker/requirements.txt;
+    env/bin/pip install -r test-requirements.txt;
     env/bin/pip install -U https://github.com/zopefoundation/z3c.autoinclude/archive/pip.tar.gz#egg=z3c.autoinclude;
     fi
   - pip install -r test-requirements.txt;
