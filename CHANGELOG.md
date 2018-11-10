@@ -8,6 +8,7 @@
 - Fix sharing @robgietema
 - Fix error on token renew @robgietema
 - Fix layout fieldname @bloodbare
+- First field in a form will get the focus @robgietema
 
 ## Added
 
