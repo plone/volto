@@ -21,6 +21,7 @@ import {
   getTilesLayoutFieldname,
   hasTilesData,
 } from '../../../helpers';
+import { settings } from '~/config';
 
 /**
  * Component to display the document view.
@@ -82,10 +83,11 @@ const DocumentView = ({ content }) => {
         />
       )}
       {content.text && (
-        <p dangerouslySetInnerHTML={{ __html: content.text.data }} />
+        <p dangerouslySetInnerHTML={{ __html: content.text.data.replace(/a href=\"([^"]*\.[^"]*)\"/g, `a href="${settings.apiPath}$1/download/file"`) }} />
       )}
     </Container>
   );
+
 };
 
 /**
