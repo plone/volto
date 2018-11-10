@@ -77,6 +77,17 @@ export default class Edit extends Component {
   }
 
   /**
+   * Component did mount lifecycle method
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    if (this.node) {
+      this.node.focus();
+    }
+  }
+
+  /**
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
