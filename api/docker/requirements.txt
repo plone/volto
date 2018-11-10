@@ -204,7 +204,7 @@ python-dateutil==2.6.1
 python-gettext==3.0
 pytz==2017.3
 repoze.xmliter==0.6
-requests==2.18.4
+requests==2.20.1
 robotframework==3.0.4
 robotframework-debuglibrary==1.1.4
 robotframework-react==1.0.0a2

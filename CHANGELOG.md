@@ -78,6 +78,7 @@
 ### Changes
 
 - Fix compiling when used as a library @robgietema
+- Fix buildout security issue @robgietema
 
 ## 0.8.0 (2018-10-03)
 
