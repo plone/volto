@@ -40,7 +40,10 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   onChange(code) {
-    console.log('onChange', code);
+    this.props.onChangeTile(this.props.tile, {
+      ...this.props.data,
+      html: code,
+    });
     this.setState({ code });
   }
 

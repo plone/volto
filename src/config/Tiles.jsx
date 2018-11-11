@@ -9,8 +9,6 @@ import EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
 
 import codeSVG from '../icons/code.svg';
 
-// { title: id , icon }
-
 const customTiles = [
   {
     title: 'html',

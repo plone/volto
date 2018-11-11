@@ -1,6 +1,6 @@
 /**
  * View html tile.
- * @module components/manage/Tiles/Image/View
+ * @module components/manage/Tiles/HTML/View
  */
 
 import React from 'react';
