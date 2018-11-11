@@ -195,7 +195,7 @@ plone.theme==3.0.6
 plone.tiles==2.1
 plone.transformchain==2.0.1
 plone.uuid==1.0.5
-plone.z3cform==0.9.1
+plone.z3cform==1.0.0
 plonetheme.barceloneta==1.8.1
 ply==3.4
 prompt-toolkit==1.0.15
