@@ -267,7 +267,7 @@ zope.globalrequest==1.5
 zope.i18n==4.6.1
 zope.i18nmessageid==4.3.1
 zope.interface==4.6.0
-zope.intid==3.7.2
+zope.intid==4.3.0
 zope.keyreference==3.6.4
 zope.lifecycleevent==3.6.2
 zope.location==3.9.1
