@@ -35,7 +35,7 @@ Products.MailHost==4.2
 Products.MimetypesRegistry==2.1.5
 Products.OFSP==4.0.1
 Products.PlacelessTranslationService==2.0.7
-Products.PlonePAS==5.0.15
+Products.PlonePAS==6.0.0
 Products.PluggableAuthService==1.11.0
 Products.PluginRegistry==1.4
 Products.PortalTransforms==3.1.2
