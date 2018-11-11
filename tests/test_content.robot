@@ -8,6 +8,7 @@ Suite Teardown  Close all browsers
 *** Test Cases ***
 
 Scenario: As a site administrator I can add a page
+  Skip test on Guillotina
   Given a logged in site-administrator
     and the Plone site root
    When I add a Page with the title 'My Page'
@@ -15,13 +16,14 @@ Scenario: As a site administrator I can add a page
     and I should see 'My Page' in the navigation
 
 Scenario: As a site administrator I can add a News Item
+  Skip test on Guillotina
   Given a logged in site-administrator
     and the Plone site root
    When I add a News Item with the title 'My News Item'
    # Then I should see a notification that 'My Page' has been created
     and I should see 'My News Item' in the navigation
 
-# XXX: Event is broken in Plone-React
+# XXX: Event is broken in Volto
 # Scenario: As a site administrator I can add an Event
 #   Given a logged in site-administrator
 #     and the Plone site root
@@ -30,6 +32,7 @@ Scenario: As a site administrator I can add a News Item
 #     and I should see 'My Event' in the navigation
 
 Scenario: As a site administrator I can add a Folder
+  Skip test on Guillotina
   Given a logged in site-administrator
     and the Plone site root
    When I add a Folder with the title 'My Folder'
@@ -170,7 +173,7 @@ I add a text tile with the content '${text}' to the page
 # --- Then -------------------------------------------------------------------
 
 I should see '${title}' in the navigation
-  Go to  ${FRONTEND_URL}/my-page
+  Go to  ${FRONTEND_URL}
   Reload Page
   Wait until page contains element  css=.navigation a
   Wait until page contains element  xpath=//*[contains(@class, 'navigation')]//*[contains(text(), '${title}')]
