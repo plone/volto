@@ -94,7 +94,7 @@ jsonschema==2.6.0
 lxml==4.2.5
 mailinglogger==5.0.0
 mechanize==0.3.7
-mockup==2.7.2
+mockup==2.7.6
 mr.developer==1.38
 olefile==0.44
 pathlib==1.0.1
