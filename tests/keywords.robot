@@ -5,6 +5,9 @@ Library  DebugLibrary
 Library  RequestsLibrary
 Library  SeleniumLibrary  timeout=30  implicit_wait=0
 
+Variables  variables.py
+
+
 *** Variables ***
 
 ${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
