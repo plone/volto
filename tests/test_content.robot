@@ -39,6 +39,38 @@ Scenario: As a site administrator I can add a Folder
    # Then I should see a notification that 'My Page' has been created
     and I should see 'My Folder' in the navigation
 
+Scenario: As a site administrator I can add a File
+  Skip test on Guillotina
+  Given a logged in site-administrator
+    and the Plone site root
+   When I add a File with the title 'My File'
+   # Then I should see a notification that 'My Page' has been created
+    and I should see 'My File' in the navigation
+
+Scenario: As a site administrator I can add an Image
+  Skip test on Guillotina
+  Given a logged in site-administrator
+    and the Plone site root
+   When I add an Image with the title 'My Image'
+   # Then I should see a notification that 'My Page' has been created
+    and I should see 'My Image' in the navigation
+
+# XXX: Links are not implemented in Plone-React yet
+# Scenario: As a site administrator I can add a Link
+#   Given a logged in site-administrator
+#     and the Plone site root
+#    When I add a Link with the title 'My Link'
+#    # Then I should see a notification that 'My Page' has been created
+#     and I should see 'My Link' in the navigation
+
+# XXX: Collections are not implemented in Plone-React yet
+# Scenario: As a site administrator I can add a Collection
+#   Given a logged in site-administrator
+#     and the Plone site root
+#    When I add a Collection with the title 'My Collection'
+#    # Then I should see a notification that 'My Page' has been created
+#     and I should see 'My Collection' in the navigation
+
 # Scenario: As a site administrator I can add a text tile to a page
 #   Given a logged in site-administrator
 #     and a page
