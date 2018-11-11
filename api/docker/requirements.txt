@@ -42,7 +42,7 @@ Products.PortalTransforms==3.1.5
 Products.PythonScripts==4.2
 Products.ResourceRegistries==3.0.7
 Products.SecureMailHost==1.1.2
-Products.Sessions==3.0
+Products.Sessions==4.2
 Products.StandardCacheManagers==2.13.1
 Products.TemporaryFolder==3.0
 Products.ZCTextIndex==2.13.5
