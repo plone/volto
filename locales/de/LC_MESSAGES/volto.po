@@ -94,6 +94,8 @@ msgstr "Aufsteigend"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactInfo/ContactInfo
 msgid "Back"
 msgstr "Zurück"
 
@@ -185,6 +187,11 @@ msgstr "Passwort bestätigen"
 msgid "Contact"
 msgstr "Kontakt"
 
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactInfo/ContactInfo
+msgid "Contact form"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Contents"
 msgstr "Inhaltsverzeichnis"
@@ -236,6 +243,8 @@ msgstr "Datum"
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactInfo/ContactInfo
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
@@ -323,6 +332,11 @@ msgstr "Fieldset bearbeiten"
 msgid "Edit {title}"
 msgstr "{title} bearbeiten"
 
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactInfo/ContactInfo
+msgid "Email sent"
+msgstr ""
+
 #: components/manage/Tiles/Video/Edit
 msgid "Enter Video URL"
 msgstr "Video-URL eingeben"
@@ -352,6 +366,8 @@ msgstr "Geben Sie ihr neues Passwort ein. Mindestens 5 Zeichen."
 
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactInfo/ContactInfo
 #: components/theme/Login/Login
 msgid "Error"
 msgstr "Fehler"
@@ -375,6 +391,11 @@ msgstr "Dateiname"
 #: components/manage/Contents/Contents
 msgid "Filter…"
 msgstr "Filter…"
+
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactInfo/ContactInfo
+msgid "From"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
@@ -466,6 +487,11 @@ msgstr "Anmelden"
 msgid "Login Name"
 msgstr "Benutzername"
 
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactInfo/ContactInfo
+msgid "Message"
+msgstr ""
+
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
@@ -488,6 +514,8 @@ msgid "My email address is"
 msgstr "Meine E-Mail-Adresse lautet"
 
 #: components/manage/Sharing/Sharing
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactInfo/ContactInfo
 msgid "Name"
 msgstr "Name"
 
@@ -687,6 +715,11 @@ msgstr "Auswahl"
 msgid "Select…"
 msgstr "Wähle…"
 
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactInfo/ContactInfo
+msgid "Send"
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set my password"
 msgstr "Passwort neu setzen"
@@ -752,6 +785,11 @@ msgstr "Status: {current}"
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "Text"
+
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactInfo/ContactInfo
+msgid "Subject"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
