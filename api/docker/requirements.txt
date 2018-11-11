@@ -112,7 +112,7 @@ plone.app.contentmenu==2.2.4
 plone.app.contentrules==4.1
 plone.app.contenttypes==2.0.0
 plone.app.controlpanel==4.0.0
-plone.app.customerize==1.3.7
+plone.app.customerize==1.3.8
 plone.app.dexterity==2.4.9
 plone.app.discussion==3.0.5
 plone.app.drafts==1.1.2
