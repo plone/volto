@@ -129,7 +129,7 @@ plone.app.lockingbehavior==1.0.5
 plone.app.mosaic==2.1.1
 plone.app.multilingual==5.3.0
 plone.app.portlets==4.4.0
-plone.app.querystring==1.4.8
+plone.app.querystring==1.4.10
 plone.app.redirector==1.3.6
 plone.app.registry==1.7.1
 plone.app.relationfield==1.4.0
