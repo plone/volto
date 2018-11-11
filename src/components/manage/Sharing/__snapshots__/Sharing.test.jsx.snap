@@ -80,9 +80,7 @@ exports[`Sharing renders a sharing component 1`] = `
             </th>
             <th
               className=""
-            >
-              Contributer
-            </th>
+            />
           </tr>
         </thead>
         <tbody
@@ -105,26 +103,7 @@ exports[`Sharing renders a sharing component 1`] = `
             </td>
             <td
               className=""
-            >
-              <div
-                className="ui checked disabled fitted checkbox"
-                onChange={[Function]}
-                onClick={[Function]}
-                onMouseDown={[Function]}
-              >
-                <input
-                  checked={true}
-                  className="hidden"
-                  disabled={true}
-                  onClick={[Function]}
-                  readOnly={true}
-                  tabIndex={-1}
-                  type="checkbox"
-                  value="john-doe.Contributer"
-                />
-                <label />
-              </div>
-            </td>
+            />
           </tr>
         </tbody>
       </table>
