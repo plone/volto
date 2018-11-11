@@ -159,7 +159,7 @@ plone.dexterity==2.7.0
 plone.event==1.4.0
 plone.folder==3.0.0
 plone.formwidget.multifile==2.0
-plone.formwidget.namedfile==2.0.5
+plone.formwidget.namedfile==2.0.7
 plone.formwidget.querystring==1.1.10
 plone.formwidget.recurrence==2.1.2
 plone.i18n==3.0.7
