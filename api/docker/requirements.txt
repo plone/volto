@@ -261,7 +261,7 @@ zope.deprecation==4.3.0
 zope.dottedname==4.3
 zope.error==4.5.0
 zope.event==4.4
-zope.exceptions==3.6.2
+zope.exceptions==4.3
 zope.filerepresentation==3.6.1
 zope.globalrequest==1.2
 zope.i18n==4.2.0
