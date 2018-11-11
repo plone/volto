@@ -14,7 +14,7 @@ Pillow==5.3.0
 Plone==5.1.4
 Products.ATContentTypes==3.0.0
 Products.Archetypes==1.15.5
-Products.BTreeFolder2==2.14.0
+Products.BTreeFolder2==4.1
 Products.CMFCore==2.2.12
 Products.CMFDiffTool==3.2.0
 Products.CMFDynamicViewFTI==4.1.7
