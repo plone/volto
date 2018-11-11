@@ -49,7 +49,7 @@ Products.ZCTextIndex==4.0.2
 Products.ZCatalog==4.2
 Products.ZSQLMethods==3.0.3
 Products.ZopeVersionControl==1.1.4
-Products.contentmigration==2.1.19
+Products.contentmigration==2.2.0
 Products.statusmessages==5.0.2
 Products.validation==2.1
 PyJWT==1.6.4
