@@ -15,6 +15,7 @@ export Editbar from '@plone/volto/components/mosaic/Editbar/Editbar';
 
 export Anontools from '@plone/volto/components/theme/Anontools/Anontools';
 export Breadcrumbs from '@plone/volto/components/theme/Breadcrumbs/Breadcrumbs';
+export ContactInfo from '@plone/volto/components/theme/ContactInfo/ContactInfo';
 export Footer from '@plone/volto/components/theme/Footer/Footer';
 export Header from '@plone/volto/components/theme/Header/Header';
 export Icon from '@plone/volto/components/theme/Icon/Icon';
