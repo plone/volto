@@ -5,6 +5,7 @@
 
 import React from 'react';
 import { Container, Divider, List, Segment } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import {
   FormattedMessage,
   defineMessages,
@@ -79,8 +80,10 @@ const Footer = ({ intl }) => (
         <List.Item href="/accessibility-info">
           <FormattedMessage id="Accessibility" defaultMessage="Accessibility" />
         </List.Item>
-        <List.Item href="/contact">
-          <FormattedMessage id="Contact" defaultMessage="Contact" />
+        <List.Item>
+          <Link to="contact-info" className="item">
+            <FormattedMessage id="Contact" defaultMessage="Contact" />
+          </Link>
         </List.Item>
         <List.Item href="http://plone.com">
           <FormattedMessage
