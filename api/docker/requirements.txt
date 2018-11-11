@@ -262,7 +262,7 @@ zope.dottedname==4.3
 zope.error==4.5.0
 zope.event==4.4
 zope.exceptions==4.3
-zope.filerepresentation==3.6.1
+zope.filerepresentation==4.2.0
 zope.globalrequest==1.2
 zope.i18n==4.2.0
 zope.i18nmessageid==4.1.0
