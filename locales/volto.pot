@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2018-10-04T07:29:24.617Z\n"
+"POT-Creation-Date: 2018-11-12T10:59:22.167Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -582,6 +582,7 @@ msgstr ""
 msgid "New password"
 msgstr ""
 
+#: components/manage/Tiles/SummaryBox/Edit
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
@@ -764,6 +765,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
+#: components/manage/Tiles/SummaryBox/Edit
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search
 msgid "Search"
@@ -1155,6 +1157,11 @@ msgstr ""
 #: components/theme/Login/Login
 # defaultMessage: registration form
 msgid "registration form"
+msgstr ""
+
+#: config/Tiles
+# defaultMessage: Summary Box
+msgid "summarybox"
 msgstr ""
 
 #: config/Tiles

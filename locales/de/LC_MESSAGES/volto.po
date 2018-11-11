@@ -496,6 +496,7 @@ msgstr "Name"
 msgid "New password"
 msgstr "Neues Passwort"
 
+#: components/manage/Tiles/SummaryBox/Edit
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -647,6 +648,7 @@ msgstr "Rechte"
 msgid "Save"
 msgstr "Speichern"
 
+#: components/manage/Tiles/SummaryBox/Edit
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
 msgstr "Suche"
@@ -965,6 +967,10 @@ msgstr "Meine E-Mail-Adresse lautet"
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "Registrierungsformular"
+
+#: config/Tiles
+msgid "summarybox"
+msgstr ""
 
 #: config/Tiles
 msgid "text"

@@ -13,6 +13,7 @@
 ## Added
 
 - Buildout for Python 3 @pbauer
+- Add Summary Box tile (Proxy) @pnicolli
 
 ## 1.0.0 (2018-10-31)
 

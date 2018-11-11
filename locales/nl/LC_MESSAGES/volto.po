@@ -500,6 +500,7 @@ msgstr "Naam"
 msgid "New password"
 msgstr "Nieuw wachtwoord"
 
+#: components/manage/Tiles/SummaryBox/Edit
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -651,6 +652,7 @@ msgstr "Rechten"
 msgid "Save"
 msgstr "Opslaan"
 
+#: components/manage/Tiles/SummaryBox/Edit
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
 msgstr "Zoek"
@@ -968,6 +970,10 @@ msgstr ""
 
 #: components/theme/Login/Login
 msgid "registration form"
+msgstr ""
+
+#: config/Tiles
+msgid "summarybox"
 msgstr ""
 
 #: config/Tiles

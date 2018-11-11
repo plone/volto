@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a summary box view component 1`] = `
+<div
+  className="ui card"
+  floated="left"
+  onClick={[Function]}
+>
+  <img
+    alt="Test"
+    className="ui image"
+    clearing={true}
+    src="undefined/test/image.jpeg"
+  />
+  <div
+    className="content"
+  >
+    <div
+      className="header"
+    >
+      Test
+    </div>
+    <div
+      className="description"
+    >
+      Summary
+    </div>
+  </div>
+</div>
+`;

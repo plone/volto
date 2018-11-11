@@ -92,6 +92,7 @@ export EditDescriptionTile from '@plone/volto/components/manage/Tiles/Descriptio
 export EditTitleTile from '@plone/volto/components/manage/Tiles/Title/Edit';
 export EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
 export EditImageTile from '@plone/volto/components/manage/Tiles/Image/Edit';
+export EditSummaryBoxTile from '@plone/volto/components/manage/Tiles/SummaryBox/Edit';
 export EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
 export EditTile from '@plone/volto/components/manage/Tiles/Tile/Edit';
 
@@ -99,4 +100,5 @@ export ViewDescriptionTile from '@plone/volto/components/manage/Tiles/Descriptio
 export ViewTitleTile from '@plone/volto/components/manage/Tiles/Title/View';
 export ViewTextTile from '@plone/volto/components/manage/Tiles/Text/View';
 export ViewImageTile from '@plone/volto/components/manage/Tiles/Image/View';
+export ViewSummaryBoxTile from '@plone/volto/components/manage/Tiles/SummaryBox/View';
 export ViewVideoTile from '@plone/volto/components/manage/Tiles/Video/View';
