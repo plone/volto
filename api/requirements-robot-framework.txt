@@ -3,5 +3,5 @@ robotframework-debuglibrary==1.1.4
 robotframework-requests==0.5.0
 robotframework-seleniumlibrary==3.2.0
 robotframework-webpack==1.1.3
-robotframework-pabot
+robotframework-pabot==0.45
 robotframework-faker
