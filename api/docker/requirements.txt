@@ -174,7 +174,7 @@ plone.outputfilters==3.1.0
 plone.portlet.collection==3.3.1
 plone.portlet.static==3.1.3
 plone.portlets==2.3
-plone.protect==3.1.3
+plone.protect==4.1.0
 plone.recipe.zope2instance==4.4.0
 plone.registry==1.1.2
 plone.resource==2.0.1
