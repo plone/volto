@@ -237,7 +237,7 @@ zc.lockfile==1.3.0
 zc.recipe.egg==2.0.7
 zc.relation==1.1.post2
 zdaemon==4.3
-zodbpickle==0.7.0
+zodbpickle==1.0.2
 zope.annotation==3.5.0
 zope.app.locales==3.7.5
 zope.app.publication==3.12.0
