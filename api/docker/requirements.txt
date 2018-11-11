@@ -258,7 +258,7 @@ zope.copy==4.2
 zope.datetime==4.2.0
 zope.deferredimport==4.3
 zope.deprecation==4.3.0
-zope.dottedname==4.2
+zope.dottedname==4.3
 zope.error==3.7.4
 zope.event==3.5.2
 zope.exceptions==3.6.2
