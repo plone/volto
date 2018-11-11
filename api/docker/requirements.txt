@@ -156,7 +156,7 @@ plone.cachepurging==2.0
 plone.caching==1.2.0
 plone.contentrules==2.0.9
 plone.dexterity==2.7.0
-plone.event==1.3.4
+plone.event==1.4.0
 plone.folder==1.0.11
 plone.formwidget.multifile==2.0
 plone.formwidget.namedfile==2.0.5
