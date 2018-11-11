@@ -39,7 +39,7 @@ Products.PlonePAS==6.0.0
 Products.PluggableAuthService==1.11.0
 Products.PluginRegistry==1.6.1
 Products.PortalTransforms==3.1.5
-Products.PythonScripts==2.13.2
+Products.PythonScripts==4.2
 Products.ResourceRegistries==3.0.7
 Products.SecureMailHost==1.1.2
 Products.Sessions==3.0
