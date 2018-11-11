@@ -5,6 +5,9 @@ Library  DebugLibrary
 Library  RequestsLibrary
 Library  SeleniumLibrary  timeout=30  implicit_wait=0
 
+Variables  variables.py
+
+
 *** Variables ***
 
 ${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
@@ -12,6 +15,7 @@ ${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 ...                    plone.restapi:tiles
 ${FRONTEND_URL}        http://localhost:3000/
 ${BROWSER}             chrome
+
 
 *** Keywords ***
 
@@ -57,19 +61,7 @@ Open default browser
 # action is carried out (e.g. 'the front page')
 
 A logged in site-administrator
-    ${headers}  Create Dictionary  Accept  application/json  Content-Type  application/json
-    ${data}=  Create dictionary  login  admin  password  secret
-    Run Keyword If   '${API}' == 'Guillotina'   Create Session  plone  http://localhost:8081/db/container
-    Run Keyword If   '${API}' == 'Plone'   Create Session  plone  http://localhost:55001/plone
-    ${resp}=	Post Request  plone  /@login  headers=${headers}  data=${data}
-    Should Be Equal As Strings	${resp.status_code}	 200
-    # Log  ${resp.json().get('token')}  WARN
-    the front page
-    Add Cookie  auth_token  ${resp.json().get('token')}
-    Reload page
-    Wait until keyword succeeds  120s  1s
-    ...   Page fully loaded
-    Page should contain  Log out
+    Autologin as  admin  secret
 
 the front page
     Go to  ${FRONTEND_URL}
@@ -119,3 +111,21 @@ I should be logged out
 
 I should be logged in
     Wait until element is visible  css=.left.fixed.menu
+
+
+Autologin as
+    [Arguments]  ${username}=admin  ${password}=secret
+    ${headers}  Create Dictionary  Accept  application/json  Content-Type  application/json
+    ${data}=  Create dictionary  login  ${username}  password  ${password}
+    Run Keyword If   '${API}' == 'Guillotina'   Create Session  plone  http://localhost:8081/db/container
+    Run Keyword If   '${API}' == 'Plone'   Create Session  plone  http://localhost:55001/plone
+    ${resp}=	Post Request  plone  /@login  headers=${headers}  data=${data}
+    Should Be Equal As Strings	${resp.status_code}	 200
+    # Log  ${resp.json().get('token')}  WARN
+    the front page
+    Add Cookie  auth_token  ${resp.json().get('token')}
+    Reload page
+    Wait until keyword succeeds  120s  1s
+    ...   Page fully loaded
+    Wait until page contains element  css=#toolbar
+    Page should contain  Log out
