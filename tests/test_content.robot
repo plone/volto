@@ -39,12 +39,50 @@ Scenario: As a site administrator I can add a Folder
    # Then I should see a notification that 'My Page' has been created
     and I should see 'My Folder' in the navigation
 
+Scenario: As a site administrator I can add a File
+  Given a logged in site-administrator
+    and the Plone site root
+   When I add a File with the title 'My File'
+   # Then I should see a notification that 'My Page' has been created
+    and I should see 'My File' in the navigation
+
+Scenario: As a site administrator I can add an Image
+  Given a logged in site-administrator
+    and the Plone site root
+   When I add an Image with the title 'My Image'
+   # Then I should see a notification that 'My Page' has been created
+    and I should see 'My Image' in the navigation
+
+# XXX: Links are not implemented in Volto yet
+# Scenario: As a site administrator I can add a Link
+#   Given a logged in site-administrator
+#     and the Plone site root
+#    When I add a Link with the title 'My Link'
+#    # Then I should see a notification that 'My Page' has been created
+#     and I should see 'My Link' in the navigation
+
+# XXX: Collections are not implemented in Volto yet
+# Scenario: As a site administrator I can add a Collection
+#   Given a logged in site-administrator
+#     and the Plone site root
+#    When I add a Collection with the title 'My Collection'
+#    # Then I should see a notification that 'My Page' has been created
+#     and I should see 'My Collection' in the navigation
+
 Scenario: As a site administrator I can add a text tile to a page
   Given a logged in site-administrator
     and a page
    When I add a text tile with the content 'My text tile' to the page
 #  Then I should see a notification that 'My Page' has been created
      and I should see 'My text tile' on the page view
+
+# Scenario: As a site administrator I can add an image tile to a page
+#   Given a logged in site-administrator
+#     and a page
+#    When I add an image tile to the page
+# #  Then I should see a notification that 'My Page' has been created
+#      and I should see the image on the page view
+
 
 *** Keywords ***
 
@@ -139,6 +177,8 @@ I add a text tile with the content '${text}' to the page
   Input tile  text  ${text}
   Click element  css=*[title=Save]
 
+# I add an image tile to the page
+#   Debug
 
 # --- Then -------------------------------------------------------------------
 
@@ -151,6 +191,9 @@ I should see '${title}' in the navigation
 
 I should see '${text}' on the page view
   Page should contain  ${text}
+
+# I should see the image on the page view
+#   Debug
 
 # --- Helper -----------------------------------------------------------------
 
