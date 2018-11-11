@@ -22,15 +22,6 @@ describe('Contact form', () => {
       },
       userSession: {},
       content: {},
-      users: {
-        user: {},
-        get: {
-          loaded: true,
-        },
-        update: {
-          loading: false,
-        },
-      },
     });
     const component = renderer.create(
       <Provider store={store}>
@@ -43,40 +34,30 @@ describe('Contact form', () => {
     expect(json).toMatchSnapshot();
   });
 
-  // it('renders a contact form with error message', () => {
-  //   const store = mockStore({
-  //     emailNotification: {
-  //       error: {
-  //         message: 'Error foo',
-  //       },
-  //       loaded: false,
-  //       loading: false,
-  //     },
-  //     intl: {
-  //       locale: 'en',
-  //       messages: {},
-  //     },
-  //     // userSession: {
-  //     //   token: jwt.sign({ sub: 'john' }, 'secret'),
-  //     // },
-  //     // users: {
-  //     //   user: {},
-  //     //   get: {
-  //     //     loaded: true,
-  //     //   },
-  //     //   update: {
-  //     //     loading: false,
-  //     //   },
-  //     // },
-  //   });
-  //   const component = renderer.create(
-  //     <Provider store={store}>
-  //       <MemoryRouter>
-  //         <ContactInfo location={{ pathname: '/' }} />
-  //       </MemoryRouter>
-  //     </Provider>,
-  //   );
-  //   const json = component.toJSON();
-  //   expect(json).toMatchSnapshot();
-  // });
+  it('renders a contact form with error message', () => {
+    const store = mockStore({
+      emailNotification: {
+        error: {
+          message: 'Error foo',
+        },
+        loaded: false,
+        loading: false,
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+      userSession: {},
+      content: {},
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <ContactInfo location={{ pathname: '/' }} />
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });
