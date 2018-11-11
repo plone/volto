@@ -23,7 +23,7 @@ Products.CMFFormController==4.0.0
 Products.CMFPlacefulWorkflow==2.0.0
 Products.CMFPlone==5.1.4
 Products.CMFQuickInstallerTool==4.0.0
-Products.CMFUid==2.2.2
+Products.CMFUid==3.0.1
 Products.DCWorkflow==2.2.5
 Products.DateRecurringIndex==2.1
 Products.ExtendedPathIndex==3.3.0
