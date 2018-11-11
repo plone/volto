@@ -8,6 +8,7 @@ Suite Teardown  Close all browsers
 *** Test Cases ***
 
 Scenario: As a site administrator I can add a page
+  Skip test on Guillotina
   Given a logged in site-administrator
     and the Plone site root
    When I add a Page with the title 'My Page'

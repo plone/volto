@@ -16,12 +16,14 @@ ${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 ${FRONTEND_URL}        http://localhost:3000/
 ${BROWSER}             chrome
 
+
 *** Keywords ***
 
-### Test Setup and Test Teardown are only called when robot tests are run for
-### the whole directory (see: ./__init__.robot). These keyword import
-### Zope2Server library to make it possible to run individual test case
-### files without Zope2Server in PYTHONPATH of pybot test runner.
+# --- TEST SETUP / TEARDOWN --------------------------------------------------
+# Test Setup and Test Teardown are only called when robot tests are run for
+# the whole directory (see: ./__init__.robot). These keyword import
+# Zope2Server library to make it possible to run individual test case
+# files without Zope2Server in PYTHONPATH of pybot test runner.
 
 Test Setup
     Run Keyword If   '${API}' == 'Plone'   Import library  plone.app.robotframework.Zope2Server
@@ -36,7 +38,7 @@ Test Teardown
     Run Keyword If   '${API}' == 'Plone'   ZODB TearDown
     Close all browsers
 
-###
+# --- BROWSER ----------------------------------------------------------------
 
 Create default browser
     [Documentation]  Opens a new browser window based on configured ${BROWSER}
