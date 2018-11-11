@@ -164,7 +164,7 @@ plone.formwidget.querystring==1.1.10
 plone.formwidget.recurrence==2.1.3
 plone.i18n==4.0.1
 plone.indexer==1.0.5
-plone.intelligenttext==2.2.1
+plone.intelligenttext==3.0.0
 plone.jsonserializer==0.9.5
 plone.keyring==3.0.2
 plone.locking==2.2.2
