@@ -109,7 +109,7 @@ plone.app.collection==1.2.6
 plone.app.content==3.6.0
 plone.app.contentlisting==2.0.0
 plone.app.contentmenu==2.2.4
-plone.app.contentrules==4.0.18
+plone.app.contentrules==4.1
 plone.app.contenttypes==1.4.10
 plone.app.controlpanel==3.0.4
 plone.app.customerize==1.3.7
