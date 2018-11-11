@@ -3,7 +3,7 @@ Acquisition==4.5
 BTrees==4.5.1
 Babel==2.6.0
 Chameleon==3.5
-DateTime==4.2
+DateTime==4.3
 DocumentTemplate==2.13.4
 ExtensionClass==4.3.0
 Markdown==2.6.9
