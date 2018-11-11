@@ -241,7 +241,7 @@ zodbpickle==1.0.2
 zope.annotation==4.7.0
 zope.app.locales==4.0.1
 zope.app.publication==4.3.0
-zope.authentication==3.7.1
+zope.authentication==4.4.0
 zope.broken==3.6.0
 zope.browser==2.1.0
 zope.browsermenu==4.2
