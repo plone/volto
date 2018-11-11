@@ -118,7 +118,7 @@ plone.app.discussion==3.1.0
 plone.app.drafts==1.1.2
 plone.app.event==3.2.1
 plone.app.folder==1.3.0
-plone.app.i18n==3.0.4
+plone.app.i18n==3.0.5
 plone.app.imaging==2.0.7
 plone.app.intid==1.1.3
 plone.app.iterate==3.3.7
