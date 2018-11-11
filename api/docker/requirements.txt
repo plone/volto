@@ -268,7 +268,7 @@ zope.i18n==4.6.1
 zope.i18nmessageid==4.3.1
 zope.interface==4.6.0
 zope.intid==4.3.0
-zope.keyreference==3.6.4
+zope.keyreference==4.2.0
 zope.lifecycleevent==3.6.2
 zope.location==3.9.1
 zope.pagetemplate==4.2.1
