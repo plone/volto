@@ -8,7 +8,7 @@ DocumentTemplate==2.13.4
 ExtensionClass==4.4
 Markdown==3.0.1
 Missing==4.1
-MultiMapping==3.1
+MultiMapping==4.1
 Persistence==2.13.2
 Pillow==4.3.0
 Plone==5.1.2
