@@ -66,7 +66,7 @@ Zope2==2.13.28
 ZopeUndo==4.3
 archetypes.multilingual==3.0.6
 archetypes.schemaextender==3.0.0
-borg.localrole==3.1.5
+borg.localrole==3.1.6
 certifi==2017.11.5
 chardet==3.0.4
 collective.MockMailHost==1.1.0
