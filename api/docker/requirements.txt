@@ -270,7 +270,7 @@ zope.interface==4.6.0
 zope.intid==4.3.0
 zope.keyreference==4.2.0
 zope.lifecycleevent==4.3
-zope.location==3.9.1
+zope.location==4.2
 zope.pagetemplate==4.2.1
 zope.processlifetime==1.0
 zope.proxy==4.3.0
