@@ -51,7 +51,7 @@ Products.ZSQLMethods==3.0.3
 Products.ZopeVersionControl==1.1.4
 Products.contentmigration==2.2.0
 Products.statusmessages==5.0.4
-Products.validation==2.1
+Products.validation==2.1.1
 PyJWT==1.6.4
 Pygments==2.2.0
 Record==2.13.0
