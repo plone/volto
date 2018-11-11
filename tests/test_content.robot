@@ -40,6 +40,7 @@ Scenario: As a site administrator I can add a Folder
     and I should see 'My Folder' in the navigation
 
 Scenario: As a site administrator I can add a File
+  Skip test on Guillotina
   Given a logged in site-administrator
     and the Plone site root
    When I add a File with the title 'My File'
@@ -47,6 +48,7 @@ Scenario: As a site administrator I can add a File
     and I should see 'My File' in the navigation
 
 Scenario: As a site administrator I can add an Image
+  Skip test on Guillotina
   Given a logged in site-administrator
     and the Plone site root
    When I add an Image with the title 'My Image'
