@@ -5,7 +5,7 @@ Babel==2.6.0
 Chameleon==3.5
 DateTime==4.3
 DocumentTemplate==2.13.4
-ExtensionClass==4.3.0
+ExtensionClass==4.4
 Markdown==2.6.9
 Missing==3.2
 MultiMapping==3.1
