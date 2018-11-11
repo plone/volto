@@ -94,6 +94,7 @@ export EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
 export EditImageTile from '@plone/volto/components/manage/Tiles/Image/Edit';
 export EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
 export EditTile from '@plone/volto/components/manage/Tiles/Tile/Edit';
+export EditHeroTile from '@plone/volto/components/manage/Tiles/Hero/Edit';
 
 export ViewDescriptionTile from '@plone/volto/components/manage/Tiles/Description/View';
 export ViewTitleTile from '@plone/volto/components/manage/Tiles/Title/View';
