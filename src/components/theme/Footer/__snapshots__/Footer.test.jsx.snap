@@ -74,16 +74,21 @@ exports[`Footer renders a footer component 1`] = `
           Accessibility
         </span>
       </a>
-      <a
+      <div
         className="item"
-        href="/contact"
         onClick={[Function]}
         role="listitem"
       >
-        <span>
-          Contact
-        </span>
-      </a>
+        <a
+          className="item"
+          href="/contact-info"
+          onClick={[Function]}
+        >
+          <span>
+            Contact
+          </span>
+        </a>
+      </div>
       <a
         className="item"
         href="http://plone.com"
