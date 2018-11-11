@@ -26,7 +26,7 @@ import {
   Workflow,
 } from '../../../components';
 import { listActions, getContent } from '../../../actions';
-import { BodyClass, getBaseUrl } from '../../../helpers';
+import { BodyClass, getBaseUrl, getLayoutFieldname } from '../../../helpers';
 
 @injectIntl
 @connect(
@@ -189,7 +189,10 @@ export default class View extends Component {
    * @method getViewByLayout
    * @returns {string} Markup for component.
    */
-  getViewByLayout = () => views.layoutViews[this.props.content.layout] || null;
+  getViewByLayout = () =>
+    views.layoutViews[
+      this.props.content[getLayoutFieldname(this.props.content)]
+    ] || null;
 
   /**
    * Cleans the component displayName (specially for connected components)

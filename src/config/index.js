@@ -21,8 +21,10 @@ import { customTiles, getDefaultEditTileView, messagesTiles } from './Tiles';
 export const settings = {
   host: process.env.HOST || 'localhost',
   port: process.env.PORT || '3000',
-  apiPath: process.env.API_PATH || 'http://localhost:8080/Plone', // for Plone
-  // apiPath: process.env.API_PATH || 'http://localhost:8081/db/web', // for guillotina
+  apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8080/Plone', // for Plone
+  // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8000', // for Volto reference
+  // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
+  websockets: process.env.RAZZLE_WEBSOCKETS || false,
   nonContentRoutes,
   extendedBlockRenderMap,
   blockStyleFn,
@@ -35,8 +37,8 @@ export const settings = {
 };
 
 export const widgets = {
-  widgetMapping,
-  defaultWidget,
+  ...widgetMapping,
+  default: defaultWidget,
 };
 
 export const views = {

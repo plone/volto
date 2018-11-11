@@ -14,7 +14,7 @@ import { injectIntl, intlShape } from 'react-intl';
  * @method getViewDefault
  * @returns {string} Widget component.
  */
-const getWidgetDefault = () => widgets.defaultWidget;
+const getWidgetDefault = () => widgets.default;
 
 /**
  * Get widget by field's `id` attribute
@@ -22,7 +22,7 @@ const getWidgetDefault = () => widgets.defaultWidget;
  * @param {string} id Id
  * @returns {string} Widget component.
  */
-const getWidgetByFieldId = id => widgets.widgetMapping.id[id] || null;
+const getWidgetByFieldId = id => widgets.id[id] || null;
 
 /**
  * Get widget by field's `widget` attribute
@@ -32,7 +32,7 @@ const getWidgetByFieldId = id => widgets.widgetMapping.id[id] || null;
  */
 const getWidgetByName = widget =>
   typeof widget === 'string'
-    ? widgets.widgetMapping.widget[widget] || getWidgetDefault()
+    ? widgets.widget[widget] || getWidgetDefault()
     : null;
 
 /**
@@ -42,7 +42,7 @@ const getWidgetByName = widget =>
  * @returns {string} Widget component.
  */
 const getWidgetByVocabulary = vocabulary =>
-  widgets.widgetMapping.vocabulary[vocabulary] || null;
+  widgets.vocabulary[vocabulary] || null;
 
 /**
  * Get widget by field's `choices` attribute
@@ -50,7 +50,7 @@ const getWidgetByVocabulary = vocabulary =>
  * @param {string} choices Widget
  * @returns {string} Widget component.
  */
-const getWidgetByChoices = choices => (choices ? widgets.widgetMapping.choices : null);
+const getWidgetByChoices = choices => (choices ? widgets.choices : null);
 
 /**
  * Get widget by field's `type` attribute
@@ -58,7 +58,7 @@ const getWidgetByChoices = choices => (choices ? widgets.widgetMapping.choices :
  * @param {string} type Type
  * @returns {string} Widget component.
  */
-const getWidgetByType = type => widgets.widgetMapping.type[type] || null;
+const getWidgetByType = type => widgets.type[type] || null;
 
 /**
  * Field component class.
@@ -144,6 +144,7 @@ Field.propTypes = {
   choices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   type: PropTypes.string,
   id: PropTypes.string.isRequired,
+  focus: PropTypes.bool,
   onOrder: PropTypes.func,
   intl: intlShape.isRequired,
 };
@@ -158,6 +159,7 @@ Field.defaultProps = {
   vocabulary: null,
   choices: null,
   type: 'string',
+  focus: false,
   onOrder: null,
 };
 

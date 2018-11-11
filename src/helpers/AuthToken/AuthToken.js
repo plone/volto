@@ -54,11 +54,13 @@ export function persistAuthToken(store) {
               store.dispatch(loginRenew());
             } else {
               // Logout
+              /*
               Router.push(
                 `/logout?return_url=${
                   store.getState().routing.locationBeforeTransitions.pathname
                 }`,
               );
+              */
             }
           }
         }, (jwtDecode(store.getState().userSession.token).exp * 1000 - new Date().getTime()) * 0.9);

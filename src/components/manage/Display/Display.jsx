@@ -12,12 +12,18 @@ import { FormattedMessage } from 'react-intl';
 
 import { getSchema, updateContent, getContent } from '../../../actions';
 import layouts from '../../../constants/Layouts';
+import { getLayoutFieldname } from '../../../helpers';
 
 @connect(
   state => ({
     loaded: state.content.update.loaded,
     layouts: state.schema.schema ? state.schema.schema.layouts : [],
-    layout: state.content.data ? state.content.data.layout : '',
+    layout: state.content.data
+      ? state.content.data[getLayoutFieldname(state.content.data)]
+      : '',
+    layout_fieldname: state.content.data
+      ? getLayoutFieldname(state.content.data)
+      : '',
     type: state.content.data ? state.content.data['@type'] : '',
   }),
   dispatch =>
@@ -42,6 +48,7 @@ export default class Display extends Component {
     pathname: PropTypes.string.isRequired,
     layouts: PropTypes.arrayOf(PropTypes.string),
     layout: PropTypes.string,
+    layout_fieldname: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
   };
 
@@ -51,8 +58,6 @@ export default class Display extends Component {
    * @static
    */
   static defaultProps = {
-    history: [],
-    transitions: [],
     layouts: [],
     layout: '',
   };
@@ -100,7 +105,8 @@ export default class Display extends Component {
    */
   setLayout(event, { value }) {
     this.props.updateContent(this.props.pathname, {
-      layout: value,
+      '@static_behaviors': ['guillotina_cms.interfaces.base.ICMSBehavior'],
+      [this.props.layout_fieldname]: value,
     });
   }
 

@@ -6,29 +6,29 @@
 import { reducer as reduxAsyncConnect } from 'redux-connect';
 import { intlReducer } from 'react-intl-redux';
 
-import actions from './actions/actions';
-import breadcrumbs from './breadcrumbs/breadcrumbs';
-import comments from './comments/comments';
-import content from './content/content';
-import controlpanels from './controlpanels/controlpanels';
-import clipboard from './clipboard/clipboard';
-import diff from './diff/diff';
-import emailNotification from './emailNotification/emailNotification';
-import form from './form/form';
-import history from './history/history';
-import groups from './groups/groups';
-import messages from './messages/messages';
-import navigation from './navigation/navigation';
-import roles from './roles/roles';
-import schema from './schema/schema';
-import search from './search/search';
-import sharing from './sharing/sharing';
-import tiles from './tiles/tiles';
-import types from './types/types';
-import users from './users/users';
-import userSession from './userSession/userSession';
-import vocabularies from './vocabularies/vocabularies';
-import workflow from './workflow/workflow';
+import actions from '@plone/volto/reducers/actions/actions';
+import breadcrumbs from '@plone/volto/reducers/breadcrumbs/breadcrumbs';
+import comments from '@plone/volto/reducers/comments/comments';
+import content from '@plone/volto/reducers/content/content';
+import controlpanels from '@plone/volto/reducers/controlpanels/controlpanels';
+import clipboard from '@plone/volto/reducers/clipboard/clipboard';
+import diff from '@plone/volto/reducers/diff/diff';
+import emailNotification from '@plone/volto/reducers/emailNotification/emailNotification';
+import form from '@plone/volto/reducers/form/form';
+import history from '@plone/volto/reducers/history/history';
+import groups from '@plone/volto/reducers/groups/groups';
+import messages from '@plone/volto/reducers/messages/messages';
+import navigation from '@plone/volto/reducers/navigation/navigation';
+import roles from '@plone/volto/reducers/roles/roles';
+import schema from '@plone/volto/reducers/schema/schema';
+import search from '@plone/volto/reducers/search/search';
+import sharing from '@plone/volto/reducers/sharing/sharing';
+import tiles from '@plone/volto/reducers/tiles/tiles';
+import types from '@plone/volto/reducers/types/types';
+import users from '@plone/volto/reducers/users/users';
+import userSession from '@plone/volto/reducers/userSession/userSession';
+import vocabularies from '@plone/volto/reducers/vocabularies/vocabularies';
+import workflow from '@plone/volto/reducers/workflow/workflow';
 
 /**
  * Root reducer.

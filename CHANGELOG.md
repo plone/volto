@@ -1,24 +1,89 @@
 # Change Log
 
-## 0.8.3 (2018-08-03)
+## 1.0.1 (unreleased)
+
+### Change
+
+- Fix edit on root @robgietema
+- Fix sharing @robgietema
+- Fix error on token renew @robgietema
+- Fix layout fieldname @bloodbare
+- First field in a form will get the focus @robgietema
+- Fix download file links @mikejmets
+
+## Added
+
+- Buildout for Python 3 @pbauer
+- Websockets support @robgietema
+
+## 1.0.0 (2018-10-31)
+
+### Added
+
+- Training documentation link @robgietema
+
+## 0.9.5 (2018-10-24)
+
+### Changes
+
+- Fix API*PATH variable using RAZZLE* prefix instead @sneridagh
+- Fix FUOC (flash of unstyled content) in production mode @sneridagh
+- Fix missing buttons on RichText tiles @sneridagh
+- Fix original external `overrides.css` position in the cascade was applied in
+  the wrong order in site.overrides in Pastanaga theme @sneridagh
+- Fatten widget config @robgietema
+
+## 0.9.4 (2018-10-10)
+
+### Changes
+
+- Fix tags layout @robgietema @jaroel
+- Fix imports of views, widgets and tiles @robgietema @jaroel
+
+## 0.9.3 (2018-10-10)
+
+### Changes
+
+- Fix logo import path @robgietema @jaroel
+
+## 0.9.2 (2018-10-10)
+
+### Added
+
+- Automatic customization imports for images @robgietema @jaroel
+
+## 0.9.1 (2018-10-10)
+
+### Added
+
+- Automatic customization imports @robgietema @jaroel
+
+## 0.9.0 (2018-10-04)
+
+### Changes
+
+- Renamed package to Volto @robgietema
+
+## 0.8.3 (2018-10-03)
 
 ### Changes
 
 - Fix i18n script for dependency @robgietema
 
-## 0.8.2 (2018-08-03)
+## 0.8.2 (2018-10-03)
 
 ### Changes
 
 - Move all dev dependencies to dependencies @robgietema
 
-## 0.8.1 (2018-08-03)
+## 0.8.1 (2018-10-03)
 
 ### Changes
 
 - Fix compiling when used as a library @robgietema
+- Fix buildout security issue @robgietema
 
-## 0.8.0 (2018-08-03)
+## 0.8.0 (2018-10-03)
 
 ### Added
 

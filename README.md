@@ -1,10 +1,14 @@
-# Plone in React
+# Volto
 
-[![Build Status](https://travis-ci.org/plone/plone-react.svg?branch=master)](https://travis-ci.org/plone/plone-react)
-[![Coverage](https://img.shields.io/coveralls/plone/plone-react.svg)](https://coveralls.io/github/plone/plone-react)
-[![Dependencies](https://img.shields.io/david/plone/plone-react.svg)](https://github.com/plone/plone-react/blob/master/package.json)
-[![Dev Dependencies](https://img.shields.io/david/dev/plone/plone-react.svg)](https://github.com/plone/plone-react/blob/master/package.json)
-[![NPM](https://img.shields.io/npm/v/@plone/plone-react.svg)](https://www.npmjs.com/package/@plone/plone-react)
+[![Build Status](https://travis-ci.org/plone/volto.svg?branch=master)](https://travis-ci.org/plone/volto)
+[![Coverage](https://img.shields.io/coveralls/plone/volto.svg)](https://coveralls.io/github/plone/volto)
+[![Dependencies](https://img.shields.io/david/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
+[![Dev Dependencies](https://img.shields.io/david/dev/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
+[![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
+
+## Documentation
+
+A training on how to create your own website using Volto is available as part of the Plone training at [https://training.plone.org/5/volto/index.html](https://training.plone.org/5/volto/index.html).
 
 ## Installation
 
@@ -52,7 +56,7 @@ Go to [http://localhost:3000](http://localhost:3000) in your browser.
     Alternatively individual acceptances test case files can be run with a pure Robot Framework virtual environment, assuming that backend and frontend is running
 
     $ docker-compose -f api/docker-compose.yml up
-    $ yarn && yarn build && API_PATH=http://localhost:55001/plone yarn start:prod
+    $ yarn && yarn build && RAZZLE_API_PATH=http://localhost:55001/plone yarn start:prod
 
     $ virtualenv robotenv --no-site-packages
     $ robotenv/bin/pip install robotframework robotframework-seleniumlibrary robotframework-webpack
@@ -133,11 +137,6 @@ and add this config to your package.json:
 
 More Precommit hooks can be found [here](https://prettier.io/docs/en/precommit.html)
 
-### License
-
-MIT License. Copyrights hold the Plone Foundation.
-See [LICENSE.md](LICENSE.md) for details.
-
 ### Running Guillotina Tests
 
 First, start up Guillotina:
@@ -151,3 +150,8 @@ Then, run the tests:
 ```
 PYTHONPATH=$(pwd)/tests_guillotina env/bin/pybot -v BROWSER:headlesschrome tests_guillotina;
 ```
+
+## License
+
+MIT License. Copyrights hold the Plone Foundation.
+See [LICENSE.md](LICENSE.md) for details.
