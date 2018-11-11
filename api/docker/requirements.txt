@@ -81,7 +81,7 @@ enum34==1.1.6
 feedparser==5.2.1
 five.customerize==2.0.0
 five.globalrequest==99.1
-five.intid==1.1.2
+five.intid==1.2.0
 five.localsitemanager==2.0.6
 five.pt==2.2.5
 functools32==3.2.3.post2
