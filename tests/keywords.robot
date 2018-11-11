@@ -52,8 +52,7 @@ Open default browser
     Run Keyword If  '${status[0]}' == 'FAIL'  Create default browser
 
 Skip test on Guillotina
-    Run Keyword If  '${API}' == 'Guillotina'
-    ...    Skip Execution   Skipping test on Guillotina
+    Pass execution if  '${API}' == 'Guillotina'  Skipping test on Guillotina
 
 # --- Given ------------------------------------------------------------------
 # Given keywords are pre-conditions of the test.
