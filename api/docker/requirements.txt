@@ -191,7 +191,7 @@ plone.subrequest==1.8.6
 plone.supermodel==1.4.0
 plone.synchronize==1.0.3
 plone.testing==7.0.0
-plone.theme==3.0.5
+plone.theme==3.0.6
 plone.tiles==2.1
 plone.transformchain==1.2.2
 plone.uuid==1.0.5
