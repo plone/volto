@@ -1,5 +1,5 @@
 robotframework==3.0.4
-robotframework-debuglibrary
+robotframework-debuglibrary==1.1.4
 robotframework-requests
 robotframework-seleniumlibrary==3.2.0
 robotframework-webpack==1.1.3
