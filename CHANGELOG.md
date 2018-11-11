@@ -15,6 +15,7 @@
 
 - Buildout for Python 3 @pbauer
 - Websockets support @robgietema
+- contact-info view @cekk
 
 ## 1.0.0 (2018-10-31)
 
