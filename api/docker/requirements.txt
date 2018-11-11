@@ -87,7 +87,7 @@ five.pt==3.0
 functools32==3.2.3.post2
 future==0.17.1
 futures==3.2.0
-icalendar==4.0.1
+icalendar==4.0.3
 idna==2.6
 initgroups==4.0
 jsonschema==2.6.0
