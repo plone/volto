@@ -29,7 +29,7 @@ Products.DateRecurringIndex==3.0.0
 Products.ExtendedPathIndex==3.3.1
 Products.ExternalEditor==2.0.3
 Products.ExternalMethod==4.1
-Products.GenericSetup==1.8.8
+Products.GenericSetup==1.10.0
 Products.MIMETools==2.13.0
 Products.MailHost==2.13.2
 Products.MimetypesRegistry==2.1.3
