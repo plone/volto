@@ -15,6 +15,7 @@ Scenario: As a site administrator I can add a page
     and I should see 'My Page' in the navigation
 
 Scenario: As a site administrator I can add a News Item
+  Skip test on Guillotina
   Given a logged in site-administrator
     and the Plone site root
    When I add a News Item with the title 'My News Item'
@@ -30,6 +31,7 @@ Scenario: As a site administrator I can add a News Item
 #     and I should see 'My Event' in the navigation
 
 Scenario: As a site administrator I can add a Folder
+  Skip test on Guillotina
   Given a logged in site-administrator
     and the Plone site root
    When I add a Folder with the title 'My Folder'

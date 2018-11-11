@@ -51,6 +51,10 @@ Open default browser
     ${status}=  Run Keyword And Ignore Error  Switch browser  default
     Run Keyword If  '${status[0]}' == 'FAIL'  Create default browser
 
+Skip test on Guillotina
+    Run Keyword If  '${API}' == 'Guillotina'
+    ...    Skip Execution   Skipping test on Guillotina
+
 # --- Given ------------------------------------------------------------------
 # Given keywords are pre-conditions of the test.
 # Given keywords should not contain any Selenium code or actions.
