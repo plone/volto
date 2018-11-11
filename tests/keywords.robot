@@ -5,7 +5,7 @@ Library  DebugLibrary
 Library  RequestsLibrary
 Library  SeleniumLibrary  timeout=30  implicit_wait=0
 
-Variables  variables.py
+# Variables  variables.py
 
 
 *** Variables ***
