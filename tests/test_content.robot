@@ -37,7 +37,6 @@ a page
 # --- When -------------------------------------------------------------------
 
 I add a Page with the title '${title}'
-  Log  I add a Page with the title '${title}'  WARN
   Wait until page contains element  css=#toolbar-add
   Click element  css=#toolbar-add
   Wait until page contains element  css=#toolbar-add-document
