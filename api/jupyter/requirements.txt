@@ -5,5 +5,5 @@ https://github.com/datakurre/robotkernel/archive/master.tar.gz#egg=robotkernel
 robotframework==3.0.4
 robotframework-seleniumlibrary==3.2.0
 robotframework-selenium2library==3.0.0
-robotframework-react
+robotframework-react==1.0.0a2
 robotframework-webpack
