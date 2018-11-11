@@ -135,7 +135,7 @@ plone.app.registry==1.7.2
 plone.app.relationfield==1.4.2
 plone.app.robotframework==1.4.0
 plone.app.standardtiles==2.3.1
-plone.app.testing==5.0.8
+plone.app.testing==6.1.1
 plone.app.textfield==1.2.11
 plone.app.theming==2.0.3
 plone.app.tiles==3.0.3
