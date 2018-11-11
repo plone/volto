@@ -185,7 +185,7 @@ plone.rfc822==2.0.0
 plone.scale==3.0.3
 plone.schema==1.2.0
 plone.schemaeditor==2.0.20
-plone.session==3.7.0
+plone.session==3.7.1
 plone.stringinterp==1.2.1
 plone.subrequest==1.8.5
 plone.supermodel==1.3.4
