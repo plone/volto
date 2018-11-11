@@ -291,4 +291,4 @@ zope.testing==4.7
 zope.testrunner==4.9
 zope.traversing==4.3.1
 zope.untrustedpython==4.0.0
-zope.viewlet==3.7.2
+zope.viewlet==4.2
