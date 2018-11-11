@@ -21,6 +21,21 @@ Scenario: As a site administrator I can add a News Item
    # Then I should see a notification that 'My Page' has been created
     and I should see 'My News Item' in the navigation
 
+# XXX: Event is broken in Plone-React
+# Scenario: As a site administrator I can add an Event
+#   Given a logged in site-administrator
+#     and the Plone site root
+#    When I add an Event with the title 'My Event'
+#    # Then I should see a notification that 'My Page' has been created
+#     and I should see 'My Event' in the navigation
+
+Scenario: As a site administrator I can add a Folder
+  Given a logged in site-administrator
+    and the Plone site root
+   When I add a Folder with the title 'My Folder'
+   # Then I should see a notification that 'My Page' has been created
+    and I should see 'My Folder' in the navigation
+
 # Scenario: As a site administrator I can add a text tile to a page
 #   Given a logged in site-administrator
 #     and a page
