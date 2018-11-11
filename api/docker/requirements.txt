@@ -152,7 +152,7 @@ plone.autoform==1.8.1
 plone.batching==1.1.4
 plone.behavior==1.2.1
 plone.browserlayer==2.2.2
-plone.cachepurging==1.0.14
+plone.cachepurging==2.0
 plone.caching==1.1.2
 plone.contentrules==2.0.7
 plone.dexterity==2.6.0
