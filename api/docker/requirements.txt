@@ -265,7 +265,7 @@ zope.exceptions==4.3
 zope.filerepresentation==4.2.0
 zope.globalrequest==1.5
 zope.i18n==4.6.1
-zope.i18nmessageid==4.1.0
+zope.i18nmessageid==4.3.1
 zope.interface==4.4.3
 zope.intid==3.7.2
 zope.keyreference==3.6.4
