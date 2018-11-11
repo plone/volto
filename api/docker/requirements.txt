@@ -69,7 +69,7 @@ archetypes.schemaextender==3.0.0
 borg.localrole==3.1.6
 certifi==2018.10.15
 chardet==3.0.4
-collective.MockMailHost==1.1.0
+collective.MockMailHost==2.0.0
 collective.folderishtypes==2.1
 collective.monkeypatcher==1.1.4
 collective.recipe.plonesite==1.9.5
