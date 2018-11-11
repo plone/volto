@@ -24,6 +24,7 @@ export const settings = {
   apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8080/Plone', // for Plone
   // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8000', // for Volto reference
   // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
+  websockets: process.env.RAZZLE_WEBSOCKETS || false,
   nonContentRoutes,
   extendedBlockRenderMap,
   blockStyleFn,
