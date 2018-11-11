@@ -26,7 +26,7 @@ Products.CMFQuickInstallerTool==4.0.0
 Products.CMFUid==3.0.1
 Products.DCWorkflow==2.3.0
 Products.DateRecurringIndex==3.0.0
-Products.ExtendedPathIndex==3.3.0
+Products.ExtendedPathIndex==3.3.1
 Products.ExternalEditor==1.1.3
 Products.ExternalMethod==2.13.1
 Products.GenericSetup==1.8.8
