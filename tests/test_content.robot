@@ -14,6 +14,13 @@ Scenario: As a site administrator I can add a page
    # Then I should see a notification that 'My Page' has been created
     and I should see 'My Page' in the navigation
 
+Scenario: As a site administrator I can add a News Item
+  Given a logged in site-administrator
+    and the Plone site root
+   When I add a News Item with the title 'My News Item'
+   # Then I should see a notification that 'My Page' has been created
+    and I should see 'My News Item' in the navigation
+
 # Scenario: As a site administrator I can add a text tile to a page
 #   Given a logged in site-administrator
 #     and a page
@@ -32,6 +39,71 @@ a page
   Click element  css=#toolbar-add-document
   Wait until page contains element  css=.public-DraftStyleDefault-block
   Input tile  title  My page
+
+I add a News Item with the title '${title}'
+  Wait until page contains element  css=#toolbar-add
+  Click element  css=#toolbar-add
+  Wait until page contains element  css=#toolbar-add-news-item
+  Click element  css=#toolbar-add-news-item
+  Wait until page contains element  name=title
+  Input text  name=title  ${title}
+  Click element  css=*[title=Save]
+
+I add an Event with the title '${title}'
+  Wait until page contains element  css=#toolbar-add
+  Click element  css=#toolbar-add
+  Wait until page contains element  css=#toolbar-add-event
+  Click element  css=#toolbar-add-event
+  Wait until page contains element  name=title
+  Input text  name=title  ${title}
+  Click element  css=*[title=Save]
+
+I add a Folder with the title '${title}'
+  Wait until page contains element  css=#toolbar-add
+  Click element  css=#toolbar-add
+  Wait until element is visible  css=#toolbar-add-folder
+  Click element  css=#toolbar-add-folder
+  Wait until page contains element  name=title
+  Input text  name=title  ${title}
+  Click element  css=*[title=Save]
+
+I add a File with the title '${title}'
+  Wait until page contains element  css=#toolbar-add
+  Click element  css=#toolbar-add
+  Wait until element is visible  css=#toolbar-add-file
+  Click element  css=#toolbar-add-file
+  Wait until page contains element  name=title
+  Input text  name=title  ${title}
+  Choose File  name=file  ${PATH_TO_TEST_FILES}/pixel.png
+  Click element  css=*[title=Save]
+
+I add an Image with the title '${title}'
+  Wait until page contains element  css=#toolbar-add
+  Click element  css=#toolbar-add
+  Wait until element is visible  css=#toolbar-add-image
+  Click element  css=#toolbar-add-image
+  Wait until page contains element  name=title
+  Input text  name=title  ${title}
+  Choose File  name=image  ${PATH_TO_TEST_FILES}/pixel.png
+  Click element  css=*[title=Save]
+
+I add a Link with the title '${title}'
+  Wait until page contains element  css=#toolbar-add
+  Click element  css=#toolbar-add
+  Wait until element is visible  css=#toolbar-add-link
+  Click element  css=#toolbar-add-link
+  Wait until page contains element  name=title
+  Input text  name=title  ${title}
+  Click element  css=*[title=Save]
+
+I add a Collection with the title '${title}'
+  Wait until page contains element  css=#toolbar-add
+  Click element  css=#toolbar-add
+  Wait until element is visible  css=#toolbar-add-collection
+  Click element  css=#toolbar-add-collection
+  Wait until page contains element  name=title
+  Input text  name=title  ${title}
+  Click element  css=*[title=Save]
 
 
 # --- When -------------------------------------------------------------------
@@ -56,8 +128,8 @@ I should see '${title}' in the navigation
   Go to  ${FRONTEND_URL}/my-page
   Reload Page
   Wait until page contains element  css=.navigation a
-  Wait until page contains element  css=.navigation a[href='/my-page']
-  Page should contain element  css=.navigation a[href='/my-page']
+  Wait until page contains element  xpath=//*[contains(@class, 'navigation')]//*[contains(text(), '${title}')]
+  Page should contain element  xpath=//*[contains(@class, 'navigation')]//*[contains(text(), '${title}')]
 
 I should see '${text}' on the page view
   Page should contain  ${text}
