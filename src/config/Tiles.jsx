@@ -5,8 +5,18 @@ import EditDescriptionTile from '@plone/volto/components/manage/Tiles/Descriptio
 import EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
 import EditImageTile from '@plone/volto/components/manage/Tiles/Image/Edit';
 import EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
+import EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
 
-const customTiles = [];
+import codeSVG from '../icons/code.svg';
+
+// { title: id , icon }
+
+const customTiles = [
+  {
+    title: 'html',
+    icon: codeSVG,
+  },
+];
 
 const messagesTiles = defineMessages({
   title: {
@@ -28,7 +38,7 @@ const messagesTiles = defineMessages({
   video: {
     id: 'video',
     defaultMessage: 'Video',
-  },
+  }
 });
 
 const getDefaultEditTileView = type => {
@@ -43,6 +53,8 @@ const getDefaultEditTileView = type => {
       return EditImageTile;
     case 'video':
       return EditVideoTile;
+    case 'html':
+      return EditHTMLTile;
     default:
       break;
   }
