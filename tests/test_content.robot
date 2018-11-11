@@ -21,7 +21,7 @@ Scenario: As a site administrator I can add a News Item
    # Then I should see a notification that 'My Page' has been created
     and I should see 'My News Item' in the navigation
 
-# XXX: Event is broken in Plone-React
+# XXX: Event is broken in Volto
 # Scenario: As a site administrator I can add an Event
 #   Given a logged in site-administrator
 #     and the Plone site root

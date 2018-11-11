@@ -60,8 +60,8 @@ Open default browser
 # action is carried out (e.g. 'the front page')
 
 A logged in site-administrator
-    ${headers}  Create Dictionary  Accept  application/json  Content-Type  application/json
-    ${data}=  Create dictionary  login  admin  password  secret
+    ${headers}  Create dictionary  Accept=application/json  Content-Type=application/json
+    ${data}=  Create dictionary  login=admin  password=secret
     Run Keyword If   '${API}' == 'Guillotina'   Create Session  plone  http://localhost:8081/db/container
     Run Keyword If   '${API}' == 'Plone'   Create Session  plone  http://localhost:55001/plone
     ${resp}=	Post Request  plone  /@login  headers=${headers}  data=${data}
