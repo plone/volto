@@ -69,6 +69,7 @@ A logged in site-administrator
     Reload page
     Wait until keyword succeeds  120s  1s
     ...   Page fully loaded
+    Wait until page contains element  css=#toolbar
     Page should contain  Log out
 
 the front page
