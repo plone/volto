@@ -1,4 +1,4 @@
-setuptools
+setuptools==40.5.0
 jupyter
 Pillow
 https://github.com/datakurre/robotkernel/archive/master.tar.gz#egg=robotkernel
