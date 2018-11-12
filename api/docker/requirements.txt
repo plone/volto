@@ -147,7 +147,7 @@ plone.app.viewletmanager==2.0.11
 plone.app.vocabularies==4.0.6
 plone.app.widgets==2.3
 plone.app.workflow==3.0
-plone.app.z3cform==3.0.4
+plone.app.z3cform==3.0.7
 plone.autoform==1.7.5
 plone.batching==1.1.2
 plone.behavior==1.2.1
