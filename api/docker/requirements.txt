@@ -59,7 +59,7 @@ RestrictedPython==3.6.0
 Unidecode==0.4.1
 ZConfig==3.1.0
 ZEO==5.1.1
-ZODB==5.3.0
+ZODB==5.5.1
 ZODB3==3.11.0
 ZServer==3.0
 Zope2==2.13.27
