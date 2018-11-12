@@ -1,5 +1,5 @@
 setuptools
-jupyter
+jupyter==1.0.0
 Pillow
 https://github.com/datakurre/robotkernel/archive/master.tar.gz#egg=robotkernel
 robotframework
