@@ -255,7 +255,7 @@ zope.container==3.11.2
 zope.contentprovider==3.7.2
 zope.contenttype==4.2.0
 zope.copy==3.5.0
-zope.datetime==3.4.1
+zope.datetime==4.2.0
 zope.deferredimport==3.5.3
 zope.deprecation==4.3.0
 zope.dottedname==4.2
