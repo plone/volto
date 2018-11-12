@@ -282,7 +282,7 @@ zope.security==4.1.1
 zope.sendmail==3.7.5
 zope.sequencesort==3.4.0
 zope.site==3.9.2
-zope.size==3.4.1
+zope.size==4.3
 zope.structuredtext==3.5.1
 zope.tal==3.5.2
 zope.tales==3.5.3
