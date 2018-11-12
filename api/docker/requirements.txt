@@ -169,7 +169,7 @@ plone.jsonserializer==0.9.5
 plone.keyring==3.0.2
 plone.locking==2.2.2
 plone.memoize==1.2.2
-plone.namedfile==4.2.4
+plone.namedfile==5.0.1
 plone.outputfilters==3.0.4
 plone.portlet.collection==3.3.0
 plone.portlet.static==3.1.2
