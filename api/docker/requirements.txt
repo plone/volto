@@ -13,7 +13,7 @@ Persistence==2.13.2
 Pillow==4.3.0
 Plone==5.1.2
 Products.ATContentTypes==2.3.8
-Products.Archetypes==1.15.1
+Products.Archetypes==1.15.5
 Products.BTreeFolder2==2.14.0
 Products.CMFCore==2.2.12
 Products.CMFDiffTool==3.2.0
