@@ -9,11 +9,13 @@
 - Fix error on token renew @robgietema
 - Fix layout fieldname @bloodbare
 - First field in a form will get the focus @robgietema
+- Fix download file links @mikejmets
 
 ## Added
 
 - Buildout for Python 3 @pbauer
 - Add Summary Box tile (Proxy) @pnicolli
+- Websockets support @robgietema
 
 ## 1.0.0 (2018-10-31)
 

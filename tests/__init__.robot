@@ -46,16 +46,18 @@ Stop Plone Backend
 
 Start Volto
     Log To Console  Starting Webpack
-    Start Webpack  yarn start:prod
-    ...            check=to be executed: node build/server.js
+    Run process  yarn build  shell=True  cwd=${CURDIR}
+    ${result} =  Start process  yarn start:prod  shell=True  cwd=${CURDIR}
+    # Start Webpack  yarn start:prod
+    # ...            check=started
 
 Suite Setup
     Run Keyword If   '${API}' == 'Plone'   Start Plone Backend
     Run Keyword If   '${API}' == 'Guillotina'   Start Guillotina Backend
     Start Volto
 
-
 Suite Teardown
-    Stop Webpack
+    Terminate All Processes  kill=True
+    # Stop Webpack
     Run Keyword If   '${API}' == 'Plone'  Stop Plone Backend
     Run Keyword If   '${API}' == 'Guillotina'   Run  docker-compose -f g-api/docker-compose-local.yaml stop

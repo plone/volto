@@ -9,6 +9,8 @@ import Helmet from 'react-helmet';
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 
+import { settings } from '~/config';
+
 import {
   ViewTitleTile,
   ViewDescriptionTile,
@@ -86,7 +88,14 @@ const DocumentView = ({ content }) => {
         />
       )}
       {content.text && (
-        <p dangerouslySetInnerHTML={{ __html: content.text.data }} />
+        <p
+          dangerouslySetInnerHTML={{
+            __html: content.text.data.replace(
+              /a href=\"([^"]*\.[^"]*)\"/g,
+              `a href="${settings.apiPath}$1/download/file"`,
+            ),
+          }}
+        />
       )}
     </Container>
   );
