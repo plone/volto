@@ -6,4 +6,4 @@ robotframework
 robotframework-seleniumlibrary
 robotframework-selenium2library
 robotframework-react
-robotframework-webpack
+robotframework-webpack==1.1.3
