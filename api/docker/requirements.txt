@@ -243,7 +243,7 @@ zope.app.locales==3.7.5
 zope.app.publication==3.12.0
 zope.authentication==3.7.1
 zope.broken==3.6.0
-zope.browser==2.1.0
+zope.browser==2.3
 zope.browsermenu==4.2
 zope.browserpage==4.1.0
 zope.browserresource==4.1.0
