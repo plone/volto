@@ -239,7 +239,7 @@ zc.relation==1.0
 zdaemon==4.2.0
 zodbpickle==0.7.0
 zope.annotation==3.5.0
-zope.app.locales==3.7.5
+zope.app.locales==4.0.1
 zope.app.publication==3.12.0
 zope.authentication==3.7.1
 zope.broken==3.6.0
