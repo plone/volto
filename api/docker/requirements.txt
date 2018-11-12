@@ -163,7 +163,7 @@ plone.formwidget.namedfile==2.0.5
 plone.formwidget.querystring==1.1.10
 plone.formwidget.recurrence==2.1.2
 plone.i18n==3.0.7
-plone.indexer==1.0.4
+plone.indexer==1.0.5
 plone.intelligenttext==2.2.1
 plone.jsonserializer==0.9.5
 plone.keyring==3.0.2
