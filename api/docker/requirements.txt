@@ -83,7 +83,7 @@ five.customerize==1.1
 five.globalrequest==1.0
 five.intid==1.1.2
 five.localsitemanager==2.0.6
-five.pt==2.2.5
+five.pt==3.0
 functools32==3.2.3.post2
 future==0.16.0
 futures==3.1.1
