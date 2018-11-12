@@ -228,7 +228,7 @@ z3c.caching==2.0a1
 z3c.form==3.6
 z3c.formwidget.query==0.16
 z3c.objpath==1.1
-z3c.pt==3.0.0a1
+z3c.pt==3.1.0
 z3c.relationfield==0.7
 z3c.zcmlhook==1.0b1
 zExceptions==2.13.0
