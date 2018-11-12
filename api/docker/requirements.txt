@@ -275,7 +275,7 @@ zope.pagetemplate==4.2.1
 zope.processlifetime==1.0
 zope.proxy==4.3.0
 zope.ptresource==3.9.0
-zope.publisher==4.3.2
+zope.publisher==5.0.1
 zope.ramcache==1.0
 zope.schema==4.5.0
 zope.security==4.1.1
