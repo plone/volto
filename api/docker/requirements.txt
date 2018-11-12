@@ -24,7 +24,7 @@ Products.CMFPlacefulWorkflow==1.7.5
 Products.CMFPlone==5.1.2.1
 Products.CMFQuickInstallerTool==3.0.16
 Products.CMFUid==2.2.2
-Products.DCWorkflow==2.2.5
+Products.DCWorkflow==2.3.0
 Products.DateRecurringIndex==2.1
 Products.ExtendedPathIndex==3.3.0
 Products.ExternalEditor==1.1.3
