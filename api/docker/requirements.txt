@@ -75,7 +75,7 @@ collective.monkeypatcher==1.1.4
 collective.recipe.plonesite==1.9.5
 cssselect==1.0.1
 decorator==4.1.2
-diazo==1.2.8
+diazo==1.2.11
 docutils==0.14
 enum34==1.1.6
 feedparser==5.2.1
