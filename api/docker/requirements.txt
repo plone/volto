@@ -231,7 +231,7 @@ z3c.objpath==1.1
 z3c.pt==3.0.0a1
 z3c.relationfield==0.7
 z3c.zcmlhook==1.0b1
-zExceptions==2.13.0
+zExceptions==4.1
 zLOG==3.0
 zc.lockfile==1.2.1
 zc.recipe.egg==2.0.4
