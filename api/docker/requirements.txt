@@ -168,7 +168,7 @@ plone.intelligenttext==2.2.1
 plone.jsonserializer==0.9.5
 plone.keyring==3.0.2
 plone.locking==2.2.2
-plone.memoize==1.2.2
+plone.memoize==1.2.3
 plone.namedfile==4.2.4
 plone.outputfilters==3.0.4
 plone.portlet.collection==3.3.0
