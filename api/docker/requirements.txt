@@ -251,7 +251,7 @@ zope.cachedescriptors==3.5.1
 zope.component==4.4.1
 zope.componentvocabulary==1.0.1
 zope.configuration==3.7.4
-zope.container==3.11.2
+zope.container==4.2.2
 zope.contentprovider==3.7.2
 zope.contenttype==4.2.0
 zope.copy==3.5.0
