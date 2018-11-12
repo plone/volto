@@ -2,6 +2,6 @@ robotframework
 robotframework-debuglibrary
 robotframework-requests
 robotframework-seleniumlibrary
-robotframework-webpack
+robotframework-webpack==1.1.3
 robotframework-pabot
 robotframework-faker
