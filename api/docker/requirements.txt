@@ -108,7 +108,7 @@ plone.app.caching==1.2.21
 plone.app.collection==1.2.6
 plone.app.content==3.5.2
 plone.app.contentlisting==1.3.3
-plone.app.contentmenu==2.2.3
+plone.app.contentmenu==2.2.4
 plone.app.contentrules==4.0.18
 plone.app.contenttypes==1.4.10
 plone.app.controlpanel==3.0.4
