@@ -4,4 +4,4 @@ robotframework-requests
 robotframework-seleniumlibrary
 robotframework-webpack
 robotframework-pabot
-robotframework-faker
+robotframework-faker==4.2.0
