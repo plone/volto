@@ -178,7 +178,7 @@ plone.protect==3.1.3
 plone.recipe.zope2instance==4.4.0
 plone.registry==1.1.2
 plone.resource==2.0.1
-plone.resourceeditor==2.1.1
+plone.resourceeditor==2.1.3
 plone.rest==1.2.0
 plone.restapi==3.5.0
 plone.rfc822==1.1.3
