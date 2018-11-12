@@ -284,7 +284,7 @@ zope.sequencesort==3.4.0
 zope.site==3.9.2
 zope.size==3.4.1
 zope.structuredtext==3.5.1
-zope.tal==3.5.2
+zope.tal==4.4
 zope.tales==3.5.3
 zope.testbrowser==3.11.1
 zope.testing==3.9.7
