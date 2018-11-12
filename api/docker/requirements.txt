@@ -131,7 +131,7 @@ plone.app.multilingual==5.2.0
 plone.app.portlets==4.3.2
 plone.app.querystring==1.4.8
 plone.app.redirector==1.3.6
-plone.app.registry==1.7.1
+plone.app.registry==1.7.2
 plone.app.relationfield==1.4.0
 plone.app.robotframework==1.2.0
 plone.app.standardtiles==2.2.0
