@@ -280,7 +280,7 @@ zope.ramcache==1.0
 zope.schema==4.5.0
 zope.security==4.1.1
 zope.sendmail==3.7.5
-zope.sequencesort==3.4.0
+zope.sequencesort==4.1.2
 zope.site==3.9.2
 zope.size==3.4.1
 zope.structuredtext==3.5.1
