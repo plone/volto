@@ -235,7 +235,7 @@ zExceptions==2.13.0
 zLOG==3.0
 zc.lockfile==1.2.1
 zc.recipe.egg==2.0.4
-zc.relation==1.0
+zc.relation==1.1.post2
 zdaemon==4.2.0
 zodbpickle==0.7.0
 zope.annotation==3.5.0
