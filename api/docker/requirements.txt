@@ -73,7 +73,7 @@ collective.MockMailHost==1.1.0
 collective.folderishtypes==2.1
 collective.monkeypatcher==1.1.4
 collective.recipe.plonesite==1.9.5
-cssselect==1.0.1
+cssselect==1.0.3
 decorator==4.1.2
 diazo==1.2.8
 docutils==0.14
