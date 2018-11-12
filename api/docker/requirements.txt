@@ -103,7 +103,7 @@ piexif==1.0.13
 plone.alterego==1.1.1
 plone.api==1.8.3
 plone.app.blob==1.7.4
-plone.app.blocks==4.1.1
+plone.app.blocks==4.2.0
 plone.app.caching==1.2.21
 plone.app.collection==1.2.6
 plone.app.content==3.5.2
