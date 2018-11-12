@@ -99,7 +99,7 @@ mr.developer==1.38
 olefile==0.44
 pathlib==1.0.1
 persistent==4.2.4.2
-piexif==1.0.13
+piexif==1.1.1
 plone.alterego==1.1.1
 plone.api==1.8.3
 plone.app.blob==1.7.4
