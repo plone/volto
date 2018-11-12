@@ -225,7 +225,7 @@ urllib3==1.22
 wcwidth==0.1.7
 z3c.autoinclude==0.3.7
 z3c.caching==2.0a1
-z3c.form==3.6
+z3c.form==4.0
 z3c.formwidget.query==0.16
 z3c.objpath==1.1
 z3c.pt==3.0.0a1
