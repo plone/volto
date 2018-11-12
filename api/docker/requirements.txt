@@ -47,7 +47,7 @@ Products.StandardCacheManagers==2.13.1
 Products.TemporaryFolder==3.0
 Products.ZCTextIndex==2.13.5
 Products.ZCatalog==3.0.3
-Products.ZSQLMethods==2.13.5
+Products.ZSQLMethods==3.0.3
 Products.ZopeVersionControl==1.1.3
 Products.contentmigration==2.1.19
 Products.statusmessages==5.0.2
