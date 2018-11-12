@@ -193,7 +193,7 @@ plone.synchronize==1.0.3
 plone.testing==4.3.1
 plone.theme==3.0.5
 plone.tiles==2.1
-plone.transformchain==1.2.2
+plone.transformchain==2.0.1
 plone.uuid==1.0.5
 plone.z3cform==0.9.1
 plonetheme.barceloneta==1.8.1
