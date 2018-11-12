@@ -3,5 +3,5 @@ robotframework-debuglibrary
 robotframework-requests
 robotframework-seleniumlibrary
 robotframework-webpack
-robotframework-pabot
+robotframework-pabot==0.45
 robotframework-faker
