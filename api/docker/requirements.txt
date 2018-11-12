@@ -289,6 +289,6 @@ zope.tales==3.5.3
 zope.testbrowser==3.11.1
 zope.testing==3.9.7
 zope.testrunner==4.4.4
-zope.traversing==4.1.0
+zope.traversing==4.3.1
 zope.untrustedpython==4.0.0
 zope.viewlet==3.7.2
