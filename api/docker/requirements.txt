@@ -27,7 +27,7 @@ Products.CMFUid==2.2.2
 Products.DCWorkflow==2.2.5
 Products.DateRecurringIndex==2.1
 Products.ExtendedPathIndex==3.3.0
-Products.ExternalEditor==1.1.3
+Products.ExternalEditor==2.0.3
 Products.ExternalMethod==2.13.1
 Products.GenericSetup==1.8.8
 Products.MIMETools==2.13.0
