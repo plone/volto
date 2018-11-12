@@ -137,7 +137,7 @@ plone.app.robotframework==1.2.0
 plone.app.standardtiles==2.2.0
 plone.app.testing==5.0.8
 plone.app.textfield==1.2.11
-plone.app.theming==2.0.3
+plone.app.theming==3.0.0
 plone.app.tiles==3.0.3
 plone.app.upgrade==2.0.14.1
 plone.app.users==2.4.2
