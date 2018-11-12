@@ -4,6 +4,6 @@ Pillow
 https://github.com/datakurre/robotkernel/archive/master.tar.gz#egg=robotkernel
 robotframework
 robotframework-seleniumlibrary
-robotframework-selenium2library
+robotframework-selenium2library==3.0.0
 robotframework-react
 robotframework-webpack
