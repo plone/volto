@@ -266,7 +266,7 @@ zope.filerepresentation==3.6.1
 zope.globalrequest==1.2
 zope.i18n==4.2.0
 zope.i18nmessageid==4.1.0
-zope.interface==4.4.3
+zope.interface==4.6.0
 zope.intid==3.7.2
 zope.keyreference==3.6.4
 zope.lifecycleevent==3.6.2
