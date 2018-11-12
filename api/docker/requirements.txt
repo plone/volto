@@ -234,7 +234,7 @@ z3c.zcmlhook==1.0b1
 zExceptions==2.13.0
 zLOG==3.0
 zc.lockfile==1.2.1
-zc.recipe.egg==2.0.4
+zc.recipe.egg==2.0.7
 zc.relation==1.0
 zdaemon==4.2.0
 zodbpickle==0.7.0
