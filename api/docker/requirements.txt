@@ -43,7 +43,7 @@ Products.PythonScripts==2.13.2
 Products.ResourceRegistries==3.0.7
 Products.SecureMailHost==1.1.2
 Products.Sessions==3.0
-Products.StandardCacheManagers==2.13.1
+Products.StandardCacheManagers==4.0.1
 Products.TemporaryFolder==3.0
 Products.ZCTextIndex==2.13.5
 Products.ZCatalog==3.0.3
