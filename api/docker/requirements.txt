@@ -12,7 +12,7 @@ MultiMapping==3.1
 Persistence==2.13.2
 Pillow==4.3.0
 Plone==5.1.2
-Products.ATContentTypes==2.3.8
+Products.ATContentTypes==3.0.0
 Products.Archetypes==1.15.1
 Products.BTreeFolder2==2.14.0
 Products.CMFCore==2.2.12
