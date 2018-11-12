@@ -154,7 +154,7 @@ plone.behavior==1.2.1
 plone.browserlayer==2.2.1
 plone.cachepurging==1.0.14
 plone.caching==1.1.2
-plone.contentrules==2.0.7
+plone.contentrules==2.0.9
 plone.dexterity==2.6.0
 plone.event==1.3.4
 plone.folder==1.0.11
