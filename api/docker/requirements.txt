@@ -45,7 +45,7 @@ Products.SecureMailHost==1.1.2
 Products.Sessions==3.0
 Products.StandardCacheManagers==2.13.1
 Products.TemporaryFolder==3.0
-Products.ZCTextIndex==2.13.5
+Products.ZCTextIndex==4.0.2
 Products.ZCatalog==3.0.3
 Products.ZSQLMethods==2.13.5
 Products.ZopeVersionControl==1.1.3
