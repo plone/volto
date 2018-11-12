@@ -162,7 +162,7 @@ plone.formwidget.multifile==2.0
 plone.formwidget.namedfile==2.0.5
 plone.formwidget.querystring==1.1.10
 plone.formwidget.recurrence==2.1.2
-plone.i18n==3.0.7
+plone.i18n==4.0.1
 plone.indexer==1.0.4
 plone.intelligenttext==2.2.1
 plone.jsonserializer==0.9.5
