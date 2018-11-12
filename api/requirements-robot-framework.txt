@@ -1,6 +1,6 @@
 robotframework
 robotframework-debuglibrary
-robotframework-requests
+robotframework-requests==0.5.0
 robotframework-seleniumlibrary
 robotframework-webpack
 robotframework-pabot
