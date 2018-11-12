@@ -126,7 +126,7 @@ plone.app.layout==2.7.5
 plone.app.linkintegrity==3.3.5
 plone.app.locales==5.1.8
 plone.app.lockingbehavior==1.0.5
-plone.app.mosaic==2.0rc8
+plone.app.mosaic==2.1.1
 plone.app.multilingual==5.2.0
 plone.app.portlets==4.3.2
 plone.app.querystring==1.4.8
