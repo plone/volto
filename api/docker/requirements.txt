@@ -33,7 +33,7 @@ Products.GenericSetup==1.8.8
 Products.MIMETools==2.13.0
 Products.MailHost==2.13.2
 Products.MimetypesRegistry==2.1.3
-Products.OFSP==2.13.2
+Products.OFSP==4.0.1
 Products.PlacelessTranslationService==2.0.7
 Products.PlonePAS==5.0.15
 Products.PluggableAuthService==1.11.0
