@@ -260,7 +260,7 @@ zope.deferredimport==3.5.3
 zope.deprecation==4.3.0
 zope.dottedname==4.2
 zope.error==3.7.4
-zope.event==3.5.2
+zope.event==4.4
 zope.exceptions==3.6.2
 zope.filerepresentation==3.6.1
 zope.globalrequest==1.2
