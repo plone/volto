@@ -54,7 +54,7 @@ Products.statusmessages==5.0.2
 Products.validation==2.1
 PyJWT==1.6.4
 Pygments==2.2.0
-Record==2.13.0
+Record==3.5
 RestrictedPython==3.6.0
 Unidecode==0.4.1
 ZConfig==3.1.0
