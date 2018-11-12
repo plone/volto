@@ -1,4 +1,4 @@
-robotframework
+robotframework==3.0.4
 robotframework-debuglibrary
 robotframework-requests
 robotframework-seleniumlibrary
