@@ -62,7 +62,7 @@ ZEO==5.1.1
 ZODB==5.3.0
 ZODB3==3.11.0
 ZServer==3.0
-Zope2==2.13.27
+Zope2==2.13.28
 ZopeUndo==4.3
 archetypes.multilingual==3.0.6
 archetypes.schemaextender==2.1.8
