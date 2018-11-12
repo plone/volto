@@ -80,7 +80,7 @@ docutils==0.14
 enum34==1.1.6
 feedparser==5.2.1
 five.customerize==1.1
-five.globalrequest==1.0
+five.globalrequest==99.1
 five.intid==1.1.2
 five.localsitemanager==2.0.6
 five.pt==2.2.5
