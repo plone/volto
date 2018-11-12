@@ -15,7 +15,7 @@ Plone==5.1.2
 Products.ATContentTypes==2.3.8
 Products.Archetypes==1.15.1
 Products.BTreeFolder2==2.14.0
-Products.CMFCore==2.2.12
+Products.CMFCore==2.3.1
 Products.CMFDiffTool==3.2.0
 Products.CMFDynamicViewFTI==4.1.7
 Products.CMFEditions==3.2.0
