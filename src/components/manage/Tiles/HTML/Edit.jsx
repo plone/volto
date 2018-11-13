@@ -29,9 +29,8 @@ export default class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      code: '',
+      code: this.props.data.html,
     }
-    console.log(this.props.data);
   }
 
   /**
