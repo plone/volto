@@ -13,6 +13,7 @@
 
 ## Added
 
+- Add .gitattributes file to avoid most Changelog merge conflicts @pnicolli
 - Buildout for Python 3 @pbauer
 - Websockets support @robgietema
 - Subrequests to search and get content actions @robgietema
