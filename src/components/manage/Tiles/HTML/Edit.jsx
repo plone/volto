@@ -31,6 +31,7 @@ export default class Edit extends Component {
     this.state = {
       code: '',
     }
+    console.log(this.props.data);
   }
 
   /**
