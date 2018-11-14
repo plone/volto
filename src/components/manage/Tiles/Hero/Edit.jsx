@@ -20,6 +20,7 @@ import { Icon } from '../../../../components';
 
 import trashSVG from '../../../../icons/delete.svg';
 import clearSVG from '../../../../icons/clear.svg';
+import { relative } from 'path';
 
 const messages = defineMessages({
   title: {
@@ -307,7 +308,7 @@ export default class  EditHeroTile extends Component {
               </Button.Group>
             </div>
           )}
-        <div className="product-hero" style={{ zIndex: '123' }}>
+        <div className="product-hero" style={{ zIndex: '123' , position: 'relative' }}>
           {this.props.data.url ? (
             <img src={`${this.props.data.url}/@@images/image`} alt="" />
           ) : (
