@@ -4,6 +4,7 @@ import {
   updateContent,
   getContent,
   orderContent,
+  resetContent,
   sortContent,
 } from './content';
 import {
@@ -12,6 +13,7 @@ import {
   UPDATE_CONTENT,
   GET_CONTENT,
   ORDER_CONTENT,
+  RESET_CONTENT,
 } from '../../constants/ActionTypes';
 
 describe('Content action', () => {
@@ -151,6 +153,31 @@ describe('Content action', () => {
       expect(action.request.path).toEqual(
         `${url}/@history/${version}?fullobjects`,
       );
+    });
+
+    it('should create an action to get content with a subrequest', () => {
+      const url = 'http://localhost';
+      const action = getContent(url, null, 'my-subrequest');
+
+      expect(action.type).toEqual(GET_CONTENT);
+      expect(action.subrequest).toEqual('my-subrequest');
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}?fullobjects`);
+    });
+  });
+
+  describe('resetContent', () => {
+    it('should create an action to reset content', () => {
+      const action = resetContent();
+
+      expect(action.type).toEqual(RESET_CONTENT);
+    });
+
+    it('should create an action to reset content with a subrequest', () => {
+      const action = resetContent('my-subrequest');
+
+      expect(action.type).toEqual(RESET_CONTENT);
+      expect(action.subrequest).toEqual('my-subrequest');
     });
   });
 });

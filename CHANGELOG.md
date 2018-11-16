@@ -8,10 +8,15 @@
 - Fix sharing @robgietema
 - Fix error on token renew @robgietema
 - Fix layout fieldname @bloodbare
+- First field in a form will get the focus @robgietema
+- Fix download file links @mikejmets
 
 ## Added
 
+- Add .gitattributes file to avoid most Changelog merge conflicts @pnicolli
 - Buildout for Python 3 @pbauer
+- Websockets support @robgietema
+- Subrequests to search and get content actions @robgietema
 - HTML Tile for Volto Editor @ajayns
 
 ## 1.0.0 (2018-10-31)

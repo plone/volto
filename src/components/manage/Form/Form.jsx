@@ -162,7 +162,10 @@ class Form extends Component {
     this.state = {
       formData,
       errors: {},
-      selected: null,
+      selected:
+        formData[tilesLayoutFieldname].items.length > 0
+          ? formData[tilesLayoutFieldname].items[0]
+          : null,
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeTile = this.onChangeTile.bind(this);
@@ -420,10 +423,11 @@ class Form extends Component {
                         {this.props.title}
                       </Segment>
                     ),
-                    ...map(item.fields, field => (
+                    ...map(item.fields, (field, index) => (
                       <Field
                         {...schema.properties[field]}
                         id={field}
+                        focus={index === 0}
                         value={this.state.formData[field]}
                         required={schema.required.indexOf(field) !== -1}
                         onChange={this.onChangeField}
