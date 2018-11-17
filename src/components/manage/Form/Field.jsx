@@ -144,6 +144,7 @@ Field.propTypes = {
   choices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   type: PropTypes.string,
   id: PropTypes.string.isRequired,
+  focus: PropTypes.bool,
   onOrder: PropTypes.func,
   intl: intlShape.isRequired,
 };
@@ -158,6 +159,7 @@ Field.defaultProps = {
   vocabulary: null,
   choices: null,
   type: 'string',
+  focus: false,
   onOrder: null,
 };
 
