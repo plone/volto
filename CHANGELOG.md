@@ -12,6 +12,7 @@
 ## Added
 
 - Buildout for Python 3 @pbauer
+- Hero Tiles @nileshgulia1
 
 ## 1.0.0 (2018-10-31)
 
