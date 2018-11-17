@@ -308,35 +308,37 @@ export default class  EditHeroTile extends Component {
               </Button.Group>
             </div>
           )}
-        <div className="product-hero" style={{ zIndex: '123' , position: 'relative' }}>
+        <div className="product-hero" style={{ zIndex: '123' , position: 'relative' , display: 'flex'}}>
           {this.props.data.url ? (
-            <img src={`${this.props.data.url}/@@images/image`} alt="" />
+            <img src={`${this.props.data.url}/@@images/image`} alt="" style = {{ maxWidth: '100%', width: '600px', objectFit: 'contain'}} />
           ) : (
-            <p>
-              <Message>
-                {this.state.uploading && (
-                  <Dimmer active>
-                    <Loader indeterminate>Uploading image</Loader>
-                  </Dimmer>
-                )}
-                <center>
-                  <h4>Image</h4>
-                  <p>Upload a new image</p>
-                  <p>
-                    <label className="ui button file">
-                      Browse
-                      <input
-                        type="file"
-                        onChange={this.onUploadImage}
-                        style={{ display: 'none' }}
-                      />
-                    </label>
-                  </p>
-                </center>
-              </Message>
-            </p>
+            <div>
+              <p>
+                <Message>
+                  {this.state.uploading && (
+                    <Dimmer active>
+                      <Loader indeterminate>Uploading image</Loader>
+                    </Dimmer>
+                  )}
+                  <center>
+                    <h4>Image</h4>
+                    <p>Upload a new image</p>
+                    <p>
+                      <label className="ui button file">
+                        Browse
+                        <input
+                          type="file"
+                          onChange={this.onUploadImage}
+                          style={{ display: 'none' }}
+                        />
+                      </label>
+                    </p>
+                  </center>
+                </Message>
+              </p>
+            </div>
           )}
-          <div className="product-hero-body">
+          <div className="product-hero-body" style={{flex: '1 1'}}>
             <Editor
               onChange={this.onChangeBoldTitle}
               editorState={this.state.boldTitleEditorState}
