@@ -26,6 +26,16 @@ describe('Search action', () => {
       expect(action.request.op).toEqual('get');
       expect(action.request.path).toEqual(`${url}/@search`);
     });
+
+    it('can be called with a subrequest key', () => {
+      const url = '/blog';
+      const action = searchContent(url, null, 'my-subrequest');
+
+      expect(action.type).toEqual(SEARCH_CONTENT);
+      expect(action.subrequest).toEqual('my-subrequest');
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}/@search`);
+    });
   });
 
   describe('resetSearchContent', () => {
@@ -33,6 +43,13 @@ describe('Search action', () => {
       const action = resetSearchContent();
 
       expect(action.type).toEqual(RESET_SEARCH_CONTENT);
+    });
+
+    it('can be called with a subrequest', () => {
+      const action = resetSearchContent('my-subrequest');
+
+      expect(action.type).toEqual(RESET_SEARCH_CONTENT);
+      expect(action.subrequest).toEqual('my-subrequest');
     });
   });
 });

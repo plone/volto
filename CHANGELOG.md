@@ -13,9 +13,11 @@
 
 ## Added
 
+- Add .gitattributes file to avoid most Changelog merge conflicts @pnicolli
 - Buildout for Python 3 @pbauer
 - Add Summary Box tile (Proxy) @pnicolli
 - Websockets support @robgietema
+- Subrequests to search and get content actions @robgietema
 
 ## 1.0.0 (2018-10-31)
 
