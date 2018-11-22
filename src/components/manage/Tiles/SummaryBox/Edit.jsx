@@ -7,15 +7,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Button, Card, Dropdown, Image } from 'semantic-ui-react';
+import { Button, Card, Dropdown, Image, Ref } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { map, sortBy, get } from 'lodash';
 
 import {
-  getSummaryBoxContent,
-  getSummaryBoxSearchResults,
-  resetSummaryBoxContent,
-  resetSummaryBoxSearch,
+  getContent,
+  searchContent,
+  resetContent,
+  resetSearchContent,
 } from '../../../../actions';
 
 import { Icon } from '../../../../components';
@@ -35,16 +35,16 @@ const messages = defineMessages({
 @injectIntl
 @connect(
   state => ({
-    content: state.summaryBox.content,
-    search: state.summaryBox.items,
+    contentSubrequests: state.content.subrequests,
+    searchSubrequests: state.search.subrequests,
   }),
   dispatch =>
     bindActionCreators(
       {
-        getSummaryBoxContent,
-        resetSummaryBoxSearch,
-        getSummaryBoxSearchResults,
-        resetSummaryBoxContent,
+        getContent,
+        searchContent,
+        resetContent,
+        resetSearchContent,
       },
       dispatch,
     ),
@@ -68,42 +68,18 @@ export default class Edit extends Component {
     onChangeTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
-    getSummaryBoxContent: PropTypes.func.isRequired,
-    resetSummaryBoxContent: PropTypes.func.isRequired,
-    resetSummaryBoxSearch: PropTypes.func.isRequired,
-    getSummaryBoxSearchResults: PropTypes.func.isRequired,
-    search: PropTypes.arrayOf(
-      PropTypes.shape({
-        '@id': PropTypes.string,
-        title: PropTypes.string,
-      }),
-    ),
-    content: PropTypes.objectOf(PropTypes.any),
+    getContent: PropTypes.func.isRequired,
+    searchContent: PropTypes.func.isRequired,
+    resetContent: PropTypes.func.isRequired,
+    resetSearchContent: PropTypes.func.isRequired,
+    searchSubrequests: PropTypes.objectOf(PropTypes.any),
+    contentSubrequests: PropTypes.objectOf(PropTypes.any),
   };
 
   static defaultProps = {
-    content: {},
-    search: [],
+    contentSubrequests: {},
+    searchSubrequests: [],
   };
-
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs SummaryBoxEditor
-   */
-  constructor(props) {
-    super(props);
-
-    if (!__SERVER__) {
-      this.state = {
-        url: '',
-        image: '',
-        title: '',
-        description: '',
-      };
-    }
-  }
 
   /**
    * Component did mount
@@ -111,25 +87,8 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.resetSummaryBoxSearch();
+    this.props.resetSearchContent(this.props.tile);
     this.updateContent();
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Props that will be received
-   * @returns {undefined}
-   */
-  componentWillReceiveProps(nextProps) {
-    if (Object.keys(nextProps.content).length) {
-      this.setState({
-        url: nextProps.content['@id'],
-        image: get(nextProps.content, 'image.scales.mini.download', undefined),
-        title: nextProps.content.title,
-        description: nextProps.content.description,
-      });
-    }
   }
 
   /**
@@ -140,6 +99,9 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   componentDidUpdate(prevProps) {
+    if (!prevProps.selected && this.props.selected && this.dropdownRef) {
+      this.dropdownRef.querySelector('input.search').focus();
+    }
     if (prevProps.data.selectedItem !== this.props.data.selectedItem) {
       this.updateContent();
     }
@@ -151,7 +113,8 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   componentWillUnmount() {
-    this.props.resetSummaryBoxContent();
+    this.props.resetSearchContent(this.props.tile);
+    this.props.resetContent(this.props.tile);
   }
 
   /**
@@ -162,11 +125,15 @@ export default class Edit extends Component {
    */
   onChange = value => {
     if (value) {
-      this.props.getSummaryBoxSearchResults('', {
-        Title: `*${value}*`,
-      });
+      this.props.searchContent(
+        '',
+        {
+          Title: `*${value}*`,
+        },
+        this.props.tile,
+      );
     } else {
-      this.props.resetSummaryBoxSearch();
+      this.props.resetSearchContent(this.props.tile);
     }
   };
 
@@ -191,8 +158,19 @@ export default class Edit extends Component {
   updateContent = () => {
     const { selectedItem } = this.props.data;
     if (selectedItem) {
-      this.props.getSummaryBoxContent(selectedItem);
+      // Use subrequests to fetch tile data
+      this.props.getContent(selectedItem, undefined, this.props.tile);
     }
+  };
+
+  /**
+   * Sets reference to the dropdown element in order to auto-focus it
+   * @method handleDropdownRef
+   * @param {node} node Dropdown element
+   * @returns {undefined}
+   */
+  handleDropdownRef = node => {
+    this.dropdownRef = node;
   };
 
   /**
@@ -204,56 +182,77 @@ export default class Edit extends Component {
     if (__SERVER__) {
       return <div />;
     }
-    const { url, image, title, description } = this.state;
+    const {
+      contentSubrequests,
+      intl,
+      onDeleteTile,
+      onSelectTile,
+      searchSubrequests,
+      selected,
+      tile,
+    } = this.props;
+
+    // Using null as default for consistency with content reducer
+    // see reducers/content/content.js, look for action GET_CONTENT_PENDING
+    const contentData = get(contentSubrequests, [tile, 'data'], null);
+    const image = get(contentData, 'image.scales.mini.download', undefined);
+
+    // the default for items in the search reducers is [] instead
+    // see reducers/search/search.js
+    const searchItems = get(searchSubrequests, [tile, 'items'], []);
 
     return (
       <div
-        onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={`tile summary-box${this.props.selected ? ' selected' : ''}`}
+        onClick={() => onSelectTile(tile)}
+        className={`tile summary-box${selected ? ' selected' : ''}`}
         ref={node => {
           this.ref = node;
         }}
       >
         {/* Widget that searches for a reference */}
-        {this.props.selected && (
+        {selected && (
           <div className="toolbar" style={{ width: '400px' }}>
-            <Dropdown
-              options={sortBy(
-                map(this.props.search, result => ({
-                  key: result['@id'],
-                  value: result['@id'],
-                  text: result.title,
-                })),
-                'text',
-              )}
-              placeholder={this.props.intl.formatMessage(messages.search)}
-              search
-              selection
-              fluid
-              noResultsMessage={this.props.intl.formatMessage(
-                messages.no_results_found,
-              )}
-              onChange={(event, data) => this.onSelectItem(data.value)}
-              onSearchChange={(event, data) => this.onChange(data.searchQuery)}
-            />
+            <Ref innerRef={this.handleDropdownRef}>
+              <Dropdown
+                options={sortBy(
+                  map(searchItems, result => ({
+                    key: result['@id'],
+                    value: result['@id'],
+                    text: result.title,
+                  })),
+                  'text',
+                )}
+                placeholder={intl.formatMessage(messages.search)}
+                search
+                selection
+                selectOnBlur={false}
+                fluid
+                noResultsMessage={intl.formatMessage(messages.no_results_found)}
+                onChange={(event, data) => this.onSelectItem(data.value)}
+                onSearchChange={(event, data) =>
+                  this.onChange(data.searchQuery)
+                }
+              />
+            </Ref>
           </div>
         )}
         {/* Show selected item */}
-        {url && (
-          <Card>
-            {image && <Image clearing src={image} alt={title} />}
-            <Card.Content>
-              <Card.Header>{title}</Card.Header>
-              <Card.Description>{description}</Card.Description>
-            </Card.Content>
-          </Card>
-        )}
+        {contentData &&
+          Object.keys(contentData).length > 0 && (
+            <Card>
+              {image && <Image src={image} alt={contentData.title} />}
+              <Card.Content>
+                <Card.Header>{contentData.title}</Card.Header>
+                <Card.Description>{contentData.description}</Card.Description>
+              </Card.Content>
+            </Card>
+          )}
         {/* "Delete tile" button */}
-        {this.props.selected && (
+        {selected && (
           <Button
             icon
             basic
-            onClick={() => this.props.onDeleteTile(this.props.tile)}
+            onClick={() => onDeleteTile(tile)}
             className="tile-delete-button"
           >
             <Icon name={trashSVG} size="18px" />

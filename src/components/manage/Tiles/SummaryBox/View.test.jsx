@@ -9,19 +9,24 @@ const props = {
   data: {
     selectedItem: '/test',
   },
-  getSummaryBoxContent: () => {},
-  resetSummaryBoxContent: () => {},
-  content: {
-    '@id': `${settings.apiUrl}/test`,
-    image: {
-      scales: {
-        mini: {
-          download: `${settings.apiUrl}/test/image.jpeg`,
+  getContent: () => {},
+  resetContent: () => {},
+  tile: 'test',
+  contentSubrequests: {
+    test: {
+      data: {
+        '@id': `${settings.apiUrl}/test`,
+        image: {
+          scales: {
+            mini: {
+              download: `${settings.apiUrl}/test/image.jpeg`,
+            },
+          },
         },
+        title: 'Test',
+        description: 'Summary',
       },
     },
-    title: 'Test',
-    description: 'Summary',
   },
 };
 

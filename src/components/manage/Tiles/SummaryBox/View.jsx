@@ -10,17 +10,7 @@ import { bindActionCreators } from 'redux';
 import { get } from 'lodash';
 import { Card, Image } from 'semantic-ui-react';
 
-import {
-  getSummaryBoxContent,
-  resetSummaryBoxContent,
-} from '../../../../actions';
-
-const parseContent = content => ({
-  url: content['@id'],
-  image: get(content, 'image.scales.mini.download', undefined),
-  title: content.title,
-  description: content.description,
-});
+import { getContent, resetContent } from '../../../../actions';
 
 /**
  * Summary box view component.
@@ -34,27 +24,16 @@ export class View extends Component {
    * @static
    */
   static propTypes = {
+    tile: PropTypes.string.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
-    getSummaryBoxContent: PropTypes.func.isRequired,
-    resetSummaryBoxContent: PropTypes.func.isRequired,
-    content: PropTypes.objectOf(PropTypes.any),
+    getContent: PropTypes.func.isRequired,
+    resetContent: PropTypes.func.isRequired,
+    contentSubrequests: PropTypes.objectOf(PropTypes.any),
   };
 
   static defaultProps = {
-    content: {},
+    contentSubrequests: {},
   };
-
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs SummaryBoxEditor
-   */
-  constructor(props) {
-    super(props);
-
-    this.state = parseContent(props.content);
-  }
 
   /**
    * Component did mount
@@ -64,19 +43,8 @@ export class View extends Component {
   componentDidMount() {
     const { selectedItem } = this.props.data;
     if (selectedItem) {
-      this.props.getSummaryBoxContent(selectedItem);
-    }
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Props that will be received
-   * @returns {undefined}
-   */
-  componentWillReceiveProps(nextProps) {
-    if (Object.keys(nextProps.content).length) {
-      this.setState(parseContent(nextProps.content));
+      // Use subrequests to fetch tile data
+      this.props.getContent(selectedItem, undefined, this.props.tile);
     }
   }
 
@@ -86,7 +54,7 @@ export class View extends Component {
    * @returns {undefined}
    */
   componentWillUnmount() {
-    this.props.resetSummaryBoxContent();
+    this.props.resetContent(this.props.tile);
   }
 
   /**
@@ -95,31 +63,37 @@ export class View extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { url, image, title, description } = this.state;
+    const { contentSubrequests, tile } = this.props;
 
-    return (
-      url && (
-        <Card floated="left">
-          {image && <Image clearing src={image} alt={title} />}
+    // Using null as default for consistency with content reducer
+    // see reducers/content/content.js, look for action GET_CONTENT_PENDING
+    const data = get(contentSubrequests, [tile, 'data'], null);
+    if (data && Object.keys(data).length) {
+      const image = get(data, 'image.scales.mini.download', undefined);
+
+      return (
+        <Card>
+          {image && <Image src={image} alt={data.title} />}
           <Card.Content>
-            <Card.Header>{title}</Card.Header>
-            <Card.Description>{description}</Card.Description>
+            <Card.Header>{data.title}</Card.Header>
+            <Card.Description>{data.description}</Card.Description>
           </Card.Content>
         </Card>
-      )
-    );
+      );
+    }
+    return null;
   }
 }
 
 export default connect(
   state => ({
-    content: state.summaryBox.content,
+    contentSubrequests: state.content.subrequests,
   }),
   dispatch =>
     bindActionCreators(
       {
-        getSummaryBoxContent,
-        resetSummaryBoxContent,
+        getContent,
+        resetContent,
       },
       dispatch,
     ),

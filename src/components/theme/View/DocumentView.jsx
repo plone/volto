@@ -65,6 +65,7 @@ const DocumentView = ({ content }) => {
         return Tile !== null ? (
           <Tile
             key={tile}
+            tile={tile}
             properties={content}
             data={content[tilesFieldname][tile]}
           />

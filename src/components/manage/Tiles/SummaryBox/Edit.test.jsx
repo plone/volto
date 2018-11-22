@@ -15,9 +15,11 @@ test('renders an edit summary box tile component', () => {
       locale: 'en',
       messages: {},
     },
-    summaryBox: {
-      content: {},
-      items: [],
+    content: {
+      subrequests: {},
+    },
+    search: {
+      subrequests: {},
     },
   });
   const component = renderer.create(

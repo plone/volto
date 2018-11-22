@@ -20,6 +20,7 @@ export {
   getContent,
   orderContent,
   sortContent,
+  resetContent,
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
@@ -58,12 +59,6 @@ export {
   getSharing,
 } from '@plone/volto/actions/sharing/sharing';
 export { getTiles } from '@plone/volto/actions/tiles/tiles';
-export {
-  getSummaryBoxContent,
-  getSummaryBoxSearchResults,
-  resetSummaryBoxContent,
-  resetSummaryBoxSearch,
-} from '@plone/volto/actions/tiles/summaryBox';
 export { getTypes } from '@plone/volto/actions/types/types';
 export {
   createUser,
