@@ -4,6 +4,9 @@ dist:
 	yarn
 	yarn build
 
+build:
+	yarn && RAZZLE_API_PATH=http://localhost:55001/plone yarn build
+
 start: dist
 	yarn start:prod
 

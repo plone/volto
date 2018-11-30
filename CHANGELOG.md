@@ -1,10 +1,23 @@
 # Change Log
 
-## 1.0.1 (undefined)
+## 1.0.1 (unreleased)
 
 ### Changes
 
+- Fix edit on root @robgietema
+- Fix sharing @robgietema
+- Fix error on token renew @robgietema
+- Fix layout fieldname @bloodbare
+- First field in a form will get the focus @robgietema
+- Fix download file links @mikejmets
 - Fix HMR missbehaving on both server and client @sneridagh
+
+## Added
+
+- Add .gitattributes file to avoid most Changelog merge conflicts @pnicolli
+- Buildout for Python 3 @pbauer
+- Websockets support @robgietema
+- Subrequests to search and get content actions @robgietema
 
 ## 1.0.0 (2018-10-31)
 
@@ -71,6 +84,7 @@
 ### Changes
 
 - Fix compiling when used as a library @robgietema
+- Fix buildout security issue @robgietema
 
 ## 0.8.0 (2018-10-03)
 

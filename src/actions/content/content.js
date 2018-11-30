@@ -9,6 +9,7 @@ import {
   UPDATE_CONTENT,
   GET_CONTENT,
   ORDER_CONTENT,
+  RESET_CONTENT,
 } from '../../constants/ActionTypes';
 import { nestContent } from '../../helpers';
 
@@ -109,14 +110,29 @@ export function sortContent(url, on, order) {
  * @function getContent
  * @param {string} url Content url
  * @param {string} version Version id
+ * @param {string} subrequest Key of the subrequest.
  * @returns {Object} Get content action
  */
-export function getContent(url, version) {
+export function getContent(url, version = null, subrequest = null) {
   return {
     type: GET_CONTENT,
+    subrequest,
     request: {
       op: 'get',
       path: `${url}${version ? `/@history/${version}` : ''}?fullobjects`,
     },
+  };
+}
+
+/**
+ * Reset content function
+ * @function resetContent
+ * @param {string} subrequest Key of the subrequest.
+ * @returns {Object} Get content action
+ */
+export function resetContent(subrequest = null) {
+  return {
+    type: RESET_CONTENT,
+    subrequest,
   };
 }
