@@ -5,7 +5,7 @@ Library  DebugLibrary
 Library  RequestsLibrary
 Library  SeleniumLibrary  timeout=30  implicit_wait=0
 
-# Variables  variables.py
+Variables  variables.py
 
 
 *** Variables ***
@@ -19,10 +19,11 @@ ${BROWSER}             chrome
 
 *** Keywords ***
 
-### Test Setup and Test Teardown are only called when robot tests are run for
-### the whole directory (see: ./__init__.robot). These keyword import
-### Zope2Server library to make it possible to run individual test case
-### files without Zope2Server in PYTHONPATH of pybot test runner.
+# --- TEST SETUP / TEARDOWN --------------------------------------------------
+# Test Setup and Test Teardown are only called when robot tests are run for
+# the whole directory (see: ./__init__.robot). These keyword import
+# Zope2Server library to make it possible to run individual test case
+# files without Zope2Server in PYTHONPATH of pybot test runner.
 
 Test Setup
     Run Keyword If   '${API}' == 'Plone'   Import library  plone.app.robotframework.Zope2Server
@@ -37,7 +38,7 @@ Test Teardown
     Run Keyword If   '${API}' == 'Plone'   ZODB TearDown
     Close all browsers
 
-###
+# --- BROWSER ----------------------------------------------------------------
 
 Create default browser
     [Documentation]  Opens a new browser window based on configured ${BROWSER}
@@ -51,6 +52,9 @@ Open default browser
     [Documentation]  Opens a new browser window or switches to existing one
     ${status}=  Run Keyword And Ignore Error  Switch browser  default
     Run Keyword If  '${status[0]}' == 'FAIL'  Create default browser
+
+Skip test on Guillotina
+    Pass execution if  '${API}' == 'Guillotina'  Skipping test on Guillotina
 
 # --- Given ------------------------------------------------------------------
 # Given keywords are pre-conditions of the test.
@@ -115,8 +119,8 @@ I should be logged in
 
 Autologin as
     [Arguments]  ${username}=admin  ${password}=secret
-    ${headers}  Create Dictionary  Accept  application/json  Content-Type  application/json
-    ${data}=  Create dictionary  login  ${username}  password  ${password}
+    ${headers}  Create dictionary  Accept=application/json  Content-Type=application/json
+    ${data}=  Create dictionary  login=admin  password=secret
     Run Keyword If   '${API}' == 'Guillotina'   Create Session  plone  http://localhost:8081/db/container
     Run Keyword If   '${API}' == 'Plone'   Create Session  plone  http://localhost:55001/plone
     ${resp}=	Post Request  plone  /@login  headers=${headers}  data=${data}
@@ -128,4 +132,5 @@ Autologin as
     Wait until keyword succeeds  120s  1s
     ...   Page fully loaded
     Wait until page contains element  css=#toolbar
+    Wait until page contains  Log out
     Page should contain  Log out
