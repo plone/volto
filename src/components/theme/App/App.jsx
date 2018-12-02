@@ -14,6 +14,7 @@ import renderRoutes from 'react-router-config/renderRoutes';
 
 import Error from '../../../error';
 
+import { getAuthToken } from '../../../helpers';
 import { Breadcrumbs, Footer, Header, Messages } from '../../../components';
 import { BodyClass, getBaseUrl, getView } from '../../../helpers';
 import {
@@ -44,6 +45,17 @@ export class AppComponent extends Component {
     pathname: PropTypes.string.isRequired,
     purgeMessages: PropTypes.func.isRequired,
   };
+
+  constructor(props) {
+    super(props);
+    let token = getAuthToken();
+    if (token === undefined) {
+      token = '';
+    }
+    this.elmflags = {
+      token,
+    };
+  }
 
   state = {
     hasError: false,

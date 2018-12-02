@@ -9,6 +9,8 @@ import { Router } from 'react-router-dom';
 
 import { loginRenew } from '../../actions';
 
+const globalState = __SERVER__ ? global : window;
+
 /**
  * Get auth token method.
  * @method getAuthToken
@@ -27,6 +29,14 @@ export function getAuthToken() {
 export function persistAuthToken(store) {
   let currentValue = getAuthToken();
 
+  function notifyElmAuthToken(elmapps, value) {
+    for (const elmapp of elmapps) {
+      if (typeof elmapp.ports !== 'undefined' && typeof elmapp.ports.auth_token !== 'undefined') {
+        elmapp.ports.auth_token.send(value);
+      }
+    }
+  };
+
   /**
    * handleChange method.
    * @method handleChange
@@ -40,11 +50,13 @@ export function persistAuthToken(store) {
     if (previousValue !== currentValue || initial) {
       if (!currentValue) {
         cookie.remove('auth_token', { path: '/' });
+        notifyElmAuthToken(globalState.elmapps, '');
       } else {
         cookie.save('auth_token', currentValue, {
           path: '/',
           expires: new Date(jwtDecode(currentValue).exp * 1000),
         });
+        notifyElmAuthToken(globalState.elmapps, currentValue);
         setTimeout(() => {
           if (store.getState().userSession.token) {
             if (
