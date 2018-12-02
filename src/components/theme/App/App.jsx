@@ -17,6 +17,9 @@ import Error from '../../../error';
 import { getAuthToken } from '../../../helpers';
 import { Breadcrumbs, Footer, Header, Messages } from '../../../components';
 import { BodyClass, getBaseUrl, getView } from '../../../helpers';
+import { ElmWrapper } from '../../../components';
+import Counter from '../../../elm/Counter';
+import ResetCounter from '../../../elm/ResetCounter';
 import {
   getBreadcrumbs,
   getContent,
@@ -118,7 +121,19 @@ export class AppComponent extends Component {
       <Fragment>
         <BodyClass className={`view-${action}view`} />
         <Header pathname={path} />
+        <ElmWrapper
+          src={Counter.Elm.Counter}
+          flags={this.elmflags}
+        />
         <Breadcrumbs pathname={path} />
+        <ElmWrapper
+          src={Counter.Elm.Counter}
+          flags={this.elmflags}
+        />
+        <ElmWrapper
+          src={ResetCounter.Elm.ResetCounter}
+          flags={this.elmflags}
+        />
         <Segment basic className="content-area">
           <main>
             <Messages />
