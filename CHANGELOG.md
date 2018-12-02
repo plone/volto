@@ -11,6 +11,7 @@
 - First field in a form will get the focus @robgietema
 - Fix download file links @mikejmets
 - Upgrade to Node 8.14.0 @timo
+- Relaxed node runtime constraints @sneridagh
 
 ## Added
 
