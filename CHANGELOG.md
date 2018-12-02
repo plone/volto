@@ -10,6 +10,8 @@
 - Fix layout fieldname @bloodbare
 - First field in a form will get the focus @robgietema
 - Fix download file links @mikejmets
+- Upgrade to Node 8.14.0 @timo
+- Relaxed node runtime constraints @sneridagh
 
 ## Added
 
@@ -17,6 +19,7 @@
 - Buildout for Python 3 @pbauer
 - Websockets support @robgietema
 - Subrequests to search and get content actions @robgietema
+- Add logos @sneridagh @albertcasado
 
 ## 1.0.0 (2018-10-31)
 
