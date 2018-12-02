@@ -10,12 +10,16 @@
 - Fix layout fieldname @bloodbare
 - First field in a form will get the focus @robgietema
 - Fix download file links @mikejmets
+- Relaxed node runtime constraints @sneridagh
 
 ## Added
 
+- Add .gitattributes file to avoid most Changelog merge conflicts @pnicolli
 - Buildout for Python 3 @pbauer
 - Websockets support @robgietema
 - contact-info view @cekk
+- Subrequests to search and get content actions @robgietema
+- Add logos @sneridagh @albertcasado
 
 ## 1.0.0 (2018-10-31)
 
