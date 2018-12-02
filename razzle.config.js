@@ -191,10 +191,13 @@ module.exports = {
     if (fs.existsSync('./node_modules/@plone/volto/src')) {
       include.push(fs.realpathSync('./node_modules/@plone/volto/src'));
     }
+    var exclude = [];
+    exclude.push(fs.realpathSync('./src/elm'));
     config.module.rules[babelRuleIndex] = Object.assign(
       config.module.rules[babelRuleIndex],
       {
         include,
+        exclude,
       },
     );
     config.externals =
