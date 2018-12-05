@@ -1,11 +1,11 @@
 /**
  * View image tile.
- * @module components/manage/Tiles/Image/View
+ * @module components/manage/Tiles/Hero/View
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MixedTitle } from '../../../components';
+//import { MixedTitle } from '../../../components';
 
 /**
  * View image tile class.
@@ -17,14 +17,14 @@ const View = ({ data }) => (
     <div className="product-hero">
       <img src={`${data.url}/@@images/image`} alt="" />
       <div className="product-hero-body">
-        <h1>
+        {/*<h1>
           <MixedTitle
             light={data.boldTitle}
             strong={data.title}
             breakline
             reverse
           />
-        </h1>
+        </h1>*/}
         <p>{data.description}</p>
       </div>
     </div>
