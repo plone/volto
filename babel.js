@@ -1,7 +1,23 @@
-module.exports = {
-  presets: ['razzle/babel', 'stage-0'],
-  plugins: [
-    'transform-decorators-legacy',
+module.exports = function () {
+  const presets = ['razzle/babel'];
+  const plugins = [
+    '@babel/plugin-proposal-function-bind',
+    ['@babel/plugin-proposal-decorators', {
+      'legacy': true
+    }],
+    '@babel/plugin-proposal-do-expressions',
+    '@babel/plugin-proposal-export-default-from',
+    '@babel/plugin-proposal-export-namespace-from',
+    '@babel/plugin-proposal-function-bind',
+    '@babel/plugin-proposal-function-sent',
+    '@babel/plugin-proposal-json-strings',
+    '@babel/plugin-proposal-logical-assignment-operators',
+    '@babel/plugin-proposal-nullish-coalescing-operator',
+    '@babel/plugin-proposal-numeric-separator',
+    '@babel/plugin-proposal-optional-chaining',
+    '@babel/plugin-proposal-pipeline-operator',
+    '@babel/plugin-proposal-throw-expressions',
+    '@babel/plugin-syntax-import-meta',
     [
       'babel-plugin-root-import',
       {
@@ -14,5 +30,9 @@ module.exports = {
         messagesDir: './build/messages/',
       },
     ],
-  ],
+  ];
+  return {
+    presets,
+    plugins
+  };
 };
