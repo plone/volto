@@ -8,7 +8,6 @@ module.exports = function () {
     '@babel/plugin-proposal-do-expressions',
     '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-proposal-export-namespace-from',
-    '@babel/plugin-proposal-function-bind',
     '@babel/plugin-proposal-function-sent',
     '@babel/plugin-proposal-json-strings',
     '@babel/plugin-proposal-logical-assignment-operators',
