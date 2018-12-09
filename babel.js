@@ -14,7 +14,7 @@ module.exports = function () {
     '@babel/plugin-proposal-nullish-coalescing-operator',
     '@babel/plugin-proposal-numeric-separator',
     '@babel/plugin-proposal-optional-chaining',
-    '@babel/plugin-proposal-pipeline-operator',
+    ['@babel/plugin-proposal-pipeline-operator',{ 'proposal': 'minimal' }],
     '@babel/plugin-proposal-throw-expressions',
     '@babel/plugin-syntax-import-meta',
     [
