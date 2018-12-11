@@ -31,7 +31,7 @@ module.exports = function () {
     ],
   ];
   return {
+    plugins,
     presets,
-    plugins
   };
 };
