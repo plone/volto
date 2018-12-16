@@ -11,6 +11,7 @@ import { Segment } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import Raven from 'raven-js';
 import renderRoutes from 'react-router-config/renderRoutes';
+import { settings } from '~/config';
 
 import Error from '../../../error';
 
@@ -18,7 +19,7 @@ import { getAuthToken } from '../../../helpers';
 import { Breadcrumbs, Footer, Header, Messages } from '../../../components';
 import { BodyClass, getBaseUrl, getView } from '../../../helpers';
 import { ElmWrapper } from '../../../components';
-import Counter from '../../../elm/Counter';
+import ElmBreadcrumbs from '../../../elm/ElmBreadcrumbs';
 import ResetCounter from '../../../elm/ResetCounter';
 import {
   getBreadcrumbs,
@@ -28,6 +29,8 @@ import {
   getWorkflow,
   purgeMessages,
 } from '../../../actions';
+
+const globalState = __SERVER__ ? global : window;
 
 @connect(
   (state, props) => ({ pathname: props.location.pathname }),
@@ -55,9 +58,28 @@ export class AppComponent extends Component {
     if (token === undefined) {
       token = '';
     }
+    let apiPath = settings.apiPath;
+    let pathName = props.pathname;
     this.elmflags = {
       token,
+      apiPath,
+      pathName,
     };
+  function notifyElmPathName(elmapps, value) {
+    for (const elmapp of elmapps) {
+      if (typeof elmapp.ports !== 'undefined' && typeof elmapp.ports.path_name !== 'undefined') {
+        elmapp.ports.path_name.send(value);
+      }
+    }
+  };
+
+    props.history.listen((location, action) =>  {
+  // location is an object like window.location
+  console.log(action, location.pathname, location.state)
+        if (action=="PUSH") {
+notifyElmPathName(globalState.elmapps, location.pathname);
+}
+});
   }
 
   state = {
@@ -122,18 +144,10 @@ export class AppComponent extends Component {
         <BodyClass className={`view-${action}view`} />
         <Header pathname={path} />
         <ElmWrapper
-          src={Counter.Elm.Counter}
+          src={ElmBreadcrumbs.Elm.ElmBreadcrumbs}
           flags={this.elmflags}
         />
         <Breadcrumbs pathname={path} />
-        <ElmWrapper
-          src={Counter.Elm.Counter}
-          flags={this.elmflags}
-        />
-        <ElmWrapper
-          src={ResetCounter.Elm.ResetCounter}
-          flags={this.elmflags}
-        />
         <Segment basic className="content-area">
           <main>
             <Messages />
