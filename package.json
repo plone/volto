@@ -64,7 +64,7 @@
     "singleQuote": true
   },
   "engines": {
-    "node": "~8.11.3"
+    "node": "~8.14.0"
   },
   "dependencies": {
     "@babel/core": "^7.0.0",

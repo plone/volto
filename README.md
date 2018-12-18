@@ -14,7 +14,7 @@ A training on how to create your own website using Volto is available as part of
 
 ### Prerequisites
 
-- [Node.js==8.11.3](https://nodejs.org/)
+- [Node.js==8.14.0](https://nodejs.org/)
 - [Python==2.7.x](https://python.org/)
 
 ### Install dependencies
