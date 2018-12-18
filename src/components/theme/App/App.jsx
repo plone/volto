@@ -73,13 +73,15 @@ export class AppComponent extends Component {
     }
   };
 
-    props.history.listen((location, action) =>  {
-  // location is an object like window.location
-  console.log(action, location.pathname, location.state)
-        if (action=="PUSH") {
-notifyElmPathName(globalState.elmapps, location.pathname);
-}
-});
+  props.history.listen(
+    (location, action) =>  {
+      // location is an object like window.location
+      console.log(action, location.pathname, location.state)
+      if (action=="PUSH" || action=="POP") {
+        notifyElmPathName(globalState.elmapps, location.pathname);
+      }
+    }
+  );
   }
 
   state = {
@@ -146,6 +148,7 @@ notifyElmPathName(globalState.elmapps, location.pathname);
         <ElmWrapper
           src={ElmBreadcrumbs.Elm.ElmBreadcrumbs}
           flags={this.elmflags}
+          history={this.props.history}
         />
         <Breadcrumbs pathname={path} />
         <Segment basic className="content-area">

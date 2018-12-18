@@ -20,6 +20,14 @@ class ElmWrapper extends React.Component {
       flags: this.props.flags,
     });
 
+    if (typeof app.ports !== 'undefined' && typeof app.ports.setHistory !== 'undefined') {
+        const history = this.props.history;
+        app.ports.setHistory.subscribe(function(url) {
+                console.log(url);
+                history.push(url);
+        });
+    }
+
     globalState.elmapps.push(app);
   }
 
@@ -37,6 +45,7 @@ class ElmWrapper extends React.Component {
 }
 
 ElmWrapper.propTypes = {
+  history: PropTypes.objectOf(PropTypes.any),
   flags: PropTypes.objectOf(PropTypes.any),
   src: PropTypes.objectOf(PropTypes.any).isRequired
 };

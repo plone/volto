@@ -72,11 +72,15 @@ init_token token =
         Just token
 
 
+port setHistory : String -> Cmd msg
+
+
 type Msg
     = SetToken (Maybe String)
     | SetPathName String
     | GetBreadcrumbs
     | GotBreadcrumbs (Result Http.Error BreadcrumbsApi)
+    | Goto String
 
 
 onClickPD : msg -> Html.Attribute msg
@@ -116,6 +120,9 @@ update msg model =
 
                 Err _ ->
                     ( model, Cmd.none )
+
+        Goto url ->
+            ( model, setHistory url )
 
 
 relativePath root path =
@@ -239,5 +246,5 @@ viewActive tail =
 
 viewBreadcrumb breadcrumb =
     [ div [ class "divider" ] [ text "/" ]
-    , a [ class "section", href breadcrumb.id ] [ text breadcrumb.title ]
+    , a [ class "section", href breadcrumb.id, onClickPD (Goto breadcrumb.id) ] [ text breadcrumb.title ]
     ]

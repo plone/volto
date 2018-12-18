@@ -6136,6 +6136,8 @@ var author$project$ElmBreadcrumbs$relativeBreadcrumb = F2(
 				id: A2(author$project$ElmBreadcrumbs$relativePath, root, id)
 			});
 	});
+var elm$json$Json$Encode$string = _Json_wrap;
+var author$project$ElmBreadcrumbs$setHistory = _Platform_outgoingPort('setHistory', elm$json$Json$Encode$string);
 var elm$core$Platform$Cmd$batch = _Platform_batch;
 var elm$core$Platform$Cmd$none = elm$core$Platform$Cmd$batch(_List_Nil);
 var author$project$ElmBreadcrumbs$update = F2(
@@ -6160,7 +6162,7 @@ var author$project$ElmBreadcrumbs$update = F2(
 				return _Utils_Tuple2(
 					model,
 					author$project$ElmBreadcrumbs$getBreakcrumbs(model));
-			default:
+			case 'GotBreadcrumbs':
 				var result = msg.a;
 				if (result.$ === 'Ok') {
 					var value = result.a;
@@ -6178,6 +6180,11 @@ var author$project$ElmBreadcrumbs$update = F2(
 				} else {
 					return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
 				}
+			default:
+				var url = msg.a;
+				return _Utils_Tuple2(
+					model,
+					author$project$ElmBreadcrumbs$setHistory(url));
 		}
 	});
 var elm$json$Json$Decode$map = _Json_map1;
@@ -6208,7 +6215,6 @@ var author$project$ElmBreadcrumbs$ariaHidden = function (name) {
 var elm$html$Html$div = _VirtualDom_node('div');
 var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
-var elm$json$Json$Encode$string = _Json_wrap;
 var elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
 		return A2(
@@ -6247,6 +6253,32 @@ var author$project$ElmBreadcrumbs$viewActive = function (tail) {
 		return _List_Nil;
 	}
 };
+var author$project$ElmBreadcrumbs$Goto = function (a) {
+	return {$: 'Goto', a: a};
+};
+var author$project$ElmBreadcrumbs$alwaysPreventDefault = function (msg) {
+	return _Utils_Tuple2(msg, true);
+};
+var elm$virtual_dom$VirtualDom$MayPreventDefault = function (a) {
+	return {$: 'MayPreventDefault', a: a};
+};
+var elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
+var elm$html$Html$Events$preventDefaultOn = F2(
+	function (event, decoder) {
+		return A2(
+			elm$virtual_dom$VirtualDom$on,
+			event,
+			elm$virtual_dom$VirtualDom$MayPreventDefault(decoder));
+	});
+var author$project$ElmBreadcrumbs$onClickPD = function (msg) {
+	return A2(
+		elm$html$Html$Events$preventDefaultOn,
+		'click',
+		A2(
+			elm$json$Json$Decode$map,
+			author$project$ElmBreadcrumbs$alwaysPreventDefault,
+			elm$json$Json$Decode$succeed(msg)));
+};
 var elm$html$Html$a = _VirtualDom_node('a');
 var elm$html$Html$Attributes$href = function (url) {
 	return A2(
@@ -6272,7 +6304,9 @@ var author$project$ElmBreadcrumbs$viewBreadcrumb = function (breadcrumb) {
 			_List_fromArray(
 				[
 					elm$html$Html$Attributes$class('section'),
-					elm$html$Html$Attributes$href(breadcrumb.id)
+					elm$html$Html$Attributes$href(breadcrumb.id),
+					author$project$ElmBreadcrumbs$onClickPD(
+					author$project$ElmBreadcrumbs$Goto(breadcrumb.id))
 				]),
 			_List_fromArray(
 				[
