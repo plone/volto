@@ -12,6 +12,7 @@
 - Fix download file links @mikejmets
 - Upgrade to Node 8.14.0 @timo
 - Relaxed node runtime constraints @sneridagh
+- Update to latest LESS and Semantic UI version @sneridagh
 
 ## Added
 
