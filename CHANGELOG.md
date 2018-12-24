@@ -2,7 +2,7 @@
 
 ## 1.0.1 (unreleased)
 
-### Change
+### Changes
 
 - Fix edit on root @robgietema
 - Fix sharing @robgietema
@@ -10,6 +10,7 @@
 - Fix layout fieldname @bloodbare
 - First field in a form will get the focus @robgietema
 - Fix download file links @mikejmets
+- Fix HMR missbehaving on both server and client @sneridagh
 - Upgrade to Node 8.14.0 @timo
 - Relaxed node runtime constraints @sneridagh
 
