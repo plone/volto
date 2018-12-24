@@ -17,6 +17,7 @@
 
 - Add .gitattributes file to avoid most Changelog merge conflicts @pnicolli
 - Buildout for Python 3 @pbauer
+- Hero Tiles @nileshgulia1
 - Websockets support @robgietema
 - Subrequests to search and get content actions @robgietema
 - Add logos @sneridagh @albertcasado
