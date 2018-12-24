@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.1 (unreleased)
+
+### Changes
+
 ## 1.1.0 (2018-12-24)
 
 ### Changes
