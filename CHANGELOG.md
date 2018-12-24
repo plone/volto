@@ -13,6 +13,7 @@
 - Fix HMR missbehaving on both server and client @sneridagh
 - Upgrade to Node 8.14.0 @timo
 - Relaxed node runtime constraints @sneridagh
+- Update to latest LESS and Semantic UI version @sneridagh
 
 ## Added
 
