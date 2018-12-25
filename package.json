@@ -64,7 +64,7 @@
     "singleQuote": true
   },
   "engines": {
-    "node": "~8.14.0"
+    "node": "~10.14.2"
   },
   "dependencies": {
     "autoprefixer": "9.1.5",
