@@ -6,6 +6,14 @@
    Font Files
 ---------------*/
 
+// TODO: We must switch completelly to svg fonts, or find the way to provide
+// the correct .woff2 file for Chrome
+@src:
+  url("@{fontPath}/@{fontName}.eot?#iefix") format('embedded-opentype'),
+  url("@{fontPath}/@{fontName}.woff") format('woff'),
+  url("@{fontPath}/@{fontName}.ttf") format('truetype'),
+  url("@{fontPath}/@{fontName}.svg#icons") format('svg')
+;
 
 /*--------------
  Optional Files
