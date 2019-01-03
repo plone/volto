@@ -26,7 +26,7 @@ module.exports = {
       content: 'docs/mosaic.md',
     },
   ],
-  webpackConfig: {
+  webpackConfig: Object.assign({},require('./razzle.config.js'),{
     module: {
       rules: [
         {
@@ -43,5 +43,5 @@ module.exports = {
         },
       ],
     },
-  },
+  }),
 };

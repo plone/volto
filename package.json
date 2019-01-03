@@ -30,7 +30,9 @@
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js",
-    "i18n": "NODE_ENV=production node src/i18n.js"
+    "i18n": "NODE_ENV=production node src/i18n.js",
+    "styleguidist": "styleguidist server",
+    "styleguidist:build": "styleguidist build"
   },
   "jest": {
     "snapshotSerializers": [
@@ -144,5 +146,8 @@
     "svgo": "1.0.5",
     "svgo-loader": "2.1.0",
     "tlds": "1.203.1"
+  },
+  "devDependencies": {
+    "react-styleguidist": "8.0.6"
   }
 }
