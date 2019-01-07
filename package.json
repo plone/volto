@@ -71,7 +71,7 @@
   "dependencies": {
     "autoprefixer": "9.1.5",
     "babel-core": "6.26.3",
-    "babel-loader": "8.0.2",
+    "babel-loader": "7",
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-plugin-react-intl": "2.4.0",
     "babel-plugin-root-import": "6.1.0",
@@ -79,7 +79,7 @@
     "babel-preset-stage-0": "6.24.1",
     "connected-react-router": "4.4.1",
     "coveralls": "3.0.2",
-    "css-loader": "1.0.0",
+    "css-loader": "2.1.0",
     "draft-js": "0.10.5",
     "draft-js-block-breakout-plugin": "2.0.1",
     "draft-js-buttons": "2.0.1",
