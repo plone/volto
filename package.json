@@ -143,7 +143,7 @@
     "style-loader": "0.23.0",
     "superagent": "4.0.0-beta.5",
     "svg-loader": "0.0.2",
-    "svgo": "1.0.5",
+    "svgo": "1.1.1",
     "svgo-loader": "2.1.0",
     "tlds": "1.203.1"
   },

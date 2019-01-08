@@ -153,7 +153,7 @@ module.exports = {
       test: /icons\/.*\.svg$/,
       use: [
         {
-          //loader: 'svg-loader',
+          loader: 'svg-loader',
         },
         {
           loader: 'svgo-loader',
@@ -170,7 +170,7 @@ module.exports = {
     },
 
         {
-          test: /\.(woff|woff2|ttf|eot|svg|png|gif|jpg)(\?v=\d+\.\d+\.\d+)?$/,
+          test: /\.(woff|woff2|ttf|eot|png|gif|jpg)(\?v=\d+\.\d+\.\d+)?$/,
           loader: 'url-loader',
           options: {
             limit: 10000,
