@@ -2,6 +2,12 @@
 
 ## 1.1.1 (unreleased)
 
+### Added
+
+- be able to work with mr.developer @vangheem
+- add alias `@plone/volto-original` and `@package` webpack aliases @vangheem
+- add `errorViews` configuration @vangheem
+
 ### Changes
 
 ## 1.1.0 (2018-12-24)
