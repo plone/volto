@@ -1,10 +1,16 @@
+/* eslint import/no-extraneous-dependencies: 0 */
+/* eslint import/no-dynamic-require: 0 */
+/* eslint global-require: 0 */
+/* eslint no-console: 0 */
+/* eslint no-param-reassign: 0 */
+/* eslint no-unused-vars: 0 */
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const fs = require('fs');
-const { fromPairs, map, mapValues } = require('lodash');
+const { map } = require('lodash');
 const glob = require('glob').sync;
 
 const fileLoaderFinder = makeLoaderFinder('file-loader');
@@ -140,27 +146,44 @@ module.exports = {
     // Disabling the ESlint pre loader
     config.module.rules.splice(0, 1);
 
+    let voltoPath = `${projectRootPath}`;
+    if (packageJson.name !== '@plone/volto') {
+      voltoPath = `${projectRootPath}/node_modules/@plone/volto`;
+    }
+
+    const jsconfigPaths = {};
+    if (fs.existsSync(`${projectRootPath}/jsconfig.json`)) {
+      const jsConfig = require(`${projectRootPath}/jsconfig`).compilerOptions;
+      const pathsConfig = jsConfig.paths;
+      Object.keys(pathsConfig).forEach(packageName => {
+        const packagePath = `${projectRootPath}/${jsConfig.baseUrl}/${
+          pathsConfig[packageName][0]
+        }`;
+        jsconfigPaths[packageName] = packagePath;
+        if (packageName === '@plone/volto') {
+          voltoPath = packagePath;
+        }
+      });
+    }
+
     const customizations = {};
     map(
       glob('src/customizations/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)'),
       filename => {
-        const target = filename.replace('src/', `${projectRootPath}/src/`);
+        const targetPath = filename.replace('src/', `${projectRootPath}/src/`);
         if (
           fs.existsSync(
-            `node_modules/@plone/volto/${filename.replace(
-              'customizations/',
-              '',
-            )}`,
+            `${voltoPath}/${filename.replace('customizations/', '')}`,
           )
         ) {
           customizations[
             filename
               .replace('src/customizations/', '@plone/volto/')
               .replace(/\.(js|jsx)$/, '')
-          ] = target;
+          ] = targetPath;
         } else {
           console.log(
-            `The file ${filename} doesn't exist in the volto package (${target}), unable to customize.`,
+            `The file ${filename} doesn't exist in the volto package (${targetPath}), unable to customize.`,
           );
         }
       },
@@ -170,10 +193,12 @@ module.exports = {
       ...customizations,
       ...config.resolve.alias,
       '../../theme.config$': `${projectRootPath}/theme/theme.config`,
-      '@plone/volto':
-        packageJson.name === '@plone/volto'
-          ? `${projectRootPath}/src/`
-          : `${projectRootPath}/node_modules/@plone/volto/src/`,
+      ...jsconfigPaths,
+      '@plone/volto': `${voltoPath}/src`,
+      // to be able to reference path uncustomized by webpack
+      '@plone/volto-original': `${voltoPath}/src`,
+      // be able to reference current package from customized package
+      '@package': `${projectRootPath}/src`,
     };
 
     config.performance = {
@@ -188,8 +213,8 @@ module.exports = {
         rule.use[0].loader.includes('babel-loader'),
     );
     const { include } = config.module.rules[babelRuleIndex];
-    if (fs.existsSync('./node_modules/@plone/volto/src')) {
-      include.push(fs.realpathSync('./node_modules/@plone/volto/src'));
+    if (packageJson.name !== '@plone/volto') {
+      include.push(fs.realpathSync(`${voltoPath}/src`));
     }
     config.module.rules[babelRuleIndex] = Object.assign(
       config.module.rules[babelRuleIndex],
