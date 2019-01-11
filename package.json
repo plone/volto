@@ -18,7 +18,7 @@
     "url": "https://github.com/plone/volto/issues",
     "email": "plone-developers@lists.sourceforge.net"
   },
-  "homepage": "https://plone.org",
+  "homepage": "http://plone.github.io/volto",
   "keywords": [
     "volto",
     "plone",
@@ -32,7 +32,8 @@
     "start:prod": "NODE_ENV=production node build/server.js",
     "i18n": "NODE_ENV=production node src/i18n.js",
     "styleguidist": "styleguidist server",
-    "styleguidist:build": "styleguidist build"
+    "styleguidist:build": "styleguidist build",
+    "deploy": "gh-pages -d styleguide"
   },
   "jest": {
     "snapshotSerializers": [
@@ -148,6 +149,7 @@
     "tlds": "1.203.1"
   },
   "devDependencies": {
+    "gh-pages": "2.0.1",
     "react-styleguidist": "8.0.6"
   }
 }

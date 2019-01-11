@@ -1,11 +1,9 @@
-Anontools example:
+App example:
 
 ```jsx static
-<Anontools token="" content=""/>
+<AppComponent />
 ```
-
 Output:
-
 ```jsx noeditor
 const { Provider } = require('react-redux');
 const configureStore= require('../../../store.js').default;
@@ -19,11 +17,13 @@ const initialState = {
     name: 'Pizza Delivery'
   }
 };
+function purgeMessage(){
+    return ""
+}
 
 const store = configureStore( initialState, createBrowserHistory(), api );<Provider store={store}>
 <BrowserRouter>
-  <Anontools token="" content=""/>
+  <AppComponent pathname="" purgeMessages={purgeMessage}/>
 </BrowserRouter>
 </Provider>
-
 ```
