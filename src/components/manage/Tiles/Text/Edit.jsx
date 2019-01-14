@@ -272,7 +272,7 @@ export default class Edit extends Component {
           this.state.customTilesOpened && (
             <div className="add-tile toolbar">
               {tiles.customTiles.map(tile => (
-                <Button.Group>
+                <Button.Group key={tile.title}>
                   <Button
                     icon
                     basic

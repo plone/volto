@@ -32,6 +32,7 @@
 - Websockets support @robgietema
 - Subrequests to search and get content actions @robgietema
 - Add logos @sneridagh @albertcasado
+- HTML Tile for Volto Editor @ajayns
 
 ## 1.0.0 (2018-10-31)
 
