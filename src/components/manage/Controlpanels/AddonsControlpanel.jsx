@@ -250,9 +250,9 @@ export default class AddonsControlpanel extends Component {
               defaultMessage="To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see"
             />
             &nbsp;
-            <Link to="http://docs.plone.org/manage/installing/installing_addons.html">
+            <a href="http://docs.plone.org/manage/installing/installing_addons.html" target="_blank">
               Installing a third party add-on
-            </Link>
+            </a>
             .
           </Segment>
 
