@@ -20,6 +20,7 @@
 - Websockets support @robgietema
 - Subrequests to search and get content actions @robgietema
 - Add logos @sneridagh @albertcasado
+- Addons control panel @esteele
 
 ## 1.0.0 (2018-10-31)
 
