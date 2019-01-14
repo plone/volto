@@ -5,6 +5,7 @@
  */
 
 export { listActions } from './actions/actions';
+export { installAddon, listAddons, uninstallAddon } from './addons/addons';
 export { getBreadcrumbs } from './breadcrumbs/breadcrumbs';
 export { copy, cut, copyContent, moveContent } from './clipboard/clipboard';
 export {

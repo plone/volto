@@ -47,6 +47,7 @@ export RequestPasswordReset from '@plone/volto/components/theme/PasswordReset/Re
 
 export Actions from '@plone/volto/components/manage/Actions/Actions';
 export Add from '@plone/volto/components/manage/Add/Add';
+export AddonsControlpanel from '@plone/volto/components/manage/Controlpanels/AddonsControlpanel';
 export Contents from '@plone/volto/components/manage/Contents/Contents';
 export ContentsIndexHeader from '@plone/volto/components/manage/Contents/ContentsIndexHeader';
 export ContentsItem from '@plone/volto/components/manage/Contents/ContentsItem';

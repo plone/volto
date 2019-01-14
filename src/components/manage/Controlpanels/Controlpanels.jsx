@@ -85,6 +85,11 @@ export default class Controlpanels extends Component {
     const controlpanels = map(
       concat(this.props.controlpanels, [
         {
+          '@id': '/addons',
+          group: 'General',
+          title: 'Add-Ons',
+        },
+        {
           '@id': '/moderate-comments',
           group: 'Content',
           title: 'Moderate Comments',
