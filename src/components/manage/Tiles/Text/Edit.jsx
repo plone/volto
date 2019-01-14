@@ -20,7 +20,6 @@ import trashSVG from '../../../../icons/delete.svg';
 import addSVG from '../../../../icons/circle-plus.svg';
 import cameraSVG from '../../../../icons/camera.svg';
 import videoSVG from '../../../../icons/videocamera.svg';
-import cdSVG from '../../../../icons/cd.svg';
 import TemplatedTilesSVG from '../../../../icons/theme.svg';
 
 const messages = defineMessages({
