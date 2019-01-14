@@ -9,7 +9,6 @@ global.shallow = shallow;
 global.render = render;
 global.mount = mount;
 global.__CLIENT__ = true;
-global.__SERVER__ = true;
 
 window.matchMedia =
   window.matchMedia ||

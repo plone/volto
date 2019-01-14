@@ -17,7 +17,6 @@ import {
   ViewTextTile,
   ViewImageTile,
   ViewVideoTile,
-  ViewHeroTile,
 } from '../../../components';
 import {
   getTilesFieldname,
@@ -55,9 +54,6 @@ const DocumentView = ({ content }) => {
             break;
           case 'video':
             Tile = ViewVideoTile;
-            break;
-          case 'hero':
-            Tile = ViewHeroTile;
             break;
           default:
             break;
