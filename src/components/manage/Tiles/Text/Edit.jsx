@@ -20,6 +20,7 @@ import trashSVG from '../../../../icons/delete.svg';
 import addSVG from '../../../../icons/circle-plus.svg';
 import cameraSVG from '../../../../icons/camera.svg';
 import videoSVG from '../../../../icons/videocamera.svg';
+import rssSVG from '../../../../icons/rss.svg';
 import TemplatedTilesSVG from '../../../../icons/theme.svg';
 
 const messages = defineMessages({
@@ -254,6 +255,15 @@ export default class Edit extends Component {
                   })}
                 >
                   <Icon name={videoSVG} size="24px" />
+                </Button>
+                <Button
+                  icon
+                  basic
+                  onClick={this.props.onChangeTile.bind(this, this.props.tile, {
+                    '@type': 'rss',
+                  })}
+                >
+                  <Icon name={rssSVG} size="24px" />
                 </Button>
               </Button.Group>
               {tiles.customTiles.length !== 0 && (
