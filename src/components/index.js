@@ -93,6 +93,8 @@ export EditTitleTile from '@plone/volto/components/manage/Tiles/Title/Edit';
 export EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
 export EditImageTile from '@plone/volto/components/manage/Tiles/Image/Edit';
 export EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
+export EditRssTile from '@plone/volto/components/manage/Tiles/Rss/Edit';
+export ViewRssTile from '@plone/volto/components/manage/Tiles/Rss/View';
 export EditTile from '@plone/volto/components/manage/Tiles/Tile/Edit';
 
 export ViewDescriptionTile from '@plone/volto/components/manage/Tiles/Description/View';

@@ -5,14 +5,23 @@ import ViewDescriptionTile from '@plone/volto/components/manage/Tiles/Descriptio
 import ViewTextTile from '@plone/volto/components/manage/Tiles/Text/View';
 import ViewImageTile from '@plone/volto/components/manage/Tiles/Image/View';
 import ViewVideoTile from '@plone/volto/components/manage/Tiles/Video/View';
+import ViewRssTile from '@plone/volto/components/manage/Tiles/Rss/View';
 
 import EditTitleTile from '@plone/volto/components/manage/Tiles/Title/Edit';
 import EditDescriptionTile from '@plone/volto/components/manage/Tiles/Description/Edit';
 import EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
 import EditImageTile from '@plone/volto/components/manage/Tiles/Image/Edit';
 import EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
+import EditRssTile from '@plone/volto/components/manage/Tiles/Rss/Edit';
 
-const customTiles = [];
+import rssSVG from '../../../../icons/rss.svg';
+
+const customTiles = [
+  {
+    title: 'rss',
+    icon: rssSVG,
+  },
+];
 
 const messagesTiles = defineMessages({
   title: {
@@ -35,6 +44,10 @@ const messagesTiles = defineMessages({
     id: 'video',
     defaultMessage: 'Video',
   },
+  rss: {
+    id: 'rss',
+    defaultMessage: 'Rss',
+  },
 });
 
 const defaultTilesViewMap = {
@@ -43,6 +56,7 @@ const defaultTilesViewMap = {
   text: ViewTextTile,
   image: ViewImageTile,
   video: ViewVideoTile,
+  rss: ViewRssTile,
 };
 
 const defaultTilesEditMap = {
@@ -51,6 +65,7 @@ const defaultTilesEditMap = {
   text: EditTextTile,
   image: EditImageTile,
   video: EditVideoTile,
+  rss: EditRssTile,
 };
 
 export { customTiles, defaultTilesViewMap, defaultTilesEditMap, messagesTiles };
