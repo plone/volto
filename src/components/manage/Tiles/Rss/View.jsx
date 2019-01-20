@@ -1,5 +1,5 @@
 /**
- * View video tile.
+ * View rss tile.
  * @module components/manage/Tiles/Rss/View
  */
 

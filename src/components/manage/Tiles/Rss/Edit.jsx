@@ -6,8 +6,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Button, Form, Input, Embed, Message } from 'semantic-ui-react';
-
+import { Button, Form, Input, Embed, Message, Container } from 'semantic-ui-react';
+import Parser from 'rss-parser';
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
 import clearSVG from '../../../../icons/clear.svg';
@@ -15,8 +15,7 @@ import imageLeftSVG from '../../../../icons/image-left.svg';
 import imageRightSVG from '../../../../icons/image-right.svg';
 import imageFitSVG from '../../../../icons/image-fit.svg';
 import imageFullSVG from '../../../../icons/image-full.svg';
-import videoSVG from '../../../../icons/videocamera.svg';
-import folderSVG from '../../../../icons/folder.svg';
+import rssSVG from '../../../../icons/rss.svg';
 
 const messages = defineMessages({
   save: {
@@ -88,11 +87,20 @@ export default class Edit extends Component {
    * @method onSubmitUrl
    * @returns {undefined}
    */
-  onSubmitUrl() {
+  onSubmitUrl(e) {
     this.props.onChangeTile(this.props.tile, {
       ...this.props.data,
       url: this.state.url,
     });
+    (async () => {
+      let parser = new Parser();
+      let feed = await parser.parseURL(this.state.url);
+      console.log(feed);
+      feed.items.forEach(item => {
+        console.log(item.title + ':' + item.link)
+      });
+    })();
+
   }
 
   /**
@@ -176,7 +184,7 @@ export default class Edit extends Component {
         {this.props.selected &&
           !this.props.data.url && (
             <div className="toolbar">
-              <Icon name={videoSVG} size="24px" />
+              <Icon name={rssSVG} size="24px" />
               <form onSubmit={e => this.onSubmitUrl(e)}>
                 <Input
                   onChange={this.onChangeUrl}
@@ -199,35 +207,21 @@ export default class Edit extends Component {
           )}
         {data.url ? (
           <p>
-            <div className="ui blocker" />
-            {data.url.match('list') ? (
-              <Embed
-                url={`https://www.youtube.com/embed/videoseries?list=${
-                  data.url.match(/^.*\?list=(.*)$/)[1]
-                }`}
-                icon="arrow right"
-                defaultActive
-                autoplay={false}
-              />
+            {data.url.match('.rss') ? (
+              <Container>
+                url matched
+              </Container>
             ) : (
-              <Embed
-                id={
-                  data.url.match(/.be\//)
-                    ? data.url.match(/^.*\.be\/(.*)/)[1]
-                    : data.url.match(/^.*\?v=(.*)$/)[1]
-                }
-                source="youtube"
-                icon="arrow right"
-                defaultActive
-                autoplay={false}
-              />
+              <Container>
+                Url not matched
+              </Container>
             )}
           </p>
         ) : (
           <div>
             <Message>
               <center>
-                <Icon name={videoSVG} size="100px" color="#b8c6c8" />
+                <Icon name={rssSVG} size="100px" color="#b8c6c8" />
               </center>
             </Message>
           </div>
