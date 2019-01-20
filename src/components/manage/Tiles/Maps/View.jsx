@@ -6,7 +6,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, Container } from 'semantic-ui-react';
-import Iframe from 'react-iframe';
 
 /**
  * View image tile class.
