@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Button, Form, Input, Embed, Message, Container } from 'semantic-ui-react';
+import { Button, Form, Input, Feed, Message, Container,Card } from 'semantic-ui-react';
 import Parser from 'rss-parser';
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
@@ -16,6 +16,7 @@ import imageRightSVG from '../../../../icons/image-right.svg';
 import imageFitSVG from '../../../../icons/image-fit.svg';
 import imageFullSVG from '../../../../icons/image-full.svg';
 import rssSVG from '../../../../icons/rss.svg';
+import { settings } from '~/config';
 
 const messages = defineMessages({
   save: {
@@ -67,6 +68,7 @@ export default class Edit extends Component {
     this.onSubmitUrl = this.onSubmitUrl.bind(this);
     this.state = {
       url: '',
+      feed: {},
     };
   }
 
@@ -92,14 +94,19 @@ export default class Edit extends Component {
       ...this.props.data,
       url: this.state.url,
     });
+    if (this.state.url.match('.rss')){
     (async () => {
-      let parser = new Parser();
-      let feed = await parser.parseURL(this.state.url);
-      console.log(feed);
-      feed.items.forEach(item => {
-        console.log(item.title + ':' + item.link)
+      const parser = new Parser();
+      const myfeed = await parser.parseURL(this.state.url);
+      this.setState({
+        feed: myfeed,
       });
-    })();
+      console.log(myfeed, 'this is of type ' + typeof(this.state.feed.items))
+      /*this.state.feed.items.forEach(item => {
+        console.log(item.title + ':' + item.link)
+      })*/
+    })()
+  }
 
   }
 
@@ -206,17 +213,41 @@ export default class Edit extends Component {
             </div>
           )}
         {data.url ? (
-          <p>
+          <div>
             {data.url.match('.rss') ? (
-              <Container>
-                url matched
-              </Container>
+              <Card>
+              <Feed>
+                <Feed.Event>
+                <Feed.Label>
+        <img src={
+                this.props.data.url.includes(settings.apiPath)
+                  ? `${this.props.data.url}/@@images/image`
+                  : this.props.data.url
+              } />
+      </Feed.Label>
+                  {this.state.feed.title}
+                </Feed.Event>
+                <Feed.Event>
+                {this.state.feed.link}
+                </Feed.Event>
+                <Feed.Event>
+                  <Feed.Date>
+                  {this.state.feed.lastBuildDate}
+                  </Feed.Date>
+                </Feed.Event>
+                <Feed.Event>
+                {this.state.feed.feedUrl}
+                </Feed.Event>
+              </Feed>
+              </Card>
             ) : (
               <Container>
-                Url not matched
+                <center>
+                  Please Enter Correct Rss Url
+                </center>
               </Container>
             )}
-          </p>
+            </div>
         ) : (
           <div>
             <Message>
