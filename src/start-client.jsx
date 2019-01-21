@@ -35,8 +35,4 @@ export default () => {
     </Provider>,
     document.getElementById('main'),
   );
-
-  if (module.hot) {
-    module.hot.accept();
-  }
 };

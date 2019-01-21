@@ -4,7 +4,12 @@
  */
 
 import { defaultWidget, widgetMapping } from './Widgets';
-import { layoutViews, contentTypesViews, defaultView } from './Views';
+import {
+  layoutViews,
+  contentTypesViews,
+  defaultView,
+  errorViews,
+} from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
 import ToHTMLRenderers, {
   options as ToHTMLOptions,
@@ -45,6 +50,7 @@ export const views = {
   layoutViews,
   contentTypesViews,
   defaultView,
+  errorViews,
 };
 
 export const tiles = {

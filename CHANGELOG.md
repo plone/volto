@@ -1,8 +1,18 @@
 # Change Log
 
-## 1.0.1 (unreleased)
+## 1.1.1 (unreleased)
 
-### Change
+### Added
+
+- be able to work with mr.developer @vangheem
+- add alias `@plone/volto-original` and `@package` webpack aliases @vangheem
+- add `errorViews` configuration @vangheem
+
+### Changes
+
+## 1.1.0 (2018-12-24)
+
+### Changes
 
 - Fix edit on root @robgietema
 - Fix sharing @robgietema
@@ -10,8 +20,10 @@
 - Fix layout fieldname @bloodbare
 - First field in a form will get the focus @robgietema
 - Fix download file links @mikejmets
+- Fix HMR missbehaving on both server and client @sneridagh
 - Upgrade to Node 8.14.0 @timo
 - Relaxed node runtime constraints @sneridagh
+- Update to latest LESS and Semantic UI version @sneridagh
 
 ## Added
 

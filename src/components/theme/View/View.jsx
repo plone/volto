@@ -112,7 +112,7 @@ export default class View extends Component {
       /**
        * Error type
        */
-      type: PropTypes.string,
+      status: PropTypes.number,
     }),
     intl: intlShape.isRequired,
   };
@@ -214,9 +214,13 @@ export default class View extends Component {
    */
   render() {
     if (this.props.error) {
+      let FoundView = views.errorViews[this.props.error.status.toString()];
+      if (!FoundView) {
+        FoundView = views.errorViews['404']; // default to 404
+      }
       return (
         <div id="view">
-          <NotFound />
+          <FoundView />
         </div>
       );
     }
