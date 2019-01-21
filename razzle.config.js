@@ -167,27 +167,34 @@ module.exports = {
     }
 
     const customizations = {};
-    map(
-      glob('src/customizations/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)'),
-      filename => {
-        const targetPath = filename.replace('src/', `${projectRootPath}/src/`);
-        if (
-          fs.existsSync(
-            `${voltoPath}/${filename.replace('customizations/', '')}`,
-          )
-        ) {
-          customizations[
-            filename
-              .replace('src/customizations/', '@plone/volto/')
-              .replace(/\.(js|jsx)$/, '')
-          ] = targetPath;
-        } else {
-          console.log(
-            `The file ${filename} doesn't exist in the volto package (${targetPath}), unable to customize.`,
+    let { customizationPaths } = packageJson;
+    if (!customizationPaths) {
+      customizationPaths = ['src/customizations/'];
+    }
+    customizationPaths.forEach(customizationPath => {
+      map(
+        glob(
+          `${customizationPath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`,
+        ),
+        filename => {
+          const targetPath = filename.replace(
+            customizationPath,
+            `${voltoPath}/src/`,
           );
-        }
-      },
-    );
+          if (fs.existsSync(targetPath)) {
+            customizations[
+              filename
+                .replace(customizationPath, '@plone/volto/')
+                .replace(/\.(js|jsx)$/, '')
+            ] = targetPath;
+          } else {
+            console.log(
+              `The file ${filename} doesn't exist in the volto package (${targetPath}), unable to customize.`,
+            );
+          }
+        },
+      );
+    });
 
     config.resolve.alias = {
       ...customizations,
