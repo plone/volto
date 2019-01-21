@@ -216,29 +216,22 @@ export default class Edit extends Component {
           <div>
             {data.url.match('.rss') ? (
               <Card>
-              <Feed>
-                <Feed.Event>
-                <Feed.Label>
-        <img src={
-                this.props.data.url.includes(settings.apiPath)
-                  ? `${this.props.data.url}/@@images/image`
-                  : this.props.data.url
-              } />
-      </Feed.Label>
-                  {this.state.feed.title}
-                </Feed.Event>
-                <Feed.Event>
-                {this.state.feed.link}
-                </Feed.Event>
-                <Feed.Event>
-                  <Feed.Date>
-                  {this.state.feed.lastBuildDate}
-                  </Feed.Date>
-                </Feed.Event>
-                <Feed.Event>
-                {this.state.feed.feedUrl}
-                </Feed.Event>
-              </Feed>
+                <Feed>
+                  <Feed.Event>
+                    {this.state.feed.title}
+                  </Feed.Event>
+                  <Feed.Event>
+                    {this.state.feed.link}
+                  </Feed.Event>
+                  <Feed.Event>
+                    <Feed.Date>
+                      {this.state.feed.lastBuildDate}
+                    </Feed.Date>
+                  </Feed.Event>
+                  <Feed.Event>
+                    {this.state.feed.feedUrl}
+                  </Feed.Event>
+                </Feed>
               </Card>
             ) : (
               <Container>

@@ -5,43 +5,71 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Embed } from 'semantic-ui-react';
+import { Card, Feed } from 'semantic-ui-react';
+import { settings } from '~/config';
+import Parser from 'rss-parser';
 
 /**
- * View video tile class.
+ * View rss tile class.
  * @class View
  * @extends Component
  */
-const View = ({ data }) => (
+const View = ({ data }) => {
+const parser = new Parser();
+let myFeed;
+(async () => {
+
+  const feed = await parser.parseURL(data.url);
+  myFeed = feed;
+  console.log(myFeed.title);
+
+
+
+})();
+//console.log(myFeed.title);
+return (
   <p
     className={['tile', 'image', 'align', data.align]
       .filter(e => !!e)
       .join(' ')}
   >
-    {data.url.match('list') ? (
-      <Embed
-        url={`https://www.youtube.com/embed/videoseries?list=${
-          data.url.match(/^.*\?list=(.*)$/)[1]
-        }`}
-        icon="arrow right"
-        defaultActive
-        autoplay={false}
-      />
+    {data.url.match('.rss') ? (
+      <Card>
+        <Feed>
+          <Feed.Event>
+            <Feed.Label>
+              <img src={
+                data.url.includes(settings.apiPath)
+                  ? `${data.url}/@@images/image`
+                  : data.url
+              }
+              alt ="" />
+            </Feed.Label>
+            {/*{myFeed.title}*/}
+          </Feed.Event>
+          <Feed.Event>
+           {/* {myFeed.link}*/}
+          </Feed.Event>
+          <Feed.Event>
+            <Feed.Date>
+             {/* {myFeed.lastBuildDate}*/}
+            </Feed.Date>
+          </Feed.Event>
+          <Feed.Event>
+           {/* {myFeed.feedUrl}*/}
+          </Feed.Event>
+        </Feed>
+      </Card>
     ) : (
-      <Embed
-        id={
-          data.url.match(/.be\//)
-            ? data.url.match(/^.*\.be\/(.*)/)[1]
-            : data.url.match(/^.*\?v=(.*)$/)[1]
-        }
-        source="youtube"
-        icon="arrow right"
-        defaultActive
-        autoplay={false}
-      />
+      <Container>
+      <center>
+        Please Enter Correct Rss Url
+      </center>
+    </Container>
     )}
   </p>
-);
+)
+}
 
 /**
  * Property types.
