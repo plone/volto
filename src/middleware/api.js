@@ -64,9 +64,19 @@ export default api => ({ dispatch, getState }) => next => action => {
   } else {
     actionPromise = Array.isArray(request)
       ? Promise.all(
-          request.map(item => api[item.op](item.path, { data: item.data })),
+          request.map(item =>
+            api[item.op](item.path, {
+              data: item.data,
+              type: item.type,
+              headers: item.headers,
+            }),
+          ),
         )
-      : api[request.op](request.path, { data: request.data });
+      : api[request.op](request.path, {
+          data: request.data,
+          type: request.type,
+          headers: request.headers,
+        });
     actionPromise.then(
       result => {
         if (type === LOGIN && settings.websockets) {

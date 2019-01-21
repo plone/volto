@@ -4,6 +4,8 @@
 
 ### Added
 
+- be able to specify custom headers in actions @vangheem
+- fix icons used in contents @vangheem
 - be able to work with mr.developer @vangheem
 - add alias `@plone/volto-original` and `@package` webpack aliases @vangheem
 - add `errorViews` configuration @vangheem
