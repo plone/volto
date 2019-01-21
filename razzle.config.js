@@ -186,7 +186,7 @@ module.exports = {
               filename
                 .replace(customizationPath, '@plone/volto/')
                 .replace(/\.(js|jsx)$/, '')
-            ] = targetPath;
+            ] = path.resolve(filename);
           } else {
             console.log(
               `The file ${filename} doesn't exist in the volto package (${targetPath}), unable to customize.`,
