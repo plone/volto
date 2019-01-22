@@ -33,7 +33,7 @@ export class Api {
    */
   constructor() {
     methods.forEach(method => {
-      this[method] = (path, { params, data, type } = {}) =>
+      this[method] = (path, { params, data, type, headers = {} } = {}) =>
         new Promise((resolve, reject) => {
           const request = superagent[method](formatUrl(path));
 
@@ -51,6 +51,8 @@ export class Api {
           if (type) {
             request.type(type);
           }
+
+          Object.keys(headers).forEach(key => request.set(key, headers[key]));
 
           if (data) {
             request.send(data);
