@@ -12,6 +12,8 @@
 
 ### Changes
 
+- Upgrade to Node 10.14.2 @nileshgulia1
+
 ## 1.1.0 (2018-12-24)
 
 ### Changes
@@ -26,7 +28,6 @@
 - Upgrade to Node 8.14.0 @timo
 - Relaxed node runtime constraints @sneridagh
 - Update to latest LESS and Semantic UI version @sneridagh
-- Upgrade to Node 10.14.2 @nileshgulia1
 
 ## Added
 
