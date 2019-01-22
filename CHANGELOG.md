@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.1.1 (unreleased)
+## 1.2.0 (2019-01-22)
 
 ### Added
 
