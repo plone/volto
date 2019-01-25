@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Button, Form, Input, Feed, Message, Container,Card } from 'semantic-ui-react';
+import { Button, Form, Input, Feed, Message, Container,Card, Image } from 'semantic-ui-react';
 import Parser from 'rss-parser';
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
@@ -35,7 +35,7 @@ const messages = defineMessages({
 
 @injectIntl
 /**
- * Edit video tile class.
+ * Edit rss tile class.
  * @class Edit
  * @extends Component
  */
@@ -220,8 +220,20 @@ export default class Edit extends Component {
                   <Feed.Event>
                     {this.state.feed.title}
                   </Feed.Event>
+                  {this.state.feed.image && (
                   <Feed.Event>
-                    {this.state.feed.link}
+                    <Image
+              src={
+                this.state.feed.image.url
+              }
+              alt=""
+            />
+                  </Feed.Event>
+                  )}
+                  <Feed.Event>
+                    {this.state.feed.items.forEach(item => {
+    console.log(item.title + ':' + item.link)
+  })}
                   </Feed.Event>
                   <Feed.Event>
                     <Feed.Date>
