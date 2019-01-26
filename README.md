@@ -1,10 +1,34 @@
 # Volto
+![Volto](./docs/logos/volto-colorful.png){:style="float:right;margin-left: 7px;"}
 
 [![Build Status](https://travis-ci.org/plone/volto.svg?branch=master)](https://travis-ci.org/plone/volto)
 [![Coverage](https://img.shields.io/coveralls/plone/volto.svg)](https://coveralls.io/github/plone/volto)
 [![Dependencies](https://img.shields.io/david/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 [![Dev Dependencies](https://img.shields.io/david/dev/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 [![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
+
+## Introduction
+
+[Volto](https://github.com/plone/volto) is a React-based frontend for content
+management systems, currently supporting three backend implementations: Plone,
+Guillotina and a NodeJS reference implementation.
+
+[Plone](https://plone.org) is a CMS built on Python with more than 17 years of
+experience. Plone has very interesting features that are still appealing to
+developers and users alike as customizable content types, hierarchical URL
+object traversing and a complex content workflow powered by a granular
+permissions model that allows you to build from simple websites to complex huge
+intranets. Volto exposes all that features and communicates with Plone via its
+mature [REST API](https://github.com/plone/plone.restapi). Volto has the
+ability of being highly themable and customizable.
+
+Volto also supports other APIs like [Guillotina](https://guillotina.io/), a
+Python resource management system, which is inspired on Plone using the same
+basic concepts like traversal, content types and permissions model.
+
+Last but not least, it also supports a [Volto Nodejs-based backend reference](https://github.com/plone/volto-reference-backend) API implementation that
+demos how other systems could also use Volto to display and create content
+through it.
 
 ## Documentation
 
