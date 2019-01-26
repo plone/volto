@@ -1,5 +1,5 @@
 # Volto
-![Volto](./docs/logos/volto-colorful.png){:style="float:right;margin-left: 7px;"}
+<img align="right" alt="Volto png" src="./docs/logos/volto-colorful.png" />
 
 [![Build Status](https://travis-ci.org/plone/volto.svg?branch=master)](https://travis-ci.org/plone/volto)
 [![Coverage](https://img.shields.io/coveralls/plone/volto.svg)](https://coveralls.io/github/plone/volto)
