@@ -54,7 +54,7 @@ A training on how to create your own website using Volto is available as part of
 
 - [Node.js LTS (10.x)](https://nodejs.org/)
 - [Python 2.7.x](https://python.org/) or
-- Docker (if using the Plone/Guillotina docker images)
+- [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina docker images)
 
 ### Install dependencies
 
