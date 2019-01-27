@@ -34,12 +34,27 @@ through it.
 
 A training on how to create your own website using Volto is available as part of the Plone training at [https://training.plone.org/5/volto/index.html](https://training.plone.org/5/volto/index.html).
 
+## Talks
+
+### Plone Conference Tokyo 2018
+
+[Rob Gietema - Volto](https://2018.ploneconf.org/talks/plone-react)
+
+[Rob Gietema / Víctor Fernández de Alba - Volto Extensibility Story](https://2018.ploneconf.org/talks/plone-react-extensibility-story)
+
+[Víctor Fernández de Alba - Theming Volto](https://2018.ploneconf.org/talks/theming-plone-react)
+
+[Timo Stollenwerk / Víctor Fernández de Alba / Ramon Navarro - Volto Case Studies](https://2018.ploneconf.org/talks/plone-react-case-studies-when-stability-and-security-meet-speed-and-a-modern-user-interface)
+
+[Timo Stollenwerk - Reinventing Plone, Roadmap to the Modern Web](https://2018.ploneconf.org/talks/reinventing-plone-roadmap-to-the-modern-web)
+
 ## Installation
 
 ### Prerequisites
 
-- [Node.js==10.14.2](https://nodejs.org/)
-- [Python==2.7.x](https://python.org/)
+- [Node.js LTS (10.x)](https://nodejs.org/)
+- [Python 2.7.x](https://python.org/) or
+- Docker (if using the Plone/Guillotina docker images)
 
 ### Install dependencies
 
@@ -52,18 +67,26 @@ A training on how to create your own website using Volto is available as part of
 
 ## Development
 
-### Run backend
+### Run backend (Plone)
 
     $ cd api
     $ ./bin/instance fg
 
     or
 
-    $ docker-compose -f api/docker-compose.yml up
+    $ docker-compose -f api/docker-compose.yml up -d
+
+### Run backend (Guillotina)
+
+    $ docker-compose -f g-api/docker-compose.yml up -d
 
 ### Run frontend
 
     $ yarn start
+
+### Stop backends
+
+    $ docker-compose down
 
 ### Browsing
 
