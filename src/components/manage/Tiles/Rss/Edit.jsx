@@ -16,6 +16,7 @@ import imageRightSVG from '../../../../icons/image-right.svg';
 import imageFitSVG from '../../../../icons/image-fit.svg';
 import imageFullSVG from '../../../../icons/image-full.svg';
 import rssSVG from '../../../../icons/rss.svg';
+import { connect } from 'react-redux';
 import { settings } from '~/config';
 
 const messages = defineMessages({
@@ -39,7 +40,7 @@ const messages = defineMessages({
  * @class Edit
  * @extends Component
  */
-export default class Edit extends Component {
+class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -231,9 +232,9 @@ export default class Edit extends Component {
                   </Feed.Event>
                   )}
                   <Feed.Event>
-                    {this.state.feed.items.forEach(item => {
+                    {/*{this.state.feed.items.map(item => {
     console.log(item.title + ':' + item.link)
-  })}
+  })}*/}
                   </Feed.Event>
                   <Feed.Event>
                     <Feed.Date>
@@ -276,3 +277,11 @@ export default class Edit extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    url: state.url,
+    feed: state.feed,
+  };
+};
+
+export default connect()(Edit);
