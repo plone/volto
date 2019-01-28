@@ -28,7 +28,7 @@ export default () => {
   hydrate(
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <ReduxAsyncConnect routes={routes} helpers={api} />
         </BrowserRouter>
       </ConnectedRouter>
