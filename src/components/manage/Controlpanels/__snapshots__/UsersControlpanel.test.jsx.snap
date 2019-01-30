@@ -5,6 +5,18 @@ exports[`UsersControlpanel renders a user control component 1`] = `
   className="ui container"
   id="page-users"
 >
+  <button
+    className="ui button"
+    disabled={undefined}
+    onClick={[Function]}
+    role="button"
+    tabIndex={undefined}
+  >
+    Add User
+  </button>
+  <div
+    className="container"
+  />
   <div
     className="ui raised segments"
   >
@@ -73,6 +85,13 @@ exports[`UsersControlpanel renders a user control component 1`] = `
             >
               <span>
                 User name
+              </span>
+            </th>
+            <th
+              className=""
+            >
+              <span>
+                Actions
               </span>
             </th>
           </tr>

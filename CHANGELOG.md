@@ -179,6 +179,15 @@
 - Drag and drop to reorder tiles @robgietema
 - Enhanced DraftJS AnchorLink Plugin @robgietema @sneridagh
 - Added the configuration required in Webpack config to load CSS modules in the project, required by DraftJS AnchorLink plugin @sneridagh
+* Refactor UserControlPanel add delete and add user actions @csenger
+* Schema widget @robgietema
+* User actions and reducers @robgietema
+* Group actions and reducers @robgietema
+* Roles actions and reducers @robgietema
+* Move combineReducers to the store creation level. This will ease the extensibility of them in Plone-React apps. @sneridagh
+* Upgrade node to 8.11.2 @sneridagh
+* Basic user listing in users controlpanel @robgietema
+* Add missing FileWidget import @sneridagh
 
 ### Changes
 

@@ -10,14 +10,15 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import {
-  Container,
+  Button,
+  Confirm,
   Form,
   Icon,
   Input,
   Segment,
   Table,
 } from 'semantic-ui-react';
-import jwtDecode from 'jwt-decode';
+import { find, map } from 'lodash';
 import {
   FormattedMessage,
   defineMessages,
@@ -25,9 +26,9 @@ import {
   intlShape,
 } from 'react-intl';
 
-import { listRoles, listUsers } from '../../../actions';
+import { createUser, deleteUser, listRoles, listUsers } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
-import { Toolbar } from '../../../components';
+import { ModalForm, Toolbar, UsersControlpanelUser } from '../../../components';
 
 const messages = defineMessages({
   searchUsers: {
@@ -46,6 +47,38 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  deleteUserConfirmTitle: {
+    id: 'Delete User',
+    defaultMessage: 'Delete User',
+  },
+  addUserButtonTitle: {
+    id: 'Add User',
+    defaultMessage: 'Add User',
+  },
+  addUserFormTitle: {
+    id: 'Add User',
+    defaultMessage: 'Add User',
+  },
+  addUserFormUsernameTitle: {
+    id: 'Username',
+    defaultMessage: 'Username',
+  },
+  addUserFormFullnameTitle: {
+    id: 'Fullname',
+    defaultMessage: 'Fullname',
+  },
+  addUserFormEmailTitle: {
+    id: 'Email',
+    defaultMessage: 'Email',
+  },
+  addUserFormPasswordTitle: {
+    id: 'Password',
+    defaultMessage: 'Password',
+  },
+  addUserFormRolesTitle: {
+    id: 'Roles',
+    defaultMessage: 'Roles',
+  },
 });
 
 @injectIntl
@@ -54,8 +87,14 @@ const messages = defineMessages({
     roles: state.roles.roles,
     users: state.users.users,
     pathname: props.location.pathname,
+    deleteRequest: state.users.delete,
+    createRequest: state.users.create,
   }),
-  dispatch => bindActionCreators({ listRoles, listUsers }, dispatch),
+  dispatch =>
+    bindActionCreators(
+      { listRoles, listUsers, deleteUser, createUser },
+      dispatch,
+    ),
 )
 /**
  * UsersControlpanel class.
@@ -99,8 +138,19 @@ export default class UsersControlpanel extends Component {
     super(props);
     this.onChangeSearch = this.onChangeSearch.bind(this);
     this.onSearch = this.onSearch.bind(this);
+    this.delete = this.delete.bind(this);
+    this.onDeleteOk = this.onDeleteOk.bind(this);
+    this.onDeleteCancel = this.onDeleteCancel.bind(this);
+    this.onAddUserSubmit = this.onAddUserSubmit.bind(this);
+    this.onAddUserError = this.onAddUserError.bind(this);
+    this.onAddUserSuccess = this.onAddUserSuccess.bind(this);
     this.state = {
       search: '',
+      showAddUser: false,
+      showAddUserErrorConfirm: false,
+      addUserError: '',
+      showDelete: false,
+      userToDelete: undefined,
     };
   }
 
@@ -112,6 +162,25 @@ export default class UsersControlpanel extends Component {
   componentDidMount() {
     this.props.listRoles();
     this.props.listUsers();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (
+      (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
+      (this.props.createRequest.loading && nextProps.createRequest.loaded)
+    ) {
+      this.props.listUsers(this.state.search);
+    }
+    if (this.props.createRequest.loading && nextProps.createRequest.loaded) {
+      this.onAddUserSuccess();
+    }
+    if (this.props.createRequest.loading && nextProps.createRequest.error) {
+      this.onAddUserError(nextProps.createRequest.error);
+    }
+  }
+
+  getUserFromProps(value) {
+    return find(this.props.users, ['@id', value]);
   }
 
   /**
@@ -138,14 +207,195 @@ export default class UsersControlpanel extends Component {
   }
 
   /**
+   * Delete a user
+   * @method delete
+   * @param {object} event Event object.
+   * @param {string} value username.
+   * @returns {undefined}
+   */
+  delete(event, { value }) {
+    if (value) {
+      this.setState({
+        showDelete: true,
+        userToDelete: this.getUserFromProps(value),
+      });
+    }
+  }
+
+  /**
+   * On delete ok
+   * @method onDeleteOk
+   * @returns {undefined}
+   */
+  onDeleteOk() {
+    this.props.deleteUser(this.state.userToDelete.id);
+    this.setState({
+      showDelete: false,
+      userToDelete: undefined,
+    });
+  }
+
+  /**
+   * On delete cancel
+   * @method onDeleteCancel
+   * @returns {undefined}
+   */
+  onDeleteCancel() {
+    this.setState({
+      showDelete: false,
+      itemsToDelete: [],
+    });
+  }
+
+  /**
+   * Callback to be called by the ModalForm when the form is submitted.
+   *
+   * @param {object} data Form data from the ModalForm.
+   * @param {func} callback to set new form data in the ModalForm
+   * @returns {undefined}
+   */
+  onAddUserSubmit(data, callback) {
+    this.props.createUser(data);
+    this.setState({
+      addUserSetFormDataCallback: callback,
+    });
+  }
+
+  /**
+   * Handle Errors after createUser()
+   *
+   * @param {object} error orbject. Requires the property .message
+   * @returns {undefined}
+   */
+  onAddUserError(error) {
+    this.setState({
+      addUserError: error.message,
+    });
+  }
+
+  /**
+   * Handle Success after createUser()
+   *
+   * @returns {undefined}
+   */
+  onAddUserSuccess() {
+    this.state.addUserSetFormDataCallback({});
+    this.setState({
+      showAddUser: false,
+      addUserError: undefined,
+      addUserSetFormDataCallback: undefined,
+    });
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
+    let usernameToDelete = this.state.userToDelete
+      ? this.state.userToDelete.username
+      : '';
+    let fullnameToDelete = this.state.userToDelete
+      ? this.state.userToDelete.fullname
+      : '';
     return (
-      <Container id="page-users">
+      <div id="page-users">
+        <Button
+          content={this.props.intl.formatMessage(messages.addUserButtonTitle)}
+          onClick={() => {
+            this.setState({ showAddUser: true });
+          }}
+        />
         <Helmet title="Users and Groups" />
+        <div className="container">
+          <Confirm
+            open={this.state.showDelete}
+            header={this.props.intl.formatMessage(
+              messages.deleteUserConfirmTitle,
+            )}
+            content={
+              <div className="content">
+                <ul className="content">
+                  <FormattedMessage
+                    id="Do you really want to delete the user {username} ({fullname})?"
+                    defaultMessage="Do you really want to delete the user {username} ({fullname})?"
+                    values={{
+                      username: <b>{usernameToDelete}</b>,
+                      fullname: <b>{fullnameToDelete}</b>,
+                    }}
+                  />
+                </ul>
+              </div>
+            }
+            onCancel={this.onDeleteCancel}
+            onConfirm={this.onDeleteOk}
+          />
+          <ModalForm
+            open={this.state.showAddUser}
+            onSubmit={this.onAddUserSubmit}
+            submitError={this.state.addUserError}
+            onCancel={() => this.setState({ showAddUser: false })}
+            title={this.props.intl.formatMessage(messages.addUserFormTitle)}
+            loading={this.props.createRequest.loading}
+            schema={{
+              fieldsets: [
+                {
+                  id: 'default',
+                  title: 'FIXME: User Data',
+                  fields: [
+                    'username',
+                    'fullname',
+                    'email',
+                    'password',
+                    'roles',
+                  ],
+                },
+              ],
+              properties: {
+                username: {
+                  title: this.props.intl.formatMessage(
+                    messages.addUserFormUsernameTitle,
+                  ),
+                  type: 'string',
+                  description: '',
+                },
+                fullname: {
+                  title: this.props.intl.formatMessage(
+                    messages.addUserFormFullnameTitle,
+                  ),
+                  type: 'string',
+                  description: '',
+                },
+                email: {
+                  title: this.props.intl.formatMessage(
+                    messages.addUserFormEmailTitle,
+                  ),
+                  type: 'string',
+                  description: '',
+                },
+                password: {
+                  title: this.props.intl.formatMessage(
+                    messages.addUserFormPasswordTitle,
+                  ),
+                  type: 'string',
+                  description: '',
+                },
+                roles: {
+                  title: this.props.intl.formatMessage(
+                    messages.addUserFormRolesTitle,
+                  ),
+                  type: 'array',
+                  items: {
+                    choices: this.props.roles.map(role => [role.id, role.id]),
+                  },
+                  description: '',
+                },
+              },
+              required: ['username', 'fullname', 'email', 'password'],
+            }}
+          />
+        </div>
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage
@@ -183,24 +433,19 @@ export default class UsersControlpanel extends Component {
                   {this.props.roles.map(role => (
                     <Table.HeaderCell key={role.id}>{role.id}</Table.HeaderCell>
                   ))}
+                  <Table.HeaderCell>
+                    <FormattedMessage id="Actions" defaultMessage="Actions" />
+                  </Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
                 {this.props.users.map(user => (
-                  <Table.Row key={user.username}>
-                    <Table.Cell>{user.fullname}</Table.Cell>
-                    {this.props.roles.map(role => (
-                      <Table.Cell key={role.id}>
-                        {user.roles.indexOf(role.id) !== -1 && (
-                          <Icon
-                            name="check circle outline"
-                            title="Global role"
-                            color="blue"
-                          />
-                        )}
-                      </Table.Cell>
-                    ))}
-                  </Table.Row>
+                  <UsersControlpanelUser
+                    key={user.id}
+                    onDelete={this.delete}
+                    roles={this.props.roles}
+                    user={user}
+                  />
                 ))}
               </Table.Body>
             </Table>

@@ -4,6 +4,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
 import UsersControlpanel from './UsersControlpanel';
+import { Z_DEFAULT_STRATEGY } from 'zlib';
 
 const mockStore = configureStore();
 
@@ -15,7 +16,10 @@ describe('UsersControlpanel', () => {
   it('renders a user control component', () => {
     const store = mockStore({
       roles: { roles: [] },
-      users: { users: [] },
+      users: {
+        users: [],
+        create: { loading: false },
+      },
       intl: {
         locale: 'en',
         messages: {},

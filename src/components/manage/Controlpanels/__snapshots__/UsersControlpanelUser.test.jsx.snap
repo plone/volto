@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
+<tr
+  className=""
+>
+  <td
+    className=""
+  >
+    Test User
+  </td>
+  <td
+    className=""
+  >
+    <i
+      aria-hidden="true"
+      className="blue check circle outline icon"
+      title="Global role"
+    />
+  </td>
+  <td
+    className=""
+  />
+  <td
+    className=""
+  />
+  <td
+    className="right aligned"
+  >
+    <div
+      aria-busy={undefined}
+      aria-disabled={undefined}
+      aria-expanded={false}
+      aria-multiselectable={undefined}
+      className="ui dropdown"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      role="listbox"
+      tabIndex={0}
+    >
+      <div
+        aria-live="polite"
+        className="text"
+        role="alert"
+      />
+      <i
+        aria-hidden="true"
+        className="ellipsis horizontal icon"
+        onClick={[Function]}
+      />
+      <div
+        className="menu transition left"
+      >
+        <div
+          aria-checked={undefined}
+          aria-disabled={undefined}
+          aria-selected={undefined}
+          className="item"
+          onClick={[Function]}
+          role="option"
+        >
+          <i
+            aria-hidden="true"
+            className="trash icon"
+          />
+          <span>
+            Delete
+          </span>
+        </div>
+      </div>
+    </div>
+  </td>
+</tr>
+`;
