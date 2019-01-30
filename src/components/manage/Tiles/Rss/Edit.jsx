@@ -18,6 +18,7 @@ import imageFullSVG from '../../../../icons/image-full.svg';
 import rssSVG from '../../../../icons/rss.svg';
 import { connect } from 'react-redux';
 import { settings } from '~/config';
+import View from './View';
 
 const messages = defineMessages({
   save: {

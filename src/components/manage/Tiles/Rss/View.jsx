@@ -23,6 +23,7 @@ constructor(props){
   };
 }
   render(){
+    const { data,feed } = this.props;
 return (
   <p
     className={['tile', 'image', 'align', data.align]
@@ -32,11 +33,11 @@ return (
     {this.props.data.url.match('.rss') ? (
       <Card>
         <Feed>
-          {this.state.feed.image && (
+          {this.props.feed.image && (
             <Feed.Event>
               <Image
                 src={
-                  this.state.feed.image.url
+                  this.props.feed.image.url
                 }
                 alt=""
               />
@@ -44,11 +45,11 @@ return (
           )}
           <Feed.Event>
             <Feed.Date>
-              {this.state.feed.lastBuildDate}
+              {this.props.feed.lastBuildDate}
             </Feed.Date>
           </Feed.Event>
           <Feed.Event>
-            {this.state.feed.feedUrl}
+            {this.props.feed.feedUrl}
           </Feed.Event>
         </Feed>
       </Card>
