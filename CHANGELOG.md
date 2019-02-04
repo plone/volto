@@ -6,6 +6,8 @@
 
 ### Changes
 
+ - Loosen node version, allow LTS (v8 and v10) @sneridagh
+
 ## 1.2.0 (2019-01-22)
 
 ### Added
