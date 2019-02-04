@@ -52,9 +52,7 @@ before_script:
   - sleep 3
 script:
   - if [ "$TEST_SUITE" == "unit" ]; then
-    docker run --name coverage_front -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" plone/plone-react:testing -- yarn test --coverage;
-    docker cp coverage_front:/opt/app/coverage/lcov.info .;
-    cat lcov.info | ./node_modules/coveralls/bin/coveralls.js;
+    docker run --name coverage_front -it --rm -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" plone/plone-react:testing -- yarn test:ci;
     fi
   - if [ "$TEST_SUITE" == "guillotina" ]; then
     PYTHONPATH=$(pwd)/tests pybot -v BROWSER:headlesschrome -v API:Guillotina tests;
