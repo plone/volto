@@ -173,7 +173,6 @@ exports[`Login renders a login component 1`] = `
             className="ui big basic circular icon primary right floated button"
             id="login-form-submit"
             onClick={[Function]}
-            role="button"
             title="Log in"
             type="submit"
           >
