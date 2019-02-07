@@ -50,6 +50,7 @@
 
  - Bring back the scroll to top on every route change feature @sneridagh
  - Loosen node version, allow LTS (v8 and v10) @sneridagh
+ - fix add tab height css issue @uwaiszaki
 
 ## 1.2.0 (2019-01-22)
 

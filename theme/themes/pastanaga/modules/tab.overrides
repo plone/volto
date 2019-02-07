@@ -1,3 +1,6 @@
 /*******************************
          Tab Overrides
 *******************************/
+.AddFormSegment {
+	margin-bottom:18px;
+}
