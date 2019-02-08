@@ -28,12 +28,16 @@ import {
 
 import { createUser, deleteUser, listRoles, listUsers } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
-import { ModalForm, Toolbar, UsersControlpanelUser } from '../../../components';
+import { ModalForm, Toolbar, UsersControlpanelUser, UsersControlpanelGroups } from '../../../components';
 
 const messages = defineMessages({
   searchUsers: {
     id: 'Search users...',
     defaultMessage: 'Search users...',
+  },
+  searchGroups: {
+    id: 'Search group...',
+    defaultMessage: 'Search group...',
   },
   save: {
     id: 'Save',
@@ -55,19 +59,39 @@ const messages = defineMessages({
     id: 'Add User',
     defaultMessage: 'Add User',
   },
+  addGroupsButtonTitle: {
+    id: 'Add Groups',
+    defaultMessage: 'Add Groups',
+  },
   addUserFormTitle: {
     id: 'Add User',
     defaultMessage: 'Add User',
+  },
+  addGroupsFormTitle: {
+    id: 'Add group',
+    defaultMessage: 'Add group',
   },
   addUserFormUsernameTitle: {
     id: 'Username',
     defaultMessage: 'Username',
   },
+  addGroupsFormTitleTitle: {
+    id: 'Title',
+    defaultMessage: 'Title',
+  },
   addUserFormFullnameTitle: {
     id: 'Fullname',
     defaultMessage: 'Fullname',
   },
+  addGroupsFormDescriptionTitle: {
+    id: 'Description',
+    defaultMessage: 'Description',
+  },
   addUserFormEmailTitle: {
+    id: 'Email',
+    defaultMessage: 'Email',
+  },
+  addGroupsFormEmailTitle: {
     id: 'Email',
     defaultMessage: 'Email',
   },
@@ -79,6 +103,10 @@ const messages = defineMessages({
     id: 'Roles',
     defaultMessage: 'Roles',
   },
+  addGroupsFormRolesTitle: {
+    id: 'Roles',
+    defaultMessage: 'Roles',
+  },
 });
 
 @injectIntl
@@ -86,13 +114,15 @@ const messages = defineMessages({
   (state, props) => ({
     roles: state.roles.roles,
     users: state.users.users,
+    groups: state.groups.groups,
+    description: state.description.description,
     pathname: props.location.pathname,
     deleteRequest: state.users.delete,
     createRequest: state.users.create,
   }),
   dispatch =>
     bindActionCreators(
-      { listRoles, listUsers, deleteUser, createUser },
+      { listRoles, listUsers, deleteUser, createUser, listGroups, deleteGroups,createGroups },
       dispatch,
     ),
 )
@@ -466,7 +496,7 @@ export default class UsersControlpanel extends Component {
             }
           />
         </Portal>
-      </Container>
+      </div>
     );
   }
 }

@@ -60,6 +60,7 @@ export Controlpanels from './manage/Controlpanels/Controlpanels';
 export ModerateComments from './manage/Controlpanels/ModerateComments';
 export UsersControlpanel from './manage/Controlpanels/UsersControlpanel';
 export UsersControlpanelUser from './manage/Controlpanels/UsersControlpanelUser';
+export UsersControlpanelGroups from './manage/Controlpanels/UsersControlpanelGroups';
 export Delete from './manage/Delete/Delete';
 export Diff from './manage/Diff/Diff';
 export DiffField from './manage/Diff/DiffField';
