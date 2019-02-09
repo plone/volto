@@ -20,6 +20,10 @@ describe('UsersControlpanel', () => {
         users: [],
         create: { loading: false },
       },
+      groups: {
+        groups: [],
+        create: { loading: false },
+      },
       intl: {
         locale: 'en',
         messages: {},
