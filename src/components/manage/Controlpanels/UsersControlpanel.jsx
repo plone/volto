@@ -26,7 +26,7 @@ import {
   intlShape,
 } from 'react-intl';
 
-import { createUser, deleteUser, listRoles, listUsers } from '../../../actions';
+import { createUser, deleteUser, listRoles, listUsers ,createGroup, deleteGroup, listGroups} from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import { ModalForm, Toolbar, UsersControlpanelUser, UsersControlpanelGroups } from '../../../components';
 
@@ -115,14 +115,16 @@ const messages = defineMessages({
     roles: state.roles.roles,
     users: state.users.users,
     groups: state.groups.groups,
-    description: state.description.description,
+    description: state.description,
     pathname: props.location.pathname,
     deleteRequest: state.users.delete,
     createRequest: state.users.create,
+    deleteGroupRequest: state.groups.delete,
+    createGroupRequest: state.groups.create,
   }),
   dispatch =>
     bindActionCreators(
-      { listRoles, listUsers, deleteUser, createUser, listGroups, deleteGroups,createGroups },
+      { listRoles, listUsers, deleteUser, createUser, listGroups, deleteGroup,createGroup },
       dispatch,
     ),
 )
@@ -140,6 +142,7 @@ export default class UsersControlpanel extends Component {
   static propTypes = {
     listRoles: PropTypes.func.isRequired,
     listUsers: PropTypes.func.isRequired,
+    listGroups: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     roles: PropTypes.arrayOf(
       PropTypes.shape({
@@ -155,6 +158,14 @@ export default class UsersControlpanel extends Component {
         roles: PropTypes.arrayOf(PropTypes.string),
       }),
     ).isRequired,
+    groups: PropTypes.arrayOf(
+      PropTypes.shape({
+        Title: PropTypes.string,
+        Description: PropTypes.string,
+        roles: PropTypes.arrayOf(PropTypes.string),
+        groupname: PropTypes.string,
+      }),
+    ).isRequired,
     intl: intlShape.isRequired,
   };
 
@@ -168,19 +179,27 @@ export default class UsersControlpanel extends Component {
     super(props);
     this.onChangeSearch = this.onChangeSearch.bind(this);
     this.onSearch = this.onSearch.bind(this);
+    this.onSearchGroups = this.onSearchGroups.bind(this);
     this.delete = this.delete.bind(this);
+    this.deleteGroup = this.deleteGroup.bind(this);
     this.onDeleteOk = this.onDeleteOk.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
     this.onAddUserSubmit = this.onAddUserSubmit.bind(this);
+    this.onAddGroupSubmit = this.onAddGroupSubmit.bind(this);
     this.onAddUserError = this.onAddUserError.bind(this);
+    this.onAddGroupError = this.onAddGroupError.bind(this);
     this.onAddUserSuccess = this.onAddUserSuccess.bind(this);
+    this.onAddGroupSuccess = this.onAddGroupSuccess.bind(this);
     this.state = {
       search: '',
       showAddUser: false,
       showAddUserErrorConfirm: false,
       addUserError: '',
+      addGroupError: '',
       showDelete: false,
       userToDelete: undefined,
+      groupToDelete: undefined,
+      showAddGroup: false,
     };
   }
 
@@ -192,6 +211,7 @@ export default class UsersControlpanel extends Component {
   componentDidMount() {
     this.props.listRoles();
     this.props.listUsers();
+    this.props.listGroups();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -201,11 +221,23 @@ export default class UsersControlpanel extends Component {
     ) {
       this.props.listUsers(this.state.search);
     }
+    if (
+      (this.props.deleteGroupRequest.loading && nextProps.deleteGroupRequest.loaded) ||
+      (this.props.createGroupRequest.loading && nextProps.createGroupRequest.loaded)
+    ) {
+      this.props.listGroups(this.state.search);
+    }
     if (this.props.createRequest.loading && nextProps.createRequest.loaded) {
       this.onAddUserSuccess();
     }
+    if (this.props.createGroupRequest.loading && nextProps.createGroupRequest.loaded) {
+      this.onAddGroupSuccess();
+    }
     if (this.props.createRequest.loading && nextProps.createRequest.error) {
       this.onAddUserError(nextProps.createRequest.error);
+    }
+    if (this.props.createRequest.loading && nextProps.createRequest.error) {
+      this.onAddGroupError(nextProps.createRequest.error);
     }
   }
 
@@ -213,6 +245,9 @@ export default class UsersControlpanel extends Component {
     return find(this.props.users, ['@id', value]);
   }
 
+  getGroupFromProps(value) {
+    return find(this.props.groups, ['@id', value]);
+  }
   /**
    * Search handler
    * @method onSearch
@@ -222,6 +257,11 @@ export default class UsersControlpanel extends Component {
   onSearch(event) {
     event.preventDefault();
     this.props.listUsers(this.state.search);
+  }
+
+  onSearchGroups(event) {
+    event.preventDefault();
+    this.props.listGroups(this.state.search);
   }
 
   /**
@@ -248,6 +288,15 @@ export default class UsersControlpanel extends Component {
       this.setState({
         showDelete: true,
         userToDelete: this.getUserFromProps(value),
+      });
+    }
+  }
+
+  deleteGroup(event, { value }) {
+    if (value) {
+      this.setState({
+        showDelete: true,
+        groupToDelete: this.getGroupFromProps(value),
       });
     }
   }
@@ -291,6 +340,13 @@ export default class UsersControlpanel extends Component {
     });
   }
 
+  onAddGroupSubmit(data, callback) {
+    this.props.createGroup(data);
+    this.setState({
+      addGroupSetFormDataCallback: callback,
+    });
+  }
+
   /**
    * Handle Errors after createUser()
    *
@@ -300,6 +356,12 @@ export default class UsersControlpanel extends Component {
   onAddUserError(error) {
     this.setState({
       addUserError: error.message,
+    });
+  }
+
+  onAddGroupError(error) {
+    this.setState({
+      addGroupError: error.message,
     });
   }
 
@@ -314,6 +376,15 @@ export default class UsersControlpanel extends Component {
       showAddUser: false,
       addUserError: undefined,
       addUserSetFormDataCallback: undefined,
+    });
+  }
+
+  onAddGroupSuccess() {
+    this.state.addGroupSetFormDataCallback({});
+    this.setState({
+      showAddGroup: false,
+      addGroupError: undefined,
+      addGroupSetFormDataCallback: undefined,
     });
   }
 
@@ -335,6 +406,12 @@ export default class UsersControlpanel extends Component {
           content={this.props.intl.formatMessage(messages.addUserButtonTitle)}
           onClick={() => {
             this.setState({ showAddUser: true });
+          }}
+        />
+        <Button
+          content={this.props.intl.formatMessage(messages.addGroupsButtonTitle)}
+          onClick={() => {
+            this.setState({ showAddGroup: true });
           }}
         />
         <Helmet title="Users and Groups" />
@@ -362,6 +439,11 @@ export default class UsersControlpanel extends Component {
             onConfirm={this.onDeleteOk}
           />
           <ModalForm
+          style={{ width: '50%',
+          height: '50%', overflow: 'auto',
+          margin: 'auto',
+          position: 'relative',
+          top: 0, left: 0, bottom: 0, right: 0}}
             open={this.state.showAddUser}
             onSubmit={this.onAddUserSubmit}
             submitError={this.state.addUserError}
@@ -425,6 +507,72 @@ export default class UsersControlpanel extends Component {
               required: ['username', 'fullname', 'email', 'password'],
             }}
           />
+          <ModalForm
+            style={{ width: '50%',
+              height: '50%', overflow: 'auto',
+              margin: 'auto',
+              position: 'relative',
+              top: 0, left: 0, bottom: 0, right: 0}}
+            open={this.state.showAddGroup}
+            onSubmit={this.onAddGroupSubmit}
+            submitError={this.state.addGroupError}
+            onCancel={() => this.setState({ showAddGroup: false })}
+            title={this.props.intl.formatMessage(messages.addGroupsFormTitle)}
+            loading={this.props.createGroupRequest.loading}
+            schema={{
+              fieldsets: [
+                {
+                  id: 'default',
+                  title: 'FIXME: Group Data',
+                  fields: [
+                    'Title',
+                    'Description',
+                    'groupname',
+                    'email',
+                  ],
+                },
+              ],
+              properties: {
+                Title: {
+                  title: this.props.intl.formatMessage(
+                    messages.addGroupsFormTitleTitle,
+                  ),
+                  type: 'string',
+                  description: '',
+                },
+                Description: {
+                  title: this.props.intl.formatMessage(
+                    messages.addGroupsFormDescriptionTitle,
+                  ),
+                  type: 'string',
+                  description: '',
+                },
+                groupname: {
+                  title: 'groupname',
+                  type: 'string',
+                  description: '',
+                },
+                email: {
+                  title: this.props.intl.formatMessage(
+                    messages.addGroupsFormEmailTitle,
+                  ),
+                  type: 'string',
+                  description: '',
+                },
+                roles: {
+                  title: this.props.intl.formatMessage(
+                    messages.addGroupsFormRolesTitle,
+                  ),
+                  type: 'array',
+                  items: {
+                    choices: this.props.roles.map(role => [role.id, role.id]),
+                  },
+                  description: '',
+                },
+              },
+              required: ['Title', 'description', 'groupname', 'email'],
+            }}
+          />
         </div>
         <Segment.Group raised>
           <Segment className="primary">
@@ -444,6 +592,23 @@ export default class UsersControlpanel extends Component {
                   action={{ icon: 'search' }}
                   placeholder={this.props.intl.formatMessage(
                     messages.searchUsers,
+                  )}
+                  onChange={this.onChangeSearch}
+                />
+              </Form.Field>
+            </Form>
+          </Segment>
+          <Segment secondary>
+            <FormattedMessage id="Groups" defaultMessage="Groups" />
+          </Segment>
+          <Segment>
+            <Form onSubmit={this.onSearchGroups}>
+              <Form.Field>
+                <Input
+                  name="SearchableText"
+                  action={{ icon: 'search' }}
+                  placeholder={this.props.intl.formatMessage(
+                    messages.searchGroups,
                   )}
                   onChange={this.onChangeSearch}
                 />
@@ -475,6 +640,15 @@ export default class UsersControlpanel extends Component {
                     onDelete={this.delete}
                     roles={this.props.roles}
                     user={user}
+                  />
+                ))}
+                {this.props.groups.map(groups => (
+                  <UsersControlpanelGroups
+                    key={groups.id}
+                    user={this.props.users}
+                    onDelete={this.delete}
+                    roles={this.props.roles}
+                    groups={groups}
                   />
                 ))}
               </Table.Body>
