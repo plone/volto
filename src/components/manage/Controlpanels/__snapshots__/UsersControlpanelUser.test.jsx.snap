@@ -28,10 +28,7 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
     className="right aligned"
   >
     <div
-      aria-busy={undefined}
-      aria-disabled={undefined}
       aria-expanded={false}
-      aria-multiselectable={undefined}
       className="ui dropdown"
       onBlur={[Function]}
       onChange={[Function]}
@@ -55,9 +52,6 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
         className="menu transition left"
       >
         <div
-          aria-checked={undefined}
-          aria-disabled={undefined}
-          aria-selected={undefined}
           className="item"
           onClick={[Function]}
           role="option"

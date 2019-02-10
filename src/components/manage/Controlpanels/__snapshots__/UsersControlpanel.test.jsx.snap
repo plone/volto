@@ -2,17 +2,19 @@
 
 exports[`UsersControlpanel renders a user control component 1`] = `
 <div
-  className="ui container"
   id="page-users"
 >
   <button
     className="ui button"
-    disabled={undefined}
     onClick={[Function]}
-    role="button"
-    tabIndex={undefined}
   >
     Add User
+  </button>
+  <button
+    className="ui button"
+    onClick={[Function]}
+  >
+    Add Groups
   </button>
   <div
     className="container"
@@ -56,7 +58,45 @@ exports[`UsersControlpanel renders a user control component 1`] = `
             <button
               className="ui icon button"
               onClick={[Function]}
-              role="button"
+            >
+              <i
+                aria-hidden="true"
+                className="search icon"
+              />
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div
+      className="ui secondary segment"
+    >
+      <span>
+        Groups
+      </span>
+    </div>
+    <div
+      className="ui segment"
+    >
+      <form
+        className="ui form"
+        onSubmit={[Function]}
+      >
+        <div
+          className="field"
+        >
+          <div
+            className="ui action input"
+          >
+            <input
+              name="SearchableText"
+              onChange={[Function]}
+              placeholder="Search group..."
+              type="text"
+            />
+            <button
+              className="ui icon button"
+              onClick={[Function]}
             >
               <i
                 aria-hidden="true"
