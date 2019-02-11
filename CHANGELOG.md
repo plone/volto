@@ -7,6 +7,7 @@
 ### Changes
 
  - Fix Travis unit testing false green @sneridagh
+ - Fix bad Proptype for location in ScrollToTop component @sneridagh
 
 ## 1.2.1 (2019-02-04)
 
