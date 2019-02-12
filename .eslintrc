@@ -29,7 +29,11 @@
     "import/prefer-default-export": "off",
     "react/prefer-stateless-function": 0,
     "import/no-unresolved": 0,
-    "import/extensions": 0
+    "import/extensions": 0,
+    "import/no-extraneous-dependencies": 0,
+    "react/no-unused-prop-types": 0,
+    "no-plusplus": 0,
+    "no-nested-ternary": 0
   },
   "settings": {
     "import/resolver": {

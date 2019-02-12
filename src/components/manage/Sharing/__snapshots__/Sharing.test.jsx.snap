@@ -47,7 +47,6 @@ exports[`Sharing renders a sharing component 1`] = `
             <button
               className="ui icon button"
               onClick={[Function]}
-              role="button"
             >
               <i
                 aria-hidden="true"
@@ -118,11 +117,11 @@ exports[`Sharing renders a sharing component 1`] = `
             onChange={[Function]}
             onClick={[Function]}
             onMouseDown={[Function]}
+            onMouseUp={[Function]}
           >
             <input
               checked={true}
               className="hidden"
-              onClick={[Function]}
               readOnly={true}
               tabIndex={0}
               type="checkbox"
@@ -156,7 +155,6 @@ exports[`Sharing renders a sharing component 1`] = `
         <button
           className="ui big basic circular icon primary right floated button"
           onClick={[Function]}
-          role="button"
           title="Save"
           type="submit"
         >
@@ -168,7 +166,6 @@ exports[`Sharing renders a sharing component 1`] = `
         <button
           className="ui big basic circular icon secondary right floated button"
           onClick={[Function]}
-          role="button"
           title="Cancel"
         >
           <i

@@ -1,4 +1,5 @@
 # Volto
+<img align="right" width="300" alt="Volto png" src="./docs/logos/volto-colorful.png" />
 
 [![Build Status](https://travis-ci.org/plone/volto.svg?branch=master)](https://travis-ci.org/plone/volto)
 [![Coverage](https://img.shields.io/coveralls/plone/volto.svg)](https://coveralls.io/github/plone/volto)
@@ -6,16 +7,54 @@
 [![Dev Dependencies](https://img.shields.io/david/dev/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 [![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
 
+## Introduction
+
+[Volto](https://github.com/plone/volto) is a React-based frontend for content
+management systems, currently supporting three backend implementations: Plone,
+Guillotina and a NodeJS reference implementation.
+
+[Plone](https://plone.org) is a CMS built on Python with more than 17 years of
+experience. Plone has very interesting features that are still appealing to
+developers and users alike as customizable content types, hierarchical URL
+object traversing and a complex content workflow powered by a granular
+permissions model that allows you to build from simple websites to complex huge
+intranets. Volto exposes all that features and communicates with Plone via its
+mature [REST API](https://github.com/plone/plone.restapi). Volto has the
+ability of being highly themable and customizable.
+
+Volto also supports other APIs like [Guillotina](https://guillotina.io/), a
+Python resource management system, which is inspired on Plone using the same
+basic concepts like traversal, content types and permissions model.
+
+Last but not least, it also supports a [Volto Nodejs-based backend reference](https://github.com/plone/volto-reference-backend) API implementation that
+demos how other systems could also use Volto to display and create content
+through it.
+
 ## Documentation
 
 A training on how to create your own website using Volto is available as part of the Plone training at [https://training.plone.org/5/volto/index.html](https://training.plone.org/5/volto/index.html).
+
+## Talks
+
+### Plone Conference Tokyo 2018
+
+[Rob Gietema - Volto](https://2018.ploneconf.org/talks/plone-react)
+
+[Rob Gietema / Víctor Fernández de Alba - Volto Extensibility Story](https://2018.ploneconf.org/talks/plone-react-extensibility-story)
+
+[Víctor Fernández de Alba - Theming Volto](https://2018.ploneconf.org/talks/theming-plone-react)
+
+[Timo Stollenwerk / Víctor Fernández de Alba / Ramon Navarro - Volto Case Studies](https://2018.ploneconf.org/talks/plone-react-case-studies-when-stability-and-security-meet-speed-and-a-modern-user-interface)
+
+[Timo Stollenwerk - Reinventing Plone, Roadmap to the Modern Web](https://2018.ploneconf.org/talks/reinventing-plone-roadmap-to-the-modern-web)
 
 ## Installation
 
 ### Prerequisites
 
-- [Node.js==8.11.3](https://nodejs.org/)
-- [Python==2.7.x](https://python.org/)
+- [Node.js LTS (10.x)](https://nodejs.org/)
+- [Python 2.7.x](https://python.org/) or
+- [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina docker images)
 
 ### Install dependencies
 
@@ -28,18 +67,26 @@ A training on how to create your own website using Volto is available as part of
 
 ## Development
 
-### Run backend
+### Run backend (Plone)
 
     $ cd api
     $ ./bin/instance fg
 
     or
 
-    $ docker-compose -f api/docker-compose.yml up
+    $ docker-compose -f api/docker-compose.yml up -d
+
+### Run backend (Guillotina)
+
+    $ docker-compose -f g-api/docker-compose.yml up -d
 
 ### Run frontend
 
     $ yarn start
+
+### Stop backends
+
+    $ docker-compose down
 
 ### Browsing
 

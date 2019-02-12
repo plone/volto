@@ -5,6 +5,7 @@ import ListingView from '@plone/volto/components/theme/View/ListingView';
 import NewsItemView from '@plone/volto/components/theme/View/NewsItemView';
 import SummaryView from '@plone/volto/components/theme/View/SummaryView';
 import TabularView from '@plone/volto/components/theme/View/TabularView';
+import NotFoundView from '@plone/volto/components/theme/NotFound/NotFound';
 
 // Layout View Registry
 export const layoutViews = {
@@ -22,3 +23,7 @@ export const contentTypesViews = {
 
 // Default view
 export const defaultView = DocumentView;
+
+export const errorViews = {
+  '404': NotFoundView,
+};
