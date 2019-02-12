@@ -4,6 +4,10 @@
 
 ### Added
 
+ - Improve the definitions of the view/edit tiles components for better
+   extensibility. This might be a BREAKING change if you have already used the
+   old way to extend/add more tiles, please update to the new one @sneridagh
+
 ### Changes
 
  - Fix Travis unit testing false green @sneridagh

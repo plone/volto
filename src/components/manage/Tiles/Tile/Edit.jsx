@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 import { tiles } from '~/config';
-import { getEditTileComponentByType } from '../../../../helpers';
+
 import Icon from '../../../../components/theme/Icon/Icon';
 
 import dragSVG from '../../../../icons/drag.svg';
