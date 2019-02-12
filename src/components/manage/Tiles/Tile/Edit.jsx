@@ -10,7 +10,6 @@ import { findDOMNode } from 'react-dom';
 import { tiles } from '~/config';
 
 import Icon from '../../../../components/theme/Icon/Icon';
-
 import dragSVG from '../../../../icons/drag.svg';
 
 const itemSource = {
