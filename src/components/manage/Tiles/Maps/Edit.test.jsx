@@ -13,6 +13,9 @@ test('renders an edit map tile component', () => {
       locale: 'en',
       messages: {},
     },
+    content: {
+      create: {},
+    },
   });
   const component = renderer.create(
     <Provider store={store}>
