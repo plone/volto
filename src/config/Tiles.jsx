@@ -6,8 +6,14 @@ import EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
 import EditImageTile from '@plone/volto/components/manage/Tiles/Image/Edit';
 import EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
 import EditHeroTile from '@plone/volto/components/manage/Tiles/Hero/Edit';
+import tableHeaderSVG from '../icons/table-header.svg';
 
-const customTiles = [];
+const customTiles = [
+  {
+    title: 'hero',
+    icon: tableHeaderSVG,
+  },
+];
 
 const messagesTiles = defineMessages({
   title: {
@@ -29,10 +35,6 @@ const messagesTiles = defineMessages({
   video: {
     id: 'video',
     defaultMessage: 'Video',
-  },
-  hero: {
-    id: 'hero',
-    defaultMessage: 'Hero',
   },
 });
 
