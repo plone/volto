@@ -5,7 +5,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, Container } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
+import './styles.css';
 
 /**
  * View image tile class.
@@ -18,9 +19,14 @@ const View = ({ data }) => (
       .filter(e => !!e)
       .join(' ')}
   >
-    <Container >
-    <iframe src={data.url} width="600" height="450" frameborder="0" style={{border:0, zIndex: 1, position: 'relative' }} allowfullscreen></iframe>
-
+    <Container>
+      <iframe
+        title="Embeded Google Maps"
+        src={data.url}
+        className="google-map"
+        frameborder="0"
+        allowfullscreen
+      />
     </Container>
   </p>
 );

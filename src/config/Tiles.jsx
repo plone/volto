@@ -44,10 +44,6 @@ const messagesTiles = defineMessages({
     id: 'video',
     defaultMessage: 'Video',
   },
-  maps: {
-    id: 'maps',
-    defaultMessage: 'Maps',
-  },
 });
 
 const defaultTilesViewMap = {

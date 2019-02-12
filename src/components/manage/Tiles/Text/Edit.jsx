@@ -19,7 +19,7 @@ import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
 import addSVG from '../../../../icons/circle-plus.svg';
 import cameraSVG from '../../../../icons/camera.svg';
-import semaphoreSVG from '../../../../icons/semaphore.svg'
+import globeSVG from '../../../../icons/globe.svg';
 import videoSVG from '../../../../icons/videocamera.svg';
 import TemplatedTilesSVG from '../../../../icons/theme.svg';
 
@@ -255,17 +255,6 @@ export default class Edit extends Component {
                   })}
                 >
                   <Icon name={videoSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={this.props.onChangeTile.bind(this, this.props.tile, {
-                    '@type': 'maps',
-                  })}
-                >
-                  <Icon name={semaphoreSVG} size="24px" />
                 </Button>
               </Button.Group>
               {tiles.customTiles.length !== 0 && (

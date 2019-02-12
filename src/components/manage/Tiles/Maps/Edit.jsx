@@ -32,6 +32,7 @@ import imageFullSVG from '../../../../icons/image-full.svg';
 
 import { createContent } from '../../../../actions';
 import { getBaseUrl } from '../../../../helpers';
+import './styles.css';
 
 const messages = defineMessages({
   ImageTileInputPlaceholder: {
@@ -249,7 +250,7 @@ export default class Edit extends Component {
           )}
         {this.props.data.url ? (
             <div>
-            <iframe src={this.props.data.url} width="600" height="450" frameborder="0" style={{border:0, zIndex: 1, position: 'relative' }} allowfullscreen></iframe>
+            <iframe src={this.props.data.url} className="google-map"  frameborder="0" allowfullscreen></iframe>
               </div>
         ) : (
           <div>
