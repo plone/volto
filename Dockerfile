@@ -1,4 +1,4 @@
-FROM node:8.14.0-slim
+FROM node:10.14.2-slim
 
 RUN apt-get update -y
 # RUN apt-get install -y libpng12-dev

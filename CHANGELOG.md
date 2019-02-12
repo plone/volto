@@ -1,14 +1,35 @@
 # Change Log
 
-## 1.1.1 (unreleased)
+## 1.2.2 (unreleased)
 
 ### Added
 
+### Changes
+
+ - Fix Travis unit testing false green @sneridagh
+ - Fix bad Proptype for location in ScrollToTop component @sneridagh
+ - HTML Tile for Volto Editor @ajayns
+
+## 1.2.1 (2019-02-04)
+
+### Changes
+
+ - Bring back the scroll to top on every route change feature @sneridagh
+ - Loosen node version, allow LTS (v8 and v10) @sneridagh
+
+## 1.2.0 (2019-01-22)
+
+### Added
+
+- be able to specify custom headers in actions @vangheem
+- fix icons used in contents @vangheem
 - be able to work with mr.developer @vangheem
 - add alias `@plone/volto-original` and `@package` webpack aliases @vangheem
 - add `errorViews` configuration @vangheem
 
 ### Changes
+
+- Upgrade to Node 10.14.2 @nileshgulia1
 
 ## 1.1.0 (2018-12-24)
 
@@ -32,7 +53,6 @@
 - Websockets support @robgietema
 - Subrequests to search and get content actions @robgietema
 - Add logos @sneridagh @albertcasado
-- HTML Tile for Volto Editor @ajayns
 
 ## 1.0.0 (2018-10-31)
 
