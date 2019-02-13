@@ -6,7 +6,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
-import './styles.css';
 
 /**
  * View image tile class.
@@ -24,8 +23,8 @@ const View = ({ data }) => (
         title="Embeded Google Maps"
         src={data.url}
         className="google-map"
-        frameborder="0"
-        allowfullscreen
+        frameBorder="0"
+        allowFullscreen
       />
     </Container>
   </p>

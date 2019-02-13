@@ -114,7 +114,6 @@ export default class Edit extends Component {
     }
   }
 
-
   /**
    * Align tile handler
    * @method onAlignTile
@@ -249,16 +248,18 @@ export default class Edit extends Component {
             </div>
           )}
         {this.props.data.url ? (
-            <div>
-            <iframe src={this.props.data.url} className="google-map"  frameborder="0" allowfullscreen></iframe>
-              </div>
+          <div>
+            <iframe
+              src={this.props.data.url}
+              className="google-map"
+              frameborder="0"
+              allowfullscreen
+            />
+          </div>
         ) : (
           <div>
             <Message>
-              {this.state.uploading &&
-              <center>
-                Enter url
-              </center>}
+              {this.state.uploading && <center>Enter url</center>}
             </Message>
           </div>
         )}
