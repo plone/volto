@@ -103,10 +103,6 @@ class Edit extends Component {
       this.setState({
         feed: myfeed,
       });
-      console.log(myfeed, 'this is of type ' + typeof(this.state.feed.items))
-      /*this.state.feed.items.forEach(item => {
-        console.log(item.title + ':' + item.link)
-      })*/
     })()
   }
 
