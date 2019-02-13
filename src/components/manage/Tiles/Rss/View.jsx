@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import { Card, Feed, Image } from 'semantic-ui-react';
 import { settings } from '~/config';
 import Parser from 'rss-parser';
-import {connect} from 'react-redux';
 
 /**
  * View rss tile class.
@@ -19,25 +18,35 @@ class View extends Component {
 constructor(props){
   super(props);
   this.state = {
-
+feed: {},
   };
 }
-  render(){
-    const { data,feed } = this.props;
+
+componentDidMount() {
+  (async () => {
+    const parser = new Parser();
+    const myfeed = await parser.parseURL(this.props.data.url);
+    this.setState({
+      feed: myfeed,
+    });
+  })()
+}
+
+render(){
 return (
   <p
-    className={['tile', 'image', 'align', data.align]
+    className={['tile', 'image', 'align', this.props.data.align]
       .filter(e => !!e)
       .join(' ')}
   >
     {this.props.data.url.match('.rss') ? (
       <Card>
         <Feed>
-          {this.props.feed.image && (
+          {this.state.feed.image && (
             <Feed.Event>
               <Image
                 src={
-                  this.props.feed.image.url
+                  this.state.feed.image.url
                 }
                 alt=""
               />
@@ -45,11 +54,11 @@ return (
           )}
           <Feed.Event>
             <Feed.Date>
-              {this.props.feed.lastBuildDate}
+              {this.state.feed.lastBuildDate}
             </Feed.Date>
           </Feed.Event>
           <Feed.Event>
-            {this.props.feed.feedUrl}
+            {this.state.feed.feedUrl}
           </Feed.Event>
         </Feed>
       </Card>
@@ -74,11 +83,4 @@ View.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-const mapStateToProps = state => {
-  return {
-    url: state.url,
-    feed: state.feed,
-  };
-};
-
-export default connect(mapStateToProps)(View);
+export default View;

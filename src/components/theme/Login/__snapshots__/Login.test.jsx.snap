@@ -83,7 +83,7 @@ exports[`Login renders a login component 1`] = `
                     className="help"
                   >
                     <span>
-                      If you you do not have an account here, head over to the 
+                      If you do not have an account here, head over to the
                       <a
                         href="/register"
                         onClick={[Function]}

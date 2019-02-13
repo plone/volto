@@ -18,6 +18,7 @@
 
  - Fix Travis unit testing false green @sneridagh
  - Fix bad Proptype for location in ScrollToTop component @sneridagh
+ - add rss tile @nileshgulia1
 
 ## 1.2.1 (2019-02-04)
 
@@ -35,7 +36,6 @@
 - be able to work with mr.developer @vangheem
 - add alias `@plone/volto-original` and `@package` webpack aliases @vangheem
 - add `errorViews` configuration @vangheem
-- add rss tile @nileshgulia1
 
 ### Changes
 

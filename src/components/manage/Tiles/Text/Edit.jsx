@@ -256,15 +256,6 @@ export default class Edit extends Component {
                 >
                   <Icon name={videoSVG} size="24px" />
                 </Button>
-                <Button
-                  icon
-                  basic
-                  onClick={this.props.onChangeTile.bind(this, this.props.tile, {
-                    '@type': 'rss',
-                  })}
-                >
-                  <Icon name={rssSVG} size="24px" />
-                </Button>
               </Button.Group>
               {tiles.customTiles.length !== 0 && (
                 <React.Fragment>

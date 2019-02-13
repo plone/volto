@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an edit rss tile component 1`] = `
+<div
+  className="tile rss align"
+  onClick={[Function]}
+>
+  <div>
+    <div
+      className="ui card"
+      onClick={[Function]}
+    >
+      <div
+        className="ui feed"
+      >
+        <div
+          className="event"
+        />
+        <div
+          className="event"
+        />
+        <div
+          className="event"
+        >
+          <div
+            className="date"
+          />
+        </div>
+        <div
+          className="event"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
