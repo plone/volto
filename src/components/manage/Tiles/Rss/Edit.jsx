@@ -227,7 +227,7 @@ class Edit extends Component {
             />
                   </Feed.Event>
                   )}
-                  {this.state.feed.items !== 'undefined' ? (
+                  {this.state.feed.items && (
                     <Feed.Event>
                       {this.state.feed.items.forEach(item => (
                         <div>
@@ -240,9 +240,7 @@ class Edit extends Component {
                         </div>
                       ))}
                     </Feed.Event>
-                  ) : (
-                      null
-                    )}
+                  )}
                   <Feed.Event>
                     <Feed.Date>
                       {this.state.feed.lastBuildDate}

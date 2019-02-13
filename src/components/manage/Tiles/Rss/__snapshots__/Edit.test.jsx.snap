@@ -18,9 +18,6 @@ exports[`renders an edit rss tile component 1`] = `
         />
         <div
           className="event"
-        />
-        <div
-          className="event"
         >
           <div
             className="date"

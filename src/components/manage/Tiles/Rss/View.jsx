@@ -60,7 +60,7 @@ return (
           <Feed.Event>
             {this.state.feed.feedUrl}
           </Feed.Event>
-          {this.state.feed.items !== 'undefined' ? (
+          {this.state.feed.items && (
             <Feed.Event>
               {this.state.feed.items.forEach(item => (
                 <div>
@@ -73,9 +73,7 @@ return (
                 </div>
               ))}
             </Feed.Event>
-          ) : (
-              null
-            )}
+          )}
         </Feed>
       </Card>
     ) : (
