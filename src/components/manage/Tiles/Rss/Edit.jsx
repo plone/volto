@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Button, Form, Input, Feed, Message, Container,Card, Image } from 'semantic-ui-react';
+import { Button, Form, Input, Feed, Message, Container,Card, Image, FeedEvent } from 'semantic-ui-react';
 import Parser from 'rss-parser';
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
@@ -227,10 +227,22 @@ class Edit extends Component {
             />
                   </Feed.Event>
                   )}
-                  <Feed.Event>
-                    {/*{this.state.feed.items.map(item => {
-  })}*/}
-                  </Feed.Event>
+                  {this.state.feed.items !== 'undefined' ? (
+                    <Feed.Event>
+                      {this.state.feed.items.forEach(item => (
+                        <div>
+                          <Feed.Event>
+                            {item.title}
+                          </Feed.Event>
+                          <Feed.Event>
+                            {item.author}
+                          </Feed.Event>
+                        </div>
+                      ))}
+                    </Feed.Event>
+                  ) : (
+                      null
+                    )}
                   <Feed.Event>
                     <Feed.Date>
                       {this.state.feed.lastBuildDate}

@@ -60,6 +60,22 @@ return (
           <Feed.Event>
             {this.state.feed.feedUrl}
           </Feed.Event>
+          {this.state.feed.items !== 'undefined' ? (
+            <Feed.Event>
+              {this.state.feed.items.forEach(item => (
+                <div>
+                  <Feed.Event>
+                    {item.title}
+                  </Feed.Event>
+                  <Feed.Event>
+                    {item.author}
+                  </Feed.Event>
+                </div>
+              ))}
+            </Feed.Event>
+          ) : (
+              null
+            )}
         </Feed>
       </Card>
     ) : (
