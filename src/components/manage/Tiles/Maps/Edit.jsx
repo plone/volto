@@ -162,7 +162,8 @@ export default class Edit extends Component {
   getSrc(url) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(url, 'text/html');
-    return doc.getElementsByTagName('iframe')[0].src;
+    const result = doc.getElementsByTagName('iframe')[0].src;
+    return result;
   }
 
   /**

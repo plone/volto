@@ -16,7 +16,8 @@ import { Container } from 'semantic-ui-react';
 const getSrc = url => {
   const parser = new DOMParser();
   const doc = parser.parseFromString(url, 'text/html');
-  return doc.getElementsByTagName('iframe')[0].src;
+  const result = doc.getElementsByTagName('iframe')[0].src;
+  return result;
 };
 
 const View = ({ data }) => (
