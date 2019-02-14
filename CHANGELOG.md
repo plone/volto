@@ -6,6 +6,8 @@
 
 ### Changes
 
+ - Bring back the stylelint default configs for IDEs @sneridagh
+
 ## 1.3.0 (2019-02-13)
 
 ### Added
