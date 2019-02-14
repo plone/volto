@@ -6,12 +6,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
+import $ from 'jquery';
 
 /**
  * View image tile class.
  * @class View
  * @extends Component
  */
+
+const getSrc = url => {
+  window.$ = $;
+  return $(url).attr('src');
+};
+
 const View = ({ data }) => (
   <p
     className={['tile', 'image', 'align', data.align]
@@ -21,7 +28,7 @@ const View = ({ data }) => (
     <Container>
       <iframe
         title="Embeded Google Maps"
-        src={data.url}
+        src={getSrc(data.url)}
         className="google-map"
         frameBorder="0"
         allowFullscreen

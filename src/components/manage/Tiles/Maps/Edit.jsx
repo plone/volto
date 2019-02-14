@@ -19,6 +19,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { settings } from '~/config';
+import $ from 'jquery';
 
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
@@ -85,7 +86,7 @@ export default class Edit extends Component {
    */
   constructor(props) {
     super(props);
-
+    this.getSrc = this.getSrc.bind(this);
     this.state = {
       uploading: false,
       url: '',
@@ -144,6 +145,7 @@ export default class Edit extends Component {
    * @method onSubmitUrl
    * @returns {undefined}
    */
+
   onSubmitUrl = e => {
     e.preventDefault();
     this.props.onChangeTile(this.props.tile, {
@@ -151,6 +153,17 @@ export default class Edit extends Component {
       url: this.state.url,
     });
   };
+
+  /**
+   * get srcUrl handler
+   * @method getSrc
+   * @returns {object}
+   */
+
+  getSrc(url) {
+    window.$ = $;
+    return $(url).attr('src');
+  }
 
   /**
    * Render method.
@@ -250,7 +263,7 @@ export default class Edit extends Component {
         {this.props.data.url ? (
           <div>
             <iframe
-              src={this.props.data.url}
+              src={this.getSrc(this.props.data.url)}
               className="google-map"
               frameborder="0"
               allowfullscreen
