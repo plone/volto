@@ -6,24 +6,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { readAsDataURL } from 'promise-file-reader';
-import {
-  Button,
-  Dimmer,
-  Image,
-  Container,
-  Input,
-  Loader,
-  Message,
-} from 'semantic-ui-react';
+import { Button, Input, Message } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { settings } from '~/config';
 
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
 import clearSVG from '../../../../icons/clear.svg';
-import folderSVG from '../../../../icons/folder.svg';
 import imageSVG from '../../../../icons/image.svg';
 import imageLeftSVG from '../../../../icons/image-left.svg';
 import imageRightSVG from '../../../../icons/image-right.svg';
@@ -31,8 +20,6 @@ import imageFitSVG from '../../../../icons/image-fit.svg';
 import imageFullSVG from '../../../../icons/image-full.svg';
 
 import { createContent } from '../../../../actions';
-import { getBaseUrl } from '../../../../helpers';
-import './styles.css';
 
 const messages = defineMessages({
   ImageTileInputPlaceholder: {
@@ -142,9 +129,9 @@ export default class Edit extends Component {
   /**
    * Submit url handler
    * @method onSubmitUrl
+   * @param {string} e event
    * @returns {undefined}
    */
-
   onSubmitUrl = e => {
     e.preventDefault();
     this.props.onChangeTile(this.props.tile, {
@@ -154,14 +141,14 @@ export default class Edit extends Component {
   };
 
   /**
-   * get srcUrl handler
+   * get getSrc handler
    * @method getSrc
-   * @returns {string}
+   * @param {string} embed Embed HTML code from Google Maps share option
+   * @returns {string} Source URL
    */
-
-  getSrc(url) {
+  getSrc(embed) {
     const parser = new DOMParser();
-    const doc = parser.parseFromString(url, 'text/html');
+    const doc = parser.parseFromString(embed, 'text/html');
     const result = doc.getElementsByTagName('iframe')[0].src;
     return result;
   }
