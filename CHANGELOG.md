@@ -6,6 +6,9 @@
 
 ### Changes
 
+ - Improve ESlint resolvers for special paths (@plone/volto and ~), so IDEs do
+   not complain any more with no-unresolved active @sneridagh
+
 ## 1.3.0 (2019-02-13)
 
 ### Added
