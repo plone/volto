@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix the floating image problem in the Volto Editor @sneridagh
+
 ## 1.3.0 (2019-02-13)
 
 ### Added
