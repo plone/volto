@@ -6,6 +6,8 @@
 
 ### Changes
 
+ - add rss tile @nileshgulia1
+
 ## 1.3.0 (2019-02-13)
 
 ### Added
@@ -18,7 +20,6 @@
 
  - Fix Travis unit testing false green @sneridagh
  - Fix bad Proptype for location in ScrollToTop component @sneridagh
- - add rss tile @nileshgulia1
 
 ## 1.2.1 (2019-02-04)
 
