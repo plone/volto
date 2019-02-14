@@ -14,7 +14,7 @@ import EditImageTile from '@plone/volto/components/manage/Tiles/Image/Edit';
 import EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
 import EditRssTile from '@plone/volto/components/manage/Tiles/Rss/Edit';
 
-import rssSVG from '../../../../icons/rss.svg';
+import rssSVG from '../icons/rss.svg';
 
 const customTiles = [
   {
