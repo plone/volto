@@ -6,7 +6,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
-import $ from 'jquery';
 
 /**
  * View image tile class.
@@ -15,8 +14,9 @@ import $ from 'jquery';
  */
 
 const getSrc = url => {
-  window.$ = $;
-  return $(url).attr('src');
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(url, 'text/html');
+  return doc.getElementsByTagName('iframe')[0].src;
 };
 
 const View = ({ data }) => (

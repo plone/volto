@@ -19,7 +19,6 @@ import {
 import { bindActionCreators } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { settings } from '~/config';
-import $ from 'jquery';
 
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
@@ -157,12 +156,13 @@ export default class Edit extends Component {
   /**
    * get srcUrl handler
    * @method getSrc
-   * @returns {object}
+   * @returns {string}
    */
 
   getSrc(url) {
-    window.$ = $;
-    return $(url).attr('src');
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(url, 'text/html');
+    return doc.getElementsByTagName('iframe')[0].src;
   }
 
   /**
