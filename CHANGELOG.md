@@ -4,6 +4,9 @@
 
 ### Added
 
+- Add the ability to detect the edit Plone Site hack for show the tiles editor
+  on Plone site edit @sneridagh
+
 ### Changes
 
 - Improve ESlint resolvers for special paths (@plone/volto and ~), so IDEs do

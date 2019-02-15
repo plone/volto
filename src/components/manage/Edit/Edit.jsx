@@ -156,6 +156,12 @@ export class EditComponent extends Component {
         });
       }
     }
+    // Hack for make the Plone site editable by Volto Editor without checkings
+    if (this.props.content['@type'] === 'Plone Site') {
+      this.state = {
+        visual: true,
+      };
+    }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       this.props.history.push(
         this.props.returnUrl || getBaseUrl(this.props.pathname),
