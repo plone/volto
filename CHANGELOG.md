@@ -6,7 +6,8 @@
 
 ### Changes
 
- - Bring back the stylelint default configs for IDEs @sneridagh
+- Bring back the stylelint default configs for IDEs @sneridagh
+- Fix the floating image problem in the Volto Editor @sneridagh
 
 ## 1.3.0 (2019-02-13)
 
