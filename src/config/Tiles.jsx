@@ -5,6 +5,7 @@ import ViewDescriptionTile from '@plone/volto/components/manage/Tiles/Descriptio
 import ViewTextTile from '@plone/volto/components/manage/Tiles/Text/View';
 import ViewImageTile from '@plone/volto/components/manage/Tiles/Image/View';
 import ViewVideoTile from '@plone/volto/components/manage/Tiles/Video/View';
+import ViewHeroTile from '@plone/volto/components/manage/Tiles/Hero/View';
 
 import EditTitleTile from '@plone/volto/components/manage/Tiles/Title/Edit';
 import EditDescriptionTile from '@plone/volto/components/manage/Tiles/Description/Edit';
@@ -50,6 +51,7 @@ const defaultTilesViewMap = {
   text: ViewTextTile,
   image: ViewImageTile,
   video: ViewVideoTile,
+  hero: ViewHeroTile,
 };
 
 const defaultTilesEditMap = {
@@ -58,6 +60,7 @@ const defaultTilesEditMap = {
   text: EditTextTile,
   image: EditImageTile,
   video: EditVideoTile,
+  hero: EditHeroTile,
 };
 
 export { customTiles, defaultTilesViewMap, defaultTilesEditMap, messagesTiles };
