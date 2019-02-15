@@ -7,6 +7,8 @@
 ### Changes
 
 - Bring back the stylelint default configs for IDEs @sneridagh
+- Improve ESlint resolvers for special paths (@plone/volto and ~), so IDEs do
+  not complain any more with no-unresolved active @sneridagh
 - Fix the floating image problem in the Volto Editor @sneridagh
 
 ## 1.3.0 (2019-02-13)
