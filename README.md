@@ -88,7 +88,7 @@ as part of the Plone training docs at [https://training.plone.org/5/volto/index.
 
 ## Volto Development
 
-For Volto development you need all the requirements already mentionen on the
+For Volto development you need all the requirements already mentioned on the
 [Quick Start](#quick-start) section.
 
 ### Checkout the Volto repo
@@ -108,7 +108,8 @@ Either using a Docker image
     $ docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
 
 or running Plone on your machine (advanced), additional dependencies might be
-required only for Plone experienced integrators/developers.
+required only for Plone experienced integrators/developers. Check the [Plone
+Installation Documentation](https://docs.plone.org/manage/installing/installation.html).
 
     $ cd api
     $ ./bootstrap.sh
@@ -174,10 +175,11 @@ If the plugin is unable to be found automatically, you can load them with:
 
 1.  Or the API, via the plugins field:
 
-```prettier.format("code", {
-  parser: "foo",
-  plugins: ["./foo-plugin"]
-});
+```
+  prettier.format("code", {
+    parser: "foo",
+    plugins: ["./foo-plugin"]
+  });
 ```
 
 ##### Pre commit hook
