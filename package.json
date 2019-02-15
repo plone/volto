@@ -67,6 +67,13 @@
     "trailingComma": "all",
     "singleQuote": true
   },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-idiomatic-order",
+      "./node_modules/prettier-stylelint/config.js"
+    ]
+  },
   "engines": {
     "node": "^8 || ^10"
   },
@@ -114,6 +121,7 @@
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-loader": "3.0.0",
     "prettier": "1.14.3",
+    "prettier-stylelint": "0.4.2",
     "promise-file-reader": "1.0.2",
     "query-string": "6.1.0",
     "raven": "2.6.4",
@@ -145,6 +153,9 @@
     "semantic-ui-react": "0.84.0",
     "serialize-javascript": "1.5.0",
     "style-loader": "0.23.0",
+    "stylelint": "9.2.1",
+    "stylelint-config-idiomatic-order": "6.2.0",
+    "stylelint-config-standard": "18.2.0",
     "superagent": "4.0.0-beta.5",
     "svg-loader": "0.0.2",
     "svgo": "1.0.5",
