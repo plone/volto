@@ -21,7 +21,12 @@ import {
 } from './RichTextEditor/Blocks';
 import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
 import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
-import { customTiles, getDefaultEditTileView, messagesTiles } from './Tiles';
+import {
+  customTiles,
+  defaultTilesViewMap,
+  defaultTilesEditMap,
+  messagesTiles,
+} from './Tiles';
 
 export const settings = {
   host: process.env.HOST || 'localhost',
@@ -55,6 +60,7 @@ export const views = {
 
 export const tiles = {
   customTiles,
-  getDefaultEditTileView,
+  defaultTilesViewMap,
+  defaultTilesEditMap,
   messagesTiles,
 };

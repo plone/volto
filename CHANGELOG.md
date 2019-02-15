@@ -1,8 +1,18 @@
 # Change Log
 
-## 1.2.2 (unreleased)
+## 1.3.1 (unreleased)
 
 ### Added
+
+### Changes
+
+## 1.3.0 (2019-02-13)
+
+### Added
+
+ - Improve the definitions of the view/edit tiles components for better
+   extensibility. This might be a BREAKING change if you have already used the
+   old way to extend/add more tiles, please update to the new one @sneridagh
 
 ### Changes
 
