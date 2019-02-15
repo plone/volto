@@ -2,7 +2,7 @@ site_name: Volto documentation
 theme:
   name: "material"
 nav:
-  - Introduction: "01-introduction"
+  - Introduction: "01-installing"
   - Semantic UI: "02-semantic-ui"
   - Theming: "03-theming"
   - Deploying: "04-deploying"
