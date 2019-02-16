@@ -117,6 +117,7 @@ I should be logged in
 
 
 Autologin as
+    [Arguments]  ${username}=admin  ${password}=secret
     ${headers}  Create dictionary  Accept=application/json  Content-Type=application/json
     ${data}=  Create dictionary  login=admin  password=secret
     Run Keyword If   '${API}' == 'Guillotina'   Create Session  plone  http://localhost:8081/db/container
