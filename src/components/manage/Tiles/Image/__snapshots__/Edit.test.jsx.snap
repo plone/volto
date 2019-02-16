@@ -8,7 +8,6 @@ exports[`renders an edit image tile component 1`] = `
   <p>
     <img
       alt=""
-      className="ui image"
       src="image"
     />
   </p>

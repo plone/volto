@@ -25,7 +25,6 @@ Array [
     <button
       className="ui button trigger"
       onClick={[Function]}
-      role="button"
     />
   </div>,
   <div

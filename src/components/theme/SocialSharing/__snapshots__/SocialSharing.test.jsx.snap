@@ -21,7 +21,6 @@ exports[`SocialSharing renders a social sharing component 1`] = `
     <button
       className="ui facebook mini button"
       onClick={[Function]}
-      role="button"
     >
       Facebook
     </button>
@@ -37,7 +36,6 @@ exports[`SocialSharing renders a social sharing component 1`] = `
     <button
       className="ui twitter mini button"
       onClick={[Function]}
-      role="button"
     >
       Twitter
     </button>
