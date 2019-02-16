@@ -9,6 +9,7 @@
 - Prevent Volto hit the @types endpoint (via its action, getTypes()) if the
   user is not authenticated, since it's useless and always returns a 401
   @sneridagh
+- Improved readme @sneridagh
 
 ## 1.4.0 (2019-02-15)
 
