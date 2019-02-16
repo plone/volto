@@ -1,5 +1,11 @@
 import { defineMessages } from 'react-intl';
 
+import ViewTitleTile from '@plone/volto/components/manage/Tiles/Title/View';
+import ViewDescriptionTile from '@plone/volto/components/manage/Tiles/Description/View';
+import ViewTextTile from '@plone/volto/components/manage/Tiles/Text/View';
+import ViewImageTile from '@plone/volto/components/manage/Tiles/Image/View';
+import ViewVideoTile from '@plone/volto/components/manage/Tiles/Video/View';
+
 import EditTitleTile from '@plone/volto/components/manage/Tiles/Title/Edit';
 import EditDescriptionTile from '@plone/volto/components/manage/Tiles/Description/Edit';
 import EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
@@ -31,21 +37,20 @@ const messagesTiles = defineMessages({
   },
 });
 
-const getDefaultEditTileView = type => {
-  switch (type) {
-    case 'title':
-      return EditTitleTile;
-    case 'description':
-      return EditDescriptionTile;
-    case 'text':
-      return EditTextTile;
-    case 'image':
-      return EditImageTile;
-    case 'video':
-      return EditVideoTile;
-    default:
-      break;
-  }
+const defaultTilesViewMap = {
+  title: ViewTitleTile,
+  description: ViewDescriptionTile,
+  text: ViewTextTile,
+  image: ViewImageTile,
+  video: ViewVideoTile,
 };
 
-export { customTiles, getDefaultEditTileView, messagesTiles };
+const defaultTilesEditMap = {
+  title: EditTitleTile,
+  description: EditDescriptionTile,
+  text: EditTextTile,
+  image: EditImageTile,
+  video: EditVideoTile,
+};
+
+export { customTiles, defaultTilesViewMap, defaultTilesEditMap, messagesTiles };

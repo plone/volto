@@ -513,6 +513,12 @@ body {
   margin-bottom: 2rem;
 }
 
+.ui.drag.tile.image {
+  // This fixes the floating images in Volto Editor! Muahahaha
+  display: block;
+  z-index: 2;
+}
+
 .tile .ui.image {
   width: 100%;
 }
@@ -592,6 +598,10 @@ body {
 
 .tile.align.full {
   width: 100% !important;
+
+  img {
+    width: 100%;
+  }
 }
 
 .tile.align:not(.right):not(.left) {
@@ -803,4 +813,8 @@ body {
   border-right: 1px solid #ddd;
   margin: 0 0 4px 4px;
   vertical-align: bottom;
+}
+
+.comments {
+  margin-top: 20px;
 }

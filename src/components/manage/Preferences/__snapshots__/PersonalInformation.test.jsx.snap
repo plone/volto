@@ -270,7 +270,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           <button
             className="ui big basic circular icon primary right floated button"
             onClick={[Function]}
-            role="button"
             title="Save"
             type="submit"
           >
@@ -282,7 +281,6 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           <button
             className="ui big basic circular icon secondary right floated button"
             onClick={[Function]}
-            role="button"
             title="Cancel"
           >
             <i

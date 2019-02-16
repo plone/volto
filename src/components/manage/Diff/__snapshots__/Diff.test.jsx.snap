@@ -33,7 +33,6 @@ exports[`Diff renders a diff component 1`] = `
         <button
           className="ui active button"
           onClick={[Function]}
-          role="button"
           value="split"
         >
           Split
@@ -41,7 +40,6 @@ exports[`Diff renders a diff component 1`] = `
         <button
           className="ui button"
           onClick={[Function]}
-          role="button"
           value="unified"
         >
           Unified
