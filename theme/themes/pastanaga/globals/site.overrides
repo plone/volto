@@ -26,6 +26,12 @@ body {
   background-color: #a6f3a6;
 }
 
+.product-hero {
+  z-index: '123';
+  position: 'relative';
+  display: 'flex';
+}
+
 .ui.dropdown .menu.left {
   left: auto;
   right: 0;

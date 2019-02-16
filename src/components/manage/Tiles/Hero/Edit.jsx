@@ -68,7 +68,7 @@ const extendedDescripBlockRenderMap = DefaultDraftBlockRenderMap.merge(
  * @class Edit
  * @extends Component
  */
-export default class  EditHeroTile extends Component {
+export default class EditHeroTile extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -308,9 +308,13 @@ export default class  EditHeroTile extends Component {
               </Button.Group>
             </div>
           )}
-        <div className="product-hero" style={{ zIndex: '123' , position: 'relative' , display: 'flex'}}>
+        <div className="product-hero">
           {this.props.data.url ? (
-            <img src={`${this.props.data.url}/@@images/image`} alt="" style = {{ maxWidth: '100%', width: '600px', objectFit: 'contain'}} />
+            <img
+              src={`${this.props.data.url}/@@images/image`}
+              alt=""
+              style={{ maxWidth: '100%', width: '600px', objectFit: 'contain' }}
+            />
           ) : (
             <div>
               <p>
@@ -338,7 +342,7 @@ export default class  EditHeroTile extends Component {
               </p>
             </div>
           )}
-          <div className="product-hero-body" style={{flex: '1 1'}}>
+          <div className="product-hero-body" style={{ flex: '1 1' }}>
             <Editor
               onChange={this.onChangeBoldTitle}
               editorState={this.state.boldTitleEditorState}
