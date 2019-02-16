@@ -814,3 +814,7 @@ body {
   margin: 0 0 4px 4px;
   vertical-align: bottom;
 }
+
+.comments {
+  margin-top: 20px;
+}
