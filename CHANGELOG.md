@@ -7,6 +7,7 @@
 ### Changes
 
 - Improved readme @sneridagh
+- Disable SocialSharing component by default @sneridagh
 
 ## 1.4.0 (2019-02-15)
 
