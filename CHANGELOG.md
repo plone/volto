@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Improved readme @sneridagh
+
 ## 1.4.0 (2019-02-15)
 
 ### Added
