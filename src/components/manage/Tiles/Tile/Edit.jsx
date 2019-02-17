@@ -8,8 +8,8 @@ import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 import { tiles } from '~/config';
-import Icon from '../../../../components/theme/Icon/Icon';
 
+import Icon from '../../../../components/theme/Icon/Icon';
 import dragSVG from '../../../../icons/drag.svg';
 
 const itemSource = {
@@ -117,7 +117,7 @@ export default class Edit extends Component {
     } = this.props;
 
     let Tile = null;
-    Tile = tiles.getDefaultEditTileView(type);
+    Tile = tiles.defaultTilesEditMap[type];
 
     const hideHandler =
       this.props.data['@type'] === 'text' &&

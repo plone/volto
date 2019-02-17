@@ -1,10 +1,30 @@
 # Change Log
 
-## 1.2.1 (unreleased)
+## 1.3.1 (unreleased)
 
 ### Added
 
 ### Changes
+
+## 1.3.0 (2019-02-13)
+
+### Added
+
+ - Improve the definitions of the view/edit tiles components for better
+   extensibility. This might be a BREAKING change if you have already used the
+   old way to extend/add more tiles, please update to the new one @sneridagh
+
+### Changes
+
+ - Fix Travis unit testing false green @sneridagh
+ - Fix bad Proptype for location in ScrollToTop component @sneridagh
+
+## 1.2.1 (2019-02-04)
+
+### Changes
+
+ - Bring back the scroll to top on every route change feature @sneridagh
+ - Loosen node version, allow LTS (v8 and v10) @sneridagh
 
 ## 1.2.0 (2019-01-22)
 
