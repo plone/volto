@@ -817,6 +817,7 @@ body {
 
 .tools {
   margin-right: 1em;
+}
 
 .comments {
   margin-top: 20px;

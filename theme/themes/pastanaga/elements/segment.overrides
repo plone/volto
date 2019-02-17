@@ -15,6 +15,24 @@
     flex: 1;
     align-items: center;
     display: flex;
+
+    .logo {
+      flex: 0 0 auto;
+    }
+
+    .navigation {
+      overflow-x: scroll;
+      -ms-overflow-style: none;  // IE 10+
+      overflow: -moz-scrollbars-none;  // Firefox
+      &::-webkit-scrollbar {
+        height: 0px;  /* remove scrollbar space */
+        background: transparent;  /* optional: just make scrollbar invisible */
+      }
+      /* optional: show position indicator in red */
+      &::-webkit-scrollbar-thumb {
+          background: #FF0000;
+      }
+    }
   }
 
   @media only screen and (max-width: @tabletBreakpoint) {
