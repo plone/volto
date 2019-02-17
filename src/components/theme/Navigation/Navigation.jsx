@@ -136,7 +136,7 @@ export default class Navigation extends Component {
    */
   render() {
     return (
-      <Fragment>
+      <nav className="navigation">
         <div className="hamburger-wrapper mobile only">
           <button
             className={cx('hamburger hamburger--collapse', {
@@ -180,7 +180,7 @@ export default class Navigation extends Component {
             </Link>
           ))}
         </Menu>
-      </Fragment>
+      </nav>
     );
   }
 }

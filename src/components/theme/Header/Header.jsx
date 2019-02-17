@@ -52,9 +52,7 @@ export default class Header extends Component {
               <div className="logo">
                 <Logo />
               </div>
-              <div className="navigation">
-                <Navigation pathname={this.props.pathname} />
-              </div>
+              <Navigation pathname={this.props.pathname} />
             </div>
             {!this.props.token && (
               <div className="tools">
