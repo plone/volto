@@ -7,6 +7,7 @@
 ### Changes
 
 - Improved readme @sneridagh
+- New logo and fix header @sneridagh
 
 ## 1.4.0 (2019-02-15)
 

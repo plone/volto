@@ -814,3 +814,7 @@ body {
   margin: 0 0 4px 4px;
   vertical-align: bottom;
 }
+
+.tools {
+  margin-right: 1em;
+}
