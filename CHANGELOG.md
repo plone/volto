@@ -13,6 +13,7 @@
 - New logo for the Pastanaga Theme referring to Volto and fix header @sneridagh
 - Disable SocialSharing component by default @sneridagh
 - Fix login tab index for username autofocus and password after tab @sneridagh
+- Fix hamburgers menu @sneridagh
 
 ## 1.4.0 (2019-02-15)
 
