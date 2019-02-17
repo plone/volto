@@ -10,8 +10,9 @@
   user is not authenticated, since it's useless and always returns a 401
   @sneridagh
 - Improved readme @sneridagh
-- New logo and fix header @sneridagh
+- New logo for the Pastanaga Theme referring to Volto and fix header @sneridagh
 - Disable SocialSharing component by default @sneridagh
+- Fix login tab index for username autofocus and password after tab @sneridagh
 
 ## 1.4.0 (2019-02-15)
 
