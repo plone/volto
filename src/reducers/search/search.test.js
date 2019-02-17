@@ -14,6 +14,7 @@ describe('Search reducer', () => {
       loaded: false,
       loading: false,
       batching: {},
+      subrequests: {},
     });
   });
 
@@ -29,6 +30,7 @@ describe('Search reducer', () => {
       loaded: false,
       loading: true,
       batching: {},
+      subrequests: {},
     });
   });
 
@@ -59,6 +61,7 @@ describe('Search reducer', () => {
       loaded: true,
       loading: false,
       batching: {},
+      subrequests: {},
     });
   });
 
@@ -75,6 +78,7 @@ describe('Search reducer', () => {
       loaded: false,
       loading: false,
       batching: {},
+      subrequests: {},
     });
   });
 
@@ -90,6 +94,142 @@ describe('Search reducer', () => {
       loaded: false,
       loading: false,
       batching: {},
+      subrequests: {},
+    });
+  });
+
+  it('should handle subrequest SEARCH_CONTENT_PENDING', () => {
+    expect(
+      search(undefined, {
+        type: `${SEARCH_CONTENT}_PENDING`,
+        subrequest: 'my-subrequest',
+      }),
+    ).toEqual({
+      error: null,
+      items: [],
+      total: 0,
+      loaded: false,
+      loading: false,
+      batching: {},
+      subrequests: {
+        'my-subrequest': {
+          error: null,
+          items: [],
+          total: 0,
+          loaded: false,
+          loading: true,
+          batching: {},
+        },
+      },
+    });
+  });
+
+  it('should handle subrequest SEARCH_CONTENT_SUCCESS', () => {
+    expect(
+      search(
+        {
+          subrequests: {
+            'my-subrequest': {
+              error: null,
+              items: [],
+              total: 0,
+              loaded: false,
+              loading: true,
+              batching: {},
+            },
+          },
+        },
+        {
+          type: `${SEARCH_CONTENT}_SUCCESS`,
+          subrequest: 'my-subrequest',
+          result: {
+            items: [
+              {
+                title: 'Welcome to Plone!',
+                '@id': `${settings.apiPath}/front-page`,
+              },
+            ],
+            items_total: 1,
+            batching: {},
+          },
+        },
+      ),
+    ).toEqual({
+      subrequests: {
+        'my-subrequest': {
+          error: null,
+          items: [
+            {
+              title: 'Welcome to Plone!',
+              '@id': '/front-page',
+            },
+          ],
+          total: 1,
+          loaded: true,
+          loading: false,
+          batching: {},
+        },
+      },
+    });
+  });
+
+  it('should handle subrequest SEARCH_CONTENT_FAIL', () => {
+    expect(
+      search(
+        {
+          subrequests: {
+            'my-subrequest': {
+              error: null,
+              items: [],
+              total: 0,
+              loaded: false,
+              loading: true,
+              batching: {},
+            },
+          },
+        },
+        {
+          type: `${SEARCH_CONTENT}_FAIL`,
+          subrequest: 'my-subrequest',
+          error: 'failed',
+        },
+      ),
+    ).toEqual({
+      subrequests: {
+        'my-subrequest': {
+          error: 'failed',
+          items: [],
+          total: 0,
+          loaded: false,
+          loading: false,
+          batching: {},
+        },
+      },
+    });
+  });
+
+  it('should handle subrequest RESET_SEARCH_CONTENT', () => {
+    expect(
+      search(
+        {
+          subrequests: {
+            'my-subrequest': {
+              error: null,
+              items: ['random'],
+              total: 1,
+              loaded: true,
+              loading: false,
+              batching: {},
+            },
+          },
+        },
+        {
+          type: RESET_SEARCH_CONTENT,
+          subrequest: 'my-subrequest',
+        },
+      ),
+    ).toEqual({
+      subrequests: {},
     });
   });
 });

@@ -9,13 +9,8 @@ import Helmet from 'react-helmet';
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 
-import {
-  ViewTitleTile,
-  ViewDescriptionTile,
-  ViewTextTile,
-  ViewImageTile,
-  ViewVideoTile,
-} from '../../../components';
+import { settings, tiles } from '~/config';
+
 import {
   getTilesFieldname,
   getTilesLayoutFieldname,
@@ -37,25 +32,8 @@ const DocumentView = ({ content }) => {
       <Helmet title={content.title} />
       {map(content[tilesLayoutFieldname].items, tile => {
         let Tile = null;
-        switch (content[tilesFieldname][tile]['@type']) {
-          case 'title':
-            Tile = ViewTitleTile;
-            break;
-          case 'description':
-            Tile = ViewDescriptionTile;
-            break;
-          case 'text':
-            Tile = ViewTextTile;
-            break;
-          case 'image':
-            Tile = ViewImageTile;
-            break;
-          case 'video':
-            Tile = ViewVideoTile;
-            break;
-          default:
-            break;
-        }
+        Tile =
+          tiles.defaultTilesViewMap[content[tilesFieldname][tile]['@type']];
         return Tile !== null ? (
           <Tile
             key={tile}
@@ -82,7 +60,14 @@ const DocumentView = ({ content }) => {
         />
       )}
       {content.text && (
-        <p dangerouslySetInnerHTML={{ __html: content.text.data }} />
+        <p
+          dangerouslySetInnerHTML={{
+            __html: content.text.data.replace(
+              /a href=\"([^"]*\.[^"]*)\"/g,
+              `a href="${settings.apiPath}$1/download/file"`,
+            ),
+          }}
+        />
       )}
     </Container>
   );

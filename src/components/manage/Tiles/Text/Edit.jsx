@@ -73,7 +73,7 @@ export default class Edit extends Component {
       }
 
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: settings.inlineToolbarButtons,
+        structure: settings.richTextEditorInlineToolbarButtons,
       });
 
       this.state = {
@@ -181,7 +181,10 @@ export default class Edit extends Component {
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}
-          plugins={[this.state.inlineToolbarPlugin, ...settings.richTextEditorPlugins]}
+          plugins={[
+            this.state.inlineToolbarPlugin,
+            ...settings.richTextEditorPlugins,
+          ]}
           blockRenderMap={settings.extendedBlockRenderMap}
           blockStyleFn={settings.blockStyleFn}
           placeholder={this.props.intl.formatMessage(messages.text)}
@@ -214,7 +217,6 @@ export default class Edit extends Component {
           }}
         />
         <InlineToolbar />
-
         {(!this.props.data.text ||
           (this.props.data.text &&
             this.props.data.text.blocks &&

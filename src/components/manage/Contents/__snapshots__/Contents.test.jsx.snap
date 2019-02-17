@@ -1052,7 +1052,7 @@ exports[`Contents renders a contents component 1`] = `
                       >
                         <i
                           aria-hidden="true"
-                          className="long arrow up icon"
+                          className="arrow up icon"
                         />
                          
                         <span>
@@ -1066,7 +1066,7 @@ exports[`Contents renders a contents component 1`] = `
                       >
                         <i
                           aria-hidden="true"
-                          className="long arrow down icon"
+                          className="arrow down icon"
                         />
                          
                         <span>

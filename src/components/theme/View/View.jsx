@@ -16,17 +16,15 @@ import { views } from '~/config';
 
 import {
   Comments,
-  SocialSharing,
   Tags,
   Toolbar,
   Actions,
   Display,
-  NotFound,
   Types,
   Workflow,
 } from '../../../components';
 import { listActions, getContent } from '../../../actions';
-import { BodyClass, getBaseUrl } from '../../../helpers';
+import { BodyClass, getBaseUrl, getLayoutFieldname } from '../../../helpers';
 
 @injectIntl
 @connect(
@@ -112,7 +110,7 @@ export default class View extends Component {
       /**
        * Error type
        */
-      type: PropTypes.string,
+      status: PropTypes.number,
     }),
     intl: intlShape.isRequired,
   };
@@ -189,7 +187,10 @@ export default class View extends Component {
    * @method getViewByLayout
    * @returns {string} Markup for component.
    */
-  getViewByLayout = () => views.layoutViews[this.props.content.layout] || null;
+  getViewByLayout = () =>
+    views.layoutViews[
+      this.props.content[getLayoutFieldname(this.props.content)]
+    ] || null;
 
   /**
    * Cleans the component displayName (specially for connected components)
@@ -211,9 +212,13 @@ export default class View extends Component {
    */
   render() {
     if (this.props.error) {
+      let FoundView = views.errorViews[this.props.error.status.toString()];
+      if (!FoundView) {
+        FoundView = views.errorViews['404']; // default to 404
+      }
       return (
         <div id="view">
-          <NotFound />
+          <FoundView />
         </div>
       );
     }
@@ -252,11 +257,13 @@ export default class View extends Component {
           this.props.content.subjects.length > 0 && (
             <Tags tags={this.props.content.subjects} />
           )}
-        <SocialSharing
+        {/* Add opt-in social sharing if required, disabled by default */}
+        {/* In the future this might be parameterized from the app config */}
+        {/* <SocialSharing
           url={typeof window === 'undefined' ? '' : window.location.href}
           title={this.props.content.title}
           description={this.props.content.description || ''}
-        />
+        /> */}
         {this.props.content.allow_discussion && (
           <Comments pathname={this.props.pathname} />
         )}

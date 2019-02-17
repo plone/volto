@@ -86,6 +86,10 @@ export const defaultRoutes = [
     component: Add,
   },
   {
+    path: '/edit',
+    component: Edit,
+  },
+  {
     path: '/contents',
     component: Contents,
   },

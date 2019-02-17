@@ -282,7 +282,7 @@ export default class Edit extends Component {
           )}
         {this.props.data.url ? (
           <p>
-            <Image
+            <img
               src={
                 this.props.data.url.includes(settings.apiPath)
                   ? `${this.props.data.url}/@@images/image`

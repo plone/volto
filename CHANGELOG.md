@@ -1,67 +1,157 @@
 # Change Log
-## 0.9.5 (unreleased)
 
-### Changes
+## 1.4.1 (unreleased)
 
-- Fix API_PATH variable using RAZZLE_ prefix instead @sneridagh
-- Fix FUOC (flash of unstyled content) in production mode @sneridagh
-
-## 0.9.5 (unreleased)
+### Added
 
 ### Changes
 
 - Conditionally import locales so you can extend volto without needing to provide any @vangheem
+- Prevent Volto hit the @types endpoint (via its action, getTypes()) if the
+  user is not authenticated, since it's useless and always returns a 401
+  @sneridagh
+- Improved readme @sneridagh
+- Disable SocialSharing component by default @sneridagh
 
-## 0.9.4 (2018-08-10)
+## 1.4.0 (2019-02-15)
+
+### Added
+
+- Add the ability to detect the edit Plone Site hack for show the tiles editor
+  on Plone site edit @sneridagh
+
+### Changes
+
+- Bring back the stylelint default configs for IDEs @sneridagh
+- Improve ESlint resolvers for special paths (@plone/volto and ~), so IDEs do
+  not complain any more with no-unresolved active @sneridagh
+- Fix the floating image problem in the Volto Editor @sneridagh
+
+## 1.3.0 (2019-02-13)
+
+### Added
+
+ - Improve the definitions of the view/edit tiles components for better
+   extensibility. This might be a BREAKING change if you have already used the
+   old way to extend/add more tiles, please update to the new one @sneridagh
+
+### Changes
+
+ - Fix Travis unit testing false green @sneridagh
+ - Fix bad Proptype for location in ScrollToTop component @sneridagh
+
+## 1.2.1 (2019-02-04)
+
+### Changes
+
+ - Bring back the scroll to top on every route change feature @sneridagh
+ - Loosen node version, allow LTS (v8 and v10) @sneridagh
+
+## 1.2.0 (2019-01-22)
+
+### Added
+
+- be able to specify custom headers in actions @vangheem
+- fix icons used in contents @vangheem
+- be able to work with mr.developer @vangheem
+- add alias `@plone/volto-original` and `@package` webpack aliases @vangheem
+- add `errorViews` configuration @vangheem
+
+### Changes
+
+- Upgrade to Node 10.14.2 @nileshgulia1
+
+## 1.1.0 (2018-12-24)
+
+### Changes
+
+- Fix edit on root @robgietema
+- Fix sharing @robgietema
+- Fix error on token renew @robgietema
+- Fix layout fieldname @bloodbare
+- First field in a form will get the focus @robgietema
+- Fix download file links @mikejmets
+- Fix HMR missbehaving on both server and client @sneridagh
+- Upgrade to Node 8.14.0 @timo
+- Relaxed node runtime constraints @sneridagh
+- Update to latest LESS and Semantic UI version @sneridagh
+
+## Added
+
+- Add .gitattributes file to avoid most Changelog merge conflicts @pnicolli
+- Buildout for Python 3 @pbauer
+- Websockets support @robgietema
+- Subrequests to search and get content actions @robgietema
+- Add logos @sneridagh @albertcasado
+
+## 1.0.0 (2018-10-31)
+
+### Added
+
+- Training documentation link @robgietema
+
+## 0.9.5 (2018-10-24)
+
+### Changes
+
+- Fix API*PATH variable using RAZZLE* prefix instead @sneridagh
+- Fix FUOC (flash of unstyled content) in production mode @sneridagh
+- Fix missing buttons on RichText tiles @sneridagh
+- Fix original external `overrides.css` position in the cascade was applied in
+  the wrong order in site.overrides in Pastanaga theme @sneridagh
+- Fatten widget config @robgietema
+
+## 0.9.4 (2018-10-10)
 
 ### Changes
 
 - Fix tags layout @robgietema @jaroel
 - Fix imports of views, widgets and tiles @robgietema @jaroel
 
-## 0.9.3 (2018-08-10)
+## 0.9.3 (2018-10-10)
 
 ### Changes
 
 - Fix logo import path @robgietema @jaroel
 
-## 0.9.2 (2018-08-10)
+## 0.9.2 (2018-10-10)
 
 ### Added
 
 - Automatic customization imports for images @robgietema @jaroel
 
-## 0.9.1 (2018-08-10)
+## 0.9.1 (2018-10-10)
 
 ### Added
 
 - Automatic customization imports @robgietema @jaroel
 
-## 0.9.0 (2018-08-04)
+## 0.9.0 (2018-10-04)
 
 ### Changes
 
 - Renamed package to Volto @robgietema
 
-## 0.8.3 (2018-08-03)
+## 0.8.3 (2018-10-03)
 
 ### Changes
 
 - Fix i18n script for dependency @robgietema
 
-## 0.8.2 (2018-08-03)
+## 0.8.2 (2018-10-03)
 
 ### Changes
 
 - Move all dev dependencies to dependencies @robgietema
 
-## 0.8.1 (2018-08-03)
+## 0.8.1 (2018-10-03)
 
 ### Changes
 
 - Fix compiling when used as a library @robgietema
+- Fix buildout security issue @robgietema
 
-## 0.8.0 (2018-08-03)
+## 0.8.0 (2018-10-03)
 
 ### Added
 
