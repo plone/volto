@@ -17,6 +17,9 @@
 - Fix CSS sourcemaps by make postcss stage to accept other stages sourcemaps
   @sneridagh
 - Fix link view @nileshgulia1
+- Add IE11 compatibility by pinning some packages, added documentation in
+  `docs` about it @sneridagh
+
 
 ## 1.4.0 (2019-02-15)
 
