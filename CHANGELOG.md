@@ -16,6 +16,7 @@
 - Fix hamburgers menu @sneridagh
 - Fix CSS sourcemaps by make postcss stage to accept other stages sourcemaps
   @sneridagh
+- Fix link view @nileshgulia1
 
 ## 1.4.0 (2019-02-15)
 
