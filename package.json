@@ -125,7 +125,7 @@
     "prettier": "1.14.3",
     "prettier-stylelint": "0.4.2",
     "promise-file-reader": "1.0.2",
-    "query-string": "6.1.0",
+    "query-string": "4.1.0",
     "raven": "2.6.4",
     "raven-js": "3.27.0",
     "razzle": "2.4.0",
