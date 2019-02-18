@@ -1,10 +1,36 @@
 # Change Log
 
-## 1.3.1 (unreleased)
+## 1.4.1 (unreleased)
+
+### Added
+- add Google Maps tile @nileshgulia1
+
+### Changes
+
+- Prevent Volto hit the @types endpoint (via its action, getTypes()) if the
+  user is not authenticated, since it's useless and always returns a 401
+  @sneridagh
+- Improved readme @sneridagh
+- New logo for the Pastanaga Theme referring to Volto and fix header @sneridagh
+- Disable SocialSharing component by default @sneridagh
+- Fix login tab index for username autofocus and password after tab @sneridagh
+- Fix hamburgers menu @sneridagh
+- Fix CSS sourcemaps by make postcss stage to accept other stages sourcemaps
+  @sneridagh
+
+## 1.4.0 (2019-02-15)
 
 ### Added
 
+- Add the ability to detect the edit Plone Site hack for show the tiles editor
+  on Plone site edit @sneridagh
+
 ### Changes
+
+- Bring back the stylelint default configs for IDEs @sneridagh
+- Improve ESlint resolvers for special paths (@plone/volto and ~), so IDEs do
+  not complain any more with no-unresolved active @sneridagh
+- Fix the floating image problem in the Volto Editor @sneridagh
 
 ## 1.3.0 (2019-02-13)
 
@@ -35,7 +61,6 @@
 - be able to work with mr.developer @vangheem
 - add alias `@plone/volto-original` and `@package` webpack aliases @vangheem
 - add `errorViews` configuration @vangheem
-- add google map tile @nileshgulia1
 
 ### Changes
 
