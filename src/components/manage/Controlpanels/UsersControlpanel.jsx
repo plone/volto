@@ -26,9 +26,22 @@ import {
   intlShape,
 } from 'react-intl';
 
-import { createUser, deleteUser, listRoles, listUsers ,createGroup, deleteGroup, listGroups} from '../../../actions';
+import {
+  createUser,
+  deleteUser,
+  listRoles,
+  listUsers,
+  createGroup,
+  deleteGroup,
+  listGroups,
+} from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
-import { ModalForm, Toolbar, UsersControlpanelUser, UsersControlpanelGroups } from '../../../components';
+import {
+  ModalForm,
+  Toolbar,
+  UsersControlpanelUser,
+  UsersControlpanelGroups,
+} from '../../../components';
 
 const messages = defineMessages({
   searchUsers: {
@@ -54,6 +67,10 @@ const messages = defineMessages({
   deleteUserConfirmTitle: {
     id: 'Delete User',
     defaultMessage: 'Delete User',
+  },
+  deleteGroupConfirmTitle: {
+    id: 'Delete Group',
+    defaultMessage: 'Delete Group',
   },
   addUserButtonTitle: {
     id: 'Add User',
@@ -124,7 +141,15 @@ const messages = defineMessages({
   }),
   dispatch =>
     bindActionCreators(
-      { listRoles, listUsers, deleteUser, createUser, listGroups, deleteGroup,createGroup },
+      {
+        listRoles,
+        listUsers,
+        deleteUser,
+        createUser,
+        listGroups,
+        deleteGroup,
+        createGroup,
+      },
       dispatch,
     ),
 )
@@ -212,6 +237,7 @@ export default class UsersControlpanel extends Component {
     this.props.listRoles();
     this.props.listUsers();
     this.props.listGroups();
+    console.log(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -222,15 +248,20 @@ export default class UsersControlpanel extends Component {
       this.props.listUsers(this.state.search);
     }
     if (
-      (this.props.deleteGroupRequest.loading && nextProps.deleteGroupRequest.loaded) ||
-      (this.props.createGroupRequest.loading && nextProps.createGroupRequest.loaded)
+      (this.props.deleteGroupRequest.loading &&
+        nextProps.deleteGroupRequest.loaded) ||
+      (this.props.createGroupRequest.loading &&
+        nextProps.createGroupRequest.loaded)
     ) {
       this.props.listGroups(this.state.search);
     }
     if (this.props.createRequest.loading && nextProps.createRequest.loaded) {
       this.onAddUserSuccess();
     }
-    if (this.props.createGroupRequest.loading && nextProps.createGroupRequest.loaded) {
+    if (
+      this.props.createGroupRequest.loading &&
+      nextProps.createGroupRequest.loaded
+    ) {
       this.onAddGroupSuccess();
     }
     if (this.props.createRequest.loading && nextProps.createRequest.error) {
@@ -418,9 +449,13 @@ export default class UsersControlpanel extends Component {
         <div className="container">
           <Confirm
             open={this.state.showDelete}
-            header={this.props.intl.formatMessage(
-              messages.deleteUserConfirmTitle,
-            )}
+            header={
+              this.getGroupFromProps()
+                ? this.props.intl.formatMessage(
+                    messages.deleteGroupConfirmTitle,
+                  )
+                : this.props.intl.formatMessage(messages.deleteUserConfirmTitle)
+            }
             content={
               <div className="content">
                 <ul className="content">
@@ -439,11 +474,17 @@ export default class UsersControlpanel extends Component {
             onConfirm={this.onDeleteOk}
           />
           <ModalForm
-          style={{ width: '50%',
-          height: '50%', overflow: 'auto',
-          margin: 'auto',
-          position: 'relative',
-          top: 0, left: 0, bottom: 0, right: 0}}
+            style={{
+              width: '50%',
+              height: '50%',
+              overflow: 'auto',
+              margin: 'auto',
+              position: 'relative',
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0,
+            }}
             open={this.state.showAddUser}
             onSubmit={this.onAddUserSubmit}
             submitError={this.state.addUserError}
@@ -508,11 +549,17 @@ export default class UsersControlpanel extends Component {
             }}
           />
           <ModalForm
-            style={{ width: '50%',
-              height: '50%', overflow: 'auto',
+            style={{
+              width: '50%',
+              height: '50%',
+              overflow: 'auto',
               margin: 'auto',
               position: 'relative',
-              top: 0, left: 0, bottom: 0, right: 0}}
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0,
+            }}
             open={this.state.showAddGroup}
             onSubmit={this.onAddGroupSubmit}
             submitError={this.state.addGroupError}
@@ -524,12 +571,7 @@ export default class UsersControlpanel extends Component {
                 {
                   id: 'default',
                   title: 'FIXME: Group Data',
-                  fields: [
-                    'Title',
-                    'Description',
-                    'groupname',
-                    'email',
-                  ],
+                  fields: ['Title', 'Description', 'groupname', 'email'],
                 },
               ],
               properties: {
@@ -646,7 +688,7 @@ export default class UsersControlpanel extends Component {
                   <UsersControlpanelGroups
                     key={groups.id}
                     user={this.props.users}
-                    onDelete={this.delete}
+                    onDelete={this.deleteGroup}
                     roles={this.props.roles}
                     groups={groups}
                   />
