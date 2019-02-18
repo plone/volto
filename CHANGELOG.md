@@ -17,6 +17,8 @@
 - Fix hamburgers menu @sneridagh
 - Fix CSS sourcemaps by make postcss stage to accept other stages sourcemaps
   @sneridagh
+- Add IE11 compatibility by pinning some packages, added documentation in
+  `docs` about it @sneridagh
 
 ## 1.4.0 (2019-02-15)
 
