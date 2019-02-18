@@ -34,6 +34,7 @@ module.exports = {
     const POST_CSS_LOADER = {
       loader: require.resolve('postcss-loader'),
       options: {
+        sourceMap: true,
         // Necessary for external CSS imports to work
         // https://github.com/facebookincubator/create-react-app/issues/2677
         ident: 'postcss',

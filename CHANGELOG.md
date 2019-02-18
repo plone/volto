@@ -14,6 +14,8 @@
 - Disable SocialSharing component by default @sneridagh
 - Fix login tab index for username autofocus and password after tab @sneridagh
 - Fix hamburgers menu @sneridagh
+- Fix CSS sourcemaps by make postcss stage to accept other stages sourcemaps
+  @sneridagh
 
 ## 1.4.0 (2019-02-15)
 
