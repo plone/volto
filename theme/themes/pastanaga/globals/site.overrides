@@ -1,3 +1,6 @@
+// Extras (third party libs)
+@import (less) '~hamburgers/dist/hamburgers.css';
+
 /*******************************
         Global Overrides
 *******************************/
@@ -813,6 +816,10 @@ body {
   border-right: 1px solid #ddd;
   margin: 0 0 4px 4px;
   vertical-align: bottom;
+}
+
+.tools {
+  margin-right: 1em;
 }
 
 .comments {
