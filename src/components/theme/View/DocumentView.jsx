@@ -6,6 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import { Link } from 'react-router-dom';
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 
@@ -58,6 +59,12 @@ const DocumentView = ({ content }) => {
           src={content.image.scales.thumb.download}
           floated="right"
         />
+      )}
+      {content.url && (
+        <span>
+          The link address is:
+          <a href={content.url}>{content.url}</a>
+        </span>
       )}
       {content.text && (
         <p
