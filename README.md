@@ -46,7 +46,8 @@ Create a new Volto project by using the `create-volto-app` utility. It will
 bootstrap a Volto project in a folder of your choice with all the required
 boilerplate to start customizing your Volto site.
 
-    $ npm -g i @plone/create-volto-app
+    $ npm install -g yarn
+    $ npm install -g @plone/create-volto-app
     $ create-volto-app myvoltoproject
     $ cd myvoltoproject
 
