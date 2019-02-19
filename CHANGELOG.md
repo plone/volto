@@ -19,6 +19,8 @@
   @sneridagh
 - Add IE11 compatibility by pinning some packages, added documentation in
   `docs` about it @sneridagh
+- Fix Header scroll in Firefox in case that there are lot of items in the nav
+  @sneridagh
 
 ## 1.4.0 (2019-02-15)
 

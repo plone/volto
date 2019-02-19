@@ -21,9 +21,8 @@
     }
 
     .navigation {
-      overflow-x: scroll;
+      overflow-x: auto;
       -ms-overflow-style: none;  // IE 10+
-      overflow: -moz-scrollbars-none;  // Firefox
       &::-webkit-scrollbar {
         height: 0px;  /* remove scrollbar space */
         background: transparent;  /* optional: just make scrollbar invisible */
