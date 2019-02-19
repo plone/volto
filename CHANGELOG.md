@@ -21,6 +21,7 @@
   future Volto releases @sneridagh
 - Fix Header scroll in Firefox in case that there are lot of items in the nav
   @sneridagh
+- Add supported browsers in README @sneridagh
 
 ## 1.4.0 (2019-02-15)
 
