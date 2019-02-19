@@ -2,7 +2,7 @@
 
 exports[`renders an edit image tile component 1`] = `
 <div
-  className="tile video align"
+  className="tile video align center"
   onClick={[Function]}
 >
   <p>

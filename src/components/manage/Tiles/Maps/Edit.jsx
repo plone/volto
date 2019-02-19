@@ -176,7 +176,7 @@ export default class Edit extends Component {
       <div
         onClick={() => this.props.onSelectTile(this.props.tile)}
         className={cx(
-          'tile image align',
+          'tile maps align',
           {
             selected: this.props.selected,
             center: !Boolean(this.props.data.align),
