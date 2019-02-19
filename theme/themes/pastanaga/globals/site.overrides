@@ -526,6 +526,17 @@ body {
   width: 100%;
 }
 
+.tile .ui.message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    margin-bottom: 20px;
+  }
+}
+
 .DraftEditor-editorContainer,
 .DraftEditor-root,
 .public-DraftEditor-content {
@@ -569,10 +580,17 @@ body {
 }
 
 .tile.align.left {
+  z-index: 2;
+  iframe,
   img {
     margin-right: 1em !important;
     margin-bottom: 1em;
     float: left;
+  }
+
+  iframe {
+    width: 50%;
+    height: 25vw;
   }
 
   .ui.image {
@@ -581,27 +599,45 @@ body {
 }
 
 .tile.align.right {
+  z-index: 2;
+  iframe,
   img {
     margin-bottom: 1em;
     margin-left: 1em !important;
     float: right;
   }
 
+  iframe {
+    width: 50%;
+    height: 25vw;
+  }
+
   .ui.image {
     width: auto;
   }
+
 }
 
 .tile.align.center {
+  iframe,
   img {
     margin-right: auto;
     margin-left: auto;
+  }
+
+  iframe {
+    width: 100%;
+    height: 35vh;
   }
 }
 
 .tile.align.full {
   width: 100% !important;
 
+  iframe {
+    width: 100%;
+    height: 35vh;
+  }
   img {
     width: 100%;
   }

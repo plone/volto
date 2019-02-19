@@ -3,6 +3,7 @@
 ## 1.4.1 (unreleased)
 
 ### Added
+- add Google Maps tile @nileshgulia1
 
 ### Changes
 
