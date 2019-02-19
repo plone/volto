@@ -44,7 +44,6 @@ exports[`UsersControlpanel renders a user control component 1`] = `
             <button
               className="ui icon button"
               onClick={[Function]}
-              role="button"
             >
               <i
                 aria-hidden="true"

@@ -4,7 +4,12 @@
  */
 
 import { defaultWidget, widgetMapping } from './Widgets';
-import { layoutViews, contentTypesViews, defaultView } from './Views';
+import {
+  layoutViews,
+  contentTypesViews,
+  defaultView,
+  errorViews,
+} from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
 import ToHTMLRenderers, {
   options as ToHTMLOptions,
@@ -16,7 +21,12 @@ import {
 } from './RichTextEditor/Blocks';
 import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
 import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
-import { customTiles, getDefaultEditTileView, messagesTiles } from './Tiles';
+import {
+  customTiles,
+  defaultTilesViewMap,
+  defaultTilesEditMap,
+  messagesTiles,
+} from './Tiles';
 
 export const settings = {
   host: process.env.HOST || 'localhost',
@@ -45,10 +55,12 @@ export const views = {
   layoutViews,
   contentTypesViews,
   defaultView,
+  errorViews,
 };
 
 export const tiles = {
   customTiles,
-  getDefaultEditTileView,
+  defaultTilesViewMap,
+  defaultTilesEditMap,
   messagesTiles,
 };

@@ -2,7 +2,7 @@
 
 exports[`renders a view image component 1`] = `
 <p
-  className="tile image align"
+  className="tile image align center"
 >
   <img
     alt=""

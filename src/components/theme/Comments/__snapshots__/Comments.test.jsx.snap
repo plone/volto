@@ -37,7 +37,6 @@ exports[`Comments renders a comments component 1`] = `
       <button
         className="ui red right floated button"
         onClick={[Function]}
-        role="button"
         value="someurl"
       >
         <span>
@@ -47,7 +46,6 @@ exports[`Comments renders a comments component 1`] = `
       <button
         className="ui right floated button"
         onClick={[Function]}
-        role="button"
         value={
           Object {
             "id": "someurl",
@@ -131,7 +129,6 @@ exports[`Comments renders a comments component 1`] = `
           <button
             className="ui big basic circular icon primary right floated button"
             onClick={[Function]}
-            role="button"
             title="Comment"
             type="submit"
           >
