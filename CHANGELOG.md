@@ -16,8 +16,9 @@
 - Fix hamburgers menu @sneridagh
 - Fix CSS sourcemaps by make postcss stage to accept other stages sourcemaps
   @sneridagh
-- Add IE11 compatibility by pinning some packages, added documentation in
-  `docs` about it @sneridagh
+- Add IE11 fixes by pinning some packages, added documentation in `docs` about
+  it and how to deal with it. However, compatibility is *NOT* guaranteed in
+  future Volto releases @sneridagh
 - Fix Header scroll in Firefox in case that there are lot of items in the nav
   @sneridagh
 
