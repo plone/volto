@@ -1,8 +1,99 @@
 # Change Log
 
-## 1.0.1 (unreleased)
+## 1.5.2 (unreleased)
 
-### Change
+### Added
+
+### Changes
+
+## 1.5.1 (2019-02-19)
+
+### Changes
+
+- Fix build for projects created with `create-volto-app` @sneridagh
+
+## 1.5.0 (2019-02-19)
+
+### Added
+
+- Add Google Maps tile @nileshgulia1
+- Add support for extending Semantic UI Styling using the semantic theme engine
+  by adding an `extras` file that can bring into the engine new styles coming
+  from third party libs or custom styling code for the local theme. Being this
+  applied after semantic default styling, it's the last one in the styling
+  cascade easing the develop of new themes. @sneridagh
+
+### Changes
+
+- Prevent Volto hit the @types endpoint (via its action, getTypes()) if the
+  user is not authenticated, since it's useless and always returns a 401
+  @sneridagh
+- Improved readme @sneridagh
+- New logo for the Pastanaga Theme referring to Volto and fix header @sneridagh
+- Disable SocialSharing component by default @sneridagh
+- Fix login tab index for username autofocus and password after tab @sneridagh
+- Fix hamburgers menu @sneridagh
+- Fix CSS sourcemaps by make postcss stage to accept other stages sourcemaps
+  @sneridagh
+- Add IE11 fixes by pinning some packages, added documentation in `docs` about
+  it and how to deal with it. However, compatibility is *NOT* guaranteed in
+  future Volto releases @sneridagh
+- Fix Header scroll in Firefox in case that there are lot of items in the nav
+  @sneridagh
+- Add supported browsers in README @sneridagh
+- Default tile position to center for all the existing tiles @sneridagh
+
+## 1.4.0 (2019-02-15)
+
+### Added
+
+- Add the ability to detect the edit Plone Site hack for show the tiles editor
+  on Plone site edit @sneridagh
+
+### Changes
+
+- Bring back the stylelint default configs for IDEs @sneridagh
+- Improve ESlint resolvers for special paths (@plone/volto and ~), so IDEs do
+  not complain any more with no-unresolved active @sneridagh
+- Fix the floating image problem in the Volto Editor @sneridagh
+
+## 1.3.0 (2019-02-13)
+
+### Added
+
+ - Improve the definitions of the view/edit tiles components for better
+   extensibility. This might be a BREAKING change if you have already used the
+   old way to extend/add more tiles, please update to the new one @sneridagh
+
+### Changes
+
+ - Fix Travis unit testing false green @sneridagh
+ - Fix bad Proptype for location in ScrollToTop component @sneridagh
+
+## 1.2.1 (2019-02-04)
+
+### Changes
+
+ - Bring back the scroll to top on every route change feature @sneridagh
+ - Loosen node version, allow LTS (v8 and v10) @sneridagh
+
+## 1.2.0 (2019-01-22)
+
+### Added
+
+- be able to specify custom headers in actions @vangheem
+- fix icons used in contents @vangheem
+- be able to work with mr.developer @vangheem
+- add alias `@plone/volto-original` and `@package` webpack aliases @vangheem
+- add `errorViews` configuration @vangheem
+
+### Changes
+
+- Upgrade to Node 10.14.2 @nileshgulia1
+
+## 1.1.0 (2018-12-24)
+
+### Changes
 
 - Fix edit on root @robgietema
 - Fix sharing @robgietema
@@ -10,6 +101,10 @@
 - Fix layout fieldname @bloodbare
 - First field in a form will get the focus @robgietema
 - Fix download file links @mikejmets
+- Fix HMR missbehaving on both server and client @sneridagh
+- Upgrade to Node 8.14.0 @timo
+- Relaxed node runtime constraints @sneridagh
+- Update to latest LESS and Semantic UI version @sneridagh
 
 ## Added
 
@@ -18,6 +113,7 @@
 - Add Summary Box tile (Proxy) @pnicolli
 - Websockets support @robgietema
 - Subrequests to search and get content actions @robgietema
+- Add logos @sneridagh @albertcasado
 
 ## 1.0.0 (2018-10-31)
 

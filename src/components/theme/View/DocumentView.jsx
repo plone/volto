@@ -9,16 +9,8 @@ import Helmet from 'react-helmet';
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 
-import { settings } from '~/config';
+import { settings, tiles } from '~/config';
 
-import {
-  ViewTitleTile,
-  ViewDescriptionTile,
-  ViewTextTile,
-  ViewImageTile,
-  ViewSummaryBoxTile,
-  ViewVideoTile,
-} from '../../../components';
 import {
   getTilesFieldname,
   getTilesLayoutFieldname,
@@ -40,32 +32,11 @@ const DocumentView = ({ content }) => {
       <Helmet title={content.title} />
       {map(content[tilesLayoutFieldname].items, tile => {
         let Tile = null;
-        switch (content[tilesFieldname][tile]['@type']) {
-          case 'title':
-            Tile = ViewTitleTile;
-            break;
-          case 'description':
-            Tile = ViewDescriptionTile;
-            break;
-          case 'text':
-            Tile = ViewTextTile;
-            break;
-          case 'image':
-            Tile = ViewImageTile;
-            break;
-          case 'summarybox':
-            Tile = ViewSummaryBoxTile;
-            break;
-          case 'video':
-            Tile = ViewVideoTile;
-            break;
-          default:
-            break;
-        }
+        Tile =
+          tiles.defaultTilesViewMap[content[tilesFieldname][tile]['@type']];
         return Tile !== null ? (
           <Tile
             key={tile}
-            tile={tile}
             properties={content}
             data={content[tilesFieldname][tile]}
           />

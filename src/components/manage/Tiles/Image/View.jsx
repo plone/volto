@@ -6,6 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Image } from 'semantic-ui-react';
+import cx from 'classnames';
 
 /**
  * View image tile class.
@@ -14,9 +15,13 @@ import { Image } from 'semantic-ui-react';
  */
 const View = ({ data }) => (
   <p
-    className={['tile', 'image', 'align', data.align]
-      .filter(e => !!e)
-      .join(' ')}
+    className={cx(
+      'tile image align',
+      {
+        center: !Boolean(data.align),
+      },
+      data.align,
+    )}
   >
     <Image src={`${data.url}/@@images/image`} alt="" />
   </p>

@@ -6,17 +6,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Button, Form, Input, Embed, Message } from 'semantic-ui-react';
+import { Button, Input, Embed, Message } from 'semantic-ui-react';
+import cx from 'classnames';
 
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
-import clearSVG from '../../../../icons/clear.svg';
 import imageLeftSVG from '../../../../icons/image-left.svg';
 import imageRightSVG from '../../../../icons/image-right.svg';
 import imageFitSVG from '../../../../icons/image-fit.svg';
 import imageFullSVG from '../../../../icons/image-full.svg';
 import videoSVG from '../../../../icons/videocamera.svg';
-import folderSVG from '../../../../icons/folder.svg';
 
 const messages = defineMessages({
   save: {
@@ -118,15 +117,14 @@ export default class Edit extends Component {
     return (
       <div
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={[
-          'tile',
-          'video',
-          'align',
-          this.props.selected && 'selected',
-          data.align,
-        ]
-          .filter(e => !!e)
-          .join(' ')}
+        className={cx(
+          'tile video align',
+          {
+            selected: this.props.selected,
+            center: !Boolean(this.props.data.align),
+          },
+          this.props.data.align,
+        )}
       >
         {this.props.selected &&
           !!this.props.data.url && (
