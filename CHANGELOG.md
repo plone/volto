@@ -6,6 +6,11 @@
 
 ### Changes
 
+- Fix external images on Image Tile render @sneridagh
+- Several fixes reagarding correctness of markup @sneridagh
+- Issue with dangerouslySetInnerHTML RichText fields on first SSR load
+  apparently fixed (due to the above fix) :) @sneridagh
+
 ## 1.5.1 (2019-02-19)
 
 ### Changes

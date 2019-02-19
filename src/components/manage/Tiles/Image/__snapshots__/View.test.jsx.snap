@@ -7,7 +7,7 @@ exports[`renders a view image component 1`] = `
   <img
     alt=""
     className="ui image"
-    src="image.jpg/@@images/image"
+    src="image.jpg"
   />
 </p>
 `;
