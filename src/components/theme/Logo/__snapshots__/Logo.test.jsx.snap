@@ -9,7 +9,7 @@ exports[`Logo renders a logo component 1`] = `
   <img
     alt="Plone Site"
     className="ui image"
-    height={32}
+    height={64}
     src="Logo.svg"
     title="Plone Site"
   />

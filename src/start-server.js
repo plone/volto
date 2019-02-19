@@ -15,7 +15,7 @@ export default () => {
     console.log('🚀 started');
   });
 
-  if (module.hot) {
+  return () => {
     console.log('✅  Server-side HMR Enabled!');
 
     module.hot.accept('./server', () => {
@@ -25,5 +25,5 @@ export default () => {
       server.on('request', newApp);
       currentApp = newApp;
     });
-  }
+  };
 };

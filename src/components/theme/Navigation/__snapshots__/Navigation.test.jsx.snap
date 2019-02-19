@@ -1,12 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Navigation renders a navigation component with an active item 1`] = `
-Array [
+<nav
+  className="navigation"
+>
   <div
     className="hamburger-wrapper mobile only"
   >
     <button
-      className="hamburger"
+      className="hamburger hamburger--collapse"
       onClick={[Function]}
       title="Open menu"
       type="button"
@@ -19,7 +21,7 @@ Array [
         />
       </span>
     </button>
-  </div>,
+  </div>
   <div
     className="ui pointing secondary stackable tablet computer large screen widescreen only menu"
     onClick={[Function]}
@@ -38,17 +40,19 @@ Array [
     >
       Users
     </a>
-  </div>,
-]
+  </div>
+</nav>
 `;
 
 exports[`Navigation renders a navigation component with an active item when its subchildren are accessed 1`] = `
-Array [
+<nav
+  className="navigation"
+>
   <div
     className="hamburger-wrapper mobile only"
   >
     <button
-      className="hamburger"
+      className="hamburger hamburger--collapse"
       onClick={[Function]}
       title="Open menu"
       type="button"
@@ -61,7 +65,7 @@ Array [
         />
       </span>
     </button>
-  </div>,
+  </div>
   <div
     className="ui pointing secondary stackable tablet computer large screen widescreen only menu"
     onClick={[Function]}
@@ -80,17 +84,19 @@ Array [
     >
       Users
     </a>
-  </div>,
-]
+  </div>
+</nav>
 `;
 
 exports[`Navigation renders a navigation component with only one active item even if there are similar item names 1`] = `
-Array [
+<nav
+  className="navigation"
+>
   <div
     className="hamburger-wrapper mobile only"
   >
     <button
-      className="hamburger"
+      className="hamburger hamburger--collapse"
       onClick={[Function]}
       title="Open menu"
       type="button"
@@ -103,7 +109,7 @@ Array [
         />
       </span>
     </button>
-  </div>,
+  </div>
   <div
     className="ui pointing secondary stackable tablet computer large screen widescreen only menu"
     onClick={[Function]}
@@ -129,17 +135,19 @@ Array [
     >
       Users
     </a>
-  </div>,
-]
+  </div>
+</nav>
 `;
 
 exports[`Navigation renders a navigation component without active items 1`] = `
-Array [
+<nav
+  className="navigation"
+>
   <div
     className="hamburger-wrapper mobile only"
   >
     <button
-      className="hamburger"
+      className="hamburger hamburger--collapse"
       onClick={[Function]}
       title="Open menu"
       type="button"
@@ -152,7 +160,7 @@ Array [
         />
       </span>
     </button>
-  </div>,
+  </div>
   <div
     className="ui pointing secondary stackable tablet computer large screen widescreen only menu"
     onClick={[Function]}
@@ -171,6 +179,6 @@ Array [
     >
       Users
     </a>
-  </div>,
-]
+  </div>
+</nav>
 `;

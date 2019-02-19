@@ -33,7 +33,7 @@ export class Api {
    */
   constructor() {
     methods.forEach(method => {
-      this[method] = (path, { params, data, type } = {}) =>
+      this[method] = (path, { params, data, type, headers = {} } = {}) =>
         new Promise((resolve, reject) => {
           const request = superagent[method](formatUrl(path));
 
@@ -52,12 +52,14 @@ export class Api {
             request.type(type);
           }
 
+          Object.keys(headers).forEach(key => request.set(key, headers[key]));
+
           if (data) {
             request.send(data);
           }
 
           request.end(
-            (err, { body } = {}) => (err ? reject(body || err) : resolve(body)),
+            (err, { body } = {}) => (err ? reject(err) : resolve(body)),
           );
         });
     });

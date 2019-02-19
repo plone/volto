@@ -12,6 +12,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Menu, Segment } from 'semantic-ui-react';
+import cx from 'classnames';
 
 import { Anontools } from '../../../components';
 import { getNavigation } from '../../../actions';
@@ -135,12 +136,12 @@ export default class Navigation extends Component {
    */
   render() {
     return (
-      <Fragment>
+      <nav className="navigation">
         <div className="hamburger-wrapper mobile only">
           <button
-            className={
-              this.state.isMobileMenuOpen ? 'hamburger active' : 'hamburger'
-            }
+            className={cx('hamburger hamburger--collapse', {
+              'is-active': this.state.isMobileMenuOpen,
+            })}
             title={
               this.state.isMobileMenuOpen
                 ? this.props.intl.formatMessage(messages.closeMobileMenu, {
@@ -179,7 +180,7 @@ export default class Navigation extends Component {
             </Link>
           ))}
         </Menu>
-      </Fragment>
+      </nav>
     );
   }
 }
