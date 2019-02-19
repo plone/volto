@@ -2,7 +2,7 @@
 
 exports[`renders an edit map tile component 1`] = `
 <div
-  className="tile image align center"
+  className="tile maps align center"
   onClick={[Function]}
 >
   <div>
