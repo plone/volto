@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-markup';
@@ -22,6 +22,20 @@ import trashSVG from '../../../../icons/delete.svg';
  */
 export default class Edit extends Component {
   /**
+   * Property types.
+   * @property {Object} propTypes Property types.
+   * @static
+   */
+  static propTypes = {
+    selected: PropTypes.bool.isRequired,
+    tile: PropTypes.string.isRequired,
+    data: PropTypes.objectOf(PropTypes.any).isRequired,
+    onChangeTile: PropTypes.func.isRequired,
+    onSelectTile: PropTypes.func.isRequired,
+    onDeleteTile: PropTypes.func.isRequired,
+  };
+
+  /**
    * Constructor
    * @method constructor
    * @param {Object} props Component properties
@@ -29,8 +43,8 @@ export default class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      code: this.props.data.html,
-    }
+      code: this.props.data.html || '',
+    };
   }
 
   /**
@@ -56,12 +70,9 @@ export default class Edit extends Component {
     return (
       <div
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={[
-          'tile',
-          this.props.selected && 'selected',
-        ]
-          .filter(e => !!e)
-          .join(' ')}
+        className={cx('tile html', {
+          selected: this.props.selected,
+        })}
       >
         <Editor
           value={this.state.code}
