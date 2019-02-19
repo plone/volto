@@ -3,7 +3,13 @@
 ## 1.4.1 (unreleased)
 
 ### Added
-- add Google Maps tile @nileshgulia1
+
+- Add Google Maps tile @nileshgulia1
+- Add support for extending Semantic UI Styling using the semantic theme engine
+  by adding an `extras` file that can bring into the engine new styles coming
+  from third party libs or custom styling code for the local theme. Being this
+  applied after semantic default styling, it's the last one in the styling
+  cascade easing the develop of new themes. @sneridagh
 
 ### Changes
 
