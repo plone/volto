@@ -526,6 +526,17 @@ body {
   width: 100%;
 }
 
+.tile .ui.message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    margin-bottom: 20px;
+  }
+}
+
 .DraftEditor-editorContainer,
 .DraftEditor-root,
 .public-DraftEditor-content {
@@ -569,6 +580,7 @@ body {
 }
 
 .tile.align.left {
+  z-index: 2;
   iframe,
   img {
     margin-right: 1em !important;
@@ -587,6 +599,7 @@ body {
 }
 
 .tile.align.right {
+  z-index: 2;
   iframe,
   img {
     margin-bottom: 1em;

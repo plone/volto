@@ -8,7 +8,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button, Input, Message } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import {
+  defineMessages,
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
+import cx from 'classnames';
 
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
@@ -18,6 +24,7 @@ import imageLeftSVG from '../../../../icons/image-left.svg';
 import imageRightSVG from '../../../../icons/image-right.svg';
 import imageFitSVG from '../../../../icons/image-fit.svg';
 import imageFullSVG from '../../../../icons/image-full.svg';
+import globeSVG from '../../../../icons/globe.svg';
 
 import { createContent } from '../../../../actions';
 
@@ -76,6 +83,7 @@ export default class Edit extends Component {
     this.state = {
       uploading: false,
       url: '',
+      error: null,
     };
   }
 
@@ -122,7 +130,7 @@ export default class Edit extends Component {
    */
   onChangeUrl = ({ target }) => {
     this.setState({
-      url: target.value,
+      url: this.getSrc(target.value),
     });
   };
 
@@ -149,8 +157,13 @@ export default class Edit extends Component {
   getSrc(embed) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(embed, 'text/html');
-    const result = doc.getElementsByTagName('iframe')[0].src;
-    return result;
+    const iframe = doc.getElementsByTagName('iframe');
+    if (iframe.length === 0) {
+      this.setState({ error: true });
+      return '';
+    }
+    this.setState({ error: false });
+    return iframe[0].src;
   }
 
   /**
@@ -162,15 +175,14 @@ export default class Edit extends Component {
     return (
       <div
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={[
-          'tile',
-          'image',
-          'align',
-          this.props.selected && 'selected',
+        className={cx(
+          'tile image align',
+          {
+            selected: this.props.selected,
+            center: !Boolean(this.props.data.align),
+          },
           this.props.data.align,
-        ]
-          .filter(e => !!e)
-          .join(' ')}
+        )}
       >
         {this.props.selected &&
           !!this.props.data.url && (
@@ -237,7 +249,7 @@ export default class Edit extends Component {
         {this.props.selected &&
           !this.props.data.url && (
             <div className="toolbar">
-              <Icon name={imageSVG} size="24px" />
+              <Icon name={globeSVG} size="24px" />
               <form onSubmit={e => this.onSubmitUrl(e)}>
                 <Input
                   onChange={this.onChangeUrl}
@@ -251,16 +263,28 @@ export default class Edit extends Component {
         {this.props.data.url ? (
           <div>
             <iframe
-              src={this.getSrc(this.props.data.url)}
+              src={this.props.data.url}
               className="google-map"
-              frameborder="0"
-              allowfullscreen
+              frameBorder="0"
+              allowFullScreen
             />
           </div>
         ) : (
           <div>
             <Message>
-              {this.state.uploading && <center>Enter url</center>}
+              <Icon name={globeSVG} size="100px" color="#b8c6c8" />
+              <FormattedMessage
+                id="Maps instructions"
+                defaultMessage="Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
+              />
+              {this.state.error && (
+                <span style={{ color: 'red' }}>
+                  <FormattedMessage
+                    id="Maps data error"
+                    defaultMessage="Embed code error, please follow the instructions and try again."
+                  />
+                </span>
+              )}
             </Message>
           </div>
         )}
