@@ -4,6 +4,8 @@
 
 ### Added
 
+ - HTML Tile for Volto Editor @ajayns
+
 ### Changes
 
 ## 1.5.1 (2019-02-19)
@@ -69,7 +71,6 @@
 
  - Fix Travis unit testing false green @sneridagh
  - Fix bad Proptype for location in ScrollToTop component @sneridagh
- - HTML Tile for Volto Editor @ajayns
 
 ## 1.2.1 (2019-02-04)
 
