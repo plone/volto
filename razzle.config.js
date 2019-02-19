@@ -55,7 +55,11 @@ module.exports = {
 
     const LESSLOADER = {
       test: /\.less$/,
-      include: [path.resolve('./theme'), /node_modules\/semantic-ui-less/],
+      include: [
+        path.resolve('./theme'),
+        /node_modules\/@plone\/volto\/theme/,
+        /node_modules\/semantic-ui-less/,
+      ],
       use: dev
         ? [
             {

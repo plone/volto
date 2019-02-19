@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix build for projects created with `create-volto-app` @sneridagh
+
 ## 1.5.0 (2019-02-19)
 
 ### Added
