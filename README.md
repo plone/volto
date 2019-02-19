@@ -92,7 +92,7 @@ Volto works well with any modern (and updated) browser, including their mobile
 flavors: Chrome, Firefox, Safari, Edge.
 
 We do not guarantee that browsers who were deprecated by their vendors (e.g. Internet Explorer 11) will be supported by Volto in the future.
-Explorer version.
+
 
 ## Volto Development
 
