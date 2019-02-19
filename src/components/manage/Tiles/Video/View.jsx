@@ -6,6 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Embed } from 'semantic-ui-react';
+import cx from 'classnames';
 
 /**
  * View video tile class.
@@ -14,9 +15,13 @@ import { Embed } from 'semantic-ui-react';
  */
 const View = ({ data }) => (
   <p
-    className={['tile', 'image', 'align', data.align]
-      .filter(e => !!e)
-      .join(' ')}
+    className={cx(
+      'tile image align',
+      {
+        center: !Boolean(data.align),
+      },
+      data.align,
+    )}
   >
     {data.url.match('list') ? (
       <Embed

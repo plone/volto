@@ -16,7 +16,6 @@ import { views } from '~/config';
 
 import {
   Comments,
-  SocialSharing,
   Tags,
   Toolbar,
   Actions,
@@ -258,11 +257,13 @@ export default class View extends Component {
           this.props.content.subjects.length > 0 && (
             <Tags tags={this.props.content.subjects} />
           )}
-        <SocialSharing
+        {/* Add opt-in social sharing if required, disabled by default */}
+        {/* In the future this might be parameterized from the app config */}
+        {/* <SocialSharing
           url={typeof window === 'undefined' ? '' : window.location.href}
           title={this.props.content.title}
           description={this.props.content.description || ''}
-        />
+        /> */}
         {this.props.content.allow_discussion && (
           <Comments pathname={this.props.pathname} />
         )}

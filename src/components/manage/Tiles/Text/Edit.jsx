@@ -19,6 +19,7 @@ import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
 import addSVG from '../../../../icons/circle-plus.svg';
 import cameraSVG from '../../../../icons/camera.svg';
+import globeSVG from '../../../../icons/globe.svg';
 import videoSVG from '../../../../icons/videocamera.svg';
 import TemplatedTilesSVG from '../../../../icons/theme.svg';
 

@@ -30,9 +30,47 @@ Last but not least, it also supports a [Volto Nodejs-based backend reference](ht
 demos how other systems could also use Volto to display and create content
 through it.
 
-## Documentation
+## Quick Start
 
-A training on how to create your own website using Volto is available as part of the Plone training at [https://training.plone.org/5/volto/index.html](https://training.plone.org/5/volto/index.html).
+First get all the requirements installed on your system.
+
+### Prerequisites
+
+- [Node.js LTS (10.x)](https://nodejs.org/)
+- [Python 2.7.x](https://python.org/) or
+- [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina docker images)
+
+### Create Volto App
+
+Create a new Volto project by using the `create-volto-app` utility. It will
+bootstrap a Volto project in a folder of your choice with all the required
+boilerplate to start customizing your Volto site.
+
+    $ npm -g i @plone/create-volto-app
+    $ create-volto-app myvoltoproject
+    $ cd myvoltoproject
+
+### Bootstrap the Plone API backend
+
+We recommend Plone as backend of choice for Volto. You can easily bootstrap a
+ready Docker Plone container with all the dependencies and ready for Volto use:
+
+    $ docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
+
+### Start Volto
+
+Once inside your Volto project folder:
+
+    $ yarn start
+
+### Browsing
+
+Go to [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Training
+
+A detailed training on how to create your own website using Volto is available
+as part of the Plone training docs at [https://training.plone.org/5/volto/index.html](https://training.plone.org/5/volto/index.html).
 
 ## Talks
 
@@ -48,45 +86,51 @@ A training on how to create your own website using Volto is available as part of
 
 [Timo Stollenwerk - Reinventing Plone, Roadmap to the Modern Web](https://2018.ploneconf.org/talks/reinventing-plone-roadmap-to-the-modern-web)
 
-## Installation
+## Browser support
 
-### Prerequisites
+Volto works well with any modern (and updated) browser, including their mobile
+flavors: Chrome, Firefox, Safari, Edge.
 
-- [Node.js LTS (10.x)](https://nodejs.org/)
-- [Python 2.7.x](https://python.org/) or
-- [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina docker images)
+We do not guarantee that browsers who were deprecated by their vendors (e.g. Internet Explorer 11) will be supported by Volto in the future.
+
+
+## Volto Development
+
+For Volto development you need all the requirements already mentioned on the
+[Quick Start](#quick-start) section.
+
+### Checkout the Volto repo
+
+    $ git clone https://github.com/plone/volto.git
 
 ### Install dependencies
 
     $ yarn
 
-### Install backend
+### Install a backend
+
+#### Plone (recommended)
+
+Either using a Docker image
+
+    $ docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
+
+or running Plone on your machine (advanced), additional dependencies might be
+required only for Plone experienced integrators/developers. Check the [Plone
+Installation Documentation](https://docs.plone.org/manage/installing/installation.html).
 
     $ cd api
     $ ./bootstrap.sh
 
-## Development
+#### Guillotina (experimental)
 
-### Run backend (Plone)
-
-    $ cd api
-    $ ./bin/instance fg
-
-    or
-
-    $ docker-compose -f api/docker-compose.yml up -d
-
-### Run backend (Guillotina)
+It still doesn't support the full API/features that Plone provides.
 
     $ docker-compose -f g-api/docker-compose.yml up -d
 
 ### Run frontend
 
     $ yarn start
-
-### Stop backends
-
-    $ docker-compose down
 
 ### Browsing
 
@@ -139,10 +183,11 @@ If the plugin is unable to be found automatically, you can load them with:
 
 1.  Or the API, via the plugins field:
 
-```prettier.format("code", {
-  parser: "foo",
-  plugins: ["./foo-plugin"]
-});
+```
+  prettier.format("code", {
+    parser: "foo",
+    plugins: ["./foo-plugin"]
+  });
 ```
 
 ##### Pre commit hook
@@ -200,5 +245,5 @@ PYTHONPATH=$(pwd)/tests_guillotina env/bin/pybot -v BROWSER:headlesschrome tests
 
 ## License
 
-MIT License. Copyrights hold the Plone Foundation.
+MIT License. Copyrights hold the [Plone Foundation](https://plone.org/foundation).
 See [LICENSE.md](LICENSE.md) for details.

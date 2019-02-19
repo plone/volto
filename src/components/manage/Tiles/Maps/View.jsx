@@ -1,11 +1,10 @@
 /**
- * View image tile.
- * @module components/manage/Tiles/Image/View
+ * View map tile.
+ * @module components/manage/Tiles/Maps/View
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image } from 'semantic-ui-react';
 import cx from 'classnames';
 
 /**
@@ -13,17 +12,24 @@ import cx from 'classnames';
  * @class View
  * @extends Component
  */
+
 const View = ({ data }) => (
   <p
     className={cx(
-      'tile image align',
+      'tile maps align',
       {
         center: !Boolean(data.align),
       },
       data.align,
     )}
   >
-    <Image src={`${data.url}/@@images/image`} alt="" />
+    <iframe
+      title="Embeded Google Maps"
+      src={data.url}
+      className="google-map"
+      frameBorder="0"
+      allowFullscreen
+    />
   </p>
 );
 
