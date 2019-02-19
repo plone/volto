@@ -2,7 +2,7 @@
 
 exports[`renders a view map component 1`] = `
 <p
-  className="tile image align"
+  className="tile image align center"
 >
   <iframe
     allowFullscreen={true}
