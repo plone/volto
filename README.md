@@ -86,6 +86,14 @@ as part of the Plone training docs at [https://training.plone.org/5/volto/index.
 
 [Timo Stollenwerk - Reinventing Plone, Roadmap to the Modern Web](https://2018.ploneconf.org/talks/reinventing-plone-roadmap-to-the-modern-web)
 
+## Browser support
+
+Volto works well with any modern (and updated) browser, including their mobile
+flavors: Chrome, Firefox, Safari, Edge.
+
+We do not guarantee that browsers who were deprecated by their vendors (e.g. Internet Explorer 11) will be supported by Volto in the future.
+
+
 ## Volto Development
 
 For Volto development you need all the requirements already mentioned on the

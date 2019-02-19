@@ -1,8 +1,28 @@
 # Change Log
 
-## 1.4.1 (unreleased)
+## 1.5.2 (unreleased)
 
 ### Added
+
+### Changes
+
+## 1.5.1 (2019-02-19)
+
+### Changes
+
+- Fix build for projects created with `create-volto-app` @sneridagh
+- Fix link view @nileshgulia1
+
+## 1.5.0 (2019-02-19)
+
+### Added
+
+- Add Google Maps tile @nileshgulia1
+- Add support for extending Semantic UI Styling using the semantic theme engine
+  by adding an `extras` file that can bring into the engine new styles coming
+  from third party libs or custom styling code for the local theme. Being this
+  applied after semantic default styling, it's the last one in the styling
+  cascade easing the develop of new themes. @sneridagh
 
 ### Changes
 
@@ -16,9 +36,13 @@
 - Fix hamburgers menu @sneridagh
 - Fix CSS sourcemaps by make postcss stage to accept other stages sourcemaps
   @sneridagh
-- Fix link view @nileshgulia1
-- Add IE11 compatibility by pinning some packages, added documentation in
-  `docs` about it @sneridagh
+- Add IE11 fixes by pinning some packages, added documentation in `docs` about
+  it and how to deal with it. However, compatibility is *NOT* guaranteed in
+  future Volto releases @sneridagh
+- Fix Header scroll in Firefox in case that there are lot of items in the nav
+  @sneridagh
+- Add supported browsers in README @sneridagh
+- Default tile position to center for all the existing tiles @sneridagh
 
 
 ## 1.4.0 (2019-02-15)
