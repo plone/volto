@@ -419,7 +419,7 @@ class Form extends Component {
                   menuItem: item.title,
                   render: () => [
                     this.props.title && (
-                      <Segment secondary attached>
+                      <Segment secondary attached key={this.props.title}>
                         {this.props.title}
                       </Segment>
                     ),
