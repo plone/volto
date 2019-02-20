@@ -212,7 +212,15 @@ export default class View extends Component {
    */
   render() {
     if (this.props.error) {
-      let FoundView = views.errorViews[this.props.error.status.toString()];
+      let FoundView;
+      if (this.props.error.status === undefined) {
+        // For some reason, while development and if CORS is in place and the
+        // requested resource is 404, it returns undefined as status, then the
+        // next statement will fail
+        FoundView = views.errorViews['404'];
+      } else {
+        FoundView = views.errorViews[this.props.error.status.toString()];
+      }
       if (!FoundView) {
         FoundView = views.errorViews['404']; // default to 404
       }
