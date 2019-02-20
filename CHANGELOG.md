@@ -6,6 +6,9 @@
 
 ### Changes
 
+- Clean .variables files from Pastanaga theme since they are already applied by
+  the theming engine from the default theme. @sneridagh
+
 ## 1.5.1 (2019-02-19)
 
 ### Changes
