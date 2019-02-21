@@ -6,6 +6,9 @@
 
 ### Changes
 
+- Not related to development, but addded a releaser tool to help cut releases.
+  Added `yarn release` and `yarn dry-release`. @sneridagh
+
 ## 1.5.2 (2019-02-20)
 
 ### Changes
