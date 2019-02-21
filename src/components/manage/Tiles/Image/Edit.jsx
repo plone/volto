@@ -175,6 +175,12 @@ export default class Edit extends Component {
     });
   };
 
+  /**
+   * handleKeyDown
+   * @method handleKeyDown
+   * @param {event} e Event
+   * @returns {undefined}
+   */
   handleKeyDown = e => {
     if (e.key === 'ArrowUp') {
       this.props.onFocusPreviousTile(this.props.tile, this.node);

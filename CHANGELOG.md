@@ -4,6 +4,8 @@
 
 ### Added
 
+- Ability to navigate through the existing tiles with the cursors. @sneridagh
+
 ### Changes
 
 ## 1.5.2 (2019-02-20)

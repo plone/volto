@@ -483,6 +483,13 @@ body {
   font-size: 1.125rem;
 }
 
+// Here should be placed all tiles that receive (faked) focus
+.tile.image:focus,
+.tile.video:focus,
+.tile.maps:focus {
+  outline: none;
+}
+
 .tile .tile:not(.inner)::after {
   position: absolute;
   top: -9px;
