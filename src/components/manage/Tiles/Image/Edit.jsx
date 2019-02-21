@@ -107,6 +107,10 @@ export default class Edit extends Component {
         url: nextProps.content['@id'],
       });
     }
+
+    if (nextProps.selected) {
+      this.node.focus();
+    }
   }
 
   /**
@@ -173,11 +177,11 @@ export default class Edit extends Component {
 
   handleKeyDown = e => {
     if (e.key === 'ArrowUp') {
-      this.props.onFocusPreviousTile(this.props.tile);
+      this.props.onFocusPreviousTile(this.props.tile, this.node);
       e.preventDefault();
     }
     if (e.key === 'ArrowDown') {
-      this.props.onFocusNextTile(this.props.tile);
+      this.props.onFocusNextTile(this.props.tile, this.node);
       e.preventDefault();
     }
   };
@@ -201,6 +205,9 @@ export default class Edit extends Component {
         )}
         tabIndex={0}
         onKeyDown={this.handleKeyDown}
+        ref={node => {
+          this.node = node;
+        }}
       >
         {this.props.selected &&
           !!this.props.data.url && (

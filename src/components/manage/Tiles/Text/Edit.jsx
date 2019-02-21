@@ -224,7 +224,7 @@ export default class Edit extends Component {
                 .first()
                 .getKey() === selectionState.getFocusKey()
             ) {
-              this.props.onFocusPreviousTile(this.props.tile);
+              this.props.onFocusPreviousTile(this.props.tile, this.node);
             }
           }}
           onDownArrow={() => {
@@ -237,7 +237,7 @@ export default class Edit extends Component {
                 .last()
                 .getKey() === selectionState.getFocusKey()
             ) {
-              this.props.onFocusNextTile(this.props.tile);
+              this.props.onFocusNextTile(this.props.tile, this.node);
             }
           }}
           ref={node => {

@@ -371,9 +371,10 @@ class Form extends Component {
    *
    * @method onFocusPreviousTile
    * @param {string} currentTile The id of the current tile
+   * @param {node} tileNode The id of the current tile
    * @returns {undefined}
    */
-  onFocusPreviousTile(currentTile) {
+  onFocusPreviousTile(currentTile, tileNode) {
     const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
     const currentIndex = this.state.formData[
       tilesLayoutFieldname
@@ -384,6 +385,7 @@ class Form extends Component {
       return;
     }
     const newindex = currentIndex - 1;
+    tileNode.blur();
 
     this.onSelectTile(
       this.state.formData[tilesLayoutFieldname].items[newindex],
@@ -394,9 +396,10 @@ class Form extends Component {
    *
    * @method onFocusNextTile
    * @param {string} currentTile The id of the current tile
+   * @param {node} tileNode The id of the current tile
    * @returns {undefined}
    */
-  onFocusNextTile(currentTile) {
+  onFocusNextTile(currentTile, tileNode) {
     const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
     const currentIndex = this.state.formData[
       tilesLayoutFieldname
@@ -411,6 +414,7 @@ class Form extends Component {
     }
 
     const newindex = currentIndex + 1;
+    tileNode.blur();
 
     this.onSelectTile(
       this.state.formData[tilesLayoutFieldname].items[newindex],
