@@ -60,7 +60,7 @@ const DocumentView = ({ content }) => {
         />
       )}
       {content.text && (
-        <p
+        <div
           dangerouslySetInnerHTML={{
             __html: content.text.data.replace(
               /a href=\"([^"]*\.[^"]*)\"/g,
