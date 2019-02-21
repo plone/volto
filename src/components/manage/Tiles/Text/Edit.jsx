@@ -216,27 +216,22 @@ export default class Edit extends Component {
           }}
           onUpArrow={() => {
             const selectionState = this.state.editorState.getSelection();
-            const { editorState } = this.state;
-            if (
-              editorState
-                .getCurrentContent()
-                .getBlockMap()
-                .first()
-                .getKey() === selectionState.getFocusKey()
-            ) {
+            const currentCursorPosition = selectionState.getStartOffset();
+
+            if (currentCursorPosition === 0) {
               this.props.onFocusPreviousTile(this.props.tile, this.node);
             }
           }}
           onDownArrow={() => {
             const selectionState = this.state.editorState.getSelection();
             const { editorState } = this.state;
-            if (
-              editorState
-                .getCurrentContent()
-                .getBlockMap()
-                .last()
-                .getKey() === selectionState.getFocusKey()
-            ) {
+            const currentCursorPosition = selectionState.getStartOffset();
+            const blockLength = editorState
+              .getCurrentContent()
+              .getFirstBlock()
+              .getLength();
+
+            if (currentCursorPosition === blockLength) {
               this.props.onFocusNextTile(this.props.tile, this.node);
             }
           }}
