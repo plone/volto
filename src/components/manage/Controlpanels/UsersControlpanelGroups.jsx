@@ -28,11 +28,11 @@ export default class UsersControlpanelGroups extends Component {
    */
   static propTypes = {
     groups: PropTypes.shape({
-        title: PropTypes.string,
-        description: PropTypes.string,
-        email: PropTypes.string,
-        groupname: PropTypes.string,
-        roles: PropTypes.arrayOf(PropTypes.string),
+      title: PropTypes.string,
+      description: PropTypes.string,
+      email: PropTypes.string,
+      groupname: PropTypes.string,
+      roles: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
     user: PropTypes.shape({
       username: PropTypes.string,
@@ -70,7 +70,7 @@ export default class UsersControlpanelGroups extends Component {
         <Table.Cell>{this.props.groups.groupname}</Table.Cell>
         {this.props.roles.map(role => (
           <Table.Cell key={role.id}>
-            {(
+            {this.props.roles.indexOf(role.id) !== -1 && (
               <Icon
                 name="check circle outline"
                 title="Global role"
@@ -78,7 +78,7 @@ export default class UsersControlpanelGroups extends Component {
               />
             )}
           </Table.Cell>
-            ))}
+        ))}
         <Table.Cell textAlign="right">
           <Dropdown icon="ellipsis horizontal">
             <Dropdown.Menu className="left">

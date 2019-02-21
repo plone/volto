@@ -237,7 +237,6 @@ export default class UsersControlpanel extends Component {
     this.props.listRoles();
     this.props.listUsers();
     this.props.listGroups();
-    console.log(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -290,6 +289,13 @@ export default class UsersControlpanel extends Component {
     this.props.listUsers(this.state.search);
   }
 
+  /**
+   *
+   *
+   * @param {*} event Event object
+   * @memberof UsersControlpanel
+   * @returns {undefined}
+   */
   onSearchGroups(event) {
     event.preventDefault();
     this.props.listGroups(this.state.search);
@@ -322,7 +328,14 @@ export default class UsersControlpanel extends Component {
       });
     }
   }
-
+  /**
+   *
+   *
+   * @param {*} event Event object.
+   * @param {*} { value } id (groupname)
+   * @memberof UsersControlpanel
+   * @returns {undefined}
+   */
   deleteGroup(event, { value }) {
     if (value) {
       this.setState({
@@ -338,11 +351,19 @@ export default class UsersControlpanel extends Component {
    * @returns {undefined}
    */
   onDeleteOk() {
-    this.props.deleteUser(this.state.userToDelete.id);
-    this.setState({
-      showDelete: false,
-      userToDelete: undefined,
-    });
+    if (this.state.userToDelete) {
+      this.props.deleteUser(this.state.userToDelete.id);
+      this.setState({
+        showDelete: false,
+        userToDelete: undefined,
+      });
+    } else {
+      this.props.deleteGroup(this.state.groupToDelete.id);
+      this.setState({
+        showDelete: false,
+        groupToDelete: undefined,
+      });
+    }
   }
 
   /**
@@ -371,6 +392,14 @@ export default class UsersControlpanel extends Component {
     });
   }
 
+  /**
+   *
+   *
+   * @param {object} data Form data from the ModalForm.
+   * @param {func} callback to set new form data in the ModalForm
+   * @memberof UsersControlpanel
+   * @returns {undefined}
+   */
   onAddGroupSubmit(data, callback) {
     this.props.createGroup(data);
     this.setState({
@@ -381,7 +410,7 @@ export default class UsersControlpanel extends Component {
   /**
    * Handle Errors after createUser()
    *
-   * @param {object} error orbject. Requires the property .message
+   * @param {object} error object. Requires the property .message
    * @returns {undefined}
    */
   onAddUserError(error) {
@@ -389,7 +418,13 @@ export default class UsersControlpanel extends Component {
       addUserError: error.message,
     });
   }
-
+  /**
+   * Handle Errors after createGroup()
+   *
+   * @param {*} error object. Requires the property .message
+   * @memberof UsersControlpanel
+   * @returns {undefined}
+   */
   onAddGroupError(error) {
     this.setState({
       addGroupError: error.message,
@@ -409,7 +444,12 @@ export default class UsersControlpanel extends Component {
       addUserSetFormDataCallback: undefined,
     });
   }
-
+  /**
+   * Handle Success after createGroup()
+   *
+   * @memberof UsersControlpanel
+   * @returns {undefined}
+   */
   onAddGroupSuccess() {
     this.state.addGroupSetFormDataCallback({});
     this.setState({
@@ -431,6 +471,9 @@ export default class UsersControlpanel extends Component {
     let fullnameToDelete = this.state.userToDelete
       ? this.state.userToDelete.fullname
       : '';
+    let groupNameToDelete = this.state.groupToDelete
+      ? this.state.groupToDelete.id
+      : '';
     return (
       <div id="page-users">
         <Button
@@ -450,25 +493,38 @@ export default class UsersControlpanel extends Component {
           <Confirm
             open={this.state.showDelete}
             header={
-              this.getGroupFromProps()
+              this.state.groupToDelete
                 ? this.props.intl.formatMessage(
                     messages.deleteGroupConfirmTitle,
                   )
                 : this.props.intl.formatMessage(messages.deleteUserConfirmTitle)
             }
             content={
-              <div className="content">
-                <ul className="content">
-                  <FormattedMessage
-                    id="Do you really want to delete the user {username} ({fullname})?"
-                    defaultMessage="Do you really want to delete the user {username} ({fullname})?"
-                    values={{
-                      username: <b>{usernameToDelete}</b>,
-                      fullname: <b>{fullnameToDelete}</b>,
-                    }}
-                  />
-                </ul>
-              </div>
+              this.state.groupToDelete ? (
+                <div className="content">
+                  <ul className="content">
+                    <FormattedMessage
+                      id="Do you really want to delete the group {groupname}?"
+                      defaultMessage="Do you really want to delete the group {groupname}?"
+                      values={{
+                        groupname: <b>{groupNameToDelete}</b>,
+                      }}
+                    />
+                  </ul>
+                </div>
+              ) : (
+                <div className="content">
+                  <ul className="content">
+                    <FormattedMessage
+                      id="Do you really want to delete the user {username}?"
+                      defaultMessage="Do you really want to delete the user {username}?"
+                      values={{
+                        username: <b>{usernameToDelete}</b>,
+                      }}
+                    />
+                  </ul>
+                </div>
+              )
             }
             onCancel={this.onDeleteCancel}
             onConfirm={this.onDeleteOk}
@@ -571,7 +627,13 @@ export default class UsersControlpanel extends Component {
                 {
                   id: 'default',
                   title: 'FIXME: Group Data',
-                  fields: ['Title', 'Description', 'groupname', 'email'],
+                  fields: [
+                    'Title',
+                    'Description',
+                    'groupname',
+                    'email',
+                    'roles',
+                  ],
                 },
               ],
               properties: {
@@ -612,7 +674,7 @@ export default class UsersControlpanel extends Component {
                   description: '',
                 },
               },
-              required: ['Title', 'description', 'groupname', 'email'],
+              required: ['Title', 'description', 'groupname', 'email', 'roles'],
             }}
           />
         </div>
