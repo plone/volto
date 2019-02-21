@@ -11,8 +11,6 @@ import 'prismjs/components/prism-markup';
 import { Button } from 'semantic-ui-react';
 import cx from 'classnames';
 
-import './styles.css';
-
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
 
