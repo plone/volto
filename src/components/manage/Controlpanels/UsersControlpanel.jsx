@@ -17,6 +17,7 @@ import {
   Input,
   Segment,
   Table,
+  Divider,
 } from 'semantic-ui-react';
 import { find, map } from 'lodash';
 import {
@@ -702,23 +703,6 @@ export default class UsersControlpanel extends Component {
               </Form.Field>
             </Form>
           </Segment>
-          <Segment secondary>
-            <FormattedMessage id="Groups" defaultMessage="Groups" />
-          </Segment>
-          <Segment>
-            <Form onSubmit={this.onSearchGroups}>
-              <Form.Field>
-                <Input
-                  name="SearchableText"
-                  action={{ icon: 'search' }}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.searchGroups,
-                  )}
-                  onChange={this.onChangeSearch}
-                />
-              </Form.Field>
-            </Form>
-          </Segment>
           <Form onSubmit={this.onSubmit}>
             <Table padded striped attached>
               <Table.Header>
@@ -746,6 +730,46 @@ export default class UsersControlpanel extends Component {
                     user={user}
                   />
                 ))}
+              </Table.Body>
+            </Table>
+          </Form>
+          <Divider hidden />
+          <Segment secondary>
+            <FormattedMessage id="Groups" defaultMessage="Groups" />
+          </Segment>
+          <Segment>
+            <Form onSubmit={this.onSearchGroups}>
+              <Form.Field>
+                <Input
+                  name="SearchableText"
+                  action={{ icon: 'search' }}
+                  placeholder={this.props.intl.formatMessage(
+                    messages.searchGroups,
+                  )}
+                  onChange={this.onChangeSearch}
+                />
+              </Form.Field>
+            </Form>
+          </Segment>
+          <Form onSubmit={this.onSubmit}>
+            <Table padded striped attached>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>
+                    <FormattedMessage
+                      id="Groupname"
+                      defaultMessage="Groupname"
+                    />
+                  </Table.HeaderCell>
+                  {this.props.roles.map(role => (
+                    <Table.HeaderCell key={role.id}>{role.id}</Table.HeaderCell>
+                  ))}
+                  <Table.HeaderCell>
+                    <FormattedMessage id="Actions" defaultMessage="Actions" />
+                  </Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
                 {this.props.groups.map(groups => (
                   <UsersControlpanelGroups
                     key={groups.id}
