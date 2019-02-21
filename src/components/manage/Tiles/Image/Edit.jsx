@@ -65,6 +65,8 @@ export default class Edit extends Component {
     onChangeTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    onFocusPreviousTile: PropTypes.func.isRequired,
+    onFocusNextTile: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
@@ -169,6 +171,17 @@ export default class Edit extends Component {
     });
   };
 
+  handleKeyDown = e => {
+    if (e.key === 'ArrowUp') {
+      this.props.onFocusPreviousTile(this.props.tile);
+      e.preventDefault();
+    }
+    if (e.key === 'ArrowDown') {
+      this.props.onFocusNextTile(this.props.tile);
+      e.preventDefault();
+    }
+  };
+
   /**
    * Render method.
    * @method render
@@ -186,6 +199,8 @@ export default class Edit extends Component {
           },
           this.props.data.align,
         )}
+        tabIndex={0}
+        onKeyDown={this.handleKeyDown}
       >
         {this.props.selected &&
           !!this.props.data.url && (

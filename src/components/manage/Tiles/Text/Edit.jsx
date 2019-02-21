@@ -19,7 +19,6 @@ import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
 import addSVG from '../../../../icons/circle-plus.svg';
 import cameraSVG from '../../../../icons/camera.svg';
-import globeSVG from '../../../../icons/globe.svg';
 import videoSVG from '../../../../icons/videocamera.svg';
 import TemplatedTilesSVG from '../../../../icons/theme.svg';
 
@@ -52,6 +51,8 @@ export default class Edit extends Component {
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
     onAddTile: PropTypes.func.isRequired,
+    onFocusPreviousTile: PropTypes.func.isRequired,
+    onFocusNextTile: PropTypes.func.isRequired,
   };
 
   /**
@@ -211,6 +212,32 @@ export default class Edit extends Component {
               editorState.getCurrentContent().getPlainText().length === 0
             ) {
               this.props.onDeleteTile(this.props.tile, true);
+            }
+          }}
+          onUpArrow={() => {
+            const selectionState = this.state.editorState.getSelection();
+            const { editorState } = this.state;
+            if (
+              editorState
+                .getCurrentContent()
+                .getBlockMap()
+                .first()
+                .getKey() === selectionState.getFocusKey()
+            ) {
+              this.props.onFocusPreviousTile(this.props.tile);
+            }
+          }}
+          onDownArrow={() => {
+            const selectionState = this.state.editorState.getSelection();
+            const { editorState } = this.state;
+            if (
+              editorState
+                .getCurrentContent()
+                .getBlockMap()
+                .last()
+                .getKey() === selectionState.getFocusKey()
+            ) {
+              this.props.onFocusNextTile(this.props.tile);
             }
           }}
           ref={node => {
