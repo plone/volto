@@ -63,11 +63,11 @@ exports[`Login renders a login component 1`] = `
                     className="ui input"
                   >
                     <input
+                      autoFocus={true}
                       id="login"
                       name="login"
                       onChange={[Function]}
                       placeholder="Login Name"
-                      tabIndex={1}
                       type="text"
                     />
                   </div>
@@ -87,6 +87,7 @@ exports[`Login renders a login component 1`] = `
                       <a
                         href="/register"
                         onClick={[Function]}
+                        tabIndex={1}
                       >
                         <span>
                           registration form
@@ -134,7 +135,7 @@ exports[`Login renders a login component 1`] = `
                       name="password"
                       onChange={[Function]}
                       placeholder="Password"
-                      tabIndex={2}
+                      tabIndex={0}
                       type="password"
                     />
                   </div>

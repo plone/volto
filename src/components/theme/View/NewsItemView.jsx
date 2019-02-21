@@ -40,7 +40,7 @@ const NewsItemView = ({ content }) => (
       />
     )}
     {content.text && (
-      <p dangerouslySetInnerHTML={{ __html: content.text.data }} />
+      <div dangerouslySetInnerHTML={{ __html: content.text.data }} />
     )}
   </Container>
 );

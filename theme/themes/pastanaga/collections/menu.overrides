@@ -115,6 +115,7 @@
 
   @media only screen and (max-width: @tabletBreakpoint) {
     margin-bottom: 20px;
+    margin-left: 0;
   }
 
   .item {
