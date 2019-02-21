@@ -15,7 +15,7 @@ exports[`renders a document view component 1`] = `
   >
     Hi
   </p>
-  <p
+  <div
     dangerouslySetInnerHTML={
       Object {
         "__html": "<p>Hello World!",

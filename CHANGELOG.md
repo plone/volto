@@ -1,12 +1,21 @@
 # Change Log
 
-## 1.5.2 (unreleased)
+## 1.5.3 (unreleased)
 
 ### Added
 
  - HTML Tile for Volto Editor @ajayns
 
 ### Changes
+
+## 1.5.2 (2019-02-20)
+
+### Changes
+
+- Fix external images on Image Tile render @sneridagh
+- Several fixes reagarding correctness of markup @sneridagh
+- Issue with dangerouslySetInnerHTML RichText fields on first SSR load
+  apparently fixed (due to the above fix) :) @sneridagh
 
 ## 1.5.1 (2019-02-19)
 
