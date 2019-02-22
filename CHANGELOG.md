@@ -4,6 +4,8 @@
 
 ### Added
 
+- Fix event type,date view @nileshgulia1
+
 ### Changes
 
 ## 1.5.2 (2019-02-20)
