@@ -59,6 +59,13 @@ const DocumentView = ({ content }) => {
           floated="right"
         />
       )}
+      {content.start &&
+        content.end && (
+          <div>
+            <p>Start date: {content.start}</p>
+            <p>End date: {content.end}</p>
+          </div>
+        )}
       {content.text && (
         <div
           dangerouslySetInnerHTML={{
