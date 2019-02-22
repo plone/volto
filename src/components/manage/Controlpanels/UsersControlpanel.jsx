@@ -531,17 +531,6 @@ export default class UsersControlpanel extends Component {
             onConfirm={this.onDeleteOk}
           />
           <ModalForm
-            style={{
-              width: '50%',
-              height: '50%',
-              overflow: 'auto',
-              margin: 'auto',
-              position: 'relative',
-              top: 0,
-              left: 0,
-              bottom: 0,
-              right: 0,
-            }}
             open={this.state.showAddUser}
             onSubmit={this.onAddUserSubmit}
             submitError={this.state.addUserError}
@@ -606,17 +595,6 @@ export default class UsersControlpanel extends Component {
             }}
           />
           <ModalForm
-            style={{
-              width: '50%',
-              height: '50%',
-              overflow: 'auto',
-              margin: 'auto',
-              position: 'relative',
-              top: 0,
-              left: 0,
-              bottom: 0,
-              right: 0,
-            }}
             open={this.state.showAddGroup}
             onSubmit={this.onAddGroupSubmit}
             submitError={this.state.addGroupError}
