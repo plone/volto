@@ -675,7 +675,7 @@ body {
 
   .toolbar {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     top: -32px;
     left: 50%;
     display: flex;
@@ -752,6 +752,45 @@ body {
     -webkit-box-shadow: none;
     box-shadow: none;
     color: #826a6a !important;
+  }
+
+  &.between-tiles {
+    margin-top: -12px;
+    display: flex;
+
+    .divider {
+      display: block;
+      background-color:red;
+      flex: 1 0 auto;
+      height: 40px;
+      margin: 0 10px;
+    }
+  }
+}
+
+.append-new-tile-wrapper {
+  opacity: 0;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  .divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    position: absolute;
+    bottom: -19px;
+    color: #b8c6c8;
+    height: 10px;
+    width: 100%;
+
+    .divider-inner {
+      background-color: #b8c6c8;
+      flex: 1 0 auto;
+      height: 2px;
+    }
   }
 }
 

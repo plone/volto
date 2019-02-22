@@ -22,6 +22,7 @@ import imageLeftSVG from '../../../../icons/image-left.svg';
 import imageRightSVG from '../../../../icons/image-right.svg';
 import imageFitSVG from '../../../../icons/image-fit.svg';
 import imageFullSVG from '../../../../icons/image-full.svg';
+import addSVG from '../../../../icons/circle-plus.svg';
 
 import { createContent } from '../../../../actions';
 import { getBaseUrl } from '../../../../helpers';
@@ -55,6 +56,7 @@ export default class Edit extends Component {
   static propTypes = {
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     content: PropTypes.objectOf(PropTypes.any).isRequired,
     request: PropTypes.shape({
@@ -62,6 +64,7 @@ export default class Edit extends Component {
       loaded: PropTypes.bool,
     }).isRequired,
     pathname: PropTypes.string.isRequired,
+    onAddTile: PropTypes.func.isRequired,
     onChangeTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
@@ -336,6 +339,22 @@ export default class Edit extends Component {
             <Icon name={trashSVG} size="18px" />
           </Button>
         )}
+        <div className="append-new-tile-wrapper">
+          <div
+            className="divider"
+            onClick={() => this.props.onAddTile('text', this.props.index + 1)}
+          >
+            <div className="divider-inner" />
+          </div>
+          <Button
+            basic
+            icon
+            onClick={() => this.props.onAddTile('text', this.props.index + 1)}
+            className="tile-add-button between-tiles"
+          >
+            <Icon name={addSVG} className="tile-add-button" size="24px" />
+          </Button>
+        </div>
       </div>
     );
   }

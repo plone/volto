@@ -13,5 +13,40 @@ exports[`renders an edit image tile component 1`] = `
       src="image"
     />
   </p>
+  <div
+    className="append-new-tile-wrapper"
+  >
+    <div
+      className="divider"
+      onClick={[Function]}
+    >
+      <div
+        className="divider-inner"
+      />
+    </div>
+    <button
+      className="ui basic icon button tile-add-button between-tiles"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon tile-add-button"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "24px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </button>
+  </div>
 </div>
 `;

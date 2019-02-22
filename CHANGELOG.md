@@ -5,6 +5,7 @@
 ### Added
 
 - Ability to navigate through the existing tiles with the cursors. @sneridagh
+- Add handler for adding new tiles at the bottom of non-text tiles @sneridagh
 
 ### Changes
 
