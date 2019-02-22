@@ -1,35 +1,37 @@
 /**
- * Edit image tile.
- * @module components/manage/Tiles/Image/Edit
+ * Edit map tile.
+ * @module components/manage/Tiles/Maps/Edit
  */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { readAsDataURL } from 'promise-file-reader';
-import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
+import { Button, Input, Message } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import {
+  defineMessages,
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 import cx from 'classnames';
-import { settings } from '~/config';
 
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
 import clearSVG from '../../../../icons/clear.svg';
-import folderSVG from '../../../../icons/folder.svg';
 import imageSVG from '../../../../icons/image.svg';
 import imageLeftSVG from '../../../../icons/image-left.svg';
 import imageRightSVG from '../../../../icons/image-right.svg';
 import imageFitSVG from '../../../../icons/image-fit.svg';
 import imageFullSVG from '../../../../icons/image-full.svg';
+import globeSVG from '../../../../icons/globe.svg';
 
 import { createContent } from '../../../../actions';
-import { getBaseUrl } from '../../../../helpers';
 
 const messages = defineMessages({
   ImageTileInputPlaceholder: {
-    id: 'Browse or type URL',
-    defaultMessage: 'Browse or type URL',
+    id: 'Enter Map URL',
+    defaultMessage: 'Enter Map URL',
   },
 });
 
@@ -77,11 +79,11 @@ export default class Edit extends Component {
    */
   constructor(props) {
     super(props);
-
-    this.onUploadImage = this.onUploadImage.bind(this);
+    this.getSrc = this.getSrc.bind(this);
     this.state = {
       uploading: false,
       url: '',
+      error: null,
     };
   }
 
@@ -108,30 +110,6 @@ export default class Edit extends Component {
   }
 
   /**
-   * Upload image handler
-   * @method onUploadImage
-   * @returns {undefined}
-   */
-  onUploadImage({ target }) {
-    const file = target.files[0];
-    this.setState({
-      uploading: true,
-    });
-    readAsDataURL(file).then(data => {
-      const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      this.props.createContent(getBaseUrl(this.props.pathname), {
-        '@type': 'Image',
-        image: {
-          data: fields[3],
-          encoding: fields[2],
-          'content-type': fields[1],
-          filename: file.name,
-        },
-      });
-    });
-  }
-
-  /**
    * Align tile handler
    * @method onAlignTile
    * @param {string} align Alignment option
@@ -152,13 +130,14 @@ export default class Edit extends Component {
    */
   onChangeUrl = ({ target }) => {
     this.setState({
-      url: target.value,
+      url: this.getSrc(target.value),
     });
   };
 
   /**
    * Submit url handler
    * @method onSubmitUrl
+   * @param {string} e event
    * @returns {undefined}
    */
   onSubmitUrl = e => {
@@ -170,6 +149,24 @@ export default class Edit extends Component {
   };
 
   /**
+   * get getSrc handler
+   * @method getSrc
+   * @param {string} embed Embed HTML code from Google Maps share option
+   * @returns {string} Source URL
+   */
+  getSrc(embed) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(embed, 'text/html');
+    const iframe = doc.getElementsByTagName('iframe');
+    if (iframe.length === 0) {
+      this.setState({ error: true });
+      return '';
+    }
+    this.setState({ error: false });
+    return iframe[0].src;
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -179,7 +176,7 @@ export default class Edit extends Component {
       <div
         onClick={() => this.props.onSelectTile(this.props.tile)}
         className={cx(
-          'tile image align',
+          'tile maps align',
           {
             selected: this.props.selected,
             center: !Boolean(this.props.data.align),
@@ -252,7 +249,7 @@ export default class Edit extends Component {
         {this.props.selected &&
           !this.props.data.url && (
             <div className="toolbar">
-              <Icon name={imageSVG} size="24px" />
+              <Icon name={globeSVG} size="24px" />
               <form onSubmit={e => this.onSubmitUrl(e)}>
                 <Input
                   onChange={this.onChangeUrl}
@@ -261,40 +258,33 @@ export default class Edit extends Component {
                   )}
                 />
               </form>
-              <Button.Group>
-                <label className="ui button basic icon">
-                  <Icon name={folderSVG} size="24px" />
-                  <input
-                    type="file"
-                    onChange={this.onUploadImage}
-                    style={{ display: 'none' }}
-                  />
-                </label>
-              </Button.Group>
             </div>
           )}
         {this.props.data.url ? (
-          <p>
-            <img
-              src={
-                this.props.data.url.includes(settings.apiPath)
-                  ? `${this.props.data.url}/@@images/image`
-                  : this.props.data.url
-              }
-              alt=""
+          <div>
+            <iframe
+              src={this.props.data.url}
+              className="google-map"
+              frameBorder="0"
+              allowFullScreen
             />
-          </p>
+          </div>
         ) : (
           <div>
             <Message>
-              {this.state.uploading && (
-                <Dimmer active>
-                  <Loader indeterminate>Uploading image</Loader>
-                </Dimmer>
+              <Icon name={globeSVG} size="100px" color="#b8c6c8" />
+              <FormattedMessage
+                id="Maps instructions"
+                defaultMessage="Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
+              />
+              {this.state.error && (
+                <span style={{ color: 'red' }}>
+                  <FormattedMessage
+                    id="Maps data error"
+                    defaultMessage="Embed code error, please follow the instructions and try again."
+                  />
+                </span>
               )}
-              <center>
-                <Icon name={imageSVG} size="100px" color="#b8c6c8" />
-              </center>
             </Message>
           </div>
         )}

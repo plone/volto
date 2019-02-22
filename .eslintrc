@@ -28,7 +28,7 @@
     "jsx-a11y/anchor-is-valid": [ "error", { "components": [ "Link" ], "specialLink": [ "to" ] } ],
     "import/prefer-default-export": "off",
     "react/prefer-stateless-function": 0,
-    "import/no-unresolved": 0,
+    "import/no-unresolved": 1,
     "import/extensions": 0,
     "import/no-extraneous-dependencies": 0,
     "react/no-unused-prop-types": 0,
@@ -37,6 +37,12 @@
   },
   "settings": {
     "import/resolver": {
+      "alias": {
+        "map": [
+          ["@plone/volto", "./src"]
+        ],
+        "extensions": [".js", ".jsx", ".json"]
+      },
       "babel-plugin-root-import": {
         "rootPathSuffix": "src"
       }
