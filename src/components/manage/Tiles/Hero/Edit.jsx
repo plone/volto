@@ -342,7 +342,7 @@ export default class EditHeroTile extends Component {
               </p>
             </div>
           )}
-          <div className="product-hero-body" style={{ flex: '1 1' }}>
+          <div className="product-hero-body">
             <Editor
               onChange={this.onChangeBoldTitle}
               editorState={this.state.boldTitleEditorState}

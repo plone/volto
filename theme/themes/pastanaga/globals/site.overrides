@@ -867,3 +867,13 @@ body {
 .comments {
   margin-top: 20px;
 }
+
+.product-hero-body {
+  flex: 1 1 ;
+}
+
+.product-hero {
+  z-index: 1;
+  position: relative;
+  display: flex;
+}
