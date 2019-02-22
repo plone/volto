@@ -68,6 +68,43 @@ exports[`UsersControlpanel renders a user control component 1`] = `
         </div>
       </form>
     </div>
+    <form
+      className="ui form"
+      onSubmit={[Function]}
+    >
+      <table
+        className="ui striped attached padded table"
+      >
+        <thead
+          className=""
+        >
+          <tr
+            className=""
+          >
+            <th
+              className=""
+            >
+              <span>
+                User name
+              </span>
+            </th>
+            <th
+              className=""
+            >
+              <span>
+                Actions
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          className=""
+        />
+      </table>
+    </form>
+    <div
+      className="ui hidden divider"
+    />
     <div
       className="ui secondary segment"
     >
@@ -124,7 +161,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               className=""
             >
               <span>
-                User name
+                Groupname
               </span>
             </th>
             <th
