@@ -59,10 +59,10 @@ const DocumentView = ({ content }) => {
           floated="right"
         />
       )}
-      {content.url && (
+      {content.remoteUrl && (
         <span>
           The link address is:
-          <a href={content.url}>{content.url}</a>
+          <a href={content.remoteUrl}>{content.remoteUrl}</a>
         </span>
       )}
       {content.text && (
