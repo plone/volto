@@ -4,7 +4,8 @@
 
 ### Added
 
- - HTML Tile for Volto Editor @ajayns
+ - HTML Tile for Volto Editor with preview and code prettifier
+   @ajayns @nileshgulia1 @sneridagh
 
 ### Changes
 
