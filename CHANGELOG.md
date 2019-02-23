@@ -9,8 +9,6 @@
 
 ### Changes
 
-- Not related to development, but addded a releaser tool to help cut releases.
-  Added `yarn release` and `yarn dry-release`. @sneridagh
 - Clean .variables files from Pastanaga theme since they are already applied by
   the theming engine from the default theme. @sneridagh
 
