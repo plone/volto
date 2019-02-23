@@ -4,6 +4,9 @@
 
 ### Added
 
+ - HTML Tile for Volto Editor with preview and code prettifier
+   @ajayns @nileshgulia1 @sneridagh
+
 ### Changes
 
 ## 1.5.2 (2019-02-20)
