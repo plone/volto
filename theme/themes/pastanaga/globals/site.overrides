@@ -539,6 +539,11 @@ body {
   justify-content: center;
   align-items: center;
 
+  // Override for the + tile handler correct positioning
+  &:last-child {
+    margin-bottom: 1em;
+  }
+
   svg {
     margin-bottom: 20px;
   }
