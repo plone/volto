@@ -34,7 +34,9 @@
     "test": "razzle test --env=jsdom",
     "test:ci": "CI=true razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js",
-    "i18n": "NODE_ENV=production node src/i18n.js"
+    "i18n": "NODE_ENV=production node src/i18n.js",
+    "dry-release": "release-it --dry-run",
+    "release": "release-it"
   },
   "jest": {
     "snapshotSerializers": [
@@ -73,6 +75,22 @@
       "stylelint-config-idiomatic-order",
       "./node_modules/prettier-stylelint/config.js"
     ]
+  },
+  "release-it": {
+    "scripts": {
+      "changelog": "node changelogupdater.js excerpt",
+      "beforeStage": "node changelogupdater.js bump ${version}",
+      "afterRelease": "node changelogupdater.js back ${version} && git add . && git ci -am 'Back to development' && git push"
+    },
+    "git": {
+      "requireUpstream": false,
+      "requireCleanWorkingDir": false
+    },
+    "github": {
+      "release": true,
+      "releaseName": "${version}",
+      "releaseNotes": "node changelogupdater.js excerpt"
+    }
   },
   "engines": {
     "node": "^8 || ^10"
@@ -154,6 +172,7 @@
     "redux-devtools-extension": "2.13.5",
     "redux-mock-store": "1.5.3",
     "redux-thunk": "2.3.0",
+    "release-it": "10.1.0",
     "semantic-ui-less": "2.4.1",
     "semantic-ui-react": "0.84.0",
     "serialize-javascript": "1.5.0",
