@@ -6,6 +6,7 @@ import ViewTextTile from '@plone/volto/components/manage/Tiles/Text/View';
 import ViewImageTile from '@plone/volto/components/manage/Tiles/Image/View';
 import ViewVideoTile from '@plone/volto/components/manage/Tiles/Video/View';
 import ViewMapTile from '@plone/volto/components/manage/Tiles/Maps/View';
+import ViewHTMLTile from '@plone/volto/components/manage/Tiles/HTML/View';
 
 import EditTitleTile from '@plone/volto/components/manage/Tiles/Title/Edit';
 import EditDescriptionTile from '@plone/volto/components/manage/Tiles/Description/Edit';
@@ -13,13 +14,19 @@ import EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
 import EditImageTile from '@plone/volto/components/manage/Tiles/Image/Edit';
 import EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
 import EditMapTile from '@plone/volto/components/manage/Tiles/Maps/Edit';
+import EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
 
-import globeSVG from '../icons/globe.svg';
+import globeSVG from '@plone/volto/icons/globe.svg';
+import codeSVG from '@plone/volto/icons/code.svg';
 
 const customTiles = [
   {
     title: 'maps',
     icon: globeSVG,
+  },
+  {
+    title: 'html',
+    icon: codeSVG,
   },
 ];
 
@@ -53,6 +60,7 @@ const defaultTilesViewMap = {
   image: ViewImageTile,
   video: ViewVideoTile,
   maps: ViewMapTile,
+  html: ViewHTMLTile,
 };
 
 const defaultTilesEditMap = {
@@ -62,6 +70,7 @@ const defaultTilesEditMap = {
   image: EditImageTile,
   video: EditVideoTile,
   maps: EditMapTile,
+  html: EditHTMLTile,
 };
 
 export { customTiles, defaultTilesViewMap, defaultTilesEditMap, messagesTiles };

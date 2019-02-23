@@ -66,6 +66,12 @@ const DocumentView = ({ content }) => {
             <p>End date: {content.end}</p>
           </div>
         )}
+      {content.remoteUrl && (
+        <span>
+          The link address is:
+          <a href={content.remoteUrl}>{content.remoteUrl}</a>
+        </span>
+      )}
       {content.text && (
         <div
           dangerouslySetInnerHTML={{
