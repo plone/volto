@@ -19,7 +19,6 @@ import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
 import addSVG from '../../../../icons/circle-plus.svg';
 import cameraSVG from '../../../../icons/camera.svg';
-import globeSVG from '../../../../icons/globe.svg';
 import videoSVG from '../../../../icons/videocamera.svg';
 import TemplatedTilesSVG from '../../../../icons/theme.svg';
 
@@ -52,6 +51,8 @@ export default class Edit extends Component {
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
     onAddTile: PropTypes.func.isRequired,
+    onFocusPreviousTile: PropTypes.func.isRequired,
+    onFocusNextTile: PropTypes.func.isRequired,
   };
 
   /**
@@ -211,6 +212,27 @@ export default class Edit extends Component {
               editorState.getCurrentContent().getPlainText().length === 0
             ) {
               this.props.onDeleteTile(this.props.tile, true);
+            }
+          }}
+          onUpArrow={() => {
+            const selectionState = this.state.editorState.getSelection();
+            const currentCursorPosition = selectionState.getStartOffset();
+
+            if (currentCursorPosition === 0) {
+              this.props.onFocusPreviousTile(this.props.tile, this.node);
+            }
+          }}
+          onDownArrow={() => {
+            const selectionState = this.state.editorState.getSelection();
+            const { editorState } = this.state;
+            const currentCursorPosition = selectionState.getStartOffset();
+            const blockLength = editorState
+              .getCurrentContent()
+              .getFirstBlock()
+              .getLength();
+
+            if (currentCursorPosition === blockLength) {
+              this.props.onFocusNextTile(this.props.tile, this.node);
             }
           }}
           ref={node => {
