@@ -6,8 +6,13 @@
 
 - Ability to navigate through the existing tiles with the cursors. @sneridagh
 - Add handler for adding new tiles at the bottom of non-text tiles @sneridagh
+- HTML Tile for Volto Editor with preview and code prettifier
+   @ajayns @nileshgulia1 @sneridagh
 
 ### Changes
+
+- Clean .variables files from Pastanaga theme since they are already applied by
+  the theming engine from the default theme. @sneridagh
 
 ## 1.5.2 (2019-02-20)
 
@@ -23,6 +28,7 @@
 ### Changes
 
 - Fix build for projects created with `create-volto-app` @sneridagh
+- Fix link view @nileshgulia1
 
 ## 1.5.0 (2019-02-19)
 
@@ -54,6 +60,7 @@
   @sneridagh
 - Add supported browsers in README @sneridagh
 - Default tile position to center for all the existing tiles @sneridagh
+
 
 ## 1.4.0 (2019-02-15)
 

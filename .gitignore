@@ -46,3 +46,7 @@ output.xml
 report.html
 selenium-screenshot-*.png
 /selenium/
+
+
+# Local environment setup
+.env
