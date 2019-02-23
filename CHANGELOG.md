@@ -5,6 +5,8 @@
 ### Added
 
 - Ability to navigate through the existing tiles with the cursors. @sneridagh
+ - HTML Tile for Volto Editor with preview and code prettifier
+   @ajayns @nileshgulia1 @sneridagh
 
 ### Changes
 
@@ -22,6 +24,7 @@
 ### Changes
 
 - Fix build for projects created with `create-volto-app` @sneridagh
+- Fix link view @nileshgulia1
 
 ## 1.5.0 (2019-02-19)
 
@@ -53,6 +56,7 @@
   @sneridagh
 - Add supported browsers in README @sneridagh
 - Default tile position to center for all the existing tiles @sneridagh
+
 
 ## 1.4.0 (2019-02-15)
 
