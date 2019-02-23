@@ -21,12 +21,8 @@ exports[`Header renders a header component 1`] = `
           />
         </div>
         <div
-          className="navigation"
-        >
-          <div
-            id="navigation"
-          />
-        </div>
+          id="navigation"
+        />
       </div>
       <div
         className="tools"

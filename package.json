@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "1.2.1",
+  "version": "1.5.2",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -67,6 +67,13 @@
     "trailingComma": "all",
     "singleQuote": true
   },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-idiomatic-order",
+      "./node_modules/prettier-stylelint/config.js"
+    ]
+  },
   "engines": {
     "node": "^8 || ^10"
   },
@@ -79,6 +86,7 @@
     "babel-plugin-root-import": "6.1.0",
     "babel-plugin-transform-decorators-legacy": "1.3.5",
     "babel-preset-stage-0": "6.24.1",
+    "classnames": "2.2.6",
     "connected-react-router": "4.4.1",
     "coveralls": "3.0.2",
     "css-loader": "1.0.0",
@@ -94,9 +102,12 @@
     "enzyme-to-json": "3.3.4",
     "eslint-config-airbnb": "16.1.0",
     "eslint-config-prettier": "2.9.0",
+    "eslint-import-resolver-alias": "1.1.2",
+    "eslint-import-resolver-babel-plugin-root-import": "1.1.1",
     "eslint-plugin-prettier": "2.6.0",
     "express": "4.16.3",
     "glob": "7.1.3",
+    "hamburgers": "1.1.3",
     "history": "4.7.2",
     "jest-css-modules": "1.1.0",
     "jest-file": "1.0.0",
@@ -112,8 +123,11 @@
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-loader": "3.0.0",
     "prettier": "1.14.3",
+    "prettier-stylelint": "0.4.2",
+    "pretty": "2.0.0",
+    "prismjs": "1.15.0",
     "promise-file-reader": "1.0.2",
-    "query-string": "6.1.0",
+    "query-string": "4.1.0",
     "raven": "2.6.4",
     "raven-js": "3.27.0",
     "razzle": "2.4.0",
@@ -132,6 +146,7 @@
     "react-router-dom": "4.3.1",
     "react-share": "2.3.1",
     "react-side-effect": "1.1.5",
+    "react-simple-code-editor": "0.7.1",
     "react-test-renderer": "16.5.2",
     "redraft": "0.10.1",
     "redux": "4.0.0",
@@ -143,7 +158,10 @@
     "semantic-ui-react": "0.84.0",
     "serialize-javascript": "1.5.0",
     "style-loader": "0.23.0",
-    "superagent": "4.0.0-beta.5",
+    "stylelint": "9.2.1",
+    "stylelint-config-idiomatic-order": "6.2.0",
+    "stylelint-config-standard": "18.2.0",
+    "superagent": "3.8.2",
     "svg-loader": "0.0.2",
     "svgo": "1.0.5",
     "svgo-loader": "2.1.0",

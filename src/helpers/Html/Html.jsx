@@ -9,7 +9,6 @@ import Helmet from 'react-helmet';
 import serialize from 'serialize-javascript';
 import { join } from 'lodash';
 import { BodyClass } from '../.';
-import config from '~/config';
 
 /**
  * Html class.
