@@ -9,7 +9,7 @@ build:
 
 bin/pip:
 	@echo "$(GREEN)==> Setup Virtual Env$(RESET)"
-	virtualenv --clear .
+	virtualenv -p python3 --clear .
 	bin/pip install pip --upgrade
 	bin/pip install -r requirements-docs.txt --upgrade
 
