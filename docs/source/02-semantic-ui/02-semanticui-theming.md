@@ -21,7 +21,7 @@ The default definitions are the base for the themes. It is expected that you don
 
 ## Themes
 
-The Semantic UI themes are modifications on the default definitions that get loaded after them. Using CSS (LESS) variables and CSS (LESS) overrides they modify the defaults in a first customization layer. There are several [community driven themes that you can use right away](https://github.com/Semantic-Org/Semantic-UI/tree/master/src/themes).
+The Semantic UI themes are modifications on the default definitions that get loaded after them. Using LESS variables and LESS overrides they modify the defaults in a first customization layer. There are several [community driven themes that you can use right away](https://github.com/Semantic-Org/Semantic-UI/tree/master/src/themes).
 
 ## Site Theme
 
@@ -31,7 +31,7 @@ This will be the most common use as in Plone we will use Pastanaga UI theme and 
 
 ## How does the theming engine work?
 
-It basically uses heavily the LESS precompiler language features. No code is involved (which is good).
+ uses heavily the LESS precompiler language features. No code is involved (which is good).
 
 ### theme.config
 

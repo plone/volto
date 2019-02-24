@@ -1,8 +1,14 @@
-# Customizing Volto Components
+# Customizing Components
 
 You are able to customize the existing Volto components using an easy pattern
 in the `customizations` folder. You have to identify and locate the component
-that you want to customize, let's say the Logo component in [Volto source code](https://github.com/plone/volto/tree/master/src).
+that you want to customize, let's say the Logo component in [Volto source
+code](https://github.com/plone/volto/tree/master/src).
+
+!!! tip
+    Those familiar with Plone's JBOT customizing add-on will recognize this
+    pattern since it works the same way, except that here you have to create
+    exactly the same folder structure than the original instead of using the dotted notation used in JBOT overrides.
 
 You can virtually override any component that lives inside the `src` folder and
 adapt it to your needs, without touching the original (source) one.
@@ -18,7 +24,7 @@ The pattern for the override work consists in use the same folder structure that
 the original component has in the Volto source code and place it inside the
 `customizations` folder.
 
-## Override the Logo resource
+## Customizing the Logo resource
 
 So for example if we want to replace the Logo, which is located in
 Volto at `components/theme/Logo/Logo.svg`.
@@ -37,12 +43,11 @@ amendments required.
 
 Locate the `Tags.jsx` file and override this file so that there is a label in front of the tags with: `Tags:`.
 
-```jsx
-
+```js
     /**
-        * Tags component.
-        * @module components/theme/Tags/Tags
-        */
+    * Tags component.
+    * @module components/theme/Tags/Tags
+    */
 
     import React from 'react';
     import { Link } from 'react-router-dom';

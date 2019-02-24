@@ -33,7 +33,7 @@ variables we would like to change. When we want to change the base font, we add
 the following:
 
 ```less
-    @fontName : 'Comic Sans MS';
+@fontName : 'Comic Sans MS';
 ```
 
 > Make sure you have the 'Comic Sans MS' font installed. This is the
@@ -45,7 +45,7 @@ the following:
 You can also point it to any Google Web Font name like:
 
 ```less
-    @fontName : 'Montserrat';
+@fontName : 'Montserrat';
 ```
 
 ## Changing The Breadcrumbs
@@ -53,7 +53,7 @@ You can also point it to any Google Web Font name like:
 Change the breadcrumbs so that the divider is pink in `theme/collections/breadcrumb.variables`:
 
 ```less
-    @dividerColor: @pink;
+@dividerColor: @pink;
 ```
 
 ## Using Overrides
@@ -63,7 +63,7 @@ can use the overrides files. Update the breadcrumbs so that the links are
 underlined, then in `theme/collections/breadcrumb.overrides`:
 
 ```less
-    .ui.breadcrumb a {
-      text-decoration: underline;
-    }
+.ui.breadcrumb a {
+    text-decoration: underline;
+}
 ```

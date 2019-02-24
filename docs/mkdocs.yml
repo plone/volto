@@ -18,13 +18,31 @@ extra_css:
   - 'stylesheets/extra.css'
 
 nav:
-  - Introduction: "01-installing/01-installing.md"
-  - Semantic UI: "02-semantic-ui"
-  - Theming: "03-theming"
-  - Deploying: "04-deploying"
-  - Developer Guidelines: "05-developer-guidelines"
-  - Contributing: "06-contributing"
-  - Developer Guidelines: "07-developer-guidelines"
+  - Installing: "01-installing/01-installing.md"
+  - Semantic UI:
+    - Semantic UI Introduction: "02-semantic-ui/01-introduction.md"
+    - Semantic UI Theming: "02-semantic-ui/02-semanticui-theming.md"
+    - Theming Engine: "02-semantic-ui/03-theming-engine.md"
+  - Customizing:
+    - Creating a project: "03-customizing/01-creating-project.md"
+    - Folder structure: "03-customizing/02-folder-structure.md"
+    - Customizing components: "03-customizing/03-customizing-components.md"
+    - Customizing views: "03-customizing/04-customizing-views.md"
+    - Creating new views: "03-customizing/05-creating-views.md"
+    - Richeditor settings: "03-customizing/06-richeditor-settings.md"
+  - Theming:
+    - Theming strategy: "04-theming/01-theming-strategy.md"
+    - Custom styling: "04-theming/02-custom-styling.md"
+    - Intregrate third party: "04-theming/03-integrate-third-party.md"
+  - Deploying:
+    - Simple deployment: "05-deploying/01-simple.md"
+    - Using PM2: "05-deploying/02-pm2.md"
+  - Contributing: "06-contributing/index.md"
+  - Developer Guidelines:
+    - React: "07-developer-guidelines/01-react.md"
+    - Babel: "07-developer-guidelines/02-babel.md"
+    - Linting: "07-developer-guidelines/03-linting.md"
+    - Language features: "07-developer-guidelines/04-language-features.md"
 
 markdown_extensions:
   - admonition

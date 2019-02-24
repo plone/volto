@@ -1,6 +1,6 @@
-# Semantic UI Schulung
+# Semantic UI
 
-- [Introduction](01-introducion.md)
+- [About Semantic UI](01-introduction.md)
 
 - [SemanticUI Theming](02-semanticui-theming.md)
 
