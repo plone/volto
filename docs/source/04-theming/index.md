@@ -1,4 +1,4 @@
-# Plone 6 Theming
+# Theming
 
 - [Theming Strategy](01-theming-strategy)
 

@@ -1,6 +1,6 @@
-# Plone 6 Theming
+# Customizing
 
-- [Creating a Project](01-creating-project.md)
+- [Creating a new Volto Project](01-creating-project.md)
 
 - [Folder Structure](02-folder-structure)
 
