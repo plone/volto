@@ -596,12 +596,12 @@ body {
   }
 
   iframe {
-    width: 50%;
     height: 25vw;
   }
 
-  .ui.image {
-    width: auto;
+  .ui.image,
+  img {
+    width: 50%;
   }
 }
 
@@ -619,8 +619,9 @@ body {
     height: 25vw;
   }
 
-  .ui.image {
-    width: auto;
+  .ui.image,
+  img {
+    width: 50%;
   }
 
 }
