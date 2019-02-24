@@ -174,6 +174,8 @@ class Form extends Component {
     this.onAddTile = this.onAddTile.bind(this);
     this.onMoveTile = this.onMoveTile.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onFocusPreviousTile = this.onFocusPreviousTile.bind(this);
+    this.onFocusNextTile = this.onFocusNextTile.bind(this);
   }
 
   /**
@@ -366,6 +368,60 @@ class Form extends Component {
   }
 
   /**
+   *
+   * @method onFocusPreviousTile
+   * @param {string} currentTile The id of the current tile
+   * @param {node} tileNode The id of the current tile
+   * @returns {undefined}
+   */
+  onFocusPreviousTile(currentTile, tileNode) {
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+    const currentIndex = this.state.formData[
+      tilesLayoutFieldname
+    ].items.indexOf(currentTile);
+
+    if (currentIndex === 0) {
+      // We are already at the top tile don't do anything
+      return;
+    }
+    const newindex = currentIndex - 1;
+    tileNode.blur();
+
+    this.onSelectTile(
+      this.state.formData[tilesLayoutFieldname].items[newindex],
+    );
+  }
+
+  /**
+   *
+   * @method onFocusNextTile
+   * @param {string} currentTile The id of the current tile
+   * @param {node} tileNode The id of the current tile
+   * @returns {undefined}
+   */
+  onFocusNextTile(currentTile, tileNode) {
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+    const currentIndex = this.state.formData[
+      tilesLayoutFieldname
+    ].items.indexOf(currentTile);
+
+    if (
+      currentIndex ===
+      this.state.formData[tilesLayoutFieldname].items.length - 1
+    ) {
+      // We are already at the bottom tile don't do anything
+      return;
+    }
+
+    const newindex = currentIndex + 1;
+    tileNode.blur();
+
+    this.onSelectTile(
+      this.state.formData[tilesLayoutFieldname].items[newindex],
+    );
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -391,6 +447,8 @@ class Form extends Component {
             onDeleteTile={this.onDeleteTile}
             onSelectTile={this.onSelectTile}
             onMoveTile={this.onMoveTile}
+            onFocusPreviousTile={this.onFocusPreviousTile}
+            onFocusNextTile={this.onFocusNextTile}
             properties={formData}
             data={tilesDict[tile]}
             pathname={this.props.pathname}
@@ -419,7 +477,7 @@ class Form extends Component {
                   menuItem: item.title,
                   render: () => [
                     this.props.title && (
-                      <Segment secondary attached>
+                      <Segment secondary attached key={this.props.title}>
                         {this.props.title}
                       </Segment>
                     ),

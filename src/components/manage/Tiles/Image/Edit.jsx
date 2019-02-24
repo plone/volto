@@ -7,16 +7,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { readAsDataURL } from 'promise-file-reader';
-import {
-  Button,
-  Dimmer,
-  Image,
-  Input,
-  Loader,
-  Message,
-} from 'semantic-ui-react';
+import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import cx from 'classnames';
 import { settings } from '~/config';
 
 import { Icon } from '../../../../components';
@@ -71,6 +65,8 @@ export default class Edit extends Component {
     onChangeTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    onFocusPreviousTile: PropTypes.func.isRequired,
+    onFocusNextTile: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
@@ -110,6 +106,10 @@ export default class Edit extends Component {
         ...this.props.data,
         url: nextProps.content['@id'],
       });
+    }
+
+    if (nextProps.selected) {
+      this.node.focus();
     }
   }
 
@@ -176,6 +176,23 @@ export default class Edit extends Component {
   };
 
   /**
+   * handleKeyDown
+   * @method handleKeyDown
+   * @param {event} e Event
+   * @returns {undefined}
+   */
+  handleKeyDown = e => {
+    if (e.key === 'ArrowUp') {
+      this.props.onFocusPreviousTile(this.props.tile, this.node);
+      e.preventDefault();
+    }
+    if (e.key === 'ArrowDown') {
+      this.props.onFocusNextTile(this.props.tile, this.node);
+      e.preventDefault();
+    }
+  };
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -184,15 +201,19 @@ export default class Edit extends Component {
     return (
       <div
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={[
-          'tile',
-          'image',
-          'align',
-          this.props.selected && 'selected',
+        className={cx(
+          'tile image align',
+          {
+            selected: this.props.selected,
+            center: !Boolean(this.props.data.align),
+          },
           this.props.data.align,
-        ]
-          .filter(e => !!e)
-          .join(' ')}
+        )}
+        tabIndex={0}
+        onKeyDown={this.handleKeyDown}
+        ref={node => {
+          this.node = node;
+        }}
       >
         {this.props.selected &&
           !!this.props.data.url && (
@@ -282,7 +303,7 @@ export default class Edit extends Component {
           )}
         {this.props.data.url ? (
           <p>
-            <Image
+            <img
               src={
                 this.props.data.url.includes(settings.apiPath)
                   ? `${this.props.data.url}/@@images/image`
