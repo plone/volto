@@ -8,9 +8,6 @@ exports[`View renders a document view 1`] = `
     id="DocumentView"
   />
   <div
-    id="SocialSharing"
-  />
-  <div
     id="Portal"
   />
 </div>
@@ -24,9 +21,6 @@ exports[`View renders a summary view 1`] = `
     id="SummaryView"
   />
   <div
-    id="SocialSharing"
-  />
-  <div
     id="Portal"
   />
 </div>
@@ -38,9 +32,6 @@ exports[`View renders a tabular view 1`] = `
 >
   <div
     id="TabularView"
-  />
-  <div
-    id="SocialSharing"
   />
   <div
     id="Portal"

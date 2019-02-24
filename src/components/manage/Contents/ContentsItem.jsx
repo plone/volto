@@ -102,14 +102,14 @@ export const ContentsItemComponent = ({
               </Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown.Item onClick={onMoveToTop} value={order}>
-                <Icon name="long arrow up" />{' '}
+                <Icon name="arrow up" />{' '}
                 <FormattedMessage
                   id="Move to top of folder"
                   defaultMessage="Move to top of folder"
                 />
               </Dropdown.Item>
               <Dropdown.Item onClick={onMoveToBottom} value={order}>
-                <Icon name="long arrow down" />{' '}
+                <Icon name="arrow down" />{' '}
                 <FormattedMessage
                   id="Move to bottom of folder"
                   defaultMessage="Move to bottom of folder"
