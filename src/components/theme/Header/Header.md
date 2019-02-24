@@ -9,6 +9,7 @@ Output:
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
+const BrowserRouter = require('react-router-dom/BrowserRouter').default;
 const store = configureStore()({
     userSession: {
         login: {},
@@ -21,7 +22,9 @@ const store = configureStore()({
 
 <div className={'rsg--pre-42'}>
     <Provider store={store}>
+    <BrowserRouter>
         <Header pathname="" />
+    </BrowserRouter>
     </Provider>
 </div>
 ```

@@ -21,7 +21,7 @@
     "url": "https://github.com/plone/volto/issues",
     "email": "plone-developers@lists.sourceforge.net"
   },
-  "homepage": "https://plone.org",
+  "homepage": "http://plone.github.io/volto",
   "keywords": [
     "volto",
     "plone",
@@ -33,7 +33,10 @@
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js",
-    "i18n": "NODE_ENV=production node src/i18n.js"
+    "i18n": "NODE_ENV=production node src/i18n.js",
+    "styleguidist": "styleguidist server",
+    "styleguidist:build": "styleguidist build",
+    "deploy": "gh-pages -d styleguide"
   },
   "jest": {
     "snapshotSerializers": [
@@ -72,7 +75,7 @@
   "dependencies": {
     "autoprefixer": "9.1.5",
     "babel-core": "6.26.3",
-    "babel-loader": "8.0.2",
+    "babel-loader": "7",
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-plugin-react-intl": "2.4.0",
     "babel-plugin-root-import": "6.1.0",
@@ -80,7 +83,7 @@
     "babel-preset-stage-0": "6.24.1",
     "connected-react-router": "4.4.1",
     "coveralls": "3.0.2",
-    "css-loader": "1.0.0",
+    "css-loader": "2.1.0",
     "draft-js": "0.10.5",
     "draft-js-block-breakout-plugin": "2.0.1",
     "draft-js-buttons": "2.0.1",
@@ -144,8 +147,12 @@
     "style-loader": "0.23.0",
     "superagent": "4.0.0-beta.5",
     "svg-loader": "0.0.2",
-    "svgo": "1.0.5",
+    "svgo": "1.1.1",
     "svgo-loader": "2.1.0",
     "tlds": "1.203.1"
+  },
+  "devDependencies": {
+    "gh-pages": "2.0.1",
+    "react-styleguidist": "8.0.6"
   }
 }
