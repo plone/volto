@@ -1,0 +1,41 @@
+site_name: Volto documentation
+docs_dir: ./source
+site_dir: ./build
+repo_url: 'https://github.com/plone/volto'
+copyright: 'Made with ❤️ by the Volto Team - All code owned by the Plone Foundation'
+theme:
+  name: 'material'
+  custom_dir: 'theme'
+  logo: 'images/volto-h-transparent.svg'
+  favicon: 'images/favicon.ico'
+  palette:
+    primary: 'teal'
+    accent: 'red'
+  font:
+    text: 'Poppins'
+    code: 'Source Code Pro'
+extra_css:
+  - 'stylesheets/extra.css'
+
+nav:
+  - Introduction: "01-installing/01-installing.md"
+  - Semantic UI: "02-semantic-ui"
+  - Theming: "03-theming"
+  - Deploying: "04-deploying"
+  - Developer Guidelines: "05-developer-guidelines"
+  - Contributing: "06-contributing"
+  - Developer Guidelines: "07-developer-guidelines"
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - pymdownx.superfences
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tasklist
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+
