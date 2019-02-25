@@ -11,20 +11,23 @@ const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
 const BrowserRouter = require('react-router-dom/BrowserRouter').default;
 const store = configureStore()({
-    userSession: {
-        login: {},
-    },
-    intl: {
-        locale: 'en',
-        messages: {}
-    },
+  userSession: {
+    login: {},
+  },
+  intl: {
+    locale: 'en',
+    messages: {},
+  },
+  content: {
+    '@id': 'dgdf',
+  },
 });
 
 <div className={'rsg--pre-42'}>
-    <Provider store={store}>
+  <Provider store={store}>
     <BrowserRouter>
-        <Header pathname="" />
+      <Header pathname="" />
     </BrowserRouter>
-    </Provider>
-</div>
+  </Provider>
+</div>;
 ```

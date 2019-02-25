@@ -46,6 +46,7 @@ const POST_CSS_LOADER = {
 
 module.exports = {
   components: 'src/components/**/*.jsx',
+  resolver: require('react-docgen').resolver.findAllComponentDefinitions,
   ignore: ['**/*.test.jsx', '**/Contents/Contents*jsx', '**/Tile/Tile.jsx'],
   verbose: true,
   title: 'Volto Style Guide',
@@ -72,15 +73,18 @@ module.exports = {
       content: 'docs/mosaic.md',
     },
   ],
-  webpackConfig: Object.assign({},require('./node_modules/razzle/config/createConfig.js'),{
-    module: {
-      rules: [
-        {
-          test: /\.jsx?$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader',
-        },
-        
+  webpackConfig: Object.assign(
+    {},
+    require('./node_modules/razzle/config/createConfig.js'),
+    {
+      module: {
+        rules: [
+          {
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+          },
+
           {
             exclude: [
               /\.html$/,
@@ -96,107 +100,111 @@ module.exports = {
               /\.jpe?g$/,
               /\.png$/,
               /\.(config|variables|overrides)$/,
-      /icons\/.*\.svg$/,
+              /icons\/.*\.svg$/,
             ],
             loader: require.resolve('file-loader'),
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
               emitFile: true,
             },
-  },
-        
-        {
+          },
+
+          {
             test: /\.css$/,
             use: ['style-loader', 'css-loader'],
-        },
-        {
-          test: /\.less$/,
-      include: [path.resolve('./theme'), /node_modules\/semantic-ui-less/],
-      use: true
-        ? [
-            {
-              loader: 'style-loader',
-            },
-            BASE_CSS_LOADER,
-            POST_CSS_LOADER,
-            {
-              loader: 'less-loader',
-              options: {
-                outputStyle: 'expanded',
-                sourceMap: true,
+          },
+          {
+            test: /\.less$/,
+            include: [
+              path.resolve('./theme'),
+              /node_modules\/semantic-ui-less/,
+            ],
+            use: true
+              ? [
+                  {
+                    loader: 'style-loader',
+                  },
+                  BASE_CSS_LOADER,
+                  POST_CSS_LOADER,
+                  {
+                    loader: 'less-loader',
+                    options: {
+                      outputStyle: 'expanded',
+                      sourceMap: true,
+                    },
+                  },
+                ]
+              : [
+                  MiniCssExtractPlugin.loader,
+                  {
+                    loader: 'css-loader',
+                    options: {
+                      importLoaders: 2,
+                      sourceMap: true,
+                      modules: false,
+                      minimize: true,
+                      localIdentName: '[name]__[local]___[hash:base64:5]',
+                    },
+                  },
+                  POST_CSS_LOADER,
+                  {
+                    loader: 'less-loader',
+                    options: {
+                      outputStyle: 'expanded',
+                      sourceMap: true,
+                    },
+                  },
+                ],
+          },
+          {
+            test: /icons\/.*\.svg$/,
+            use: [
+              {
+                loader: 'svg-loader',
               },
-            },
-          ]
-        : [
-            MiniCssExtractPlugin.loader,
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 2,
-                sourceMap: true,
-                modules: false,
-                minimize: true,
-                localIdentName: '[name]__[local]___[hash:base64:5]',
+              {
+                loader: 'svgo-loader',
+                options: {
+                  plugins: [
+                    { removeTitle: true },
+                    { convertPathData: false },
+                    { removeUselessStrokeAndFill: true },
+                    { removeViewBox: false },
+                  ],
+                },
               },
-            },
-            POST_CSS_LOADER,
-            {
-              loader: 'less-loader',
-              options: {
-                outputStyle: 'expanded',
-                sourceMap: true,
-              },
-            },
-          ],
-    },
-    {
-      test: /icons\/.*\.svg$/,
-      use: [
-        {
-          loader: 'svg-loader',
-        },
-        {
-          loader: 'svgo-loader',
-          options: {
-            plugins: [
-              { removeTitle: true },
-              { convertPathData: false },
-              { removeUselessStrokeAndFill: true },
-              { removeViewBox: false },
             ],
           },
-        },
-      ],
-    },
 
-        {
-          test: /\.(woff|woff2|ttf|eot|png|gif|jpg)(\?v=\d+\.\d+\.\d+)?$/,
-          loader: 'url-loader',
-          options: {
-            limit: 10000,
+          {
+            test: /\.(woff|woff2|ttf|eot|png|gif|jpg)(\?v=\d+\.\d+\.\d+)?$/,
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+            },
           },
+        ],
+      },
+      resolve: {
+        alias: {
+          'webpack/hot/poll': require.resolve('webpack/hot/poll'),
+          '../../theme.config$': `${projectRootPath}/theme/theme.config`,
+          '@plone/volto':
+            packageJson.name === '@plone/volto'
+              ? `${projectRootPath}/src/`
+              : `${projectRootPath}/node_modules/@plone/volto/src/`,
         },
+      },
+      plugins: [
+        new webpack.DefinePlugin({
+          __CLIENT__: true,
+          __SERVER__: false,
+        }),
       ],
+      performance: {
+        maxAssetSize: 10000000,
+        maxEntrypointSize: 10000000,
+      },
     },
-    resolve: {
-      alias: {
-        'webpack/hot/poll': require.resolve('webpack/hot/poll'),
-        '../../theme.config$': `${projectRootPath}/theme/theme.config`,
-      '@plone/volto':
-        packageJson.name === '@plone/volto'
-          ? `${projectRootPath}/src/`
-          : `${projectRootPath}/node_modules/@plone/volto/src/`,
-      }
-    },
-    plugins: [
-      new webpack.DefinePlugin({
-        __CLIENT__: true,
-        __SERVER__: false,
-      })
-    ],
-    performance: {
-      maxAssetSize: 10000000,
-      maxEntrypointSize: 10000000,
-    }
-  }),
+  ),
 };
