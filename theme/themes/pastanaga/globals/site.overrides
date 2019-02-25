@@ -600,8 +600,9 @@ body {
     height: 25vw;
   }
 
-  .ui.image {
-    width: auto;
+  .ui.image,
+  img {
+    min-width: 50%;
   }
 }
 
@@ -619,8 +620,9 @@ body {
     height: 25vw;
   }
 
-  .ui.image {
-    width: auto;
+  .ui.image,
+  img {
+    min-width: 50%;
   }
 
 }
