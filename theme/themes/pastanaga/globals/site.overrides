@@ -596,6 +596,7 @@ body {
   }
 
   iframe {
+    width: 50%;
     height: 25vw;
   }
 
