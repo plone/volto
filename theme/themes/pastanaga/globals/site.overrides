@@ -601,7 +601,7 @@ body {
 
   .ui.image,
   img {
-    width: 50%;
+    min-width: 50%;
   }
 }
 
@@ -621,7 +621,7 @@ body {
 
   .ui.image,
   img {
-    width: 50%;
+    min-width: 50%;
   }
 
 }
