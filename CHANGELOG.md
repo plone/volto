@@ -6,8 +6,10 @@
 
 - Set image width in Volto editor to 50% for images that float left/right @timo
 - Ability to navigate through the existing tiles with the cursors. @sneridagh
- - HTML Tile for Volto Editor with preview and code prettifier
+- HTML Tile for Volto Editor with preview and code prettifier
    @ajayns @nileshgulia1 @sneridagh
+- Fix not valid `<div>` tag nested in a `<p>` tag error on tiles and wysiwyg
+  field @sneridagh
 
 ### Changes
 
