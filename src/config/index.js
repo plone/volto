@@ -19,7 +19,7 @@ import {
   blockStyleFn,
   listBlockTypes,
 } from './RichTextEditor/Blocks';
-import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
+import plugins from './RichTextEditor/Plugins';
 import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
 import {
   customTiles,
@@ -40,7 +40,6 @@ export const settings = {
   blockStyleFn,
   listBlockTypes,
   FromHTMLCustomBlockFn,
-  richTextEditorInlineToolbarButtons: inlineToolbarButtons,
   richTextEditorPlugins: plugins,
   ToHTMLRenderers,
   ToHTMLOptions,

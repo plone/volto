@@ -12,6 +12,8 @@ import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { includes, isEqual } from 'lodash';
+import createLinkPlugin from '../../AnchorPlugin';
+import { Separator } from 'draft-js-inline-toolbar-plugin';
 
 import { settings, tiles } from '~/config';
 
@@ -21,6 +23,16 @@ import addSVG from '../../../../icons/circle-plus.svg';
 import cameraSVG from '../../../../icons/camera.svg';
 import videoSVG from '../../../../icons/videocamera.svg';
 import TemplatedTilesSVG from '../../../../icons/theme.svg';
+import {
+  BlockquoteButton,
+  BoldButton,
+  CalloutButton,
+  ItalicButton,
+  HeadlineTwoButton,
+  HeadlineThreeButton,
+  OrderedListButton,
+  UnorderedListButton,
+} from '../../../../config/RichTextEditor/Styles';
 
 const messages = defineMessages({
   text: {
@@ -73,14 +85,27 @@ export default class Edit extends Component {
       } else {
         editorState = EditorState.createEmpty();
       }
-
+      const linkPlugin = createLinkPlugin();
+      const inlineToolbarButtons = [
+        BoldButton,
+        ItalicButton,
+        linkPlugin.LinkButton,
+        Separator,
+        HeadlineTwoButton,
+        HeadlineThreeButton,
+        UnorderedListButton,
+        OrderedListButton,
+        BlockquoteButton,
+        CalloutButton,
+      ];
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: settings.richTextEditorInlineToolbarButtons,
+        structure: inlineToolbarButtons,
       });
 
       this.state = {
         editorState,
         inlineToolbarPlugin,
+        linkPlugin,
         addNewTileOpened: false,
         customTilesOpened: false,
       };
@@ -173,7 +198,6 @@ export default class Edit extends Component {
     }
 
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
-
     return (
       <div
         onClick={() => this.props.onSelectTile(this.props.tile)}
@@ -186,6 +210,7 @@ export default class Edit extends Component {
           plugins={[
             this.state.inlineToolbarPlugin,
             ...settings.richTextEditorPlugins,
+            this.state.linkPlugin,
           ]}
           blockRenderMap={settings.extendedBlockRenderMap}
           blockStyleFn={settings.blockStyleFn}
