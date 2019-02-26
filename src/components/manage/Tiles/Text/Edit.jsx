@@ -12,8 +12,9 @@ import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { includes, isEqual } from 'lodash';
-
 import { settings, tiles } from '~/config';
+
+import createLinkPlugin from '../../AnchorPlugin';
 
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
@@ -74,13 +75,21 @@ export default class Edit extends Component {
         editorState = EditorState.createEmpty();
       }
 
+      // We create a new instance of the LinkPlugin, then add it to the desired
+      // position in the toolbar buttons, in a immutable way using an
+      // intermediate object (toolbarButtons).
+      const toolbarButtons = [...settings.richTextEditorInlineToolbarButtons];
+      const linkPlugin = createLinkPlugin();
+      toolbarButtons.splice(2, 0, linkPlugin.LinkButton);
+
       const inlineToolbarPlugin = createInlineToolbarPlugin({
-        structure: settings.richTextEditorInlineToolbarButtons,
+        structure: toolbarButtons,
       });
 
       this.state = {
         editorState,
         inlineToolbarPlugin,
+        linkPlugin,
         addNewTileOpened: false,
         customTilesOpened: false,
       };
@@ -185,6 +194,7 @@ export default class Edit extends Component {
           editorState={this.state.editorState}
           plugins={[
             this.state.inlineToolbarPlugin,
+            this.state.linkPlugin,
             ...settings.richTextEditorPlugins,
           ]}
           blockRenderMap={settings.extendedBlockRenderMap}

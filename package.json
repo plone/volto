@@ -113,7 +113,7 @@
     "draft-js-buttons": "2.0.1",
     "draft-js-import-html": "1.2.1",
     "draft-js-inline-toolbar-plugin": "2.0.1",
-    "draft-js-plugins-editor": "2.0.4",
+    "draft-js-plugins-editor": "2.1.1",
     "draft-js-plugins-utils": "2.0.3",
     "enzyme": "3.6.0",
     "enzyme-adapter-react-15": "1.1.0",
