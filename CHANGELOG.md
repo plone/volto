@@ -6,13 +6,15 @@
 
 - Set image width in Volto editor to 50% for images that float left/right @timo
 - Ability to navigate through the existing tiles with the cursors. @sneridagh
- - HTML Tile for Volto Editor with preview and code prettifier
+- HTML Tile for Volto Editor with preview and code prettifier
    @ajayns @nileshgulia1 @sneridagh
+- Add error log in the SSR console @sneridagh
 
 ### Changes
 
 - Clean .variables files from Pastanaga theme since they are already applied by
   the theming engine from the default theme. @sneridagh
+- Fix edit forms with richtext fields coming from SSR @sneridagh
 
 ## 1.5.2 (2019-02-20)
 
