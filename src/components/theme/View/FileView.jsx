@@ -8,6 +8,8 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Container } from 'semantic-ui-react';
 
+import { flattenToAppURL } from '../../../helpers';
+
 /**
  * File view component class.
  * @function FileView
@@ -24,7 +26,7 @@ const FileView = ({ content }) => (
     {content.description && (
       <p className="documentDescription">{content.description}</p>
     )}
-    <a href={content.file.download}>{content.file.filename}</a>
+    <a href={flattenToAppURL(content.file.download)}>{content.file.filename}</a>
   </Container>
 );
 

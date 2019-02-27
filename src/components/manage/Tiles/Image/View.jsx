@@ -9,6 +9,8 @@ import { Image } from 'semantic-ui-react';
 import cx from 'classnames';
 import { settings } from '~/config';
 
+import { flattenToAppURL } from '../../../../helpers';
+
 /**
  * View image tile class.
  * @class View
@@ -27,7 +29,7 @@ const View = ({ data }) => (
     <Image
       src={
         data.url.startsWith(settings.apiPath)
-          ? `${data.url}/@@images/image`
+          ? `${flattenToAppURL(data.url)}/@@images/image`
           : data.url
       }
       alt=""

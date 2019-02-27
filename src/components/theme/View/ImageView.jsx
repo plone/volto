@@ -8,6 +8,8 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Container } from 'semantic-ui-react';
 
+import { flattenToAppURL } from '../../../helpers';
+
 /**
  * Image view component class.
  * @function ImageView
@@ -24,7 +26,10 @@ const ImageView = ({ content }) => (
     {content.description && (
       <p className="documentDescription">{content.description}</p>
     )}
-    <img alt={content.title} src={content.image.scales.preview.download} />
+    <img
+      alt={content.title}
+      src={flattenToAppURL(content.image.scales.preview.download)}
+    />
   </Container>
 );
 
