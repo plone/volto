@@ -8,6 +8,8 @@
 - Ability to navigate through the existing tiles with the cursors. @sneridagh
 - HTML Tile for Volto Editor with preview and code prettifier
    @ajayns @nileshgulia1 @sneridagh
+- Add SSR helper to get resources (images/files) from the server using the API
+  headers. This fixes the missing images on non published resources while editing @sneridagh
 - Fix not valid `<div>` tag nested in a `<p>` tag error on tiles and wysiwyg
   field @sneridagh
 
