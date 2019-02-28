@@ -5,6 +5,17 @@ import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
+import { parse as parseUrl } from 'url';
+import { keys } from 'lodash';
+import Raven from 'raven';
+import cookie, { plugToRequest } from 'react-cookie';
+import locale from 'locale';
+
+import routes from '~/routes';
+import nlLocale from '~/../locales/nl.json';
+import deLocale from '~/../locales/de.json';
+import enLocale from '~/../locales/en.json';
+
 import {
   Html,
   Api,
@@ -12,17 +23,7 @@ import {
   generateSitemap,
   getAPIResourceWithAuth,
 } from './helpers';
-import { parse as parseUrl } from 'url';
-import { keys } from 'lodash';
-import Raven from 'raven';
-import cookie, { plugToRequest } from 'react-cookie';
-import locale from 'locale';
-import routes from '~/routes';
-import nlLocale from '~/../locales/nl.json';
-import deLocale from '~/../locales/de.json';
-import enLocale from '~/../locales/en.json';
 
-import { Html, Api, persistAuthToken, generateSitemap } from './helpers';
 import userSession from './reducers/userSession/userSession';
 
 import ErrorPage from './error';
