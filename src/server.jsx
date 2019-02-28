@@ -5,6 +5,13 @@ import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
+import {
+  Html,
+  Api,
+  persistAuthToken,
+  generateSitemap,
+  getAPIResourceWithAuth,
+} from './helpers';
 import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
 import Raven from 'raven';
@@ -72,12 +79,24 @@ server
 
     if (req.path === '/sitemap.xml.gz') {
       generateSitemap(req).then(sitemap => {
-        res.header('Content-Type: application/x-gzip');
-        res.header('Content-Encoding: gzip');
-        res.header(
-          'Content-Disposition: attachment; filename="sitemap.xml.gz"',
-        );
+        res.set('Content-Type', 'application/x-gzip');
+        res.set('Content-Encoding', 'gzip');
+        res.set('Content-Disposition', 'attachment; filename="sitemap.xml.gz"');
         res.send(sitemap);
+      });
+    } else if (
+      req.path.match(/(.*)\/@@images\/(.*)/) ||
+      req.path.match(/(.*)\/@@download\/(.*)/)
+    ) {
+      getAPIResourceWithAuth(req).then(resource => {
+        res.set('Content-Type', resource.headers['content-type']);
+        if (resource.headers['content-disposition']) {
+          res.set(
+            'Content-Disposition',
+            resource.headers['content-disposition'],
+          );
+        }
+        res.send(resource.body);
       });
     } else {
       loadOnServer({ store, location, routes, api })
