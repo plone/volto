@@ -9,21 +9,26 @@ Output:
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
+const BrowserRouter = require('react-router-dom/BrowserRouter').default;
+import { Breadcrumb, Container, Icon, Segment } from 'semantic-ui-react';
 
 const store = configureStore()({
   intl: {
     locale: 'en',
     messages: {},
   },
-
   breadcrumbs: {
     items: [''],
   },
-  getBreadcrumbs: () => {},
-  pathname: '',
 });
 
 <Provider store={store}>
-  <Breadcrumbs />
+  <BrowserRouter>
+    <Breadcrumbs
+      items={['hello', 'www.google.com']}
+      pathname={'/'}
+      getBreadcrumbs={() => {}}
+    />
+  </BrowserRouter>
 </Provider>;
 ```

@@ -55,22 +55,22 @@ module.exports = {
   sections: [
     {
       name: 'Introduction',
-      content: 'docs/introduction.md',
+      content: 'docs/source/index.md',
     },
     {
       name: 'Theme',
       components: 'src/components/theme/**/*.jsx',
-      content: 'docs/theme.md',
+      content: './docs/source/04-theming/01-theming-strategy.md',
     },
     {
       name: 'Manage',
       components: 'src/components/manage/**/*.jsx',
-      content: 'docs/manage.md',
+      content: './docs/source/03-customizing/02-folder-structure.md',
     },
     {
       name: 'Mosaic',
-      components: 'src/components/mosaic/**/*.jsx',
-      content: 'docs/mosaic.md',
+      components: './src/components/mosaic/**/*.jsx',
+      content: './docs/source/03-customizing/index.md',
     },
   ],
   webpackConfig: Object.assign(

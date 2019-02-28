@@ -1,4 +1,5 @@
 App example:
+This is our main Container Component.
 
 ```jsx static
 <AppComponent />
@@ -7,32 +8,48 @@ App example:
 Output:
 
 ```jsx noeditor
-const { Provider } = require('react-redux');
-const configureStore = require('../../../store.js').default;
+const { Provider } = require('react-intl-redux');
+import configureStore from 'redux-mock-store';
 const { createBrowserHistory } = require('history');
 const BrowserRouter = require('react-router-dom/BrowserRouter').default;
 const { Api } = require('../../../helpers');
 const { ReduxAsyncConnect } = 'redux-connect';
-const AppComponent = require('./App').default;
+import { AppComponent } from './App';
 const routes = require('../../../routes').default;
-const { ConnectedRouter } = require('connected-react-router');
 
 const api = new Api();
-const initialState = {
+/*const initialState = {
   app: {
     name: 'Pizza Delivery',
   },
-};
-function purgeMessage() {
-  return '';
-}
-const history = createBrowserHistory();
-const store = configureStore(initialState, history, api);
+};*/
+const store = configureStore()({
+  intl: {
+    locale: 'en',
+    messages: {},
+  },
+  messages: '',
+});
+
 <Provider store={store}>
-  <ConnectedRouter history={history}>
-    <BrowserRouter>
-      <AppComponent />
-    </BrowserRouter>
-  </ConnectedRouter>
+  <BrowserRouter>
+    <AppComponent
+      location={{
+        key: 'ac3df4', // not with HashHistory!
+        pathname: '/',
+        search: '',
+        hash: '#howdy',
+        state: {
+          fromDashboard: true,
+        },
+      }}
+      route={routes}
+      intl={{
+        locale: 'en',
+        messages: {},
+      }}
+      error={''}
+    />
+  </BrowserRouter>
 </Provider>;
 ```

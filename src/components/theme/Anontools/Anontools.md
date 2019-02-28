@@ -7,23 +7,22 @@ Anontools example:
 Output:
 
 ```jsx noeditor
-const { Provider } = require('react-redux');
-const configureStore = require('../../../store.js').default;
-const { createBrowserHistory } = require('history');
-const BrowserRouter = require('react-router-dom/BrowserRouter').default;
-const { Api } = require('../../../helpers');
+import { Provider } from 'react-redux';
+import configureStore from '../../../store.js';
+import { createBrowserHistory } from 'history';
+import { List } from 'semantic-ui-react';
+import BrowserRouter from 'react-router-dom/BrowserRouter';
+import { Api } from '../../../helpers';
 
 const api = new Api();
-const initialState = {
-  app: {
-    name: 'Pizza Delivery',
-  },
-};
 
-const store = configureStore(initialState, createBrowserHistory(), api);
-<Provider store={store}>
-  <BrowserRouter>
-    <Anontools token="" content="" />
-  </BrowserRouter>
-</Provider>;
+const store = configureStore({}, createBrowserHistory(), api);
+<List floated="right" horizontal>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Anontools token="" content="" />
+    </BrowserRouter>
+  </Provider>
+  ;
+</List>;
 ```

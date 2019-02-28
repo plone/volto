@@ -2,7 +2,7 @@ module.exports = {
   presets: ['razzle/babel', 'stage-0'],
   plugins: [
     'transform-decorators-legacy',
-    'babel-plugin-transform-class-properties',
+    ['transform-class-properties', { spec: true }],
     [
       'babel-plugin-root-import',
       {
