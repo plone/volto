@@ -7,6 +7,18 @@ dist:
 build:
 	yarn && RAZZLE_API_PATH=http://localhost:55001/plone yarn build
 
+bin/pip:
+	@echo "$(GREEN)==> Setup Virtual Env$(RESET)"
+	virtualenv -p python3 --clear .
+	bin/pip install pip --upgrade
+	bin/pip install -r requirements-docs.txt --upgrade
+
+docs-serve:
+	(cd docs && ../bin/mkdocs serve)
+
+docs-build: bin/pip
+	(cd docs && ../bin/mkdocs build)
+
 start: dist
 	yarn start:prod
 
