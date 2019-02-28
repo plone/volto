@@ -69,7 +69,7 @@ const messages = defineMessages({
  * @class LoginComponent
  * @extends Component
  */
-export class LoginComponent extends Component {
+class LoginComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -295,7 +295,7 @@ export class LoginComponent extends Component {
     );
   }
 }
-
+export { LoginComponent };
 export default asyncConnect([
   {
     key: 'userSession',

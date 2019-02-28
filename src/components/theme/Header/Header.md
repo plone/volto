@@ -1,4 +1,4 @@
-Header example:
+Header example: Header example, with `intl` auto-injected:
 
 ```jsx static
 <Header pathname="" />
@@ -19,14 +19,19 @@ const store = configureStore()({
     messages: {},
   },
   content: {
-    '@id': 'dgdf',
+    ['@id']: 'http://localhost:8080/plone/front-page/@navigation',
   },
 });
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
     <BrowserRouter>
-      <Header pathname="" />
+      <Header
+        pathname="/"
+        content={{
+          ['@id']: 'http://localhost:8080/plone/front-page/@navigation',
+        }}
+      />
     </BrowserRouter>
   </Provider>
 </div>;

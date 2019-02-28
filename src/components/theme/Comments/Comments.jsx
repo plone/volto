@@ -53,7 +53,7 @@ const messages = defineMessages({
  * @class Comments
  * @extends Component
  */
-export default class Comments extends Component {
+class Comments extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -283,3 +283,5 @@ export default class Comments extends Component {
     );
   }
 }
+
+export default Comments;

@@ -17,12 +17,9 @@ import { Api } from '../../../helpers';
 const api = new Api();
 
 const store = configureStore({}, createBrowserHistory(), api);
-<List floated="right" horizontal>
-  <Provider store={store}>
-    <BrowserRouter>
-      <Anontools token="" content="" />
-    </BrowserRouter>
-  </Provider>
-  ;
-</List>;
+<Provider store={store}>
+  <BrowserRouter>
+    <Anontools token="" content="" />
+  </BrowserRouter>
+</Provider>;
 ```

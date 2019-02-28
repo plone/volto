@@ -33,7 +33,7 @@ const messages = defineMessages({
  * @class Breadcrumbs
  * @extends Component
  */
-export default class Breadcrumbs extends Component {
+class Breadcrumbs extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -107,3 +107,5 @@ export default class Breadcrumbs extends Component {
     );
   }
 }
+
+export default Breadcrumbs;

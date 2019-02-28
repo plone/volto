@@ -14,7 +14,7 @@ const { createBrowserHistory } = require('history');
 const BrowserRouter = require('react-router-dom/BrowserRouter').default;
 const { Api } = require('../../../helpers');
 const { ReduxAsyncConnect } = 'redux-connect';
-import { AppComponent } from './App';
+import  AppComponent  from './App';
 const routes = require('../../../routes').default;
 
 const api = new Api();

@@ -35,7 +35,7 @@ import {
  * @class AppComponent
  * @extends {Component}
  */
-export class AppComponent extends Component {
+class AppComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -126,6 +126,8 @@ export class AppComponent extends Component {
     );
   }
 }
+
+export { AppComponent };
 
 export default asyncConnect([
   {

@@ -21,7 +21,7 @@ import { settings } from '~/config';
  * @class Anontools
  * @extends Component
  */
-export default class Anontools extends Component {
+class Anontools extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -76,3 +76,5 @@ export default class Anontools extends Component {
     );
   }
 }
+
+export default Anontools;

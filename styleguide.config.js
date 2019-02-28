@@ -52,6 +52,19 @@ module.exports = {
   title: 'Volto Style Guide',
   showCode: true,
   showUsage: true,
+  require: [
+    path.join(__dirname, 'node_modules/semantic-ui-less/semantic.less'),
+    path.join(__dirname, 'theme/themes/pastanaga/extras/extras.less'),
+  ],
+  theme: {
+    color: {
+      link: 'firebrick',
+      linkHover: 'salmon',
+    },
+    fontFamily: {
+      base: '"Comic Sans MS", "Comic Sans", cursive',
+    },
+  },
   sections: [
     {
       name: 'Introduction',
