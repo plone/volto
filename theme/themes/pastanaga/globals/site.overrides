@@ -742,7 +742,7 @@ body {
   position: absolute;
   padding: 0;
   border: none;
-  margin-top: -35px;
+  margin-top: -22px;
   margin-bottom: 0;
   -webkit-box-shadow: none;
   box-shadow: none;

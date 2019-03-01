@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix a regression on the add tile button alignment @sneridagh
+
 ## 1.6.0 (2019-03-01)
 
 ### Added
