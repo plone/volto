@@ -12,7 +12,6 @@ if (process.argv.length < 3) {
 
 const command = process.argv[2];
 const version = process.argv[3];
-console.log(command);
 
 function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
