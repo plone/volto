@@ -33,6 +33,7 @@ const View = ({ data }) => (
           ? `${flattenToAppURL(data.url)}/@@images/image`
           : data.url,
         alt: '',
+        className: 'ui image',
       }}
       zoomImage={{
         src: data.url.startsWith(settings.apiPath)

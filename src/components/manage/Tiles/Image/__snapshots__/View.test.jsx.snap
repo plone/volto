@@ -6,6 +6,7 @@ exports[`renders a view image component 1`] = `
 >
   <img
     alt=""
+    className="ui image"
     onClick={[Function]}
     onError={[Function]}
     onKeyDown={[Function]}
