@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { Image } from 'semantic-ui-react';
 import cx from 'classnames';
 import { settings } from '~/config';
+import ImageZoom from 'react-medium-image-zoom';
 
 import { flattenToAppURL } from '../../../../helpers';
 
@@ -26,13 +27,19 @@ const View = ({ data }) => (
       data.align,
     )}
   >
-    <Image
-      src={
-        data.url.startsWith(settings.apiPath)
+    <ImageZoom
+      image={{
+        src: data.url.startsWith(settings.apiPath)
           ? `${flattenToAppURL(data.url)}/@@images/image`
-          : data.url
-      }
-      alt=""
+          : data.url,
+        alt: '',
+      }}
+      zoomImage={{
+        src: data.url.startsWith(settings.apiPath)
+          ? `${flattenToAppURL(data.url)}/@@images/image`
+          : data.url,
+        alt: '',
+      }}
     />
   </p>
 );
