@@ -2,8 +2,6 @@
 
 ## 1.6.1 (unreleased)
 
-### Added
-
 ### Changes
 
 - Fix a regression on the add tile button alignment @sneridagh
