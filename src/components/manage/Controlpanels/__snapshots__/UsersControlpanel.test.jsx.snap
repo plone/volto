@@ -2,20 +2,8 @@
 
 exports[`UsersControlpanel renders a user control component 1`] = `
 <div
-  id="page-users"
+  className="ui container"
 >
-  <button
-    className="ui button"
-    onClick={[Function]}
-  >
-    Add User
-  </button>
-  <button
-    className="ui button"
-    onClick={[Function]}
-  >
-    Add Groups
-  </button>
   <div
     className="container"
   />
@@ -103,8 +91,30 @@ exports[`UsersControlpanel renders a user control component 1`] = `
       </table>
     </form>
     <div
-      className="ui hidden divider"
-    />
+      className="ui clearing segment actions"
+    >
+      <span>
+        Add New User
+      </span>
+      <svg
+        className="icon icon-adduser"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<title>Add</title>undefined",
+          }
+        }
+        onClick={[Function]}
+        style={
+          Object {
+            "fill": "blue",
+            "height": "35px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </div>
     <div
       className="ui secondary segment"
     >
@@ -178,6 +188,31 @@ exports[`UsersControlpanel renders a user control component 1`] = `
         />
       </table>
     </form>
+    <div
+      className="ui clearing segment actions"
+    >
+      <span>
+        Add New Group
+      </span>
+      <svg
+        className="icon icon-adduser"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<title>Add</title>undefined",
+          }
+        }
+        onClick={[Function]}
+        style={
+          Object {
+            "fill": "blue",
+            "height": "35px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </div>
   </div>
   <div
     id="Portal"
