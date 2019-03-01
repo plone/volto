@@ -867,5 +867,9 @@ body {
 }
 
 .modal {
-  margin: 0 auto!important; top: auto !important; left: auto !important; transform-origin: center !important; transition: all ease .5s;
+  margin: 0 auto!important;
+  top: auto !important;
+  left: auto !important;
+  transform-origin: center !important;
+  transition: all ease .5s;
 }
