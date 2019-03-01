@@ -5,6 +5,17 @@ import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
+import { parse as parseUrl } from 'url';
+import { keys } from 'lodash';
+import Raven from 'raven';
+import cookie, { plugToRequest } from 'react-cookie';
+import locale from 'locale';
+
+import routes from '~/routes';
+import nlLocale from '~/../locales/nl.json';
+import deLocale from '~/../locales/de.json';
+import enLocale from '~/../locales/en.json';
+
 import {
   Html,
   Api,
@@ -12,22 +23,12 @@ import {
   generateSitemap,
   getAPIResourceWithAuth,
 } from './helpers';
-import { parse as parseUrl } from 'url';
-import { keys } from 'lodash';
-import Raven from 'raven';
 
 import userSession from './reducers/userSession/userSession';
 
-import cookie, { plugToRequest } from 'react-cookie';
 import ErrorPage from './error';
 
-import locale from 'locale';
-
-import routes from '~/routes';
 import languages from './constants/Languages';
-import nlLocale from '~/../locales/nl.json';
-import deLocale from '~/../locales/de.json';
-import enLocale from '~/../locales/en.json';
 
 import configureStore from './store';
 
@@ -133,6 +134,10 @@ server
           res.set({
             'Cache-Control': 'public, max-age=60, no-transform',
           });
+
+          // Displays error in console
+          console.error(error);
+
           res.status(500).send(`<!doctype html> ${renderToString(errorPage)}`);
         });
     }
