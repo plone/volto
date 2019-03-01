@@ -861,3 +861,11 @@ body {
 .comments {
   margin-top: 20px;
 }
+
+.icon-adduser:hover{
+  cursor: pointer;
+}
+
+.modal {
+  margin: 0 auto!important; top: auto !important; left: auto !important; transform-origin: center !important; transition: all ease .5s;
+}

@@ -79,6 +79,7 @@ export default class FormModal extends Component {
     submitLabel: PropTypes.string,
     intl: intlShape.isRequired,
     loading: PropTypes.bool,
+    className: PropTypes.string,
   };
 
   /**
@@ -93,6 +94,7 @@ export default class FormModal extends Component {
     open: true,
     loading: null,
     submitError: null,
+    className: null,
   };
 
   /**
@@ -210,7 +212,7 @@ export default class FormModal extends Component {
 
     const state_errors = keys(this.state.errors).length > 0;
     return (
-      <Modal open={this.props.open}>
+      <Modal open={this.props.open} className={this.props.className}>
         <Header>{this.props.title}</Header>
         <Modal.Content>
           <UiForm

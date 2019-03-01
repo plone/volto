@@ -10,14 +10,13 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import {
-  Button,
   Confirm,
   Form,
   Icon,
   Input,
   Segment,
   Table,
-  Divider,
+  Container,
 } from 'semantic-ui-react';
 import { find, map } from 'lodash';
 import {
@@ -41,8 +40,10 @@ import {
   ModalForm,
   Toolbar,
   UsersControlpanelUser,
+  Icon as MyIcon,
   UsersControlpanelGroups,
 } from '../../../components';
+import addSvg from '../../../icons/circle-plus.svg';
 
 const messages = defineMessages({
   searchUsers: {
@@ -74,12 +75,12 @@ const messages = defineMessages({
     defaultMessage: 'Delete Group',
   },
   addUserButtonTitle: {
-    id: 'Add User',
-    defaultMessage: 'Add User',
+    id: 'Add New User',
+    defaultMessage: 'Add New User',
   },
   addGroupsButtonTitle: {
-    id: 'Add Groups',
-    defaultMessage: 'Add Groups',
+    id: 'Add New Group',
+    defaultMessage: 'Add New Group',
   },
   addUserFormTitle: {
     id: 'Add User',
@@ -476,19 +477,7 @@ export default class UsersControlpanel extends Component {
       ? this.state.groupToDelete.id
       : '';
     return (
-      <div id="page-users">
-        <Button
-          content={this.props.intl.formatMessage(messages.addUserButtonTitle)}
-          onClick={() => {
-            this.setState({ showAddUser: true });
-          }}
-        />
-        <Button
-          content={this.props.intl.formatMessage(messages.addGroupsButtonTitle)}
-          onClick={() => {
-            this.setState({ showAddGroup: true });
-          }}
-        />
+      <Container>
         <Helmet title="Users and Groups" />
         <div className="container">
           <Confirm
@@ -532,6 +521,7 @@ export default class UsersControlpanel extends Component {
           />
           <ModalForm
             open={this.state.showAddUser}
+            className="modal"
             onSubmit={this.onAddUserSubmit}
             submitError={this.state.addUserError}
             onCancel={() => this.setState({ showAddUser: false })}
@@ -596,6 +586,7 @@ export default class UsersControlpanel extends Component {
           />
           <ModalForm
             open={this.state.showAddGroup}
+            className="modal"
             onSubmit={this.onAddGroupSubmit}
             submitError={this.state.addGroupError}
             onCancel={() => this.setState({ showAddGroup: false })}
@@ -711,7 +702,19 @@ export default class UsersControlpanel extends Component {
               </Table.Body>
             </Table>
           </Form>
-          <Divider hidden />
+          <Segment clearing className="actions">
+            <FormattedMessage id="Add New User" defaultMessage="Add New User" />
+            <MyIcon
+              name={addSvg}
+              size="35px"
+              color="blue"
+              title="Add"
+              onClick={() => {
+                this.setState({ showAddUser: true });
+              }}
+              className="icon-adduser"
+            />
+          </Segment>
           <Segment secondary>
             <FormattedMessage id="Groups" defaultMessage="Groups" />
           </Segment>
@@ -760,6 +763,22 @@ export default class UsersControlpanel extends Component {
               </Table.Body>
             </Table>
           </Form>
+          <Segment clearing className="actions">
+            <FormattedMessage
+              id="Add New Group"
+              defaultMessage="Add New Group"
+            />
+            <MyIcon
+              name={addSvg}
+              size="35px"
+              color="blue"
+              title="Add"
+              onClick={() => {
+                this.setState({ showAddGroup: true });
+              }}
+              className="icon-adduser"
+            />
+          </Segment>
         </Segment.Group>
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
@@ -776,7 +795,7 @@ export default class UsersControlpanel extends Component {
             }
           />
         </Portal>
-      </div>
+      </Container>
     );
   }
 }
