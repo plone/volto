@@ -6,6 +6,9 @@
 *******************************/
 body {
   display: flex;
+  @media only screen and (max-width: @largestMobileScreen) {
+    flex-direction: column;
+  }
 }
 
 #main {

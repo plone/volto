@@ -5,41 +5,60 @@
 
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Button, Divider, Menu } from 'semantic-ui-react';
-import jwtDecode from 'jwt-decode';
 import cookie from 'react-cookie';
-import { injectIntl } from 'react-intl';
-import LogoImage from '@plone/volto/components/manage/Toolbar/pastanaga.svg';
-import { BodyClass } from '../../../helpers';
+import { find } from 'lodash';
 
-@injectIntl
-@connect(state => ({
-  token: state.userSession.token,
-  fullname: state.userSession.token
-    ? jwtDecode(state.userSession.token).fullname
-    : '',
-  content: state.content.data,
-}))
+import { listActions } from '../../../actions';
+
+import { Icon } from '../../../components';
+import pastanagaSmall from './pastanaga-small.svg';
+import pastanagalogo from './pastanaga.svg';
+import { getBaseUrl } from '../../../helpers';
+
+import penSVG from '../../../icons/pen.svg';
+import folderSVG from '../../../icons/folder.svg';
+import addSVG from '../../../icons/add-document.svg';
+import moreSVG from '../../../icons/more.svg';
+import userSVG from '../../../icons/user.svg';
+
 /**
  * Toolbar container class.
  * @class Toolbar
  * @extends Component
  */
-export default class Toolbar extends Component {
+@connect(
+  (state, props) => ({
+    actions: state.actions.actions,
+    token: state.userSession.token,
+    content: state.content.data,
+    pathname: props.pathname,
+  }),
+  { listActions },
+)
+class Toolbar extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
    * @static
    */
   static propTypes = {
+    actions: PropTypes.shape({
+      object: PropTypes.arrayOf(PropTypes.object),
+      object_buttons: PropTypes.arrayOf(PropTypes.object),
+      user: PropTypes.arrayOf(PropTypes.object),
+    }),
     token: PropTypes.string,
+    pathname: PropTypes.string.isRequired,
     content: PropTypes.shape({
       '@type': PropTypes.string,
       is_folderish: PropTypes.bool,
       review_state: PropTypes.string,
     }),
+    listActions: PropTypes.func.isRequired,
     inner: PropTypes.element.isRequired,
+    hideDefaultViewButtons: PropTypes.bool,
   };
 
   /**
@@ -48,38 +67,114 @@ export default class Toolbar extends Component {
    * @static
    */
   static defaultProps = {
+    actions: null,
     token: null,
     content: null,
+    hideDefaultViewButtons: false,
+  };
+
+  state = {
+    expanded: cookie.load('toolbar_expanded') !== 'false',
+    showMenu: false,
+    menuStyle: {},
+    menuComponents: [],
   };
 
   /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs Toolbar
+   * Component will mount
+   * @method componentDidMount
+   * @returns {undefined}
    */
-  constructor(props) {
-    super(props);
-    this.onToggleExpanded = this.onToggleExpanded.bind(this);
-    this.state = {
-      expanded: cookie.load('toolbar_expanded') !== 'false',
-    };
+  componentDidMount() {
+    this.props.listActions(this.props.pathname);
   }
 
   /**
-   * On toggle expanded handler
-   * @method onToggleExpanded
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  onToggleExpanded() {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.pathname !== this.props.pathname) {
+      this.props.listActions(nextProps.pathname);
+    }
+
+    // if (nextProps.actions.object_buttons) {
+    //   const objectButtons = nextProps.actions.object_buttons;
+    //   this.setState({
+    //     hasObjectButtons: !!objectButtons.length,
+    //   });
+    // }
+  }
+
+  handleShrink = () => {
     cookie.save('toolbar_expanded', !this.state.expanded, {
       expires: new Date((2 ** 31 - 1) * 1000),
       path: '/',
     });
-    this.setState({
-      expanded: !this.state.expanded,
-    });
-  }
+    this.setState(state => ({ expanded: !state.expanded }));
+  };
+
+  closeMenu = () =>
+    this.setState(() => ({ showMenu: false, menuComponents: [] }));
+
+  loadComponent = type => {
+    const { menuComponents } = this.state;
+    const nextIndex = menuComponents.length;
+
+    if (
+      !this.state.menuComponents.reduce(
+        (prev, current) => prev && current.name === `${type}`,
+        false,
+      )
+    ) {
+      import(`./${type}.jsx`).then(LoadedComponent =>
+        this.setState(state => ({
+          menuComponents: state.menuComponents.concat({
+            name: `${type}`,
+            component: (
+              <LoadedComponent.default
+                pathname={this.props.pathname}
+                loadComponent={this.loadComponent}
+                unloadComponent={this.unloadComponent}
+                componentIndex={nextIndex}
+                theToolbar={this.theToolbar}
+                key={`menucomp-${nextIndex}`}
+              />
+            ),
+          }),
+        })),
+      );
+    }
+  };
+
+  unloadComponent = () => {
+    this.setState(state => ({
+      menuComponents: state.menuComponents.slice(0, -1),
+    }));
+  };
+
+  toggleMenu = (e, selector) => {
+    if (this.state.showMenu) {
+      this.closeMenu();
+      return;
+    }
+    // PersonalTools always shows at bottom
+    if (selector === 'PersonalTools') {
+      this.setState(state => ({
+        showMenu: !state.showMenu,
+        menuStyle: { bottom: 0 },
+      }));
+    } else {
+      const elemOffsetTop = e.target.getBoundingClientRect().top;
+      this.setState(state => ({
+        showMenu: !state.showMenu,
+        menuStyle: { top: `${elemOffsetTop}px` },
+      }));
+    }
+    this.loadComponent(selector);
+  };
 
   /**
    * Render method.
@@ -87,39 +182,96 @@ export default class Toolbar extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { expanded } = this.state;
+    const path = getBaseUrl(this.props.pathname);
+    const editAction = find(this.props.actions.object, { id: 'edit' });
+    const folderContentsAction = find(this.props.actions.object, {
+      id: 'folderContents',
+    });
 
     return (
       this.props.token && (
         <Fragment>
-          <BodyClass className="has-toolbar" />
-          <Menu
-            vertical
-            borderless
-            icon
-            fixed="left"
-            className={!expanded ? 'collapsed' : ''}
+          <div
+            style={this.state.menuStyle}
+            className={
+              this.state.showMenu ? 'toolbar-content show' : 'toolbar-content'
+            }
+            ref={toolbar => {
+              this.theToolbar = toolbar;
+            }}
           >
-            {this.props.inner}
-            <Menu.Item className="logo">
-              <Divider />
-              <div
-                className="image"
-                style={{ backgroundImage: `url(${LogoImage})` }}
-              />
-            </Menu.Item>
-            <Button
-              className={
-                this.props.content && this.props.content.review_state
-                  ? `${this.props.content.review_state} trigger`
-                  : 'trigger'
-              }
-              onClick={this.onToggleExpanded}
-            />
-          </Menu>
-          <div className={this.state.expanded ? 'pusher expanded' : 'pusher'} />
+            <div
+              className="pusher-puller"
+              style={{
+                left: `-${(this.state.menuComponents.length - 1) * 100}%`,
+              }}
+            >
+              {this.state.menuComponents.map(component => (
+                <Fragment key={component.name}>{component.component}</Fragment>
+              ))}
+            </div>
+          </div>
+          <div className={this.state.expanded ? 'toolbar expanded' : 'toolbar'}>
+            <div className="toolbar-body">
+              <div className="toolbar-actions">
+                {this.props.hideDefaultViewButtons &&
+                  this.props.inner && <Fragment>{this.props.inner}</Fragment>}
+                {!this.props.hideDefaultViewButtons && (
+                  <Fragment>
+                    {editAction && (
+                      <Link className="edit" to={`${path}/edit`}>
+                        <Icon name={penSVG} size="36px" className="circled" />
+                      </Link>
+                    )}
+                    {this.props.content &&
+                      this.props.content.is_folderish &&
+                      folderContentsAction && (
+                        <Link to="/contents">
+                          <Icon name={folderSVG} size="36px" />
+                        </Link>
+                      )}
+                    {this.props.content &&
+                      this.props.content.is_folderish && (
+                        <Link to="/add?type=document">
+                          <Icon name={addSVG} size="36px" />
+                        </Link>
+                      )}
+                    <button
+                      className="more"
+                      onClick={e => this.toggleMenu(e, 'More')}
+                      tabIndex={0}
+                    >
+                      <Icon name={moreSVG} size="36px" />
+                    </button>
+                  </Fragment>
+                )}
+              </div>
+              <div className="toolbar-bottom">
+                <img className="minipastanaga" src={pastanagaSmall} alt="" />
+                {!this.props.hideDefaultViewButtons && (
+                  <button
+                    className="user"
+                    onClick={e => this.toggleMenu(e, 'PersonalTools')}
+                    tabIndex={0}
+                  >
+                    <Icon name={userSVG} size="36px" />
+                  </button>
+                )}
+                <div className="divider" />
+                <div className="pastanagalogo">
+                  <img src={pastanagalogo} alt="" />
+                </div>
+              </div>
+            </div>
+            <div className="toolbar-handler">
+              <button onClick={this.handleShrink} />
+            </div>
+          </div>
+          <div className="pusher" />
         </Fragment>
       )
     );
   }
 }
+
+export default Toolbar;

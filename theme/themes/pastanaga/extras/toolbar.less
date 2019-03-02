@@ -1,11 +1,582 @@
-
 /*******************************
             Theme
 *******************************/
 
-@type    : 'extra';
+@type : 'extra';
+
 @element : 'toolbar';
 
 @import (multiple) '../../theme.config';
+
+// html,
+// body {
+//   height: 100%;
+//   margin: 0;
+//   padding: 0;
+//   font-family: Poppins;
+// }
+
+// body {
+//   @media only screen and (min-width: @largestMobileScreen) {
+//     display: flex;
+//   }
+// }
+
+// .content {
+//   display: flex;
+//   background-color: @background-content;
+//   flex: 1;
+// }
+
+svg.circled {
+  box-sizing: content-box;
+  padding: 4px;
+  border: 2px solid currentColor;
+  border-radius: 50px;
+}
+
+svg.icon {
+  // Experiment if this is ok for all icons
+  box-sizing: content-box;
+  padding: 4px;
+}
+
+// #main {
+//   flex-direction: column;
+//   height: 100%;
+//   display: flex;
+// }
+
+.toolbar {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 20px;
+  flex-direction: column;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 #c7d5d8;
+  transition: height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+
+  &.expanded {
+    height: 100px;
+
+    .toolbar-actions {
+      opacity: 1;
+      transition: opacity 0.1s 0.2s;
+    }
+
+    .toolbar-body {
+      height: 100px;
+    }
+
+    .toolbar-handler button {
+      opacity: 0.3;
+    }
+
+    .toolbar-bottom {
+      a {
+        opacity: 1;
+      }
+    }
+
+    .toolbar-bottom {
+      .minipastanaga {
+        bottom: 10px;
+        opacity: 0;
+        transition: bottom 0.3s 0.3s, opacity 0.3s;
+      }
+    }
+  }
+
+  &-content {
+    overflow: hidden;
+    max-height: 0;
+    background-color: #fff;
+    box-shadow: 0 1px 2px 0 #c7d5d8;
+    opacity: 0;
+    overflow-y: scroll;
+    transition: max-height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+      opacity 0.3s 0.3s;
+
+    &.show {
+      max-height: 900px;
+      opacity: 1;
+      transition: max-height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+        opacity 0.3s 0.3s;
+    }
+  }
+
+  &-body {
+    display: flex;
+    height: 0;
+    flex-direction: row-reverse;
+    transition: height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+
+    a,
+    button {
+      margin-left: 20px;
+      color: #826a6a;
+      cursor: pointer;
+    }
+
+    button {
+      // Default reset for button
+      padding: 0;
+      border: 0;
+      background: transparent;
+      text-align: initial;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &-actions {
+    display: flex;
+    height: 100%;
+    flex: 1;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding: 0 20px;
+    opacity: 0;
+    transition: opacity 0.1s 0.2s;
+
+    .edit {
+      color: @teal-blue;
+    }
+
+    .more {
+      flex: 1;
+    }
+
+    a,
+    button {
+      display: block;
+    }
+  }
+
+  &-handler {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    button {
+      width: 80px;
+      height: 20px;
+      padding: 0;
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+      transition: opacity 0.3s;
+
+      &::before {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 4px;
+        background-color: red;
+        content: '';
+      }
+    }
+  }
+
+  &-bottom {
+    display: flex;
+    // flex: 1;
+    align-items: center;
+
+    a {
+      opacity: 0;
+    }
+
+    .user {
+      display: none;
+    }
+
+    .divider {
+      display: none;
+    }
+
+    .pastanagalogo {
+      display: none;
+    }
+
+    .minipastanaga {
+      position: absolute;
+      bottom: 2px;
+      height: 14px;
+      padding: 0 6px;
+      opacity: 1;
+      transition: bottom 0.3s 0.3s, opacity 0.3s 0.3s;
+    }
+  }
+}
+
+.toolbar-content,
+.toolbar {
+  button {
+    // Default reset for button
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    text-align: initial;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.pusher-puller {
+  position: relative;
+  display: flex;
+  width: 2000px;
+  // min-height: 500px;
+  transition: left ease-in-out 0.3s;
+
+  > * {
+    // position: absolute;
+    // width: 100%;
+    // height: 100%;
+    // top: 0;
+    // left: 0;
+  }
+
+  // > *:first-child {
+  //   position: relative;
+  // }
+}
+
+@media only screen and (min-width: @largestMobileScreen) {
+  .toolbar {
+    position: fixed;
+    width: 20px;
+    height: 100%;
+    flex-direction: row;
+    justify-content: flex-end;
+    transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+
+    & + .pusher {
+      margin-right: 20px;
+      transition: margin-right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    }
+
+    &.expanded {
+      width: 80px;
+      height: 100%;
+
+      & + .pusher {
+        margin-right: 80px;
+        transition: margin-right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+      }
+
+      .toolbar-body {
+        height: 100%;
+      }
+
+      .toolbar-actions {
+        flex-direction: column;
+      }
+
+      .toolbar-bottom {
+        .user {
+          opacity: 1;
+          transition: opacity 0.1s 0.2s;
+        }
+
+        .pastanagalogo {
+          display: block;
+        }
+
+        .divider {
+          width: 40px;
+          height: 20px;
+          border-top: 1px solid #c7d5d8;
+          opacity: 1;
+          transition: opacity 0.1s 0.2s;
+        }
+      }
+    }
+
+    &-content {
+      position: absolute;
+      left: 84px;
+      width: 320px;
+      // top: 228px; // (for .more)
+    }
+
+    &-body {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+
+      a,
+      button {
+        margin-bottom: 20px;
+        margin-left: 0;
+      }
+    }
+
+    &-actions {
+      flex: 1;
+      flex-direction: column;
+      padding: 20px 0;
+
+      .more {
+        flex: 0;
+      }
+    }
+
+    &-bottom {
+      flex: 1;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      .user {
+        display: block;
+        opacity: 0;
+      }
+
+      .divider {
+        display: block;
+        opacity: 0;
+      }
+
+      .minipastanaga {
+        bottom: 10px;
+      }
+
+      .pastanagalogo {
+        display: block;
+        padding-right: 6px;
+        padding-left: 6px;
+        margin-bottom: 10px;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    &-handler {
+      display: flex;
+      width: 20px;
+      height: 100%;
+      flex-direction: column;
+      justify-content: center;
+
+      button {
+        width: 20px;
+        height: 80px;
+
+        &::before {
+          left: 8px;
+          width: 4px;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .pusher-puller {
+    > * {
+      // TODO: look how to standard for all devices
+      width: 320px;
+    }
+  }
+}
+
+// Personal Tools
+.pastanaga-menu {
+  width: 100vw;
+
+  header {
+    display: flex;
+    height: 44px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 20px;
+    border-bottom: 4px solid @silver-blue;
+
+    h2 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    a {
+      display: flex;
+    }
+
+    &.pulled {
+      justify-content: flex-start;
+      padding-right: 10px;
+      padding-left: 10px;
+
+      button {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  @media only screen and (min-width: @largestMobileScreen) {
+    width: 320px;
+  }
+}
+
+.pastanaga-menu-list {
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 20px;
+    margin-top: 0;
+    list-style: none;
+  }
+
+  li {
+    // padding: 5px 0;
+
+    button {
+      display: flex;
+      width: 100%;
+      height: 45px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      font-family: Poppins;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: left;
+      text-transform: uppercase;
+
+      svg {
+        color: @teal-blue;
+      }
+    }
+  }
+
+  li:not(.state-select):not(.display-select) {
+    border-bottom: 1px solid @silver-blue;
+  }
+
+  .pastanaga-menu-label {
+    margin-right: 12px;
+  }
+
+  .pastanaga-menu-value {
+    font-weight: 300;
+    text-transform: initial;
+  }
+}
+
+.personal-tools {
+  header svg {
+    color: red;
+  }
+
+  .avatar {
+    height: 220px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+
+  .stats {
+    ul {
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      margin: 0;
+      background-color: #f2f5f6;
+      color: #878f93;
+      list-style: none;
+    }
+
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+
+      span:first-child {
+        font-size: 30px;
+        font-weight: 200;
+      }
+
+      span:last-child {
+        font-size: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+// Profile
+.vertical.divider {
+  height: 30px;
+  margin-right: 20px;
+  border-left: 1px solid @silver;
+}
+
+.profile {
+  header {
+    button {
+      color: @teal-blue;
+    }
+  }
+}
+
+.menu-more {
+  header {
+    svg {
+      color: #d12c67;
+    }
+  }
+
+  .more-user {
+    @media only screen and (min-width: @largestMobileScreen) {
+      display: none;
+    }
+  }
+
+  .state-select,
+  .display-select {
+    display: flex;
+
+    .Select {
+      margin-left: 5px;
+    }
+
+    .Select .Select-control {
+      // border-bottom: 0;
+    }
+
+    label {
+      width: 25%;
+      padding-top: 18px;
+      margin-right: 5px;
+      border-bottom: 1px solid #edf1f2;
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+  }
+}
 
 .loadUIOverrides();
