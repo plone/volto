@@ -1,3 +1,6 @@
+// Extras (third party libs)
+@import (less) '~hamburgers/dist/hamburgers.css';
+
 /*******************************
         Global Overrides
 *******************************/
@@ -480,6 +483,13 @@ body {
   font-size: 1.125rem;
 }
 
+// Here should be placed all tiles that receive (faked) focus
+.tile.image:focus,
+.tile.video:focus,
+.tile.maps:focus {
+  outline: none;
+}
+
 .tile .tile:not(.inner)::after {
   position: absolute;
   top: -9px;
@@ -513,8 +523,25 @@ body {
   margin-bottom: 2rem;
 }
 
+.ui.drag.tile.image {
+  // This fixes the floating images in Volto Editor! Muahahaha
+  display: block;
+  z-index: 2;
+}
+
 .tile .ui.image {
   width: 100%;
+}
+
+.tile .ui.message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    margin-bottom: 20px;
+  }
 }
 
 .DraftEditor-editorContainer,
@@ -560,38 +587,69 @@ body {
 }
 
 .tile.align.left {
+  z-index: 2;
+  iframe,
   img {
     margin-right: 1em !important;
     margin-bottom: 1em;
     float: left;
   }
 
-  .ui.image {
-    width: auto;
+  iframe {
+    width: 50%;
+    height: 25vw;
+  }
+
+  .ui.image,
+  img {
+    min-width: 50%;
   }
 }
 
 .tile.align.right {
+  z-index: 2;
+  iframe,
   img {
     margin-bottom: 1em;
     margin-left: 1em !important;
     float: right;
   }
 
-  .ui.image {
-    width: auto;
+  iframe {
+    width: 50%;
+    height: 25vw;
   }
+
+  .ui.image,
+  img {
+    min-width: 50%;
+  }
+
 }
 
 .tile.align.center {
+  iframe,
   img {
     margin-right: auto;
     margin-left: auto;
+  }
+
+  iframe {
+    width: 100%;
+    height: 35vh;
   }
 }
 
 .tile.align.full {
   width: 100% !important;
+
+  iframe {
+    width: 100%;
+    height: 35vh;
+  }
+  img {
+    width: 100%;
+  }
 }
 
 .tile.align:not(.right):not(.left) {
@@ -684,7 +742,7 @@ body {
   position: absolute;
   padding: 0;
   border: none;
-  margin-top: -35px;
+  margin-top: -22px;
   margin-bottom: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -804,3 +862,89 @@ body {
   margin: 0 0 4px 4px;
   vertical-align: bottom;
 }
+
+.tools {
+  margin-right: 1em;
+}
+
+.comments {
+  margin-top: 20px;
+}
+
+.html-editor {
+  background-color: #fafafa;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #90a4ae;
+}
+
+.token.punctuation {
+  color: #9e9e9e;
+}
+
+.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #e91e63;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #4caf50;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #795548;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #3f51b5;
+}
+
+.token.function {
+  color: #f44336;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #ff9800;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+

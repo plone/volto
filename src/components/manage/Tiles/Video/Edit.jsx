@@ -6,17 +6,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Button, Form, Input, Embed, Message } from 'semantic-ui-react';
+import { Button, Input, Embed, Message } from 'semantic-ui-react';
+import cx from 'classnames';
 
 import { Icon } from '../../../../components';
 import trashSVG from '../../../../icons/delete.svg';
-import clearSVG from '../../../../icons/clear.svg';
 import imageLeftSVG from '../../../../icons/image-left.svg';
 import imageRightSVG from '../../../../icons/image-right.svg';
 import imageFitSVG from '../../../../icons/image-fit.svg';
 import imageFullSVG from '../../../../icons/image-full.svg';
 import videoSVG from '../../../../icons/videocamera.svg';
-import folderSVG from '../../../../icons/folder.svg';
 
 const messages = defineMessages({
   save: {
@@ -52,6 +51,8 @@ export default class Edit extends Component {
     onChangeTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    onFocusPreviousTile: PropTypes.func.isRequired,
+    onFocusNextTile: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
 
@@ -69,6 +70,18 @@ export default class Edit extends Component {
     this.state = {
       url: '',
     };
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selected) {
+      this.node.focus();
+    }
   }
 
   /**
@@ -109,6 +122,23 @@ export default class Edit extends Component {
   }
 
   /**
+   * handleKeyDown
+   * @method handleKeyDown
+   * @param {event} e Event
+   * @returns {undefined}
+   */
+  handleKeyDown = e => {
+    if (e.key === 'ArrowUp') {
+      this.props.onFocusPreviousTile(this.props.tile, this.node);
+      e.preventDefault();
+    }
+    if (e.key === 'ArrowDown') {
+      this.props.onFocusNextTile(this.props.tile, this.node);
+      e.preventDefault();
+    }
+  };
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -118,15 +148,19 @@ export default class Edit extends Component {
     return (
       <div
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={[
-          'tile',
-          'video',
-          'align',
-          this.props.selected && 'selected',
-          data.align,
-        ]
-          .filter(e => !!e)
-          .join(' ')}
+        className={cx(
+          'tile video align',
+          {
+            selected: this.props.selected,
+            center: !Boolean(this.props.data.align),
+          },
+          this.props.data.align,
+        )}
+        tabIndex={0}
+        onKeyDown={this.handleKeyDown}
+        ref={node => {
+          this.node = node;
+        }}
       >
         {this.props.selected &&
           !!this.props.data.url && (

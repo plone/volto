@@ -11,19 +11,18 @@ exports[`SearchWidget renders a search widget component 1`] = `
   >
     <div
       className="ui transparent action input"
-      title="Search"
     >
       <input
         name="SearchableText"
         onChange={[Function]}
         placeholder="Search Site"
+        title="Search"
         type="text"
         value=""
       />
       <button
         className="ui icon button"
         onClick={[Function]}
-        role="button"
       >
         <i
           aria-hidden="true"

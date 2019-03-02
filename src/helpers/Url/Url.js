@@ -70,3 +70,16 @@ export function getIcon(type, isFolderish) {
       return isFolderish ? 'folder open outline' : 'file outline';
   }
 }
+
+/**
+ * Flatten to app server URL - Given a URL if it starts with the API server URL
+ * this method flattens it (removes) the server part
+ * TODO: Update it when implementing non-root based app location (on a
+ * directory other than /, eg. /myapp)
+ * @method flattenToAppURL
+ * @param {string} url URL of the object
+ * @returns {string} Flattened URL to the app server
+ */
+export function flattenToAppURL(url) {
+  return url.replace(settings.apiPath, '');
+}
