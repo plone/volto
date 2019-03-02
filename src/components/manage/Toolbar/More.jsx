@@ -73,7 +73,7 @@ class More extends Component {
             onClick={() => this.push('PersonalTools')}
             tabIndex={0}
           >
-            <Icon name={userSVG} size="36px" />
+            <Icon name={userSVG} size="32px" />
           </button>
         </header>
         <div className="pastanaga-menu-list">

@@ -246,7 +246,7 @@ export class EditComponent extends Component {
                     <Icon
                       name={saveSVG}
                       className="circled"
-                      size="36px"
+                      size="32px"
                       title={this.props.intl.formatMessage(messages.save)}
                     />
                   </button>
@@ -254,7 +254,7 @@ export class EditComponent extends Component {
                     <button onClick={() => this.onToggleVisual()}>
                       <Icon
                         name={this.state.visual ? formSVG : tilesSVG}
-                        size="36px"
+                        size="32px"
                         title={this.props.intl.formatMessage(
                           this.state.visual
                             ? messages.properties
@@ -267,7 +267,7 @@ export class EditComponent extends Component {
                     <Icon
                       name={clearSVG}
                       className="circled"
-                      size="36px"
+                      size="32px"
                       title={this.props.intl.formatMessage(messages.cancel)}
                     />
                   </button>

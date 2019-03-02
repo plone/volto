@@ -24,7 +24,7 @@ class Profile extends Component {
       >
         <header className="header pulled">
           <button onClick={this.pull}>
-            <Icon name={backSVG} size="36px" />
+            <Icon name={backSVG} size="32px" />
           </button>
           <div className="vertical divider" />
           <h2>Profile</h2>

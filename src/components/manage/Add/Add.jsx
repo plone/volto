@@ -246,7 +246,7 @@ export class AddComponent extends Component {
                     <Icon
                       name={saveSVG}
                       className="circled"
-                      size="36px"
+                      size="32px"
                       title={this.props.intl.formatMessage(messages.save)}
                     />
                   </button>
@@ -257,7 +257,7 @@ export class AddComponent extends Component {
                     >
                       <Icon
                         name={this.state.visual ? formSVG : tilesSVG}
-                        size="36px"
+                        size="32px"
                         title={this.props.intl.formatMessage(
                           this.state.visual
                             ? messages.properties
@@ -270,7 +270,7 @@ export class AddComponent extends Component {
                     <Icon
                       name={clearSVG}
                       className="circled"
-                      size="36px"
+                      size="32px"
                       title={this.props.intl.formatMessage(messages.cancel)}
                     />
                   </button>

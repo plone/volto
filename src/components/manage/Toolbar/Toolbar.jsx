@@ -220,20 +220,20 @@ class Toolbar extends Component {
                   <Fragment>
                     {editAction && (
                       <Link className="edit" to={`${path}/edit`}>
-                        <Icon name={penSVG} size="36px" className="circled" />
+                        <Icon name={penSVG} size="32px" className="circled" />
                       </Link>
                     )}
                     {this.props.content &&
                       this.props.content.is_folderish &&
                       folderContentsAction && (
                         <Link to="/contents">
-                          <Icon name={folderSVG} size="36px" />
+                          <Icon name={folderSVG} size="32px" />
                         </Link>
                       )}
                     {this.props.content &&
                       this.props.content.is_folderish && (
                         <Link to="/add?type=Document">
-                          <Icon name={addSVG} size="36px" />
+                          <Icon name={addSVG} size="32px" />
                         </Link>
                       )}
                     <button
@@ -241,7 +241,7 @@ class Toolbar extends Component {
                       onClick={e => this.toggleMenu(e, 'More')}
                       tabIndex={0}
                     >
-                      <Icon name={moreSVG} size="36px" />
+                      <Icon name={moreSVG} size="32px" />
                     </button>
                   </Fragment>
                 )}
@@ -254,7 +254,7 @@ class Toolbar extends Component {
                     onClick={e => this.toggleMenu(e, 'PersonalTools')}
                     tabIndex={0}
                   >
-                    <Icon name={userSVG} size="36px" />
+                    <Icon name={userSVG} size="32px" />
                   </button>
                 )}
                 <div className="divider" />

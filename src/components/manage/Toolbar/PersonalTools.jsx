@@ -70,7 +70,7 @@ class PersonalTools extends Component {
         <header className="header">
           <h2>{this.props.user.fullname}</h2>
           <Link to="/logout">
-            <Icon name={logoutSVG} size="36px" />
+            <Icon name={logoutSVG} size="32px" />
           </Link>
         </header>
         <div className="avatar">

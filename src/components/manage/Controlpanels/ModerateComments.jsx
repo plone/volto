@@ -276,7 +276,7 @@ export default class ModerateComments extends Component {
                 <Icon
                   name={backSVG}
                   className="contents circled"
-                  size="36px"
+                  size="32px"
                   title={this.props.intl.formatMessage(messages.back)}
                 />
               </Link>
