@@ -1,16 +1,52 @@
 # Change Log
 
-## 1.5.2 (unreleased)
+## 1.6.2 (unreleased)
 
 ### Added
 
 ### Changes
+
+## 1.6.1 (2019-03-01)
+
+### Changes
+
+- Fix a regression on the add tile button alignment @sneridagh
+
+## 1.6.0 (2019-03-01)
+
+### Added
+
+- Set image width in Volto editor to 50% for images that float left/right @timo
+- Ability to navigate through the existing tiles with the cursors. @sneridagh
+- HTML Tile for Volto Editor with preview and code prettifier
+   @ajayns @nileshgulia1 @sneridagh
+- Add error log in the SSR console @sneridagh
+- Add SSR helper to get resources (images/files) from the server using the API
+  headers. This fixes the missing images on non published resources while editing @sneridagh
+- Fix not valid `<div>` tag nested in a `<p>` tag error on tiles and wysiwyg
+  field @sneridagh
+
+### Changes
+
+- Clean .variables files from Pastanaga theme since they are already applied by
+  the theming engine from the default theme. @sneridagh
+- Fix edit forms with richtext fields coming from SSR @sneridagh
+
+## 1.5.2 (2019-02-20)
+
+### Changes
+
+- Fix external images on Image Tile render @sneridagh
+- Several fixes reagarding correctness of markup @sneridagh
+- Issue with dangerouslySetInnerHTML RichText fields on first SSR load
+  apparently fixed (due to the above fix) :) @sneridagh
 
 ## 1.5.1 (2019-02-19)
 
 ### Changes
 
 - Fix build for projects created with `create-volto-app` @sneridagh
+- Fix link view @nileshgulia1
 
 ## 1.5.0 (2019-02-19)
 
@@ -42,6 +78,7 @@
   @sneridagh
 - Add supported browsers in README @sneridagh
 - Default tile position to center for all the existing tiles @sneridagh
+
 
 ## 1.4.0 (2019-02-15)
 

@@ -59,8 +59,14 @@ const DocumentView = ({ content }) => {
           floated="right"
         />
       )}
+      {content.remoteUrl && (
+        <span>
+          The link address is:
+          <a href={content.remoteUrl}>{content.remoteUrl}</a>
+        </span>
+      )}
       {content.text && (
-        <p
+        <div
           dangerouslySetInnerHTML={{
             __html: content.text.data.replace(
               /a href=\"([^"]*\.[^"]*)\"/g,

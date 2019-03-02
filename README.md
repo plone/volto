@@ -6,6 +6,8 @@
 [![Dependencies](https://img.shields.io/david/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 [![Dev Dependencies](https://img.shields.io/david/dev/plone/volto.svg)](https://github.com/plone/volto/blob/master/package.json)
 [![NPM](https://img.shields.io/npm/v/@plone/volto.svg)](https://www.npmjs.com/package/@plone/volto)
+[![Netlify
+Status](https://api.netlify.com/api/v1/badges/b8310579-ac4f-41f2-a144-9c90fca9b38f/deploy-status)](https://app.netlify.com/sites/voltocms/deploys)
 
 ## Introduction
 
@@ -46,7 +48,8 @@ Create a new Volto project by using the `create-volto-app` utility. It will
 bootstrap a Volto project in a folder of your choice with all the required
 boilerplate to start customizing your Volto site.
 
-    $ npm -g i @plone/create-volto-app
+    $ npm install -g yarn
+    $ npm install -g @plone/create-volto-app
     $ create-volto-app myvoltoproject
     $ cd myvoltoproject
 
@@ -66,6 +69,14 @@ Once inside your Volto project folder:
 ### Browsing
 
 Go to [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Demo
+
+You can try a Volto online demo in [https://volto.kitconcept.com](https://volto.kitconcept.com)
+
+## Documentation
+
+You can find the (beta) documentation in [http://docs.voltocms.com](http://docs.voltocms.com)
 
 ## Training
 
