@@ -18,31 +18,39 @@ extra_css:
   - 'stylesheets/extra.css'
 
 nav:
-  - Installing: "01-installing/01-installing.md"
+  - Getting Started:
+    - Install Volto: "01-installing/01-install.md"
+  - Configuration:
+    - What is configurable?: "02-configuration/how-to.md"
+    - Richeditor settings: "02-configuration/richeditor-settings.md"
+    - Storing third party tokens: "02-configuration/third-party-tokens.md"
   - Semantic UI:
-    - Semantic UI Introduction: "02-semantic-ui/01-introduction.md"
-    - Semantic UI Theming: "02-semantic-ui/02-semanticui-theming.md"
-    - Theming Engine: "02-semantic-ui/03-theming-engine.md"
-  - Customizing:
-    - Creating a project: "03-customizing/01-creating-project.md"
-    - Folder structure: "03-customizing/02-folder-structure.md"
-    - Customizing components: "03-customizing/03-customizing-components.md"
-    - Customizing views: "03-customizing/04-customizing-views.md"
-    - Creating new views: "03-customizing/05-creating-views.md"
-    - Richeditor settings: "03-customizing/06-richeditor-settings.md"
+    - Introduction: "03-semantic-ui/01-introduction.md"
+    - Semantic UI Theming: "03-semantic-ui/02-semanticui-theming.md"
+    - Theming Engine: "03-semantic-ui/03-theming-engine.md"
   - Theming:
     - Theming strategy: "04-theming/01-theming-strategy.md"
     - Custom styling: "04-theming/02-custom-styling.md"
     - Intregrate third party: "04-theming/03-integrate-third-party.md"
+  - Customizing:
+    - Creating a project: "05-customizing/01-creating-project.md"
+    - Folder structure: "05-customizing/02-folder-structure.md"
+    - Customizing components: "05-customizing/03-customizing-components.md"
+    - Customizing views: "05-customizing/04-customizing-views.md"
+    - Creating new views: "05-customizing/05-creating-views.md"
+  - Tiles:
+    - Introduction: "06-tiles/introduction.md"
+    - Anatomy: "06-tiles/anatomy.md"
+    - Create a new tile: "06-tiles/create.md"
   - Deploying:
-    - Simple deployment: "05-deploying/01-simple.md"
-    - Using PM2: "05-deploying/02-pm2.md"
-  - Contributing: "06-contributing/index.md"
+    - Simple deployment: "07-deploying/01-simple.md"
+    - Using PM2: "07-deploying/02-pm2.md"
   - Developer Guidelines:
-    - React: "07-developer-guidelines/01-react.md"
-    - Babel: "07-developer-guidelines/02-babel.md"
-    - Linting: "07-developer-guidelines/03-linting.md"
-    - Language features: "07-developer-guidelines/04-language-features.md"
+    - React: "08-developer-guidelines/01-react.md"
+    - Babel: "08-developer-guidelines/02-babel.md"
+    - Linting: "08-developer-guidelines/03-linting.md"
+    - Language features: "08-developer-guidelines/04-language-features.md"
+  - Contributing: "09-contributing/index.md"
 
 markdown_extensions:
   - admonition
