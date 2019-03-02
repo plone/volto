@@ -94,7 +94,8 @@ svg.icon {
     background-color: #fff;
     box-shadow: 0 1px 2px 0 #c7d5d8;
     opacity: 0;
-    overflow-y: scroll;
+    // Removing this because is causing grey scroll appears
+    // overflow-y: scroll;
     transition: max-height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
       opacity 0.3s 0.3s;
 
@@ -229,6 +230,10 @@ svg.icon {
       outline: none;
     }
   }
+}
+
+.toolbar-content {
+  z-index: 1;
 }
 
 .pusher-puller {
@@ -399,13 +404,14 @@ svg.icon {
 
   header {
     display: flex;
-    height: 44px;
+    height: 60px;
     align-items: center;
     justify-content: space-between;
     padding: 8px 20px;
     border-bottom: 4px solid @silver-blue;
 
     h2 {
+      flex: 1 0 auto;
       margin: 0;
       font-size: 16px;
       font-weight: 500;
@@ -481,8 +487,18 @@ svg.icon {
 }
 
 .personal-tools {
-  header svg {
-    color: red;
+  header {
+    .back {
+      @media only screen and (min-width: @largestMobileScreen) {
+        display: none;
+      }
+
+      margin-right: 10px;
+    }
+
+    .icon.logout {
+      color: #d12c67;
+    }
   }
 
   .avatar {
@@ -533,9 +549,14 @@ svg.icon {
   height: 30px;
   margin-right: 20px;
   border-left: 1px solid @silver;
+
+  @media only screen and (min-width: @largestMobileScreen) {
+    display: none;
+  }
 }
 
-.profile {
+.profile,
+.personal-tools {
   header {
     button {
       color: @teal-blue;
