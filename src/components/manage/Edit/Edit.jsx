@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Router, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';

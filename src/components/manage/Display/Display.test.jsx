@@ -11,7 +11,7 @@ describe('Display', () => {
   it('renders an actions component', () => {
     const store = mockStore({
       content: {
-        edit: { loaded: true },
+        update: { loaded: true },
         data: { layout: 'summary_view', '@type': 'Folder' },
       },
       schema: {

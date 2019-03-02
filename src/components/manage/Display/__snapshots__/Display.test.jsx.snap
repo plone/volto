@@ -1,53 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Display renders an actions component 1`] = `
-<div
-  aria-busy={undefined}
-  aria-disabled={undefined}
-  aria-expanded={false}
-  aria-multiselectable={undefined}
-  className="ui item dropdown"
-  id="toolbar-display"
-  onBlur={[Function]}
-  onChange={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onMouseDown={[Function]}
-  role="listbox"
-  tabIndex={0}
->
-  <span>
-    <i
-      aria-hidden="true"
-      className="block layout big icon"
-    />
-     
-    <span>
-      Display
-    </span>
-  </span>
-  <i
-    aria-hidden="true"
-    className="dropdown icon"
-    onClick={[Function]}
-  />
-  <div
-    className="menu transition"
+Array [
+  <label
+    htmlFor="display-select"
   >
+    View
+  </label>,
+  <div
+    className="Select has-value Select--single"
+  >
+    <input
+      disabled={false}
+      name="state-select"
+      type="hidden"
+      value="summary_view"
+    />
     <div
-      aria-checked={true}
-      aria-disabled={undefined}
-      aria-selected={undefined}
-      className="active item"
-      onClick={[Function]}
-      role="option"
+      className="Select-control"
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
     >
       <span
-        className="text"
+        className="Select-multi-value-wrapper"
+        id="react-select-2--value"
       >
-        Summary view
+        <div
+          className="Select-value"
+        >
+          <span
+            aria-selected="true"
+            className="Select-value-label"
+            id="react-select-2--value-item"
+            role="option"
+          >
+            <span
+              className="Select-value-label"
+            >
+              Summary view
+            </span>
+          </span>
+        </div>
+        <div
+          aria-activedescendant="react-select-2--value"
+          aria-disabled="false"
+          aria-expanded={false}
+          aria-owns=""
+          className="Select-input"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          role="combobox"
+          style={
+            Object {
+              "border": 0,
+              "display": "inline-block",
+              "width": 1,
+            }
+          }
+          tabIndex={0}
+        />
+      </span>
+      <span
+        className="Select-arrow-zone"
+        onMouseDown={[Function]}
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "currentColor",
+              "height": "24px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
       </span>
     </div>
-  </div>
-</div>
+  </div>,
+]
 `;
