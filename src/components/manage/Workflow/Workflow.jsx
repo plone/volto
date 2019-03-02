@@ -3,20 +3,26 @@
  * @module components/manage/Workflow/Workflow
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { last } from 'lodash';
-import { Dropdown, Icon } from 'semantic-ui-react';
+import { last, uniqBy } from 'lodash';
 import { FormattedMessage } from 'react-intl';
-import { settings } from '~/config';
+import Select from 'react-select';
+import getWorkflowMapping from '../../../constants/Workflows';
+import { Icon } from '../../../components';
+import downSVG from '../../../icons/down-key.svg';
+import upSVG from '../../../icons/up-key.svg';
+import checkSVG from '../../../icons/check.svg';
 
 import { getWorkflow, transitionWorkflow } from '../../../actions';
+import { settings } from '~/config';
 
 @connect(
   state => ({
     loaded: state.workflow.transition.loaded,
+    content: state.content.data,
     history: state.workflow.history,
     transitions: state.workflow.transitions,
   }),
@@ -61,16 +67,9 @@ export default class Workflow extends Component {
     transitions: [],
   };
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs Workflow
-   */
-  constructor(props) {
-    super(props);
-    this.transition = this.transition.bind(this);
-  }
+  state = {
+    selectedOption: getWorkflowMapping(null, this.props.content.review_state),
+  };
 
   /**
    * Component will mount
@@ -102,48 +101,95 @@ export default class Workflow extends Component {
    * @param {string} event Event object
    * @returns {undefined}
    */
-  transition(event, { value }) {
-    this.props.transitionWorkflow(value.replace(settings.apiPath, ''));
-  }
+  transition = selectedOption => {
+    this.props.transitionWorkflow(
+      selectedOption.url.replace(settings.apiPath, ''),
+    );
+    this.setState({ selectedOption });
+  };
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
+  selectValue = option => {
+    const stateDecorator = {
+      marginLeft: '10px',
+      marginRight: '10px',
+      display: 'inline-block',
+      backgroundColor: option.color || null,
+      content: ' ',
+      height: '10px',
+      width: '10px',
+      borderRadius: '50%',
+    };
+    return (
+      <Fragment>
+        <span style={stateDecorator} />
+        <span className="Select-value-label">{option.label}</span>
+      </Fragment>
+    );
+  };
+
+  optionRenderer = option => {
+    const stateDecorator = {
+      marginLeft: '10px',
+      marginRight: '10px',
+      display: 'inline-block',
+      backgroundColor:
+        this.state.selectedOption.value === option.value ? option.color : null,
+      content: ' ',
+      height: '10px',
+      width: '10px',
+      borderRadius: '50%',
+      border:
+        this.state.selectedOption.value !== option.value
+          ? `1px solid ${option.color}`
+          : null,
+    };
+
+    return (
+      <Fragment>
+        <span style={stateDecorator} />
+        <span style={{ marginRight: 'auto' }}>{option.label}</span>
+        <Icon name={checkSVG} size="24px" />
+      </Fragment>
+    );
+  };
+
   render() {
-    const lastEntry = last(this.props.history);
-    const current =
-      this.props.history.length > 0 &&
-      (lastEntry.data ? lastEntry.data.review_state : lastEntry.review_state);
+    const { selectedOption } = this.state;
+    const value = selectedOption && selectedOption.value;
 
-    return this.props.history.length > 0 ? (
-      <Dropdown
-        item
-        trigger={
-          <span>
-            <Icon name="random" size="big" />{' '}
-            <FormattedMessage
-              id="State: {current}"
-              defaultMessage="State: {current}"
-              values={{ current }}
-            />
-          </span>
-        }
-      >
-        <Dropdown.Menu>
-          {this.props.transitions.map(item => (
-            <Dropdown.Item
-              text={item.title}
-              value={item['@id']}
-              key={item['@id']}
-              onClick={this.transition}
-            />
-          ))}
-        </Dropdown.Menu>
-      </Dropdown>
-    ) : (
-      <span />
+    return (
+      <Fragment>
+        <label htmlFor="state-select">State</label>
+        <Select
+          name="state-select"
+          arrowRenderer={({ onMouseDown, isOpen }) =>
+            isOpen ? (
+              <Icon name={upSVG} size="24px" />
+            ) : (
+              <Icon name={downSVG} size="24px" />
+            )
+          }
+          clearable={false}
+          disabled={!this.props.content.review_state}
+          placeholder={
+            this.props.content.review_state ? 'Select...' : 'No workflow'
+          }
+          searchable={false}
+          // onBlur={() => {
+          //   debugger;
+          // }}
+          value={value}
+          onChange={this.transition}
+          options={uniqBy(
+            this.props.transitions.map(transition =>
+              getWorkflowMapping(transition['@id']),
+            ),
+            'label',
+          ).concat(selectedOption)}
+          valueRenderer={this.selectValue}
+          optionRenderer={this.optionRenderer}
+        />
+      </Fragment>
     );
   }
 }
