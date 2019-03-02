@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import { Icon } from '../../../components';
 import backSVG from '../../../icons/back.svg';
 
+/**
+ * Profile container class.
+ * @class Profile
+ * @extends Component
+ */
 class Profile extends Component {
   static propTypes = {
     unloadComponent: PropTypes.func.isRequired,
@@ -13,6 +18,11 @@ class Profile extends Component {
     this.props.unloadComponent();
   };
 
+  /**
+   * Render method.
+   * @method render
+   * @returns {string} Markup for the component.
+   */
   render() {
     return (
       <div

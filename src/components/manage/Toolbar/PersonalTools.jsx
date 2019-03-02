@@ -11,7 +11,13 @@ import { getUser } from '../../../actions';
 import logoutSVG from '../../../icons/log-out.svg';
 import rightArrowSVG from '../../../icons/right-key.svg';
 import avatar from './avatar.jpg';
+import backSVG from '../../../icons/back.svg';
 
+/**
+ * Toolbar container class.
+ * @class PersonalTools
+ * @extends Component
+ */
 @connect(
   state => ({
     user: state.users.user,
@@ -75,6 +81,15 @@ class PersonalTools extends Component {
     this.props.loadComponent(selector);
   };
 
+  pull = () => {
+    this.props.unloadComponent();
+  };
+
+  /**
+   * Render method.
+   * @method render
+   * @returns {string} Markup for the component.
+   */
   render() {
     return (
       <div
@@ -85,9 +100,17 @@ class PersonalTools extends Component {
         }}
       >
         <header className="header">
-          <h2>{this.props.user.fullname}</h2>
+          <button className="back" onClick={this.pull}>
+            <Icon name={backSVG} size="32px" />
+          </button>
+          <div className="vertical divider" />
+          <h2>
+            {this.props.user.fullname
+              ? this.props.user.fullname
+              : this.props.user.username}
+          </h2>
           <Link to="/logout">
-            <Icon name={logoutSVG} size="32px" />
+            <Icon className="logout" name={logoutSVG} size="32px" />
           </Link>
         </header>
         <div className="avatar">

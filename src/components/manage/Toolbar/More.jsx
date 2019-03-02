@@ -12,6 +12,11 @@ import userSVG from '../../../icons/user.svg';
 
 import { getBaseUrl } from '../../../helpers';
 
+/**
+ * More container class.
+ * @class More
+ * @extends Component
+ */
 @connect(
   (state, props) => ({
     actions: state.actions.actions,
@@ -76,8 +81,14 @@ class More extends Component {
       pushed: true,
     }));
     this.props.loadComponent(selector);
+    document.removeEventListener('mousedown', this.handleClickOutside, false);
   };
 
+  /**
+   * Render method.
+   * @method render
+   * @returns {string} Markup for the component.
+   */
   render() {
     const path = getBaseUrl(this.props.pathname);
     const historyAction = find(this.props.actions.object, { id: 'history' });
