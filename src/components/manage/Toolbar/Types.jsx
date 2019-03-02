@@ -85,30 +85,30 @@ export default class Types extends Component {
    */
   render() {
     return this.props.types.length > 0 ? (
-      <Dropdown
-        id="toolbar-add"
-        item
-        trigger={<Icon name={addSVG} size="32px" />}
-        className={this.props.active ? 'active' : ''}
-      >
-        <Dropdown.Menu>
-          {map(filter(this.props.types), item => (
-            <Link
-              to={`${this.props.pathname}/add?type=${
-                item['@id'].split('@types/')[1]
-              }`.replace(/\/\//g, '/')}
-              id={`toolbar-add-${item['@id']
-                .split('@types/')[1]
-                .toLowerCase()
-                .replace(' ', '-')}`}
-              className="item"
-              key={item.title}
-            >
-              {item.title}
-            </Link>
-          ))}
-        </Dropdown.Menu>
-      </Dropdown>
+      <div className="menu-more pastanaga-menu">
+        <header>Add content...</header>
+        <div className="pastanaga-menu-list">
+          <ul>
+            {map(filter(this.props.types), item => (
+              <li>
+                <Link
+                  to={`${this.props.pathname}/add?type=${
+                    item['@id'].split('@types/')[1]
+                  }`.replace(/\/\//g, '/')}
+                  id={`toolbar-add-${item['@id']
+                    .split('@types/')[1]
+                    .toLowerCase()
+                    .replace(' ', '-')}`}
+                  className="item"
+                  key={item.title}
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     ) : (
       <span />
     );

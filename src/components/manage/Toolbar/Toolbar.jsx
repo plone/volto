@@ -232,9 +232,13 @@ class Toolbar extends Component {
                       )}
                     {this.props.content &&
                       this.props.content.is_folderish && (
-                        <Link to="/add?type=Document">
+                        <button
+                          className="add"
+                          onClick={e => this.toggleMenu(e, 'Types')}
+                          tabIndex={0}
+                        >
                           <Icon name={addSVG} size="32px" />
-                        </Link>
+                        </button>
                       )}
                     <button
                       className="more"
