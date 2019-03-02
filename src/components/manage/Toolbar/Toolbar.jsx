@@ -7,6 +7,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import cookie from 'react-cookie';
 import { find } from 'lodash';
 
@@ -87,6 +88,7 @@ class Toolbar extends Component {
    */
   componentDidMount() {
     this.props.listActions(getBaseUrl(this.props.pathname));
+    document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
   /**
@@ -106,6 +108,14 @@ class Toolbar extends Component {
     //     hasObjectButtons: !!objectButtons.length,
     //   });
     // }
+  }
+  /**
+   * Component will receive props
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
   handleShrink = () => {
@@ -177,6 +187,11 @@ class Toolbar extends Component {
     this.loadComponent(selector);
   };
 
+  handleClickOutside = e => {
+    if (this.pusher && doesNodeContainClick(this.pusher, e)) return;
+    this.closeMenu();
+  };
+
   /**
    * Render method.
    * @method render
@@ -203,6 +218,7 @@ class Toolbar extends Component {
           >
             <div
               className="pusher-puller"
+              ref={node => (this.pusher = node)}
               style={{
                 left: `-${(this.state.menuComponents.length - 1) * 100}%`,
               }}

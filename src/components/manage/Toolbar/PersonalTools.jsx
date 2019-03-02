@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
-import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
 import { Icon } from '../../../components';
 
@@ -57,22 +56,7 @@ class PersonalTools extends Component {
    */
   componentDidMount() {
     this.props.getUser(this.props.userId);
-    document.addEventListener('mousedown', this.handleClickOutside, false);
   }
-
-  /**
-   * Component will receive props
-   * @method componentWillUnmount
-   * @returns {undefined}
-   */
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClickOutside, false);
-  }
-
-  handleClickOutside = e => {
-    if (this.ref && doesNodeContainClick(this.ref, e)) return;
-    this.props.closeMenu();
-  };
 
   push = selector => {
     this.setState(() => ({
@@ -94,7 +78,6 @@ class PersonalTools extends Component {
     return (
       <div
         className="personal-tools pastanaga-menu"
-        ref={node => (this.ref = node)}
         style={{
           left: `${this.props.componentIndex * 100}%`,
         }}

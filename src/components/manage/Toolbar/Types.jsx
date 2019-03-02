@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { filter, map } from 'lodash';
 
 import { getTypes } from '../../../actions';
@@ -79,36 +78,13 @@ export default class Types extends Component {
   }
 
   /**
-   * Component will receive props
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    document.addEventListener('mousedown', this.handleClickOutside, false);
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillUnmount
-   * @returns {undefined}
-   */
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClickOutside, false);
-  }
-
-  handleClickOutside = e => {
-    if (this.ref && doesNodeContainClick(this.ref, e)) return;
-    this.props.closeMenu();
-  };
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
     return this.props.types.length > 0 ? (
-      <div className="menu-more pastanaga-menu" ref={node => (this.ref = node)}>
+      <div className="menu-more pastanaga-menu">
         <header>Add content...</header>
         <div className="pastanaga-menu-list">
           <ul>
