@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix image float/left right on image tile @timo
+
 ## 1.6.1 (2019-03-01)
 
 ### Changes
