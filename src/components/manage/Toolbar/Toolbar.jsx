@@ -141,6 +141,7 @@ class Toolbar extends Component {
                 componentIndex={nextIndex}
                 theToolbar={this.theToolbar}
                 key={`menucomp-${nextIndex}`}
+                closeMenu={this.closeMenu}
               />
             ),
           }),
