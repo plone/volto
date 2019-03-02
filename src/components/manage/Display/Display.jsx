@@ -4,18 +4,26 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { FormattedMessage } from 'react-intl';
 import Select from 'react-select';
+
 import { getSchema, updateContent, getContent } from '../../../actions';
 import layouts from '../../../constants/Layouts';
+import { getLayoutFieldname } from '../../../helpers';
 import { Icon } from '../../../components';
+
 import downSVG from '../../../icons/down-key.svg';
 import upSVG from '../../../icons/up-key.svg';
 import checkSVG from '../../../icons/check.svg';
 
 @connect(
   state => ({
-    loaded: state.content.edit.loaded,
+    loaded: state.content.update.loaded,
     layouts: state.schema.schema ? state.schema.schema.layouts : [],
-    layout: state.content.data ? state.content.data.layout : '',
+    layout: state.content.data
+      ? state.content.data[getLayoutFieldname(state.content.data)]
+      : '',
+    layout_fieldname: state.content.data
+      ? getLayoutFieldname(state.content.data)
+      : '',
     type: state.content.data ? state.content.data['@type'] : '',
   }),
   dispatch =>

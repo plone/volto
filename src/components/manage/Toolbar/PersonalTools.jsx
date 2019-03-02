@@ -15,7 +15,7 @@ import avatar from './avatar.jpg';
   state => ({
     user: state.users.user,
     loaded: state.users.get.loaded,
-    loading: state.users.edit.loading,
+    loading: state.users.update.loading,
     userId: state.userSession.token
       ? jwtDecode(state.userSession.token).sub
       : '',

@@ -16,12 +16,14 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
-import { Container, Icon, Menu } from 'semantic-ui-react';
+import { Container, Menu } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 
-import { Form, Toolbar } from '../../../components';
+import { Form, Icon, Toolbar } from '../../../components';
 import { updatePassword, addMessage } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
+
+import backSVG from '../../../icons/back.svg';
 
 const messages = defineMessages({
   changePassword: {
@@ -215,12 +217,13 @@ class ChangePassword extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
+            hideDefaultViewButtons
             inner={
               <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
                 <Icon
-                  name="arrow left"
-                  size="big"
-                  color="blue"
+                  name={backSVG}
+                  className="contents circled"
+                  size="36px"
                   title={this.props.intl.formatMessage(messages.back)}
                 />
               </Link>

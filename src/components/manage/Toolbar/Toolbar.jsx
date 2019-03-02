@@ -86,7 +86,7 @@ class Toolbar extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.listActions(this.props.pathname);
+    this.props.listActions(getBaseUrl(this.props.pathname));
   }
 
   /**
@@ -97,7 +97,7 @@ class Toolbar extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.listActions(nextProps.pathname);
+      this.props.listActions(getBaseUrl(nextProps.pathname));
     }
 
     // if (nextProps.actions.object_buttons) {
@@ -232,7 +232,7 @@ class Toolbar extends Component {
                       )}
                     {this.props.content &&
                       this.props.content.is_folderish && (
-                        <Link to="/add?type=document">
+                        <Link to="/add?type=Document">
                           <Icon name={addSVG} size="36px" />
                         </Link>
                       )}

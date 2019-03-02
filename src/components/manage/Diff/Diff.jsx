@@ -9,15 +9,8 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { filter, isEqual, map } from 'lodash';
-import {
-  Container,
-  Icon,
-  Button,
-  Dropdown,
-  Grid,
-  Table,
-} from 'semantic-ui-react';
-import { Router, Link, withRouter } from 'react-router-dom';
+import { Container, Button, Dropdown, Grid, Table } from 'semantic-ui-react';
+import { Link, withRouter } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import moment from 'moment';
 import {
@@ -30,7 +23,9 @@ import qs from 'query-string';
 
 import { getDiff, getSchema, getHistory } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
-import { DiffField, Toolbar } from '../../../components';
+import { DiffField, Icon, Toolbar } from '../../../components';
+
+import backSVG from '../../../icons/back.svg';
 
 const messages = defineMessages({
   diff: {
@@ -308,15 +303,16 @@ class DiffComponent extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
+            hideDefaultViewButtons
             inner={
               <Link
                 to={`${getBaseUrl(this.props.pathname)}/history`}
                 className="item"
               >
                 <Icon
-                  name="arrow left"
-                  size="big"
-                  color="blue"
+                  name={backSVG}
+                  className="contents circled"
+                  size="36px"
                   title={this.props.intl.formatMessage(messages.back)}
                 />
               </Link>

@@ -64,7 +64,10 @@ import {
   ContentsPropertiesModal,
   Pagination,
   Toolbar,
+  Icon as IconNext,
 } from '../../../components';
+
+import backSVG from '../../../icons/back.svg';
 
 const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
 const messages = defineMessages({
@@ -1259,12 +1262,13 @@ export default class ContentsComponent extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
+            hideDefaultViewButtons
             inner={
-              <Link to={`${path}`} className="item">
-                <Icon
-                  name="arrow left"
-                  size="big"
-                  color="blue"
+              <Link to={`${path}`}>
+                <IconNext
+                  name={backSVG}
+                  className="contents circled"
+                  size="36px"
                   title={this.props.intl.formatMessage(messages.back)}
                 />
               </Link>
