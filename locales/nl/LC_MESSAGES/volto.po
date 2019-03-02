@@ -98,7 +98,6 @@ msgstr "Oplopend"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 msgid "Back"
 msgstr ""
@@ -191,7 +190,6 @@ msgstr "Wachtwoord bevestigen"
 msgid "Contact"
 msgstr "Contact"
 
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 msgid "Contact form"
 msgstr ""
@@ -247,7 +245,6 @@ msgstr ""
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -336,9 +333,12 @@ msgstr ""
 msgid "Edit {title}"
 msgstr "{title} bewerken"
 
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 msgid "Email sent"
+msgstr ""
+
+#: components/manage/Tiles/Maps/Edit
+msgid "Enter Map URL"
 msgstr ""
 
 #: components/manage/Tiles/Video/Edit
@@ -370,7 +370,6 @@ msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
 
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 #: components/theme/Login/Login
 msgid "Error"
@@ -396,7 +395,6 @@ msgstr "Bestandsnaam"
 msgid "Filter…"
 msgstr "Filter…"
 
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 msgid "From"
 msgstr ""
@@ -491,7 +489,14 @@ msgstr "Inloggen"
 msgid "Login Name"
 msgstr "Gebruikersnaam"
 
-#: components/theme/ContactForm/ContactForm
+#: components/manage/Tiles/Maps/Edit
+msgid "Maps data error"
+msgstr ""
+
+#: components/manage/Tiles/Maps/Edit
+msgid "Maps instructions"
+msgstr ""
+
 #: components/theme/ContactInfo/ContactInfo
 msgid "Message"
 msgstr ""
@@ -518,7 +523,6 @@ msgid "My email address is"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 msgid "Name"
 msgstr "Naam"
@@ -719,7 +723,6 @@ msgstr ""
 msgid "Select…"
 msgstr "Selecteer…"
 
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 msgid "Send"
 msgstr ""
@@ -790,7 +793,6 @@ msgstr "Status: {current}"
 msgid "String"
 msgstr ""
 
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 msgid "Subject"
 msgstr ""
@@ -832,6 +834,10 @@ msgstr "Het {plonecms} is {copyright} 2000-{current_year} door de {plonefoundati
 #: components/manage/Form/ModalForm
 msgid "There were some errors."
 msgstr "Er zijn fouten opgetreden."
+
+#: components/manage/Form/Form
+msgid "There were some errors. Please, validate that you are not a robot using the recaptcha field."
+msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."

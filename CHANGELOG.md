@@ -4,6 +4,10 @@
 
 ### Added
 
+- Add generic recaptcha feature for Form component @sneridagh
+- Fist implementation of the secrets stash used only in SSR mode @sneridagh
+- contact-info view @cekk
+
 ### Changes
 
 ## 1.6.1 (2019-03-01)
@@ -148,7 +152,6 @@
 - Add .gitattributes file to avoid most Changelog merge conflicts @pnicolli
 - Buildout for Python 3 @pbauer
 - Websockets support @robgietema
-- contact-info view @cekk
 - Subrequests to search and get content actions @robgietema
 - Add logos @sneridagh @albertcasado
 

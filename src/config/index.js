@@ -28,6 +28,8 @@ import {
   messagesTiles,
 } from './Tiles';
 
+import { publicTokens } from './tokens';
+
 export const settings = {
   host: process.env.HOST || 'localhost',
   port: process.env.PORT || '3000',
@@ -44,6 +46,7 @@ export const settings = {
   richTextEditorPlugins: plugins,
   ToHTMLRenderers,
   ToHTMLOptions,
+  publicTokens,
 };
 
 export const widgets = {

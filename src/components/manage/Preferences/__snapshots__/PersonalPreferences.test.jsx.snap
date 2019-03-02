@@ -193,6 +193,7 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
             </div>
           </div>
         </div>
+        
         <div
           className="ui clearing segment actions"
         >

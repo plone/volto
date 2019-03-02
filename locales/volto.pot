@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2018-11-11T07:30:09.497Z\n"
+"POT-Creation-Date: 2019-03-02T11:58:49.062Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -95,7 +95,6 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 # defaultMessage: Back
 msgid "Back"
@@ -207,7 +206,6 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 # defaultMessage: Contact form
 msgid "Contact form"
@@ -272,7 +270,6 @@ msgstr ""
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -379,10 +376,14 @@ msgstr ""
 msgid "Edit {title}"
 msgstr ""
 
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 # defaultMessage: Email sent
 msgid "Email sent"
+msgstr ""
+
+#: components/manage/Tiles/Maps/Edit
+# defaultMessage: Enter Map URL
+msgid "Enter Map URL"
 msgstr ""
 
 #: components/manage/Tiles/Video/Edit
@@ -420,7 +421,6 @@ msgstr ""
 
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 #: components/theme/Login/Login
 # defaultMessage: Error
@@ -452,7 +452,6 @@ msgstr ""
 msgid "Filter…"
 msgstr ""
 
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 # defaultMessage: From
 msgid "From"
@@ -569,7 +568,16 @@ msgstr ""
 msgid "Login Name"
 msgstr ""
 
-#: components/theme/ContactForm/ContactForm
+#: components/manage/Tiles/Maps/Edit
+# defaultMessage: Embed code error, please follow the instructions and try again.
+msgid "Maps data error"
+msgstr ""
+
+#: components/manage/Tiles/Maps/Edit
+# defaultMessage: Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it.
+msgid "Maps instructions"
+msgstr ""
+
 #: components/theme/ContactInfo/ContactInfo
 # defaultMessage: Message
 msgid "Message"
@@ -602,7 +610,6 @@ msgid "My email address is"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 # defaultMessage: Name
 msgid "Name"
@@ -846,7 +853,6 @@ msgstr ""
 msgid "Select…"
 msgstr ""
 
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 # defaultMessage: Send
 msgid "Send"
@@ -933,7 +939,6 @@ msgstr ""
 msgid "String"
 msgstr ""
 
-#: components/theme/ContactForm/ContactForm
 #: components/theme/ContactInfo/ContactInfo
 # defaultMessage: Subject
 msgid "Subject"
@@ -984,6 +989,11 @@ msgstr ""
 #: components/manage/Form/ModalForm
 # defaultMessage: There were some errors.
 msgid "There were some errors."
+msgstr ""
+
+#: components/manage/Form/Form
+# defaultMessage: There were some errors. Please, validate that you are not a robot using the recaptcha field.
+msgid "There were some errors. Please, validate that you are not a robot using the recaptcha field."
 msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal

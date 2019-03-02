@@ -19,6 +19,7 @@ exports[`Form renders a form component 1`] = `
           className="Field"
         />
       </div>
+      
       <div
         className="ui clearing segment actions"
       >

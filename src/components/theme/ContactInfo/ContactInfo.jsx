@@ -12,6 +12,7 @@ import { Portal } from 'react-portal';
 import { Container, Message, Icon } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Link, withRouter } from 'react-router-dom';
+
 import { Form, Toolbar } from '../../../components';
 import { addMessage, emailNotification } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
@@ -181,6 +182,7 @@ export class ContactInfo extends Component {
             resetAfterSubmit
             title={this.props.intl.formatMessage(messages.contactForm)}
             loading={this.props.loading}
+            recaptcha
             schema={{
               fieldsets: [
                 {
@@ -211,6 +213,7 @@ export class ContactInfo extends Component {
               required: ['from', 'message'],
             }}
           />
+
           <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
             <Toolbar
               pathname={this.props.pathname}
