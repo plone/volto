@@ -143,6 +143,18 @@ svg.icon {
     opacity: 0;
     transition: opacity 0.1s 0.2s;
 
+    .contents {
+      color: @teal-blue;
+    }
+
+    .save {
+      color: @teal-blue;
+    }
+
+    .cancel {
+      color: @darkHotPink;
+    }
+
     .edit {
       color: @teal-blue;
     }
@@ -450,6 +462,7 @@ svg.icon {
   li {
     // padding: 5px 0;
 
+    a,
     button {
       display: flex;
       width: 100%;
@@ -459,6 +472,7 @@ svg.icon {
       padding: 0;
       border: none;
       background-color: transparent;
+      color: @toolbar-text;
       cursor: pointer;
       font-family: Poppins;
       font-size: 14px;
@@ -497,7 +511,7 @@ svg.icon {
     }
 
     .icon.logout {
-      color: #d12c67;
+      color: @darkHotPink;
     }
   }
 

@@ -126,16 +126,16 @@ class PersonalTools extends Component {
               </button>
             </li>
             <li>
-              <button>
+              <Link to="/personal-preferences">
                 Preferences
                 <Icon name={rightArrowSVG} size="24px" />
-              </button>
+              </Link>
             </li>
             <li>
-              <button>
+              <Link to="/controlpanel">
                 Site Setup
                 <Icon name={rightArrowSVG} size="24px" />
-              </button>
+              </Link>
             </li>
           </ul>
         </div>
