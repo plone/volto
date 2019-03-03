@@ -1,5 +1,5 @@
 # Change Log
-##1.5.4 (2019-03-03)
+##1.6.3 (2019-03-03)
 
 #changes
  -Fix Browse button coming out of Segment in Add Image.@lkttyagi
