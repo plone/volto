@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add image-zooming functionality @nileshgulia1
+
 ### Changes
 
 - Fix image float/left right on image tile @timo
@@ -27,8 +29,6 @@
   headers. This fixes the missing images on non published resources while editing @sneridagh
 - Fix not valid `<div>` tag nested in a `<p>` tag error on tiles and wysiwyg
   field @sneridagh
-- Image-zoom component @nileshgulia1
-
 
 ### Changes
 
