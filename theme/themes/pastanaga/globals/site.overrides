@@ -702,15 +702,8 @@ body {
     .ui.input > input {
       padding: 0;
       border: none;
-
-      
-
-
     }
-    .ui.input >input >#field-file {
-      padding:4px;
-      background-color:@pink;
-    }
+    
     .ui.icon.button {
       padding: 4px;
       margin-left: 4px;
