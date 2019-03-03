@@ -1,6 +1,11 @@
 # Change Log
+##1.5.4 (2019-03-03)
 
 ## 1.7.1 (unreleased)
+## 1.6.2 (unreleased)
+#changes
+ -Fix Browse button coming out of Segment in Add Image.@lkttyagi
+## 1.5.3 (unreleased)
 
 ### Added
 
