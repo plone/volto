@@ -4,7 +4,6 @@
 
 .ui.input input {
   font-weight: @inputFontWeight;
-
 }
 
 .inline.field {
