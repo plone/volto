@@ -18,6 +18,7 @@
 @verticalPadding: @inputVerticalPadding;
 @horizontalPadding: 1.5em;
 
+
 /* Text */
 @textTransform: none;
 @tapColor: transparent;
