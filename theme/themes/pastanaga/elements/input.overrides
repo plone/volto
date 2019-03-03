@@ -4,6 +4,7 @@
 
 .ui.input input {
   font-weight: @inputFontWeight;
+
 }
 
 .inline.field {
@@ -24,6 +25,7 @@
       height: 10px;
       margin-left: 5px;
       width: 10px;
+      
     }
   }
 
@@ -65,6 +67,7 @@
     height: auto;
     line-height: initial;
     width: 106px;
+    
   }
   .ui.blue.button {
     box-shadow: none;
