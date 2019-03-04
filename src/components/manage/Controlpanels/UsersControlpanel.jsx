@@ -17,6 +17,8 @@ import {
   Segment,
   Table,
   Container,
+  Label,
+  Divider,
 } from 'semantic-ui-react';
 import { find, map } from 'lodash';
 import {
@@ -702,7 +704,7 @@ export default class UsersControlpanel extends Component {
               </Table.Body>
             </Table>
           </Form>
-          <Segment clearing className="actions">
+          <Label horizontal icon color="white">
             <FormattedMessage id="Add New User" defaultMessage="Add New User" />
             <MyIcon
               name={addSvg}
@@ -714,7 +716,8 @@ export default class UsersControlpanel extends Component {
               }}
               className="icon-adduser"
             />
-          </Segment>
+          </Label>
+          <Divider />
           <Segment secondary>
             <FormattedMessage id="Groups" defaultMessage="Groups" />
           </Segment>
