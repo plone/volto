@@ -160,17 +160,18 @@ https://www.npmjs.com/package/release-it
 
 For using it and start a release you need to fulfill the requirements:
 
-  - have permissions to push on master branch
-  - have permissions on the @plone org on npmjs.com
-  - have a enviroment variable (`GITHUB_TOKEN`) with a GitHub personal token to
-    write the Release page on GitHub (https://www.npmjs.com/package/release-it#github-releases)
+- have permissions to push on master branch
+- have permissions on the @plone org on npmjs.com
+- have a enviroment variable (`GITHUB_TOKEN`) with a GitHub personal token to
+  write the Release page on GitHub (https://www.npmjs.com/package/release-it#github-releases)
+
+Then the command for release:
 
     $ yarn release
 
 a dry-release command for testing the output is also available:
 
     $ yarn dry-release
-
 
 ### Acceptance testing
 
