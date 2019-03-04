@@ -704,11 +704,16 @@ export default class UsersControlpanel extends Component {
               </Table.Body>
             </Table>
           </Form>
-          <Label horizontal icon color="white">
-            <FormattedMessage id="Add New User" defaultMessage="Add New User" />
+          <Segment clearing className="actions">
+            <Label horizontal icon >
+              <FormattedMessage
+                id="Add New User"
+                defaultMessage="Add New User"
+              />
+            </Label>
             <MyIcon
               name={addSvg}
-              size="35px"
+              size="30px"
               color="blue"
               title="Add"
               onClick={() => {
@@ -716,7 +721,7 @@ export default class UsersControlpanel extends Component {
               }}
               className="icon-adduser"
             />
-          </Label>
+          </Segment>
           <Divider />
           <Segment secondary>
             <FormattedMessage id="Groups" defaultMessage="Groups" />
@@ -767,13 +772,15 @@ export default class UsersControlpanel extends Component {
             </Table>
           </Form>
           <Segment clearing className="actions">
+          <Label horizontal icon >
             <FormattedMessage
               id="Add New Group"
               defaultMessage="Add New Group"
             />
+            </Label>
             <MyIcon
               name={addSvg}
-              size="35px"
+              size="30px"
               color="blue"
               title="Add"
               onClick={() => {

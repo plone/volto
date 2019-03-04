@@ -875,6 +875,10 @@ body {
   cursor: pointer;
 }
 
+.icon-adduser{
+  float: right;
+}
+
 .modal {
   margin: 0 auto!important;
   top: auto !important;
