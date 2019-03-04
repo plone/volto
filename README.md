@@ -151,6 +151,27 @@ Go to [http://localhost:3000](http://localhost:3000) in your browser.
 
     $ yarn test
 
+### Releasing
+
+For ease the release process, a package that helps with the process is
+installed: `release-it`.
+
+https://www.npmjs.com/package/release-it
+
+For using it and start a release you need to fulfill the requirements:
+
+  - have permissions to push on master branch
+  - have permissions on the @plone org on npmjs.com
+  - have a enviroment variable (`GITHUB_TOKEN`) with a GitHub personal token to
+    write the Release page on GitHub (https://www.npmjs.com/package/release-it#github-releases)
+
+    $ yarn release
+
+a dry-release command for testing the output is also available:
+
+    $ yarn dry-release
+
+
 ### Acceptance testing
 
     $ make test-acceptance
