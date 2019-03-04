@@ -483,6 +483,13 @@ body {
   font-size: 1.125rem;
 }
 
+// Here should be placed all tiles that receive (faked) focus
+.tile.image:focus,
+.tile.video:focus,
+.tile.maps:focus {
+  outline: none;
+}
+
 .tile .tile:not(.inner)::after {
   position: absolute;
   top: -9px;
@@ -593,8 +600,9 @@ body {
     height: 25vw;
   }
 
-  .ui.image {
-    width: auto;
+  .ui.image,
+  img {
+    max-width: 50%;
   }
 }
 
@@ -612,8 +620,9 @@ body {
     height: 25vw;
   }
 
-  .ui.image {
-    width: auto;
+  .ui.image,
+  img {
+    max-width: 50%;
   }
 
 }
@@ -733,7 +742,7 @@ body {
   position: absolute;
   padding: 0;
   border: none;
-  margin-top: -35px;
+  margin-top: -22px;
   margin-bottom: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
