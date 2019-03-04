@@ -242,7 +242,7 @@ export default class WysiwygWidget extends Component {
         >
           <div className="wrapper">
             <label htmlFor={`field-${id}`}>{title}</label>
-            <TextArea id={id} name={id} value={value.data} />
+            <TextArea id={id} name={id} value={value ? value.data : ''} />
             {description && <p className="help">{description}</p>}
             {map(error, message => (
               <Label key={message} basic color="red" pointing>

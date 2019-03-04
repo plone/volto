@@ -51,6 +51,8 @@ export default class Edit extends Component {
     onChangeTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    onFocusPreviousTile: PropTypes.func.isRequired,
+    onFocusNextTile: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
 
@@ -68,6 +70,18 @@ export default class Edit extends Component {
     this.state = {
       url: '',
     };
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selected) {
+      this.node.focus();
+    }
   }
 
   /**
@@ -108,6 +122,23 @@ export default class Edit extends Component {
   }
 
   /**
+   * handleKeyDown
+   * @method handleKeyDown
+   * @param {event} e Event
+   * @returns {undefined}
+   */
+  handleKeyDown = e => {
+    if (e.key === 'ArrowUp') {
+      this.props.onFocusPreviousTile(this.props.tile, this.node);
+      e.preventDefault();
+    }
+    if (e.key === 'ArrowDown') {
+      this.props.onFocusNextTile(this.props.tile, this.node);
+      e.preventDefault();
+    }
+  };
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -125,6 +156,11 @@ export default class Edit extends Component {
           },
           this.props.data.align,
         )}
+        tabIndex={0}
+        onKeyDown={this.handleKeyDown}
+        ref={node => {
+          this.node = node;
+        }}
       >
         {this.props.selected &&
           !!this.props.data.url && (

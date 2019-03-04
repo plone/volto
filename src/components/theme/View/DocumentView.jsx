@@ -59,6 +59,12 @@ const DocumentView = ({ content }) => {
           floated="right"
         />
       )}
+      {content.remoteUrl && (
+        <span>
+          The link address is:
+          <a href={content.remoteUrl}>{content.remoteUrl}</a>
+        </span>
+      )}
       {content.text && (
         <div
           dangerouslySetInnerHTML={{

@@ -567,7 +567,7 @@ export default class UsersControlpanel extends Component {
                   title: this.props.intl.formatMessage(
                     messages.addUserFormPasswordTitle,
                   ),
-                  type: 'string',
+                  type: 'password',
                   description: '',
                 },
                 roles: {

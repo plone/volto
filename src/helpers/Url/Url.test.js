@@ -1,4 +1,6 @@
-import { getBaseUrl, getIcon, getView } from './Url';
+import { settings } from '~/config';
+
+import { flattenToAppURL, getBaseUrl, getIcon, getView } from './Url';
 
 describe('Url', () => {
   describe('getBaseUrl', () => {
@@ -47,6 +49,12 @@ describe('Url', () => {
 
     it('returns an icon for a non folderish item', () => {
       expect(getIcon('Custom', false)).toBe('file outline');
+    });
+  });
+
+  describe('flattenToAppURL', () => {
+    it('flattens a given URL to the app URL', () => {
+      expect(flattenToAppURL(`${settings.apiPath}/edit`)).toBe('/edit');
     });
   });
 });
