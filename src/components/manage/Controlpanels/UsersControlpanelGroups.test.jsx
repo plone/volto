@@ -14,6 +14,7 @@ const testGroups = {
   groupname: 'Administrators',
   id: 'Administrators',
   title: 'Administrators',
+  roles: ['Manager'],
 };
 
 const testRoles = [

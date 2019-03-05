@@ -17,7 +17,13 @@ exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component 1`]
   />
   <td
     className=""
-  />
+  >
+    <i
+      aria-hidden="true"
+      className="blue check circle outline icon"
+      title="Global role"
+    />
+  </td>
   <td
     className="right aligned"
   >

@@ -93,9 +93,14 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui clearing segment actions"
     >
-      <span>
-        Add New User
-      </span>
+      <div
+        className="ui horizontal label"
+        onClick={[Function]}
+      >
+        <span>
+          Add New User
+        </span>
+      </div>
       <svg
         className="icon icon-adduser"
         dangerouslySetInnerHTML={
@@ -107,7 +112,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
         style={
           Object {
             "fill": "blue",
-            "height": "35px",
+            "height": "30px",
             "width": "auto",
           }
         }
@@ -115,6 +120,9 @@ exports[`UsersControlpanel renders a user control component 1`] = `
         xmlns=""
       />
     </div>
+    <div
+      className="ui divider"
+    />
     <div
       className="ui secondary segment"
     >
@@ -191,9 +199,14 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui clearing segment actions"
     >
-      <span>
-        Add New Group
-      </span>
+      <div
+        className="ui horizontal label"
+        onClick={[Function]}
+      >
+        <span>
+          Add New Group
+        </span>
+      </div>
       <svg
         className="icon icon-adduser"
         dangerouslySetInnerHTML={
@@ -205,7 +218,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
         style={
           Object {
             "fill": "blue",
-            "height": "35px",
+            "height": "30px",
             "width": "auto",
           }
         }
