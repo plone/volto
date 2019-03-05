@@ -705,7 +705,7 @@ export default class UsersControlpanel extends Component {
             </Table>
           </Form>
           <Segment clearing className="actions">
-            <Label horizontal icon >
+            <Label horizontal>
               <FormattedMessage
                 id="Add New User"
                 defaultMessage="Add New User"
@@ -772,11 +772,11 @@ export default class UsersControlpanel extends Component {
             </Table>
           </Form>
           <Segment clearing className="actions">
-          <Label horizontal icon >
-            <FormattedMessage
-              id="Add New Group"
-              defaultMessage="Add New Group"
-            />
+            <Label horizontal>
+              <FormattedMessage
+                id="Add New Group"
+                defaultMessage="Add New Group"
+              />
             </Label>
             <MyIcon
               name={addSvg}

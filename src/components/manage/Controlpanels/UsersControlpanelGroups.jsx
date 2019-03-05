@@ -70,7 +70,7 @@ export default class UsersControlpanelGroups extends Component {
         <Table.Cell>{this.props.groups.groupname}</Table.Cell>
         {this.props.roles.map(role => (
           <Table.Cell key={role.id}>
-            {this.props.roles.indexOf(role.id) !== -1 && (
+            {this.props.groups.roles.indexOf(role.id) !== -1 && (
               <Icon
                 name="check circle outline"
                 title="Global role"
