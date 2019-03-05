@@ -104,6 +104,10 @@ const messages = defineMessages({
     id: 'Fullname',
     defaultMessage: 'Fullname',
   },
+  addUserGroupNameTitle: {
+    id: 'Add to Groups',
+    defaultMessage: 'Add to Groups',
+  },
   addGroupsFormDescriptionTitle: {
     id: 'Description',
     defaultMessage: 'Description',
@@ -540,6 +544,7 @@ export default class UsersControlpanel extends Component {
                     'email',
                     'password',
                     'roles',
+                    'groups',
                   ],
                 },
               ],
@@ -579,6 +584,19 @@ export default class UsersControlpanel extends Component {
                   type: 'array',
                   items: {
                     choices: this.props.roles.map(role => [role.id, role.id]),
+                  },
+                  description: '',
+                },
+                groups: {
+                  title: this.props.intl.formatMessage(
+                    messages.addUserGroupNameTitle,
+                  ),
+                  type: 'array',
+                  items: {
+                    choices: this.props.groups.map(group => [
+                      group.id,
+                      group.id,
+                    ]),
                   },
                   description: '',
                 },
