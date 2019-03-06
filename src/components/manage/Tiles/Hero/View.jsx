@@ -5,7 +5,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-//import { MixedTitle } from '../../../components';
 
 /**
  * View image tile class.
@@ -15,17 +14,14 @@ import PropTypes from 'prop-types';
 const View = ({ data }) => (
   <div className={['tile', 'hero'].filter(e => !!e).join(' ')}>
     <div className="product-hero">
-      <img src={`${data.url}/@@images/image`} alt="" />
+      <img
+        src={`${data.url}/@@images/image`}
+        alt=""
+        style={{ maxWidth: '50%', objectFit: 'contain' }}
+      />
       <div className="product-hero-body">
-        {/*<h1>
-          <MixedTitle
-            light={data.boldTitle}
-            strong={data.title}
-            breakline
-            reverse
-          />
-        </h1>*/}
-        <p>{data.description}</p>
+        <h1>{data.boldTitle}</h1>
+        <p>{data.title}</p>
       </div>
     </div>
   </div>

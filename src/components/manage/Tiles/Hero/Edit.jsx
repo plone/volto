@@ -24,12 +24,12 @@ import { relative } from 'path';
 
 const messages = defineMessages({
   title: {
-    id: 'Untertitel',
-    defaultMessage: 'Untertitel',
+    id: 'Subtitle',
+    defaultMessage: 'Subtitle',
   },
   boldTitle: {
-    id: 'boldTitle',
-    defaultMessage: 'Titel',
+    id: 'Title',
+    defaultMessage: 'Title',
   },
   description: {
     id: 'Beschreibung',
@@ -313,7 +313,10 @@ export default class EditHeroTile extends Component {
             <img
               src={`${this.props.data.url}/@@images/image`}
               alt=""
-              style={{ maxWidth: '100%', width: '600px', objectFit: 'contain' }}
+              style={{
+                maxWidth: '50%',
+                objectFit: 'contain',
+              }}
             />
           ) : (
             <div>
@@ -357,14 +360,6 @@ export default class EditHeroTile extends Component {
               blockRenderMap={extendedBlockRenderMap}
               handleReturn={() => true}
               placeholder={this.props.intl.formatMessage(messages.title)}
-              blockStyleFn={() => ''}
-            />
-            <Editor
-              onChange={this.onChangeDescription}
-              editorState={this.state.descriptionEditorState}
-              blockRenderMap={extendedDescripBlockRenderMap}
-              handleReturn={() => true}
-              placeholder={this.props.intl.formatMessage(messages.description)}
               blockStyleFn={() => ''}
             />
           </div>
