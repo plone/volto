@@ -693,34 +693,38 @@ export default class UsersControlpanel extends Component {
             </Form>
           </Segment>
           <Form onSubmit={this.onSubmit}>
-            <Table padded striped attached>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>
-                    <FormattedMessage
-                      id="User name"
-                      defaultMessage="User name"
+            <div className="table">
+              <Table padded striped attached>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>
+                      <FormattedMessage
+                        id="User name"
+                        defaultMessage="User name"
+                      />
+                    </Table.HeaderCell>
+                    {this.props.roles.map(role => (
+                      <Table.HeaderCell key={role.id}>
+                        {role.id}
+                      </Table.HeaderCell>
+                    ))}
+                    <Table.HeaderCell>
+                      <FormattedMessage id="Actions" defaultMessage="Actions" />
+                    </Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  {this.props.users.map(user => (
+                    <UsersControlpanelUser
+                      key={user.id}
+                      onDelete={this.delete}
+                      roles={this.props.roles}
+                      user={user}
                     />
-                  </Table.HeaderCell>
-                  {this.props.roles.map(role => (
-                    <Table.HeaderCell key={role.id}>{role.id}</Table.HeaderCell>
                   ))}
-                  <Table.HeaderCell>
-                    <FormattedMessage id="Actions" defaultMessage="Actions" />
-                  </Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {this.props.users.map(user => (
-                  <UsersControlpanelUser
-                    key={user.id}
-                    onDelete={this.delete}
-                    roles={this.props.roles}
-                    user={user}
-                  />
-                ))}
-              </Table.Body>
-            </Table>
+                </Table.Body>
+              </Table>
+            </div>
           </Form>
           <Segment clearing className="actions">
             <Label horizontal>
@@ -759,35 +763,39 @@ export default class UsersControlpanel extends Component {
             </Form>
           </Segment>
           <Form onSubmit={this.onSubmit}>
-            <Table padded striped attached>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>
-                    <FormattedMessage
-                      id="Groupname"
-                      defaultMessage="Groupname"
+            <div className="table">
+              <Table padded striped attached>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>
+                      <FormattedMessage
+                        id="Groupname"
+                        defaultMessage="Groupname"
+                      />
+                    </Table.HeaderCell>
+                    {this.props.roles.map(role => (
+                      <Table.HeaderCell key={role.id}>
+                        {role.id}
+                      </Table.HeaderCell>
+                    ))}
+                    <Table.HeaderCell>
+                      <FormattedMessage id="Actions" defaultMessage="Actions" />
+                    </Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  {this.props.groups.map(groups => (
+                    <UsersControlpanelGroups
+                      key={groups.id}
+                      user={this.props.users}
+                      onDelete={this.deleteGroup}
+                      roles={this.props.roles}
+                      groups={groups}
                     />
-                  </Table.HeaderCell>
-                  {this.props.roles.map(role => (
-                    <Table.HeaderCell key={role.id}>{role.id}</Table.HeaderCell>
                   ))}
-                  <Table.HeaderCell>
-                    <FormattedMessage id="Actions" defaultMessage="Actions" />
-                  </Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {this.props.groups.map(groups => (
-                  <UsersControlpanelGroups
-                    key={groups.id}
-                    user={this.props.users}
-                    onDelete={this.deleteGroup}
-                    roles={this.props.roles}
-                    groups={groups}
-                  />
-                ))}
-              </Table.Body>
-            </Table>
+                </Table.Body>
+              </Table>
+            </div>
           </Form>
           <Segment clearing className="actions">
             <Label horizontal>

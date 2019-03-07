@@ -892,6 +892,10 @@ body {
   z-index: 1;
 }
 
+.table {
+  overflow-x: auto;
+}
+
 .token.comment,
 .token.prolog,
 .token.doctype,
