@@ -315,7 +315,7 @@ export default class EditHeroTile extends Component {
               alt=""
               style={{
                 maxWidth: '50%',
-                objectFit: 'contain',
+                objectFit: 'fill',
               }}
             />
           ) : (

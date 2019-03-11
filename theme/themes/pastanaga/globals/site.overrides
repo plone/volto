@@ -879,6 +879,7 @@ body {
 
 .product-hero-body {
   flex: 1 1 ;
+  margin-left: 10px;
 }
 
 .product-hero {
