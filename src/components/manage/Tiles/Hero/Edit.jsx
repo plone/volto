@@ -319,7 +319,7 @@ export default class EditHeroTile extends Component {
               }}
             />
           ) : (
-            <div>
+            <div style={{ minWidth: '50%', minHeight: '400px' }}>
               <p>
                 <Message>
                   {this.state.uploading && (
@@ -360,7 +360,7 @@ export default class EditHeroTile extends Component {
               blockRenderMap={extendedBlockRenderMap}
               handleReturn={() => true}
               placeholder={this.props.intl.formatMessage(messages.title)}
-              blockStyleFn={() => ''}
+              blockStyleFn={() => 'editor-title'}
             />
           </div>
         </div>

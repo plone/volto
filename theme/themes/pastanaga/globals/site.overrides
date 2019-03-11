@@ -886,10 +886,17 @@ body {
   position: relative;
   display: flex;
 }
+
 .html-editor {
   background-color: #fafafa;
   border-radius: 4px;
   z-index: 1;
+}
+
+.editor-title {
+  font-weight: 2em;
+  font-size: 18px;
+  margin-right: -20px;
 }
 
 .token.comment,
