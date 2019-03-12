@@ -24,7 +24,7 @@ addons:
     packages:
       - google-chrome-stable
 before_install:
-  - nvm install 8.14.0;
+  - nvm install 10.14.2;
   - docker build -t plone/plone-react:testing .
   - if [ "$TEST_SUITE" != "unit" ]; then
     mkdir webdriver;
@@ -40,10 +40,10 @@ install:
     virtualenv env --python=$(which python) --no-site-packages;
     env/bin/pip install zc.recipe.egg==2.0.4 --no-cache-dir;
     env/bin/pip install -r api/docker/requirements.txt;
-    env/bin/pip install -r test-requirements.txt;
+    env/bin/pip install -r requirements-tests.txt;
     env/bin/pip install -U https://github.com/zopefoundation/z3c.autoinclude/archive/pip.tar.gz#egg=z3c.autoinclude;
     fi
-  - pip install -r test-requirements.txt;
+  - pip install -r requirements-tests.txt;
   - yarn
   - yarn build
 before_script:
@@ -52,9 +52,7 @@ before_script:
   - sleep 3
 script:
   - if [ "$TEST_SUITE" == "unit" ]; then
-    docker run --name coverage_front -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" plone/plone-react:testing -- yarn test --coverage;
-    docker cp coverage_front:/opt/app/coverage/lcov.info .;
-    cat lcov.info | ./node_modules/coveralls/bin/coveralls.js;
+    docker run --name coverage_front -it --rm -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" plone/plone-react:testing -- yarn test:ci;
     fi
   - if [ "$TEST_SUITE" == "guillotina" ]; then
     PYTHONPATH=$(pwd)/tests pybot -v BROWSER:headlesschrome -v API:Guillotina tests;

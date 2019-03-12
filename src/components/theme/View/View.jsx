@@ -16,12 +16,10 @@ import { views } from '~/config';
 
 import {
   Comments,
-  SocialSharing,
   Tags,
   Toolbar,
   Actions,
   Display,
-  NotFound,
   Types,
   Workflow,
 } from '../../../components';
@@ -214,7 +212,15 @@ export default class View extends Component {
    */
   render() {
     if (this.props.error) {
-      let FoundView = views.errorViews[this.props.error.status.toString()];
+      let FoundView;
+      if (this.props.error.status === undefined) {
+        // For some reason, while development and if CORS is in place and the
+        // requested resource is 404, it returns undefined as status, then the
+        // next statement will fail
+        FoundView = views.errorViews['404'];
+      } else {
+        FoundView = views.errorViews[this.props.error.status.toString()];
+      }
       if (!FoundView) {
         FoundView = views.errorViews['404']; // default to 404
       }
@@ -259,11 +265,13 @@ export default class View extends Component {
           this.props.content.subjects.length > 0 && (
             <Tags tags={this.props.content.subjects} />
           )}
-        <SocialSharing
+        {/* Add opt-in social sharing if required, disabled by default */}
+        {/* In the future this might be parameterized from the app config */}
+        {/* <SocialSharing
           url={typeof window === 'undefined' ? '' : window.location.href}
           title={this.props.content.title}
           description={this.props.content.description || ''}
-        />
+        /> */}
         {this.props.content.allow_discussion && (
           <Comments pathname={this.props.pathname} />
         )}

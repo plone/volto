@@ -34,6 +34,7 @@ module.exports = {
     const POST_CSS_LOADER = {
       loader: require.resolve('postcss-loader'),
       options: {
+        sourceMap: true,
         // Necessary for external CSS imports to work
         // https://github.com/facebookincubator/create-react-app/issues/2677
         ident: 'postcss',
@@ -54,7 +55,11 @@ module.exports = {
 
     const LESSLOADER = {
       test: /\.less$/,
-      include: [path.resolve('./theme'), /node_modules\/semantic-ui-less/],
+      include: [
+        path.resolve('./theme'),
+        /node_modules\/@plone\/volto\/theme/,
+        /node_modules\/semantic-ui-less/,
+      ],
       use: dev
         ? [
             {
@@ -167,27 +172,34 @@ module.exports = {
     }
 
     const customizations = {};
-    map(
-      glob('src/customizations/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)'),
-      filename => {
-        const targetPath = filename.replace('src/', `${projectRootPath}/src/`);
-        if (
-          fs.existsSync(
-            `${voltoPath}/${filename.replace('customizations/', '')}`,
-          )
-        ) {
-          customizations[
-            filename
-              .replace('src/customizations/', '@plone/volto/')
-              .replace(/\.(js|jsx)$/, '')
-          ] = targetPath;
-        } else {
-          console.log(
-            `The file ${filename} doesn't exist in the volto package (${targetPath}), unable to customize.`,
+    let { customizationPaths } = packageJson;
+    if (!customizationPaths) {
+      customizationPaths = ['src/customizations/'];
+    }
+    customizationPaths.forEach(customizationPath => {
+      map(
+        glob(
+          `${customizationPath}**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx)`,
+        ),
+        filename => {
+          const targetPath = filename.replace(
+            customizationPath,
+            `${voltoPath}/src/`,
           );
-        }
-      },
-    );
+          if (fs.existsSync(targetPath)) {
+            customizations[
+              filename
+                .replace(customizationPath, '@plone/volto/')
+                .replace(/\.(js|jsx)$/, '')
+            ] = path.resolve(filename);
+          } else {
+            console.log(
+              `The file ${filename} doesn't exist in the volto package (${targetPath}), unable to customize.`,
+            );
+          }
+        },
+      );
+    });
 
     config.resolve.alias = {
       ...customizations,

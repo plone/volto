@@ -8,6 +8,8 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Container, Image } from 'semantic-ui-react';
 
+import { flattenToAppURL } from '../../../helpers';
+
 /**
  * NewsItemView view component class.
  * @function NewsItemView
@@ -33,14 +35,14 @@ const NewsItemView = ({ content }) => (
         title={content.title}
         src={
           content.image['content-type'] === 'image/svg+xml'
-            ? content.image.download
-            : content.image.scales.mini.download
+            ? flattenToAppURL(content.image.download)
+            : flattenToAppURL(content.image.scales.mini.download)
         }
         floated="right"
       />
     )}
     {content.text && (
-      <p dangerouslySetInnerHTML={{ __html: content.text.data }} />
+      <div dangerouslySetInnerHTML={{ __html: content.text.data }} />
     )}
   </Container>
 );
