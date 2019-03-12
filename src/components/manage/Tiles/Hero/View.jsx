@@ -17,7 +17,7 @@ const View = ({ data }) => (
       <img
         src={`${data.url}/@@images/image`}
         alt=""
-        style={{ maxWidth: '50%', objectFit: 'contain' }}
+        className="hero-image"
       />
       <div className="product-hero-body">
         <h1>{data.boldTitle}</h1>

@@ -882,6 +882,26 @@ body {
   margin-left: 10px;
 }
 
+.clear-icon {
+  z-index: 2 !important;
+}
+
+.hero-image {
+  max-width: 50%;
+  max-height: 400px;
+  display: block;
+  width: auto;
+  height: auto;
+}
+
+.image-add {
+  min-width: 50%;
+}
+
+.image-message {
+  min-height: 400px !important;
+}
+
 .product-hero {
   z-index: 1;
   position: relative;

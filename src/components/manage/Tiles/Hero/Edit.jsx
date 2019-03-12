@@ -291,7 +291,7 @@ export default class EditHeroTile extends Component {
       >
         {this.props.selected &&
           !!this.props.data.url && (
-            <div className="toolbar">
+            <div className="toolbar clear-icon">
               <Button.Group>
                 <Button
                   icon
@@ -311,38 +311,33 @@ export default class EditHeroTile extends Component {
         <div className="product-hero">
           {this.props.data.url ? (
             <img
+              className="hero-image"
               src={`${this.props.data.url}/@@images/image`}
               alt=""
-              style={{
-                maxWidth: '50%',
-                objectFit: 'fill',
-              }}
             />
           ) : (
-            <div style={{ minWidth: '50%', minHeight: '400px' }}>
-              <p>
-                <Message>
-                  {this.state.uploading && (
-                    <Dimmer active>
-                      <Loader indeterminate>Uploading image</Loader>
-                    </Dimmer>
-                  )}
-                  <center>
-                    <h4>Image</h4>
-                    <p>Upload a new image</p>
-                    <p>
-                      <label className="ui button file">
-                        Browse
-                        <input
-                          type="file"
-                          onChange={this.onUploadImage}
-                          style={{ display: 'none' }}
-                        />
-                      </label>
-                    </p>
-                  </center>
-                </Message>
-              </p>
+            <div className="image-add">
+              <Message className="image-message">
+                {this.state.uploading && (
+                  <Dimmer active>
+                    <Loader indeterminate>Uploading image</Loader>
+                  </Dimmer>
+                )}
+                <center>
+                  <h4>Image</h4>
+                  <p>Upload a new image</p>
+                  <p>
+                    <label className="ui button file">
+                      Browse
+                      <input
+                        type="file"
+                        onChange={this.onUploadImage}
+                        style={{ display: 'none' }}
+                      />
+                    </label>
+                  </p>
+                </center>
+              </Message>
             </div>
           )}
           <div className="product-hero-body">
