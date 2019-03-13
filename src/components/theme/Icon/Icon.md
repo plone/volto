@@ -1,7 +1,8 @@
 Icon example:
 
 ```jsx static
-<Icon name={} />
+import codeSVG from '@plone/volto/icons/code.svg';
+<Icon name={codeSVG} />
 ```
 
 Output:
