@@ -9,13 +9,8 @@ exports[`renders a view hero component 1`] = `
   >
     <img
       alt=""
+      className="hero-image"
       src="heroimage.jpg/@@images/image"
-      style={
-        Object {
-          "maxWidth": "50%",
-          "objectFit": "contain",
-        }
-      }
     />
     <div
       className="product-hero-body"
