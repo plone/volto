@@ -61,29 +61,17 @@ module.exports = {
       link: 'firebrick',
       linkHover: 'salmon',
     },
-    fontFamily: {
-      base: '"Comic Sans MS", "Comic Sans", cursive',
-    },
   },
   sections: [
     {
-      name: 'Introduction',
-      content: 'docs/source/index.md',
-    },
-    {
       name: 'Theme',
       components: 'src/components/theme/**/*.jsx',
-      content: './docs/source/04-theming/01-theming-strategy.md',
+      content: './docs/styleguide/theme.md',
     },
     {
       name: 'Manage',
       components: 'src/components/manage/**/*.jsx',
-      content: './docs/source/03-customizing/02-folder-structure.md',
-    },
-    {
-      name: 'Mosaic',
-      components: './src/components/mosaic/**/*.jsx',
-      content: './docs/source/03-customizing/index.md',
+      content: './docs/styleguide/manage.md',
     },
   ],
   webpackConfig: Object.assign(
@@ -112,6 +100,7 @@ module.exports = {
               /\.gif$/,
               /\.jpe?g$/,
               /\.png$/,
+              /\.(woff|woff2|ttf|eot)$/,
               /\.(config|variables|overrides)$/,
               /icons\/.*\.svg$/,
             ],
