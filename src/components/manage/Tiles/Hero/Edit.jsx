@@ -308,7 +308,7 @@ export default class EditHeroTile extends Component {
               </Button.Group>
             </div>
           )}
-        <div className="product-hero">
+        <div className="tile-inner-wrapper">
           {this.props.data.url ? (
             <img
               className="hero-image"
@@ -340,7 +340,7 @@ export default class EditHeroTile extends Component {
               </Message>
             </div>
           )}
-          <div className="product-hero-body">
+          <div className="inline-tile-wrapper">
             <div className="inline-tile">
               <Editor
                 onChange={this.onChangeBoldTitle}

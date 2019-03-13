@@ -877,7 +877,7 @@ body {
   margin-top: 20px;
 }
 
-.product-hero-body {
+.inline-tile-wrapper {
   flex: 1 1 ;
   background-color: #d3d3d3  !important;
 }
@@ -906,7 +906,7 @@ body {
   min-height: 400px !important;
 }
 
-.product-hero {
+.tile-inner-wrapper {
   z-index: 1;
   position: relative;
   display: flex;
