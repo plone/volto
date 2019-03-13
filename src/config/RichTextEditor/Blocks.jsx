@@ -6,7 +6,7 @@ const blockRenderMap = Map({
     element: 'p',
   },
   unstyled: {
-    element: 'p',
+    element: 'div',
   },
 });
 

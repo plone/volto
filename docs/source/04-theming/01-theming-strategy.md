@@ -35,3 +35,8 @@ Try to stick with the container and grid model of Semantic UI, including its
 breakpoints (and helpers). Use React Semantic UI building blocks whenever it's
 possible since it will help you things fit together easily.
 
+# Talks
+
+You might find interesting this talk as resource on how theming works in Volto:
+
+https://2018.ploneconf.org/talks/theming-plone-react

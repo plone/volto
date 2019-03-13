@@ -1,4 +1,5 @@
 const fs = require('fs');
+const semver = require('semver');
 
 const args = process.argv;
 
@@ -11,7 +12,6 @@ if (process.argv.length < 3) {
 
 const command = process.argv[2];
 const version = process.argv[3];
-console.log(command);
 
 function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
@@ -63,7 +63,7 @@ try {
 
   if (command === 'back') {
     const data = fs.readFileSync('CHANGELOG.md', 'utf8');
-    const nextversion = process.argv[3];
+    const nextversion = semver.inc(process.argv[3], 'patch');
     const backToDevelTemplate = `\n\n## ${nextversion} (unreleased)\n\n### Added\n\n### Changes`;
 
     const insertIndex = data.indexOf('\n\n');

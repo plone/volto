@@ -5,23 +5,30 @@ import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
-import { Html, Api, persistAuthToken, generateSitemap } from './helpers';
 import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
 import Raven from 'raven';
-
-import userSession from './reducers/userSession/userSession';
-
 import cookie, { plugToRequest } from 'react-cookie';
-import ErrorPage from './error';
-
 import locale from 'locale';
 
 import routes from '~/routes';
-import languages from './constants/Languages';
 import nlLocale from '~/../locales/nl.json';
 import deLocale from '~/../locales/de.json';
 import enLocale from '~/../locales/en.json';
+
+import {
+  Html,
+  Api,
+  persistAuthToken,
+  generateSitemap,
+  getAPIResourceWithAuth,
+} from './helpers';
+
+import userSession from './reducers/userSession/userSession';
+
+import ErrorPage from './error';
+
+import languages from './constants/Languages';
 
 import configureStore from './store';
 
@@ -73,12 +80,24 @@ server
 
     if (req.path === '/sitemap.xml.gz') {
       generateSitemap(req).then(sitemap => {
-        res.header('Content-Type: application/x-gzip');
-        res.header('Content-Encoding: gzip');
-        res.header(
-          'Content-Disposition: attachment; filename="sitemap.xml.gz"',
-        );
+        res.set('Content-Type', 'application/x-gzip');
+        res.set('Content-Encoding', 'gzip');
+        res.set('Content-Disposition', 'attachment; filename="sitemap.xml.gz"');
         res.send(sitemap);
+      });
+    } else if (
+      req.path.match(/(.*)\/@@images\/(.*)/) ||
+      req.path.match(/(.*)\/@@download\/(.*)/)
+    ) {
+      getAPIResourceWithAuth(req).then(resource => {
+        res.set('Content-Type', resource.headers['content-type']);
+        if (resource.headers['content-disposition']) {
+          res.set(
+            'Content-Disposition',
+            resource.headers['content-disposition'],
+          );
+        }
+        res.send(resource.body);
       });
     } else {
       loadOnServer({ store, location, routes, api })
@@ -115,6 +134,10 @@ server
           res.set({
             'Cache-Control': 'public, max-age=60, no-transform',
           });
+
+          // Displays error in console
+          console.error(error);
+
           res.status(500).send(`<!doctype html> ${renderToString(errorPage)}`);
         });
     }

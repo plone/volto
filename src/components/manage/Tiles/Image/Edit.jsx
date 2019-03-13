@@ -14,6 +14,9 @@ import cx from 'classnames';
 import { settings } from '~/config';
 
 import { Icon } from '../../../../components';
+import { createContent } from '../../../../actions';
+import { flattenToAppURL, getBaseUrl } from '../../../../helpers';
+
 import trashSVG from '../../../../icons/delete.svg';
 import clearSVG from '../../../../icons/clear.svg';
 import folderSVG from '../../../../icons/folder.svg';
@@ -22,9 +25,6 @@ import imageLeftSVG from '../../../../icons/image-left.svg';
 import imageRightSVG from '../../../../icons/image-right.svg';
 import imageFitSVG from '../../../../icons/image-fit.svg';
 import imageFullSVG from '../../../../icons/image-full.svg';
-
-import { createContent } from '../../../../actions';
-import { getBaseUrl } from '../../../../helpers';
 
 const messages = defineMessages({
   ImageTileInputPlaceholder: {
@@ -306,7 +306,7 @@ export default class Edit extends Component {
             <img
               src={
                 this.props.data.url.includes(settings.apiPath)
-                  ? `${this.props.data.url}/@@images/image`
+                  ? `${flattenToAppURL(this.props.data.url)}/@@images/image`
                   : this.props.data.url
               }
               alt=""
