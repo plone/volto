@@ -5,7 +5,7 @@ exports[`renders a view hero component 1`] = `
   className="tile hero"
 >
   <div
-    className="product-hero"
+    className="tile-inner-wrapper"
   >
     <img
       alt=""
@@ -13,10 +13,14 @@ exports[`renders a view hero component 1`] = `
       src="heroimage.jpg/@@images/image"
     />
     <div
-      className="product-hero-body"
+      className="inline-tile-wrapper"
     >
-      <h1 />
-      <p />
+      <div
+        className="inline-tile"
+      >
+        <h1 />
+        <p />
+      </div>
     </div>
   </div>
 </div>
