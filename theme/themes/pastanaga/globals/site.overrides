@@ -879,11 +879,12 @@ body {
 
 .inline-tile-wrapper {
   flex: 1 1 ;
-  background-color: #d3d3d3  !important;
+  background-color: @tealBackground;
 }
 
 .inline-tile {
-  margin-left: 10px;
+  margin-left: 30px;
+  margin-top: 30px;
 }
 
 .clear-icon {
