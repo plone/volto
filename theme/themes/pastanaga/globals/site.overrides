@@ -685,7 +685,7 @@ body {
     position: absolute;
     z-index: 1;
     top: -32px;
-    left: 50%;
+    left: 25%;
     display: flex;
     padding: 4px;
     background-color: rgba(255, 255, 255, 0.975);
@@ -879,6 +879,10 @@ body {
 
 .product-hero-body {
   flex: 1 1 ;
+  background-color: #d3d3d3  !important;
+}
+
+.inline-tile {
   margin-left: 10px;
 }
 

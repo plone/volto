@@ -341,22 +341,24 @@ export default class EditHeroTile extends Component {
             </div>
           )}
           <div className="product-hero-body">
-            <Editor
-              onChange={this.onChangeBoldTitle}
-              editorState={this.state.boldTitleEditorState}
-              blockRenderMap={extendedBlockRenderMap}
-              handleReturn={() => true}
-              placeholder={this.props.intl.formatMessage(messages.boldTitle)}
-              blockStyleFn={() => 'editor-bold-title'}
-            />
-            <Editor
-              onChange={this.onChangeTitle}
-              editorState={this.state.titleEditorState}
-              blockRenderMap={extendedBlockRenderMap}
-              handleReturn={() => true}
-              placeholder={this.props.intl.formatMessage(messages.title)}
-              blockStyleFn={() => 'editor-title'}
-            />
+            <div className="inline-tile">
+              <Editor
+                onChange={this.onChangeBoldTitle}
+                editorState={this.state.boldTitleEditorState}
+                blockRenderMap={extendedBlockRenderMap}
+                handleReturn={() => true}
+                placeholder={this.props.intl.formatMessage(messages.boldTitle)}
+                blockStyleFn={() => 'editor-bold-title'}
+              />
+              <Editor
+                onChange={this.onChangeTitle}
+                editorState={this.state.titleEditorState}
+                blockRenderMap={extendedBlockRenderMap}
+                handleReturn={() => true}
+                placeholder={this.props.intl.formatMessage(messages.title)}
+                blockStyleFn={() => 'editor-title'}
+              />
+            </div>
           </div>
         </div>
         {this.props.selected && (
