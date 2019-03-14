@@ -4,6 +4,8 @@
 
 ### Added
 
+ - Hero Tile @nileshgulia1 @sneridagh
+
 ### Changes
 
 ## 1.7.0 (2019-03-03)
@@ -115,7 +117,6 @@
 ### Changes
 
  - Fix Travis unit testing false green @sneridagh
- - Hero Tiles @nileshgulia1
  - Fix bad Proptype for location in ScrollToTop component @sneridagh
 
 ## 1.2.1 (2019-02-04)
