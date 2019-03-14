@@ -340,7 +340,7 @@ export default class EditHeroTile extends Component {
               </Message>
             </div>
           )}
-          <div className="inline-tile-wrapper">
+          <div className="product-body">
             <div className="inline-tile">
               <Editor
                 onChange={this.onChangeBoldTitle}

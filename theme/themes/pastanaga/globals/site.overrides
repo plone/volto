@@ -29,12 +29,6 @@ body {
   background-color: #a6f3a6;
 }
 
-.product-hero {
-  z-index: '123';
-  position: 'relative';
-  display: 'flex';
-}
-
 .ui.dropdown .menu.left {
   left: auto;
   right: 0;
@@ -683,15 +677,15 @@ body {
 
   .toolbar {
     position: absolute;
-    z-index: 2!important;
+    z-index: 2;
     top: -32px;
-    left: 25%;
+    left: 50%;
     display: flex;
     padding: 4px;
     background-color: rgba(255, 255, 255, 0.975);
     border-radius: 2px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
-    transform: translate(-50%, 0);
+    transform: translate(-770%, 0);
 
     form {
       display: flex;
@@ -877,7 +871,11 @@ body {
   margin-top: 20px;
 }
 
-.inline-tile-wrapper {
+.clear-icon {
+  left: 25%!important
+}
+
+.product-body {
   flex: 1 1 ;
   background-color: @tealBackground;
 }
