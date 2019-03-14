@@ -291,7 +291,7 @@ export default class EditHeroTile extends Component {
       >
         {this.props.selected &&
           !!this.props.data.url && (
-            <div className="toolbar clear-icon">
+            <div className="toolbar">
               <Button.Group>
                 <Button
                   icon
