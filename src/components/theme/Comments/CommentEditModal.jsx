@@ -39,7 +39,7 @@ const messages = defineMessages({
  * @class CommentEditModal
  * @extends Component
  */
-class CommentEditModal extends Component {
+export default class CommentEditModal extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -138,5 +138,3 @@ class CommentEditModal extends Component {
     );
   }
 }
-
-export default CommentEditModal;

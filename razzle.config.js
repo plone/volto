@@ -83,7 +83,7 @@ module.exports = {
                 importLoaders: 2,
                 sourceMap: true,
                 modules: false,
-                //minimize: true, won't work in css-loader v2.0.0
+                minimize: true,
                 localIdentName: '[name]__[local]___[hash:base64:5]',
               },
             },

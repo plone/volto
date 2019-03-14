@@ -18,7 +18,7 @@ import { Anontools, Logo, Navigation, SearchWidget } from '../../../components';
  * @class Header
  * @extends Component
  */
-class Header extends Component {
+export default class Header extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -68,5 +68,3 @@ class Header extends Component {
     );
   }
 }
-
-export default Header;

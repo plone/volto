@@ -21,7 +21,7 @@
     "url": "https://github.com/plone/volto/issues",
     "email": "plone-developers@lists.sourceforge.net"
   },
-  "homepage": "http://plone.github.io/volto",
+  "homepage": "https://plone.org",
   "keywords": [
     "volto",
     "plone",
@@ -37,7 +37,6 @@
     "i18n": "NODE_ENV=production node src/i18n.js",
     "styleguidist": "styleguidist server",
     "styleguidist:build": "styleguidist build",
-    "deploy": "gh-pages -d styleguide",
     "dry-release": "release-it --dry-run",
     "release": "release-it"
   },
@@ -111,7 +110,7 @@
     "classnames": "2.2.6",
     "connected-react-router": "4.4.1",
     "coveralls": "3.0.2",
-    "css-loader": "2.1.0",
+    "css-loader": "1.0.0",
     "draft-js": "0.10.5",
     "draft-js-block-breakout-plugin": "2.0.1",
     "draft-js-buttons": "2.0.1",
@@ -193,7 +192,6 @@
     "tlds": "1.203.1"
   },
   "devDependencies": {
-    "gh-pages": "2.0.1",
     "react-styleguidist": "9.0.1"
   }
 }
