@@ -22,7 +22,7 @@ const messages = defineMessages({
 
 const blockRenderMap = Map({
   unstyled: {
-    element: 'p',
+    element: 'div',
   },
 });
 

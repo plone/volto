@@ -484,9 +484,7 @@ body {
 }
 
 // Here should be placed all tiles that receive (faked) focus
-.tile.image:focus,
-.tile.video:focus,
-.tile.maps:focus {
+.tile:focus {
   outline: none;
 }
 
@@ -685,7 +683,7 @@ body {
     background-color: rgba(255, 255, 255, 0.975);
     border-radius: 2px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
-    transform: translate(-770%, 0);
+    transform: translate(-50%, 0);
 
     form {
       display: flex;
@@ -735,6 +733,50 @@ body {
   }
 
   position: relative;
+}
+
+// Hero tile
+.tile.hero {
+  .toolbar {
+    left: 25%;
+  }
+
+  .hero-body {
+    flex: 1 1;
+    background-color: @tealBackground;
+    padding: 30px;
+
+    h1 {
+      margin-top: 0;
+    }
+  }
+
+  .hero-image {
+    max-width: 50%;
+    max-height: 400px;
+    display: block;
+    width: auto;
+    height: auto;
+  }
+
+  .image-add {
+    min-width: 50%;
+  }
+
+  .image-message {
+    min-height: 400px !important;
+  }
+
+  .tile-inner-wrapper {
+    z-index: 1;
+    position: relative;
+    display: flex;
+  }
+
+  .title-editor,
+  .description-editor {
+    word-break: break-word;
+  }
 }
 
 .ui.basic.button.tile-add-button,
@@ -871,53 +913,10 @@ body {
   margin-top: 20px;
 }
 
-.clear-icon {
-  left: 25%!important
-}
-
-.product-body {
-  flex: 1 1 ;
-  background-color: @tealBackground;
-}
-
-.inline-tile {
-  margin-left: 30px;
-  margin-top: 30px;
-  margin-right: 30px;
-}
-
-.hero-image {
-  max-width: 50%;
-  max-height: 400px;
-  display: block;
-  width: auto;
-  height: auto;
-}
-
-.image-add {
-  min-width: 50%;
-}
-
-.image-message {
-  min-height: 400px !important;
-}
-
-.tile-inner-wrapper {
-  z-index: 1;
-  position: relative;
-  display: flex;
-}
-
 .html-editor {
   background-color: #fafafa;
   border-radius: 4px;
   z-index: 1;
-}
-
-.editor-title {
-  font-weight: 2em;
-  font-size: 18px;
-  margin-right: -20px;
 }
 
 .token.comment,

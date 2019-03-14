@@ -5,6 +5,8 @@ import { Provider } from 'react-intl-redux';
 
 import EditHeroTile from './Edit';
 
+global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
+
 const mockStore = configureStore();
 test('renders an edit hero tile component', () => {
   const store = mockStore({

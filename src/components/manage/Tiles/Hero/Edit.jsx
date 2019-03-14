@@ -13,6 +13,7 @@ import { bindActionCreators } from 'redux';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import cx from 'classnames';
 
 import { createContent } from '../../../../actions';
 import { getBaseUrl } from '../../../../helpers';
@@ -20,20 +21,15 @@ import { Icon } from '../../../../components';
 
 import trashSVG from '../../../../icons/delete.svg';
 import clearSVG from '../../../../icons/clear.svg';
-import { relative } from 'path';
 
 const messages = defineMessages({
   title: {
-    id: 'Subtitle',
-    defaultMessage: 'Subtitle',
-  },
-  boldTitle: {
     id: 'Title',
     defaultMessage: 'Title',
   },
   description: {
-    id: 'Beschreibung',
-    defaultMessage: 'Beschreibung',
+    id: 'Description',
+    defaultMessage: 'Description',
   },
 });
 
@@ -45,12 +41,14 @@ const blockTitleRenderMap = Map({
 
 const blockDescriptionRenderMap = Map({
   unstyled: {
-    element: 'p',
+    element: 'div',
   },
 });
+
 const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(
   blockTitleRenderMap,
 );
+
 const extendedDescripBlockRenderMap = DefaultDraftBlockRenderMap.merge(
   blockDescriptionRenderMap,
 );
@@ -87,6 +85,8 @@ export default class EditHeroTile extends Component {
     onChangeTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    onFocusPreviousTile: PropTypes.func.isRequired,
+    onFocusNextTile: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
@@ -107,7 +107,6 @@ export default class EditHeroTile extends Component {
 
     if (!__SERVER__) {
       let titleEditorState;
-      let boldTitleEditorState;
       let descriptionEditorState;
       if (props.data && props.data.title) {
         titleEditorState = EditorState.createWithContent(
@@ -115,13 +114,6 @@ export default class EditHeroTile extends Component {
         );
       } else {
         titleEditorState = EditorState.createEmpty();
-      }
-      if (props.data && props.data.boldTitle) {
-        boldTitleEditorState = EditorState.createWithContent(
-          stateFromHTML(props.data.boldTitle),
-        );
-      } else {
-        boldTitleEditorState = EditorState.createEmpty();
       }
       if (props.data && props.data.description) {
         descriptionEditorState = EditorState.createWithContent(
@@ -133,13 +125,12 @@ export default class EditHeroTile extends Component {
       this.state = {
         uploading: false,
         titleEditorState,
-        boldTitleEditorState,
         descriptionEditorState,
+        currentFocused: 'title',
       };
     }
 
     this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangeBoldTitle = this.onChangeBoldTitle.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
   }
 
@@ -171,20 +162,7 @@ export default class EditHeroTile extends Component {
     ) {
       const contentState = stateFromHTML(nextProps.data.title);
       this.setState({
-        editorState: nextProps.data.title
-          ? EditorState.createWithContent(contentState)
-          : EditorState.createEmpty(),
-      });
-    }
-
-    if (
-      nextProps.data.boldTitle &&
-      this.props.data.boldTitle !== nextProps.data.boldTitle &&
-      !this.props.selected
-    ) {
-      const contentState = stateFromHTML(nextProps.data.boldTitle);
-      this.setState({
-        editorState: nextProps.data.boldTitle
+        titleEditorState: nextProps.data.title
           ? EditorState.createWithContent(contentState)
           : EditorState.createEmpty(),
       });
@@ -197,10 +175,18 @@ export default class EditHeroTile extends Component {
     ) {
       const contentState = stateFromHTML(nextProps.data.description);
       this.setState({
-        editorState: nextProps.data.description
+        descriptionEditorState: nextProps.data.description
           ? EditorState.createWithContent(contentState)
           : EditorState.createEmpty(),
       });
+    }
+
+    if (nextProps.selected !== this.props.selected) {
+      if (this.state.currentFocused === 'title') {
+        this.titleEditor.focus();
+      } else {
+        this.descriptionEditor.focus();
+      }
     }
   }
 
@@ -215,21 +201,6 @@ export default class EditHeroTile extends Component {
       this.props.onChangeTile(this.props.tile, {
         ...this.props.data,
         title: titleEditorState.getCurrentContent().getPlainText(),
-      });
-    });
-  }
-
-  /**
-   * Change BoldTitle handler
-   * @method onChangeBoldTitle
-   * @param {object} boldTitleEditorState Editor state.
-   * @returns {undefined}
-   */
-  onChangeBoldTitle(boldTitleEditorState) {
-    this.setState({ boldTitleEditorState }, () => {
-      this.props.onChangeTile(this.props.tile, {
-        ...this.props.data,
-        boldTitle: boldTitleEditorState.getCurrentContent().getPlainText(),
       });
     });
   }
@@ -274,6 +245,23 @@ export default class EditHeroTile extends Component {
   }
 
   /**
+   * handleKeyDown
+   * @method handleKeyDown
+   * @param {event} e Event
+   * @returns {undefined}
+   */
+  handleKeyDown = e => {
+    if (e.key === 'ArrowUp') {
+      this.props.onFocusPreviousTile(this.props.tile, this.node);
+      e.preventDefault();
+    }
+    if (e.key === 'ArrowDown') {
+      this.props.onFocusNextTile(this.props.tile, this.node);
+      e.preventDefault();
+    }
+  };
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -285,9 +273,13 @@ export default class EditHeroTile extends Component {
     return (
       <div
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={['tile', 'hero', this.props.selected && 'selected']
-          .filter(e => !!e)
-          .join(' ')}
+        className={cx('tile hero', {
+          selected: this.props.selected,
+        })}
+        // tabIndex={0}
+        ref={node => {
+          this.node = node;
+        }}
       >
         {this.props.selected &&
           !!this.props.data.url && (
@@ -340,25 +332,83 @@ export default class EditHeroTile extends Component {
               </Message>
             </div>
           )}
-          <div className="product-body">
-            <div className="inline-tile">
-              <Editor
-                onChange={this.onChangeBoldTitle}
-                editorState={this.state.boldTitleEditorState}
-                blockRenderMap={extendedBlockRenderMap}
-                handleReturn={() => true}
-                placeholder={this.props.intl.formatMessage(messages.boldTitle)}
-                blockStyleFn={() => 'editor-bold-title'}
-              />
-              <Editor
-                onChange={this.onChangeTitle}
-                editorState={this.state.titleEditorState}
-                blockRenderMap={extendedBlockRenderMap}
-                handleReturn={() => true}
-                placeholder={this.props.intl.formatMessage(messages.title)}
-                blockStyleFn={() => 'editor-title'}
-              />
-            </div>
+          <div className="hero-body">
+            <Editor
+              ref={node => {
+                this.titleEditor = node;
+              }}
+              onChange={this.onChangeTitle}
+              editorState={this.state.titleEditorState}
+              blockRenderMap={extendedBlockRenderMap}
+              handleReturn={() => true}
+              placeholder={this.props.intl.formatMessage(messages.title)}
+              blockStyleFn={() => 'title-editor'}
+              onUpArrow={() => {
+                const selectionState = this.state.titleEditorState.getSelection();
+                const { titleEditorState } = this.state;
+                if (
+                  titleEditorState
+                    .getCurrentContent()
+                    .getBlockMap()
+                    .first()
+                    .getKey() === selectionState.getFocusKey()
+                ) {
+                  this.props.onFocusPreviousTile(this.props.tile, this.node);
+                }
+              }}
+              onDownArrow={() => {
+                const selectionState = this.state.titleEditorState.getSelection();
+                const { titleEditorState } = this.state;
+                if (
+                  titleEditorState
+                    .getCurrentContent()
+                    .getBlockMap()
+                    .last()
+                    .getKey() === selectionState.getFocusKey()
+                ) {
+                  this.setState(() => ({ currentFocused: 'description' }));
+                  this.descriptionEditor.focus();
+                }
+              }}
+            />
+            <Editor
+              ref={node => {
+                this.descriptionEditor = node;
+              }}
+              onChange={this.onChangeDescription}
+              editorState={this.state.descriptionEditorState}
+              blockRenderMap={extendedDescripBlockRenderMap}
+              handleReturn={() => true}
+              placeholder={this.props.intl.formatMessage(messages.description)}
+              blockStyleFn={() => 'description-editor'}
+              onUpArrow={() => {
+                const selectionState = this.state.titleEditorState.getSelection();
+                const { titleEditorState } = this.state;
+                if (
+                  titleEditorState
+                    .getCurrentContent()
+                    .getBlockMap()
+                    .first()
+                    .getKey() === selectionState.getFocusKey()
+                ) {
+                  this.setState(() => ({ currentFocused: 'title' }));
+                  this.titleEditor.focus();
+                }
+              }}
+              onDownArrow={() => {
+                const selectionState = this.state.titleEditorState.getSelection();
+                const { titleEditorState } = this.state;
+                if (
+                  titleEditorState
+                    .getCurrentContent()
+                    .getBlockMap()
+                    .last()
+                    .getKey() === selectionState.getFocusKey()
+                ) {
+                  this.props.onFocusNextTile(this.props.tile, this.node);
+                }
+              }}
+            />
           </div>
         </div>
         {this.props.selected && (

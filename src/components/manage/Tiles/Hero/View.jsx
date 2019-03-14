@@ -12,14 +12,12 @@ import PropTypes from 'prop-types';
  * @extends Component
  */
 const View = ({ data }) => (
-  <div className={['tile', 'hero'].filter(e => !!e).join(' ')}>
+  <div className="tile hero">
     <div className="tile-inner-wrapper">
       <img src={`${data.url}/@@images/image`} alt="" className="hero-image" />
-      <div className="product-body">
-        <div className="inline-tile">
-          <h1>{data.boldTitle}</h1>
-          <p>{data.title}</p>
-        </div>
+      <div className="hero-body">
+        <h1>{data.boldTitle}</h1>
+        <p>{data.title}</p>
       </div>
     </div>
   </div>
