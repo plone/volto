@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import EditHeroTile from './Edit';
+import Edit from './Edit';
 
 global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
@@ -21,7 +21,7 @@ test('renders an edit hero tile component', () => {
   });
   const component = renderer.create(
     <Provider store={store}>
-      <EditHeroTile
+      <Edit
         data={{ url: 'hero' }}
         selected={false}
         tile="1234"
@@ -35,6 +35,8 @@ test('renders an edit hero tile component', () => {
         onSelectTile={() => {}}
         onDeleteTile={() => {}}
         createContent={() => {}}
+        onFocusPreviousTile={() => {}}
+        onFocusNextTile={() => {}}
       />
     </Provider>,
   );
