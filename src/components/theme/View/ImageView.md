@@ -1,10 +1,10 @@
-Logout example source:
+ImageView example source:
 
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
 import BrowserRouter from 'react-router-dom/BrowserRouter';
-import { LogoutComponent } from './Logout';
+import ImageView from './ImageView';
 import StaticRouter from 'react-router-dom/StaticRouter';
 const store = configureStore()({
   userSession: {
@@ -14,16 +14,27 @@ const store = configureStore()({
     locale: 'en',
     messages: {},
   },
+  users: {
+    reset: {
+      loading: '',
+    },
+  },
+  actions: {},
+  content: { get: {} },
 });
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
     <StaticRouter>
-      <LogoutComponent
-        error={(message = '')}
-        token=""
-        login={form => null}
-        location={{}}
+      <ImageView
+        content={{
+          file: {},
+          url: '',
+          title: '',
+          description: '',
+          image: { scales: { preview: { download: '' } } },
+        }}
+        url=""
       />
     </StaticRouter>
   </Provider>

@@ -1,10 +1,10 @@
-View example source:
+UsersControlpanel example source:
 
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
 import BrowserRouter from 'react-router-dom/BrowserRouter';
-import View from './View';
+import UsersControlpanel from './UsersControlpanel';
 import StaticRouter from 'react-router-dom/StaticRouter';
 const store = configureStore()({
   userSession: {
@@ -15,32 +15,34 @@ const store = configureStore()({
     messages: {},
   },
   users: {
+    users: {},
     reset: {
       loading: '',
     },
   },
+  roles: {},
   actions: {},
   content: { get: {} },
+  controlpanels: {},
 });
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
     <StaticRouter>
-      <View
-        listActions={() => {}}
-        pathname=""
-        location={{ search: '/hello', pathname: '/' }}
-        getContent={() => {}}
-        versionId=""
-        content={{
-          layout: 'PLone',
-          allow_discussion: true,
-          title: 'plone',
-          description: 'plone CMS',
-          '@type': '@Document',
-          is_folderish: true,
-          subjects: [],
-        }}
+      <UsersControlpanel
+        listRoles={() => {}}
+        listUsers={() => {}}
+        users={[
+          {
+            fullname: '',
+            username: '',
+            roles: [],
+          },
+        ]}
+        roles={[{ '@id': '', '@type': '' }]}
+        pathname="/"
+        updateRequest={{ loading: true, loaded: false }}
+        controlpanel={{ '@id': '', data: {}, title: 'Plone', schema: {} }}
       />
     </StaticRouter>
   </Provider>

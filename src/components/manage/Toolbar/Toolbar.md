@@ -1,10 +1,10 @@
-Logout example source:
+Toolbar example source:
 
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
 import BrowserRouter from 'react-router-dom/BrowserRouter';
-import { LogoutComponent } from './Logout';
+import Toolbar from './Toolbar';
 import StaticRouter from 'react-router-dom/StaticRouter';
 const store = configureStore()({
   userSession: {
@@ -14,16 +14,30 @@ const store = configureStore()({
     locale: 'en',
     messages: {},
   },
+  users: {
+    reset: {
+      loading: '',
+    },
+  },
+  actions: {},
+  content: { get: {}, data: {} },
+  controlpanels: {},
+  diff: {},
+  history: [],
+  schema: {},
 });
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
     <StaticRouter>
-      <LogoutComponent
-        error={(message = '')}
+      <Toolbar
         token=""
-        login={form => null}
-        location={{}}
+        content={{
+          '@type': '',
+          is_folderish: true,
+          review_state: 'open',
+        }}
+        inner={{}}
       />
     </StaticRouter>
   </Provider>

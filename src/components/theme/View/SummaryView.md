@@ -1,10 +1,10 @@
-View example source:
+SummaryView example source:
 
 ```jsx noeditor
 const { Provider } = require('react-intl-redux');
 const configureStore = require('redux-mock-store').default;
 import BrowserRouter from 'react-router-dom/BrowserRouter';
-import View from './View';
+import SummaryView from './SummaryView';
 import StaticRouter from 'react-router-dom/StaticRouter';
 const store = configureStore()({
   userSession: {
@@ -26,20 +26,21 @@ const store = configureStore()({
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
     <StaticRouter>
-      <View
-        listActions={() => {}}
-        pathname=""
-        location={{ search: '/hello', pathname: '/' }}
-        getContent={() => {}}
-        versionId=""
+      <SummaryView
         content={{
-          layout: 'PLone',
-          allow_discussion: true,
           title: 'plone',
-          description: 'plone CMS',
-          '@type': '@Document',
-          is_folderish: true,
-          subjects: [],
+          description: 'open source CMS',
+          items: [
+            {
+              '@id': '@plone',
+              '@type': '@image',
+              url: 'www.plone.org',
+              title: 'plone',
+              description: 'open source CMS',
+              image: { scales: { thumb: {} } },
+              image_caption: '',
+            },
+          ],
         }}
       />
     </StaticRouter>
