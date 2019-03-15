@@ -484,9 +484,7 @@ body {
 }
 
 // Here should be placed all tiles that receive (faked) focus
-.tile.image:focus,
-.tile.video:focus,
-.tile.maps:focus {
+.tile:focus {
   outline: none;
 }
 
@@ -677,7 +675,7 @@ body {
 
   .toolbar {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     top: -32px;
     left: 50%;
     display: flex;
@@ -735,6 +733,50 @@ body {
   }
 
   position: relative;
+}
+
+// Hero tile
+.tile.hero {
+  .toolbar {
+    left: 25%;
+  }
+
+  .hero-body {
+    flex: 1 1;
+    background-color: @tealBackground;
+    padding: 30px;
+
+    h1 {
+      margin-top: 0;
+    }
+  }
+
+  .hero-image {
+    max-width: 50%;
+    max-height: 400px;
+    display: block;
+    width: auto;
+    height: auto;
+  }
+
+  .image-add {
+    min-width: 50%;
+  }
+
+  .image-message {
+    min-height: 400px !important;
+  }
+
+  .tile-inner-wrapper {
+    z-index: 1;
+    position: relative;
+    display: flex;
+  }
+
+  .title-editor,
+  .description-editor {
+    word-break: break-word;
+  }
 }
 
 .ui.basic.button.tile-add-button,

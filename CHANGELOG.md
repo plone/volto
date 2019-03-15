@@ -4,6 +4,8 @@
 
 ### Added
 
+ - Hero Tile @nileshgulia1 @sneridagh
+
 ### Changes
 
 ## 1.7.0 (2019-03-03)
