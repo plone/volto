@@ -20,18 +20,18 @@
   border-bottom: 1px solid @lightGreyBorderColor;
 }
 
-.ui.form input:not([type]),
-.ui.form input[type='date'],
-.ui.form input[type='datetime-local'],
-.ui.form input[type='email'],
-.ui.form input[type='number'],
-.ui.form input[type='password'],
-.ui.form input[type='search'],
-.ui.form input[type='tel'],
-.ui.form input[type='time'],
-.ui.form input[type='text'],
-.ui.form input[type='file'],
-.ui.form input[type='url'],
+.ui.form .ui.input:not([type]),
+.ui.form .ui.input[type='date'],
+.ui.form .ui.input[type='datetime-local'],
+.ui.form .ui.input[type='email'],
+.ui.form .ui.input[type='number'],
+.ui.form .ui.input[type='password'],
+.ui.form .ui.input[type='search'],
+.ui.form .ui.input[type='tel'],
+.ui.form .ui.input[type='time'],
+.ui.form .ui.input[type='text'],
+.ui.form .ui.input[type='file'],
+.ui.form .ui.input[type='url'],
 .ui.form textarea {
   height: 60px;
   border-width: 0 0 @1px 0;
