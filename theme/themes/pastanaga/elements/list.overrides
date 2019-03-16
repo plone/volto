@@ -8,6 +8,7 @@
 
 .ui.grid > .row > .navigation.column {
   margin-top: unit(-@relativeBig * 1.5, em);
+
   .menu {
     flex-wrap: wrap;
   }

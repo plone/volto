@@ -30,8 +30,8 @@ body {
 }
 
 .ui.dropdown .menu.left {
-  left: auto;
   right: 0;
+  left: auto;
 }
 
 .ui.segment.dashed {
@@ -52,15 +52,15 @@ body {
 
 .editbar {
   position: fixed;
+  z-index: 10;
   top: 60px;
   left: 400px;
-  z-index: 10;
 }
 
 .drag.layer {
-  margin: -1rem -2rem 0 -2rem;
-  padding: 1rem 2rem 1rem 2rem;
   position: relative;
+  padding: 1rem 2rem 1rem 2rem;
+  margin: -1rem -2rem 0 -2rem;
 }
 
 .drag.layer:hover .drag.edit,
@@ -73,24 +73,25 @@ body {
 }
 
 .drag.toolbar {
-  display: none;
   position: absolute;
+  top: 12px;
   left: 0;
-  top: 12px;
-}
-.drag.edit {
   display: none;
+}
+
+.drag.edit {
   position: absolute;
-  right: 0;
   top: 12px;
+  right: 0;
+  display: none;
 }
 
 /* Mosaic */
 .mosaic .tile {
-  cursor: move;
-  border: solid 2px transparent;
   position: relative;
   margin: -2px;
+  border: solid 2px transparent;
+  cursor: move;
 }
 
 .mosaic .tile .ui.label.below {
@@ -99,12 +100,12 @@ body {
 }
 
 .mosaic .tile .close.icon {
-  cursor: pointer;
   position: absolute;
-  margin: 0;
+  z-index: 1;
   top: 0;
   right: 0;
-  z-index: 1;
+  margin: 0;
+  cursor: pointer;
 }
 
 .mosaic .tile:hover {
@@ -113,8 +114,8 @@ body {
 
 .mosaic .tile.selected {
   border: solid 2px #3469d0;
-  cursor: default;
   background-color: #ffffe1;
+  cursor: default;
 }
 
 .mosaic .tile.selected:hover {
@@ -122,10 +123,10 @@ body {
 }
 
 .mosaic .row {
-  border-top: solid 2px transparent;
-  border-bottom: solid 2px transparent;
   margin-top: -2px;
   margin-bottom: -2px;
+  border-top: solid 2px transparent;
+  border-bottom: solid 2px transparent;
 }
 
 .mosaic .tile.top,
@@ -139,8 +140,8 @@ body {
 }
 
 .mosaic .column {
-  border-left: solid 2px transparent;
   border-right: solid 2px transparent;
+  border-left: solid 2px transparent;
 }
 
 .mosaic .column.left {
@@ -156,28 +157,28 @@ body {
 }
 
 .mosaic .divider {
-  display: inline-block;
   position: relative;
+  z-index: 1;
+  display: inline-block;
   width: 20px;
   margin: -10px;
-  z-index: 1;
   cursor: col-resize;
 }
 
 .mosaic .divider:hover .inner {
-  border-right: dashed 4px #3469d0;
-  display: inline-block;
   position: relative;
-  height: 100%;
+  display: inline-block;
   width: 12px;
+  height: 100%;
+  border-right: dashed 4px #3469d0;
 }
 
 .mosaic .resize.helper {
-  background-color: #3469d0;
   position: fixed;
   width: 4px;
-  margin: 0;
   padding: 0;
+  margin: 0;
+  background-color: #3469d0;
 }
 
 .mosaic .row.resize {
@@ -262,14 +263,14 @@ body {
 }
 
 .draftJsToolbar__button__qi1gf {
+  width: 36px;
+  height: 34px;
+  padding-top: 5px;
+  border: 0;
   background: #fbfbfb;
   color: #888;
   font-size: 18px;
-  border: 0;
-  padding-top: 5px;
   vertical-align: bottom;
-  height: 34px;
-  width: 36px;
 }
 
 .draftJsToolbar__button__qi1gf svg {
@@ -290,60 +291,63 @@ body {
 .draftJsToolbar__active__3qcpF svg {
   fill: #444;
 }
+
 .draftJsToolbar__separator__3U7qt {
   display: inline-block;
-  border-right: 1px solid #ddd;
   height: 24px;
   margin: 0 0.5em;
+  border-right: 1px solid #ddd;
 }
+
 .draftJsToolbar__toolbar__dNtBH {
-  left: 50%;
-  -webkit-transform: translate(-50%) scale(0);
-  transform: translate(-50%) scale(0);
   position: absolute;
+  z-index: 2;
+  left: 50%;
+  box-sizing: border-box;
   border: 1px solid #ddd;
   background: #fff;
   border-radius: 2px;
-  box-shadow: 0px 1px 3px 0px rgba(220, 220, 220, 1);
-  z-index: 2;
-  box-sizing: border-box;
+  box-shadow: 0 1px 3px 0 rgba(220, 220, 220, 1);
+  -webkit-transform: translate(-50%) scale(0);
+  transform: translate(-50%) scale(0);
 }
 
 .draftJsToolbar__toolbar__dNtBH:after,
 .draftJsToolbar__toolbar__dNtBH:before {
+  position: absolute;
   top: 100%;
   left: 50%;
+  width: 0;
+  height: 0;
   border: solid transparent;
   content: ' ';
-  height: 0;
-  width: 0;
-  position: absolute;
   pointer-events: none;
 }
 
 .draftJsToolbar__toolbar__dNtBH:after {
+  margin-left: -4px;
+  border-width: 4px;
   border-color: rgba(255, 255, 255, 0);
   border-top-color: #fff;
-  border-width: 4px;
-  margin-left: -4px;
 }
+
 .draftJsToolbar__toolbar__dNtBH:before {
+  margin-left: -6px;
+  border-width: 6px;
   border-color: rgba(221, 221, 221, 0);
   border-top-color: #ddd;
-  border-width: 6px;
-  margin-left: -6px;
 }
 
 .draftJsToolbar__blockType__27Jwn {
+  width: 36px;
+  height: 36px;
   box-sizing: border-box;
-  border: 1px solid #ddd;
-  background: #fff;
   padding: 5px;
   margin: 0;
+  border: 1px solid #ddd;
+  background: #fff;
   border-radius: 18px;
   cursor: pointer;
-  height: 36px;
-  width: 36px;
   line-height: 36px;
   text-align: center;
 }
@@ -355,65 +359,67 @@ body {
 .draftJsToolbar__spacer__2Os2z {
   position: absolute;
   left: 50%;
-  -webkit-transform: translate(-50%);
-  transform: translate(-50%);
   width: 74px;
   height: 8px;
+  -webkit-transform: translate(-50%);
+  transform: translate(-50%);
 }
 
 .draftJsToolbar__popup__GHzbY {
   position: absolute;
+  z-index: 3;
   left: 50%;
-  -webkit-transform: translate(-50%);
-  transform: translate(-50%);
-  background: #efefef;
+  width: 74px;
+  box-sizing: border-box;
+  margin-top: 8px;
   border: 1px solid #ddd;
+  background: #efefef;
   background: #fff;
   border-radius: 2px;
-  box-shadow: 0px 1px 3px 0px rgba(220, 220, 220, 1);
-  z-index: 3;
-  box-sizing: border-box;
-  width: 74px;
-  margin-top: 8px;
+  box-shadow: 0 1px 3px 0 rgba(220, 220, 220, 1);
+  -webkit-transform: translate(-50%);
+  transform: translate(-50%);
 }
 
 .draftJsToolbar__popup__GHzbY:after,
 .draftJsToolbar__popup__GHzbY:before {
+  position: absolute;
   bottom: 100%;
   left: 50%;
+  width: 0;
+  height: 0;
   border: solid transparent;
   content: ' ';
-  height: 0;
-  width: 0;
-  position: absolute;
   pointer-events: none;
 }
 
 .draftJsToolbar__popup__GHzbY:after {
+  margin-left: -4px;
+  border-width: 4px;
   border-color: rgba(251, 251, 251, 0);
   border-bottom-color: #fbfbfb;
-  border-width: 4px;
-  margin-left: -4px;
 }
+
 .draftJsToolbar__popup__GHzbY:before {
+  margin-left: -6px;
+  border-width: 6px;
   border-color: rgba(221, 221, 221, 0);
   border-bottom-color: #ddd;
-  border-width: 6px;
-  margin-left: -6px;
 }
+
 .draftJsToolbar__buttonWrapper__1Dmqh {
   display: inline-block;
 }
 
 .draftJsToolbar__button__qi1gf {
+  width: 36px;
+  height: 34px;
+  padding-top: 5px;
+  border: 0;
   background: #fbfbfb;
   color: #888;
   font-size: 18px;
-  border: 0;
-  padding-top: 5px;
   vertical-align: bottom;
-  height: 34px;
-  width: 36px;
 }
 
 .draftJsToolbar__button__qi1gf svg {
@@ -437,10 +443,11 @@ body {
 
 .draftJsToolbar__separator__3M3L7 {
   display: inline-block;
-  border-right: 1px solid #ddd;
   height: 24px;
   margin: 0 0.5em;
+  border-right: 1px solid #ddd;
 }
+
 .draftJsToolbar__wrapper__9NZgg {
   position: absolute;
   z-index: 1;
@@ -449,19 +456,19 @@ body {
 // End of original overrides.css
 
 ::-moz-selection {
+  border-width: 20px;
+  border-style: solid;
   background-color: rgba(31, 189, 238, 0.5);
   border-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj4KICA8ZyBmaWxsPSIjMUZCRUVGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIG9wYWNpdHk9Ii45NSI+CiAgICA8cGF0aCBkPSJNMTAgNjBDNC40NzcxNTI1IDYwIDAgNTUuNTI0MDYxOCAwIDUwIDMuNTUyNzEzNjhlLTE1IDQ0LjQ3NzE1MjUgNC40NzU5MzgxOCA0MCAxMCA0MEwyMCA0MCAyMCA1MEMyMCA1NS41MjI4NDc1IDE1LjUyNDA2MTggNjAgMTAgNjB6TTQwIDUwQzQwIDU1LjUyMjg0NzUgNDQuNDc1OTM4MiA2MCA1MCA2MEw1MCA2MEM1NS41MjI4NDc1IDYwIDYwIDU1LjUyNDA2MTggNjAgNTBMNjAgNTBDNjAgNDQuNDc3MTUyNSA1NS41MjQwNjE4IDQwIDUwIDQwTDQwIDQwIDQwIDUwIDQwIDUweiIvPgogIDwvZz4KPC9zdmc+Cg==')
     20 fill repeat;
-  border-style: solid;
-  border-width: 20px;
 }
 
 ::selection {
+  border-width: 20px;
+  border-style: solid;
   background-color: rgba(31, 189, 238, 0.5);
   border-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj4KICA8ZyBmaWxsPSIjMUZCRUVGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIG9wYWNpdHk9Ii45NSI+CiAgICA8cGF0aCBkPSJNMTAgNjBDNC40NzcxNTI1IDYwIDAgNTUuNTI0MDYxOCAwIDUwIDMuNTUyNzEzNjhlLTE1IDQ0LjQ3NzE1MjUgNC40NzU5MzgxOCA0MCAxMCA0MEwyMCA0MCAyMCA1MEMyMCA1NS41MjI4NDc1IDE1LjUyNDA2MTggNjAgMTAgNjB6TTQwIDUwQzQwIDU1LjUyMjg0NzUgNDQuNDc1OTM4MiA2MCA1MCA2MEw1MCA2MEM1NS41MjI4NDc1IDYwIDYwIDU1LjUyNDA2MTggNjAgNTBMNjAgNTBDNjAgNDQuNDc3MTUyNSA1NS41MjQwNjE4IDQwIDUwIDQwTDQwIDQwIDQwIDUwIDQwIDUweiIvPgogIDwvZz4KPC9zdmc+Cg==')
     20 fill repeat;
-  border-style: solid;
-  border-width: 20px;
 }
 
 .documentFirstHeading {
@@ -509,8 +516,8 @@ body {
 
 .tile .tile.selected::after,
 .tile .tile.selected:hover::after {
-  border-color: rgba(120, 192, 215, 0.5);
   border-width: 2px;
+  border-color: rgba(120, 192, 215, 0.5);
 }
 
 .tile .tile:hover::after {
@@ -522,9 +529,9 @@ body {
 }
 
 .ui.drag.tile.image {
+  z-index: 2;
   // This fixes the floating images in Volto Editor! Muahahaha
   display: block;
-  z-index: 2;
 }
 
 .tile .ui.image {
@@ -534,8 +541,8 @@ body {
 .tile .ui.message {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
   svg {
     margin-bottom: 20px;
@@ -586,6 +593,7 @@ body {
 
 .tile.align.left {
   z-index: 2;
+
   iframe,
   img {
     margin-right: 1em !important;
@@ -606,6 +614,7 @@ body {
 
 .tile.align.right {
   z-index: 2;
+
   iframe,
   img {
     margin-bottom: 1em;
@@ -622,7 +631,6 @@ body {
   img {
     max-width: 50%;
   }
-
 }
 
 .tile.align.center {
@@ -645,6 +653,7 @@ body {
     width: 100%;
     height: 35vh;
   }
+
   img {
     width: 100%;
   }
@@ -743,8 +752,8 @@ body {
 
   .hero-body {
     flex: 1 1;
-    background-color: @tealBackground;
     padding: 30px;
+    background-color: @tealBackground;
 
     h1 {
       margin-top: 0;
@@ -752,11 +761,11 @@ body {
   }
 
   .hero-image {
-    max-width: 50%;
-    max-height: 400px;
     display: block;
     width: auto;
+    max-width: 50%;
     height: auto;
+    max-height: 400px;
   }
 
   .image-add {
@@ -768,8 +777,8 @@ body {
   }
 
   .tile-inner-wrapper {
-    z-index: 1;
     position: relative;
+    z-index: 1;
     display: flex;
   }
 
@@ -783,9 +792,9 @@ body {
 .ui.basic.button.tile-delete-button {
   position: absolute;
   padding: 0;
-  border: none;
   margin-top: -22px;
   margin-bottom: 0;
+  border: none;
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #b8c6c8 !important;
@@ -849,8 +858,8 @@ body {
 
 .callout {
   padding: 1em;
-  border: 1px solid rgba(34, 36, 38, 0.15);
   margin: 1rem 0;
+  border: 1px solid rgba(34, 36, 38, 0.15);
   border-radius: 0.28571429rem;
   box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
 }
@@ -864,6 +873,7 @@ body {
 
 .draftJsToolbar__toolbar__dNtBH {
   .tile.toolbar();
+
   z-index: 102;
   padding: 3px;
   border: none;
@@ -900,8 +910,8 @@ body {
 .separator {
   display: inline-block;
   height: 24px;
-  border-right: 1px solid #ddd;
   margin: 0 0 4px 4px;
+  border-right: 1px solid #ddd;
   vertical-align: bottom;
 }
 
@@ -914,9 +924,9 @@ body {
 }
 
 .html-editor {
+  z-index: 1;
   background-color: #fafafa;
   border-radius: 4px;
-  z-index: 1;
 }
 
 .token.comment,
@@ -989,4 +999,3 @@ body {
 .token.entity {
   cursor: help;
 }
-
