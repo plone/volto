@@ -2,6 +2,8 @@
 
 ## 1.8.1 (unreleased)
 
+- Improve README @svx
+
 ### Added
 
 ### Changes
