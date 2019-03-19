@@ -1,18 +1,26 @@
 # Change Log
 
-## 1.8.1 (unreleased)
+## 1.8.2 (unreleased)
 
 ### Added
 
 ### Changes
 
+- Improve README @svx
 - Pretty Pastanaga UI .overrides stylesheets @sneridagh
+
+## 1.8.1 (2019-03-19)
+
+### Changes
+
+- Fix hero tile View styling, add definitive icon @sneridagh
+- Fix the trash icon on the tiles that was displaced by other change @sneridagh
 
 ## 1.8.0 (2019-03-15)
 
 ### Added
 
- - Hero Tile @nileshgulia1 @sneridagh
+- Hero Tile @nileshgulia1 @sneridagh
 
 ### Changes
 

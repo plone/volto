@@ -20,12 +20,12 @@ import EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
 
 import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
-import tableHeaderSVG from '../icons/table-header.svg';
+import heroSVG from '@plone/volto/icons/hero.svg';
 
 const customTiles = [
   {
     title: 'hero',
-    icon: tableHeaderSVG,
+    icon: heroSVG,
   },
   {
     title: 'maps',

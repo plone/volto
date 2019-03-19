@@ -670,6 +670,10 @@ body {
 }
 
 .tile {
+
+  position: relative;
+  margin-bottom: 1em;
+
   h1:last-child,
   h2:last-child,
   h3:last-child,
@@ -740,8 +744,6 @@ body {
     border: 1px solid #2996da;
     background: transparent !important;
   }
-
-  position: relative;
 }
 
 // Hero tile
@@ -751,12 +753,21 @@ body {
   }
 
   .hero-body {
+    max-height: 400px;
     flex: 1 1;
     padding: 30px;
     background-color: @tealBackground;
+    overflow-y: hidden;
 
     h1 {
       margin-top: 0;
+    }
+
+    p {
+      max-height: 287px;
+      margin: 0;
+      overflow-y: hidden;
+      word-break: break-word;
     }
   }
 
@@ -784,6 +795,8 @@ body {
 
   .title-editor,
   .description-editor {
+    max-height: 287px;
+    overflow-y: hidden;
     word-break: break-word;
   }
 }
@@ -809,7 +822,7 @@ body {
 }
 
 .ui.basic.button.tile-delete-button {
-  top: 36px;
+  top: 22px;
   right: 0;
   color: #b8c6b8 !important;
   transform: translateX(40px);
