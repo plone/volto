@@ -1,33 +1,10 @@
-
 /*******************************
             Theme
 *******************************/
 
-@type    : 'extra';
-@element : 'main';
+@type: 'extra';
+@element: 'main';
 
 @import (multiple) '../../theme.config';
-
-// Reset inputs from Semantic UI ones to "normal"
-.ui.form input:not([type]),
-.ui.form input[type='date'],
-.ui.form input[type='datetime-local'],
-.ui.form input[type='email'],
-.ui.form input[type='number'],
-.ui.form input[type='password'],
-.ui.form input[type='search'],
-.ui.form input[type='tel'],
-.ui.form input[type='time'],
-.ui.form input[type='text'],
-.ui.form input[type='file'],
-.ui.form input[type='url'],
-.ui.form textarea {
-  border-width: 0 0 @1px 0;
-  border-radius: 0;
-
-  &:focus {
-    border-radius: 0;
-  }
-}
 
 .loadUIOverrides();
