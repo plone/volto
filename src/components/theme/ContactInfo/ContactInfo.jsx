@@ -1,6 +1,6 @@
 /**
- * Login container.
- * @module components/theme/Login/Login
+ * Contact Info container.
+ * @module components/theme/ContactInfo/ContactInfo
  */
 
 import React, { Component } from 'react';
