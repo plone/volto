@@ -813,7 +813,7 @@ body {
 }
 
 .ui.basic.button.tile-delete-button {
-  top: 36px;
+  top: 22px;
   right: 0;
   color: #b8c6b8 !important;
   transform: translateX(40px);

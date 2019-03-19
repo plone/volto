@@ -7,6 +7,7 @@
 ### Changes
 
 - Fix hero tile View styling, add definitive icon @sneridagh
+- Fix the trash icon on the tiles that was displaced by other change @sneridagh
 
 ## 1.8.0 (2019-03-15)
 
