@@ -749,6 +749,10 @@ body {
     h1 {
       margin-top: 0;
     }
+
+    p {
+      word-break: break-word;
+    }
   }
 
   .hero-image {

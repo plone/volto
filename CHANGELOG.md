@@ -6,11 +6,13 @@
 
 ### Changes
 
+- Fix hero tile View styling, add definitive icon @sneridagh
+
 ## 1.8.0 (2019-03-15)
 
 ### Added
 
- - Hero Tile @nileshgulia1 @sneridagh
+- Hero Tile @nileshgulia1 @sneridagh
 
 ### Changes
 
