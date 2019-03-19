@@ -101,3 +101,8 @@
 .ui.secondary.attached.segment {
   text-transform: uppercase;
 }
+
+.ui.segment.dashed {
+  border: 3px dashed #ccc;
+  box-shadow: none;
+}

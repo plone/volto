@@ -61,3 +61,8 @@
 .ui.dropdown.multiple .menu .selected.item:hover {
   background: @subtleTransparentBlack;
 }
+
+.ui.dropdown .menu.left {
+  right: 0;
+  left: auto;
+}

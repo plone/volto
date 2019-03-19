@@ -144,3 +144,10 @@
     color: @black;
   }
 }
+
+@media only screen and (max-width: 767px) {
+  .ui.menu.stackable > .menu,
+  .ui.menu.stackable > .menu.right {
+    display: block;
+  }
+}
