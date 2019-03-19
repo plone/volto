@@ -382,29 +382,24 @@ export default class EditHeroTile extends Component {
               placeholder={this.props.intl.formatMessage(messages.description)}
               blockStyleFn={() => 'description-editor'}
               onUpArrow={() => {
-                const selectionState = this.state.titleEditorState.getSelection();
-                const { titleEditorState } = this.state;
-                if (
-                  titleEditorState
-                    .getCurrentContent()
-                    .getBlockMap()
-                    .first()
-                    .getKey() === selectionState.getFocusKey()
-                ) {
+                const selectionState = this.state.descriptionEditorState.getSelection();
+                const currentCursorPosition = selectionState.getStartOffset();
+
+                if (currentCursorPosition === 0) {
                   this.setState(() => ({ currentFocused: 'title' }));
                   this.titleEditor.focus();
                 }
               }}
               onDownArrow={() => {
-                const selectionState = this.state.titleEditorState.getSelection();
-                const { titleEditorState } = this.state;
-                if (
-                  titleEditorState
-                    .getCurrentContent()
-                    .getBlockMap()
-                    .last()
-                    .getKey() === selectionState.getFocusKey()
-                ) {
+                const selectionState = this.state.descriptionEditorState.getSelection();
+                const { descriptionEditorState } = this.state;
+                const currentCursorPosition = selectionState.getStartOffset();
+                const blockLength = descriptionEditorState
+                  .getCurrentContent()
+                  .getFirstBlock()
+                  .getLength();
+
+                if (currentCursorPosition === blockLength) {
                   this.props.onFocusNextTile(this.props.tile, this.node);
                 }
               }}

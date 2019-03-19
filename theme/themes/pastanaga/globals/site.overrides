@@ -661,6 +661,8 @@ body {
 }
 
 .tile {
+  margin-bottom: 1em;
+
   h1:last-child,
   h2:last-child,
   h3:last-child,
@@ -745,9 +747,18 @@ body {
     flex: 1 1;
     background-color: @tealBackground;
     padding: 30px;
+    overflow-y: hidden;
+    max-height: 400px;
 
     h1 {
       margin-top: 0;
+    }
+
+    p {
+      word-break: break-word;
+      overflow-y: hidden;
+      max-height: 287px;
+      margin: 0;
     }
   }
 
@@ -776,6 +787,8 @@ body {
   .title-editor,
   .description-editor {
     word-break: break-word;
+    overflow-y: hidden;
+    max-height: 287px;
   }
 }
 
@@ -800,7 +813,7 @@ body {
 }
 
 .ui.basic.button.tile-delete-button {
-  top: 36px;
+  top: 22px;
   right: 0;
   color: #b8c6b8 !important;
   transform: translateX(40px);
