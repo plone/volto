@@ -58,8 +58,9 @@ boilerplate to start customizing your Volto site.
     $ create-volto-app myvoltoproject
     $ cd myvoltoproject
 
-Allthough we install and use yarn, the create-volto-app tool still needs to be installed
-using npm -g because yarn has a different implementation of global installs.
+Although we install and use `yarn`, the `create-volto-app` tool still needs to be
+installed using `npm -g` because `yarn` has a different implementation of
+global installs.
 
 ### Bootstrap the Plone API backend
 
