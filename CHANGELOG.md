@@ -6,7 +6,7 @@
 
 ### Changes
 
-- Improve README @svx
+- Improve README @svx @fredvd
 - Pretty Pastanaga UI .overrides stylesheets @sneridagh
 
 ## 1.8.1 (2019-03-19)
