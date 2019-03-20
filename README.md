@@ -16,11 +16,15 @@ management systems, currently supporting three backend implementations: Plone,
 Guillotina and a NodeJS reference implementation.
 
 [Plone](https://plone.org) is a CMS built on Python with more than 17 years of
-experience. Plone has very interesting features that are still appealing to
+experience.
+
+Plone has very interesting features that are still appealing to
 developers and users alike as customizable content types, hierarchical URL
 object traversing and a complex content workflow powered by a granular
 permissions model that allows you to build from simple websites to complex huge
-intranets. Volto exposes all that features and communicates with Plone via its
+intranets.
+
+Volto exposes all that features and communicates with Plone via its
 mature [REST API](https://github.com/plone/plone.restapi). Volto has the
 ability of being highly themable and customizable.
 
@@ -44,8 +48,9 @@ First get all the requirements installed on your system.
 
 ### Create Volto App
 
-Create a new Volto project by using the `create-volto-app` utility. It will
-bootstrap a Volto project in a folder of your choice with all the required
+Create a new Volto project by using the `create-volto-app` utility.
+
+It will bootstrap a Volto project in a folder of your choice with all the required
 boilerplate to start customizing your Volto site.
 
     $ npm install -g yarn
@@ -58,16 +63,21 @@ using npm -g because yarn has a different implementation of global installs.
 
 ### Bootstrap the Plone API backend
 
-We recommend Plone as backend of choice for Volto. You can easily bootstrap a
-ready Docker Plone container with all the dependencies and ready for Volto use:
+We recommend Plone as backend of choice for Volto.
 
-    $ docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
+You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use:
+
+```shell
+$ docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
+```
 
 ### Start Volto
 
 Once inside your Volto project folder:
 
-    $ yarn start
+```shell
+$ yarn start
+```
 
 ### Browsing
 
@@ -113,13 +123,17 @@ We do not guarantee that browsers who were deprecated by their vendors (e.g. Int
 For Volto development you need all the requirements already mentioned on the
 [Quick Start](#quick-start) section.
 
-### Checkout the Volto repo
+### Checkout the Volto repository
 
-    $ git clone https://github.com/plone/volto.git
+```shell
+$ git clone https://github.com/plone/volto.git
+```
 
 ### Install dependencies
 
-    $ yarn
+```shell
+$ yarn
+```
 
 ### Install a backend
 
@@ -127,32 +141,41 @@ For Volto development you need all the requirements already mentioned on the
 
 Either using a Docker image
 
-    $ docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
+```shell
+$ docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
+```
 
 or running Plone on your machine (advanced), additional dependencies might be
 required only for Plone experienced integrators/developers. Check the [Plone
 Installation Documentation](https://docs.plone.org/manage/installing/installation.html).
 
-    $ cd api
-    $ ./bootstrap.sh
-
+```shell
+$ cd api
+$ ./bootstrap.sh
+```
 #### Guillotina (experimental)
 
 It still doesn't support the full API/features that Plone provides.
 
-    $ docker-compose -f g-api/docker-compose.yml up -d
+```shell
+$ docker-compose -f g-api/docker-compose.yml up -d
+```
 
 ### Run frontend
 
-    $ yarn start
+```shell
+$ yarn start
+```
 
 ### Browsing
 
-Go to [http://localhost:3000](http://localhost:3000) in your browser.
+Browse to [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Testing
 
-    $ yarn test
+```shell
+$ yarn test
+```
 
 ### Releasing
 
@@ -163,54 +186,67 @@ https://www.npmjs.com/package/release-it
 
 For using it and start a release you need to fulfill the requirements:
 
-- have permissions to push on master branch
-- have permissions on the @plone org on npmjs.com
-- have a enviroment variable (`GITHUB_TOKEN`) with a GitHub personal token to
+- Have permissions to push on master branch
+- Have permissions on the @plone org on npmjs.com
+- Have a environment variable (`GITHUB_TOKEN`) with a GitHub personal token to
   write the Release page on GitHub (https://www.npmjs.com/package/release-it#github-releases)
 
 Then the command for release:
 
-    $ yarn release
+```shell
+$ yarn release
+```
 
 a dry-release command for testing the output is also available:
 
-    $ yarn dry-release
+```shell
+$ yarn dry-release
+```
 
 ### Acceptance testing
 
-    $ make test-acceptance
+```shell
+$ make test-acceptance
+```
 
-    Alternatively individual acceptances test case files can be run with a pure Robot Framework virtual environment, assuming that backend and frontend is running
+Alternatively individual acceptances test case files can be run with a pure Robot Framework virtual environment, assuming that backend and frontend is running
 
-    $ docker-compose -f api/docker-compose.yml up
-    $ yarn && yarn build && RAZZLE_API_PATH=http://localhost:55001/plone yarn start:prod
+```shell
+$ docker-compose -f api/docker-compose.yml up
+$ yarn && yarn build && RAZZLE_API_PATH=http://localhost:55001/plone yarn start:prod
 
-    $ virtualenv robotenv --no-site-packages
-    $ robotenv/bin/pip install robotframework robotframework-seleniumlibrary robotframework-webpack
-    $ robotenv/bin/pybot tests/test_login.robot
+$ virtualenv robotenv --no-site-packages
+$ robotenv/bin/pip install robotframework robotframework-seleniumlibrary robotframework-webpack
+$ robotenv/bin/pybot tests/test_login.robot
+```
+Another alternative for developing Robot Framework acceptance tests is to use Jupyter notebook
 
-    Another alternative for developing Robot Framework acceptane tests is to use Jupyter notebook
-
-    $ make -C api/jupyter
+```shell
+$ make -C api/jupyter
+```
 
 ### Static Code Analysis
 
 #### Prettier
 
-Please refer this [link](https://prettier.io/docs/en/cli.html) for all usages.
+Please refer to the [Prettier CLI documentation](https://prettier.io/docs/en/cli.html) for all usages.
 
 ##### CLI
 
-Run Prettier through the CLI with this script. Run it without any arguments to see the [options](https://prettier.io/docs/en/options.html).
+Run Prettier through the CLI with this script.
+Run it without any arguments to see the [options](https://prettier.io/docs/en/options.html).
 
-To format a file in-place, use `--write`. You may want to consider committing your code before doing that, just in case.
+To format a file in-place, use `--write`.
+You may want to consider committing your code before doing that, just in case.
 `prettier [opts] [filename ...]`
+
 In practice, this may look something like:<br />
 `prettier --single-quote --trailing-comma es5 --write "{app,__{tests,mocks}__}/**/*.js"`
 
 ##### Using Plugins
 
 Plugins are automatically loaded if you have them installed in your package.json. Prettier plugin package names must start with `@prettier/plugin- or prettier-plugin-` to be registered.
+
 If the plugin is unable to be found automatically, you can load them with:
 
 1.  The CLI, via the --plugin flag:
@@ -228,17 +264,17 @@ If the plugin is unable to be found automatically, you can load them with:
 
 ##### Pre commit hook
 
-You can use Prettier with a pre-commit tool. This can re-format your files that are marked as "staged" via `git add` before you commit.
+You can use Prettier with a pre-commit tool.
+
+This can re-format your files that are marked as "staged" via `git add` before you commit.
 
 1.  <b>Lint staged</b> Use Case: Useful for when you need to use other tools on top of Prettier (e.g. ESLint)
 
-Install it along with husky:
-
-`yarn add lint-staged husky --dev`
+Install it along with husky: `yarn add lint-staged husky --dev`
 
 and add this config to your `package.json`:
 
-```
+```json
 {
   "scripts": {
     "precommit": "lint-staged"
@@ -255,7 +291,7 @@ and add this config to your `package.json`:
 
 and add this config to your package.json:
 
-```
+```json
 {
   "scripts": {
     "precommit": "pretty-quick --staged"
@@ -269,17 +305,18 @@ More Precommit hooks can be found [here](https://prettier.io/docs/en/precommit.h
 
 First, start up Guillotina:
 
-```
+```shell
 docker-compose -f g-api/docker-compose.yml up -d
 ```
 
 Then, run the tests:
 
-```
+```shell
 PYTHONPATH=$(pwd)/tests_guillotina env/bin/pybot -v BROWSER:headlesschrome tests_guillotina;
 ```
 
 ## License
 
 MIT License. Copyrights hold the [Plone Foundation](https://plone.org/foundation).
+
 See [LICENSE.md](LICENSE.md) for details.

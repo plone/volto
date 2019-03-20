@@ -16,8 +16,8 @@ const View = ({ data }) => (
     <div className="tile-inner-wrapper">
       <img src={`${data.url}/@@images/image`} alt="" className="hero-image" />
       <div className="hero-body">
-        <h1>{data.boldTitle}</h1>
-        <p>{data.title}</p>
+        <h1>{data.title}</h1>
+        <p>{data.description}</p>
       </div>
     </div>
   </div>
