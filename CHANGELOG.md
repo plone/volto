@@ -2,11 +2,12 @@
 
 ## 1.8.2 (unreleased)
 
-- Improve README @svx
-
 ### Added
 
 ### Changes
+
+- Improve README @svx
+- Pretty Pastanaga UI .overrides stylesheets @sneridagh
 
 ## 1.8.1 (2019-03-19)
 
