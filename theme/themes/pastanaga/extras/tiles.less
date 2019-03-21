@@ -266,8 +266,8 @@
   }
 }
 
-.ui.basic.button.tile-add-button,
-.ui.basic.button.tile-delete-button {
+.ui.basic.button.tile-add-button {
+  // .ui.basic.button.tile-delete-button {
   position: absolute;
   padding: 0;
   margin-top: -22px;
@@ -286,19 +286,28 @@
   }
 }
 
-.ui.basic.button.tile-delete-button {
-  top: 22px;
+.tile .ui.basic.button.delete-button {
+  position: absolute;
+  top: 0;
   right: 0;
-  color: #b8c6b8 !important;
-  transform: translateX(40px);
-
-  &:hover,
-  &:focus {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    color: #e40166 !important;
-  }
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
+
+// .ui.basic.button.tile-delete-button {
+//   top: 22px;
+//   right: 0;
+//   color: #b8c6b8 !important;
+//   transform: translateX(40px);
+
+//   &:hover,
+//   &:focus {
+//     -webkit-box-shadow: none;
+//     box-shadow: none;
+//     color: #e40166 !important;
+//   }
+// }
 
 .drag.tile.wrapper {
   position: relative;
@@ -307,8 +316,8 @@
 .drag.handle.wrapper {
   position: absolute;
   z-index: 1;
-  top: 1px;
-  left: -77px;
+  // top: 1px;
+  left: 0;
   color: #b8c6c8;
 
   .icon {
