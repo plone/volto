@@ -6,6 +6,9 @@
 
 ### Changes
 
+- Several CSS fixes @sneridagh
+- Add several icons @sneridagh
+
 ## 1.8.2 (2019-03-21)
 
 ### Changes
