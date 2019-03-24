@@ -313,16 +313,6 @@ export default class Edit extends Component {
               ))}
             </div>
           )}
-        {this.props.selected && (
-          <Button
-            icon
-            basic
-            onClick={() => this.props.onDeleteTile(this.props.tile)}
-            className="tile-delete-button"
-          >
-            <Icon name={trashSVG} size="18px" />
-          </Button>
-        )}
       </div>
     );
   }
