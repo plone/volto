@@ -4,6 +4,16 @@
 
 ### Added
 
+- Upgraded to React 16.8 (the one with hooks) @sneridagh
+- Upgraded to the recent (at last) released react-redux 7.0beta.0, this release
+  solves the performance issues with the new React context and leave them ready
+  for the upcoming useRedux hook. This release supports the latest React 16.8.
+  @sneridagh
+- Upgraded to the latest Router and react-router-config and other required
+  upgrades. @sneridagh
+- Upgraded to latest redux-connect @sneridagh
+- Upgraded to latest razzle @sneridagh
+
 ### Changes
 
 ## 1.8.3 (2019-03-21)
