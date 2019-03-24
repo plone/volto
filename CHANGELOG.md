@@ -1,12 +1,123 @@
 # Change Log
 
-## 1.4.1 (unreleased)
+## 1.8.4 (unreleased)
 
 ### Added
 
 ### Changes
 
+## 1.8.3 (2019-03-21)
+
+### Changes
+
+- Several CSS fixes @sneridagh
+- Add several icons @sneridagh
+
+## 1.8.2 (2019-03-21)
+
+### Changes
+
+- Improve README @svx @fredvd
+- Pretty Pastanaga UI .overrides stylesheets @sneridagh
+
+## 1.8.1 (2019-03-19)
+
+### Changes
+
+- Fix hero tile View styling, add definitive icon @sneridagh
+- Fix the trash icon on the tiles that was displaced by other change @sneridagh
+
+## 1.8.0 (2019-03-15)
+
+### Added
+
+- Hero Tile @nileshgulia1 @sneridagh
+
+### Changes
+
+## 1.7.0 (2019-03-03)
+
+### Added
+
+- Add image-zooming functionality @nileshgulia1
+
+### Changes
+
+- Fix image float/left right on image tile @timo
+
+## 1.6.1 (2019-03-01)
+
+### Changes
+
+- Fix a regression on the add tile button alignment @sneridagh
+
+## 1.6.0 (2019-03-01)
+
+### Added
+
+- Set image width in Volto editor to 50% for images that float left/right @timo
+- Ability to navigate through the existing tiles with the cursors. @sneridagh
+- HTML Tile for Volto Editor with preview and code prettifier
+   @ajayns @nileshgulia1 @sneridagh
+- Add error log in the SSR console @sneridagh
+- Add SSR helper to get resources (images/files) from the server using the API
+  headers. This fixes the missing images on non published resources while editing @sneridagh
+- Fix not valid `<div>` tag nested in a `<p>` tag error on tiles and wysiwyg
+  field @sneridagh
+
+### Changes
+
+- Clean .variables files from Pastanaga theme since they are already applied by
+  the theming engine from the default theme. @sneridagh
+- Fix edit forms with richtext fields coming from SSR @sneridagh
+
+## 1.5.2 (2019-02-20)
+
+### Changes
+
+- Fix external images on Image Tile render @sneridagh
+- Several fixes reagarding correctness of markup @sneridagh
+- Issue with dangerouslySetInnerHTML RichText fields on first SSR load
+  apparently fixed (due to the above fix) :) @sneridagh
+
+## 1.5.1 (2019-02-19)
+
+### Changes
+
+- Fix build for projects created with `create-volto-app` @sneridagh
+- Fix link view @nileshgulia1
+
+## 1.5.0 (2019-02-19)
+
+### Added
+
+- Add Google Maps tile @nileshgulia1
+- Add support for extending Semantic UI Styling using the semantic theme engine
+  by adding an `extras` file that can bring into the engine new styles coming
+  from third party libs or custom styling code for the local theme. Being this
+  applied after semantic default styling, it's the last one in the styling
+  cascade easing the develop of new themes. @sneridagh
+
+### Changes
+
+- Prevent Volto hit the @types endpoint (via its action, getTypes()) if the
+  user is not authenticated, since it's useless and always returns a 401
+  @sneridagh
 - Improved readme @sneridagh
+- New logo for the Pastanaga Theme referring to Volto and fix header @sneridagh
+- Disable SocialSharing component by default @sneridagh
+- Fix login tab index for username autofocus and password after tab @sneridagh
+- Fix hamburgers menu @sneridagh
+- Fix CSS sourcemaps by make postcss stage to accept other stages sourcemaps
+  @sneridagh
+- Add IE11 fixes by pinning some packages, added documentation in `docs` about
+  it and how to deal with it. However, compatibility is *NOT* guaranteed in
+  future Volto releases @sneridagh
+- Fix Header scroll in Firefox in case that there are lot of items in the nav
+  @sneridagh
+- Add supported browsers in README @sneridagh
+- Default tile position to center for all the existing tiles @sneridagh
+
 
 ## 1.4.0 (2019-02-15)
 

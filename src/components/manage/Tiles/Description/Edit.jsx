@@ -22,7 +22,7 @@ const messages = defineMessages({
 
 const blockRenderMap = Map({
   unstyled: {
-    element: 'p',
+    element: 'div',
   },
 });
 
@@ -50,6 +50,8 @@ export default class Edit extends Component {
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
     onAddTile: PropTypes.func.isRequired,
+    onFocusPreviousTile: PropTypes.func.isRequired,
+    onFocusNextTile: PropTypes.func.isRequired,
   };
 
   /**
@@ -149,6 +151,32 @@ export default class Edit extends Component {
           }}
           placeholder={this.props.intl.formatMessage(messages.description)}
           blockStyleFn={() => 'documentDescription'}
+          onUpArrow={() => {
+            const selectionState = this.state.editorState.getSelection();
+            const { editorState } = this.state;
+            if (
+              editorState
+                .getCurrentContent()
+                .getBlockMap()
+                .first()
+                .getKey() === selectionState.getFocusKey()
+            ) {
+              this.props.onFocusPreviousTile(this.props.tile, this.node);
+            }
+          }}
+          onDownArrow={() => {
+            const selectionState = this.state.editorState.getSelection();
+            const { editorState } = this.state;
+            if (
+              editorState
+                .getCurrentContent()
+                .getBlockMap()
+                .last()
+                .getKey() === selectionState.getFocusKey()
+            ) {
+              this.props.onFocusNextTile(this.props.tile, this.node);
+            }
+          }}
           ref={node => {
             this.node = node;
           }}

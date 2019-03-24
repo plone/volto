@@ -1,0 +1,68 @@
+site_name: Volto documentation
+docs_dir: ./source
+site_dir: ./build
+repo_url: 'https://github.com/plone/volto'
+copyright: 'Made with ❤️ by the Volto Team - All code owned by the Plone Foundation'
+theme:
+  name: 'material'
+  custom_dir: 'theme'
+  logo: 'images/volto-h-transparent.svg'
+  favicon: 'images/favicon.ico'
+  palette:
+    primary: 'teal'
+    accent: 'red'
+  font:
+    text: 'Poppins'
+    code: 'Source Code Pro'
+extra_css:
+  - 'stylesheets/extra.css'
+
+nav:
+  - Getting Started:
+    - Install Volto: "01-installing/01-install.md"
+  - Configuration:
+    - What is configurable?: "02-configuration/how-to.md"
+    - Richeditor settings: "02-configuration/richeditor-settings.md"
+    - Storing third party tokens: "02-configuration/third-party-tokens.md"
+  - Semantic UI:
+    - Introduction: "03-semantic-ui/01-introduction.md"
+    - Semantic UI Theming: "03-semantic-ui/02-semanticui-theming.md"
+    - Theming Engine: "03-semantic-ui/03-theming-engine.md"
+  - Theming:
+    - Theming strategy: "04-theming/01-theming-strategy.md"
+    - Custom styling: "04-theming/02-custom-styling.md"
+    - Intregrate third party: "04-theming/03-integrate-third-party.md"
+  - Customizing:
+    - Creating a project: "05-customizing/01-creating-project.md"
+    - Folder structure: "05-customizing/02-folder-structure.md"
+    - Customizing components: "05-customizing/03-customizing-components.md"
+    - Customizing views: "05-customizing/04-customizing-views.md"
+    - Creating new views: "05-customizing/05-creating-views.md"
+    - Creating Add-on packages: "05-customizing/06-add-ons.md"
+  - Tiles:
+    - Introduction: "06-tiles/introduction.md"
+    - Anatomy: "06-tiles/anatomy.md"
+    - Create a new tile: "06-tiles/create.md"
+  - Deploying:
+    - Simple deployment: "07-deploying/01-simple.md"
+    - Using PM2: "07-deploying/02-pm2.md"
+  - Developer Guidelines:
+    - React: "08-developer-guidelines/01-react.md"
+    - Babel: "08-developer-guidelines/02-babel.md"
+    - Linting: "08-developer-guidelines/03-linting.md"
+    - Language features: "08-developer-guidelines/04-language-features.md"
+  - Contributing: "09-contributing/index.md"
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - pymdownx.superfences
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tasklist
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+

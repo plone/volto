@@ -12,9 +12,9 @@
 }
 
 .ui.selection.dropdown:not(.multiple):not(.search) > .dropdown.icon {
+  position: static;
   // custom padding for dropdowns
   font-size: 2em;
-  position: static;
 }
 
 .ui.selection.dropdown {
@@ -46,18 +46,23 @@
 }
 
 .ui.form .ui.dropdown:not(.multiple):not(.search) .menu .selected.item:after {
-  font-family: 'Icons';
   content: '\e929';
   float: right;
+  font-family: 'Icons';
 }
 
 .ui.form .ui.dropdown .menu .item:hover:after {
-  font-family: 'Icons';
   color: @dropdownTextColor;
   content: '\e929';
   float: right;
+  font-family: 'Icons';
 }
 
 .ui.dropdown.multiple .menu .selected.item:hover {
   background: @subtleTransparentBlack;
+}
+
+.ui.dropdown .menu.left {
+  right: 0;
+  left: auto;
 }
