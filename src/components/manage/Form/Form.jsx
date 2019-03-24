@@ -202,13 +202,28 @@ class Form extends Component {
    * @returns {undefined}
    */
   onChangeTile(id, value) {
+    const idTrailingTile = uuid();
     const tilesFieldname = getTilesFieldname(this.state.formData);
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+    const index =
+      this.state.formData[tilesLayoutFieldname].items.indexOf(id) + 1;
+
     this.setState({
       formData: {
         ...this.state.formData,
-        [getTilesFieldname(this.state.formData)]: {
+        [tilesFieldname]: {
           ...this.state.formData[tilesFieldname],
           [id]: value || null,
+          [idTrailingTile]: {
+            '@type': 'text',
+          },
+        },
+        [tilesLayoutFieldname]: {
+          items: [
+            ...this.state.formData[tilesLayoutFieldname].items.slice(0, index),
+            idTrailingTile,
+            ...this.state.formData[tilesLayoutFieldname].items.slice(index),
+          ],
         },
       },
     });
@@ -262,6 +277,7 @@ class Form extends Component {
    */
   onAddTile(type, index) {
     const id = uuid();
+    const idTrailingTile = uuid();
     const tilesFieldname = getTilesFieldname(this.state.formData);
     const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
     const totalItems = this.state.formData[tilesLayoutFieldname].items.length;
@@ -274,6 +290,7 @@ class Form extends Component {
           items: [
             ...this.state.formData[tilesLayoutFieldname].items.slice(0, insert),
             id,
+            ...(type !== 'text' ? [idTrailingTile] : []),
             ...this.state.formData[tilesLayoutFieldname].items.slice(insert),
           ],
         },
@@ -282,6 +299,11 @@ class Form extends Component {
           [id]: {
             '@type': type,
           },
+          ...(type !== 'text' && {
+            [idTrailingTile]: {
+              '@type': 'text',
+            },
+          }),
         },
       },
       selected: id,
