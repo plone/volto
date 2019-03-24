@@ -64,15 +64,15 @@
   }
 
   @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
-    margin-left: calc(50vw - (@tabletWidth / 2) - 70px) !important;
+    margin-left: calc(50vw - (@tabletWidth / 2) - 75px) !important;
   }
 
   @media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
-    margin-left: calc(50vw - (@computerWidth / 2) - 70px) !important;
+    margin-left: calc(50vw - (@computerWidth / 2) - 75px) !important;
   }
 
   @media only screen and (min-width: @largeMonitorBreakpoint) {
-    margin-left: calc(50vw - (@largeMonitorWidth / 2) - 70px) !important;
+    margin-left: calc(50vw - (@largeMonitorWidth / 2) - 75px) !important;
   }
 }
 
@@ -83,15 +83,15 @@
   }
 
   @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
-    margin-left: calc(50vw - (@tabletWidth / 2) - 40px) !important;
+    margin-left: calc(50vw - (@tabletWidth / 2) - 45px) !important;
   }
 
   @media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
-    margin-left: calc(50vw - (@computerWidth / 2) - 40px) !important;
+    margin-left: calc(50vw - (@computerWidth / 2) - 45px) !important;
   }
 
   @media only screen and (min-width: @largeMonitorBreakpoint) {
-    margin-left: calc(50vw - (@largeMonitorWidth / 2) - 40px) !important;
+    margin-left: calc(50vw - (@largeMonitorWidth / 2) - 45px) !important;
   }
 }
 
@@ -101,14 +101,32 @@
   }
 
   @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
-    margin-right: calc(50vw - (@tabletWidth / 2) - 80px) !important;
+    margin-right: calc(50vw - (@tabletWidth / 2) - 85px) !important;
   }
 
   @media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
-    margin-right: calc(50vw - (@computerWidth / 2) - 80px) !important;
+    margin-right: calc(50vw - (@computerWidth / 2) - 85px) !important;
   }
 
   @media only screen and (min-width: @largeMonitorBreakpoint) {
-    margin-right: calc(50vw - (@largeMonitorWidth / 2) - 80px) !important;
+    margin-right: calc(50vw - (@largeMonitorWidth / 2) - 85px) !important;
+  }
+}
+
+.has-toolbar-collapsed .tile .delete-button {
+  @media only screen and (max-width: @largestMobileScreen) {
+    margin-right: -25px !important;
+  }
+
+  @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+    margin-right: calc(50vw - (@tabletWidth / 2) - 55px) !important;
+  }
+
+  @media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
+    margin-right: calc(50vw - (@computerWidth / 2) - 55px) !important;
+  }
+
+  @media only screen and (min-width: @largeMonitorBreakpoint) {
+    margin-right: calc(50vw - (@largeMonitorWidth / 2) - 55px) !important;
   }
 }
