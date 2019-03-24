@@ -37,6 +37,8 @@ test('renders an edit hero tile component', () => {
         createContent={() => {}}
         onFocusPreviousTile={() => {}}
         onFocusNextTile={() => {}}
+        handleKeyDown={() => {}}
+        index={1}
       />
     </Provider>,
   );

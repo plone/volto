@@ -16,7 +16,6 @@ import { includes, isEqual } from 'lodash';
 import { settings, tiles } from '~/config';
 
 import { Icon } from '../../../../components';
-import trashSVG from '../../../../icons/delete.svg';
 import addSVG from '../../../../icons/circle-plus.svg';
 import cameraSVG from '../../../../icons/camera.svg';
 import videoSVG from '../../../../icons/videocamera.svg';
@@ -182,7 +181,7 @@ export default class Edit extends Component {
       <div
         role="presentation"
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={`tile text${this.props.selected ? ' selected' : ''}`}
+        className={cx('tile text', { selected: this.props.selected })}
         ref={node => (this.ref = node)}
       >
         <Editor
@@ -304,7 +303,7 @@ export default class Edit extends Component {
           this.state.customTilesOpened && (
             <div className="add-tile toolbar">
               {tiles.customTiles.map(tile => (
-                <Button.Group>
+                <Button.Group key={tile.title}>
                   <Button
                     icon
                     basic

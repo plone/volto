@@ -90,6 +90,17 @@ export default class Edit extends Component {
   }
 
   /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    if (this.props.selected) {
+      this.node.focus();
+    }
+  }
+
+  /**
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
@@ -209,7 +220,7 @@ export default class Edit extends Component {
                 <Button
                   icon
                   basic
-                  onClick={this.onAlignTile.bind(this, 'left')}
+                  onClick={() => this.onAlignTile('left')}
                   active={this.props.data.align === 'left'}
                 >
                   <Icon name={imageLeftSVG} size="24px" />
@@ -219,7 +230,7 @@ export default class Edit extends Component {
                 <Button
                   icon
                   basic
-                  onClick={this.onAlignTile.bind(this, 'right')}
+                  onClick={() => this.onAlignTile('right')}
                   active={this.props.data.align === 'right'}
                 >
                   <Icon name={imageRightSVG} size="24px" />
@@ -229,7 +240,7 @@ export default class Edit extends Component {
                 <Button
                   icon
                   basic
-                  onClick={this.onAlignTile.bind(this, 'center')}
+                  onClick={() => this.onAlignTile('center')}
                   active={
                     this.props.data.align === 'center' || !this.props.data.align
                   }
@@ -241,7 +252,7 @@ export default class Edit extends Component {
                 <Button
                   icon
                   basic
-                  onClick={this.onAlignTile.bind(this, 'full')}
+                  onClick={() => this.onAlignTile('full')}
                   active={this.props.data.align === 'full'}
                 >
                   <Icon name={imageFullSVG} size="24px" />
@@ -281,6 +292,7 @@ export default class Edit extends Component {
         {this.props.data.url ? (
           <div>
             <iframe
+              title="Google Maps Embedded Tile"
               src={this.props.data.url}
               className="google-map"
               frameBorder="0"

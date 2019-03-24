@@ -453,7 +453,8 @@ class Form extends Component {
   }
 
   /**
-   * handleKeyDown
+   * handleKeyDown, sports a way to disable the listeners via an options named
+   * parameter
    * @method handleKeyDown
    * @param {object} e Event
    * @param {number} index Tile index
@@ -461,16 +462,26 @@ class Form extends Component {
    * @param {node} node The tile node
    * @returns {undefined}
    */
-  handleKeyDown(e, index, tile, node) {
-    if (e.key === 'ArrowUp') {
+  handleKeyDown(
+    e,
+    index,
+    tile,
+    node,
+    {
+      disableEnter = false,
+      disableArrowUp = false,
+      disableArrowDown = false,
+    } = {},
+  ) {
+    if (e.key === 'ArrowUp' && !disableArrowUp) {
       this.onFocusPreviousTile(tile, node);
       e.preventDefault();
     }
-    if (e.key === 'ArrowDown') {
+    if (e.key === 'ArrowDown' && !disableArrowDown) {
       this.onFocusNextTile(tile, node);
       e.preventDefault();
     }
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !disableEnter) {
       this.onAddTile('text', index + 1);
       e.preventDefault();
     }

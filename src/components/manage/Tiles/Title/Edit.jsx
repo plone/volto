@@ -9,10 +9,7 @@ import PropTypes from 'prop-types';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Button } from 'semantic-ui-react';
-
-import { Icon } from '../../../../components';
-import trashSVG from '../../../../icons/delete.svg';
+import cx from 'classnames';
 
 const messages = defineMessages({
   title: {
@@ -140,8 +137,9 @@ export default class Edit extends Component {
     }
     return (
       <div
+        role="presentation"
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={`tile title${this.props.selected ? ' selected' : ''}`}
+        className={cx('tile title', { selected: this.props.selected })}
       >
         <Editor
           onChange={this.onChange}

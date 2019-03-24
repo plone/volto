@@ -6,12 +6,9 @@
 import React, { Component } from 'react';
 import { Map } from 'immutable';
 import PropTypes from 'prop-types';
-import { Button } from 'semantic-ui-react';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Icon } from '../../../../components';
-import trashSVG from '../../../../icons/delete.svg';
 
 const messages = defineMessages({
   description: {
@@ -128,8 +125,9 @@ export default class Edit extends Component {
     }
     return (
       <div
+        role="presentation"
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={`tile description${this.props.selected ? ' selected' : ''}`}
+        className={cx('tile description', { selected: this.props.selected })}
       >
         <Editor
           onChange={this.onChange}

@@ -136,6 +136,17 @@ export default class EditHeroTile extends Component {
   }
 
   /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    if (this.props.selected) {
+      this.titleEditor.focus();
+    }
+  }
+
+  /**
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
@@ -275,7 +286,16 @@ export default class EditHeroTile extends Component {
         className={cx('tile hero', {
           selected: this.props.selected,
         })}
-        // tabIndex={0}
+        tabIndex={0}
+        onKeyDown={e =>
+          this.props.handleKeyDown(
+            e,
+            this.props.index,
+            this.props.tile,
+            this.node,
+            { disableArrowUp: true, disableArrowDown: true },
+          )
+        }
         ref={node => {
           this.node = node;
         }}

@@ -6,6 +6,14 @@
 
 ### Changes
 
+- Tiles refactor, move keyboard listeners and Trash icon to Tiles HOC
+  @sneridagh
+- Fix tiles navigation via cursors on all available tiles @sneridagh
+- Fix UX on HTML tile when navigating via cursors @sneridagh
+- Add ability to add new text tile via `Enter` key @sneridagh
+- Add create new text tile at the bottom on adding tiles @sneridagh
+- Improve general UX on tiles creation and focusing on creation @sneridagh
+
 ## 1.8.3 (2019-03-21)
 
 ### Changes
