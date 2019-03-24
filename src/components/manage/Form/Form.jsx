@@ -176,6 +176,7 @@ class Form extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.onFocusPreviousTile = this.onFocusPreviousTile.bind(this);
     this.onFocusNextTile = this.onFocusNextTile.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   /**
@@ -444,6 +445,30 @@ class Form extends Component {
   }
 
   /**
+   * handleKeyDown
+   * @method handleKeyDown
+   * @param {object} e Event
+   * @param {number} index Tile index
+   * @param {string} tile Tile type
+   * @param {node} node The tile node
+   * @returns {undefined}
+   */
+  handleKeyDown(e, index, tile, node) {
+    if (e.key === 'ArrowUp') {
+      this.onFocusPreviousTile(tile, node);
+      e.preventDefault();
+    }
+    if (e.key === 'ArrowDown') {
+      this.onFocusNextTile(tile, node);
+      e.preventDefault();
+    }
+    if (e.key === 'Enter') {
+      this.onAddTile('text', index + 1);
+      e.preventDefault();
+    }
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -463,6 +488,7 @@ class Form extends Component {
             index={index}
             type={tilesDict[tile]['@type']}
             key={tile}
+            handleKeyDown={this.handleKeyDown}
             onAddTile={this.onAddTile}
             onChangeTile={this.onChangeTile}
             onChangeField={this.onChangeField}

@@ -13,7 +13,6 @@ import cx from 'classnames';
 import pretty from 'pretty';
 
 import { Icon } from '../../../../components';
-import trashSVG from '../../../../icons/delete.svg';
 import showSVG from '../../../../icons/show.svg';
 import clearSVG from '../../../../icons/clear.svg';
 import codeSVG from '../../../../icons/code.svg';
@@ -32,10 +31,12 @@ export default class Edit extends Component {
   static propTypes = {
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     onChangeTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    handleKeyDown: PropTypes.func.isRequired,
   };
 
   /**

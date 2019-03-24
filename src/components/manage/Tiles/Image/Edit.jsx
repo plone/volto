@@ -17,7 +17,6 @@ import { Icon } from '../../../../components';
 import { createContent } from '../../../../actions';
 import { flattenToAppURL, getBaseUrl } from '../../../../helpers';
 
-import trashSVG from '../../../../icons/delete.svg';
 import clearSVG from '../../../../icons/clear.svg';
 import folderSVG from '../../../../icons/folder.svg';
 import imageSVG from '../../../../icons/image.svg';
@@ -55,6 +54,7 @@ export default class Edit extends Component {
   static propTypes = {
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     content: PropTypes.objectOf(PropTypes.any).isRequired,
     request: PropTypes.shape({
@@ -67,6 +67,7 @@ export default class Edit extends Component {
     onDeleteTile: PropTypes.func.isRequired,
     onFocusPreviousTile: PropTypes.func.isRequired,
     onFocusNextTile: PropTypes.func.isRequired,
+    handleKeyDown: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
@@ -165,6 +166,7 @@ export default class Edit extends Component {
   /**
    * Submit url handler
    * @method onSubmitUrl
+   * @param {object} e Event
    * @returns {undefined}
    */
   onSubmitUrl = e => {
@@ -176,23 +178,6 @@ export default class Edit extends Component {
   };
 
   /**
-   * handleKeyDown
-   * @method handleKeyDown
-   * @param {event} e Event
-   * @returns {undefined}
-   */
-  handleKeyDown = e => {
-    if (e.key === 'ArrowUp') {
-      this.props.onFocusPreviousTile(this.props.tile, this.node);
-      e.preventDefault();
-    }
-    if (e.key === 'ArrowDown') {
-      this.props.onFocusNextTile(this.props.tile, this.node);
-      e.preventDefault();
-    }
-  };
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -200,6 +185,7 @@ export default class Edit extends Component {
   render() {
     return (
       <div
+        role="presentation"
         onClick={() => this.props.onSelectTile(this.props.tile)}
         className={cx(
           'tile image align',
@@ -210,7 +196,14 @@ export default class Edit extends Component {
           this.props.data.align,
         )}
         tabIndex={0}
-        onKeyDown={this.handleKeyDown}
+        onKeyDown={e =>
+          this.props.handleKeyDown(
+            e,
+            this.props.index,
+            this.props.tile,
+            this.node,
+          )
+        }
         ref={node => {
           this.node = node;
         }}
