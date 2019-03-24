@@ -200,9 +200,10 @@ class Form extends Component {
    * @method onChangeTile
    * @param {string} id Id of the tile
    * @param {*} value Value of the field
+   * @param {boolean} onlyUpdate Only updating (not creating) the tile
    * @returns {undefined}
    */
-  onChangeTile(id, value) {
+  onChangeTile(id, value, onlyUpdate = false) {
     const idTrailingTile = uuid();
     const tilesFieldname = getTilesFieldname(this.state.formData);
     const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
@@ -215,17 +216,24 @@ class Form extends Component {
         [tilesFieldname]: {
           ...this.state.formData[tilesFieldname],
           [id]: value || null,
-          [idTrailingTile]: {
-            '@type': 'text',
+          ...(!onlyUpdate && {
+            [idTrailingTile]: {
+              '@type': 'text',
+            },
+          }),
+        },
+        ...(!onlyUpdate && {
+          [tilesLayoutFieldname]: {
+            items: [
+              ...this.state.formData[tilesLayoutFieldname].items.slice(
+                0,
+                index,
+              ),
+              idTrailingTile,
+              ...this.state.formData[tilesLayoutFieldname].items.slice(index),
+            ],
           },
-        },
-        [tilesLayoutFieldname]: {
-          items: [
-            ...this.state.formData[tilesLayoutFieldname].items.slice(0, index),
-            idTrailingTile,
-            ...this.state.formData[tilesLayoutFieldname].items.slice(index),
-          ],
-        },
+        }),
       },
     });
   }

@@ -150,10 +150,14 @@ export default class EditHeroTile extends Component {
       this.setState({
         uploading: false,
       });
-      this.props.onChangeTile(this.props.tile, {
-        ...this.props.data,
-        url: nextProps.content['@id'],
-      });
+      this.props.onChangeTile(
+        this.props.tile,
+        {
+          ...this.props.data,
+          url: nextProps.content['@id'],
+        },
+        true,
+      );
     }
 
     if (
@@ -199,10 +203,14 @@ export default class EditHeroTile extends Component {
    */
   onChangeTitle(titleEditorState) {
     this.setState({ titleEditorState }, () => {
-      this.props.onChangeTile(this.props.tile, {
-        ...this.props.data,
-        title: titleEditorState.getCurrentContent().getPlainText(),
-      });
+      this.props.onChangeTile(
+        this.props.tile,
+        {
+          ...this.props.data,
+          title: titleEditorState.getCurrentContent().getPlainText(),
+        },
+        true,
+      );
     });
   }
 
@@ -214,10 +222,16 @@ export default class EditHeroTile extends Component {
    */
   onChangeDescription(descriptionEditorState) {
     this.setState({ descriptionEditorState }, () => {
-      this.props.onChangeTile(this.props.tile, {
-        ...this.props.data,
-        description: descriptionEditorState.getCurrentContent().getPlainText(),
-      });
+      this.props.onChangeTile(
+        this.props.tile,
+        {
+          ...this.props.data,
+          description: descriptionEditorState
+            .getCurrentContent()
+            .getPlainText(),
+        },
+        true,
+      );
     });
   }
 
@@ -274,10 +288,14 @@ export default class EditHeroTile extends Component {
                   icon
                   basic
                   onClick={() =>
-                    this.props.onChangeTile(this.props.tile, {
-                      ...this.props.data,
-                      url: '',
-                    })
+                    this.props.onChangeTile(
+                      this.props.tile,
+                      {
+                        ...this.props.data,
+                        url: '',
+                      },
+                      true,
+                    )
                   }
                 >
                   <Icon name={clearSVG} size="24px" color="#e40166" />

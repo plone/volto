@@ -141,10 +141,14 @@ export default class Edit extends Component {
         convertToRaw(this.state.editorState.getCurrentContent()),
       )
     ) {
-      this.props.onChangeTile(this.props.tile, {
-        ...this.props.data,
-        text: convertToRaw(editorState.getCurrentContent()),
-      });
+      this.props.onChangeTile(
+        this.props.tile,
+        {
+          ...this.props.data,
+          text: convertToRaw(editorState.getCurrentContent()),
+        },
+        true,
+      );
     }
     this.setState({ editorState });
   }
@@ -176,6 +180,7 @@ export default class Edit extends Component {
 
     return (
       <div
+        role="presentation"
         onClick={() => this.props.onSelectTile(this.props.tile)}
         className={`tile text${this.props.selected ? ' selected' : ''}`}
         ref={node => (this.ref = node)}
@@ -261,9 +266,11 @@ export default class Edit extends Component {
                 <Button
                   icon
                   basic
-                  onClick={this.props.onChangeTile.bind(this, this.props.tile, {
-                    '@type': 'image',
-                  })}
+                  onClick={() =>
+                    this.props.onChangeTile(this.props.tile, {
+                      '@type': 'image',
+                    })
+                  }
                 >
                   <Icon name={cameraSVG} size="24px" />
                 </Button>
@@ -272,9 +279,11 @@ export default class Edit extends Component {
                 <Button
                   icon
                   basic
-                  onClick={this.props.onChangeTile.bind(this, this.props.tile, {
-                    '@type': 'video',
-                  })}
+                  onClick={() =>
+                    this.props.onChangeTile(this.props.tile, {
+                      '@type': 'video',
+                    })
+                  }
                 >
                   <Icon name={videoSVG} size="24px" />
                 </Button>
@@ -299,13 +308,11 @@ export default class Edit extends Component {
                   <Button
                     icon
                     basic
-                    onClick={this.props.onChangeTile.bind(
-                      this,
-                      this.props.tile,
-                      {
+                    onClick={() =>
+                      this.props.onChangeTile(this.props.tile, {
                         '@type': tile.title,
-                      },
-                    )}
+                      })
+                    }
                   >
                     <Icon name={tile.icon} size="24px" />
                   </Button>
