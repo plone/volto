@@ -46,6 +46,7 @@ nav:
   - Deploying:
     - Simple deployment: "07-deploying/01-simple.md"
     - Using PM2: "07-deploying/02-pm2.md"
+  - Upgrade Guide: "upgrade-guide/index.md"
   - Developer Guidelines:
     - React: "08-developer-guidelines/01-react.md"
     - Babel: "08-developer-guidelines/02-babel.md"
