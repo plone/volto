@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.8.4 (unreleased)
+## 1.10.1 (unreleased)
 
 ### Added
 
@@ -13,6 +13,25 @@
 - Add ability to add new text tile via `Enter` key @sneridagh
 - Add create new text tile at the bottom on adding tiles @sneridagh
 - Improve general UX on tiles creation and focusing on creation @sneridagh
+## 1.10.0 (2019-03-25)
+
+### Added
+
+- Fix npm package generation @sneridagh
+
+## 1.9.0 (2019-03-25)
+
+### Added
+
+- Upgraded to React 16.8 (the one with hooks) @sneridagh
+- Upgraded to the recent (at last) released react-redux 7.0beta.0, this release
+  solves the performance issues with the new React context and leave them ready
+  for the upcoming useRedux hook. This release supports the latest React 16.8.
+  @sneridagh
+- Upgraded to the latest Router and react-router-config and other required
+  upgrades. @sneridagh
+- Upgraded to latest redux-connect @sneridagh
+- Upgraded to latest razzle @sneridagh
 
 ## 1.8.3 (2019-03-21)
 
