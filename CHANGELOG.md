@@ -1,10 +1,10 @@
 # Change Log
 
-## 1.9.1 (unreleased)
+## 1.10.0 (2019-03-25)
 
 ### Added
 
-### Changes
+- Fix npm package generation @sneridagh
 
 ## 1.9.0 (2019-03-25)
 
