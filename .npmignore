@@ -1,7 +1,9 @@
-api
-build
+api/
+bin/
+build/
+lib/
 g-api
-tests
+tests/
 .travis.yml
 requirements-docs.txt
 requirements-tests.txt
@@ -75,3 +77,4 @@ typings/
 .next
 
 styleguide.config
+.vscode
