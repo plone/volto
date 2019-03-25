@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.8.4 (unreleased)
+## 1.9.0 (2019-03-25)
 
 ### Added
 
@@ -13,8 +13,6 @@
   upgrades. @sneridagh
 - Upgraded to latest redux-connect @sneridagh
 - Upgraded to latest razzle @sneridagh
-
-### Changes
 
 ## 1.8.3 (2019-03-21)
 
