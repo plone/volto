@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.10.1 (unreleased)
+## 2.0.0 (2019-03-25)
 
 ### Added
 
@@ -11,8 +11,6 @@
 - Add ability to add new text tile via `Enter` key @sneridagh
 - Add create new text tile at the bottom on adding tiles @sneridagh
 - Improve general UX on tiles creation and focusing on creation @sneridagh
-
-### Changes
 
 ## 1.10.0 (2019-03-25)
 
