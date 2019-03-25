@@ -13,7 +13,6 @@ import cx from 'classnames';
 import pretty from 'pretty';
 
 import { Icon } from '../../../../components';
-import trashSVG from '../../../../icons/delete.svg';
 import showSVG from '../../../../icons/show.svg';
 import clearSVG from '../../../../icons/clear.svg';
 import codeSVG from '../../../../icons/code.svg';
@@ -32,10 +31,12 @@ export default class Edit extends Component {
   static propTypes = {
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     onChangeTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    handleKeyDown: PropTypes.func.isRequired,
   };
 
   /**
@@ -55,16 +56,43 @@ export default class Edit extends Component {
   }
 
   /**
+   * Component will receive props
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    if (this.props.selected) {
+      this.codeEditor._input.focus();
+    }
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selected) {
+      this.codeEditor._input.focus();
+    }
+  }
+
+  /**
    * Change html handler
    * @method onChangeCode
    * @param {string} code New value html
    * @returns {undefined}
    */
   onChangeCode(code) {
-    this.props.onChangeTile(this.props.tile, {
-      ...this.props.data,
-      html: code,
-    });
+    this.props.onChangeTile(
+      this.props.tile,
+      {
+        ...this.props.data,
+        html: code,
+      },
+      true,
+    );
     this.setState({ code });
   }
 
@@ -97,10 +125,24 @@ export default class Edit extends Component {
   render() {
     return (
       <div
+        role="presentation"
         onClick={() => this.props.onSelectTile(this.props.tile)}
         className={cx('tile html', {
           selected: this.props.selected,
         })}
+        tabIndex={0}
+        onKeyDown={e =>
+          this.props.handleKeyDown(
+            e,
+            this.props.index,
+            this.props.tile,
+            this.node,
+            { disableEnter: true },
+          )
+        }
+        ref={node => {
+          this.node = node;
+        }}
       >
         {this.props.selected &&
           !!this.state.code && (
@@ -144,17 +186,10 @@ export default class Edit extends Component {
             highlight={code => highlight(code, languages.html)}
             padding={8}
             className="html-editor"
+            ref={node => {
+              this.codeEditor = node;
+            }}
           />
-        )}
-        {this.props.selected && (
-          <Button
-            icon
-            basic
-            onClick={() => this.props.onDeleteTile(this.props.tile)}
-            className="tile-delete-button"
-          >
-            <Icon name={trashSVG} size="18px" />
-          </Button>
         )}
       </div>
     );

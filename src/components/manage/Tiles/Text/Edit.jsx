@@ -12,11 +12,11 @@ import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { includes, isEqual } from 'lodash';
+import cx from 'classnames';
 
 import { settings, tiles } from '~/config';
 
 import { Icon } from '../../../../components';
-import trashSVG from '../../../../icons/delete.svg';
 import addSVG from '../../../../icons/circle-plus.svg';
 import cameraSVG from '../../../../icons/camera.svg';
 import videoSVG from '../../../../icons/videocamera.svg';
@@ -141,10 +141,14 @@ export default class Edit extends Component {
         convertToRaw(this.state.editorState.getCurrentContent()),
       )
     ) {
-      this.props.onChangeTile(this.props.tile, {
-        ...this.props.data,
-        text: convertToRaw(editorState.getCurrentContent()),
-      });
+      this.props.onChangeTile(
+        this.props.tile,
+        {
+          ...this.props.data,
+          text: convertToRaw(editorState.getCurrentContent()),
+        },
+        true,
+      );
     }
     this.setState({ editorState });
   }
@@ -176,8 +180,9 @@ export default class Edit extends Component {
 
     return (
       <div
+        role="presentation"
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={`tile text${this.props.selected ? ' selected' : ''}`}
+        className={cx('tile text', { selected: this.props.selected })}
         ref={node => (this.ref = node)}
       >
         <Editor
@@ -261,9 +266,11 @@ export default class Edit extends Component {
                 <Button
                   icon
                   basic
-                  onClick={this.props.onChangeTile.bind(this, this.props.tile, {
-                    '@type': 'image',
-                  })}
+                  onClick={() =>
+                    this.props.onChangeTile(this.props.tile, {
+                      '@type': 'image',
+                    })
+                  }
                 >
                   <Icon name={cameraSVG} size="24px" />
                 </Button>
@@ -272,9 +279,11 @@ export default class Edit extends Component {
                 <Button
                   icon
                   basic
-                  onClick={this.props.onChangeTile.bind(this, this.props.tile, {
-                    '@type': 'video',
-                  })}
+                  onClick={() =>
+                    this.props.onChangeTile(this.props.tile, {
+                      '@type': 'video',
+                    })
+                  }
                 >
                   <Icon name={videoSVG} size="24px" />
                 </Button>
@@ -295,17 +304,15 @@ export default class Edit extends Component {
           this.state.customTilesOpened && (
             <div className="add-tile toolbar">
               {tiles.customTiles.map(tile => (
-                <Button.Group>
+                <Button.Group key={tile.title}>
                   <Button
                     icon
                     basic
-                    onClick={this.props.onChangeTile.bind(
-                      this,
-                      this.props.tile,
-                      {
+                    onClick={() =>
+                      this.props.onChangeTile(this.props.tile, {
                         '@type': tile.title,
-                      },
-                    )}
+                      })
+                    }
                   >
                     <Icon name={tile.icon} size="24px" />
                   </Button>
@@ -313,16 +320,6 @@ export default class Edit extends Component {
               ))}
             </div>
           )}
-        {this.props.selected && (
-          <Button
-            icon
-            basic
-            onClick={() => this.props.onDeleteTile(this.props.tile)}
-            className="tile-delete-button"
-          >
-            <Icon name={trashSVG} size="18px" />
-          </Button>
-        )}
       </div>
     );
   }

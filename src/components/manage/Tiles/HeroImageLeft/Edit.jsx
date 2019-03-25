@@ -19,7 +19,6 @@ import { createContent } from '../../../../actions';
 import { getBaseUrl } from '../../../../helpers';
 import { Icon } from '../../../../components';
 
-import trashSVG from '../../../../icons/delete.svg';
 import clearSVG from '../../../../icons/clear.svg';
 
 const messages = defineMessages({
@@ -75,6 +74,7 @@ export default class EditHeroTile extends Component {
   static propTypes = {
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     content: PropTypes.objectOf(PropTypes.any).isRequired,
     request: PropTypes.shape({
@@ -87,6 +87,7 @@ export default class EditHeroTile extends Component {
     onDeleteTile: PropTypes.func.isRequired,
     onFocusPreviousTile: PropTypes.func.isRequired,
     onFocusNextTile: PropTypes.func.isRequired,
+    handleKeyDown: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
@@ -135,6 +136,17 @@ export default class EditHeroTile extends Component {
   }
 
   /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    if (this.props.selected) {
+      this.titleEditor.focus();
+    }
+  }
+
+  /**
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
@@ -149,10 +161,14 @@ export default class EditHeroTile extends Component {
       this.setState({
         uploading: false,
       });
-      this.props.onChangeTile(this.props.tile, {
-        ...this.props.data,
-        url: nextProps.content['@id'],
-      });
+      this.props.onChangeTile(
+        this.props.tile,
+        {
+          ...this.props.data,
+          url: nextProps.content['@id'],
+        },
+        true,
+      );
     }
 
     if (
@@ -198,10 +214,14 @@ export default class EditHeroTile extends Component {
    */
   onChangeTitle(titleEditorState) {
     this.setState({ titleEditorState }, () => {
-      this.props.onChangeTile(this.props.tile, {
-        ...this.props.data,
-        title: titleEditorState.getCurrentContent().getPlainText(),
-      });
+      this.props.onChangeTile(
+        this.props.tile,
+        {
+          ...this.props.data,
+          title: titleEditorState.getCurrentContent().getPlainText(),
+        },
+        true,
+      );
     });
   }
 
@@ -213,10 +233,16 @@ export default class EditHeroTile extends Component {
    */
   onChangeDescription(descriptionEditorState) {
     this.setState({ descriptionEditorState }, () => {
-      this.props.onChangeTile(this.props.tile, {
-        ...this.props.data,
-        description: descriptionEditorState.getCurrentContent().getPlainText(),
-      });
+      this.props.onChangeTile(
+        this.props.tile,
+        {
+          ...this.props.data,
+          description: descriptionEditorState
+            .getCurrentContent()
+            .getPlainText(),
+        },
+        true,
+      );
     });
   }
 
@@ -245,23 +271,6 @@ export default class EditHeroTile extends Component {
   }
 
   /**
-   * handleKeyDown
-   * @method handleKeyDown
-   * @param {event} e Event
-   * @returns {undefined}
-   */
-  handleKeyDown = e => {
-    if (e.key === 'ArrowUp') {
-      this.props.onFocusPreviousTile(this.props.tile, this.node);
-      e.preventDefault();
-    }
-    if (e.key === 'ArrowDown') {
-      this.props.onFocusNextTile(this.props.tile, this.node);
-      e.preventDefault();
-    }
-  };
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -272,11 +281,21 @@ export default class EditHeroTile extends Component {
     }
     return (
       <div
+        role="presentation"
         onClick={() => this.props.onSelectTile(this.props.tile)}
         className={cx('tile hero', {
           selected: this.props.selected,
         })}
-        // tabIndex={0}
+        tabIndex={0}
+        onKeyDown={e =>
+          this.props.handleKeyDown(
+            e,
+            this.props.index,
+            this.props.tile,
+            this.node,
+            { disableArrowUp: true, disableArrowDown: true },
+          )
+        }
         ref={node => {
           this.node = node;
         }}
@@ -289,10 +308,14 @@ export default class EditHeroTile extends Component {
                   icon
                   basic
                   onClick={() =>
-                    this.props.onChangeTile(this.props.tile, {
-                      ...this.props.data,
-                      url: '',
-                    })
+                    this.props.onChangeTile(
+                      this.props.tile,
+                      {
+                        ...this.props.data,
+                        url: '',
+                      },
+                      true,
+                    )
                   }
                 >
                   <Icon name={clearSVG} size="24px" color="#e40166" />
@@ -406,16 +429,6 @@ export default class EditHeroTile extends Component {
             />
           </div>
         </div>
-        {this.props.selected && (
-          <Button
-            icon
-            basic
-            onClick={() => this.props.onDeleteTile(this.props.tile)}
-            className="tile-delete-button"
-          >
-            <Icon name={trashSVG} size="18px" />
-          </Button>
-        )}
       </div>
     );
   }

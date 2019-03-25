@@ -176,6 +176,7 @@ class Form extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.onFocusPreviousTile = this.onFocusPreviousTile.bind(this);
     this.onFocusNextTile = this.onFocusNextTile.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   /**
@@ -199,17 +200,40 @@ class Form extends Component {
    * @method onChangeTile
    * @param {string} id Id of the tile
    * @param {*} value Value of the field
+   * @param {boolean} onlyUpdate Only updating (not creating) the tile
    * @returns {undefined}
    */
-  onChangeTile(id, value) {
+  onChangeTile(id, value, onlyUpdate = false) {
+    const idTrailingTile = uuid();
     const tilesFieldname = getTilesFieldname(this.state.formData);
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+    const index =
+      this.state.formData[tilesLayoutFieldname].items.indexOf(id) + 1;
+
     this.setState({
       formData: {
         ...this.state.formData,
-        [getTilesFieldname(this.state.formData)]: {
+        [tilesFieldname]: {
           ...this.state.formData[tilesFieldname],
           [id]: value || null,
+          ...(!onlyUpdate && {
+            [idTrailingTile]: {
+              '@type': 'text',
+            },
+          }),
         },
+        ...(!onlyUpdate && {
+          [tilesLayoutFieldname]: {
+            items: [
+              ...this.state.formData[tilesLayoutFieldname].items.slice(
+                0,
+                index,
+              ),
+              idTrailingTile,
+              ...this.state.formData[tilesLayoutFieldname].items.slice(index),
+            ],
+          },
+        }),
       },
     });
   }
@@ -262,6 +286,7 @@ class Form extends Component {
    */
   onAddTile(type, index) {
     const id = uuid();
+    const idTrailingTile = uuid();
     const tilesFieldname = getTilesFieldname(this.state.formData);
     const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
     const totalItems = this.state.formData[tilesLayoutFieldname].items.length;
@@ -274,6 +299,7 @@ class Form extends Component {
           items: [
             ...this.state.formData[tilesLayoutFieldname].items.slice(0, insert),
             id,
+            ...(type !== 'text' ? [idTrailingTile] : []),
             ...this.state.formData[tilesLayoutFieldname].items.slice(insert),
           ],
         },
@@ -282,6 +308,11 @@ class Form extends Component {
           [id]: {
             '@type': type,
           },
+          ...(type !== 'text' && {
+            [idTrailingTile]: {
+              '@type': 'text',
+            },
+          }),
         },
       },
       selected: id,
@@ -422,6 +453,41 @@ class Form extends Component {
   }
 
   /**
+   * handleKeyDown, sports a way to disable the listeners via an options named
+   * parameter
+   * @method handleKeyDown
+   * @param {object} e Event
+   * @param {number} index Tile index
+   * @param {string} tile Tile type
+   * @param {node} node The tile node
+   * @returns {undefined}
+   */
+  handleKeyDown(
+    e,
+    index,
+    tile,
+    node,
+    {
+      disableEnter = false,
+      disableArrowUp = false,
+      disableArrowDown = false,
+    } = {},
+  ) {
+    if (e.key === 'ArrowUp' && !disableArrowUp) {
+      this.onFocusPreviousTile(tile, node);
+      e.preventDefault();
+    }
+    if (e.key === 'ArrowDown' && !disableArrowDown) {
+      this.onFocusNextTile(tile, node);
+      e.preventDefault();
+    }
+    if (e.key === 'Enter' && !disableEnter) {
+      this.onAddTile('text', index + 1);
+      e.preventDefault();
+    }
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -441,6 +507,7 @@ class Form extends Component {
             index={index}
             type={tilesDict[tile]['@type']}
             key={tile}
+            handleKeyDown={this.handleKeyDown}
             onAddTile={this.onAddTile}
             onChangeTile={this.onChangeTile}
             onChangeField={this.onChangeField}
