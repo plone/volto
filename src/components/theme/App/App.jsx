@@ -10,7 +10,7 @@ import { asyncConnect } from 'redux-connect';
 import { Segment } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import Raven from 'raven-js';
-import renderRoutes from 'react-router-config/renderRoutes';
+import { renderRoutes } from 'react-router-config';
 
 import Error from '../../../error';
 
