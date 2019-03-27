@@ -5,6 +5,7 @@ import ViewDescriptionTile from '@plone/volto/components/manage/Tiles/Descriptio
 import ViewTextTile from '@plone/volto/components/manage/Tiles/Text/View';
 import ViewImageTile from '@plone/volto/components/manage/Tiles/Image/View';
 import ViewVideoTile from '@plone/volto/components/manage/Tiles/Video/View';
+import ViewHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImageLeft/View';
 import ViewMapTile from '@plone/volto/components/manage/Tiles/Maps/View';
 import ViewHTMLTile from '@plone/volto/components/manage/Tiles/HTML/View';
 
@@ -13,13 +14,19 @@ import EditDescriptionTile from '@plone/volto/components/manage/Tiles/Descriptio
 import EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
 import EditImageTile from '@plone/volto/components/manage/Tiles/Image/Edit';
 import EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
+import EditHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImageLeft/Edit';
 import EditMapTile from '@plone/volto/components/manage/Tiles/Maps/Edit';
 import EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
 
 import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
+import heroSVG from '@plone/volto/icons/hero.svg';
 
 const customTiles = [
+  {
+    title: 'hero',
+    icon: heroSVG,
+  },
   {
     title: 'maps',
     icon: globeSVG,
@@ -59,6 +66,7 @@ const defaultTilesViewMap = {
   text: ViewTextTile,
   image: ViewImageTile,
   video: ViewVideoTile,
+  hero: ViewHeroImageLeftTile,
   maps: ViewMapTile,
   html: ViewHTMLTile,
 };
@@ -69,6 +77,7 @@ const defaultTilesEditMap = {
   text: EditTextTile,
   image: EditImageTile,
   video: EditVideoTile,
+  hero: EditHeroImageLeftTile,
   maps: EditMapTile,
   html: EditHTMLTile,
 };

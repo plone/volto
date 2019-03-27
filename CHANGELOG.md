@@ -1,11 +1,72 @@
 # Change Log
 
-## 1.7.1 (unreleased)
+## 2.0.1 (unreleased)
 
 ### Added
 
 - Fix event type date view @nileshgulia1
 - HTML Tile for Volto Editor with preview and code prettifier @ajayns @nileshgulia1 @sneridagh
+### Changes
+
+## 2.0.0 (2019-03-25)
+
+### Added
+
+- Tiles refactor, move keyboard listeners and Trash icon to Tiles HOC
+  @sneridagh
+- Fix tiles navigation via cursors on all available tiles @sneridagh
+- Fix UX on HTML tile when navigating via cursors @sneridagh
+- Add ability to add new text tile via `Enter` key @sneridagh
+- Add create new text tile at the bottom on adding tiles @sneridagh
+- Improve general UX on tiles creation and focusing on creation @sneridagh
+
+## 1.10.0 (2019-03-25)
+
+### Added
+
+- Fix npm package generation @sneridagh
+
+## 1.9.0 (2019-03-25)
+
+### Added
+
+- Upgraded to React 16.8 (the one with hooks) @sneridagh
+- Upgraded to the recent (at last) released react-redux 7.0beta.0, this release
+  solves the performance issues with the new React context and leave them ready
+  for the upcoming useRedux hook. This release supports the latest React 16.8.
+  @sneridagh
+- Upgraded to the latest Router and react-router-config and other required
+  upgrades. @sneridagh
+- Upgraded to latest redux-connect @sneridagh
+- Upgraded to latest razzle @sneridagh
+
+## 1.8.3 (2019-03-21)
+
+### Changes
+
+- Several CSS fixes @sneridagh
+- Add several icons @sneridagh
+
+## 1.8.2 (2019-03-21)
+
+### Changes
+
+- Improve README @svx @fredvd
+- Pretty Pastanaga UI .overrides stylesheets @sneridagh
+
+## 1.8.1 (2019-03-19)
+
+### Changes
+
+- Fix hero tile View styling, add definitive icon @sneridagh
+- Fix the trash icon on the tiles that was displaced by other change @sneridagh
+
+## 1.8.0 (2019-03-15)
+
+### Added
+
+- Hero Tile @nileshgulia1 @sneridagh
+
 ### Changes
 
 ## 1.7.0 (2019-03-03)

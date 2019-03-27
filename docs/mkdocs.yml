@@ -38,6 +38,7 @@ nav:
     - Customizing components: "05-customizing/03-customizing-components.md"
     - Customizing views: "05-customizing/04-customizing-views.md"
     - Creating new views: "05-customizing/05-creating-views.md"
+    - Creating Add-on packages: "05-customizing/06-add-ons.md"
   - Tiles:
     - Introduction: "06-tiles/introduction.md"
     - Anatomy: "06-tiles/anatomy.md"
@@ -45,6 +46,7 @@ nav:
   - Deploying:
     - Simple deployment: "07-deploying/01-simple.md"
     - Using PM2: "07-deploying/02-pm2.md"
+  - Upgrade Guide: "upgrade-guide/index.md"
   - Developer Guidelines:
     - React: "08-developer-guidelines/01-react.md"
     - Babel: "08-developer-guidelines/02-babel.md"
