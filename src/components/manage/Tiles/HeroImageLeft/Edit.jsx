@@ -161,14 +161,10 @@ export default class EditHeroTile extends Component {
       this.setState({
         uploading: false,
       });
-      this.props.onChangeTile(
-        this.props.tile,
-        {
-          ...this.props.data,
-          url: nextProps.content['@id'],
-        },
-        true,
-      );
+      this.props.onChangeTile(this.props.tile, {
+        ...this.props.data,
+        url: nextProps.content['@id'],
+      });
     }
 
     if (
@@ -214,14 +210,10 @@ export default class EditHeroTile extends Component {
    */
   onChangeTitle(titleEditorState) {
     this.setState({ titleEditorState }, () => {
-      this.props.onChangeTile(
-        this.props.tile,
-        {
-          ...this.props.data,
-          title: titleEditorState.getCurrentContent().getPlainText(),
-        },
-        true,
-      );
+      this.props.onChangeTile(this.props.tile, {
+        ...this.props.data,
+        title: titleEditorState.getCurrentContent().getPlainText(),
+      });
     });
   }
 
@@ -233,16 +225,10 @@ export default class EditHeroTile extends Component {
    */
   onChangeDescription(descriptionEditorState) {
     this.setState({ descriptionEditorState }, () => {
-      this.props.onChangeTile(
-        this.props.tile,
-        {
-          ...this.props.data,
-          description: descriptionEditorState
-            .getCurrentContent()
-            .getPlainText(),
-        },
-        true,
-      );
+      this.props.onChangeTile(this.props.tile, {
+        ...this.props.data,
+        description: descriptionEditorState.getCurrentContent().getPlainText(),
+      });
     });
   }
 
@@ -308,14 +294,10 @@ export default class EditHeroTile extends Component {
                   icon
                   basic
                   onClick={() =>
-                    this.props.onChangeTile(
-                      this.props.tile,
-                      {
-                        ...this.props.data,
-                        url: '',
-                      },
-                      true,
-                    )
+                    this.props.onChangeTile(this.props.tile, {
+                      ...this.props.data,
+                      url: '',
+                    })
                   }
                 >
                   <Icon name={clearSVG} size="24px" color="#e40166" />

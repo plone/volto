@@ -48,6 +48,7 @@ export default class Edit extends Component {
     intl: intlShape.isRequired,
     index: PropTypes.number.isRequired,
     onChangeTile: PropTypes.func.isRequired,
+    onMutateTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
     onAddTile: PropTypes.func.isRequired,
@@ -141,14 +142,10 @@ export default class Edit extends Component {
         convertToRaw(this.state.editorState.getCurrentContent()),
       )
     ) {
-      this.props.onChangeTile(
-        this.props.tile,
-        {
-          ...this.props.data,
-          text: convertToRaw(editorState.getCurrentContent()),
-        },
-        true,
-      );
+      this.props.onChangeTile(this.props.tile, {
+        ...this.props.data,
+        text: convertToRaw(editorState.getCurrentContent()),
+      });
     }
     this.setState({ editorState });
   }
@@ -267,7 +264,7 @@ export default class Edit extends Component {
                   icon
                   basic
                   onClick={() =>
-                    this.props.onChangeTile(this.props.tile, {
+                    this.props.onMutateTile(this.props.tile, {
                       '@type': 'image',
                     })
                   }
@@ -280,7 +277,7 @@ export default class Edit extends Component {
                   icon
                   basic
                   onClick={() =>
-                    this.props.onChangeTile(this.props.tile, {
+                    this.props.onMutateTile(this.props.tile, {
                       '@type': 'video',
                     })
                   }
@@ -309,7 +306,7 @@ export default class Edit extends Component {
                     icon
                     basic
                     onClick={() =>
-                      this.props.onChangeTile(this.props.tile, {
+                      this.props.onMutateTile(this.props.tile, {
                         '@type': tile.title,
                       })
                     }

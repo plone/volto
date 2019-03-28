@@ -279,7 +279,12 @@ export default class Edit extends Component {
           !this.props.data.url && (
             <div className="toolbar">
               <Icon name={globeSVG} size="24px" />
-              <form onSubmit={e => this.onSubmitUrl(e)}>
+              <form
+                onSubmit={e => {
+                  debugger;
+                  this.onSubmitUrl(e);
+                }}
+              >
                 <Input
                   onChange={this.onChangeUrl}
                   placeholder={this.props.intl.formatMessage(

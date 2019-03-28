@@ -6,6 +6,11 @@
 
 ### Changes
 
+- Small improvements to the internal tile api, added specific `onMutateTile`
+  for solely use of the Text tile when it mutates to another type of tile. This
+  prevents onChangeTile do one thing that it was not designed lifting
+  responsibilities from it. @sneridagh
+
 ## 2.0.0 (2019-03-25)
 
 ### Added
