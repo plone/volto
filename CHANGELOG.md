@@ -12,6 +12,7 @@
   responsibilities from it. @sneridagh
 - Fix for tiles having dialog box `ENTER` key captured by global tile onKeyDown
   handler, then creating a tile instead of the intended behavior. @sneridagh
+- Fix small CSS and import issues @sneridagh
 
 ## 2.0.0 (2019-03-25)
 
