@@ -10,6 +10,8 @@
   for solely use of the Text tile when it mutates to another type of tile. This
   prevents onChangeTile do one thing that it was not designed lifting
   responsibilities from it. @sneridagh
+- Fix for tiles having dialog box `ENTER` key captured by global tile onKeyDown
+  handler, then creating a tile instead of the intended behavior. @sneridagh
 
 ## 2.0.0 (2019-03-25)
 
