@@ -4,12 +4,16 @@
 
 ### Added
 
+- Added specific `onMutateTile` for solely use of the Text tile when it mutates
+  to another type of tile. This prevents onChangeTile do one thing that it was
+  not designed lifting responsibilities from it. @sneridagh
+- Added `detached` mode for the text tile so it will be able to render outside
+  the Volto editor without all the tile mutation machinery and the keyboard
+  handlers. @sneridagh
+
 ### Changes
 
-- Small improvements to the internal tile api, added specific `onMutateTile`
-  for solely use of the Text tile when it mutates to another type of tile. This
-  prevents onChangeTile do one thing that it was not designed lifting
-  responsibilities from it. @sneridagh
+- Small improvements to the internal tile api @sneridagh
 - Fix for tiles having dialog box `ENTER` key captured by global tile onKeyDown
   handler, then creating a tile instead of the intended behavior. @sneridagh
 - Fix small CSS and import issues @sneridagh
