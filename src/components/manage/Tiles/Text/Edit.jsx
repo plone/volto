@@ -42,18 +42,28 @@ export default class Edit extends Component {
    * @static
    */
   static propTypes = {
+    data: PropTypes.objectOf(PropTypes.any).isRequired,
+    detached: PropTypes.bool,
+    index: PropTypes.number.isRequired,
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
-    data: PropTypes.objectOf(PropTypes.any).isRequired,
-    intl: intlShape.isRequired,
-    index: PropTypes.number.isRequired,
-    onChangeTile: PropTypes.func.isRequired,
-    onMutateTile: PropTypes.func.isRequired,
-    onSelectTile: PropTypes.func.isRequired,
-    onDeleteTile: PropTypes.func.isRequired,
     onAddTile: PropTypes.func.isRequired,
+    onChangeTile: PropTypes.func.isRequired,
+    onDeleteTile: PropTypes.func.isRequired,
+    onMutateTile: PropTypes.func.isRequired,
     onFocusPreviousTile: PropTypes.func.isRequired,
     onFocusNextTile: PropTypes.func.isRequired,
+    onSelectTile: PropTypes.func.isRequired,
+    intl: intlShape.isRequired,
+  };
+
+  /**
+   * Default properties
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    detached: false,
   };
 
   /**
@@ -193,20 +203,23 @@ export default class Edit extends Component {
           blockStyleFn={settings.blockStyleFn}
           placeholder={this.props.intl.formatMessage(messages.text)}
           handleReturn={() => {
-            const selectionState = this.state.editorState.getSelection();
-            const anchorKey = selectionState.getAnchorKey();
-            const currentContent = this.state.editorState.getCurrentContent();
-            const currentContentBlock = currentContent.getBlockForKey(
-              anchorKey,
-            );
-            const blockType = currentContentBlock.getType();
-            if (!includes(settings.listBlockTypes, blockType)) {
-              this.props.onSelectTile(
-                this.props.onAddTile('text', this.props.index + 1),
+            if (!this.props.detached) {
+              const selectionState = this.state.editorState.getSelection();
+              const anchorKey = selectionState.getAnchorKey();
+              const currentContent = this.state.editorState.getCurrentContent();
+              const currentContentBlock = currentContent.getBlockForKey(
+                anchorKey,
               );
-              return 'handled';
+              const blockType = currentContentBlock.getType();
+              if (!includes(settings.listBlockTypes, blockType)) {
+                this.props.onSelectTile(
+                  this.props.onAddTile('text', this.props.index + 1),
+                );
+                return 'handled';
+              }
+              return 'un-handled';
             }
-            return 'un-handled';
+            return {};
           }}
           handleKeyCommand={(command, editorState) => {
             if (
@@ -242,81 +255,80 @@ export default class Edit extends Component {
           }}
         />
         <InlineToolbar />
-        {(!this.props.data.text ||
-          (this.props.data.text &&
-            this.props.data.text.blocks &&
-            this.props.data.text.blocks.length === 1 &&
-            this.props.data.text.blocks[0].text === '')) && (
-          <Button
-            basic
-            icon
-            onClick={this.toggleAddNewTile}
-            className="tile-add-button"
-          >
-            <Icon name={addSVG} className="tile-add-button" size="24px" />
-          </Button>
-        )}
-        {this.state.addNewTileOpened &&
-          !this.state.customTilesOpened && (
-            <div className="add-tile toolbar">
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={() =>
-                    this.props.onMutateTile(this.props.tile, {
-                      '@type': 'image',
-                    })
-                  }
-                >
-                  <Icon name={cameraSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={() =>
-                    this.props.onMutateTile(this.props.tile, {
-                      '@type': 'video',
-                    })
-                  }
-                >
-                  <Icon name={videoSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              {tiles.customTiles.length !== 0 && (
-                <React.Fragment>
-                  <div className="separator" />
-                  <Button.Group>
-                    <Button icon basic onClick={this.openCustomTileMenu}>
-                      <Icon name={TemplatedTilesSVG} size="24px" />
-                    </Button>
-                  </Button.Group>
-                </React.Fragment>
-              )}
-            </div>
+        {!this.props.detached &&
+          (!this.props.data.text ||
+            (this.props.data.text &&
+              this.props.data.text.blocks &&
+              this.props.data.text.blocks.length === 1 &&
+              this.props.data.text.blocks[0].text === '')) && (
+            <Button
+              basic
+              icon
+              onClick={this.toggleAddNewTile}
+              className="tile-add-button"
+            >
+              <Icon name={addSVG} className="tile-add-button" size="24px" />
+            </Button>
           )}
-        {this.state.addNewTileOpened &&
-          this.state.customTilesOpened && (
-            <div className="add-tile toolbar">
-              {tiles.customTiles.map(tile => (
-                <Button.Group key={tile.title}>
-                  <Button
-                    icon
-                    basic
-                    onClick={() =>
-                      this.props.onMutateTile(this.props.tile, {
-                        '@type': tile.title,
-                      })
-                    }
-                  >
-                    <Icon name={tile.icon} size="24px" />
+        {this.state.addNewTileOpened && !this.state.customTilesOpened && (
+          <div className="add-tile toolbar">
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() =>
+                  this.props.onMutateTile(this.props.tile, {
+                    '@type': 'image',
+                  })
+                }
+              >
+                <Icon name={cameraSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() =>
+                  this.props.onMutateTile(this.props.tile, {
+                    '@type': 'video',
+                  })
+                }
+              >
+                <Icon name={videoSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            {tiles.customTiles.length !== 0 && (
+              <React.Fragment>
+                <div className="separator" />
+                <Button.Group>
+                  <Button icon basic onClick={this.openCustomTileMenu}>
+                    <Icon name={TemplatedTilesSVG} size="24px" />
                   </Button>
                 </Button.Group>
-              ))}
-            </div>
-          )}
+              </React.Fragment>
+            )}
+          </div>
+        )}
+        {this.state.addNewTileOpened && this.state.customTilesOpened && (
+          <div className="add-tile toolbar">
+            {tiles.customTiles.map(tile => (
+              <Button.Group key={tile.title}>
+                <Button
+                  icon
+                  basic
+                  onClick={() =>
+                    this.props.onMutateTile(this.props.tile, {
+                      '@type': tile.title,
+                    })
+                  }
+                >
+                  <Icon name={tile.icon} size="24px" />
+                </Button>
+              </Button.Group>
+            ))}
+          </div>
+        )}
       </div>
     );
   }
