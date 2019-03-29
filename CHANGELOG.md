@@ -17,6 +17,7 @@
 - Fix for tiles having dialog box `ENTER` key captured by global tile onKeyDown
   handler, then creating a tile instead of the intended behavior. @sneridagh
 - Fix small CSS and import issues @sneridagh
+- Fix Invalid Redraft object warning on console @sneridagh
 
 ## 2.0.0 (2019-03-25)
 
