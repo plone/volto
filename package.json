@@ -35,6 +35,7 @@
     "test:ci": "CI=true razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js",
     "i18n": "NODE_ENV=production node src/i18n.js",
+    "cypress:open": "cypress open",
     "dry-release": "release-it --dry-run",
     "release": "release-it"
   },
@@ -188,5 +189,8 @@
     "svgo": "1.0.5",
     "svgo-loader": "2.1.0",
     "tlds": "1.203.1"
+  },
+  "devDependencies": {
+    "cypress": "3.2.0"
   }
 }

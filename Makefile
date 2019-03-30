@@ -25,6 +25,9 @@ start: dist
 start-api-docker:
 	docker-compose -f api/docker-compose.yml up
 
+start-frontend:
+	yarn start
+
 start-backend:
 	docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
 
