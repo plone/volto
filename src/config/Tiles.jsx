@@ -5,21 +5,31 @@ import ViewDescriptionTile from '@plone/volto/components/manage/Tiles/Descriptio
 import ViewTextTile from '@plone/volto/components/manage/Tiles/Text/View';
 import ViewImageTile from '@plone/volto/components/manage/Tiles/Image/View';
 import ViewVideoTile from '@plone/volto/components/manage/Tiles/Video/View';
+import ViewHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImageLeft/View';
 import ViewMapTile from '@plone/volto/components/manage/Tiles/Maps/View';
 import ViewSummaryBoxTile from '@plone/volto/components/manage/Tiles/SummaryBox/View';
+import ViewHTMLTile from '@plone/volto/components/manage/Tiles/HTML/View';
 
 import EditTitleTile from '@plone/volto/components/manage/Tiles/Title/Edit';
 import EditDescriptionTile from '@plone/volto/components/manage/Tiles/Description/Edit';
 import EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
 import EditImageTile from '@plone/volto/components/manage/Tiles/Image/Edit';
 import EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
+import EditHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImageLeft/Edit';
 import EditMapTile from '@plone/volto/components/manage/Tiles/Maps/Edit';
 import EditSummaryBoxTile from '@plone/volto/components/manage/Tiles/SummaryBox/Edit';
+import EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
 
-import globeSVG from '@plone/volto/icons/globe.svg';
 import blankSVG from '@plone/volto/icons/blank.svg';
+import globeSVG from '@plone/volto/icons/globe.svg';
+import codeSVG from '@plone/volto/icons/code.svg';
+import heroSVG from '@plone/volto/icons/hero.svg';
 
 const customTiles = [
+  {
+    title: 'hero',
+    icon: heroSVG,
+  },
   {
     title: 'maps',
     icon: globeSVG,
@@ -27,6 +37,10 @@ const customTiles = [
   {
     title: 'summarybox',
     icon: blankSVG,
+  },
+  {
+    title: 'html',
+    icon: codeSVG,
   },
 ];
 
@@ -63,8 +77,10 @@ const defaultTilesViewMap = {
   text: ViewTextTile,
   image: ViewImageTile,
   video: ViewVideoTile,
+  hero: ViewHeroImageLeftTile,
   maps: ViewMapTile,
   summarybox: ViewSummaryBoxTile,
+  html: ViewHTMLTile,
 };
 
 const defaultTilesEditMap = {
@@ -73,8 +89,10 @@ const defaultTilesEditMap = {
   text: EditTextTile,
   image: EditImageTile,
   video: EditVideoTile,
+  hero: EditHeroImageLeftTile,
   maps: EditMapTile,
   summarybox: EditSummaryBoxTile,
+  html: EditHTMLTile,
 };
 
 export { customTiles, defaultTilesViewMap, defaultTilesEditMap, messagesTiles };

@@ -10,7 +10,6 @@ import { Button, Input, Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 
 import { Icon } from '../../../../components';
-import trashSVG from '../../../../icons/delete.svg';
 import imageLeftSVG from '../../../../icons/image-left.svg';
 import imageRightSVG from '../../../../icons/image-right.svg';
 import imageFitSVG from '../../../../icons/image-fit.svg';
@@ -47,10 +46,14 @@ export default class Edit extends Component {
   static propTypes = {
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     onChangeTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    onFocusPreviousTile: PropTypes.func.isRequired,
+    onFocusNextTile: PropTypes.func.isRequired,
+    handleKeyDown: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
 
@@ -65,9 +68,33 @@ export default class Edit extends Component {
 
     this.onChangeUrl = this.onChangeUrl.bind(this);
     this.onSubmitUrl = this.onSubmitUrl.bind(this);
+    this.onKeyDownVariantMenuForm = this.onKeyDownVariantMenuForm.bind(this);
     this.state = {
       url: '',
     };
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    if (this.props.selected) {
+      this.node.focus();
+    }
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selected) {
+      this.node.focus();
+    }
   }
 
   /**
@@ -108,6 +135,26 @@ export default class Edit extends Component {
   }
 
   /**
+   * Keydown handler on Variant Menu Form
+   * This is required since the ENTER key is already mapped to a onKeyDown
+   * event and needs to be overriden with a child onKeyDown.
+   * @method onKeyDownVariantMenuForm
+   * @param {Object} e Event object
+   * @returns {undefined}
+   */
+  onKeyDownVariantMenuForm(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      e.stopPropagation();
+      this.onSubmitUrl();
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      e.stopPropagation();
+      // TODO: Do something on ESC key
+    }
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -116,6 +163,7 @@ export default class Edit extends Component {
     const { data } = this.props;
     return (
       <div
+        role="presentation"
         onClick={() => this.props.onSelectTile(this.props.tile)}
         className={cx(
           'tile video align',
@@ -125,6 +173,18 @@ export default class Edit extends Component {
           },
           this.props.data.align,
         )}
+        tabIndex={0}
+        onKeyDown={e =>
+          this.props.handleKeyDown(
+            e,
+            this.props.index,
+            this.props.tile,
+            this.node,
+          )
+        }
+        ref={node => {
+          this.node = node;
+        }}
       >
         {this.props.selected &&
           !!this.props.data.url && (
@@ -175,7 +235,7 @@ export default class Edit extends Component {
           !this.props.data.url && (
             <div className="toolbar">
               <Icon name={videoSVG} size="24px" />
-              <form onSubmit={e => this.onSubmitUrl(e)}>
+              <form onKeyDown={this.onKeyDownVariantMenuForm}>
                 <Input
                   onChange={this.onChangeUrl}
                   placeholder={this.props.intl.formatMessage(
@@ -183,16 +243,6 @@ export default class Edit extends Component {
                   )}
                 />
               </form>
-              {/* <Button.Group>
-                <label className="ui button basic icon">
-                  <Icon name={folderSVG} size="24px" />
-                  <input
-                    type="file"
-                    onChange={this.onUploadImage}
-                    style={{ display: 'none' }}
-                  />
-                </label>
-              </Button.Group> */}
             </div>
           )}
         {data.url ? (
@@ -229,16 +279,6 @@ export default class Edit extends Component {
               </center>
             </Message>
           </div>
-        )}
-        {this.props.selected && (
-          <Button
-            icon
-            basic
-            onClick={() => this.props.onDeleteTile(this.props.tile)}
-            className="tile-delete-button"
-          >
-            <Icon name={trashSVG} size="18px" />
-          </Button>
         )}
       </div>
     );

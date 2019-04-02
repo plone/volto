@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
-import MemoryRouter from 'react-router-dom/MemoryRouter';
+import { MemoryRouter } from 'react-router-dom';
 
 import SearchWidget from './SearchWidget';
 

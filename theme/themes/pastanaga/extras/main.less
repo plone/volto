@@ -1,0 +1,139 @@
+/*******************************
+            Theme
+*******************************/
+
+@type: 'extra';
+@element: 'main';
+
+@import (multiple) '../../theme.config';
+
+// Extras (third party libs)
+@import (less) '~hamburgers/dist/hamburgers.css';
+
+// General Styling
+
+body {
+  display: flex;
+}
+
+#main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.documentFirstHeading {
+  position: relative;
+  border-bottom: 2px solid @purpleBackground;
+
+  &::before {
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 30px;
+    border-bottom: 3px solid @pink;
+    content: '';
+  }
+}
+
+.documentDescription {
+  color: #b8c6c8;
+  font-size: 1.125rem;
+}
+
+::-moz-selection {
+  border-width: 20px;
+  border-style: solid;
+  background-color: rgba(31, 189, 238, 0.5);
+  border-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj4KICA8ZyBmaWxsPSIjMUZCRUVGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIG9wYWNpdHk9Ii45NSI+CiAgICA8cGF0aCBkPSJNMTAgNjBDNC40NzcxNTI1IDYwIDAgNTUuNTI0MDYxOCAwIDUwIDMuNTUyNzEzNjhlLTE1IDQ0LjQ3NzE1MjUgNC40NzU5MzgxOCA0MCAxMCA0MEwyMCA0MCAyMCA1MEMyMCA1NS41MjI4NDc1IDE1LjUyNDA2MTggNjAgMTAgNjB6TTQwIDUwQzQwIDU1LjUyMjg0NzUgNDQuNDc1OTM4MiA2MCA1MCA2MEw1MCA2MEM1NS41MjI4NDc1IDYwIDYwIDU1LjUyNDA2MTggNjAgNTBMNjAgNTBDNjAgNDQuNDc3MTUyNSA1NS41MjQwNjE4IDQwIDUwIDQwTDQwIDQwIDQwIDUwIDQwIDUweiIvPgogIDwvZz4KPC9zdmc+Cg==')
+    20 fill repeat;
+}
+
+::selection {
+  border-width: 20px;
+  border-style: solid;
+  background-color: rgba(31, 189, 238, 0.5);
+  border-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj4KICA8ZyBmaWxsPSIjMUZCRUVGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIG9wYWNpdHk9Ii45NSI+CiAgICA8cGF0aCBkPSJNMTAgNjBDNC40NzcxNTI1IDYwIDAgNTUuNTI0MDYxOCAwIDUwIDMuNTUyNzEzNjhlLTE1IDQ0LjQ3NzE1MjUgNC40NzU5MzgxOCA0MCAxMCA0MEwyMCA0MCAyMCA1MEMyMCA1NS41MjI4NDc1IDE1LjUyNDA2MTggNjAgMTAgNjB6TTQwIDUwQzQwIDU1LjUyMjg0NzUgNDQuNDc1OTM4MiA2MCA1MCA2MEw1MCA2MEM1NS41MjI4NDc1IDYwIDYwIDU1LjUyNDA2MTggNjAgNTBMNjAgNTBDNjAgNDQuNDc3MTUyNSA1NS41MjQwNjE4IDQwIDUwIDQwTDQwIDQwIDQwIDUwIDQwIDUweiIvPgogIDwvZz4KPC9zdmc+Cg==')
+    20 fill repeat;
+}
+
+// Override default behavior for forms and segments
+.ui.form,
+.ui.segments,
+.ui.segment {
+  position: static !important;
+}
+
+// Drag and drop
+.drag.handle {
+  cursor: move;
+}
+
+.drag.layer {
+  position: relative;
+  padding: 1rem 2rem 1rem 2rem;
+  margin: -1rem -2rem 0 -2rem;
+}
+
+.drag.layer:hover .drag.edit,
+.drag.layer:hover .drag.toolbar {
+  display: block;
+}
+
+.drag.layer .drag.handle {
+  margin-bottom: 0.5rem;
+}
+
+.drag.toolbar {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  display: none;
+}
+
+.drag.edit {
+  position: absolute;
+  top: 12px;
+  right: 0;
+  display: none;
+}
+
+// Toolbar
+.editbar {
+  position: fixed;
+  z-index: 10;
+  top: 60px;
+  left: 400px;
+}
+
+// Diff view
+.deletion {
+  background-color: #f8cbcb;
+}
+
+.addition {
+  background-color: #a6f3a6;
+}
+
+// Socialmedia sharing
+.SocialMediaShareCount,
+.SocialMediaShareButton {
+  display: inline-block;
+}
+
+// Header
+.tools {
+  margin-right: 1em;
+}
+
+// Comments
+.comments {
+  margin-top: 20px;
+}
+
+@import 'utils';
+@import 'draftjs';
+@import 'tiles';
+@import 'mosaic';
+
+.loadUIOverrides();

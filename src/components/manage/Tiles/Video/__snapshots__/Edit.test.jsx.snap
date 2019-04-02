@@ -4,6 +4,9 @@ exports[`renders an edit image tile component 1`] = `
 <div
   className="tile video align center"
   onClick={[Function]}
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={0}
 >
   <p>
     <div

@@ -1,16 +1,142 @@
 # Change Log
 
-## 1.5.2 (unreleased)
+## 2.1.1 (unreleased)
 
 ### Added
 
 ### Changes
+
+## 2.1.0 (2019-04-02)
+
+### Added
+
+- Added specific `onMutateTile` for solely use of the Text tile when it mutates
+  to another type of tile. This prevents onChangeTile do one thing that it was
+  not designed lifting responsibilities from it. @sneridagh
+- Added `detached` mode for the text tile so it will be able to render outside
+  the Volto editor without all the tile mutation machinery and the keyboard
+  handlers. @sneridagh
+
+### Changes
+
+- Small improvements to the internal tile api @sneridagh
+- Fix for tiles having dialog box `ENTER` key captured by global tile onKeyDown
+  handler, then creating a tile instead of the intended behavior. @sneridagh
+- Fix small CSS and import issues @sneridagh
+- Fix Invalid Redraft object warning on console @sneridagh
+
+## 2.0.0 (2019-03-25)
+
+### Added
+
+- Tiles refactor, move keyboard listeners and Trash icon to Tiles HOC
+  @sneridagh
+- Fix tiles navigation via cursors on all available tiles @sneridagh
+- Fix UX on HTML tile when navigating via cursors @sneridagh
+- Add ability to add new text tile via `Enter` key @sneridagh
+- Add create new text tile at the bottom on adding tiles @sneridagh
+- Improve general UX on tiles creation and focusing on creation @sneridagh
+
+## 1.10.0 (2019-03-25)
+
+### Added
+
+- Fix npm package generation @sneridagh
+
+## 1.9.0 (2019-03-25)
+
+### Added
+
+- Upgraded to React 16.8 (the one with hooks) @sneridagh
+- Upgraded to the recent (at last) released react-redux 7.0beta.0, this release
+  solves the performance issues with the new React context and leave them ready
+  for the upcoming useRedux hook. This release supports the latest React 16.8.
+  @sneridagh
+- Upgraded to the latest Router and react-router-config and other required
+  upgrades. @sneridagh
+- Upgraded to latest redux-connect @sneridagh
+- Upgraded to latest razzle @sneridagh
+
+## 1.8.3 (2019-03-21)
+
+### Changes
+
+- Several CSS fixes @sneridagh
+- Add several icons @sneridagh
+
+## 1.8.2 (2019-03-21)
+
+### Changes
+
+- Improve README @svx @fredvd
+- Pretty Pastanaga UI .overrides stylesheets @sneridagh
+
+## 1.8.1 (2019-03-19)
+
+### Changes
+
+- Fix hero tile View styling, add definitive icon @sneridagh
+- Fix the trash icon on the tiles that was displaced by other change @sneridagh
+
+## 1.8.0 (2019-03-15)
+
+### Added
+
+- Hero Tile @nileshgulia1 @sneridagh
+
+### Changes
+
+## 1.7.0 (2019-03-03)
+
+### Added
+
+- Add image-zooming functionality @nileshgulia1
+
+### Changes
+
+- Fix image float/left right on image tile @timo
+
+## 1.6.1 (2019-03-01)
+
+### Changes
+
+- Fix a regression on the add tile button alignment @sneridagh
+
+## 1.6.0 (2019-03-01)
+
+### Added
+
+- Set image width in Volto editor to 50% for images that float left/right @timo
+- Ability to navigate through the existing tiles with the cursors. @sneridagh
+- HTML Tile for Volto Editor with preview and code prettifier
+   @ajayns @nileshgulia1 @sneridagh
+- Add error log in the SSR console @sneridagh
+- Add SSR helper to get resources (images/files) from the server using the API
+  headers. This fixes the missing images on non published resources while editing @sneridagh
+- Fix not valid `<div>` tag nested in a `<p>` tag error on tiles and wysiwyg
+  field @sneridagh
+
+### Changes
+
+- Clean .variables files from Pastanaga theme since they are already applied by
+  the theming engine from the default theme. @sneridagh
+- Fix edit forms with richtext fields coming from SSR @sneridagh
+
+## 1.5.2 (2019-02-20)
+
+### Changes
+
+- Fix external images on Image Tile render @sneridagh
+- Several fixes reagarding correctness of markup @sneridagh
+- Issue with dangerouslySetInnerHTML RichText fields on first SSR load
+  apparently fixed (due to the above fix) :) @sneridagh
 
 ## 1.5.1 (2019-02-19)
 
 ### Changes
 
 - Fix build for projects created with `create-volto-app` @sneridagh
+- Fix link view @nileshgulia1
 
 ## 1.5.0 (2019-02-19)
 
@@ -42,6 +168,7 @@
   @sneridagh
 - Add supported browsers in README @sneridagh
 - Default tile position to center for all the existing tiles @sneridagh
+
 
 ## 1.4.0 (2019-02-15)
 

@@ -169,11 +169,15 @@ class Form extends Component {
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeTile = this.onChangeTile.bind(this);
+    this.onMutateTile = this.onMutateTile.bind(this);
     this.onSelectTile = this.onSelectTile.bind(this);
     this.onDeleteTile = this.onDeleteTile.bind(this);
     this.onAddTile = this.onAddTile.bind(this);
     this.onMoveTile = this.onMoveTile.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onFocusPreviousTile = this.onFocusPreviousTile.bind(this);
+    this.onFocusNextTile = this.onFocusNextTile.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   /**
@@ -204,9 +208,44 @@ class Form extends Component {
     this.setState({
       formData: {
         ...this.state.formData,
-        [getTilesFieldname(this.state.formData)]: {
+        [tilesFieldname]: {
           ...this.state.formData[tilesFieldname],
           [id]: value || null,
+        },
+      },
+    });
+  }
+
+  /**
+   * Change tile handler
+   * @method onMutateTile
+   * @param {string} id Id of the tile
+   * @param {*} value Value of the field
+   * @returns {undefined}
+   */
+  onMutateTile(id, value) {
+    const idTrailingTile = uuid();
+    const tilesFieldname = getTilesFieldname(this.state.formData);
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+    const index =
+      this.state.formData[tilesLayoutFieldname].items.indexOf(id) + 1;
+
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        [tilesFieldname]: {
+          ...this.state.formData[tilesFieldname],
+          [id]: value || null,
+          [idTrailingTile]: {
+            '@type': 'text',
+          },
+        },
+        [tilesLayoutFieldname]: {
+          items: [
+            ...this.state.formData[tilesLayoutFieldname].items.slice(0, index),
+            idTrailingTile,
+            ...this.state.formData[tilesLayoutFieldname].items.slice(index),
+          ],
         },
       },
     });
@@ -260,6 +299,7 @@ class Form extends Component {
    */
   onAddTile(type, index) {
     const id = uuid();
+    const idTrailingTile = uuid();
     const tilesFieldname = getTilesFieldname(this.state.formData);
     const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
     const totalItems = this.state.formData[tilesLayoutFieldname].items.length;
@@ -272,6 +312,7 @@ class Form extends Component {
           items: [
             ...this.state.formData[tilesLayoutFieldname].items.slice(0, insert),
             id,
+            ...(type !== 'text' ? [idTrailingTile] : []),
             ...this.state.formData[tilesLayoutFieldname].items.slice(insert),
           ],
         },
@@ -280,6 +321,11 @@ class Form extends Component {
           [id]: {
             '@type': type,
           },
+          ...(type !== 'text' && {
+            [idTrailingTile]: {
+              '@type': 'text',
+            },
+          }),
         },
       },
       selected: id,
@@ -366,6 +412,95 @@ class Form extends Component {
   }
 
   /**
+   *
+   * @method onFocusPreviousTile
+   * @param {string} currentTile The id of the current tile
+   * @param {node} tileNode The id of the current tile
+   * @returns {undefined}
+   */
+  onFocusPreviousTile(currentTile, tileNode) {
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+    const currentIndex = this.state.formData[
+      tilesLayoutFieldname
+    ].items.indexOf(currentTile);
+
+    if (currentIndex === 0) {
+      // We are already at the top tile don't do anything
+      return;
+    }
+    const newindex = currentIndex - 1;
+    tileNode.blur();
+
+    this.onSelectTile(
+      this.state.formData[tilesLayoutFieldname].items[newindex],
+    );
+  }
+
+  /**
+   *
+   * @method onFocusNextTile
+   * @param {string} currentTile The id of the current tile
+   * @param {node} tileNode The id of the current tile
+   * @returns {undefined}
+   */
+  onFocusNextTile(currentTile, tileNode) {
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+    const currentIndex = this.state.formData[
+      tilesLayoutFieldname
+    ].items.indexOf(currentTile);
+
+    if (
+      currentIndex ===
+      this.state.formData[tilesLayoutFieldname].items.length - 1
+    ) {
+      // We are already at the bottom tile don't do anything
+      return;
+    }
+
+    const newindex = currentIndex + 1;
+    tileNode.blur();
+
+    this.onSelectTile(
+      this.state.formData[tilesLayoutFieldname].items[newindex],
+    );
+  }
+
+  /**
+   * handleKeyDown, sports a way to disable the listeners via an options named
+   * parameter
+   * @method handleKeyDown
+   * @param {object} e Event
+   * @param {number} index Tile index
+   * @param {string} tile Tile type
+   * @param {node} node The tile node
+   * @returns {undefined}
+   */
+  handleKeyDown(
+    e,
+    index,
+    tile,
+    node,
+    {
+      disableEnter = false,
+      disableArrowUp = false,
+      disableArrowDown = false,
+    } = {},
+  ) {
+    if (e.key === 'ArrowUp' && !disableArrowUp) {
+      this.onFocusPreviousTile(tile, node);
+      e.preventDefault();
+    }
+    if (e.key === 'ArrowDown' && !disableArrowDown) {
+      this.onFocusNextTile(tile, node);
+      e.preventDefault();
+    }
+    if (e.key === 'Enter' && !disableEnter) {
+      this.onAddTile('text', index + 1);
+      e.preventDefault();
+    }
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -385,12 +520,16 @@ class Form extends Component {
             index={index}
             type={tilesDict[tile]['@type']}
             key={tile}
+            handleKeyDown={this.handleKeyDown}
             onAddTile={this.onAddTile}
             onChangeTile={this.onChangeTile}
+            onMutateTile={this.onMutateTile}
             onChangeField={this.onChangeField}
             onDeleteTile={this.onDeleteTile}
             onSelectTile={this.onSelectTile}
             onMoveTile={this.onMoveTile}
+            onFocusPreviousTile={this.onFocusPreviousTile}
+            onFocusNextTile={this.onFocusNextTile}
             properties={formData}
             data={tilesDict[tile]}
             pathname={this.props.pathname}
@@ -419,7 +558,7 @@ class Form extends Component {
                   menuItem: item.title,
                   render: () => [
                     this.props.title && (
-                      <Segment secondary attached>
+                      <Segment secondary attached key={this.props.title}>
                         {this.props.title}
                       </Segment>
                     ),
