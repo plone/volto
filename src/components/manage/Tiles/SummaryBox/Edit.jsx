@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Card, Dropdown, Image, Ref } from 'semantic-ui-react';
+import { Item, Dropdown, Ref } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { map, sortBy, get } from 'lodash';
 
@@ -235,13 +235,15 @@ export default class Edit extends Component {
         {/* Show selected item */}
         {contentData &&
           Object.keys(contentData).length > 0 && (
-            <Card>
-              {image && <Image src={image} alt={contentData.title} />}
-              <Card.Content>
-                <Card.Header>{contentData.title}</Card.Header>
-                <Card.Description>{contentData.description}</Card.Description>
-              </Card.Content>
-            </Card>
+            <Item.Group>
+              <Item>
+                {image && <Item.Image src={image} alt={contentData.title} />}
+                <Item.Content>
+                  <Item.Header>{contentData.title}</Item.Header>
+                  <Item.Description>{contentData.description}</Item.Description>
+                </Item.Content>
+              </Item>
+            </Item.Group>
           )}
       </div>
     );

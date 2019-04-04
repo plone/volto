@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { MemoryRouter } from 'react-router-dom';
 
 import { settings } from '~/config';
 
@@ -31,7 +32,11 @@ const props = {
 };
 
 test('renders a summary box view component', () => {
-  const component = renderer.create(<View {...props} />);
+  const component = renderer.create(
+    <MemoryRouter>
+      <View {...props} />
+    </MemoryRouter>,
+  );
   const json = component.toJSON();
   expect(json).toMatchSnapshot();
 });

@@ -4,6 +4,8 @@
 
 ### Added
 
+- Added Summary Box tile (Proxy) @pnicolli
+
 ### Changes
 
 ## 2.1.0 (2019-04-02)
@@ -237,7 +239,6 @@
 
 - Add .gitattributes file to avoid most Changelog merge conflicts @pnicolli
 - Buildout for Python 3 @pbauer
-- Add Summary Box tile (Proxy) @pnicolli
 - Websockets support @robgietema
 - Subrequests to search and get content actions @robgietema
 - Add logos @sneridagh @albertcasado

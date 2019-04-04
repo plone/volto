@@ -8,7 +8,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { get } from 'lodash';
-import { Card, Image } from 'semantic-ui-react';
+import { Image, Item } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import { getContent, resetContent } from '../../../../actions';
 
@@ -64,6 +65,7 @@ export class View extends Component {
    */
   render() {
     const { contentSubrequests, tile } = this.props;
+    const selectedItem = get(this.props, 'data.selectedItem', '');
 
     // Using null as default for consistency with content reducer
     // see reducers/content/content.js, look for action GET_CONTENT_PENDING
@@ -72,13 +74,21 @@ export class View extends Component {
       const image = get(data, 'image.scales.mini.download', undefined);
 
       return (
-        <Card>
-          {image && <Image src={image} alt={data.title} />}
-          <Card.Content>
-            <Card.Header>{data.title}</Card.Header>
-            <Card.Description>{data.description}</Card.Description>
-          </Card.Content>
-        </Card>
+        <Item.Group className="summary-box-item">
+          <Item>
+            {image && (
+              <Link to={selectedItem} className="ui small image">
+                <Image src={image} alt={data.title} />
+              </Link>
+            )}
+            <Item.Content>
+              <Item.Header>
+                <Link to={selectedItem}>{data.title}</Link>
+              </Item.Header>
+              <Item.Description>{data.description}</Item.Description>
+            </Item.Content>
+          </Item>
+        </Item.Group>
       );
     }
     return null;
