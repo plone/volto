@@ -6,6 +6,12 @@
 
 ### Changes
 
+- Improved search action, now it supports passing directly the arrayed values
+  and it converts it to Plone's query syntax @sneridagh
+
+- Added depth argument to the navigation action, to match the @navigation
+  endpoint feature @sneridagh
+
 ## 2.1.0 (2019-04-02)
 
 ### Added
