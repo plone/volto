@@ -1,13 +1,13 @@
 /**
- * Edit text tile.
- * @module components/manage/Tiles/Title/Edit
+ * Edit summary box tile.
+ * @module components/manage/Tiles/SummaryBox/Edit
  */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Button, Card, Dropdown, Image, Ref } from 'semantic-ui-react';
+import { Card, Dropdown, Image, Ref } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { map, sortBy, get } from 'lodash';
 
@@ -17,9 +17,6 @@ import {
   resetContent,
   resetSearchContent,
 } from '../../../../actions';
-
-import { Icon } from '../../../../components';
-import trashSVG from '../../../../icons/delete.svg';
 
 const messages = defineMessages({
   no_results_found: {
@@ -185,7 +182,6 @@ export default class Edit extends Component {
     const {
       contentSubrequests,
       intl,
-      onDeleteTile,
       onSelectTile,
       searchSubrequests,
       selected,
@@ -247,17 +243,6 @@ export default class Edit extends Component {
               </Card.Content>
             </Card>
           )}
-        {/* "Delete tile" button */}
-        {selected && (
-          <Button
-            icon
-            basic
-            onClick={() => onDeleteTile(tile)}
-            className="tile-delete-button"
-          >
-            <Icon name={trashSVG} size="18px" />
-          </Button>
-        )}
       </div>
     );
   }
