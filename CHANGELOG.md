@@ -1,12 +1,22 @@
 # Change Log
 
-## 2.1.1 (unreleased)
+## 2.1.2 (unreleased)
 
 ### Added
 
 - Added Summary Box tile (Proxy) @pnicolli
 
 ### Changes
+
+## 2.1.1 (2019-04-04)
+
+### Changes
+
+- Improved search action, now it supports passing directly the arrayed values
+  and it converts it to Plone's query syntax @sneridagh
+
+- Added depth argument to the navigation action, to match the @navigation
+  endpoint feature @sneridagh
 
 ## 2.1.0 (2019-04-02)
 

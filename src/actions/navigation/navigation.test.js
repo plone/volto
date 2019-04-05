@@ -11,5 +11,17 @@ describe('Navigation action', () => {
       expect(action.request.op).toEqual('get');
       expect(action.request.path).toEqual(`${url}/@navigation`);
     });
+
+    it('should create an action to get the navigation with depth', () => {
+      const url = 'http://localhost';
+      const depth = 3;
+      const action = getNavigation(url, depth);
+
+      expect(action.type).toEqual(GET_NAVIGATION);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(
+        `${url}/@navigation?expand.navigation.depth=${depth}`,
+      );
+    });
   });
 });
