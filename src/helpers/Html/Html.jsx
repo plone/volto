@@ -42,6 +42,7 @@ export const Html = ({ assets, markup, store }) => {
 
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         {assets.client.css ? (
           <link rel="stylesheet" href={assets.client.css} />
         ) : null}
