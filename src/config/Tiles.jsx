@@ -20,10 +20,10 @@ import EditMapTile from '@plone/volto/components/manage/Tiles/Maps/Edit';
 import EditSummaryBoxTile from '@plone/volto/components/manage/Tiles/SummaryBox/Edit';
 import EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
 
-import blankSVG from '@plone/volto/icons/blank.svg';
 import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import heroSVG from '@plone/volto/icons/hero.svg';
+import summarySVG from '@plone/volto/icons/summary.svg';
 
 const customTiles = [
   {
@@ -36,7 +36,7 @@ const customTiles = [
   },
   {
     title: 'summarybox',
-    icon: blankSVG,
+    icon: summarySVG,
   },
   {
     title: 'html',

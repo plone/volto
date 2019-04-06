@@ -10,6 +10,7 @@ import { bindActionCreators } from 'redux';
 import { Item, Dropdown, Ref } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { map, sortBy, get } from 'lodash';
+import cx from 'classnames';
 
 import {
   getContent,
@@ -60,11 +61,13 @@ export default class Edit extends Component {
   static propTypes = {
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     intl: intlShape.isRequired,
     onChangeTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    handleKeyDown: PropTypes.func.isRequired,
     getContent: PropTypes.func.isRequired,
     searchContent: PropTypes.func.isRequired,
     resetContent: PropTypes.func.isRequired,
@@ -199,10 +202,22 @@ export default class Edit extends Component {
 
     return (
       <div
+        role="presentation"
         onClick={() => onSelectTile(tile)}
-        className={`tile summary-box${selected ? ' selected' : ''}`}
+        className={cx('tile summary-box', {
+          selected,
+        })}
+        tabIndex={0}
+        onKeyDown={e =>
+          this.props.handleKeyDown(
+            e,
+            this.props.index,
+            this.props.tile,
+            this.node,
+          )
+        }
         ref={node => {
-          this.ref = node;
+          this.node = node;
         }}
       >
         {/* Widget that searches for a reference */}
@@ -222,6 +237,7 @@ export default class Edit extends Component {
                 search
                 selection
                 selectOnBlur={false}
+                selectOnNavigation={false}
                 fluid
                 noResultsMessage={intl.formatMessage(messages.no_results_found)}
                 onChange={(event, data) => this.onSelectItem(data.value)}
