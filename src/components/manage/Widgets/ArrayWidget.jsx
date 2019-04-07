@@ -10,6 +10,7 @@ import { concat, debounce, map, uniqBy } from 'lodash';
 import { connect } from 'react-redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { bindActionCreators } from 'redux';
+import AsyncPaginate from 'react-select-async-paginate';
 
 import { getVocabulary } from '../../../actions';
 
@@ -23,12 +24,13 @@ const messages = defineMessages({
 @injectIntl
 @connect(
   (state, props) => {
-    const vocabBaseUrl =
-      props.widgetOptions.vocabulary || props.items.vocabulary;
+    const vocabBaseUrl = props.vocabulary || props.items.vocabulary;
     const vocabState = state.vocabularies[vocabBaseUrl];
+    // debugger;
     if (vocabState) {
       return {
         choices: vocabState.items,
+        itemsTotal: vocabState.itemsTotal,
         loading: Boolean(vocabState.loading),
       };
     }
@@ -64,6 +66,7 @@ export default class ArrayWidget extends Component {
     }),
     value: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func.isRequired,
+    itemsTotal: PropTypes.number,
     intl: intlShape.isRequired,
   };
 
@@ -98,12 +101,17 @@ export default class ArrayWidget extends Component {
     this.onAddItem = this.onAddItem.bind(this);
     this.getOptions = this.getOptions.bind(this);
     this.search = this.search.bind(this);
+    this.loadOptions = this.loadOptions.bind(this);
     this.vocabBaseUrl =
       props.widgetOptions.vocabulary || props.items.vocabulary;
-    props.getVocabulary(this.vocabBaseUrl);
     this.state = {
       choices: [],
+      search: '',
     };
+  }
+
+  componentDidMount() {
+    this.props.getVocabulary(this.vocabBaseUrl);
   }
 
   /**
@@ -157,6 +165,30 @@ export default class ArrayWidget extends Component {
   }
 
   /**
+   * Initiate search with new query
+   * @method loadOptions
+   * @param {string} search Search query.
+   * @param {string} previousOptions The previous options rendered.
+   * @param {string} additional Additional arguments to pass to the next loadOptions.
+   * @returns {undefined}
+   */
+  loadOptions(search, previousOptions, additional) {
+    const offset = this.state.search !== search ? 0 : additional.offset;
+    this.props.getVocabulary(this.vocabBaseUrl, search, offset);
+    this.setState({ search });
+    return {
+      options: this.props.choices,
+      hasMore: this.props.itemsTotal > 25,
+      additional: {
+        offset: offset === additional.offset ? offset + 25 : offset,
+      },
+    };
+  }
+
+  setValue() {
+    debugger;
+  }
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -187,7 +219,17 @@ export default class ArrayWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              <Dropdown
+              <AsyncPaginate
+                // value={value || []}
+                options={this.props.choices || []}
+                loadOptions={this.loadOptions}
+                onChange={(event, data) => onChange(id, data.value)}
+                additional={{
+                  offset: 25,
+                }}
+              />
+
+              {/* <Dropdown
                 options={this.getOptions()}
                 loading={loading}
                 placeholder={title}
@@ -206,7 +248,7 @@ export default class ArrayWidget extends Component {
                   (event, data) => this.search(data.searchQuery),
                   200,
                 )}
-              />
+              /> */}
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
                   {message}

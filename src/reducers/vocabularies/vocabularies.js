@@ -16,33 +16,37 @@ const initialState = {};
  */
 export default function vocabularies(state = initialState, action = {}) {
   const vocabState = state[action.vocabulary] || {};
-  let items;
   switch (action.type) {
     case `${GET_VOCABULARY}_PENDING`:
       return {
         ...state,
         [action.vocabulary]: {
+          // We preserve here the previous items array to prevent the component
+          // to rerender due to prop changes while the PENDING state is active,
+          // this little trick allow us to use how react-select do things
+          // internally. This has a very low consequences since in the SUCCESS
+          // state the items are overwritten anyways.
+          ...vocabState,
           error: null,
           loaded: vocabState.loaded || false,
           loading: !!((vocabState.loading || 0) + 1),
-          items: [],
         },
       };
     case `${GET_VOCABULARY}_SUCCESS`:
-      items = vocabState.items ? [...vocabState.items] : [];
-      items.splice(
-        action.start,
-        action.result.items.length,
-        ...action.result.items,
-      );
       return {
         ...state,
         [action.vocabulary]: {
           error: null,
           loaded: true,
           loading: !!(vocabState.loading - 1),
-          items,
+          items: [
+            ...action.result.items.map(item => ({
+              label: item.title,
+              value: item.token,
+            })),
+          ],
           batching: action.result.batching,
+          itemsTotal: action.result.items_total,
         },
       };
     case `${GET_VOCABULARY}_FAIL`:

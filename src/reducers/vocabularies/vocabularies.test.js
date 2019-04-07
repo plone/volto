@@ -17,7 +17,6 @@ describe('Vocabularies reducer', () => {
         error: null,
         loaded: false,
         loading: true,
-        items: [],
       },
     });
   });
@@ -44,9 +43,8 @@ describe('Vocabularies reducer', () => {
         loading: false,
         items: [
           {
-            '@id': '/tag',
-            title: 'Tag',
-            token: 'Tag',
+            label: 'Tag',
+            value: 'Tag',
           },
         ],
       },
