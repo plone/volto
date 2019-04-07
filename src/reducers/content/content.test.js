@@ -1,11 +1,12 @@
+import { settings } from '~/config';
 import content from './content';
 import {
   CREATE_CONTENT,
   DELETE_CONTENT,
-  UPDATE_CONTENT,
   GET_CONTENT,
+  RESET_CONTENT,
+  UPDATE_CONTENT,
 } from '../../constants/ActionTypes';
-import config from '../../config';
 
 describe('Content reducer', () => {
   it('should return the initial state', () => {
@@ -36,6 +37,7 @@ describe('Content reducer', () => {
         error: null,
       },
       data: null,
+      subrequests: {},
     });
   });
 
@@ -60,7 +62,7 @@ describe('Content reducer', () => {
         result: {
           items: [
             {
-              '@id': `${config.apiPath}/home-page`,
+              '@id': `${settings.apiPath}/home-page`,
             },
           ],
         },
@@ -74,7 +76,7 @@ describe('Content reducer', () => {
       data: {
         items: [
           {
-            '@id': `${config.apiPath}/home-page`,
+            '@id': `${settings.apiPath}/home-page`,
             url: '/home-page',
           },
         ],
@@ -206,7 +208,7 @@ describe('Content reducer', () => {
         result: {
           items: [
             {
-              '@id': `${config.apiPath}/home-page`,
+              '@id': `${settings.apiPath}/home-page`,
             },
           ],
         },
@@ -220,7 +222,7 @@ describe('Content reducer', () => {
       data: {
         items: [
           {
-            '@id': `${config.apiPath}/home-page`,
+            '@id': `${settings.apiPath}/home-page`,
             url: '/home-page',
           },
         ],
@@ -241,6 +243,130 @@ describe('Content reducer', () => {
         error: 'failed',
       },
       data: null,
+    });
+  });
+
+  it('should handle RESET_CONTENT', () => {
+    expect(
+      content(
+        {
+          data: ['item 1'],
+        },
+        {
+          type: RESET_CONTENT,
+        },
+      ),
+    ).toMatchObject({
+      data: null,
+    });
+  });
+
+  it('should handle subrequest GET_CONTENT_PENDING', () => {
+    expect(
+      content(undefined, {
+        type: `${GET_CONTENT}_PENDING`,
+        subrequest: 'my-subrequest',
+      }),
+    ).toMatchObject({
+      subrequests: {
+        'my-subrequest': {
+          loaded: false,
+          loading: true,
+          error: null,
+          data: null,
+        },
+      },
+    });
+  });
+
+  it('should handle subrequest GET_CONTENT_SUCCESS', () => {
+    expect(
+      content(
+        {
+          subrequests: {
+            'my-subrequest': {
+              loaded: false,
+              loading: true,
+              error: null,
+              data: null,
+            },
+          },
+        },
+        {
+          type: `${GET_CONTENT}_SUCCESS`,
+          subrequest: 'my-subrequest',
+          result: {
+            items: [
+              {
+                '@id': `${settings.apiPath}/home-page`,
+              },
+            ],
+          },
+        },
+      ),
+    ).toMatchObject({
+      subrequests: {
+        'my-subrequest': {
+          loaded: true,
+          loading: false,
+          error: null,
+          data: {
+            items: [
+              {
+                '@id': `${settings.apiPath}/home-page`,
+                url: '/home-page',
+              },
+            ],
+          },
+        },
+      },
+    });
+  });
+
+  it('should handle subrequest GET_CONTENT_FAIL', () => {
+    expect(
+      content(
+        {
+          subrequests: {
+            'my-subrequest': {
+              loaded: false,
+              loading: true,
+              error: null,
+              data: null,
+            },
+          },
+        },
+        {
+          type: `${GET_CONTENT}_FAIL`,
+          subrequest: 'my-subrequest',
+          error: 'failed',
+        },
+      ),
+    ).toMatchObject({
+      subrequests: {
+        'my-subrequest': {
+          loaded: false,
+          loading: false,
+          error: 'failed',
+          data: null,
+        },
+      },
+    });
+  });
+
+  it('should handle subrequest RESET_CONTENT', () => {
+    expect(
+      content(
+        {
+          subrequests: { 'my-subrequest': 'some-value' },
+        },
+        {
+          type: RESET_CONTENT,
+          subrequest: 'my-subrequest',
+        },
+      ),
+    ).toMatchObject({
+      subrequests: {},
     });
   });
 });

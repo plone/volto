@@ -12,8 +12,15 @@ import { GET_TYPES } from '../../constants/ActionTypes';
  * @returns {Object} Get types action.
  */
 export function getTypes(url) {
-  return {
-    type: GET_TYPES,
-    promise: api => api.get(`${url}/@types`),
+  return (dispatch, getState) => {
+    if (getState().userSession.token) {
+      dispatch({
+        type: GET_TYPES,
+        request: {
+          op: 'get',
+          path: `${url}/@types`,
+        },
+      });
+    }
   };
 }

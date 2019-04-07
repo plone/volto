@@ -1,20 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Field renders a array field 1`] = `
-<div
-  className="ArrayWidget"
-/>
-`;
-
-exports[`Field renders a boolean field 1`] = `
+exports[`Field renders a \`boolean\` type field 1`] = `
 <div
   className="CheckboxWidget"
 />
 `;
 
-exports[`Field renders a datetime field 1`] = `
+exports[`Field renders a \`datetime\` named field 1`] = `
 <div
   className="DatetimeWidget"
+/>
+`;
+
+exports[`Field renders a \`password\` named field 1`] = `
+<div
+  className="PasswordWidget"
+/>
+`;
+
+exports[`Field renders a \`richtext\` named field 1`] = `
+<div
+  className="WysiwygWidget"
+/>
+`;
+
+exports[`Field renders a \`text\` named field 1`] = `
+<div
+  className="TextWidget"
+/>
+`;
+
+exports[`Field renders a \`textarea\` named field 1`] = `
+<div
+  className="TextareaWidget"
 />
 `;
 
@@ -24,32 +42,108 @@ exports[`Field renders a fallback field 1`] = `
 />
 `;
 
-exports[`Field renders a password field 1`] = `
-<div
-  className="PasswordWidget"
-/>
+exports[`Field renders a field with a specific id 1`] = `
+<div>
+  <div
+    className="ui raised segments"
+  >
+    <div
+      className="ui pointing secondary attached tabular menu"
+    >
+      <div
+        className="item active"
+        onClick={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <i
+          aria-hidden="true"
+          className="grey bars icon drag handle"
+        />
+        <a
+          onClick={[Function]}
+        >
+          <i
+            aria-hidden="true"
+            className="blue write square large icon"
+          />
+        </a>
+        <a
+          onClick={[Function]}
+        >
+          <i
+            aria-hidden="true"
+            className="red close large icon"
+          />
+        </a>
+      </div>
+      <a
+        className="item"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden="true"
+          className="plus large icon"
+        />
+      </a>
+    </div>
+    <div
+      className="inline field"
+    >
+      <div
+        className="ui grid"
+      >
+        <div
+          className="stretched row"
+        >
+          <div
+            className="twelve wide column"
+          >
+            <div
+              className="wrapper"
+            >
+              <label>
+                Add new field
+              </label>
+            </div>
+            <div
+              className="toolbar"
+            >
+              <a
+                className="item"
+                onClick={[Function]}
+              >
+                <i
+                  aria-hidden="true"
+                  className="blue plus large icon"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
-exports[`Field renders a richtext field 1`] = `
-<div
-  className="WysiwygWidget"
-/>
-`;
-
-exports[`Field renders a select field 1`] = `
+exports[`Field renders a select widget for a choices-based field 1`] = `
 <div
   className="SelectWidget"
 />
 `;
 
-exports[`Field renders a text field 1`] = `
+exports[`Field renders a select widget for a vocabulary-based field 1`] = `
 <div
-  className="TextWidget"
+  className="ArrayWidget"
 />
 `;
 
-exports[`Field renders a textarea field 1`] = `
+exports[`Field renders an \`array\` type field 1`] = `
 <div
-  className="TextareaWidget"
+  className="ArrayWidget"
 />
 `;

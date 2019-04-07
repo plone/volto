@@ -34,6 +34,6 @@ ENV PYTHONPATH=/plone/src
 ENV Z3C_AUTOINCLUDE_DEPENDENCIES_DISABLED=1
 ENV ZSERVER_HOST=0.0.0.0
 ENV CONFIGURE_PACKAGES=plone.app.versioningbehavior,plone.app.contenttypes,plone.restapi,config_module
-ENV APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default
+ENV APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:tiles
 
 ENTRYPOINT ["/plone/bin/robot-server", "plone.app.robotframework.testing.PLONE_ROBOT_TESTING"]

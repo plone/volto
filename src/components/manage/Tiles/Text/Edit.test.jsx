@@ -22,9 +22,14 @@ test('renders an edit text tile component', () => {
         data={{ text: '<p>body text</p>' }}
         selected={false}
         tile="1234"
+        onAddTile={() => {}}
         onChangeTile={() => {}}
         onSelectTile={() => {}}
         onDeleteTile={() => {}}
+        onFocusPreviousTile={() => {}}
+        onFocusNextTile={() => {}}
+        handleKeyDown={() => {}}
+        index={1}
       />
     </Provider>,
   );

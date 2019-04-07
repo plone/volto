@@ -17,7 +17,7 @@ import {
   Grid,
   Table,
 } from 'semantic-ui-react';
-import { browserHistory, Link } from 'react-router';
+import { Router, Link, withRouter } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import moment from 'moment';
 import {
@@ -26,6 +26,7 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
+import qs from 'query-string';
 
 import { getDiff, getSchema, getHistory } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
@@ -49,9 +50,9 @@ const messages = defineMessages({
     history: state.history.entries,
     schema: state.schema.schema,
     pathname: props.location.pathname,
-    one: props.location.query.one,
-    two: props.location.query.two,
-    view: props.location.query.view || 'split',
+    one: qs.parse(props.location.search).one,
+    two: qs.parse(props.location.search).two,
+    view: qs.parse(props.location.search).view || 'split',
     title: state.content.data.title,
     type: state.content.data['@type'],
   }),
@@ -62,7 +63,7 @@ const messages = defineMessages({
  * @class DiffComponent
  * @extends Component
  */
-export default class DiffComponent extends Component {
+class DiffComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -159,7 +160,7 @@ export default class DiffComponent extends Component {
    * @returns {undefined}
    */
   onSelectView(event, { value }) {
-    browserHistory.push(
+    this.props.history.push(
       `${this.props.pathname}?one=${this.props.one}&two=${
         this.props.two
       }&view=${value}`,
@@ -174,7 +175,7 @@ export default class DiffComponent extends Component {
    * @returns {undefined}
    */
   onChangeOne(event, { value }) {
-    browserHistory.push(
+    this.props.history.push(
       `${this.props.pathname}?one=${value}&two=${this.props.two}&view=${
         this.props.view
       }`,
@@ -189,7 +190,7 @@ export default class DiffComponent extends Component {
    * @returns {undefined}
    */
   onChangeTwo(event, { value }) {
-    browserHistory.push(
+    this.props.history.push(
       `${this.props.pathname}?one=${this.props.one}&two=${value}&view=${
         this.props.view
       }`,
@@ -260,7 +261,7 @@ export default class DiffComponent extends Component {
           <Table basic="very">
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell width={8}>
+                <Table.HeaderCell width={6}>
                   <FormattedMessage id="Base" defaultMessage="Base" />
                   <Dropdown
                     onChange={this.onChangeOne}
@@ -270,7 +271,7 @@ export default class DiffComponent extends Component {
                     options={versions}
                   />
                 </Table.HeaderCell>
-                <Table.HeaderCell width={8}>
+                <Table.HeaderCell width={6}>
                   <FormattedMessage id="Compare" defaultMessage="Compare" />
                   <Dropdown
                     onChange={this.onChangeTwo}
@@ -326,3 +327,5 @@ export default class DiffComponent extends Component {
     );
   }
 }
+
+export default withRouter(DiffComponent);

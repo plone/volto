@@ -22,21 +22,21 @@ jest.mock('react-helmet', () => ({
   }),
 }));
 
+jest.mock('../BodyClass/BodyClass', () => ({
+  rewind: () => ['class1', 'class2'],
+}));
+
 describe('Html', () => {
   it('renders a html component', () => {
     const component = renderer.create(
       <Html
         assets={{
-          styles: {
-            main: 'style.css',
-          },
-          javascript: {
-            vendor: 'vendor.js',
-            manifest: 'manifest.js',
-            main: 'main.js',
+          client: {
+            css: 'style.css',
+            js: 'bundle.js',
           },
         }}
-        component={<div />}
+        markup="<div />"
         store={{
           getState: () => {},
         }}

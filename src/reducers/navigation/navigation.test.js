@@ -1,6 +1,6 @@
+import { settings } from '~/config';
 import navigation from './navigation';
 import { GET_NAVIGATION } from '../../constants/ActionTypes';
-import config from '../../config';
 
 describe('Navigation reducer', () => {
   it('should return the initial state', () => {
@@ -33,7 +33,7 @@ describe('Navigation reducer', () => {
           items: [
             {
               title: 'Welcome to Plone!',
-              '@id': `${config.apiPath}/front-page`,
+              '@id': `${settings.apiPath}/front-page`,
             },
           ],
         },
@@ -44,6 +44,52 @@ describe('Navigation reducer', () => {
         {
           title: 'Welcome to Plone!',
           url: '/front-page',
+        },
+      ],
+      loaded: true,
+      loading: false,
+    });
+  });
+
+  it('should handle GET_NAVIGATION_SUCCESS with navigation depth', () => {
+    expect(
+      navigation(undefined, {
+        type: `${GET_NAVIGATION}_SUCCESS`,
+        result: {
+          items: [
+            {
+              title: 'Welcome to Plone!',
+              '@id': `${settings.apiPath}/front-page`,
+            },
+            {
+              title: 'Folder1',
+              '@id': `${settings.apiPath}/folder1`,
+              items: [
+                {
+                  title: 'FolderInFolder1',
+                  '@id': `${settings.apiPath}/folderinfolder1`,
+                },
+              ],
+            },
+          ],
+        },
+      }),
+    ).toEqual({
+      error: null,
+      items: [
+        {
+          title: 'Welcome to Plone!',
+          url: '/front-page',
+        },
+        {
+          title: 'Folder1',
+          url: '/folder1',
+          items: [
+            {
+              title: 'FolderInFolder1',
+              url: '/folderinfolder1',
+            },
+          ],
         },
       ],
       loaded: true,

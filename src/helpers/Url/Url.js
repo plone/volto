@@ -4,6 +4,7 @@
  */
 
 import { last, memoize } from 'lodash';
+import { settings } from '~/config';
 
 /**
  * Get base url.
@@ -12,26 +13,12 @@ import { last, memoize } from 'lodash';
  * @return {string} Base url of content object.
  */
 export const getBaseUrl = memoize(url => {
-  const adjustedUrl =
-    url
-      .replace(/\?.*$/, '')
-      .replace('/add', '')
-      .replace('/contents', '')
-      .replace('/delete', '')
-      .replace('/diff', '')
-      .replace('/edit', '')
-      .replace('/history', '')
-      .replace('/layout', '')
-      .replace('/login', '')
-      .replace('/logout', '')
-      .replace('/register', '')
-      .replace('/sharing', '')
-      .replace('/search', '')
-      .replace('/change-password', '')
-      .replace(/\/controlpanel\/.*$/, '')
-      .replace('/controlpanel', '')
-      .replace('/personal-information', '')
-      .replace('/personal-preferences', '') || '/';
+  let adjustedUrl = settings.nonContentRoutes.reduce(
+    (acc, item) => acc.replace(item, ''),
+    url,
+  );
+
+  adjustedUrl = adjustedUrl || '/';
   return adjustedUrl === '/' ? '' : adjustedUrl;
 });
 
@@ -82,4 +69,17 @@ export function getIcon(type, isFolderish) {
     default:
       return isFolderish ? 'folder open outline' : 'file outline';
   }
+}
+
+/**
+ * Flatten to app server URL - Given a URL if it starts with the API server URL
+ * this method flattens it (removes) the server part
+ * TODO: Update it when implementing non-root based app location (on a
+ * directory other than /, eg. /myapp)
+ * @method flattenToAppURL
+ * @param {string} url URL of the object
+ * @returns {string} Flattened URL to the app server
+ */
+export function flattenToAppURL(url) {
+  return url.replace(settings.apiPath, '');
 }

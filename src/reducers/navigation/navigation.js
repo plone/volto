@@ -4,9 +4,9 @@
  */
 
 import { map } from 'lodash';
+import { settings } from '~/config';
 
 import { GET_NAVIGATION } from '../../constants/ActionTypes';
-import config from '../../config';
 
 const initialState = {
   error: null,
@@ -14,6 +14,21 @@ const initialState = {
   loaded: false,
   loading: false,
 };
+
+/**
+ * Recursive function that process the items returned by the navigation
+ * endpoint
+ * @function getRecursiveItems
+ * @param {array} items The items inside a navigation response.
+ * @returns {*} The navigation items object (recursive)
+ */
+function getRecursiveItems(items) {
+  return map(items, item => ({
+    title: item.title,
+    url: item['@id'].replace(settings.apiPath, ''),
+    ...(item.items && { items: getRecursiveItems(item.items) }),
+  }));
+}
 
 /**
  * Navigation reducer.
@@ -35,10 +50,7 @@ export default function navigation(state = initialState, action = {}) {
       return {
         ...state,
         error: null,
-        items: map(action.result.items, item => ({
-          title: item.title,
-          url: item['@id'].replace(config.apiPath, ''),
-        })),
+        items: getRecursiveItems(action.result.items),
         loaded: true,
         loading: false,
       };

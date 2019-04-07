@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import jwt from 'jsonwebtoken';
+import { MemoryRouter } from 'react-router-dom';
 
 import Sharing from './Sharing';
 
@@ -52,7 +53,9 @@ describe('Sharing', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Sharing location={{ pathname: '/blog' }} />
+        <MemoryRouter>
+          <Sharing location={{ pathname: '/blog' }} />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

@@ -8,22 +8,22 @@
 
 .inline.field {
   .wrapper {
-    align-items: center;
-    border-bottom: 1px solid @lightGreyBorderColor;
     display: flex;
     min-height: 60px;
+    align-items: center;
+    border-bottom: 1px solid @lightGreyBorderColor;
   }
 
   &.required .wrapper {
     label[for]::after,
     .ui.label::after {
-      background-color: @pink;
-      content: '';
       display: inline-block;
-      border-radius: 50%;
+      width: 10px;
       height: 10px;
       margin-left: 5px;
-      width: 10px;
+      background-color: @pink;
+      border-radius: 50%;
+      content: '';
     }
   }
 
@@ -33,6 +33,7 @@
       display: block;
       margin-top: 18px;
     }
+
     textarea {
       min-height: 60px;
       padding: 0;
@@ -46,9 +47,10 @@
       display: block;
       margin-top: 18px;
     }
+
     .DraftEditor-root {
-      margin-top: 18px;
       min-height: 60px;
+      margin-top: 18px;
     }
   }
 
@@ -58,14 +60,16 @@
 }
 
 .ui.form .searchbox.field {
-  border-left: 1px solid @purpleBackground;
   display: flex;
   padding-left: 1em;
+  border-left: 1px solid @purpleBackground;
+
   .ui.input input {
+    width: 106px;
     height: auto;
     line-height: initial;
-    width: 106px;
   }
+
   .ui.blue.button {
     box-shadow: none;
   }

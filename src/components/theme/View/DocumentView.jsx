@@ -9,13 +9,13 @@ import Helmet from 'react-helmet';
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 
+import { settings, tiles } from '~/config';
+
 import {
-  ViewTitleTile,
-  ViewDescriptionTile,
-  ViewTextTile,
-  ViewImageTile,
-  ViewVideoTile,
-} from '../../../components';
+  getTilesFieldname,
+  getTilesLayoutFieldname,
+  hasTilesData,
+} from '../../../helpers';
 
 /**
  * Component to display the document view.
@@ -23,35 +23,25 @@ import {
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-const DocumentView = ({ content }) =>
-  content.tiles ? (
+const DocumentView = ({ content }) => {
+  const tilesFieldname = getTilesFieldname(content);
+  const tilesLayoutFieldname = getTilesLayoutFieldname(content);
+
+  return hasTilesData(content) ? (
     <div id="page-document" className="ui wrapper">
       <Helmet title={content.title} />
-      {map(content.tiles_layout.items, tile => {
+      {map(content[tilesLayoutFieldname].items, tile => {
         let Tile = null;
-        switch (content.tiles[tile]['@type']) {
-          case 'title':
-            Tile = ViewTitleTile;
-            break;
-          case 'description':
-            Tile = ViewDescriptionTile;
-            break;
-          case 'text':
-            Tile = ViewTextTile;
-            break;
-          case 'image':
-            Tile = ViewImageTile;
-            break;
-          case 'video':
-            Tile = ViewVideoTile;
-            break;
-          default:
-            break;
-        }
+        Tile =
+          tiles.defaultTilesViewMap[content[tilesFieldname][tile]['@type']];
         return Tile !== null ? (
-          <Tile key={tile} properties={content} data={content.tiles[tile]} />
+          <Tile
+            key={tile}
+            properties={content}
+            data={content[tilesFieldname][tile]}
+          />
         ) : (
-          <div>{JSON.stringify(content.tiles[tile]['@type'])}</div>
+          <div>{JSON.stringify(content[tilesFieldname][tile]['@type'])}</div>
         );
       })}
     </div>
@@ -69,11 +59,25 @@ const DocumentView = ({ content }) =>
           floated="right"
         />
       )}
+      {content.remoteUrl && (
+        <span>
+          The link address is:
+          <a href={content.remoteUrl}>{content.remoteUrl}</a>
+        </span>
+      )}
       {content.text && (
-        <p dangerouslySetInnerHTML={{ __html: content.text.data }} />
+        <div
+          dangerouslySetInnerHTML={{
+            __html: content.text.data.replace(
+              /a href=\"([^"]*\.[^"]*)\"/g,
+              `a href="${settings.apiPath}$1/download/file"`,
+            ),
+          }}
+        />
       )}
     </Container>
   );
+};
 
 /**
  * Property types.

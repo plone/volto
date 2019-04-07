@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory, Link } from 'react-router';
+import { Link, withRouter } from 'react-router-dom';
 import { find, isEqual, map } from 'lodash';
 import { Portal } from 'react-portal';
 import {
@@ -55,6 +55,11 @@ const messages = defineMessages({
   },
 });
 
+/**
+ * SharingComponent class.
+ * @class SharingComponent
+ * @extends Component
+ */
 @injectIntl
 @connect(
   (state, props) => ({
@@ -70,12 +75,7 @@ const messages = defineMessages({
   }),
   dispatch => bindActionCreators({ updateSharing, getSharing }, dispatch),
 )
-/**
- * SharingComponent class.
- * @class SharingComponent
- * @extends Component
- */
-export default class SharingComponent extends Component {
+class SharingComponent extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -255,7 +255,7 @@ export default class SharingComponent extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    browserHistory.push(getBaseUrl(this.props.pathname));
+    this.props.history.push(getBaseUrl(this.props.pathname));
   }
 
   /**
@@ -303,7 +303,9 @@ export default class SharingComponent extends Component {
                     <FormattedMessage id="Name" defaultMessage="Name" />
                   </Table.HeaderCell>
                   {this.props.available_roles.map(role => (
-                    <Table.HeaderCell key={role}>{role}</Table.HeaderCell>
+                    <Table.HeaderCell key={role.id}>
+                      {role.title}
+                    </Table.HeaderCell>
                   ))}
                 </Table.Row>
               </Table.Header>
@@ -319,26 +321,26 @@ export default class SharingComponent extends Component {
                       {entry.login && ` (${entry.login})`}
                     </Table.Cell>
                     {this.props.available_roles.map(role => (
-                      <Table.Cell key={role}>
-                        {entry.roles[role] === 'global' && (
+                      <Table.Cell key={role.id}>
+                        {entry.roles[role.id] === 'global' && (
                           <Icon
                             name="check circle outline"
                             title="Global role"
                             color="blue"
                           />
                         )}
-                        {entry.roles[role] === 'acquired' && (
+                        {entry.roles[role.id] === 'acquired' && (
                           <Icon
                             name="check circle outline"
                             color="green"
                             title="Inherited value"
                           />
                         )}
-                        {typeof entry.roles[role] === 'boolean' && (
+                        {typeof entry.roles[role.id] === 'boolean' && (
                           <Checkbox
                             onChange={this.onChange}
-                            value={`${entry.id}.${role}`}
-                            checked={entry.roles[role]}
+                            value={`${entry.id}.${role.id}`}
+                            checked={entry.roles[role.id]}
                             disabled={entry.login === this.props.login}
                           />
                         )}
@@ -413,3 +415,5 @@ export default class SharingComponent extends Component {
     );
   }
 }
+
+export default withRouter(SharingComponent);

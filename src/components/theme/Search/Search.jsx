@@ -8,10 +8,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
 import { FormattedMessage } from 'react-intl';
 import { Portal } from 'react-portal';
+import { Container } from 'semantic-ui-react';
+import qs from 'query-string';
 
 import { searchContent } from '../../../actions';
 
@@ -20,9 +22,9 @@ import { SearchTags, Toolbar } from '../../../components';
 @connect(
   (state, props) => ({
     items: state.search.items,
-    searchableText: props.location.query.SearchableText,
-    subject: props.location.query.Subject,
-    path: props.location.query.path,
+    searchableText: qs.parse(props.location.search).SearchableText,
+    subject: qs.parse(props.location.search).Subject,
+    path: qs.parse(props.location.search).path,
     pathname: props.location.pathname,
   }),
   dispatch => bindActionCreators({ searchContent }, dispatch),
@@ -102,7 +104,7 @@ export class SearchComponent extends Component {
    */
   render() {
     return (
-      <div id="page-search">
+      <Container id="page-search">
         <Helmet title="Search" />
         <div className="container">
           <article id="content">
@@ -159,7 +161,7 @@ export class SearchComponent extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar pathname={this.props.pathname} inner={<span />} />
         </Portal>{' '}
-      </div>
+      </Container>
     );
   }
 }
@@ -170,8 +172,8 @@ export default asyncConnect([
     promise: ({ location, store: { dispatch } }) =>
       dispatch(
         searchContent('', {
-          SearchableText: location.query.SearchableText,
-          Subject: location.query.Subject,
+          SearchableText: qs.parse(location.search).SearchableText,
+          Subject: qs.parse(location.search).Subject,
         }),
       ),
   },

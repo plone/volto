@@ -10,9 +10,21 @@ const mockStore = configureStore();
 jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
-jest.mock('./SummaryView', () => jest.fn(() => <div id="SummaryView" />));
-jest.mock('./TabularView', () => jest.fn(() => <div id="TabularView" />));
-jest.mock('./DocumentView', () => jest.fn(() => <div id="DocumentView" />));
+jest.mock('./SummaryView', () => {
+  const dummyComponent = jest.fn(() => <div id="SummaryView" />);
+  dummyComponent.displayName = 'dummyComponent';
+  return dummyComponent;
+});
+jest.mock('./TabularView', () => {
+  const dummyComponent = jest.fn(() => <div id="TabularView" />);
+  dummyComponent.displayName = 'dummyComponent';
+  return dummyComponent;
+});
+jest.mock('./DocumentView', () => {
+  const dummyComponent = jest.fn(() => <div id="DocumentView" />);
+  dummyComponent.displayName = 'dummyComponent';
+  return dummyComponent;
+});
 jest.mock('../SocialSharing/SocialSharing', () =>
   jest.fn(() => <div id="SocialSharing" />),
 );
@@ -121,7 +133,7 @@ describe('View', () => {
   it('renders an empty view', () => {
     const store = mockStore({
       actions: { actions },
-      content: {},
+      content: { get: { error: null } },
       intl: {
         locale: 'en',
         messages: {},
@@ -139,7 +151,7 @@ describe('View', () => {
   it('renders a summary view', () => {
     const store = mockStore({
       actions: { actions },
-      content: { data: { layout: 'summary_view' } },
+      content: { data: { layout: 'summary_view' }, get: { error: null } },
       intl: {
         locale: 'en',
         messages: {},
@@ -157,7 +169,7 @@ describe('View', () => {
   it('renders a tabular view', () => {
     const store = mockStore({
       actions: { actions },
-      content: { data: { layout: 'tabular_view' } },
+      content: { data: { layout: 'tabular_view' }, get: { error: null } },
       intl: {
         locale: 'en',
         messages: {},
@@ -175,7 +187,7 @@ describe('View', () => {
   it('renders a document view', () => {
     const store = mockStore({
       actions: { actions },
-      content: { data: {} },
+      content: { data: {}, get: { error: null } },
       intl: {
         locale: 'en',
         messages: {},

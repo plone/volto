@@ -34,7 +34,6 @@ exports[`renders a text widget component 1`] = `
             id="field-my-field"
             name="my-field"
             onChange={[Function]}
-            tabIndex={undefined}
             type="text"
             value=""
           />

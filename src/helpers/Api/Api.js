@@ -6,7 +6,7 @@
 import superagent from 'superagent';
 import cookie from 'react-cookie';
 
-import config from '../../config';
+import { settings } from '~/config';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
@@ -18,7 +18,7 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  */
 function formatUrl(path) {
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
-  return `${config.apiPath}${adjustedPath}`;
+  return `${settings.apiPath}${adjustedPath}`;
 }
 
 /**
@@ -33,7 +33,7 @@ export class Api {
    */
   constructor() {
     methods.forEach(method => {
-      this[method] = (path, { params, data, type } = {}) =>
+      this[method] = (path, { params, data, type, headers = {} } = {}) =>
         new Promise((resolve, reject) => {
           const request = superagent[method](formatUrl(path));
 
@@ -52,12 +52,14 @@ export class Api {
             request.type(type);
           }
 
+          Object.keys(headers).forEach(key => request.set(key, headers[key]));
+
           if (data) {
             request.send(data);
           }
 
           request.end(
-            (err, { body } = {}) => (err ? reject(body || err) : resolve(body)),
+            (err, { body } = {}) => (err ? reject(err) : resolve(body)),
           );
         });
     });

@@ -6,19 +6,59 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
+import { widgets } from '~/config';
+import { injectIntl, intlShape } from 'react-intl';
 
-import {
-  ArrayWidget,
-  CheckboxWidget,
-  DatetimeWidget,
-  FileWidget,
-  PasswordWidget,
-  SchemaWidget,
-  SelectWidget,
-  TextWidget,
-  TextareaWidget,
-  WysiwygWidget,
-} from '../../../components';
+/**
+ * Get default widget
+ * @method getViewDefault
+ * @returns {string} Widget component.
+ */
+const getWidgetDefault = () => widgets.default;
+
+/**
+ * Get widget by field's `id` attribute
+ * @method getWidgetById
+ * @param {string} id Id
+ * @returns {string} Widget component.
+ */
+const getWidgetByFieldId = id => widgets.id[id] || null;
+
+/**
+ * Get widget by field's `widget` attribute
+ * @method getWidgetByName
+ * @param {string} widget Widget
+ * @returns {string} Widget component.
+ */
+const getWidgetByName = widget =>
+  typeof widget === 'string'
+    ? widgets.widget[widget] || getWidgetDefault()
+    : null;
+
+/**
+ * Get widget by field's `vocabulary` attribute
+ * @method getWidgetByVocabulary
+ * @param {string} vocabulary Widget
+ * @returns {string} Widget component.
+ */
+const getWidgetByVocabulary = vocabulary =>
+  widgets.vocabulary[vocabulary] || null;
+
+/**
+ * Get widget by field's `choices` attribute
+ * @method getWidgetByChoices
+ * @param {string} choices Widget
+ * @returns {string} Widget component.
+ */
+const getWidgetByChoices = choices => (choices ? widgets.choices : null);
+
+/**
+ * Get widget by field's `type` attribute
+ * @method getWidgetByType
+ * @param {string} type Type
+ * @returns {string} Widget component.
+ */
+const getWidgetByType = type => widgets.type[type] || null;
 
 /**
  * Field component class.
@@ -26,41 +66,15 @@ import {
  * @param {Object} props Properties.
  * @returns {string} Markup of the component.
  */
-const Field = props => {
-  let Widget;
-  if (props.id === 'schema') {
-    Widget = SchemaWidget;
-  } else if (props.widget) {
-    switch (props.widget) {
-      case 'richtext':
-        Widget = WysiwygWidget;
-        break;
-      case 'textarea':
-        Widget = TextareaWidget;
-        break;
-      case 'datetime':
-        Widget = DatetimeWidget;
-        break;
-      case 'password':
-        Widget = PasswordWidget;
-        break;
-      default:
-        Widget = TextWidget;
-        break;
-    }
-  } else if (props.choices) {
-    Widget = SelectWidget;
-  } else if (props.type === 'boolean') {
-    Widget = CheckboxWidget;
-  } else if (props.type === 'array') {
-    Widget = ArrayWidget;
-  } else if (props.type === 'object') {
-    Widget = FileWidget;
-  } else if (props.type === 'datetime') {
-    Widget = DatetimeWidget;
-  } else {
-    Widget = TextWidget;
-  }
+const Field = (props, { intl }) => {
+  const Widget =
+    getWidgetByFieldId(props.id) ||
+    getWidgetByName(props.widget) ||
+    getWidgetByVocabulary(props.vocabulary) ||
+    getWidgetByChoices(props.choices) ||
+    getWidgetByType(props.type) ||
+    getWidgetDefault();
+
   if (props.onOrder) {
     const WrappedWidget = DropTarget(
       'field',
@@ -126,10 +140,13 @@ const Field = props => {
  */
 Field.propTypes = {
   widget: PropTypes.string,
+  vocabulary: PropTypes.string,
   choices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   type: PropTypes.string,
   id: PropTypes.string.isRequired,
+  focus: PropTypes.bool,
   onOrder: PropTypes.func,
+  intl: intlShape.isRequired,
 };
 
 /**
@@ -139,9 +156,11 @@ Field.propTypes = {
  */
 Field.defaultProps = {
   widget: null,
+  vocabulary: null,
   choices: null,
   type: 'string',
+  focus: false,
   onOrder: null,
 };
 
-export default Field;
+export default injectIntl(Field);

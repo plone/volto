@@ -23,7 +23,11 @@ import {
 export function createUser(content) {
   return {
     type: CREATE_USER,
-    promise: api => api.post('/@users', { data: content }),
+    request: {
+      op: 'post',
+      path: '/@users',
+      data: content,
+    },
   };
 }
 
@@ -36,7 +40,10 @@ export function createUser(content) {
 export function deleteUser(id) {
   return {
     type: DELETE_USER,
-    promise: api => api.del(`/@users/${id}`),
+    request: {
+      op: 'del',
+      path: `/@users/${id}`,
+    },
   };
 }
 
@@ -49,7 +56,10 @@ export function deleteUser(id) {
 export function getUser(id) {
   return {
     type: GET_USER,
-    promise: api => api.get(`/@users/${id}`),
+    request: {
+      op: 'get',
+      path: `/@users/${id}`,
+    },
   };
 }
 
@@ -62,9 +72,9 @@ export function getUser(id) {
 export function listUsers(query) {
   return {
     type: LIST_USERS,
-    promise: query
-      ? api => api.get(`/@users?query=${query}`)
-      : api => api.get('/@users'),
+    request: query
+      ? { op: 'get', path: `/@users?query=${query}` }
+      : { op: 'get', path: '/@users' },
   };
 }
 
@@ -78,7 +88,7 @@ export function listUsers(query) {
 export function updateUser(id, user) {
   return {
     type: UPDATE_USER,
-    promise: api => api.patch(`/@users/${id}`, { data: user }),
+    request: { op: 'patch', path: `/@users/${id}`, data: user },
   };
 }
 
@@ -93,13 +103,14 @@ export function updateUser(id, user) {
 export function updatePassword(id, oldPassword, newPassword) {
   return {
     type: UPDATE_PASSWORD,
-    promise: api =>
-      api.post(`/@users/${id}/reset-password`, {
-        data: {
-          old_password: oldPassword,
-          new_password: newPassword,
-        },
-      }),
+    request: {
+      op: 'post',
+      path: `/@users/${id}/reset-password`,
+      data: {
+        old_password: oldPassword,
+        new_password: newPassword,
+      },
+    },
   };
 }
 
@@ -114,13 +125,14 @@ export function updatePassword(id, oldPassword, newPassword) {
 export function setInitialPassword(id, token, newPassword) {
   return {
     type: INITIAL_PASSWORD,
-    promise: api =>
-      api.post(`/@users/${id}/reset-password`, {
-        data: {
-          reset_token: token,
-          new_password: newPassword,
-        },
-      }),
+    request: {
+      op: 'post',
+      path: `/@users/${id}/reset-password`,
+      data: {
+        reset_token: token,
+        new_password: newPassword,
+      },
+    },
   };
 }
 
@@ -133,6 +145,9 @@ export function setInitialPassword(id, token, newPassword) {
 export function resetPassword(id) {
   return {
     type: RESET_PASSWORD,
-    promise: api => api.post(`/@users/${id}/reset-password`),
+    request: {
+      op: 'post',
+      path: `/@users/${id}/reset-password`,
+    },
   };
 }

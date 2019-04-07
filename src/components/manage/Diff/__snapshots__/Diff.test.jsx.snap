@@ -7,7 +7,7 @@ exports[`Diff renders a diff component 1`] = `
 >
   <h1>
     <span>
-      Difference between revision 0 and 1  of Blog
+      Difference between revision  and  of Blog
     </span>
   </h1>
   <div
@@ -32,20 +32,14 @@ exports[`Diff renders a diff component 1`] = `
       >
         <button
           className="ui active button"
-          disabled={undefined}
           onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
           value="split"
         >
           Split
         </button>
         <button
           className="ui button"
-          disabled={undefined}
           onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
           value="unified"
         >
           Unified
@@ -63,92 +57,13 @@ exports[`Diff renders a diff component 1`] = `
         className=""
       >
         <th
-          className="eight wide"
+          className="six wide"
         >
           <span>
             Base
           </span>
           <div
-            aria-busy={undefined}
-            aria-disabled={undefined}
             aria-expanded={false}
-            aria-multiselectable={undefined}
-            className="ui fluid selection dropdown"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseDown={[Function]}
-            role="listbox"
-            tabIndex={0}
-          >
-            <div
-              aria-live="polite"
-              className="text"
-              role="alert"
-            >
-              0 (Sunday, April 23, 2017 3:38 AM, Web Admin)
-            </div>
-            <i
-              aria-hidden="true"
-              className="dropdown icon"
-              onClick={[Function]}
-            />
-            <div
-              className="menu transition"
-            >
-              <div
-                aria-checked={false}
-                aria-disabled={undefined}
-                aria-selected={false}
-                className="item"
-                onClick={[Function]}
-                role="option"
-                style={
-                  Object {
-                    "pointerEvents": "all",
-                  }
-                }
-              >
-                <span
-                  className="text"
-                >
-                  Current (Sunday, April 23, 2017 3:38 AM, Web Admin)
-                </span>
-              </div>
-              <div
-                aria-checked={true}
-                aria-disabled={undefined}
-                aria-selected={true}
-                className="active selected item"
-                onClick={[Function]}
-                role="option"
-                style={
-                  Object {
-                    "pointerEvents": "all",
-                  }
-                }
-              >
-                <span
-                  className="text"
-                >
-                  0 (Sunday, April 23, 2017 3:38 AM, Web Admin)
-                </span>
-              </div>
-            </div>
-          </div>
-        </th>
-        <th
-          className="eight wide"
-        >
-          <span>
-            Compare
-          </span>
-          <div
-            aria-busy={undefined}
-            aria-disabled={undefined}
-            aria-expanded={false}
-            aria-multiselectable={undefined}
             className="ui fluid selection dropdown"
             onBlur={[Function]}
             onChange={[Function]}
@@ -173,7 +88,6 @@ exports[`Diff renders a diff component 1`] = `
             >
               <div
                 aria-checked={false}
-                aria-disabled={undefined}
                 aria-selected={true}
                 className="selected item"
                 onClick={[Function]}
@@ -192,7 +106,75 @@ exports[`Diff renders a diff component 1`] = `
               </div>
               <div
                 aria-checked={false}
-                aria-disabled={undefined}
+                aria-selected={false}
+                className="item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  0 (Sunday, April 23, 2017 3:38 AM, Web Admin)
+                </span>
+              </div>
+            </div>
+          </div>
+        </th>
+        <th
+          className="six wide"
+        >
+          <span>
+            Compare
+          </span>
+          <div
+            aria-expanded={false}
+            className="ui fluid selection dropdown"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseDown={[Function]}
+            role="listbox"
+            tabIndex={0}
+          >
+            <div
+              aria-live="polite"
+              className="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+              onClick={[Function]}
+            />
+            <div
+              className="menu transition"
+            >
+              <div
+                aria-checked={false}
+                aria-selected={true}
+                className="selected item"
+                onClick={[Function]}
+                role="option"
+                style={
+                  Object {
+                    "pointerEvents": "all",
+                  }
+                }
+              >
+                <span
+                  className="text"
+                >
+                  Current (Sunday, April 23, 2017 3:38 AM, Web Admin)
+                </span>
+              </div>
+              <div
+                aria-checked={false}
                 aria-selected={false}
                 className="item"
                 onClick={[Function]}

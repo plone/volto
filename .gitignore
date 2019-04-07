@@ -9,6 +9,7 @@ dist
 junit.xml
 eslint.xml
 yarn-error.log
+build
 
 # Other
 .DS_Store
@@ -30,6 +31,10 @@ api/.Python
 api/include
 api/lib
 api/pip-selfcheck.json
+/bin
+/lib
+include
+.Python
 
 # Tests
 /tests/bin
@@ -42,3 +47,8 @@ log.html
 output.xml
 report.html
 selenium-screenshot-*.png
+/selenium/
+
+
+# Local environment setup
+.env

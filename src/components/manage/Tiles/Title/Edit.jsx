@@ -9,12 +9,12 @@ import PropTypes from 'prop-types';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Button, Icon } from 'semantic-ui-react';
+import cx from 'classnames';
 
 const messages = defineMessages({
   title: {
-    id: 'Title',
-    defaultMessage: 'Title',
+    id: 'Type the title…',
+    defaultMessage: 'Type the title…',
   },
 });
 
@@ -42,9 +42,13 @@ export default class Edit extends Component {
     properties: PropTypes.objectOf(PropTypes.any).isRequired,
     selected: PropTypes.bool.isRequired,
     intl: intlShape.isRequired,
+    index: PropTypes.number.isRequired,
     onChangeField: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    onAddTile: PropTypes.func.isRequired,
+    onFocusPreviousTile: PropTypes.func.isRequired,
+    onFocusNextTile: PropTypes.func.isRequired,
     tile: PropTypes.string.isRequired,
   };
 
@@ -72,6 +76,17 @@ export default class Edit extends Component {
   }
 
   /**
+   * Component did mount lifecycle method
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    if (this.node) {
+      this.node.focus();
+    }
+  }
+
+  /**
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
@@ -89,6 +104,10 @@ export default class Edit extends Component {
           ? EditorState.createWithContent(contentState)
           : EditorState.createEmpty(),
       });
+    }
+
+    if (!this.props.selected && nextProps.selected) {
+      this.node.focus();
     }
   }
 
@@ -118,29 +137,51 @@ export default class Edit extends Component {
     }
     return (
       <div
+        role="presentation"
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={`tile title${this.props.selected ? ' selected' : ''}`}
+        className={cx('tile title', { selected: this.props.selected })}
       >
-        {this.props.selected && (
-          <div className="toolbar">
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.props.onDeleteTile(this.props.tile)}
-              >
-                <Icon name="trash" />
-              </Button>
-            </Button.Group>
-          </div>
-        )}
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}
           blockRenderMap={extendedBlockRenderMap}
-          handleReturn={() => true}
+          handleReturn={() => {
+            this.props.onSelectTile(
+              this.props.onAddTile('text', this.props.index + 1),
+            );
+            return 'handled';
+          }}
           placeholder={this.props.intl.formatMessage(messages.title)}
           blockStyleFn={() => 'documentFirstHeading'}
+          onUpArrow={() => {
+            const selectionState = this.state.editorState.getSelection();
+            const { editorState } = this.state;
+            if (
+              editorState
+                .getCurrentContent()
+                .getBlockMap()
+                .first()
+                .getKey() === selectionState.getFocusKey()
+            ) {
+              this.props.onFocusPreviousTile(this.props.tile, this.node);
+            }
+          }}
+          onDownArrow={() => {
+            const selectionState = this.state.editorState.getSelection();
+            const { editorState } = this.state;
+            if (
+              editorState
+                .getCurrentContent()
+                .getBlockMap()
+                .last()
+                .getKey() === selectionState.getFocusKey()
+            ) {
+              this.props.onFocusNextTile(this.props.tile, this.node);
+            }
+          }}
+          ref={node => {
+            this.node = node;
+          }}
         />
       </div>
     );

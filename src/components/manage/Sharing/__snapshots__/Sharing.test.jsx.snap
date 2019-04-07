@@ -29,7 +29,6 @@ exports[`Sharing renders a sharing component 1`] = `
       className="ui segment"
     >
       <form
-        action={undefined}
         className="ui form"
         onSubmit={[Function]}
       >
@@ -40,19 +39,14 @@ exports[`Sharing renders a sharing component 1`] = `
             className="ui action input"
           >
             <input
-              disabled={undefined}
               name="SearchableText"
               onChange={[Function]}
               placeholder="Search for user or group"
-              tabIndex={undefined}
               type="text"
             />
             <button
               className="ui icon button"
-              disabled={undefined}
               onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
             >
               <i
                 aria-hidden="true"
@@ -64,7 +58,6 @@ exports[`Sharing renders a sharing component 1`] = `
       </form>
     </div>
     <form
-      action={undefined}
       className="ui form"
       onSubmit={[Function]}
     >
@@ -86,9 +79,7 @@ exports[`Sharing renders a sharing component 1`] = `
             </th>
             <th
               className=""
-            >
-              Contributer
-            </th>
+            />
           </tr>
         </thead>
         <tbody
@@ -111,29 +102,7 @@ exports[`Sharing renders a sharing component 1`] = `
             </td>
             <td
               className=""
-            >
-              <div
-                className="ui checked disabled fitted checkbox"
-                onChange={[Function]}
-                onClick={[Function]}
-                onMouseDown={[Function]}
-              >
-                <input
-                  checked={true}
-                  className="hidden"
-                  id={undefined}
-                  name={undefined}
-                  onClick={[Function]}
-                  readOnly={true}
-                  tabIndex={-1}
-                  type="checkbox"
-                  value="john-doe.Contributer"
-                />
-                <label
-                  htmlFor={undefined}
-                />
-              </div>
-            </td>
+            />
           </tr>
         </tbody>
       </table>
@@ -148,21 +117,16 @@ exports[`Sharing renders a sharing component 1`] = `
             onChange={[Function]}
             onClick={[Function]}
             onMouseDown={[Function]}
+            onMouseUp={[Function]}
           >
             <input
               checked={true}
               className="hidden"
-              id={undefined}
-              name={undefined}
-              onClick={[Function]}
               readOnly={true}
               tabIndex={0}
               type="checkbox"
-              value={undefined}
             />
-            <label
-              htmlFor={undefined}
-            >
+            <label>
               Inherit permissions from higher levels
             </label>
           </div>
@@ -190,10 +154,7 @@ exports[`Sharing renders a sharing component 1`] = `
       >
         <button
           className="ui big basic circular icon primary right floated button"
-          disabled={undefined}
           onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
           title="Save"
           type="submit"
         >
@@ -204,10 +165,7 @@ exports[`Sharing renders a sharing component 1`] = `
         </button>
         <button
           className="ui big basic circular icon secondary right floated button"
-          disabled={undefined}
           onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
           title="Cancel"
         >
           <i

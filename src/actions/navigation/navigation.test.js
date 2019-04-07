@@ -8,13 +8,20 @@ describe('Navigation action', () => {
       const action = getNavigation(url);
 
       expect(action.type).toEqual(GET_NAVIGATION);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(`${url}/@navigation`);
+    });
 
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
+    it('should create an action to get the navigation with depth', () => {
+      const url = 'http://localhost';
+      const depth = 3;
+      const action = getNavigation(url, depth);
 
-      expect(apiMock.get).toBeCalledWith(`${url}/@navigation`);
+      expect(action.type).toEqual(GET_NAVIGATION);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(
+        `${url}/@navigation?expand.navigation.depth=${depth}`,
+      );
     });
   });
 });

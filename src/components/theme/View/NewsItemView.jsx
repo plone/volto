@@ -1,6 +1,6 @@
 /**
- * Document view component.
- * @module components/theme/View/DocumentView
+ * NewsItemView view component.
+ * @module components/theme/View/NewsItemView
  */
 
 import React from 'react';
@@ -8,13 +8,15 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Container, Image } from 'semantic-ui-react';
 
+import { flattenToAppURL } from '../../../helpers';
+
 /**
- * Document view component class.
- * @function DocumentView
+ * NewsItemView view component class.
+ * @function NewsItemView
  * @params {object} content Content object.
  * @returns {string} Markup of the component.
  */
-const DocumentView = ({ content }) => (
+const NewsItemView = ({ content }) => (
   <Container className="view-wrapper">
     <Helmet title={content.title} />
     {content.title && (
@@ -33,14 +35,14 @@ const DocumentView = ({ content }) => (
         title={content.title}
         src={
           content.image['content-type'] === 'image/svg+xml'
-            ? content.image.download
-            : content.image.scales.mini.download
+            ? flattenToAppURL(content.image.download)
+            : flattenToAppURL(content.image.scales.mini.download)
         }
         floated="right"
       />
     )}
     {content.text && (
-      <p dangerouslySetInnerHTML={{ __html: content.text.data }} />
+      <div dangerouslySetInnerHTML={{ __html: content.text.data }} />
     )}
   </Container>
 );
@@ -50,7 +52,7 @@ const DocumentView = ({ content }) => (
  * @property {Object} propTypes Property types.
  * @static
  */
-DocumentView.propTypes = {
+NewsItemView.propTypes = {
   content: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
@@ -60,4 +62,4 @@ DocumentView.propTypes = {
   }).isRequired,
 };
 
-export default DocumentView;
+export default NewsItemView;

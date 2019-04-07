@@ -16,10 +16,15 @@ import { GET_DIFF } from '../../constants/ActionTypes';
 export function getDiff(url, one, two) {
   return {
     type: GET_DIFF,
-    promise: api =>
-      Promise.all([
-        api.get(`${url}/@history/${one}`),
-        api.get(`${url}/@history/${two}`),
-      ]),
+    request: [
+      {
+        op: 'get',
+        path: `${url}/@history/${one}`,
+      },
+      {
+        op: 'get',
+        path: `${url}/@history/${two}`,
+      },
+    ],
   };
 }

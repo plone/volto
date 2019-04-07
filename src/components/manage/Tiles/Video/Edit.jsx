@@ -6,7 +6,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Button, Form, Input, Icon, Embed, Message } from 'semantic-ui-react';
+import { Button, Input, Embed, Message } from 'semantic-ui-react';
+import cx from 'classnames';
+
+import { Icon } from '../../../../components';
+import imageLeftSVG from '../../../../icons/image-left.svg';
+import imageRightSVG from '../../../../icons/image-right.svg';
+import imageFitSVG from '../../../../icons/image-fit.svg';
+import imageFullSVG from '../../../../icons/image-full.svg';
+import videoSVG from '../../../../icons/videocamera.svg';
 
 const messages = defineMessages({
   save: {
@@ -38,10 +46,14 @@ export default class Edit extends Component {
   static propTypes = {
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     onChangeTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    onFocusPreviousTile: PropTypes.func.isRequired,
+    onFocusNextTile: PropTypes.func.isRequired,
+    handleKeyDown: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
 
@@ -56,9 +68,33 @@ export default class Edit extends Component {
 
     this.onChangeUrl = this.onChangeUrl.bind(this);
     this.onSubmitUrl = this.onSubmitUrl.bind(this);
+    this.onKeyDownVariantMenuForm = this.onKeyDownVariantMenuForm.bind(this);
     this.state = {
       url: '',
     };
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    if (this.props.selected) {
+      this.node.focus();
+    }
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selected) {
+      this.node.focus();
+    }
   }
 
   /**
@@ -99,6 +135,26 @@ export default class Edit extends Component {
   }
 
   /**
+   * Keydown handler on Variant Menu Form
+   * This is required since the ENTER key is already mapped to a onKeyDown
+   * event and needs to be overriden with a child onKeyDown.
+   * @method onKeyDownVariantMenuForm
+   * @param {Object} e Event object
+   * @returns {undefined}
+   */
+  onKeyDownVariantMenuForm(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      e.stopPropagation();
+      this.onSubmitUrl();
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      e.stopPropagation();
+      // TODO: Do something on ESC key
+    }
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -107,70 +163,88 @@ export default class Edit extends Component {
     const { data } = this.props;
     return (
       <div
+        role="presentation"
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={[
-          'tile',
-          'video',
-          'align',
-          this.props.selected && 'selected',
-          data.align,
-        ]
-          .filter(e => !!e)
-          .join(' ')}
-      >
-        {this.props.selected && (
-          <div className="toolbar">
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.onAlignTile.bind(this, 'left')}
-                active={data.align === 'left'}
-              >
-                <Icon name="align left" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.onAlignTile.bind(this, 'right')}
-                active={data.align === 'right'}
-              >
-                <Icon name="align right" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.onAlignTile.bind(this, 'center')}
-                active={data.align === 'center' || !data.align}
-              >
-                <Icon name="align center" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.onAlignTile.bind(this, 'full')}
-                active={data.align === 'full'}
-              >
-                <Icon name="align justify" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.props.onDeleteTile(this.props.tile)}
-              >
-                <Icon name="trash" />
-              </Button>
-            </Button.Group>
-          </div>
+        className={cx(
+          'tile video align',
+          {
+            selected: this.props.selected,
+            center: !Boolean(this.props.data.align),
+          },
+          this.props.data.align,
         )}
+        tabIndex={0}
+        onKeyDown={e =>
+          this.props.handleKeyDown(
+            e,
+            this.props.index,
+            this.props.tile,
+            this.node,
+          )
+        }
+        ref={node => {
+          this.node = node;
+        }}
+      >
+        {this.props.selected &&
+          !!this.props.data.url && (
+            <div className="toolbar">
+              <Button.Group>
+                <Button
+                  icon
+                  basic
+                  onClick={this.onAlignTile.bind(this, 'left')}
+                  active={data.align === 'left'}
+                >
+                  <Icon name={imageLeftSVG} size="24px" />
+                </Button>
+              </Button.Group>
+              <Button.Group>
+                <Button
+                  icon
+                  basic
+                  onClick={this.onAlignTile.bind(this, 'right')}
+                  active={data.align === 'right'}
+                >
+                  <Icon name={imageRightSVG} size="24px" />
+                </Button>
+              </Button.Group>
+              <Button.Group>
+                <Button
+                  icon
+                  basic
+                  onClick={this.onAlignTile.bind(this, 'center')}
+                  active={data.align === 'center' || !data.align}
+                >
+                  <Icon name={imageFitSVG} size="24px" />
+                </Button>
+              </Button.Group>
+              <Button.Group>
+                <Button
+                  icon
+                  basic
+                  onClick={this.onAlignTile.bind(this, 'full')}
+                  active={data.align === 'full'}
+                >
+                  <Icon name={imageFullSVG} size="24px" />
+                </Button>
+              </Button.Group>
+            </div>
+          )}
+        {this.props.selected &&
+          !this.props.data.url && (
+            <div className="toolbar">
+              <Icon name={videoSVG} size="24px" />
+              <form onKeyDown={this.onKeyDownVariantMenuForm}>
+                <Input
+                  onChange={this.onChangeUrl}
+                  placeholder={this.props.intl.formatMessage(
+                    messages.VideoTileInputPlaceholder,
+                  )}
+                />
+              </form>
+            </div>
+          )}
         {data.url ? (
           <p>
             <div className="ui blocker" />
@@ -198,38 +272,13 @@ export default class Edit extends Component {
             )}
           </p>
         ) : (
-          <p>
+          <div>
             <Message>
               <center>
-                <h4>Video</h4>
-                <p>
-                  {this.props.intl.formatMessage(messages.VideoFormDescription)}
-                </p>
-                <p>
-                  <Form onSubmit={this.onSubmitUrl}>
-                    <Input
-                      onChange={this.onChangeUrl}
-                      placeholder={this.props.intl.formatMessage(
-                        messages.VideoTileInputPlaceholder,
-                      )}
-                    />
-                    <Button
-                      basic
-                      circular
-                      primary
-                      icon="arrow right"
-                      type="submit"
-                      title={
-                        this.props.submitLabel
-                          ? this.props.submitLabel
-                          : this.props.intl.formatMessage(messages.save)
-                      }
-                    />
-                  </Form>
-                </p>
+                <Icon name={videoSVG} size="100px" color="#b8c6c8" />
               </center>
             </Message>
-          </p>
+          </div>
         )}
       </div>
     );

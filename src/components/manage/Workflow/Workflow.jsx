@@ -10,9 +10,9 @@ import { bindActionCreators } from 'redux';
 import { last } from 'lodash';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
+import { settings } from '~/config';
 
 import { getWorkflow, transitionWorkflow } from '../../../actions';
-import config from '../../../config';
 
 @connect(
   state => ({
@@ -103,7 +103,7 @@ export default class Workflow extends Component {
    * @returns {undefined}
    */
   transition(event, { value }) {
-    this.props.transitionWorkflow(value.replace(config.apiPath, ''));
+    this.props.transitionWorkflow(value.replace(settings.apiPath, ''));
   }
 
   /**
@@ -112,8 +112,11 @@ export default class Workflow extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const lastEntry = last(this.props.history);
     const current =
-      this.props.history.length > 0 && last(this.props.history).review_state;
+      this.props.history.length > 0 &&
+      (lastEntry.data ? lastEntry.data.review_state : lastEntry.review_state);
+
     return this.props.history.length > 0 ? (
       <Dropdown
         item

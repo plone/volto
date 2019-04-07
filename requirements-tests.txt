@@ -1,0 +1,12 @@
+robotframework==3.0.4
+robotframework-debuglibrary==1.1.2
+robotframework-react==1.0.0a1
+robotframework-selenium2library==3.0.0
+robotframework-seleniumlibrary==3.1.1
+robotframework-pabot==0.43
+robotframework-faker==4.2.0
+robotframework-requests==0.4.7
+robotsuite==2.0.0
+selenium==3.12.0
+requests==2.20.1
+prompt_toolkit==1.0.15

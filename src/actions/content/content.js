@@ -9,7 +9,9 @@ import {
   UPDATE_CONTENT,
   GET_CONTENT,
   ORDER_CONTENT,
+  RESET_CONTENT,
 } from '../../constants/ActionTypes';
+import { nestContent } from '../../helpers';
 
 /**
  * Create content function.
@@ -21,9 +23,9 @@ import {
 export function createContent(url, content) {
   return {
     type: CREATE_CONTENT,
-    promise: Array.isArray(content)
-      ? api => Promise.all(content.map(item => api.post(url, { data: item })))
-      : api => api.post(url, { data: content }),
+    request: Array.isArray(content)
+      ? content.map(item => ({ op: 'post', path: url, data: item }))
+      : { op: 'post', path: url, data: nestContent(content) },
   };
 }
 
@@ -36,10 +38,10 @@ export function createContent(url, content) {
 export function deleteContent(urls) {
   return {
     type: DELETE_CONTENT,
-    promise:
+    request:
       typeof urls === 'string'
-        ? api => api.del(urls)
-        : api => Promise.all(urls.map(url => api.del(url))),
+        ? { op: 'del', path: urls }
+        : urls.map(url => ({ op: 'del', path: url })),
   };
 }
 
@@ -53,15 +55,14 @@ export function deleteContent(urls) {
 export function updateContent(urls, content) {
   return {
     type: UPDATE_CONTENT,
-    promise:
+    request:
       typeof urls === 'string'
-        ? api => api.patch(urls, { data: content })
-        : api =>
-            Promise.all(
-              urls.map((url, index) =>
-                api.patch(url, { data: content[index] }),
-              ),
-            ),
+        ? { op: 'patch', path: urls, data: nestContent(content) }
+        : urls.map((url, index) => ({
+            op: 'patch',
+            path: url,
+            data: nestContent(content[index]),
+          })),
   };
 }
 
@@ -77,10 +78,11 @@ export function updateContent(urls, content) {
 export function orderContent(parent, url, delta, subset) {
   return {
     type: ORDER_CONTENT,
-    promise: api =>
-      api.patch(parent, {
-        data: { ordering: { obj_id: url, delta, subset_ids: subset } },
-      }),
+    request: {
+      op: 'patch',
+      path: parent,
+      data: { ordering: { obj_id: url, delta, subset_ids: subset } },
+    },
   };
 }
 
@@ -95,10 +97,11 @@ export function orderContent(parent, url, delta, subset) {
 export function sortContent(url, on, order) {
   return {
     type: UPDATE_CONTENT,
-    promise: api =>
-      api.patch(url, {
-        data: { sort: { on, order } },
-      }),
+    request: {
+      op: 'patch',
+      path: url,
+      data: { sort: { on, order } },
+    },
   };
 }
 
@@ -107,12 +110,29 @@ export function sortContent(url, on, order) {
  * @function getContent
  * @param {string} url Content url
  * @param {string} version Version id
+ * @param {string} subrequest Key of the subrequest.
  * @returns {Object} Get content action
  */
-export function getContent(url, version) {
+export function getContent(url, version = null, subrequest = null) {
   return {
     type: GET_CONTENT,
-    promise: api =>
-      api.get(`${url}${version ? `/@history/${version}` : ''}?fullobjects`),
+    subrequest,
+    request: {
+      op: 'get',
+      path: `${url}${version ? `/@history/${version}` : ''}?fullobjects`,
+    },
+  };
+}
+
+/**
+ * Reset content function
+ * @function resetContent
+ * @param {string} subrequest Key of the subrequest.
+ * @returns {Object} Get content action
+ */
+export function resetContent(subrequest = null) {
+  return {
+    type: RESET_CONTENT,
+    subrequest,
   };
 }

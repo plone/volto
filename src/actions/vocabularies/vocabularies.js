@@ -24,6 +24,9 @@ export function getVocabulary(vocabBaseUrl, query = null, start = 0) {
     type: GET_VOCABULARY,
     vocabBaseUrl,
     start,
-    promise: api => api.get(vocabPath),
+    request: {
+      op: 'get',
+      path: vocabPath,
+    },
   };
 }

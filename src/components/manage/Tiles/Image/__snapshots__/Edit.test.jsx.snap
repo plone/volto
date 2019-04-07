@@ -2,14 +2,16 @@
 
 exports[`renders an edit image tile component 1`] = `
 <div
-  className="tile image align"
+  className="tile image align center"
   onClick={[Function]}
+  onKeyDown={[Function]}
+  role="presentation"
+  tabIndex={0}
 >
   <p>
     <img
       alt=""
-      className="ui image"
-      src="image/@@images/image"
+      src="image"
     />
   </p>
 </div>

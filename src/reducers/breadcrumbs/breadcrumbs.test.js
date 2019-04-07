@@ -1,6 +1,6 @@
+import { settings } from '~/config';
 import breadcrumbs from './breadcrumbs';
 import { GET_BREADCRUMBS } from '../../constants/ActionTypes';
-import config from '../../config';
 
 describe('Breadcrumbs reducer', () => {
   it('should return the initial state', () => {
@@ -33,7 +33,7 @@ describe('Breadcrumbs reducer', () => {
           items: [
             {
               title: 'Welcome to Plone!',
-              '@id': `${config.apiPath}/front-page`,
+              '@id': `${settings.apiPath}/front-page`,
             },
           ],
         },

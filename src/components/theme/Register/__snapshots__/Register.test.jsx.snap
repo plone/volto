@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register renders a register component 1`] = `
+<div
+  id="page-register"
+>
+  <div
+    className="ui container"
+  >
+    <form
+      className="ui form"
+      method="post"
+      onSubmit={[Function]}
+    >
+      <div
+        className="ui raised segments"
+      >
+        <div
+          className="ui segment"
+        >
+          <div
+            className="ui segment primary"
+          >
+            Registration form
+          </div>
+          <div
+            className="inline required field help"
+          >
+            <div
+              className="ui grid"
+            >
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="four wide column"
+                >
+                  <div
+                    className="wrapper"
+                  >
+                    <label
+                      htmlFor="field-fullname"
+                    >
+                      Full Name
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="eight wide column"
+                >
+                  <div
+                    className="ui input"
+                  >
+                    <input
+                      disabled={false}
+                      id="field-fullname"
+                      name="fullname"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="stretched twelve wide column"
+                >
+                  <p
+                    className="help"
+                  >
+                    Enter full name, e.g. John Smith.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="inline required field help"
+          >
+            <div
+              className="ui grid"
+            >
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="four wide column"
+                >
+                  <div
+                    className="wrapper"
+                  >
+                    <label
+                      htmlFor="field-email"
+                    >
+                      E-mail
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="eight wide column"
+                >
+                  <div
+                    className="ui input"
+                  >
+                    <input
+                      disabled={false}
+                      id="field-email"
+                      name="email"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="stretched twelve wide column"
+                >
+                  <p
+                    className="help"
+                  >
+                    Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="ui clearing segment actions"
+        >
+          <button
+            className="ui big basic circular icon primary right floated button"
+            onClick={[Function]}
+            title="Register"
+            type="submit"
+          >
+            <i
+              aria-hidden="true"
+              className="arrow right icon"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;

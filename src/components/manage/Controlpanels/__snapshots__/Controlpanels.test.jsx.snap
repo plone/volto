@@ -35,8 +35,8 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
               className="column"
             >
               <a
+                href="/controlpanel/date-and-time"
                 onClick={[Function]}
-                style={Object {}}
               >
                 <h3
                   className="ui icon center aligned header"
@@ -57,8 +57,8 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
               className="column"
             >
               <a
+                href="/controlpanel/lang"
                 onClick={[Function]}
-                style={Object {}}
               >
                 <h3
                   className="ui icon center aligned header"
@@ -96,8 +96,8 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
               className="column"
             >
               <a
+                href="/controlpanel/editing"
                 onClick={[Function]}
-                style={Object {}}
               >
                 <h3
                   className="ui icon center aligned header"
@@ -118,8 +118,8 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
               className="column"
             >
               <a
+                href="/controlpanel/moderate-comments"
                 onClick={[Function]}
-                style={Object {}}
               >
                 <h3
                   className="ui icon center aligned header"
@@ -157,8 +157,8 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
               className="column"
             >
               <a
+                href="/controlpanel/security"
                 onClick={[Function]}
-                style={Object {}}
               >
                 <h3
                   className="ui icon center aligned header"
@@ -196,8 +196,8 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
               className="column"
             >
               <a
+                href="/controlpanel/users"
                 onClick={[Function]}
-                style={Object {}}
               >
                 <h3
                   className="ui icon center aligned header"

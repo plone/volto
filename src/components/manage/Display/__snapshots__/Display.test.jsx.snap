@@ -2,10 +2,7 @@
 
 exports[`Display renders an actions component 1`] = `
 <div
-  aria-busy={undefined}
-  aria-disabled={undefined}
   aria-expanded={false}
-  aria-multiselectable={undefined}
   className="ui item dropdown"
   id="toolbar-display"
   onBlur={[Function]}
@@ -36,8 +33,6 @@ exports[`Display renders an actions component 1`] = `
   >
     <div
       aria-checked={true}
-      aria-disabled={undefined}
-      aria-selected={undefined}
       className="active item"
       onClick={[Function]}
       role="option"

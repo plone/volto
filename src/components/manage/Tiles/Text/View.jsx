@@ -3,17 +3,20 @@
  * @module components/manage/Tiles/Text/View
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
+import redraft from 'redraft';
+
+import { settings } from '~/config';
 
 /**
  * View text tile class.
  * @class View
  * @extends Component
  */
-const View = ({ data }) => (
-  <p dangerouslySetInnerHTML={{ __html: data.text.data }} />
-);
+const View = ({ data }) =>
+  data.text
+    ? redraft(data.text, settings.ToHTMLRenderers, settings.ToHTMLOptions)
+    : '';
 
 /**
  * Property types.

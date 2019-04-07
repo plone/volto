@@ -12,8 +12,8 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
     >
       <a
         className="section"
+        href="/"
         onClick={[Function]}
-        style={Object {}}
         title="Home"
       >
         <i
@@ -28,8 +28,8 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
       </div>
       <a
         className="section"
+        href="/blog"
         onClick={[Function]}
-        style={Object {}}
       >
         Blog
       </a>
@@ -40,7 +40,6 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
       </div>
       <div
         className="active section"
-        href={undefined}
         onClick={[Function]}
       >
         My first blog

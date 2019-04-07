@@ -4,17 +4,23 @@ import { GET_TYPES } from '../../constants/ActionTypes';
 describe('Types action', () => {
   describe('getTypes', () => {
     it('should create an action to get the types', () => {
+      const getState = () => ({
+        userSession: {
+          token: 'thetoken',
+        },
+      });
       const url = '/blog';
-      const action = getTypes(url);
+      const dispatch = jest.fn();
 
-      expect(action.type).toEqual(GET_TYPES);
+      getTypes(url)(dispatch, getState);
 
-      const apiMock = {
-        get: jest.fn(),
-      };
-      action.promise(apiMock);
-
-      expect(apiMock.get).toBeCalledWith(`${url}/@types`);
+      expect(dispatch).toHaveBeenCalledWith({
+        type: GET_TYPES,
+        request: {
+          op: 'get',
+          path: `${url}/@types`,
+        },
+      });
     });
   });
 });

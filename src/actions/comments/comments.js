@@ -20,7 +20,11 @@ import {
 export function addComment(url, text) {
   return {
     type: ADD_COMMENT,
-    promise: api => api.post(`${url}/@comments`, { data: { text } }),
+    request: {
+      op: 'post',
+      path: `${url}/@comments`,
+      data: { text },
+    },
   };
 }
 
@@ -33,7 +37,10 @@ export function addComment(url, text) {
 export function listComments(url) {
   return {
     type: LIST_COMMENTS,
-    promise: api => api.get(`${url}/@comments`),
+    request: {
+      op: 'get',
+      path: `${url}/@comments`,
+    },
   };
 }
 
@@ -46,7 +53,10 @@ export function listComments(url) {
 export function deleteComment(url) {
   return {
     type: DELETE_COMMENT,
-    promise: api => api.del(url),
+    request: {
+      op: 'del',
+      path: url,
+    },
   };
 }
 
@@ -60,6 +70,10 @@ export function deleteComment(url) {
 export function updateComment(url, text) {
   return {
     type: UPDATE_COMMENT,
-    promise: api => api.patch(url, { data: { text } }),
+    request: {
+      op: 'patch',
+      path: url,
+      data: { text },
+    },
   };
 }

@@ -1,0 +1,109 @@
+---
+aiohttp_settings:
+  client_max_size: 20971520
+databases:
+- db:
+    storage: postgresql
+    dsn: postgresql://guillotina@postgres:5432/guillotina
+    pool_size: 100
+applications:
+- guillotina_swagger
+- guillotina_dbusers
+- guillotina_cms
+- guillotina_elasticsearch
+- guillotina_rediscache
+address: 8081
+static:
+- favicon.png: static/favicon.png
+- swagger_static: guillotina_swagger:static
+# - pastanaga: pastanaga-angular/dist
+# - ng: plone-angular-demo/dist
+# - plone: volto
+root_user:
+  password: root
+auth_extractors:
+- guillotina.auth.extractors.CookiePolicy
+- guillotina.auth.extractors.BearerAuthPolicy
+- guillotina.auth.extractors.BasicAuthPolicy
+- guillotina.auth.extractors.WSTokenAuthPolicy
+auth_token_validators:
+- guillotina.auth.validators.SaltedHashPasswordValidator
+- guillotina.auth.validators.JWTValidator
+redis:
+  host: "redis"
+  port: 6380
+jwt:
+  secret: secret
+  algorithm: HS256
+jsapps:
+  +admin: guillotina:static/executioner
+cors:
+  allow_origin:
+  - "*"
+  allow_methods:
+  - GET
+  - POST
+  - DELETE
+  - HEAD
+  - PATCH
+  - OPTIONS
+  allow_headers:
+  - "*"
+  expose_headers:
+  - "*"
+  allow_credentials: true
+  max_age: 3660
+elasticsearch:
+  bulk_size: 20
+  index_name_prefix: plone-
+  connection_settings:
+    hosts:
+    - elasticsearch:9200
+    sniffer_timeout: 0.5
+  index: {}
+  mapping_overrides:
+    "*": {}
+utilities:
+- provides: guillotina.async_util.IQueueUtility
+  factory: guillotina.async_util.QueueUtility
+  settings: {}
+- provides: guillotina_cms.interfaces.IWorkflowUtility
+  factory: guillotina_cms.utilities.workflow.WorkflowUtility
+  settings: {}
+- provides: guillotina_cms.interfaces.IPubSubUtility
+  factory: guillotina_cms.utilities.pubsub.PubSubUtility
+  settings: {}
+search_parser: guillotina_cms.search.parser.Parser
+default_tiles:
+  Document:
+  - type: title
+  - type: text
+workflows:
+  basic:
+    initial_state: private
+    states:
+      private:
+        actions:
+            publish:
+                title: Publish
+                to: public
+                check_permission: guillotina.ReviewContent
+        set_permission:
+            roleperm:
+            - setting: Allow
+              role: guillotina.Anonymous
+              permission: guillotina.ViewContent
+      public:
+        actions:
+            retire:
+                title: Retire
+                to: private
+                check_permission: guillotina.ReviewContent
+        set_permission:
+            roleperm:
+            - setting: Deny
+              role: guillotina.Anonymous
+              permission: guillotina.ViewContent
+workflows_content:
+  guillotina.interfaces.IResource: basic
+  guillotina_cms.content.document.IDocument: basic

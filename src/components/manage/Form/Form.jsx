@@ -10,21 +10,16 @@ import move from 'lodash-move';
 import {
   Button,
   Container,
-  Dropdown,
   Form as UiForm,
   Segment,
   Tab,
   Message,
 } from 'semantic-ui-react';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 
 import { EditTile, Field } from '../../../components';
+import { getTilesFieldname, getTilesLayoutFieldname } from '../../../helpers';
 
 const messages = defineMessages({
   addTile: {
@@ -82,6 +77,7 @@ class Form extends Component {
         }),
       ),
       properties: PropTypes.objectOf(PropTypes.any),
+      definitions: PropTypes.objectOf(PropTypes.any),
       required: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
     formData: PropTypes.objectOf(PropTypes.any),
@@ -137,16 +133,21 @@ class Form extends Component {
       text: uuid(),
     };
     let { formData } = props;
+    const tilesFieldname = getTilesFieldname(formData);
+    const tilesLayoutFieldname = getTilesLayoutFieldname(formData);
+
     if (formData === null) {
       // get defaults from schema
       formData = mapValues(props.schema.properties, 'default');
     }
     // defaults for block editor; should be moved to schema on server side
-    if (!formData.tiles_layout) {
-      formData.tiles_layout = { items: [ids.title, ids.description, ids.text] };
+    if (!formData[tilesLayoutFieldname]) {
+      formData[tilesLayoutFieldname] = {
+        items: [ids.title, ids.description, ids.text],
+      };
     }
-    if (!formData.tiles) {
-      formData.tiles = {
+    if (!formData[tilesFieldname]) {
+      formData[tilesFieldname] = {
         [ids.title]: {
           '@type': 'title',
         },
@@ -155,26 +156,28 @@ class Form extends Component {
         },
         [ids.text]: {
           '@type': 'text',
-          text: {
-            'content-type': 'text/html',
-            data: '',
-            encoding: 'utf8',
-          },
         },
       };
     }
     this.state = {
       formData,
       errors: {},
-      selected: null,
+      selected:
+        formData[tilesLayoutFieldname].items.length > 0
+          ? formData[tilesLayoutFieldname].items[0]
+          : null,
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeTile = this.onChangeTile.bind(this);
+    this.onMutateTile = this.onMutateTile.bind(this);
     this.onSelectTile = this.onSelectTile.bind(this);
     this.onDeleteTile = this.onDeleteTile.bind(this);
     this.onAddTile = this.onAddTile.bind(this);
     this.onMoveTile = this.onMoveTile.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onFocusPreviousTile = this.onFocusPreviousTile.bind(this);
+    this.onFocusNextTile = this.onFocusNextTile.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   /**
@@ -201,12 +204,48 @@ class Form extends Component {
    * @returns {undefined}
    */
   onChangeTile(id, value) {
+    const tilesFieldname = getTilesFieldname(this.state.formData);
     this.setState({
       formData: {
         ...this.state.formData,
-        tiles: {
-          ...this.state.formData.tiles,
+        [tilesFieldname]: {
+          ...this.state.formData[tilesFieldname],
           [id]: value || null,
+        },
+      },
+    });
+  }
+
+  /**
+   * Change tile handler
+   * @method onMutateTile
+   * @param {string} id Id of the tile
+   * @param {*} value Value of the field
+   * @returns {undefined}
+   */
+  onMutateTile(id, value) {
+    const idTrailingTile = uuid();
+    const tilesFieldname = getTilesFieldname(this.state.formData);
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+    const index =
+      this.state.formData[tilesLayoutFieldname].items.indexOf(id) + 1;
+
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        [tilesFieldname]: {
+          ...this.state.formData[tilesFieldname],
+          [id]: value || null,
+          [idTrailingTile]: {
+            '@type': 'text',
+          },
+        },
+        [tilesLayoutFieldname]: {
+          items: [
+            ...this.state.formData[tilesLayoutFieldname].items.slice(0, index),
+            idTrailingTile,
+            ...this.state.formData[tilesLayoutFieldname].items.slice(index),
+          ],
         },
       },
     });
@@ -228,44 +267,71 @@ class Form extends Component {
    * Delete tile handler
    * @method onDeleteTile
    * @param {string} id Id of the field
+   * @param {bool} selectPrev True if previous should be selected
    * @returns {undefined}
    */
-  onDeleteTile(id) {
+  onDeleteTile(id, selectPrev) {
+    const tilesFieldname = getTilesFieldname(this.state.formData);
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+
     this.setState({
       formData: {
         ...this.state.formData,
-        tiles_layout: {
-          items: without(this.state.formData.tiles_layout.items, id),
+        [tilesLayoutFieldname]: {
+          items: without(this.state.formData[tilesLayoutFieldname].items, id),
         },
-        tiles: omit(this.state.formData.tiles, [id]),
+        [tilesFieldname]: omit(this.state.formData[tilesFieldname], [id]),
       },
-      selected: null,
+      selected: selectPrev
+        ? this.state.formData[tilesLayoutFieldname].items[
+            this.state.formData[tilesLayoutFieldname].items.indexOf(id) - 1
+          ]
+        : null,
     });
   }
 
   /**
-   * Select tile handler
-   * @method onSelectTile
+   * Add tile handler
+   * @method onAddTile
    * @param {string} type Type of the tile
-   * @returns {undefined}
+   * @param {Number} index Index where to add the tile
+   * @returns {string} Id of the tile
    */
-  onAddTile(type) {
+  onAddTile(type, index) {
     const id = uuid();
+    const idTrailingTile = uuid();
+    const tilesFieldname = getTilesFieldname(this.state.formData);
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+    const totalItems = this.state.formData[tilesLayoutFieldname].items.length;
+    const insert = index === -1 ? totalItems : index;
+
     this.setState({
       formData: {
         ...this.state.formData,
-        tiles_layout: {
-          items: [...this.state.formData.tiles_layout.items, id],
+        [tilesLayoutFieldname]: {
+          items: [
+            ...this.state.formData[tilesLayoutFieldname].items.slice(0, insert),
+            id,
+            ...(type !== 'text' ? [idTrailingTile] : []),
+            ...this.state.formData[tilesLayoutFieldname].items.slice(insert),
+          ],
         },
-        tiles: {
-          ...this.state.formData.tiles,
+        [tilesFieldname]: {
+          ...this.state.formData[tilesFieldname],
           [id]: {
             '@type': type,
           },
+          ...(type !== 'text' && {
+            [idTrailingTile]: {
+              '@type': 'text',
+            },
+          }),
         },
       },
       selected: id,
     });
+
+    return id;
   }
 
   /**
@@ -329,18 +395,109 @@ class Form extends Component {
    * @returns {undefined}
    */
   onMoveTile(dragIndex, hoverIndex) {
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+
     this.setState({
       formData: {
         ...this.state.formData,
-        tiles_layout: {
+        [tilesLayoutFieldname]: {
           items: move(
-            this.state.formData.tiles_layout.items,
+            this.state.formData[tilesLayoutFieldname].items,
             dragIndex,
             hoverIndex,
           ),
         },
       },
     });
+  }
+
+  /**
+   *
+   * @method onFocusPreviousTile
+   * @param {string} currentTile The id of the current tile
+   * @param {node} tileNode The id of the current tile
+   * @returns {undefined}
+   */
+  onFocusPreviousTile(currentTile, tileNode) {
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+    const currentIndex = this.state.formData[
+      tilesLayoutFieldname
+    ].items.indexOf(currentTile);
+
+    if (currentIndex === 0) {
+      // We are already at the top tile don't do anything
+      return;
+    }
+    const newindex = currentIndex - 1;
+    tileNode.blur();
+
+    this.onSelectTile(
+      this.state.formData[tilesLayoutFieldname].items[newindex],
+    );
+  }
+
+  /**
+   *
+   * @method onFocusNextTile
+   * @param {string} currentTile The id of the current tile
+   * @param {node} tileNode The id of the current tile
+   * @returns {undefined}
+   */
+  onFocusNextTile(currentTile, tileNode) {
+    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+    const currentIndex = this.state.formData[
+      tilesLayoutFieldname
+    ].items.indexOf(currentTile);
+
+    if (
+      currentIndex ===
+      this.state.formData[tilesLayoutFieldname].items.length - 1
+    ) {
+      // We are already at the bottom tile don't do anything
+      return;
+    }
+
+    const newindex = currentIndex + 1;
+    tileNode.blur();
+
+    this.onSelectTile(
+      this.state.formData[tilesLayoutFieldname].items[newindex],
+    );
+  }
+
+  /**
+   * handleKeyDown, sports a way to disable the listeners via an options named
+   * parameter
+   * @method handleKeyDown
+   * @param {object} e Event
+   * @param {number} index Tile index
+   * @param {string} tile Tile type
+   * @param {node} node The tile node
+   * @returns {undefined}
+   */
+  handleKeyDown(
+    e,
+    index,
+    tile,
+    node,
+    {
+      disableEnter = false,
+      disableArrowUp = false,
+      disableArrowDown = false,
+    } = {},
+  ) {
+    if (e.key === 'ArrowUp' && !disableArrowUp) {
+      this.onFocusPreviousTile(tile, node);
+      e.preventDefault();
+    }
+    if (e.key === 'ArrowDown' && !disableArrowDown) {
+      this.onFocusNextTile(tile, node);
+      e.preventDefault();
+    }
+    if (e.key === 'Enter' && !disableEnter) {
+      this.onAddTile('text', index + 1);
+      e.preventDefault();
+    }
   }
 
   /**
@@ -351,68 +508,35 @@ class Form extends Component {
   render() {
     const { schema, onCancel, onSubmit } = this.props;
     const { formData } = this.state;
-
+    const tilesFieldname = getTilesFieldname(formData);
+    const tilesLayoutFieldname = getTilesLayoutFieldname(formData);
+    const renderTiles = formData[tilesLayoutFieldname].items;
+    const tilesDict = formData[tilesFieldname];
     return this.props.visual ? (
       <div className="ui wrapper">
-        {map(formData.tiles_layout.items, (tile, index) => (
+        {map(renderTiles, (tile, index) => (
           <EditTile
             id={tile}
             index={index}
-            type={formData.tiles[tile]['@type']}
+            type={tilesDict[tile]['@type']}
             key={tile}
+            handleKeyDown={this.handleKeyDown}
+            onAddTile={this.onAddTile}
             onChangeTile={this.onChangeTile}
+            onMutateTile={this.onMutateTile}
             onChangeField={this.onChangeField}
             onDeleteTile={this.onDeleteTile}
             onSelectTile={this.onSelectTile}
             onMoveTile={this.onMoveTile}
+            onFocusPreviousTile={this.onFocusPreviousTile}
+            onFocusNextTile={this.onFocusNextTile}
             properties={formData}
-            data={formData.tiles[tile]}
+            data={tilesDict[tile]}
             pathname={this.props.pathname}
             tile={tile}
             selected={this.state.selected === tile}
           />
         ))}
-        <div>
-          <Dropdown
-            trigger={
-              <Button
-                basic
-                circular
-                icon="plus"
-                title={
-                  this.props.submitLabel
-                    ? this.props.submitLabel
-                    : this.props.intl.formatMessage(messages.save)
-                }
-              />
-            }
-            icon={null}
-          >
-            <Dropdown.Menu>
-              <Dropdown.Header
-                content={this.props.intl.formatMessage(messages.addTile)}
-              />
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'title')}>
-                <FormattedMessage id="Title" defaultMessage="Title" />
-              </Dropdown.Item>
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'description')}>
-                <FormattedMessage
-                  id="Description"
-                  defaultMessage="Description"
-                />
-              </Dropdown.Item>
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'text')}>
-                <FormattedMessage id="Text" defaultMessage="Text" />
-              </Dropdown.Item>
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'image')}>
-                <FormattedMessage id="Image" defaultMessage="Image" />
-              </Dropdown.Item>
-              <Dropdown.Item onClick={this.onAddTile.bind(this, 'video')}>
-                <FormattedMessage id="Video" defaultMessage="Video" />
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </div>
       </div>
     ) : (
       <Container>
@@ -434,14 +558,15 @@ class Form extends Component {
                   menuItem: item.title,
                   render: () => [
                     this.props.title && (
-                      <Segment secondary attached>
+                      <Segment secondary attached key={this.props.title}>
                         {this.props.title}
                       </Segment>
                     ),
-                    ...map(item.fields, field => (
+                    ...map(item.fields, (field, index) => (
                       <Field
                         {...schema.properties[field]}
                         id={field}
+                        focus={index === 0}
                         value={this.state.formData[field]}
                         required={schema.required.indexOf(field) !== -1}
                         onChange={this.onChangeField}

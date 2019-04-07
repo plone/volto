@@ -3,6 +3,8 @@
  * @module reducers/schema/schema
  */
 
+import { flatten, keys, pickBy, isArray, map, mapKeys, merge } from 'lodash';
+
 import { GET_SCHEMA } from '../../constants/ActionTypes';
 
 const initialState = {
@@ -34,7 +36,33 @@ export default function schema(state = initialState, action = {}) {
         error: null,
         loading: false,
         loaded: true,
-        schema: action.result,
+        schema: {
+          ...action.result,
+          required: [
+            ...action.result.required,
+            ...flatten(
+              map(keys(pickBy(action.result.properties, isArray)), fieldset =>
+                map(
+                  action.result.definitions[fieldset].required,
+                  required => `${fieldset}.${required}`,
+                ),
+              ),
+            ),
+          ],
+          properties: {
+            ...action.result.properties,
+            ...merge(
+              ...map(
+                keys(pickBy(action.result.properties, isArray)),
+                fieldset =>
+                  mapKeys(
+                    action.result.definitions[fieldset].properties,
+                    (value, key) => `${fieldset}.${key}`,
+                  ),
+              ),
+            ),
+          },
+        },
       };
     case `${GET_SCHEMA}_FAIL`:
       return {

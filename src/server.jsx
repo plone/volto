@@ -1,35 +1,39 @@
-// server
-import express from 'express';
-import http from 'http';
-import SocketIO from 'socket.io';
-import expressHealthcheck from 'express-healthcheck';
-import debugLogger from 'debug-logger';
-import frameguard from 'frameguard';
 import React from 'react';
-import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
-import { renderToStaticMarkup } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-intl-redux';
-import { match, createMemoryHistory, RouterContext } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
-import cookie, { plugToRequest } from 'react-cookie';
-import { urlencoded } from 'body-parser';
-import locale from 'locale';
+import express from 'express';
+import { renderToString } from 'react-dom/server';
+import { createMemoryHistory } from 'history';
+import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
+import { parse as parseUrl } from 'url';
 import { keys } from 'lodash';
 import Raven from 'raven';
+import cookie, { plugToRequest } from 'react-cookie';
+import locale from 'locale';
 
-import nlLocale from '../dist/locales/nl.json';
-import deLocale from '../dist/locales/de.json';
-import enLocale from '../dist/locales/en.json';
+import routes from '~/routes';
+import nlLocale from '~/../locales/nl.json';
+import deLocale from '~/../locales/de.json';
+import enLocale from '~/../locales/en.json';
 
-import { Html, Api, persistAuthToken, generateSitemap } from './helpers';
-import ErrorPage from './error';
-import getRoutes from './routes';
-import configureStore from './store';
-import config from './config';
+import {
+  Html,
+  Api,
+  persistAuthToken,
+  generateSitemap,
+  getAPIResourceWithAuth,
+} from './helpers';
+
 import userSession from './reducers/userSession/userSession';
+
+import ErrorPage from './error';
+
 import languages from './constants/Languages';
 
-const debug = debugLogger('plone-react:server');
+import configureStore from './store';
+
+const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
+
 const supported = new locale.Locales(keys(languages), 'en');
 const locales = {
   en: enLocale,
@@ -37,39 +41,25 @@ const locales = {
   de: deLocale,
 };
 
-export default parameters => {
-  const app = express();
-  const server = http.Server(app);
-  const io = new SocketIO(server);
-  const staticPath = __dirname;
-
-  if (process.env.SENTRY_DSN) {
-    Raven.config(process.env.SENTRY_DSN).install();
-  }
-
-  io.on('connection', () => {
-    debug.info('user connected');
-  });
-
-  app.use(frameguard({ action: 'deny' }));
-  app.use(urlencoded({ extended: false }));
-
-  // Serve static files
-  app.use(express.static(__dirname));
-  app.use('/assets', express.static(__dirname));
-
-  app.use('/healthcheck', expressHealthcheck());
-
-  // React application rendering
-  app.use((req, res) => {
+const server = express();
+server
+  .disable('x-powered-by')
+  .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+  .get('/*', (req, res) => {
     plugToRequest(req, res);
+    const api = new Api(req);
+
+    const url = req.originalUrl || req.url;
+    const location = parseUrl(url);
+
     const lang = new locale.Locales(
       cookie.load('lang') || req.headers['accept-language'],
     )
       .best(supported)
       .toString();
-    const api = new Api(req);
+
     const authToken = cookie.load('auth_token');
+
     const initialState = {
       userSession: { ...userSession(), token: authToken },
       form: req.body,
@@ -79,112 +69,78 @@ export default parameters => {
         messages: locales[lang],
       },
     };
-    const memoryHistory = createMemoryHistory(req.path);
-    const store = configureStore(initialState, memoryHistory, false, api);
+    const history = createMemoryHistory({
+      initialEntries: [req.url],
+    });
+
+    // Create a new Redux store instance
+    const store = configureStore(initialState, history, api);
+
     persistAuthToken(store);
-    const history = syncHistoryWithStore(memoryHistory, store);
 
-    match(
-      {
-        history,
-        routes: getRoutes(store),
-        location: req.originalUrl,
-      },
-      (err, redirectInfo, routeState) => {
-        // eslint-disable-line complexity
-        if (redirectInfo && redirectInfo.redirectInfo) {
-          res.redirect(redirectInfo.path);
-        } else if (err) {
-          res.error(err.message);
-        } else if (routeState) {
-          // eslint-disable-line no-lonely-if
-          if (__SSR__) {
-            if (req.path === '/sitemap.xml.gz') {
-              generateSitemap(req).then(sitemap => {
-                res.header('Content-Type: application/x-gzip');
-                res.header('Content-Encoding: gzip');
-                res.header(
-                  'Content-Disposition: attachment; filename="sitemap.xml.gz"',
-                );
-                res.send(sitemap);
-              });
-            } else {
-              loadOnServer({ ...routeState, store })
-                .then(() => {
-                  const component = (
-                    <Provider store={store}>
-                      <ReduxAsyncConnect {...routeState} />
-                    </Provider>
-                  );
-                  res.set({
-                    'Cache-Control': 'public, max-age=600, no-transform',
-                  });
-                  res
-                    .status(200)
-                    .send(
-                      `<!doctype html> ${renderToStaticMarkup(
-                        <Html
-                          assets={parameters.chunks()}
-                          component={component}
-                          store={store}
-                          staticPath={staticPath}
-                        />,
-                      )}`,
-                    );
-                })
-                .catch(error => {
-                  const errorPage = <ErrorPage message={error.message} />;
-
-                  if (process.env.SENTRY_DSN) {
-                    Raven.captureException(error.message, {
-                      extra: JSON.stringify(error),
-                    });
-                  }
-                  res.set({
-                    'Cache-Control': 'public, max-age=60, no-transform',
-                  });
-                  res
-                    .status(500)
-                    .send(`<!doctype html> ${renderToStaticMarkup(errorPage)}`);
-                });
-            }
-          } else {
-            const component = (
-              <Provider store={store}>
-                <RouterContext {...routeState} />
-              </Provider>
-            ); // eslint-disable-line max-len
-            res.set({ 'Cache-Control': 'public, max-age=60, no-transform' });
-            res
-              .status(200)
-              .send(
-                `<!doctype html> ${renderToStaticMarkup(
-                  <Html
-                    assets={parameters.chunks()}
-                    component={component}
-                    store={store}
-                    staticPath={staticPath}
-                  />,
-                )}`,
-              );
-          }
-        } else {
-          res.set({ 'Cache-Control': 'public, max-age=3600, no-transform' });
-          res.sendStatus(404);
+    if (req.path === '/sitemap.xml.gz') {
+      generateSitemap(req).then(sitemap => {
+        res.set('Content-Type', 'application/x-gzip');
+        res.set('Content-Encoding', 'gzip');
+        res.set('Content-Disposition', 'attachment; filename="sitemap.xml.gz"');
+        res.send(sitemap);
+      });
+    } else if (
+      req.path.match(/(.*)\/@@images\/(.*)/) ||
+      req.path.match(/(.*)\/@@download\/(.*)/)
+    ) {
+      getAPIResourceWithAuth(req).then(resource => {
+        res.set('Content-Type', resource.headers['content-type']);
+        if (resource.headers['content-disposition']) {
+          res.set(
+            'Content-Disposition',
+            resource.headers['content-disposition'],
+          );
         }
-      },
-    );
-  });
-
-  // Start the HTTP server
-  app.listen(config.port, err => {
-    if (err) {
-      debug.error(err);
+        res.send(resource.body);
+      });
     } else {
-      debug.info(
-        '==> 🚧  Webpack development server listening on port %s',
-        config.port,
-      );
+      loadOnServer({ store, location, routes, api })
+        .then(() => {
+          const context = {};
+          const markup = renderToString(
+            <Provider store={store}>
+              <StaticRouter context={context} location={req.url}>
+                <ReduxAsyncConnect routes={routes} helpers={api} />
+              </StaticRouter>
+            </Provider>,
+          );
+
+          if (context.url) {
+            res.redirect(context.url);
+          } else {
+            res.status(200).send(
+              `<!doctype html>
+                ${renderToString(
+                  <Html assets={assets} markup={markup} store={store} />,
+                )}
+              `,
+            );
+          }
+        })
+        .catch(error => {
+          const errorPage = <ErrorPage message={error.message} />;
+
+          if (process.env.SENTRY_DSN) {
+            Raven.captureException(error.message, {
+              extra: JSON.stringify(error),
+            });
+          }
+          res.set({
+            'Cache-Control': 'public, max-age=60, no-transform',
+          });
+
+          // Displays error in console
+          console.error(error);
+
+          res.status(500).send(`<!doctype html> ${renderToString(errorPage)}`);
+        });
     }
   });
-};
+
+export default server;

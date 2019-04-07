@@ -7,15 +7,15 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
-import Helmet from 'react-helmet';
 import { Segment } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import Raven from 'raven-js';
+import { renderRoutes } from 'react-router-config';
 
 import Error from '../../../error';
 
 import { Breadcrumbs, Footer, Header, Messages } from '../../../components';
-import { getBaseUrl, getView } from '../../../helpers';
+import { BodyClass, getBaseUrl, getView } from '../../../helpers';
 import {
   getBreadcrumbs,
   getContent,
@@ -41,7 +41,6 @@ export class AppComponent extends Component {
    * @static
    */
   static propTypes = {
-    children: PropTypes.element.isRequired,
     pathname: PropTypes.string.isRequired,
     purgeMessages: PropTypes.func.isRequired,
   };
@@ -105,11 +104,7 @@ export class AppComponent extends Component {
 
     return (
       <Fragment>
-        <Helmet
-          bodyAttributes={{
-            class: `view-${action}view`,
-          }}
-        />
+        <BodyClass className={`view-${action}view`} />
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
         <Segment basic className="content-area">
@@ -121,7 +116,7 @@ export class AppComponent extends Component {
                 stackTrace={this.state.errorInfo.componentStack}
               />
             ) : (
-              this.props.children
+              renderRoutes(this.props.route.routes)
             )}
           </main>
         </Segment>

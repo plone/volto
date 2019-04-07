@@ -1,18 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tags renders with tags 1`] = `
-<div>
+<div
+  className="ui container"
+>
   <a
     className="ui label"
+    href="/search?Subject=Tag 1"
     onClick={[Function]}
-    style={Object {}}
   >
     Tag 1
   </a>
   <a
     className="ui label"
+    href="/search?Subject=Tag 2"
     onClick={[Function]}
-    style={Object {}}
   >
     Tag 2
   </a>
