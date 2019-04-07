@@ -17,7 +17,7 @@ describe('Vocabularies reducer', () => {
         error: null,
         loaded: false,
         loading: true,
-        terms: [],
+        items: [],
       },
     });
   });
@@ -28,7 +28,7 @@ describe('Vocabularies reducer', () => {
         type: `${GET_VOCABULARY}_SUCCESS`,
         vocabulary: 'plone.app.vocabularies.Keywords',
         result: {
-          terms: [
+          items: [
             {
               '@id': '/tag',
               title: 'Tag',
@@ -42,7 +42,7 @@ describe('Vocabularies reducer', () => {
         error: null,
         loaded: true,
         loading: false,
-        terms: [
+        items: [
           {
             '@id': '/tag',
             title: 'Tag',

@@ -15,21 +15,21 @@ const initialState = {};
  * @returns {Object} New state.
  */
 export default function vocabularies(state = initialState, action = {}) {
-  const vocabState = state[action.vocabBaseUrl] || {};
+  const vocabState = state[action.vocabulary] || {};
   let items;
   switch (action.type) {
     case `${GET_VOCABULARY}_PENDING`:
       return {
         ...state,
-        [action.vocabBaseUrl]: {
+        [action.vocabulary]: {
           error: null,
           loaded: vocabState.loaded || false,
-          loading: (vocabState.loading || 0) + 1,
+          loading: !!((vocabState.loading || 0) + 1),
           items: [],
         },
       };
     case `${GET_VOCABULARY}_SUCCESS`:
-      items = [...vocabState.items];
+      items = vocabState.items ? [...vocabState.items] : [];
       items.splice(
         action.start,
         action.result.items.length,
@@ -37,10 +37,10 @@ export default function vocabularies(state = initialState, action = {}) {
       );
       return {
         ...state,
-        [action.vocabBaseUrl]: {
+        [action.vocabulary]: {
           error: null,
           loaded: true,
-          loading: vocabState.loading - 1,
+          loading: !!(vocabState.loading - 1),
           items,
           batching: action.result.batching,
         },
@@ -48,10 +48,10 @@ export default function vocabularies(state = initialState, action = {}) {
     case `${GET_VOCABULARY}_FAIL`:
       return {
         ...state,
-        [action.vocabBaseUrl]: {
+        [action.vocabulary]: {
           error: action.error,
           loaded: false,
-          loading: vocabState.loading - 1,
+          loading: !!(vocabState.loading - 1),
         },
       };
     default:
