@@ -10,9 +10,15 @@ import { concat, debounce, map, uniqBy } from 'lodash';
 import { connect } from 'react-redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { bindActionCreators } from 'redux';
+import Select, { components } from 'react-select';
 import AsyncPaginate from 'react-select-async-paginate';
 
 import { getVocabulary } from '../../../actions';
+import { Icon } from '../../../components';
+
+import downSVG from '../../../icons/down-key.svg';
+import upSVG from '../../../icons/up-key.svg';
+import checkSVG from '../../../icons/check.svg';
 
 const messages = defineMessages({
   no_results_found: {
@@ -20,6 +26,84 @@ const messages = defineMessages({
     defaultMessage: 'No results found.',
   },
 });
+
+const Option = props => {
+  // console.log(props);
+  return (
+    <components.Option {...props}>
+      <div>{props.label}</div>
+      {props.isFocused &&
+        !props.isSelected && (
+          <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+        )}
+      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
+    </components.Option>
+  );
+};
+
+const DropdownIndicator = props => {
+  return (
+    <components.DropdownIndicator {...props}>
+      {props.selectProps.menuIsOpen ? (
+        <Icon name={upSVG} size="24px" color="#007bc1" />
+      ) : (
+        <Icon name={downSVG} size="24px" color="#007bc1" />
+      )}
+    </components.DropdownIndicator>
+  );
+};
+
+const selectTheme = theme => ({
+  ...theme,
+  borderRadius: 0,
+  colors: {
+    ...theme.colors,
+    primary25: 'hotpink',
+    primary: '#b8c6c8',
+  },
+});
+
+const customSelectStyles = {
+  control: (styles, state) => ({
+    ...styles,
+    border: 'none',
+    borderBottom: '2px solid #b8c6c8',
+    boxShadow: 'none',
+    borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
+  }),
+  menu: (styles, state) => ({
+    ...styles,
+    top: null,
+    marginTop: 0,
+    boxShadow: 'none',
+    borderBottom: '2px solid #b8c6c8',
+  }),
+  indicatorSeparator: styles => ({
+    ...styles,
+    width: null,
+  }),
+  valueContainer: styles => ({
+    ...styles,
+    // paddingLeft: 0,
+  }),
+  option: (styles, state) => ({
+    ...styles,
+    backgroundColor: null,
+    height: '50px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '14px 12px',
+    color: state.isSelected
+      ? '#007bc1'
+      : state.isFocused
+        ? '#4a4a4a'
+        : 'inherit',
+    ':active': {
+      backgroundColor: null,
+    },
+  }),
+};
 
 @injectIntl
 @connect(
@@ -98,60 +182,66 @@ export default class ArrayWidget extends Component {
    */
   constructor(props) {
     super(props);
-    this.onAddItem = this.onAddItem.bind(this);
-    this.getOptions = this.getOptions.bind(this);
     this.search = this.search.bind(this);
     this.loadOptions = this.loadOptions.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.vocabBaseUrl =
       props.widgetOptions.vocabulary || props.items.vocabulary;
     this.state = {
-      choices: [],
       search: '',
+      selectedOption: props.value
+        ? props.value.map(item => ({ label: item, value: item }))
+        : [],
     };
   }
 
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
   componentDidMount() {
     this.props.getVocabulary(this.vocabBaseUrl);
   }
 
-  /**
-   * On add item handler
-   * @method onAddItem
-   * @param {Object} event Event object.
-   * @param {string} value Value to add.
-   * @returns {undefined}
-   */
-  onAddItem(event, { value }) {
-    this.setState({
-      choices: [{ text: value, value, id: value }, ...this.state.choices],
-    });
-  }
+  // /**
+  //  * On add item handler
+  //  * @method onAddItem
+  //  * @param {Object} event Event object.
+  //  * @param {string} value Value to add.
+  //  * @returns {undefined}
+  //  */
+  // onAddItem(event, { value }) {
+  //   this.setState({
+  //     choices: [{ text: value, value, id: value }, ...this.state.choices],
+  //   });
+  // }
 
-  /**
-   * Format options for semantic-ui Dropdown
-   * @returns {Array} Options.
-   */
-  getOptions() {
-    return uniqBy(
-      concat(
-        this.props.choices
-          ? map(this.props.choices, choice => ({
-              key: choice.token,
-              text: choice.title,
-              value: choice.token,
-            }))
-          : [],
-        this.props.value
-          ? map(this.props.value, value => ({
-              key: value,
-              text: value,
-              value,
-            }))
-          : [],
-      ),
-      'key',
-    );
-  }
+  // /**
+  //  * Format options for semantic-ui Dropdown
+  //  * @returns {Array} Options.
+  //  */
+  // getOptions() {
+  //   return uniqBy(
+  //     concat(
+  //       this.props.choices
+  //         ? map(this.props.choices, choice => ({
+  //             key: choice.token,
+  //             text: choice.title,
+  //             value: choice.token,
+  //           }))
+  //         : [],
+  //       this.props.value
+  //         ? map(this.props.value, value => ({
+  //             key: value,
+  //             text: value,
+  //             value,
+  //           }))
+  //         : [],
+  //     ),
+  //     'key',
+  //   );
+  // }
 
   /**
    * Initiate search with new query
@@ -185,25 +275,26 @@ export default class ArrayWidget extends Component {
     };
   }
 
-  setValue() {
-    debugger;
+  /**
+   * Handle the field change, store it in the local state and back to simple
+   * array of tokens for correct serialization
+   * @method handleChange
+   * @param {array} selectedOption The selected options (already aggregated).
+   * @returns {undefined}
+   */
+  handleChange(selectedOption) {
+    this.setState({ selectedOption });
+    this.props.onChange(this.props.id, selectedOption.map(item => item.value));
   }
+
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    const {
-      id,
-      title,
-      required,
-      description,
-      error,
-      value,
-      onChange,
-      loading,
-    } = this.props;
+    const { id, title, required, description, error } = this.props;
+    const { selectedOption } = this.state;
     return (
       <Form.Field
         inline
@@ -220,14 +311,31 @@ export default class ArrayWidget extends Component {
             </Grid.Column>
             <Grid.Column width="8">
               <AsyncPaginate
-                // value={value || []}
+                className="react-select-container"
+                classNamePrefix="react-select"
                 options={this.props.choices || []}
+                styles={customSelectStyles}
+                theme={selectTheme}
+                components={{ DropdownIndicator, Option }}
+                isMulti
+                value={selectedOption || []}
                 loadOptions={this.loadOptions}
-                onChange={(event, data) => onChange(id, data.value)}
+                onChange={this.handleChange}
                 additional={{
                   offset: 25,
                 }}
               />
+              {/* <Select
+                className="react-select-container"
+                classNamePrefix="react-select"
+                options={this.props.choices || []}
+                menuIsOpen
+                styles={customSelectStyles}
+                theme={selectTheme}
+                components={{ DropdownIndicator, Option }}
+                value={[{ label: 'Africa/Accra', value: 'Africa/Accra' }]}
+                isMulti
+              /> */}
 
               {/* <Dropdown
                 options={this.getOptions()}
