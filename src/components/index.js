@@ -87,6 +87,8 @@ export Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 export Types from '@plone/volto/components/manage/Types/Types';
 export WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 export Workflow from '@plone/volto/components/manage/Workflow/Workflow';
+export ObjectBrowser from '@plone/volto/components/manage/ObjectBrowser/ObjectBrowser';
+export TileToolbar from '@plone/volto/components/manage/TileToolbar/TileToolbar';
 
 export EditDescriptionTile from '@plone/volto/components/manage/Tiles/Description/Edit';
 export EditTitleTile from '@plone/volto/components/manage/Tiles/Title/Edit';
