@@ -18,6 +18,7 @@ export Breadcrumbs from '@plone/volto/components/theme/Breadcrumbs/Breadcrumbs';
 export Footer from '@plone/volto/components/theme/Footer/Footer';
 export Header from '@plone/volto/components/theme/Header/Header';
 export Icon from '@plone/volto/components/theme/Icon/Icon';
+// export AsyncIcon from '@plone/volto/components/theme/Icon/AsyncIcon';
 export Logo from '@plone/volto/components/theme/Logo/Logo';
 export Navigation from '@plone/volto/components/theme/Navigation/Navigation';
 export SearchWidget from '@plone/volto/components/theme/SearchWidget/SearchWidget';

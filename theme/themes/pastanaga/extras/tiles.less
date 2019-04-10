@@ -451,3 +451,106 @@
 .token.entity {
   cursor: help;
 }
+
+// Object Browser Container
+.object-browser-container {
+  button {
+    // Default reset for button
+    padding: 0;
+    border: 0;
+    background: transparent;
+    text-align: initial;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  header {
+    display: flex;
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 20px;
+    border-bottom: 4px solid #b8c6c8;
+
+    h2 {
+      flex: 1 0 auto;
+      margin: 0 !important;
+      color: #252525;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    a {
+      display: flex;
+    }
+
+    &.pulled {
+      justify-content: flex-start;
+      padding-right: 10px;
+      padding-left: 10px;
+
+      button {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  ul {
+    padding: 10px;
+    margin: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      cursor: pointer;
+
+      span {
+        display: flex;
+        align-items: center;
+
+        .icon {
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+// Animation
+.object-browser-container {
+}
+
+.object-browser-container-enter {
+  .object-browser-container;
+
+  transform: translate(100%, 0%);
+}
+
+.object-browser-container-enter.object-browser-container-enter-active {
+  .object-browser-container;
+
+  transform: translate(0%, 0%);
+  transition: transform 0.5s cubic-bezier(0.09, 0.11, 0.24, 0.91);
+}
+
+.object-browser-container-enter-done {
+  .object-browser-container;
+}
+
+.object-browser-container-exit {
+  .object-browser-container;
+
+  transform: translate(0%, 0%);
+  transition: transform 0.5s cubic-bezier(0.09, 0.11, 0.24, 0.91);
+}
+
+.object-browser-container-exit.object-browser-container-exit-active {
+  .object-browser-container;
+
+  transform: translate(100%, 0%);
+  transition: transform 0.5s cubic-bezier(0.09, 0.11, 0.24, 0.91);
+}

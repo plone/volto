@@ -24,6 +24,9 @@ import imageLeftSVG from '../../../../icons/image-left.svg';
 import imageRightSVG from '../../../../icons/image-right.svg';
 import imageFitSVG from '../../../../icons/image-fit.svg';
 import imageFullSVG from '../../../../icons/image-full.svg';
+import navSVG from '../../../../icons/nav.svg';
+import { CSSTransition } from 'react-transition-group';
+import ObjectBrowser from '../../ObjectBrowser/ObjectBrowser';
 
 const messages = defineMessages({
   ImageTileInputPlaceholder: {
@@ -88,6 +91,7 @@ export default class Edit extends Component {
     this.state = {
       uploading: false,
       url: '',
+      objectBrowserIsOpen: false,
     };
   }
 
@@ -210,6 +214,19 @@ export default class Edit extends Component {
     }
   }
 
+  toggleObjectBrowser = () => {
+    this.setState(prevState => ({
+      objectBrowserIsOpen: !prevState.objectBrowserIsOpen,
+    }));
+  };
+
+  onSelectItem = url => {
+    this.props.onChangeTile(this.props.tile, {
+      ...this.props.data,
+      url,
+    });
+  };
+
   /**
    * Render method.
    * @method render
@@ -317,13 +334,20 @@ export default class Edit extends Component {
               </form>
               <Button.Group>
                 <label className="ui button basic icon">
+                  <Icon
+                    name={navSVG}
+                    size="24px"
+                    onClick={this.toggleObjectBrowser}
+                  />
+                </label>
+                {/* <label className="ui button basic icon">
                   <Icon name={folderSVG} size="24px" />
                   <input
                     type="file"
                     onChange={this.onUploadImage}
                     style={{ display: 'none' }}
                   />
-                </label>
+                </label> */}
               </Button.Group>
             </div>
           )}
@@ -352,6 +376,32 @@ export default class Edit extends Component {
             </Message>
           </div>
         )}
+        <CSSTransition
+          in={this.state.objectBrowserIsOpen}
+          timeout={500}
+          classNames="object-browser-container"
+          unmountOnExit
+        >
+          <div
+            key="myuniquekey"
+            style={{
+              height: '100vh',
+              position: 'fixed',
+              top: 0,
+              right: 0,
+              zIndex: 3,
+              width: '300px',
+              backgroundColor: '#fff',
+              boxShadow: '0 1px 2px 0 #c7d5d8',
+            }}
+          >
+            <ObjectBrowser
+              closeBrowser={this.toggleObjectBrowser}
+              tile={this.props.tile}
+              onSelectItem={this.onSelectItem}
+            />
+          </div>
+        </CSSTransition>
       </div>
     );
   }

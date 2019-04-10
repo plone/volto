@@ -27,21 +27,23 @@ const View = ({ data }) => (
       data.align,
     )}
   >
-    <ImageZoom
-      image={{
-        src: data.url.startsWith(settings.apiPath)
-          ? `${flattenToAppURL(data.url)}/@@images/image`
-          : data.url,
-        alt: '',
-        className: 'ui image',
-      }}
-      zoomImage={{
-        src: data.url.startsWith(settings.apiPath)
-          ? `${flattenToAppURL(data.url)}/@@images/image`
-          : data.url,
-        alt: '',
-      }}
-    />
+    {data.url && (
+      <ImageZoom
+        image={{
+          src: data.url.startsWith(settings.apiPath)
+            ? `${flattenToAppURL(data.url)}/@@images/image`
+            : data.url,
+          alt: '',
+          className: 'ui image',
+        }}
+        zoomImage={{
+          src: data.url.startsWith(settings.apiPath)
+            ? `${flattenToAppURL(data.url)}/@@images/image`
+            : data.url,
+          alt: '',
+        }}
+      />
+    )}
   </p>
 );
 
