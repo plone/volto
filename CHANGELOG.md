@@ -6,6 +6,8 @@
 
 ### Changes
 
+- fixed issue where it was not possible to click into the title tile above the small red bar at the beginning of the line in some browsers.
+
 ## 2.1.1 (2019-04-04)
 
 ### Changes
