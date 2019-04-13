@@ -19,7 +19,7 @@ extra_css:
 
 nav:
   - Getting Started:
-    - Install Volto: "01-installing/01-install.md"
+    - Install Volto: "01-getting-started/01-install.md"
   - Configuration:
     - What is configurable?: "02-configuration/how-to.md"
     - Richeditor settings: "02-configuration/richeditor-settings.md"
