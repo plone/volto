@@ -1,6 +1,6 @@
 # Folder structure
 
-Volto is based on React, Redux and React-Router. All the
+Volto is based on React, Redux, and React-Router. All of the
 code is located in the `src` folder. The following convention for locating
 resources is used.
 
@@ -11,7 +11,7 @@ content, users and external resources that are pulled into our app in general.
 
 ## Components
 
-`components` contains all the views. This includes views for the manage
+`components` contains all the views. This includes views for the management
 interface and the theme.
 
 ## Config
