@@ -318,7 +318,7 @@ export default class ArrayWidget extends Component {
               <AsyncCreatableSelect
                 className="react-select-container"
                 classNamePrefix="react-select"
-                options={this.props.choices || []}
+                defaultOptions={this.props.choices || []}
                 styles={customSelectStyles}
                 theme={selectTheme}
                 components={{ DropdownIndicator, Option }}

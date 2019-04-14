@@ -77,6 +77,7 @@ export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidge
 export DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
 export FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
 export PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
+export ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 export SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
 export SchemaWidgetFieldset from '@plone/volto/components/manage/Widgets/SchemaWidgetFieldset';
 export SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';

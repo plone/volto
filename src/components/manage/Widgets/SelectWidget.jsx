@@ -5,9 +5,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Form, Grid, Select, Label } from 'semantic-ui-react';
-import { map } from 'lodash';
+import { Icon as IconOld, Form, Grid, Label } from 'semantic-ui-react';
+import { map, find } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import Select, { components } from 'react-select';
+import { Icon } from '../../../components';
+
+import downSVG from '../../../icons/down-key.svg';
+import upSVG from '../../../icons/up-key.svg';
+import checkSVG from '../../../icons/check.svg';
 
 const messages = defineMessages({
   default: {
@@ -39,6 +45,84 @@ const messages = defineMessages({
     defaultMessage: 'Required',
   },
 });
+
+const Option = props => {
+  // console.log(props);
+  return (
+    <components.Option {...props}>
+      <div>{props.label}</div>
+      {props.isFocused &&
+        !props.isSelected && (
+          <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+        )}
+      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
+    </components.Option>
+  );
+};
+
+const DropdownIndicator = props => {
+  return (
+    <components.DropdownIndicator {...props}>
+      {props.selectProps.menuIsOpen ? (
+        <Icon name={upSVG} size="24px" color="#007bc1" />
+      ) : (
+        <Icon name={downSVG} size="24px" color="#007bc1" />
+      )}
+    </components.DropdownIndicator>
+  );
+};
+
+const selectTheme = theme => ({
+  ...theme,
+  borderRadius: 0,
+  colors: {
+    ...theme.colors,
+    primary25: 'hotpink',
+    primary: '#b8c6c8',
+  },
+});
+
+const customSelectStyles = {
+  control: (styles, state) => ({
+    ...styles,
+    border: 'none',
+    borderBottom: '2px solid #b8c6c8',
+    boxShadow: 'none',
+    borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
+  }),
+  menu: (styles, state) => ({
+    ...styles,
+    top: null,
+    marginTop: 0,
+    boxShadow: 'none',
+    borderBottom: '2px solid #b8c6c8',
+  }),
+  indicatorSeparator: styles => ({
+    ...styles,
+    width: null,
+  }),
+  valueContainer: styles => ({
+    ...styles,
+    // paddingLeft: 0,
+  }),
+  option: (styles, state) => ({
+    ...styles,
+    backgroundColor: null,
+    height: '50px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '14px 12px',
+    color: state.isSelected
+      ? '#007bc1'
+      : state.isFocused
+        ? '#4a4a4a'
+        : 'inherit',
+    ':active': {
+      backgroundColor: null,
+    },
+  }),
+};
 
 /**
  * SelectWidget component class.
@@ -119,29 +203,32 @@ const SelectWidget = ({
             {onEdit && (
               <div className="toolbar">
                 <a className="item" onClick={() => onEdit(id, schema)}>
-                  <Icon name="write square" size="large" color="blue" />
+                  <IconOld name="write square" size="large" color="blue" />
                 </a>
                 <a className="item" onClick={() => onDelete(id)}>
-                  <Icon name="close" size="large" color="red" />
+                  <IconOld name="close" size="large" color="red" />
                 </a>
               </div>
             )}
             <Select
               id={`field-${id}`}
               name={id}
-              value={value || 'no-value'}
-              onChange={(event, { value }) =>
-                onChange(id, value === 'no-value' ? undefined : value)
-              }
               disabled={onEdit !== null}
+              className="react-select-container"
+              classNamePrefix="react-select"
               options={[
-                { key: 'no-value', text: 'No value', value: 'no-value' },
                 ...choices.map(option => ({
-                  key: option[0],
-                  text: option[1],
                   value: option[0],
+                  label: option[1],
                 })),
               ]}
+              styles={customSelectStyles}
+              theme={selectTheme}
+              components={{ DropdownIndicator, Option }}
+              defaultValue={
+                { label: find(choices, o => o[0] === value)[1], value } || {}
+              }
+              onChange={data => onChange(id, data.value)}
             />
             {map(error, message => (
               <Label key={message} basic color="red" pointing>

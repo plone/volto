@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
-import { widgets } from '~/config';
+import { settings, widgets } from '~/config';
 import { injectIntl, intlShape } from 'react-intl';
 
 /**
@@ -42,7 +42,27 @@ const getWidgetByName = widget =>
  * @returns {string} Widget component.
  */
 const getWidgetByVocabulary = vocabulary =>
-  widgets.vocabulary[vocabulary] || null;
+  vocabulary
+    ? widgets.vocabulary[
+        vocabulary.replace(`${settings.apiPath}/@vocabularies/`, '')
+      ]
+    : null;
+
+/**
+ * Get widget by field's hints `vocabulary` attribute in widgetOptions
+ * @method getWidgetByVocabularyFromHint
+ * @param {string} props Widget props
+ * @returns {string} Widget component.
+ */
+const getWidgetByVocabularyFromHint = props =>
+  props.widgetOptions && props.widgetOptions.vocabulary
+    ? widgets.vocabulary[
+        props.widgetOptions.vocabulary.replace(
+          `${settings.apiPath}/@vocabularies/`,
+          '',
+        )
+      ]
+    : null;
 
 /**
  * Get widget by field's `choices` attribute
@@ -71,6 +91,7 @@ const Field = (props, { intl }) => {
     getWidgetByFieldId(props.id) ||
     getWidgetByName(props.widget) ||
     getWidgetByVocabulary(props.vocabulary) ||
+    getWidgetByVocabularyFromHint(props) ||
     getWidgetByChoices(props.choices) ||
     getWidgetByType(props.type) ||
     getWidgetDefault();

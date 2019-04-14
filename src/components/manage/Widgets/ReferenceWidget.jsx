@@ -188,7 +188,6 @@ export default class ReferenceWidget extends Component {
     if (data.searchQuery && data.searchQuery !== '') {
       this.props.searchContent('', {
         Title: `*${data.searchQuery}*`,
-        portal_type: 'Methode',
       });
     } else {
       this.props.resetSearchContent();
@@ -242,7 +241,9 @@ export default class ReferenceWidget extends Component {
                           item['@id'].replace(settings.apiPath, ''),
                         )
                       : []
-                    : value ? value['@id'].replace(settings.apiPath, '') : ''
+                    : value
+                      ? value['@id'].replace(settings.apiPath, '')
+                      : ''
                 }
                 onChange={(event, data) =>
                   onChange(

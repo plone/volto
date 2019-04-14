@@ -12,6 +12,7 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { bindActionCreators } from 'redux';
 import Select, { components } from 'react-select';
 import AsyncPaginate from 'react-select-async-paginate';
+import CreatableSelect from 'react-select/lib/Creatable';
 
 import { getVocabulary } from '../../../actions';
 import { Icon } from '../../../components';
@@ -105,12 +106,33 @@ const customSelectStyles = {
   }),
 };
 
+function getVocabFromHint(props) {
+  return props.widgetOptions ? props.widgetOptions.vocabulary : false;
+}
+
+function getVocabFromField(props) {
+  return props.vocabulary;
+}
+
+function getVocabFromItems(props) {
+  return props.items ? props.items.vocabulary : false;
+}
+
+function getChoices(choices) {
+  return choices ? choices.map(item => ({ label: item, value: item })) : [];
+}
+
 @injectIntl
 @connect(
   (state, props) => {
-    const vocabBaseUrl = props.vocabulary || props.items.vocabulary;
+    const vocabBaseUrl =
+      getVocabFromHint(props) ||
+      getVocabFromField(props) ||
+      getVocabFromItems(props);
     const vocabState = state.vocabularies[vocabBaseUrl];
-    // debugger;
+    if (!vocabBaseUrl) {
+      // console.log(props);
+    }
     if (vocabState) {
       return {
         choices: vocabState.items,
@@ -186,7 +208,9 @@ export default class ArrayWidget extends Component {
     this.loadOptions = this.loadOptions.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.vocabBaseUrl =
-      props.widgetOptions.vocabulary || props.items.vocabulary;
+      getVocabFromHint(props) ||
+      getVocabFromField(props) ||
+      getVocabFromItems(props);
     this.state = {
       search: '',
       selectedOption: props.value
@@ -201,7 +225,9 @@ export default class ArrayWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.getVocabulary(this.vocabBaseUrl);
+    if (this.vocabBaseUrl) {
+      this.props.getVocabulary(this.vocabBaseUrl);
+    }
   }
 
   // /**
@@ -310,33 +336,50 @@ export default class ArrayWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              <AsyncPaginate
-                className="react-select-container"
-                classNamePrefix="react-select"
-                options={this.props.choices || []}
-                styles={customSelectStyles}
-                theme={selectTheme}
-                components={{ DropdownIndicator, Option }}
-                isMulti
-                value={selectedOption || []}
-                loadOptions={this.loadOptions}
-                onChange={this.handleChange}
-                additional={{
-                  offset: 25,
-                }}
-              />
-              {/* <Select
-                className="react-select-container"
-                classNamePrefix="react-select"
-                options={this.props.choices || []}
-                menuIsOpen
-                styles={customSelectStyles}
-                theme={selectTheme}
-                components={{ DropdownIndicator, Option }}
-                value={[{ label: 'Africa/Accra', value: 'Africa/Accra' }]}
-                isMulti
-              /> */}
-
+              {this.vocabBaseUrl ? (
+                <AsyncPaginate
+                  className="react-select-container"
+                  classNamePrefix="react-select"
+                  options={this.props.choices || []}
+                  styles={customSelectStyles}
+                  theme={selectTheme}
+                  components={{ DropdownIndicator, Option }}
+                  isMulti
+                  value={selectedOption || []}
+                  loadOptions={this.loadOptions}
+                  onChange={this.handleChange}
+                  additional={{
+                    offset: 25,
+                  }}
+                />
+              ) : (
+                // <Select
+                //   className="react-select-container"
+                //   classNamePrefix="react-select"
+                //   options={
+                //     this.props.choices || getChoices(this.props.default) || []
+                //   }
+                //   styles={customSelectStyles}
+                //   theme={selectTheme}
+                //   components={{ DropdownIndicator, Option }}
+                //   value={selectedOption || []}
+                //   onChange={this.handleChange}
+                //   isMulti
+                // />
+                <CreatableSelect
+                  className="react-select-container"
+                  classNamePrefix="react-select"
+                  options={
+                    this.props.choices || getChoices(this.props.default) || []
+                  }
+                  styles={customSelectStyles}
+                  theme={selectTheme}
+                  components={{ DropdownIndicator, Option }}
+                  value={selectedOption || []}
+                  onChange={this.handleChange}
+                  isMulti
+                />
+              )}
               {/* <Dropdown
                 options={this.getOptions()}
                 loading={loading}
