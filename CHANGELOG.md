@@ -7,8 +7,10 @@
 ### Changes
 
 - fixed issue where it was not possible to click into the title tile above the small red bar at the beginning of the line in some browsers.
-
 - Docs content editing. @esteele
+- Fix the folder_contents view component bby preventing the SearchableText be
+  empty if you haven't typed anything in the filter fields yet. This is caused
+  by the new ZCatalog in Zope 4. @sneridagh
 
 ## 2.1.1 (2019-04-04)
 
