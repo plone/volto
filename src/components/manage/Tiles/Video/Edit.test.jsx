@@ -23,6 +23,10 @@ test('renders an edit image tile component', () => {
         onChangeTile={() => {}}
         onSelectTile={() => {}}
         onDeleteTile={() => {}}
+        onFocusPreviousTile={() => {}}
+        onFocusNextTile={() => {}}
+        handleKeyDown={() => {}}
+        index={1}
       />
     </Provider>,
   );

@@ -18,6 +18,56 @@ describe('Search action', () => {
       );
     });
 
+    it('can be called with an option that is an array', () => {
+      const text = 'cows';
+      const url = '/blog';
+      const portalTypes = ['Document', 'Image'];
+      const action = searchContent(url, {
+        SearchableText: text,
+        portal_type: portalTypes,
+      });
+
+      expect(action.type).toEqual(SEARCH_CONTENT);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(
+        `${url}/@search?SearchableText=${text}&portal_type:list=Document&portal_type:list=Image`,
+      );
+    });
+
+    it('can be called with several options that are arrays', () => {
+      const text = 'cows';
+      const url = '/blog';
+      const portalTypes = ['Document', 'Image'];
+      const workflows = ['published', 'private'];
+      const action = searchContent(url, {
+        SearchableText: text,
+        portal_type: portalTypes,
+        review_state: workflows,
+      });
+
+      expect(action.type).toEqual(SEARCH_CONTENT);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(
+        `${url}/@search?SearchableText=${text}&portal_type:list=Document&portal_type:list=Image&review_state:list=published&review_state:list=private`,
+      );
+    });
+
+    it('can be called ONLY with options that are arrays', () => {
+      const url = '/blog';
+      const portalTypes = ['Document', 'Image'];
+      const workflows = ['published', 'private'];
+      const action = searchContent(url, {
+        portal_type: portalTypes,
+        review_state: workflows,
+      });
+
+      expect(action.type).toEqual(SEARCH_CONTENT);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(
+        `${url}/@search?portal_type:list=Document&portal_type:list=Image&review_state:list=published&review_state:list=private`,
+      );
+    });
+
     it('can be called without extra options', () => {
       const url = '/blog';
       const action = searchContent(url);

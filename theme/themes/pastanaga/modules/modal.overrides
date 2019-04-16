@@ -3,10 +3,10 @@
 *******************************/
 
 .ui.modal > .actions:after {
-  content: ".";
   display: block;
   height: 0;
   clear: both;
+  content: '.';
   visibility: hidden;
 }
 
