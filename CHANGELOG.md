@@ -1,12 +1,11 @@
 # Change Log
 
-## 2.1.2 (unreleased)
-
-### Added
+## 2.1.2 (2019-04-16)
 
 ### Changes
 
-- fixed issue where it was not possible to click into the title tile above the small red bar at the beginning of the line in some browsers.
+- Fixed issue where it was not possible to click into the title tile above the
+  small red bar at the beginning of the line in some browsers. @jackahl
 - Docs content editing. @esteele
 - Fix the folder_contents view component bby preventing the SearchableText be
   empty if you haven't typed anything in the filter fields yet. This is caused
