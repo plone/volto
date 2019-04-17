@@ -312,7 +312,12 @@ export default class AddonsControlpanel extends Component {
                         <FormattedMessage id="Update" defaultMessage="Update" />
                       </Button>
                     )}
-                    <Button negative onClick={this.onUninstall} value={item.id} className="installAction">
+                    <Button
+                      negative
+                      onClick={this.onUninstall}
+                      value={item.id}
+                      className="uninstallAction"
+                    >
                       <FormattedMessage
                         id="Uninstall"
                         defaultMessage="Uninstall"
