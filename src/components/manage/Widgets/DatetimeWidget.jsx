@@ -5,8 +5,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Input, Label } from 'semantic-ui-react';
+import { Form, Grid, Input, Label, Button } from 'semantic-ui-react';
 import { map } from 'lodash';
+import moment from 'moment';
 
 /**
  * DatetimeWidget component class.
@@ -22,7 +23,9 @@ const DatetimeWidget = ({
   value,
   onChange,
 }) => {
-  const [datetime, timezone] = value.split('+');
+  const datetime = value
+    ? moment(new Date(value)).format('YYYY-MM-DDTHH:mm:ss')
+    : '';
   return (
     <Form.Field
       inline
@@ -44,11 +47,11 @@ const DatetimeWidget = ({
               type="datetime-local"
               value={datetime || ''}
               onChange={({ target }) => {
-                const newValue = target.value;
-                onChange(
-                  id,
-                  newValue === '' ? undefined : `${newValue}+${timezone}`,
-                );
+                const newDate = new Date(target.value);
+                const newDateStr = moment
+                  .utc(newDate)
+                  .format('YYYY-MM-DDTHH:mm:ssZ');
+                onChange(id, newDateStr === '' ? undefined : newDateStr);
               }}
             />
             {map(error, message => (
