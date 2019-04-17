@@ -14,6 +14,7 @@ import {
   Button,
   Divider,
   Header,
+  Icon as StdIcon,
   Label,
   Message,
   Segment,
@@ -44,6 +45,10 @@ const messages = defineMessages({
   available: {
     id: 'Available',
     defaultMessage: 'Available',
+  },
+  availableVersion: {
+    id: 'Latest Version',
+    defaultMessage: 'Latest Version',
   },
   back: {
     id: 'Back',
@@ -272,11 +277,11 @@ export default class AddonsControlpanel extends Component {
                     active={this.state.activeIndex === item.id}
                     index={item.id}
                     onClick={this.onAccordionClick}
+                    className={this.state.updatesAvailable ? 'hasUpdate' : ''}
                   >
                     {item.title}
                     {item.upgrade_info.available && (
-                      <Label as="a">
-                        {/* <Icon name="circle" /> */}
+                      <Label as="a" className="updateAvailable">
                         <FormattedMessage id="Update" defaultMessage="Update" />
                       </Label>
                     )}
@@ -287,28 +292,31 @@ export default class AddonsControlpanel extends Component {
                           : circleBottomSVG
                       }
                       size="24px"
-                      floated="right"
+                      className="accordionToggle"
                     />
                   </Accordion.Title>
                   <Accordion.Content
                     active={this.state.activeIndex === item.id}
                   >
-                    {item.description}
-                    <FormattedMessage
-                      id="Installed Version"
-                      defaultMessage="Installed Version"
-                    />
-                    &nbsp;
-                    {item.version}
+                    <div className="description">{item.description}</div>
+                    <div className="version">
+                      <FormattedMessage
+                        id="Installed Version"
+                        defaultMessage="Installed Version"
+                      />:
+                      &nbsp;
+                      {item.version}
+                    </div>
                     {item.upgrade_info.available && (
                       <Button primary>
                         <FormattedMessage id="Update" defaultMessage="Update" />
                       </Button>
                     )}
-                    <Button primary onClick={this.onUninstall} value={item.id}>
+                    <Button negative onClick={this.onUninstall} value={item.id} className="installAction">
                       <FormattedMessage
                         id="Uninstall"
                         defaultMessage="Uninstall"
+                        className="button-label"
                       />
                     </Button>
                   </Accordion.Content>
@@ -341,21 +349,31 @@ export default class AddonsControlpanel extends Component {
                           : circleBottomSVG
                       }
                       size="24px"
-                      floated="right"
+                      className="accordionToggle"
                     />
                   </Accordion.Title>
                   <Accordion.Content
                     active={this.state.activeIndex === item.id}
                   >
-                    {item.description}
-
-                    <FormattedMessage
-                      id="Installed Version"
-                      defaultMessage="Installed Version"
-                    />
-                    {item.version}
-                    <Button primary onClick={this.onInstall} value={item.id}>
-                      <FormattedMessage id="Install" defaultMessage="Install" />
+                    <div className="description">{item.description}</div>
+                    <div className="version">
+                      <FormattedMessage
+                        id="Latest Version"
+                        defaultMessage="Latest Version"
+                      />:
+                      &nbsp;
+                      {item.version}
+                    </div>
+                    <Button
+                      primary
+                      onClick={this.onInstall}
+                      value={item.id}
+                      className="installAction"
+                    >
+                      <FormattedMessage
+                        id="Install"
+                        defaultMessage="Install"
+                        className="button-label" />
                     </Button>
                   </Accordion.Content>
                   <Divider />
@@ -370,12 +388,12 @@ export default class AddonsControlpanel extends Component {
             pathname={this.props.pathname}
             inner={
               <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
-                {/* <Icon
+                <StdIcon
                   name="arrow left"
                   size="big"
                   color="blue"
                   title={this.props.intl.formatMessage(messages.back)}
-                /> */}
+                />
               </Link>
             }
           />

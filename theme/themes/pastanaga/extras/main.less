@@ -132,6 +132,43 @@ body {
   margin-top: 20px;
 }
 
+// Add-ons control panel
+#page-addons {
+
+  .secondary {
+    text-transform: uppercase;
+
+    .circular.label {
+      margin-left: .5em;
+    }
+  }
+
+  .title {
+    text-transform: uppercase;
+    color: @black;
+    .accordionToggle { 
+      float: right 
+    }
+  }
+  .description {
+    margin-bottom: 1em;
+    color: @grey;
+  }
+
+  .installAction {
+    float: right;
+  }
+  .uninstallAction {
+    float: right;
+    // color: @negativeTextColor;
+  }
+
+  .version {
+    color: @tealTextColor;
+  }
+}
+
+
 @import 'utils';
 @import 'draftjs';
 @import 'tiles';
