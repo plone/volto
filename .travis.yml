@@ -34,19 +34,18 @@ before_install:
     wget https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip;
     unzip chromedriver_linux64.zip -d webdriver;
     export PATH=$PATH:$(pwd)/webdriver;
-    npm install -g surge;
     fi
   - if [ "$TEST_SUITE" == "plone" ]; then
-    mkdir -p $HOME/buildout-cache/{eggs,downloads}
-    mkdir $HOME/.buildout
-    echo "[buildout]" > $HOME/.buildout/default.cfg
-    echo "download-cache = $HOME/buildout-cache/downloads" >> $HOME/.buildout/default.cfg
-    echo "eggs-directory = $HOME/buildout-cache/eggs" >> $HOME/.buildout/default.cfg
+    mkdir -p $HOME/buildout-cache/{eggs,downloads};
+    mkdir $HOME/.buildout;
+    echo "[buildout]" > $HOME/.buildout/default.cfg;
+    echo "download-cache = $HOME/buildout-cache/downloads" >> $HOME/.buildout/default.cfg;
+    echo "eggs-directory = $HOME/buildout-cache/eggs" >> $HOME/.buildout/default.cfg;
     fi
 
 install:
   - if [ "$TEST_SUITE" == "plone" ]; then
-    make build-backend
+    make build-backend;
     fi
   - pip install -r requirements-tests.txt;
 before_script:
