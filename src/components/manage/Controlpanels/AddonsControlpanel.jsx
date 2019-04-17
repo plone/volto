@@ -52,8 +52,8 @@ const messages = defineMessages({
     defaultMessage: 'Available',
   },
   availableVersion: {
-    id: 'Latest Version',
-    defaultMessage: 'Latest Version',
+    id: 'Latest version',
+    defaultMessage: 'Latest version',
   },
   back: {
     id: 'Back',
@@ -64,8 +64,8 @@ const messages = defineMessages({
     defaultMessage: 'Installed',
   },
   installedVersion: {
-    id: 'Installed Version',
-    defaultMessage: 'Installed Version',
+    id: 'Installed version',
+    defaultMessage: 'Installed version',
   },
   update: {
     id: 'Update',
@@ -350,8 +350,8 @@ export default class AddonsControlpanel extends Component {
                     </Button.Group>
                     <div className="version" >
                       <FormattedMessage
-                        id="Installed Version"
-                        defaultMessage="Installed Version" />:
+                        id="Installed version"
+                        defaultMessage="Installed version" />:
                       &nbsp; {item.version}
                     </div>
                   </Accordion.Content>
@@ -391,14 +391,6 @@ export default class AddonsControlpanel extends Component {
                     active={this.state.activeIndex === item.id}
                   >
                     <div className="description">{item.description}</div>
-                    <div className="version">
-                      <FormattedMessage
-                        id="Latest Version"
-                        defaultMessage="Latest Version"
-                      />:
-                      &nbsp;
-                      {item.version}
-                    </div>
                     <Button.Group floated="right">
                       <Button
                         primary
@@ -414,6 +406,14 @@ export default class AddonsControlpanel extends Component {
                         />
                       </Button>
                     </Button.Group>
+                    <div className="version">
+                      <FormattedMessage
+                        id="Latest version"
+                        defaultMessage="Latest version"
+                      />:
+                      &nbsp;
+                      {item.version}
+                    </div>
                   </Accordion.Content>
                   <Divider />
                 </div>
