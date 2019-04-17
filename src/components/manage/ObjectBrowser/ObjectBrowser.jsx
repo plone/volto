@@ -41,19 +41,10 @@ class ObjectBrowser extends Component {
     intl: intlShape.isRequired,
   };
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs Toolbar
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentFolder: '/',
-      parentFolder: '',
-    };
-  }
+  state = {
+    currentFolder: '/',
+    parentFolder: '',
+  };
 
   /**
    * Component did mount
@@ -100,7 +91,7 @@ class ObjectBrowser extends Component {
       this.props.tile,
     );
     const parent = `/${join(id.split('/').slice(0, -1), '/')}`;
-    this.setState(prevState => ({
+    this.setState(() => ({
       parentFolder: parent,
       currentFolder: id,
     }));
