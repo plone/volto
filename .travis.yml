@@ -1,4 +1,5 @@
 language: python
+dist: xenial
 matrix:
   include:
     - name: 'Plone'
@@ -6,7 +7,6 @@ matrix:
       env: TEST_SUITE=plone ZSERVER_PORT=55001
     - name: 'Guillotina Tests'
       python: 3.7
-      dist: xenial
       env: TEST_SUITE=guillotina
     - name: 'Unit Tests'
       env: TEST_SUITE=unit
