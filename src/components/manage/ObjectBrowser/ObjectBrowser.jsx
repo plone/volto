@@ -5,9 +5,11 @@ import { injectIntl, intlShape } from 'react-intl';
 import { join } from 'lodash';
 import { searchContent } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
+import cx from 'classnames';
 
 import { settings } from '~/config';
 import backSVG from '@plone/volto/icons/back.svg';
+import checkSVG from '@plone/volto/icons/check.svg';
 import pageSVG from '@plone/volto/icons/page.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -44,6 +46,7 @@ class ObjectBrowser extends Component {
   state = {
     currentFolder: '/',
     parentFolder: '',
+    selectedItem: '',
   };
 
   /**
@@ -99,7 +102,8 @@ class ObjectBrowser extends Component {
 
   selectItem = id => {
     this.props.onSelectItem(`${settings.apiPath}${id}`);
-    this.props.closeBrowser();
+    this.setState({ selectedItem: id });
+    // this.props.closeBrowser();
   };
 
   /**
@@ -123,7 +127,11 @@ class ObjectBrowser extends Component {
           )}
           <h2>Browser</h2>
           <button onClick={this.props.closeBrowser}>
-            <Icon name={clearSVG} size="32px" color="#e40166" />
+            {this.state.selectedItem ? (
+              <Icon name={clearSVG} size="32px" color="#e40166" />
+            ) : (
+              <Icon name={checkSVG} size="32px" color="#e40166" />
+            )}
           </button>
         </header>
         <ul>
@@ -131,6 +139,9 @@ class ObjectBrowser extends Component {
             this.props.searchSubrequests[this.props.tile].items.map(item => (
               <li
                 key={item.id}
+                className={cx({
+                  'selected-item': this.state.selectedItem === item['@id'],
+                })}
                 onClick={() =>
                   item.is_folderish
                     ? this.navigateTo(item['@id'])

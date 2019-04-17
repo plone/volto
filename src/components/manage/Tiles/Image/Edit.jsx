@@ -18,6 +18,7 @@ import { createContent } from '../../../../actions';
 import { flattenToAppURL, getBaseUrl } from '../../../../helpers';
 
 import clearSVG from '../../../../icons/clear.svg';
+import uploadSVG from '../../../../icons/upload.svg';
 import folderSVG from '../../../../icons/folder.svg';
 import imageSVG from '../../../../icons/image.svg';
 import imageLeftSVG from '../../../../icons/image-left.svg';
@@ -335,19 +336,19 @@ export default class Edit extends Component {
               <Button.Group>
                 <label className="ui button basic icon">
                   <Icon
-                    name={navSVG}
+                    name={folderSVG}
                     size="24px"
                     onClick={this.toggleObjectBrowser}
                   />
                 </label>
-                {/* <label className="ui button basic icon">
-                  <Icon name={folderSVG} size="24px" />
+                <label className="ui button basic icon">
+                  <Icon name={uploadSVG} size="24px" />
                   <input
                     type="file"
                     onChange={this.onUploadImage}
                     style={{ display: 'none' }}
                   />
-                </label> */}
+                </label>
               </Button.Group>
             </div>
           )}
@@ -390,7 +391,7 @@ export default class Edit extends Component {
               top: 0,
               right: 0,
               zIndex: 3,
-              width: '300px',
+              width: '320px',
               backgroundColor: '#fff',
               boxShadow: '0 1px 2px 0 #c7d5d8',
             }}
