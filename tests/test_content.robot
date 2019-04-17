@@ -194,11 +194,9 @@ I should see '${title}' in the navigation
 I should see '${title}' in the folder contents
   Go to  ${FRONTEND_URL}contents
   Reload Page
-  Import library  Dialogs
-  Pause execution
   Wait until page contains element  css=.navigation a
-  Wait until page contains element  xpath=//*[contains(@class, 'navigation')]//*[contains(text(), '${title}')]
-  Page should contain element  xpath=//*[contains(@class, 'navigation')]//*[contains(text(), '${title}')]
+  Wait until page contains  ${title}
+  Page should contain  ${title}
 
 I should see '${text}' on the page view
   Page should contain  ${text}
