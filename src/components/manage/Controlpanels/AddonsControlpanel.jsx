@@ -203,7 +203,7 @@ export default class AddonsControlpanel extends Component {
    */
   onAccordionClick(event, index) {
     const { activeIndex } = this.state.activeIndex;
-    const newIndex = activeIndex === index ? -1 : index;
+    const newIndex = activeIndex === index.index ? -1 : index.index;
     this.setState({ activeIndex: newIndex });
   }
 
