@@ -21,7 +21,12 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { installAddon, listAddons, uninstallAddon } from '../../../actions';
+import {
+  installAddon,
+  listAddons,
+  uninstallAddon,
+  upgradeAddon,
+} from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import { Icon, Toolbar } from '../../../components';
 import circleBottomSVG from '../../../icons/circle-bottom.svg';
@@ -89,7 +94,10 @@ const messages = defineMessages({
     pathname: props.location.pathname,
   }),
   dispatch =>
-    bindActionCreators({ installAddon, listAddons, uninstallAddon }, dispatch),
+    bindActionCreators(
+      { installAddon, listAddons, uninstallAddon, upgradeAddon },
+      dispatch,
+    ),
 )
 /**
  * AddonsControlpanel class.
@@ -155,6 +163,7 @@ export default class AddonsControlpanel extends Component {
     this.onAccordionClick = this.onAccordionClick.bind(this);
     this.onInstall = this.onInstall.bind(this);
     this.onUninstall = this.onUninstall.bind(this);
+    this.onUpgrade = this.onUpgrade.bind(this);
     this.state = {
       activeIndex: -1,
       installedAddons: [],
@@ -181,7 +190,7 @@ export default class AddonsControlpanel extends Component {
    * Install handler
    * @method onInstall
    * @param {Object} event Event object.
-   * @param {string} value Install value.
+   * @param {string} value Id of package to install.
    * @returns {undefined}
    */
   onInstall(event, { value }) {
@@ -193,12 +202,24 @@ export default class AddonsControlpanel extends Component {
    * Uninstall handler
    * @method onUninstall
    * @param {Object} event Event object.
-   * @param {string} value Uninstall value.
+   * @param {string} value Id of package to uninstall.
    * @returns {undefined}
    */
   onUninstall(event, { value }) {
     event.preventDefault();
     this.props.uninstallAddon(value).then(() => this.props.listAddons());
+  }
+
+  /**
+   * Unpgrade handler
+   * @method onUpgrade
+   * @param {Object} event Event object.
+   * @param {string} value Id of package to update.
+   * @returns {undefined}
+   */
+  onUpgrade(event, { value }) {
+    event.preventDefault();
+    this.props.upgradeAddon(value).then(() => this.props.listAddons());
   }
 
   /**
@@ -231,7 +252,7 @@ export default class AddonsControlpanel extends Component {
             />
           </Segment>
           {this.props.upgradableAddons.length > 0 && (
-            <Message icon="info" attached>
+            <Message attached>
               <Message.Header>
                 <FormattedMessage
                   id="Updates available"
@@ -308,7 +329,7 @@ export default class AddonsControlpanel extends Component {
                       {item.version}
                     </div>
                     {item.upgrade_info.available && (
-                      <Button primary>
+                      <Button primary onClick={this.onUpgrade} value={item.id}>
                         <FormattedMessage id="Update" defaultMessage="Update" />
                       </Button>
                     )}

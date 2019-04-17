@@ -7,6 +7,7 @@ import {
   INSTALL_ADDON,
   LIST_ADDONS,
   UNINSTALL_ADDON,
+  UPGRADE_ADDON,
 } from '../../constants/ActionTypes';
 
 /**
@@ -47,12 +48,29 @@ export function installAddon(id) {
  * @returns {Object} uninstall addon action.
  */
 export function uninstallAddon(id) {
-	console.log('uninstallAddon');
+  console.log('uninstallAddon');
   return {
     type: UNINSTALL_ADDON,
     request: {
       op: 'post',
       path: `/@addons/${id}/uninstall`,
+    },
+  };
+}
+
+/**
+ * Uninstall addon function.
+ * @function upgradeAddon
+ * @param {string} id Addon id
+ * @returns {Object} id of addon to upgrade.
+ */
+export function upgradeAddon(id) {
+  console.log('upgradeAddon');
+  return {
+    type: UPGRADE_ADDON,
+    request: {
+      op: 'post',
+      path: `/@addons/${id}/upgrade`,
     },
   };
 }

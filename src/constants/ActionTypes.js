@@ -62,3 +62,4 @@ export const UPDATE_GROUP = 'UPDATE_GROUP';
 export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
 export const UPDATE_SHARING = 'UPDATE_SHARING';
 export const UPDATE_USER = 'UPDATE_USER';
+export const UPGRADE_ADDON = 'UPGRADE_ADDON';
