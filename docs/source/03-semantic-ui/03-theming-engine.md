@@ -48,7 +48,7 @@ It basically uses heavily the LESS precompiler language features. No code is inv
 
 ## semantic.less
 
-Semantic UI has uses a single Less file as entry point: [semantic.less](https://github.com/Semantic-Org/Semantic-UI/tree/master/src/themes) this is the root Less file and pulls all the components that we want to compile. We have to import this file either from the `node_modules` semantic-ui-less module directory or make a local copy of it locally. More on this later.
+Semantic UI has uses a single LESS file as entry point: [semantic.less](https://github.com/Semantic-Org/Semantic-UI/tree/master/src/themes) this is the root LESS file and pulls all the components that we want to compile. We have to import this file either from the `node_modules` semantic-ui-less module directory or make a local copy of it locally. More on this later.
 
 ## theme.less
 
