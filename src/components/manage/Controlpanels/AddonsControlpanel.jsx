@@ -312,7 +312,7 @@ export default class AddonsControlpanel extends Component {
                           ? circleTopSVG
                           : circleBottomSVG
                       }
-                      size="24px"
+                      size="23px"
                       className="accordionToggle"
                     />
                   </Accordion.Title>
@@ -383,7 +383,7 @@ export default class AddonsControlpanel extends Component {
                           ? circleTopSVG
                           : circleBottomSVG
                       }
-                      size="24px"
+                      size="23px"
                       className="accordionToggle"
                     />
                   </Accordion.Title>
