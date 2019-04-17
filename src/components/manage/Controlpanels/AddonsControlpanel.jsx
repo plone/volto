@@ -277,13 +277,13 @@ export default class AddonsControlpanel extends Component {
                     active={this.state.activeIndex === item.id}
                     index={item.id}
                     onClick={this.onAccordionClick}
-                    className={this.state.updatesAvailable ? 'hasUpdate' : ''}
+                    className={item.upgrade_info.available ? 'updateAvailable' : ''}
                   >
                     {item.title}
                     {item.upgrade_info.available && (
-                      <Label as="a" className="updateAvailable">
+                      <span className="updateText">
                         <FormattedMessage id="Update" defaultMessage="Update" />
-                      </Label>
+                      </span>
                     )}
                     <Icon
                       name={

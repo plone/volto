@@ -146,9 +146,26 @@ body {
   .title {
     text-transform: uppercase;
     color: @black;
+    &.updateAvailable{
+      color: @teal;
+    }
     .accordionToggle { 
       float: right 
     }
+    .updateText {
+      text-transform: none;
+      margin-left: 5px;
+      ::before {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+        background-color: @teal;
+        border-radius: 50%;
+        content: '';
+      }
+    }
+
   }
   .description {
     margin-bottom: 1em;
