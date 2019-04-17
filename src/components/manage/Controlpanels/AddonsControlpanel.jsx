@@ -320,31 +320,40 @@ export default class AddonsControlpanel extends Component {
                     active={this.state.activeIndex === item.id}
                   >
                     <div className="description">{item.description}</div>
-                    <div className="version">
+                    <Button.Group floated="right">
+                      {item.upgrade_info.available && (
+                        <Button
+                          primary
+                          basic
+                          onClick={this.onUpgrade}
+                          value={item.id}
+                        >
+                          <FormattedMessage
+                            id="Update"
+                            defaultMessage="Update"
+                          />
+                        </Button>
+                      )}
+                      <Button
+                        negative
+                        basic
+                        onClick={this.onUninstall}
+                        value={item.id}
+                        className="uninstallAction"
+                      >
+                        <FormattedMessage
+                          id="Uninstall"
+                          defaultMessage="Uninstall"
+                          className="button-label"
+                        />
+                      </Button>
+                    </Button.Group>
+                    <div className="version" >
                       <FormattedMessage
                         id="Installed Version"
-                        defaultMessage="Installed Version"
-                      />:
-                      &nbsp;
-                      {item.version}
+                        defaultMessage="Installed Version" />:
+                      &nbsp; {item.version}
                     </div>
-                    {item.upgrade_info.available && (
-                      <Button primary onClick={this.onUpgrade} value={item.id}>
-                        <FormattedMessage id="Update" defaultMessage="Update" />
-                      </Button>
-                    )}
-                    <Button
-                      negative
-                      onClick={this.onUninstall}
-                      value={item.id}
-                      className="uninstallAction"
-                    >
-                      <FormattedMessage
-                        id="Uninstall"
-                        defaultMessage="Uninstall"
-                        className="button-label"
-                      />
-                    </Button>
                   </Accordion.Content>
                   <Divider />
                 </div>
@@ -390,17 +399,21 @@ export default class AddonsControlpanel extends Component {
                       &nbsp;
                       {item.version}
                     </div>
-                    <Button
-                      primary
-                      onClick={this.onInstall}
-                      value={item.id}
-                      className="installAction"
-                    >
-                      <FormattedMessage
-                        id="Install"
-                        defaultMessage="Install"
-                        className="button-label" />
-                    </Button>
+                    <Button.Group floated="right">
+                      <Button
+                        primary
+                        basic
+                        onClick={this.onInstall}
+                        value={item.id}
+                        className="installAction"
+                      >
+                        <FormattedMessage
+                          id="Install"
+                          defaultMessage="Install"
+                          className="button-label"
+                        />
+                      </Button>
+                    </Button.Group>
                   </Accordion.Content>
                   <Divider />
                 </div>
