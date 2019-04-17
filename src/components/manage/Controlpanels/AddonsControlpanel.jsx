@@ -14,7 +14,6 @@ import {
   Button,
   Divider,
   Header,
-  Icon,
   Label,
   Message,
   Segment,
@@ -23,7 +22,10 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { installAddon, listAddons, uninstallAddon } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
-import { Toolbar } from '../../../components';
+import { Icon, Toolbar } from '../../../components';
+import circleBottomSVG from '../../../icons/circle-bottom.svg';
+import circleTopSVG from '../../../icons/circle-top.svg';
+
 
 const messages = defineMessages({
   activateAndDeactivate: {
@@ -274,11 +276,19 @@ export default class AddonsControlpanel extends Component {
                     {item.title}
                     {item.upgrade_info.available && (
                       <Label as="a">
-                        <Icon name="circle" />
+                        {/* <Icon name="circle" /> */}
                         <FormattedMessage id="Update" defaultMessage="Update" />
                       </Label>
                     )}
-                    <Icon name="dropdown" floated="right" />
+                    <Icon
+                      name={
+                        this.state.activeIndex === item.id
+                          ? circleTopSVG
+                          : circleBottomSVG
+                      }
+                      size="24px"
+                      floated="right"
+                    />
                   </Accordion.Title>
                   <Accordion.Content
                     active={this.state.activeIndex === item.id}
@@ -324,7 +334,15 @@ export default class AddonsControlpanel extends Component {
                     onClick={this.onAccordionClick}
                   >
                     {item.title}
-                    <Icon name="dropdown" floated="right" />
+                    <Icon
+                      name={
+                        this.state.activeIndex === item.id
+                          ? circleTopSVG
+                          : circleBottomSVG
+                      }
+                      size="24px"
+                      floated="right"
+                    />
                   </Accordion.Title>
                   <Accordion.Content
                     active={this.state.activeIndex === item.id}
@@ -352,12 +370,12 @@ export default class AddonsControlpanel extends Component {
             pathname={this.props.pathname}
             inner={
               <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
-                <Icon
+                {/* <Icon
                   name="arrow left"
                   size="big"
                   color="blue"
                   title={this.props.intl.formatMessage(messages.back)}
-                />
+                /> */}
               </Link>
             }
           />
