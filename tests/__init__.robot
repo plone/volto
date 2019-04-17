@@ -48,7 +48,6 @@ Stop Plone Backend
 Start Volto
     Log To Console  Running Volto build
     Run process  yarn build  shell=True  cwd=${CURDIR}
-    # ${result} =  Start process  yarn start:prod  shell=True  cwd=${CURDIR}
     ${result} =  Start process  yarn start:prod  shell=True  cwd=${CURDIR}
 
 Suite Setup
