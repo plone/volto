@@ -21,47 +21,54 @@ const DatetimeWidget = ({
   error,
   value,
   onChange,
-}) => (
-  <Form.Field
-    inline
-    required={required}
-    error={error.length > 0}
-    className={description ? 'help' : ''}
-  >
-    <Grid>
-      <Grid.Row stretched>
-        <Grid.Column width="4">
-          <div className="wrapper">
-            <label htmlFor={`field-${id}`}>{title}</label>
-          </div>
-        </Grid.Column>
-        <Grid.Column width="8">
-          <Input
-            id={`field-${id}`}
-            name={id}
-            type="datetime-local"
-            value={value || ''}
-            onChange={({ target }) =>
-              onChange(id, target.value === '' ? undefined : target.value)
-            }
-          />
-          {map(error, message => (
-            <Label key={message} basic color="red" pointing>
-              {message}
-            </Label>
-          ))}
-        </Grid.Column>
-      </Grid.Row>
-      {description && (
+}) => {
+  const [datetime, timezone] = value.split('+');
+  return (
+    <Form.Field
+      inline
+      required={required}
+      error={error.length > 0}
+      className={description ? 'help' : ''}
+    >
+      <Grid>
         <Grid.Row stretched>
-          <Grid.Column stretched width="12">
-            <p className="help">{description}</p>
+          <Grid.Column width="4">
+            <div className="wrapper">
+              <label htmlFor={`field-${id}`}>{title}</label>
+            </div>
+          </Grid.Column>
+          <Grid.Column width="8">
+            <Input
+              id={`field-${id}`}
+              name={id}
+              type="datetime-local"
+              value={datetime || ''}
+              onChange={({ target }) => {
+                const newValue = target.value;
+                onChange(
+                  id,
+                  newValue === '' ? undefined : `${newValue}+${timezone}`,
+                );
+              }}
+            />
+            {map(error, message => (
+              <Label key={message} basic color="red" pointing>
+                {message}
+              </Label>
+            ))}
           </Grid.Column>
         </Grid.Row>
-      )}
-    </Grid>
-  </Form.Field>
-);
+        {description && (
+          <Grid.Row stretched>
+            <Grid.Column stretched width="12">
+              <p className="help">{description}</p>
+            </Grid.Column>
+          </Grid.Row>
+        )}
+      </Grid>
+    </Form.Field>
+  );
+};
 
 /**
  * Property types.
