@@ -58,16 +58,11 @@ script:
     docker run --name coverage_front -it --rm -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" plone/volto:testing -- yarn test:ci;
     fi
   - if [ "$TEST_SUITE" == "guillotina" ]; then
-    PYTHONPATH=$(pwd)/tests pybot -v BROWSER:headlesschrome -v API:Guillotina tests;
+    PYTHONPATH=$(pwd)/tests travis_retry pybot -v BROWSER:headlesschrome -v API:Guillotina tests;
     fi
   - if [ "$TEST_SUITE" == "plone" ]; then
-    PYTHONPATH=$(pwd)/tests travis_retry env/bin/pybot -v BROWSER:headlesschrome -v API:Plone tests;
+    PYTHONPATH=$(pwd)/tests travis_retry api/bin/pybot -v BROWSER:headlesschrome -v API:Plone tests;
     fi
-after_script:
-  - mkdir robot-results
-  - mv log.html output.xml report.html selenium-screenshot-*.png robot-results
-  - ls -al robot-results
-  - surge robot-results plone-react.surge.sh
 after_success:
   - if [ "$TEST_SUITE" == "guillotina" ]; then
     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
