@@ -264,11 +264,11 @@ export default class AddonsControlpanel extends Component {
           <Segment key="body-installed" attached>
             <Accordion>
               <Divider />
-              {this.props.installedAddons.map((item, i) => (
-                <div key={i}>
+              {this.props.installedAddons.map(item => (
+                <div key={item.id}>
                   <Accordion.Title
-                    active={this.state.activeIndex === i}
-                    index={i}
+                    active={this.state.activeIndex === item.id}
+                    index={item.id}
                     onClick={this.onAccordionClick}
                   >
                     {item.title}
@@ -280,7 +280,9 @@ export default class AddonsControlpanel extends Component {
                     )}
                     <Icon name="dropdown" floated="right" />
                   </Accordion.Title>
-                  <Accordion.Content active={this.state.activeIndex === i}>
+                  <Accordion.Content
+                    active={this.state.activeIndex === item.id}
+                  >
                     {item.description}
                     <FormattedMessage
                       id="Installed Version"
@@ -314,17 +316,19 @@ export default class AddonsControlpanel extends Component {
           <Segment key="body-available" attached>
             <Accordion>
               <Divider />
-              {this.props.availableAddons.map((item, j) => (
-                <div key={j}>
+              {this.props.availableAddons.map(item => (
+                <div key={item.id}>
                   <Accordion.Title
-                    active={this.state.activeIndex === j}
-                    index={j}
+                    active={this.state.activeIndex === item.id}
+                    index={item.id}
                     onClick={this.onAccordionClick}
                   >
                     {item.title}
                     <Icon name="dropdown" floated="right" />
                   </Accordion.Title>
-                  <Accordion.Content active={this.state.activeIndex === j}>
+                  <Accordion.Content
+                    active={this.state.activeIndex === item.id}
+                  >
                     {item.description}
 
                     <FormattedMessage
