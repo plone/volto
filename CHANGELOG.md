@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Update api folder to Plone 5.2 and Python3, update the whole story @sneridagh
+
 ## 2.1.2 (2019-04-16)
 
 ### Changes
