@@ -179,7 +179,7 @@ export default class AddonsControlpanel extends Component {
    */
   onInstall(event, { value }) {
     event.preventDefault();
-    this.props.installAddon(value);
+    this.props.installAddon(value).then(() => this.props.listAddons());
   }
 
   /**
@@ -191,7 +191,7 @@ export default class AddonsControlpanel extends Component {
    */
   onUninstall(event, { value }) {
     event.preventDefault();
-    this.props.uninstallAddon(value);
+    this.props.uninstallAddon(value).then(() => this.props.listAddons());
   }
 
   /**
