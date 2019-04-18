@@ -8,28 +8,27 @@ pages, different views, inner pages, etc.
 
 The strategy is to try to map what Volto already provides like the headers,
 breadcrumbs, footer, main content area, etc to the mockup ones. Then decide
-which ones will stay as they are (no customized) and which ones will be
+which ones will stay as they are (not customized) and which ones will be
 required to be customized.
 
 There is a great chance that the vast majority of components (and main building
-blocks) will remain the same, only modified by how they look like using basic
+blocks) will remain the same, only modified by how they look by using basic
 styling (CSS) theming.
 
-As example, if you need to customize the logo, there is a big chance that you
+As an example, if you need to customize the logo, there is a big chance that you
 only need to replace and customize the svg file that the `Logo.jsx` component
-is exposing, without having to customize the whole component.
+exposes, without having to customize the whole component.
 
-Same might apply for other components or big block components, like the
+The same might apply for other components or big block components, like the
 `Header.jsx`.
 
-It is advisable before you start to try to familiarize yourself with how Volto
-is built, take a look at its building blocks in order to not repeat yourself.
+Before you start, it is advisable to try to familiarize yourself with how Volto
+is built. Take a look at its building blocks in order to not repeat yourself.
 Take a tour inside the `components` folder, and try to map all the components
 with Volto page. Try to figure out what is the frame, the part that is constant
 (header, content area, footer), the moving parts, then go to the more complex
-ones (widgets, forms, etc).
-
-Then start theming the components per blocks (header, footer, content area).
+ones (widgets, forms, etc). Then start theming the components per blocks 
+(header, content area, footer).
 
 Try to stick with the container and grid model of Semantic UI, including its
 breakpoints (and helpers). Use React Semantic UI building blocks whenever it's

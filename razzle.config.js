@@ -58,6 +58,7 @@ module.exports = {
       include: [
         path.resolve('./theme'),
         /node_modules\/@plone\/volto\/theme/,
+        /@plone\/volto\/theme/,
         /node_modules\/semantic-ui-less/,
       ],
       use: dev
@@ -83,7 +84,6 @@ module.exports = {
                 importLoaders: 2,
                 sourceMap: true,
                 modules: false,
-                minimize: true,
                 localIdentName: '[name]__[local]___[hash:base64:5]',
               },
             },

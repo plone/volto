@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import jwt from 'jsonwebtoken';
-import MemoryRouter from 'react-router-dom/MemoryRouter';
+import { MemoryRouter } from 'react-router-dom';
 
 import Sharing from './Sharing';
 

@@ -3,14 +3,14 @@
 *******************************/
 
 .ui.menu .item.personal-bar {
-  width: 80px;
   position: fixed;
   bottom: 68px;
+  width: 80px;
 }
 
 .ui.menu.left.fixed ~ .pusher {
   margin-right: 80px;
-  transition: margin-right .3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  transition: margin-right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 .ui.menu.collapsed.left.fixed ~ .pusher {
@@ -26,18 +26,19 @@
 }
 
 .ui.menu .item.logo {
-  width: 80px;
   position: fixed;
   bottom: 0;
+  width: 80px;
 }
 
 .ui.menu .item.logo > .image {
-  margin: 4px -14px 0;
   width: 64px;
   height: 18px;
-  background-size: 64px 18px;
+  margin: 4px -14px 0;
   background-repeat: no-repeat;
-  transition: width .3s cubic-bezier(0.6, -0.28, 0.735, 0.045), margin .3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  background-size: 64px 18px;
+  transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+    margin 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 .ui.menu.collapsed .item.logo > .image {
@@ -46,27 +47,27 @@
 }
 
 .ui.menu .trigger {
-  background: transparent;
   position: absolute;
+  top: 50%;
+  left: 60px;
   width: 20px;
   height: 80px;
-  top: 50%;
-  margin-top: -40px;
-  left: 60px;
   padding: 0;
+  margin-top: -40px;
+  background: transparent;
   border-radius: 0;
   opacity: 0.3;
   transition: opacity 0.3s;
 }
 
 .ui.menu .trigger:before {
-  background: @blue;
+  position: relative;
+  left: 8px;
+  display: block;
   width: 4px;
   height: 100%;
+  background: @blue;
   content: '';
-  display: block;
-  left: 8px;
-  position: relative;
 }
 
 // States
@@ -82,11 +83,11 @@
   opacity: 1;
 }
 
-.ui[class*="left fixed"].menu{
-  transition: left .3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+.ui[class*='left fixed'].menu {
+  transition: left 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
-.ui[class*="left fixed"].menu.collapsed {
+.ui[class*='left fixed'].menu.collapsed {
   left: -60px;
 }
 
@@ -97,9 +98,10 @@
 .ui.grid > .row > .tools.column {
   margin-top: 0.6em;
 }
+
 .ui.grid > .row > .search.column {
-  margin-top: 0.4em;
   padding-left: 0;
+  margin-top: 0.4em;
 }
 
 .ui.grid > .row > .tools.column .ui.list {
@@ -110,8 +112,8 @@
 }
 
 .navigation .ui.secondary.pointing.menu {
-  border: 0;
   margin: 0 0 0 40px;
+  border: 0;
 
   @media only screen and (max-width: @tabletBreakpoint) {
     margin-bottom: 20px;
@@ -119,25 +121,33 @@
   }
 
   .item {
-    margin: 0;
     padding-top: @relativeBig;
+    margin: 0;
     text-transform: uppercase;
 
     @media only screen and (min-width: @tabletBreakpoint) {
-      margin: 0 unit(@relativeLarge * 2, em) 0 0;
       padding: 1.7em 0 @relativeBig;
+      margin: 0 unit(@relativeLarge * 2, em) 0 0;
     }
   }
 }
 
 .ui.secondary.attached.pointing.menu {
   .item {
-    color: @blue;
     padding: 1.4em 1em;
+    color: @blue;
     font-size: @large;
   }
+
   .active.item {
     border-color: @teal;
     color: @black;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .ui.menu.stackable > .menu,
+  .ui.menu.stackable > .menu.right {
+    display: block;
   }
 }
