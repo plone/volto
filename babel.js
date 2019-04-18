@@ -26,6 +26,12 @@ module.exports = function() {
         rootPathSuffix: 'src',
       },
     ],
+    [
+      'react-intl',
+      {
+        messagesDir: './build/messages/',
+      },
+    ],
   ];
 
   return {
