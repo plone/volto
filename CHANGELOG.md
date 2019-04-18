@@ -4,8 +4,11 @@
 
 ### Added
 
+- Upgrade to Razzle 3 @sneridagh
+
 ### Changes
 
+- Several dependencies upgraded @sneridagh
 - Fix image of Hero Tile for images in private containers @sneridagh
 
 ## 2.1.3 (2019-04-17)
