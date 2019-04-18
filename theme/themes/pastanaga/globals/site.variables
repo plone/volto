@@ -189,6 +189,10 @@
 /* Info */
 
 /* Warning */
+@warningBorderColor     : #F3E2AB;
+@warningBackgroundColor : #F3E2AB;
+@warningHeaderColor     : @black;
+@warningTextColor       : @black;
 
 
 /*-------------------

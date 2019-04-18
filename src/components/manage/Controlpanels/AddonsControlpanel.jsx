@@ -67,6 +67,10 @@ const messages = defineMessages({
     id: 'Installed version',
     defaultMessage: 'Installed version',
   },
+  noUninstallProfile: {
+    id: 'No uninstall profile',
+    defaultMessage: 'This addon does not provide an uninstall profile.',
+  },
   update: {
     id: 'Update',
     defaultMessage: 'Update',
@@ -121,6 +125,7 @@ export default class AddonsControlpanel extends Component {
         title: PropTypes.string,
         version: PropTypes.string,
         description: PropTypes.string,
+        uninstall_profile_id: PropTypes.string,
         upgrade_info: PropTypes.shape({
           available: PropTypes.boolean,
         }),
@@ -133,6 +138,7 @@ export default class AddonsControlpanel extends Component {
         title: PropTypes.string,
         version: PropTypes.string,
         description: PropTypes.string,
+        uninstall_profile_id: PropTypes.string,
         upgrade_info: PropTypes.shape({
           available: PropTypes.boolean,
         }),
@@ -145,6 +151,7 @@ export default class AddonsControlpanel extends Component {
         title: PropTypes.string,
         version: PropTypes.string,
         description: PropTypes.string,
+        uninstall_profile_id: PropTypes.string,
         upgrade_info: PropTypes.shape({
           available: PropTypes.boolean,
         }),
@@ -179,11 +186,6 @@ export default class AddonsControlpanel extends Component {
    */
   componentWillMount() {
     this.props.listAddons();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log('in componentWillReceiveProps');
-    console.log(nextProps);
   }
 
   /**
@@ -334,19 +336,21 @@ export default class AddonsControlpanel extends Component {
                           />
                         </Button>
                       )}
-                      <Button
-                        negative
-                        basic
-                        onClick={this.onUninstall}
-                        value={item.id}
-                        className="uninstallAction"
-                      >
-                        <FormattedMessage
-                          id="Uninstall"
-                          defaultMessage="Uninstall"
-                          className="button-label"
-                        />
-                      </Button>
+                      {item.uninstall_profile_id && (
+                        <Button
+                          negative
+                          basic
+                          onClick={this.onUninstall}
+                          value={item.id}
+                          className="uninstallAction"
+                        >
+                          <FormattedMessage
+                            id="Uninstall"
+                            defaultMessage="Uninstall"
+                            className="button-label"
+                          />
+                        </Button>
+                      )}
                     </Button.Group>
                     <div className="version" >
                       <FormattedMessage
@@ -391,6 +395,16 @@ export default class AddonsControlpanel extends Component {
                     active={this.state.activeIndex === item.id}
                   >
                     <div className="description">{item.description}</div>
+                    {item.uninstall_profile_id === '' && (
+                      <div>
+                        <Message icon="warning" warning>
+                          <FormattedMessage
+                            id="No uninstall profile"
+                            defaultMessage="This addon does not provide an uninstall profile."
+                          />
+                        </Message>
+                      </div>
+                    )}
                     <Button.Group floated="right">
                       <Button
                         primary
