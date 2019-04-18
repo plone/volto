@@ -11,11 +11,13 @@ import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import cx from 'classnames';
+import { CSSTransition } from 'react-transition-group';
 import { settings } from '~/config';
 
 import { Icon } from '../../../../components';
 import { createContent } from '../../../../actions';
 import { flattenToAppURL, getBaseUrl } from '../../../../helpers';
+import ObjectBrowser from '../../ObjectBrowser/ObjectBrowser';
 
 import clearSVG from '../../../../icons/clear.svg';
 import uploadSVG from '../../../../icons/upload.svg';
@@ -25,9 +27,6 @@ import imageLeftSVG from '../../../../icons/image-left.svg';
 import imageRightSVG from '../../../../icons/image-right.svg';
 import imageFitSVG from '../../../../icons/image-fit.svg';
 import imageFullSVG from '../../../../icons/image-full.svg';
-import navSVG from '../../../../icons/nav.svg';
-import { CSSTransition } from 'react-transition-group';
-import ObjectBrowser from '../../ObjectBrowser/ObjectBrowser';
 
 const messages = defineMessages({
   ImageTileInputPlaceholder: {
@@ -306,6 +305,11 @@ export default class Edit extends Component {
               </Button.Group>
               <div className="separator" />
               <Button.Group>
+                <Button icon basic onClick={this.toggleObjectBrowser}>
+                  <Icon name={imageSVG} size="24px" />
+                </Button>
+              </Button.Group>
+              <Button.Group>
                 <Button
                   icon
                   basic
@@ -400,6 +404,7 @@ export default class Edit extends Component {
               closeBrowser={this.toggleObjectBrowser}
               tile={this.props.tile}
               onSelectItem={this.onSelectItem}
+              image={this.props.data.url}
             />
           </div>
         </CSSTransition>

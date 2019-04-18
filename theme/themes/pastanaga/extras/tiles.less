@@ -454,6 +454,16 @@
 
 // Object Browser Container
 .object-browser-container {
+  aside {
+    height: 100%;
+
+    .ui.raised.segments {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+    }
+  }
+
   button {
     // Default reset for button
     padding: 0;
@@ -474,12 +484,24 @@
     padding: 8px 20px;
     border-bottom: 4px solid #b8c6c8;
 
+    .icon {
+      padding-right: 10px;
+    }
+
     h2 {
       flex: 1 0 auto;
       margin: 0 !important;
       color: #252525;
       font-size: 16px;
       font-weight: 500;
+    }
+
+    form {
+      flex: 1 0 auto;
+    }
+
+    .search input {
+      border: none;
     }
 
     a {
@@ -498,18 +520,20 @@
   }
 
   ul {
-    padding: 10px;
+    flex: 1 0 auto;
     margin: 0;
 
     li {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px;
+      padding: 10px 0 10px 5px;
       cursor: pointer;
+
       &.selected-item {
         background-color: @tealBackground;
       }
+
       span {
         display: flex;
         align-items: center;
@@ -519,6 +543,10 @@
         }
       }
     }
+  }
+
+  .ui.segment.form.actions {
+    padding-bottom: 1em;
   }
 }
 
