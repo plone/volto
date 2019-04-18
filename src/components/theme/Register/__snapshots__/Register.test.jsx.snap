@@ -132,7 +132,6 @@ exports[`Register renders a register component 1`] = `
             </div>
           </div>
         </div>
-        
         <div
           className="ui clearing segment actions"
         >

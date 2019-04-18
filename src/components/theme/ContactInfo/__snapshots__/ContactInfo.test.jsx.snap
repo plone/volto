@@ -44,26 +44,6 @@ exports[`Contact form renders a contact form 1`] = `
               Contact form
             </div>
             <div
-              className="ui orange icon attached message"
-            >
-              <i
-                aria-hidden="true"
-                className="warning icon"
-              />
-              <div
-                className="content"
-              >
-                <div
-                  className="header"
-                >
-                  Warning
-                </div>
-                <p>
-                  A recaptcha valid config was not found. Please, set one in order to secure this form.
-                </p>
-              </div>
-            </div>
-            <div
               className="inline field"
             >
               <div
@@ -230,13 +210,13 @@ exports[`Contact form renders a contact form 1`] = `
               </div>
             </div>
           </div>
-          
           <div
             className="ui clearing segment actions"
           >
             <button
               className="ui big basic circular icon primary right floated button"
               onClick={[Function]}
+              role="button"
               title="Send"
               type="submit"
             >
@@ -248,6 +228,7 @@ exports[`Contact form renders a contact form 1`] = `
             <button
               className="ui big basic circular icon secondary right floated button"
               onClick={[Function]}
+              role="button"
               title="Cancel"
             >
               <i
@@ -310,26 +291,6 @@ exports[`Contact form renders a contact form with error message 1`] = `
               Contact form
             </div>
             <div
-              className="ui orange icon attached message"
-            >
-              <i
-                aria-hidden="true"
-                className="warning icon"
-              />
-              <div
-                className="content"
-              >
-                <div
-                  className="header"
-                >
-                  Warning
-                </div>
-                <p>
-                  A recaptcha valid config was not found. Please, set one in order to secure this form.
-                </p>
-              </div>
-            </div>
-            <div
               className="inline field"
             >
               <div
@@ -496,13 +457,13 @@ exports[`Contact form renders a contact form with error message 1`] = `
               </div>
             </div>
           </div>
-          
           <div
             className="ui clearing segment actions"
           >
             <button
               className="ui big basic circular icon primary right floated button"
               onClick={[Function]}
+              role="button"
               title="Send"
               type="submit"
             >
@@ -514,6 +475,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
             <button
               className="ui big basic circular icon secondary right floated button"
               onClick={[Function]}
+              role="button"
               title="Cancel"
             >
               <i

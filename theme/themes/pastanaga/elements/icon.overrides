@@ -906,7 +906,7 @@ i.icon.warning.sign:before { content: "\f071"; }
 i.icon.announcement:before { content: @icon-megaphone; }
 i.icon.help:before { content: "\f128"; }
 i.icon.info:before { content: "\f129"; }
-i.icon.warning:before { content: @icon-warning; }
+i.icon.warning:before { content: @icon-error; }
 i.icon.birthday:before { content: "\f1fd"; }
 i.icon.help.circle.outline:before { content: "\f29c"; }
 

@@ -31,4 +31,3 @@ export {
 } from '@plone/volto/helpers/Tiles/Tiles';
 export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
-export { recaptchaValidate } from '@plone/volto/helpers/Recaptcha/Recaptcha';

@@ -11,7 +11,6 @@ import Raven from 'raven';
 import cookie, { plugToRequest } from 'react-cookie';
 import locale from 'locale';
 
-import { secretTokens } from '~/config/tokens';
 import routes from '~/routes';
 import nlLocale from '~/../locales/nl.json';
 import deLocale from '~/../locales/de.json';
@@ -23,7 +22,6 @@ import {
   persistAuthToken,
   generateSitemap,
   getAPIResourceWithAuth,
-  recaptchaValidate,
 } from './helpers';
 
 import userSession from './reducers/userSession/userSession';
@@ -43,17 +41,10 @@ const locales = {
   de: deLocale,
 };
 
-const recaptchaRoute = express.Router();
 const server = express();
-
-recaptchaRoute.get('/@recaptcha_validate*', (req, res) =>
-  recaptchaValidate(req, res),
-);
-
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
-  .use(recaptchaRoute)
   .get('/*', (req, res) => {
     plugToRequest(req, res);
     const api = new Api(req);

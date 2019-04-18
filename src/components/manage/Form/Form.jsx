@@ -5,7 +5,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import superagent from 'superagent';
 import { keys, map, mapValues, omit, uniq, without } from 'lodash';
 import move from 'lodash-move';
 import {
@@ -18,8 +17,6 @@ import {
 } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { v4 as uuid } from 'uuid';
-import ReCAPTCHA from 'react-google-recaptcha';
-import { publicTokens } from '~/config/tokens';
 
 import { EditTile, Field } from '../../../components';
 import { getTilesFieldname, getTilesLayoutFieldname } from '../../../helpers';
@@ -53,25 +50,9 @@ const messages = defineMessages({
     id: 'Error',
     defaultMessage: 'Error',
   },
-  warning: {
-    id: 'Warning',
-    defaultMessage: 'Warning',
-  },
   thereWereSomeErrors: {
     id: 'There were some errors.',
     defaultMessage: 'There were some errors.',
-  },
-  recaptchaError: {
-    id:
-      'There were some errors. Please, validate that you are not a robot using the recaptcha field.',
-    defaultMessage:
-      'There were some errors. Please, validate that you are not a robot using the recaptcha field.',
-  },
-  noRecaptchaWarning: {
-    id:
-      'A recaptcha valid config was not found. Please, set one in order to secure this form.',
-    defaultMessage:
-      'A recaptcha valid config was not found. Please, set one in order to secure this form.',
   },
 });
 
@@ -115,7 +96,6 @@ class Form extends Component {
     description: PropTypes.string,
     visual: PropTypes.bool,
     tiles: PropTypes.arrayOf(PropTypes.object),
-    recaptcha: PropTypes.bool,
   };
 
   /**
@@ -137,7 +117,6 @@ class Form extends Component {
     visual: false,
     tiles: [],
     pathname: '',
-    recaptcha: false,
   };
 
   /**
@@ -187,7 +166,6 @@ class Form extends Component {
         formData[tilesLayoutFieldname].items.length > 0
           ? formData[tilesLayoutFieldname].items[0]
           : null,
-      isRecaptchaValid: Boolean(!publicTokens.GOOGLE_RECAPTCHA_PUBLIC_TOKEN),
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeTile = this.onChangeTile.bind(this);
@@ -199,7 +177,6 @@ class Form extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.onFocusPreviousTile = this.onFocusPreviousTile.bind(this);
     this.onFocusNextTile = this.onFocusNextTile.bind(this);
-    this.onChangeRecaptcha = this.onChangeRecaptcha.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
@@ -396,13 +373,6 @@ class Form extends Component {
         }
       }),
     );
-
-    if (this.props.recaptcha && !this.state.isRecaptchaValid) {
-      errors.recaptcha = [];
-      errors.recaptcha.push(
-        this.props.intl.formatMessage(messages.recaptchaError),
-      );
-    }
     if (keys(errors).length > 0) {
       this.setState({
         errors,
@@ -415,25 +385,6 @@ class Form extends Component {
         });
       }
     }
-  }
-
-  /**
-   * onChangeRecaptcha handler
-   * @method onChangeRecaptcha
-   * @param {string} value recaptcha value to be validated
-   * @returns {bool} Is valid or not
-   */
-  onChangeRecaptcha(value) {
-    superagent
-      .get('/@recaptcha_validate')
-      .query({ 'g-recaptcha-response': value })
-      .end((err, res) => {
-        if (!err) {
-          if (res.statusCode === 200) {
-            this.setState({ isRecaptchaValid: true });
-          }
-        }
-      });
   }
 
   /**
@@ -641,13 +592,9 @@ class Form extends Component {
                     negative
                     attached
                     header={this.props.intl.formatMessage(messages.error)}
-                    content={
-                      this.state.isRecaptchaValid
-                        ? this.props.intl.formatMessage(
-                            messages.thereWereSomeErrors,
-                          )
-                        : this.props.intl.formatMessage(messages.recaptchaError)
-                    }
+                    content={this.props.intl.formatMessage(
+                      messages.thereWereSomeErrors,
+                    )}
                   />
                 )}
                 {this.props.error && (
@@ -659,18 +606,6 @@ class Form extends Component {
                     content={this.props.error.message}
                   />
                 )}
-                {this.props.recaptcha &&
-                  !publicTokens.GOOGLE_RECAPTCHA_PUBLIC_TOKEN && (
-                    <Message
-                      icon="warning"
-                      color="orange"
-                      attached
-                      header={this.props.intl.formatMessage(messages.warning)}
-                      content={this.props.intl.formatMessage(
-                        messages.noRecaptchaWarning,
-                      )}
-                    />
-                  )}
                 {map(schema.fieldsets[0].fields, field => (
                   <Field
                     {...schema.properties[field]}
@@ -682,14 +617,6 @@ class Form extends Component {
                     error={this.state.errors[field]}
                   />
                 ))}
-              </Segment>
-            )}
-            {publicTokens.GOOGLE_RECAPTCHA_PUBLIC_TOKEN && (
-              <Segment className="recaptcha" clearing>
-                <ReCAPTCHA
-                  sitekey={publicTokens.GOOGLE_RECAPTCHA_PUBLIC_TOKEN}
-                  onChange={this.onChangeRecaptcha}
-                />
               </Segment>
             )}
             {!this.props.hideActions && (
