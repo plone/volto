@@ -1,7 +1,7 @@
 # Add-on packages
 
-There are several advanced scenarios where we could want to have more control
-and flexibility other than use the plain Volto project to build a site.
+There are several advanced scenarios where we might want to have more control
+and flexibility beyond using the plain Volto project to build a site.
 
 ## Use add-on products
 
@@ -10,23 +10,23 @@ packages (from public/private npm repositories), or as checkouts from git
 repositories using `mr-developer` helper.
 
 We can use them to easily reuse components across projects, like custom tiles,
-views, widgets or any other Volto or React artifact.
+views, widgets, or any other Volto or React artifact.
 
 ### Mr. Developer
 
-Eric Brehault ported from Python this amazing tool, that provides a way to pull
+Eric Brehault ported this amazing tool from Python, which provides a way to pull
 a package from git and set it up as a dependency for the current project
 codebase.
 
 https://www.npmjs.com/package/mr-developer
 
-By doing this, you can develop both the project and the add-on product as they
+By doing this, you can develop both the project and the add-on product as if they
 were both part of the current codebase. Once the add-on development is done,
 you can publish the package to an npm repository.
 
-Volto is also capable to use aliases for your (unreleased) package, so when you
-release it, then you don't need to change import paths, since you can use the
-final ones from the beginning.
+Volto is also capable of using aliases for your (unreleased) package, so that once
+you've released it, you don't need to change import paths, since you can use the
+final ones from the very beginning.
 
 ## Configuring a Volto project to use a Volto add-on product
 
@@ -67,8 +67,8 @@ If you want to know more about `mr-developer` config options, please refer to
 
 ### jsconfig.json
 
-You can let `mr-developer` to create this file for you, or create it manually,
-by default, the script in the above section will *not* create it.
+You can let `mr-developer` create this file for you or create it manually.
+By default, the script in the above section will *not* create it.
 
 ```json
 {
@@ -107,7 +107,7 @@ them, so in `package.json`:
 ### .eslintrc
 
 Add the path to the `eslintrc` file in order to the linter not to complain if
-you import from a package that not yet exists (since it's an alias).
+you import from a package that does not yet exist (since it's an alias).
 
 ```json hl_lines="9"
 {
@@ -133,11 +133,11 @@ you import from a package that not yet exists (since it's an alias).
 ## Add several layers of customizations
 
 In `package.json` we can add more customization layers that will be added to the
-current ones. These will be added to the aliases list, being the last the ones
+current ones. These will be added to the aliases list, with the last ones
 having more precedence. You have to keep sanity in the overriding layers, since
 Volto is not yet ready to do it for you.
 
-Setup them in the `customizationPaths` key in the `package.json` file on your
+Set them up in the `customizationPaths` key in the `package.json` file on your
 Volto project.
 
 ```json

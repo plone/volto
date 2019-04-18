@@ -33,7 +33,7 @@ const NotFound = () => (
         defaultMessage="If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
         values={{
           site_admin: (
-            <Link to="/contact-info">
+            <Link to="/contact-form">
               <FormattedMessage
                 id="Site Administration"
                 defaultMessage="Site Administration"

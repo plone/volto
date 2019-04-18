@@ -15,11 +15,11 @@ import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import cx from 'classnames';
 
-import { createContent } from '../../../../actions';
-import { getBaseUrl } from '../../../../helpers';
-import { Icon } from '../../../../components';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import { createContent } from '@plone/volto/actions';
+import { Icon } from '@plone/volto/components';
 
-import clearSVG from '../../../../icons/clear.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   title: {
@@ -161,14 +161,10 @@ export default class EditHeroTile extends Component {
       this.setState({
         uploading: false,
       });
-      this.props.onChangeTile(
-        this.props.tile,
-        {
-          ...this.props.data,
-          url: nextProps.content['@id'],
-        },
-        true,
-      );
+      this.props.onChangeTile(this.props.tile, {
+        ...this.props.data,
+        url: nextProps.content['@id'],
+      });
     }
 
     if (
@@ -214,14 +210,10 @@ export default class EditHeroTile extends Component {
    */
   onChangeTitle(titleEditorState) {
     this.setState({ titleEditorState }, () => {
-      this.props.onChangeTile(
-        this.props.tile,
-        {
-          ...this.props.data,
-          title: titleEditorState.getCurrentContent().getPlainText(),
-        },
-        true,
-      );
+      this.props.onChangeTile(this.props.tile, {
+        ...this.props.data,
+        title: titleEditorState.getCurrentContent().getPlainText(),
+      });
     });
   }
 
@@ -233,16 +225,10 @@ export default class EditHeroTile extends Component {
    */
   onChangeDescription(descriptionEditorState) {
     this.setState({ descriptionEditorState }, () => {
-      this.props.onChangeTile(
-        this.props.tile,
-        {
-          ...this.props.data,
-          description: descriptionEditorState
-            .getCurrentContent()
-            .getPlainText(),
-        },
-        true,
-      );
+      this.props.onChangeTile(this.props.tile, {
+        ...this.props.data,
+        description: descriptionEditorState.getCurrentContent().getPlainText(),
+      });
     });
   }
 
@@ -308,14 +294,10 @@ export default class EditHeroTile extends Component {
                   icon
                   basic
                   onClick={() =>
-                    this.props.onChangeTile(
-                      this.props.tile,
-                      {
-                        ...this.props.data,
-                        url: '',
-                      },
-                      true,
-                    )
+                    this.props.onChangeTile(this.props.tile, {
+                      ...this.props.data,
+                      url: '',
+                    })
                   }
                 >
                   <Icon name={clearSVG} size="24px" color="#e40166" />
@@ -327,7 +309,7 @@ export default class EditHeroTile extends Component {
           {this.props.data.url ? (
             <img
               className="hero-image"
-              src={`${this.props.data.url}/@@images/image`}
+              src={`${flattenToAppURL(this.props.data.url)}/@@images/image`}
               alt=""
             />
           ) : (

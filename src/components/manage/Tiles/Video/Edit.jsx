@@ -68,6 +68,7 @@ export default class Edit extends Component {
 
     this.onChangeUrl = this.onChangeUrl.bind(this);
     this.onSubmitUrl = this.onSubmitUrl.bind(this);
+    this.onKeyDownVariantMenuForm = this.onKeyDownVariantMenuForm.bind(this);
     this.state = {
       url: '',
     };
@@ -131,6 +132,26 @@ export default class Edit extends Component {
       ...this.props.data,
       align,
     });
+  }
+
+  /**
+   * Keydown handler on Variant Menu Form
+   * This is required since the ENTER key is already mapped to a onKeyDown
+   * event and needs to be overriden with a child onKeyDown.
+   * @method onKeyDownVariantMenuForm
+   * @param {Object} e Event object
+   * @returns {undefined}
+   */
+  onKeyDownVariantMenuForm(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      e.stopPropagation();
+      this.onSubmitUrl();
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      e.stopPropagation();
+      // TODO: Do something on ESC key
+    }
   }
 
   /**
@@ -214,7 +235,7 @@ export default class Edit extends Component {
           !this.props.data.url && (
             <div className="toolbar">
               <Icon name={videoSVG} size="24px" />
-              <form onSubmit={e => this.onSubmitUrl(e)}>
+              <form onKeyDown={this.onKeyDownVariantMenuForm}>
                 <Input
                   onChange={this.onChangeUrl}
                   placeholder={this.props.intl.formatMessage(
@@ -222,16 +243,6 @@ export default class Edit extends Component {
                   )}
                 />
               </form>
-              {/* <Button.Group>
-                <label className="ui button basic icon">
-                  <Icon name={folderSVG} size="24px" />
-                  <input
-                    type="file"
-                    onChange={this.onUploadImage}
-                    style={{ display: 'none' }}
-                  />
-                </label>
-              </Button.Group> */}
             </div>
           )}
         {data.url ? (
