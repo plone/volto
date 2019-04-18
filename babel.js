@@ -1,4 +1,5 @@
-module.exports = function() {
+module.exports = function(api) {
+  api.cache(true);
   const presets = ['razzle/babel'];
   const plugins = [
     '@babel/plugin-proposal-function-bind',
