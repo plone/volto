@@ -231,9 +231,9 @@ export default class AddonsControlpanel extends Component {
    * @param {object} index Index of the accordion element being clicked
    * @returns {undefined}
    */
-  onAccordionClick(event, index) {
-    const { activeIndex } = this.state.activeIndex;
-    const newIndex = activeIndex === index.index ? -1 : index.index;
+  onAccordionClick(event, item) {
+    const { activeIndex } = this.state;
+    const newIndex = activeIndex === item.index ? -1 : item.index;
     this.setState({ activeIndex: newIndex });
   }
 

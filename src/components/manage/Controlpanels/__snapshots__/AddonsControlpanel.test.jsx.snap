@@ -1,0 +1,244 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddonsControlpanel renders an addon control component 1`] = `
+<div
+  id="page-addons"
+>
+  <div
+    className="ui raised segments"
+  >
+    <div
+      className="ui segment primary"
+    >
+      <span>
+        Add-ons Settings
+      </span>
+    </div>
+    <div
+      className="ui attached message"
+    >
+      <div
+        className="header"
+      >
+        <span>
+          Updates available
+        </span>
+      </div>
+      <span>
+        Update installed addons
+      </span>
+    </div>
+    <div
+      className="ui segment"
+    >
+      <h3
+        className="ui header"
+      >
+        <span>
+          Activate and deactivate add-ons in the lists below.
+        </span>
+      </h3>
+      <span>
+        To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+      </span>
+       
+      <a
+        href="http://docs.plone.org/manage/installing/installing_addons.html"
+        target="_blank"
+      >
+        Installing a third party add-on
+      </a>
+      .
+    </div>
+    <div
+      className="ui secondary segment"
+    >
+      <span>
+        Installed
+      </span>
+      :
+      <div
+        className="ui circular label"
+        onClick={[Function]}
+      >
+        1
+      </div>
+    </div>
+    <div
+      className="ui attached segment"
+    >
+      <div
+        className="accordion ui"
+      >
+        <div
+          className="ui divider"
+        />
+        <div>
+          <div
+            className="title updateAvailable"
+            onClick={[Function]}
+          >
+            Whatever
+            <span
+              className="updateText"
+            >
+              <span>
+                Update
+              </span>
+            </span>
+            <svg
+              className="icon accordionToggle"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "23px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+          </div>
+          <div
+            className="content"
+          >
+            <div
+              className="description"
+            >
+              Does stuff and junk...
+            </div>
+            <div
+              className="ui right floated buttons"
+            >
+              <button
+                className="ui basic primary button"
+                onClick={[Function]}
+                value="plone.app.whatever"
+              >
+                <span>
+                  Update
+                </span>
+              </button>
+              <button
+                className="ui basic negative button uninstallAction"
+                onClick={[Function]}
+                value="plone.app.whatever"
+              >
+                <span>
+                  Uninstall
+                </span>
+              </button>
+            </div>
+            <div
+              className="version"
+            >
+              <span>
+                Installed version
+              </span>
+              :   
+              1.0.0
+            </div>
+          </div>
+          <div
+            className="ui divider"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="ui secondary segment"
+    >
+      <span>
+        Available
+      </span>
+      :
+      <div
+        className="ui circular label"
+        onClick={[Function]}
+      >
+        1
+      </div>
+    </div>
+    <div
+      className="ui attached segment"
+    >
+      <div
+        className="accordion ui"
+      >
+        <div
+          className="ui divider"
+        />
+        <div>
+          <div
+            className="title"
+            onClick={[Function]}
+          >
+            Something Else
+            <svg
+              className="icon accordionToggle"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "23px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+          </div>
+          <div
+            className="content"
+          >
+            <div
+              className="description"
+            >
+              Does other things...
+            </div>
+            <div
+              className="ui right floated buttons"
+            >
+              <button
+                className="ui basic primary button installAction"
+                onClick={[Function]}
+                value="plone.app.somethingelse"
+              >
+                <span>
+                  Install
+                </span>
+              </button>
+            </div>
+            <div
+              className="version"
+            >
+              <span>
+                Latest version
+              </span>
+              :  
+              1.0.0
+            </div>
+          </div>
+          <div
+            className="ui divider"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    id="Portal"
+  />
+</div>
+`;
