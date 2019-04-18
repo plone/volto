@@ -81,7 +81,7 @@ exports[`Footer renders a footer component 1`] = `
       >
         <a
           className="item"
-          href="/contact-info"
+          href="/contact-form"
           onClick={[Function]}
         >
           <span>

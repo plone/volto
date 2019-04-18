@@ -95,7 +95,7 @@ msgstr "Aufsteigend"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 msgid "Back"
 msgstr "Zurück"
 
@@ -188,7 +188,7 @@ msgid "Contact"
 msgstr "Kontakt"
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 msgid "Contact form"
 msgstr ""
 
@@ -244,7 +244,7 @@ msgstr "Datum"
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
@@ -333,7 +333,7 @@ msgid "Edit {title}"
 msgstr "{title} bearbeiten"
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 msgid "Email sent"
 msgstr ""
 
@@ -367,7 +367,7 @@ msgstr "Geben Sie ihr neues Passwort ein. Mindestens 5 Zeichen."
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
 msgid "Error"
 msgstr "Fehler"
@@ -393,7 +393,7 @@ msgid "Filter…"
 msgstr "Filter…"
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 msgid "From"
 msgstr ""
 
@@ -488,7 +488,7 @@ msgid "Login Name"
 msgstr "Benutzername"
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr ""
 
@@ -515,7 +515,7 @@ msgstr "Meine E-Mail-Adresse lautet"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 msgid "Name"
 msgstr "Name"
 
@@ -716,7 +716,7 @@ msgid "Select…"
 msgstr "Wähle…"
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 msgid "Send"
 msgstr ""
 
@@ -787,7 +787,7 @@ msgid "String"
 msgstr "Text"
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 msgid "Subject"
 msgstr ""
 

@@ -2,7 +2,7 @@
 
 exports[`Contact form renders a contact form 1`] = `
 <div
-  id="contact-info"
+  id="contact-form"
 >
   <div
     className="ui container"
@@ -244,7 +244,7 @@ exports[`Contact form renders a contact form 1`] = `
 
 exports[`Contact form renders a contact form with error message 1`] = `
 <div
-  id="contact-info"
+  id="contact-form"
 >
   <div
     className="ui container"

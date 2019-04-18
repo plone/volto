@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import MemoryRouter from 'react-router-dom/MemoryRouter';
-import { ContactInfo } from './ContactInfo';
+import { ContactForm } from './ContactForm';
 
 const mockStore = configureStore();
 
@@ -25,7 +25,7 @@ describe('Contact form', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <ContactInfo location={{ pathname: '/blog' }} />
+          <ContactForm location={{ pathname: '/blog' }} />
         </MemoryRouter>
       </Provider>,
     );
@@ -52,7 +52,7 @@ describe('Contact form', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <ContactInfo location={{ pathname: '/' }} />
+          <ContactForm location={{ pathname: '/' }} />
         </MemoryRouter>
       </Provider>,
     );

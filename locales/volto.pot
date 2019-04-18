@@ -96,7 +96,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 # defaultMessage: Back
 msgid "Back"
 msgstr ""
@@ -208,7 +208,7 @@ msgid "Contact"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
 msgid "Contact form"
 msgstr ""
@@ -273,7 +273,7 @@ msgstr ""
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
@@ -380,7 +380,7 @@ msgid "Edit {title}"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 # defaultMessage: Email sent
 msgid "Email sent"
 msgstr ""
@@ -421,7 +421,7 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
 # defaultMessage: Error
 msgid "Error"
@@ -453,7 +453,7 @@ msgid "Filter…"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 # defaultMessage: From
 msgid "From"
 msgstr ""
@@ -570,7 +570,7 @@ msgid "Login Name"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
 msgid "Message"
 msgstr ""
@@ -603,7 +603,7 @@ msgstr ""
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 # defaultMessage: Name
 msgid "Name"
 msgstr ""
@@ -847,7 +847,7 @@ msgid "Select…"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 # defaultMessage: Send
 msgid "Send"
 msgstr ""
@@ -934,7 +934,7 @@ msgid "String"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
 msgstr ""

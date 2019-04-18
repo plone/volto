@@ -99,7 +99,7 @@ msgstr "Oplopend"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 msgid "Back"
 msgstr ""
 
@@ -192,7 +192,7 @@ msgid "Contact"
 msgstr "Contact"
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 msgid "Contact form"
 msgstr ""
 
@@ -248,7 +248,7 @@ msgstr ""
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
@@ -337,7 +337,7 @@ msgid "Edit {title}"
 msgstr "{title} bewerken"
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 msgid "Email sent"
 msgstr ""
 
@@ -371,7 +371,7 @@ msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
 msgid "Error"
 msgstr ""
@@ -397,7 +397,7 @@ msgid "Filter…"
 msgstr "Filter…"
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 msgid "From"
 msgstr ""
 
@@ -492,7 +492,7 @@ msgid "Login Name"
 msgstr "Gebruikersnaam"
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr ""
 
@@ -519,7 +519,7 @@ msgstr ""
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 msgid "Name"
 msgstr "Naam"
 
@@ -720,7 +720,7 @@ msgid "Select…"
 msgstr "Selecteer…"
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 msgid "Send"
 msgstr ""
 
@@ -791,7 +791,7 @@ msgid "String"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactInfo/ContactInfo
+#: components/theme/ContactForm/ContactForm
 msgid "Subject"
 msgstr ""
 

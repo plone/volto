@@ -1,6 +1,6 @@
 /**
- * Contact Info container.
- * @module components/theme/ContactInfo/ContactInfo
+ * Contact Form container.
+ * @module components/theme/ContactForm/ContactForm
  */
 
 import React, { Component } from 'react';
@@ -12,7 +12,7 @@ import { Portal } from 'react-portal';
 import { Container, Message, Icon } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Link, withRouter } from 'react-router-dom';
-import { Form, Toolbar } from '../../../components';
+import { Form, Toolbar } from '../..';
 import { addMessage, emailNotification } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
@@ -70,11 +70,11 @@ const messages = defineMessages({
   dispatch => bindActionCreators({ emailNotification, addMessage }, dispatch),
 )
 /**
- * ContactInfo class.
- * @class ContactInfo
+ * ContactForm class.
+ * @class ContactForm
  * @extends Component
  */
-export class ContactInfo extends Component {
+export class ContactForm extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -161,7 +161,7 @@ export class ContactInfo extends Component {
    */
   render() {
     return (
-      <div id="contact-info">
+      <div id="contact-form">
         <Container>
           <Helmet title="Contact form" />
           {this.props.error && (
@@ -235,4 +235,4 @@ export class ContactInfo extends Component {
   }
 }
 
-export default withRouter(ContactInfo);
+export default withRouter(ContactForm);

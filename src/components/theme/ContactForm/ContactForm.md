@@ -17,7 +17,7 @@ const store = configureStore()({
 
 <div className={'rsg--pre-42'}>
   <Provider store={store}>
-    <ContactInfo error={(message = '')} loading={false} loaded={false} />
+    <ContactForm error={(message = '')} loading={false} loaded={false} />
   </Provider>
 </div>;
 ```

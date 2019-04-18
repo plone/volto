@@ -81,7 +81,7 @@ const Footer = ({ intl }) => (
           <FormattedMessage id="Accessibility" defaultMessage="Accessibility" />
         </List.Item>
         <List.Item>
-          <Link to="contact-info" className="item">
+          <Link to="contact-form" className="item">
             <FormattedMessage id="Contact" defaultMessage="Contact" />
           </Link>
         </List.Item>
