@@ -48,7 +48,6 @@ export function installAddon(id) {
  * @returns {Object} uninstall addon action.
  */
 export function uninstallAddon(id) {
-  console.log('uninstallAddon');
   return {
     type: UNINSTALL_ADDON,
     request: {
@@ -65,7 +64,6 @@ export function uninstallAddon(id) {
  * @returns {Object} id of addon to upgrade.
  */
 export function upgradeAddon(id) {
-  console.log('upgradeAddon');
   return {
     type: UPGRADE_ADDON,
     request: {
