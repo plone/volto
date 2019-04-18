@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix image of Hero Tile for images in private containers @sneridagh
+
 ## 2.1.3 (2019-04-17)
 
 ### Changes
