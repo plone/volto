@@ -5,6 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
  * View image tile class.
@@ -14,7 +15,11 @@ import PropTypes from 'prop-types';
 const View = ({ data }) => (
   <div className="tile hero">
     <div className="tile-inner-wrapper">
-      <img src={`${data.url}/@@images/image`} alt="" className="hero-image" />
+      <img
+        src={`${flattenToAppURL(data.url)}/@@images/image`}
+        alt=""
+        className="hero-image"
+      />
       <div className="hero-body">
         <h1>{data.title}</h1>
         <p>{data.description}</p>

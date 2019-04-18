@@ -5,8 +5,13 @@
 ### Added
 
 - Addons control panel @esteele
+- Upgrade to Razzle 3 @sneridagh
+- contact-form view @cekk
 
 ### Changes
+
+- Several dependencies upgraded @sneridagh
+- Fix image of Hero Tile for images in private containers @sneridagh
 
 ## 2.1.3 (2019-04-17)
 
@@ -138,7 +143,7 @@
 - Set image width in Volto editor to 50% for images that float left/right @timo
 - Ability to navigate through the existing tiles with the cursors. @sneridagh
 - HTML Tile for Volto Editor with preview and code prettifier
-   @ajayns @nileshgulia1 @sneridagh
+  @ajayns @nileshgulia1 @sneridagh
 - Add error log in the SSR console @sneridagh
 - Add SSR helper to get resources (images/files) from the server using the API
   headers. This fixes the missing images on non published resources while editing @sneridagh
@@ -191,13 +196,12 @@
 - Fix CSS sourcemaps by make postcss stage to accept other stages sourcemaps
   @sneridagh
 - Add IE11 fixes by pinning some packages, added documentation in `docs` about
-  it and how to deal with it. However, compatibility is *NOT* guaranteed in
+  it and how to deal with it. However, compatibility is _NOT_ guaranteed in
   future Volto releases @sneridagh
 - Fix Header scroll in Firefox in case that there are lot of items in the nav
   @sneridagh
 - Add supported browsers in README @sneridagh
 - Default tile position to center for all the existing tiles @sneridagh
-
 
 ## 1.4.0 (2019-02-15)
 
@@ -217,21 +221,21 @@
 
 ### Added
 
- - Improve the definitions of the view/edit tiles components for better
-   extensibility. This might be a BREAKING change if you have already used the
-   old way to extend/add more tiles, please update to the new one @sneridagh
+- Improve the definitions of the view/edit tiles components for better
+  extensibility. This might be a BREAKING change if you have already used the
+  old way to extend/add more tiles, please update to the new one @sneridagh
 
 ### Changes
 
- - Fix Travis unit testing false green @sneridagh
- - Fix bad Proptype for location in ScrollToTop component @sneridagh
+- Fix Travis unit testing false green @sneridagh
+- Fix bad Proptype for location in ScrollToTop component @sneridagh
 
 ## 1.2.1 (2019-02-04)
 
 ### Changes
 
- - Bring back the scroll to top on every route change feature @sneridagh
- - Loosen node version, allow LTS (v8 and v10) @sneridagh
+- Bring back the scroll to top on every route change feature @sneridagh
+- Loosen node version, allow LTS (v8 and v10) @sneridagh
 
 ## 1.2.0 (2019-01-22)
 
