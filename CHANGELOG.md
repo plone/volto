@@ -4,6 +4,8 @@
 
 ### Added
 
+- contact-info view @cekk
+
 ### Changes
 
 ## 2.1.3 (2019-04-17)
@@ -265,7 +267,6 @@
 - Add .gitattributes file to avoid most Changelog merge conflicts @pnicolli
 - Buildout for Python 3 @pbauer
 - Websockets support @robgietema
-- contact-info view @cekk
 - Subrequests to search and get content actions @robgietema
 - Add logos @sneridagh @albertcasado
 

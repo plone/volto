@@ -216,7 +216,6 @@ exports[`Contact form renders a contact form 1`] = `
             <button
               className="ui big basic circular icon primary right floated button"
               onClick={[Function]}
-              role="button"
               title="Send"
               type="submit"
             >
@@ -228,7 +227,6 @@ exports[`Contact form renders a contact form 1`] = `
             <button
               className="ui big basic circular icon secondary right floated button"
               onClick={[Function]}
-              role="button"
               title="Cancel"
             >
               <i
@@ -463,7 +461,6 @@ exports[`Contact form renders a contact form with error message 1`] = `
             <button
               className="ui big basic circular icon primary right floated button"
               onClick={[Function]}
-              role="button"
               title="Send"
               type="submit"
             >
@@ -475,7 +472,6 @@ exports[`Contact form renders a contact form with error message 1`] = `
             <button
               className="ui big basic circular icon secondary right floated button"
               onClick={[Function]}
-              role="button"
               title="Cancel"
             >
               <i
