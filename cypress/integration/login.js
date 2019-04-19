@@ -1,6 +1,6 @@
 context('Actions', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login');
+    cy.visit('/login');
     cy.contains('Login').click();
   });
   it('As registered user I an login', function() {
@@ -8,8 +8,8 @@ context('Actions', () => {
       .type('admin')
       .should('have.value', 'admin');
     cy.get('#password')
-      .type('admin')
-      .should('have.value', 'admin');
+      .type('secret')
+      .should('have.value', 'secret');
     cy.get('#login-form-submit').click();
     cy.get('body').should('have.class', 'has-toolbar');
   });

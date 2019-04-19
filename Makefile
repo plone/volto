@@ -34,17 +34,14 @@ start-frontend: dist
 start-api-docker:
 	docker-compose -f api/docker-compose.yml up
 
-start-frontend:
-	yarn start
-
 start-backend-docker:
 	docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
 
 start-backend-docker-guillotina:
 	docker-compose -f g-api/docker-compose.yml up -d
 
-test-acceptance:
-	PYTHONPATH=$(pwd)/tests ZSERVER_PORT=55001 api/bin/pybot -v API:Plone -v BROWSER:headlesschrome tests
+test-acceptance-server:
+	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.voltodemo,kitconcept.voltodemo.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.voltodemo:default ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 test-acceptance-guillotina:
 	PYTHONPATH=$(pwd)/tests pybot -v BROWSER:headlesschrome -v API:Guillotina tests;

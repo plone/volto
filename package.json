@@ -36,6 +36,11 @@
     "start:prod": "NODE_ENV=production node build/server.js",
     "i18n": "NODE_ENV=production node src/i18n.js",
     "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cy:verify": "cypress verify",
+    "ci:start-api-plone": "make test-acceptance-server",
+    "ci:start-frontend": "RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http-get://localhost:3000 cypress:run",
+    "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
     "dry-release": "release-it --dry-run",
     "release": "release-it"
   },
@@ -123,6 +128,7 @@
     "connected-react-router": "6.3.2",
     "coveralls": "3.0.2",
     "css-loader": "2.1.1",
+    "cypress": "3.2.0",
     "draft-js": "0.10.5",
     "draft-js-block-breakout-plugin": "2.0.1",
     "draft-js-buttons": "2.0.1",
@@ -194,6 +200,7 @@
     "semantic-ui-react": "0.84.0",
     "semver": "5.6.0",
     "serialize-javascript": "1.5.0",
+    "start-server-and-test": "1.7.13",
     "style-loader": "0.23.0",
     "stylelint": "9.2.1",
     "stylelint-config-idiomatic-order": "6.2.0",
@@ -204,7 +211,5 @@
     "svgo-loader": "2.1.0",
     "tlds": "1.203.1"
   },
-  "devDependencies": {
-    "cypress": "3.2.0"
-  }
+  "devDependencies": {}
 }

@@ -48,7 +48,7 @@ output.xml
 report.html
 selenium-screenshot-*.png
 /selenium/
-
+cypress/videos/
 
 # Local environment setup
 .env
