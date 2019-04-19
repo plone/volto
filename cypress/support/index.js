@@ -1,7 +1,7 @@
 import xmlrpc from 'xmlrpc';
 
 beforeEach(function() {
-  cy.log('Setup API fixture');
+  cy.log('Setting up API fixture');
 
   // create a client
   const client = xmlrpc.createClient({
