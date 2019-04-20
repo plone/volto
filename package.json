@@ -38,7 +38,6 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "cy:install": "cypress install",
-    "cy:verify": "cypress verify",
     "cy:test:fixture:setup": "node cypress/support/reset-fixture.js",
     "cy:test:fixture:teardown": "node cypress/support/reset-fixture.js teardown",
     "ci:start-api-plone": "make test-acceptance-server",
