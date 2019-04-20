@@ -20,6 +20,6 @@ context('Actions', () => {
       .contains('This is a page');
 
     cy.get('#toolbar-save').click();
-    cy.get('.documentFirstHeading').contains('This is a page');
+    cy.get('.navigation .item.active').should('have.text', 'This is a page');
   });
 });

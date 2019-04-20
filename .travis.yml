@@ -12,9 +12,10 @@ matrix:
       env: TEST_SUITE=unit
 cache:
   pip: true
+  yarn: true
   directories:
-    - node_modules
     - $HOME/buildout-cache
+    - ~/.cache
 sudo: required
 services:
   - docker
@@ -48,8 +49,9 @@ install:
     make build-backend;
     fi
   - pip install -r requirements-tests.txt;
-  - yarn
+  - yarn install --frozen-lockfile
   - yarn cy:install
+  - yarn cy:verify
 before_script:
   - 'export DISPLAY=:99.0'
   - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
