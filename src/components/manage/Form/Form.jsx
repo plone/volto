@@ -169,6 +169,7 @@ class Form extends Component {
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeTile = this.onChangeTile.bind(this);
+    this.onMutateTile = this.onMutateTile.bind(this);
     this.onSelectTile = this.onSelectTile.bind(this);
     this.onDeleteTile = this.onDeleteTile.bind(this);
     this.onAddTile = this.onAddTile.bind(this);
@@ -200,10 +201,29 @@ class Form extends Component {
    * @method onChangeTile
    * @param {string} id Id of the tile
    * @param {*} value Value of the field
-   * @param {boolean} onlyUpdate Only updating (not creating) the tile
    * @returns {undefined}
    */
-  onChangeTile(id, value, onlyUpdate = false) {
+  onChangeTile(id, value) {
+    const tilesFieldname = getTilesFieldname(this.state.formData);
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        [tilesFieldname]: {
+          ...this.state.formData[tilesFieldname],
+          [id]: value || null,
+        },
+      },
+    });
+  }
+
+  /**
+   * Change tile handler
+   * @method onMutateTile
+   * @param {string} id Id of the tile
+   * @param {*} value Value of the field
+   * @returns {undefined}
+   */
+  onMutateTile(id, value) {
     const idTrailingTile = uuid();
     const tilesFieldname = getTilesFieldname(this.state.formData);
     const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
@@ -216,24 +236,17 @@ class Form extends Component {
         [tilesFieldname]: {
           ...this.state.formData[tilesFieldname],
           [id]: value || null,
-          ...(!onlyUpdate && {
-            [idTrailingTile]: {
-              '@type': 'text',
-            },
-          }),
-        },
-        ...(!onlyUpdate && {
-          [tilesLayoutFieldname]: {
-            items: [
-              ...this.state.formData[tilesLayoutFieldname].items.slice(
-                0,
-                index,
-              ),
-              idTrailingTile,
-              ...this.state.formData[tilesLayoutFieldname].items.slice(index),
-            ],
+          [idTrailingTile]: {
+            '@type': 'text',
           },
-        }),
+        },
+        [tilesLayoutFieldname]: {
+          items: [
+            ...this.state.formData[tilesLayoutFieldname].items.slice(0, index),
+            idTrailingTile,
+            ...this.state.formData[tilesLayoutFieldname].items.slice(index),
+          ],
+        },
       },
     });
   }
@@ -510,6 +523,7 @@ class Form extends Component {
             handleKeyDown={this.handleKeyDown}
             onAddTile={this.onAddTile}
             onChangeTile={this.onChangeTile}
+            onMutateTile={this.onMutateTile}
             onChangeField={this.onChangeField}
             onDeleteTile={this.onDeleteTile}
             onSelectTile={this.onSelectTile}

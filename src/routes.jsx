@@ -6,6 +6,7 @@ import {
   Add,
   App,
   ChangePassword,
+  ContactForm,
   Contents,
   Controlpanel,
   Controlpanels,
@@ -51,6 +52,10 @@ export const defaultRoutes = [
   {
     path: '/search',
     component: Search,
+  },
+  {
+    path: '/contact-form',
+    component: ContactForm,
   },
   {
     path: '/controlpanel',
