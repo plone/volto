@@ -1,8 +1,0 @@
-{
-    "display_name": "Robot Framework",
-    "language": "robotframework",
-    "argv": [
-        "python", "-m", "robotkernel",
-        "-f", "{connection_file}"
-    ]
-}

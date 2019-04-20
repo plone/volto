@@ -5,7 +5,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image } from 'semantic-ui-react';
 import cx from 'classnames';
 import { settings } from '~/config';
 import ImageZoom from 'react-medium-image-zoom';

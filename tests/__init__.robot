@@ -6,6 +6,7 @@ Library         SeleniumLibrary  timeout=10  implicit_wait=0
 Library         OperatingSystem
 Library         Process
 Library         WebpackLibrary
+Library         DebugLibrary
 
 Suite Setup     Suite Setup
 Suite Teardown  Suite Teardown
@@ -19,9 +20,10 @@ ${FIXTURE}             plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 @{CONFIGURE_PACKAGES}  plone.app.versioningbehavior
 ...                    plone.app.contenttypes
 ...                    plone.restapi
-...                    config_module
+...                    kitconcept.voltodemo
+...                    kitconcept.voltodemo.cors
 @{APPLY_PROFILES}      plone.app.contenttypes:plone-content
-...                    plone.restapi:tiles
+...                    kitconcept.voltodemo:default
 
 
 *** Keywords ***
@@ -36,7 +38,6 @@ Start Plone Backend
     Import Library  plone.app.robotframework.Zope2Server
     ${PORT}=  Get Environment Variable  ZSERVER_PORT  55001
     Set Environment Variable  RAZZLE_API_PATH  http://localhost:${PORT}/plone
-    Set Environment Variable  Z3C_AUTOINCLUDE_DEPENDENCIES_DISABLED  1
     Log To Console  Starting Plone
     Start Zope server  ${FIXTURE}
 
@@ -45,11 +46,9 @@ Stop Plone Backend
     Stop Zope server
 
 Start Volto
-    Log To Console  Starting Webpack
+    Log To Console  Running Volto build
     Run process  yarn build  shell=True  cwd=${CURDIR}
     ${result} =  Start process  yarn start:prod  shell=True  cwd=${CURDIR}
-    # Start Webpack  yarn start:prod
-    # ...            check=started
 
 Suite Setup
     Run Keyword If   '${API}' == 'Plone'   Start Plone Backend

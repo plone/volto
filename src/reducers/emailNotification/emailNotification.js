@@ -3,7 +3,9 @@
  * @module reducers/emailNotification/emailNotification
  */
 
-import { EMAIL_NOTIFICATION } from '../../constants/ActionTypes';
+import {
+  EMAIL_NOTIFICATION
+} from '../../constants/ActionTypes';
 
 const initialState = {
   error: null,

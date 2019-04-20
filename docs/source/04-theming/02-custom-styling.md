@@ -17,32 +17,25 @@ theme can be used. A theme has the following folder structure:
 
 The assets folder contains all the images and fonts. The other folders contain
 LESS files. Those less files are separate for each UI component. For example we
-have separate files for buttons. Each UI component has 2 files a `.variables`
+have separate files for buttons. Each UI component has 2 files: a `.variables`
 file and an `.overrides` file. The `.variables` file contains all the
 predefined variables which you can override in your theme. If you want to do
 more specific customizations you can use the `.overrides` file to write your own LESS.
 
 !!! tip
     You can find the default definitions for all the available variables in the
-    default theme components (the site component in the example) in two ways, using the source code:
-    ```
-    node_modules/semantic-ui-less/themes/default/globals/site.variables
-    ```
-    or checking it out on Github:
-    ```
+    default theme components (the site component in the example) in two ways, by using the source code:
+    `node_modules/semantic-ui-less/themes/default/globals/site.variables`
+    or by checking it out on Github:
     https://github.com/Semantic-Org/Semantic-UI-LESS/blob/master/themes/default/globals/site.variables
-    ```
+    
 
 !!! tip
-    In a similar way, you can take a look at the default styling on the default
-    definitions, using the source code:
-    ```
-    node_modules/semantic-ui-less/definitions/globals/site.less
-    ```
-    or checking it out on Github:
-    ```
+    Similarly, you can take a look at the default styling on the default
+    definitions, by using the source code:
+    `node_modules/semantic-ui-less/definitions/globals/site.less`
+    or by checking it out on Github:
     https://github.com/Semantic-Org/Semantic-UI-LESS/blob/master/definitions/globals/site.less
-    ```
 
 In the globals folder we have the `site.variables` and `site.overrides` files
 which contain the site wide styling. If you want to customize something in the
@@ -64,13 +57,9 @@ Volto look and feel is a Semantic UI theme that implements Pastanaga UI, called
 
 !!! tip
     You can find it in the source code:
-    ```
-    node_modules/@plone/volto/theme/themes/pastanaga
-    ```
-    or checking it out on Github:
-    ```
+    `node_modules/@plone/volto/theme/themes/pastanaga`
+    or on Github:
     https://github.com/plone/volto/tree/master/theme/themes/pastanaga
-    ```
 
 Pastanaga Theme is an example on how to customize the default Semantic UI look
 and feel.

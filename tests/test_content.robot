@@ -45,7 +45,7 @@ Scenario: As a site administrator I can add a File
     and the Plone site root
    When I add a File with the title 'My File'
    # Then I should see a notification that 'My Page' has been created
-    and I should see 'My File' in the navigation
+    and I should see 'My File' in the folder contents
 
 Scenario: As a site administrator I can add an Image
   Skip test on Guillotina
@@ -53,7 +53,7 @@ Scenario: As a site administrator I can add an Image
     and the Plone site root
    When I add an Image with the title 'My Image'
    # Then I should see a notification that 'My Page' has been created
-    and I should see 'My Image' in the navigation
+    and I should see 'My Image' in the folder contents
 
 # XXX: Links are not implemented in Volto yet
 # Scenario: As a site administrator I can add a Link
@@ -190,6 +190,13 @@ I should see '${title}' in the navigation
   Wait until page contains element  css=.navigation a
   Wait until page contains element  xpath=//*[contains(@class, 'navigation')]//*[contains(text(), '${title}')]
   Page should contain element  xpath=//*[contains(@class, 'navigation')]//*[contains(text(), '${title}')]
+
+I should see '${title}' in the folder contents
+  Go to  ${FRONTEND_URL}contents
+  Reload Page
+  Wait until page contains element  css=.navigation a
+  Wait until page contains  ${title}
+  Page should contain  ${title}
 
 I should see '${text}' on the page view
   Page should contain  ${text}
