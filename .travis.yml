@@ -34,7 +34,7 @@ addons:
       - libasound2
 before_install:
   - nvm install 10.14.2;
-  - if [ "$TEST_SUITE" == "guillotina" ]; then
+  - if [ "$TEST_SUITE" != "plone" ]; then
     docker build -t plone/volto:testing .;
     fi
   - if [ "$TEST_SUITE" == "guillotina" ]; then
