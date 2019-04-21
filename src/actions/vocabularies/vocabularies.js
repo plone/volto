@@ -6,7 +6,7 @@
 import { settings } from '~/config';
 import {
   GET_VOCABULARY,
-  GET_VOCABULARY_TITLE,
+  GET_VOCABULARY_TOKEN_TITLE,
 } from '../../constants/ActionTypes';
 
 /**
@@ -53,7 +53,7 @@ export function getVocabularyTokenTitle(vocabNameOrURL, token = null) {
   );
 
   return {
-    type: GET_VOCABULARY_TITLE,
+    type: GET_VOCABULARY_TOKEN_TITLE,
     vocabulary: vocabNameOrURL,
     token,
     request: {

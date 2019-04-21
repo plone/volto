@@ -5,7 +5,7 @@
 
 import {
   GET_VOCABULARY,
-  GET_VOCABULARY_TITLE,
+  GET_VOCABULARY_TOKEN_TITLE,
 } from '../../constants/ActionTypes';
 
 const initialState = {};
@@ -21,7 +21,7 @@ export default function vocabularies(state = initialState, action = {}) {
   const vocabState = state[action.vocabulary] || {};
   switch (action.type) {
     case `${GET_VOCABULARY}_PENDING`:
-    case `${GET_VOCABULARY_TITLE}_PENDING`:
+    case `${GET_VOCABULARY_TOKEN_TITLE}_PENDING`:
       return {
         ...state,
         [action.vocabulary]: {
@@ -55,7 +55,7 @@ export default function vocabularies(state = initialState, action = {}) {
         },
       };
     case `${GET_VOCABULARY}_FAIL`:
-    case `${GET_VOCABULARY_TITLE}_FAIL`:
+    case `${GET_VOCABULARY_TOKEN_TITLE}_FAIL`:
       return {
         ...state,
         [action.vocabulary]: {
@@ -64,7 +64,7 @@ export default function vocabularies(state = initialState, action = {}) {
           loading: !!(vocabState.loading - 1),
         },
       };
-    case `${GET_VOCABULARY_TITLE}_SUCCESS`:
+    case `${GET_VOCABULARY_TOKEN_TITLE}_SUCCESS`:
       return {
         ...state,
         [action.vocabulary]: {
