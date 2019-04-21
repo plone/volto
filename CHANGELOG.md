@@ -11,6 +11,8 @@
 
 - Several dependencies upgraded @sneridagh
 - Fix image of Hero Tile for images in private containers @sneridagh
+- Update SelectWidget and ArrayWidget and related vocabularies actions/reducers
+  for the breaking changes in plone.restapi 3.0.0 @davisagli @sneridagh
 
 ## 2.1.3 (2019-04-17)
 
