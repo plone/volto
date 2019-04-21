@@ -7,9 +7,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon as IconOld, Form, Grid, Label } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { map, find } from 'lodash';
+import { map, find, isBoolean } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import Select, { components } from 'react-select';
+import { getBoolean } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
 import AsyncPaginate from 'react-select-async-paginate';
@@ -50,7 +51,6 @@ const messages = defineMessages({
 });
 
 const Option = props => {
-  // console.log(props);
   return (
     <components.Option {...props}>
       <div>{props.label}</div>
@@ -143,12 +143,25 @@ function getVocabFromItems(props) {
     : false;
 }
 
-function getChoices(choices) {
-  return choices ? choices.map(item => ({ label: item, value: item })) : [];
-}
-
-function normalizeOptions(value) {
-  return value ? { label: value.title, value } : {};
+function getDefaultValues(choices, value) {
+  if (isBoolean(value)) {
+    // We have a boolean value, which means we need to provide a "No value"
+    // option
+    return (
+      {
+        label: find(choices, o => getBoolean(o[0]) === value)[1],
+        value,
+      } || {}
+    );
+  }
+  if (value == 'no-value') {
+    return { label: 'No value', value: 'no-value' };
+  }
+  if (value) {
+    return { label: find(choices, o => o[0] === value)[1], value };
+  } else {
+    return {};
+  }
 }
 
 @injectIntl
@@ -159,10 +172,6 @@ function normalizeOptions(value) {
       getVocabFromField(props) ||
       getVocabFromItems(props);
     const vocabState = state.vocabularies[vocabBaseUrl];
-    // debugger;
-    if (!vocabBaseUrl) {
-      console.log(props);
-    }
     if (vocabState) {
       return {
         vocabState,
@@ -193,6 +202,7 @@ export default class SelectWidget extends Component {
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     getVocabulary: PropTypes.func.isRequired,
+    getVocabularyTokenTitle: PropTypes.func.isRequired,
     choices: PropTypes.arrayOf(PropTypes.object),
     loading: PropTypes.bool,
     items: PropTypes.shape({
@@ -412,15 +422,18 @@ export default class SelectWidget extends Component {
                       value: option[0],
                       label: option[1],
                     })),
+                    { label: 'No value', value: 'no-value' },
                   ]}
                   styles={customSelectStyles}
                   theme={selectTheme}
                   components={{ DropdownIndicator, Option }}
-                  defaultValue={
-                    { label: find(choices, o => o[0] === value)[1], value } ||
-                    {}
+                  defaultValue={getDefaultValues(choices, value)}
+                  onChange={data =>
+                    onChange(
+                      id,
+                      data.value === 'no-value' ? undefined : data.value,
+                    )
                   }
-                  onChange={data => onChange(id, data.value)}
                 />
               )}
               {map(error, message => (

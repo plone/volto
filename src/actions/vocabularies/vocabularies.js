@@ -39,7 +39,8 @@ export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
 }
 
 /**
- * Get vocabulary given a URL (coming from a Schema) or from a vocabulary name.
+ * Get the title value given a token from vocabulary given a vocabulary URL
+ * (coming from a Schema) or from a vocabulary name.
  * @function getVocabularyTokenTitle
  * @param {string} vocabNameOrURL Full API URL of vocabulary or vocabulary name
  * @param {string} token Only include results containing this string.

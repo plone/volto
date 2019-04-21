@@ -129,7 +129,6 @@ function getVocabFromItems(props) {
       getVocabFromField(props) ||
       getVocabFromItems(props);
     const vocabState = state.vocabularies[vocabBaseUrl];
-    // debugger;
     if (vocabState) {
       return {
         choices: vocabState.items
@@ -214,7 +213,6 @@ export default class ArrayWidget extends Component {
       getVocabFromField(props) ||
       getVocabFromItems(props);
     this.state = {
-      search: '',
       selectedOption: props.value
         ? props.value.map(item => ({ label: item, value: item }))
         : [],
@@ -229,45 +227,6 @@ export default class ArrayWidget extends Component {
   componentDidMount() {
     this.props.getVocabulary(this.vocabBaseUrl);
   }
-
-  // /**
-  //  * On add item handler
-  //  * @method onAddItem
-  //  * @param {Object} event Event object.
-  //  * @param {string} value Value to add.
-  //  * @returns {undefined}
-  //  */
-  // onAddItem(event, { value }) {
-  //   this.setState({
-  //     choices: [{ text: value, value, id: value }, ...this.state.choices],
-  //   });
-  // }
-
-  // /**
-  //  * Format options for semantic-ui Dropdown
-  //  * @returns {Array} Options.
-  //  */
-  // getOptions() {
-  //   return uniqBy(
-  //     concat(
-  //       this.props.choices
-  //         ? map(this.props.choices, choice => ({
-  //             key: choice.token,
-  //             text: choice.title,
-  //             value: choice.token,
-  //           }))
-  //         : [],
-  //       this.props.value
-  //         ? map(this.props.value, value => ({
-  //             key: value,
-  //             text: value,
-  //             value,
-  //           }))
-  //         : [],
-  //     ),
-  //     'key',
-  //   );
-  // }
 
   /**
    * Initiate search with new query

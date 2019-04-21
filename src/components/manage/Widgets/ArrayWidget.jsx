@@ -14,12 +14,12 @@ import Select, { components } from 'react-select';
 import AsyncPaginate from 'react-select-async-paginate';
 import CreatableSelect from 'react-select/lib/Creatable';
 
-import { getVocabulary } from '../../../actions';
-import { Icon } from '../../../components';
+import { getVocabulary } from '@plone/volto/actions';
+import { Icon } from '@plone/volto/components';
 
-import downSVG from '../../../icons/down-key.svg';
-import upSVG from '../../../icons/up-key.svg';
-import checkSVG from '../../../icons/check.svg';
+import downSVG from '@plone/volto/icons/down-key.svg';
+import upSVG from '@plone/volto/icons/up-key.svg';
+import checkSVG from '@plone/volto/icons/check.svg';
 
 const messages = defineMessages({
   no_results_found: {
@@ -29,7 +29,6 @@ const messages = defineMessages({
 });
 
 const Option = props => {
-  // console.log(props);
   return (
     <components.Option {...props}>
       <div>{props.label}</div>
@@ -134,9 +133,6 @@ function getChoices(choices) {
       getVocabFromField(props) ||
       getVocabFromItems(props);
     const vocabState = state.vocabularies[vocabBaseUrl];
-    if (!vocabBaseUrl) {
-      // console.log(props);
-    }
     if (vocabState) {
       return {
         choices: vocabState.items,
@@ -234,45 +230,6 @@ export default class ArrayWidget extends Component {
     }
   }
 
-  // /**
-  //  * On add item handler
-  //  * @method onAddItem
-  //  * @param {Object} event Event object.
-  //  * @param {string} value Value to add.
-  //  * @returns {undefined}
-  //  */
-  // onAddItem(event, { value }) {
-  //   this.setState({
-  //     choices: [{ text: value, value, id: value }, ...this.state.choices],
-  //   });
-  // }
-
-  // /**
-  //  * Format options for semantic-ui Dropdown
-  //  * @returns {Array} Options.
-  //  */
-  // getOptions() {
-  //   return uniqBy(
-  //     concat(
-  //       this.props.choices
-  //         ? map(this.props.choices, choice => ({
-  //             key: choice.token,
-  //             text: choice.title,
-  //             value: choice.token,
-  //           }))
-  //         : [],
-  //       this.props.value
-  //         ? map(this.props.value, value => ({
-  //             key: value,
-  //             text: value,
-  //             value,
-  //           }))
-  //         : [],
-  //     ),
-  //     'key',
-  //   );
-  // }
-
   /**
    * Initiate search with new query
    * @param {string} query Search query.
@@ -357,19 +314,6 @@ export default class ArrayWidget extends Component {
                   }}
                 />
               ) : (
-                // <Select
-                //   className="react-select-container"
-                //   classNamePrefix="react-select"
-                //   options={
-                //     this.props.choices || getChoices(this.props.default) || []
-                //   }
-                //   styles={customSelectStyles}
-                //   theme={selectTheme}
-                //   components={{ DropdownIndicator, Option }}
-                //   value={selectedOption || []}
-                //   onChange={this.handleChange}
-                //   isMulti
-                // />
                 <CreatableSelect
                   className="react-select-container"
                   classNamePrefix="react-select"
@@ -384,26 +328,6 @@ export default class ArrayWidget extends Component {
                   isMulti
                 />
               )}
-              {/* <Dropdown
-                options={this.getOptions()}
-                loading={loading}
-                placeholder={title}
-                search
-                selection
-                multiple
-                fluid
-                noResultsMessage={this.props.intl.formatMessage(
-                  messages.no_results_found,
-                )}
-                allowAdditions
-                value={value || []}
-                onAddItem={this.onAddItem}
-                onChange={(event, data) => onChange(id, data.value)}
-                onSearchChange={debounce(
-                  (event, data) => this.search(data.searchQuery),
-                  200,
-                )}
-              /> */}
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
                   {message}
