@@ -26,8 +26,7 @@ export const widgetMapping = {
     password: PasswordWidget,
   },
   vocabulary: {
-    'plone.app.vocabularies.Keywords': ArrayWidget,
-    'plone.app.vocabularies.Catalog': ReferenceWidget,
+    // 'plone.app.vocabularies.Catalog': ReferenceWidget,
   },
   choices: SelectWidget,
   type: {

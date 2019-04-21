@@ -44,7 +44,7 @@ const getWidgetByName = widget =>
 const getWidgetByVocabulary = vocabulary =>
   vocabulary
     ? widgets.vocabulary[
-        vocabulary.replace(`${settings.apiPath}/@vocabularies/`, '')
+        vocabulary['@id'].replace(`${settings.apiPath}/@vocabularies/`, '')
       ]
     : null;
 
@@ -57,7 +57,7 @@ const getWidgetByVocabulary = vocabulary =>
 const getWidgetByVocabularyFromHint = props =>
   props.widgetOptions && props.widgetOptions.vocabulary
     ? widgets.vocabulary[
-        props.widgetOptions.vocabulary.replace(
+        props.widgetOptions.vocabulary['@id'].replace(
           `${settings.apiPath}/@vocabularies/`,
           '',
         )
@@ -70,7 +70,20 @@ const getWidgetByVocabularyFromHint = props =>
  * @param {string} choices Widget
  * @returns {string} Widget component.
  */
-const getWidgetByChoices = choices => (choices ? widgets.choices : null);
+const getWidgetByChoices = props => {
+  if (props.choices) {
+    return widgets.choices;
+  }
+
+  if (props.vocabulary) {
+    // If vocabulary exists, then it means it's a choice field in disguise with
+    // no widget specified that probably contains a string then we force it
+    // to be a select widget instead
+    return widgets.choices;
+  }
+
+  return null;
+};
 
 /**
  * Get widget by field's `type` attribute
@@ -92,8 +105,8 @@ const Field = (props, { intl }) => {
     getWidgetByName(props.widget) ||
     getWidgetByVocabulary(props.vocabulary) ||
     getWidgetByVocabularyFromHint(props) ||
-    getWidgetByChoices(props.choices) ||
     getWidgetByType(props.type) ||
+    getWidgetByChoices(props) ||
     getWidgetDefault();
 
   if (props.onOrder) {
@@ -161,7 +174,7 @@ const Field = (props, { intl }) => {
  */
 Field.propTypes = {
   widget: PropTypes.string,
-  vocabulary: PropTypes.string,
+  vocabulary: PropTypes.shape({ '@id': PropTypes.string }),
   choices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   type: PropTypes.string,
   id: PropTypes.string.isRequired,

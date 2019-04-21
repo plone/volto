@@ -3,7 +3,10 @@
  * @module reducers/vocabularies/vocabularies
  */
 
-import { GET_VOCABULARY } from '../../constants/ActionTypes';
+import {
+  GET_VOCABULARY,
+  GET_VOCABULARY_TITLE,
+} from '../../constants/ActionTypes';
 
 const initialState = {};
 
@@ -18,6 +21,7 @@ export default function vocabularies(state = initialState, action = {}) {
   const vocabState = state[action.vocabulary] || {};
   switch (action.type) {
     case `${GET_VOCABULARY}_PENDING`:
+    case `${GET_VOCABULARY_TITLE}_PENDING`:
       return {
         ...state,
         [action.vocabulary]: {
@@ -36,6 +40,7 @@ export default function vocabularies(state = initialState, action = {}) {
       return {
         ...state,
         [action.vocabulary]: {
+          ...state[action.vocabulary],
           error: null,
           loaded: true,
           loading: !!(vocabState.loading - 1),
@@ -50,12 +55,24 @@ export default function vocabularies(state = initialState, action = {}) {
         },
       };
     case `${GET_VOCABULARY}_FAIL`:
+    case `${GET_VOCABULARY_TITLE}_FAIL`:
       return {
         ...state,
         [action.vocabulary]: {
           error: action.error,
           loaded: false,
           loading: !!(vocabState.loading - 1),
+        },
+      };
+    case `${GET_VOCABULARY_TITLE}_SUCCESS`:
+      return {
+        ...state,
+        [action.vocabulary]: {
+          ...state[action.vocabulary],
+          error: null,
+          loaded: true,
+          loading: !!(vocabState.loading - 1),
+          [action.token]: action.result.items[0].title,
         },
       };
     default:

@@ -31,6 +31,7 @@ export const GET_TILES = 'GET_TILES';
 export const GET_TYPES = 'GET_TYPES';
 export const GET_USER = 'GET_USER';
 export const GET_VOCABULARY = 'GET_VOCABULARY';
+export const GET_VOCABULARY_TITLE = 'GET_VOCABULARY_TITLE';
 export const GET_WORKFLOW = 'GET_WORKFLOW';
 export const GET_WORKFLOW_MULTIPLE = 'GET_WORKFLOW_MULTIPLE';
 export const LIST_ACTIONS = 'LIST_ACTIONS';

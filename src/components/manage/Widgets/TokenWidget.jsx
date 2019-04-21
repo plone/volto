@@ -105,14 +105,29 @@ const customSelectStyles = {
   }),
 };
 
+function getVocabFromHint(props) {
+  return props.widgetOptions && props.widgetOptions.vocabulary
+    ? props.widgetOptions.vocabulary['@id']
+    : false;
+}
+
+function getVocabFromField(props) {
+  return props.vocabulary ? props.vocabulary['@id'] : false;
+}
+
+function getVocabFromItems(props) {
+  return props.items && props.items.vocabulary
+    ? props.items.vocabulary['@id']
+    : false;
+}
+
 @injectIntl
 @connect(
   (state, props) => {
-    const vocabBaseUrl = props.widgetOptions.vocabulary
-      ? props.widgetOptions.vocabulary
-      : props.vocabulary
-        ? props.vocabulary
-        : props.items.vocabulary;
+    const vocabBaseUrl =
+      getVocabFromHint(props) ||
+      getVocabFromField(props) ||
+      getVocabFromItems(props);
     const vocabState = state.vocabularies[vocabBaseUrl];
     // debugger;
     if (vocabState) {
@@ -195,7 +210,9 @@ export default class ArrayWidget extends Component {
     this.loadOptions = this.loadOptions.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.vocabBaseUrl =
-      props.widgetOptions.vocabulary || props.items.vocabulary;
+      getVocabFromHint(props) ||
+      getVocabFromField(props) ||
+      getVocabFromItems(props);
     this.state = {
       search: '',
       selectedOption: props.value

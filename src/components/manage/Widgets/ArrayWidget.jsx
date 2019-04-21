@@ -107,15 +107,19 @@ const customSelectStyles = {
 };
 
 function getVocabFromHint(props) {
-  return props.widgetOptions ? props.widgetOptions.vocabulary : false;
+  return props.widgetOptions && props.widgetOptions.vocabulary
+    ? props.widgetOptions.vocabulary['@id']
+    : false;
 }
 
 function getVocabFromField(props) {
-  return props.vocabulary;
+  return props.vocabulary ? props.vocabulary['@id'] : false;
 }
 
 function getVocabFromItems(props) {
-  return props.items ? props.items.vocabulary : false;
+  return props.items && props.items.vocabulary
+    ? props.items.vocabulary['@id']
+    : false;
 }
 
 function getChoices(choices) {
@@ -165,10 +169,10 @@ export default class ArrayWidget extends Component {
     choices: PropTypes.arrayOf(PropTypes.object),
     loading: PropTypes.bool,
     items: PropTypes.shape({
-      vocabulary: PropTypes.string,
+      vocabulary: PropTypes.object,
     }),
     widgetOptions: PropTypes.shape({
-      vocabulary: PropTypes.string,
+      vocabulary: PropTypes.object,
     }),
     value: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func.isRequired,
