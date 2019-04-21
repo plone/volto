@@ -13,6 +13,11 @@ import { bindActionCreators } from 'redux';
 import { components } from 'react-select';
 import AsyncCreatableSelect from 'react-select/lib/AsyncCreatable';
 
+import {
+  getVocabFromHint,
+  getVocabFromField,
+  getVocabFromItems,
+} from '@plone/volto/helpers';
 import { getVocabulary } from '../../../actions';
 import { Icon } from '../../../components';
 
@@ -104,22 +109,6 @@ const customSelectStyles = {
     },
   }),
 };
-
-function getVocabFromHint(props) {
-  return props.widgetOptions && props.widgetOptions.vocabulary
-    ? props.widgetOptions.vocabulary['@id']
-    : false;
-}
-
-function getVocabFromField(props) {
-  return props.vocabulary ? props.vocabulary['@id'] : false;
-}
-
-function getVocabFromItems(props) {
-  return props.items && props.items.vocabulary
-    ? props.items.vocabulary['@id']
-    : false;
-}
 
 @injectIntl
 @connect(

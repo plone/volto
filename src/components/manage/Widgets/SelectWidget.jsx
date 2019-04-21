@@ -10,10 +10,16 @@ import { connect } from 'react-redux';
 import { map, find, isBoolean } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import Select, { components } from 'react-select';
-import { getBoolean } from '@plone/volto/helpers';
+import AsyncPaginate from 'react-select-async-paginate';
+
+import {
+  getBoolean,
+  getVocabFromHint,
+  getVocabFromField,
+  getVocabFromItems,
+} from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
-import AsyncPaginate from 'react-select-async-paginate';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
@@ -126,22 +132,6 @@ const customSelectStyles = {
     },
   }),
 };
-
-function getVocabFromHint(props) {
-  return props.widgetOptions && props.widgetOptions.vocabulary
-    ? props.widgetOptions.vocabulary['@id']
-    : false;
-}
-
-function getVocabFromField(props) {
-  return props.vocabulary ? props.vocabulary['@id'] : false;
-}
-
-function getVocabFromItems(props) {
-  return props.items && props.items.vocabulary
-    ? props.items.vocabulary['@id']
-    : false;
-}
 
 function getDefaultValues(choices, value) {
   if (isBoolean(value)) {

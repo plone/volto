@@ -14,6 +14,12 @@ import Select, { components } from 'react-select';
 import AsyncPaginate from 'react-select-async-paginate';
 import CreatableSelect from 'react-select/lib/Creatable';
 
+import {
+  getBoolean,
+  getVocabFromHint,
+  getVocabFromField,
+  getVocabFromItems,
+} from '@plone/volto/helpers';
 import { getVocabulary } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 
@@ -104,22 +110,6 @@ const customSelectStyles = {
     },
   }),
 };
-
-function getVocabFromHint(props) {
-  return props.widgetOptions && props.widgetOptions.vocabulary
-    ? props.widgetOptions.vocabulary['@id']
-    : false;
-}
-
-function getVocabFromField(props) {
-  return props.vocabulary ? props.vocabulary['@id'] : false;
-}
-
-function getVocabFromItems(props) {
-  return props.items && props.items.vocabulary
-    ? props.items.vocabulary['@id']
-    : false;
-}
 
 function getChoices(choices) {
   return choices ? choices.map(item => ({ label: item, value: item })) : [];
