@@ -16,7 +16,7 @@ build-backend:  ## Build Plone 5.2
 
 .PHONY: Build Plone 5.2
 start-backend:  ## Install Plone 5.2
-	(cd api && ./bin/instance fg)
+	(cd api && PYTHONWARNINGS=ignore ./bin/instance fg)
 
 test:
 	(cd api && bin/test)

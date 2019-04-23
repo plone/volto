@@ -17,6 +17,7 @@ import folderSVG from '@plone/volto/icons/folder.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
+import linkSVG from '@plone/volto/icons/link.svg';
 
 const messages = defineMessages({
   ImageTileInputPlaceholder: {
@@ -53,6 +54,8 @@ class ObjectBrowser extends Component {
   static propTypes = {
     tile: PropTypes.string.isRequired,
     image: PropTypes.string,
+    href: PropTypes.string,
+    type: PropTypes.string.isRequired,
     searchSubrequests: PropTypes.objectOf(PropTypes.any).isRequired,
     searchContent: PropTypes.func.isRequired,
     closeBrowser: PropTypes.func.isRequired,
@@ -67,16 +70,31 @@ class ObjectBrowser extends Component {
    */
   static defaultProps = {
     image: '',
+    href: '',
   };
 
-  state = {
-    currentFolder: this.props.image ? getParentURL(this.props.image) : '/',
-    parentFolder: '',
-    selectedItem: this.props.image.replace(settings.apiPath, '') || '',
-    showSearchInput: false,
-    alt: '',
-    caption: '',
-  };
+  /**
+   * Constructor
+   * @method constructor
+   * @param {Object} props Component properties
+   * @constructs WysiwygEditor
+   */
+  constructor(props) {
+    super(props);
+    debugger;
+    this.state = {
+      currentFolder: this.props[this.props.type]
+        ? getParentURL(this.props[this.props.type])
+        : '/',
+      parentFolder: '',
+      selectedImage: this.props.image.replace(settings.apiPath, '') || '',
+      selectedHref: this.props.href.replace(settings.apiPath, '') || '',
+      showSearchInput: false,
+      alt: '',
+      caption: '',
+      external: '',
+    };
+  }
 
   /**
    * Component did mount
@@ -85,10 +103,13 @@ class ObjectBrowser extends Component {
    */
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside, false);
-
-    if (this.state.selectedItem) {
+    const currentSelected =
+      this.props.type === 'image'
+        ? this.state.selectedImage
+        : this.state.selectedHref;
+    if (currentSelected) {
       this.props.searchContent(
-        getParentURL(this.state.selectedItem),
+        getParentURL(currentSelected),
         {
           'path.depth': 1,
           // fullobjects: 1,
@@ -159,7 +180,7 @@ class ObjectBrowser extends Component {
       },
       this.props.tile,
     );
-    const parent = `/${join(id.split('/').slice(0, -1), '/')}`;
+    const parent = `${join(id.split('/').slice(0, -1), '/')}` || '/';
     this.setState(() => ({
       parentFolder: parent,
       currentFolder: id,
@@ -168,7 +189,7 @@ class ObjectBrowser extends Component {
 
   selectItem = id => {
     this.props.onSelectItem(`${settings.apiPath}${id}`);
-    this.setState({ selectedItem: id });
+    this.setState({ selectedImage: id });
     // this.props.closeBrowser();
   };
 
@@ -200,20 +221,38 @@ class ObjectBrowser extends Component {
         );
   };
 
+  handleClickOnItem = item => {
+    if (this.props.type === 'image') {
+      if (item.is_folderish) {
+        return this.navigateTo(item['@id']);
+      }
+      if (settings.imageObjects.includes(item['@type'])) {
+        return this.selectItem(item['@id']);
+      }
+    }
+    return null;
+  };
+
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    const { alt, caption } = this.state;
+    const { alt, caption, external } = this.state;
     return (
       <aside ref={this.objectBrowser}>
         <Segment.Group raised>
           <header className="header pulled">
             <div className="vertical divider" />
             {this.state.currentFolder === '/' ? (
-              <Icon name={folderSVG} size="24px" />
+              <>
+                {this.props.type === 'image' ? (
+                  <Icon name={folderSVG} size="24px" />
+                ) : (
+                  <Icon name={linkSVG} size="24px" />
+                )}
+              </>
             ) : (
               <Icon
                 name={backSVG}
@@ -245,7 +284,7 @@ class ObjectBrowser extends Component {
               <Icon name={searchSVG} size="24px" />
             </button>
             <button onClick={this.props.closeBrowser}>
-              {this.state.selectedItem ? (
+              {this.state.selectedImage ? (
                 <Icon name={checkSVG} size="24px" color="#007EB1" />
               ) : (
                 <Icon name={clearSVG} size="24px" color="#e40166" />
@@ -259,13 +298,12 @@ class ObjectBrowser extends Component {
                 <li
                   key={item.id}
                   className={cx('', {
-                    'selected-item': this.state.selectedItem === item['@id'],
+                    'selected-item': this.state.selectedImage === item['@id'],
+                    disabled:
+                      !settings.imageObjects.includes(item['@type']) &&
+                      !item.is_folderish,
                   })}
-                  onClick={() =>
-                    item.is_folderish
-                      ? this.navigateTo(item['@id'])
-                      : this.selectItem(item['@id'])
-                  }
+                  onClick={() => this.handleClickOnItem(item)}
                 >
                   <span>
                     {this.getIcon(item['@type'])}
@@ -279,20 +317,35 @@ class ObjectBrowser extends Component {
           </Segment>
 
           <Segment className="form actions">
-            <TextWidget
-              id="alt"
-              title="alt"
-              required={false}
-              onChange={this.onChangeField}
-              value={alt}
-            />
-            <TextWidget
-              id="caption"
-              title="caption"
-              required={false}
-              onChange={this.onChangeField}
-              value={caption}
-            />
+            {this.props.type === 'image' && (
+              <>
+                <TextWidget
+                  id="alt"
+                  title="alt"
+                  required={false}
+                  onChange={this.onChangeField}
+                  value={alt}
+                />
+                <TextWidget
+                  id="caption"
+                  title="caption"
+                  required={false}
+                  onChange={this.onChangeField}
+                  value={caption}
+                />
+              </>
+            )}
+            {this.props.type === 'link' && (
+              <>
+                <TextWidget
+                  id="external"
+                  title="external"
+                  required={false}
+                  onChange={this.onChangeField}
+                  value={external}
+                />
+              </>
+            )}
           </Segment>
         </Segment.Group>
       </aside>

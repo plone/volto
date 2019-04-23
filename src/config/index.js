@@ -44,6 +44,7 @@ export const settings = {
   richTextEditorPlugins: plugins,
   ToHTMLRenderers,
   ToHTMLOptions,
+  imageObjects: ['Image'],
 };
 
 export const widgets = {

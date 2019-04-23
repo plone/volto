@@ -22,6 +22,7 @@ import ObjectBrowser from '../../ObjectBrowser/ObjectBrowser';
 import clearSVG from '../../../../icons/clear.svg';
 import uploadSVG from '../../../../icons/upload.svg';
 import folderSVG from '../../../../icons/folder.svg';
+import linkSVG from '../../../../icons/link.svg';
 import imageSVG from '../../../../icons/image.svg';
 import imageLeftSVG from '../../../../icons/image-left.svg';
 import imageRightSVG from '../../../../icons/image-right.svg';
@@ -92,6 +93,7 @@ export default class Edit extends Component {
       uploading: false,
       url: '',
       objectBrowserIsOpen: false,
+      objectBrowserType: 'image',
     };
   }
 
@@ -214,9 +216,10 @@ export default class Edit extends Component {
     }
   }
 
-  toggleObjectBrowser = () => {
+  toggleObjectBrowser = type => {
     this.setState(prevState => ({
       objectBrowserIsOpen: !prevState.objectBrowserIsOpen,
+      objectBrowserType: type,
     }));
   };
 
@@ -305,9 +308,22 @@ export default class Edit extends Component {
               </Button.Group>
               <div className="separator" />
               <Button.Group>
-                <Button icon basic onClick={this.toggleObjectBrowser}>
+                <Button
+                  icon
+                  basic
+                  onClick={() => this.toggleObjectBrowser('image')}
+                >
                   <Icon name={imageSVG} size="24px" />
                 </Button>
+              </Button.Group>
+              <Button.Group>
+                <label className="ui button basic icon">
+                  <Icon
+                    name={linkSVG}
+                    size="24px"
+                    onClick={() => this.toggleObjectBrowser('href')}
+                  />
+                </label>
               </Button.Group>
               <Button.Group>
                 <Button
@@ -328,21 +344,21 @@ export default class Edit extends Component {
         {this.props.selected &&
           !this.props.data.url && (
             <div className="toolbar">
-              <Icon name={imageSVG} size="24px" />
-              <form onKeyDown={this.onKeyDownVariantMenuForm}>
+              {/* <Icon name={imageSVG} size="24px" /> */}
+              {/* <form onKeyDown={this.onKeyDownVariantMenuForm}>
                 <Input
                   onChange={this.onChangeUrl}
                   placeholder={this.props.intl.formatMessage(
                     messages.ImageTileInputPlaceholder,
                   )}
                 />
-              </form>
+              </form> */}
               <Button.Group>
                 <label className="ui button basic icon">
                   <Icon
                     name={folderSVG}
                     size="24px"
-                    onClick={this.toggleObjectBrowser}
+                    onClick={() => this.toggleObjectBrowser('image')}
                   />
                 </label>
                 <label className="ui button basic icon">
@@ -351,6 +367,13 @@ export default class Edit extends Component {
                     type="file"
                     onChange={this.onUploadImage}
                     style={{ display: 'none' }}
+                  />
+                </label>
+                <label className="ui button basic icon">
+                  <Icon
+                    name={linkSVG}
+                    size="24px"
+                    onClick={() => this.toggleObjectBrowser('href')}
                   />
                 </label>
               </Button.Group>
@@ -405,6 +428,8 @@ export default class Edit extends Component {
               tile={this.props.tile}
               onSelectItem={this.onSelectItem}
               image={this.props.data.url}
+              href={this.props.data.href}
+              type={this.state.objectBrowserType}
             />
           </div>
         </CSSTransition>
