@@ -3,6 +3,7 @@ import FileView from '@plone/volto/components/theme/View/FileView';
 import ImageView from '@plone/volto/components/theme/View/ImageView';
 import ListingView from '@plone/volto/components/theme/View/ListingView';
 import NewsItemView from '@plone/volto/components/theme/View/NewsItemView';
+import EventView from '@plone/volto/components/theme/View/EventView';
 import SummaryView from '@plone/volto/components/theme/View/SummaryView';
 import TabularView from '@plone/volto/components/theme/View/TabularView';
 import NotFoundView from '@plone/volto/components/theme/NotFound/NotFound';
@@ -19,6 +20,7 @@ export const contentTypesViews = {
   'News Item': NewsItemView,
   File: FileView,
   Image: ImageView,
+  Event: EventView,
 };
 
 // Default view
