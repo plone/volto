@@ -15,22 +15,21 @@ Status](https://api.netlify.com/api/v1/badges/b8310579-ac4f-41f2-a144-9c90fca9b3
 management systems, currently supporting three backend implementations: Plone,
 Guillotina and a NodeJS reference implementation.
 
-[Plone](https://plone.org) is a CMS built on Python with more than 17 years of
-experience.
+[Plone](https://plone.org) is a CMS built on Python with over 17 years of experience.
 
-Plone has very interesting features that are still appealing to
-developers and users alike as customizable content types, hierarchical URL
-object traversing and a complex content workflow powered by a granular
-permissions model that allows you to build from simple websites to complex huge
+Plone has very interesting features that appeal to developers and users alike,
+such as customizable content types, hierarchical URL object traversing and a
+sophisticated content workflow powered by a granular permissions model. This
+allows you to build anything from simple websites to enterprise-grade
 intranets.
 
-Volto exposes all that features and communicates with Plone via its
+Volto exposes all these features and communicates with Plone via its
 mature [REST API](https://github.com/plone/plone.restapi). Volto has the
 ability of being highly themable and customizable.
 
 Volto also supports other APIs like [Guillotina](https://guillotina.io/), a
-Python resource management system, which is inspired on Plone using the same
-basic concepts like traversal, content types and permissions model.
+Python resource management system, inspired by Plone and using the same basic
+concepts like traversal, content types and permissions model.
 
 Last but not least, it also supports a [Volto Nodejs-based backend reference](https://github.com/plone/volto-reference-backend) API implementation that
 demos how other systems could also use Volto to display and create content
@@ -70,6 +69,14 @@ You can bootstrap a ready Docker Plone container with all the dependencies and r
 
 ```shell
 $ docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
+```
+
+or as an alternative if you have experience with Plone and you have all the
+dependencies installed on your system, you can use the supplied buildout in the
+`api` folder by issuing the command:
+
+```shell
+$ make build-backend
 ```
 
 ### Start Volto
