@@ -10,6 +10,37 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
+## Upgrading to Volto 3.x
+
+Volto was upgraded to use Razzle 3.0.0 which is not a breaking change itself,
+but it forces to some changes in the boilerplate on your Volto projects. You
+should change the babel config by deleting .babelrc file and creating a new
+file `babel.config.js` with these contents:
+
+```js
+module.exports = require('@plone/volto/babel');
+```
+
+Then update your `package.json` to Volto 3.x.
+
+```json
+  "dependencies": {
+    "@plone/volto": "3.0.0",
+    ...
+  }
+```
+
+Volto 3.x is compatible with the new changes introduced in the vocabularies
+endpoint in plone.restapi 4.0.0. If you custom build a widget based in the
+Volto ones, you should update them as well. Volto updated its own widget set to
+support them:
+
+- `components/manage/Widgets/ArrayWidget`
+- `components/manage/Widgets/SelectWidget`
+- `components/manage/Widgets/TokenWidget`
+
+They all use `react-select` third party library for render it.
+
 ## Upgrading to Volto 2.x
 
 ### Improved Tiles HOC
