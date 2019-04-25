@@ -10,17 +10,6 @@
   },
   "parser": "babel-eslint",
   "rules": {
-    "valid-jsdoc": 2,
-    "require-jsdoc": [
-      "error",
-      {
-        "require": {
-          "FunctionDeclaration": true,
-          "MethodDefinition": true,
-          "ClassDeclaration": true
-        }
-      }
-    ],
     "prettier/prettier": [
       "error",
       { "trailingComma": "all", "singleQuote": true }
