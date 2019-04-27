@@ -1,4 +1,5 @@
 import xmlrpc from 'xmlrpc';
+import 'cypress-file-upload';
 import './commands';
 
 beforeEach(function() {
