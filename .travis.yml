@@ -71,7 +71,7 @@ script:
     docker run --name coverage_front -it --rm -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" plone/volto:testing -- yarn test:ci;
     fi
   - if [ "$TEST_SUITE" == "guillotina" ]; then
-    PYTHONPATH=$(pwd)/tests travis_retry pybot -v BROWSER:headlesschrome -v API:Guillotina tests;
+    yarn ci:cypress:run:guillotina;
     fi
   - if [ "$TEST_SUITE" == "plone" ]; then
     yarn ci:cypress:run;
