@@ -46,7 +46,7 @@
     "ci:start-frontend": "RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http-get://localhost:3000 cypress:run",
     "ci:start-frontend-guillotina": "RAZZLE_API_PATH=http://localhost:8081/db/container yarn build && start-test start:prod http-get://localhost:3000 cypress:run:guillotina",
     "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
-    "ci:cypress:run:guillotina": "DEBUG=start-server-and-test start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
+    "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
     "release": "release-it"
   },
