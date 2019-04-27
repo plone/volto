@@ -40,10 +40,13 @@ start-backend-docker:
 start-backend-docker-guillotina:
 	docker-compose -f g-api/docker-compose.yml up -d
 
+stop-backend-docker-guillotina:
+	docker-compose -f g-api/docker-compose.yml down
+
 test-acceptance-server:
 	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.voltodemo,kitconcept.voltodemo.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.voltodemo:default ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 test-acceptance-guillotina:
-	PYTHONPATH=$(pwd)/tests pybot -v BROWSER:headlesschrome -v API:Guillotina tests;
+	docker-compose -f g-api/docker-compose.yml up > /dev/null
 
 .PHONY: all start test-acceptance
