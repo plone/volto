@@ -1,17 +1,9 @@
 context('Actions', () => {
   beforeEach(() => {
-    cy.visit('/login');
-    cy.contains('Login').click();
+    cy.autologin();
   });
   it('As a site administrator I can add a page', function() {
-    cy.get('#login')
-      .type('admin')
-      .should('have.value', 'admin');
-    cy.get('#password')
-      .type('secret')
-      .should('have.value', 'secret');
-    cy.get('#login-form-submit').click();
-
+    cy.visit('/');
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
     cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')

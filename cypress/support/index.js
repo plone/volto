@@ -1,4 +1,5 @@
 import xmlrpc from 'xmlrpc';
+import './commands';
 
 beforeEach(function() {
   cy.log('Setting up API fixture');

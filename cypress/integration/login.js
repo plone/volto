@@ -1,7 +1,7 @@
 context('Actions', () => {
   beforeEach(() => {
-    cy.visit('/login');
-    cy.contains('Login').click();
+    cy.visit('/');
+    cy.contains('Log in').click();
   });
   it('As registered user I an login', function() {
     cy.get('#login')
