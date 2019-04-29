@@ -231,7 +231,7 @@ export default class ModerateComments extends Component {
                           {moment(item.creation_date).fromNow()}
                         </span>
                       </Table.Cell>
-                      <Table.Cell>{item.text.data}</Table.Cell>
+                      <Table.Cell className="multiline">{item.text.data}</Table.Cell>
                       <Table.Cell>
                         {item.is_editable && (
                           <Button

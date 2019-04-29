@@ -228,7 +228,7 @@ export default class Comments extends Component {
                 </span>
               </Grid.Column>
             </Grid>
-            <Segment clearing>
+            <Segment clearing className="multiline">
               {item.text.data}
               {item.is_deletable && (
                 <Button
