@@ -35,6 +35,18 @@
     "test:ci": "CI=true razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js",
     "i18n": "NODE_ENV=production node src/i18n.js",
+    "cypress:open": "cypress open",
+    "cypress:run": "CYPRESS_API=plone cypress run",
+    "cypress:run:guillotina": "CYPRESS_API=guillotina cypress run",
+    "cy:install": "cypress install",
+    "cy:test:fixture:setup": "node cypress/support/reset-fixture.js",
+    "cy:test:fixture:teardown": "node cypress/support/reset-fixture.js teardown",
+    "ci:start-api-plone": "make test-acceptance-server",
+    "ci:start-api-guillotina": "make test-acceptance-guillotina",
+    "ci:start-frontend": "RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http-get://localhost:3000 cypress:run",
+    "ci:start-frontend-guillotina": "RAZZLE_API_PATH=http://localhost:8081/db/container yarn build && start-test start:prod http-get://localhost:3000 cypress:run:guillotina",
+    "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
+    "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
     "release": "release-it"
   },
@@ -122,6 +134,8 @@
     "connected-react-router": "6.3.2",
     "coveralls": "3.0.2",
     "css-loader": "2.1.1",
+    "cypress": "3.2.0",
+    "cypress-file-upload": "3.1.1",
     "draft-js": "0.10.5",
     "draft-js-block-breakout-plugin": "2.0.1",
     "draft-js-buttons": "2.0.1",
@@ -193,6 +207,7 @@
     "semantic-ui-react": "0.84.0",
     "semver": "5.6.0",
     "serialize-javascript": "1.5.0",
+    "start-server-and-test": "1.7.13",
     "style-loader": "0.23.0",
     "stylelint": "9.2.1",
     "stylelint-config-idiomatic-order": "6.2.0",
@@ -201,6 +216,8 @@
     "svg-loader": "0.0.2",
     "svgo": "1.0.5",
     "svgo-loader": "2.1.0",
-    "tlds": "1.203.1"
-  }
+    "tlds": "1.203.1",
+    "xmlrpc": "1.3.2"
+  },
+  "devDependencies": {}
 }

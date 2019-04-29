@@ -6,11 +6,13 @@
 
 - Upgrade to Razzle 3 @sneridagh
 - contact-form view @cekk
+- Add cypress setup for both Plone and Guillotina @sneridagh
 
 ### Changes
 
 - Several dependencies upgraded @sneridagh
 - Fix image of Hero Tile for images in private containers @sneridagh
+- Remove RobotFramework tests in favor of the cypress ones @sneridagh
 
 ## 2.1.3 (2019-04-17)
 
