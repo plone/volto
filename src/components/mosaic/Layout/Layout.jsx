@@ -636,7 +636,7 @@ export default class Layout extends Component {
             pathname="/"
             inner={
               <div>
-                <a className="item" onClick={() => {}}>
+                <a id="toolbar-save" className="item" onClick={() => {}}>
                   <Icon
                     name="save"
                     size="big"
