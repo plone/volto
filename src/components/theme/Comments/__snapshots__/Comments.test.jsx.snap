@@ -31,7 +31,7 @@ exports[`Comments renders a comments component 1`] = `
       </div>
     </div>
     <div
-      className="ui clearing segment"
+      className="ui clearing segment multiline"
     >
       Some comment
       <button

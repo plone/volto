@@ -4,7 +4,6 @@
 
 ### Added
 
-- Show comments multiline @rodfersou
 - Upgrade to Razzle 3 @sneridagh
 - contact-form view @cekk
 - Add cypress setup for both Plone and Guillotina @sneridagh
@@ -15,6 +14,7 @@
 - Fix image of Hero Tile for images in private containers @sneridagh
 - Remove enforcement of JSdocs in Volto ESlint rules @sneridagh
 - Remove RobotFramework tests in favor of the cypress ones @sneridagh
+- Fix comments component, allow multiline @rodfersou
 
 ## 2.1.3 (2019-04-17)
 
