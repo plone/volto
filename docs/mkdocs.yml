@@ -24,9 +24,8 @@ nav:
   - Configuration:
     - What is configurable?: "02-configuration/how-to.md"
     - Richeditor settings: "02-configuration/richeditor-settings.md"
-    - Storing third party tokens: "02-configuration/third-party-tokens.md"
   - Semantic UI:
-    - Introduction: "03-semantic-ui/01-introduction.md"
+    - About Semantic UI: "03-semantic-ui/01-about-semantic.md"
     - Semantic UI Theming: "03-semantic-ui/02-semanticui-theming.md"
     - Theming Engine: "03-semantic-ui/03-theming-engine.md"
   - Theming:
