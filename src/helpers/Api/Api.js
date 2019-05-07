@@ -33,9 +33,10 @@ export class Api {
    */
   constructor() {
     methods.forEach(method => {
-      this[method] = (path, { params, data, type, headers = {} } = {}) =>
-        new Promise((resolve, reject) => {
-          const request = superagent[method](formatUrl(path));
+      this[method] = (path, { params, data, type, headers = {} } = {}) => {
+        let request;
+        let promise = new Promise((resolve, reject) => {
+          request = superagent[method](formatUrl(path));
 
           if (params) {
             request.query(params);
@@ -62,6 +63,9 @@ export class Api {
             (err, { body } = {}) => (err ? reject(err) : resolve(body)),
           );
         });
+        promise.request = request;
+        return promise;
+      };
     });
   }
 }
