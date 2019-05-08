@@ -37,10 +37,9 @@ const Option = props => {
   return (
     <components.Option {...props}>
       <div>{props.label}</div>
-      {props.isFocused &&
-        !props.isSelected && (
-          <Icon name={checkSVG} size="24px" color="#b8c6c8" />
-        )}
+      {props.isFocused && !props.isSelected && (
+        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+      )}
       {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
     </components.Option>
   );
@@ -102,8 +101,8 @@ const customSelectStyles = {
     color: state.isSelected
       ? '#007bc1'
       : state.isFocused
-        ? '#4a4a4a'
-        : 'inherit',
+      ? '#4a4a4a'
+      : 'inherit',
     ':active': {
       backgroundColor: null,
     },
@@ -155,10 +154,10 @@ export default class ArrayWidget extends Component {
     choices: PropTypes.arrayOf(PropTypes.object),
     loading: PropTypes.bool,
     items: PropTypes.shape({
-      vocabulary: PropTypes.string,
+      vocabulary: PropTypes.object,
     }),
     widgetOptions: PropTypes.shape({
-      vocabulary: PropTypes.string,
+      vocabulary: PropTypes.object,
     }),
     value: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func.isRequired,

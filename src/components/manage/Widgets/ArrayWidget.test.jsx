@@ -26,7 +26,7 @@ test('renders an array widget component', () => {
         id="my-field"
         title="My field"
         onChange={() => {}}
-        items={{ vocabulary: 'plone.app.vocabularies.Keywords' }}
+        items={{ vocabulary: { '@id': 'plone.app.vocabularies.Keywords' } }}
       />
     </Provider>,
   );

@@ -165,10 +165,7 @@ class Controlpanel extends Component {
             <Toolbar
               pathname={this.props.pathname}
               inner={
-                <Link
-                  to={`${getBaseUrl(this.props.pathname)}controlpanel`}
-                  className="item"
-                >
+                <Link to="/controlpanel" className="item">
                   <Icon
                     name="arrow left"
                     size="big"
