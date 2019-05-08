@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon as IconOld, Form, Grid, Label } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { map, find, isBoolean } from 'lodash';
+import { map, find, isBoolean, isObject } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import Select, { components } from 'react-select';
 import AsyncPaginate from 'react-select-async-paginate';
@@ -60,10 +60,9 @@ const Option = props => {
   return (
     <components.Option {...props}>
       <div>{props.label}</div>
-      {props.isFocused &&
-        !props.isSelected && (
-          <Icon name={checkSVG} size="24px" color="#b8c6c8" />
-        )}
+      {props.isFocused && !props.isSelected && (
+        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+      )}
       {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
     </components.Option>
   );
@@ -125,8 +124,8 @@ const customSelectStyles = {
     color: state.isSelected
       ? '#007bc1'
       : state.isFocused
-        ? '#4a4a4a'
-        : 'inherit',
+      ? '#4a4a4a'
+      : 'inherit',
     ':active': {
       backgroundColor: null,
     },
@@ -134,7 +133,7 @@ const customSelectStyles = {
 };
 
 function getDefaultValues(choices, value) {
-  if (isBoolean(value)) {
+  if (!isObject(value) && isBoolean(value)) {
     // We have a boolean value, which means we need to provide a "No value"
     // option
     return (
@@ -146,6 +145,9 @@ function getDefaultValues(choices, value) {
   }
   if (value == 'no-value') {
     return { label: 'No value', value: 'no-value' };
+  }
+  if (isObject(value)) {
+    return { label: value.title, value: value.token };
   }
   if (value) {
     return { label: find(choices, o => o[0] === value)[1], value };
@@ -201,7 +203,7 @@ export default class SelectWidget extends Component {
     widgetOptions: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     onChange: PropTypes.func.isRequired,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
@@ -245,18 +247,6 @@ export default class SelectWidget extends Component {
   componentDidMount() {
     if (this.vocabBaseUrl) {
       this.props.getVocabulary(this.vocabBaseUrl);
-      if (this.props.value) {
-        this.props
-          .getVocabularyTokenTitle(this.vocabBaseUrl, this.props.value)
-          .then(() =>
-            this.setState({
-              selectedOption: {
-                label: this.props.vocabState[this.props.value],
-                value: this.props.value,
-              },
-            }),
-          );
-      }
     }
   }
 

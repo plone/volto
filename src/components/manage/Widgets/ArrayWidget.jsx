@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Label, Dropdown } from 'semantic-ui-react';
-import { concat, debounce, map, uniqBy } from 'lodash';
+import { concat, debounce, isObject, map, uniqBy } from 'lodash';
 import { connect } from 'react-redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { bindActionCreators } from 'redux';
@@ -38,10 +38,9 @@ const Option = props => {
   return (
     <components.Option {...props}>
       <div>{props.label}</div>
-      {props.isFocused &&
-        !props.isSelected && (
-          <Icon name={checkSVG} size="24px" color="#b8c6c8" />
-        )}
+      {props.isFocused && !props.isSelected && (
+        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+      )}
       {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
     </components.Option>
   );
@@ -103,8 +102,8 @@ const customSelectStyles = {
     color: state.isSelected
       ? '#007bc1'
       : state.isFocused
-        ? '#4a4a4a'
-        : 'inherit',
+      ? '#4a4a4a'
+      : 'inherit',
     ':active': {
       backgroundColor: null,
     },
@@ -160,7 +159,9 @@ export default class ArrayWidget extends Component {
     widgetOptions: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
-    value: PropTypes.arrayOf(PropTypes.string),
+    value: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    ),
     onChange: PropTypes.func.isRequired,
     itemsTotal: PropTypes.number,
     intl: intlShape.isRequired,
@@ -204,7 +205,11 @@ export default class ArrayWidget extends Component {
     this.state = {
       search: '',
       selectedOption: props.value
-        ? props.value.map(item => ({ label: item, value: item }))
+        ? props.value.map(item =>
+            isObject(item)
+              ? { label: item.title, value: item.token }
+              : { label: item, value: item },
+          )
         : [],
     };
   }
