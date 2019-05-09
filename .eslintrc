@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "prettier"],
+  "extends": ["airbnb", "react-hooks", "prettier"],
   "env": {
     "es6": true,
     "browser": true,
@@ -21,7 +21,9 @@
     "import/no-extraneous-dependencies": 0,
     "react/no-unused-prop-types": 0,
     "no-plusplus": 0,
-    "no-nested-ternary": 0
+    "no-nested-ternary": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "settings": {
     "import/resolver": {
