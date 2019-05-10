@@ -49,6 +49,7 @@ install:
   - yarn install --frozen-lockfile
   - yarn cy:install
 script:
+  - yarn run prettier:check
   - if [ "$TEST_SUITE" == "unit" ]; then
     docker run --name coverage_front -it --rm -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" plone/volto:testing -- yarn test:ci;
     fi
