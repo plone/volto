@@ -242,8 +242,8 @@ export default class ReferenceWidget extends Component {
                         )
                       : []
                     : value
-                      ? value['@id'].replace(settings.apiPath, '')
-                      : ''
+                    ? value['@id'].replace(settings.apiPath, '')
+                    : ''
                 }
                 onChange={(event, data) =>
                   onChange(

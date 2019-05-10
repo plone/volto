@@ -234,82 +234,80 @@ export default class Edit extends Component {
           this.node = node;
         }}
       >
-        {this.props.selected &&
-          !!this.props.data.url && (
-            <div className="toolbar">
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={() => this.onAlignTile('left')}
-                  active={this.props.data.align === 'left'}
-                >
-                  <Icon name={imageLeftSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={() => this.onAlignTile('right')}
-                  active={this.props.data.align === 'right'}
-                >
-                  <Icon name={imageRightSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={() => this.onAlignTile('center')}
-                  active={
-                    this.props.data.align === 'center' || !this.props.data.align
-                  }
-                >
-                  <Icon name={imageFitSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={() => this.onAlignTile('full')}
-                  active={this.props.data.align === 'full'}
-                >
-                  <Icon name={imageFullSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              <div className="separator" />
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={() =>
-                    this.props.onChangeTile(this.props.tile, {
-                      ...this.props.data,
-                      url: '',
-                    })
-                  }
-                >
-                  <Icon name={clearSVG} size="24px" color="#e40166" />
-                </Button>
-              </Button.Group>
-            </div>
-          )}
-        {this.props.selected &&
-          !this.props.data.url && (
-            <div className="toolbar">
-              <Icon name={globeSVG} size="24px" />
-              <form onKeyDown={this.onKeyDownVariantMenuForm}>
-                <Input
-                  onChange={this.onChangeUrl}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.ImageTileInputPlaceholder,
-                  )}
-                />
-              </form>
-            </div>
-          )}
+        {this.props.selected && !!this.props.data.url && (
+          <div className="toolbar">
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() => this.onAlignTile('left')}
+                active={this.props.data.align === 'left'}
+              >
+                <Icon name={imageLeftSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() => this.onAlignTile('right')}
+                active={this.props.data.align === 'right'}
+              >
+                <Icon name={imageRightSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() => this.onAlignTile('center')}
+                active={
+                  this.props.data.align === 'center' || !this.props.data.align
+                }
+              >
+                <Icon name={imageFitSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() => this.onAlignTile('full')}
+                active={this.props.data.align === 'full'}
+              >
+                <Icon name={imageFullSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <div className="separator" />
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() =>
+                  this.props.onChangeTile(this.props.tile, {
+                    ...this.props.data,
+                    url: '',
+                  })
+                }
+              >
+                <Icon name={clearSVG} size="24px" color="#e40166" />
+              </Button>
+            </Button.Group>
+          </div>
+        )}
+        {this.props.selected && !this.props.data.url && (
+          <div className="toolbar">
+            <Icon name={globeSVG} size="24px" />
+            <form onKeyDown={this.onKeyDownVariantMenuForm}>
+              <Input
+                onChange={this.onChangeUrl}
+                placeholder={this.props.intl.formatMessage(
+                  messages.ImageTileInputPlaceholder,
+                )}
+              />
+            </form>
+          </div>
+        )}
         {this.props.data.url ? (
           <div>
             <iframe
