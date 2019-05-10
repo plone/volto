@@ -6,6 +6,11 @@
 
 ### Changes
 
+- Add 'prettier:check' command to check if there are any missing prettier fixes @timo
+- Run 'prettier:check' on Travis and fail the build if there are missing prettier fixes @timo
+- Add 'prettier:fix' command to fix all missing prettier fixes at once @timo
+- Run 'prettier:fix' once and commit all fixes @timo
+
 ## 3.0.2 (2019-05-10)
 
 ### Changes
