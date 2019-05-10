@@ -35,6 +35,8 @@
     "test:ci": "CI=true razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js",
     "i18n": "NODE_ENV=production node src/i18n.js",
+    "lint": "node_modules/eslint/bin/eslint.js src",
+    "prettier": "node_modules/prettier/bin-prettier.js src/**/*.js -c",
     "cypress:open": "cypress open",
     "cypress:run": "CYPRESS_API=plone cypress run",
     "cypress:run:guillotina": "CYPRESS_API=guillotina cypress run",
