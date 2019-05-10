@@ -2,9 +2,10 @@
 
 ## 3.0.2 (unreleased)
 
-### Added
-
 ### Changes
+
+- Re-add babel-eslint because of the decorators @sneridagh
+- Upgrade eslint-config-airbnb @sneridagh
 
 ## 3.0.1 (2019-05-10)
 
