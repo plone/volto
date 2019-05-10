@@ -2,9 +2,9 @@
 
 ## 3.0.1 (unreleased)
 
-### Added
-
 ### Changes
+
+- Small fix for a missplacement of the hooks plugin in .eslintrc @sneridagh
 
 ## 3.0.0 (2019-05-10)
 
