@@ -3,11 +3,11 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import SelectWidget from './SelectWidget';
+import TokenWidget from './TokenWidget';
 
 const mockStore = configureStore();
 
-test('renders a select widget component', () => {
+test('renders an array widget component', () => {
   const store = mockStore({
     intl: {
       locale: 'en',
@@ -20,10 +20,14 @@ test('renders a select widget component', () => {
       },
     },
   });
-
   const component = renderer.create(
     <Provider store={store}>
-      <SelectWidget id="my-field" title="My field" onChange={() => {}} />
+      <TokenWidget
+        id="my-field"
+        title="My field"
+        onChange={() => {}}
+        items={{ vocabulary: { '@id': 'plone.app.vocabularies.Keywords' } }}
+      />
     </Provider>,
   );
   const json = component.toJSON();

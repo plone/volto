@@ -7,6 +7,8 @@
 - Upgrade to Razzle 3 @sneridagh
 - contact-form view @cekk
 - Add cypress setup for both Plone and Guillotina @sneridagh
+- Update SelectWidget and ArrayWidget and related vocabularies actions/reducers
+  for the breaking changes in plone.restapi 4.0.0 @davisagli @sneridagh
 - Expose request on the promise returned by the api helper @csenger
 
 ### Changes

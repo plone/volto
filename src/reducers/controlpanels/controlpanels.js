@@ -53,6 +53,7 @@ export default function controlpanels(state = initialState, action = {}) {
     case `${UPDATE_CONTROLPANEL}_PENDING`:
       return {
         ...state,
+        controlpanel: null,
         [getRequestKey(action.type)]: {
           loading: true,
           loaded: false,

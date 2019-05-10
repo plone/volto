@@ -74,7 +74,10 @@ export {
   loginRenew,
   logout,
 } from '@plone/volto/actions/userSession/userSession';
-export { getVocabulary } from '@plone/volto/actions/vocabularies/vocabularies';
+export {
+  getVocabulary,
+  getVocabularyTokenTitle,
+} from '@plone/volto/actions/vocabularies/vocabularies';
 export {
   getWorkflow,
   transitionWorkflow,

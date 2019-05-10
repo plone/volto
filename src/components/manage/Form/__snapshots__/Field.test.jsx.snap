@@ -138,7 +138,7 @@ exports[`Field renders a select widget for a choices-based field 1`] = `
 
 exports[`Field renders a select widget for a vocabulary-based field 1`] = `
 <div
-  className="ArrayWidget"
+  className="SelectWidget"
 />
 `;
 

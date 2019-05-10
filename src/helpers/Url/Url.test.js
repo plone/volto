@@ -10,6 +10,9 @@ describe('Url', () => {
     it('can remove a view name from a relative url', () => {
       expect(getBaseUrl('/contents')).toBe('');
     });
+    it('can remove a view name from a controlpanel url', () => {
+      expect(getBaseUrl('/controlpanel/date-time')).toBe('');
+    });
   });
 
   describe('getView', () => {

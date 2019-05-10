@@ -23,6 +23,7 @@ import Icons from '../../../constants/ControlpanelIcons';
 import { listControlpanels } from '../../../actions';
 import { Toolbar } from '../../../components';
 import { getBaseUrl } from '../../../helpers';
+import { debug } from 'util';
 
 const messages = defineMessages({
   sitesetup: {
@@ -138,7 +139,7 @@ export default class Controlpanels extends Component {
           <Toolbar
             pathname={this.props.pathname}
             inner={
-              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
+              <Link to="/" className="item">
                 <Icon
                   name="arrow left"
                   size="big"
