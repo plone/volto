@@ -224,5 +224,8 @@
     "tlds": "1.203.1",
     "xmlrpc": "1.3.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "axe-core": "3.2.2",
+    "cypress-axe": "0.4.1"
+  }
 }
