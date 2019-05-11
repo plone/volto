@@ -36,6 +36,8 @@
     "start:prod": "NODE_ENV=production node build/server.js",
     "prettier:check": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
+    "lint": "./node_modules/eslint/bin/eslint.js 'src/**/*.{js,jsx,json}'",
+    "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,json}'",
     "i18n": "NODE_ENV=production node src/i18n.js",
     "cypress:open": "cypress open",
     "cypress:run": "CYPRESS_API=plone cypress run",
@@ -138,7 +140,7 @@
     "@babel/preset-stage-0": "7.0.0",
     "autoprefixer": "9.1.5",
     "babel-7-plugin-root-import": "5.4.0",
-    "babel-eslint": "10.0.1",
+    "babel-eslint": "9.x",
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-plugin-react-intl": "3.0.1",
     "babel-plugin-root-import": "6.1.0",
@@ -158,16 +160,16 @@
     "enzyme": "3.6.0",
     "enzyme-adapter-react-15": "1.1.0",
     "enzyme-to-json": "3.3.4",
-    "eslint": "5.16.0",
+    "eslint": "5.x",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-prettier": "4.1.0",
     "eslint-import-resolver-alias": "1.1.2",
     "eslint-import-resolver-babel-plugin-root-import": "1.1.1",
-    "eslint-plugin-import": "2.17.2",
-    "eslint-plugin-jsx-a11y": "6.2.1",
+    "eslint-plugin-import": "2.x",
+    "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-prettier": "3.0.1",
-    "eslint-plugin-react": "7.13.0",
-    "eslint-plugin-react-hooks": "1.6.0",
+    "eslint-plugin-react": "7.x",
+    "eslint-plugin-react-hooks": "1.5.0",
     "express": "4.16.3",
     "glob": "7.1.3",
     "hamburgers": "1.1.3",
@@ -240,5 +242,8 @@
     "tlds": "1.203.1",
     "xmlrpc": "1.3.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint-config-react-app": "4.0.1",
+    "eslint-plugin-flowtype": "2.x"
+  }
 }
