@@ -8,6 +8,7 @@
 
 ### Internal
 
+- Use  eslint-plugin-jsx-a11y for accessibility checks @timo
 - Use eslint-config-react-app instead of airbnb + custom config for linting @timo
 - Add 'prettier:check' command to check if there are any missing prettier fixes @timo
 - Run 'prettier:check' on Travis and fail the build if there are missing prettier fixes @timo
