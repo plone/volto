@@ -1,3 +1,21 @@
 {
-  "extends": ["react-app"]
+  "extends": ["react-app"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "legacyDecorators": true
+    }
+  },
+  "globals": {
+    "root": true,
+    "__DEVELOPMENT__": true,
+    "__CLIENT__": true,
+    "__SERVER__": true,
+    "__DISABLE_SSR__": true,
+    "__DEVTOOLS__": true,
+    "__DEBUG__": true,
+    "__SSR__": true,
+    "jest": true,
+    "socket": true,
+    "webpackIsomorphicTools": true
+  }
 }
