@@ -9,6 +9,13 @@
     "protractor": true
   },
   "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "legacyDecorators": true
+    }
+  },
   "rules": {
     "prettier/prettier": [
       "error",

@@ -2,9 +2,7 @@
 
 ## 3.0.3 (unreleased)
 
-### Added
-
-### Changes
+- More eslint fixes for avoiding parsing errors on decorators @sneridagh
 
 ## 3.0.2 (2019-05-10)
 
