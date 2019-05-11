@@ -34,6 +34,8 @@
     "test": "razzle test --env=jsdom",
     "test:ci": "CI=true razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js",
+    "prettier:check": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
+    "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "i18n": "NODE_ENV=production node src/i18n.js",
     "cypress:open": "cypress open",
     "cypress:run": "CYPRESS_API=plone cypress run",
@@ -104,6 +106,17 @@
       "releaseNotes": "node changelogupdater.js excerpt"
     }
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  },
   "engines": {
     "node": "^8 || ^10"
   },
@@ -159,12 +172,14 @@
     "glob": "7.1.3",
     "hamburgers": "1.1.3",
     "history": "4.9.0",
+    "husky": "2.2.0",
     "jest-css-modules": "1.1.0",
     "jest-file": "1.0.0",
     "jsonwebtoken": "8.3.0",
     "jwt-decode": "2.2.0",
     "less": "3.9.0",
     "less-loader": "4.1.0",
+    "lint-staged": "8.1.6",
     "locale": "0.1.0",
     "lodash": "4.17.11",
     "lodash-move": "1.1.1",
