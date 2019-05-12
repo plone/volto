@@ -1,5 +1,6 @@
 {
-  "extends": ["react-app"],
+  "extends": ["react-app", "prettier"],
+  "plugins": ["prettier", "react-hooks"],
   "parserOptions": {
     "ecmaFeatures": {
       "legacyDecorators": true
