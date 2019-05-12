@@ -1,6 +1,14 @@
 {
   "extends": ["react-app", "prettier"],
   "plugins": ["prettier", "react-hooks"],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "mocha": true,
+    "jasmine": true
+  },
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
