@@ -2,8 +2,27 @@
   "extends": ["react-app", "prettier"],
   "plugins": ["prettier", "react-hooks"],
   "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
     "ecmaFeatures": {
       "legacyDecorators": true
+    }
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      { "trailingComma": "all", "singleQuote": true }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [["@plone/volto", "./src"]],
+        "extensions": [".js", ".jsx", ".json"]
+      },
+      "babel-plugin-root-import": {
+        "rootPathSuffix": "src"
+      }
     }
   },
   "globals": {
