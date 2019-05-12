@@ -9,7 +9,7 @@ import nlLocaleData from 'react-intl/locale-data/nl';
 import deLocaleData from 'react-intl/locale-data/de';
 import enLocaleData from 'react-intl/locale-data/en';
 import { addLocaleData } from 'react-intl';
-import routes from '~/routes.jsx';
+import routes from '~/routes';
 
 import 'semantic-ui-less/semantic.less';
 import '../theme/themes/pastanaga/extras/extras.less';
