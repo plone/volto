@@ -3,7 +3,7 @@
 ## 3.0.3 (unreleased)
 
 - More eslint fixes for avoiding parsing errors on decorators @sneridagh
-
+- Run 'yarn lint' on Travis @timo
 - Add 'prettier:check' command to check if there are any missing prettier fixes @timo
 - Run 'prettier:check' on Travis and fail the build if there are missing prettier fixes @timo
 - Add 'prettier:fix' command to fix all missing prettier fixes at once @timo
