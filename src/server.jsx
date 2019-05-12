@@ -11,7 +11,7 @@ import Raven from 'raven';
 import cookie, { plugToRequest } from 'react-cookie';
 import locale from 'locale';
 
-import routes from '~/routes';
+import routes from '~/routes.jsx';
 import nlLocale from '~/../locales/nl.json';
 import deLocale from '~/../locales/de.json';
 import enLocale from '~/../locales/en.json';
