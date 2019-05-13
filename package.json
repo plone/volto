@@ -166,7 +166,7 @@
     "eslint-config-react-app": "4.0.1",
     "eslint-import-resolver-alias": "1.1.2",
     "eslint-import-resolver-babel-plugin-root-import": "1.1.1",
-    "eslint-plugin-flowtype": "2.x",
+    "eslint-plugin-flowtype": "2.50.1",
     "eslint-plugin-import": "2.17.2",
     "eslint-plugin-jsx-a11y": "6.2.1",
     "eslint-plugin-prettier": "3.0.1",
