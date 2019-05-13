@@ -1129,8 +1129,8 @@ export default class ContentsComponent extends Component {
                                   ? 'square outline'
                                   : this.state.selected.length ===
                                     this.state.items.length
-                                    ? 'check square'
-                                    : 'minus square'
+                                  ? 'check square'
+                                  : 'minus square'
                               }
                               color={
                                 this.state.selected.length > 0

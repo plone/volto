@@ -31,7 +31,7 @@ auth_token_validators:
 - guillotina.auth.validators.JWTValidator
 redis:
   host: "redis"
-  port: 6380
+  port: 6379
 jwt:
   secret: secret
   algorithm: HS256

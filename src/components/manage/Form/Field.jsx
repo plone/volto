@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
-import { widgets } from '~/config';
+import { settings, widgets } from '~/config';
 import { injectIntl, intlShape } from 'react-intl';
 
 /**
@@ -42,7 +42,27 @@ const getWidgetByName = widget =>
  * @returns {string} Widget component.
  */
 const getWidgetByVocabulary = vocabulary =>
-  widgets.vocabulary[vocabulary] || null;
+  vocabulary
+    ? widgets.vocabulary[
+        vocabulary['@id'].replace(`${settings.apiPath}/@vocabularies/`, '')
+      ]
+    : null;
+
+/**
+ * Get widget by field's hints `vocabulary` attribute in widgetOptions
+ * @method getWidgetByVocabularyFromHint
+ * @param {string} props Widget props
+ * @returns {string} Widget component.
+ */
+const getWidgetByVocabularyFromHint = props =>
+  props.widgetOptions && props.widgetOptions.vocabulary
+    ? widgets.vocabulary[
+        props.widgetOptions.vocabulary['@id'].replace(
+          `${settings.apiPath}/@vocabularies/`,
+          '',
+        )
+      ]
+    : null;
 
 /**
  * Get widget by field's `choices` attribute
@@ -50,7 +70,20 @@ const getWidgetByVocabulary = vocabulary =>
  * @param {string} choices Widget
  * @returns {string} Widget component.
  */
-const getWidgetByChoices = choices => (choices ? widgets.choices : null);
+const getWidgetByChoices = props => {
+  if (props.choices) {
+    return widgets.choices;
+  }
+
+  if (props.vocabulary) {
+    // If vocabulary exists, then it means it's a choice field in disguise with
+    // no widget specified that probably contains a string then we force it
+    // to be a select widget instead
+    return widgets.choices;
+  }
+
+  return null;
+};
 
 /**
  * Get widget by field's `type` attribute
@@ -71,8 +104,9 @@ const Field = (props, { intl }) => {
     getWidgetByFieldId(props.id) ||
     getWidgetByName(props.widget) ||
     getWidgetByVocabulary(props.vocabulary) ||
-    getWidgetByChoices(props.choices) ||
+    getWidgetByVocabularyFromHint(props) ||
     getWidgetByType(props.type) ||
+    getWidgetByChoices(props) ||
     getWidgetDefault();
 
   if (props.onOrder) {
@@ -140,7 +174,7 @@ const Field = (props, { intl }) => {
  */
 Field.propTypes = {
   widget: PropTypes.string,
-  vocabulary: PropTypes.string,
+  vocabulary: PropTypes.shape({ '@id': PropTypes.string }),
   choices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   type: PropTypes.string,
   id: PropTypes.string.isRequired,

@@ -43,7 +43,7 @@ amendments required.
 
 Locate the `Tags.jsx` file and override this file so that there is a label in front of the tags with: `Tags:`.
 
-```js
+```js hl_lines="20"
     /**
     * Tags component.
     * @module components/theme/Tags/Tags

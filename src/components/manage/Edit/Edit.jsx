@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Router, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
 import { isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
@@ -158,9 +158,9 @@ export class EditComponent extends Component {
     }
     // Hack for make the Plone site editable by Volto Editor without checkings
     if (this.props.content['@type'] === 'Plone Site') {
-      this.state = {
+      this.setState({
         visual: true,
-      };
+      });
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       this.props.history.push(
@@ -237,7 +237,11 @@ export class EditComponent extends Component {
               pathname={this.props.pathname}
               inner={
                 <div>
-                  <a className="item" onClick={() => this.form.onSubmit()}>
+                  <a
+                    id="toolbar-save"
+                    className="item"
+                    onClick={() => this.form.onSubmit()}
+                  >
                     <Icon
                       name="save"
                       size="big"

@@ -1,16 +1,54 @@
 # Change Log
 
-## 2.1.4 (unreleased)
+## 3.0.4 (unreleased)
+
+### Added
+
+### Changes
+
+## 3.0.3 (2019-05-13)
+
+### Internal
+
+- Use eslint-config-react-app instead of airbnb + custom config for linting @timo
+- More eslint fixes for avoiding parsing errors on decorators @sneridagh
+- Add 'prettier' command to check if there are any missing prettier fixes @timo
+- Run 'prettier' on Travis and fail the build if there are missing prettier fixes @timo
+- Add 'prettier:fix' command to fix all missing prettier fixes at once @timo
+- Run 'prettier:fix' once and commit all fixes @timo
+- Fix the most important violations reported with the new config @sneridagh
+
+## 3.0.2 (2019-05-10)
+
+### Changes
+
+- Re-add babel-eslint because of the decorators @sneridagh
+- Upgrade eslint-config-airbnb @sneridagh
+
+## 3.0.1 (2019-05-10)
+
+### Changes
+
+- Small fix for a missplacement of the hooks plugin in .eslintrc @sneridagh
+
+## 3.0.0 (2019-05-10)
 
 ### Added
 
 - Upgrade to Razzle 3 @sneridagh
 - contact-form view @cekk
+- Add cypress setup for both Plone and Guillotina @sneridagh
+- Update SelectWidget and ArrayWidget and related vocabularies actions/reducers
+  for the breaking changes in plone.restapi 4.0.0 @davisagli @sneridagh
+- Expose request on the promise returned by the api helper @csenger
 
 ### Changes
 
 - Several dependencies upgraded @sneridagh
 - Fix image of Hero Tile for images in private containers @sneridagh
+- Remove enforcement of JSdocs in Volto ESlint rules @sneridagh
+- Remove RobotFramework tests in favor of the cypress ones @sneridagh
+- Updated docs to highlight some code changes @pigeonflight
 
 ## 2.1.3 (2019-04-17)
 
