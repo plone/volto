@@ -34,7 +34,7 @@
     "test": "razzle test --env=jsdom",
     "test:ci": "CI=true razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js",
-    "prettier:check": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
+    "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "lint": "./node_modules/eslint/bin/eslint.js 'src/**/*.{js,jsx,json}'",
     "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,json}'",

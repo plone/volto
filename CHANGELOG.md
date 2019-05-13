@@ -7,8 +7,8 @@
 ### Internal
 
 - Use eslint-config-react-app instead of airbnb + custom config for linting @timo
-- Add 'prettier:check' command to check if there are any missing prettier fixes @timo
-- Run 'prettier:check' on Travis and fail the build if there are missing prettier fixes @timo
+- Add 'prettier' command to check if there are any missing prettier fixes @timo
+- Run 'prettier' on Travis and fail the build if there are missing prettier fixes @timo
 - Add 'prettier:fix' command to fix all missing prettier fixes at once @timo
 - Run 'prettier:fix' once and commit all fixes @timo
 
