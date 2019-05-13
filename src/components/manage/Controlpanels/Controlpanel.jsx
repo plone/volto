@@ -19,7 +19,6 @@ import {
   updateControlpanel,
   getControlpanel,
 } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
   changesSaved: {
@@ -68,8 +67,8 @@ class Controlpanel extends Component {
     }).isRequired,
     controlpanel: PropTypes.shape({
       '@id': PropTypes.string,
-      data: PropTypes.Object,
-      schema: PropTypes.Object,
+      data: PropTypes.object,
+      schema: PropTypes.object,
       title: PropTypes.string,
     }),
     intl: intlShape.isRequired,

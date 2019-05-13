@@ -4,6 +4,9 @@
 
 - More eslint fixes for avoiding parsing errors on decorators @sneridagh
 
+### Internal
+
+- Use eslint-config-react-app instead of airbnb + custom config for linting @timo
 - Add 'prettier:check' command to check if there are any missing prettier fixes @timo
 - Run 'prettier:check' on Travis and fail the build if there are missing prettier fixes @timo
 - Add 'prettier:fix' command to fix all missing prettier fixes at once @timo
