@@ -143,7 +143,7 @@ function getDefaultValues(choices, value) {
       } || {}
     );
   }
-  if (value == 'no-value') {
+  if (value === 'no-value') {
     return { label: 'No value', value: 'no-value' };
   }
   if (isObject(value)) {
