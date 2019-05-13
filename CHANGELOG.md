@@ -1,10 +1,29 @@
 # Change Log
 
-## 3.0.2 (unreleased)
+## 3.0.4 (unreleased)
 
 ### Added
 
 ### Changes
+
+## 3.0.3 (2019-05-13)
+
+### Internal
+
+- Use eslint-config-react-app instead of airbnb + custom config for linting @timo
+- More eslint fixes for avoiding parsing errors on decorators @sneridagh
+- Add 'prettier' command to check if there are any missing prettier fixes @timo
+- Run 'prettier' on Travis and fail the build if there are missing prettier fixes @timo
+- Add 'prettier:fix' command to fix all missing prettier fixes at once @timo
+- Run 'prettier:fix' once and commit all fixes @timo
+- Fix the most important violations reported with the new config @sneridagh
+
+## 3.0.2 (2019-05-10)
+
+### Changes
+
+- Re-add babel-eslint because of the decorators @sneridagh
+- Upgrade eslint-config-airbnb @sneridagh
 
 ## 3.0.1 (2019-05-10)
 

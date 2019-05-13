@@ -1,36 +1,32 @@
 {
-  "extends": ["airbnb", "prettier"],
+  "extends": ["react-app", "prettier"],
+  "plugins": ["prettier", "react-hooks"],
   "env": {
     "es6": true,
     "browser": true,
     "node": true,
     "mocha": true,
-    "jasmine": true,
-    "protractor": true
+    "jasmine": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "legacyDecorators": true
+    }
   },
   "rules": {
+    "import/no-unresolved": 1,
     "prettier/prettier": [
       "error",
       { "trailingComma": "all", "singleQuote": true }
-    ],
-    "jsx-a11y/anchor-is-valid": [ "error", { "components": [ "Link" ], "specialLink": [ "to" ] } ],
-    "import/prefer-default-export": "off",
-    "react/prefer-stateless-function": 0,
-    "import/no-unresolved": 1,
-    "import/extensions": 0,
-    "import/no-extraneous-dependencies": 0,
-    "react/no-unused-prop-types": 0,
-    "no-plusplus": 0,
-    "no-nested-ternary": 0,
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    ]
   },
   "settings": {
     "import/resolver": {
       "alias": {
-        "map": [
-          ["@plone/volto", "./src"]
-        ],
+        "map": [["@plone/volto", "./src"]],
         "extensions": [".js", ".jsx", ".json"]
       },
       "babel-plugin-root-import": {
@@ -50,6 +46,5 @@
     "jest": true,
     "socket": true,
     "webpackIsomorphicTools": true
-  },
-  "plugins": ["prettier", "react-hooks"]
+  }
 }

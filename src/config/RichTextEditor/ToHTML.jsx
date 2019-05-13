@@ -33,11 +33,15 @@ const addBreaklines = children => children.map(child => [child, <br />]);
 const getList = ordered => (children, { depth, keys }) =>
   ordered ? (
     <ol key={keys[0]} keys={keys} depth={depth}>
-      {children.map((child, i) => <li key={keys[i]}>{child}</li>)}
+      {children.map((child, i) => (
+        <li key={keys[i]}>{child}</li>
+      ))}
     </ol>
   ) : (
     <ul key={keys[0]} keys={keys} depth={depth}>
-      {children.map((child, i) => <li key={keys[i]}>{child}</li>)}
+      {children.map((child, i) => (
+        <li key={keys[i]}>{child}</li>
+      ))}
     </ul>
   );
 
