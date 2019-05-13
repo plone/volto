@@ -6,26 +6,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Label, Dropdown } from 'semantic-ui-react';
-import { concat, debounce, isObject, map, uniqBy } from 'lodash';
+import { concat, debounce, map, uniqBy } from 'lodash';
 import { connect } from 'react-redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { bindActionCreators } from 'redux';
-import Select, { components } from 'react-select';
-import AsyncPaginate from 'react-select-async-paginate';
-import CreatableSelect from 'react-select/lib/Creatable';
+import { components } from 'react-select';
+import AsyncCreatableSelect from 'react-select/lib/AsyncCreatable';
 
 import {
-  getBoolean,
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers';
-import { getVocabulary } from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components';
+import { getVocabulary } from '../../../actions';
+import { Icon } from '../../../components';
 
-import downSVG from '@plone/volto/icons/down-key.svg';
-import upSVG from '@plone/volto/icons/up-key.svg';
-import checkSVG from '@plone/volto/icons/check.svg';
+import downSVG from '../../../icons/down-key.svg';
+import upSVG from '../../../icons/up-key.svg';
+import checkSVG from '../../../icons/check.svg';
 
 const messages = defineMessages({
   no_results_found: {
@@ -35,6 +33,7 @@ const messages = defineMessages({
 });
 
 const Option = props => {
+  // console.log(props);
   return (
     <components.Option {...props}>
       <div>{props.label}</div>
@@ -110,10 +109,6 @@ const customSelectStyles = {
   }),
 };
 
-function getChoices(choices) {
-  return choices ? choices.map(item => ({ label: item, value: item })) : [];
-}
-
 @injectIntl
 @connect(
   (state, props) => {
@@ -124,7 +119,12 @@ function getChoices(choices) {
     const vocabState = state.vocabularies[vocabBaseUrl];
     if (vocabState) {
       return {
-        choices: vocabState.items,
+        choices: vocabState.items
+          ? vocabState.items.map(item => ({
+              label: item.value,
+              value: item.value,
+            }))
+          : [],
         itemsTotal: vocabState.itemsTotal,
         loading: Boolean(vocabState.loading),
       };
@@ -159,9 +159,7 @@ export default class ArrayWidget extends Component {
     widgetOptions: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
-    value: PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-    ),
+    value: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func.isRequired,
     itemsTotal: PropTypes.number,
     intl: intlShape.isRequired,
@@ -203,13 +201,8 @@ export default class ArrayWidget extends Component {
       getVocabFromField(props) ||
       getVocabFromItems(props);
     this.state = {
-      search: '',
       selectedOption: props.value
-        ? props.value.map(item =>
-            isObject(item)
-              ? { label: item.title, value: item.token }
-              : { label: item, value: item },
-          )
+        ? props.value.map(item => ({ label: item, value: item }))
         : [],
     };
   }
@@ -220,9 +213,7 @@ export default class ArrayWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (this.vocabBaseUrl) {
-      this.props.getVocabulary(this.vocabBaseUrl);
-    }
+    this.props.getVocabulary(this.vocabBaseUrl);
   }
 
   /**
@@ -244,17 +235,13 @@ export default class ArrayWidget extends Component {
    * @param {string} additional Additional arguments to pass to the next loadOptions.
    * @returns {undefined}
    */
-  loadOptions(search, previousOptions, additional) {
-    const offset = this.state.search !== search ? 0 : additional.offset;
-    this.props.getVocabulary(this.vocabBaseUrl, search, offset);
-    this.setState({ search });
-    return {
-      options: this.props.choices,
-      hasMore: this.props.itemsTotal > 25,
-      additional: {
-        offset: offset === additional.offset ? offset + 25 : offset,
-      },
-    };
+  loadOptions(search) {
+    return this.props.getVocabulary(this.vocabBaseUrl, search).then(resolve =>
+      this.props.choices.map(item => ({
+        label: item.value,
+        value: item.value,
+      })),
+    );
   }
 
   /**
@@ -292,37 +279,18 @@ export default class ArrayWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              {this.vocabBaseUrl ? (
-                <AsyncPaginate
-                  className="react-select-container"
-                  classNamePrefix="react-select"
-                  options={this.props.choices || []}
-                  styles={customSelectStyles}
-                  theme={selectTheme}
-                  components={{ DropdownIndicator, Option }}
-                  isMulti
-                  value={selectedOption || []}
-                  loadOptions={this.loadOptions}
-                  onChange={this.handleChange}
-                  additional={{
-                    offset: 25,
-                  }}
-                />
-              ) : (
-                <CreatableSelect
-                  className="react-select-container"
-                  classNamePrefix="react-select"
-                  options={
-                    this.props.choices || getChoices(this.props.default) || []
-                  }
-                  styles={customSelectStyles}
-                  theme={selectTheme}
-                  components={{ DropdownIndicator, Option }}
-                  value={selectedOption || []}
-                  onChange={this.handleChange}
-                  isMulti
-                />
-              )}
+              <AsyncCreatableSelect
+                className="react-select-container"
+                classNamePrefix="react-select"
+                defaultOptions={this.props.choices || []}
+                styles={customSelectStyles}
+                theme={selectTheme}
+                components={{ DropdownIndicator, Option }}
+                isMulti
+                value={selectedOption || []}
+                loadOptions={this.loadOptions}
+                onChange={this.handleChange}
+              />
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
                   {message}

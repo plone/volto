@@ -40,12 +40,10 @@ export default function messages(state = initialState, action = {}) {
       };
     case REMOVE_MESSAGE:
       return {
-        messages: filter(
-          state.messages,
-          (message, index) =>
-            action.index === -1
-              ? index !== state.messages.length - 1
-              : index !== action.index,
+        messages: filter(state.messages, (message, index) =>
+          action.index === -1
+            ? index !== state.messages.length - 1
+            : index !== action.index,
         ),
       };
     case PURGE_MESSAGES:
