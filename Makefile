@@ -21,6 +21,10 @@ start-backend:  ## Install Plone 5.2
 test:
 	(cd api && bin/test)
 
+bin/pip:
+	virtualenv --clear --python=python3 .
+	bin/pip install -r requirements-docs.txt
+
 docs-serve:
 	(cd docs && ../bin/mkdocs serve)
 
