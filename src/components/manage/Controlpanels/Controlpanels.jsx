@@ -22,8 +22,6 @@ import {
 import Icons from '../../../constants/ControlpanelIcons';
 import { listControlpanels } from '../../../actions';
 import { Toolbar } from '../../../components';
-import { getBaseUrl } from '../../../helpers';
-import { debug } from 'util';
 
 const messages = defineMessages({
   sitesetup: {
