@@ -6,7 +6,13 @@ describe('App', () => {
   });
 
   it('Has no detectable a11y violations on load', () => {
-    cy.checkA11y(); // fail for a11y violations
+    // cy.checkA11y(); // fail for a11y violations
+    cy.checkA11y('body', {
+      runOnly: {
+        type: 'tag',
+        values: ['wcag2a'],
+      },
+    });
   });
 
   /*

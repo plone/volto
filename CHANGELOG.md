@@ -6,6 +6,10 @@
 
 ### Changes
 
+### Internal
+
+- Add cypress a11y tests. @timo
+
 ## 3.0.3 (2019-05-13)
 
 ### Internal
