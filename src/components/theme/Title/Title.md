@@ -8,6 +8,6 @@ Output:
 
 ```jsx noeditor
 <div className={'rsg--pre-42'}>
-    <Title title="Plone" />
+  <Title title="Plone" />
 </div>
 ```

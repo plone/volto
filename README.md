@@ -15,22 +15,21 @@ Status](https://api.netlify.com/api/v1/badges/b8310579-ac4f-41f2-a144-9c90fca9b3
 management systems, currently supporting three backend implementations: Plone,
 Guillotina and a NodeJS reference implementation.
 
-[Plone](https://plone.org) is a CMS built on Python with more than 17 years of
-experience.
+[Plone](https://plone.org) is a CMS built on Python with over 17 years of experience.
 
-Plone has very interesting features that are still appealing to
-developers and users alike as customizable content types, hierarchical URL
-object traversing and a complex content workflow powered by a granular
-permissions model that allows you to build from simple websites to complex huge
+Plone has very interesting features that appeal to developers and users alike,
+such as customizable content types, hierarchical URL object traversing and a
+sophisticated content workflow powered by a granular permissions model. This
+allows you to build anything from simple websites to enterprise-grade
 intranets.
 
-Volto exposes all that features and communicates with Plone via its
+Volto exposes all these features and communicates with Plone via its
 mature [REST API](https://github.com/plone/plone.restapi). Volto has the
 ability of being highly themable and customizable.
 
 Volto also supports other APIs like [Guillotina](https://guillotina.io/), a
-Python resource management system, which is inspired on Plone using the same
-basic concepts like traversal, content types and permissions model.
+Python resource management system, inspired by Plone and using the same basic
+concepts like traversal, content types and permissions model.
 
 Last but not least, it also supports a [Volto Nodejs-based backend reference](https://github.com/plone/volto-reference-backend) API implementation that
 demos how other systems could also use Volto to display and create content
@@ -70,6 +69,14 @@ You can bootstrap a ready Docker Plone container with all the dependencies and r
 
 ```shell
 $ docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
+```
+
+or as an alternative if you have experience with Plone and you have all the
+dependencies installed on your system, you can use the supplied buildout in the
+`api` folder by issuing the command:
+
+```shell
+$ make build-backend
 ```
 
 ### Start Volto
@@ -206,114 +213,52 @@ $ yarn dry-release
 
 ### Acceptance testing
 
-```shell
-$ make test-acceptance
-```
-
-Alternatively individual acceptances test case files can be run with a pure Robot Framework virtual environment, assuming that backend and frontend is running
+Volto uses [Cypress](https://www.cypress.io/) for acceptance testing. You can
+trigger the tests by issuing:
 
 ```shell
-$ docker-compose -f api/docker-compose.yml up
-$ yarn && yarn build && RAZZLE_API_PATH=http://localhost:55001/plone yarn start:prod
-
-$ virtualenv robotenv --no-site-packages
-$ robotenv/bin/pip install robotframework robotframework-seleniumlibrary robotframework-webpack
-$ robotenv/bin/pybot tests/test_login.robot
+$ yarn ci:cypress:run
 ```
-Another alternative for developing Robot Framework acceptance tests is to use Jupyter notebook
+
+If you want to run the Guillotina backed ones, you should use:
 
 ```shell
-$ make -C api/jupyter
+$ yarn ci:cypress:run:guillotina
 ```
 
-### Static Code Analysis
+#### Writing new acceptance tests
 
-#### Prettier
-
-Please refer to the [Prettier CLI documentation](https://prettier.io/docs/en/cli.html) for all usages.
-
-##### CLI
-
-Run Prettier through the CLI with this script.
-Run it without any arguments to see the [options](https://prettier.io/docs/en/options.html).
-
-To format a file in-place, use `--write`.
-You may want to consider committing your code before doing that, just in case.
-`prettier [opts] [filename ...]`
-
-In practice, this may look something like:<br />
-`prettier --single-quote --trailing-comma es5 --write "{app,__{tests,mocks}__}/**/*.js"`
-
-##### Using Plugins
-
-Plugins are automatically loaded if you have them installed in your package.json. Prettier plugin package names must start with `@prettier/plugin- or prettier-plugin-` to be registered.
-
-If the plugin is unable to be found automatically, you can load them with:
-
-1.  The CLI, via the --plugin flag:
-
-`prettier --write main.foo --plugin=./foo-plugin`
-
-1.  Or the API, via the plugins field:
-
-```
-  prettier.format("code", {
-    parser: "foo",
-    plugins: ["./foo-plugin"]
-  });
-```
-
-##### Pre commit hook
-
-You can use Prettier with a pre-commit tool.
-
-This can re-format your files that are marked as "staged" via `git add` before you commit.
-
-1.  <b>Lint staged</b> Use Case: Useful for when you need to use other tools on top of Prettier (e.g. ESLint)
-
-Install it along with husky: `yarn add lint-staged husky --dev`
-
-and add this config to your `package.json`:
-
-```json
-{
-  "scripts": {
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,json,css,md}": ["prettier --write", "git add"]
-  }
-}
-```
-
-1.  <b>Pretty-quick</b> Use Case: Great for when you want an entire file formatting on your changed/staged files.
-
-`yarn add pretty-quick husky --dev`
-
-and add this config to your package.json:
-
-```json
-{
-  "scripts": {
-    "precommit": "pretty-quick --staged"
-  }
-}
-```
-
-More Precommit hooks can be found [here](https://prettier.io/docs/en/precommit.html)
-
-### Running Guillotina Tests
-
-First, start up Guillotina:
+For creating new tests, you should run in separate terminal sessions, the
+backend:
 
 ```shell
-docker-compose -f g-api/docker-compose.yml up -d
+$ yarn ci:start-api-plone
 ```
 
-Then, run the tests:
+and run the Volto frontend:
 
 ```shell
-PYTHONPATH=$(pwd)/tests_guillotina env/bin/pybot -v BROWSER:headlesschrome tests_guillotina;
+$ yarn ci:start-frontend
+```
+
+Then on a third terminal session:
+
+```shell
+$ yarn cypress:open
+```
+
+to launch the Cypress visual test runner. Then you can write your tests in
+`cypress/integration` folder. The directory is hot reloaded with your changes
+as you write the tests. For more information on how to write Cypress tests:
+
+    https://docs.cypress.io
+
+#### Running the acceptance tests with Guillotina backend
+
+If you want to use Guillotina as backend to run the tests you should run:
+
+```shell
+$ yarn ci:start-api-plone-guillotina
 ```
 
 ## License

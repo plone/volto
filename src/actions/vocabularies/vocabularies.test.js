@@ -10,7 +10,9 @@ describe('Vocabularies actions', () => {
       expect(action.type).toEqual(GET_VOCABULARY);
       expect(action.vocabulary).toEqual(vocabulary);
       expect(action.request.op).toEqual('get');
-      expect(action.request.path).toEqual(`/@vocabularies/${vocabulary}`);
+      expect(action.request.path).toEqual(
+        `/@vocabularies/${vocabulary}?b_start=0`,
+      );
     });
   });
 });

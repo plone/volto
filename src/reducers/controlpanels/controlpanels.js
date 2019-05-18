@@ -50,6 +50,15 @@ export default function controlpanels(state = initialState, action = {}) {
   switch (action.type) {
     case `${GET_CONTROLPANEL}_PENDING`:
     case `${LIST_CONTROLPANELS}_PENDING`:
+      return {
+        ...state,
+        controlpanel: null,
+        [getRequestKey(action.type)]: {
+          loading: true,
+          loaded: false,
+          error: null,
+        },
+      };
     case `${UPDATE_CONTROLPANEL}_PENDING`:
       return {
         ...state,

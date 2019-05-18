@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "2.1.3",
+  "version": "3.0.3",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -34,7 +34,23 @@
     "test": "razzle test --env=jsdom",
     "test:ci": "CI=true razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js",
+    "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
+    "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
+    "lint": "./node_modules/eslint/bin/eslint.js 'src/**/*.{js,jsx,json}'",
+    "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,json}'",
     "i18n": "NODE_ENV=production node src/i18n.js",
+    "cypress:open": "cypress open",
+    "cypress:run": "CYPRESS_API=plone cypress run",
+    "cypress:run:guillotina": "CYPRESS_API=guillotina cypress run",
+    "cy:install": "cypress install",
+    "cy:test:fixture:setup": "node cypress/support/reset-fixture.js",
+    "cy:test:fixture:teardown": "node cypress/support/reset-fixture.js teardown",
+    "ci:start-api-plone": "make test-acceptance-server",
+    "ci:start-api-guillotina": "make test-acceptance-guillotina",
+    "ci:start-frontend": "RAZZLE_API_PATH=http://localhost:55001/plone yarn build && start-test start:prod http-get://localhost:3000 cypress:run",
+    "ci:start-frontend-guillotina": "RAZZLE_API_PATH=http://localhost:8081/db/container yarn build && start-test start:prod http-get://localhost:3000 cypress:run:guillotina",
+    "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
+    "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
     "release": "release-it"
   },
@@ -92,6 +108,17 @@
       "releaseNotes": "node changelogupdater.js excerpt"
     }
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  },
   "engines": {
     "node": "^8 || ^10"
   },
@@ -113,8 +140,7 @@
     "@babel/preset-stage-0": "7.0.0",
     "autoprefixer": "9.1.5",
     "babel-7-plugin-root-import": "5.4.0",
-    "babel-core": "6.26.3",
-    "babel-loader": "8.0.2",
+    "babel-eslint": "10.0.1",
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-plugin-react-intl": "3.0.1",
     "babel-plugin-root-import": "6.1.0",
@@ -122,6 +148,8 @@
     "connected-react-router": "6.3.2",
     "coveralls": "3.0.2",
     "css-loader": "2.1.1",
+    "cypress": "3.2.0",
+    "cypress-file-upload": "3.1.1",
     "draft-js": "0.10.5",
     "draft-js-block-breakout-plugin": "2.0.1",
     "draft-js-buttons": "2.0.1",
@@ -132,21 +160,30 @@
     "enzyme": "3.6.0",
     "enzyme-adapter-react-15": "1.1.0",
     "enzyme-to-json": "3.3.4",
-    "eslint-config-airbnb": "16.1.0",
+    "eslint": "5.16.0",
+    "eslint-config-airbnb": "17.1.0",
     "eslint-config-prettier": "4.1.0",
+    "eslint-config-react-app": "4.0.1",
     "eslint-import-resolver-alias": "1.1.2",
     "eslint-import-resolver-babel-plugin-root-import": "1.1.1",
+    "eslint-plugin-flowtype": "2.50.1",
+    "eslint-plugin-import": "2.17.2",
+    "eslint-plugin-jsx-a11y": "6.2.1",
     "eslint-plugin-prettier": "3.0.1",
+    "eslint-plugin-react": "7.13.0",
+    "eslint-plugin-react-hooks": "1.6.0",
     "express": "4.16.3",
     "glob": "7.1.3",
     "hamburgers": "1.1.3",
     "history": "4.9.0",
+    "husky": "2.2.0",
     "jest-css-modules": "1.1.0",
     "jest-file": "1.0.0",
     "jsonwebtoken": "8.3.0",
     "jwt-decode": "2.2.0",
     "less": "3.9.0",
     "less-loader": "4.1.0",
+    "lint-staged": "8.1.6",
     "locale": "0.1.0",
     "lodash": "4.17.11",
     "lodash-move": "1.1.1",
@@ -178,6 +215,8 @@
     "react-redux": "7.0.2",
     "react-router-config": "5.0.0",
     "react-router-dom": "5.0.0",
+    "react-select": "2.4.2",
+    "react-select-async-paginate": "0.2.9",
     "react-share": "2.3.1",
     "react-side-effect": "1.1.5",
     "react-simple-code-editor": "0.7.1",
@@ -194,6 +233,7 @@
     "semantic-ui-react": "0.84.0",
     "semver": "5.6.0",
     "serialize-javascript": "1.5.0",
+    "start-server-and-test": "1.7.13",
     "style-loader": "0.23.0",
     "stylelint": "9.2.1",
     "stylelint-config-idiomatic-order": "6.2.0",
@@ -202,6 +242,8 @@
     "svg-loader": "0.0.2",
     "svgo": "1.0.5",
     "svgo-loader": "2.1.0",
-    "tlds": "1.203.1"
-  }
+    "tlds": "1.203.1",
+    "xmlrpc": "1.3.2"
+  },
+  "devDependencies": {}
 }
