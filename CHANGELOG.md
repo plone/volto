@@ -1,8 +1,167 @@
 # Change Log
 
-## 1.6.2 (unreleased)
+## 3.0.4 (unreleased)
 
 ### Added
+
+### Changes
+
+## 3.0.3 (2019-05-13)
+
+### Internal
+
+- Use eslint-config-react-app instead of airbnb + custom config for linting @timo
+- More eslint fixes for avoiding parsing errors on decorators @sneridagh
+- Add 'prettier' command to check if there are any missing prettier fixes @timo
+- Run 'prettier' on Travis and fail the build if there are missing prettier fixes @timo
+- Add 'prettier:fix' command to fix all missing prettier fixes at once @timo
+- Run 'prettier:fix' once and commit all fixes @timo
+- Fix the most important violations reported with the new config @sneridagh
+
+## 3.0.2 (2019-05-10)
+
+### Changes
+
+- Re-add babel-eslint because of the decorators @sneridagh
+- Upgrade eslint-config-airbnb @sneridagh
+
+## 3.0.1 (2019-05-10)
+
+### Changes
+
+- Small fix for a missplacement of the hooks plugin in .eslintrc @sneridagh
+
+## 3.0.0 (2019-05-10)
+
+### Added
+
+- Upgrade to Razzle 3 @sneridagh
+- contact-form view @cekk
+- Add cypress setup for both Plone and Guillotina @sneridagh
+- Update SelectWidget and ArrayWidget and related vocabularies actions/reducers
+  for the breaking changes in plone.restapi 4.0.0 @davisagli @sneridagh
+- Expose request on the promise returned by the api helper @csenger
+
+### Changes
+
+- Several dependencies upgraded @sneridagh
+- Fix image of Hero Tile for images in private containers @sneridagh
+- Remove enforcement of JSdocs in Volto ESlint rules @sneridagh
+- Remove RobotFramework tests in favor of the cypress ones @sneridagh
+- Updated docs to highlight some code changes @pigeonflight
+
+## 2.1.3 (2019-04-17)
+
+### Changes
+
+- Update api folder to Plone 5.2 and Python3, update the whole story @sneridagh
+
+## 2.1.2 (2019-04-16)
+
+### Changes
+
+- Fixed issue where it was not possible to click into the title tile above the
+  small red bar at the beginning of the line in some browsers. @jackahl
+- Docs content editing. @esteele
+- Fix the folder_contents view component bby preventing the SearchableText be
+  empty if you haven't typed anything in the filter fields yet. This is caused
+  by the new ZCatalog in Zope 4. @sneridagh
+
+## 2.1.1 (2019-04-04)
+
+### Changes
+
+- Improved search action, now it supports passing directly the arrayed values
+  and it converts it to Plone's query syntax @sneridagh
+
+- Added depth argument to the navigation action, to match the @navigation
+  endpoint feature @sneridagh
+
+## 2.1.0 (2019-04-02)
+
+### Added
+
+- Added specific `onMutateTile` for solely use of the Text tile when it mutates
+  to another type of tile. This prevents onChangeTile do one thing that it was
+  not designed lifting responsibilities from it. @sneridagh
+- Added `detached` mode for the text tile so it will be able to render outside
+  the Volto editor without all the tile mutation machinery and the keyboard
+  handlers. @sneridagh
+
+### Changes
+
+- Small improvements to the internal tile api @sneridagh
+- Fix for tiles having dialog box `ENTER` key captured by global tile onKeyDown
+  handler, then creating a tile instead of the intended behavior. @sneridagh
+- Fix small CSS and import issues @sneridagh
+- Fix Invalid Redraft object warning on console @sneridagh
+
+## 2.0.0 (2019-03-25)
+
+### Added
+
+- Tiles refactor, move keyboard listeners and Trash icon to Tiles HOC
+  @sneridagh
+- Fix tiles navigation via cursors on all available tiles @sneridagh
+- Fix UX on HTML tile when navigating via cursors @sneridagh
+- Add ability to add new text tile via `Enter` key @sneridagh
+- Add create new text tile at the bottom on adding tiles @sneridagh
+- Improve general UX on tiles creation and focusing on creation @sneridagh
+
+## 1.10.0 (2019-03-25)
+
+### Added
+
+- Fix npm package generation @sneridagh
+
+## 1.9.0 (2019-03-25)
+
+### Added
+
+- Upgraded to React 16.8 (the one with hooks) @sneridagh
+- Upgraded to the recent (at last) released react-redux 7.0beta.0, this release
+  solves the performance issues with the new React context and leave them ready
+  for the upcoming useRedux hook. This release supports the latest React 16.8.
+  @sneridagh
+- Upgraded to the latest Router and react-router-config and other required
+  upgrades. @sneridagh
+- Upgraded to latest redux-connect @sneridagh
+- Upgraded to latest razzle @sneridagh
+
+## 1.8.3 (2019-03-21)
+
+### Changes
+
+- Several CSS fixes @sneridagh
+- Add several icons @sneridagh
+
+## 1.8.2 (2019-03-21)
+
+### Changes
+
+- Improve README @svx @fredvd
+- Pretty Pastanaga UI .overrides stylesheets @sneridagh
+
+## 1.8.1 (2019-03-19)
+
+### Changes
+
+- Fix hero tile View styling, add definitive icon @sneridagh
+- Fix the trash icon on the tiles that was displaced by other change @sneridagh
+
+## 1.8.0 (2019-03-15)
+
+### Added
+
+- Hero Tile @nileshgulia1 @sneridagh
+
+### Changes
+
+## 1.7.0 (2019-03-03)
+
+### Added
+
+- Add image-zooming functionality @nileshgulia1
 
 ### Changes
 
@@ -21,7 +180,7 @@
 - Set image width in Volto editor to 50% for images that float left/right @timo
 - Ability to navigate through the existing tiles with the cursors. @sneridagh
 - HTML Tile for Volto Editor with preview and code prettifier
-   @ajayns @nileshgulia1 @sneridagh
+  @ajayns @nileshgulia1 @sneridagh
 - Add error log in the SSR console @sneridagh
 - Add SSR helper to get resources (images/files) from the server using the API
   headers. This fixes the missing images on non published resources while editing @sneridagh
@@ -74,13 +233,12 @@
 - Fix CSS sourcemaps by make postcss stage to accept other stages sourcemaps
   @sneridagh
 - Add IE11 fixes by pinning some packages, added documentation in `docs` about
-  it and how to deal with it. However, compatibility is *NOT* guaranteed in
+  it and how to deal with it. However, compatibility is _NOT_ guaranteed in
   future Volto releases @sneridagh
 - Fix Header scroll in Firefox in case that there are lot of items in the nav
   @sneridagh
 - Add supported browsers in README @sneridagh
 - Default tile position to center for all the existing tiles @sneridagh
-
 
 ## 1.4.0 (2019-02-15)
 
@@ -100,21 +258,21 @@
 
 ### Added
 
- - Improve the definitions of the view/edit tiles components for better
-   extensibility. This might be a BREAKING change if you have already used the
-   old way to extend/add more tiles, please update to the new one @sneridagh
+- Improve the definitions of the view/edit tiles components for better
+  extensibility. This might be a BREAKING change if you have already used the
+  old way to extend/add more tiles, please update to the new one @sneridagh
 
 ### Changes
 
- - Fix Travis unit testing false green @sneridagh
- - Fix bad Proptype for location in ScrollToTop component @sneridagh
+- Fix Travis unit testing false green @sneridagh
+- Fix bad Proptype for location in ScrollToTop component @sneridagh
 
 ## 1.2.1 (2019-02-04)
 
 ### Changes
 
- - Bring back the scroll to top on every route change feature @sneridagh
- - Loosen node version, allow LTS (v8 and v10) @sneridagh
+- Bring back the scroll to top on every route change feature @sneridagh
+- Loosen node version, allow LTS (v8 and v10) @sneridagh
 
 ## 1.2.0 (2019-01-22)
 

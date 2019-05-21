@@ -8,9 +8,11 @@ import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 import { tiles } from '~/config';
+import { Button } from 'semantic-ui-react';
 
 import Icon from '../../../../components/theme/Icon/Icon';
 import dragSVG from '../../../../icons/drag.svg';
+import trashSVG from '../../../../icons/delete.svg';
 
 const itemSource = {
   beginDrag(props) {
@@ -100,6 +102,7 @@ export default class Edit extends Component {
     index: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
     onMoveTile: PropTypes.func.isRequired,
+    onDeleteTile: PropTypes.func.isRequired,
   };
 
   /**
@@ -109,6 +112,7 @@ export default class Edit extends Component {
    */
   render() {
     const {
+      id,
       type,
       selected,
       connectDragSource,
@@ -152,6 +156,16 @@ export default class Edit extends Component {
               </div>,
             )}
           {Tile !== null ? <Tile {...this.props} /> : <div />}
+          {selected && (
+            <Button
+              icon
+              basic
+              onClick={() => this.props.onDeleteTile(id)}
+              className="delete-button"
+            >
+              <Icon name={trashSVG} size="18px" />
+            </Button>
+          )}
         </div>,
       ),
     );

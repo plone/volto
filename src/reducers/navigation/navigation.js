@@ -16,6 +16,21 @@ const initialState = {
 };
 
 /**
+ * Recursive function that process the items returned by the navigation
+ * endpoint
+ * @function getRecursiveItems
+ * @param {array} items The items inside a navigation response.
+ * @returns {*} The navigation items object (recursive)
+ */
+function getRecursiveItems(items) {
+  return map(items, item => ({
+    title: item.title,
+    url: item['@id'].replace(settings.apiPath, ''),
+    ...(item.items && { items: getRecursiveItems(item.items) }),
+  }));
+}
+
+/**
  * Navigation reducer.
  * @function navigation
  * @param {Object} state Current state.
@@ -35,10 +50,7 @@ export default function navigation(state = initialState, action = {}) {
       return {
         ...state,
         error: null,
-        items: map(action.result.items, item => ({
-          title: item.title,
-          url: item['@id'].replace(settings.apiPath, ''),
-        })),
+        items: getRecursiveItems(action.result.items),
         loaded: true,
         loading: false,
       };

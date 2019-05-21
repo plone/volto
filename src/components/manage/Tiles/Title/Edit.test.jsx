@@ -22,9 +22,14 @@ test('renders an edit title tile component', () => {
         properties={{ title: 'My Title' }}
         selected={false}
         tile="1234"
+        onAddTile={() => {}}
         onChangeField={() => {}}
         onSelectTile={() => {}}
         onDeleteTile={() => {}}
+        onFocusPreviousTile={() => {}}
+        onFocusNextTile={() => {}}
+        handleKeyDown={() => {}}
+        index={1}
       />
     </Provider>,
   );

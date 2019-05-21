@@ -26,9 +26,15 @@ test('renders an edit map tile component', () => {
         }}
         selected={false}
         tile="1234"
+        content={{}}
+        pathname="/news"
         onChangeTile={() => {}}
         onSelectTile={() => {}}
         onDeleteTile={() => {}}
+        onFocusPreviousTile={() => {}}
+        onFocusNextTile={() => {}}
+        handleKeyDown={() => {}}
+        index={1}
       />
     </Provider>,
   );

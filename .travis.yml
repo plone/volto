@@ -1,75 +1,70 @@
 language: python
+dist: xenial
 matrix:
   include:
-    - name: 'Plone Tests'
-      python: 2.7.14
-      env: TEST_SUITE=plone
+    - name: 'Plone'
+      python: 3.7
+      env: TEST_SUITE=plone ZSERVER_PORT=55001
     - name: 'Guillotina Tests'
       python: 3.7
-      dist: xenial
       env: TEST_SUITE=guillotina
     - name: 'Unit Tests'
       env: TEST_SUITE=unit
 cache:
   pip: true
+  yarn: true
   directories:
-    - node_modules
+    - $HOME/buildout-cache
+    - ~/.cache
 sudo: required
 services:
   - docker
 addons:
   apt:
-    sources:
-      - google-chrome
     packages:
-      - google-chrome-stable
+      - xvfb
+      - libgtk2.0-0
+      - libnotify-dev
+      - libgconf-2-4
+      - libnss3
+      - libxss1
+      - libasound2
 before_install:
   - nvm install 10.14.2;
-  - docker build -t plone/plone-react:testing .
-  - if [ "$TEST_SUITE" != "unit" ]; then
-    mkdir webdriver;
-    wget https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux64.tar.gz;
-    tar -xzf geckodriver-v0.20.0-linux64.tar.gz -C webdriver;
-    wget https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip;
-    unzip chromedriver_linux64.zip -d webdriver;
-    export PATH=$PATH:$(pwd)/webdriver;
-    npm install -g surge;
+  - if [ "$TEST_SUITE" != "plone" ]; then
+    docker build -t plone/volto:testing .;
     fi
+  - if [ "$TEST_SUITE" == "plone" ]; then
+    mkdir -p $HOME/buildout-cache/{eggs,downloads};
+    mkdir $HOME/.buildout;
+    echo "[buildout]" > $HOME/.buildout/default.cfg;
+    echo "download-cache = $HOME/buildout-cache/downloads" >> $HOME/.buildout/default.cfg;
+    echo "eggs-directory = $HOME/buildout-cache/eggs" >> $HOME/.buildout/default.cfg;
+    fi
+
 install:
   - if [ "$TEST_SUITE" == "plone" ]; then
-    virtualenv env --python=$(which python) --no-site-packages;
-    env/bin/pip install zc.recipe.egg==2.0.4 --no-cache-dir;
-    env/bin/pip install -r api/docker/requirements.txt;
-    env/bin/pip install -r requirements-tests.txt;
-    env/bin/pip install -U https://github.com/zopefoundation/z3c.autoinclude/archive/pip.tar.gz#egg=z3c.autoinclude;
+    make build-backend;
     fi
-  - pip install -r requirements-tests.txt;
-  - yarn
-  - yarn build
-before_script:
-  - 'export DISPLAY=:99.0'
-  - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-  - sleep 3
+  - yarn install --frozen-lockfile
+  - yarn cy:install
 script:
+  - yarn run prettier
+  - yarn run lint
   - if [ "$TEST_SUITE" == "unit" ]; then
-    docker run --name coverage_front -it --rm -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" plone/plone-react:testing -- yarn test:ci;
+    docker run --name coverage_front -it --rm -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" plone/volto:testing -- yarn test:ci;
     fi
   - if [ "$TEST_SUITE" == "guillotina" ]; then
-    PYTHONPATH=$(pwd)/tests pybot -v BROWSER:headlesschrome -v API:Guillotina tests;
+    yarn ci:cypress:run:guillotina;
     fi
   - if [ "$TEST_SUITE" == "plone" ]; then
-    PYTHONPATH=$(pwd)/tests env/bin/pybot -v BROWSER:headlesschrome -v API:Plone tests;
+    yarn ci:cypress:run;
     fi
-after_script:
-  - mkdir robot-results
-  - mv log.html output.xml report.html selenium-screenshot-*.png robot-results
-  - ls -al robot-results
-  - surge robot-results plone-react.surge.sh
 after_success:
   - if [ "$TEST_SUITE" == "guillotina" ]; then
     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
-    docker tag plone/plone-react:testing plone/plone-react:$TRAVIS_BRANCH.$TRAVIS_COMMIT;
-    docker push plone/plone-react:$TRAVIS_BRANCH.$TRAVIS_COMMIT;
-    docker tag plone/plone-react:testing plone/plone-react:$TRAVIS_BRANCH.latest;
-    docker push plone/plone-react:$TRAVIS_BRANCH.latest;
+    docker tag plone/volto:testing plone/volto:$TRAVIS_BRANCH.$TRAVIS_COMMIT;
+    docker push plone/volto:$TRAVIS_BRANCH.$TRAVIS_COMMIT;
+    docker tag plone/volto:testing plone/volto:$TRAVIS_BRANCH.latest;
+    docker push plone/volto:$TRAVIS_BRANCH.latest;
     fi

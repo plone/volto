@@ -54,6 +54,11 @@ $ curl -o- -L https://yarnpkg.com/install.sh | bash
 $ yarn -v
 ```
 
+!!! tip Alternative methods
+    You can install `yarn` using several approaches too, depending on the
+    platform you are on. Take a look at the original `yarn`
+    [documentation](https://yarnpkg.com/lang/en/docs/install) for a list of them.
+
 ## Docker for Mac
 
 In order to run the API backend, it's better to start running it in a container.
@@ -96,6 +101,15 @@ Use the `create-volto-app`.
 ```
 $ npm -g i @plone/create-volto-app
 ```
+
+!!! tip Installing it using npx
+    Optionally, you can also use `npx` utility to install `create-volto-app`
+    without having to install it globally. On the other hand, in order to do it, you
+    have to install `npx` globally. The advantage is that you don't have to
+    upgrade `create-volto-app` each time you want to use it, because `npx` does
+    it for you:
+
+    `npx @plone/create-volto-app myvoltoapp`
 
 2. Create a new Volto app using the recently added command, providing the name
    of the new app (folder) to be created.

@@ -1,7 +1,0 @@
-robotframework
-robotframework-debuglibrary
-robotframework-requests
-robotframework-seleniumlibrary
-robotframework-webpack
-robotframework-pabot
-robotframework-faker

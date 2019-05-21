@@ -17,9 +17,7 @@ import {
 import cx from 'classnames';
 
 import { Icon } from '../../../../components';
-import trashSVG from '../../../../icons/delete.svg';
 import clearSVG from '../../../../icons/clear.svg';
-import imageSVG from '../../../../icons/image.svg';
 import imageLeftSVG from '../../../../icons/image-left.svg';
 import imageRightSVG from '../../../../icons/image-right.svg';
 import imageFitSVG from '../../../../icons/image-fit.svg';
@@ -57,6 +55,7 @@ export default class Edit extends Component {
   static propTypes = {
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     content: PropTypes.objectOf(PropTypes.any).isRequired,
     request: PropTypes.shape({
@@ -69,6 +68,7 @@ export default class Edit extends Component {
     onDeleteTile: PropTypes.func.isRequired,
     onFocusPreviousTile: PropTypes.func.isRequired,
     onFocusNextTile: PropTypes.func.isRequired,
+    handleKeyDown: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
@@ -87,6 +87,19 @@ export default class Edit extends Component {
       url: '',
       error: null,
     };
+    this.onSubmitUrl = this.onSubmitUrl.bind(this);
+    this.onKeyDownVariantMenuForm = this.onKeyDownVariantMenuForm.bind(this);
+  }
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    if (this.props.selected) {
+      this.node.focus();
+    }
   }
 
   /**
@@ -145,13 +158,32 @@ export default class Edit extends Component {
    * @param {string} e event
    * @returns {undefined}
    */
-  onSubmitUrl = e => {
-    e.preventDefault();
+  onSubmitUrl() {
     this.props.onChangeTile(this.props.tile, {
       ...this.props.data,
       url: this.state.url,
     });
-  };
+  }
+
+  /**
+   * Keydown handler on Variant Menu Form
+   * This is required since the ENTER key is already mapped to a onKeyDown
+   * event and needs to be overriden with a child onKeyDown.
+   * @method onKeyDownVariantMenuForm
+   * @param {Object} e Event object
+   * @returns {undefined}
+   */
+  onKeyDownVariantMenuForm(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      e.stopPropagation();
+      this.onSubmitUrl();
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      e.stopPropagation();
+      // TODO: Do something on ESC key
+    }
+  }
 
   /**
    * get getSrc handler
@@ -172,23 +204,6 @@ export default class Edit extends Component {
   }
 
   /**
-   * handleKeyDown
-   * @method handleKeyDown
-   * @param {event} e Event
-   * @returns {undefined}
-   */
-  handleKeyDown = e => {
-    if (e.key === 'ArrowUp') {
-      this.props.onFocusPreviousTile(this.props.tile, this.node);
-      e.preventDefault();
-    }
-    if (e.key === 'ArrowDown') {
-      this.props.onFocusNextTile(this.props.tile, this.node);
-      e.preventDefault();
-    }
-  };
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -196,6 +211,7 @@ export default class Edit extends Component {
   render() {
     return (
       <div
+        role="presentation"
         onClick={() => this.props.onSelectTile(this.props.tile)}
         className={cx(
           'tile maps align',
@@ -206,90 +222,96 @@ export default class Edit extends Component {
           this.props.data.align,
         )}
         tabIndex={0}
-        onKeyDown={this.handleKeyDown}
+        onKeyDown={e =>
+          this.props.handleKeyDown(
+            e,
+            this.props.index,
+            this.props.tile,
+            this.node,
+          )
+        }
         ref={node => {
           this.node = node;
         }}
       >
-        {this.props.selected &&
-          !!this.props.data.url && (
-            <div className="toolbar">
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={this.onAlignTile.bind(this, 'left')}
-                  active={this.props.data.align === 'left'}
-                >
-                  <Icon name={imageLeftSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={this.onAlignTile.bind(this, 'right')}
-                  active={this.props.data.align === 'right'}
-                >
-                  <Icon name={imageRightSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={this.onAlignTile.bind(this, 'center')}
-                  active={
-                    this.props.data.align === 'center' || !this.props.data.align
-                  }
-                >
-                  <Icon name={imageFitSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={this.onAlignTile.bind(this, 'full')}
-                  active={this.props.data.align === 'full'}
-                >
-                  <Icon name={imageFullSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              <div className="separator" />
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={() =>
-                    this.props.onChangeTile(this.props.tile, {
-                      ...this.props.data,
-                      url: '',
-                    })
-                  }
-                >
-                  <Icon name={clearSVG} size="24px" color="#e40166" />
-                </Button>
-              </Button.Group>
-            </div>
-          )}
-        {this.props.selected &&
-          !this.props.data.url && (
-            <div className="toolbar">
-              <Icon name={globeSVG} size="24px" />
-              <form onSubmit={e => this.onSubmitUrl(e)}>
-                <Input
-                  onChange={this.onChangeUrl}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.ImageTileInputPlaceholder,
-                  )}
-                />
-              </form>
-            </div>
-          )}
+        {this.props.selected && !!this.props.data.url && (
+          <div className="toolbar">
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() => this.onAlignTile('left')}
+                active={this.props.data.align === 'left'}
+              >
+                <Icon name={imageLeftSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() => this.onAlignTile('right')}
+                active={this.props.data.align === 'right'}
+              >
+                <Icon name={imageRightSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() => this.onAlignTile('center')}
+                active={
+                  this.props.data.align === 'center' || !this.props.data.align
+                }
+              >
+                <Icon name={imageFitSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() => this.onAlignTile('full')}
+                active={this.props.data.align === 'full'}
+              >
+                <Icon name={imageFullSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <div className="separator" />
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() =>
+                  this.props.onChangeTile(this.props.tile, {
+                    ...this.props.data,
+                    url: '',
+                  })
+                }
+              >
+                <Icon name={clearSVG} size="24px" color="#e40166" />
+              </Button>
+            </Button.Group>
+          </div>
+        )}
+        {this.props.selected && !this.props.data.url && (
+          <div className="toolbar">
+            <Icon name={globeSVG} size="24px" />
+            <form onKeyDown={this.onKeyDownVariantMenuForm}>
+              <Input
+                onChange={this.onChangeUrl}
+                placeholder={this.props.intl.formatMessage(
+                  messages.ImageTileInputPlaceholder,
+                )}
+              />
+            </form>
+          </div>
+        )}
         {this.props.data.url ? (
           <div>
             <iframe
+              title="Google Maps Embedded Tile"
               src={this.props.data.url}
               className="google-map"
               frameBorder="0"
@@ -314,16 +336,6 @@ export default class Edit extends Component {
               )}
             </Message>
           </div>
-        )}
-        {this.props.selected && (
-          <Button
-            icon
-            basic
-            onClick={() => this.props.onDeleteTile(this.props.tile)}
-            className="tile-delete-button"
-          >
-            <Icon name={trashSVG} size="18px" />
-          </Button>
         )}
       </div>
     );

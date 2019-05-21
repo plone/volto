@@ -13,7 +13,10 @@ import { settings } from '~/config';
  * @class View
  * @extends Component
  */
-const View = ({ data }) => redraft(data.text, settings.ToHTMLRenderers, settings.ToHTMLOptions);
+const View = ({ data }) =>
+  data.text
+    ? redraft(data.text, settings.ToHTMLRenderers, settings.ToHTMLOptions)
+    : '';
 
 /**
  * Property types.
