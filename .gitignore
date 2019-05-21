@@ -31,6 +31,10 @@ api/.Python
 api/include
 api/lib
 api/pip-selfcheck.json
+api/Makefile
+api/plone-4.3.x.cfg
+api/plone-5.1.x.cfg
+api/travis.cfg
 /bin
 /lib
 include
