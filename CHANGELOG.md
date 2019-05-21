@@ -4,6 +4,7 @@
 
 ### Added
 
+- Add Backend scripts to .gitignore @nileshgulia1
 ### Changes
 
 ## 3.0.3 (2019-05-13)
