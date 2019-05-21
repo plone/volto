@@ -4,6 +4,8 @@
 
 ### Added
 
+- Make Login Route accessible from anywhere in path url @nileshgulia1
+
 ### Changes
 
 ## 3.0.3 (2019-05-13)
