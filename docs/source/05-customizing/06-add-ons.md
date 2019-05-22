@@ -141,6 +141,8 @@ Set them up in the `customizationPaths` key in the `package.json` file on your
 Volto project.
 
 ```json
-"customizationPaths": ["src/customizations/", "src/addons/@kitconcept/volto-tile-slider/src/customizations"],
+"customizationPaths": ["src/customizations/", "src/addons/@plone/my-volto-addon/src/customizations/"],
 ```
 
+!!! tip
+    Do not forget the `/` at the end of both
