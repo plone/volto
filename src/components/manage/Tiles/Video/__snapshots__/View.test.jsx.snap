@@ -2,7 +2,7 @@
 
 exports[`renders a view video component 1`] = `
 <p
-  className="tile image align center"
+  className="tile video align center"
 >
   <div
     className="ui active embed"

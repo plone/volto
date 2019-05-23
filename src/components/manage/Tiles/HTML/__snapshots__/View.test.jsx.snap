@@ -2,6 +2,7 @@
 
 exports[`renders a view html component 1`] = `
 <div
+  className="tile html"
   dangerouslySetInnerHTML={
     Object {
       "__html": "<h1></h1>",
