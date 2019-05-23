@@ -1,6 +1,6 @@
 /**
- * Edit summary box tile.
- * @module components/manage/Tiles/SummaryBox/Edit
+ * Edit listing tile.
+ * @module components/manage/Tiles/Listing/Edit
  */
 
 import React, { Component } from 'react';
@@ -204,7 +204,7 @@ export default class Edit extends Component {
       <div
         role="presentation"
         onClick={() => onSelectTile(tile)}
-        className={cx('tile summary-box', {
+        className={cx('tile listing', {
           selected,
         })}
         tabIndex={0}

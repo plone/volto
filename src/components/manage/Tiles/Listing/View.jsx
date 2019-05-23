@@ -1,6 +1,6 @@
 /**
- * View summary box tile.
- * @module components/manage/Tiles/SummaryBox/View
+ * View listing tile.
+ * @module components/manage/Tiles/Listing/View
  */
 
 import React, { Component } from 'react';
@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import { getContent, resetContent } from '../../../../actions';
 
 /**
- * Summary box view component.
+ * Listing view component.
  * @class View
  * @extends Component
  */
@@ -74,7 +74,7 @@ export class View extends Component {
       const image = get(data, 'image.scales.mini.download', undefined);
 
       return (
-        <Item.Group className="summary-box-item">
+        <Item.Group className="listing-item">
           <Item>
             {image && (
               <Link to={selectedItem} className="ui small image">

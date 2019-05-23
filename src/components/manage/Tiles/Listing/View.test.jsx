@@ -25,13 +25,13 @@ const props = {
           },
         },
         title: 'Test',
-        description: 'Summary',
+        description: 'Listing',
       },
     },
   },
 };
 
-test('renders a summary box view component', () => {
+test('renders a listing view component', () => {
   const component = renderer.create(
     <MemoryRouter>
       <View {...props} />

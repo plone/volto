@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a summary box view component 1`] = `
+exports[`renders a listing view component 1`] = `
 <div
-  className="ui items summary-box-item"
+  className="ui items listing-item"
 >
   <div
     className="item"
@@ -34,7 +34,7 @@ exports[`renders a summary box view component 1`] = `
       <div
         className="description"
       >
-        Summary
+        Listing
       </div>
     </div>
   </div>
