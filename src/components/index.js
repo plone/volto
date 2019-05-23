@@ -91,20 +91,22 @@ export WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget'
 export Workflow from '@plone/volto/components/manage/Workflow/Workflow';
 
 export EditDescriptionTile from '@plone/volto/components/manage/Tiles/Description/Edit';
-export EditTitleTile from '@plone/volto/components/manage/Tiles/Title/Edit';
-export EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
-export EditImageTile from '@plone/volto/components/manage/Tiles/Image/Edit';
-export EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
-export EditTile from '@plone/volto/components/manage/Tiles/Tile/Edit';
 export EditHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImageLeft/Edit';
-export ViewHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImageLeft/View';
-export EditMapTile from '@plone/volto/components/manage/Tiles/Maps/Edit';
 export EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
+export EditImageTile from '@plone/volto/components/manage/Tiles/Image/Edit';
+export EditListingTile from '@plone/volto/components/manage/Tiles/Listing/Edit';
+export EditMapTile from '@plone/volto/components/manage/Tiles/Maps/Edit';
+export EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
+export EditTile from '@plone/volto/components/manage/Tiles/Tile/Edit';
+export EditTitleTile from '@plone/volto/components/manage/Tiles/Title/Edit';
+export EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
+export ViewHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImageLeft/View';
 
 export ViewDescriptionTile from '@plone/volto/components/manage/Tiles/Description/View';
-export ViewTitleTile from '@plone/volto/components/manage/Tiles/Title/View';
-export ViewTextTile from '@plone/volto/components/manage/Tiles/Text/View';
-export ViewImageTile from '@plone/volto/components/manage/Tiles/Image/View';
-export ViewVideoTile from '@plone/volto/components/manage/Tiles/Video/View';
-export ViewMapTile from '@plone/volto/components/manage/Tiles/Maps/View';
 export ViewHTMLTile from '@plone/volto/components/manage/Tiles/HTML/View';
+export ViewImageTile from '@plone/volto/components/manage/Tiles/Image/View';
+export ViewListingTile from '@plone/volto/components/manage/Tiles/Listing/View';
+export ViewMapTile from '@plone/volto/components/manage/Tiles/Maps/View';
+export ViewTextTile from '@plone/volto/components/manage/Tiles/Text/View';
+export ViewTitleTile from '@plone/volto/components/manage/Tiles/Title/View';
+export ViewVideoTile from '@plone/volto/components/manage/Tiles/Video/View';
