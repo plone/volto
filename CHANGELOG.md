@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix basic tiles classes @rodfersou
+
 ## 3.0.3 (2019-05-13)
 
 ### Internal
