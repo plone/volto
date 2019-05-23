@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Create listing tile @rodfersou
+
 ## 3.0.3 (2019-05-13)
 
 ### Internal
