@@ -34,6 +34,7 @@ export const widgetMapping = {
     array: ArrayWidget,
     object: FileWidget,
     datetime: DatetimeWidget,
+    password: PasswordWidget,
   },
 };
 
