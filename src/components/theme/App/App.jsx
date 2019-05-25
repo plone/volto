@@ -11,10 +11,17 @@ import { Segment } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import Raven from 'raven-js';
 import { renderRoutes } from 'react-router-config';
+import { Slide, ToastContainer, toast } from 'react-toastify';
 
 import Error from '../../../error';
 
-import { Breadcrumbs, Footer, Header, Messages } from '../../../components';
+import {
+  Breadcrumbs,
+  Footer,
+  Header,
+  Icon,
+  Messages,
+} from '../../../components';
 import { BodyClass, getBaseUrl, getView } from '../../../helpers';
 import {
   getBreadcrumbs,
@@ -24,6 +31,8 @@ import {
   getWorkflow,
   purgeMessages,
 } from '../../../actions';
+
+import clearSVG from '../../../icons/clear.svg';
 
 @connect(
   (state, props) => ({ pathname: props.location.pathname }),
@@ -101,6 +110,7 @@ export class AppComponent extends Component {
   render() {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
+    toast.info('hey');
 
     return (
       <Fragment>
@@ -121,6 +131,13 @@ export class AppComponent extends Component {
           </main>
         </Segment>
         <Footer />
+        <ToastContainer
+          position={toast.POSITION.BOTTOM_CENTER}
+          hideProgressBar
+          autoClose={false}
+          transition={Slide}
+          closeButton={<Icon name={clearSVG} size="18px" />}
+        />
       </Fragment>
     );
   }

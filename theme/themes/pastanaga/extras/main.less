@@ -9,6 +9,7 @@
 
 // Extras (third party libs)
 @import (less) '~hamburgers/dist/hamburgers.css';
+@import (less) '~react-toastify/dist/ReactToastify.css';
 
 // General Styling
 
@@ -130,6 +131,26 @@ body {
 // Comments
 .comments {
   margin-top: 20px;
+}
+
+// Toasts
+.Toastify__toast-container {
+  color: inherit;
+}
+
+.Toastify__toast-container--bottom-center {
+  bottom: 0;
+  padding: 0;
+
+  .Toastify__toast {
+    min-height: 60px;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  .Toastify__toast--info {
+    background: #aee2f2;
+  }
 }
 
 @import 'utils';
