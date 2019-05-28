@@ -7,7 +7,7 @@ const { find, keys, map, concat, reduce, zipObject } = require('lodash');
 const glob = require('glob').sync;
 const fs = require('fs');
 const Pofile = require('pofile');
-const babel = require('babel-core');
+const babel = require('@babel/core');
 
 /**
  * Extract messages into separate JSON files
@@ -22,6 +22,16 @@ function extractMessages() {
       }
     });
   });
+  // If we are in a Volto project, add Volto for build the i18n incrementally
+  if (fs.existsSync('node_modules/@plone/volto')) {
+    map(glob('node_modules/@plone/volto/src/**/*.js?(x)'), filename => {
+      babel.transformFileSync(filename, {}, err => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    });
+  }
 }
 
 /**
@@ -37,6 +47,14 @@ function getMessages() {
         map(JSON.parse(fs.readFileSync(filename, 'utf8')), message => ({
           ...message,
           filename: filename.match(/build\/messages\/src\/(.*).json$/)[1],
+        })),
+      ),
+      ...map(glob('build/messages/node_modules/**/*.json'), filename =>
+        map(JSON.parse(fs.readFileSync(filename, 'utf8')), message => ({
+          ...message,
+          filename: filename.match(
+            /build\/messages\/node_modules\/(.*).json$/,
+          )[1],
         })),
       ),
     ),

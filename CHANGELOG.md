@@ -7,6 +7,7 @@
 ### Changes
 
 - Fix order of arguments when sending the contact form @csenger
+- Fix i18n script to update local .po files for projects @sneridagh
 
 ## 3.0.3 (2019-05-13)
 
