@@ -139,10 +139,10 @@ export class ContactForm extends Component {
    */
   onSubmit(data) {
     this.props.emailNotification(
-      data.name,
       data.from,
-      data.subject,
       data.message,
+      data.name,
+      data.subject,
     );
   }
 
