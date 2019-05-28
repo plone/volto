@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix order of arguments when sending the contact form @csenger
+
 ## 3.0.3 (2019-05-13)
 
 ### Internal
