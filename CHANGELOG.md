@@ -7,6 +7,7 @@
 ### Changes
 
 - Fix order of arguments when sending the contact form @csenger
+- Fix @babel/core import on i18n script @sneridagh
 
 ## 3.0.3 (2019-05-13)
 
