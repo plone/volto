@@ -7,7 +7,7 @@ const { find, keys, map, concat, reduce, zipObject } = require('lodash');
 const glob = require('glob').sync;
 const fs = require('fs');
 const Pofile = require('pofile');
-const babel = require('babel-core');
+const babel = require('@babel/core');
 
 /**
  * Extract messages into separate JSON files
