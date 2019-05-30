@@ -4,7 +4,8 @@
 
 ### Added
 
-### Changes
+- Upgrade to react-redux 7.1.0-RC that includes the new official Redux hooks
+  @sneridagh
 
 ## 3.0.4 (2019-05-30)
 
