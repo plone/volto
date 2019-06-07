@@ -39,7 +39,7 @@
     "lint": "./node_modules/eslint/bin/eslint.js 'src/**/*.{js,jsx,json}'",
     "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,json}'",
     "i18n": "NODE_ENV=production node src/i18n.js",
-    "cypress:open": "cypress open",
+    "cypress:open": "CYPRESS_API=plone cypress open",
     "cypress:run": "CYPRESS_API=plone cypress run",
     "cypress:run:guillotina": "CYPRESS_API=guillotina cypress run",
     "cy:install": "cypress install",

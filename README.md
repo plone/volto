@@ -213,14 +213,15 @@ $ yarn dry-release
 
 ### Acceptance testing
 
-Volto uses [Cypress](https://www.cypress.io/) for acceptance testing. You can
-trigger the tests by issuing:
+Volto uses [Cypress](https://www.cypress.io/) for browser-based acceptance testing.
+
+Run all acceptance test with:
 
 ```shell
 $ yarn ci:cypress:run
 ```
 
-If you want to run the Guillotina backed ones, you should use:
+Run acceptance tests with the Guillotina backen with:
 
 ```shell
 $ yarn ci:cypress:run:guillotina
@@ -228,28 +229,30 @@ $ yarn ci:cypress:run:guillotina
 
 #### Writing new acceptance tests
 
-For creating new tests, you should run in separate terminal sessions, the
-backend:
+When writing new acceptance tests you usually want to minimize the time it takes to run the tests.
+
+To do so, start three individual terminal sessions for running the Plone backend, the Volto frontend and the acceptance tests.
+
+Start the Plone backend:
 
 ```shell
 $ yarn ci:start-api-plone
 ```
 
-and run the Volto frontend:
+Start the Volto frontend:
 
 ```shell
-$ yarn ci:start-frontend
+$ RAZZLE_API_PATH=http://localhost:55001/plone yarn start
 ```
 
-Then on a third terminal session:
+Open Cypress to run and develop the acceptance tests:
 
 ```shell
 $ yarn cypress:open
 ```
 
-to launch the Cypress visual test runner. Then you can write your tests in
-`cypress/integration` folder. The directory is hot reloaded with your changes
-as you write the tests. For more information on how to write Cypress tests:
+Go to the `cypress/integration` folder to see existing tests.
+This directory is hot reloaded with your changes as you write the tests. For more information on how to write Cypress tests:
 
     https://docs.cypress.io
 
