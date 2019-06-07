@@ -1,12 +1,24 @@
 # Change Log
 
-## 3.0.4 (unreleased)
+## 3.0.5 (unreleased)
 
 ### Added
 
 - Make Login Route accessible from anywhere in path url @nileshgulia1
+- Upgrade to react-redux 7.1.0-RC that includes the new official Redux hooks
+  @sneridagh
+
+### Internal
+
+- Upgrade handlebars to 4.1.2 @timo
+- Upgrade js-yaml to 3.13.3 @timo
+
+## 3.0.4 (2019-05-30)
 
 ### Changes
+
+- Fix order of arguments when sending the contact form @csenger
+- Fix @babel/core import on i18n script @sneridagh
 
 ## 3.0.3 (2019-05-13)
 
