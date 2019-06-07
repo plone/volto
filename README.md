@@ -215,13 +215,13 @@ $ yarn dry-release
 
 Volto uses [Cypress](https://www.cypress.io/) for browser-based acceptance testing.
 
-Run all acceptance test with:
+Run acceptance tests (with the Plone backend):
 
 ```shell
 $ yarn ci:cypress:run
 ```
 
-Run acceptance tests with the Guillotina backen with:
+Run acceptance tests (with the Guillotina backend):
 
 ```shell
 $ yarn ci:cypress:run:guillotina
