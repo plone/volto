@@ -7,6 +7,11 @@
 - Upgrade to react-redux 7.1.0-RC that includes the new official Redux hooks
   @sneridagh
 
+### Internal
+
+- Upgrade handlebars to 4.1.2 @timo
+- Upgrade js-yaml to 3.13.3 @timo
+
 ## 3.0.4 (2019-05-30)
 
 ### Changes
