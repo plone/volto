@@ -245,14 +245,10 @@ Start the Volto frontend:
 $ RAZZLE_API_PATH=http://localhost:55001/plone yarn start
 ```
 
-```shell
-$ yarn ci:start-frontend
-```
-
-Run the acceptance tests:
+Open Cypress to run and develop the acceptance tests:
 
 ```shell
-$ yarn cypress:run
+$ yarn cypress:open
 ```
 
 Go to the `cypress/integration` folder to see existing tests.
