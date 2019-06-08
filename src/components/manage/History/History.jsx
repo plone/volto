@@ -177,19 +177,16 @@ export default class HistoryComponent extends Component {
               {map(entries, entry => (
                 <Table.Row key={entry.time}>
                   <Table.Cell>
-                    {('version' in entry &&
-                      entry.version > 0 && (
-                        <Link
-                          className="item"
-                          to={`${getBaseUrl(
-                            this.props.pathname,
-                          )}/diff?one=${entry.version - 1}&two=${
-                            entry.version
-                          }`}
-                        >
-                          {entry.transition_title}
-                        </Link>
-                      )) || (
+                    {('version' in entry && entry.version > 0 && (
+                      <Link
+                        className="item"
+                        to={`${getBaseUrl(
+                          this.props.pathname,
+                        )}/diff?one=${entry.version - 1}&two=${entry.version}`}
+                      >
+                        {entry.transition_title}
+                      </Link>
+                    )) || (
                       <span>
                         {entry.transition_title}
                         {entry.type === 'workflow' &&
@@ -210,23 +207,22 @@ export default class HistoryComponent extends Component {
                     {entry.type === 'versioning' && (
                       <Dropdown icon="ellipsis horizontal">
                         <Dropdown.Menu className="left">
-                          {'version' in entry &&
-                            entry.version > 0 && (
-                              <Link
-                                className="item"
-                                to={`${getBaseUrl(
-                                  this.props.pathname,
-                                )}/diff?one=${entry.version - 1}&two=${
-                                  entry.version
-                                }`}
-                              >
-                                <Icon name="copy" />{' '}
-                                <FormattedMessage
-                                  id="View changes"
-                                  defaultMessage="View changes"
-                                />
-                              </Link>
-                            )}
+                          {'version' in entry && entry.version > 0 && (
+                            <Link
+                              className="item"
+                              to={`${getBaseUrl(
+                                this.props.pathname,
+                              )}/diff?one=${entry.version - 1}&two=${
+                                entry.version
+                              }`}
+                            >
+                              <Icon name="copy" />{' '}
+                              <FormattedMessage
+                                id="View changes"
+                                defaultMessage="View changes"
+                              />
+                            </Link>
+                          )}
                           {'version' in entry && (
                             <Link
                               className="item"

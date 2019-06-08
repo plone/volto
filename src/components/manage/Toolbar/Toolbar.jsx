@@ -16,7 +16,7 @@ import { listActions } from '../../../actions';
 import { Icon } from '../../../components';
 import pastanagaSmall from './pastanaga-small.svg';
 import pastanagalogo from './pastanaga.svg';
-import { getBaseUrl } from '../../../helpers';
+import { BodyClass, getBaseUrl } from '../../../helpers';
 
 import penSVG from '../../../icons/pen.svg';
 import folderSVG from '../../../icons/folder.svg';
@@ -203,10 +203,14 @@ class Toolbar extends Component {
     const folderContentsAction = find(this.props.actions.object, {
       id: 'folderContents',
     });
+    const { expanded } = this.state;
 
     return (
       this.props.token && (
         <Fragment>
+          <BodyClass
+            className={expanded ? 'has-toolbar' : 'has-toolbar-collapsed'}
+          />
           <div
             style={this.state.menuStyle}
             className={
@@ -231,8 +235,9 @@ class Toolbar extends Component {
           <div className={this.state.expanded ? 'toolbar expanded' : 'toolbar'}>
             <div className="toolbar-body">
               <div className="toolbar-actions">
-                {this.props.hideDefaultViewButtons &&
-                  this.props.inner && <Fragment>{this.props.inner}</Fragment>}
+                {this.props.hideDefaultViewButtons && this.props.inner && (
+                  <Fragment>{this.props.inner}</Fragment>
+                )}
                 {!this.props.hideDefaultViewButtons && (
                   <Fragment>
                     {editAction && (
@@ -247,16 +252,15 @@ class Toolbar extends Component {
                           <Icon name={folderSVG} size="32px" />
                         </Link>
                       )}
-                    {this.props.content &&
-                      this.props.content.is_folderish && (
-                        <button
-                          className="add"
-                          onClick={e => this.toggleMenu(e, 'Types')}
-                          tabIndex={0}
-                        >
-                          <Icon name={addSVG} size="32px" />
-                        </button>
-                      )}
+                    {this.props.content && this.props.content.is_folderish && (
+                      <button
+                        className="add"
+                        onClick={e => this.toggleMenu(e, 'Types')}
+                        tabIndex={0}
+                      >
+                        <Icon name={addSVG} size="32px" />
+                      </button>
+                    )}
                     <button
                       className="more"
                       onClick={e => this.toggleMenu(e, 'More')}

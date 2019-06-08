@@ -7,7 +7,7 @@ const { find, keys, map, concat, reduce, zipObject } = require('lodash');
 const glob = require('glob').sync;
 const fs = require('fs');
 const Pofile = require('pofile');
-const babel = require('babel-core');
+const babel = require('@babel/core');
 
 /**
  * Extract messages into separate JSON files
@@ -124,9 +124,8 @@ function poToJson() {
       JSON.stringify(
         zipObject(
           map(items, item => item.msgid),
-          map(
-            items,
-            item => (item.msgstr[0] !== '' ? item.msgstr[0] : item.msgid),
+          map(items, item =>
+            item.msgstr[0] !== '' ? item.msgstr[0] : item.msgid,
           ),
         ),
       ),
@@ -166,13 +165,13 @@ function syncPoByPot() {
       filename,
       `${formatHeader(po.comments, po.headers)}
 ${map(pot.items, item => {
-        const poItem = find(po.items, { msgid: item.msgid });
-        return [
-          `${map(item.references, ref => `#: ${ref}`).join('\n')}`,
-          `msgid "${item.msgid}"`,
-          `msgstr "${poItem ? poItem.msgstr : ''}"`,
-        ].join('\n');
-      }).join('\n\n')}\n`,
+  const poItem = find(po.items, { msgid: item.msgid });
+  return [
+    `${map(item.references, ref => `#: ${ref}`).join('\n')}`,
+    `msgid "${item.msgid}"`,
+    `msgstr "${poItem ? poItem.msgstr : ''}"`,
+  ].join('\n');
+}).join('\n\n')}\n`,
     );
   });
 }

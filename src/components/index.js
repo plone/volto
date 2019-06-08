@@ -15,6 +15,7 @@ export Editbar from '@plone/volto/components/mosaic/Editbar/Editbar';
 
 export Anontools from '@plone/volto/components/theme/Anontools/Anontools';
 export Breadcrumbs from '@plone/volto/components/theme/Breadcrumbs/Breadcrumbs';
+export ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
 export Footer from '@plone/volto/components/theme/Footer/Footer';
 export Header from '@plone/volto/components/theme/Header/Header';
 export Icon from '@plone/volto/components/theme/Icon/Icon';
@@ -77,6 +78,7 @@ export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidge
 export DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
 export FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
 export PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
+export ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 export SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
 export SchemaWidgetFieldset from '@plone/volto/components/manage/Widgets/SchemaWidgetFieldset';
 export SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
@@ -94,6 +96,8 @@ export EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
 export EditImageTile from '@plone/volto/components/manage/Tiles/Image/Edit';
 export EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
 export EditTile from '@plone/volto/components/manage/Tiles/Tile/Edit';
+export EditHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImageLeft/Edit';
+export ViewHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImageLeft/View';
 export EditMapTile from '@plone/volto/components/manage/Tiles/Maps/Edit';
 export EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
 

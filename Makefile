@@ -1,17 +1,46 @@
+# We like colors
+# From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
+RED=`tput setaf 1`
+GREEN=`tput setaf 2`
+RESET=`tput sgr0`
+YELLOW=`tput setaf 3`
+
 all: build
+
+# Add the following 'help' target to your Makefile
+# And add help text after each target name starting with '\#\#'
+.PHONY: help
+help: ## This help message
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+build:
+	make build-backend
+	make build-frontend
+
+build-frontend:
+	yarn && RAZZLE_API_PATH=http://localhost:55001/plone yarn build
+
+.PHONY: Build Plone 5.2
+build-backend:  ## Build Plone 5.2
+	(cd api && virtualenv --clear --python=python3 .)
+	(cd api && bin/pip install --upgrade pip)
+	(cd api && bin/pip install -r requirements.txt)
+	(cd api && bin/buildout -c plone-5.2.x.cfg)
 
 dist:
 	yarn
 	yarn build
 
-build:
-	yarn && RAZZLE_API_PATH=http://localhost:55001/plone yarn build
+.PHONY: Build Plone 5.2
+start-backend:  ## Install Plone 5.2
+	(cd api && ./bin/instance fg)
+
+test:
+	(cd api && bin/test)
 
 bin/pip:
-	@echo "$(GREEN)==> Setup Virtual Env$(RESET)"
-	virtualenv -p python3 --clear .
-	bin/pip install pip --upgrade
-	bin/pip install -r requirements-docs.txt --upgrade
+	virtualenv --clear --python=python3 .
+	bin/pip install -r requirements-docs.txt
 
 docs-serve:
 	(cd docs && ../bin/mkdocs serve)
@@ -19,28 +48,29 @@ docs-serve:
 docs-build: bin/pip
 	(cd docs && ../bin/mkdocs build)
 
-start: dist
+start-frontend: dist
 	yarn start:prod
 
 start-api-docker:
 	docker-compose -f api/docker-compose.yml up
 
-clean-api-docker:
-	docker-compose -f api/docker-compose.yml rm -vf
+start-backend-docker:
+	docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
 
-test-acceptance: dist api/bin/pybot
-	PYTHONPATH=$$(pwd)/tests api/bin/pybot tests
+start-backend-docker-guillotina:
+	docker-compose -f g-api/docker-compose.yml up -d
 
-test-acceptance-start-backend:
-	docker-compose -f api/docker-compose.yml up
+stop-backend-docker-guillotina:
+	docker-compose -f g-api/docker-compose.yml down
 
-test-acceptance-start-frontend:
-	yarn && yarn build && RAZZLE_API_PATH=http://localhost:55001/plone yarn start:prod
+test-acceptance-server:
+	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.voltodemo,kitconcept.voltodemo.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.voltodemo:default ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
-test-acceptance-build:
-	api/bin/pip install -r api/requirements-robot-framework.txt
+test-acceptance-guillotina:
+	docker-compose -f g-api/docker-compose.yml up > /dev/null
 
-api/bin/pybot:
-	make -C api
+clean:
+	(cd api && rm -rf bin)
+	rm -rf node_modules
 
 .PHONY: all start test-acceptance

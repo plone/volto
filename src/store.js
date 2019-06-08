@@ -17,7 +17,10 @@ const configureStore = (initialState, history, apiHelper) => {
     ),
   );
   const store = createStore(
-    connectRouter(history)(combineReducers(reducers)),
+    combineReducers({
+      router: connectRouter(history),
+      ...reducers,
+    }),
     initialState,
     middlewares,
   );

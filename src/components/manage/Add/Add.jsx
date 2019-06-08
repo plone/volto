@@ -242,7 +242,11 @@ export class AddComponent extends Component {
               hideDefaultViewButtons
               inner={
                 <div>
-                  <button className="save" onClick={() => this.form.onSubmit()}>
+                  <button
+                    id="toolbar-save"
+                    className="save"
+                    onClick={() => this.form.onSubmit()}
+                  >
                     <Icon
                       name={saveSVG}
                       className="circled"

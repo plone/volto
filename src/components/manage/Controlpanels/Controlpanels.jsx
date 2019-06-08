@@ -22,7 +22,6 @@ import {
 import Icons from '../../../constants/ControlpanelIcons';
 import { listControlpanels } from '../../../actions';
 import { Icon as IconNext, Toolbar } from '../../../components';
-import { getBaseUrl } from '../../../helpers';
 
 import backSVG from '../../../icons/back.svg';
 
@@ -141,7 +140,7 @@ export default class Controlpanels extends Component {
             pathname={this.props.pathname}
             hideDefaultViewButtons
             inner={
-              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
+              <Link to="/" className="item">
                 <IconNext
                   name={backSVG}
                   className="contents circled"

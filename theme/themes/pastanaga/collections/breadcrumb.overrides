@@ -3,13 +3,15 @@
 *******************************/
 
 .ui.breadcrumb {
-  padding-left: 1rem;
   padding-right: 1rem;
+  padding-left: 1rem;
+
   .home.icon {
     margin-right: 0;
   }
+
   @media only screen and (min-width: @tabletBreakpoint) {
-    padding-left: 0;
     padding-right: 0;
+    padding-left: 0;
   }
 }

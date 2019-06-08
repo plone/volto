@@ -27,6 +27,10 @@ test('renders an edit html tile component', () => {
         onChangeTile={() => {}}
         onSelectTile={() => {}}
         onDeleteTile={() => {}}
+        onFocusPreviousTile={() => {}}
+        onFocusNextTile={() => {}}
+        handleKeyDown={() => {}}
+        index={1}
       />
     </Provider>,
   );

@@ -13,10 +13,21 @@ test('renders an array widget component', () => {
       locale: 'en',
       messages: {},
     },
+    vocabularies: {
+      'plone.app.vocabularies.Keywords': {
+        items: [{ title: 'My item', value: 'myitem' }],
+        itemsTotal: 1,
+      },
+    },
   });
   const component = renderer.create(
     <Provider store={store}>
-      <ArrayWidget id="my-field" title="My field" onChange={() => {}} />
+      <ArrayWidget
+        id="my-field"
+        title="My field"
+        onChange={() => {}}
+        items={{ vocabulary: { '@id': 'plone.app.vocabularies.Keywords' } }}
+      />
     </Provider>,
   );
   const json = component.toJSON();

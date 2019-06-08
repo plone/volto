@@ -162,9 +162,9 @@ export class EditComponent extends Component {
     }
     // Hack for make the Plone site editable by Volto Editor without checkings
     if (this.props.content['@type'] === 'Plone Site') {
-      this.state = {
+      this.setState({
         visual: true,
-      };
+      });
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       this.props.history.push(
@@ -242,7 +242,11 @@ export class EditComponent extends Component {
               hideDefaultViewButtons
               inner={
                 <div>
-                  <button className="save" onClick={() => this.form.onSubmit()}>
+                  <button
+                    id="toolbar-save"
+                    className="save"
+                    onClick={() => this.form.onSubmit()}
+                  >
                     <Icon
                       name={saveSVG}
                       className="circled"
