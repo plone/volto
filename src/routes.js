@@ -23,6 +23,7 @@ import {
   PasswordReset,
   PersonalInformation,
   PersonalPreferences,
+  Playground,
   Register,
   RequestPasswordReset,
   Search,
@@ -101,6 +102,10 @@ export const defaultRoutes = [
   {
     path: '/sharing',
     component: Sharing,
+  },
+  {
+    path: '/playground',
+    component: Playground,
   },
   {
     path: '/**/add',
