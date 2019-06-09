@@ -196,7 +196,6 @@ class DisplaySelect extends Component {
 
   render() {
     const { selectedOption } = this.state;
-    const value = selectedOption && selectedOption.value;
 
     return (
       <Fragment>
@@ -212,9 +211,9 @@ class DisplaySelect extends Component {
           styles={customSelectStyles}
           theme={selectTheme}
           components={{ DropdownIndicator, Option }}
-          // defaultValue={getDefaultValues(choices, value)}
           onChange={this.setLayout}
-          defaultValue={this.state.selectedOption}
+          defaultValue={selectedOption}
+          isSearchable={false}
         />
       </Fragment>
     );

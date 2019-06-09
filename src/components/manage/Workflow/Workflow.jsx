@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { last, uniqBy } from 'lodash';
 import { FormattedMessage } from 'react-intl';
-import Select from 'react-select';
+import Select, { components } from 'react-select';
 import getWorkflowMapping from '../../../constants/Workflows';
 import { Icon } from '../../../components';
 import downSVG from '../../../icons/down-key.svg';
@@ -18,6 +18,122 @@ import checkSVG from '../../../icons/check.svg';
 
 import { getWorkflow, transitionWorkflow } from '../../../actions';
 import { settings } from '~/config';
+
+const Placeholder = props => {
+  return <components.Placeholder {...props} />;
+};
+
+const SingleValue = ({ children, ...props }) => {
+  const stateDecorator = {
+    marginLeft: '10px',
+    marginRight: '10px',
+    display: 'inline-block',
+    backgroundColor: props.selectProps.value.color || null,
+    content: ' ',
+    height: '10px',
+    width: '10px',
+    borderRadius: '50%',
+  };
+  return (
+    <components.SingleValue {...props}>
+      <span style={stateDecorator} />
+      {children}
+    </components.SingleValue>
+  );
+};
+
+const Option = props => {
+  const stateDecorator = {
+    marginLeft: '10px',
+    marginRight: '10px',
+    display: 'inline-block',
+    backgroundColor:
+      props.selectProps.value.value === props.data.value
+        ? props.selectProps.value.color
+        : null,
+    content: ' ',
+    height: '10px',
+    width: '10px',
+    borderRadius: '50%',
+    border:
+      props.selectProps.value.value !== props.data.value
+        ? `1px solid ${props.data.color}`
+        : null,
+  };
+  return (
+    <components.Option {...props}>
+      <span style={stateDecorator} />
+      <div style={{ marginRight: 'auto' }}>{props.label}</div>
+      {props.isFocused && !props.isSelected && (
+        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+      )}
+      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
+    </components.Option>
+  );
+};
+
+const DropdownIndicator = props => {
+  return (
+    <components.DropdownIndicator {...props}>
+      {props.selectProps.menuIsOpen ? (
+        <Icon name={upSVG} size="24px" color="#007bc1" />
+      ) : (
+        <Icon name={downSVG} size="24px" color="#007bc1" />
+      )}
+    </components.DropdownIndicator>
+  );
+};
+
+const selectTheme = theme => ({
+  ...theme,
+  borderRadius: 0,
+  colors: {
+    ...theme.colors,
+    primary25: 'hotpink',
+    primary: '#b8c6c8',
+  },
+});
+
+const customSelectStyles = {
+  control: (styles, state) => ({
+    ...styles,
+    border: 'none',
+    borderBottom: '2px solid #b8c6c8',
+    boxShadow: 'none',
+    borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
+  }),
+  menu: (styles, state) => ({
+    ...styles,
+    top: null,
+    marginTop: 0,
+    boxShadow: 'none',
+    borderBottom: '2px solid #b8c6c8',
+  }),
+  indicatorSeparator: styles => ({
+    ...styles,
+    width: null,
+  }),
+  valueContainer: styles => ({
+    ...styles,
+  }),
+  option: (styles, state) => ({
+    ...styles,
+    backgroundColor: null,
+    height: '50px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '14px 12px',
+    color: state.isSelected
+      ? '#007bc1'
+      : state.isFocused
+      ? '#4a4a4a'
+      : 'inherit',
+    ':active': {
+      backgroundColor: null,
+    },
+  }),
+};
 
 @connect(
   state => ({
@@ -68,7 +184,9 @@ export default class Workflow extends Component {
   };
 
   state = {
-    selectedOption: getWorkflowMapping(null, this.props.content.review_state),
+    selectedOption: this.props.content.review_state
+      ? getWorkflowMapping(null, this.props.content.review_state)
+      : {},
   };
 
   /**
@@ -155,39 +273,31 @@ export default class Workflow extends Component {
 
   render() {
     const { selectedOption } = this.state;
-    const value = selectedOption && selectedOption.value;
 
     return (
       <Fragment>
         <label htmlFor="state-select">State</label>
         <Select
-          name="state-select"
-          arrowRenderer={({ onMouseDown, isOpen }) =>
-            isOpen ? (
-              <Icon name={upSVG} size="24px" />
-            ) : (
-              <Icon name={downSVG} size="24px" />
-            )
-          }
-          clearable={false}
-          disabled={!this.props.content.review_state}
-          placeholder={
-            this.props.content.review_state ? 'Select...' : 'No workflow'
-          }
-          searchable={false}
-          // onBlur={() => {
-          //   debugger;
-          // }}
-          value={value}
-          onChange={this.transition}
+          name="display-select"
+          className="react-select-container"
+          classNamePrefix="react-select"
+          isDisabled={!this.props.content.review_state}
           options={uniqBy(
             this.props.transitions.map(transition =>
               getWorkflowMapping(transition['@id']),
             ),
             'label',
           ).concat(selectedOption)}
-          valueRenderer={this.selectValue}
-          optionRenderer={this.optionRenderer}
+          styles={customSelectStyles}
+          theme={selectTheme}
+          components={{ DropdownIndicator, Placeholder, Option, SingleValue }}
+          onChange={this.transition}
+          defaultValue={
+            this.props.content.review_state
+              ? selectedOption
+              : { label: 'No workflow', value: 'noworkflow' }
+          }
+          isSearchable={false}
         />
       </Fragment>
     );
