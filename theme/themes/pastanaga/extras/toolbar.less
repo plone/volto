@@ -1,12 +1,9 @@
-/*******************************
-            Theme
-*******************************/
-
-@type : 'extra';
-
-@element : 'toolbar';
-
-@import (multiple) '../../theme.config';
+@teal-blue: #007eb1;
+@background-content: #f2f5f6;
+@silver-blue: #b8c6c8;
+@silver: #c7d5d8;
+@darkHotPink: #e40166;
+@toolbar-text: #252525;
 
 // html,
 // body {
@@ -246,6 +243,7 @@ svg.icon {
 
 .toolbar-content {
   z-index: 1;
+  box-shadow: 0 1px 2px 0 #c7d5d8;
 }
 
 .pusher-puller {
@@ -614,5 +612,24 @@ svg.icon {
     }
   }
 }
+
+// Orphaned CSS
+.ui.dropdown .menu.left {
+  right: 0;
+  left: auto;
+}
+
+.ui.segment.dashed {
+  border: 3px dashed #ccc;
+  box-shadow: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .ui.menu.stackable > .menu,
+  .ui.menu.stackable > .menu.right {
+    display: block;
+  }
+}
+// End Orphaned CSS
 
 .loadUIOverrides();

@@ -14,6 +14,10 @@
 
 body {
   display: flex;
+
+  @media only screen and (max-width: @largestMobileScreen) {
+    flex-direction: column;
+  }
 }
 
 #main {
@@ -133,6 +137,7 @@ body {
 }
 
 @import 'utils';
+@import 'toolbar';
 @import 'draftjs';
 @import 'tiles';
 @import 'mosaic';
