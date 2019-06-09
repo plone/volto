@@ -592,17 +592,14 @@ svg.icon {
   .state-select,
   .display-select {
     display: flex;
+    width: 100%;
 
-    .Select {
-      margin-left: 5px;
-    }
-
-    .Select .Select-control {
-      // border-bottom: 0;
+    .react-select-container {
+      flex: 1 0 75%;
     }
 
     label {
-      width: 25%;
+      flex: 1 0 25%;
       padding-top: 18px;
       margin-right: 5px;
       border-bottom: 1px solid #edf1f2;

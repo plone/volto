@@ -203,7 +203,7 @@ class DisplaySelect extends Component {
         <label htmlFor="display-select">View</label>
         <Select
           name="display-select"
-          className="react-select-container display-select"
+          className="react-select-container"
           classNamePrefix="react-select"
           options={this.props.layouts.map(item => ({
             value: item,
