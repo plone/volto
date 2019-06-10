@@ -120,7 +120,7 @@ class PersonalTools extends Component {
           {/* This (probably also) should be a Component by itself*/}
           <ul>
             <li>
-              <button onClick={() => this.push('Profile')}>
+              <button onClick={() => this.push('profile')}>
                 Profile
                 <Icon name={rightArrowSVG} size="24px" />
               </button>

@@ -18,6 +18,8 @@ import pastanagaSmall from './pastanaga-small.svg';
 import pastanagalogo from './pastanaga.svg';
 import { BodyClass, getBaseUrl } from '../../../helpers';
 
+import { toolbarComponents } from '~/config';
+
 import penSVG from '../../../icons/pen.svg';
 import folderSVG from '../../../icons/folder.svg';
 import addSVG from '../../../icons/add-document.svg';
@@ -79,6 +81,7 @@ class Toolbar extends Component {
     showMenu: false,
     menuStyle: {},
     menuComponents: [],
+    personalToolsComponents: [],
   };
 
   /**
@@ -166,13 +169,28 @@ class Toolbar extends Component {
     }));
   };
 
+  loadNewComponent = type => {
+    const { personalToolsComponents } = this.state;
+    if (!this.state.personalToolsComponents.includes(type)) {
+      this.setState({
+        personalToolsComponents: [...personalToolsComponents, type],
+      });
+    }
+  };
+
+  unloadNewComponent = () => {
+    this.setState(state => ({
+      personalToolsComponents: state.personalToolsComponents.slice(0, -1),
+    }));
+  };
+
   toggleMenu = (e, selector) => {
     if (this.state.showMenu) {
       this.closeMenu();
       return;
     }
     // PersonalTools always shows at bottom
-    if (selector === 'PersonalTools') {
+    if (selector === 'personalTools') {
       this.setState(state => ({
         showMenu: !state.showMenu,
         menuStyle: { bottom: 0 },
@@ -184,7 +202,7 @@ class Toolbar extends Component {
         menuStyle: { top: `${elemOffsetTop}px` },
       }));
     }
-    this.loadComponent(selector);
+    this.loadNewComponent(selector);
   };
 
   handleClickOutside = e => {
@@ -224,12 +242,27 @@ class Toolbar extends Component {
               className="pusher-puller"
               ref={node => (this.pusher = node)}
               style={{
-                left: `-${(this.state.menuComponents.length - 1) * 100}%`,
+                left: `-${(this.state.personalToolsComponents.length - 1) *
+                  100}%`,
               }}
             >
-              {this.state.menuComponents.map(component => (
-                <Fragment key={component.name}>{component.component}</Fragment>
-              ))}
+              {this.state.personalToolsComponents.map((component, index) =>
+                (() => {
+                  const ToolbarComponent = toolbarComponents[component];
+
+                  return (
+                    <ToolbarComponent
+                      pathname={this.props.pathname}
+                      loadComponent={this.loadNewComponent}
+                      unloadComponent={this.unloadNewComponent}
+                      componentIndex={index}
+                      theToolbar={this.theToolbar}
+                      key={`personalToolsComponent-${index}`}
+                      closeMenu={this.closeMenu}
+                    />
+                  );
+                })(),
+              )}
             </div>
           </div>
           <div className={this.state.expanded ? 'toolbar expanded' : 'toolbar'}>
@@ -276,7 +309,7 @@ class Toolbar extends Component {
                 {!this.props.hideDefaultViewButtons && (
                   <button
                     className="user"
-                    onClick={e => this.toggleMenu(e, 'PersonalTools')}
+                    onClick={e => this.toggleMenu(e, 'personalTools')}
                     tabIndex={0}
                   >
                     <Icon name={userSVG} size="32px" />
