@@ -84,6 +84,8 @@ class Toolbar extends Component {
     personalToolsComponents: [],
   };
 
+  toolbarWindow = React.createRef();
+
   /**
    * Component will mount
    * @method componentDidMount
@@ -234,16 +236,18 @@ class Toolbar extends Component {
             className={
               this.state.showMenu ? 'toolbar-content show' : 'toolbar-content'
             }
-            ref={toolbar => {
-              this.theToolbar = toolbar;
-            }}
+            ref={this.toolbarWindow}
           >
             <div
               className="pusher-puller"
               ref={node => (this.pusher = node)}
               style={{
-                left: `-${(this.state.personalToolsComponents.length - 1) *
-                  100}%`,
+                transform: this.toolbarWindow.current
+                  ? `translateX(-${(this.state.personalToolsComponents.length -
+                      1) *
+                      this.toolbarWindow.current.getBoundingClientRect()
+                        .width}px)`
+                  : null,
               }}
             >
               {this.state.personalToolsComponents.map((component, index) =>

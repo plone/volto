@@ -28,7 +28,6 @@ class Profile extends Component {
       <div
         className="profile pastanaga-menu"
         style={{
-          left: `${this.props.componentIndex * 100}%`,
           width: '100vw',
         }}
       >

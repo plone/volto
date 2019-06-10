@@ -76,12 +76,7 @@ class PersonalTools extends Component {
    */
   render() {
     return (
-      <div
-        className="personal-tools pastanaga-menu"
-        style={{
-          left: `${this.props.componentIndex * 100}%`,
-        }}
-      >
+      <div className="personal-tools pastanaga-menu">
         <header className="header">
           <button className="back" onClick={this.pull}>
             <Icon name={backSVG} size="32px" />
