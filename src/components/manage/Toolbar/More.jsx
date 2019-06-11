@@ -72,17 +72,12 @@ class More extends Component {
       id: 'local_roles',
     });
     return (
-      <div
-        className="menu-more pastanaga-menu"
-        style={{
-          left: `${this.props.componentIndex * 100}%`,
-        }}
-      >
+      <div className="menu-more pastanaga-menu">
         <header>
           <h2>{this.props.content.title}</h2>
           <button
             className="more-user"
-            onClick={() => this.push('PersonalTools')}
+            onClick={() => this.push('personalTools')}
             tabIndex={0}
           >
             <Icon name={userSVG} size="32px" />
@@ -98,7 +93,7 @@ class More extends Component {
             </li>
             <li>
               {historyAction ? (
-                <button onClick={() => this.push('History')}>
+                <button onClick={() => this.push('history')}>
                   <div>
                     <span className="pastanaga-menu-label">
                       {historyAction.title}

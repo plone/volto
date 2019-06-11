@@ -25,6 +25,7 @@ import folderSVG from '../../../icons/folder.svg';
 import addSVG from '../../../icons/add-document.svg';
 import moreSVG from '../../../icons/more.svg';
 import userSVG from '../../../icons/user.svg';
+import clearSVG from '../../../icons/clear.svg';
 
 /**
  * Toolbar container class.
@@ -81,7 +82,7 @@ class Toolbar extends Component {
     showMenu: false,
     menuStyle: {},
     menuComponents: [],
-    personalToolsComponents: [],
+    loadedComponents: [],
   };
 
   toolbarWindow = React.createRef();
@@ -132,7 +133,7 @@ class Toolbar extends Component {
   };
 
   closeMenu = () =>
-    this.setState(() => ({ showMenu: false, menuComponents: [] }));
+    this.setState(() => ({ showMenu: false, loadedComponents: [] }));
 
   loadComponent = type => {
     const { menuComponents } = this.state;
@@ -172,17 +173,17 @@ class Toolbar extends Component {
   };
 
   loadNewComponent = type => {
-    const { personalToolsComponents } = this.state;
-    if (!this.state.personalToolsComponents.includes(type)) {
+    const { loadedComponents } = this.state;
+    if (!this.state.loadedComponents.includes(type)) {
       this.setState({
-        personalToolsComponents: [...personalToolsComponents, type],
+        loadedComponents: [...loadedComponents, type],
       });
     }
   };
 
   unloadNewComponent = () => {
     this.setState(state => ({
-      personalToolsComponents: state.personalToolsComponents.slice(0, -1),
+      loadedComponents: state.loadedComponents.slice(0, -1),
     }));
   };
 
@@ -243,14 +244,13 @@ class Toolbar extends Component {
               ref={node => (this.pusher = node)}
               style={{
                 transform: this.toolbarWindow.current
-                  ? `translateX(-${(this.state.personalToolsComponents.length -
-                      1) *
+                  ? `translateX(-${(this.state.loadedComponents.length - 1) *
                       this.toolbarWindow.current.getBoundingClientRect()
                         .width}px)`
                   : null,
               }}
             >
-              {this.state.personalToolsComponents.map((component, index) =>
+              {this.state.loadedComponents.map((component, index) =>
                 (() => {
                   const ToolbarComponent = toolbarComponents[component];
 
@@ -292,7 +292,7 @@ class Toolbar extends Component {
                     {this.props.content && this.props.content.is_folderish && (
                       <button
                         className="add"
-                        onClick={e => this.toggleMenu(e, 'Types')}
+                        onClick={e => this.toggleMenu(e, 'types')}
                         tabIndex={0}
                       >
                         <Icon name={addSVG} size="32px" />
@@ -300,10 +300,27 @@ class Toolbar extends Component {
                     )}
                     <button
                       className="more"
-                      onClick={e => this.toggleMenu(e, 'More')}
+                      onClick={e => this.toggleMenu(e, 'more')}
                       tabIndex={0}
                     >
-                      <Icon name={moreSVG} size="32px" />
+                      <Icon
+                        className="tablet or lower hidden"
+                        name={moreSVG}
+                        size="32px"
+                      />
+                      {this.state.showMenu ? (
+                        <Icon
+                          className="mobile tablet only"
+                          name={clearSVG}
+                          size="32px"
+                        />
+                      ) : (
+                        <Icon
+                          className="mobile tablet only"
+                          name={moreSVG}
+                          size="32px"
+                        />
+                      )}
                     </button>
                   </Fragment>
                 )}
