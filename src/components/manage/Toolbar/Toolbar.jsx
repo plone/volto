@@ -136,43 +136,6 @@ class Toolbar extends Component {
     this.setState(() => ({ showMenu: false, loadedComponents: [] }));
 
   loadComponent = type => {
-    const { menuComponents } = this.state;
-    const nextIndex = menuComponents.length;
-
-    if (
-      !this.state.menuComponents.reduce(
-        (prev, current) => prev && current.name === `${type}`,
-        false,
-      )
-    ) {
-      import(`./${type}.jsx`).then(LoadedComponent =>
-        this.setState(state => ({
-          menuComponents: state.menuComponents.concat({
-            name: `${type}`,
-            component: (
-              <LoadedComponent.default
-                pathname={this.props.pathname}
-                loadComponent={this.loadComponent}
-                unloadComponent={this.unloadComponent}
-                componentIndex={nextIndex}
-                theToolbar={this.theToolbar}
-                key={`menucomp-${nextIndex}`}
-                closeMenu={this.closeMenu}
-              />
-            ),
-          }),
-        })),
-      );
-    }
-  };
-
-  unloadComponent = () => {
-    this.setState(state => ({
-      menuComponents: state.menuComponents.slice(0, -1),
-    }));
-  };
-
-  loadNewComponent = type => {
     const { loadedComponents } = this.state;
     if (!this.state.loadedComponents.includes(type)) {
       this.setState({
@@ -181,7 +144,7 @@ class Toolbar extends Component {
     }
   };
 
-  unloadNewComponent = () => {
+  unloadComponent = () => {
     this.setState(state => ({
       loadedComponents: state.loadedComponents.slice(0, -1),
     }));
@@ -205,7 +168,7 @@ class Toolbar extends Component {
         menuStyle: { top: `${elemOffsetTop}px` },
       }));
     }
-    this.loadNewComponent(selector);
+    this.loadComponent(selector);
   };
 
   handleClickOutside = e => {
@@ -257,8 +220,8 @@ class Toolbar extends Component {
                   return (
                     <ToolbarComponent
                       pathname={this.props.pathname}
-                      loadComponent={this.loadNewComponent}
-                      unloadComponent={this.unloadNewComponent}
+                      loadComponent={this.loadComponent}
+                      unloadComponent={this.unloadComponent}
                       componentIndex={index}
                       theToolbar={this.theToolbar}
                       key={`personalToolsComponent-${index}`}
