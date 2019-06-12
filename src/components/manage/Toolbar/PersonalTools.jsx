@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
-
+import cx from 'classnames';
 import { Icon } from '../../../components';
 
 import { getUser } from '../../../actions';
@@ -76,7 +76,11 @@ class PersonalTools extends Component {
    */
   render() {
     return (
-      <div className="personal-tools pastanaga-menu">
+      <div
+        className={cx('personal-tools pastanaga-menu', {
+          'has-inner-actions': this.props.hasActions,
+        })}
+      >
         <header className="header">
           <button className="back" onClick={this.pull}>
             <Icon name={backSVG} size="32px" />

@@ -60,6 +60,11 @@ svg.icon {
     .toolbar-actions {
       opacity: 1;
       transition: opacity 0.1s 0.2s;
+
+      &.hidden {
+        opacity: 0;
+        transition: opacity 0.1s 0.2s;
+      }
     }
 
     .toolbar-body {
@@ -414,6 +419,14 @@ svg.icon {
   width: 100vw;
   height: calc(100vh - 100px);
 
+  &.has-inner-actions {
+    height: 100vh;
+
+    @media only screen and (min-width: @largestMobileScreen) {
+      height: auto;
+    }
+  }
+
   header {
     display: flex;
     height: 60px;
@@ -441,6 +454,24 @@ svg.icon {
       button {
         margin-right: 10px;
       }
+    }
+  }
+
+  .ui.form {
+    height: 100%;
+  }
+
+  .ui.raised.segments {
+    display: flex;
+    height: calc(100vh - 60px);
+
+    @media only screen and (min-width: @largestMobileScreen) {
+      height: initial;
+    }
+
+    .ui.segment:not(.actions) {
+      flex: 1 1 auto;
+      overflow-y: auto;
     }
   }
 

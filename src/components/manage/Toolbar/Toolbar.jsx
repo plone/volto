@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import cookie from 'react-cookie';
 import { find } from 'lodash';
+import cx from 'classnames';
 
 import { listActions } from '../../../actions';
 
@@ -83,6 +84,7 @@ class Toolbar extends Component {
     menuStyle: {},
     menuComponents: [],
     loadedComponents: [],
+    hideToolbarBody: false,
   };
 
   toolbarWindow = React.createRef();
@@ -140,6 +142,7 @@ class Toolbar extends Component {
     if (!this.state.loadedComponents.includes(type)) {
       this.setState({
         loadedComponents: [...loadedComponents, type],
+        hideToolbarBody: toolbarComponents[type].hideToolbarBody || false,
       });
     }
   };
@@ -147,6 +150,10 @@ class Toolbar extends Component {
   unloadComponent = () => {
     this.setState(state => ({
       loadedComponents: state.loadedComponents.slice(0, -1),
+      hideToolbarBody:
+        toolbarComponents[
+          state.loadedComponents[state.loadedComponents.length - 2]
+        ].hideToolbarBody || false,
     }));
   };
 
@@ -215,19 +222,48 @@ class Toolbar extends Component {
             >
               {this.state.loadedComponents.map((component, index) =>
                 (() => {
-                  const ToolbarComponent = toolbarComponents[component];
-
-                  return (
-                    <ToolbarComponent
-                      pathname={this.props.pathname}
-                      loadComponent={this.loadComponent}
-                      unloadComponent={this.unloadComponent}
-                      componentIndex={index}
-                      theToolbar={this.theToolbar}
-                      key={`personalToolsComponent-${index}`}
-                      closeMenu={this.closeMenu}
-                    />
-                  );
+                  const ToolbarComponent =
+                    toolbarComponents[component].component;
+                  const WrapperComponent = toolbarComponents[component].wrapper;
+                  const haveActions =
+                    toolbarComponents[component].hideToolbarBody;
+                  if (WrapperComponent) {
+                    return (
+                      <WrapperComponent
+                        componentName={component}
+                        pathname={this.props.pathname}
+                        loadComponent={this.loadComponent}
+                        unloadComponent={this.unloadComponent}
+                        componentIndex={index}
+                        theToolbar={this.theToolbar}
+                        key={`personalToolsComponent-${index}`}
+                        closeMenu={this.closeMenu}
+                        hasActions={haveActions}
+                      >
+                        <ToolbarComponent
+                          pathname={this.props.pathname}
+                          loadComponent={this.loadComponent}
+                          unloadComponent={this.unloadComponent}
+                          componentIndex={index}
+                          theToolbar={this.theToolbar}
+                          closeMenu={this.closeMenu}
+                          innerOnly
+                        />
+                      </WrapperComponent>
+                    );
+                  } else {
+                    return (
+                      <ToolbarComponent
+                        pathname={this.props.pathname}
+                        loadComponent={this.loadComponent}
+                        unloadComponent={this.unloadComponent}
+                        componentIndex={index}
+                        theToolbar={this.theToolbar}
+                        key={`personalToolsComponent-${index}`}
+                        closeMenu={this.closeMenu}
+                      />
+                    );
+                  }
                 })(),
               )}
             </div>

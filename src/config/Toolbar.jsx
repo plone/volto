@@ -1,11 +1,16 @@
 import More from '@plone/volto/components/manage/Toolbar/More';
 import PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
 import Types from '@plone/volto/components/manage/Toolbar/Types';
-import Profile from '@plone/volto/components/manage/Toolbar/Profile';
+import PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
+import StandardWrapper from '@plone/volto/components/manage/Toolbar/StandardWrapper';
 
 export const defaultToolbarComponents = {
-  personalTools: PersonalTools,
-  more: More,
-  types: Types,
-  profile: Profile,
+  personalTools: { component: PersonalTools, wrapper: null },
+  more: { component: More, wrapper: null },
+  types: { component: Types, wrapper: null },
+  profile: {
+    component: PersonalInformation,
+    wrapper: StandardWrapper,
+    hideToolbarBody: true,
+  },
 };

@@ -118,6 +118,7 @@ class PersonalInformation extends Component {
     loaded: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
     pathname: PropTypes.string.isRequired,
+    innerOnly: PropTypes.bool,
   };
 
   /**
@@ -171,95 +172,108 @@ class PersonalInformation extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return this.props.loaded ? (
-      <Container id="page-personal-information">
-        <Helmet
-          title={this.props.intl.formatMessage(messages.personalInformation)}
-        />
-        <Menu attached="top" tabular stackable>
-          <Menu.Item
-            name={this.props.intl.formatMessage(messages.personalInformation)}
-            active
-          />
-          <Link to="/personal-preferences" className="item">
-            <FormattedMessage
-              id="Personal Preferences"
-              defaultMessage="Personal Preferences"
-            />
-          </Link>
-          <Link to="/change-password" className="item">
-            <FormattedMessage
-              id="Change Password"
-              defaultMessage="Change Password"
-            />
-          </Link>
-        </Menu>
-        <Form
-          formData={this.props.user}
-          schema={{
-            fieldsets: [
-              {
-                id: 'default',
-                title: this.props.intl.formatMessage(messages.default),
-                fields: ['fullname', 'email', 'home_page', 'location'],
-              },
-            ],
-            properties: {
-              fullname: {
-                description: this.props.intl.formatMessage(
-                  messages.fullnameDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.fullnameTitle),
-                type: 'string',
-              },
-              email: {
-                description: this.props.intl.formatMessage(
-                  messages.emailDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.emailTitle),
-                type: 'string',
-              },
-              home_page: {
-                description: this.props.intl.formatMessage(
-                  messages.homePageDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.homePageTitle),
-                type: 'string',
-              },
-              location: {
-                description: this.props.intl.formatMessage(
-                  messages.locationDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.locationTitle),
-                type: 'string',
-              },
+    const InnerContent = (
+      <Form
+        formData={this.props.user}
+        schema={{
+          fieldsets: [
+            {
+              id: 'default',
+              title: this.props.intl.formatMessage(messages.default),
+              fields: ['fullname', 'email', 'home_page', 'location'],
             },
-            required: ['email'],
-          }}
-          onSubmit={this.onSubmit}
-          onCancel={this.onCancel}
-          loading={this.props.loading}
-        />
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
-                <Icon
-                  name={backSVG}
-                  className="contents circled"
-                  size="32px"
-                  title={this.props.intl.formatMessage(messages.back)}
-                />
-              </Link>
-            }
-          />
-        </Portal>
-      </Container>
-    ) : (
-      <div />
+          ],
+          properties: {
+            fullname: {
+              description: this.props.intl.formatMessage(
+                messages.fullnameDescription,
+              ),
+              title: this.props.intl.formatMessage(messages.fullnameTitle),
+              type: 'string',
+            },
+            email: {
+              description: this.props.intl.formatMessage(
+                messages.emailDescription,
+              ),
+              title: this.props.intl.formatMessage(messages.emailTitle),
+              type: 'string',
+            },
+            home_page: {
+              description: this.props.intl.formatMessage(
+                messages.homePageDescription,
+              ),
+              title: this.props.intl.formatMessage(messages.homePageTitle),
+              type: 'string',
+            },
+            location: {
+              description: this.props.intl.formatMessage(
+                messages.locationDescription,
+              ),
+              title: this.props.intl.formatMessage(messages.locationTitle),
+              type: 'string',
+            },
+          },
+          required: ['email'],
+        }}
+        onSubmit={this.onSubmit}
+        onCancel={this.onCancel}
+        loading={this.props.loading}
+      />
     );
+
+    if (this.props.innerOnly && this.props.loaded) {
+      return <>{InnerContent}</>;
+    }
+
+    if (!this.props.innerOnly && this.props.loaded) {
+      return (
+        <Container id="page-personal-information">
+          <Helmet
+            title={this.props.intl.formatMessage(messages.personalInformation)}
+          />
+          <Menu attached="top" tabular stackable>
+            <Menu.Item
+              name={this.props.intl.formatMessage(messages.personalInformation)}
+              active
+            />
+            <Link to="/personal-preferences" className="item">
+              <FormattedMessage
+                id="Personal Preferences"
+                defaultMessage="Personal Preferences"
+              />
+            </Link>
+            <Link to="/change-password" className="item">
+              <FormattedMessage
+                id="Change Password"
+                defaultMessage="Change Password"
+              />
+            </Link>
+          </Menu>
+          {InnerContent}
+          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <Link
+                  to={`${getBaseUrl(this.props.pathname)}`}
+                  className="item"
+                >
+                  <Icon
+                    name={backSVG}
+                    className="contents circled"
+                    size="32px"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              }
+            />
+          </Portal>
+        </Container>
+      );
+    } else {
+      return <div />;
+    }
   }
 }
 
