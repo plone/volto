@@ -21,6 +21,7 @@ import {
   Header,
   Icon,
   Messages,
+  Toast,
 } from '../../../components';
 import { BodyClass, getBaseUrl, getView } from '../../../helpers';
 import {
@@ -110,7 +111,6 @@ export class AppComponent extends Component {
   render() {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
-    toast.info('hey');
 
     return (
       <Fragment>
@@ -136,7 +136,13 @@ export class AppComponent extends Component {
           hideProgressBar
           autoClose={false}
           transition={Slide}
-          closeButton={<Icon name={clearSVG} size="18px" />}
+          closeButton={
+            <Icon
+              className="toast-dismiss-action"
+              name={clearSVG}
+              size="18px"
+            />
+          }
         />
       </Fragment>
     );
