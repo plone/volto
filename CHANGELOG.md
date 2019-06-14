@@ -6,9 +6,12 @@
 
 - Upgrade to react-redux 7.1. It includes the new official hooks for Redux
   @sneridagh
+- Make Login Route accessible from anywhere in path url @nileshgulia1
+
+### Changes
+
 - Fix basic tiles classes @rodfersou
 - Fix video alignment @sneridagh
-- Make Login Route accessible from anywhere in path url @nileshgulia1
 
 ### Internal
 
