@@ -8,6 +8,7 @@
   @sneridagh
 - Fix basic tiles classes @rodfersou
 - Fix video alignment @sneridagh
+- Make Login Route accessible from anywhere in path url @nileshgulia1
 
 ### Internal
 
