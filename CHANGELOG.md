@@ -1,6 +1,6 @@
 # Change Log
 
-## 3.0.5 (unreleased)
+## 3.1.0 (2019-06-14)
 
 ### Added
 
