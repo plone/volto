@@ -112,6 +112,13 @@ export class AppComponent extends Component {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
 
+    toast.info(
+      <Toast
+        info
+        title="I'm a title"
+        content="This is the content, lorem ipsum"
+      />,
+    );
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
