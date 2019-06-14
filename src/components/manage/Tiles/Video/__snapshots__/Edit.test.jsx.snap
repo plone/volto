@@ -8,7 +8,9 @@ exports[`renders an edit image tile component 1`] = `
   role="presentation"
   tabIndex={0}
 >
-  <p>
+  <div
+    className="video-inner"
+  >
     <div
       className="ui blocker"
     />
@@ -34,6 +36,6 @@ exports[`renders an edit image tile component 1`] = `
         />
       </div>
     </div>
-  </p>
+  </div>
 </div>
 `;
