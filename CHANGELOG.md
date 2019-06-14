@@ -7,6 +7,7 @@
 - Upgrade to react-redux 7.1.0-RC that includes the new official Redux hooks
   @sneridagh
 - Fix basic tiles classes @rodfersou
+- Fix video alignment @sneridagh
 
 ### Internal
 
