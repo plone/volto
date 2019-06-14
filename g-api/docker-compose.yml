@@ -2,7 +2,7 @@ version: '3'
 services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.3.0
-    container_name: elasticsearch
+    container_name: elasticsearch_test
     environment:
       - cluster.name=docker-cluster
       - bootstrap.memory_lock=true
@@ -14,10 +14,10 @@ services:
         hard: -1
   redis:
     image: redis
-    container_name: redis
+    container_name: redis_test
   postgres:
     image: postgres:9.6
-    container_name: postgres
+    container_name: postgres_test
     environment:
         POSTGRES_DB: guillotina
         POSTGRES_USER: guillotina

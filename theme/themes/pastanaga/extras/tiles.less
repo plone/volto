@@ -36,6 +36,7 @@
   margin-bottom: 2rem;
 }
 
+.ui.drag.tile.video,
 .ui.drag.tile.image {
   z-index: 2;
   // This fixes the floating images in Volto Editor! Muahahaha
@@ -60,16 +61,21 @@
 .tile.align.left {
   z-index: 2;
 
-  iframe,
+  &.video .video-inner,
+  &.maps iframe,
   img {
     margin-right: 1em !important;
     margin-bottom: 1em;
     float: left;
   }
 
-  iframe {
+  &.video .video-inner {
     width: 50%;
-    height: 25vw;
+  }
+
+  &.maps iframe {
+    width: 50%;
+    height: 45vh;
   }
 
   .ui.image,
@@ -81,16 +87,21 @@
 .tile.align.right {
   z-index: 2;
 
-  iframe,
+  &.maps iframe,
+  &.video .video-inner,
   img {
     margin-bottom: 1em;
     margin-left: 1em !important;
     float: right;
   }
 
-  iframe {
+  &.video .video-inner {
     width: 50%;
-    height: 25vw;
+  }
+
+  &.maps iframe {
+    width: 50%;
+    height: 45vh;
   }
 
   .ui.image,
@@ -108,7 +119,7 @@
 
   iframe {
     width: 100%;
-    height: 35vh;
+    height: 45vh;
   }
 }
 
@@ -117,7 +128,6 @@
 
   iframe {
     width: 100%;
-    height: 35vh;
   }
 
   img {

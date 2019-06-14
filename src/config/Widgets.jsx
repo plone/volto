@@ -24,6 +24,7 @@ export const widgetMapping = {
     textarea: TextareaWidget,
     datetime: DatetimeWidget,
     password: PasswordWidget,
+    file: FileWidget,
   },
   vocabulary: {
     // 'plone.app.vocabularies.Catalog': ReferenceWidget,

@@ -4,14 +4,19 @@
 
 ### Added
 
-- Make Login Route accessible from anywhere in path url @nileshgulia1
-- Upgrade to react-redux 7.1.0-RC that includes the new official Redux hooks
+- Upgrade to react-redux 7.1. It includes the new official hooks for Redux
   @sneridagh
+- Fix basic tiles classes @rodfersou
+- Fix video alignment @sneridagh
+- Make Login Route accessible from anywhere in path url @nileshgulia1
 
 ### Internal
 
 - Upgrade handlebars to 4.1.2 @timo
 - Upgrade js-yaml to 3.13.3 @timo
+- Upgrade Plone api folder to 5.2rc3 @sneridagh
+- Fixes for image/file fields widgets for Guillotina @sneridagh
+- Fixes for Cypress Guillotina tests @sneridagh
 
 ## 3.0.4 (2019-05-30)
 
