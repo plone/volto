@@ -1,10 +1,38 @@
 # Change Log
 
-## 3.0.4 (unreleased)
+## 3.1.1 (unreleased)
 
 ### Added
 
 ### Changes
+
+## 3.1.0 (2019-06-14)
+
+### Added
+
+- Upgrade to react-redux 7.1. It includes the new official hooks for Redux
+  @sneridagh
+- Make Login Route accessible from anywhere in path url @nileshgulia1
+
+### Changes
+
+- Fix basic tiles classes @rodfersou
+- Fix video alignment @sneridagh
+
+### Internal
+
+- Upgrade handlebars to 4.1.2 @timo
+- Upgrade js-yaml to 3.13.3 @timo
+- Upgrade Plone api folder to 5.2rc3 @sneridagh
+- Fixes for image/file fields widgets for Guillotina @sneridagh
+- Fixes for Cypress Guillotina tests @sneridagh
+
+## 3.0.4 (2019-05-30)
+
+### Changes
+
+- Fix order of arguments when sending the contact form @csenger
+- Fix @babel/core import on i18n script @sneridagh
 
 ## 3.0.3 (2019-05-13)
 

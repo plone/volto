@@ -244,7 +244,7 @@ export default class Edit extends Component {
           </div>
         )}
         {data.url ? (
-          <p>
+          <div className="video-inner">
             <div className="ui blocker" />
             {data.url.match('list') ? (
               <Embed
@@ -268,7 +268,7 @@ export default class Edit extends Component {
                 autoplay={false}
               />
             )}
-          </p>
+          </div>
         ) : (
           <div>
             <Message>
