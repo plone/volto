@@ -14,6 +14,8 @@
 - Upgrade handlebars to 4.1.2 @timo
 - Upgrade js-yaml to 3.13.3 @timo
 - Upgrade Plone api folder to 5.2rc3 @sneridagh
+- Fixes for image/file fields widgets for Guillotina @sneridagh
+- Fixes for Cypress Guillotina tests @sneridagh
 
 ## 3.0.4 (2019-05-30)
 
