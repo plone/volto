@@ -254,7 +254,7 @@ svg.icon {
 }
 
 .toolbar-content {
-  z-index: 1;
+  z-index: 3;
   box-shadow: 0 1px 2px 0 #c7d5d8;
 }
 
@@ -540,7 +540,8 @@ svg.icon {
 
 .personal-tools {
   header {
-    .back {
+    .back,
+    .vertical.divider {
       @media only screen and (min-width: @largestMobileScreen) {
         display: none;
       }
@@ -601,10 +602,6 @@ svg.icon {
   height: 30px;
   margin-right: 20px;
   border-left: 1px solid @silver;
-
-  @media only screen and (min-width: @largestMobileScreen) {
-    display: none;
-  }
 }
 
 .profile,

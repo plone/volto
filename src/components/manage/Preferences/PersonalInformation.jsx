@@ -18,9 +18,10 @@ import {
 } from 'react-intl';
 import { Container, Menu } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
+import { toast } from 'react-toastify';
 
-import { Form, Icon, Toolbar } from '../../../components';
-import { getUser, updateUser, addMessage } from '../../../actions';
+import { Form, Icon, Toast, Toolbar } from '../../../components';
+import { getUser, updateUser } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
 import backSVG from '../../../icons/back.svg';
@@ -95,7 +96,7 @@ const messages = defineMessages({
     loading: state.users.update.loading,
     pathname: props.location.pathname,
   }),
-  dispatch => bindActionCreators({ addMessage, getUser, updateUser }, dispatch),
+  dispatch => bindActionCreators({ getUser, updateUser }, dispatch),
 )
 class PersonalInformation extends Component {
   /**
@@ -112,13 +113,13 @@ class PersonalInformation extends Component {
     }).isRequired,
     updateUser: PropTypes.func.isRequired,
     getUser: PropTypes.func.isRequired,
-    addMessage: PropTypes.func.isRequired,
     userId: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
     loaded: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
     pathname: PropTypes.string.isRequired,
     isToolbarEmbedded: PropTypes.bool,
+    closeMenu: PropTypes.func,
   };
 
   /**
@@ -150,10 +151,8 @@ class PersonalInformation extends Component {
    */
   onSubmit(data) {
     this.props.updateUser(this.props.userId, data);
-    this.props.addMessage(
-      null,
-      this.props.intl.formatMessage(messages.saved),
-      'success',
+    toast.success(
+      <Toast success title={this.props.intl.formatMessage(messages.saved)} />,
     );
   }
 
@@ -163,7 +162,11 @@ class PersonalInformation extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    this.props.history.goBack();
+    if (this.props.isToolbarEmbedded) {
+      this.props.closeMenu();
+    } else {
+      this.props.history.goBack();
+    }
   }
 
   /**
