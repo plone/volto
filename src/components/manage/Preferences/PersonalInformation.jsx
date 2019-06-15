@@ -122,6 +122,11 @@ class PersonalInformation extends Component {
     closeMenu: PropTypes.func,
   };
 
+  defaultProps = {
+    isToolbarEmbedded: false,
+    closeMenu: null,
+  };
+
   /**
    * Constructor
    * @method constructor
@@ -150,10 +155,19 @@ class PersonalInformation extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
+    // We don't want the user to change his login name/username or the roles
+    // from this form
+    // Backend will complain anyways, but we clean the data here before it does
+    delete data.id;
+    delete data.username;
+    delete data.roles;
     this.props.updateUser(this.props.userId, data);
     toast.success(
       <Toast success title={this.props.intl.formatMessage(messages.saved)} />,
     );
+    if (this.props.isToolbarEmbedded) {
+      this.props.closeMenu();
+    }
   }
 
   /**

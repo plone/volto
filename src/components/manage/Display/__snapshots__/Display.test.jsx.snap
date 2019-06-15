@@ -8,85 +8,72 @@ Array [
     View
   </label>,
   <div
-    className="Select has-value Select--single"
+    className="css-10nd86i react-select-container"
+    onKeyDown={[Function]}
   >
+    <div
+      className="css-mgvt82 react-select__control"
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
+    >
+      <div
+        className="css-1hwfws3 react-select__value-container react-select__value-container--has-value"
+      >
+        <div
+          className="css-xp4uvy react-select__single-value"
+        >
+          Summary view
+        </div>
+        <input
+          className="css-14uuagi"
+          disabled={false}
+          id="react-select-2-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          readOnly={true}
+          tabIndex="0"
+          value=""
+        />
+      </div>
+      <div
+        className="css-1wy0on6 react-select__indicators"
+      >
+        <span
+          className="css-hba3sr react-select__indicator-separator"
+        />
+        <div
+          aria-hidden="true"
+          className="css-1ep9fjw react-select__indicator react-select__dropdown-indicator"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#007bc1",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </div>
+      </div>
+    </div>
     <input
-      disabled={false}
-      name="state-select"
+      name="display-select"
       type="hidden"
       value="summary_view"
     />
-    <div
-      className="Select-control"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-    >
-      <span
-        className="Select-multi-value-wrapper"
-        id="react-select-2--value"
-      >
-        <div
-          className="Select-value"
-        >
-          <span
-            aria-selected="true"
-            className="Select-value-label"
-            id="react-select-2--value-item"
-            role="option"
-          >
-            <span
-              className="Select-value-label"
-            >
-              Summary view
-            </span>
-          </span>
-        </div>
-        <div
-          aria-activedescendant="react-select-2--value"
-          aria-disabled="false"
-          aria-expanded={false}
-          aria-owns=""
-          className="Select-input"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          role="combobox"
-          style={
-            Object {
-              "border": 0,
-              "display": "inline-block",
-              "width": 1,
-            }
-          }
-          tabIndex={0}
-        />
-      </span>
-      <span
-        className="Select-arrow-zone"
-        onMouseDown={[Function]}
-      >
-        <svg
-          className="icon"
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": undefined,
-            }
-          }
-          onClick={null}
-          style={
-            Object {
-              "fill": "currentColor",
-              "height": "24px",
-              "width": "auto",
-            }
-          }
-          viewBox=""
-          xmlns=""
-        />
-      </span>
-    </div>
   </div>,
 ]
 `;

@@ -24,185 +24,56 @@ exports[`Contact form renders a contact form 1`] = `
         </div>
       </div>
     </div>
-    <div
-      className="ui container"
+    <form
+      className="ui form"
+      method="post"
+      onSubmit={[Function]}
     >
-      <form
-        className="ui form"
-        method="post"
-        onSubmit={[Function]}
+      <div
+        className="ui raised segments"
       >
         <div
-          className="ui raised segments"
+          className="ui segment"
         >
           <div
-            className="ui segment"
+            className="ui segment primary"
+          >
+            Contact form
+          </div>
+          <div
+            className="inline field"
           >
             <div
-              className="ui segment primary"
-            >
-              Contact form
-            </div>
-            <div
-              className="inline field"
+              className="ui grid"
             >
               <div
-                className="ui grid"
+                className="stretched row"
               >
                 <div
-                  className="stretched row"
+                  className="four wide column"
                 >
                   <div
-                    className="four wide column"
+                    className="wrapper"
                   >
-                    <div
-                      className="wrapper"
+                    <label
+                      htmlFor="field-name"
                     >
-                      <label
-                        htmlFor="field-name"
-                      >
-                        Name
-                      </label>
-                    </div>
-                  </div>
-                  <div
-                    className="eight wide column"
-                  >
-                    <div
-                      className="ui input"
-                    >
-                      <input
-                        disabled={false}
-                        id="field-name"
-                        name="name"
-                        onChange={[Function]}
-                        type="text"
-                        value=""
-                      />
-                    </div>
+                      Name
+                    </label>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div
-              className="inline required field"
-            >
-              <div
-                className="ui grid"
-              >
                 <div
-                  className="stretched row"
+                  className="eight wide column"
                 >
                   <div
-                    className="four wide column"
+                    className="ui input"
                   >
-                    <div
-                      className="wrapper"
-                    >
-                      <label
-                        htmlFor="field-from"
-                      >
-                        From
-                      </label>
-                    </div>
-                  </div>
-                  <div
-                    className="eight wide column"
-                  >
-                    <div
-                      className="ui input"
-                    >
-                      <input
-                        disabled={false}
-                        id="field-from"
-                        name="from"
-                        onChange={[Function]}
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="inline field"
-            >
-              <div
-                className="ui grid"
-              >
-                <div
-                  className="stretched row"
-                >
-                  <div
-                    className="four wide column"
-                  >
-                    <div
-                      className="wrapper"
-                    >
-                      <label
-                        htmlFor="field-subject"
-                      >
-                        Subject
-                      </label>
-                    </div>
-                  </div>
-                  <div
-                    className="eight wide column"
-                  >
-                    <div
-                      className="ui input"
-                    >
-                      <input
-                        disabled={false}
-                        id="field-subject"
-                        name="subject"
-                        onChange={[Function]}
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="inline required field textarea"
-            >
-              <div
-                className="ui grid"
-              >
-                <div
-                  className="stretched row"
-                >
-                  <div
-                    className="four wide column"
-                  >
-                    <div
-                      className="wrapper"
-                    >
-                      <label
-                        htmlFor="field-message"
-                      >
-                        Message
-                      </label>
-                    </div>
-                  </div>
-                  <div
-                    className="eight wide column"
-                  >
-                    <textarea
+                    <input
                       disabled={false}
-                      id="field-message"
-                      name="message"
+                      id="field-name"
+                      name="name"
                       onChange={[Function]}
-                      onInput={[Function]}
-                      rows={3}
-                      style={
-                        Object {
-                          "resize": "",
-                        }
-                      }
+                      type="text"
                       value=""
                     />
                   </div>
@@ -211,33 +82,161 @@ exports[`Contact form renders a contact form 1`] = `
             </div>
           </div>
           <div
-            className="ui clearing segment actions"
+            className="inline required field"
           >
-            <button
-              className="ui big basic circular icon primary right floated button"
-              onClick={[Function]}
-              title="Send"
-              type="submit"
+            <div
+              className="ui grid"
             >
-              <i
-                aria-hidden="true"
-                className="arrow right icon"
-              />
-            </button>
-            <button
-              className="ui big basic circular icon secondary right floated button"
-              onClick={[Function]}
-              title="Cancel"
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="four wide column"
+                >
+                  <div
+                    className="wrapper"
+                  >
+                    <label
+                      htmlFor="field-from"
+                    >
+                      From
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="eight wide column"
+                >
+                  <div
+                    className="ui input"
+                  >
+                    <input
+                      disabled={false}
+                      id="field-from"
+                      name="from"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="inline field"
+          >
+            <div
+              className="ui grid"
             >
-              <i
-                aria-hidden="true"
-                className="remove icon"
-              />
-            </button>
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="four wide column"
+                >
+                  <div
+                    className="wrapper"
+                  >
+                    <label
+                      htmlFor="field-subject"
+                    >
+                      Subject
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="eight wide column"
+                >
+                  <div
+                    className="ui input"
+                  >
+                    <input
+                      disabled={false}
+                      id="field-subject"
+                      name="subject"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="inline required field textarea"
+          >
+            <div
+              className="ui grid"
+            >
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="four wide column"
+                >
+                  <div
+                    className="wrapper"
+                  >
+                    <label
+                      htmlFor="field-message"
+                    >
+                      Message
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="eight wide column"
+                >
+                  <textarea
+                    disabled={false}
+                    id="field-message"
+                    name="message"
+                    onChange={[Function]}
+                    onInput={[Function]}
+                    rows={3}
+                    style={
+                      Object {
+                        "resize": "",
+                      }
+                    }
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </form>
-    </div>
+        <div
+          className="ui clearing segment actions"
+        >
+          <button
+            className="ui big basic circular icon primary right floated button"
+            onClick={[Function]}
+            title="Send"
+            type="submit"
+          >
+            <i
+              aria-hidden="true"
+              className="arrow right icon"
+            />
+          </button>
+          <button
+            className="ui big basic circular icon secondary right floated button"
+            onClick={[Function]}
+            title="Cancel"
+          >
+            <i
+              aria-hidden="true"
+              className="remove icon"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+    <div
+      id="Portal"
+    />
   </div>
 </div>
 `;
@@ -269,185 +268,56 @@ exports[`Contact form renders a contact form with error message 1`] = `
         </p>
       </div>
     </div>
-    <div
-      className="ui container"
+    <form
+      className="ui form"
+      method="post"
+      onSubmit={[Function]}
     >
-      <form
-        className="ui form"
-        method="post"
-        onSubmit={[Function]}
+      <div
+        className="ui raised segments"
       >
         <div
-          className="ui raised segments"
+          className="ui segment"
         >
           <div
-            className="ui segment"
+            className="ui segment primary"
+          >
+            Contact form
+          </div>
+          <div
+            className="inline field"
           >
             <div
-              className="ui segment primary"
-            >
-              Contact form
-            </div>
-            <div
-              className="inline field"
+              className="ui grid"
             >
               <div
-                className="ui grid"
+                className="stretched row"
               >
                 <div
-                  className="stretched row"
+                  className="four wide column"
                 >
                   <div
-                    className="four wide column"
+                    className="wrapper"
                   >
-                    <div
-                      className="wrapper"
+                    <label
+                      htmlFor="field-name"
                     >
-                      <label
-                        htmlFor="field-name"
-                      >
-                        Name
-                      </label>
-                    </div>
-                  </div>
-                  <div
-                    className="eight wide column"
-                  >
-                    <div
-                      className="ui input"
-                    >
-                      <input
-                        disabled={false}
-                        id="field-name"
-                        name="name"
-                        onChange={[Function]}
-                        type="text"
-                        value=""
-                      />
-                    </div>
+                      Name
+                    </label>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div
-              className="inline required field"
-            >
-              <div
-                className="ui grid"
-              >
                 <div
-                  className="stretched row"
+                  className="eight wide column"
                 >
                   <div
-                    className="four wide column"
+                    className="ui input"
                   >
-                    <div
-                      className="wrapper"
-                    >
-                      <label
-                        htmlFor="field-from"
-                      >
-                        From
-                      </label>
-                    </div>
-                  </div>
-                  <div
-                    className="eight wide column"
-                  >
-                    <div
-                      className="ui input"
-                    >
-                      <input
-                        disabled={false}
-                        id="field-from"
-                        name="from"
-                        onChange={[Function]}
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="inline field"
-            >
-              <div
-                className="ui grid"
-              >
-                <div
-                  className="stretched row"
-                >
-                  <div
-                    className="four wide column"
-                  >
-                    <div
-                      className="wrapper"
-                    >
-                      <label
-                        htmlFor="field-subject"
-                      >
-                        Subject
-                      </label>
-                    </div>
-                  </div>
-                  <div
-                    className="eight wide column"
-                  >
-                    <div
-                      className="ui input"
-                    >
-                      <input
-                        disabled={false}
-                        id="field-subject"
-                        name="subject"
-                        onChange={[Function]}
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="inline required field textarea"
-            >
-              <div
-                className="ui grid"
-              >
-                <div
-                  className="stretched row"
-                >
-                  <div
-                    className="four wide column"
-                  >
-                    <div
-                      className="wrapper"
-                    >
-                      <label
-                        htmlFor="field-message"
-                      >
-                        Message
-                      </label>
-                    </div>
-                  </div>
-                  <div
-                    className="eight wide column"
-                  >
-                    <textarea
+                    <input
                       disabled={false}
-                      id="field-message"
-                      name="message"
+                      id="field-name"
+                      name="name"
                       onChange={[Function]}
-                      onInput={[Function]}
-                      rows={3}
-                      style={
-                        Object {
-                          "resize": "",
-                        }
-                      }
+                      type="text"
                       value=""
                     />
                   </div>
@@ -456,33 +326,161 @@ exports[`Contact form renders a contact form with error message 1`] = `
             </div>
           </div>
           <div
-            className="ui clearing segment actions"
+            className="inline required field"
           >
-            <button
-              className="ui big basic circular icon primary right floated button"
-              onClick={[Function]}
-              title="Send"
-              type="submit"
+            <div
+              className="ui grid"
             >
-              <i
-                aria-hidden="true"
-                className="arrow right icon"
-              />
-            </button>
-            <button
-              className="ui big basic circular icon secondary right floated button"
-              onClick={[Function]}
-              title="Cancel"
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="four wide column"
+                >
+                  <div
+                    className="wrapper"
+                  >
+                    <label
+                      htmlFor="field-from"
+                    >
+                      From
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="eight wide column"
+                >
+                  <div
+                    className="ui input"
+                  >
+                    <input
+                      disabled={false}
+                      id="field-from"
+                      name="from"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="inline field"
+          >
+            <div
+              className="ui grid"
             >
-              <i
-                aria-hidden="true"
-                className="remove icon"
-              />
-            </button>
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="four wide column"
+                >
+                  <div
+                    className="wrapper"
+                  >
+                    <label
+                      htmlFor="field-subject"
+                    >
+                      Subject
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="eight wide column"
+                >
+                  <div
+                    className="ui input"
+                  >
+                    <input
+                      disabled={false}
+                      id="field-subject"
+                      name="subject"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="inline required field textarea"
+          >
+            <div
+              className="ui grid"
+            >
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="four wide column"
+                >
+                  <div
+                    className="wrapper"
+                  >
+                    <label
+                      htmlFor="field-message"
+                    >
+                      Message
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="eight wide column"
+                >
+                  <textarea
+                    disabled={false}
+                    id="field-message"
+                    name="message"
+                    onChange={[Function]}
+                    onInput={[Function]}
+                    rows={3}
+                    style={
+                      Object {
+                        "resize": "",
+                      }
+                    }
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </form>
-    </div>
+        <div
+          className="ui clearing segment actions"
+        >
+          <button
+            className="ui big basic circular icon primary right floated button"
+            onClick={[Function]}
+            title="Send"
+            type="submit"
+          >
+            <i
+              aria-hidden="true"
+              className="arrow right icon"
+            />
+          </button>
+          <button
+            className="ui big basic circular icon secondary right floated button"
+            onClick={[Function]}
+            title="Cancel"
+          >
+            <i
+              aria-hidden="true"
+              className="remove icon"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+    <div
+      id="Portal"
+    />
   </div>
 </div>
 `;

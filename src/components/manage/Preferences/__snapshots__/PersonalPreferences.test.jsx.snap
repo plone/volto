@@ -33,202 +33,198 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
       </span>
     </a>
   </div>
-  <div
-    className="ui container"
+  <form
+    className="ui form"
+    method="post"
+    onSubmit={[Function]}
   >
-    <form
-      className="ui form"
-      method="post"
-      onSubmit={[Function]}
+    <div
+      className="ui raised segments"
     >
       <div
-        className="ui raised segments"
+        className="ui segment"
       >
         <div
-          className="ui segment"
+          className="inline field help"
         >
           <div
-            className="inline field help"
+            className="ui grid"
           >
             <div
-              className="ui grid"
+              className="stretched row"
             >
               <div
-                className="stretched row"
+                className="four wide column"
               >
                 <div
-                  className="four wide column"
+                  className="wrapper"
                 >
-                  <div
-                    className="wrapper"
+                  <label
+                    htmlFor="field-language"
                   >
-                    <label
-                      htmlFor="field-language"
-                    >
-                      Language
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
-                  <div
-                    className="css-10nd86i react-select-container"
-                    id="field-language"
-                    onKeyDown={[Function]}
-                  >
-                    <div
-                      className="css-mgvt82 react-select__control"
-                      onMouseDown={[Function]}
-                      onTouchEnd={[Function]}
-                    >
-                      <div
-                        className="css-1hwfws3 react-select__value-container react-select__value-container--has-value"
-                      >
-                        <div
-                          className="css-xp4uvy react-select__single-value"
-                        />
-                        <div
-                          className="css-1g6gooi"
-                        >
-                          <div
-                            className="react-select__input"
-                            style={
-                              Object {
-                                "display": "inline-block",
-                              }
-                            }
-                          >
-                            <input
-                              aria-autocomplete="list"
-                              autoCapitalize="none"
-                              autoComplete="off"
-                              autoCorrect="off"
-                              disabled={false}
-                              id="react-select-2-input"
-                              onBlur={[Function]}
-                              onChange={[Function]}
-                              onFocus={[Function]}
-                              spellCheck="false"
-                              style={
-                                Object {
-                                  "background": 0,
-                                  "border": 0,
-                                  "boxSizing": "content-box",
-                                  "color": "inherit",
-                                  "fontSize": "inherit",
-                                  "opacity": 1,
-                                  "outline": 0,
-                                  "padding": 0,
-                                  "width": "1px",
-                                }
-                              }
-                              tabIndex="0"
-                              type="text"
-                              value=""
-                            />
-                            <div
-                              style={
-                                Object {
-                                  "height": 0,
-                                  "left": 0,
-                                  "overflow": "scroll",
-                                  "position": "absolute",
-                                  "top": 0,
-                                  "visibility": "hidden",
-                                  "whiteSpace": "pre",
-                                }
-                              }
-                            >
-                              
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        className="css-1wy0on6 react-select__indicators"
-                      >
-                        <span
-                          className="css-hba3sr react-select__indicator-separator"
-                        />
-                        <div
-                          aria-hidden="true"
-                          className="css-1ep9fjw react-select__indicator react-select__dropdown-indicator"
-                          onMouseDown={[Function]}
-                          onTouchEnd={[Function]}
-                        >
-                          <svg
-                            className="icon"
-                            dangerouslySetInnerHTML={
-                              Object {
-                                "__html": undefined,
-                              }
-                            }
-                            onClick={null}
-                            style={
-                              Object {
-                                "fill": "#007bc1",
-                                "height": "24px",
-                                "width": "auto",
-                              }
-                            }
-                            viewBox=""
-                            xmlns=""
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <input
-                      name="language"
-                      type="hidden"
-                    />
-                  </div>
+                    Language
+                  </label>
                 </div>
               </div>
               <div
-                className="stretched row"
+                className="eight wide column"
               >
                 <div
-                  className="stretched twelve wide column"
+                  className="css-10nd86i react-select-container"
+                  id="field-language"
+                  onKeyDown={[Function]}
                 >
-                  <p
-                    className="help"
+                  <div
+                    className="css-mgvt82 react-select__control"
+                    onMouseDown={[Function]}
+                    onTouchEnd={[Function]}
                   >
-                    Your preferred language
-                  </p>
+                    <div
+                      className="css-1hwfws3 react-select__value-container react-select__value-container--has-value"
+                    >
+                      <div
+                        className="css-xp4uvy react-select__single-value"
+                      />
+                      <div
+                        className="css-1g6gooi"
+                      >
+                        <div
+                          className="react-select__input"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                            }
+                          }
+                        >
+                          <input
+                            aria-autocomplete="list"
+                            autoCapitalize="none"
+                            autoComplete="off"
+                            autoCorrect="off"
+                            disabled={false}
+                            id="react-select-2-input"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onFocus={[Function]}
+                            spellCheck="false"
+                            style={
+                              Object {
+                                "background": 0,
+                                "border": 0,
+                                "boxSizing": "content-box",
+                                "color": "inherit",
+                                "fontSize": "inherit",
+                                "opacity": 1,
+                                "outline": 0,
+                                "padding": 0,
+                                "width": "1px",
+                              }
+                            }
+                            tabIndex="0"
+                            type="text"
+                            value=""
+                          />
+                          <div
+                            style={
+                              Object {
+                                "height": 0,
+                                "left": 0,
+                                "overflow": "scroll",
+                                "position": "absolute",
+                                "top": 0,
+                                "visibility": "hidden",
+                                "whiteSpace": "pre",
+                              }
+                            }
+                          >
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className="css-1wy0on6 react-select__indicators"
+                    >
+                      <span
+                        className="css-hba3sr react-select__indicator-separator"
+                      />
+                      <div
+                        aria-hidden="true"
+                        className="css-1ep9fjw react-select__indicator react-select__dropdown-indicator"
+                        onMouseDown={[Function]}
+                        onTouchEnd={[Function]}
+                      >
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "#007bc1",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <input
+                    name="language"
+                    type="hidden"
+                  />
                 </div>
+              </div>
+            </div>
+            <div
+              className="stretched row"
+            >
+              <div
+                className="stretched twelve wide column"
+              >
+                <p
+                  className="help"
+                >
+                  Your preferred language
+                </p>
               </div>
             </div>
           </div>
         </div>
-        <div
-          className="ui clearing segment actions"
-        >
-          <button
-            className="ui big basic circular icon primary right floated button"
-            onClick={[Function]}
-            title="Save"
-            type="submit"
-          >
-            <i
-              aria-hidden="true"
-              className="arrow right icon"
-            />
-          </button>
-          <button
-            className="ui big basic circular icon secondary right floated button"
-            onClick={[Function]}
-            title="Cancel"
-          >
-            <i
-              aria-hidden="true"
-              className="remove icon"
-            />
-          </button>
-        </div>
       </div>
-    </form>
-  </div>
+      <div
+        className="ui clearing segment actions"
+      >
+        <button
+          className="ui big basic circular icon primary right floated button"
+          onClick={[Function]}
+          title="Save"
+          type="submit"
+        >
+          <i
+            aria-hidden="true"
+            className="arrow right icon"
+          />
+        </button>
+        <button
+          className="ui big basic circular icon secondary right floated button"
+          onClick={[Function]}
+          title="Cancel"
+        >
+          <i
+            aria-hidden="true"
+            className="remove icon"
+          />
+        </button>
+      </div>
+    </div>
+  </form>
    
   <div
     id="Portal"
