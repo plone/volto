@@ -194,6 +194,7 @@
     "pofile": "1.0.10",
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-loader": "3.0.0",
+    "postcss-overrides": "3.1.4",
     "prettier": "1.17.0",
     "prettier-stylelint": "0.4.2",
     "pretty": "2.0.0",
