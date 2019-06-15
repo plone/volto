@@ -209,6 +209,10 @@ class Toolbar extends Component {
             }
             ref={this.toolbarWindow}
           >
+            {this.state.showMenu && (
+              // This sets the scroll locker in the body tag in mobile
+              <BodyClass className="has-toolbar-menu-open" />
+            )}
             <div
               className="pusher-puller"
               ref={node => (this.pusher = node)}

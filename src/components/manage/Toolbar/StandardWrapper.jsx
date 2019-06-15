@@ -20,7 +20,7 @@ const StandardWrapper = props => {
           <Icon name={backSVG} size="32px" />
         </button>
         <div className="vertical divider" />
-        <h2>StandardWrapper</h2>
+        <h2>{props.componentName}</h2>
       </header>
       {props.children}
     </div>

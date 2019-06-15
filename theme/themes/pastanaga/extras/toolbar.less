@@ -246,6 +246,13 @@ svg.icon {
   }
 }
 
+.has-toolbar-menu-open {
+  // The body scroll locker when the menu is active in mobile.
+  @media only screen and (max-width: @largestMobileScreen) {
+    overflow: hidden;
+  }
+}
+
 .toolbar-content {
   z-index: 1;
   box-shadow: 0 1px 2px 0 #c7d5d8;
