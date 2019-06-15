@@ -101,15 +101,15 @@
   }
 
   @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
-    margin-right: calc(50vw - (@tabletWidth / 2) - 80px) !important;
+    margin-right: calc(50vw - (@tabletWidth / 2) - 74px) !important;
   }
 
   @media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
-    margin-right: calc(50vw - (@computerWidth / 2) - 80px) !important;
+    margin-right: calc(50vw - (@computerWidth / 2) - 74px) !important;
   }
 
   @media only screen and (min-width: @largeMonitorBreakpoint) {
-    margin-right: calc(50vw - (@largeMonitorWidth / 2) - 80px) !important;
+    margin-right: calc(50vw - (@largeMonitorWidth / 2) - 74px) !important;
   }
 }
 

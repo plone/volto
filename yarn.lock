@@ -10437,6 +10437,13 @@ postcss-overflow-shorthand@^2.0.0:
   dependencies:
     postcss "^7.0.2"
 
+postcss-overrides@3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/postcss-overrides/-/postcss-overrides-3.1.4.tgz#177e3e27bbc623ebef1ef9e9424ad6c420578118"
+  integrity sha512-BtwqJW/fWE6Euvaj0UbFDtIZ9TT7TaFdQyfXgrNsr2dJKa4m+2OcZXe0eNo6jgTf4158WqZRvuNCJLkDvTJvwA==
+  dependencies:
+    postcss "^7.0.14"
+
 postcss-page-break@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/postcss-page-break/-/postcss-page-break-2.0.0.tgz#add52d0e0a528cabe6afee8b46e2abb277df46bf"
