@@ -14,5 +14,8 @@ Array [
   <div
     id="footer"
   />,
+  <div
+    className="Toastify"
+  />,
 ]
 `;

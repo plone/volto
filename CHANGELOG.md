@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add toast component @sneridagh
+
 ### Changes
 
 ## 3.1.0 (2019-06-14)
