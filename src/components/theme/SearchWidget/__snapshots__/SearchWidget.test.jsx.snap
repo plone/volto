@@ -10,7 +10,7 @@ exports[`SearchWidget renders a search widget component 1`] = `
     className="field searchbox"
   >
     <div
-      className="ui transparent action input"
+      className="ui transparent input"
     >
       <input
         name="SearchableText"
@@ -20,16 +20,27 @@ exports[`SearchWidget renders a search widget component 1`] = `
         type="text"
         value=""
       />
-      <button
-        className="ui icon button"
-        onClick={[Function]}
-      >
-        <i
-          aria-hidden="true"
-          className="search icon"
-        />
-      </button>
     </div>
+    <button>
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "18px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </button>
   </div>
 </form>
 `;
