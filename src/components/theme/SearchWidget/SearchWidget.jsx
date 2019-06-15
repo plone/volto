@@ -9,6 +9,9 @@ import { Form, Input } from 'semantic-ui-react';
 import { PropTypes } from 'prop-types';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
+import { Icon } from '@plone/volto/components';
+import zoomSVG from '@plone/volto/icons/zoom.svg';
+
 const messages = defineMessages({
   search: {
     id: 'Search',
@@ -107,11 +110,13 @@ class SearchWidget extends Component {
             onChange={this.onChangeText}
             name="SearchableText"
             value={this.state.text}
-            action={{ icon: 'search' }}
             transparent
             placeholder={this.props.intl.formatMessage(messages.searchSite)}
             title={this.props.intl.formatMessage(messages.search)}
           />
+          <button>
+            <Icon name={zoomSVG} size="18px" />
+          </button>
         </Form.Field>
       </Form>
     );
