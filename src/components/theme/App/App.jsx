@@ -37,7 +37,8 @@ import clearSVG from '../../../icons/clear.svg';
 
 @connect(
   (state, props) => ({ pathname: props.location.pathname }),
-  dispatch => bindActionCreators({ purgeMessages }, dispatch),
+  dispatch =>
+    bindActionCreators({ purgeMessages, showSidebar, hideSidebar }, dispatch),
 )
 /**
  * @export
