@@ -10,6 +10,10 @@
 
 - Small UX/UI fixes @sneridagh
 
+### Internal
+
+- Fix console errors on tests @sneridagh
+
 ## 3.1.0 (2019-06-14)
 
 ### Added

@@ -79,7 +79,9 @@ exports[`Sharing renders a sharing component 1`] = `
             </th>
             <th
               className=""
-            />
+            >
+              Can add
+            </th>
           </tr>
         </thead>
         <tbody
