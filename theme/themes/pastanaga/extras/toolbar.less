@@ -332,10 +332,9 @@ svg.icon {
     }
 
     &-content {
-      position: absolute;
+      position: fixed;
       left: 84px;
       width: 320px;
-      // top: 228px; // (for .more)
     }
 
     &-body {
@@ -473,7 +472,7 @@ svg.icon {
     height: calc(100vh - 60px);
 
     @media only screen and (min-width: @largestMobileScreen) {
-      height: initial;
+      max-height: calc(520px - 60px);
     }
 
     .ui.segment:not(.actions) {

@@ -170,6 +170,7 @@ class Toolbar extends Component {
       }));
     } else {
       const elemOffsetTop = e.target.getBoundingClientRect().top;
+      console.log(e.target);
       this.setState(state => ({
         showMenu: !state.showMenu,
         menuStyle: { top: `${elemOffsetTop}px` },
@@ -251,7 +252,7 @@ class Toolbar extends Component {
                           componentIndex={index}
                           theToolbar={this.theToolbar}
                           closeMenu={this.closeMenu}
-                          innerOnly
+                          isToolbarEmbedded
                         />
                       </WrapperComponent>
                     );
@@ -308,19 +309,19 @@ class Toolbar extends Component {
                       tabIndex={0}
                     >
                       <Icon
-                        className="tablet or lower hidden"
+                        className="mobile hidden"
                         name={moreSVG}
                         size="30px"
                       />
                       {this.state.showMenu ? (
                         <Icon
-                          className="mobile tablet only"
+                          className="mobile only"
                           name={clearSVG}
                           size="30px"
                         />
                       ) : (
                         <Icon
-                          className="mobile tablet only"
+                          className="mobile only"
                           name={moreSVG}
                           size="30px"
                         />

@@ -118,7 +118,7 @@ class PersonalInformation extends Component {
     loaded: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
     pathname: PropTypes.string.isRequired,
-    innerOnly: PropTypes.bool,
+    isToolbarEmbedded: PropTypes.bool,
   };
 
   /**
@@ -221,11 +221,11 @@ class PersonalInformation extends Component {
       />
     );
 
-    if (this.props.innerOnly && this.props.loaded) {
+    if (this.props.isToolbarEmbedded && this.props.loaded) {
       return <>{InnerContent}</>;
     }
 
-    if (!this.props.innerOnly && this.props.loaded) {
+    if (!this.props.isToolbarEmbedded && this.props.loaded) {
       return (
         <Container id="page-personal-information">
           <Helmet
