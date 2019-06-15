@@ -278,14 +278,14 @@ class Toolbar extends Component {
                   <Fragment>
                     {editAction && (
                       <Link className="edit" to={`${path}/edit`}>
-                        <Icon name={penSVG} size="32px" className="circled" />
+                        <Icon name={penSVG} size="30px" className="circled" />
                       </Link>
                     )}
                     {this.props.content &&
                       this.props.content.is_folderish &&
                       folderContentsAction && (
                         <Link to="/contents">
-                          <Icon name={folderSVG} size="32px" />
+                          <Icon name={folderSVG} size="30px" />
                         </Link>
                       )}
                     {this.props.content && this.props.content.is_folderish && (
@@ -294,7 +294,7 @@ class Toolbar extends Component {
                         onClick={e => this.toggleMenu(e, 'types')}
                         tabIndex={0}
                       >
-                        <Icon name={addSVG} size="32px" />
+                        <Icon name={addSVG} size="30px" />
                       </button>
                     )}
                     <button
@@ -305,19 +305,19 @@ class Toolbar extends Component {
                       <Icon
                         className="tablet or lower hidden"
                         name={moreSVG}
-                        size="32px"
+                        size="30px"
                       />
                       {this.state.showMenu ? (
                         <Icon
                           className="mobile tablet only"
                           name={clearSVG}
-                          size="32px"
+                          size="30px"
                         />
                       ) : (
                         <Icon
                           className="mobile tablet only"
                           name={moreSVG}
-                          size="32px"
+                          size="30px"
                         />
                       )}
                     </button>
@@ -332,7 +332,7 @@ class Toolbar extends Component {
                     onClick={e => this.toggleMenu(e, 'personalTools')}
                     tabIndex={0}
                   >
-                    <Icon name={userSVG} size="32px" />
+                    <Icon name={userSVG} size="30px" />
                   </button>
                 )}
                 <div className="divider" />
