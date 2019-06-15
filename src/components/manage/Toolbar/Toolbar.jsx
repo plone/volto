@@ -297,6 +297,7 @@ class Toolbar extends Component {
                         <Icon name={addSVG} size="30px" />
                       </button>
                     )}
+                    <div className="toolbar-button-spacer" />
                     <button
                       className="more"
                       onClick={e => this.toggleMenu(e, 'more')}
