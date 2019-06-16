@@ -1,35 +1,39 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
-import { useSelector } from 'react-redux';
 import SidebarBody from './SidebarBody';
 
 const DEFAULT_TIMEOUT = 500;
 
-const Sidebar = props => {
-  const isSidebarOpen = useSelector(state => state.sidebar.isSidebarOpen);
+const withSidebar = WrappedComponent =>
+  class extends React.Component {
+    constructor() {
+      super();
+      this.state = { isSidebarOpen: false };
+    }
 
-  return (
-    <CSSTransition
-      in={isSidebarOpen}
-      timeout={DEFAULT_TIMEOUT}
-      classNames="sidebar-container"
-      unmountOnExit
-    >
-      <SidebarBody {...props} />
-    </CSSTransition>
-  );
-};
+    openSidebar = () => this.setState({ isSidebarOpen: true });
+    closeSidebar = () => this.setState({ isSidebarOpen: false });
 
-Sidebar.propTypes = {
-  tile: PropTypes.string,
-  data: PropTypes.objectOf(PropTypes.any).isRequired,
-  closeBrowser: PropTypes.func.isRequired,
-  onChangeTile: PropTypes.func.isRequired,
-};
+    render() {
+      return (
+        <>
+          <WrappedComponent
+            {...this.props}
+            isSidebarOpen={this.state.isSidebarOpen}
+            openSidebar={this.openSidebar}
+            closeSidebar={this.closeSidebar}
+          />
+          <CSSTransition
+            in={this.state.isSidebarOpen}
+            timeout={DEFAULT_TIMEOUT}
+            classNames="sidebar-container"
+            unmountOnExit
+          >
+            <SidebarBody {...this.props} closeSidebar={this.closeSidebar} />
+          </CSSTransition>
+        </>
+      );
+    }
+  };
 
-Sidebar.defaultProps = {
-  tile: '',
-};
-
-export default Sidebar;
+export default withSidebar;

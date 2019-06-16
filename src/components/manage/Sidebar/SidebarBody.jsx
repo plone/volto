@@ -28,25 +28,6 @@ const messages = defineMessages({
   },
 });
 
-function getParentURL(url) {
-  return (
-    `${join(url.split('/').slice(0, -1), '/')}`.replace(settings.apiPath, '') ||
-    '/'
-  );
-}
-
-/**
- * ObjectBrowser container class.
- * @class ObjectBrowser
- * @extends Component
- */
-@injectIntl
-@connect(
-  state => ({
-    searchSubrequests: state.search.subrequests,
-  }),
-  { searchContent },
-)
 class SidebarBody extends Component {
   /**
    * Property types.
@@ -58,7 +39,7 @@ class SidebarBody extends Component {
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     searchSubrequests: PropTypes.objectOf(PropTypes.any).isRequired,
     searchContent: PropTypes.func.isRequired,
-    closeBrowser: PropTypes.func.isRequired,
+    closeSidebar: PropTypes.func.isRequired,
     onChangeTile: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
@@ -74,10 +55,34 @@ class SidebarBody extends Component {
   };
 
   /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
    */
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside, false);
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside, false);
+  }
+
+  handleClickOutside = e => {
+    if (
+      this.objectBrowser &&
+      doesNodeContainClick(this.objectBrowser.current, e)
+    )
+      return;
+    this.props.closeSidebar();
+  };
+
+  sidebar = React.createRef();
+
   render() {
     return ReactDOM.createPortal(
       <aside
@@ -86,16 +91,6 @@ class SidebarBody extends Component {
         }}
         ref={this.sidebar}
         key="volto-sidebar"
-        style={{
-          height: '100vh',
-          position: 'fixed',
-          top: 0,
-          right: 0,
-          zIndex: 100,
-          width: '320px',
-          backgroundColor: '#fff',
-          boxShadow: '0 1px 2px 0 #c7d5d8',
-        }}
         className="sidebar-container"
       >
         Hello

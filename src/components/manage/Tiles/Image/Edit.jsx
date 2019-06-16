@@ -13,9 +13,9 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import cx from 'classnames';
 import { settings } from '~/config';
 
-import { Icon, Sidebar } from '@plone/volto/components';
-import { createContent, showSidebar, hideSidebar } from '../../../../actions';
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import { Icon } from '../../../../components';
+import { createContent } from '../../../../actions';
+import { flattenToAppURL, getBaseUrl, withSidebar } from '@plone/volto/helpers';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
@@ -40,15 +40,14 @@ const messages = defineMessages({
     content: state.content.data,
     pathname: state.router.location.pathname,
   }),
-  dispatch =>
-    bindActionCreators({ createContent, hideSidebar, showSidebar }, dispatch),
+  dispatch => bindActionCreators({ createContent }, dispatch),
 )
 /**
  * Edit image tile class.
  * @class Edit
  * @extends Component
  */
-export default class Edit extends Component {
+class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -76,6 +75,8 @@ export default class Edit extends Component {
     appendActions: PropTypes.node,
     appendSecondaryActions: PropTypes.node,
     intl: intlShape.isRequired,
+    openSidebar: PropTypes.func.isRequired,
+    closeSidebar: PropTypes.func.isRequired,
   };
 
   /**
@@ -303,7 +304,7 @@ export default class Edit extends Component {
               <div className="separator" />
             )}
             <Button.Group>
-              <Button icon basic onClick={this.props.showSidebar}>
+              <Button icon basic onClick={this.props.openSidebar}>
                 <Icon name={folderSVG} size="24px" />
               </Button>
             </Button.Group>
@@ -333,7 +334,7 @@ export default class Edit extends Component {
                 <Icon
                   name={folderSVG}
                   size="24px"
-                  onClick={this.props.showSidebar}
+                  onClick={this.props.openSidebar}
                 />
               </label>
               <label className="ui button basic icon">
@@ -378,14 +379,9 @@ export default class Edit extends Component {
             </Message>
           </div>
         )}
-
-        <Sidebar
-          closeBrowser={this.props.hideSidebar}
-          tile={this.props.tile}
-          onChangeTile={this.props.onChangeTile}
-          data={this.props.data}
-        />
       </div>
     );
   }
 }
+
+export default withSidebar(Edit);

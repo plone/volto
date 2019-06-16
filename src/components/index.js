@@ -110,4 +110,3 @@ export ViewMapTile from '@plone/volto/components/manage/Tiles/Maps/View';
 export ViewHTMLTile from '@plone/volto/components/manage/Tiles/HTML/View';
 
 export Toast from '@plone/volto/components/manage/Toast/Toast';
-export Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
