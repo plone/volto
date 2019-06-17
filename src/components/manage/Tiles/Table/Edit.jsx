@@ -6,7 +6,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Map } from 'immutable';
 import { readAsDataURL } from 'promise-file-reader';
+import { stateFromHTML } from 'draft-js-import-html';
 import {
   Button,
   Dimmer,
@@ -15,6 +17,7 @@ import {
   Message,
   Container,
 } from 'semantic-ui-react';
+import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { bindActionCreators } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import cx from 'classnames';
@@ -29,11 +32,31 @@ import tableSVG from '../../../../icons/table.svg';
 import { Table } from 'semantic-ui-react';
 
 const messages = defineMessages({
-  ImageTileInputPlaceholder: {
-    id: 'Browse or type URL',
-    defaultMessage: 'Browse or type URL',
+  title: {
+    id: 'Title',
+    defaultMessage: 'Title',
+  },
+  description: {
+    id: 'Text',
+    defaultMessage: 'Text',
   },
 });
+const blockTitleRenderMap = Map({
+  unstyled: {
+    element: 'h1',
+  },
+});
+const blockDescriptionRenderMap = Map({
+  unstyled: {
+    element: 'div',
+  },
+});
+const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(
+  blockTitleRenderMap,
+);
+const extendedDescripBlockRenderMap = DefaultDraftBlockRenderMap.merge(
+  blockDescriptionRenderMap,
+);
 
 @injectIntl
 @connect(
@@ -85,9 +108,23 @@ export default class Edit extends Component {
     super(props);
 
     this.state = {
-      uploading: false,
-      url: '',
+      currentFocused: 'description',
     };
+    if (!__SERVER__) {
+      let descriptionEditorState;
+      if (props.data && props.data.description) {
+        descriptionEditorState = EditorState.createWithContent(
+          stateFromHTML(props.data.description),
+        );
+      } else {
+        descriptionEditorState = EditorState.createEmpty();
+      }
+      this.state = {
+        descriptionEditorState,
+        currentFocused: 'title',
+      };
+    }
+    this.onChangeTableCell = this.onChangeTableCell.bind(this);
   }
 
   /**
@@ -97,7 +134,7 @@ export default class Edit extends Component {
    */
   componentDidMount() {
     if (this.props.selected) {
-      this.node.focus();
+      this.descriptionEditor.focus();
     }
   }
 
@@ -108,35 +145,37 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
-    if (
-      this.props.request.loading &&
-      nextProps.request.loaded &&
-      this.state.uploading
-    ) {
-      this.setState({
-        uploading: false,
-      });
-      this.props.onChangeTile(this.props.tile, {
-        ...this.props.data,
-        url: nextProps.content['@id'],
-      });
+    if (nextProps.selected !== this.props.selected) {
+      if (this.state.currentFocused === 'description') {
+        this.descriptionEditor.focus();
+      }
     }
-
-    if (nextProps.selected) {
-      this.node.focus();
+    if (
+      nextProps.data.description &&
+      this.props.data.description !== nextProps.data.description &&
+      !this.props.selected
+    ) {
+      const contentState = stateFromHTML(nextProps.data.description);
+      this.setState({
+        descriptionEditorState: nextProps.data.description
+          ? EditorState.createWithContent(contentState)
+          : EditorState.createEmpty(),
+      });
     }
   }
 
   /**
-   * Align tile handler
-   * @method onAlignTile
-   * @param {string} align Alignment option
+   * Change Description handler
+   * @method onChangeDescription
+   * @param {object} descriptionEditorState Editor state.
    * @returns {undefined}
    */
-  onAlignTile(align) {
-    this.props.onChangeTile(this.props.tile, {
-      ...this.props.data,
-      align,
+  onChangeTableCell(descriptionEditorState) {
+    this.setState({ descriptionEditorState }, () => {
+      this.props.onChangeTile(this.props.tile, {
+        ...this.props.data,
+        description: descriptionEditorState.getCurrentContent().getPlainText(),
+      });
     });
   }
 
@@ -150,14 +189,9 @@ export default class Edit extends Component {
       <div
         role="presentation"
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={cx(
-          'tile table align',
-          {
-            selected: this.props.selected,
-            center: !Boolean(this.props.data.align),
-          },
-          this.props.data.align,
-        )}
+        className={cx('tile', {
+          selected: this.props.selected,
+        })}
         tabIndex={0}
         onKeyDown={e =>
           this.props.handleKeyDown(
@@ -172,86 +206,109 @@ export default class Edit extends Component {
         }}
       >
         {this.props.selected && (
-          <div className="toolbar">
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.onAlignTile('left')}
-                active={this.props.data.align === 'left'}
-              >
-                <Icon name={tableSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.onAlignTile('right')}
-                active={this.props.data.align === 'right'}
-              >
-                <Icon name={tableSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.onAlignTile('center')}
-                active={
-                  this.props.data.align === 'center' || !this.props.data.align
-                }
-              >
-                <Icon name={tableSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.onAlignTile('full')}
-                active={this.props.data.align === 'full'}
-              >
-                <Icon name={tableSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <div className="separator" />
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() =>
-                  this.props.onChangeTile(this.props.tile, {
-                    ...this.props.data,
-                    url: '',
-                  })
-                }
-              >
-                <Icon name={clearSVG} size="24px" color="#e40166" />
-              </Button>
-            </Button.Group>
+          <div>
+            <Table celled>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>
+                    <Editor
+                      ref={node => {
+                        this.descriptionEditor = node;
+                      }}
+                      onChange={this.onChangeTableCell}
+                      editorState={this.state.descriptionEditorState}
+                      blockRenderMap={extendedDescripBlockRenderMap}
+                      handleReturn={() => true}
+                      placeholder={this.props.intl.formatMessage(
+                        messages.description,
+                      )}
+                      blockStyleFn={() => 'description-editor'}
+                      onUpArrow={() => {
+                        const selectionState = this.state.descriptionEditorState.getSelection();
+                        const currentCursorPosition = selectionState.getStartOffset();
+
+                        if (currentCursorPosition === 0) {
+                          this.setState(() => ({
+                            currentFocused: 'description',
+                          }));
+                          this.descriptionEditor.focus();
+                        }
+                      }}
+                      onDownArrow={() => {
+                        const selectionState = this.state.descriptionEditorState.getSelection();
+                        const { descriptionEditorState } = this.state;
+                        const currentCursorPosition = selectionState.getStartOffset();
+                        const blockLength = descriptionEditorState
+                          .getCurrentContent()
+                          .getFirstBlock()
+                          .getLength();
+
+                        if (currentCursorPosition === blockLength) {
+                          this.props.onFocusNextTile(
+                            this.props.tile,
+                            this.node,
+                          );
+                        }
+                      }}
+                    />
+                  </Table.HeaderCell>
+                  <Table.HeaderCell>
+                    <Editor
+                      ref={node => {
+                        this.descriptionEditor = node;
+                      }}
+                      onChange={this.onChangeTableCell}
+                      editorState={this.state.descriptionEditorState}
+                      blockRenderMap={extendedDescripBlockRenderMap}
+                      handleReturn={() => true}
+                      placeholder={this.props.intl.formatMessage(
+                        messages.description,
+                      )}
+                      blockStyleFn={() => 'description-editor'}
+                      onUpArrow={() => {
+                        const selectionState = this.state.descriptionEditorState.getSelection();
+                        const currentCursorPosition = selectionState.getStartOffset();
+
+                        if (currentCursorPosition === 0) {
+                          this.setState(() => ({
+                            currentFocused: 'description',
+                          }));
+                          this.descriptionEditor.focus();
+                        }
+                      }}
+                      onDownArrow={() => {
+                        const selectionState = this.state.descriptionEditorState.getSelection();
+                        const { descriptionEditorState } = this.state;
+                        const currentCursorPosition = selectionState.getStartOffset();
+                        const blockLength = descriptionEditorState
+                          .getCurrentContent()
+                          .getFirstBlock()
+                          .getLength();
+
+                        if (currentCursorPosition === blockLength) {
+                          this.props.onFocusNextTile(
+                            this.props.tile,
+                            this.node,
+                          );
+                        }
+                      }}
+                    />
+                  </Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                <Table.Row>
+                  <Table.Cell>Cell</Table.Cell>
+                  <Table.Cell>Cell</Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>Cell</Table.Cell>
+                  <Table.Cell>Cell</Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table>
           </div>
         )}
-        <Container>
-          <Table padded striped attached>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell />
-                <Table.HeaderCell>Header text</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>Cell</Table.Cell>
-                <Table.Cell>Cell</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Cell</Table.Cell>
-                <Table.Cell>Cell</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-        </Container>
       </div>
     );
   }
