@@ -82,4 +82,12 @@ const defaultTilesEditMap = {
   html: EditHTMLTile,
 };
 
-export { customTiles, defaultTilesViewMap, defaultTilesEditMap, messagesTiles };
+const requiredTiles = ['title'];
+
+export {
+  customTiles,
+  defaultTilesViewMap,
+  defaultTilesEditMap,
+  messagesTiles,
+  requiredTiles,
+};
