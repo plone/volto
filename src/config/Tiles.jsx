@@ -7,7 +7,7 @@ import ViewImageTile from '@plone/volto/components/manage/Tiles/Image/View';
 import ViewVideoTile from '@plone/volto/components/manage/Tiles/Video/View';
 import ViewHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImageLeft/View';
 import ViewMapTile from '@plone/volto/components/manage/Tiles/Maps/View';
-import ViewSummaryBoxTile from '@plone/volto/components/manage/Tiles/SummaryBox/View';
+import ViewProxyTile from '@plone/volto/components/manage/Tiles/Proxy/View';
 import ViewHTMLTile from '@plone/volto/components/manage/Tiles/HTML/View';
 
 import EditTitleTile from '@plone/volto/components/manage/Tiles/Title/Edit';
@@ -17,7 +17,7 @@ import EditImageTile from '@plone/volto/components/manage/Tiles/Image/Edit';
 import EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
 import EditHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImageLeft/Edit';
 import EditMapTile from '@plone/volto/components/manage/Tiles/Maps/Edit';
-import EditSummaryBoxTile from '@plone/volto/components/manage/Tiles/SummaryBox/Edit';
+import EditProxyTile from '@plone/volto/components/manage/Tiles/Proxy/Edit';
 import EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
 
 import globeSVG from '@plone/volto/icons/globe.svg';
@@ -35,7 +35,7 @@ const customTiles = [
     icon: globeSVG,
   },
   {
-    title: 'summarybox',
+    title: 'proxy',
     icon: summarySVG,
   },
   {
@@ -61,9 +61,9 @@ const messagesTiles = defineMessages({
     id: 'image',
     defaultMessage: 'Image',
   },
-  summarybox: {
-    id: 'summarybox',
-    defaultMessage: 'Summary Box',
+  proxy: {
+    id: 'proxy',
+    defaultMessage: 'Proxy',
   },
   video: {
     id: 'video',
@@ -79,7 +79,7 @@ const defaultTilesViewMap = {
   video: ViewVideoTile,
   hero: ViewHeroImageLeftTile,
   maps: ViewMapTile,
-  summarybox: ViewSummaryBoxTile,
+  proxy: ViewProxyTile,
   html: ViewHTMLTile,
 };
 
@@ -91,7 +91,7 @@ const defaultTilesEditMap = {
   video: EditVideoTile,
   hero: EditHeroImageLeftTile,
   maps: EditMapTile,
-  summarybox: EditSummaryBoxTile,
+  proxy: EditProxyTile,
   html: EditHTMLTile,
 };
 

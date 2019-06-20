@@ -4,7 +4,7 @@
 
 ### Added
 
-- Added Summary Box tile (Proxy) @pnicolli
+- Added Proxy tile @pnicolli
 - Add toast component @sneridagh
 
 ### Changes

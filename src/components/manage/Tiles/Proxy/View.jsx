@@ -1,6 +1,6 @@
 /**
- * View summary box tile.
- * @module components/manage/Tiles/SummaryBox/View
+ * View Proxy tile.
+ * @module components/manage/Tiles/Proxy/View
  */
 
 import React, { Component } from 'react';
@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import { getContent, resetContent } from '../../../../actions';
 
 /**
- * Summary box view component.
+ * Proxy view component.
  * @class View
  * @extends Component
  */
@@ -74,7 +74,7 @@ export class View extends Component {
       const image = get(data, 'image.scales.mini.download', undefined);
 
       return (
-        <Item.Group className="summary-box-item">
+        <Item.Group className="proxy-item">
           <Item>
             {image && (
               <Link to={selectedItem} className="ui small image">

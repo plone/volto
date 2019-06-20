@@ -529,6 +529,7 @@ msgstr "Name"
 msgid "New password"
 msgstr "Neues Passwort"
 
+#: components/manage/Tiles/Proxy/Edit
 #: components/manage/Tiles/SummaryBox/Edit
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -682,6 +683,7 @@ msgstr "Rechte"
 msgid "Save"
 msgstr "Speichern"
 
+#: components/manage/Tiles/Proxy/Edit
 #: components/manage/Tiles/SummaryBox/Edit
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
@@ -1007,13 +1009,13 @@ msgstr "Bild"
 msgid "label_my_email_address_is"
 msgstr "Meine E-Mail-Adresse lautet"
 
+#: config/Tiles
+msgid "proxy"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "Registrierungsformular"
-
-#: config/Tiles
-msgid "summarybox"
-msgstr ""
 
 #: config/Tiles
 msgid "text"

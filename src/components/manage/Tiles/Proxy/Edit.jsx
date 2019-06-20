@@ -1,6 +1,6 @@
 /**
- * Edit summary box tile.
- * @module components/manage/Tiles/SummaryBox/Edit
+ * Edit Proxy tile.
+ * @module components/manage/Tiles/Proxy/Edit
  */
 
 import React, { Component } from 'react';
@@ -204,7 +204,7 @@ export default class Edit extends Component {
       <div
         role="presentation"
         onClick={() => onSelectTile(tile)}
-        className={cx('tile summary-box', {
+        className={cx('tile proxy', {
           selected,
         })}
         tabIndex={0}
@@ -249,18 +249,17 @@ export default class Edit extends Component {
           </div>
         )}
         {/* Show selected item */}
-        {contentData &&
-          Object.keys(contentData).length > 0 && (
-            <Item.Group>
-              <Item>
-                {image && <Item.Image src={image} alt={contentData.title} />}
-                <Item.Content>
-                  <Item.Header>{contentData.title}</Item.Header>
-                  <Item.Description>{contentData.description}</Item.Description>
-                </Item.Content>
-              </Item>
-            </Item.Group>
-          )}
+        {contentData && Object.keys(contentData).length > 0 && (
+          <Item.Group>
+            <Item>
+              {image && <Item.Image src={image} alt={contentData.title} />}
+              <Item.Content>
+                <Item.Header>{contentData.title}</Item.Header>
+                <Item.Description>{contentData.description}</Item.Description>
+              </Item.Content>
+            </Item>
+          </Item.Group>
+        )}
       </div>
     );
   }

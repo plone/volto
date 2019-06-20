@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-06-20T10:27:24.623Z\n"
+"POT-Creation-Date: 2019-06-20T11:44:33.019Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -622,6 +622,7 @@ msgstr ""
 msgid "New password"
 msgstr ""
 
+#: components/manage/Tiles/Proxy/Edit
 #: components/manage/Tiles/SummaryBox/Edit
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -806,6 +807,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
+#: components/manage/Tiles/Proxy/Edit
 #: components/manage/Tiles/SummaryBox/Edit
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search
@@ -1206,14 +1208,14 @@ msgstr ""
 msgid "label_my_email_address_is"
 msgstr ""
 
+#: config/Tiles
+# defaultMessage: Proxy
+msgid "proxy"
+msgstr ""
+
 #: components/theme/Login/Login
 # defaultMessage: registration form
 msgid "registration form"
-msgstr ""
-
-#: config/Tiles
-# defaultMessage: Summary Box
-msgid "summarybox"
 msgstr ""
 
 #: config/Tiles

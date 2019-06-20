@@ -9,7 +9,7 @@ const mockStore = configureStore();
 
 global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
-test('renders an edit summary box tile component', () => {
+test('renders an edit proxy tile component', () => {
   const store = mockStore({
     intl: {
       locale: 'en',
