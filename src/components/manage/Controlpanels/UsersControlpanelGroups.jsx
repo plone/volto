@@ -10,7 +10,11 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
-import { Dropdown, Icon, Table } from 'semantic-ui-react';
+import { Dropdown, Table } from 'semantic-ui-react';
+import checkedSVG from '../../../icons/checkbox-checked.svg';
+import uncheckedSVG from '../../../icons/checkbox-unchecked.svg';
+import trashSVG from '../../../icons/delete.svg';
+import { Icon } from '../../../components';
 
 const messages = defineMessages({});
 
@@ -70,11 +74,19 @@ export default class UsersControlpanelGroups extends Component {
         <Table.Cell>{this.props.groups.groupname}</Table.Cell>
         {this.props.roles.map(role => (
           <Table.Cell key={role.id}>
-            {this.props.groups.roles.indexOf(role.id) !== -1 && (
+            {this.props.groups.roles.indexOf(role.id) !== -1 ? (
               <Icon
-                name="check circle outline"
+                name={checkedSVG}
+                size="25px"
                 title="Global role"
-                color="blue"
+                color="#007eb1"
+              />
+            ) : (
+              <Icon
+                name={uncheckedSVG}
+                size="25px"
+                title="Global role"
+                color="#826a6a"
               />
             )}
           </Table.Cell>
@@ -86,7 +98,7 @@ export default class UsersControlpanelGroups extends Component {
                 onClick={this.props.onDelete}
                 value={this.props.groups['@id']}
               >
-                <Icon name="trash" />
+                <Icon name={trashSVG} size="15px" />
                 <FormattedMessage id="Delete" defaultMessage="Delete" />
               </Dropdown.Item>
             </Dropdown.Menu>

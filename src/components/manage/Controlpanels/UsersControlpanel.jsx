@@ -36,6 +36,7 @@ import {
   createGroup,
   deleteGroup,
   listGroups,
+  updateUser,
 } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import {
@@ -157,6 +158,7 @@ const messages = defineMessages({
         listGroups,
         deleteGroup,
         createGroup,
+        updateUser,
       },
       dispatch,
     ),
@@ -175,6 +177,7 @@ export default class UsersControlpanel extends Component {
   static propTypes = {
     listRoles: PropTypes.func.isRequired,
     listUsers: PropTypes.func.isRequired,
+    updateUser: PropTypes.func,
     listGroups: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     roles: PropTypes.arrayOf(
@@ -223,6 +226,8 @@ export default class UsersControlpanel extends Component {
     this.onAddGroupError = this.onAddGroupError.bind(this);
     this.onAddUserSuccess = this.onAddUserSuccess.bind(this);
     this.onAddGroupSuccess = this.onAddGroupSuccess.bind(this);
+    this.onUpdateUserRole = this.onUpdateUserRole.bind(this);
+    this.updateUserRole = this.updateUserRole.bind(this);
     this.state = {
       search: '',
       showAddUser: false,
@@ -231,6 +236,7 @@ export default class UsersControlpanel extends Component {
       addGroupError: '',
       showDelete: false,
       userToDelete: undefined,
+      updateUser: undefined,
       groupToDelete: undefined,
       showAddGroup: false,
     };
@@ -398,6 +404,39 @@ export default class UsersControlpanel extends Component {
     this.setState({
       addUserSetFormDataCallback: callback,
     });
+  }
+
+  /**
+   *
+   *
+   * @param {*} data
+   * @param {*} callback
+   * @memberof UsersControlpanel
+   */
+  updateUserRole(event, { value }) {
+    if (value) {
+      this.setState({
+        updateUser: this.getUserFromProps(value),
+      });
+    }
+    this.onUpdateUserRole();
+  }
+
+  /**
+   *
+   *
+   * @memberof UsersControlpanel
+   */
+  onUpdateUserRole() {
+    if (this.state.updateUser) {
+      this.props.updateUser(
+        this.state.updateUser.id,
+        this.state.updateUser.roles,
+      );
+      this.setState({
+        updateUser: undefined,
+      });
+    }
   }
 
   /**
@@ -720,6 +759,7 @@ export default class UsersControlpanel extends Component {
                       onDelete={this.delete}
                       roles={this.props.roles}
                       user={user}
+                      updateUser={this.updateUserRole}
                     />
                   ))}
                 </Table.Body>

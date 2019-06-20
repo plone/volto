@@ -10,9 +10,11 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
-import { Dropdown, Icon, Table } from 'semantic-ui-react';
-
-const messages = defineMessages({});
+import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
+import checkedSVG from '../../../icons/checkbox-checked.svg';
+import uncheckedSVG from '../../../icons/checkbox-unchecked.svg';
+import trashSVG from '../../../icons/delete.svg';
+import { Icon } from '../../../components';
 
 @injectIntl
 /**
@@ -62,11 +64,22 @@ export default class UsersControlpanelUser extends Component {
         <Table.Cell>{this.props.user.fullname}</Table.Cell>
         {this.props.roles.map(role => (
           <Table.Cell key={role.id}>
-            {this.props.user.roles.indexOf(role.id) !== -1 && (
+            {this.props.user.roles.indexOf(role.id) !== -1 ? (
               <Icon
-                name="check circle outline"
+                name={checkedSVG}
+                size="25px"
                 title="Global role"
-                color="blue"
+                color="#007eb1"
+                onClick={this.props.updateUser}
+              />
+            ) : (
+              <Checkbox
+                name={role.id}
+                size="25px"
+                title="Global role"
+                color="#826a6a"
+                onClick={this.props.updateUser}
+                value={this.props.user['@id']}
               />
             )}
           </Table.Cell>
@@ -78,7 +91,7 @@ export default class UsersControlpanelUser extends Component {
                 onClick={this.props.onDelete}
                 value={this.props.user['@id']}
               >
-                <Icon name="trash" />
+                <Icon name={trashSVG} size="15px" />
                 <FormattedMessage id="Delete" defaultMessage="Delete" />
               </Dropdown.Item>
             </Dropdown.Menu>

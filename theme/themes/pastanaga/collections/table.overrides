@@ -2,6 +2,7 @@
     overflow-x: scroll;
     &::-webkit-scrollbar {
         height: 3px; /* scrollbar height */
+        width: 3px;
         background: transparent; /* optional: just make scrollbar invisible */
       }
 }
