@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-
+import { MemoryRouter } from 'react-router-dom';
 import Footer from './Footer';
 
 const mockStore = configureStore();
@@ -17,7 +17,9 @@ describe('Footer', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Footer />
+        <MemoryRouter>
+          <Footer />
+        </MemoryRouter>
       </Provider>,
     );
     const json = component.toJSON();

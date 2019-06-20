@@ -140,37 +140,36 @@ export default class Edit extends Component {
           this.node = node;
         }}
       >
-        {this.props.selected &&
-          !!this.state.code && (
-            <div className="toolbar">
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  active={!this.state.isPreview}
-                  onClick={this.onCodeEditor}
-                >
-                  <Icon name={codeSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  active={this.state.isPreview}
-                  onClick={this.onPreview}
-                >
-                  <Icon name={showSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              <div className="separator" />
-              <Button.Group>
-                <Button icon basic onClick={() => this.onChangeCode('')}>
-                  <Icon name={clearSVG} size="24px" color="#e40166" />
-                </Button>
-              </Button.Group>
-            </div>
-          )}
+        {this.props.selected && !!this.state.code && (
+          <div className="toolbar">
+            <Button.Group>
+              <Button
+                icon
+                basic
+                active={!this.state.isPreview}
+                onClick={this.onCodeEditor}
+              >
+                <Icon name={codeSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                active={this.state.isPreview}
+                onClick={this.onPreview}
+              >
+                <Icon name={showSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <div className="separator" />
+            <Button.Group>
+              <Button icon basic onClick={() => this.onChangeCode('')}>
+                <Icon name={clearSVG} size="24px" color="#e40166" />
+              </Button>
+            </Button.Group>
+          </div>
+        )}
         {this.state.isPreview && (
           <div dangerouslySetInnerHTML={{ __html: this.state.code }} />
         )}

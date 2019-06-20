@@ -1,12 +1,108 @@
 # Change Log
 
-## 2.1.2 (unreleased)
+## 3.1.1 (unreleased)
 
 ### Added
 
 - Added Summary Box tile (Proxy) @pnicolli
+- Add toast component @sneridagh
 
 ### Changes
+
+- Small UX/UI fixes @sneridagh
+
+### Internal
+
+- Fix console errors on tests @sneridagh
+
+## 3.1.0 (2019-06-14)
+
+### Added
+
+- Upgrade to react-redux 7.1. It includes the new official hooks for Redux
+  @sneridagh
+- Make Login Route accessible from anywhere in path url @nileshgulia1
+
+### Changes
+
+- Fix basic tiles classes @rodfersou
+- Fix video alignment @sneridagh
+
+### Internal
+
+- Upgrade handlebars to 4.1.2 @timo
+- Upgrade js-yaml to 3.13.3 @timo
+- Upgrade Plone api folder to 5.2rc3 @sneridagh
+- Fixes for image/file fields widgets for Guillotina @sneridagh
+- Fixes for Cypress Guillotina tests @sneridagh
+
+## 3.0.4 (2019-05-30)
+
+### Changes
+
+- Fix order of arguments when sending the contact form @csenger
+- Fix @babel/core import on i18n script @sneridagh
+
+## 3.0.3 (2019-05-13)
+
+### Internal
+
+- Use eslint-config-react-app instead of airbnb + custom config for linting @timo
+- More eslint fixes for avoiding parsing errors on decorators @sneridagh
+- Add 'prettier' command to check if there are any missing prettier fixes @timo
+- Run 'prettier' on Travis and fail the build if there are missing prettier fixes @timo
+- Add 'prettier:fix' command to fix all missing prettier fixes at once @timo
+- Run 'prettier:fix' once and commit all fixes @timo
+- Fix the most important violations reported with the new config @sneridagh
+
+## 3.0.2 (2019-05-10)
+
+### Changes
+
+- Re-add babel-eslint because of the decorators @sneridagh
+- Upgrade eslint-config-airbnb @sneridagh
+
+## 3.0.1 (2019-05-10)
+
+### Changes
+
+- Small fix for a missplacement of the hooks plugin in .eslintrc @sneridagh
+
+## 3.0.0 (2019-05-10)
+
+### Added
+
+- Upgrade to Razzle 3 @sneridagh
+- contact-form view @cekk
+- Add cypress setup for both Plone and Guillotina @sneridagh
+- Update SelectWidget and ArrayWidget and related vocabularies actions/reducers
+  for the breaking changes in plone.restapi 4.0.0 @davisagli @sneridagh
+- Expose request on the promise returned by the api helper @csenger
+
+### Changes
+
+- Several dependencies upgraded @sneridagh
+- Fix image of Hero Tile for images in private containers @sneridagh
+- Remove enforcement of JSdocs in Volto ESlint rules @sneridagh
+- Remove RobotFramework tests in favor of the cypress ones @sneridagh
+- Updated docs to highlight some code changes @pigeonflight
+
+## 2.1.3 (2019-04-17)
+
+### Changes
+
+- Update api folder to Plone 5.2 and Python3, update the whole story @sneridagh
+
+## 2.1.2 (2019-04-16)
+
+### Changes
+
+- Fixed issue where it was not possible to click into the title tile above the
+  small red bar at the beginning of the line in some browsers. @jackahl
+- Docs content editing. @esteele
+- Fix the folder_contents view component bby preventing the SearchableText be
+  empty if you haven't typed anything in the filter fields yet. This is caused
+  by the new ZCatalog in Zope 4. @sneridagh
 
 ## 2.1.1 (2019-04-04)
 
@@ -121,7 +217,7 @@
 - Set image width in Volto editor to 50% for images that float left/right @timo
 - Ability to navigate through the existing tiles with the cursors. @sneridagh
 - HTML Tile for Volto Editor with preview and code prettifier
-   @ajayns @nileshgulia1 @sneridagh
+  @ajayns @nileshgulia1 @sneridagh
 - Add error log in the SSR console @sneridagh
 - Add SSR helper to get resources (images/files) from the server using the API
   headers. This fixes the missing images on non published resources while editing @sneridagh
@@ -174,13 +270,12 @@
 - Fix CSS sourcemaps by make postcss stage to accept other stages sourcemaps
   @sneridagh
 - Add IE11 fixes by pinning some packages, added documentation in `docs` about
-  it and how to deal with it. However, compatibility is *NOT* guaranteed in
+  it and how to deal with it. However, compatibility is _NOT_ guaranteed in
   future Volto releases @sneridagh
 - Fix Header scroll in Firefox in case that there are lot of items in the nav
   @sneridagh
 - Add supported browsers in README @sneridagh
 - Default tile position to center for all the existing tiles @sneridagh
-
 
 ## 1.4.0 (2019-02-15)
 
@@ -200,21 +295,21 @@
 
 ### Added
 
- - Improve the definitions of the view/edit tiles components for better
-   extensibility. This might be a BREAKING change if you have already used the
-   old way to extend/add more tiles, please update to the new one @sneridagh
+- Improve the definitions of the view/edit tiles components for better
+  extensibility. This might be a BREAKING change if you have already used the
+  old way to extend/add more tiles, please update to the new one @sneridagh
 
 ### Changes
 
- - Fix Travis unit testing false green @sneridagh
- - Fix bad Proptype for location in ScrollToTop component @sneridagh
+- Fix Travis unit testing false green @sneridagh
+- Fix bad Proptype for location in ScrollToTop component @sneridagh
 
 ## 1.2.1 (2019-02-04)
 
 ### Changes
 
- - Bring back the scroll to top on every route change feature @sneridagh
- - Loosen node version, allow LTS (v8 and v10) @sneridagh
+- Bring back the scroll to top on every route change feature @sneridagh
+- Loosen node version, allow LTS (v8 and v10) @sneridagh
 
 ## 1.2.0 (2019-01-22)
 

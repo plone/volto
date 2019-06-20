@@ -231,7 +231,9 @@ export default class FormModal extends Component {
                 ))}
               </Menu>
             )}
-            {fields.map(field => <Field {...field} key={field.id} />)}
+            {fields.map(field => (
+              <Field {...field} key={field.id} />
+            ))}
           </UiForm>
         </Modal.Content>
         <Modal.Actions>

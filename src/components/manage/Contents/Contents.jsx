@@ -720,7 +720,7 @@ export default class ContentsComponent extends Component {
       'path.depth': 1,
       sort_on: 'getObjPositionInParent',
       metadata_fields: '_all',
-      SearchableText: this.state.filter ? `${this.state.filter}*` : '',
+      ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
       b_size: this.state.pageSize,
       b_start: this.state.currentPage * this.state.pageSize,
     });
@@ -1129,8 +1129,8 @@ export default class ContentsComponent extends Component {
                                   ? 'square outline'
                                   : this.state.selected.length ===
                                     this.state.items.length
-                                    ? 'check square'
-                                    : 'minus square'
+                                  ? 'check square'
+                                  : 'minus square'
                               }
                               color={
                                 this.state.selected.length > 0

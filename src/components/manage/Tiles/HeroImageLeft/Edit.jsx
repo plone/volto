@@ -15,11 +15,11 @@ import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import cx from 'classnames';
 
-import { createContent } from '../../../../actions';
-import { getBaseUrl } from '../../../../helpers';
-import { Icon } from '../../../../components';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import { createContent } from '@plone/volto/actions';
+import { Icon } from '@plone/volto/components';
 
-import clearSVG from '../../../../icons/clear.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   title: {
@@ -286,30 +286,29 @@ export default class EditHeroTile extends Component {
           this.node = node;
         }}
       >
-        {this.props.selected &&
-          !!this.props.data.url && (
-            <div className="toolbar">
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={() =>
-                    this.props.onChangeTile(this.props.tile, {
-                      ...this.props.data,
-                      url: '',
-                    })
-                  }
-                >
-                  <Icon name={clearSVG} size="24px" color="#e40166" />
-                </Button>
-              </Button.Group>
-            </div>
-          )}
+        {this.props.selected && !!this.props.data.url && (
+          <div className="toolbar">
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() =>
+                  this.props.onChangeTile(this.props.tile, {
+                    ...this.props.data,
+                    url: '',
+                  })
+                }
+              >
+                <Icon name={clearSVG} size="24px" color="#e40166" />
+              </Button>
+            </Button.Group>
+          </div>
+        )}
         <div className="tile-inner-wrapper">
           {this.props.data.url ? (
             <img
               className="hero-image"
-              src={`${this.props.data.url}/@@images/image`}
+              src={`${flattenToAppURL(this.props.data.url)}/@@images/image`}
               alt=""
             />
           ) : (

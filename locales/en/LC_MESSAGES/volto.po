@@ -79,6 +79,8 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
 msgid "Back"
 msgstr ""
 
@@ -170,6 +172,11 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
+msgid "Contact form"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Contents"
 msgstr ""
@@ -221,6 +228,8 @@ msgstr ""
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
@@ -308,6 +317,11 @@ msgstr ""
 msgid "Edit {title}"
 msgstr ""
 
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
+msgid "Email sent"
+msgstr ""
+
 #: components/manage/Tiles/Video/Edit
 msgid "Enter Video URL"
 msgstr ""
@@ -337,6 +351,8 @@ msgstr ""
 
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
 msgid "Error"
 msgstr ""
@@ -359,6 +375,11 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Filter…"
+msgstr ""
+
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
+msgid "From"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -451,6 +472,11 @@ msgstr ""
 msgid "Login Name"
 msgstr ""
 
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
+msgid "Message"
+msgstr ""
+
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
@@ -473,6 +499,8 @@ msgid "My email address is"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
 msgid "Name"
 msgstr ""
 
@@ -674,6 +702,11 @@ msgstr ""
 msgid "Select…"
 msgstr ""
 
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
+msgid "Send"
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set my password"
 msgstr ""
@@ -738,6 +771,11 @@ msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
+msgstr ""
+
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
+msgid "Subject"
 msgstr ""
 
 #: components/manage/Contents/Contents

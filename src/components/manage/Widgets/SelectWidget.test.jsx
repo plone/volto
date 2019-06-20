@@ -13,6 +13,12 @@ test('renders a select widget component', () => {
       locale: 'en',
       messages: {},
     },
+    vocabularies: {
+      'plone.app.vocabularies.Keywords': {
+        items: [{ title: 'My item', value: 'myitem' }],
+        itemsTotal: 1,
+      },
+    },
   });
 
   const component = renderer.create(

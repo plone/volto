@@ -15,6 +15,7 @@ export Editbar from '@plone/volto/components/mosaic/Editbar/Editbar';
 
 export Anontools from '@plone/volto/components/theme/Anontools/Anontools';
 export Breadcrumbs from '@plone/volto/components/theme/Breadcrumbs/Breadcrumbs';
+export ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
 export Footer from '@plone/volto/components/theme/Footer/Footer';
 export Header from '@plone/volto/components/theme/Header/Header';
 export Icon from '@plone/volto/components/theme/Icon/Icon';
@@ -77,6 +78,7 @@ export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidge
 export DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
 export FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
 export PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
+export ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 export SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
 export SchemaWidgetFieldset from '@plone/volto/components/manage/Widgets/SchemaWidgetFieldset';
 export SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
@@ -108,3 +110,5 @@ export ViewSummaryBoxTile from '@plone/volto/components/manage/Tiles/SummaryBox/
 export ViewVideoTile from '@plone/volto/components/manage/Tiles/Video/View';
 export ViewMapTile from '@plone/volto/components/manage/Tiles/Maps/View';
 export ViewHTMLTile from '@plone/volto/components/manage/Tiles/HTML/View';
+
+export Toast from '@plone/volto/components/manage/Toast/Toast';

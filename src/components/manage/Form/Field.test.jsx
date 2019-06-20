@@ -42,7 +42,11 @@ describe('Field', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Field id="schema" value={'{"fieldsets": [{"fields": []}]}'} />
+        <Field
+          id="schema"
+          value={'{"fieldsets": [{"fields": []}]}'}
+          onChange={() => {}}
+        />
       </Provider>,
     );
     const json = component.toJSON();
@@ -138,7 +142,10 @@ describe('Field', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <Field vocabulary="plone.app.vocabularies.Keywords" id="test" />
+        <Field
+          vocabulary={{ '@id': 'plone.app.vocabularies.Keywords' }}
+          id="test"
+        />
       </Provider>,
     );
     const json = component.toJSON();

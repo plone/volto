@@ -98,6 +98,8 @@ msgstr "Oplopend"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
 msgid "Back"
 msgstr ""
 
@@ -189,6 +191,11 @@ msgstr "Wachtwoord bevestigen"
 msgid "Contact"
 msgstr "Contact"
 
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
+msgid "Contact form"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Contents"
 msgstr "Inhoud"
@@ -240,6 +247,8 @@ msgstr ""
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
@@ -327,6 +336,11 @@ msgstr ""
 msgid "Edit {title}"
 msgstr "{title} bewerken"
 
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
+msgid "Email sent"
+msgstr ""
+
 #: components/manage/Tiles/Video/Edit
 msgid "Enter Video URL"
 msgstr ""
@@ -356,6 +370,8 @@ msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
 
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
 msgid "Error"
 msgstr ""
@@ -379,6 +395,11 @@ msgstr "Bestandsnaam"
 #: components/manage/Contents/Contents
 msgid "Filter…"
 msgstr "Filter…"
+
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
+msgid "From"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
@@ -470,6 +491,11 @@ msgstr "Inloggen"
 msgid "Login Name"
 msgstr "Gebruikersnaam"
 
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
+msgid "Message"
+msgstr ""
+
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
@@ -492,6 +518,8 @@ msgid "My email address is"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
 msgid "Name"
 msgstr "Naam"
 
@@ -693,6 +721,11 @@ msgstr ""
 msgid "Select…"
 msgstr "Selecteer…"
 
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
+msgid "Send"
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set my password"
 msgstr ""
@@ -757,6 +790,11 @@ msgstr "Status: {current}"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
+msgstr ""
+
+#: components/theme/ContactForm/ContactForm
+#: components/theme/ContactForm/ContactForm
+msgid "Subject"
 msgstr ""
 
 #: components/manage/Contents/Contents
