@@ -139,6 +139,10 @@ export const defaultRoutes = [
     component: Sharing,
   },
   {
+    path: '/**/login',
+    component: Login,
+  },
+  {
     path: '/register',
     component: Register,
   },

@@ -16,9 +16,23 @@ exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
         onClick={[Function]}
         title="Home"
       >
-        <i
-          aria-hidden="true"
-          className="home icon"
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "currentColor",
+              "height": "18px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
         />
       </a>
       <div
