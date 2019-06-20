@@ -70,8 +70,17 @@
     line-height: initial;
   }
 
-  .ui.blue.button {
-    box-shadow: none;
+  button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: @blue;
+    cursor: pointer;
+    text-align: initial;
+
+    &:focus {
+      outline: none;
+    }
   }
 }
 

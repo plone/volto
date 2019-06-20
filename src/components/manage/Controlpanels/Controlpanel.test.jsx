@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Route } from 'react-router-dom';
 
 import Controlpanel from './Controlpanel';
 
@@ -38,11 +38,8 @@ describe('Controlpanel', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
-          <Controlpanel
-            match={{ params: { id: 'date-and-time' } }}
-            location={{ pathname: '/blog' }}
-          />
+        <MemoryRouter initialEntries={['/controlpanel/date-and-time']}>
+          <Route path={'/controlpanel/:id'} component={Controlpanel} />
         </MemoryRouter>
       </Provider>,
     );

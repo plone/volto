@@ -108,3 +108,5 @@ export ViewImageTile from '@plone/volto/components/manage/Tiles/Image/View';
 export ViewVideoTile from '@plone/volto/components/manage/Tiles/Video/View';
 export ViewMapTile from '@plone/volto/components/manage/Tiles/Maps/View';
 export ViewHTMLTile from '@plone/volto/components/manage/Tiles/HTML/View';
+
+export Toast from '@plone/volto/components/manage/Toast/Toast';

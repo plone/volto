@@ -47,6 +47,8 @@
     "Cypress": true,
     "jest": true,
     "socket": true,
-    "webpackIsomorphicTools": true
+    "webpackIsomorphicTools": true,
+    "cy": true,
+    "Cypress": true
   }
 }

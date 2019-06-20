@@ -3,6 +3,8 @@
 *******************************/
 
 .ui.breadcrumb {
+  display: flex;
+  align-items: center;
   padding-right: 1rem;
   padding-left: 1rem;
 

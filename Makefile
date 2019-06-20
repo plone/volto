@@ -1,8 +1,21 @@
-all: build-backend
+# We like colors
+# From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
+RED=`tput setaf 1`
+GREEN=`tput setaf 2`
+RESET=`tput sgr0`
+YELLOW=`tput setaf 3`
 
-dist:
-	yarn
-	yarn build
+all: build
+
+# Add the following 'help' target to your Makefile
+# And add help text after each target name starting with '\#\#'
+.PHONY: help
+help: ## This help message
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+build:
+	make build-backend
+	make build-frontend
 
 build-frontend:
 	yarn && RAZZLE_API_PATH=http://localhost:55001/plone yarn build
@@ -13,6 +26,10 @@ build-backend:  ## Build Plone 5.2
 	(cd api && bin/pip install --upgrade pip)
 	(cd api && bin/pip install -r requirements.txt)
 	(cd api && bin/buildout -c plone-5.2.x.cfg)
+
+dist:
+	yarn
+	yarn build
 
 .PHONY: Build Plone 5.2
 start-backend:  ## Install Plone 5.2
@@ -51,5 +68,9 @@ test-acceptance-server:
 
 test-acceptance-guillotina:
 	docker-compose -f g-api/docker-compose.yml up > /dev/null
+
+clean:
+	(cd api && rm -rf bin)
+	rm -rf node_modules
 
 .PHONY: all start test-acceptance
