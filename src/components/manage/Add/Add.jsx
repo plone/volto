@@ -245,6 +245,7 @@ export class AddComponent extends Component {
                   <button
                     id="toolbar-save"
                     className="save"
+                    aria-label={this.props.intl.formatMessage(messages.save)}
                     onClick={() => this.form.onSubmit()}
                   >
                     <Icon
@@ -257,6 +258,11 @@ export class AddComponent extends Component {
                   {hasTilesData(this.props.schema.properties) && (
                     <button
                       className="item"
+                      aria-label={this.props.intl.formatMessage(
+                        this.state.visual
+                          ? messages.properties
+                          : messages.visual,
+                      )}
                       onClick={() => this.onToggleVisual()}
                     >
                       <Icon
@@ -274,6 +280,9 @@ export class AddComponent extends Component {
                     <Icon
                       name={clearSVG}
                       className="circled"
+                      aria-label={this.props.intl.formatMessage(
+                        messages.cancel,
+                      )}
                       size="32px"
                       title={this.props.intl.formatMessage(messages.cancel)}
                     />

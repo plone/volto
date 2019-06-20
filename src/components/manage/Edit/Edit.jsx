@@ -245,6 +245,7 @@ export class EditComponent extends Component {
                   <button
                     id="toolbar-save"
                     className="save"
+                    aria-label="Save"
                     onClick={() => this.form.onSubmit()}
                   >
                     <Icon
@@ -255,7 +256,10 @@ export class EditComponent extends Component {
                     />
                   </button>
                   {hasTilesData(this.props.schema.properties) && (
-                    <button onClick={() => this.onToggleVisual()}>
+                    <button
+                      aria-label="Properties"
+                      onClick={() => this.onToggleVisual()}
+                    >
                       <Icon
                         name={this.state.visual ? formSVG : tilesSVG}
                         size="32px"
@@ -267,7 +271,11 @@ export class EditComponent extends Component {
                       />
                     </button>
                   )}
-                  <button className="cancel" onClick={() => this.onCancel()}>
+                  <button
+                    className="cancel"
+                    aria-label="Cancel"
+                    onClick={() => this.onCancel()}
+                  >
                     <Icon
                       name={clearSVG}
                       className="circled"
