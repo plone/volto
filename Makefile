@@ -31,10 +31,6 @@ dist:
 	yarn
 	yarn build
 
-.PHONY: Build Plone 5.2
-start-backend:  ## Install Plone 5.2
-	(cd api && ./bin/instance fg)
-
 test:
 	(cd api && bin/test)
 
@@ -72,5 +68,25 @@ test-acceptance-guillotina:
 clean:
 	(cd api && rm -rf bin)
 	rm -rf node_modules
+
+.PHONY: start-backend
+start-backend: ## Start Plone Backend
+	@echo "$(GREEN)==> Start Plone Backend$(RESET)"
+	(cd api && PYTHONWARNINGS=ignore bin/instance fg)
+
+.PHONY: start-test-backend
+start-test-backend: ## Start Test Plone Backend
+	@echo "$(GREEN)==> Start Test Plone Backend$(RESET)"
+	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.voltodemo,kitconcept.voltodemo.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.voltodemo:default ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+
+.PHONY: start-test-frontend
+start-test-frontend: ## Start Test Volto Frontend
+	@echo "$(GREEN)==> Start Test Volto Frontend$(RESET)"
+	RAZZLE_API_PATH=http://localhost:55001/plone yarn build && NODE_ENV=production node build/server.js
+
+.PHONY: start-test
+start-test: ## Start Test
+	@echo "$(GREEN)==> Start Test$(RESET)"
+	yarn cypress:open
 
 .PHONY: all start test-acceptance
