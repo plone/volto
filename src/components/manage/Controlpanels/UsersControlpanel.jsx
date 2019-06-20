@@ -77,12 +77,12 @@ const messages = defineMessages({
     defaultMessage: 'Delete Group',
   },
   addUserButtonTitle: {
-    id: 'Add New User',
-    defaultMessage: 'Add New User',
+    id: 'ADD NEW USER',
+    defaultMessage: 'ADD NEW USER',
   },
   addGroupsButtonTitle: {
-    id: 'Add New Group',
-    defaultMessage: 'Add New Group',
+    id: 'ADD NEW GROUP',
+    defaultMessage: 'ADD NEW GROUP',
   },
   addUserFormTitle: {
     id: 'Add User',
@@ -694,7 +694,7 @@ export default class UsersControlpanel extends Component {
           </Segment>
           <Form onSubmit={this.onSubmit}>
             <div className="table">
-              <Table padded striped attached>
+              <Table padded striped attached unstackable>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>
@@ -727,16 +727,11 @@ export default class UsersControlpanel extends Component {
             </div>
           </Form>
           <Segment clearing className="actions">
-            <Label horizontal>
-              <FormattedMessage
-                id="Add New User"
-                defaultMessage="Add New User"
-              />
-            </Label>
+            {this.props.intl.formatMessage(messages.addUserButtonTitle)}
             <MyIcon
               name={addSvg}
               size="30px"
-              color="blue"
+              color="#007eb1"
               title="Add"
               onClick={() => {
                 this.setState({ showAddUser: true });
@@ -764,7 +759,7 @@ export default class UsersControlpanel extends Component {
           </Segment>
           <Form onSubmit={this.onSubmit}>
             <div className="table">
-              <Table padded striped attached>
+              <Table padded striped attached unstackable>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>
@@ -798,16 +793,11 @@ export default class UsersControlpanel extends Component {
             </div>
           </Form>
           <Segment clearing className="actions">
-            <Label horizontal>
-              <FormattedMessage
-                id="Add New Group"
-                defaultMessage="Add New Group"
-              />
-            </Label>
+            {this.props.intl.formatMessage(messages.addGroupsButtonTitle)}
             <MyIcon
               name={addSvg}
               size="30px"
-              color="blue"
+              color="#007eb1"
               title="Add"
               onClick={() => {
                 this.setState({ showAddGroup: true });

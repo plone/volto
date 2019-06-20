@@ -83,6 +83,11 @@
 
 .ui.actions.segment {
   border-top: @1px solid @lightGreyBorderColor;
+  display: flex;
+  justify-content: space-between;
+}
+.ui.actions.segment:after{
+  content: none;
 }
 
 .inverted.segment a.item {

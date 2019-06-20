@@ -1,0 +1,7 @@
+.table {
+    overflow-x: scroll;
+    &::-webkit-scrollbar {
+        height: 3px; /* scrollbar height */
+        background: transparent; /* optional: just make scrollbar invisible */
+      }
+}
