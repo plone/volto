@@ -196,8 +196,8 @@ export class LoginComponent extends Component {
                       <Grid.Column stretched width="12">
                         <p className="help">
                           <FormattedMessage
-                            id="If you you do not have an account here, head over to the {registrationform}."
-                            defaultMessage="If you you do not have an account here, head over to the {registrationform}."
+                            id="If you do not have an account here, head over to the {registrationform}."
+                            defaultMessage="If you do not have an account here, head over to the {registrationform}."
                             values={{
                               registrationform: (
                                 <Link to="/register" tabIndex={1}>
