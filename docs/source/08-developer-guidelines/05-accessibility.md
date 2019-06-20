@@ -1,6 +1,6 @@
 # Accessibility
 
-The React docs are a very good starging point for Accessiblity in React:
+The React docs are a good starting point for Accessiblity in React:
 
 [React Docs: Accessibility](https://reactjs.org/docs/accessibility.html)
 
@@ -10,14 +10,16 @@ The React docs are a very good starging point for Accessiblity in React:
 
 We are using the [ESLint jsx-a11y extension](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) to catch accessibility issues.
 
+Use the repository above to search for the meaning of the warnings. The links in there will guide you to the relevant underlying W3C and other resources.
+
 Run ESLint on Volto with:
 
-```yarn lint```
+`yarn lint`
 
 This command will return any accessiblity violations that the jsx-a11y extension catches.
 
-### Liniting in VSCode
+### Linting In VSCode
 
 We recommend that you install an eslint plugin in your favorite IDE.
 
-For Visual Studio Code, install the [vscode-eslint]( https://github.com/Microsoft/vscode-eslint) Plugin.
+For Visual Studio Code, install the [vscode-eslint](https://github.com/Microsoft/vscode-eslint) Plugin.
