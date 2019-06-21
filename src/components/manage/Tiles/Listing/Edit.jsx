@@ -43,10 +43,14 @@ export default class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { items } = this.props.properties;
+    const items = this.props.properties ? this.props.properties.items : null;
+
+    if (!items) {
+      return <div className="tile listing" />;
+    }
 
     return (
-      <List>
+      <List className="tile listing">
         {items.map(item => {
           const image = get(item, 'image.scales.mini.download', undefined);
           const url = item['@id'].replace(settings.apiPath, '');

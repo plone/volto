@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { settings } from '~/config';
 
-import { View } from './View';
+import View from './View';
 
 const props = {
   data: {
