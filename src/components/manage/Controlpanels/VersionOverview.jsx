@@ -12,7 +12,9 @@ const VersionOverview = () => {
   const voltoVersion = packageJSON.version;
 
   return (
-    <List>{voltoVersion && <List.Item>Volto {voltoVersion}</List.Item>}</List>
+    <List>
+      {voltoVersion && <List.Item key="volto">Volto {voltoVersion}</List.Item>}
+    </List>
   );
 };
 
