@@ -208,6 +208,7 @@ class DiffComponent extends Component {
         key: `${entry.version}`,
       }),
     );
+
     return (
       <Container id="page-diff">
         <Helmet title={this.props.intl.formatMessage(messages.diff)} />

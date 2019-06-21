@@ -24,8 +24,6 @@ import imageFitSVG from '../../../../icons/image-fit.svg';
 import imageFullSVG from '../../../../icons/image-full.svg';
 import globeSVG from '../../../../icons/globe.svg';
 
-import { createContent } from '../../../../actions';
-
 const messages = defineMessages({
   ImageTileInputPlaceholder: {
     id: 'Enter Map URL',
@@ -34,13 +32,6 @@ const messages = defineMessages({
 });
 
 @injectIntl
-@connect(
-  state => ({
-    request: state.content.create,
-    content: state.content.data,
-  }),
-  dispatch => bindActionCreators({ createContent }, dispatch),
-)
 /**
  * Edit image tile class.
  * @class Edit
@@ -57,11 +48,6 @@ export default class Edit extends Component {
     tile: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
-    content: PropTypes.objectOf(PropTypes.any).isRequired,
-    request: PropTypes.shape({
-      loading: PropTypes.bool,
-      loaded: PropTypes.bool,
-    }).isRequired,
     pathname: PropTypes.string.isRequired,
     onChangeTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
@@ -69,7 +55,6 @@ export default class Edit extends Component {
     onFocusPreviousTile: PropTypes.func.isRequired,
     onFocusNextTile: PropTypes.func.isRequired,
     handleKeyDown: PropTypes.func.isRequired,
-    createContent: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
 
@@ -109,19 +94,6 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   componentWillReceiveProps(nextProps) {
-    if (
-      this.props.request.loading &&
-      nextProps.request.loaded &&
-      this.state.uploading
-    ) {
-      this.setState({
-        uploading: false,
-      });
-      this.props.onChangeTile(this.props.tile, {
-        ...this.props.data,
-        url: nextProps.content['@id'],
-      });
-    }
     if (nextProps.selected) {
       this.node.focus();
     }
