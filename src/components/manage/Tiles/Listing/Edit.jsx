@@ -84,8 +84,6 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   componentDidUpdate(prevProps, prevState) {
-    // console.log('props', prevProps, this.props);
-    // console.log('state', prevState, this.state);
     const { items } = this.props;
     if (!isEqual(prevProps.items, items)) {
       this.setState({
@@ -171,7 +169,6 @@ export default class Edit extends Component {
                 settings.apiPath,
                 '',
               );
-              debugger;
               const url = item['@id'].replace(settings.apiPath, '');
               return (
                 <List.Item key="">
