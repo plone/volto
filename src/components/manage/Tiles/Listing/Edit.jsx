@@ -3,11 +3,12 @@
  * @module components/manage/Tiles/Listing/Edit
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { List, Image } from 'semantic-ui-react';
-import { intlShape } from 'react-intl';
 import { get } from 'lodash';
+import { intlShape } from 'react-intl';
+import { List, Image } from 'semantic-ui-react';
+import { settings } from '~/config';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 /**
  * Edit text tile class.
@@ -48,11 +49,14 @@ export default class Edit extends Component {
       <List>
         {items.map(item => {
           const image = get(item, 'image.scales.mini.download', undefined);
+          const url = item['@id'].replace(settings.apiPath, '');
           return (
             <List.Item>
-              {image && <Image avatar src={image} />}
+              {image && <Image avatar src={image} alt={item.title} />}
               <List.Content>
-                <List.Header as="a">{item.title}</List.Header>
+                <List.Header as="a">
+                  <Link to={url}>{item.title}</Link>
+                </List.Header>
                 <List.Description>{item.description}</List.Description>
               </List.Content>
             </List.Item>
