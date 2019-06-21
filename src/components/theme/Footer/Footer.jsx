@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Container, Divider, List, Segment } from 'semantic-ui-react';
+import { Container, List, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import {
   FormattedMessage,
@@ -74,22 +74,31 @@ const Footer = ({ intl }) => (
         />
       </Segment>
       <List horizontal inverted>
-        <List.Item href="/sitemap">
-          <FormattedMessage id="Site Map" defaultMessage="Site Map" />
+        <List.Item>
+          <Link href="/sitemap">
+            <FormattedMessage id="Site Map" defaultMessage="Site Map" />
+          </Link>
         </List.Item>
-        <List.Item href="/accessibility-info">
-          <FormattedMessage id="Accessibility" defaultMessage="Accessibility" />
+        <List.Item>
+          <Link href="/accessibility-info">
+            <FormattedMessage
+              id="Accessibility"
+              defaultMessage="Accessibility"
+            />
+          </Link>
         </List.Item>
         <List.Item>
           <Link to="contact-form" className="item">
             <FormattedMessage id="Contact" defaultMessage="Contact" />
           </Link>
         </List.Item>
-        <List.Item href="http://plone.com">
-          <FormattedMessage
-            id="Powered by Plone & Python"
-            defaultMessage="Powered by Plone & Python"
-          />
+        <List.Item>
+          <Link href="http://plone.com">
+            <FormattedMessage
+              id="Powered by Plone & Python"
+              defaultMessage="Powered by Plone & Python"
+            />
+          </Link>
         </List.Item>
       </List>
     </Container>
