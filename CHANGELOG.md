@@ -9,6 +9,8 @@
 
 ### Changes
 
+- Add a delay when filtering content in folder contents so it doesn't overload backend @vangheem
+
 - Small UX/UI fixes @sneridagh
 
 ### Internal
