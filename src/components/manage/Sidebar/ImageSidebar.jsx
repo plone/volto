@@ -53,7 +53,7 @@ const ImageSidebar = props => {
               title="alt"
               required={false}
               value={alt}
-              onChange={e => setAlt(e.target.value)}
+              onChange={(name, value) => setAlt(value)}
             />
           </Segment>
         </>
