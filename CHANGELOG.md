@@ -7,6 +7,7 @@
 - Add toast component @sneridagh
 - Add sidebar support for components @sneridagh
 - Remove Mosaic component @tisto
+- Added toast component in actions @nzambello
 
 ### Changes
 
