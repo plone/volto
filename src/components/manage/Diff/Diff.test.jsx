@@ -72,8 +72,8 @@ describe('Diff', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
-          <Diff location={{ pathname: '/blog', search: 'one=0&two=1' }} />
+        <MemoryRouter initialEntries={['/blog?one=0&two=1']}>
+          <Diff />
         </MemoryRouter>
       </Provider>,
     );

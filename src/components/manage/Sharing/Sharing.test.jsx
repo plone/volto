@@ -34,7 +34,12 @@ describe('Sharing', () => {
             },
           ],
           inherit: true,
-          available_roles: ['Contributer'],
+          available_roles: [
+            {
+              id: 'Contributor',
+              title: 'Can add',
+            },
+          ],
         },
         update: {
           loading: false,

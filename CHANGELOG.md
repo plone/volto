@@ -5,10 +5,15 @@
 ### Added
 
 - Add toast component @sneridagh
+- Add sidebar support for components @sneridagh
 
 ### Changes
 
 - Small UX/UI fixes @sneridagh
+
+### Internal
+
+- Fix console errors on tests @sneridagh
 
 ## 3.1.0 (2019-06-14)
 
