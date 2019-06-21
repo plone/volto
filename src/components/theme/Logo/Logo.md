@@ -10,8 +10,8 @@ Output:
 var IntlProvider = require('react-intl').IntlProvider;
 
 <div className={'rsg--pre-42'}>
-    <IntlProvider locale="en">
-        <Logo />
-    </IntlProvider>
-</div>
+  <IntlProvider locale="en">
+    <Logo />
+  </IntlProvider>
+</div>;
 ```

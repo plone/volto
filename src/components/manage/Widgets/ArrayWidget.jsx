@@ -6,8 +6,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Label, Dropdown } from 'semantic-ui-react';
-import { concat, map, uniqBy } from 'lodash';
+import { concat, debounce, isObject, map, uniqBy } from 'lodash';
+import { connect } from 'react-redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { bindActionCreators } from 'redux';
+import Select, { components } from 'react-select';
+import AsyncPaginate from 'react-select-async-paginate';
+import CreatableSelect from 'react-select/lib/Creatable';
+
+import {
+  getBoolean,
+  getVocabFromHint,
+  getVocabFromField,
+  getVocabFromItems,
+} from '@plone/volto/helpers';
+import { getVocabulary } from '@plone/volto/actions';
+import { Icon } from '@plone/volto/components';
+
+import downSVG from '@plone/volto/icons/down-key.svg';
+import upSVG from '@plone/volto/icons/up-key.svg';
+import checkSVG from '@plone/volto/icons/check.svg';
 
 const messages = defineMessages({
   no_results_found: {
@@ -16,7 +34,105 @@ const messages = defineMessages({
   },
 });
 
+const Option = props => {
+  return (
+    <components.Option {...props}>
+      <div>{props.label}</div>
+      {props.isFocused && !props.isSelected && (
+        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+      )}
+      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
+    </components.Option>
+  );
+};
+
+const DropdownIndicator = props => {
+  return (
+    <components.DropdownIndicator {...props}>
+      {props.selectProps.menuIsOpen ? (
+        <Icon name={upSVG} size="24px" color="#007bc1" />
+      ) : (
+        <Icon name={downSVG} size="24px" color="#007bc1" />
+      )}
+    </components.DropdownIndicator>
+  );
+};
+
+const selectTheme = theme => ({
+  ...theme,
+  borderRadius: 0,
+  colors: {
+    ...theme.colors,
+    primary25: 'hotpink',
+    primary: '#b8c6c8',
+  },
+});
+
+const customSelectStyles = {
+  control: (styles, state) => ({
+    ...styles,
+    border: 'none',
+    borderBottom: '2px solid #b8c6c8',
+    boxShadow: 'none',
+    borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
+  }),
+  menu: (styles, state) => ({
+    ...styles,
+    top: null,
+    marginTop: 0,
+    boxShadow: 'none',
+    borderBottom: '2px solid #b8c6c8',
+  }),
+  indicatorSeparator: styles => ({
+    ...styles,
+    width: null,
+  }),
+  valueContainer: styles => ({
+    ...styles,
+    // paddingLeft: 0,
+  }),
+  option: (styles, state) => ({
+    ...styles,
+    backgroundColor: null,
+    height: '50px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '14px 12px',
+    color: state.isSelected
+      ? '#007bc1'
+      : state.isFocused
+      ? '#4a4a4a'
+      : 'inherit',
+    ':active': {
+      backgroundColor: null,
+    },
+  }),
+};
+
+function getChoices(choices) {
+  return choices ? choices.map(item => ({ label: item, value: item })) : [];
+}
+
 @injectIntl
+@connect(
+  (state, props) => {
+    const vocabBaseUrl =
+      getVocabFromHint(props) ||
+      getVocabFromField(props) ||
+      getVocabFromItems(props);
+    const vocabState = state.vocabularies[vocabBaseUrl];
+    if (vocabState) {
+      return {
+        choices: vocabState.items,
+        itemsTotal: vocabState.itemsTotal,
+        loading: Boolean(vocabState.loading),
+      };
+    }
+    return {};
+  },
+  dispatch => bindActionCreators({ getVocabulary }, dispatch),
+)
 /**
  * ArrayWidget component class.
  * @class ArrayWidget
@@ -34,11 +150,20 @@ export default class ArrayWidget extends Component {
     description: PropTypes.string,
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
+    getVocabulary: PropTypes.func.isRequired,
+    choices: PropTypes.arrayOf(PropTypes.object),
+    loading: PropTypes.bool,
     items: PropTypes.shape({
-      choices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+      vocabulary: PropTypes.object,
     }),
-    value: PropTypes.arrayOf(PropTypes.string),
+    widgetOptions: PropTypes.shape({
+      vocabulary: PropTypes.object,
+    }),
+    value: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    ),
     onChange: PropTypes.func.isRequired,
+    itemsTotal: PropTypes.number,
     intl: intlShape.isRequired,
   };
 
@@ -51,9 +176,14 @@ export default class ArrayWidget extends Component {
     description: null,
     required: false,
     items: {
-      choices: [],
+      vocabulary: null,
+    },
+    widgetOptions: {
+      vocabulary: null,
     },
     error: [],
+    choices: [],
+    loading: false,
     value: null,
   };
 
@@ -65,41 +195,78 @@ export default class ArrayWidget extends Component {
    */
   constructor(props) {
     super(props);
-    this.onAddItem = this.onAddItem.bind(this);
+    this.search = this.search.bind(this);
+    this.loadOptions = this.loadOptions.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.vocabBaseUrl =
+      getVocabFromHint(props) ||
+      getVocabFromField(props) ||
+      getVocabFromItems(props);
     this.state = {
-      choices: uniqBy(
-        concat(
-          props.items.choices
-            ? map(props.items.choices, choice => ({
-                key: choice[0],
-                text: choice[1],
-                value: choice[0],
-              }))
-            : [],
-          props.value
-            ? map(props.value, value => ({
-                key: value,
-                text: value,
-                value,
-              }))
-            : [],
-        ),
-        'key',
-      ),
+      search: '',
+      selectedOption: props.value
+        ? props.value.map(item =>
+            isObject(item)
+              ? { label: item.title, value: item.token }
+              : { label: item, value: item },
+          )
+        : [],
     };
   }
 
   /**
-   * On add item handler
-   * @method onAddItem
-   * @param {Object} event Event object.
-   * @param {string} value Value to add.
+   * Component did mount
+   * @method componentDidMount
    * @returns {undefined}
    */
-  onAddItem(event, { value }) {
-    this.setState({
-      choices: [{ text: value, value, id: value }, ...this.state.choices],
-    });
+  componentDidMount() {
+    if (this.vocabBaseUrl) {
+      this.props.getVocabulary(this.vocabBaseUrl);
+    }
+  }
+
+  /**
+   * Initiate search with new query
+   * @param {string} query Search query.
+   * @returns {undefined}
+   */
+  search(query) {
+    if (query.length > 1) {
+      this.props.getVocabulary(this.vocabBaseUrl, query);
+    }
+  }
+
+  /**
+   * Initiate search with new query
+   * @method loadOptions
+   * @param {string} search Search query.
+   * @param {string} previousOptions The previous options rendered.
+   * @param {string} additional Additional arguments to pass to the next loadOptions.
+   * @returns {undefined}
+   */
+  loadOptions(search, previousOptions, additional) {
+    const offset = this.state.search !== search ? 0 : additional.offset;
+    this.props.getVocabulary(this.vocabBaseUrl, search, offset);
+    this.setState({ search });
+    return {
+      options: this.props.choices,
+      hasMore: this.props.itemsTotal > 25,
+      additional: {
+        offset: offset === additional.offset ? offset + 25 : offset,
+      },
+    };
+  }
+
+  /**
+   * Handle the field change, store it in the local state and back to simple
+   * array of tokens for correct serialization
+   * @method handleChange
+   * @param {array} selectedOption The selected options (already aggregated).
+   * @returns {undefined}
+   */
+  handleChange(selectedOption) {
+    this.setState({ selectedOption });
+    this.props.onChange(this.props.id, selectedOption.map(item => item.value));
   }
 
   /**
@@ -108,15 +275,8 @@ export default class ArrayWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const {
-      id,
-      title,
-      required,
-      description,
-      error,
-      value,
-      onChange,
-    } = this.props;
+    const { id, title, required, description, error } = this.props;
+    const { selectedOption } = this.state;
     return (
       <Form.Field
         inline
@@ -132,21 +292,37 @@ export default class ArrayWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              <Dropdown
-                options={this.state.choices}
-                placeholder={title}
-                search
-                selection
-                multiple
-                fluid
-                noResultsMessage={this.props.intl.formatMessage(
-                  messages.no_results_found,
-                )}
-                allowAdditions
-                value={value || []}
-                onAddItem={this.onAddItem}
-                onChange={(event, data) => onChange(id, data.value)}
-              />
+              {this.vocabBaseUrl ? (
+                <AsyncPaginate
+                  className="react-select-container"
+                  classNamePrefix="react-select"
+                  options={this.props.choices || []}
+                  styles={customSelectStyles}
+                  theme={selectTheme}
+                  components={{ DropdownIndicator, Option }}
+                  isMulti
+                  value={selectedOption || []}
+                  loadOptions={this.loadOptions}
+                  onChange={this.handleChange}
+                  additional={{
+                    offset: 25,
+                  }}
+                />
+              ) : (
+                <CreatableSelect
+                  className="react-select-container"
+                  classNamePrefix="react-select"
+                  options={
+                    this.props.choices || getChoices(this.props.default) || []
+                  }
+                  styles={customSelectStyles}
+                  theme={selectTheme}
+                  components={{ DropdownIndicator, Option }}
+                  value={selectedOption || []}
+                  onChange={this.handleChange}
+                  isMulti
+                />
+              )}
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
                   {message}

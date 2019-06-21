@@ -186,67 +186,65 @@ export default class Edit extends Component {
           this.node = node;
         }}
       >
-        {this.props.selected &&
-          !!this.props.data.url && (
-            <div className="toolbar">
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={this.onAlignTile.bind(this, 'left')}
-                  active={data.align === 'left'}
-                >
-                  <Icon name={imageLeftSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={this.onAlignTile.bind(this, 'right')}
-                  active={data.align === 'right'}
-                >
-                  <Icon name={imageRightSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={this.onAlignTile.bind(this, 'center')}
-                  active={data.align === 'center' || !data.align}
-                >
-                  <Icon name={imageFitSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={this.onAlignTile.bind(this, 'full')}
-                  active={data.align === 'full'}
-                >
-                  <Icon name={imageFullSVG} size="24px" />
-                </Button>
-              </Button.Group>
-            </div>
-          )}
-        {this.props.selected &&
-          !this.props.data.url && (
-            <div className="toolbar">
-              <Icon name={videoSVG} size="24px" />
-              <form onKeyDown={this.onKeyDownVariantMenuForm}>
-                <Input
-                  onChange={this.onChangeUrl}
-                  placeholder={this.props.intl.formatMessage(
-                    messages.VideoTileInputPlaceholder,
-                  )}
-                />
-              </form>
-            </div>
-          )}
+        {this.props.selected && !!this.props.data.url && (
+          <div className="toolbar">
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.onAlignTile.bind(this, 'left')}
+                active={data.align === 'left'}
+              >
+                <Icon name={imageLeftSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.onAlignTile.bind(this, 'right')}
+                active={data.align === 'right'}
+              >
+                <Icon name={imageRightSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.onAlignTile.bind(this, 'center')}
+                active={data.align === 'center' || !data.align}
+              >
+                <Icon name={imageFitSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.onAlignTile.bind(this, 'full')}
+                active={data.align === 'full'}
+              >
+                <Icon name={imageFullSVG} size="24px" />
+              </Button>
+            </Button.Group>
+          </div>
+        )}
+        {this.props.selected && !this.props.data.url && (
+          <div className="toolbar">
+            <Icon name={videoSVG} size="24px" />
+            <form onKeyDown={this.onKeyDownVariantMenuForm}>
+              <Input
+                onChange={this.onChangeUrl}
+                placeholder={this.props.intl.formatMessage(
+                  messages.VideoTileInputPlaceholder,
+                )}
+              />
+            </form>
+          </div>
+        )}
         {data.url ? (
-          <p>
+          <div className="video-inner">
             <div className="ui blocker" />
             {data.url.match('list') ? (
               <Embed
@@ -270,7 +268,7 @@ export default class Edit extends Component {
                 autoplay={false}
               />
             )}
-          </p>
+          </div>
         ) : (
           <div>
             <Message>

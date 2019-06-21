@@ -237,7 +237,11 @@ export class AddComponent extends Component {
               pathname={this.props.pathname}
               inner={
                 <div>
-                  <a className="item" onClick={() => this.form.onSubmit()}>
+                  <a
+                    id="toolbar-save"
+                    className="item"
+                    onClick={() => this.form.onSubmit()}
+                  >
                     <Icon
                       name="save"
                       size="big"

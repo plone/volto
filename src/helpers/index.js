@@ -31,3 +31,14 @@ export {
 } from '@plone/volto/helpers/Tiles/Tiles';
 export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
+export {
+  getBoolean,
+  getVocabFromHint,
+  getVocabFromField,
+  getVocabFromItems,
+} from '@plone/volto/helpers/Vocabularies/Vocabularies';
+
+// The HOC withSidebar has to be on the helpers index, because of:
+// https://stackoverflow.com/questions/51626311/hoc-import-typeerror-object-is-not-a-function
+// Some extrange interaction with the exports and the hoisting
+export withSidebar from '@plone/volto/components/manage/Sidebar/Sidebar';

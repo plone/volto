@@ -29,6 +29,7 @@ test('renders an edit text tile component', () => {
         onFocusPreviousTile={() => {}}
         onFocusNextTile={() => {}}
         handleKeyDown={() => {}}
+        onMutateTile={() => {}}
         index={1}
       />
     </Provider>,

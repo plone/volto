@@ -7,7 +7,7 @@ exports[`Diff renders a diff component 1`] = `
 >
   <h1>
     <span>
-      Difference between revision  and  of Blog
+      Difference between revision 0 and 1 of Blog
     </span>
   </h1>
   <div
@@ -77,7 +77,9 @@ exports[`Diff renders a diff component 1`] = `
               aria-live="polite"
               className="text"
               role="alert"
-            />
+            >
+              0 (Sunday, April 23, 2017 3:38 AM, Web Admin)
+            </div>
             <i
               aria-hidden="true"
               className="dropdown icon"
@@ -88,8 +90,8 @@ exports[`Diff renders a diff component 1`] = `
             >
               <div
                 aria-checked={false}
-                aria-selected={true}
-                className="selected item"
+                aria-selected={false}
+                className="item"
                 onClick={[Function]}
                 role="option"
                 style={
@@ -105,9 +107,9 @@ exports[`Diff renders a diff component 1`] = `
                 </span>
               </div>
               <div
-                aria-checked={false}
-                aria-selected={false}
-                className="item"
+                aria-checked={true}
+                aria-selected={true}
+                className="active selected item"
                 onClick={[Function]}
                 role="option"
                 style={
@@ -146,7 +148,9 @@ exports[`Diff renders a diff component 1`] = `
               aria-live="polite"
               className="text"
               role="alert"
-            />
+            >
+              Current (Sunday, April 23, 2017 3:38 AM, Web Admin)
+            </div>
             <i
               aria-hidden="true"
               className="dropdown icon"
@@ -156,9 +160,9 @@ exports[`Diff renders a diff component 1`] = `
               className="menu transition"
             >
               <div
-                aria-checked={false}
+                aria-checked={true}
                 aria-selected={true}
-                className="selected item"
+                className="active selected item"
                 onClick={[Function]}
                 role="option"
                 style={

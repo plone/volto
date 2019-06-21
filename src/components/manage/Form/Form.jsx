@@ -553,6 +553,7 @@ class Form extends Component {
                   pointing: true,
                   attached: true,
                   tabular: true,
+                  className: 'formtabs',
                 }}
                 panes={map(schema.fieldsets, item => ({
                   menuItem: item.title,

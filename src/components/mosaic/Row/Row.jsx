@@ -55,17 +55,16 @@ const Row = ({
         handleDrop={handleDrop}
         setTileContent={setTileContent}
       />,
-      index < columns.length - 1 &&
-        columns.length < 4 && (
-          <ColumnResize
-            key={`col-resize-${join(map(column.tiles, tile => tile.url), '-')}`}
-            row={row}
-            column={index}
-            columns={columns.length}
-            startResize={startResize}
-            endResize={endResize}
-          />
-        ),
+      index < columns.length - 1 && columns.length < 4 && (
+        <ColumnResize
+          key={`col-resize-${join(map(column.tiles, tile => tile.url), '-')}`}
+          row={row}
+          column={index}
+          columns={columns.length}
+          startResize={startResize}
+          endResize={endResize}
+        />
+      ),
     ])}
   </Grid.Row>
 );

@@ -27,53 +27,115 @@ exports[`renders a select widget component 1`] = `
         className="eight wide column"
       >
         <div
-          aria-disabled={false}
-          aria-expanded={false}
-          className="ui selection dropdown"
+          className="css-10nd86i react-select-container"
           id="field-my-field"
-          name="my-field"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onMouseDown={[Function]}
-          role="listbox"
-          tabIndex={0}
+          onKeyDown={[Function]}
         >
           <div
-            aria-live="polite"
-            className="text"
-            role="alert"
-          >
-            No value
-          </div>
-          <i
-            aria-hidden="true"
-            className="dropdown icon"
-            onClick={[Function]}
-          />
-          <div
-            className="menu transition"
+            className="css-mgvt82 react-select__control"
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
           >
             <div
-              aria-checked={true}
-              aria-selected={true}
-              className="active selected item"
-              onClick={[Function]}
-              role="option"
-              style={
-                Object {
-                  "pointerEvents": "all",
-                }
-              }
+              className="css-1hwfws3 react-select__value-container react-select__value-container--has-value"
+            >
+              <div
+                className="css-xp4uvy react-select__single-value"
+              />
+              <div
+                className="css-1g6gooi"
+              >
+                <div
+                  className="react-select__input"
+                  style={
+                    Object {
+                      "display": "inline-block",
+                    }
+                  }
+                >
+                  <input
+                    aria-autocomplete="list"
+                    autoCapitalize="none"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    disabled={false}
+                    id="react-select-2-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    spellCheck="false"
+                    style={
+                      Object {
+                        "background": 0,
+                        "border": 0,
+                        "boxSizing": "content-box",
+                        "color": "inherit",
+                        "fontSize": "inherit",
+                        "opacity": 1,
+                        "outline": 0,
+                        "padding": 0,
+                        "width": "1px",
+                      }
+                    }
+                    tabIndex="0"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    style={
+                      Object {
+                        "height": 0,
+                        "left": 0,
+                        "overflow": "scroll",
+                        "position": "absolute",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "pre",
+                      }
+                    }
+                  >
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="css-1wy0on6 react-select__indicators"
             >
               <span
-                className="text"
+                className="css-hba3sr react-select__indicator-separator"
+              />
+              <div
+                aria-hidden="true"
+                className="css-1ep9fjw react-select__indicator react-select__dropdown-indicator"
+                onMouseDown={[Function]}
+                onTouchEnd={[Function]}
               >
-                No value
-              </span>
+                <svg
+                  className="icon"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "#007bc1",
+                      "height": "24px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
+              </div>
             </div>
           </div>
+          <input
+            name="my-field"
+            type="hidden"
+          />
         </div>
       </div>
     </div>
