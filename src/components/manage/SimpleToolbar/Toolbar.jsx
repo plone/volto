@@ -109,6 +109,7 @@ export default class Toolbar extends Component {
               />
             </Menu.Item>
             <Button
+              aria-label="Expand"
               className={
                 this.props.content && this.props.content.review_state
                   ? `${this.props.content.review_state} trigger`

@@ -287,6 +287,9 @@ export default class ContentsUploadModal extends Component {
                 primary
                 floated="right"
                 icon="arrow right"
+                aria-label={this.props.intl.formatMessage(messages.upload, {
+                  count: this.state.files.length,
+                })}
                 onClick={this.onSubmit}
                 title={this.props.intl.formatMessage(messages.upload, {
                   count: this.state.files.length,
@@ -299,6 +302,7 @@ export default class ContentsUploadModal extends Component {
               circular
               secondary
               icon="remove"
+              aria-label={this.props.intl.formatMessage(messages.cancel)}
               title={this.props.intl.formatMessage(messages.cancel)}
               floated="right"
               size="big"

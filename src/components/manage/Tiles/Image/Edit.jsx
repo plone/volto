@@ -247,6 +247,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Left"
                 onClick={() => this.onAlignTile('left')}
                 active={this.props.data.align === 'left'}
               >
@@ -257,6 +258,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Right"
                 onClick={() => this.onAlignTile('right')}
                 active={this.props.data.align === 'right'}
               >
@@ -267,6 +269,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Center"
                 onClick={() => this.onAlignTile('center')}
                 active={
                   this.props.data.align === 'center' || !this.props.data.align
@@ -279,6 +282,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Full"
                 onClick={() => this.onAlignTile('full')}
                 active={this.props.data.align === 'full'}
               >

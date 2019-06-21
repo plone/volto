@@ -112,6 +112,7 @@ class SearchWidget extends Component {
             value={this.state.text}
             transparent
             placeholder={this.props.intl.formatMessage(messages.searchSite)}
+            aria-label={this.props.intl.formatMessage(messages.search)}
             title={this.props.intl.formatMessage(messages.search)}
           />
           <button>

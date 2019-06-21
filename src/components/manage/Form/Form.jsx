@@ -629,6 +629,11 @@ class Form extends Component {
                   floated="right"
                   icon="arrow right"
                   type="submit"
+                  aria-label={
+                    this.props.submitLabel
+                      ? this.props.submitLabel
+                      : this.props.intl.formatMessage(messages.save)
+                  }
                   title={
                     this.props.submitLabel
                       ? this.props.submitLabel
@@ -644,6 +649,7 @@ class Form extends Component {
                   circular
                   secondary
                   icon="remove"
+                  aria-label={this.props.intl.formatMessage(messages.cancel)}
                   title={this.props.intl.formatMessage(messages.cancel)}
                   floated="right"
                   size="big"

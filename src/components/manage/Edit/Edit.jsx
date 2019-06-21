@@ -245,7 +245,7 @@ export class EditComponent extends Component {
                   <button
                     id="toolbar-save"
                     className="save"
-                    aria-label="Save"
+                    aria-label={this.props.intl.formatMessage(messages.save)}
                     onClick={() => this.form.onSubmit()}
                   >
                     <Icon
@@ -257,7 +257,11 @@ export class EditComponent extends Component {
                   </button>
                   {hasTilesData(this.props.schema.properties) && (
                     <button
-                      aria-label="Properties"
+                      aria-label={this.props.intl.formatMessage(
+                        this.state.visual
+                          ? messages.properties
+                          : messages.visual,
+                      )}
                       onClick={() => this.onToggleVisual()}
                     >
                       <Icon
@@ -273,7 +277,7 @@ export class EditComponent extends Component {
                   )}
                   <button
                     className="cancel"
-                    aria-label="Cancel"
+                    aria-label={this.props.intl.formatMessage(messages.cancel)}
                     onClick={() => this.onCancel()}
                   >
                     <Icon

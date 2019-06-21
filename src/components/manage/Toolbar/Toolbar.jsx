@@ -296,6 +296,7 @@ class Toolbar extends Component {
                     {this.props.content && this.props.content.is_folderish && (
                       <button
                         className="add"
+                        aria-label="Add"
                         onClick={e => this.toggleMenu(e, 'types')}
                         tabIndex={0}
                       >
@@ -305,6 +306,7 @@ class Toolbar extends Component {
                     <div className="toolbar-button-spacer" />
                     <button
                       className="more"
+                      aria-label="More"
                       onClick={e => this.toggleMenu(e, 'more')}
                       tabIndex={0}
                     >
@@ -335,6 +337,7 @@ class Toolbar extends Component {
                 {!this.props.hideDefaultViewButtons && (
                   <button
                     className="user"
+                    aria-label="Personal tools"
                     onClick={e => this.toggleMenu(e, 'personalTools')}
                     tabIndex={0}
                   >
@@ -348,7 +351,7 @@ class Toolbar extends Component {
               </div>
             </div>
             <div className="toolbar-handler">
-              <button onClick={this.handleShrink} />
+              <button aria-label="Shrink toolbar" onClick={this.handleShrink} />
             </div>
           </div>
           <div className="pusher" />

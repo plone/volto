@@ -77,6 +77,7 @@ class More extends Component {
           <h2>{this.props.content.title}</h2>
           <button
             className="more-user"
+            aria-label="Personal tools"
             onClick={() => this.push('personalTools')}
             tabIndex={0}
           >
@@ -93,7 +94,10 @@ class More extends Component {
             </li>
             <li>
               {historyAction ? (
-                <button onClick={() => this.push('history')}>
+                <button
+                  onClick={() => this.push('history')}
+                  aria-label="History"
+                >
                   <div>
                     <span className="pastanaga-menu-label">
                       {historyAction.title}
@@ -103,7 +107,7 @@ class More extends Component {
                   <Icon name={rightArrowSVG} size="24px" />
                 </button>
               ) : (
-                <button>
+                <button aria-label="History">
                   <div>
                     <span className="pastanaga-menu-label">
                       {historyAction.title}
@@ -124,7 +128,10 @@ class More extends Component {
               </li>
             )}
             <li>
-              <button onClick={() => this.push('Portlets')}>
+              <button
+                aria-label="Portlets"
+                onClick={() => this.push('Portlets')}
+              >
                 Portlets
                 <Icon name={rightArrowSVG} size="24px" />
               </button>

@@ -1,8 +1,8 @@
-# Accessibility Guidelines
+# Accessibility guidelines
 
 Attention points to improve and maintain accessibility. In documentation, code and filenames you will often see this abbreviated as "a11y".
 
-## Clickable Elements That have a symbol or icon and no visible text
+## Clickable elements that have a symbol or icon and no visible text
 
 If the symbol or icon is clear enough for sighted users, for instance a big "X" to close a dialog, it will still need a text for screen reader users.
 
@@ -21,3 +21,8 @@ Example:
   />
 </button>
 ```
+
+## Do not use `<a>` tags without href
+
+If an element has an event listener on it and performs an action, but does not point to a proper URL, use a `<button>` and style with CSS to style.
+The reasoning is that the `<a></a>` HTML tag has specific behavior that screenreaders support and that screenreader users expect.

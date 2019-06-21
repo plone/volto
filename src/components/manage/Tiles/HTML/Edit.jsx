@@ -146,6 +146,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Source"
                 active={!this.state.isPreview}
                 onClick={this.onCodeEditor}
               >
@@ -156,6 +157,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Preview"
                 active={this.state.isPreview}
                 onClick={this.onPreview}
               >

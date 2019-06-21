@@ -167,6 +167,7 @@ class Delete extends Component {
                   primary
                   floated="right"
                   icon="arrow right"
+                  aria-label={this.props.intl.formatMessage(messages.ok)}
                   title={this.props.intl.formatMessage(messages.ok)}
                   size="big"
                   onClick={this.onSubmit}
@@ -176,6 +177,7 @@ class Delete extends Component {
                   circular
                   secondary
                   icon="remove"
+                  aria-label={this.props.intl.formatMessage(messages.cancel)}
                   title={this.props.intl.formatMessage(messages.cancel)}
                   floated="right"
                   size="big"
