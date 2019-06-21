@@ -9,7 +9,25 @@ import { List, Image } from 'semantic-ui-react';
 import { settings } from '~/config';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { FormattedMessage } from 'react-intl';
 
+import { searchContent, resetSearchContent } from '../../../../actions';
+
+@connect(
+  (state, props) => ({
+    items: get(state.search.subrequests, [props.tile, 'items'], []),
+  }),
+  dispatch =>
+    bindActionCreators(
+      {
+        searchContent,
+        resetSearchContent,
+      },
+      dispatch,
+    ),
+)
 /**
  * Listing view component.
  * @class View
@@ -24,10 +42,37 @@ export default class View extends Component {
   static propTypes = {
     tile: PropTypes.string.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
-    getContent: PropTypes.func.isRequired,
-    resetContent: PropTypes.func.isRequired,
-    contentSubrequests: PropTypes.objectOf(PropTypes.any),
+    searchContent: PropTypes.func.isRequired,
+    resetSearchContent: PropTypes.func.isRequired,
+    items: PropTypes.arrayOf(PropTypes.any).isRequired,
   };
+
+  /**
+   * Component did mount
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    const { query = '' } = this.props.data;
+    console.log(query);
+    if (query !== '') {
+      // Use subrequests to fetch tile data
+      const options = {
+        ...JSON.parse(query),
+        fullobjects: 1,
+      };
+      this.props.searchContent('', options, this.props.tile);
+    }
+  }
+
+  /**
+   * Component will unmount. Reset loaded content.
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    this.props.resetSearchContent(this.props.tile);
+  }
 
   /**
    * Render method.
@@ -35,16 +80,28 @@ export default class View extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const items = this.props.properties ? this.props.properties.items : null;
+    const { data, items, properties } = this.props;
+    const folderItems = properties ? properties.items : [];
+    const listingItems = data.query !== '' ? items : folderItems;
 
-    if (!items) {
-      return <div className="tile listing" />;
+    if (listingItems.length === 0) {
+      return (
+        <div className="tile listing">
+          <FormattedMessage
+            id="No results found."
+            defaultMessage="No results found."
+          />
+        </div>
+      );
     }
 
     return (
       <List className="tile listing">
-        {items.map(item => {
-          const image = get(item, 'image.scales.mini.download', undefined);
+        {listingItems.map(item => {
+          const image = get(item, 'image.scales.mini.download', '').replace(
+            settings.apiPath,
+            '',
+          );
           const url = item['@id'].replace(settings.apiPath, '');
           return (
             <List.Item>
