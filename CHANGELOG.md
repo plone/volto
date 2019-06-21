@@ -5,6 +5,7 @@
 ### Added
 
 - Add toast component @sneridagh
+- Add sidebar support for components @sneridagh
 
 ### Changes
 
