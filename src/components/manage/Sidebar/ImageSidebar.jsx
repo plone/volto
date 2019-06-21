@@ -3,23 +3,31 @@ import { Segment } from 'semantic-ui-react';
 import { Icon, TextWidget } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
+import ObjectBrowser from './ObjectBrowser';
+
 import clearSVG from '@plone/volto/icons/clear.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 
 const ImageSidebar = props => {
-  const [origin, setOrigin] = useState('');
-  const [alt, setAlt] = useState('');
+  const [origin, setOrigin] = useState(props.data.url || '');
+  const [alt, setAlt] = useState(props.data.alt || '');
   const [browserIsOpen, setBrowserIsOpen] = useState(false);
 
-  return (
+  function closeBrowser() {
+    setBrowserIsOpen(false);
+    setOrigin(props.data.url);
+  }
+
+  return !browserIsOpen ? (
     <Segment.Group raised>
       <header className="header pulled">
         <h2>Image</h2>
         <button onClick={props.closeSidebar}>
-          <Icon name={clearSVG} size="24px" color="#786E5D" />
+          <Icon name={clearSVG} size="24px" color="#786Ec5D" />
         </button>
       </header>
-      {!browserIsOpen ? (
+
+      {props.data.url && (
         <>
           <Segment className="sidebar-metadata-container" secondary>
             {/* {props.data.url && <div>{props.data.url}</div>} */}
@@ -38,14 +46,21 @@ const ImageSidebar = props => {
               required={false}
               value={origin}
               icon={folderSVG}
-              iconAction={setBrowserIsOpen}
+              iconAction={() => setBrowserIsOpen(true)}
+            />
+            <TextWidget
+              id="alt"
+              title="alt"
+              required={false}
+              value={alt}
+              onChange={e => setAlt(e.target.value)}
             />
           </Segment>
         </>
-      ) : (
-        <div />
       )}
     </Segment.Group>
+  ) : (
+    <ObjectBrowser {...props} closeBrowser={closeBrowser} />
   );
 };
 

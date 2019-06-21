@@ -307,25 +307,13 @@ class ObjectBrowser extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { alt, caption, external } = this.state;
-
-    return ReactDOM.createPortal(
+    return (
       <aside
         onClick={e => {
           e.stopPropagation();
         }}
         ref={this.objectBrowser}
-        key="myuniquekey"
-        style={{
-          height: '100vh',
-          position: 'fixed',
-          top: 0,
-          right: 0,
-          zIndex: 100,
-          width: '320px',
-          backgroundColor: '#fff',
-          boxShadow: '0 1px 2px 0 #c7d5d8',
-        }}
+        key="objectbrowser"
         className="object-browser-container"
       >
         <Segment.Group raised>
@@ -366,33 +354,10 @@ class ObjectBrowser extends Component {
               <Icon name={searchSVG} size="24px" />
             </button>
             <button onClick={this.props.closeBrowser}>
-              <Icon name={clearSVG} size="24px" color="#e40166" />
+              <Icon name={clearSVG} size="24px" color="#786Ec5D" />
             </button>
           </header>
           <Segment secondary>{this.state.currentFolder}</Segment>
-
-          <Segment className="tabbed-actions">
-            <Button.Group>
-              <Button
-                icon
-                basic
-                className={cx('', { active: this.state.mode === 'image' })}
-                onClick={() => this.toggleMode('image')}
-              >
-                <Icon name={imageSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                className={cx('', { active: this.state.mode === 'link' })}
-                onClick={() => this.toggleMode('link')}
-              >
-                <Icon name={linkSVG} size="24px" />
-              </Button>
-            </Button.Group>
-          </Segment>
 
           <ObjectBrowserNav
             currentSearchResults={
@@ -411,33 +376,8 @@ class ObjectBrowser extends Component {
             mode={this.state.mode}
             isExternalSelected={this.state.external}
           />
-
-          <Segment className="form actions">
-            <TextWidget
-              id="alt"
-              title="alt"
-              required={false}
-              onChange={this.onChangeField}
-              value={alt}
-            />
-            <TextWidget
-              id="caption"
-              title="caption"
-              required={false}
-              onChange={this.onChangeField}
-              value={caption}
-            />
-            <TextWidget
-              id="external"
-              title="external URL"
-              required={false}
-              onChange={this.onChangeField}
-              value={external}
-            />
-          </Segment>
         </Segment.Group>
-      </aside>,
-      document.body,
+      </aside>
     );
   }
 }
