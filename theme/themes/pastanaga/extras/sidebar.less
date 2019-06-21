@@ -46,9 +46,8 @@ aside.sidebar-container {
     h2 {
       flex: 1 0 auto;
       margin: 0 !important;
-      color: #252525;
+      color: #517776;
       font-size: 16px;
-      font-weight: 500;
     }
 
     form {
@@ -70,8 +69,13 @@ aside.sidebar-container {
 
       button {
         margin-right: 10px;
+        cursor: pointer;
       }
     }
+  }
+
+  .ui.segment {
+    border-bottom: 1px solid #b8c6c8;
   }
 
   .ui.segment.tabbed-actions {
@@ -130,7 +134,8 @@ aside.sidebar-container {
     }
   }
 
-  .ui.segment.form.actions {
+  .ui.segment.form.actions,
+  .ui.segment.form.sidebar-image-data {
     padding-bottom: 1em;
   }
 }
@@ -168,4 +173,8 @@ aside.sidebar-container {
 
   transform: translate(100%, 0%);
   transition: transform 0.5s cubic-bezier(0.09, 0.11, 0.24, 0.91);
+}
+
+.sidebar-metadata-container {
+  display: flex;
 }
