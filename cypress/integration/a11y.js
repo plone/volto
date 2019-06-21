@@ -5,14 +5,10 @@ describe('App', () => {
     cy.injectAxe(); // make sure axe is available on the page
   });
 
-  it('Has no detectable a11y violations on load', () => {
+  it.only('Has no detectable a11y violations on load', () => {
     // cy.checkA11y(); // fail for a11y violations
-    cy.checkA11y('body', {
-      runOnly: {
-        type: 'tag',
-        values: ['wcag2a'],
-      },
-    });
+    cy.get('.logo img.image').click();
+    cy.checkA11y();
   });
 
   /*
