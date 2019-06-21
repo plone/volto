@@ -5,8 +5,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Icon, Input, Label } from 'semantic-ui-react';
+import { Form, Grid, Icon as IconOld, Input, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
+import { Icon } from '@plone/volto/components';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 const messages = defineMessages({
@@ -60,6 +61,8 @@ export default class TextWidget extends Component {
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     intl: intlShape.isRequired,
+    icon: PropTypes.func,
+    iconAction: PropTypes.func,
   };
 
   /**
@@ -76,6 +79,8 @@ export default class TextWidget extends Component {
     onEdit: null,
     onDelete: null,
     focus: false,
+    icon: null,
+    iconAction: null,
   };
 
   /**
@@ -106,6 +111,8 @@ export default class TextWidget extends Component {
       onEdit,
       onDelete,
       intl,
+      icon,
+      iconAction,
     } = this.props;
 
     const schema = {
@@ -165,10 +172,10 @@ export default class TextWidget extends Component {
               {onEdit && (
                 <div className="toolbar">
                   <a className="item" onClick={() => onEdit(id, schema)}>
-                    <Icon name="write square" size="large" color="blue" />
+                    <IconOld name="write square" size="large" color="blue" />
                   </a>
                   <a className="item" onClick={() => onDelete(id)}>
-                    <Icon name="close" size="large" color="red" />
+                    <IconOld name="close" size="large" color="red" />
                   </a>
                 </div>
               )}
@@ -189,6 +196,11 @@ export default class TextWidget extends Component {
                   {message}
                 </Label>
               ))}
+              {icon && iconAction && (
+                <button onClick={iconAction}>
+                  <Icon name={icon} size="18px" />
+                </button>
+              )}
             </Grid.Column>
           </Grid.Row>
           {description && (
