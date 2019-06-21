@@ -23,6 +23,7 @@ Array [
       />
     </div>
     <button
+      aria-label="Expand"
       className="ui button trigger"
       onClick={[Function]}
     />

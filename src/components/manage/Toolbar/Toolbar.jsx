@@ -3,14 +3,13 @@
  * @module components/manage/Toolbar/Toolbar
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import cookie from 'react-cookie';
 import { find } from 'lodash';
-import cx from 'classnames';
 
 import { listActions } from '../../../actions';
 
@@ -109,14 +108,8 @@ class Toolbar extends Component {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.listActions(getBaseUrl(nextProps.pathname));
     }
-
-    // if (nextProps.actions.object_buttons) {
-    //   const objectButtons = nextProps.actions.object_buttons;
-    //   this.setState({
-    //     hasObjectButtons: !!objectButtons.length,
-    //   });
-    // }
   }
+
   /**
    * Component will receive props
    * @method componentWillUnmount
@@ -199,7 +192,7 @@ class Toolbar extends Component {
 
     return (
       this.props.token && (
-        <Fragment>
+        <>
           <BodyClass
             className={expanded ? 'has-toolbar' : 'has-toolbar-collapsed'}
           />
@@ -277,10 +270,10 @@ class Toolbar extends Component {
             <div className="toolbar-body">
               <div className="toolbar-actions">
                 {this.props.hideDefaultViewButtons && this.props.inner && (
-                  <Fragment>{this.props.inner}</Fragment>
+                  <>{this.props.inner}</>
                 )}
                 {!this.props.hideDefaultViewButtons && (
-                  <Fragment>
+                  <>
                     {editAction && (
                       <Link className="edit" to={`${path}/edit`}>
                         <Icon name={penSVG} size="30px" className="circled" />
@@ -329,7 +322,7 @@ class Toolbar extends Component {
                         />
                       )}
                     </button>
-                  </Fragment>
+                  </>
                 )}
               </div>
               <div className="toolbar-bottom">
@@ -355,7 +348,7 @@ class Toolbar extends Component {
             </div>
           </div>
           <div className="pusher" />
-        </Fragment>
+        </>
       )
     );
   }

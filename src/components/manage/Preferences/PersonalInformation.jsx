@@ -122,7 +122,7 @@ class PersonalInformation extends Component {
     closeMenu: PropTypes.func,
   };
 
-  defaultProps = {
+  static defaultProps = {
     isToolbarEmbedded: false,
     closeMenu: null,
   };

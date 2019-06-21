@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools component 1`] = `
+<div
+  className="personal-tools pastanaga-menu"
+>
+  <header
+    className="header"
+  >
+    <button
+      className="back"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "32px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </button>
+    <div
+      className="vertical divider"
+    />
+    <h2>
+      admin
+    </h2>
+    <a
+      href="/logout"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon logout"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "32px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </a>
+  </header>
+  <div
+    className="avatar"
+  >
+    <img
+      alt="user avatar"
+      src="avatar.jpg"
+    />
+  </div>
+  <div
+    className="stats"
+  >
+    <ul>
+      <li>
+        <span>
+          126
+        </span>
+        <span>
+          Items Created
+        </span>
+      </li>
+      <li>
+        <span>
+          43
+        </span>
+        <span>
+          Uploads
+        </span>
+      </li>
+      <li>
+        <span>
+          13
+        </span>
+        <span>
+          Reviews
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div
+    className="pastanaga-menu-list"
+  >
+    <ul>
+      <li>
+        <button
+          aria-label="Profile"
+          onClick={[Function]}
+        >
+          Profile
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </button>
+      </li>
+      <li>
+        <a
+          href="/personal-preferences"
+          onClick={[Function]}
+        >
+          Preferences
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </a>
+      </li>
+      <li>
+        <a
+          href="/controlpanel"
+          onClick={[Function]}
+        >
+          Site Setup
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

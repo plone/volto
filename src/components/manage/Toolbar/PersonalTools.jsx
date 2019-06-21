@@ -20,8 +20,6 @@ import backSVG from '../../../icons/back.svg';
 @connect(
   state => ({
     user: state.users.user,
-    loaded: state.users.get.loaded,
-    loading: state.users.update.loading,
     userId: state.userSession.token
       ? jwtDecode(state.userSession.token).sub
       : '',
@@ -43,10 +41,7 @@ class PersonalTools extends Component {
     }).isRequired,
     userId: PropTypes.string.isRequired,
     getUser: PropTypes.func.isRequired,
-    loaded: PropTypes.bool.isRequired,
-    loading: PropTypes.bool,
     loadComponent: PropTypes.func.isRequired,
-    componentIndex: PropTypes.number.isRequired,
   };
 
   /**
