@@ -4,9 +4,13 @@
  */
 
 import get from 'lodash/get';
-import isEqual from 'lodash/isEqual';
 import { Link } from 'react-router-dom';
-import { /*intlShape, */ FormattedMessage } from 'react-intl';
+import {
+  defineMessages,
+  injectIntl,
+  intlShape,
+  FormattedMessage,
+} from 'react-intl';
 import { Button, List, Image } from 'semantic-ui-react';
 import { settings } from '~/config';
 import { withSidebar } from '~/helpers';
@@ -20,10 +24,17 @@ import Icon from '../../../../components/theme/Icon/Icon';
 import configurationSVG from '../../../../icons/configuration.svg';
 import { searchContent, resetSearchContent } from '../../../../actions';
 
+const messages = defineMessages({
+  config_button: {
+    id: 'Configure Tile',
+    defaultMessage: 'Configure Tile',
+  },
+});
+
+@injectIntl
 @withSidebar
 @connect(
   (state, props) => ({
-    // loaded: get(state.search.subrequests, [props.tile, 'loaded'], false),
     items: get(state.search.subrequests, [props.tile, 'items'], []),
   }),
   dispatch =>
@@ -36,7 +47,7 @@ import { searchContent, resetSearchContent } from '../../../../actions';
     ),
 )
 /**
- * Edit text tile class.
+ * Edit listing tile class.
  * @class Edit
  * @extends Component
  */
@@ -48,21 +59,12 @@ export default class Edit extends Component {
    */
   static propTypes = {
     data: PropTypes.objectOf(PropTypes.any).isRequired,
-    detached: PropTypes.bool,
     index: PropTypes.number.isRequired,
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
-    onAddTile: PropTypes.func.isRequired,
-    onChangeTile: PropTypes.func.isRequired,
-    onDeleteTile: PropTypes.func.isRequired,
-    onMutateTile: PropTypes.func.isRequired,
-    onFocusPreviousTile: PropTypes.func.isRequired,
-    onFocusNextTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     openSidebar: PropTypes.func.isRequired,
-    closeSidebar: PropTypes.func.isRequired,
-    isSidebarOpen: PropTypes.bool.isRequired,
-    // intl: intlShape.isRequired,
+    intl: intlShape.isRequired,
     searchContent: PropTypes.func.isRequired,
     resetSearchContent: PropTypes.func.isRequired,
     items: PropTypes.arrayOf(PropTypes.any),
@@ -76,11 +78,15 @@ export default class Edit extends Component {
   componentDidMount() {
     const { data, searchContent, tile } = this.props;
     if (data.query) {
-      const options = {
-        ...JSON.parse(data.query),
-        fullobjects: 1,
-      };
-      searchContent('', options, tile);
+      try {
+        const options = {
+          ...JSON.parse(data.query),
+          fullobjects: 1,
+        };
+        searchContent('', options, tile);
+      } catch (err) {
+        console.error('Listing Tile Edit - componentDidMount: ', err.message);
+      }
     }
   }
 
@@ -91,13 +97,21 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   componentDidUpdate(prevProps) {
-    const { data, searchContent, tile } = this.props;
+    const { data, /* resetSearchContent, */ searchContent, tile } = this.props;
     if (prevProps.data.query !== data.query) {
-      const options = {
-        ...JSON.parse(data.query),
-        fullobjects: 1,
-      };
-      searchContent('', options, tile);
+      if (!data.query) {
+        // resetSearchContent(tile);
+        return;
+      }
+      try {
+        const options = {
+          ...JSON.parse(data.query),
+          fullobjects: 1,
+        };
+        searchContent('', options, tile);
+      } catch (err) {
+        console.error('Listing Tile Edit - componentDidUpdate: ', err.message);
+      }
     }
   }
 
@@ -118,6 +132,7 @@ export default class Edit extends Component {
   render() {
     const {
       data,
+      intl,
       items,
       openSidebar,
       onSelectTile,
@@ -127,7 +142,11 @@ export default class Edit extends Component {
     } = this.props;
 
     const folderItems = properties ? properties.items || [] : [];
-    const listingItems = data.query ? items : folderItems;
+    let listingItems = folderItems;
+    try {
+      JSON.parse(data.query);
+      listingItems = items;
+    } catch (err) {}
 
     return (
       <div
@@ -149,7 +168,13 @@ export default class Edit extends Component {
           this.node = node;
         }}
       >
-        <Button icon basic onClick={openSidebar} className="config-button">
+        <Button
+          icon
+          basic
+          onClick={openSidebar}
+          className="config-button"
+          title={intl.formatMessage(messages.config_button)}
+        >
           <Icon name={configurationSVG} size="22px" />
         </Button>
         {listingItems.length > 0 ? (

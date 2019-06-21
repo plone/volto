@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { intlShape } from 'react-intl';
 
 export default class ListingSidebar extends Component {
   /**
@@ -10,7 +11,7 @@ export default class ListingSidebar extends Component {
   static propTypes = {
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     tile: PropTypes.string.isRequired,
-    // intl: intlShape.isRequired,
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -21,10 +22,7 @@ export default class ListingSidebar extends Component {
    */
   constructor(props) {
     super(props);
-    const items = props.properties ? props.properties.items : [];
-    this.folderItems = items || [];
     this.state = {
-      items: this.folderItems,
       query: props.data.query || '',
     };
   }
@@ -51,21 +49,6 @@ export default class ListingSidebar extends Component {
   onSubmit = e => {
     e.preventDefault();
     const { query } = this.state;
-    // let { query } = this.state;
-    // if (query === '') {
-    //   this.setState(
-    //     {
-    //       items: this.folderItems,
-    //     },
-    //     this.props.resetSearchContent,
-    //   );
-    // } else {
-    //   const options = {
-    //     ...JSON.parse(query),
-    //     fullobjects: 1,
-    //   };
-    //   this.props.searchContent('', options, this.props.tile);
-    // }
     this.props.onChangeTile(this.props.tile, {
       ...this.props.data,
       query,

@@ -52,14 +52,18 @@ export default class View extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    const { query = '' } = this.props.data;
+    const { query } = this.props.data;
     if (query !== '') {
       // Use subrequests to fetch tile data
-      const options = {
-        ...JSON.parse(query),
-        fullobjects: 1,
-      };
-      this.props.searchContent('', options, this.props.tile);
+      try {
+        const options = {
+          ...JSON.parse(query),
+          fullobjects: 1,
+        };
+        this.props.searchContent('', options, this.props.tile);
+      } catch (err) {
+        console.err('Listing Tile View - componentDidMount: ', err.message);
+      }
     }
   }
 
@@ -95,10 +99,10 @@ export default class View extends Component {
           );
           const url = item['@id'].replace(settings.apiPath, '');
           return (
-            <List.Item>
+            <List.Item key={item.UID}>
               {image && <Image avatar src={image} alt={item.title} />}
               <List.Content>
-                <List.Header as="a">
+                <List.Header>
                   <Link to={url}>{item.title}</Link>
                 </List.Header>
                 <List.Description>{item.description}</List.Description>
