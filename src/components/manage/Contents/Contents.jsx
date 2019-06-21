@@ -50,7 +50,6 @@ import {
   moveContent,
   orderContent,
   sortContent,
-  addMessage,
 } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import Indexes from '../../../constants/Indexes';
@@ -64,7 +63,9 @@ import {
   ContentsPropertiesModal,
   Pagination,
   Toolbar,
+  Toast,
 } from '../../../components';
+import { toast } from 'react-toastify';
 
 const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
 const messages = defineMessages({
@@ -152,6 +153,10 @@ const messages = defineMessages({
     id: 'Upload',
     defaultMessage: 'Upload',
   },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
 });
 
 @DragDropContext(HTML5Backend)
@@ -183,7 +188,6 @@ const messages = defineMessages({
         moveContent,
         orderContent,
         sortContent,
-        addMessage,
       },
       dispatch,
     ),
@@ -210,7 +214,6 @@ export default class ContentsComponent extends Component {
     moveContent: PropTypes.func.isRequired,
     orderContent: PropTypes.func.isRequired,
     sortContent: PropTypes.func.isRequired,
-    addMessage: PropTypes.func.isRequired,
     clipboardRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
@@ -736,10 +739,12 @@ export default class ContentsComponent extends Component {
   cut(event, { value }) {
     this.props.cut(value ? [value] : this.state.selected);
     this.onSelectNone();
-    this.props.addMessage(
-      null,
-      this.props.intl.formatMessage(messages.messageCut),
-      'success',
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.messageCut)}
+      />,
     );
   }
 
@@ -753,10 +758,12 @@ export default class ContentsComponent extends Component {
   copy(event, { value }) {
     this.props.copy(value ? [value] : this.state.selected);
     this.onSelectNone();
-    this.props.addMessage(
-      null,
-      this.props.intl.formatMessage(messages.messageCopied),
-      'success',
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.messageCopied)}
+      />,
     );
   }
 
@@ -847,10 +854,12 @@ export default class ContentsComponent extends Component {
         getBaseUrl(this.props.pathname),
       );
     }
-    this.props.addMessage(
-      null,
-      this.props.intl.formatMessage(messages.messagePasted),
-      'success',
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.messagePasted)}
+      />,
     );
   }
 

@@ -21,10 +21,10 @@ import {
   intlShape,
 } from 'react-intl';
 import { Container, Icon, Menu } from 'semantic-ui-react';
+import { toast } from 'react-toastify';
 
-import { Form, Toolbar } from '../../../components';
+import { Form, Toolbar, Toast } from '../../../components';
 import languages from '../../../constants/Languages';
-import { addMessage } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
@@ -52,6 +52,10 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
 });
 
 /**
@@ -64,7 +68,7 @@ const messages = defineMessages({
   (state, props) => ({
     pathname: props.location.pathname,
   }),
-  dispatch => bindActionCreators({ updateIntl, addMessage }, dispatch),
+  dispatch => bindActionCreators({ updateIntl }, dispatch),
 )
 class PersonalPreferences extends Component {
   /**
@@ -74,7 +78,6 @@ class PersonalPreferences extends Component {
    */
   static propTypes = {
     updateIntl: PropTypes.func.isRequired,
-    addMessage: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
   };
@@ -108,10 +111,12 @@ class PersonalPreferences extends Component {
           locale: locale.language || 'en',
           messages: locale.body,
         });
-        this.props.addMessage(
-          null,
-          this.props.intl.formatMessage(messages.saved),
-          'success',
+        toast.success(
+          <Toast
+            success
+            title={this.props.intl.formatMessage(messages.success)}
+            content={this.props.intl.formatMessage(messages.saved)}
+          />,
         );
       },
     );

@@ -12,13 +12,10 @@ import Helmet from 'react-helmet';
 import { Portal } from 'react-portal';
 import { Icon, Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { toast } from 'react-toastify';
 
-import { Form, Toolbar } from '../../../components';
-import {
-  addMessage,
-  updateControlpanel,
-  getControlpanel,
-} from '../../../actions';
+import { Form, Toolbar, Toast } from '../../../components';
+import { updateControlpanel, getControlpanel } from '../../../actions';
 
 const messages = defineMessages({
   changesSaved: {
@@ -28,6 +25,10 @@ const messages = defineMessages({
   back: {
     id: 'Back',
     defaultMessage: 'Back',
+  },
+  info: {
+    id: 'Info',
+    defaultMessage: 'Info',
   },
 });
 
@@ -45,10 +46,7 @@ const messages = defineMessages({
     pathname: props.location.pathname,
   }),
   dispatch =>
-    bindActionCreators(
-      { addMessage, updateControlpanel, getControlpanel },
-      dispatch,
-    ),
+    bindActionCreators({ updateControlpanel, getControlpanel }, dispatch),
 )
 class Controlpanel extends Component {
   /**
@@ -57,7 +55,6 @@ class Controlpanel extends Component {
    * @static
    */
   static propTypes = {
-    addMessage: PropTypes.func.isRequired,
     updateControlpanel: PropTypes.func.isRequired,
     getControlpanel: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
@@ -113,10 +110,12 @@ class Controlpanel extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      this.props.addMessage(
-        null,
-        this.props.intl.formatMessage(messages.changesSaved),
-        'info',
+      toast.info(
+        <Toast
+          info
+          title={this.props.intl.formatMessage(messages.info)}
+          content={this.props.intl.formatMessage(messages.changesSaved)}
+        />,
       );
     }
   }
