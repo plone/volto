@@ -10,6 +10,7 @@
 ### Changes
 
 - Small UX/UI fixes @sneridagh
+- Fix query string search in subjects vocab field @gomez
 
 ### Internal
 
