@@ -4,6 +4,7 @@
  */
 
 import { get } from 'lodash';
+import { Link } from 'react-router-dom';
 import { intlShape } from 'react-intl';
 import { List, Image } from 'semantic-ui-react';
 import { settings } from '~/config';
