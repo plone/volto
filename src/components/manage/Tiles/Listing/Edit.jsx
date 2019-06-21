@@ -7,15 +7,20 @@ import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
 import { Link } from 'react-router-dom';
 import { /*intlShape, */ FormattedMessage } from 'react-intl';
-import { List, Image } from 'semantic-ui-react';
+import { Button, List, Image } from 'semantic-ui-react';
 import { settings } from '~/config';
+import { withSidebar } from '~/helpers';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import cx from 'classnames';
 
+import Icon from '../../../../components/theme/Icon/Icon';
+import configurationSVG from '../../../../icons/configuration.svg';
 import { searchContent, resetSearchContent } from '../../../../actions';
 
+@withSidebar
 @connect(
   (state, props) => ({
     // loaded: get(state.search.subrequests, [props.tile, 'loaded'], false),
@@ -54,6 +59,9 @@ export default class Edit extends Component {
     onFocusPreviousTile: PropTypes.func.isRequired,
     onFocusNextTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
+    openSidebar: PropTypes.func.isRequired,
+    closeSidebar: PropTypes.func.isRequired,
+    isSidebarOpen: PropTypes.bool.isRequired,
     // intl: intlShape.isRequired,
     searchContent: PropTypes.func.isRequired,
     resetSearchContent: PropTypes.func.isRequired,
@@ -150,9 +158,31 @@ export default class Edit extends Component {
    */
   render() {
     const { items, query } = this.state;
+    const { openSidebar, onSelectTile, selected, tile } = this.props;
 
     return (
-      <div>
+      <div
+        role="presentation"
+        onClick={() => onSelectTile(tile)}
+        className={cx('tile listing', {
+          selected,
+        })}
+        tabIndex={0}
+        onKeyDown={e =>
+          this.props.handleKeyDown(
+            e,
+            this.props.index,
+            this.props.tile,
+            this.node,
+          )
+        }
+        ref={node => {
+          this.node = node;
+        }}
+      >
+        <Button icon basic onClick={openSidebar} className="config-button">
+          <Icon name={configurationSVG} size="22px" />
+        </Button>
         <form className="query-wrapper" onSubmit={this.onSubmit}>
           <input
             name="query"
@@ -163,7 +193,7 @@ export default class Edit extends Component {
           />
         </form>
         {items.length > 0 ? (
-          <List className="tile listing">
+          <List>
             {items.map(item => {
               const image = get(item, 'image.scales.mini.download', '').replace(
                 settings.apiPath,
@@ -171,10 +201,10 @@ export default class Edit extends Component {
               );
               const url = item['@id'].replace(settings.apiPath, '');
               return (
-                <List.Item key="">
+                <List.Item key={item.UID}>
                   {image && <Image avatar src={image} alt={item.title} />}
                   <List.Content>
-                    <List.Header as="a">
+                    <List.Header>
                       <Link to={url}>{item.title}</Link>
                     </List.Header>
                     <List.Description>{item.description}</List.Description>

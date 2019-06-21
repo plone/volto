@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { FormattedMessage } from 'react-intl';
 
 import { searchContent, resetSearchContent } from '../../../../actions';
 
@@ -80,7 +79,6 @@ export default class View extends Component {
    */
   render() {
     const { data, items, properties } = this.props;
-    debugger;
     const folderItems = properties ? properties.items : [];
     const listingItems = data.query !== '' ? items : folderItems;
 
