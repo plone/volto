@@ -80,7 +80,7 @@ export default class View extends Component {
   render() {
     const { data, items, properties } = this.props;
     const folderItems = properties ? properties.items : [];
-    const listingItems = data.query !== '' ? items : folderItems;
+    const listingItems = data.query ? items : folderItems;
 
     if (listingItems.length === 0) {
       return <List className="tile listing" />;
