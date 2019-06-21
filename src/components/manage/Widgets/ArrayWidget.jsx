@@ -5,8 +5,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Label, Dropdown } from 'semantic-ui-react';
-import { concat, debounce, isObject, map, uniqBy } from 'lodash';
+import { Form, Grid, Label } from 'semantic-ui-react';
+import { isObject, map } from 'lodash';
 import { connect } from 'react-redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { bindActionCreators } from 'redux';
@@ -72,16 +72,17 @@ const customSelectStyles = {
   control: (styles, state) => ({
     ...styles,
     border: 'none',
-    borderBottom: '2px solid #b8c6c8',
+    borderBottom: '1px solid #c7d5d8',
     boxShadow: 'none',
     borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
+    height: '60px',
   }),
   menu: (styles, state) => ({
     ...styles,
     top: null,
     marginTop: 0,
     boxShadow: 'none',
-    borderBottom: '2px solid #b8c6c8',
+    borderBottom: '1px solid #c7d5d8',
   }),
   indicatorSeparator: styles => ({
     ...styles,
@@ -89,7 +90,10 @@ const customSelectStyles = {
   }),
   valueContainer: styles => ({
     ...styles,
-    // paddingLeft: 0,
+    paddingLeft: 0,
+  }),
+  dropdownIndicator: styles => ({
+    paddingRight: 0,
   }),
   option: (styles, state) => ({
     ...styles,
