@@ -272,7 +272,7 @@ export default class EditHeroTile extends Component {
         className={cx('tile hero', {
           selected: this.props.selected,
         })}
-        tabIndex={0}
+        //        tabIndex={0}
         onKeyDown={e =>
           this.props.handleKeyDown(
             e,

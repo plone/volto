@@ -126,7 +126,7 @@ export default class Edit extends Component {
         className={cx('tile html', {
           selected: this.props.selected,
         })}
-        tabIndex={0}
+        //        tabIndex={0}
         onKeyDown={e =>
           this.props.handleKeyDown(
             e,

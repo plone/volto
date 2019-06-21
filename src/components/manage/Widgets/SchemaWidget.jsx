@@ -563,9 +563,13 @@ export default class SchemaWidget extends Component {
                 onOrderFieldset={this.onOrderFieldset}
               />
             ))}
-            <a className="item" onClick={this.onShowAddFieldset}>
+            <button
+              aria-label="Add"
+              className="item"
+              onClick={this.onShowAddFieldset}
+            >
               <Icon name="plus" size="large" />
-            </a>
+            </button>
           </div>
           {map(
             value.fieldsets[this.state.currentFieldset].fields,
@@ -590,9 +594,13 @@ export default class SchemaWidget extends Component {
                     <label>Add new field</label>
                   </div>
                   <div className="toolbar">
-                    <a className="item" onClick={this.onShowAddField}>
+                    <button
+                      aria-label="Add"
+                      className="item"
+                      onClick={this.onShowAddField}
+                    >
                       <Icon name="plus" color="blue" size="large" />
-                    </a>
+                    </button>
                   </div>
                 </Grid.Column>
               </Grid.Row>

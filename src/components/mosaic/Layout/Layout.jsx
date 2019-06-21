@@ -15,7 +15,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { isEqual, map, reduce, remove } from 'lodash';
 import move from 'lodash-move';
 import { v4 as uuid } from 'uuid';
-import { Container, Icon } from 'semantic-ui-react';
+import { Container, Icon, Button } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
@@ -636,22 +636,27 @@ export default class Layout extends Component {
             pathname="/"
             inner={
               <div>
-                <a id="toolbar-save" className="item" onClick={() => {}}>
+                <button
+                  aria-label="Save"
+                  id="toolbar-save"
+                  className="item"
+                  onClick={() => {}}
+                >
                   <Icon
                     name="save"
                     size="big"
                     color="blue"
                     title={this.props.intl.formatMessage(messages.save)}
                   />
-                </a>
-                <a className="item" onClick={() => {}}>
+                </button>
+                <button aria-label="Close" className="item" onClick={() => {}}>
                   <Icon
                     name="close"
                     size="big"
                     color="red"
                     title={this.props.intl.formatMessage(messages.cancel)}
                   />
-                </a>
+                </button>
               </div>
             }
           />

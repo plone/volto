@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { filter, map } from 'lodash';
 import { Dropdown } from 'semantic-ui-react';
-
+import addSVG from '../../../icons/circle-plus.svg';
 import { getTypes } from '../../../actions';
 import { Icon } from '../../../components';
 import { getBaseUrl } from '../../../helpers';
