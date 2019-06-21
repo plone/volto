@@ -19,7 +19,6 @@ import {
  * @returns {Object} Search content action.
  */
 export function searchContent(url, options, subrequest = null) {
-  console.log(options);
   let queryArray = [];
   const arrayOptions = pickBy(options, item => isArray(item));
 
