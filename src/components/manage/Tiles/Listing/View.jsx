@@ -85,14 +85,7 @@ export default class View extends Component {
     const listingItems = data.query !== '' ? items : folderItems;
 
     if (listingItems.length === 0) {
-      return (
-        <div className="tile listing">
-          <FormattedMessage
-            id="No results found."
-            defaultMessage="No results found."
-          />
-        </div>
-      );
+      return <div className="tile listing" />;
     }
 
     return (

@@ -1,10 +1,14 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { MemoryRouter } from 'react-router-dom';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-intl-redux';
 
 import { settings } from '~/config';
 
 import View from './View';
+
+const mockStore = configureStore();
 
 const props = {
   data: {
@@ -32,10 +36,24 @@ const props = {
 };
 
 test('renders a listing view component', () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+    content: {
+      subrequests: {},
+    },
+    search: {
+      subrequests: {},
+    },
+  });
   const component = renderer.create(
-    <MemoryRouter>
-      <View {...props} />
-    </MemoryRouter>,
+    <Provider store={store}>
+      <MemoryRouter>
+        <View {...props} />
+      </MemoryRouter>
+    </Provider>,
   );
   const json = component.toJSON();
   expect(json).toMatchSnapshot();
