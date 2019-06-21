@@ -69,34 +69,35 @@ export default class Edit extends Component {
   };
 
   /**
-   * Constructor
-   * @method constructor
-   * @param {object} props Properties
+   * Component did mount. Search items if the query is set.
+   * @method componentDidMount
    * @returns {undefined}
    */
-  constructor(props) {
-    super(props);
-    const items = props.properties ? props.properties.items : [];
-    this.folderItems = items || [];
-    this.state = {
-      items: this.folderItems,
-      query: props.data.query || '',
-    };
+  componentDidMount() {
+    const { data, searchContent, tile } = this.props;
+    if (data.query) {
+      const options = {
+        ...JSON.parse(data.query),
+        fullobjects: 1,
+      };
+      searchContent('', options, tile);
+    }
   }
 
   /**
    * Component did update. Here we fetch new content if needed.
    * @method componentDidUpdate
    * @param {Object} prevProps Props before update
-   * @param {Object} prevState State before update
    * @returns {undefined}
    */
-  componentDidUpdate(prevProps, prevState) {
-    const { items } = this.props;
-    if (!isEqual(prevProps.items, items)) {
-      this.setState({
-        items,
-      });
+  componentDidUpdate(prevProps) {
+    const { data, searchContent, tile } = this.props;
+    if (prevProps.data.query !== data.query) {
+      const options = {
+        ...JSON.parse(data.query),
+        fullobjects: 1,
+      };
+      searchContent('', options, tile);
     }
   }
 
@@ -110,55 +111,23 @@ export default class Edit extends Component {
   }
 
   /**
-   * Change handler
-   * @method onChange
-   * @param {object} e Change event
-   * @returns {undefined}
-   */
-  onChange = e => {
-    const value = e.currentTarget.value;
-    this.setState({
-      query: value,
-    });
-  };
-
-  /**
-   * Submit handler
-   * @method onSubmit
-   * @param {object} e Submit event
-   * @returns {undefined}
-   */
-  onSubmit = e => {
-    e.preventDefault();
-    let { query } = this.state;
-    if (query === '') {
-      this.setState(
-        {
-          items: this.folderItems,
-        },
-        this.props.resetSearchContent,
-      );
-    } else {
-      const options = {
-        ...JSON.parse(query),
-        fullobjects: 1,
-      };
-      this.props.searchContent('', options, this.props.tile);
-    }
-    this.props.onChangeTile(this.props.tile, {
-      ...this.props.data,
-      query,
-    });
-  };
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    const { items, query } = this.state;
-    const { openSidebar, onSelectTile, selected, tile } = this.props;
+    const {
+      data,
+      items,
+      openSidebar,
+      onSelectTile,
+      properties,
+      selected,
+      tile,
+    } = this.props;
+
+    const folderItems = properties ? properties.items || [] : [];
+    const listingItems = data.query ? items : folderItems;
 
     return (
       <div
@@ -183,18 +152,9 @@ export default class Edit extends Component {
         <Button icon basic onClick={openSidebar} className="config-button">
           <Icon name={configurationSVG} size="22px" />
         </Button>
-        <form className="query-wrapper" onSubmit={this.onSubmit}>
-          <input
-            name="query"
-            className="query"
-            placeholder="query"
-            onChange={this.onChange}
-            value={query}
-          />
-        </form>
-        {items.length > 0 ? (
+        {listingItems.length > 0 ? (
           <List>
-            {items.map(item => {
+            {listingItems.map(item => {
               const image = get(item, 'image.scales.mini.download', '').replace(
                 settings.apiPath,
                 '',
