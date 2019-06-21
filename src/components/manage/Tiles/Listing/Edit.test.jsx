@@ -7,16 +7,11 @@ import Edit from './Edit';
 
 const mockStore = configureStore();
 
-global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
-
 test('renders an edit listing tile component', () => {
   const store = mockStore({
     intl: {
       locale: 'en',
       messages: {},
-    },
-    content: {
-      subrequests: {},
     },
     search: {
       subrequests: {},

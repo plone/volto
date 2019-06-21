@@ -41,9 +41,6 @@ test('renders a listing view component', () => {
       locale: 'en',
       messages: {},
     },
-    content: {
-      subrequests: {},
-    },
     search: {
       subrequests: {},
     },

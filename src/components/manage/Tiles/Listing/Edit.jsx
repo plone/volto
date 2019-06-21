@@ -72,7 +72,7 @@ export default class Edit extends Component {
     this.folderItems = items || [];
     this.state = {
       items: this.folderItems,
-      query: '',
+      query: props.data.query || '',
     };
   }
 

@@ -54,7 +54,6 @@ export default class View extends Component {
    */
   componentDidMount() {
     const { query = '' } = this.props.data;
-    console.log(query);
     if (query !== '') {
       // Use subrequests to fetch tile data
       const options = {
@@ -81,11 +80,12 @@ export default class View extends Component {
    */
   render() {
     const { data, items, properties } = this.props;
+    debugger;
     const folderItems = properties ? properties.items : [];
     const listingItems = data.query !== '' ? items : folderItems;
 
     if (listingItems.length === 0) {
-      return <div className="tile listing" />;
+      return <List className="tile listing" />;
     }
 
     return (
