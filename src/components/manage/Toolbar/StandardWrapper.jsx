@@ -30,8 +30,8 @@ const StandardWrapper = props => {
 StandardWrapper.propTypes = {
   componentName: PropTypes.string.isRequired,
   unloadComponent: PropTypes.func.isRequired,
-  loadComponent: PropTypes.string.isRequired,
-  closeMenu: PropTypes.string.isRequired,
+  loadComponent: PropTypes.func.isRequired,
+  closeMenu: PropTypes.func.isRequired,
   hasActions: PropTypes.bool,
 };
 
