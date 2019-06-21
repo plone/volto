@@ -265,6 +265,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
         className="ui clearing segment actions"
       >
         <button
+          aria-label="Save"
           className="ui big basic circular icon primary right floated button"
           onClick={[Function]}
           title="Save"
@@ -276,6 +277,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           />
         </button>
         <button
+          aria-label="Cancel"
           className="ui big basic circular icon secondary right floated button"
           onClick={[Function]}
           title="Cancel"

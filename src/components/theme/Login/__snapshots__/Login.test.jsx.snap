@@ -63,7 +63,6 @@ exports[`Login renders a login component 1`] = `
                     className="ui input"
                   >
                     <input
-                      autoFocus={true}
                       id="login"
                       name="login"
                       onChange={[Function]}
@@ -87,7 +86,6 @@ exports[`Login renders a login component 1`] = `
                       <a
                         href="/register"
                         onClick={[Function]}
-                        tabIndex={1}
                       >
                         <span>
                           registration form
@@ -171,6 +169,7 @@ exports[`Login renders a login component 1`] = `
           className="ui clearing segment actions"
         >
           <button
+            aria-label="Log in"
             className="ui big basic circular icon primary right floated button"
             id="login-form-submit"
             onClick={[Function]}
@@ -183,6 +182,7 @@ exports[`Login renders a login component 1`] = `
             />
           </button>
           <a
+            aria-label="Cancel"
             className="ui big basic circular icon secondary right floated button"
             href="/"
             id="login-form-cancel"

@@ -39,7 +39,6 @@ class More extends Component {
       review_state: PropTypes.string,
     }),
     loadComponent: PropTypes.func.isRequired,
-    componentIndex: PropTypes.number.isRequired,
   };
 
   /**

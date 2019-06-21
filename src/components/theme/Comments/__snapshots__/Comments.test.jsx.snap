@@ -35,6 +35,7 @@ exports[`Comments renders a comments component 1`] = `
     >
       Some comment
       <button
+        aria-label="Delete"
         className="ui red right floated button"
         onClick={[Function]}
         value="someurl"
@@ -44,6 +45,7 @@ exports[`Comments renders a comments component 1`] = `
         </span>
       </button>
       <button
+        aria-label="Edit"
         className="ui right floated button"
         onClick={[Function]}
         value={
@@ -124,6 +126,7 @@ exports[`Comments renders a comments component 1`] = `
         className="ui clearing segment actions"
       >
         <button
+          aria-label="Comment"
           className="ui big basic circular icon primary right floated button"
           onClick={[Function]}
           title="Comment"

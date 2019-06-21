@@ -63,24 +63,25 @@ exports[`Field renders a field with a specific id 1`] = `
           aria-hidden="true"
           className="grey bars icon drag handle"
         />
-        <a
+        <button
           onClick={[Function]}
         >
           <i
             aria-hidden="true"
             className="blue write square large icon"
           />
-        </a>
-        <a
+        </button>
+        <button
           onClick={[Function]}
         >
           <i
             aria-hidden="true"
             className="red close large icon"
           />
-        </a>
+        </button>
       </div>
-      <a
+      <button
+        aria-label="Add"
         className="item"
         onClick={[Function]}
       >
@@ -88,7 +89,7 @@ exports[`Field renders a field with a specific id 1`] = `
           aria-hidden="true"
           className="plus large icon"
         />
-      </a>
+      </button>
     </div>
     <div
       className="inline field"
@@ -112,7 +113,8 @@ exports[`Field renders a field with a specific id 1`] = `
             <div
               className="toolbar"
             >
-              <a
+              <button
+                aria-label="Add"
                 className="item"
                 onClick={[Function]}
               >
@@ -120,7 +122,7 @@ exports[`Field renders a field with a specific id 1`] = `
                   aria-hidden="true"
                   className="blue plus large icon"
                 />
-              </a>
+              </button>
             </div>
           </div>
         </div>

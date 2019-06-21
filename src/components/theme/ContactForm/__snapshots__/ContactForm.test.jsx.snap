@@ -211,6 +211,7 @@ exports[`Contact form renders a contact form 1`] = `
           className="ui clearing segment actions"
         >
           <button
+            aria-label="Send"
             className="ui big basic circular icon primary right floated button"
             onClick={[Function]}
             title="Send"
@@ -222,6 +223,7 @@ exports[`Contact form renders a contact form 1`] = `
             />
           </button>
           <button
+            aria-label="Cancel"
             className="ui big basic circular icon secondary right floated button"
             onClick={[Function]}
             title="Cancel"
@@ -455,6 +457,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
           className="ui clearing segment actions"
         >
           <button
+            aria-label="Send"
             className="ui big basic circular icon primary right floated button"
             onClick={[Function]}
             title="Send"
@@ -466,6 +469,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
             />
           </button>
           <button
+            aria-label="Cancel"
             className="ui big basic circular icon secondary right floated button"
             onClick={[Function]}
             title="Cancel"

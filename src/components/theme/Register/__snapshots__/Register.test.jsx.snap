@@ -133,6 +133,7 @@ exports[`Register renders a register component 1`] = `
         className="ui clearing segment actions"
       >
         <button
+          aria-label="Register"
           className="ui big basic circular icon primary right floated button"
           onClick={[Function]}
           title="Register"

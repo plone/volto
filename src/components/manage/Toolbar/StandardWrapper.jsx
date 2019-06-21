@@ -29,11 +29,8 @@ const StandardWrapper = props => {
 
 StandardWrapper.propTypes = {
   componentName: PropTypes.string.isRequired,
-  pathname: PropTypes.string.isRequired,
   unloadComponent: PropTypes.func.isRequired,
-  componentIndex: PropTypes.number.isRequired,
   loadComponent: PropTypes.string.isRequired,
-  theToolbar: PropTypes.string.isRequired,
   closeMenu: PropTypes.string.isRequired,
   hasActions: PropTypes.bool,
 };
