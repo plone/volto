@@ -1,4 +1,4 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-intl-redux';
@@ -9,6 +9,7 @@ import nlLocaleData from 'react-intl/locale-data/nl';
 import deLocaleData from 'react-intl/locale-data/de';
 import enLocaleData from 'react-intl/locale-data/en';
 import { addLocaleData } from 'react-intl';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import routes from '~/routes';
 
 import 'semantic-ui-less/semantic.less';
@@ -29,9 +30,25 @@ export default () => {
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <BrowserRouter>
-          <ScrollToTop>
-            <ReduxAsyncConnect routes={routes} helpers={api} />
-          </ScrollToTop>
+          <Route
+            render={({ location }) => (
+              <ScrollToTop location={location}>
+                <TransitionGroup className="transition-group">
+                  <CSSTransition
+                    key={location.key}
+                    classNames="fade"
+                    timeout={{ enter: 300, exit: 200 }}
+                  >
+                    <section className="route-section">
+                      <Switch location={location}>
+                        <ReduxAsyncConnect routes={routes} helpers={api} />
+                      </Switch>
+                    </section>
+                  </CSSTransition>
+                </TransitionGroup>
+              </ScrollToTop>
+            )}
+          />
         </BrowserRouter>
       </ConnectedRouter>
     </Provider>,

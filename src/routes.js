@@ -2,6 +2,10 @@
  * Routes.
  * @module routes
  */
+import React from 'react';
+// import posed from 'react-pose';
+// import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
 import {
   Add,
   App,
@@ -166,11 +170,32 @@ export const defaultRoutes = [
   },
 ];
 
+// const Div = posed.div({
+//   enter: { y: 0, opacity: 1, beforeChildren: true },
+//   exit: { y: 500, opacity: 0 },
+// });
+
+// const WrappedComponent = ({ component }) => <Div>{component}</Div>;
+
 /**
  * Routes array.
  * @array
  * @returns {array} Routes.
  */
+// const routes = [
+//   {
+//     path: '/',
+//     component: App,
+//     routes: defaultRoutes.map(route => ({
+//       ...route,
+//       component: props => (
+//         <CSSTransition classNames="fade">
+//           <route.component {...props} />
+//         </CSSTransition>
+//       ),
+//     })),
+//   },
+// ];
 const routes = [
   {
     path: '/',
@@ -178,5 +203,7 @@ const routes = [
     routes: defaultRoutes,
   },
 ];
+// debugger;
+// component: <WrappedComponent component={route.component} />,
 
 export default routes;
