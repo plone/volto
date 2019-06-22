@@ -15,7 +15,7 @@ import 'semantic-ui-less/semantic.less';
 import '../theme/themes/pastanaga/extras/extras.less';
 
 import configureStore from './store';
-import { Api, persistAuthToken, ScrollToTop } from './helpers';
+import { Api, persistAuthToken, AnimationWrapper } from './helpers';
 
 export default () => {
   const history = createBrowserHistory();
@@ -29,9 +29,9 @@ export default () => {
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <BrowserRouter>
-          <ScrollToTop>
+          <AnimationWrapper>
             <ReduxAsyncConnect routes={routes} helpers={api} />
-          </ScrollToTop>
+          </AnimationWrapper>
         </BrowserRouter>
       </ConnectedRouter>
     </Provider>,

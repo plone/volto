@@ -6,10 +6,10 @@ import cx from 'classnames';
 const TRANSITION_OCCURED = 'transition-occured';
 
 /**
- * @class ScrollToTop
+ * @class AnimationWrapper
  * @extends {Component}
  */
-class ScrollToTop extends Component {
+class AnimationWrapper extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -42,7 +42,7 @@ class ScrollToTop extends Component {
   /**
    * @param {*} prevProps Previous Props
    * @returns {null} Null
-   * @memberof ScrollToTop
+   * @memberof AnimationWrapper
    */
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (snapshot === TRANSITION_OCCURED) {
@@ -60,7 +60,7 @@ class ScrollToTop extends Component {
 
   /**
    * @returns {node} Children
-   * @memberof ScrollToTop
+   * @memberof AnimationWrapper
    */
   render() {
     return (
@@ -76,4 +76,4 @@ class ScrollToTop extends Component {
   }
 }
 
-export default withRouter(ScrollToTop);
+export default withRouter(AnimationWrapper);

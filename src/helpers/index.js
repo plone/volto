@@ -30,7 +30,7 @@ export {
   hasTilesData,
 } from '@plone/volto/helpers/Tiles/Tiles';
 export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
-export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
+export AnimationWrapper from '@plone/volto/helpers/AnimationWrapper/AnimationWrapper';
 export {
   getBoolean,
   getVocabFromHint,
