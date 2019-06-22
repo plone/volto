@@ -26,6 +26,7 @@ import {
   defaultTilesViewMap,
   defaultTilesEditMap,
   messagesTiles,
+  requiredTiles,
   sidebarComponents,
 } from './Tiles';
 
@@ -64,5 +65,6 @@ export const tiles = {
   defaultTilesViewMap,
   defaultTilesEditMap,
   messagesTiles,
+  requiredTiles,
   sidebarComponents,
 };

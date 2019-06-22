@@ -6,11 +6,13 @@
 
 - Add toast component @sneridagh
 - Add sidebar support for components @sneridagh
+- Remove Mosaic component @tisto
 
 ### Changes
 
 - Small UX/UI fixes @sneridagh
 - Fix query string search in subjects vocab field @gomez
+- Removed the delete button from the title tile @pnicolli
 
 ### Internal
 
