@@ -1,4 +1,4 @@
-context('Actions', () => {
+describe('Create contents with Volto', () => {
   beforeEach(() => {
     cy.autologin();
   });
