@@ -14,6 +14,5 @@ services:
     - "50101:50101"
     links:
      - postgres
-     - redis
     volumes:
       - ${PWD}/g-api/config.yml:/usr/src/app/config.yml
