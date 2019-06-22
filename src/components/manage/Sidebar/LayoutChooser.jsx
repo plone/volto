@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, Form, List, Grid } from 'semantic-ui-react';
+import AlignTile from '../../../helpers/AlignTile';
 import { Icon } from '@plone/volto/components';
 import fitSVG from '@plone/volto/icons/image-fit.svg';
 import leftSVG from '@plone/volto/icons/image-left.svg';
@@ -27,38 +28,13 @@ const LayoutChooser = props => {
               <label htmlFor={`field-${props.id}`}>{props.title}</label>
             </div>
           </Grid.Column>
-
           <Grid.Column width="8">
-            <Menu secondary>
-              <Menu.Item
-                name="layout-fit"
-                active={activeItem === 'layout-fit'}
-                onClick={handleChangeInput}
-              >
-                <Icon name={fitSVG} size="24px" color="#786Ec5D" />
-              </Menu.Item>
-              <Menu.Item
-                name="layout-left"
-                active={activeItem === 'layout-left'}
-                onClick={handleChangeInput}
-              >
-                <Icon name={leftSVG} size="24px" color="#786Ec5D" />
-              </Menu.Item>
-              <Menu.Item
-                name="layout-right"
-                active={activeItem === 'layout-right'}
-                onClick={handleChangeInput}
-              >
-                <Icon name={rightSVG} size="24px" color="#786Ec5D" />
-              </Menu.Item>
-              <Menu.Item
-                name="layout-full"
-                active={activeItem === 'layout-full'}
-                onClick={handleChangeInput}
-              >
-                <Icon name={fullSVG} size="24px" color="#786Ec5D" />
-              </Menu.Item>
-            </Menu>
+            <AlignTile
+              align={props.data.align}
+              onChangeTile={props.onChangeTile}
+              data={props.data}
+              tile={props.tile}
+            />
           </Grid.Column>
         </Grid.Row>
       </Grid>
