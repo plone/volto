@@ -11,6 +11,7 @@
 ### Changes
 
 - Small UX/UI fixes @sneridagh
+- Removed the delete button from the title tile @pnicolli
 
 ### Internal
 
