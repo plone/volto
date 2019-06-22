@@ -13,6 +13,7 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import cx from 'classnames';
 import { settings } from '~/config';
 
+import AlignTile from '../../../../helpers/AlignTile';
 import { Icon } from '../../../../components';
 import { createContent } from '../../../../actions';
 import { flattenToAppURL, getBaseUrl, withSidebar } from '@plone/volto/helpers';
@@ -21,10 +22,6 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import imageSVG from '@plone/volto/icons/image.svg';
-import imageLeftSVG from '@plone/volto/icons/image-left.svg';
-import imageRightSVG from '@plone/volto/icons/image-right.svg';
-import imageFitSVG from '@plone/volto/icons/image-fit.svg';
-import imageFullSVG from '@plone/volto/icons/image-full.svg';
 
 const messages = defineMessages({
   ImageTileInputPlaceholder: {
@@ -161,19 +158,6 @@ class Edit extends Component {
   }
 
   /**
-   * Align tile handler
-   * @method onAlignTile
-   * @param {string} align Alignment option
-   * @returns {undefined}
-   */
-  onAlignTile(align) {
-    this.props.onChangeTile(this.props.tile, {
-      ...this.props.data,
-      align,
-    });
-  }
-
-  /**
    * Change url handler
    * @method onChangeUrl
    * @param {Object} target Target object
@@ -252,52 +236,12 @@ class Edit extends Component {
         {this.props.selected && !!this.props.data.url && (
           <div className="toolbar">
             {!this.props.detached && (
-              <>
-                <Button.Group>
-                  <Button
-                    icon
-                    basic
-                    onClick={() => this.onAlignTile('left')}
-                    active={this.props.data.align === 'left'}
-                  >
-                    <Icon name={imageLeftSVG} size="24px" />
-                  </Button>
-                </Button.Group>
-                <Button.Group>
-                  <Button
-                    icon
-                    basic
-                    onClick={() => this.onAlignTile('right')}
-                    active={this.props.data.align === 'right'}
-                  >
-                    <Icon name={imageRightSVG} size="24px" />
-                  </Button>
-                </Button.Group>
-                <Button.Group>
-                  <Button
-                    icon
-                    basic
-                    onClick={() => this.onAlignTile('center')}
-                    active={
-                      this.props.data.align === 'center' ||
-                      !this.props.data.align
-                    }
-                  >
-                    <Icon name={imageFitSVG} size="24px" />
-                  </Button>
-                </Button.Group>
-                <Button.Group>
-                  <Button
-                    icon
-                    basic
-                    onClick={() => this.onAlignTile('full')}
-                    active={this.props.data.align === 'full'}
-                  >
-                    <Icon name={imageFullSVG} size="24px" />
-                  </Button>
-                </Button.Group>
-                <div className="separator" />
-              </>
+              <AlignTile
+                align={this.props.data.align}
+                onChangeTile={this.props.onChangeTile}
+                data={this.props.data}
+                tile={this.props.tile}
+              />
             )}
             {this.props.appendActions && <>{this.props.appendActions}</>}
             {this.props.detached && this.props.appendActions && (

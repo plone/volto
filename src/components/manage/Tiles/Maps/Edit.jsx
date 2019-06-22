@@ -5,9 +5,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Button, Input, Message } from 'semantic-ui-react';
-import { bindActionCreators } from 'redux';
+import AlignTile from '../../../../helpers/AlignTile';
 import {
   defineMessages,
   FormattedMessage,
@@ -17,11 +16,6 @@ import {
 import cx from 'classnames';
 
 import { Icon } from '../../../../components';
-import clearSVG from '../../../../icons/clear.svg';
-import imageLeftSVG from '../../../../icons/image-left.svg';
-import imageRightSVG from '../../../../icons/image-right.svg';
-import imageFitSVG from '../../../../icons/image-fit.svg';
-import imageFullSVG from '../../../../icons/image-full.svg';
 import globeSVG from '../../../../icons/globe.svg';
 
 const messages = defineMessages({
@@ -97,19 +91,6 @@ export default class Edit extends Component {
     if (nextProps.selected) {
       this.node.focus();
     }
-  }
-
-  /**
-   * Align tile handler
-   * @method onAlignTile
-   * @param {string} align Alignment option
-   * @returns {undefined}
-   */
-  onAlignTile(align) {
-    this.props.onChangeTile(this.props.tile, {
-      ...this.props.data,
-      align,
-    });
   }
 
   /**
@@ -208,63 +189,12 @@ export default class Edit extends Component {
       >
         {this.props.selected && !!this.props.data.url && (
           <div className="toolbar">
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.onAlignTile('left')}
-                active={this.props.data.align === 'left'}
-              >
-                <Icon name={imageLeftSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.onAlignTile('right')}
-                active={this.props.data.align === 'right'}
-              >
-                <Icon name={imageRightSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.onAlignTile('center')}
-                active={
-                  this.props.data.align === 'center' || !this.props.data.align
-                }
-              >
-                <Icon name={imageFitSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.onAlignTile('full')}
-                active={this.props.data.align === 'full'}
-              >
-                <Icon name={imageFullSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <div className="separator" />
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() =>
-                  this.props.onChangeTile(this.props.tile, {
-                    ...this.props.data,
-                    url: '',
-                  })
-                }
-              >
-                <Icon name={clearSVG} size="24px" color="#e40166" />
-              </Button>
-            </Button.Group>
+            <AlignTile
+              align={this.props.data.align}
+              onChangeTile={this.props.onChangeTile}
+              data={this.props.data}
+              tile={this.props.tile}
+            />
           </div>
         )}
         {this.props.selected && !this.props.data.url && (
