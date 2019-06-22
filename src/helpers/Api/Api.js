@@ -18,7 +18,13 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  */
 function formatUrl(path) {
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
-  return `${settings.apiPath}${adjustedPath}`;
+  let apiPath = '';
+  if (settings.internalApiPath && __SERVER__) {
+    apiPath = settings.internalApiPath;
+  } else {
+    apiPath = settings.apiPath;
+  }
+  return `${apiPath}${adjustedPath}`;
 }
 
 /**
