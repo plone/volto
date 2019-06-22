@@ -17,14 +17,12 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import qs from 'query-string';
 
-import { Form, Icon, Toolbar } from '../../../components';
+import { Form, Icon, Toolbar, Sidebar } from '../../../components';
 import { updateContent, getContent, getSchema } from '../../../actions';
 import { getBaseUrl, hasTilesData } from '../../../helpers';
 
 import saveSVG from '../../../icons/save.svg';
 import clearSVG from '../../../icons/clear.svg';
-import tilesSVG from '../../../icons/content-existing.svg';
-import formSVG from '../../../icons/properties.svg';
 
 const messages = defineMessages({
   edit: {
@@ -38,14 +36,6 @@ const messages = defineMessages({
   cancel: {
     id: 'Cancel',
     defaultMessage: 'Cancel',
-  },
-  properties: {
-    id: 'Properties',
-    defaultMessage: 'Properties',
-  },
-  visual: {
-    id: 'Visual',
-    defaultMessage: 'Visual',
   },
 });
 
@@ -126,12 +116,8 @@ export class EditComponent extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = {
-      visual: false,
-    };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.onToggleVisual = this.onToggleVisual.bind(this);
   }
 
   /**
@@ -152,19 +138,6 @@ export class EditComponent extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.getRequest.loading && nextProps.getRequest.loaded) {
       this.props.getSchema(nextProps.content['@type']);
-    }
-    if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
-      if (hasTilesData(nextProps.schema.properties)) {
-        this.setState({
-          visual: true,
-        });
-      }
-    }
-    // Hack for make the Plone site editable by Volto Editor without checkings
-    if (this.props.content['@type'] === 'Plone Site') {
-      this.setState({
-        visual: true,
-      });
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       this.props.history.push(
@@ -195,23 +168,16 @@ export class EditComponent extends Component {
   }
 
   /**
-   * Toggle visual
-   * @method onToggleVisual
-   * @returns {undefined}
-   */
-  onToggleVisual() {
-    this.setState({
-      visual: !this.state.visual,
-    });
-  }
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
     if (this.props.schemaRequest.loaded && this.props.content) {
+      const visual =
+        hasTilesData(this.props.schema.properties) ||
+        this.props.content['@type'] === 'Plone Site';
+
       return (
         <div id="page-edit">
           <Helmet
@@ -230,7 +196,7 @@ export class EditComponent extends Component {
             onSubmit={this.onSubmit}
             hideActions
             pathname={this.props.pathname}
-            visual={this.state.visual}
+            visual={visual}
             title={this.props.intl.formatMessage(messages.edit, {
               title: this.props.schema.title,
             })}
@@ -251,30 +217,10 @@ export class EditComponent extends Component {
                     <Icon
                       name={saveSVG}
                       className="circled"
-                      size="32px"
+                      size="30px"
                       title={this.props.intl.formatMessage(messages.save)}
                     />
                   </button>
-                  {hasTilesData(this.props.schema.properties) && (
-                    <button
-                      aria-label={this.props.intl.formatMessage(
-                        this.state.visual
-                          ? messages.properties
-                          : messages.visual,
-                      )}
-                      onClick={() => this.onToggleVisual()}
-                    >
-                      <Icon
-                        name={this.state.visual ? formSVG : tilesSVG}
-                        size="32px"
-                        title={this.props.intl.formatMessage(
-                          this.state.visual
-                            ? messages.properties
-                            : messages.visual,
-                        )}
-                      />
-                    </button>
-                  )}
                   <button
                     className="cancel"
                     aria-label={this.props.intl.formatMessage(messages.cancel)}
@@ -283,7 +229,7 @@ export class EditComponent extends Component {
                     <Icon
                       name={clearSVG}
                       className="circled"
-                      size="32px"
+                      size="30px"
                       title={this.props.intl.formatMessage(messages.cancel)}
                     />
                   </button>
@@ -291,6 +237,11 @@ export class EditComponent extends Component {
               }
             />
           </Portal>
+          {visual && (
+            <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
+              <Sidebar />
+            </Portal>
+          )}
         </div>
       );
     }

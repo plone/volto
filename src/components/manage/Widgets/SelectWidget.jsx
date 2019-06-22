@@ -136,12 +136,13 @@ function getDefaultValues(choices, value) {
   if (!isObject(value) && isBoolean(value)) {
     // We have a boolean value, which means we need to provide a "No value"
     // option
-    return (
-      {
-        label: find(choices, o => getBoolean(o[0]) === value)[1],
-        value,
-      } || {}
-    );
+    const label = find(choices, o => getBoolean(o[0]) === value);
+    return label
+      ? {
+          label: label[1],
+          value,
+        }
+      : {};
   }
   if (value === 'no-value') {
     return { label: 'No value', value: 'no-value' };

@@ -21,7 +21,11 @@ import {
 
 import Icons from '../../../constants/ControlpanelIcons';
 import { listControlpanels } from '../../../actions';
-import { Icon as IconNext, Toolbar } from '../../../components';
+import {
+  Icon as IconNext,
+  Toolbar,
+  VersionOverview,
+} from '../../../components';
 
 import backSVG from '../../../icons/back.svg';
 
@@ -33,6 +37,10 @@ const messages = defineMessages({
   back: {
     id: 'Back',
     defaultMessage: 'Back',
+  },
+  versionoverview: {
+    id: 'Version Overview',
+    defaultMessage: 'Version Overview',
   },
 });
 
@@ -133,6 +141,17 @@ export default class Controlpanels extends Component {
                 </Grid>
               </Segment>,
             ])}
+          </Segment.Group>
+          <Segment.Group raised>
+            <Segment className="primary">
+              <FormattedMessage
+                id="Version Overview"
+                defaultMessage="Version Overview"
+              />
+            </Segment>
+            <Segment attached>
+              <VersionOverview />
+            </Segment>
           </Segment.Group>
         </Container>
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>

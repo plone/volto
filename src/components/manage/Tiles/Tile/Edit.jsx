@@ -9,6 +9,7 @@ import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 import { tiles } from '~/config';
 import { Button } from 'semantic-ui-react';
+import includes from 'lodash/includes';
 
 import Icon from '../../../../components/theme/Icon/Icon';
 import dragSVG from '../../../../icons/drag.svg';
@@ -156,7 +157,7 @@ export default class Edit extends Component {
               </div>,
             )}
           {Tile !== null ? <Tile {...this.props} /> : <div />}
-          {selected && (
+          {selected && !includes(tiles.requiredTiles, type) && (
             <Button
               icon
               basic

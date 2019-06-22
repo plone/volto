@@ -19,13 +19,12 @@ import {
  */
 export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
   // In case we have a URL, we have to get the vocabulary name
-  const vocabulary = vocabNameOrURL.replace(
-    `${settings.apiPath}/@vocabularies/`,
-    '',
-  );
+  const vocabulary =
+    vocabNameOrURL &&
+    vocabNameOrURL.replace(`${settings.apiPath}/@vocabularies/`, '');
   let queryString = `b_start=${start}`;
   if (query) {
-    queryString = `${queryString}&q=${query}`;
+    queryString = `${queryString}&title=${query}`;
   }
   return {
     type: GET_VOCABULARY,
