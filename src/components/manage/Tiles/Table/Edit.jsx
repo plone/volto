@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import { map, omit } from 'lodash';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
+import { Portal } from 'react-portal';
 import cx from 'classnames';
 
 const initialTable = {
@@ -156,6 +157,13 @@ export default class Edit extends Component {
               </Table.Body>
             ))}
           </Table>
+        )}
+        {this.props.selected && (
+          <Portal
+            node={__CLIENT__ && document.getElementById('sidebar-properties')}
+          >
+            <div>Hi!</div>
+          </Portal>
         )}
       </div>
     );
