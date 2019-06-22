@@ -12,6 +12,8 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { map, sortBy, get } from 'lodash';
 import cx from 'classnames';
 
+import { settings } from '~/config';
+
 import {
   getContent,
   searchContent,
@@ -87,7 +89,11 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.resetSearchContent(this.props.tile);
+    const { resetSearchContent, selected, tile } = this.props;
+    if (selected) {
+      this.dropdownRef.querySelector('input.search').focus();
+    }
+    resetSearchContent(tile);
     this.updateContent();
   }
 
@@ -194,7 +200,10 @@ export default class Edit extends Component {
     // Using null as default for consistency with content reducer
     // see reducers/content/content.js, look for action GET_CONTENT_PENDING
     const contentData = get(contentSubrequests, [tile, 'data'], null);
-    const image = get(contentData, 'image.scales.mini.download', undefined);
+    const image = get(contentData, 'image.scales.mini.download', '').replace(
+      settings.apiPath,
+      '',
+    );
 
     // the default for items in the search reducers is [] instead
     // see reducers/search/search.js

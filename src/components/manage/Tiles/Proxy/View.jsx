@@ -11,6 +11,8 @@ import { get } from 'lodash';
 import { Image, Item } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+import { settings } from '~/config';
+
 import { getContent, resetContent } from '../../../../actions';
 
 /**
@@ -71,7 +73,10 @@ export class View extends Component {
     // see reducers/content/content.js, look for action GET_CONTENT_PENDING
     const data = get(contentSubrequests, [tile, 'data'], null);
     if (data && Object.keys(data).length) {
-      const image = get(data, 'image.scales.mini.download', undefined);
+      const image = get(data, 'image.scales.mini.download', '').replace(
+        settings.apiPath,
+        '',
+      );
 
       return (
         <Item.Group className="proxy-item">
