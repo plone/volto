@@ -1,14 +1,12 @@
 // Cypress/integration/a11y.spec.js
-describe('App', () => {
+describe('Accessibility Tests with Axe', () => {
   beforeEach(() => {
     cy.visit('/');
     cy.injectAxe(); // make sure axe is available on the page
   });
 
-  it.only('Has no detectable a11y violations on load', () => {
-    // cy.checkA11y(); // fail for a11y violations
-    cy.get('.logo img.image').click();
-    cy.checkA11y();
+  it.only('Front page has not a11y violations', () => {
+    cy.checkA11y(); // fail for a11y violations
   });
 
   /*
