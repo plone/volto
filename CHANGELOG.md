@@ -29,6 +29,8 @@
 
 - Fix console errors on tests @sneridagh
 
+- Add development mode for kitkoncept.voltodemo to /api plonebacked @fredvd
+
 ## 3.1.0 (2019-06-14)
 
 ### Added
