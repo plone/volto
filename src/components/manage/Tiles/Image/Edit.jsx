@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { readAsDataURL } from 'promise-file-reader';
-import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
+import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import cx from 'classnames';
@@ -15,15 +15,16 @@ import { settings } from '~/config';
 
 import { Icon } from '../../../../components';
 import { createContent } from '../../../../actions';
-import { flattenToAppURL, getBaseUrl } from '../../../../helpers';
+import { flattenToAppURL, getBaseUrl, withSidebar } from '@plone/volto/helpers';
 
-import clearSVG from '../../../../icons/clear.svg';
-import folderSVG from '../../../../icons/folder.svg';
-import imageSVG from '../../../../icons/image.svg';
-import imageLeftSVG from '../../../../icons/image-left.svg';
-import imageRightSVG from '../../../../icons/image-right.svg';
-import imageFitSVG from '../../../../icons/image-fit.svg';
-import imageFullSVG from '../../../../icons/image-full.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
+import uploadSVG from '@plone/volto/icons/upload.svg';
+import folderSVG from '@plone/volto/icons/folder.svg';
+import imageSVG from '@plone/volto/icons/image.svg';
+import imageLeftSVG from '@plone/volto/icons/image-left.svg';
+import imageRightSVG from '@plone/volto/icons/image-right.svg';
+import imageFitSVG from '@plone/volto/icons/image-fit.svg';
+import imageFullSVG from '@plone/volto/icons/image-full.svg';
 
 const messages = defineMessages({
   ImageTileInputPlaceholder: {
@@ -37,6 +38,7 @@ const messages = defineMessages({
   state => ({
     request: state.content.create,
     content: state.content.data,
+    pathname: state.router.location.pathname,
   }),
   dispatch => bindActionCreators({ createContent }, dispatch),
 )
@@ -45,7 +47,7 @@ const messages = defineMessages({
  * @class Edit
  * @extends Component
  */
-export default class Edit extends Component {
+class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -53,6 +55,7 @@ export default class Edit extends Component {
    */
   static propTypes = {
     selected: PropTypes.bool.isRequired,
+    detached: PropTypes.bool,
     tile: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
@@ -69,7 +72,11 @@ export default class Edit extends Component {
     onFocusNextTile: PropTypes.func.isRequired,
     handleKeyDown: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
+    appendActions: PropTypes.node,
+    appendSecondaryActions: PropTypes.node,
     intl: intlShape.isRequired,
+    openSidebar: PropTypes.func.isRequired,
+    closeSidebar: PropTypes.func.isRequired,
   };
 
   /**
@@ -88,6 +95,7 @@ export default class Edit extends Component {
     this.state = {
       uploading: false,
       url: '',
+      objectBrowserIsOpen: false,
     };
   }
 
@@ -243,49 +251,63 @@ export default class Edit extends Component {
       >
         {this.props.selected && !!this.props.data.url && (
           <div className="toolbar">
+            {!this.props.detached && (
+              <>
+                <Button.Group>
+                  <Button
+                    icon
+                    basic
+                    onClick={() => this.onAlignTile('left')}
+                    active={this.props.data.align === 'left'}
+                  >
+                    <Icon name={imageLeftSVG} size="24px" />
+                  </Button>
+                </Button.Group>
+                <Button.Group>
+                  <Button
+                    icon
+                    basic
+                    onClick={() => this.onAlignTile('right')}
+                    active={this.props.data.align === 'right'}
+                  >
+                    <Icon name={imageRightSVG} size="24px" />
+                  </Button>
+                </Button.Group>
+                <Button.Group>
+                  <Button
+                    icon
+                    basic
+                    onClick={() => this.onAlignTile('center')}
+                    active={
+                      this.props.data.align === 'center' ||
+                      !this.props.data.align
+                    }
+                  >
+                    <Icon name={imageFitSVG} size="24px" />
+                  </Button>
+                </Button.Group>
+                <Button.Group>
+                  <Button
+                    icon
+                    basic
+                    onClick={() => this.onAlignTile('full')}
+                    active={this.props.data.align === 'full'}
+                  >
+                    <Icon name={imageFullSVG} size="24px" />
+                  </Button>
+                </Button.Group>
+                <div className="separator" />
+              </>
+            )}
+            {this.props.appendActions && <>{this.props.appendActions}</>}
+            {this.props.detached && this.props.appendActions && (
+              <div className="separator" />
+            )}
             <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.onAlignTile('left')}
-                active={this.props.data.align === 'left'}
-              >
-                <Icon name={imageLeftSVG} size="24px" />
+              <Button icon basic onClick={this.props.openSidebar}>
+                <Icon name={folderSVG} size="24px" />
               </Button>
             </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.onAlignTile('right')}
-                active={this.props.data.align === 'right'}
-              >
-                <Icon name={imageRightSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.onAlignTile('center')}
-                active={
-                  this.props.data.align === 'center' || !this.props.data.align
-                }
-              >
-                <Icon name={imageFitSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.onAlignTile('full')}
-                active={this.props.data.align === 'full'}
-              >
-                <Icon name={imageFullSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <div className="separator" />
             <Button.Group>
               <Button
                 icon
@@ -300,22 +322,23 @@ export default class Edit extends Component {
                 <Icon name={clearSVG} size="24px" color="#e40166" />
               </Button>
             </Button.Group>
+            {this.props.appendSecondaryActions && (
+              <>{this.props.appendSecondaryActions}</>
+            )}
           </div>
         )}
         {this.props.selected && !this.props.data.url && (
           <div className="toolbar">
-            <Icon name={imageSVG} size="24px" />
-            <form onKeyDown={this.onKeyDownVariantMenuForm}>
-              <Input
-                onChange={this.onChangeUrl}
-                placeholder={this.props.intl.formatMessage(
-                  messages.ImageTileInputPlaceholder,
-                )}
-              />
-            </form>
             <Button.Group>
               <label className="ui button basic icon">
-                <Icon name={folderSVG} size="24px" />
+                <Icon
+                  name={folderSVG}
+                  size="24px"
+                  onClick={this.props.openSidebar}
+                />
+              </label>
+              <label className="ui button basic icon">
+                <Icon name={uploadSVG} size="24px" />
                 <input
                   type="file"
                   onChange={this.onUploadImage}
@@ -323,6 +346,12 @@ export default class Edit extends Component {
                 />
               </label>
             </Button.Group>
+            {this.props.appendSecondaryActions && (
+              <>
+                <div className="separator" />
+                {this.props.appendSecondaryActions}
+              </>
+            )}
           </div>
         )}
         {this.props.data.url ? (
@@ -333,7 +362,7 @@ export default class Edit extends Component {
                   ? `${flattenToAppURL(this.props.data.url)}/@@images/image`
                   : this.props.data.url
               }
-              alt=""
+              alt={this.props.data.alt || ''}
             />
           </p>
         ) : (
@@ -354,3 +383,5 @@ export default class Edit extends Component {
     );
   }
 }
+
+export default withSidebar(Edit);
