@@ -304,7 +304,12 @@ export default class Edit extends Component {
               <React.Fragment>
                 <div className="separator" />
                 <Button.Group>
-                  <Button icon basic onClick={this.openCustomTileMenu}>
+                  <Button
+                    icon
+                    basic
+                    className="show-hidden-tiles"
+                    onClick={this.openCustomTileMenu}
+                  >
                     <Icon name={TemplatedTilesSVG} size="24px" />
                   </Button>
                 </Button.Group>

@@ -12,7 +12,7 @@ describe('Default Tiles functionality', () => {
     );
   });
 
-  it('Title Tile', function() {
+  it('Title Tile', () => {
     // Edit
     cy.get('.documentFirstHeading span[data-text]').contains('This is a page');
 
@@ -29,7 +29,7 @@ describe('Default Tiles functionality', () => {
     }
   });
 
-  it('Description Tile', function() {
+  it('Description Tile', () => {
     const expectedMultiLine = [
       'This is the text',
       'line one',
@@ -64,7 +64,7 @@ describe('Default Tiles functionality', () => {
     }
   });
 
-  it('Text Tile', function() {
+  it('Text Tile', () => {
     // Edit
 
     // Save
@@ -77,7 +77,7 @@ describe('Default Tiles functionality', () => {
     }
   });
 
-  it('Image Tile', function() {
+  it('Image Tile', () => {
     const url =
       'https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png';
 
@@ -106,8 +106,11 @@ describe('Default Tiles functionality', () => {
     }
   });
 
-  it('Video Tile', function() {
+  it('Video Tile', () => {
     // Edit
+    cy.get('.tile.text [contenteditable]').click();
+    cy.get('button.tile-add-button').click();
+    cy.get('button.add-video-tile').click();
 
     // Save
     cy.get('#toolbar-save').click();
@@ -119,8 +122,12 @@ describe('Default Tiles functionality', () => {
     }
   });
 
-  it('Hero Tile', function() {
+  it('Hero Tile', () => {
     // Edit
+    cy.get('.tile.text [contenteditable]').click();
+    cy.get('button.tile-add-button').click();
+    cy.get('button.show-hidden-tiles').click();
+    cy.get('button.add-hero-tile').click();
 
     // Save
     cy.get('#toolbar-save').click();
@@ -132,8 +139,12 @@ describe('Default Tiles functionality', () => {
     }
   });
 
-  it('Html Tile', function() {
+  it('Maps Tile', () => {
     // Edit
+    cy.get('.tile.text [contenteditable]').click();
+    cy.get('button.tile-add-button').click();
+    cy.get('button.show-hidden-tiles').click();
+    cy.get('button.add-maps-tile').click();
 
     // Save
     cy.get('#toolbar-save').click();
@@ -145,8 +156,12 @@ describe('Default Tiles functionality', () => {
     }
   });
 
-  it('Hero Tile', function() {
+  it('Html Tile', () => {
     // Edit
+    cy.get('.tile.text [contenteditable]').click();
+    cy.get('button.tile-add-button').click();
+    cy.get('button.show-hidden-tiles').click();
+    cy.get('button.add-html-tile').click();
 
     // Save
     cy.get('#toolbar-save').click();
