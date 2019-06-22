@@ -7,6 +7,7 @@
 - Add toast component @sneridagh
 - Add sidebar support for components @sneridagh
 - Remove Mosaic component @tisto
+- Event type view @nileshgulia1 @pnicolli
 
 ### Changes
 
@@ -74,8 +75,6 @@
 
 ### Added
 
-- Fix event type date view @nileshgulia1
-- HTML Tile for Volto Editor with preview and code prettifier @ajayns @nileshgulia1 @sneridagh
 - Upgrade to Razzle 3 @sneridagh
 - contact-form view @cekk
 - Add cypress setup for both Plone and Guillotina @sneridagh
