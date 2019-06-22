@@ -16,7 +16,7 @@ function apply_path {
 }
 
 # Should we monkey patch?
-test -n "$RAZZLE_API_PATH" && apply_path
+test -n "$API_PATH" && apply_path
 
 echo "Starting Volto"
 exec "$@"

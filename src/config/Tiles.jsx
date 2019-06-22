@@ -98,6 +98,8 @@ const defaultTilesEditMap = {
   html: EditHTMLTile,
 };
 
+const requiredTiles = ['title'];
+
 const sidebarComponents = {
   // image: ImageSidebar,
   listing: ListingSidebar,
@@ -108,5 +110,6 @@ export {
   defaultTilesViewMap,
   defaultTilesEditMap,
   messagesTiles,
+  requiredTiles,
   sidebarComponents,
 };

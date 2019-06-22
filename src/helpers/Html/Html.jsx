@@ -54,6 +54,7 @@ export const Html = ({ assets, markup, store }) => {
       <body className={bodyClass}>
         <div id="toolbar" />
         <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
+        <div id="sidebar" />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.__data=${serialize(store.getState())};`,
