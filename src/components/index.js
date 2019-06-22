@@ -3,16 +3,6 @@
  * @module components
  * @example import { Field } from 'components';
  */
-
-export Column from '@plone/volto/components/mosaic/Column/Column';
-export ColumnResize from '@plone/volto/components/mosaic/Column/ColumnResize';
-export ColumnResizeHelper from '@plone/volto/components/mosaic/Column/ColumnResizeHelper';
-export Grid from '@plone/volto/components/mosaic/Grid/Grid';
-export Layout from '@plone/volto/components/mosaic/Layout/Layout';
-export Row from '@plone/volto/components/mosaic/Row/Row';
-export Tile from '@plone/volto/components/mosaic/Tile/Tile';
-export Editbar from '@plone/volto/components/mosaic/Editbar/Editbar';
-
 export Anontools from '@plone/volto/components/theme/Anontools/Anontools';
 export Breadcrumbs from '@plone/volto/components/theme/Breadcrumbs/Breadcrumbs';
 export ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
