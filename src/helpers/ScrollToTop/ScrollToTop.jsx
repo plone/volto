@@ -53,7 +53,7 @@ class ScrollToTop extends Component {
           this.setState({
             duringTransition: false,
           }),
-        300,
+        200,
       );
     }
   }
