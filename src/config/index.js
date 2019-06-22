@@ -26,6 +26,7 @@ import {
   defaultTilesViewMap,
   defaultTilesEditMap,
   messagesTiles,
+  requiredTiles,
   sidebarComponents,
 } from './Tiles';
 
@@ -35,6 +36,7 @@ export const settings = {
   apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8080/Plone', // for Plone
   // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8000', // for Volto reference
   // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
+  internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
   websockets: process.env.RAZZLE_WEBSOCKETS || false,
   nonContentRoutes,
   extendedBlockRenderMap,
@@ -64,5 +66,6 @@ export const tiles = {
   defaultTilesViewMap,
   defaultTilesEditMap,
   messagesTiles,
+  requiredTiles,
   sidebarComponents,
 };
