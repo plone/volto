@@ -5,7 +5,7 @@ describe('Accessibility Tests with Axe', () => {
     cy.injectAxe(); // make sure axe is available on the page
   });
 
-  it.only('Front page has not a11y violations', () => {
+  it('Front page has not a11y violations', () => {
     cy.checkA11y(); // fail for a11y violations
   });
 
