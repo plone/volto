@@ -25,8 +25,7 @@
   "keywords": [
     "volto",
     "plone",
-    "react",
-    "mosaic"
+    "react"
   ],
   "scripts": {
     "start": "razzle start",
@@ -80,7 +79,10 @@
     },
     "setupFiles": [
       "./test-setup.js"
-    ]
+    ],
+    "globals": {
+      "__DEV__": true
+    }
   },
   "prettier": {
     "trailingComma": "all",
