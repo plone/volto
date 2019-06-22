@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the listing tile sidebar 1`] = `
+<div
+  className="listing-sidebar"
+>
+  <form
+    className="query-form"
+    onSubmit={[Function]}
+  >
+    <input
+      className="query"
+      name="query"
+      onChange={[Function]}
+      placeholder="querystring"
+      value=""
+    />
+  </form>
+</div>
+`;
