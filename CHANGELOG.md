@@ -7,6 +7,7 @@
 - Add toast component @sneridagh
 - Add sidebar support for components @sneridagh
 - Remove Mosaic component @tisto
+- Added animations for router tranitions @nzambello
 
 ### Changes
 
