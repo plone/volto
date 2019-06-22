@@ -27,7 +27,14 @@ const messages = defineMessages({
  * @returns {string} Markup of the component
  */
 const Footer = ({ intl }) => (
-  <Segment vertical padded inverted color="grey" textAlign="center">
+  <Segment
+    role="contentinfo"
+    vertical
+    padded
+    inverted
+    color="grey"
+    textAlign="center"
+  >
     <Container>
       <Segment basic inverted color="grey" className="discreet">
         <FormattedMessage
