@@ -25,7 +25,7 @@ export function getVocabulary(vocabNameOrURL, query = null, start = 0) {
   );
   let queryString = `b_start=${start}`;
   if (query) {
-    queryString = `${queryString}&q=${query}`;
+    queryString = `${queryString}&title=${query}`;
   }
   return {
     type: GET_VOCABULARY,
