@@ -8,6 +8,7 @@ import ViewVideoTile from '@plone/volto/components/manage/Tiles/Video/View';
 import ViewHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImageLeft/View';
 import ViewMapTile from '@plone/volto/components/manage/Tiles/Maps/View';
 import ViewHTMLTile from '@plone/volto/components/manage/Tiles/HTML/View';
+import ViewSliderTile from '@plone/volto/components/manage/Tiles/Slider/View';
 
 import EditTitleTile from '@plone/volto/components/manage/Tiles/Title/Edit';
 import EditDescriptionTile from '@plone/volto/components/manage/Tiles/Description/Edit';
@@ -17,12 +18,14 @@ import EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
 import EditHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImageLeft/Edit';
 import EditMapTile from '@plone/volto/components/manage/Tiles/Maps/Edit';
 import EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
+import EditSliderTile from '@plone/volto/components/manage/Tiles/Slider/Edit';
 
 // import ImageSidebar from '@plone/volto/components/manage/Sidebar/ImageSidebar';
 
 import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import heroSVG from '@plone/volto/icons/hero.svg';
+import sliderSVG from '@plone/volto/icons/slider.svg';
 
 const customTiles = [
   {
@@ -36,6 +39,10 @@ const customTiles = [
   {
     title: 'html',
     icon: codeSVG,
+  },
+  {
+    title: 'slider',
+    icon: sliderSVG,
   },
 ];
 
@@ -71,6 +78,7 @@ const defaultTilesViewMap = {
   hero: ViewHeroImageLeftTile,
   maps: ViewMapTile,
   html: ViewHTMLTile,
+  slider: ViewSliderTile,
 };
 
 const defaultTilesEditMap = {
@@ -82,6 +90,7 @@ const defaultTilesEditMap = {
   hero: EditHeroImageLeftTile,
   maps: EditMapTile,
   html: EditHTMLTile,
+  slider: EditSliderTile,
 };
 
 const sidebarComponents = {

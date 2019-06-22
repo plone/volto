@@ -468,3 +468,54 @@
 .token.entity {
   cursor: help;
 }
+
+/* SLIDER TILES CSS */
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+.tile.slider.full {
+  width: 100vw;
+}
+
+.slide {
+  position: relative;
+  height: 750px;
+
+  @media only screen and (max-width: @largestMobileScreen) {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.slick-dots {
+  bottom: 36px;
+
+  li {
+    margin: 0 7px;
+  }
+
+  div {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #fefefe;
+  }
+}
+
+.slick-active {
+  background-color: #fefefe;
+}
+
+.slide-body-text {
+  position: absolute;
+  right: 20%;
+  bottom: 20%;
+  color: #fff;
+  font-size: 250%;
+
+  h2,
+  h3 {
+    font-size: 250%;
+  }
+}
