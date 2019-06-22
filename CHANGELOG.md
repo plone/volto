@@ -5,10 +5,13 @@
 ### Added
 
 - Add toast component @sneridagh
+- Add sidebar support for components @sneridagh
+- Remove Mosaic component @tisto
 
 ### Changes
 
 - Small UX/UI fixes @sneridagh
+- Removed the delete button from the title tile @pnicolli
 
 ### Internal
 
