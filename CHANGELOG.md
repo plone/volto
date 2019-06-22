@@ -4,6 +4,7 @@
 
 ### Added
 
+- Makes shift+return create new line in Description field @rodfersou
 - Add toast component @sneridagh
 - Add sidebar support for components @sneridagh
 
