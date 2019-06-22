@@ -4,6 +4,7 @@
 
 ### Added
 
+- Create listing tile @pnicolli @rodfersou
 - Add toast component @sneridagh
 - Add sidebar support for components @sneridagh
 
@@ -40,7 +41,6 @@
 
 ### Changes
 
-- Create listing tile @rodfersou
 - Fix order of arguments when sending the contact form @csenger
 - Fix @babel/core import on i18n script @sneridagh
 
