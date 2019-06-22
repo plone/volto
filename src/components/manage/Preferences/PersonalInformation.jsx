@@ -52,6 +52,14 @@ const messages = defineMessages({
     defaultMessage:
       'We will use this address if you need to recover your password',
   },
+  portraitTitle: {
+    id: 'Portrait',
+    defaultMessage: 'Portrait',
+  },
+  portraitDescription: {
+    id: 'The user portrait/avatar',
+    defaultMessage: 'The user portrait/avatar',
+  },
   homePageTitle: {
     id: 'Home page',
     defaultMessage: 'Home page',
@@ -197,7 +205,13 @@ class PersonalInformation extends Component {
             {
               id: 'default',
               title: this.props.intl.formatMessage(messages.default),
-              fields: ['fullname', 'email', 'home_page', 'location'],
+              fields: [
+                'fullname',
+                'email',
+                'portrait',
+                'home_page',
+                'location',
+              ],
             },
           ],
           properties: {
@@ -214,6 +228,13 @@ class PersonalInformation extends Component {
               ),
               title: this.props.intl.formatMessage(messages.emailTitle),
               type: 'string',
+            },
+            portrait: {
+              description: this.props.intl.formatMessage(
+                messages.portraitDescription,
+              ),
+              title: this.props.intl.formatMessage(messages.portraitTitle),
+              type: 'object',
             },
             home_page: {
               description: this.props.intl.formatMessage(
