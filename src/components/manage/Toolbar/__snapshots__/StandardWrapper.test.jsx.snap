@@ -21,7 +21,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
         style={
           Object {
             "fill": "currentColor",
-            "height": "32px",
+            "height": "30px",
             "width": "auto",
           }
         }

@@ -5,26 +5,14 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Portal } from 'react-portal';
-import { Link, withRouter } from 'react-router-dom';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
-import { Container, Menu } from 'semantic-ui-react';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 
-import { Form, Icon, Toast, Toolbar } from '../../../components';
+import { Form, Toast } from '../../../components';
 import { getUser, updateUser } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
-
-import backSVG from '../../../icons/back.svg';
 
 const messages = defineMessages({
   personalInformation: {
@@ -102,7 +90,6 @@ const messages = defineMessages({
       : '',
     loaded: state.users.get.loaded,
     loading: state.users.update.loading,
-    pathname: props.location.pathname,
   }),
   dispatch => bindActionCreators({ getUser, updateUser }, dispatch),
 )
@@ -125,14 +112,7 @@ class PersonalInformation extends Component {
     intl: intlShape.isRequired,
     loaded: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
-    pathname: PropTypes.string.isRequired,
-    isToolbarEmbedded: PropTypes.bool,
-    closeMenu: PropTypes.func,
-  };
-
-  static defaultProps = {
-    isToolbarEmbedded: false,
-    closeMenu: null,
+    closeMenu: PropTypes.func.isRequired,
   };
 
   /**
@@ -173,9 +153,7 @@ class PersonalInformation extends Component {
     toast.success(
       <Toast success title={this.props.intl.formatMessage(messages.saved)} />,
     );
-    if (this.props.isToolbarEmbedded) {
-      this.props.closeMenu();
-    }
+    this.props.closeMenu();
   }
 
   /**
@@ -184,11 +162,7 @@ class PersonalInformation extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    if (this.props.isToolbarEmbedded) {
-      this.props.closeMenu();
-    } else {
-      this.props.history.goBack();
-    }
+    this.props.closeMenu();
   }
 
   /**
@@ -197,7 +171,7 @@ class PersonalInformation extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const InnerContent = (
+    return (
       <Form
         formData={this.props.user}
         schema={{
@@ -258,61 +232,7 @@ class PersonalInformation extends Component {
         loading={this.props.loading}
       />
     );
-
-    if (this.props.isToolbarEmbedded && this.props.loaded) {
-      return <>{InnerContent}</>;
-    }
-
-    if (!this.props.isToolbarEmbedded && this.props.loaded) {
-      return (
-        <Container id="page-personal-information">
-          <Helmet
-            title={this.props.intl.formatMessage(messages.personalInformation)}
-          />
-          <Menu attached="top" tabular stackable>
-            <Menu.Item
-              name={this.props.intl.formatMessage(messages.personalInformation)}
-              active
-            />
-            <Link to="/personal-preferences" className="item">
-              <FormattedMessage
-                id="Personal Preferences"
-                defaultMessage="Personal Preferences"
-              />
-            </Link>
-            <Link to="/change-password" className="item">
-              <FormattedMessage
-                id="Change Password"
-                defaultMessage="Change Password"
-              />
-            </Link>
-          </Menu>
-          {InnerContent}
-          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <Link
-                  to={`${getBaseUrl(this.props.pathname)}`}
-                  className="item"
-                >
-                  <Icon
-                    name={backSVG}
-                    className="contents circled"
-                    size="32px"
-                    title={this.props.intl.formatMessage(messages.back)}
-                  />
-                </Link>
-              }
-            />
-          </Portal>
-        </Container>
-      );
-    } else {
-      return <div />;
-    }
   }
 }
 
-export default withRouter(PersonalInformation);
+export default PersonalInformation;

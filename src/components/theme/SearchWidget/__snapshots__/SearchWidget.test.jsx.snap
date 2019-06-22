@@ -22,7 +22,9 @@ exports[`SearchWidget renders a search widget component 1`] = `
         value=""
       />
     </div>
-    <button>
+    <button
+      aria-label="Search"
+    >
       <svg
         className="icon"
         dangerouslySetInnerHTML={

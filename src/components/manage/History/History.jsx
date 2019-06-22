@@ -267,7 +267,7 @@ export default class HistoryComponent extends Component {
                 <IconNext
                   name={backSVG}
                   className="contents circled"
-                  size="32px"
+                  size="30px"
                   title={this.props.intl.formatMessage(messages.back)}
                 />
               </Link>

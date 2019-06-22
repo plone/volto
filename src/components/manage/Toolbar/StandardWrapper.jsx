@@ -17,7 +17,7 @@ const StandardWrapper = props => {
     >
       <header className="header pulled">
         <button onClick={pull}>
-          <Icon name={backSVG} size="32px" />
+          <Icon name={backSVG} size="30px" />
         </button>
         <div className="vertical divider" />
         <h2>{props.componentName}</h2>

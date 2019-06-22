@@ -80,7 +80,7 @@ class More extends Component {
             onClick={() => this.push('personalTools')}
             tabIndex={0}
           >
-            <Icon name={userSVG} size="32px" />
+            <Icon name={userSVG} size="30px" />
           </button>
         </header>
         <div className="pastanaga-menu-list">
@@ -93,25 +93,24 @@ class More extends Component {
             </li>
             <li>
               {historyAction ? (
-                <button
-                  onClick={() => this.push('history')}
-                  aria-label="History"
-                >
-                  <div>
-                    <span className="pastanaga-menu-label">
-                      {historyAction.title}
-                    </span>
-                    <span className="pastanaga-menu-value">6 days ago</span>
-                  </div>
-                  <Icon name={rightArrowSVG} size="24px" />
-                </button>
+                <Link to={`${path}/history`}>
+                  <button>
+                    <div>
+                      <span className="pastanaga-menu-label">
+                        {historyAction.title}
+                      </span>
+                      <span className="pastanaga-menu-value" />
+                    </div>
+                    <Icon name={rightArrowSVG} size="24px" />
+                  </button>
+                </Link>
               ) : (
                 <button aria-label="History">
                   <div>
                     <span className="pastanaga-menu-label">
                       {historyAction.title}
                     </span>
-                    <span className="pastanaga-menu-value">6 days ago</span>
+                    <span className="pastanaga-menu-value" />
                   </div>
                 </button>
               )}
@@ -126,15 +125,6 @@ class More extends Component {
                 </Link>
               </li>
             )}
-            <li>
-              <button
-                aria-label="Portlets"
-                onClick={() => this.push('Portlets')}
-              >
-                Portlets
-                <Icon name={rightArrowSVG} size="24px" />
-              </button>
-            </li>
           </ul>
         </div>
       </div>

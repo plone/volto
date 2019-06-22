@@ -6,19 +6,6 @@
 @toolbar-text: #252525;
 
 #toolbar {
-  svg.circled {
-    box-sizing: content-box;
-    padding: 4px;
-    border: 2px solid currentColor;
-    border-radius: 50px;
-  }
-
-  svg.icon {
-    // Experiment if this is ok for all icons
-    box-sizing: content-box;
-    padding: 4px;
-  }
-
   .toolbar {
     position: relative;
     display: flex;
@@ -218,13 +205,6 @@
       &:focus {
         outline: none;
       }
-    }
-  }
-
-  .has-toolbar-menu-open {
-    // The body scroll locker when the menu is active in mobile.
-    @media only screen and (max-width: @largestMobileScreen) {
-      overflow: hidden;
     }
   }
 
@@ -531,12 +511,20 @@
 
     .avatar {
       height: 220px;
+      background-color: #f2f5f6;
 
       img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         object-position: top;
+      }
+
+      &.default {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #826a6a;
       }
     }
 
@@ -640,5 +628,3 @@
   }
 }
 // End Orphaned CSS
-
-.loadUIOverrides();

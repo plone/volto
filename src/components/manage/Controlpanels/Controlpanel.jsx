@@ -171,7 +171,7 @@ class Controlpanel extends Component {
                   <Icon
                     name={backSVG}
                     className="contents circled"
-                    size="32px"
+                    size="30px"
                     title={this.props.intl.formatMessage(messages.back)}
                   />
                 </Link>

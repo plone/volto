@@ -207,7 +207,7 @@ export class EditComponent extends Component {
               pathname={this.props.pathname}
               hideDefaultViewButtons
               inner={
-                <div>
+                <>
                   <button
                     id="toolbar-save"
                     className="save"
@@ -233,7 +233,7 @@ export class EditComponent extends Component {
                       title={this.props.intl.formatMessage(messages.cancel)}
                     />
                   </button>
-                </div>
+                </>
               }
             />
           </Portal>

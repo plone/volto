@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import cx from 'classnames';
 import { Icon } from '../../../components';
-
 import { getUser } from '../../../actions';
 import logoutSVG from '../../../icons/log-out.svg';
 import rightArrowSVG from '../../../icons/right-key.svg';
-import avatar from './avatar.jpg';
+
 import backSVG from '../../../icons/back.svg';
+import cameraSVG from '../../../icons/camera.svg';
 
 /**
  * Toolbar container class.
@@ -78,7 +78,7 @@ class PersonalTools extends Component {
       >
         <header className="header">
           <button className="back" onClick={this.pull}>
-            <Icon name={backSVG} size="32px" />
+            <Icon name={backSVG} size="30px" />
           </button>
           <div className="vertical divider" />
           <h2>
@@ -87,29 +87,17 @@ class PersonalTools extends Component {
               : this.props.user.username}
           </h2>
           <Link to="/logout">
-            <Icon className="logout" name={logoutSVG} size="32px" />
+            <Icon className="logout" name={logoutSVG} size="30px" />
           </Link>
         </header>
-        <div className="avatar">
-          <img src={avatar} alt="user avatar" />
+        <div className={cx('avatar', { default: !this.props.user.portrait })}>
+          {this.props.user.portrait ? (
+            <img src={this.props.user.portrait} alt="user avatar" />
+          ) : (
+            <Icon name={cameraSVG} size="96px" />
+          )}
         </div>
-        <div className="stats">
-          {/* This should be a Component by itself*/}
-          <ul>
-            <li>
-              <span>126</span>
-              <span>Items Created</span>
-            </li>
-            <li>
-              <span>43</span>
-              <span>Uploads</span>
-            </li>
-            <li>
-              <span>13</span>
-              <span>Reviews</span>
-            </li>
-          </ul>
-        </div>
+        {/* <Stats /> Maybe we can find a good fit in the future for this visual element */}
         <div className="pastanaga-menu-list">
           {/* This (probably also) should be a Component by itself*/}
           <ul>
@@ -120,10 +108,13 @@ class PersonalTools extends Component {
               </button>
             </li>
             <li>
-              <Link to="/personal-preferences">
+              <button
+                aria-label="Preferences"
+                onClick={() => this.push('preferences')}
+              >
                 Preferences
                 <Icon name={rightArrowSVG} size="24px" />
-              </Link>
+              </button>
             </li>
             <li>
               <Link to="/controlpanel">

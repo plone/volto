@@ -79,14 +79,6 @@ export const defaultRoutes = [
     component: ChangePassword,
   },
   {
-    path: '/personal-information',
-    component: PersonalInformation,
-  },
-  {
-    path: '/personal-preferences',
-    component: PersonalPreferences,
-  },
-  {
     path: '/add',
     component: Add,
   },

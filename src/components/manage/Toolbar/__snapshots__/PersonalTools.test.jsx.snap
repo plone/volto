@@ -22,7 +22,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
         style={
           Object {
             "fill": "currentColor",
-            "height": "32px",
+            "height": "30px",
             "width": "auto",
           }
         }
@@ -51,7 +51,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
         style={
           Object {
             "fill": "currentColor",
-            "height": "32px",
+            "height": "30px",
             "width": "auto",
           }
         }
@@ -61,42 +61,26 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
     </a>
   </header>
   <div
-    className="avatar"
+    className="avatar default"
   >
-    <img
-      alt="user avatar"
-      src="avatar.jpg"
+    <svg
+      className="icon"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": undefined,
+        }
+      }
+      onClick={null}
+      style={
+        Object {
+          "fill": "currentColor",
+          "height": "96px",
+          "width": "auto",
+        }
+      }
+      viewBox=""
+      xmlns=""
     />
-  </div>
-  <div
-    className="stats"
-  >
-    <ul>
-      <li>
-        <span>
-          126
-        </span>
-        <span>
-          Items Created
-        </span>
-      </li>
-      <li>
-        <span>
-          43
-        </span>
-        <span>
-          Uploads
-        </span>
-      </li>
-      <li>
-        <span>
-          13
-        </span>
-        <span>
-          Reviews
-        </span>
-      </li>
-    </ul>
   </div>
   <div
     className="pastanaga-menu-list"
@@ -129,8 +113,8 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
         </button>
       </li>
       <li>
-        <a
-          href="/personal-preferences"
+        <button
+          aria-label="Preferences"
           onClick={[Function]}
         >
           Preferences
@@ -152,7 +136,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
             viewBox=""
             xmlns=""
           />
-        </a>
+        </button>
       </li>
       <li>
         <a

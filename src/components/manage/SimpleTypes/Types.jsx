@@ -88,7 +88,7 @@ export default class Types extends Component {
       <Dropdown
         id="toolbar-add"
         item
-        trigger={<Icon name={addSVG} size="32px" />}
+        trigger={<Icon name={addSVG} size="30px" />}
         className={this.props.active ? 'active' : ''}
       >
         <Dropdown.Menu>

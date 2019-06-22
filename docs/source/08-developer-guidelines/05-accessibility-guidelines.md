@@ -16,7 +16,7 @@ Example:
   <Icon
     name={clearSVG}
     className="circled"
-    size="32px"
+    size="30px"
     title={this.props.intl.formatMessage(messages.cancel)}
   />
 </button>

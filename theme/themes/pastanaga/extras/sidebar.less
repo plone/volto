@@ -10,8 +10,15 @@ aside.sidebar-container {
   box-shadow: 0 1px 2px 0 #c7d5d8;
   transition: right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 
+  @media only screen and (max-width: @largestMobileScreen) {
+    top: initial;
+    bottom: 0;
+    height: calc(100vh - 100px);
+  }
+
   &.collapsed {
     right: -355px;
+
     .tabs-wrapper {
       opacity: 0;
       transition: opacity 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
@@ -40,6 +47,7 @@ aside.sidebar-container {
   .trigger:focus,
   .trigger:hover {
     position: absolute;
+    z-index: 1;
     top: 50%;
     left: 0;
     width: 20px;
@@ -50,7 +58,6 @@ aside.sidebar-container {
     border-radius: 0;
     opacity: 0.3;
     transition: opacity 0.3s;
-    z-index: 1;
   }
 
   .trigger:before {
@@ -65,13 +72,15 @@ aside.sidebar-container {
 
   .tab-wrapper {
     height: calc(100% - 61px);
-    overflow-y: auto;
-    overflow-x: hidden;
-    border-bottom: none;
     padding: 0;
+    border-bottom: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+
     > * {
       display: none;
     }
+
     > :last-child {
       display: block;
     }
@@ -198,9 +207,10 @@ aside.sidebar-container {
 #sidebar .pusher.expanded {
   margin-left: 375px;
 }
+
 #sidebar .pusher {
-  transition: margin-left 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
   margin-left: 20px;
+  transition: margin-left 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 // Animation

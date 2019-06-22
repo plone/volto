@@ -212,25 +212,53 @@ exports[`Contact form renders a contact form 1`] = `
         >
           <button
             aria-label="Send"
-            className="ui big basic circular icon primary right floated button"
+            className="ui basic primary right floated button"
             onClick={[Function]}
             title="Send"
             type="submit"
           >
-            <i
-              aria-hidden="true"
-              className="arrow right icon"
+            <svg
+              className="icon circled"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "30px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
             />
           </button>
           <button
             aria-label="Cancel"
-            className="ui big basic circular icon secondary right floated button"
+            className="ui basic secondary right floated button"
             onClick={[Function]}
             title="Cancel"
           >
-            <i
-              aria-hidden="true"
-              className="remove icon"
+            <svg
+              className="icon circled"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "30px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
             />
           </button>
         </div>
@@ -458,25 +486,53 @@ exports[`Contact form renders a contact form with error message 1`] = `
         >
           <button
             aria-label="Send"
-            className="ui big basic circular icon primary right floated button"
+            className="ui basic primary right floated button"
             onClick={[Function]}
             title="Send"
             type="submit"
           >
-            <i
-              aria-hidden="true"
-              className="arrow right icon"
+            <svg
+              className="icon circled"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "30px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
             />
           </button>
           <button
             aria-label="Cancel"
-            className="ui big basic circular icon secondary right floated button"
+            className="ui basic secondary right floated button"
             onClick={[Function]}
             title="Cancel"
           >
-            <i
-              aria-hidden="true"
-              className="remove icon"
+            <svg
+              className="icon circled"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "30px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
             />
           </button>
         </div>

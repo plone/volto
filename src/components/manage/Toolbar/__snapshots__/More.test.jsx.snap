@@ -23,7 +23,7 @@ exports[`Toolbar More component renders a Toolbar More component 1`] = `
         style={
           Object {
             "fill": "currentColor",
-            "height": "32px",
+            "height": "30px",
             "width": "auto",
           }
         }
@@ -51,41 +51,41 @@ exports[`Toolbar More component renders a Toolbar More component 1`] = `
         />
       </li>
       <li>
-        <button
-          aria-label="History"
+        <a
+          href="/blah/history"
           onClick={[Function]}
         >
-          <div>
-            <span
-              className="pastanaga-menu-label"
-            >
-              History
-            </span>
-            <span
-              className="pastanaga-menu-value"
-            >
-              6 days ago
-            </span>
-          </div>
-          <svg
-            className="icon"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
+          <button>
+            <div>
+              <span
+                className="pastanaga-menu-label"
+              >
+                History
+              </span>
+              <span
+                className="pastanaga-menu-value"
+              />
+            </div>
+            <svg
+              className="icon"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
               }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "currentColor",
-                "height": "24px",
-                "width": "auto",
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "24px",
+                  "width": "auto",
+                }
               }
-            }
-            viewBox=""
-            xmlns=""
-          />
-        </button>
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+        </a>
       </li>
       <li>
         <a
@@ -114,32 +114,6 @@ exports[`Toolbar More component renders a Toolbar More component 1`] = `
             />
           </button>
         </a>
-      </li>
-      <li>
-        <button
-          aria-label="Portlets"
-          onClick={[Function]}
-        >
-          Portlets
-          <svg
-            className="icon"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "currentColor",
-                "height": "24px",
-                "width": "auto",
-              }
-            }
-            viewBox=""
-            xmlns=""
-          />
-        </button>
       </li>
     </ul>
   </div>

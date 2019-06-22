@@ -2,6 +2,7 @@ import More from '@plone/volto/components/manage/Toolbar/More';
 import PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
 import Types from '@plone/volto/components/manage/Toolbar/Types';
 import PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
+import PersonalPreferences from '@plone/volto/components/manage/Preferences/PersonalPreferences';
 import StandardWrapper from '@plone/volto/components/manage/Toolbar/StandardWrapper';
 
 export const defaultToolbarComponents = {
@@ -10,6 +11,11 @@ export const defaultToolbarComponents = {
   types: { component: Types, wrapper: null },
   profile: {
     component: PersonalInformation,
+    wrapper: StandardWrapper,
+    hideToolbarBody: true,
+  },
+  preferences: {
+    component: PersonalPreferences,
     wrapper: StandardWrapper,
     hideToolbarBody: true,
   },
