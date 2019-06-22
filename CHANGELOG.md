@@ -13,6 +13,7 @@
 - Small UX/UI fixes @sneridagh
 - Fix query string search in subjects vocab field @gomez
 - Removed the delete button from the title tile @pnicolli
+- Rewrite sidebar @robgietma @sneridagh
 
 ### Internal
 
