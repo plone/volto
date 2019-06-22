@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import cx from 'classnames';
+
+const TRANSITION_OCCURED = 'transition-occured';
 
 /**
- *
- *
  * @class ScrollToTop
  * @extends {Component}
  */
-class ScrollToTop extends React.Component {
+class ScrollToTop extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -23,14 +24,37 @@ class ScrollToTop extends React.Component {
     children: PropTypes.node.isRequired,
   };
 
+  state = {
+    duringTransition: false,
+  };
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      this.setState({
+        duringTransition: true,
+      });
+      return TRANSITION_OCCURED;
+    }
+
+    return null;
+  }
+
   /**
    * @param {*} prevProps Previous Props
    * @returns {null} Null
    * @memberof ScrollToTop
    */
-  componentDidUpdate(prevProps) {
-    if (this.props.location !== prevProps.location) {
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (snapshot === TRANSITION_OCCURED) {
       window.scrollTo(0, 0);
+
+      setTimeout(
+        () =>
+          this.setState({
+            duringTransition: false,
+          }),
+        300,
+      );
     }
   }
 
@@ -39,7 +63,16 @@ class ScrollToTop extends React.Component {
    * @memberof ScrollToTop
    */
   render() {
-    return this.props.children;
+    return (
+      <div
+        className={cx('animation-wrapper', {
+          entering: this.state.duringTransition,
+          entered: !this.state.duringTransition,
+        })}
+      >
+        {this.props.children}
+      </div>
+    );
   }
 }
 

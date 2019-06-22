@@ -227,6 +227,7 @@
     "react-simple-code-editor": "0.7.1",
     "react-test-renderer": "16.8.6",
     "react-toastify": "5.1.1",
+    "react-transition-group": "4.1.1",
     "redraft": "0.10.1",
     "redux": "4.0.1",
     "redux-actions": "2.6.5",

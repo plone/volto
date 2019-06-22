@@ -209,6 +209,26 @@ body {
   }
 }
 
+.animation-wrapper {
+  .content-area {
+    position: relative;
+    opacity: 0.3;
+    transition: opacity 0.3s;
+  }
+
+  &.entering {
+    .content-area {
+      opacity: 0.3;
+    }
+  }
+
+  &.entered {
+    .content-area {
+      opacity: 1;
+    }
+  }
+}
+
 @import 'utils';
 @import 'draftjs';
 @import 'tiles';
