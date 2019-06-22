@@ -1,8 +1,5 @@
 version: '3'
 services:
-  redis:
-    image: redis:5.0.5
-    container_name: redis_test
   postgres:
     image: postgres:10
     container_name: postgres_test
