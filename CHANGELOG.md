@@ -8,6 +8,7 @@
 - Add sidebar support for components @sneridagh
 - Add Volto version number in control panel @nzambello
 - Remove Mosaic component @tisto
+- Added translations to italian @nzambello
 
 ### Changes
 
