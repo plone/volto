@@ -64,6 +64,7 @@ export default class Edit extends Component {
     tile: PropTypes.string.isRequired,
     onSelectTile: PropTypes.func.isRequired,
     openSidebar: PropTypes.func.isRequired,
+    isSidebarOpen: PropTypes.bool.isRequired,
     intl: intlShape.isRequired,
     searchContent: PropTypes.func.isRequired,
     resetSearchContent: PropTypes.func.isRequired,
@@ -145,6 +146,7 @@ export default class Edit extends Component {
     const {
       data,
       intl,
+      isSidebarOpen,
       items,
       openSidebar,
       onSelectTile,
@@ -182,13 +184,24 @@ export default class Edit extends Component {
       >
         <Button
           icon
-          basic
+          disabled={isSidebarOpen}
+          labelPosition="left"
           onClick={openSidebar}
           className="config-button"
           title={intl.formatMessage(messages.config_button)}
         >
-          <Icon name={configurationSVG} size="22px" />
+          <Icon name={configurationSVG} />
+          <FormattedMessage
+            id="Configure Tile"
+            defaultMessage="Configure Tile"
+          />
         </Button>
+        <p className="items-preview">
+          <FormattedMessage
+            id="Results preview"
+            defaultMessage="Results preview"
+          />
+        </p>
         {listingItems.length > 0 ? (
           <List>
             {listingItems.map(item => {

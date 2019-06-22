@@ -13,11 +13,11 @@ const mockStore = configureStore();
 const props = {
   data: {},
   index: 0,
-  selected: true,
+  selected: false,
   tile: 'test',
   onChangeTile: () => {},
   onSelectTile: () => {},
-  openSidebar: jest.fn(),
+  openSidebar: () => {},
   searchContent: () => {},
   resetSearchContent: () => {},
   properties: {

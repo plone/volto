@@ -51,9 +51,14 @@
   width: 2rem;
 }
 
-.tile.listing .ui.basic.button.config-button {
-  padding: 0 0 1em;
-  box-shadow: none;
+.tile.listing {
+  .ui.labeled.icon.button.config-button {
+    margin-bottom: 20px;
+
+    > .icon {
+      padding: 5px;
+    }
+  }
 }
 
 .tile .ui.message {
