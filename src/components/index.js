@@ -3,7 +3,6 @@
  * @module components
  * @example import { Field } from 'components';
  */
-
 export Anontools from '@plone/volto/components/theme/Anontools/Anontools';
 export Breadcrumbs from '@plone/volto/components/theme/Breadcrumbs/Breadcrumbs';
 export ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';

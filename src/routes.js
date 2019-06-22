@@ -16,7 +16,6 @@ import {
   History,
   View,
   NotFound,
-  Layout,
   Login,
   Logout,
   ModerateComments,
