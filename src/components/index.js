@@ -50,6 +50,7 @@ export Controlpanel from '@plone/volto/components/manage/Controlpanels/Controlpa
 export Controlpanels from '@plone/volto/components/manage/Controlpanels/Controlpanels';
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
 export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/UsersControlpanel';
+export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';
 export Delete from '@plone/volto/components/manage/Delete/Delete';
 export Diff from '@plone/volto/components/manage/Diff/Diff';
 export DiffField from '@plone/volto/components/manage/Diff/DiffField';
@@ -72,6 +73,7 @@ export ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWid
 export SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
 export SchemaWidgetFieldset from '@plone/volto/components/manage/Widgets/SchemaWidgetFieldset';
 export SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
+export Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
 export Sharing from '@plone/volto/components/manage/Sharing/Sharing';
 export TextareaWidget from '@plone/volto/components/manage/Widgets/TextareaWidget';
 export TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';

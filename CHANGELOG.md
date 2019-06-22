@@ -6,14 +6,17 @@
 
 - Add toast component @sneridagh
 - Add sidebar support for components @sneridagh
+- Add Volto version number in control panel @nzambello
 - Remove Mosaic component @tisto
 - Added toast component in actions @nzambello
+- Added translations to italian @nzambello
 
 ### Changes
 
 - Small UX/UI fixes @sneridagh
 - Fix query string search in subjects vocab field @gomez
 - Removed the delete button from the title tile @pnicolli
+- Rewrite sidebar @robgietma @sneridagh
 
 ### Internal
 

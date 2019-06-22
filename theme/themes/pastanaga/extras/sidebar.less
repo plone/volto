@@ -8,9 +8,14 @@ aside.sidebar-container {
   height: 100vh;
   background-color: #fff;
   box-shadow: 0 1px 2px 0 #c7d5d8;
+  transition: right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 
-  @media only screen and (max-width: @largestMobileScreen) {
-    width: 100vw;
+  &.collapsed {
+    right: -355px;
+    .tabs-wrapper {
+      opacity: 0;
+      transition: opacity 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    }
   }
 
   .ui.raised.segments {
@@ -29,6 +34,56 @@ aside.sidebar-container {
     &:focus {
       outline: none;
     }
+  }
+
+  .trigger,
+  .trigger:focus,
+  .trigger:hover {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 20px;
+    height: 80px;
+    padding: 0;
+    margin-top: -40px;
+    background: transparent;
+    border-radius: 0;
+    opacity: 0.3;
+    transition: opacity 0.3s;
+    z-index: 1;
+  }
+
+  .trigger:before {
+    position: relative;
+    left: 8px;
+    display: block;
+    width: 4px;
+    height: 100%;
+    background: @blue;
+    content: '';
+  }
+
+  .tab-wrapper {
+    height: calc(100% - 61px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-bottom: none;
+    padding: 0;
+    > * {
+      display: none;
+    }
+    > :last-child {
+      display: block;
+    }
+  }
+
+  .tabs-wrapper {
+    height: 100%;
+  }
+
+  .tab-forbidden {
+    margin: calc(50% - 24px) auto;
+    color: #bac5c7;
   }
 
   header {
@@ -74,7 +129,7 @@ aside.sidebar-container {
     }
   }
 
-  .ui.segment {
+  .ui.segment:not(.tab) {
     border-bottom: 1px solid #b8c6c8;
   }
 
@@ -138,6 +193,14 @@ aside.sidebar-container {
   .ui.segment.form.sidebar-image-data {
     padding-bottom: 1em;
   }
+}
+
+#sidebar .pusher.expanded {
+  margin-left: 375px;
+}
+#sidebar .pusher {
+  transition: margin-left 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  margin-left: 20px;
 }
 
 // Animation
