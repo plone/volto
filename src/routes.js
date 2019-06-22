@@ -16,7 +16,6 @@ import {
   History,
   View,
   NotFound,
-  Layout,
   Login,
   Logout,
   ModerateComments,
@@ -131,12 +130,12 @@ export const defaultRoutes = [
     component: History,
   },
   {
-    path: '/**/layout',
-    component: Layout,
-  },
-  {
     path: '/**/sharing',
     component: Sharing,
+  },
+  {
+    path: '/**/login',
+    component: Login,
   },
   {
     path: '/register',

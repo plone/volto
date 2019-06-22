@@ -98,7 +98,7 @@ class SharingComponent extends Component {
         type: PropTypes.string,
       }),
     ).isRequired,
-    available_roles: PropTypes.arrayOf(PropTypes.string).isRequired,
+    available_roles: PropTypes.arrayOf(PropTypes.object).isRequired,
     inherit: PropTypes.bool,
     title: PropTypes.string.isRequired,
     login: PropTypes.string,
