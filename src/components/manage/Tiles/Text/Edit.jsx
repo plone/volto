@@ -276,6 +276,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                className="add-image-tile"
                 onClick={() =>
                   this.props.onMutateTile(this.props.tile, {
                     '@type': 'image',
@@ -289,6 +290,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                className="add-video-tile"
                 onClick={() =>
                   this.props.onMutateTile(this.props.tile, {
                     '@type': 'video',
@@ -317,6 +319,7 @@ export default class Edit extends Component {
                 <Button
                   icon
                   basic
+                  className={`add-${tile.title}-tile`}
                   onClick={() =>
                     this.props.onMutateTile(this.props.tile, {
                       '@type': tile.title,

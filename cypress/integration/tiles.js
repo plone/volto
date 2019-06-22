@@ -6,12 +6,13 @@ describe('Default Tiles functionality', () => {
     // Title tile is needed in every test to be able to save the tile
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
+    cy.get('#sidebar .ui.button.trigger').click();
     cy.get('.documentFirstHeading > .public-DraftStyleDefault-block').type(
       'This is a page',
     );
   });
 
-  it.only('Title Tile', function() {
+  it('Title Tile', function() {
     // Edit
     cy.get('.documentFirstHeading span[data-text]').contains('This is a page');
 
@@ -76,14 +77,32 @@ describe('Default Tiles functionality', () => {
     }
   });
 
-  it('Image Tile', function() {
+  it.only('Image Tile', function() {
+    const url =
+      'https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png';
+
     // Edit
+    cy.get('.tile.text [contenteditable]').click();
+    cy.get('button.tile-add-button').click();
+    cy.get('button.add-image-tile').click();
+    cy.get('.tile.image .toolbar .ui.input input')
+      .type(url)
+      .type('{enter}');
+
+    cy.wait(300)
+      .get('.tile.image img')
+      .should('have.attr', 'src')
+      .should('include', url);
 
     // Save
     cy.get('#toolbar-save').click();
 
     // View
     if (Cypress.env('API') === 'plone') {
+      cy.wait(300)
+        .get('.tile.image img')
+        .should('have.attr', 'src')
+        .should('include', url);
     } else {
       // guilhotina
     }
