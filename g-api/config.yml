@@ -7,15 +7,13 @@ databases:
     dsn: postgresql://guillotina@postgres:5432/guillotina
     pool_size: 100
 applications:
-- guillotina_swagger
 - guillotina_dbusers
 - guillotina_cms
-- guillotina_elasticsearch
-- guillotina_rediscache
+- guillotina.contrib.cache
+- guillotina.contrib.swagger
 address: 8081
 static:
 - favicon.png: static/favicon.png
-- swagger_static: guillotina_swagger:static
 # - pastanaga: pastanaga-angular/dist
 # - ng: plone-angular-demo/dist
 # - plone: volto
@@ -29,9 +27,6 @@ auth_extractors:
 auth_token_validators:
 - guillotina.auth.validators.SaltedHashPasswordValidator
 - guillotina.auth.validators.JWTValidator
-redis:
-  host: "redis"
-  port: 6379
 jwt:
   secret: secret
   algorithm: HS256
@@ -53,27 +48,6 @@ cors:
   - "*"
   allow_credentials: true
   max_age: 3660
-elasticsearch:
-  bulk_size: 20
-  index_name_prefix: plone-
-  connection_settings:
-    hosts:
-    - elasticsearch:9200
-    sniffer_timeout: 0.5
-  index: {}
-  mapping_overrides:
-    "*": {}
-utilities:
-- provides: guillotina.async_util.IQueueUtility
-  factory: guillotina.async_util.QueueUtility
-  settings: {}
-- provides: guillotina_cms.interfaces.IWorkflowUtility
-  factory: guillotina_cms.utilities.workflow.WorkflowUtility
-  settings: {}
-- provides: guillotina_cms.interfaces.IPubSubUtility
-  factory: guillotina_cms.utilities.pubsub.PubSubUtility
-  settings: {}
-search_parser: guillotina_cms.search.parser.Parser
 default_tiles:
   Document:
   - type: title
