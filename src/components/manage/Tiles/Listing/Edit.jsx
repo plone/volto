@@ -77,7 +77,10 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    const { data, searchContent, tile } = this.props;
+    const { data, searchContent, selected, tile } = this.props;
+    if (selected) {
+      this.node.focus();
+    }
     if (data.query) {
       try {
         const options = {
@@ -98,7 +101,15 @@ export default class Edit extends Component {
    * @returns {undefined}
    */
   componentDidUpdate(prevProps) {
-    const { data, /* resetSearchContent, */ searchContent, tile } = this.props;
+    const {
+      data,
+      /* resetSearchContent, */ searchContent,
+      selected,
+      tile,
+    } = this.props;
+    if (!prevProps.selected && selected) {
+      this.node.focus();
+    }
     if (prevProps.data.query !== data.query) {
       if (!data.query) {
         // resetSearchContent(tile);
