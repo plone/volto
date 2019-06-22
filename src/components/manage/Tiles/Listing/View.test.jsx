@@ -11,44 +11,86 @@ import View from './View';
 const mockStore = configureStore();
 
 const props = {
-  data: {
-    selectedItem: '/test',
-  },
-  getContent: () => {},
-  resetContent: () => {},
+  data: {},
   tile: 'test',
-  contentSubrequests: {
-    test: {
-      data: {
-        '@id': `${settings.apiUrl}/test`,
-        image: {
-          scales: {
-            mini: {
-              download: `${settings.apiUrl}/test/image.jpeg`,
-            },
-          },
-        },
-        title: 'Test',
-        description: 'Listing',
-      },
-    },
+  searchContent: () => {},
+  resetSearchContent: () => {},
+  properties: {
+    items: [],
   },
 };
 
-test('renders a listing view component', () => {
+const baseStore = {
+  intl: {
+    locale: 'en',
+    messages: {},
+  },
+  search: {
+    subrequests: {},
+  },
+};
+
+test('renders a listing tile view with a custom query', () => {
   const store = mockStore({
-    intl: {
-      locale: 'en',
-      messages: {},
-    },
+    ...baseStore,
     search: {
-      subrequests: {},
+      subrequests: {
+        test: {
+          items: [
+            {
+              '@id': `${settings.apiUrl}/test`,
+              image: {
+                scales: {
+                  mini: {
+                    download: `${settings.apiUrl}/test/image.jpeg`,
+                  },
+                },
+              },
+              title: 'Test',
+              description: 'Listing',
+              UID: 'asdfghjkl',
+            },
+          ],
+        },
+      },
     },
   });
   const component = renderer.create(
     <Provider store={store}>
       <MemoryRouter>
-        <View {...props} />
+        <View {...props} data={{ query: '{}' }} />
+      </MemoryRouter>
+    </Provider>,
+  );
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
+});
+
+test('renders a listing tile view with no query set', () => {
+  const store = mockStore(baseStore);
+  const component = renderer.create(
+    <Provider store={store}>
+      <MemoryRouter>
+        <View
+          {...props}
+          properties={{
+            items: [
+              {
+                '@id': `${settings.apiUrl}/test`,
+                image: {
+                  scales: {
+                    mini: {
+                      download: `${settings.apiUrl}/test/image.jpeg`,
+                    },
+                  },
+                },
+                title: 'Test',
+                description: 'Listing',
+                UID: 'asdfghjkl',
+              },
+            ],
+          }}
+        />
       </MemoryRouter>
     </Provider>,
   );

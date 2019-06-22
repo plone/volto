@@ -13,7 +13,6 @@ import {
 } from 'react-intl';
 import { Button, List, Image } from 'semantic-ui-react';
 import { settings } from '~/config';
-import { withSidebar } from '~/helpers';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -23,6 +22,7 @@ import cx from 'classnames';
 import Icon from '../../../../components/theme/Icon/Icon';
 import configurationSVG from '../../../../icons/configuration.svg';
 import { searchContent, resetSearchContent } from '../../../../actions';
+import withSidebar from '../../Sidebar/Sidebar';
 
 const messages = defineMessages({
   config_button: {
@@ -68,6 +68,7 @@ export default class Edit extends Component {
     searchContent: PropTypes.func.isRequired,
     resetSearchContent: PropTypes.func.isRequired,
     items: PropTypes.arrayOf(PropTypes.any),
+    properties: PropTypes.objectOf(PropTypes.any).isRequired,
   };
 
   /**

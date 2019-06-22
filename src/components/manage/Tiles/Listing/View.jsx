@@ -44,6 +44,7 @@ export default class View extends Component {
     searchContent: PropTypes.func.isRequired,
     resetSearchContent: PropTypes.func.isRequired,
     items: PropTypes.arrayOf(PropTypes.any).isRequired,
+    properties: PropTypes.objectOf(PropTypes.any).isRequired,
   };
 
   /**
@@ -53,7 +54,7 @@ export default class View extends Component {
    */
   componentDidMount() {
     const { query } = this.props.data;
-    if (query !== '') {
+    if (query) {
       // Use subrequests to fetch tile data
       try {
         const options = {
@@ -62,7 +63,7 @@ export default class View extends Component {
         };
         this.props.searchContent('', options, this.props.tile);
       } catch (err) {
-        console.err('Listing Tile View - componentDidMount: ', err.message);
+        console.error('Listing Tile View - componentDidMount: ', err.message);
       }
     }
   }
