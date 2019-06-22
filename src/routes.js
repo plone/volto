@@ -130,10 +130,6 @@ export const defaultRoutes = [
     component: History,
   },
   {
-    path: '/**/layout',
-    component: Layout,
-  },
-  {
     path: '/**/sharing',
     component: Sharing,
   },
