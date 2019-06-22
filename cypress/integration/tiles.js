@@ -77,7 +77,7 @@ describe('Default Tiles functionality', () => {
     }
   });
 
-  it.only('Image Tile', function() {
+  it('Image Tile', function() {
     const url =
       'https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png';
 
@@ -89,8 +89,7 @@ describe('Default Tiles functionality', () => {
       .type(url)
       .type('{enter}');
 
-    cy.wait(300)
-      .get('.tile.image img')
+    cy.get('.tile.image img')
       .should('have.attr', 'src')
       .should('include', url);
 
@@ -99,8 +98,7 @@ describe('Default Tiles functionality', () => {
 
     // View
     if (Cypress.env('API') === 'plone') {
-      cy.wait(300)
-        .get('.tile.image img')
+      cy.get('.tile.image img')
         .should('have.attr', 'src')
         .should('include', url);
     } else {
