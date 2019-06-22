@@ -206,7 +206,11 @@ export default class SelectWidget extends Component {
     widgetOptions: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
-    value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    value: PropTypes.oneOfType([
+      PropTypes.object, 
+      PropTypes.string,
+      PropTypes.bool,
+    ]),
     onChange: PropTypes.func.isRequired,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
