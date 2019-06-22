@@ -69,7 +69,7 @@ export default class Edit extends Component {
       } else {
         editorState = EditorState.createEmpty();
       }
-      this.state = { editorState };
+      this.state = { editorState, focus: true };
     }
 
     this.onChange = this.onChange.bind(this);
@@ -83,6 +83,8 @@ export default class Edit extends Component {
   componentDidMount() {
     if (this.node) {
       this.node.focus();
+      this.node._onBlur = () => this.setState({ focus: false });
+      this.node._onFocus = () => this.setState({ focus: true });
     }
   }
 
@@ -96,7 +98,7 @@ export default class Edit extends Component {
     if (
       nextProps.properties.title &&
       this.props.properties.title !== nextProps.properties.title &&
-      !this.props.selected
+      !this.state.focus
     ) {
       const contentState = stateFromHTML(nextProps.properties.title);
       this.setState({
@@ -108,6 +110,7 @@ export default class Edit extends Component {
 
     if (!this.props.selected && nextProps.selected) {
       this.node.focus();
+      this.setState({ focus: true });
     }
   }
 

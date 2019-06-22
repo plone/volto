@@ -42,7 +42,7 @@ const getWidgetByName = widget =>
  * @returns {string} Widget component.
  */
 const getWidgetByVocabulary = vocabulary =>
-  vocabulary
+  vocabulary && vocabulary['@id']
     ? widgets.vocabulary[
         vocabulary['@id'].replace(`${settings.apiPath}/@vocabularies/`, '')
       ]
