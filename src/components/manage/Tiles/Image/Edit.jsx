@@ -274,13 +274,15 @@ class Edit extends Component {
         {this.props.selected && !this.props.data.url && (
           <div className="toolbar">
             <Button.Group>
-              <label className="ui button basic icon">
-                <Icon
-                  name={folderSVG}
-                  size="24px"
-                  onClick={this.props.openSidebar}
-                />
-              </label>
+              {this.props.data.url && (
+                <label className="ui button basic icon">
+                  <Icon
+                    name={folderSVG}
+                    size="24px"
+                    onClick={this.props.openSidebar}
+                  />
+                </label>
+              )}
               <label className="ui button basic icon">
                 <Icon name={uploadSVG} size="24px" />
                 <input
