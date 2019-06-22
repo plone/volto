@@ -5,34 +5,19 @@
 
 import get from 'lodash/get';
 import { Link } from 'react-router-dom';
-import {
-  defineMessages,
-  injectIntl,
-  intlShape,
-  FormattedMessage,
-} from 'react-intl';
-import { Button, List, Image } from 'semantic-ui-react';
+import { FormattedMessage } from 'react-intl';
+import { List, Image } from 'semantic-ui-react';
 import { settings } from '~/config';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import cx from 'classnames';
+import { Portal } from 'react-portal';
 
-import Icon from '../../../../components/theme/Icon/Icon';
-import configurationSVG from '../../../../icons/configuration.svg';
 import { searchContent, resetSearchContent } from '../../../../actions';
-import withSidebar from '../../Sidebar/Sidebar';
+import ListingSidebar from './ListingSidebar';
 
-const messages = defineMessages({
-  config_button: {
-    id: 'Configure Tile',
-    defaultMessage: 'Configure Tile',
-  },
-});
-
-@injectIntl
-@withSidebar
 @connect(
   (state, props) => ({
     items: get(state.search.subrequests, [props.tile, 'items'], []),
@@ -63,9 +48,6 @@ export default class Edit extends Component {
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
     onSelectTile: PropTypes.func.isRequired,
-    openSidebar: PropTypes.func.isRequired,
-    isSidebarOpen: PropTypes.bool.isRequired,
-    intl: intlShape.isRequired,
     searchContent: PropTypes.func.isRequired,
     resetSearchContent: PropTypes.func.isRequired,
     items: PropTypes.arrayOf(PropTypes.any),
@@ -145,10 +127,8 @@ export default class Edit extends Component {
   render() {
     const {
       data,
-      intl,
-      isSidebarOpen,
       items,
-      openSidebar,
+      onChangeTile,
       onSelectTile,
       properties,
       selected,
@@ -182,26 +162,9 @@ export default class Edit extends Component {
           this.node = node;
         }}
       >
-        <Button
-          icon
-          disabled={isSidebarOpen}
-          labelPosition="left"
-          onClick={openSidebar}
-          className="config-button"
-          title={intl.formatMessage(messages.config_button)}
-        >
-          <Icon name={configurationSVG} />
-          <FormattedMessage
-            id="Configure Tile"
-            defaultMessage="Configure Tile"
-          />
-        </Button>
-        <p className="items-preview">
-          <FormattedMessage
-            id="Results preview"
-            defaultMessage="Results preview"
-          />
-        </p>
+        <FormattedMessage id="Results preview" defaultMessage="Results preview">
+          {message => <p className="items-preview">{message}</p>}
+        </FormattedMessage>
         {listingItems.length > 0 ? (
           <List>
             {listingItems.map(item => {
@@ -230,6 +193,26 @@ export default class Edit extends Component {
               defaultMessage="No results found."
             />
           </div>
+        )}
+        {selected && (
+          <Portal
+            node={__CLIENT__ && document.getElementById('sidebar-properties')}
+          >
+            <aside
+              onClick={e => {
+                e.stopPropagation();
+              }}
+              onKeyDown={e => {
+                e.stopPropagation();
+              }}
+            >
+              <ListingSidebar
+                data={data}
+                tile={tile}
+                onChangeTile={onChangeTile}
+              />
+            </aside>
+          </Portal>
         )}
       </div>
     );

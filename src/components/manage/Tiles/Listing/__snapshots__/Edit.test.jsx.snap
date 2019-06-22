@@ -8,39 +8,10 @@ exports[`renders an edit listing tile component with a custom query 1`] = `
   role="presentation"
   tabIndex={0}
 >
-  <button
-    className="ui icon left labeled button config-button"
-    onClick={[Function]}
-    title="Configure Tile"
-  >
-    <svg
-      className="icon"
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": undefined,
-        }
-      }
-      onClick={null}
-      style={
-        Object {
-          "fill": "currentColor",
-          "height": "36px",
-          "width": "auto",
-        }
-      }
-      viewBox=""
-      xmlns=""
-    />
-    <span>
-      Configure Tile
-    </span>
-  </button>
   <p
     className="items-preview"
   >
-    <span>
-      Results preview
-    </span>
+    Results preview
   </p>
   <div
     className="ui list"
@@ -88,39 +59,10 @@ exports[`renders an edit listing tile component with no query set 1`] = `
   role="presentation"
   tabIndex={0}
 >
-  <button
-    className="ui icon left labeled button config-button"
-    onClick={[Function]}
-    title="Configure Tile"
-  >
-    <svg
-      className="icon"
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": undefined,
-        }
-      }
-      onClick={null}
-      style={
-        Object {
-          "fill": "currentColor",
-          "height": "36px",
-          "width": "auto",
-        }
-      }
-      viewBox=""
-      xmlns=""
-    />
-    <span>
-      Configure Tile
-    </span>
-  </button>
   <p
     className="items-preview"
   >
-    <span>
-      Results preview
-    </span>
+    Results preview
   </p>
   <div
     className="ui list"

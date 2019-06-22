@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { intlShape } from 'react-intl';
+import { injectIntl, intlShape } from 'react-intl';
 
+@injectIntl
+/**
+ * Listing sidebar class
+ * @class ListingSidebar
+ * @extends Component
+ */
 export default class ListingSidebar extends Component {
   /**
    * Property types.
@@ -12,6 +18,7 @@ export default class ListingSidebar extends Component {
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     tile: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
+    onChangeTile: PropTypes.func.isRequired,
   };
 
   /**
@@ -48,13 +55,19 @@ export default class ListingSidebar extends Component {
    */
   onSubmit = e => {
     e.preventDefault();
+    const { data, onChangeTile, tile } = this.props;
     const { query } = this.state;
-    this.props.onChangeTile(this.props.tile, {
-      ...this.props.data,
+    onChangeTile(tile, {
+      ...data,
       query,
     });
   };
 
+  /**
+   * Render method.
+   * @method render
+   * @returns {string} Markup for the component.
+   */
   render() {
     return (
       <div className="listing-sidebar">
