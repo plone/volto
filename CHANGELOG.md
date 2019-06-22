@@ -6,6 +6,7 @@
 
 - Add toast component @sneridagh
 - Add sidebar support for components @sneridagh
+- Add Volto version number in control panel @nzambello
 - Remove Mosaic component @tisto
 
 ### Changes
