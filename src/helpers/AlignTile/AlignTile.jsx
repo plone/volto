@@ -1,10 +1,11 @@
 import React from 'react';
-import { Icon } from '../components';
+import { Icon } from '@plone/volto/components';
 import { Button } from 'semantic-ui-react';
-import imageLeftSVG from '../icons/image-left.svg';
-import imageRightSVG from '../icons/image-right.svg';
-import imageFitSVG from '../icons/image-fit.svg';
-import imageFullSVG from '../icons/image-full.svg';
+import imageLeftSVG from '@plone/volto/icons/image-left.svg';
+import imageRightSVG from '@plone/volto/icons/image-right.svg';
+import imageFitSVG from '@plone/volto/icons/image-fit.svg';
+import imageFullSVG from '@plone/volto/icons/image-full.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const AlignTile = ({ align, onChangeTile, data, tile }) => {
   /**
@@ -26,8 +27,9 @@ const AlignTile = ({ align, onChangeTile, data, tile }) => {
         <Button
           icon
           basic
+          aria-label="Left"
           onClick={() => onAlignTile('left')}
-          active={align === 'left'}
+          active={data.align === 'left'}
         >
           <Icon name={imageLeftSVG} size="24px" />
         </Button>
@@ -36,8 +38,9 @@ const AlignTile = ({ align, onChangeTile, data, tile }) => {
         <Button
           icon
           basic
+          aria-label="Right"
           onClick={() => onAlignTile('right')}
-          active={align === 'right'}
+          active={data.align === 'right'}
         >
           <Icon name={imageRightSVG} size="24px" />
         </Button>
@@ -46,8 +49,9 @@ const AlignTile = ({ align, onChangeTile, data, tile }) => {
         <Button
           icon
           basic
+          aria-label="Center"
           onClick={() => onAlignTile('center')}
-          active={align === 'center' || !align}
+          active={data.align === 'center' || !data.align}
         >
           <Icon name={imageFitSVG} size="24px" />
         </Button>
@@ -56,13 +60,28 @@ const AlignTile = ({ align, onChangeTile, data, tile }) => {
         <Button
           icon
           basic
+          aria-label="Full"
           onClick={() => onAlignTile('full')}
-          active={align === 'full'}
+          active={data.align === 'full'}
         >
           <Icon name={imageFullSVG} size="24px" />
         </Button>
       </Button.Group>
       <div className="separator" />
+      <Button.Group>
+        <Button
+          icon
+          basic
+          onClick={() =>
+            onChangeTile(props.tile, {
+              ...data,
+              url: '',
+            })
+          }
+        >
+          <Icon name={clearSVG} size="24px" color="#e40166" />
+        </Button>
+      </Button.Group>
     </>
   );
 };

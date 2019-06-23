@@ -37,3 +37,4 @@ export {
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers/Vocabularies/Vocabularies';
+export AlignTile from '@plone/volto/helpers/AlignTile/AlignTile';

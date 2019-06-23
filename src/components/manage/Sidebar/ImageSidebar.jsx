@@ -3,7 +3,7 @@ import { Segment, Grid } from 'semantic-ui-react';
 import { Icon, TextWidget } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { Form } from 'semantic-ui-react';
-import AlignTile from '../../../helpers/AlignTile';
+import { AlignTile } from '@plone/volto/helpers';
 import PropTypes from 'prop-types';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -54,7 +54,13 @@ const ImageSidebar = ({ data, tile, onChangeTile, required = false }) => {
               title="alt"
               required={false}
               value={alt}
-              onChange={(name, value) => setAlt(value)}
+              onChange={(name, value) => {
+                onChangeTile(tile, {
+                  ...data,
+                  alt: value,
+                });
+                setAlt(value);
+              }}
             />
             <Form.Field inline required={required}>
               <Grid>
