@@ -11,6 +11,7 @@
 - Remove Mosaic component @tisto
 - Added translations to italian @nzambello
 - Add table tile @robgietema
+- Add image sidebar @sneridagh @gomez
 
 ### Changes
 
