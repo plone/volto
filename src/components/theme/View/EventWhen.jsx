@@ -6,6 +6,9 @@ import cx from 'classnames';
 const datesForDisplay = (start, end) => {
   const mStart = moment(start);
   const mEnd = moment(end);
+  if (!mStart.isValid() || !mEnd.isValid()) {
+    return null;
+  }
   const sameDay = mStart.isSame(mEnd, 'day');
   const sameTime = mStart.isSame(mEnd, 'minute');
   return {
@@ -18,8 +21,12 @@ const datesForDisplay = (start, end) => {
   };
 };
 
-const EventWhen = ({ start, end = '', whole_day, open_end }) => {
+const EventWhen = ({ start, end, whole_day, open_end }) => {
   const datesInfo = datesForDisplay(start, end);
+  if (!datesInfo) {
+    console.warn('EventWhen: Received invalid start or end date.');
+    return;
+  }
   // TODO I18N INTL
   return (
     <p

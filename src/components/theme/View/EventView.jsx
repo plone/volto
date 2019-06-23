@@ -118,6 +118,18 @@ EventView.propTypes = {
     text: PropTypes.shape({
       data: PropTypes.string,
     }),
+    attendees: PropTypes.arrayOf(PropTypes.string).isRequired,
+    contact_email: PropTypes.string,
+    contact_name: PropTypes.string,
+    contact_phone: PropTypes.string,
+    end: PropTypes.string.isRequired,
+    event_url: PropTypes.string,
+    location: PropTypes.string,
+    open_end: PropTypes.bool,
+    recurrence: PropTypes.any,
+    start: PropTypes.string.isRequired,
+    subjects: PropTypes.arrayOf(PropTypes.string).isRequired,
+    whole_day: PropTypes.bool,
   }).isRequired,
 };
 
