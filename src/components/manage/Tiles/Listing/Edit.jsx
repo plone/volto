@@ -13,9 +13,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import cx from 'classnames';
-import { Portal } from 'react-portal';
 
 import { searchContent, resetSearchContent } from '../../../../actions';
+import SidebarPortal from '../../Sidebar/SidebarPortal';
 import ListingSidebar from './ListingSidebar';
 
 @connect(
@@ -194,26 +194,9 @@ export default class Edit extends Component {
             />
           </div>
         )}
-        {selected && (
-          <Portal
-            node={__CLIENT__ && document.getElementById('sidebar-properties')}
-          >
-            <aside
-              onClick={e => {
-                e.stopPropagation();
-              }}
-              onKeyDown={e => {
-                e.stopPropagation();
-              }}
-            >
-              <ListingSidebar
-                data={data}
-                tile={tile}
-                onChangeTile={onChangeTile}
-              />
-            </aside>
-          </Portal>
-        )}
+        <SidebarPortal selected={selected}>
+          <ListingSidebar data={data} tile={tile} onChangeTile={onChangeTile} />
+        </SidebarPortal>
       </div>
     );
   }
