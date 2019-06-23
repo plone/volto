@@ -20,11 +20,6 @@ module.exports = {
       components: 'src/components/manage/**/*.jsx',
       content: 'docs/manage.md',
     },
-    {
-      name: 'Mosaic',
-      components: 'src/components/mosaic/**/*.jsx',
-      content: 'docs/mosaic.md',
-    },
   ],
   webpackConfig: {
     module: {
