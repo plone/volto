@@ -17,6 +17,7 @@
 - Fix query string search in subjects vocab field @gomez
 - Removed the delete button from the title tile @pnicolli
 - Rewrite sidebar @robgietma @sneridagh
+- Added SidebarPortal component for easier sidebar handling @pnicolli
 
 ### Internal
 
