@@ -142,6 +142,15 @@ export default class Navigation extends Component {
             className={cx('hamburger hamburger--collapse', {
               'is-active': this.state.isMobileMenuOpen,
             })}
+            aria-label={
+              this.state.isMobileMenuOpen
+                ? this.props.intl.formatMessage(messages.closeMobileMenu, {
+                    type: this.props.type,
+                  })
+                : this.props.intl.formatMessage(messages.openMobileMenu, {
+                    type: this.props.type,
+                  })
+            }
             title={
               this.state.isMobileMenuOpen
                 ? this.props.intl.formatMessage(messages.closeMobileMenu, {

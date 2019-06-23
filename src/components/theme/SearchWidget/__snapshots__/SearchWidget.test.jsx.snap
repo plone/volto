@@ -13,6 +13,7 @@ exports[`SearchWidget renders a search widget component 1`] = `
       className="ui transparent input"
     >
       <input
+        aria-label="Search"
         name="SearchableText"
         onChange={[Function]}
         placeholder="Search Site"
@@ -21,7 +22,9 @@ exports[`SearchWidget renders a search widget component 1`] = `
         value=""
       />
     </div>
-    <button>
+    <button
+      aria-label="Search"
+    >
       <svg
         className="icon"
         dangerouslySetInnerHTML={

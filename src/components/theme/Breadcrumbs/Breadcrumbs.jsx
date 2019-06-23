@@ -82,7 +82,13 @@ export default class Breadcrumbs extends Component {
    */
   render() {
     return (
-      <Segment className="breadcrumbs" secondary vertical>
+      <Segment
+        role="navigation"
+        aria-label="Breadcrumbs"
+        className="breadcrumbs"
+        secondary
+        vertical
+      >
         <Container>
           <Breadcrumb>
             <Link

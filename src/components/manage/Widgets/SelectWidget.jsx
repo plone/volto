@@ -206,7 +206,11 @@ export default class SelectWidget extends Component {
     widgetOptions: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
-    value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    value: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.string,
+      PropTypes.bool,
+    ]),
     onChange: PropTypes.func.isRequired,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
@@ -370,12 +374,16 @@ export default class SelectWidget extends Component {
             <Grid.Column width="8">
               {onEdit && (
                 <div className="toolbar">
-                  <a className="item" onClick={() => onEdit(id, schema)}>
+                  <button className="item" onClick={() => onEdit(id, schema)}>
                     <IconOld name="write square" size="large" color="blue" />
-                  </a>
-                  <a className="item" onClick={() => onDelete(id)}>
+                  </button>
+                  <button
+                    aria-label="Close"
+                    className="item"
+                    onClick={() => onDelete(id)}
+                  >
                     <IconOld name="close" size="large" color="red" />
-                  </a>
+                  </button>
                 </div>
               )}
               {this.vocabBaseUrl ? (

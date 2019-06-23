@@ -21,7 +21,13 @@ import {
 
 import Icons from '../../../constants/ControlpanelIcons';
 import { listControlpanels } from '../../../actions';
-import { Toolbar, VersionOverview } from '../../../components';
+import {
+  Icon as IconNext,
+  Toolbar,
+  VersionOverview,
+} from '../../../components';
+
+import backSVG from '../../../icons/back.svg';
 
 const messages = defineMessages({
   sitesetup: {
@@ -151,12 +157,13 @@ export default class Controlpanels extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
+            hideDefaultViewButtons
             inner={
               <Link to="/" className="item">
-                <Icon
-                  name="arrow left"
-                  size="big"
-                  color="blue"
+                <IconNext
+                  name={backSVG}
+                  className="contents circled"
+                  size="30px"
                   title={this.props.intl.formatMessage(messages.back)}
                 />
               </Link>
