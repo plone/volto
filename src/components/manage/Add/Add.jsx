@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Router, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
 import { keys, isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
@@ -20,7 +20,7 @@ import qs from 'query-string';
 import { settings } from '~/config';
 
 import { createContent, getSchema } from '../../../actions';
-import { Form, Toolbar } from '../../../components';
+import { Form, Toolbar, Sidebar } from '../../../components';
 import {
   getBaseUrl,
   hasTilesData,
@@ -40,14 +40,6 @@ const messages = defineMessages({
   cancel: {
     id: 'Cancel',
     defaultMessage: 'Cancel',
-  },
-  properties: {
-    id: 'Properties',
-    defaultMessage: 'Properties',
-  },
-  visual: {
-    id: 'Visual',
-    defaultMessage: 'Visual',
   },
 });
 
@@ -119,12 +111,8 @@ export class AddComponent extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = {
-      visual: false,
-    };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.onToggleVisual = this.onToggleVisual.bind(this);
   }
 
   /**
@@ -152,13 +140,6 @@ export class AddComponent extends Component {
         this.props.returnUrl ||
           nextProps.content['@id'].replace(settings.apiPath, ''),
       );
-    }
-    if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
-      if (hasTilesData(nextProps.schema.properties)) {
-        this.setState({
-          visual: true,
-        });
-      }
     }
   }
 
@@ -188,23 +169,14 @@ export class AddComponent extends Component {
   }
 
   /**
-   * Toggle visual
-   * @method onToggleVisual
-   * @returns {undefined}
-   */
-  onToggleVisual() {
-    this.setState({
-      visual: !this.state.visual,
-    });
-  }
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
     if (this.props.schemaRequest.loaded) {
+      const visual = hasTilesData(this.props.schema.properties);
+
       return (
         <div id="page-add">
           <Helmet
@@ -226,7 +198,7 @@ export class AddComponent extends Component {
             onSubmit={this.onSubmit}
             hideActions
             pathname={this.props.pathname}
-            visual={this.state.visual}
+            visual={visual}
             title={this.props.intl.formatMessage(messages.add, {
               type: this.props.type,
             })}
@@ -249,19 +221,6 @@ export class AddComponent extends Component {
                       title={this.props.intl.formatMessage(messages.save)}
                     />
                   </a>
-                  {hasTilesData(this.props.schema.properties) && (
-                    <a className="item" onClick={() => this.onToggleVisual()}>
-                      <Icon
-                        name={this.state.visual ? 'tasks' : 'block layout'}
-                        size="big"
-                        title={this.props.intl.formatMessage(
-                          this.state.visual
-                            ? messages.properties
-                            : messages.visual,
-                        )}
-                      />
-                    </a>
-                  )}
                   <a className="item" onClick={() => this.onCancel()}>
                     <Icon
                       name="close"
@@ -274,6 +233,11 @@ export class AddComponent extends Component {
               }
             />
           </Portal>
+          {visual && (
+            <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
+              <Sidebar />
+            </Portal>
+          )}
         </div>
       );
     }

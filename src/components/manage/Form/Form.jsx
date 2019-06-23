@@ -17,6 +17,7 @@ import {
 } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { v4 as uuid } from 'uuid';
+import { Portal } from 'react-portal';
 
 import { EditTile, Field } from '../../../components';
 import { getTilesFieldname, getTilesLayoutFieldname } from '../../../helpers';
@@ -537,6 +538,35 @@ class Form extends Component {
             selected={this.state.selected === tile}
           />
         ))}
+        <Portal
+          node={__CLIENT__ && document.getElementById('sidebar-metadata')}
+        >
+          <UiForm
+            method="post"
+            onSubmit={this.onSubmit}
+            error={keys(this.state.errors).length > 0}
+          >
+            {map(schema.fieldsets, item => [
+              <Segment secondary attached>
+                {item.title}
+              </Segment>,
+              <Segment attached>
+                {map(item.fields, (field, index) => (
+                  <Field
+                    {...schema.properties[field]}
+                    id={field}
+                    focus={index === 0}
+                    value={this.state.formData[field]}
+                    required={schema.required.indexOf(field) !== -1}
+                    onChange={this.onChangeField}
+                    key={field}
+                    error={this.state.errors[field]}
+                  />
+                ))}
+              </Segment>,
+            ])}
+          </UiForm>
+        </Portal>
       </div>
     ) : (
       <Container>
