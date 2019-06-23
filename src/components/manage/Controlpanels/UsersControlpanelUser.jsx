@@ -51,8 +51,15 @@ export default class UsersControlpanelUser extends Component {
    */
   constructor(props) {
     super(props);
+    this.state = {
+      checked: true,
+    };
+    this.onClickHandler = this.onClickHandler.bind(this);
   }
 
+  onClickHandler(e, value) {
+    this.props.updateUser(value.name, value.value, value.checked);
+  }
   /**
    * Render method.
    * @method render
@@ -65,20 +72,23 @@ export default class UsersControlpanelUser extends Component {
         {this.props.roles.map(role => (
           <Table.Cell key={role.id}>
             {this.props.user.roles.indexOf(role.id) !== -1 ? (
-              <Icon
-                name={checkedSVG}
+              <Checkbox
+                checked={this.state.checked}
+                name={role.id}
                 size="25px"
                 title="Global role"
                 color="#007eb1"
-                onClick={this.props.updateUser}
+                onClick={this.onClickHandler}
+                value={this.props.user['@id']}
               />
             ) : (
               <Checkbox
                 name={role.id}
+                checked={!this.state.checked}
                 size="25px"
                 title="Global role"
                 color="#826a6a"
-                onClick={this.props.updateUser}
+                onClick={this.onClickHandler}
                 value={this.props.user['@id']}
               />
             )}

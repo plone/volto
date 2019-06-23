@@ -413,13 +413,13 @@ export default class UsersControlpanel extends Component {
    * @param {*} callback
    * @memberof UsersControlpanel
    */
-  updateUserRole(event, { value }) {
+  updateUserRole(name, value, checked) {
     if (value) {
       this.setState({
         updateUser: this.getUserFromProps(value),
       });
     }
-    this.onUpdateUserRole();
+    this.onUpdateUserRole(name, checked);
   }
 
   /**
@@ -427,12 +427,11 @@ export default class UsersControlpanel extends Component {
    *
    * @memberof UsersControlpanel
    */
-  onUpdateUserRole() {
+  onUpdateUserRole(name, checked) {
     if (this.state.updateUser) {
-      this.props.updateUser(
-        this.state.updateUser.id,
-        this.state.updateUser.roles,
-      );
+      this.props.updateUser(this.state.updateUser.id, {
+        roles: { [name]: !checked },
+      });
       this.setState({
         updateUser: undefined,
       });
