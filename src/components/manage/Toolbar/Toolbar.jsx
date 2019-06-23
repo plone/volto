@@ -296,6 +296,7 @@ class Toolbar extends Component {
                         aria-label="Add"
                         onClick={e => this.toggleMenu(e, 'types')}
                         tabIndex={0}
+                        id="toolbar-add"
                       >
                         <Icon name={addSVG} size="30px" />
                       </button>
@@ -306,6 +307,7 @@ class Toolbar extends Component {
                       aria-label="More"
                       onClick={e => this.toggleMenu(e, 'more')}
                       tabIndex={0}
+                      id="toolbar-more"
                     >
                       <Icon
                         className="mobile hidden"
@@ -337,6 +339,7 @@ class Toolbar extends Component {
                     aria-label="Personal tools"
                     onClick={e => this.toggleMenu(e, 'personalTools')}
                     tabIndex={0}
+                    id="toolbar-personal"
                   >
                     <Icon name={userSVG} size="30px" />
                   </button>
