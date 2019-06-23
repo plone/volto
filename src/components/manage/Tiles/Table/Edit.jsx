@@ -1,49 +1,152 @@
 /**
- * Edit table tile.
- * @module components/manage/Tiles/Table/Edit
+ * Edit text tile.
+ * @module components/manage/Tiles/Title/Edit
  */
 
 import React, { Component } from 'react';
-import { map, omit } from 'lodash';
 import PropTypes from 'prop-types';
-import { Table } from 'semantic-ui-react';
+import { map, remove } from 'lodash';
+import { Button, Segment, Table, Form } from 'semantic-ui-react';
+import { convertToRaw } from 'draft-js';
 import { Portal } from 'react-portal';
 import cx from 'classnames';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
+
+import Cell from './Cell';
+import { Field, Icon } from '../../../../components';
+
+import rowSVG from '../../../../icons/row.svg';
+import colSVG from '../../../../icons/column.svg';
+import deleteSVG from '../../../../icons/delete.svg';
+
+const getId = () => Math.floor(Math.random() * Math.pow(2, 24)).toString(32);
+
+const valueToDraft = value => ({
+  blocks: [
+    {
+      data: {},
+      depth: 0,
+      entityRanges: [],
+      inlineStyleRanges: [],
+      key: 'co3kh',
+      text: value,
+      type: 'unstyled',
+    },
+  ],
+  entityMap: {},
+});
+
+const emptyCell = type => ({
+  key: getId(),
+  type: type || 'data',
+  value: valueToDraft(''),
+});
+
+const emptyRow = cells => ({
+  key: getId(),
+  cells: map(cells, () => emptyCell()),
+});
 
 const initialTable = {
+  fixed: true,
+  compact: false,
+  basic: false,
   celled: true,
+  inverted: false,
+  striped: false,
   rows: [
     {
-      type: 'header',
+      key: getId(),
       cells: [
         {
+          key: getId(),
           type: 'header',
-          value: 'Header',
+          value: valueToDraft(''),
         },
         {
+          key: getId(),
           type: 'header',
-          value: 'Header',
+          value: valueToDraft(''),
         },
       ],
     },
     {
-      type: 'body',
+      key: getId(),
       cells: [
         {
+          key: getId(),
           type: 'data',
-          value: 'Cell',
+          value: valueToDraft(''),
         },
         {
+          key: getId(),
           type: 'data',
-          value: 'Cell',
+          value: valueToDraft(''),
         },
       ],
     },
   ],
 };
 
+const messages = defineMessages({
+  insertRowBefore: {
+    id: 'Insert row before',
+    defaultMessage: 'Insert row before',
+  },
+  insertRowAfter: {
+    id: 'Insert row after',
+    defaultMessage: 'Insert row after',
+  },
+  deleteRow: {
+    id: 'Delete row',
+    defaultMessage: 'Delete row',
+  },
+  insertColBefore: {
+    id: 'Insert col before',
+    defaultMessage: 'Insert col before',
+  },
+  insertColAfter: {
+    id: 'Insert col after',
+    defaultMessage: 'Insert col after',
+  },
+  deleteCol: {
+    id: 'Delete col',
+    defaultMessage: 'Delete col',
+  },
+  fixed: {
+    id: 'Fixed width table cells',
+    defaultMessage: 'Fixed width table cells',
+  },
+  compact: {
+    id: 'Make the table compact',
+    defaultMessage: 'Make the table compact',
+  },
+  basic: {
+    id: 'Reduce complexity',
+    defaultMessage: 'Reduce complexity',
+  },
+  celled: {
+    id: 'Divide each row into separate cells',
+    defaultMessage: 'Divide each row into separate cells',
+  },
+  inverted: {
+    id: 'Table color inverted',
+    defaultMessage: 'Table color inverted',
+  },
+  striped: {
+    id: 'Stripe alternate rows with color',
+    defaultMessage: 'Stripe alternate rows with color',
+  },
+});
+
+@injectIntl
 /**
- * Edit table tile class.
+ * Edit text tile class.
  * @class Edit
  * @extends Component
  */
@@ -54,24 +157,60 @@ export default class Edit extends Component {
    * @static
    */
   static propTypes = {
+    intl: intlShape.isRequired,
+    data: PropTypes.objectOf(PropTypes.any).isRequired,
+    detached: PropTypes.bool,
+    index: PropTypes.number.isRequired,
     selected: PropTypes.bool.isRequired,
     tile: PropTypes.string.isRequired,
-    index: PropTypes.number.isRequired,
-    data: PropTypes.objectOf(PropTypes.any).isRequired,
+    onAddTile: PropTypes.func.isRequired,
     onChangeTile: PropTypes.func.isRequired,
-    onSelectTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
-    handleKeyDown: PropTypes.func.isRequired,
+    onMutateTile: PropTypes.func.isRequired,
+    onFocusPreviousTile: PropTypes.func.isRequired,
+    onFocusNextTile: PropTypes.func.isRequired,
+    onSelectTile: PropTypes.func.isRequired,
+  };
+
+  /**
+   * Default properties
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
+  static defaultProps = {
+    detached: false,
   };
 
   /**
    * Constructor
    * @method constructor
    * @param {Object} props Component properties
+   * @constructs WysiwygEditor
    */
   constructor(props) {
     super(props);
-    this.onAddColumn = this.onAddColumn.bind(this);
+    this.state = {
+      selected: {
+        row: 0,
+        cell: 0,
+      },
+    };
+    this.onSelectCell = this.onSelectCell.bind(this);
+    this.onInsertRowBefore = this.onInsertRowBefore.bind(this);
+    this.onInsertRowAfter = this.onInsertRowAfter.bind(this);
+    this.onInsertColBefore = this.onInsertColBefore.bind(this);
+    this.onInsertColAfter = this.onInsertColAfter.bind(this);
+    this.onDeleteRow = this.onDeleteRow.bind(this);
+    this.onDeleteCol = this.onDeleteCol.bind(this);
+    this.onChangeCell = this.onChangeCell.bind(this);
+    this.toggleCellType = this.toggleCellType.bind(this);
+    this.toggleBool = this.toggleBool.bind(this);
+    this.toggleFixed = this.toggleFixed.bind(this);
+    this.toggleCompact = this.toggleCompact.bind(this);
+    this.toggleBasic = this.toggleBasic.bind(this);
+    this.toggleCelled = this.toggleCelled.bind(this);
+    this.toggleInverted = this.toggleInverted.bind(this);
+    this.toggleStriped = this.toggleStriped.bind(this);
   }
 
   /**
@@ -104,16 +243,272 @@ export default class Edit extends Component {
   }
 
   /**
-   * Add column handler
-   * @method onAddColumn
-   * @param {string} code New value html
+   * Select cell handler
+   * @method onSelectCell
+   * @param {Number} row Row index.
+   * @param {Number} cell Cell index.
    * @returns {undefined}
    */
-  onAddColumn(code) {
+  onSelectCell(row, cell) {
+    this.setState({ selected: { row, cell } });
+  }
+
+  /**
+   * Change cell handler
+   * @method onChangeCell
+   * @param {Number} row Row index.
+   * @param {Number} cell Cell index.
+   * @param {Object} editorState Editor state.
+   * @returns {undefined}
+   */
+  onChangeCell(row, cell, editorState) {
+    const table = { ...this.props.data.table };
+    table.rows[row].cells[cell].value = convertToRaw(
+      editorState.getCurrentContent(),
+    );
     this.props.onChangeTile(this.props.tile, {
       ...this.props.data,
-      html: code,
+      table,
     });
+  }
+
+  /**
+   * Toggle cell type
+   * @method toggleCellType
+   * @returns {undefined}
+   */
+  toggleCellType() {
+    const table = { ...this.props.data.table };
+    let type =
+      table.rows[this.state.selected.row].cells[this.state.selected.cell].type;
+    table.rows[this.state.selected.row].cells[this.state.selected.cell].type =
+      type === 'header' ? 'data' : 'header';
+    console.log(type);
+    console.log(table);
+    this.props.onChangeTile(this.props.tile, {
+      ...this.props.data,
+      table,
+    });
+  }
+
+  /**
+   * Insert row before handler
+   * @method onInsertRowBefore
+   * @returns {undefined}
+   */
+  onInsertRowBefore() {
+    const table = this.props.data.table;
+    this.props.onChangeTile(this.props.tile, {
+      ...this.props.data,
+      table: {
+        ...table,
+        rows: [
+          ...table.rows.slice(0, this.state.selected.row),
+          emptyRow(table.rows[0].cells),
+          ...table.rows.slice(this.state.selected.row),
+        ],
+      },
+    });
+    this.setState({
+      selected: {
+        row: this.state.selected.row + 1,
+        cell: this.state.selected.cell,
+      },
+    });
+  }
+
+  /**
+   * Insert row after handler
+   * @method onInsertRowAfter
+   * @returns {undefined}
+   */
+  onInsertRowAfter() {
+    const table = this.props.data.table;
+    this.props.onChangeTile(this.props.tile, {
+      ...this.props.data,
+      table: {
+        ...table,
+        rows: [
+          ...table.rows.slice(0, this.state.selected.row + 1),
+          emptyRow(table.rows[0].cells),
+          ...table.rows.slice(this.state.selected.row + 1),
+        ],
+      },
+    });
+  }
+
+  /**
+   * Insert col before handler
+   * @method onInsertColBefore
+   * @returns {undefined}
+   */
+  onInsertColBefore() {
+    const table = this.props.data.table;
+    this.props.onChangeTile(this.props.tile, {
+      ...this.props.data,
+      table: {
+        ...table,
+        rows: map(table.rows, (row, index) => ({
+          ...row,
+          cells: [
+            ...row.cells.slice(0, this.state.selected.cell),
+            emptyCell(table.rows[index].cells[this.state.selected.cell].type),
+            ...row.cells.slice(this.state.selected.cell),
+          ],
+        })),
+      },
+    });
+    this.setState({
+      selected: {
+        row: this.state.selected.row,
+        cell: this.state.selected.cell + 1,
+      },
+    });
+  }
+
+  /**
+   * Insert col after handler
+   * @method onInsertColAfter
+   * @returns {undefined}
+   */
+  onInsertColAfter() {
+    const table = this.props.data.table;
+    this.props.onChangeTile(this.props.tile, {
+      ...this.props.data,
+      table: {
+        ...table,
+        rows: map(table.rows, (row, index) => ({
+          ...row,
+          cells: [
+            ...row.cells.slice(0, this.state.selected.cell + 1),
+            emptyCell(table.rows[index].cells[this.state.selected.cell].type),
+            ...row.cells.slice(this.state.selected.cell + 1),
+          ],
+        })),
+      },
+    });
+  }
+
+  /**
+   * Delete col handler
+   * @method onDeleteCol
+   * @returns {undefined}
+   */
+  onDeleteCol() {
+    const table = this.props.data.table;
+
+    if (this.state.selected.cell === table.rows[0].cells.length - 1) {
+      this.setState({
+        selected: {
+          row: this.state.selected.row,
+          cell: this.state.selected.cell - 1,
+        },
+      });
+    }
+
+    this.props.onChangeTile(this.props.tile, {
+      ...this.props.data,
+      table: {
+        ...table,
+        rows: map(table.rows, row => ({
+          ...row,
+          cells: remove(
+            row.cells,
+            (cell, index) => index !== this.state.selected.cell,
+          ),
+        })),
+      },
+    });
+  }
+
+  /**
+   * Delete row handler
+   * @method onDeleteRow
+   * @returns {undefined}
+   */
+  onDeleteRow() {
+    const table = this.props.data.table;
+    this.props.onChangeTile(this.props.tile, {
+      ...this.props.data,
+      table: {
+        ...table,
+        rows: remove(
+          table.rows,
+          (row, index) => index !== this.state.selected.row,
+        ),
+      },
+    });
+  }
+
+  /**
+   * Toggle bool
+   * @method toggleBool
+   * @param {string} value Value to toggle.
+   * @returns {undefined}
+   */
+  toggleBool(value) {
+    const table = this.props.data.table;
+    this.props.onChangeTile(this.props.tile, {
+      ...this.props.data,
+      table: {
+        ...table,
+        [value]: !table[value],
+      },
+    });
+  }
+
+  /**
+   * Toggle fixed
+   * @method toggleFixed
+   * @returns {undefined}
+   */
+  toggleFixed() {
+    this.toggleBool('fixed');
+  }
+
+  /**
+   * Toggle compact
+   * @method toggleCompact
+   * @returns {undefined}
+   */
+  toggleCompact() {
+    this.toggleBool('compact');
+  }
+
+  /**
+   * Toggle basic
+   * @method toggleBasic
+   * @returns {undefined}
+   */
+  toggleBasic() {
+    this.toggleBool('basic');
+  }
+
+  /**
+   * Toggle celled
+   * @method toggleCelled
+   * @returns {undefined}
+   */
+  toggleCelled() {
+    this.toggleBool('celled');
+  }
+
+  /**
+   * Toggle inverted
+   * @method toggleInverted
+   * @returns {undefined}
+   */
+  toggleInverted() {
+    this.toggleBool('inverted');
+  }
+
+  /**
+   * Toggle striped
+   * @method toggleStriped
+   * @returns {undefined}
+   */
+  toggleStriped() {
+    this.toggleBool('striped');
   }
 
   /**
@@ -122,47 +517,208 @@ export default class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    if (__SERVER__) {
+      return <div />;
+    }
+
     return (
       <div
         role="presentation"
         onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={cx('tile table', {
-          selected: this.props.selected,
-        })}
-        tabIndex={0}
-        onKeyDown={e =>
-          this.props.handleKeyDown(
-            e,
-            this.props.index,
-            this.props.tile,
-            this.node,
-            { disableEnter: true },
-          )
-        }
-        ref={node => {
-          this.node = node;
-        }}
+        className={cx('tile text', { selected: this.props.selected })}
+        ref={node => (this.ref = node)}
       >
+        {this.props.selected && (
+          <div className="toolbar">
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.onInsertRowBefore}
+                title={this.props.intl.formatMessage(messages.insertRowBefore)}
+                aria-label={this.props.intl.formatMessage(
+                  messages.insertRowBefore,
+                )}
+              >
+                <Icon name={rowSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.onInsertRowAfter}
+                title={this.props.intl.formatMessage(messages.insertRowAfter)}
+                aria-label={this.props.intl.formatMessage(
+                  messages.insertRowAfter,
+                )}
+              >
+                <Icon name={rowSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.onDeleteRow}
+                disabled={this.props.data.table.rows.length === 1}
+                title={this.props.intl.formatMessage(messages.deleteRow)}
+                aria-label={this.props.intl.formatMessage(messages.deleteRow)}
+              >
+                <Icon name={deleteSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.onInsertColBefore}
+                title={this.props.intl.formatMessage(messages.insertColBefore)}
+                aria-label={this.props.intl.formatMessage(
+                  messages.insertColBefore,
+                )}
+              >
+                <Icon name={colSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.onInsertColAfter}
+                title={this.props.intl.formatMessage(messages.insertColAfter)}
+                aria-label={this.props.intl.formatMessage(
+                  messages.insertColAfter,
+                )}
+              >
+                <Icon name={colSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={this.onDeleteCol}
+                disabled={this.props.data.table.rows[0].cells.length === 1}
+                title={this.props.intl.formatMessage(messages.deleteCol)}
+                aria-label={this.props.intl.formatMessage(messages.deleteCol)}
+              >
+                <Icon name={deleteSVG} size="24px" />
+              </Button>
+            </Button.Group>
+          </div>
+        )}
         {this.props.data.table && (
-          <Table {...omit(this.props.data.table, ['rows'])}>
-            {map(this.props.data.table.rows, row => (
-              <Table.Body as={row.type === 'header' ? 'thead' : 'tbody'}>
-                <Table.Row>
-                  {map(row.cells, cell => (
-                    <Table.Cell as={cell.type === 'header' ? 'th' : 'td'}>
-                      {cell.value || '\u00A0'}
+          <Table
+            fixed={this.props.data.table.fixed}
+            compact={this.props.data.table.compact}
+            basic={this.props.data.table.basic ? 'very' : false}
+            celled={this.props.data.table.celled}
+            inverted={this.props.data.table.inverted}
+            striped={this.props.data.table.striped}
+          >
+            <Table.Body>
+              {map(this.props.data.table.rows, (row, rowIndex) => (
+                <Table.Row key={row.key}>
+                  {map(row.cells, (cell, cellIndex) => (
+                    <Table.Cell
+                      key={cell.key}
+                      as={cell.type === 'header' ? 'th' : 'td'}
+                      className={
+                        rowIndex === this.state.selected.row &&
+                        cellIndex === this.state.selected.cell &&
+                        this.props.selected
+                          ? 'selected'
+                          : ''
+                      }
+                    >
+                      <Cell
+                        value={cell.value}
+                        row={rowIndex}
+                        cell={cellIndex}
+                        onSelectCell={this.onSelectCell}
+                        selected={
+                          rowIndex === this.state.selected.row &&
+                          cellIndex === this.state.selected.cell
+                        }
+                        onChange={this.onChangeCell}
+                      />
                     </Table.Cell>
                   ))}
                 </Table.Row>
-              </Table.Body>
-            ))}
+              ))}
+            </Table.Body>
           </Table>
         )}
         {this.props.selected && (
           <Portal
             node={__CLIENT__ && document.getElementById('sidebar-properties')}
           >
-            <div>Hi!</div>
+            <Form method="post" onSubmit={event => event.preventDefault()}>
+              <Segment secondary attached>
+                <FormattedMessage id="Table" defaultMessage="Table" />
+              </Segment>
+              <Segment attached>
+                <Field
+                  id="fixed"
+                  title={this.props.intl.formatMessage(messages.fixed)}
+                  type="boolean"
+                  value={this.props.data.table.fixed}
+                  onChange={() => this.toggleFixed()}
+                />
+                <Field
+                  id="celled"
+                  title={this.props.intl.formatMessage(messages.celled)}
+                  type="boolean"
+                  value={this.props.data.table.celled}
+                  onChange={this.toggleCelled}
+                />
+                <Field
+                  id="striped"
+                  title={this.props.intl.formatMessage(messages.striped)}
+                  type="boolean"
+                  value={this.props.data.table.striped}
+                  onChange={this.toggleStriped}
+                />
+                <Field
+                  id="compact"
+                  title={this.props.intl.formatMessage(messages.compact)}
+                  type="boolean"
+                  value={this.props.data.table.compact}
+                  onChange={() => this.toggleCompact()}
+                />
+                <Field
+                  id="basic"
+                  title={this.props.intl.formatMessage(messages.basic)}
+                  type="boolean"
+                  value={this.props.data.table.basic}
+                  onChange={this.toggleBasic}
+                />
+                <Field
+                  id="inverted"
+                  title={this.props.intl.formatMessage(messages.inverted)}
+                  type="boolean"
+                  value={this.props.data.table.inverted}
+                  onChange={this.toggleInverted}
+                />
+              </Segment>
+              <Segment secondary attached>
+                <FormattedMessage id="Cell" defaultMessage="Cell" />
+              </Segment>
+              <Segment attached>
+                <Field
+                  id="celltype"
+                  title="Header cell"
+                  type="boolean"
+                  value={
+                    this.props.data.table.rows[this.state.selected.row].cells[
+                      this.state.selected.cell
+                    ].type === 'header'
+                  }
+                  onChange={this.toggleCellType}
+                />
+              </Segment>
+            </Form>
           </Portal>
         )}
       </div>
