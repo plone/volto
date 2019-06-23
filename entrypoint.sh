@@ -11,6 +11,8 @@ function apply_path {
 
     sed -i "s#VOLTO_API_PATH#${API_PATH}#g" $mainjs
     sed -i "s#VOLTO_API_PATH#${API_PATH}#g" $bundlejs
+    sed -i "s#VOLTO_INTERNAL_API_PATH#${INTERNAL_API_PATH}#g" $mainjs
+    sed -i "s#VOLTO_INTERNAL_API_PATH#${INTERNAL_API_PATH}#g" $bundlejs
 
     gzip -fk $mainjs
 }
