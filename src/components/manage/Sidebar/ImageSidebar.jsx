@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Segment, List, Grid } from 'semantic-ui-react';
+import { Segment, Grid } from 'semantic-ui-react';
 import { Icon, TextWidget } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
-
+import { Menu, Form, List } from 'semantic-ui-react';
+import AlignTile from '../../../helpers/AlignTile';
 import ObjectBrowser from './ObjectBrowser';
-import LayoutChooser from './LayoutChooser';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
@@ -57,13 +57,21 @@ const ImageSidebar = props => {
               value={alt}
               onChange={(name, value) => setAlt(value)}
             />
-            <LayoutChooser
-              id="layout"
-              title="Layout"
-              required={false}
-              value={layout}
-              onChange={(name, value) => setLayout(value)}
-            />
+            <Form.Field
+              inline
+              required={props.required}
+              className={props.description ? 'help' : ''}
+            >
+              <div className="wrapper">
+                <label htmlFor="field-align">align</label>
+              </div>
+              <AlignTile
+                align={props.data.align}
+                onChangeTile={props.onChangeTile}
+                data={props.data}
+                tile={props.tile}
+              />
+            </Form.Field>
           </Segment>
         </>
       )}
