@@ -11,6 +11,7 @@
 - Remove Mosaic component @tisto
 - Event type view @nileshgulia1 @pnicolli
 - Added translations to italian @nzambello
+- Add table tile @robgietema
 
 ### Changes
 
