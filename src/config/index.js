@@ -29,7 +29,6 @@ import {
   requiredTiles,
   sidebarComponents,
 } from './Tiles';
-import { defaultToolbarComponents } from './Toolbar';
 
 export const settings = {
   host: process.env.HOST || 'localhost',
@@ -69,8 +68,4 @@ export const tiles = {
   messagesTiles,
   requiredTiles,
   sidebarComponents,
-};
-
-export const toolbarComponents = {
-  ...defaultToolbarComponents,
 };

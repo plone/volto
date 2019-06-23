@@ -11,6 +11,13 @@ import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import cookie from 'react-cookie';
 import { find } from 'lodash';
 
+import More from './More';
+import PersonalTools from './PersonalTools';
+import Types from './Types';
+import PersonalInformation from '../Preferences/PersonalInformation';
+import PersonalPreferences from '../Preferences/PersonalPreferences';
+import StandardWrapper from './StandardWrapper';
+
 import { listActions } from '../../../actions';
 
 import { Icon } from '../../../components';
@@ -18,14 +25,28 @@ import pastanagaSmall from './pastanaga-small.svg';
 import pastanagalogo from './pastanaga.svg';
 import { BodyClass, getBaseUrl } from '../../../helpers';
 
-import { toolbarComponents } from '~/config';
-
 import penSVG from '../../../icons/pen.svg';
 import folderSVG from '../../../icons/folder.svg';
 import addSVG from '../../../icons/add-document.svg';
 import moreSVG from '../../../icons/more.svg';
 import userSVG from '../../../icons/user.svg';
 import clearSVG from '../../../icons/clear.svg';
+
+const toolbarComponents = {
+  personalTools: { component: PersonalTools, wrapper: null },
+  more: { component: More, wrapper: null },
+  types: { component: Types, wrapper: null },
+  profile: {
+    component: PersonalInformation,
+    wrapper: StandardWrapper,
+    hideToolbarBody: true,
+  },
+  preferences: {
+    component: PersonalPreferences,
+    wrapper: StandardWrapper,
+    hideToolbarBody: true,
+  },
+};
 
 /**
  * Toolbar container class.

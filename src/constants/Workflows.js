@@ -5,12 +5,6 @@
 
 import { last, split } from 'lodash';
 
-// { value: 'private', label: 'Private', color: '#ed4033' },
-// { value: 'public', label: 'Public', color: '#007bc1' },
-// { value: 'intranet', label: 'Intranet', color: '#51aa55' },
-// { value: 'draft', label: 'Draft', color: '#f6a808' },
-// { value: 'review', label: 'Review', color: '#f4e037' },
-
 export default function getWorkflowMapping(url, current) {
   const mapping = {
     published: { value: 'public', label: 'Public', color: '#007bc1', url },
