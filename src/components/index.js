@@ -1,5 +1,3 @@
-import Playground from './manage/Playground/Playground';
-
 /**
  * Point of contact for component modules.
  * @module components
@@ -103,7 +101,6 @@ export ViewMapTile from '@plone/volto/components/manage/Tiles/Maps/View';
 export ViewHTMLTile from '@plone/volto/components/manage/Tiles/HTML/View';
 
 export SimpleTypes from '@plone/volto/components/manage/SimpleTypes/Types';
-export Playground from '@plone/volto/components/manage/Playground/Playground';
 export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
 export More from '@plone/volto/components/manage/Toolbar/More';
 export Types from '@plone/volto/components/manage/Toolbar/Types';
