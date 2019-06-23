@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /**
  * Edit slider tile.
  * @module components/manage/Tiles/Slider/Edit
@@ -8,14 +9,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { readAsDataURL } from 'promise-file-reader';
 import {
+  Accordion,
   Button,
-  Card,
-  Dimmer,
-  Image,
+  Container,
   Input,
   Grid,
-  Loader,
-  Message,
   Ref,
 } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
@@ -25,7 +23,7 @@ import {
   intlShape,
   FormattedMessage,
 } from 'react-intl';
-import { Portal } from 'react-portal';
+import SidebarPortal from '../../Sidebar/SidebarPortal';
 import Slider from 'react-slick';
 import redraft from 'redraft';
 
@@ -33,20 +31,18 @@ import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { v4 as uuid } from 'uuid';
 import cx from 'classnames';
-import { convertToRaw } from 'draft-js';
 import { settings } from '~/config';
 
 import { Icon, EditTextTile, CheckboxWidget } from '@plone/volto/components';
 import TileModal from '@plone/volto/components/manage/Tiles/TileModal/TileModal';
 import { createContent } from '@plone/volto/actions';
-import { flattenToAppURL, getBaseUrl, withSidebar } from '@plone/volto/helpers';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 
 import configSVG from '@plone/volto/icons/configuration.svg';
 import addSVG from '@plone/volto/icons/add.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
-import imageSVG from '@plone/volto/icons/image.svg';
 import imageFitSVG from '@plone/volto/icons/image-fit.svg';
 import imageFullSVG from '@plone/volto/icons/image-full.svg';
 
@@ -107,8 +103,7 @@ export default class Edit extends Component {
     handleKeyDown: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
-    openSidebar: PropTypes.func.isRequired,
-    closeSidebar: PropTypes.func.isRequired,
+    activeIndex: PropTypes.number.isRequired,
   };
 
   /**
@@ -127,6 +122,7 @@ export default class Edit extends Component {
     this.state = {
       uploading: false,
       modalOpened: false,
+      activeIndex: 0,
     };
 
     if (!this.props.data.cards) {
@@ -141,16 +137,25 @@ export default class Edit extends Component {
       });
     }
   }
+
+  handleClick = (e, titleProps) => {
+    const { index } = titleProps;
+    const { activeIndex } = this.state;
+    const newIndex = activeIndex === index ? -1 : index;
+
+    this.setState({ activeIndex: newIndex });
+  };
+
   /**
    * Component will receive props
    * @method componentDidMount
    * @returns {undefined}
    */
   componentDidMount() {
-    if (this.props.selected) {
+    const { data, selected, tile } = this.props;
+    if (selected) {
       this.node.focus();
     }
-    document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
   /**
@@ -188,15 +193,6 @@ export default class Edit extends Component {
     if (nextProps.selected !== this.props.selected) {
       this.node.focus();
     }
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillUnmount
-   * @returns {undefined}
-   */
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
   /**
@@ -253,7 +249,7 @@ export default class Edit extends Component {
     });
   };
 
-  /**
+  /**onChangeUrl
    * Change url handler
    * @method onCloseModal
    * @param {Object} target Target object
@@ -418,6 +414,9 @@ export default class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { selected } = this.props;
+    const { activeIndex } = this.state;
+
     return (
       <div
         role="presentation"
@@ -442,7 +441,10 @@ export default class Edit extends Component {
           this.node = node;
         }}
       >
-        {this.props.selected && this.state.currentSelectedCard === null && (
+        <SidebarPortal selected={selected}>
+          <header className="header pulled">
+            <h2>Slider</h2>
+          </header>
           <div className="toolbar">
             <Button.Group>
               <Button
@@ -472,203 +474,85 @@ export default class Edit extends Component {
                 icon
                 basic
                 onClick={this.addNewCard}
-                disabled={this.props.data.cards.length >= 4}
+                disabled={
+                  this.props.data.cards && this.props.data.cards.length >= 4
+                }
               >
                 <Icon name={addSVG} size="24px" />
               </Button>
             </Button.Group>
             <Button.Group>
-              <Button icon basic onClick={this.props.openSidebar}>
+              <Button
+                icon
+                basic
+                onClick={() => this.setState({ modalOpened: true })}
+              >
                 <Icon name={configSVG} size="24px" />
               </Button>
             </Button.Group>
           </div>
-        )}
-        <Portal
-          node={__CLIENT__ && document.getElementById('sidebar-properties')}
-        >
-          <DragDropContext onDragEnd={this.onDragEnd}>
-            <Droppable droppableId={uuid()} direction="horizontal">
-              {provided => (
-                <Ref innerRef={provided.innerRef}>
-                  <Card.Group
-                    centered
-                    {...provided.droppableProps}
-                    itemsPerRow={
-                      this.props.data.expandCards
-                        ? this.props.data.cards.length
-                        : 4
-                    }
+
+          <Accordion
+            fluid
+            styled
+            className={cx({
+              'no-borders': this.props.data.noBorders,
+            })}
+          >
+            {this.props.data.cards &&
+              this.props.data.cards.map((item, index) => (
+                <>
+                  <Accordion.Title
+                    active={activeIndex === index}
+                    index={index}
+                    onClick={this.handleClick}
+                    key={index}
                   >
-                    {this.props.data.cards &&
-                      this.props.data.cards.map((item, index) => (
-                        <Draggable
-                          draggableId={item.id}
-                          index={index}
-                          key={item.id}
-                        >
-                          {provided => (
-                            <Ref innerRef={provided.innerRef}>
-                              <Card
-                                className={cx({
-                                  'no-borders': this.props.data.noBorders,
-                                })}
-                                key={item.id}
-                                onClick={e => this.selectCard(e, index)}
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                              >
-                                {this.state.currentSelectedCard === index &&
-                                  !item.url && (
-                                    <div className="toolbar">
-                                      <Icon name={imageSVG} size="24px" />
-                                      <form
-                                        onKeyDown={e =>
-                                          this.onKeyDownVariantMenuForm(
-                                            e,
-                                            index,
-                                          )
-                                        }
-                                      >
-                                        <Input
-                                          onChange={e =>
-                                            this.onChangeUrl(e, index)
-                                          }
-                                          placeholder={this.props.intl.formatMessage(
-                                            messages.ImageTileInputPlaceholder,
-                                          )}
-                                        />
-                                      </form>
-                                      <Button.Group>
-                                        <label className="ui button basic icon">
-                                          <Icon name={folderSVG} size="24px" />
-                                          <input
-                                            type="file"
-                                            onChange={e =>
-                                              this.onUploadImage(e, index)
-                                            }
-                                            style={{ display: 'none' }}
-                                          />
-                                        </label>
-                                      </Button.Group>
-                                      <div className="separator" />
-                                      <Button.Group>
-                                        <Button
-                                          icon
-                                          basic
-                                          onClick={e =>
-                                            this.removeCard(e, index)
-                                          }
-                                        >
-                                          <Icon
-                                            name={trashSVG}
-                                            size="24px"
-                                            color="#e40166"
-                                          />
-                                        </Button>
-                                      </Button.Group>
-                                    </div>
-                                  )}
-                                {this.state.currentSelectedCard === index &&
-                                  item.url && (
-                                    <div className="toolbar">
-                                      <Button.Group>
-                                        <Button
-                                          icon
-                                          basic
-                                          onClick={e =>
-                                            this.clearCard(e, index)
-                                          }
-                                        >
-                                          <Icon name={clearSVG} size="24px" />
-                                        </Button>
-                                      </Button.Group>
-                                      <div className="separator" />
-                                      <Button.Group>
-                                        <Button
-                                          icon
-                                          basic
-                                          onClick={e =>
-                                            this.removeCard(e, index)
-                                          }
-                                        >
-                                          <Icon
-                                            name={trashSVG}
-                                            size="24px"
-                                            color="#e40166"
-                                          />
-                                        </Button>
-                                      </Button.Group>
-                                    </div>
-                                  )}
-                                {item.url ? (
-                                  <Image
-                                    src={
-                                      item.url.includes(settings.apiPath)
-                                        ? `${flattenToAppURL(
-                                            item.url,
-                                          )}/@@images/image`
-                                        : item.url
-                                    }
-                                    alt=""
-                                  />
-                                ) : (
-                                  <div className="image-placeholder">
-                                    <Message>
-                                      {this.state.uploading &&
-                                        this.state.currentSelectedCard ===
-                                          index && (
-                                          <Dimmer active>
-                                            <Loader indeterminate>
-                                              Uploading image
-                                            </Loader>
-                                          </Dimmer>
-                                        )}
-                                      <center>
-                                        <Icon
-                                          name={imageSVG}
-                                          size="100px"
-                                          color="#b8c6c8"
-                                        />
-                                      </center>
-                                    </Message>
-                                  </div>
-                                )}
-                                {!this.props.data.hideText && (
-                                  <Card.Content
-                                    // This prevents propagation of ENTER
-                                    onKeyDown={e => e.stopPropagation()}
-                                  >
-                                    <EditTextTile
-                                      {...this.props}
-                                      data={this.props.data.cards[index]}
-                                      tile={item.id}
-                                      detached
-                                      index={0}
-                                      selected={false}
-                                      onSelectTile={() => {}}
-                                      onFocusPreviousTile={() => {}}
-                                      onFocusNextTile={() => {}}
-                                      onAddTile={() => {}}
-                                      onDeleteTile={() => {}}
-                                      onMutateTile={() => {}}
-                                      onChangeTile={(tile, data) =>
-                                        this.onChangeRichText(data.text, index)
-                                      }
-                                    />
-                                  </Card.Content>
-                                )}
-                              </Card>
-                            </Ref>
-                          )}
-                        </Draggable>
-                      ))}
-                    {provided.placeholder}
-                  </Card.Group>
-                </Ref>
-              )}
-            </Droppable>
-          </DragDropContext>
+                    <Icon name={trashSVG} />
+                    Accordion {index}
+                  </Accordion.Title>
+                  <Accordion.Content active={activeIndex === index}>
+                    <Button.Group>
+                      <label className="ui button basic icon">
+                        <Icon name={folderSVG} size="24px" />
+                        <input
+                          type="file"
+                          onChange={e => this.onUploadImage(e, index)}
+                        />
+                      </label>
+                    </Button.Group>
+                    <div className="separator" />
+                    <Button.Group>
+                      <Button
+                        icon
+                        basic
+                        onClick={e => this.removeCard(e, index)}
+                        disabled={this.props.data.cards.length == 1}
+                      >
+                        <Icon name={trashSVG} size="24px" color="#e40166" />
+                      </Button>
+                    </Button.Group>
+                    <EditTextTile
+                      {...this.props}
+                      data={this.props.data.cards[index]}
+                      tile={item.id}
+                      detached
+                      index={0}
+                      selected={false}
+                      onSelectTile={() => {}}
+                      onFocusPreviousTile={() => {}}
+                      onFocusNextTile={() => {}}
+                      onAddTile={() => {}}
+                      onDeleteTile={() => {}}
+                      onMutateTile={() => {}}
+                      onChangeTile={(tile, data) =>
+                        this.onChangeRichText(data.text, index)
+                      }
+                    />
+                  </Accordion.Content>
+                </>
+              ))}
+          </Accordion>
           <TileModal
             open={this.state.modalOpened}
             data={this.props.data}
@@ -702,7 +586,7 @@ export default class Edit extends Component {
               </Grid.Row>
             </Grid>
           </TileModal>
-        </Portal>
+        </SidebarPortal>
         <Slider
           customPaging={dot => <div />}
           dots

@@ -22,8 +22,8 @@ import EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
 import EditSliderTile from '@plone/volto/components/manage/Tiles/Slider/Edit';
 import EditTableTile from '@plone/volto/components/manage/Tiles/Table/Edit';
 
-//import ImageSidebar from '@plone/volto/components/manage/Sidebar/ImageSidebar';
-//import SliderSidebar from '@plone/volto/components/manage/Sidebar/SliderSidebar';
+// import ImageSidebar from '@plone/volto/components/manage/Sidebar/ImageSidebar';
+// import SliderSidebar from '@plone/volto/components/manage/Sidebar/SliderSidebar';
 
 import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
