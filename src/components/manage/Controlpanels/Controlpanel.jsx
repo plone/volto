@@ -10,15 +10,17 @@ import { Link, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Portal } from 'react-portal';
-import { Icon, Container } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
-import { Form, Toolbar } from '../../../components';
+import { Form, Icon, Toolbar } from '../../../components';
 import {
   addMessage,
   updateControlpanel,
   getControlpanel,
 } from '../../../actions';
+
+import backSVG from '../../../icons/back.svg';
 
 const messages = defineMessages({
   changesSaved: {
@@ -163,12 +165,13 @@ class Controlpanel extends Component {
           <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
             <Toolbar
               pathname={this.props.pathname}
+              hideDefaultViewButtons
               inner={
                 <Link to="/controlpanel" className="item">
                   <Icon
-                    name="arrow left"
-                    size="big"
-                    color="blue"
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
                     title={this.props.intl.formatMessage(messages.back)}
                   />
                 </Link>

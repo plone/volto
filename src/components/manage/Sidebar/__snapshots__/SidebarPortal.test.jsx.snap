@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sidebar portal is not rendered when the tile is not selected 1`] = `<Fragment />`;
+
+exports[`sidebar portal is rendered when the tile is selected 1`] = `
+<Fragment>
+  <Portal
+    node={null}
+  >
+    <div
+      role="form"
+    >
+      <div
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <p>
+          Tested!
+        </p>
+      </div>
+    </div>
+  </Portal>
+</Fragment>
+`;

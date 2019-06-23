@@ -107,6 +107,7 @@ class SearchWidget extends Component {
       <Form action="/search" onSubmit={this.onSubmit}>
         <Form.Field className="searchbox">
           <Input
+            aria-label={this.props.intl.formatMessage(messages.search)}
             onChange={this.onChangeText}
             name="SearchableText"
             value={this.state.text}
@@ -114,7 +115,7 @@ class SearchWidget extends Component {
             placeholder={this.props.intl.formatMessage(messages.searchSite)}
             title={this.props.intl.formatMessage(messages.search)}
           />
-          <button>
+          <button aria-label={this.props.intl.formatMessage(messages.search)}>
             <Icon name={zoomSVG} size="18px" />
           </button>
         </Form.Field>
