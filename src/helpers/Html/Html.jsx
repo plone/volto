@@ -53,7 +53,7 @@ export const Html = ({ assets, markup, store }) => {
         )}
       </head>
       <body className={bodyClass}>
-        <div id="toolbar" />
+        <div role="navigation" aria-label="Toolbar" id="toolbar" />
         <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
         <div id="sidebar" />
         <script

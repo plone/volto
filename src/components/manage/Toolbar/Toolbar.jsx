@@ -275,14 +275,18 @@ class Toolbar extends Component {
                 {!this.props.hideDefaultViewButtons && (
                   <>
                     {editAction && (
-                      <Link className="edit" to={`${path}/edit`}>
+                      <Link
+                        aria-label="Edit"
+                        className="edit"
+                        to={`${path}/edit`}
+                      >
                         <Icon name={penSVG} size="30px" className="circled" />
                       </Link>
                     )}
                     {this.props.content &&
                       this.props.content.is_folderish &&
                       folderContentsAction && (
-                        <Link to="/contents">
+                        <Link aria-label="Contents" to="/contents">
                           <Icon name={folderSVG} size="30px" />
                         </Link>
                       )}
