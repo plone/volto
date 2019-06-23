@@ -4,37 +4,37 @@ import { Icon, TextWidget } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { Form } from 'semantic-ui-react';
 import AlignTile from '../../../helpers/AlignTile';
+import PropTypes from 'prop-types';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 
-const ImageSidebar = props => {
-  const [origin, setOrigin] = useState(props.data.url || '');
-  const [alt, setAlt] = useState(props.data.alt || '');
+const ImageSidebar = ({ data, tile, onChangeTile, required = false }) => {
+  const [origin, setOrigin] = useState(data.url || '');
+  const [alt, setAlt] = useState(data.alt || '');
   const [browserIsOpen, setBrowserIsOpen] = useState(false);
-  const [layout, setLayout] = useState(props.data.layout || '');
 
   function closeBrowser() {
     setBrowserIsOpen(false);
-    setOrigin(props.data.url);
+    setOrigin(data.url);
   }
 
   return (
     <Segment.Group raised>
       <header className="header pulled">
         <h2>Image</h2>
-        <button onClick={props.closeSidebar}>
+        <button onClick={data.closeSidebar}>
           <Icon name={clearSVG} size="24px" color="#786Ec5D" />
         </button>
       </header>
 
-      {props.data.url && (
+      {data.url && (
         <>
           <Segment className="sidebar-metadata-container" secondary>
             {/* {props.data.url && <div>{props.data.url}</div>} */}
             The name of the Image and metadata
             <img
-              src={`${flattenToAppURL(props.data.url)}/@@images/image/mini`}
+              src={`${flattenToAppURL(data.url)}/@@images/image/mini`}
               alt={alt}
             />
           </Segment>
@@ -56,24 +56,20 @@ const ImageSidebar = props => {
               value={alt}
               onChange={(name, value) => setAlt(value)}
             />
-            <Form.Field
-              inline
-              required={props.required}
-              className={props.description ? 'help' : ''}
-            >
+            <Form.Field inline required={required}>
               <Grid>
                 <Grid.Row>
                   <Grid.Column width="4">
                     <div className="wrapper">
-                      <label htmlFor={`field-align`}>align</label>
+                      <label htmlFor="field-align">align</label>
                     </div>
                   </Grid.Column>
                   <Grid.Column width="8">
                     <AlignTile
-                      align={props.data.align}
-                      onChangeTile={props.onChangeTile}
-                      data={props.data}
-                      tile={props.tile}
+                      align={data.align}
+                      onChangeTile={onChangeTile}
+                      data={data}
+                      tile={tile}
                     />
                   </Grid.Column>
                 </Grid.Row>
@@ -86,6 +82,10 @@ const ImageSidebar = props => {
   );
 };
 
-ImageSidebar.defaultProps = { required: false };
+ImageSidebar.propTypes = {
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+  tile: PropTypes.string.isRequired,
+  onChangeTile: PropTypes.func.isRequired,
+};
 
 export default ImageSidebar;
