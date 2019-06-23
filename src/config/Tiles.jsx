@@ -21,6 +21,7 @@ import EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
 import EditSliderTile from '@plone/volto/components/manage/Tiles/Slider/Edit';
 
 import ImageSidebar from '@plone/volto/components/manage/Sidebar/ImageSidebar';
+import SliderSidebar from '@plone/volto/components/manage/Sidebar/SliderSidebar';
 
 import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
@@ -95,6 +96,7 @@ const defaultTilesEditMap = {
 
 const sidebarComponents = {
   image: ImageSidebar,
+  slider: SliderSidebar,
 };
 
 export {

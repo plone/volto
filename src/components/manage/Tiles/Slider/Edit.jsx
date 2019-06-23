@@ -34,7 +34,7 @@ import { settings } from '~/config';
 
 import { Icon, EditTextTile, CheckboxWidget } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import { flattenToAppURL, getBaseUrl, withSidebar } from '@plone/volto/helpers';
 
 import configSVG from '@plone/volto/icons/configuration.svg';
 import addSVG from '@plone/volto/icons/add.svg';
@@ -46,6 +46,9 @@ import imageFitSVG from '@plone/volto/icons/image-fit.svg';
 import imageFullSVG from '@plone/volto/icons/image-full.svg';
 
 import TileModal from '@plone/volto/components/manage/Tiles/TileModal/TileModal';
+
+import Slider from 'react-slick';
+import redraft from 'redraft';
 
 const messages = defineMessages({
   ImageTileInputPlaceholder: {
@@ -79,7 +82,7 @@ const reorder = (list, startIndex, endIndex) => {
  * @class Edit
  * @extends Component
  */
-export default class Edit extends Component {
+class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -104,6 +107,8 @@ export default class Edit extends Component {
     handleKeyDown: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
+    openSidebar: PropTypes.func.isRequired,
+    closeSidebar: PropTypes.func.isRequired,
   };
 
   /**
@@ -473,11 +478,7 @@ export default class Edit extends Component {
               </Button>
             </Button.Group>
             <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() => this.setState({ modalOpened: true })}
-              >
+              <Button icon basic onClick={this.props.openSidebar}>
                 <Icon name={configSVG} size="24px" />
               </Button>
             </Button.Group>
@@ -689,7 +690,45 @@ export default class Edit extends Component {
             </Grid.Row>
           </Grid>
         </TileModal>
+        <Slider
+          customPaging={dot => <div />}
+          dots
+          dotsClass="slick-dots slick-thumb"
+          infinite
+          speed={500}
+          slidesToShow={1}
+          slidesToScroll={1}
+          arrows={false}
+        >
+          {this.props.data.cards &&
+            this.props.data.cards.map((card, index) => (
+              <div key={card.id}>
+                <div
+                  className={`slide slide-${index + 1}`}
+                  style={{
+                    background: `linear-gradient(to bottom, rgba(8, 7, 7, 0.57) 0%, rgba(238, 238, 238, 0) 35%, transparent 100%), url(${
+                      card.url.startsWith(settings.apiPath)
+                        ? `${flattenToAppURL(card.url)}/@@images/image`
+                        : card.url
+                    }) no-repeat`,
+                    backgroundSize: 'cover',
+                  }}
+                >
+                  <div className="slide-body-text">
+                    {card.text &&
+                      redraft(
+                        card.text,
+                        settings.ToHTMLRenderers,
+                        settings.ToHTMLOptions,
+                      )}
+                  </div>
+                </div>
+              </div>
+            ))}
+        </Slider>
       </div>
     );
   }
 }
+
+export default withSidebar(Edit);
