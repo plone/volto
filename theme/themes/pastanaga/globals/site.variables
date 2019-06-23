@@ -129,7 +129,7 @@
 @blue             : #007EB1; // Palette: Plone (tealBlue/cerulean)
 @pink             : #E40166; // Palette: darkHotPink
 @brown            : #826A6A; // Palette: reddishGrey
-@grey             : #69788D; // Palette: blueishGrey
+@grey             : #68778D; // Palette: blueishGrey
 @black            : #252525; // Palette: darkishGrey
 
 /*---  Light Colors  ---*/
@@ -214,7 +214,7 @@
 --------------------*/
 
 @selectedTextColor           : @lightGrey;
-
+@inverteditemlinkcolor       : @white;
 
 /*-------------------
      Brand Colors

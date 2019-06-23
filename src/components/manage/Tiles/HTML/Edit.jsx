@@ -126,7 +126,6 @@ export default class Edit extends Component {
         className={cx('tile html', {
           selected: this.props.selected,
         })}
-        tabIndex={0}
         onKeyDown={e =>
           this.props.handleKeyDown(
             e,
@@ -146,6 +145,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Source"
                 active={!this.state.isPreview}
                 onClick={this.onCodeEditor}
               >
@@ -156,6 +156,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Preview"
                 active={this.state.isPreview}
                 onClick={this.onPreview}
               >

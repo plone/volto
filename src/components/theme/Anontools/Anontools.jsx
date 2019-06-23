@@ -55,22 +55,26 @@ export default class Anontools extends Component {
     return (
       !this.props.token && (
         <List floated="right" horizontal>
-          <Link
-            className="item"
-            to={`/login${
-              this.props.content
-                ? `?return_url=${this.props.content['@id'].replace(
-                    settings.apiPath,
-                    '',
-                  )}`
-                : ''
-            }`}
-          >
-            <FormattedMessage id="Log in" defaultMessage="Log in" />
-          </Link>
-          <Link className="item" to="/register">
-            <FormattedMessage id="Register" defaultMessage="Register" />
-          </Link>
+          {/* needs divs around links for a11y, and semanticui insists on using List as div role="list" instead of simply using <ul></ul> */}
+          <div role="listitem" className="item">
+            <Link
+              to={`/login${
+                this.props.content
+                  ? `?return_url=${this.props.content['@id'].replace(
+                      settings.apiPath,
+                      '',
+                    )}`
+                  : ''
+              }`}
+            >
+              <FormattedMessage id="Log in" defaultMessage="Log in" />
+            </Link>
+          </div>
+          <div role="listitem" className="item">
+            <Link to="/register">
+              <FormattedMessage id="Register" defaultMessage="Register" />
+            </Link>
+          </div>
         </List>
       )
     );

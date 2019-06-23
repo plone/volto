@@ -220,14 +220,14 @@ export default class AddLinkForm extends Component {
         <ul style={{ margin: 0, paddingLeft: '35px' }}>
           {map(this.props.search, item => (
             <li style={{ padding: '5px' }}>
-              <a
+              <button
                 style={{ cursor: 'pointer' }}
                 onClick={e => this.onSelectItem(e, item['@id'])}
                 title={item['@id']}
                 role="link"
               >
                 {item.title}
-              </a>
+              </button>
             </li>
           ))}
         </ul>

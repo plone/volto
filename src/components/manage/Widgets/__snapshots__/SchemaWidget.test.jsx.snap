@@ -7,6 +7,7 @@ exports[`renders a schema widget component 1`] = `
   >
     <div
       className="ui pointing secondary attached tabular menu"
+      role="tablist"
     >
       <div
         className="item active"
@@ -21,24 +22,25 @@ exports[`renders a schema widget component 1`] = `
           aria-hidden="true"
           className="grey bars icon drag handle"
         />
-        <a
+        <button
           onClick={[Function]}
         >
           <i
             aria-hidden="true"
             className="blue write square large icon"
           />
-        </a>
-        <a
+        </button>
+        <button
           onClick={[Function]}
         >
           <i
             aria-hidden="true"
             className="red close large icon"
           />
-        </a>
+        </button>
       </div>
-      <a
+      <button
+        aria-label="Add"
         className="item"
         onClick={[Function]}
       >
@@ -46,7 +48,7 @@ exports[`renders a schema widget component 1`] = `
           aria-hidden="true"
           className="plus large icon"
         />
-      </a>
+      </button>
     </div>
     <div
       className="inline field"
@@ -63,22 +65,26 @@ exports[`renders a schema widget component 1`] = `
             <div
               className="wrapper"
             >
-              <label>
+              <label
+                htmlFor="addfield"
+              >
                 Add new field
               </label>
             </div>
             <div
               className="toolbar"
             >
-              <a
+              <button
+                aria-label="Add"
                 className="item"
+                id="addfield"
                 onClick={[Function]}
               >
                 <i
                   aria-hidden="true"
                   className="blue plus large icon"
                 />
-              </a>
+              </button>
             </div>
           </div>
         </div>

@@ -81,8 +81,9 @@ export default class Sidebar extends Component {
         <BodyClass
           className={expanded ? 'has-sidebar' : 'has-sidebar-collapsed'}
         />
-        <aside className={cx('sidebar-container', { collapsed: !expanded })}>
+        <div className={cx('sidebar-container', { collapsed: !expanded })}>
           <Button
+            aria-label={expanded ? 'Shrink sidebar' : 'Expand sidebar'}
             className={
               this.props.content && this.props.content.review_state
                 ? `${this.props.content.review_state} trigger`
@@ -130,7 +131,7 @@ export default class Sidebar extends Component {
               },
             ]}
           />
-        </aside>
+        </div>
         <div className={this.state.expanded ? 'pusher expanded' : 'pusher'} />
       </Fragment>
     );

@@ -1,18 +1,94 @@
-/**
- * Display component.
- * @module components/manage/Display/Display
- */
-
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Dropdown, Icon } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
+import Select, { components } from 'react-select';
 
 import { getSchema, updateContent, getContent } from '../../../actions';
 import layouts from '../../../constants/Layouts';
 import { getLayoutFieldname } from '../../../helpers';
+import { Icon } from '../../../components';
+
+import downSVG from '../../../icons/down-key.svg';
+import upSVG from '../../../icons/up-key.svg';
+import checkSVG from '../../../icons/check.svg';
+
+const Option = props => {
+  return (
+    <components.Option {...props}>
+      <div>{props.label}</div>
+      {props.isFocused && !props.isSelected && (
+        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+      )}
+      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
+    </components.Option>
+  );
+};
+
+const DropdownIndicator = props => {
+  return (
+    <components.DropdownIndicator {...props}>
+      {props.selectProps.menuIsOpen ? (
+        <Icon name={upSVG} size="24px" color="#007bc1" />
+      ) : (
+        <Icon name={downSVG} size="24px" color="#007bc1" />
+      )}
+    </components.DropdownIndicator>
+  );
+};
+
+const selectTheme = theme => ({
+  ...theme,
+  borderRadius: 0,
+  colors: {
+    ...theme.colors,
+    primary25: 'hotpink',
+    primary: '#b8c6c8',
+  },
+});
+
+const customSelectStyles = {
+  control: (styles, state) => ({
+    ...styles,
+    border: 'none',
+    borderBottom: '2px solid #b8c6c8',
+    boxShadow: 'none',
+    borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
+  }),
+  menu: (styles, state) => ({
+    ...styles,
+    top: null,
+    marginTop: 0,
+    boxShadow: 'none',
+    borderBottom: '2px solid #b8c6c8',
+  }),
+  indicatorSeparator: styles => ({
+    ...styles,
+    width: null,
+  }),
+  valueContainer: styles => ({
+    ...styles,
+    // paddingLeft: 0,
+  }),
+  option: (styles, state) => ({
+    ...styles,
+    backgroundColor: null,
+    height: '50px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '14px 12px',
+    color: state.isSelected
+      ? '#007bc1'
+      : state.isFocused
+      ? '#4a4a4a'
+      : 'inherit',
+    ':active': {
+      backgroundColor: null,
+    },
+  }),
+};
 
 @connect(
   state => ({
@@ -34,7 +110,7 @@ import { getLayoutFieldname } from '../../../helpers';
  * @class Display
  * @extends Component
  */
-export default class Display extends Component {
+class DisplaySelect extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -48,7 +124,6 @@ export default class Display extends Component {
     pathname: PropTypes.string.isRequired,
     layouts: PropTypes.arrayOf(PropTypes.string),
     layout: PropTypes.string,
-    layout_fieldname: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
   };
 
@@ -62,16 +137,12 @@ export default class Display extends Component {
     layout: '',
   };
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs Workflow
-   */
-  constructor(props) {
-    super(props);
-    this.setLayout = this.setLayout.bind(this);
-  }
+  state = {
+    selectedOption: {
+      value: this.props.layout,
+      label: layouts[this.props.layout],
+    },
+  };
 
   /**
    * Component will mount
@@ -103,42 +174,50 @@ export default class Display extends Component {
    * @param {Object} event Event object
    * @returns {undefined}
    */
-  setLayout(event, { value }) {
+  setLayout = selectedOption => {
     this.props.updateContent(this.props.pathname, {
-      '@static_behaviors': ['guillotina_cms.interfaces.base.ICMSBehavior'],
-      [this.props.layout_fieldname]: value,
+      layout: selectedOption.value,
     });
-  }
+    this.setState({ selectedOption });
+  };
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
+  selectValue = option => (
+    <Fragment>
+      <span className="Select-value-label">{option.label}</span>
+    </Fragment>
+  );
+
+  optionRenderer = option => (
+    <Fragment>
+      <span style={{ marginRight: 'auto' }}>{option.label}</span>
+      <Icon name={checkSVG} size="24px" />
+    </Fragment>
+  );
+
   render() {
+    const { selectedOption } = this.state;
+
     return (
-      <Dropdown
-        item
-        id="toolbar-display"
-        trigger={
-          <span>
-            <Icon name="block layout" size="big" />{' '}
-            <FormattedMessage id="Display" defaultMessage="Display" />
-          </span>
-        }
-      >
-        <Dropdown.Menu>
-          {this.props.layouts.map(item => (
-            <Dropdown.Item
-              text={layouts[item] || item}
-              value={item}
-              active={this.props.layout === item}
-              key={item}
-              onClick={this.setLayout}
-            />
-          ))}
-        </Dropdown.Menu>
-      </Dropdown>
+      <Fragment>
+        <label htmlFor="display-select">View</label>
+        <Select
+          name="display-select"
+          className="react-select-container"
+          classNamePrefix="react-select"
+          options={this.props.layouts.map(item => ({
+            value: item,
+            label: layouts[item] || item,
+          }))}
+          styles={customSelectStyles}
+          theme={selectTheme}
+          components={{ DropdownIndicator, Option }}
+          onChange={this.setLayout}
+          defaultValue={selectedOption}
+          isSearchable={false}
+        />
+      </Fragment>
     );
   }
 }
+
+export default DisplaySelect;

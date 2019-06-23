@@ -188,7 +188,6 @@ export class LoginComponent extends Component {
                           placeholder={this.props.intl.formatMessage(
                             messages.loginName,
                           )}
-                          autoFocus
                         />
                       </Grid.Column>
                     </Grid.Row>
@@ -200,7 +199,7 @@ export class LoginComponent extends Component {
                             defaultMessage="If you you do not have an account here, head over to the {registrationform}."
                             values={{
                               registrationform: (
-                                <Link to="/register" tabIndex={1}>
+                                <Link to="/register">
                                   <FormattedMessage
                                     id="registration form"
                                     defaultMessage="registration form"
@@ -267,6 +266,7 @@ export class LoginComponent extends Component {
                   basic
                   circular
                   primary
+                  aria-label={this.props.intl.formatMessage(messages.login)}
                   id="login-form-submit"
                   icon="arrow right"
                   floated="right"
@@ -285,6 +285,7 @@ export class LoginComponent extends Component {
                   icon="remove"
                   floated="right"
                   size="big"
+                  aria-label={this.props.intl.formatMessage(messages.cancel)}
                   title={this.props.intl.formatMessage(messages.cancel)}
                 />
               </Segment>

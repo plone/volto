@@ -14,16 +14,19 @@ const SidebarPortal = ({ children, selected }) => (
       <Portal
         node={__CLIENT__ && document.getElementById('sidebar-properties')}
       >
-        <aside
-          onClick={e => {
-            e.stopPropagation();
-          }}
-          onKeyDown={e => {
-            e.stopPropagation();
-          }}
-        >
-          {children}
-        </aside>
+        <div role="form">
+          <div
+            role="presentation"
+            onClick={e => {
+              e.stopPropagation();
+            }}
+            onKeyDown={e => {
+              e.stopPropagation();
+            }}
+          >
+            {children}
+          </div>
+        </div>
       </Portal>
     )}
   </>

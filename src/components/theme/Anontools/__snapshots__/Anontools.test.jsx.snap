@@ -5,24 +5,32 @@ exports[`Anontools renders an anontools component when no token is specified 1`]
   className="ui horizontal right floated list"
   role="list"
 >
-  <a
+  <div
     className="item"
-    href="/login?return_url=myid"
-    onClick={[Function]}
+    role="listitem"
   >
-    <span>
-      Log in
-    </span>
-  </a>
-  <a
+    <a
+      href="/login?return_url=myid"
+      onClick={[Function]}
+    >
+      <span>
+        Log in
+      </span>
+    </a>
+  </div>
+  <div
     className="item"
-    href="/register"
-    onClick={[Function]}
+    role="listitem"
   >
-    <span>
-      Register
-    </span>
-  </a>
+    <a
+      href="/register"
+      onClick={[Function]}
+    >
+      <span>
+        Register
+      </span>
+    </a>
+  </div>
 </div>
 `;
 

@@ -5,6 +5,10 @@ import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { ContactForm } from './ContactForm';
 
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
+
 const mockStore = configureStore();
 
 describe('Contact form', () => {
