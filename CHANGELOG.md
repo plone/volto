@@ -24,6 +24,7 @@
 - Fixed tiles outline in Pastanaga editor @pnicolli
 - Fix typos @balavec
 - Fix warnings for boolean fields @miziodel
+- Fix dropdown styling @robgietema
 
 ### Internal
 
@@ -34,8 +35,7 @@
 
 ### Added
 
-- Upgrade to react-redux 7.1. It includes the new official hooks for Redux
-  @sneridagh
+- Upgrade to react-redux 7.1. It includes the new official hooks for Redux. @sneridagh
 - Make Login Route accessible from anywhere in path url @nileshgulia1
 
 ### Changes
