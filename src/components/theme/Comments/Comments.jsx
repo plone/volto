@@ -232,6 +232,7 @@ export default class Comments extends Component {
               {item.text.data}
               {item.is_deletable && (
                 <Button
+                  aria-label="Delete"
                   onClick={this.onDelete}
                   value={item['@id'].replace(settings.apiPath, '')}
                   color="red"
@@ -242,6 +243,7 @@ export default class Comments extends Component {
               )}
               {item.is_editable && (
                 <Button
+                  aria-label="Edit"
                   onClick={this.onEdit}
                   floated="right"
                   value={{

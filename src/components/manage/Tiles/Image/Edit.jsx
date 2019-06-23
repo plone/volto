@@ -7,22 +7,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { readAsDataURL } from 'promise-file-reader';
-import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
+import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import cx from 'classnames';
 import { settings } from '~/config';
 
-import AlignTile from '../../../../helpers/AlignTile';
 import { Icon } from '../../../../components';
 import { createContent } from '../../../../actions';
-import { flattenToAppURL, getBaseUrl, withSidebar } from '@plone/volto/helpers';
-import SidebarPortal from '../../../manage/Sidebar/SidebarPortal';
-import ImageSidebar from '../../../../components/manage/Sidebar/ImageSidebar';
-import clearSVG from '@plone/volto/icons/clear.svg';
-import uploadSVG from '@plone/volto/icons/upload.svg';
-import folderSVG from '@plone/volto/icons/folder.svg';
-import imageSVG from '@plone/volto/icons/image.svg';
+import { flattenToAppURL, getBaseUrl } from '../../../../helpers';
+
+import clearSVG from '../../../../icons/clear.svg';
+import folderSVG from '../../../../icons/folder.svg';
+import imageSVG from '../../../../icons/image.svg';
+import imageLeftSVG from '../../../../icons/image-left.svg';
+import imageRightSVG from '../../../../icons/image-right.svg';
+import imageFitSVG from '../../../../icons/image-fit.svg';
+import imageFullSVG from '../../../../icons/image-full.svg';
 
 const messages = defineMessages({
   ImageTileInputPlaceholder: {
@@ -36,7 +37,6 @@ const messages = defineMessages({
   state => ({
     request: state.content.create,
     content: state.content.data,
-    pathname: state.router.location.pathname,
   }),
   dispatch => bindActionCreators({ createContent }, dispatch),
 )
@@ -45,7 +45,7 @@ const messages = defineMessages({
  * @class Edit
  * @extends Component
  */
-class Edit extends Component {
+export default class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -53,7 +53,6 @@ class Edit extends Component {
    */
   static propTypes = {
     selected: PropTypes.bool.isRequired,
-    detached: PropTypes.bool,
     tile: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
@@ -70,11 +69,7 @@ class Edit extends Component {
     onFocusNextTile: PropTypes.func.isRequired,
     handleKeyDown: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
-    appendActions: PropTypes.node,
-    appendSecondaryActions: PropTypes.node,
     intl: intlShape.isRequired,
-    openSidebar: PropTypes.func.isRequired,
-    closeSidebar: PropTypes.func.isRequired,
   };
 
   /**
@@ -85,6 +80,7 @@ class Edit extends Component {
    */
   constructor(props) {
     super(props);
+
     this.onUploadImage = this.onUploadImage.bind(this);
     this.onSubmitUrl = this.onSubmitUrl.bind(this);
     this.onKeyDownVariantMenuForm = this.onKeyDownVariantMenuForm.bind(this);
@@ -92,7 +88,6 @@ class Edit extends Component {
     this.state = {
       uploading: false,
       url: '',
-      objectBrowserIsOpen: false,
     };
   }
 
@@ -158,6 +153,19 @@ class Edit extends Component {
   }
 
   /**
+   * Align tile handler
+   * @method onAlignTile
+   * @param {string} align Alignment option
+   * @returns {undefined}
+   */
+  onAlignTile(align) {
+    this.props.onChangeTile(this.props.tile, {
+      ...this.props.data,
+      align,
+    });
+  }
+
+  /**
    * Change url handler
    * @method onChangeUrl
    * @param {Object} target Target object
@@ -209,134 +217,142 @@ class Edit extends Component {
    */
   render() {
     return (
-      <>
-        <div
-          role="presentation"
-          onClick={() => this.props.onSelectTile(this.props.tile)}
-          className={cx(
-            'tile image align',
-            {
-              selected: this.props.selected,
-              center: !Boolean(this.props.data.align),
-            },
-            this.props.data.align,
-          )}
-          tabIndex={0}
-          onKeyDown={e =>
-            this.props.handleKeyDown(
-              e,
-              this.props.index,
-              this.props.tile,
-              this.node,
-            )
-          }
-          ref={node => {
-            this.node = node;
-          }}
-        >
-          {this.props.selected && !!this.props.data.url && (
-            <div className="toolbar">
-              {!this.props.detached && (
-                <AlignTile
-                  align={this.props.data.align}
-                  onChangeTile={this.props.onChangeTile}
-                  data={this.props.data}
-                  tile={this.props.tile}
-                />
-              )}
-              {this.props.appendActions && <>{this.props.appendActions}</>}
-              {this.props.detached && this.props.appendActions && (
-                <div className="separator" />
-              )}
-              <Button.Group>
-                <Button icon basic onClick={this.props.openSidebar}>
-                  <Icon name={folderSVG} size="24px" />
-                </Button>
-              </Button.Group>
-              <Button.Group>
-                <Button
-                  icon
-                  basic
-                  onClick={() =>
-                    this.props.onChangeTile(this.props.tile, {
-                      ...this.props.data,
-                      url: '',
-                    })
-                  }
-                >
-                  <Icon name={clearSVG} size="24px" color="#e40166" />
-                </Button>
-              </Button.Group>
-              {this.props.appendSecondaryActions && (
-                <>{this.props.appendSecondaryActions}</>
-              )}
-            </div>
-          )}
-          {this.props.selected && !this.props.data.url && (
-            <div className="toolbar">
-              <Button.Group>
-                {this.props.data.url && (
-                  <label className="ui button basic icon">
-                    <Icon
-                      name={folderSVG}
-                      size="24px"
-                      onClick={this.props.openSidebar}
-                    />
-                  </label>
-                )}
-                <label className="ui button basic icon">
-                  <Icon name={uploadSVG} size="24px" />
-                  <input
-                    type="file"
-                    onChange={this.onUploadImage}
-                    style={{ display: 'none' }}
-                  />
-                </label>
-              </Button.Group>
-              {this.props.appendSecondaryActions && (
-                <>
-                  <div className="separator" />
-                  {this.props.appendSecondaryActions}
-                </>
-              )}
-            </div>
-          )}
-          {this.props.data.url ? (
-            <p>
-              <img
-                src={
-                  this.props.data.url.includes(settings.apiPath)
-                    ? `${flattenToAppURL(this.props.data.url)}/@@images/image`
-                    : this.props.data.url
+      <div
+        role="presentation"
+        onClick={() => this.props.onSelectTile(this.props.tile)}
+        className={cx(
+          'tile image align',
+          {
+            selected: this.props.selected,
+            center: !Boolean(this.props.data.align),
+          },
+          this.props.data.align,
+        )}
+        onKeyDown={e =>
+          this.props.handleKeyDown(
+            e,
+            this.props.index,
+            this.props.tile,
+            this.node,
+          )
+        }
+        ref={node => {
+          this.node = node;
+        }}
+      >
+        {this.props.selected && !!this.props.data.url && (
+          <div className="toolbar">
+            <Button.Group>
+              <Button
+                icon
+                basic
+                aria-label="Left"
+                onClick={() => this.onAlignTile('left')}
+                active={this.props.data.align === 'left'}
+              >
+                <Icon name={imageLeftSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                aria-label="Right"
+                onClick={() => this.onAlignTile('right')}
+                active={this.props.data.align === 'right'}
+              >
+                <Icon name={imageRightSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                aria-label="Center"
+                onClick={() => this.onAlignTile('center')}
+                active={
+                  this.props.data.align === 'center' || !this.props.data.align
                 }
-                alt={this.props.data.alt || ''}
-              />
-            </p>
-          ) : (
-            <div>
-              <Message>
-                {this.state.uploading && (
-                  <Dimmer active>
-                    <Loader indeterminate>Uploading image</Loader>
-                  </Dimmer>
-                )}
-                <center>
-                  <Icon name={imageSVG} size="100px" color="#b8c6c8" />
-                </center>
-              </Message>
-            </div>
-          )}
-        </div>
-        <SidebarPortal selected={this.props.selected}>
-          <ImageSidebar
-            data={this.props.data}
-            tile={this.props.tile}
-            onChangeTile={this.props.onChangeTile}
-          />
-        </SidebarPortal>
-      </>
+              >
+                <Icon name={imageFitSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                aria-label="Full"
+                onClick={() => this.onAlignTile('full')}
+                active={this.props.data.align === 'full'}
+              >
+                <Icon name={imageFullSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <div className="separator" />
+            <Button.Group>
+              <Button
+                icon
+                basic
+                onClick={() =>
+                  this.props.onChangeTile(this.props.tile, {
+                    ...this.props.data,
+                    url: '',
+                  })
+                }
+              >
+                <Icon name={clearSVG} size="24px" color="#e40166" />
+              </Button>
+            </Button.Group>
+          </div>
+        )}
+        {this.props.selected && !this.props.data.url && (
+          <div className="toolbar">
+            <Icon name={imageSVG} size="24px" />
+            <Input
+              onKeyDown={this.onKeyDownVariantMenuForm}
+              onChange={this.onChangeUrl}
+              placeholder={this.props.intl.formatMessage(
+                messages.ImageTileInputPlaceholder,
+              )}
+            />
+            <Button.Group>
+              <label className="ui button basic icon">
+                <Icon name={folderSVG} size="24px" />
+                <input
+                  type="file"
+                  onChange={this.onUploadImage}
+                  style={{ display: 'none' }}
+                />
+              </label>
+            </Button.Group>
+          </div>
+        )}
+        {this.props.data.url ? (
+          <p>
+            <img
+              src={
+                this.props.data.url.includes(settings.apiPath)
+                  ? `${flattenToAppURL(this.props.data.url)}/@@images/image`
+                  : this.props.data.url
+              }
+              alt=""
+            />
+          </p>
+        ) : (
+          <div>
+            <Message>
+              {this.state.uploading && (
+                <Dimmer active>
+                  <Loader indeterminate>Uploading image</Loader>
+                </Dimmer>
+              )}
+              <center>
+                <Icon name={imageSVG} size="100px" color="#b8c6c8" />
+              </center>
+            </Message>
+          </div>
+        )}
+      </div>
     );
   }
 }
-
-export default Edit;

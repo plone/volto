@@ -45,7 +45,7 @@ export default class Header extends Component {
    */
   render() {
     return (
-      <Segment basic className="header-wrapper">
+      <Segment basic className="header-wrapper" role="banner">
         <Container>
           <div className="header">
             <div className="logo-nav-wrapper">

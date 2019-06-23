@@ -2,14 +2,19 @@
  * Edit video tile.
  * @module components/manage/Tiles/Title/Edit
  */
-import AlignTile from '../../../../helpers/AlignTile';
-import PropTypes from 'prop-types';
+
 import React, { Component } from 'react';
-import cx from 'classnames';
-import videoSVG from '../../../../icons/videocamera.svg';
-import { Button, Input, Embed, Message } from 'semantic-ui-react';
-import { Icon } from '../../../../components';
+import PropTypes from 'prop-types';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { Button, Input, Embed, Message } from 'semantic-ui-react';
+import cx from 'classnames';
+
+import { Icon } from '../../../../components';
+import imageLeftSVG from '../../../../icons/image-left.svg';
+import imageRightSVG from '../../../../icons/image-right.svg';
+import imageFitSVG from '../../../../icons/image-fit.svg';
+import imageFullSVG from '../../../../icons/image-full.svg';
+import videoSVG from '../../../../icons/videocamera.svg';
 
 const messages = defineMessages({
   save: {
@@ -117,6 +122,19 @@ export default class Edit extends Component {
   }
 
   /**
+   * Align tile handler
+   * @method onAlignTile
+   * @param {string} align Alignment option
+   * @returns {undefined}
+   */
+  onAlignTile(align) {
+    this.props.onChangeTile(this.props.tile, {
+      ...this.props.data,
+      align,
+    });
+  }
+
+  /**
    * Keydown handler on Variant Menu Form
    * This is required since the ENTER key is already mapped to a onKeyDown
    * event and needs to be overriden with a child onKeyDown.
@@ -155,7 +173,6 @@ export default class Edit extends Component {
           },
           this.props.data.align,
         )}
-        tabIndex={0}
         onKeyDown={e =>
           this.props.handleKeyDown(
             e,
@@ -170,25 +187,62 @@ export default class Edit extends Component {
       >
         {this.props.selected && !!this.props.data.url && (
           <div className="toolbar">
-            <AlignTile
-              align={this.props.data.align}
-              onChangeTile={this.props.onChangeTile}
-              data={this.props.data}
-              tile={this.props.tile}
-            />
+            <Button.Group>
+              <Button
+                icon
+                basic
+                aria-label="Left"
+                onClick={this.onAlignTile.bind(this, 'left')}
+                active={data.align === 'left'}
+              >
+                <Icon name={imageLeftSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                aria-label="Right"
+                onClick={this.onAlignTile.bind(this, 'right')}
+                active={data.align === 'right'}
+              >
+                <Icon name={imageRightSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                aria-label="Center"
+                onClick={this.onAlignTile.bind(this, 'center')}
+                active={data.align === 'center' || !data.align}
+              >
+                <Icon name={imageFitSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                aria-label="Full"
+                onClick={this.onAlignTile.bind(this, 'full')}
+                active={data.align === 'full'}
+              >
+                <Icon name={imageFullSVG} size="24px" />
+              </Button>
+            </Button.Group>
           </div>
         )}
         {this.props.selected && !this.props.data.url && (
           <div className="toolbar">
             <Icon name={videoSVG} size="24px" />
-            <form onKeyDown={this.onKeyDownVariantMenuForm}>
-              <Input
-                onChange={this.onChangeUrl}
-                placeholder={this.props.intl.formatMessage(
-                  messages.VideoTileInputPlaceholder,
-                )}
-              />
-            </form>
+            <Input
+              onKeyDown={this.onKeyDownVariantMenuForm}
+              onChange={this.onChangeUrl}
+              placeholder={this.props.intl.formatMessage(
+                messages.VideoTileInputPlaceholder,
+              )}
+            />
           </div>
         )}
         {data.url ? (

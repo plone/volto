@@ -171,12 +171,16 @@ export default class TextWidget extends Component {
             <Grid.Column width="8">
               {onEdit && (
                 <div className="toolbar">
-                  <a className="item" onClick={() => onEdit(id, schema)}>
-                    <IconOld name="write square" size="large" color="blue" />
-                  </a>
-                  <a className="item" onClick={() => onDelete(id)}>
-                    <IconOld name="close" size="large" color="red" />
-                  </a>
+                  <button className="item" onClick={() => onEdit(id, schema)}>
+                    <Icon name="write square" size="large" color="blue" />
+                  </button>
+                  <button
+                    aria-label="Delete"
+                    className="item"
+                    onClick={() => onDelete(id)}
+                  >
+                    <Icon name="close" size="large" color="red" />
+                  </button>
                 </div>
               )}
               <Input

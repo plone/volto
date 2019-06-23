@@ -17,6 +17,6 @@ context('Actions', () => {
     cy.visit('/');
 
     cy.get('#toolbar-personal').click();
-    cy.get('#toolbar-logout').contains('Log out');
+    cy.get('#toolbar-logout');
   });
 });

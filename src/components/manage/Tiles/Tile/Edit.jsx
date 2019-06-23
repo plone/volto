@@ -163,6 +163,7 @@ export default class Edit extends Component {
               basic
               onClick={() => this.props.onDeleteTile(id)}
               className="delete-button"
+              aria-label="delete"
             >
               <Icon name={trashSVG} size="18px" />
             </Button>

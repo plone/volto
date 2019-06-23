@@ -21,6 +21,10 @@ exports[`Html renders a html component 1`] = `
       content="width=device-width, initial-scale=1"
       name="viewport"
     />
+    <meta
+      content="yes"
+      name="apple-mobile-web-app-capable"
+    />
     <link
       href="style.css"
       rel="stylesheet"
@@ -35,7 +39,9 @@ exports[`Html renders a html component 1`] = `
     className="class1 class2"
   >
     <div
+      aria-label="Toolbar"
       id="toolbar"
+      role="navigation"
     />
     <div
       dangerouslySetInnerHTML={
