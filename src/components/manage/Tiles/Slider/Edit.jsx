@@ -25,6 +25,10 @@ import {
   intlShape,
   FormattedMessage,
 } from 'react-intl';
+import { Portal } from 'react-portal';
+import Slider from 'react-slick';
+import redraft from 'redraft';
+
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { v4 as uuid } from 'uuid';
@@ -33,6 +37,7 @@ import { convertToRaw } from 'draft-js';
 import { settings } from '~/config';
 
 import { Icon, EditTextTile, CheckboxWidget } from '@plone/volto/components';
+import TileModal from '@plone/volto/components/manage/Tiles/TileModal/TileModal';
 import { createContent } from '@plone/volto/actions';
 import { flattenToAppURL, getBaseUrl, withSidebar } from '@plone/volto/helpers';
 
@@ -44,11 +49,6 @@ import folderSVG from '@plone/volto/icons/folder.svg';
 import imageSVG from '@plone/volto/icons/image.svg';
 import imageFitSVG from '@plone/volto/icons/image-fit.svg';
 import imageFullSVG from '@plone/volto/icons/image-full.svg';
-
-import TileModal from '@plone/volto/components/manage/Tiles/TileModal/TileModal';
-
-import Slider from 'react-slick';
-import redraft from 'redraft';
 
 const messages = defineMessages({
   ImageTileInputPlaceholder: {
@@ -82,7 +82,7 @@ const reorder = (list, startIndex, endIndex) => {
  * @class Edit
  * @extends Component
  */
-class Edit extends Component {
+export default class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -484,212 +484,225 @@ class Edit extends Component {
             </Button.Group>
           </div>
         )}
-        <DragDropContext onDragEnd={this.onDragEnd}>
-          <Droppable droppableId={uuid()} direction="horizontal">
-            {provided => (
-              <Ref innerRef={provided.innerRef}>
-                <Card.Group
-                  centered
-                  {...provided.droppableProps}
-                  itemsPerRow={
-                    this.props.data.expandCards
-                      ? this.props.data.cards.length
-                      : 4
-                  }
-                >
-                  {this.props.data.cards &&
-                    this.props.data.cards.map((item, index) => (
-                      <Draggable
-                        draggableId={item.id}
-                        index={index}
-                        key={item.id}
-                      >
-                        {provided => (
-                          <Ref innerRef={provided.innerRef}>
-                            <Card
-                              className={cx({
-                                'no-borders': this.props.data.noBorders,
-                              })}
-                              key={item.id}
-                              onClick={e => this.selectCard(e, index)}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                            >
-                              {this.state.currentSelectedCard === index &&
-                                !item.url && (
-                                  <div className="toolbar">
-                                    <Icon name={imageSVG} size="24px" />
-                                    <form
-                                      onKeyDown={e =>
-                                        this.onKeyDownVariantMenuForm(e, index)
-                                      }
-                                    >
-                                      <Input
-                                        onChange={e =>
-                                          this.onChangeUrl(e, index)
-                                        }
-                                        placeholder={this.props.intl.formatMessage(
-                                          messages.ImageTileInputPlaceholder,
-                                        )}
-                                      />
-                                    </form>
-                                    <Button.Group>
-                                      <label className="ui button basic icon">
-                                        <Icon name={folderSVG} size="24px" />
-                                        <input
-                                          type="file"
-                                          onChange={e =>
-                                            this.onUploadImage(e, index)
-                                          }
-                                          style={{ display: 'none' }}
-                                        />
-                                      </label>
-                                    </Button.Group>
-                                    <div className="separator" />
-                                    <Button.Group>
-                                      <Button
-                                        icon
-                                        basic
-                                        onClick={e => this.removeCard(e, index)}
-                                      >
-                                        <Icon
-                                          name={trashSVG}
-                                          size="24px"
-                                          color="#e40166"
-                                        />
-                                      </Button>
-                                    </Button.Group>
-                                  </div>
-                                )}
-                              {this.state.currentSelectedCard === index &&
-                                item.url && (
-                                  <div className="toolbar">
-                                    <Button.Group>
-                                      <Button
-                                        icon
-                                        basic
-                                        onClick={e => this.clearCard(e, index)}
-                                      >
-                                        <Icon name={clearSVG} size="24px" />
-                                      </Button>
-                                    </Button.Group>
-                                    <div className="separator" />
-                                    <Button.Group>
-                                      <Button
-                                        icon
-                                        basic
-                                        onClick={e => this.removeCard(e, index)}
-                                      >
-                                        <Icon
-                                          name={trashSVG}
-                                          size="24px"
-                                          color="#e40166"
-                                        />
-                                      </Button>
-                                    </Button.Group>
-                                  </div>
-                                )}
-                              {item.url ? (
-                                <Image
-                                  src={
-                                    item.url.includes(settings.apiPath)
-                                      ? `${flattenToAppURL(
-                                          item.url,
-                                        )}/@@images/image`
-                                      : item.url
-                                  }
-                                  alt=""
-                                />
-                              ) : (
-                                <div className="image-placeholder">
-                                  <Message>
-                                    {this.state.uploading &&
-                                      this.state.currentSelectedCard ===
-                                        index && (
-                                        <Dimmer active>
-                                          <Loader indeterminate>
-                                            Uploading image
-                                          </Loader>
-                                        </Dimmer>
-                                      )}
-                                    <center>
-                                      <Icon
-                                        name={imageSVG}
-                                        size="100px"
-                                        color="#b8c6c8"
-                                      />
-                                    </center>
-                                  </Message>
-                                </div>
-                              )}
-                              {!this.props.data.hideText && (
-                                <Card.Content
-                                  // This prevents propagation of ENTER
-                                  onKeyDown={e => e.stopPropagation()}
-                                >
-                                  <EditTextTile
-                                    {...this.props}
-                                    data={this.props.data.cards[index]}
-                                    tile={item.id}
-                                    detached
-                                    index={0}
-                                    selected={false}
-                                    onSelectTile={() => {}}
-                                    onFocusPreviousTile={() => {}}
-                                    onFocusNextTile={() => {}}
-                                    onAddTile={() => {}}
-                                    onDeleteTile={() => {}}
-                                    onMutateTile={() => {}}
-                                    onChangeTile={(tile, data) =>
-                                      this.onChangeRichText(data.text, index)
-                                    }
-                                  />
-                                </Card.Content>
-                              )}
-                            </Card>
-                          </Ref>
-                        )}
-                      </Draggable>
-                    ))}
-                  {provided.placeholder}
-                </Card.Group>
-              </Ref>
-            )}
-          </Droppable>
-        </DragDropContext>
-        <TileModal
-          open={this.state.modalOpened}
-          data={this.props.data}
-          onClose={this.onCloseModal}
+        <Portal
+          node={__CLIENT__ && document.getElementById('sidebar-properties')}
         >
-          <Grid>
-            <Grid.Row stretched>
-              <Grid.Column width="4">
-                <div className="wrapper">
-                  <label htmlFor="login">
-                    <FormattedMessage id="Options" defaultMessage="Options" />
-                  </label>
-                </div>
-              </Grid.Column>
-              <Grid.Column width="8">
-                <div className="field-group-wrapper">
-                  <CheckboxWidget
-                    id="centeredText"
-                    title="Center cards text"
-                    value={this.props.data.centeredText}
-                    onChange={this.onChangeModalSettings}
-                  />
-                  <CheckboxWidget
-                    id="hideText"
-                    title="Hide card text"
-                    value={this.props.data.hideText}
-                    onChange={this.onChangeModalSettings}
-                  />
-                </div>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </TileModal>
+          <DragDropContext onDragEnd={this.onDragEnd}>
+            <Droppable droppableId={uuid()} direction="horizontal">
+              {provided => (
+                <Ref innerRef={provided.innerRef}>
+                  <Card.Group
+                    centered
+                    {...provided.droppableProps}
+                    itemsPerRow={
+                      this.props.data.expandCards
+                        ? this.props.data.cards.length
+                        : 4
+                    }
+                  >
+                    {this.props.data.cards &&
+                      this.props.data.cards.map((item, index) => (
+                        <Draggable
+                          draggableId={item.id}
+                          index={index}
+                          key={item.id}
+                        >
+                          {provided => (
+                            <Ref innerRef={provided.innerRef}>
+                              <Card
+                                className={cx({
+                                  'no-borders': this.props.data.noBorders,
+                                })}
+                                key={item.id}
+                                onClick={e => this.selectCard(e, index)}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                              >
+                                {this.state.currentSelectedCard === index &&
+                                  !item.url && (
+                                    <div className="toolbar">
+                                      <Icon name={imageSVG} size="24px" />
+                                      <form
+                                        onKeyDown={e =>
+                                          this.onKeyDownVariantMenuForm(
+                                            e,
+                                            index,
+                                          )
+                                        }
+                                      >
+                                        <Input
+                                          onChange={e =>
+                                            this.onChangeUrl(e, index)
+                                          }
+                                          placeholder={this.props.intl.formatMessage(
+                                            messages.ImageTileInputPlaceholder,
+                                          )}
+                                        />
+                                      </form>
+                                      <Button.Group>
+                                        <label className="ui button basic icon">
+                                          <Icon name={folderSVG} size="24px" />
+                                          <input
+                                            type="file"
+                                            onChange={e =>
+                                              this.onUploadImage(e, index)
+                                            }
+                                            style={{ display: 'none' }}
+                                          />
+                                        </label>
+                                      </Button.Group>
+                                      <div className="separator" />
+                                      <Button.Group>
+                                        <Button
+                                          icon
+                                          basic
+                                          onClick={e =>
+                                            this.removeCard(e, index)
+                                          }
+                                        >
+                                          <Icon
+                                            name={trashSVG}
+                                            size="24px"
+                                            color="#e40166"
+                                          />
+                                        </Button>
+                                      </Button.Group>
+                                    </div>
+                                  )}
+                                {this.state.currentSelectedCard === index &&
+                                  item.url && (
+                                    <div className="toolbar">
+                                      <Button.Group>
+                                        <Button
+                                          icon
+                                          basic
+                                          onClick={e =>
+                                            this.clearCard(e, index)
+                                          }
+                                        >
+                                          <Icon name={clearSVG} size="24px" />
+                                        </Button>
+                                      </Button.Group>
+                                      <div className="separator" />
+                                      <Button.Group>
+                                        <Button
+                                          icon
+                                          basic
+                                          onClick={e =>
+                                            this.removeCard(e, index)
+                                          }
+                                        >
+                                          <Icon
+                                            name={trashSVG}
+                                            size="24px"
+                                            color="#e40166"
+                                          />
+                                        </Button>
+                                      </Button.Group>
+                                    </div>
+                                  )}
+                                {item.url ? (
+                                  <Image
+                                    src={
+                                      item.url.includes(settings.apiPath)
+                                        ? `${flattenToAppURL(
+                                            item.url,
+                                          )}/@@images/image`
+                                        : item.url
+                                    }
+                                    alt=""
+                                  />
+                                ) : (
+                                  <div className="image-placeholder">
+                                    <Message>
+                                      {this.state.uploading &&
+                                        this.state.currentSelectedCard ===
+                                          index && (
+                                          <Dimmer active>
+                                            <Loader indeterminate>
+                                              Uploading image
+                                            </Loader>
+                                          </Dimmer>
+                                        )}
+                                      <center>
+                                        <Icon
+                                          name={imageSVG}
+                                          size="100px"
+                                          color="#b8c6c8"
+                                        />
+                                      </center>
+                                    </Message>
+                                  </div>
+                                )}
+                                {!this.props.data.hideText && (
+                                  <Card.Content
+                                    // This prevents propagation of ENTER
+                                    onKeyDown={e => e.stopPropagation()}
+                                  >
+                                    <EditTextTile
+                                      {...this.props}
+                                      data={this.props.data.cards[index]}
+                                      tile={item.id}
+                                      detached
+                                      index={0}
+                                      selected={false}
+                                      onSelectTile={() => {}}
+                                      onFocusPreviousTile={() => {}}
+                                      onFocusNextTile={() => {}}
+                                      onAddTile={() => {}}
+                                      onDeleteTile={() => {}}
+                                      onMutateTile={() => {}}
+                                      onChangeTile={(tile, data) =>
+                                        this.onChangeRichText(data.text, index)
+                                      }
+                                    />
+                                  </Card.Content>
+                                )}
+                              </Card>
+                            </Ref>
+                          )}
+                        </Draggable>
+                      ))}
+                    {provided.placeholder}
+                  </Card.Group>
+                </Ref>
+              )}
+            </Droppable>
+          </DragDropContext>
+          <TileModal
+            open={this.state.modalOpened}
+            data={this.props.data}
+            onClose={this.onCloseModal}
+          >
+            <Grid>
+              <Grid.Row stretched>
+                <Grid.Column width="4">
+                  <div className="wrapper">
+                    <label htmlFor="login">
+                      <FormattedMessage id="Options" defaultMessage="Options" />
+                    </label>
+                  </div>
+                </Grid.Column>
+                <Grid.Column width="8">
+                  <div className="field-group-wrapper">
+                    <CheckboxWidget
+                      id="centeredText"
+                      title="Center cards text"
+                      value={this.props.data.centeredText}
+                      onChange={this.onChangeModalSettings}
+                    />
+                    <CheckboxWidget
+                      id="hideText"
+                      title="Hide card text"
+                      value={this.props.data.hideText}
+                      onChange={this.onChangeModalSettings}
+                    />
+                  </div>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </TileModal>
+        </Portal>
         <Slider
           customPaging={dot => <div />}
           dots
@@ -730,5 +743,3 @@ class Edit extends Component {
     );
   }
 }
-
-export default withSidebar(Edit);
