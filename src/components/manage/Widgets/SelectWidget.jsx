@@ -207,7 +207,7 @@ export default class SelectWidget extends Component {
       vocabulary: PropTypes.object,
     }),
     value: PropTypes.oneOfType([
-      PropTypes.object, 
+      PropTypes.object,
       PropTypes.string,
       PropTypes.bool,
     ]),
