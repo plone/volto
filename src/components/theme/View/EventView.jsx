@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { Container, Image, Segment, Header } from 'semantic-ui-react';
+import { Container, Image, Segment, Header, List } from 'semantic-ui-react';
 
 import EventWhen from './EventWhen';
 
@@ -37,11 +37,7 @@ const EventView = ({ content }) => (
           <Header dividing sub>
             What
           </Header>
-          {content.subjects.map((subj, idx) => (
-            <span key={idx} className="event-subject">
-              {subj}
-            </span>
-          ))}
+          <List items={content.subjects} />
         </>
       )}
       <Header dividing sub>
@@ -90,11 +86,7 @@ const EventView = ({ content }) => (
           <Header dividing sub>
             Attendees
           </Header>
-          {content.attendees.map((attendee, idx) => (
-            <span key="idx" className="event-attendee">
-              {attendee}
-            </span>
-          ))}
+          <List items={content.attendees} />
         </>
       )}
       {content.event_url && (
