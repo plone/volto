@@ -26,3 +26,7 @@ Example:
 
 If an element has an event listener on it and performs an action, but does not point to a proper URL, use a `<button>` and style with CSS to style.
 The reasoning is that the `<a></a>` HTML tag has specific behavior that screenreaders support and that screenreader users expect.
+
+## Make sure form elements have a label
+
+This is true for one-element forms as well, such as the "Search" form on the folder-contents component. Putting an icon on it does not convey any meaning to screenreader-users, therefore it needs to be clarified with an aria-label.
