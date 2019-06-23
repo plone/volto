@@ -39,7 +39,9 @@ exports[`Html renders a html component 1`] = `
     className="class1 class2"
   >
     <div
+      aria-label="Toolbar"
       id="toolbar"
+      role="navigation"
     />
     <div
       dangerouslySetInnerHTML={

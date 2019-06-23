@@ -25,6 +25,7 @@ Array [
         className="toolbar-actions"
       >
         <a
+          aria-label="Edit"
           className="edit"
           href="/test/edit"
           onClick={[Function]}
@@ -49,6 +50,7 @@ Array [
           />
         </a>
         <a
+          aria-label="Contents"
           href="/contents"
           onClick={[Function]}
         >

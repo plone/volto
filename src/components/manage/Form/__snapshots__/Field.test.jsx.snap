@@ -49,6 +49,7 @@ exports[`Field renders a field with a specific id 1`] = `
   >
     <div
       className="ui pointing secondary attached tabular menu"
+      role="tablist"
     >
       <div
         className="item active"
@@ -106,7 +107,9 @@ exports[`Field renders a field with a specific id 1`] = `
             <div
               className="wrapper"
             >
-              <label>
+              <label
+                htmlFor="addfield"
+              >
                 Add new field
               </label>
             </div>
@@ -116,6 +119,7 @@ exports[`Field renders a field with a specific id 1`] = `
               <button
                 aria-label="Add"
                 className="item"
+                id="addfield"
                 onClick={[Function]}
               >
                 <i
