@@ -1,10 +1,60 @@
 # Change Log
 
-## 3.0.4 (unreleased)
+## 3.1.1 (unreleased)
 
 ### Added
 
+- Internal API path for containers @bloodbare
+- Add toast component @sneridagh
+- Add sidebar support for components @sneridagh
+- Add Volto version number in control panel @nzambello
+- Remove Mosaic component @tisto
+- Added translations to italian @nzambello
+- Add table tile @robgietema
+
 ### Changes
+
+- Add a delay when filtering content in folder contents so it doesn't overload backend @vangheem
+- Small UX/UI fixes @sneridagh
+- Fix query string search in subjects vocab field @gomez
+- Removed the delete button from the title tile @pnicolli
+- Rewrite sidebar @robgietma @sneridagh
+- Added SidebarPortal component for easier sidebar handling @pnicolli
+- Fixed tiles outline in Pastanaga editor @pnicolli
+- Fix typos @balavec
+- Fix warnings for boolean fields @miziodel
+
+### Internal
+
+- Fix console errors on tests @sneridagh
+
+## 3.1.0 (2019-06-14)
+
+### Added
+
+- Upgrade to react-redux 7.1. It includes the new official hooks for Redux
+  @sneridagh
+- Make Login Route accessible from anywhere in path url @nileshgulia1
+
+### Changes
+
+- Fix basic tiles classes @rodfersou
+- Fix video alignment @sneridagh
+
+### Internal
+
+- Upgrade handlebars to 4.1.2 @timo
+- Upgrade js-yaml to 3.13.3 @timo
+- Upgrade Plone api folder to 5.2rc3 @sneridagh
+- Fixes for image/file fields widgets for Guillotina @sneridagh
+- Fixes for Cypress Guillotina tests @sneridagh
+
+## 3.0.4 (2019-05-30)
+
+### Changes
+
+- Fix order of arguments when sending the contact form @csenger
+- Fix @babel/core import on i18n script @sneridagh
 
 ## 3.0.3 (2019-05-13)
 

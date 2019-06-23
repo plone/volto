@@ -8,9 +8,6 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { withRouter } from 'react-router-dom';
-import { asyncConnect } from 'redux-connect';
-import { isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Portal } from 'react-portal';
 import { Icon } from 'semantic-ui-react';
@@ -18,7 +15,7 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import qs from 'query-string';
 
-import { Form, Toolbar } from '../../../components';
+import { Form, Toolbar, Sidebar } from '../../../components';
 import { updateContent, getContent, getSchema } from '../../../actions';
 import { getBaseUrl, hasTilesData } from '../../../helpers';
 
@@ -34,14 +31,6 @@ const messages = defineMessages({
   cancel: {
     id: 'Cancel',
     defaultMessage: 'Cancel',
-  },
-  properties: {
-    id: 'Properties',
-    defaultMessage: 'Properties',
-  },
-  visual: {
-    id: 'Visual',
-    defaultMessage: 'Visual',
   },
 });
 
@@ -72,7 +61,7 @@ const messages = defineMessages({
  * @class EditComponent
  * @extends Component
  */
-export class EditComponent extends Component {
+export default class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -122,12 +111,8 @@ export class EditComponent extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = {
-      visual: false,
-    };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.onToggleVisual = this.onToggleVisual.bind(this);
   }
 
   /**
@@ -148,19 +133,6 @@ export class EditComponent extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.getRequest.loading && nextProps.getRequest.loaded) {
       this.props.getSchema(nextProps.content['@type']);
-    }
-    if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
-      if (hasTilesData(nextProps.schema.properties)) {
-        this.setState({
-          visual: true,
-        });
-      }
-    }
-    // Hack for make the Plone site editable by Volto Editor without checkings
-    if (this.props.content['@type'] === 'Plone Site') {
-      this.setState({
-        visual: true,
-      });
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       this.props.history.push(
@@ -191,23 +163,16 @@ export class EditComponent extends Component {
   }
 
   /**
-   * Toggle visual
-   * @method onToggleVisual
-   * @returns {undefined}
-   */
-  onToggleVisual() {
-    this.setState({
-      visual: !this.state.visual,
-    });
-  }
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
     if (this.props.schemaRequest.loaded && this.props.content) {
+      const visual =
+        hasTilesData(this.props.schema.properties) ||
+        this.props.content['@type'] === 'Plone Site';
+
       return (
         <div id="page-edit">
           <Helmet
@@ -226,7 +191,7 @@ export class EditComponent extends Component {
             onSubmit={this.onSubmit}
             hideActions
             pathname={this.props.pathname}
-            visual={this.state.visual}
+            visual={visual}
             title={this.props.intl.formatMessage(messages.edit, {
               title: this.props.schema.title,
             })}
@@ -249,19 +214,6 @@ export class EditComponent extends Component {
                       title={this.props.intl.formatMessage(messages.save)}
                     />
                   </a>
-                  {hasTilesData(this.props.schema.properties) && (
-                    <a className="item" onClick={() => this.onToggleVisual()}>
-                      <Icon
-                        name={this.state.visual ? 'tasks' : 'block layout'}
-                        size="big"
-                        title={this.props.intl.formatMessage(
-                          this.state.visual
-                            ? messages.properties
-                            : messages.visual,
-                        )}
-                      />
-                    </a>
-                  )}
                   <a className="item" onClick={() => this.onCancel()}>
                     <Icon
                       name="close"
@@ -274,32 +226,14 @@ export class EditComponent extends Component {
               }
             />
           </Portal>
+          {visual && (
+            <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
+              <Sidebar />
+            </Portal>
+          )}
         </div>
       );
     }
     return <div />;
   }
 }
-
-export default asyncConnect([
-  {
-    key: 'schema',
-    promise: ({ store: { dispatch, getState } }) =>
-      dispatch(getSchema(getState().content.data['@type'])),
-  },
-  {
-    key: 'content',
-    promise: ({ location, store: { dispatch, getState } }) => {
-      const { form } = getState();
-      if (!isEmpty(form)) {
-        return dispatch(
-          updateContent(
-            getBaseUrl(location.pathname),
-            pick(form, ['title', 'description', 'text']),
-          ),
-        );
-      }
-      return Promise.resolve(getState().content);
-    },
-  },
-])(withRouter(EditComponent));

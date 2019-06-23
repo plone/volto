@@ -9,6 +9,7 @@
 
 // Extras (third party libs)
 @import (less) '~hamburgers/dist/hamburgers.css';
+@import (less) '~react-toastify/dist/ReactToastify.css';
 
 // General Styling
 
@@ -38,7 +39,7 @@ body {
 }
 
 .documentDescription {
-  color: #b8c6c8;
+  color: #84a3ae;
   font-size: 1.125rem;
 }
 
@@ -63,6 +64,19 @@ body {
 .ui.segments,
 .ui.segment {
   position: static !important;
+}
+
+// Button reset
+.button-reset {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: initial;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 // Drag and drop
@@ -132,9 +146,72 @@ body {
   margin-top: 20px;
 }
 
+// Toasts
+.Toastify__toast-container {
+  width: 480px;
+  color: inherit;
+
+  @media only screen and (max-width: @largestMobileScreen) {
+    width: 100vw;
+  }
+}
+
+.Toastify__toast-container--bottom-center {
+  bottom: 0;
+  padding: 0;
+  margin-left: -240px;
+
+  @media only screen and (max-width: @largestMobileScreen) {
+    margin-left: 0;
+  }
+
+  .Toastify__toast {
+    min-height: 60px;
+    align-items: center;
+    padding: 18px;
+    margin-bottom: 0;
+  }
+
+  .Toastify__toast-body {
+    display: flex;
+  }
+
+  .toast-inner-content {
+    margin-left: 8px;
+
+    h4 {
+      margin-bottom: 0;
+      font-weight: @bold;
+    }
+
+    p {
+      font-weight: 300;
+    }
+  }
+
+  .toast-dismiss-action {
+  }
+
+  .Toastify__toast--info {
+    background: #aee2f2;
+  }
+
+  .Toastify__toast--error {
+    background: #f5c1c1;
+  }
+
+  .Toastify__toast--success {
+    background: #c9eab1;
+  }
+
+  .Toastify__toast--warning {
+    background: #f3e2ab;
+  }
+}
+
 @import 'utils';
 @import 'draftjs';
 @import 'tiles';
-@import 'mosaic';
+@import 'sidebar';
 
 .loadUIOverrides();
