@@ -21,6 +21,7 @@
 - Added SidebarPortal component for easier sidebar handling @pnicolli
 - Fixed tiles outline in Pastanaga editor @pnicolli
 - Fix typos @balavec
+- Fix warnings for boolean fields @miziodel
 
 ### Internal
 
