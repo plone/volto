@@ -29,4 +29,4 @@ The reasoning is that the `<a></a>` HTML tag has specific behavior that screenre
 
 ## Make sure form elements have a label
 
-This is true for one-element forms as well, such as the "Search" form on the folder-contents component. Putting an icon on it does not convey any meaning to screenreader-users, therefore it needs to be clarified with an aria-label.
+This is true for one-element forms as well, such as the "Search" form on the folder-contents component. Putting an icon on it does not convey any meaning to screenreader-users, you should clarify it with an aria-label.

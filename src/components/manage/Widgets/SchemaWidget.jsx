@@ -591,11 +591,12 @@ export default class SchemaWidget extends Component {
               <Grid.Row stretched>
                 <Grid.Column width="12">
                   <div className="wrapper">
-                    <label>Add new field</label>
+                    <label htmlFor="addfield">Add new field</label>
                   </div>
                   <div className="toolbar">
                     <button
                       aria-label="Add"
+                      id="addfield"
                       className="item"
                       onClick={this.onShowAddField}
                     >
