@@ -94,16 +94,17 @@ const customSelectStyles = {
   control: (styles, state) => ({
     ...styles,
     border: 'none',
-    borderBottom: '2px solid #b8c6c8',
+    borderBottom: '1px solid #c7d5d8',
     boxShadow: 'none',
     borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
+    height: '60px',
   }),
   menu: (styles, state) => ({
     ...styles,
     top: null,
     marginTop: 0,
     boxShadow: 'none',
-    borderBottom: '2px solid #b8c6c8',
+    borderBottom: '1px solid #c7d5d8',
   }),
   indicatorSeparator: styles => ({
     ...styles,
@@ -111,7 +112,10 @@ const customSelectStyles = {
   }),
   valueContainer: styles => ({
     ...styles,
-    // paddingLeft: 0,
+    paddingLeft: 0,
+  }),
+  dropdownIndicator: styles => ({
+    paddingRight: 0,
   }),
   option: (styles, state) => ({
     ...styles,
