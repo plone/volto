@@ -153,24 +153,6 @@ class ChangePassword extends Component {
         <Helmet
           title={this.props.intl.formatMessage(messages.changePassword)}
         />
-        <Menu attached="top" tabular stackable>
-          <Link to="/personal-information" className="item">
-            <FormattedMessage
-              id="Personal Information"
-              defaultMessage="Personal Information"
-            />
-          </Link>
-          <Link to="/personal-preferences" className="item">
-            <FormattedMessage
-              id="Personal Preferences"
-              defaultMessage="Personal Preferences"
-            />
-          </Link>
-          <Menu.Item
-            name={this.props.intl.formatMessage(messages.changePassword)}
-            active
-          />
-        </Menu>
         <Form
           schema={{
             fieldsets: [

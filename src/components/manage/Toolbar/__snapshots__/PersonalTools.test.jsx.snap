@@ -38,6 +38,7 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
     </h2>
     <a
       href="/logout"
+      id="toolbar-logout"
       onClick={[Function]}
     >
       <svg

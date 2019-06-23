@@ -86,7 +86,7 @@ class PersonalTools extends Component {
               ? this.props.user.fullname
               : this.props.user.username}
           </h2>
-          <Link to="/logout">
+          <Link id="toolbar-logout" to="/logout">
             <Icon className="logout" name={logoutSVG} size="30px" />
           </Link>
         </header>

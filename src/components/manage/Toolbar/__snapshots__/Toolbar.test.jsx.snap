@@ -76,6 +76,7 @@ Array [
         <button
           aria-label="Add"
           className="add"
+          id="toolbar-add"
           onClick={[Function]}
           tabIndex={0}
         >
@@ -104,6 +105,7 @@ Array [
         <button
           aria-label="More"
           className="more"
+          id="toolbar-more"
           onClick={[Function]}
           tabIndex={0}
         >
@@ -156,6 +158,7 @@ Array [
         <button
           aria-label="Personal tools"
           className="user"
+          id="toolbar-personal"
           onClick={[Function]}
           tabIndex={0}
         >
