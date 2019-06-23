@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import { EditComponent as Edit } from './Edit';
+import Edit from './Edit';
 
 const mockStore = configureStore();
 

@@ -8,9 +8,6 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { withRouter } from 'react-router-dom';
-import { asyncConnect } from 'redux-connect';
-import { isEmpty, pick } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
@@ -66,7 +63,7 @@ const messages = defineMessages({
  * @class EditComponent
  * @extends Component
  */
-export class EditComponent extends Component {
+export default class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -248,26 +245,3 @@ export class EditComponent extends Component {
     return <div />;
   }
 }
-
-export default asyncConnect([
-  {
-    key: 'schema',
-    promise: ({ store: { dispatch, getState } }) =>
-      dispatch(getSchema(getState().content.data['@type'])),
-  },
-  {
-    key: 'content',
-    promise: ({ location, store: { dispatch, getState } }) => {
-      const { form } = getState();
-      if (!isEmpty(form)) {
-        return dispatch(
-          updateContent(
-            getBaseUrl(location.pathname),
-            pick(form, ['title', 'description', 'text']),
-          ),
-        );
-      }
-      return Promise.resolve(getState().content);
-    },
-  },
-])(withRouter(EditComponent));
