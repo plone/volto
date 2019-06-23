@@ -32,7 +32,6 @@ import { Icon, Toolbar } from '../../../components';
 import circleBottomSVG from '../../../icons/circle-bottom.svg';
 import circleTopSVG from '../../../icons/circle-top.svg';
 
-
 const messages = defineMessages({
   activateAndDeactivate: {
     id: 'Activate and deactivate',
@@ -280,7 +279,10 @@ export default class AddonsControlpanel extends Component {
               defaultMessage="To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see"
             />
             &nbsp;
-            <a href="http://docs.plone.org/manage/installing/installing_addons.html" target="_blank">
+            <a
+              href="http://docs.plone.org/manage/installing/installing_addons.html"
+              target="_blank"
+            >
               Installing a third party add-on
             </a>
             .
@@ -300,7 +302,9 @@ export default class AddonsControlpanel extends Component {
                     active={this.state.activeIndex === item.id}
                     index={item.id}
                     onClick={this.onAccordionClick}
-                    className={item.upgrade_info.available ? 'updateAvailable' : ''}
+                    className={
+                      item.upgrade_info.available ? 'updateAvailable' : ''
+                    }
                   >
                     {item.title}
                     {item.upgrade_info.available && (
@@ -352,11 +356,12 @@ export default class AddonsControlpanel extends Component {
                         </Button>
                       )}
                     </Button.Group>
-                    <div className="version" >
+                    <div className="version">
                       <FormattedMessage
                         id="Installed version"
-                        defaultMessage="Installed version" />:
-                      &nbsp; {item.version}
+                        defaultMessage="Installed version"
+                      />
+                      : &nbsp; {item.version}
                     </div>
                   </Accordion.Content>
                   <Divider />
@@ -424,8 +429,8 @@ export default class AddonsControlpanel extends Component {
                       <FormattedMessage
                         id="Latest version"
                         defaultMessage="Latest version"
-                      />:
-                      &nbsp;
+                      />
+                      : &nbsp;
                       {item.version}
                     </div>
                   </Accordion.Content>
