@@ -17,7 +17,8 @@ import AlignTile from '../../../../helpers/AlignTile';
 import { Icon } from '../../../../components';
 import { createContent } from '../../../../actions';
 import { flattenToAppURL, getBaseUrl, withSidebar } from '@plone/volto/helpers';
-
+import SidebarPortal from '../../../manage/Sidebar/SidebarPortal';
+import ImageSidebar from '../../../../components/manage/Sidebar/ImageSidebar';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
@@ -84,7 +85,6 @@ class Edit extends Component {
    */
   constructor(props) {
     super(props);
-
     this.onUploadImage = this.onUploadImage.bind(this);
     this.onSubmitUrl = this.onSubmitUrl.bind(this);
     this.onKeyDownVariantMenuForm = this.onKeyDownVariantMenuForm.bind(this);
@@ -209,125 +209,134 @@ class Edit extends Component {
    */
   render() {
     return (
-      <div
-        role="presentation"
-        onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={cx(
-          'tile image align',
-          {
-            selected: this.props.selected,
-            center: !Boolean(this.props.data.align),
-          },
-          this.props.data.align,
-        )}
-        tabIndex={0}
-        onKeyDown={e =>
-          this.props.handleKeyDown(
-            e,
-            this.props.index,
-            this.props.tile,
-            this.node,
-          )
-        }
-        ref={node => {
-          this.node = node;
-        }}
-      >
-        {this.props.selected && !!this.props.data.url && (
-          <div className="toolbar">
-            {!this.props.detached && (
-              <AlignTile
-                align={this.props.data.align}
-                onChangeTile={this.props.onChangeTile}
-                data={this.props.data}
-                tile={this.props.tile}
-              />
-            )}
-            {this.props.appendActions && <>{this.props.appendActions}</>}
-            {this.props.detached && this.props.appendActions && (
-              <div className="separator" />
-            )}
-            <Button.Group>
-              <Button icon basic onClick={this.props.openSidebar}>
-                <Icon name={folderSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() =>
-                  this.props.onChangeTile(this.props.tile, {
-                    ...this.props.data,
-                    url: '',
-                  })
-                }
-              >
-                <Icon name={clearSVG} size="24px" color="#e40166" />
-              </Button>
-            </Button.Group>
-            {this.props.appendSecondaryActions && (
-              <>{this.props.appendSecondaryActions}</>
-            )}
-          </div>
-        )}
-        {this.props.selected && !this.props.data.url && (
-          <div className="toolbar">
-            <Button.Group>
-              {this.props.data.url && (
+      <>
+        <div
+          role="presentation"
+          onClick={() => this.props.onSelectTile(this.props.tile)}
+          className={cx(
+            'tile image align',
+            {
+              selected: this.props.selected,
+              center: !Boolean(this.props.data.align),
+            },
+            this.props.data.align,
+          )}
+          tabIndex={0}
+          onKeyDown={e =>
+            this.props.handleKeyDown(
+              e,
+              this.props.index,
+              this.props.tile,
+              this.node,
+            )
+          }
+          ref={node => {
+            this.node = node;
+          }}
+        >
+          {this.props.selected && !!this.props.data.url && (
+            <div className="toolbar">
+              {!this.props.detached && (
+                <AlignTile
+                  align={this.props.data.align}
+                  onChangeTile={this.props.onChangeTile}
+                  data={this.props.data}
+                  tile={this.props.tile}
+                />
+              )}
+              {this.props.appendActions && <>{this.props.appendActions}</>}
+              {this.props.detached && this.props.appendActions && (
+                <div className="separator" />
+              )}
+              <Button.Group>
+                <Button icon basic onClick={this.props.openSidebar}>
+                  <Icon name={folderSVG} size="24px" />
+                </Button>
+              </Button.Group>
+              <Button.Group>
+                <Button
+                  icon
+                  basic
+                  onClick={() =>
+                    this.props.onChangeTile(this.props.tile, {
+                      ...this.props.data,
+                      url: '',
+                    })
+                  }
+                >
+                  <Icon name={clearSVG} size="24px" color="#e40166" />
+                </Button>
+              </Button.Group>
+              {this.props.appendSecondaryActions && (
+                <>{this.props.appendSecondaryActions}</>
+              )}
+            </div>
+          )}
+          {this.props.selected && !this.props.data.url && (
+            <div className="toolbar">
+              <Button.Group>
+                {this.props.data.url && (
+                  <label className="ui button basic icon">
+                    <Icon
+                      name={folderSVG}
+                      size="24px"
+                      onClick={this.props.openSidebar}
+                    />
+                  </label>
+                )}
                 <label className="ui button basic icon">
-                  <Icon
-                    name={folderSVG}
-                    size="24px"
-                    onClick={this.props.openSidebar}
+                  <Icon name={uploadSVG} size="24px" />
+                  <input
+                    type="file"
+                    onChange={this.onUploadImage}
+                    style={{ display: 'none' }}
                   />
                 </label>
+              </Button.Group>
+              {this.props.appendSecondaryActions && (
+                <>
+                  <div className="separator" />
+                  {this.props.appendSecondaryActions}
+                </>
               )}
-              <label className="ui button basic icon">
-                <Icon name={uploadSVG} size="24px" />
-                <input
-                  type="file"
-                  onChange={this.onUploadImage}
-                  style={{ display: 'none' }}
-                />
-              </label>
-            </Button.Group>
-            {this.props.appendSecondaryActions && (
-              <>
-                <div className="separator" />
-                {this.props.appendSecondaryActions}
-              </>
-            )}
-          </div>
-        )}
-        {this.props.data.url ? (
-          <p>
-            <img
-              src={
-                this.props.data.url.includes(settings.apiPath)
-                  ? `${flattenToAppURL(this.props.data.url)}/@@images/image`
-                  : this.props.data.url
-              }
-              alt={this.props.data.alt || ''}
-            />
-          </p>
-        ) : (
-          <div>
-            <Message>
-              {this.state.uploading && (
-                <Dimmer active>
-                  <Loader indeterminate>Uploading image</Loader>
-                </Dimmer>
-              )}
-              <center>
-                <Icon name={imageSVG} size="100px" color="#b8c6c8" />
-              </center>
-            </Message>
-          </div>
-        )}
-      </div>
+            </div>
+          )}
+          {this.props.data.url ? (
+            <p>
+              <img
+                src={
+                  this.props.data.url.includes(settings.apiPath)
+                    ? `${flattenToAppURL(this.props.data.url)}/@@images/image`
+                    : this.props.data.url
+                }
+                alt={this.props.data.alt || ''}
+              />
+            </p>
+          ) : (
+            <div>
+              <Message>
+                {this.state.uploading && (
+                  <Dimmer active>
+                    <Loader indeterminate>Uploading image</Loader>
+                  </Dimmer>
+                )}
+                <center>
+                  <Icon name={imageSVG} size="100px" color="#b8c6c8" />
+                </center>
+              </Message>
+            </div>
+          )}
+        </div>
+        <SidebarPortal selected={this.props.selected}>
+          <ImageSidebar
+            data={this.props.data}
+            tile={this.props.tile}
+            onChangeTile={this.props.onChangeTile}
+          />
+        </SidebarPortal>
+      </>
     );
   }
 }
 
-export default withSidebar(Edit);
+export default Edit;

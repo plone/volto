@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Segment, Grid } from 'semantic-ui-react';
 import { Icon, TextWidget } from '@plone/volto/components';
 import { flattenToAppURL } from '@plone/volto/helpers';
-import { Menu, Form, List } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 import AlignTile from '../../../helpers/AlignTile';
-import ObjectBrowser from './ObjectBrowser';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
@@ -20,7 +19,7 @@ const ImageSidebar = props => {
     setOrigin(props.data.url);
   }
 
-  return !browserIsOpen ? (
+  return (
     <Segment.Group raised>
       <header className="header pulled">
         <h2>Image</h2>
@@ -62,23 +61,31 @@ const ImageSidebar = props => {
               required={props.required}
               className={props.description ? 'help' : ''}
             >
-              <div className="wrapper">
-                <label htmlFor="field-align">align</label>
-              </div>
-              <AlignTile
-                align={props.data.align}
-                onChangeTile={props.onChangeTile}
-                data={props.data}
-                tile={props.tile}
-              />
+              <Grid>
+                <Grid.Row>
+                  <Grid.Column width="4">
+                    <div className="wrapper">
+                      <label htmlFor={`field-align`}>align</label>
+                    </div>
+                  </Grid.Column>
+                  <Grid.Column width="8">
+                    <AlignTile
+                      align={props.data.align}
+                      onChangeTile={props.onChangeTile}
+                      data={props.data}
+                      tile={props.tile}
+                    />
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
             </Form.Field>
           </Segment>
         </>
       )}
     </Segment.Group>
-  ) : (
-    <ObjectBrowser {...props} closeBrowser={closeBrowser} />
   );
 };
+
+ImageSidebar.defaultProps = { required: false };
 
 export default ImageSidebar;
