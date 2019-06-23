@@ -5,9 +5,24 @@
 @darkHotPink: #e40166;
 @toolbar-text: #252525;
 
+.has-toolbar {
+  .pusher {
+    height: 100px;
+    transition: height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  }
+}
+
+.has-toolbar-collapsed {
+  .pusher {
+    height: 20px;
+    transition: height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  }
+}
+
 #toolbar {
   .toolbar {
-    position: relative;
+    position: fixed;
+    z-index: 100;
     display: flex;
     width: 100%;
     height: 20px;
@@ -211,6 +226,7 @@
   .toolbar-content {
     z-index: 3;
     box-shadow: 0 1px 2px 0 #c7d5d8;
+    overflow-y: auto;
   }
 
   .pusher-puller {
@@ -237,7 +253,6 @@
 
   @media only screen and (min-width: @largestMobileScreen) {
     .toolbar {
-      position: fixed;
       width: 20px;
       height: 100%;
       flex-direction: row;

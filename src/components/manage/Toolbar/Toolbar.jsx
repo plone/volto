@@ -162,11 +162,9 @@ class Toolbar extends Component {
         menuStyle: { bottom: 0 },
       }));
     } else {
-      const elemOffsetTop = e.target.getBoundingClientRect().top;
-      console.log(e.target);
       this.setState(state => ({
         showMenu: !state.showMenu,
-        menuStyle: { top: `${elemOffsetTop}px` },
+        menuStyle: { top: 0 },
       }));
     }
     this.loadComponent(selector);

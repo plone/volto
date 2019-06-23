@@ -1,4 +1,23 @@
 // Object Browser Container
+
+@media only screen and (max-width: @largestMobileScreen) {
+  .has-toolbar {
+    .sidebar-container {
+      top: 100px;
+      bottom: 0;
+      height: calc(100vh - 100px);
+    }
+  }
+
+  .has-toolbar-collapsed {
+    .sidebar-container {
+      top: 20px;
+      bottom: 0;
+      height: calc(100vh - 20px);
+    }
+  }
+}
+
 .sidebar-container {
   position: fixed;
   z-index: 100;
@@ -8,13 +27,9 @@
   height: 100vh;
   background-color: #fff;
   box-shadow: 0 1px 2px 0 #c7d5d8;
-  transition: right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-
-  @media only screen and (max-width: @largestMobileScreen) {
-    top: initial;
-    bottom: 0;
-    height: calc(100vh - 100px);
-  }
+  transition: right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+    height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+    top 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 
   &.collapsed {
     right: -355px;
