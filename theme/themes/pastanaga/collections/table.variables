@@ -15,9 +15,12 @@
 /* Table Cell */
 
 /* Table Header */
-@headerBackground: @white;
+@headerBackground: #FAF8F8;
 @headerFontWeight: @normal;
 @headerTextTransform: uppercase;
+@headerColor: #777776;
+@borderRadius: 0;
+@borderCollapse: collapse;
 
 /* Table Footer */
 @footerBackground: @white;

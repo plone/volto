@@ -30,7 +30,7 @@ the original component has in the Volto source code and place it inside the
 So, for example, if we want to replace the Logo which is located in
 Volto at `components/theme/Logo/Logo.svg`, the folder structure needs 
 to match the folder structure of Volto in the `customizations` folder. 
-So the final path of the new overrided component will
+So the final path of the new overridden component will
 be: `customizations/components/theme/Logo/Logo.svg`.
 
 ## Change The Tags Component

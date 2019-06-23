@@ -10,14 +10,19 @@
 - Add Volto version number in control panel @nzambello
 - Remove Mosaic component @tisto
 - Added translations to italian @nzambello
+- Add table tile @robgietema
 
 ### Changes
 
+- Add a delay when filtering content in folder contents so it doesn't overload backend @vangheem
 - Small UX/UI fixes @sneridagh
 - Fix query string search in subjects vocab field @gomez
 - Removed the delete button from the title tile @pnicolli
 - Rewrite sidebar @robgietma @sneridagh
 - Added SidebarPortal component for easier sidebar handling @pnicolli
+- Fixed tiles outline in Pastanaga editor @pnicolli
+- Fix typos @balavec
+- Fix warnings for boolean fields @miziodel
 
 ### Internal
 
