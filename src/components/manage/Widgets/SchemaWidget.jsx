@@ -550,7 +550,10 @@ export default class SchemaWidget extends Component {
                 content={err}
               />
             ))}
-          <div className="ui pointing secondary attached tabular menu">
+          <div
+            role="tablist"
+            className="ui pointing secondary attached tabular menu"
+          >
             {map(value.fieldsets, (item, index) => (
               <SchemaWidgetFieldset
                 key={item.id}

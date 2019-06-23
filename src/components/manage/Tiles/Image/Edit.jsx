@@ -309,14 +309,13 @@ export default class Edit extends Component {
         {this.props.selected && !this.props.data.url && (
           <div className="toolbar">
             <Icon name={imageSVG} size="24px" />
-            <form onKeyDown={this.onKeyDownVariantMenuForm}>
-              <Input
-                onChange={this.onChangeUrl}
-                placeholder={this.props.intl.formatMessage(
-                  messages.ImageTileInputPlaceholder,
-                )}
-              />
-            </form>
+            <Input
+              onKeyDown={this.onKeyDownVariantMenuForm}
+              onChange={this.onChangeUrl}
+              placeholder={this.props.intl.formatMessage(
+                messages.ImageTileInputPlaceholder,
+              )}
+            />
             <Button.Group>
               <label className="ui button basic icon">
                 <Icon name={folderSVG} size="24px" />

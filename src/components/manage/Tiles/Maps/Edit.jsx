@@ -274,14 +274,13 @@ export default class Edit extends Component {
         {this.props.selected && !this.props.data.url && (
           <div className="toolbar">
             <Icon name={globeSVG} size="24px" />
-            <form onKeyDown={this.onKeyDownVariantMenuForm}>
-              <Input
-                onChange={this.onChangeUrl}
-                placeholder={this.props.intl.formatMessage(
-                  messages.ImageTileInputPlaceholder,
-                )}
-              />
-            </form>
+            <Input
+              onKeyDown={this.onKeyDownVariantMenuForm}
+              onChange={this.onChangeUrl}
+              placeholder={this.props.intl.formatMessage(
+                messages.ImageTileInputPlaceholder,
+              )}
+            />
           </div>
         )}
         {this.props.data.url ? (
