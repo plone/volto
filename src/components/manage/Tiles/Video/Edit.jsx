@@ -173,7 +173,6 @@ export default class Edit extends Component {
           },
           this.props.data.align,
         )}
-        //        tabIndex={0}
         onKeyDown={e =>
           this.props.handleKeyDown(
             e,
