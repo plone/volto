@@ -94,6 +94,8 @@ const defaultTilesEditMap = {
   slider: EditSliderTile,
 };
 
+const requiredTiles = ['title'];
+
 const sidebarComponents = {
   image: ImageSidebar,
   slider: SliderSidebar,
@@ -104,5 +106,6 @@ export {
   defaultTilesViewMap,
   defaultTilesEditMap,
   messagesTiles,
+  requiredTiles,
   sidebarComponents,
 };
