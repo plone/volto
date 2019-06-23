@@ -31,12 +31,12 @@ exports[`renders an array widget component 1`] = `
           onKeyDown={[Function]}
         >
           <div
-            className="css-mgvt82 react-select__control"
+            className="css-1bd20dz react-select__control"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >
             <div
-              className="css-1hwfws3 react-select__value-container react-select__value-container--is-multi"
+              className="css-1dvrfad react-select__value-container react-select__value-container--is-multi"
             >
               <div
                 className="css-1492t68 react-select__placeholder"
@@ -108,7 +108,7 @@ exports[`renders an array widget component 1`] = `
               />
               <div
                 aria-hidden="true"
-                className="css-1ep9fjw react-select__indicator react-select__dropdown-indicator"
+                className="css-9t8fgp react-select__indicator react-select__dropdown-indicator"
                 onMouseDown={[Function]}
                 onTouchEnd={[Function]}
               >
