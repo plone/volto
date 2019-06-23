@@ -36,7 +36,10 @@ describe('PersonalInformation', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <PersonalInformation location={{ pathname: '/blog' }} />
+          <PersonalInformation
+            location={{ pathname: '/blog' }}
+            closeMenu={() => {}}
+          />
         </MemoryRouter>
       </Provider>,
     );
