@@ -9,6 +9,7 @@ import ViewHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImag
 import ViewMapTile from '@plone/volto/components/manage/Tiles/Maps/View';
 import ViewHTMLTile from '@plone/volto/components/manage/Tiles/HTML/View';
 import ViewSliderTile from '@plone/volto/components/manage/Tiles/Slider/View';
+import ViewTableTile from '@plone/volto/components/manage/Tiles/Table/View';
 
 import EditTitleTile from '@plone/volto/components/manage/Tiles/Title/Edit';
 import EditDescriptionTile from '@plone/volto/components/manage/Tiles/Description/Edit';
@@ -19,14 +20,16 @@ import EditHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImag
 import EditMapTile from '@plone/volto/components/manage/Tiles/Maps/Edit';
 import EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
 import EditSliderTile from '@plone/volto/components/manage/Tiles/Slider/Edit';
+import EditTableTile from '@plone/volto/components/manage/Tiles/Table/Edit';
 
-import ImageSidebar from '@plone/volto/components/manage/Sidebar/ImageSidebar';
-import SliderSidebar from '@plone/volto/components/manage/Sidebar/SliderSidebar';
+//import ImageSidebar from '@plone/volto/components/manage/Sidebar/ImageSidebar';
+//import SliderSidebar from '@plone/volto/components/manage/Sidebar/SliderSidebar';
 
 import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import heroSVG from '@plone/volto/icons/hero.svg';
 import sliderSVG from '@plone/volto/icons/slider.svg';
+import tableSVG from '@plone/volto/icons/table.svg';
 
 const customTiles = [
   {
@@ -44,6 +47,10 @@ const customTiles = [
   {
     title: 'slider',
     icon: sliderSVG,
+  },
+  {
+    title: 'table',
+    icon: tableSVG,
   },
 ];
 
@@ -68,6 +75,10 @@ const messagesTiles = defineMessages({
     id: 'video',
     defaultMessage: 'Video',
   },
+  table: {
+    id: 'table',
+    defaultMessage: 'Table',
+  },
 });
 
 const defaultTilesViewMap = {
@@ -80,6 +91,7 @@ const defaultTilesViewMap = {
   maps: ViewMapTile,
   html: ViewHTMLTile,
   slider: ViewSliderTile,
+  table: ViewTableTile,
 };
 
 const defaultTilesEditMap = {
@@ -92,13 +104,14 @@ const defaultTilesEditMap = {
   maps: EditMapTile,
   html: EditHTMLTile,
   slider: EditSliderTile,
+  table: EditTableTile,
 };
 
 const requiredTiles = ['title'];
 
 const sidebarComponents = {
-  image: ImageSidebar,
-  slider: SliderSidebar,
+  //image: ImageSidebar,
+  //slider: SliderSidebar,
 };
 
 export {

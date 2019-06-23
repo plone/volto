@@ -322,6 +322,7 @@ export default class ContentsComponent extends Component {
         selectedCount: defaultIndexes.length + 1,
       },
     };
+    this.filterTimeout = null;
   }
 
   /**
@@ -441,11 +442,17 @@ export default class ContentsComponent extends Component {
    * @returns {undefined}
    */
   onChangeFilter(event, { value }) {
+    const self = this;
+    clearTimeout(self.filterTimeout);
     this.setState(
       {
         filter: value,
       },
-      () => this.fetchContents(),
+      () => {
+        self.filterTimeout = setTimeout(() => {
+          self.fetchContents();
+        }, 200);
+      },
     );
   }
 
