@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { concat, findIndex, map, omit, slice, without } from 'lodash';
 import move from 'lodash-move';
 import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
@@ -95,17 +96,12 @@ const messages = defineMessages({
   },
 });
 
-@DragDropContext(HTML5Backend)
-@injectIntl
-@connect((state, props) => ({
-  value: JSON.parse(props.value),
-}))
 /**
  * SchemaWidget component class.
  * @class SchemaWidget
  * @extends Component
  */
-export default class SchemaWidget extends Component {
+class SchemaWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -778,3 +774,11 @@ export default class SchemaWidget extends Component {
     );
   }
 }
+
+export default compose(
+  DragDropContext(HTML5Backend),
+  injectIntl,
+  connect((state, props) => ({
+    value: JSON.parse(props.value),
+  })),
+)(SchemaWidget);

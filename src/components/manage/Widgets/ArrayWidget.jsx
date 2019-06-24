@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import { Form, Grid, Label } from 'semantic-ui-react';
 import { isObject, map } from 'lodash';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { components } from 'react-select';
 import AsyncPaginate from 'react-select-async-paginate';
 import CreatableSelect from 'react-select/lib/Creatable';
@@ -105,34 +104,15 @@ const customSelectStyles = {
   }),
 };
 
-function getChoices(choices) {
-  return choices ? choices.map(item => ({ label: item, value: item })) : [];
-}
+const getChoices = choices =>
+  choices ? choices.map(item => ({ label: item, value: item })) : [];
 
-@connect(
-  (state, props) => {
-    const vocabBaseUrl =
-      getVocabFromHint(props) ||
-      getVocabFromField(props) ||
-      getVocabFromItems(props);
-    const vocabState = state.vocabularies[vocabBaseUrl];
-    if (vocabState) {
-      return {
-        choices: vocabState.items,
-        itemsTotal: vocabState.itemsTotal,
-        loading: Boolean(vocabState.loading),
-      };
-    }
-    return {};
-  },
-  dispatch => bindActionCreators({ getVocabulary }, dispatch),
-)
 /**
  * ArrayWidget component class.
  * @class ArrayWidget
  * @extends Component
  */
-export default class ArrayWidget extends Component {
+class ArrayWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -335,3 +315,22 @@ export default class ArrayWidget extends Component {
     );
   }
 }
+
+export default connect(
+  (state, props) => {
+    const vocabBaseUrl =
+      getVocabFromHint(props) ||
+      getVocabFromField(props) ||
+      getVocabFromItems(props);
+    const vocabState = state.vocabularies[vocabBaseUrl];
+    if (vocabState) {
+      return {
+        choices: vocabState.items,
+        itemsTotal: vocabState.itemsTotal,
+        loading: Boolean(vocabState.loading),
+      };
+    }
+    return {};
+  },
+  { getVocabulary },
+)(ArrayWidget);

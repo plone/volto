@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { updateIntl } from 'react-intl-redux';
 import { map, keys } from 'lodash';
 import cookie from 'react-cookie';
@@ -49,11 +49,6 @@ const messages = defineMessages({
  * @class PersonalPreferences
  * @extends Component
  */
-@injectIntl
-@connect(
-  null,
-  dispatch => bindActionCreators({ updateIntl }, dispatch),
-)
 class PersonalPreferences extends Component {
   /**
    * Property types.
@@ -149,4 +144,10 @@ class PersonalPreferences extends Component {
   }
 }
 
-export default PersonalPreferences;
+export default compose(
+  injectIntl,
+  connect(
+    null,
+    { updateIntl },
+  ),
+)(PersonalPreferences);

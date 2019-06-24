@@ -2,28 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
 import { find } from 'lodash';
 
 import { Icon, Display, Workflow } from '../../../components';
+import { getBaseUrl } from '../../../helpers';
+
 import rightArrowSVG from '../../../icons/right-key.svg';
 import userSVG from '../../../icons/user.svg';
-
-import { getBaseUrl } from '../../../helpers';
 
 /**
  * More container class.
  * @class More
  * @extends Component
  */
-@connect(
-  (state, props) => ({
-    actions: state.actions.actions,
-    pathname: props.pathname,
-    content: state.content.data,
-  }),
-  {},
-)
 class More extends Component {
   static propTypes = {
     actions: PropTypes.shape({
@@ -132,4 +123,11 @@ class More extends Component {
   }
 }
 
-export default More;
+export default connect(
+  (state, props) => ({
+    actions: state.actions.actions,
+    pathname: props.pathname,
+    content: state.content.data,
+  }),
+  {},
+)(More);

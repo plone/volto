@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { concat, filter, last, map, uniqBy } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
@@ -29,20 +29,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  state => ({
-    request: state.workflow.transition,
-    workflows: state.workflow.multiple,
-  }),
-  dispatch => bindActionCreators({ getWorkflow, transitionWorkflow }, dispatch),
-)
 /**
  * ContentsWorkflowModal class.
  * @class ContentsWorkflowModal
  * @extends Component
  */
-export default class ContentsWorkflowModal extends Component {
+class ContentsWorkflowModal extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -176,3 +168,14 @@ export default class ContentsWorkflowModal extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      request: state.workflow.transition,
+      workflows: state.workflow.multiple,
+    }),
+    { getWorkflow, transitionWorkflow },
+  ),
+)(ContentsWorkflowModal);

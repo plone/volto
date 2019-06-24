@@ -6,9 +6,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { last, uniqBy } from 'lodash';
-import { FormattedMessage } from 'react-intl';
+import { uniqBy } from 'lodash';
 import Select, { components } from 'react-select';
 import getWorkflowMapping from '../../../constants/Workflows';
 import { Icon } from '../../../components';
@@ -135,21 +133,12 @@ const customSelectStyles = {
   }),
 };
 
-@connect(
-  state => ({
-    loaded: state.workflow.transition.loaded,
-    content: state.content.data,
-    history: state.workflow.history,
-    transitions: state.workflow.transitions,
-  }),
-  dispatch => bindActionCreators({ getWorkflow, transitionWorkflow }, dispatch),
-)
 /**
  * Workflow container class.
  * @class Workflow
  * @extends Component
  */
-export default class Workflow extends Component {
+class Workflow extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -303,3 +292,13 @@ export default class Workflow extends Component {
     );
   }
 }
+
+export default connect(
+  state => ({
+    loaded: state.workflow.transition.loaded,
+    content: state.content.data,
+    history: state.workflow.history,
+    transitions: state.workflow.transitions,
+  }),
+  { getWorkflow, transitionWorkflow },
+)(Workflow);
