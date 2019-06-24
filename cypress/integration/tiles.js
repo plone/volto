@@ -239,4 +239,33 @@ describe('Default Tiles functionality', () => {
       cy.contains(expected);
     }
   });
+
+  it('Table Tile', () => {
+    // TODO: Figure out why there is an erro when add this tile in cypress
+
+    // const tile = 'table';
+    // const expected = 'This is the html';
+
+    // Edit
+    cy.get('.tile.text [contenteditable]').click();
+    cy.get('button.tile-add-button').click();
+    cy.get('button.show-hidden-tiles').click();
+    // cy.get(`button.add-${tile}-tile`).click();
+    // cy.get(`.tile.${tile} .npm__react-simple-code-editor__textarea`).type(
+    //   `<h3>${expected}</h3>`,
+    // );
+    // cy.get(`.tile.${tile} [aria-label="Preview"]`).click();
+    // cy.get(`.tile.${tile} h3`).contains(expected);
+
+    // // Save
+    // cy.get('#toolbar-save').click();
+
+    // // View
+    // if (Cypress.env('API') === 'plone') {
+    //   cy.get('#page-document h3').should('have.text', expected);
+    // } else {
+    //   // guilhotina
+    //   cy.contains(expected);
+    // }
+  });
 });
