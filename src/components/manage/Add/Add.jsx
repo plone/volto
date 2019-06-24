@@ -7,10 +7,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { withRouter } from 'react-router-dom';
-import { asyncConnect } from 'redux-connect';
-import { keys, isEmpty, pick } from 'lodash';
+import { compose } from 'redux';
+import { keys } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
@@ -45,26 +43,12 @@ const messages = defineMessages({
   },
 });
 
-@DragDropContext(HTML5Backend)
-@injectIntl
-@connect(
-  (state, props) => ({
-    createRequest: state.content.create,
-    schemaRequest: state.schema,
-    content: state.content.data,
-    schema: state.schema.schema,
-    pathname: props.location.pathname,
-    returnUrl: qs.parse(props.location.search).return_url,
-    type: qs.parse(props.location.search).type,
-  }),
-  dispatch => bindActionCreators({ createContent, getSchema }, dispatch),
-)
 /**
- * AddComponent class.
- * @class AddComponent
+ * Add class.
+ * @class Add
  * @extends Component
  */
-export class AddComponent extends Component {
+class Add extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -118,11 +102,11 @@ export class AddComponent extends Component {
   }
 
   /**
-   * Component will mount
-   * @method componentWillMount
+   * Component did mount
+   * @method componentDidMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  componentDidMount() {
     this.props.getSchema(this.props.type);
   }
 
@@ -252,25 +236,19 @@ export class AddComponent extends Component {
   }
 }
 
-export default asyncConnect([
-  {
-    key: 'schema',
-    promise: ({ location, store: { dispatch } }) =>
-      dispatch(getSchema(qs.parse(location.search).type)),
-  },
-  {
-    key: 'content',
-    promise: ({ location, store: { dispatch, getState } }) => {
-      const { form } = getState();
-      if (!isEmpty(form)) {
-        return dispatch(
-          createContent(getBaseUrl(location.pathname), {
-            ...pick(form, ['title', 'description', 'text']),
-            '@type': 'Document',
-          }),
-        );
-      }
-      return Promise.resolve(getState().content);
-    },
-  },
-])(withRouter(AddComponent));
+export default compose(
+  DragDropContext(HTML5Backend),
+  injectIntl,
+  connect(
+    (state, props) => ({
+      createRequest: state.content.create,
+      schemaRequest: state.schema,
+      content: state.content.data,
+      schema: state.schema.schema,
+      pathname: props.location.pathname,
+      returnUrl: qs.parse(props.location.search).return_url,
+      type: qs.parse(props.location.search).type,
+    }),
+    { createContent, getSchema },
+  ),
+)(Add);

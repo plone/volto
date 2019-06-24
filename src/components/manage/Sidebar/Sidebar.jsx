@@ -23,13 +23,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
 /**
  * Sidebar container class.
  * @class Sidebar
  * @extends Component
  */
-export default class Sidebar extends Component {
+class Sidebar extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -137,3 +136,5 @@ export default class Sidebar extends Component {
     );
   }
 }
+
+export default injectIntl(Sidebar);

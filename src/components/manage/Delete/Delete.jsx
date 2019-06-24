@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import { Button, Container, List, Segment } from 'semantic-ui-react';
@@ -42,16 +42,6 @@ const messages = defineMessages({
  * @class Delete
  * @extends Component
  */
-@injectIntl
-@connect(
-  (state, props) => ({
-    content: state.content.data,
-    deleteRequest: state.content.delete,
-    pathname: props.location.pathname,
-    returnUrl: qs.parse(props.location.search).return_url,
-  }),
-  dispatch => bindActionCreators({ deleteContent, getContent }, dispatch),
-)
 class Delete extends Component {
   /**
    * Property types.
@@ -200,4 +190,16 @@ class Delete extends Component {
   }
 }
 
-export default withRouter(Delete);
+export default compose(
+  withRouter,
+  injectIntl,
+  connect(
+    (state, props) => ({
+      content: state.content.data,
+      deleteRequest: state.content.delete,
+      pathname: props.location.pathname,
+      returnUrl: qs.parse(props.location.search).return_url,
+    }),
+    { deleteContent, getContent },
+  ),
+)(Delete);
