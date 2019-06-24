@@ -26,7 +26,7 @@ describe('Default Tiles functionality', () => {
     if (Cypress.env('API') === 'plone') {
       cy.get('#page-document').should('have.text', expected);
     } else {
-      // guilhotina
+      // guillotina
       cy.contains(expected);
     }
   });
@@ -46,7 +46,7 @@ describe('Default Tiles functionality', () => {
     if (Cypress.env('API') === 'plone') {
       cy.get('.documentDescription').should('have.text', expected);
     } else {
-      // guilhotina
+      // guillotina
       cy.contains(expected);
     }
   });
@@ -72,7 +72,7 @@ describe('Default Tiles functionality', () => {
         expect($el[0].innerText).to.include(lines.join('\n\n')),
       );
     } else {
-      // guilhotina
+      // guillotina
       lines.map(line => cy.contains(line));
     }
   });
@@ -90,8 +90,8 @@ describe('Default Tiles functionality', () => {
       .type(expected)
       .type('{enter}');
 
-    // TODO: Fix tests for Guilhotina
-    if (Cypress.env('API') === 'guilhotina') {
+    // TODO: Fix tests for Guillotina
+    if (Cypress.env('API') === 'guillotina') {
       return;
     }
 
@@ -104,7 +104,7 @@ describe('Default Tiles functionality', () => {
     if (Cypress.env('API') === 'plone') {
       cy.get('#page-document img').should('have.attr', 'src', expected);
     } else {
-      // guilhotina
+      // guillotina
       cy.contains(expected);
     }
   });
@@ -121,8 +121,8 @@ describe('Default Tiles functionality', () => {
       .type(expected)
       .type('{enter}');
 
-    // TODO: Fix tests for Guilhotina
-    if (Cypress.env('API') === 'guilhotina') {
+    // TODO: Fix tests for Guillotina
+    if (Cypress.env('API') === 'guillotina') {
       return;
     }
 
@@ -139,7 +139,7 @@ describe('Default Tiles functionality', () => {
         .should('have.attr', 'src')
         .should('include', 'youtube');
     } else {
-      // guilhotina
+      // guillotina
       cy.contains(expected);
     }
   });
@@ -186,7 +186,7 @@ describe('Default Tiles functionality', () => {
     if (Cypress.env('API') === 'plone') {
       // cy.get('#page-document h1').should('have.text', expected);
     } else {
-      // guilhotina
+      // guillotina
       // cy.contains(expected);
     }
   });
@@ -205,8 +205,8 @@ describe('Default Tiles functionality', () => {
       .type(expected)
       .type('{enter}');
 
-    // TODO: Fix tests for Guilhotina
-    if (Cypress.env('API') === 'guilhotina') {
+    // TODO: Fix tests for Guillotina
+    if (Cypress.env('API') === 'guillotina') {
       return;
     }
 
@@ -223,7 +223,7 @@ describe('Default Tiles functionality', () => {
         .should('have.attr', 'src')
         .should('include', 'maps');
     } else {
-      // guilhotina
+      // guillotina
       cy.contains(expected);
     }
   });
@@ -250,7 +250,7 @@ describe('Default Tiles functionality', () => {
     if (Cypress.env('API') === 'plone') {
       cy.get('#page-document h3').should('have.text', expected);
     } else {
-      // guilhotina
+      // guillotina
       cy.contains(expected);
     }
   });
@@ -279,7 +279,7 @@ describe('Default Tiles functionality', () => {
     // if (Cypress.env('API') === 'plone') {
     //   cy.get('#page-document h3').should('have.text', expected);
     // } else {
-    //   // guilhotina
+    //   // guillotina
     //   cy.contains(expected);
     // }
   });
