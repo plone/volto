@@ -15,6 +15,7 @@ describe('Workflow', () => {
         locale: 'en',
         messages: {},
       },
+      content: { data: { review_state: 'published' } },
     });
     const component = renderer.create(
       <Provider store={store}>
@@ -36,6 +37,7 @@ describe('Workflow', () => {
         locale: 'en',
         messages: {},
       },
+      content: { data: { review_state: 'private' } },
     });
     const component = renderer.create(
       <Provider store={store}>

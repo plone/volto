@@ -27,7 +27,14 @@ const messages = defineMessages({
  * @returns {string} Markup of the component
  */
 const Footer = ({ intl }) => (
-  <Segment vertical padded inverted color="grey" textAlign="center">
+  <Segment
+    role="contentinfo"
+    vertical
+    padded
+    inverted
+    color="grey"
+    textAlign="center"
+  >
     <Container>
       <Segment basic inverted color="grey" className="discreet">
         <FormattedMessage
@@ -74,32 +81,33 @@ const Footer = ({ intl }) => (
         />
       </Segment>
       <List horizontal inverted>
-        <List.Item>
-          <Link href="/sitemap">
+        {/* wrap in div for a11y reasons: listitem role cannot be on the <a> element directly */}
+        <div role="listitem" className="item">
+          <Link className="item" to="/sitemap">
             <FormattedMessage id="Site Map" defaultMessage="Site Map" />
           </Link>
-        </List.Item>
-        <List.Item>
-          <Link href="/accessibility-info">
+        </div>
+        <div role="listitem" className="item">
+          <Link className="item" to="/accesibility-info">
             <FormattedMessage
               id="Accessibility"
               defaultMessage="Accessibility"
             />
           </Link>
-        </List.Item>
-        <List.Item>
-          <Link to="contact-form" className="item">
+        </div>
+        <div role="listitem" className="item">
+          <Link className="item" to="/contact-form">
             <FormattedMessage id="Contact" defaultMessage="Contact" />
           </Link>
-        </List.Item>
-        <List.Item>
-          <Link href="http://plone.com">
+        </div>
+        <div role="listitem" className="item">
+          <a className="item" href="https://plone.com">
             <FormattedMessage
               id="Powered by Plone & Python"
               defaultMessage="Powered by Plone & Python"
             />
-          </Link>
-        </List.Item>
+          </a>
+        </div>
       </List>
     </Container>
   </Segment>

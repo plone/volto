@@ -280,12 +280,19 @@ export default class WysiwygWidget extends Component {
             <Grid.Column width="8">
               {onEdit && (
                 <div className="toolbar">
-                  <a className="item" onClick={() => onEdit(id, this.schema)}>
+                  <button
+                    className="item"
+                    onClick={() => onEdit(id, this.schema)}
+                  >
                     <Icon name="write square" size="large" color="blue" />
-                  </a>
-                  <a className="item" onClick={() => onDelete(id)}>
+                  </button>
+                  <button
+                    aria-label="Delete"
+                    className="item"
+                    onClick={() => onDelete(id)}
+                  >
                     <Icon name="close" size="large" color="red" />
-                  </a>
+                  </button>
                 </div>
               )}
               <div style={{ boxSizing: 'initial' }}>

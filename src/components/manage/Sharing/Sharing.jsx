@@ -30,7 +30,9 @@ import {
 
 import { updateSharing, getSharing } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
-import { Toolbar } from '../../../components';
+import { Icon as IconNext, Toolbar } from '../../../components';
+
+import backSVG from '../../../icons/back.svg';
 
 const messages = defineMessages({
   searchForUserOrGroup: {
@@ -379,6 +381,7 @@ class SharingComponent extends Component {
                 type="submit"
                 floated="right"
                 icon="arrow right"
+                aria-label={this.props.intl.formatMessage(messages.save)}
                 title={this.props.intl.formatMessage(messages.save)}
                 size="big"
                 onClick={this.onSubmit}
@@ -388,6 +391,7 @@ class SharingComponent extends Component {
                 circular
                 secondary
                 icon="remove"
+                aria-label={this.props.intl.formatMessage(messages.cancel)}
                 title={this.props.intl.formatMessage(messages.cancel)}
                 floated="right"
                 size="big"
@@ -399,12 +403,13 @@ class SharingComponent extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
+            hideDefaultViewButtons
             inner={
               <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
-                <Icon
-                  name="arrow left"
-                  size="big"
-                  color="blue"
+                <IconNext
+                  name={backSVG}
+                  className="contents circled"
+                  size="30px"
                   title={this.props.intl.formatMessage(messages.back)}
                 />
               </Link>

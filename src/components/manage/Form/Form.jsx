@@ -9,7 +9,6 @@ import { keys, map, mapValues, omit, uniq, without } from 'lodash';
 import move from 'lodash-move';
 import {
   Button,
-  Container,
   Form as UiForm,
   Segment,
   Tab,
@@ -17,9 +16,13 @@ import {
 } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { v4 as uuid } from 'uuid';
+import { Portal } from 'react-portal';
 
-import { EditTile, Field } from '../../../components';
+import { EditTile, Icon, Field } from '../../../components';
 import { getTilesFieldname, getTilesLayoutFieldname } from '../../../helpers';
+
+import aheadSVG from '@plone/volto/icons/ahead.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   addTile: {
@@ -537,80 +540,24 @@ class Form extends Component {
             selected={this.state.selected === tile}
           />
         ))}
-      </div>
-    ) : (
-      <Container>
-        <UiForm
-          method="post"
-          onSubmit={this.onSubmit}
-          error={keys(this.state.errors).length > 0}
+        <Portal
+          node={__CLIENT__ && document.getElementById('sidebar-metadata')}
         >
-          <Segment.Group raised>
-            {schema.fieldsets.length > 1 && (
-              <Tab
-                menu={{
-                  secondary: true,
-                  pointing: true,
-                  attached: true,
-                  tabular: true,
-                  className: 'formtabs',
-                }}
-                panes={map(schema.fieldsets, item => ({
-                  menuItem: item.title,
-                  render: () => [
-                    this.props.title && (
-                      <Segment secondary attached key={this.props.title}>
-                        {this.props.title}
-                      </Segment>
-                    ),
-                    ...map(item.fields, (field, index) => (
-                      <Field
-                        {...schema.properties[field]}
-                        id={field}
-                        focus={index === 0}
-                        value={this.state.formData[field]}
-                        required={schema.required.indexOf(field) !== -1}
-                        onChange={this.onChangeField}
-                        key={field}
-                        error={this.state.errors[field]}
-                      />
-                    )),
-                  ],
-                }))}
-              />
-            )}
-            {schema.fieldsets.length === 1 && (
-              <Segment>
-                {this.props.title && (
-                  <Segment className="primary">{this.props.title}</Segment>
-                )}
-                {this.props.description && (
-                  <Segment secondary>{this.props.description}</Segment>
-                )}
-                {keys(this.state.errors).length > 0 && (
-                  <Message
-                    icon="warning"
-                    negative
-                    attached
-                    header={this.props.intl.formatMessage(messages.error)}
-                    content={this.props.intl.formatMessage(
-                      messages.thereWereSomeErrors,
-                    )}
-                  />
-                )}
-                {this.props.error && (
-                  <Message
-                    icon="warning"
-                    negative
-                    attached
-                    header={this.props.intl.formatMessage(messages.error)}
-                    content={this.props.error.message}
-                  />
-                )}
-                {map(schema.fieldsets[0].fields, field => (
+          <UiForm
+            method="post"
+            onSubmit={this.onSubmit}
+            error={keys(this.state.errors).length > 0}
+          >
+            {map(schema.fieldsets, item => [
+              <Segment secondary attached>
+                {item.title}
+              </Segment>,
+              <Segment attached>
+                {map(item.fields, (field, index) => (
                   <Field
                     {...schema.properties[field]}
                     id={field}
+                    focus={index === 0}
                     value={this.state.formData[field]}
                     required={schema.required.indexOf(field) !== -1}
                     onChange={this.onChangeField}
@@ -618,44 +565,131 @@ class Form extends Component {
                     error={this.state.errors[field]}
                   />
                 ))}
-              </Segment>
-            )}
-            {!this.props.hideActions && (
-              <Segment className="actions" clearing>
-                {onSubmit && (
-                  <Button
-                    basic
-                    circular
-                    primary
-                    floated="right"
-                    icon="arrow right"
-                    type="submit"
-                    title={
-                      this.props.submitLabel
-                        ? this.props.submitLabel
-                        : this.props.intl.formatMessage(messages.save)
-                    }
-                    size="big"
-                    loading={this.props.loading}
-                  />
-                )}
-                {onCancel && (
-                  <Button
-                    basic
-                    circular
-                    secondary
-                    icon="remove"
-                    title={this.props.intl.formatMessage(messages.cancel)}
-                    floated="right"
-                    size="big"
-                    onClick={onCancel}
-                  />
-                )}
-              </Segment>
-            )}
-          </Segment.Group>
-        </UiForm>
-      </Container>
+              </Segment>,
+            ])}
+          </UiForm>
+        </Portal>
+      </div>
+    ) : (
+      <UiForm
+        method="post"
+        onSubmit={this.onSubmit}
+        error={keys(this.state.errors).length > 0}
+      >
+        <Segment.Group raised>
+          {schema.fieldsets.length > 1 && (
+            <Tab
+              menu={{
+                secondary: true,
+                pointing: true,
+                attached: true,
+                tabular: true,
+                className: 'formtabs',
+              }}
+              panes={map(schema.fieldsets, item => ({
+                menuItem: item.title,
+                render: () => [
+                  this.props.title && (
+                    <Segment secondary attached key={this.props.title}>
+                      {this.props.title}
+                    </Segment>
+                  ),
+                  ...map(item.fields, (field, index) => (
+                    <Field
+                      {...schema.properties[field]}
+                      id={field}
+                      focus={index === 0}
+                      value={this.state.formData[field]}
+                      required={schema.required.indexOf(field) !== -1}
+                      onChange={this.onChangeField}
+                      key={field}
+                      error={this.state.errors[field]}
+                    />
+                  )),
+                ],
+              }))}
+            />
+          )}
+          {schema.fieldsets.length === 1 && (
+            <Segment>
+              {this.props.title && (
+                <Segment className="primary">{this.props.title}</Segment>
+              )}
+              {this.props.description && (
+                <Segment secondary>{this.props.description}</Segment>
+              )}
+              {keys(this.state.errors).length > 0 && (
+                <Message
+                  icon="warning"
+                  negative
+                  attached
+                  header={this.props.intl.formatMessage(messages.error)}
+                  content={this.props.intl.formatMessage(
+                    messages.thereWereSomeErrors,
+                  )}
+                />
+              )}
+              {this.props.error && (
+                <Message
+                  icon="warning"
+                  negative
+                  attached
+                  header={this.props.intl.formatMessage(messages.error)}
+                  content={this.props.error.message}
+                />
+              )}
+              {map(schema.fieldsets[0].fields, field => (
+                <Field
+                  {...schema.properties[field]}
+                  id={field}
+                  value={this.state.formData[field]}
+                  required={schema.required.indexOf(field) !== -1}
+                  onChange={this.onChangeField}
+                  key={field}
+                  error={this.state.errors[field]}
+                />
+              ))}
+            </Segment>
+          )}
+          {!this.props.hideActions && (
+            <Segment className="actions" clearing>
+              {onSubmit && (
+                <Button
+                  basic
+                  primary
+                  floated="right"
+                  type="submit"
+                  aria-label={
+                    this.props.submitLabel
+                      ? this.props.submitLabel
+                      : this.props.intl.formatMessage(messages.save)
+                  }
+                  title={
+                    this.props.submitLabel
+                      ? this.props.submitLabel
+                      : this.props.intl.formatMessage(messages.save)
+                  }
+                  loading={this.props.loading}
+                >
+                  <Icon className="circled" name={aheadSVG} size="30px" />
+                </Button>
+              )}
+              {onCancel && (
+                <Button
+                  basic
+                  secondary
+                  aria-label={this.props.intl.formatMessage(messages.cancel)}
+                  title={this.props.intl.formatMessage(messages.cancel)}
+                  floated="right"
+                  onClick={onCancel}
+                >
+                  <Icon className="circled" name={clearSVG} size="30px" />
+                </Button>
+              )}
+            </Segment>
+          )}
+        </Segment.Group>
+      </UiForm>
     );
   }
 }

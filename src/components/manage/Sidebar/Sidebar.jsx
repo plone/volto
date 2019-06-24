@@ -1,39 +1,139 @@
-import React from 'react';
-import { CSSTransition } from 'react-transition-group';
-import SidebarBody from './SidebarBody';
+/**
+ * Sidebar component.
+ * @module components/manage/Sidebar/Sidebar
+ */
 
-const DEFAULT_TIMEOUT = 500;
+import React, { Component, Fragment } from 'react';
+import { Button, Tab } from 'semantic-ui-react';
+import cookie from 'react-cookie';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import cx from 'classnames';
+import { BodyClass } from '../../../helpers';
+import { Icon } from '../../../components';
+import forbiddenSVG from '../../../icons/forbidden.svg';
 
-const withSidebar = WrappedComponent =>
-  class extends React.Component {
-    constructor() {
-      super();
-      this.state = { isSidebarOpen: false };
-    }
+const messages = defineMessages({
+  metadata: {
+    id: 'Metadata',
+    defaultMessage: 'Metadata',
+  },
+  properties: {
+    id: 'Properties',
+    defaultMessage: 'Properties',
+  },
+});
 
-    openSidebar = () => this.setState({ isSidebarOpen: true });
-    closeSidebar = () => this.setState({ isSidebarOpen: false });
-
-    render() {
-      return (
-        <>
-          <WrappedComponent
-            {...this.props}
-            isSidebarOpen={this.state.isSidebarOpen}
-            openSidebar={this.openSidebar}
-            closeSidebar={this.closeSidebar}
-          />
-          <CSSTransition
-            in={this.state.isSidebarOpen}
-            timeout={DEFAULT_TIMEOUT}
-            classNames="sidebar-container"
-            unmountOnExit
-          >
-            <SidebarBody {...this.props} closeSidebar={this.closeSidebar} />
-          </CSSTransition>
-        </>
-      );
-    }
+@injectIntl
+/**
+ * Sidebar container class.
+ * @class Sidebar
+ * @extends Component
+ */
+export default class Sidebar extends Component {
+  /**
+   * Property types.
+   * @property {Object} propTypes Property types.
+   * @static
+   */
+  static propTypes = {
+    intl: intlShape.isRequired,
   };
 
-export default withSidebar;
+  /**
+   * Constructor
+   * @method constructor
+   * @param {Object} props Component properties
+   * @constructs Sidebar
+   */
+  constructor(props) {
+    super(props);
+    this.onToggleExpanded = this.onToggleExpanded.bind(this);
+    this.state = {
+      expanded: cookie.load('sidebar_expanded') !== 'false',
+    };
+  }
+
+  /**
+   * On toggle expanded handler
+   * @method onToggleExpanded
+   * @returns {undefined}
+   */
+  onToggleExpanded() {
+    cookie.save('sidebar_expanded', !this.state.expanded, {
+      expires: new Date((2 ** 31 - 1) * 1000),
+      path: '/',
+    });
+    this.setState({
+      expanded: !this.state.expanded,
+    });
+  }
+
+  /**
+   * Render method.
+   * @method render
+   * @returns {string} Markup for the component.
+   */
+  render() {
+    const { expanded } = this.state;
+
+    return (
+      <Fragment>
+        <BodyClass
+          className={expanded ? 'has-sidebar' : 'has-sidebar-collapsed'}
+        />
+        <div className={cx('sidebar-container', { collapsed: !expanded })}>
+          <Button
+            aria-label={expanded ? 'Shrink sidebar' : 'Expand sidebar'}
+            className={
+              this.props.content && this.props.content.review_state
+                ? `${this.props.content.review_state} trigger`
+                : 'trigger'
+            }
+            onClick={this.onToggleExpanded}
+          />
+          <Tab
+            menu={{
+              secondary: true,
+              pointing: true,
+              attached: true,
+              tabular: true,
+              className: 'formtabs',
+            }}
+            className="tabs-wrapper"
+            renderActiveOnly={false}
+            defaultActiveIndex={1}
+            panes={[
+              {
+                menuItem: this.props.intl.formatMessage(messages.metadata),
+                pane: (
+                  <Tab.Pane
+                    key="metadata"
+                    className="tab-wrapper"
+                    id="sidebar-metadata"
+                  />
+                ),
+              },
+              {
+                menuItem: this.props.intl.formatMessage(messages.properties),
+                pane: (
+                  <Tab.Pane
+                    key="properties"
+                    className="tab-wrapper"
+                    id="sidebar-properties"
+                  >
+                    <Icon
+                      className="tab-forbidden"
+                      name={forbiddenSVG}
+                      size="48px"
+                    />
+                  </Tab.Pane>
+                ),
+              },
+            ]}
+          />
+        </div>
+        <div className={this.state.expanded ? 'pusher expanded' : 'pusher'} />
+      </Fragment>
+    );
+  }
+}

@@ -42,6 +42,7 @@ export const Html = ({ assets, markup, store }) => {
 
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         {assets.client.css ? (
           <link rel="stylesheet" href={assets.client.css} />
         ) : null}
@@ -52,8 +53,9 @@ export const Html = ({ assets, markup, store }) => {
         )}
       </head>
       <body className={bodyClass}>
-        <div id="toolbar" />
+        <div role="navigation" aria-label="Toolbar" id="toolbar" />
         <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
+        <div id="sidebar" />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.__data=${serialize(store.getState())};`,

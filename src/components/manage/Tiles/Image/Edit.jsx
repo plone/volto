@@ -228,7 +228,6 @@ export default class Edit extends Component {
           },
           this.props.data.align,
         )}
-        tabIndex={0}
         onKeyDown={e =>
           this.props.handleKeyDown(
             e,
@@ -247,6 +246,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Left"
                 onClick={() => this.onAlignTile('left')}
                 active={this.props.data.align === 'left'}
               >
@@ -257,6 +257,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Right"
                 onClick={() => this.onAlignTile('right')}
                 active={this.props.data.align === 'right'}
               >
@@ -267,6 +268,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Center"
                 onClick={() => this.onAlignTile('center')}
                 active={
                   this.props.data.align === 'center' || !this.props.data.align
@@ -279,6 +281,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Full"
                 onClick={() => this.onAlignTile('full')}
                 active={this.props.data.align === 'full'}
               >
@@ -305,14 +308,13 @@ export default class Edit extends Component {
         {this.props.selected && !this.props.data.url && (
           <div className="toolbar">
             <Icon name={imageSVG} size="24px" />
-            <form onKeyDown={this.onKeyDownVariantMenuForm}>
-              <Input
-                onChange={this.onChangeUrl}
-                placeholder={this.props.intl.formatMessage(
-                  messages.ImageTileInputPlaceholder,
-                )}
-              />
-            </form>
+            <Input
+              onKeyDown={this.onKeyDownVariantMenuForm}
+              onChange={this.onChangeUrl}
+              placeholder={this.props.intl.formatMessage(
+                messages.ImageTileInputPlaceholder,
+              )}
+            />
             <Button.Group>
               <label className="ui button basic icon">
                 <Icon name={folderSVG} size="24px" />
