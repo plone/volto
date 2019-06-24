@@ -60,7 +60,7 @@ describe('Default Tiles functionality', () => {
     el.type(lines.join('{shift}{enter}'));
 
     cy.get(`.tile.${tile} [data-contents]`).should($el =>
-      expect($el[0].innerText.trim()).to.equal(lines.join('\n')),
+      expect($el[0].innerText).to.include(lines.join('\n')),
     );
 
     // Save
