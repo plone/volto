@@ -147,10 +147,7 @@ export default class Edit extends Component {
           onChange={this.onChange}
           editorState={this.state.editorState}
           blockRenderMap={extendedBlockRenderMap}
-          handleReturn={e => {
-            if (e.shiftKey) {
-              return 'not-handled';
-            }
+          handleReturn={() => {
             this.props.onSelectTile(
               this.props.onAddTile('text', this.props.index + 1),
             );

@@ -1,3 +1,5 @@
+import 'cypress-file-upload';
+
 Cypress.Commands.add('autologin', () => {
   let api_url;
   if (Cypress.env('API') === 'guillotina') {

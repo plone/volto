@@ -202,7 +202,10 @@ export default class Edit extends Component {
           blockRenderMap={settings.extendedBlockRenderMap}
           blockStyleFn={settings.blockStyleFn}
           placeholder={this.props.intl.formatMessage(messages.text)}
-          handleReturn={() => {
+          handleReturn={e => {
+            if (e.shiftKey) {
+              return 'not-handled';
+            }
             if (!this.props.detached) {
               const selectionState = this.state.editorState.getSelection();
               const anchorKey = selectionState.getAnchorKey();
