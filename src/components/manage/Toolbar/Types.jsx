@@ -7,26 +7,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import { filter, map } from 'lodash';
 
 import { getTypes } from '../../../actions';
-import { Icon } from '../../../components';
 import { getBaseUrl } from '../../../helpers';
 
-@connect(
-  state => ({
-    types: filter(state.types.types, 'addable'),
-    type: state.content.data['@type'],
-  }),
-  dispatch => bindActionCreators({ getTypes }, dispatch),
-)
 /**
  * Types container class.
  * @class Types
  * @extends Component
  */
-export default class Types extends Component {
+class Types extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -113,3 +104,11 @@ export default class Types extends Component {
     );
   }
 }
+
+export default connect(
+  state => ({
+    types: filter(state.types.types, 'addable'),
+    type: state.content.data['@type'],
+  }),
+  { getTypes },
+)(Types);

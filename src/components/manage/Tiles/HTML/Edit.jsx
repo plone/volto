@@ -22,7 +22,7 @@ import codeSVG from '../../../../icons/code.svg';
  * @class Edit
  * @extends Component
  */
-export default class Edit extends Component {
+class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -191,3 +191,5 @@ export default class Edit extends Component {
     );
   }
 }
+
+export default Edit;

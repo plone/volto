@@ -6,8 +6,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
 import {
@@ -157,46 +157,12 @@ const messages = defineMessages({
   },
 });
 
-@DragDropContext(HTML5Backend)
-@injectIntl
-@connect(
-  (state, props) => ({
-    items: state.search.items,
-    breadcrumbs: state.breadcrumbs.items,
-    total: state.search.total,
-    searchRequest: {
-      loading: state.search.loading,
-      loaded: state.search.loaded,
-    },
-    pathname: props.location.pathname,
-    action: state.clipboard.action,
-    source: state.clipboard.source,
-    clipboardRequest: state.clipboard.request,
-    deleteRequest: state.content.delete,
-    updateRequest: state.content.update,
-  }),
-  dispatch =>
-    bindActionCreators(
-      {
-        searchContent,
-        cut,
-        copy,
-        copyContent,
-        deleteContent,
-        moveContent,
-        orderContent,
-        sortContent,
-        addMessage,
-      },
-      dispatch,
-    ),
-)
 /**
- * ContentsComponent class.
- * @class ContentsComponent
+ * Contents class.
+ * @class Contents
  * @extends Component
  */
-export default class ContentsComponent extends Component {
+class Contents extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -1286,3 +1252,36 @@ export default class ContentsComponent extends Component {
     );
   }
 }
+
+export default compose(
+  DragDropContext(HTML5Backend),
+  injectIntl,
+  connect(
+    (state, props) => ({
+      items: state.search.items,
+      breadcrumbs: state.breadcrumbs.items,
+      total: state.search.total,
+      searchRequest: {
+        loading: state.search.loading,
+        loaded: state.search.loaded,
+      },
+      pathname: props.location.pathname,
+      action: state.clipboard.action,
+      source: state.clipboard.source,
+      clipboardRequest: state.clipboard.request,
+      deleteRequest: state.content.delete,
+      updateRequest: state.content.update,
+    }),
+    {
+      searchContent,
+      cut,
+      copy,
+      copyContent,
+      deleteContent,
+      moveContent,
+      orderContent,
+      sortContent,
+      addMessage,
+    },
+  ),
+)(Contents);

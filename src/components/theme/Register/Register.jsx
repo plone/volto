@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
@@ -62,15 +62,6 @@ const messages = defineMessages({
  * @class Register
  * @extends Component
  */
-@injectIntl
-@connect(
-  state => ({
-    loading: state.users.create.loading,
-    loaded: state.users.create.loaded,
-    error: state.users.create.error,
-  }),
-  dispatch => bindActionCreators({ createUser, addMessage }, dispatch),
-)
 class Register extends Component {
   /**
    * Property types.
@@ -192,4 +183,15 @@ class Register extends Component {
   }
 }
 
-export default withRouter(Register);
+export default compose(
+  withRouter,
+  injectIntl,
+  connect(
+    state => ({
+      loading: state.users.create.loading,
+      loaded: state.users.create.loaded,
+      error: state.users.create.error,
+    }),
+    { createUser, addMessage },
+  ),
+)(Register);

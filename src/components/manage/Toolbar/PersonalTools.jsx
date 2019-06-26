@@ -17,15 +17,6 @@ import cameraSVG from '../../../icons/camera.svg';
  * @class PersonalTools
  * @extends Component
  */
-@connect(
-  state => ({
-    user: state.users.user,
-    userId: state.userSession.token
-      ? jwtDecode(state.userSession.token).sub
-      : '',
-  }),
-  { getUser },
-)
 class PersonalTools extends Component {
   /**
    * Property types.
@@ -129,4 +120,12 @@ class PersonalTools extends Component {
   }
 }
 
-export default PersonalTools;
+export default connect(
+  state => ({
+    user: state.users.user,
+    userId: state.userSession.token
+      ? jwtDecode(state.userSession.token).sub
+      : '',
+  }),
+  { getUser },
+)(PersonalTools);

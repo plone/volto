@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
@@ -36,34 +36,12 @@ const messages = defineMessages({
   },
 });
 
-@DragDropContext(HTML5Backend)
-@injectIntl
-@connect(
-  (state, props) => ({
-    content: state.content.data,
-    schema: state.schema.schema,
-    getRequest: state.content.get,
-    schemaRequest: state.schema,
-    updateRequest: state.content.update,
-    pathname: props.location.pathname,
-    returnUrl: qs.parse(props.location.search).return_url,
-  }),
-  dispatch =>
-    bindActionCreators(
-      {
-        updateContent,
-        getContent,
-        getSchema,
-      },
-      dispatch,
-    ),
-)
 /**
- * EditComponent class.
- * @class EditComponent
+ * Edit class.
+ * @class Edit
  * @extends Component
  */
-export default class Edit extends Component {
+class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -245,3 +223,24 @@ export default class Edit extends Component {
     return <div />;
   }
 }
+
+export default compose(
+  DragDropContext(HTML5Backend),
+  injectIntl,
+  connect(
+    (state, props) => ({
+      content: state.content.data,
+      schema: state.schema.schema,
+      getRequest: state.content.get,
+      schemaRequest: state.schema,
+      updateRequest: state.content.update,
+      pathname: props.location.pathname,
+      returnUrl: qs.parse(props.location.search).return_url,
+    }),
+    {
+      updateContent,
+      getContent,
+      getSchema,
+    },
+  ),
+)(Edit);

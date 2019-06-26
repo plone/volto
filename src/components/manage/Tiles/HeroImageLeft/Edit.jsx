@@ -6,10 +6,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Map } from 'immutable';
 import { readAsDataURL } from 'promise-file-reader';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
-import { bindActionCreators } from 'redux';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
@@ -52,20 +52,12 @@ const extendedDescripBlockRenderMap = DefaultDraftBlockRenderMap.merge(
   blockDescriptionRenderMap,
 );
 
-@injectIntl
-@connect(
-  state => ({
-    request: state.content.create,
-    content: state.content.data,
-  }),
-  dispatch => bindActionCreators({ createContent }, dispatch),
-)
 /**
  * Edit image tile class.
  * @class Edit
  * @extends Component
  */
-export default class EditHeroTile extends Component {
+class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -413,3 +405,14 @@ export default class EditHeroTile extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      request: state.content.create,
+      content: state.content.data,
+    }),
+    { createContent },
+  ),
+)(Edit);

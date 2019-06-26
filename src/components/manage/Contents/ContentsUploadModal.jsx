@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import {
   Button,
   Dimmer,
@@ -43,19 +43,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  state => ({
-    request: state.content.create,
-  }),
-  dispatch => bindActionCreators({ createContent }, dispatch),
-)
 /**
  * ContentsUploadModal class.
  * @class ContentsUploadModal
  * @extends Component
  */
-export default class ContentsUploadModal extends Component {
+class ContentsUploadModal extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -314,3 +307,13 @@ export default class ContentsUploadModal extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      request: state.content.create,
+    }),
+    { createContent },
+  ),
+)(ContentsUploadModal);

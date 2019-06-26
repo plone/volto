@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Form, Input } from 'semantic-ui-react';
+import { compose } from 'redux';
 import { PropTypes } from 'prop-types';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
@@ -28,7 +29,6 @@ const messages = defineMessages({
  * @class SearchWidget
  * @extends Component
  */
-@injectIntl
 class SearchWidget extends Component {
   /**
    * Property types.
@@ -124,4 +124,7 @@ class SearchWidget extends Component {
   }
 }
 
-export default withRouter(SearchWidget);
+export default compose(
+  withRouter,
+  injectIntl,
+)(SearchWidget);
