@@ -8,6 +8,8 @@
 
 ### Changes
 
+- Small UX/UI fixes @sneridagh
+
 ## 3.1.0 (2019-06-14)
 
 ### Added
