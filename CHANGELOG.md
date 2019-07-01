@@ -8,6 +8,8 @@
 
 ### Changes
 
+- Fix link popup in case you dismiss it without setting anything @sneridagh
+
 ## 3.1.0 (2019-06-14)
 
 ### Added

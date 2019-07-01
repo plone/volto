@@ -461,3 +461,19 @@
 .token.entity {
   cursor: help;
 }
+
+.link-form-container {
+  button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: @linkColor;
+    cursor: pointer;
+    text-align: initial;
+    text-decoration: underline;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
