@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix reordering in folder contents view and problems with previous windowing settings leaked to current one. @robgietema
+
 ## 3.2.0 (2019-07-01)
 
 ### Added
