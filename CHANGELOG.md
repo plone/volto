@@ -8,6 +8,7 @@
 
 ### Changes
 
+- Workflow change awareness on toolbar @robgietema
 - Fix link popup in case you dismiss it without setting anything @sneridagh
 - Small UX/UI fixes @sneridagh
 
