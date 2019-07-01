@@ -8,6 +8,8 @@
 
 ### Changes
 
+- Workflow change awareness on toolbar @robgietema
+
 ## 3.1.0 (2019-06-14)
 
 ### Added

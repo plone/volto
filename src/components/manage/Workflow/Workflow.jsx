@@ -10,17 +10,32 @@ import { bindActionCreators } from 'redux';
 import { last } from 'lodash';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
+import { toast } from 'react-toastify';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { settings } from '~/config';
 
-import { getWorkflow, transitionWorkflow } from '../../../actions';
+import { Toast } from '../../../components';
+import { getWorkflow, getContent, transitionWorkflow } from '../../../actions';
 
+const messages = defineMessages({
+  messageUpdated: {
+    id: 'Workflow updated.',
+    defaultMessage: 'Workflow updated.',
+  },
+});
+
+@injectIntl
 @connect(
   state => ({
     loaded: state.workflow.transition.loaded,
     history: state.workflow.history,
     transitions: state.workflow.transitions,
   }),
-  dispatch => bindActionCreators({ getWorkflow, transitionWorkflow }, dispatch),
+  dispatch =>
+    bindActionCreators(
+      { getWorkflow, getContent, transitionWorkflow },
+      dispatch,
+    ),
 )
 /**
  * Workflow container class.
@@ -35,6 +50,7 @@ export default class Workflow extends Component {
    */
   static propTypes = {
     getWorkflow: PropTypes.func.isRequired,
+    getContent: PropTypes.func.isRequired,
     transitionWorkflow: PropTypes.func.isRequired,
     loaded: PropTypes.bool.isRequired,
     pathname: PropTypes.string.isRequired,
@@ -49,6 +65,7 @@ export default class Workflow extends Component {
         title: PropTypes.string,
       }),
     ),
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -93,6 +110,7 @@ export default class Workflow extends Component {
     }
     if (!this.props.loaded && nextProps.loaded) {
       this.props.getWorkflow(nextProps.pathname);
+      this.props.getContent(nextProps.pathname);
     }
   }
 
@@ -104,6 +122,12 @@ export default class Workflow extends Component {
    */
   transition(event, { value }) {
     this.props.transitionWorkflow(value.replace(settings.apiPath, ''));
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.messageUpdated)}
+      />,
+    );
   }
 
   /**
