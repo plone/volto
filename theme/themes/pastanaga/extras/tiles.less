@@ -24,12 +24,12 @@
 
 .tile .tile.selected::after,
 .tile .tile.selected:hover::after {
-  border-width: 2px;
-  border-color: rgba(120, 192, 215, 0.5);
+  border-width: 1px;
+  border-color: rgba(120, 192, 215, 0.75);
 }
 
 .tile .tile:hover::after {
-  border-color: rgba(120, 192, 215, 0.25);
+  border-color: rgba(120, 192, 215, 0.375);
 }
 
 .ui.drag.tile:not(:last-child) {
@@ -280,7 +280,7 @@
   // .ui.basic.button.tile-delete-button {
   position: absolute;
   padding: 0;
-  margin-top: -22px;
+  margin-top: -21px;
   margin-bottom: 0;
   border: none;
   -webkit-box-shadow: none;
@@ -387,8 +387,15 @@
 // HTML tile
 .html-editor {
   z-index: 1;
-  background-color: #fafafa;
+  background-color: #f3f6f7;
   border-radius: 4px;
+  font-family: monospace;
+  font-size: @16px;
+
+  &:focus-within textarea {
+    caret-color: #e40166;
+    outline: 0;
+  }
 }
 
 .token.comment,

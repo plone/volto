@@ -20,6 +20,13 @@
   border-bottom: 1px solid @lightGreyBorderColor;
 }
 
+.ui.form p.help {
+  color: #878f93;
+  font-size: @13px;
+  font-weight: 300;
+  line-height: initial;
+}
+
 .ui.form .ui.input input:not([type]),
 .ui.form .ui.input input[type='date'],
 .ui.form .ui.input input[type='datetime-local'],
