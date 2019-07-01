@@ -8,11 +8,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
-import { Breadcrumb, Container, Icon, Segment } from 'semantic-ui-react';
+import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
+import { Icon } from '@plone/volto/components';
 import { getBreadcrumbs } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
+
+import homeSVG from '@plone/volto/icons/home.svg';
 
 const messages = defineMessages({
   home: {
@@ -87,7 +90,7 @@ export default class Breadcrumbs extends Component {
               className="section"
               title={this.props.intl.formatMessage(messages.home)}
             >
-              <Icon name="home" />
+              <Icon name={homeSVG} size="18px" />
             </Link>
             {this.props.items.map((item, index, items) => [
               <Breadcrumb.Divider key={`divider-${item.url}`} />,

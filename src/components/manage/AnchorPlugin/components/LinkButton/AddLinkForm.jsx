@@ -10,6 +10,7 @@ import EditorUtils from 'draft-js-plugins-utils';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { map } from 'lodash';
+import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
 import { resetSearchContent, searchContent } from '../../../../../actions';
 import URLUtils from '../../utils/URLUtils';
@@ -76,7 +77,21 @@ export default class AddLinkForm extends Component {
   componentDidMount() {
     this.input.focus();
     this.props.resetSearchContent();
+    document.addEventListener('mousedown', this.handleClickOutside, false);
   }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside, false);
+  }
+
+  handleClickOutside = e => {
+    if (
+      this.linkFormContainer.current &&
+      doesNodeContainClick(this.linkFormContainer.current, e)
+    )
+      return;
+    this.onClose();
+  };
 
   /**
    * Ref handler
@@ -87,6 +102,8 @@ export default class AddLinkForm extends Component {
   onRef(node) {
     this.input = node;
   }
+
+  linkFormContainer = React.createRef();
 
   /**
    * Change handler
@@ -188,7 +205,7 @@ export default class AddLinkForm extends Component {
       : unionClassNames('ui input editor-link', theme.input);
 
     return (
-      <div>
+      <div className="link-form-container" ref={this.linkFormContainer}>
         <div
           style={{ marginLeft: '5px', display: 'flex', alignItems: 'center' }}
         >
@@ -206,9 +223,6 @@ export default class AddLinkForm extends Component {
           </svg>
           <input
             className={className}
-            // TODO: The onBlur is somewhat happening before the onSelectItem method is called.
-            // Then the dialog is closed once you select the item without setting the link.
-            // onBlur={this.onClose}
             onChange={this.onChange}
             onKeyDown={this.onKeyDown}
             placeholder={placeholder}
