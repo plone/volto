@@ -1,6 +1,6 @@
 # Change Log
 
-## 3.2.3 (unreleased)
+## 3.2.3 (2019-07-02)
 
 ### Changes
 
