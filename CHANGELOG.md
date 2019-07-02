@@ -25,6 +25,8 @@
 - Fix typos @balavec
 - Fix warnings for boolean fields @miziodel
 - Fix dropdown styling @robgietema
+- Update connected-react-router and fix instantiation of the wrapper component
+  to fix the sync problems with the router and the store @sneridagh
 
 ### Internal
 
