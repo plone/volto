@@ -2,9 +2,10 @@
 
 ## 3.2.2 (unreleased)
 
-### Added
-
 ### Changes
+
+- Update connected-react-router and fix instantiation of the wrapper component
+  to fix the sync problems with the router and the store @sneridagh
 
 ## 3.2.1 (2019-07-01)
 
