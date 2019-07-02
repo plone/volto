@@ -566,7 +566,7 @@ class Form extends Component {
                     ...map(item.fields, (field, index) => (
                       <Field
                         {...schema.properties[field]}
-                        id={field}
+                        id={`${item.title.toLowerCase()}-${field}`}
                         focus={index === 0}
                         value={this.state.formData[field]}
                         required={schema.required.indexOf(field) !== -1}

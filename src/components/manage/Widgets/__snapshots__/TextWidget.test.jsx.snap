@@ -3,6 +3,7 @@
 exports[`renders a text widget component 1`] = `
 <div
   className="inline field"
+  id="my-field"
 >
   <div
     className="ui grid"

@@ -45,6 +45,7 @@ exports[`Contact form renders a contact form 1`] = `
             </div>
             <div
               className="inline field"
+              id="name"
             >
               <div
                 className="ui grid"
@@ -86,6 +87,7 @@ exports[`Contact form renders a contact form 1`] = `
             </div>
             <div
               className="inline required field"
+              id="from"
             >
               <div
                 className="ui grid"
@@ -127,6 +129,7 @@ exports[`Contact form renders a contact form 1`] = `
             </div>
             <div
               className="inline field"
+              id="subject"
             >
               <div
                 className="ui grid"
@@ -168,6 +171,7 @@ exports[`Contact form renders a contact form 1`] = `
             </div>
             <div
               className="inline required field textarea"
+              id="message"
             >
               <div
                 className="ui grid"
@@ -290,6 +294,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
             </div>
             <div
               className="inline field"
+              id="name"
             >
               <div
                 className="ui grid"
@@ -331,6 +336,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
             </div>
             <div
               className="inline required field"
+              id="from"
             >
               <div
                 className="ui grid"
@@ -372,6 +378,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
             </div>
             <div
               className="inline field"
+              id="subject"
             >
               <div
                 className="ui grid"
@@ -413,6 +420,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
             </div>
             <div
               className="inline required field textarea"
+              id="message"
             >
               <div
                 className="ui grid"

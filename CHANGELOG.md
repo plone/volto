@@ -2,9 +2,9 @@
 
 ## 3.2.3 (unreleased)
 
-### Added
-
 ### Changes
+
+- Add proper unique id to all fields, based on the fieldset and field name @sneridagh
 
 ## 3.2.2 (2019-07-02)
 

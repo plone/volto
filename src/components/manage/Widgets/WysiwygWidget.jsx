@@ -239,6 +239,7 @@ export default class WysiwygWidget extends Component {
           required={required}
           error={error.length > 0}
           className={description ? 'help' : ''}
+          id={id}
         >
           <div className="wrapper">
             <label htmlFor={`field-${id}`}>{title}</label>

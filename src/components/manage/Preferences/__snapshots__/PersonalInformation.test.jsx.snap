@@ -49,6 +49,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
         >
           <div
             className="inline field help"
+            id="fullname"
           >
             <div
               className="ui grid"
@@ -103,6 +104,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           </div>
           <div
             className="inline required field help"
+            id="email"
           >
             <div
               className="ui grid"
@@ -157,6 +159,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           </div>
           <div
             className="inline field help"
+            id="home_page"
           >
             <div
               className="ui grid"
@@ -211,6 +214,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           </div>
           <div
             className="inline field help"
+            id="location"
           >
             <div
               className="ui grid"

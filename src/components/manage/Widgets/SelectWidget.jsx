@@ -350,6 +350,7 @@ export default class SelectWidget extends Component {
         required={required}
         error={error.length > 0}
         className={description ? 'help' : ''}
+        id={id}
       >
         <Grid>
           <Grid.Row stretched>

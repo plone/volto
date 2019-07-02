@@ -90,6 +90,7 @@ const TextareaWidget = ({
       required={required}
       error={error.length > 0}
       className={description ? 'help textarea' : 'textarea'}
+      id={id}
     >
       <Grid>
         <Grid.Row stretched>
