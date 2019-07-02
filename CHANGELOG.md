@@ -6,6 +6,8 @@
 
 - Update connected-react-router and fix instantiation of the wrapper component
   to fix the sync problems with the router and the store @sneridagh
+- Fix remove link entity of only a part it only removes that part, not the
+  whole entity @robgietema
 
 ## 3.2.1 (2019-07-01)
 
