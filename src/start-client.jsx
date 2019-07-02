@@ -1,4 +1,3 @@
-import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-intl-redux';
@@ -28,11 +27,9 @@ export default () => {
   hydrate(
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <BrowserRouter>
-          <ScrollToTop>
-            <ReduxAsyncConnect routes={routes} helpers={api} />
-          </ScrollToTop>
-        </BrowserRouter>
+        <ScrollToTop>
+          <ReduxAsyncConnect routes={routes} helpers={api} />
+        </ScrollToTop>
       </ConnectedRouter>
     </Provider>,
     document.getElementById('main'),
