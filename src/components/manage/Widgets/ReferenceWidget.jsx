@@ -209,6 +209,7 @@ export default class ReferenceWidget extends Component {
       value,
       multiple,
       onChange,
+      fieldSet,
     } = this.props;
     return (
       <Form.Field
@@ -216,7 +217,7 @@ export default class ReferenceWidget extends Component {
         required={required}
         error={error.length > 0}
         className={description ? 'help' : ''}
-        id={id}
+        id={`${fieldSet}-${id}`}
       >
         <Grid>
           <Grid.Row stretched>

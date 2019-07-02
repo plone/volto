@@ -52,6 +52,7 @@ const TextareaWidget = ({
   onEdit,
   onDelete,
   intl,
+  fieldSet,
 }) => {
   const schema = {
     fieldsets: [
@@ -90,7 +91,7 @@ const TextareaWidget = ({
       required={required}
       error={error.length > 0}
       className={description ? 'help textarea' : 'textarea'}
-      id={id}
+      id={`${fieldSet}-${id}`}
     >
       <Grid>
         <Grid.Row stretched>

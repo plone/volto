@@ -45,7 +45,7 @@ exports[`Contact form renders a contact form 1`] = `
             </div>
             <div
               className="inline field"
-              id="name"
+              id="undefined-name"
             >
               <div
                 className="ui grid"
@@ -87,7 +87,7 @@ exports[`Contact form renders a contact form 1`] = `
             </div>
             <div
               className="inline required field"
-              id="from"
+              id="undefined-from"
             >
               <div
                 className="ui grid"
@@ -129,7 +129,7 @@ exports[`Contact form renders a contact form 1`] = `
             </div>
             <div
               className="inline field"
-              id="subject"
+              id="undefined-subject"
             >
               <div
                 className="ui grid"
@@ -171,7 +171,7 @@ exports[`Contact form renders a contact form 1`] = `
             </div>
             <div
               className="inline required field textarea"
-              id="message"
+              id="undefined-message"
             >
               <div
                 className="ui grid"
@@ -294,7 +294,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
             </div>
             <div
               className="inline field"
-              id="name"
+              id="undefined-name"
             >
               <div
                 className="ui grid"
@@ -336,7 +336,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
             </div>
             <div
               className="inline required field"
-              id="from"
+              id="undefined-from"
             >
               <div
                 className="ui grid"
@@ -378,7 +378,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
             </div>
             <div
               className="inline field"
-              id="subject"
+              id="undefined-subject"
             >
               <div
                 className="ui grid"
@@ -420,7 +420,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
             </div>
             <div
               className="inline required field textarea"
-              id="message"
+              id="undefined-message"
             >
               <div
                 className="ui grid"

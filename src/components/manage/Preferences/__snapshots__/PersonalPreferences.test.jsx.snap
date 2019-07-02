@@ -49,7 +49,7 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
         >
           <div
             className="inline field help"
-            id="language"
+            id="undefined-language"
           >
             <div
               className="ui grid"

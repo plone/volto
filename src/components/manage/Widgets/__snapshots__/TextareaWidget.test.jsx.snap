@@ -3,7 +3,7 @@
 exports[`renders a textarea widget component 1`] = `
 <div
   className="inline field textarea"
-  id="my-field"
+  id="undefined-my-field"
 >
   <div
     className="ui grid"

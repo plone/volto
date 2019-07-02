@@ -52,6 +52,7 @@ const CheckboxWidget = ({
   onEdit,
   onDelete,
   intl,
+  fieldSet,
 }) => {
   const schema = {
     fieldsets: [
@@ -90,7 +91,7 @@ const CheckboxWidget = ({
       required={required}
       error={error.length > 0}
       className={description ? 'help' : ''}
-      id={id}
+      id={`${fieldSet}-${id}`}
     >
       <Grid>
         <Grid.Row stretched>

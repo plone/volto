@@ -275,7 +275,7 @@ export default class ArrayWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, title, required, description, error } = this.props;
+    const { id, title, required, description, error, fieldSet } = this.props;
     const { selectedOption } = this.state;
     return (
       <Form.Field
@@ -283,7 +283,7 @@ export default class ArrayWidget extends Component {
         required={required}
         error={error.length > 0}
         className={description ? 'help' : ''}
-        id={id}
+        id={`${fieldSet}-${id}`}
       >
         <Grid>
           <Grid.Row stretched>

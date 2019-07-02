@@ -342,6 +342,7 @@ export default class SelectWidget extends Component {
       choices,
       value,
       onChange,
+      fieldSet,
     } = this.props;
 
     return (
@@ -350,7 +351,7 @@ export default class SelectWidget extends Component {
         required={required}
         error={error.length > 0}
         className={description ? 'help' : ''}
-        id={id}
+        id={`${fieldSet}-${id}`}
       >
         <Grid>
           <Grid.Row stretched>
