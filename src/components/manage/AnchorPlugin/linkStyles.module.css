@@ -1,12 +1,12 @@
 .input {
-  height: 34px;
   width: 240px;
+  height: 34px;
   padding: 0 12px;
-  font-size: 15px;
-  font-family: inherit;
-  background-color: transparent;
   border: none;
+  background-color: transparent;
   color: #444;
+  font-family: inherit;
+  font-size: 15px;
 }
 
 .input:focus {

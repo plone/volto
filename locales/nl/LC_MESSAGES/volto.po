@@ -99,7 +99,6 @@ msgstr "Oplopend"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactForm/ContactForm
 msgid "Back"
 msgstr ""
 
@@ -132,6 +131,10 @@ msgstr "Standaard worden de rechten overgenomen van de bovenliggende map.  Als u
 #: components/theme/Login/Login
 msgid "Cancel"
 msgstr "Annuleren"
+
+#: components/manage/Tiles/Table/Edit
+msgid "Cell"
+msgstr ""
 
 #: components/manage/History/History
 msgid "Change Note"
@@ -192,7 +195,6 @@ msgid "Contact"
 msgstr "Contact"
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactForm/ContactForm
 msgid "Contact form"
 msgstr ""
 
@@ -248,7 +250,6 @@ msgstr ""
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
@@ -263,10 +264,19 @@ msgstr "Standaard"
 msgid "Delete"
 msgstr "Verwijderen"
 
+#: components/manage/Tiles/Table/Edit
+msgid "Delete col"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Delete row"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Descending"
 msgstr "Aflopend"
 
+#: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -292,6 +302,10 @@ msgstr "Weergave"
 #: components/theme/Footer/Footer
 msgid "Distributed under the {license}."
 msgstr "Gedistribueerd onder de {license}."
+
+#: components/manage/Tiles/Table/Edit
+msgid "Divide each row into separate cells"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
@@ -337,8 +351,15 @@ msgid "Edit {title}"
 msgstr "{title} bewerken"
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactForm/ContactForm
 msgid "Email sent"
+msgstr ""
+
+#: components/manage/Tiles/Maps/Edit
+msgid "Enter Map URL"
+msgstr ""
+
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Enter URL or title"
 msgstr ""
 
 #: components/manage/Tiles/Video/Edit
@@ -371,7 +392,6 @@ msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
 msgid "Error"
 msgstr ""
@@ -396,7 +416,10 @@ msgstr "Bestandsnaam"
 msgid "Filter…"
 msgstr "Filter…"
 
-#: components/theme/ContactForm/ContactForm
+#: components/manage/Tiles/Table/Edit
+msgid "Fixed width table cells"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "From"
 msgstr ""
@@ -448,6 +471,22 @@ msgstr ""
 msgid "Inherit permissions from higher levels"
 msgstr "Rechten overnemen van bovenliggende map"
 
+#: components/manage/Tiles/Table/Edit
+msgid "Insert col after"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Insert col before"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Insert row after"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Insert row before"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Item(s) gekopieerd"
@@ -491,9 +530,24 @@ msgstr "Inloggen"
 msgid "Login Name"
 msgstr "Gebruikersnaam"
 
-#: components/theme/ContactForm/ContactForm
+#: components/manage/Tiles/Table/Edit
+msgid "Make the table compact"
+msgstr ""
+
+#: components/manage/Tiles/Maps/Edit
+msgid "Maps data error"
+msgstr ""
+
+#: components/manage/Tiles/Maps/Edit
+msgid "Maps instructions"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
+msgstr ""
+
+#: components/manage/Sidebar/Sidebar
+msgid "Metadata"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -519,7 +573,6 @@ msgstr ""
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactForm/ContactForm
 msgid "Name"
 msgstr "Naam"
 
@@ -530,6 +583,7 @@ msgstr "Nieuw wachtwoord"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/TokenWidget
 msgid "No results found."
 msgstr ""
 
@@ -603,6 +657,7 @@ msgstr "Voorvertoning"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Edit/Edit
+#: components/manage/Sidebar/Sidebar
 msgid "Properties"
 msgstr "Eigenschappen"
 
@@ -623,6 +678,10 @@ msgstr "Lees verder…"
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
 msgstr "Items rangschikken op…"
+
+#: components/manage/Tiles/Table/Edit
+msgid "Reduce complexity"
+msgstr ""
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Register/Register
@@ -720,7 +779,6 @@ msgid "Select…"
 msgstr "Selecteer…"
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactForm/ContactForm
 msgid "Send"
 msgstr ""
 
@@ -790,9 +848,20 @@ msgstr "Status: {current}"
 msgid "String"
 msgstr ""
 
-#: components/theme/ContactForm/ContactForm
+#: components/manage/Tiles/Table/Edit
+msgid "Stripe alternate rows with color"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Table"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Table color inverted"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -843,6 +912,7 @@ msgstr "Het spijt ons, maar deze pagina bestaat niet…"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -943,6 +1013,10 @@ msgstr "Wanneer deze datum bereikt is zal de inhoud niet langer zichtbaar zijn i
 #: components/manage/History/History
 msgid "Who"
 msgstr "Wie"
+
+#: components/manage/Workflow/Workflow
+msgid "Workflow updated."
+msgstr ""
 
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2018-11-11T07:30:09.497Z\n"
+"POT-Creation-Date: 2019-07-03T14:32:28.769Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -96,7 +96,6 @@ msgstr ""
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactForm/ContactForm
 # defaultMessage: Back
 msgid "Back"
 msgstr ""
@@ -134,6 +133,11 @@ msgstr ""
 #: components/theme/Login/Login
 # defaultMessage: Cancel
 msgid "Cancel"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+# defaultMessage: Cell
+msgid "Cell"
 msgstr ""
 
 #: components/manage/History/History
@@ -208,7 +212,6 @@ msgid "Contact"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactForm/ContactForm
 # defaultMessage: Contact form
 msgid "Contact form"
 msgstr ""
@@ -273,7 +276,6 @@ msgstr ""
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactForm/ContactForm
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
@@ -290,11 +292,22 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
+#: components/manage/Tiles/Table/Edit
+# defaultMessage: Delete col
+msgid "Delete col"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+# defaultMessage: Delete row
+msgid "Delete row"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Descending
 msgid "Descending"
 msgstr ""
 
+#: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -324,6 +337,11 @@ msgstr ""
 #: components/theme/Footer/Footer
 # defaultMessage: Distributed under the {license}.
 msgid "Distributed under the {license}."
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+# defaultMessage: Divide each row into separate cells
+msgid "Divide each row into separate cells"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -380,9 +398,18 @@ msgid "Edit {title}"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactForm/ContactForm
 # defaultMessage: Email sent
 msgid "Email sent"
+msgstr ""
+
+#: components/manage/Tiles/Maps/Edit
+# defaultMessage: Enter Map URL
+msgid "Enter Map URL"
+msgstr ""
+
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+# defaultMessage: Enter URL or title
+msgid "Enter URL or title"
 msgstr ""
 
 #: components/manage/Tiles/Video/Edit
@@ -421,7 +448,6 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
 # defaultMessage: Error
 msgid "Error"
@@ -452,7 +478,11 @@ msgstr ""
 msgid "Filter…"
 msgstr ""
 
-#: components/theme/ContactForm/ContactForm
+#: components/manage/Tiles/Table/Edit
+# defaultMessage: Fixed width table cells
+msgid "Fixed width table cells"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: From
 msgid "From"
@@ -516,6 +546,26 @@ msgstr ""
 msgid "Inherit permissions from higher levels"
 msgstr ""
 
+#: components/manage/Tiles/Table/Edit
+# defaultMessage: Insert col after
+msgid "Insert col after"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+# defaultMessage: Insert col before
+msgid "Insert col before"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+# defaultMessage: Insert row after
+msgid "Insert row after"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+# defaultMessage: Insert row before
+msgid "Insert row before"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Item(s) copied.
 msgid "Item(s) copied."
@@ -569,10 +619,29 @@ msgstr ""
 msgid "Login Name"
 msgstr ""
 
-#: components/theme/ContactForm/ContactForm
+#: components/manage/Tiles/Table/Edit
+# defaultMessage: Make the table compact
+msgid "Make the table compact"
+msgstr ""
+
+#: components/manage/Tiles/Maps/Edit
+# defaultMessage: Embed code error, please follow the instructions and try again.
+msgid "Maps data error"
+msgstr ""
+
+#: components/manage/Tiles/Maps/Edit
+# defaultMessage: Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it.
+msgid "Maps instructions"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
 msgid "Message"
+msgstr ""
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Metadata
+msgid "Metadata"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -603,7 +672,6 @@ msgstr ""
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactForm/ContactForm
 # defaultMessage: Name
 msgid "Name"
 msgstr ""
@@ -616,6 +684,7 @@ msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/TokenWidget
 # defaultMessage: No results found.
 msgid "No results found."
 msgstr ""
@@ -705,6 +774,7 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Edit/Edit
+#: components/manage/Sidebar/Sidebar
 # defaultMessage: Properties
 msgid "Properties"
 msgstr ""
@@ -729,6 +799,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Rearrange items by…
 msgid "Rearrange items by…"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+# defaultMessage: Reduce complexity
+msgid "Reduce complexity"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
@@ -847,7 +922,6 @@ msgid "Select…"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
-#: components/theme/ContactForm/ContactForm
 # defaultMessage: Send
 msgid "Send"
 msgstr ""
@@ -933,10 +1007,24 @@ msgstr ""
 msgid "String"
 msgstr ""
 
-#: components/theme/ContactForm/ContactForm
+#: components/manage/Tiles/Table/Edit
+# defaultMessage: Stripe alternate rows with color
+msgid "Stripe alternate rows with color"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+# defaultMessage: Table
+msgid "Table"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+# defaultMessage: Table color inverted
+msgid "Table color inverted"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -998,6 +1086,7 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -1119,6 +1208,11 @@ msgstr ""
 #: components/manage/History/History
 # defaultMessage: Who
 msgid "Who"
+msgstr ""
+
+#: components/manage/Workflow/Workflow
+# defaultMessage: Workflow updated.
+msgid "Workflow updated."
 msgstr ""
 
 #: components/theme/Comments/Comments

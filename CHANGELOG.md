@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Add proper placeholder to the add link feature in the editor @sneridagh
+
 ## 3.2.3 (2019-07-02)
 
 ### Changes
