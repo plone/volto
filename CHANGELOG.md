@@ -2,9 +2,9 @@
 
 ## 3.2.5 (unreleased)
 
-### Added
-
 ### Changes
+
+- Fix bulk workflow change in contents view @sneridagh
 
 ## 3.2.4 (2019-07-03)
 
