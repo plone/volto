@@ -193,6 +193,7 @@
     "locale": "0.1.0",
     "lodash": "4.17.11",
     "lodash-move": "1.1.1",
+    "mem": "4.0.0",
     "moment": "2.22.2",
     "pofile": "1.0.10",
     "postcss-flexbugs-fixes": "4.1.0",
