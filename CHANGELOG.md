@@ -12,6 +12,7 @@
 - Remove Mosaic component @tisto
 - Added translations to italian @nzambello
 - Add table tile @robgietema
+- Add delete file button to file Widget @jackahl
 
 ### Changes
 
