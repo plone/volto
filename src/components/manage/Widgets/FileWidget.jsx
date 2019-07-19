@@ -71,11 +71,10 @@ const FileWidget = ({
                   aria-label="delete file"
                   onClick={() => {
                     onChange(id, null);
-                    debugger;
                     fileInput.inputRef.value = null;
                   }}
                 >
-                  <Icon name={deleteSVG} size="30" />
+                  <Icon name={deleteSVG} size="20px" />
                 </Button>
               )}
             </div>
