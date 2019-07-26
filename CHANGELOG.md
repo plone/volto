@@ -4,6 +4,7 @@
 
 ### Added
 
+- Show images in Rich Text editor @rodfersou @sneridagh
 - Full Pastanaga Toolbabr implementation @sneridagh
 - Internal API path for containers @bloodbare
 - Add toast component @sneridagh
