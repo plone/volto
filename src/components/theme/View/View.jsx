@@ -6,48 +6,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import { Link } from 'react-router-dom';
-import { Dropdown, Icon } from 'semantic-ui-react';
 import { injectIntl, intlShape } from 'react-intl';
-import { find } from 'lodash';
 import qs from 'query-string';
 import { views } from '~/config';
 
-import {
-  Comments,
-  Tags,
-  Toolbar,
-  Actions,
-  Display,
-  Types,
-  Workflow,
-} from '../../../components';
+import { Comments, Tags, Toolbar } from '../../../components';
 import { listActions, getContent } from '../../../actions';
 import { BodyClass, getBaseUrl, getLayoutFieldname } from '../../../helpers';
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    actions: state.actions.actions,
-    content: state.content.data,
-    error: state.content.get.error,
-    pathname: props.location.pathname,
-    versionId:
-      qs.parse(props.location.search) &&
-      qs.parse(props.location.search).version_id,
-  }),
-  {
-    listActions,
-    getContent,
-  },
-)
 /**
  * View container class.
  * @class View
  * @extends Component
  */
-export default class View extends Component {
+class View extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -236,16 +210,6 @@ export default class View extends Component {
     const RenderedView =
       this.getViewByType() || this.getViewByLayout() || this.getViewDefault();
 
-    const path = getBaseUrl(this.props.pathname);
-    const editAction = find(this.props.actions.object, { id: 'edit' });
-    const folderContentsAction = find(this.props.actions.object, {
-      id: 'folderContents',
-    });
-    const historyAction = find(this.props.actions.object, { id: 'history' });
-    const sharingAction = find(this.props.actions.object, {
-      id: 'local_roles',
-    });
-
     return (
       <div id="view">
         <BodyClass
@@ -283,3 +247,22 @@ export default class View extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      actions: state.actions.actions,
+      content: state.content.data,
+      error: state.content.get.error,
+      pathname: props.location.pathname,
+      versionId:
+        qs.parse(props.location.search) &&
+        qs.parse(props.location.search).version_id,
+    }),
+    {
+      listActions,
+      getContent,
+    },
+  ),
+)(View);

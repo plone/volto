@@ -46,13 +46,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
 /**
  * Modal form container class.
  * @class ModalForm
  * @extends Component
  */
-export default class FormModal extends Component {
+class ModalForm extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -274,3 +273,5 @@ export default class FormModal extends Component {
     );
   }
 }
+
+export default injectIntl(ModalForm);

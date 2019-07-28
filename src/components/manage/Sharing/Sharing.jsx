@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 import { find, isEqual, map } from 'lodash';
 import { Portal } from 'react-portal';
@@ -62,21 +62,6 @@ const messages = defineMessages({
  * @class SharingComponent
  * @extends Component
  */
-@injectIntl
-@connect(
-  (state, props) => ({
-    entries: state.sharing.data.entries,
-    inherit: state.sharing.data.inherit,
-    available_roles: state.sharing.data.available_roles,
-    updateRequest: state.sharing.update,
-    pathname: props.location.pathname,
-    title: state.content.data.title,
-    login: state.userSession.token
-      ? jwtDecode(state.userSession.token).sub
-      : '',
-  }),
-  dispatch => bindActionCreators({ updateSharing, getSharing }, dispatch),
-)
 class SharingComponent extends Component {
   /**
    * Property types.
@@ -421,4 +406,21 @@ class SharingComponent extends Component {
   }
 }
 
-export default withRouter(SharingComponent);
+export default compose(
+  withRouter,
+  injectIntl,
+  connect(
+    (state, props) => ({
+      entries: state.sharing.data.entries,
+      inherit: state.sharing.data.inherit,
+      available_roles: state.sharing.data.available_roles,
+      updateRequest: state.sharing.update,
+      pathname: props.location.pathname,
+      title: state.content.data.title,
+      login: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
+    }),
+    { updateSharing, getSharing },
+  ),
+)(SharingComponent);

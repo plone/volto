@@ -26,11 +26,17 @@
 - Fix typos @balavec
 - Fix warnings for boolean fields @miziodel
 - Fix dropdown styling @robgietema
+- Update connected-react-router and fix instantiation of the wrapper component
+  to fix the sync problems with the router and the store @sneridagh
 
 ### Internal
 
 - Fix console errors on tests @sneridagh
 - Add development mode for kitkoncept.voltodemo to /api plonebacked @fredvd
+- Cleanup map dispatch to props @robgietema
+- Fix linting warnings @robgietema
+- Remove decorators @robgietema
+- Pin mem to 4.0.0 @tisto
 
 ## 3.1.0 (2019-06-14)
 

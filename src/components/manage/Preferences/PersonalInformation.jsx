@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
@@ -81,18 +81,6 @@ const messages = defineMessages({
  * @class PersonalInformation
  * @extends Component
  */
-@injectIntl
-@connect(
-  (state, props) => ({
-    user: state.users.user,
-    userId: state.userSession.token
-      ? jwtDecode(state.userSession.token).sub
-      : '',
-    loaded: state.users.get.loaded,
-    loading: state.users.update.loading,
-  }),
-  dispatch => bindActionCreators({ getUser, updateUser }, dispatch),
-)
 class PersonalInformation extends Component {
   /**
    * Property types.
@@ -235,4 +223,17 @@ class PersonalInformation extends Component {
   }
 }
 
-export default PersonalInformation;
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      user: state.users.user,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
+      loaded: state.users.get.loaded,
+      loading: state.users.update.loading,
+    }),
+    { getUser, updateUser },
+  ),
+)(PersonalInformation);

@@ -3,20 +3,18 @@
  * @module components/theme/Navigation/Navigation
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import { isMatch } from 'lodash';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Menu, Segment } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
+import { getBaseUrl } from '../../../helpers';
 
-import { Anontools } from '../../../components';
 import { getNavigation } from '../../../actions';
-import { BodyClass, getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -29,19 +27,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  state => ({
-    items: state.navigation.items,
-  }),
-  dispatch => bindActionCreators({ getNavigation }, dispatch),
-)
 /**
  * Navigation container class.
  * @class Navigation
  * @extends Component
  */
-export default class Navigation extends Component {
+class Navigation extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -193,3 +184,13 @@ export default class Navigation extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      items: state.navigation.items,
+    }),
+    { getNavigation },
+  ),
+)(Navigation);

@@ -6,8 +6,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Portal } from 'react-portal';
 import { Container } from 'semantic-ui-react';
@@ -38,20 +38,6 @@ const messages = defineMessages({
  * @class Controlpanel
  * @extends Component
  */
-@injectIntl
-@connect(
-  (state, props) => ({
-    controlpanel: state.controlpanels.controlpanel,
-    updateRequest: state.controlpanels.update,
-    id: props.match.params.id,
-    pathname: props.location.pathname,
-  }),
-  dispatch =>
-    bindActionCreators(
-      { addMessage, updateControlpanel, getControlpanel },
-      dispatch,
-    ),
-)
 class Controlpanel extends Component {
   /**
    * Property types.
@@ -185,4 +171,16 @@ class Controlpanel extends Component {
   }
 }
 
-export default withRouter(Controlpanel);
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      controlpanel: state.controlpanels.controlpanel,
+      updateRequest: state.controlpanels.update,
+      id: props.match.params.id,
+      pathname: props.location.pathname,
+    }),
+    { addMessage, updateControlpanel, getControlpanel },
+  ),
+  withRouter,
+)(Controlpanel);

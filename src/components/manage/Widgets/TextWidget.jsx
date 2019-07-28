@@ -36,13 +36,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
 /**
  * TextWidget component class.
  * @class TextWidget
  * @extends Component
  */
-export default class TextWidget extends Component {
+class TextWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -207,3 +206,5 @@ export default class TextWidget extends Component {
     );
   }
 }
+
+export default injectIntl(TextWidget);

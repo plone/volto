@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
@@ -19,16 +20,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect((state, props) => ({
-  pathname: props.location.pathname,
-}))
 /**
  * ContentsToolbar container class.
  * @class ContentsToolbar
  * @extends Component
  */
-export default class ContentsToolbar extends Component {
+class ContentsToolbar extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -63,3 +60,10 @@ export default class ContentsToolbar extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect((state, props) => ({
+    pathname: props.location.pathname,
+  })),
+)(ContentsToolbar);
