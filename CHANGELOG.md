@@ -4,7 +4,7 @@
 
 ### Added
 
-- Makes shift+return create new line in Description field @rodfersou
+- Makes shift+return create new line in Text tile @rodfersou
 - Full Pastanaga Toolbabr implementation @sneridagh
 - Internal API path for containers @bloodbare
 - Add toast component @sneridagh
