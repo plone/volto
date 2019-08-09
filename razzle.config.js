@@ -16,9 +16,6 @@ const glob = require('glob').sync;
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
-
 const projectRootPath = path.resolve('.');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
@@ -128,7 +125,6 @@ module.exports = {
           __SERVER__: false,
         }),
       );
-      // config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
     }
 
     if (target === 'node') {
