@@ -16,11 +16,15 @@ const glob = require('glob').sync;
 const fileLoaderFinder = makeLoaderFinder('file-loader');
 const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
+
 const projectRootPath = path.resolve('.');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 module.exports = {
+  plugins: ['bundle-analyzer'],
   modify: (config, { target, dev }, webpack) => {
     const BASE_CSS_LOADER = {
       loader: 'css-loader',
@@ -30,7 +34,6 @@ module.exports = {
         localIdentName: '[name]__[local]___[hash:base64:5]',
       },
     };
-
     const POST_CSS_LOADER = {
       loader: require.resolve('postcss-loader'),
       options: {
@@ -125,6 +128,7 @@ module.exports = {
           __SERVER__: false,
         }),
       );
+      // config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
     }
 
     if (target === 'node') {
