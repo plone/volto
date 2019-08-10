@@ -62,7 +62,7 @@ script:
     fi
 after_success:
   - if [ "$TEST_SUITE" == "unit" ];
-    then yarn run bundlewatch
+    then yarn run bundlewatch;
     fi
   - if [ "$TEST_SUITE" == "guillotina" ]; then
     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
