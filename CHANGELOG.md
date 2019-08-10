@@ -36,6 +36,7 @@
 - Fix linting warnings @robgietema
 - Remove decorators @robgietema
 - Pin mem to 4.0.0 @tisto
+- Add razzle-plugin-bundle-analyzer @tisto
 
 ## 3.1.0 (2019-06-14)
 
