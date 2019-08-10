@@ -28,6 +28,7 @@
     "react"
   ],
   "scripts": {
+    "analyze": "BUNDLE_ANALYZE=true razzle build",
     "start": "razzle start",
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
@@ -217,6 +218,7 @@
     "raven": "2.6.4",
     "raven-js": "3.27.0",
     "razzle": "3.0.0",
+    "razzle-plugin-bundle-analyzer": "1.0.2",
     "react": "16.8.6",
     "react-cookie": "1.0.5",
     "react-dnd": "5.0.0",
