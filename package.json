@@ -54,6 +54,14 @@
     "dry-release": "release-it --dry-run",
     "release": "release-it"
   },
+  "bundlewatch": {
+    "files": [
+      {
+        "path": "build/public/static/js/*.js",
+        "maxSize": "660kB"
+      }
+    ]
+  },
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
@@ -148,6 +156,7 @@
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-plugin-react-intl": "3.0.1",
     "babel-plugin-root-import": "6.1.0",
+    "bundlewatch": "0.2.5",
     "classnames": "2.2.6",
     "connected-react-router": "6.5.0",
     "coveralls": "3.0.2",
