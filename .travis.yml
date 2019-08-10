@@ -61,7 +61,7 @@ script:
     yarn ci:cypress:run;
     fi
 after_success:
-  - if [ "$TEST_SUITE" == "unit" ];
+  - if [ "$TEST_SUITE" == "plone" ];
     then yarn run bundlewatch;
     fi
   - if [ "$TEST_SUITE" == "guillotina" ]; then
