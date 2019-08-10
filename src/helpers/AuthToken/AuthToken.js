@@ -5,7 +5,6 @@
 
 import cookie from 'react-cookie';
 import jwtDecode from 'jwt-decode';
-import { Router } from 'react-router-dom';
 
 import { loginRenew } from '../../actions';
 

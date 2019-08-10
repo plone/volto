@@ -5,27 +5,17 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Link, withRouter } from 'react-router-dom';
-import { Portal } from 'react-portal';
+import { compose } from 'redux';
 import { updateIntl } from 'react-intl-redux';
 import { map, keys } from 'lodash';
 import cookie from 'react-cookie';
 import request from 'superagent';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
-import { Container, Icon, Menu } from 'semantic-ui-react';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { toast } from 'react-toastify';
 
-import { Form, Toolbar } from '../../../components';
+import { Form, Toast } from '../../../components';
 import languages from '../../../constants/Languages';
-import { addMessage } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
   personalPreferences: {
@@ -59,13 +49,6 @@ const messages = defineMessages({
  * @class PersonalPreferences
  * @extends Component
  */
-@injectIntl
-@connect(
-  (state, props) => ({
-    pathname: props.location.pathname,
-  }),
-  dispatch => bindActionCreators({ updateIntl, addMessage }, dispatch),
-)
 class PersonalPreferences extends Component {
   /**
    * Property types.
@@ -75,8 +58,8 @@ class PersonalPreferences extends Component {
   static propTypes = {
     updateIntl: PropTypes.func.isRequired,
     addMessage: PropTypes.func.isRequired,
-    pathname: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
+    closeMenu: PropTypes.func.isRequired,
   };
 
   /**
@@ -108,13 +91,12 @@ class PersonalPreferences extends Component {
           locale: locale.language || 'en',
           messages: locale.body,
         });
-        this.props.addMessage(
-          null,
-          this.props.intl.formatMessage(messages.saved),
-          'success',
-        );
       },
     );
+    toast.success(
+      <Toast success title={this.props.intl.formatMessage(messages.saved)} />,
+    );
+    this.props.closeMenu();
   }
 
   /**
@@ -123,7 +105,7 @@ class PersonalPreferences extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    this.props.history.goBack();
+    this.props.closeMenu();
   }
 
   /**
@@ -133,68 +115,39 @@ class PersonalPreferences extends Component {
    */
   render() {
     return (
-      <Container id="page-personal-preferences">
-        <Helmet
-          title={this.props.intl.formatMessage(messages.personalPreferences)}
-        />
-        <Menu attached="top" tabular stackable>
-          <Link to="/personal-information" className="item">
-            <FormattedMessage
-              id="Personal Information"
-              defaultMessage="Personal Information"
-            />
-          </Link>
-          <Menu.Item
-            name={this.props.intl.formatMessage(messages.personalPreferences)}
-            active
-          />
-          <Link to="/change-password" className="item">
-            <FormattedMessage id="Password" defaultMessage="Password" />
-          </Link>
-        </Menu>
-        <Form
-          formData={{ language: cookie.load('lang') || '' }}
-          schema={{
-            fieldsets: [
-              {
-                id: 'default',
-                title: this.props.intl.formatMessage(messages.default),
-                fields: ['language'],
-              },
-            ],
-            properties: {
-              language: {
-                description: this.props.intl.formatMessage(
-                  messages.languageDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.language),
-                type: 'string',
-                choices: map(keys(languages), lang => [lang, languages[lang]]),
-              },
+      <Form
+        formData={{ language: cookie.load('lang') || '' }}
+        schema={{
+          fieldsets: [
+            {
+              id: 'default',
+              title: this.props.intl.formatMessage(messages.default),
+              fields: ['language'],
             },
-            required: [],
-          }}
-          onSubmit={this.onSubmit}
-          onCancel={this.onCancel}
-        />{' '}
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            inner={
-              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
-                <Icon
-                  name="arrow left"
-                  size="big"
-                  color="blue"
-                  title={this.props.intl.formatMessage(messages.back)}
-                />
-              </Link>
-            }
-          />
-        </Portal>
-      </Container>
+          ],
+          properties: {
+            language: {
+              description: this.props.intl.formatMessage(
+                messages.languageDescription,
+              ),
+              title: this.props.intl.formatMessage(messages.language),
+              type: 'string',
+              choices: map(keys(languages), lang => [lang, languages[lang]]),
+            },
+          },
+          required: [],
+        }}
+        onSubmit={this.onSubmit}
+        onCancel={this.onCancel}
+      />
     );
   }
 }
 
-export default withRouter(PersonalPreferences);
+export default compose(
+  injectIntl,
+  connect(
+    null,
+    { updateIntl },
+  ),
+)(PersonalPreferences);

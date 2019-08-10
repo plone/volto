@@ -29,13 +29,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
 /**
  * Edit text tile class.
  * @class Edit
  * @extends Component
  */
-export default class Edit extends Component {
+class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -333,3 +332,5 @@ export default class Edit extends Component {
     );
   }
 }
+
+export default injectIntl(Edit);

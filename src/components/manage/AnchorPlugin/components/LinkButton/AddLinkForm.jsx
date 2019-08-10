@@ -8,25 +8,17 @@ import PropTypes from 'prop-types';
 import unionClassNames from 'union-class-names';
 import EditorUtils from 'draft-js-plugins-utils';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { map } from 'lodash';
 
 import { resetSearchContent, searchContent } from '../../../../../actions';
 import URLUtils from '../../utils/URLUtils';
 
-@connect(
-  state => ({
-    search: state.search.items,
-  }),
-  dispatch =>
-    bindActionCreators({ resetSearchContent, searchContent }, dispatch),
-)
 /**
  * Add link form class.
  * @class AddLinkForm
  * @extends Component
  */
-export default class AddLinkForm extends Component {
+class AddLinkForm extends Component {
   static propTypes = {
     getEditorState: PropTypes.func.isRequired,
     setEditorState: PropTypes.func.isRequired,
@@ -220,14 +212,14 @@ export default class AddLinkForm extends Component {
         <ul style={{ margin: 0, paddingLeft: '35px' }}>
           {map(this.props.search, item => (
             <li style={{ padding: '5px' }}>
-              <a
+              <button
                 style={{ cursor: 'pointer' }}
                 onClick={e => this.onSelectItem(e, item['@id'])}
                 title={item['@id']}
                 role="link"
               >
                 {item.title}
-              </a>
+              </button>
             </li>
           ))}
         </ul>
@@ -235,3 +227,10 @@ export default class AddLinkForm extends Component {
     );
   }
 }
+
+export default connect(
+  state => ({
+    search: state.search.items,
+  }),
+  { resetSearchContent, searchContent },
+)(AddLinkForm);

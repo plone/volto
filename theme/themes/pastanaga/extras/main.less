@@ -15,6 +15,17 @@
 
 body {
   display: flex;
+
+  @media only screen and (max-width: @largestMobileScreen) {
+    flex-direction: column;
+  }
+
+  &.has-toolbar-menu-open {
+    // The body scroll locker when the menu is active in mobile.
+    @media only screen and (max-width: @largestMobileScreen) {
+      overflow: hidden;
+    }
+  }
 }
 
 #main {
@@ -39,7 +50,7 @@ body {
 }
 
 .documentDescription {
-  color: #84a3ae;
+  color: #5d7a8e;
   font-size: 1.125rem;
 }
 
@@ -57,6 +68,19 @@ body {
   background-color: rgba(31, 189, 238, 0.5);
   border-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj4KICA8ZyBmaWxsPSIjMUZCRUVGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIG9wYWNpdHk9Ii45NSI+CiAgICA8cGF0aCBkPSJNMTAgNjBDNC40NzcxNTI1IDYwIDAgNTUuNTI0MDYxOCAwIDUwIDMuNTUyNzEzNjhlLTE1IDQ0LjQ3NzE1MjUgNC40NzU5MzgxOCA0MCAxMCA0MEwyMCA0MCAyMCA1MEMyMCA1NS41MjI4NDc1IDE1LjUyNDA2MTggNjAgMTAgNjB6TTQwIDUwQzQwIDU1LjUyMjg0NzUgNDQuNDc1OTM4MiA2MCA1MCA2MEw1MCA2MEM1NS41MjI4NDc1IDYwIDYwIDU1LjUyNDA2MTggNjAgNTBMNjAgNTBDNjAgNDQuNDc3MTUyNSA1NS41MjQwNjE4IDQwIDUwIDQwTDQwIDQwIDQwIDUwIDQwIDUweiIvPgogIDwvZz4KPC9zdmc+Cg==')
     20 fill repeat;
+}
+
+// SVGs
+svg.circled {
+  box-sizing: content-box;
+  padding: 4px;
+  border: 2px solid currentColor;
+  border-radius: 50px;
+}
+
+svg.icon {
+  // Experiment if this is ok for all icons
+  box-sizing: content-box;
 }
 
 // Override default behavior for forms and segments
@@ -180,6 +204,7 @@ body {
     margin-left: 8px;
 
     h4 {
+      padding-top: 4px;
       margin-bottom: 0;
       font-weight: @bold;
     }
@@ -230,6 +255,7 @@ body {
 }
 
 @import 'utils';
+@import 'toolbar';
 @import 'draftjs';
 @import 'tiles';
 @import 'sidebar';

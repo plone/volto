@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import { PasswordResetComponent as PasswordReset } from './PasswordReset';
+import PasswordReset from './PasswordReset';
 
 const mockStore = configureStore();
 
@@ -27,7 +27,9 @@ describe('PasswordReset', () => {
       <Provider store={store}>
         <MemoryRouter>
           <PasswordReset
-            match={{ params: { token: 'a9dd24f9aab74bdea66aba6d80ef651b' } }}
+            match={{
+              params: { token: 'a9dd24f9aab74bdea66aba6d80ef651b' },
+            }}
           />
         </MemoryRouter>
       </Provider>,

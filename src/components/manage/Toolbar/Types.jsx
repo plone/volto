@@ -7,26 +7,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import { filter, map } from 'lodash';
-import { Dropdown, Icon } from 'semantic-ui-react';
 
 import { getTypes } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
-@connect(
-  state => ({
-    types: filter(state.types.types, 'addable'),
-    type: state.content.data['@type'],
-  }),
-  dispatch => bindActionCreators({ getTypes }, dispatch),
-)
 /**
  * Types container class.
  * @class Types
  * @extends Component
  */
-export default class Types extends Component {
+class Types extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -84,32 +75,40 @@ export default class Types extends Component {
    */
   render() {
     return this.props.types.length > 0 ? (
-      <Dropdown
-        id="toolbar-add"
-        item
-        trigger={<Icon size="big" name="add" />}
-        className={this.props.active ? 'active' : ''}
-      >
-        <Dropdown.Menu>
-          {map(filter(this.props.types), item => (
-            <Link
-              to={`${this.props.pathname}/add?type=${
-                item['@id'].split('@types/')[1]
-              }`.replace(/\/\//g, '/')}
-              id={`toolbar-add-${item['@id']
-                .split('@types/')[1]
-                .toLowerCase()
-                .replace(' ', '-')}`}
-              className="item"
-              key={item.title}
-            >
-              {item.title}
-            </Link>
-          ))}
-        </Dropdown.Menu>
-      </Dropdown>
+      <div className="menu-more pastanaga-menu">
+        <header>Add content...</header>
+        <div className="pastanaga-menu-list">
+          <ul>
+            {map(filter(this.props.types), item => (
+              <li>
+                <Link
+                  to={`${this.props.pathname}/add?type=${
+                    item['@id'].split('@types/')[1]
+                  }`.replace(/\/\//g, '/')}
+                  id={`toolbar-add-${item['@id']
+                    .split('@types/')[1]
+                    .toLowerCase()
+                    .replace(' ', '-')}`}
+                  className="item"
+                  key={item.title}
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     ) : (
       <span />
     );
   }
 }
+
+export default connect(
+  state => ({
+    types: filter(state.types.types, 'addable'),
+    type: state.content.data['@type'],
+  }),
+  { getTypes },
+)(Types);

@@ -6,10 +6,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Form, Grid, Label, Dropdown } from 'semantic-ui-react';
 import { compact, concat, fromPairs, map, values, uniqBy } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { bindActionCreators } from 'redux';
 import { settings } from '~/config';
 
 import { resetSearchContent, searchContent } from '../../../actions';
@@ -21,20 +21,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  state => ({
-    search: state.search.items,
-  }),
-  dispatch =>
-    bindActionCreators({ resetSearchContent, searchContent }, dispatch),
-)
 /**
  * ReferenceWidget component class.
  * @class ReferenceWidget
  * @extends Component
  */
-export default class ReferenceWidget extends Component {
+class ReferenceWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -274,3 +266,13 @@ export default class ReferenceWidget extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      search: state.search.items,
+    }),
+    { resetSearchContent, searchContent },
+  ),
+)(ReferenceWidget);
