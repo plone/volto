@@ -58,7 +58,7 @@
     "files": [
       {
         "path": "build/public/static/js/*.js",
-        "maxSize": "660kB"
+        "maxSize": "680kB"
       }
     ]
   },

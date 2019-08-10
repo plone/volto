@@ -51,6 +51,7 @@ install:
 script:
   - yarn run prettier
   - yarn run lint
+  - yarn run bundlewatch
   - if [ "$TEST_SUITE" == "unit" ]; then
     docker run --name coverage_front -it --rm -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" plone/volto:testing -- yarn test:ci;
     fi
@@ -72,4 +73,4 @@ after_success:
 # safelist
 branches:
   only:
-  - master
+    - master
