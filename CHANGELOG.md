@@ -30,6 +30,7 @@
 
 ### Internal
 
+- Upgrade lodash to 4.17.15 @tisto
 - Fix console errors on tests @sneridagh
 - Add development mode for kitkoncept.voltodemo to /api plonebacked @fredvd
 - Cleanup map dispatch to props @robgietema

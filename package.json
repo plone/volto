@@ -201,7 +201,7 @@
     "less-loader": "4.1.0",
     "lint-staged": "8.1.6",
     "locale": "0.1.0",
-    "lodash": "4.17.11",
+    "lodash": "4.17.15",
     "lodash-move": "1.1.1",
     "mem": "4.0.0",
     "moment": "2.22.2",
