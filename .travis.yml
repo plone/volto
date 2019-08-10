@@ -61,7 +61,9 @@ script:
     yarn ci:cypress:run;
     fi
 after_success:
-  - yarn run bundlewatch
+  - if [ "$TEST_SUITE" == "unit" ];
+    then yarn run bundlewatch
+    fi
   - if [ "$TEST_SUITE" == "guillotina" ]; then
     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
     docker tag plone/volto:testing plone/volto:$TRAVIS_BRANCH.$TRAVIS_COMMIT;
