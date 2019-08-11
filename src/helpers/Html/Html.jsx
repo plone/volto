@@ -3,7 +3,7 @@
  * @module helpers/Html
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import serialize from 'serialize-javascript';
@@ -26,60 +26,77 @@ import { BodyClass } from '../.';
  * @param {Object} props.store Store object.
  * @returns {string} Markup of the not found page.
  */
-export const Html = ({ assets, markup, store }) => {
-  const head = Helmet.rewind();
-  const bodyClass = join(BodyClass.rewind(), ' ');
-
-  return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        {head.base.toComponent()}
-        {head.title.toComponent()}
-        {head.meta.toComponent()}
-        {head.link.toComponent()}
-        {head.script.toComponent()}
-
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {assets.client.css ? (
-          <link rel="stylesheet" href={assets.client.css} />
-        ) : null}
-        {process.env.NODE_ENV === 'production' ? (
-          <script src={assets.client.js} defer />
-        ) : (
-          <script src={assets.client.js} defer crossOrigin="true" />
-        )}
-      </head>
-      <body className={bodyClass}>
-        <div id="toolbar" />
-        <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
-        <div id="sidebar" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.__data=${serialize(store.getState())};`,
-          }}
-          charSet="UTF-8"
-        />
-      </body>
-    </html>
-  );
-};
 
 /**
- * Property types.
- * @property {Object} propTypes Property types.
- * @static
+ * Html class.
+ * @class Html
+ * @extends Component
  */
-Html.propTypes = {
-  assets: PropTypes.shape({
-    styles: PropTypes.object,
-    javascript: PropTypes.shape({
-      main: PropTypes.string,
-    }),
-  }).isRequired,
-  markup: PropTypes.string.isRequired,
-  store: PropTypes.shape({
-    getState: PropTypes.func,
-  }).isRequired,
-};
+class Html extends Component {
+  /**
+   * Property types.
+   * @property {Object} propTypes Property types.
+   * @static
+   */
+  static propTypes = {
+    assets: PropTypes.shape({
+      styles: PropTypes.object,
+      javascript: PropTypes.shape({
+        main: PropTypes.string,
+      }),
+    }).isRequired,
+    markup: PropTypes.string.isRequired,
+    store: PropTypes.shape({
+      getState: PropTypes.func,
+    }).isRequired,
+  };
+
+  /**
+   * Render method.
+   * @method render
+   * @returns {string} Markup for the component.
+   */
+  render() {
+    const { assets, markup, store } = this.props;
+    const head = Helmet.rewind();
+    const bodyClass = join(BodyClass.rewind(), ' ');
+
+    return (
+      <html lang="en">
+        <head>
+          <meta charSet="utf-8" />
+          {head.base.toComponent()}
+          {head.title.toComponent()}
+          {head.meta.toComponent()}
+          {head.link.toComponent()}
+          {head.script.toComponent()}
+
+          <link rel="shortcut icon" href="/favicon.ico" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          {assets.client.css ? (
+            <link rel="stylesheet" href={assets.client.css} />
+          ) : null}
+          {process.env.NODE_ENV === 'production' ? (
+            <script src={assets.client.js} defer />
+          ) : (
+            <script src={assets.client.js} defer crossOrigin="true" />
+          )}
+        </head>
+        <body className={bodyClass}>
+          <div role="navigation" aria-label="Toolbar" id="toolbar" />
+          <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
+          <div id="sidebar" />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.__data=${serialize(store.getState())};`,
+            }}
+            charSet="UTF-8"
+          />
+        </body>
+      </html>
+    );
+  }
+}
+
+export default Html;

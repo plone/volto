@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { Portal } from 'react-portal';
 import { Container, Message, Icon } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
@@ -59,22 +59,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    loading: state.emailNotification.loading,
-    loaded: state.emailNotification.loaded,
-    error: state.emailNotification.error,
-    pathname: props.location.pathname,
-  }),
-  dispatch => bindActionCreators({ emailNotification, addMessage }, dispatch),
-)
 /**
  * ContactForm class.
  * @class ContactForm
  * @extends Component
  */
-export class ContactForm extends Component {
+class ContactForm extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -235,4 +225,16 @@ export class ContactForm extends Component {
   }
 }
 
-export default withRouter(ContactForm);
+export default compose(
+  withRouter,
+  injectIntl,
+  connect(
+    (state, props) => ({
+      loading: state.emailNotification.loading,
+      loaded: state.emailNotification.loaded,
+      error: state.emailNotification.error,
+      pathname: props.location.pathname,
+    }),
+    { emailNotification, addMessage },
+  ),
+)(ContactForm);

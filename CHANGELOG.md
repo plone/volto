@@ -4,6 +4,7 @@
 
 ### Added
 
+- Full Pastanaga Toolbabr implementation @sneridagh
 - Internal API path for containers @bloodbare
 - Add toast component @sneridagh
 - Add sidebar support for components @sneridagh
@@ -23,17 +24,27 @@
 - Fixed tiles outline in Pastanaga editor @pnicolli
 - Fix typos @balavec
 - Fix warnings for boolean fields @miziodel
+- Fix dropdown styling @robgietema
+- Update connected-react-router and fix instantiation of the wrapper component
+  to fix the sync problems with the router and the store @sneridagh
 
 ### Internal
 
+- Upgrade lodash to 4.17.15 @tisto
 - Fix console errors on tests @sneridagh
+- Add development mode for kitkoncept.voltodemo to /api plonebacked @fredvd
+- Cleanup map dispatch to props @robgietema
+- Fix linting warnings @robgietema
+- Remove decorators @robgietema
+- Pin mem to 4.0.0 @tisto
+- Add razzle-plugin-bundle-analyzer @tisto
+- Add bundlewatch @tisto
 
 ## 3.1.0 (2019-06-14)
 
 ### Added
 
-- Upgrade to react-redux 7.1. It includes the new official hooks for Redux
-  @sneridagh
+- Upgrade to react-redux 7.1. It includes the new official hooks for Redux. @sneridagh
 - Make Login Route accessible from anywhere in path url @nileshgulia1
 
 ### Changes

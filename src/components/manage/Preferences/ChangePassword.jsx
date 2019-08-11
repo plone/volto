@@ -7,21 +7,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 import { Portal } from 'react-portal';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
-import { Container, Icon, Menu } from 'semantic-ui-react';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { Container } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 
-import { Form, Toolbar } from '../../../components';
+import { Form, Icon, Toolbar } from '../../../components';
 import { updatePassword, addMessage } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
+
+import backSVG from '../../../icons/back.svg';
 
 const messages = defineMessages({
   changePassword: {
@@ -72,17 +69,6 @@ const messages = defineMessages({
  * @class ChangePassword
  * @extends Component
  */
-@injectIntl
-@connect(
-  (state, props) => ({
-    userId: state.userSession.token
-      ? jwtDecode(state.userSession.token).sub
-      : '',
-    loading: state.users.update_password.loading,
-    pathname: props.location.pathname,
-  }),
-  dispatch => bindActionCreators({ updatePassword, addMessage }, dispatch),
-)
 class ChangePassword extends Component {
   /**
    * Property types.
@@ -151,24 +137,6 @@ class ChangePassword extends Component {
         <Helmet
           title={this.props.intl.formatMessage(messages.changePassword)}
         />
-        <Menu attached="top" tabular stackable>
-          <Link to="/personal-information" className="item">
-            <FormattedMessage
-              id="Personal Information"
-              defaultMessage="Personal Information"
-            />
-          </Link>
-          <Link to="/personal-preferences" className="item">
-            <FormattedMessage
-              id="Personal Preferences"
-              defaultMessage="Personal Preferences"
-            />
-          </Link>
-          <Menu.Item
-            name={this.props.intl.formatMessage(messages.changePassword)}
-            active
-          />
-        </Menu>
         <Form
           schema={{
             fieldsets: [
@@ -215,12 +183,13 @@ class ChangePassword extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
+            hideDefaultViewButtons
             inner={
               <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
                 <Icon
-                  name="arrow left"
-                  size="big"
-                  color="blue"
+                  name={backSVG}
+                  className="contents circled"
+                  size="30px"
                   title={this.props.intl.formatMessage(messages.back)}
                 />
               </Link>
@@ -232,4 +201,17 @@ class ChangePassword extends Component {
   }
 }
 
-export default withRouter(ChangePassword);
+export default compose(
+  withRouter,
+  injectIntl,
+  connect(
+    (state, props) => ({
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
+      loading: state.users.update_password.loading,
+      pathname: props.location.pathname,
+    }),
+    { updatePassword, addMessage },
+  ),
+)(ChangePassword);

@@ -6,11 +6,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { asyncConnect } from 'redux-connect';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Router, Link } from 'react-router-dom';
-import { isEmpty } from 'lodash';
+import { compose } from 'redux';
+import { Link } from 'react-router-dom';
 import {
   Container,
   Button,
@@ -54,22 +52,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    error: state.userSession.login.error,
-    loading: state.userSession.login.loading,
-    token: state.userSession.token,
-    returnUrl: qs.parse(props.location.search).return_url || '/',
-  }),
-  dispatch => bindActionCreators({ login, purgeMessages }, dispatch),
-)
 /**
- * LoginComponent class.
- * @class LoginComponent
+ * Login class.
+ * @class Login
  * @extends Component
  */
-export class LoginComponent extends Component {
+class Login extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -188,7 +176,6 @@ export class LoginComponent extends Component {
                           placeholder={this.props.intl.formatMessage(
                             messages.loginName,
                           )}
-                          autoFocus
                         />
                       </Grid.Column>
                     </Grid.Row>
@@ -200,7 +187,7 @@ export class LoginComponent extends Component {
                             defaultMessage="If you you do not have an account here, head over to the {registrationform}."
                             values={{
                               registrationform: (
-                                <Link to="/register" tabIndex={1}>
+                                <Link to="/register">
                                   <FormattedMessage
                                     id="registration form"
                                     defaultMessage="registration form"
@@ -267,6 +254,7 @@ export class LoginComponent extends Component {
                   basic
                   circular
                   primary
+                  aria-label={this.props.intl.formatMessage(messages.login)}
                   id="login-form-submit"
                   icon="arrow right"
                   floated="right"
@@ -285,6 +273,7 @@ export class LoginComponent extends Component {
                   icon="remove"
                   floated="right"
                   size="big"
+                  aria-label={this.props.intl.formatMessage(messages.cancel)}
                   title={this.props.intl.formatMessage(messages.cancel)}
                 />
               </Segment>
@@ -296,15 +285,16 @@ export class LoginComponent extends Component {
   }
 }
 
-export default asyncConnect([
-  {
-    key: 'userSession',
-    promise: ({ store: { dispatch, getState } }) => {
-      const { form } = getState();
-      if (!isEmpty(form)) {
-        return dispatch(login(form.login, form.password));
-      }
-      return Promise.resolve({});
-    },
-  },
-])(withRouter(LoginComponent));
+export default compose(
+  withRouter,
+  injectIntl,
+  connect(
+    (state, props) => ({
+      error: state.userSession.login.error,
+      loading: state.userSession.login.loading,
+      token: state.userSession.token,
+      returnUrl: qs.parse(props.location.search).return_url || '/',
+    }),
+    { login, purgeMessages },
+  ),
+)(Login);

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { Container, Dropdown, Icon, Segment, Table } from 'semantic-ui-react';
 import { concat, map, reverse } from 'lodash';
 import { Portal } from 'react-portal';
@@ -20,9 +20,11 @@ import {
   intlShape,
 } from 'react-intl';
 
-import { Toolbar } from '../../../components';
+import { Icon as IconNext, Toolbar } from '../../../components';
 import { getHistory, revertHistory } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
+
+import backSVG from '../../../icons/back.svg';
 
 const messages = defineMessages({
   back: {
@@ -31,22 +33,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    entries: state.history.entries,
-    pathname: props.location.pathname,
-    title: state.content.data.title,
-    revertRequest: state.history.revert,
-  }),
-  dispatch => bindActionCreators({ getHistory, revertHistory }, dispatch),
-)
 /**
- * HistoryComponent class.
- * @class HistoryComponent
+ * History class.
+ * @class History
  * @extends Component
  */
-export default class HistoryComponent extends Component {
+class History extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -259,12 +251,13 @@ export default class HistoryComponent extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
+            hideDefaultViewButtons
             inner={
               <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
-                <Icon
-                  name="arrow left"
-                  size="big"
-                  color="blue"
+                <IconNext
+                  name={backSVG}
+                  className="contents circled"
+                  size="30px"
                   title={this.props.intl.formatMessage(messages.back)}
                 />
               </Link>
@@ -275,3 +268,16 @@ export default class HistoryComponent extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      entries: state.history.entries,
+      pathname: props.location.pathname,
+      title: state.content.data.title,
+      revertRequest: state.history.revert,
+    }),
+    { getHistory, revertHistory },
+  ),
+)(History);

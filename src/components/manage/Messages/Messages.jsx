@@ -6,24 +6,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Message, Container } from 'semantic-ui-react';
 import { map } from 'lodash';
 
 import { removeMessage } from '../../../actions';
 
-@connect(
-  state => ({
-    messages: state.messages.messages,
-  }),
-  dispatch => bindActionCreators({ removeMessage }, dispatch),
-)
 /**
  * Messages container class.
  * @class Messages
  * @extends Component
  */
-export default class Messages extends Component {
+class Messages extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -105,3 +98,10 @@ export default class Messages extends Component {
     );
   }
 }
+
+export default connect(
+  state => ({
+    messages: state.messages.messages,
+  }),
+  { removeMessage },
+)(Messages);

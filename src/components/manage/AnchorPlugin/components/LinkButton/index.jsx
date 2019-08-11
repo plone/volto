@@ -13,7 +13,7 @@ import unlinkSVG from '../../../../../icons/unlink.svg';
  * @class LinkButton
  * @extends Component
  */
-export default class LinkButton extends Component {
+class LinkButton extends Component {
   static propTypes = {
     placeholder: PropTypes.string,
     store: PropTypes.shape({}).isRequired,
@@ -79,3 +79,5 @@ export default class LinkButton extends Component {
     );
   }
 }
+
+export default LinkButton;

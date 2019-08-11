@@ -28,6 +28,7 @@
     "react"
   ],
   "scripts": {
+    "analyze": "BUNDLE_ANALYZE=true razzle build",
     "start": "razzle start",
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
@@ -54,6 +55,14 @@
     "dry-release": "release-it --dry-run",
     "release": "release-it"
   },
+  "bundlewatch": {
+    "files": [
+      {
+        "path": "build/public/static/js/*.js",
+        "maxSize": "680kB"
+      }
+    ]
+  },
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
@@ -63,6 +72,7 @@
       "^.+\\.css$": "jest-css-modules",
       "^.+\\.scss$": "jest-css-modules",
       "^.+\\.(png)$": "jest-file",
+      "^.+\\.(jpg)$": "jest-file",
       "^.+\\.(svg)$": "./jest-svgsystem-transform.js"
     },
     "moduleNameMapper": {
@@ -147,8 +157,9 @@
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-plugin-react-intl": "3.0.1",
     "babel-plugin-root-import": "6.1.0",
+    "bundlewatch": "0.2.5",
     "classnames": "2.2.6",
-    "connected-react-router": "6.3.2",
+    "connected-react-router": "6.5.0",
     "coveralls": "3.0.2",
     "css-loader": "2.1.1",
     "cypress": "3.3.1",
@@ -190,8 +201,9 @@
     "less-loader": "4.1.0",
     "lint-staged": "8.1.6",
     "locale": "0.1.0",
-    "lodash": "4.17.11",
+    "lodash": "4.17.15",
     "lodash-move": "1.1.1",
+    "mem": "4.0.0",
     "moment": "2.22.2",
     "pofile": "1.0.10",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -206,6 +218,7 @@
     "raven": "2.6.4",
     "raven-js": "3.27.0",
     "razzle": "3.0.0",
+    "razzle-plugin-bundle-analyzer": "1.0.2",
     "react": "16.8.6",
     "react-cookie": "1.0.5",
     "react-dnd": "5.0.0",

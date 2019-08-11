@@ -26,6 +26,7 @@ lighthouse-report.html
 /api/var/
 /api/bin/
 /api/parts/
+/api/share/python-wheels/
 /api/src/
 /api/notebook/env/
 api/.Python

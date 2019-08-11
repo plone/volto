@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import { SearchComponent as Search } from './Search';
+import { __test__ as Search } from './Search';
 
 const mockStore = configureStore();
 

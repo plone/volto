@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose, bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import {
@@ -168,7 +168,7 @@ const messages = defineMessages({
  * @class UsersControlpanel
  * @extends Component
  */
-export default class UsersControlpanel extends Component {
+class UsersControlpanel extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -864,3 +864,15 @@ export default class UsersControlpanel extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      roles: state.roles.roles,
+      users: state.users.users,
+      pathname: props.location.pathname,
+    }),
+    { listRoles, listUsers },
+  ),
+)(UsersControlpanel);

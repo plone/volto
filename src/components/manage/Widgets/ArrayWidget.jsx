@@ -5,17 +5,14 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Label, Dropdown } from 'semantic-ui-react';
-import { concat, debounce, isObject, map, uniqBy } from 'lodash';
+import { Form, Grid, Label } from 'semantic-ui-react';
+import { isObject, map } from 'lodash';
 import { connect } from 'react-redux';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { bindActionCreators } from 'redux';
-import Select, { components } from 'react-select';
+import { components } from 'react-select';
 import AsyncPaginate from 'react-select-async-paginate';
 import CreatableSelect from 'react-select/lib/Creatable';
 
 import {
-  getBoolean,
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
@@ -26,13 +23,6 @@ import { Icon } from '@plone/volto/components';
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
-
-const messages = defineMessages({
-  no_results_found: {
-    id: 'No results found.',
-    defaultMessage: 'No results found.',
-  },
-});
 
 const Option = props => {
   return (
@@ -72,16 +62,17 @@ const customSelectStyles = {
   control: (styles, state) => ({
     ...styles,
     border: 'none',
-    borderBottom: '2px solid #b8c6c8',
+    borderBottom: '1px solid #c7d5c8',
     boxShadow: 'none',
     borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
+    height: '60px',
   }),
   menu: (styles, state) => ({
     ...styles,
     top: null,
     marginTop: 0,
     boxShadow: 'none',
-    borderBottom: '2px solid #b8c6c8',
+    borderBottom: '1px solid #c7d5c8',
   }),
   indicatorSeparator: styles => ({
     ...styles,
@@ -89,7 +80,10 @@ const customSelectStyles = {
   }),
   valueContainer: styles => ({
     ...styles,
-    // paddingLeft: 0,
+    paddingLeft: 0,
+  }),
+  dropdownIndicator: styles => ({
+    paddingRight: 0,
   }),
   option: (styles, state) => ({
     ...styles,
@@ -110,35 +104,15 @@ const customSelectStyles = {
   }),
 };
 
-function getChoices(choices) {
-  return choices ? choices.map(item => ({ label: item, value: item })) : [];
-}
+const getChoices = choices =>
+  choices ? choices.map(item => ({ label: item, value: item })) : [];
 
-@injectIntl
-@connect(
-  (state, props) => {
-    const vocabBaseUrl =
-      getVocabFromHint(props) ||
-      getVocabFromField(props) ||
-      getVocabFromItems(props);
-    const vocabState = state.vocabularies[vocabBaseUrl];
-    if (vocabState) {
-      return {
-        choices: vocabState.items,
-        itemsTotal: vocabState.itemsTotal,
-        loading: Boolean(vocabState.loading),
-      };
-    }
-    return {};
-  },
-  dispatch => bindActionCreators({ getVocabulary }, dispatch),
-)
 /**
  * ArrayWidget component class.
  * @class ArrayWidget
  * @extends Component
  */
-export default class ArrayWidget extends Component {
+class ArrayWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -164,7 +138,6 @@ export default class ArrayWidget extends Component {
     ),
     onChange: PropTypes.func.isRequired,
     itemsTotal: PropTypes.number,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -342,3 +315,22 @@ export default class ArrayWidget extends Component {
     );
   }
 }
+
+export default connect(
+  (state, props) => {
+    const vocabBaseUrl =
+      getVocabFromHint(props) ||
+      getVocabFromField(props) ||
+      getVocabFromItems(props);
+    const vocabState = state.vocabularies[vocabBaseUrl];
+    if (vocabState) {
+      return {
+        choices: vocabState.items,
+        itemsTotal: vocabState.itemsTotal,
+        loading: Boolean(vocabState.loading),
+      };
+    }
+    return {};
+  },
+  { getVocabulary },
+)(ArrayWidget);
