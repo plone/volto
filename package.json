@@ -58,14 +58,14 @@
   "bundlesize": [
     {
       "path": "build/public/static/js/*.js",
-      "maxSize": "680kB"
+      "maxSize": "600kB"
     }
   ],
   "bundlewatch": {
     "files": [
       {
         "path": "build/public/static/js/*.js",
-        "maxSize": "680kB"
+        "maxSize": "600kB"
       }
     ]
   },
