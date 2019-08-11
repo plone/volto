@@ -259,6 +259,7 @@
 
 ### Changes
 
+- Restrict moment.js locales to en/de @tisto
 - Add a delay when filtering content in folder contents so it doesn't overload backend @vangheem
 - Small UX/UI fixes @sneridagh
 - Fix query string search in subjects vocab field @gomez
