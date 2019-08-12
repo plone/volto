@@ -122,9 +122,6 @@ module.exports = {
         }),
       );
       config.plugins.unshift(
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-      );
-      config.plugins.unshift(
         // restrict moment.js locales to en/de
         // see https://github.com/jmblog/how-to-optimize-momentjs-with-webpack for details
         new webpack.ContextReplacementPlugin(
