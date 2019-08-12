@@ -9,6 +9,7 @@ const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
 const { map } = require('lodash');
 const glob = require('glob').sync;
@@ -125,6 +126,7 @@ module.exports = {
           __SERVER__: false,
         }),
       );
+      config.plugins.unshift(new LodashModuleReplacementPlugin());
     }
 
     if (target === 'node') {

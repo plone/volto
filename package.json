@@ -210,6 +210,7 @@
     "locale": "0.1.0",
     "lodash": "4.17.15",
     "lodash-move": "1.1.1",
+    "lodash-webpack-plugin": "0.11.5",
     "mem": "4.0.0",
     "moment": "2.22.2",
     "pofile": "1.0.10",
