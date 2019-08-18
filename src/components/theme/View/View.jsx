@@ -223,6 +223,8 @@ class View extends Component {
         <RenderedView
           content={this.props.content}
           location={this.props.location}
+          token={this.props.token}
+          history={this.props.history}
         />
 
         {this.props.content.subjects &&
@@ -253,6 +255,7 @@ export default compose(
   connect(
     (state, props) => ({
       actions: state.actions.actions,
+      token: state.userSession.token,
       content: state.content.data,
       error: state.content.get.error,
       pathname: props.location.pathname,

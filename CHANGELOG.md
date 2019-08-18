@@ -13,6 +13,7 @@
 - Remove Mosaic component @tisto
 - Added translations to italian @nzambello
 - Add table tile @robgietema
+- Add link redirect view @robgietema
 
 ### Changes
 
