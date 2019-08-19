@@ -30,6 +30,7 @@
 - Update connected-react-router and fix instantiation of the wrapper component
   to fix the sync problems with the router and the store @sneridagh
 - Fix link popup in case you dismiss it without setting anything @sneridagh
+- Export history in start-client.jsx for being able to import it from the project for trackers (Matomo, etc) @csenger
 
 ### Internal
 
