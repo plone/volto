@@ -22,12 +22,14 @@ const FileWidget = ({
   error,
   value,
   onChange,
+  fieldSet,
 }) => (
   <Form.Field
     inline
     required={required}
     error={error.length > 0}
     className={description ? 'help' : ''}
+    id={`${fieldSet || 'field'}-${id}`}
   >
     <Grid>
       <Grid.Row stretched>

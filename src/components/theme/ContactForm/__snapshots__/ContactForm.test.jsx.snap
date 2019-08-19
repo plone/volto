@@ -42,6 +42,7 @@ exports[`Contact form renders a contact form 1`] = `
           </div>
           <div
             className="inline field"
+            id="field-name"
           >
             <div
               className="ui grid"
@@ -83,6 +84,7 @@ exports[`Contact form renders a contact form 1`] = `
           </div>
           <div
             className="inline required field"
+            id="field-from"
           >
             <div
               className="ui grid"
@@ -124,6 +126,7 @@ exports[`Contact form renders a contact form 1`] = `
           </div>
           <div
             className="inline field"
+            id="field-subject"
           >
             <div
               className="ui grid"
@@ -165,6 +168,7 @@ exports[`Contact form renders a contact form 1`] = `
           </div>
           <div
             className="inline required field textarea"
+            id="field-message"
           >
             <div
               className="ui grid"
@@ -316,6 +320,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
           </div>
           <div
             className="inline field"
+            id="field-name"
           >
             <div
               className="ui grid"
@@ -357,6 +362,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
           </div>
           <div
             className="inline required field"
+            id="field-from"
           >
             <div
               className="ui grid"
@@ -398,6 +404,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
           </div>
           <div
             className="inline field"
+            id="field-subject"
           >
             <div
               className="ui grid"
@@ -439,6 +446,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
           </div>
           <div
             className="inline required field textarea"
+            id="field-message"
           >
             <div
               className="ui grid"
