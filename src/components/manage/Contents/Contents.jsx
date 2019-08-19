@@ -269,6 +269,7 @@ class Contents extends Component {
     this.workflow = this.workflow.bind(this);
     this.paste = this.paste.bind(this);
     this.fetchContents = this.fetchContents.bind(this);
+    this.orderTimeout = null;
     this.state = {
       selected: [],
       showDelete: false,
@@ -314,10 +315,17 @@ class Contents extends Component {
       (this.props.clipboardRequest.loading &&
         nextProps.clipboardRequest.loaded) ||
       (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
-      (this.props.updateRequest.loading && nextProps.updateRequest.loaded) ||
-      this.props.pathname !== nextProps.pathname
+      (this.props.updateRequest.loading && nextProps.updateRequest.loaded)
     ) {
       this.fetchContents(nextProps.pathname);
+    }
+    if (this.props.pathname !== nextProps.pathname) {
+      this.setState(
+        {
+          currentPage: 0,
+        },
+        () => this.fetchContents(nextProps.pathname),
+      );
     }
     if (this.props.searchRequest.loading && nextProps.searchRequest.loaded) {
       this.setState({
@@ -477,20 +485,23 @@ class Contents extends Component {
   /**
    * On order item
    * @method onOrderItem
+   * @param {string} id Item id
    * @param {number} itemIndex Item index
    * @param {number} delta Delta
    * @returns {undefined}
    */
-  onOrderItem(itemIndex, delta) {
-    this.props.orderContent(
-      getBaseUrl(this.props.pathname),
-      this.state.items[itemIndex]['@id'].replace(/^.*\//, ''),
-      delta,
-      map(this.state.items, item => item['@id'].replace(/^.*\//, '')),
-    );
-    this.setState({
-      items: move(this.state.items, itemIndex, itemIndex + delta),
-    });
+  onOrderItem(id, itemIndex, delta, backend) {
+    if (backend) {
+      this.props.orderContent(
+        getBaseUrl(this.props.pathname),
+        id.replace(/^.*\//, ''),
+        delta,
+      );
+    } else {
+      this.setState({
+        items: move(this.state.items, itemIndex, itemIndex + delta),
+      });
+    }
   }
 
   /**
@@ -517,7 +528,8 @@ class Contents extends Component {
    * @returns {undefined}
    */
   onMoveToTop(event, { value }) {
-    this.onOrderItem(value, -value);
+    this.onOrderItem(this.state.items[value]['@id'], value, -value, false);
+    this.onOrderItem(this.state.items[value]['@id'], value, -value, true);
   }
 
   /**
@@ -528,7 +540,18 @@ class Contents extends Component {
    * @returns {undefined}
    */
   onMoveToBottom(event, { value }) {
-    this.onOrderItem(value, this.state.items.length - 1 - value);
+    this.onOrderItem(
+      this.state.items[value]['@id'],
+      value,
+      this.state.items.length - 1 - value,
+      false,
+    );
+    this.onOrderItem(
+      this.state.items[value]['@id'],
+      value,
+      this.state.items.length - 1 - value,
+      true,
+    );
   }
 
   /**
