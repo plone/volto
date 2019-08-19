@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Export history in start-client.jsx
+
 ## 3.2.5 (2019-07-04)
 
 ### Changes
