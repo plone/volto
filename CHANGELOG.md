@@ -33,6 +33,7 @@
 - Export history in start-client.jsx for being able to import it from the project for trackers (Matomo, etc) @csenger
 - Workflow change awareness on toolbar @robgietema
 - Fix reordering in folder contents view and problems with previous windowing settings leaked to current one. @robgietema
+- Fix remove link entity of only a part it only removes that part, not the whole entity @robgietema
 
 ### Internal
 
