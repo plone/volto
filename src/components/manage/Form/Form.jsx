@@ -598,6 +598,7 @@ class Form extends Component {
                     <Field
                       {...schema.properties[field]}
                       id={field}
+                      fieldSet={item.title.toLowerCase()}
                       focus={index === 0}
                       value={this.state.formData[field]}
                       required={schema.required.indexOf(field) !== -1}

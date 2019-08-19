@@ -231,7 +231,7 @@ class TokenWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, title, required, description, error } = this.props;
+    const { id, title, required, description, error, fieldSet } = this.props;
     const { selectedOption } = this.state;
     return (
       <Form.Field
@@ -239,6 +239,7 @@ class TokenWidget extends Component {
         required={required}
         error={error.length > 0}
         className={description ? 'help' : ''}
+        id={`${fieldSet || 'field'}-${id}`}
       >
         <Grid>
           <Grid.Row stretched>

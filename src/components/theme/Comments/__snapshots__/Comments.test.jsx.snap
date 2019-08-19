@@ -80,6 +80,7 @@ exports[`Comments renders a comments component 1`] = `
         </div>
         <div
           className="inline required field textarea"
+          id="field-comment"
         >
           <div
             className="ui grid"
