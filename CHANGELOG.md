@@ -29,6 +29,7 @@
 - Fix dropdown styling @robgietema
 - Update connected-react-router and fix instantiation of the wrapper component
   to fix the sync problems with the router and the store @sneridagh
+- Fix link popup in case you dismiss it without setting anything @sneridagh
 
 ### Internal
 
