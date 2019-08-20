@@ -36,6 +36,7 @@
 - Fix reordering in folder contents view and problems with previous windowing settings leaked to current one. @robgietema
 - Fix remove link entity of only a part it only removes that part, not the whole entity @robgietema
 - Add proper placeholder to the add link feature in the editor @sneridagh
+- Fix bulk workflow change in contents view @sneridagh
 
 ### Internal
 
