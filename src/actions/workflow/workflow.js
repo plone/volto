@@ -9,6 +9,8 @@ import {
   TRANSITION_WORKFLOW,
 } from '../../constants/ActionTypes';
 
+import { settings } from '~/config';
+
 /**
  * Get workflow function.
  * @function getWorkflow
@@ -36,7 +38,10 @@ export function transitionWorkflow(urls) {
     type: TRANSITION_WORKFLOW,
     request:
       typeof urls === 'string'
-        ? { op: 'post', path: urls }
-        : urls.map(url => ({ op: 'post', path: url })),
+        ? { op: 'post', path: urls.replace(settings.apiPath, '') }
+        : urls.map(url => ({
+            op: 'post',
+            path: url.replace(settings.apiPath, ''),
+          })),
   };
 }
