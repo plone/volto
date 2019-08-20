@@ -4,164 +4,168 @@ exports[`Register renders a register component 1`] = `
 <div
   id="page-register"
 >
-  <form
-    className="ui form"
-    method="post"
-    onSubmit={[Function]}
+  <div
+    className="ui container"
   >
-    <div
-      className="ui raised segments"
+    <form
+      className="ui form"
+      method="post"
+      onSubmit={[Function]}
     >
       <div
-        className="ui segment"
+        className="ui raised segments"
       >
         <div
-          className="ui segment primary"
-        >
-          Registration form
-        </div>
-        <div
-          className="inline required field help"
-          id="field-fullname"
+          className="ui segment"
         >
           <div
-            className="ui grid"
+            className="ui segment primary"
+          >
+            Registration form
+          </div>
+          <div
+            className="inline required field help"
+            id="field-fullname"
           >
             <div
-              className="stretched row"
+              className="ui grid"
             >
               <div
-                className="four wide column"
+                className="stretched row"
               >
                 <div
-                  className="wrapper"
+                  className="four wide column"
                 >
-                  <label
-                    htmlFor="field-fullname"
+                  <div
+                    className="wrapper"
                   >
-                    Full Name
-                  </label>
+                    <label
+                      htmlFor="field-fullname"
+                    >
+                      Full Name
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="eight wide column"
+                >
+                  <div
+                    className="ui input"
+                  >
+                    <input
+                      disabled={false}
+                      id="field-fullname"
+                      name="fullname"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    />
+                  </div>
                 </div>
               </div>
               <div
-                className="eight wide column"
+                className="stretched row"
               >
                 <div
-                  className="ui input"
+                  className="stretched twelve wide column"
                 >
-                  <input
-                    disabled={false}
-                    id="field-fullname"
-                    name="fullname"
-                    onChange={[Function]}
-                    type="text"
-                    value=""
-                  />
+                  <p
+                    className="help"
+                  >
+                    Enter full name, e.g. John Smith.
+                  </p>
                 </div>
               </div>
             </div>
+          </div>
+          <div
+            className="inline required field help"
+            id="field-email"
+          >
             <div
-              className="stretched row"
+              className="ui grid"
             >
               <div
-                className="stretched twelve wide column"
+                className="stretched row"
               >
-                <p
-                  className="help"
+                <div
+                  className="four wide column"
                 >
-                  Enter full name, e.g. John Smith.
-                </p>
+                  <div
+                    className="wrapper"
+                  >
+                    <label
+                      htmlFor="field-email"
+                    >
+                      E-mail
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="eight wide column"
+                >
+                  <div
+                    className="ui input"
+                  >
+                    <input
+                      disabled={false}
+                      id="field-email"
+                      name="email"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                className="stretched row"
+              >
+                <div
+                  className="stretched twelve wide column"
+                >
+                  <p
+                    className="help"
+                  >
+                    Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="inline required field help"
-          id="field-email"
+          className="ui clearing segment actions"
         >
-          <div
-            className="ui grid"
+          <button
+            aria-label="Register"
+            className="ui basic primary right floated button"
+            onClick={[Function]}
+            title="Register"
+            type="submit"
           >
-            <div
-              className="stretched row"
-            >
-              <div
-                className="four wide column"
-              >
-                <div
-                  className="wrapper"
-                >
-                  <label
-                    htmlFor="field-email"
-                  >
-                    E-mail
-                  </label>
-                </div>
-              </div>
-              <div
-                className="eight wide column"
-              >
-                <div
-                  className="ui input"
-                >
-                  <input
-                    disabled={false}
-                    id="field-email"
-                    name="email"
-                    onChange={[Function]}
-                    type="text"
-                    value=""
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              className="stretched row"
-            >
-              <div
-                className="stretched twelve wide column"
-              >
-                <p
-                  className="help"
-                >
-                  Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
-                </p>
-              </div>
-            </div>
-          </div>
+            <svg
+              className="icon circled"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "30px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+          </button>
         </div>
       </div>
-      <div
-        className="ui clearing segment actions"
-      >
-        <button
-          aria-label="Register"
-          className="ui basic primary right floated button"
-          onClick={[Function]}
-          title="Register"
-          type="submit"
-        >
-          <svg
-            className="icon circled"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "currentColor",
-                "height": "30px",
-                "width": "auto",
-              }
-            }
-            viewBox=""
-            xmlns=""
-          />
-        </button>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
 `;

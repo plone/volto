@@ -1,227 +1,231 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PersonalPreferences renders a personal preferences component 1`] = `
-<form
-  className="ui form"
-  method="post"
-  onSubmit={[Function]}
+<div
+  className="ui container"
 >
-  <div
-    className="ui raised segments"
+  <form
+    className="ui form"
+    method="post"
+    onSubmit={[Function]}
   >
     <div
-      className="ui segment"
+      className="ui raised segments"
     >
       <div
-        className="inline field help"
-        id="field-language"
+        className="ui segment"
       >
         <div
-          className="ui grid"
+          className="inline field help"
+          id="field-language"
         >
           <div
-            className="stretched row"
+            className="ui grid"
           >
             <div
-              className="four wide column"
+              className="stretched row"
             >
               <div
-                className="wrapper"
-              >
-                <label
-                  htmlFor="field-language"
-                >
-                  Language
-                </label>
-              </div>
-            </div>
-            <div
-              className="eight wide column"
-            >
-              <div
-                className="css-10nd86i react-select-container"
-                id="field-language"
-                onKeyDown={[Function]}
+                className="four wide column"
               >
                 <div
-                  className="css-hnwiky react-select__control"
-                  onMouseDown={[Function]}
-                  onTouchEnd={[Function]}
+                  className="wrapper"
+                >
+                  <label
+                    htmlFor="field-language"
+                  >
+                    Language
+                  </label>
+                </div>
+              </div>
+              <div
+                className="eight wide column"
+              >
+                <div
+                  className="css-10nd86i react-select-container"
+                  id="field-language"
+                  onKeyDown={[Function]}
                 >
                   <div
-                    className="css-1dvrfad react-select__value-container react-select__value-container--has-value"
+                    className="css-hnwiky react-select__control"
+                    onMouseDown={[Function]}
+                    onTouchEnd={[Function]}
                   >
                     <div
-                      className="css-xp4uvy react-select__single-value"
-                    />
-                    <div
-                      className="css-1g6gooi"
+                      className="css-1dvrfad react-select__value-container react-select__value-container--has-value"
                     >
                       <div
-                        className="react-select__input"
-                        style={
-                          Object {
-                            "display": "inline-block",
-                          }
-                        }
+                        className="css-xp4uvy react-select__single-value"
+                      />
+                      <div
+                        className="css-1g6gooi"
                       >
-                        <input
-                          aria-autocomplete="list"
-                          autoCapitalize="none"
-                          autoComplete="off"
-                          autoCorrect="off"
-                          disabled={false}
-                          id="react-select-2-input"
-                          onBlur={[Function]}
-                          onChange={[Function]}
-                          onFocus={[Function]}
-                          spellCheck="false"
-                          style={
-                            Object {
-                              "background": 0,
-                              "border": 0,
-                              "boxSizing": "content-box",
-                              "color": "inherit",
-                              "fontSize": "inherit",
-                              "opacity": 1,
-                              "outline": 0,
-                              "padding": 0,
-                              "width": "1px",
-                            }
-                          }
-                          tabIndex="0"
-                          type="text"
-                          value=""
-                        />
                         <div
+                          className="react-select__input"
                           style={
                             Object {
-                              "height": 0,
-                              "left": 0,
-                              "overflow": "scroll",
-                              "position": "absolute",
-                              "top": 0,
-                              "visibility": "hidden",
-                              "whiteSpace": "pre",
+                              "display": "inline-block",
                             }
                           }
                         >
-                          
+                          <input
+                            aria-autocomplete="list"
+                            autoCapitalize="none"
+                            autoComplete="off"
+                            autoCorrect="off"
+                            disabled={false}
+                            id="react-select-2-input"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onFocus={[Function]}
+                            spellCheck="false"
+                            style={
+                              Object {
+                                "background": 0,
+                                "border": 0,
+                                "boxSizing": "content-box",
+                                "color": "inherit",
+                                "fontSize": "inherit",
+                                "opacity": 1,
+                                "outline": 0,
+                                "padding": 0,
+                                "width": "1px",
+                              }
+                            }
+                            tabIndex="0"
+                            type="text"
+                            value=""
+                          />
+                          <div
+                            style={
+                              Object {
+                                "height": 0,
+                                "left": 0,
+                                "overflow": "scroll",
+                                "position": "absolute",
+                                "top": 0,
+                                "visibility": "hidden",
+                                "whiteSpace": "pre",
+                              }
+                            }
+                          >
+                            
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div
-                    className="css-1wy0on6 react-select__indicators"
-                  >
-                    <span
-                      className="css-hba3sr react-select__indicator-separator"
-                    />
                     <div
-                      aria-hidden="true"
-                      className="css-9t8fgp react-select__indicator react-select__dropdown-indicator"
-                      onMouseDown={[Function]}
-                      onTouchEnd={[Function]}
+                      className="css-1wy0on6 react-select__indicators"
                     >
-                      <svg
-                        className="icon"
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": undefined,
-                          }
-                        }
-                        onClick={null}
-                        style={
-                          Object {
-                            "fill": "#007bc1",
-                            "height": "24px",
-                            "width": "auto",
-                          }
-                        }
-                        viewBox=""
-                        xmlns=""
+                      <span
+                        className="css-hba3sr react-select__indicator-separator"
                       />
+                      <div
+                        aria-hidden="true"
+                        className="css-9t8fgp react-select__indicator react-select__dropdown-indicator"
+                        onMouseDown={[Function]}
+                        onTouchEnd={[Function]}
+                      >
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "#007bc1",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
+                        />
+                      </div>
                     </div>
                   </div>
+                  <input
+                    name="language"
+                    type="hidden"
+                  />
                 </div>
-                <input
-                  name="language"
-                  type="hidden"
-                />
               </div>
             </div>
-          </div>
-          <div
-            className="stretched row"
-          >
             <div
-              className="stretched twelve wide column"
+              className="stretched row"
             >
-              <p
-                className="help"
+              <div
+                className="stretched twelve wide column"
               >
-                Your preferred language
-              </p>
+                <p
+                  className="help"
+                >
+                  Your preferred language
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div
-      className="ui clearing segment actions"
-    >
-      <button
-        aria-label="Save"
-        className="ui basic primary right floated button"
-        onClick={[Function]}
-        title="Save"
-        type="submit"
+      <div
+        className="ui clearing segment actions"
       >
-        <svg
-          className="icon circled"
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": undefined,
+        <button
+          aria-label="Save"
+          className="ui basic primary right floated button"
+          onClick={[Function]}
+          title="Save"
+          type="submit"
+        >
+          <svg
+            className="icon circled"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
             }
-          }
-          onClick={null}
-          style={
-            Object {
-              "fill": "currentColor",
-              "height": "30px",
-              "width": "auto",
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "30px",
+                "width": "auto",
+              }
             }
-          }
-          viewBox=""
-          xmlns=""
-        />
-      </button>
-      <button
-        aria-label="Cancel"
-        className="ui basic secondary right floated button"
-        onClick={[Function]}
-        title="Cancel"
-      >
-        <svg
-          className="icon circled"
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": undefined,
+            viewBox=""
+            xmlns=""
+          />
+        </button>
+        <button
+          aria-label="Cancel"
+          className="ui basic secondary right floated button"
+          onClick={[Function]}
+          title="Cancel"
+        >
+          <svg
+            className="icon circled"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
             }
-          }
-          onClick={null}
-          style={
-            Object {
-              "fill": "currentColor",
-              "height": "30px",
-              "width": "auto",
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "30px",
+                "width": "auto",
+              }
             }
-          }
-          viewBox=""
-          xmlns=""
-        />
-      </button>
+            viewBox=""
+            xmlns=""
+          />
+        </button>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>
 `;

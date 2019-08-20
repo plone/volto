@@ -24,250 +24,254 @@ exports[`Contact form renders a contact form 1`] = `
         </div>
       </div>
     </div>
-    <form
-      className="ui form"
-      method="post"
-      onSubmit={[Function]}
+    <div
+      className="ui container"
     >
-      <div
-        className="ui raised segments"
+      <form
+        className="ui form"
+        method="post"
+        onSubmit={[Function]}
       >
         <div
-          className="ui segment"
+          className="ui raised segments"
         >
           <div
-            className="ui segment primary"
-          >
-            Contact form
-          </div>
-          <div
-            className="inline field"
-            id="field-name"
+            className="ui segment"
           >
             <div
-              className="ui grid"
+              className="ui segment primary"
+            >
+              Contact form
+            </div>
+            <div
+              className="inline field"
+              id="field-name"
             >
               <div
-                className="stretched row"
+                className="ui grid"
               >
                 <div
-                  className="four wide column"
+                  className="stretched row"
                 >
                   <div
-                    className="wrapper"
+                    className="four wide column"
                   >
-                    <label
-                      htmlFor="field-name"
+                    <div
+                      className="wrapper"
                     >
-                      Name
-                    </label>
+                      <label
+                        htmlFor="field-name"
+                      >
+                        Name
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
                   <div
-                    className="ui input"
+                    className="eight wide column"
                   >
-                    <input
-                      disabled={false}
-                      id="field-name"
-                      name="name"
-                      onChange={[Function]}
-                      type="text"
-                      value=""
-                    />
+                    <div
+                      className="ui input"
+                    >
+                      <input
+                        disabled={false}
+                        id="field-name"
+                        name="name"
+                        onChange={[Function]}
+                        type="text"
+                        value=""
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            className="inline required field"
-            id="field-from"
-          >
             <div
-              className="ui grid"
+              className="inline required field"
+              id="field-from"
             >
               <div
-                className="stretched row"
+                className="ui grid"
               >
                 <div
-                  className="four wide column"
+                  className="stretched row"
                 >
                   <div
-                    className="wrapper"
+                    className="four wide column"
                   >
-                    <label
-                      htmlFor="field-from"
+                    <div
+                      className="wrapper"
                     >
-                      From
-                    </label>
+                      <label
+                        htmlFor="field-from"
+                      >
+                        From
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
                   <div
-                    className="ui input"
+                    className="eight wide column"
                   >
-                    <input
-                      disabled={false}
-                      id="field-from"
-                      name="from"
-                      onChange={[Function]}
-                      type="text"
-                      value=""
-                    />
+                    <div
+                      className="ui input"
+                    >
+                      <input
+                        disabled={false}
+                        id="field-from"
+                        name="from"
+                        onChange={[Function]}
+                        type="text"
+                        value=""
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            className="inline field"
-            id="field-subject"
-          >
             <div
-              className="ui grid"
+              className="inline field"
+              id="field-subject"
             >
               <div
-                className="stretched row"
+                className="ui grid"
               >
                 <div
-                  className="four wide column"
+                  className="stretched row"
                 >
                   <div
-                    className="wrapper"
+                    className="four wide column"
                   >
-                    <label
-                      htmlFor="field-subject"
+                    <div
+                      className="wrapper"
                     >
-                      Subject
-                    </label>
+                      <label
+                        htmlFor="field-subject"
+                      >
+                        Subject
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
                   <div
-                    className="ui input"
+                    className="eight wide column"
                   >
-                    <input
-                      disabled={false}
-                      id="field-subject"
-                      name="subject"
-                      onChange={[Function]}
-                      type="text"
-                      value=""
-                    />
+                    <div
+                      className="ui input"
+                    >
+                      <input
+                        disabled={false}
+                        id="field-subject"
+                        name="subject"
+                        onChange={[Function]}
+                        type="text"
+                        value=""
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            className="inline required field textarea"
-            id="field-message"
-          >
             <div
-              className="ui grid"
+              className="inline required field textarea"
+              id="field-message"
             >
               <div
-                className="stretched row"
+                className="ui grid"
               >
                 <div
-                  className="four wide column"
+                  className="stretched row"
                 >
                   <div
-                    className="wrapper"
+                    className="four wide column"
                   >
-                    <label
-                      htmlFor="field-message"
+                    <div
+                      className="wrapper"
                     >
-                      Message
-                    </label>
+                      <label
+                        htmlFor="field-message"
+                      >
+                        Message
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
-                  <textarea
-                    disabled={false}
-                    id="field-message"
-                    name="message"
-                    onChange={[Function]}
-                    onInput={[Function]}
-                    rows={3}
-                    style={
-                      Object {
-                        "resize": "",
+                  <div
+                    className="eight wide column"
+                  >
+                    <textarea
+                      disabled={false}
+                      id="field-message"
+                      name="message"
+                      onChange={[Function]}
+                      onInput={[Function]}
+                      rows={3}
+                      style={
+                        Object {
+                          "resize": "",
+                        }
                       }
-                    }
-                    value=""
-                  />
+                      value=""
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className="ui clearing segment actions"
-        >
-          <button
-            aria-label="Send"
-            className="ui basic primary right floated button"
-            onClick={[Function]}
-            title="Send"
-            type="submit"
+          <div
+            className="ui clearing segment actions"
           >
-            <svg
-              className="icon circled"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": undefined,
+            <button
+              aria-label="Send"
+              className="ui basic primary right floated button"
+              onClick={[Function]}
+              title="Send"
+              type="submit"
+            >
+              <svg
+                className="icon circled"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
                 }
-              }
-              onClick={null}
-              style={
-                Object {
-                  "fill": "currentColor",
-                  "height": "30px",
-                  "width": "auto",
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "30px",
+                    "width": "auto",
+                  }
                 }
-              }
-              viewBox=""
-              xmlns=""
-            />
-          </button>
-          <button
-            aria-label="Cancel"
-            className="ui basic secondary right floated button"
-            onClick={[Function]}
-            title="Cancel"
-          >
-            <svg
-              className="icon circled"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": undefined,
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+            <button
+              aria-label="Cancel"
+              className="ui basic secondary right floated button"
+              onClick={[Function]}
+              title="Cancel"
+            >
+              <svg
+                className="icon circled"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
                 }
-              }
-              onClick={null}
-              style={
-                Object {
-                  "fill": "currentColor",
-                  "height": "30px",
-                  "width": "auto",
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "30px",
+                    "width": "auto",
+                  }
                 }
-              }
-              viewBox=""
-              xmlns=""
-            />
-          </button>
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
     <div
       id="Portal"
     />
@@ -302,250 +306,254 @@ exports[`Contact form renders a contact form with error message 1`] = `
         </p>
       </div>
     </div>
-    <form
-      className="ui form"
-      method="post"
-      onSubmit={[Function]}
+    <div
+      className="ui container"
     >
-      <div
-        className="ui raised segments"
+      <form
+        className="ui form"
+        method="post"
+        onSubmit={[Function]}
       >
         <div
-          className="ui segment"
+          className="ui raised segments"
         >
           <div
-            className="ui segment primary"
-          >
-            Contact form
-          </div>
-          <div
-            className="inline field"
-            id="field-name"
+            className="ui segment"
           >
             <div
-              className="ui grid"
+              className="ui segment primary"
+            >
+              Contact form
+            </div>
+            <div
+              className="inline field"
+              id="field-name"
             >
               <div
-                className="stretched row"
+                className="ui grid"
               >
                 <div
-                  className="four wide column"
+                  className="stretched row"
                 >
                   <div
-                    className="wrapper"
+                    className="four wide column"
                   >
-                    <label
-                      htmlFor="field-name"
+                    <div
+                      className="wrapper"
                     >
-                      Name
-                    </label>
+                      <label
+                        htmlFor="field-name"
+                      >
+                        Name
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
                   <div
-                    className="ui input"
+                    className="eight wide column"
                   >
-                    <input
-                      disabled={false}
-                      id="field-name"
-                      name="name"
-                      onChange={[Function]}
-                      type="text"
-                      value=""
-                    />
+                    <div
+                      className="ui input"
+                    >
+                      <input
+                        disabled={false}
+                        id="field-name"
+                        name="name"
+                        onChange={[Function]}
+                        type="text"
+                        value=""
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            className="inline required field"
-            id="field-from"
-          >
             <div
-              className="ui grid"
+              className="inline required field"
+              id="field-from"
             >
               <div
-                className="stretched row"
+                className="ui grid"
               >
                 <div
-                  className="four wide column"
+                  className="stretched row"
                 >
                   <div
-                    className="wrapper"
+                    className="four wide column"
                   >
-                    <label
-                      htmlFor="field-from"
+                    <div
+                      className="wrapper"
                     >
-                      From
-                    </label>
+                      <label
+                        htmlFor="field-from"
+                      >
+                        From
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
                   <div
-                    className="ui input"
+                    className="eight wide column"
                   >
-                    <input
-                      disabled={false}
-                      id="field-from"
-                      name="from"
-                      onChange={[Function]}
-                      type="text"
-                      value=""
-                    />
+                    <div
+                      className="ui input"
+                    >
+                      <input
+                        disabled={false}
+                        id="field-from"
+                        name="from"
+                        onChange={[Function]}
+                        type="text"
+                        value=""
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            className="inline field"
-            id="field-subject"
-          >
             <div
-              className="ui grid"
+              className="inline field"
+              id="field-subject"
             >
               <div
-                className="stretched row"
+                className="ui grid"
               >
                 <div
-                  className="four wide column"
+                  className="stretched row"
                 >
                   <div
-                    className="wrapper"
+                    className="four wide column"
                   >
-                    <label
-                      htmlFor="field-subject"
+                    <div
+                      className="wrapper"
                     >
-                      Subject
-                    </label>
+                      <label
+                        htmlFor="field-subject"
+                      >
+                        Subject
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
                   <div
-                    className="ui input"
+                    className="eight wide column"
                   >
-                    <input
-                      disabled={false}
-                      id="field-subject"
-                      name="subject"
-                      onChange={[Function]}
-                      type="text"
-                      value=""
-                    />
+                    <div
+                      className="ui input"
+                    >
+                      <input
+                        disabled={false}
+                        id="field-subject"
+                        name="subject"
+                        onChange={[Function]}
+                        type="text"
+                        value=""
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            className="inline required field textarea"
-            id="field-message"
-          >
             <div
-              className="ui grid"
+              className="inline required field textarea"
+              id="field-message"
             >
               <div
-                className="stretched row"
+                className="ui grid"
               >
                 <div
-                  className="four wide column"
+                  className="stretched row"
                 >
                   <div
-                    className="wrapper"
+                    className="four wide column"
                   >
-                    <label
-                      htmlFor="field-message"
+                    <div
+                      className="wrapper"
                     >
-                      Message
-                    </label>
+                      <label
+                        htmlFor="field-message"
+                      >
+                        Message
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
-                  <textarea
-                    disabled={false}
-                    id="field-message"
-                    name="message"
-                    onChange={[Function]}
-                    onInput={[Function]}
-                    rows={3}
-                    style={
-                      Object {
-                        "resize": "",
+                  <div
+                    className="eight wide column"
+                  >
+                    <textarea
+                      disabled={false}
+                      id="field-message"
+                      name="message"
+                      onChange={[Function]}
+                      onInput={[Function]}
+                      rows={3}
+                      style={
+                        Object {
+                          "resize": "",
+                        }
                       }
-                    }
-                    value=""
-                  />
+                      value=""
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className="ui clearing segment actions"
-        >
-          <button
-            aria-label="Send"
-            className="ui basic primary right floated button"
-            onClick={[Function]}
-            title="Send"
-            type="submit"
+          <div
+            className="ui clearing segment actions"
           >
-            <svg
-              className="icon circled"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": undefined,
+            <button
+              aria-label="Send"
+              className="ui basic primary right floated button"
+              onClick={[Function]}
+              title="Send"
+              type="submit"
+            >
+              <svg
+                className="icon circled"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
                 }
-              }
-              onClick={null}
-              style={
-                Object {
-                  "fill": "currentColor",
-                  "height": "30px",
-                  "width": "auto",
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "30px",
+                    "width": "auto",
+                  }
                 }
-              }
-              viewBox=""
-              xmlns=""
-            />
-          </button>
-          <button
-            aria-label="Cancel"
-            className="ui basic secondary right floated button"
-            onClick={[Function]}
-            title="Cancel"
-          >
-            <svg
-              className="icon circled"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": undefined,
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+            <button
+              aria-label="Cancel"
+              className="ui basic secondary right floated button"
+              onClick={[Function]}
+              title="Cancel"
+            >
+              <svg
+                className="icon circled"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
                 }
-              }
-              onClick={null}
-              style={
-                Object {
-                  "fill": "currentColor",
-                  "height": "30px",
-                  "width": "auto",
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "30px",
+                    "width": "auto",
+                  }
                 }
-              }
-              viewBox=""
-              xmlns=""
-            />
-          </button>
+                viewBox=""
+                xmlns=""
+              />
+            </button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
     <div
       id="Portal"
     />
