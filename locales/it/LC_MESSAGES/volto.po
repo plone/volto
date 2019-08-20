@@ -113,12 +113,15 @@ msgstr "Di norma, i permessi di questo elemento vengono ereditati dal contenitor
 msgid "Cancel"
 msgstr "Annulla"
 
+#: components/manage/Tiles/Table/Edit
+msgid "Cell"
+msgstr ""
+
 #: components/manage/History/History
 msgid "Change Note"
 msgstr "Cambia Nota"
 
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 msgid "Change Password"
 msgstr "Cambia Password"
 
@@ -241,6 +244,14 @@ msgstr "Default"
 msgid "Delete"
 msgstr "Elimina"
 
+#: components/manage/Tiles/Table/Edit
+msgid "Delete col"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Delete row"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Descending"
 msgstr "Decrescente"
@@ -271,6 +282,10 @@ msgstr "Vista"
 #: components/theme/Footer/Footer
 msgid "Distributed under the {license}."
 msgstr "Distribuito sotto {license}"
+
+#: components/manage/Tiles/Table/Edit
+msgid "Divide each row into separate cells"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
@@ -322,6 +337,10 @@ msgstr "Email inviata"
 #: components/manage/Tiles/Maps/Edit
 msgid "Enter Map URL"
 msgstr "Inserisci l'URL della mappa"
+
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Enter URL or title"
+msgstr ""
 
 #: components/manage/Tiles/Video/Edit
 msgid "Enter Video URL"
@@ -377,6 +396,10 @@ msgstr "Nome del file"
 msgid "Filter…"
 msgstr "Filtra…"
 
+#: components/manage/Tiles/Table/Edit
+msgid "Fixed width table cells"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "From"
 msgstr "Da"
@@ -428,6 +451,22 @@ msgstr "Se non ti sei ancora iscritto, compila il {registrationform} per diventa
 msgid "Inherit permissions from higher levels"
 msgstr "Eredita i permessi dai livelli superiori"
 
+#: components/manage/Tiles/Table/Edit
+msgid "Insert col after"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Insert col before"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Insert row after"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Insert row before"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Elemento/i copiato/i."
@@ -471,6 +510,10 @@ msgstr "Log in"
 msgid "Login Name"
 msgstr "Nome utente"
 
+#: components/manage/Tiles/Table/Edit
+msgid "Make the table compact"
+msgstr ""
+
 #: components/manage/Tiles/Maps/Edit
 msgid "Maps data error"
 msgstr "Errore nei dati delle mappe"
@@ -482,6 +525,10 @@ msgstr "Istruzioni per le mappe"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr "Messaggio"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Metadata"
+msgstr ""
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
@@ -532,7 +579,6 @@ msgstr "Ok"
 msgid "Open menu"
 msgstr "Apri menu"
 
-#: components/manage/Preferences/PersonalPreferences
 #: components/theme/Login/Login
 msgid "Password"
 msgstr "Password"
@@ -546,14 +592,10 @@ msgstr "Le password non corrispondono."
 msgid "Paste"
 msgstr "Incolla"
 
-#: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
-#: components/manage/Preferences/PersonalPreferences
 msgid "Personal Information"
 msgstr "Informazioni Personali"
 
-#: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 msgid "Personal Preferences"
 msgstr "Preferenze Personali"
@@ -578,6 +620,10 @@ msgstr "Sito Plone"
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} Open Source CMS/WCM"
 
+#: components/manage/Preferences/PersonalInformation
+msgid "Portrait"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Powered by Plone & Python"
 msgstr "Realizzato con Plone &amp; Python"
@@ -586,10 +632,9 @@ msgstr "Realizzato con Plone &amp; Python"
 msgid "Preview"
 msgstr "Anteprima"
 
-#: components/manage/Add/Add
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
-#: components/manage/Edit/Edit
+#: components/manage/Sidebar/Sidebar
 msgid "Properties"
 msgstr "Proprietà"
 
@@ -610,6 +655,10 @@ msgstr "Leggi il resto…"
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
 msgstr "Riordina elementi per…"
+
+#: components/manage/Tiles/Table/Edit
+msgid "Reduce complexity"
+msgstr ""
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Register/Register
@@ -768,17 +817,25 @@ msgstr "Rinnova la password"
 msgid "State"
 msgstr "Stato"
 
-#: components/manage/Workflow/Workflow
-msgid "State: {current}"
-msgstr "Stato: {current}"
-
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr "Stringa"
 
+#: components/manage/Tiles/Table/Edit
+msgid "Stripe alternate rows with color"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
 msgstr "Oggetto"
+
+#: components/manage/Tiles/Table/Edit
+msgid "Table"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Table color inverted"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
@@ -808,6 +865,10 @@ msgstr "L'indirizzo della tua pagina personale esterna, se ne hai una."
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "La registrazione è avvenuta correttamente. Per favore controlla la tua casella di posta per informazioni su come attivare il tuo account."
+
+#: components/manage/Preferences/PersonalInformation
+msgid "The user portrait/avatar"
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
@@ -889,6 +950,10 @@ msgstr "Utenti"
 msgid "Users and groups settings"
 msgstr "Impostazioni utenti e gruppi"
 
+#: components/manage/Controlpanels/Controlpanels
+msgid "Version Overview"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 msgid "View"
 msgstr "Visualizza"
@@ -900,11 +965,6 @@ msgstr "Mostra le modifiche"
 #: components/manage/History/History
 msgid "View this revision"
 msgstr "Mostra questa revisione"
-
-#: components/manage/Add/Add
-#: components/manage/Edit/Edit
-msgid "Visual"
-msgstr "Visual"
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
@@ -929,6 +989,10 @@ msgstr "Quando questa data sarà raggiunta, il contenuto non sarà più visibile
 #: components/manage/History/History
 msgid "Who"
 msgstr "Chi"
+
+#: components/manage/Workflow/Workflow
+msgid "Workflow updated."
+msgstr ""
 
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
@@ -993,6 +1057,10 @@ msgstr "Il mio indirizzo email è"
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "form di registrazione"
+
+#: config/Tiles
+msgid "table"
+msgstr ""
 
 #: config/Tiles
 msgid "text"
