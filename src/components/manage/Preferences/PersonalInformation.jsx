@@ -11,8 +11,9 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 
-import { Form, Toast } from '../../../components';
+import { Form, Toolbar, Toast } from '../../../components';
 import { getUser, updateUser } from '../../../actions';
+import { getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
   personalInformation: {
@@ -73,6 +74,10 @@ const messages = defineMessages({
   back: {
     id: 'Back',
     defaultMessage: 'Back',
+  },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
   },
 });
 
@@ -139,7 +144,11 @@ class PersonalInformation extends Component {
     delete data.roles;
     this.props.updateUser(this.props.userId, data);
     toast.success(
-      <Toast success title={this.props.intl.formatMessage(messages.saved)} />,
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.saved)}
+      />,
     );
     this.props.closeMenu();
   }

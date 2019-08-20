@@ -11,6 +11,7 @@
 - Add sidebar support for components @sneridagh
 - Add Volto version number in control panel @nzambello
 - Remove Mosaic component @tisto
+- Added toast component in actions @nzambello
 - Added translations to italian @nzambello
 - Add table tile @robgietema
 - Add link redirect view @robgietema

@@ -10,9 +10,10 @@ import { compose } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-import { Form } from '../../../components';
-import { createUser, addMessage } from '../../../actions';
+import { Form, Toast } from '../../../components';
+import { createUser } from '../../../actions';
 
 const messages = defineMessages({
   title: {
@@ -70,7 +71,6 @@ class Register extends Component {
    */
   static propTypes = {
     createUser: PropTypes.func.isRequired,
-    addMessage: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
     loaded: PropTypes.bool.isRequired,
     error: PropTypes.shape({
@@ -110,10 +110,16 @@ class Register extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.loading && nextProps.loaded) {
-      this.props.addMessage(
-        this.props.intl.formatMessage(messages.successRegisterCompletedTitle),
-        this.props.intl.formatMessage(messages.successRegisterCompletedBody),
-        'success',
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(
+            messages.successRegisterCompletedTitle,
+          )}
+          content={this.props.intl.formatMessage(
+            messages.successRegisterCompletedBody,
+          )}
+        />,
       );
       this.props.history.push('/login');
     }
@@ -192,6 +198,6 @@ export default compose(
       loaded: state.users.create.loaded,
       error: state.users.create.error,
     }),
-    { createUser, addMessage },
+    { createUser },
   ),
 )(Register);

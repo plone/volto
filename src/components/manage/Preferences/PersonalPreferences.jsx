@@ -42,6 +42,10 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
 });
 
 /**
@@ -57,7 +61,6 @@ class PersonalPreferences extends Component {
    */
   static propTypes = {
     updateIntl: PropTypes.func.isRequired,
-    addMessage: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
     closeMenu: PropTypes.func.isRequired,
   };
@@ -91,6 +94,13 @@ class PersonalPreferences extends Component {
           locale: locale.language || 'en',
           messages: locale.body,
         });
+        toast.success(
+          <Toast
+            success
+            title={this.props.intl.formatMessage(messages.success)}
+            content={this.props.intl.formatMessage(messages.saved)}
+          />,
+        );
       },
     );
     toast.success(

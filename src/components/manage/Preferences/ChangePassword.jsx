@@ -13,9 +13,10 @@ import { Portal } from 'react-portal';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Container } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
+import { toast } from 'react-toastify';
 
-import { Form, Icon, Toolbar } from '../../../components';
-import { updatePassword, addMessage } from '../../../actions';
+import { Form, Icon, Toast, Toolbar } from '../../../components';
+import { updatePassword } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
 import backSVG from '../../../icons/back.svg';
@@ -62,6 +63,10 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
 });
 
 /**
@@ -79,7 +84,6 @@ class ChangePassword extends Component {
     userId: PropTypes.string.isRequired,
     loading: PropTypes.bool.isRequired,
     updatePassword: PropTypes.func.isRequired,
-    addMessage: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
   };
@@ -109,10 +113,12 @@ class ChangePassword extends Component {
         data.oldPassword,
         data.newPassword,
       );
-      this.props.addMessage(
-        null,
-        this.props.intl.formatMessage(messages.saved),
-        'success',
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.saved)}
+        />,
       );
     }
   }
@@ -212,6 +218,6 @@ export default compose(
       loading: state.users.update_password.loading,
       pathname: props.location.pathname,
     }),
-    { updatePassword, addMessage },
+    { updatePassword },
   ),
 )(ChangePassword);
