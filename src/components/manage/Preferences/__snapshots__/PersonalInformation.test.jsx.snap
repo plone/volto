@@ -161,10 +161,10 @@ exports[`PersonalInformation renders a personal information component 1`] = `
                     type="file"
                   />
                 </div>
+                <div
+                  className="field-file-name"
+                />
               </div>
-              <div
-                className="field-file-name"
-              />
             </div>
             <div
               className="stretched row"
@@ -513,10 +513,10 @@ exports[`PersonalInformation renders a personal information component embedded i
                     type="file"
                   />
                 </div>
+                <div
+                  className="field-file-name"
+                />
               </div>
-              <div
-                className="field-file-name"
-              />
             </div>
             <div
               className="stretched row"
