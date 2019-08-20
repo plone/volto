@@ -14,7 +14,7 @@ import { Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { toast } from 'react-toastify';
 
-import { Form, Toolbar, Toast } from '../../../components';
+import { Form, Icon, Toolbar, Toast } from '../../../components';
 import { updateControlpanel, getControlpanel } from '../../../actions';
 
 import backSVG from '../../../icons/back.svg';
