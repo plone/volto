@@ -61,7 +61,7 @@ const FileWidget = ({
                 });
               }}
             />
-            <div style={{ display: 'flex' }}>
+            <div className="field-file-name">
               {value && value.filename}
               {value && (
                 <Button
