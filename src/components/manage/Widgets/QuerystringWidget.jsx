@@ -525,7 +525,6 @@ class QuerystringWidget extends Component {
                     components={{ DropdownIndicator, Option }}
                     value={null}
                     onChange={data => {
-                      debugger;
                       onChange(id, [
                         ...(value || []),
                         {
