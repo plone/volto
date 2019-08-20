@@ -8,8 +8,9 @@ import PropTypes from 'prop-types';
 import { Form, Grid, Input, Label, Button } from 'semantic-ui-react';
 import { map } from 'lodash';
 import { readAsDataURL } from 'promise-file-reader';
+
 import deleteSVG from '../../../icons/delete.svg';
-import { Icon } from '../../index';
+import { Icon } from '../../../components';
 
 /**
  * FileWidget component class.
