@@ -144,13 +144,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
 /**
  * Edit text tile class.
  * @class Edit
  * @extends Component
  */
-export default class Edit extends Component {
+class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -561,7 +560,10 @@ export default class Edit extends Component {
                 icon
                 basic
                 onClick={this.onDeleteRow}
-                disabled={this.props.data.table.rows.length === 1}
+                disabled={
+                  this.props.data.table &&
+                  this.props.data.table.rows.length === 1
+                }
                 title={this.props.intl.formatMessage(messages.deleteRow)}
                 aria-label={this.props.intl.formatMessage(messages.deleteRow)}
               >
@@ -599,7 +601,10 @@ export default class Edit extends Component {
                 icon
                 basic
                 onClick={this.onDeleteCol}
-                disabled={this.props.data.table.rows[0].cells.length === 1}
+                disabled={
+                  this.props.data.table &&
+                  this.props.data.table.rows[0].cells.length === 1
+                }
                 title={this.props.intl.formatMessage(messages.deleteCol)}
                 aria-label={this.props.intl.formatMessage(messages.deleteCol)}
               >
@@ -663,42 +668,44 @@ export default class Edit extends Component {
                   id="fixed"
                   title={this.props.intl.formatMessage(messages.fixed)}
                   type="boolean"
-                  value={this.props.data.table.fixed}
+                  value={this.props.data.table && this.props.data.table.fixed}
                   onChange={() => this.toggleFixed()}
                 />
                 <Field
                   id="celled"
                   title={this.props.intl.formatMessage(messages.celled)}
                   type="boolean"
-                  value={this.props.data.table.celled}
+                  value={this.props.data.table && this.props.data.table.celled}
                   onChange={this.toggleCelled}
                 />
                 <Field
                   id="striped"
                   title={this.props.intl.formatMessage(messages.striped)}
                   type="boolean"
-                  value={this.props.data.table.striped}
+                  value={this.props.data.table && this.props.data.table.striped}
                   onChange={this.toggleStriped}
                 />
                 <Field
                   id="compact"
                   title={this.props.intl.formatMessage(messages.compact)}
                   type="boolean"
-                  value={this.props.data.table.compact}
+                  value={this.props.data.table && this.props.data.table.compact}
                   onChange={() => this.toggleCompact()}
                 />
                 <Field
                   id="basic"
                   title={this.props.intl.formatMessage(messages.basic)}
                   type="boolean"
-                  value={this.props.data.table.basic}
+                  value={this.props.data.table && this.props.data.table.basic}
                   onChange={this.toggleBasic}
                 />
                 <Field
                   id="inverted"
                   title={this.props.intl.formatMessage(messages.inverted)}
                   type="boolean"
-                  value={this.props.data.table.inverted}
+                  value={
+                    this.props.data.table && this.props.data.table.inverted
+                  }
                   onChange={this.toggleInverted}
                 />
               </Segment>
@@ -711,6 +718,7 @@ export default class Edit extends Component {
                   title="Header cell"
                   type="boolean"
                   value={
+                    this.props.data.table &&
                     this.props.data.table.rows[this.state.selected.row].cells[
                       this.state.selected.cell
                     ].type === 'header'
@@ -725,3 +733,5 @@ export default class Edit extends Component {
     );
   }
 }
+
+export default injectIntl(Edit);

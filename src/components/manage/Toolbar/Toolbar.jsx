@@ -17,14 +17,12 @@ import Types from './Types';
 import PersonalInformation from '../Preferences/PersonalInformation';
 import PersonalPreferences from '../Preferences/PersonalPreferences';
 import StandardWrapper from './StandardWrapper';
-
 import { listActions } from '../../../actions';
-
 import { Icon } from '../../../components';
-import pastanagaSmall from './pastanaga-small.svg';
-import pastanagalogo from './pastanaga.svg';
 import { BodyClass, getBaseUrl } from '../../../helpers';
 
+import pastanagaSmall from './pastanaga-small.svg';
+import pastanagalogo from './pastanaga.svg';
 import penSVG from '../../../icons/pen.svg';
 import folderSVG from '../../../icons/folder.svg';
 import addSVG from '../../../icons/add-document.svg';
@@ -53,15 +51,6 @@ const toolbarComponents = {
  * @class Toolbar
  * @extends Component
  */
-@connect(
-  (state, props) => ({
-    actions: state.actions.actions,
-    token: state.userSession.token,
-    content: state.content.data,
-    pathname: props.pathname,
-  }),
-  { listActions },
-)
 class Toolbar extends Component {
   /**
    * Property types.
@@ -380,4 +369,12 @@ class Toolbar extends Component {
   }
 }
 
-export default Toolbar;
+export default connect(
+  (state, props) => ({
+    actions: state.actions.actions,
+    token: state.userSession.token,
+    content: state.content.data,
+    pathname: props.pathname,
+  }),
+  { listActions },
+)(Toolbar);

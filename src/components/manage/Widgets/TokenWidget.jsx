@@ -5,11 +5,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Label, Dropdown } from 'semantic-ui-react';
-import { concat, debounce, map, uniqBy } from 'lodash';
+import { Form, Grid, Label } from 'semantic-ui-react';
+import { map } from 'lodash';
 import { connect } from 'react-redux';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { bindActionCreators } from 'redux';
 import { components } from 'react-select';
 import AsyncCreatableSelect from 'react-select/lib/AsyncCreatable';
 
@@ -25,15 +23,7 @@ import downSVG from '../../../icons/down-key.svg';
 import upSVG from '../../../icons/up-key.svg';
 import checkSVG from '../../../icons/check.svg';
 
-const messages = defineMessages({
-  no_results_found: {
-    id: 'No results found.',
-    defaultMessage: 'No results found.',
-  },
-});
-
 const Option = props => {
-  // console.log(props);
   return (
     <components.Option {...props}>
       <div>{props.label}</div>
@@ -113,36 +103,12 @@ const customSelectStyles = {
   }),
 };
 
-@injectIntl
-@connect(
-  (state, props) => {
-    const vocabBaseUrl =
-      getVocabFromHint(props) ||
-      getVocabFromField(props) ||
-      getVocabFromItems(props);
-    const vocabState = state.vocabularies[vocabBaseUrl];
-    if (vocabState) {
-      return {
-        choices: vocabState.items
-          ? vocabState.items.map(item => ({
-              label: item.value,
-              value: item.value,
-            }))
-          : [],
-        itemsTotal: vocabState.itemsTotal,
-        loading: Boolean(vocabState.loading),
-      };
-    }
-    return {};
-  },
-  dispatch => bindActionCreators({ getVocabulary }, dispatch),
-)
 /**
- * ArrayWidget component class.
- * @class ArrayWidget
+ * TokenWidget component class.
+ * @class TokenWidget
  * @extends Component
  */
-export default class ArrayWidget extends Component {
+class TokenWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -166,7 +132,6 @@ export default class ArrayWidget extends Component {
     value: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func.isRequired,
     itemsTotal: PropTypes.number,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -266,7 +231,7 @@ export default class ArrayWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, title, required, description, error } = this.props;
+    const { id, title, required, description, error, fieldSet } = this.props;
     const { selectedOption } = this.state;
     return (
       <Form.Field
@@ -274,6 +239,7 @@ export default class ArrayWidget extends Component {
         required={required}
         error={error.length > 0}
         className={description ? 'help' : ''}
+        id={`${fieldSet || 'field'}-${id}`}
       >
         <Grid>
           <Grid.Row stretched>
@@ -314,3 +280,27 @@ export default class ArrayWidget extends Component {
     );
   }
 }
+
+export default connect(
+  (state, props) => {
+    const vocabBaseUrl =
+      getVocabFromHint(props) ||
+      getVocabFromField(props) ||
+      getVocabFromItems(props);
+    const vocabState = state.vocabularies[vocabBaseUrl];
+    if (vocabState) {
+      return {
+        choices: vocabState.items
+          ? vocabState.items.map(item => ({
+              label: item.value,
+              value: item.value,
+            }))
+          : [],
+        itemsTotal: vocabState.itemsTotal,
+        loading: Boolean(vocabState.loading),
+      };
+    }
+    return {};
+  },
+  { getVocabulary },
+)(TokenWidget);

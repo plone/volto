@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { filter, isEqual, map } from 'lodash';
 import { Container, Button, Dropdown, Grid, Table } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
@@ -38,27 +38,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    data: state.diff.data,
-    history: state.history.entries,
-    schema: state.schema.schema,
-    pathname: props.location.pathname,
-    one: qs.parse(props.location.search).one,
-    two: qs.parse(props.location.search).two,
-    view: qs.parse(props.location.search).view || 'split',
-    title: state.content.data.title,
-    type: state.content.data['@type'],
-  }),
-  dispatch => bindActionCreators({ getDiff, getSchema, getHistory }, dispatch),
-)
 /**
- * DiffComponent class.
- * @class DiffComponent
+ * Diff class.
+ * @class Diff
  * @extends Component
  */
-class DiffComponent extends Component {
+class Diff extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -325,4 +310,21 @@ class DiffComponent extends Component {
   }
 }
 
-export default withRouter(DiffComponent);
+export default compose(
+  withRouter,
+  injectIntl,
+  connect(
+    (state, props) => ({
+      data: state.diff.data,
+      history: state.history.entries,
+      schema: state.schema.schema,
+      pathname: props.location.pathname,
+      one: qs.parse(props.location.search).one,
+      two: qs.parse(props.location.search).two,
+      view: qs.parse(props.location.search).view || 'split',
+      title: state.content.data.title,
+      type: state.content.data['@type'],
+    }),
+    { getDiff, getSchema, getHistory },
+  ),
+)(Diff);

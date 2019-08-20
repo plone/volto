@@ -44,13 +44,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
 /**
  * WysiwygWidget container class.
  * @class WysiwygWidget
  * @extends Component
  */
-export default class WysiwygWidget extends Component {
+class WysiwygWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -230,6 +229,7 @@ export default class WysiwygWidget extends Component {
       error,
       onEdit,
       onDelete,
+      fieldSet,
     } = this.props;
 
     if (__SERVER__) {
@@ -239,6 +239,7 @@ export default class WysiwygWidget extends Component {
           required={required}
           error={error.length > 0}
           className={description ? 'help' : ''}
+          id={`${fieldSet || 'field'}-${id}`}
         >
           <div className="wrapper">
             <label htmlFor={`field-${id}`}>{title}</label>
@@ -332,3 +333,5 @@ export default class WysiwygWidget extends Component {
     );
   }
 }
+
+export default injectIntl(WysiwygWidget);

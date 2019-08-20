@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon as IconOld, Form, Grid, Label } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { map, find, isBoolean, isObject } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import Select, { components } from 'react-select';
@@ -161,32 +162,12 @@ function getDefaultValues(choices, value) {
   }
 }
 
-@injectIntl
-@connect(
-  (state, props) => {
-    const vocabBaseUrl =
-      getVocabFromHint(props) ||
-      getVocabFromField(props) ||
-      getVocabFromItems(props);
-    const vocabState = state.vocabularies[vocabBaseUrl];
-    if (vocabState) {
-      return {
-        vocabState,
-        choices: vocabState.items,
-        itemsTotal: vocabState.itemsTotal,
-        loading: Boolean(vocabState.loading),
-      };
-    }
-    return {};
-  },
-  { getVocabulary, getVocabularyTokenTitle },
-)
 /**
  * SelectWidget component class.
  * @function SelectWidget
  * @returns {string} Markup of the component.
  */
-export default class SelectWidget extends Component {
+class SelectWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -351,6 +332,7 @@ export default class SelectWidget extends Component {
       choices,
       value,
       onChange,
+      fieldSet,
     } = this.props;
 
     return (
@@ -359,6 +341,7 @@ export default class SelectWidget extends Component {
         required={required}
         error={error.length > 0}
         className={description ? 'help' : ''}
+        id={`${fieldSet || 'field'}-${id}`}
       >
         <Grid>
           <Grid.Row stretched>
@@ -450,3 +433,26 @@ export default class SelectWidget extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => {
+      const vocabBaseUrl =
+        getVocabFromHint(props) ||
+        getVocabFromField(props) ||
+        getVocabFromItems(props);
+      const vocabState = state.vocabularies[vocabBaseUrl];
+      if (vocabState) {
+        return {
+          vocabState,
+          choices: vocabState.items,
+          itemsTotal: vocabState.itemsTotal,
+          loading: Boolean(vocabState.loading),
+        };
+      }
+      return {};
+    },
+    { getVocabulary, getVocabularyTokenTitle },
+  ),
+)(SelectWidget);
