@@ -62,98 +62,102 @@ exports[`Comments renders a comments component 1`] = `
     </div>
     <br />
   </div>
-  <form
-    className="ui form"
-    method="post"
-    onSubmit={[Function]}
+  <div
+    className="ui container"
   >
-    <div
-      className="ui raised segments"
+    <form
+      className="ui form"
+      method="post"
+      onSubmit={[Function]}
     >
       <div
-        className="ui segment"
+        className="ui raised segments"
       >
         <div
-          className="ui segment primary"
-        >
-          Comment
-        </div>
-        <div
-          className="inline required field textarea"
-          id="field-comment"
+          className="ui segment"
         >
           <div
-            className="ui grid"
+            className="ui segment primary"
+          >
+            Comment
+          </div>
+          <div
+            className="inline required field textarea"
+            id="field-comment"
           >
             <div
-              className="stretched row"
+              className="ui grid"
             >
               <div
-                className="four wide column"
+                className="stretched row"
               >
                 <div
-                  className="wrapper"
+                  className="four wide column"
                 >
-                  <label
-                    htmlFor="field-comment"
+                  <div
+                    className="wrapper"
                   >
-                    Comment
-                  </label>
+                    <label
+                      htmlFor="field-comment"
+                    >
+                      Comment
+                    </label>
+                  </div>
                 </div>
-              </div>
-              <div
-                className="eight wide column"
-              >
-                <textarea
-                  disabled={false}
-                  id="field-comment"
-                  name="comment"
-                  onChange={[Function]}
-                  onInput={[Function]}
-                  rows={3}
-                  style={
-                    Object {
-                      "resize": "",
+                <div
+                  className="eight wide column"
+                >
+                  <textarea
+                    disabled={false}
+                    id="field-comment"
+                    name="comment"
+                    onChange={[Function]}
+                    onInput={[Function]}
+                    rows={3}
+                    style={
+                      Object {
+                        "resize": "",
+                      }
                     }
-                  }
-                  value=""
-                />
+                    value=""
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="ui clearing segment actions"
-      >
-        <button
-          aria-label="Comment"
-          className="ui basic primary right floated button"
-          onClick={[Function]}
-          title="Comment"
-          type="submit"
+        <div
+          className="ui clearing segment actions"
         >
-          <svg
-            className="icon circled"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
+          <button
+            aria-label="Comment"
+            className="ui basic primary right floated button"
+            onClick={[Function]}
+            title="Comment"
+            type="submit"
+          >
+            <svg
+              className="icon circled"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
               }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "currentColor",
-                "height": "30px",
-                "width": "auto",
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "30px",
+                  "width": "auto",
+                }
               }
-            }
-            viewBox=""
-            xmlns=""
-          />
-        </button>
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+        </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
 `;
