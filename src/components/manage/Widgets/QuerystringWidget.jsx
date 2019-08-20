@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import {
   Button,
@@ -132,19 +133,12 @@ const customSelectStyles = {
   }),
 };
 
-@injectIntl
-@connect(
-  state => ({
-    indexes: state.querystring.indexes,
-  }),
-  { getQuerystring },
-)
 /**
  * QuerystringWidget component class.
  * @class QuerystringWidget
  * @extends Component
  */
-export default class QuerystringWidget extends Component {
+class QuerystringWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -563,3 +557,13 @@ export default class QuerystringWidget extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      indexes: state.querystring.indexes,
+    }),
+    { getQuerystring },
+  ),
+)(QuerystringWidget);
