@@ -524,16 +524,17 @@ export default class QuerystringWidget extends Component {
                     theme={selectTheme}
                     components={{ DropdownIndicator, Option }}
                     value={null}
-                    onChange={data =>
+                    onChange={data => {
+                      debugger;
                       onChange(id, [
-                        ...value,
+                        ...(value || []),
                         {
                           i: data.value,
                           o: indexes[data.value].operations[0],
                           v: '',
                         },
-                      ])
-                    }
+                      ]);
+                    }}
                   />
                 </Form.Field>
               </Form.Group>
