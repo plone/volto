@@ -6,9 +6,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { readAsDataURL } from 'promise-file-reader';
 import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
-import { bindActionCreators } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import cx from 'classnames';
 import { settings } from '~/config';
@@ -32,20 +32,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  state => ({
-    request: state.content.create,
-    content: state.content.data,
-  }),
-  dispatch => bindActionCreators({ createContent }, dispatch),
-)
 /**
  * Edit image tile class.
  * @class Edit
  * @extends Component
  */
-export default class Edit extends Component {
+class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -228,7 +220,6 @@ export default class Edit extends Component {
           },
           this.props.data.align,
         )}
-        tabIndex={0}
         onKeyDown={e =>
           this.props.handleKeyDown(
             e,
@@ -247,6 +238,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Left"
                 onClick={() => this.onAlignTile('left')}
                 active={this.props.data.align === 'left'}
               >
@@ -257,6 +249,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Right"
                 onClick={() => this.onAlignTile('right')}
                 active={this.props.data.align === 'right'}
               >
@@ -267,6 +260,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Center"
                 onClick={() => this.onAlignTile('center')}
                 active={
                   this.props.data.align === 'center' || !this.props.data.align
@@ -279,6 +273,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Full"
                 onClick={() => this.onAlignTile('full')}
                 active={this.props.data.align === 'full'}
               >
@@ -305,14 +300,13 @@ export default class Edit extends Component {
         {this.props.selected && !this.props.data.url && (
           <div className="toolbar">
             <Icon name={imageSVG} size="24px" />
-            <form onKeyDown={this.onKeyDownVariantMenuForm}>
-              <Input
-                onChange={this.onChangeUrl}
-                placeholder={this.props.intl.formatMessage(
-                  messages.ImageTileInputPlaceholder,
-                )}
-              />
-            </form>
+            <Input
+              onKeyDown={this.onKeyDownVariantMenuForm}
+              onChange={this.onChangeUrl}
+              placeholder={this.props.intl.formatMessage(
+                messages.ImageTileInputPlaceholder,
+              )}
+            />
             <Button.Group>
               <label className="ui button basic icon">
                 <Icon name={folderSVG} size="24px" />
@@ -354,3 +348,14 @@ export default class Edit extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      request: state.content.create,
+      content: state.content.data,
+    }),
+    { createContent },
+  ),
+)(Edit);

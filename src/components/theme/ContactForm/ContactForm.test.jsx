@@ -3,7 +3,11 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
-import { ContactForm } from './ContactForm';
+import ContactForm from './ContactForm';
+
+jest.mock('react-portal', () => ({
+  Portal: jest.fn(() => <div id="Portal" />),
+}));
 
 const mockStore = configureStore();
 

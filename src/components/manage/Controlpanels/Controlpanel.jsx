@@ -6,16 +6,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Portal } from 'react-portal';
-import { Icon, Container } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { toast } from 'react-toastify';
 
 import { Form, Toolbar, Toast } from '../../../components';
 import { updateControlpanel, getControlpanel } from '../../../actions';
+
+import backSVG from '../../../icons/back.svg';
 
 const messages = defineMessages({
   changesSaved: {
@@ -37,17 +39,6 @@ const messages = defineMessages({
  * @class Controlpanel
  * @extends Component
  */
-@injectIntl
-@connect(
-  (state, props) => ({
-    controlpanel: state.controlpanels.controlpanel,
-    updateRequest: state.controlpanels.update,
-    id: props.match.params.id,
-    pathname: props.location.pathname,
-  }),
-  dispatch =>
-    bindActionCreators({ updateControlpanel, getControlpanel }, dispatch),
-)
 class Controlpanel extends Component {
   /**
    * Property types.
@@ -162,12 +153,13 @@ class Controlpanel extends Component {
           <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
             <Toolbar
               pathname={this.props.pathname}
+              hideDefaultViewButtons
               inner={
                 <Link to="/controlpanel" className="item">
                   <Icon
-                    name="arrow left"
-                    size="big"
-                    color="blue"
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
                     title={this.props.intl.formatMessage(messages.back)}
                   />
                 </Link>
@@ -181,4 +173,16 @@ class Controlpanel extends Component {
   }
 }
 
-export default withRouter(Controlpanel);
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      controlpanel: state.controlpanels.controlpanel,
+      updateRequest: state.controlpanels.update,
+      id: props.match.params.id,
+      pathname: props.location.pathname,
+    }),
+    { updateControlpanel, getControlpanel },
+  ),
+  withRouter,
+)(Controlpanel);

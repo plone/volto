@@ -5,9 +5,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import {
@@ -60,32 +60,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  state => ({
-    actions: state.actions.actions,
-    action: state.clipboard.action,
-    source: state.clipboard.source,
-    id: state.content.data ? state.content.data.id : '',
-    title: state.content.data ? state.content.data.title : '',
-  }),
-  dispatch =>
-    bindActionCreators(
-      {
-        cut,
-        copy,
-        copyContent,
-        moveContent,
-      },
-      dispatch,
-    ),
-)
 /**
  * Actions container class.
  * @class Actions
  * @extends Component
  */
-export default class Actions extends Component {
+class Actions extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -326,3 +306,22 @@ export default class Actions extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      actions: state.actions.actions,
+      action: state.clipboard.action,
+      source: state.clipboard.source,
+      id: state.content.data ? state.content.data.id : '',
+      title: state.content.data ? state.content.data.title : '',
+    }),
+    {
+      cut,
+      copy,
+      copyContent,
+      moveContent,
+    },
+  ),
+)(Actions);

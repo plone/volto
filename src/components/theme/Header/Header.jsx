@@ -4,21 +4,18 @@
  */
 
 import React, { Component } from 'react';
-import { Container, Grid, Segment } from 'semantic-ui-react';
+import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { Anontools, Logo, Navigation, SearchWidget } from '../../../components';
 
-@connect(state => ({
-  token: state.userSession.token,
-}))
 /**
  * Header component class.
  * @class Header
  * @extends Component
  */
-export default class Header extends Component {
+class Header extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -45,7 +42,7 @@ export default class Header extends Component {
    */
   render() {
     return (
-      <Segment basic className="header-wrapper">
+      <Segment basic className="header-wrapper" role="banner">
         <Container>
           <div className="header">
             <div className="logo-nav-wrapper">
@@ -68,3 +65,7 @@ export default class Header extends Component {
     );
   }
 }
+
+export default connect(state => ({
+  token: state.userSession.token,
+}))(Header);

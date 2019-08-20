@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 import { updateComment } from '../../../actions';
@@ -27,19 +27,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  state => ({
-    request: state.comments.update,
-  }),
-  dispatch => bindActionCreators({ updateComment }, dispatch),
-)
 /**
  * CommentEditModal class.
  * @class CommentEditModal
  * @extends Component
  */
-export default class CommentEditModal extends Component {
+class CommentEditModal extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -138,3 +131,13 @@ export default class CommentEditModal extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      request: state.comments.update,
+    }),
+    { updateComment },
+  ),
+)(CommentEditModal);

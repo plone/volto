@@ -7,20 +7,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { withRouter } from 'react-router-dom';
-import { asyncConnect } from 'redux-connect';
-import { isEmpty, pick } from 'lodash';
+import { compose } from 'redux';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Portal } from 'react-portal';
-import { Icon } from 'semantic-ui-react';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import qs from 'query-string';
 
-import { Form, Toolbar, Sidebar } from '../../../components';
+import { Form, Icon, Toolbar, Sidebar } from '../../../components';
 import { updateContent, getContent, getSchema } from '../../../actions';
 import { getBaseUrl, hasTilesData } from '../../../helpers';
+
+import saveSVG from '../../../icons/save.svg';
+import clearSVG from '../../../icons/clear.svg';
 
 const messages = defineMessages({
   edit: {
@@ -37,34 +36,12 @@ const messages = defineMessages({
   },
 });
 
-@DragDropContext(HTML5Backend)
-@injectIntl
-@connect(
-  (state, props) => ({
-    content: state.content.data,
-    schema: state.schema.schema,
-    getRequest: state.content.get,
-    schemaRequest: state.schema,
-    updateRequest: state.content.update,
-    pathname: props.location.pathname,
-    returnUrl: qs.parse(props.location.search).return_url,
-  }),
-  dispatch =>
-    bindActionCreators(
-      {
-        updateContent,
-        getContent,
-        getSchema,
-      },
-      dispatch,
-    ),
-)
 /**
- * EditComponent class.
- * @class EditComponent
+ * Edit class.
+ * @class Edit
  * @extends Component
  */
-export class EditComponent extends Component {
+class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -203,29 +180,35 @@ export class EditComponent extends Component {
           <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
             <Toolbar
               pathname={this.props.pathname}
+              hideDefaultViewButtons
               inner={
-                <div>
-                  <a
+                <>
+                  <button
                     id="toolbar-save"
-                    className="item"
+                    className="save"
+                    aria-label={this.props.intl.formatMessage(messages.save)}
                     onClick={() => this.form.onSubmit()}
                   >
                     <Icon
-                      name="save"
-                      size="big"
-                      color="blue"
+                      name={saveSVG}
+                      className="circled"
+                      size="30px"
                       title={this.props.intl.formatMessage(messages.save)}
                     />
-                  </a>
-                  <a className="item" onClick={() => this.onCancel()}>
+                  </button>
+                  <button
+                    className="cancel"
+                    aria-label={this.props.intl.formatMessage(messages.cancel)}
+                    onClick={() => this.onCancel()}
+                  >
                     <Icon
-                      name="close"
-                      size="big"
-                      color="red"
+                      name={clearSVG}
+                      className="circled"
+                      size="30px"
                       title={this.props.intl.formatMessage(messages.cancel)}
                     />
-                  </a>
-                </div>
+                  </button>
+                </>
               }
             />
           </Portal>
@@ -241,25 +224,23 @@ export class EditComponent extends Component {
   }
 }
 
-export default asyncConnect([
-  {
-    key: 'schema',
-    promise: ({ store: { dispatch, getState } }) =>
-      dispatch(getSchema(getState().content.data['@type'])),
-  },
-  {
-    key: 'content',
-    promise: ({ location, store: { dispatch, getState } }) => {
-      const { form } = getState();
-      if (!isEmpty(form)) {
-        return dispatch(
-          updateContent(
-            getBaseUrl(location.pathname),
-            pick(form, ['title', 'description', 'text']),
-          ),
-        );
-      }
-      return Promise.resolve(getState().content);
+export default compose(
+  DragDropContext(HTML5Backend),
+  injectIntl,
+  connect(
+    (state, props) => ({
+      content: state.content.data,
+      schema: state.schema.schema,
+      getRequest: state.content.get,
+      schemaRequest: state.schema,
+      updateRequest: state.content.update,
+      pathname: props.location.pathname,
+      returnUrl: qs.parse(props.location.search).return_url,
+    }),
+    {
+      updateContent,
+      getContent,
+      getSchema,
     },
-  },
-])(withRouter(EditComponent));
+  ),
+)(Edit);

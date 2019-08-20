@@ -6,8 +6,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
 import {
@@ -64,8 +64,11 @@ import {
   Pagination,
   Toolbar,
   Toast,
+  Icon as IconNext,
 } from '../../../components';
 import { toast } from 'react-toastify';
+
+import backSVG from '../../../icons/back.svg';
 
 const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
 const messages = defineMessages({
@@ -159,45 +162,12 @@ const messages = defineMessages({
   },
 });
 
-@DragDropContext(HTML5Backend)
-@injectIntl
-@connect(
-  (state, props) => ({
-    items: state.search.items,
-    breadcrumbs: state.breadcrumbs.items,
-    total: state.search.total,
-    searchRequest: {
-      loading: state.search.loading,
-      loaded: state.search.loaded,
-    },
-    pathname: props.location.pathname,
-    action: state.clipboard.action,
-    source: state.clipboard.source,
-    clipboardRequest: state.clipboard.request,
-    deleteRequest: state.content.delete,
-    updateRequest: state.content.update,
-  }),
-  dispatch =>
-    bindActionCreators(
-      {
-        searchContent,
-        cut,
-        copy,
-        copyContent,
-        deleteContent,
-        moveContent,
-        orderContent,
-        sortContent,
-      },
-      dispatch,
-    ),
-)
 /**
- * ContentsComponent class.
- * @class ContentsComponent
+ * Contents class.
+ * @class Contents
  * @extends Component
  */
-export default class ContentsComponent extends Component {
+class Contents extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -303,6 +273,7 @@ export default class ContentsComponent extends Component {
     this.workflow = this.workflow.bind(this);
     this.paste = this.paste.bind(this);
     this.fetchContents = this.fetchContents.bind(this);
+    this.orderTimeout = null;
     this.state = {
       selected: [],
       showDelete: false,
@@ -325,6 +296,7 @@ export default class ContentsComponent extends Component {
         selectedCount: defaultIndexes.length + 1,
       },
     };
+    this.filterTimeout = null;
   }
 
   /**
@@ -347,10 +319,17 @@ export default class ContentsComponent extends Component {
       (this.props.clipboardRequest.loading &&
         nextProps.clipboardRequest.loaded) ||
       (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
-      (this.props.updateRequest.loading && nextProps.updateRequest.loaded) ||
-      this.props.pathname !== nextProps.pathname
+      (this.props.updateRequest.loading && nextProps.updateRequest.loaded)
     ) {
       this.fetchContents(nextProps.pathname);
+    }
+    if (this.props.pathname !== nextProps.pathname) {
+      this.setState(
+        {
+          currentPage: 0,
+        },
+        () => this.fetchContents(nextProps.pathname),
+      );
     }
     if (this.props.searchRequest.loading && nextProps.searchRequest.loaded) {
       this.setState({
@@ -444,11 +423,17 @@ export default class ContentsComponent extends Component {
    * @returns {undefined}
    */
   onChangeFilter(event, { value }) {
+    const self = this;
+    clearTimeout(self.filterTimeout);
     this.setState(
       {
         filter: value,
       },
-      () => this.fetchContents(),
+      () => {
+        self.filterTimeout = setTimeout(() => {
+          self.fetchContents();
+        }, 200);
+      },
     );
   }
 
@@ -504,20 +489,23 @@ export default class ContentsComponent extends Component {
   /**
    * On order item
    * @method onOrderItem
+   * @param {string} id Item id
    * @param {number} itemIndex Item index
    * @param {number} delta Delta
    * @returns {undefined}
    */
-  onOrderItem(itemIndex, delta) {
-    this.props.orderContent(
-      getBaseUrl(this.props.pathname),
-      this.state.items[itemIndex]['@id'].replace(/^.*\//, ''),
-      delta,
-      map(this.state.items, item => item['@id'].replace(/^.*\//, '')),
-    );
-    this.setState({
-      items: move(this.state.items, itemIndex, itemIndex + delta),
-    });
+  onOrderItem(id, itemIndex, delta, backend) {
+    if (backend) {
+      this.props.orderContent(
+        getBaseUrl(this.props.pathname),
+        id.replace(/^.*\//, ''),
+        delta,
+      );
+    } else {
+      this.setState({
+        items: move(this.state.items, itemIndex, itemIndex + delta),
+      });
+    }
   }
 
   /**
@@ -544,7 +532,8 @@ export default class ContentsComponent extends Component {
    * @returns {undefined}
    */
   onMoveToTop(event, { value }) {
-    this.onOrderItem(value, -value);
+    this.onOrderItem(this.state.items[value]['@id'], value, -value, false);
+    this.onOrderItem(this.state.items[value]['@id'], value, -value, true);
   }
 
   /**
@@ -555,7 +544,18 @@ export default class ContentsComponent extends Component {
    * @returns {undefined}
    */
   onMoveToBottom(event, { value }) {
-    this.onOrderItem(value, this.state.items.length - 1 - value);
+    this.onOrderItem(
+      this.state.items[value]['@id'],
+      value,
+      this.state.items.length - 1 - value,
+      false,
+    );
+    this.onOrderItem(
+      this.state.items[value]['@id'],
+      value,
+      this.state.items.length - 1 - value,
+      true,
+    );
   }
 
   /**
@@ -1268,12 +1268,13 @@ export default class ContentsComponent extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
+            hideDefaultViewButtons
             inner={
-              <Link to={`${path}`} className="item">
-                <Icon
-                  name="arrow left"
-                  size="big"
-                  color="blue"
+              <Link to={`${path}`}>
+                <IconNext
+                  name={backSVG}
+                  className="contents circled"
+                  size="30px"
                   title={this.props.intl.formatMessage(messages.back)}
                 />
               </Link>
@@ -1284,3 +1285,35 @@ export default class ContentsComponent extends Component {
     );
   }
 }
+
+export default compose(
+  DragDropContext(HTML5Backend),
+  injectIntl,
+  connect(
+    (state, props) => ({
+      items: state.search.items,
+      breadcrumbs: state.breadcrumbs.items,
+      total: state.search.total,
+      searchRequest: {
+        loading: state.search.loading,
+        loaded: state.search.loaded,
+      },
+      pathname: props.location.pathname,
+      action: state.clipboard.action,
+      source: state.clipboard.source,
+      clipboardRequest: state.clipboard.request,
+      deleteRequest: state.content.delete,
+      updateRequest: state.content.update,
+    }),
+    {
+      searchContent,
+      cut,
+      copy,
+      copyContent,
+      deleteContent,
+      moveContent,
+      orderContent,
+      sortContent,
+    },
+  ),
+)(Contents);

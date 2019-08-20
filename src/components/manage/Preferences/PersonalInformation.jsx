@@ -5,18 +5,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Portal } from 'react-portal';
-import { Link, withRouter } from 'react-router-dom';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
-import { Container, Icon, Menu } from 'semantic-ui-react';
+import { compose } from 'redux';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 
@@ -49,6 +40,14 @@ const messages = defineMessages({
     id: 'We will use this address if you need to recover your password',
     defaultMessage:
       'We will use this address if you need to recover your password',
+  },
+  portraitTitle: {
+    id: 'Portrait',
+    defaultMessage: 'Portrait',
+  },
+  portraitDescription: {
+    id: 'The user portrait/avatar',
+    defaultMessage: 'The user portrait/avatar',
   },
   homePageTitle: {
     id: 'Home page',
@@ -87,19 +86,6 @@ const messages = defineMessages({
  * @class PersonalInformation
  * @extends Component
  */
-@injectIntl
-@connect(
-  (state, props) => ({
-    user: state.users.user,
-    userId: state.userSession.token
-      ? jwtDecode(state.userSession.token).sub
-      : '',
-    loaded: state.users.get.loaded,
-    loading: state.users.update.loading,
-    pathname: props.location.pathname,
-  }),
-  dispatch => bindActionCreators({ getUser, updateUser }, dispatch),
-)
 class PersonalInformation extends Component {
   /**
    * Property types.
@@ -119,7 +105,7 @@ class PersonalInformation extends Component {
     intl: intlShape.isRequired,
     loaded: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
-    pathname: PropTypes.string.isRequired,
+    closeMenu: PropTypes.func.isRequired,
   };
 
   /**
@@ -150,6 +136,12 @@ class PersonalInformation extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
+    // We don't want the user to change his login name/username or the roles
+    // from this form
+    // Backend will complain anyways, but we clean the data here before it does
+    delete data.id;
+    delete data.username;
+    delete data.roles;
     this.props.updateUser(this.props.userId, data);
     toast.success(
       <Toast
@@ -158,6 +150,7 @@ class PersonalInformation extends Component {
         content={this.props.intl.formatMessage(messages.saved)}
       />,
     );
+    this.props.closeMenu();
   }
 
   /**
@@ -166,7 +159,7 @@ class PersonalInformation extends Component {
    * @returns {undefined}
    */
   onCancel() {
-    this.props.history.goBack();
+    this.props.closeMenu();
   }
 
   /**
@@ -175,95 +168,81 @@ class PersonalInformation extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return this.props.loaded ? (
-      <Container id="page-personal-information">
-        <Helmet
-          title={this.props.intl.formatMessage(messages.personalInformation)}
-        />
-        <Menu attached="top" tabular stackable>
-          <Menu.Item
-            name={this.props.intl.formatMessage(messages.personalInformation)}
-            active
-          />
-          <Link to="/personal-preferences" className="item">
-            <FormattedMessage
-              id="Personal Preferences"
-              defaultMessage="Personal Preferences"
-            />
-          </Link>
-          <Link to="/change-password" className="item">
-            <FormattedMessage
-              id="Change Password"
-              defaultMessage="Change Password"
-            />
-          </Link>
-        </Menu>
-        <Form
-          formData={this.props.user}
-          schema={{
-            fieldsets: [
-              {
-                id: 'default',
-                title: this.props.intl.formatMessage(messages.default),
-                fields: ['fullname', 'email', 'home_page', 'location'],
-              },
-            ],
-            properties: {
-              fullname: {
-                description: this.props.intl.formatMessage(
-                  messages.fullnameDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.fullnameTitle),
-                type: 'string',
-              },
-              email: {
-                description: this.props.intl.formatMessage(
-                  messages.emailDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.emailTitle),
-                type: 'string',
-              },
-              home_page: {
-                description: this.props.intl.formatMessage(
-                  messages.homePageDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.homePageTitle),
-                type: 'string',
-              },
-              location: {
-                description: this.props.intl.formatMessage(
-                  messages.locationDescription,
-                ),
-                title: this.props.intl.formatMessage(messages.locationTitle),
-                type: 'string',
-              },
+    return (
+      <Form
+        formData={this.props.user}
+        schema={{
+          fieldsets: [
+            {
+              id: 'default',
+              title: this.props.intl.formatMessage(messages.default),
+              fields: [
+                'fullname',
+                'email',
+                'portrait',
+                'home_page',
+                'location',
+              ],
             },
-            required: ['email'],
-          }}
-          onSubmit={this.onSubmit}
-          onCancel={this.onCancel}
-          loading={this.props.loading}
-        />
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            inner={
-              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
-                <Icon
-                  name="arrow left"
-                  size="big"
-                  color="blue"
-                  title={this.props.intl.formatMessage(messages.back)}
-                />
-              </Link>
-            }
-          />
-        </Portal>
-      </Container>
-    ) : (
-      <div />
+          ],
+          properties: {
+            fullname: {
+              description: this.props.intl.formatMessage(
+                messages.fullnameDescription,
+              ),
+              title: this.props.intl.formatMessage(messages.fullnameTitle),
+              type: 'string',
+            },
+            email: {
+              description: this.props.intl.formatMessage(
+                messages.emailDescription,
+              ),
+              title: this.props.intl.formatMessage(messages.emailTitle),
+              type: 'string',
+            },
+            portrait: {
+              description: this.props.intl.formatMessage(
+                messages.portraitDescription,
+              ),
+              title: this.props.intl.formatMessage(messages.portraitTitle),
+              type: 'object',
+            },
+            home_page: {
+              description: this.props.intl.formatMessage(
+                messages.homePageDescription,
+              ),
+              title: this.props.intl.formatMessage(messages.homePageTitle),
+              type: 'string',
+            },
+            location: {
+              description: this.props.intl.formatMessage(
+                messages.locationDescription,
+              ),
+              title: this.props.intl.formatMessage(messages.locationTitle),
+              type: 'string',
+            },
+          },
+          required: ['email'],
+        }}
+        onSubmit={this.onSubmit}
+        onCancel={this.onCancel}
+        loading={this.props.loading}
+      />
     );
   }
 }
 
-export default withRouter(PersonalInformation);
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      user: state.users.user,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
+      loaded: state.users.get.loaded,
+      loading: state.users.update.loading,
+    }),
+    { getUser, updateUser },
+  ),
+)(PersonalInformation);

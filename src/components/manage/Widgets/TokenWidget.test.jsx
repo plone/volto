@@ -7,7 +7,7 @@ import TokenWidget from './TokenWidget';
 
 const mockStore = configureStore();
 
-test('renders an array widget component', () => {
+test('renders a token widget component', () => {
   const store = mockStore({
     intl: {
       locale: 'en',
