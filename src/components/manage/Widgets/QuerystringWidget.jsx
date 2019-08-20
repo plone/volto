@@ -6,16 +6,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button, Form, Grid, Icon, Input, Label } from 'semantic-ui-react';
+import {
+  Button,
+  Form,
+  Grid,
+  Icon as OldIcon,
+  Input,
+  Label,
+} from 'semantic-ui-react';
 import { filter, remove, toPairs, groupBy, map } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { getQuerystring } from '../../../actions';
 import Select, { components } from 'react-select';
-import { Icon as VoltoIcon } from '@plone/volto/components';
+import { Icon } from '@plone/volto/components';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
+import clearSVG from '../../../icons/clear.svg';
 
 const messages = defineMessages({
   default: {
@@ -49,11 +57,9 @@ const Option = props => {
     <components.Option {...props}>
       <div>{props.label}</div>
       {props.isFocused && !props.isSelected && (
-        <VoltoIcon name={checkSVG} size="24px" color="#b8c6c8" />
+        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
       )}
-      {props.isSelected && (
-        <VoltoIcon name={checkSVG} size="24px" color="#007bc1" />
-      )}
+      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
     </components.Option>
   );
 };
@@ -62,9 +68,9 @@ const DropdownIndicator = props => {
   return (
     <components.DropdownIndicator {...props}>
       {props.selectProps.menuIsOpen ? (
-        <VoltoIcon name={upSVG} size="24px" color="#007bc1" />
+        <Icon name={upSVG} size="24px" color="#007bc1" />
       ) : (
-        <VoltoIcon name={downSVG} size="24px" color="#007bc1" />
+        <Icon name={downSVG} size="24px" color="#007bc1" />
       )}
     </components.DropdownIndicator>
   );
@@ -393,12 +399,12 @@ export default class QuerystringWidget extends Component {
             <Grid.Column width="8">
               {onEdit && (
                 <div className="toolbar">
-                  <a className="item" onClick={() => onEdit(id, schema)}>
-                    <Icon name="write square" size="large" color="blue" />
-                  </a>
-                  <a className="item" onClick={() => onDelete(id)}>
-                    <Icon name="close" size="large" color="red" />
-                  </a>
+                  <button className="item" onClick={() => onEdit(id, schema)}>
+                    <OldIcon name="write square" size="large" color="blue" />
+                  </button>
+                  <button className="item" onClick={() => onDelete(id)}>
+                    <Icon name={clearSVG} size="24px" className="close" />
+                  </button>
                 </div>
               )}
               {map(value, (row, index) => (
@@ -494,7 +500,7 @@ export default class QuerystringWidget extends Component {
                       paddingLeft: 0,
                     }}
                   >
-                    <Icon name="close" size="big" color="red" />
+                    <Icon name={clearSVG} size="24px" className="close" />
                   </Button>
                 </Form.Group>
               ))}
