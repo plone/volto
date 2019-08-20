@@ -159,6 +159,7 @@ export default DropTarget(
   'item',
   {
     hover(props, monitor) {
+      const id = monitor.getItem().id;
       const dragOrder = monitor.getItem().order;
       const hoverOrder = props.order;
 
@@ -166,9 +167,22 @@ export default DropTarget(
         return;
       }
 
-      props.onOrderItem(dragOrder, hoverOrder - dragOrder);
+      props.onOrderItem(id, dragOrder, hoverOrder - dragOrder, false);
 
       monitor.getItem().order = hoverOrder;
+    },
+    drop(props, monitor) {
+      const id = monitor.getItem().id;
+      const dragOrder = monitor.getItem().startOrder;
+      const dropOrder = props.order;
+
+      if (dragOrder === dropOrder) {
+        return;
+      }
+
+      props.onOrderItem(id, dragOrder, dropOrder - dragOrder, true);
+
+      monitor.getItem().order = dropOrder;
     },
   },
   connect => ({
@@ -182,6 +196,7 @@ export default DropTarget(
         return {
           id: props.item['@id'],
           order: props.order,
+          startOrder: props.order,
         };
       },
     },

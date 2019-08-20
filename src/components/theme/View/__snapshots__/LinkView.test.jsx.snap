@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a link view component 1`] = `
+<div
+  className="ui container"
+  id="page-document"
+>
+  <h1
+    className="documentFirstHeading"
+  >
+    Hello World!
+  </h1>
+  <p
+    className="documentDescription"
+  >
+    Hi
+  </p>
+  <span>
+    The link address is:
+    <a
+      href="/news"
+      onClick={[Function]}
+    >
+      /news
+    </a>
+  </span>
+</div>
+`;

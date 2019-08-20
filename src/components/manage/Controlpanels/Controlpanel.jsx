@@ -12,13 +12,10 @@ import Helmet from 'react-helmet';
 import { Portal } from 'react-portal';
 import { Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { toast } from 'react-toastify';
 
-import { Form, Icon, Toolbar } from '../../../components';
-import {
-  addMessage,
-  updateControlpanel,
-  getControlpanel,
-} from '../../../actions';
+import { Form, Icon, Toolbar, Toast } from '../../../components';
+import { updateControlpanel, getControlpanel } from '../../../actions';
 
 import backSVG from '../../../icons/back.svg';
 
@@ -30,6 +27,10 @@ const messages = defineMessages({
   back: {
     id: 'Back',
     defaultMessage: 'Back',
+  },
+  info: {
+    id: 'Info',
+    defaultMessage: 'Info',
   },
 });
 
@@ -45,7 +46,6 @@ class Controlpanel extends Component {
    * @static
    */
   static propTypes = {
-    addMessage: PropTypes.func.isRequired,
     updateControlpanel: PropTypes.func.isRequired,
     getControlpanel: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
@@ -101,10 +101,12 @@ class Controlpanel extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      this.props.addMessage(
-        null,
-        this.props.intl.formatMessage(messages.changesSaved),
-        'info',
+      toast.info(
+        <Toast
+          info
+          title={this.props.intl.formatMessage(messages.info)}
+          content={this.props.intl.formatMessage(messages.changesSaved)}
+        />,
       );
     }
   }
@@ -180,7 +182,7 @@ export default compose(
       id: props.match.params.id,
       pathname: props.location.pathname,
     }),
-    { addMessage, updateControlpanel, getControlpanel },
+    { updateControlpanel, getControlpanel },
   ),
   withRouter,
 )(Controlpanel);
