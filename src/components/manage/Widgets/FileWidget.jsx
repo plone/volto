@@ -24,14 +24,17 @@ const FileWidget = ({
   error,
   value,
   onChange,
+  fieldSet,
 }) => {
-  let fileInput = null;
+  const fileInput = React.useRef(null);
+
   return (
     <Form.Field
       inline
       required={required}
       error={error.length > 0}
       className={description ? 'help' : ''}
+      id={`${fieldSet || 'field'}-${id}`}
     >
       <Grid>
         <Grid.Row stretched>
@@ -45,9 +48,7 @@ const FileWidget = ({
               id={`field-${id}`}
               name={id}
               type="file"
-              ref={element => {
-                fileInput = element;
-              }}
+              ref={fileInput}
               onChange={({ target }) => {
                 const file = target.files[0];
                 readAsDataURL(file).then(data => {
@@ -71,7 +72,7 @@ const FileWidget = ({
                   aria-label="delete file"
                   onClick={() => {
                     onChange(id, null);
-                    fileInput.inputRef.value = null;
+                    fileInput.current.inputRef.value = null;
                   }}
                 >
                   <Icon name={deleteSVG} size="20px" />
