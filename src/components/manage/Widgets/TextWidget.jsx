@@ -105,6 +105,7 @@ class TextWidget extends Component {
       onEdit,
       onDelete,
       intl,
+      fieldSet,
     } = this.props;
 
     const schema = {
@@ -144,6 +145,7 @@ class TextWidget extends Component {
         required={required}
         error={error.length > 0}
         className={description ? 'help' : ''}
+        id={`${fieldSet || 'field'}-${id}`}
       >
         <Grid>
           <Grid.Row stretched>

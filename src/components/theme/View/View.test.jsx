@@ -134,6 +134,7 @@ describe('View', () => {
     const store = mockStore({
       actions: { actions },
       content: { get: { error: null } },
+      userSession: { token: null },
       intl: {
         locale: 'en',
         messages: {},
@@ -152,6 +153,7 @@ describe('View', () => {
     const store = mockStore({
       actions: { actions },
       content: { data: { layout: 'summary_view' }, get: { error: null } },
+      userSession: { token: null },
       intl: {
         locale: 'en',
         messages: {},
@@ -170,6 +172,7 @@ describe('View', () => {
     const store = mockStore({
       actions: { actions },
       content: { data: { layout: 'tabular_view' }, get: { error: null } },
+      userSession: { token: null },
       intl: {
         locale: 'en',
         messages: {},
@@ -188,6 +191,7 @@ describe('View', () => {
     const store = mockStore({
       actions: { actions },
       content: { data: {}, get: { error: null } },
+      userSession: { token: null },
       intl: {
         locale: 'en',
         messages: {},

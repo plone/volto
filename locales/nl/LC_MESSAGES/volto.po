@@ -132,12 +132,15 @@ msgstr "Standaard worden de rechten overgenomen van de bovenliggende map.  Als u
 msgid "Cancel"
 msgstr "Annuleren"
 
+#: components/manage/Tiles/Table/Edit
+msgid "Cell"
+msgstr ""
+
 #: components/manage/History/History
 msgid "Change Note"
 msgstr "Beschrijf de wijzigingen"
 
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 msgid "Change Password"
 msgstr "Wachtwoord wijzigen"
 
@@ -260,6 +263,14 @@ msgstr "Standaard"
 msgid "Delete"
 msgstr "Verwijderen"
 
+#: components/manage/Tiles/Table/Edit
+msgid "Delete col"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Delete row"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Descending"
 msgstr "Aflopend"
@@ -290,6 +301,10 @@ msgstr "Weergave"
 #: components/theme/Footer/Footer
 msgid "Distributed under the {license}."
 msgstr "Gedistribueerd onder de {license}."
+
+#: components/manage/Tiles/Table/Edit
+msgid "Divide each row into separate cells"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
@@ -340,6 +355,10 @@ msgstr ""
 
 #: components/manage/Tiles/Maps/Edit
 msgid "Enter Map URL"
+msgstr ""
+
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Enter URL or title"
 msgstr ""
 
 #: components/manage/Tiles/Video/Edit
@@ -396,6 +415,10 @@ msgstr "Bestandsnaam"
 msgid "Filter…"
 msgstr "Filter…"
 
+#: components/manage/Tiles/Table/Edit
+msgid "Fixed width table cells"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "From"
 msgstr ""
@@ -447,6 +470,22 @@ msgstr ""
 msgid "Inherit permissions from higher levels"
 msgstr "Rechten overnemen van bovenliggende map"
 
+#: components/manage/Tiles/Table/Edit
+msgid "Insert col after"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Insert col before"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Insert row after"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Insert row before"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Item(s) gekopieerd"
@@ -490,6 +529,10 @@ msgstr "Inloggen"
 msgid "Login Name"
 msgstr "Gebruikersnaam"
 
+#: components/manage/Tiles/Table/Edit
+msgid "Make the table compact"
+msgstr ""
+
 #: components/manage/Tiles/Maps/Edit
 msgid "Maps data error"
 msgstr ""
@@ -500,6 +543,10 @@ msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
+msgstr ""
+
+#: components/manage/Sidebar/Sidebar
+msgid "Metadata"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -551,7 +598,6 @@ msgstr "Ok"
 msgid "Open menu"
 msgstr ""
 
-#: components/manage/Preferences/PersonalPreferences
 #: components/theme/Login/Login
 msgid "Password"
 msgstr "Wachtwoord"
@@ -565,14 +611,10 @@ msgstr ""
 msgid "Paste"
 msgstr "Plakken"
 
-#: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
-#: components/manage/Preferences/PersonalPreferences
 msgid "Personal Information"
 msgstr "Persoonlijke gegevens"
 
-#: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 msgid "Personal Preferences"
 msgstr "Persoonlijke voorkeuren"
@@ -597,6 +639,10 @@ msgstr "Plone website"
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} CMS - Open Source Web Content Management Systeem"
 
+#: components/manage/Preferences/PersonalInformation
+msgid "Portrait"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Powered by Plone & Python"
 msgstr "Powered by Plone & Python"
@@ -605,10 +651,9 @@ msgstr "Powered by Plone & Python"
 msgid "Preview"
 msgstr "Voorvertoning"
 
-#: components/manage/Add/Add
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
-#: components/manage/Edit/Edit
+#: components/manage/Sidebar/Sidebar
 msgid "Properties"
 msgstr "Eigenschappen"
 
@@ -629,6 +674,10 @@ msgstr "Lees verder…"
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
 msgstr "Items rangschikken op…"
+
+#: components/manage/Tiles/Table/Edit
+msgid "Reduce complexity"
+msgstr ""
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Register/Register
@@ -787,16 +836,24 @@ msgstr ""
 msgid "State"
 msgstr "Status"
 
-#: components/manage/Workflow/Workflow
-msgid "State: {current}"
-msgstr "Status: {current}"
-
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr ""
 
+#: components/manage/Tiles/Table/Edit
+msgid "Stripe alternate rows with color"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Table"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Table color inverted"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -826,6 +883,10 @@ msgstr "Het internet adres van uw externe home page, indien u die heeft."
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
+msgstr ""
+
+#: components/manage/Preferences/PersonalInformation
+msgid "The user portrait/avatar"
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -908,6 +969,10 @@ msgstr ""
 msgid "Users and groups settings"
 msgstr ""
 
+#: components/manage/Controlpanels/Controlpanels
+msgid "Version Overview"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 msgid "View"
 msgstr "Bekijken"
@@ -919,11 +984,6 @@ msgstr "Bekijk wijzigingen"
 #: components/manage/History/History
 msgid "View this revision"
 msgstr "Bekijk deze revisie"
-
-#: components/manage/Add/Add
-#: components/manage/Edit/Edit
-msgid "Visual"
-msgstr ""
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
@@ -948,6 +1008,10 @@ msgstr "Wanneer deze datum bereikt is zal de inhoud niet langer zichtbaar zijn i
 #: components/manage/History/History
 msgid "Who"
 msgstr "Wie"
+
+#: components/manage/Workflow/Workflow
+msgid "Workflow updated."
+msgstr ""
 
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
@@ -1011,6 +1075,10 @@ msgstr ""
 
 #: components/theme/Login/Login
 msgid "registration form"
+msgstr ""
+
+#: config/Tiles
+msgid "table"
 msgstr ""
 
 #: config/Tiles

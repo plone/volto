@@ -5,17 +5,33 @@
 
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { uniqBy } from 'lodash';
 import Select, { components } from 'react-select';
+import { toast } from 'react-toastify';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 import getWorkflowMapping from '../../../constants/Workflows';
 import { Icon } from '../../../components';
 import downSVG from '../../../icons/down-key.svg';
 import upSVG from '../../../icons/up-key.svg';
 import checkSVG from '../../../icons/check.svg';
 
-import { getWorkflow, transitionWorkflow } from '../../../actions';
+import { getContent, getWorkflow, transitionWorkflow } from '../../../actions';
 import { settings } from '~/config';
+import { Toast } from '../../../components';
+
+const messages = defineMessages({
+  messageUpdated: {
+    id: 'Workflow updated.',
+    defaultMessage: 'Workflow updated.',
+  },
+});
 
 const Placeholder = props => {
   return <components.Placeholder {...props} />;
@@ -145,6 +161,7 @@ class Workflow extends Component {
    * @static
    */
   static propTypes = {
+    getContent: PropTypes.func.isRequired,
     getWorkflow: PropTypes.func.isRequired,
     transitionWorkflow: PropTypes.func.isRequired,
     loaded: PropTypes.bool.isRequired,
@@ -160,6 +177,7 @@ class Workflow extends Component {
         title: PropTypes.string,
       }),
     ),
+    intl: intlShape.isRequired,
   };
 
   /**
@@ -199,6 +217,7 @@ class Workflow extends Component {
     }
     if (!this.props.loaded && nextProps.loaded) {
       this.props.getWorkflow(nextProps.pathname);
+      this.props.getContent(nextProps.pathname);
     }
   }
 
@@ -213,6 +232,12 @@ class Workflow extends Component {
       selectedOption.url.replace(settings.apiPath, ''),
     );
     this.setState({ selectedOption });
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.messageUpdated)}
+      />,
+    );
   };
 
   selectValue = option => {
@@ -293,12 +318,15 @@ class Workflow extends Component {
   }
 }
 
-export default connect(
-  state => ({
-    loaded: state.workflow.transition.loaded,
-    content: state.content.data,
-    history: state.workflow.history,
-    transitions: state.workflow.transitions,
-  }),
-  { getWorkflow, transitionWorkflow },
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      loaded: state.workflow.transition.loaded,
+      content: state.content.data,
+      history: state.workflow.history,
+      transitions: state.workflow.transitions,
+    }),
+    { getContent, getWorkflow, transitionWorkflow },
+  ),
 )(Workflow);
