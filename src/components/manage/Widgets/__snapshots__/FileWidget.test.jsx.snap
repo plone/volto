@@ -37,6 +37,9 @@ exports[`renders a file widget component 1`] = `
             type="file"
           />
         </div>
+        <div
+          className="field-file-name"
+        />
       </div>
     </div>
   </div>

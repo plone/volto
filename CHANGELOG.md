@@ -14,6 +14,7 @@
 - Added toast component in actions @nzambello
 - Added translations to italian @nzambello
 - Add table tile @robgietema
+- Add delete file button to file Widget @jackahl
 - Add link redirect view @robgietema
 - Add proper unique id to all fields, based on the fieldset and field name @sneridagh
 

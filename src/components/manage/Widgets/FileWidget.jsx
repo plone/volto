@@ -5,9 +5,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Input, Label } from 'semantic-ui-react';
+import { Form, Grid, Input, Label, Button } from 'semantic-ui-react';
 import { map } from 'lodash';
 import { readAsDataURL } from 'promise-file-reader';
+
+import deleteSVG from '../../../icons/delete.svg';
+import { Icon } from '../../../components';
 
 /**
  * FileWidget component class.
@@ -23,57 +26,78 @@ const FileWidget = ({
   value,
   onChange,
   fieldSet,
-}) => (
-  <Form.Field
-    inline
-    required={required}
-    error={error.length > 0}
-    className={description ? 'help' : ''}
-    id={`${fieldSet || 'field'}-${id}`}
-  >
-    <Grid>
-      <Grid.Row stretched>
-        <Grid.Column width="4">
-          <div className="wrapper">
-            <label htmlFor={`field-${id}`}>{title}</label>
-          </div>
-        </Grid.Column>
-        <Grid.Column width="8">
-          <Input
-            id={`field-${id}`}
-            name={id}
-            type="file"
-            onChange={({ target }) => {
-              const file = target.files[0];
-              readAsDataURL(file).then(data => {
-                const fields = data.match(/^data:(.*);(.*),(.*)$/);
-                onChange(id, {
-                  data: fields[3],
-                  encoding: fields[2],
-                  'content-type': fields[1],
-                  filename: file.name,
-                });
-              });
-            }}
-          />
-          {value && value.filename}
-          {map(error, message => (
-            <Label key={message} basic color="red" pointing>
-              {message}
-            </Label>
-          ))}
-        </Grid.Column>
-      </Grid.Row>
-      {description && (
+}) => {
+  const fileInput = React.useRef(null);
+
+  return (
+    <Form.Field
+      inline
+      required={required}
+      error={error.length > 0}
+      className={description ? 'help' : ''}
+      id={`${fieldSet || 'field'}-${id}`}
+    >
+      <Grid>
         <Grid.Row stretched>
-          <Grid.Column stretched width="12">
-            <p className="help">{description}</p>
+          <Grid.Column width="4">
+            <div className="wrapper">
+              <label htmlFor={`field-${id}`}>{title}</label>
+            </div>
+          </Grid.Column>
+          <Grid.Column width="8">
+            <Input
+              id={`field-${id}`}
+              name={id}
+              type="file"
+              ref={fileInput}
+              onChange={({ target }) => {
+                const file = target.files[0];
+                readAsDataURL(file).then(data => {
+                  const fields = data.match(/^data:(.*);(.*),(.*)$/);
+                  onChange(id, {
+                    data: fields[3],
+                    encoding: fields[2],
+                    'content-type': fields[1],
+                    filename: file.name,
+                  });
+                });
+              }}
+            />
+            <div className="field-file-name">
+              {value && value.filename}
+              {value && (
+                <Button
+                  icon
+                  basic
+                  className="delete-button"
+                  aria-label="delete file"
+                  onClick={() => {
+                    onChange(id, null);
+                    fileInput.current.inputRef.value = null;
+                  }}
+                >
+                  <Icon name={deleteSVG} size="20px" />
+                </Button>
+              )}
+            </div>
+            {map(error, message => (
+              <Label key={message} basic color="red" pointing>
+                {message}
+              </Label>
+            ))}
           </Grid.Column>
         </Grid.Row>
-      )}
-    </Grid>
-  </Form.Field>
-);
+        {description && (
+          <Grid.Row stretched>
+            <Grid.Column stretched width="12">
+              <p className="help">{description}</p>
+            </Grid.Column>
+          </Grid.Row>
+        )}
+      </Grid>
+    </Form.Field>
+  );
+};
 
 /**
  * Property types.
