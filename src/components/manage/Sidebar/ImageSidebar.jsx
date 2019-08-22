@@ -5,11 +5,17 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 import { Form } from 'semantic-ui-react';
 import { AlignTile } from '@plone/volto/helpers';
 import PropTypes from 'prop-types';
-
+import withObjectBrowser from './ObjectBrowser';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 
-const ImageSidebar = ({ data, tile, onChangeTile, required = false }) => {
+const ImageSidebar = ({
+  data,
+  tile,
+  onChangeTile,
+  openObjectBrowser,
+  required = false,
+}) => {
   const [origin, setOrigin] = useState(data.url || '');
   const [alt, setAlt] = useState(data.alt || '');
   const [browserIsOpen, setBrowserIsOpen] = useState(false);
@@ -23,31 +29,26 @@ const ImageSidebar = ({ data, tile, onChangeTile, required = false }) => {
     <Segment.Group raised>
       <header className="header pulled">
         <h2>Image</h2>
-        <button onClick={data.closeSidebar}>
-          <Icon name={clearSVG} size="24px" color="#786Ec5D" />
-        </button>
       </header>
 
       {data.url && (
         <>
           <Segment className="sidebar-metadata-container" secondary>
             {/* {props.data.url && <div>{props.data.url}</div>} */}
-            The name of the Image and metadata
+            {origin.split('/').slice(-1)[0]}
             <img
               src={`${flattenToAppURL(data.url)}/@@images/image/mini`}
               alt={alt}
             />
           </Segment>
           <Segment className="form sidebar-image-data">
-            <h4>Image</h4>
-
             <TextWidget
               id="Origin"
               title="Origin"
               required={false}
-              value={origin}
+              value={origin.split('/').slice(-1)[0]}
               icon={folderSVG}
-              iconAction={() => setBrowserIsOpen(true)}
+              iconAction={() => openObjectBrowser()}
             />
             <TextWidget
               id="alt"
@@ -70,7 +71,7 @@ const ImageSidebar = ({ data, tile, onChangeTile, required = false }) => {
                       <label htmlFor="field-align">align</label>
                     </div>
                   </Grid.Column>
-                  <Grid.Column width="8">
+                  <Grid.Column width="8" className="align-tools">
                     <AlignTile
                       align={data.align}
                       onChangeTile={onChangeTile}

@@ -240,6 +240,44 @@ svg.icon {
   padding: 20px 0;
 }
 
+.align-tools {
+  display: flex !important;
+  align-items: center;
+
+  .ui.icon.button {
+    padding: 4px;
+    margin-left: 4px;
+    border-radius: 1px;
+    color: #826a6a !important;
+
+    &:hover {
+      background-color: #edf1f2 !important;
+    }
+  }
+
+  .ui.buttons:first-child .ui.icon.button {
+    margin-left: 0;
+  }
+}
+
+.ui.icon.input + button {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 2.67142857em;
+  height: 100%;
+  padding: 4px;
+  margin: 0;
+  border-radius: 1px;
+  color: #826a6a !important;
+  line-height: 1;
+  text-align: center;
+
+  &:hover {
+    background-color: #edf1f2 !important;
+  }
+}
+
 @import 'utils';
 @import 'toolbar';
 @import 'draftjs';

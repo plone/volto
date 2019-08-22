@@ -189,6 +189,7 @@ class TextWidget extends Component {
                 name={id}
                 value={value || ''}
                 disabled={onEdit !== null}
+                icon={icon || null}
                 onChange={({ target }) =>
                   onChange(id, target.value === '' ? undefined : target.value)
                 }

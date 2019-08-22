@@ -12,6 +12,7 @@ import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import cx from 'classnames';
 import { settings } from '~/config';
+import withObjectBrowser from '../../Sidebar/ObjectBrowser';
 
 import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
@@ -235,20 +236,12 @@ class Edit extends Component {
       >
         {this.props.selected && !!this.props.data.url && (
           <div className="toolbar">
-            {!this.props.detached && (
-              <AlignTile
-                align={this.props.data.align}
-                onChangeTile={this.props.onChangeTile}
-                data={this.props.data}
-                tile={this.props.tile}
-              />
-            )}
             {this.props.appendActions && <>{this.props.appendActions}</>}
             {this.props.detached && this.props.appendActions && (
               <div className="separator" />
             )}
             <Button.Group>
-              <Button icon basic onClick={this.toggleObjectBrowser}>
+              <Button icon basic onClick={this.props.openObjectBrowser}>
                 <Icon name={folderSVG} size="24px" />
               </Button>
             </Button.Group>
@@ -278,7 +271,7 @@ class Edit extends Component {
                 <Icon
                   name={folderSVG}
                   size="24px"
-                  onClick={this.toggleObjectBrowser}
+                  onClick={this.props.openObjectBrowser}
                 />
               </label>
               <label className="ui button basic icon">
@@ -325,9 +318,10 @@ class Edit extends Component {
         )}
         <SidebarPortal selected={this.props.selected}>
           <ImageSidebar
-            data={this.props.data}
-            tile={this.props.tile}
-            onChangeTile={this.props.onChangeTile}
+            {...this.props}
+            // data={this.props.data}
+            // tile={this.props.tile}
+            // onChangeTile={this.props.onChangeTile}
           />
         </SidebarPortal>
       </div>
@@ -336,6 +330,7 @@ class Edit extends Component {
 }
 
 export default compose(
+  withObjectBrowser,
   injectIntl,
   connect(
     state => ({

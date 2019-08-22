@@ -22,7 +22,7 @@ const AlignTile = ({ align, onChangeTile, data, tile }) => {
   }
 
   return (
-    <>
+    <div>
       <Button.Group>
         <Button
           icon
@@ -67,22 +67,7 @@ const AlignTile = ({ align, onChangeTile, data, tile }) => {
           <Icon name={imageFullSVG} size="24px" />
         </Button>
       </Button.Group>
-      <div className="separator" />
-      <Button.Group>
-        <Button
-          icon
-          basic
-          onClick={() =>
-            onChangeTile(props.tile, {
-              ...data,
-              url: '',
-            })
-          }
-        >
-          <Icon name={clearSVG} size="24px" color="#e40166" />
-        </Button>
-      </Button.Group>
-    </>
+    </div>
   );
 };
 
