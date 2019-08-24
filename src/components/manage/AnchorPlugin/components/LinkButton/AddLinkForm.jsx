@@ -5,13 +5,23 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import unionClassNames from 'union-class-names';
 import EditorUtils from 'draft-js-plugins-utils';
 import { connect } from 'react-redux';
 import { map } from 'lodash';
+import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 import { resetSearchContent, searchContent } from '../../../../../actions';
 import URLUtils from '../../utils/URLUtils';
+
+const messages = defineMessages({
+  placeholder: {
+    id: 'Enter URL or title',
+    defaultMessage: 'Enter URL or title',
+  },
+});
 
 /**
  * Add link form class.
@@ -24,7 +34,6 @@ class AddLinkForm extends Component {
     setEditorState: PropTypes.func.isRequired,
     onOverrideContent: PropTypes.func.isRequired,
     theme: PropTypes.objectOf(PropTypes.any).isRequired,
-    placeholder: PropTypes.string,
     resetSearchContent: PropTypes.func.isRequired,
     searchContent: PropTypes.func.isRequired,
     search: PropTypes.arrayOf(
@@ -35,6 +44,7 @@ class AddLinkForm extends Component {
         description: PropTypes.string,
       }),
     ),
+    intl: intlShape.isRequired,
   };
 
   static defaultProps = {
@@ -68,7 +78,21 @@ class AddLinkForm extends Component {
   componentDidMount() {
     this.input.focus();
     this.props.resetSearchContent();
+    document.addEventListener('mousedown', this.handleClickOutside, false);
   }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside, false);
+  }
+
+  handleClickOutside = e => {
+    if (
+      this.linkFormContainer.current &&
+      doesNodeContainClick(this.linkFormContainer.current, e)
+    )
+      return;
+    this.onClose();
+  };
 
   /**
    * Ref handler
@@ -79,6 +103,8 @@ class AddLinkForm extends Component {
   onRef(node) {
     this.input = node;
   }
+
+  linkFormContainer = React.createRef();
 
   /**
    * Change handler
@@ -173,14 +199,14 @@ class AddLinkForm extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { theme, placeholder } = this.props;
+    const { theme } = this.props;
     const { value, isInvalid } = this.state;
     const className = isInvalid
       ? unionClassNames('ui input editor-link', theme.input, theme.inputInvalid)
       : unionClassNames('ui input editor-link', theme.input);
 
     return (
-      <div>
+      <div className="link-form-container" ref={this.linkFormContainer}>
         <div
           style={{ marginLeft: '5px', display: 'flex', alignItems: 'center' }}
         >
@@ -198,15 +224,12 @@ class AddLinkForm extends Component {
           </svg>
           <input
             className={className}
-            // TODO: The onBlur is somewhat happening before the onSelectItem method is called.
-            // Then the dialog is closed once you select the item without setting the link.
-            // onBlur={this.onClose}
             onChange={this.onChange}
             onKeyDown={this.onKeyDown}
-            placeholder={placeholder}
             ref={this.onRef}
             type="text"
             value={value}
+            placeholder={this.props.intl.formatMessage(messages.placeholder)}
           />
         </div>
         <ul style={{ margin: 0, paddingLeft: '35px' }}>
@@ -228,9 +251,12 @@ class AddLinkForm extends Component {
   }
 }
 
-export default connect(
-  state => ({
-    search: state.search.items,
-  }),
-  { resetSearchContent, searchContent },
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      search: state.search.items,
+    }),
+    { resetSearchContent, searchContent },
+  ),
 )(AddLinkForm);
