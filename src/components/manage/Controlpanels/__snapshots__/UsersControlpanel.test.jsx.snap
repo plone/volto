@@ -64,7 +64,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
         className="table"
       >
         <table
-          className="ui striped attached padded table"
+          className="ui striped unstackable attached padded table"
         >
           <thead
             className=""
@@ -97,14 +97,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui clearing segment actions"
     >
-      <div
-        className="ui horizontal label"
-        onClick={[Function]}
-      >
-        <span>
-          Add New User
-        </span>
-      </div>
+      ADD NEW USER
       <svg
         className="icon icon-adduser"
         dangerouslySetInnerHTML={
@@ -115,7 +108,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "fill": "blue",
+            "fill": "#007eb1",
             "height": "30px",
             "width": "auto",
           }
@@ -174,7 +167,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
         className="table"
       >
         <table
-          className="ui striped attached padded table"
+          className="ui striped unstackable attached padded table"
         >
           <thead
             className=""
@@ -207,14 +200,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui clearing segment actions"
     >
-      <div
-        className="ui horizontal label"
-        onClick={[Function]}
-      >
-        <span>
-          Add New Group
-        </span>
-      </div>
+      ADD NEW GROUP
       <svg
         className="icon icon-adduser"
         dangerouslySetInnerHTML={
@@ -225,7 +211,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
         onClick={[Function]}
         style={
           Object {
-            "fill": "blue",
+            "fill": "#007eb1",
             "height": "30px",
             "width": "auto",
           }

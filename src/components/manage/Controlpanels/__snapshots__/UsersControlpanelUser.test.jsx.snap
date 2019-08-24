@@ -12,18 +12,78 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
   <td
     className=""
   >
-    <i
-      aria-hidden="true"
-      className="blue check circle outline icon"
-      title="Global role"
-    />
+    <div
+      className="ui checked fitted checkbox"
+      color="#007eb1"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size="25px"
+    >
+      <input
+        checked={true}
+        className="hidden"
+        name="Member"
+        readOnly={true}
+        tabIndex={0}
+        title="Global role"
+        type="checkbox"
+        value="http://localhost:8080/Plone/@users/testuser"
+      />
+      <label />
+    </div>
   </td>
   <td
     className=""
-  />
+  >
+    <div
+      className="ui fitted checkbox"
+      color="#826a6a"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size="25px"
+    >
+      <input
+        checked={false}
+        className="hidden"
+        name="Reader"
+        readOnly={true}
+        tabIndex={0}
+        title="Global role"
+        type="checkbox"
+        value="http://localhost:8080/Plone/@users/testuser"
+      />
+      <label />
+    </div>
+  </td>
   <td
     className=""
-  />
+  >
+    <div
+      className="ui fitted checkbox"
+      color="#826a6a"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      size="25px"
+    >
+      <input
+        checked={false}
+        className="hidden"
+        name="Manager"
+        readOnly={true}
+        tabIndex={0}
+        title="Global role"
+        type="checkbox"
+        value="http://localhost:8080/Plone/@users/testuser"
+      />
+      <label />
+    </div>
+  </td>
   <td
     className="right aligned"
   >
@@ -56,9 +116,23 @@ exports[`UsersControlpanelUser renders a UsersControlpanelUser component 1`] = `
           onClick={[Function]}
           role="option"
         >
-          <i
-            aria-hidden="true"
-            className="trash icon"
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "15px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
           />
           <span>
             Delete

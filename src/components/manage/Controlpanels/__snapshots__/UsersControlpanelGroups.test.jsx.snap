@@ -11,17 +11,68 @@ exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component 1`]
   </td>
   <td
     className=""
-  />
-  <td
-    className=""
-  />
+  >
+    <svg
+      className="icon"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<title>Global role</title>undefined",
+        }
+      }
+      onClick={null}
+      style={
+        Object {
+          "fill": "#826a6a",
+          "height": "25px",
+          "width": "auto",
+        }
+      }
+      viewBox=""
+      xmlns=""
+    />
+  </td>
   <td
     className=""
   >
-    <i
-      aria-hidden="true"
-      className="blue check circle outline icon"
-      title="Global role"
+    <svg
+      className="icon"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<title>Global role</title>undefined",
+        }
+      }
+      onClick={null}
+      style={
+        Object {
+          "fill": "#826a6a",
+          "height": "25px",
+          "width": "auto",
+        }
+      }
+      viewBox=""
+      xmlns=""
+    />
+  </td>
+  <td
+    className=""
+  >
+    <svg
+      className="icon"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<title>Global role</title>undefined",
+        }
+      }
+      onClick={null}
+      style={
+        Object {
+          "fill": "#007eb1",
+          "height": "25px",
+          "width": "auto",
+        }
+      }
+      viewBox=""
+      xmlns=""
     />
   </td>
   <td
@@ -56,9 +107,23 @@ exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component 1`]
           onClick={[Function]}
           role="option"
         >
-          <i
-            aria-hidden="true"
-            className="trash icon"
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "15px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
           />
           <span>
             Delete
