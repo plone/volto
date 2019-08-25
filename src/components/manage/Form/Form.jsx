@@ -17,9 +17,13 @@ import {
 } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { v4 as uuid } from 'uuid';
+import { Portal } from 'react-portal';
 
-import { EditTile, Field } from '../../../components';
+import { EditTile, Icon, Field } from '../../../components';
 import { getTilesFieldname, getTilesLayoutFieldname } from '../../../helpers';
+
+import aheadSVG from '@plone/volto/icons/ahead.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   addTile: {
@@ -537,6 +541,35 @@ class Form extends Component {
             selected={this.state.selected === tile}
           />
         ))}
+        <Portal
+          node={__CLIENT__ && document.getElementById('sidebar-metadata')}
+        >
+          <UiForm
+            method="post"
+            onSubmit={this.onSubmit}
+            error={keys(this.state.errors).length > 0}
+          >
+            {map(schema.fieldsets, item => [
+              <Segment secondary attached>
+                {item.title}
+              </Segment>,
+              <Segment attached>
+                {map(item.fields, (field, index) => (
+                  <Field
+                    {...schema.properties[field]}
+                    id={field}
+                    focus={index === 0}
+                    value={this.state.formData[field]}
+                    required={schema.required.indexOf(field) !== -1}
+                    onChange={this.onChangeField}
+                    key={field}
+                    error={this.state.errors[field]}
+                  />
+                ))}
+              </Segment>,
+            ])}
+          </UiForm>
+        </Portal>
       </div>
     ) : (
       <Container>
@@ -567,6 +600,7 @@ class Form extends Component {
                       <Field
                         {...schema.properties[field]}
                         id={field}
+                        fieldSet={item.title.toLowerCase()}
                         focus={index === 0}
                         value={this.state.formData[field]}
                         required={schema.required.indexOf(field) !== -1}
@@ -625,31 +659,35 @@ class Form extends Component {
                 {onSubmit && (
                   <Button
                     basic
-                    circular
                     primary
                     floated="right"
-                    icon="arrow right"
                     type="submit"
+                    aria-label={
+                      this.props.submitLabel
+                        ? this.props.submitLabel
+                        : this.props.intl.formatMessage(messages.save)
+                    }
                     title={
                       this.props.submitLabel
                         ? this.props.submitLabel
                         : this.props.intl.formatMessage(messages.save)
                     }
-                    size="big"
                     loading={this.props.loading}
-                  />
+                  >
+                    <Icon className="circled" name={aheadSVG} size="30px" />
+                  </Button>
                 )}
                 {onCancel && (
                   <Button
                     basic
-                    circular
                     secondary
-                    icon="remove"
+                    aria-label={this.props.intl.formatMessage(messages.cancel)}
                     title={this.props.intl.formatMessage(messages.cancel)}
                     floated="right"
-                    size="big"
                     onClick={onCancel}
-                  />
+                  >
+                    <Icon className="circled" name={clearSVG} size="30px" />
+                  </Button>
                 )}
               </Segment>
             )}

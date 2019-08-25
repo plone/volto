@@ -46,13 +46,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
 /**
  * Modal form container class.
  * @class ModalForm
  * @extends Component
  */
-export default class FormModal extends Component {
+class ModalForm extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -243,6 +242,11 @@ export default class FormModal extends Component {
             primary
             floated="right"
             icon="arrow right"
+            aria-label={
+              this.props.submitLabel
+                ? this.props.submitLabel
+                : this.props.intl.formatMessage(messages.save)
+            }
             title={
               this.props.submitLabel
                 ? this.props.submitLabel
@@ -257,6 +261,7 @@ export default class FormModal extends Component {
               circular
               secondary
               icon="remove"
+              aria-label={this.props.intl.formatMessage(messages.cancel)}
               title={this.props.intl.formatMessage(messages.cancel)}
               floated="right"
               size="big"
@@ -268,3 +273,5 @@ export default class FormModal extends Component {
     );
   }
 }
+
+export default injectIntl(ModalForm);

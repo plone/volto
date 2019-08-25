@@ -36,13 +36,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
 /**
  * TextWidget component class.
  * @class TextWidget
  * @extends Component
  */
-export default class TextWidget extends Component {
+class TextWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -106,6 +105,7 @@ export default class TextWidget extends Component {
       onEdit,
       onDelete,
       intl,
+      fieldSet,
     } = this.props;
 
     const schema = {
@@ -145,6 +145,7 @@ export default class TextWidget extends Component {
         required={required}
         error={error.length > 0}
         className={description ? 'help' : ''}
+        id={`${fieldSet || 'field'}-${id}`}
       >
         <Grid>
           <Grid.Row stretched>
@@ -164,12 +165,16 @@ export default class TextWidget extends Component {
             <Grid.Column width="8">
               {onEdit && (
                 <div className="toolbar">
-                  <a className="item" onClick={() => onEdit(id, schema)}>
+                  <button className="item" onClick={() => onEdit(id, schema)}>
                     <Icon name="write square" size="large" color="blue" />
-                  </a>
-                  <a className="item" onClick={() => onDelete(id)}>
+                  </button>
+                  <button
+                    aria-label="Delete"
+                    className="item"
+                    onClick={() => onDelete(id)}
+                  >
                     <Icon name="close" size="large" color="red" />
-                  </a>
+                  </button>
                 </div>
               )}
               <Input
@@ -203,3 +208,5 @@ export default class TextWidget extends Component {
     );
   }
 }
+
+export default injectIntl(TextWidget);

@@ -6,11 +6,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import { Portal } from 'react-portal';
-import { Container, Icon, Button, Table } from 'semantic-ui-react';
+import { Container, Button, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import {
   FormattedMessage,
@@ -20,8 +20,10 @@ import {
 } from 'react-intl';
 
 import { deleteComment, searchContent } from '../../../actions';
-import { Toolbar, CommentEditModal } from '../../../components';
+import { CommentEditModal, Icon, Toolbar } from '../../../components';
 import { getBaseUrl } from '../../../helpers';
+
+import backSVG from '../../../icons/back.svg';
 
 const messages = defineMessages({
   back: {
@@ -30,21 +32,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    items: state.search.items,
-    deleteRequest: state.comments.delete,
-    pathname: props.location.pathname,
-  }),
-  dispatch => bindActionCreators({ deleteComment, searchContent }, dispatch),
-)
 /**
  * ModerateCommentsComponent class.
  * @class ModerateComments
  * @extends Component
  */
-export default class ModerateComments extends Component {
+class ModerateComments extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -265,15 +258,16 @@ export default class ModerateComments extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
+            hideDefaultViewButtons
             inner={
               <Link
                 to={`${getBaseUrl(this.props.pathname)}controlpanel`}
                 className="item"
               >
                 <Icon
-                  name="arrow left"
-                  size="big"
-                  color="blue"
+                  name={backSVG}
+                  className="contents circled"
+                  size="30px"
                   title={this.props.intl.formatMessage(messages.back)}
                 />
               </Link>
@@ -284,3 +278,15 @@ export default class ModerateComments extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      items: state.search.items,
+      deleteRequest: state.comments.delete,
+      pathname: props.location.pathname,
+    }),
+    { deleteComment, searchContent },
+  ),
+)(ModerateComments);

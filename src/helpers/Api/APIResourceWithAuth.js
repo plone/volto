@@ -16,8 +16,14 @@ import { settings } from '~/config';
  */
 export const getAPIResourceWithAuth = req =>
   new Promise(resolve => {
+    let apiPath = '';
+    if (settings.internalApiPath && __SERVER__) {
+      apiPath = settings.internalApiPath;
+    } else {
+      apiPath = settings.apiPath;
+    }
     const request = superagent
-      .get(`${settings.apiPath}${req.path}`)
+      .get(`${apiPath}${req.path}`)
       .responseType('blob');
     const authToken = cookie.load('auth_token');
     if (authToken) {

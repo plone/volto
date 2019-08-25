@@ -1,5 +1,24 @@
 // Object Browser Container
-aside.sidebar-container {
+
+@media only screen and (max-width: @largestMobileScreen) {
+  .has-toolbar {
+    .sidebar-container {
+      top: 100px;
+      bottom: 0;
+      height: calc(100vh - 100px);
+    }
+  }
+
+  .has-toolbar-collapsed {
+    .sidebar-container {
+      top: 20px;
+      bottom: 0;
+      height: calc(100vh - 20px);
+    }
+  }
+}
+
+.sidebar-container {
   position: fixed;
   z-index: 100;
   top: 0;
@@ -8,9 +27,17 @@ aside.sidebar-container {
   height: 100vh;
   background-color: #fff;
   box-shadow: 0 1px 2px 0 #c7d5d8;
+  transition: right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+    height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+    top 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 
-  @media only screen and (max-width: @largestMobileScreen) {
-    width: 100vw;
+  &.collapsed {
+    right: -355px;
+
+    .tabs-wrapper {
+      opacity: 0;
+      transition: opacity 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    }
   }
 
   .ui.raised.segments {
@@ -29,6 +56,58 @@ aside.sidebar-container {
     &:focus {
       outline: none;
     }
+  }
+
+  .trigger,
+  .trigger:focus,
+  .trigger:hover {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 0;
+    width: 20px;
+    height: 80px;
+    padding: 0;
+    margin-top: -40px;
+    background: transparent;
+    border-radius: 0;
+    opacity: 0.3;
+    transition: opacity 0.3s;
+  }
+
+  .trigger:before {
+    position: relative;
+    left: 8px;
+    display: block;
+    width: 4px;
+    height: 100%;
+    background: @blue;
+    content: '';
+  }
+
+  .tab-wrapper {
+    height: calc(100% - 61px);
+    padding: 0;
+    border-bottom: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    > * {
+      display: none;
+    }
+
+    > :last-child {
+      display: block;
+    }
+  }
+
+  .tabs-wrapper {
+    height: 100%;
+  }
+
+  .tab-forbidden {
+    margin: calc(50% - 24px) auto;
+    color: #bac5c7;
   }
 
   header {
@@ -74,7 +153,7 @@ aside.sidebar-container {
     }
   }
 
-  .ui.segment {
+  .ui.segment:not(.tab) {
     border-bottom: 1px solid #b8c6c8;
   }
 
@@ -138,6 +217,15 @@ aside.sidebar-container {
   .ui.segment.form.sidebar-image-data {
     padding-bottom: 1em;
   }
+}
+
+#sidebar .pusher.expanded {
+  margin-left: 375px;
+}
+
+#sidebar .pusher {
+  margin-left: 20px;
+  transition: margin-left 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 // Animation

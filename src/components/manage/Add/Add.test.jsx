@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import { AddComponent as Add } from './Add';
+import Add from './Add';
 
 const mockStore = configureStore();
 

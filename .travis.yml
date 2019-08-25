@@ -61,6 +61,10 @@ script:
     yarn ci:cypress:run;
     fi
 after_success:
+  - if [ "$TEST_SUITE" == "plone" ]; then
+    yarn run bundlewatch;
+    yarn run bundlesize;
+    fi
   - if [ "$TEST_SUITE" == "guillotina" ]; then
     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
     docker tag plone/volto:testing plone/volto:$TRAVIS_BRANCH.$TRAVIS_COMMIT;
@@ -68,3 +72,8 @@ after_success:
     docker tag plone/volto:testing plone/volto:$TRAVIS_BRANCH.green;
     docker push plone/volto:$TRAVIS_BRANCH.green;
     fi
+
+# safelist
+branches:
+  only:
+    - master

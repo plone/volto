@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { isEmpty, map } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
@@ -72,19 +72,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  state => ({
-    request: state.content.update,
-  }),
-  dispatch => bindActionCreators({ updateContent }, dispatch),
-)
 /**
  * ContentsPropertiesModal class.
  * @class ContentsPropertiesModal
  * @extends Component
  */
-export default class ContentsPropertiesModal extends Component {
+class ContentsPropertiesModal extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -220,3 +213,13 @@ export default class ContentsPropertiesModal extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      request: state.content.update,
+    }),
+    { updateContent },
+  ),
+)(ContentsPropertiesModal);

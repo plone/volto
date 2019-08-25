@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
@@ -19,22 +19,12 @@ import { searchContent } from '../../../actions';
 
 import { SearchTags, Toolbar } from '../../../components';
 
-@connect(
-  (state, props) => ({
-    items: state.search.items,
-    searchableText: qs.parse(props.location.search).SearchableText,
-    subject: qs.parse(props.location.search).Subject,
-    path: qs.parse(props.location.search).path,
-    pathname: props.location.pathname,
-  }),
-  dispatch => bindActionCreators({ searchContent }, dispatch),
-)
 /**
- * SearchComponent class.
+ * Search class.
  * @class SearchComponent
  * @extends Component
  */
-export class SearchComponent extends Component {
+class Search extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -159,22 +149,49 @@ export class SearchComponent extends Component {
           </article>
         </div>
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar pathname={this.props.pathname} inner={<span />} />
-        </Portal>{' '}
+          <Toolbar
+            pathname={this.props.pathname}
+            hideDefaultViewButtons
+            inner={<span />}
+          />
+        </Portal>
       </Container>
     );
   }
 }
 
-export default asyncConnect([
-  {
-    key: 'search',
-    promise: ({ location, store: { dispatch } }) =>
-      dispatch(
-        searchContent('', {
-          SearchableText: qs.parse(location.search).SearchableText,
-          Subject: qs.parse(location.search).Subject,
-        }),
-      ),
-  },
-])(SearchComponent);
+export const __test__ = connect(
+  (state, props) => ({
+    items: state.search.items,
+    searchableText: qs.parse(props.location.search).SearchableText,
+    subject: qs.parse(props.location.search).Subject,
+    path: qs.parse(props.location.search).path,
+    pathname: props.location.pathname,
+  }),
+  { searchContent },
+)(Search);
+
+export default compose(
+  connect(
+    (state, props) => ({
+      items: state.search.items,
+      searchableText: qs.parse(props.location.search).SearchableText,
+      subject: qs.parse(props.location.search).Subject,
+      path: qs.parse(props.location.search).path,
+      pathname: props.location.pathname,
+    }),
+    { searchContent },
+  ),
+  asyncConnect([
+    {
+      key: 'search',
+      promise: ({ location, store: { dispatch } }) =>
+        dispatch(
+          searchContent('', {
+            SearchableText: qs.parse(location.search).SearchableText,
+            Subject: qs.parse(location.search).Subject,
+          }),
+        ),
+    },
+  ]),
+)(Search);

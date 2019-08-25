@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /**
  * Schema widget fieldset.
  * @module components/manage/Widgets/SchemaWidgetFieldset
@@ -36,22 +38,22 @@ export const SchemaWidgetFieldsetComponent = ({
           <i aria-hidden="true" className="grey bars icon drag handle" />,
         )}
         {title}
-        <a
+        <button
           onClick={event => {
             event.stopPropagation();
             onShowEditFieldset(order);
           }}
         >
           <Icon name="write square" size="large" color="blue" />
-        </a>
-        <a
+        </button>
+        <button
           onClick={event => {
             event.stopPropagation();
             onShowDeleteFieldset(order);
           }}
         >
           <Icon name="close" size="large" color="red" />
-        </a>
+        </button>
       </div>,
     ),
   );

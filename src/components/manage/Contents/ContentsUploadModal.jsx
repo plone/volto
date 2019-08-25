@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import {
   Button,
   Dimmer,
@@ -43,19 +43,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  state => ({
-    request: state.content.create,
-  }),
-  dispatch => bindActionCreators({ createContent }, dispatch),
-)
 /**
  * ContentsUploadModal class.
  * @class ContentsUploadModal
  * @extends Component
  */
-export default class ContentsUploadModal extends Component {
+class ContentsUploadModal extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -287,6 +280,9 @@ export default class ContentsUploadModal extends Component {
                 primary
                 floated="right"
                 icon="arrow right"
+                aria-label={this.props.intl.formatMessage(messages.upload, {
+                  count: this.state.files.length,
+                })}
                 onClick={this.onSubmit}
                 title={this.props.intl.formatMessage(messages.upload, {
                   count: this.state.files.length,
@@ -299,6 +295,7 @@ export default class ContentsUploadModal extends Component {
               circular
               secondary
               icon="remove"
+              aria-label={this.props.intl.formatMessage(messages.cancel)}
               title={this.props.intl.formatMessage(messages.cancel)}
               floated="right"
               size="big"
@@ -310,3 +307,13 @@ export default class ContentsUploadModal extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      request: state.content.create,
+    }),
+    { createContent },
+  ),
+)(ContentsUploadModal);

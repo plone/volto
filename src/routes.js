@@ -20,8 +20,6 @@ import {
   Logout,
   ModerateComments,
   PasswordReset,
-  PersonalInformation,
-  PersonalPreferences,
   Register,
   RequestPasswordReset,
   Search,
@@ -76,14 +74,6 @@ export const defaultRoutes = [
   {
     path: '/change-password',
     component: ChangePassword,
-  },
-  {
-    path: '/personal-information',
-    component: PersonalInformation,
-  },
-  {
-    path: '/personal-preferences',
-    component: PersonalPreferences,
   },
   {
     path: '/add',

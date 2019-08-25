@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a sidebar component 1`] = `
+Array [
+  <div
+    className="sidebar-container"
+  >
+    <button
+      aria-label="Shrink sidebar"
+      className="ui button trigger"
+      onClick={[Function]}
+    />
+    <div
+      className="tabs-wrapper"
+    >
+      <div
+        className="ui pointing secondary attached tabular formtabs menu"
+      >
+        <a
+          className="item"
+          onClick={[Function]}
+        >
+          Metadata
+        </a>
+        <a
+          className="active item"
+          onClick={[Function]}
+        >
+          Properties
+        </a>
+      </div>
+      <div
+        className="ui bottom attached segment tab tab-wrapper"
+        id="sidebar-metadata"
+      />
+      <div
+        className="ui bottom attached segment active tab tab-wrapper"
+        id="sidebar-properties"
+      >
+        <svg
+          className="icon tab-forbidden"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "currentColor",
+              "height": "48px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </div>
+    </div>
+  </div>,
+  <div
+    className="pusher expanded"
+  />,
+]
+`;

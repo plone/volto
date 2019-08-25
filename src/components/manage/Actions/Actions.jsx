@@ -5,10 +5,11 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import { Dropdown, Icon } from 'semantic-ui-react';
+import { toast } from 'react-toastify';
 import {
   FormattedMessage,
   defineMessages,
@@ -16,15 +17,9 @@ import {
   intlShape,
 } from 'react-intl';
 
-import {
-  cut,
-  copy,
-  copyContent,
-  moveContent,
-  addMessage,
-} from '../../../actions';
+import { cut, copy, copyContent, moveContent } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
-import { ContentsRenameModal } from '../../../components';
+import { ContentsRenameModal, Toast } from '../../../components';
 
 const messages = defineMessages({
   cut: {
@@ -59,35 +54,18 @@ const messages = defineMessages({
     id: 'Item(s) pasted.',
     defaultMessage: 'Item(s) pasted.',
   },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
 });
 
-@injectIntl
-@connect(
-  state => ({
-    actions: state.actions.actions,
-    action: state.clipboard.action,
-    source: state.clipboard.source,
-    id: state.content.data ? state.content.data.id : '',
-    title: state.content.data ? state.content.data.title : '',
-  }),
-  dispatch =>
-    bindActionCreators(
-      {
-        cut,
-        copy,
-        copyContent,
-        moveContent,
-        addMessage,
-      },
-      dispatch,
-    ),
-)
 /**
  * Actions container class.
  * @class Actions
  * @extends Component
  */
-export default class Actions extends Component {
+class Actions extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -108,7 +86,6 @@ export default class Actions extends Component {
     copy: PropTypes.func.isRequired,
     copyContent: PropTypes.func.isRequired,
     moveContent: PropTypes.func.isRequired,
-    addMessage: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
 
@@ -171,12 +148,14 @@ export default class Actions extends Component {
    */
   cut() {
     this.props.cut([getBaseUrl(this.props.pathname)]);
-    this.props.addMessage(
-      null,
-      this.props.intl.formatMessage(messages.messageCut, {
-        title: this.props.title,
-      }),
-      'success',
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.messageCut, {
+          title: this.props.title,
+        })}
+      />,
     );
   }
 
@@ -187,12 +166,14 @@ export default class Actions extends Component {
    */
   copy() {
     this.props.copy([getBaseUrl(this.props.pathname)]);
-    this.props.addMessage(
-      null,
-      this.props.intl.formatMessage(messages.messageCopied, {
-        title: this.props.title,
-      }),
-      'success',
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.messageCopied, {
+          title: this.props.title,
+        })}
+      />,
     );
   }
 
@@ -214,10 +195,12 @@ export default class Actions extends Component {
         getBaseUrl(this.props.pathname),
       );
     }
-    this.props.addMessage(
-      null,
-      this.props.intl.formatMessage(messages.messagePasted),
-      'success',
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.messagePasted)}
+      />,
     );
   }
 
@@ -323,3 +306,22 @@ export default class Actions extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      actions: state.actions.actions,
+      action: state.clipboard.action,
+      source: state.clipboard.source,
+      id: state.content.data ? state.content.data.id : '',
+      title: state.content.data ? state.content.data.title : '',
+    }),
+    {
+      cut,
+      copy,
+      copyContent,
+      moveContent,
+    },
+  ),
+)(Actions);

@@ -7,13 +7,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { Portal } from 'react-portal';
 import { Container, Message, Icon } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Link, withRouter } from 'react-router-dom';
-import { Form, Toolbar } from '../..';
-import { addMessage, emailNotification } from '../../../actions';
+import { toast } from 'react-toastify';
+
+import { Form, Toolbar, Toast } from '../../';
+import { emailNotification } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
@@ -57,24 +59,18 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
 });
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    loading: state.emailNotification.loading,
-    loaded: state.emailNotification.loaded,
-    error: state.emailNotification.error,
-    pathname: props.location.pathname,
-  }),
-  dispatch => bindActionCreators({ emailNotification, addMessage }, dispatch),
-)
 /**
  * ContactForm class.
  * @class ContactForm
  * @extends Component
  */
-export class ContactForm extends Component {
+class ContactForm extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -82,7 +78,6 @@ export class ContactForm extends Component {
    */
   static propTypes = {
     emailNotification: PropTypes.func.isRequired,
-    addMessage: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
     error: PropTypes.shape({
       message: PropTypes.string,
@@ -123,10 +118,12 @@ export class ContactForm extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.loading && nextProps.loaded) {
-      this.props.addMessage(
-        null,
-        this.props.intl.formatMessage(messages.messageSent),
-        'success',
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.saved)}
+        />,
       );
     }
   }
@@ -235,4 +232,16 @@ export class ContactForm extends Component {
   }
 }
 
-export default withRouter(ContactForm);
+export default compose(
+  withRouter,
+  injectIntl,
+  connect(
+    (state, props) => ({
+      loading: state.emailNotification.loading,
+      loaded: state.emailNotification.loaded,
+      error: state.emailNotification.error,
+      pathname: props.location.pathname,
+    }),
+    { emailNotification },
+  ),
+)(ContactForm);

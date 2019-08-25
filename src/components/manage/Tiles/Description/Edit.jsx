@@ -26,13 +26,12 @@ const blockRenderMap = Map({
 
 const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
 
-@injectIntl
 /**
  * Edit description tile class.
  * @class Edit
  * @extends Component
  */
-export default class Edit extends Component {
+class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -69,10 +68,22 @@ export default class Edit extends Component {
       } else {
         editorState = EditorState.createEmpty();
       }
-      this.state = { editorState };
+      this.state = { editorState, focus: false };
     }
 
     this.onChange = this.onChange.bind(this);
+  }
+
+  /**
+   * Component did mount lifecycle method
+   * @method componentDidMount
+   * @returns {undefined}
+   */
+  componentDidMount() {
+    if (this.node) {
+      this.node._onBlur = () => this.setState({ focus: false });
+      this.node._onFocus = () => this.setState({ focus: true });
+    }
   }
 
   /**
@@ -85,7 +96,7 @@ export default class Edit extends Component {
     if (
       nextProps.properties.description &&
       this.props.properties.description !== nextProps.properties.description &&
-      !this.props.selected
+      !this.state.focus
     ) {
       const contentState = stateFromHTML(nextProps.properties.description);
       this.setState({
@@ -97,6 +108,7 @@ export default class Edit extends Component {
 
     if (!this.props.selected && nextProps.selected) {
       this.node.focus();
+      this.setState({ focus: true });
     }
   }
 
@@ -184,3 +196,5 @@ export default class Edit extends Component {
     );
   }
 }
+
+export default injectIntl(Edit);

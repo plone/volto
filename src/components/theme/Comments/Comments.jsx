@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import {
   FormattedMessage,
   defineMessages,
@@ -38,22 +38,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  state => ({
-    items: state.comments.items,
-    addRequest: state.comments.add,
-    deleteRequest: state.comments.delete,
-  }),
-  dispatch =>
-    bindActionCreators({ addComment, deleteComment, listComments }, dispatch),
-)
 /**
  * Comments container class.
  * @class Comments
  * @extends Component
  */
-export default class Comments extends Component {
+class Comments extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -232,6 +222,7 @@ export default class Comments extends Component {
               {item.text.data}
               {item.is_deletable && (
                 <Button
+                  aria-label="Delete"
                   onClick={this.onDelete}
                   value={item['@id'].replace(settings.apiPath, '')}
                   color="red"
@@ -242,6 +233,7 @@ export default class Comments extends Component {
               )}
               {item.is_editable && (
                 <Button
+                  aria-label="Edit"
                   onClick={this.onEdit}
                   floated="right"
                   value={{
@@ -283,3 +275,15 @@ export default class Comments extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      items: state.comments.items,
+      addRequest: state.comments.add,
+      deleteRequest: state.comments.delete,
+    }),
+    { addComment, deleteComment, listComments },
+  ),
+)(Comments);

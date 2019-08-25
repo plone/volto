@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon as IconOld, Form, Grid, Label } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { map, find, isBoolean, isObject } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import Select, { components } from 'react-select';
@@ -94,16 +95,17 @@ const customSelectStyles = {
   control: (styles, state) => ({
     ...styles,
     border: 'none',
-    borderBottom: '2px solid #b8c6c8',
+    borderBottom: '1px solid #c7d5d8',
     boxShadow: 'none',
     borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
+    height: '60px',
   }),
   menu: (styles, state) => ({
     ...styles,
     top: null,
     marginTop: 0,
     boxShadow: 'none',
-    borderBottom: '2px solid #b8c6c8',
+    borderBottom: '1px solid #c7d5d8',
   }),
   indicatorSeparator: styles => ({
     ...styles,
@@ -111,7 +113,10 @@ const customSelectStyles = {
   }),
   valueContainer: styles => ({
     ...styles,
-    // paddingLeft: 0,
+    paddingLeft: 0,
+  }),
+  dropdownIndicator: styles => ({
+    paddingRight: 0,
   }),
   option: (styles, state) => ({
     ...styles,
@@ -136,12 +141,13 @@ function getDefaultValues(choices, value) {
   if (!isObject(value) && isBoolean(value)) {
     // We have a boolean value, which means we need to provide a "No value"
     // option
-    return (
-      {
-        label: find(choices, o => getBoolean(o[0]) === value)[1],
-        value,
-      } || {}
-    );
+    const label = find(choices, o => getBoolean(o[0]) === value);
+    return label
+      ? {
+          label: label[1],
+          value,
+        }
+      : {};
   }
   if (value === 'no-value') {
     return { label: 'No value', value: 'no-value' };
@@ -156,32 +162,12 @@ function getDefaultValues(choices, value) {
   }
 }
 
-@injectIntl
-@connect(
-  (state, props) => {
-    const vocabBaseUrl =
-      getVocabFromHint(props) ||
-      getVocabFromField(props) ||
-      getVocabFromItems(props);
-    const vocabState = state.vocabularies[vocabBaseUrl];
-    if (vocabState) {
-      return {
-        vocabState,
-        choices: vocabState.items,
-        itemsTotal: vocabState.itemsTotal,
-        loading: Boolean(vocabState.loading),
-      };
-    }
-    return {};
-  },
-  { getVocabulary, getVocabularyTokenTitle },
-)
 /**
  * SelectWidget component class.
  * @function SelectWidget
  * @returns {string} Markup of the component.
  */
-export default class SelectWidget extends Component {
+class SelectWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -205,7 +191,11 @@ export default class SelectWidget extends Component {
     widgetOptions: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
-    value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    value: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.string,
+      PropTypes.bool,
+    ]),
     onChange: PropTypes.func.isRequired,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
@@ -342,6 +332,7 @@ export default class SelectWidget extends Component {
       choices,
       value,
       onChange,
+      fieldSet,
     } = this.props;
 
     return (
@@ -350,6 +341,7 @@ export default class SelectWidget extends Component {
         required={required}
         error={error.length > 0}
         className={description ? 'help' : ''}
+        id={`${fieldSet || 'field'}-${id}`}
       >
         <Grid>
           <Grid.Row stretched>
@@ -369,12 +361,16 @@ export default class SelectWidget extends Component {
             <Grid.Column width="8">
               {onEdit && (
                 <div className="toolbar">
-                  <a className="item" onClick={() => onEdit(id, schema)}>
+                  <button className="item" onClick={() => onEdit(id, schema)}>
                     <IconOld name="write square" size="large" color="blue" />
-                  </a>
-                  <a className="item" onClick={() => onDelete(id)}>
+                  </button>
+                  <button
+                    aria-label="Close"
+                    className="item"
+                    onClick={() => onDelete(id)}
+                  >
                     <IconOld name="close" size="large" color="red" />
-                  </a>
+                  </button>
                 </div>
               )}
               {this.vocabBaseUrl ? (
@@ -437,3 +433,26 @@ export default class SelectWidget extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => {
+      const vocabBaseUrl =
+        getVocabFromHint(props) ||
+        getVocabFromField(props) ||
+        getVocabFromItems(props);
+      const vocabState = state.vocabularies[vocabBaseUrl];
+      if (vocabState) {
+        return {
+          vocabState,
+          choices: vocabState.items,
+          itemsTotal: vocabState.itemsTotal,
+          loading: Boolean(vocabState.loading),
+        };
+      }
+      return {};
+    },
+    { getVocabulary, getVocabularyTokenTitle },
+  ),
+)(SelectWidget);

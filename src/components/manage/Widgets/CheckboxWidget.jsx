@@ -52,6 +52,7 @@ const CheckboxWidget = ({
   onEdit,
   onDelete,
   intl,
+  fieldSet,
 }) => {
   const schema = {
     fieldsets: [
@@ -90,6 +91,7 @@ const CheckboxWidget = ({
       required={required}
       error={error.length > 0}
       className={description ? 'help' : ''}
+      id={`${fieldSet || 'field'}-${id}`}
     >
       <Grid>
         <Grid.Row stretched>
@@ -97,12 +99,20 @@ const CheckboxWidget = ({
             <div className="wrapper">
               {onEdit && (
                 <div className="toolbar">
-                  <a className="item" onClick={() => onEdit(id, schema)}>
+                  <button
+                    aria-label="Edit"
+                    className="item"
+                    onClick={() => onEdit(id, schema)}
+                  >
                     <Icon name="write square" size="large" color="blue" />
-                  </a>
-                  <a className="item" onClick={() => onDelete(id)}>
+                  </button>
+                  <button
+                    aria-label="Delete"
+                    className="item"
+                    onClick={() => onDelete(id)}
+                  >
                     <Icon name="close" size="large" color="red" />
-                  </a>
+                  </button>
                 </div>
               )}
               {onEdit && (

@@ -49,6 +49,10 @@
   }
 }
 
+.ui.form .field > .selection.dropdown {
+  height: 60px;
+}
+
 .ui.form .DraftEditor-root {
   border-bottom: @inputBorder;
 }
@@ -75,5 +79,20 @@
 
   .item {
     cursor: pointer;
+  }
+}
+
+.ui.form .field .ui.basic.button.delete-button {
+  padding: 0;
+  margin-left: 10px;
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  &:hover,
+  &:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #e40166 !important;
   }
 }

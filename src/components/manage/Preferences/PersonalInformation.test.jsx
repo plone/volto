@@ -36,7 +36,42 @@ describe('PersonalInformation', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <PersonalInformation location={{ pathname: '/blog' }} />
+          <PersonalInformation
+            location={{ pathname: '/blog' }}
+            closeMenu={() => {}}
+          />
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+  it('renders a personal information component embedded in the Toolbar', () => {
+    const store = mockStore({
+      userSession: {
+        token: jwt.sign({ sub: 'john' }, 'secret'),
+      },
+      users: {
+        user: {},
+        get: {
+          loaded: true,
+        },
+        update: {
+          loading: false,
+        },
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <PersonalInformation
+            location={{ pathname: '/blog' }}
+            isToolbarEmbedded
+          />
         </MemoryRouter>
       </Provider>,
     );

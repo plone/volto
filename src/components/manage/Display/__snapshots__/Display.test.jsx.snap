@@ -1,48 +1,79 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Display renders an actions component 1`] = `
-<div
-  aria-expanded={false}
-  className="ui item dropdown"
-  id="toolbar-display"
-  onBlur={[Function]}
-  onChange={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onMouseDown={[Function]}
-  role="listbox"
-  tabIndex={0}
->
-  <span>
-    <i
-      aria-hidden="true"
-      className="block layout big icon"
-    />
-     
-    <span>
-      Display
-    </span>
-  </span>
-  <i
-    aria-hidden="true"
-    className="dropdown icon"
-    onClick={[Function]}
-  />
+Array [
+  <label
+    htmlFor="display-select"
+  >
+    View
+  </label>,
   <div
-    className="menu transition"
+    className="css-10nd86i react-select-container"
+    onKeyDown={[Function]}
   >
     <div
-      aria-checked={true}
-      className="active item"
-      onClick={[Function]}
-      role="option"
+      className="css-mgvt82 react-select__control"
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
     >
-      <span
-        className="text"
+      <div
+        className="css-1hwfws3 react-select__value-container react-select__value-container--has-value"
       >
-        Summary view
-      </span>
+        <div
+          className="css-xp4uvy react-select__single-value"
+        >
+          Summary view
+        </div>
+        <input
+          className="css-14uuagi"
+          disabled={false}
+          id="react-select-2-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          readOnly={true}
+          tabIndex="0"
+          value=""
+        />
+      </div>
+      <div
+        className="css-1wy0on6 react-select__indicators"
+      >
+        <span
+          className="css-hba3sr react-select__indicator-separator"
+        />
+        <div
+          aria-hidden="true"
+          className="css-1ep9fjw react-select__indicator react-select__dropdown-indicator"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#007bc1",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+    <input
+      name="display-select"
+      type="hidden"
+      value="summary_view"
+    />
+  </div>,
+]
 `;
