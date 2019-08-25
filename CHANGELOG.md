@@ -77,6 +77,9 @@
 
 ### Changes
 
+### Internal
+
+- Add cypress a11y tests. @timo
 - Fix order of arguments when sending the contact form @csenger
 - Fix @babel/core import on i18n script @sneridagh
 
