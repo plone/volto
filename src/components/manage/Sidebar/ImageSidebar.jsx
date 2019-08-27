@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Segment, Grid } from 'semantic-ui-react';
-import { Icon, TextWidget } from '@plone/volto/components';
-import { flattenToAppURL } from '@plone/volto/helpers';
-import { Form } from 'semantic-ui-react';
-import { AlignTile } from '@plone/volto/helpers';
 import PropTypes from 'prop-types';
-import withObjectBrowser from './ObjectBrowser';
-import clearSVG from '@plone/volto/icons/clear.svg';
+import { Form } from 'semantic-ui-react';
+import { Grid, Segment } from 'semantic-ui-react';
+import { Icon, TextWidget } from '@plone/volto/components';
+import { AlignTile, flattenToAppURL } from '@plone/volto/helpers';
+import { settings } from '~/config';
+
 import folderSVG from '@plone/volto/icons/folder.svg';
+import imageSVG from '@plone/volto/icons/image.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const ImageSidebar = ({
   data,
@@ -16,14 +17,7 @@ const ImageSidebar = ({
   openObjectBrowser,
   required = false,
 }) => {
-  const [origin, setOrigin] = useState(data.url || '');
   const [alt, setAlt] = useState(data.alt || '');
-  const [browserIsOpen, setBrowserIsOpen] = useState(false);
-
-  function closeBrowser() {
-    setBrowserIsOpen(false);
-    setOrigin(data.url);
-  }
 
   return (
     <Segment.Group raised>
@@ -31,25 +25,57 @@ const ImageSidebar = ({
         <h2>Image</h2>
       </header>
 
+      {!data.url && (
+        <>
+          <Segment className="sidebar-metadata-container" secondary>
+            No image selected
+            <Icon name={imageSVG} size="100px" color="#b8c6c8" />
+          </Segment>
+        </>
+      )}
       {data.url && (
         <>
           <Segment className="sidebar-metadata-container" secondary>
             {/* {props.data.url && <div>{props.data.url}</div>} */}
-            {origin.split('/').slice(-1)[0]}
-            <img
-              src={`${flattenToAppURL(data.url)}/@@images/image/mini`}
-              alt={alt}
-            />
+            {data.url.split('/').slice(-1)[0]}
+            {data.url.includes(settings.apiPath) && (
+              <img
+                src={`${flattenToAppURL(data.url)}/@@images/image/mini`}
+                alt={alt}
+              />
+            )}
+            {!data.url.includes(settings.apiPath) && (
+              <img src={data.url} alt={alt} style={{ width: '50%' }} />
+            )}
           </Segment>
           <Segment className="form sidebar-image-data">
-            <TextWidget
-              id="Origin"
-              title="Origin"
-              required={false}
-              value={origin.split('/').slice(-1)[0]}
-              icon={folderSVG}
-              iconAction={() => openObjectBrowser()}
-            />
+            {data.url.includes(settings.apiPath) && (
+              <TextWidget
+                id="Origin"
+                title="Origin"
+                required={false}
+                value={data.url.split('/').slice(-1)[0]}
+                icon={folderSVG}
+                iconAction={() => openObjectBrowser()}
+                onChange={() => {}}
+              />
+            )}
+            {!data.url.includes(settings.apiPath) && (
+              <TextWidget
+                id="External"
+                title="External URL"
+                required={false}
+                value={data.url}
+                icon={clearSVG}
+                iconAction={() =>
+                  onChangeTile(tile, {
+                    ...data,
+                    url: '',
+                  })
+                }
+                onChange={() => {}}
+              />
+            )}
             <TextWidget
               id="alt"
               title="alt"
