@@ -63,6 +63,7 @@ class Edit extends Component {
     onFocusNextTile: PropTypes.func.isRequired,
     handleKeyDown: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
+    openObjectBrowser: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
 
