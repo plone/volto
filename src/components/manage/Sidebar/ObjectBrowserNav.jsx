@@ -14,7 +14,7 @@ const ObjectBrowserNav = ({
   mode,
 }) => {
   return (
-    <Segment as="ul" className="object-listing" disabled={mode === 'link'}>
+    <Segment as="ul" className="object-listing">
       {currentSearchResults &&
         currentSearchResults.items.map(item => (
           <li

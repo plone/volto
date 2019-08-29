@@ -49,6 +49,7 @@ class ObjectBrowserBody extends Component {
    */
   static propTypes = {
     tile: PropTypes.string.isRequired,
+    mode: PropTypes.string.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     searchSubrequests: PropTypes.objectOf(PropTypes.any).isRequired,
     searchContent: PropTypes.func.isRequired,
@@ -95,7 +96,6 @@ class ObjectBrowserBody extends Component {
       showSearchInput: false,
       alt: this.props.data.alt,
       caption: this.props.data.caption,
-      mode: 'image',
     };
   }
 
@@ -183,7 +183,7 @@ class ObjectBrowserBody extends Component {
         sort_on: 'getObjPositionInParent',
         metadata_fields: '_all',
       },
-      `${this.props.tile}-${this.state.mode}`,
+      `${this.props.tile}-${this.props.mode}`,
     );
     const parent = `${join(id.split('/').slice(0, -1), '/')}` || '/';
     this.setState(() => ({
@@ -206,7 +206,7 @@ class ObjectBrowserBody extends Component {
             SearchableText: `${text}*`,
             metadata_fields: '_all',
           },
-          `${this.props.tile}-${this.state.mode}`,
+          `${this.props.tile}-${this.props.mode}`,
         )
       : this.props.searchContent(
           '/',
@@ -215,12 +215,12 @@ class ObjectBrowserBody extends Component {
             sort_on: 'getObjPositionInParent',
             metadata_fields: '_all',
           },
-          `${this.props.tile}-${this.state.mode}`,
+          `${this.props.tile}-${this.props.mode}`,
         );
   };
 
   onSelectItem = url => {
-    if (this.state.mode === 'image') {
+    if (this.props.mode === 'image') {
       this.props.onChangeTile(this.props.tile, {
         ...this.props.data,
         url: `${settings.apiPath}${url}`,
@@ -249,18 +249,20 @@ class ObjectBrowserBody extends Component {
   };
 
   handleClickOnItem = item => {
-    if (this.state.mode === 'image') {
+    if (this.props.mode === 'image') {
       if (item.is_folderish) {
         this.navigateTo(item['@id']);
       }
       if (settings.imageObjects.includes(item['@type'])) {
         this.onSelectItem(item['@id']);
       }
+    } else {
+      this.onSelectItem(item['@id']);
     }
   };
 
   handleDoubleClickOnItem = item => {
-    if (this.state.mode === 'image') {
+    if (this.props.mode === 'image') {
       if (item.is_folderish) {
         this.navigateTo(item['@id']);
       }
@@ -297,7 +299,7 @@ class ObjectBrowserBody extends Component {
             <div className="vertical divider" />
             {this.state.currentFolder === '/' ? (
               <>
-                {this.state.mode === 'image' ? (
+                {this.props.mode === 'image' ? (
                   <Icon name={folderSVG} size="24px" />
                 ) : (
                   <Icon name={linkSVG} size="24px" />
@@ -320,7 +322,7 @@ class ObjectBrowserBody extends Component {
                   )}
                 />
               </form>
-            ) : this.state.mode === 'image' ? (
+            ) : this.props.mode === 'image' ? (
               <h2>Choose Image</h2>
             ) : (
               <h2>Choose Link</h2>
@@ -338,18 +340,18 @@ class ObjectBrowserBody extends Component {
           <ObjectBrowserNav
             currentSearchResults={
               this.props.searchSubrequests[
-                `${this.props.tile}-${this.state.mode}`
+                `${this.props.tile}-${this.props.mode}`
               ]
             }
             selected={
-              this.state.mode === 'image'
+              this.props.mode === 'image'
                 ? this.state.selectedImage
                 : this.state.selectedHref
             }
             getIcon={this.getIcon}
             handleClickOnItem={this.handleClickOnItem}
             handleDoubleClickOnItem={this.handleDoubleClickOnItem}
-            mode={this.state.mode}
+            mode={this.props.mode}
           />
 
           <Segment className="form actions">

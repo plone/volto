@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
-import { Grid, Segment } from 'semantic-ui-react';
+import { Accordion, Grid, Segment } from 'semantic-ui-react';
 import { Icon, TextWidget } from '@plone/volto/components';
 import { AlignTile, flattenToAppURL } from '@plone/volto/helpers';
 import { settings } from '~/config';
@@ -9,6 +9,8 @@ import { settings } from '~/config';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import imageSVG from '@plone/volto/icons/image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import upSVG from '@plone/volto/icons/up-key.svg';
+import downSVG from '@plone/volto/icons/down-key.svg';
 
 const ImageSidebar = ({
   data,
@@ -18,6 +20,14 @@ const ImageSidebar = ({
   required = false,
 }) => {
   const [alt, setAlt] = useState(data.alt || '');
+  const [activeAccIndex, setActiveAccIndex] = useState(0);
+
+  function handleAccClick(e, titleProps) {
+    const { index } = titleProps;
+    const newIndex = activeAccIndex === index ? -1 : index;
+
+    setActiveAccIndex(newIndex);
+  }
 
   return (
     <Segment.Group raised>
@@ -109,6 +119,31 @@ const ImageSidebar = ({
               </Grid>
             </Form.Field>
           </Segment>
+          <Accordion fluid styled className="form">
+            <Accordion.Title
+              active={activeAccIndex === 0}
+              index={0}
+              onClick={handleAccClick}
+            >
+              Link Settings
+              {activeAccIndex === 0 ? (
+                <Icon name={upSVG} size="20px" />
+              ) : (
+                <Icon name={downSVG} size="20px" />
+              )}
+            </Accordion.Title>
+            <Accordion.Content active={activeAccIndex === 0}>
+              <TextWidget
+                id="Link"
+                title="Link"
+                required={false}
+                value={data.href}
+                icon={folderSVG}
+                iconAction={() => openObjectBrowser('link')}
+                onChange={() => {}}
+              />
+            </Accordion.Content>
+          </Accordion>
         </>
       )}
     </Segment.Group>

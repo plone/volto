@@ -11,7 +11,8 @@ const withObjectBrowser = WrappedComponent =>
       this.state = { isObjectBrowserOpen: false };
     }
 
-    openObjectBrowser = () => this.setState({ isObjectBrowserOpen: true });
+    openObjectBrowser = (mode = 'image') =>
+      this.setState({ isObjectBrowserOpen: true, mode });
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
 
     render() {
@@ -32,6 +33,7 @@ const withObjectBrowser = WrappedComponent =>
             <ObjectBrowserBody
               {...this.props}
               closeObjectBrowser={this.closeObjectBrowser}
+              mode={this.state.mode}
             />
           </CSSTransition>
         </>
