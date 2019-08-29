@@ -12,14 +12,9 @@ const ObjectBrowserNav = ({
   handleClickOnItem,
   handleDoubleClickOnItem,
   mode,
-  isExternalSelected,
 }) => {
   return (
-    <Segment
-      as="ul"
-      className="object-listing"
-      disabled={mode === 'link' && isExternalSelected}
-    >
+    <Segment as="ul" className="object-listing" disabled={mode === 'link'}>
       {currentSearchResults &&
         currentSearchResults.items.map(item => (
           <li

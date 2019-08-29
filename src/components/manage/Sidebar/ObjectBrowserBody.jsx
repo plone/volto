@@ -95,7 +95,6 @@ class ObjectBrowserBody extends Component {
       showSearchInput: false,
       alt: this.props.data.alt,
       caption: this.props.data.caption,
-      external: this.props.data.external,
       mode: 'image',
     };
   }
@@ -257,10 +256,6 @@ class ObjectBrowserBody extends Component {
       if (settings.imageObjects.includes(item['@type'])) {
         this.onSelectItem(item['@id']);
       }
-    } else {
-      if (!this.state.external) {
-        this.onSelectItem(item['@id']);
-      }
     }
   };
 
@@ -274,7 +269,7 @@ class ObjectBrowserBody extends Component {
         this.props.closeObjectBrowser();
       }
     } else {
-      if (item.is_folderish && !this.state.external) {
+      if (item.is_folderish) {
         this.navigateTo(item['@id']);
       }
     }
@@ -286,7 +281,7 @@ class ObjectBrowserBody extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { alt, caption, external } = this.state;
+    const { alt, caption } = this.state;
 
     return ReactDOM.createPortal(
       <aside
@@ -355,7 +350,6 @@ class ObjectBrowserBody extends Component {
             handleClickOnItem={this.handleClickOnItem}
             handleDoubleClickOnItem={this.handleDoubleClickOnItem}
             mode={this.state.mode}
-            isExternalSelected={this.state.external}
           />
 
           <Segment className="form actions">
@@ -372,13 +366,6 @@ class ObjectBrowserBody extends Component {
               required={false}
               onChange={this.onChangeField}
               value={caption}
-            />
-            <TextWidget
-              id="external"
-              title="external URL"
-              required={false}
-              onChange={this.onChangeField}
-              value={external}
             />
           </Segment>
         </Segment.Group>
