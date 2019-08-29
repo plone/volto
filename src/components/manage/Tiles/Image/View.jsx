@@ -48,16 +48,33 @@ const View = ({ data, detached }) => (
               !data.external.includes(settings.apiPath);
 
             if (isReallyExternal) {
-              return <a href={data.external}>{image}</a>;
+              return (
+                <a
+                  target={data.openLinkInNewTab ? '_blank' : null}
+                  href={data.external}
+                >
+                  {image}
+                </a>
+              );
             } else {
               return (
-                <Link to={data.external.replace(settings.apiPath, '')}>
+                <Link
+                  to={data.external.replace(settings.apiPath, '')}
+                  target={data.openLinkInNewTab ? '_blank' : null}
+                >
                   {image}
                 </Link>
               );
             }
           } else if (data.href) {
-            return <Link to={data.href}>{image}</Link>;
+            return (
+              <Link
+                to={data.href}
+                target={data.openLinkInNewTab ? '_blank' : null}
+              >
+                {image}
+              </Link>
+            );
           } else {
             return image;
           }

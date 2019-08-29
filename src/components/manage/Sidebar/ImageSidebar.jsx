@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
-import { Icon, TextWidget } from '@plone/volto/components';
+import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
 import { AlignTile, flattenToAppURL } from '@plone/volto/helpers';
 import { settings } from '~/config';
 
@@ -47,7 +47,6 @@ const ImageSidebar = ({
       {data.url && (
         <>
           <Segment className="sidebar-metadata-container" secondary>
-            {/* {props.data.url && <div>{props.data.url}</div>} */}
             {data.url.split('/').slice(-1)[0]}
             {data.url.includes(settings.apiPath) && (
               <img
@@ -73,7 +72,7 @@ const ImageSidebar = ({
             )}
             {!data.url.includes(settings.apiPath) && (
               <TextWidget
-                id="External"
+                id="external"
                 title="External URL"
                 required={false}
                 value={data.url}
@@ -135,8 +134,8 @@ const ImageSidebar = ({
             </Accordion.Title>
             <Accordion.Content active={activeAccIndex === 0}>
               <TextWidget
-                id="Link"
-                title="Link"
+                id="link"
+                title="Link to"
                 required={false}
                 value={data.href}
                 icon={data.href ? clearSVG : navTreeSVG}
@@ -155,7 +154,17 @@ const ImageSidebar = ({
                     ...data,
                     href: value,
                   });
-                  setHref(value);
+                }}
+              />
+              <CheckboxWidget
+                id="openLinkInNewTab"
+                title="Open in a new tab"
+                value={data.openLinkInNewTab ? data.openLinkInNewTab : false}
+                onChange={(name, value) => {
+                  onChangeTile(tile, {
+                    ...data,
+                    openLinkInNewTab: value,
+                  });
                 }}
               />
             </Accordion.Content>
