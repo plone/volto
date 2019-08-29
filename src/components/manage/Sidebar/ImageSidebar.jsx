@@ -11,6 +11,7 @@ import imageSVG from '@plone/volto/icons/image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
+import navTreeSVG from '@plone/volto/icons/nav.svg';
 
 const ImageSidebar = ({
   data,
@@ -65,7 +66,7 @@ const ImageSidebar = ({
                 title="Origin"
                 required={false}
                 value={data.url.split('/').slice(-1)[0]}
-                icon={folderSVG}
+                icon={navTreeSVG}
                 iconAction={() => openObjectBrowser()}
                 onChange={() => {}}
               />
@@ -138,9 +139,24 @@ const ImageSidebar = ({
                 title="Link"
                 required={false}
                 value={data.href}
-                icon={folderSVG}
-                iconAction={() => openObjectBrowser('link')}
-                onChange={() => {}}
+                icon={data.href ? clearSVG : navTreeSVG}
+                iconAction={
+                  data.href
+                    ? () => {
+                        onChangeTile(tile, {
+                          ...data,
+                          href: '',
+                        });
+                      }
+                    : () => openObjectBrowser('link')
+                }
+                onChange={(name, value) => {
+                  onChangeTile(tile, {
+                    ...data,
+                    href: value,
+                  });
+                  setHref(value);
+                }}
               />
             </Accordion.Content>
           </Accordion>

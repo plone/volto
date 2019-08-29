@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment } from 'semantic-ui-react';
+import { Button, Segment } from 'semantic-ui-react';
 import cx from 'classnames';
 import { Icon } from '@plone/volto/components';
 import { settings } from '~/config';
@@ -12,6 +12,7 @@ const ObjectBrowserNav = ({
   handleClickOnItem,
   handleDoubleClickOnItem,
   mode,
+  navigateTo,
 }) => {
   return (
     <Segment as="ul" className="object-listing">
@@ -22,8 +23,10 @@ const ObjectBrowserNav = ({
             className={cx('', {
               'selected-item': selected === item['@id'],
               disabled:
-                !settings.imageObjects.includes(item['@type']) &&
-                !item.is_folderish,
+                mode == 'image'
+                  ? !settings.imageObjects.includes(item['@type']) &&
+                    !item.is_folderish
+                  : false,
             })}
             onClick={() => handleClickOnItem(item)}
             onDoubleClick={() => handleDoubleClickOnItem(item)}
@@ -32,7 +35,23 @@ const ObjectBrowserNav = ({
               {getIcon(item['@type'])}
               {item.id}
             </span>
-            {item.is_folderish && <Icon name={rightArrowSVG} size="24px" />}
+            {item.is_folderish && mode === 'image' && (
+              <Icon name={rightArrowSVG} size="24px" />
+            )}
+            {item.is_folderish && mode === 'link' && (
+              <Button.Group>
+                <Button
+                  basic
+                  icon
+                  onClick={e => {
+                    e.stopPropagation();
+                    navigateTo(item['@id']);
+                  }}
+                >
+                  <Icon name={rightArrowSVG} size="24px" />
+                </Button>
+              </Button.Group>
+            )}
           </li>
         ))}
     </Segment>

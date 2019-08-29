@@ -106,7 +106,7 @@ class ObjectBrowserBody extends Component {
    */
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside, false);
-    this.initialSearch('image');
+    this.initialSearch(this.props.mode);
   }
 
   /**
@@ -271,9 +271,8 @@ class ObjectBrowserBody extends Component {
         this.props.closeObjectBrowser();
       }
     } else {
-      if (item.is_folderish) {
-        this.navigateTo(item['@id']);
-      }
+      this.onSelectItem(item['@id']);
+      this.props.closeObjectBrowser();
     }
   };
 
@@ -352,6 +351,7 @@ class ObjectBrowserBody extends Component {
             handleClickOnItem={this.handleClickOnItem}
             handleDoubleClickOnItem={this.handleDoubleClickOnItem}
             mode={this.props.mode}
+            navigateTo={this.navigateTo}
           />
 
           <Segment className="form actions">
