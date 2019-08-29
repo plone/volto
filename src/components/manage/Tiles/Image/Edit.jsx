@@ -300,7 +300,14 @@ class Edit extends Component {
                   <img src={imageTileSVG} alt="" />
                   <div className="toolbar-inner">
                     <Button.Group>
-                      <Button basic icon onClick={this.props.openObjectBrowser}>
+                      <Button
+                        basic
+                        icon
+                        onClick={e => {
+                          e.stopPropagation();
+                          this.props.openObjectBrowser();
+                        }}
+                      >
                         <Icon name={navTreeSVG} size="24px" />
                       </Button>
                     </Button.Group>
