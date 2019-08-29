@@ -52,8 +52,16 @@ msgstr ""
 msgid "Add {type}"
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "Alignment"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "All"
+msgstr ""
+
+#: components/manage/Sidebar/ImageSidebar
+msgid "Alt text"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -93,6 +101,7 @@ msgstr ""
 
 #: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Sidebar/ObjectBrowserOld
+#: components/manage/Tiles/Slider/Edit
 msgid "Browse or type URL"
 msgstr ""
 
@@ -113,6 +122,7 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Tiles/TileModal/TileModal
 #: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 msgid "Cancel"
@@ -391,6 +401,10 @@ msgstr ""
 msgid "Expiration Date"
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "External URL"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
 msgstr ""
@@ -454,6 +468,10 @@ msgstr ""
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "Image"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
 msgstr ""
@@ -502,6 +520,10 @@ msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
+msgstr ""
+
+#: components/manage/Sidebar/ImageSidebar
+msgid "Link to"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -572,6 +594,10 @@ msgstr ""
 msgid "New password"
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "No image selected"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/TokenWidget
@@ -586,8 +612,21 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "Open in a new tab"
+msgstr ""
+
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
+msgstr ""
+
+#: components/manage/Tiles/Slider/Edit
+#: components/manage/Tiles/TileModal/TileModal
+msgid "Options"
+msgstr ""
+
+#: components/manage/Sidebar/ImageSidebar
+msgid "Origin"
 msgstr ""
 
 #: components/theme/Login/Login
@@ -722,6 +761,7 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Tiles/TileModal/TileModal
 #: components/manage/Tiles/Video/Edit
 #: components/mosaic/Layout/Layout
 msgid "Save"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-08-28T16:32:27.856Z\n"
+"POT-Creation-Date: 2019-08-29T15:28:45.284Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -64,9 +64,19 @@ msgstr ""
 msgid "Add {type}"
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+# defaultMessage: Alignment
+msgid "Alignment"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: All
 msgid "All"
+msgstr ""
+
+#: components/manage/Sidebar/ImageSidebar
+# defaultMessage: Alt text
+msgid "Alt text"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -112,6 +122,7 @@ msgstr ""
 
 #: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Sidebar/ObjectBrowserOld
+#: components/manage/Tiles/Slider/Edit
 # defaultMessage: Browse or type URL
 msgid "Browse or type URL"
 msgstr ""
@@ -135,6 +146,7 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Tiles/TileModal/TileModal
 #: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 # defaultMessage: Cancel
@@ -470,6 +482,11 @@ msgstr ""
 msgid "Expiration Date"
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+# defaultMessage: External URL
+msgid "External URL"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: File size
 msgid "File size"
@@ -548,6 +565,11 @@ msgstr ""
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+# defaultMessage: Image
+msgid "Image"
+msgstr ""
+
 #: components/manage/Controlpanels/Controlpanel
 # defaultMessage: Info
 msgid "Info"
@@ -608,6 +630,11 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Last modified
 msgid "Last modified"
+msgstr ""
+
+#: components/manage/Sidebar/ImageSidebar
+# defaultMessage: Link to
+msgid "Link to"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -694,6 +721,11 @@ msgstr ""
 msgid "New password"
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+# defaultMessage: No image selected
+msgid "No image selected"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/TokenWidget
@@ -711,9 +743,25 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+# defaultMessage: Open in a new tab
+msgid "Open in a new tab"
+msgstr ""
+
 #: components/theme/Navigation/Navigation
 # defaultMessage: Open menu
 msgid "Open menu"
+msgstr ""
+
+#: components/manage/Tiles/Slider/Edit
+#: components/manage/Tiles/TileModal/TileModal
+# defaultMessage: Options
+msgid "Options"
+msgstr ""
+
+#: components/manage/Sidebar/ImageSidebar
+# defaultMessage: Origin
+msgid "Origin"
 msgstr ""
 
 #: components/theme/Login/Login
@@ -876,6 +924,7 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Tiles/TileModal/TileModal
 #: components/manage/Tiles/Video/Edit
 #: components/mosaic/Layout/Layout
 # defaultMessage: Save

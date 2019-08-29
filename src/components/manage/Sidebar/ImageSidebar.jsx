@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
+import {
+  defineMessages,
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
 import { AlignTile, flattenToAppURL } from '@plone/volto/helpers';
 import { settings } from '~/config';
@@ -13,12 +19,48 @@ import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 
+const messages = defineMessages({
+  Image: {
+    id: 'Image',
+    defaultMessage: 'Image',
+  },
+  Origin: {
+    id: 'Origin',
+    defaultMessage: 'Origin',
+  },
+  AltText: {
+    id: 'Alt text',
+    defaultMessage: 'Alt text',
+  },
+  Align: {
+    id: 'Alignment',
+    defaultMessage: 'Alignment',
+  },
+  LinkTo: {
+    id: 'Link to',
+    defaultMessage: 'Link to',
+  },
+  openLinkInNewTab: {
+    id: 'Open in a new tab',
+    defaultMessage: 'Open in a new tab',
+  },
+  NoImageSelected: {
+    id: 'No image selected',
+    defaultMessage: 'No image selected',
+  },
+  externalURL: {
+    id: 'External URL',
+    defaultMessage: 'External URL',
+  },
+});
+
 const ImageSidebar = ({
   data,
   tile,
   onChangeTile,
   openObjectBrowser,
   required = false,
+  intl,
 }) => {
   const [alt, setAlt] = useState(data.alt || '');
   const [activeAccIndex, setActiveAccIndex] = useState(0);
@@ -33,13 +75,18 @@ const ImageSidebar = ({
   return (
     <Segment.Group raised>
       <header className="header pulled">
-        <h2>Image</h2>
+        <h2>
+          <FormattedMessage id="Image" defaultMessage="Image" />
+        </h2>
       </header>
 
       {!data.url && (
         <>
           <Segment className="sidebar-metadata-container" secondary>
-            No image selected
+            <FormattedMessage
+              id="No image selected"
+              defaultMessage="No image selected"
+            />
             <Icon name={imageSVG} size="100px" color="#b8c6c8" />
           </Segment>
         </>
@@ -62,7 +109,7 @@ const ImageSidebar = ({
             {data.url.includes(settings.apiPath) && (
               <TextWidget
                 id="Origin"
-                title="Origin"
+                title={intl.formatMessage(messages.Origin)}
                 required={false}
                 value={data.url.split('/').slice(-1)[0]}
                 icon={navTreeSVG}
@@ -73,7 +120,7 @@ const ImageSidebar = ({
             {!data.url.includes(settings.apiPath) && (
               <TextWidget
                 id="external"
-                title="External URL"
+                title={intl.formatMessage(messages.externalURL)}
                 required={false}
                 value={data.url}
                 icon={clearSVG}
@@ -88,7 +135,7 @@ const ImageSidebar = ({
             )}
             <TextWidget
               id="alt"
-              title="alt"
+              title={intl.formatMessage(messages.AltText)}
               required={false}
               value={alt}
               onChange={(name, value) => {
@@ -104,7 +151,12 @@ const ImageSidebar = ({
                 <Grid.Row>
                   <Grid.Column width="4">
                     <div className="wrapper">
-                      <label htmlFor="field-align">align</label>
+                      <label htmlFor="field-align">
+                        <FormattedMessage
+                          id="Alignment"
+                          defaultMessage="Alignment"
+                        />
+                      </label>
                     </div>
                   </Grid.Column>
                   <Grid.Column width="8" className="align-tools">
@@ -135,7 +187,7 @@ const ImageSidebar = ({
             <Accordion.Content active={activeAccIndex === 0}>
               <TextWidget
                 id="link"
-                title="Link to"
+                title={intl.formatMessage(messages.LinkTo)}
                 required={false}
                 value={data.href}
                 icon={data.href ? clearSVG : navTreeSVG}
@@ -158,7 +210,7 @@ const ImageSidebar = ({
               />
               <CheckboxWidget
                 id="openLinkInNewTab"
-                title="Open in a new tab"
+                title={intl.formatMessage(messages.openLinkInNewTab)}
                 value={data.openLinkInNewTab ? data.openLinkInNewTab : false}
                 onChange={(name, value) => {
                   onChangeTile(tile, {
@@ -179,6 +231,8 @@ ImageSidebar.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
   tile: PropTypes.string.isRequired,
   onChangeTile: PropTypes.func.isRequired,
+  openObjectBrowser: PropTypes.func.isRequired,
+  intl: intlShape.isRequired,
 };
 
-export default ImageSidebar;
+export default injectIntl(ImageSidebar);
