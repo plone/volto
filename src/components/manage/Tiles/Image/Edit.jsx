@@ -271,26 +271,11 @@ class Edit extends Component {
             )}
           </div>
         )}
-        {this.props.selected && !this.props.data.url && (
-          <div className="toolbar">
-            <Button.Group>
-              <Button basic icon>
-                <Icon name={uploadSVG} size="24px" />
-                <input
-                  type="file"
-                  onChange={this.onUploadImage}
-                  style={{ display: 'none' }}
-                />
-              </Button>
-            </Button.Group>
-            {this.props.appendSecondaryActions && (
-              <>
-                <div className="separator" />
-                {this.props.appendSecondaryActions}
-              </>
-            )}
-          </div>
-        )}
+        {this.props.selected &&
+          !this.props.data.url &&
+          this.props.appendSecondaryActions && (
+            <div className="toolbar">{this.props.appendSecondaryActions}</div>
+          )}
         {this.props.data.url ? (
           <p>
             <img

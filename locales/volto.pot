@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-08-20T07:21:39.736Z\n"
+"POT-Creation-Date: 2019-08-28T16:32:27.856Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -110,9 +110,15 @@ msgstr ""
 msgid "Browse"
 msgstr ""
 
-#: components/manage/Tiles/Image/Edit
+#: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Sidebar/ObjectBrowserOld
 # defaultMessage: Browse or type URL
 msgid "Browse or type URL"
+msgstr ""
+
+#: components/manage/Tiles/Image/Edit
+# defaultMessage: Browse the site, drop an image, or type an URL
+msgid "Browse the site, drop an image, or type an URL"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
@@ -267,6 +273,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -308,6 +315,7 @@ msgstr ""
 
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -538,6 +546,11 @@ msgstr ""
 #: components/theme/Login/Login
 # defaultMessage: If you you do not have an account here, head over to the {registrationform}.
 msgid "If you you do not have an account here, head over to the {registrationform}."
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanel
+# defaultMessage: Info
+msgid "Info"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
@@ -826,6 +839,7 @@ msgid "Rename items"
 msgstr ""
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -939,6 +953,7 @@ msgid "Sharing for {title}"
 msgstr ""
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -1007,6 +1022,16 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Subject
 msgid "Subject"
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Preferences/PersonalPreferences
+#: components/theme/ContactForm/ContactForm
+# defaultMessage: Success
+msgid "Success"
 msgstr ""
 
 #: components/manage/Tiles/Table/Edit
@@ -1085,6 +1110,7 @@ msgstr ""
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -1132,6 +1158,7 @@ msgid "Uploading files"
 msgstr ""
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget

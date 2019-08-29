@@ -110,8 +110,13 @@ msgstr "Basis"
 msgid "Browse"
 msgstr "Bladeren"
 
-#: components/manage/Tiles/Image/Edit
+#: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Sidebar/ObjectBrowserOld
 msgid "Browse or type URL"
+msgstr ""
+
+#: components/manage/Tiles/Image/Edit
+msgid "Browse the site, drop an image, or type an URL"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
@@ -241,6 +246,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -277,6 +283,7 @@ msgstr "Aflopend"
 
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -464,6 +471,10 @@ msgstr ""
 
 #: components/theme/Login/Login
 msgid "If you you do not have an account here, head over to the {registrationform}."
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanel
+msgid "Info"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
@@ -698,6 +709,7 @@ msgid "Rename items"
 msgstr "Naam wijzigen"
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -791,6 +803,7 @@ msgid "Sharing for {title}"
 msgstr "Delen van {title}"
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -846,6 +859,15 @@ msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Preferences/PersonalPreferences
+#: components/theme/ContactForm/ContactForm
+msgid "Success"
 msgstr ""
 
 #: components/manage/Tiles/Table/Edit
@@ -910,6 +932,7 @@ msgstr "Het spijt ons, maar deze pagina bestaat niet…"
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -949,6 +972,7 @@ msgid "Uploading files"
 msgstr "Bestanden uploaden"
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget

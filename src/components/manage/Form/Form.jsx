@@ -550,10 +550,10 @@ class Form extends Component {
             error={keys(this.state.errors).length > 0}
           >
             {map(schema.fieldsets, item => [
-              <Segment secondary attached>
+              <Segment secondary attached key={item.title}>
                 {item.title}
               </Segment>,
-              <Segment attached>
+              <Segment attached key={`fieldset-contents-${item.title}`}>
                 {map(item.fields, (field, index) => (
                   <Field
                     {...schema.properties[field]}

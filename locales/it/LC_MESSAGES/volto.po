@@ -91,9 +91,14 @@ msgstr "Base"
 msgid "Browse"
 msgstr "Sfoglia"
 
-#: components/manage/Tiles/Image/Edit
+#: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Sidebar/ObjectBrowserOld
 msgid "Browse or type URL"
 msgstr "Sfoglia o scrivi URL"
+
+#: components/manage/Tiles/Image/Edit
+msgid "Browse the site, drop an image, or type an URL"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -222,6 +227,7 @@ msgstr "Data"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -258,6 +264,7 @@ msgstr "Decrescente"
 
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -446,6 +453,10 @@ msgstr "Se hai dimenticato la tua password, {forgotpassword}."
 #: components/theme/Login/Login
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr "Se non ti sei ancora iscritto, compila il {registrationform} per diventare un collaboratore."
+
+#: components/manage/Controlpanels/Controlpanel
+msgid "Info"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 msgid "Inherit permissions from higher levels"
@@ -679,6 +690,7 @@ msgid "Rename items"
 msgstr "Rinomina elementi"
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -772,6 +784,7 @@ msgid "Sharing for {title}"
 msgstr "Condivisioni di {title}"
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -828,6 +841,15 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
 msgstr "Oggetto"
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Preferences/PersonalPreferences
+#: components/theme/ContactForm/ContactForm
+msgid "Success"
+msgstr ""
 
 #: components/manage/Tiles/Table/Edit
 msgid "Table"
@@ -891,6 +913,7 @@ msgstr "Questa pagina non esiste…"
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -930,6 +953,7 @@ msgid "Uploading files"
 msgstr "Caricamento dei files"
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget

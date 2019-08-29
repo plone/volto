@@ -60,7 +60,11 @@ class TextWidget extends Component {
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     intl: intlShape.isRequired,
-    icon: PropTypes.func,
+    icon: PropTypes.shape({
+      xmlns: PropTypes.string,
+      viewBox: PropTypes.string,
+      content: PropTypes.string,
+    }),
     iconAction: PropTypes.func,
   };
 
