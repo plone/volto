@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
 import { settings } from '~/config';
-import ImageZoom from 'react-medium-image-zoom';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
 

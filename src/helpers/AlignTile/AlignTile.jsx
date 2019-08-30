@@ -5,7 +5,6 @@ import imageLeftSVG from '@plone/volto/icons/image-left.svg';
 import imageRightSVG from '@plone/volto/icons/image-right.svg';
 import imageFitSVG from '@plone/volto/icons/image-fit.svg';
 import imageFullSVG from '@plone/volto/icons/image-full.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
 
 const AlignTile = ({ align, onChangeTile, data, tile }) => {
   /**

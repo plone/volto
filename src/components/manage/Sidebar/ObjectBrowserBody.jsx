@@ -9,11 +9,10 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
-import { Button, Input, Segment } from 'semantic-ui-react';
+import { Input, Segment } from 'semantic-ui-react';
 import { join } from 'lodash';
 import { searchContent } from '@plone/volto/actions';
-import { Icon, TextWidget } from '@plone/volto/components';
-import cx from 'classnames';
+import { Icon } from '@plone/volto/components';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
 import { settings } from '~/config';

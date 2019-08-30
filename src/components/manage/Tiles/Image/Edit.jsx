@@ -18,13 +18,11 @@ import withObjectBrowser from '../../Sidebar/ObjectBrowser';
 
 import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
-import { AlignTile, flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 
 import imageTileSVG from './tile-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
-import folderSVG from '@plone/volto/icons/folder.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
-import uploadSVG from '@plone/volto/icons/upload.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 
 const messages = defineMessages({

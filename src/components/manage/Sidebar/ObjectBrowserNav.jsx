@@ -19,11 +19,12 @@ const ObjectBrowserNav = ({
       {currentSearchResults &&
         currentSearchResults.items.map(item => (
           <li
+            role="presentation"
             key={item.id}
             className={cx('', {
               'selected-item': selected === item['@id'],
               disabled:
-                mode == 'image'
+                mode === 'image'
                   ? !settings.imageObjects.includes(item['@type']) &&
                     !item.is_folderish
                   : false,

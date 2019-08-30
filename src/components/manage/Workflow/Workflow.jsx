@@ -10,12 +10,7 @@ import { connect } from 'react-redux';
 import { uniqBy } from 'lodash';
 import Select, { components } from 'react-select';
 import { toast } from 'react-toastify';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import getWorkflowMapping from '../../../constants/Workflows';
 import { Icon } from '../../../components';
 import downSVG from '../../../icons/down-key.svg';

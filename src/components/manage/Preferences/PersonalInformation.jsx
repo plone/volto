@@ -11,9 +11,8 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 
-import { Form, Toolbar, Toast } from '../../../components';
+import { Form, Toast } from '../../../components';
 import { getUser, updateUser } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
 
 const messages = defineMessages({
   personalInformation: {

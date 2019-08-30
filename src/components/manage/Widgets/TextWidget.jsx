@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Icon as IconOld, Input, Label } from 'semantic-ui-react';
+import { Form, Grid, Input, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
 import { Icon } from '@plone/volto/components';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
