@@ -5,10 +5,10 @@ describe('Querystring reducer', () => {
   it('should return the initial state', () => {
     expect(querystring()).toEqual({
       error: null,
-      fields: [],
-      operations: [],
+      indexes: {},
       loaded: false,
       loading: false,
+      sortable_indexes: {},
     });
   });
 
@@ -19,10 +19,10 @@ describe('Querystring reducer', () => {
       }),
     ).toEqual({
       error: null,
-      fields: [],
-      operations: [],
+      indexes: {},
       loaded: false,
       loading: true,
+      sortable_indexes: {},
     });
   });
 
@@ -31,16 +31,128 @@ describe('Querystring reducer', () => {
       querystring(undefined, {
         type: `${GET_QUERYSTRING}_SUCCESS`,
         result: {
-          fields: 'fields',
-          operations: 'operations',
+          indexes: {
+            Creator: {
+              description: 'The person that created an item',
+              enabled: true,
+              group: 'Metadata',
+              operations: [
+                'plone.app.querystring.operation.string.currentUser',
+                'plone.app.querystring.operation.selection.any',
+              ],
+              operators: {
+                'plone.app.querystring.operation.selection.any': {
+                  description: 'Tip: you can use * to autocomplete.',
+                  operation: 'plone.app.querystring.queryparser._contains',
+                  title: 'Matches any of',
+                  widget: 'MultipleSelectionWidget',
+                },
+                'plone.app.querystring.operation.string.currentUser': {
+                  description: 'The user viewing the querystring results',
+                  operation: 'plone.app.querystring.queryparser._currentUser',
+                  title: 'Current logged in user',
+                  widget: null,
+                },
+              },
+              sortable: true,
+              title: 'Creator',
+              values: {},
+              vocabulary: 'plone.app.vocabularies.Users',
+            },
+          },
+          sortable_indexes: {
+            Creator: {
+              description: 'The person that created an item',
+              enabled: true,
+              group: 'Metadata',
+              operations: [
+                'plone.app.querystring.operation.string.currentUser',
+                'plone.app.querystring.operation.selection.any',
+              ],
+              operators: {
+                'plone.app.querystring.operation.selection.any': {
+                  description: 'Tip: you can use * to autocomplete.',
+                  operation: 'plone.app.querystring.queryparser._contains',
+                  title: 'Matches any of',
+                  widget: 'MultipleSelectionWidget',
+                },
+                'plone.app.querystring.operation.string.currentUser': {
+                  description: 'The user viewing the querystring results',
+                  operation: 'plone.app.querystring.queryparser._currentUser',
+                  title: 'Current logged in user',
+                  widget: null,
+                },
+              },
+              sortable: true,
+              title: 'Creator',
+              values: {},
+              vocabulary: 'plone.app.vocabularies.Users',
+            },
+          },
         },
       }),
     ).toEqual({
       error: null,
-      fields: 'fields',
-      operations: 'operations',
+      indexes: {
+        Creator: {
+          description: 'The person that created an item',
+          enabled: true,
+          group: 'Metadata',
+          operations: [
+            'plone.app.querystring.operation.string.currentUser',
+            'plone.app.querystring.operation.selection.any',
+          ],
+          operators: {
+            'plone.app.querystring.operation.selection.any': {
+              description: 'Tip: you can use * to autocomplete.',
+              operation: 'plone.app.querystring.queryparser._contains',
+              title: 'Matches any of',
+              widget: 'MultipleSelectionWidget',
+            },
+            'plone.app.querystring.operation.string.currentUser': {
+              description: 'The user viewing the querystring results',
+              operation: 'plone.app.querystring.queryparser._currentUser',
+              title: 'Current logged in user',
+              widget: null,
+            },
+          },
+          sortable: true,
+          title: 'Creator',
+          values: {},
+          vocabulary: 'plone.app.vocabularies.Users',
+        },
+      },
       loaded: true,
       loading: false,
+      sortable_indexes: {
+        Creator: {
+          description: 'The person that created an item',
+          enabled: true,
+          group: 'Metadata',
+          operations: [
+            'plone.app.querystring.operation.string.currentUser',
+            'plone.app.querystring.operation.selection.any',
+          ],
+          operators: {
+            'plone.app.querystring.operation.selection.any': {
+              description: 'Tip: you can use * to autocomplete.',
+              operation: 'plone.app.querystring.queryparser._contains',
+              title: 'Matches any of',
+              widget: 'MultipleSelectionWidget',
+            },
+            'plone.app.querystring.operation.string.currentUser': {
+              description: 'The user viewing the querystring results',
+              operation: 'plone.app.querystring.queryparser._currentUser',
+              title: 'Current logged in user',
+              widget: null,
+            },
+          },
+          sortable: true,
+          title: 'Creator',
+          values: {},
+          vocabulary: 'plone.app.vocabularies.Users',
+        },
+      },
     });
   });
 
@@ -52,10 +164,10 @@ describe('Querystring reducer', () => {
       }),
     ).toEqual({
       error: 'failed',
-      fields: [],
-      operations: [],
+      indexes: {},
       loaded: false,
       loading: false,
+      sortable_indexes: {},
     });
   });
 });

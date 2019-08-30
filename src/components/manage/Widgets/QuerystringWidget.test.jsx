@@ -9,7 +9,7 @@ const mockStore = configureStore();
 
 test('renders an querystring widget component', () => {
   const store = mockStore({
-    indexes: {},
+    querystring: { indexes: {} },
     intl: {
       locale: 'en',
       messages: {},
