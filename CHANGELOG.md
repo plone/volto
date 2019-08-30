@@ -42,6 +42,7 @@
 - Add proper placeholder to the add link feature in the editor @sneridagh
 - Fix bulk workflow change in contents view @sneridagh
 - Fix regresion on uploading image to root @sneridagh
+- Fix hero tile on view if image is missing @sneridagh
 
 ### Internal
 

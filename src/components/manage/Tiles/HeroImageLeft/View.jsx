@@ -15,14 +15,16 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 const View = ({ data }) => (
   <div className="tile hero">
     <div className="tile-inner-wrapper">
-      <img
-        src={`${flattenToAppURL(data.url)}/@@images/image`}
-        alt=""
-        className="hero-image"
-      />
+      {data.url && (
+        <img
+          src={`${flattenToAppURL(data.url)}/@@images/image`}
+          alt=""
+          className="hero-image"
+        />
+      )}
       <div className="hero-body">
-        <h1>{data.title}</h1>
-        <p>{data.description}</p>
+        {data.title && <h1>{data.title}</h1>}
+        {data.description && <p>{data.description}</p>}
       </div>
     </div>
   </div>
