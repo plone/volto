@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an querystring widget component 1`] = `
+<div
+  className="inline field"
+>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="stretched row"
+    >
+      <div
+        className="four wide column"
+      >
+        <div
+          className="wrapper"
+        >
+          <label
+            htmlFor="field-my-field"
+          >
+            My field
+          </label>
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
+        <div
+          className="fields"
+        >
+          <div
+            className="four wide field"
+          >
+            <div
+              className="css-10nd86i react-select-container"
+              id="field-my-field"
+              onKeyDown={[Function]}
+            >
+              <div
+                className="css-hnwiky react-select__control"
+                onMouseDown={[Function]}
+                onTouchEnd={[Function]}
+              >
+                <div
+                  className="css-1dvrfad react-select__value-container"
+                >
+                  <div
+                    className="css-1492t68 react-select__placeholder"
+                  >
+                    Select criteria
+                  </div>
+                  <div
+                    className="css-1g6gooi"
+                  >
+                    <div
+                      className="react-select__input"
+                      style={
+                        Object {
+                          "display": "inline-block",
+                        }
+                      }
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        autoCapitalize="none"
+                        autoComplete="off"
+                        autoCorrect="off"
+                        disabled={false}
+                        id="react-select-2-input"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        spellCheck="false"
+                        style={
+                          Object {
+                            "background": 0,
+                            "border": 0,
+                            "boxSizing": "content-box",
+                            "color": "inherit",
+                            "fontSize": "inherit",
+                            "opacity": 1,
+                            "outline": 0,
+                            "padding": 0,
+                            "width": "1px",
+                          }
+                        }
+                        tabIndex="0"
+                        type="text"
+                        value=""
+                      />
+                      <div
+                        style={
+                          Object {
+                            "height": 0,
+                            "left": 0,
+                            "overflow": "scroll",
+                            "position": "absolute",
+                            "top": 0,
+                            "visibility": "hidden",
+                            "whiteSpace": "pre",
+                          }
+                        }
+                      >
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="css-1wy0on6 react-select__indicators"
+                >
+                  <span
+                    className="css-hba3sr react-select__indicator-separator"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="css-9t8fgp react-select__indicator react-select__dropdown-indicator"
+                    onMouseDown={[Function]}
+                    onTouchEnd={[Function]}
+                  >
+                    <svg
+                      className="icon"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "#007bc1",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <input
+                name="my-field"
+                type="hidden"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
