@@ -15,6 +15,7 @@
 - Add table tile @robgietema
 - Add link redirect view @robgietema
 - Add proper unique id to all fields, based on the fieldset and field name @sneridagh
+- Add QueryString widget @robgietema @sneridagh
 
 ### Changes
 
