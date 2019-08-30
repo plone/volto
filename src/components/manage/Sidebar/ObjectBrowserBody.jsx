@@ -3,7 +3,12 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import {
+  defineMessages,
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 import { Button, Input, Segment } from 'semantic-ui-react';
 import { join } from 'lodash';
 import { searchContent } from '@plone/volto/actions';
@@ -23,9 +28,17 @@ import imageSVG from '@plone/volto/icons/image.svg';
 import ObjectBrowserNav from './ObjectBrowserNav';
 
 const messages = defineMessages({
-  ImageTileInputPlaceholder: {
-    id: 'Browse or type URL',
-    defaultMessage: 'Browse or type URL',
+  SearchInputPlaceholder: {
+    id: 'Search content',
+    defaultMessage: 'Search content',
+  },
+  ChooseImage: {
+    id: 'Choose Image',
+    defaultMessage: 'Choose Image',
+  },
+  ChooseTargetLink: {
+    id: 'Choose Target',
+    defaultMessage: 'Choose Target',
   },
 });
 
@@ -94,8 +107,6 @@ class ObjectBrowserBody extends Component {
         ? this.props.data.href.replace(settings.apiPath, '')
         : '',
       showSearchInput: false,
-      alt: this.props.data.alt,
-      caption: this.props.data.caption,
     };
   }
 
@@ -282,10 +293,9 @@ class ObjectBrowserBody extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { alt, caption } = this.state;
-
     return ReactDOM.createPortal(
       <aside
+        role="presentation"
         onClick={e => {
           e.stopPropagation();
         }}
@@ -317,14 +327,24 @@ class ObjectBrowserBody extends Component {
                   className="search"
                   onChange={this.onSearch}
                   placeholder={this.props.intl.formatMessage(
-                    messages.ImageTileInputPlaceholder,
+                    messages.SearchInputPlaceholder,
                   )}
                 />
               </form>
             ) : this.props.mode === 'image' ? (
-              <h2>Choose Image</h2>
+              <h2>
+                <FormattedMessage
+                  id="ChooseImage"
+                  defaultMessage="Choose Image"
+                />
+              </h2>
             ) : (
-              <h2>Choose Link</h2>
+              <h2>
+                <FormattedMessage
+                  id="ChooseTargetLink"
+                  defaultMessage="Choose Target"
+                />
+              </h2>
             )}
 
             <button onClick={this.toggleSearchInput}>
@@ -353,23 +373,6 @@ class ObjectBrowserBody extends Component {
             mode={this.props.mode}
             navigateTo={this.navigateTo}
           />
-
-          <Segment className="form actions">
-            <TextWidget
-              id="alt"
-              title="alt"
-              required={false}
-              onChange={this.onChangeField}
-              value={alt}
-            />
-            <TextWidget
-              id="caption"
-              title="caption"
-              required={false}
-              onChange={this.onChangeField}
-              value={caption}
-            />
-          </Segment>
         </Segment.Group>
       </aside>,
       document.body,
