@@ -199,7 +199,7 @@ class QuerystringWidget extends Component {
     if (this.props.focus) {
       this.node.focus();
     }
-    // this.props.getQuerystring();
+    this.props.getQuerystring();
   }
 
   /**
