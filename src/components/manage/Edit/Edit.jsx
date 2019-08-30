@@ -91,6 +91,9 @@ class Edit extends Component {
    */
   constructor(props) {
     super(props);
+    this.state = {
+      visual: false,
+    };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -113,6 +116,19 @@ class Edit extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.getRequest.loading && nextProps.getRequest.loaded) {
       this.props.getSchema(nextProps.content['@type']);
+    }
+    if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
+      if (hasTilesData(nextProps.schema.properties)) {
+        this.setState({
+          visual: true,
+        });
+      }
+    }
+    // Hack for make the Plone site editable by Volto Editor without checkings
+    if (this.props.content['@type'] === 'Plone Site') {
+      this.setState({
+        visual: true,
+      });
     }
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       this.props.history.push(
@@ -149,10 +165,6 @@ class Edit extends Component {
    */
   render() {
     if (this.props.schemaRequest.loaded && this.props.content) {
-      const visual =
-        hasTilesData(this.props.schema.properties) ||
-        this.props.content['@type'] === 'Plone Site';
-
       return (
         <div id="page-edit">
           <Helmet
@@ -171,7 +183,7 @@ class Edit extends Component {
             onSubmit={this.onSubmit}
             hideActions
             pathname={this.props.pathname}
-            visual={visual}
+            visual={this.state.visual}
             title={this.props.intl.formatMessage(messages.edit, {
               title: this.props.schema.title,
             })}
@@ -212,7 +224,7 @@ class Edit extends Component {
               }
             />
           </Portal>
-          {visual && (
+          {this.state.visual && (
             <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
               <Sidebar />
             </Portal>
