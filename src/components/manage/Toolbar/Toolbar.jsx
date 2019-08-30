@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import cookie from 'react-cookie';
 import { find } from 'lodash';
+import cx from 'classnames';
 
 import More from './More';
 import PersonalTools from './PersonalTools';
@@ -359,7 +360,14 @@ class Toolbar extends Component {
               </div>
             </div>
             <div className="toolbar-handler">
-              <button aria-label="Shrink toolbar" onClick={this.handleShrink} />
+              <button
+                aria-label="Shrink toolbar"
+                className={cx({
+                  [this.props.content.review_state]:
+                    this.props.content && this.props.content.review_state,
+                })}
+                onClick={this.handleShrink}
+              />
             </div>
           </div>
           <div className="pusher" />
