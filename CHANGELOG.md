@@ -39,6 +39,7 @@
 - Fix remove link entity of only a part it only removes that part, not the whole entity @robgietema
 - Add proper placeholder to the add link feature in the editor @sneridagh
 - Fix bulk workflow change in contents view @sneridagh
+- Fix regresion on uploading image to root @sneridagh
 
 ### Internal
 
