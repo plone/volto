@@ -9,11 +9,21 @@ exports[`sidebar portal is rendered when the tile is selected 1`] = `
   >
     <div
       role="form"
+      style={
+        Object {
+          "height": "100%",
+        }
+      }
     >
       <div
         onClick={[Function]}
         onKeyDown={[Function]}
         role="presentation"
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
       >
         <p>
           Tested!
