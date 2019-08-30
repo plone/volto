@@ -199,6 +199,7 @@ Array [
     >
       <button
         aria-label="Shrink toolbar"
+        className=""
         onClick={[Function]}
       />
     </div>
