@@ -11,24 +11,24 @@ import { readAsDataURL } from 'promise-file-reader';
 import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import cx from 'classnames';
+import Dropzone from 'react-dropzone';
+
 import { settings } from '~/config';
+import withObjectBrowser from '../../Sidebar/ObjectBrowser';
 
-import { Icon } from '../../../../components';
-import { createContent } from '../../../../actions';
-import { flattenToAppURL, getBaseUrl } from '../../../../helpers';
+import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
+import { createContent } from '@plone/volto/actions';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 
-import clearSVG from '../../../../icons/clear.svg';
-import folderSVG from '../../../../icons/folder.svg';
-import imageSVG from '../../../../icons/image.svg';
-import imageLeftSVG from '../../../../icons/image-left.svg';
-import imageRightSVG from '../../../../icons/image-right.svg';
-import imageFitSVG from '../../../../icons/image-fit.svg';
-import imageFullSVG from '../../../../icons/image-full.svg';
+import imageTileSVG from './tile-image.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
+import navTreeSVG from '@plone/volto/icons/nav.svg';
+import aheadSVG from '@plone/volto/icons/ahead.svg';
 
 const messages = defineMessages({
   ImageTileInputPlaceholder: {
-    id: 'Browse or type URL',
-    defaultMessage: 'Browse or type URL',
+    id: 'Browse the site, drop an image, or type an URL',
+    defaultMessage: 'Browse the site, drop an image, or type an URL',
   },
 });
 
@@ -61,27 +61,14 @@ class Edit extends Component {
     onFocusNextTile: PropTypes.func.isRequired,
     handleKeyDown: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
+    openObjectBrowser: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs WysiwygEditor
-   */
-  constructor(props) {
-    super(props);
-
-    this.onUploadImage = this.onUploadImage.bind(this);
-    this.onSubmitUrl = this.onSubmitUrl.bind(this);
-    this.onKeyDownVariantMenuForm = this.onKeyDownVariantMenuForm.bind(this);
-
-    this.state = {
-      uploading: false,
-      url: '',
-    };
-  }
+  state = {
+    uploading: false,
+    url: '',
+  };
 
   /**
    * Component did mount
@@ -90,7 +77,7 @@ class Edit extends Component {
    */
   componentDidMount() {
     if (this.props.selected) {
-      this.node.focus();
+      this.node.current.focus();
     }
   }
 
@@ -116,7 +103,7 @@ class Edit extends Component {
     }
 
     if (nextProps.selected) {
-      this.node.focus();
+      this.node.current.focus();
     }
   }
 
@@ -125,7 +112,7 @@ class Edit extends Component {
    * @method onUploadImage
    * @returns {undefined}
    */
-  onUploadImage({ target }) {
+  onUploadImage = ({ target }) => {
     const file = target.files[0];
     this.setState({
       uploading: true,
@@ -142,7 +129,7 @@ class Edit extends Component {
         },
       });
     });
-  }
+  };
 
   /**
    * Align tile handler
@@ -175,12 +162,37 @@ class Edit extends Component {
    * @param {object} e Event
    * @returns {undefined}
    */
-  onSubmitUrl() {
+  onSubmitUrl = () => {
     this.props.onChangeTile(this.props.tile, {
       ...this.props.data,
       url: this.state.url,
     });
-  }
+  };
+
+  /**
+   * Drop handler
+   * @method onDrop
+   * @param {array} files File objects
+   * @returns {undefined}
+   */
+  onDrop = file => {
+    this.setState({
+      uploading: true,
+    });
+
+    readAsDataURL(file[0]).then(data => {
+      const fields = data.match(/^data:(.*);(.*),(.*)$/);
+      this.props.createContent(getBaseUrl(this.props.pathname), {
+        '@type': 'Image',
+        image: {
+          data: fields[3],
+          encoding: fields[2],
+          'content-type': fields[1],
+          filename: file.name,
+        },
+      });
+    });
+  };
 
   /**
    * Keydown handler on Variant Menu Form
@@ -190,7 +202,7 @@ class Edit extends Component {
    * @param {Object} e Event object
    * @returns {undefined}
    */
-  onKeyDownVariantMenuForm(e) {
+  onKeyDownVariantMenuForm = e => {
     if (e.key === 'Enter') {
       e.preventDefault();
       e.stopPropagation();
@@ -200,7 +212,9 @@ class Edit extends Component {
       e.stopPropagation();
       // TODO: Do something on ESC key
     }
-  }
+  };
+
+  node = React.createRef();
 
   /**
    * Render method.
@@ -225,62 +239,17 @@ class Edit extends Component {
             e,
             this.props.index,
             this.props.tile,
-            this.node,
+            this.node.current,
           )
         }
-        ref={node => {
-          this.node = node;
-        }}
+        ref={this.node}
       >
         {this.props.selected && !!this.props.data.url && (
           <div className="toolbar">
-            <Button.Group>
-              <Button
-                icon
-                basic
-                aria-label="Left"
-                onClick={() => this.onAlignTile('left')}
-                active={this.props.data.align === 'left'}
-              >
-                <Icon name={imageLeftSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                aria-label="Right"
-                onClick={() => this.onAlignTile('right')}
-                active={this.props.data.align === 'right'}
-              >
-                <Icon name={imageRightSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                aria-label="Center"
-                onClick={() => this.onAlignTile('center')}
-                active={
-                  this.props.data.align === 'center' || !this.props.data.align
-                }
-              >
-                <Icon name={imageFitSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                aria-label="Full"
-                onClick={() => this.onAlignTile('full')}
-                active={this.props.data.align === 'full'}
-              >
-                <Icon name={imageFullSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <div className="separator" />
+            {this.props.appendActions && <>{this.props.appendActions}</>}
+            {this.props.detached && this.props.appendActions && (
+              <div className="separator" />
+            )}
             <Button.Group>
               <Button
                 icon
@@ -295,30 +264,16 @@ class Edit extends Component {
                 <Icon name={clearSVG} size="24px" color="#e40166" />
               </Button>
             </Button.Group>
+            {this.props.appendSecondaryActions && (
+              <>{this.props.appendSecondaryActions}</>
+            )}
           </div>
         )}
-        {this.props.selected && !this.props.data.url && (
-          <div className="toolbar">
-            <Icon name={imageSVG} size="24px" />
-            <Input
-              onKeyDown={this.onKeyDownVariantMenuForm}
-              onChange={this.onChangeUrl}
-              placeholder={this.props.intl.formatMessage(
-                messages.ImageTileInputPlaceholder,
-              )}
-            />
-            <Button.Group>
-              <label className="ui button basic icon">
-                <Icon name={folderSVG} size="24px" />
-                <input
-                  type="file"
-                  onChange={this.onUploadImage}
-                  style={{ display: 'none' }}
-                />
-              </label>
-            </Button.Group>
-          </div>
-        )}
+        {this.props.selected &&
+          !this.props.data.url &&
+          this.props.appendSecondaryActions && (
+            <div className="toolbar">{this.props.appendSecondaryActions}</div>
+          )}
         {this.props.data.url ? (
           <p>
             <img
@@ -332,24 +287,66 @@ class Edit extends Component {
           </p>
         ) : (
           <div>
-            <Message>
-              {this.state.uploading && (
-                <Dimmer active>
-                  <Loader indeterminate>Uploading image</Loader>
-                </Dimmer>
-              )}
-              <center>
-                <Icon name={imageSVG} size="100px" color="#b8c6c8" />
-              </center>
-            </Message>
+            <Dropzone onDrop={this.onDrop} className="dropzone">
+              <Message>
+                {this.state.uploading && (
+                  <Dimmer active>
+                    <Loader indeterminate>Uploading image</Loader>
+                  </Dimmer>
+                )}
+                <center>
+                  <img src={imageTileSVG} alt="" />
+                  <div className="toolbar-inner">
+                    <Button.Group>
+                      <Button
+                        basic
+                        icon
+                        onClick={e => {
+                          e.stopPropagation();
+                          this.props.openObjectBrowser();
+                        }}
+                      >
+                        <Icon name={navTreeSVG} size="24px" />
+                      </Button>
+                    </Button.Group>
+                    <Input
+                      onKeyDown={this.onKeyDownVariantMenuForm}
+                      onChange={this.onChangeUrl}
+                      placeholder={this.props.intl.formatMessage(
+                        messages.ImageTileInputPlaceholder,
+                      )}
+                      // Prevents propagation to the Dropzone and the opening
+                      // of the upload browser dialog
+                      onClick={e => e.stopPropagation()}
+                    />
+                    {this.state.url && (
+                      <Button.Group>
+                        <Button basic className="cancel">
+                          <Icon name={clearSVG} size="30px" />
+                        </Button>
+                      </Button.Group>
+                    )}
+                    <Button.Group>
+                      <Button basic primary>
+                        <Icon name={aheadSVG} size="30px" />
+                      </Button>
+                    </Button.Group>
+                  </div>
+                </center>
+              </Message>
+            </Dropzone>
           </div>
         )}
+        <SidebarPortal selected={this.props.selected}>
+          <ImageSidebar {...this.props} />
+        </SidebarPortal>
       </div>
     );
   }
 }
 
 export default compose(
+  withObjectBrowser,
   injectIntl,
   connect(
     state => ({
