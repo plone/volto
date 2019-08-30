@@ -27,7 +27,10 @@ import {
 import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
 
+import { Icon } from '../../../components';
 import { login, purgeMessages } from '../../../actions';
+import aheadSVG from '@plone/volto/icons/ahead.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   login: {
@@ -249,33 +252,32 @@ class Login extends Component {
                   </Grid>
                 </Form.Field>
               </Segment>
-              <Segment clearing className="actions">
+              <Segment className="actions" clearing>
                 <Button
                   basic
-                  circular
                   primary
-                  aria-label={this.props.intl.formatMessage(messages.login)}
-                  id="login-form-submit"
-                  icon="arrow right"
                   floated="right"
-                  size="big"
                   type="submit"
+                  id="login-form-submit"
+                  aria-label={this.props.intl.formatMessage(messages.login)}
                   title={this.props.intl.formatMessage(messages.login)}
                   loading={this.props.loading}
-                />
+                >
+                  <Icon className="circled" name={aheadSVG} size="30px" />
+                </Button>
+
                 <Button
                   basic
-                  circular
                   secondary
+                  id="login-form-cancel"
                   as={Link}
                   to="/"
-                  id="login-form-cancel"
-                  icon="remove"
-                  floated="right"
-                  size="big"
                   aria-label={this.props.intl.formatMessage(messages.cancel)}
                   title={this.props.intl.formatMessage(messages.cancel)}
-                />
+                  floated="right"
+                >
+                  <Icon className="circled" name={clearSVG} size="30px" />
+                </Button>
               </Segment>
             </Segment.Group>
           </Form>
