@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a text tile component using the tile renderer 1`] = `<div />`;

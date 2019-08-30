@@ -102,6 +102,7 @@ export ViewMapTile from '@plone/volto/components/manage/Tiles/Maps/View';
 export ViewHTMLTile from '@plone/volto/components/manage/Tiles/HTML/View';
 
 export ImageSidebar from '@plone/volto/components/manage/Sidebar/ImageSidebar';
+export TileRenderer from '@plone/volto/components/manage/TileRenderer/TileRenderer';
 
 export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
 export More from '@plone/volto/components/manage/Toolbar/More';
