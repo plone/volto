@@ -5,8 +5,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Icon, Input, Label } from 'semantic-ui-react';
+import { Form, Grid, Input, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
+import { Icon } from '@plone/volto/components';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 const messages = defineMessages({
@@ -59,6 +60,12 @@ class TextWidget extends Component {
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     intl: intlShape.isRequired,
+    icon: PropTypes.shape({
+      xmlns: PropTypes.string,
+      viewBox: PropTypes.string,
+      content: PropTypes.string,
+    }),
+    iconAction: PropTypes.func,
   };
 
   /**
@@ -75,6 +82,8 @@ class TextWidget extends Component {
     onEdit: null,
     onDelete: null,
     focus: false,
+    icon: null,
+    iconAction: null,
   };
 
   /**
@@ -105,6 +114,8 @@ class TextWidget extends Component {
       onEdit,
       onDelete,
       intl,
+      icon,
+      iconAction,
       fieldSet,
     } = this.props;
 
@@ -182,6 +193,7 @@ class TextWidget extends Component {
                 name={id}
                 value={value || ''}
                 disabled={onEdit !== null}
+                icon={icon || null}
                 onChange={({ target }) =>
                   onChange(id, target.value === '' ? undefined : target.value)
                 }
@@ -194,6 +206,11 @@ class TextWidget extends Component {
                   {message}
                 </Label>
               ))}
+              {icon && iconAction && (
+                <button onClick={iconAction}>
+                  <Icon name={icon} size="18px" />
+                </button>
+              )}
             </Grid.Column>
           </Grid.Row>
           {description && (

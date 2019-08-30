@@ -90,6 +90,25 @@ svg.icon {
   position: static !important;
 }
 
+// Buttons colored
+button {
+  &.contents {
+    color: @teal-blue;
+  }
+
+  &.save {
+    color: @teal-blue;
+  }
+
+  &.cancel {
+    color: @darkHotPink;
+  }
+
+  &.edit {
+    color: @teal-blue;
+  }
+}
+
 // Button reset
 .button-reset {
   padding: 0;
@@ -232,12 +251,6 @@ svg.icon {
   .Toastify__toast--warning {
     background: #f3e2ab;
   }
-}
-
-.field-file-name {
-  display: flex;
-  align-items: flex-end;
-  padding: 20px 0;
 }
 
 @import 'utils';

@@ -29,7 +29,7 @@ const Toast = props => {
       <Icon name={getIcon(props)} size="18px" />
       <div className="toast-inner-content">
         {title && <h4>{title}</h4>}
-        <p>{props.content}</p>
+        <p>{content}</p>
       </div>
     </>
   );

@@ -28,15 +28,12 @@ exports[`renders a checkbox widget component 1`] = `
               checked={null}
               className="hidden"
               disabled={false}
-              id="field-my-field"
-              name="my-field"
+              name="field-my-field"
               readOnly={true}
               tabIndex={0}
               type="checkbox"
             />
-            <label
-              htmlFor="field-my-field"
-            />
+            <label />
           </div>
           <label
             className="ui basic horizontal label"
