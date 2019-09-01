@@ -10,7 +10,7 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
-import { Dropdown, Table } from 'semantic-ui-react';
+import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import checkedSVG from '../../../icons/checkbox-checked.svg';
 import uncheckedSVG from '../../../icons/checkbox-unchecked.svg';
 import trashSVG from '../../../icons/delete.svg';
@@ -61,6 +61,18 @@ export default class UsersControlpanelGroups extends Component {
    */
   constructor(props) {
     super(props);
+    this.onChange = this.onChange.bind(this);
+  }
+
+  /**
+   * @param {*} event
+   * @param {*} { value }
+   * @memberof UsersControlpanelUser
+   */
+
+  onChange(event, { value }) {
+    const [group, role] = value.split('.');
+    this.props.updateGroups(group, role);
   }
 
   /**
@@ -74,21 +86,11 @@ export default class UsersControlpanelGroups extends Component {
         <Table.Cell>{this.props.groups.groupname}</Table.Cell>
         {this.props.roles.map(role => (
           <Table.Cell key={role.id}>
-            {this.props.groups.roles.indexOf(role.id) !== -1 ? (
-              <Icon
-                name={checkedSVG}
-                size="25px"
-                title="Global role"
-                color="#007eb1"
-              />
-            ) : (
-              <Icon
-                name={uncheckedSVG}
-                size="25px"
-                title="Global role"
-                color="#826a6a"
-              />
-            )}
+            <Checkbox
+              checked={this.props.groups.roles.includes(role.id)}
+              onChange={this.onChange}
+              value={`${this.props.groups.id}.${role.id}`}
+            />
           </Table.Cell>
         ))}
         <Table.Cell textAlign="right">

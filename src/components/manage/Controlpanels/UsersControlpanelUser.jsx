@@ -11,8 +11,6 @@ import {
   intlShape,
 } from 'react-intl';
 import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
-import checkedSVG from '../../../icons/checkbox-checked.svg';
-import uncheckedSVG from '../../../icons/checkbox-unchecked.svg';
 import trashSVG from '../../../icons/delete.svg';
 import { Icon } from '../../../components';
 
@@ -51,14 +49,18 @@ export default class UsersControlpanelUser extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = {
-      checked: true,
-    };
-    this.onClickHandler = this.onClickHandler.bind(this);
+    this.state = {};
+    this.onChange = this.onChange.bind(this);
   }
+  /**
+   * @param {*} event
+   * @param {*} { value }
+   * @memberof UsersControlpanelUser
+   */
 
-  onClickHandler(e, value) {
-    this.props.updateUser(value.name, value.value, value.checked);
+  onChange(event, { value }) {
+    const [user, role] = value.split('.');
+    this.props.updateUser(user, role);
   }
   /**
    * Render method.
@@ -71,27 +73,11 @@ export default class UsersControlpanelUser extends Component {
         <Table.Cell>{this.props.user.fullname}</Table.Cell>
         {this.props.roles.map(role => (
           <Table.Cell key={role.id}>
-            {this.props.user.roles.indexOf(role.id) !== -1 ? (
-              <Checkbox
-                checked={this.state.checked}
-                name={role.id}
-                size="25px"
-                title="Global role"
-                color="#007eb1"
-                onClick={this.onClickHandler}
-                value={this.props.user['@id']}
-              />
-            ) : (
-              <Checkbox
-                name={role.id}
-                checked={!this.state.checked}
-                size="25px"
-                title="Global role"
-                color="#826a6a"
-                onClick={this.onClickHandler}
-                value={this.props.user['@id']}
-              />
-            )}
+            <Checkbox
+              checked={this.props.user.roles.includes(role.id)}
+              onChange={this.onChange}
+              value={`${this.props.user.id}.${role.id}`}
+            />
           </Table.Cell>
         ))}
         <Table.Cell textAlign="right">

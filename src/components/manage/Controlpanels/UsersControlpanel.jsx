@@ -37,13 +37,14 @@ import {
   deleteGroup,
   listGroups,
   updateUser,
+  updateGroup,
 } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import {
   ModalForm,
   Toolbar,
   UsersControlpanelUser,
-  Icon as MyIcon,
+  Icon as AddIcon,
   UsersControlpanelGroups,
 } from '../../../components';
 import addSvg from '../../../icons/circle-plus.svg';
@@ -159,6 +160,7 @@ const messages = defineMessages({
         deleteGroup,
         createGroup,
         updateUser,
+        updateGroup,
       },
       dispatch,
     ),
@@ -226,8 +228,8 @@ class UsersControlpanel extends Component {
     this.onAddGroupError = this.onAddGroupError.bind(this);
     this.onAddUserSuccess = this.onAddUserSuccess.bind(this);
     this.onAddGroupSuccess = this.onAddGroupSuccess.bind(this);
-    this.onUpdateUserRole = this.onUpdateUserRole.bind(this);
     this.updateUserRole = this.updateUserRole.bind(this);
+    this.updateGroupRole = this.updateGroupRole.bind(this);
     this.state = {
       search: '',
       showAddUser: false,
@@ -239,6 +241,8 @@ class UsersControlpanel extends Component {
       updateUser: undefined,
       groupToDelete: undefined,
       showAddGroup: false,
+      entries: props.users,
+      groupEntries: props.groups,
     };
   }
 
@@ -283,6 +287,22 @@ class UsersControlpanel extends Component {
     if (this.props.createRequest.loading && nextProps.createRequest.error) {
       this.onAddGroupError(nextProps.createRequest.error);
     }
+    this.setState({
+      entries: map(nextProps.entries, entry => {
+        const values = find(this.state.entries, { id: entry.id });
+        return {
+          ...entry,
+          roles: values ? values.roles : entry.roles,
+        };
+      }),
+      groupEntries: map(nextProps.groups, entry => {
+        const values = find(this.state.groupEntries, { id: entry.id });
+        return {
+          ...entry,
+          roles: values ? values.roles : entry.roles,
+        };
+      }),
+    });
   }
 
   getUserFromProps(value) {
@@ -413,29 +433,49 @@ class UsersControlpanel extends Component {
    * @param {*} callback
    * @memberof UsersControlpanel
    */
-  updateUserRole(name, value, checked) {
-    if (value) {
-      this.setState({
-        updateUser: this.getUserFromProps(value),
-      });
-    }
-    this.onUpdateUserRole(name, checked);
+  updateUserRole(name, value) {
+    //const user = this.props.users.find(item => item.id === name);
+    this.setState({
+      entries: map(this.state.entries, entry => ({
+        ...entry,
+        roles:
+          entry.id === name
+            ? [...entry.roles, !entry.roles.includes(value) && value]
+            : entry.roles,
+      })),
+    });
+    /* updating through patch request
+    this.props.updateUser(name, {
+       roles: {
+         [value]: !user.roles.includes(value),
+       },
+     });
+     */
   }
-
   /**
    *
-   *
+   * @param {*} name
+   * @param {*} value
    * @memberof UsersControlpanel
    */
-  onUpdateUserRole(name, checked) {
-    if (this.state.updateUser) {
-      this.props.updateUser(this.state.updateUser.id, {
-        roles: { [name]: !checked },
-      });
-      this.setState({
-        updateUser: undefined,
-      });
-    }
+  updateGroupRole(name, value) {
+    //const group = this.props.groups.find(item => item.id === name);
+    this.setState({
+      entries: map(this.state.entries, entry => ({
+        ...entry,
+        roles:
+          entry.id === name
+            ? [...entry.roles, !entry.roles.includes(value) && value]
+            : entry.roles,
+      })),
+    });
+    /* updating through patch request
+    this.props.updateGroup(name, {
+      roles: {
+        [value]: !group.roles.includes(value),
+      },
+    });
+    */
   }
 
   /**
@@ -713,7 +753,7 @@ class UsersControlpanel extends Component {
               defaultMessage="Users and groups settings"
             />
           </Segment>
-          <Segment secondary>
+          <Segment>
             <FormattedMessage id="Users" defaultMessage="Users" />
           </Segment>
           <Segment>
@@ -752,7 +792,7 @@ class UsersControlpanel extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {this.props.users.map(user => (
+                  {this.state.entries.map(user => (
                     <UsersControlpanelUser
                       key={user.id}
                       onDelete={this.delete}
@@ -767,7 +807,7 @@ class UsersControlpanel extends Component {
           </Form>
           <Segment clearing className="actions">
             {this.props.intl.formatMessage(messages.addUserButtonTitle)}
-            <MyIcon
+            <AddIcon
               name={addSvg}
               size="30px"
               color="#007eb1"
@@ -779,7 +819,7 @@ class UsersControlpanel extends Component {
             />
           </Segment>
           <Divider />
-          <Segment secondary>
+          <Segment>
             <FormattedMessage id="Groups" defaultMessage="Groups" />
           </Segment>
           <Segment>
@@ -818,13 +858,14 @@ class UsersControlpanel extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {this.props.groups.map(groups => (
+                  {this.state.groupEntries.map(groups => (
                     <UsersControlpanelGroups
                       key={groups.id}
                       user={this.props.users}
                       onDelete={this.deleteGroup}
                       roles={this.props.roles}
                       groups={groups}
+                      updateGroups={this.updateGroupRole}
                     />
                   ))}
                 </Table.Body>
@@ -833,7 +874,7 @@ class UsersControlpanel extends Component {
           </Form>
           <Segment clearing className="actions">
             {this.props.intl.formatMessage(messages.addGroupsButtonTitle)}
-            <MyIcon
+            <AddIcon
               name={addSvg}
               size="30px"
               color="#007eb1"
@@ -871,6 +912,8 @@ export default compose(
     (state, props) => ({
       roles: state.roles.roles,
       users: state.users.users,
+      entries: state.users.users,
+      groupEntries: state.groups.groups,
       pathname: props.location.pathname,
     }),
     { listRoles, listUsers },
