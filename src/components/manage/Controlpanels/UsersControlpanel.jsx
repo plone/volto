@@ -440,7 +440,9 @@ class UsersControlpanel extends Component {
         ...entry,
         roles:
           entry.id === name
-            ? [...entry.roles, !entry.roles.includes(value) && value]
+            ? entry.roles.includes(value) === false
+              ? entry.roles.concat([value])
+              : [].concat(entry.roles.filter(e => e !== value))
             : entry.roles,
       })),
     });
@@ -461,11 +463,13 @@ class UsersControlpanel extends Component {
   updateGroupRole(name, value) {
     //const group = this.props.groups.find(item => item.id === name);
     this.setState({
-      entries: map(this.state.entries, entry => ({
+      groupEntries: map(this.state.groupEntries, entry => ({
         ...entry,
         roles:
           entry.id === name
-            ? [...entry.roles, !entry.roles.includes(value) && value]
+            ? entry.roles.includes(value) === false
+              ? entry.roles.concat([value])
+              : [].concat(entry.roles.filter(e => e !== value))
             : entry.roles,
       })),
     });
