@@ -18,7 +18,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
       </span>
     </div>
     <div
-      className="ui secondary segment"
+      className="ui segment"
     >
       <span>
         Users
@@ -121,7 +121,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
       className="ui divider"
     />
     <div
-      className="ui secondary segment"
+      className="ui segment"
     >
       <span>
         Groups

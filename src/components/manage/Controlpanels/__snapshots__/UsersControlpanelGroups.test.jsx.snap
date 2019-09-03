@@ -12,68 +12,65 @@ exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component 1`]
   <td
     className=""
   >
-    <svg
-      className="icon"
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "<title>Global role</title>undefined",
-        }
-      }
-      onClick={null}
-      style={
-        Object {
-          "fill": "#826a6a",
-          "height": "25px",
-          "width": "auto",
-        }
-      }
-      viewBox=""
-      xmlns=""
-    />
+    <div
+      className="ui fitted checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+    >
+      <input
+        checked={false}
+        className="hidden"
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value="Administrators.Member"
+      />
+      <label />
+    </div>
   </td>
   <td
     className=""
   >
-    <svg
-      className="icon"
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "<title>Global role</title>undefined",
-        }
-      }
-      onClick={null}
-      style={
-        Object {
-          "fill": "#826a6a",
-          "height": "25px",
-          "width": "auto",
-        }
-      }
-      viewBox=""
-      xmlns=""
-    />
+    <div
+      className="ui fitted checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+    >
+      <input
+        checked={false}
+        className="hidden"
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value="Administrators.Reader"
+      />
+      <label />
+    </div>
   </td>
   <td
     className=""
   >
-    <svg
-      className="icon"
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "<title>Global role</title>undefined",
-        }
-      }
-      onClick={null}
-      style={
-        Object {
-          "fill": "#007eb1",
-          "height": "25px",
-          "width": "auto",
-        }
-      }
-      viewBox=""
-      xmlns=""
-    />
+    <div
+      className="ui checked fitted checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+    >
+      <input
+        checked={true}
+        className="hidden"
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value="Administrators.Manager"
+      />
+      <label />
+    </div>
   </td>
   <td
     className="right aligned"
