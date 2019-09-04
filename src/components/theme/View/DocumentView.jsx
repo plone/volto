@@ -70,7 +70,7 @@ const DocumentView = ({ content }) => {
         <div
           dangerouslySetInnerHTML={{
             __html: content.text.data.replace(
-              /a href=\"([^"]*\.[^"]*)\"/g,
+              /a href="([^"]*\.[^"]*)"/g,
               `a href="${settings.apiPath}$1/download/file"`,
             ),
           }}

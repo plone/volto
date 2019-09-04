@@ -9,6 +9,7 @@ import { keys, map, mapValues, omit, uniq, without } from 'lodash';
 import move from 'lodash-move';
 import {
   Button,
+  Container,
   Form as UiForm,
   Segment,
   Tab,
@@ -549,10 +550,10 @@ class Form extends Component {
             error={keys(this.state.errors).length > 0}
           >
             {map(schema.fieldsets, item => [
-              <Segment secondary attached>
+              <Segment secondary attached key={item.title}>
                 {item.title}
               </Segment>,
-              <Segment attached>
+              <Segment attached key={`fieldset-contents-${item.title}`}>
                 {map(item.fields, (field, index) => (
                   <Field
                     {...schema.properties[field]}
@@ -571,125 +572,128 @@ class Form extends Component {
         </Portal>
       </div>
     ) : (
-      <UiForm
-        method="post"
-        onSubmit={this.onSubmit}
-        error={keys(this.state.errors).length > 0}
-      >
-        <Segment.Group raised>
-          {schema.fieldsets.length > 1 && (
-            <Tab
-              menu={{
-                secondary: true,
-                pointing: true,
-                attached: true,
-                tabular: true,
-                className: 'formtabs',
-              }}
-              panes={map(schema.fieldsets, item => ({
-                menuItem: item.title,
-                render: () => [
-                  this.props.title && (
-                    <Segment secondary attached key={this.props.title}>
-                      {this.props.title}
-                    </Segment>
-                  ),
-                  ...map(item.fields, (field, index) => (
-                    <Field
-                      {...schema.properties[field]}
-                      id={field}
-                      focus={index === 0}
-                      value={this.state.formData[field]}
-                      required={schema.required.indexOf(field) !== -1}
-                      onChange={this.onChangeField}
-                      key={field}
-                      error={this.state.errors[field]}
-                    />
-                  )),
-                ],
-              }))}
-            />
-          )}
-          {schema.fieldsets.length === 1 && (
-            <Segment>
-              {this.props.title && (
-                <Segment className="primary">{this.props.title}</Segment>
-              )}
-              {this.props.description && (
-                <Segment secondary>{this.props.description}</Segment>
-              )}
-              {keys(this.state.errors).length > 0 && (
-                <Message
-                  icon="warning"
-                  negative
-                  attached
-                  header={this.props.intl.formatMessage(messages.error)}
-                  content={this.props.intl.formatMessage(
-                    messages.thereWereSomeErrors,
-                  )}
-                />
-              )}
-              {this.props.error && (
-                <Message
-                  icon="warning"
-                  negative
-                  attached
-                  header={this.props.intl.formatMessage(messages.error)}
-                  content={this.props.error.message}
-                />
-              )}
-              {map(schema.fieldsets[0].fields, field => (
-                <Field
-                  {...schema.properties[field]}
-                  id={field}
-                  value={this.state.formData[field]}
-                  required={schema.required.indexOf(field) !== -1}
-                  onChange={this.onChangeField}
-                  key={field}
-                  error={this.state.errors[field]}
-                />
-              ))}
-            </Segment>
-          )}
-          {!this.props.hideActions && (
-            <Segment className="actions" clearing>
-              {onSubmit && (
-                <Button
-                  basic
-                  primary
-                  floated="right"
-                  type="submit"
-                  aria-label={
-                    this.props.submitLabel
-                      ? this.props.submitLabel
-                      : this.props.intl.formatMessage(messages.save)
-                  }
-                  title={
-                    this.props.submitLabel
-                      ? this.props.submitLabel
-                      : this.props.intl.formatMessage(messages.save)
-                  }
-                  loading={this.props.loading}
-                >
-                  <Icon className="circled" name={aheadSVG} size="30px" />
-                </Button>
-              )}
-              {onCancel && (
-                <Button
-                  basic
-                  secondary
-                  aria-label={this.props.intl.formatMessage(messages.cancel)}
-                  title={this.props.intl.formatMessage(messages.cancel)}
-                  floated="right"
-                  onClick={onCancel}
-                >
-                  <Icon className="circled" name={clearSVG} size="30px" />
-                </Button>
-              )}
-            </Segment>
-          )}
-        </Segment.Group>
-      </UiForm>
+      <Container>
+        <UiForm
+          method="post"
+          onSubmit={this.onSubmit}
+          error={keys(this.state.errors).length > 0}
+        >
+          <Segment.Group raised>
+            {schema.fieldsets.length > 1 && (
+              <Tab
+                menu={{
+                  secondary: true,
+                  pointing: true,
+                  attached: true,
+                  tabular: true,
+                  className: 'formtabs',
+                }}
+                panes={map(schema.fieldsets, item => ({
+                  menuItem: item.title,
+                  render: () => [
+                    this.props.title && (
+                      <Segment secondary attached key={this.props.title}>
+                        {this.props.title}
+                      </Segment>
+                    ),
+                    ...map(item.fields, (field, index) => (
+                      <Field
+                        {...schema.properties[field]}
+                        id={field}
+                        fieldSet={item.title.toLowerCase()}
+                        focus={index === 0}
+                        value={this.state.formData[field]}
+                        required={schema.required.indexOf(field) !== -1}
+                        onChange={this.onChangeField}
+                        key={field}
+                        error={this.state.errors[field]}
+                      />
+                    )),
+                  ],
+                }))}
+              />
+            )}
+            {schema.fieldsets.length === 1 && (
+              <Segment>
+                {this.props.title && (
+                  <Segment className="primary">{this.props.title}</Segment>
+                )}
+                {this.props.description && (
+                  <Segment secondary>{this.props.description}</Segment>
+                )}
+                {keys(this.state.errors).length > 0 && (
+                  <Message
+                    icon="warning"
+                    negative
+                    attached
+                    header={this.props.intl.formatMessage(messages.error)}
+                    content={this.props.intl.formatMessage(
+                      messages.thereWereSomeErrors,
+                    )}
+                  />
+                )}
+                {this.props.error && (
+                  <Message
+                    icon="warning"
+                    negative
+                    attached
+                    header={this.props.intl.formatMessage(messages.error)}
+                    content={this.props.error.message}
+                  />
+                )}
+                {map(schema.fieldsets[0].fields, field => (
+                  <Field
+                    {...schema.properties[field]}
+                    id={field}
+                    value={this.state.formData[field]}
+                    required={schema.required.indexOf(field) !== -1}
+                    onChange={this.onChangeField}
+                    key={field}
+                    error={this.state.errors[field]}
+                  />
+                ))}
+              </Segment>
+            )}
+            {!this.props.hideActions && (
+              <Segment className="actions" clearing>
+                {onSubmit && (
+                  <Button
+                    basic
+                    primary
+                    floated="right"
+                    type="submit"
+                    aria-label={
+                      this.props.submitLabel
+                        ? this.props.submitLabel
+                        : this.props.intl.formatMessage(messages.save)
+                    }
+                    title={
+                      this.props.submitLabel
+                        ? this.props.submitLabel
+                        : this.props.intl.formatMessage(messages.save)
+                    }
+                    loading={this.props.loading}
+                  >
+                    <Icon className="circled" name={aheadSVG} size="30px" />
+                  </Button>
+                )}
+                {onCancel && (
+                  <Button
+                    basic
+                    secondary
+                    aria-label={this.props.intl.formatMessage(messages.cancel)}
+                    title={this.props.intl.formatMessage(messages.cancel)}
+                    floated="right"
+                    onClick={onCancel}
+                  >
+                    <Icon className="circled" name={clearSVG} size="30px" />
+                  </Button>
+                )}
+              </Segment>
+            )}
+          </Segment.Group>
+        </UiForm>
+      </Container>
     );
   }
 }

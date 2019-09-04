@@ -52,6 +52,7 @@ const CheckboxWidget = ({
   onEdit,
   onDelete,
   intl,
+  fieldSet,
 }) => {
   const schema = {
     fieldsets: [
@@ -90,6 +91,7 @@ const CheckboxWidget = ({
       required={required}
       error={error.length > 0}
       className={description ? 'help' : ''}
+      id={`${fieldSet || 'field'}-${id}`}
     >
       <Grid>
         <Grid.Row stretched>
@@ -117,8 +119,7 @@ const CheckboxWidget = ({
                 <i aria-hidden="true" className="grey bars icon drag handle" />
               )}
               <Checkbox
-                id={`field-${id}`}
-                name={id}
+                name={`field-${id}`}
                 checked={value}
                 disabled={onEdit !== null}
                 onChange={(event, { checked }) => onChange(id, checked)}

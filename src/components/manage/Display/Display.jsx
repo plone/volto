@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { FormattedMessage } from 'react-intl';
 import Select, { components } from 'react-select';
 
 import { getSchema, updateContent, getContent } from '../../../actions';
@@ -90,21 +88,6 @@ const customSelectStyles = {
   }),
 };
 
-@connect(
-  state => ({
-    loaded: state.content.update.loaded,
-    layouts: state.schema.schema ? state.schema.schema.layouts : [],
-    layout: state.content.data
-      ? state.content.data[getLayoutFieldname(state.content.data)]
-      : '',
-    layout_fieldname: state.content.data
-      ? getLayoutFieldname(state.content.data)
-      : '',
-    type: state.content.data ? state.content.data['@type'] : '',
-  }),
-  dispatch =>
-    bindActionCreators({ getSchema, updateContent, getContent }, dispatch),
-)
 /**
  * Display container class.
  * @class Display
@@ -220,4 +203,17 @@ class DisplaySelect extends Component {
   }
 }
 
-export default DisplaySelect;
+export default connect(
+  state => ({
+    loaded: state.content.update.loaded,
+    layouts: state.schema.schema ? state.schema.schema.layouts : [],
+    layout: state.content.data
+      ? state.content.data[getLayoutFieldname(state.content.data)]
+      : '',
+    layout_fieldname: state.content.data
+      ? getLayoutFieldname(state.content.data)
+      : '',
+    type: state.content.data ? state.content.data['@type'] : '',
+  }),
+  { getSchema, updateContent, getContent },
+)(DisplaySelect);

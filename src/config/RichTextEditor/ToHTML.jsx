@@ -107,6 +107,9 @@ const entities = {
       {children}
     </a>
   ),
+  IMAGE: (children, entity, { key }) => (
+    <img key={key} src={entity.src} alt={entity.alt} />
+  ),
 };
 
 export const options = {

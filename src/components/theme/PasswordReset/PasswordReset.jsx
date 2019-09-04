@@ -6,8 +6,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Container } from 'semantic-ui-react';
 import {
@@ -90,22 +90,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    loading: state.users.initial.loading,
-    loaded: state.users.initial.loaded,
-    error: state.users.initial.error,
-    token: props.match.params.token,
-  }),
-  dispatch => bindActionCreators({ setInitialPassword }, dispatch),
-)
 /**
  * PasswordReset class.
  * @class PasswordReset
  * @extends Component
  */
-export class PasswordResetComponent extends Component {
+class PasswordReset extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -292,4 +282,16 @@ export class PasswordResetComponent extends Component {
   }
 }
 
-export default withRouter(PasswordResetComponent);
+export default compose(
+  withRouter,
+  injectIntl,
+  connect(
+    (state, props) => ({
+      loading: state.users.initial.loading,
+      loaded: state.users.initial.loaded,
+      error: state.users.initial.error,
+      token: props.match.params.token,
+    }),
+    { setInitialPassword },
+  ),
+)(PasswordReset);

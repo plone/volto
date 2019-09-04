@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { updateIntl } from 'react-intl-redux';
 import { map, keys } from 'lodash';
 import cookie from 'react-cookie';
@@ -42,6 +42,10 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
 });
 
 /**
@@ -49,11 +53,6 @@ const messages = defineMessages({
  * @class PersonalPreferences
  * @extends Component
  */
-@injectIntl
-@connect(
-  null,
-  dispatch => bindActionCreators({ updateIntl }, dispatch),
-)
 class PersonalPreferences extends Component {
   /**
    * Property types.
@@ -62,7 +61,6 @@ class PersonalPreferences extends Component {
    */
   static propTypes = {
     updateIntl: PropTypes.func.isRequired,
-    addMessage: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
     closeMenu: PropTypes.func.isRequired,
   };
@@ -96,6 +94,13 @@ class PersonalPreferences extends Component {
           locale: locale.language || 'en',
           messages: locale.body,
         });
+        toast.success(
+          <Toast
+            success
+            title={this.props.intl.formatMessage(messages.success)}
+            content={this.props.intl.formatMessage(messages.saved)}
+          />,
+        );
       },
     );
     toast.success(
@@ -149,4 +154,10 @@ class PersonalPreferences extends Component {
   }
 }
 
-export default PersonalPreferences;
+export default compose(
+  injectIntl,
+  connect(
+    null,
+    { updateIntl },
+  ),
+)(PersonalPreferences);

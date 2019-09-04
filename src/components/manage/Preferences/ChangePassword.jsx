@@ -7,20 +7,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 import { Portal } from 'react-portal';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
-import { Container, Menu } from 'semantic-ui-react';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { Container } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
+import { toast } from 'react-toastify';
 
-import { Form, Icon, Toolbar } from '../../../components';
-import { updatePassword, addMessage } from '../../../actions';
+import { Form, Icon, Toast, Toolbar } from '../../../components';
+import { updatePassword } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
 import backSVG from '../../../icons/back.svg';
@@ -67,6 +63,10 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
 });
 
 /**
@@ -74,17 +74,6 @@ const messages = defineMessages({
  * @class ChangePassword
  * @extends Component
  */
-@injectIntl
-@connect(
-  (state, props) => ({
-    userId: state.userSession.token
-      ? jwtDecode(state.userSession.token).sub
-      : '',
-    loading: state.users.update_password.loading,
-    pathname: props.location.pathname,
-  }),
-  dispatch => bindActionCreators({ updatePassword, addMessage }, dispatch),
-)
 class ChangePassword extends Component {
   /**
    * Property types.
@@ -95,7 +84,6 @@ class ChangePassword extends Component {
     userId: PropTypes.string.isRequired,
     loading: PropTypes.bool.isRequired,
     updatePassword: PropTypes.func.isRequired,
-    addMessage: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
   };
@@ -125,10 +113,12 @@ class ChangePassword extends Component {
         data.oldPassword,
         data.newPassword,
       );
-      this.props.addMessage(
-        null,
-        this.props.intl.formatMessage(messages.saved),
-        'success',
+      toast.success(
+        <Toast
+          success
+          title={this.props.intl.formatMessage(messages.success)}
+          content={this.props.intl.formatMessage(messages.saved)}
+        />,
       );
     }
   }
@@ -217,4 +207,17 @@ class ChangePassword extends Component {
   }
 }
 
-export default withRouter(ChangePassword);
+export default compose(
+  withRouter,
+  injectIntl,
+  connect(
+    (state, props) => ({
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
+      loading: state.users.update_password.loading,
+      pathname: props.location.pathname,
+    }),
+    { updatePassword },
+  ),
+)(ChangePassword);

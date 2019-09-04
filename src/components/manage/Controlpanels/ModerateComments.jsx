@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import { Portal } from 'react-portal';
@@ -32,21 +32,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    items: state.search.items,
-    deleteRequest: state.comments.delete,
-    pathname: props.location.pathname,
-  }),
-  dispatch => bindActionCreators({ deleteComment, searchContent }, dispatch),
-)
 /**
  * ModerateCommentsComponent class.
  * @class ModerateComments
  * @extends Component
  */
-export default class ModerateComments extends Component {
+class ModerateComments extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -287,3 +278,15 @@ export default class ModerateComments extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      items: state.search.items,
+      deleteRequest: state.comments.delete,
+      pathname: props.location.pathname,
+    }),
+    { deleteComment, searchContent },
+  ),
+)(ModerateComments);

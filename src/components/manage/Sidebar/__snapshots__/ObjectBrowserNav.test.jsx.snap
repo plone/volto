@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a view image component 1`] = `
+<ul
+  className="ui segment object-listing"
+>
+  <li
+    className=""
+    onClick={[Function]}
+    onDoubleClick={[Function]}
+    role="presentation"
+  >
+    <span>
+      front-page
+    </span>
+  </li>
+  <li
+    className=""
+    onClick={[Function]}
+    onDoubleClick={[Function]}
+    role="presentation"
+  >
+    <span>
+      news
+    </span>
+  </li>
+</ul>
+`;

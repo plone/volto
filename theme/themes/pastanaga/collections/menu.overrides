@@ -70,15 +70,6 @@
   content: '';
 }
 
-// States
-.ui.menu .published.trigger:before {
-  background: @green;
-}
-
-.ui.menu .trigger.private:before {
-  background: @red;
-}
-
 .ui.menu.collapsed .trigger {
   opacity: 1;
 }

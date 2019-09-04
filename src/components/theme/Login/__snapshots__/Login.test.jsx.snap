@@ -170,29 +170,57 @@ exports[`Login renders a login component 1`] = `
         >
           <button
             aria-label="Log in"
-            className="ui big basic circular icon primary right floated button"
+            className="ui basic primary right floated button"
             id="login-form-submit"
             onClick={[Function]}
             title="Log in"
             type="submit"
           >
-            <i
-              aria-hidden="true"
-              className="arrow right icon"
+            <svg
+              className="icon circled"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "30px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
             />
           </button>
           <a
             aria-label="Cancel"
-            className="ui big basic circular icon secondary right floated button"
+            className="ui basic secondary right floated button"
             href="/"
             id="login-form-cancel"
             onClick={[Function]}
             role="button"
             title="Cancel"
           >
-            <i
-              aria-hidden="true"
-              className="remove icon"
+            <svg
+              className="icon circled"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "30px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
             />
           </a>
         </div>

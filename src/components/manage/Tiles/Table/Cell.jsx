@@ -16,7 +16,7 @@ import { settings } from '~/config';
  * @class Cell
  * @extends Component
  */
-export default class Cell extends Component {
+class Cell extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -125,3 +125,5 @@ export default class Cell extends Component {
     );
   }
 }
+
+export default Cell;

@@ -6,19 +6,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Portal } from 'react-portal';
 import { Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { toast } from 'react-toastify';
 
-import { Form, Icon, Toolbar } from '../../../components';
-import {
-  addMessage,
-  updateControlpanel,
-  getControlpanel,
-} from '../../../actions';
+import { Form, Icon, Toolbar, Toast } from '../../../components';
+import { updateControlpanel, getControlpanel } from '../../../actions';
 
 import backSVG from '../../../icons/back.svg';
 
@@ -31,6 +28,10 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  info: {
+    id: 'Info',
+    defaultMessage: 'Info',
+  },
 });
 
 /**
@@ -38,20 +39,6 @@ const messages = defineMessages({
  * @class Controlpanel
  * @extends Component
  */
-@injectIntl
-@connect(
-  (state, props) => ({
-    controlpanel: state.controlpanels.controlpanel,
-    updateRequest: state.controlpanels.update,
-    id: props.match.params.id,
-    pathname: props.location.pathname,
-  }),
-  dispatch =>
-    bindActionCreators(
-      { addMessage, updateControlpanel, getControlpanel },
-      dispatch,
-    ),
-)
 class Controlpanel extends Component {
   /**
    * Property types.
@@ -59,7 +46,6 @@ class Controlpanel extends Component {
    * @static
    */
   static propTypes = {
-    addMessage: PropTypes.func.isRequired,
     updateControlpanel: PropTypes.func.isRequired,
     getControlpanel: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
@@ -115,10 +101,12 @@ class Controlpanel extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
-      this.props.addMessage(
-        null,
-        this.props.intl.formatMessage(messages.changesSaved),
-        'info',
+      toast.info(
+        <Toast
+          info
+          title={this.props.intl.formatMessage(messages.info)}
+          content={this.props.intl.formatMessage(messages.changesSaved)}
+        />,
       );
     }
   }
@@ -185,4 +173,16 @@ class Controlpanel extends Component {
   }
 }
 
-export default withRouter(Controlpanel);
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      controlpanel: state.controlpanels.controlpanel,
+      updateRequest: state.controlpanels.update,
+      id: props.match.params.id,
+      pathname: props.location.pathname,
+    }),
+    { updateControlpanel, getControlpanel },
+  ),
+  withRouter,
+)(Controlpanel);

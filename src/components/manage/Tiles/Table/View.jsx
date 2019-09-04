@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
-import { map, omit } from 'lodash';
+import { map } from 'lodash';
 import redraft from 'redraft';
 
 import { settings } from '~/config';

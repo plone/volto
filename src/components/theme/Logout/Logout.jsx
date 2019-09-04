@@ -6,25 +6,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { asyncConnect } from 'redux-connect';
 import qs from 'query-string';
 
 import { Login } from '../../../components';
 import { logout, purgeMessages } from '../../../actions';
 
-@connect(
-  (state, props) => ({
-    query: qs.parse(props.location.search),
-  }),
-  dispatch => bindActionCreators({ logout, purgeMessages }, dispatch),
-)
 /**
- * LogoutComponent class.
- * @class LogoutComponent
+ * Logout class.
+ * @class Logout
  * @extends Component
  */
-export class LogoutComponent extends Component {
+class Logout extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -67,9 +59,9 @@ export class LogoutComponent extends Component {
   }
 }
 
-export default asyncConnect([
-  {
-    key: 'userSession',
-    promise: ({ store: { dispatch } }) => dispatch(logout()),
-  },
-])(LogoutComponent);
+export default connect(
+  (state, props) => ({
+    query: qs.parse(props.location.search),
+  }),
+  { logout, purgeMessages },
+)(Logout);
