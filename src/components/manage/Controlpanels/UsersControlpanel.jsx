@@ -434,7 +434,6 @@ class UsersControlpanel extends Component {
    * @memberof UsersControlpanel
    */
   updateUserRole(name, value) {
-    //const user = this.props.users.find(item => item.id === name);
     this.setState({
       entries: map(this.state.entries, entry => ({
         ...entry,
@@ -446,13 +445,6 @@ class UsersControlpanel extends Component {
             : entry.roles,
       })),
     });
-    /* updating through patch request
-    this.props.updateUser(name, {
-       roles: {
-         [value]: !user.roles.includes(value),
-       },
-     });
-     */
   }
   /**
    *
@@ -461,7 +453,6 @@ class UsersControlpanel extends Component {
    * @memberof UsersControlpanel
    */
   updateGroupRole(name, value) {
-    //const group = this.props.groups.find(item => item.id === name);
     this.setState({
       groupEntries: map(this.state.groupEntries, entry => ({
         ...entry,
@@ -473,13 +464,6 @@ class UsersControlpanel extends Component {
             : entry.roles,
       })),
     });
-    /* updating through patch request
-    this.props.updateGroup(name, {
-      roles: {
-        [value]: !group.roles.includes(value),
-      },
-    });
-    */
   }
 
   /**
