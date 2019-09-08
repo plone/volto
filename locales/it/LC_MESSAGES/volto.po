@@ -54,7 +54,7 @@ msgstr "Aggiungi {type}"
 
 #: components/manage/Sidebar/ImageSidebar
 msgid "Alignment"
-msgstr ""
+msgstr "Allineamento"
 
 #: components/manage/Contents/Contents
 msgid "All"
@@ -62,7 +62,7 @@ msgstr "Tutti"
 
 #: components/manage/Sidebar/ImageSidebar
 msgid "Alt text"
-msgstr ""
+msgstr "Testo alternativo"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -107,7 +107,7 @@ msgstr "Sfoglia o scrivi URL"
 
 #: components/manage/Tiles/Image/Edit
 msgid "Browse the site, drop an image, or type an URL"
-msgstr ""
+msgstr "Sfoglia i contenuti, rilascia un'immagine o digita un URL"
 
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -130,7 +130,7 @@ msgstr "Annulla"
 
 #: components/manage/Tiles/Table/Edit
 msgid "Cell"
-msgstr ""
+msgstr "Cella"
 
 #: components/manage/History/History
 msgid "Change Note"
@@ -262,11 +262,11 @@ msgstr "Elimina"
 
 #: components/manage/Tiles/Table/Edit
 msgid "Delete col"
-msgstr ""
+msgstr "Elimina colonna"
 
 #: components/manage/Tiles/Table/Edit
 msgid "Delete row"
-msgstr ""
+msgstr "Elimina riga"
 
 #: components/manage/Contents/Contents
 msgid "Descending"
@@ -302,7 +302,7 @@ msgstr "Distribuito sotto {license}"
 
 #: components/manage/Tiles/Table/Edit
 msgid "Divide each row into separate cells"
-msgstr ""
+msgstr "Dividi ogni fila in celle separate"
 
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
@@ -357,7 +357,7 @@ msgstr "Inserisci l'URL della mappa"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
-msgstr ""
+msgstr "Inserisci un URL o un titolo"
 
 #: components/manage/Tiles/Video/Edit
 msgid "Enter Video URL"
@@ -403,7 +403,7 @@ msgstr "Data di scadenza"
 
 #: components/manage/Sidebar/ImageSidebar
 msgid "External URL"
-msgstr ""
+msgstr "URL esterno"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
@@ -419,7 +419,7 @@ msgstr "Filtra…"
 
 #: components/manage/Tiles/Table/Edit
 msgid "Fixed width table cells"
-msgstr ""
+msgstr "Celle della tabella a larghezza fissata"
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
@@ -470,11 +470,11 @@ msgstr "Se non ti sei ancora iscritto, compila il {registrationform} per diventa
 
 #: components/manage/Sidebar/ImageSidebar
 msgid "Image"
-msgstr ""
+msgstr "Immagine"
 
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 #: components/manage/Sharing/Sharing
 msgid "Inherit permissions from higher levels"
@@ -482,19 +482,19 @@ msgstr "Eredita i permessi dai livelli superiori"
 
 #: components/manage/Tiles/Table/Edit
 msgid "Insert col after"
-msgstr ""
+msgstr "Inserisci colonna dopo"
 
 #: components/manage/Tiles/Table/Edit
 msgid "Insert col before"
-msgstr ""
+msgstr "Inserisci colonna prima"
 
 #: components/manage/Tiles/Table/Edit
 msgid "Insert row after"
-msgstr ""
+msgstr "Inserisci riga sotto"
 
 #: components/manage/Tiles/Table/Edit
 msgid "Insert row before"
-msgstr ""
+msgstr "Inserisci riga sopra"
 
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
@@ -524,7 +524,7 @@ msgstr "Ultima modifica"
 
 #: components/manage/Sidebar/ImageSidebar
 msgid "Link to"
-msgstr ""
+msgstr "Link a"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -545,7 +545,7 @@ msgstr "Nome utente"
 
 #: components/manage/Tiles/Table/Edit
 msgid "Make the table compact"
-msgstr ""
+msgstr "Rendi la tabella compatta"
 
 #: components/manage/Tiles/Maps/Edit
 msgid "Maps data error"
@@ -561,7 +561,7 @@ msgstr "Messaggio"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Metadata"
-msgstr ""
+msgstr "Metadata"
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
@@ -596,7 +596,7 @@ msgstr "Nuova password"
 
 #: components/manage/Sidebar/ImageSidebar
 msgid "No image selected"
-msgstr ""
+msgstr "Nessuna immagine selezionata"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -614,7 +614,7 @@ msgstr "Ok"
 
 #: components/manage/Sidebar/ImageSidebar
 msgid "Open in a new tab"
-msgstr ""
+msgstr "Apri in un nuovo tab"
 
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
@@ -623,11 +623,11 @@ msgstr "Apri menu"
 #: components/manage/Tiles/Slider/Edit
 #: components/manage/Tiles/TileModal/TileModal
 msgid "Options"
-msgstr ""
+msgstr "Opzioni"
 
 #: components/manage/Sidebar/ImageSidebar
 msgid "Origin"
-msgstr ""
+msgstr "Origine"
 
 #: components/theme/Login/Login
 msgid "Password"
@@ -672,7 +672,7 @@ msgstr "Plone{reg} Open Source CMS/WCM"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Portrait"
-msgstr ""
+msgstr "Ritratto"
 
 #: components/theme/Footer/Footer
 msgid "Powered by Plone & Python"
@@ -708,7 +708,7 @@ msgstr "Riordina elementi per…"
 
 #: components/manage/Tiles/Table/Edit
 msgid "Reduce complexity"
-msgstr ""
+msgstr "Riduci complicità"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Register/Register
@@ -889,15 +889,15 @@ msgstr "Oggetto"
 #: components/manage/Preferences/PersonalPreferences
 #: components/theme/ContactForm/ContactForm
 msgid "Success"
-msgstr ""
+msgstr "Successo"
 
 #: components/manage/Tiles/Table/Edit
 msgid "Table"
-msgstr ""
+msgstr "Tabella"
 
 #: components/manage/Tiles/Table/Edit
 msgid "Table color inverted"
-msgstr ""
+msgstr "Tabella a colori invertiti"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
@@ -930,7 +930,7 @@ msgstr "La registrazione è avvenuta correttamente. Per favore controlla la tua 
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The user portrait/avatar"
-msgstr ""
+msgstr "L'avatar/ritratto utente"
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
@@ -1016,7 +1016,7 @@ msgstr "Impostazioni utenti e gruppi"
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
-msgstr ""
+msgstr "Panoramica delle versioni"
 
 #: components/manage/Contents/ContentsItem
 msgid "View"
@@ -1056,7 +1056,7 @@ msgstr "Chi"
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
-msgstr ""
+msgstr "Workflow aggiornato."
 
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
@@ -1124,7 +1124,7 @@ msgstr "form di registrazione"
 
 #: config/Tiles
 msgid "table"
-msgstr ""
+msgstr "Tabella"
 
 #: config/Tiles
 msgid "text"
