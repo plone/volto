@@ -124,6 +124,7 @@ module.exports = {
       config.plugins.unshift(
         // restrict moment.js locales to en/de
         // see https://github.com/jmblog/how-to-optimize-momentjs-with-webpack for details
+<<<<<<< HEAD
         new webpack.ContextReplacementPlugin(
           /moment[/\\]locale$/,
           /en|de|nl|it/,
@@ -146,6 +147,9 @@ module.exports = {
           paths: true,
           placeholders: true,
         }),
+=======
+        new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en|de|nl|it/),
+>>>>>>> Add nl/it to moment js config.
       );
     }
 
