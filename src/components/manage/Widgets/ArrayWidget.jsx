@@ -286,13 +286,17 @@ class ArrayWidget extends Component {
                 <CreatableSelect
                   className="react-select-container"
                   classNamePrefix="react-select"
-                  options={[
-                    ...this.props.items.choices.map(option => ({
-                      value: option[0],
-                      label: option[1],
-                    })),
-                    { label: 'No value', value: 'no-value' },
-                  ]}
+                  options={
+                    this.props.items.choices
+                      ? [
+                          ...this.props.items.choices.map(option => ({
+                            value: option[0],
+                            label: option[1],
+                          })),
+                          { label: 'No value', value: 'no-value' },
+                        ]
+                      : []
+                  }
                   styles={customSelectStyles}
                   theme={selectTheme}
                   components={{ DropdownIndicator, Option }}
