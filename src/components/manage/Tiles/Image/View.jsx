@@ -5,42 +5,81 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import cx from 'classnames';
 import { settings } from '~/config';
-import ImageZoom from 'react-medium-image-zoom';
 
-import { flattenToAppURL } from '../../../../helpers';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
  * View image tile class.
  * @class View
  * @extends Component
  */
-const View = ({ data }) => (
+const View = ({ data, detached }) => (
   <p
     className={cx(
       'tile image align',
       {
         center: !Boolean(data.align),
+        detached,
       },
       data.align,
     )}
   >
-    <ImageZoom
-      image={{
-        src: data.url.startsWith(settings.apiPath)
-          ? `${flattenToAppURL(data.url)}/@@images/image`
-          : data.url,
-        alt: '',
-        className: 'ui image',
-      }}
-      zoomImage={{
-        src: data.url.startsWith(settings.apiPath)
-          ? `${flattenToAppURL(data.url)}/@@images/image`
-          : data.url,
-        alt: '',
-      }}
-    />
+    {data.url && (
+      <>
+        {(() => {
+          const image = (
+            <img
+              src={
+                data.url.includes(settings.apiPath)
+                  ? `${flattenToAppURL(data.url)}/@@images/image`
+                  : data.url
+              }
+              alt={data.alt || ''}
+            />
+          );
+          if (data.external) {
+            const isReallyExternal =
+              (data.external.startsWith('http') ||
+                data.external.startsWith('https')) &&
+              !data.external.includes(settings.apiPath);
+
+            if (isReallyExternal) {
+              return (
+                <a
+                  target={data.openLinkInNewTab ? '_blank' : null}
+                  href={data.external}
+                >
+                  {image}
+                </a>
+              );
+            } else {
+              return (
+                <Link
+                  to={data.external.replace(settings.apiPath, '')}
+                  target={data.openLinkInNewTab ? '_blank' : null}
+                >
+                  {image}
+                </Link>
+              );
+            }
+          } else if (data.href) {
+            return (
+              <Link
+                to={data.href}
+                target={data.openLinkInNewTab ? '_blank' : null}
+              >
+                {image}
+              </Link>
+            );
+          } else {
+            return image;
+          }
+        })()}
+      </>
+    )}
   </p>
 );
 

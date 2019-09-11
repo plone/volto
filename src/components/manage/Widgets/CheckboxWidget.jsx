@@ -119,8 +119,7 @@ const CheckboxWidget = ({
                 <i aria-hidden="true" className="grey bars icon drag handle" />
               )}
               <Checkbox
-                id={`field-${id}`}
-                name={id}
+                name={`field-${id}`}
                 checked={value}
                 disabled={onEdit !== null}
                 onChange={(event, { checked }) => onChange(id, checked)}

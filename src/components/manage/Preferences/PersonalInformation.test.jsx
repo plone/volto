@@ -70,6 +70,7 @@ describe('PersonalInformation', () => {
         <MemoryRouter>
           <PersonalInformation
             location={{ pathname: '/blog' }}
+            closeMenu={() => {}}
             isToolbarEmbedded
           />
         </MemoryRouter>

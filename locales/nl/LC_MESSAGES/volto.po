@@ -71,9 +71,17 @@ msgstr ""
 msgid "Add {type}"
 msgstr "Voeg {type} toe"
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "Alignment"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "All"
 msgstr "Alles"
+
+#: components/manage/Sidebar/ImageSidebar
+msgid "Alt text"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -110,8 +118,14 @@ msgstr "Basis"
 msgid "Browse"
 msgstr "Bladeren"
 
-#: components/manage/Tiles/Image/Edit
+#: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Sidebar/ObjectBrowserOld
+#: components/manage/Tiles/Slider/Edit
 msgid "Browse or type URL"
+msgstr ""
+
+#: components/manage/Tiles/Image/Edit
+msgid "Browse the site, drop an image, or type an URL"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
@@ -127,6 +141,7 @@ msgstr "Standaard worden de rechten overgenomen van de bovenliggende map.  Als u
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Tiles/TileModal/TileModal
 #: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 msgid "Cancel"
@@ -241,6 +256,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -277,6 +293,7 @@ msgstr "Aflopend"
 
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -403,6 +420,10 @@ msgstr "Sluit uit van de navigatiestructuur"
 msgid "Expiration Date"
 msgstr "Vervaldatum"
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "External URL"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
 msgstr "Bestandsgrootte"
@@ -466,6 +487,14 @@ msgstr ""
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "Image"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanel
+msgid "Info"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 msgid "Inherit permissions from higher levels"
 msgstr "Rechten overnemen van bovenliggende map"
@@ -511,6 +540,10 @@ msgstr "Taal"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Laatst gewijzigd"
+
+#: components/manage/Sidebar/ImageSidebar
+msgid "Link to"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -580,6 +613,10 @@ msgstr "Naam"
 msgid "New password"
 msgstr "Nieuw wachtwoord"
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "No image selected"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/TokenWidget
@@ -594,8 +631,21 @@ msgstr "Niks"
 msgid "Ok"
 msgstr "Ok"
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "Open in a new tab"
+msgstr ""
+
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
+msgstr ""
+
+#: components/manage/Tiles/Slider/Edit
+#: components/manage/Tiles/TileModal/TileModal
+msgid "Options"
+msgstr ""
+
+#: components/manage/Sidebar/ImageSidebar
+msgid "Origin"
 msgstr ""
 
 #: components/theme/Login/Login
@@ -698,6 +748,7 @@ msgid "Rename items"
 msgstr "Naam wijzigen"
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -729,6 +780,7 @@ msgstr "Rechten"
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Tiles/TileModal/TileModal
 #: components/manage/Tiles/Video/Edit
 #: components/mosaic/Layout/Layout
 msgid "Save"
@@ -791,6 +843,7 @@ msgid "Sharing for {title}"
 msgstr "Delen van {title}"
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -846,6 +899,15 @@ msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Preferences/PersonalPreferences
+#: components/theme/ContactForm/ContactForm
+msgid "Success"
 msgstr ""
 
 #: components/manage/Tiles/Table/Edit
@@ -910,6 +972,7 @@ msgstr "Het spijt ons, maar deze pagina bestaat niet…"
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -949,6 +1012,7 @@ msgid "Uploading files"
 msgstr "Bestanden uploaden"
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget

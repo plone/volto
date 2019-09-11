@@ -1,6 +1,6 @@
 const xmlrpc = require('xmlrpc');
 
-const args = process.argv;
+// const args = process.argv;
 const command = process.argv[2];
 
 // create a client

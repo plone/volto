@@ -67,9 +67,17 @@ msgstr "Tile hinzufügen"
 msgid "Add {type}"
 msgstr "{type} hinzufügen"
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "Alignment"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "All"
 msgstr "Alle"
+
+#: components/manage/Sidebar/ImageSidebar
+msgid "Alt text"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this field?"
@@ -106,9 +114,15 @@ msgstr "Basis"
 msgid "Browse"
 msgstr "Durchsuchen"
 
-#: components/manage/Tiles/Image/Edit
+#: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Sidebar/ObjectBrowserOld
+#: components/manage/Tiles/Slider/Edit
 msgid "Browse or type URL"
 msgstr "Inhalte Durchsuchen oder URL eingeben"
+
+#: components/manage/Tiles/Image/Edit
+msgid "Browse the site, drop an image, or type an URL"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
@@ -123,6 +137,7 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Tiles/TileModal/TileModal
 #: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 msgid "Cancel"
@@ -237,6 +252,7 @@ msgstr "Datum"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -273,6 +289,7 @@ msgstr "Absteigend"
 
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -399,6 +416,10 @@ msgstr "Von der Navigation ausschließen"
 msgid "Expiration Date"
 msgstr "Ablaufdatum"
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "External URL"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
 msgstr "Dateigröße"
@@ -462,6 +483,14 @@ msgstr "Klicken Sie bitte hier, falls Sie Ihr Passwort vergessen haben: {forgotp
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr "Falls Sie noch keinen Zugang haben, {registrationform} Sie sich bitte zunächst."
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "Image"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanel
+msgid "Info"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 msgid "Inherit permissions from higher levels"
 msgstr "Berechtigungen von übergeordneten Ordnern übernehmen"
@@ -507,6 +536,10 @@ msgstr "Sprache"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Letzte Änderung"
+
+#: components/manage/Sidebar/ImageSidebar
+msgid "Link to"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -576,6 +609,10 @@ msgstr "Name"
 msgid "New password"
 msgstr "Neues Passwort"
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "No image selected"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/TokenWidget
@@ -590,9 +627,22 @@ msgstr "Keiner"
 msgid "Ok"
 msgstr "OK"
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "Open in a new tab"
+msgstr ""
+
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
 msgstr "Menü öffnen"
+
+#: components/manage/Tiles/Slider/Edit
+#: components/manage/Tiles/TileModal/TileModal
+msgid "Options"
+msgstr ""
+
+#: components/manage/Sidebar/ImageSidebar
+msgid "Origin"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "Password"
@@ -694,6 +744,7 @@ msgid "Rename items"
 msgstr "Artikel umbenennen"
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -725,6 +776,7 @@ msgstr "Rechte"
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Tiles/TileModal/TileModal
 #: components/manage/Tiles/Video/Edit
 #: components/mosaic/Layout/Layout
 msgid "Save"
@@ -787,6 +839,7 @@ msgid "Sharing for {title}"
 msgstr "Freigabe für"
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -842,6 +895,15 @@ msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Preferences/PersonalPreferences
+#: components/theme/ContactForm/ContactForm
+msgid "Success"
 msgstr ""
 
 #: components/manage/Tiles/Table/Edit
@@ -906,6 +968,7 @@ msgstr "Die Seite existiert leider nicht…"
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -945,6 +1008,7 @@ msgid "Uploading files"
 msgstr "Dateien hochladen"
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
