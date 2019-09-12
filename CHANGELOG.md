@@ -56,6 +56,7 @@
 - Add razzle-plugin-bundle-analyzer @tisto
 - Add bundlewatch @tisto
 - Add bundlesize @tisto
+- Update base buildout, add omelette @sneridagh
 
 ## 3.1.0 (2019-06-14)
 
