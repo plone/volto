@@ -43,6 +43,7 @@
 - Fix bulk workflow change in contents view @sneridagh
 - Fix regresion on uploading image to root @sneridagh
 - Fix hero tile on view if image is missing @sneridagh
+- Fix hero tile being next to a left or right aligned image @jackahl
 
 ### Internal
 
