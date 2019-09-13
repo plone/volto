@@ -66,8 +66,12 @@ class Search extends Component {
   componentWillMount() {
     this.props.searchContent('', {
       SearchableText: this.props.searchableText,
-      Subject: this.props.subject,
-      path: this.props.path,
+      ...(this.props.subject && {
+        Subject: this.props.subject,
+      }),
+      ...(this.props.path && {
+        path: this.props.path,
+      }),
     });
   }
 
@@ -81,8 +85,12 @@ class Search extends Component {
     if (nextProps.searchableText !== this.props.searchableText) {
       this.props.searchContent('', {
         SearchableText: nextProps.searchableText,
-        Subject: this.props.subject,
-        path: this.props.path,
+        ...(this.props.subject && {
+          Subject: this.props.subject,
+        }),
+        ...(this.props.path && {
+          path: this.props.path,
+        }),
       });
     }
   }
