@@ -43,6 +43,7 @@
 - Fix bulk workflow change in contents view @sneridagh
 - Fix regresion on uploading image to root @sneridagh
 - Fix hero tile on view if image is missing @sneridagh
+- Fix link to contextual contents in toolbar @sneridagh
 
 ### Internal
 

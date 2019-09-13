@@ -295,7 +295,7 @@ class Toolbar extends Component {
                     {this.props.content &&
                       this.props.content.is_folderish &&
                       folderContentsAction && (
-                        <Link aria-label="Contents" to="/contents">
+                        <Link aria-label="Contents" to={`${path}/contents`}>
                           <Icon name={folderSVG} size="30px" />
                         </Link>
                       )}
