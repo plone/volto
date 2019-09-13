@@ -12,6 +12,10 @@ jest.mock('react-portal', () => ({
   Portal: jest.fn(() => <div id="Portal" />),
 }));
 
+jest.mock('./VersionOverview', () =>
+  jest.fn(() => <div className="VersionOverview" />),
+);
+
 describe('Controlpanels', () => {
   it('renders a controlpanels component', () => {
     const store = mockStore({
