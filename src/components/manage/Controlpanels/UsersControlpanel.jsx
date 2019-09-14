@@ -21,6 +21,7 @@ import {
   Divider,
 } from 'semantic-ui-react';
 import { find, map } from 'lodash';
+import { toast } from 'react-toastify';
 import {
   FormattedMessage,
   defineMessages,
@@ -46,6 +47,7 @@ import {
   UsersControlpanelUser,
   Icon as AddIcon,
   UsersControlpanelGroups,
+  Toast,
 } from '../../../components';
 import addSvg from '../../../icons/circle-plus.svg';
 
@@ -133,6 +135,18 @@ const messages = defineMessages({
   addGroupsFormRolesTitle: {
     id: 'Roles',
     defaultMessage: 'Roles',
+  },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
+  userCreated: {
+    id: 'User created',
+    defaultMessage: 'User created',
+  },
+  groupCreated: {
+    id: 'Group created',
+    defaultMessage: 'Group created',
   },
 });
 
@@ -517,6 +531,13 @@ class UsersControlpanel extends Component {
       addUserError: undefined,
       addUserSetFormDataCallback: undefined,
     });
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.userCreated)}
+      />,
+    );
   }
   /**
    * Handle Success after createGroup()
@@ -531,6 +552,13 @@ class UsersControlpanel extends Component {
       addGroupError: undefined,
       addGroupSetFormDataCallback: undefined,
     });
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.groupCreated)}
+      />,
+    );
   }
 
   /**
