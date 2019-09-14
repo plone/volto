@@ -20,7 +20,7 @@ import {
   Label,
   Divider,
 } from 'semantic-ui-react';
-import { find, map } from 'lodash';
+import { find, map, isEqual } from 'lodash';
 import { toast } from 'react-toastify';
 import {
   FormattedMessage,
@@ -50,6 +50,9 @@ import {
   Toast,
 } from '../../../components';
 import addSvg from '../../../icons/circle-plus.svg';
+import backSVG from '../../../icons/back.svg';
+import saveSVG from '../../../icons/save.svg';
+import clearSVG from '../../../icons/clear.svg';
 
 const messages = defineMessages({
   searchUsers: {
@@ -244,6 +247,8 @@ class UsersControlpanel extends Component {
     this.onAddGroupSuccess = this.onAddGroupSuccess.bind(this);
     this.updateUserRole = this.updateUserRole.bind(this);
     this.updateGroupRole = this.updateGroupRole.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onCancel = this.onCancel.bind(this);
     this.state = {
       search: '',
       showAddUser: false,
@@ -559,6 +564,47 @@ class UsersControlpanel extends Component {
         content={this.props.intl.formatMessage(messages.groupCreated)}
       />,
     );
+  }
+
+  /**
+   * Submit handler
+   * @method onSubmit
+   * @param {object} event Event object.
+   * @returns {undefined}
+   */
+  onSubmit(event) {
+    const userData = { roles: {} };
+    const groupData = { roles: {} };
+    event.preventDefault();
+    for (let i = 0; i < this.props.users.length; i += 1) {
+      if (!isEqual(this.props.users[i].roles, this.state.entries[i].roles)) {
+        this.state.entries[i].roles.map(item => {
+          userData.roles[item] = true;
+        });
+        userData.id = this.state.entries[i].id;
+        this.props.updateUser(userData.id, userData);
+      }
+    }
+    for (let i = 0; i < this.props.groups.length; i += 1) {
+      if (
+        !isEqual(this.props.groups[i].roles, this.state.groupEntries[i].roles)
+      ) {
+        this.state.groupEntries[i].roles.map(item => {
+          groupData.roles[item] = true;
+        });
+        groupData.id = this.state.groupEntries[i].id;
+        this.props.updateGroup(groupData.id, groupData);
+      }
+    }
+  }
+
+  /**
+   * Cancel handler
+   * @method onCancel
+   * @returns {undefined}
+   */
+  onCancel() {
+    this.props.history.push(getBaseUrl(this.props.pathname));
   }
 
   /**
@@ -905,15 +951,40 @@ class UsersControlpanel extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
+            hideDefaultViewButtons
             inner={
-              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
-                <Icon
-                  name="arrow left"
-                  size="big"
-                  color="blue"
-                  title={this.props.intl.formatMessage(messages.back)}
-                />
-              </Link>
+              <>
+                <Link to="/controlpanel" className="item">
+                  <AddIcon
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
+                <button
+                  id="toolbar-save"
+                  className="save"
+                  aria-label={this.props.intl.formatMessage(messages.save)}
+                  onClick={this.onSubmit}
+                >
+                  <AddIcon
+                    name={saveSVG}
+                    className="circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.save)}
+                  />
+                </button>
+                <button className="cancel" onClick={this.onCancel}>
+                  <AddIcon
+                    name={clearSVG}
+                    className="circled"
+                    aria-label={this.props.intl.formatMessage(messages.cancel)}
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.cancel)}
+                  />
+                </button>
+              </>
             }
           />
         </Portal>
