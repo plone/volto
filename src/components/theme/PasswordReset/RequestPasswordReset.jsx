@@ -6,8 +6,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import Helmet from 'react-helmet';
 import { Container } from 'semantic-ui-react';
 import {
@@ -53,15 +53,6 @@ const messages = defineMessages({
  * @class RequestPasswordReset
  * @extends Component
  */
-@injectIntl
-@connect(
-  state => ({
-    loading: state.users.reset.loading,
-    loaded: state.users.reset.loaded,
-    error: state.users.reset.error,
-  }),
-  dispatch => bindActionCreators({ resetPassword }, dispatch),
-)
 class RequestPasswordReset extends Component {
   /**
    * Property types.
@@ -210,4 +201,15 @@ class RequestPasswordReset extends Component {
   }
 }
 
-export default withRouter(RequestPasswordReset);
+export default compose(
+  withRouter,
+  injectIntl,
+  connect(
+    state => ({
+      loading: state.users.reset.loading,
+      loaded: state.users.reset.loaded,
+      error: state.users.reset.error,
+    }),
+    { resetPassword },
+  ),
+)(RequestPasswordReset);

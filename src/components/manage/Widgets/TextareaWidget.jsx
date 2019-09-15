@@ -52,6 +52,7 @@ const TextareaWidget = ({
   onEdit,
   onDelete,
   intl,
+  fieldSet,
 }) => {
   const schema = {
     fieldsets: [
@@ -90,6 +91,7 @@ const TextareaWidget = ({
       required={required}
       error={error.length > 0}
       className={description ? 'help textarea' : 'textarea'}
+      id={`${fieldSet || 'field'}-${id}`}
     >
       <Grid>
         <Grid.Row stretched>
@@ -109,12 +111,16 @@ const TextareaWidget = ({
           <Grid.Column width="8">
             {onEdit && (
               <div className="toolbar">
-                <a className="item" onClick={() => onEdit(id, schema)}>
+                <button className="item" onClick={() => onEdit(id, schema)}>
                   <Icon name="write square" size="large" color="blue" />
-                </a>
-                <a className="item" onClick={() => onDelete(id)}>
+                </button>
+                <button
+                  aria-label="Delete"
+                  className="item"
+                  onClick={() => onDelete(id)}
+                >
                   <Icon name="close" size="large" color="red" />
-                </a>
+                </button>
               </div>
             )}
             <TextArea

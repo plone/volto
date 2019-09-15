@@ -3,297 +3,703 @@
 exports[`PersonalInformation renders a personal information component 1`] = `
 <div
   className="ui container"
-  id="page-personal-information"
 >
-  <div
-    className="ui stackable top attached tabular menu"
+  <form
+    className="ui form"
+    method="post"
+    onSubmit={[Function]}
   >
     <div
-      className="active item"
-      onClick={[Function]}
-    >
-      Personal Information
-    </div>
-    <a
-      className="item"
-      href="/personal-preferences"
-      onClick={[Function]}
-    >
-      <span>
-        Personal Preferences
-      </span>
-    </a>
-    <a
-      className="item"
-      href="/change-password"
-      onClick={[Function]}
-    >
-      <span>
-        Change Password
-      </span>
-    </a>
-  </div>
-  <div
-    className="ui container"
-  >
-    <form
-      className="ui form"
-      method="post"
-      onSubmit={[Function]}
+      className="ui raised segments"
     >
       <div
-        className="ui raised segments"
+        className="ui segment"
       >
         <div
-          className="ui segment"
+          className="inline field help"
+          id="field-fullname"
         >
           <div
-            className="inline field help"
+            className="ui grid"
           >
             <div
-              className="ui grid"
+              className="stretched row"
             >
               <div
-                className="stretched row"
+                className="four wide column"
               >
                 <div
-                  className="four wide column"
+                  className="wrapper"
                 >
-                  <div
-                    className="wrapper"
+                  <label
+                    htmlFor="field-fullname"
                   >
-                    <label
-                      htmlFor="field-fullname"
-                    >
-                      Full Name
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
-                  <div
-                    className="ui input"
-                  >
-                    <input
-                      disabled={false}
-                      id="field-fullname"
-                      name="fullname"
-                      onChange={[Function]}
-                      type="text"
-                      value=""
-                    />
-                  </div>
+                    Full Name
+                  </label>
                 </div>
               </div>
               <div
-                className="stretched row"
+                className="eight wide column"
               >
                 <div
-                  className="stretched twelve wide column"
+                  className="ui input"
                 >
-                  <p
-                    className="help"
-                  >
-                    Enter full name, e.g. John Smith.
-                  </p>
+                  <input
+                    disabled={false}
+                    id="field-fullname"
+                    name="fullname"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  />
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            className="inline required field help"
-          >
             <div
-              className="ui grid"
+              className="stretched row"
             >
               <div
-                className="stretched row"
+                className="stretched twelve wide column"
               >
-                <div
-                  className="four wide column"
+                <p
+                  className="help"
                 >
-                  <div
-                    className="wrapper"
-                  >
-                    <label
-                      htmlFor="field-email"
-                    >
-                      E-mail
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
-                  <div
-                    className="ui input"
-                  >
-                    <input
-                      disabled={false}
-                      id="field-email"
-                      name="email"
-                      onChange={[Function]}
-                      type="text"
-                      value=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="stretched row"
-              >
-                <div
-                  className="stretched twelve wide column"
-                >
-                  <p
-                    className="help"
-                  >
-                    We will use this address if you need to recover your password
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="inline field help"
-          >
-            <div
-              className="ui grid"
-            >
-              <div
-                className="stretched row"
-              >
-                <div
-                  className="four wide column"
-                >
-                  <div
-                    className="wrapper"
-                  >
-                    <label
-                      htmlFor="field-home_page"
-                    >
-                      Home page
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
-                  <div
-                    className="ui input"
-                  >
-                    <input
-                      disabled={false}
-                      id="field-home_page"
-                      name="home_page"
-                      onChange={[Function]}
-                      type="text"
-                      value=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="stretched row"
-              >
-                <div
-                  className="stretched twelve wide column"
-                >
-                  <p
-                    className="help"
-                  >
-                    The URL for your external home page, if you have one.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="inline field help"
-          >
-            <div
-              className="ui grid"
-            >
-              <div
-                className="stretched row"
-              >
-                <div
-                  className="four wide column"
-                >
-                  <div
-                    className="wrapper"
-                  >
-                    <label
-                      htmlFor="field-location"
-                    >
-                      Location
-                    </label>
-                  </div>
-                </div>
-                <div
-                  className="eight wide column"
-                >
-                  <div
-                    className="ui input"
-                  >
-                    <input
-                      disabled={false}
-                      id="field-location"
-                      name="location"
-                      onChange={[Function]}
-                      type="text"
-                      value=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="stretched row"
-              >
-                <div
-                  className="stretched twelve wide column"
-                >
-                  <p
-                    className="help"
-                  >
-                    Your location - either city and country - or in a company setting, where your office is located.
-                  </p>
-                </div>
+                  Enter full name, e.g. John Smith.
+                </p>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="ui clearing segment actions"
+          className="inline required field help"
+          id="field-email"
         >
-          <button
-            className="ui big basic circular icon primary right floated button"
-            onClick={[Function]}
-            title="Save"
-            type="submit"
+          <div
+            className="ui grid"
           >
-            <i
-              aria-hidden="true"
-              className="arrow right icon"
-            />
-          </button>
-          <button
-            className="ui big basic circular icon secondary right floated button"
-            onClick={[Function]}
-            title="Cancel"
+            <div
+              className="stretched row"
+            >
+              <div
+                className="four wide column"
+              >
+                <div
+                  className="wrapper"
+                >
+                  <label
+                    htmlFor="field-email"
+                  >
+                    E-mail
+                  </label>
+                </div>
+              </div>
+              <div
+                className="eight wide column"
+              >
+                <div
+                  className="ui input"
+                >
+                  <input
+                    disabled={false}
+                    id="field-email"
+                    name="email"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="stretched row"
+            >
+              <div
+                className="stretched twelve wide column"
+              >
+                <p
+                  className="help"
+                >
+                  We will use this address if you need to recover your password
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="inline field help"
+          id="field-portrait"
+        >
+          <div
+            className="ui grid"
           >
-            <i
-              aria-hidden="true"
-              className="remove icon"
-            />
-          </button>
+            <div
+              className="stretched row"
+            >
+              <div
+                className="four wide column"
+              >
+                <div
+                  className="wrapper"
+                >
+                  <label
+                    htmlFor="field-portrait"
+                  >
+                    Portrait
+                  </label>
+                </div>
+              </div>
+              <div
+                className="eight wide column"
+              >
+                <div
+                  className="ui input"
+                >
+                  <input
+                    id="field-portrait"
+                    name="portrait"
+                    onChange={[Function]}
+                    type="file"
+                  />
+                </div>
+                <div
+                  className="field-file-name"
+                />
+              </div>
+            </div>
+            <div
+              className="stretched row"
+            >
+              <div
+                className="stretched twelve wide column"
+              >
+                <p
+                  className="help"
+                >
+                  The user portrait/avatar
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="inline field help"
+          id="field-home_page"
+        >
+          <div
+            className="ui grid"
+          >
+            <div
+              className="stretched row"
+            >
+              <div
+                className="four wide column"
+              >
+                <div
+                  className="wrapper"
+                >
+                  <label
+                    htmlFor="field-home_page"
+                  >
+                    Home page
+                  </label>
+                </div>
+              </div>
+              <div
+                className="eight wide column"
+              >
+                <div
+                  className="ui input"
+                >
+                  <input
+                    disabled={false}
+                    id="field-home_page"
+                    name="home_page"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="stretched row"
+            >
+              <div
+                className="stretched twelve wide column"
+              >
+                <p
+                  className="help"
+                >
+                  The URL for your external home page, if you have one.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="inline field help"
+          id="field-location"
+        >
+          <div
+            className="ui grid"
+          >
+            <div
+              className="stretched row"
+            >
+              <div
+                className="four wide column"
+              >
+                <div
+                  className="wrapper"
+                >
+                  <label
+                    htmlFor="field-location"
+                  >
+                    Location
+                  </label>
+                </div>
+              </div>
+              <div
+                className="eight wide column"
+              >
+                <div
+                  className="ui input"
+                >
+                  <input
+                    disabled={false}
+                    id="field-location"
+                    name="location"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="stretched row"
+            >
+              <div
+                className="stretched twelve wide column"
+              >
+                <p
+                  className="help"
+                >
+                  Your location - either city and country - or in a company setting, where your office is located.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </form>
-  </div>
-  <div
-    id="Portal"
-  />
+      <div
+        className="ui clearing segment actions"
+      >
+        <button
+          aria-label="Save"
+          className="ui basic primary right floated button"
+          onClick={[Function]}
+          title="Save"
+          type="submit"
+        >
+          <svg
+            className="icon circled"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "30px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </button>
+        <button
+          aria-label="Cancel"
+          className="ui basic secondary right floated button"
+          onClick={[Function]}
+          title="Cancel"
+        >
+          <svg
+            className="icon circled"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "30px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`PersonalInformation renders a personal information component embedded in the Toolbar 1`] = `
+<div
+  className="ui container"
+>
+  <form
+    className="ui form"
+    method="post"
+    onSubmit={[Function]}
+  >
+    <div
+      className="ui raised segments"
+    >
+      <div
+        className="ui segment"
+      >
+        <div
+          className="inline field help"
+          id="field-fullname"
+        >
+          <div
+            className="ui grid"
+          >
+            <div
+              className="stretched row"
+            >
+              <div
+                className="four wide column"
+              >
+                <div
+                  className="wrapper"
+                >
+                  <label
+                    htmlFor="field-fullname"
+                  >
+                    Full Name
+                  </label>
+                </div>
+              </div>
+              <div
+                className="eight wide column"
+              >
+                <div
+                  className="ui input"
+                >
+                  <input
+                    disabled={false}
+                    id="field-fullname"
+                    name="fullname"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="stretched row"
+            >
+              <div
+                className="stretched twelve wide column"
+              >
+                <p
+                  className="help"
+                >
+                  Enter full name, e.g. John Smith.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="inline required field help"
+          id="field-email"
+        >
+          <div
+            className="ui grid"
+          >
+            <div
+              className="stretched row"
+            >
+              <div
+                className="four wide column"
+              >
+                <div
+                  className="wrapper"
+                >
+                  <label
+                    htmlFor="field-email"
+                  >
+                    E-mail
+                  </label>
+                </div>
+              </div>
+              <div
+                className="eight wide column"
+              >
+                <div
+                  className="ui input"
+                >
+                  <input
+                    disabled={false}
+                    id="field-email"
+                    name="email"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="stretched row"
+            >
+              <div
+                className="stretched twelve wide column"
+              >
+                <p
+                  className="help"
+                >
+                  We will use this address if you need to recover your password
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="inline field help"
+          id="field-portrait"
+        >
+          <div
+            className="ui grid"
+          >
+            <div
+              className="stretched row"
+            >
+              <div
+                className="four wide column"
+              >
+                <div
+                  className="wrapper"
+                >
+                  <label
+                    htmlFor="field-portrait"
+                  >
+                    Portrait
+                  </label>
+                </div>
+              </div>
+              <div
+                className="eight wide column"
+              >
+                <div
+                  className="ui input"
+                >
+                  <input
+                    id="field-portrait"
+                    name="portrait"
+                    onChange={[Function]}
+                    type="file"
+                  />
+                </div>
+                <div
+                  className="field-file-name"
+                />
+              </div>
+            </div>
+            <div
+              className="stretched row"
+            >
+              <div
+                className="stretched twelve wide column"
+              >
+                <p
+                  className="help"
+                >
+                  The user portrait/avatar
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="inline field help"
+          id="field-home_page"
+        >
+          <div
+            className="ui grid"
+          >
+            <div
+              className="stretched row"
+            >
+              <div
+                className="four wide column"
+              >
+                <div
+                  className="wrapper"
+                >
+                  <label
+                    htmlFor="field-home_page"
+                  >
+                    Home page
+                  </label>
+                </div>
+              </div>
+              <div
+                className="eight wide column"
+              >
+                <div
+                  className="ui input"
+                >
+                  <input
+                    disabled={false}
+                    id="field-home_page"
+                    name="home_page"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="stretched row"
+            >
+              <div
+                className="stretched twelve wide column"
+              >
+                <p
+                  className="help"
+                >
+                  The URL for your external home page, if you have one.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="inline field help"
+          id="field-location"
+        >
+          <div
+            className="ui grid"
+          >
+            <div
+              className="stretched row"
+            >
+              <div
+                className="four wide column"
+              >
+                <div
+                  className="wrapper"
+                >
+                  <label
+                    htmlFor="field-location"
+                  >
+                    Location
+                  </label>
+                </div>
+              </div>
+              <div
+                className="eight wide column"
+              >
+                <div
+                  className="ui input"
+                >
+                  <input
+                    disabled={false}
+                    id="field-location"
+                    name="location"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="stretched row"
+            >
+              <div
+                className="stretched twelve wide column"
+              >
+                <p
+                  className="help"
+                >
+                  Your location - either city and country - or in a company setting, where your office is located.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ui clearing segment actions"
+      >
+        <button
+          aria-label="Save"
+          className="ui basic primary right floated button"
+          onClick={[Function]}
+          title="Save"
+          type="submit"
+        >
+          <svg
+            className="icon circled"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "30px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </button>
+        <button
+          aria-label="Cancel"
+          className="ui basic secondary right floated button"
+          onClick={[Function]}
+          title="Cancel"
+        >
+          <svg
+            className="icon circled"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "currentColor",
+                "height": "30px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
 `;

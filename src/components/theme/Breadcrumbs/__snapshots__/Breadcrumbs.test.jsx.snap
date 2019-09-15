@@ -2,7 +2,9 @@
 
 exports[`Breadcrumbs renders a breadcrumbs component 1`] = `
 <div
+  aria-label="Breadcrumbs"
   className="ui secondary vertical segment breadcrumbs"
+  role="navigation"
 >
   <div
     className="ui container"

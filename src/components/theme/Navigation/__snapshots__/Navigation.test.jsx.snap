@@ -8,6 +8,7 @@ exports[`Navigation renders a navigation component with an active item 1`] = `
     className="hamburger-wrapper mobile only"
   >
     <button
+      aria-label="Open menu"
       className="hamburger hamburger--collapse"
       onClick={[Function]}
       title="Open menu"
@@ -52,6 +53,7 @@ exports[`Navigation renders a navigation component with an active item when its 
     className="hamburger-wrapper mobile only"
   >
     <button
+      aria-label="Open menu"
       className="hamburger hamburger--collapse"
       onClick={[Function]}
       title="Open menu"
@@ -96,6 +98,7 @@ exports[`Navigation renders a navigation component with only one active item eve
     className="hamburger-wrapper mobile only"
   >
     <button
+      aria-label="Open menu"
       className="hamburger hamburger--collapse"
       onClick={[Function]}
       title="Open menu"
@@ -147,6 +150,7 @@ exports[`Navigation renders a navigation component without active items 1`] = `
     className="hamburger-wrapper mobile only"
   >
     <button
+      aria-label="Open menu"
       className="hamburger hamburger--collapse"
       onClick={[Function]}
       title="Open menu"

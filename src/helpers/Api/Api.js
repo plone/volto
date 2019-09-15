@@ -31,7 +31,7 @@ function formatUrl(path) {
  * Api class.
  * @class Api
  */
-export class Api {
+class Api {
   /**
    * Constructor
    * @method constructor
@@ -75,3 +75,5 @@ export class Api {
     });
   }
 }
+
+export default Api;

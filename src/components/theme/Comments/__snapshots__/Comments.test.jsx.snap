@@ -35,6 +35,7 @@ exports[`Comments renders a comments component 1`] = `
     >
       Some comment
       <button
+        aria-label="Delete"
         className="ui red right floated button"
         onClick={[Function]}
         value="someurl"
@@ -44,6 +45,7 @@ exports[`Comments renders a comments component 1`] = `
         </span>
       </button>
       <button
+        aria-label="Edit"
         className="ui right floated button"
         onClick={[Function]}
         value={
@@ -81,6 +83,7 @@ exports[`Comments renders a comments component 1`] = `
           </div>
           <div
             className="inline required field textarea"
+            id="field-comment"
           >
             <div
               className="ui grid"
@@ -127,14 +130,29 @@ exports[`Comments renders a comments component 1`] = `
           className="ui clearing segment actions"
         >
           <button
-            className="ui big basic circular icon primary right floated button"
+            aria-label="Comment"
+            className="ui basic primary right floated button"
             onClick={[Function]}
             title="Comment"
             type="submit"
           >
-            <i
-              aria-hidden="true"
-              className="arrow right icon"
+            <svg
+              className="icon circled"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "30px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
             />
           </button>
         </div>

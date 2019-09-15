@@ -3,6 +3,7 @@
 exports[`Footer renders a footer component 1`] = `
 <div
   className="ui grey inverted vertical padded center aligned segment"
+  role="contentinfo"
 >
   <div
     className="ui container"
@@ -54,29 +55,36 @@ exports[`Footer renders a footer component 1`] = `
       className="ui horizontal inverted list"
       role="list"
     >
-      <a
-        className="item"
-        href="/sitemap"
-        onClick={[Function]}
-        role="listitem"
-      >
-        <span>
-          Site Map
-        </span>
-      </a>
-      <a
-        className="item"
-        href="/accessibility-info"
-        onClick={[Function]}
-        role="listitem"
-      >
-        <span>
-          Accessibility
-        </span>
-      </a>
       <div
         className="item"
-        onClick={[Function]}
+        role="listitem"
+      >
+        <a
+          className="item"
+          href="/sitemap"
+          onClick={[Function]}
+        >
+          <span>
+            Site Map
+          </span>
+        </a>
+      </div>
+      <div
+        className="item"
+        role="listitem"
+      >
+        <a
+          className="item"
+          href="/accesibility-info"
+          onClick={[Function]}
+        >
+          <span>
+            Accessibility
+          </span>
+        </a>
+      </div>
+      <div
+        className="item"
         role="listitem"
       >
         <a
@@ -89,16 +97,19 @@ exports[`Footer renders a footer component 1`] = `
           </span>
         </a>
       </div>
-      <a
+      <div
         className="item"
-        href="http://plone.com"
-        onClick={[Function]}
         role="listitem"
       >
-        <span>
-          Powered by Plone & Python
-        </span>
-      </a>
+        <a
+          className="item"
+          href="https://plone.com"
+        >
+          <span>
+            Powered by Plone & Python
+          </span>
+        </a>
+      </div>
     </div>
   </div>
 </div>

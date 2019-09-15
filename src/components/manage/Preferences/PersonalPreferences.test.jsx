@@ -29,7 +29,10 @@ describe('PersonalPreferences', () => {
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter>
-          <PersonalPreferences location={{ pathname: '/blog' }} />
+          <PersonalPreferences
+            location={{ pathname: '/blog' }}
+            closeMenu={() => {}}
+          />
         </MemoryRouter>
       </Provider>,
     );

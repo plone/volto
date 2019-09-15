@@ -4,33 +4,65 @@
 
 ### Added
 
+- Show images in Rich Text editor @rodfersou @sneridagh
+- Full Pastanaga Toolbabr implementation @sneridagh
 - Internal API path for containers @bloodbare
 - Add toast component @sneridagh
 - Add sidebar support for components @sneridagh
 - Add Volto version number in control panel @nzambello
 - Remove Mosaic component @tisto
 - Event type view @nileshgulia1 @pnicolli
+- Added toast component in actions @nzambello
 - Added translations to italian @nzambello
 - Add table tile @robgietema
+- Add image sidebar @sneridagh @gomez
+- Add delete file button to file Widget @jackahl
+- Add link redirect view @robgietema
+- Add proper unique id to all fields, based on the fieldset and field name @sneridagh
+- Add QueryString widget @robgietema @sneridagh
 
 ### Changes
 
+- Add a delay when filtering content in folder contents so it doesn't overload backend @vangheem
 - Small UX/UI fixes @sneridagh
 - Fix query string search in subjects vocab field @gomez
 - Removed the delete button from the title tile @pnicolli
 - Rewrite sidebar @robgietma @sneridagh
 - Added SidebarPortal component for easier sidebar handling @pnicolli
+- Fixed tiles outline in Pastanaga editor @pnicolli
+- Fix typos @balavec
+- Fix warnings for boolean fields @miziodel
+- Fix dropdown styling @robgietema
+- Update connected-react-router and fix instantiation of the wrapper component
+  to fix the sync problems with the router and the store @sneridagh
+- Fix link popup in case you dismiss it without setting anything @sneridagh
+- Export history in start-client.jsx for being able to import it from the project for trackers (Matomo, etc) @csenger
+- Workflow change awareness on toolbar @robgietema
+- Fix reordering in folder contents view and problems with previous windowing settings leaked to current one. @robgietema
+- Fix remove link entity of only a part it only removes that part, not the whole entity @robgietema
+- Add proper placeholder to the add link feature in the editor @sneridagh
+- Fix bulk workflow change in contents view @sneridagh
+- Fix regresion on uploading image to root @sneridagh
+- Fix hero tile on view if image is missing @sneridagh
 
 ### Internal
 
+- Upgrade lodash to 4.17.15 @tisto
 - Fix console errors on tests @sneridagh
+- Add development mode for kitkoncept.voltodemo to /api plonebacked @fredvd
+- Cleanup map dispatch to props @robgietema
+- Fix linting warnings @robgietema
+- Remove decorators @robgietema
+- Pin mem to 4.0.0 @tisto
+- Add razzle-plugin-bundle-analyzer @tisto
+- Add bundlewatch @tisto
+- Add bundlesize @tisto
 
 ## 3.1.0 (2019-06-14)
 
 ### Added
 
-- Upgrade to react-redux 7.1. It includes the new official hooks for Redux
-  @sneridagh
+- Upgrade to react-redux 7.1. It includes the new official hooks for Redux. @sneridagh
 - Make Login Route accessible from anywhere in path url @nileshgulia1
 
 ### Changes
@@ -50,6 +82,9 @@
 
 ### Changes
 
+### Internal
+
+- Add cypress a11y tests. @timo
 - Fix order of arguments when sending the contact form @csenger
 - Fix @babel/core import on i18n script @sneridagh
 

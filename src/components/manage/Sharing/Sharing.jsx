@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 import { find, isEqual, map } from 'lodash';
 import { Portal } from 'react-portal';
@@ -30,7 +30,9 @@ import {
 
 import { updateSharing, getSharing } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
-import { Toolbar } from '../../../components';
+import { Icon as IconNext, Toolbar } from '../../../components';
+
+import backSVG from '../../../icons/back.svg';
 
 const messages = defineMessages({
   searchForUserOrGroup: {
@@ -60,21 +62,6 @@ const messages = defineMessages({
  * @class SharingComponent
  * @extends Component
  */
-@injectIntl
-@connect(
-  (state, props) => ({
-    entries: state.sharing.data.entries,
-    inherit: state.sharing.data.inherit,
-    available_roles: state.sharing.data.available_roles,
-    updateRequest: state.sharing.update,
-    pathname: props.location.pathname,
-    title: state.content.data.title,
-    login: state.userSession.token
-      ? jwtDecode(state.userSession.token).sub
-      : '',
-  }),
-  dispatch => bindActionCreators({ updateSharing, getSharing }, dispatch),
-)
 class SharingComponent extends Component {
   /**
    * Property types.
@@ -379,6 +366,7 @@ class SharingComponent extends Component {
                 type="submit"
                 floated="right"
                 icon="arrow right"
+                aria-label={this.props.intl.formatMessage(messages.save)}
                 title={this.props.intl.formatMessage(messages.save)}
                 size="big"
                 onClick={this.onSubmit}
@@ -388,6 +376,7 @@ class SharingComponent extends Component {
                 circular
                 secondary
                 icon="remove"
+                aria-label={this.props.intl.formatMessage(messages.cancel)}
                 title={this.props.intl.formatMessage(messages.cancel)}
                 floated="right"
                 size="big"
@@ -399,12 +388,13 @@ class SharingComponent extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
+            hideDefaultViewButtons
             inner={
               <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
-                <Icon
-                  name="arrow left"
-                  size="big"
-                  color="blue"
+                <IconNext
+                  name={backSVG}
+                  className="contents circled"
+                  size="30px"
                   title={this.props.intl.formatMessage(messages.back)}
                 />
               </Link>
@@ -416,4 +406,21 @@ class SharingComponent extends Component {
   }
 }
 
-export default withRouter(SharingComponent);
+export default compose(
+  withRouter,
+  injectIntl,
+  connect(
+    (state, props) => ({
+      entries: state.sharing.data.entries,
+      inherit: state.sharing.data.inherit,
+      available_roles: state.sharing.data.available_roles,
+      updateRequest: state.sharing.update,
+      pathname: props.location.pathname,
+      title: state.content.data.title,
+      login: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
+    }),
+    { updateSharing, getSharing },
+  ),
+)(SharingComponent);

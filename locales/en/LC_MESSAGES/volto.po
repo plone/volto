@@ -52,8 +52,16 @@ msgstr ""
 msgid "Add {type}"
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "Alignment"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "All"
+msgstr ""
+
+#: components/manage/Sidebar/ImageSidebar
+msgid "Alt text"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -91,8 +99,14 @@ msgstr ""
 msgid "Browse"
 msgstr ""
 
-#: components/manage/Tiles/Image/Edit
+#: components/manage/Sidebar/ObjectBrowserBody
+#: components/manage/Sidebar/ObjectBrowserOld
+#: components/manage/Tiles/Slider/Edit
 msgid "Browse or type URL"
+msgstr ""
+
+#: components/manage/Tiles/Image/Edit
+msgid "Browse the site, drop an image, or type an URL"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
@@ -108,9 +122,14 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Tiles/TileModal/TileModal
 #: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 msgid "Cancel"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Cell"
 msgstr ""
 
 #: components/manage/History/History
@@ -118,7 +137,6 @@ msgid "Change Note"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 msgid "Change Password"
 msgstr ""
 
@@ -219,6 +237,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -241,12 +260,21 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
+#: components/manage/Tiles/Table/Edit
+msgid "Delete col"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Delete row"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Descending"
 msgstr ""
 
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -270,6 +298,10 @@ msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "Distributed under the {license}."
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Divide each row into separate cells"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -323,6 +355,10 @@ msgstr ""
 msgid "Enter Map URL"
 msgstr ""
 
+#: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
+msgid "Enter URL or title"
+msgstr ""
+
 #: components/manage/Tiles/Video/Edit
 msgid "Enter Video URL"
 msgstr ""
@@ -365,6 +401,10 @@ msgstr ""
 msgid "Expiration Date"
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "External URL"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
 msgstr ""
@@ -375,6 +415,10 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Filter…"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Fixed width table cells"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
@@ -424,8 +468,32 @@ msgstr ""
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "Image"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanel
+msgid "Info"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 msgid "Inherit permissions from higher levels"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Insert col after"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Insert col before"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Insert row after"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Insert row before"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -454,6 +522,10 @@ msgstr ""
 msgid "Last modified"
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "Link to"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
 msgstr ""
@@ -471,6 +543,10 @@ msgstr ""
 msgid "Login Name"
 msgstr ""
 
+#: components/manage/Tiles/Table/Edit
+msgid "Make the table compact"
+msgstr ""
+
 #: components/manage/Tiles/Maps/Edit
 msgid "Maps data error"
 msgstr ""
@@ -481,6 +557,10 @@ msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
+msgstr ""
+
+#: components/manage/Sidebar/Sidebar
+msgid "Metadata"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -514,6 +594,10 @@ msgstr ""
 msgid "New password"
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "No image selected"
+msgstr ""
+
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/TokenWidget
@@ -528,11 +612,23 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
+#: components/manage/Sidebar/ImageSidebar
+msgid "Open in a new tab"
+msgstr ""
+
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
 msgstr ""
 
-#: components/manage/Preferences/PersonalPreferences
+#: components/manage/Tiles/Slider/Edit
+#: components/manage/Tiles/TileModal/TileModal
+msgid "Options"
+msgstr ""
+
+#: components/manage/Sidebar/ImageSidebar
+msgid "Origin"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "Password"
 msgstr ""
@@ -546,14 +642,10 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
-#: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
-#: components/manage/Preferences/PersonalPreferences
 msgid "Personal Information"
 msgstr ""
 
-#: components/manage/Preferences/ChangePassword
-#: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 msgid "Personal Preferences"
 msgstr ""
@@ -578,6 +670,10 @@ msgstr ""
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr ""
 
+#: components/manage/Preferences/PersonalInformation
+msgid "Portrait"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Powered by Plone & Python"
 msgstr ""
@@ -586,10 +682,9 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: components/manage/Add/Add
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
-#: components/manage/Edit/Edit
+#: components/manage/Sidebar/Sidebar
 msgid "Properties"
 msgstr ""
 
@@ -611,6 +706,10 @@ msgstr ""
 msgid "Rearrange items by…"
 msgstr ""
 
+#: components/manage/Tiles/Table/Edit
+msgid "Reduce complexity"
+msgstr ""
+
 #: components/theme/Anontools/Anontools
 #: components/theme/Register/Register
 msgid "Register"
@@ -630,6 +729,7 @@ msgid "Rename items"
 msgstr ""
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -661,6 +761,7 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Tiles/TileModal/TileModal
 #: components/manage/Tiles/Video/Edit
 #: components/mosaic/Layout/Layout
 msgid "Save"
@@ -723,6 +824,7 @@ msgid "Sharing for {title}"
 msgstr ""
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -768,16 +870,33 @@ msgstr ""
 msgid "State"
 msgstr ""
 
-#: components/manage/Workflow/Workflow
-msgid "State: {current}"
-msgstr ""
-
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
 msgstr ""
 
+#: components/manage/Tiles/Table/Edit
+msgid "Stripe alternate rows with color"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
+msgstr ""
+
+#: components/manage/Actions/Actions
+#: components/manage/Contents/Contents
+#: components/manage/Preferences/ChangePassword
+#: components/manage/Preferences/PersonalInformation
+#: components/manage/Preferences/PersonalPreferences
+#: components/theme/ContactForm/ContactForm
+msgid "Success"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Table"
+msgstr ""
+
+#: components/manage/Tiles/Table/Edit
+msgid "Table color inverted"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -809,6 +928,10 @@ msgstr ""
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr ""
 
+#: components/manage/Preferences/PersonalInformation
+msgid "The user portrait/avatar"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr ""
@@ -830,6 +953,7 @@ msgstr ""
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -869,6 +993,7 @@ msgid "Uploading files"
 msgstr ""
 
 #: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TextareaWidget
@@ -889,6 +1014,10 @@ msgstr ""
 msgid "Users and groups settings"
 msgstr ""
 
+#: components/manage/Controlpanels/Controlpanels
+msgid "Version Overview"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 msgid "View"
 msgstr ""
@@ -899,11 +1028,6 @@ msgstr ""
 
 #: components/manage/History/History
 msgid "View this revision"
-msgstr ""
-
-#: components/manage/Add/Add
-#: components/manage/Edit/Edit
-msgid "Visual"
 msgstr ""
 
 #: components/theme/NotFound/NotFound
@@ -928,6 +1052,10 @@ msgstr ""
 
 #: components/manage/History/History
 msgid "Who"
+msgstr ""
+
+#: components/manage/Workflow/Workflow
+msgid "Workflow updated."
 msgstr ""
 
 #: components/theme/Comments/Comments
@@ -992,6 +1120,10 @@ msgstr ""
 
 #: components/theme/Login/Login
 msgid "registration form"
+msgstr ""
+
+#: config/Tiles
+msgid "table"
 msgstr ""
 
 #: config/Tiles

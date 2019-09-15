@@ -7,14 +7,29 @@ exports[`sidebar portal is rendered when the tile is selected 1`] = `
   <Portal
     node={null}
   >
-    <aside
-      onClick={[Function]}
-      onKeyDown={[Function]}
+    <div
+      role="form"
+      style={
+        Object {
+          "height": "100%",
+        }
+      }
     >
-      <p>
-        Tested!
-      </p>
-    </aside>
+      <div
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="presentation"
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <p>
+          Tested!
+        </p>
+      </div>
+    </div>
   </Portal>
 </Fragment>
 `;

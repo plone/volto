@@ -1,4 +1,4 @@
-import xmlrpc from 'xmlrpc';
+import 'cypress-axe';
 import 'cypress-file-upload';
 import './commands';
 import { setupGuillotina, tearDownGuillotina } from './guillotina';

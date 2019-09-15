@@ -1,4 +1,3 @@
-import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-intl-redux';
@@ -17,8 +16,9 @@ import '../theme/themes/pastanaga/extras/extras.less';
 import configureStore from './store';
 import { Api, persistAuthToken, ScrollToTop } from './helpers';
 
+export const history = createBrowserHistory();
+
 export default () => {
-  const history = createBrowserHistory();
   const api = new Api();
 
   const store = configureStore(window.__data, history, api);
@@ -28,11 +28,9 @@ export default () => {
   hydrate(
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <BrowserRouter>
-          <ScrollToTop>
-            <ReduxAsyncConnect routes={routes} helpers={api} />
-          </ScrollToTop>
-        </BrowserRouter>
+        <ScrollToTop>
+          <ReduxAsyncConnect routes={routes} helpers={api} />
+        </ScrollToTop>
       </ConnectedRouter>
     </Provider>,
     document.getElementById('main'),

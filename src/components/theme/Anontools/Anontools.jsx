@@ -12,16 +12,12 @@ import { FormattedMessage } from 'react-intl';
 
 import { settings } from '~/config';
 
-@connect(state => ({
-  token: state.userSession.token,
-  content: state.content.data,
-}))
 /**
  * Anontools container class.
  * @class Anontools
  * @extends Component
  */
-export default class Anontools extends Component {
+class Anontools extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -55,24 +51,33 @@ export default class Anontools extends Component {
     return (
       !this.props.token && (
         <List floated="right" horizontal>
-          <Link
-            className="item"
-            to={`/login${
-              this.props.content
-                ? `?return_url=${this.props.content['@id'].replace(
-                    settings.apiPath,
-                    '',
-                  )}`
-                : ''
-            }`}
-          >
-            <FormattedMessage id="Log in" defaultMessage="Log in" />
-          </Link>
-          <Link className="item" to="/register">
-            <FormattedMessage id="Register" defaultMessage="Register" />
-          </Link>
+          {/* needs divs around links for a11y, and semanticui insists on using List as div role="list" instead of simply using <ul></ul> */}
+          <div role="listitem" className="item">
+            <Link
+              to={`/login${
+                this.props.content
+                  ? `?return_url=${this.props.content['@id'].replace(
+                      settings.apiPath,
+                      '',
+                    )}`
+                  : ''
+              }`}
+            >
+              <FormattedMessage id="Log in" defaultMessage="Log in" />
+            </Link>
+          </div>
+          <div role="listitem" className="item">
+            <Link to="/register">
+              <FormattedMessage id="Register" defaultMessage="Register" />
+            </Link>
+          </div>
         </List>
       )
     );
   }
 }
+
+export default connect(state => ({
+  token: state.userSession.token,
+  content: state.content.data,
+}))(Anontools);

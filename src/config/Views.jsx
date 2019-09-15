@@ -6,6 +6,7 @@ import NewsItemView from '@plone/volto/components/theme/View/NewsItemView';
 import EventView from '@plone/volto/components/theme/View/EventView';
 import SummaryView from '@plone/volto/components/theme/View/SummaryView';
 import TabularView from '@plone/volto/components/theme/View/TabularView';
+import LinkView from '@plone/volto/components/theme/View/LinkView';
 import NotFoundView from '@plone/volto/components/theme/NotFound/NotFound';
 
 // Layout View Registry
@@ -13,6 +14,7 @@ export const layoutViews = {
   summary_view: SummaryView,
   tabular_view: TabularView,
   listing_view: ListingView,
+  link_redirect_view: LinkView,
 };
 
 // Content Types View Registry
