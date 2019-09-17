@@ -11,6 +11,10 @@
 - Fix creation of image objects from image tile by adding the id as well @sneridagh
 - Remove description tile from the default tiles on new content @sneridagh
 
+### Internal
+
+- Update release-it to fix some deprecation messages @sneridagh
+
 ## 4.0.0-alpha.0 (2019-09-13)
 
 ### Added
