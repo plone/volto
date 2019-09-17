@@ -42,8 +42,14 @@
 .ui.basic.secondary.button {
   box-shadow: none !important;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     box-shadow: none !important;
+  }
+
+  &:active {
+    background: none !important;
   }
 }
 
