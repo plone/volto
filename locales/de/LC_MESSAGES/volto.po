@@ -110,11 +110,14 @@ msgstr "Zurück"
 msgid "Base"
 msgstr "Basis"
 
+#: components/theme/Login/Login
+msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
 msgstr "Durchsuchen"
 
-#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Sidebar/ObjectBrowserOld
 #: components/manage/Tiles/Slider/Edit
 msgid "Browse or type URL"
@@ -176,6 +179,22 @@ msgstr "Checkbox"
 #: components/manage/Widgets/SelectWidget
 msgid "Choices"
 msgstr "Auswahlfeld"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Choose Image"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Choose Target"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "ChooseImage"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "ChooseTargetLink"
+msgstr ""
 
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
@@ -555,6 +574,10 @@ msgid "Log in"
 msgstr "Anmelden"
 
 #: components/theme/Login/Login
+msgid "Login Failed"
+msgstr ""
+
+#: components/theme/Login/Login
 msgid "Login Name"
 msgstr "Benutzername"
 
@@ -613,6 +636,7 @@ msgstr "Neues Passwort"
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Tiles/Listing/Edit
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/TokenWidget
@@ -758,6 +782,10 @@ msgstr "Notwendig"
 msgid "Required input is missing."
 msgstr "Notwendige Eingabe fehlt."
 
+#: components/manage/Tiles/Listing/Edit
+msgid "Results preview"
+msgstr ""
+
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr "Durch diese Version ersetzen"
@@ -789,6 +817,10 @@ msgstr "Suche"
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
 msgstr "Website durchsuchen"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search content"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 msgid "Search for user or group"

@@ -7,6 +7,7 @@
 ### Changes
 
 - Fix test failure for `VersionOverview` component in master after release process @sneridagh
+- Improve usability of login form @sneridagh
 
 ## 4.0.0-alpha.0 (2019-09-13)
 

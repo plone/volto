@@ -114,11 +114,14 @@ msgstr ""
 msgid "Base"
 msgstr "Basis"
 
+#: components/theme/Login/Login
+msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
 msgstr "Bladeren"
 
-#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Sidebar/ObjectBrowserOld
 #: components/manage/Tiles/Slider/Edit
 msgid "Browse or type URL"
@@ -179,6 +182,22 @@ msgstr ""
 
 #: components/manage/Widgets/SelectWidget
 msgid "Choices"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Choose Image"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Choose Target"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "ChooseImage"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "ChooseTargetLink"
 msgstr ""
 
 #: components/theme/Navigation/Navigation
@@ -559,6 +578,10 @@ msgid "Log in"
 msgstr "Inloggen"
 
 #: components/theme/Login/Login
+msgid "Login Failed"
+msgstr ""
+
+#: components/theme/Login/Login
 msgid "Login Name"
 msgstr "Gebruikersnaam"
 
@@ -617,6 +640,7 @@ msgstr "Nieuw wachtwoord"
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Tiles/Listing/Edit
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/TokenWidget
@@ -762,6 +786,10 @@ msgstr ""
 msgid "Required input is missing."
 msgstr "Verplichte waarde mist."
 
+#: components/manage/Tiles/Listing/Edit
+msgid "Results preview"
+msgstr ""
+
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr "Deze rivisie herstellen"
@@ -793,6 +821,10 @@ msgstr "Zoek"
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
 msgstr "Website doorzoeken"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search content"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 msgid "Search for user or group"
