@@ -8,6 +8,7 @@
 
 - Fix test failure for `VersionOverview` component in master after release process @sneridagh
 - Improve usability of login form @sneridagh
+- Fix creation of image objects from image tile by adding the id as well @sneridagh
 
 ## 4.0.0-alpha.0 (2019-09-13)
 
