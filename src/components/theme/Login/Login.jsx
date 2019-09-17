@@ -173,12 +173,14 @@ class Login extends Component {
                         </div>
                       </Grid.Column>
                       <Grid.Column width="8">
+                        {/* eslint-disable jsx-a11y/no-autofocus */}
                         <Input
                           id="login"
                           name="login"
                           placeholder={this.props.intl.formatMessage(
                             messages.loginName,
                           )}
+                          autoFocus
                         />
                       </Grid.Column>
                     </Grid.Row>
@@ -190,7 +192,8 @@ class Login extends Component {
                             defaultMessage="If you you do not have an account here, head over to the {registrationform}."
                             values={{
                               registrationform: (
-                                <Link to="/register">
+                                /* eslint-disable jsx-a11y/tabindex-no-positive */
+                                <Link to="/register" tabIndex={1}>
                                   <FormattedMessage
                                     id="registration form"
                                     defaultMessage="registration form"

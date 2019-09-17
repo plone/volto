@@ -63,6 +63,7 @@ exports[`Login renders a login component 1`] = `
                     className="ui input"
                   >
                     <input
+                      autoFocus={true}
                       id="login"
                       name="login"
                       onChange={[Function]}
@@ -86,6 +87,7 @@ exports[`Login renders a login component 1`] = `
                       <a
                         href="/register"
                         onClick={[Function]}
+                        tabIndex={1}
                       >
                         <span>
                           registration form
