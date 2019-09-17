@@ -7,6 +7,7 @@
 ### Changes
 
 - Fix test failure for `VersionOverview` component in master after release process @sneridagh
+- Remove active and focus box-shadow and background from primary and secondary buttons @sneridagh
 
 ## 4.0.0-alpha.0 (2019-09-13)
 
