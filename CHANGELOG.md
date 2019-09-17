@@ -8,6 +8,7 @@
 
 - Fix test failure for `VersionOverview` component in master after release process @sneridagh
 - Improve usability of login form @sneridagh
+- Remove description tile from the default tiles on new content @sneridagh
 
 ## 4.0.0-alpha.0 (2019-09-13)
 
