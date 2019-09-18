@@ -6,12 +6,13 @@
 
 ### Changes
 
+- Improve usability of login form @sneridagh
+
 ## 4.0.0-alpha.1 (2019-09-17)
 
 ### Changes
 
 - Fix test failure for `VersionOverview` component in master after release process @sneridagh
-- Improve usability of login form @sneridagh
 - Fix creation of image objects from image tile by adding the id as well @sneridagh
 - Remove description tile from the default tiles on new content @sneridagh
 
