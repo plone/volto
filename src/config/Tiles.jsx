@@ -22,29 +22,15 @@ import EditTableTile from '@plone/volto/components/manage/Tiles/Table/Edit';
 
 import ImageSidebar from '@plone/volto/components/manage/Sidebar/ImageSidebar';
 
+import descriptionSVG from '@plone/volto/icons/description.svg';
+import titleSVG from '@plone/volto/icons/text.svg';
+import textSVG from '@plone/volto/icons/subtext.svg';
+import cameraSVG from '@plone/volto/icons/camera.svg';
+import videoSVG from '@plone/volto/icons/videocamera.svg';
 import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import heroSVG from '@plone/volto/icons/hero.svg';
 import tableSVG from '@plone/volto/icons/table.svg';
-
-const customTiles = [
-  {
-    title: 'hero',
-    icon: heroSVG,
-  },
-  {
-    title: 'maps',
-    icon: globeSVG,
-  },
-  {
-    title: 'html',
-    icon: codeSVG,
-  },
-  {
-    title: 'table',
-    icon: tableSVG,
-  },
-];
 
 const messagesTiles = defineMessages({
   title: {
@@ -72,6 +58,147 @@ const messagesTiles = defineMessages({
     defaultMessage: 'Table',
   },
 });
+
+export const groupOrder = ['text', 'media', 'common'];
+
+const defaultTiles = {
+  title: {
+    id: 'title',
+    icon: titleSVG,
+    group: 'text',
+    view: ViewTitleTile,
+    edit: EditTitleTile,
+    public: false,
+    mostUsed: false,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  },
+  description: {
+    id: 'description',
+    icon: descriptionSVG,
+    group: 'text',
+    view: ViewDescriptionTile,
+    edit: EditDescriptionTile,
+    public: true,
+    mostUsed: false,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  },
+  text: {
+    id: 'text',
+    icon: textSVG,
+    group: 'text',
+    view: ViewTextTile,
+    edit: EditTextTile,
+    public: false,
+    mostUsed: false,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  },
+  image: {
+    id: 'image',
+    icon: cameraSVG,
+    group: 'media',
+    view: ViewImageTile,
+    edit: EditImageTile,
+    public: true,
+    mostUsed: true,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  },
+  video: {
+    id: 'video',
+    icon: videoSVG,
+    group: 'media',
+    view: ViewVideoTile,
+    edit: EditVideoTile,
+    public: true,
+    mostUsed: true,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  },
+  hero: {
+    id: 'hero',
+    icon: heroSVG,
+    group: 'common',
+    view: ViewHeroImageLeftTile,
+    edit: EditHeroImageLeftTile,
+    public: true,
+    mostUsed: false,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  },
+  maps: {
+    id: 'maps',
+    icon: globeSVG,
+    group: 'common',
+    view: ViewMapTile,
+    edit: EditMapTile,
+    public: true,
+    mostUsed: false,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  },
+  html: {
+    id: 'html',
+    icon: codeSVG,
+    group: 'common',
+    view: ViewHTMLTile,
+    edit: EditHTMLTile,
+    public: true,
+    mostUsed: false,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  },
+  table: {
+    id: 'table',
+    icon: tableSVG,
+    group: 'common',
+    view: ViewTableTile,
+    edit: EditTableTile,
+    public: true,
+    mostUsed: false,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  },
+};
+
+const customTiles = [
+  {
+    title: 'hero',
+    icon: heroSVG,
+  },
+  {
+    title: 'maps',
+    icon: globeSVG,
+  },
+  {
+    title: 'html',
+    icon: codeSVG,
+  },
+  {
+    title: 'table',
+    icon: tableSVG,
+  },
+];
 
 const defaultTilesViewMap = {
   title: ViewTitleTile,
@@ -110,4 +237,5 @@ export {
   messagesTiles,
   requiredTiles,
   sidebarComponents,
+  defaultTiles,
 };

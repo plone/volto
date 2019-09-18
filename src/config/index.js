@@ -28,6 +28,8 @@ import {
   messagesTiles,
   requiredTiles,
   sidebarComponents,
+  defaultTiles,
+  groupOrder,
 } from './Tiles';
 
 export const settings = {
@@ -69,4 +71,6 @@ export const tiles = {
   messagesTiles,
   requiredTiles,
   sidebarComponents,
+  defaultTiles,
+  groupOrder,
 };

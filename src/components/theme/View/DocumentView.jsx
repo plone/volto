@@ -6,16 +6,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { Container, Image } from 'semantic-ui-react';
-import { map } from 'lodash';
-
-import { settings, tiles } from '~/config';
-
+import {
+  Accordion,
+  Button,
+  Container,
+  Image,
+  Transition,
+} from 'semantic-ui-react';
+import { map, toPairs, groupBy } from 'lodash';
+import { Icon } from '@plone/volto/components';
 import {
   getTilesFieldname,
   getTilesLayoutFieldname,
   hasTilesData,
-} from '../../../helpers';
+} from '@plone/volto/helpers';
+import { settings, tiles } from '~/config';
+import AnimateHeight from 'react-animate-height';
+
+import upSVG from '@plone/volto/icons/up-key.svg';
+import downSVG from '@plone/volto/icons/down-key.svg';
 
 /**
  * Component to display the document view.
@@ -26,6 +35,16 @@ import {
 const DocumentView = ({ content }) => {
   const tilesFieldname = getTilesFieldname(content);
   const tilesLayoutFieldname = getTilesLayoutFieldname(content);
+  const groupedTiles = groupBy(tiles.defaultTiles, item => item.group);
+
+  const [activeAccIndex, setActiveAccIndex] = React.useState(0);
+
+  function handleAccClick(e, titleProps) {
+    const { index } = titleProps;
+    const newIndex = activeAccIndex === index ? -1 : index;
+
+    setActiveAccIndex(newIndex);
+  }
 
   return hasTilesData(content) ? (
     <div id="page-document" className="ui wrapper">
@@ -44,6 +63,47 @@ const DocumentView = ({ content }) => {
           <div>{JSON.stringify(content[tilesFieldname][tile]['@type'])}</div>
         );
       })}
+      <div className="tiles-chooser">
+        <Accordion fluid styled className="form">
+          {map(tiles.groupOrder, (groupName, index) => (
+            <React.Fragment key={groupName}>
+              <Accordion.Title
+                active={activeAccIndex === index}
+                index={index}
+                onClick={handleAccClick}
+              >
+                {groupName}
+                <div className="accordion-tools">
+                  {activeAccIndex === 0 ? (
+                    <Icon name={upSVG} size="20px" />
+                  ) : (
+                    <Icon name={downSVG} size="20px" />
+                  )}
+                </div>
+              </Accordion.Title>
+              <Accordion.Content
+                className="tiles-list"
+                active={activeAccIndex === index}
+              >
+                <AnimateHeight
+                  animateOpacity
+                  duration={500}
+                  height={activeAccIndex === index ? 'auto' : 0}
+                >
+                  {map(groupedTiles[groupName], tile => (
+                    <Button.Group>
+                      <Button icon basic>
+                        <Icon name={tile.icon} size="36px" />
+                        {tile.id}
+                      </Button>
+                    </Button.Group>
+                  ))}
+                </AnimateHeight>
+              </Accordion.Content>
+            </React.Fragment>
+          ))}
+        </Accordion>
+      </div>
     </div>
   ) : (
     <Container id="page-document">

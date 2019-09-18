@@ -308,7 +308,7 @@
     padding: 4px;
     margin-left: 4px;
     border-radius: 1px;
-    color: #826a6a !important;
+    color: @brown !important;
 
     &:hover {
       background-color: #edf1f2 !important;
@@ -334,11 +334,70 @@
   padding: 4px;
   margin: 0;
   border-radius: 1px;
-  color: #826a6a !important;
+  color: @brown !important;
   line-height: 1;
   text-align: center;
 
   &:hover {
     background-color: #edf1f2 !important;
+  }
+}
+
+.tiles-chooser {
+  padding-right: 200px;
+  padding-left: 200px;
+
+  .ui.basic.button {
+    display: flex;
+    width: 100px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    color: @brown !important;
+
+    &:hover {
+      background: #edf2f3 !important;
+    }
+
+    .icon {
+      margin-bottom: 10px !important;
+    }
+  }
+
+  .ui.accordion {
+    .tiles-list.active {
+      display: flex;
+    }
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .content {
+      padding: 0;
+    }
+  }
+
+  .ui.accordion .title ~ .content, .ui.accordion .accordion .title ~ .content {
+    // reseting the default Accordion behavior
+    display: initial;
+  }
+}
+
+.accordion-tools {
+  display: flex;
+  align-items: center;
+
+  .ui.basic.button {
+    margin-right: 10px;
+
+    &:hover {
+      background-color: transparent !important;
+    }
   }
 }
