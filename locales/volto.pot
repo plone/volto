@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-08-29T15:28:45.284Z\n"
+"POT-Creation-Date: 2019-09-17T15:02:49.268Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -115,12 +115,16 @@ msgstr ""
 msgid "Base"
 msgstr ""
 
+#: components/theme/Login/Login
+# defaultMessage: Both email address and password are case sensitive, check that caps lock is not enabled.
+msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Browse
 msgid "Browse"
 msgstr ""
 
-#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Sidebar/ObjectBrowserOld
 #: components/manage/Tiles/Slider/Edit
 # defaultMessage: Browse or type URL
@@ -193,6 +197,26 @@ msgstr ""
 #: components/manage/Widgets/SelectWidget
 # defaultMessage: Choices
 msgid "Choices"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Choose Image
+msgid "Choose Image"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Choose Target
+msgid "Choose Target"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Choose Image
+msgid "ChooseImage"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Choose Target
+msgid "ChooseTargetLink"
 msgstr ""
 
 #: components/theme/Navigation/Navigation
@@ -654,6 +678,11 @@ msgid "Log in"
 msgstr ""
 
 #: components/theme/Login/Login
+# defaultMessage: Login Failed
+msgid "Login Failed"
+msgstr ""
+
+#: components/theme/Login/Login
 # defaultMessage: Login Name
 msgid "Login Name"
 msgstr ""
@@ -726,6 +755,7 @@ msgstr ""
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Tiles/Listing/Edit
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/TokenWidget
@@ -903,6 +933,11 @@ msgstr ""
 msgid "Required input is missing."
 msgstr ""
 
+#: components/manage/Tiles/Listing/Edit
+# defaultMessage: Results preview
+msgid "Results preview"
+msgstr ""
+
 #: components/manage/History/History
 # defaultMessage: Revert to this revision
 msgid "Revert to this revision"
@@ -939,6 +974,11 @@ msgstr ""
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search Site
 msgid "Search Site"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Search content
+msgid "Search content"
 msgstr ""
 
 #: components/manage/Sharing/Sharing

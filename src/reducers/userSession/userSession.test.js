@@ -51,7 +51,9 @@ describe('User session reducer', () => {
       userSession(undefined, {
         type: `${LOGIN}_FAIL`,
         error: {
-          error: 'failed',
+          response: {
+            error: 'failed',
+          },
         },
       }),
     ).toEqual({
