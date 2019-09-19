@@ -11,7 +11,7 @@ const Types = ({ types, pathname }) => {
       <div className="pastanaga-menu-list">
         <ul>
           {map(filter(types), item => (
-            <li>
+            <li key={item['@id']}>
               <Link
                 to={`${pathname}/add?type=${
                   item['@id'].split('@types/')[1]
