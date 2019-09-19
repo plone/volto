@@ -130,6 +130,7 @@ class App extends Component {
           position={toast.POSITION.BOTTOM_CENTER}
           hideProgressBar
           transition={Slide}
+          autoClose={5000}
           closeButton={
             <Icon
               className="toast-dismiss-action"

@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "3.1.0",
+  "version": "4.0.0-alpha.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -53,7 +53,8 @@
     "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
     "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
-    "release": "release-it"
+    "release": "release-it",
+    "release-alpha": "release-it major --preRelease=alpha"
   },
   "bundlesize": [
     {
@@ -112,12 +113,12 @@
     ]
   },
   "release-it": {
-    "scripts": {
-      "changelog": "node changelogupdater.js excerpt",
-      "beforeStage": "node changelogupdater.js bump ${version}",
-      "afterRelease": "node changelogupdater.js back ${version} && git add . && git ci -am 'Back to development' && git push"
+    "hooks": {
+      "after:bump": "node changelogupdater.js bump ${version}",
+      "after:release": "node changelogupdater.js back ${version} && git add . && git ci -am 'Back to development' && git push"
     },
     "git": {
+      "changelog": "node changelogupdater.js excerpt",
       "requireUpstream": false,
       "requireCleanWorkingDir": false
     },
@@ -157,8 +158,8 @@
     "@babel/plugin-proposal-throw-expressions": "7.2.0",
     "@babel/plugin-syntax-import-meta": "7.2.0",
     "@babel/preset-stage-0": "7.0.0",
-    "axe-core": "3.2.2",
     "autoprefixer": "9.1.5",
+    "axe-core": "3.2.2",
     "babel-7-plugin-root-import": "5.4.0",
     "babel-eslint": "10.0.1",
     "babel-plugin-add-module-exports": "0.2.1",
@@ -256,7 +257,7 @@
     "redux-devtools-extension": "2.13.8",
     "redux-mock-store": "1.5.3",
     "redux-thunk": "2.3.0",
-    "release-it": "10.1.0",
+    "release-it": "12.4.0",
     "semantic-ui-less": "2.4.1",
     "semantic-ui-react": "0.84.0",
     "semver": "5.6.0",

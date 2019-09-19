@@ -133,7 +133,6 @@ class Form extends Component {
     super(props);
     const ids = {
       title: uuid(),
-      description: uuid(),
       text: uuid(),
     };
     let { formData } = props;
@@ -147,16 +146,13 @@ class Form extends Component {
     // defaults for block editor; should be moved to schema on server side
     if (!formData[tilesLayoutFieldname]) {
       formData[tilesLayoutFieldname] = {
-        items: [ids.title, ids.description, ids.text],
+        items: [ids.title, ids.text],
       };
     }
     if (!formData[tilesFieldname]) {
       formData[tilesFieldname] = {
         [ids.title]: {
           '@type': 'title',
-        },
-        [ids.description]: {
-          '@type': 'description',
         },
         [ids.text]: {
           '@type': 'text',

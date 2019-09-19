@@ -108,7 +108,8 @@ class Edit extends Component {
   }
 
   /**
-   * Upload image handler
+   * Upload image handler (not used), but useful in case that we want a button
+   * not powered by react-dropzone
    * @method onUploadImage
    * @returns {undefined}
    */
@@ -121,6 +122,7 @@ class Edit extends Component {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
       this.props.createContent(getBaseUrl(this.props.pathname), {
         '@type': 'Image',
+        title: file.name,
         image: {
           data: fields[3],
           encoding: fields[2],
@@ -184,11 +186,12 @@ class Edit extends Component {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
       this.props.createContent(getBaseUrl(this.props.pathname), {
         '@type': 'Image',
+        title: file[0].name,
         image: {
           data: fields[3],
           encoding: fields[2],
           'content-type': fields[1],
-          filename: file.name,
+          filename: file[0].name,
         },
       });
     });

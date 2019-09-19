@@ -51,7 +51,7 @@ Array [
         </a>
         <a
           aria-label="Contents"
-          href="/contents"
+          href="/test/contents"
           onClick={[Function]}
         >
           <svg

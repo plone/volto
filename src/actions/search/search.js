@@ -26,9 +26,13 @@ export function searchContent(url, options, subrequest = null) {
     queryArray,
     options
       ? join(
-          map(toPairs(pickBy(options, item => !isArray(item))), item =>
-            join(item, '='),
-          ),
+          map(toPairs(pickBy(options, item => !isArray(item))), item => {
+            if (item[0] === 'SearchableText') {
+              // Adds the wildcard to the SearchableText param
+              item[1] = `${item[1]}*`;
+            }
+            return join(item, '=');
+          }),
           '&',
         )
       : '',

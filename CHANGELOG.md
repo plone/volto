@@ -1,6 +1,29 @@
 # Change Log
 
-## 3.1.1 (unreleased)
+## 4.0.0 (unreleased)
+
+### Added
+
+### Changes
+
+## 4.0.0-alpha.1 (2019-09-17)
+
+- Fix parameter handling in Search view to avoid limiting search results with empty parameters #845 @csenger
+- Fix SearchTags handling of keyword vocabulary for anonymous users @csenger
+
+### Changes
+
+- Fix test failure for `VersionOverview` component in master after release process @sneridagh
+- Improve usability of login form @sneridagh
+- Fix creation of image objects from image tile by adding the id as well @sneridagh
+- Remove description tile from the default tiles on new content @sneridagh
+- Fix hero tile being next to a left or right aligned image @jackahl
+
+### Internal
+
+- Update release-it to fix some deprecation messages @sneridagh
+
+## 4.0.0-alpha.0 (2019-09-13)
 
 ### Added
 
@@ -43,7 +66,8 @@
 - Fix bulk workflow change in contents view @sneridagh
 - Fix regresion on uploading image to root @sneridagh
 - Fix hero tile on view if image is missing @sneridagh
-- Fix hero tile being next to a left or right aligned image @jackahl
+- Fix link to contextual contents in toolbar @sneridagh
+- Add automatically the wildcard for the `SearchableText` on the @search action @sneridagh
 
 ### Internal
 

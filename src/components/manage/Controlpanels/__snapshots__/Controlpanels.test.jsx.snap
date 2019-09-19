@@ -232,18 +232,8 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
         className="ui attached segment"
       >
         <div
-          className="ui list"
-          role="list"
-        >
-          <div
-            className="item"
-            onClick={[Function]}
-            role="listitem"
-          >
-            Volto 
-            3.1.0
-          </div>
-        </div>
+          className="VersionOverview"
+        />
       </div>
     </div>
   </div>

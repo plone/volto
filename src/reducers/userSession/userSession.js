@@ -52,7 +52,7 @@ export default function userSession(state = initialState, action = {}) {
         login: {
           loading: false,
           loaded: false,
-          error: action.error.error,
+          error: action.error.response.error,
         },
       };
     case LOGOUT:
