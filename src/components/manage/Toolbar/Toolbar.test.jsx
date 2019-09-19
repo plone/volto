@@ -12,6 +12,7 @@ const mockStore = configureStore();
 describe('Toolbar', () => {
   it('renders the Toolbar component', () => {
     const store = mockStore({
+      types: { types: [] },
       actions: {
         actions: {
           document_actions: [],
