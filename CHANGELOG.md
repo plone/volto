@@ -17,6 +17,7 @@
 - Improve usability of login form @sneridagh
 - Fix creation of image objects from image tile by adding the id as well @sneridagh
 - Remove description tile from the default tiles on new content @sneridagh
+- Fix hero tile being next to a left or right aligned image @jackahl
 
 ### Internal
 
