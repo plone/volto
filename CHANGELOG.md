@@ -8,6 +8,9 @@
 
 ## 4.0.0-alpha.1 (2019-09-17)
 
+- Fix parameter handling in Search view to avoid limiting search results with empty parameters #845 @csenger
+- Fix SearchTags handling of keyword vocabulary for anonymous users @csenger
+
 ### Changes
 
 - Fix test failure for `VersionOverview` component in master after release process @sneridagh
