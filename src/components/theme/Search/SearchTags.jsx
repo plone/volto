@@ -67,9 +67,10 @@ class SearchTags extends Component {
 
 export default connect(
   state => ({
-    terms: state.vocabularies[vocabulary]
-      ? state.vocabularies[vocabulary].terms
-      : [],
+    terms:
+      state.vocabularies[vocabulary] && state.vocabularies[vocabulary].terms
+        ? state.vocabularies[vocabulary].terms
+        : [],
   }),
   { getVocabulary },
 )(SearchTags);
