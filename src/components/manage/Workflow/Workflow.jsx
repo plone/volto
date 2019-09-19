@@ -290,7 +290,10 @@ class Workflow extends Component {
           name="display-select"
           className="react-select-container"
           classNamePrefix="react-select"
-          isDisabled={!this.props.content.review_state}
+          isDisabled={
+            !this.props.content.review_state ||
+            this.props.transitions.length === 0
+          }
           options={uniqBy(
             this.props.transitions.map(transition =>
               getWorkflowMapping(transition['@id']),
