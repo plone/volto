@@ -6,10 +6,11 @@
 
 ### Changes
 
-## 4.0.0-alpha.1 (2019-09-17)
-
 - Fix parameter handling in Search view to avoid limiting search results with empty parameters #845 @csenger
 - Fix SearchTags handling of keyword vocabulary for anonymous users @csenger
+- Fix hero tile being next to a left or right aligned image @jackahl
+
+## 4.0.0-alpha.1 (2019-09-17)
 
 ### Changes
 
@@ -17,7 +18,6 @@
 - Improve usability of login form @sneridagh
 - Fix creation of image objects from image tile by adding the id as well @sneridagh
 - Remove description tile from the default tiles on new content @sneridagh
-- Fix hero tile being next to a left or right aligned image @jackahl
 
 ### Internal
 
