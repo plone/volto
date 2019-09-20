@@ -109,14 +109,21 @@ context('Actions', () => {
     cy.contains('This is a file');
   });
 
-  it.only('As a site administrator I can add a new line to a text block using shift + enter', function() {
+  it('As a site administrator I can add a new line to a text block using shift + enter', function() {
+    //given a new document
     cy.visit('/add?type=Document');
+    //when I select a text-block and hit shift + enter
     cy.get('.ui.drag.tile.inner.text .public-DraftEditor-content')
       .click()
       .type('{shift}{enter}');
+    //then a new line should appear
     cy.get(
-      '.ui.drag.tile.inner.text:nth-child(2n) .tile.text.selected .public-DraftEditor-content',
+      '.ui.drag.tile.inner.text:nth-child(2n) .public-DraftEditor-content > div > div:nth-child(2n)',
     );
+    //then the block should not be deselected
+    cy.get('.ui.drag.tile.inner.text:nth-child(2n) .tile.text.selected');
+    //then there should not be a new block created
+    cy.get('.ui.drag.tile.inner.text:nth-child(3n)').should('not.exist');
   });
 
   it('As a site administrator I can add an image', function() {
