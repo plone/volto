@@ -65,7 +65,7 @@ context('Actions', () => {
       cy.contains('This is a folder');
     }
   });
-  it('As a site administrator I can add a file', function() {
+  it.only('As a site administrator I can add a file', function() {
     cy.visit('/');
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-file').click();
@@ -98,11 +98,11 @@ context('Actions', () => {
           { fileContent, fileName: 'file.pdf', mimeType: 'application/pdf' },
           { subjectType: 'input' },
         );
-        cy.get('#field-file')
-          .parent()
-          .parent()
-          .contains('file.pdf');
       });
+      cy.get('#field-file')
+        .parent()
+        .parent()
+        .contains('file.pdf');
     }
     cy.get('#toolbar-save').click();
     cy.visit('/contents');
