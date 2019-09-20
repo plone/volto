@@ -20,12 +20,12 @@ build:
 build-frontend:
 	yarn && RAZZLE_API_PATH=http://localhost:55001/plone yarn build
 
-.PHONY: Build Plone 5.2
-build-backend:  ## Build Plone 5.2
-	(cd api && virtualenv --clear --python=python3 .)
+.PHONY: Build Plone
+build-backend:  ## Build Plone
+	(cd api && python3 -m venv .)
 	(cd api && bin/pip install --upgrade pip)
 	(cd api && bin/pip install -r requirements.txt)
-	(cd api && bin/buildout -c plone-5.2.x.cfg)
+	(cd api && bin/buildout)
 
 dist:
 	yarn
@@ -35,7 +35,7 @@ test:
 	(cd api && bin/test)
 
 bin/pip:
-	virtualenv --clear --python=python3 .
+	python3 -m venv .
 	bin/pip install -r requirements-docs.txt
 
 docs-serve:
