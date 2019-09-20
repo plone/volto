@@ -31,13 +31,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
 /**
  * Edit video tile class.
  * @class Edit
  * @extends Component
  */
-export default class Edit extends Component {
+class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -173,7 +172,6 @@ export default class Edit extends Component {
           },
           this.props.data.align,
         )}
-        tabIndex={0}
         onKeyDown={e =>
           this.props.handleKeyDown(
             e,
@@ -192,6 +190,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Left"
                 onClick={this.onAlignTile.bind(this, 'left')}
                 active={data.align === 'left'}
               >
@@ -202,6 +201,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Right"
                 onClick={this.onAlignTile.bind(this, 'right')}
                 active={data.align === 'right'}
               >
@@ -212,6 +212,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Center"
                 onClick={this.onAlignTile.bind(this, 'center')}
                 active={data.align === 'center' || !data.align}
               >
@@ -222,6 +223,7 @@ export default class Edit extends Component {
               <Button
                 icon
                 basic
+                aria-label="Full"
                 onClick={this.onAlignTile.bind(this, 'full')}
                 active={data.align === 'full'}
               >
@@ -233,14 +235,13 @@ export default class Edit extends Component {
         {this.props.selected && !this.props.data.url && (
           <div className="toolbar">
             <Icon name={videoSVG} size="24px" />
-            <form onKeyDown={this.onKeyDownVariantMenuForm}>
-              <Input
-                onChange={this.onChangeUrl}
-                placeholder={this.props.intl.formatMessage(
-                  messages.VideoTileInputPlaceholder,
-                )}
-              />
-            </form>
+            <Input
+              onKeyDown={this.onKeyDownVariantMenuForm}
+              onChange={this.onChangeUrl}
+              placeholder={this.props.intl.formatMessage(
+                messages.VideoTileInputPlaceholder,
+              )}
+            />
           </div>
         )}
         {data.url ? (
@@ -282,3 +283,5 @@ export default class Edit extends Component {
     );
   }
 }
+
+export default injectIntl(Edit);

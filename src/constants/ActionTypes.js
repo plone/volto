@@ -25,6 +25,7 @@ export const GET_GROUP = 'GET_GROUP';
 export const GET_HISTORY = 'GET_HISTORY';
 export const GET_NAVIGATION = 'GET_NAVIGATION';
 export const GET_PRINCIPALS = 'GET_PRINCIPALS';
+export const GET_QUERYSTRING = 'GET_QUERYSTRING';
 export const GET_SCHEMA = 'GET_SCHEMA';
 export const GET_SHARING = 'GET_SHARING';
 export const GET_TILES = 'GET_TILES';

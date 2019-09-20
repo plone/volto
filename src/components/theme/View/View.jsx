@@ -6,48 +6,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import { Link } from 'react-router-dom';
-import { Dropdown, Icon } from 'semantic-ui-react';
 import { injectIntl, intlShape } from 'react-intl';
-import { find } from 'lodash';
 import qs from 'query-string';
 import { views } from '~/config';
 
-import {
-  Comments,
-  Tags,
-  Toolbar,
-  Actions,
-  Display,
-  Types,
-  Workflow,
-} from '../../../components';
+import { Comments, Tags, Toolbar } from '../../../components';
 import { listActions, getContent } from '../../../actions';
 import { BodyClass, getBaseUrl, getLayoutFieldname } from '../../../helpers';
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    actions: state.actions.actions,
-    content: state.content.data,
-    error: state.content.get.error,
-    pathname: props.location.pathname,
-    versionId:
-      qs.parse(props.location.search) &&
-      qs.parse(props.location.search).version_id,
-  }),
-  {
-    listActions,
-    getContent,
-  },
-)
 /**
  * View container class.
  * @class View
  * @extends Component
  */
-export default class View extends Component {
+class View extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -236,16 +210,6 @@ export default class View extends Component {
     const RenderedView =
       this.getViewByType() || this.getViewByLayout() || this.getViewDefault();
 
-    const path = getBaseUrl(this.props.pathname);
-    const editAction = find(this.props.actions.object, { id: 'edit' });
-    const folderContentsAction = find(this.props.actions.object, {
-      id: 'folderContents',
-    });
-    const historyAction = find(this.props.actions.object, { id: 'history' });
-    const sharingAction = find(this.props.actions.object, {
-      id: 'local_roles',
-    });
-
     return (
       <div id="view">
         <BodyClass
@@ -259,6 +223,8 @@ export default class View extends Component {
         <RenderedView
           content={this.props.content}
           location={this.props.location}
+          token={this.props.token}
+          history={this.props.history}
         />
 
         {this.props.content.subjects &&
@@ -277,129 +243,29 @@ export default class View extends Component {
         )}
 
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            inner={
-              <div>
-                {editAction && (
-                  <Link to={`${path}/edit`} id="toolbar-edit" className="item">
-                    <Icon
-                      name="write"
-                      size="big"
-                      color="blue"
-                      title={editAction.title}
-                    />
-                  </Link>
-                )}
-                {this.props.content &&
-                  this.props.content.is_folderish &&
-                  folderContentsAction && (
-                    <Link
-                      to={`${path}/contents`.replace(/\/\//g, '/')}
-                      id="toolbar-folder-contents"
-                      className="item"
-                    >
-                      <Icon
-                        name="folder open"
-                        size="big"
-                        title={folderContentsAction.title}
-                      />
-                    </Link>
-                  )}
-                <Types pathname={path} />
-
-                <Dropdown
-                  id="toolbar-more"
-                  item
-                  trigger={<Icon name="ellipsis horizontal" size="big" />}
-                >
-                  <Dropdown.Menu>
-                    <Workflow pathname={path} />
-                    {this.state.hasObjectButtons && <Actions pathname={path} />}
-                    {editAction && <Display pathname={path} />}
-                    {historyAction && (
-                      <Link
-                        to={`${path}/history`}
-                        id="toolbar-history"
-                        className="item"
-                      >
-                        <Icon name="clock" size="big" /> {historyAction.title}
-                      </Link>
-                    )}
-                    {sharingAction && (
-                      <Link
-                        to={`${path}/sharing`}
-                        id="toolbar-sharing"
-                        className="item"
-                      >
-                        <Icon name="share" size="big" /> {sharingAction.title}
-                      </Link>
-                    )}
-                  </Dropdown.Menu>
-                </Dropdown>
-
-                <Dropdown
-                  id="toolbar-personal"
-                  className="personal-bar"
-                  item
-                  upward
-                  trigger={<Icon name="user" size="big" />}
-                >
-                  <Dropdown.Menu>
-                    {this.props.actions.user &&
-                      this.props.actions.user.map(item => {
-                        switch (item.id) {
-                          case 'preferences':
-                            return (
-                              <Link
-                                key={item.id}
-                                to="/personal-preferences"
-                                className="item"
-                              >
-                                <span>
-                                  <Icon name="setting" /> {item.title}
-                                </span>
-                              </Link>
-                            );
-
-                          case 'plone_setup':
-                            return (
-                              <Link
-                                key={item.id}
-                                to="/controlpanel"
-                                className="item"
-                              >
-                                <span>
-                                  <Icon name="settings" /> {item.title}
-                                </span>
-                              </Link>
-                            );
-
-                          case 'logout':
-                            return (
-                              <Link
-                                key={item.id}
-                                to="/logout"
-                                id="toolbar-logout"
-                                className="item"
-                              >
-                                <span>
-                                  <Icon name="sign out" /> {item.title}
-                                </span>
-                              </Link>
-                            );
-                          default: {
-                            return null;
-                          }
-                        }
-                      })}
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
-            }
-          />
+          <Toolbar pathname={this.props.pathname} inner={<span />} />
         </Portal>
       </div>
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      actions: state.actions.actions,
+      token: state.userSession.token,
+      content: state.content.data,
+      error: state.content.get.error,
+      pathname: props.location.pathname,
+      versionId:
+        qs.parse(props.location.search) &&
+        qs.parse(props.location.search).version_id,
+    }),
+    {
+      listActions,
+      getContent,
+    },
+  ),
+)(View);

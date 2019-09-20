@@ -6,27 +6,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 
 import { getVocabulary } from '../../../actions';
 
 const vocabulary = 'plone.app.vocabularies.Keywords';
 
-@connect(
-  state => ({
-    terms: state.vocabularies[vocabulary]
-      ? state.vocabularies[vocabulary].terms
-      : [],
-  }),
-  dispatch => bindActionCreators({ getVocabulary }, dispatch),
-)
 /**
  * Search tags container class.
  * @class SearchTags
  * @extends Component
  */
-export default class SearchTags extends Component {
+class SearchTags extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -73,3 +64,13 @@ export default class SearchTags extends Component {
     );
   }
 }
+
+export default connect(
+  state => ({
+    terms:
+      state.vocabularies[vocabulary] && state.vocabularies[vocabulary].terms
+        ? state.vocabularies[vocabulary].terms
+        : [],
+  }),
+  { getVocabulary },
+)(SearchTags);

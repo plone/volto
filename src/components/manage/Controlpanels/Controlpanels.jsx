@@ -6,8 +6,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import { concat, filter, last, map, uniqBy } from 'lodash';
 import { Portal } from 'react-portal';
 import Helmet from 'react-helmet';
@@ -21,7 +21,13 @@ import {
 
 import Icons from '../../../constants/ControlpanelIcons';
 import { listControlpanels } from '../../../actions';
-import { Toolbar, VersionOverview } from '../../../components';
+import {
+  Icon as IconNext,
+  Toolbar,
+  VersionOverview,
+} from '../../../components';
+
+import backSVG from '../../../icons/back.svg';
 
 const messages = defineMessages({
   sitesetup: {
@@ -38,20 +44,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    controlpanels: state.controlpanels.controlpanels,
-    pathname: props.location.pathname,
-  }),
-  dispatch => bindActionCreators({ listControlpanels }, dispatch),
-)
 /**
  * Controlpanels container class.
  * @class Controlpanels
  * @extends Component
  */
-export default class Controlpanels extends Component {
+class Controlpanels extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -156,12 +154,13 @@ export default class Controlpanels extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
+            hideDefaultViewButtons
             inner={
               <Link to="/" className="item">
-                <Icon
-                  name="arrow left"
-                  size="big"
-                  color="blue"
+                <IconNext
+                  name={backSVG}
+                  className="contents circled"
+                  size="30px"
                   title={this.props.intl.formatMessage(messages.back)}
                 />
               </Link>
@@ -172,3 +171,14 @@ export default class Controlpanels extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      controlpanels: state.controlpanels.controlpanels,
+      pathname: props.location.pathname,
+    }),
+    { listControlpanels },
+  ),
+)(Controlpanels);

@@ -44,13 +44,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
 /**
  * WysiwygWidget container class.
  * @class WysiwygWidget
  * @extends Component
  */
-export default class WysiwygWidget extends Component {
+class WysiwygWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -230,6 +229,7 @@ export default class WysiwygWidget extends Component {
       error,
       onEdit,
       onDelete,
+      fieldSet,
     } = this.props;
 
     if (__SERVER__) {
@@ -239,6 +239,7 @@ export default class WysiwygWidget extends Component {
           required={required}
           error={error.length > 0}
           className={description ? 'help' : ''}
+          id={`${fieldSet || 'field'}-${id}`}
         >
           <div className="wrapper">
             <label htmlFor={`field-${id}`}>{title}</label>
@@ -280,12 +281,19 @@ export default class WysiwygWidget extends Component {
             <Grid.Column width="8">
               {onEdit && (
                 <div className="toolbar">
-                  <a className="item" onClick={() => onEdit(id, this.schema)}>
+                  <button
+                    className="item"
+                    onClick={() => onEdit(id, this.schema)}
+                  >
                     <Icon name="write square" size="large" color="blue" />
-                  </a>
-                  <a className="item" onClick={() => onDelete(id)}>
+                  </button>
+                  <button
+                    aria-label="Delete"
+                    className="item"
+                    onClick={() => onDelete(id)}
+                  >
                     <Icon name="close" size="large" color="red" />
-                  </a>
+                  </button>
                 </div>
               )}
               <div style={{ boxSizing: 'initial' }}>
@@ -325,3 +333,5 @@ export default class WysiwygWidget extends Component {
     );
   }
 }
+
+export default injectIntl(WysiwygWidget);

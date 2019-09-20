@@ -3,6 +3,7 @@
 exports[`renders a wysiwyg widget component 1`] = `
 <div
   className="inline field"
+  id="field-my-field"
 >
   <div
     className="wrapper"

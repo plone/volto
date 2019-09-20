@@ -75,11 +75,11 @@ export SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
 export SchemaWidgetFieldset from '@plone/volto/components/manage/Widgets/SchemaWidgetFieldset';
 export SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
 export Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
+export SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 export Sharing from '@plone/volto/components/manage/Sharing/Sharing';
 export TextareaWidget from '@plone/volto/components/manage/Widgets/TextareaWidget';
 export TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 export Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
-export Types from '@plone/volto/components/manage/Types/Types';
 export WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 export Workflow from '@plone/volto/components/manage/Workflow/Workflow';
 
@@ -102,4 +102,9 @@ export ViewVideoTile from '@plone/volto/components/manage/Tiles/Video/View';
 export ViewMapTile from '@plone/volto/components/manage/Tiles/Maps/View';
 export ViewHTMLTile from '@plone/volto/components/manage/Tiles/HTML/View';
 
+export ImageSidebar from '@plone/volto/components/manage/Sidebar/ImageSidebar';
+
+export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
+export More from '@plone/volto/components/manage/Toolbar/More';
+export Types from '@plone/volto/components/manage/Toolbar/Types';
 export Toast from '@plone/volto/components/manage/Toast/Toast';

@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 import { tiles } from '~/config';
@@ -75,19 +76,12 @@ const itemTarget = {
   },
 };
 
-@DropTarget(ItemTypes.ITEM, itemTarget, connect => ({
-  connectDropTarget: connect.dropTarget(),
-}))
-@DragSource(ItemTypes.ITEM, itemSource, (connect, monitor) => ({
-  connectDragSource: connect.dragSource(),
-  connectDragPreview: connect.dragPreview(),
-}))
 /**
  * Edit tile class.
  * @class Edit
  * @extends Component
  */
-export default class Edit extends Component {
+class Edit extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -163,6 +157,7 @@ export default class Edit extends Component {
               basic
               onClick={() => this.props.onDeleteTile(id)}
               className="delete-button"
+              aria-label="delete"
             >
               <Icon name={trashSVG} size="18px" />
             </Button>
@@ -172,3 +167,13 @@ export default class Edit extends Component {
     );
   }
 }
+
+export default compose(
+  DropTarget(ItemTypes.ITEM, itemTarget, connect => ({
+    connectDropTarget: connect.dropTarget(),
+  })),
+  DragSource(ItemTypes.ITEM, itemSource, (connect, monitor) => ({
+    connectDragSource: connect.dragSource(),
+    connectDragPreview: connect.dragPreview(),
+  })),
+)(Edit);

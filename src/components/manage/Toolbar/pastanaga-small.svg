@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="56px" viewBox="0 0 30 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>kek</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0.875,13.199 C0.875,5.909 6.751,0 14,0 C21.249,0 27.125,5.909 27.125,13.199 C27.125,20.489 21.249,26.397 14,26.397 C6.751,26.397 0.875,20.488 0.875,13.199 Z M23.375,13.199 C23.375,7.992 19.178,3.771 14,3.771 C8.822,3.771 4.625,7.992 4.625,13.199 C4.625,18.406 8.822,22.627 14,22.627 C19.178,22.627 23.375,18.405 23.375,13.199 Z" id="path-1"></path>
+        <rect id="path-3" x="0" y="0" width="1280" height="850"></rect>
+        <rect id="path-5" x="0" y="0" width="38" height="37"></rect>
+        <rect id="path-7" x="0" y="0" width="28" height="27"></rect>
+        <path d="M23.553,4.374 L6.466,4.381 L15.011,19.418 L23.553,4.374 Z M15,27 L0,0.603 L30,0.603 L15,27 Z" id="path-9"></path>
+        <rect id="path-11" x="0" y="0" width="1280" height="850"></rect>
+    </defs>
+    <g id="Themenwelt---Lektion---Desktop-HD---1440-x-1024" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-97.000000, -1370.000000)">
+        <g id="kek" transform="translate(97.000000, 1370.000000)">
+            <g id="Clipped" transform="translate(1.000000, 0.000000)">
+                <g id="Group">
+                    <g id="Group-Clipped">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="path-1"></g>
+                        <g id="Group" mask="url(#mask-2)">
+                            <g transform="translate(-27.000000, -20.000000)" id="Clipped-Clipped">
+                                <g>
+                                    <g id="Group">
+                                        <g id="Clipped-Clipped">
+                                            <mask id="mask-4" fill="white">
+                                                <use xlink:href="#path-3"></use>
+                                            </mask>
+                                            <g id="path-3"></g>
+                                            <g id="Clipped" mask="url(#mask-4)">
+                                                <g transform="translate(22.000000, 15.000000)" id="Group">
+                                                    <g>
+                                                        <g id="Clipped-Clipped">
+                                                            <g>
+                                                                <g>
+                                                                    <mask id="mask-6" fill="white">
+                                                                        <use xlink:href="#path-5"></use>
+                                                                    </mask>
+                                                                    <g id="path-5"></g>
+                                                                    <g id="Clipped" mask="url(#mask-6)">
+                                                                        <g transform="translate(5.000000, 5.000000)" id="Group">
+                                                                            <g>
+                                                                                <g id="Rectangle-path-Clipped">
+                                                                                    <g>
+                                                                                        <g>
+                                                                                            <mask id="mask-8" fill="white">
+                                                                                                <use xlink:href="#path-7"></use>
+                                                                                            </mask>
+                                                                                            <g id="path-7"></g>
+                                                                                            <rect id="Rectangle-path" fill="#51AA55" fill-rule="nonzero" mask="url(#mask-8)" x="-4.125" y="-5" width="36.25" height="36.397"></rect>
+                                                                                        </g>
+                                                                                    </g>
+                                                                                </g>
+                                                                            </g>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="Clipped" transform="translate(0.000000, 29.000000)">
+                <g id="Group">
+                    <g id="Group-Clipped">
+                        <mask id="mask-10" fill="white">
+                            <use xlink:href="#path-9"></use>
+                        </mask>
+                        <g id="path-9"></g>
+                        <g id="Group" mask="url(#mask-10)">
+                            <g transform="translate(-26.000000, -49.000000)" id="Rectangle-path-Clipped">
+                                <g>
+                                    <g id="Group">
+                                        <g id="Rectangle-path-Clipped">
+                                            <mask id="mask-12" fill="white">
+                                                <use xlink:href="#path-11"></use>
+                                            </mask>
+                                            <g id="path-11"></g>
+                                            <rect id="Rectangle-path" fill="#F6A808" fill-rule="nonzero" mask="url(#mask-12)" x="21" y="44.603" width="40" height="36.397"></rect>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

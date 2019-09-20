@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 
-import { LogoutComponent as Logout } from './Logout';
+import Logout from './Logout';
 
 const mockStore = configureStore();
 

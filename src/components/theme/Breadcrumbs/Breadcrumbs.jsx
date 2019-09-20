@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
@@ -24,19 +24,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  state => ({
-    items: state.breadcrumbs.items,
-  }),
-  dispatch => bindActionCreators({ getBreadcrumbs }, dispatch),
-)
 /**
  * Breadcrumbs container class.
  * @class Breadcrumbs
  * @extends Component
  */
-export default class Breadcrumbs extends Component {
+class Breadcrumbs extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -82,7 +75,13 @@ export default class Breadcrumbs extends Component {
    */
   render() {
     return (
-      <Segment className="breadcrumbs" secondary vertical>
+      <Segment
+        role="navigation"
+        aria-label="Breadcrumbs"
+        className="breadcrumbs"
+        secondary
+        vertical
+      >
         <Container>
           <Breadcrumb>
             <Link
@@ -110,3 +109,13 @@ export default class Breadcrumbs extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      items: state.breadcrumbs.items,
+    }),
+    { getBreadcrumbs },
+  ),
+)(Breadcrumbs);

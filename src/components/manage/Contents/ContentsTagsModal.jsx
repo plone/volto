@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { without, union, map } from 'lodash';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
@@ -32,19 +32,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  state => ({
-    request: state.content.update,
-  }),
-  dispatch => bindActionCreators({ updateContent }, dispatch),
-)
 /**
  * ContentsTagsModal class.
  * @class ContentsTagsModal
  * @extends Component
  */
-export default class ContentsTagsModal extends Component {
+class ContentsTagsModal extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -151,3 +144,13 @@ export default class ContentsTagsModal extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      request: state.content.update,
+    }),
+    { updateContent },
+  ),
+)(ContentsTagsModal);

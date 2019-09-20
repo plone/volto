@@ -6,17 +6,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { asyncConnect } from 'redux-connect';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Router, Link } from 'react-router-dom';
-import { isEmpty } from 'lodash';
+import { compose } from 'redux';
+import { Link } from 'react-router-dom';
 import {
   Container,
   Button,
   Form,
   Input,
-  Message,
   Segment,
   Grid,
 } from 'semantic-ui-react';
@@ -29,7 +26,13 @@ import {
 import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
 
-import { login, purgeMessages } from '../../../actions';
+import { Icon } from '../../../components';
+import { login } from '../../../actions';
+import { toast } from 'react-toastify';
+import { Toast } from '@plone/volto/components';
+
+import aheadSVG from '@plone/volto/icons/ahead.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   login: {
@@ -52,24 +55,24 @@ const messages = defineMessages({
     id: 'Error',
     defaultMessage: 'Error',
   },
+  loginFailed: {
+    id: 'Login Failed',
+    defaultMessage: 'Login Failed',
+  },
+  loginFailedContent: {
+    id:
+      'Both email address and password are case sensitive, check that caps lock is not enabled.',
+    defaultMessage:
+      'Both email address and password are case sensitive, check that caps lock is not enabled.',
+  },
 });
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    error: state.userSession.login.error,
-    loading: state.userSession.login.loading,
-    token: state.userSession.token,
-    returnUrl: qs.parse(props.location.search).return_url || '/',
-  }),
-  dispatch => bindActionCreators({ login, purgeMessages }, dispatch),
-)
 /**
- * LoginComponent class.
- * @class LoginComponent
+ * Login class.
+ * @class Login
  * @extends Component
  */
-export class LoginComponent extends Component {
+class Login extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -77,7 +80,6 @@ export class LoginComponent extends Component {
    */
   static propTypes = {
     login: PropTypes.func.isRequired,
-    purgeMessages: PropTypes.func.isRequired,
     error: PropTypes.shape({
       message: PropTypes.string,
     }),
@@ -119,7 +121,27 @@ export class LoginComponent extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.token) {
       this.props.history.push(this.props.returnUrl || '/');
-      this.props.purgeMessages();
+      if (toast.isActive('loginFailed')) {
+        toast.dismiss('loginFailed');
+      }
+    }
+    if (nextProps.error) {
+      if (!toast.isActive('loginFailed')) {
+        toast.error(
+          <Toast
+            error
+            title={this.props.intl.formatMessage(messages.loginFailed)}
+            content={this.props.intl.formatMessage(messages.loginFailedContent)}
+          />,
+          { autoClose: false, toastId: 'loginFailed' },
+        );
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    if (toast.isActive('loginFailed')) {
+      toast.dismiss('loginFailed');
     }
   }
 
@@ -152,15 +174,6 @@ export class LoginComponent extends Component {
               <Segment className="primary">
                 <FormattedMessage id="Log In" defaultMessage="Login Name" />
               </Segment>
-              {this.props.error && (
-                <Message
-                  icon="warning"
-                  negative
-                  attached
-                  header={this.props.intl.formatMessage(messages.error)}
-                  content={this.props.error.message}
-                />
-              )}
               <Segment secondary>
                 <FormattedMessage
                   id="Sign in to start session"
@@ -182,6 +195,7 @@ export class LoginComponent extends Component {
                         </div>
                       </Grid.Column>
                       <Grid.Column width="8">
+                        {/* eslint-disable jsx-a11y/no-autofocus */}
                         <Input
                           id="login"
                           name="login"
@@ -200,6 +214,7 @@ export class LoginComponent extends Component {
                             defaultMessage="If you you do not have an account here, head over to the {registrationform}."
                             values={{
                               registrationform: (
+                                /* eslint-disable jsx-a11y/tabindex-no-positive */
                                 <Link to="/register" tabIndex={1}>
                                   <FormattedMessage
                                     id="registration form"
@@ -262,31 +277,32 @@ export class LoginComponent extends Component {
                   </Grid>
                 </Form.Field>
               </Segment>
-              <Segment clearing className="actions">
+              <Segment className="actions" clearing>
                 <Button
                   basic
-                  circular
                   primary
-                  id="login-form-submit"
-                  icon="arrow right"
                   floated="right"
-                  size="big"
                   type="submit"
+                  id="login-form-submit"
+                  aria-label={this.props.intl.formatMessage(messages.login)}
                   title={this.props.intl.formatMessage(messages.login)}
                   loading={this.props.loading}
-                />
+                >
+                  <Icon className="circled" name={aheadSVG} size="30px" />
+                </Button>
+
                 <Button
                   basic
-                  circular
                   secondary
+                  id="login-form-cancel"
                   as={Link}
                   to="/"
-                  id="login-form-cancel"
-                  icon="remove"
-                  floated="right"
-                  size="big"
+                  aria-label={this.props.intl.formatMessage(messages.cancel)}
                   title={this.props.intl.formatMessage(messages.cancel)}
-                />
+                  floated="right"
+                >
+                  <Icon className="circled" name={clearSVG} size="30px" />
+                </Button>
               </Segment>
             </Segment.Group>
           </Form>
@@ -296,15 +312,16 @@ export class LoginComponent extends Component {
   }
 }
 
-export default asyncConnect([
-  {
-    key: 'userSession',
-    promise: ({ store: { dispatch, getState } }) => {
-      const { form } = getState();
-      if (!isEmpty(form)) {
-        return dispatch(login(form.login, form.password));
-      }
-      return Promise.resolve({});
-    },
-  },
-])(withRouter(LoginComponent));
+export default compose(
+  withRouter,
+  injectIntl,
+  connect(
+    (state, props) => ({
+      error: state.userSession.login.error,
+      loading: state.userSession.login.loading,
+      token: state.userSession.token,
+      returnUrl: qs.parse(props.location.search).return_url || '/',
+    }),
+    { login },
+  ),
+)(Login);

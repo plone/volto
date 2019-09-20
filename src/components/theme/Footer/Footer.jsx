@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Container, Divider, List, Segment } from 'semantic-ui-react';
+import { Container, List, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import {
   FormattedMessage,
@@ -27,7 +27,14 @@ const messages = defineMessages({
  * @returns {string} Markup of the component
  */
 const Footer = ({ intl }) => (
-  <Segment vertical padded inverted color="grey" textAlign="center">
+  <Segment
+    role="contentinfo"
+    vertical
+    padded
+    inverted
+    color="grey"
+    textAlign="center"
+  >
     <Container>
       <Segment basic inverted color="grey" className="discreet">
         <FormattedMessage
@@ -74,23 +81,33 @@ const Footer = ({ intl }) => (
         />
       </Segment>
       <List horizontal inverted>
-        <List.Item href="/sitemap">
-          <FormattedMessage id="Site Map" defaultMessage="Site Map" />
-        </List.Item>
-        <List.Item href="/accessibility-info">
-          <FormattedMessage id="Accessibility" defaultMessage="Accessibility" />
-        </List.Item>
-        <List.Item>
-          <Link to="contact-form" className="item">
+        {/* wrap in div for a11y reasons: listitem role cannot be on the <a> element directly */}
+        <div role="listitem" className="item">
+          <Link className="item" to="/sitemap">
+            <FormattedMessage id="Site Map" defaultMessage="Site Map" />
+          </Link>
+        </div>
+        <div role="listitem" className="item">
+          <Link className="item" to="/accesibility-info">
+            <FormattedMessage
+              id="Accessibility"
+              defaultMessage="Accessibility"
+            />
+          </Link>
+        </div>
+        <div role="listitem" className="item">
+          <Link className="item" to="/contact-form">
             <FormattedMessage id="Contact" defaultMessage="Contact" />
           </Link>
-        </List.Item>
-        <List.Item href="http://plone.com">
-          <FormattedMessage
-            id="Powered by Plone & Python"
-            defaultMessage="Powered by Plone & Python"
-          />
-        </List.Item>
+        </div>
+        <div role="listitem" className="item">
+          <a className="item" href="https://plone.com">
+            <FormattedMessage
+              id="Powered by Plone & Python"
+              defaultMessage="Powered by Plone & Python"
+            />
+          </a>
+        </div>
       </List>
     </Container>
   </Segment>

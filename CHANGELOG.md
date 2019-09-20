@@ -1,33 +1,98 @@
 # Change Log
 
-## 3.1.1 (unreleased)
+## 4.0.0 (unreleased)
 
 ### Added
 
+### Changes
+
+## 4.0.0-alpha.2 (2019-09-19)
+
+### Changes
+
+- Fix parameter handling in Search view to avoid limiting search results with empty parameters #845 @csenger
+- Fix SearchTags handling of keyword vocabulary for anonymous users @csenger
+- Fix hero tile being next to a left or right aligned image @jackahl
+- Fix toolbar elements showing depending on user permissions @sneridagh
+
+## 4.0.0-alpha.1 (2019-09-17)
+
+### Changes
+
+- Fix test failure for `VersionOverview` component in master after release process @sneridagh
+- Improve usability of login form @sneridagh
+- Fix creation of image objects from image tile by adding the id as well @sneridagh
+- Remove description tile from the default tiles on new content @sneridagh
+
+### Internal
+
+- Update release-it to fix some deprecation messages @sneridagh
+
+## 4.0.0-alpha.0 (2019-09-13)
+
+### Added
+
+- Show images in Rich Text editor @rodfersou @sneridagh
+- Full Pastanaga Toolbabr implementation @sneridagh
 - Internal API path for containers @bloodbare
 - Add toast component @sneridagh
 - Add sidebar support for components @sneridagh
 - Add Volto version number in control panel @nzambello
 - Remove Mosaic component @tisto
+- Added toast component in actions @nzambello
 - Added translations to italian @nzambello
+- Add table tile @robgietema
+- Add image sidebar @sneridagh @gomez
+- Add delete file button to file Widget @jackahl
+- Add link redirect view @robgietema
+- Add proper unique id to all fields, based on the fieldset and field name @sneridagh
+- Add QueryString widget @robgietema @sneridagh
 
 ### Changes
 
+- Add a delay when filtering content in folder contents so it doesn't overload backend @vangheem
 - Small UX/UI fixes @sneridagh
 - Fix query string search in subjects vocab field @gomez
 - Removed the delete button from the title tile @pnicolli
 - Rewrite sidebar @robgietma @sneridagh
+- Added SidebarPortal component for easier sidebar handling @pnicolli
+- Fixed tiles outline in Pastanaga editor @pnicolli
+- Fix typos @balavec
+- Fix warnings for boolean fields @miziodel
+- Fix dropdown styling @robgietema
+- Update connected-react-router and fix instantiation of the wrapper component
+  to fix the sync problems with the router and the store @sneridagh
+- Fix link popup in case you dismiss it without setting anything @sneridagh
+- Export history in start-client.jsx for being able to import it from the project for trackers (Matomo, etc) @csenger
+- Workflow change awareness on toolbar @robgietema
+- Fix reordering in folder contents view and problems with previous windowing settings leaked to current one. @robgietema
+- Fix remove link entity of only a part it only removes that part, not the whole entity @robgietema
+- Add proper placeholder to the add link feature in the editor @sneridagh
+- Fix bulk workflow change in contents view @sneridagh
+- Fix regresion on uploading image to root @sneridagh
+- Fix hero tile on view if image is missing @sneridagh
+- Fix link to contextual contents in toolbar @sneridagh
+- Add automatically the wildcard for the `SearchableText` on the @search action @sneridagh
 
 ### Internal
 
+- Upgrade lodash to 4.17.15 @tisto
 - Fix console errors on tests @sneridagh
+- Add development mode for kitkoncept.voltodemo to /api plonebacked @fredvd
+- Cleanup map dispatch to props @robgietema
+- Fix linting warnings @robgietema
+- Remove decorators @robgietema
+- Pin mem to 4.0.0 @tisto
+- Add razzle-plugin-bundle-analyzer @tisto
+- Add bundlewatch @tisto
+- Add bundlesize @tisto
+- Update base buildout @sneridagh
 
 ## 3.1.0 (2019-06-14)
 
 ### Added
 
-- Upgrade to react-redux 7.1. It includes the new official hooks for Redux
-  @sneridagh
+- Upgrade to react-redux 7.1. It includes the new official hooks for Redux. @sneridagh
 - Make Login Route accessible from anywhere in path url @nileshgulia1
 
 ### Changes
@@ -47,6 +112,9 @@
 
 ### Changes
 
+### Internal
+
+- Add cypress a11y tests. @timo
 - Fix order of arguments when sending the contact form @csenger
 - Fix @babel/core import on i18n script @sneridagh
 

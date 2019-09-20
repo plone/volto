@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { concat, findIndex, map, omit, slice, without } from 'lodash';
 import move from 'lodash-move';
 import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
@@ -95,17 +96,12 @@ const messages = defineMessages({
   },
 });
 
-@DragDropContext(HTML5Backend)
-@injectIntl
-@connect((state, props) => ({
-  value: JSON.parse(props.value),
-}))
 /**
  * SchemaWidget component class.
  * @class SchemaWidget
  * @extends Component
  */
-export default class SchemaWidget extends Component {
+class SchemaWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -550,7 +546,10 @@ export default class SchemaWidget extends Component {
                 content={err}
               />
             ))}
-          <div className="ui pointing secondary attached tabular menu">
+          <div
+            role="tablist"
+            className="ui pointing secondary attached tabular menu"
+          >
             {map(value.fieldsets, (item, index) => (
               <SchemaWidgetFieldset
                 key={item.id}
@@ -563,9 +562,13 @@ export default class SchemaWidget extends Component {
                 onOrderFieldset={this.onOrderFieldset}
               />
             ))}
-            <a className="item" onClick={this.onShowAddFieldset}>
+            <button
+              aria-label="Add"
+              className="item"
+              onClick={this.onShowAddFieldset}
+            >
               <Icon name="plus" size="large" />
-            </a>
+            </button>
           </div>
           {map(
             value.fieldsets[this.state.currentFieldset].fields,
@@ -587,12 +590,17 @@ export default class SchemaWidget extends Component {
               <Grid.Row stretched>
                 <Grid.Column width="12">
                   <div className="wrapper">
-                    <label>Add new field</label>
+                    <label htmlFor="addfield">Add new field</label>
                   </div>
                   <div className="toolbar">
-                    <a className="item" onClick={this.onShowAddField}>
+                    <button
+                      aria-label="Add"
+                      id="addfield"
+                      className="item"
+                      onClick={this.onShowAddField}
+                    >
                       <Icon name="plus" color="blue" size="large" />
-                    </a>
+                    </button>
                   </div>
                 </Grid.Column>
               </Grid.Row>
@@ -766,3 +774,11 @@ export default class SchemaWidget extends Component {
     );
   }
 }
+
+export default compose(
+  DragDropContext(HTML5Backend),
+  injectIntl,
+  connect((state, props) => ({
+    value: JSON.parse(props.value),
+  })),
+)(SchemaWidget);

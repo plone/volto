@@ -14,21 +14,21 @@ exports[`renders a contents item component 1`] = `
     aria-hidden="true"
     className="grey bars icon drag handle"
   />
-  <a
+  <button
     onClick={[Function]}
   >
     <i
       aria-hidden="true"
       className="blue write square large icon"
     />
-  </a>
-  <a
+  </button>
+  <button
     onClick={[Function]}
   >
     <i
       aria-hidden="true"
       className="red close large icon"
     />
-  </a>
+  </button>
 </div>
 `;

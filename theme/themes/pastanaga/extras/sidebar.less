@@ -1,5 +1,24 @@
 // Object Browser Container
-aside.sidebar-container {
+
+@media only screen and (max-width: @largestMobileScreen) {
+  .has-toolbar {
+    .sidebar-container {
+      top: 100px;
+      bottom: 0;
+      height: calc(100vh - 100px);
+    }
+  }
+
+  .has-toolbar-collapsed {
+    .sidebar-container {
+      top: 20px;
+      bottom: 0;
+      height: calc(100vh - 20px);
+    }
+  }
+}
+
+.sidebar-container {
   position: fixed;
   z-index: 100;
   top: 0;
@@ -8,10 +27,13 @@ aside.sidebar-container {
   height: 100vh;
   background-color: #fff;
   box-shadow: 0 1px 2px 0 #c7d5d8;
-  transition: right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  transition: right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+    height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+    top 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 
   &.collapsed {
     right: -355px;
+
     .tabs-wrapper {
       opacity: 0;
       transition: opacity 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
@@ -40,6 +62,7 @@ aside.sidebar-container {
   .trigger:focus,
   .trigger:hover {
     position: absolute;
+    z-index: 1;
     top: 50%;
     left: 0;
     width: 20px;
@@ -48,9 +71,13 @@ aside.sidebar-container {
     margin-top: -40px;
     background: transparent;
     border-radius: 0;
+    opacity: 0.05;
+    transition: opacity 0.3s;
+  }
+
+  .trigger:hover {
     opacity: 0.3;
     transition: opacity 0.3s;
-    z-index: 1;
   }
 
   .trigger:before {
@@ -65,13 +92,15 @@ aside.sidebar-container {
 
   .tab-wrapper {
     height: calc(100% - 61px);
-    overflow-y: auto;
-    overflow-x: hidden;
-    border-bottom: none;
     padding: 0;
+    border-bottom: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+
     > * {
       display: none;
     }
+
     > :last-child {
       display: block;
     }
@@ -109,8 +138,12 @@ aside.sidebar-container {
       flex: 1 0 auto;
     }
 
-    .search input {
-      border: none;
+    .search {
+      width: 100%;
+
+      input {
+        border: none;
+      }
     }
 
     a {
@@ -193,14 +226,32 @@ aside.sidebar-container {
   .ui.segment.form.sidebar-image-data {
     padding-bottom: 1em;
   }
+
+  .ui.accordion {
+    .title {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .content {
+      padding: 0;
+    }
+  }
 }
 
 #sidebar .pusher.expanded {
   margin-left: 375px;
 }
+
 #sidebar .pusher {
-  transition: margin-left 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
   margin-left: 20px;
+  transition: margin-left 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+#sidebar-properties {
+  header {
+    border-bottom: 2px solid #b8c6c8;
+  }
 }
 
 // Animation
@@ -240,4 +291,54 @@ aside.sidebar-container {
 
 .sidebar-metadata-container {
   display: flex;
+  justify-content: space-between;
+}
+
+.field-file-name {
+  display: flex;
+  align-items: flex-end;
+  padding: 20px 0;
+}
+
+.align-tools {
+  display: flex !important;
+  align-items: center;
+
+  .ui.icon.button {
+    padding: 4px;
+    margin-left: 4px;
+    border-radius: 1px;
+    color: #826a6a !important;
+
+    &:hover {
+      background-color: #edf1f2 !important;
+    }
+  }
+
+  .ui.buttons:first-child .ui.icon.button {
+    margin-left: 0;
+  }
+
+  .ui.active.basic.icon.button {
+    border: 1px solid #2996da;
+    background: transparent !important;
+  }
+}
+
+.ui.icon.input + button {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 2.67142857em;
+  height: 100%;
+  padding: 4px;
+  margin: 0;
+  border-radius: 1px;
+  color: #826a6a !important;
+  line-height: 1;
+  text-align: center;
+
+  &:hover {
+    background-color: #edf1f2 !important;
+  }
 }

@@ -2,10 +2,11 @@
 
 exports[`renders a sidebar component 1`] = `
 Array [
-  <aside
+  <div
     className="sidebar-container"
   >
     <button
+      aria-label="Shrink sidebar"
       className="ui button trigger"
       onClick={[Function]}
     />
@@ -56,7 +57,7 @@ Array [
         />
       </div>
     </div>
-  </aside>,
+  </div>,
   <div
     className="pusher expanded"
   />,

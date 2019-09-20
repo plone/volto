@@ -236,19 +236,19 @@ To do so, start three individual terminal sessions for running the Plone backend
 Start the Plone backend:
 
 ```shell
-$ yarn ci:start-api-plone
+$ make start-test-backend
 ```
 
 Start the Volto frontend:
 
 ```shell
-$ RAZZLE_API_PATH=http://localhost:55001/plone yarn start
+$ make start-test-backend
 ```
 
-Open Cypress to run and develop the acceptance tests:
+Open Cypress and start acceptance tests:
 
 ```shell
-$ yarn cypress:open
+$ make start-test
 ```
 
 Go to the `cypress/integration` folder to see existing tests.

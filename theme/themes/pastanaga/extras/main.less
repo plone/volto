@@ -15,6 +15,17 @@
 
 body {
   display: flex;
+
+  @media only screen and (max-width: @largestMobileScreen) {
+    flex-direction: column;
+  }
+
+  &.has-toolbar-menu-open {
+    // The body scroll locker when the menu is active in mobile.
+    @media only screen and (max-width: @largestMobileScreen) {
+      overflow: hidden;
+    }
+  }
 }
 
 #main {
@@ -39,7 +50,7 @@ body {
 }
 
 .documentDescription {
-  color: #84a3ae;
+  color: #5d7a8e;
   font-size: 1.125rem;
 }
 
@@ -59,11 +70,47 @@ body {
     20 fill repeat;
 }
 
+// SVGs
+svg.circled {
+  box-sizing: content-box;
+  padding: 4px;
+  border: 2px solid currentColor;
+  border-radius: 50px;
+}
+
+svg.icon {
+  // Experiment if this is ok for all icons
+  box-sizing: content-box;
+}
+
+button .close {
+  color: @darkHotPink;
+}
+
 // Override default behavior for forms and segments
 .ui.form,
 .ui.segments,
 .ui.segment {
   position: static !important;
+}
+
+// Buttons colored
+button {
+  &.contents {
+    color: @teal-blue;
+  }
+
+  &.save {
+    color: @teal-blue;
+  }
+
+  &.cancel {
+    color: @darkHotPink;
+  }
+
+  &.edit {
+    color: @teal-blue;
+  }
 }
 
 // Button reset
@@ -244,6 +291,7 @@ body {
     margin-left: 8px;
 
     h4 {
+      padding-top: 4px;
       margin-bottom: 0;
       font-weight: @bold;
     }
@@ -274,6 +322,7 @@ body {
 }
 
 @import 'utils';
+@import 'toolbar';
 @import 'draftjs';
 @import 'tiles';
 @import 'sidebar';

@@ -45,6 +45,7 @@ exports[`Contact form renders a contact form 1`] = `
             </div>
             <div
               className="inline field"
+              id="field-name"
             >
               <div
                 className="ui grid"
@@ -86,6 +87,7 @@ exports[`Contact form renders a contact form 1`] = `
             </div>
             <div
               className="inline required field"
+              id="field-from"
             >
               <div
                 className="ui grid"
@@ -127,6 +129,7 @@ exports[`Contact form renders a contact form 1`] = `
             </div>
             <div
               className="inline field"
+              id="field-subject"
             >
               <div
                 className="ui grid"
@@ -168,6 +171,7 @@ exports[`Contact form renders a contact form 1`] = `
             </div>
             <div
               className="inline required field textarea"
+              id="field-message"
             >
               <div
                 className="ui grid"
@@ -214,30 +218,63 @@ exports[`Contact form renders a contact form 1`] = `
             className="ui clearing segment actions"
           >
             <button
-              className="ui big basic circular icon primary right floated button"
+              aria-label="Send"
+              className="ui basic primary right floated button"
               onClick={[Function]}
               title="Send"
               type="submit"
             >
-              <i
-                aria-hidden="true"
-                className="arrow right icon"
+              <svg
+                className="icon circled"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "30px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
               />
             </button>
             <button
-              className="ui big basic circular icon secondary right floated button"
+              aria-label="Cancel"
+              className="ui basic secondary right floated button"
               onClick={[Function]}
               title="Cancel"
             >
-              <i
-                aria-hidden="true"
-                className="remove icon"
+              <svg
+                className="icon circled"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "30px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
               />
             </button>
           </div>
         </div>
       </form>
     </div>
+    <div
+      id="Portal"
+    />
   </div>
 </div>
 `;
@@ -290,6 +327,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
             </div>
             <div
               className="inline field"
+              id="field-name"
             >
               <div
                 className="ui grid"
@@ -331,6 +369,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
             </div>
             <div
               className="inline required field"
+              id="field-from"
             >
               <div
                 className="ui grid"
@@ -372,6 +411,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
             </div>
             <div
               className="inline field"
+              id="field-subject"
             >
               <div
                 className="ui grid"
@@ -413,6 +453,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
             </div>
             <div
               className="inline required field textarea"
+              id="field-message"
             >
               <div
                 className="ui grid"
@@ -459,30 +500,63 @@ exports[`Contact form renders a contact form with error message 1`] = `
             className="ui clearing segment actions"
           >
             <button
-              className="ui big basic circular icon primary right floated button"
+              aria-label="Send"
+              className="ui basic primary right floated button"
               onClick={[Function]}
               title="Send"
               type="submit"
             >
-              <i
-                aria-hidden="true"
-                className="arrow right icon"
+              <svg
+                className="icon circled"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "30px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
               />
             </button>
             <button
-              className="ui big basic circular icon secondary right floated button"
+              aria-label="Cancel"
+              className="ui basic secondary right floated button"
               onClick={[Function]}
               title="Cancel"
             >
-              <i
-                aria-hidden="true"
-                className="remove icon"
+              <svg
+                className="icon circled"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "30px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
               />
             </button>
           </div>
         </div>
       </form>
     </div>
+    <div
+      id="Portal"
+    />
   </div>
 </div>
 `;

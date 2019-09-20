@@ -1,48 +1,180 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Workflow renders a workflow component 1`] = `
-<div
-  aria-expanded={false}
-  className="ui item dropdown"
-  onBlur={[Function]}
-  onChange={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onMouseDown={[Function]}
-  role="listbox"
-  tabIndex={0}
->
-  <span>
-    <i
-      aria-hidden="true"
-      className="random big icon"
-    />
-     
-    <span>
-      State: private
-    </span>
-  </span>
-  <i
-    aria-hidden="true"
-    className="dropdown icon"
-    onClick={[Function]}
-  />
+Array [
+  <label
+    htmlFor="state-select"
+  >
+    State
+  </label>,
   <div
-    className="menu transition"
+    className="css-10nd86i react-select-container"
+    onKeyDown={[Function]}
   >
     <div
-      className="item"
-      onClick={[Function]}
-      role="option"
+      className="css-mgvt82 react-select__control"
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
     >
-      <span
-        className="text"
+      <div
+        className="css-1hwfws3 react-select__value-container react-select__value-container--has-value"
       >
-        Publish
-      </span>
+        <div
+          className="css-xp4uvy react-select__single-value"
+        >
+          <span
+            style={
+              Object {
+                "backgroundColor": "#ed4033",
+                "borderRadius": "50%",
+                "content": " ",
+                "display": "inline-block",
+                "height": "10px",
+                "marginLeft": "10px",
+                "marginRight": "10px",
+                "width": "10px",
+              }
+            }
+          />
+          Private
+        </div>
+        <input
+          className="css-14uuagi"
+          disabled={false}
+          id="react-select-3-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          readOnly={true}
+          tabIndex="0"
+          value=""
+        />
+      </div>
+      <div
+        className="css-1wy0on6 react-select__indicators"
+      >
+        <span
+          className="css-hba3sr react-select__indicator-separator"
+        />
+        <div
+          aria-hidden="true"
+          className="css-1ep9fjw react-select__indicator react-select__dropdown-indicator"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#007bc1",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+    <input
+      name="display-select"
+      type="hidden"
+      value="private"
+    />
+  </div>,
+]
 `;
 
-exports[`Workflow renders an empty workflow component 1`] = `<span />`;
+exports[`Workflow renders an empty workflow component 1`] = `
+Array [
+  <label
+    htmlFor="state-select"
+  >
+    State
+  </label>,
+  <div
+    className="css-1sontr1 react-select-container react-select--is-disabled"
+    onKeyDown={[Function]}
+  >
+    <div
+      className="css-1k3xatg react-select__control react-select__control--is-disabled"
+      onMouseDown={[Function]}
+      onTouchEnd={[Function]}
+    >
+      <div
+        className="css-1hwfws3 react-select__value-container react-select__value-container--has-value"
+      >
+        <div
+          className="css-142w6gm react-select__single-value react-select__single-value--is-disabled"
+        >
+          <span
+            style={
+              Object {
+                "backgroundColor": "#007bc1",
+                "borderRadius": "50%",
+                "content": " ",
+                "display": "inline-block",
+                "height": "10px",
+                "marginLeft": "10px",
+                "marginRight": "10px",
+                "width": "10px",
+              }
+            }
+          />
+          Public
+        </div>
+        <input
+          className="css-14uuagi"
+          disabled={true}
+          id="react-select-2-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          readOnly={true}
+          tabIndex="0"
+          value=""
+        />
+      </div>
+      <div
+        className="css-1wy0on6 react-select__indicators"
+      >
+        <span
+          className="css-9m5qhi react-select__indicator-separator"
+        />
+        <div
+          aria-hidden="true"
+          className="css-1ep9fjw react-select__indicator react-select__dropdown-indicator"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#007bc1",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;

@@ -25,6 +25,7 @@ exports[`Register renders a register component 1`] = `
           </div>
           <div
             className="inline required field help"
+            id="field-fullname"
           >
             <div
               className="ui grid"
@@ -79,6 +80,7 @@ exports[`Register renders a register component 1`] = `
           </div>
           <div
             className="inline required field help"
+            id="field-email"
           >
             <div
               className="ui grid"
@@ -136,14 +138,29 @@ exports[`Register renders a register component 1`] = `
           className="ui clearing segment actions"
         >
           <button
-            className="ui big basic circular icon primary right floated button"
+            aria-label="Register"
+            className="ui basic primary right floated button"
             onClick={[Function]}
             title="Register"
             type="submit"
           >
-            <i
-              aria-hidden="true"
-              className="arrow right icon"
+            <svg
+              className="icon circled"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "30px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
             />
           </button>
         </div>

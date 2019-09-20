@@ -6,9 +6,9 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { asyncConnect } from 'redux-connect';
 import { Segment } from 'semantic-ui-react';
-import { bindActionCreators } from 'redux';
 import Raven from 'raven-js';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
@@ -21,7 +21,6 @@ import {
   Header,
   Icon,
   Messages,
-  Toast,
 } from '../../../components';
 import { BodyClass, getBaseUrl, getView } from '../../../helpers';
 import {
@@ -35,16 +34,12 @@ import {
 
 import clearSVG from '../../../icons/clear.svg';
 
-@connect(
-  (state, props) => ({ pathname: props.location.pathname }),
-  dispatch => bindActionCreators({ purgeMessages }, dispatch),
-)
 /**
  * @export
- * @class AppComponent
+ * @class App
  * @extends {Component}
  */
-export class AppComponent extends Component {
+class App extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -135,6 +130,7 @@ export class AppComponent extends Component {
           position={toast.POSITION.BOTTOM_CENTER}
           hideProgressBar
           transition={Slide}
+          autoClose={5000}
           closeButton={
             <Icon
               className="toast-dismiss-action"
@@ -148,30 +144,41 @@ export class AppComponent extends Component {
   }
 }
 
-export default asyncConnect([
-  {
-    key: 'breadcrumbs',
-    promise: ({ location, store: { dispatch } }) =>
-      dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
-  },
-  {
-    key: 'content',
-    promise: ({ location, store: { dispatch } }) =>
-      dispatch(getContent(getBaseUrl(location.pathname))),
-  },
-  {
-    key: 'navigation',
-    promise: ({ location, store: { dispatch } }) =>
-      dispatch(getNavigation(getBaseUrl(location.pathname))),
-  },
-  {
-    key: 'types',
-    promise: ({ location, store: { dispatch } }) =>
-      dispatch(getTypes(getBaseUrl(location.pathname))),
-  },
-  {
-    key: 'workflow',
-    promise: ({ location, store: { dispatch } }) =>
-      dispatch(getWorkflow(getBaseUrl(location.pathname))),
-  },
-])(AppComponent);
+export const __test__ = connect(
+  (state, props) => ({ pathname: props.location.pathname }),
+  { purgeMessages },
+)(App);
+
+export default compose(
+  asyncConnect([
+    {
+      key: 'breadcrumbs',
+      promise: ({ location, store: { dispatch } }) =>
+        dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
+    },
+    {
+      key: 'content',
+      promise: ({ location, store: { dispatch } }) =>
+        dispatch(getContent(getBaseUrl(location.pathname))),
+    },
+    {
+      key: 'navigation',
+      promise: ({ location, store: { dispatch } }) =>
+        dispatch(getNavigation(getBaseUrl(location.pathname))),
+    },
+    {
+      key: 'types',
+      promise: ({ location, store: { dispatch } }) =>
+        dispatch(getTypes(getBaseUrl(location.pathname))),
+    },
+    {
+      key: 'workflow',
+      promise: ({ location, store: { dispatch } }) =>
+        dispatch(getWorkflow(getBaseUrl(location.pathname))),
+    },
+  ]),
+  connect(
+    (state, props) => ({ pathname: props.location.pathname }),
+    { purgeMessages },
+  ),
+)(App);

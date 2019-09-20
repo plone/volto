@@ -19,8 +19,11 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { Portal } from 'react-portal';
 
-import { EditTile, Field } from '../../../components';
+import { EditTile, Icon, Field } from '../../../components';
 import { getTilesFieldname, getTilesLayoutFieldname } from '../../../helpers';
+
+import aheadSVG from '@plone/volto/icons/ahead.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   addTile: {
@@ -130,7 +133,6 @@ class Form extends Component {
     super(props);
     const ids = {
       title: uuid(),
-      description: uuid(),
       text: uuid(),
     };
     let { formData } = props;
@@ -144,16 +146,13 @@ class Form extends Component {
     // defaults for block editor; should be moved to schema on server side
     if (!formData[tilesLayoutFieldname]) {
       formData[tilesLayoutFieldname] = {
-        items: [ids.title, ids.description, ids.text],
+        items: [ids.title, ids.text],
       };
     }
     if (!formData[tilesFieldname]) {
       formData[tilesFieldname] = {
         [ids.title]: {
           '@type': 'title',
-        },
-        [ids.description]: {
-          '@type': 'description',
         },
         [ids.text]: {
           '@type': 'text',
@@ -547,10 +546,10 @@ class Form extends Component {
             error={keys(this.state.errors).length > 0}
           >
             {map(schema.fieldsets, item => [
-              <Segment secondary attached>
+              <Segment secondary attached key={item.title}>
                 {item.title}
               </Segment>,
-              <Segment attached>
+              <Segment attached key={`fieldset-contents-${item.title}`}>
                 {map(item.fields, (field, index) => (
                   <Field
                     {...schema.properties[field]}
@@ -597,6 +596,7 @@ class Form extends Component {
                       <Field
                         {...schema.properties[field]}
                         id={field}
+                        fieldSet={item.title.toLowerCase()}
                         focus={index === 0}
                         value={this.state.formData[field]}
                         required={schema.required.indexOf(field) !== -1}
@@ -655,31 +655,35 @@ class Form extends Component {
                 {onSubmit && (
                   <Button
                     basic
-                    circular
                     primary
                     floated="right"
-                    icon="arrow right"
                     type="submit"
+                    aria-label={
+                      this.props.submitLabel
+                        ? this.props.submitLabel
+                        : this.props.intl.formatMessage(messages.save)
+                    }
                     title={
                       this.props.submitLabel
                         ? this.props.submitLabel
                         : this.props.intl.formatMessage(messages.save)
                     }
-                    size="big"
                     loading={this.props.loading}
-                  />
+                  >
+                    <Icon className="circled" name={aheadSVG} size="30px" />
+                  </Button>
                 )}
                 {onCancel && (
                   <Button
                     basic
-                    circular
                     secondary
-                    icon="remove"
+                    aria-label={this.props.intl.formatMessage(messages.cancel)}
                     title={this.props.intl.formatMessage(messages.cancel)}
                     floated="right"
-                    size="big"
                     onClick={onCancel}
-                  />
+                  >
+                    <Icon className="circled" name={clearSVG} size="30px" />
+                  </Button>
                 )}
               </Segment>
             )}

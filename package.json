@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "3.1.0",
+  "version": "4.0.0-alpha.2",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -28,6 +28,7 @@
     "react"
   ],
   "scripts": {
+    "analyze": "BUNDLE_ANALYZE=true razzle build",
     "start": "razzle start",
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
@@ -52,7 +53,22 @@
     "ci:cypress:run": "start-test ci:start-api-plone http-get://localhost:55001/plone ci:start-frontend",
     "ci:cypress:run:guillotina": "start-test ci:start-api-guillotina http-get://localhost:8081 ci:start-frontend-guillotina",
     "dry-release": "release-it --dry-run",
-    "release": "release-it"
+    "release": "release-it",
+    "release-alpha": "release-it major --preRelease=alpha"
+  },
+  "bundlesize": [
+    {
+      "path": "build/public/static/js/*.js",
+      "maxSize": "680kB"
+    }
+  ],
+  "bundlewatch": {
+    "files": [
+      {
+        "path": "build/public/static/js/*.js",
+        "maxSize": "680kB"
+      }
+    ]
   },
   "jest": {
     "snapshotSerializers": [
@@ -63,6 +79,7 @@
       "^.+\\.css$": "jest-css-modules",
       "^.+\\.scss$": "jest-css-modules",
       "^.+\\.(png)$": "jest-file",
+      "^.+\\.(jpg)$": "jest-file",
       "^.+\\.(svg)$": "./jest-svgsystem-transform.js"
     },
     "moduleNameMapper": {
@@ -96,12 +113,12 @@
     ]
   },
   "release-it": {
-    "scripts": {
-      "changelog": "node changelogupdater.js excerpt",
-      "beforeStage": "node changelogupdater.js bump ${version}",
-      "afterRelease": "node changelogupdater.js back ${version} && git add . && git ci -am 'Back to development' && git push"
+    "hooks": {
+      "after:bump": "node changelogupdater.js bump ${version}",
+      "after:release": "node changelogupdater.js back ${version} && git add . && git ci -am 'Back to development' && git push"
     },
     "git": {
+      "changelog": "node changelogupdater.js excerpt",
       "requireUpstream": false,
       "requireCleanWorkingDir": false
     },
@@ -142,16 +159,20 @@
     "@babel/plugin-syntax-import-meta": "7.2.0",
     "@babel/preset-stage-0": "7.0.0",
     "autoprefixer": "9.1.5",
+    "axe-core": "3.2.2",
     "babel-7-plugin-root-import": "5.4.0",
     "babel-eslint": "10.0.1",
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-plugin-react-intl": "3.0.1",
     "babel-plugin-root-import": "6.1.0",
+    "bundlesize": "0.18.0",
+    "bundlewatch": "0.2.5",
     "classnames": "2.2.6",
-    "connected-react-router": "6.3.2",
+    "connected-react-router": "6.5.0",
     "coveralls": "3.0.2",
     "css-loader": "2.1.1",
     "cypress": "3.3.1",
+    "cypress-axe": "0.4.1",
     "cypress-file-upload": "3.1.2",
     "draft-js": "0.10.5",
     "draft-js-block-breakout-plugin": "2.0.1",
@@ -160,8 +181,8 @@
     "draft-js-inline-toolbar-plugin": "2.0.1",
     "draft-js-plugins-editor": "2.0.4",
     "draft-js-plugins-utils": "2.0.3",
-    "enzyme": "3.6.0",
-    "enzyme-adapter-react-15": "1.1.0",
+    "enzyme": "3.10.0",
+    "enzyme-adapter-react-16": "1.14.0",
     "enzyme-to-json": "3.3.4",
     "eslint": "5.16.0",
     "eslint-config-airbnb": "17.1.0",
@@ -190,8 +211,9 @@
     "less-loader": "4.1.0",
     "lint-staged": "8.1.6",
     "locale": "0.1.0",
-    "lodash": "4.17.11",
+    "lodash": "4.17.15",
     "lodash-move": "1.1.1",
+    "mem": "4.0.0",
     "moment": "2.22.2",
     "pofile": "1.0.10",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -206,6 +228,7 @@
     "raven": "2.6.4",
     "raven-js": "3.27.0",
     "razzle": "3.0.0",
+    "razzle-plugin-bundle-analyzer": "1.0.2",
     "react": "16.8.6",
     "react-cookie": "1.0.5",
     "react-dnd": "5.0.0",
@@ -234,7 +257,7 @@
     "redux-devtools-extension": "2.13.8",
     "redux-mock-store": "1.5.3",
     "redux-thunk": "2.3.0",
-    "release-it": "10.1.0",
+    "release-it": "12.4.0",
     "semantic-ui-less": "2.4.1",
     "semantic-ui-react": "0.84.0",
     "semver": "5.6.0",

@@ -10,11 +10,12 @@ const mockStore = configureStore();
 describe('Workflow', () => {
   it('renders an empty workflow component', () => {
     const store = mockStore({
-      workflow: { history: [], transition: { loaded: true } },
+      workflow: { history: [], transition: { loaded: true }, transitions: [] },
       intl: {
         locale: 'en',
         messages: {},
       },
+      content: { data: { review_state: 'published' } },
     });
     const component = renderer.create(
       <Provider store={store}>
@@ -36,6 +37,7 @@ describe('Workflow', () => {
         locale: 'en',
         messages: {},
       },
+      content: { data: { review_state: 'private' } },
     });
     const component = renderer.create(
       <Provider store={store}>

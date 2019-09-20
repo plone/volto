@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="120" viewBox="0 0 140 120">
+  <g fill="none" fill-rule="evenodd">
+    <rect width="140" height="120" fill="#FFF" fill-opacity=".5" rx="3"/>
+    <rect width="96" height="96" x="22" y="13" fill="#93ACC8" rx="3"/>
+    <polygon fill="#FFF" points="36.299 85 101.949 85 82.957 57.745 71 72.702 56.836 47.246"/>
+    <circle cx="96" cy="42" r="8" fill="#FFF"/>
+  </g>
+</svg>
