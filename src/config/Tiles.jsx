@@ -74,6 +74,7 @@ const groupTilesOrder = ['mostUsed', 'text', 'media', 'common'];
 const tilesConfig = {
   title: {
     id: 'title',
+    title: 'Title',
     icon: titleSVG,
     group: 'text',
     view: ViewTitleTile,
@@ -87,6 +88,7 @@ const tilesConfig = {
   },
   description: {
     id: 'description',
+    title: 'Description',
     icon: descriptionSVG,
     group: 'text',
     view: ViewDescriptionTile,
@@ -100,6 +102,7 @@ const tilesConfig = {
   },
   text: {
     id: 'text',
+    title: 'Text',
     icon: textSVG,
     group: 'text',
     view: ViewTextTile,
@@ -113,6 +116,7 @@ const tilesConfig = {
   },
   image: {
     id: 'image',
+    title: 'Image',
     icon: cameraSVG,
     group: 'media',
     view: ViewImageTile,
@@ -126,6 +130,7 @@ const tilesConfig = {
   },
   video: {
     id: 'video',
+    title: 'Video',
     icon: videoSVG,
     group: 'media',
     view: ViewVideoTile,
@@ -139,6 +144,7 @@ const tilesConfig = {
   },
   hero: {
     id: 'hero',
+    title: 'Hero',
     icon: heroSVG,
     group: 'common',
     view: ViewHeroImageLeftTile,
@@ -152,6 +158,7 @@ const tilesConfig = {
   },
   maps: {
     id: 'maps',
+    title: 'Maps',
     icon: globeSVG,
     group: 'common',
     view: ViewMapTile,
@@ -165,6 +172,7 @@ const tilesConfig = {
   },
   html: {
     id: 'html',
+    title: 'HTML',
     icon: codeSVG,
     group: 'common',
     view: ViewHTMLTile,
@@ -178,6 +186,7 @@ const tilesConfig = {
   },
   table: {
     id: 'table',
+    title: 'Table',
     icon: tableSVG,
     group: 'common',
     view: ViewTableTile,

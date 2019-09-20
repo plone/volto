@@ -21,6 +21,7 @@ like:
 const defaultTiles = {
   title: {
     id: 'title', // The name of the tile
+    title: 'Title', // The display name of the tile
     icon: titleSVG, // The icon used
     group: 'text', // The group (tiles now can be grouped)
     view: ViewTitleTile, // The view mode component

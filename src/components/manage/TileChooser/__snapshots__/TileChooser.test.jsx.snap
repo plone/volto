@@ -81,7 +81,7 @@ exports[`renders a TileChooser component 1`] = `
                 viewBox=""
                 xmlns=""
               />
-              image
+              Image
             </button>
           </div>
           <div
@@ -109,7 +109,7 @@ exports[`renders a TileChooser component 1`] = `
                 viewBox=""
                 xmlns=""
               />
-              video
+              Video
             </button>
           </div>
         </div>
@@ -190,7 +190,7 @@ exports[`renders a TileChooser component 1`] = `
                 viewBox=""
                 xmlns=""
               />
-              title
+              Title
             </button>
           </div>
           <div
@@ -218,7 +218,7 @@ exports[`renders a TileChooser component 1`] = `
                 viewBox=""
                 xmlns=""
               />
-              description
+              Description
             </button>
           </div>
           <div
@@ -246,7 +246,7 @@ exports[`renders a TileChooser component 1`] = `
                 viewBox=""
                 xmlns=""
               />
-              text
+              Text
             </button>
           </div>
         </div>
@@ -327,7 +327,7 @@ exports[`renders a TileChooser component 1`] = `
                 viewBox=""
                 xmlns=""
               />
-              image
+              Image
             </button>
           </div>
           <div
@@ -355,7 +355,7 @@ exports[`renders a TileChooser component 1`] = `
                 viewBox=""
                 xmlns=""
               />
-              video
+              Video
             </button>
           </div>
         </div>
@@ -436,7 +436,7 @@ exports[`renders a TileChooser component 1`] = `
                 viewBox=""
                 xmlns=""
               />
-              hero
+              Hero
             </button>
           </div>
           <div
@@ -464,7 +464,7 @@ exports[`renders a TileChooser component 1`] = `
                 viewBox=""
                 xmlns=""
               />
-              maps
+              Maps
             </button>
           </div>
           <div
@@ -492,7 +492,7 @@ exports[`renders a TileChooser component 1`] = `
                 viewBox=""
                 xmlns=""
               />
-              html
+              HTML
             </button>
           </div>
           <div
@@ -520,7 +520,7 @@ exports[`renders a TileChooser component 1`] = `
                 viewBox=""
                 xmlns=""
               />
-              table
+              Table
             </button>
           </div>
         </div>

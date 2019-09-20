@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { filter, map, groupBy } from 'lodash';
 import { Accordion, Button } from 'semantic-ui-react';
+import { injectIntl, intlShape } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import AnimateHeight from 'react-animate-height';
 import { tiles } from '~/config';
@@ -9,7 +10,7 @@ import { tiles } from '~/config';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 
-const TileChooser = ({ currentTile, onMutateTile }) => {
+const TileChooser = ({ currentTile, onMutateTile, intl }) => {
   const mostUsedTiles = filter(tiles.tilesConfig, item => item.mostUsed);
   const groupedTiles = groupBy(tiles.tilesConfig, item => item.group);
   const tilesAvailable = { mostUsed: mostUsedTiles, ...groupedTiles };
@@ -60,7 +61,10 @@ const TileChooser = ({ currentTile, onMutateTile }) => {
                       }
                     >
                       <Icon name={tile.icon} size="36px" />
-                      {tile.id}
+                      {intl.formatMessage({
+                        id: tile.id,
+                        defaultMessage: tile.title,
+                      })}
                     </Button>
                   </Button.Group>
                 ))}
@@ -76,6 +80,7 @@ const TileChooser = ({ currentTile, onMutateTile }) => {
 TileChooser.propTypes = {
   currentTile: PropTypes.string.isRequired,
   onMutateTile: PropTypes.func.isRequired,
+  intl: intlShape.isRequired,
 };
 
-export default TileChooser;
+export default injectIntl(TileChooser);
