@@ -4,6 +4,8 @@
 
 ### Added
 
+- New tiles chooser @sneridagh
+
 ### Changes
 
 ## 4.0.0-alpha.2 (2019-09-19)
