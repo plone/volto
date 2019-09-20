@@ -109,6 +109,16 @@ context('Actions', () => {
     cy.contains('This is a file');
   });
 
+  it.only('As a site administrator I can add a new line to a text block using shift + enter', function() {
+    cy.visit('/add?type=Document');
+    cy.get('.ui.drag.tile.inner.text .public-DraftEditor-content')
+      .click()
+      .type('{shift}{enter}');
+    cy.get(
+      '.ui.drag.tile.inner.text:nth-child(2n) .tile.text.selected .public-DraftEditor-content',
+    );
+  });
+
   it('As a site administrator I can add an image', function() {
     cy.visit('/');
     cy.get('#toolbar-add').click();
