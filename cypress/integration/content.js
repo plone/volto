@@ -65,7 +65,7 @@ context('Actions', () => {
       cy.contains('This is a folder');
     }
   });
-  it.only('As a site administrator I can add a file', function() {
+  it('As a site administrator I can add a file', function() {
     cy.visit('/');
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-file').click();
