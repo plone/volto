@@ -59,7 +59,7 @@ const messagesTiles = defineMessages({
   },
 });
 
-export const groupOrder = ['text', 'media', 'common'];
+export const groupOrder = ['mostUsed', 'text', 'media', 'common'];
 
 const defaultTiles = {
   title: {

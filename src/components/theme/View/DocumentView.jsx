@@ -13,7 +13,7 @@ import {
   Image,
   Transition,
 } from 'semantic-ui-react';
-import { map, toPairs, groupBy } from 'lodash';
+import { filter, map, toPairs, groupBy } from 'lodash';
 import { Icon } from '@plone/volto/components';
 import {
   getTilesFieldname,
@@ -35,8 +35,9 @@ import downSVG from '@plone/volto/icons/down-key.svg';
 const DocumentView = ({ content }) => {
   const tilesFieldname = getTilesFieldname(content);
   const tilesLayoutFieldname = getTilesLayoutFieldname(content);
+  const mostUsedTiles = filter(tiles.defaultTiles, item => item.mostUsed);
   const groupedTiles = groupBy(tiles.defaultTiles, item => item.group);
-
+  const tilesAvailable = { mostUsed: mostUsedTiles, ...groupedTiles };
   const [activeAccIndex, setActiveAccIndex] = React.useState(0);
 
   function handleAccClick(e, titleProps) {
@@ -90,7 +91,7 @@ const DocumentView = ({ content }) => {
                   duration={500}
                   height={activeAccIndex === index ? 'auto' : 0}
                 >
-                  {map(groupedTiles[groupName], tile => (
+                  {map(tilesAvailable[groupName], tile => (
                     <Button.Group>
                       <Button icon basic>
                         <Icon name={tile.icon} size="36px" />

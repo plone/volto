@@ -10,7 +10,7 @@ const mockStore = configureStore();
 describe('Workflow', () => {
   it('renders an empty workflow component', () => {
     const store = mockStore({
-      workflow: { history: [], transition: { loaded: true } },
+      workflow: { history: [], transition: { loaded: true }, transitions: [] },
       intl: {
         locale: 'en',
         messages: {},
