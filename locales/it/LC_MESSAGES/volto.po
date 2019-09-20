@@ -886,6 +886,7 @@ msgid "Start password reset"
 msgstr "Rinnova la password"
 
 #: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 msgid "State"
 msgstr "Stato"
@@ -1049,6 +1050,10 @@ msgstr "Mostra le modifiche"
 #: components/manage/History/History
 msgid "View this revision"
 msgstr "Mostra questa revisione"
+
+#: components/manage/Display/Display
+msgid "Viewmode"
+msgstr ""
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."

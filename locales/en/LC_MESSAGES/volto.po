@@ -886,6 +886,7 @@ msgid "Start password reset"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 msgid "State"
 msgstr ""
@@ -1048,6 +1049,10 @@ msgstr ""
 
 #: components/manage/History/History
 msgid "View this revision"
+msgstr ""
+
+#: components/manage/Display/Display
+msgid "Viewmode"
 msgstr ""
 
 #: components/theme/NotFound/NotFound
