@@ -10,8 +10,8 @@ import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 
 const TileChooser = ({ currentTile, onMutateTile }) => {
-  const mostUsedTiles = filter(tiles.defaultTiles, item => item.mostUsed);
-  const groupedTiles = groupBy(tiles.defaultTiles, item => item.group);
+  const mostUsedTiles = filter(tiles.tilesConfig, item => item.mostUsed);
+  const groupedTiles = groupBy(tiles.tilesConfig, item => item.group);
   const tilesAvailable = { mostUsed: mostUsedTiles, ...groupedTiles };
   const [activeIndex, setActiveIndex] = React.useState(0);
 
@@ -25,7 +25,7 @@ const TileChooser = ({ currentTile, onMutateTile }) => {
   return (
     <div className="tiles-chooser">
       <Accordion fluid styled className="form">
-        {map(tiles.groupOrder, (groupName, index) => (
+        {map(tiles.groupTilesOrder, (groupName, index) => (
           <React.Fragment key={groupName}>
             <Accordion.Title
               active={activeIndex === index}

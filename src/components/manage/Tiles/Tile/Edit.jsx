@@ -116,7 +116,7 @@ class Edit extends Component {
     } = this.props;
 
     let Tile = null;
-    Tile = tiles.defaultTilesEditMap[type];
+    Tile = tiles.tilesConfig[type]['edit'];
 
     const hideHandler =
       this.props.data['@type'] === 'text' &&

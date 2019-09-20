@@ -10,6 +10,42 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
+## Upgrading to Volto 4.x
+
+The tiles engine was updated and there are some important breaking changes, in case that
+you've developed custom tiles. The configuration object is now unified and expresses all
+the properties to model a tile. This is how a tile in the `defaultTiles` object looks
+like:
+
+```js
+const defaultTiles = {
+  title: {
+    id: 'title', // The name of the tile
+    icon: titleSVG, // The icon used
+    group: 'text', // The group (tiles now can be grouped)
+    view: ViewTitleTile, // The view mode component
+    edit: EditTitleTile, // The edit mode component
+    public: false, // If the tile is public (shows in menus) or not
+    mostUsed: false, // A meta group `most used`, appearing at the top
+    security: {
+      addPermission: [], // Future proof (not implemented yet) add permission role(s)
+      view: [], // Future proof (not implemented yet) view role(s)
+    },
+  },
+  ...
+```
+
+There is an additional object `groupTilesOrder` that contains an array with the order
+that the tiles group should appear:
+
+```js
+const groupTilesOrder = ['mostUsed', 'text', 'media', 'common'];
+```
+
+You should adapt and merge the configuration of your own custom tiles to match the
+`defaultTiles` and `groupTilesOrder` one. You can modify the order of the groups and
+create your own as well.
+
 ## Upgrading to Volto 3.x
 
 Volto was upgraded to use Razzle 3.0.0 which is not a breaking change itself,

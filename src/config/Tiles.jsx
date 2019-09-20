@@ -20,8 +20,6 @@ import EditMapTile from '@plone/volto/components/manage/Tiles/Maps/Edit';
 import EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
 import EditTableTile from '@plone/volto/components/manage/Tiles/Table/Edit';
 
-import ImageSidebar from '@plone/volto/components/manage/Sidebar/ImageSidebar';
-
 import descriptionSVG from '@plone/volto/icons/description.svg';
 import titleSVG from '@plone/volto/icons/text.svg';
 import textSVG from '@plone/volto/icons/subtext.svg';
@@ -32,7 +30,7 @@ import codeSVG from '@plone/volto/icons/code.svg';
 import heroSVG from '@plone/volto/icons/hero.svg';
 import tableSVG from '@plone/volto/icons/table.svg';
 
-const messagesTiles = defineMessages({
+defineMessages({
   title: {
     id: 'title',
     defaultMessage: 'Title',
@@ -53,15 +51,27 @@ const messagesTiles = defineMessages({
     id: 'video',
     defaultMessage: 'Video',
   },
+  hero: {
+    id: 'hero',
+    defaultMessage: 'Hero',
+  },
   table: {
     id: 'table',
     defaultMessage: 'Table',
   },
+  maps: {
+    id: 'maps',
+    defaultMessage: 'Maps',
+  },
+  html: {
+    id: 'html',
+    defaultMessage: 'HTML',
+  },
 });
 
-export const groupOrder = ['mostUsed', 'text', 'media', 'common'];
+const groupTilesOrder = ['mostUsed', 'text', 'media', 'common'];
 
-const defaultTiles = {
+const tilesConfig = {
   title: {
     id: 'title',
     icon: titleSVG,
@@ -181,61 +191,6 @@ const defaultTiles = {
   },
 };
 
-const customTiles = [
-  {
-    title: 'hero',
-    icon: heroSVG,
-  },
-  {
-    title: 'maps',
-    icon: globeSVG,
-  },
-  {
-    title: 'html',
-    icon: codeSVG,
-  },
-  {
-    title: 'table',
-    icon: tableSVG,
-  },
-];
-
-const defaultTilesViewMap = {
-  title: ViewTitleTile,
-  description: ViewDescriptionTile,
-  text: ViewTextTile,
-  image: ViewImageTile,
-  video: ViewVideoTile,
-  hero: ViewHeroImageLeftTile,
-  maps: ViewMapTile,
-  html: ViewHTMLTile,
-  table: ViewTableTile,
-};
-
-const defaultTilesEditMap = {
-  title: EditTitleTile,
-  description: EditDescriptionTile,
-  text: EditTextTile,
-  image: EditImageTile,
-  video: EditVideoTile,
-  hero: EditHeroImageLeftTile,
-  maps: EditMapTile,
-  html: EditHTMLTile,
-  table: EditTableTile,
-};
-
 const requiredTiles = ['title'];
 
-const sidebarComponents = {
-  image: ImageSidebar,
-};
-
-export {
-  customTiles,
-  defaultTilesViewMap,
-  defaultTilesEditMap,
-  messagesTiles,
-  requiredTiles,
-  sidebarComponents,
-  defaultTiles,
-};
+export { groupTilesOrder, requiredTiles, tilesConfig };
