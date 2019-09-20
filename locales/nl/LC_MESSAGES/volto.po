@@ -51,6 +51,10 @@ msgstr ""
 msgid "Actions"
 msgstr "Acties"
 
+#: components/manage/Toolbar/Types
+msgid "Add Content"
+msgstr ""
+
 #: components/manage/Tiles/Description/Edit
 msgid "Add a description…"
 msgstr ""
@@ -122,11 +126,6 @@ msgstr ""
 msgid "Browse"
 msgstr "Bladeren"
 
-#: components/manage/Sidebar/ObjectBrowserOld
-#: components/manage/Tiles/Slider/Edit
-msgid "Browse or type URL"
-msgstr ""
-
 #: components/manage/Tiles/Image/Edit
 msgid "Browse the site, drop an image, or type an URL"
 msgstr ""
@@ -144,8 +143,6 @@ msgstr "Standaard worden de rechten overgenomen van de bovenliggende map.  Als u
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/TileModal/TileModal
-#: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 msgid "Cancel"
 msgstr "Annuleren"
@@ -329,10 +326,6 @@ msgstr "Verschil"
 #: components/manage/Diff/Diff
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "Verschil tussen revisie {one} en {two} van {title}"
-
-#: components/manage/Display/Display
-msgid "Display"
-msgstr "Weergave"
 
 #: components/theme/Footer/Footer
 msgid "Distributed under the {license}."
@@ -640,10 +633,7 @@ msgstr "Nieuw wachtwoord"
 msgid "No image selected"
 msgstr ""
 
-#: components/manage/Tiles/Listing/Edit
-#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
-#: components/manage/Widgets/TokenWidget
 msgid "No results found."
 msgstr ""
 
@@ -661,11 +651,6 @@ msgstr ""
 
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
-msgstr ""
-
-#: components/manage/Tiles/Slider/Edit
-#: components/manage/Tiles/TileModal/TileModal
-msgid "Options"
 msgstr ""
 
 #: components/manage/Sidebar/ImageSidebar
@@ -721,9 +706,17 @@ msgstr ""
 msgid "Powered by Plone & Python"
 msgstr "Powered by Plone & Python"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Preferences"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Voorvertoning"
+
+#: components/manage/Toolbar/PersonalTools
+msgid "Profile"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
@@ -786,10 +779,6 @@ msgstr ""
 msgid "Required input is missing."
 msgstr "Verplichte waarde mist."
 
-#: components/manage/Tiles/Listing/Edit
-msgid "Results preview"
-msgstr ""
-
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr "Deze rivisie herstellen"
@@ -808,9 +797,7 @@ msgstr "Rechten"
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/TileModal/TileModal
 #: components/manage/Tiles/Video/Edit
-#: components/mosaic/Layout/Layout
 msgid "Save"
 msgstr "Opslaan"
 
@@ -905,6 +892,7 @@ msgid "Site Map"
 msgstr "Sitemap"
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr ""
 
@@ -1080,6 +1068,10 @@ msgstr "Bekijk wijzigingen"
 #: components/manage/History/History
 msgid "View this revision"
 msgstr "Bekijk deze revisie"
+
+#: components/manage/Display/Display
+msgid "Viewmode"
+msgstr ""
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."

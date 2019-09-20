@@ -32,6 +32,10 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
+#: components/manage/Toolbar/Types
+msgid "Add Content"
+msgstr ""
+
 #: components/manage/Tiles/Description/Edit
 msgid "Add a description…"
 msgstr ""
@@ -103,11 +107,6 @@ msgstr ""
 msgid "Browse"
 msgstr ""
 
-#: components/manage/Sidebar/ObjectBrowserOld
-#: components/manage/Tiles/Slider/Edit
-msgid "Browse or type URL"
-msgstr ""
-
 #: components/manage/Tiles/Image/Edit
 msgid "Browse the site, drop an image, or type an URL"
 msgstr ""
@@ -125,8 +124,6 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/TileModal/TileModal
-#: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 msgid "Cancel"
 msgstr ""
@@ -309,10 +306,6 @@ msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Difference between revision {one} and {two} of {title}"
-msgstr ""
-
-#: components/manage/Display/Display
-msgid "Display"
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -621,10 +614,7 @@ msgstr ""
 msgid "No image selected"
 msgstr ""
 
-#: components/manage/Tiles/Listing/Edit
-#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
-#: components/manage/Widgets/TokenWidget
 msgid "No results found."
 msgstr ""
 
@@ -642,11 +632,6 @@ msgstr ""
 
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
-msgstr ""
-
-#: components/manage/Tiles/Slider/Edit
-#: components/manage/Tiles/TileModal/TileModal
-msgid "Options"
 msgstr ""
 
 #: components/manage/Sidebar/ImageSidebar
@@ -702,8 +687,16 @@ msgstr ""
 msgid "Powered by Plone & Python"
 msgstr ""
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Preferences"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
+msgstr ""
+
+#: components/manage/Toolbar/PersonalTools
+msgid "Profile"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -767,10 +760,6 @@ msgstr ""
 msgid "Required input is missing."
 msgstr ""
 
-#: components/manage/Tiles/Listing/Edit
-msgid "Results preview"
-msgstr ""
-
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr ""
@@ -789,9 +778,7 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/TileModal/TileModal
 #: components/manage/Tiles/Video/Edit
-#: components/mosaic/Layout/Layout
 msgid "Save"
 msgstr ""
 
@@ -886,6 +873,7 @@ msgid "Site Map"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr ""
 
@@ -1060,6 +1048,10 @@ msgstr ""
 
 #: components/manage/History/History
 msgid "View this revision"
+msgstr ""
+
+#: components/manage/Display/Display
+msgid "Viewmode"
 msgstr ""
 
 #: components/theme/NotFound/NotFound
