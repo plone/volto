@@ -344,8 +344,15 @@
 }
 
 .tiles-chooser {
-  padding-right: 200px;
-  padding-left: 200px;
+  position: absolute;
+  z-index: 10;
+  top: -10px;
+  left: -9px;
+  width: 310px;
+  padding: 4px;
+  background-color: rgba(255, 255, 255, 0.975);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
 
   .ui.basic.button {
     display: flex;
@@ -383,7 +390,8 @@
     }
   }
 
-  .ui.accordion .title ~ .content, .ui.accordion .accordion .title ~ .content {
+  .ui.accordion .title ~ .content,
+  .ui.accordion .accordion .title ~ .content {
     // reseting the default Accordion behavior
     display: initial;
   }

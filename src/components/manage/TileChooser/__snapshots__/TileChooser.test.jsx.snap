@@ -1,0 +1,531 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a TileChooser component 1`] = `
+<div
+  className="tiles-chooser"
+>
+  <div
+    className="accordion ui fluid styled form"
+  >
+    <div
+      className="active title"
+      onClick={[Function]}
+    >
+      mostUsed
+      <div
+        className="accordion-tools"
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "currentColor",
+              "height": "20px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </div>
+    </div>
+    <div
+      className="content active tiles-list"
+    >
+      <div
+        aria-hidden={false}
+        className="rah-static rah-static--height-auto"
+        style={
+          Object {
+            "height": "auto",
+            "overflow": "visible",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "WebkitTransition": "opacity 500ms ease 0ms",
+              "transition": "opacity 500ms ease 0ms",
+            }
+          }
+        >
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui basic icon button"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "36px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+              image
+            </button>
+          </div>
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui basic icon button"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "36px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+              video
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="title"
+      onClick={[Function]}
+    >
+      text
+      <div
+        className="accordion-tools"
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "currentColor",
+              "height": "20px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </div>
+    </div>
+    <div
+      className="content tiles-list"
+    >
+      <div
+        aria-hidden={true}
+        className="rah-static rah-static--height-zero"
+        style={
+          Object {
+            "height": 0,
+            "overflow": "hidden",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "WebkitTransition": "opacity 500ms ease 0ms",
+              "opacity": 0,
+              "transition": "opacity 500ms ease 0ms",
+            }
+          }
+        >
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui basic icon button"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "36px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+              title
+            </button>
+          </div>
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui basic icon button"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "36px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+              description
+            </button>
+          </div>
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui basic icon button"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "36px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+              text
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="title"
+      onClick={[Function]}
+    >
+      media
+      <div
+        className="accordion-tools"
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "currentColor",
+              "height": "20px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </div>
+    </div>
+    <div
+      className="content tiles-list"
+    >
+      <div
+        aria-hidden={true}
+        className="rah-static rah-static--height-zero"
+        style={
+          Object {
+            "height": 0,
+            "overflow": "hidden",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "WebkitTransition": "opacity 500ms ease 0ms",
+              "opacity": 0,
+              "transition": "opacity 500ms ease 0ms",
+            }
+          }
+        >
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui basic icon button"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "36px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+              image
+            </button>
+          </div>
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui basic icon button"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "36px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+              video
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="title"
+      onClick={[Function]}
+    >
+      common
+      <div
+        className="accordion-tools"
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "currentColor",
+              "height": "20px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </div>
+    </div>
+    <div
+      className="content tiles-list"
+    >
+      <div
+        aria-hidden={true}
+        className="rah-static rah-static--height-zero"
+        style={
+          Object {
+            "height": 0,
+            "overflow": "hidden",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "WebkitTransition": "opacity 500ms ease 0ms",
+              "opacity": 0,
+              "transition": "opacity 500ms ease 0ms",
+            }
+          }
+        >
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui basic icon button"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "36px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+              hero
+            </button>
+          </div>
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui basic icon button"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "36px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+              maps
+            </button>
+          </div>
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui basic icon button"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "36px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+              html
+            </button>
+          </div>
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui basic icon button"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "36px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+              table
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
