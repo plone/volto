@@ -95,4 +95,4 @@ EventWhen.propTypes = {
   open_end: PropTypes.bool,
 };
 
-export default EventWhen;
+export { EventWhen, datesForDisplay };
