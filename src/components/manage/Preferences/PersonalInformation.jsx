@@ -74,6 +74,10 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
 });
 
 /**
@@ -139,7 +143,11 @@ class PersonalInformation extends Component {
     delete data.roles;
     this.props.updateUser(this.props.userId, data);
     toast.success(
-      <Toast success title={this.props.intl.formatMessage(messages.saved)} />,
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.saved)}
+      />,
     );
     this.props.closeMenu();
   }

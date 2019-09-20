@@ -21,6 +21,7 @@ const projectRootPath = path.resolve('.');
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 module.exports = {
+  plugins: ['bundle-analyzer'],
   modify: (config, { target, dev }, webpack) => {
     const BASE_CSS_LOADER = {
       loader: 'css-loader',
@@ -30,7 +31,6 @@ module.exports = {
         localIdentName: '[name]__[local]___[hash:base64:5]',
       },
     };
-
     const POST_CSS_LOADER = {
       loader: require.resolve('postcss-loader'),
       options: {

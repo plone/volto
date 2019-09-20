@@ -14,8 +14,9 @@ const SidebarPortal = ({ children, selected }) => (
       <Portal
         node={__CLIENT__ && document.getElementById('sidebar-properties')}
       >
-        <div role="form">
+        <div role="form" style={{ height: '100%' }}>
           <div
+            style={{ height: '100%' }}
             role="presentation"
             onClick={e => {
               e.stopPropagation();

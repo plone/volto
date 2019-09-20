@@ -9,7 +9,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import cookie from 'react-cookie';
-import { find } from 'lodash';
+import { filter, find } from 'lodash';
+import cx from 'classnames';
 
 import More from './More';
 import PersonalTools from './PersonalTools';
@@ -17,7 +18,7 @@ import Types from './Types';
 import PersonalInformation from '../Preferences/PersonalInformation';
 import PersonalPreferences from '../Preferences/PersonalPreferences';
 import StandardWrapper from './StandardWrapper';
-import { listActions } from '../../../actions';
+import { getTypes, listActions } from '../../../actions';
 import { Icon } from '../../../components';
 import { BodyClass, getBaseUrl } from '../../../helpers';
 
@@ -70,6 +71,14 @@ class Toolbar extends Component {
       is_folderish: PropTypes.bool,
       review_state: PropTypes.string,
     }),
+    getTypes: PropTypes.func.isRequired,
+    types: PropTypes.arrayOf(
+      PropTypes.shape({
+        '@id': PropTypes.string,
+        addable: PropTypes.bool,
+        title: PropTypes.string,
+      }),
+    ),
     listActions: PropTypes.func.isRequired,
     inner: PropTypes.element.isRequired,
     hideDefaultViewButtons: PropTypes.bool,
@@ -85,6 +94,7 @@ class Toolbar extends Component {
     token: null,
     content: null,
     hideDefaultViewButtons: false,
+    types: [],
   };
 
   state = {
@@ -105,6 +115,7 @@ class Toolbar extends Component {
    */
   componentDidMount() {
     this.props.listActions(getBaseUrl(this.props.pathname));
+    this.props.getTypes(getBaseUrl(this.props.pathname));
     document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
@@ -117,6 +128,7 @@ class Toolbar extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.listActions(getBaseUrl(nextProps.pathname));
+      this.props.getTypes(getBaseUrl(nextProps.pathname));
     }
   }
 
@@ -294,21 +306,23 @@ class Toolbar extends Component {
                     {this.props.content &&
                       this.props.content.is_folderish &&
                       folderContentsAction && (
-                        <Link aria-label="Contents" to="/contents">
+                        <Link aria-label="Contents" to={`${path}/contents`}>
                           <Icon name={folderSVG} size="30px" />
                         </Link>
                       )}
-                    {this.props.content && this.props.content.is_folderish && (
-                      <button
-                        className="add"
-                        aria-label="Add"
-                        onClick={e => this.toggleMenu(e, 'types')}
-                        tabIndex={0}
-                        id="toolbar-add"
-                      >
-                        <Icon name={addSVG} size="30px" />
-                      </button>
-                    )}
+                    {this.props.content &&
+                      this.props.content.is_folderish &&
+                      this.props.types.length > 0 && (
+                        <button
+                          className="add"
+                          aria-label="Add"
+                          onClick={e => this.toggleMenu(e, 'types')}
+                          tabIndex={0}
+                          id="toolbar-add"
+                        >
+                          <Icon name={addSVG} size="30px" />
+                        </button>
+                      )}
                     <div className="toolbar-button-spacer" />
                     <button
                       className="more"
@@ -359,7 +373,14 @@ class Toolbar extends Component {
               </div>
             </div>
             <div className="toolbar-handler">
-              <button aria-label="Shrink toolbar" onClick={this.handleShrink} />
+              <button
+                aria-label="Shrink toolbar"
+                className={cx({
+                  [this.props.content.review_state]:
+                    this.props.content && this.props.content.review_state,
+                })}
+                onClick={this.handleShrink}
+              />
             </div>
           </div>
           <div className="pusher" />
@@ -375,6 +396,7 @@ export default connect(
     token: state.userSession.token,
     content: state.content.data,
     pathname: props.pathname,
+    types: filter(state.types.types, 'addable'),
   }),
-  { listActions },
+  { getTypes, listActions },
 )(Toolbar);
