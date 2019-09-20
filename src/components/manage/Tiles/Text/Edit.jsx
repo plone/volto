@@ -14,13 +14,10 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { includes, isEqual } from 'lodash';
 import cx from 'classnames';
 
-import { settings, tiles } from '~/config';
+import { settings } from '~/config';
 
 import { Icon, TileChooser } from '../../../../components';
 import addSVG from '../../../../icons/circle-plus.svg';
-import cameraSVG from '../../../../icons/camera.svg';
-import videoSVG from '../../../../icons/videocamera.svg';
-import TemplatedTilesSVG from '../../../../icons/theme.svg';
 
 const messages = defineMessages({
   text: {
