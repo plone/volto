@@ -1051,7 +1051,7 @@ msgstr "Nutzer- und Gruppeneinstellungen"
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
-msgstr ""
+msgstr "Versionsübersicht"
 
 #: components/manage/Contents/ContentsItem
 msgid "View"
