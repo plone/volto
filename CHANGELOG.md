@@ -17,7 +17,7 @@
 
 ### Internal
 
-- fix cypress test for file Upload
+- fix cypress test for file Upload @jackahl
 
 ## 4.0.0-alpha.1 (2019-09-17)
 
