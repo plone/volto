@@ -121,9 +121,9 @@ describe('Create contents with Volto', () => {
       '.ui.drag.tile.inner.text:nth-child(2n) .public-DraftEditor-content > div > div:nth-child(2n)',
     );
     //then the block should not be deselected
-    cy.get('.ui.drag.tile.inner.text:nth-child(2n) .tile.text.selected');
+    cy.get('.ui.drag.tile.inner.text:nth-child(2) .tile.text.selected');
     //then there should not be a new block created
-    cy.get('.ui.drag.tile.inner.text:nth-child(3n)').should('not.exist');
+    cy.get('.ui.drag.tile.inner.text:nth-child(3)').should('not.exist');
   });
 
   it('As a site administrator I can add an image', function() {
