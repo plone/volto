@@ -1102,6 +1102,10 @@ msgid "box_forgot_password_option"
 msgstr ""
 
 #: config/Tiles
+msgid "common"
+msgstr ""
+
+#: config/Tiles
 msgid "description"
 msgstr ""
 
@@ -1135,6 +1139,14 @@ msgstr ""
 
 #: config/Tiles
 msgid "maps"
+msgstr ""
+
+#: config/Tiles
+msgid "media"
+msgstr ""
+
+#: config/Tiles
+msgid "mostUsed"
 msgstr ""
 
 #: components/theme/Login/Login

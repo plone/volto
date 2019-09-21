@@ -67,9 +67,27 @@ defineMessages({
     id: 'html',
     defaultMessage: 'HTML',
   },
+  // Groups
+  mostUsed: {
+    id: 'mostUsed',
+    defaultMessage: 'Most used',
+  },
+  media: {
+    id: 'media',
+    defaultMessage: 'Media',
+  },
+  common: {
+    id: 'common',
+    defaultMessage: 'Common',
+  },
 });
 
-const groupTilesOrder = ['mostUsed', 'text', 'media', 'common'];
+const groupTilesOrder = [
+  { id: 'mostUsed', title: 'Most used' },
+  { id: 'text', title: 'Text' },
+  { id: 'media', title: 'Media' },
+  { id: 'common', title: 'Common' },
+];
 
 const tilesConfig = {
   title: {

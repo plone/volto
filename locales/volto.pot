@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-09-20T16:43:43.209Z\n"
+"POT-Creation-Date: 2019-09-21T08:32:06.951Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1344,6 +1344,11 @@ msgid "box_forgot_password_option"
 msgstr ""
 
 #: config/Tiles
+# defaultMessage: Common
+msgid "common"
+msgstr ""
+
+#: config/Tiles
 # defaultMessage: Description
 msgid "description"
 msgstr ""
@@ -1386,6 +1391,16 @@ msgstr ""
 #: config/Tiles
 # defaultMessage: Maps
 msgid "maps"
+msgstr ""
+
+#: config/Tiles
+# defaultMessage: Media
+msgid "media"
+msgstr ""
+
+#: config/Tiles
+# defaultMessage: Most used
+msgid "mostUsed"
 msgstr ""
 
 #: components/theme/Login/Login

@@ -40,7 +40,12 @@ There is an additional object `groupTilesOrder` that contains an array with the 
 that the tiles group should appear:
 
 ```js
-const groupTilesOrder = ['mostUsed', 'text', 'media', 'common'];
+const groupTilesOrder = [
+  { id: 'mostUsed', title: 'Most used' },
+  { id: 'text', title: 'Text' },
+  { id: 'media', title: 'Media' },
+  { id: 'common', title: 'Common' },
+];
 ```
 
 You should adapt and merge the configuration of your own custom tiles to match the

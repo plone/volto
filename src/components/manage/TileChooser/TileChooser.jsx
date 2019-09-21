@@ -27,13 +27,16 @@ const TileChooser = ({ currentTile, onMutateTile, intl }) => {
     <div className="tiles-chooser">
       <Accordion fluid styled className="form">
         {map(tiles.groupTilesOrder, (groupName, index) => (
-          <React.Fragment key={groupName}>
+          <React.Fragment key={groupName.id}>
             <Accordion.Title
               active={activeIndex === index}
               index={index}
               onClick={handleClick}
             >
-              {groupName}
+              {intl.formatMessage({
+                id: groupName.id,
+                defaultMessage: groupName.title,
+              })}
               <div className="accordion-tools">
                 {activeIndex === 0 ? (
                   <Icon name={upSVG} size="20px" />
@@ -51,7 +54,7 @@ const TileChooser = ({ currentTile, onMutateTile, intl }) => {
                 duration={500}
                 height={activeIndex === index ? 'auto' : 0}
               >
-                {map(tilesAvailable[groupName], tile => (
+                {map(tilesAvailable[groupName.id], tile => (
                   <Button.Group key={tile.id}>
                     <Button
                       icon

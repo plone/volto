@@ -11,7 +11,7 @@ exports[`renders a TileChooser component 1`] = `
       className="active title"
       onClick={[Function]}
     >
-      mostUsed
+      Most used
       <div
         className="accordion-tools"
       >
@@ -119,7 +119,7 @@ exports[`renders a TileChooser component 1`] = `
       className="title"
       onClick={[Function]}
     >
-      text
+      Text
       <div
         className="accordion-tools"
       >
@@ -256,7 +256,7 @@ exports[`renders a TileChooser component 1`] = `
       className="title"
       onClick={[Function]}
     >
-      media
+      Media
       <div
         className="accordion-tools"
       >
@@ -365,7 +365,7 @@ exports[`renders a TileChooser component 1`] = `
       className="title"
       onClick={[Function]}
     >
-      common
+      Common
       <div
         className="accordion-tools"
       >

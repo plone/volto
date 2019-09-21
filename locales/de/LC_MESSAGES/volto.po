@@ -1117,6 +1117,10 @@ msgid "box_forgot_password_option"
 msgstr "Passwort vergessen?"
 
 #: config/Tiles
+msgid "common"
+msgstr ""
+
+#: config/Tiles
 msgid "description"
 msgstr "Beschreibung"
 
@@ -1150,6 +1154,14 @@ msgstr "Meine E-Mail-Adresse lautet"
 
 #: config/Tiles
 msgid "maps"
+msgstr ""
+
+#: config/Tiles
+msgid "media"
+msgstr ""
+
+#: config/Tiles
+msgid "mostUsed"
 msgstr ""
 
 #: components/theme/Login/Login
