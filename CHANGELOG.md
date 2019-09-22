@@ -9,6 +9,12 @@
 
 ### Changes
 
+## 4.0.0-alpha.3 (2019-09-22)
+
+### Added
+
+- New tiles chooser @sneridagh
+
 ### Internal
 
 - Add i18n check on Travis @timo
