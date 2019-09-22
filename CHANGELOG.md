@@ -5,6 +5,7 @@
 ### Added
 
 - Added animations for router tranitions @nzambello
+- New tiles chooser @sneridagh
 
 ### Changes
 

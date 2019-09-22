@@ -48,5 +48,5 @@
 }
 
 .ui.basic.secondary.button {
-  color: #826a6a !important;
+  color: @brown !important;
 }

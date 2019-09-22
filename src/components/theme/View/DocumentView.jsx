@@ -33,7 +33,7 @@ const DocumentView = ({ content }) => {
       {map(content[tilesLayoutFieldname].items, tile => {
         let Tile = null;
         Tile =
-          tiles.defaultTilesViewMap[content[tilesFieldname][tile]['@type']];
+          tiles.tilesConfig[content[tilesFieldname][tile]['@type']]['view'];
         return Tile !== null ? (
           <Tile
             key={tile}
