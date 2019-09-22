@@ -26,7 +26,7 @@ const defaultTiles = {
     group: 'text', // The group (tiles now can be grouped)
     view: ViewTitleTile, // The view mode component
     edit: EditTitleTile, // The edit mode component
-    public: false, // If the tile is public (shows in menus) or not
+    restricted: false, // If the tile is restricted, it won't show in menus
     mostUsed: false, // A meta group `most used`, appearing at the top
     security: {
       addPermission: [], // Future proof (not implemented yet) add permission role(s)

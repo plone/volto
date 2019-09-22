@@ -54,23 +54,29 @@ const TileChooser = ({ currentTile, onMutateTile, intl }) => {
                 duration={500}
                 height={activeIndex === index ? 'auto' : 0}
               >
-                {map(tilesAvailable[groupName.id], tile => (
-                  <Button.Group key={tile.id}>
-                    <Button
-                      icon
-                      basic
-                      onClick={() =>
-                        onMutateTile(currentTile, { '@type': tile.id })
-                      }
-                    >
-                      <Icon name={tile.icon} size="36px" />
-                      {intl.formatMessage({
-                        id: tile.id,
-                        defaultMessage: tile.title,
-                      })}
-                    </Button>
-                  </Button.Group>
-                ))}
+                {map(
+                  filter(
+                    tilesAvailable[groupName.id],
+                    tile => !tile.restricted,
+                  ),
+                  tile => (
+                    <Button.Group key={tile.id}>
+                      <Button
+                        icon
+                        basic
+                        onClick={() =>
+                          onMutateTile(currentTile, { '@type': tile.id })
+                        }
+                      >
+                        <Icon name={tile.icon} size="36px" />
+                        {intl.formatMessage({
+                          id: tile.id,
+                          defaultMessage: tile.title,
+                        })}
+                      </Button>
+                    </Button.Group>
+                  ),
+                )}
               </AnimateHeight>
             </Accordion.Content>
           </React.Fragment>

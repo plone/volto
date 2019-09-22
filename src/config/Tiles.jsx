@@ -97,7 +97,7 @@ const tilesConfig = {
     group: 'text',
     view: ViewTitleTile,
     edit: EditTitleTile,
-    public: false,
+    restricted: true,
     mostUsed: false,
     security: {
       addPermission: [],
@@ -111,7 +111,7 @@ const tilesConfig = {
     group: 'text',
     view: ViewDescriptionTile,
     edit: EditDescriptionTile,
-    public: true,
+    restricted: true,
     mostUsed: false,
     security: {
       addPermission: [],
@@ -125,7 +125,7 @@ const tilesConfig = {
     group: 'text',
     view: ViewTextTile,
     edit: EditTextTile,
-    public: false,
+    restricted: false,
     mostUsed: false,
     security: {
       addPermission: [],
@@ -139,7 +139,7 @@ const tilesConfig = {
     group: 'media',
     view: ViewImageTile,
     edit: EditImageTile,
-    public: true,
+    restricted: false,
     mostUsed: true,
     security: {
       addPermission: [],
@@ -153,7 +153,7 @@ const tilesConfig = {
     group: 'media',
     view: ViewVideoTile,
     edit: EditVideoTile,
-    public: true,
+    restricted: false,
     mostUsed: true,
     security: {
       addPermission: [],
@@ -167,7 +167,7 @@ const tilesConfig = {
     group: 'common',
     view: ViewHeroImageLeftTile,
     edit: EditHeroImageLeftTile,
-    public: true,
+    restricted: false,
     mostUsed: false,
     security: {
       addPermission: [],
@@ -181,7 +181,7 @@ const tilesConfig = {
     group: 'common',
     view: ViewMapTile,
     edit: EditMapTile,
-    public: true,
+    restricted: false,
     mostUsed: false,
     security: {
       addPermission: [],
@@ -195,7 +195,7 @@ const tilesConfig = {
     group: 'common',
     view: ViewHTMLTile,
     edit: EditHTMLTile,
-    public: true,
+    restricted: false,
     mostUsed: false,
     security: {
       addPermission: [],
@@ -209,7 +209,7 @@ const tilesConfig = {
     group: 'common',
     view: ViewTableTile,
     edit: EditTableTile,
-    public: true,
+    restricted: false,
     mostUsed: false,
     security: {
       addPermission: [],

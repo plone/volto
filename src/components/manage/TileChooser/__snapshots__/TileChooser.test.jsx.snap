@@ -190,62 +190,6 @@ exports[`renders a TileChooser component 1`] = `
                 viewBox=""
                 xmlns=""
               />
-              Title
-            </button>
-          </div>
-          <div
-            className="ui buttons"
-          >
-            <button
-              className="ui basic icon button"
-              onClick={[Function]}
-            >
-              <svg
-                className="icon"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
-                onClick={null}
-                style={
-                  Object {
-                    "fill": "currentColor",
-                    "height": "36px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
-              />
-              Description
-            </button>
-          </div>
-          <div
-            className="ui buttons"
-          >
-            <button
-              className="ui basic icon button"
-              onClick={[Function]}
-            >
-              <svg
-                className="icon"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
-                onClick={null}
-                style={
-                  Object {
-                    "fill": "currentColor",
-                    "height": "36px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
-              />
               Text
             </button>
           </div>
