@@ -6,6 +6,10 @@
 
 ### Changes
 
+### Internal
+
+- Fail eslint check on any warnings @timo
+
 ## 4.0.0-alpha.2 (2019-09-19)
 
 ### Changes
