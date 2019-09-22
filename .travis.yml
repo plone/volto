@@ -72,8 +72,3 @@ after_success:
     docker tag plone/volto:testing plone/volto:$TRAVIS_BRANCH.green;
     docker push plone/volto:$TRAVIS_BRANCH.green;
     fi
-
-# safelist
-branches:
-  only:
-    - master
