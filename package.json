@@ -39,6 +39,7 @@
     "lint": "./node_modules/eslint/bin/eslint.js 'src/**/*.{js,jsx,json}'",
     "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,json}'",
     "i18n": "NODE_ENV=production node src/i18n.js",
+    "code-analysis:i18n": "yarn i18n && git diff -G'^[^\"POT]' --exit-code",
     "cypress:open": "CYPRESS_API=plone cypress open",
     "cypress:open:guillotina": "CYPRESS_API=guillotina cypress open",
     "cypress:run": "CYPRESS_API=plone cypress run",
