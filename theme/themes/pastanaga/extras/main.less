@@ -83,11 +83,34 @@ svg.icon {
   box-sizing: content-box;
 }
 
+button .close {
+  color: @darkHotPink;
+}
+
 // Override default behavior for forms and segments
 .ui.form,
 .ui.segments,
 .ui.segment {
   position: static !important;
+}
+
+// Buttons colored
+button {
+  &.contents {
+    color: @teal-blue;
+  }
+
+  &.save {
+    color: @teal-blue;
+  }
+
+  &.cancel {
+    color: @darkHotPink;
+  }
+
+  &.edit {
+    color: @teal-blue;
+  }
 }
 
 // Button reset

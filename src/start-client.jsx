@@ -16,8 +16,9 @@ import '../theme/themes/pastanaga/extras/extras.less';
 import configureStore from './store';
 import { Api, persistAuthToken, AnimationWrapper } from './helpers';
 
+export const history = createBrowserHistory();
+
 export default () => {
-  const history = createBrowserHistory();
   const api = new Api();
 
   const store = configureStore(window.__data, history, api);

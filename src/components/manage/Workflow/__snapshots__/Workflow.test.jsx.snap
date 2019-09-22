@@ -100,11 +100,11 @@ Array [
     State
   </label>,
   <div
-    className="css-10nd86i react-select-container"
+    className="css-1sontr1 react-select-container react-select--is-disabled"
     onKeyDown={[Function]}
   >
     <div
-      className="css-mgvt82 react-select__control"
+      className="css-1k3xatg react-select__control react-select__control--is-disabled"
       onMouseDown={[Function]}
       onTouchEnd={[Function]}
     >
@@ -112,7 +112,7 @@ Array [
         className="css-1hwfws3 react-select__value-container react-select__value-container--has-value"
       >
         <div
-          className="css-xp4uvy react-select__single-value"
+          className="css-142w6gm react-select__single-value react-select__single-value--is-disabled"
         >
           <span
             style={
@@ -132,7 +132,7 @@ Array [
         </div>
         <input
           className="css-14uuagi"
-          disabled={false}
+          disabled={true}
           id="react-select-2-input"
           onBlur={[Function]}
           onChange={[Function]}
@@ -146,7 +146,7 @@ Array [
         className="css-1wy0on6 react-select__indicators"
       >
         <span
-          className="css-hba3sr react-select__indicator-separator"
+          className="css-9m5qhi react-select__indicator-separator"
         />
         <div
           aria-hidden="true"
@@ -175,11 +175,6 @@ Array [
         </div>
       </div>
     </div>
-    <input
-      name="display-select"
-      type="hidden"
-      value="public"
-    />
   </div>,
 ]
 `;

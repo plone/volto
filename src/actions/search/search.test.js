@@ -14,7 +14,7 @@ describe('Search action', () => {
       expect(action.type).toEqual(SEARCH_CONTENT);
       expect(action.request.op).toEqual('get');
       expect(action.request.path).toEqual(
-        `${url}/@search?SearchableText=${text}`,
+        `${url}/@search?SearchableText=${text}*`,
       );
     });
 
@@ -30,7 +30,7 @@ describe('Search action', () => {
       expect(action.type).toEqual(SEARCH_CONTENT);
       expect(action.request.op).toEqual('get');
       expect(action.request.path).toEqual(
-        `${url}/@search?SearchableText=${text}&portal_type:list=Document&portal_type:list=Image`,
+        `${url}/@search?SearchableText=${text}*&portal_type:list=Document&portal_type:list=Image`,
       );
     });
 
@@ -48,7 +48,7 @@ describe('Search action', () => {
       expect(action.type).toEqual(SEARCH_CONTENT);
       expect(action.request.op).toEqual('get');
       expect(action.request.path).toEqual(
-        `${url}/@search?SearchableText=${text}&portal_type:list=Document&portal_type:list=Image&review_state:list=published&review_state:list=private`,
+        `${url}/@search?SearchableText=${text}*&portal_type:list=Document&portal_type:list=Image&review_state:list=published&review_state:list=private`,
       );
     });
 

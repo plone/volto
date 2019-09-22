@@ -21,12 +21,15 @@ const Toast = props => {
       return successSVG;
     }
   }
+
+  const { title, content } = props;
+
   return (
     <>
       <Icon name={getIcon(props)} size="18px" />
       <div className="toast-inner-content">
-        <h4>{props.title}</h4>
-        <p>{props.content}</p>
+        {title && <h4>{title}</h4>}
+        <p>{content}</p>
       </div>
     </>
   );

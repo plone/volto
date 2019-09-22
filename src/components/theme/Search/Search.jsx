@@ -19,6 +19,18 @@ import { searchContent } from '../../../actions';
 
 import { SearchTags, Toolbar } from '../../../components';
 
+const toSearchOptions = (searchableText, subject, path) => {
+  return {
+    ...(searchableText && { SearchableText: searchableText }),
+    ...(subject && {
+      Subject: subject,
+    }),
+    ...(path && {
+      path: path,
+    }),
+  };
+};
+
 /**
  * Search class.
  * @class SearchComponent
@@ -64,11 +76,11 @@ class Search extends Component {
    * @returns {undefined}
    */
   componentWillMount() {
-    this.props.searchContent('', {
-      SearchableText: this.props.searchableText,
-      Subject: this.props.subject,
-      path: this.props.path,
-    });
+    this.doSearch(
+      this.props.searchableText,
+      this.props.subject,
+      this.props.path,
+    );
   }
 
   /**
@@ -77,15 +89,34 @@ class Search extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.searchableText !== this.props.searchableText) {
-      this.props.searchContent('', {
-        SearchableText: nextProps.searchableText,
-        Subject: this.props.subject,
-        path: this.props.path,
-      });
+  componentWillReceiveProps = nextProps => {
+    if (
+      nextProps.searchableText !== this.props.searchableText ||
+      nextProps.subject !== this.props.subject
+    ) {
+      this.doSearch(
+        nextProps.searchableText,
+        nextProps.subject,
+        this.props.path,
+      );
     }
-  }
+  };
+
+  /**
+   * Search based on the given searchableText, subject and path.
+   * @method doSearch
+   * @param {string} searchableText The searchable text string
+   * @param {string} subject The subject (tag)
+   * @param {string} path The path to restrict the search to
+   * @returns {undefined}
+   */
+
+  doSearch = (searchableText, subject, path) => {
+    this.props.searchContent(
+      '',
+      toSearchOptions(searchableText, subject, path),
+    );
+  };
 
   /**
    * Render method.
@@ -187,10 +218,14 @@ export default compose(
       key: 'search',
       promise: ({ location, store: { dispatch } }) =>
         dispatch(
-          searchContent('', {
-            SearchableText: qs.parse(location.search).SearchableText,
-            Subject: qs.parse(location.search).Subject,
-          }),
+          searchContent(
+            '',
+            toSearchOptions(
+              qs.parse(location.search).SearchableText,
+              qs.parse(location.search).Subject,
+              qs.parse(location.search).path,
+            ),
+          ),
         ),
     },
   ]),

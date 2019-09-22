@@ -20,7 +20,7 @@ import EditMapTile from '@plone/volto/components/manage/Tiles/Maps/Edit';
 import EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
 import EditTableTile from '@plone/volto/components/manage/Tiles/Table/Edit';
 
-// import ImageSidebar from '@plone/volto/components/manage/Sidebar/ImageSidebar';
+import ImageSidebar from '@plone/volto/components/manage/Sidebar/ImageSidebar';
 
 import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
@@ -100,7 +100,7 @@ const defaultTilesEditMap = {
 const requiredTiles = ['title'];
 
 const sidebarComponents = {
-  // image: ImageSidebar,
+  image: ImageSidebar,
 };
 
 export {

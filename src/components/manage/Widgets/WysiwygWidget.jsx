@@ -229,6 +229,7 @@ class WysiwygWidget extends Component {
       error,
       onEdit,
       onDelete,
+      fieldSet,
     } = this.props;
 
     if (__SERVER__) {
@@ -238,6 +239,7 @@ class WysiwygWidget extends Component {
           required={required}
           error={error.length > 0}
           className={description ? 'help' : ''}
+          id={`${fieldSet || 'field'}-${id}`}
         >
           <div className="wrapper">
             <label htmlFor={`field-${id}`}>{title}</label>
