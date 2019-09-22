@@ -1,5 +1,6 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-intl-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
