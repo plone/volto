@@ -1102,6 +1102,10 @@ msgid "box_forgot_password_option"
 msgstr "Hai dimenticato la tua password?"
 
 #: config/Tiles
+msgid "common"
+msgstr ""
+
+#: config/Tiles
 msgid "description"
 msgstr "Descrizione"
 
@@ -1118,12 +1122,32 @@ msgid "heading_sent_password"
 msgstr "Richiesta di conferma reimpostazione password spedita"
 
 #: config/Tiles
+msgid "hero"
+msgstr ""
+
+#: config/Tiles
+msgid "html"
+msgstr ""
+
+#: config/Tiles
 msgid "image"
 msgstr "Immagine"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr "Il mio indirizzo email è"
+
+#: config/Tiles
+msgid "maps"
+msgstr ""
+
+#: config/Tiles
+msgid "media"
+msgstr ""
+
+#: config/Tiles
+msgid "mostUsed"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "registration form"

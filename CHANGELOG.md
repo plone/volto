@@ -4,6 +4,8 @@
 
 ### Added
 
+- New tiles chooser @sneridagh
+
 ### Changes
 
 ### Internal
