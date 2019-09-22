@@ -1,12 +1,10 @@
 # Change Log
 
-## 4.0.0 (unreleased)
+## 4.0.0-alpha.3 (2019-09-22)
 
 ### Added
 
 - New tiles chooser @sneridagh
-
-### Changes
 
 ### Internal
 
