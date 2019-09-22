@@ -110,15 +110,13 @@ msgstr "Zurück"
 msgid "Base"
 msgstr "Basis"
 
+#: components/theme/Login/Login
+msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
 msgstr "Durchsuchen"
-
-#: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Sidebar/ObjectBrowserOld
-#: components/manage/Tiles/Slider/Edit
-msgid "Browse or type URL"
-msgstr "Inhalte Durchsuchen oder URL eingeben"
 
 #: components/manage/Tiles/Image/Edit
 msgid "Browse the site, drop an image, or type an URL"
@@ -137,8 +135,6 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/TileModal/TileModal
-#: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -176,6 +172,22 @@ msgstr "Checkbox"
 #: components/manage/Widgets/SelectWidget
 msgid "Choices"
 msgstr "Auswahlfeld"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Choose Image"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Choose Target"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "ChooseImage"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "ChooseTargetLink"
+msgstr ""
 
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
@@ -306,10 +318,6 @@ msgstr "Unterschied"
 #: components/manage/Diff/Diff
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "Unterschied zwischen Version {one} and {two} von {title}"
-
-#: components/manage/Display/Display
-msgid "Display"
-msgstr "Darstellung"
 
 #: components/theme/Footer/Footer
 msgid "Distributed under the {license}."
@@ -555,6 +563,10 @@ msgid "Log in"
 msgstr "Anmelden"
 
 #: components/theme/Login/Login
+msgid "Login Failed"
+msgstr ""
+
+#: components/theme/Login/Login
 msgid "Login Name"
 msgstr "Benutzername"
 
@@ -613,9 +625,7 @@ msgstr "Neues Passwort"
 msgid "No image selected"
 msgstr ""
 
-#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
-#: components/manage/Widgets/TokenWidget
 msgid "No results found."
 msgstr "Keine Ergebnisse gefunden."
 
@@ -634,11 +644,6 @@ msgstr ""
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
 msgstr "Menü öffnen"
-
-#: components/manage/Tiles/Slider/Edit
-#: components/manage/Tiles/TileModal/TileModal
-msgid "Options"
-msgstr ""
 
 #: components/manage/Sidebar/ImageSidebar
 msgid "Origin"
@@ -776,9 +781,7 @@ msgstr "Rechte"
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/TileModal/TileModal
 #: components/manage/Tiles/Video/Edit
-#: components/mosaic/Layout/Layout
 msgid "Save"
 msgstr "Speichern"
 
@@ -789,6 +792,10 @@ msgstr "Suche"
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
 msgstr "Website durchsuchen"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search content"
+msgstr ""
 
 #: components/manage/Sharing/Sharing
 msgid "Search for user or group"
@@ -1110,6 +1117,10 @@ msgid "box_forgot_password_option"
 msgstr "Passwort vergessen?"
 
 #: config/Tiles
+msgid "common"
+msgstr ""
+
+#: config/Tiles
 msgid "description"
 msgstr "Beschreibung"
 
@@ -1126,12 +1137,32 @@ msgid "heading_sent_password"
 msgstr "Bestätigung für das Zurücksetzen des Passwortes wurde gesendet!"
 
 #: config/Tiles
+msgid "hero"
+msgstr ""
+
+#: config/Tiles
+msgid "html"
+msgstr ""
+
+#: config/Tiles
 msgid "image"
 msgstr "Bild"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr "Meine E-Mail-Adresse lautet"
+
+#: config/Tiles
+msgid "maps"
+msgstr ""
+
+#: config/Tiles
+msgid "media"
+msgstr ""
+
+#: config/Tiles
+msgid "mostUsed"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "registration form"

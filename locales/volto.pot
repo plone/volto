@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-08-29T15:28:45.284Z\n"
+"POT-Creation-Date: 2019-09-22T14:53:39.933Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -115,16 +115,14 @@ msgstr ""
 msgid "Base"
 msgstr ""
 
+#: components/theme/Login/Login
+# defaultMessage: Both email address and password are case sensitive, check that caps lock is not enabled.
+msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Browse
 msgid "Browse"
-msgstr ""
-
-#: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Sidebar/ObjectBrowserOld
-#: components/manage/Tiles/Slider/Edit
-# defaultMessage: Browse or type URL
-msgid "Browse or type URL"
 msgstr ""
 
 #: components/manage/Tiles/Image/Edit
@@ -146,8 +144,6 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/TileModal/TileModal
-#: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 # defaultMessage: Cancel
 msgid "Cancel"
@@ -193,6 +189,26 @@ msgstr ""
 #: components/manage/Widgets/SelectWidget
 # defaultMessage: Choices
 msgid "Choices"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Choose Image
+msgid "Choose Image"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Choose Target
+msgid "Choose Target"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Choose Image
+msgid "ChooseImage"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Choose Target
+msgid "ChooseTargetLink"
 msgstr ""
 
 #: components/theme/Navigation/Navigation
@@ -346,11 +362,6 @@ msgstr ""
 #: components/manage/Diff/Diff
 # defaultMessage: Difference between revision {one} and {two} of {title}
 msgid "Difference between revision {one} and {two} of {title}"
-msgstr ""
-
-#: components/manage/Display/Display
-# defaultMessage: Display
-msgid "Display"
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -654,6 +665,11 @@ msgid "Log in"
 msgstr ""
 
 #: components/theme/Login/Login
+# defaultMessage: Login Failed
+msgid "Login Failed"
+msgstr ""
+
+#: components/theme/Login/Login
 # defaultMessage: Login Name
 msgid "Login Name"
 msgstr ""
@@ -726,9 +742,7 @@ msgstr ""
 msgid "No image selected"
 msgstr ""
 
-#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
-#: components/manage/Widgets/TokenWidget
 # defaultMessage: No results found.
 msgid "No results found."
 msgstr ""
@@ -751,12 +765,6 @@ msgstr ""
 #: components/theme/Navigation/Navigation
 # defaultMessage: Open menu
 msgid "Open menu"
-msgstr ""
-
-#: components/manage/Tiles/Slider/Edit
-#: components/manage/Tiles/TileModal/TileModal
-# defaultMessage: Options
-msgid "Options"
 msgstr ""
 
 #: components/manage/Sidebar/ImageSidebar
@@ -924,9 +932,7 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/TileModal/TileModal
 #: components/manage/Tiles/Video/Edit
-#: components/mosaic/Layout/Layout
 # defaultMessage: Save
 msgid "Save"
 msgstr ""
@@ -939,6 +945,11 @@ msgstr ""
 #: components/theme/SearchWidget/SearchWidget
 # defaultMessage: Search Site
 msgid "Search Site"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+# defaultMessage: Search content
+msgid "Search content"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
@@ -1333,6 +1344,11 @@ msgid "box_forgot_password_option"
 msgstr ""
 
 #: config/Tiles
+# defaultMessage: Common
+msgid "common"
+msgstr ""
+
+#: config/Tiles
 # defaultMessage: Description
 msgid "description"
 msgstr ""
@@ -1353,6 +1369,16 @@ msgid "heading_sent_password"
 msgstr ""
 
 #: config/Tiles
+# defaultMessage: Hero
+msgid "hero"
+msgstr ""
+
+#: config/Tiles
+# defaultMessage: HTML
+msgid "html"
+msgstr ""
+
+#: config/Tiles
 # defaultMessage: Image
 msgid "image"
 msgstr ""
@@ -1360,6 +1386,21 @@ msgstr ""
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email address is
 msgid "label_my_email_address_is"
+msgstr ""
+
+#: config/Tiles
+# defaultMessage: Maps
+msgid "maps"
+msgstr ""
+
+#: config/Tiles
+# defaultMessage: Media
+msgid "media"
+msgstr ""
+
+#: config/Tiles
+# defaultMessage: Most used
+msgid "mostUsed"
 msgstr ""
 
 #: components/theme/Login/Login

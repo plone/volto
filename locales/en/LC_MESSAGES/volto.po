@@ -95,14 +95,12 @@ msgstr ""
 msgid "Base"
 msgstr ""
 
-#: components/manage/Contents/ContentsUploadModal
-msgid "Browse"
+#: components/theme/Login/Login
+msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr ""
 
-#: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Sidebar/ObjectBrowserOld
-#: components/manage/Tiles/Slider/Edit
-msgid "Browse or type URL"
+#: components/manage/Contents/ContentsUploadModal
+msgid "Browse"
 msgstr ""
 
 #: components/manage/Tiles/Image/Edit
@@ -122,8 +120,6 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/TileModal/TileModal
-#: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 msgid "Cancel"
 msgstr ""
@@ -160,6 +156,22 @@ msgstr ""
 
 #: components/manage/Widgets/SelectWidget
 msgid "Choices"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Choose Image"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Choose Target"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "ChooseImage"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "ChooseTargetLink"
 msgstr ""
 
 #: components/theme/Navigation/Navigation
@@ -290,10 +302,6 @@ msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Difference between revision {one} and {two} of {title}"
-msgstr ""
-
-#: components/manage/Display/Display
-msgid "Display"
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -540,6 +548,10 @@ msgid "Log in"
 msgstr ""
 
 #: components/theme/Login/Login
+msgid "Login Failed"
+msgstr ""
+
+#: components/theme/Login/Login
 msgid "Login Name"
 msgstr ""
 
@@ -598,9 +610,7 @@ msgstr ""
 msgid "No image selected"
 msgstr ""
 
-#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
-#: components/manage/Widgets/TokenWidget
 msgid "No results found."
 msgstr ""
 
@@ -618,11 +628,6 @@ msgstr ""
 
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
-msgstr ""
-
-#: components/manage/Tiles/Slider/Edit
-#: components/manage/Tiles/TileModal/TileModal
-msgid "Options"
 msgstr ""
 
 #: components/manage/Sidebar/ImageSidebar
@@ -761,9 +766,7 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/TileModal/TileModal
 #: components/manage/Tiles/Video/Edit
-#: components/mosaic/Layout/Layout
 msgid "Save"
 msgstr ""
 
@@ -773,6 +776,10 @@ msgstr ""
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search content"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
@@ -1095,6 +1102,10 @@ msgid "box_forgot_password_option"
 msgstr ""
 
 #: config/Tiles
+msgid "common"
+msgstr ""
+
+#: config/Tiles
 msgid "description"
 msgstr ""
 
@@ -1111,11 +1122,31 @@ msgid "heading_sent_password"
 msgstr ""
 
 #: config/Tiles
+msgid "hero"
+msgstr ""
+
+#: config/Tiles
+msgid "html"
+msgstr ""
+
+#: config/Tiles
 msgid "image"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
+msgstr ""
+
+#: config/Tiles
+msgid "maps"
+msgstr ""
+
+#: config/Tiles
+msgid "media"
+msgstr ""
+
+#: config/Tiles
+msgid "mostUsed"
 msgstr ""
 
 #: components/theme/Login/Login

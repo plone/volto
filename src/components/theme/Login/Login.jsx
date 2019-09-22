@@ -14,7 +14,6 @@ import {
   Button,
   Form,
   Input,
-  Message,
   Segment,
   Grid,
 } from 'semantic-ui-react';
@@ -28,7 +27,10 @@ import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
 
 import { Icon } from '../../../components';
-import { login, purgeMessages } from '../../../actions';
+import { login } from '../../../actions';
+import { toast } from 'react-toastify';
+import { Toast } from '@plone/volto/components';
+
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -53,6 +55,16 @@ const messages = defineMessages({
     id: 'Error',
     defaultMessage: 'Error',
   },
+  loginFailed: {
+    id: 'Login Failed',
+    defaultMessage: 'Login Failed',
+  },
+  loginFailedContent: {
+    id:
+      'Both email address and password are case sensitive, check that caps lock is not enabled.',
+    defaultMessage:
+      'Both email address and password are case sensitive, check that caps lock is not enabled.',
+  },
 });
 
 /**
@@ -68,7 +80,6 @@ class Login extends Component {
    */
   static propTypes = {
     login: PropTypes.func.isRequired,
-    purgeMessages: PropTypes.func.isRequired,
     error: PropTypes.shape({
       message: PropTypes.string,
     }),
@@ -110,7 +121,27 @@ class Login extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.token) {
       this.props.history.push(this.props.returnUrl || '/');
-      this.props.purgeMessages();
+      if (toast.isActive('loginFailed')) {
+        toast.dismiss('loginFailed');
+      }
+    }
+    if (nextProps.error) {
+      if (!toast.isActive('loginFailed')) {
+        toast.error(
+          <Toast
+            error
+            title={this.props.intl.formatMessage(messages.loginFailed)}
+            content={this.props.intl.formatMessage(messages.loginFailedContent)}
+          />,
+          { autoClose: false, toastId: 'loginFailed' },
+        );
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    if (toast.isActive('loginFailed')) {
+      toast.dismiss('loginFailed');
     }
   }
 
@@ -143,15 +174,6 @@ class Login extends Component {
               <Segment className="primary">
                 <FormattedMessage id="Log In" defaultMessage="Login Name" />
               </Segment>
-              {this.props.error && (
-                <Message
-                  icon="warning"
-                  negative
-                  attached
-                  header={this.props.intl.formatMessage(messages.error)}
-                  content={this.props.error.message}
-                />
-              )}
               <Segment secondary>
                 <FormattedMessage
                   id="Sign in to start session"
@@ -173,12 +195,14 @@ class Login extends Component {
                         </div>
                       </Grid.Column>
                       <Grid.Column width="8">
+                        {/* eslint-disable jsx-a11y/no-autofocus */}
                         <Input
                           id="login"
                           name="login"
                           placeholder={this.props.intl.formatMessage(
                             messages.loginName,
                           )}
+                          autoFocus
                         />
                       </Grid.Column>
                     </Grid.Row>
@@ -190,7 +214,8 @@ class Login extends Component {
                             defaultMessage="If you you do not have an account here, head over to the {registrationform}."
                             values={{
                               registrationform: (
-                                <Link to="/register">
+                                /* eslint-disable jsx-a11y/tabindex-no-positive */
+                                <Link to="/register" tabIndex={1}>
                                   <FormattedMessage
                                     id="registration form"
                                     defaultMessage="registration form"
@@ -297,6 +322,6 @@ export default compose(
       token: state.userSession.token,
       returnUrl: qs.parse(props.location.search).return_url || '/',
     }),
-    { login, purgeMessages },
+    { login },
   ),
 )(Login);
