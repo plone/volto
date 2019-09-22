@@ -1,6 +1,5 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-intl-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
@@ -29,11 +28,9 @@ export default () => {
   hydrate(
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <BrowserRouter>
-          <AnimationWrapper>
-            <ReduxAsyncConnect routes={routes} helpers={api} />
-          </AnimationWrapper>
-        </BrowserRouter>
+        <AnimationWrapper>
+          <ReduxAsyncConnect routes={routes} helpers={api} />
+        </AnimationWrapper>
       </ConnectedRouter>
     </Provider>,
     document.getElementById('main'),
