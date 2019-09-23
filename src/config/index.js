@@ -21,14 +21,7 @@ import {
 } from './RichTextEditor/Blocks';
 import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
 import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
-import {
-  customTiles,
-  defaultTilesViewMap,
-  defaultTilesEditMap,
-  messagesTiles,
-  requiredTiles,
-  sidebarComponents,
-} from './Tiles';
+import { groupTilesOrder, requiredTiles, tilesConfig } from './Tiles';
 
 export const settings = {
   host: process.env.HOST || 'localhost',
@@ -63,10 +56,7 @@ export const views = {
 };
 
 export const tiles = {
-  customTiles,
-  defaultTilesViewMap,
-  defaultTilesEditMap,
-  messagesTiles,
   requiredTiles,
-  sidebarComponents,
+  tilesConfig,
+  groupTilesOrder,
 };

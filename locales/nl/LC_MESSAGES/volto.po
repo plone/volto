@@ -1139,6 +1139,10 @@ msgid "box_forgot_password_option"
 msgstr ""
 
 #: config/Tiles
+msgid "common"
+msgstr ""
+
+#: config/Tiles
 msgid "description"
 msgstr ""
 
@@ -1155,11 +1159,31 @@ msgid "heading_sent_password"
 msgstr ""
 
 #: config/Tiles
+msgid "hero"
+msgstr ""
+
+#: config/Tiles
+msgid "html"
+msgstr ""
+
+#: config/Tiles
 msgid "image"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
+msgstr ""
+
+#: config/Tiles
+msgid "maps"
+msgstr ""
+
+#: config/Tiles
+msgid "media"
+msgstr ""
+
+#: config/Tiles
+msgid "mostUsed"
 msgstr ""
 
 #: components/theme/Login/Login

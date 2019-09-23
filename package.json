@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "4.0.0-alpha.2",
+  "version": "4.0.0-alpha.3",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -39,6 +39,7 @@
     "lint": "./node_modules/eslint/bin/eslint.js 'src/**/*.{js,jsx,json}'",
     "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,json}'",
     "i18n": "NODE_ENV=production node src/i18n.js",
+    "code-analysis:i18n": "yarn i18n && git diff -G'^[^\"POT]' --exit-code",
     "cypress:open": "CYPRESS_API=plone cypress open",
     "cypress:open:guillotina": "CYPRESS_API=guillotina cypress open",
     "cypress:run": "CYPRESS_API=plone cypress run",
@@ -230,6 +231,7 @@
     "razzle": "3.0.0",
     "razzle-plugin-bundle-analyzer": "1.0.2",
     "react": "16.8.6",
+    "react-animate-height": "2.0.15",
     "react-cookie": "1.0.5",
     "react-dnd": "5.0.0",
     "react-dnd-html5-backend": "5.0.1",
