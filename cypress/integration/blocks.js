@@ -1,25 +1,23 @@
 describe('Test Tiles Functionality', () => {
   beforeEach(() => {
     cy.autologin();
-    //create a new page    // Title tile is needed in every test to be able to save the tile
-    cy.createContent('Document', 'this-is-a-page', 'This is a page');
-    // go to edit view of newly created page
-    cy.visit('/this-is-a-page/edit');
+    cy.createContent('Document', 'my-page', 'My Page');
+    cy.visit('/my-page/edit');
   });
 
-  it('As an adminstrator I can edit the title bock of a page', () => {
+  it('As an adminstrator I can edit the title block of a page', () => {
     const tile = 'title';
     const expected = 'This is page with a new title';
 
-    // When I edit the content of the title block
+    // When I edit the content of the title block...
     cy.get(`.tile.${tile} [data-contents]`)
       .clear()
       .type(expected);
 
-    // and hit the save button
+    // ...and hit the save button
     cy.get('#toolbar-save').click();
 
-    // the title should be be the new one
+    // the title of the page should be the new one
     if (Cypress.env('API') === 'plone') {
       cy.get('#page-document').should('have.text', expected);
     } else {
@@ -28,29 +26,29 @@ describe('Test Tiles Functionality', () => {
     }
   });
 
-  it('Text Tile', () => {
+  it('As an adminstrator I can add text to a text block', () => {
     const tile = 'text';
-    const lines = ['This is the text', 'line one', 'line two', 'line three'];
-
-    // Edit
+    const textLine = 'This is the text';
     const el = cy.get(`.tile.${tile} .public-DraftStyleDefault-block`);
-    el.type(lines.join('{shift}{enter}'));
 
+    // When I type some text into a text block...
+    el.type(textLine);
+    //...it should appear inside that block.
     cy.get(`.tile.${tile} [data-contents]`).should($el =>
-      expect($el[0].innerText).to.include(lines.join('\n')),
+      expect($el[0].innerText).to.include(textLine),
     );
 
-    // Save
+    // And I hit save...
     cy.get('#toolbar-save').click();
 
-    // View
+    // ...the text sholud be included on the page
     if (Cypress.env('API') === 'plone') {
       cy.get('#page-document').should($el =>
-        expect($el[0].innerText).to.include(lines.join('\n\n')),
+        expect($el[0].innerText).to.include(textLine),
       );
     } else {
       // guillotina
-      lines.map(line => cy.contains(line));
+      cy.contains(textLine);
     }
   });
 
