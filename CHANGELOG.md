@@ -6,6 +6,10 @@
 
 ### Changes
 
+### Internal
+
+- fix cypress test for file Upload @jackahl
+
 ## 4.0.0-alpha.2 (2019-09-19)
 
 ### Changes
@@ -16,8 +20,6 @@
 - Fix toolbar elements showing depending on user permissions @sneridagh
 
 ### Internal
-
-- fix cypress test for file Upload @jackahl
 
 ## 4.0.0-alpha.1 (2019-09-17)
 
