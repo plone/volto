@@ -13,7 +13,6 @@ describe('Test Tiles Functionality', () => {
 
     // When I edit the content of the title block
     cy.get(`.tile.${tile} [data-contents]`)
-      .click()
       .clear()
       .type(expected);
 
