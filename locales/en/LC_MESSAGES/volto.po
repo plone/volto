@@ -11,6 +11,14 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "ADD NEW GROUP"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "ADD NEW USER"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Accessibility"
 msgstr ""
@@ -29,7 +37,12 @@ msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Actions"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add User"
 msgstr ""
 
 #: components/manage/Tiles/Description/Edit
@@ -44,8 +57,16 @@ msgstr ""
 msgid "Add fieldset"
 msgstr ""
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add group"
+msgstr ""
+
 #: components/manage/Form/Form
 msgid "Add tile..."
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add to Groups"
 msgstr ""
 
 #: components/manage/Add/Add
@@ -120,6 +141,7 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 msgid "Cancel"
 msgstr ""
@@ -267,9 +289,19 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/UsersControlpanelGroups
+#: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
 #: components/theme/Comments/Comments
 msgid "Delete"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Delete Group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Delete User"
 msgstr ""
 
 #: components/manage/Tiles/Table/Edit
@@ -284,6 +316,7 @@ msgstr ""
 msgid "Descending"
 msgstr ""
 
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -304,6 +337,10 @@ msgstr ""
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr ""
 
+#: components/manage/Display/Display
+msgid "Display"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Distributed under the {license}."
 msgstr ""
@@ -314,6 +351,14 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Do you really want to delete the group {groupname}?"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Do you really want to delete the user {username}?"
 msgstr ""
 
 #: components/manage/Delete/Delete
@@ -353,6 +398,10 @@ msgstr ""
 
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Email"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
@@ -439,8 +488,24 @@ msgstr ""
 msgid "Full Name"
 msgstr ""
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Fullname"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Group created"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Groupname"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Groups"
 msgstr ""
 
 #: components/manage/History/History
@@ -610,7 +675,9 @@ msgstr ""
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/TokenWidget
 msgid "No results found."
 msgstr ""
 
@@ -634,6 +701,7 @@ msgstr ""
 msgid "Origin"
 msgstr ""
 
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
 msgid "Password"
 msgstr ""
@@ -760,6 +828,10 @@ msgstr ""
 msgid "Rights"
 msgstr ""
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Roles"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -767,6 +839,7 @@ msgstr ""
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/manage/Tiles/Video/Edit
+#: components/mosaic/Layout/Layout
 msgid "Save"
 msgstr ""
 
@@ -784,6 +857,10 @@ msgstr ""
 
 #: components/manage/Sharing/Sharing
 msgid "Search for user or group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Search group..."
 msgstr ""
 
 #: components/theme/Search/Search
@@ -891,6 +968,7 @@ msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -958,6 +1036,7 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1010,7 +1089,15 @@ msgid "Used for programmatic access to the fieldset."
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
+msgid "User created"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "User name"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Username"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
