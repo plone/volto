@@ -4,19 +4,10 @@
  */
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import {
-  defineMessages,
-  FormattedMessage,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
-import checkedSVG from '../../../icons/checkbox-checked.svg';
-import uncheckedSVG from '../../../icons/checkbox-unchecked.svg';
 import trashSVG from '../../../icons/delete.svg';
 import { Icon } from '../../../components';
-
-const messages = defineMessages({});
 
 @injectIntl
 /**

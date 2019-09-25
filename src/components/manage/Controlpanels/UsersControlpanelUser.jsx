@@ -4,12 +4,7 @@
  */
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import {
-  defineMessages,
-  FormattedMessage,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import trashSVG from '../../../icons/delete.svg';
 import { Icon } from '../../../components';

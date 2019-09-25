@@ -4,7 +4,6 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
 import UsersControlpanel from './UsersControlpanel';
-import { Z_DEFAULT_STRATEGY } from 'zlib';
 
 const mockStore = configureStore();
 

@@ -104,9 +104,9 @@ const customSelectStyles = {
   }),
 };
 
-const getChoices = choices =>
+/*const getChoices = choices =>
   choices ? choices.map(item => ({ label: item, value: item })) : [];
-
+*/
 /**
  * ArrayWidget component class.
  * @class ArrayWidget

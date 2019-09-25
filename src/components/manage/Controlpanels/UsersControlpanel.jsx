@@ -12,12 +12,10 @@ import { Portal } from 'react-portal';
 import {
   Confirm,
   Form,
-  Icon,
   Input,
   Segment,
   Table,
   Container,
-  Label,
   Divider,
 } from 'semantic-ui-react';
 import { find, map, isEqual } from 'lodash';
@@ -578,7 +576,7 @@ class UsersControlpanel extends Component {
     event.preventDefault();
     for (let i = 0; i < this.props.users.length; i += 1) {
       if (!isEqual(this.props.users[i].roles, this.state.entries[i].roles)) {
-        this.state.entries[i].roles.map(item => {
+        this.state.entries[i].roles.forEach(item => {
           userData.roles[item] = true;
         });
         userData.id = this.state.entries[i].id;
@@ -589,7 +587,7 @@ class UsersControlpanel extends Component {
       if (
         !isEqual(this.props.groups[i].roles, this.state.groupEntries[i].roles)
       ) {
-        this.state.groupEntries[i].roles.map(item => {
+        this.state.groupEntries[i].roles.forEach(item => {
           groupData.roles[item] = true;
         });
         groupData.id = this.state.groupEntries[i].id;
@@ -616,9 +614,9 @@ class UsersControlpanel extends Component {
     let usernameToDelete = this.state.userToDelete
       ? this.state.userToDelete.username
       : '';
-    let fullnameToDelete = this.state.userToDelete
+    /*let fullnameToDelete = this.state.userToDelete
       ? this.state.userToDelete.fullname
-      : '';
+      : '';*/
     let groupNameToDelete = this.state.groupToDelete
       ? this.state.groupToDelete.id
       : '';
