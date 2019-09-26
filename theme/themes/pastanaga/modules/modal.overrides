@@ -12,5 +12,5 @@
 
 .ui.modal {
   position: fixed;
-  top: 50%;
+  margin: 0 auto;
 }
