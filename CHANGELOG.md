@@ -4,7 +4,7 @@
 
 ### Added
 
-- Added Users and Groups Controlpanel @nileshgulia1 @csenger
+- Added Users and Groups Controlpanel @nileshgulia1 @csenger @jackahl
 
 ### Changes
 
