@@ -30,14 +30,6 @@ msgstr ""
 "Language-Name: Nederlands\n"
 "Preferred-Encodings: utf-8\n"
 
-#: components/manage/Controlpanels/UsersControlpanel
-msgid "ADD NEW GROUP"
-msgstr ""
-
-#: components/manage/Controlpanels/UsersControlpanel
-msgid "ADD NEW USER"
-msgstr ""
-
 #: components/theme/Footer/Footer
 msgid "Accessibility"
 msgstr "Toegankelijkheid"
@@ -78,6 +70,14 @@ msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add new group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add new user"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -160,6 +160,7 @@ msgstr "Standaard worden de rechten overgenomen van de bovenliggende map.  Als u
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 msgid "Cancel"
 msgstr "Annuleren"
@@ -354,6 +355,10 @@ msgstr "Verschil"
 #: components/manage/Diff/Diff
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "Verschil tussen revisie {one} en {two} van {title}"
+
+#: components/manage/Display/Display
+msgid "Display"
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "Distributed under the {license}."
@@ -689,7 +694,9 @@ msgstr "Nieuw wachtwoord"
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/TokenWidget
 msgid "No results found."
 msgstr ""
 
@@ -851,6 +858,7 @@ msgstr ""
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/manage/Tiles/Video/Edit
+#: components/mosaic/Layout/Layout
 msgid "Save"
 msgstr "Opslaan"
 

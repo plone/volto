@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-09-25T17:38:43.927Z\n"
+"POT-Creation-Date: 2019-09-26T16:07:18.119Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -12,16 +12,6 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
-
-#: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: ADD NEW GROUP
-msgid "ADD NEW GROUP"
-msgstr ""
-
-#: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: ADD NEW USER
-msgid "ADD NEW USER"
-msgstr ""
 
 #: components/theme/Footer/Footer
 # defaultMessage: Accessibility
@@ -73,6 +63,16 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Add group
 msgid "Add group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Add new group
+msgid "Add new group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Add new user
+msgid "Add new user"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -170,6 +170,7 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 # defaultMessage: Cancel
 msgid "Cancel"
@@ -401,6 +402,11 @@ msgstr ""
 #: components/manage/Diff/Diff
 # defaultMessage: Difference between revision {one} and {two} of {title}
 msgid "Difference between revision {one} and {two} of {title}"
+msgstr ""
+
+#: components/manage/Display/Display
+# defaultMessage: Display
+msgid "Display"
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -816,7 +822,9 @@ msgstr ""
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/TokenWidget
 # defaultMessage: No results found.
 msgid "No results found."
 msgstr ""
@@ -1013,6 +1021,7 @@ msgstr ""
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/manage/Tiles/Video/Edit
+#: components/mosaic/Layout/Layout
 # defaultMessage: Save
 msgid "Save"
 msgstr ""

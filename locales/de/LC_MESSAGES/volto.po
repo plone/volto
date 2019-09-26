@@ -26,14 +26,6 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "X-Is-Fallback-For: de-at de-li de-lu de-ch de-de\n"
 
-#: components/manage/Controlpanels/UsersControlpanel
-msgid "ADD NEW GROUP"
-msgstr ""
-
-#: components/manage/Controlpanels/UsersControlpanel
-msgid "ADD NEW USER"
-msgstr ""
-
 #: components/theme/Footer/Footer
 msgid "Accessibility"
 msgstr "Barrierefreiheit"
@@ -74,6 +66,14 @@ msgstr "Fieldset hinzufügen"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add new group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add new user"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -156,6 +156,7 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -350,6 +351,10 @@ msgstr "Unterschied"
 #: components/manage/Diff/Diff
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "Unterschied zwischen Version {one} and {two} von {title}"
+
+#: components/manage/Display/Display
+msgid "Display"
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "Distributed under the {license}."
@@ -685,7 +690,9 @@ msgstr "Neues Passwort"
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/TokenWidget
 msgid "No results found."
 msgstr "Keine Ergebnisse gefunden."
 
@@ -847,6 +854,7 @@ msgstr ""
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/manage/Tiles/Video/Edit
+#: components/mosaic/Layout/Layout
 msgid "Save"
 msgstr "Speichern"
 

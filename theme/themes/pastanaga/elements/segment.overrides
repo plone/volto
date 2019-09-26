@@ -108,3 +108,7 @@
   border: 3px dashed #ccc;
   box-shadow: none;
 }
+
+.ui.clearing.segment.actions {
+    text-transform: uppercase;
+}
