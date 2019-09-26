@@ -3,8 +3,10 @@
 exports[`UsersControlpanel renders a user control component 1`] = `
 <div
   className="ui container"
-  id="page-users"
 >
+  <div
+    className="container"
+  />
   <div
     className="ui raised segments"
   >
@@ -16,7 +18,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
       </span>
     </div>
     <div
-      className="ui secondary segment"
+      className="ui segment"
     >
       <span>
         Users
@@ -58,29 +60,166 @@ exports[`UsersControlpanel renders a user control component 1`] = `
       className="ui form"
       onSubmit={[Function]}
     >
-      <table
-        className="ui striped attached padded table"
+      <div
+        className="table"
       >
-        <thead
-          className=""
+        <table
+          className="ui striped unstackable attached padded table"
         >
-          <tr
+          <thead
             className=""
           >
-            <th
+            <tr
               className=""
             >
-              <span>
-                User name
-              </span>
-            </th>
-          </tr>
-        </thead>
-        <tbody
-          className=""
-        />
-      </table>
+              <th
+                className=""
+              >
+                <span>
+                  User name
+                </span>
+              </th>
+              <th
+                className=""
+              >
+                <span>
+                  Actions
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            className=""
+          />
+        </table>
+      </div>
     </form>
+    <div
+      className="ui clearing segment actions"
+    >
+      ADD NEW USER
+      <svg
+        className="icon icon-adduser"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<title>Add</title>undefined",
+          }
+        }
+        onClick={[Function]}
+        style={
+          Object {
+            "fill": "#007eb1",
+            "height": "30px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </div>
+    <div
+      className="ui divider"
+    />
+    <div
+      className="ui segment"
+    >
+      <span>
+        Groups
+      </span>
+    </div>
+    <div
+      className="ui segment"
+    >
+      <form
+        className="ui form"
+        onSubmit={[Function]}
+      >
+        <div
+          className="field"
+        >
+          <div
+            className="ui action input"
+          >
+            <input
+              name="SearchableText"
+              onChange={[Function]}
+              placeholder="Search group..."
+              type="text"
+            />
+            <button
+              className="ui icon button"
+              onClick={[Function]}
+            >
+              <i
+                aria-hidden="true"
+                className="search icon"
+              />
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <form
+      className="ui form"
+      onSubmit={[Function]}
+    >
+      <div
+        className="table"
+      >
+        <table
+          className="ui striped unstackable attached padded table"
+        >
+          <thead
+            className=""
+          >
+            <tr
+              className=""
+            >
+              <th
+                className=""
+              >
+                <span>
+                  Groupname
+                </span>
+              </th>
+              <th
+                className=""
+              >
+                <span>
+                  Actions
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            className=""
+          />
+        </table>
+      </div>
+    </form>
+    <div
+      className="ui clearing segment actions"
+    >
+      ADD NEW GROUP
+      <svg
+        className="icon icon-adduser"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<title>Add</title>undefined",
+          }
+        }
+        onClick={[Function]}
+        style={
+          Object {
+            "fill": "#007eb1",
+            "height": "30px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </div>
   </div>
   <div
     id="Portal"

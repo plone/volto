@@ -11,6 +11,14 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "ADD NEW GROUP"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "ADD NEW USER"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Accessibility"
 msgstr "Accessibilità"
@@ -29,8 +37,13 @@ msgstr "Azione"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Actions"
 msgstr "Azioni"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add User"
+msgstr ""
 
 #: components/manage/Tiles/Description/Edit
 msgid "Add a description…"
@@ -44,9 +57,17 @@ msgstr "Aggiungi campo"
 msgid "Add fieldset"
 msgstr "Aggiungi un nuovo insieme di campi"
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add group"
+msgstr ""
+
 #: components/manage/Form/Form
 msgid "Add tile..."
 msgstr "Aggiungi tile..."
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add to Groups"
+msgstr ""
 
 #: components/manage/Add/Add
 msgid "Add {type}"
@@ -267,10 +288,20 @@ msgstr "Default"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/UsersControlpanelGroups
+#: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "Elimina"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Delete Group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Delete User"
+msgstr ""
 
 #: components/manage/Tiles/Table/Edit
 msgid "Delete col"
@@ -284,6 +315,7 @@ msgstr "Elimina riga"
 msgid "Descending"
 msgstr "Decrescente"
 
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -315,6 +347,14 @@ msgstr "Dividi ogni fila in celle separate"
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
 msgstr "Vuoi veramente eliminare i seguenti elementi?"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Do you really want to delete the group {groupname}?"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Do you really want to delete the user {username}?"
+msgstr ""
 
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
@@ -354,6 +394,10 @@ msgstr "Modifica insieme di campi"
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "Modifica {title}"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Email"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Email sent"
@@ -439,9 +483,25 @@ msgstr "Da"
 msgid "Full Name"
 msgstr "Nome completo"
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Fullname"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
 msgstr "licenza GNU GPL"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Group created"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Groupname"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Groups"
+msgstr ""
 
 #: components/manage/History/History
 msgid "History of {title}"
@@ -634,6 +694,7 @@ msgstr "Apri menu"
 msgid "Origin"
 msgstr "Origine"
 
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
 msgid "Password"
 msgstr "Password"
@@ -760,6 +821,10 @@ msgstr "Testo formattato"
 msgid "Rights"
 msgstr "Diritti"
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Roles"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -785,6 +850,10 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 msgid "Search for user or group"
 msgstr "Ricerca per nome utente o gruppo"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Search group..."
+msgstr ""
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -891,6 +960,7 @@ msgstr "Oggetto"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -958,6 +1028,7 @@ msgstr "Questa pagina non esiste…"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1010,8 +1081,16 @@ msgid "Used for programmatic access to the fieldset."
 msgstr "Usato per l'accesso programmatico al set di campi."
 
 #: components/manage/Controlpanels/UsersControlpanel
+msgid "User created"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "User name"
 msgstr "Nome utente"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Username"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users"

@@ -4,6 +4,8 @@
 
 ### Added
 
+- Added Users and Groups Controlpanel @nileshgulia1 @csenger
+
 ### Changes
 
 ## 4.0.0-alpha.3 (2019-09-22)
