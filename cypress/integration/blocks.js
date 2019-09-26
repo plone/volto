@@ -52,46 +52,84 @@ describe('Test Tiles Functionality', () => {
     }
   });
 
-  // it('Image Tile', () => {
-  //   const tile = 'image';
-  //   const expected =
-  //     'https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png';
+  // Image Block
+  it('As an adminstrator I can add an external image to an image block', () => {
+    const tile = 'image';
+    const expected =
+      'https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png';
 
-  //   // Edit
+    // Add image Block
+    cy.get('.tile.text [contenteditable]').click();
+    cy.get('button.tile-add-button').click();
+    cy.get('.tiles-chooser .title')
+      .contains('media')
+      .click();
+    cy.get('.content.active.tiles-list .ui.buttons:first-child').click();
+
+    // TODO: Fix tests for Guillotina
+    if (Cypress.env('API') === 'guillotina') {
+      return;
+    } else {
+      //Type in external image URL
+      cy.get(`.tile.${tile} center input`)
+        .click()
+        .type(`${expected}{enter}`);
+    }
+
+    // Save
+    cy.get('#toolbar-save').click();
+
+    // View
+    if (Cypress.env('API') === 'plone') {
+      cy.get('#page-document img').should('have.attr', 'src', expected);
+    } else {
+      // guillotina
+      cy.contains(expected);
+    }
+  });
+
+  //### Need help with the image upload.
+
+  // it('As an adminstrator I can upload an image to an image block with drag and drop', () => {
+  //   const tile = 'image';
+
+  //   // Add image Block
   //   cy.get('.tile.text [contenteditable]').click();
   //   cy.get('button.tile-add-button').click();
-  //   cy.get(`button.add-${tile}-tile`).click();
-  //   cy.get(`.tile.${tile} .dropzone .ui.input input`)
-  //     .type(expected)
-  //     .type('{enter}');
+  //   cy.get('.tiles-chooser .title')
+  //     .contains('media')
+  //     .click();
+  //   cy.get('.content.active.tiles-list .ui.buttons:first-child button').click();
 
   //   // TODO: Fix tests for Guillotina
   //   if (Cypress.env('API') === 'guillotina') {
   //     return;
-  //   }
-
-  //   cy.get(`.tile.${tile} img`).should('have.attr', 'src', expected);
-
-  //   // Save
-  //   cy.get('#toolbar-save').click();
-
-  //   // View
-  //   if (Cypress.env('API') === 'plone') {
-  //     cy.get('#page-document img').should('have.attr', 'src', expected);
   //   } else {
-  //     // guillotina
-  //     cy.contains(expected);
+  //     const fileName = 'image.png';
+  //     cy.fixture(fileName).then(fileContent => {
+  //       cy.get(`.ui.tile.${tile} .dropzone`).upload(
+  //         {
+  //           fileContent,
+  //           fileName,
+  //           mimeType: 'application/png',
+  //         },
+  //         { subjectType: 'drag-n-drop' },
+  //       );
+  //     });
   //   }
   // });
 
-  it('Video Tile', () => {
+  it.only('As an administrator I can add a Video Block with a YouTube video', () => {
     const tile = 'video';
     const expected = 'https://www.youtube.com/watch?v=QmkD2vLGA6Y';
 
     // Edit
     cy.get('.tile.text [contenteditable]').click();
     cy.get('button.tile-add-button').click();
-    cy.get(`button.add-${tile}-tile`).click();
+    cy.get('.tiles-chooser .title')
+      .contains('media')
+      .click();
+    cy.get('.content.active.tiles-list .ui.buttons:nth-child(2)').click();
     cy.get(`.tile.${tile} .toolbar .ui.input input`)
       .type(expected)
       .type('{enter}');
