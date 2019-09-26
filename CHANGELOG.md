@@ -9,6 +9,10 @@
 
 ### Changes
 
+### Internal
+
+- Dependencies upgrades (router, redux) @sneridagh
+
 ## 4.0.0-alpha.3 (2019-09-22)
 
 ### Added

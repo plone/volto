@@ -56,3 +56,4 @@ cypress/screenshots
 
 # Local environment setup
 .env
+.vscode
