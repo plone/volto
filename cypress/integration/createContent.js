@@ -35,7 +35,7 @@ if (Cypress.env('API') !== 'guillotina') {
         'href',
         '/my-file/@@download/file',
       );
-      cy.get('.view-wrapper a').click();
+      // cy.get('.view-wrapper a').click();
     });
   });
 }
