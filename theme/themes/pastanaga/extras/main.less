@@ -257,6 +257,16 @@ button {
   }
 }
 
+.users-control-panel .table {
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+    height: 3px; /* scrollbar height */
+    background: transparent; /* optional: just make scrollbar invisible */
+  }
+}
+
 @import 'utils';
 @import 'toolbar';
 @import 'draftjs';

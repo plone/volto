@@ -159,7 +159,11 @@ class Edit extends Component {
     this.setState(state => ({ addNewTileOpened: !state.addNewTileOpened }));
 
   handleClickOutside = e => {
-    if (this.ref && doesNodeContainClick(this.ref, e)) return;
+    if (
+      this.props.tileNode.current &&
+      doesNodeContainClick(this.props.tileNode.current, e)
+    )
+      return;
     this.setState(() => ({
       addNewTileOpened: false,
     }));
@@ -178,12 +182,7 @@ class Edit extends Component {
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     return (
-      <div
-        role="presentation"
-        onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={cx('tile text', { selected: this.props.selected })}
-        ref={node => (this.ref = node)}
-      >
+      <div className={cx('tile text', { selected: this.props.selected })}>
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}

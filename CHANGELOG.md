@@ -8,10 +8,13 @@
 
 ### Changes
 
+- Move the Tile Edit wrapper one level up to the tiles engine, so we can simplify how edit tiles are made @sneridagh
+
 ### Internal
 
 - fix cypress test for file Upload @jackahl
 - Dependencies upgrades (router, redux) @sneridagh
+- Fix docs build locally @sneridagh
 
 ## 4.0.0-alpha.3 (2019-09-22)
 
