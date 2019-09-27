@@ -10,6 +10,7 @@
 
 - Move the Tile Edit wrapper one level up to the tiles engine, so we can simplify how edit tiles are made @sneridagh
 - Rename Metadata and Properties in sidebar to Document and Block @jackahl
+- Add some German Translations @steffenri, @jackahl
 
 ### Internal
 
@@ -36,9 +37,6 @@
 - Fix SearchTags handling of keyword vocabulary for anonymous users @csenger
 - Fix hero tile being next to a left or right aligned image @jackahl
 - Fix toolbar elements showing depending on user permissions @sneridagh
-- Add some German Translations @steffenri, @jackahl
-
-### Internal
 
 ## 4.0.0-alpha.1 (2019-09-17)
 
