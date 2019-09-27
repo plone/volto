@@ -8,6 +8,8 @@
 
 ### Changes
 
+- Rename Metadata and Properties in sidebar to Document and Block @jackahl
+
 ### Internal
 
 - Dependencies upgrades (router, redux) @sneridagh
