@@ -36,19 +36,41 @@ Cypress.Commands.add(
         pass: 'secret',
       },
       body: {
-        '@type': 'Document',
-        id: contentId,
-        title: contentTitle,
         tiles: {
-          'd3f1c443-583f-4e8e-a682-3bf25752a300': { '@type': 'title' },
-          '7624cf59-05d0-4055-8f55-5fd6597d84b0': { '@type': 'text' },
+          '74ef03c8-c47e-49f2-be11-d06d9c0b9f7f': {
+            '@type': 'title',
+          },
+          'bc1860da-666e-475f-af6e-eac858700924': {
+            '@type': 'text',
+          },
         },
         tiles_layout: {
           items: [
-            'd3f1c443-583f-4e8e-a682-3bf25752a300',
-            '7624cf59-05d0-4055-8f55-5fd6597d84b0',
+            '74ef03c8-c47e-49f2-be11-d06d9c0b9f7f',
+            'bc1860da-666e-475f-af6e-eac858700924',
           ],
         },
+        image: {
+          data:
+            'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPj/HwADBwIAMCbHYQAAAABJRU5ErkJggg==',
+          encoding: 'base64',
+          'content-type': 'image/png',
+          filename: '1x1-0000ffff.png',
+        },
+        title: 'My Image',
+        '@static_behaviors': null,
+        '@type': 'Image',
+
+        // tiles: {
+        //   'd3f1c443-583f-4e8e-a682-3bf25752a300': { '@type': 'title' },
+        //   '7624cf59-05d0-4055-8f55-5fd6597d84b0': { '@type': 'text' },
+        // },
+        // tiles_layout: {
+        //   items: [
+        //     'd3f1c443-583f-4e8e-a682-3bf25752a300',
+        //     '7624cf59-05d0-4055-8f55-5fd6597d84b0',
+        //   ],
+        // },
       },
     });
   },

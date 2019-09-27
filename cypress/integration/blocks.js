@@ -90,36 +90,36 @@ describe('Test Tiles Functionality', () => {
 
   //### Need help with the image upload.
 
-  // it('As an adminstrator I can upload an image to an image block with drag and drop', () => {
-  //   const tile = 'image';
+  it('As an adminstrator I can upload an image to an image block with drag and drop', () => {
+    const tile = 'image';
 
-  //   // Add image Block
-  //   cy.get('.tile.text [contenteditable]').click();
-  //   cy.get('button.tile-add-button').click();
-  //   cy.get('.tiles-chooser .title')
-  //     .contains('media')
-  //     .click();
-  //   cy.get('.content.active.tiles-list .ui.buttons:first-child button').click();
+    // Add image Block
+    cy.get('.tile.text [contenteditable]').click();
+    cy.get('button.tile-add-button').click();
+    cy.get('.tiles-chooser .title')
+      .contains('media')
+      .click();
+    cy.get('.content.active.tiles-list .ui.buttons:first-child button').click();
 
-  //   // TODO: Fix tests for Guillotina
-  //   if (Cypress.env('API') === 'guillotina') {
-  //     return;
-  //   } else {
-  //     const fileName = 'image.png';
-  //     cy.fixture(fileName).then(fileContent => {
-  //       cy.get(`.ui.tile.${tile} .dropzone`).upload(
-  //         {
-  //           fileContent,
-  //           fileName,
-  //           mimeType: 'application/png',
-  //         },
-  //         { subjectType: 'drag-n-drop' },
-  //       );
-  //     });
-  //   }
-  // });
+    // TODO: Fix tests for Guillotina
+    if (Cypress.env('API') === 'guillotina') {
+      return;
+    } else {
+      const fileName = 'image.png';
+      cy.fixture(fileName).then(fileContent => {
+        cy.get(`.ui.tile.${tile} .dropzone`).upload(
+          {
+            fileContent,
+            fileName,
+            mimeType: 'application/png',
+          },
+          { subjectType: 'drag-n-drop' },
+        );
+      });
+    }
+  });
 
-  it.only('As an administrator I can add a Video Block with a YouTube video', () => {
+  it('As an administrator I can add a Video Block with a YouTube video', () => {
     const tile = 'video';
     const expected = 'https://www.youtube.com/watch?v=QmkD2vLGA6Y';
 

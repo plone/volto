@@ -30,5 +30,11 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.visit('/my-folder');
       cy.get('.documentFirstHeading').should('have.text', 'My Folder');
     });
+    it.only('Create image', function() {
+      cy.autologin();
+      cy.createContent('Image', 'my-image', 'My Image');
+      cy.visit('/my-image');
+      cy.get('.ui.container.viewrapper img');
+    });
   });
 }
