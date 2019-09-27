@@ -3,9 +3,6 @@
 exports[`renders an edit html tile component 1`] = `
 <div
   className="tile html"
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  role="presentation"
 >
   <div
     className="html-editor"
