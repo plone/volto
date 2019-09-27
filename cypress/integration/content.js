@@ -98,11 +98,11 @@ context('Actions', () => {
           { fileContent, fileName: 'file.pdf', mimeType: 'application/pdf' },
           { subjectType: 'input' },
         );
-        cy.get('#field-file')
-          .parent()
-          .parent()
-          .contains('file.pdf');
       });
+      cy.get('#field-file')
+        .parent()
+        .parent()
+        .contains('file.pdf');
     }
     cy.get('#toolbar-save').click();
     cy.visit('/contents');
