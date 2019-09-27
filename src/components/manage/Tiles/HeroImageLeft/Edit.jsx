@@ -336,7 +336,7 @@ class Edit extends Component {
                 ) {
                   this.props.onFocusPreviousTile(
                     this.props.tile,
-                    this.props.nodeTile,
+                    this.props.tileNode.current,
                   );
                 }
               }}
@@ -386,7 +386,7 @@ class Edit extends Component {
                 if (currentCursorPosition === blockLength) {
                   this.props.onFocusNextTile(
                     this.props.tile,
-                    this.props.nodeTile,
+                    this.props.tileNode.current,
                   );
                 }
               }}

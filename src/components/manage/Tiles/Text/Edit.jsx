@@ -159,7 +159,11 @@ class Edit extends Component {
     this.setState(state => ({ addNewTileOpened: !state.addNewTileOpened }));
 
   handleClickOutside = e => {
-    if (this.ref && doesNodeContainClick(this.ref, e)) return;
+    if (
+      this.props.tileNode.current &&
+      doesNodeContainClick(this.props.tileNode.current, e)
+    )
+      return;
     this.setState(() => ({
       addNewTileOpened: false,
     }));

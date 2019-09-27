@@ -80,7 +80,7 @@ class Edit extends Component {
    */
   componentDidMount() {
     if (this.props.selected) {
-      this.props.nodeTile.focus();
+      this.props.tileNode.current.focus();
     }
   }
 
@@ -92,7 +92,7 @@ class Edit extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.selected) {
-      this.props.nodeTile.focus();
+      this.props.tileNode.current.focus();
     }
   }
 
