@@ -60,6 +60,10 @@ msgstr ""
 msgid "Actions"
 msgstr "Acties"
 
+#: components/manage/Toolbar/Types
+msgid "Add Content"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
 msgstr ""
@@ -767,9 +771,17 @@ msgstr ""
 msgid "Powered by Plone & Python"
 msgstr "Powered by Plone & Python"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Preferences"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Voorvertoning"
+
+#: components/manage/Toolbar/PersonalTools
+msgid "Profile"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
@@ -952,6 +964,7 @@ msgid "Site Map"
 msgstr "Sitemap"
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr ""
 
@@ -964,6 +977,7 @@ msgid "Start password reset"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 msgid "State"
 msgstr "Status"
@@ -1137,6 +1151,10 @@ msgstr "Bekijk wijzigingen"
 #: components/manage/History/History
 msgid "View this revision"
 msgstr "Bekijk deze revisie"
+
+#: components/manage/Display/Display
+msgid "Viewmode"
+msgstr ""
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."

@@ -41,6 +41,10 @@ msgstr "Azione"
 msgid "Actions"
 msgstr "Azioni"
 
+#: components/manage/Toolbar/Types
+msgid "Add Content"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
 msgstr ""
@@ -748,9 +752,17 @@ msgstr "Ritratto"
 msgid "Powered by Plone & Python"
 msgstr "Realizzato con Plone &amp; Python"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Preferences"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Anteprima"
+
+#: components/manage/Toolbar/PersonalTools
+msgid "Profile"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
@@ -933,6 +945,7 @@ msgid "Site Map"
 msgstr "Mappa del sito"
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "Configurazione del sito"
 
@@ -945,6 +958,7 @@ msgid "Start password reset"
 msgstr "Rinnova la password"
 
 #: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 msgid "State"
 msgstr "Stato"
@@ -1118,6 +1132,10 @@ msgstr "Mostra le modifiche"
 #: components/manage/History/History
 msgid "View this revision"
 msgstr "Mostra questa revisione"
+
+#: components/manage/Display/Display
+msgid "Viewmode"
+msgstr ""
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."

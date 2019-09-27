@@ -41,6 +41,10 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
+#: components/manage/Toolbar/Types
+msgid "Add Content"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
 msgstr ""
@@ -748,8 +752,16 @@ msgstr ""
 msgid "Powered by Plone & Python"
 msgstr ""
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Preferences"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
+msgstr ""
+
+#: components/manage/Toolbar/PersonalTools
+msgid "Profile"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -933,6 +945,7 @@ msgid "Site Map"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr ""
 
@@ -945,6 +958,7 @@ msgid "Start password reset"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 msgid "State"
 msgstr ""
@@ -1117,6 +1131,10 @@ msgstr ""
 
 #: components/manage/History/History
 msgid "View this revision"
+msgstr ""
+
+#: components/manage/Display/Display
+msgid "Viewmode"
 msgstr ""
 
 #: components/theme/NotFound/NotFound
