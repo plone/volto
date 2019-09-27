@@ -36,7 +36,7 @@ Cypress.Commands.add(
         pass: 'secret',
       },
       body: {
-        '@type': 'Document',
+        '@type': contentType,
         id: contentId,
         title: contentTitle,
         tiles: {

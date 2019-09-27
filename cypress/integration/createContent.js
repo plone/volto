@@ -24,11 +24,11 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.visit('/my-custom-id');
       cy.get('.documentFirstHeading').should('have.text', 'My Page');
     });
-    it('Create folder', function() {
+    it('Create News Item', function() {
       cy.autologin();
-      cy.createContent('Folder', 'my-folder', 'My Folder');
-      cy.visit('/my-folder');
-      cy.get('.documentFirstHeading').should('have.text', 'My Folder');
+      cy.createContent('News Item', 'my-news-item', 'My News Item');
+      cy.visit('/my-news-item');
+      cy.get('.documentFirstHeading').should('have.text', 'My News Item');
     });
   });
 }
