@@ -71,11 +71,14 @@ class ModalForm extends Component {
     }).isRequired,
     title: PropTypes.string.isRequired,
     formData: PropTypes.objectOf(PropTypes.any),
+    submitError: PropTypes.string,
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func,
     open: PropTypes.bool,
     submitLabel: PropTypes.string,
     intl: intlShape.isRequired,
+    loading: PropTypes.bool,
+    className: PropTypes.string,
   };
 
   /**
@@ -88,6 +91,9 @@ class ModalForm extends Component {
     onCancel: null,
     formData: {},
     open: true,
+    loading: null,
+    submitError: null,
+    className: null,
   };
 
   /**
@@ -166,7 +172,10 @@ class ModalForm extends Component {
         errors,
       });
     } else {
-      this.props.onSubmit(this.state.formData);
+      let setFormDataCallback = formData => {
+        this.setState({ formData: formData });
+      };
+      this.props.onSubmit(this.state.formData, setFormDataCallback);
     }
   }
 
@@ -200,20 +209,26 @@ class ModalForm extends Component {
       onChange: this.onChangeField,
     }));
 
+    const state_errors = keys(this.state.errors).length > 0;
     return (
-      <Modal open={this.props.open}>
+      <Modal open={this.props.open} className={this.props.className}>
         <Header>{this.props.title}</Header>
         <Modal.Content>
           <UiForm
             method="post"
             onSubmit={this.onSubmit}
-            error={keys(this.state.errors).length > 0}
+            error={state_errors || Boolean(this.props.submitError)}
           >
             <Message error>
-              <FormattedMessage
-                id="There were some errors."
-                defaultMessage="There were some errors."
-              />
+              {state_errors ? (
+                <FormattedMessage
+                  id="There were some errors."
+                  defaultMessage="There were some errors."
+                />
+              ) : (
+                ''
+              )}
+              <div>{this.props.submitError}</div>
             </Message>
             {schema.fieldsets.length > 1 && (
               <Menu tabular stackable>
@@ -254,6 +269,7 @@ class ModalForm extends Component {
             }
             size="big"
             onClick={this.onSubmit}
+            loading={this.props.loading}
           />
           {onCancel && (
             <Button

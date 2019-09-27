@@ -14,13 +14,10 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { includes, isEqual } from 'lodash';
 import cx from 'classnames';
 
-import { settings, tiles } from '~/config';
+import { settings } from '~/config';
 
-import { Icon } from '../../../../components';
+import { Icon, TileChooser } from '../../../../components';
 import addSVG from '../../../../icons/circle-plus.svg';
-import cameraSVG from '../../../../icons/camera.svg';
-import videoSVG from '../../../../icons/videocamera.svg';
-import TemplatedTilesSVG from '../../../../icons/theme.svg';
 
 const messages = defineMessages({
   text: {
@@ -92,7 +89,6 @@ class Edit extends Component {
         editorState,
         inlineToolbarPlugin,
         addNewTileOpened: false,
-        customTilesOpened: false,
       };
     }
 
@@ -166,11 +162,8 @@ class Edit extends Component {
     if (this.ref && doesNodeContainClick(this.ref, e)) return;
     this.setState(() => ({
       addNewTileOpened: false,
-      customTilesOpened: false,
     }));
   };
-
-  openCustomTileMenu = () => this.setState(() => ({ customTilesOpened: true }));
 
   /**
    * Render method.
@@ -269,64 +262,11 @@ class Edit extends Component {
               <Icon name={addSVG} className="tile-add-button" size="24px" />
             </Button>
           )}
-        {this.state.addNewTileOpened && !this.state.customTilesOpened && (
-          <div className="add-tile toolbar">
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() =>
-                  this.props.onMutateTile(this.props.tile, {
-                    '@type': 'image',
-                  })
-                }
-              >
-                <Icon name={cameraSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() =>
-                  this.props.onMutateTile(this.props.tile, {
-                    '@type': 'video',
-                  })
-                }
-              >
-                <Icon name={videoSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            {tiles.customTiles.length !== 0 && (
-              <React.Fragment>
-                <div className="separator" />
-                <Button.Group>
-                  <Button icon basic onClick={this.openCustomTileMenu}>
-                    <Icon name={TemplatedTilesSVG} size="24px" />
-                  </Button>
-                </Button.Group>
-              </React.Fragment>
-            )}
-          </div>
-        )}
-        {this.state.addNewTileOpened && this.state.customTilesOpened && (
-          <div className="add-tile toolbar">
-            {tiles.customTiles.map(tile => (
-              <Button.Group key={tile.title}>
-                <Button
-                  icon
-                  basic
-                  onClick={() =>
-                    this.props.onMutateTile(this.props.tile, {
-                      '@type': tile.title,
-                    })
-                  }
-                >
-                  <Icon name={tile.icon} size="24px" />
-                </Button>
-              </Button.Group>
-            ))}
-          </div>
+        {this.state.addNewTileOpened && (
+          <TileChooser
+            onMutateTile={this.props.onMutateTile}
+            currentTile={this.props.tile}
+          />
         )}
       </div>
     );

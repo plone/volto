@@ -3,7 +3,7 @@ context('Actions', () => {
     cy.visit('/');
     cy.contains('Log in').click();
   });
-  it('As registered user I an login', function() {
+  it('As registered user I can login', function() {
     cy.get('#login')
       .type('admin')
       .should('have.value', 'admin');

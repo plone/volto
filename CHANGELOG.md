@@ -4,11 +4,25 @@
 
 ### Added
 
+- Added Users and Groups Controlpanel @nileshgulia1 @csenger
+
 ### Changes
 
 ### Internal
 
 - fix cypress test for file Upload @jackahl
+- Dependencies upgrades (router, redux) @sneridagh
+
+## 4.0.0-alpha.3 (2019-09-22)
+
+### Added
+
+- New tiles chooser @sneridagh
+
+### Internal
+
+- Fail eslint check on any warnings @timo
+- Add i18n check on Travis @timo
 
 ## 4.0.0-alpha.2 (2019-09-19)
 

@@ -39,7 +39,7 @@ BodyClass.defaultProps = {
  */
 function reducePropsToState(propsList) {
   let classList = [];
-  propsList.map(props => {
+  propsList.forEach(props => {
     if (props.className) {
       classList = classList.concat(props.className);
     }
@@ -55,7 +55,7 @@ function reducePropsToState(propsList) {
  */
 function handleStateChangeOnClient(classList) {
   document.body.className = '';
-  classList.map(className => {
+  classList.forEach(className => {
     if (!document.body.classList.contains(className)) {
       document.body.classList.add(className);
     }

@@ -15,7 +15,14 @@ describe('UsersControlpanel', () => {
   it('renders a user control component', () => {
     const store = mockStore({
       roles: { roles: [] },
-      users: { users: [] },
+      users: {
+        users: [],
+        create: { loading: false },
+      },
+      groups: {
+        groups: [],
+        create: { loading: false },
+      },
       intl: {
         locale: 'en',
         messages: {},
