@@ -9,6 +9,7 @@
 ### Changes
 
 - Move the Tile Edit wrapper one level up to the tiles engine, so we can simplify how edit tiles are made @sneridagh
+- Rename Metadata and Properties in sidebar to Document and Block @jackahl
 
 ### Internal
 

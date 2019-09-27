@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-09-25T17:38:43.927Z\n"
+"POT-Creation-Date: 2019-09-27T08:27:10.524Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -139,6 +139,11 @@ msgstr ""
 #: components/manage/Diff/Diff
 # defaultMessage: Base
 msgid "Base"
+msgstr ""
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Block
+msgid "Block"
 msgstr ""
 
 #: components/theme/Login/Login
@@ -431,6 +436,11 @@ msgstr ""
 #: components/manage/Delete/Delete
 # defaultMessage: Do you really want to delete this item?
 msgid "Do you really want to delete this item?"
+msgstr ""
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Document
+msgid "Document"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
@@ -768,11 +778,6 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: components/manage/Sidebar/Sidebar
-# defaultMessage: Metadata
-msgid "Metadata"
-msgstr ""
-
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 # defaultMessage: Minimum length is {len}.
@@ -915,7 +920,6 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
-#: components/manage/Sidebar/Sidebar
 # defaultMessage: Properties
 msgid "Properties"
 msgstr ""

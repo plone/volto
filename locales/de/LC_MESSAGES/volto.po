@@ -131,6 +131,10 @@ msgstr "Zurück"
 msgid "Base"
 msgstr "Basis"
 
+#: components/manage/Sidebar/Sidebar
+msgid "Block"
+msgstr "Block"
+
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr ""
@@ -374,6 +378,10 @@ msgstr ""
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
 msgstr "Möchten Sie den Artikel wirklich löschen?"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Document"
+msgstr "Seite"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -646,10 +654,6 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: components/manage/Sidebar/Sidebar
-msgid "Metadata"
-msgstr ""
-
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
@@ -765,7 +769,6 @@ msgstr "Vorschau"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
-#: components/manage/Sidebar/Sidebar
 msgid "Properties"
 msgstr "Eigenschaften"
 
