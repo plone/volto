@@ -25,31 +25,57 @@ Cypress.Commands.add(
     } else {
       api_url = 'http://localhost:55001/plone';
     }
-    cy.request({
-      method: 'POST',
-      url: `${api_url}/${path}`,
-      headers: {
-        Accept: 'application/json',
-      },
-      auth: {
-        user: 'admin',
-        pass: 'secret',
-      },
-      body: {
-        '@type': 'Document',
-        id: contentId,
-        title: contentTitle,
-        tiles: {
-          'd3f1c443-583f-4e8e-a682-3bf25752a300': { '@type': 'title' },
-          '7624cf59-05d0-4055-8f55-5fd6597d84b0': { '@type': 'text' },
+    if (contentType === 'File') {
+      cy.request({
+        method: 'POST',
+        url: `${api_url}/${path}`,
+        headers: {
+          Accept: 'application/json',
         },
-        tiles_layout: {
-          items: [
-            'd3f1c443-583f-4e8e-a682-3bf25752a300',
-            '7624cf59-05d0-4055-8f55-5fd6597d84b0',
-          ],
+        auth: {
+          user: 'admin',
+          pass: 'secret',
         },
-      },
-    });
+        body: {
+          '@type': contentType,
+          id: contentId,
+          title: contentTitle,
+          file: {
+            data: 'dGVzdGZpbGUK',
+            encoding: 'base64',
+            filename: 'lorem.txt',
+            'content-type': 'text/plain',
+          },
+        },
+      });
+    }
+    if (contentType === 'Document' || contentType === 'News Item') {
+      cy.request({
+        method: 'POST',
+        url: `${api_url}/${path}`,
+        headers: {
+          Accept: 'application/json',
+        },
+        auth: {
+          user: 'admin',
+          pass: 'secret',
+        },
+        body: {
+          '@type': contentType,
+          id: contentId,
+          title: contentTitle,
+          tiles: {
+            'd3f1c443-583f-4e8e-a682-3bf25752a300': { '@type': 'title' },
+            '7624cf59-05d0-4055-8f55-5fd6597d84b0': { '@type': 'text' },
+          },
+          tiles_layout: {
+            items: [
+              'd3f1c443-583f-4e8e-a682-3bf25752a300',
+              '7624cf59-05d0-4055-8f55-5fd6597d84b0',
+            ],
+          },
+        },
+      });
+    }
   },
 );
