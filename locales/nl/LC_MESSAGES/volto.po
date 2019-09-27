@@ -135,6 +135,10 @@ msgstr ""
 msgid "Base"
 msgstr "Basis"
 
+#: components/manage/Sidebar/Sidebar
+msgid "Block"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr ""
@@ -378,6 +382,10 @@ msgstr ""
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
 msgstr "Weet u zeker dat u dit item wilt verwijderen?"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Document"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -650,10 +658,6 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: components/manage/Sidebar/Sidebar
-msgid "Metadata"
-msgstr ""
-
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
@@ -769,7 +773,6 @@ msgstr "Voorvertoning"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
-#: components/manage/Sidebar/Sidebar
 msgid "Properties"
 msgstr "Eigenschappen"
 
