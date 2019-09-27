@@ -178,12 +178,7 @@ class Edit extends Component {
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     return (
-      <div
-        role="presentation"
-        onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={cx('tile text', { selected: this.props.selected })}
-        ref={node => (this.ref = node)}
-      >
+      <div className={cx('tile text', { selected: this.props.selected })}>
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}

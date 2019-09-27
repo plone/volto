@@ -80,7 +80,7 @@ class Edit extends Component {
    */
   componentDidMount() {
     if (this.props.selected) {
-      this.node.focus();
+      this.props.nodeTile.focus();
     }
   }
 
@@ -92,7 +92,7 @@ class Edit extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.selected) {
-      this.node.focus();
+      this.props.nodeTile.focus();
     }
   }
 
@@ -180,8 +180,6 @@ class Edit extends Component {
   render() {
     return (
       <div
-        role="presentation"
-        onClick={() => this.props.onSelectTile(this.props.tile)}
         className={cx(
           'tile maps align',
           {
@@ -190,17 +188,6 @@ class Edit extends Component {
           },
           this.props.data.align,
         )}
-        onKeyDown={e =>
-          this.props.handleKeyDown(
-            e,
-            this.props.index,
-            this.props.tile,
-            this.node,
-          )
-        }
-        ref={node => {
-          this.node = node;
-        }}
       >
         {this.props.selected && !!this.props.data.url && (
           <div className="toolbar">

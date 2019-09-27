@@ -34,14 +34,12 @@ dist:
 test:
 	(cd api && bin/test)
 
-bin/pip:
-	virtualenv --clear --python=python3 .
-	bin/pip install -r requirements-docs.txt
-
 docs-serve:
 	(cd docs && ../bin/mkdocs serve)
 
-docs-build: bin/pip
+docs-build:
+	virtualenv --clear --python=python3 .
+	./bin/pip install -r requirements-docs.txt
 	(cd docs && ../bin/mkdocs build)
 
 start-frontend: dist
