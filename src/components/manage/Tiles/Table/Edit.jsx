@@ -641,6 +641,7 @@ class Edit extends Component {
                           rowIndex === this.state.selected.row &&
                           cellIndex === this.state.selected.cell
                         }
+                        isTableTileSelected={this.props.selected}
                         onChange={this.onChangeCell}
                       />
                     </Table.Cell>

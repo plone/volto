@@ -154,29 +154,24 @@ class Edit extends Component {
               </div>,
             )}
           {Tile !== null ? (
-            <>
-              {settings.disableNewTilesWrapper && <Tile {...this.props} />}
-              {!settings.disableNewTilesWrapper && (
-                <div
-                  role="presentation"
-                  onClick={() => this.props.onSelectTile(this.props.tile)}
-                  onKeyDown={e =>
-                    this.props.handleKeyDown(
-                      e,
-                      this.props.index,
-                      this.props.tile,
-                      this.tileNode.current,
-                    )
-                  }
-                  style={{ outline: 'none' }}
-                  ref={this.tileNode}
-                  // The tabIndex is required for the keyboard navigation
-                  tabIndex={-1}
-                >
-                  <Tile {...this.props} tileNode={this.tileNode} />
-                </div>
-              )}
-            </>
+            <div
+              role="presentation"
+              onClick={() => this.props.onSelectTile(this.props.tile)}
+              onKeyDown={e =>
+                this.props.handleKeyDown(
+                  e,
+                  this.props.index,
+                  this.props.tile,
+                  this.tileNode.current,
+                )
+              }
+              style={{ outline: 'none' }}
+              ref={this.tileNode}
+              // The tabIndex is required for the keyboard navigation
+              tabIndex={-1}
+            >
+              <Tile {...this.props} tileNode={this.tileNode} />
+            </div>
           ) : (
             <div />
           )}
