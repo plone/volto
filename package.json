@@ -172,7 +172,7 @@
     "connected-react-router": "6.5.2",
     "coveralls": "3.0.2",
     "css-loader": "2.1.1",
-    "cypress": "3.3.1",
+    "cypress": "3.4.1",
     "cypress-axe": "0.4.1",
     "cypress-file-upload": "3.1.2",
     "draft-js": "0.10.5",
