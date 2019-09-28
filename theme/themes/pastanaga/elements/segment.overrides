@@ -103,6 +103,6 @@
   box-shadow: none;
 }
 
-.ui.clearing.segment.actions {
+.users-control-panel .ui.clearing.segment.actions {
     text-transform: uppercase;
 }
