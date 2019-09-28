@@ -94,12 +94,12 @@
     ]
   },
   "release-it": {
-    "scripts": {
-      "changelog": "node changelogupdater.js excerpt",
-      "beforeStage": "node changelogupdater.js bump ${version}",
-      "afterRelease": "node changelogupdater.js back ${version} && git add . && git ci -am 'Back to development' && git push"
+    "hooks": {
+      "after:bump": "node changelogupdater.js bump ${version}",
+      "after:release": "node changelogupdater.js back ${version} && git add . && git ci -am 'Back to development' && git push"
     },
     "git": {
+      "changelog": "node changelogupdater.js excerpt",
       "requireUpstream": false,
       "requireCleanWorkingDir": false
     },
@@ -232,7 +232,7 @@
     "redux-devtools-extension": "2.13.8",
     "redux-mock-store": "1.5.3",
     "redux-thunk": "2.3.0",
-    "release-it": "10.1.0",
+    "release-it": "12.4.0",
     "semantic-ui-less": "2.4.1",
     "semantic-ui-react": "0.84.0",
     "semver": "5.6.0",

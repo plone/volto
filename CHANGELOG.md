@@ -6,6 +6,10 @@
 
 - Fix for checkboxes when setting `false` values, this fixes #888 @sneridagh
 
+### Internal
+
+- Update release-it to fix some deprecation messages @sneridagh
+
 ## 3.2.6 (2019-08-19)
 
 ### Changes
