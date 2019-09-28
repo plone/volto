@@ -8,6 +8,10 @@
 
 - Slight amendment to Blocks chooser styling @sneridagh
 
+### Internal
+
+- Add complete husky config @sneridagh
+
 ## 4.0.0-alpha.5 (2019-09-28)
 
 ### Added
