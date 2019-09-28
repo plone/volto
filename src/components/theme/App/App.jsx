@@ -109,36 +109,38 @@ class App extends Component {
 
     return (
       <Fragment>
-        <BodyClass className={`view-${action}view`} />
-        <Header pathname={path} />
-        <Breadcrumbs pathname={path} />
-        <Segment basic className="content-area">
-          <main>
-            <Messages />
-            {this.state.hasError ? (
-              <Error
-                message={this.state.error.message}
-                stackTrace={this.state.errorInfo.componentStack}
+        <React.StrictMode>
+          <BodyClass className={`view-${action}view`} />
+          <Header pathname={path} />
+          <Breadcrumbs pathname={path} />
+          <Segment basic className="content-area">
+            <main>
+              <Messages />
+              {this.state.hasError ? (
+                <Error
+                  message={this.state.error.message}
+                  stackTrace={this.state.errorInfo.componentStack}
+                />
+              ) : (
+                renderRoutes(this.props.route.routes)
+              )}
+            </main>
+          </Segment>
+          <Footer />
+          <ToastContainer
+            position={toast.POSITION.BOTTOM_CENTER}
+            hideProgressBar
+            transition={Slide}
+            autoClose={5000}
+            closeButton={
+              <Icon
+                className="toast-dismiss-action"
+                name={clearSVG}
+                size="18px"
               />
-            ) : (
-              renderRoutes(this.props.route.routes)
-            )}
-          </main>
-        </Segment>
-        <Footer />
-        <ToastContainer
-          position={toast.POSITION.BOTTOM_CENTER}
-          hideProgressBar
-          transition={Slide}
-          autoClose={5000}
-          closeButton={
-            <Icon
-              className="toast-dismiss-action"
-              name={clearSVG}
-              size="18px"
-            />
-          }
-        />
+            }
+          />
+        </React.StrictMode>
       </Fragment>
     );
   }
