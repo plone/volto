@@ -138,8 +138,6 @@ class Edit extends Component {
     }
     return (
       <div
-        role="presentation"
-        onClick={() => this.props.onSelectTile(this.props.tile)}
         className={cx('tile description', { selected: this.props.selected })}
       >
         <Editor

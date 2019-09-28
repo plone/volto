@@ -138,11 +138,7 @@ class Edit extends Component {
       return <div />;
     }
     return (
-      <div
-        role="presentation"
-        onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={cx('tile title', { selected: this.props.selected })}
-      >
+      <div className={cx('tile title', { selected: this.props.selected })}>
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}

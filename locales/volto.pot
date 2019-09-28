@@ -40,6 +40,11 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
+#: components/manage/Toolbar/Types
+# defaultMessage: Add Content...
+msgid "Add Content"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Add User
 msgid "Add User"
@@ -139,6 +144,11 @@ msgstr ""
 #: components/manage/Diff/Diff
 # defaultMessage: Base
 msgid "Base"
+msgstr ""
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Block
+msgid "Block"
 msgstr ""
 
 #: components/theme/Login/Login
@@ -431,6 +441,11 @@ msgstr ""
 #: components/manage/Delete/Delete
 # defaultMessage: Do you really want to delete this item?
 msgid "Do you really want to delete this item?"
+msgstr ""
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Document
+msgid "Document"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
@@ -768,11 +783,6 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: components/manage/Sidebar/Sidebar
-# defaultMessage: Metadata
-msgid "Metadata"
-msgstr ""
-
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 # defaultMessage: Minimum length is {len}.
@@ -908,14 +918,23 @@ msgstr ""
 msgid "Powered by Plone & Python"
 msgstr ""
 
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Preferences
+msgid "Preferences"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Preview
 msgid "Preview"
 msgstr ""
 
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Profile
+msgid "Profile"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
-#: components/manage/Sidebar/Sidebar
 # defaultMessage: Properties
 msgid "Properties"
 msgstr ""
@@ -1134,6 +1153,7 @@ msgid "Site Map"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
 msgid "Site Setup"
 msgstr ""
@@ -1149,6 +1169,7 @@ msgid "Start password reset"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 # defaultMessage: State
 msgid "State"
@@ -1358,6 +1379,11 @@ msgstr ""
 #: components/manage/History/History
 # defaultMessage: View this revision
 msgid "View this revision"
+msgstr ""
+
+#: components/manage/Display/Display
+# defaultMessage: View
+msgid "Viewmode"
 msgstr ""
 
 #: components/theme/NotFound/NotFound

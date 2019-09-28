@@ -5,7 +5,9 @@ Array [
   <label
     htmlFor="state-select"
   >
-    State
+    <span>
+      State
+    </span>
   </label>,
   <div
     className="css-10nd86i react-select-container"
@@ -97,7 +99,9 @@ Array [
   <label
     htmlFor="state-select"
   >
-    State
+    <span>
+      State
+    </span>
   </label>,
   <div
     className="css-1sontr1 react-select-container react-select--is-disabled"

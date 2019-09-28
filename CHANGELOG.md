@@ -6,12 +6,25 @@
 
 - Added Users and Groups Controlpanel @nileshgulia1 @csenger
 - Small fixes to i18n strings and gitignore @nileshgulia1
+### Changes
+
+## 4.0.0-alpha.4 (2019-09-27)
+
+### Added
+
+- Added Users and Groups Controlpanel @nileshgulia1 @csenger @jackahl
 
 ### Changes
 
+- Move the Tile Edit wrapper one level up to the tiles engine, so we can simplify how edit tiles are made @sneridagh
+- Rename Metadata and Properties in sidebar to Document and Block @jackahl
+- Add some German Translations @steffenri, @jackahl
+
 ### Internal
 
+- fix cypress test for file Upload @jackahl
 - Dependencies upgrades (router, redux) @sneridagh
+- Fix docs build locally @sneridagh
 
 ## 4.0.0-alpha.3 (2019-09-22)
 
