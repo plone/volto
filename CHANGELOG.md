@@ -2,9 +2,9 @@
 
 ## 3.2.7 (unreleased)
 
-### Added
-
 ### Changes
+
+- Fix for checkboxes when setting `false` values, this fixes #888 @sneridagh
 
 ## 3.2.6 (2019-08-19)
 
