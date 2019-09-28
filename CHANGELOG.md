@@ -6,6 +6,10 @@
 
 - Default body classes were enhanced to accept path and content type based ones as in Plone @sneridagh
 
+### Changes
+
+- Fix for checkboxes when setting `false` values, this fixes #888 @sneridagh
+
 ## 4.0.0-alpha.4 (2019-09-27)
 
 ### Added
