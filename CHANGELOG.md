@@ -1,6 +1,6 @@
 # Change Log
 
-## 3.2.7 (unreleased)
+## 3.2.7 (2019-09-28)
 
 ### Changes
 
