@@ -107,10 +107,10 @@ class View extends Component {
 
   /**
    * Component will mount
-   * @method componentWillMount
+   * @method componentDidMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  componentDidMount() {
     this.props.listActions(getBaseUrl(this.props.pathname));
     this.props.getContent(
       getBaseUrl(this.props.pathname),

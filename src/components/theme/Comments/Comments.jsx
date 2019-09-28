@@ -99,10 +99,10 @@ class Comments extends Component {
 
   /**
    * Component will mount
-   * @method componentWillMount
+   * @method componentDidMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  componentDidMount() {
     this.props.listComments(getBaseUrl(this.props.pathname));
   }
 

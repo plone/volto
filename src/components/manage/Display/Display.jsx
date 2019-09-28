@@ -129,10 +129,10 @@ class DisplaySelect extends Component {
 
   /**
    * Component will mount
-   * @method componentWillMount
+   * @method componentDidMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  componentDidMount() {
     this.props.getSchema(this.props.type);
   }
 

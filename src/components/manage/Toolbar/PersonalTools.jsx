@@ -37,7 +37,7 @@ class PersonalTools extends Component {
 
   /**
    * Component will mount
-   * @method componentWillMount
+   * @method componentDidMount
    * @returns {undefined}
    */
   componentDidMount() {

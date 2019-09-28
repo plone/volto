@@ -87,10 +87,10 @@ class ModerateComments extends Component {
 
   /**
    * Component will mount
-   * @method componentWillMount
+   * @method componentDidMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  componentDidMount() {
     this.props.searchContent('', {
       portal_type: 'Discussion Item',
       fullobjects: true,

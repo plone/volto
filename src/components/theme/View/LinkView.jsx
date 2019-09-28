@@ -41,10 +41,10 @@ class LinkView extends Component {
 
   /**
    * Component will mount
-   * @method componentWillMount
+   * @method componentDidMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  componentDidMount() {
     if (!this.props.token) {
       this.props.history.replace(this.props.content.remoteUrl);
     }

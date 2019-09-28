@@ -75,10 +75,10 @@ class ContentsWorkflowModal extends Component {
 
   /**
    * Component will mount
-   * @method componentWillMount
+   * @method componentDidMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  componentDidMount() {
     this.props.getWorkflow(this.props.items);
   }
 

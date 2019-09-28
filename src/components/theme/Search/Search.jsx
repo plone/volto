@@ -72,10 +72,10 @@ class Search extends Component {
 
   /**
    * Component will mount
-   * @method componentWillMount
+   * @method componentDidMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  componentDidMount() {
     this.doSearch(
       this.props.searchableText,
       this.props.subject,

@@ -137,10 +137,10 @@ class PasswordReset extends Component {
 
   /**
    * Component will mount
-   * @method componentWillMount
+   * @method componentDidMount
    * @returns {undefined}
    */
-  componentWillMount() {}
+  componentDidMount() {}
 
   /**
    * Component will receive props
