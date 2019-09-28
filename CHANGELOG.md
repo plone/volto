@@ -4,7 +4,7 @@
 
 ### Added
 
-### Changes
+- Default body classes were enhanced to accept path and content type based ones as in Plone @sneridagh
 
 ## 4.0.0-alpha.4 (2019-09-27)
 
