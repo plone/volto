@@ -31,9 +31,10 @@ const DocumentView = ({ content }) => {
     <div id="page-document" className="ui wrapper">
       <Helmet title={content.title} />
       {map(content[tilesLayoutFieldname].items, tile => {
-        let Tile = null;
-        Tile =
-          tiles.tilesConfig[content[tilesFieldname][tile]['@type']]['view'];
+        const Tile =
+          tiles.tilesConfig[(content[tilesFieldname]?.[tile]?.['@type'])]?.[
+            'view'
+          ] || null;
         return Tile !== null ? (
           <Tile
             key={tile}
