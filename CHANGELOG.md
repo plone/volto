@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Slight amendment to Blocks chooser styling @sneridagh
+
 ### Internal
 
 - Add complete husky config @sneridagh
