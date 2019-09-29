@@ -48,6 +48,10 @@ msgstr "Aktion"
 msgid "Actions"
 msgstr "Aktionen"
 
+#: components/manage/Toolbar/Types
+msgid "Add Content"
+msgstr "Inhalte hinzufügen"
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
 msgstr ""
@@ -130,6 +134,10 @@ msgstr "Zurück"
 #: components/manage/Diff/Diff
 msgid "Base"
 msgstr "Basis"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Block"
+msgstr "Block"
 
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -374,6 +382,10 @@ msgstr ""
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
 msgstr "Möchten Sie den Artikel wirklich löschen?"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Document"
+msgstr "Seite"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -646,10 +658,6 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: components/manage/Sidebar/Sidebar
-msgid "Metadata"
-msgstr ""
-
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
@@ -759,13 +767,20 @@ msgstr ""
 msgid "Powered by Plone & Python"
 msgstr "Powered by Plone & Python"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Preferences"
+msgstr "Einstellungen"
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Vorschau"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Profile"
+msgstr "Profil"
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
-#: components/manage/Sidebar/Sidebar
 msgid "Properties"
 msgstr "Eigenschaften"
 
@@ -945,6 +960,7 @@ msgid "Site Map"
 msgstr "Übersicht"
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "Seiteneinstellungen"
 
@@ -957,6 +973,7 @@ msgid "Start password reset"
 msgstr "E-Mail anfordern"
 
 #: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 msgid "State"
 msgstr "Status"
@@ -1117,7 +1134,7 @@ msgstr "Nutzer- und Gruppeneinstellungen"
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
-msgstr ""
+msgstr "Versionsübersicht"
 
 #: components/manage/Contents/ContentsItem
 msgid "View"
@@ -1130,6 +1147,10 @@ msgstr "Änderungen anzeigen"
 #: components/manage/History/History
 msgid "View this revision"
 msgstr "Diese revision ansehen"
+
+#: components/manage/Display/Display
+msgid "Viewmode"
+msgstr "Ansicht"
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."

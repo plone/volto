@@ -100,6 +100,8 @@ class Edit extends Component {
     onDeleteTile: PropTypes.func.isRequired,
   };
 
+  tileNode = React.createRef();
+
   /**
    * Render method.
    * @method render
@@ -150,7 +152,28 @@ class Edit extends Component {
                 <Icon className="drag handle" name={dragSVG} size="18px" />
               </div>,
             )}
-          {Tile !== null ? <Tile {...this.props} /> : <div />}
+          {Tile !== null ? (
+            <div
+              role="presentation"
+              onClick={() => this.props.onSelectTile(this.props.tile)}
+              onKeyDown={e =>
+                this.props.handleKeyDown(
+                  e,
+                  this.props.index,
+                  this.props.tile,
+                  this.tileNode.current,
+                )
+              }
+              style={{ outline: 'none' }}
+              ref={this.tileNode}
+              // The tabIndex is required for the keyboard navigation
+              tabIndex={-1}
+            >
+              <Tile {...this.props} tileNode={this.tileNode} />
+            </div>
+          ) : (
+            <div />
+          )}
           {selected && !includes(tiles.requiredTiles, type) && (
             <Button
               icon

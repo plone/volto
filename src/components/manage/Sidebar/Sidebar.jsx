@@ -13,13 +13,13 @@ import { Icon } from '../../../components';
 import forbiddenSVG from '../../../icons/forbidden.svg';
 
 const messages = defineMessages({
-  metadata: {
-    id: 'Metadata',
-    defaultMessage: 'Metadata',
+  document: {
+    id: 'Document',
+    defaultMessage: 'Document',
   },
-  properties: {
-    id: 'Properties',
-    defaultMessage: 'Properties',
+  block: {
+    id: 'Block',
+    defaultMessage: 'Block',
   },
 });
 
@@ -103,7 +103,7 @@ class Sidebar extends Component {
             defaultActiveIndex={1}
             panes={[
               {
-                menuItem: this.props.intl.formatMessage(messages.metadata),
+                menuItem: this.props.intl.formatMessage(messages.document),
                 pane: (
                   <Tab.Pane
                     key="metadata"
@@ -113,7 +113,7 @@ class Sidebar extends Component {
                 ),
               },
               {
-                menuItem: this.props.intl.formatMessage(messages.properties),
+                menuItem: this.props.intl.formatMessage(messages.block),
                 pane: (
                   <Tab.Pane
                     key="properties"

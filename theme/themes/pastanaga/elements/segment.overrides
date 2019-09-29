@@ -83,18 +83,12 @@
 
 .ui.actions.segment {
   border-top: @1px solid @lightGreyBorderColor;
-  display: flex;
-  justify-content: space-between;
-}
-.ui.actions.segment:after{
-  content: none;
 }
 
 .inverted.segment a.item {
   color: @white;
   text-decoration: underline;
 }
-
 
 .pusher > .ui.basic.segment {
   padding-bottom: 0;
@@ -109,6 +103,6 @@
   box-shadow: none;
 }
 
-.ui.clearing.segment.actions {
+.users-control-panel .ui.clearing.segment.actions {
     text-transform: uppercase;
 }
