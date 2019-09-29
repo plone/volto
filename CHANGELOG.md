@@ -9,6 +9,38 @@
 
 ### Changes
 
+### Internal
+
+- Add complete husky config @sneridagh
+
+## 4.0.0-alpha.5 (2019-09-28)
+
+### Added
+
+- Default body classes were enhanced to accept path and content type based ones as in Plone @sneridagh
+
+### Changes
+
+- Fix for checkboxes when setting `false` values, this fixes #888 @sneridagh
+
+## 4.0.0-alpha.4 (2019-09-27)
+
+### Added
+
+- Added Users and Groups Controlpanel @nileshgulia1 @csenger @jackahl
+
+### Changes
+
+- Move the Tile Edit wrapper one level up to the tiles engine, so we can simplify how edit tiles are made @sneridagh
+- Rename Metadata and Properties in sidebar to Document and Block @jackahl
+- Add some German Translations @steffenri, @jackahl
+
+### Internal
+
+- fix cypress test for file Upload @jackahl
+- Dependencies upgrades (router, redux) @sneridagh
+- Fix docs build locally @sneridagh
+
 ## 4.0.0-alpha.3 (2019-09-22)
 
 ### Added
@@ -17,6 +49,7 @@
 
 ### Internal
 
+- Fail eslint check on any warnings @timo
 - Add i18n check on Travis @timo
 
 ## 4.0.0-alpha.2 (2019-09-19)

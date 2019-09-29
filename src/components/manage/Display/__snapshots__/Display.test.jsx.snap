@@ -5,7 +5,9 @@ Array [
   <label
     htmlFor="display-select"
   >
-    View
+    <span>
+      View
+    </span>
   </label>,
   <div
     className="css-10nd86i react-select-container"

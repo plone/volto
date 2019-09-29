@@ -65,13 +65,18 @@ export function getGroup(id) {
  * @function listGroups
  * @returns {Object} List groups action
  */
-export function listGroups() {
+export function listGroups(query) {
   return {
     type: LIST_GROUPS,
-    request: {
-      op: 'get',
-      path: '/@groups',
-    },
+    request: query
+      ? {
+          op: 'get',
+          path: `/@groups?query=${query}`,
+        }
+      : {
+          op: 'get',
+          path: '/@groups',
+        },
   };
 }
 

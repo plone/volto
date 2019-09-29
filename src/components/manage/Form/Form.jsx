@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { keys, map, mapValues, omit, uniq, without } from 'lodash';
 import move from 'lodash-move';
+import isBoolean from 'lodash/isBoolean';
 import {
   Button,
   Container,
@@ -191,7 +192,8 @@ class Form extends Component {
     this.setState({
       formData: {
         ...this.state.formData,
-        [id]: value || null,
+        // We need to catch also when the value equals false this fixes #888
+        [id]: value || (value !== undefined && isBoolean(value)) ? value : null,
       },
     });
   }

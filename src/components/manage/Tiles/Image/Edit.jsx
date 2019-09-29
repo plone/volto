@@ -77,7 +77,7 @@ class Edit extends Component {
    */
   componentDidMount() {
     if (this.props.selected) {
-      this.node.current.focus();
+      this.props.tileNode.current.focus();
     }
   }
 
@@ -103,7 +103,7 @@ class Edit extends Component {
     }
 
     if (nextProps.selected) {
-      this.node.current.focus();
+      this.props.tileNode.current.focus();
     }
   }
 
@@ -227,8 +227,6 @@ class Edit extends Component {
   render() {
     return (
       <div
-        role="presentation"
-        onClick={() => this.props.onSelectTile(this.props.tile)}
         className={cx(
           'tile image align',
           {
@@ -237,15 +235,6 @@ class Edit extends Component {
           },
           this.props.data.align,
         )}
-        onKeyDown={e =>
-          this.props.handleKeyDown(
-            e,
-            this.props.index,
-            this.props.tile,
-            this.node.current,
-          )
-        }
-        ref={this.node}
       >
         {this.props.selected && !!this.props.data.url && (
           <div className="toolbar">
