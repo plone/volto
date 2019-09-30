@@ -39,6 +39,7 @@ const defaultTiles = {
     edit: EditTitleTile, // The edit mode component
     restricted: false, // If the tile is restricted, it won't show in menus
     mostUsed: false, // A meta group `most used`, appearing at the top
+    tileHasOwnFocusManagement: false, // Set this to true if the tile manages its own focus
     security: {
       addPermission: [], // Future proof (not implemented yet) add permission role(s)
       view: [], // Future proof (not implemented yet) view role(s)
@@ -65,12 +66,11 @@ create your own as well.
 
 ### Tiles engine - Simplification of the edit tiles wrapper
 
-The edit tile wrapper boilerplate was quite big, and for bootstrap an edit tile you had to copy it from an existing tile. Now all this boilerplate has been transferred to the Tiles Engine, so bootstrapping the edit component of a tile is easier and do not require any pre-existing code. 
+The edit tile wrapper boilerplate was quite big, and for bootstrap an edit tile you had to copy it from an existing tile. Now all this boilerplate has been transferred to the Tiles Engine, so bootstrapping the edit component of a tile is easier and do not require any pre-existing code.
 
 In order to upgrade your tiles you should simplify the outter `<div>` (took as example the Title tile):
 
 ``` diff
-index 65a00806..0d86899e 100644
 --- a/src/components/manage/Tiles/Title/Edit.jsx
 +++ b/src/components/manage/Tiles/Title/Edit.jsx
 @@ -138,11 +138,7 @@ class Edit extends Component {
@@ -82,11 +82,46 @@ index 65a00806..0d86899e 100644
 -        onClick={() => this.props.onSelectTile(this.props.tile)}
 -        className={cx('tile title', { selected: this.props.selected })}
 -      >
-+      <div className={cx('tile title', { selected: this.props.selected })}>
++      <>
          <Editor
            onChange={this.onChange}
            editorState={this.state.editorState}
+@@ -185,7 +181,7 @@ class Edit extends Component {
+             this.node = node;
+           }}
+         />
+-      </div>
++      </>
+     );
+   }
+ }
 ```
+
+The tiles engine now takes care for the keyboard navigation of the tiles, so you need to remove the outter `<div>` from your custom tile, then your tile doesn't have to react to the change on `this.props.selected` either, because it's also something that the tiles engine already does for you.
+
+The focus management is also transferred to the engine, so no needed for your tile to manage the focus. However, if your tile does indeed require to manage its own focus, then you should mark it with the `tileHasOwnFocusManagement` property in the tiles configuration object:
+
+``` js hl_lines="10"
+    text: {
+      id: 'text',
+      title: 'Text',
+      icon: textSVG,
+      group: 'text',
+      view: ViewTextTile,
+      edit: EditTextTile,
+      restricted: false,
+      mostUsed: false,
+      tileHasOwnFocusManagement: true,
+      security: {
+        addPermission: [],
+        view: [],
+      },
+    },
+```
+
+### Default view renaming
+
+The default view for content types `DocumentView.jsx` has been renamed to a more appropiate `DefaultView.jsx`. This view contains the code for rendering blocks in case the content type has been Blocks enabled. Enable Blocks on your content types by composing the view of your content type using `DefaultView` component.
 
 ## Upgrading to Volto 3.x
 

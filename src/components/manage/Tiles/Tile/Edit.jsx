@@ -8,9 +8,11 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
+import { injectIntl, intlShape } from 'react-intl';
 import { tiles } from '~/config';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
+import cx from 'classnames';
 
 import Icon from '../../../../components/theme/Icon/Icon';
 import dragSVG from '../../../../icons/drag.svg';
@@ -98,7 +100,34 @@ class Edit extends Component {
     id: PropTypes.string.isRequired,
     onMoveTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
+    intl: intlShape.isRequired,
   };
+
+  componentDidMount() {
+    const { type } = this.props;
+    const tileHasOwnFocusManagement =
+      tiles.tilesConfig?.[type]?.['tileHasOwnFocusManagement'] || null;
+    if (
+      !tileHasOwnFocusManagement &&
+      this.props.selected &&
+      this.tileNode.current
+    ) {
+      this.tileNode.current.focus();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { type } = this.props;
+    const tileHasOwnFocusManagement =
+      tiles.tilesConfig?.[type]?.['tileHasOwnFocusManagement'] || null;
+    if (
+      !tileHasOwnFocusManagement &&
+      nextProps.selected &&
+      this.tileNode.current
+    ) {
+      this.tileNode.current.focus();
+    }
+  }
 
   tileNode = React.createRef();
 
@@ -117,8 +146,9 @@ class Edit extends Component {
       connectDragPreview,
     } = this.props;
 
-    let Tile = null;
-    Tile = tiles.tilesConfig[type]['edit'];
+    const Tile = tiles.tilesConfig?.[type]?.['edit'] || null;
+    const tileHasOwnFocusManagement =
+      tiles.tilesConfig?.[type]?.['tileHasOwnFocusManagement'] || null;
 
     const hideHandler =
       this.props.data['@type'] === 'text' &&
@@ -156,6 +186,29 @@ class Edit extends Component {
             <div
               role="presentation"
               onClick={() => this.props.onSelectTile(this.props.tile)}
+              onKeyDown={
+                !tileHasOwnFocusManagement
+                  ? e =>
+                      this.props.handleKeyDown(
+                        e,
+                        this.props.index,
+                        this.props.tile,
+                        this.tileNode.current,
+                      )
+                  : null
+              }
+              className={cx(`tile ${type}`, { selected: this.props.selected })}
+              style={{ outline: 'none' }}
+              ref={this.tileNode}
+              // The tabIndex is required for the keyboard navigation
+              /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+              tabIndex={!tileHasOwnFocusManagement ? -1 : null}
+            >
+              <Tile {...this.props} tileNode={this.tileNode} />
+            </div>
+          ) : (
+            <div
+              role="presentation"
               onKeyDown={e =>
                 this.props.handleKeyDown(
                   e,
@@ -164,15 +217,17 @@ class Edit extends Component {
                   this.tileNode.current,
                 )
               }
+              className={cx(`tile ${type}`, { selected: this.props.selected })}
               style={{ outline: 'none' }}
               ref={this.tileNode}
               // The tabIndex is required for the keyboard navigation
               tabIndex={-1}
             >
-              <Tile {...this.props} tileNode={this.tileNode} />
+              {this.props.intl.formatMessage({
+                id: 'Unknown Tile',
+                defaultMessage: 'Unknown Tile',
+              })}
             </div>
-          ) : (
-            <div />
           )}
           {selected && !includes(tiles.requiredTiles, type) && (
             <Button
@@ -192,6 +247,7 @@ class Edit extends Component {
 }
 
 export default compose(
+  injectIntl,
   DropTarget(ItemTypes.ITEM, itemTarget, connect => ({
     connectDropTarget: connect.dropTarget(),
   })),

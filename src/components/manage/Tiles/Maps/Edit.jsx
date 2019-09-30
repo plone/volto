@@ -74,29 +74,6 @@ class Edit extends Component {
   }
 
   /**
-   * Component did mount
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    if (this.props.selected) {
-      this.props.tileNode.current.focus();
-    }
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.selected) {
-      this.props.tileNode.current.focus();
-    }
-  }
-
-  /**
    * Align tile handler
    * @method onAlignTile
    * @param {string} align Alignment option

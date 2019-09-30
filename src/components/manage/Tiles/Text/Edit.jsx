@@ -12,7 +12,6 @@ import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { includes, isEqual } from 'lodash';
-import cx from 'classnames';
 
 import { settings } from '~/config';
 
@@ -182,7 +181,7 @@ class Edit extends Component {
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     return (
-      <div className={cx('tile text', { selected: this.props.selected })}>
+      <>
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}
@@ -267,7 +266,7 @@ class Edit extends Component {
             currentTile={this.props.tile}
           />
         )}
-      </div>
+      </>
     );
   }
 }

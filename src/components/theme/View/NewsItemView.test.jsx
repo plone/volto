@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import DocumentView from './DocumentView';
+import NewsItemView from './NewsItemView';
 
-test('renders a document view component', () => {
+test('renders a news item view component', () => {
   const component = renderer.create(
-    <DocumentView
+    <NewsItemView
       content={{
         title: 'Hello World!',
         description: 'Hi',

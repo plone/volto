@@ -521,7 +521,7 @@ class Edit extends Component {
     }
 
     return (
-      <div className={cx('tile text', { selected: this.props.selected })}>
+      <div className={cx('tile table', { selected: this.props.selected })}>
         {this.props.selected && (
           <div className="toolbar">
             <Button.Group>

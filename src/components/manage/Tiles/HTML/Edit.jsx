@@ -9,7 +9,6 @@ import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-markup';
 import { Button } from 'semantic-ui-react';
-import cx from 'classnames';
 import pretty from 'pretty';
 
 import { Icon } from '../../../../components';
@@ -120,11 +119,7 @@ class Edit extends Component {
    */
   render() {
     return (
-      <div
-        className={cx('tile html', {
-          selected: this.props.selected,
-        })}
-      >
+      <>
         {this.props.selected && !!this.state.code && (
           <div className="toolbar">
             <Button.Group>
@@ -173,7 +168,7 @@ class Edit extends Component {
             }}
           />
         )}
-      </div>
+      </>
     );
   }
 }

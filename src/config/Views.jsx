@@ -1,4 +1,4 @@
-import DocumentView from '@plone/volto/components/theme/View/DocumentView';
+import DefaultView from '@plone/volto/components/theme/View/DefaultView';
 import FileView from '@plone/volto/components/theme/View/FileView';
 import ImageView from '@plone/volto/components/theme/View/ImageView';
 import ListingView from '@plone/volto/components/theme/View/ListingView';
@@ -24,7 +24,7 @@ export const contentTypesViews = {
 };
 
 // Default view
-export const defaultView = DocumentView;
+export const defaultView = DefaultView;
 
 export const errorViews = {
   '404': NotFoundView,
