@@ -121,23 +121,9 @@ class Edit extends Component {
   render() {
     return (
       <div
-        role="presentation"
-        onClick={() => this.props.onSelectTile(this.props.tile)}
         className={cx('tile html', {
           selected: this.props.selected,
         })}
-        onKeyDown={e =>
-          this.props.handleKeyDown(
-            e,
-            this.props.index,
-            this.props.tile,
-            this.node,
-            { disableEnter: true },
-          )
-        }
-        ref={node => {
-          this.node = node;
-        }}
       >
         {this.props.selected && !!this.state.code && (
           <div className="toolbar">

@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { filter, map } from 'lodash';
+import { FormattedMessage } from 'react-intl';
 
 const Types = ({ types, pathname }) => {
   return types.length > 0 ? (
     <div className="menu-more pastanaga-menu">
-      <header>Add content...</header>
+      <header>
+        <FormattedMessage id="Add Content" defaultMessage="Add Content..." />
+      </header>
       <div className="pastanaga-menu-list">
         <ul>
           {map(filter(types), item => (

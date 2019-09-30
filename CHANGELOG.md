@@ -4,15 +4,43 @@
 
 ### Added
 
+### Changes
+
+- Slight amendment to Blocks chooser styling @sneridagh
+
+### Internal
+
+- Add complete husky config @sneridagh
+- Add COC.md file @timo
+
+## 4.0.0-alpha.5 (2019-09-28)
+
+### Added
+
+- Default body classes were enhanced to accept path and content type based ones as in Plone @sneridagh
+
+### Changes
+
+- Fix for checkboxes when setting `false` values, this fixes #888 @sneridagh
+
+## 4.0.0-alpha.4 (2019-09-27)
+
+### Added
+
 - Added Users and Groups Controlpanel @nileshgulia1 @csenger @jackahl
 
 ### Changes
+
+- Move the Tile Edit wrapper one level up to the tiles engine, so we can simplify how edit tiles are made @sneridagh
+- Rename Metadata and Properties in sidebar to Document and Block @jackahl
+- Add some German Translations @steffenri, @jackahl
 
 ### Internal
 
 - Fix cypress test for file Upload @jackahl
 - Dependencies upgrades (router, redux) @sneridagh
 - Enhance Cypress createContent keyword to create files and images @timo
+- Fix docs build locally @sneridagh
 
 ## 4.0.0-alpha.3 (2019-09-22)
 
@@ -33,8 +61,6 @@
 - Fix SearchTags handling of keyword vocabulary for anonymous users @csenger
 - Fix hero tile being next to a left or right aligned image @jackahl
 - Fix toolbar elements showing depending on user permissions @sneridagh
-
-### Internal
 
 ## 4.0.0-alpha.1 (2019-09-17)
 

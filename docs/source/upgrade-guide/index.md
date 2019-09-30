@@ -12,6 +12,17 @@ This upgrade guide lists all breaking changes in Volto and explains the
 
 ## Upgrading to Volto 4.x
 
+First, update your `package.json` to Volto 4.x.x.
+
+```json
+  "dependencies": {
+    "@plone/volto": "4.0.0",
+    ...
+  }
+```
+
+### Tiles engine - Tiles configuration object
+
 The tiles engine was updated and there are some important breaking changes, in case that
 you've developed custom tiles. The configuration object is now unified and expresses all
 the properties to model a tile. This is how a tile in the `defaultTiles` object looks
@@ -51,6 +62,31 @@ const groupTilesOrder = [
 You should adapt and merge the configuration of your own custom tiles to match the
 `defaultTiles` and `groupTilesOrder` one. You can modify the order of the groups and
 create your own as well.
+
+### Tiles engine - Simplification of the edit tiles wrapper
+
+The edit tile wrapper boilerplate was quite big, and for bootstrap an edit tile you had to copy it from an existing tile. Now all this boilerplate has been transferred to the Tiles Engine, so bootstrapping the edit component of a tile is easier and do not require any pre-existing code. 
+
+In order to upgrade your tiles you should simplify the outter `<div>` (took as example the Title tile):
+
+``` diff
+index 65a00806..0d86899e 100644
+--- a/src/components/manage/Tiles/Title/Edit.jsx
++++ b/src/components/manage/Tiles/Title/Edit.jsx
+@@ -138,11 +138,7 @@ class Edit extends Component {
+       return <div />;
+     }
+     return (
+-      <div
+-        role="presentation"
+-        onClick={() => this.props.onSelectTile(this.props.tile)}
+-        className={cx('tile title', { selected: this.props.selected })}
+-      >
++      <div className={cx('tile title', { selected: this.props.selected })}>
+         <Editor
+           onChange={this.onChange}
+           editorState={this.state.editorState}
+```
 
 ## Upgrading to Volto 3.x
 
