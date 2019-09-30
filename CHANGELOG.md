@@ -37,8 +37,9 @@
 
 ### Internal
 
-- fix cypress test for file Upload @jackahl
+- Fix cypress test for file Upload @jackahl
 - Dependencies upgrades (router, redux) @sneridagh
+- Enhance Cypress createContent keyword to create files and images @timo
 - Fix docs build locally @sneridagh
 
 ## 4.0.0-alpha.3 (2019-09-22)
