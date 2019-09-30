@@ -120,11 +120,7 @@ class Edit extends Component {
    */
   render() {
     return (
-      <div
-        className={cx('tile html', {
-          selected: this.props.selected,
-        })}
-      >
+      <>
         {this.props.selected && !!this.state.code && (
           <div className="toolbar">
             <Button.Group>
@@ -173,7 +169,7 @@ class Edit extends Component {
             }}
           />
         )}
-      </div>
+      </>
     );
   }
 }

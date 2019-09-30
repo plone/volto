@@ -99,6 +99,7 @@ const tilesConfig = {
     edit: EditTitleTile,
     restricted: true,
     mostUsed: false,
+    tileHasOwnFocusManagement: true,
     security: {
       addPermission: [],
       view: [],
@@ -113,6 +114,7 @@ const tilesConfig = {
     edit: EditDescriptionTile,
     restricted: true,
     mostUsed: false,
+    tileHasOwnFocusManagement: true,
     security: {
       addPermission: [],
       view: [],
@@ -170,6 +172,7 @@ const tilesConfig = {
     edit: EditHeroImageLeftTile,
     restricted: false,
     mostUsed: false,
+    tileHasOwnFocusManagement: true,
     security: {
       addPermission: [],
       view: [],
@@ -212,6 +215,7 @@ const tilesConfig = {
     edit: EditTableTile,
     restricted: false,
     mostUsed: false,
+    tileHasOwnFocusManagement: true,
     security: {
       addPermission: [],
       view: [],

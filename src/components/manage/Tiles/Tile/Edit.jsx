@@ -122,7 +122,7 @@ class Edit extends Component {
       tiles.tilesConfig?.[type]?.['tileHasOwnFocusManagement'] || null;
     if (
       !tileHasOwnFocusManagement &&
-      this.props.selected !== nextProps.selected &&
+      nextProps.selected &&
       this.tileNode.current
     ) {
       this.tileNode.current.focus();
