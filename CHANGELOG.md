@@ -9,6 +9,7 @@
 ### Changes
 
 - Slight amendment to Blocks chooser styling @sneridagh
+- The default view for content types `DocumentView.jsx` has been renamed to a more appropiate `DefaultView.jsx` @sneridagh
 
 ### Internal
 

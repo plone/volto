@@ -5,7 +5,7 @@ exports[`View renders a document view 1`] = `
   id="view"
 >
   <div
-    id="DocumentView"
+    id="DefaultView"
   />
   <div
     id="Portal"
