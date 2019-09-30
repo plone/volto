@@ -65,27 +65,57 @@ create your own as well.
 
 ### Tiles engine - Simplification of the edit tiles wrapper
 
-The edit tile wrapper boilerplate was quite big, and for bootstrap an edit tile you had to copy it from an existing tile. Now all this boilerplate has been transferred to the Tiles Engine, so bootstrapping the edit component of a tile is easier and do not require any pre-existing code. 
+The edit tile wrapper boilerplate was quite big, and for bootstrap an edit tile you had to copy it from an existing tile. Now all this boilerplate has been transferred to the Tiles Engine, so bootstrapping the edit component of a tile is easier and do not require any pre-existing code.
 
 In order to upgrade your tiles you should simplify the outter `<div>` (took as example the Title tile):
 
 ``` diff
-index 65a00806..0d86899e 100644
---- a/src/components/manage/Tiles/Title/Edit.jsx
-+++ b/src/components/manage/Tiles/Title/Edit.jsx
-@@ -138,11 +138,7 @@ class Edit extends Component {
-       return <div />;
-     }
+--- a/src/components/manage/Tiles/Text/Edit.jsx
++++ b/src/components/manage/Tiles/Text/Edit.jsx
+@@ -12,7 +12,6 @@ import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
+ import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+ import { defineMessages, injectIntl, intlShape } from 'react-intl';
+ import { includes, isEqual } from 'lodash';
+-import cx from 'classnames';
+
+ import { settings } from '~/config';
+
+@@ -159,7 +158,11 @@ class Edit extends Component {
+     this.setState(state => ({ addNewTileOpened: !state.addNewTileOpened }));
+
+   handleClickOutside = e => {
+-    if (this.ref && doesNodeContainClick(this.ref, e)) return;
++    if (
++      this.props.tileNode.current &&
++      doesNodeContainClick(this.props.tileNode.current, e)
++    )
++      return;
+     this.setState(() => ({
+       addNewTileOpened: false,
+     }));
+@@ -178,12 +181,7 @@ class Edit extends Component {
+     const { InlineToolbar } = this.state.inlineToolbarPlugin;
+
      return (
 -      <div
 -        role="presentation"
 -        onClick={() => this.props.onSelectTile(this.props.tile)}
--        className={cx('tile title', { selected: this.props.selected })}
+-        className={cx('tile text', { selected: this.props.selected })}
+-        ref={node => (this.ref = node)}
 -      >
-+      <div className={cx('tile title', { selected: this.props.selected })}>
++      <>
          <Editor
            onChange={this.onChange}
            editorState={this.state.editorState}
+@@ -268,7 +266,7 @@ class Edit extends Component {
+             currentTile={this.props.tile}
+           />
+         )}
+-      </div>
++      </>
+     );
+   }
+ }
 ```
 
 ## Upgrading to Volto 3.x

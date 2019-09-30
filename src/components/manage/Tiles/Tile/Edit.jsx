@@ -104,13 +104,27 @@ class Edit extends Component {
   };
 
   componentDidMount() {
-    if (this.props.selected && this.tileNode.current) {
+    const { type } = this.props;
+    const tileHasOwnFocusManagement =
+      tiles.tilesConfig?.[type]?.['tileHasOwnFocusManagement'] || null;
+    if (
+      !tileHasOwnFocusManagement &&
+      this.props.selected &&
+      this.tileNode.current
+    ) {
       this.tileNode.current.focus();
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.selected !== nextProps.selected && this.tileNode.current) {
+    const { type } = this.props;
+    const tileHasOwnFocusManagement =
+      tiles.tilesConfig?.[type]?.['tileHasOwnFocusManagement'] || null;
+    if (
+      !tileHasOwnFocusManagement &&
+      this.props.selected !== nextProps.selected &&
+      this.tileNode.current
+    ) {
       this.tileNode.current.focus();
     }
   }
