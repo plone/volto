@@ -12,6 +12,10 @@ import { Segment } from 'semantic-ui-react';
 import Raven from 'raven-js';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
+import split from 'lodash/split';
+import join from 'lodash/join';
+import trim from 'lodash/trim';
+import cx from 'classnames';
 
 import Error from '../../../error';
 
@@ -110,6 +114,16 @@ class App extends Component {
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
+
+        {/* Body class depending on sections */}
+        <BodyClass
+          className={cx({
+            [trim(join(split(this.props.pathname, '/'), ' section-'))]:
+              this.props.pathname !== '/',
+            siteroot: this.props.pathname === '/',
+          })}
+        />
+
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
         <Segment basic className="content-area">

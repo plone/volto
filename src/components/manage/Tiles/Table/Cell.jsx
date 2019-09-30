@@ -29,6 +29,7 @@ class Cell extends Component {
     value: PropTypes.object,
     selected: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
+    isTableTileSelected: PropTypes.bool,
   };
 
   /**
@@ -78,6 +79,22 @@ class Cell extends Component {
         onFocus(event);
         this.props.onSelectCell(this.props.row, this.props.cell);
       };
+    }
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  componentWillReceiveProps(nextProps) {
+    if (
+      nextProps.isTableTileSelected !== this.props.isTableTileSelected &&
+      this.props.cell === 0 &&
+      this.props.row === 0
+    ) {
+      this.node.focus();
     }
   }
 

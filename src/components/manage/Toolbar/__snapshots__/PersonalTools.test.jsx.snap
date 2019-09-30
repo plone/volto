@@ -92,7 +92,9 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
           aria-label="Profile"
           onClick={[Function]}
         >
-          Profile
+          <span>
+            Profile
+          </span>
           <svg
             className="icon"
             dangerouslySetInnerHTML={
@@ -118,7 +120,9 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
           aria-label="Preferences"
           onClick={[Function]}
         >
-          Preferences
+          <span>
+            Preferences
+          </span>
           <svg
             className="icon"
             dangerouslySetInnerHTML={
@@ -144,7 +148,9 @@ exports[`Toolbar Personal Tools component renders an Toolbar Personal Tools comp
           href="/controlpanel"
           onClick={[Function]}
         >
-          Site Setup
+          <span>
+            Site Setup
+          </span>
           <svg
             className="icon"
             dangerouslySetInnerHTML={

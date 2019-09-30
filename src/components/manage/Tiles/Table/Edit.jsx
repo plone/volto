@@ -521,12 +521,7 @@ class Edit extends Component {
     }
 
     return (
-      <div
-        role="presentation"
-        onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={cx('tile text', { selected: this.props.selected })}
-        ref={node => (this.ref = node)}
-      >
+      <div className={cx('tile text', { selected: this.props.selected })}>
         {this.props.selected && (
           <div className="toolbar">
             <Button.Group>
@@ -646,6 +641,7 @@ class Edit extends Component {
                           rowIndex === this.state.selected.row &&
                           cellIndex === this.state.selected.cell
                         }
+                        isTableTileSelected={this.props.selected}
                         onChange={this.onChangeCell}
                       />
                     </Table.Cell>
