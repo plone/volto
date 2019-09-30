@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-09-22T14:53:39.933Z\n"
+"POT-Creation-Date: 2019-09-27T18:53:38.531Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -12,6 +12,16 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: ADD NEW GROUP
+msgid "ADD NEW GROUP"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: ADD NEW USER
+msgid "ADD NEW USER"
+msgstr ""
 
 #: components/theme/Footer/Footer
 # defaultMessage: Accessibility
@@ -35,8 +45,19 @@ msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Actions
 msgid "Actions"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+# defaultMessage: Add Content...
+msgid "Add Content"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Add User
+msgid "Add User"
 msgstr ""
 
 #: components/manage/Tiles/Description/Edit
@@ -54,9 +75,19 @@ msgstr ""
 msgid "Add fieldset"
 msgstr ""
 
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Add group
+msgid "Add group"
+msgstr ""
+
 #: components/manage/Form/Form
 # defaultMessage: Add tile...
 msgid "Add tile..."
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Add to Groups
+msgid "Add to Groups"
 msgstr ""
 
 #: components/manage/Add/Add
@@ -113,6 +144,11 @@ msgstr ""
 #: components/manage/Diff/Diff
 # defaultMessage: Base
 msgid "Base"
+msgstr ""
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Block
+msgid "Block"
 msgstr ""
 
 #: components/theme/Login/Login
@@ -320,10 +356,22 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/UsersControlpanelGroups
+#: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
 #: components/theme/Comments/Comments
 # defaultMessage: Delete
 msgid "Delete"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Delete Group
+msgid "Delete Group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Delete User
+msgid "Delete User"
 msgstr ""
 
 #: components/manage/Tiles/Table/Edit
@@ -341,6 +389,7 @@ msgstr ""
 msgid "Descending"
 msgstr ""
 
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -379,9 +428,24 @@ msgstr ""
 msgid "Do you really want to delete the following items?"
 msgstr ""
 
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Do you really want to delete the group {groupname}?
+msgid "Do you really want to delete the group {groupname}?"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Do you really want to delete the user {username}?
+msgid "Do you really want to delete the user {username}?"
+msgstr ""
+
 #: components/manage/Delete/Delete
 # defaultMessage: Do you really want to delete this item?
 msgid "Do you really want to delete this item?"
+msgstr ""
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Document
+msgid "Document"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
@@ -425,6 +489,11 @@ msgstr ""
 #: components/manage/Edit/Edit
 # defaultMessage: Edit {title}
 msgid "Edit {title}"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Email
+msgid "Email"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
@@ -530,9 +599,29 @@ msgstr ""
 msgid "Full Name"
 msgstr ""
 
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Fullname
+msgid "Fullname"
+msgstr ""
+
 #: components/theme/Footer/Footer
 # defaultMessage: GNU GPL license
 msgid "GNU GPL license"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Group created
+msgid "Group created"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Groupname
+msgid "Groupname"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Groups
+msgid "Groups"
 msgstr ""
 
 #: components/manage/History/History
@@ -694,11 +783,6 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: components/manage/Sidebar/Sidebar
-# defaultMessage: Metadata
-msgid "Metadata"
-msgstr ""
-
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 # defaultMessage: Minimum length is {len}.
@@ -772,6 +856,7 @@ msgstr ""
 msgid "Origin"
 msgstr ""
 
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
 # defaultMessage: Password
 msgid "Password"
@@ -833,14 +918,23 @@ msgstr ""
 msgid "Powered by Plone & Python"
 msgstr ""
 
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Preferences
+msgid "Preferences"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Preview
 msgid "Preview"
 msgstr ""
 
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Profile
+msgid "Profile"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
-#: components/manage/Sidebar/Sidebar
 # defaultMessage: Properties
 msgid "Properties"
 msgstr ""
@@ -926,6 +1020,11 @@ msgstr ""
 msgid "Rights"
 msgstr ""
 
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Roles
+msgid "Roles"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -955,6 +1054,11 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 # defaultMessage: Search for user or group
 msgid "Search for user or group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Search group...
+msgid "Search group..."
 msgstr ""
 
 #: components/theme/Search/Search
@@ -1049,6 +1153,7 @@ msgid "Site Map"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
 msgid "Site Setup"
 msgstr ""
@@ -1064,6 +1169,7 @@ msgid "Start password reset"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 # defaultMessage: State
 msgid "State"
@@ -1086,6 +1192,7 @@ msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1168,6 +1275,7 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1229,8 +1337,18 @@ msgid "Used for programmatic access to the fieldset."
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: User created
+msgid "User created"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: User name
 msgid "User name"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Username
+msgid "Username"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -1261,6 +1379,11 @@ msgstr ""
 #: components/manage/History/History
 # defaultMessage: View this revision
 msgid "View this revision"
+msgstr ""
+
+#: components/manage/Display/Display
+# defaultMessage: View
+msgid "Viewmode"
 msgstr ""
 
 #: components/theme/NotFound/NotFound

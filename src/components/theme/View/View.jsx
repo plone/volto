@@ -212,6 +212,7 @@ class View extends Component {
 
     return (
       <div id="view">
+        {/* Body class if displayName in component is set */}
         <BodyClass
           className={
             RenderedView.displayName
@@ -219,6 +220,15 @@ class View extends Component {
               : null
           }
         />
+
+        {/* Body class depending on content type */}
+        {this.props.content && this.props.content['@type'] && (
+          <BodyClass
+            className={`contenttype-${this.props.content['@type']
+              .replace(' ', '-')
+              .toLowerCase()}`}
+          />
+        )}
 
         <RenderedView
           content={this.props.content}

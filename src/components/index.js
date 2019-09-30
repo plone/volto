@@ -50,8 +50,10 @@ export Controlpanel from '@plone/volto/components/manage/Controlpanels/Controlpa
 export Controlpanels from '@plone/volto/components/manage/Controlpanels/Controlpanels';
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
 export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/UsersControlpanel';
+export UsersControlpanelGroups from '@plone/volto/components/manage/Controlpanels/UsersControlpanelGroups';
 export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';
 export Delete from '@plone/volto/components/manage/Delete/Delete';
+export UsersControlpanelUser from '@plone/volto/components/manage/Controlpanels/UsersControlpanelUser';
 export Diff from '@plone/volto/components/manage/Diff/Diff';
 export DiffField from '@plone/volto/components/manage/Diff/DiffField';
 export Display from '@plone/volto/components/manage/Display/Display';
