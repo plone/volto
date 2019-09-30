@@ -110,7 +110,7 @@ class Edit extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.selected && this.tileNode.current) {
+    if (this.props.selected !== nextProps.selected && this.tileNode.current) {
       this.tileNode.current.focus();
     }
   }
@@ -133,6 +133,8 @@ class Edit extends Component {
     } = this.props;
 
     const Tile = tiles.tilesConfig?.[type]?.['edit'] || null;
+    const tileHasOwnFocusManagement =
+      tiles.tilesConfig?.[type]?.['tileHasOwnFocusManagement'] || null;
 
     const hideHandler =
       this.props.data['@type'] === 'text' &&
@@ -170,19 +172,23 @@ class Edit extends Component {
             <div
               role="presentation"
               onClick={() => this.props.onSelectTile(this.props.tile)}
-              onKeyDown={e =>
-                this.props.handleKeyDown(
-                  e,
-                  this.props.index,
-                  this.props.tile,
-                  this.tileNode.current,
-                )
+              onKeyDown={
+                !tileHasOwnFocusManagement
+                  ? e =>
+                      this.props.handleKeyDown(
+                        e,
+                        this.props.index,
+                        this.props.tile,
+                        this.tileNode.current,
+                      )
+                  : null
               }
               className={cx(`tile ${type}`, { selected: this.props.selected })}
               style={{ outline: 'none' }}
               ref={this.tileNode}
               // The tabIndex is required for the keyboard navigation
-              tabIndex={-1}
+              /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+              tabIndex={!tileHasOwnFocusManagement ? -1 : null}
             >
               <Tile {...this.props} tileNode={this.tileNode} />
             </div>

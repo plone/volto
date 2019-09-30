@@ -127,6 +127,7 @@ const tilesConfig = {
     edit: EditTextTile,
     restricted: false,
     mostUsed: false,
+    tileHasOwnFocusManagement: true,
     security: {
       addPermission: [],
       view: [],
