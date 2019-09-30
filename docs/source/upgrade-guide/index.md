@@ -39,6 +39,7 @@ const defaultTiles = {
     edit: EditTitleTile, // The edit mode component
     restricted: false, // If the tile is restricted, it won't show in menus
     mostUsed: false, // A meta group `most used`, appearing at the top
+    tileHasOwnFocusManagement: false, // Set this to true if the tile manages its own focus
     security: {
       addPermission: [], // Future proof (not implemented yet) add permission role(s)
       view: [], // Future proof (not implemented yet) view role(s)
@@ -70,52 +71,52 @@ The edit tile wrapper boilerplate was quite big, and for bootstrap an edit tile 
 In order to upgrade your tiles you should simplify the outter `<div>` (took as example the Title tile):
 
 ``` diff
---- a/src/components/manage/Tiles/Text/Edit.jsx
-+++ b/src/components/manage/Tiles/Text/Edit.jsx
-@@ -12,7 +12,6 @@ import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
- import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
- import { defineMessages, injectIntl, intlShape } from 'react-intl';
- import { includes, isEqual } from 'lodash';
--import cx from 'classnames';
-
- import { settings } from '~/config';
-
-@@ -159,7 +158,11 @@ class Edit extends Component {
-     this.setState(state => ({ addNewTileOpened: !state.addNewTileOpened }));
-
-   handleClickOutside = e => {
--    if (this.ref && doesNodeContainClick(this.ref, e)) return;
-+    if (
-+      this.props.tileNode.current &&
-+      doesNodeContainClick(this.props.tileNode.current, e)
-+    )
-+      return;
-     this.setState(() => ({
-       addNewTileOpened: false,
-     }));
-@@ -178,12 +181,7 @@ class Edit extends Component {
-     const { InlineToolbar } = this.state.inlineToolbarPlugin;
-
+--- a/src/components/manage/Tiles/Title/Edit.jsx
++++ b/src/components/manage/Tiles/Title/Edit.jsx
+@@ -138,11 +138,7 @@ class Edit extends Component {
+       return <div />;
+     }
      return (
 -      <div
 -        role="presentation"
 -        onClick={() => this.props.onSelectTile(this.props.tile)}
--        className={cx('tile text', { selected: this.props.selected })}
--        ref={node => (this.ref = node)}
+-        className={cx('tile title', { selected: this.props.selected })}
 -      >
 +      <>
          <Editor
            onChange={this.onChange}
            editorState={this.state.editorState}
-@@ -268,7 +266,7 @@ class Edit extends Component {
-             currentTile={this.props.tile}
-           />
-         )}
+@@ -185,7 +181,7 @@ class Edit extends Component {
+             this.node = node;
+           }}
+         />
 -      </div>
 +      </>
      );
    }
  }
+```
+
+The tiles engine now takes care for the keyboard navigation of the tiles, so you need to remove the outter `<div>` from your custom tile, then your tile doesn't have to react to the change on `this.props.selected` either, because it's also something that the tiles engine already does for you.
+
+The focus management is also transferred to the engine, so no needed for your tile to manage the focus. However, if your tile does indeed require to manage its own focus, then you should mark it with the `tileHasOwnFocusManagement` property in the tiles configuration object:
+
+``` js hl_lines="10"
+    text: {
+      id: 'text',
+      title: 'Text',
+      icon: textSVG,
+      group: 'text',
+      view: ViewTextTile,
+      edit: EditTextTile,
+      restricted: false,
+      mostUsed: false,
+      tileHasOwnFocusManagement: true,
+      security: {
+        addPermission: [],
+        view: [],
+      },
+    },
 ```
 
 ## Upgrading to Volto 3.x

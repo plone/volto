@@ -4,6 +4,8 @@
 
 ### Added
 
+- Transfer focus management and keyboard navigation to the tiles engine @sneridagh
+
 ### Changes
 
 ## 4.0.0-alpha.5 (2019-09-28)
