@@ -33,6 +33,7 @@
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
     "test:ci": "CI=true razzle test --env=jsdom",
+    "test:husky": "CI=true yarn test --bail --findRelatedTests",
     "start:prod": "NODE_ENV=production node build/server.js",
     "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
@@ -135,9 +136,17 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --single-quote --write",
-      "git add"
+    "src/**/*.{js,jsx,ts,tsx,json,md}": [
+      "npx eslint --fix",
+      "npx prettier --single-quote --write",
+      "git add",
+      "yarn test:husky"
+    ],
+    "theme/**/*.{css,less,overrides}": [
+      "npx prettier-stylelint"
+    ],
+    "src/**/*.{css,less,overrides}": [
+      "npx prettier-stylelint"
     ]
   },
   "engines": {
