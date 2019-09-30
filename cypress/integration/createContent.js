@@ -37,7 +37,7 @@ if (Cypress.env('API') !== 'guillotina') {
       );
       // cy.get('.view-wrapper a').click();
     });
-    it.only('Create Image', function() {
+    it('Create Image', function() {
       cy.createContent('Image', 'my-image', 'My Image');
       cy.visit('/my-image');
       cy.get('.documentFirstHeading').should('have.text', 'My Image');
