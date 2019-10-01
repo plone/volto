@@ -5,6 +5,7 @@
 ### Added
 
 - Add CSS class names to block chooser @timo
+- Add Cypress tests for blocks @timo @rodrigo @jakahl
 
 ### Changes
 
@@ -23,7 +24,6 @@
 
 - Add complete husky config @sneridagh
 - Add COC.md file @timo
-- Add Cypress tests for blocks @timo @rodrigo @jakahl
 
 ## 4.0.0-alpha.5 (2019-09-28)
 
