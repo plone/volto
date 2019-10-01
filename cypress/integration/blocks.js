@@ -77,31 +77,31 @@ if (Cypress.env('API') !== 'guillotina') {
     //   });
     // });
 
-    // it('Add video block', () => {
-    //   const tile = 'video';
-    //   const expected = 'https://www.youtube.com/watch?v=QmkD2vLGA6Y';
+    it('Add video block', () => {
+      // Add video block
+      cy.get('.tile.text [contenteditable]').click();
+      cy.get('button.tile-add-button').click();
+      cy.get('.tiles-chooser .title')
+        .contains('media')
+        .click();
+      cy.get('.tiles-chooser .media')
+        .contains('video')
+        .click();
 
-    //   // Edit
-    //   cy.get('.tile.text [contenteditable]').click();
-    //   cy.get('button.tile-add-button').click();
-    //   cy.get('.tiles-chooser .title')
-    //     .contains('media')
-    //     .click();
-    //   cy.get('.content.active.tiles-list .ui.buttons:nth-child(2)').click();
-    //   cy.get(`.tile.${tile} .toolbar .ui.input input`)
-    //     .type(expected)
-    //     .type('{enter}');
+      // Add YouTube URL to video block
+      cy.get(`.tile.video .toolbar .ui.input input`)
+        .type('https://www.youtube.com/watch?v=QmkD2vLGA6Y')
+        .type('{enter}');
 
-    //   cy.get(`.tile.${tile} iframe`)
-    //     .should('have.attr', 'src')
-    //     .should('include', 'youtube');
+      // Save
+      cy.get('#toolbar-save').click();
 
-    //   cy.get('#toolbar-save').click();
-
-    //   cy.get('#page-document iframe')
-    //     .should('have.attr', 'src')
-    //     .should('include', 'youtube');
-    // });
+      // Check if YouTube iframe is present
+      cy.get('#page-document iframe')
+        .should('have.attr', 'src')
+        .should('include', 'youtube.com')
+        .should('include', 'watch?v=QmkD2vLGA6Y');
+    });
 
     // it('Add hero block', () => {
     //   // TODO: Implement react dropzone for this tile to test the image
