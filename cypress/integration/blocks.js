@@ -150,7 +150,7 @@ if (Cypress.env('API') !== 'guillotina') {
     //   }
     // });
 
-    it.only('Add maps block', () => {
+    it('Add maps block', () => {
       // Add maps block
       cy.get('.tile.text [contenteditable]').click();
       cy.get('button.tile-add-button').click();
