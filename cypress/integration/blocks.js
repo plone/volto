@@ -168,39 +168,39 @@ if (Cypress.env('API') !== 'guillotina') {
         )
         .type('{enter}');
 
+      // Save
       cy.get('#toolbar-save').click();
 
+      // Check if Google maps shows up in the page view
       cy.get('#page-document iframe')
         .should('have.attr', 'src')
         .should('include', 'maps');
     });
 
-    // it('Add HTML block', () => {
-    //   const tile = 'html';
-    //   const expected = 'This is the html';
+    it('Add HTML block', () => {
+      // Add HTML block
+      cy.get('.tile.text [contenteditable]').click();
+      cy.get('button.tile-add-button').click();
+      cy.get('.tiles-chooser .title')
+        .contains('common')
+        .click();
+      cy.get('.tiles-chooser .common')
+        .contains('html')
+        .click();
 
-    //   // Edit
-    //   cy.get('.tile.text [contenteditable]').click();
-    //   cy.get('button.tile-add-button').click();
-    //   cy.get('button.show-hidden-tiles').click();
-    //   cy.get(`button.add-${tile}-tile`).click();
-    //   cy.get(`.tile.${tile} .npm__react-simple-code-editor__textarea`).type(
-    //     `<h3>${expected}</h3>`,
-    //   );
-    //   cy.get(`.tile.${tile} [aria-label="Preview"]`).click();
-    //   cy.get(`.tile.${tile} h3`).contains(expected);
+      // Add HTML
+      cy.get(`.tile.html .npm__react-simple-code-editor__textarea`).type(
+        `<pre>This is html</pre>`,
+      );
+      cy.get(`.tile.html [aria-label="Preview"]`).click();
+      cy.get(`.tile.html pre`).contains('This is html');
 
-    //   // Save
-    //   cy.get('#toolbar-save').click();
+      // Save
+      cy.get('#toolbar-save').click();
 
-    //   // View
-    //   if (Cypress.env('API') === 'plone') {
-    //     cy.get('#page-document h3').should('have.text', expected);
-    //   } else {
-    //     // guillotina
-    //     cy.contains(expected);
-    //   }
-    // });
+      // Check if HTML is present in the page view
+      cy.get('#page-document pre').should('have.text', 'This is html');
+    });
 
     // it('Add table block', () => {
     //   // TODO: Figure out why there is an erro when add this tile in cypress
