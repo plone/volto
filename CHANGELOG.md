@@ -6,7 +6,16 @@
 
 ### Changes
 
+## 4.0.0-alpha.6 (2019-09-30)
+
+### Added
+
+- Transfer focus management and keyboard navigation to the tiles engine @sneridagh
+
+### Changes
+
 - Slight amendment to Blocks chooser styling @sneridagh
+- The default view for content types `DocumentView.jsx` has been renamed to a more appropiate `DefaultView.jsx` @sneridagh
 
 ### Internal
 

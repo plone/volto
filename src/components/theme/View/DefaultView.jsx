@@ -1,11 +1,13 @@
 /**
  * Document view component.
- * @module components/theme/View/DocumentView
+ * @module components/theme/View/DefaultView
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import { injectIntl, intlShape } from 'react-intl';
+
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 
@@ -18,12 +20,12 @@ import {
 } from '../../../helpers';
 
 /**
- * Component to display the document view.
- * @function DocumentView
+ * Component to display the default view.
+ * @function DefaultView
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-const DocumentView = ({ content }) => {
+const DefaultView = ({ content, intl }) => {
   const tilesFieldname = getTilesFieldname(content);
   const tilesLayoutFieldname = getTilesLayoutFieldname(content);
 
@@ -31,9 +33,10 @@ const DocumentView = ({ content }) => {
     <div id="page-document" className="ui wrapper">
       <Helmet title={content.title} />
       {map(content[tilesLayoutFieldname].items, tile => {
-        let Tile = null;
-        Tile =
-          tiles.tilesConfig[content[tilesFieldname][tile]['@type']]['view'];
+        const Tile =
+          tiles.tilesConfig[(content[tilesFieldname]?.[tile]?.['@type'])]?.[
+            'view'
+          ] || null;
         return Tile !== null ? (
           <Tile
             key={tile}
@@ -41,7 +44,12 @@ const DocumentView = ({ content }) => {
             data={content[tilesFieldname][tile]}
           />
         ) : (
-          <div>{JSON.stringify(content[tilesFieldname][tile]['@type'])}</div>
+          <div>
+            {intl.formatMessage({
+              id: 'Unknown Tile',
+              defaultMessage: 'Unknown Tile',
+            })}
+          </div>
         );
       })}
     </div>
@@ -84,7 +92,7 @@ const DocumentView = ({ content }) => {
  * @property {Object} propTypes Property types.
  * @static
  */
-DocumentView.propTypes = {
+DefaultView.propTypes = {
   /**
    * Content of the object
    */
@@ -107,6 +115,7 @@ DocumentView.propTypes = {
       data: PropTypes.string,
     }),
   }).isRequired,
+  intl: intlShape.isRequired,
 };
 
-export default DocumentView;
+export default injectIntl(DefaultView);

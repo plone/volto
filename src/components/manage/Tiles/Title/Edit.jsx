@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import cx from 'classnames';
 
 const messages = defineMessages({
   title: {
@@ -138,50 +137,48 @@ class Edit extends Component {
       return <div />;
     }
     return (
-      <div className={cx('tile title', { selected: this.props.selected })}>
-        <Editor
-          onChange={this.onChange}
-          editorState={this.state.editorState}
-          blockRenderMap={extendedBlockRenderMap}
-          handleReturn={() => {
-            this.props.onSelectTile(
-              this.props.onAddTile('text', this.props.index + 1),
-            );
-            return 'handled';
-          }}
-          placeholder={this.props.intl.formatMessage(messages.title)}
-          blockStyleFn={() => 'documentFirstHeading'}
-          onUpArrow={() => {
-            const selectionState = this.state.editorState.getSelection();
-            const { editorState } = this.state;
-            if (
-              editorState
-                .getCurrentContent()
-                .getBlockMap()
-                .first()
-                .getKey() === selectionState.getFocusKey()
-            ) {
-              this.props.onFocusPreviousTile(this.props.tile, this.node);
-            }
-          }}
-          onDownArrow={() => {
-            const selectionState = this.state.editorState.getSelection();
-            const { editorState } = this.state;
-            if (
-              editorState
-                .getCurrentContent()
-                .getBlockMap()
-                .last()
-                .getKey() === selectionState.getFocusKey()
-            ) {
-              this.props.onFocusNextTile(this.props.tile, this.node);
-            }
-          }}
-          ref={node => {
-            this.node = node;
-          }}
-        />
-      </div>
+      <Editor
+        onChange={this.onChange}
+        editorState={this.state.editorState}
+        blockRenderMap={extendedBlockRenderMap}
+        handleReturn={() => {
+          this.props.onSelectTile(
+            this.props.onAddTile('text', this.props.index + 1),
+          );
+          return 'handled';
+        }}
+        placeholder={this.props.intl.formatMessage(messages.title)}
+        blockStyleFn={() => 'documentFirstHeading'}
+        onUpArrow={() => {
+          const selectionState = this.state.editorState.getSelection();
+          const { editorState } = this.state;
+          if (
+            editorState
+              .getCurrentContent()
+              .getBlockMap()
+              .first()
+              .getKey() === selectionState.getFocusKey()
+          ) {
+            this.props.onFocusPreviousTile(this.props.tile, this.node);
+          }
+        }}
+        onDownArrow={() => {
+          const selectionState = this.state.editorState.getSelection();
+          const { editorState } = this.state;
+          if (
+            editorState
+              .getCurrentContent()
+              .getBlockMap()
+              .last()
+              .getKey() === selectionState.getFocusKey()
+          ) {
+            this.props.onFocusNextTile(this.props.tile, this.node);
+          }
+        }}
+        ref={node => {
+          this.node = node;
+        }}
+      />
     );
   }
 }

@@ -71,17 +71,6 @@ class Edit extends Component {
   };
 
   /**
-   * Component did mount
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    if (this.props.selected) {
-      this.props.tileNode.current.focus();
-    }
-  }
-
-  /**
    * Component will receive props
    * @method componentWillReceiveProps
    * @param {Object} nextProps Next properties
@@ -100,10 +89,6 @@ class Edit extends Component {
         ...this.props.data,
         url: nextProps.content['@id'],
       });
-    }
-
-    if (nextProps.selected) {
-      this.props.tileNode.current.focus();
     }
   }
 
@@ -230,7 +215,7 @@ class Edit extends Component {
         className={cx(
           'tile image align',
           {
-            selected: this.props.selected,
+            // selected: this.props.selected,
             center: !Boolean(this.props.data.align),
           },
           this.props.data.align,
