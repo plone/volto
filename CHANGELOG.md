@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add CSS class names to block chooser @timo
+
 ### Changes
 
 ## 4.0.0-alpha.6 (2019-09-30)

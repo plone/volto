@@ -46,7 +46,7 @@ const TileChooser = ({ currentTile, onMutateTile, intl }) => {
               </div>
             </Accordion.Title>
             <Accordion.Content
-              className="tiles-list"
+              className={groupName.id}
               active={activeIndex === index}
             >
               <AnimateHeight
@@ -64,6 +64,7 @@ const TileChooser = ({ currentTile, onMutateTile, intl }) => {
                       <Button
                         icon
                         basic
+                        className={tile.id}
                         onClick={() =>
                           onMutateTile(currentTile, { '@type': tile.id })
                         }

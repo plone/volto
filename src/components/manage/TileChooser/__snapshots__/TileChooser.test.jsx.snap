@@ -36,7 +36,7 @@ exports[`renders a TileChooser component 1`] = `
       </div>
     </div>
     <div
-      className="content active tiles-list"
+      className="content active mostUsed"
     >
       <div
         aria-hidden={false}
@@ -60,7 +60,7 @@ exports[`renders a TileChooser component 1`] = `
             className="ui buttons"
           >
             <button
-              className="ui basic icon button"
+              className="ui basic icon button image"
               onClick={[Function]}
             >
               <svg
@@ -88,7 +88,7 @@ exports[`renders a TileChooser component 1`] = `
             className="ui buttons"
           >
             <button
-              className="ui basic icon button"
+              className="ui basic icon button video"
               onClick={[Function]}
             >
               <svg
@@ -144,7 +144,7 @@ exports[`renders a TileChooser component 1`] = `
       </div>
     </div>
     <div
-      className="content tiles-list"
+      className="content text"
     >
       <div
         aria-hidden={true}
@@ -169,7 +169,7 @@ exports[`renders a TileChooser component 1`] = `
             className="ui buttons"
           >
             <button
-              className="ui basic icon button"
+              className="ui basic icon button text"
               onClick={[Function]}
             >
               <svg
@@ -225,7 +225,7 @@ exports[`renders a TileChooser component 1`] = `
       </div>
     </div>
     <div
-      className="content tiles-list"
+      className="content media"
     >
       <div
         aria-hidden={true}
@@ -250,7 +250,7 @@ exports[`renders a TileChooser component 1`] = `
             className="ui buttons"
           >
             <button
-              className="ui basic icon button"
+              className="ui basic icon button image"
               onClick={[Function]}
             >
               <svg
@@ -278,7 +278,7 @@ exports[`renders a TileChooser component 1`] = `
             className="ui buttons"
           >
             <button
-              className="ui basic icon button"
+              className="ui basic icon button video"
               onClick={[Function]}
             >
               <svg
@@ -334,7 +334,7 @@ exports[`renders a TileChooser component 1`] = `
       </div>
     </div>
     <div
-      className="content tiles-list"
+      className="content common"
     >
       <div
         aria-hidden={true}
@@ -359,7 +359,7 @@ exports[`renders a TileChooser component 1`] = `
             className="ui buttons"
           >
             <button
-              className="ui basic icon button"
+              className="ui basic icon button hero"
               onClick={[Function]}
             >
               <svg
@@ -387,7 +387,7 @@ exports[`renders a TileChooser component 1`] = `
             className="ui buttons"
           >
             <button
-              className="ui basic icon button"
+              className="ui basic icon button maps"
               onClick={[Function]}
             >
               <svg
@@ -415,7 +415,7 @@ exports[`renders a TileChooser component 1`] = `
             className="ui buttons"
           >
             <button
-              className="ui basic icon button"
+              className="ui basic icon button html"
               onClick={[Function]}
             >
               <svg
@@ -443,7 +443,7 @@ exports[`renders a TileChooser component 1`] = `
             className="ui buttons"
           >
             <button
-              className="ui basic icon button"
+              className="ui basic icon button table"
               onClick={[Function]}
             >
               <svg
