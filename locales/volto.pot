@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-09-27T18:53:38.531Z\n"
+"POT-Creation-Date: 2019-09-29T11:58:49.820Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -12,16 +12,6 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
-
-#: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: ADD NEW GROUP
-msgid "ADD NEW GROUP"
-msgstr ""
-
-#: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: ADD NEW USER
-msgid "ADD NEW USER"
-msgstr ""
 
 #: components/theme/Footer/Footer
 # defaultMessage: Accessibility
@@ -78,6 +68,16 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Add group
 msgid "Add group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Add new group
+msgid "Add new group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Add new user
+msgid "Add new user"
 msgstr ""
 
 #: components/manage/Form/Form

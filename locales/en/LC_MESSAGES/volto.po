@@ -11,14 +11,6 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: components/manage/Controlpanels/UsersControlpanel
-msgid "ADD NEW GROUP"
-msgstr ""
-
-#: components/manage/Controlpanels/UsersControlpanel
-msgid "ADD NEW USER"
-msgstr ""
-
 #: components/theme/Footer/Footer
 msgid "Accessibility"
 msgstr ""
@@ -63,6 +55,14 @@ msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add new group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add new user"
 msgstr ""
 
 #: components/manage/Form/Form

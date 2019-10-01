@@ -83,12 +83,12 @@ const messages = defineMessages({
     defaultMessage: 'Delete Group',
   },
   addUserButtonTitle: {
-    id: 'ADD NEW USER',
-    defaultMessage: 'ADD NEW USER',
+    id: 'Add new user',
+    defaultMessage: 'Add new user',
   },
   addGroupsButtonTitle: {
-    id: 'ADD NEW GROUP',
-    defaultMessage: 'ADD NEW GROUP',
+    id: 'Add new group',
+    defaultMessage: 'Add new group',
   },
   addUserFormTitle: {
     id: 'Add User',

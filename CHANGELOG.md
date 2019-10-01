@@ -4,6 +4,8 @@
 
 ### Added
 
+- Added Users and Groups Controlpanel @nileshgulia1 @csenger
+- Small fixes to i18n strings and gitignore @nileshgulia1
 ### Changes
 
 - Fix page jump on edit route @sneridagh
