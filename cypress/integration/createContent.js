@@ -47,7 +47,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.view-wrapper img').should('have.attr', 'alt', 'My Image');
       // cy.get('.view-wrapper a').click();
     });
-    it.only('Create image', function() {
+    it('Create image', function() {
       cy.autologin();
       cy.createContent('Image', 'my-image', 'My Image');
       cy.visit('/my-image');
