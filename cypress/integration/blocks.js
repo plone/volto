@@ -99,8 +99,7 @@ if (Cypress.env('API') !== 'guillotina') {
       // Check if YouTube iframe is present
       cy.get('#page-document iframe')
         .should('have.attr', 'src')
-        .should('include', 'youtube.com')
-        .should('include', 'watch?v=QmkD2vLGA6Y');
+        .should('include', 'youtube.com/embed/QmkD2vLGA6Y');
     });
 
     // it('Add hero block', () => {
