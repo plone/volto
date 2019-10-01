@@ -18,6 +18,7 @@ import trim from 'lodash/trim';
 import cx from 'classnames';
 
 import Error from '../../../error';
+import { nonContentRoutes } from '../../../config/NonContentRoutes';
 
 import {
   Breadcrumbs,
@@ -59,6 +60,22 @@ class App extends Component {
     error: null,
     errorInfo: null,
   };
+
+  /**
+   * Constructor
+   * @param {Object} props components props
+   */
+  // constructor(props) {
+  //   super(props);
+  //   if (props.token) {
+  //     import(
+  //       /* webpackMode: 'eager' */ '../../../../theme/themes/pastanaga/extras/backend.less'
+  //     );
+  //     import(
+  //       /* webpackMode: 'eager' */ '../../../../theme/themes/pastanaga/extras/extras.less'
+  //     );
+  //   }
+  // }
 
   /**
    * ComponentDidMount
@@ -110,6 +127,15 @@ class App extends Component {
   render() {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
+    const fullPath = this.props.pathname.replace(/\?.*$/, '');
+    const isBackend = nonContentRoutes.reduce(
+      (acc, route) => acc || new RegExp(route).test(`/${fullPath}`),
+      false,
+    );
+    // ATTENZIONE:
+    // non funziona bene per le pagine che si chiamano /editoria e simili
+    // perché il test non ne tiene conto
+    // https://github.com/plone/volto/issues/870
 
     return (
       <Fragment>
@@ -121,9 +147,12 @@ class App extends Component {
             [trim(join(split(this.props.pathname, '/'), ' section-'))]:
               this.props.pathname !== '/',
             siteroot: this.props.pathname === '/',
+            'is-authenticated': !!this.props.token,
+            'is-anonymous': !this.props.token,
+            backend: isBackend,
+            frontend: !isBackend,
           })}
         />
-
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
         <Segment basic className="content-area">
@@ -159,7 +188,10 @@ class App extends Component {
 }
 
 export const __test__ = connect(
-  (state, props) => ({ pathname: props.location.pathname }),
+  (state, props) => ({
+    pathname: props.location.pathname,
+    token: state.userSession.token,
+  }),
   { purgeMessages },
 )(App);
 
@@ -192,7 +224,10 @@ export default compose(
     },
   ]),
   connect(
-    (state, props) => ({ pathname: props.location.pathname }),
+    (state, props) => ({
+      pathname: props.location.pathname,
+      token: state.userSession.token,
+    }),
     { purgeMessages },
   ),
 )(App);

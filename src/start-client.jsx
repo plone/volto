@@ -10,7 +10,8 @@ import enLocaleData from 'react-intl/locale-data/en';
 import { addLocaleData } from 'react-intl';
 import routes from '~/routes';
 
-import 'semantic-ui-less/semantic.less';
+import '../theme/themes/pastanaga-backend/extras/backend.semantic.less';
+// import 'semantic-ui-less/semantic.less';
 import '../theme/themes/pastanaga/extras/extras.less';
 
 import configureStore from './store';

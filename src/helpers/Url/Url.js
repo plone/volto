@@ -40,6 +40,7 @@ export function getView(url) {
       'diff',
       'history',
       'sharing',
+      'controlpanel',
     ].indexOf(view) === -1
   ) {
     return 'view';
