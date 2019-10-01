@@ -547,25 +547,26 @@ class Form extends Component {
             onSubmit={this.onSubmit}
             error={keys(this.state.errors).length > 0}
           >
-            {map(schema.fieldsets, item => [
-              <Segment secondary attached key={item.title}>
-                {item.title}
-              </Segment>,
-              <Segment attached key={`fieldset-contents-${item.title}`}>
-                {map(item.fields, (field, index) => (
-                  <Field
-                    {...schema.properties[field]}
-                    id={field}
-                    focus={index === 0}
-                    value={this.state.formData[field]}
-                    required={schema.required.indexOf(field) !== -1}
-                    onChange={this.onChangeField}
-                    key={field}
-                    error={this.state.errors[field]}
-                  />
-                ))}
-              </Segment>,
-            ])}
+            {schema &&
+              map(schema.fieldsets, item => [
+                <Segment secondary attached key={item.title}>
+                  {item.title}
+                </Segment>,
+                <Segment attached key={`fieldset-contents-${item.title}`}>
+                  {map(item.fields, (field, index) => (
+                    <Field
+                      {...schema.properties[field]}
+                      id={field}
+                      focus={index === 0}
+                      value={this.state.formData[field]}
+                      required={schema.required.indexOf(field) !== -1}
+                      onChange={this.onChangeField}
+                      key={field}
+                      error={this.state.errors[field]}
+                    />
+                  ))}
+                </Segment>,
+              ])}
           </UiForm>
         </Portal>
       </div>

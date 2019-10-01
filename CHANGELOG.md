@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix page jump on edit route @sneridagh
+
 ## 4.0.0-alpha.6 (2019-09-30)
 
 ### Added
