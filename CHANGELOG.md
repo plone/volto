@@ -12,6 +12,10 @@
 - Fix page jump on edit route @sneridagh
 - Fixes to users and groups controlpanel i18n strings @nileshgulia1
 
+### Internal
+
+- Change the general naming of the documentation to `developer` documentation @sneridagh
+
 ## 4.0.0-alpha.6 (2019-09-30)
 
 ### Added
