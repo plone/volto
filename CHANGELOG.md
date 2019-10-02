@@ -4,6 +4,9 @@
 
 ### Added
 
+- Add CSS class names to block chooser @timo
+- Add Cypress tests for blocks @timo @rodrigo @jakahl
+
 ### Changes
 
 - Fix page jump on edit route @sneridagh

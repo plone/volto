@@ -87,4 +87,9 @@ start-test: ## Start Test
 	@echo "$(GREEN)==> Start Test$(RESET)"
 	yarn cypress:open
 
+.PHONY: start-test-all
+start-test-all: ## Start Test
+	@echo "$(GREEN)==> Start Test$(RESET)"
+	yarn ci:cypress:run
+
 .PHONY: all start test-acceptance
