@@ -15,6 +15,7 @@
 ### Internal
 
 - Change the general naming of the documentation to `developer` documentation @sneridagh
+- Add `blockID` prop to block tiles render view, this is handy for some blocks use cases @sneridagh
 
 ## 4.0.0-alpha.6 (2019-09-30)
 
