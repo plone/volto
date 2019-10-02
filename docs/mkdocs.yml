@@ -1,4 +1,4 @@
-site_name: Volto documentation
+site_name: Volto developer documentation
 docs_dir: ./source
 site_dir: ./build
 repo_url: 'https://github.com/plone/volto'
