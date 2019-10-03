@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -76,7 +76,6 @@ class Register extends Component {
     error: PropTypes.shape({
       message: PropTypes.string,
     }),
-    intl: intlShape.isRequired,
   };
 
   /**

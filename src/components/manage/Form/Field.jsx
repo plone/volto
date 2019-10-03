@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
 import { settings, widgets } from '~/config';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
 /**
  * Get default widget
@@ -180,7 +180,6 @@ Field.propTypes = {
   id: PropTypes.string.isRequired,
   focus: PropTypes.bool,
   onOrder: PropTypes.func,
-  intl: intlShape.isRequired,
 };
 
 /**

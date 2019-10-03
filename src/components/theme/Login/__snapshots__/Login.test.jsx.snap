@@ -18,16 +18,12 @@ exports[`Login renders a login component 1`] = `
         <div
           className="ui segment primary"
         >
-          <span>
-            Login Name
-          </span>
+          Login Name
         </div>
         <div
           className="ui secondary segment"
         >
-          <span>
-            Sign in to start session
-          </span>
+          Sign in to start session
         </div>
         <div
           className="ui segment form"
@@ -50,9 +46,7 @@ exports[`Login renders a login component 1`] = `
                     <label
                       htmlFor="login"
                     >
-                      <span>
-                        Login Name
-                      </span>
+                      Login Name
                     </label>
                   </div>
                 </div>
@@ -82,19 +76,15 @@ exports[`Login renders a login component 1`] = `
                   <p
                     className="help"
                   >
-                    <span>
-                      If you you do not have an account here, head over to the 
-                      <a
-                        href="/register"
-                        onClick={[Function]}
-                        tabIndex={1}
-                      >
-                        <span>
-                          registration form
-                        </span>
-                      </a>
-                      .
-                    </span>
+                    If you you do not have an account here, head over to the 
+                    <a
+                      href="/register"
+                      onClick={[Function]}
+                      tabIndex={1}
+                    >
+                      registration form
+                    </a>
+                    .
                   </p>
                 </div>
               </div>
@@ -118,9 +108,7 @@ exports[`Login renders a login component 1`] = `
                     <label
                       htmlFor="password"
                     >
-                      <span>
-                        Password
-                      </span>
+                      Password
                     </label>
                   </div>
                 </div>
@@ -150,17 +138,13 @@ exports[`Login renders a login component 1`] = `
                   <p
                     className="help"
                   >
-                    <span>
-                      If you have forgotten your password, 
-                      <a
-                        href="/password-reset"
-                        onClick={[Function]}
-                      >
-                        <span>
-                          we can send you a new one
-                        </span>
-                      </a>
-                    </span>
+                    If you have forgotten your password, 
+                    <a
+                      href="/password-reset"
+                      onClick={[Function]}
+                    >
+                      we can send you a new one
+                    </a>
                   </p>
                 </div>
               </div>

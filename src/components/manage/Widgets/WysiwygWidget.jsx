@@ -13,7 +13,7 @@ import redraft from 'redraft';
 import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
 import { settings } from '~/config';
 
@@ -108,7 +108,6 @@ class WysiwygWidget extends Component {
     /**
      * Internationalization
      */
-    intl: intlShape.isRequired,
   };
 
   /**

@@ -3,12 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import {
-  defineMessages,
-  FormattedMessage,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Segment } from 'semantic-ui-react';
 import { join } from 'lodash';
 import { searchContent } from '@plone/volto/actions';
@@ -67,7 +62,6 @@ class ObjectBrowserBody extends Component {
     searchContent: PropTypes.func.isRequired,
     closeObjectBrowser: PropTypes.func.isRequired,
     onChangeTile: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**

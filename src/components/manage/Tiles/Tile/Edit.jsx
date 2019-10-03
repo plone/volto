@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { tiles } from '~/config';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
@@ -100,7 +100,6 @@ class Edit extends Component {
     id: PropTypes.string.isRequired,
     onMoveTile: PropTypes.func.isRequired,
     onDeleteTile: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   componentDidMount() {

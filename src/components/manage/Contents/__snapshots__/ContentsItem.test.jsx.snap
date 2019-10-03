@@ -83,9 +83,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
             className="write icon"
           />
            
-          <span>
-            Edit
-          </span>
+          Edit
         </a>
         <a
           className="item"
@@ -97,9 +95,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
             className="eye icon"
           />
            
-          <span>
-            View
-          </span>
+          View
         </a>
         <div
           className="divider"
@@ -114,9 +110,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
             className="cut icon"
           />
            
-          <span>
-            Cut
-          </span>
+          Cut
         </div>
         <div
           className="item"
@@ -128,9 +122,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
             className="copy icon"
           />
            
-          <span>
-            Copy
-          </span>
+          Copy
         </div>
         <div
           className="item"
@@ -142,9 +134,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
             className="trash icon"
           />
            
-          <span>
-            Delete
-          </span>
+          Delete
         </div>
         <div
           className="divider"
@@ -159,9 +149,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
             className="arrow up icon"
           />
            
-          <span>
-            Move to top of folder
-          </span>
+          Move to top of folder
         </div>
         <div
           className="item"
@@ -173,9 +161,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
             className="arrow down icon"
           />
            
-          <span>
-            Move to bottom of folder
-          </span>
+          Move to bottom of folder
         </div>
       </div>
     </div>

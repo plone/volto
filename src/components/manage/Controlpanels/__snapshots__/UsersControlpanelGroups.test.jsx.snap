@@ -122,9 +122,7 @@ exports[`UsersControlpanelGroups renders a UsersControlpanelGroups component 1`]
             viewBox=""
             xmlns=""
           />
-          <span>
-            Delete
-          </span>
+          Delete
         </div>
       </div>
     </div>

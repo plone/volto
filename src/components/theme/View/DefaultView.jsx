@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
@@ -116,7 +116,6 @@ DefaultView.propTypes = {
       data: PropTypes.string,
     }),
   }).isRequired,
-  intl: intlShape.isRequired,
 };
 
 export default injectIntl(DefaultView);

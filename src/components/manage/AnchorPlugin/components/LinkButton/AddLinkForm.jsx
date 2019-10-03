@@ -11,7 +11,7 @@ import EditorUtils from 'draft-js-plugins-utils';
 import { connect } from 'react-redux';
 import { map } from 'lodash';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
 import { resetSearchContent, searchContent } from '../../../../../actions';
 import URLUtils from '../../utils/URLUtils';
@@ -44,7 +44,6 @@ class AddLinkForm extends Component {
         description: PropTypes.string,
       }),
     ),
-    intl: intlShape.isRequired,
   };
 
   static defaultProps = {

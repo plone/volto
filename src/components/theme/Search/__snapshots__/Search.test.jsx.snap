@@ -15,12 +15,10 @@ exports[`Search renders a search component 1`] = `
         <h1
           className="documentFirstHeading"
         >
-          <span>
-            Search results for 
-            <q>
-              blog
-            </q>
-          </span>
+          Search results for 
+          <q>
+            blog
+          </q>
         </h1>
         <div
           id="search-tags"
@@ -60,9 +58,7 @@ exports[`Search renders a search component 1`] = `
               href="/blog"
               onClick={[Function]}
             >
-              <span>
-                Read More…
-              </span>
+              Read More…
             </a>
           </div>
           <div
@@ -93,12 +89,10 @@ exports[`Search renders an empty search component 1`] = `
         <h1
           className="documentFirstHeading"
         >
-          <span>
-            Search results for 
-            <q>
-              blog
-            </q>
-          </span>
+          Search results for 
+          <q>
+            blog
+          </q>
         </h1>
         <div
           id="search-tags"

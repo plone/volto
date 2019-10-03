@@ -13,9 +13,7 @@ exports[`Delete renders a delete component 1`] = `
       <div
         className="ui segment primary"
       >
-        <span>
-          Do you really want to delete this item?
-        </span>
+        Do you really want to delete this item?
       </div>
       <div
         className="ui attached segment"

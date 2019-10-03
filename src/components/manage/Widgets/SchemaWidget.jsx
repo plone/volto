@@ -10,7 +10,7 @@ import { compose } from 'redux';
 import { concat, findIndex, map, omit, slice, without } from 'lodash';
 import move from 'lodash-move';
 import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
@@ -131,7 +131,6 @@ class SchemaWidget extends Component {
     /**
      * Intl object
      */
-    intl: intlShape.isRequired,
   };
 
   /**

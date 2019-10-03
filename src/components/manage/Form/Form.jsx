@@ -16,7 +16,7 @@ import {
   Tab,
   Message,
 } from 'semantic-ui-react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { Portal } from 'react-portal';
 
@@ -91,7 +91,6 @@ class Form extends Component {
     onCancel: PropTypes.func,
     submitLabel: PropTypes.string,
     resetAfterSubmit: PropTypes.bool,
-    intl: intlShape.isRequired,
     title: PropTypes.string,
     error: PropTypes.shape({
       message: PropTypes.string,

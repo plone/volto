@@ -13,16 +13,12 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui segment primary"
     >
-      <span>
-        Users and groups settings
-      </span>
+      Users and groups settings
     </div>
     <div
       className="ui segment"
     >
-      <span>
-        Users
-      </span>
+      Users
     </div>
     <div
       className="ui segment"
@@ -75,16 +71,12 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               <th
                 className=""
               >
-                <span>
-                  User name
-                </span>
+                User name
               </th>
               <th
                 className=""
               >
-                <span>
-                  Actions
-                </span>
+                Actions
               </th>
             </tr>
           </thead>
@@ -128,9 +120,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui segment"
     >
-      <span>
-        Groups
-      </span>
+      Groups
     </div>
     <div
       className="ui segment"
@@ -183,16 +173,12 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               <th
                 className=""
               >
-                <span>
-                  Groupname
-                </span>
+                Groupname
               </th>
               <th
                 className=""
               >
-                <span>
-                  Actions
-                </span>
+                Actions
               </th>
             </tr>
           </thead>

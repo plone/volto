@@ -4,6 +4,8 @@
 
 ### Added
 
+- Upgrade react-intl to latest version @sneridagh
+
 ### Changes
 
 ## 4.0.0-alpha.7 (2019-10-02)

@@ -17,9 +17,7 @@ exports[`ModerateComments renders a moderate comments component 1`] = `
         <h1
           className="documentFirstHeading"
         >
-          <span>
-            Moderate comments
-          </span>
+          Moderate comments
         </h1>
       </header>
       <section
@@ -37,30 +35,22 @@ exports[`ModerateComments renders a moderate comments component 1`] = `
               <th
                 className=""
               >
-                <span>
-                  Commenter
-                </span>
+                Commenter
               </th>
               <th
                 className=""
               >
-                <span>
-                  Date
-                </span>
+                Date
               </th>
               <th
                 className=""
               >
-                <span>
-                  Comment
-                </span>
+                Comment
               </th>
               <th
                 className=""
               >
-                <span>
-                  Action
-                </span>
+                Action
               </th>
             </tr>
           </thead>

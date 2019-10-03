@@ -13,9 +13,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
       <div
         className="ui segment primary"
       >
-        <span>
-          Site Setup
-        </span>
+        Site Setup
       </div>
       <div
         className="ui secondary segment"
@@ -224,9 +222,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
       <div
         className="ui segment primary"
       >
-        <span>
-          Version Overview
-        </span>
+        Version Overview
       </div>
       <div
         className="ui attached segment"
