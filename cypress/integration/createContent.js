@@ -1,5 +1,5 @@
 if (Cypress.env('API') !== 'guillotina') {
-  context('createContent Acceptance Tests', () => {
+  describe('createContent Keyword Tests', () => {
     beforeEach(() => {
       cy.autologin();
     });

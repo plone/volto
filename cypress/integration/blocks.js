@@ -1,5 +1,5 @@
 if (Cypress.env('API') !== 'guillotina') {
-  describe('Test Blocks', () => {
+  describe('Add Blocks Tests', () => {
     beforeEach(() => {
       cy.autologin();
       cy.createContent('Document', 'my-page', 'My Page');

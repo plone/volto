@@ -1,5 +1,4 @@
-// Cypress/integration/a11y.spec.js
-describe('Accessibility Tests with Axe', () => {
+describe('Accessibility Tests', () => {
   beforeEach(() => {
     cy.visit('/');
     cy.injectAxe(); // make sure axe is available on the page

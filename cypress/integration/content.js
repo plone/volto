@@ -1,4 +1,4 @@
-context('Actions', () => {
+describe('Add Content Tests', () => {
   beforeEach(() => {
     cy.autologin();
   });

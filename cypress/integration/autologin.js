@@ -1,5 +1,5 @@
-context('Actions', () => {
-  it('As a site administrator I can add a page', function() {
+describe('Autologin Keyword Tests', () => {
+  it('Autologin Test', function() {
     let api_url;
     if (Cypress.env('API') === 'guillotina') {
       api_url = 'http://localhost:8081/db/container';
