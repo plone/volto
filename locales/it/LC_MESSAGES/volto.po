@@ -149,7 +149,6 @@ msgstr "Di norma, i permessi di questo elemento vengono ereditati dal contenitor
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 msgid "Cancel"
 msgstr "Annulla"
@@ -679,9 +678,7 @@ msgstr "Nuova password"
 msgid "No image selected"
 msgstr "Nessuna immagine selezionata"
 
-#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
-#: components/manage/Widgets/TokenWidget
 msgid "No results found."
 msgstr "La ricerca non ha prodotto risultati."
 
@@ -850,7 +847,6 @@ msgstr ""
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/manage/Tiles/Video/Edit
-#: components/mosaic/Layout/Layout
 msgid "Save"
 msgstr "Salva"
 
