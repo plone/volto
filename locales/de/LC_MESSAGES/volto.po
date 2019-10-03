@@ -164,6 +164,7 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -693,7 +694,9 @@ msgstr "Neues Passwort"
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/TokenWidget
 msgid "No results found."
 msgstr "Keine Ergebnisse gefunden."
 
@@ -862,6 +865,7 @@ msgstr ""
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/manage/Tiles/Video/Edit
+#: components/mosaic/Layout/Layout
 msgid "Save"
 msgstr "Speichern"
 
@@ -1085,6 +1089,11 @@ msgstr "Text eingeben…"
 #: components/manage/Tiles/Title/Edit
 msgid "Type the title…"
 msgstr "Titel eingeben…"
+
+#: components/manage/Tiles/Tile/Edit
+#: components/theme/View/DefaultView
+msgid "Unknown Block"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Upload"

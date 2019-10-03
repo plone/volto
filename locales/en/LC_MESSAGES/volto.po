@@ -149,6 +149,7 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 msgid "Cancel"
 msgstr ""
@@ -678,7 +679,9 @@ msgstr ""
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/TokenWidget
 msgid "No results found."
 msgstr ""
 
@@ -847,6 +850,7 @@ msgstr ""
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/manage/Tiles/Video/Edit
+#: components/mosaic/Layout/Layout
 msgid "Save"
 msgstr ""
 
@@ -1070,6 +1074,11 @@ msgstr ""
 #: components/manage/Tiles/Title/Edit
 msgid "Type the title…"
 msgstr ""
+
+#: components/manage/Tiles/Tile/Edit
+#: components/theme/View/DefaultView
+msgid "Unknown Block"
+msgstr "Unknown Block {block}"
 
 #: components/manage/Contents/Contents
 msgid "Upload"

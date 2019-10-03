@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
@@ -18,6 +18,13 @@ import {
   getTilesLayoutFieldname,
   hasTilesData,
 } from '../../../helpers';
+
+const messages = defineMessages({
+  unknownBlock: {
+    id: 'Unknown Block',
+    defaultMessage: 'Unknown Block {block}',
+  },
+});
 
 /**
  * Component to display the default view.
@@ -45,10 +52,9 @@ const DefaultView = ({ content, intl }) => {
             data={content[tilesFieldname][tile]}
           />
         ) : (
-          <div>
-            {intl.formatMessage({
-              id: 'Unknown Tile',
-              defaultMessage: 'Unknown Tile',
+          <div key={tile}>
+            {intl.formatMessage(messages.unknownBlock, {
+              block: content[tilesFieldname]?.[tile]?.['@type'],
             })}
           </div>
         );
