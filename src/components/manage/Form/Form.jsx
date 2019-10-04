@@ -578,7 +578,7 @@ class Form extends Component {
           error={keys(this.state.errors).length > 0}
         >
           <Segment.Group raised>
-            {schema.fieldsets.length > 1 && (
+            {schema && schema.fieldsets.length > 1 && (
               <Tab
                 menu={{
                   secondary: true,
@@ -612,7 +612,7 @@ class Form extends Component {
                 }))}
               />
             )}
-            {schema.fieldsets.length === 1 && (
+            {schema && schema.fieldsets.length === 1 && (
               <Segment>
                 {this.props.title && (
                   <Segment className="primary">{this.props.title}</Segment>
