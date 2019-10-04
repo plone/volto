@@ -9,7 +9,7 @@ import { Icon as IconOld, Form, Grid, Label } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { map, find, isBoolean, isObject } from 'lodash';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import Select, { components } from 'react-select';
 import AsyncPaginate from 'react-select-async-paginate';
 
@@ -200,7 +200,6 @@ class SelectWidget extends Component {
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     itemsTotal: PropTypes.number,
-    intl: intlShape.isRequired,
   };
 
   /**

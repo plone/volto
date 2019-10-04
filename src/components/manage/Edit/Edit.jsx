@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
@@ -69,7 +69,6 @@ class Edit extends Component {
       '@type': PropTypes.string,
     }),
     schema: PropTypes.objectOf(PropTypes.any),
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -158,6 +157,8 @@ class Edit extends Component {
     );
   }
 
+  form = React.createRef();
+
   /**
    * Render method.
    * @method render
@@ -176,11 +177,7 @@ class Edit extends Component {
           }
         />
         <Form
-          ref={instance => {
-            if (instance) {
-              this.form = instance.refs.wrappedInstance;
-            }
-          }}
+          ref={this.form}
           schema={this.props.schema}
           formData={this.props.content}
           onSubmit={this.onSubmit}
@@ -206,7 +203,7 @@ class Edit extends Component {
                   id="toolbar-save"
                   className="save"
                   aria-label={this.props.intl.formatMessage(messages.save)}
-                  onClick={() => this.form.onSubmit()}
+                  onClick={() => this.form.current.onSubmit()}
                 >
                   <Icon
                     name={saveSVG}

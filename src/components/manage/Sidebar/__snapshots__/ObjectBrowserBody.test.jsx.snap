@@ -8,9 +8,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
     className="header pulled"
   >
     <h2>
-      <span>
-        Image
-      </span>
+      Image
     </h2>
   </header>
   <div
@@ -164,9 +162,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
               <label
                 htmlFor="field-align"
               >
-                <span>
-                  Alignment
-                </span>
+                Alignment
               </label>
             </div>
           </div>

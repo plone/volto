@@ -10,12 +10,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { cut, copy, copyContent, moveContent } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
@@ -86,7 +81,6 @@ class Actions extends Component {
     copy: PropTypes.func.isRequired,
     copyContent: PropTypes.func.isRequired,
     moveContent: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**

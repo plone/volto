@@ -4,6 +4,8 @@
 
 ### Added
 
+- Upgrade react-intl to latest version @sneridagh
+
 ### Changes
 
 - Fix `DefaultView.jsx` warning on missing key @sneridagh

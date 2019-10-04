@@ -21,12 +21,7 @@ import {
   Table,
 } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { updateSharing, getSharing } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
@@ -89,7 +84,6 @@ class SharingComponent extends Component {
     inherit: PropTypes.bool,
     title: PropTypes.string.isRequired,
     login: PropTypes.string,
-    intl: intlShape.isRequired,
   };
 
   /**

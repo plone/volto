@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { filter, map, groupBy } from 'lodash';
 import { Accordion, Button } from 'semantic-ui-react';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import AnimateHeight from 'react-animate-height';
 import { tiles } from '~/config';
@@ -90,7 +90,6 @@ const TileChooser = ({ currentTile, onMutateTile, intl }) => {
 TileChooser.propTypes = {
   currentTile: PropTypes.string.isRequired,
   onMutateTile: PropTypes.func.isRequired,
-  intl: intlShape.isRequired,
 };
 
 export default injectIntl(TileChooser);

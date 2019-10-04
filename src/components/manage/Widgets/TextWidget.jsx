@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Form, Grid, Input, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
 import { Icon } from '@plone/volto/components';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
 const messages = defineMessages({
   default: {
@@ -59,7 +59,6 @@ class TextWidget extends Component {
     onChange: PropTypes.func,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
-    intl: intlShape.isRequired,
     icon: PropTypes.shape({
       xmlns: PropTypes.string,
       viewBox: PropTypes.string,

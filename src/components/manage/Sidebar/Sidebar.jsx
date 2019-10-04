@@ -6,7 +6,7 @@
 import React, { Component, Fragment } from 'react';
 import { Button, Tab } from 'semantic-ui-react';
 import cookie from 'react-cookie';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { BodyClass } from '../../../helpers';
 import { Icon } from '../../../components';
@@ -34,9 +34,7 @@ class Sidebar extends Component {
    * @property {Object} propTypes Property types.
    * @static
    */
-  static propTypes = {
-    intl: intlShape.isRequired,
-  };
+  static propTypes = {};
 
   /**
    * Constructor

@@ -16,7 +16,7 @@ import {
   Label,
 } from 'semantic-ui-react';
 import { filter, remove, toPairs, groupBy, map } from 'lodash';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { getQuerystring } from '../../../actions';
 import Select, { components } from 'react-select';
 import { Icon } from '@plone/volto/components';
@@ -156,7 +156,6 @@ class QuerystringWidget extends Component {
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     getQuerystring: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
