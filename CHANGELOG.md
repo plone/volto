@@ -9,6 +9,7 @@
 ### Changes
 
 - Fix `DefaultView.jsx` warning on missing key @sneridagh
+- Fix page jump in add form because of `visual` @sneridagh
 
 ## 4.0.0-alpha.7 (2019-10-02)
 
