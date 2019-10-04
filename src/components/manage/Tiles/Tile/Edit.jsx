@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
-import { injectIntl } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { tiles } from '~/config';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
@@ -17,6 +17,13 @@ import cx from 'classnames';
 import Icon from '../../../../components/theme/Icon/Icon';
 import dragSVG from '../../../../icons/drag.svg';
 import trashSVG from '../../../../icons/delete.svg';
+
+const messages = defineMessages({
+  unknownBlock: {
+    id: 'Unknown Block',
+    defaultMessage: 'Unknown Block {block}',
+  },
+});
 
 const itemSource = {
   beginDrag(props) {
@@ -222,9 +229,8 @@ class Edit extends Component {
               // The tabIndex is required for the keyboard navigation
               tabIndex={-1}
             >
-              {this.props.intl.formatMessage({
-                id: 'Unknown Tile',
-                defaultMessage: 'Unknown Tile',
+              {this.props.intl.formatMessage(messages.unknownBlock, {
+                block: type,
               })}
             </div>
           )}
