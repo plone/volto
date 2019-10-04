@@ -84,7 +84,7 @@ class Form extends Component {
       properties: PropTypes.objectOf(PropTypes.any),
       definitions: PropTypes.objectOf(PropTypes.any),
       required: PropTypes.arrayOf(PropTypes.string),
-    }).isRequired,
+    }),
     formData: PropTypes.objectOf(PropTypes.any),
     pathname: PropTypes.string,
     onSubmit: PropTypes.func,
@@ -121,6 +121,7 @@ class Form extends Component {
     visual: false,
     tiles: [],
     pathname: '',
+    schema: {},
   };
 
   /**
@@ -696,4 +697,4 @@ class Form extends Component {
   }
 }
 
-export default injectIntl(Form, { withRef: true });
+export default injectIntl(Form, { forwardRef: true });

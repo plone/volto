@@ -157,6 +157,8 @@ class Edit extends Component {
     );
   }
 
+  form = React.createRef();
+
   /**
    * Render method.
    * @method render
@@ -175,11 +177,7 @@ class Edit extends Component {
           }
         />
         <Form
-          ref={instance => {
-            if (instance) {
-              this.form = instance.refs.wrappedInstance;
-            }
-          }}
+          ref={this.form}
           schema={this.props.schema}
           formData={this.props.content}
           onSubmit={this.onSubmit}
@@ -205,7 +203,7 @@ class Edit extends Component {
                   id="toolbar-save"
                   className="save"
                   aria-label={this.props.intl.formatMessage(messages.save)}
-                  onClick={() => this.form.onSubmit()}
+                  onClick={() => this.form.current.onSubmit()}
                 >
                   <Icon
                     name={saveSVG}

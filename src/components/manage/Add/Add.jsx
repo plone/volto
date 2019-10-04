@@ -153,6 +153,8 @@ class Add extends Component {
     this.props.history.push(getBaseUrl(this.props.pathname));
   }
 
+  form = React.createRef();
+
   /**
    * Render method.
    * @method render
@@ -170,11 +172,7 @@ class Add extends Component {
             })}
           />
           <Form
-            ref={instance => {
-              if (instance) {
-                this.form = instance.refs.wrappedInstance;
-              }
-            }}
+            ref={this.form}
             schema={this.props.schema}
             formData={{
               [getTilesFieldname(this.props.schema.properties)]: null,
@@ -199,7 +197,7 @@ class Add extends Component {
                     id="toolbar-save"
                     className="save"
                     aria-label={this.props.intl.formatMessage(messages.save)}
-                    onClick={() => this.form.onSubmit()}
+                    onClick={() => this.form.current.onSubmit()}
                   >
                     <Icon
                       name={saveSVG}
