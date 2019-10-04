@@ -10,6 +10,10 @@
 
 - Fix `DefaultView.jsx` warning on missing key @sneridagh
 
+### Internal
+
+- Enable run yarn install on git checkout and git pull in husky @sneridagh
+
 ## 4.0.0-alpha.7 (2019-10-02)
 
 ### Added
