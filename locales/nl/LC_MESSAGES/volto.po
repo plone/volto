@@ -1090,6 +1090,11 @@ msgstr ""
 msgid "Type the title…"
 msgstr ""
 
+#: components/manage/Tiles/Tile/Edit
+#: components/theme/View/DefaultView
+msgid "Unknown Block"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Upload"

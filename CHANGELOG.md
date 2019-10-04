@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix `DefaultView.jsx` warning on missing key @sneridagh
+
 ## 4.0.0-alpha.7 (2019-10-02)
 
 ### Added

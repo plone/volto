@@ -1071,6 +1071,11 @@ msgstr "Digita testo…"
 msgid "Type the title…"
 msgstr "Digita il titolo…"
 
+#: components/manage/Tiles/Tile/Edit
+#: components/theme/View/DefaultView
+msgid "Unknown Block"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Carica"

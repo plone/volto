@@ -1086,6 +1086,11 @@ msgstr "Text eingeben…"
 msgid "Type the title…"
 msgstr "Titel eingeben…"
 
+#: components/manage/Tiles/Tile/Edit
+#: components/theme/View/DefaultView
+msgid "Unknown Block"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Hochladen"
