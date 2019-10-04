@@ -17,7 +17,14 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Add text block', () => {
-      cy.get(`.tile.text .public-DraftStyleDefault-block`).type('My text');
+      cy.get(`.tile.title [data-contents]`)
+        .clear()
+        .type('My title');
+      cy.get('.tile.inner.text .public-DraftEditor-content')
+        .click()
+        .type('My text')
+        .get('span[data-text]')
+        .contains('My text');
 
       cy.get('#toolbar-save').click();
 
