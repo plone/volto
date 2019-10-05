@@ -13,6 +13,7 @@
 ### Internal
 
 - Disable Cypress blocks tests @sneridagh
+- Remove dockerized unit tests @timo
 
 ## 4.0.0-alpha.7 (2019-10-02)
 
