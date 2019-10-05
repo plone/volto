@@ -6,57 +6,57 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.visit('/my-page/edit');
     });
 
-    it('Add title block', () => {
-      cy.get(`.tile.title [data-contents]`)
-        .clear()
-        .type('My title');
+    // it('Add title block', () => {
+    //   cy.get(`.tile.title [data-contents]`)
+    //     .clear()
+    //     .type('My title');
 
-      cy.get('#toolbar-save').click();
+    //   cy.get('#toolbar-save').click();
 
-      cy.get('#page-document').should('have.text', 'My title');
-    });
+    //   cy.get('#page-document').should('have.text', 'My title');
+    // });
 
-    it('Add text block', () => {
-      cy.get(`.tile.title [data-contents]`)
-        .clear()
-        .type('My title');
-      cy.get('.tile.inner.text .public-DraftEditor-content')
-        .click()
-        .type('My text')
-        .get('span[data-text]')
-        .contains('My text');
+    // it('Add text block', () => {
+    //   cy.get(`.tile.title [data-contents]`)
+    //     .clear()
+    //     .type('My title');
+    //   cy.get('.tile.inner.text .public-DraftEditor-content')
+    //     .click()
+    //     .type('My text')
+    //     .get('span[data-text]')
+    //     .contains('My text');
 
-      cy.get('#toolbar-save').click();
+    //   cy.get('#toolbar-save').click();
 
-      cy.get('#page-document p').contains('My text');
-    });
+    //   cy.get('#page-document p').contains('My text');
+    // });
 
-    it('Add image block', () => {
-      // Add image block
-      cy.get('.tile.text [contenteditable]').click();
-      cy.get('button.tile-add-button').click();
-      cy.get('.tiles-chooser .title')
-        .contains('media')
-        .click();
-      cy.get('.tiles-chooser .media')
-        .contains('image')
-        .click();
+    // it('Add image block', () => {
+    //   // Add image block
+    //   cy.get('.tile.text [contenteditable]').click();
+    //   cy.get('button.tile-add-button').click();
+    //   cy.get('.tiles-chooser .title')
+    //     .contains('media')
+    //     .click();
+    //   cy.get('.tiles-chooser .media')
+    //     .contains('image')
+    //     .click();
 
-      //Type in external image URL
-      cy.get(`.tile.image center input`)
-        .click()
-        .type(
-          `https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png{enter}`,
-        );
+    //   //Type in external image URL
+    //   cy.get(`.tile.image center input`)
+    //     .click()
+    //     .type(
+    //       `https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png{enter}`,
+    //     );
 
-      cy.get('#toolbar-save').click();
+    //   cy.get('#toolbar-save').click();
 
-      cy.get('#page-document img').should(
-        'have.attr',
-        'src',
-        'https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png',
-      );
-    });
+    //   cy.get('#page-document img').should(
+    //     'have.attr',
+    //     'src',
+    //     'https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png',
+    //   );
+    // });
 
     // it('Add image via drag and drop', () => {
     //   const tile = 'image';
@@ -84,30 +84,30 @@ if (Cypress.env('API') !== 'guillotina') {
     //   });
     // });
 
-    it('Add video block', () => {
-      // Add video block
-      cy.get('.tile.text [contenteditable]').click();
-      cy.get('button.tile-add-button').click();
-      cy.get('.tiles-chooser .title')
-        .contains('media')
-        .click();
-      cy.get('.tiles-chooser .media')
-        .contains('video')
-        .click();
+    // it('Add video block', () => {
+    //   // Add video block
+    //   cy.get('.tile.text [contenteditable]').click();
+    //   cy.get('button.tile-add-button').click();
+    //   cy.get('.tiles-chooser .title')
+    //     .contains('media')
+    //     .click();
+    //   cy.get('.tiles-chooser .media')
+    //     .contains('video')
+    //     .click();
 
-      // Add YouTube URL to video block
-      cy.get(`.tile.video .toolbar .ui.input input`)
-        .type('https://www.youtube.com/watch?v=QmkD2vLGA6Y')
-        .type('{enter}');
+    //   // Add YouTube URL to video block
+    //   cy.get(`.tile.video .toolbar .ui.input input`)
+    //     .type('https://www.youtube.com/watch?v=QmkD2vLGA6Y')
+    //     .type('{enter}');
 
-      // Save
-      cy.get('#toolbar-save').click();
+    //   // Save
+    //   cy.get('#toolbar-save').click();
 
-      // Check if YouTube iframe is present
-      cy.get('#page-document iframe')
-        .should('have.attr', 'src')
-        .should('include', 'youtube.com/embed/QmkD2vLGA6Y');
-    });
+    //   // Check if YouTube iframe is present
+    //   cy.get('#page-document iframe')
+    //     .should('have.attr', 'src')
+    //     .should('include', 'youtube.com/embed/QmkD2vLGA6Y');
+    // });
 
     // it('Add hero block', () => {
     //   // TODO: Implement react dropzone for this tile to test the image
@@ -156,57 +156,57 @@ if (Cypress.env('API') !== 'guillotina') {
     //   }
     // });
 
-    it('Add maps block', () => {
-      // Add maps block
-      cy.get('.tile.text [contenteditable]').click();
-      cy.get('button.tile-add-button').click();
-      cy.get('.tiles-chooser .title')
-        .contains('common')
-        .click();
-      cy.get('.tiles-chooser .common')
-        .contains('maps')
-        .click();
+    // it('Add maps block', () => {
+    //   // Add maps block
+    //   cy.get('.tile.text [contenteditable]').click();
+    //   cy.get('button.tile-add-button').click();
+    //   cy.get('.tiles-chooser .title')
+    //     .contains('common')
+    //     .click();
+    //   cy.get('.tiles-chooser .common')
+    //     .contains('maps')
+    //     .click();
 
-      // Fill maps block
-      cy.get(`.tile.maps .toolbar .ui.input input`)
-        .type(
-          '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2525.497070288158!2d7.103133415464086!3d50.72926897951482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bee17434076fc7%3A0x2e99668f581378c8!2sRiesstra%C3%9Fe+21%2C+53113+Bonn!5e0!3m2!1sde!2sde!4v1561386702097!5m2!1sde!2sde" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>',
-        )
-        .type('{enter}');
+    //   // Fill maps block
+    //   cy.get(`.tile.maps .toolbar .ui.input input`)
+    //     .type(
+    //       '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2525.497070288158!2d7.103133415464086!3d50.72926897951482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bee17434076fc7%3A0x2e99668f581378c8!2sRiesstra%C3%9Fe+21%2C+53113+Bonn!5e0!3m2!1sde!2sde!4v1561386702097!5m2!1sde!2sde" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>',
+    //     )
+    //     .type('{enter}');
 
-      // Save
-      cy.get('#toolbar-save').click();
+    //   // Save
+    //   cy.get('#toolbar-save').click();
 
-      // Check if Google maps shows up in the page view
-      cy.get('#page-document iframe')
-        .should('have.attr', 'src')
-        .should('include', 'maps');
-    });
+    //   // Check if Google maps shows up in the page view
+    //   cy.get('#page-document iframe')
+    //     .should('have.attr', 'src')
+    //     .should('include', 'maps');
+    // });
 
-    it('Add HTML block', () => {
-      // Add HTML block
-      cy.get('.tile.text [contenteditable]').click();
-      cy.get('button.tile-add-button').click();
-      cy.get('.tiles-chooser .title')
-        .contains('common')
-        .click();
-      cy.get('.tiles-chooser .common')
-        .contains('html')
-        .click();
+    // it('Add HTML block', () => {
+    //   // Add HTML block
+    //   cy.get('.tile.text [contenteditable]').click();
+    //   cy.get('button.tile-add-button').click();
+    //   cy.get('.tiles-chooser .title')
+    //     .contains('common')
+    //     .click();
+    //   cy.get('.tiles-chooser .common')
+    //     .contains('html')
+    //     .click();
 
-      // Add HTML
-      cy.get(`.tile.html .npm__react-simple-code-editor__textarea`).type(
-        `<pre>This is html</pre>`,
-      );
-      cy.get(`.tile.html [aria-label="Preview"]`).click();
-      cy.get(`.tile.html pre`).contains('This is html');
+    //   // Add HTML
+    //   cy.get(`.tile.html .npm__react-simple-code-editor__textarea`).type(
+    //     `<pre>This is html</pre>`,
+    //   );
+    //   cy.get(`.tile.html [aria-label="Preview"]`).click();
+    //   cy.get(`.tile.html pre`).contains('This is html');
 
-      // Save
-      cy.get('#toolbar-save').click();
+    //   // Save
+    //   cy.get('#toolbar-save').click();
 
-      // Check if HTML is present in the page view
-      cy.get('#page-document pre').should('have.text', 'This is html');
-    });
+    //   // Check if HTML is present in the page view
+    //   cy.get('#page-document pre').should('have.text', 'This is html');
+    // });
 
     // it('Add table block', () => {
     //   // TODO: Figure out why there is an erro when add this tile in cypress

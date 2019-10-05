@@ -10,6 +10,10 @@
 
 - Fix `DefaultView.jsx` warning on missing key @sneridagh
 
+### Internal
+
+- Disable Cypress blocks tests @sneridagh
+
 ## 4.0.0-alpha.7 (2019-10-02)
 
 ### Added
