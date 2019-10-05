@@ -11,19 +11,7 @@ if (Cypress.env('API') !== 'guillotina') {
     //     .clear()
     //     .type('My title');
 
-<<<<<<< HEAD
-      // Trying to get rid of the flaky test
-      cy.get('.tile.inner.text .public-DraftEditor-content')
-        .click()
-        .type('My text')
-        .get('span[data-text]')
-        .contains('My text')
-        .clear();
-
-      cy.get('#toolbar-save').click();
-=======
     //   cy.get('#toolbar-save').click();
->>>>>>> master
 
     //   cy.get('#page-document').should('have.text', 'My title');
     // });
