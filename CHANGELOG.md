@@ -12,6 +12,7 @@
 
 ### Internal
 
+- Enable run yarn install on git checkout and git pull in husky @sneridagh
 - Disable Cypress blocks tests @sneridagh
 - Remove dockerized unit tests @timo
 
