@@ -376,7 +376,7 @@ class Toolbar extends Component {
               <button
                 aria-label="Shrink toolbar"
                 className={cx({
-                  [this.props.content.review_state]:
+                  [this.props.content && this.props.content.review_state]:
                     this.props.content && this.props.content.review_state,
                 })}
                 onClick={this.handleShrink}
