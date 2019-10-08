@@ -17,7 +17,7 @@ if (Cypress.env('API') !== 'guillotina') {
         .setSelection('furiously');
       cy.get(
         '#page-edit .draftJsToolbar__buttonWrapper__1Dmqh:nth-of-type(3)',
-      ).click({ multiple: true });
+      ).click();
       cy.get('.link-form-container input').type('https://google.com{enter}');
       cy.get('#toolbar-save').click();
 
