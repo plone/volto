@@ -515,7 +515,7 @@ class Form extends Component {
     const renderTiles = formData[tilesLayoutFieldname].items;
     const tilesDict = formData[tilesFieldname];
     return this.props.visual ? (
-      <div className="ui wrapper">
+      <div className="ui container">
         {map(renderTiles, (tile, index) => (
           <EditTile
             id={tile}

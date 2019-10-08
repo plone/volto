@@ -32,6 +32,7 @@ const View = ({ data, detached }) => (
         {(() => {
           const image = (
             <img
+              className={cx({ 'full-width': data.align === 'full' })}
               src={
                 data.url.includes(settings.apiPath)
                   ? `${flattenToAppURL(data.url)}/@@images/image`

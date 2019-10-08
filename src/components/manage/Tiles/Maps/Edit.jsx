@@ -238,7 +238,11 @@ class Edit extends Component {
           </div>
         )}
         {this.props.data.url ? (
-          <div>
+          <div
+            className={cx('video-inner', {
+              'full-width': this.props.data.align === 'full',
+            })}
+          >
             <iframe
               title="Google Maps Embedded Tile"
               src={this.props.data.url}

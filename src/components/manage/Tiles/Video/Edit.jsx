@@ -208,7 +208,11 @@ class Edit extends Component {
           </div>
         )}
         {data.url ? (
-          <div className="video-inner">
+          <div
+            className={cx('video-inner', {
+              'full-width': this.props.data.align === 'full',
+            })}
+          >
             <div className="ui blocker" />
             {data.url.match('list') ? (
               <Embed

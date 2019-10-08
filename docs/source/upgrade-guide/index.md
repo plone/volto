@@ -125,7 +125,8 @@ The default view for content types `DocumentView.jsx` has been renamed to a more
 
 ### Deprecations
 
-The old messages container has been removed since it's not used anymore by Volto. We changed it to use `Toast` library.
+- The old messages container has been removed since it's not used anymore by Volto. We changed it to use `Toast` library.
+- Improve the Pastanaga Editor block wrapper container layout, deprecating the hack `.ui.wrapper > *`.
 
 ## Upgrading to Volto 3.x
 
