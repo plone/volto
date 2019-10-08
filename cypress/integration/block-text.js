@@ -19,6 +19,11 @@ if (Cypress.env('API') !== 'guillotina') {
         '#page-edit .draftJsToolbar__buttonWrapper__1Dmqh:nth-of-type(3)',
       ).click();
       cy.get('.link-form-container input').type('https://google.com{enter}');
+
+      // check if link underline style attribute is present in link created
+      cy.get(
+        '.tile.inner.text .public-DraftEditor-content .src-components-manage-AnchorPlugin-__linkStyles-module___link',
+      );
       cy.get('#toolbar-save').click();
 
       // then
