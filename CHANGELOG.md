@@ -8,6 +8,7 @@
 
 - Rename `blockID` to `id` for view block components, to unify naming in edit-view @sneridagh
 - Change the order of the widget decider algorithm to `choices` is chosen before the vocabularies one @sneridagh
+- Remove old messages container since it's not used anymore @sneridagh
 
 ## 4.0.0-alpha.8 (2019-10-05)
 
