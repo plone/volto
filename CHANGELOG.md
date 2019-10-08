@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Rename `blockID` to `id` for view block components, to unify naming in edit-view @sneridagh
+
 ## 4.0.0-alpha.8 (2019-10-05)
 
 ### Added

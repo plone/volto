@@ -47,7 +47,7 @@ const DefaultView = ({ content, intl }) => {
         return Tile !== null ? (
           <Tile
             key={tile}
-            blockID={tile}
+            id={tile}
             properties={content}
             data={content[tilesFieldname][tile]}
           />
