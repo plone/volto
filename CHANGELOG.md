@@ -21,6 +21,7 @@
 - Enable run yarn install on git checkout and git pull in husky @sneridagh
 - Disable Cypress blocks tests @sneridagh
 - Remove dockerized unit tests @timo
+- Add Cypress link test for text blocks @timo
 
 ## 4.0.0-alpha.7 (2019-10-02)
 
