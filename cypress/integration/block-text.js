@@ -6,7 +6,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.visit('/my-page/edit');
     });
 
-    it.only('As editor I can add a link to a text tile', function() {
+    it('As editor I can add a link to a text tile', function() {
       // given
       cy.wait(2000);
       cy.get('.documentFirstHeading > .public-DraftStyleDefault-block');
