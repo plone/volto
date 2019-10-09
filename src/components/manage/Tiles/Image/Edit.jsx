@@ -250,17 +250,15 @@ class Edit extends Component {
             <div className="toolbar">{this.props.appendSecondaryActions}</div>
           )}
         {this.props.data.url ? (
-          <p>
-            <img
-              className={cx({ 'full-width': this.props.data.align === 'full' })}
-              src={
-                this.props.data.url.includes(settings.apiPath)
-                  ? `${flattenToAppURL(this.props.data.url)}/@@images/image`
-                  : this.props.data.url
-              }
-              alt=""
-            />
-          </p>
+          <img
+            className={cx({ 'full-width': this.props.data.align === 'full' })}
+            src={
+              this.props.data.url.includes(settings.apiPath)
+                ? `${flattenToAppURL(this.props.data.url)}/@@images/image`
+                : this.props.data.url
+            }
+            alt={this.props.data.alt || ''}
+          />
         ) : (
           <div>
             <Dropzone onDrop={this.onDrop} className="dropzone">
