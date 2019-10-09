@@ -10,6 +10,7 @@
 - Change the order of the widget decider algorithm to `choices` is chosen before the vocabularies one @sneridagh
 - Remove old messages container since it's not used anymore @sneridagh
 - Improve the Pastanaga Editor block wrapper container layout, deprecating the hack `.ui.wrapper > *` @sneridagh
+- Fix `ArrayWidget` and amend users control panel arrays instantiations @sneridagh
 
 ## 4.0.0-alpha.8 (2019-10-05)
 
