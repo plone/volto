@@ -9,6 +9,7 @@
 - Rename `blockID` to `id` for view block components, to unify naming in edit-view @sneridagh
 - Remove old messages container since it's not used anymore @sneridagh
 - Improve the Pastanaga Editor block wrapper container layout, deprecating the hack `.ui.wrapper > *` @sneridagh
+- Fix `ArrayWidget` and amend users control panel arrays instantiations @sneridagh
 
 ## 4.0.0-alpha.8 (2019-10-05)
 
