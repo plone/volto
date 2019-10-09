@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Removed wrapper `p` tag from image block in edit mode for better layout purposes @sneridagh
+
 ### Internal
 
 - Upgrade prettier and stylelint to latest versions @sneridagh
