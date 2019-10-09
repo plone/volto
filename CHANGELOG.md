@@ -6,6 +6,10 @@
 
 ### Changes
 
+### Internal
+
+- Upgrade prettier and stylelint to latest versions @sneridagh
+
 ## 4.0.0-alpha.9 (2019-10-09)
 
 ### Changes
