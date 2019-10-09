@@ -164,18 +164,9 @@ class Edit extends Component {
           this.props.data.text.blocks.length === 1 &&
           this.props.data.text.blocks[0].text === ''));
 
-    const imageAlign =
-      this.props.data['@type'] === 'image' &&
-      !!this.props.data.align &&
-      this.props.data.align;
-
     return connectDropTarget(
       connectDragPreview(
-        <div
-          className={`ui drag tile inner ${type}${
-            !!imageAlign ? ` ${imageAlign}` : ''
-          }`}
-        >
+        <div className={`ui drag tile inner ${type}`}>
           {selected &&
             connectDragSource(
               <div

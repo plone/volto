@@ -214,7 +214,6 @@ class Edit extends Component {
         className={cx(
           'tile image align',
           {
-            // selected: this.props.selected,
             center: !Boolean(this.props.data.align),
           },
           this.props.data.align,
@@ -253,6 +252,7 @@ class Edit extends Component {
         {this.props.data.url ? (
           <p>
             <img
+              className={cx({ 'full-width': this.props.data.align === 'full' })}
               src={
                 this.props.data.url.includes(settings.apiPath)
                   ? `${flattenToAppURL(this.props.data.url)}/@@images/image`

@@ -37,7 +37,7 @@ const DefaultView = ({ content, intl }) => {
   const tilesLayoutFieldname = getTilesLayoutFieldname(content);
 
   return hasTilesData(content) ? (
-    <div id="page-document" className="ui wrapper">
+    <div id="page-document" className="ui container">
       <Helmet title={content.title} />
       {map(content[tilesLayoutFieldname].items, tile => {
         const Tile =

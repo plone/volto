@@ -22,8 +22,8 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#toolbar-save').click();
 
       // then
-      cy.get('.wrapper').contains('Colorless green ideas sleep furiously.');
-      cy.get('.wrapper a')
+      cy.get('.tile.text').contains('Colorless green ideas sleep furiously.');
+      cy.get('.tile.text a')
         .should('have.attr', 'href')
         .and('include', 'https://google.com');
     });
