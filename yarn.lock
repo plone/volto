@@ -3864,6 +3864,11 @@ cypress-file-upload@3.1.2:
   resolved "https://registry.yarnpkg.com/cypress-file-upload/-/cypress-file-upload-3.1.2.tgz#4a0024f99ca157565bf2b20c110e6e6874da28cb"
   integrity sha512-gZE2G7ZTD2Y8APrcgs+ATRMKs/IgH2rafCmi+8o99q5sDoNRLR+XKxOcoyWLehj9raGnO98YDYO8DY7k1VMGBw==
 
+cypress-plugin-retries@1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/cypress-plugin-retries/-/cypress-plugin-retries-1.3.0.tgz#a2c1f49dce69b521cbb5ce3ab1a3a25acf41f08f"
+  integrity sha512-s2STd3vVeoIeKmdOvDhmWicARxK3cu7xF02MhH120wycUhdtR0SbAbo+zmcNnHquyshccE6cv17DfNvPOV7Rog==
+
 cypress@3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/cypress/-/cypress-3.4.1.tgz#ca2e4e9864679da686c6a6189603efd409664c30"

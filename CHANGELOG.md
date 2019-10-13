@@ -8,6 +8,10 @@
 
 - Removed wrapper `p` tag from image block in edit mode for better layout purposes @sneridagh
 
+### Internal
+
+- Retry Cypress tests two times before failing @timo
+
 ## 4.0.0-alpha.9 (2019-10-09)
 
 ### Changes
