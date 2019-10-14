@@ -1,5 +1,6 @@
 import 'cypress-axe';
 import 'cypress-file-upload';
+import 'cypress-plugin-retries';
 import './commands';
 import { setupGuillotina, tearDownGuillotina } from './guillotina';
 
