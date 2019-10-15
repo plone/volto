@@ -1,35 +1,40 @@
 if (Cypress.env('API') !== 'guillotina') {
-  describe('Test Blocks', () => {
+  describe('Blocks Tests', () => {
     beforeEach(() => {
       cy.autologin();
       cy.createContent('Document', 'my-page', 'My Page');
       cy.visit('/my-page/edit');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('?fullobjects');
     });
 
-    // it('Add title block', () => {
-    //   cy.get(`.tile.title [data-contents]`)
-    //     .clear()
-    //     .type('My title');
+    it('Add title block', () => {
+      cy.get(`.tile.title [data-contents]`)
+        .clear()
+        .type('My title');
 
-    //   cy.get('#toolbar-save').click();
+      cy.get('#toolbar-save').click();
 
-    //   cy.get('#page-document').should('have.text', 'My title');
-    // });
+      cy.get('#page-document').should('have.text', 'My title');
+    });
 
-    // it('Add text block', () => {
-    //   cy.get(`.tile.title [data-contents]`)
-    //     .clear()
-    //     .type('My title');
-    //   cy.get('.tile.inner.text .public-DraftEditor-content')
-    //     .click()
-    //     .type('My text')
-    //     .get('span[data-text]')
-    //     .contains('My text');
+    it('Add text block', () => {
+      cy.get(`.tile.title [data-contents]`)
+        .clear()
+        .type('My title');
+      cy.get('.tile.inner.text .public-DraftEditor-content')
+        .click()
+        .type('My text')
+        .get('span[data-text]')
+        .contains('My text');
 
-    //   cy.get('#toolbar-save').click();
+      cy.get('#toolbar-save').click();
 
-    //   cy.get('#page-document p').contains('My text');
-    // });
+      cy.get('#page-document p').contains('My text');
+    });
 
     // it('Add image block', () => {
     //   // Add image block

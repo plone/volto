@@ -11,6 +11,7 @@
 ### Internal
 
 - Retry Cypress tests two times before failing @timo
+- Add waitForResourceToLoad to Cypress @timo
 
 ## 4.0.0-alpha.9 (2019-10-09)
 

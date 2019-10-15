@@ -1,5 +1,5 @@
 if (Cypress.env('API') !== 'guillotina') {
-  describe('Actions', () => {
+  describe('Add Content Tests', () => {
     beforeEach(() => {
       cy.autologin();
     });
