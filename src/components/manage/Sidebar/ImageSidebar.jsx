@@ -61,7 +61,6 @@ const ImageSidebar = ({
   required = false,
   intl,
 }) => {
-  const [alt, setAlt] = useState(data.alt || '');
   const [activeAccIndex, setActiveAccIndex] = useState(0);
 
   function handleAccClick(e, titleProps) {
@@ -97,11 +96,11 @@ const ImageSidebar = ({
             {data.url.includes(settings.apiPath) && (
               <img
                 src={`${flattenToAppURL(data.url)}/@@images/image/mini`}
-                alt={alt}
+                alt={data.alt}
               />
             )}
             {!data.url.includes(settings.apiPath) && (
-              <img src={data.url} alt={alt} style={{ width: '50%' }} />
+              <img src={data.url} alt={data.alt} style={{ width: '50%' }} />
             )}
           </Segment>
           <Segment className="form sidebar-image-data">

@@ -16,7 +16,6 @@ exports[`renders an Image Tile Sidebar component 1`] = `
   >
     image
     <img
-      alt=""
       src="image"
       style={
         Object {

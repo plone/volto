@@ -16,7 +16,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
   >
     image
     <img
-      alt=""
+      alt="alternate text"
       src="image"
       style={
         Object {
@@ -136,7 +136,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
                 name="alt"
                 onChange={[Function]}
                 type="text"
-                value=""
+                value="alternate text"
               />
             </div>
           </div>

@@ -21,7 +21,7 @@ test('renders an Image Tile Sidebar component', () => {
   const component = renderer.create(
     <Provider store={store}>
       <ImageSidebar
-        data={{ url: 'image' }}
+        data={{ url: 'image', alt: 'alternate text' }}
         tile="1234"
         pathname="/news"
         onChangeTile={() => {}}
