@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
-import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
+import {
+  CheckboxWidget,
+  Icon,
+  TextWidget,
+  SidebarTextWidget,
+} from '@plone/volto/components';
 import { AlignTile, flattenToAppURL } from '@plone/volto/helpers';
 import { settings } from '~/config';
 
@@ -127,17 +132,16 @@ const ImageSidebar = ({
                 onChange={() => {}}
               />
             )}
-            <TextWidget
+            <SidebarTextWidget
               id="alt"
               title={intl.formatMessage(messages.AltText)}
               required={false}
-              value={alt}
+              value={data.alt}
               onChange={(name, value) => {
                 onChangeTile(tile, {
                   ...data,
                   alt: value,
                 });
-                setAlt(value);
               }}
             />
             <Form.Field inline required={required}>

@@ -132,7 +132,6 @@ exports[`renders an Image Tile Sidebar component 1`] = `
               className="ui input"
             >
               <input
-                disabled={false}
                 id="field-alt"
                 name="alt"
                 onChange={[Function]}

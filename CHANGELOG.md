@@ -4,6 +4,8 @@
 
 ### Added
 
+- Added improved special `TextSidebarWidget` for dealing with them properly. This fixes the error in the image block `alt` sidebar input @sneridagh
+
 ### Changes
 
 - Removed wrapper `p` tag from image block in edit mode for better layout purposes @sneridagh
