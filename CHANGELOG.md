@@ -14,6 +14,7 @@
 
 - Retry Cypress tests two times before failing @timo
 - Add waitForResourceToLoad to Cypress @timo
+- Add use cases to README @timo
 
 ## 4.0.0-alpha.9 (2019-10-09)
 
