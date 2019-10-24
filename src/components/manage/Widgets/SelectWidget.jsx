@@ -155,7 +155,7 @@ function getDefaultValues(choices, value) {
   if (isObject(value)) {
     return { label: value.title, value: value.token };
   }
-  if (value) {
+  if (value && choices.length > 0) {
     return { label: find(choices, o => o[0] === value)[1], value };
   } else {
     return {};
@@ -442,6 +442,7 @@ export default compose(
         getVocabFromField(props) ||
         getVocabFromItems(props);
       const vocabState = state.vocabularies[vocabBaseUrl];
+      console.log(vocabState);
       if (vocabState) {
         return {
           vocabState,
@@ -450,7 +451,10 @@ export default compose(
           loading: Boolean(vocabState.loading),
         };
       }
-      return {};
+      return {
+        choices: [],
+        itemsTotal: 0,
+      };
     },
     { getVocabulary, getVocabularyTokenTitle },
   ),

@@ -7,6 +7,8 @@
 ### Changes
 
 - Removed wrapper `p` tag from image block in edit mode for better layout purposes @sneridagh
+- Make SelectWidget more robust @robgietema
+- Add image to listing view @robgietema
 
 ### Internal
 
