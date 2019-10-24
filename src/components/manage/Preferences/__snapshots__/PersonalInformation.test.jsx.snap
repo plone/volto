@@ -16,7 +16,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
         className="ui segment"
       >
         <div
-          className="inline field help"
+          className="inline field help text"
           id="field-fullname"
         >
           <div
@@ -71,7 +71,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           </div>
         </div>
         <div
-          className="inline required field help"
+          className="inline required field help text"
           id="field-email"
         >
           <div
@@ -182,7 +182,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           </div>
         </div>
         <div
-          className="inline field help"
+          className="inline field help text"
           id="field-home_page"
         >
           <div
@@ -237,7 +237,7 @@ exports[`PersonalInformation renders a personal information component 1`] = `
           </div>
         </div>
         <div
-          className="inline field help"
+          className="inline field help text"
           id="field-location"
         >
           <div
@@ -368,7 +368,7 @@ exports[`PersonalInformation renders a personal information component embedded i
         className="ui segment"
       >
         <div
-          className="inline field help"
+          className="inline field help text"
           id="field-fullname"
         >
           <div
@@ -423,7 +423,7 @@ exports[`PersonalInformation renders a personal information component embedded i
           </div>
         </div>
         <div
-          className="inline required field help"
+          className="inline required field help text"
           id="field-email"
         >
           <div
@@ -534,7 +534,7 @@ exports[`PersonalInformation renders a personal information component embedded i
           </div>
         </div>
         <div
-          className="inline field help"
+          className="inline field help text"
           id="field-home_page"
         >
           <div
@@ -589,7 +589,7 @@ exports[`PersonalInformation renders a personal information component embedded i
           </div>
         </div>
         <div
-          className="inline field help"
+          className="inline field help text"
           id="field-location"
         >
           <div

@@ -29,7 +29,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
     className="ui segment form sidebar-image-data"
   >
     <div
-      className="inline field"
+      className="inline field text"
       id="field-external"
     >
       <div
@@ -79,23 +79,9 @@ exports[`renders an Image Tile Sidebar component 1`] = `
             <button
               onClick={[Function]}
             >
-              <svg
-                className="icon"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
-                onClick={null}
-                style={
-                  Object {
-                    "fill": "currentColor",
-                    "height": "18px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
+              <i
+                aria-hidden="true"
+                className="attributes 18px icon"
               />
             </button>
           </div>
@@ -103,7 +89,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
       </div>
     </div>
     <div
-      className="inline field"
+      className="inline field text"
       id="field-alt"
     >
       <div
@@ -319,7 +305,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
       className="content active"
     >
       <div
-        className="inline field"
+        className="inline field text"
         id="field-link"
       >
         <div
@@ -369,23 +355,9 @@ exports[`renders an Image Tile Sidebar component 1`] = `
               <button
                 onClick={[Function]}
               >
-                <svg
-                  className="icon"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": undefined,
-                    }
-                  }
-                  onClick={null}
-                  style={
-                    Object {
-                      "fill": "currentColor",
-                      "height": "18px",
-                      "width": "auto",
-                    }
-                  }
-                  viewBox=""
-                  xmlns=""
+                <i
+                  aria-hidden="true"
+                  className="attributes 18px icon"
                 />
               </button>
             </div>

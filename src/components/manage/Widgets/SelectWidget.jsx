@@ -360,12 +360,15 @@ class SelectWidget extends Component {
             <Grid.Column width="8">
               {onEdit && (
                 <div className="toolbar">
-                  <button className="item" onClick={() => onEdit(id, schema)}>
+                  <button
+                    onClick={() => onEdit(id, schema)}
+                    className="item ui noborder button"
+                  >
                     <IconOld name="write square" size="large" color="blue" />
                   </button>
                   <button
                     aria-label="Close"
-                    className="item"
+                    className="item ui noborder button"
                     onClick={() => onDelete(id)}
                   >
                     <IconOld name="close" size="large" color="red" />
@@ -442,7 +445,7 @@ export default compose(
         getVocabFromField(props) ||
         getVocabFromItems(props);
       const vocabState = state.vocabularies[vocabBaseUrl];
-      console.log(vocabState);
+
       if (vocabState) {
         return {
           vocabState,
@@ -451,10 +454,7 @@ export default compose(
           loading: Boolean(vocabState.loading),
         };
       }
-      return {
-        choices: [],
-        itemsTotal: 0,
-      };
+      return {};
     },
     { getVocabulary, getVocabularyTokenTitle },
   ),

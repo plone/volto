@@ -20,8 +20,8 @@ const defaultSize = '36px';
  */
 const Icon = ({ name, size, color, className, title, onClick }) => (
   <svg
-    xmlns={name.attributes.xmlns}
-    viewBox={name.attributes.viewBox}
+    xmlns={name.attributes && name.attributes.xmlns}
+    viewBox={name.attributes && name.attributes.viewBox}
     style={{ height: size, width: 'auto', fill: color || 'currentColor' }}
     className={className ? `icon ${className}` : 'icon'}
     onClick={onClick}
