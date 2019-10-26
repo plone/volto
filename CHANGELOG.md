@@ -15,6 +15,7 @@
 
 ### Internal
 
+- Report port number on startup @fredvd
 - Retry Cypress tests two times before failing @timo
 - Add waitForResourceToLoad to Cypress @timo
 - Add use cases to README @timo
