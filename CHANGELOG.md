@@ -4,6 +4,7 @@
 
 ### Added
 
+- Added improved special `TextSidebarWidget` for dealing with them properly. This fixes the error in the image block `alt` sidebar input @sneridagh
 - Add Node 12 support @timo
 
 ### Changes

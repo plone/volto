@@ -16,7 +16,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
   >
     image
     <img
-      alt=""
+      alt="alternate text"
       src="image"
       style={
         Object {
@@ -89,7 +89,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
       </div>
     </div>
     <div
-      className="inline field text"
+      className="inline field"
       id="field-alt"
     >
       <div
@@ -118,12 +118,11 @@ exports[`renders an Image Tile Sidebar component 1`] = `
               className="ui input"
             >
               <input
-                disabled={false}
                 id="field-alt"
                 name="alt"
                 onChange={[Function]}
                 type="text"
-                value=""
+                value="alternate text"
               />
             </div>
           </div>

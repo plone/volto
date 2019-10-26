@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
-import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
+import {
+  CheckboxWidget,
+  Icon,
+  TextWidget,
+  SidebarTextWidget,
+} from '@plone/volto/components';
 import { AlignTile, flattenToAppURL } from '@plone/volto/helpers';
 import { settings } from '~/config';
 
@@ -56,7 +61,6 @@ const ImageSidebar = ({
   required = false,
   intl,
 }) => {
-  const [alt, setAlt] = useState(data.alt || '');
   const [activeAccIndex, setActiveAccIndex] = useState(0);
 
   function handleAccClick(e, titleProps) {
@@ -92,11 +96,11 @@ const ImageSidebar = ({
             {data.url.includes(settings.apiPath) && (
               <img
                 src={`${flattenToAppURL(data.url)}/@@images/image/mini`}
-                alt={alt}
+                alt={data.alt}
               />
             )}
             {!data.url.includes(settings.apiPath) && (
-              <img src={data.url} alt={alt} style={{ width: '50%' }} />
+              <img src={data.url} alt={data.alt} style={{ width: '50%' }} />
             )}
           </Segment>
           <Segment className="form sidebar-image-data">
@@ -127,17 +131,16 @@ const ImageSidebar = ({
                 onChange={() => {}}
               />
             )}
-            <TextWidget
+            <SidebarTextWidget
               id="alt"
               title={intl.formatMessage(messages.AltText)}
               required={false}
-              value={alt}
+              value={data.alt}
               onChange={(name, value) => {
                 onChangeTile(tile, {
                   ...data,
                   alt: value,
                 });
-                setAlt(value);
               }}
             />
             <Form.Field inline required={required}>
