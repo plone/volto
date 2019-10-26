@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add Node 12 support @timo
+
 ### Changes
 
 - Removed wrapper `p` tag from image block in edit mode for better layout purposes @sneridagh
