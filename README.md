@@ -168,7 +168,7 @@ Installation Documentation](https://docs.plone.org/manage/installing/installatio
 
 ```shell
 $ cd api
-$ ./bootstrap.sh
+$ make build-backend
 ```
 #### Guillotina (experimental)
 
