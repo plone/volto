@@ -7,4 +7,5 @@ export default {
   en: 'English',
   de: 'Deutsch',
   nl: 'Nederlands',
+  ja: 'Japanese',
 };

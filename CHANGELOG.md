@@ -90,6 +90,8 @@
 ### Added
 
 - Add Node 12 support @timo
+- Japanese translation @terapyon
+
 
 ### Changes
 
