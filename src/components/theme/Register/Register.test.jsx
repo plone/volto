@@ -18,6 +18,7 @@ describe('Register', () => {
           error: null,
         },
       },
+      global: { can_register: true },
       intl: {
         locale: 'en',
         messages: {},

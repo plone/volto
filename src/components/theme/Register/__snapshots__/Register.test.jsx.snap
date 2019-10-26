@@ -80,7 +80,7 @@ exports[`Register renders a register component 1`] = `
           </div>
           <div
             className="inline required field help text"
-            id="field-email"
+            id="field-username"
           >
             <div
               className="ui grid"
@@ -95,9 +95,9 @@ exports[`Register renders a register component 1`] = `
                     className="wrapper"
                   >
                     <label
-                      htmlFor="field-email"
+                      htmlFor="field-username"
                     >
-                      E-mail
+                      Username
                     </label>
                   </div>
                 </div>
@@ -109,8 +109,8 @@ exports[`Register renders a register component 1`] = `
                   >
                     <input
                       disabled={false}
-                      id="field-email"
-                      name="email"
+                      id="field-username"
+                      name="username"
                       onChange={[Function]}
                       type="text"
                       value=""
@@ -127,7 +127,7 @@ exports[`Register renders a register component 1`] = `
                   <p
                     className="help"
                   >
-                    Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
+                    Enter a username. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
                   </p>
                 </div>
               </div>

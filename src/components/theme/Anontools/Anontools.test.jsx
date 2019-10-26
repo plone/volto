@@ -13,6 +13,7 @@ describe('Anontools', () => {
     const store = mockStore({
       userSession: { token: null },
       content: { data: { '@id': 'myid' } },
+      global: { can_register: true },
       intl: {
         locale: 'en',
         messages: {},
@@ -33,6 +34,7 @@ describe('Anontools', () => {
     const store = mockStore({
       userSession: { token: '1234' },
       content: { data: {} },
+      global: { can_register: true },
       intl: {
         locale: 'en',
         messages: {},

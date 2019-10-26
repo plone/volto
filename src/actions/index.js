@@ -30,6 +30,7 @@ export { getDiff } from '@plone/volto/actions/diff/diff';
 export {
   emailNotification,
 } from '@plone/volto/actions/emailNotification/emailNotification';
+export { getGlobalState } from '@plone/volto/actions/global/global';
 export {
   createGroup,
   deleteGroup,

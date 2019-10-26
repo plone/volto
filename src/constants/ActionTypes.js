@@ -22,6 +22,7 @@ export const GET_CONTENT = 'GET_CONTENT';
 export const GET_CONTROLPANEL = 'GET_CONTROLPANEL';
 export const GET_DIFF = 'GET_DIFF';
 export const GET_GROUP = 'GET_GROUP';
+export const GET_GLOBAL_STATE = 'GET_GLOBAL_STATE';
 export const GET_HISTORY = 'GET_HISTORY';
 export const GET_NAVIGATION = 'GET_NAVIGATION';
 export const GET_PRINCIPALS = 'GET_PRINCIPALS';

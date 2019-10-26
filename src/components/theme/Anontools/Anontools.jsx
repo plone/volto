@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { List } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
+import { getGlobalState } from '../../../actions';
 import { settings } from '~/config';
 
 /**
@@ -24,6 +25,7 @@ class Anontools extends Component {
    * @static
    */
   static propTypes = {
+    getGlobalState: PropTypes.func.isRequired,
     token: PropTypes.string,
     content: PropTypes.shape({
       '@id': PropTypes.string,
@@ -41,6 +43,15 @@ class Anontools extends Component {
       '@id': null,
     },
   };
+
+  /**
+   * Component will mount
+   * @method componentWillMount
+   * @returns {undefined}
+   */
+  componentWillMount() {
+    this.props.getGlobalState();
+  }
 
   /**
    * Render method.
@@ -66,18 +77,24 @@ class Anontools extends Component {
               <FormattedMessage id="Log in" defaultMessage="Log in" />
             </Link>
           </div>
-          <div role="listitem" className="item">
-            <Link to="/register">
-              <FormattedMessage id="Register" defaultMessage="Register" />
-            </Link>
-          </div>
+          {this.props.can_register && (
+            <div role="listitem" className="item">
+              <Link to="/register">
+                <FormattedMessage id="Register" defaultMessage="Register" />
+              </Link>
+            </div>
+          )}
         </List>
       )
     );
   }
 }
 
-export default connect(state => ({
-  token: state.userSession.token,
-  content: state.content.data,
-}))(Anontools);
+export default connect(
+  state => ({
+    token: state.userSession.token,
+    content: state.content.data,
+    can_register: state.global.can_register,
+  }),
+  { getGlobalState },
+)(Anontools);

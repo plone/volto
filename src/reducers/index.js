@@ -17,6 +17,7 @@ import emailNotification from '@plone/volto/reducers/emailNotification/emailNoti
 import form from '@plone/volto/reducers/form/form';
 import history from '@plone/volto/reducers/history/history';
 import groups from '@plone/volto/reducers/groups/groups';
+import global from '@plone/volto/reducers/global/global';
 import messages from '@plone/volto/reducers/messages/messages';
 import navigation from '@plone/volto/reducers/navigation/navigation';
 import querystring from '@plone/volto/reducers/querystring/querystring';
@@ -51,6 +52,7 @@ const reducers = {
   emailNotification,
   form,
   groups,
+  global,
   history,
   messages,
   navigation,
