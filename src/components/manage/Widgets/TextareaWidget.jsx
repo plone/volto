@@ -111,12 +111,15 @@ const TextareaWidget = ({
           <Grid.Column width="8">
             {onEdit && (
               <div className="toolbar">
-                <button className="item" onClick={() => onEdit(id, schema)}>
+                <button
+                  className="item ui noborder button"
+                  onClick={() => onEdit(id, schema)}
+                >
                   <Icon name="write square" size="large" color="blue" />
                 </button>
                 <button
                   aria-label="Delete"
-                  className="item"
+                  className="item ui noborder button"
                   onClick={() => onDelete(id)}
                 >
                   <Icon name="close" size="large" color="red" />

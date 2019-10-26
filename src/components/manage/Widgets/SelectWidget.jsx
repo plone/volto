@@ -155,7 +155,7 @@ function getDefaultValues(choices, value) {
   if (isObject(value)) {
     return { label: value.title, value: value.token };
   }
-  if (value) {
+  if (value && choices.length > 0) {
     return { label: find(choices, o => o[0] === value)[1], value };
   } else {
     return {};
@@ -360,12 +360,15 @@ class SelectWidget extends Component {
             <Grid.Column width="8">
               {onEdit && (
                 <div className="toolbar">
-                  <button className="item" onClick={() => onEdit(id, schema)}>
+                  <button
+                    onClick={() => onEdit(id, schema)}
+                    className="item ui noborder button"
+                  >
                     <IconOld name="write square" size="large" color="blue" />
                   </button>
                   <button
                     aria-label="Close"
-                    className="item"
+                    className="item ui noborder button"
                     onClick={() => onDelete(id)}
                   >
                     <IconOld name="close" size="large" color="red" />
@@ -442,6 +445,7 @@ export default compose(
         getVocabFromField(props) ||
         getVocabFromItems(props);
       const vocabState = state.vocabularies[vocabBaseUrl];
+
       if (vocabState) {
         return {
           vocabState,

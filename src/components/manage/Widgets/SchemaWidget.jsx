@@ -395,10 +395,11 @@ class SchemaWidget extends Component {
    * @method onShowAddField
    * @returns {undefined}
    */
-  onShowAddField() {
+  onShowAddField(event) {
     this.setState({
       addField: true,
     });
+    event.preventDefault();
   }
 
   /**
@@ -406,10 +407,11 @@ class SchemaWidget extends Component {
    * @method onShowAddFieldset
    * @returns {undefined}
    */
-  onShowAddFieldset() {
+  onShowAddFieldset(event) {
     this.setState({
       addFieldset: true,
     });
+    event.preventDefault();
   }
 
   /**
@@ -561,13 +563,15 @@ class SchemaWidget extends Component {
                 onOrderFieldset={this.onOrderFieldset}
               />
             ))}
-            <button
-              aria-label="Add"
-              className="item"
-              onClick={this.onShowAddFieldset}
-            >
-              <Icon name="plus" size="large" />
-            </button>
+            <div className="item">
+              <button
+                aria-label="Add"
+                className="item ui noborder button"
+                onClick={this.onShowAddFieldset}
+              >
+                <Icon name="plus" size="large" />
+              </button>
+            </div>
           </div>
           {map(
             value.fieldsets[this.state.currentFieldset].fields,
@@ -595,7 +599,7 @@ class SchemaWidget extends Component {
                     <button
                       aria-label="Add"
                       id="addfield"
-                      className="item"
+                      className="item ui noborder button"
                       onClick={this.onShowAddField}
                     >
                       <Icon name="plus" color="blue" size="large" />

@@ -5,15 +5,20 @@
 ### Added
 
 - Added improved special `TextSidebarWidget` for dealing with them properly. This fixes the error in the image block `alt` sidebar input @sneridagh
+- Add Node 12 support @timo
 
 ### Changes
 
 - Removed wrapper `p` tag from image block in edit mode for better layout purposes @sneridagh
+- Make SelectWidget more robust @robgietema
+- Add image to listing view @robgietema
+- Fix `SchemaWidget` @robgietema
 
 ### Internal
 
 - Retry Cypress tests two times before failing @timo
 - Add waitForResourceToLoad to Cypress @timo
+- Add use cases to README @timo
 
 ## 4.0.0-alpha.9 (2019-10-09)
 

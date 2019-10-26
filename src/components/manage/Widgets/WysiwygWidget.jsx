@@ -281,14 +281,14 @@ class WysiwygWidget extends Component {
               {onEdit && (
                 <div className="toolbar">
                   <button
-                    className="item"
+                    className="item ui noborder button"
                     onClick={() => onEdit(id, this.schema)}
                   >
                     <Icon name="write square" size="large" color="blue" />
                   </button>
                   <button
                     aria-label="Delete"
-                    className="item"
+                    className="item ui noborder button"
                     onClick={() => onDelete(id)}
                   >
                     <Icon name="close" size="large" color="red" />

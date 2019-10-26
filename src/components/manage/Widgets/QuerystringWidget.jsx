@@ -392,10 +392,16 @@ class QuerystringWidget extends Component {
             <Grid.Column width="8">
               {onEdit && (
                 <div className="toolbar">
-                  <button className="item" onClick={() => onEdit(id, schema)}>
+                  <button
+                    onClick={() => onEdit(id, schema)}
+                    className="item ui noborder button"
+                  >
                     <OldIcon name="write square" size="large" color="blue" />
                   </button>
-                  <button className="item" onClick={() => onDelete(id)}>
+                  <button
+                    onClick={() => onDelete(id)}
+                    className="item ui noborder button"
+                  >
                     <Icon name={clearSVG} size="24px" className="close" />
                   </button>
                 </div>
