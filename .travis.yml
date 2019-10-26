@@ -29,6 +29,8 @@ addons:
       - libnss3
       - libxss1
       - libasound2
+      - python3
+      - python3-pip
 before_install:
   - nvm install 12;
   - if [ "$TEST_SUITE" != "plone" ]; then
