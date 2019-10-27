@@ -251,7 +251,7 @@ $ make start-test-backend
 Start the Volto frontend:
 
 ```shell
-$ make start-test-backend
+$ make start-test-frontend
 ```
 
 Open Cypress and start acceptance tests:
