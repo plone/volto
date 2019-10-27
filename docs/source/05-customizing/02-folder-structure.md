@@ -48,3 +48,8 @@ The site customizations also should be located inside this folder following
  * globals
  * modules
  * views
+
+## Locales
+
+The `locales` folder contains all the artifacts relating to the translations.
+For more details how to translate individual strings, please refer to the [internationalization section](07-i18n.md).

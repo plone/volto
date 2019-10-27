@@ -39,6 +39,7 @@ nav:
     - Customizing views: "05-customizing/04-customizing-views.md"
     - Creating new views: "05-customizing/05-creating-views.md"
     - Creating Add-on packages: "05-customizing/06-add-ons.md"
+    - Internationalization: "05-customizing/07-i18n.md"
   - Tiles:
     - Introduction: "06-tiles/introduction.md"
     - Anatomy: "06-tiles/anatomy.md"
@@ -64,7 +65,6 @@ markdown_extensions:
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.details
-  - pymdownx.superfences
   - pymdownx.tasklist
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
