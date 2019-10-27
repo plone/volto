@@ -1,12 +1,12 @@
-language: python
+language: node_js
+node_js:
+  - 12
 dist: xenial
 matrix:
   include:
     - name: 'Plone'
-      python: 3.7
       env: TEST_SUITE=plone ZSERVER_PORT=55001
     - name: 'Guillotina Tests'
-      python: 3.7
       env: TEST_SUITE=guillotina
     - name: 'Unit Tests'
       env: TEST_SUITE=unit
@@ -30,7 +30,6 @@ addons:
       - libxss1
       - libasound2
 before_install:
-  - nvm install 12;
   - if [ "$TEST_SUITE" != "plone" ]; then
     docker build -t plone/volto:testing .;
     fi
