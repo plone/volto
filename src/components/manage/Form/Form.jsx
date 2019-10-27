@@ -350,7 +350,10 @@ class Form extends Component {
     map(this.props.schema.fieldsets, fieldset =>
       map(fieldset.fields, fieldId => {
         const field = this.props.schema.properties[fieldId];
-        const data = this.state.formData[fieldId];
+        var data = this.state.formData[fieldId];
+        if (typeof data === 'string' || data instanceof String) {
+          data = data.trim();
+        }
         if (this.props.schema.required.indexOf(fieldId) !== -1) {
           if (field.type !== 'boolean' && !data) {
             errors[fieldId] = errors[field] || [];
