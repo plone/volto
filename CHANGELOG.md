@@ -14,6 +14,8 @@
 - Add image to listing view @robgietema
 - Fix `SchemaWidget` @robgietema
 - Move styles import to a separate file @pnicolli
+- Removed Enzyme @pnicolli
+- Added testing-library (react and cypress) @pnicolli
 
 ### Internal
 
