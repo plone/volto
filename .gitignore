@@ -16,6 +16,8 @@ build
 .idea
 lighthouse-report.html
 .vscode/
+.#*
+*~
 
 # Python
 /api/eggs/
@@ -54,3 +56,4 @@ cypress/screenshots
 
 # Local environment setup
 .env
+.vscode

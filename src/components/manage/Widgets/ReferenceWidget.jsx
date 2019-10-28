@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Form, Grid, Label, Dropdown } from 'semantic-ui-react';
 import { compact, concat, fromPairs, map, values, uniqBy } from 'lodash';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { settings } from '~/config';
 
 import { resetSearchContent, searchContent } from '../../../actions';
@@ -54,7 +54,6 @@ class ReferenceWidget extends Component {
         description: PropTypes.string,
       }),
     ),
-    intl: intlShape.isRequired,
   };
 
   /**

@@ -11,19 +11,15 @@ exports[`History renders a history component 1`] = `
     <div
       className="ui segment primary"
     >
-      <span>
-        History of 
-        <q>
-          Blog
-        </q>
-      </span>
+      History of 
+      <q>
+        Blog
+      </q>
     </div>
     <div
       className="ui secondary segment"
     >
-      <span>
-        You can view the history of your item below.
-      </span>
+      You can view the history of your item below.
     </div>
     <table
       className="ui selectable single line attached compact table"
@@ -37,30 +33,22 @@ exports[`History renders a history component 1`] = `
           <th
             className="four wide"
           >
-            <span>
-              What
-            </span>
+            What
           </th>
           <th
             className="four wide"
           >
-            <span>
-              Who
-            </span>
+            Who
           </th>
           <th
             className="four wide"
           >
-            <span>
-              When
-            </span>
+            When
           </th>
           <th
             className="four wide"
           >
-            <span>
-              Change Note
-            </span>
+            Change Note
           </th>
           <th
             className=""

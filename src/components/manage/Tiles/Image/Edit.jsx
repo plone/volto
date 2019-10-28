@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { readAsDataURL } from 'promise-file-reader';
 import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import Dropzone from 'react-dropzone';
 
@@ -62,24 +62,12 @@ class Edit extends Component {
     handleKeyDown: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
     openObjectBrowser: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   state = {
     uploading: false,
     url: '',
   };
-
-  /**
-   * Component did mount
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    if (this.props.selected) {
-      this.node.current.focus();
-    }
-  }
 
   /**
    * Component will receive props
@@ -100,10 +88,6 @@ class Edit extends Component {
         ...this.props.data,
         url: nextProps.content['@id'],
       });
-    }
-
-    if (nextProps.selected) {
-      this.node.current.focus();
     }
   }
 
@@ -227,25 +211,13 @@ class Edit extends Component {
   render() {
     return (
       <div
-        role="presentation"
-        onClick={() => this.props.onSelectTile(this.props.tile)}
         className={cx(
           'tile image align',
           {
-            selected: this.props.selected,
             center: !Boolean(this.props.data.align),
           },
           this.props.data.align,
         )}
-        onKeyDown={e =>
-          this.props.handleKeyDown(
-            e,
-            this.props.index,
-            this.props.tile,
-            this.node.current,
-          )
-        }
-        ref={this.node}
       >
         {this.props.selected && !!this.props.data.url && (
           <div className="toolbar">
@@ -278,16 +250,15 @@ class Edit extends Component {
             <div className="toolbar">{this.props.appendSecondaryActions}</div>
           )}
         {this.props.data.url ? (
-          <p>
-            <img
-              src={
-                this.props.data.url.includes(settings.apiPath)
-                  ? `${flattenToAppURL(this.props.data.url)}/@@images/image`
-                  : this.props.data.url
-              }
-              alt=""
-            />
-          </p>
+          <img
+            className={cx({ 'full-width': this.props.data.align === 'full' })}
+            src={
+              this.props.data.url.includes(settings.apiPath)
+                ? `${flattenToAppURL(this.props.data.url)}/@@images/image`
+                : this.props.data.url
+            }
+            alt={this.props.data.alt || ''}
+          />
         ) : (
           <div>
             <Dropzone onDrop={this.onDrop} className="dropzone">

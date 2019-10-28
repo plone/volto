@@ -34,14 +34,12 @@ dist:
 test:
 	(cd api && bin/test)
 
-bin/pip:
-	virtualenv --clear --python=python3 .
-	bin/pip install -r requirements-docs.txt
-
 docs-serve:
 	(cd docs && ../bin/mkdocs serve)
 
-docs-build: bin/pip
+docs-build:
+	virtualenv --clear --python=python3 .
+	./bin/pip install -r requirements-docs.txt
 	(cd docs && ../bin/mkdocs build)
 
 start-frontend: dist
@@ -88,5 +86,10 @@ start-test-frontend: ## Start Test Volto Frontend
 start-test: ## Start Test
 	@echo "$(GREEN)==> Start Test$(RESET)"
 	yarn cypress:open
+
+.PHONY: start-test-all
+start-test-all: ## Start Test
+	@echo "$(GREEN)==> Start Test$(RESET)"
+	yarn ci:cypress:run
 
 .PHONY: all start test-acceptance

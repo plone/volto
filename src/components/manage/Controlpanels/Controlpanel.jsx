@@ -11,7 +11,7 @@ import { Link, withRouter } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import { Portal } from 'react-portal';
 import { Container } from 'semantic-ui-react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
 import { Form, Icon, Toolbar, Toast } from '../../../components';
@@ -59,7 +59,6 @@ class Controlpanel extends Component {
       schema: PropTypes.object,
       title: PropTypes.string,
     }),
-    intl: intlShape.isRequired,
     pathname: PropTypes.string.isRequired,
   };
 

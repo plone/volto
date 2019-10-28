@@ -23,30 +23,36 @@ const View = ({ data }) => (
       data.align,
     )}
   >
-    <div className="video-inner">
-      {data.url.match('list') ? (
-        <Embed
-          url={`https://www.youtube.com/embed/videoseries?list=${
-            data.url.match(/^.*\?list=(.*)$/)[1]
-          }`}
-          icon="arrow right"
-          defaultActive
-          autoplay={false}
-        />
-      ) : (
-        <Embed
-          id={
-            data.url.match(/.be\//)
-              ? data.url.match(/^.*\.be\/(.*)/)[1]
-              : data.url.match(/^.*\?v=(.*)$/)[1]
-          }
-          source="youtube"
-          icon="arrow right"
-          defaultActive
-          autoplay={false}
-        />
-      )}
-    </div>
+    {data.url && (
+      <div
+        className={cx('video-inner', {
+          'full-width': data.align === 'full',
+        })}
+      >
+        {data.url.match('list') ? (
+          <Embed
+            url={`https://www.youtube.com/embed/videoseries?list=${
+              data.url.match(/^.*\?list=(.*)$/)[1]
+            }`}
+            icon="arrow right"
+            defaultActive
+            autoplay={false}
+          />
+        ) : (
+          <Embed
+            id={
+              data.url.match(/.be\//)
+                ? data.url.match(/^.*\.be\/(.*)/)[1]
+                : data.url.match(/^.*\?v=(.*)$/)[1]
+            }
+            source="youtube"
+            icon="arrow right"
+            defaultActive
+            autoplay={false}
+          />
+        )}
+      </div>
+    )}
   </p>
 );
 

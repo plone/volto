@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Input, Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 
@@ -53,7 +53,6 @@ class Edit extends Component {
     onFocusPreviousTile: PropTypes.func.isRequired,
     onFocusNextTile: PropTypes.func.isRequired,
     handleKeyDown: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -71,29 +70,6 @@ class Edit extends Component {
     this.state = {
       url: '',
     };
-  }
-
-  /**
-   * Component did mount
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    if (this.props.selected) {
-      this.node.focus();
-    }
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.selected) {
-      this.node.focus();
-    }
   }
 
   /**
@@ -162,8 +138,6 @@ class Edit extends Component {
     const { data } = this.props;
     return (
       <div
-        role="presentation"
-        onClick={() => this.props.onSelectTile(this.props.tile)}
         className={cx(
           'tile video align',
           {
@@ -172,17 +146,6 @@ class Edit extends Component {
           },
           this.props.data.align,
         )}
-        onKeyDown={e =>
-          this.props.handleKeyDown(
-            e,
-            this.props.index,
-            this.props.tile,
-            this.node,
-          )
-        }
-        ref={node => {
-          this.node = node;
-        }}
       >
         {this.props.selected && !!this.props.data.url && (
           <div className="toolbar">
@@ -245,7 +208,11 @@ class Edit extends Component {
           </div>
         )}
         {data.url ? (
-          <div className="video-inner">
+          <div
+            className={cx('video-inner', {
+              'full-width': this.props.data.align === 'full',
+            })}
+          >
             <div className="ui blocker" />
             {data.url.match('list') ? (
               <Embed

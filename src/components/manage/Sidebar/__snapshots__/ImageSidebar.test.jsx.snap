@@ -8,9 +8,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
     className="header pulled"
   >
     <h2>
-      <span>
-        Image
-      </span>
+      Image
     </h2>
   </header>
   <div
@@ -18,7 +16,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
   >
     image
     <img
-      alt=""
+      alt="alternate text"
       src="image"
       style={
         Object {
@@ -31,7 +29,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
     className="ui segment form sidebar-image-data"
   >
     <div
-      className="inline field"
+      className="inline field text"
       id="field-external"
     >
       <div
@@ -81,23 +79,9 @@ exports[`renders an Image Tile Sidebar component 1`] = `
             <button
               onClick={[Function]}
             >
-              <svg
-                className="icon"
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": undefined,
-                  }
-                }
-                onClick={null}
-                style={
-                  Object {
-                    "fill": "currentColor",
-                    "height": "18px",
-                    "width": "auto",
-                  }
-                }
-                viewBox=""
-                xmlns=""
+              <i
+                aria-hidden="true"
+                className="attributes 18px icon"
               />
             </button>
           </div>
@@ -134,12 +118,11 @@ exports[`renders an Image Tile Sidebar component 1`] = `
               className="ui input"
             >
               <input
-                disabled={false}
                 id="field-alt"
                 name="alt"
                 onChange={[Function]}
                 type="text"
-                value=""
+                value="alternate text"
               />
             </div>
           </div>
@@ -164,9 +147,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
               <label
                 htmlFor="field-align"
               >
-                <span>
-                  Alignment
-                </span>
+                Alignment
               </label>
             </div>
           </div>
@@ -323,7 +304,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
       className="content active"
     >
       <div
-        className="inline field"
+        className="inline field text"
         id="field-link"
       >
         <div
@@ -373,23 +354,9 @@ exports[`renders an Image Tile Sidebar component 1`] = `
               <button
                 onClick={[Function]}
               >
-                <svg
-                  className="icon"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": undefined,
-                    }
-                  }
-                  onClick={null}
-                  style={
-                    Object {
-                      "fill": "currentColor",
-                      "height": "18px",
-                      "width": "auto",
-                    }
-                  }
-                  viewBox=""
-                  xmlns=""
+                <i
+                  aria-hidden="true"
+                  className="attributes 18px icon"
                 />
               </button>
             </div>

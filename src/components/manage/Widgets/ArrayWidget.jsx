@@ -104,9 +104,6 @@ const customSelectStyles = {
   }),
 };
 
-const getChoices = choices =>
-  choices ? choices.map(item => ({ label: item, value: item })) : [];
-
 /**
  * ArrayWidget component class.
  * @class ArrayWidget
@@ -287,7 +284,15 @@ class ArrayWidget extends Component {
                   className="react-select-container"
                   classNamePrefix="react-select"
                   options={
-                    this.props.choices || getChoices(this.props.default) || []
+                    this.props.choices
+                      ? [
+                          ...this.props.choices.map(option => ({
+                            value: option[0],
+                            label: option[1],
+                          })),
+                          { label: 'No value', value: 'no-value' },
+                        ]
+                      : []
                   }
                   styles={customSelectStyles}
                   theme={selectTheme}

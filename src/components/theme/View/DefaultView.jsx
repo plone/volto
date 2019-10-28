@@ -1,11 +1,13 @@
 /**
  * Document view component.
- * @module components/theme/View/DocumentView
+ * @module components/theme/View/DefaultView
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import { defineMessages, injectIntl } from 'react-intl';
+
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 
@@ -17,31 +19,44 @@ import {
   hasTilesData,
 } from '../../../helpers';
 
+const messages = defineMessages({
+  unknownBlock: {
+    id: 'Unknown Block',
+    defaultMessage: 'Unknown Block {block}',
+  },
+});
+
 /**
- * Component to display the document view.
- * @function DocumentView
+ * Component to display the default view.
+ * @function DefaultView
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-const DocumentView = ({ content }) => {
+const DefaultView = ({ content, intl }) => {
   const tilesFieldname = getTilesFieldname(content);
   const tilesLayoutFieldname = getTilesLayoutFieldname(content);
 
   return hasTilesData(content) ? (
-    <div id="page-document" className="ui wrapper">
+    <div id="page-document" className="ui container">
       <Helmet title={content.title} />
       {map(content[tilesLayoutFieldname].items, tile => {
-        let Tile = null;
-        Tile =
-          tiles.defaultTilesViewMap[content[tilesFieldname][tile]['@type']];
+        const Tile =
+          tiles.tilesConfig[(content[tilesFieldname]?.[tile]?.['@type'])]?.[
+            'view'
+          ] || null;
         return Tile !== null ? (
           <Tile
             key={tile}
+            id={tile}
             properties={content}
             data={content[tilesFieldname][tile]}
           />
         ) : (
-          <div>{JSON.stringify(content[tilesFieldname][tile]['@type'])}</div>
+          <div key={tile}>
+            {intl.formatMessage(messages.unknownBlock, {
+              block: content[tilesFieldname]?.[tile]?.['@type'],
+            })}
+          </div>
         );
       })}
     </div>
@@ -84,7 +99,7 @@ const DocumentView = ({ content }) => {
  * @property {Object} propTypes Property types.
  * @static
  */
-DocumentView.propTypes = {
+DefaultView.propTypes = {
   /**
    * Content of the object
    */
@@ -109,4 +124,4 @@ DocumentView.propTypes = {
   }).isRequired,
 };
 
-export default DocumentView;
+export default injectIntl(DefaultView);

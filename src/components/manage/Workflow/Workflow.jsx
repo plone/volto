@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { uniqBy } from 'lodash';
 import Select, { components } from 'react-select';
 import { toast } from 'react-toastify';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import getWorkflowMapping from '../../../constants/Workflows';
 import { Icon } from '../../../components';
 import downSVG from '../../../icons/down-key.svg';
@@ -172,7 +172,6 @@ class Workflow extends Component {
         title: PropTypes.string,
       }),
     ),
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -285,7 +284,9 @@ class Workflow extends Component {
 
     return (
       <Fragment>
-        <label htmlFor="state-select">State</label>
+        <label htmlFor="state-select">
+          <FormattedMessage id="State" defaultMessage="State" />
+        </label>
         <Select
           name="display-select"
           className="react-select-container"

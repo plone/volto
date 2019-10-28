@@ -8,13 +8,22 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
+import { defineMessages, injectIntl } from 'react-intl';
 import { tiles } from '~/config';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
+import cx from 'classnames';
 
 import Icon from '../../../../components/theme/Icon/Icon';
 import dragSVG from '../../../../icons/drag.svg';
 import trashSVG from '../../../../icons/delete.svg';
+
+const messages = defineMessages({
+  unknownBlock: {
+    id: 'Unknown Block',
+    defaultMessage: 'Unknown Block {block}',
+  },
+});
 
 const itemSource = {
   beginDrag(props) {
@@ -100,6 +109,34 @@ class Edit extends Component {
     onDeleteTile: PropTypes.func.isRequired,
   };
 
+  componentDidMount() {
+    const { type } = this.props;
+    const tileHasOwnFocusManagement =
+      tiles.tilesConfig?.[type]?.['tileHasOwnFocusManagement'] || null;
+    if (
+      !tileHasOwnFocusManagement &&
+      this.props.selected &&
+      this.tileNode.current
+    ) {
+      this.tileNode.current.focus();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { type } = this.props;
+    const tileHasOwnFocusManagement =
+      tiles.tilesConfig?.[type]?.['tileHasOwnFocusManagement'] || null;
+    if (
+      !tileHasOwnFocusManagement &&
+      nextProps.selected &&
+      this.tileNode.current
+    ) {
+      this.tileNode.current.focus();
+    }
+  }
+
+  tileNode = React.createRef();
+
   /**
    * Render method.
    * @method render
@@ -115,8 +152,9 @@ class Edit extends Component {
       connectDragPreview,
     } = this.props;
 
-    let Tile = null;
-    Tile = tiles.defaultTilesEditMap[type];
+    const Tile = tiles.tilesConfig?.[type]?.['edit'] || null;
+    const tileHasOwnFocusManagement =
+      tiles.tilesConfig?.[type]?.['tileHasOwnFocusManagement'] || null;
 
     const hideHandler =
       this.props.data['@type'] === 'text' &&
@@ -126,18 +164,9 @@ class Edit extends Component {
           this.props.data.text.blocks.length === 1 &&
           this.props.data.text.blocks[0].text === ''));
 
-    const imageAlign =
-      this.props.data['@type'] === 'image' &&
-      !!this.props.data.align &&
-      this.props.data.align;
-
     return connectDropTarget(
       connectDragPreview(
-        <div
-          className={`ui drag tile inner ${type}${
-            !!imageAlign ? ` ${imageAlign}` : ''
-          }`}
-        >
+        <div className={`ui drag tile inner ${type}`}>
           {selected &&
             connectDragSource(
               <div
@@ -150,7 +179,52 @@ class Edit extends Component {
                 <Icon className="drag handle" name={dragSVG} size="18px" />
               </div>,
             )}
-          {Tile !== null ? <Tile {...this.props} /> : <div />}
+          {Tile !== null ? (
+            <div
+              role="presentation"
+              onClick={() => this.props.onSelectTile(this.props.tile)}
+              onKeyDown={
+                !tileHasOwnFocusManagement
+                  ? e =>
+                      this.props.handleKeyDown(
+                        e,
+                        this.props.index,
+                        this.props.tile,
+                        this.tileNode.current,
+                      )
+                  : null
+              }
+              className={cx(`tile ${type}`, { selected: this.props.selected })}
+              style={{ outline: 'none' }}
+              ref={this.tileNode}
+              // The tabIndex is required for the keyboard navigation
+              /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+              tabIndex={!tileHasOwnFocusManagement ? -1 : null}
+            >
+              <Tile {...this.props} tileNode={this.tileNode} />
+            </div>
+          ) : (
+            <div
+              role="presentation"
+              onKeyDown={e =>
+                this.props.handleKeyDown(
+                  e,
+                  this.props.index,
+                  this.props.tile,
+                  this.tileNode.current,
+                )
+              }
+              className={cx(`tile ${type}`, { selected: this.props.selected })}
+              style={{ outline: 'none' }}
+              ref={this.tileNode}
+              // The tabIndex is required for the keyboard navigation
+              tabIndex={-1}
+            >
+              {this.props.intl.formatMessage(messages.unknownBlock, {
+                block: type,
+              })}
+            </div>
+          )}
           {selected && !includes(tiles.requiredTiles, type) && (
             <Button
               icon
@@ -169,6 +243,7 @@ class Edit extends Component {
 }
 
 export default compose(
+  injectIntl,
   DropTarget(ItemTypes.ITEM, itemTarget, connect => ({
     connectDropTarget: connect.dropTarget(),
   })),

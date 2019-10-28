@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { concat, merge, map } from 'lodash';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
 import { updateContent } from '../../../actions';
 import { ModalForm } from '../../../components';
@@ -63,7 +63,6 @@ class ContentsRenameModal extends Component {
     open: PropTypes.bool.isRequired,
     onOk: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
@@ -69,7 +69,6 @@ class Edit extends Component {
       '@type': PropTypes.string,
     }),
     schema: PropTypes.objectOf(PropTypes.any),
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -92,7 +91,7 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visual: false,
+      visual: true,
     };
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -118,9 +117,9 @@ class Edit extends Component {
       this.props.getSchema(nextProps.content['@type']);
     }
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
-      if (hasTilesData(nextProps.schema.properties)) {
+      if (!hasTilesData(nextProps.schema.properties)) {
         this.setState({
-          visual: true,
+          visual: false,
         });
       }
     }
@@ -158,81 +157,84 @@ class Edit extends Component {
     );
   }
 
+  form = React.createRef();
+
   /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    if (this.props.schemaRequest.loaded && this.props.content) {
-      return (
-        <div id="page-edit">
-          <Helmet
-            title={this.props.intl.formatMessage(messages.edit, {
-              title: this.props.schema.title,
-            })}
-          />
-          <Form
-            ref={instance => {
-              if (instance) {
-                this.form = instance.refs.wrappedInstance;
-              }
-            }}
-            schema={this.props.schema}
-            formData={this.props.content}
-            onSubmit={this.onSubmit}
-            hideActions
+    return (
+      <div id="page-edit">
+        <Helmet
+          title={
+            this.props?.schema?.title
+              ? this.props.intl.formatMessage(messages.edit, {
+                  title: this.props.schema.title,
+                })
+              : null
+          }
+        />
+        <Form
+          ref={this.form}
+          schema={this.props.schema}
+          formData={this.props.content}
+          onSubmit={this.onSubmit}
+          hideActions
+          pathname={this.props.pathname}
+          visual={this.state.visual}
+          title={
+            this.props?.schema?.title
+              ? this.props.intl.formatMessage(messages.edit, {
+                  title: this.props.schema.title,
+                })
+              : null
+          }
+          loading={this.props.updateRequest.loading}
+        />
+        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+          <Toolbar
             pathname={this.props.pathname}
-            visual={this.state.visual}
-            title={this.props.intl.formatMessage(messages.edit, {
-              title: this.props.schema.title,
-            })}
-            loading={this.props.updateRequest.loading}
+            hideDefaultViewButtons
+            inner={
+              <>
+                <button
+                  id="toolbar-save"
+                  className="save"
+                  aria-label={this.props.intl.formatMessage(messages.save)}
+                  onClick={() => this.form.current.onSubmit()}
+                >
+                  <Icon
+                    name={saveSVG}
+                    className="circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.save)}
+                  />
+                </button>
+                <button
+                  className="cancel"
+                  aria-label={this.props.intl.formatMessage(messages.cancel)}
+                  onClick={() => this.onCancel()}
+                >
+                  <Icon
+                    name={clearSVG}
+                    className="circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.cancel)}
+                  />
+                </button>
+              </>
+            }
           />
-          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <>
-                  <button
-                    id="toolbar-save"
-                    className="save"
-                    aria-label={this.props.intl.formatMessage(messages.save)}
-                    onClick={() => this.form.onSubmit()}
-                  >
-                    <Icon
-                      name={saveSVG}
-                      className="circled"
-                      size="30px"
-                      title={this.props.intl.formatMessage(messages.save)}
-                    />
-                  </button>
-                  <button
-                    className="cancel"
-                    aria-label={this.props.intl.formatMessage(messages.cancel)}
-                    onClick={() => this.onCancel()}
-                  >
-                    <Icon
-                      name={clearSVG}
-                      className="circled"
-                      size="30px"
-                      title={this.props.intl.formatMessage(messages.cancel)}
-                    />
-                  </button>
-                </>
-              }
-            />
+        </Portal>
+        {this.state.visual && (
+          <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
+            <Sidebar />
           </Portal>
-          {this.state.visual && (
-            <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
-              <Sidebar />
-            </Portal>
-          )}
-        </div>
-      );
-    }
-    return <div />;
+        )}
+      </div>
+    );
   }
 }
 

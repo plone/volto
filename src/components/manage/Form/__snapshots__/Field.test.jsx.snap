@@ -65,6 +65,7 @@ exports[`Field renders a field with a specific id 1`] = `
           className="grey bars icon drag handle"
         />
         <button
+          className="item ui noborder button"
           onClick={[Function]}
         >
           <i
@@ -73,6 +74,7 @@ exports[`Field renders a field with a specific id 1`] = `
           />
         </button>
         <button
+          className="item ui noborder button"
           onClick={[Function]}
         >
           <i
@@ -81,16 +83,20 @@ exports[`Field renders a field with a specific id 1`] = `
           />
         </button>
       </div>
-      <button
-        aria-label="Add"
+      <div
         className="item"
-        onClick={[Function]}
       >
-        <i
-          aria-hidden="true"
-          className="plus large icon"
-        />
-      </button>
+        <button
+          aria-label="Add"
+          className="item ui noborder button"
+          onClick={[Function]}
+        >
+          <i
+            aria-hidden="true"
+            className="plus large icon"
+          />
+        </button>
+      </div>
     </div>
     <div
       className="inline field"
@@ -118,7 +124,7 @@ exports[`Field renders a field with a specific id 1`] = `
             >
               <button
                 aria-label="Add"
-                className="item"
+                className="item ui noborder button"
                 id="addfield"
                 onClick={[Function]}
               >

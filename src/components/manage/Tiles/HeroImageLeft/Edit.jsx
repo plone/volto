@@ -12,7 +12,7 @@ import { readAsDataURL } from 'promise-file-reader';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
@@ -81,7 +81,6 @@ class Edit extends Component {
     onFocusNextTile: PropTypes.func.isRequired,
     handleKeyDown: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -259,23 +258,9 @@ class Edit extends Component {
     }
     return (
       <div
-        role="presentation"
-        onClick={() => this.props.onSelectTile(this.props.tile)}
         className={cx('tile hero', {
           selected: this.props.selected,
         })}
-        onKeyDown={e =>
-          this.props.handleKeyDown(
-            e,
-            this.props.index,
-            this.props.tile,
-            this.node,
-            { disableArrowUp: true, disableArrowDown: true },
-          )
-        }
-        ref={node => {
-          this.node = node;
-        }}
       >
         {this.props.selected && !!this.props.data.url && (
           <div className="toolbar">
@@ -348,7 +333,10 @@ class Edit extends Component {
                     .first()
                     .getKey() === selectionState.getFocusKey()
                 ) {
-                  this.props.onFocusPreviousTile(this.props.tile, this.node);
+                  this.props.onFocusPreviousTile(
+                    this.props.tile,
+                    this.props.tileNode.current,
+                  );
                 }
               }}
               onDownArrow={() => {
@@ -395,7 +383,10 @@ class Edit extends Component {
                   .getLength();
 
                 if (currentCursorPosition === blockLength) {
-                  this.props.onFocusNextTile(this.props.tile, this.node);
+                  this.props.onFocusNextTile(
+                    this.props.tile,
+                    this.props.tileNode.current,
+                  );
                 }
               }}
             />

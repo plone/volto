@@ -10,17 +10,13 @@ import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import Editor from 'draft-js-plugins-editor';
 import { convertFromRaw, convertToRaw, EditorState } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
-import cx from 'classnames';
 
-import { settings, tiles } from '~/config';
+import { settings } from '~/config';
 
-import { Icon } from '../../../../components';
+import { Icon, TileChooser } from '../../../../components';
 import addSVG from '../../../../icons/circle-plus.svg';
-import cameraSVG from '../../../../icons/camera.svg';
-import videoSVG from '../../../../icons/videocamera.svg';
-import TemplatedTilesSVG from '../../../../icons/theme.svg';
 
 const messages = defineMessages({
   text: {
@@ -53,7 +49,6 @@ class Edit extends Component {
     onFocusPreviousTile: PropTypes.func.isRequired,
     onFocusNextTile: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -92,7 +87,6 @@ class Edit extends Component {
         editorState,
         inlineToolbarPlugin,
         addNewTileOpened: false,
-        customTilesOpened: false,
       };
     }
 
@@ -163,14 +157,15 @@ class Edit extends Component {
     this.setState(state => ({ addNewTileOpened: !state.addNewTileOpened }));
 
   handleClickOutside = e => {
-    if (this.ref && doesNodeContainClick(this.ref, e)) return;
+    if (
+      this.props.tileNode.current &&
+      doesNodeContainClick(this.props.tileNode.current, e)
+    )
+      return;
     this.setState(() => ({
       addNewTileOpened: false,
-      customTilesOpened: false,
     }));
   };
-
-  openCustomTileMenu = () => this.setState(() => ({ customTilesOpened: true }));
 
   /**
    * Render method.
@@ -185,12 +180,7 @@ class Edit extends Component {
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
 
     return (
-      <div
-        role="presentation"
-        onClick={() => this.props.onSelectTile(this.props.tile)}
-        className={cx('tile text', { selected: this.props.selected })}
-        ref={node => (this.ref = node)}
-      >
+      <>
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}
@@ -269,66 +259,13 @@ class Edit extends Component {
               <Icon name={addSVG} className="tile-add-button" size="24px" />
             </Button>
           )}
-        {this.state.addNewTileOpened && !this.state.customTilesOpened && (
-          <div className="add-tile toolbar">
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() =>
-                  this.props.onMutateTile(this.props.tile, {
-                    '@type': 'image',
-                  })
-                }
-              >
-                <Icon name={cameraSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() =>
-                  this.props.onMutateTile(this.props.tile, {
-                    '@type': 'video',
-                  })
-                }
-              >
-                <Icon name={videoSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            {tiles.customTiles.length !== 0 && (
-              <React.Fragment>
-                <div className="separator" />
-                <Button.Group>
-                  <Button icon basic onClick={this.openCustomTileMenu}>
-                    <Icon name={TemplatedTilesSVG} size="24px" />
-                  </Button>
-                </Button.Group>
-              </React.Fragment>
-            )}
-          </div>
+        {this.state.addNewTileOpened && (
+          <TileChooser
+            onMutateTile={this.props.onMutateTile}
+            currentTile={this.props.tile}
+          />
         )}
-        {this.state.addNewTileOpened && this.state.customTilesOpened && (
-          <div className="add-tile toolbar">
-            {tiles.customTiles.map(tile => (
-              <Button.Group key={tile.title}>
-                <Button
-                  icon
-                  basic
-                  onClick={() =>
-                    this.props.onMutateTile(this.props.tile, {
-                      '@type': tile.title,
-                    })
-                  }
-                >
-                  <Icon name={tile.icon} size="24px" />
-                </Button>
-              </Button.Group>
-            ))}
-          </div>
-        )}
-      </div>
+      </>
     );
   }
 }

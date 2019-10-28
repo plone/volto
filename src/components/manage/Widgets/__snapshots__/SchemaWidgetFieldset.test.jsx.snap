@@ -15,6 +15,7 @@ exports[`renders a contents item component 1`] = `
     className="grey bars icon drag handle"
   />
   <button
+    className="item ui noborder button"
     onClick={[Function]}
   >
     <i
@@ -23,6 +24,7 @@ exports[`renders a contents item component 1`] = `
     />
   </button>
   <button
+    className="item ui noborder button"
     onClick={[Function]}
   >
     <i

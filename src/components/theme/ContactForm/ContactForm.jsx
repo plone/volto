@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
 import { Container, Message, Icon } from 'semantic-ui-react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { Link, withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -78,7 +78,6 @@ class ContactForm extends Component {
    */
   static propTypes = {
     emailNotification: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
     error: PropTypes.shape({
       message: PropTypes.string,
     }),

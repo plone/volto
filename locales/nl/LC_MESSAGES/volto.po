@@ -48,8 +48,17 @@ msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Actions"
 msgstr "Acties"
+
+#: components/manage/Toolbar/Types
+msgid "Add Content"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add User"
+msgstr ""
 
 #: components/manage/Tiles/Description/Edit
 msgid "Add a description…"
@@ -63,8 +72,24 @@ msgstr ""
 msgid "Add fieldset"
 msgstr ""
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add new group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add new user"
+msgstr ""
+
 #: components/manage/Form/Form
 msgid "Add tile..."
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add to Groups"
 msgstr ""
 
 #: components/manage/Add/Add
@@ -113,6 +138,10 @@ msgstr ""
 #: components/manage/Diff/Diff
 msgid "Base"
 msgstr "Basis"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Block"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -286,10 +315,20 @@ msgstr "Standaard"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/UsersControlpanelGroups
+#: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "Verwijderen"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Delete Group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Delete User"
+msgstr ""
 
 #: components/manage/Tiles/Table/Edit
 msgid "Delete col"
@@ -303,6 +342,7 @@ msgstr ""
 msgid "Descending"
 msgstr "Aflopend"
 
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -335,9 +375,21 @@ msgstr ""
 msgid "Do you really want to delete the following items?"
 msgstr "Weet u zeker dat u de volgende items wilt verwijderen?"
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Do you really want to delete the group {groupname}?"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Do you really want to delete the user {username}?"
+msgstr ""
+
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
 msgstr "Weet u zeker dat u dit item wilt verwijderen?"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Document"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -373,6 +425,10 @@ msgstr ""
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "{title} bewerken"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Email"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Email sent"
@@ -458,9 +514,25 @@ msgstr ""
 msgid "Full Name"
 msgstr "Volledige naam"
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Fullname"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
 msgstr "GNU GPL licentie"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Group created"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Groupname"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Groups"
+msgstr ""
 
 #: components/manage/History/History
 msgid "History of {title}"
@@ -590,10 +662,6 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: components/manage/Sidebar/Sidebar
-msgid "Metadata"
-msgstr ""
-
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
@@ -653,6 +721,7 @@ msgstr ""
 msgid "Origin"
 msgstr ""
 
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
 msgid "Password"
 msgstr "Wachtwoord"
@@ -702,13 +771,20 @@ msgstr ""
 msgid "Powered by Plone & Python"
 msgstr "Powered by Plone & Python"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Preferences"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Voorvertoning"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Profile"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
-#: components/manage/Sidebar/Sidebar
 msgid "Properties"
 msgstr "Eigenschappen"
 
@@ -779,6 +855,10 @@ msgstr ""
 msgid "Rights"
 msgstr "Rechten"
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Roles"
+msgstr ""
+
 #: components/manage/Add/Add
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -804,6 +884,10 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 msgid "Search for user or group"
 msgstr "Zoeken naar gebruiker of groep"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Search group..."
+msgstr ""
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -880,6 +964,7 @@ msgid "Site Map"
 msgstr "Sitemap"
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr ""
 
@@ -892,6 +977,7 @@ msgid "Start password reset"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 msgid "State"
 msgstr "Status"
@@ -910,6 +996,7 @@ msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -977,6 +1064,7 @@ msgstr "Het spijt ons, maar deze pagina bestaat niet…"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1000,6 +1088,11 @@ msgstr ""
 
 #: components/manage/Tiles/Title/Edit
 msgid "Type the title…"
+msgstr ""
+
+#: components/manage/Tiles/Tile/Edit
+#: components/theme/View/DefaultView
+msgid "Unknown Block"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -1029,7 +1122,15 @@ msgid "Used for programmatic access to the fieldset."
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
+msgid "User created"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "User name"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Username"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -1055,6 +1156,10 @@ msgstr "Bekijk wijzigingen"
 #: components/manage/History/History
 msgid "View this revision"
 msgstr "Bekijk deze revisie"
+
+#: components/manage/Display/Display
+msgid "Viewmode"
+msgstr ""
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
@@ -1121,6 +1226,10 @@ msgid "box_forgot_password_option"
 msgstr ""
 
 #: config/Tiles
+msgid "common"
+msgstr ""
+
+#: config/Tiles
 msgid "description"
 msgstr ""
 
@@ -1137,11 +1246,31 @@ msgid "heading_sent_password"
 msgstr ""
 
 #: config/Tiles
+msgid "hero"
+msgstr ""
+
+#: config/Tiles
+msgid "html"
+msgstr ""
+
+#: config/Tiles
 msgid "image"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
+msgstr ""
+
+#: config/Tiles
+msgid "maps"
+msgstr ""
+
+#: config/Tiles
+msgid "media"
+msgstr ""
+
+#: config/Tiles
+msgid "mostUsed"
 msgstr ""
 
 #: components/theme/Login/Login

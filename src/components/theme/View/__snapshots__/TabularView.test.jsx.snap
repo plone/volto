@@ -34,30 +34,22 @@ exports[`TabularView renders a tabular view component 1`] = `
             <th
               className=""
             >
-              <span>
-                Title
-              </span>
+              Title
             </th>
             <th
               className=""
             >
-              <span>
-                Description
-              </span>
+              Description
             </th>
             <th
               className=""
             >
-              <span>
-                Type
-              </span>
+              Type
             </th>
             <th
               className=""
             >
-              <span>
-                State
-              </span>
+              State
             </th>
           </tr>
         </thead>

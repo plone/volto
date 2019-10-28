@@ -3,11 +3,10 @@
 exports[`renders an edit map tile component 1`] = `
 <div
   className="tile maps align center"
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  role="presentation"
 >
-  <div>
+  <div
+    className="video-inner"
+  >
     <iframe
       allowFullScreen={true}
       className="google-map"
