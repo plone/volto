@@ -14,6 +14,7 @@
 - Add image to listing view @robgietema
 - Fix `SchemaWidget` @robgietema
 - Move styles import to a separate file @pnicolli
+- Fix crash when user enters only whitespace in required fields @JeffersonBledsoe
 
 ### Internal
 
