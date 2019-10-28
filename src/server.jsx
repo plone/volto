@@ -10,6 +10,8 @@ import { keys } from 'lodash';
 import Raven from 'raven';
 import cookie, { plugToRequest } from 'react-cookie';
 import locale from 'locale';
+import path from 'path';
+import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 
 import routes from '~/routes';
 import nlLocale from '~/../locales/nl.json';
@@ -73,6 +75,11 @@ server
       initialEntries: [req.url],
     });
 
+    const extractor = new ChunkExtractor({
+      statsFile: path.resolve('build/loadable-stats.json'),
+      entrypoints: ['client'],
+    });
+
     // Create a new Redux store instance
     const store = configureStore(initialState, history, api);
 
@@ -104,11 +111,13 @@ server
         .then(() => {
           const context = {};
           const markup = renderToString(
-            <Provider store={store}>
-              <StaticRouter context={context} location={req.url}>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
-              </StaticRouter>
-            </Provider>,
+            <ChunkExtractorManager extractor={extractor}>
+              <Provider store={store}>
+                <StaticRouter context={context} location={req.url}>
+                  <ReduxAsyncConnect routes={routes} helpers={api} />
+                </StaticRouter>
+              </Provider>
+            </ChunkExtractorManager>,
           );
 
           if (context.url) {
@@ -117,7 +126,7 @@ server
             res.status(200).send(
               `<!doctype html>
                 ${renderToString(
-                  <Html assets={assets} markup={markup} store={store} />,
+                  <Html extractor={extractor} markup={markup} store={store} />,
                 )}
               `,
             );

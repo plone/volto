@@ -13,8 +13,14 @@ import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import loadable from '@loadable/component';
 
-import { Field, ModalForm, SchemaWidgetFieldset } from '../../../components';
+import {
+  Field /*, ModalForm */,
+  SchemaWidgetFieldset,
+} from '../../../components';
+
+const ModalForm = loadable(() => import('../Form/ModalForm'));
 
 const messages = defineMessages({
   addField: {

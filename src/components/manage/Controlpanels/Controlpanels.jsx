@@ -13,16 +13,19 @@ import { Portal } from 'react-portal';
 import Helmet from 'react-helmet';
 import { Container, Grid, Header, Icon, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import loadable from '@loadable/component';
 
 import Icons from '../../../constants/ControlpanelIcons';
 import { listControlpanels } from '../../../actions';
 import {
   Icon as IconNext,
-  Toolbar,
+  // Toolbar,
   VersionOverview,
 } from '../../../components';
 
 import backSVG from '../../../icons/back.svg';
+
+const Toolbar = loadable(() => import('../Toolbar/Toolbar'));
 
 const messages = defineMessages({
   sitesetup: {

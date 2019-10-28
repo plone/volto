@@ -1,7 +1,8 @@
+import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { render, wait } from '@testing-library/react';
 
 import ContentsRenameModal from './ContentsRenameModal';
 
@@ -10,7 +11,7 @@ const mockStore = configureStore();
 jest.mock('../Form/ModalForm', () => jest.fn(() => <div id="modalform" />));
 
 describe('ContentsRenameModal', () => {
-  it('renders a contents rename modal component', () => {
+  it('renders a contents rename modal component', async () => {
     const store = mockStore({
       content: {
         update: {
@@ -23,7 +24,7 @@ describe('ContentsRenameModal', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <ContentsRenameModal
           open
@@ -39,7 +40,9 @@ describe('ContentsRenameModal', () => {
         />
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(container).toBeEmpty();
+    await wait(() => {
+      expect(container.firstChild).toMatchSnapshot();
+    });
   });
 });

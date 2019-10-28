@@ -22,6 +22,7 @@ import {
 import { find, map, isEqual } from 'lodash';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import loadable from '@loadable/component';
 
 import {
   createUser,
@@ -36,17 +37,21 @@ import {
 } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 import {
-  ModalForm,
-  Toolbar,
+  // ModalForm,
+  // Toolbar,
   UsersControlpanelUser,
   Icon,
   UsersControlpanelGroups,
-  Toast,
+  // Toast,
 } from '../../../components';
 import addSvg from '../../../icons/circle-plus.svg';
 import backSVG from '../../../icons/back.svg';
 import saveSVG from '../../../icons/save.svg';
 import clearSVG from '../../../icons/clear.svg';
+
+const ModalForm = loadable(() => import('../Form/ModalForm'));
+const Toast = loadable(() => import('../Toast/Toast'));
+const Toolbar = loadable(() => import('../Toolbar/Toolbar'));
 
 const messages = defineMessages({
   searchUsers: {

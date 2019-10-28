@@ -29,11 +29,6 @@ exports[`Html renders a html component 1`] = `
       href="style.css"
       rel="stylesheet"
     />
-    <script
-      crossOrigin="true"
-      defer={true}
-      src="bundle.js"
-    />
   </head>
   <body
     className="class1 class2"
@@ -53,6 +48,11 @@ exports[`Html renders a html component 1`] = `
     />
     <div
       id="sidebar"
+    />
+    <script
+      async={true}
+      crossOrigin="true"
+      src="bundle.js"
     />
     <script
       charSet="UTF-8"

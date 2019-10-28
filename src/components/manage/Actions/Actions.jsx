@@ -11,10 +11,16 @@ import { Link } from 'react-router-dom';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import loadable from '@loadable/component';
 
 import { cut, copy, copyContent, moveContent } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
-import { ContentsRenameModal, Toast } from '../../../components';
+// import { ContentsRenameModal, Toast } from '../../../components';
+
+const ContentsRenameModal = loadable(() =>
+  import('../Contents/ContentsRenameModal'),
+);
+const Toast = loadable(() => import('../Toast/Toast'));
 
 const messages = defineMessages({
   cut: {

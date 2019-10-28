@@ -11,9 +11,12 @@ import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import loadable from '@loadable/component';
 
-import { Form, Toast } from '../../../components';
+import { Form /*, Toast */ } from '../../../components';
 import { createUser } from '../../../actions';
+
+const Toast = loadable(() => import('../../manage/Toast/Toast'));
 
 const messages = defineMessages({
   title: {

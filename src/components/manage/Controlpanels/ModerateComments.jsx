@@ -13,12 +13,15 @@ import { Portal } from 'react-portal';
 import { Container, Button, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import loadable from '@loadable/component';
 
 import { deleteComment, searchContent } from '../../../actions';
-import { CommentEditModal, Icon, Toolbar } from '../../../components';
+import { CommentEditModal, Icon /*, Toolbar */ } from '../../../components';
 import { getBaseUrl } from '../../../helpers';
 
 import backSVG from '../../../icons/back.svg';
+
+const Toolbar = loadable(() => import('../../manage/Toolbar/Toolbar'));
 
 const messages = defineMessages({
   back: {

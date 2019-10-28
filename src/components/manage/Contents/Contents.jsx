@@ -57,13 +57,17 @@ import {
   ContentsTagsModal,
   ContentsPropertiesModal,
   Pagination,
-  Toolbar,
-  Toast,
+  // Toolbar,
+  // Toast,
   Icon as IconNext,
 } from '../../../components';
 import { toast } from 'react-toastify';
+import loadable from '@loadable/component';
 
 import backSVG from '../../../icons/back.svg';
+
+const Toast = loadable(() => import('../Toast/Toast'));
+const Toolbar = loadable(() => import('../Toolbar/Toolbar'));
 
 const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
 const messages = defineMessages({

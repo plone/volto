@@ -14,12 +14,16 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { Container } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
+import loadable from '@loadable/component';
 
-import { Form, Icon, Toast, Toolbar } from '../../../components';
+import { Form, Icon /*, Toast, Toolbar */ } from '../../../components';
 import { updatePassword } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
 
 import backSVG from '../../../icons/back.svg';
+
+const Toast = loadable(() => import('../../manage/Toast/Toast'));
+const Toolbar = loadable(() => import('../../manage/Toolbar/Toolbar'));
 
 const messages = defineMessages({
   changePassword: {

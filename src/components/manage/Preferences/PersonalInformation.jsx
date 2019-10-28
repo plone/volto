@@ -10,9 +10,12 @@ import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
+import loadable from '@loadable/component';
 
-import { Form, Toast } from '../../../components';
+import { Form /*, Toast */ } from '../../../components';
 import { getUser, updateUser } from '../../../actions';
+
+const Toast = loadable(() => import('../../manage/Toast/Toast'));
 
 const messages = defineMessages({
   personalInformation: {

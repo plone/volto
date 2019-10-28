@@ -13,11 +13,15 @@ import { Portal } from 'react-portal';
 import { Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
+import loadable from '@loadable/component';
 
-import { Form, Icon, Toolbar, Toast } from '../../../components';
+import { Form, Icon /*, Toolbar, Toast */ } from '../../../components';
 import { updateControlpanel, getControlpanel } from '../../../actions';
 
 import backSVG from '../../../icons/back.svg';
+
+const Toast = loadable(() => import('../../manage/Toast/Toast'));
+const Toolbar = loadable(() => import('../../manage/Toolbar/Toolbar'));
 
 const messages = defineMessages({
   changesSaved: {

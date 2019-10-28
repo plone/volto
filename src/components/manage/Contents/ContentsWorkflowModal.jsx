@@ -9,9 +9,12 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { concat, filter, last, map, uniqBy } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
+import loadable from '@loadable/component';
 
 import { getWorkflow, transitionWorkflow } from '../../../actions';
-import { ModalForm } from '../../../components';
+// import { ModalForm } from '../../../components';
+
+const ModalForm = loadable(() => import('../Form/ModalForm'));
 
 const messages = defineMessages({
   default: {

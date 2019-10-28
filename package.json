@@ -168,6 +168,10 @@
     "@babel/plugin-proposal-throw-expressions": "7.2.0",
     "@babel/plugin-syntax-import-meta": "7.2.0",
     "@babel/preset-stage-0": "7.0.0",
+    "@loadable/babel-plugin": "5.10.3",
+    "@loadable/component": "5.10.3",
+    "@loadable/server": "5.10.3",
+    "@loadable/webpack-plugin": "5.7.1",
     "@testing-library/cypress": "5.0.2",
     "@testing-library/jest-dom": "4.2.0",
     "@testing-library/react": "9.3.0",
@@ -285,6 +289,5 @@
     "svgo-loader": "2.1.0",
     "tlds": "1.203.1",
     "xmlrpc": "1.3.2"
-  },
-  "devDependencies": {}
+  }
 }

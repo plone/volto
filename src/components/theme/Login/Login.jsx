@@ -24,10 +24,13 @@ import { withRouter } from 'react-router-dom';
 import { Icon } from '../../../components';
 import { login } from '../../../actions';
 import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
+// import { Toast } from '@plone/volto/components';
+import loadable from '@loadable/component';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+const Toast = loadable(() => import('../../manage/Toast/Toast'));
 
 const messages = defineMessages({
   login: {

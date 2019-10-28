@@ -30,11 +30,14 @@ describe('Html', () => {
   it('renders a html component', () => {
     const component = renderer.create(
       <Html
-        assets={{
-          client: {
-            css: 'style.css',
-            js: 'bundle.js',
-          },
+        extractor={{
+          getLinkElements: () => [
+            <link href="style.css" rel="stylesheet" key="style" />,
+          ],
+          getStyleElements: () => [],
+          getScriptElements: () => [
+            <script async src="bundle.js" key="bundle" />,
+          ],
         }}
         markup="<div />"
         store={{

@@ -14,10 +14,11 @@ import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import qs from 'query-string';
+import loadable from '@loadable/component';
 import { settings } from '~/config';
 
 import { createContent, getSchema } from '../../../actions';
-import { Form, Icon, Toolbar, Sidebar } from '../../../components';
+import { Form, Icon /*, Toolbar */, Sidebar } from '../../../components';
 import {
   getBaseUrl,
   hasTilesData,
@@ -27,6 +28,8 @@ import {
 
 import saveSVG from '../../../icons/save.svg';
 import clearSVG from '../../../icons/clear.svg';
+
+const Toolbar = loadable(() => import('../../manage/Toolbar/Toolbar'));
 
 const messages = defineMessages({
   add: {

@@ -1,8 +1,9 @@
+import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { render, wait } from '@testing-library/react';
 
 import Actions from './Actions';
 
@@ -13,7 +14,7 @@ jest.mock('../Contents/ContentsRenameModal', () =>
 );
 
 describe('Actions', () => {
-  it('renders an actions component', () => {
+  it('renders an actions component', async () => {
     const store = mockStore({
       actions: {
         actions: {
@@ -121,14 +122,15 @@ describe('Actions', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter>
           <Actions pathname="/test" />
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    await wait(() => {
+      expect(container.firstChild).toMatchSnapshot();
+    });
   });
 });

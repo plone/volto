@@ -9,6 +9,7 @@ const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const LoadablePlugin = require('@loadable/webpack-plugin');
 const fs = require('fs');
 const { map } = require('lodash');
 const glob = require('glob').sync;
@@ -125,6 +126,25 @@ module.exports = {
           __SERVER__: false,
         }),
       );
+
+      config.plugins.push(
+        new LoadablePlugin({
+          outputAsset: false,
+          writeToDisk: { filename: path.resolve(__dirname, 'build') },
+        }),
+      );
+
+      config.output.filename = dev
+        ? 'static/js/[name].js'
+        : 'static/js/[name].[chunkhash:8].js';
+
+      config.optimization = Object.assign({}, config.optimization, {
+        runtimeChunk: true,
+        splitChunks: {
+          chunks: 'all',
+          name: dev,
+        },
+      });
     }
 
     if (target === 'node') {

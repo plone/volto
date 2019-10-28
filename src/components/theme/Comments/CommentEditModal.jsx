@@ -8,9 +8,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
+import loadable from '@loadable/component';
 
 import { updateComment } from '../../../actions';
-import { ModalForm } from '../../../components';
+// import { ModalForm } from '../../../components';
+
+const ModalForm = loadable(() => import('../../manage/Form/ModalForm'));
 
 const messages = defineMessages({
   editComment: {

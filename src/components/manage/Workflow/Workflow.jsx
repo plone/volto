@@ -11,6 +11,8 @@ import { uniqBy } from 'lodash';
 import Select, { components } from 'react-select';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import loadable from '@loadable/component';
+
 import getWorkflowMapping from '../../../constants/Workflows';
 import { Icon } from '../../../components';
 import downSVG from '../../../icons/down-key.svg';
@@ -19,7 +21,9 @@ import checkSVG from '../../../icons/check.svg';
 
 import { getContent, getWorkflow, transitionWorkflow } from '../../../actions';
 import { settings } from '~/config';
-import { Toast } from '../../../components';
+// import { Toast } from '../../../components';
+
+const Toast = loadable(() => import('../../manage/Toast/Toast'));
 
 const messages = defineMessages({
   messageUpdated: {

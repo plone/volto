@@ -2,30 +2,73 @@
  * Routes.
  * @module routes
  */
-import {
-  Add,
-  App,
-  ChangePassword,
-  ContactForm,
-  Contents,
-  Controlpanel,
-  Controlpanels,
-  Edit,
-  Diff,
-  Delete,
-  History,
-  View,
-  NotFound,
-  Login,
-  Logout,
-  ModerateComments,
-  PasswordReset,
-  Register,
-  RequestPasswordReset,
-  Search,
-  Sharing,
-  UsersControlpanel,
-} from './components';
+import loadable from '@loadable/component';
+
+// import {
+// Add,
+// App,
+// ChangePassword,
+// ContactForm,
+// Contents,
+// Controlpanel,
+// Controlpanels,
+// Edit,
+// Diff,
+// Delete,
+// History,
+// View,
+// NotFound,
+// Login,
+// Logout,
+// ModerateComments,
+// PasswordReset,
+// Register,
+// RequestPasswordReset,
+// Search,
+// Sharing,
+// UsersControlpanel,
+// } from './components';
+
+const Add = loadable(() => import('./components/manage/Add/Add'));
+const App = loadable(() => import('./components/theme/App/App'));
+const ChangePassword = loadable(() =>
+  import('./components/manage/Preferences/ChangePassword'),
+);
+const ContactForm = loadable(() =>
+  import('./components/theme/ContactForm/ContactForm'),
+);
+const Contents = loadable(() =>
+  import('./components/manage/Contents/Contents'),
+);
+const Controlpanel = loadable(() =>
+  import('./components/manage/Controlpanels/Controlpanel'),
+);
+const Controlpanels = loadable(() =>
+  import('./components/manage/Controlpanels/Controlpanels'),
+);
+const Edit = loadable(() => import('./components/manage/Edit/Edit'));
+const Diff = loadable(() => import('./components/manage/Diff/Diff'));
+const Delete = loadable(() => import('./components/manage/Delete/Delete'));
+const History = loadable(() => import('./components/manage/History/History'));
+const View = loadable(() => import('./components/theme/View/View'));
+const NotFound = loadable(() => import('./components/theme/NotFound/NotFound'));
+const Login = loadable(() => import('./components/theme/Login/Login'));
+const Logout = loadable(() => import('./components/theme/Logout/Logout'));
+const ModerateComments = loadable(() =>
+  import('./components/manage/Controlpanels/ModerateComments'),
+);
+const PasswordReset = loadable(() =>
+  import('./components/theme/PasswordReset/PasswordReset'),
+);
+const Register = loadable(() => import('./components/theme/Register/Register'));
+const RequestPasswordReset = loadable(() =>
+  import('./components/theme/PasswordReset/RequestPasswordReset'),
+);
+const Search = loadable(() => import('./components/theme/Search/Search'));
+const Sharing = loadable(() => import('./components/manage/Sharing/Sharing'));
+const UsersControlpanel = loadable(() =>
+  import('./components/manage/Controlpanels/UsersControlpanel'),
+);
 
 /**
  * Default routes array.

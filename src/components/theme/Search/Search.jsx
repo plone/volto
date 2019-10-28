@@ -14,10 +14,13 @@ import { FormattedMessage } from 'react-intl';
 import { Portal } from 'react-portal';
 import { Container } from 'semantic-ui-react';
 import qs from 'query-string';
+import loadable from '@loadable/component';
 
 import { searchContent } from '../../../actions';
 
-import { SearchTags, Toolbar } from '../../../components';
+import { SearchTags /*, Toolbar */ } from '../../../components';
+
+const Toolbar = loadable(() => import('../../manage/Toolbar/Toolbar'));
 
 const toSearchOptions = (searchableText, subject, path) => {
   return {

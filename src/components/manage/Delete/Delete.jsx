@@ -13,9 +13,12 @@ import { Portal } from 'react-portal';
 import { Button, Container, List, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
+import loadable from '@loadable/component';
 
 import { deleteContent, getContent } from '../../../actions';
-import { Toolbar } from '../../../components';
+// import { Toolbar } from '../../../components';
+
+const Toolbar = loadable(() => import('../../manage/Toolbar/Toolbar'));
 
 const messages = defineMessages({
   delete: {
