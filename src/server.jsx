@@ -34,8 +34,6 @@ import languages from './constants/Languages';
 
 import configureStore from './store';
 
-const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
-
 const supported = new locale.Locales(keys(languages), 'en');
 const locales = {
   en: enLocale,
