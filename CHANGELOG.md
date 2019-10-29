@@ -6,6 +6,7 @@
 
 - Added improved special `TextSidebarWidget` for dealing with them properly. This fixes the error in the image block `alt` sidebar input @sneridagh
 - Add Node 12 support @timo
+- Added cms-only theme that allows to completely remove semantic-ui from public facing views @pnicolli
 
 ### Changes
 
