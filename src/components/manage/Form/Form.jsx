@@ -16,7 +16,7 @@ import {
   Tab,
   Message,
 } from 'semantic-ui-react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { Portal } from 'react-portal';
 
@@ -84,14 +84,13 @@ class Form extends Component {
       properties: PropTypes.objectOf(PropTypes.any),
       definitions: PropTypes.objectOf(PropTypes.any),
       required: PropTypes.arrayOf(PropTypes.string),
-    }).isRequired,
+    }),
     formData: PropTypes.objectOf(PropTypes.any),
     pathname: PropTypes.string,
     onSubmit: PropTypes.func,
     onCancel: PropTypes.func,
     submitLabel: PropTypes.string,
     resetAfterSubmit: PropTypes.bool,
-    intl: intlShape.isRequired,
     title: PropTypes.string,
     error: PropTypes.shape({
       message: PropTypes.string,
@@ -122,6 +121,7 @@ class Form extends Component {
     visual: false,
     tiles: [],
     pathname: '',
+    schema: {},
   };
 
   /**
@@ -350,7 +350,10 @@ class Form extends Component {
     map(this.props.schema.fieldsets, fieldset =>
       map(fieldset.fields, fieldId => {
         const field = this.props.schema.properties[fieldId];
-        const data = this.state.formData[fieldId];
+        var data = this.state.formData[fieldId];
+        if (typeof data === 'string' || data instanceof String) {
+          data = data.trim();
+        }
         if (this.props.schema.required.indexOf(fieldId) !== -1) {
           if (field.type !== 'boolean' && !data) {
             errors[fieldId] = errors[field] || [];
@@ -515,7 +518,7 @@ class Form extends Component {
     const renderTiles = formData[tilesLayoutFieldname].items;
     const tilesDict = formData[tilesFieldname];
     return this.props.visual ? (
-      <div className="ui wrapper">
+      <div className="ui container">
         {map(renderTiles, (tile, index) => (
           <EditTile
             id={tile}
@@ -547,25 +550,26 @@ class Form extends Component {
             onSubmit={this.onSubmit}
             error={keys(this.state.errors).length > 0}
           >
-            {map(schema.fieldsets, item => [
-              <Segment secondary attached key={item.title}>
-                {item.title}
-              </Segment>,
-              <Segment attached key={`fieldset-contents-${item.title}`}>
-                {map(item.fields, (field, index) => (
-                  <Field
-                    {...schema.properties[field]}
-                    id={field}
-                    focus={index === 0}
-                    value={this.state.formData[field]}
-                    required={schema.required.indexOf(field) !== -1}
-                    onChange={this.onChangeField}
-                    key={field}
-                    error={this.state.errors[field]}
-                  />
-                ))}
-              </Segment>,
-            ])}
+            {schema &&
+              map(schema.fieldsets, item => [
+                <Segment secondary attached key={item.title}>
+                  {item.title}
+                </Segment>,
+                <Segment attached key={`fieldset-contents-${item.title}`}>
+                  {map(item.fields, (field, index) => (
+                    <Field
+                      {...schema.properties[field]}
+                      id={field}
+                      focus={index === 0}
+                      value={this.state.formData[field]}
+                      required={schema.required.indexOf(field) !== -1}
+                      onChange={this.onChangeField}
+                      key={field}
+                      error={this.state.errors[field]}
+                    />
+                  ))}
+                </Segment>,
+              ])}
           </UiForm>
         </Portal>
       </div>
@@ -577,7 +581,7 @@ class Form extends Component {
           error={keys(this.state.errors).length > 0}
         >
           <Segment.Group raised>
-            {schema.fieldsets.length > 1 && (
+            {schema && schema.fieldsets.length > 1 && (
               <Tab
                 menu={{
                   secondary: true,
@@ -611,7 +615,7 @@ class Form extends Component {
                 }))}
               />
             )}
-            {schema.fieldsets.length === 1 && (
+            {schema && schema.fieldsets.length === 1 && (
               <Segment>
                 {this.props.title && (
                   <Segment className="primary">{this.props.title}</Segment>
@@ -696,4 +700,4 @@ class Form extends Component {
   }
 }
 
-export default injectIntl(Form, { withRef: true });
+export default injectIntl(Form, { forwardRef: true });

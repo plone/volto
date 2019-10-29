@@ -30,14 +30,6 @@ msgstr ""
 "Language-Name: Nederlands\n"
 "Preferred-Encodings: utf-8\n"
 
-#: components/manage/Controlpanels/UsersControlpanel
-msgid "ADD NEW GROUP"
-msgstr ""
-
-#: components/manage/Controlpanels/UsersControlpanel
-msgid "ADD NEW USER"
-msgstr ""
-
 #: components/theme/Footer/Footer
 msgid "Accessibility"
 msgstr "Toegankelijkheid"
@@ -82,6 +74,14 @@ msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add new group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add new user"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -1088,6 +1088,11 @@ msgstr ""
 
 #: components/manage/Tiles/Title/Edit
 msgid "Type the title…"
+msgstr ""
+
+#: components/manage/Tiles/Tile/Edit
+#: components/theme/View/DefaultView
+msgid "Unknown Block"
 msgstr ""
 
 #: components/manage/Contents/Contents

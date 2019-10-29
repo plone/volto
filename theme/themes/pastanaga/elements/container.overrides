@@ -6,23 +6,15 @@
 @sidebarWidth: 375px;
 @collapsedWidth: 20px;
 
-.ui.messages.container {
-  margin-bottom: 1em;
-}
-
 /* All Sizes */
-.ui.container,
-.ui.wrapper > *,
-.ui.wrapper > .ui.inner > * {
+.ui.container {
   display: block;
   max-width: @maxWidth !important;
   transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045), margin-left 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045), margin-right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 .contentWidthMedia(@width, @gutter, @offset) {
-  .ui.container,
-  .ui.wrapper > *,
-  .ui.wrapper > .ui.inner > *:not(.drag):not(.handle):not(.delete-button) {
+  .ui.container {
     width: @width !important;
     margin-right: @gutter !important;
     margin-left: @gutter !important;
@@ -82,10 +74,6 @@
   }
 }
 
-.ui.wrapper > .ui.inner {
-  width: 100% !important;
-}
-
 body:not(.has-toolbar):not(.has-sidebar):not(.has-toolbar-collapsed):not(.has-sidebar-collapsed) {
   .contentWidth(0);
 }
@@ -120,4 +108,16 @@ body.has-toolbar-collapsed.has-sidebar-collapsed {
 
 .tile .delete-button {
   margin-right: -25px !important;
+}
+
+// Hack for escape the blocks container in blocks full width
+.full-width {
+  position: relative;
+  right: 50%;
+  left: 50%;
+  width: 100vw !important;
+  max-width: initial !important;
+  margin-right: -50vw !important;
+  margin-left: -50vw !important;
+  // object-fit: cover;
 }

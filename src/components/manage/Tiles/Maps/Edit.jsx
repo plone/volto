@@ -6,12 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Input, Message } from 'semantic-ui-react';
-import {
-  defineMessages,
-  FormattedMessage,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import cx from 'classnames';
 
 import { Icon } from '../../../../components';
@@ -52,7 +47,6 @@ class Edit extends Component {
     onFocusPreviousTile: PropTypes.func.isRequired,
     onFocusNextTile: PropTypes.func.isRequired,
     handleKeyDown: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -244,7 +238,11 @@ class Edit extends Component {
           </div>
         )}
         {this.props.data.url ? (
-          <div>
+          <div
+            className={cx('video-inner', {
+              'full-width': this.props.data.align === 'full',
+            })}
+          >
             <iframe
               title="Google Maps Embedded Tile"
               src={this.props.data.url}

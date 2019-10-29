@@ -6,6 +6,7 @@ exports[`renders a view image component 1`] = `
 >
   <img
     alt=""
+    className=""
     src="image.jpg"
   />
 </p>

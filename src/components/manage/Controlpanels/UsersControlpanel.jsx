@@ -21,12 +21,7 @@ import {
 } from 'semantic-ui-react';
 import { find, map, isEqual } from 'lodash';
 import { toast } from 'react-toastify';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import {
   createUser,
@@ -83,12 +78,12 @@ const messages = defineMessages({
     defaultMessage: 'Delete Group',
   },
   addUserButtonTitle: {
-    id: 'ADD NEW USER',
-    defaultMessage: 'ADD NEW USER',
+    id: 'Add new user',
+    defaultMessage: 'Add new user',
   },
   addGroupsButtonTitle: {
-    id: 'ADD NEW GROUP',
-    defaultMessage: 'ADD NEW GROUP',
+    id: 'Add new group',
+    defaultMessage: 'Add new group',
   },
   addUserFormTitle: {
     id: 'Add User',
@@ -220,7 +215,6 @@ class UsersControlpanel extends Component {
         groupname: PropTypes.string,
       }),
     ).isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -721,9 +715,7 @@ class UsersControlpanel extends Component {
                     messages.addUserFormRolesTitle,
                   ),
                   type: 'array',
-                  items: {
-                    choices: this.props.roles.map(role => [role.id, role.id]),
-                  },
+                  choices: this.props.roles.map(role => [role.id, role.id]),
                   description: '',
                 },
                 groups: {
@@ -731,12 +723,7 @@ class UsersControlpanel extends Component {
                     messages.addUserGroupNameTitle,
                   ),
                   type: 'array',
-                  items: {
-                    choices: this.props.groups.map(group => [
-                      group.id,
-                      group.id,
-                    ]),
-                  },
+                  choices: this.props.groups.map(group => [group.id, group.id]),
                   description: '',
                 },
               },
@@ -797,9 +784,7 @@ class UsersControlpanel extends Component {
                     messages.addGroupsFormRolesTitle,
                   ),
                   type: 'array',
-                  items: {
-                    choices: this.props.roles.map(role => [role.id, role.id]),
-                  },
+                  choices: this.props.roles.map(role => [role.id, role.id]),
                   description: '',
                 },
               },

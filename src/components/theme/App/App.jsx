@@ -20,13 +20,7 @@ import cx from 'classnames';
 import Error from '../../../error';
 import { nonContentRoutes } from '../../../config/NonContentRoutes';
 
-import {
-  Breadcrumbs,
-  Footer,
-  Header,
-  Icon,
-  Messages,
-} from '../../../components';
+import { Breadcrumbs, Footer, Header, Icon } from '../../../components';
 import { BodyClass, getBaseUrl, getView } from '../../../helpers';
 import {
   getBreadcrumbs,
@@ -34,7 +28,6 @@ import {
   getNavigation,
   getTypes,
   getWorkflow,
-  purgeMessages,
 } from '../../../actions';
 
 import clearSVG from '../../../icons/clear.svg';
@@ -52,7 +45,6 @@ class App extends Component {
    */
   static propTypes = {
     pathname: PropTypes.string.isRequired,
-    purgeMessages: PropTypes.func.isRequired,
   };
 
   state = {
@@ -97,8 +89,6 @@ class App extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.purgeMessages();
-
       if (this.state.hasError) {
         this.setState({ hasError: false });
       }
@@ -157,7 +147,6 @@ class App extends Component {
         <Breadcrumbs pathname={path} />
         <Segment basic className="content-area">
           <main>
-            <Messages />
             {this.state.hasError ? (
               <Error
                 message={this.state.error.message}
@@ -192,7 +181,7 @@ export const __test__ = connect(
     pathname: props.location.pathname,
     token: state.userSession.token,
   }),
-  { purgeMessages },
+  {},
 )(App);
 
 export default compose(
@@ -228,6 +217,6 @@ export default compose(
       pathname: props.location.pathname,
       token: state.userSession.token,
     }),
-    { purgeMessages },
+    {},
   ),
 )(App);

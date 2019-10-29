@@ -1,4 +1,4 @@
-context('Actions', () => {
+describe('Autologin Tests', () => {
   it('As a site administrator I can add a page', function() {
     let api_url;
     if (Cypress.env('API') === 'guillotina') {

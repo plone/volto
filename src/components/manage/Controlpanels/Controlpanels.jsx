@@ -12,12 +12,7 @@ import { concat, filter, last, map, uniqBy } from 'lodash';
 import { Portal } from 'react-portal';
 import Helmet from 'react-helmet';
 import { Container, Grid, Header, Icon, Segment } from 'semantic-ui-react';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import Icons from '../../../constants/ControlpanelIcons';
 import { listControlpanels } from '../../../actions';
@@ -65,7 +60,6 @@ class Controlpanels extends Component {
       }),
     ).isRequired,
     pathname: PropTypes.string.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**

@@ -10,12 +10,7 @@ import { Button, Segment, Table, Form } from 'semantic-ui-react';
 import { convertToRaw } from 'draft-js';
 import { Portal } from 'react-portal';
 import cx from 'classnames';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import Cell from './Cell';
 import { Field, Icon } from '../../../../components';
@@ -156,7 +151,6 @@ class Edit extends Component {
    * @static
    */
   static propTypes = {
-    intl: intlShape.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     detached: PropTypes.bool,
     index: PropTypes.number.isRequired,

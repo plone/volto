@@ -8,7 +8,7 @@ import { Map } from 'immutable';
 import PropTypes from 'prop-types';
 import { stateFromHTML } from 'draft-js-import-html';
 import { Editor, DefaultDraftBlockRenderMap, EditorState } from 'draft-js';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
 const messages = defineMessages({
   title: {
@@ -39,7 +39,6 @@ class Edit extends Component {
   static propTypes = {
     properties: PropTypes.objectOf(PropTypes.any).isRequired,
     selected: PropTypes.bool.isRequired,
-    intl: intlShape.isRequired,
     index: PropTypes.number.isRequired,
     onChangeField: PropTypes.func.isRequired,
     onSelectTile: PropTypes.func.isRequired,

@@ -4,7 +4,73 @@
 
 ### Added
 
+- Added improved special `TextSidebarWidget` for dealing with them properly. This fixes the error in the image block `alt` sidebar input @sneridagh
+- Add Node 12 support @timo
+
 ### Changes
+
+- Removed wrapper `p` tag from image block in edit mode for better layout purposes @sneridagh
+- Make SelectWidget more robust @robgietema
+- Add image to listing view @robgietema
+- Fix `SchemaWidget` @robgietema
+- Move styles import to a separate file @pnicolli
+- Fix crash when user enters only whitespace in required fields @JeffersonBledsoe
+
+### Internal
+
+- Report port number on startup @fredvd
+- Retry Cypress tests two times before failing @timo
+- Add waitForResourceToLoad to Cypress @timo
+- Add use cases to README @timo
+- Re-enabled Guillotina tests @sneridagh
+- Remove Docker build from tests @sneridagh
+- Removed Enzyme @pnicolli
+- Added testing-library (react and cypress) @pnicolli
+
+## 4.0.0-alpha.9 (2019-10-09)
+
+### Changes
+
+- Rename `blockID` to `id` for view block components, to unify naming in edit-view @sneridagh
+- Change the order of the widget decider algorithm to `choices` is chosen before the vocabularies one @sneridagh
+- Remove old messages container since it's not used anymore @sneridagh
+- Improve the Pastanaga Editor block wrapper container layout, deprecating the hack `.ui.wrapper > *` @sneridagh
+- Fix `ArrayWidget` and amend users control panel arrays instantiations @sneridagh
+
+## 4.0.0-alpha.8 (2019-10-05)
+
+### Added
+
+- Upgrade react-intl to latest version @sneridagh
+
+### Changes
+
+- Fix `DefaultView.jsx` warning on missing key @sneridagh
+
+### Internal
+
+- Enable run yarn install on git checkout and git pull in husky @sneridagh
+- Disable Cypress blocks tests @sneridagh
+- Remove dockerized unit tests @timo
+- Add Cypress link test for text blocks @timo
+
+## 4.0.0-alpha.7 (2019-10-02)
+
+### Added
+
+- Add CSS class names to block chooser @timo
+- Add Cypress tests for blocks @timo @rodrigo @jakahl
+
+### Changes
+
+- Fix page jump on edit route @sneridagh
+- Fixes to users and groups controlpanel i18n strings @nileshgulia1
+
+### Internal
+
+- Change the general naming of the documentation to `developer` documentation @sneridagh
+- Add `blockID` prop to block tiles render view, this is handy for some blocks use cases @sneridagh
+- Fix flaky Cypress test @sneridagh
 
 ## 4.0.0-alpha.6 (2019-09-30)
 

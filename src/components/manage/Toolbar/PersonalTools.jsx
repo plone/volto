@@ -4,12 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import cx from 'classnames';
-import {
-  FormattedMessage,
-  injectIntl,
-  intlShape,
-  defineMessages,
-} from 'react-intl';
+import { FormattedMessage, injectIntl, defineMessages } from 'react-intl';
 import { Icon } from '../../../components';
 import { getUser } from '../../../actions';
 import logoutSVG from '../../../icons/log-out.svg';
@@ -50,7 +45,6 @@ class PersonalTools extends Component {
     userId: PropTypes.string.isRequired,
     getUser: PropTypes.func.isRequired,
     loadComponent: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**

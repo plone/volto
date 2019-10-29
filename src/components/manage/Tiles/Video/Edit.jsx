@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Input, Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 
@@ -53,7 +53,6 @@ class Edit extends Component {
     onFocusPreviousTile: PropTypes.func.isRequired,
     onFocusNextTile: PropTypes.func.isRequired,
     handleKeyDown: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -209,7 +208,11 @@ class Edit extends Component {
           </div>
         )}
         {data.url ? (
-          <div className="video-inner">
+          <div
+            className={cx('video-inner', {
+              'full-width': this.props.data.align === 'full',
+            })}
+          >
             <div className="ui blocker" />
             {data.url.match('list') ? (
               <Embed

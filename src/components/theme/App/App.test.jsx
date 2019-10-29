@@ -29,7 +29,11 @@ jest.mock('../Footer/Footer', () => jest.fn(() => <div id="footer" />));
 
 describe('App', () => {
   it('renders a app component', () => {
-    const store = mockStore();
+    const store = mockStore({
+      userSession: {
+        token: 'abcdefgh',
+      },
+    });
     const component = renderer.create(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/blog/edit']}>

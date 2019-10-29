@@ -6,9 +6,7 @@ exports[`Diff renders a diff component 1`] = `
   id="page-diff"
 >
   <h1>
-    <span>
-      Difference between revision 0 and 1 of Blog
-    </span>
+    Difference between revision 0 and 1 of Blog
   </h1>
   <div
     className="ui grid"
@@ -19,9 +17,7 @@ exports[`Diff renders a diff component 1`] = `
       <p
         className="description"
       >
-        <span>
-          You can view the difference of the revisions below.
-        </span>
+        You can view the difference of the revisions below.
       </p>
     </div>
     <div
@@ -59,9 +55,7 @@ exports[`Diff renders a diff component 1`] = `
         <th
           className="six wide"
         >
-          <span>
-            Base
-          </span>
+          Base
           <div
             aria-expanded={false}
             className="ui fluid selection dropdown"
@@ -130,9 +124,7 @@ exports[`Diff renders a diff component 1`] = `
         <th
           className="six wide"
         >
-          <span>
-            Compare
-          </span>
+          Compare
           <div
             aria-expanded={false}
             className="ui fluid selection dropdown"

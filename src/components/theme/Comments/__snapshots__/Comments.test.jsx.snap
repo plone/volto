@@ -14,11 +14,9 @@ exports[`Comments renders a comments component 1`] = `
         className="six wide column"
       >
         <span>
-          <span>
-            admin
-          </span>
-           says:
+          admin
         </span>
+         says:
       </div>
       <div
         className="right aligned six wide column"
@@ -40,9 +38,7 @@ exports[`Comments renders a comments component 1`] = `
         onClick={[Function]}
         value="someurl"
       >
-        <span>
-          Delete
-        </span>
+        Delete
       </button>
       <button
         aria-label="Edit"
@@ -55,9 +51,7 @@ exports[`Comments renders a comments component 1`] = `
           }
         }
       >
-        <span>
-          Edit
-        </span>
+        Edit
       </button>
     </div>
     <br />

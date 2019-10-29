@@ -1,4 +1,4 @@
-context('Actions', () => {
+describe('Login Tests', () => {
   beforeEach(() => {
     cy.visit('/');
     cy.contains('Log in').click();

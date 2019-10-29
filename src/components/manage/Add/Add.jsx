@@ -9,7 +9,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { keys } from 'lodash';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
@@ -74,7 +74,6 @@ class Add extends Component {
       loaded: PropTypes.bool,
     }).isRequired,
     type: PropTypes.string,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -154,6 +153,8 @@ class Add extends Component {
     this.props.history.push(getBaseUrl(this.props.pathname));
   }
 
+  form = React.createRef();
+
   /**
    * Render method.
    * @method render
@@ -171,11 +172,7 @@ class Add extends Component {
             })}
           />
           <Form
-            ref={instance => {
-              if (instance) {
-                this.form = instance.refs.wrappedInstance;
-              }
-            }}
+            ref={this.form}
             schema={this.props.schema}
             formData={{
               [getTilesFieldname(this.props.schema.properties)]: null,
@@ -200,7 +197,7 @@ class Add extends Component {
                     id="toolbar-save"
                     className="save"
                     aria-label={this.props.intl.formatMessage(messages.save)}
-                    onClick={() => this.form.onSubmit()}
+                    onClick={() => this.form.current.onSubmit()}
                   >
                     <Icon
                       name={saveSVG}

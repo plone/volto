@@ -24,7 +24,11 @@ const View = ({ data }) => (
     )}
   >
     {data.url && (
-      <div className="video-inner">
+      <div
+        className={cx('video-inner', {
+          'full-width': data.align === 'full',
+        })}
+      >
         {data.url.match('list') ? (
           <Embed
             url={`https://www.youtube.com/embed/videoseries?list=${

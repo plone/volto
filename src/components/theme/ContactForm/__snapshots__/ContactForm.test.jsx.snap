@@ -44,7 +44,7 @@ exports[`Contact form renders a contact form 1`] = `
               Contact form
             </div>
             <div
-              className="inline field"
+              className="inline field text"
               id="field-name"
             >
               <div
@@ -86,7 +86,7 @@ exports[`Contact form renders a contact form 1`] = `
               </div>
             </div>
             <div
-              className="inline required field"
+              className="inline required field text"
               id="field-from"
             >
               <div
@@ -128,7 +128,7 @@ exports[`Contact form renders a contact form 1`] = `
               </div>
             </div>
             <div
-              className="inline field"
+              className="inline field text"
               id="field-subject"
             >
               <div
@@ -326,7 +326,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
               Contact form
             </div>
             <div
-              className="inline field"
+              className="inline field text"
               id="field-name"
             >
               <div
@@ -368,7 +368,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
               </div>
             </div>
             <div
-              className="inline required field"
+              className="inline required field text"
               id="field-from"
             >
               <div
@@ -410,7 +410,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
               </div>
             </div>
             <div
-              className="inline field"
+              className="inline field text"
               id="field-subject"
             >
               <div

@@ -10,12 +10,7 @@ import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import { Container } from 'semantic-ui-react';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { Form } from '../../../components';
 import { setInitialPassword } from '../../../actions';
@@ -107,7 +102,6 @@ class PasswordReset extends Component {
     error: PropTypes.string,
     token: PropTypes.string.isRequired,
     setInitialPassword: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**

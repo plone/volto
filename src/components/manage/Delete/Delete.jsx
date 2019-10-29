@@ -11,12 +11,7 @@ import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import { Button, Container, List, Segment } from 'semantic-ui-react';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 
 import { deleteContent, getContent } from '../../../actions';
@@ -60,7 +55,6 @@ class Delete extends Component {
       title: PropTypes.string,
     }),
     returnUrl: PropTypes.string,
-    intl: intlShape.isRequired,
   };
 
   /**

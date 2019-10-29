@@ -4,11 +4,10 @@ exports[`renders an edit image tile component 1`] = `
 <div
   className="tile image align center"
 >
-  <p>
-    <img
-      alt=""
-      src="image"
-    />
-  </p>
+  <img
+    alt=""
+    className=""
+    src="image"
+  />
 </div>
 `;

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import qs from 'query-string';
 import { views } from '~/config';
 
@@ -86,7 +86,6 @@ class View extends Component {
        */
       status: PropTypes.number,
     }),
-    intl: intlShape.isRequired,
   };
 
   /**

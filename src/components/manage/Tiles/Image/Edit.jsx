@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { readAsDataURL } from 'promise-file-reader';
 import { Button, Dimmer, Input, Loader, Message } from 'semantic-ui-react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import Dropzone from 'react-dropzone';
 
@@ -62,7 +62,6 @@ class Edit extends Component {
     handleKeyDown: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
     openObjectBrowser: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   state = {
@@ -215,7 +214,6 @@ class Edit extends Component {
         className={cx(
           'tile image align',
           {
-            // selected: this.props.selected,
             center: !Boolean(this.props.data.align),
           },
           this.props.data.align,
@@ -252,16 +250,15 @@ class Edit extends Component {
             <div className="toolbar">{this.props.appendSecondaryActions}</div>
           )}
         {this.props.data.url ? (
-          <p>
-            <img
-              src={
-                this.props.data.url.includes(settings.apiPath)
-                  ? `${flattenToAppURL(this.props.data.url)}/@@images/image`
-                  : this.props.data.url
-              }
-              alt=""
-            />
-          </p>
+          <img
+            className={cx({ 'full-width': this.props.data.align === 'full' })}
+            src={
+              this.props.data.url.includes(settings.apiPath)
+                ? `${flattenToAppURL(this.props.data.url)}/@@images/image`
+                : this.props.data.url
+            }
+            alt={this.props.data.alt || ''}
+          />
         ) : (
           <div>
             <Dropzone onDrop={this.onDrop} className="dropzone">

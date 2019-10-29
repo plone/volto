@@ -13,12 +13,7 @@ import { Container, Dropdown, Icon, Segment, Table } from 'semantic-ui-react';
 import { concat, map, reverse } from 'lodash';
 import { Portal } from 'react-portal';
 import moment from 'moment';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { Icon as IconNext, Toolbar } from '../../../components';
 import { getHistory, revertHistory } from '../../../actions';
@@ -64,7 +59,6 @@ class History extends Component {
       }),
     ).isRequired,
     title: PropTypes.string.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**

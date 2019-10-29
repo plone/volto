@@ -7,12 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import moment from 'moment';
 import { Button, Grid, Segment } from 'semantic-ui-react';
 import { settings } from '~/config';
@@ -74,7 +69,6 @@ class Comments extends Component {
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**

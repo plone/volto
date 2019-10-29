@@ -23,13 +23,19 @@ const View = ({ data }) => (
       data.align,
     )}
   >
-    <iframe
-      title="Embeded Google Maps"
-      src={data.url}
-      className="google-map"
-      frameBorder="0"
-      allowFullscreen
-    />
+    <div
+      className={cx('video-inner', {
+        'full-width': data.align === 'full',
+      })}
+    >
+      <iframe
+        title="Embeded Google Maps"
+        src={data.url}
+        className="google-map"
+        frameBorder="0"
+        allowFullScreen
+      />
+    </div>
   </p>
 );
 

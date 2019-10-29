@@ -34,12 +34,7 @@ import {
 import move from 'lodash-move';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import {
   searchContent,
@@ -216,7 +211,6 @@ class Contents extends Component {
     ).isRequired,
     total: PropTypes.number.isRequired,
     pathname: PropTypes.string.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**

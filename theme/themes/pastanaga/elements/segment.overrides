@@ -102,3 +102,7 @@
   border: 3px dashed #ccc;
   box-shadow: none;
 }
+
+.users-control-panel .ui.clearing.segment.actions {
+    text-transform: uppercase;
+}

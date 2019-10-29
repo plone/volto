@@ -1,4 +1,4 @@
-# Welcome to the Volto Documentation!
+# Welcome to the Volto developer documentation!
 
 
 !!! note

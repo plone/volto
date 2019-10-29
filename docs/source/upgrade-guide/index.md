@@ -123,6 +123,11 @@ The focus management is also transferred to the engine, so no needed for your ti
 
 The default view for content types `DocumentView.jsx` has been renamed to a more appropiate `DefaultView.jsx`. This view contains the code for rendering blocks in case the content type has been Blocks enabled. Enable Blocks on your content types by composing the view of your content type using `DefaultView` component.
 
+### Deprecations
+
+- The old messages container has been removed since it's not used anymore by Volto. We changed it to use `Toast` library.
+- Improve the Pastanaga Editor block wrapper container layout, deprecating the hack `.ui.wrapper > *`.
+
 ## Upgrading to Volto 3.x
 
 Volto was upgraded to use Razzle 3.0.0 which is not a breaking change itself,

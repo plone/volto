@@ -1,4 +1,4 @@
-context('Actions', () => {
+describe('Add Content Tests', () => {
   beforeEach(() => {
     cy.autologin();
   });
@@ -37,32 +37,6 @@ context('Actions', () => {
     } else {
       cy.contains('This is a page');
       cy.contains('This is the text');
-    }
-  });
-  it('As a site administrator I can add a folder', function() {
-    cy.visit('/');
-    cy.get('#toolbar-add').click();
-    cy.get('#toolbar-add-folder').click();
-
-    if (Cypress.env('API') === 'guillotina') {
-      cy.get('.formtabs.menu')
-        .contains('default')
-        .click();
-    }
-
-    cy.get('input[name="title"]')
-      .type('This is a folder')
-      .should('have.value', 'This is a folder');
-
-    cy.get('#toolbar-save').click();
-
-    if (Cypress.env('API') === 'plone') {
-      cy.get('.navigation .item.active').should(
-        'have.text',
-        'This is a folder',
-      );
-    } else {
-      cy.contains('This is a folder');
     }
   });
   it('As a site administrator I can add a file', function() {
@@ -168,6 +142,44 @@ context('Actions', () => {
         'have.text',
         'This is a news item',
       );
+    });
+    it('As a site administrator I can add a folder', function() {
+      cy.visit('/');
+      cy.get('#toolbar-add').click();
+      cy.get('#toolbar-add-folder').click();
+
+      cy.get('input[name="title"]')
+        .type('This is a folder')
+        .should('have.value', 'This is a folder');
+
+      cy.get('#toolbar-save').click();
+
+      cy.get('.navigation .item.active').should(
+        'have.text',
+        'This is a folder',
+      );
+    });
+  }
+
+  // Guillotina only tests
+  if (Cypress.env('API') === 'guillotina') {
+    describe('Actions', () => {
+      beforeEach(() => {
+        cy.autologin();
+      });
+      it('As a site administrator I can add a Guillotina folder', function() {
+        cy.visit('/');
+        cy.get('#toolbar-add').click();
+        cy.get('#toolbar-add-cmsfolder').click();
+        cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
+          .type('This is a guillotina folder')
+          .get('.documentFirstHeading span[data-text]')
+          .contains('This is a guillotina folder');
+
+        cy.get('#toolbar-save').click();
+
+        cy.contains('This is a guillotina folder');
+      });
     });
   }
 });
