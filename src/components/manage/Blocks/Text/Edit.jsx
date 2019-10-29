@@ -15,7 +15,7 @@ import { includes, isEqual } from 'lodash';
 
 import { settings } from '~/config';
 
-import { Icon, TileChooser } from '../../../../components';
+import { Icon, BlockChooser } from '../../../../components';
 import addSVG from '../../../../icons/circle-plus.svg';
 
 const messages = defineMessages({
@@ -158,8 +158,8 @@ class Edit extends Component {
 
   handleClickOutside = e => {
     if (
-      this.props.tileNode.current &&
-      doesNodeContainClick(this.props.tileNode.current, e)
+      this.props.blockNode.current &&
+      doesNodeContainClick(this.props.blockNode.current, e)
     )
       return;
     this.setState(() => ({
@@ -260,7 +260,7 @@ class Edit extends Component {
             </Button>
           )}
         {this.state.addNewTileOpened && (
-          <TileChooser
+          <BlockChooser
             onMutateTile={this.props.onMutateTile}
             currentTile={this.props.tile}
           />

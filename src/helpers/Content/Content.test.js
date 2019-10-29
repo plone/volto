@@ -7,23 +7,24 @@ describe('Content', () => {
         nestContent({
           title: 'Example',
           '@static_behaviors': [
-            'guillotina_cms.interfaces.tiles.ITiles',
+            'guillotina_cms.interfaces.blocks.IBlocks',
             'guillotina_cms.interfaces.dublin_core.IDublinCore',
           ],
-          'guillotina_cms.interfaces.tiles.ITiles.tiles': 'tiles',
-          'guillotina_cms.interfaces.tiles.ITiles.tiles_layout': 'tiles_layout',
+          'guillotina_cms.interfaces.blocks.IBlocks.blocks': 'blocks',
+          'guillotina_cms.interfaces.blocks.IBlocks.blocks_layout':
+            'blocks_layout',
           'guillotina_cms.interfaces.dublin_core.IDublinCore.creator':
             'creator',
         }),
       ).toEqual({
         title: 'Example',
         '@static_behaviors': [
-          'guillotina_cms.interfaces.tiles.ITiles',
+          'guillotina_cms.interfaces.blocks.IBlocks',
           'guillotina_cms.interfaces.dublin_core.IDublinCore',
         ],
-        'guillotina_cms.interfaces.tiles.ITiles': {
-          tiles: 'tiles',
-          tiles_layout: 'tiles_layout',
+        'guillotina_cms.interfaces.blocks.IBlocks': {
+          blocks: 'blocks',
+          blocks_layout: 'blocks_layout',
         },
         'guillotina_cms.interfaces.dublin_core.IDublinCore': {
           creator: 'creator',

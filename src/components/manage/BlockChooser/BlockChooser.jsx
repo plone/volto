@@ -5,15 +5,15 @@ import { Accordion, Button } from 'semantic-ui-react';
 import { injectIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import AnimateHeight from 'react-animate-height';
-import { tiles } from '~/config';
+import { blocks } from '~/config';
 
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 
-const TileChooser = ({ currentTile, onMutateTile, intl }) => {
-  const mostUsedTiles = filter(tiles.tilesConfig, item => item.mostUsed);
-  const groupedTiles = groupBy(tiles.tilesConfig, item => item.group);
-  const tilesAvailable = { mostUsed: mostUsedTiles, ...groupedTiles };
+const BlockChooser = ({ currentTile, onMutateTile, intl }) => {
+  const mostUsedBlocks = filter(blocks.blocksConfig, item => item.mostUsed);
+  const groupedBlocks = groupBy(blocks.blocksConfig, item => item.group);
+  const blocksAvailable = { mostUsed: mostUsedBlocks, ...groupedBlocks };
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   function handleClick(e, titleProps) {
@@ -24,9 +24,9 @@ const TileChooser = ({ currentTile, onMutateTile, intl }) => {
   }
 
   return (
-    <div className="tiles-chooser">
+    <div className="blocks-chooser">
       <Accordion fluid styled className="form">
-        {map(tiles.groupTilesOrder, (groupName, index) => (
+        {map(blocks.groupBlocksOrder, (groupName, index) => (
           <React.Fragment key={groupName.id}>
             <Accordion.Title
               active={activeIndex === index}
@@ -56,23 +56,23 @@ const TileChooser = ({ currentTile, onMutateTile, intl }) => {
               >
                 {map(
                   filter(
-                    tilesAvailable[groupName.id],
-                    tile => !tile.restricted,
+                    blocksAvailable[groupName.id],
+                    block => !block.restricted,
                   ),
-                  tile => (
-                    <Button.Group key={tile.id}>
+                  block => (
+                    <Button.Group key={block.id}>
                       <Button
                         icon
                         basic
-                        className={tile.id}
+                        className={block.id}
                         onClick={() =>
-                          onMutateTile(currentTile, { '@type': tile.id })
+                          onMutateTile(currentTile, { '@type': block.id })
                         }
                       >
-                        <Icon name={tile.icon} size="36px" />
+                        <Icon name={block.icon} size="36px" />
                         {intl.formatMessage({
-                          id: tile.id,
-                          defaultMessage: tile.title,
+                          id: block.id,
+                          defaultMessage: block.title,
                         })}
                       </Button>
                     </Button.Group>
@@ -87,9 +87,9 @@ const TileChooser = ({ currentTile, onMutateTile, intl }) => {
   );
 };
 
-TileChooser.propTypes = {
+BlockChooser.propTypes = {
   currentTile: PropTypes.string.isRequired,
   onMutateTile: PropTypes.func.isRequired,
 };
 
-export default injectIntl(TileChooser);
+export default injectIntl(BlockChooser);

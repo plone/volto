@@ -2,11 +2,11 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
-import TileChooser from './TileChooser';
+import BlockChooser from './BlockChooser';
 
 const mockStore = configureStore();
 
-test('renders a TileChooser component', () => {
+test('renders a BlockChooser component', () => {
   const store = mockStore({
     intl: {
       locale: 'en',
@@ -15,7 +15,7 @@ test('renders a TileChooser component', () => {
   });
   const component = renderer.create(
     <Provider store={store}>
-      <TileChooser onMutateTile={() => {}} currentTile="thetileid" />
+      <BlockChooser onMutateTile={() => {}} currentTile="thetileid" />
     </Provider>,
   );
   const json = component.toJSON();

@@ -1,24 +1,24 @@
 import { defineMessages } from 'react-intl';
 
-import ViewTitleTile from '@plone/volto/components/manage/Tiles/Title/View';
-import ViewDescriptionTile from '@plone/volto/components/manage/Tiles/Description/View';
-import ViewTextTile from '@plone/volto/components/manage/Tiles/Text/View';
-import ViewImageTile from '@plone/volto/components/manage/Tiles/Image/View';
-import ViewVideoTile from '@plone/volto/components/manage/Tiles/Video/View';
-import ViewHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImageLeft/View';
-import ViewMapTile from '@plone/volto/components/manage/Tiles/Maps/View';
-import ViewHTMLTile from '@plone/volto/components/manage/Tiles/HTML/View';
-import ViewTableTile from '@plone/volto/components/manage/Tiles/Table/View';
+import ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
+import ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
+import ViewTextBlock from '@plone/volto/components/manage/Blocks/Text/View';
+import ViewImageBlock from '@plone/volto/components/manage/Blocks/Image/View';
+import ViewVideoBlock from '@plone/volto/components/manage/Blocks/Video/View';
+import ViewHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/View';
+import ViewMapBlock from '@plone/volto/components/manage/Blocks/Maps/View';
+import ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
+import ViewTableBlock from '@plone/volto/components/manage/Blocks/Table/View';
 
-import EditTitleTile from '@plone/volto/components/manage/Tiles/Title/Edit';
-import EditDescriptionTile from '@plone/volto/components/manage/Tiles/Description/Edit';
-import EditTextTile from '@plone/volto/components/manage/Tiles/Text/Edit';
-import EditImageTile from '@plone/volto/components/manage/Tiles/Image/Edit';
-import EditVideoTile from '@plone/volto/components/manage/Tiles/Video/Edit';
-import EditHeroImageLeftTile from '@plone/volto/components/manage/Tiles/HeroImageLeft/Edit';
-import EditMapTile from '@plone/volto/components/manage/Tiles/Maps/Edit';
-import EditHTMLTile from '@plone/volto/components/manage/Tiles/HTML/Edit';
-import EditTableTile from '@plone/volto/components/manage/Tiles/Table/Edit';
+import EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
+import EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
+import EditTextBlock from '@plone/volto/components/manage/Blocks/Text/Edit';
+import EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
+import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
+import EditHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/Edit';
+import EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
+import EditHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/Edit';
+import EditTableBlock from '@plone/volto/components/manage/Blocks/Table/Edit';
 
 import descriptionSVG from '@plone/volto/icons/description.svg';
 import titleSVG from '@plone/volto/icons/text.svg';
@@ -82,24 +82,24 @@ defineMessages({
   },
 });
 
-const groupTilesOrder = [
+const groupBlocksOrder = [
   { id: 'mostUsed', title: 'Most used' },
   { id: 'text', title: 'Text' },
   { id: 'media', title: 'Media' },
   { id: 'common', title: 'Common' },
 ];
 
-const tilesConfig = {
+const blocksConfig = {
   title: {
     id: 'title',
     title: 'Title',
     icon: titleSVG,
     group: 'text',
-    view: ViewTitleTile,
-    edit: EditTitleTile,
+    view: ViewTitleBlock,
+    edit: EditTitleBlock,
     restricted: true,
     mostUsed: false,
-    tileHasOwnFocusManagement: true,
+    blockHasOwnFocusManagement: true,
     security: {
       addPermission: [],
       view: [],
@@ -110,11 +110,11 @@ const tilesConfig = {
     title: 'Description',
     icon: descriptionSVG,
     group: 'text',
-    view: ViewDescriptionTile,
-    edit: EditDescriptionTile,
+    view: ViewDescriptionBlock,
+    edit: EditDescriptionBlock,
     restricted: true,
     mostUsed: false,
-    tileHasOwnFocusManagement: true,
+    blockHasOwnFocusManagement: true,
     security: {
       addPermission: [],
       view: [],
@@ -125,11 +125,11 @@ const tilesConfig = {
     title: 'Text',
     icon: textSVG,
     group: 'text',
-    view: ViewTextTile,
-    edit: EditTextTile,
+    view: ViewTextBlock,
+    edit: EditTextBlock,
     restricted: false,
     mostUsed: false,
-    tileHasOwnFocusManagement: true,
+    blockHasOwnFocusManagement: true,
     security: {
       addPermission: [],
       view: [],
@@ -140,8 +140,8 @@ const tilesConfig = {
     title: 'Image',
     icon: cameraSVG,
     group: 'media',
-    view: ViewImageTile,
-    edit: EditImageTile,
+    view: ViewImageBlock,
+    edit: EditImageBlock,
     restricted: false,
     mostUsed: true,
     security: {
@@ -154,8 +154,8 @@ const tilesConfig = {
     title: 'Video',
     icon: videoSVG,
     group: 'media',
-    view: ViewVideoTile,
-    edit: EditVideoTile,
+    view: ViewVideoBlock,
+    edit: EditVideoBlock,
     restricted: false,
     mostUsed: true,
     security: {
@@ -168,11 +168,11 @@ const tilesConfig = {
     title: 'Hero',
     icon: heroSVG,
     group: 'common',
-    view: ViewHeroImageLeftTile,
-    edit: EditHeroImageLeftTile,
+    view: ViewHeroImageLeftBlock,
+    edit: EditHeroImageLeftBlock,
     restricted: false,
     mostUsed: false,
-    tileHasOwnFocusManagement: true,
+    blockHasOwnFocusManagement: true,
     security: {
       addPermission: [],
       view: [],
@@ -183,8 +183,8 @@ const tilesConfig = {
     title: 'Maps',
     icon: globeSVG,
     group: 'common',
-    view: ViewMapTile,
-    edit: EditMapTile,
+    view: ViewMapBlock,
+    edit: EditMapBlock,
     restricted: false,
     mostUsed: false,
     security: {
@@ -197,8 +197,8 @@ const tilesConfig = {
     title: 'HTML',
     icon: codeSVG,
     group: 'common',
-    view: ViewHTMLTile,
-    edit: EditHTMLTile,
+    view: ViewHTMLBlock,
+    edit: EditHTMLBlock,
     restricted: false,
     mostUsed: false,
     security: {
@@ -211,11 +211,11 @@ const tilesConfig = {
     title: 'Table',
     icon: tableSVG,
     group: 'common',
-    view: ViewTableTile,
-    edit: EditTableTile,
+    view: ViewTableBlock,
+    edit: EditTableBlock,
     restricted: false,
     mostUsed: false,
-    tileHasOwnFocusManagement: true,
+    blockHasOwnFocusManagement: true,
     security: {
       addPermission: [],
       view: [],
@@ -223,6 +223,6 @@ const tilesConfig = {
   },
 };
 
-const requiredTiles = ['title'];
+const requiredBlocks = ['title'];
 
-export { groupTilesOrder, requiredTiles, tilesConfig };
+export { groupBlocksOrder, requiredBlocks, blocksConfig };

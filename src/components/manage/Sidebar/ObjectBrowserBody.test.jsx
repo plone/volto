@@ -7,7 +7,7 @@ import ImageSidebar from './ImageSidebar';
 
 const mockStore = configureStore();
 
-test('renders an Image Tile Sidebar component', () => {
+test('renders an Image Block Sidebar component', () => {
   const store = mockStore({
     content: {
       create: {},

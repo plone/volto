@@ -172,7 +172,7 @@ class ContactForm extends Component {
           <Form
             onSubmit={this.onSubmit}
             onCancel={this.onCancel}
-            formData={{ tilesLayoutFieldname: {} }}
+            formData={{ blocksLayoutFieldname: {} }}
             submitLabel={this.props.intl.formatMessage(messages.send)}
             resetAfterSubmit
             title={this.props.intl.formatMessage(messages.contactForm)}

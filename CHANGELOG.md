@@ -26,6 +26,7 @@
 - Remove Docker build from tests @sneridagh
 - Removed Enzyme @pnicolli
 - Added testing-library (react and cypress) @pnicolli
+- Tiles -> Blocks renaming @sneridagh
 
 ## 4.0.0-alpha.9 (2019-10-09)
 

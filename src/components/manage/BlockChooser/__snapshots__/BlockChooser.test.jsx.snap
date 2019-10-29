@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a TileChooser component 1`] = `
+exports[`renders a BlockChooser component 1`] = `
 <div
-  className="tiles-chooser"
+  className="blocks-chooser"
 >
   <div
     className="accordion ui fluid styled form"

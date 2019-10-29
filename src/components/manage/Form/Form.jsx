@@ -20,16 +20,16 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { Portal } from 'react-portal';
 
-import { EditTile, Icon, Field } from '../../../components';
-import { getTilesFieldname, getTilesLayoutFieldname } from '../../../helpers';
+import { EditBlock, Icon, Field } from '../../../components';
+import { getBlocksFieldname, getBlocksLayoutFieldname } from '../../../helpers';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
-  addTile: {
-    id: 'Add tile...',
-    defaultMessage: 'Add tile...',
+  addBlock: {
+    id: 'Add block...',
+    defaultMessage: 'Add block...',
   },
   required: {
     id: 'Required input is missing.',
@@ -137,8 +137,8 @@ class Form extends Component {
       text: uuid(),
     };
     let { formData } = props;
-    const tilesFieldname = getTilesFieldname(formData);
-    const tilesLayoutFieldname = getTilesLayoutFieldname(formData);
+    const tilesFieldname = getBlocksFieldname(formData);
+    const tilesLayoutFieldname = getBlocksLayoutFieldname(formData);
 
     if (formData === null) {
       // get defaults from schema
@@ -206,7 +206,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onChangeTile(id, value) {
-    const tilesFieldname = getTilesFieldname(this.state.formData);
+    const tilesFieldname = getBlocksFieldname(this.state.formData);
     this.setState({
       formData: {
         ...this.state.formData,
@@ -227,8 +227,8 @@ class Form extends Component {
    */
   onMutateTile(id, value) {
     const idTrailingTile = uuid();
-    const tilesFieldname = getTilesFieldname(this.state.formData);
-    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+    const tilesFieldname = getBlocksFieldname(this.state.formData);
+    const tilesLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
     const index =
       this.state.formData[tilesLayoutFieldname].items.indexOf(id) + 1;
 
@@ -273,8 +273,8 @@ class Form extends Component {
    * @returns {undefined}
    */
   onDeleteTile(id, selectPrev) {
-    const tilesFieldname = getTilesFieldname(this.state.formData);
-    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+    const tilesFieldname = getBlocksFieldname(this.state.formData);
+    const tilesLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
 
     this.setState({
       formData: {
@@ -302,8 +302,8 @@ class Form extends Component {
   onAddTile(type, index) {
     const id = uuid();
     const idTrailingTile = uuid();
-    const tilesFieldname = getTilesFieldname(this.state.formData);
-    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+    const tilesFieldname = getBlocksFieldname(this.state.formData);
+    const tilesLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
     const totalItems = this.state.formData[tilesLayoutFieldname].items.length;
     const insert = index === -1 ? totalItems : index;
 
@@ -400,7 +400,7 @@ class Form extends Component {
    * @returns {undefined}
    */
   onMoveTile(dragIndex, hoverIndex) {
-    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+    const tilesLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
 
     this.setState({
       formData: {
@@ -420,11 +420,11 @@ class Form extends Component {
    *
    * @method onFocusPreviousTile
    * @param {string} currentTile The id of the current tile
-   * @param {node} tileNode The id of the current tile
+   * @param {node} blockNode The id of the current tile
    * @returns {undefined}
    */
-  onFocusPreviousTile(currentTile, tileNode) {
-    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+  onFocusPreviousTile(currentTile, blockNode) {
+    const tilesLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
     const currentIndex = this.state.formData[
       tilesLayoutFieldname
     ].items.indexOf(currentTile);
@@ -434,7 +434,7 @@ class Form extends Component {
       return;
     }
     const newindex = currentIndex - 1;
-    tileNode.blur();
+    blockNode.blur();
 
     this.onSelectTile(
       this.state.formData[tilesLayoutFieldname].items[newindex],
@@ -445,11 +445,11 @@ class Form extends Component {
    *
    * @method onFocusNextTile
    * @param {string} currentTile The id of the current tile
-   * @param {node} tileNode The id of the current tile
+   * @param {node} blockNode The id of the current tile
    * @returns {undefined}
    */
-  onFocusNextTile(currentTile, tileNode) {
-    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+  onFocusNextTile(currentTile, blockNode) {
+    const tilesLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
     const currentIndex = this.state.formData[
       tilesLayoutFieldname
     ].items.indexOf(currentTile);
@@ -463,7 +463,7 @@ class Form extends Component {
     }
 
     const newindex = currentIndex + 1;
-    tileNode.blur();
+    blockNode.blur();
 
     this.onSelectTile(
       this.state.formData[tilesLayoutFieldname].items[newindex],
@@ -513,14 +513,14 @@ class Form extends Component {
   render() {
     const { schema, onCancel, onSubmit } = this.props;
     const { formData } = this.state;
-    const tilesFieldname = getTilesFieldname(formData);
-    const tilesLayoutFieldname = getTilesLayoutFieldname(formData);
-    const renderTiles = formData[tilesLayoutFieldname].items;
+    const tilesFieldname = getBlocksFieldname(formData);
+    const tilesLayoutFieldname = getBlocksLayoutFieldname(formData);
+    const renderBlocks = formData[tilesLayoutFieldname].items;
     const tilesDict = formData[tilesFieldname];
     return this.props.visual ? (
       <div className="ui container">
-        {map(renderTiles, (tile, index) => (
-          <EditTile
+        {map(renderBlocks, (tile, index) => (
+          <EditBlock
             id={tile}
             index={index}
             type={tilesDict[tile]['@type']}
