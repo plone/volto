@@ -9,7 +9,7 @@ We can build Volto add-on products and make them available as published
 packages (from public/private npm repositories), or as checkouts from git
 repositories using `mr-developer` helper.
 
-We can use them to easily reuse components across projects, like custom tiles,
+We can use them to easily reuse components across projects, like custom blocks,
 views, widgets, or any other Volto or React artifact.
 
 ### Mr. Developer

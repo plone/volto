@@ -74,7 +74,7 @@ utilities:
   factory: guillotina_cms.utilities.pubsub.PubSubUtility
   settings: {}
 search_parser: guillotina_cms.search.parser.Parser
-default_tiles:
+default_blocks:
   Document:
   - type: title
   - type: text
