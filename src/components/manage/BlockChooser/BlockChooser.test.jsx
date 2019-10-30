@@ -15,7 +15,7 @@ test('renders a BlockChooser component', () => {
   });
   const component = renderer.create(
     <Provider store={store}>
-      <BlockChooser onMutateTile={() => {}} currentTile="thetileid" />
+      <BlockChooser onMutateBlock={() => {}} currentBlock="theblockid" />
     </Provider>,
   );
   const json = component.toJSON();

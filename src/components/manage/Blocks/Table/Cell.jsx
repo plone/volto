@@ -1,6 +1,6 @@
 /**
- * Edit text cell tile.
- * @module components/manage/Tiles/Title/Cell
+ * Edit text cell block.
+ * @module components/manage/Blocks/Title/Cell
  */
 
 import React, { Component } from 'react';
@@ -29,7 +29,7 @@ class Cell extends Component {
     value: PropTypes.object,
     selected: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
-    isTableTileSelected: PropTypes.bool,
+    isTableBlockSelected: PropTypes.bool,
   };
 
   /**
@@ -90,7 +90,7 @@ class Cell extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (
-      nextProps.isTableTileSelected !== this.props.isTableTileSelected &&
+      nextProps.isTableBlockSelected !== this.props.isTableBlockSelected &&
       this.props.cell === 0 &&
       this.props.row === 0
     ) {

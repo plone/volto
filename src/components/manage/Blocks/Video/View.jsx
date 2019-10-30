@@ -1,6 +1,6 @@
 /**
- * View video tile.
- * @module components/manage/Tiles/Video/View
+ * View video block.
+ * @module components/manage/Blocks/Video/View
  */
 
 import React from 'react';
@@ -9,7 +9,7 @@ import { Embed } from 'semantic-ui-react';
 import cx from 'classnames';
 
 /**
- * View video tile class.
+ * View video block class.
  * @class View
  * @extends Component
  */

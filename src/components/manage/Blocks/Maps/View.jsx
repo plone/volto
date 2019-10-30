@@ -1,6 +1,6 @@
 /**
- * View map tile.
- * @module components/manage/Tiles/Maps/View
+ * View map block.
+ * @module components/manage/Blocks/Maps/View
  */
 
 import React from 'react';
@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 /**
- * View image tile class.
+ * View image block class.
  * @class View
  * @extends Component
  */

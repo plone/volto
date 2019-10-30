@@ -1,6 +1,6 @@
 /**
- * Edit html tile.
- * @module components/manage/Tiles/HTML/Edit
+ * Edit html block.
+ * @module components/manage/Blocks/HTML/Edit
  */
 
 import React, { Component } from 'react';
@@ -17,7 +17,7 @@ import clearSVG from '../../../../icons/clear.svg';
 import codeSVG from '../../../../icons/code.svg';
 
 /**
- * Edit html tile class.
+ * Edit html block class.
  * @class Edit
  * @extends Component
  */
@@ -29,12 +29,12 @@ class Edit extends Component {
    */
   static propTypes = {
     selected: PropTypes.bool.isRequired,
-    tile: PropTypes.string.isRequired,
+    block: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
-    onChangeTile: PropTypes.func.isRequired,
-    onSelectTile: PropTypes.func.isRequired,
-    onDeleteTile: PropTypes.func.isRequired,
+    onChangeBlock: PropTypes.func.isRequired,
+    onSelectBlock: PropTypes.func.isRequired,
+    onDeleteBlock: PropTypes.func.isRequired,
     handleKeyDown: PropTypes.func.isRequired,
   };
 
@@ -84,7 +84,7 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onChangeCode(code) {
-    this.props.onChangeTile(this.props.tile, {
+    this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       html: code,
     });

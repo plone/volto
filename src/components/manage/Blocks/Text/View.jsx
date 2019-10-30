@@ -1,6 +1,6 @@
 /**
- * View text tile.
- * @module components/manage/Tiles/Text/View
+ * View text block.
+ * @module components/manage/Blocks/Text/View
  */
 
 import PropTypes from 'prop-types';
@@ -9,7 +9,7 @@ import redraft from 'redraft';
 import { settings } from '~/config';
 
 /**
- * View text tile class.
+ * View text block class.
  * @class View
  * @extends Component
  */

@@ -10,7 +10,7 @@ import { blocks } from '~/config';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 
-const BlockChooser = ({ currentTile, onMutateTile, intl }) => {
+const BlockChooser = ({ currentBlock, onMutateBlock, intl }) => {
   const mostUsedBlocks = filter(blocks.blocksConfig, item => item.mostUsed);
   const groupedBlocks = groupBy(blocks.blocksConfig, item => item.group);
   const blocksAvailable = { mostUsed: mostUsedBlocks, ...groupedBlocks };
@@ -66,7 +66,7 @@ const BlockChooser = ({ currentTile, onMutateTile, intl }) => {
                         basic
                         className={block.id}
                         onClick={() =>
-                          onMutateTile(currentTile, { '@type': block.id })
+                          onMutateBlock(currentBlock, { '@type': block.id })
                         }
                       >
                         <Icon name={block.icon} size="36px" />
@@ -88,8 +88,8 @@ const BlockChooser = ({ currentTile, onMutateTile, intl }) => {
 };
 
 BlockChooser.propTypes = {
-  currentTile: PropTypes.string.isRequired,
-  onMutateTile: PropTypes.func.isRequired,
+  currentBlock: PropTypes.string.isRequired,
+  onMutateBlock: PropTypes.func.isRequired,
 };
 
 export default injectIntl(BlockChooser);

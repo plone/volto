@@ -6,15 +6,15 @@ import imageRightSVG from '@plone/volto/icons/image-right.svg';
 import imageFitSVG from '@plone/volto/icons/image-fit.svg';
 import imageFullSVG from '@plone/volto/icons/image-full.svg';
 
-const AlignTile = ({ align, onChangeTile, data, tile }) => {
+const AlignBlock = ({ align, onChangeBlock, data, block }) => {
   /**
-   * Align tile handler
-   * @method onAlignTile
+   * Align block handler
+   * @method onAlignBlock
    * @param {string} align Alignment option
    * @returns {undefined}
    */
-  function onAlignTile(align) {
-    onChangeTile(tile, {
+  function onAlignBlock(align) {
+    onChangeBlock(block, {
       ...data,
       align,
     });
@@ -27,7 +27,7 @@ const AlignTile = ({ align, onChangeTile, data, tile }) => {
           icon
           basic
           aria-label="Left"
-          onClick={() => onAlignTile('left')}
+          onClick={() => onAlignBlock('left')}
           active={data.align === 'left'}
         >
           <Icon name={imageLeftSVG} size="24px" />
@@ -38,7 +38,7 @@ const AlignTile = ({ align, onChangeTile, data, tile }) => {
           icon
           basic
           aria-label="Right"
-          onClick={() => onAlignTile('right')}
+          onClick={() => onAlignBlock('right')}
           active={data.align === 'right'}
         >
           <Icon name={imageRightSVG} size="24px" />
@@ -49,7 +49,7 @@ const AlignTile = ({ align, onChangeTile, data, tile }) => {
           icon
           basic
           aria-label="Center"
-          onClick={() => onAlignTile('center')}
+          onClick={() => onAlignBlock('center')}
           active={data.align === 'center' || !data.align}
         >
           <Icon name={imageFitSVG} size="24px" />
@@ -60,7 +60,7 @@ const AlignTile = ({ align, onChangeTile, data, tile }) => {
           icon
           basic
           aria-label="Full"
-          onClick={() => onAlignTile('full')}
+          onClick={() => onAlignBlock('full')}
           active={data.align === 'full'}
         >
           <Icon name={imageFullSVG} size="24px" />
@@ -70,4 +70,4 @@ const AlignTile = ({ align, onChangeTile, data, tile }) => {
   );
 };
 
-export default AlignTile;
+export default AlignBlock;

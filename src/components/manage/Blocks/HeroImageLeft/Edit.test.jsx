@@ -8,7 +8,7 @@ import Edit from './Edit';
 global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
 const mockStore = configureStore();
-test('renders an edit hero tile component', () => {
+test('renders an edit hero block component', () => {
   const store = mockStore({
     content: {
       create: {},
@@ -24,19 +24,19 @@ test('renders an edit hero tile component', () => {
       <Edit
         data={{ url: 'hero' }}
         selected={false}
-        tile="1234"
+        block="1234"
         content={{}}
         request={{
           loading: false,
           loaded: false,
         }}
         pathname="/news"
-        onChangeTile={() => {}}
-        onSelectTile={() => {}}
-        onDeleteTile={() => {}}
+        onChangeBlock={() => {}}
+        onSelectBlock={() => {}}
+        onDeleteBlock={() => {}}
         createContent={() => {}}
-        onFocusPreviousTile={() => {}}
-        onFocusNextTile={() => {}}
+        onFocusPreviousBlock={() => {}}
+        onFocusNextBlock={() => {}}
         handleKeyDown={() => {}}
         index={1}
       />

@@ -22,9 +22,9 @@ test('renders an Image Block Sidebar component', () => {
     <Provider store={store}>
       <ImageSidebar
         data={{ url: 'image' }}
-        tile="1234"
+        block="1234"
         pathname="/news"
-        onChangeTile={() => {}}
+        onChangeBlock={() => {}}
         openObjectBrowser={() => {}}
       />
     </Provider>,

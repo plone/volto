@@ -1,6 +1,6 @@
 /**
- * Edit video tile.
- * @module components/manage/Tiles/Title/Edit
+ * Edit video block.
+ * @module components/manage/Blocks/Title/Edit
  */
 
 import React, { Component } from 'react';
@@ -25,14 +25,14 @@ const messages = defineMessages({
     id: 'Specify a youtube video or playlist url',
     defaultMessage: 'Specify a youtube video or playlist url',
   },
-  VideoTileInputPlaceholder: {
+  VideoBlockInputPlaceholder: {
     id: 'Enter Video URL',
     defaultMessage: 'Enter Video URL',
   },
 });
 
 /**
- * Edit video tile class.
+ * Edit video block class.
  * @class Edit
  * @extends Component
  */
@@ -44,14 +44,14 @@ class Edit extends Component {
    */
   static propTypes = {
     selected: PropTypes.bool.isRequired,
-    tile: PropTypes.string.isRequired,
+    block: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
-    onChangeTile: PropTypes.func.isRequired,
-    onSelectTile: PropTypes.func.isRequired,
-    onDeleteTile: PropTypes.func.isRequired,
-    onFocusPreviousTile: PropTypes.func.isRequired,
-    onFocusNextTile: PropTypes.func.isRequired,
+    onChangeBlock: PropTypes.func.isRequired,
+    onSelectBlock: PropTypes.func.isRequired,
+    onDeleteBlock: PropTypes.func.isRequired,
+    onFocusPreviousBlock: PropTypes.func.isRequired,
+    onFocusNextBlock: PropTypes.func.isRequired,
     handleKeyDown: PropTypes.func.isRequired,
   };
 
@@ -90,7 +90,7 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onSubmitUrl() {
-    this.props.onChangeTile(this.props.tile, {
+    this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       url: this.state.url,
     });
@@ -98,12 +98,12 @@ class Edit extends Component {
 
   /**
    * Align tile handler
-   * @method onAlignTile
+   * @method onAlignBlock
    * @param {string} align Alignment option
    * @returns {undefined}
    */
-  onAlignTile(align) {
-    this.props.onChangeTile(this.props.tile, {
+  onAlignBlock(align) {
+    this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       align,
     });
@@ -154,7 +154,7 @@ class Edit extends Component {
                 icon
                 basic
                 aria-label="Left"
-                onClick={this.onAlignTile.bind(this, 'left')}
+                onClick={this.onAlignBlock.bind(this, 'left')}
                 active={data.align === 'left'}
               >
                 <Icon name={imageLeftSVG} size="24px" />
@@ -165,7 +165,7 @@ class Edit extends Component {
                 icon
                 basic
                 aria-label="Right"
-                onClick={this.onAlignTile.bind(this, 'right')}
+                onClick={this.onAlignBlock.bind(this, 'right')}
                 active={data.align === 'right'}
               >
                 <Icon name={imageRightSVG} size="24px" />
@@ -176,7 +176,7 @@ class Edit extends Component {
                 icon
                 basic
                 aria-label="Center"
-                onClick={this.onAlignTile.bind(this, 'center')}
+                onClick={this.onAlignBlock.bind(this, 'center')}
                 active={data.align === 'center' || !data.align}
               >
                 <Icon name={imageFitSVG} size="24px" />
@@ -187,7 +187,7 @@ class Edit extends Component {
                 icon
                 basic
                 aria-label="Full"
-                onClick={this.onAlignTile.bind(this, 'full')}
+                onClick={this.onAlignBlock.bind(this, 'full')}
                 active={data.align === 'full'}
               >
                 <Icon name={imageFullSVG} size="24px" />
@@ -202,7 +202,7 @@ class Edit extends Component {
               onKeyDown={this.onKeyDownVariantMenuForm}
               onChange={this.onChangeUrl}
               placeholder={this.props.intl.formatMessage(
-                messages.VideoTileInputPlaceholder,
+                messages.VideoBlockInputPlaceholder,
               )}
             />
           </div>

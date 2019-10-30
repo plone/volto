@@ -1,6 +1,6 @@
 /**
- * View table tile.
- * @module components/manage/Tiles/Table/View
+ * View table block.
+ * @module components/manage/Blocks/Table/View
  */
 
 import React from 'react';
@@ -12,7 +12,7 @@ import redraft from 'redraft';
 import { settings } from '~/config';
 
 /**
- * View table tile class.
+ * View table block class.
  * @class View
  * @extends Component
  */

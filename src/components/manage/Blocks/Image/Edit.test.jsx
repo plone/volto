@@ -7,7 +7,7 @@ import Edit from './Edit';
 
 const mockStore = configureStore();
 
-test('renders an edit image tile component', () => {
+test('renders an edit image block component', () => {
   const store = mockStore({
     content: {
       create: {},
@@ -23,19 +23,19 @@ test('renders an edit image tile component', () => {
       <Edit
         data={{ url: 'image' }}
         selected={false}
-        tile="1234"
+        block="1234"
         content={{}}
         request={{
           loading: false,
           loaded: false,
         }}
         pathname="/news"
-        onChangeTile={() => {}}
-        onSelectTile={() => {}}
-        onDeleteTile={() => {}}
+        onChangeBlock={() => {}}
+        onSelectBlock={() => {}}
+        onDeleteBlock={() => {}}
         createContent={() => {}}
-        onFocusPreviousTile={() => {}}
-        onFocusNextTile={() => {}}
+        onFocusPreviousBlock={() => {}}
+        onFocusNextBlock={() => {}}
         handleKeyDown={() => {}}
         index={1}
       />

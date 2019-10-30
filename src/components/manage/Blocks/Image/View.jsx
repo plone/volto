@@ -1,6 +1,6 @@
 /**
- * View image tile.
- * @module components/manage/Tiles/Image/View
+ * View image block.
+ * @module components/manage/Blocks/Image/View
  */
 
 import React from 'react';
@@ -12,7 +12,7 @@ import { settings } from '~/config';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
- * View image tile class.
+ * View image block class.
  * @class View
  * @extends Component
  */

@@ -1,13 +1,13 @@
 /**
- * View html tile.
- * @module components/manage/Tiles/HTML/View
+ * View html block.
+ * @module components/manage/Blocks/HTML/View
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * View html tile class.
+ * View html block class.
  * @class View
  * @extends Component
  */

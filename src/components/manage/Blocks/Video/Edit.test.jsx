@@ -7,7 +7,7 @@ import Edit from './Edit';
 
 const mockStore = configureStore();
 
-test('renders an edit image tile component', () => {
+test('renders an edit image block component', () => {
   const store = mockStore({
     intl: {
       locale: 'en',
@@ -19,12 +19,12 @@ test('renders an edit image tile component', () => {
       <Edit
         data={{ url: 'https://youtu.be/KqjeO_ekW3g' }}
         selected={false}
-        tile="1234"
-        onChangeTile={() => {}}
-        onSelectTile={() => {}}
-        onDeleteTile={() => {}}
-        onFocusPreviousTile={() => {}}
-        onFocusNextTile={() => {}}
+        block="1234"
+        onChangeBlock={() => {}}
+        onSelectBlock={() => {}}
+        onDeleteBlock={() => {}}
+        onFocusPreviousBlock={() => {}}
+        onFocusNextBlock={() => {}}
         handleKeyDown={() => {}}
         index={1}
       />

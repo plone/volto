@@ -1,6 +1,6 @@
 /**
- * Edit text tile.
- * @module components/manage/Tiles/Title/Edit
+ * Edit text block.
+ * @module components/manage/Blocks/Title/Edit
  */
 
 import React, { Component } from 'react';
@@ -140,7 +140,7 @@ const messages = defineMessages({
 });
 
 /**
- * Edit text tile class.
+ * Edit text block class.
  * @class Edit
  * @extends Component
  */
@@ -155,14 +155,14 @@ class Edit extends Component {
     detached: PropTypes.bool,
     index: PropTypes.number.isRequired,
     selected: PropTypes.bool.isRequired,
-    tile: PropTypes.string.isRequired,
-    onAddTile: PropTypes.func.isRequired,
-    onChangeTile: PropTypes.func.isRequired,
-    onDeleteTile: PropTypes.func.isRequired,
-    onMutateTile: PropTypes.func.isRequired,
-    onFocusPreviousTile: PropTypes.func.isRequired,
-    onFocusNextTile: PropTypes.func.isRequired,
-    onSelectTile: PropTypes.func.isRequired,
+    block: PropTypes.string.isRequired,
+    onAddBlock: PropTypes.func.isRequired,
+    onChangeBlock: PropTypes.func.isRequired,
+    onDeleteBlock: PropTypes.func.isRequired,
+    onMutateBlock: PropTypes.func.isRequired,
+    onFocusPreviousBlock: PropTypes.func.isRequired,
+    onFocusNextBlock: PropTypes.func.isRequired,
+    onSelectBlock: PropTypes.func.isRequired,
   };
 
   /**
@@ -213,7 +213,7 @@ class Edit extends Component {
    */
   componentDidMount() {
     if (!this.props.data.table) {
-      this.props.onChangeTile(this.props.tile, {
+      this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
         table: initialTable,
       });
@@ -228,7 +228,7 @@ class Edit extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (!nextProps.data.table) {
-      this.props.onChangeTile(nextProps.tile, {
+      this.props.onChangeBlock(nextProps.block, {
         ...nextProps.data,
         table: initialTable,
       });
@@ -259,7 +259,7 @@ class Edit extends Component {
     table.rows[row].cells[cell].value = convertToRaw(
       editorState.getCurrentContent(),
     );
-    this.props.onChangeTile(this.props.tile, {
+    this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       table,
     });
@@ -278,7 +278,7 @@ class Edit extends Component {
       type === 'header' ? 'data' : 'header';
     console.log(type);
     console.log(table);
-    this.props.onChangeTile(this.props.tile, {
+    this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       table,
     });
@@ -291,7 +291,7 @@ class Edit extends Component {
    */
   onInsertRowBefore() {
     const table = this.props.data.table;
-    this.props.onChangeTile(this.props.tile, {
+    this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       table: {
         ...table,
@@ -317,7 +317,7 @@ class Edit extends Component {
    */
   onInsertRowAfter() {
     const table = this.props.data.table;
-    this.props.onChangeTile(this.props.tile, {
+    this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       table: {
         ...table,
@@ -337,7 +337,7 @@ class Edit extends Component {
    */
   onInsertColBefore() {
     const table = this.props.data.table;
-    this.props.onChangeTile(this.props.tile, {
+    this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       table: {
         ...table,
@@ -366,7 +366,7 @@ class Edit extends Component {
    */
   onInsertColAfter() {
     const table = this.props.data.table;
-    this.props.onChangeTile(this.props.tile, {
+    this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       table: {
         ...table,
@@ -399,7 +399,7 @@ class Edit extends Component {
       });
     }
 
-    this.props.onChangeTile(this.props.tile, {
+    this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       table: {
         ...table,
@@ -421,7 +421,7 @@ class Edit extends Component {
    */
   onDeleteRow() {
     const table = this.props.data.table;
-    this.props.onChangeTile(this.props.tile, {
+    this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       table: {
         ...table,
@@ -441,7 +441,7 @@ class Edit extends Component {
    */
   toggleBool(value) {
     const table = this.props.data.table;
-    this.props.onChangeTile(this.props.tile, {
+    this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       table: {
         ...table,
@@ -635,7 +635,7 @@ class Edit extends Component {
                           rowIndex === this.state.selected.row &&
                           cellIndex === this.state.selected.cell
                         }
-                        isTableTileSelected={this.props.selected}
+                        isTableBlockSelected={this.props.selected}
                         onChange={this.onChangeCell}
                       />
                     </Table.Cell>

@@ -1,13 +1,13 @@
 /**
- * View description tile.
- * @module components/manage/Tiles/Description/View
+ * View description block.
+ * @module components/manage/Blocks/Description/View
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * View description tile class.
+ * View description block class.
  * @class View
  * @extends Component
  */

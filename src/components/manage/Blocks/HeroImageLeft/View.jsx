@@ -1,6 +1,6 @@
 /**
- * View image tile.
- * @module components/manage/Tiles/Hero/View
+ * View image block.
+ * @module components/manage/Blocks/Hero/View
  */
 
 import React from 'react';
@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
- * View image tile class.
+ * View image block class.
  * @class View
  * @extends Component
  */

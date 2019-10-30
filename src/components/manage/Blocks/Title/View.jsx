@@ -1,13 +1,13 @@
 /**
- * View title tile.
- * @module components/manage/Tiles/Title/View
+ * View title block.
+ * @module components/manage/Blocks/Title/View
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * View title tile class.
+ * View title block class.
  * @class View
  * @extends Component
  */

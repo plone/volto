@@ -35,7 +35,7 @@ const itemSource = {
 };
 
 const ItemTypes = {
-  ITEM: 'tile',
+  ITEM: 'block',
 };
 
 const itemTarget = {
@@ -75,7 +75,7 @@ const itemTarget = {
     }
 
     // Time to actually perform the action
-    props.onMoveTile(dragIndex, hoverIndex);
+    props.onMoveBlock(dragIndex, hoverIndex);
 
     // Note: we're mutating the monitor item here!
     // Generally it's better to avoid mutations,
@@ -105,8 +105,8 @@ class Edit extends Component {
     connectDropTarget: PropTypes.func.isRequired,
     index: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
-    onMoveTile: PropTypes.func.isRequired,
-    onDeleteTile: PropTypes.func.isRequired,
+    onMoveBlock: PropTypes.func.isRequired,
+    onDeleteBlock: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -182,14 +182,14 @@ class Edit extends Component {
           {Block !== null ? (
             <div
               role="presentation"
-              onClick={() => this.props.onSelectTile(this.props.tile)}
+              onClick={() => this.props.onSelectBlock(this.props.id)}
               onKeyDown={
                 !blockHasOwnFocusManagement
                   ? e =>
                       this.props.handleKeyDown(
                         e,
                         this.props.index,
-                        this.props.tile,
+                        this.props.id,
                         this.blockNode.current,
                       )
                   : null
@@ -210,7 +210,7 @@ class Edit extends Component {
                 this.props.handleKeyDown(
                   e,
                   this.props.index,
-                  this.props.tile,
+                  this.props.id,
                   this.blockNode.current,
                 )
               }
@@ -229,7 +229,7 @@ class Edit extends Component {
             <Button
               icon
               basic
-              onClick={() => this.props.onDeleteTile(id)}
+              onClick={() => this.props.onDeleteBlock(id)}
               className="delete-button"
               aria-label="delete"
             >

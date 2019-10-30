@@ -1,6 +1,6 @@
 /**
- * Edit text tile.
- * @module components/manage/Tiles/Title/Edit
+ * Edit text block.
+ * @module components/manage/Blocks/Title/Edit
  */
 
 import React, { Component } from 'react';
@@ -26,7 +26,7 @@ const messages = defineMessages({
 });
 
 /**
- * Edit text tile class.
+ * Edit text block class.
  * @class Edit
  * @extends Component
  */
@@ -41,14 +41,14 @@ class Edit extends Component {
     detached: PropTypes.bool,
     index: PropTypes.number.isRequired,
     selected: PropTypes.bool.isRequired,
-    tile: PropTypes.string.isRequired,
-    onAddTile: PropTypes.func.isRequired,
-    onChangeTile: PropTypes.func.isRequired,
-    onDeleteTile: PropTypes.func.isRequired,
-    onMutateTile: PropTypes.func.isRequired,
-    onFocusPreviousTile: PropTypes.func.isRequired,
-    onFocusNextTile: PropTypes.func.isRequired,
-    onSelectTile: PropTypes.func.isRequired,
+    block: PropTypes.string.isRequired,
+    onAddBlock: PropTypes.func.isRequired,
+    onChangeBlock: PropTypes.func.isRequired,
+    onDeleteBlock: PropTypes.func.isRequired,
+    onMutateBlock: PropTypes.func.isRequired,
+    onFocusPreviousBlock: PropTypes.func.isRequired,
+    onFocusNextBlock: PropTypes.func.isRequired,
+    onSelectBlock: PropTypes.func.isRequired,
   };
 
   /**
@@ -86,7 +86,7 @@ class Edit extends Component {
       this.state = {
         editorState,
         inlineToolbarPlugin,
-        addNewTileOpened: false,
+        addNewBlockOpened: false,
       };
     }
 
@@ -145,7 +145,7 @@ class Edit extends Component {
         convertToRaw(this.state.editorState.getCurrentContent()),
       )
     ) {
-      this.props.onChangeTile(this.props.tile, {
+      this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
         text: convertToRaw(editorState.getCurrentContent()),
       });
@@ -153,8 +153,8 @@ class Edit extends Component {
     this.setState({ editorState });
   }
 
-  toggleAddNewTile = () =>
-    this.setState(state => ({ addNewTileOpened: !state.addNewTileOpened }));
+  toggleAddNewBlock = () =>
+    this.setState(state => ({ addNewBlockOpened: !state.addNewBlockOpened }));
 
   handleClickOutside = e => {
     if (
@@ -163,7 +163,7 @@ class Edit extends Component {
     )
       return;
     this.setState(() => ({
-      addNewTileOpened: false,
+      addNewBlockOpened: false,
     }));
   };
 
@@ -201,8 +201,8 @@ class Edit extends Component {
               );
               const blockType = currentContentBlock.getType();
               if (!includes(settings.listBlockTypes, blockType)) {
-                this.props.onSelectTile(
-                  this.props.onAddTile('text', this.props.index + 1),
+                this.props.onSelectBlock(
+                  this.props.onAddBlock('text', this.props.index + 1),
                 );
                 return 'handled';
               }
@@ -215,7 +215,7 @@ class Edit extends Component {
               command === 'backspace' &&
               editorState.getCurrentContent().getPlainText().length === 0
             ) {
-              this.props.onDeleteTile(this.props.tile, true);
+              this.props.onDeleteBlock(this.props.block, true);
             }
           }}
           onUpArrow={() => {
@@ -223,7 +223,7 @@ class Edit extends Component {
             const currentCursorPosition = selectionState.getStartOffset();
 
             if (currentCursorPosition === 0) {
-              this.props.onFocusPreviousTile(this.props.tile, this.node);
+              this.props.onFocusPreviousBlock(this.props.block, this.node);
             }
           }}
           onDownArrow={() => {
@@ -236,7 +236,7 @@ class Edit extends Component {
               .getLength();
 
             if (currentCursorPosition === blockLength) {
-              this.props.onFocusNextTile(this.props.tile, this.node);
+              this.props.onFocusNextBlock(this.props.block, this.node);
             }
           }}
           ref={node => {
@@ -253,16 +253,16 @@ class Edit extends Component {
             <Button
               basic
               icon
-              onClick={this.toggleAddNewTile}
+              onClick={this.toggleAddNewBlock}
               className="tile-add-button"
             >
               <Icon name={addSVG} className="tile-add-button" size="24px" />
             </Button>
           )}
-        {this.state.addNewTileOpened && (
+        {this.state.addNewBlockOpened && (
           <BlockChooser
-            onMutateTile={this.props.onMutateTile}
-            currentTile={this.props.tile}
+            onMutateBlock={this.props.onMutateBlock}
+            currentBlock={this.props.block}
           />
         )}
       </>

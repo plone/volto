@@ -1,6 +1,6 @@
 /**
- * Edit image tile.
- * @module components/manage/Tiles/Image/Edit
+ * Edit image block.
+ * @module components/manage/Blocks/Image/Edit
  */
 
 import React, { Component } from 'react';
@@ -20,20 +20,20 @@ import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 
-import imageTileSVG from './tile-image.svg';
+import imageBlockSVG from './block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 
 const messages = defineMessages({
-  ImageTileInputPlaceholder: {
+  ImageBlockInputPlaceholder: {
     id: 'Browse the site, drop an image, or type an URL',
     defaultMessage: 'Browse the site, drop an image, or type an URL',
   },
 });
 
 /**
- * Edit image tile class.
+ * Edit image block class.
  * @class Edit
  * @extends Component
  */
@@ -45,7 +45,7 @@ class Edit extends Component {
    */
   static propTypes = {
     selected: PropTypes.bool.isRequired,
-    tile: PropTypes.string.isRequired,
+    block: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     content: PropTypes.objectOf(PropTypes.any).isRequired,
@@ -54,11 +54,11 @@ class Edit extends Component {
       loaded: PropTypes.bool,
     }).isRequired,
     pathname: PropTypes.string.isRequired,
-    onChangeTile: PropTypes.func.isRequired,
-    onSelectTile: PropTypes.func.isRequired,
-    onDeleteTile: PropTypes.func.isRequired,
-    onFocusPreviousTile: PropTypes.func.isRequired,
-    onFocusNextTile: PropTypes.func.isRequired,
+    onChangeBlock: PropTypes.func.isRequired,
+    onSelectBlock: PropTypes.func.isRequired,
+    onDeleteBlock: PropTypes.func.isRequired,
+    onFocusPreviousBlock: PropTypes.func.isRequired,
+    onFocusNextBlock: PropTypes.func.isRequired,
     handleKeyDown: PropTypes.func.isRequired,
     createContent: PropTypes.func.isRequired,
     openObjectBrowser: PropTypes.func.isRequired,
@@ -84,7 +84,7 @@ class Edit extends Component {
       this.setState({
         uploading: false,
       });
-      this.props.onChangeTile(this.props.tile, {
+      this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
         url: nextProps.content['@id'],
       });
@@ -118,13 +118,13 @@ class Edit extends Component {
   };
 
   /**
-   * Align tile handler
-   * @method onAlignTile
+   * Align block handler
+   * @method onAlignBlock
    * @param {string} align Alignment option
    * @returns {undefined}
    */
-  onAlignTile(align) {
-    this.props.onChangeTile(this.props.tile, {
+  onAlignBlock(align) {
+    this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       align,
     });
@@ -149,7 +149,7 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onSubmitUrl = () => {
-    this.props.onChangeTile(this.props.tile, {
+    this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       url: this.state.url,
     });
@@ -230,7 +230,7 @@ class Edit extends Component {
                 icon
                 basic
                 onClick={() =>
-                  this.props.onChangeTile(this.props.tile, {
+                  this.props.onChangeBlock(this.props.block, {
                     ...this.props.data,
                     url: '',
                   })
@@ -269,7 +269,7 @@ class Edit extends Component {
                   </Dimmer>
                 )}
                 <center>
-                  <img src={imageTileSVG} alt="" />
+                  <img src={imageBlockSVG} alt="" />
                   <div className="toolbar-inner">
                     <Button.Group>
                       <Button
@@ -287,7 +287,7 @@ class Edit extends Component {
                       onKeyDown={this.onKeyDownVariantMenuForm}
                       onChange={this.onChangeUrl}
                       placeholder={this.props.intl.formatMessage(
-                        messages.ImageTileInputPlaceholder,
+                        messages.ImageBlockInputPlaceholder,
                       )}
                       // Prevents propagation to the Dropzone and the opening
                       // of the upload browser dialog

@@ -9,7 +9,7 @@ const mockStore = configureStore();
 
 global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
-test('renders an edit text tile component', () => {
+test('renders an edit text block component', () => {
   const store = mockStore({
     intl: {
       locale: 'en',
@@ -21,15 +21,15 @@ test('renders an edit text tile component', () => {
       <Edit
         data={{ text: '<p>body text</p>' }}
         selected={false}
-        tile="1234"
-        onAddTile={() => {}}
-        onChangeTile={() => {}}
-        onSelectTile={() => {}}
-        onDeleteTile={() => {}}
-        onFocusPreviousTile={() => {}}
-        onFocusNextTile={() => {}}
+        block="1234"
+        onAddBlock={() => {}}
+        onChangeBlock={() => {}}
+        onSelectBlock={() => {}}
+        onDeleteBlock={() => {}}
+        onFocusPreviousBlock={() => {}}
+        onFocusNextBlock={() => {}}
         handleKeyDown={() => {}}
-        onMutateTile={() => {}}
+        onMutateBlock={() => {}}
         index={1}
       />
     </Provider>,

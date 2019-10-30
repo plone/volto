@@ -1,6 +1,6 @@
 /**
- * Edit title tile.
- * @module components/manage/Tiles/Title/Edit
+ * Edit title block.
+ * @module components/manage/Blocks/Title/Edit
  */
 
 import React, { Component } from 'react';
@@ -26,7 +26,7 @@ const blockRenderMap = Map({
 const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
 
 /**
- * Edit title tile class.
+ * Edit title block class.
  * @class Edit
  * @extends Component
  */
@@ -41,12 +41,12 @@ class Edit extends Component {
     selected: PropTypes.bool.isRequired,
     index: PropTypes.number.isRequired,
     onChangeField: PropTypes.func.isRequired,
-    onSelectTile: PropTypes.func.isRequired,
-    onDeleteTile: PropTypes.func.isRequired,
-    onAddTile: PropTypes.func.isRequired,
-    onFocusPreviousTile: PropTypes.func.isRequired,
-    onFocusNextTile: PropTypes.func.isRequired,
-    tile: PropTypes.string.isRequired,
+    onSelectBlock: PropTypes.func.isRequired,
+    onDeleteBlock: PropTypes.func.isRequired,
+    onAddBlock: PropTypes.func.isRequired,
+    onFocusPreviousBlock: PropTypes.func.isRequired,
+    onFocusNextBlock: PropTypes.func.isRequired,
+    block: PropTypes.string.isRequired,
   };
 
   /**
@@ -141,8 +141,8 @@ class Edit extends Component {
         editorState={this.state.editorState}
         blockRenderMap={extendedBlockRenderMap}
         handleReturn={() => {
-          this.props.onSelectTile(
-            this.props.onAddTile('text', this.props.index + 1),
+          this.props.onSelectBlock(
+            this.props.onAddBlock('text', this.props.index + 1),
           );
           return 'handled';
         }}
@@ -158,7 +158,7 @@ class Edit extends Component {
               .first()
               .getKey() === selectionState.getFocusKey()
           ) {
-            this.props.onFocusPreviousTile(this.props.tile, this.node);
+            this.props.onFocusPreviousBlock(this.props.block, this.node);
           }
         }}
         onDownArrow={() => {
@@ -171,7 +171,7 @@ class Edit extends Component {
               .last()
               .getKey() === selectionState.getFocusKey()
           ) {
-            this.props.onFocusNextTile(this.props.tile, this.node);
+            this.props.onFocusNextBlock(this.props.block, this.node);
           }
         }}
         ref={node => {
