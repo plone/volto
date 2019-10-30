@@ -22,6 +22,7 @@
 - Add waitForResourceToLoad to Cypress @timo
 - Add use cases to README @timo
 - Re-enabled Guillotina tests @sneridagh
+- Add internationalization section to docs @pgrunewald
 
 ## 4.0.0-alpha.9 (2019-10-09)
 
