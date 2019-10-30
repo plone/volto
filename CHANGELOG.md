@@ -26,6 +26,7 @@
 - Remove Docker build from tests @sneridagh
 - Removed Enzyme @pnicolli
 - Added testing-library (react and cypress) @pnicolli
+- Lodash improvements for decrease bundle size @sneridagh
 
 ## 4.0.0-alpha.9 (2019-10-09)
 
