@@ -26,49 +26,50 @@ export function setupGuillotina() {
     body: { id: 'dbusers' },
   }).then(response => console.log('dbusers add-on installed'));
 
-  cy.request({
-    method: 'POST',
-    url: `${api_url}/container/users`,
-    headers,
-    body: {
-      '@type': 'User',
-      username: 'admin',
-      email: 'foo@bar.com',
-      password: 'secret',
-    },
-  }).then(response => console.log('default user created'));
+  // guillotina_dbusers is no longer installed in the guillotina_cms docker image
+  // cy.request({
+  //   method: 'POST',
+  //   url: `${api_url}/container/users`,
+  //   headers,
+  //   body: {
+  //     '@type': 'User',
+  //     username: 'admin',
+  //     email: 'foo@bar.com',
+  //     password: 'secret',
+  //   },
+  // }).then(response => console.log('default user created'));
 
-  cy.request({
-    method: 'POST',
-    url: `${api_url}/container/@sharing`,
-    headers,
-    body: {
-      roleperm: [
-        {
-          setting: 'AllowSingle',
-          role: 'guillotina.Anonymous',
-          permission: 'guillotina.ViewContent',
-        },
-        {
-          setting: 'AllowSingle',
-          role: 'guillotina.Anonymous',
-          permission: 'guillotina.AccessContent',
-        },
-      ],
-      prinrole: [
-        {
-          setting: 'Allow',
-          role: 'guillotina.Manager',
-          principal: 'admin',
-        },
-        {
-          setting: 'Allow',
-          role: 'guillotina.Owner',
-          principal: 'admin',
-        },
-      ],
-    },
-  }).then(response => console.log('permissions for default user set'));
+  // cy.request({
+  //   method: 'POST',
+  //   url: `${api_url}/container/@sharing`,
+  //   headers,
+  //   body: {
+  //     roleperm: [
+  //       {
+  //         setting: 'AllowSingle',
+  //         role: 'guillotina.Anonymous',
+  //         permission: 'guillotina.ViewContent',
+  //       },
+  //       {
+  //         setting: 'AllowSingle',
+  //         role: 'guillotina.Anonymous',
+  //         permission: 'guillotina.AccessContent',
+  //       },
+  //     ],
+  //     prinrole: [
+  //       {
+  //         setting: 'Allow',
+  //         role: 'guillotina.Manager',
+  //         principal: 'admin',
+  //       },
+  //       {
+  //         setting: 'Allow',
+  //         role: 'guillotina.Owner',
+  //         principal: 'admin',
+  //       },
+  //     ],
+  //   },
+  // }).then(response => console.log('permissions for default user set'));
 }
 
 export function tearDownGuillotina() {

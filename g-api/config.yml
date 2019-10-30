@@ -7,7 +7,6 @@ databases:
     dsn: postgresql://guillotina@postgres:5432/guillotina
     pool_size: 100
 applications:
-- guillotina_dbusers
 - guillotina_cms
 - guillotina.contrib.cache
 - guillotina.contrib.swagger
