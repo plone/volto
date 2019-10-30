@@ -18,6 +18,7 @@ export {
   getBaseUrl,
   getIcon,
   getView,
+  isExternalLink,
 } from '@plone/volto/helpers/Url/Url';
 export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export {
