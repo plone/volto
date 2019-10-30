@@ -78,9 +78,23 @@ exports[`renders an Image Tile Sidebar component 1`] = `
             <button
               onClick={[Function]}
             >
-              <i
-                aria-hidden="true"
-                className="attributes 18px icon"
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "18px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
               />
             </button>
           </div>
@@ -353,9 +367,23 @@ exports[`renders an Image Tile Sidebar component 1`] = `
               <button
                 onClick={[Function]}
               >
-                <i
-                  aria-hidden="true"
-                  className="attributes 18px icon"
+                <svg
+                  className="icon"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "currentColor",
+                      "height": "18px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
                 />
               </button>
             </div>
