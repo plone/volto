@@ -97,7 +97,7 @@ class Edit extends Component {
   }
 
   /**
-   * Align tile handler
+   * Align block handler
    * @method onAlignBlock
    * @param {string} align Alignment option
    * @returns {undefined}
@@ -139,7 +139,7 @@ class Edit extends Component {
     return (
       <div
         className={cx(
-          'tile video align',
+          'block video align',
           {
             selected: this.props.selected,
             center: !Boolean(this.props.data.align),

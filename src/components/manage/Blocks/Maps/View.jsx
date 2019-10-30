@@ -16,7 +16,7 @@ import cx from 'classnames';
 const View = ({ data }) => (
   <p
     className={cx(
-      'tile maps align',
+      'block maps align',
       {
         center: !Boolean(data.align),
       },

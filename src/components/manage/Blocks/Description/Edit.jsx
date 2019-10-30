@@ -137,7 +137,7 @@ class Edit extends Component {
     }
     return (
       <div
-        className={cx('tile description', { selected: this.props.selected })}
+        className={cx('block description', { selected: this.props.selected })}
       >
         <Editor
           onChange={this.onChange}

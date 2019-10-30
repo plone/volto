@@ -254,9 +254,9 @@ class Edit extends Component {
               basic
               icon
               onClick={this.toggleAddNewBlock}
-              className="tile-add-button"
+              className="block-add-button"
             >
-              <Icon name={addSVG} className="tile-add-button" size="24px" />
+              <Icon name={addSVG} className="block-add-button" size="24px" />
             </Button>
           )}
         {this.state.addNewBlockOpened && (

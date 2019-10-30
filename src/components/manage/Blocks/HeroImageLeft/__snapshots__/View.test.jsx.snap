@@ -2,10 +2,10 @@
 
 exports[`renders a view hero component 1`] = `
 <div
-  className="tile hero"
+  className="block hero"
 >
   <div
-    className="tile-inner-wrapper"
+    className="block-inner-wrapper"
   >
     <img
       alt=""

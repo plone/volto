@@ -2,7 +2,7 @@
 
 exports[`renders an edit map block component 1`] = `
 <div
-  className="tile maps align center"
+  className="block maps align center"
 >
   <div
     className="video-inner"

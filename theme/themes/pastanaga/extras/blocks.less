@@ -1,9 +1,9 @@
-// Here should be placed all tiles that receive (faked) focus
-.tile:focus {
+// Here should be placed all blocks that receive (faked) focus
+.block:focus {
   outline: none;
 }
 
-.tile .tile:not(.inner)::before {
+.block .block:not(.inner)::before {
   position: absolute;
   z-index: -1;
   top: -9px;
@@ -15,40 +15,40 @@
   content: '';
 }
 
-.tile .tile-add-button {
+.block .block-add-button {
   display: none;
 }
 
-.tile.selected .tile-add-button {
+.block.selected .block-add-button {
   display: inline-block;
 }
 
-.tile .tile.selected::before,
-.tile .tile.selected:hover::before {
+.block .block.selected::before,
+.block .block.selected:hover::before {
   border-width: 1px;
   border-color: rgba(120, 192, 215, 0.75);
 }
 
-.tile .tile:hover::before {
+.block .block:hover::before {
   border-color: rgba(120, 192, 215, 0.375);
 }
 
-.ui.drag.tile:not(:last-child) {
+.ui.drag.block:not(:last-child) {
   margin-bottom: 2rem;
 }
 
-.ui.drag.tile.video,
-.ui.drag.tile.image {
+.ui.drag.block.video,
+.ui.drag.block.image {
   z-index: 2;
   // This fixes the floating images in Volto Editor! Muahahaha
   display: block;
 }
 
-.tile .ui.image {
+.block .ui.image {
   width: 100%;
 }
 
-.tile .ui.message {
+.block .ui.message {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,14 +59,14 @@
   }
 }
 
-.tile.maps {
+.block.maps {
   iframe {
     width: 100%;
     height: 45vh;
   }
 }
 
-.tile.align.left {
+.block.align.left {
   z-index: 2;
 
   &.video .video-inner,
@@ -92,7 +92,7 @@
   }
 }
 
-.tile.align.right {
+.block.align.right {
   z-index: 2;
 
   &.maps iframe,
@@ -118,7 +118,7 @@
   }
 }
 
-.tile.align.center {
+.block.align.center {
   iframe,
   img {
     max-width: 100%;
@@ -132,17 +132,20 @@
 }
 
 // Hacks for the full width image
-body .ui.wrapper > .tile.align.full,
-body.has-toolbar.has-sidebar .ui.wrapper > .ui.inner .tile.align.full,
-body.has-toolbar-collapsed.has-sidebar .ui.wrapper > .ui.inner .tile.align.full,
+body .ui.wrapper > .block.align.full,
+body.has-toolbar.has-sidebar .ui.wrapper > .ui.inner .block.align.full,
+body.has-toolbar-collapsed.has-sidebar
+.ui.wrapper
+> .ui.inner
+.block.align.full,
 body.has-toolbar-collapsed.has-sidebar-collapsed
 .ui.wrapper
 > .ui.inner
-.tile.align.full,
+.block.align.full,
 body.has-toolbar.has-sidebar-collapsed
 .ui.wrapper
 > .ui.inner
-.tile.align.full {
+.block.align.full {
   width: 100% !important;
 
   iframe {
@@ -154,12 +157,12 @@ body.has-toolbar.has-sidebar-collapsed
   }
 }
 
-body.has-toolbar.has-sidebar .ui.wrapper > .ui.inner.tile.full,
-body.has-toolbar-collapsed.has-sidebar .ui.wrapper > .ui.inner.tile.full,
+body.has-toolbar.has-sidebar .ui.wrapper > .ui.inner.block.full,
+body.has-toolbar-collapsed.has-sidebar .ui.wrapper > .ui.inner.block.full,
 body.has-toolbar-collapsed.has-sidebar-collapsed
 .ui.wrapper
-> .ui.inner.tile.full,
-body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.tile.full {
+> .ui.inner.block.full,
+body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   width: 100% !important;
 
   iframe {
@@ -171,21 +174,21 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.tile.full {
   }
 }
 
-.tile.align:not(.right):not(.left) {
+.block.align:not(.right):not(.left) {
   clear: both;
 }
 
-.title.tile .public-DraftEditorPlaceholder-inner {
+.title.block .public-DraftEditorPlaceholder-inner {
   font-size: @h1;
   font-weight: @headerFontWeight;
   line-height: @headerLineHeight;
 }
 
-.ui.tile.table {
+.ui.block.table {
   border: 0;
 }
 
-.tile {
+.block {
   position: relative;
   margin-bottom: 1em;
 
@@ -303,8 +306,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.tile.full {
   }
 }
 
-// Hero tile
-.tile.hero {
+// Hero block
+.block.hero {
   clear: both;
 
   .toolbar {
@@ -346,7 +349,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.tile.full {
     min-height: 400px !important;
   }
 
-  .tile-inner-wrapper {
+  .block-inner-wrapper {
     position: relative;
     z-index: 1;
     display: flex;
@@ -360,8 +363,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.tile.full {
   }
 }
 
-.ui.basic.button.tile-add-button {
-  // .ui.basic.button.tile-delete-button {
+.ui.basic.button.block-add-button {
+  // .ui.basic.button.block-delete-button {
   position: absolute;
   // margin-top: -21px;
   top: -2px;
@@ -381,7 +384,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.tile.full {
   }
 }
 
-.tile .ui.basic.button.delete-button {
+.block .ui.basic.button.delete-button {
   position: absolute;
   top: 0;
   right: 0;
@@ -398,7 +401,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.tile.full {
   }
 }
 
-// .ui.basic.button.tile-delete-button {
+// .ui.basic.button.block-delete-button {
 //   top: 22px;
 //   right: 0;
 //   color: #b8c6b8 !important;
@@ -412,7 +415,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.tile.full {
 //   }
 // }
 
-.drag.tile.wrapper {
+.drag.block.wrapper {
   position: relative;
 }
 
@@ -433,7 +436,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.tile.full {
   }
 }
 
-.drag.tile.title .drag.handle.wrapper {
+.drag.block.title .drag.handle.wrapper {
   top: 5px;
 }
 
@@ -441,7 +444,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.tile.full {
   display: none !important;
 }
 
-.description.tile .public-DraftEditorPlaceholder-inner {
+.description.block .public-DraftEditorPlaceholder-inner {
   font-size: 1.125rem;
   line-height: @lineHeight;
 }
@@ -469,7 +472,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.tile.full {
   vertical-align: bottom;
 }
 
-// HTML tile
+// HTML block
 .html-editor {
   z-index: 1;
   background-color: #f3f6f7;

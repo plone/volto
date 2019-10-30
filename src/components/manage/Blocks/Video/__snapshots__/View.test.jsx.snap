@@ -2,7 +2,7 @@
 
 exports[`renders a view video component 1`] = `
 <p
-  className="tile video align center"
+  className="block video align center"
 >
   <div
     className="video-inner"

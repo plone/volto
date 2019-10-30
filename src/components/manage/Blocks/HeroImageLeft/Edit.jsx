@@ -258,7 +258,7 @@ class Edit extends Component {
     }
     return (
       <div
-        className={cx('tile hero', {
+        className={cx('block hero', {
           selected: this.props.selected,
         })}
       >
@@ -280,7 +280,7 @@ class Edit extends Component {
             </Button.Group>
           </div>
         )}
-        <div className="tile-inner-wrapper">
+        <div className="block-inner-wrapper">
           {this.props.data.url ? (
             <img
               className="hero-image"

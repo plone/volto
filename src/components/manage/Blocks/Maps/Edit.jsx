@@ -152,7 +152,7 @@ class Edit extends Component {
     return (
       <div
         className={cx(
-          'tile maps align',
+          'block maps align',
           {
             selected: this.props.selected,
             center: !Boolean(this.props.data.align),

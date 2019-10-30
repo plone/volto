@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
  * @extends Component
  */
 const View = ({ data }) => (
-  <div className="tile html" dangerouslySetInnerHTML={{ __html: data.html }} />
+  <div className="block html" dangerouslySetInnerHTML={{ __html: data.html }} />
 );
 
 /**

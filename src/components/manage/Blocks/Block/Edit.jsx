@@ -166,7 +166,7 @@ class Edit extends Component {
 
     return connectDropTarget(
       connectDragPreview(
-        <div className={`ui drag tile inner ${type}`}>
+        <div className={`ui drag block inner ${type}`}>
           {selected &&
             connectDragSource(
               <div
@@ -194,7 +194,7 @@ class Edit extends Component {
                       )
                   : null
               }
-              className={cx(`tile ${type}`, { selected: this.props.selected })}
+              className={cx(`block ${type}`, { selected: this.props.selected })}
               style={{ outline: 'none' }}
               ref={this.blockNode}
               // The tabIndex is required for the keyboard navigation
@@ -214,7 +214,7 @@ class Edit extends Component {
                   this.blockNode.current,
                 )
               }
-              className={cx(`tile ${type}`, { selected: this.props.selected })}
+              className={cx(`block ${type}`, { selected: this.props.selected })}
               style={{ outline: 'none' }}
               ref={this.blockNode}
               // The tabIndex is required for the keyboard navigation

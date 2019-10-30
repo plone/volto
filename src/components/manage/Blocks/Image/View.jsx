@@ -19,7 +19,7 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 const View = ({ data, detached }) => (
   <p
     className={cx(
-      'tile image align',
+      'block image align',
       {
         center: !Boolean(data.align),
         detached,

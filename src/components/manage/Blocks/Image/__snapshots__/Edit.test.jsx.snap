@@ -2,7 +2,7 @@
 
 exports[`renders an edit image block component 1`] = `
 <div
-  className="tile image align center"
+  className="block image align center"
 >
   <img
     alt=""

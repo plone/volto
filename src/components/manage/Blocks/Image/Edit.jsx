@@ -212,7 +212,7 @@ class Edit extends Component {
     return (
       <div
         className={cx(
-          'tile image align',
+          'block image align',
           {
             center: !Boolean(this.props.data.align),
           },

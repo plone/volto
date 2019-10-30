@@ -16,7 +16,7 @@ import cx from 'classnames';
 const View = ({ data }) => (
   <p
     className={cx(
-      'tile video align',
+      'block video align',
       {
         center: !Boolean(data.align),
       },
