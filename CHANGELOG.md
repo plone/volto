@@ -15,6 +15,7 @@
 - Fix `SchemaWidget` @robgietema
 - Move styles import to a separate file @pnicolli
 - Fix crash when user enters only whitespace in required fields @JeffersonBledsoe
+- Add loading animation for save and edit buttons in toolbar @pgrunewald
 
 ### Internal
 
