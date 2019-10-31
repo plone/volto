@@ -4,7 +4,7 @@
 
 In this chapter we are going to create a new type of view for displaying
 contents in a folder. We will call this view `full view`. In Plone there is a
-view called `All content` with the view id `full_view` that we will reuse. 
+view called `All content` with the view id `full_view` that we will reuse.
 We start by creating a file called: `components/FullView/FullView.jsx`.
 
 ```js
@@ -300,7 +300,7 @@ import {
     settings as defaultSettings,
     views as defaultViews,
     widgets as defaultWidgets,
-    tiles as defaultTiles,
+    blocks as defaultBlocks,
 } from '@plone/volto/config';
 
 import { AlbumView, FullView } from './components';
@@ -322,8 +322,8 @@ export const widgets = {
     ...defaultWidgets,
 };
 
-export const tiles = {
-    ...defaultTiles,
+export const blocks = {
+    ...defaultBlocks,
 };
 
 

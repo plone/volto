@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders an Image Tile Sidebar component 1`] = `
+exports[`renders an Image Block Sidebar component 1`] = `
 <div
   className="ui raised segments"
 >

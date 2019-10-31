@@ -55,13 +55,13 @@ class ObjectBrowserBody extends Component {
    * @static
    */
   static propTypes = {
-    tile: PropTypes.string.isRequired,
+    block: PropTypes.string.isRequired,
     mode: PropTypes.string.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     searchSubrequests: PropTypes.objectOf(PropTypes.any).isRequired,
     searchContent: PropTypes.func.isRequired,
     closeObjectBrowser: PropTypes.func.isRequired,
-    onChangeTile: PropTypes.func.isRequired,
+    onChangeBlock: PropTypes.func.isRequired,
   };
 
   /**
@@ -133,7 +133,7 @@ class ObjectBrowserBody extends Component {
           sort_on: 'getObjPositionInParent',
           metadata_fields: '_all',
         },
-        `${this.props.tile}-${mode}`,
+        `${this.props.block}-${mode}`,
       );
     } else {
       this.props.searchContent(
@@ -143,14 +143,14 @@ class ObjectBrowserBody extends Component {
           sort_on: 'getObjPositionInParent',
           metadata_fields: '_all',
         },
-        `${this.props.tile}-${mode}`,
+        `${this.props.block}-${mode}`,
       );
     }
   };
 
   onChangeField = (name, value) => {
     this.setState({ [name]: value });
-    this.onChangeTileData(name, value);
+    this.onChangeBlockData(name, value);
   };
 
   getIcon = icon => {
@@ -187,7 +187,7 @@ class ObjectBrowserBody extends Component {
         sort_on: 'getObjPositionInParent',
         metadata_fields: '_all',
       },
-      `${this.props.tile}-${this.props.mode}`,
+      `${this.props.block}-${this.props.mode}`,
     );
     const parent = `${join(id.split('/').slice(0, -1), '/')}` || '/';
     this.setState(() => ({
@@ -210,7 +210,7 @@ class ObjectBrowserBody extends Component {
             SearchableText: `${text}*`,
             metadata_fields: '_all',
           },
-          `${this.props.tile}-${this.props.mode}`,
+          `${this.props.block}-${this.props.mode}`,
         )
       : this.props.searchContent(
           '/',
@@ -219,13 +219,13 @@ class ObjectBrowserBody extends Component {
             sort_on: 'getObjPositionInParent',
             metadata_fields: '_all',
           },
-          `${this.props.tile}-${this.props.mode}`,
+          `${this.props.block}-${this.props.mode}`,
         );
   };
 
   onSelectItem = url => {
     if (this.props.mode === 'image') {
-      this.props.onChangeTile(this.props.tile, {
+      this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
         url: `${settings.apiPath}${url}`,
       });
@@ -234,7 +234,7 @@ class ObjectBrowserBody extends Component {
         currentImageFolder: getParentURL(url),
       });
     } else {
-      this.props.onChangeTile(this.props.tile, {
+      this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
         href: url,
       });
@@ -245,8 +245,8 @@ class ObjectBrowserBody extends Component {
     }
   };
 
-  onChangeTileData = (key, value) => {
-    this.props.onChangeTile(this.props.tile, {
+  onChangeBlockData = (key, value) => {
+    this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       [key]: value,
     });
@@ -352,7 +352,7 @@ class ObjectBrowserBody extends Component {
           <ObjectBrowserNav
             currentSearchResults={
               this.props.searchSubrequests[
-                `${this.props.tile}-${this.props.mode}`
+                `${this.props.block}-${this.props.mode}`
               ]
             }
             selected={
