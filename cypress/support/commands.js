@@ -1,17 +1,21 @@
 // --- AUTOLOGIN -------------------------------------------------------------
 Cypress.Commands.add('autologin', () => {
-  let api_url;
+  let api_url, user, password;
   if (Cypress.env('API') === 'guillotina') {
     api_url = 'http://localhost:8081/db/container';
+    user = 'root';
+    password = 'root';
   } else {
     api_url = 'http://localhost:55001/plone';
+    user = 'admin';
+    password = 'secret';
   }
 
   cy.request({
     method: 'POST',
     url: `${api_url}/@login`,
     headers: { Accept: 'application/json' },
-    body: { login: 'admin', password: 'secret' },
+    body: { login: user, password: password },
   }).then(response => cy.setCookie('auth_token', response.body.token));
 });
 
@@ -89,11 +93,11 @@ Cypress.Commands.add(
           '@type': contentType,
           id: contentId,
           title: contentTitle,
-          tiles: {
+          blocks: {
             'd3f1c443-583f-4e8e-a682-3bf25752a300': { '@type': 'title' },
             '7624cf59-05d0-4055-8f55-5fd6597d84b0': { '@type': 'text' },
           },
-          tiles_layout: {
+          blocks_layout: {
             items: [
               'd3f1c443-583f-4e8e-a682-3bf25752a300',
               '7624cf59-05d0-4055-8f55-5fd6597d84b0',

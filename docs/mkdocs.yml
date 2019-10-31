@@ -39,10 +39,10 @@ nav:
     - Customizing views: "05-customizing/04-customizing-views.md"
     - Creating new views: "05-customizing/05-creating-views.md"
     - Creating Add-on packages: "05-customizing/06-add-ons.md"
-  - Tiles:
-    - Introduction: "06-tiles/introduction.md"
-    - Anatomy: "06-tiles/anatomy.md"
-    - Create a new tile: "06-tiles/create.md"
+  - Blocks:
+    - Introduction: "06-blocks/introduction.md"
+    - Anatomy: "06-blocks/anatomy.md"
+    - Create a new block: "06-blocks/create.md"
   - Deploying:
     - Simple deployment: "07-deploying/01-simple.md"
     - Using PM2: "07-deploying/02-pm2.md"

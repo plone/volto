@@ -26,7 +26,7 @@ describe('Add Content Tests', () => {
       .type('This is a page')
       .get('.documentFirstHeading span[data-text]')
       .contains('This is a page');
-    cy.get('.tile.inner.text .public-DraftEditor-content')
+    cy.get('.block.inner.text .public-DraftEditor-content')
       .type('This is the text.')
       .get('span[data-text]')
       .contains('This is the text');
