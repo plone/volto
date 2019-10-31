@@ -21,6 +21,19 @@ First, update your `package.json` to Volto 4.x.x.
   }
 ```
 
+## Rename from Tiles to Blocks
+
+An internal renaming to use the term `Blocks` everywhere was done to unify naming through the code a and the documentation.
+
+Plone RESTAPI was updated to that purpose too, and running an upgrade step (do so in Plone's Addons control panel) is required in order to migrate the data.
+
+So this is the versions compatibility table:
+
+Volto 4 - plone.restapi >= 5.0.0 - kitconcept.voltodemo >= 2.0
+
+!!! note
+    Some Volto 4 alpha versions (until 9), used the older `plone.restapi` and `kitconcept.voltodemo`, but if you are using those, it's recommended you to upgrade to latest alpha or the final release of Volto 4.
+
 ### Blocks engine - Blocks configuration object
 
 The blocks engine was updated and there are some important breaking changes, in case that
