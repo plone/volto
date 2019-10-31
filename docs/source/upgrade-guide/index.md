@@ -10,7 +10,7 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
-## Upgrading to Volto 4.x
+## Upgrading to Volto 4.x.x
 
 First, update your `package.json` to Volto 4.x.x.
 
@@ -21,20 +21,20 @@ First, update your `package.json` to Volto 4.x.x.
   }
 ```
 
-### Rename from Tiles to Blocks
+### Renaming Tiles into Blocks
 
 An internal renaming to use the term `Blocks` everywhere was done to unify naming through the code a and the documentation.
 
-Plone RESTAPI was updated to that purpose too, and running an upgrade step (do so in Plone's Addons control panel) is required in order to migrate the data.
+Plone RESTAPI was updated to that purpose too, and running an upgrade step (do so in Plone's Addons control panel) is required in order to migrate the data. No step is required if you are using a brand new ZODB.
 
-So this is the versions compatibility table:
+This is the versions compatibility table across all the packages involved:
 
 Volto 4 - plone.restapi >= 5.0.0 - kitconcept.voltodemo >= 2.0
 
 !!! note
-    The renaming happened in Volto 4 alpha.10. Volto 4 alpha versions under that release used older versions of `plone.restapi` and `kitconcept.voltodemo`, but if you are using alpha releases, it's recommended to upgrade to latest alpha or the final release of Volto 4.
+    The renaming happened in Volto 4 alpha.10 and plone.restapi 5.0.0. Volto 4 alpha versions under that release use older versions of `plone.restapi` and `kitconcept.voltodemo`, however if you are using alpha releases it's recommended to upgrade to latest alpha or the final release of Volto 4.
 
-The project should also be updated:
+The project configuration should also be updated, in your `src/config.js`:
 
 ```diff
 diff --git a/src/config.js b/src/config.js
@@ -63,7 +63,7 @@ index f1fe9c2..9517c38 100644
 
 ### Add theme customization to your project
 
-Volto 4 expects a file named `src/theme.js` with this content:
+Volto 4 now also expects a file named `src/theme.js` with this content by default:
 
 ```js
 import 'semantic-ui-less/semantic.less';
