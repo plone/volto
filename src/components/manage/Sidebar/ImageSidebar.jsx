@@ -4,7 +4,8 @@ import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
-import { AlignTile, flattenToAppURL } from '@plone/volto/helpers';
+import { AlignBlock, flattenToAppURL } from '@plone/volto/helpers';
+
 import { settings } from '~/config';
 
 import imageSVG from '@plone/volto/icons/image.svg';
@@ -50,8 +51,8 @@ const messages = defineMessages({
 
 const ImageSidebar = ({
   data,
-  tile,
-  onChangeTile,
+  block,
+  onChangeBlock,
   openObjectBrowser,
   required = false,
   intl,
@@ -118,7 +119,7 @@ const ImageSidebar = ({
                 value={data.url}
                 icon={clearSVG}
                 iconAction={() =>
-                  onChangeTile(tile, {
+                  onChangeBlock(block, {
                     ...data,
                     url: '',
                   })
@@ -132,7 +133,7 @@ const ImageSidebar = ({
               required={false}
               value={data.alt}
               onChange={(name, value) => {
-                onChangeTile(tile, {
+                onChangeBlock(block, {
                   ...data,
                   alt: value,
                 });
@@ -152,11 +153,11 @@ const ImageSidebar = ({
                     </div>
                   </Grid.Column>
                   <Grid.Column width="8" className="align-tools">
-                    <AlignTile
+                    <AlignBlock
                       align={data.align}
-                      onChangeTile={onChangeTile}
+                      onChangeBlock={onChangeBlock}
                       data={data}
-                      tile={tile}
+                      block={block}
                     />
                   </Grid.Column>
                 </Grid.Row>
@@ -186,7 +187,7 @@ const ImageSidebar = ({
                 iconAction={
                   data.href
                     ? () => {
-                        onChangeTile(tile, {
+                        onChangeBlock(block, {
                           ...data,
                           href: '',
                         });
@@ -194,7 +195,7 @@ const ImageSidebar = ({
                     : () => openObjectBrowser('link')
                 }
                 onChange={(name, value) => {
-                  onChangeTile(tile, {
+                  onChangeBlock(block, {
                     ...data,
                     href: value,
                   });
@@ -205,7 +206,7 @@ const ImageSidebar = ({
                 title={intl.formatMessage(messages.openLinkInNewTab)}
                 value={data.openLinkInNewTab ? data.openLinkInNewTab : false}
                 onChange={(name, value) => {
-                  onChangeTile(tile, {
+                  onChangeBlock(block, {
                     ...data,
                     openLinkInNewTab: value,
                   });
@@ -221,8 +222,8 @@ const ImageSidebar = ({
 
 ImageSidebar.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
-  tile: PropTypes.string.isRequired,
-  onChangeTile: PropTypes.func.isRequired,
+  block: PropTypes.string.isRequired,
+  onChangeBlock: PropTypes.func.isRequired,
   openObjectBrowser: PropTypes.func.isRequired,
 };
 

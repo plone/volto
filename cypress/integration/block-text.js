@@ -6,13 +6,13 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.visit('/my-page/edit');
     });
 
-    it('As editor I can add a link to a text tile', function() {
+    it('As editor I can add a link to a text block', function() {
       // given
       cy.wait(2000);
       cy.get('.documentFirstHeading > .public-DraftStyleDefault-block');
 
       // when
-      cy.get('.tile.inner.text .public-DraftEditor-content')
+      cy.get('.block.inner.text .public-DraftEditor-content')
         .type('Colorless green ideas sleep furiously.')
         .setSelection('furiously');
       cy.get(
@@ -22,8 +22,8 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#toolbar-save').click();
 
       // then
-      cy.get('.tile.text').contains('Colorless green ideas sleep furiously.');
-      cy.get('.tile.text a')
+      cy.get('.block.text').contains('Colorless green ideas sleep furiously.');
+      cy.get('.block.text a')
         .should('have.attr', 'href')
         .and('include', 'https://google.com');
     });

@@ -47,7 +47,7 @@ cors:
   - "*"
   allow_credentials: true
   max_age: 3660
-default_tiles:
+default_blocks:
   Document:
   - type: title
   - type: text

@@ -93,11 +93,11 @@ Cypress.Commands.add(
           '@type': contentType,
           id: contentId,
           title: contentTitle,
-          tiles: {
+          blocks: {
             'd3f1c443-583f-4e8e-a682-3bf25752a300': { '@type': 'title' },
             '7624cf59-05d0-4055-8f55-5fd6597d84b0': { '@type': 'text' },
           },
-          tiles_layout: {
+          blocks_layout: {
             items: [
               'd3f1c443-583f-4e8e-a682-3bf25752a300',
               '7624cf59-05d0-4055-8f55-5fd6597d84b0',

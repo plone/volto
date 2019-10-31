@@ -16,7 +16,7 @@ import qs from 'query-string';
 
 import { Form, Icon, Toolbar, Sidebar } from '../../../components';
 import { updateContent, getContent, getSchema } from '../../../actions';
-import { getBaseUrl, hasTilesData } from '../../../helpers';
+import { getBaseUrl, hasBlocksData } from '../../../helpers';
 
 import saveSVG from '../../../icons/save.svg';
 import clearSVG from '../../../icons/clear.svg';
@@ -117,7 +117,7 @@ class Edit extends Component {
       this.props.getSchema(nextProps.content['@type']);
     }
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
-      if (!hasTilesData(nextProps.schema.properties)) {
+      if (!hasBlocksData(nextProps.schema.properties)) {
         this.setState({
           visual: false,
         });
