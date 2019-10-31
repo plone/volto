@@ -32,7 +32,7 @@ So this is the versions compatibility table:
 Volto 4 - plone.restapi >= 5.0.0 - kitconcept.voltodemo >= 2.0
 
 !!! note
-    Some Volto 4 alpha versions (until 9), used the older `plone.restapi` and `kitconcept.voltodemo`, but if you are using those, it's recommended you to upgrade to latest alpha or the final release of Volto 4.
+    The renaming happened in Volto 4 alpha.10. Volto 4 alpha versions under that release used older versions of `plone.restapi` and `kitconcept.voltodemo`, but if you are using alpha releases, it's recommended to upgrade to latest alpha or the final release of Volto 4.
 
 ### Add theme customization to your project
 
