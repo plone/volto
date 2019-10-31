@@ -34,6 +34,33 @@ Volto 4 - plone.restapi >= 5.0.0 - kitconcept.voltodemo >= 2.0
 !!! note
     The renaming happened in Volto 4 alpha.10. Volto 4 alpha versions under that release used older versions of `plone.restapi` and `kitconcept.voltodemo`, but if you are using alpha releases, it's recommended to upgrade to latest alpha or the final release of Volto 4.
 
+The project should also be updated:
+
+```diff
+diff --git a/src/config.js b/src/config.js
+index f1fe9c2..9517c38 100644
+--- a/src/config.js
++++ b/src/config.js
+@@ -16,7 +16,7 @@ import {
+   settings as defaultSettings,
+   views as defaultViews,
+   widgets as defaultWidgets,
+-  tiles as defaultTiles,
++  blocks as defaultBlocks,
+ } from '@plone/volto/config';
+
+ export const settings = {
+@@ -31,6 +31,6 @@ export const widgets = {
+   ...defaultWidgets,
+ };
+
+-export const tiles = {
+-  ...defaultTiles,
++export const blocks = {
++  ...defaultBlocks,
+ };
+```
+
 ### Add theme customization to your project
 
 Volto 4 expects a file named `src/theme.js` with this content:
