@@ -21,7 +21,7 @@ First, update your `package.json` to Volto 4.x.x.
   }
 ```
 
-## Rename from Tiles to Blocks
+### Rename from Tiles to Blocks
 
 An internal renaming to use the term `Blocks` everywhere was done to unify naming through the code a and the documentation.
 
@@ -34,13 +34,34 @@ Volto 4 - plone.restapi >= 5.0.0 - kitconcept.voltodemo >= 2.0
 !!! note
     Some Volto 4 alpha versions (until 9), used the older `plone.restapi` and `kitconcept.voltodemo`, but if you are using those, it's recommended you to upgrade to latest alpha or the final release of Volto 4.
 
-## Add theme customization to your project
+### Add theme customization to your project
 
 Volto 4 expects a file named `src/theme.js` with this content:
 
 ```js
 import 'semantic-ui-less/semantic.less';
 import '@plone/volto/../theme/themes/pastanaga/extras/extras.less';
+```
+
+### Remove enzyme configuration
+
+Enzyme has been removed, in favor of `@testing-library/react`, and the configuration should be removed in `package.json`:
+
+``` diff
+diff --git a/package.json b/package.json
+index 27c7f8d..8f5f088 100644
+--- a/package.json
++++ b/package.json
+@@ -44,9 +44,6 @@
+       "default",
+       "jest-junit"
+     ],
+-    "snapshotSerializers": [
+-      "enzyme-to-json/serializer"
+-    ],
+     "transform": {
+       "^.+\\.js(x)?$": "babel-jest",
+       "^.+\\.css$": "jest-css-modules",
 ```
 
 ### Blocks engine - Blocks configuration object
