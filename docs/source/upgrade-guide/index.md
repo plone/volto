@@ -34,6 +34,15 @@ Volto 4 - plone.restapi >= 5.0.0 - kitconcept.voltodemo >= 2.0
 !!! note
     Some Volto 4 alpha versions (until 9), used the older `plone.restapi` and `kitconcept.voltodemo`, but if you are using those, it's recommended you to upgrade to latest alpha or the final release of Volto 4.
 
+## Add theme customization to your project
+
+Volto 4 expects a file named `src/theme.js` with this content:
+
+```js
+import 'semantic-ui-less/semantic.less';
+import '@plone/volto/../theme/themes/pastanaga/extras/extras.less';
+```
+
 ### Blocks engine - Blocks configuration object
 
 The blocks engine was updated and there are some important breaking changes, in case that
