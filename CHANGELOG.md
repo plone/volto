@@ -4,7 +4,14 @@
 
 ### Added
 
-- Added improved special `TextSidebarWidget` for dealing with them properly. This fixes the error in the image block `alt` sidebar input @sneridagh
+### Changes
+
+- Fix icon in `TextWidget` @sneridagh
+
+## 4.0.0-alpha.10 (2019-10-31)
+
+### Added
+
 - Add Node 12 support @timo
 
 ### Changes
@@ -15,7 +22,7 @@
 - Fix `SchemaWidget` @robgietema
 - Move styles import to a separate file @pnicolli
 - Fix crash when user enters only whitespace in required fields @JeffersonBledsoe
-- Fix icon in `TextWidget` @sneridagh
+- Fix the *real* focus thief in new tiles @sneridagh
 
 ### Internal
 

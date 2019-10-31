@@ -102,7 +102,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
       </div>
     </div>
     <div
-      className="inline field"
+      className="inline field text"
       id="field-alt"
     >
       <div
@@ -131,6 +131,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
               className="ui input"
             >
               <input
+                disabled={false}
                 id="field-alt"
                 name="alt"
                 onChange={[Function]}

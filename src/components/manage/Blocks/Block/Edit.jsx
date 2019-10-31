@@ -123,12 +123,12 @@ class Edit extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { type } = this.props;
+    const { selected, type } = this.props;
     const blockHasOwnFocusManagement =
       blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
     if (
       !blockHasOwnFocusManagement &&
-      nextProps.selected &&
+      selected !== nextProps.selected &&
       this.blockNode.current
     ) {
       this.blockNode.current.focus();

@@ -75,7 +75,6 @@ export ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWid
 export SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
 export SchemaWidgetFieldset from '@plone/volto/components/manage/Widgets/SchemaWidgetFieldset';
 export SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
-export SidebarTextWidget from '@plone/volto/components/manage/Widgets/SidebarTextWidget';
 export Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
 export SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 export Sharing from '@plone/volto/components/manage/Sharing/Sharing';

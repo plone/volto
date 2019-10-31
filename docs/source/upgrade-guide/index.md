@@ -10,7 +10,7 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
-## Upgrading to Volto 4.x
+## Upgrading to Volto 4.x.x
 
 First, update your `package.json` to Volto 4.x.x.
 
@@ -19,6 +19,76 @@ First, update your `package.json` to Volto 4.x.x.
     "@plone/volto": "4.0.0",
     ...
   }
+```
+
+### Renaming Tiles into Blocks
+
+An internal renaming to use the term `Blocks` everywhere was done to unify naming through the code a and the documentation.
+
+Plone RESTAPI was updated to that purpose too, and running an upgrade step (do so in Plone's Addons control panel) is required in order to migrate the data. No step is required if you are using a brand new ZODB.
+
+This is the versions compatibility table across all the packages involved:
+
+Volto 4 - plone.restapi >= 5.0.0 - kitconcept.voltodemo >= 2.0
+
+!!! note
+    The renaming happened in Volto 4 alpha.10 and plone.restapi 5.0.0. Volto 4 alpha versions under that release use older versions of `plone.restapi` and `kitconcept.voltodemo`, however if you are using alpha releases it's recommended to upgrade to latest alpha or the final release of Volto 4.
+
+The project configuration should also be updated, in your `src/config.js`:
+
+```diff
+diff --git a/src/config.js b/src/config.js
+index f1fe9c2..9517c38 100644
+--- a/src/config.js
++++ b/src/config.js
+@@ -16,7 +16,7 @@ import {
+   settings as defaultSettings,
+   views as defaultViews,
+   widgets as defaultWidgets,
+-  tiles as defaultTiles,
++  blocks as defaultBlocks,
+ } from '@plone/volto/config';
+
+ export const settings = {
+@@ -31,6 +31,6 @@ export const widgets = {
+   ...defaultWidgets,
+ };
+
+-export const tiles = {
+-  ...defaultTiles,
++export const blocks = {
++  ...defaultBlocks,
+ };
+```
+
+### Add theme customization to your project
+
+Volto 4 now also expects a file named `src/theme.js` with this content by default:
+
+```js
+import 'semantic-ui-less/semantic.less';
+import '@plone/volto/../theme/themes/pastanaga/extras/extras.less';
+```
+
+### Remove enzyme configuration
+
+Enzyme has been removed, in favor of `@testing-library/react`, and the configuration should be removed in `package.json`:
+
+``` diff
+diff --git a/package.json b/package.json
+index 27c7f8d..8f5f088 100644
+--- a/package.json
++++ b/package.json
+@@ -44,9 +44,6 @@
+       "default",
+       "jest-junit"
+     ],
+-    "snapshotSerializers": [
+-      "enzyme-to-json/serializer"
+-    ],
+     "transform": {
+       "^.+\\.js(x)?$": "babel-jest",
+       "^.+\\.css$": "jest-css-modules",
 ```
 
 ### Blocks engine - Blocks configuration object
