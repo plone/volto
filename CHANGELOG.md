@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix icon in `TextWidget` @sneridagh
+
 ## 4.0.0-alpha.10 (2019-10-31)
 
 ### Added
