@@ -1,4 +1,4 @@
-# Volto blocks
+# Blocks
 
 Volto features the Pastanaga Editor Engine, allowing you to visually compose a page using blocks.
 The editor allows you to add, modify, reorder and delete blocks given your requirements.
