@@ -101,18 +101,18 @@ like:
 ```js
 const defaultBlocks = {
   title: {
-    id: 'title', // The name of the block
+    id: 'title', // The name (id) of the block
     title: 'Title', // The display name of the block
-    icon: titleSVG, // The icon used
-    group: 'text', // The group (blocks now can be grouped)
+    icon: titleSVG, // The icon used in the block chooser
+    group: 'text', // The group (blocks can be grouped, displayed in the chooser)
     view: ViewTitleBlock, // The view mode component
     edit: EditTitleBlock, // The edit mode component
-    restricted: false, // If the block is restricted, it won't show in menus
-    mostUsed: false, // A meta group `most used`, appearing at the top
+    restricted: false, // If the block is restricted, it won't show in in the chooser
+    mostUsed: false, // A meta group `most used`, appearing at the top of the chooser
     blockHasOwnFocusManagement: false, // Set this to true if the block manages its own focus
     security: {
-      addPermission: [], // Future proof (not implemented yet) add permission role(s)
-      view: [], // Future proof (not implemented yet) view role(s)
+      addPermission: [], // Future proof (not implemented yet) add user permission role(s)
+      view: [], // Future proof (not implemented yet) view user role(s)
     },
   },
   ...
