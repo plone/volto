@@ -8,6 +8,7 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const fs = require('fs');
 const { map } = require('lodash');
@@ -138,6 +139,12 @@ module.exports = {
 
     config.module.rules.push(LESSLOADER);
     config.module.rules.push(SVGLOADER);
+    config.plugins.push(
+      new WorkboxWebpackPlugin.GenerateSW({
+        clientsClaim: true,
+        importWorkboxFrom: 'cdn',
+      }),
+    );
 
     // Don't load config|variables|overrides) files with file-loader
     // Don't load SVGs from ./src/icons with file-loader

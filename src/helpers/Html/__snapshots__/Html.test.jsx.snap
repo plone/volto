@@ -17,6 +17,14 @@ exports[`Html renders a html component 1`] = `
       href="/favicon.ico"
       rel="shortcut icon"
     />
+    <link
+      href="/manifest.json"
+      rel="manifest"
+    />
+    <meta
+      content="#000000"
+      name="theme-color"
+    />
     <meta
       content="width=device-width, initial-scale=1"
       name="viewport"

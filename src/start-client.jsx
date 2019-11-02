@@ -4,6 +4,7 @@ import { Provider } from 'react-intl-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from 'redux-connect';
+import * as serviceWorker from './serviceWorker';
 import routes from '~/routes';
 
 import 'semantic-ui-less/semantic.less';
@@ -31,3 +32,5 @@ export default () => {
     document.getElementById('main'),
   );
 };
+
+serviceWorker.register();
