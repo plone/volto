@@ -27,7 +27,10 @@ const defaultSize = '36px';
  * Reasoning:
  * add a11y title to SVGs
  * load svg via webpack for optimization
+ * Zero conf Inlined SVGs, as it is the best option when working with SVG
  * see razzle.config.js
+ *
+ * for further reference see {@link https://kitconcept.com/blog/pastanaga-icon-system/ | here}
  */
 const Icon = ({ name, size, color, className, title, onClick }) => (
   <svg
