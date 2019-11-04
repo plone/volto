@@ -7,6 +7,7 @@
 ### Changes
 
 - Fix icon in `TextWidget` @sneridagh
+- impprove documentation for `Icon` @jackahl
 
 ## 4.0.0-alpha.10 (2019-10-31)
 
@@ -22,7 +23,7 @@
 - Fix `SchemaWidget` @robgietema
 - Move styles import to a separate file @pnicolli
 - Fix crash when user enters only whitespace in required fields @JeffersonBledsoe
-- Fix the *real* focus thief in new tiles @sneridagh
+- Fix the _real_ focus thief in new tiles @sneridagh
 
 ### Internal
 
