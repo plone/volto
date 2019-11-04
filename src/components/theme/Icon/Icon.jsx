@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 const defaultSize = '36px';
 
 /**
- * Component to display an Icon.
+ * Component to display an SVG as Icon.
  * @function Field
  * @param {Object} props Component properties.
  * @param {string} props.name Name source object.
@@ -17,6 +17,17 @@ const defaultSize = '36px';
  * @param {string} props.className className to add to the component.
  * @param {string} props.title Title (a11y).
  * @returns {string} Markup of the component.
+ *
+ * Use:
+ * drop icon to the icons folder ("src/icons")
+ * import svg into the file
+ * import this Icon component
+ * add icon component with name = your imported svg
+ *
+ * Reasoning:
+ * add a11y title to SVGs
+ * load svg via webpack for optimization
+ * see razzle.config.js
  */
 const Icon = ({ name, size, color, className, title, onClick }) => (
   <svg
