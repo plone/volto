@@ -49,17 +49,21 @@ const EventWhen = ({ start, end, whole_day, open_end }) => {
               </>
             )}
           </span>
-          &nbsp;to&nbsp;
-          <span className="end">
-            <span className="end-date">{datesInfo.endDate}</span>
-            {!whole_day && (
-              <>
-                {/* Plone has an optional word based on locale here */}
-                <span> </span>
-                <span className="end-time">{datesInfo.endTime}</span>
-              </>
-            )}
-          </span>
+          {!open_end && (
+            <>
+              &nbsp;to&nbsp;
+              <span className="end">
+                <span className="end-date">{datesInfo.endDate}</span>
+                {!whole_day && (
+                  <>
+                    {/* Plone has an optional word based on locale here */}
+                    <span> </span>
+                    <span className="end-time">{datesInfo.endTime}</span>
+                  </>
+                )}
+              </span>
+            </>
+          )}
         </>
       ) : (
         <>

@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import EventWhen from './EventWhen';
+import { EventWhen } from './EventWhen';
 
 test('different day, whole day', () => {
   const component = renderer.create(
