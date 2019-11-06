@@ -11,45 +11,35 @@ exports[`Footer renders a footer component 1`] = `
     <div
       className="ui grey basic inverted segment discreet"
     >
-      <span>
-        The 
-        <span>
-          Plone
-          <sup>
-            ®
-          </sup>
-           Open Source CMS/WCM
-        </span>
-         is 
-        <abbr
-          title="Copyright"
-        >
-          ©
-        </abbr>
-         2000-2019 by the 
-        <a
-          className="item"
-          href="http://plone.org/foundation"
-        >
-          <span>
-            Plone Foundation
-          </span>
-        </a>
-         and friends.
-      </span>
+      The 
+      Plone
+      <sup>
+        ®
+      </sup>
+       Open Source CMS/WCM
+       is 
+      <abbr
+        title="Copyright"
+      >
+        ©
+      </abbr>
+       2000-2019 by the 
+      <a
+        className="item"
+        href="http://plone.org/foundation"
+      >
+        Plone Foundation
+      </a>
+       and friends.
        
-      <span>
-        Distributed under the 
-        <a
-          className="item"
-          href="http://creativecommons.org/licenses/GPL/2.0/"
-        >
-          <span>
-            GNU GPL license
-          </span>
-        </a>
-        .
-      </span>
+      Distributed under the 
+      <a
+        className="item"
+        href="http://creativecommons.org/licenses/GPL/2.0/"
+      >
+        GNU GPL license
+      </a>
+      .
     </div>
     <div
       className="ui horizontal inverted list"
@@ -64,9 +54,7 @@ exports[`Footer renders a footer component 1`] = `
           href="/sitemap"
           onClick={[Function]}
         >
-          <span>
-            Site Map
-          </span>
+          Site Map
         </a>
       </div>
       <div
@@ -78,9 +66,7 @@ exports[`Footer renders a footer component 1`] = `
           href="/accesibility-info"
           onClick={[Function]}
         >
-          <span>
-            Accessibility
-          </span>
+          Accessibility
         </a>
       </div>
       <div
@@ -92,9 +78,7 @@ exports[`Footer renders a footer component 1`] = `
           href="/contact-form"
           onClick={[Function]}
         >
-          <span>
-            Contact
-          </span>
+          Contact
         </a>
       </div>
       <div
@@ -105,9 +89,7 @@ exports[`Footer renders a footer component 1`] = `
           className="item"
           href="https://plone.com"
         >
-          <span>
-            Powered by Plone & Python
-          </span>
+          Powered by Plone & Python
         </a>
       </div>
     </div>

@@ -57,6 +57,7 @@ class More extends Component {
    */
   render() {
     const path = getBaseUrl(this.props.pathname);
+    const editAction = find(this.props.actions.object, { id: 'edit' });
     const historyAction = find(this.props.actions.object, { id: 'history' });
     const sharingAction = find(this.props.actions.object, {
       id: 'local_roles',
@@ -80,7 +81,7 @@ class More extends Component {
               <Workflow pathname={path} />
             </li>
             <li className="display-select">
-              <Display pathname={path} />
+              {editAction && <Display pathname={path} />}
             </li>
             <li>
               {historyAction ? (

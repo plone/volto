@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import cx from 'classnames';
+import { FormattedMessage, injectIntl, defineMessages } from 'react-intl';
 import { Icon } from '../../../components';
 import { getUser } from '../../../actions';
 import logoutSVG from '../../../icons/log-out.svg';
@@ -11,6 +12,17 @@ import rightArrowSVG from '../../../icons/right-key.svg';
 
 import backSVG from '../../../icons/back.svg';
 import cameraSVG from '../../../icons/camera.svg';
+
+const messages = defineMessages({
+  preferences: {
+    id: 'Preferences',
+    defaultMessage: 'Preferences',
+  },
+  profile: {
+    id: 'Profile',
+    defaultMessage: 'Profile',
+  },
+});
 
 /**
  * Toolbar container class.
@@ -93,23 +105,29 @@ class PersonalTools extends Component {
           {/* This (probably also) should be a Component by itself*/}
           <ul>
             <li>
-              <button aria-label="Profile" onClick={() => this.push('profile')}>
-                Profile
+              <button
+                aria-label={this.props.intl.formatMessage(messages.profile)}
+                onClick={() => this.push('profile')}
+              >
+                <FormattedMessage id="Profile" defaultMessage="Profile" />
                 <Icon name={rightArrowSVG} size="24px" />
               </button>
             </li>
             <li>
               <button
-                aria-label="Preferences"
+                aria-label={this.props.intl.formatMessage(messages.preferences)}
                 onClick={() => this.push('preferences')}
               >
-                Preferences
+                <FormattedMessage
+                  id="Preferences"
+                  defaultMessage="Preferences"
+                />
                 <Icon name={rightArrowSVG} size="24px" />
               </button>
             </li>
             <li>
               <Link to="/controlpanel">
-                Site Setup
+                <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />
                 <Icon name={rightArrowSVG} size="24px" />
               </Link>
             </li>
@@ -120,12 +138,14 @@ class PersonalTools extends Component {
   }
 }
 
-export default connect(
-  state => ({
-    user: state.users.user,
-    userId: state.userSession.token
-      ? jwtDecode(state.userSession.token).sub
-      : '',
-  }),
-  { getUser },
-)(PersonalTools);
+export default injectIntl(
+  connect(
+    state => ({
+      user: state.users.user,
+      userId: state.userSession.token
+        ? jwtDecode(state.userSession.token).sub
+        : '',
+    }),
+    { getUser },
+  )(PersonalTools),
+);

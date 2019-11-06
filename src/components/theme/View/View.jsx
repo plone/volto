@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import qs from 'query-string';
 import { views } from '~/config';
 
@@ -86,7 +86,6 @@ class View extends Component {
        */
       status: PropTypes.number,
     }),
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -212,6 +211,7 @@ class View extends Component {
 
     return (
       <div id="view">
+        {/* Body class if displayName in component is set */}
         <BodyClass
           className={
             RenderedView.displayName
@@ -219,6 +219,15 @@ class View extends Component {
               : null
           }
         />
+
+        {/* Body class depending on content type */}
+        {this.props.content && this.props.content['@type'] && (
+          <BodyClass
+            className={`contenttype-${this.props.content['@type']
+              .replace(' ', '-')
+              .toLowerCase()}`}
+          />
+        )}
 
         <RenderedView
           content={this.props.content}

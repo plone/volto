@@ -6,7 +6,6 @@ import DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidge
 import FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
 import PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
 import QuerystringWidget from '@plone/volto/components/manage/Widgets/QuerystringWidget';
-import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 import SchemaWidget from '@plone/volto/components/manage/Widgets/SchemaWidget';
 import SelectWidget from '@plone/volto/components/manage/Widgets/SelectWidget';
 import TextareaWidget from '@plone/volto/components/manage/Widgets/TextareaWidget';
@@ -37,6 +36,7 @@ export const widgetMapping = {
     array: ArrayWidget,
     object: FileWidget,
     datetime: DatetimeWidget,
+    password: PasswordWidget,
   },
 };
 

@@ -19,9 +19,7 @@ exports[`Actions renders an actions component 1`] = `
       className="lightning big icon"
     />
      
-    <span>
-      Actions
-    </span>
+    Actions
   </span>
   <i
     aria-hidden="true"

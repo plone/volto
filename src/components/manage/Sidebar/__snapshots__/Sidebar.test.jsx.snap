@@ -20,13 +20,13 @@ Array [
           className="item"
           onClick={[Function]}
         >
-          Metadata
+          Document
         </a>
         <a
           className="active item"
           onClick={[Function]}
         >
-          Properties
+          Block
         </a>
       </div>
       <div

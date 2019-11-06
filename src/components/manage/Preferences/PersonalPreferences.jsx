@@ -11,7 +11,7 @@ import { updateIntl } from 'react-intl-redux';
 import { map, keys } from 'lodash';
 import cookie from 'react-cookie';
 import request from 'superagent';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
 import { Form, Toast } from '../../../components';
@@ -61,7 +61,6 @@ class PersonalPreferences extends Component {
    */
   static propTypes = {
     updateIntl: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
     closeMenu: PropTypes.func.isRequired,
   };
 

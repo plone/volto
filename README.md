@@ -41,8 +41,8 @@ First get all the requirements installed on your system.
 
 ### Prerequisites
 
-- [Node.js LTS (10.x)](https://nodejs.org/)
-- [Python 2.7.x](https://python.org/) or
+- [Node.js LTS (12.x)](https://nodejs.org/)
+- [Python 3.7.x / 2.7.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina docker images)
 
 ### Create Volto App
@@ -95,6 +95,15 @@ Go to [http://localhost:3000](http://localhost:3000) in your browser.
 
 You can try a Volto online demo in [https://volto.kitconcept.com](https://volto.kitconcept.com)
 
+## Volto in Production
+
+Volto is actively developed since 2017 and used in production since early 2018 on the following websites:
+
+- [VHS Ehrenamtsportal](https://vhs-ehrenamtsportal.de) (Website to help volunteers that help refugees for the [German Adult Education Association](https://www.dvv-vhs.de/en/home/), developed by [kitconcept GmbH](https://kitconcept.com))
+- [Zeelandia](https://zeelandia.de) (Corporate website for one of the leading backery ingrediences manufactors in Germany, developed by [kitconcept GmbH](https://kitconcept.com))
+- [Excellence at Humboldt-Universität zu Berlin](https://www.alles-beginnt-mit-einer-frage.de) (Website for the excellence initiative of the [Humboldt University Berlin](https://hu-berlin.de), developed by [kitconcept GmbH](https://kitconcept.com))
+- Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
+
 ## Documentation
 
 You can find the (beta) documentation in [http://docs.voltocms.com](http://docs.voltocms.com)
@@ -125,6 +134,9 @@ flavors: Chrome, Firefox, Safari, Edge.
 
 We do not guarantee that browsers who were deprecated by their vendors (e.g. Internet Explorer 11) will be supported by Volto in the future.
 
+## Upgrades
+
+You can find the upgrade guide here: https://docs.voltocms.com/upgrade-guide/
 
 ## Volto Development
 
@@ -159,7 +171,7 @@ Installation Documentation](https://docs.plone.org/manage/installing/installatio
 
 ```shell
 $ cd api
-$ ./bootstrap.sh
+$ make build-backend
 ```
 #### Guillotina (experimental)
 
@@ -236,19 +248,19 @@ To do so, start three individual terminal sessions for running the Plone backend
 Start the Plone backend:
 
 ```shell
-$ yarn ci:start-api-plone
+$ make start-test-backend
 ```
 
 Start the Volto frontend:
 
 ```shell
-$ RAZZLE_API_PATH=http://localhost:55001/plone yarn start
+$ make start-test-frontend
 ```
 
-Open Cypress to run and develop the acceptance tests:
+Open Cypress and start acceptance tests:
 
 ```shell
-$ yarn cypress:open
+$ make start-test
 ```
 
 Go to the `cypress/integration` folder to see existing tests.
