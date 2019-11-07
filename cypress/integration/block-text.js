@@ -53,10 +53,10 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#toolbar-save').click();
 
       // then
-      cy.get('.block.text').contains('Colorless green ideas sleep furiously.');
-      cy.get('.block.text a')
+      cy.get('#view').contains('Colorless green ideas sleep furiously.');
+      cy.get('#view a')
         .should('have.attr', 'href')
-        .and('include', '../link-target');
+        .and('include', '/link-target');
     });
   });
 
