@@ -109,6 +109,30 @@ Cypress.Commands.add(
   },
 );
 
+// --- MOVE CONTENT ----------------------------------------------------------
+Cypress.Commands.add('moveContent', (sourcePath, destinationPath) => {
+  let api_url;
+  if (Cypress.env('API') === 'guillotina') {
+    api_url = 'http://localhost:8081/db/container';
+  } else {
+    api_url = 'http://localhost:55001/plone';
+  }
+  cy.request({
+    method: 'POST',
+    url: `${api_url}/${sourcePath}/@move`,
+    headers: {
+      Accept: 'application/json',
+    },
+    auth: {
+      user: 'admin',
+      pass: 'secret',
+    },
+    body: {
+      source: `${api_url}/${destinationPath}`,
+    },
+  });
+});
+
 Cypress.Commands.add('waitForResourceToLoad', (fileName, type) => {
   const resourceCheckInterval = 40;
 

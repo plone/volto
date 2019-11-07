@@ -39,6 +39,23 @@ if (Cypress.env('API') !== 'guillotina') {
       // follow the link
       cy.get('#view a').click();
       cy.url().should('include', '/link-target');
+
+      cy.moveContent('link-target', 'new-link-target');
+
+      cy.visit('/my-page');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('?fullobjects');
+
+      cy.get('#view a')
+        .should('have.attr', 'href')
+        .and('include', '/new-link-target');
+
+      // follow the link
+      cy.get('#view a').click();
+      cy.url().should('include', '/new-link-target');
     });
   });
 
