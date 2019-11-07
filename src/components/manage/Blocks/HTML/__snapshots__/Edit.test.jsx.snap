@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an edit html block component 1`] = `
+<div
+  className="html-editor"
+  style={
+    Object {
+      "boxSizing": "border-box",
+      "padding": 0,
+      "position": "relative",
+      "textAlign": "left",
+      "whiteSpace": "pre-wrap",
+      "wordBreak": "keep-all",
+    }
+  }
+>
+  <textarea
+    autoCapitalize="off"
+    autoComplete="off"
+    autoCorrect="off"
+    className="npm__react-simple-code-editor__textarea "
+    data-gramm={false}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    placeholder="<p>Add some HTML here</p>"
+    spellCheck={false}
+    style={
+      Object {
+        "MozOsxFontSmoothing": "grayscale",
+        "WebkitFontSmoothing": "antialiased",
+        "WebkitTextFillColor": "transparent",
+        "background": "none",
+        "border": 0,
+        "boxSizing": "inherit",
+        "color": "inherit",
+        "display": "inherit",
+        "fontFamily": "inherit",
+        "fontSize": "inherit",
+        "fontStyle": "inherit",
+        "fontVariantLigatures": "inherit",
+        "fontWeight": "inherit",
+        "height": "100%",
+        "left": 0,
+        "letterSpacing": "inherit",
+        "lineHeight": "inherit",
+        "margin": 0,
+        "overflow": "hidden",
+        "paddingBottom": 8,
+        "paddingLeft": 8,
+        "paddingRight": 8,
+        "paddingTop": 8,
+        "position": "absolute",
+        "resize": "none",
+        "tabSize": "inherit",
+        "textIndent": "inherit",
+        "textRendering": "inherit",
+        "textTransform": "inherit",
+        "top": 0,
+        "whiteSpace": "inherit",
+        "width": "100%",
+        "wordBreak": "inherit",
+      }
+    }
+    value="<h1></h1>"
+  />
+  <pre
+    aria-hidden="true"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;</span>h1</span><span class=\\"token punctuation\\">></span></span><span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;/</span>h1</span><span class=\\"token punctuation\\">></span></span><br />",
+      }
+    }
+    style={
+      Object {
+        "border": 0,
+        "boxSizing": "inherit",
+        "display": "inherit",
+        "fontFamily": "inherit",
+        "fontSize": "inherit",
+        "fontStyle": "inherit",
+        "fontVariantLigatures": "inherit",
+        "fontWeight": "inherit",
+        "letterSpacing": "inherit",
+        "lineHeight": "inherit",
+        "margin": 0,
+        "paddingBottom": 8,
+        "paddingLeft": 8,
+        "paddingRight": 8,
+        "paddingTop": 8,
+        "pointerEvents": "none",
+        "position": "relative",
+        "tabSize": "inherit",
+        "textIndent": "inherit",
+        "textRendering": "inherit",
+        "textTransform": "inherit",
+        "whiteSpace": "inherit",
+        "wordBreak": "inherit",
+      }
+    }
+  />
+  <style
+    type="text/css"
+  >
+    
+/**
+ * Reset the text fill color so that placeholder is visible
+ */
+.npm__react-simple-code-editor__textarea:empty {
+  -webkit-text-fill-color: inherit !important;
+}
+
+/**
+ * IE doesn't support '-webkit-text-fill-color'
+ * So we use 'color: transparent' to make the text transparent on IE
+ * Unlike other browsers, it doesn't affect caret color in IE
+ */
+.npm__react-simple-code-editor__textarea-ie {
+  color: transparent !important;
+}
+
+.npm__react-simple-code-editor__textarea-ie::selection {
+  background-color: #accef7 !important;
+  color: transparent !important;
+}
+
+  </style>
+</div>
+`;

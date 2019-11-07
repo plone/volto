@@ -22,7 +22,7 @@
   .drag.handle.wrapper {
     margin-left: @offset !important;
   }
-  .tile .delete-button {
+  .block .delete-button {
     margin-right: @offset !important;
   }
 }
@@ -106,7 +106,7 @@ body.has-toolbar-collapsed.has-sidebar-collapsed {
   margin-left: -15px !important;
 }
 
-.tile .delete-button {
+.block .delete-button {
   margin-right: -25px !important;
 }
 

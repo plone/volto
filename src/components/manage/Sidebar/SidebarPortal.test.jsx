@@ -3,7 +3,7 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 
 import SidebarPortal from './SidebarPortal';
 
-test('sidebar portal is rendered when the tile is selected', () => {
+test('sidebar portal is rendered when the block is selected', () => {
   const renderer = new ShallowRenderer();
   renderer.render(
     <SidebarPortal selected={true}>
@@ -14,7 +14,7 @@ test('sidebar portal is rendered when the tile is selected', () => {
   expect(component).toMatchSnapshot();
 });
 
-test('sidebar portal is not rendered when the tile is not selected', () => {
+test('sidebar portal is not rendered when the block is not selected', () => {
   const renderer = new ShallowRenderer();
   renderer.render(
     <SidebarPortal selected={false}>

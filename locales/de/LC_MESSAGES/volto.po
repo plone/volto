@@ -56,9 +56,13 @@ msgstr "Inhalte hinzufügen"
 msgid "Add User"
 msgstr ""
 
-#: components/manage/Tiles/Description/Edit
+#: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
 msgstr "Beschreibung hinzufügen…"
+
+#: components/manage/Form/Form
+msgid "Add block..."
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
@@ -79,10 +83,6 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add new user"
 msgstr ""
-
-#: components/manage/Form/Form
-msgid "Add tile..."
-msgstr "Tile hinzufügen"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add to Groups"
@@ -147,7 +147,7 @@ msgstr ""
 msgid "Browse"
 msgstr "Durchsuchen"
 
-#: components/manage/Tiles/Image/Edit
+#: components/manage/Blocks/Image/Edit
 msgid "Browse the site, drop an image, or type an URL"
 msgstr ""
 
@@ -168,7 +168,7 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Cell"
 msgstr ""
 
@@ -326,11 +326,11 @@ msgstr ""
 msgid "Delete User"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Delete col"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Delete row"
 msgstr ""
 
@@ -338,8 +338,8 @@ msgstr ""
 msgid "Descending"
 msgstr "Absteigend"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -363,7 +363,7 @@ msgstr "Unterschied zwischen Version {one} and {two} von {title}"
 msgid "Distributed under the {license}."
 msgstr "Lizensiert unter der {license}."
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Divide each row into separate cells"
 msgstr ""
 
@@ -430,7 +430,7 @@ msgstr ""
 msgid "Email sent"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
+#: components/manage/Blocks/Maps/Edit
 msgid "Enter Map URL"
 msgstr ""
 
@@ -438,7 +438,7 @@ msgstr ""
 msgid "Enter URL or title"
 msgstr "URL oder Titel eingeben"
 
-#: components/manage/Tiles/Video/Edit
+#: components/manage/Blocks/Video/Edit
 msgid "Enter Video URL"
 msgstr "Video-URL eingeben"
 
@@ -496,7 +496,7 @@ msgstr "Dateiname"
 msgid "Filter…"
 msgstr "Filter…"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
 msgstr ""
 
@@ -575,19 +575,19 @@ msgstr ""
 msgid "Inherit permissions from higher levels"
 msgstr "Berechtigungen von übergeordneten Ordnern übernehmen"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert col after"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert col before"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert row after"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert row before"
 msgstr ""
 
@@ -642,15 +642,15 @@ msgstr ""
 msgid "Login Name"
 msgstr "Benutzername"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
+#: components/manage/Blocks/Maps/Edit
 msgid "Maps data error"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
+#: components/manage/Blocks/Maps/Edit
 msgid "Maps instructions"
 msgstr ""
 
@@ -802,7 +802,7 @@ msgstr "Mehr…"
 msgid "Rearrange items by…"
 msgstr "Elemente sortieren nach…"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
 msgstr ""
 
@@ -856,12 +856,12 @@ msgid "Roles"
 msgstr ""
 
 #: components/manage/Add/Add
+#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/Video/Edit
 msgid "Save"
 msgstr "Speichern"
 
@@ -964,7 +964,7 @@ msgstr "Übersicht"
 msgid "Site Setup"
 msgstr "Seiteneinstellungen"
 
-#: components/manage/Tiles/Video/Edit
+#: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
 msgstr "Geben Sie ein YouTube-Video oder eine YouTube-Playlist URL ein"
 
@@ -982,7 +982,7 @@ msgstr "Status"
 msgid "String"
 msgstr "Text"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Stripe alternate rows with color"
 msgstr ""
 
@@ -1000,11 +1000,11 @@ msgstr ""
 msgid "Success"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Table"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Table color inverted"
 msgstr ""
 
@@ -1058,10 +1058,10 @@ msgstr "Dieser Name wird in der Adressleiste des Browsers angezeigt."
 msgid "This page does not seem to exist…"
 msgstr "Die Seite existiert leider nicht…"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1078,15 +1078,15 @@ msgstr "Titel"
 msgid "Type"
 msgstr "Typ"
 
-#: components/manage/Tiles/Text/Edit
+#: components/manage/Blocks/Text/Edit
 msgid "Type text…"
 msgstr "Text eingeben…"
 
-#: components/manage/Tiles/Title/Edit
+#: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr "Titel eingeben…"
 
-#: components/manage/Tiles/Tile/Edit
+#: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
 msgid "Unknown Block"
 msgstr ""
@@ -1221,11 +1221,11 @@ msgstr "Ihre bevorzugte Sprache"
 msgid "box_forgot_password_option"
 msgstr "Passwort vergessen?"
 
-#: config/Tiles
+#: config/Blocks
 msgid "common"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "description"
 msgstr "Beschreibung"
 
@@ -1241,15 +1241,15 @@ msgstr "Der Link, um das Passwort neu zu setzen, wurde Ihnen zugesendet. Die E-M
 msgid "heading_sent_password"
 msgstr "Bestätigung für das Zurücksetzen des Passwortes wurde gesendet!"
 
-#: config/Tiles
+#: config/Blocks
 msgid "hero"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "html"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "image"
 msgstr "Bild"
 
@@ -1257,15 +1257,15 @@ msgstr "Bild"
 msgid "label_my_email_address_is"
 msgstr "Meine E-Mail-Adresse lautet"
 
-#: config/Tiles
+#: config/Blocks
 msgid "maps"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "media"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "mostUsed"
 msgstr ""
 
@@ -1273,19 +1273,19 @@ msgstr ""
 msgid "registration form"
 msgstr "Registrierungsformular"
 
-#: config/Tiles
+#: config/Blocks
 msgid "table"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "text"
 msgstr "Text"
 
-#: config/Tiles
+#: config/Blocks
 msgid "title"
 msgstr "Titel"
 
-#: config/Tiles
+#: config/Blocks
 msgid "video"
 msgstr "Video"
 

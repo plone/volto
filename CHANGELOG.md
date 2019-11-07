@@ -4,7 +4,19 @@
 
 ### Added
 
-- Added improved special `TextSidebarWidget` for dealing with them properly. This fixes the error in the image block `alt` sidebar input @sneridagh
+### Changes
+
+- Fix icon in `TextWidget` @sneridagh
+- impprove documentation for `Icon` @jackahl
+
+### Internal
+
+- Set Cypress viewport width to 1280px @timo
+
+## 4.0.0-alpha.10 (2019-10-31)
+
+### Added
+
 - Add Node 12 support @timo
 
 ### Changes
@@ -15,6 +27,7 @@
 - Fix `SchemaWidget` @robgietema
 - Move styles import to a separate file @pnicolli
 - Fix crash when user enters only whitespace in required fields @JeffersonBledsoe
+- Fix the _real_ focus thief in new tiles @sneridagh
 
 ### Internal
 
@@ -26,7 +39,7 @@
 - Remove Docker build from tests @sneridagh
 - Removed Enzyme @pnicolli
 - Added testing-library (react and cypress) @pnicolli
-- Set Cypress viewport width to 1280px @timo
+- Tiles -> Blocks renaming @sneridagh
 
 ## 4.0.0-alpha.9 (2019-10-09)
 

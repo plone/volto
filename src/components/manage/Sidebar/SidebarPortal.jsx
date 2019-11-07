@@ -5,7 +5,7 @@ import { Portal } from 'react-portal';
 /**
  * Portal that wraps Sidebar components
  * @param {Array} children Sidebar content
- * @param {bool} selected Sidebar needs to know when the related tile is selected
+ * @param {bool} selected Sidebar needs to know when the related block is selected
  * @returns {string} Rendered sidebar
  */
 const SidebarPortal = ({ children, selected }) => (

@@ -10,7 +10,7 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
-## Upgrading to Volto 4.x
+## Upgrading to Volto 4.x.x
 
 First, update your `package.json` to Volto 4.x.x.
 
@@ -21,38 +21,108 @@ First, update your `package.json` to Volto 4.x.x.
   }
 ```
 
-### Tiles engine - Tiles configuration object
+### Renaming Tiles into Blocks
 
-The tiles engine was updated and there are some important breaking changes, in case that
-you've developed custom tiles. The configuration object is now unified and expresses all
-the properties to model a tile. This is how a tile in the `defaultTiles` object looks
+An internal renaming to use the term `Blocks` everywhere was done to unify naming through the code a and the documentation.
+
+Plone RESTAPI was updated to that purpose too, and running an upgrade step (do so in Plone's Addons control panel) is required in order to migrate the data. No step is required if you are using a brand new ZODB.
+
+This is the versions compatibility table across all the packages involved:
+
+Volto 4 - plone.restapi >= 5.0.0 - kitconcept.voltodemo >= 2.0
+
+!!! note
+    The renaming happened in Volto 4 alpha.10 and plone.restapi 5.0.0. Volto 4 alpha versions under that release use older versions of `plone.restapi` and `kitconcept.voltodemo`, however if you are using alpha releases it's recommended to upgrade to latest alpha or the final release of Volto 4.
+
+The project configuration should also be updated, in your `src/config.js`:
+
+```diff
+diff --git a/src/config.js b/src/config.js
+index f1fe9c2..9517c38 100644
+--- a/src/config.js
++++ b/src/config.js
+@@ -16,7 +16,7 @@ import {
+   settings as defaultSettings,
+   views as defaultViews,
+   widgets as defaultWidgets,
+-  tiles as defaultTiles,
++  blocks as defaultBlocks,
+ } from '@plone/volto/config';
+
+ export const settings = {
+@@ -31,6 +31,6 @@ export const widgets = {
+   ...defaultWidgets,
+ };
+
+-export const tiles = {
+-  ...defaultTiles,
++export const blocks = {
++  ...defaultBlocks,
+ };
+```
+
+### Add theme customization to your project
+
+Volto 4 now also expects a file named `src/theme.js` with this content by default:
+
+```js
+import 'semantic-ui-less/semantic.less';
+import '@plone/volto/../theme/themes/pastanaga/extras/extras.less';
+```
+
+### Remove enzyme configuration
+
+Enzyme has been removed, in favor of `@testing-library/react`, and the configuration should be removed in `package.json`:
+
+``` diff
+diff --git a/package.json b/package.json
+index 27c7f8d..8f5f088 100644
+--- a/package.json
++++ b/package.json
+@@ -44,9 +44,6 @@
+       "default",
+       "jest-junit"
+     ],
+-    "snapshotSerializers": [
+-      "enzyme-to-json/serializer"
+-    ],
+     "transform": {
+       "^.+\\.js(x)?$": "babel-jest",
+       "^.+\\.css$": "jest-css-modules",
+```
+
+### Blocks engine - Blocks configuration object
+
+The blocks engine was updated and there are some important breaking changes, in case that
+you've developed custom blocks. The configuration object is now unified and expresses all
+the properties to model a block. This is how a block in the `defaultBlocks` object looks
 like:
 
 ```js
-const defaultTiles = {
+const defaultBlocks = {
   title: {
-    id: 'title', // The name of the tile
-    title: 'Title', // The display name of the tile
-    icon: titleSVG, // The icon used
-    group: 'text', // The group (tiles now can be grouped)
-    view: ViewTitleTile, // The view mode component
-    edit: EditTitleTile, // The edit mode component
-    restricted: false, // If the tile is restricted, it won't show in menus
-    mostUsed: false, // A meta group `most used`, appearing at the top
-    tileHasOwnFocusManagement: false, // Set this to true if the tile manages its own focus
+    id: 'title', // The name (id) of the block
+    title: 'Title', // The display name of the block
+    icon: titleSVG, // The icon used in the block chooser
+    group: 'text', // The group (blocks can be grouped, displayed in the chooser)
+    view: ViewTitleBlock, // The view mode component
+    edit: EditTitleBlock, // The edit mode component
+    restricted: false, // If the block is restricted, it won't show in in the chooser
+    mostUsed: false, // A meta group `most used`, appearing at the top of the chooser
+    blockHasOwnFocusManagement: false, // Set this to true if the block manages its own focus
     security: {
-      addPermission: [], // Future proof (not implemented yet) add permission role(s)
-      view: [], // Future proof (not implemented yet) view role(s)
+      addPermission: [], // Future proof (not implemented yet) add user permission role(s)
+      view: [], // Future proof (not implemented yet) view user role(s)
     },
   },
   ...
 ```
 
-There is an additional object `groupTilesOrder` that contains an array with the order
-that the tiles group should appear:
+There is an additional object `groupBlocksOrder` that contains an array with the order
+that the blocks group should appear:
 
 ```js
-const groupTilesOrder = [
+const groupBlocksOrder = [
   { id: 'mostUsed', title: 'Most used' },
   { id: 'text', title: 'Text' },
   { id: 'media', title: 'Media' },
@@ -60,27 +130,27 @@ const groupTilesOrder = [
 ];
 ```
 
-You should adapt and merge the configuration of your own custom tiles to match the
-`defaultTiles` and `groupTilesOrder` one. You can modify the order of the groups and
+You should adapt and merge the configuration of your own custom blocks to match the
+`defaultBlocks` and `groupBlocksOrder` one. You can modify the order of the groups and
 create your own as well.
 
-### Tiles engine - Simplification of the edit tiles wrapper
+### Blocks engine - Simplification of the edit blocks wrapper
 
-The edit tile wrapper boilerplate was quite big, and for bootstrap an edit tile you had to copy it from an existing tile. Now all this boilerplate has been transferred to the Tiles Engine, so bootstrapping the edit component of a tile is easier and do not require any pre-existing code.
+The edit block wrapper boilerplate was quite big, and for bootstrap an edit block you had to copy it from an existing block. Now all this boilerplate has been transferred to the Blocks Engine, so bootstrapping the edit component of a block is easier and do not require any pre-existing code.
 
-In order to upgrade your tiles you should simplify the outter `<div>` (took as example the Title tile):
+In order to upgrade your blocks you should simplify the outter `<div>` (took as example the Title block):
 
 ``` diff
---- a/src/components/manage/Tiles/Title/Edit.jsx
-+++ b/src/components/manage/Tiles/Title/Edit.jsx
+--- a/src/components/manage/Blocks/Title/Edit.jsx
++++ b/src/components/manage/Blocks/Title/Edit.jsx
 @@ -138,11 +138,7 @@ class Edit extends Component {
        return <div />;
      }
      return (
 -      <div
 -        role="presentation"
--        onClick={() => this.props.onSelectTile(this.props.tile)}
--        className={cx('tile title', { selected: this.props.selected })}
+-        onClick={() => this.props.onSelectBlock(this.props.block)}
+-        className={cx('block title', { selected: this.props.selected })}
 -      >
 +      <>
          <Editor
@@ -97,9 +167,9 @@ In order to upgrade your tiles you should simplify the outter `<div>` (took as e
  }
 ```
 
-The tiles engine now takes care for the keyboard navigation of the tiles, so you need to remove the outter `<div>` from your custom tile, then your tile doesn't have to react to the change on `this.props.selected` either, because it's also something that the tiles engine already does for you.
+The blocks engine now takes care for the keyboard navigation of the blocks, so you need to remove the outter `<div>` from your custom block, then your block doesn't have to react to the change on `this.props.selected` either, because it's also something that the blocks engine already does for you.
 
-The focus management is also transferred to the engine, so no needed for your tile to manage the focus. However, if your tile does indeed require to manage its own focus, then you should mark it with the `tileHasOwnFocusManagement` property in the tiles configuration object:
+The focus management is also transferred to the engine, so no needed for your block to manage the focus. However, if your block does indeed require to manage its own focus, then you should mark it with the `blockHasOwnFocusManagement` property in the blocks configuration object:
 
 ``` js hl_lines="10"
     text: {
@@ -107,11 +177,11 @@ The focus management is also transferred to the engine, so no needed for your ti
       title: 'Text',
       icon: textSVG,
       group: 'text',
-      view: ViewTextTile,
-      edit: EditTextTile,
+      view: ViewTextBlock,
+      edit: EditTextBlock,
       restricted: false,
       mostUsed: false,
-      tileHasOwnFocusManagement: true,
+      blockHasOwnFocusManagement: true,
       security: {
         addPermission: [],
         view: [],
@@ -161,38 +231,38 @@ They all use `react-select` third party library for render it.
 
 ## Upgrading to Volto 2.x
 
-### Improved Tiles HOC
+### Improved Blocks HOC
 
-The Tiles HOC (High Order Component) was changed to lift off some of the
-features from the tiles themselves and now it takes care of them by its own.
+The Blocks HOC (High Order Component) was changed to lift off some of the
+features from the blocks themselves and now it takes care of them by its own.
 
-- The delete tile feature was moved to it
-- The keylisteners for navigating through tiles was moved to it
-- The properties passed down to the tiles are improved and documented
+- The delete block feature was moved to it
+- The keylisteners for navigating through blocks was moved to it
+- The properties passed down to the blocks are improved and documented
 
-This change only applies to your existing tiles, you have to update them
-accordingly by delete the trash icon and action from the end of your tiles
+This change only applies to your existing blocks, you have to update them
+accordingly by delete the trash icon and action from the end of your blocks
 
 ```js
 {this.props.selected && (
   <Button
     icon
     basic
-    onClick={() => this.props.onDeleteTile(this.props.tile)}
-    className="tile-delete-button"
+    onClick={() => this.props.onDeleteBlock(this.props.block)}
+    className="block-delete-button"
   >
     <Icon name={trashSVG} size="18px" />
   </Button>
 )}
 ```
 
-Modify the parent element of your tile making this changes:
+Modify the parent element of your block making this changes:
 
 ```js
 <div
   role="presentation"
-  onClick={() => this.props.onSelectTile(this.props.tile)}
-  className={cx('tile hero', {
+  onClick={() => this.props.onSelectBlock(this.props.block)}
+  className={cx('block hero', {
     selected: this.props.selected,
   })}
   tabIndex={0}
@@ -200,7 +270,7 @@ Modify the parent element of your tile making this changes:
     this.props.handleKeyDown(
       e,
       this.props.index,
-      this.props.tile,
+      this.props.block,
       this.node
     )
   }
@@ -210,14 +280,14 @@ Modify the parent element of your tile making this changes:
 >
 ```
 
-- Add the keylisteners to the parent element of your tile
+- Add the keylisteners to the parent element of your block
 
 ```js
   onKeyDown={e =>
     this.props.handleKeyDown(
       e,
       this.props.index,
-      this.props.tile,
+      this.props.block,
       this.node
     )
   }
@@ -237,7 +307,7 @@ Modify the parent element of your tile making this changes:
   role="presentation"
 ```
 
-Take a look into the implementation of the default Volto tiles to get a grasp
+Take a look into the implementation of the default Volto blocks to get a grasp
 on all the edge cases related to keyboard navigation and how to deal with them.
 
 ### Reordering of the internal CSS, added an extra

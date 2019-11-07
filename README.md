@@ -134,6 +134,9 @@ flavors: Chrome, Firefox, Safari, Edge.
 
 We do not guarantee that browsers who were deprecated by their vendors (e.g. Internet Explorer 11) will be supported by Volto in the future.
 
+## Upgrades
+
+You can find the upgrade guide here: https://docs.voltocms.com/upgrade-guide/
 
 ## Volto Development
 
