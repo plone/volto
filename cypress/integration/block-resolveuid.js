@@ -35,6 +35,10 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#view a')
         .should('have.attr', 'href')
         .and('include', '/link-target');
+
+      // follow the link
+      cy.get('#view a').click();
+      cy.url().should('include', '/link-target');
     });
   });
 
