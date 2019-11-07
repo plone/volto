@@ -5,9 +5,10 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Input, Label, Icon } from 'semantic-ui-react';
+import { Form, Grid, Input, Label, Icon as IconOld } from 'semantic-ui-react';
 import { map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
+import { Icon } from '@plone/volto/components';
 
 const messages = defineMessages({
   default: {
@@ -178,14 +179,14 @@ class TextWidget extends Component {
                     className="item ui noborder button"
                     onClick={() => onEdit(id, schema)}
                   >
-                    <Icon name="write square" size="large" color="blue" />
+                    <IconOld name="write square" size="large" color="blue" />
                   </button>
                   <button
                     aria-label="Delete"
                     className="item ui noborder button"
                     onClick={() => onDelete(id)}
                   >
-                    <Icon name="close" size="large" color="red" />
+                    <IconOld name="close" size="large" color="red" />
                   </button>
                 </div>
               )}

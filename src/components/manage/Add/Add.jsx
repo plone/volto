@@ -20,9 +20,9 @@ import { createContent, getSchema } from '../../../actions';
 import { Form, Icon, Toolbar, Sidebar } from '../../../components';
 import {
   getBaseUrl,
-  hasTilesData,
-  getTilesFieldname,
-  getTilesLayoutFieldname,
+  hasBlocksData,
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
 } from '../../../helpers';
 
 import saveSVG from '../../../icons/save.svg';
@@ -162,7 +162,7 @@ class Add extends Component {
    */
   render() {
     if (this.props.schemaRequest.loaded) {
-      const visual = hasTilesData(this.props.schema.properties);
+      const visual = hasBlocksData(this.props.schema.properties);
 
       return (
         <div id="page-add">
@@ -175,8 +175,8 @@ class Add extends Component {
             ref={this.form}
             schema={this.props.schema}
             formData={{
-              [getTilesFieldname(this.props.schema.properties)]: null,
-              [getTilesLayoutFieldname(this.props.schema.properties)]: null,
+              [getBlocksFieldname(this.props.schema.properties)]: null,
+              [getBlocksLayoutFieldname(this.props.schema.properties)]: null,
             }}
             onSubmit={this.onSubmit}
             hideActions
