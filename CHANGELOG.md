@@ -8,6 +8,7 @@
 
 - Fix icon in `TextWidget` @sneridagh
 - impprove documentation for `Icon` @jackahl
+- Fix ability to develop Volto itself (as and addon with a mrs.developer checkout) inside a Volto project @sneridagh
 
 ### Internal
 
