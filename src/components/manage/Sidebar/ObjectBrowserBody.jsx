@@ -224,7 +224,6 @@ class ObjectBrowserBody extends Component {
 
   onSelectItem = url => {
     const { block, data, mode, dataName, onChangeBlock } = this.props;
-    debugger;
     if (dataName) {
       onChangeBlock(block, {
         ...data,
