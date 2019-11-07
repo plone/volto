@@ -9,6 +9,10 @@
 - Fix icon in `TextWidget` @sneridagh
 - impprove documentation for `Icon` @jackahl
 
+### Internal
+
+- Add internationalization section to docs @pgrunewald
+
 ## 4.0.0-alpha.10 (2019-10-31)
 
 ### Added

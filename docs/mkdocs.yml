@@ -18,45 +18,46 @@ extra_css:
   - 'stylesheets/extra.css'
 
 nav:
-  - Introduction: "introduction/introduction.md"
+  - Introduction: 'introduction/introduction.md'
   - Getting Started:
-    - Install Volto: "getting-started/install.md"
+      - Install Volto: 'getting-started/install.md'
   - Configuration:
-    - What is configurable?: "configuration/how-to.md"
-    - Richeditor settings: "configuration/richeditor-settings.md"
+      - What is configurable?: 'configuration/how-to.md'
+      - Richeditor settings: 'configuration/richeditor-settings.md'
   - Semantic UI:
-    - About Semantic UI: "semantic-ui/about-semantic.md"
-    - Semantic UI Theming: "semantic-ui/semanticui-theming.md"
-    - Theming Engine: "semantic-ui/theming-engine.md"
+      - About Semantic UI: 'semantic-ui/about-semantic.md'
+      - Semantic UI Theming: 'semantic-ui/semanticui-theming.md'
+      - Theming Engine: 'semantic-ui/theming-engine.md'
   - Theming:
-    - Theming strategy: "theming/theming-strategy.md"
-    - Custom styling: "theming/custom-styling.md"
-    - Intregrate third party: "theming/integrate-third-party.md"
+      - Theming strategy: 'theming/theming-strategy.md'
+      - Custom styling: 'theming/custom-styling.md'
+      - Intregrate third party: 'theming/integrate-third-party.md'
   - Customizing:
-    - Creating a project: "customizing/creating-project.md"
-    - Folder structure: "customizing/folder-structure.md"
-    - Customizing components: "customizing/customizing-components.md"
-    - Customizing views: "customizing/customizing-views.md"
-    - Creating new views: "customizing/creating-views.md"
-    - Creating Add-on packages: "customizing/add-ons.md"
+      - Creating a project: 'customizing/creating-project.md'
+      - Folder structure: 'customizing/folder-structure.md'
+      - Customizing components: 'customizing/customizing-components.md'
+      - Customizing views: 'customizing/customizing-views.md'
+      - Creating new views: 'customizing/creating-views.md'
+      - Creating Add-on packages: 'customizing/add-ons.md'
+      - Internationalization: 'customizing/i18n.md'
   - Blocks:
-    - Introduction: "blocks/introduction.md"
-    - Anatomy: "blocks/anatomy.md"
-    - Settings: "blocks/settings.md"
-    - Edit components: "blocks/editcomponent.md"
+      - Introduction: 'blocks/introduction.md'
+      - Anatomy: 'blocks/anatomy.md'
+      - Settings: 'blocks/settings.md'
+      - Edit components: 'blocks/editcomponent.md'
   - Deploying:
-    - Simple deployment: "deploying/simple.md"
-    - Using PM2: "deploying/pm2.md"
-  - Upgrade Guide: "upgrade-guide/index.md"
+      - Simple deployment: 'deploying/simple.md'
+      - Using PM2: 'deploying/pm2.md'
+  - Upgrade Guide: 'upgrade-guide/index.md'
   - Developer Guidelines:
-    - Accessibility: "developer-guidelines/accessibility-guidelines.md"
-    - React: "developer-guidelines/react.md"
-    - Babel: "developer-guidelines/babel.md"
-    - Redux: "developer-guidelines/redux.md"
-    - Routing: "developer-guidelines/routing.md"
-    - Linting: "developer-guidelines/linting.md"
-    - Language features: "developer-guidelines/language-features.md"
-  - Contributing: "contributing/index.md"
+      - Accessibility: 'developer-guidelines/accessibility-guidelines.md'
+      - React: 'developer-guidelines/react.md'
+      - Babel: 'developer-guidelines/babel.md'
+      - Redux: 'developer-guidelines/redux.md'
+      - Routing: 'developer-guidelines/routing.md'
+      - Linting: 'developer-guidelines/linting.md'
+      - Language features: 'developer-guidelines/language-features.md'
+  - Contributing: 'contributing/index.md'
 
 markdown_extensions:
   - admonition
@@ -66,7 +67,6 @@ markdown_extensions:
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.details
-  - pymdownx.superfences
   - pymdownx.tasklist
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
