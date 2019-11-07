@@ -71,7 +71,7 @@ test-acceptance-guillotina:
 	docker-compose -f g-api/docker-compose.yml up > /dev/null
 
 clean:
-	(cd api && rm -rf bin eggs develop-eggs include lib parts .installed.cfg .mr.developer.cfg)
+	(cd api && rm -rf bin eggs develop-eggs include lib parts .installed.cfg .mr.developer.cfg .Python)
 	rm -rf node_modules
 
 .PHONY: start-backend
