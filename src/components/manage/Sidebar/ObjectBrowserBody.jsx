@@ -235,10 +235,17 @@ class ObjectBrowserBody extends Component {
       });
     } else if (this.props.onSelectItem) {
       this.props.onSelectItem(url);
-      this.setState({
-        selectedHref: url,
-        currentLinkFolder: getParentURL(url),
-      });
+      if (mode === 'image') {
+        this.setState({
+          selectedImage: url,
+          currentImageFolder: getParentURL(url),
+        });
+      } else {
+        this.setState({
+          selectedHref: url,
+          currentLinkFolder: getParentURL(url),
+        });
+      }
     } else if (mode === 'image') {
       onChangeBlock(block, {
         ...data,
