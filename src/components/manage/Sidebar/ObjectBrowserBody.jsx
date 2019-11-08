@@ -26,14 +26,6 @@ const messages = defineMessages({
     id: 'Search content',
     defaultMessage: 'Search content',
   },
-  ChooseImage: {
-    id: 'Choose Image',
-    defaultMessage: 'Choose Image',
-  },
-  ChooseTargetLink: {
-    id: 'Choose Target',
-    defaultMessage: 'Choose Target',
-  },
 });
 
 function getParentURL(url) {
@@ -347,14 +339,14 @@ class ObjectBrowserBody extends Component {
             ) : this.props.mode === 'image' ? (
               <h2>
                 <FormattedMessage
-                  id="ChooseImage"
+                  id="Choose Image"
                   defaultMessage="Choose Image"
                 />
               </h2>
             ) : (
               <h2>
                 <FormattedMessage
-                  id="ChooseTargetLink"
+                  id="Choose Target"
                   defaultMessage="Choose Target"
                 />
               </h2>

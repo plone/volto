@@ -214,14 +214,6 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
-#: components/manage/Sidebar/ObjectBrowserBody
-msgid "ChooseImage"
-msgstr ""
-
-#: components/manage/Sidebar/ObjectBrowserBody
-msgid "ChooseTargetLink"
-msgstr ""
-
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr ""
