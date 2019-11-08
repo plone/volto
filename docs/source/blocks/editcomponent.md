@@ -55,7 +55,7 @@ However, if you need to instantiate it somewhere else, you can do it anyways by 
 
 ### openObjectBrowser handler API
 
-If you want to open an ObjectBrowser from your Block, you need to call the `openObjectBrowser` function you'll find in the props of your block component.
+If you want to open an `ObjectBrowser` from your Block, you need to call the `openObjectBrowser` function you'll find in the props of your block component.
 This function has this signature:
 
 ```

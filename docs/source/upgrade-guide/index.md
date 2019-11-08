@@ -21,6 +21,25 @@ First, update your `package.json` to Volto 4.x.x.
   }
 ```
 
+### openObjectBrowser API change in Alpha 11
+
+The API of the `ObjectBrowser` component changed in alpha 11 to make it more flexible.
+In case you had custom blocks using it, you have to update the call in case you were using a `link` mode:
+
+```diff
+@@ -42,7 +42,7 @@ const OtherComp = ({
+                     href: '',
+                   });
+                 }
+-              : () => openObjectBrowser('link')
++              : () => openObjectBrowser({ mode: 'link' })
+           }
+           onChange={(name, value) => {
+             onChangeBlock(block, {
+```
+
+See the [blocks section](../blocks/editcomponent.md#openobjectbrowser-handler-api) for more details.
+
 ### Renaming Tiles into Blocks
 
 An internal renaming to use the term `Blocks` everywhere was done to unify naming through the code a and the documentation.
