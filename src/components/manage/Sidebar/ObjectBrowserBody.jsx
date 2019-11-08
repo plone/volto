@@ -62,6 +62,8 @@ class ObjectBrowserBody extends Component {
     searchContent: PropTypes.func.isRequired,
     closeObjectBrowser: PropTypes.func.isRequired,
     onChangeBlock: PropTypes.func.isRequired,
+    onSelectItem: PropTypes.func,
+    dataName: PropTypes.string,
   };
 
   /**
@@ -72,6 +74,8 @@ class ObjectBrowserBody extends Component {
   static defaultProps = {
     image: '',
     href: '',
+    onSelectItem: null,
+    dataName: null,
   };
 
   /**
@@ -148,11 +152,6 @@ class ObjectBrowserBody extends Component {
     }
   };
 
-  onChangeField = (name, value) => {
-    this.setState({ [name]: value });
-    this.onChangeBlockData(name, value);
-  };
-
   getIcon = icon => {
     switch (icon) {
       case 'Folder':
@@ -224,18 +223,34 @@ class ObjectBrowserBody extends Component {
   };
 
   onSelectItem = url => {
-    if (this.props.mode === 'image') {
-      this.props.onChangeBlock(this.props.block, {
-        ...this.props.data,
+    const { block, data, mode, dataName, onChangeBlock } = this.props;
+    if (dataName) {
+      onChangeBlock(block, {
+        ...data,
+        [dataName]: url,
+      });
+      this.setState({
+        selectedHref: url,
+        currentLinkFolder: getParentURL(url),
+      });
+    } else if (this.props.onSelectItem) {
+      this.props.onSelectItem(url);
+      this.setState({
+        selectedHref: url,
+        currentLinkFolder: getParentURL(url),
+      });
+    } else if (mode === 'image') {
+      onChangeBlock(block, {
+        ...data,
         url: `${settings.apiPath}${url}`,
       });
       this.setState({
         selectedImage: url,
         currentImageFolder: getParentURL(url),
       });
-    } else {
-      this.props.onChangeBlock(this.props.block, {
-        ...this.props.data,
+    } else if (mode === 'link') {
+      onChangeBlock(block, {
+        ...data,
         href: url,
       });
       this.setState({

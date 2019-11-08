@@ -4,6 +4,8 @@
 
 ### Added
 
+- Improved `ObjectBrowser` API to allow arbitrary field names and a custom `onSelectItem` @sneridagh
+
 ### Changes
 
 - Fix icon in `TextWidget` @sneridagh

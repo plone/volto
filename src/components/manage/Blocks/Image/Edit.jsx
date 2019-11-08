@@ -14,7 +14,6 @@ import cx from 'classnames';
 import Dropzone from 'react-dropzone';
 
 import { settings } from '~/config';
-import withObjectBrowser from '../../Sidebar/ObjectBrowser';
 
 import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
@@ -320,7 +319,6 @@ class Edit extends Component {
 }
 
 export default compose(
-  withObjectBrowser,
   injectIntl,
   connect(
     state => ({

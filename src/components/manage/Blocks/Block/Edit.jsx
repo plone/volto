@@ -14,6 +14,7 @@ import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import cx from 'classnames';
 
+import withObjectBrowser from '../../Sidebar/ObjectBrowser';
 import Icon from '../../../../components/theme/Icon/Icon';
 import dragSVG from '../../../../icons/drag.svg';
 import trashSVG from '../../../../icons/delete.svg';
@@ -244,6 +245,7 @@ class Edit extends Component {
 
 export default compose(
   injectIntl,
+  withObjectBrowser,
   DropTarget(ItemTypes.ITEM, itemTarget, connect => ({
     connectDropTarget: connect.dropTarget(),
   })),
