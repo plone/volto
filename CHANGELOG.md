@@ -6,8 +6,21 @@
 
 ### Changes
 
+## 4.0.0-alpha.11 (2019-11-08)
+
+### Added
+
+- Improved `ObjectBrowser` API to allow arbitrary field names and a custom `onSelectItem` @sneridagh
+
+### Changes
+
 - Fix icon in `TextWidget` @sneridagh
 - impprove documentation for `Icon` @jackahl
+- Fix ability to develop Volto itself (as and addon with a mrs.developer checkout) inside a Volto project @sneridagh
+
+### Internal
+
+- Add internationalization section to docs @pgrunewald
 
 ## 4.0.0-alpha.10 (2019-10-31)
 

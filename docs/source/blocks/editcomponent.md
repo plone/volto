@@ -47,5 +47,44 @@ The HOC component ``withObjectBrowser`` wraps your component by making available
 - openObjectBrowser - handler for opening the browser
 - closeObjectBrowser - handler for closing the browser
 
+By default, it's enabled for all the component tree under the Blocks Editor, so it's available already for all the blocks in edit mode.
+However, if you need to instantiate it somewhere else, you can do it anyways by wrapping your component with it.
+
 !!! note
     The default image block in Volto features both the Sidebar and the object browser, take a look at its source code in case you need more context on how they work.
+
+### openObjectBrowser handler API
+
+If you want to open an `ObjectBrowser` from your Block, you need to call the `openObjectBrowser` function you'll find in the props of your block component.
+This function has this signature:
+
+```
+@param {Object} object ObjectBrowser configuration.
+@param {string} object.mode Quick mode, defaults to `image`.
+@param {string} object.dataName Name of the block data property to write the selected item.
+@param {string} object.onSelectItem Function that will be called on item selection.
+```
+
+These are some examples on how to use it:
+
+```js
+// Opens the browser in the `image` mode by default if no config object specified, so it saves the selection in the `url` data property.
+this.props.openObjectBrowser();
+
+// Opens the browser in the `link` mode, so it saves the selection in the `href` data property.
+this.props.openObjectBrowser({mode: 'link'});
+
+// Opens the browser defining which data property should save the selection using `dataName`
+this.props.openObjectBrowser({
+  dataName: 'myfancydatafield'
+});
+
+// Opens the browser defining the function that should be used to save the selection using `onSelectItem`
+this.props.openObjectBrowser({
+  onSelectItem: url =>
+    this.props.onChangeBlock(this.props.block, {
+      ...this.props.data,
+      myfancydatafield: url,
+    }),
+  });
+```
