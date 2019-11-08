@@ -3,8 +3,8 @@
 Volto can be installed in any operating system assuming that the requirements
 are met:
 
-- [Node.js LTS (10.x)](https://nodejs.org/)
-- [Python 2.7.x](https://python.org/) or
+- [Node.js LTS (12.x)](https://nodejs.org/)
+- [Python 3.7.x / 2.7.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina
   docker images)
 
