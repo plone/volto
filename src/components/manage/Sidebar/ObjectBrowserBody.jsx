@@ -224,47 +224,45 @@ class ObjectBrowserBody extends Component {
 
   onSelectItem = url => {
     const { block, data, mode, dataName, onChangeBlock } = this.props;
+
+    const updateState = mode => {
+      switch (mode) {
+        case 'image':
+          this.setState({
+            selectedImage: url,
+            currentImageFolder: getParentURL(url),
+          });
+          break;
+        case 'link':
+          this.setState({
+            selectedHref: url,
+            currentLinkFolder: getParentURL(url),
+          });
+          break;
+        default:
+          break;
+      }
+    };
+
     if (dataName) {
       onChangeBlock(block, {
         ...data,
         [dataName]: url,
       });
-      this.setState({
-        selectedHref: url,
-        currentLinkFolder: getParentURL(url),
-      });
     } else if (this.props.onSelectItem) {
       this.props.onSelectItem(url);
-      if (mode === 'image') {
-        this.setState({
-          selectedImage: url,
-          currentImageFolder: getParentURL(url),
-        });
-      } else {
-        this.setState({
-          selectedHref: url,
-          currentLinkFolder: getParentURL(url),
-        });
-      }
     } else if (mode === 'image') {
       onChangeBlock(block, {
         ...data,
         url: `${settings.apiPath}${url}`,
-      });
-      this.setState({
-        selectedImage: url,
-        currentImageFolder: getParentURL(url),
       });
     } else if (mode === 'link') {
       onChangeBlock(block, {
         ...data,
         href: url,
       });
-      this.setState({
-        selectedHref: url,
-        currentLinkFolder: getParentURL(url),
-      });
     }
+    updateState(mode);
   };
 
   onChangeBlockData = (key, value) => {
