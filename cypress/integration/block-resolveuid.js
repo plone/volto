@@ -40,8 +40,11 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#view a').click();
       cy.url().should('include', '/link-target');
 
-      cy.moveContent('link-target', 'new-link-target');
+      // move content
+      cy.createContent('Document', 'new-destination', 'New Destination');
+      cy.moveContent('link-target', 'new-destination');
 
+      cy.visit('/new-destination/link-target');
       cy.visit('/my-page');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
@@ -49,13 +52,14 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('?fullobjects');
 
+      // link should point to new location
       cy.get('#view a')
         .should('have.attr', 'href')
-        .and('include', '/new-link-target');
+        .and('include', '/new-destination/link-target');
 
       // follow the link
       cy.get('#view a').click();
-      cy.url().should('include', '/new-link-target');
+      cy.url().should('include', '/new-destination/link-target');
     });
   });
 
