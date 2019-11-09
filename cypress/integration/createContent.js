@@ -47,5 +47,16 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.view-wrapper img').should('have.attr', 'alt', 'My Image');
       // cy.get('.view-wrapper a').click();
     });
+    it('Move content', function() {
+      cy.createContent('Document', 'my-page', 'My Page');
+      cy.createContent('Document', 'new-destination', 'New Destination');
+      cy.moveContent('my-page', 'new-destination');
+      cy.visit('/new-destination/my-page');
+      cy.get('.documentFirstHeading').should('have.text', 'My Page');
+      cy.url().should(
+        'eq',
+        Cypress.config().baseUrl + '/new-destination/my-page',
+      );
+    });
   });
 }

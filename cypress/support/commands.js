@@ -119,7 +119,7 @@ Cypress.Commands.add('moveContent', (sourcePath, destinationPath) => {
   }
   cy.request({
     method: 'POST',
-    url: `${api_url}/${sourcePath}/@move`,
+    url: `${api_url}/${destinationPath}/@move`,
     headers: {
       Accept: 'application/json',
     },
@@ -128,7 +128,7 @@ Cypress.Commands.add('moveContent', (sourcePath, destinationPath) => {
       pass: 'secret',
     },
     body: {
-      source: `${api_url}/${destinationPath}`,
+      source: `${api_url}/${sourcePath}`,
     },
   });
 });
