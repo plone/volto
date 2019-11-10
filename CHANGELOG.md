@@ -6,6 +6,18 @@
 
 ### Changes
 
+## 4.0.0-alpha.12 (2019-11-10)
+
+### Added
+
+- IImplementation of `Portuguese (BR)` translation @LeuAlmeida
+
+## 4.0.0 (unreleased)
+
+### Added
+
+### Changes
+
 ## 4.0.0-alpha.11 (2019-11-08)
 
 ### Added
