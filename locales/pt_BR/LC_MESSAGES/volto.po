@@ -12,89 +12,89 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: components/theme/Footer/Footer
-msgid "Accessibility"
+msgid "Acessibilidade"
 msgstr ""
 
 #: components/theme/Register/Register
-msgid "Account Registration Completed"
+msgid "Cadastro de Conta Finalizado"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
-msgid "Account activation completed"
+msgid "Ativação completa"
 msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
-msgid "Action"
+msgid "Ação"
 msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Actions"
+msgid "Ações"
 msgstr ""
 
 #: components/manage/Toolbar/Types
-msgid "Add Content"
+msgid "Adicionar conteúdo"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Add User"
+msgid "Adicionar usuário"
 msgstr ""
 
 #: components/manage/Blocks/Description/Edit
-msgid "Add a description…"
+msgid "Adicione uma descrição"
 msgstr ""
 
 #: components/manage/Form/Form
-msgid "Add block..."
+msgid "Adicionar bloco..."
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
-msgid "Add field"
+msgid "Adicionar campo"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
-msgid "Add fieldset"
+msgid "Adicionar fieldset"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Add group"
+msgid "Adicionar grupo"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Add new group"
+msgid "Adicionar novo grupo"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Add new user"
+msgid "Adicionar novo usuário"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Add to Groups"
+msgid "Adicionar a um grupo"
 msgstr ""
 
 #: components/manage/Add/Add
-msgid "Add {type}"
+msgid "Adicionar {type}"
 msgstr ""
 
 #: components/manage/Sidebar/ImageSidebar
-msgid "Alignment"
+msgid "Alinhamento"
 msgstr ""
 
 #: components/manage/Contents/Contents
-msgid "All"
+msgid "Todos"
 msgstr ""
 
 #: components/manage/Sidebar/ImageSidebar
-msgid "Alt text"
+msgid "Descrição Alt"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
-msgid "Are you sure you want to delete this field?"
+msgid "Você realmente deseja deletar este campo?"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
-msgid "Are you sure you want to delete this fieldset including all fields?"
+msgid "Você realmente deseja deletar este fieldset com todos os campos?"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -113,7 +113,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
-msgid "Back"
+msgid "Voltar"
 msgstr ""
 
 #: components/manage/Diff/Diff
@@ -121,23 +121,23 @@ msgid "Base"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
-msgid "Block"
+msgid "Bloco"
 msgstr ""
 
 #: components/theme/Login/Login
-msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
+msgid "Ambos os campos de e-mail e senha possuem case sensitive, verifique se o caps lock está habilitado."
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
-msgid "Browse"
+msgid "Procurar"
 msgstr ""
 
 #: components/manage/Blocks/Image/Edit
-msgid "Browse the site, drop an image, or type an URL"
+msgid "Procure no site, arraste uma imagem ou digite uma URL"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
-msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+msgid "Por padrão, as permissões do contêiner deste item são herdadas. Se você desabilitar isso, apenas as permissões de compartilhamento definidas explicitamente serão válidas. Na visão geral, o símbolo {inherited} ou {herdado} indica um valor herdado. Da mesma forma, o símbolo {global} indica uma função global, gerenciada pelo administrador do site."
 msgstr ""
 
 #: components/manage/Add/Add
@@ -150,24 +150,28 @@ msgstr ""
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/theme/Login/Login
-msgid "Cancel"
+msgid "Cancelar"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-msgid "Cell"
+msgid "Célular"
 msgstr ""
 
 #: components/manage/History/History
-msgid "Change Note"
+msgid "Mudar Anotações"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
-msgid "Change Password"
+msgid "Alterar Senha"
 msgstr ""
 
 #: components/manage/Contents/ContentsWorkflowModal
-msgid "Change State"
+msgid "Alterar Estado"
 msgstr ""
+
+###################################################
+# Pendentes as alterações daqui em diante.
+###################################################
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
