@@ -10,7 +10,7 @@
 
 ### Added
 
-- IImplementation of `Portuguese (BR)` translation @LeuAlmeida
+- Implementation of `Portuguese (BR)` translation @LeuAlmeida
 
 ## 4.0.0 (unreleased)
 
