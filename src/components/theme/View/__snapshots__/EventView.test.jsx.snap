@@ -63,7 +63,7 @@ exports[`renders an event view component with all props 1`] = `
         <span
           className="start-time"
         >
-          5:20 PM
+          8:50 PM
         </span>
       </span>
        to 
@@ -81,7 +81,7 @@ exports[`renders an event view component with all props 1`] = `
         <span
           className="end-time"
         >
-          5:20 PM
+          8:50 PM
         </span>
       </span>
     </p>
@@ -189,13 +189,13 @@ exports[`renders an event view component with only required props 1`] = `
       <span
         className="start-time"
       >
-        5:20 PM
+        8:50 PM
       </span>
        to 
       <span
         className="end-time"
       >
-        6:20 PM
+        9:50 PM
       </span>
     </p>
   </div>

@@ -24,6 +24,7 @@ const findRecurrence = props => {
     }
   } else if (arr[0].includes('WEEKLY')) {
     let firstDate = moment(newDates.startDate);
+    //console.log(days)
     days.split(',').map(item => {
       reccDates.push(
         firstDate
@@ -33,6 +34,18 @@ const findRecurrence = props => {
           .concat(` from ${newDates.startTime} to ${newDates.endTime}`),
       );
     });
+  } else if (arr[0].includes('MONTHLY')) {
+    let firstDate = moment(newDates.startDate);
+    //console.log(days, firstDate)
+    for (let i = 1; i <= parseInt(count); i++) {
+      reccDates.push(
+        firstDate
+          .day(days)
+          ._d.toString()
+          .substring(0, 15)
+          .concat(` from ${newDates.startTime} to ${newDates.endTime}`),
+      );
+    }
   }
   return reccDates;
 };
