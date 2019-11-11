@@ -4,7 +4,30 @@
 
 ### Added
 
-- Added improved special `TextSidebarWidget` for dealing with them properly. This fixes the error in the image block `alt` sidebar input @sneridagh
+### Changes
+
+- Add loading animation for save and edit buttons in toolbar @pgrunewald
+
+## 4.0.0-alpha.11 (2019-11-08)
+
+### Added
+
+- Improved `ObjectBrowser` API to allow arbitrary field names and a custom `onSelectItem` @sneridagh
+
+### Changes
+
+- Fix icon in `TextWidget` @sneridagh
+- impprove documentation for `Icon` @jackahl
+- Fix ability to develop Volto itself (as and addon with a mrs.developer checkout) inside a Volto project @sneridagh
+
+### Internal
+
+- Add internationalization section to docs @pgrunewald
+
+## 4.0.0-alpha.10 (2019-10-31)
+
+### Added
+
 - Add Node 12 support @timo
 
 ### Changes
@@ -15,7 +38,7 @@
 - Fix `SchemaWidget` @robgietema
 - Move styles import to a separate file @pnicolli
 - Fix crash when user enters only whitespace in required fields @JeffersonBledsoe
-- Add loading animation for save and edit buttons in toolbar @pgrunewald
+- Fix the _real_ focus thief in new tiles @sneridagh
 
 ### Internal
 
@@ -27,6 +50,7 @@
 - Remove Docker build from tests @sneridagh
 - Removed Enzyme @pnicolli
 - Added testing-library (react and cypress) @pnicolli
+- Tiles -> Blocks renaming @sneridagh
 
 ## 4.0.0-alpha.9 (2019-10-09)
 
