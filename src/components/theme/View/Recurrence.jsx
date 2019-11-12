@@ -24,19 +24,31 @@ const findRecurrence = props => {
     }
   } else if (arr[0].includes('WEEKLY')) {
     let firstDate = moment(newDates.startDate);
-    //console.log(days)
-    days.split(',').map(item => {
-      reccDates.push(
-        firstDate
-          .day(item)
-          ._d.toString()
-          .substring(0, 15)
-          .concat(` from ${newDates.startTime} to ${newDates.endTime}`),
-      );
-    });
+    let endDate = moment(newDates.endDate);
+    for (let i = 1; i <= parseInt(count) + 1; i++) {
+      if (
+        firstDate.format('dddd') !== 'Saturday' &&
+        firstDate.format('dddd') !== 'Sunday'
+      ) {
+        reccDates.push(
+          firstDate._d
+            .toString()
+            .substring(0, 15)
+            .concat(
+              ` from ${newDates.startTime} to ${endDate._d
+                .toString()
+                .substring(0, 15)}${newDates.endTime}`,
+            ),
+        );
+        firstDate.add(1, 'days');
+        endDate.add(1, 'days');
+      } else {
+        firstDate.add(1, 'days');
+        endDate.add(1, 'days');
+      }
+    }
   } else if (arr[0].includes('MONTHLY')) {
     let firstDate = moment(newDates.startDate);
-    //console.log(days, firstDate)
     for (let i = 1; i <= parseInt(count); i++) {
       reccDates.push(
         firstDate
