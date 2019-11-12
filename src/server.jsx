@@ -15,6 +15,7 @@ import routes from '~/routes';
 import nlLocale from '~/../locales/nl.json';
 import deLocale from '~/../locales/de.json';
 import enLocale from '~/../locales/en.json';
+import ptBrLocale from '~/../locales/ptBR.json';
 
 import {
   Html,
