@@ -25,6 +25,10 @@
 
 - Add internationalization section to docs @pgrunewald
 
+### Internal
+
+- Set Cypress viewport width to 1280px @timo
+
 ## 4.0.0-alpha.10 (2019-10-31)
 
 ### Added
