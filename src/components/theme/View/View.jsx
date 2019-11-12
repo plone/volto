@@ -215,19 +215,14 @@ class View extends Component {
         <BodyClass
           className={
             RenderedView.displayName
-              ? `view-${this.cleanViewName(RenderedView.displayName)}`
+              ? `view-${this.cleanViewName(
+                  RenderedView.displayName
+                    .replace('injectIntl(', '')
+                    .toLowerCase(),
+                )}`
               : null
           }
         />
-
-        {/* Body class depending on content type */}
-        {this.props.content && this.props.content['@type'] && (
-          <BodyClass
-            className={`contenttype-${this.props.content['@type']
-              .replace(' ', '-')
-              .toLowerCase()}`}
-          />
-        )}
 
         <RenderedView
           content={this.props.content}
