@@ -6,6 +6,9 @@
 
 ### Changes
 
+- Move Body class depending on content type to `App` component in order to make it available everywhere @sneridagh
+- Add root class name to `Tags` component @sneridagh
+
 ## 4.0.0-alpha.11 (2019-11-08)
 
 ### Added
