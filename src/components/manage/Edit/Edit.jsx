@@ -9,6 +9,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
+import { Button } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
@@ -17,7 +18,7 @@ import loadable from '@loadable/component';
 
 import { Form, Icon, /* Toolbar, */ Sidebar } from '../../../components';
 import { updateContent, getContent, getSchema } from '../../../actions';
-import { getBaseUrl, hasTilesData } from '../../../helpers';
+import { getBaseUrl, hasBlocksData } from '../../../helpers';
 
 import saveSVG from '../../../icons/save.svg';
 import clearSVG from '../../../icons/clear.svg';
@@ -120,7 +121,7 @@ class Edit extends Component {
       this.props.getSchema(nextProps.content['@type']);
     }
     if (this.props.schemaRequest.loading && nextProps.schemaRequest.loaded) {
-      if (!hasTilesData(nextProps.schema.properties)) {
+      if (!hasBlocksData(nextProps.schema.properties)) {
         this.setState({
           visual: false,
         });
@@ -202,11 +203,12 @@ class Edit extends Component {
             hideDefaultViewButtons
             inner={
               <>
-                <button
+                <Button
                   id="toolbar-save"
                   className="save"
                   aria-label={this.props.intl.formatMessage(messages.save)}
                   onClick={() => this.form.current.onSubmit()}
+                  loading={this.props.updateRequest.loading}
                 >
                   <Icon
                     name={saveSVG}
@@ -214,8 +216,8 @@ class Edit extends Component {
                     size="30px"
                     title={this.props.intl.formatMessage(messages.save)}
                   />
-                </button>
-                <button
+                </Button>
+                <Button
                   className="cancel"
                   aria-label={this.props.intl.formatMessage(messages.cancel)}
                   onClick={() => this.onCancel()}
@@ -226,7 +228,7 @@ class Edit extends Component {
                     size="30px"
                     title={this.props.intl.formatMessage(messages.cancel)}
                   />
-                </button>
+                </Button>
               </>
             }
           />

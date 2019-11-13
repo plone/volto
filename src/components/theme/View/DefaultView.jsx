@@ -11,12 +11,12 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 
-import { settings, tiles } from '~/config';
+import { settings, blocks } from '~/config';
 
 import {
-  getTilesFieldname,
-  getTilesLayoutFieldname,
-  hasTilesData,
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+  hasBlocksData,
 } from '../../../helpers';
 
 const messages = defineMessages({
@@ -33,28 +33,28 @@ const messages = defineMessages({
  * @returns {string} Markup of the component.
  */
 const DefaultView = ({ content, intl }) => {
-  const tilesFieldname = getTilesFieldname(content);
-  const tilesLayoutFieldname = getTilesLayoutFieldname(content);
+  const blocksFieldname = getBlocksFieldname(content);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
-  return hasTilesData(content) ? (
+  return hasBlocksData(content) ? (
     <div id="page-document" className="ui container">
       <Helmet title={content.title} />
-      {map(content[tilesLayoutFieldname].items, tile => {
-        const Tile =
-          tiles.tilesConfig[(content[tilesFieldname]?.[tile]?.['@type'])]?.[
+      {map(content[blocksLayoutFieldname].items, block => {
+        const Block =
+          blocks.blocksConfig[(content[blocksFieldname]?.[block]?.['@type'])]?.[
             'view'
           ] || null;
-        return Tile !== null ? (
-          <Tile
-            key={tile}
-            id={tile}
+        return Block !== null ? (
+          <Block
+            key={block}
+            id={block}
             properties={content}
-            data={content[tilesFieldname][tile]}
+            data={content[blocksFieldname][block]}
           />
         ) : (
-          <div key={tile}>
+          <div key={block}>
             {intl.formatMessage(messages.unknownBlock, {
-              block: content[tilesFieldname]?.[tile]?.['@type'],
+              block: content[blocksFieldname]?.[block]?.['@type'],
             })}
           </div>
         );

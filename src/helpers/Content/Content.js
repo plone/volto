@@ -9,7 +9,7 @@ import { omitBy, mapKeys, pickBy, map, keys, endsWith, find } from 'lodash';
  * Nest content.
  * @function nestContent
  * @param {Object} props Properties.
- * @return {string} Field name of the tiles
+ * @return {string} Field name of the block
  */
 export function nestContent(props) {
   if (!props['@static_behaviors']) {

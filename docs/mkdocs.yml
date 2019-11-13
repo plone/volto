@@ -18,43 +18,46 @@ extra_css:
   - 'stylesheets/extra.css'
 
 nav:
-  - Introduction: "00-introduction/introduction.md"
+  - Introduction: 'introduction/introduction.md'
   - Getting Started:
-    - Install Volto: "01-getting-started/01-install.md"
+      - Install Volto: 'getting-started/install.md'
   - Configuration:
-    - What is configurable?: "02-configuration/how-to.md"
-    - Richeditor settings: "02-configuration/richeditor-settings.md"
+      - What is configurable?: 'configuration/how-to.md'
+      - Richeditor settings: 'configuration/richeditor-settings.md'
   - Semantic UI:
-    - About Semantic UI: "03-semantic-ui/01-about-semantic.md"
-    - Semantic UI Theming: "03-semantic-ui/02-semanticui-theming.md"
-    - Theming Engine: "03-semantic-ui/03-theming-engine.md"
+      - About Semantic UI: 'semantic-ui/about-semantic.md'
+      - Semantic UI Theming: 'semantic-ui/semanticui-theming.md'
+      - Theming Engine: 'semantic-ui/theming-engine.md'
   - Theming:
-    - Theming strategy: "04-theming/01-theming-strategy.md"
-    - Custom styling: "04-theming/02-custom-styling.md"
-    - Intregrate third party: "04-theming/03-integrate-third-party.md"
+      - Theming strategy: 'theming/theming-strategy.md'
+      - Custom styling: 'theming/custom-styling.md'
+      - Intregrate third party: 'theming/integrate-third-party.md'
   - Customizing:
-    - Creating a project: "05-customizing/01-creating-project.md"
-    - Folder structure: "05-customizing/02-folder-structure.md"
-    - Customizing components: "05-customizing/03-customizing-components.md"
-    - Customizing views: "05-customizing/04-customizing-views.md"
-    - Creating new views: "05-customizing/05-creating-views.md"
-    - Creating Add-on packages: "05-customizing/06-add-ons.md"
-  - Tiles:
-    - Introduction: "06-tiles/introduction.md"
-    - Anatomy: "06-tiles/anatomy.md"
-    - Create a new tile: "06-tiles/create.md"
+      - Creating a project: 'customizing/creating-project.md'
+      - Folder structure: 'customizing/folder-structure.md'
+      - Customizing components: 'customizing/customizing-components.md'
+      - Customizing views: 'customizing/customizing-views.md'
+      - Creating new views: 'customizing/creating-views.md'
+      - Creating Add-on packages: 'customizing/add-ons.md'
+      - Internationalization: 'customizing/i18n.md'
+  - Blocks:
+      - Introduction: 'blocks/introduction.md'
+      - Anatomy: 'blocks/anatomy.md'
+      - Settings: 'blocks/settings.md'
+      - Edit components: 'blocks/editcomponent.md'
   - Deploying:
-    - Simple deployment: "07-deploying/01-simple.md"
-    - Using PM2: "07-deploying/02-pm2.md"
-  - Upgrade Guide: "upgrade-guide/index.md"
+      - Simple deployment: 'deploying/simple.md'
+      - Using PM2: 'deploying/pm2.md'
+  - Upgrade Guide: 'upgrade-guide/index.md'
   - Developer Guidelines:
-    - React: "08-developer-guidelines/01-react.md"
-    - Babel: "08-developer-guidelines/02-babel.md"
-    - Redux: "08-developer-guidelines/redux.md"
-    - Routing: "08-developer-guidelines/routing.md"
-    - Linting: "08-developer-guidelines/03-linting.md"
-    - Language features: "08-developer-guidelines/04-language-features.md"
-  - Contributing: "09-contributing/index.md"
+      - Accessibility: 'developer-guidelines/accessibility-guidelines.md'
+      - React: 'developer-guidelines/react.md'
+      - Babel: 'developer-guidelines/babel.md'
+      - Redux: 'developer-guidelines/redux.md'
+      - Routing: 'developer-guidelines/routing.md'
+      - Linting: 'developer-guidelines/linting.md'
+      - Language features: 'developer-guidelines/language-features.md'
+  - Contributing: 'contributing/index.md'
 
 markdown_extensions:
   - admonition
@@ -64,8 +67,8 @@ markdown_extensions:
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.details
-  - pymdownx.superfences
   - pymdownx.tasklist
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
-
+  - toc:
+      permalink: '#'

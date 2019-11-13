@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders an Image Tile Sidebar component 1`] = `
+exports[`renders an Image Block Sidebar component 1`] = `
 <div
   className="ui raised segments"
 >
@@ -79,9 +79,23 @@ exports[`renders an Image Tile Sidebar component 1`] = `
             <button
               onClick={[Function]}
             >
-              <i
-                aria-hidden="true"
-                className="attributes 18px icon"
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "18px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
               />
             </button>
           </div>
@@ -89,7 +103,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
       </div>
     </div>
     <div
-      className="inline field"
+      className="inline field text"
       id="field-alt"
     >
       <div
@@ -118,6 +132,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
               className="ui input"
             >
               <input
+                disabled={false}
                 id="field-alt"
                 name="alt"
                 onChange={[Function]}
@@ -354,9 +369,23 @@ exports[`renders an Image Tile Sidebar component 1`] = `
               <button
                 onClick={[Function]}
               >
-                <i
-                  aria-hidden="true"
-                  className="attributes 18px icon"
+                <svg
+                  className="icon"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "currentColor",
+                      "height": "18px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
                 />
               </button>
             </div>

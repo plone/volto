@@ -57,7 +57,6 @@ export {
   updateSharing,
   getSharing,
 } from '@plone/volto/actions/sharing/sharing';
-export { getTiles } from '@plone/volto/actions/tiles/tiles';
 export { getTypes } from '@plone/volto/actions/types/types';
 export {
   createUser,
