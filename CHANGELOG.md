@@ -2,8 +2,6 @@
 
 ## 4.0.0 (unreleased)
 
-### Added
-
 ### Changes
 
 - Add loading animation for save and edit buttons in toolbar @pgrunewald
