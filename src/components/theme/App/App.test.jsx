@@ -33,6 +33,7 @@ describe('App', () => {
       userSession: {
         token: 'abcdefgh',
       },
+      content: { data: { id: 'content', '@type': 'Document' } },
     });
     const component = renderer.create(
       <Provider store={store}>

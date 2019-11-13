@@ -131,6 +131,15 @@ class App extends Component {
       <Fragment>
         <BodyClass className={`view-${action}view`} />
 
+        {/* Body class depending on content type */}
+        {this.props.content && this.props.content['@type'] && (
+          <BodyClass
+            className={`contenttype-${this.props.content['@type']
+              .replace(' ', '-')
+              .toLowerCase()}`}
+          />
+        )}
+
         {/* Body class depending on sections */}
         <BodyClass
           className={cx({
@@ -180,6 +189,7 @@ export const __test__ = connect(
   (state, props) => ({
     pathname: props.location.pathname,
     token: state.userSession.token,
+    content: state.content.data,
   }),
   {},
 )(App);
