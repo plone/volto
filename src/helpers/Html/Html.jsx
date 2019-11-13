@@ -73,8 +73,9 @@ class Html extends Component {
           <link rel="shortcut icon" href="/favicon.ico" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
-          {extractor.getLinkElements()}
-          {extractor.getStyleElements()}
+          {process.env.NODE_ENV === 'production' && (
+            <>{extractor.getStyleElements()}</>
+          )}
         </head>
         <body className={bodyClass}>
           <div role="navigation" aria-label="Toolbar" id="toolbar" />
