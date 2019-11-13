@@ -111,6 +111,12 @@
       "./node_modules/prettier-stylelint/config.js"
     ]
   },
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ],
   "release-it": {
     "hooks": {
       "after:bump": "node changelogupdater.js bump ${version}",
@@ -171,7 +177,7 @@
     "@testing-library/cypress": "5.0.2",
     "@testing-library/jest-dom": "4.2.0",
     "@testing-library/react": "9.3.0",
-    "autoprefixer": "9.1.5",
+    "autoprefixer": "9.7.1",
     "axe-core": "3.2.2",
     "babel-7-plugin-root-import": "5.4.0",
     "babel-eslint": "10.0.1",
