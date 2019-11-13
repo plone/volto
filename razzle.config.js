@@ -130,7 +130,7 @@ module.exports = {
       config.plugins.push(
         new LoadablePlugin({
           outputAsset: false,
-          writeToDisk: { filename: path.resolve(__dirname, 'build') },
+          writeToDisk: { filename: path.resolve(`${projectRootPath}/build`) },
         }),
       );
 
