@@ -6,6 +6,7 @@
 
 ### Changes
 
+- Add loading animation for save and edit buttons in toolbar @pgrunewald
 - Move Body class depending on content type to `App` component in order to make it available everywhere @sneridagh
 - Add root class name to `Tags` component @sneridagh
 
