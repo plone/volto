@@ -1,5 +1,5 @@
 // In pastanaga, these rules are inside elements/container.overrides
-// but a further override is needed in pastanaga-backend
+// but a further override is needed in pastanaga-cms-ui
 
 @type: 'element';
 @element: 'container';
@@ -57,30 +57,30 @@
   }
 }
 
-body.backend:not(.has-toolbar):not(.has-sidebar):not(.has-toolbar-collapsed):not(.has-sidebar-collapsed) {
+body.cms-ui:not(.has-toolbar):not(.has-sidebar):not(.has-toolbar-collapsed):not(.has-sidebar-collapsed) {
   .contentWidth(0);
 }
 
-body.backend.has-toolbar:not(.has-sidebar):not(.has-sidebar-collapsed) {
+body.cms-ui.has-toolbar:not(.has-sidebar):not(.has-sidebar-collapsed) {
   .contentWidth(@toolbarWidth);
 }
 
-body.backend.has-toolbar.has-sidebar {
+body.cms-ui.has-toolbar.has-sidebar {
   .contentWidth(@toolbarWidth + @sidebarWidth);
 }
 
-body.backend.has-toolbar.has-sidebar-collapsed {
+body.cms-ui.has-toolbar.has-sidebar-collapsed {
   .contentWidth(@toolbarWidth + @collapsedWidth);
 }
 
-body.backend.has-toolbar-collapsed:not(.has-sidebar):not(.has-sidebar-collapsed) {
+body.cms-ui.has-toolbar-collapsed:not(.has-sidebar):not(.has-sidebar-collapsed) {
   .contentWidth(@collapsedWidth);
 }
 
-body.backend.has-toolbar-collapsed.has-sidebar {
+body.cms-ui.has-toolbar-collapsed.has-sidebar {
   .contentWidth(@collapsedWidth + @sidebarWidth);
 }
 
-body.backend.has-toolbar-collapsed.has-sidebar-collapsed {
+body.cms-ui.has-toolbar-collapsed.has-sidebar-collapsed {
   .contentWidth(@collapsedWidth + @collapsedWidth);
 }

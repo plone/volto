@@ -54,22 +54,6 @@ class App extends Component {
   };
 
   /**
-   * Constructor
-   * @param {Object} props components props
-   */
-  // constructor(props) {
-  //   super(props);
-  //   if (props.token) {
-  //     import(
-  //       /* webpackMode: 'eager' */ '../../../../theme/themes/pastanaga/extras/backend.less'
-  //     );
-  //     import(
-  //       /* webpackMode: 'eager' */ '../../../../theme/themes/pastanaga/extras/extras.less'
-  //     );
-  //   }
-  // }
-
-  /**
    * ComponentDidMount
    * @method ComponentDidMount
    * @param {string} error  The error
@@ -118,7 +102,7 @@ class App extends Component {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
     const fullPath = this.props.pathname.replace(/\?.*$/, '');
-    const isBackend = nonContentRoutes.reduce(
+    const isCmsUI = nonContentRoutes.reduce(
       (acc, route) => acc || new RegExp(route).test(`/${fullPath}`),
       false,
     );
@@ -148,8 +132,8 @@ class App extends Component {
             siteroot: this.props.pathname === '/',
             'is-authenticated': !!this.props.token,
             'is-anonymous': !this.props.token,
-            backend: isBackend,
-            frontend: !isBackend,
+            'cms-ui': isCmsUI,
+            'public-ui': !isCmsUI,
           })}
         />
         <Header pathname={path} />

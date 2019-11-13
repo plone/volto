@@ -32,13 +32,13 @@ html {
   font-size: @emSize;
 }
 
-body.backend,
+body.cms-ui,
 #toolbar {
+  color: @textColor;
   font-family: @pageFont;
   font-size: @fontSize;
-  line-height: @lineHeight;
-  color: @textColor;
   font-smoothing: @fontSmoothing;
+  line-height: @lineHeight;
 
   /*******************************
              Headers
@@ -49,26 +49,30 @@ body.backend,
   h3,
   h4,
   h5 {
-    font-family: @headerFont;
-    line-height: @headerLineHeight;
+    padding: 0;
     margin: @headerMargin;
+    font-family: @headerFont;
     font-weight: @headerFontWeight;
-    padding: 0em;
+    line-height: @headerLineHeight;
   }
 
   h1 {
     min-height: 1rem;
     font-size: @h1;
   }
+
   h2 {
     font-size: @h2;
   }
+
   h3 {
     font-size: @h3;
   }
+
   h4 {
     font-size: @h4;
   }
+
   h5 {
     font-size: @h5;
   }
@@ -78,7 +82,7 @@ body.backend,
   h3:first-child,
   h4:first-child,
   h5:first-child {
-    margin-top: 0em;
+    margin-top: 0;
   }
 
   h1:last-child,
@@ -86,7 +90,7 @@ body.backend,
   h3:last-child,
   h4:last-child,
   h5:last-child {
-    margin-bottom: 0em;
+    margin-bottom: 0;
   }
 
   /*******************************
@@ -97,11 +101,13 @@ body.backend,
     margin: @paragraphMargin;
     line-height: @paragraphLineHeight;
   }
+
   p:first-child {
-    margin-top: 0em;
+    margin-top: 0;
   }
+
   p:last-child {
-    margin-bottom: 0em;
+    margin-bottom: 0;
   }
 
   /*********************
@@ -112,18 +118,19 @@ body.backend,
     color: @linkColor;
     text-decoration: @linkUnderline;
   }
+
   a:hover {
     color: @linkHoverColor;
     text-decoration: @linkHoverUnderline;
   }
 }
 
-body.backend {
-  margin: 0px;
-  padding: 0px;
-  overflow-x: @pageOverflowX;
+body.cms-ui {
   min-width: @pageMinWidth;
+  padding: 0;
+  margin: 0;
   background: @pageBackground;
+  overflow-x: @pageOverflowX;
 }
 
 /*******************************
@@ -132,39 +139,46 @@ body.backend {
 
 .addScrollbars() when (@useCustomScrollbars) {
   /* Force Simple Scrollbars */
-  body.backend ::-webkit-scrollbar {
-    -webkit-appearance: none;
+  body.cms-ui ::-webkit-scrollbar {
     width: @customScrollbarWidth;
     height: @customScrollbarHeight;
+    -webkit-appearance: none;
   }
-  body.backend ::-webkit-scrollbar-track {
+
+  body.cms-ui ::-webkit-scrollbar-track {
     background: @trackBackground;
     border-radius: @trackBorderRadius;
   }
-  body.backend ::-webkit-scrollbar-thumb {
-    cursor: pointer;
-    border-radius: @thumbBorderRadius;
+
+  body.cms-ui ::-webkit-scrollbar-thumb {
     background: @thumbBackground;
+    border-radius: @thumbBorderRadius;
+    cursor: pointer;
     transition: @thumbTransition;
   }
-  body.backend ::-webkit-scrollbar-thumb:window-inactive {
+
+  body.cms-ui ::-webkit-scrollbar-thumb:window-inactive {
     background: @thumbInactiveBackground;
   }
-  body.backend ::-webkit-scrollbar-thumb:hover {
+
+  body.cms-ui ::-webkit-scrollbar-thumb:hover {
     background: @thumbHoverBackground;
   }
 
   /* Inverted UI */
-  body.backend .ui.inverted::-webkit-scrollbar-track {
+  body.cms-ui .ui.inverted::-webkit-scrollbar-track {
     background: @trackInvertedBackground;
   }
-  body.backend .ui.inverted::-webkit-scrollbar-thumb {
+
+  body.cms-ui .ui.inverted::-webkit-scrollbar-thumb {
     background: @thumbInvertedBackground;
   }
-  body.backend .ui.inverted::-webkit-scrollbar-thumb:window-inactive {
+
+  body.cms-ui .ui.inverted::-webkit-scrollbar-thumb:window-inactive {
     background: @thumbInvertedInactiveBackground;
   }
-  body.backend .ui.inverted::-webkit-scrollbar-thumb:hover {
+
+  body.cms-ui .ui.inverted::-webkit-scrollbar-thumb:hover {
     background: @thumbInvertedHoverBackground;
   }
 }
