@@ -1,17 +1,20 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Select, { components } from 'react-select';
 
-import { getSchema, updateContent, getContent } from '../../../actions';
-import layouts from '../../../constants/Layouts';
-import { getLayoutFieldname } from '../../../helpers';
-import { Icon } from '../../../components';
+import { getSchema, updateContent, getContent } from '@plone/volto/actions';
+import layouts from '@plone/volto/constants/Layouts';
+import { getLayoutFieldname } from '@plone/volto/helpers';
+import { Icon } from '@plone/volto/components';
 import { FormattedMessage } from 'react-intl';
+import loadable from '@loadable/component';
 
-import downSVG from '../../../icons/down-key.svg';
-import upSVG from '../../../icons/up-key.svg';
-import checkSVG from '../../../icons/check.svg';
+import downSVG from '@plone/volto/icons/down-key.svg';
+import upSVG from '@plone/volto/icons/up-key.svg';
+import checkSVG from '@plone/volto/icons/check.svg';
+
+const Select = loadable(() => import('react-select'));
+const components = loadable(() => import('react-select'), 'components');
 
 const Option = props => {
   return (

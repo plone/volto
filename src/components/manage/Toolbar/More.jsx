@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { find } from 'lodash';
 
-import { Icon, Display, Workflow } from '../../../components';
-import { getBaseUrl } from '../../../helpers';
+import { Icon, Display, Workflow } from '@plone/volto/components';
+import { getBaseUrl } from '@plone/volto/helpers';
 
-import rightArrowSVG from '../../../icons/right-key.svg';
-import userSVG from '../../../icons/user.svg';
+import rightArrowSVG from '@plone/volto/icons/right-key.svg';
+import userSVG from '@plone/volto/icons/user.svg';
 
 /**
  * More container class.

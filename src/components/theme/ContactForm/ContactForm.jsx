@@ -13,14 +13,10 @@ import { Container, Message, Icon } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Link, withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import loadable from '@loadable/component';
 
-import { Form /*, Toolbar, Toast */ } from '../../';
-import { emailNotification } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
-
-const Toast = loadable(() => import('../../manage/Toast/Toast'));
-const Toolbar = loadable(() => import('../../manage/Toolbar/Toolbar'));
+import { Form, Toolbar, Toast } from '@plone/volto/components';
+import { emailNotification } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   send: {

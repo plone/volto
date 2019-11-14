@@ -34,8 +34,8 @@ import {
   listGroups,
   updateUser,
   updateGroup,
-} from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
+} from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
 import {
   // ModalForm,
   // Toolbar,
@@ -43,11 +43,11 @@ import {
   Icon,
   UsersControlpanelGroups,
   // Toast,
-} from '../../../components';
-import addSvg from '../../../icons/circle-plus.svg';
-import backSVG from '../../../icons/back.svg';
-import saveSVG from '../../../icons/save.svg';
-import clearSVG from '../../../icons/clear.svg';
+} from '@plone/volto/components';
+import addSvg from '@plone/volto/icons/circle-plus.svg';
+import backSVG from '@plone/volto/icons/back.svg';
+import saveSVG from '@plone/volto/icons/save.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const ModalForm = loadable(() => import('../Form/ModalForm'));
 const Toast = loadable(() => import('../Toast/Toast'));

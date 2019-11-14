@@ -13,12 +13,9 @@ import cookie from 'react-cookie';
 import request from 'superagent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
-import loadable from '@loadable/component';
 
-import { Form /*, Toast */ } from '../../../components';
-import languages from '../../../constants/Languages';
-
-const Toast = loadable(() => import('../../manage/Toast/Toast'));
+import { Form, Toast } from '@plone/volto/components';
+import languages from '@plone/volto/constants/Languages';
 
 const messages = defineMessages({
   personalPreferences: {

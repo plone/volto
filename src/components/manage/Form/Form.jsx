@@ -20,8 +20,11 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { Portal } from 'react-portal';
 
-import { EditBlock, Icon, Field } from '../../../components';
-import { getBlocksFieldname, getBlocksLayoutFieldname } from '../../../helpers';
+import { EditBlock, Icon, Field } from '@plone/volto/components';
+import {
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+} from '@plone/volto/helpers';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';

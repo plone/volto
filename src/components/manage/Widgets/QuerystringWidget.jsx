@@ -17,14 +17,17 @@ import {
 } from 'semantic-ui-react';
 import { filter, remove, toPairs, groupBy, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import { getQuerystring } from '../../../actions';
-import Select, { components } from 'react-select';
+import { getQuerystring } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
+import loadable from '@loadable/component';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
-import clearSVG from '../../../icons/clear.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
+
+const Select = loadable(() => import('react-select'));
+const components = loadable(() => import('react-select'), 'components');
 
 const messages = defineMessages({
   default: {

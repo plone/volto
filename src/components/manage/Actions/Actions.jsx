@@ -13,9 +13,9 @@ import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
 
-import { cut, copy, copyContent, moveContent } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
-// import { ContentsRenameModal, Toast } from '../../../components';
+import { cut, copy, copyContent, moveContent } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
+// import { ContentsRenameModal, Toast } from '@plone/volto/components';
 
 const ContentsRenameModal = loadable(() =>
   import('../Contents/ContentsRenameModal'),

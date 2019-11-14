@@ -8,20 +8,25 @@ import PropTypes from 'prop-types';
 import { Form, Grid, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
 import { connect } from 'react-redux';
-import { components } from 'react-select';
-import AsyncCreatableSelect from 'react-select/lib/AsyncCreatable';
+import loadable from '@loadable/component';
 
 import {
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers';
-import { getVocabulary } from '../../../actions';
-import { Icon } from '../../../components';
+import { getVocabulary } from '@plone/volto/actions';
+import { Icon } from '@plone/volto/components';
 
-import downSVG from '../../../icons/down-key.svg';
-import upSVG from '../../../icons/up-key.svg';
-import checkSVG from '../../../icons/check.svg';
+import downSVG from '@plone/volto/icons/down-key.svg';
+import upSVG from '@plone/volto/icons/up-key.svg';
+import checkSVG from '@plone/volto/icons/check.svg';
+
+const components = loadable(() => import('react-select'), 'components');
+const AsyncCreatableSelect = loadable(
+  () => import('react-select/lib/AsyncCreatable'),
+  'components',
+);
 
 const Option = props => {
   return (

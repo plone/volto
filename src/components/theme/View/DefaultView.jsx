@@ -17,7 +17,7 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
-} from '../../../helpers';
+} from '@plone/volto/helpers';
 
 const messages = defineMessages({
   unknownBlock: {

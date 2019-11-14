@@ -14,15 +14,12 @@ import { concat, map, reverse } from 'lodash';
 import { Portal } from 'react-portal';
 import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import loadable from '@loadable/component';
 
-import { Icon as IconNext /*, Toolbar */ } from '../../../components';
-import { getHistory, revertHistory } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
+import { Icon as IconNext, Toolbar } from '@plone/volto/components';
+import { getHistory, revertHistory } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
 
-import backSVG from '../../../icons/back.svg';
-
-const Toolbar = loadable(() => import('../../manage/Toolbar/Toolbar'));
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   back: {

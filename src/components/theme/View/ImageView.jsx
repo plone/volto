@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Container } from 'semantic-ui-react';
 
-import { flattenToAppURL } from '../../../helpers';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
  * Image view component class.

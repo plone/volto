@@ -10,8 +10,8 @@ import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
 
-import { updateComment } from '../../../actions';
-// import { ModalForm } from '../../../components';
+import { updateComment } from '@plone/volto/actions';
+// import { ModalForm } from '@plone/volto/components';
 
 const ModalForm = loadable(() => import('../../manage/Form/ModalForm'));
 

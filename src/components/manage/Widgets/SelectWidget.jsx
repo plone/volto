@@ -10,8 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { map, find, isBoolean, isObject } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import Select, { components } from 'react-select';
-import AsyncPaginate from 'react-select-async-paginate';
+import loadable from '@loadable/component';
 
 import {
   getBoolean,
@@ -25,6 +24,13 @@ import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
+
+const Select = loadable(() => import('react-select'));
+const components = loadable(() => import('react-select'), 'components');
+const AsyncPaginate = loadable(
+  () => import('react-select-async-paginate'),
+  'components',
+);
 
 const messages = defineMessages({
   default: {

@@ -8,9 +8,7 @@ import PropTypes from 'prop-types';
 import { Form, Grid, Label } from 'semantic-ui-react';
 import { isObject, map } from 'lodash';
 import { connect } from 'react-redux';
-import { components } from 'react-select';
-import AsyncPaginate from 'react-select-async-paginate';
-import CreatableSelect from 'react-select/lib/Creatable';
+import loadable from '@loadable/component';
 
 import {
   getVocabFromHint,
@@ -23,6 +21,16 @@ import { Icon } from '@plone/volto/components';
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
+
+const components = loadable(() => import('react-select'), 'components');
+const AsyncPaginate = loadable(
+  () => import('react-select-async-paginate'),
+  'components',
+);
+const CreatableSelect = loadable(
+  () => import('react-select/lib/Creatable'),
+  'components',
+);
 
 const Option = props => {
   return (

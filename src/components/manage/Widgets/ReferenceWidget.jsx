@@ -12,7 +12,7 @@ import { compact, concat, fromPairs, map, values, uniqBy } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { settings } from '~/config';
 
-import { resetSearchContent, searchContent } from '../../../actions';
+import { resetSearchContent, searchContent } from '@plone/volto/actions';
 
 const messages = defineMessages({
   no_results_found: {

@@ -11,8 +11,8 @@ import { without, union, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
 
-import { updateContent } from '../../../actions';
-// import { ModalForm } from '../../../components';
+import { updateContent } from '@plone/volto/actions';
+// import { ModalForm } from '@plone/volto/components';
 
 const ModalForm = loadable(() => import('../Form/ModalForm'));
 

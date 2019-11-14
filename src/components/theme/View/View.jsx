@@ -10,14 +10,15 @@ import { compose } from 'redux';
 import { Portal } from 'react-portal';
 import { injectIntl } from 'react-intl';
 import qs from 'query-string';
-import loadable from '@loadable/component';
 import { views } from '~/config';
 
-import { Comments, Tags /*, Toolbar */ } from '../../../components';
-import { listActions, getContent } from '../../../actions';
-import { BodyClass, getBaseUrl, getLayoutFieldname } from '../../../helpers';
-
-const Toolbar = loadable(() => import('../../manage/Toolbar/Toolbar'));
+import { Comments, Tags, Toolbar } from '@plone/volto/components';
+import { listActions, getContent } from '@plone/volto/actions';
+import {
+  BodyClass,
+  getBaseUrl,
+  getLayoutFieldname,
+} from '@plone/volto/helpers';
 
 /**
  * View container class.

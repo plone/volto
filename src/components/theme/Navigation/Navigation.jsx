@@ -12,9 +12,9 @@ import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
-import { getBaseUrl } from '../../../helpers';
+import { getBaseUrl } from '@plone/volto/helpers';
 
-import { getNavigation } from '../../../actions';
+import { getNavigation } from '@plone/volto/actions';
 
 const messages = defineMessages({
   closeMobileMenu: {

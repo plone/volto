@@ -9,13 +9,13 @@ import { Button, Input, Message } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import cx from 'classnames';
 
-import { Icon } from '../../../../components';
-import clearSVG from '../../../../icons/clear.svg';
-import imageLeftSVG from '../../../../icons/image-left.svg';
-import imageRightSVG from '../../../../icons/image-right.svg';
-import imageFitSVG from '../../../../icons/image-fit.svg';
-import imageFullSVG from '../../../../icons/image-full.svg';
-import globeSVG from '../../../../icons/globe.svg';
+import { Icon } from '@plone/volto/components';
+import clearSVG from '@plone/volto/icons/clear.svg';
+import imageLeftSVG from '@plone/volto/icons/image-left.svg';
+import imageRightSVG from '@plone/volto/icons/image-right.svg';
+import imageFitSVG from '@plone/volto/icons/image-fit.svg';
+import imageFullSVG from '@plone/volto/icons/image-full.svg';
+import globeSVG from '@plone/volto/icons/globe.svg';
 
 const messages = defineMessages({
   ImageBlockInputPlaceholder: {

@@ -16,14 +16,14 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
 
 import Icons from '../../../constants/ControlpanelIcons';
-import { listControlpanels } from '../../../actions';
+import { listControlpanels } from '@plone/volto/actions';
 import {
   Icon as IconNext,
   // Toolbar,
   VersionOverview,
-} from '../../../components';
+} from '@plone/volto/components';
 
-import backSVG from '../../../icons/back.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const Toolbar = loadable(() => import('../Toolbar/Toolbar'));
 

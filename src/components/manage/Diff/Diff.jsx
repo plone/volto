@@ -15,15 +15,12 @@ import { Portal } from 'react-portal';
 import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
-import loadable from '@loadable/component';
 
-import { getDiff, getSchema, getHistory } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
-import { DiffField, Icon /*, Toolbar */ } from '../../../components';
+import { getDiff, getSchema, getHistory } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
+import { DiffField, Icon, Toolbar } from '@plone/volto/components';
 
-import backSVG from '../../../icons/back.svg';
-
-const Toolbar = loadable(() => import('../../manage/Toolbar/Toolbar'));
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   diff: {

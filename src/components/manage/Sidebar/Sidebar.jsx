@@ -8,9 +8,9 @@ import { Button, Tab } from 'semantic-ui-react';
 import cookie from 'react-cookie';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
-import { BodyClass } from '../../../helpers';
-import { Icon } from '../../../components';
-import forbiddenSVG from '../../../icons/forbidden.svg';
+import { BodyClass } from '@plone/volto/helpers';
+import { Icon } from '@plone/volto/components';
+import forbiddenSVG from '@plone/volto/icons/forbidden.svg';
 
 const messages = defineMessages({
   document: {

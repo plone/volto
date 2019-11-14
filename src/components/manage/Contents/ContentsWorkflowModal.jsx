@@ -11,8 +11,8 @@ import { concat, filter, last, map, uniqBy } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
 
-import { getWorkflow, transitionWorkflow } from '../../../actions';
-// import { ModalForm } from '../../../components';
+import { getWorkflow, transitionWorkflow } from '@plone/volto/actions';
+// import { ModalForm } from '@plone/volto/components';
 
 const ModalForm = loadable(() => import('../Form/ModalForm'));
 

@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import qs from 'query-string';
 
 import Login from '../Login/Login';
-import { logout, purgeMessages } from '../../../actions';
+import { logout, purgeMessages } from '@plone/volto/actions';
 
 /**
  * Logout class.

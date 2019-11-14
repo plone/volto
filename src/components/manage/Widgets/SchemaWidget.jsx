@@ -18,7 +18,7 @@ import loadable from '@loadable/component';
 import {
   Field /*, ModalForm */,
   SchemaWidgetFieldset,
-} from '../../../components';
+} from '@plone/volto/components';
 
 const ModalForm = loadable(() => import('../Form/ModalForm'));
 

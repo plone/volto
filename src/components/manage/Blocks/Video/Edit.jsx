@@ -9,12 +9,12 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Input, Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 
-import { Icon } from '../../../../components';
-import imageLeftSVG from '../../../../icons/image-left.svg';
-import imageRightSVG from '../../../../icons/image-right.svg';
-import imageFitSVG from '../../../../icons/image-fit.svg';
-import imageFullSVG from '../../../../icons/image-full.svg';
-import videoSVG from '../../../../icons/videocamera.svg';
+import { Icon } from '@plone/volto/components';
+import imageLeftSVG from '@plone/volto/icons/image-left.svg';
+import imageRightSVG from '@plone/volto/icons/image-right.svg';
+import imageFitSVG from '@plone/volto/icons/image-fit.svg';
+import imageFullSVG from '@plone/volto/icons/image-full.svg';
+import videoSVG from '@plone/volto/icons/videocamera.svg';
 
 const messages = defineMessages({
   save: {

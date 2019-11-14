@@ -13,7 +13,7 @@ import { map } from 'lodash';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { resetSearchContent, searchContent } from '../../../../../actions';
+import { resetSearchContent, searchContent } from '@plone/volto/actions';
 import URLUtils from '../../utils/URLUtils';
 
 const messages = defineMessages({
