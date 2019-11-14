@@ -25,10 +25,6 @@ exports[`Html renders a html component 1`] = `
       content="yes"
       name="apple-mobile-web-app-capable"
     />
-    <link
-      href="style.css"
-      rel="stylesheet"
-    />
   </head>
   <body
     className="class1 class2"
