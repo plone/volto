@@ -105,15 +105,11 @@
     "singleQuote": true
   },
   "stylelint": {
-      "plugins": ["stylelint-prettier", "stylelint-order"],
-      "rules": {
-        "prettier/prettier": true,
-        "order/order": [
-          "custom-properties",
-          "declarations"
-        ],
-        "order/properties-alphabetical-order": true
-      }
+    "extends": ["stylelint-config-standard", "stylelint-config-idiomatic-order"],
+    "plugins": ["stylelint-prettier"],
+    "rules": {
+      "prettier/prettier": true
+    }
   },
   "browserslist": [
     ">1%",
@@ -153,10 +149,12 @@
       "yarn test:husky"
     ],
     "theme/**/*.{css,less,overrides}": [
-      "npx stylelint --fix"
+      "npx stylelint --fix",
+      "git add"
     ],
     "src/**/*.{css,less,overrides}": [
-      "npx stylelint --fix"
+      "npx stylelint --fix",
+      "git add"
     ]
   },
   "engines": {
@@ -289,7 +287,6 @@
     "stylelint-config-idiomatic-order": "6.2.0",
     "stylelint-config-prettier": "6.0.0",
     "stylelint-config-standard": "18.2.0",
-    "stylelint-order": "3.1.1",
     "stylelint-prettier": "1.1.1",
     "superagent": "3.8.2",
     "svg-loader": "0.0.2",
