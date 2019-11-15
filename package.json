@@ -105,11 +105,15 @@
     "singleQuote": true
   },
   "stylelint": {
-    "extends": [
-      "stylelint-config-standard",
-      "stylelint-config-idiomatic-order",
-      "./node_modules/prettier-stylelint/config.js"
-    ]
+      "plugins": ["stylelint-prettier", "stylelint-order"],
+      "rules": {
+        "prettier/prettier": true,
+        "order/order": [
+          "custom-properties",
+          "declarations"
+        ],
+        "order/properties-alphabetical-order": true
+      }
   },
   "browserslist": [
     ">1%",
@@ -149,10 +153,10 @@
       "yarn test:husky"
     ],
     "theme/**/*.{css,less,overrides}": [
-      "npx prettier-stylelint"
+      "npx stylelint --fix"
     ],
     "src/**/*.{css,less,overrides}": [
-      "npx prettier-stylelint"
+      "npx stylelint --fix"
     ]
   },
   "engines": {
@@ -236,8 +240,7 @@
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-loader": "3.0.0",
     "postcss-overrides": "3.1.4",
-    "prettier": "1.17.0",
-    "prettier-stylelint": "0.4.2",
+    "prettier": "1.19.1",
     "pretty": "2.0.0",
     "prismjs": "1.15.0",
     "promise-file-reader": "1.0.2",
@@ -282,9 +285,12 @@
     "serialize-javascript": "1.5.0",
     "start-server-and-test": "1.7.13",
     "style-loader": "0.23.0",
-    "stylelint": "9.2.1",
+    "stylelint": "11.1.1",
     "stylelint-config-idiomatic-order": "6.2.0",
+    "stylelint-config-prettier": "6.0.0",
     "stylelint-config-standard": "18.2.0",
+    "stylelint-order": "3.1.1",
+    "stylelint-prettier": "1.1.1",
     "superagent": "3.8.2",
     "svg-loader": "0.0.2",
     "svgo": "1.0.5",
