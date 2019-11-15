@@ -48,9 +48,13 @@ msgstr "新規追加"
 msgid "Add User"
 msgstr "ユーザを追加"
 
-#: components/manage/Tiles/Description/Edit
+#: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
 msgstr "説明を追加..."
+
+#: components/manage/Form/Form
+msgid "Add block..."
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
@@ -71,10 +75,6 @@ msgstr "新しいグループを追加"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add new user"
 msgstr "新しいユーザを追加"
-
-#: components/manage/Form/Form
-msgid "Add tile..."
-msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add to Groups"
@@ -139,7 +139,7 @@ msgstr ""
 msgid "Browse"
 msgstr "参照"
 
-#: components/manage/Tiles/Image/Edit
+#: components/manage/Blocks/Image/Edit
 msgid "Browse the site, drop an image, or type an URL"
 msgstr "参照"
 
@@ -160,7 +160,7 @@ msgstr ""
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Cell"
 msgstr ""
 
@@ -318,11 +318,11 @@ msgstr ""
 msgid "Delete User"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Delete col"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Delete row"
 msgstr ""
 
@@ -330,8 +330,8 @@ msgstr ""
 msgid "Descending"
 msgstr "降順"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -355,7 +355,7 @@ msgstr ""
 msgid "Distributed under the {license}."
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Divide each row into separate cells"
 msgstr ""
 
@@ -422,7 +422,7 @@ msgstr "メール"
 msgid "Email sent"
 msgstr "メール送信"
 
-#: components/manage/Tiles/Maps/Edit
+#: components/manage/Blocks/Maps/Edit
 msgid "Enter Map URL"
 msgstr "地図URLを入力"
 
@@ -430,7 +430,7 @@ msgstr "地図URLを入力"
 msgid "Enter URL or title"
 msgstr "URLまたはタイトルを入力"
 
-#: components/manage/Tiles/Video/Edit
+#: components/manage/Blocks/Video/Edit
 msgid "Enter Video URL"
 msgstr "ビデオURLを入力"
 
@@ -488,7 +488,7 @@ msgstr "ファイル名"
 msgid "Filter…"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
 msgstr ""
 
@@ -567,19 +567,19 @@ msgstr "情報"
 msgid "Inherit permissions from higher levels"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert col after"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert col before"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert row after"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert row before"
 msgstr ""
 
@@ -634,15 +634,15 @@ msgstr "ログインに失敗しました"
 msgid "Login Name"
 msgstr "ログイン名"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
+#: components/manage/Blocks/Maps/Edit
 msgid "Maps data error"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
+#: components/manage/Blocks/Maps/Edit
 msgid "Maps instructions"
 msgstr ""
 
@@ -794,7 +794,7 @@ msgstr "もっと読む"
 msgid "Rearrange items by…"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
 msgstr ""
 
@@ -848,12 +848,12 @@ msgid "Roles"
 msgstr "ロール"
 
 #: components/manage/Add/Add
+#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/Video/Edit
 msgid "Save"
 msgstr "保存"
 
@@ -956,7 +956,7 @@ msgstr "サイトマップ"
 msgid "Site Setup"
 msgstr "サイト設定"
 
-#: components/manage/Tiles/Video/Edit
+#: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
 msgstr ""
 
@@ -974,7 +974,7 @@ msgstr "状態"
 msgid "String"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Stripe alternate rows with color"
 msgstr ""
 
@@ -992,11 +992,11 @@ msgstr "件名"
 msgid "Success"
 msgstr "成功"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Table"
 msgstr "テーブル"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Table color inverted"
 msgstr ""
 
@@ -1050,10 +1050,10 @@ msgstr "この名前はURLの一部として使用されます"
 msgid "This page does not seem to exist…"
 msgstr ""
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1070,15 +1070,15 @@ msgstr "タイトル"
 msgid "Type"
 msgstr "タイプ"
 
-#: components/manage/Tiles/Text/Edit
+#: components/manage/Blocks/Text/Edit
 msgid "Type text…"
 msgstr ""
 
-#: components/manage/Tiles/Title/Edit
+#: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr ""
 
-#: components/manage/Tiles/Tile/Edit
+#: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
 msgid "Unknown Block"
 msgstr ""
@@ -1213,11 +1213,11 @@ msgstr ""
 msgid "box_forgot_password_option"
 msgstr "パスワードを忘れた？"
 
-#: config/Tiles
+#: config/Blocks
 msgid "common"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "description"
 msgstr "説明"
 
@@ -1233,15 +1233,15 @@ msgstr "パスワード再設定のお願いをメール送信しました。ま
 msgid "heading_sent_password"
 msgstr "パスワード再設定の確認が送られました"
 
-#: config/Tiles
+#: config/Blocks
 msgid "hero"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "html"
 msgstr "HTML"
 
-#: config/Tiles
+#: config/Blocks
 msgid "image"
 msgstr "画像"
 
@@ -1249,15 +1249,15 @@ msgstr "画像"
 msgid "label_my_email_address_is"
 msgstr "私のメールアドレスは"
 
-#: config/Tiles
+#: config/Blocks
 msgid "maps"
 msgstr "地図"
 
-#: config/Tiles
+#: config/Blocks
 msgid "media"
 msgstr "メディア"
 
-#: config/Tiles
+#: config/Blocks
 msgid "mostUsed"
 msgstr ""
 
@@ -1265,19 +1265,19 @@ msgstr ""
 msgid "registration form"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "table"
 msgstr "テーブル"
 
-#: config/Tiles
+#: config/Blocks
 msgid "text"
 msgstr "テキスト"
 
-#: config/Tiles
+#: config/Blocks
 msgid "title"
 msgstr "タイトル"
 
-#: config/Tiles
+#: config/Blocks
 msgid "video"
 msgstr "ビデオ"
 
