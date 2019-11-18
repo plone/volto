@@ -6,6 +6,10 @@
 
 ### Changes
 
+### Internal
+
+- Upgrade autoprefixer, remove deprecated `browsers` option, move to `browserlist` in `package.json` @sneridagh
+
 ## 4.0.0-alpha.12 (2019-11-13)
 
 ### Changes
