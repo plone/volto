@@ -21,22 +21,6 @@
     margin-right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
-.contentWidthMedia(@width, @gutter, @offset) {
-  .ui.container,
-  .ui.wrapper > *,
-  .ui.wrapper > .ui.inner > *:not(.drag):not(.handle):not(.delete-button) {
-    width: @width !important;
-    margin-right: @gutter !important;
-    margin-left: @gutter !important;
-  }
-  .drag.handle.wrapper {
-    margin-left: @offset !important;
-  }
-  .tile .delete-button {
-    margin-right: @offset !important;
-  }
-}
-
 .ui.wrapper > .ui.inner {
   width: 100% !important;
 }
@@ -45,6 +29,18 @@
   margin-left: -15px !important;
 }
 
-.tile .delete-button {
+.block .delete-button {
   margin-right: -25px !important;
+}
+
+// Hack for escape the blocks container in blocks full width
+.full-width {
+  position: relative;
+  right: 50%;
+  left: 50%;
+  width: 100vw !important;
+  max-width: initial !important;
+  margin-right: -50vw !important;
+  margin-left: -50vw !important;
+  // object-fit: cover;
 }

@@ -8,7 +8,24 @@
 @sidebarWidth: 375px;
 @collapsedWidth: 20px;
 
-@import (multiple) '../../theme.config';
+@import (multiple) '../../../theme.config';
+
+
+.contentWidthMedia(@width, @gutter, @offset) {
+  .ui.container,
+  .ui.wrapper > *,
+  .ui.wrapper > .ui.inner > *:not(.drag):not(.handle):not(.delete-button) {
+    width: @width !important;
+    margin-right: @gutter !important;
+    margin-left: @gutter !important;
+  }
+  .drag.handle.wrapper {
+    margin-left: @offset !important;
+  }
+  .block .delete-button {
+    margin-right: @offset !important;
+  }
+}
 
 .contentWidth(@offset) {
   @media only screen and (max-width: @largestMobileScreen + @offset) {
