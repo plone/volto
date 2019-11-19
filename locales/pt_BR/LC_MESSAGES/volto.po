@@ -1,105 +1,124 @@
+# Translators:
+# Fred van Dijk <info@zestsoftware.nl>, 2016
+# Coen van der Kamp <c.van.der.kamp@zestsoftware.nl>, 2015
+# Danny Bloemendaal <danny.bloemendaal@informaat.nl>, 2007
+# Diederik Veeze <diederik_24@hotmail.com>, 2015
+# Duco Dokter <dokter@w20e.com>, 2007
+# Esther Ladage <e.ladage@zestsoftware.nl>, 2005
+# Jean-Paul Ladage <j.ladage@zestsoftware.nl>, 2017
+# Kees Hink <hink@gw20e.com>, 2010
+# Maarten Kling <maarten@fourdigits.nl>, 2013
+# Mark van Lent <m.vanlent@zestsoftware.nl>, 2007
+# Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>, 2005
+# Reinout van Rees <reinout@zestsoftware.nl>, 2008
+# Roel Bruggink <roel@fourdigits.nl>, 2009
+# Wietze Helmantel <helmantel@goldmund-wyldebeast-wunderliebe.com>, 2007
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: PlonenPOT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language: \n"
-"Language-Team: \n"
-"Content-Type: \n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"PO-Revision-Date: 2017-02-28 08:52+0100\n"
+"Last-Translator: Dutch <plone-i18n@lists.sf.net>\n"
+"Language: nl\n"
+"Language-Team: Dutch <plone-i18n@lists.sf.net>\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Language-Code: nl\n"
+"Language-Name: Nederlands\n"
+"Preferred-Encodings: utf-8\n"
 
 #: components/theme/Footer/Footer
-msgid "Acessibilidade"
-msgstr ""
+msgid "Accessibility"
+msgstr "Acessibilidade"
 
 #: components/theme/Register/Register
-msgid "Cadastro de Conta Finalizado"
-msgstr ""
+msgid "Account Registration Completed"
+msgstr "Cadastro de Conta Finalizado"
 
 #: components/theme/PasswordReset/PasswordReset
-msgid "Ativação completa"
-msgstr ""
+msgid "Account activation completed"
+msgstr "Ativação completa"
 
 #: components/manage/Controlpanels/ModerateComments
-msgid "Ação"
-msgstr ""
+msgid "Action"
+msgstr "Ação"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Ações"
-msgstr ""
+msgid "Actions"
+msgstr "Ações"
 
 #: components/manage/Toolbar/Types
-msgid "Adicionar conteúdo"
-msgstr ""
+msgid "Add Content"
+msgstr "Adicionar conteúdo"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Adicionar usuário"
-msgstr ""
+msgid "Add User"
+msgstr "Adicionar usuário"
 
 #: components/manage/Blocks/Description/Edit
-msgid "Adicione uma descrição"
-msgstr ""
+msgid "Add a description…"
+msgstr "Adicionar uma descrição"
 
 #: components/manage/Form/Form
-msgid "Adicionar bloco..."
-msgstr ""
+msgid "Add block..."
+msgstr "Adicionar bloco..."
 
 #: components/manage/Widgets/SchemaWidget
-msgid "Adicionar campo"
-msgstr ""
+msgid "Add field"
+msgstr "Adicionar campo"
 
 #: components/manage/Widgets/SchemaWidget
-msgid "Adicionar fieldset"
-msgstr ""
+msgid "Add fieldset"
+msgstr "Adicionar fieldset"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Adicionar grupo"
-msgstr ""
+msgid "Add group"
+msgstr "Adicionar grupo"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Adicionar novo grupo"
-msgstr ""
+msgid "Add new group"
+msgstr "Adicionar novo grupo"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Adicionar novo usuário"
-msgstr ""
+msgid "Add new user"
+msgstr "Adicionar novo usuário"
 
 #: components/manage/Controlpanels/UsersControlpanel
-msgid "Adicionar a um grupo"
-msgstr ""
+msgid "Add to Groups"
+msgstr "Adicionar à grupos"
 
 #: components/manage/Add/Add
-msgid "Adicionar {type}"
-msgstr ""
+msgid "Add {type}"
+msgstr "Adicionar {type}"
 
 #: components/manage/Sidebar/ImageSidebar
-msgid "Alinhamento"
-msgstr ""
+msgid "Alignment"
+msgstr "Alinhamento"
 
 #: components/manage/Contents/Contents
-msgid "Todos"
-msgstr ""
+msgid "All"
+msgstr "Todos"
 
 #: components/manage/Sidebar/ImageSidebar
-msgid "Descrição Alt"
-msgstr ""
+msgid "Alt text"
+msgstr "Descrição Alt"
 
 #: components/manage/Widgets/SchemaWidget
-msgid "Você realmente deseja deletar este campo?"
-msgstr ""
+msgid "Are you sure you want to delete this field?"
+msgstr "Você realmente deseja deletar este campo?"
 
 #: components/manage/Widgets/SchemaWidget
-msgid "Você realmente deseja deletar este fieldset com todos os campos?"
-msgstr ""
+msgid "Are you sure you want to delete this fieldset including all fields?"
+msgstr "Você realmente deseja deletar este fieldset com todos os campos?"
 
 #: components/manage/Contents/Contents
 msgid "Ascending"
-msgstr ""
+msgstr "Ascendente"
 
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/Controlpanel
@@ -113,32 +132,32 @@ msgstr ""
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
-msgid "Voltar"
-msgstr ""
+msgid "Back"
+msgstr "Voltar"
 
 #: components/manage/Diff/Diff
 msgid "Base"
-msgstr ""
+msgstr "Base"
 
 #: components/manage/Sidebar/Sidebar
-msgid "Bloco"
-msgstr ""
+msgid "Block"
+msgstr "Bloco"
 
 #: components/theme/Login/Login
-msgid "Ambos os campos de e-mail e senha possuem case sensitive, verifique se o caps lock está habilitado."
-msgstr ""
+msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
+msgstr "O endereço de e-mail e a senha diferenciam maiúsculas de minúsculas. Certifique-se que o caps lock não está ativado."
 
 #: components/manage/Contents/ContentsUploadModal
-msgid "Procurar"
-msgstr ""
+msgid "Browse"
+msgstr "Procurar"
 
 #: components/manage/Blocks/Image/Edit
-msgid "Procure no site, arraste uma imagem ou digite uma URL"
-msgstr ""
+msgid "Browse the site, drop an image, or type an URL"
+msgstr "Navegue no site, arraste uma imagem ou digite um URL"
 
 #: components/manage/Sharing/Sharing
-msgid "Por padrão, as permissões do contêiner deste item são herdadas. Se você desabilitar isso, apenas as permissões de compartilhamento definidas explicitamente serão válidas. Na visão geral, o símbolo {inherited} ou {herdado} indica um valor herdado. Da mesma forma, o símbolo {global} indica uma função global, gerenciada pelo administrador do site."
-msgstr ""
+msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+msgstr "Por padrão, as permissões do contêiner deste item são herdadas. Se você desabilitar isso, apenas as permissões de compartilhamento definidas explicitamente serão válidas. Na visão geral, o símbolo {inherited} indica um valor herdado. Da mesma forma, o símbolo {global} indica uma função global que é gerenciada pelo administrador do site."
 
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
@@ -150,38 +169,38 @@ msgstr ""
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/theme/Login/Login
-msgid "Cancelar"
-msgstr ""
+msgid "Cancel"
+msgstr "Cancelar"
 
 #: components/manage/Blocks/Table/Edit
-msgid "Célular"
-msgstr ""
+msgid "Cell"
+msgstr "Célula"
 
 #: components/manage/History/History
-msgid "Mudar Anotações"
-msgstr ""
+msgid "Change Note"
+msgstr "Alterar Nota"
 
 #: components/manage/Preferences/ChangePassword
-msgid "Alterar Senha"
-msgstr ""
+msgid "Change Password"
+msgstr "Alterar senha"
 
 #: components/manage/Contents/ContentsWorkflowModal
-msgid "Alterar Estado"
-msgstr ""
-
-###################################################
-# Pendentes as alterações daqui em diante.
-###################################################
+msgid "Change State"
+msgstr "Alterar estado"
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 msgid "Changes saved"
-msgstr ""
+msgstr "Alterações salvas"
 
 #: components/manage/Controlpanels/Controlpanel
-msgid "Changes saved."
+msgid "Alterações salvas."
 msgstr ""
+
+
+
+
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Checkbox"
@@ -215,16 +234,16 @@ msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Compare"
-msgstr ""
+msgstr "Vergelijken"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Confirm password"
-msgstr ""
+msgstr "Wachtwoord bevestigen"
 
 #: components/theme/Footer/Footer
 msgid "Contact"
-msgstr ""
+msgstr "Contact"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Contact form"
@@ -232,35 +251,35 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Contents"
-msgstr ""
+msgstr "Inhoud"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Copy"
-msgstr ""
+msgstr "Kopiëren"
 
 #: components/theme/Footer/Footer
 msgid "Copyright"
-msgstr ""
+msgstr "Copyright"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
-msgstr ""
+msgstr "Auteursrechten of andere rechtsinformatie van dit item."
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
-msgstr ""
+msgstr "Auteurs"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
-msgstr ""
+msgstr "Huidig wachtwoord"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
-msgstr ""
+msgstr "Knippen"
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Date"
@@ -287,7 +306,7 @@ msgstr ""
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
 msgid "Default"
-msgstr ""
+msgstr "Standaard"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
@@ -297,7 +316,7 @@ msgstr ""
 #: components/manage/Delete/Delete
 #: components/theme/Comments/Comments
 msgid "Delete"
-msgstr ""
+msgstr "Verwijderen"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete Group"
@@ -317,7 +336,7 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Descending"
-msgstr ""
+msgstr "Aflopend"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/UsersControlpanel
@@ -330,19 +349,19 @@ msgstr ""
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 msgid "Description"
-msgstr ""
+msgstr "Beschrijving"
 
 #: components/manage/Diff/Diff
 msgid "Diff"
-msgstr ""
+msgstr "Verschil"
 
 #: components/manage/Diff/Diff
 msgid "Difference between revision {one} and {two} of {title}"
-msgstr ""
+msgstr "Verschil tussen revisie {one} en {two} van {title}"
 
 #: components/theme/Footer/Footer
 msgid "Distributed under the {license}."
-msgstr ""
+msgstr "Gedistribueerd onder de {license}."
 
 #: components/manage/Blocks/Table/Edit
 msgid "Divide each row into separate cells"
@@ -350,7 +369,7 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
-msgstr ""
+msgstr "Weet u zeker dat u de volgende items wilt verwijderen?"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Do you really want to delete the group {groupname}?"
@@ -362,7 +381,7 @@ msgstr ""
 
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
-msgstr ""
+msgstr "Weet u zeker dat u dit item wilt verwijderen?"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Document"
@@ -370,12 +389,12 @@ msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr ""
+msgstr "Drag en drop bestanden van uw computer naar dit gebied of klik op de “Bladeren” knop."
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 msgid "E-mail"
-msgstr ""
+msgstr "E-mailadres"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
@@ -385,7 +404,7 @@ msgstr ""
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/Comments
 msgid "Edit"
-msgstr ""
+msgstr "Bewerken"
 
 #: components/theme/Comments/CommentEditModal
 msgid "Edit comment"
@@ -401,7 +420,7 @@ msgstr ""
 
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
-msgstr ""
+msgstr "{title} bewerken"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Email"
@@ -431,11 +450,11 @@ msgstr ""
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
-msgstr ""
+msgstr "Vul de volledige naam in, bijvoorbeeld Jan Smit."
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
-msgstr ""
+msgstr "Voer uw huidige wachtwoord in."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your email address for verification."
@@ -444,7 +463,7 @@ msgstr ""
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your new password. Minimum 5 characters."
-msgstr ""
+msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
 
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
@@ -455,11 +474,11 @@ msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Exclude from navigation"
-msgstr ""
+msgstr "Sluit uit van de navigatiestructuur"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
-msgstr ""
+msgstr "Vervaldatum"
 
 #: components/manage/Sidebar/ImageSidebar
 msgid "External URL"
@@ -467,15 +486,15 @@ msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
-msgstr ""
+msgstr "Bestandsgrootte"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Filename"
-msgstr ""
+msgstr "Bestandsnaam"
 
 #: components/manage/Contents/Contents
 msgid "Filter…"
-msgstr ""
+msgstr "Filter…"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
@@ -489,7 +508,7 @@ msgstr ""
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 msgid "Full Name"
-msgstr ""
+msgstr "Volledige naam"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Fullname"
@@ -497,7 +516,7 @@ msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
-msgstr ""
+msgstr "GNU GPL licentie"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Group created"
@@ -513,28 +532,28 @@ msgstr ""
 
 #: components/manage/History/History
 msgid "History of {title}"
-msgstr ""
+msgstr "Geschiedenis van {title}"
 
 #: components/manage/Contents/Contents
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Home page"
-msgstr ""
+msgstr "Homepage"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If selected, this item will not appear in the navigation tree"
-msgstr ""
+msgstr "Indien geselecteerd, wordt het item niet getoond in de navigatiestructuur"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If this date is in the future, the content will not show up in listings and searches until this date."
-msgstr ""
+msgstr "Wanneer deze datum in de toekomst is zal de inhoud niet langer zichtbaar zijn in lijsten en zoekresultaten totdat deze datum bereikt is."
 
 #: components/theme/NotFound/NotFound
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
-msgstr ""
+msgstr "Indien u er zeker van bent dat u het webadres goed heeft, maar toch een foutmelding krijgt, neem dan contact op met {site_admin}."
 
 #: components/theme/Login/Login
 msgid "If you have forgotten your password, {forgotpassword}"
@@ -554,7 +573,7 @@ msgstr ""
 
 #: components/manage/Sharing/Sharing
 msgid "Inherit permissions from higher levels"
-msgstr ""
+msgstr "Rechten overnemen van bovenliggende map"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Insert col after"
@@ -574,29 +593,29 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
-msgstr ""
+msgstr "Item(s) gekopieerd"
 
 #: components/manage/Contents/Contents
 msgid "Item(s) cut."
-msgstr ""
+msgstr "Item(d) geknipt."
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Item(s) pasted."
-msgstr ""
+msgstr "Item(s) geplakt."
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Items must be unique."
-msgstr ""
+msgstr "Items moeten uniek zijn."
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
-msgstr ""
+msgstr "Taal"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
-msgstr ""
+msgstr "Laatst gewijzigd"
 
 #: components/manage/Sidebar/ImageSidebar
 msgid "Link to"
@@ -604,7 +623,7 @@ msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
-msgstr ""
+msgstr "Locatie"
 
 #: components/theme/Login/Login
 msgid "Log In"
@@ -613,7 +632,7 @@ msgstr ""
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 msgid "Log in"
-msgstr ""
+msgstr "Inloggen"
 
 #: components/theme/Login/Login
 msgid "Login Failed"
@@ -621,7 +640,7 @@ msgstr ""
 
 #: components/theme/Login/Login
 msgid "Login Name"
-msgstr ""
+msgstr "Gebruikersnaam"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
@@ -642,7 +661,7 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
-msgstr ""
+msgstr "Minimum lengte is {len}"
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Moderate comments"
@@ -650,11 +669,11 @@ msgstr ""
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to bottom of folder"
-msgstr ""
+msgstr "Verplaats naar onder in de map"
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to top of folder"
-msgstr ""
+msgstr "Verplaats naar boven in de map"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "My email address is"
@@ -663,12 +682,12 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
-msgstr ""
+msgstr "Nieuw wachtwoord"
 
 #: components/manage/Sidebar/ImageSidebar
 msgid "No image selected"
@@ -680,11 +699,11 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "None"
-msgstr ""
+msgstr "Niks"
 
 #: components/manage/Delete/Delete
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: components/manage/Sidebar/ImageSidebar
 msgid "Open in a new tab"
@@ -701,7 +720,7 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
 msgid "Password"
-msgstr ""
+msgstr "Wachtwoord"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Passwords do not match."
@@ -710,19 +729,19 @@ msgstr ""
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Paste"
-msgstr ""
+msgstr "Plakken"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Personal Information"
-msgstr ""
+msgstr "Persoonlijke gegevens"
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Personal Preferences"
-msgstr ""
+msgstr "Persoonlijke voorkeuren"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
-msgstr ""
+msgstr "Gebruikers die verantwoordelijk zijn voor de inhoud van dit item. De eindverantwoordelijke vermeldt u als eerste."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
@@ -730,15 +749,15 @@ msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "Plone Foundation"
-msgstr ""
+msgstr "Plone Foundation"
 
 #: components/theme/Logo/Logo
 msgid "Plone Site"
-msgstr ""
+msgstr "Plone website"
 
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
-msgstr ""
+msgstr "Plone{reg} CMS - Open Source Web Content Management Systeem"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Portrait"
@@ -746,7 +765,7 @@ msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "Powered by Plone & Python"
-msgstr ""
+msgstr "Powered by Plone & Python"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
@@ -754,7 +773,7 @@ msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
-msgstr ""
+msgstr "Voorvertoning"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
@@ -763,25 +782,25 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Properties"
-msgstr ""
+msgstr "Eigenschappen"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Publishing Date"
-msgstr ""
+msgstr "Ingangsdatum"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Re-enter the password. Make sure the passwords are identical."
-msgstr ""
+msgstr "Voer het wachtwoord nogmaals in. Zorg dat de wachtwoorden identiek zijn."
 
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
 msgid "Read More…"
-msgstr ""
+msgstr "Lees verder…"
 
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
-msgstr ""
+msgstr "Items rangschikken op…"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
@@ -799,11 +818,11 @@ msgstr ""
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
-msgstr ""
+msgstr "Naam wijzigen"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
-msgstr ""
+msgstr "Naam wijzigen"
 
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -818,11 +837,11 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Required input is missing."
-msgstr ""
+msgstr "Verplichte waarde mist."
 
 #: components/manage/History/History
 msgid "Revert to this revision"
-msgstr ""
+msgstr "Deze rivisie herstellen"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
@@ -830,7 +849,7 @@ msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Rights"
-msgstr ""
+msgstr "Rechten"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Roles"
@@ -844,15 +863,15 @@ msgstr ""
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 msgid "Save"
-msgstr ""
+msgstr "Opslaan"
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
-msgstr ""
+msgstr "Zoek"
 
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
-msgstr ""
+msgstr "Website doorzoeken"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search content"
@@ -860,7 +879,7 @@ msgstr ""
 
 #: components/manage/Sharing/Sharing
 msgid "Search for user or group"
-msgstr ""
+msgstr "Zoeken naar gebruiker of groep"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Search group..."
@@ -872,7 +891,7 @@ msgstr ""
 
 #: components/theme/Search/Search
 msgid "Search results for {term}"
-msgstr ""
+msgstr "Zoekresultaten voor ${term}"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Search users..."
@@ -880,11 +899,11 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
-msgstr ""
+msgstr "Selecteer de te tonen kolommen"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
-msgstr ""
+msgstr "Selecteer welke overgang moet worden gebruikt voor het wijzigen van de status van de items."
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
@@ -892,7 +911,7 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Select…"
-msgstr ""
+msgstr "Selecteer…"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Send"
@@ -908,7 +927,7 @@ msgstr ""
 
 #: components/manage/Sharing/Sharing
 msgid "Sharing for {title}"
-msgstr ""
+msgstr "Delen van {title}"
 
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -922,7 +941,7 @@ msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "Short name"
-msgstr ""
+msgstr "Korte naam"
 
 #: components/theme/Login/Login
 msgid "Sign in to start session"
@@ -930,15 +949,15 @@ msgstr ""
 
 #: components/theme/Logo/Logo
 msgid "Site"
-msgstr ""
+msgstr "Website"
 
 #: components/theme/NotFound/NotFound
 msgid "Site Administration"
-msgstr ""
+msgstr "Sitebeheerder"
 
 #: components/theme/Footer/Footer
 msgid "Site Map"
-msgstr ""
+msgstr "Sitemap"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
@@ -957,7 +976,7 @@ msgstr ""
 #: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
@@ -992,15 +1011,15 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags to add"
-msgstr ""
+msgstr "Toe te voegen tags"
 
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags to remove"
-msgstr ""
+msgstr "Te verwijderen tags"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
@@ -1008,11 +1027,11 @@ msgstr ""
 
 #: components/theme/NotFound/NotFound
 msgid "Thank you."
-msgstr ""
+msgstr "Bedankt."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
-msgstr ""
+msgstr "Het internet adres van uw externe home page, indien u die heeft."
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
@@ -1024,20 +1043,20 @@ msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
-msgstr ""
+msgstr "Het {plonecms} is {copyright} 2000-{current_year} door de {plonefoundation} et al."
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "There were some errors."
-msgstr ""
+msgstr "Er zijn fouten opgetreden."
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
-msgstr ""
+msgstr "Deze naam wordt getoond in de URL."
 
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
-msgstr ""
+msgstr "Het spijt ons, maar deze pagina bestaat niet…"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
@@ -1052,12 +1071,12 @@ msgstr ""
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
@@ -1070,23 +1089,23 @@ msgstr ""
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
 msgid "Unknown Block"
-msgstr "Unknown Block {block}"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Upload"
-msgstr ""
+msgstr "Upload"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
-msgstr ""
+msgstr "Bestanden uploaden"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr ""
+msgstr "Upload {count, plural, one {# bestand} other {# bestanden}}"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
-msgstr ""
+msgstr "Bestanden uploaden"
 
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1124,15 +1143,15 @@ msgstr ""
 
 #: components/manage/Contents/ContentsItem
 msgid "View"
-msgstr ""
+msgstr "Bekijken"
 
 #: components/manage/History/History
 msgid "View changes"
-msgstr ""
+msgstr "Bekijk wijzigingen"
 
 #: components/manage/History/History
 msgid "View this revision"
-msgstr ""
+msgstr "Bekijk deze revisie"
 
 #: components/manage/Display/Display
 msgid "Viewmode"
@@ -1140,27 +1159,27 @@ msgstr ""
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
-msgstr ""
+msgstr "Onze excuses voor het ongemak, maar de pagina die u probeerde te bereiken bestaat niet. U kunt onderstaande links gebruiken om proberen te vinden wat u zocht."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
-msgstr ""
+msgstr "Wij gebruiken dit adres wanneer u uw wachtwoord wilt terugkrijgen"
 
 #: components/manage/History/History
 msgid "What"
-msgstr ""
+msgstr "Wat"
 
 #: components/manage/History/History
 msgid "When"
-msgstr ""
+msgstr "Wanneer"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
-msgstr ""
+msgstr "Wanneer deze datum bereikt is zal de inhoud niet langer zichtbaar zijn in lijsten en zoekresultaten."
 
 #: components/manage/History/History
 msgid "Who"
-msgstr ""
+msgstr "Wie"
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
@@ -1172,15 +1191,15 @@ msgstr ""
 
 #: components/manage/Sharing/Sharing
 msgid "You can control who can view and edit your item using the list below."
-msgstr ""
+msgstr "U kunt in de onderstaande lijst beheren wie de content kan bekijken en beheren."
 
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
-msgstr ""
+msgstr "U kunt de verschillen tussen de revisies hieronder bekijken."
 
 #: components/manage/History/History
 msgid "You can view the history of your item below."
-msgstr ""
+msgstr "U kunt de geschiedenis van uw item hieronder bekijken."
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
@@ -1188,7 +1207,7 @@ msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr ""
+msgstr "Uw woonplaats - stad en land - of als u vanuit een bedrijf werkt, waar uw kantoor is gevestigd."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Your password has been set successfully. You may now {link} with your new password."
@@ -1196,7 +1215,7 @@ msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Your preferred language"
-msgstr ""
+msgstr "De taal van uw voorkeur"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
@@ -1276,19 +1295,19 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"
-msgstr ""
+msgstr "{count} geselecteerd"
 
 #: components/manage/Actions/Actions
 msgid "{title} copied."
-msgstr ""
+msgstr "{title} gekopieerd."
 
 #: components/manage/Actions/Actions
 msgid "{title} cut."
-msgstr ""
+msgstr "{title} geknipt."
 
 #: components/manage/Actions/Actions
 msgid "{title} has been deleted."
-msgstr ""
+msgstr "{title} is verwijderd."
 
 #: components/theme/Comments/Comments
 msgid "{user} says:"
