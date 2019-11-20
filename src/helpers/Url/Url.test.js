@@ -1,6 +1,6 @@
 import { settings } from '~/config';
 
-import { flattenToAppURL, getBaseUrl, getIcon, getView } from './Url';
+import { flattenToAppURL, getBaseUrl, getIcon, getView, isCmsUi } from './Url';
 
 describe('Url', () => {
   describe('getBaseUrl', () => {
@@ -58,6 +58,20 @@ describe('Url', () => {
   describe('flattenToAppURL', () => {
     it('flattens a given URL to the app URL', () => {
       expect(flattenToAppURL(`${settings.apiPath}/edit`)).toBe('/edit');
+    });
+  });
+
+  describe('isCmsUi', () => {
+    [...settings.nonContentRoutes, '/controlpanel/mypanel'].forEach(route => {
+      if (typeof route === 'string') {
+        it(`matches non-content-route ${route}`, () => {
+          expect(isCmsUi(`/mycontent/${route}`)).toBe(true);
+        });
+      }
+    });
+
+    it('returns false on non-cms-ui views', () => {
+      expect(isCmsUi('/mycontent')).toBe(false);
     });
   });
 });
