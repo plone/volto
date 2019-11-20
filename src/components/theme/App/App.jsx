@@ -18,10 +18,9 @@ import trim from 'lodash/trim';
 import cx from 'classnames';
 
 import Error from '../../../error';
-import { nonContentRoutes } from '../../../config/NonContentRoutes';
 
 import { Breadcrumbs, Footer, Header, Icon } from '../../../components';
-import { BodyClass, getBaseUrl, getView } from '../../../helpers';
+import { BodyClass, getBaseUrl, getView, isCmsUi } from '../../../helpers';
 import {
   getBreadcrumbs,
   getContent,
@@ -101,15 +100,7 @@ class App extends Component {
   render() {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
-    const fullPath = this.props.pathname.replace(/\?.*$/, '');
-    const isCmsUI = nonContentRoutes.reduce(
-      (acc, route) => acc || new RegExp(route).test(`/${fullPath}`),
-      false,
-    );
-    // ATTENZIONE:
-    // non funziona bene per le pagine che si chiamano /editoria e simili
-    // perché il test non ne tiene conto
-    // https://github.com/plone/volto/issues/870
+    const isCmsUI = isCmsUi(this.props.pathname);
 
     return (
       <Fragment>
