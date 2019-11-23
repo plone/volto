@@ -4,6 +4,8 @@
 
 ### Added
 
+- Added listing tile @pnicolli @rodfersou @sneridagh
+
 ### Changes
 
 ## 4.0.0-alpha.13 (2019-11-23)
@@ -196,7 +198,6 @@
 
 ### Added
 
-- Create listing tile @pnicolli @rodfersou
 - Show images in Rich Text editor @rodfersou @sneridagh
 - Full Pastanaga Toolbabr implementation @sneridagh
 - Internal API path for containers @bloodbare
