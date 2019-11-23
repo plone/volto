@@ -64,6 +64,10 @@ msgstr "Beschreibung hinzufügen…"
 msgid "Add block..."
 msgstr ""
 
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Add criteria"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr "Feld hinzufügen"
@@ -241,6 +245,10 @@ msgstr "Kontakt"
 msgid "Contact form"
 msgstr ""
 
+#: components/manage/Blocks/Listing/Edit
+msgid "Contained items"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Contents"
 msgstr "Inhaltsverzeichnis"
@@ -262,6 +270,10 @@ msgstr "Informationen über die Urheber- und Nutzungsrechte an diesem Artikel."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
 msgstr "Ersteller"
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Criteria"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
@@ -583,6 +595,10 @@ msgstr ""
 msgid "Insert row before"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Item batch size"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Artikel kopiert."
@@ -611,6 +627,10 @@ msgstr "Letzte Änderung"
 
 #: components/manage/Sidebar/ImageSidebar
 msgid "Link to"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Listing"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -685,10 +705,18 @@ msgstr "Neues Passwort"
 msgid "No image selected"
 msgstr ""
 
-#: components/manage/Blocks/Listing/Edit
+#: components/manage/Blocks/Listing/ListingBody
+msgid "No items found in this container."
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "Keine Ergebnisse gefunden."
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "No selection"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "None"
@@ -832,8 +860,16 @@ msgstr "Notwendig"
 msgid "Required input is missing."
 msgstr "Notwendige Eingabe fehlt."
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Results limit"
+msgstr ""
+
 #: components/manage/Blocks/Listing/Edit
 msgid "Results preview"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Reversed order"
 msgstr ""
 
 #: components/manage/History/History
@@ -960,6 +996,14 @@ msgstr "Übersicht"
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "Seiteneinstellungen"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Sort on"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Source"
+msgstr ""
 
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
