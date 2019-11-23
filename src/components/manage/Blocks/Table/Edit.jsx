@@ -226,7 +226,7 @@ class Edit extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (!nextProps.data.table) {
       this.props.onChangeBlock(nextProps.block, {
         ...nextProps.data,

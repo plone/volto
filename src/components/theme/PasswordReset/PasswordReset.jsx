@@ -134,7 +134,7 @@ class PasswordReset extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {}
+  UNSAFE_componentWillMount() {}
 
   /**
    * Component will receive props
@@ -142,7 +142,7 @@ class PasswordReset extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.loading && nextProps.loaded) {
       this.setState({ isSuccessful: true });
     }

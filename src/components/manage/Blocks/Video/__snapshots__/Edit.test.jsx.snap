@@ -17,6 +17,7 @@ exports[`renders an edit image block component 1`] = `
       <i
         aria-hidden="true"
         className="arrow right icon"
+        onClick={[Function]}
       />
       <div
         className="embed"

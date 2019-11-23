@@ -116,7 +116,7 @@ class Add extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       this.props.createRequest.loading &&
       nextProps.createRequest.loaded &&

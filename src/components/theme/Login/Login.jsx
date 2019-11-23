@@ -112,7 +112,7 @@ class Login extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.token) {
       this.props.history.push(this.props.returnUrl || '/');
       if (toast.isActive('loginFailed')) {

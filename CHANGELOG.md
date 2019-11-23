@@ -6,9 +6,12 @@
 
 ### Changes
 
+## 4.0.0-alpha.13 (2019-11-23)
+
 ### Internal
 
 - Upgrade autoprefixer, remove deprecated `browsers` option, move to `browserlist` in `package.json` @sneridagh
+- Upgrade react and react-dom to 16.12.0 @pnicolli
 
 ## 4.0.0-alpha.12 (2019-11-13)
 

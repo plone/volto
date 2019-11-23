@@ -87,7 +87,7 @@ class History extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.revertRequest.loading && nextProps.revertRequest.loaded) {
       this.props.getHistory(getBaseUrl(this.props.pathname));
     }

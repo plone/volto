@@ -47,6 +47,7 @@ exports[`Sharing renders a sharing component 1`] = `
               <i
                 aria-hidden="true"
                 className="search icon"
+                onClick={[Function]}
               />
             </button>
           </div>
@@ -90,6 +91,7 @@ exports[`Sharing renders a sharing component 1`] = `
               <i
                 aria-hidden="true"
                 className="user icon"
+                onClick={[Function]}
                 title="User"
               />
                
@@ -134,11 +136,13 @@ exports[`Sharing renders a sharing component 1`] = `
           <i
             aria-hidden="true"
             className="green check circle outline icon"
+            onClick={[Function]}
           />
            indicates an inherited value. Similarly, the symbol 
           <i
             aria-hidden="true"
             className="blue check circle outline icon"
+            onClick={[Function]}
           />
            indicates a global role, which is managed by the site administrator.
         </p>
@@ -156,6 +160,7 @@ exports[`Sharing renders a sharing component 1`] = `
           <i
             aria-hidden="true"
             className="arrow right icon"
+            onClick={[Function]}
           />
         </button>
         <button
@@ -167,6 +172,7 @@ exports[`Sharing renders a sharing component 1`] = `
           <i
             aria-hidden="true"
             className="remove icon"
+            onClick={[Function]}
           />
         </button>
       </div>

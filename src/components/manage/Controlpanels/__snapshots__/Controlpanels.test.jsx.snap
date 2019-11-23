@@ -42,6 +42,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <i
                     aria-hidden="true"
                     className="calendar icon"
+                    onClick={[Function]}
                   />
                   <div
                     className="content"
@@ -64,6 +65,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <i
                     aria-hidden="true"
                     className="setting icon"
+                    onClick={[Function]}
                   />
                   <div
                     className="content"
@@ -103,6 +105,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <i
                     aria-hidden="true"
                     className="write icon"
+                    onClick={[Function]}
                   />
                   <div
                     className="content"
@@ -125,6 +128,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <i
                     aria-hidden="true"
                     className="comments icon"
+                    onClick={[Function]}
                   />
                   <div
                     className="content"
@@ -164,6 +168,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <i
                     aria-hidden="true"
                     className="lock icon"
+                    onClick={[Function]}
                   />
                   <div
                     className="content"
@@ -203,6 +208,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <i
                     aria-hidden="true"
                     className="users icon"
+                    onClick={[Function]}
                   />
                   <div
                     className="content"
