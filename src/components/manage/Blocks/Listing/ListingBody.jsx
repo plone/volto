@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { FormattedMessage, injectIntl } from 'react-intl';
+import { ConditionalLink } from '@plone/volto/components';
 import { getQueryStringResults } from '@plone/volto/actions';
 import { flattenToAppURL } from '@plone/volto/helpers';
 import { settings } from '~/config';
 
-const ListingItem = ({ data, properties, intl }) => {
+import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
+
+const ListingItem = ({ data, properties, intl, isEditMode }) => {
   const querystringResults = useSelector(
     state => state.querystringsearch.subrequests,
   );
@@ -36,7 +38,13 @@ const ListingItem = ({ data, properties, intl }) => {
         <>
           {listingItems.map(item => (
             <div className="listing-item" key={item.UID}>
-              <Link to={flattenToAppURL(item['@id'])}>
+              <ConditionalLink
+                to={flattenToAppURL(item['@id'])}
+                isLink={!isEditMode}
+              >
+                {!item[settings.listingPreviewImageField] && (
+                  <img src={DefaultImageSVG} alt="" />
+                )}
                 {item[settings.listingPreviewImageField] && (
                   <img
                     src={flattenToAppURL(
@@ -50,7 +58,7 @@ const ListingItem = ({ data, properties, intl }) => {
                   <h3>{item.title ? item.title : item.id}</h3>
                   <p>{item.description}</p>
                 </div>
-              </Link>
+              </ConditionalLink>
             </div>
           ))}
         </>
@@ -76,6 +84,7 @@ const ListingItem = ({ data, properties, intl }) => {
 
 ListingItem.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
+  isEditMode: PropTypes.bool,
 };
 
 export default injectIntl(ListingItem);

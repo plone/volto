@@ -31,7 +31,12 @@ const Edit = ({ data, onChangeBlock, block, selected, properties }) => {
           {message => <p className="items-preview">{message}</p>}
         </FormattedMessage>
       )}
-      <ListingBody data={data} properties={properties} block={block} />
+      <ListingBody
+        data={data}
+        properties={properties}
+        block={block}
+        isEditMode
+      />
       <SidebarPortal selected={selected}>
         <ListingSidebar
           data={data}
