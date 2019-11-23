@@ -1,20 +1,450 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the listing block sidebar 1`] = `
+exports[`renders a Grid Block Sidebar component 1`] = `
 <div
-  className="listing-sidebar"
+  className="ui raised segments"
 >
-  <form
-    className="query-form"
-    onSubmit={[Function]}
+  <header
+    className="header pulled"
   >
-    <input
-      className="query"
-      name="query"
-      onChange={[Function]}
-      placeholder="querystring"
-      value=""
-    />
-  </form>
+    <h2>
+      Listing
+    </h2>
+  </header>
+  <div
+    className="ui segment form sidebar-listing-data"
+  >
+    <div
+      className="inline field"
+      id="field-source"
+    >
+      <div
+        className="ui grid"
+      >
+        <div
+          className="stretched row"
+        >
+          <div
+            className="twelve wide column"
+          >
+            <div
+              className="simple-field-name"
+            >
+              Criteria
+            </div>
+          </div>
+        </div>
+        <div
+          className="stretched row"
+        >
+          <div
+            className="twelve wide column"
+          >
+            <div
+              className="fields"
+            >
+              <div
+                className="field"
+                style={
+                  Object {
+                    "flex": "1 0 auto",
+                  }
+                }
+              >
+                <div
+                  className="css-10nd86i react-select-container"
+                  id="field-source"
+                  onKeyDown={[Function]}
+                >
+                  <div
+                    className="css-hnwiky react-select__control"
+                    onMouseDown={[Function]}
+                    onTouchEnd={[Function]}
+                  >
+                    <div
+                      className="css-1dvrfad react-select__value-container"
+                    >
+                      <div
+                        className="css-1492t68 react-select__placeholder"
+                      >
+                        Add criteria
+                      </div>
+                      <div
+                        className="css-1g6gooi"
+                      >
+                        <div
+                          className="react-select__input"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                            }
+                          }
+                        >
+                          <input
+                            aria-autocomplete="list"
+                            autoCapitalize="none"
+                            autoComplete="off"
+                            autoCorrect="off"
+                            disabled={false}
+                            id="react-select-2-input"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onFocus={[Function]}
+                            spellCheck="false"
+                            style={
+                              Object {
+                                "background": 0,
+                                "border": 0,
+                                "boxSizing": "content-box",
+                                "color": "inherit",
+                                "fontSize": "inherit",
+                                "opacity": 1,
+                                "outline": 0,
+                                "padding": 0,
+                                "width": "1px",
+                              }
+                            }
+                            tabIndex="0"
+                            type="text"
+                            value=""
+                          />
+                          <div
+                            style={
+                              Object {
+                                "height": 0,
+                                "left": 0,
+                                "overflow": "scroll",
+                                "position": "absolute",
+                                "top": 0,
+                                "visibility": "hidden",
+                                "whiteSpace": "pre",
+                              }
+                            }
+                          >
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className="css-1wy0on6 react-select__indicators"
+                    >
+                      <span
+                        className="css-hba3sr react-select__indicator-separator"
+                      />
+                      <div
+                        aria-hidden="true"
+                        className="css-9t8fgp react-select__indicator react-select__dropdown-indicator"
+                        onMouseDown={[Function]}
+                        onTouchEnd={[Function]}
+                      >
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "#007bc1",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <input
+                    name="source"
+                    type="hidden"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="inline field"
+      id="field-listingblock-sort-on"
+    >
+      <div
+        className="ui grid"
+      >
+        <div
+          className="stretched row"
+        >
+          <div
+            className="four wide column"
+          >
+            <div
+              className="wrapper"
+            >
+              <label
+                htmlFor="select-listingblock-sort-on"
+              >
+                Sort on
+              </label>
+            </div>
+          </div>
+          <div
+            className="eight wide column"
+          >
+            <div
+              className="css-10nd86i react-select-container"
+              id="select-listingblock-sort-on"
+              onKeyDown={[Function]}
+            >
+              <div
+                className="css-hnwiky react-select__control"
+                onMouseDown={[Function]}
+                onTouchEnd={[Function]}
+              >
+                <div
+                  className="css-1dvrfad react-select__value-container react-select__value-container--has-value"
+                >
+                  <div
+                    className="css-xp4uvy react-select__single-value"
+                  >
+                    No selection
+                  </div>
+                  <div
+                    className="css-1g6gooi"
+                  >
+                    <div
+                      className="react-select__input"
+                      style={
+                        Object {
+                          "display": "inline-block",
+                        }
+                      }
+                    >
+                      <input
+                        aria-autocomplete="list"
+                        autoCapitalize="none"
+                        autoComplete="off"
+                        autoCorrect="off"
+                        disabled={false}
+                        id="react-select-3-input"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        spellCheck="false"
+                        style={
+                          Object {
+                            "background": 0,
+                            "border": 0,
+                            "boxSizing": "content-box",
+                            "color": "inherit",
+                            "fontSize": "inherit",
+                            "opacity": 1,
+                            "outline": 0,
+                            "padding": 0,
+                            "width": "1px",
+                          }
+                        }
+                        tabIndex="0"
+                        type="text"
+                        value=""
+                      />
+                      <div
+                        style={
+                          Object {
+                            "height": 0,
+                            "left": 0,
+                            "overflow": "scroll",
+                            "position": "absolute",
+                            "top": 0,
+                            "visibility": "hidden",
+                            "whiteSpace": "pre",
+                          }
+                        }
+                      >
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="css-1wy0on6 react-select__indicators"
+                >
+                  <span
+                    className="css-hba3sr react-select__indicator-separator"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="css-9t8fgp react-select__indicator react-select__dropdown-indicator"
+                    onMouseDown={[Function]}
+                    onTouchEnd={[Function]}
+                  >
+                    <svg
+                      className="icon"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "#007bc1",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <input
+                name="select-listingblock-sort-on"
+                type="hidden"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="inline field"
+      id="field-listingblock-sort-on-reverse"
+    >
+      <div
+        className="ui grid"
+      >
+        <div
+          className="stretched row"
+        >
+          <div
+            className="twelve wide column"
+          >
+            <div
+              className="wrapper"
+            >
+              <div
+                className="ui fitted checkbox"
+                onChange={[Function]}
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+              >
+                <input
+                  checked={false}
+                  className="hidden"
+                  disabled={false}
+                  name="field-listingblock-sort-on-reverse"
+                  readOnly={true}
+                  tabIndex={0}
+                  type="checkbox"
+                />
+                <label />
+              </div>
+              <label
+                className="ui basic horizontal label"
+                htmlFor="field-listingblock-sort-on-reverse"
+                onClick={[Function]}
+              >
+                Reversed order
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="inline field text"
+      id="field-limit"
+    >
+      <div
+        className="ui grid"
+      >
+        <div
+          className="stretched row"
+        >
+          <div
+            className="four wide column"
+          >
+            <div
+              className="wrapper"
+            >
+              <label
+                htmlFor="field-limit"
+              >
+                Results limit
+              </label>
+            </div>
+          </div>
+          <div
+            className="eight wide column"
+          >
+            <div
+              className="ui input"
+            >
+              <input
+                disabled={false}
+                id="field-limit"
+                name="limit"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="inline field text"
+      id="field-itembatchsize"
+    >
+      <div
+        className="ui grid"
+      >
+        <div
+          className="stretched row"
+        >
+          <div
+            className="four wide column"
+          >
+            <div
+              className="wrapper"
+            >
+              <label
+                htmlFor="field-itembatchsize"
+              >
+                Item batch size
+              </label>
+            </div>
+          </div>
+          <div
+            className="eight wide column"
+          >
+            <div
+              className="ui input"
+            >
+              <input
+                disabled={false}
+                id="field-itembatchsize"
+                name="itembatchsize"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;

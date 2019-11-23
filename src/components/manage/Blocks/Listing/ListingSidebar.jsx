@@ -1,85 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl } from 'react-intl';
+import { Segment } from 'semantic-ui-react';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
-@injectIntl
-/**
- * Listing sidebar class
- * @class ListingSidebar
- * @extends Component
- */
-export default class ListingSidebar extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    data: PropTypes.objectOf(PropTypes.any).isRequired,
-    block: PropTypes.string.isRequired,
-    onChangeBlock: PropTypes.func.isRequired,
-  };
+import ListingData from './ListingData';
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {object} props Properties
-   * @returns {undefined}
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      query: props.data.query || '',
-    };
-  }
+const GridSidebar = props => {
+  return (
+    <Segment.Group raised>
+      <header className="header pulled">
+        <h2>
+          <FormattedMessage id="Listing" defaultMessage="Listing" />
+        </h2>
+      </header>
 
-  /**
-   * Change handler
-   * @method onChange
-   * @param {object} e Change event
-   * @returns {undefined}
-   */
-  onChange = e => {
-    const value = e.currentTarget.value;
-    this.setState({
-      query: value,
-    });
-  };
+      <ListingData {...props} />
+    </Segment.Group>
+  );
+};
 
-  /**
-   * Submit handler
-   * @method onSubmit
-   * @param {object} e Submit event
-   * @returns {undefined}
-   */
-  onSubmit = e => {
-    e.preventDefault();
-    const { data, onChangeBlock, block } = this.props;
-    const { query } = this.state;
-    onChangeBlock(block, {
-      ...data,
-      query,
-    });
-  };
+GridSidebar.propTypes = {
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+  block: PropTypes.string.isRequired,
+  onChangeBlock: PropTypes.func.isRequired,
+};
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    return (
-      <div className="listing-sidebar">
-        <form className="query-form" onSubmit={this.onSubmit}>
-          <input
-            name="query"
-            className="query"
-            placeholder="querystring"
-            onChange={this.onChange}
-            value={this.state.query}
-          />
-        </form>
-      </div>
-    );
-  }
-}
+export default injectIntl(GridSidebar);

@@ -3,21 +3,21 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import ListingSidebar from './ListingSidebar';
+import ListingData from './ListingData';
 
 const mockStore = configureStore();
 
-test('renders a Grid Block Sidebar component', () => {
+test('renders an Listing Data Sidebar component', () => {
   const store = mockStore({
-    querystring: { sortable_indexes: {} },
     intl: {
       locale: 'en',
       messages: {},
     },
+    querystring: { sortable_indexes: {} },
   });
   const component = renderer.create(
     <Provider store={store}>
-      <ListingSidebar
+      <ListingData
         id="dcdf1f42-645d-48f6-9531-357bdc2e1881"
         data={{
           '@type': 'listing',
