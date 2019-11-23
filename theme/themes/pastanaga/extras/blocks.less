@@ -134,18 +134,9 @@
 // Hacks for the full width image
 body .ui.wrapper > .block.align.full,
 body.has-toolbar.has-sidebar .ui.wrapper > .ui.inner .block.align.full,
-body.has-toolbar-collapsed.has-sidebar
-.ui.wrapper
-> .ui.inner
-.block.align.full,
-body.has-toolbar-collapsed.has-sidebar-collapsed
-.ui.wrapper
-> .ui.inner
-.block.align.full,
-body.has-toolbar.has-sidebar-collapsed
-.ui.wrapper
-> .ui.inner
-.block.align.full {
+body.has-toolbar-collapsed.has-sidebar .ui.wrapper > .ui.inner .block.align.full,
+body.has-toolbar-collapsed.has-sidebar-collapsed .ui.wrapper > .ui.inner .block.align.full,
+body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner .block.align.full {
   width: 100% !important;
 
   iframe {
@@ -159,9 +150,7 @@ body.has-toolbar.has-sidebar-collapsed
 
 body.has-toolbar.has-sidebar .ui.wrapper > .ui.inner.block.full,
 body.has-toolbar-collapsed.has-sidebar .ui.wrapper > .ui.inner.block.full,
-body.has-toolbar-collapsed.has-sidebar-collapsed
-.ui.wrapper
-> .ui.inner.block.full,
+body.has-toolbar-collapsed.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full,
 body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   width: 100% !important;
 
@@ -638,5 +627,40 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     &:hover {
       background-color: transparent !important;
     }
+  }
+}
+
+.sidebar-listing-data {
+  &.ui.form.segment {
+    padding-bottom: 20px;
+  }
+
+  .simple-field-name {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .fields {
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    border-bottom: 1px dotted @borderColor;
+  }
+
+  .fields:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .main-fields-wrapper {
+    display: flex;
+    width: 100%;
+    flex: 1 0 auto;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+  }
+
+  .button .icon {
+    margin: 0 !important;
   }
 }
