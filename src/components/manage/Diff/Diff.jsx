@@ -112,7 +112,7 @@ class Diff extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       this.props.pathname !== nextProps.pathname ||
       this.props.one !== nextProps.one ||

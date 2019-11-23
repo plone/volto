@@ -29,6 +29,7 @@ exports[`renders a schema widget component 1`] = `
           <i
             aria-hidden="true"
             className="blue write square large icon"
+            onClick={[Function]}
           />
         </button>
         <button
@@ -38,6 +39,7 @@ exports[`renders a schema widget component 1`] = `
           <i
             aria-hidden="true"
             className="red close large icon"
+            onClick={[Function]}
           />
         </button>
       </div>
@@ -52,6 +54,7 @@ exports[`renders a schema widget component 1`] = `
           <i
             aria-hidden="true"
             className="plus large icon"
+            onClick={[Function]}
           />
         </button>
       </div>
@@ -89,6 +92,7 @@ exports[`renders a schema widget component 1`] = `
                 <i
                   aria-hidden="true"
                   className="blue plus large icon"
+                  onClick={[Function]}
                 />
               </button>
             </div>

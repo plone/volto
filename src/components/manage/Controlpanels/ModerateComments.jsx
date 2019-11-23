@@ -84,7 +84,7 @@ class ModerateComments extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.searchContent('', {
       portal_type: 'Discussion Item',
       fullobjects: true,
@@ -97,7 +97,7 @@ class ModerateComments extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
       this.props.searchContent('', {
         portal_type: 'Discussion Item',
