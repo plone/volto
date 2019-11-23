@@ -10,6 +10,7 @@
 
 - Upgrade autoprefixer, remove deprecated `browsers` option, move to `browserlist` in `package.json` @sneridagh
 - Upgrade react and react-dom to 16.12.0 @pnicolli
+- Upgrade Cypress to 3.6.1 @timo
 
 ## 4.0.0-alpha.12 (2019-11-13)
 
