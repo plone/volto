@@ -41,6 +41,7 @@ export const settings = {
   ToHTMLRenderers,
   ToHTMLOptions,
   imageObjects: ['Image'],
+  listingPreviewImageField: 'image',
 };
 
 export const widgets = {
