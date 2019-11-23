@@ -113,3 +113,5 @@ export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools'
 export More from '@plone/volto/components/manage/Toolbar/More';
 export Types from '@plone/volto/components/manage/Toolbar/Types';
 export Toast from '@plone/volto/components/manage/Toast/Toast';
+
+export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
