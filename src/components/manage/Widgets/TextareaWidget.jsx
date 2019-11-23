@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
 const messages = defineMessages({
   default: {
@@ -111,12 +111,15 @@ const TextareaWidget = ({
           <Grid.Column width="8">
             {onEdit && (
               <div className="toolbar">
-                <button className="item" onClick={() => onEdit(id, schema)}>
+                <button
+                  className="item ui noborder button"
+                  onClick={() => onEdit(id, schema)}
+                >
                   <Icon name="write square" size="large" color="blue" />
                 </button>
                 <button
                   aria-label="Delete"
-                  className="item"
+                  className="item ui noborder button"
                   onClick={() => onDelete(id)}
                 >
                   <Icon name="close" size="large" color="red" />
@@ -166,7 +169,6 @@ TextareaWidget.propTypes = {
   onChange: PropTypes.func,
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
-  intl: intlShape.isRequired,
 };
 
 /**

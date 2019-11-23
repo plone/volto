@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import { Accordion, Grid, Segment } from 'semantic-ui-react';
-import {
-  defineMessages,
-  FormattedMessage,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
-import { AlignTile, flattenToAppURL } from '@plone/volto/helpers';
+import { AlignBlock, flattenToAppURL } from '@plone/volto/helpers';
+
 import { settings } from '~/config';
 
 import imageSVG from '@plone/volto/icons/image.svg';
@@ -55,13 +51,12 @@ const messages = defineMessages({
 
 const ImageSidebar = ({
   data,
-  tile,
-  onChangeTile,
+  block,
+  onChangeBlock,
   openObjectBrowser,
   required = false,
   intl,
 }) => {
-  const [alt, setAlt] = useState(data.alt || '');
   const [activeAccIndex, setActiveAccIndex] = useState(0);
 
   function handleAccClick(e, titleProps) {
@@ -97,11 +92,11 @@ const ImageSidebar = ({
             {data.url.includes(settings.apiPath) && (
               <img
                 src={`${flattenToAppURL(data.url)}/@@images/image/mini`}
-                alt={alt}
+                alt={data.alt}
               />
             )}
             {!data.url.includes(settings.apiPath) && (
-              <img src={data.url} alt={alt} style={{ width: '50%' }} />
+              <img src={data.url} alt={data.alt} style={{ width: '50%' }} />
             )}
           </Segment>
           <Segment className="form sidebar-image-data">
@@ -124,7 +119,7 @@ const ImageSidebar = ({
                 value={data.url}
                 icon={clearSVG}
                 iconAction={() =>
-                  onChangeTile(tile, {
+                  onChangeBlock(block, {
                     ...data,
                     url: '',
                   })
@@ -136,13 +131,12 @@ const ImageSidebar = ({
               id="alt"
               title={intl.formatMessage(messages.AltText)}
               required={false}
-              value={alt}
+              value={data.alt}
               onChange={(name, value) => {
-                onChangeTile(tile, {
+                onChangeBlock(block, {
                   ...data,
                   alt: value,
                 });
-                setAlt(value);
               }}
             />
             <Form.Field inline required={required}>
@@ -159,11 +153,11 @@ const ImageSidebar = ({
                     </div>
                   </Grid.Column>
                   <Grid.Column width="8" className="align-tools">
-                    <AlignTile
+                    <AlignBlock
                       align={data.align}
-                      onChangeTile={onChangeTile}
+                      onChangeBlock={onChangeBlock}
                       data={data}
-                      tile={tile}
+                      block={block}
                     />
                   </Grid.Column>
                 </Grid.Row>
@@ -193,15 +187,15 @@ const ImageSidebar = ({
                 iconAction={
                   data.href
                     ? () => {
-                        onChangeTile(tile, {
+                        onChangeBlock(block, {
                           ...data,
                           href: '',
                         });
                       }
-                    : () => openObjectBrowser('link')
+                    : () => openObjectBrowser({ mode: 'link' })
                 }
                 onChange={(name, value) => {
-                  onChangeTile(tile, {
+                  onChangeBlock(block, {
                     ...data,
                     href: value,
                   });
@@ -212,7 +206,7 @@ const ImageSidebar = ({
                 title={intl.formatMessage(messages.openLinkInNewTab)}
                 value={data.openLinkInNewTab ? data.openLinkInNewTab : false}
                 onChange={(name, value) => {
-                  onChangeTile(tile, {
+                  onChangeBlock(block, {
                     ...data,
                     openLinkInNewTab: value,
                   });
@@ -228,10 +222,9 @@ const ImageSidebar = ({
 
 ImageSidebar.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
-  tile: PropTypes.string.isRequired,
-  onChangeTile: PropTypes.func.isRequired,
+  block: PropTypes.string.isRequired,
+  onChangeBlock: PropTypes.func.isRequired,
   openObjectBrowser: PropTypes.func.isRequired,
-  intl: intlShape.isRequired,
 };
 
 export default injectIntl(ImageSidebar);

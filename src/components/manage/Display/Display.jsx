@@ -7,6 +7,7 @@ import { getSchema, updateContent, getContent } from '../../../actions';
 import layouts from '../../../constants/Layouts';
 import { getLayoutFieldname } from '../../../helpers';
 import { Icon } from '../../../components';
+import { FormattedMessage } from 'react-intl';
 
 import downSVG from '../../../icons/down-key.svg';
 import upSVG from '../../../icons/up-key.svg';
@@ -182,7 +183,9 @@ class DisplaySelect extends Component {
 
     return (
       <Fragment>
-        <label htmlFor="display-select">View</label>
+        <label htmlFor="display-select">
+          <FormattedMessage id="Viewmode" defaultMessage="View" />
+        </label>
         <Select
           name="display-select"
           className="react-select-container"

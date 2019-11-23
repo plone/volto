@@ -13,12 +13,7 @@ import { Container, Button, Dropdown, Grid, Table } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import moment from 'moment';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 
 import { getDiff, getSchema, getHistory } from '../../../actions';
@@ -72,7 +67,6 @@ class Diff extends Component {
     ).isRequired,
     title: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**

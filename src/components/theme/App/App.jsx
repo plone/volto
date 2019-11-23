@@ -12,16 +12,14 @@ import { Segment } from 'semantic-ui-react';
 import Raven from 'raven-js';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
+import split from 'lodash/split';
+import join from 'lodash/join';
+import trim from 'lodash/trim';
+import cx from 'classnames';
 
 import Error from '../../../error';
 
-import {
-  Breadcrumbs,
-  Footer,
-  Header,
-  Icon,
-  Messages,
-} from '../../../components';
+import { Breadcrumbs, Footer, Header, Icon } from '../../../components';
 import { BodyClass, getBaseUrl, getView } from '../../../helpers';
 import {
   getBreadcrumbs,
@@ -29,7 +27,6 @@ import {
   getNavigation,
   getTypes,
   getWorkflow,
-  purgeMessages,
 } from '../../../actions';
 
 import clearSVG from '../../../icons/clear.svg';
@@ -47,7 +44,6 @@ class App extends Component {
    */
   static propTypes = {
     pathname: PropTypes.string.isRequired,
-    purgeMessages: PropTypes.func.isRequired,
   };
 
   state = {
@@ -76,8 +72,6 @@ class App extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.purgeMessages();
-
       if (this.state.hasError) {
         this.setState({ hasError: false });
       }
@@ -110,11 +104,29 @@ class App extends Component {
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
+
+        {/* Body class depending on content type */}
+        {this.props.content && this.props.content['@type'] && (
+          <BodyClass
+            className={`contenttype-${this.props.content['@type']
+              .replace(' ', '-')
+              .toLowerCase()}`}
+          />
+        )}
+
+        {/* Body class depending on sections */}
+        <BodyClass
+          className={cx({
+            [trim(join(split(this.props.pathname, '/'), ' section-'))]:
+              this.props.pathname !== '/',
+            siteroot: this.props.pathname === '/',
+          })}
+        />
+
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
         <Segment basic className="content-area">
           <main>
-            <Messages />
             {this.state.hasError ? (
               <Error
                 message={this.state.error.message}
@@ -130,6 +142,7 @@ class App extends Component {
           position={toast.POSITION.BOTTOM_CENTER}
           hideProgressBar
           transition={Slide}
+          autoClose={5000}
           closeButton={
             <Icon
               className="toast-dismiss-action"
@@ -144,8 +157,11 @@ class App extends Component {
 }
 
 export const __test__ = connect(
-  (state, props) => ({ pathname: props.location.pathname }),
-  { purgeMessages },
+  (state, props) => ({
+    pathname: props.location.pathname,
+    content: state.content.data,
+  }),
+  {},
 )(App);
 
 export default compose(
@@ -178,6 +194,6 @@ export default compose(
   ]),
   connect(
     (state, props) => ({ pathname: props.location.pathname }),
-    { purgeMessages },
+    {},
   ),
 )(App);

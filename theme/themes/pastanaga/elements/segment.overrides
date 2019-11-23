@@ -90,7 +90,6 @@
   text-decoration: underline;
 }
 
-
 .pusher > .ui.basic.segment {
   padding-bottom: 0;
 }
@@ -102,4 +101,8 @@
 .ui.segment.dashed {
   border: 3px dashed #ccc;
   box-shadow: none;
+}
+
+.users-control-panel .ui.clearing.segment.actions {
+    text-transform: uppercase;
 }

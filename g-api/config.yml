@@ -7,7 +7,6 @@ databases:
     dsn: postgresql://guillotina@postgres:5432/guillotina
     pool_size: 100
 applications:
-- guillotina_dbusers
 - guillotina_cms
 - guillotina.contrib.cache
 - guillotina.contrib.swagger
@@ -48,7 +47,7 @@ cors:
   - "*"
   allow_credentials: true
   max_age: 3660
-default_tiles:
+default_blocks:
   Document:
   - type: title
   - type: text

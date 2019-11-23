@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a listing block view with a custom query 1`] = `
+<div
+  className="ui list block listing"
+  role="list"
+>
+  <div
+    className="item"
+    onClick={[Function]}
+    role="listitem"
+  >
+    <img
+      alt="Test"
+      className="ui avatar image"
+      src="undefined/test/image.jpeg"
+    />
+    <div
+      className="content"
+    >
+      <div
+        className="header"
+      >
+        <a
+          href="/undefined/test"
+          onClick={[Function]}
+        >
+          Test
+        </a>
+      </div>
+      <div
+        className="description"
+      >
+        Listing
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders a listing block view with no query set 1`] = `
+<div
+  className="ui list block listing"
+  role="list"
+>
+  <div
+    className="item"
+    onClick={[Function]}
+    role="listitem"
+  >
+    <img
+      alt="Test"
+      className="ui avatar image"
+      src="undefined/test/image.jpeg"
+    />
+    <div
+      className="content"
+    >
+      <div
+        className="header"
+      >
+        <a
+          href="/undefined/test"
+          onClick={[Function]}
+        >
+          Test
+        </a>
+      </div>
+      <div
+        className="description"
+      >
+        Listing
+      </div>
+    </div>
+  </div>
+</div>
+`;

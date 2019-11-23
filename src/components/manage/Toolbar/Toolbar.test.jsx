@@ -4,14 +4,16 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
+import thunk from 'redux-thunk';
 
 import Toolbar from './Toolbar';
 
-const mockStore = configureStore();
+const mockStore = configureStore([thunk]);
 
 describe('Toolbar', () => {
   it('renders the Toolbar component', () => {
     const store = mockStore({
+      types: { types: [{ title: 'Document', addable: true }] },
       actions: {
         actions: {
           document_actions: [],

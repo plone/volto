@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 
@@ -101,7 +101,6 @@ class PersonalInformation extends Component {
     updateUser: PropTypes.func.isRequired,
     getUser: PropTypes.func.isRequired,
     userId: PropTypes.string.isRequired,
-    intl: intlShape.isRequired,
     loaded: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
     closeMenu: PropTypes.func.isRequired,

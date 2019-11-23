@@ -44,12 +44,25 @@ msgstr "Aktion"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Actions"
 msgstr "Aktionen"
 
-#: components/manage/Tiles/Description/Edit
+#: components/manage/Toolbar/Types
+msgid "Add Content"
+msgstr "Inhalte hinzufügen"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add User"
+msgstr ""
+
+#: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
 msgstr "Beschreibung hinzufügen…"
+
+#: components/manage/Form/Form
+msgid "Add block..."
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
@@ -59,9 +72,21 @@ msgstr "Feld hinzufügen"
 msgid "Add fieldset"
 msgstr "Fieldset hinzufügen"
 
-#: components/manage/Form/Form
-msgid "Add tile..."
-msgstr "Tile hinzufügen"
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add new group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add new user"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add to Groups"
+msgstr ""
 
 #: components/manage/Add/Add
 msgid "Add {type}"
@@ -110,17 +135,19 @@ msgstr "Zurück"
 msgid "Base"
 msgstr "Basis"
 
+#: components/manage/Sidebar/Sidebar
+msgid "Block"
+msgstr "Block"
+
+#: components/theme/Login/Login
+msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
 msgstr "Durchsuchen"
 
-#: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Sidebar/ObjectBrowserOld
-#: components/manage/Tiles/Slider/Edit
-msgid "Browse or type URL"
-msgstr "Inhalte Durchsuchen oder URL eingeben"
-
-#: components/manage/Tiles/Image/Edit
+#: components/manage/Blocks/Image/Edit
 msgid "Browse the site, drop an image, or type an URL"
 msgstr ""
 
@@ -137,13 +164,11 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/TileModal/TileModal
-#: components/mosaic/Layout/Layout
 #: components/theme/Login/Login
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Cell"
 msgstr ""
 
@@ -176,6 +201,14 @@ msgstr "Checkbox"
 #: components/manage/Widgets/SelectWidget
 msgid "Choices"
 msgstr "Auswahlfeld"
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Choose Image"
+msgstr ""
+
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Choose Target"
+msgstr ""
 
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
@@ -270,16 +303,26 @@ msgstr "Standard"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Controlpanels/UsersControlpanelGroups
+#: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "Löschen"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Delete Group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Delete User"
+msgstr ""
+
+#: components/manage/Blocks/Table/Edit
 msgid "Delete col"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Delete row"
 msgstr ""
 
@@ -287,7 +330,8 @@ msgstr ""
 msgid "Descending"
 msgstr "Absteigend"
 
-#: components/manage/Tiles/HeroImageLeft/Edit
+#: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -307,15 +351,11 @@ msgstr "Unterschied"
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr "Unterschied zwischen Version {one} and {two} von {title}"
 
-#: components/manage/Display/Display
-msgid "Display"
-msgstr "Darstellung"
-
 #: components/theme/Footer/Footer
 msgid "Distributed under the {license}."
 msgstr "Lizensiert unter der {license}."
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Divide each row into separate cells"
 msgstr ""
 
@@ -323,9 +363,21 @@ msgstr ""
 msgid "Do you really want to delete the following items?"
 msgstr "Möchten Sie den Artikel wirklich löschen?"
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Do you really want to delete the group {groupname}?"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Do you really want to delete the user {username}?"
+msgstr ""
+
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
 msgstr "Möchten Sie den Artikel wirklich löschen?"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Document"
+msgstr "Seite"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -362,11 +414,15 @@ msgstr "Fieldset bearbeiten"
 msgid "Edit {title}"
 msgstr "{title} bearbeiten"
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Email"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "Email sent"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
+#: components/manage/Blocks/Maps/Edit
 msgid "Enter Map URL"
 msgstr ""
 
@@ -374,7 +430,7 @@ msgstr ""
 msgid "Enter URL or title"
 msgstr "URL oder Titel eingeben"
 
-#: components/manage/Tiles/Video/Edit
+#: components/manage/Blocks/Video/Edit
 msgid "Enter Video URL"
 msgstr "Video-URL eingeben"
 
@@ -432,7 +488,7 @@ msgstr "Dateiname"
 msgid "Filter…"
 msgstr "Filter…"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
 msgstr ""
 
@@ -446,9 +502,25 @@ msgstr ""
 msgid "Full Name"
 msgstr "Vor- und Nachname"
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Fullname"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
 msgstr "GNU-GPL-Lizenz"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Group created"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Groupname"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Groups"
+msgstr ""
 
 #: components/manage/History/History
 msgid "History of {title}"
@@ -495,19 +567,19 @@ msgstr ""
 msgid "Inherit permissions from higher levels"
 msgstr "Berechtigungen von übergeordneten Ordnern übernehmen"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert col after"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert col before"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert row after"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert row before"
 msgstr ""
 
@@ -555,27 +627,27 @@ msgid "Log in"
 msgstr "Anmelden"
 
 #: components/theme/Login/Login
+msgid "Login Failed"
+msgstr ""
+
+#: components/theme/Login/Login
 msgid "Login Name"
 msgstr "Benutzername"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
+#: components/manage/Blocks/Maps/Edit
 msgid "Maps data error"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
+#: components/manage/Blocks/Maps/Edit
 msgid "Maps instructions"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
-msgstr ""
-
-#: components/manage/Sidebar/Sidebar
-msgid "Metadata"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -613,9 +685,7 @@ msgstr "Neues Passwort"
 msgid "No image selected"
 msgstr ""
 
-#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
-#: components/manage/Widgets/TokenWidget
 msgid "No results found."
 msgstr "Keine Ergebnisse gefunden."
 
@@ -635,15 +705,11 @@ msgstr ""
 msgid "Open menu"
 msgstr "Menü öffnen"
 
-#: components/manage/Tiles/Slider/Edit
-#: components/manage/Tiles/TileModal/TileModal
-msgid "Options"
-msgstr ""
-
 #: components/manage/Sidebar/ImageSidebar
 msgid "Origin"
 msgstr ""
 
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
 msgid "Password"
 msgstr "Passwort"
@@ -693,13 +759,20 @@ msgstr ""
 msgid "Powered by Plone & Python"
 msgstr "Powered by Plone & Python"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Preferences"
+msgstr "Einstellungen"
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Vorschau"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "Profile"
+msgstr "Profil"
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
-#: components/manage/Sidebar/Sidebar
 msgid "Properties"
 msgstr "Eigenschaften"
 
@@ -721,7 +794,7 @@ msgstr "Mehr…"
 msgid "Rearrange items by…"
 msgstr "Elemente sortieren nach…"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
 msgstr ""
 
@@ -770,15 +843,17 @@ msgstr "Richtext"
 msgid "Rights"
 msgstr "Rechte"
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Roles"
+msgstr ""
+
 #: components/manage/Add/Add
+#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/TileModal/TileModal
-#: components/manage/Tiles/Video/Edit
-#: components/mosaic/Layout/Layout
 msgid "Save"
 msgstr "Speichern"
 
@@ -790,9 +865,17 @@ msgstr "Suche"
 msgid "Search Site"
 msgstr "Website durchsuchen"
 
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Search content"
+msgstr ""
+
 #: components/manage/Sharing/Sharing
 msgid "Search for user or group"
 msgstr "Nach Benutzer oder Gruppe suchen"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Search group..."
+msgstr ""
 
 #: components/theme/Search/Search
 msgid "Search results"
@@ -869,10 +952,11 @@ msgid "Site Map"
 msgstr "Übersicht"
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "Seiteneinstellungen"
 
-#: components/manage/Tiles/Video/Edit
+#: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
 msgstr "Geben Sie ein YouTube-Video oder eine YouTube-Playlist URL ein"
 
@@ -881,6 +965,7 @@ msgid "Start password reset"
 msgstr "E-Mail anfordern"
 
 #: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 msgid "State"
 msgstr "Status"
@@ -889,7 +974,7 @@ msgstr "Status"
 msgid "String"
 msgstr "Text"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Stripe alternate rows with color"
 msgstr ""
 
@@ -899,6 +984,7 @@ msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -906,11 +992,11 @@ msgstr ""
 msgid "Success"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Table"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Table color inverted"
 msgstr ""
 
@@ -964,9 +1050,10 @@ msgstr "Dieser Name wird in der Adressleiste des Browsers angezeigt."
 msgid "This page does not seem to exist…"
 msgstr "Die Seite existiert leider nicht…"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
-#: components/manage/Tiles/HeroImageLeft/Edit
+#: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -983,13 +1070,18 @@ msgstr "Titel"
 msgid "Type"
 msgstr "Typ"
 
-#: components/manage/Tiles/Text/Edit
+#: components/manage/Blocks/Text/Edit
 msgid "Type text…"
 msgstr "Text eingeben…"
 
-#: components/manage/Tiles/Title/Edit
+#: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr "Titel eingeben…"
+
+#: components/manage/Blocks/Block/Edit
+#: components/theme/View/DefaultView
+msgid "Unknown Block"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Upload"
@@ -1018,8 +1110,16 @@ msgid "Used for programmatic access to the fieldset."
 msgstr "Wir für den programmierten Zugriff auf das Fieldset verwendet."
 
 #: components/manage/Controlpanels/UsersControlpanel
+msgid "User created"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "User name"
 msgstr "Benutzername"
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Username"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users"
@@ -1031,7 +1131,7 @@ msgstr "Nutzer- und Gruppeneinstellungen"
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
-msgstr ""
+msgstr "Versionsübersicht"
 
 #: components/manage/Contents/ContentsItem
 msgid "View"
@@ -1044,6 +1144,10 @@ msgstr "Änderungen anzeigen"
 #: components/manage/History/History
 msgid "View this revision"
 msgstr "Diese revision ansehen"
+
+#: components/manage/Display/Display
+msgid "Viewmode"
+msgstr "Ansicht"
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
@@ -1109,7 +1213,11 @@ msgstr "Ihre bevorzugte Sprache"
 msgid "box_forgot_password_option"
 msgstr "Passwort vergessen?"
 
-#: config/Tiles
+#: config/Blocks
+msgid "common"
+msgstr ""
+
+#: config/Blocks
 msgid "description"
 msgstr "Beschreibung"
 
@@ -1125,7 +1233,15 @@ msgstr "Der Link, um das Passwort neu zu setzen, wurde Ihnen zugesendet. Die E-M
 msgid "heading_sent_password"
 msgstr "Bestätigung für das Zurücksetzen des Passwortes wurde gesendet!"
 
-#: config/Tiles
+#: config/Blocks
+msgid "hero"
+msgstr ""
+
+#: config/Blocks
+msgid "html"
+msgstr ""
+
+#: config/Blocks
 msgid "image"
 msgstr "Bild"
 
@@ -1133,23 +1249,35 @@ msgstr "Bild"
 msgid "label_my_email_address_is"
 msgstr "Meine E-Mail-Adresse lautet"
 
+#: config/Blocks
+msgid "maps"
+msgstr ""
+
+#: config/Blocks
+msgid "media"
+msgstr ""
+
+#: config/Blocks
+msgid "mostUsed"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "Registrierungsformular"
 
-#: config/Tiles
+#: config/Blocks
 msgid "table"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "text"
 msgstr "Text"
 
-#: config/Tiles
+#: config/Blocks
 msgid "title"
 msgstr "Titel"
 
-#: config/Tiles
+#: config/Blocks
 msgid "video"
 msgstr "Video"
 

@@ -1,6 +1,195 @@
 # Change Log
 
-## 3.1.1 (unreleased)
+## 4.0.0 (unreleased)
+
+### Added
+
+### Changes
+
+### Internal
+
+- Upgrade autoprefixer, remove deprecated `browsers` option, move to `browserlist` in `package.json` @sneridagh
+
+## 4.0.0-alpha.12 (2019-11-13)
+
+### Changes
+
+- Add loading animation for save and edit buttons in toolbar @pgrunewald
+- Move Body class depending on content type to `App` component in order to make it available everywhere @sneridagh
+- Add root class name to `Tags` component @sneridagh
+
+## 4.0.0-alpha.11 (2019-11-08)
+
+### Added
+
+- Improved `ObjectBrowser` API to allow arbitrary field names and a custom `onSelectItem` @sneridagh
+
+### Changes
+
+- Fix icon in `TextWidget` @sneridagh
+- impprove documentation for `Icon` @jackahl
+- Fix ability to develop Volto itself (as and addon with a mrs.developer checkout) inside a Volto project @sneridagh
+
+### Internal
+
+- Add internationalization section to docs @pgrunewald
+
+### Internal
+
+- Set Cypress viewport width to 1280px @timo
+
+## 4.0.0-alpha.10 (2019-10-31)
+
+### Added
+
+- Add Node 12 support @timo
+
+### Changes
+
+- Removed wrapper `p` tag from image block in edit mode for better layout purposes @sneridagh
+- Make SelectWidget more robust @robgietema
+- Add image to listing view @robgietema
+- Fix `SchemaWidget` @robgietema
+- Move styles import to a separate file @pnicolli
+- Fix crash when user enters only whitespace in required fields @JeffersonBledsoe
+- Fix the _real_ focus thief in new tiles @sneridagh
+
+### Internal
+
+- Report port number on startup @fredvd
+- Retry Cypress tests two times before failing @timo
+- Add waitForResourceToLoad to Cypress @timo
+- Add use cases to README @timo
+- Re-enabled Guillotina tests @sneridagh
+- Remove Docker build from tests @sneridagh
+- Removed Enzyme @pnicolli
+- Added testing-library (react and cypress) @pnicolli
+- Tiles -> Blocks renaming @sneridagh
+
+## 4.0.0-alpha.9 (2019-10-09)
+
+### Changes
+
+- Rename `blockID` to `id` for view block components, to unify naming in edit-view @sneridagh
+- Change the order of the widget decider algorithm to `choices` is chosen before the vocabularies one @sneridagh
+- Remove old messages container since it's not used anymore @sneridagh
+- Improve the Pastanaga Editor block wrapper container layout, deprecating the hack `.ui.wrapper > *` @sneridagh
+- Fix `ArrayWidget` and amend users control panel arrays instantiations @sneridagh
+
+## 4.0.0-alpha.8 (2019-10-05)
+
+### Added
+
+- Upgrade react-intl to latest version @sneridagh
+
+### Changes
+
+- Fix `DefaultView.jsx` warning on missing key @sneridagh
+
+### Internal
+
+- Enable run yarn install on git checkout and git pull in husky @sneridagh
+- Disable Cypress blocks tests @sneridagh
+- Remove dockerized unit tests @timo
+- Add Cypress link test for text blocks @timo
+
+## 4.0.0-alpha.7 (2019-10-02)
+
+### Added
+
+- Add CSS class names to block chooser @timo
+- Add Cypress tests for blocks @timo @rodrigo @jakahl
+
+### Changes
+
+- Fix page jump on edit route @sneridagh
+- Fixes to users and groups controlpanel i18n strings @nileshgulia1
+
+### Internal
+
+- Change the general naming of the documentation to `developer` documentation @sneridagh
+- Add `blockID` prop to block tiles render view, this is handy for some blocks use cases @sneridagh
+- Fix flaky Cypress test @sneridagh
+
+## 4.0.0-alpha.6 (2019-09-30)
+
+### Added
+
+- Transfer focus management and keyboard navigation to the tiles engine @sneridagh
+
+### Changes
+
+- Slight amendment to Blocks chooser styling @sneridagh
+- The default view for content types `DocumentView.jsx` has been renamed to a more appropiate `DefaultView.jsx` @sneridagh
+
+### Internal
+
+- Add complete husky config @sneridagh
+- Add COC.md file @timo
+
+## 4.0.0-alpha.5 (2019-09-28)
+
+### Added
+
+- Default body classes were enhanced to accept path and content type based ones as in Plone @sneridagh
+
+### Changes
+
+- Fix for checkboxes when setting `false` values, this fixes #888 @sneridagh
+
+## 4.0.0-alpha.4 (2019-09-27)
+
+### Added
+
+- Added Users and Groups Controlpanel @nileshgulia1 @csenger @jackahl
+
+### Changes
+
+- Move the Tile Edit wrapper one level up to the tiles engine, so we can simplify how edit tiles are made @sneridagh
+- Rename Metadata and Properties in sidebar to Document and Block @jackahl
+- Add some German Translations @steffenri, @jackahl
+
+### Internal
+
+- Fix cypress test for file Upload @jackahl
+- Dependencies upgrades (router, redux) @sneridagh
+- Enhance Cypress createContent keyword to create files and images @timo
+- Fix docs build locally @sneridagh
+
+## 4.0.0-alpha.3 (2019-09-22)
+
+### Added
+
+- New tiles chooser @sneridagh
+
+### Internal
+
+- Fail eslint check on any warnings @timo
+- Add i18n check on Travis @timo
+
+## 4.0.0-alpha.2 (2019-09-19)
+
+### Changes
+
+- Fix parameter handling in Search view to avoid limiting search results with empty parameters #845 @csenger
+- Fix SearchTags handling of keyword vocabulary for anonymous users @csenger
+- Fix hero tile being next to a left or right aligned image @jackahl
+- Fix toolbar elements showing depending on user permissions @sneridagh
+
+## 4.0.0-alpha.1 (2019-09-17)
+
+### Changes
+
+- Fix test failure for `VersionOverview` component in master after release process @sneridagh
+- Improve usability of login form @sneridagh
+- Fix creation of image objects from image tile by adding the id as well @sneridagh
+- Remove description tile from the default tiles on new content @sneridagh
+
+### Internal
+
+- Update release-it to fix some deprecation messages @sneridagh
+
+## 4.0.0-alpha.0 (2019-09-13)
 
 ### Added
 
@@ -44,6 +233,8 @@
 - Fix bulk workflow change in contents view @sneridagh
 - Fix regresion on uploading image to root @sneridagh
 - Fix hero tile on view if image is missing @sneridagh
+- Fix link to contextual contents in toolbar @sneridagh
+- Add automatically the wildcard for the `SearchableText` on the @search action @sneridagh
 
 ### Internal
 
@@ -57,6 +248,7 @@
 - Add razzle-plugin-bundle-analyzer @tisto
 - Add bundlewatch @tisto
 - Add bundlesize @tisto
+- Update base buildout @sneridagh
 
 ## 3.1.0 (2019-06-14)
 

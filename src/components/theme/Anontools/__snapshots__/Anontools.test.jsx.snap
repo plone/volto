@@ -13,9 +13,7 @@ exports[`Anontools renders an anontools component when no token is specified 1`]
       href="/login?return_url=myid"
       onClick={[Function]}
     >
-      <span>
-        Log in
-      </span>
+      Log in
     </a>
   </div>
   <div
@@ -26,9 +24,7 @@ exports[`Anontools renders an anontools component when no token is specified 1`]
       href="/register"
       onClick={[Function]}
     >
-      <span>
-        Register
-      </span>
+      Register
     </a>
   </div>
 </div>

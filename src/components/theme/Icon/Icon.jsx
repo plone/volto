@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 const defaultSize = '36px';
 
 /**
- * Component to display an Icon.
+ * Component to display an SVG as Icon.
  * @function Field
  * @param {Object} props Component properties.
  * @param {string} props.name Name source object.
@@ -17,11 +17,25 @@ const defaultSize = '36px';
  * @param {string} props.className className to add to the component.
  * @param {string} props.title Title (a11y).
  * @returns {string} Markup of the component.
+ *
+ * Use:
+ * drop icon to the icons folder ("src/icons")
+ * import svg into the file
+ * import this Icon component
+ * add icon component with name = your imported svg
+ *
+ * Reasoning:
+ * add a11y title to SVGs
+ * load svg via webpack for optimization
+ * Zero conf Inlined SVGs, as it is the best option when working with SVG
+ * see razzle.config.js
+ *
+ * for further reference see {@link https://kitconcept.com/blog/pastanaga-icon-system/ | here}
  */
 const Icon = ({ name, size, color, className, title, onClick }) => (
   <svg
-    xmlns={name.attributes.xmlns}
-    viewBox={name.attributes.viewBox}
+    xmlns={name.attributes && name.attributes.xmlns}
+    viewBox={name.attributes && name.attributes.viewBox}
     style={{ height: size, width: 'auto', fill: color || 'currentColor' }}
     className={className ? `icon ${className}` : 'icon'}
     onClick={onClick}

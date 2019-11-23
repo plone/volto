@@ -9,7 +9,8 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { keys } from 'lodash';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
+import { Button } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
@@ -20,9 +21,9 @@ import { createContent, getSchema } from '../../../actions';
 import { Form, Icon, Toolbar, Sidebar } from '../../../components';
 import {
   getBaseUrl,
-  hasTilesData,
-  getTilesFieldname,
-  getTilesLayoutFieldname,
+  hasBlocksData,
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
 } from '../../../helpers';
 
 import saveSVG from '../../../icons/save.svg';
@@ -74,7 +75,6 @@ class Add extends Component {
       loaded: PropTypes.bool,
     }).isRequired,
     type: PropTypes.string,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -154,6 +154,8 @@ class Add extends Component {
     this.props.history.push(getBaseUrl(this.props.pathname));
   }
 
+  form = React.createRef();
+
   /**
    * Render method.
    * @method render
@@ -161,7 +163,7 @@ class Add extends Component {
    */
   render() {
     if (this.props.schemaRequest.loaded) {
-      const visual = hasTilesData(this.props.schema.properties);
+      const visual = hasBlocksData(this.props.schema.properties);
 
       return (
         <div id="page-add">
@@ -171,15 +173,11 @@ class Add extends Component {
             })}
           />
           <Form
-            ref={instance => {
-              if (instance) {
-                this.form = instance.refs.wrappedInstance;
-              }
-            }}
+            ref={this.form}
             schema={this.props.schema}
             formData={{
-              [getTilesFieldname(this.props.schema.properties)]: null,
-              [getTilesLayoutFieldname(this.props.schema.properties)]: null,
+              [getBlocksFieldname(this.props.schema.properties)]: null,
+              [getBlocksLayoutFieldname(this.props.schema.properties)]: null,
             }}
             onSubmit={this.onSubmit}
             hideActions
@@ -196,11 +194,12 @@ class Add extends Component {
               hideDefaultViewButtons
               inner={
                 <>
-                  <button
+                  <Button
                     id="toolbar-save"
                     className="save"
                     aria-label={this.props.intl.formatMessage(messages.save)}
-                    onClick={() => this.form.onSubmit()}
+                    onClick={() => this.form.current.onSubmit()}
+                    loading={this.props.createRequest.loading}
                   >
                     <Icon
                       name={saveSVG}
@@ -208,8 +207,8 @@ class Add extends Component {
                       size="30px"
                       title={this.props.intl.formatMessage(messages.save)}
                     />
-                  </button>
-                  <button className="cancel" onClick={() => this.onCancel()}>
+                  </Button>
+                  <Button className="cancel" onClick={() => this.onCancel()}>
                     <Icon
                       name={clearSVG}
                       className="circled"
@@ -219,7 +218,7 @@ class Add extends Component {
                       size="30px"
                       title={this.props.intl.formatMessage(messages.cancel)}
                     />
-                  </button>
+                  </Button>
                 </>
               }
             />

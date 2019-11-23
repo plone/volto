@@ -27,6 +27,13 @@ build-backend:  ## Build Plone 5.2
 	(cd api && bin/pip install -r requirements.txt)
 	(cd api && bin/buildout -c plone-5.2.x.cfg)
 
+.PHONY: Build Plone 5.2 in specific port
+build-backend-withport:  ## Build Plone 5.2 with port
+	(cd api && virtualenv --clear --python=python3 .)
+	(cd api && bin/pip install --upgrade pip)
+	(cd api && bin/pip install -r requirements.txt)
+	(cd api && bin/buildout instance:http-address=$(INSTANCE_PORT))
+
 dist:
 	yarn
 	yarn build
@@ -34,24 +41,19 @@ dist:
 test:
 	(cd api && bin/test)
 
-bin/pip:
-	virtualenv --clear --python=python3 .
-	bin/pip install -r requirements-docs.txt
-
 docs-serve:
 	(cd docs && ../bin/mkdocs serve)
 
-docs-build: bin/pip
+docs-build:
+	virtualenv --clear --python=python3 .
+	./bin/pip install -r requirements-docs.txt
 	(cd docs && ../bin/mkdocs build)
 
 start-frontend: dist
 	yarn start:prod
 
-start-api-docker:
-	docker-compose -f api/docker-compose.yml up
-
 start-backend-docker:
-	docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
+	docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.voltodemo" -e ZCML="kitconcept.voltodemo.cors" plone
 
 start-backend-docker-guillotina:
 	docker-compose -f g-api/docker-compose.yml up -d
@@ -88,5 +90,10 @@ start-test-frontend: ## Start Test Volto Frontend
 start-test: ## Start Test
 	@echo "$(GREEN)==> Start Test$(RESET)"
 	yarn cypress:open
+
+.PHONY: start-test-all
+start-test-all: ## Start Test
+	@echo "$(GREEN)==> Start Test$(RESET)"
+	yarn ci:cypress:run
 
 .PHONY: all start test-acceptance
