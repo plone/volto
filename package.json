@@ -37,10 +37,13 @@
     "start:prod": "NODE_ENV=production node build/server.js",
     "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
+    "stylelint": "./node_modules/.bin/stylelint 'theme/**/*.{css,less,overrides}' 'src/**/*.{css,less,overrides}'",
+    "stylelint:fix": "./node_modules/.bin/stylelint --fix 'theme/**/*.{css,less,overrides}' 'src/**/*.{css,less,overrides}'",
     "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,json}'",
     "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,json}'",
     "i18n": "rm -rf build/messages && NODE_ENV=production node src/i18n.js",
     "code-analysis:i18n": "yarn i18n && git diff -G'^[^\"POT]' --exit-code",
+    "patches": "patch -p0 -N node_modules/stylelint/lib/getPostcssResult.js < patches/fixstylelint.patch || true",
     "cypress:open": "CYPRESS_API=plone cypress open",
     "cypress:open:guillotina": "CYPRESS_API=guillotina cypress open",
     "cypress:run": "CYPRESS_API=plone CYPRESS_RETRIES=2 cypress run",
@@ -102,14 +105,25 @@
   },
   "prettier": {
     "trailingComma": "all",
-    "singleQuote": true
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.overrides",
+        "options": { "parser": "less" }
+      }
+    ]
   },
   "stylelint": {
-    "extends": ["stylelint-config-standard", "stylelint-config-idiomatic-order"],
-    "plugins": ["stylelint-prettier"],
+    "extends": [
+      "stylelint-config-idiomatic-order"
+    ],
+    "plugins": [
+      "stylelint-prettier"
+    ],
     "rules": {
       "prettier/prettier": true
-    }
+    },
+    "ignoreFiles": "theme/themes/default/**/*.overrides"
   },
   "browserslist": [
     ">1%",
@@ -148,12 +162,20 @@
       "git add",
       "yarn test:husky"
     ],
-    "theme/**/*.{css,less,overrides}": [
+    "theme/**/*.{css,less}": [
       "npx stylelint --fix",
       "git add"
     ],
-    "src/**/*.{css,less,overrides}": [
+    "src/**/*.{css,less}": [
       "npx stylelint --fix",
+      "git add"
+    ],
+    "theme/**/*.{overrides}": [
+      "npx stylelint --fix --syntax less",
+      "git add"
+    ],
+    "src/**/*.{overrides}": [
+      "npx stylelint --fix --syntax less",
       "git add"
     ]
   },
@@ -286,7 +308,7 @@
     "stylelint": "11.1.1",
     "stylelint-config-idiomatic-order": "6.2.0",
     "stylelint-config-prettier": "6.0.0",
-    "stylelint-config-standard": "18.2.0",
+    "stylelint-config-standard": "19.0.0",
     "stylelint-prettier": "1.1.1",
     "superagent": "3.8.2",
     "svg-loader": "0.0.2",

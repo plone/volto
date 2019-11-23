@@ -13,7 +13,7 @@
 
 .ui.selection.dropdown:not(.multiple):not(.search) > .dropdown.icon {
   position: static;
-  // custom padding for dropdowns
+  /* custom padding for dropdowns */
   font-size: 2em;
 }
 

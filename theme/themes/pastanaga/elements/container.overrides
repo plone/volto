@@ -10,7 +10,9 @@
 .ui.container {
   display: block;
   max-width: @maxWidth !important;
-  transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045), margin-left 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045), margin-right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+    margin-left 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+    margin-right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 .contentWidthMedia(@width, @gutter, @offset) {
@@ -110,7 +112,7 @@ body.has-toolbar-collapsed.has-sidebar-collapsed {
   margin-right: -25px !important;
 }
 
-// Hack for escape the blocks container in blocks full width
+/* Hack for escape the blocks container in blocks full width */
 .full-width {
   position: relative;
   right: 50%;
@@ -119,5 +121,4 @@ body.has-toolbar-collapsed.has-sidebar-collapsed {
   max-width: initial !important;
   margin-right: -50vw !important;
   margin-left: -50vw !important;
-  // object-fit: cover;
 }

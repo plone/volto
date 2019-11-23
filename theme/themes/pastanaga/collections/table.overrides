@@ -7,16 +7,16 @@
 
 /* Headers */
 .ui.table th {
-  cursor: auto;
-  background: @headerBackground;
-  text-align: @headerAlign;
-  color: @headerColor;
   padding: @headerVerticalPadding @headerHorizontalPadding;
-  vertical-align: @headerVerticalAlign;
+  border-left: @headerDivider;
+  background: @headerBackground;
+  color: @headerColor;
+  cursor: auto;
   font-style: @headerFontStyle;
   font-weight: @headerFontWeight;
+  text-align: @headerAlign;
   text-transform: @headerTextTransform;
-  border-left: @headerDivider;
+  vertical-align: @headerVerticalAlign;
 }
 
 .ui.table tr > th:first-child {

@@ -236,7 +236,10 @@ class ArrayWidget extends Component {
    */
   handleChange(selectedOption) {
     this.setState({ selectedOption });
-    this.props.onChange(this.props.id, selectedOption.map(item => item.value));
+    this.props.onChange(
+      this.props.id,
+      selectedOption.map(item => item.value),
+    );
   }
 
   /**
