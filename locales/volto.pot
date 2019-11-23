@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-11-08T16:33:47.966Z\n"
+"POT-Creation-Date: 2019-11-23T00:31:19.373Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -816,6 +816,7 @@ msgstr ""
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Blocks/Listing/Edit
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."
@@ -993,6 +994,11 @@ msgstr ""
 #: components/manage/Form/ModalForm
 # defaultMessage: Required input is missing.
 msgid "Required input is missing."
+msgstr ""
+
+#: components/manage/Blocks/Listing/Edit
+# defaultMessage: Results preview
+msgid "Results preview"
 msgstr ""
 
 #: components/manage/History/History

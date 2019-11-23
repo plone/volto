@@ -689,6 +689,7 @@ msgstr "Nieuw wachtwoord"
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Blocks/Listing/Edit
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr ""
@@ -834,6 +835,10 @@ msgstr ""
 #: components/manage/Form/ModalForm
 msgid "Required input is missing."
 msgstr "Verplichte waarde mist."
+
+#: components/manage/Blocks/Listing/Edit
+msgid "Results preview"
+msgstr ""
 
 #: components/manage/History/History
 msgid "Revert to this revision"

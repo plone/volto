@@ -670,6 +670,7 @@ msgstr "Nuova password"
 msgid "No image selected"
 msgstr "Nessuna immagine selezionata"
 
+#: components/manage/Blocks/Listing/Edit
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "La ricerca non ha prodotto risultati."
@@ -815,6 +816,10 @@ msgstr "Obbligatorio"
 #: components/manage/Form/ModalForm
 msgid "Required input is missing."
 msgstr "Un campo richiesto è mancante."
+
+#: components/manage/Blocks/Listing/Edit
+msgid "Results preview"
+msgstr "Anteprima dei risultati"
 
 #: components/manage/History/History
 msgid "Revert to this revision"
