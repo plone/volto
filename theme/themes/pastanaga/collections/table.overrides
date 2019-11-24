@@ -26,9 +26,11 @@
 .ui.table tr:first-child > th:first-child {
   border-radius: @borderRadius 0em 0em 0em;
 }
+
 .ui.table tr:first-child > th:last-child {
   border-radius: 0em @borderRadius 0em 0em;
 }
+
 .ui.table tr:first-child > th:only-child {
   border-radius: @borderRadius @borderRadius 0em 0em;
 }

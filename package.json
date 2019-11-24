@@ -37,8 +37,9 @@
     "start:prod": "NODE_ENV=production node build/server.js",
     "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
-    "stylelint": "./node_modules/.bin/stylelint 'theme/**/*.{css,less,overrides}' 'src/**/*.{css,less,overrides}'",
-    "stylelint:fix": "./node_modules/.bin/stylelint --fix 'theme/**/*.{css,less,overrides}' 'src/**/*.{css,less,overrides}'",
+    "stylelint": "./node_modules/.bin/stylelint 'theme/**/*.{css,less}' 'src/**/*.{css,less}'",
+    "stylelint:overrides": "./node_modules/.bin/stylelint --syntax less 'theme/**/*.overrides' 'src/**/*.overrides'",
+    "stylelint:fix": "yarn stylelint --fix && yarn stylelint:overrides --fix",
     "lint": "./node_modules/eslint/bin/eslint.js --max-warnings=0 'src/**/*.{js,jsx,json}'",
     "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,json}'",
     "i18n": "rm -rf build/messages && NODE_ENV=production node src/i18n.js",
@@ -109,7 +110,9 @@
     "overrides": [
       {
         "files": "*.overrides",
-        "options": { "parser": "less" }
+        "options": {
+          "parser": "less"
+        }
       }
     ]
   },
@@ -121,7 +124,18 @@
       "stylelint-prettier"
     ],
     "rules": {
-      "prettier/prettier": true
+      "prettier/prettier": true,
+      "rule-empty-line-before": [
+        "always-multi-line",
+        {
+          "except": [
+            "first-nested"
+          ],
+          "ignore": [
+            "after-comment"
+          ]
+        }
+      ]
     },
     "ignoreFiles": "theme/themes/default/**/*.overrides"
   },
@@ -308,7 +322,6 @@
     "stylelint": "11.1.1",
     "stylelint-config-idiomatic-order": "6.2.0",
     "stylelint-config-prettier": "6.0.0",
-    "stylelint-config-standard": "19.0.0",
     "stylelint-prettier": "1.1.1",
     "superagent": "3.8.2",
     "svg-loader": "0.0.2",
