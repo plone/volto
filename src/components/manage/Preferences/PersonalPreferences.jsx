@@ -155,8 +155,5 @@ class PersonalPreferences extends Component {
 
 export default compose(
   injectIntl,
-  connect(
-    null,
-    { updateIntl },
-  ),
+  connect(null, { updateIntl }),
 )(PersonalPreferences);

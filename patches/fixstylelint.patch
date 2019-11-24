@@ -1,0 +1,11 @@
+--- /Users/sneridagh/Development/plone/volto/node_modules/stylelint/lib/getPostcssResult.js	2019-11-14 20:05:13.849000000 +0100
++++ getPostcssResult-patched.js	2019-11-16 14:27:19.985147119 +0100
+@@ -80,6 +80,8 @@
+ 				}
+ 
+ 				syntax = dynamicRequire(syntax);
++			} else if (options.filePath && /\.(overrides)$/.test(options.filePath)) {
++				syntax = dynamicRequire('postcss-less');
+ 			} else if (
+ 				!(options.codeProcessors && options.codeProcessors.length) ||
+ 				(options.filePath && /\.(scss|sass|less)$/.test(options.filePath))
