@@ -93,6 +93,14 @@ index 7c8194c..5c63469 100644
      "@plone/volto/razzle/webpack-dev-server": "3.2.0"
 ```
 
+!!! note
+    If you are linting activelly your project, the build might be broken after this update. You should run:
+    ```
+    $ yarn prettier:fix
+    $ yarn stylelint:fix
+    ```
+    then commit the changes.
+
 ### openObjectBrowser API change in Alpha 11
 
 The API of the `ObjectBrowser` component changed in alpha 11 to make it more flexible.
