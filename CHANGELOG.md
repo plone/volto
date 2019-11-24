@@ -6,6 +6,10 @@
 
 ### Changes
 
+### Internal
+
+- Proper config for stylelint-prettier integration, add husky integration and scripts for stylelint, review stylelint rules @sneridagh
+
 ## 4.0.0-alpha.13 (2019-11-23)
 
 ### Internal
