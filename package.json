@@ -184,11 +184,11 @@
       "npx stylelint --fix",
       "git add"
     ],
-    "theme/**/*.{overrides}": [
+    "theme/**/*.overrides": [
       "npx stylelint --fix --syntax less",
       "git add"
     ],
-    "src/**/*.{overrides}": [
+    "src/**/*.overrides": [
       "npx stylelint --fix --syntax less",
       "git add"
     ]
