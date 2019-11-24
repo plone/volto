@@ -96,7 +96,7 @@ class Comments extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.listComments(getBaseUrl(this.props.pathname));
   }
 
@@ -106,7 +106,7 @@ class Comments extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       nextProps.pathname !== this.props.pathname ||
       (this.props.addRequest.loading && nextProps.addRequest.loaded) ||
