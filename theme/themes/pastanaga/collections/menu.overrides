@@ -96,7 +96,7 @@
 }
 
 .ui.grid > .row > .tools.column .ui.list {
-  @media only screen and (max-width: (@largestMobileScreen - 1px)) {
+  @media only screen and (max-width: (@largestMobileScreen)) {
     float: none;
     font-size: 1em;
   }

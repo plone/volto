@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Minor CSS fixes @sneridagh
+
 ## 4.0.0-alpha.14 (2019-11-24)
 
 ### Internal
