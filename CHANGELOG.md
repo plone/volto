@@ -9,6 +9,10 @@
 - Fix toolbar collapsed color @sneridagh
 - Minor CSS fixes @sneridagh
 
+### Internal
+
+- Remove @testing-library/cypress dep, as it breaks builds if the internal cypress release is different than the one in this package @sneridagh
+
 ## 4.0.0-alpha.14 (2019-11-24)
 
 ### Internal
