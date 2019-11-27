@@ -96,7 +96,7 @@
 }
 
 .ui.grid > .row > .tools.column .ui.list {
-  @media only screen and (max-width: (@tabletBreakpoint - 1px)) {
+  @media only screen and (max-width: (@largestMobileScreen)) {
     float: none;
     font-size: 1em;
   }
@@ -106,7 +106,7 @@
   margin: 0 0 0 40px;
   border: 0;
 
-  @media only screen and (max-width: @tabletBreakpoint) {
+  @media only screen and (max-width: @largestMobileScreen) {
     margin-bottom: 20px;
     margin-left: 0;
   }
@@ -116,7 +116,7 @@
     margin: 0;
     text-transform: uppercase;
 
-    @media only screen and (min-width: @tabletBreakpoint) {
+    @media only screen and (min-width: @largestMobileScreen) {
       padding: 1.7em 0 @relativeBig;
       margin: 0 unit(@relativeLarge * 2, em) 0 0;
     }

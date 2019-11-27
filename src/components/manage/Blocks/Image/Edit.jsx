@@ -232,6 +232,7 @@ class Edit extends Component {
                   this.props.onChangeBlock(this.props.block, {
                     ...this.props.data,
                     url: '',
+                    align: '',
                   })
                 }
               >

@@ -34,13 +34,13 @@
         background: #f00;
       }
 
-      @media only screen and (max-width: @tabletBreakpoint) {
+      @media only screen and (max-width: @largestMobileScreen) {
         overflow-x: initial;
       }
     }
   }
 
-  @media only screen and (max-width: @tabletBreakpoint) {
+  @media only screen and (max-width: @largestMobileScreen) {
     flex-direction: column;
     align-items: initial;
 
