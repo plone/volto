@@ -1,10 +1,6 @@
 # Change Log
 
-## 4.0.0 (unreleased)
-
-### Added
-
-### Changes
+## 4.0.0-alpha.15 (2019-11-27)
 
 ### Internal
 
@@ -12,7 +8,6 @@
 - Fix toolbar collapsed color @sneridagh
 - Minor CSS fixes @sneridagh
 - Remove @testing-library/cypress dep, as it breaks builds if the internal cypress release is different than the one in this package @sneridagh
-
 
 ## 4.0.0-alpha.14 (2019-11-24)
 
