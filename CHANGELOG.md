@@ -6,6 +6,8 @@
 
 ### Changes
 
+Add classname to search/clear in object browser sidebar. @timo
+
 ## 4.0.0-alpha.15 (2019-11-27)
 
 ### Internal

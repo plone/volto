@@ -352,10 +352,13 @@ class ObjectBrowserBody extends Component {
               </h2>
             )}
 
-            <button onClick={this.toggleSearchInput}>
+            <button className="searchTarget" onClick={this.toggleSearchInput}>
               <Icon name={searchSVG} size="24px" />
             </button>
-            <button onClick={this.props.closeObjectBrowser}>
+            <button
+              className="clearTarget"
+              onClick={this.props.closeObjectBrowser}
+            >
               <Icon name={clearSVG} size="24px" />
             </button>
           </header>
