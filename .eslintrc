@@ -1,6 +1,6 @@
 {
   "extends": ["react-app", "prettier", "plugin:jsx-a11y/recommended"],
-  "plugins": ["prettier", "react-hooks", "jsx-a11y"],
+  "plugins": ["no-only-tests", "prettier", "react-hooks", "jsx-a11y"],
   "env": {
     "es6": true,
     "browser": true,

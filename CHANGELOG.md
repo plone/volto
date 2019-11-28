@@ -6,6 +6,10 @@
 
 ### Changes
 
+### Internal
+
+- Add eslint-plugin-no-only-tests @timo
+
 ## 4.0.0-alpha.15 (2019-11-27)
 
 ### Internal
