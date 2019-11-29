@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix small CSS issues in Blocks @sneridagh
+
 ## 4.0.0-alpha.15 (2019-11-27)
 
 ### Internal
