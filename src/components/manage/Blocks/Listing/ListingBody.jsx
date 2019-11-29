@@ -40,7 +40,7 @@ const ListingItem = ({ data, properties, intl, isEditMode }) => {
             <div className="listing-item" key={item.UID}>
               <ConditionalLink
                 to={flattenToAppURL(item['@id'])}
-                isLink={!isEditMode}
+                condition={!isEditMode}
               >
                 {!item[settings.listingPreviewImageField] && (
                   <img src={DefaultImageSVG} alt="" />

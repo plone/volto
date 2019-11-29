@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const ConditionalLink = props => {
-  if (props.isLink) {
+  if (props.condition) {
     return <Link {...props}>{props.children}</Link>;
   } else {
     return props.children;
@@ -11,7 +11,7 @@ const ConditionalLink = props => {
 };
 
 ConditionalLink.propTypes = {
-  isLink: PropTypes.bool,
+  condition: PropTypes.bool,
   children: PropTypes.node,
 };
 

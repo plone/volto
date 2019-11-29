@@ -8,6 +8,7 @@ import ListingSidebar from './ListingSidebar';
 import ListingBody from './ListingBody';
 
 const Edit = ({ data, onChangeBlock, block, selected, properties }) => {
+  // componentDidMount
   React.useEffect(() => {
     if (!data.query) {
       onChangeBlock(block, {
