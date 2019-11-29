@@ -8,12 +8,32 @@
 
 ### Changes
 
+### Internal
+
+- Pin Guillotina docker image @sneridagh
+
+## 4.0.0-alpha.15 (2019-11-27)
+
+### Internal
+
+- Export the resetContent action @pnicolli
+- Fix toolbar collapsed color @sneridagh
+- Minor CSS fixes @sneridagh
+- Remove @testing-library/cypress dep, as it breaks builds if the internal cypress release is different than the one in this package @sneridagh
+
+## 4.0.0-alpha.14 (2019-11-24)
+
+### Internal
+
+- Proper config for stylelint-prettier integration, add husky integration and scripts for stylelint, review stylelint rules @sneridagh
+
 ## 4.0.0-alpha.13 (2019-11-23)
 
 ### Internal
 
 - Upgrade autoprefixer, remove deprecated `browsers` option, move to `browserlist` in `package.json` @sneridagh
 - Upgrade react and react-dom to 16.12.0 @pnicolli
+- Upgrade Cypress to 3.6.1 @timo
 
 ## 4.0.0-alpha.12 (2019-11-13)
 

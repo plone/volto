@@ -21,6 +21,86 @@ First, update your `package.json` to Volto 4.x.x.
   }
 ```
 
+### Stylelint and prettier config in Alpha 14
+
+In your project's boilerplate, you need to update the stylelint and prettier configuration accordingly to the changes made in Alpha 14 in `package.json` like this:
+
+```diff
+diff --git a/package.json b/package.json
+index 7c8194c..5c63469 100644
+--- a/package.json
++++ b/package.json
+@@ -46,26 +46,51 @@
+   },
+   "prettier": {
+     "trailingComma": "all",
+-    "singleQuote": true
++    "singleQuote": true,
++    "overrides": [
++      {
++        "files": "*.overrides",
++        "options": {
++          "parser": "less"
++        }
++      }
++    ]
+   },
+   "stylelint": {
+     "extends": [
+-      "stylelint-config-standard",
+-      "stylelint-config-idiomatic-order",
+-      "./node_modules/prettier-stylelint/config.js"
+-    ]
++      "stylelint-config-idiomatic-order"
++    ],
++    "plugins": [
++      "stylelint-prettier"
++    ],
++    "rules": {
++      "prettier/prettier": true,
++      "rule-empty-line-before": [
++        "always-multi-line",
++        {
++          "except": [
++            "first-nested"
++          ],
++          "ignore": [
++            "after-comment"
++          ]
++        }
++      ]
++    },
++    "ignoreFiles": "theme/themes/default/**/*.overrides"
+   },
+   "engines": {
+     "node": "^10 || ^12"
+   },
+   "dependencies": {
+-    "@plone/volto": "4.0.0-alpha.10"
++    "@plone/volto": "4.0.0-alpha.14"
+   },
+   "devDependencies": {
+     "eslint-plugin-prettier": "3.0.1",
+-    "postcss-overrides": "3.1.4",
+-    "prettier": "1.17.0",
+-    "prettier-stylelint": "0.4.2"
++    "prettier": "1.19.1",
++    "stylelint-config-idiomatic-order": "6.2.0",
++    "stylelint-config-prettier": "6.0.0",
++    "stylelint-prettier": "1.1.1"
+   },
+   "resolutions": {
+     "@plone/volto/razzle/webpack-dev-server": "3.2.0"
+```
+
+!!! note
+    If you are linting activelly your project, the build might be broken after this update. You should run:
+    ```
+    $ yarn prettier:fix
+    $ yarn stylelint:fix
+    ```
+    then commit the changes.
+
 ### openObjectBrowser API change in Alpha 11
 
 The API of the `ObjectBrowser` component changed in alpha 11 to make it more flexible.
