@@ -9,6 +9,7 @@
 ### Internal
 
 - Pin Guillotina docker image @sneridagh
+- Update internal dependencies, fix "unmet peer dependencies" console logs by adding the peer dependencies to the local dependencies @sneridagh
 
 ## 4.0.0-alpha.15 (2019-11-27)
 
