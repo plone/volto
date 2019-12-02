@@ -42,12 +42,6 @@ module.exports = {
         plugins: () => [
           require('postcss-flexbugs-fixes'),
           autoprefixer({
-            browsers: [
-              '>1%',
-              'last 4 versions',
-              'Firefox ESR',
-              'not ie < 9', // React doesn't support IE8 anyway
-            ],
             flexbox: 'no-2009',
           }),
         ],
@@ -59,7 +53,7 @@ module.exports = {
       include: [
         path.resolve('./theme'),
         /node_modules\/@plone\/volto\/theme/,
-        /@plone\/volto\/theme/,
+        /plone\.volto\/theme/,
         /node_modules\/semantic-ui-less/,
       ],
       use: dev
@@ -182,9 +176,7 @@ module.exports = {
       const jsConfig = require(`${projectRootPath}/jsconfig`).compilerOptions;
       const pathsConfig = jsConfig.paths;
       Object.keys(pathsConfig).forEach(packageName => {
-        const packagePath = `${projectRootPath}/${jsConfig.baseUrl}/${
-          pathsConfig[packageName][0]
-        }`;
+        const packagePath = `${projectRootPath}/${jsConfig.baseUrl}/${pathsConfig[packageName][0]}`;
         jsconfigPaths[packageName] = packagePath;
         if (packageName === '@plone/volto') {
           voltoPath = packagePath;

@@ -48,21 +48,6 @@
         height: 100px;
       }
 
-      .toolbar-handler {
-        button {
-          opacity: 0.3;
-        }
-
-        // State colors
-        .published:before {
-          background: @teal-blue;
-        }
-
-        .private:before {
-          background: @darkHotPink;
-        }
-      }
-
       .toolbar-bottom {
         a {
           opacity: 1;
@@ -79,6 +64,21 @@
 
       .toolbar-button-spacer {
         margin-left: auto;
+      }
+    }
+
+    .toolbar-handler {
+      button {
+        opacity: 0.3;
+      }
+
+      // State colors
+      .published:before {
+        background: @teal-blue;
+      }
+
+      .private:before {
+        background: @darkHotPink;
       }
     }
 
@@ -123,6 +123,14 @@
 
         &:focus {
           outline: none;
+        }
+
+        &.ui {
+          margin-right: 0;
+
+          svg.icon {
+            margin: 0;
+          }
         }
       }
     }

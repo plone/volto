@@ -4,7 +4,7 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose, bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
@@ -147,35 +147,6 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    roles: state.roles.roles,
-    users: state.users.users,
-    groups: state.groups.groups,
-    description: state.description,
-    pathname: props.location.pathname,
-    deleteRequest: state.users.delete,
-    createRequest: state.users.create,
-    deleteGroupRequest: state.groups.delete,
-    createGroupRequest: state.groups.create,
-  }),
-  dispatch =>
-    bindActionCreators(
-      {
-        listRoles,
-        listUsers,
-        deleteUser,
-        createUser,
-        listGroups,
-        deleteGroup,
-        createGroup,
-        updateUser,
-        updateGroup,
-      },
-      dispatch,
-    ),
-)
 /**
  * UsersControlpanel class.
  * @class UsersControlpanel
@@ -269,7 +240,7 @@ class UsersControlpanel extends Component {
     this.props.listGroups();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
       (this.props.createRequest.loading && nextProps.createRequest.loaded)
@@ -983,10 +954,28 @@ export default compose(
     (state, props) => ({
       roles: state.roles.roles,
       users: state.users.users,
-      entries: state.users.users,
-      groupEntries: state.groups.groups,
+      groups: state.groups.groups,
+      description: state.description,
       pathname: props.location.pathname,
+      deleteRequest: state.users.delete,
+      createRequest: state.users.create,
+      deleteGroupRequest: state.groups.delete,
+      createGroupRequest: state.groups.create,
     }),
-    { listRoles, listUsers },
+    dispatch =>
+      bindActionCreators(
+        {
+          listRoles,
+          listUsers,
+          deleteUser,
+          createUser,
+          listGroups,
+          deleteGroup,
+          createGroup,
+          updateUser,
+          updateGroup,
+        },
+        dispatch,
+      ),
   ),
 )(UsersControlpanel);

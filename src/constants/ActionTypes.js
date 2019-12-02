@@ -28,7 +28,6 @@ export const GET_PRINCIPALS = 'GET_PRINCIPALS';
 export const GET_QUERYSTRING = 'GET_QUERYSTRING';
 export const GET_SCHEMA = 'GET_SCHEMA';
 export const GET_SHARING = 'GET_SHARING';
-export const GET_TILES = 'GET_TILES';
 export const GET_TYPES = 'GET_TYPES';
 export const GET_USER = 'GET_USER';
 export const GET_VOCABULARY = 'GET_VOCABULARY';

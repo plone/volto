@@ -7,16 +7,16 @@
 
 /* Headers */
 .ui.table th {
-  cursor: auto;
-  background: @headerBackground;
-  text-align: @headerAlign;
-  color: @headerColor;
   padding: @headerVerticalPadding @headerHorizontalPadding;
-  vertical-align: @headerVerticalAlign;
+  border-left: @headerDivider;
+  background: @headerBackground;
+  color: @headerColor;
+  cursor: auto;
   font-style: @headerFontStyle;
   font-weight: @headerFontWeight;
+  text-align: @headerAlign;
   text-transform: @headerTextTransform;
-  border-left: @headerDivider;
+  vertical-align: @headerVerticalAlign;
 }
 
 .ui.table tr > th:first-child {
@@ -26,9 +26,11 @@
 .ui.table tr:first-child > th:first-child {
   border-radius: @borderRadius 0em 0em 0em;
 }
+
 .ui.table tr:first-child > th:last-child {
   border-radius: 0em @borderRadius 0em 0em;
 }
+
 .ui.table tr:first-child > th:only-child {
   border-radius: @borderRadius @borderRadius 0em 0em;
 }

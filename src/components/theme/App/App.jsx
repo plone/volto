@@ -70,7 +70,7 @@ class App extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       if (this.state.hasError) {
         this.setState({ hasError: false });
@@ -104,6 +104,15 @@ class App extends Component {
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
+
+        {/* Body class depending on content type */}
+        {this.props.content && this.props.content['@type'] && (
+          <BodyClass
+            className={`contenttype-${this.props.content['@type']
+              .replace(' ', '-')
+              .toLowerCase()}`}
+          />
+        )}
 
         {/* Body class depending on sections */}
         <BodyClass
@@ -148,7 +157,10 @@ class App extends Component {
 }
 
 export const __test__ = connect(
-  (state, props) => ({ pathname: props.location.pathname }),
+  (state, props) => ({
+    pathname: props.location.pathname,
+    content: state.content.data,
+  }),
   {},
 )(App);
 
@@ -180,8 +192,5 @@ export default compose(
         dispatch(getWorkflow(getBaseUrl(location.pathname))),
     },
   ]),
-  connect(
-    (state, props) => ({ pathname: props.location.pathname }),
-    {},
-  ),
+  connect((state, props) => ({ pathname: props.location.pathname }), {}),
 )(App);

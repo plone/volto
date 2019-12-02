@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a view hero component 1`] = `
+<div
+  className="block hero"
+>
+  <div
+    className="block-inner-wrapper"
+  >
+    <img
+      alt=""
+      className="hero-image"
+      src="heroimage.jpg/@@images/image"
+    />
+    <div
+      className="hero-body"
+    />
+  </div>
+</div>
+`;
