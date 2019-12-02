@@ -155,9 +155,7 @@ module.exports = {
       const jsConfig = require(`${projectRootPath}/jsconfig`).compilerOptions;
       const pathsConfig = jsConfig.paths;
       Object.keys(pathsConfig).forEach(packageName => {
-        const packagePath = `${projectRootPath}/${jsConfig.baseUrl}/${
-          pathsConfig[packageName][0]
-        }`;
+        const packagePath = `${projectRootPath}/${jsConfig.baseUrl}/${pathsConfig[packageName][0]}`;
         jsconfigPaths[packageName] = packagePath;
         if (packageName === '@plone/volto') {
           voltoPath = packagePath;
