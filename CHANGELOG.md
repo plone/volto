@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix small CSS issues in Blocks @sneridagh
+
 ### Internal
 
 - Pin Guillotina docker image @sneridagh
