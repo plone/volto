@@ -328,8 +328,8 @@
     "stylelint-prettier": "1.1.1",
     "superagent": "3.8.2",
     "svg-loader": "0.0.2",
-    "svgo": "1.0.5",
-    "svgo-loader": "2.1.0",
+    "svgo": "1.3.2",
+    "svgo-loader": "2.2.1",
     "tlds": "1.203.1",
     "webpack": "4.41.2",
     "xmlrpc": "1.3.2"
