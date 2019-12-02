@@ -9,6 +9,7 @@
 ### Internal
 
 - Pin Guillotina docker image @sneridagh
+- Forked `react-helmet` since it seems unmaintained. Now it's a Named import in helpers. @sneridagh
 
 ## 4.0.0-alpha.15 (2019-11-27)
 

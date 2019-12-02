@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import {
   Breadcrumb,
