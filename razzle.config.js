@@ -28,7 +28,6 @@ module.exports = {
       options: {
         importLoaders: 2,
         sourceMap: true,
-        localIdentName: '[name]__[local]___[hash:base64:5]',
       },
     };
     const POST_CSS_LOADER = {
@@ -78,7 +77,6 @@ module.exports = {
                 importLoaders: 2,
                 sourceMap: true,
                 modules: false,
-                localIdentName: '[name]__[local]___[hash:base64:5]',
               },
             },
             POST_CSS_LOADER,
@@ -155,9 +153,7 @@ module.exports = {
       const jsConfig = require(`${projectRootPath}/jsconfig`).compilerOptions;
       const pathsConfig = jsConfig.paths;
       Object.keys(pathsConfig).forEach(packageName => {
-        const packagePath = `${projectRootPath}/${jsConfig.baseUrl}/${
-          pathsConfig[packageName][0]
-        }`;
+        const packagePath = `${projectRootPath}/${jsConfig.baseUrl}/${pathsConfig[packageName][0]}`;
         jsconfigPaths[packageName] = packagePath;
         if (packageName === '@plone/volto') {
           voltoPath = packagePath;
