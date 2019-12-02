@@ -14,6 +14,7 @@
 - Forked `react-helmet` since it seems unmaintained. Now it's a Named import in helpers. @sneridagh
 - Update internal dependencies, fix "unmet peer dependencies" console logs by adding the peer dependencies to the local dependencies @sneridagh
 - Update some dependencies, including: react-router, eslint engine and plugins/config and others @sneridagh
+- Lodash improvements for decrease bundle size @sneridagh
 
 ## 4.0.0-alpha.15 (2019-11-27)
 
