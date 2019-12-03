@@ -98,6 +98,7 @@ const Helmet = Component =>
         return null;
       }
 
+      // eslint-disable-next-line default-case
       switch (child.type) {
         case TAG_NAMES.SCRIPT:
         case TAG_NAMES.NOSCRIPT:
@@ -135,6 +136,7 @@ const Helmet = Component =>
     }
 
     mapObjectTypeChildren({ child, newProps, newChildProps, nestedChildren }) {
+      // eslint-disable-next-line default-case
       switch (child.type) {
         case TAG_NAMES.TITLE:
           return {
