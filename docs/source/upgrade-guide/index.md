@@ -21,6 +21,14 @@ First, update your `package.json` to Volto 4.x.x.
   }
 ```
 
+### Rebuild `yarn.lock` in Alpha 17
+
+Due to changes in the dependency tree, it's required to reset `yarn.lock` file by deleting it before upgrading to Volto alpha 17.
+
+### Alpha 16 is a brownbag release
+
+There was a problem with the projects using Volto eslint config when upgrading to latest versions related to typescript, we will take of that in the near future. So skip this version.
+
 ### Stylelint and prettier config in Alpha 14
 
 In your project's boilerplate, you need to update the stylelint and prettier configuration accordingly to the changes made in Alpha 14 in `package.json` like this:
