@@ -20,6 +20,7 @@ export {
   getContent,
   orderContent,
   sortContent,
+  resetContent,
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
@@ -27,9 +28,7 @@ export {
   updateControlpanel,
 } from '@plone/volto/actions/controlpanels/controlpanels';
 export { getDiff } from '@plone/volto/actions/diff/diff';
-export {
-  emailNotification,
-} from '@plone/volto/actions/emailNotification/emailNotification';
+export { emailNotification } from '@plone/volto/actions/emailNotification/emailNotification';
 export {
   createGroup,
   deleteGroup,

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Container, Button, Table } from 'semantic-ui-react';
 import moment from 'moment';

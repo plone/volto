@@ -123,7 +123,4 @@ class SearchWidget extends Component {
   }
 }
 
-export default compose(
-  withRouter,
-  injectIntl,
-)(SearchWidget);
+export default compose(withRouter, injectIntl)(SearchWidget);
