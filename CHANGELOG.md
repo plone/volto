@@ -2,9 +2,9 @@
 
 ## 4.0.0 (unreleased)
 
-### Added
+### Internal
 
-### Changes
+- Revert eslint upgrade, because of problems with the react-app preset typescript settings @sneridagh
 
 ## 4.0.0-alpha.16 (2019-12-02)
 
