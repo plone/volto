@@ -25,6 +25,23 @@ First, update your `package.json` to Volto 4.x.x.
 
 Due to changes in the dependency tree, it's required to reset `yarn.lock` file by deleting it before upgrading to Volto alpha 17.
 
+### Forked Helmet into Volto core
+
+Due to the inactivity of the Helmet project, we decided to fork it to the core. It's part of the Volto helpers now. You have to update your imports accordingly. Please notice that now it's a named import:
+
+```diff
+--- a/src/components/Views/ReportView.jsx
++++ b/src/components/Views/ReportView.jsx
+@@ -1,6 +1,6 @@
+ import React from 'react';
+ import PropTypes from 'prop-types';
+-import Helmet from 'react-helmet';
++import { Helmet } from '@plone/volto/helpers';
+ import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+ import { format, parse } from 'date-fns';
+ import { filter, map } from 'lodash';
+```
+
 ### Alpha 16 is a brownbag release
 
 There was a problem with the projects using Volto eslint config when upgrading to latest versions related to typescript, we will take of that in the near future. So skip this version.
