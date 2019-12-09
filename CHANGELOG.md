@@ -4,7 +4,38 @@
 
 ### Added
 
+- Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
+
 ### Changes
+
+## 4.0.0-alpha.17 (2019-12-03)
+
+### Internal
+
+- Revert eslint upgrade, because of problems with the react-app preset typescript settings @sneridagh
+
+## 4.0.0-alpha.16 (2019-12-02)
+
+### Changes
+
+- Fix small CSS issues in Blocks @sneridagh
+
+### Internal
+
+- Pin Guillotina docker image @sneridagh
+- Forked `react-helmet` since it seems unmaintained. Now it's a Named import in helpers. @sneridagh
+- Update internal dependencies, fix "unmet peer dependencies" console logs by adding the peer dependencies to the local dependencies @sneridagh
+- Update some dependencies, including: react-router, eslint engine and plugins/config and others @sneridagh
+- Lodash improvements for decrease bundle size @sneridagh
+
+## 4.0.0-alpha.15 (2019-11-27)
+
+### Internal
+
+- Export the resetContent action @pnicolli
+- Fix toolbar collapsed color @sneridagh
+- Minor CSS fixes @sneridagh
+- Remove @testing-library/cypress dep, as it breaks builds if the internal cypress release is different than the one in this package @sneridagh
 
 ## 4.0.0-alpha.14 (2019-11-24)
 
