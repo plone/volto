@@ -4,6 +4,8 @@
 
 ### Added
 
+- Added translations to spanish @macagua
+
 ### Changes
 
 ## 4.0.0-alpha.16 (2019-12-02)
