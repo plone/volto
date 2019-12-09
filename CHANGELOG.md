@@ -8,6 +8,8 @@
 
 ### Changes
 
+- Remove "documentDescription" class in table block @sverbois
+
 ## 4.0.0-alpha.17 (2019-12-03)
 
 ### Internal
