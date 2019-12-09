@@ -6,7 +6,18 @@
 
 - Added translations to spanish @macagua
 
+- Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
+
+
 ### Changes
+
+- Remove "documentDescription" class in table block @sverbois
+
+## 4.0.0-alpha.17 (2019-12-03)
+
+### Internal
+
+- Revert eslint upgrade, because of problems with the react-app preset typescript settings @sneridagh
 
 ## 4.0.0-alpha.16 (2019-12-02)
 
