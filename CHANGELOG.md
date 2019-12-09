@@ -4,6 +4,8 @@
 
 ### Added
 
+- Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
+
 ### Changes
 
 ## 4.0.0-alpha.17 (2019-12-03)
