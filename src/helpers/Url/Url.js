@@ -83,3 +83,23 @@ export function getIcon(type, isFolderish) {
 export function flattenToAppURL(url) {
   return url.replace(settings.apiPath, '');
 }
+
+/**
+ * Add the app url
+ * @method addAppURL
+ * @param {string} url URL of the object
+ * @returns {string} New URL with app
+ */
+export function addAppURL(url) {
+  return `${settings.apiPath}${url}`;
+}
+
+/**
+ * Check if internal url
+ * @method isInternalURL
+ * @param {string} url URL of the object
+ * @returns {boolean} True if internal url
+ */
+export function isInternalURL(url) {
+  return url.indexOf(settings.apiPath) !== -1 || url.charAt(0) === '/';
+}
