@@ -213,28 +213,54 @@ class Edit extends Component {
               'full-width': this.props.data.align === 'full',
             })}
           >
-            <div className="ui blocker" />
-            {data.url.match('list') ? (
-              <Embed
-                url={`https://www.youtube.com/embed/videoseries?list=${
-                  data.url.match(/^.*\?list=(.*)$/)[1]
-                }`}
-                icon="arrow right"
-                defaultActive
-                autoplay={false}
-              />
+            {data.url.match('youtube') ? (
+              <>
+                <div className="ui blocker" />
+                {data.url.match('list') ? (
+                  <Embed
+                    url={`https://www.youtube.com/embed/videoseries?list=${
+                      data.url.match(/^.*\?list=(.*)$/)[1]
+                    }`}
+                    icon="arrow right"
+                    defaultActive
+                    autoplay={false}
+                  />
+                ) : (
+                  <Embed
+                    id={
+                      data.url.match(/.be\//)
+                        ? data.url.match(/^.*\.be\/(.*)/)[1]
+                        : data.url.match(/^.*\?v=(.*)$/)[1]
+                    }
+                    source="youtube"
+                    icon="arrow right"
+                    defaultActive
+                    autoplay={false}
+                  />
+                )}
+              </>
             ) : (
-              <Embed
-                id={
-                  data.url.match(/.be\//)
-                    ? data.url.match(/^.*\.be\/(.*)/)[1]
-                    : data.url.match(/^.*\?v=(.*)$/)[1]
-                }
-                source="youtube"
-                icon="arrow right"
-                defaultActive
-                autoplay={false}
-              />
+              <>
+                <div className="ui blocker" />
+                {data.url.match('vimeo') ? (
+                  <Embed
+                    url={`https://player.vimeo.com/video/${
+                      data.url.match(/^.*\.com\/(.*)/)[1]
+                    }`}
+                    icon="arrow right"
+                    defaultActive
+                    autoplay={false}
+                  />
+                ) : (
+                  <div>
+                    <Message>
+                      <center>
+                        <Icon name={videoSVG} size="100px" color="#b8c6c8" />
+                      </center>
+                    </Message>
+                  </div>
+                )}
+              </>
             )}
           </div>
         ) : (
