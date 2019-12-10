@@ -94,7 +94,7 @@ const customSelectStyles = {
     borderBottom: '1px solid #c7d5d8',
     boxShadow: 'none',
     borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
-    height: '60px',
+    minHeight: '60px',
   }),
   menu: (styles, state) => ({
     ...styles,
