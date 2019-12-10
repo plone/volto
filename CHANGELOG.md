@@ -5,7 +5,6 @@
 ### Added
 
 - Added animations for router tranitions @nzambello
-- New tiles chooser @sneridagh
 - Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
 
 ### Changes
