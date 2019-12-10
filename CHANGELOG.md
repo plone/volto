@@ -11,6 +11,7 @@
 
 - Remove "documentDescription" class in table block @sverbois
 - General toolbar CSS fixes @sneridagh
+- Fix bug that lead to crashing the view when deleting the last row of a table
 
 ## 4.0.0-alpha.17 (2019-12-03)
 
