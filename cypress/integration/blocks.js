@@ -36,7 +36,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#page-document p').contains('My text');
     });
 
-    it('add video block', () => {
+    it('add video block with youtube video', () => {
       cy.get(`.block.title [data-contents]`)
         .clear()
         .type('My title');
@@ -51,6 +51,26 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.toolbar > .ui > input')
         .click()
         .type('https://youtu.be/T6J3d35oIAY')
+        .type('{enter}');
+      cy.get('#toolbar-save').click();
+      cy.get('.block.video');
+    });
+
+    it('add video block with vimeo video', () => {
+      cy.get(`.block.title [data-contents]`)
+        .clear()
+        .type('My title');
+      cy.get('.block.inner.text .public-DraftEditor-content').click();
+      cy.get('.ui.basic.icon.button.block-add-button').click();
+      cy.get('.title')
+        .contains('media')
+        .click();
+      cy.get('.ui.basic.icon.button.video')
+        .contains('video')
+        .click();
+      cy.get('.toolbar > .ui > input')
+        .click()
+        .type('https://vimeo.com/85804536')
         .type('{enter}');
       cy.get('#toolbar-save').click();
       cy.get('.block.video');
