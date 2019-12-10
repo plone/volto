@@ -186,7 +186,7 @@ class Toolbar extends Component {
     } else {
       this.setState(state => ({
         showMenu: !state.showMenu,
-        menuStyle: { top: 0 },
+        menuStyle: { top: 0, overflow: 'initial' },
       }));
     }
     this.loadComponent(selector);
