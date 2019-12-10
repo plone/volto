@@ -58,9 +58,8 @@ const View = ({ data }) => (
           <>
             {data.url.match('vimeo') ? (
               <Embed
-                url={`https://player.vimeo.com/video/${
-                  data.url.match(/^.*\.com\/(.*)/)[1]
-                }`}
+                id={data.url.match(/^.*\.com\/(.*)/)[1]}
+                source="vimeo"
                 icon="arrow right"
                 defaultActive
                 autoplay={false}

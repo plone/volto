@@ -10,27 +10,30 @@ exports[`renders an edit image block component 1`] = `
     <div
       className="ui blocker"
     />
-    <div
-      className="ui active embed"
-      onClick={[Function]}
-    >
-      <i
-        aria-hidden="true"
-        className="arrow right icon"
-        onClick={[Function]}
-      />
+    <div>
       <div
-        className="embed"
+        className="ui message"
       >
-        <iframe
-          allowFullScreen={false}
-          frameBorder={0}
-          height="100%"
-          scrolling="no"
-          src="//www.youtube.com/embed/KqjeO_ekW3g?autohide=true&amp;autoplay=false&amp;color=%23444444&amp;hq=true&amp;jsapi=false&amp;modestbranding=false&amp;rel=1"
-          title="Embedded content from youtube."
-          width="100%"
-        />
+        <center>
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#b8c6c8",
+                "height": "100px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
+          />
+        </center>
       </div>
     </div>
   </div>
