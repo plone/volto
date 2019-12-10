@@ -11,6 +11,7 @@ const findRecurrence = props => {
   const num = arr[arr.length - 1];
   const count = num.match(/[0-9]/g);
   const newDates = datesForDisplay(props.start, props.end);
+  // Recurrence for event occurring daily
   if (arr[0].includes('DAILY')) {
     let firstDate = moment(newDates.startDate);
     for (let i = 1; i <= parseInt(count); i++) {
@@ -25,11 +26,8 @@ const findRecurrence = props => {
   } else if (arr[0].includes('WEEKLY')) {
     let firstDate = moment(newDates.startDate);
     let endDate = moment(newDates.endDate);
-    for (let i = 1; i <= parseInt(count) + 1; i++) {
-      if (
-        firstDate.format('dddd') !== 'Saturday' &&
-        firstDate.format('dddd') !== 'Sunday'
-      ) {
+    if (!days.includes(',')) {
+      for (let i = 1; i <= parseInt(count); i++) {
         reccDates.push(
           firstDate._d
             .toString()
@@ -40,13 +38,38 @@ const findRecurrence = props => {
                 .substring(0, 15)}${newDates.endTime}`,
             ),
         );
-        firstDate.add(1, 'days');
-        endDate.add(1, 'days');
-      } else {
-        firstDate.add(1, 'days');
-        endDate.add(1, 'days');
+        firstDate.add(7, 'days');
+        endDate.add(7, 'days');
       }
     }
+    // Recurrence for weekdays only
+    else {
+      for (let i = 1; i <= parseInt(count) + 1; i++) {
+        if (
+          firstDate.format('dddd') !== 'Saturday' &&
+          firstDate.format('dddd') !== 'Sunday'
+        ) {
+          reccDates.push(
+            firstDate._d
+              .toString()
+              .substring(0, 15)
+              .concat(
+                ` from ${
+                  newDates.startTime
+                } to ${endDate._d.toString().substring(0, 15)}${
+                  newDates.endTime
+                }`,
+              ),
+          );
+          firstDate.add(1, 'days');
+          endDate.add(1, 'days');
+        } else {
+          firstDate.add(1, 'days');
+          endDate.add(1, 'days');
+        }
+      }
+    }
+    // Recurrence for days orderby Month.
   } else if (arr[0].includes('MONTHLY')) {
     let firstDate = moment(newDates.startDate);
     for (let i = 1; i <= parseInt(count); i++) {
