@@ -10,7 +10,7 @@
 ### Changes
 
 - Remove "documentDescription" class in table block @sverbois
-- General toolbar CSS fixes @sneridagh
+- General toolbar more and personal tools menu CSS fixes @sneridagh
 
 ## 4.0.0-alpha.17 (2019-12-03)
 
