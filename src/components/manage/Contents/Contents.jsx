@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import {
   Breadcrumb,
@@ -34,12 +34,7 @@ import {
 import move from 'lodash-move';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import {
   searchContent,
@@ -216,7 +211,6 @@ class Contents extends Component {
     ).isRequired,
     total: PropTypes.number.isRequired,
     pathname: PropTypes.string.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -304,7 +298,7 @@ class Contents extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.fetchContents();
   }
 
@@ -314,7 +308,7 @@ class Contents extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       (this.props.clipboardRequest.loading &&
         nextProps.clipboardRequest.loaded) ||

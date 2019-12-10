@@ -9,7 +9,7 @@ import { isMatch } from 'lodash';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
 import { getBaseUrl } from '../../../helpers';
@@ -47,7 +47,6 @@ class Navigation extends Component {
         url: PropTypes.string,
       }),
     ).isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -70,7 +69,7 @@ class Navigation extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getNavigation(getBaseUrl(this.props.pathname));
   }
 
@@ -80,7 +79,7 @@ class Navigation extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.getNavigation(getBaseUrl(nextProps.pathname));
     }

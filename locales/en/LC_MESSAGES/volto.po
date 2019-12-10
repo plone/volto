@@ -11,14 +11,6 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: components/manage/Controlpanels/UsersControlpanel
-msgid "ADD NEW GROUP"
-msgstr ""
-
-#: components/manage/Controlpanels/UsersControlpanel
-msgid "ADD NEW USER"
-msgstr ""
-
 #: components/theme/Footer/Footer
 msgid "Accessibility"
 msgstr ""
@@ -49,8 +41,12 @@ msgstr ""
 msgid "Add User"
 msgstr ""
 
-#: components/manage/Tiles/Description/Edit
+#: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
+msgstr ""
+
+#: components/manage/Form/Form
+msgid "Add block..."
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -65,8 +61,12 @@ msgstr ""
 msgid "Add group"
 msgstr ""
 
-#: components/manage/Form/Form
-msgid "Add tile..."
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add new group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add new user"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -132,7 +132,7 @@ msgstr ""
 msgid "Browse"
 msgstr ""
 
-#: components/manage/Tiles/Image/Edit
+#: components/manage/Blocks/Image/Edit
 msgid "Browse the site, drop an image, or type an URL"
 msgstr ""
 
@@ -153,7 +153,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Cell"
 msgstr ""
 
@@ -193,14 +193,6 @@ msgstr ""
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Choose Target"
-msgstr ""
-
-#: components/manage/Sidebar/ObjectBrowserBody
-msgid "ChooseImage"
-msgstr ""
-
-#: components/manage/Sidebar/ObjectBrowserBody
-msgid "ChooseTargetLink"
 msgstr ""
 
 #: components/theme/Navigation/Navigation
@@ -311,11 +303,11 @@ msgstr ""
 msgid "Delete User"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Delete col"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Delete row"
 msgstr ""
 
@@ -323,8 +315,8 @@ msgstr ""
 msgid "Descending"
 msgstr ""
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -348,7 +340,7 @@ msgstr ""
 msgid "Distributed under the {license}."
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Divide each row into separate cells"
 msgstr ""
 
@@ -415,7 +407,7 @@ msgstr ""
 msgid "Email sent"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
+#: components/manage/Blocks/Maps/Edit
 msgid "Enter Map URL"
 msgstr ""
 
@@ -423,7 +415,7 @@ msgstr ""
 msgid "Enter URL or title"
 msgstr ""
 
-#: components/manage/Tiles/Video/Edit
+#: components/manage/Blocks/Video/Edit
 msgid "Enter Video URL"
 msgstr ""
 
@@ -481,7 +473,7 @@ msgstr ""
 msgid "Filter…"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
 msgstr ""
 
@@ -560,19 +552,19 @@ msgstr ""
 msgid "Inherit permissions from higher levels"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert col after"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert col before"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert row after"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert row before"
 msgstr ""
 
@@ -627,15 +619,15 @@ msgstr ""
 msgid "Login Name"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
+#: components/manage/Blocks/Maps/Edit
 msgid "Maps data error"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
+#: components/manage/Blocks/Maps/Edit
 msgid "Maps instructions"
 msgstr ""
 
@@ -787,7 +779,7 @@ msgstr ""
 msgid "Rearrange items by…"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
 msgstr ""
 
@@ -841,12 +833,12 @@ msgid "Roles"
 msgstr ""
 
 #: components/manage/Add/Add
+#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/Video/Edit
 msgid "Save"
 msgstr ""
 
@@ -949,7 +941,7 @@ msgstr ""
 msgid "Site Setup"
 msgstr ""
 
-#: components/manage/Tiles/Video/Edit
+#: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
 msgstr ""
 
@@ -967,7 +959,7 @@ msgstr ""
 msgid "String"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Stripe alternate rows with color"
 msgstr ""
 
@@ -985,11 +977,11 @@ msgstr ""
 msgid "Success"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Table"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Table color inverted"
 msgstr ""
 
@@ -1043,10 +1035,10 @@ msgstr ""
 msgid "This page does not seem to exist…"
 msgstr ""
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1063,13 +1055,18 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: components/manage/Tiles/Text/Edit
+#: components/manage/Blocks/Text/Edit
 msgid "Type text…"
 msgstr ""
 
-#: components/manage/Tiles/Title/Edit
+#: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr ""
+
+#: components/manage/Blocks/Block/Edit
+#: components/theme/View/DefaultView
+msgid "Unknown Block"
+msgstr "Unknown Block {block}"
 
 #: components/manage/Contents/Contents
 msgid "Upload"
@@ -1201,11 +1198,11 @@ msgstr ""
 msgid "box_forgot_password_option"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "common"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "description"
 msgstr ""
 
@@ -1221,15 +1218,15 @@ msgstr ""
 msgid "heading_sent_password"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "hero"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "html"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "image"
 msgstr ""
 
@@ -1237,15 +1234,15 @@ msgstr ""
 msgid "label_my_email_address_is"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "maps"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "media"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "mostUsed"
 msgstr ""
 
@@ -1253,19 +1250,19 @@ msgstr ""
 msgid "registration form"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "table"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "text"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "title"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "video"
 msgstr ""
 

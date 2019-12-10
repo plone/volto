@@ -4,7 +4,7 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose, bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
@@ -21,12 +21,7 @@ import {
 } from 'semantic-ui-react';
 import { find, map, isEqual } from 'lodash';
 import { toast } from 'react-toastify';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import {
   createUser,
@@ -83,12 +78,12 @@ const messages = defineMessages({
     defaultMessage: 'Delete Group',
   },
   addUserButtonTitle: {
-    id: 'ADD NEW USER',
-    defaultMessage: 'ADD NEW USER',
+    id: 'Add new user',
+    defaultMessage: 'Add new user',
   },
   addGroupsButtonTitle: {
-    id: 'ADD NEW GROUP',
-    defaultMessage: 'ADD NEW GROUP',
+    id: 'Add new group',
+    defaultMessage: 'Add new group',
   },
   addUserFormTitle: {
     id: 'Add User',
@@ -152,35 +147,6 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    roles: state.roles.roles,
-    users: state.users.users,
-    groups: state.groups.groups,
-    description: state.description,
-    pathname: props.location.pathname,
-    deleteRequest: state.users.delete,
-    createRequest: state.users.create,
-    deleteGroupRequest: state.groups.delete,
-    createGroupRequest: state.groups.create,
-  }),
-  dispatch =>
-    bindActionCreators(
-      {
-        listRoles,
-        listUsers,
-        deleteUser,
-        createUser,
-        listGroups,
-        deleteGroup,
-        createGroup,
-        updateUser,
-        updateGroup,
-      },
-      dispatch,
-    ),
-)
 /**
  * UsersControlpanel class.
  * @class UsersControlpanel
@@ -220,7 +186,6 @@ class UsersControlpanel extends Component {
         groupname: PropTypes.string,
       }),
     ).isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -275,7 +240,7 @@ class UsersControlpanel extends Component {
     this.props.listGroups();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
       (this.props.createRequest.loading && nextProps.createRequest.loaded)
@@ -721,9 +686,7 @@ class UsersControlpanel extends Component {
                     messages.addUserFormRolesTitle,
                   ),
                   type: 'array',
-                  items: {
-                    choices: this.props.roles.map(role => [role.id, role.id]),
-                  },
+                  choices: this.props.roles.map(role => [role.id, role.id]),
                   description: '',
                 },
                 groups: {
@@ -731,12 +694,7 @@ class UsersControlpanel extends Component {
                     messages.addUserGroupNameTitle,
                   ),
                   type: 'array',
-                  items: {
-                    choices: this.props.groups.map(group => [
-                      group.id,
-                      group.id,
-                    ]),
-                  },
+                  choices: this.props.groups.map(group => [group.id, group.id]),
                   description: '',
                 },
               },
@@ -797,9 +755,7 @@ class UsersControlpanel extends Component {
                     messages.addGroupsFormRolesTitle,
                   ),
                   type: 'array',
-                  items: {
-                    choices: this.props.roles.map(role => [role.id, role.id]),
-                  },
+                  choices: this.props.roles.map(role => [role.id, role.id]),
                   description: '',
                 },
               },
@@ -998,10 +954,28 @@ export default compose(
     (state, props) => ({
       roles: state.roles.roles,
       users: state.users.users,
-      entries: state.users.users,
-      groupEntries: state.groups.groups,
+      groups: state.groups.groups,
+      description: state.description,
       pathname: props.location.pathname,
+      deleteRequest: state.users.delete,
+      createRequest: state.users.create,
+      deleteGroupRequest: state.groups.delete,
+      createGroupRequest: state.groups.create,
     }),
-    { listRoles, listUsers },
+    dispatch =>
+      bindActionCreators(
+        {
+          listRoles,
+          listUsers,
+          deleteUser,
+          createUser,
+          listGroups,
+          deleteGroup,
+          createGroup,
+          updateUser,
+          updateGroup,
+        },
+        dispatch,
+      ),
   ),
 )(UsersControlpanel);

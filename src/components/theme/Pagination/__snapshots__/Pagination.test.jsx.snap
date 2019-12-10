@@ -15,6 +15,7 @@ exports[`Pagination renders no pagination when only 1 page 1`] = `
       <i
         aria-hidden="true"
         className="chevron left icon"
+        onClick={[Function]}
       />
       
     </a>
@@ -44,6 +45,7 @@ exports[`Pagination renders page size options when specified 1`] = `
       <i
         aria-hidden="true"
         className="chevron left icon"
+        onClick={[Function]}
       />
       
     </a>
@@ -104,6 +106,7 @@ exports[`Pagination renders pagination when multiple pages are specified 1`] = `
       <i
         aria-hidden="true"
         className="chevron left icon"
+        onClick={[Function]}
       />
       
     </a>
@@ -176,6 +179,7 @@ exports[`Pagination renders pagination when multiple pages are specified 1`] = `
       <i
         aria-hidden="true"
         className="chevron right icon"
+        onClick={[Function]}
       />
       
     </a>

@@ -10,12 +10,7 @@ import { connect } from 'react-redux';
 import { uniqBy } from 'lodash';
 import Select, { components } from 'react-select';
 import { toast } from 'react-toastify';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import getWorkflowMapping from '../../../constants/Workflows';
 import { Icon } from '../../../components';
 import downSVG from '../../../icons/down-key.svg';
@@ -177,7 +172,6 @@ class Workflow extends Component {
         title: PropTypes.string,
       }),
     ),
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -201,7 +195,7 @@ class Workflow extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getWorkflow(this.props.pathname);
   }
 
@@ -211,7 +205,7 @@ class Workflow extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.getWorkflow(nextProps.pathname);
     }

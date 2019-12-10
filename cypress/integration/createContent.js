@@ -1,5 +1,5 @@
 if (Cypress.env('API') !== 'guillotina') {
-  context('createContent Acceptance Tests', () => {
+  describe('createContent Tests', () => {
     beforeEach(() => {
       cy.autologin();
     });
@@ -35,6 +35,16 @@ if (Cypress.env('API') !== 'guillotina') {
         'href',
         '/my-file/@@download/file',
       );
+      // cy.get('.view-wrapper a').click();
+    });
+    it('Create Image', function() {
+      cy.createContent('Image', 'my-image', 'My Image');
+      cy.visit('/my-image');
+      cy.get('.documentFirstHeading').should('have.text', 'My Image');
+      cy.get('.view-wrapper img')
+        .should('have.attr', 'src')
+        .and('include', '/my-image/@@images/');
+      cy.get('.view-wrapper img').should('have.attr', 'alt', 'My Image');
       // cy.get('.view-wrapper a').click();
     });
   });

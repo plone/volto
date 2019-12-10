@@ -7,7 +7,7 @@ import ImageSidebar from './ImageSidebar';
 
 const mockStore = configureStore();
 
-test('renders an Image Tile Sidebar component', () => {
+test('renders an Image Block Sidebar component', () => {
   const store = mockStore({
     content: {
       create: {},
@@ -21,10 +21,10 @@ test('renders an Image Tile Sidebar component', () => {
   const component = renderer.create(
     <Provider store={store}>
       <ImageSidebar
-        data={{ url: 'image' }}
-        tile="1234"
+        data={{ url: 'image', alt: 'alternate text' }}
+        block="1234"
         pathname="/news"
-        onChangeTile={() => {}}
+        onChangeBlock={() => {}}
         openObjectBrowser={() => {}}
       />
     </Provider>,

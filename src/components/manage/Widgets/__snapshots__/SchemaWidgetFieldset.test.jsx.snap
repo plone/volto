@@ -15,19 +15,23 @@ exports[`renders a contents item component 1`] = `
     className="grey bars icon drag handle"
   />
   <button
+    className="item ui noborder button"
     onClick={[Function]}
   >
     <i
       aria-hidden="true"
       className="blue write square large icon"
+      onClick={[Function]}
     />
   </button>
   <button
+    className="item ui noborder button"
     onClick={[Function]}
   >
     <i
       aria-hidden="true"
       className="red close large icon"
+      onClick={[Function]}
     />
   </button>
 </div>

@@ -6,12 +6,7 @@
 import React from 'react';
 import { Container, List, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 const messages = defineMessages({
   copyright: {
@@ -122,7 +117,6 @@ Footer.propTypes = {
   /**
    * i18n object
    */
-  intl: intlShape.isRequired,
 };
 
 export default injectIntl(Footer);

@@ -16,7 +16,7 @@ import {
   Label,
 } from 'semantic-ui-react';
 import { filter, remove, toPairs, groupBy, map } from 'lodash';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { getQuerystring } from '../../../actions';
 import Select, { components } from 'react-select';
 import { Icon } from '@plone/volto/components';
@@ -156,7 +156,6 @@ class QuerystringWidget extends Component {
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     getQuerystring: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -276,7 +275,10 @@ class QuerystringWidget extends Component {
               theme={selectTheme}
               components={{ DropdownIndicator, Option }}
               onChange={data => {
-                this.onChangeValue(index, map(data, item => item.value));
+                this.onChangeValue(
+                  index,
+                  map(data, item => item.value),
+                );
               }}
               isMulti={true}
               value={map(row.v, value => ({
@@ -393,10 +395,16 @@ class QuerystringWidget extends Component {
             <Grid.Column width="8">
               {onEdit && (
                 <div className="toolbar">
-                  <button className="item" onClick={() => onEdit(id, schema)}>
+                  <button
+                    onClick={() => onEdit(id, schema)}
+                    className="item ui noborder button"
+                  >
                     <OldIcon name="write square" size="large" color="blue" />
                   </button>
-                  <button className="item" onClick={() => onDelete(id)}>
+                  <button
+                    onClick={() => onDelete(id)}
+                    className="item ui noborder button"
+                  >
                     <Icon name={clearSVG} size="24px" className="close" />
                   </button>
                 </div>
@@ -485,7 +493,10 @@ class QuerystringWidget extends Component {
                   {this.getWidget(row, index)}
                   <Button
                     onClick={event => {
-                      onChange(id, remove(value, (v, i) => i !== index));
+                      onChange(
+                        id,
+                        remove(value, (v, i) => i !== index),
+                      );
                       event.preventDefault();
                     }}
                     style={{

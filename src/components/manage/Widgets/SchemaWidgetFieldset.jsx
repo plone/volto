@@ -39,16 +39,20 @@ export const SchemaWidgetFieldsetComponent = ({
         )}
         {title}
         <button
+          className="item ui noborder button"
           onClick={event => {
             event.stopPropagation();
+            event.preventDefault();
             onShowEditFieldset(order);
           }}
         >
           <Icon name="write square" size="large" color="blue" />
         </button>
         <button
+          className="item ui noborder button"
           onClick={event => {
             event.stopPropagation();
+            event.preventDefault();
             onShowDeleteFieldset(order);
           }}
         >
@@ -86,7 +90,6 @@ export default DropTarget(
       if (dragOrder === hoverOrder) {
         return;
       }
-
       props.onOrderFieldset(dragOrder, hoverOrder - dragOrder);
 
       monitor.getItem().order = hoverOrder;

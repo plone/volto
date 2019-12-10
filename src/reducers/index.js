@@ -24,7 +24,6 @@ import roles from '@plone/volto/reducers/roles/roles';
 import schema from '@plone/volto/reducers/schema/schema';
 import search from '@plone/volto/reducers/search/search';
 import sharing from '@plone/volto/reducers/sharing/sharing';
-import tiles from '@plone/volto/reducers/tiles/tiles';
 import types from '@plone/volto/reducers/types/types';
 import users from '@plone/volto/reducers/users/users';
 import userSession from '@plone/volto/reducers/userSession/userSession';
@@ -59,7 +58,6 @@ const reducers = {
   schema,
   search,
   sharing,
-  tiles,
   types,
   users,
   userSession,

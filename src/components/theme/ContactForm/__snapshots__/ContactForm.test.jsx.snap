@@ -13,6 +13,7 @@ exports[`Contact form renders a contact form 1`] = `
       <i
         aria-hidden="true"
         className="warning icon"
+        onClick={[Function]}
       />
       <div
         className="content"
@@ -44,7 +45,7 @@ exports[`Contact form renders a contact form 1`] = `
               Contact form
             </div>
             <div
-              className="inline field"
+              className="inline field text"
               id="field-name"
             >
               <div
@@ -86,7 +87,7 @@ exports[`Contact form renders a contact form 1`] = `
               </div>
             </div>
             <div
-              className="inline required field"
+              className="inline required field text"
               id="field-from"
             >
               <div
@@ -128,7 +129,7 @@ exports[`Contact form renders a contact form 1`] = `
               </div>
             </div>
             <div
-              className="inline field"
+              className="inline field text"
               id="field-subject"
             >
               <div
@@ -202,11 +203,6 @@ exports[`Contact form renders a contact form 1`] = `
                       onChange={[Function]}
                       onInput={[Function]}
                       rows={3}
-                      style={
-                        Object {
-                          "resize": "",
-                        }
-                      }
                       value=""
                     />
                   </div>
@@ -292,6 +288,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
       <i
         aria-hidden="true"
         className="warning icon"
+        onClick={[Function]}
       />
       <div
         className="content"
@@ -326,7 +323,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
               Contact form
             </div>
             <div
-              className="inline field"
+              className="inline field text"
               id="field-name"
             >
               <div
@@ -368,7 +365,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
               </div>
             </div>
             <div
-              className="inline required field"
+              className="inline required field text"
               id="field-from"
             >
               <div
@@ -410,7 +407,7 @@ exports[`Contact form renders a contact form with error message 1`] = `
               </div>
             </div>
             <div
-              className="inline field"
+              className="inline field text"
               id="field-subject"
             >
               <div
@@ -484,11 +481,6 @@ exports[`Contact form renders a contact form with error message 1`] = `
                       onChange={[Function]}
                       onInput={[Function]}
                       rows={3}
-                      style={
-                        Object {
-                          "resize": "",
-                        }
-                      }
                       value=""
                     />
                   </div>

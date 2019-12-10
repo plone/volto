@@ -9,6 +9,7 @@ const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
 const { map } = require('lodash');
 const glob = require('glob').sync;
@@ -41,12 +42,6 @@ module.exports = {
         plugins: () => [
           require('postcss-flexbugs-fixes'),
           autoprefixer({
-            browsers: [
-              '>1%',
-              'last 4 versions',
-              'Firefox ESR',
-              'not ie < 9', // React doesn't support IE8 anyway
-            ],
             flexbox: 'no-2009',
           }),
         ],
@@ -58,7 +53,7 @@ module.exports = {
       include: [
         path.resolve('./theme'),
         /node_modules\/@plone\/volto\/theme/,
-        /@plone\/volto\/theme/,
+        /plone\.volto\/theme/,
         /node_modules\/semantic-ui-less/,
       ],
       use: dev
@@ -125,6 +120,26 @@ module.exports = {
           __SERVER__: false,
         }),
       );
+      config.plugins.unshift(
+        new LodashModuleReplacementPlugin({
+          shorthands: true,
+          cloning: true,
+          currying: true,
+          caching: true,
+          collections: true,
+          exotics: true,
+          guards: true,
+          metadata: true,
+          deburring: true,
+          unicode: true,
+          chaining: true,
+          memoizing: true,
+          coercions: true,
+          flattening: true,
+          paths: true,
+          placeholders: true,
+        }),
+      );
     }
 
     if (target === 'node') {
@@ -161,9 +176,7 @@ module.exports = {
       const jsConfig = require(`${projectRootPath}/jsconfig`).compilerOptions;
       const pathsConfig = jsConfig.paths;
       Object.keys(pathsConfig).forEach(packageName => {
-        const packagePath = `${projectRootPath}/${jsConfig.baseUrl}/${
-          pathsConfig[packageName][0]
-        }`;
+        const packagePath = `${projectRootPath}/${jsConfig.baseUrl}/${pathsConfig[packageName][0]}`;
         jsconfigPaths[packageName] = packagePath;
         if (packageName === '@plone/volto') {
           voltoPath = packagePath;

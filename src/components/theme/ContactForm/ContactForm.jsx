@@ -5,12 +5,12 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
 import { Container, Message, Icon } from 'semantic-ui-react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { Link, withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -78,7 +78,6 @@ class ContactForm extends Component {
    */
   static propTypes = {
     emailNotification: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
     error: PropTypes.shape({
       message: PropTypes.string,
     }),
@@ -116,7 +115,7 @@ class ContactForm extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.loading && nextProps.loaded) {
       toast.success(
         <Toast
@@ -173,7 +172,7 @@ class ContactForm extends Component {
           <Form
             onSubmit={this.onSubmit}
             onCancel={this.onCancel}
-            formData={{ tilesLayoutFieldname: {} }}
+            formData={{ blocksLayoutFieldname: {} }}
             submitLabel={this.props.intl.formatMessage(messages.send)}
             resetAfterSubmit
             title={this.props.intl.formatMessage(messages.contactForm)}

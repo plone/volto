@@ -5,9 +5,7 @@
  */
 
 export Api from '@plone/volto/helpers/Api/Api';
-export {
-  getAPIResourceWithAuth,
-} from '@plone/volto/helpers/Api/APIResourceWithAuth';
+export { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
 export Html from '@plone/volto/helpers/Html/Html';
 export {
   getAuthToken,
@@ -25,10 +23,10 @@ export {
   getLayoutFieldname,
 } from '@plone/volto/helpers/Content/Content';
 export {
-  getTilesFieldname,
-  getTilesLayoutFieldname,
-  hasTilesData,
-} from '@plone/volto/helpers/Tiles/Tiles';
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+  hasBlocksData,
+} from '@plone/volto/helpers/Blocks/Blocks';
 export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export AnimationWrapper from '@plone/volto/helpers/AnimationWrapper/AnimationWrapper';
 export {
@@ -37,4 +35,6 @@ export {
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers/Vocabularies/Vocabularies';
-export AlignTile from '@plone/volto/helpers/AlignTile/AlignTile';
+export AlignBlock from '@plone/volto/helpers/AlignBlock/AlignBlock';
+
+export Helmet from './Helmet/Helmet';

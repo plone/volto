@@ -4,7 +4,7 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
@@ -21,12 +21,7 @@ import {
   Table,
 } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { updateSharing, getSharing } from '../../../actions';
 import { getBaseUrl } from '../../../helpers';
@@ -89,7 +84,6 @@ class SharingComponent extends Component {
     inherit: PropTypes.bool,
     title: PropTypes.string.isRequired,
     login: PropTypes.string,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -138,7 +132,7 @@ class SharingComponent extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       this.props.getSharing(getBaseUrl(this.props.pathname), this.state.search);
     }

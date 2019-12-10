@@ -104,9 +104,6 @@ const customSelectStyles = {
   }),
 };
 
-/*const getChoices = choices =>
-  choices ? choices.map(item => ({ label: item, value: item })) : [];
-*/
 /**
  * ArrayWidget component class.
  * @class ArrayWidget
@@ -222,7 +219,7 @@ class ArrayWidget extends Component {
     this.props.getVocabulary(this.vocabBaseUrl, search, offset);
     this.setState({ search });
     return {
-      options: this.props.items.choices,
+      options: this.props.choices,
       hasMore: this.props.itemsTotal > 25,
       additional: {
         offset: offset === additional.offset ? offset + 25 : offset,
@@ -239,7 +236,10 @@ class ArrayWidget extends Component {
    */
   handleChange(selectedOption) {
     this.setState({ selectedOption });
-    this.props.onChange(this.props.id, selectedOption.map(item => item.value));
+    this.props.onChange(
+      this.props.id,
+      selectedOption.map(item => item.value),
+    );
   }
 
   /**
@@ -270,7 +270,7 @@ class ArrayWidget extends Component {
                 <AsyncPaginate
                   className="react-select-container"
                   classNamePrefix="react-select"
-                  options={this.props.items.choices || []}
+                  options={this.props.choices || []}
                   styles={customSelectStyles}
                   theme={selectTheme}
                   components={{ DropdownIndicator, Option }}
@@ -287,9 +287,9 @@ class ArrayWidget extends Component {
                   className="react-select-container"
                   classNamePrefix="react-select"
                   options={
-                    this.props.items.choices
+                    this.props.choices
                       ? [
-                          ...this.props.items.choices.map(option => ({
+                          ...this.props.choices.map(option => ({
                             value: option[0],
                             label: option[1],
                           })),

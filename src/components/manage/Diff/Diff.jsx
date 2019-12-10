@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { filter, isEqual, map } from 'lodash';
@@ -13,12 +13,7 @@ import { Container, Button, Dropdown, Grid, Table } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import moment from 'moment';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 
 import { getDiff, getSchema, getHistory } from '../../../actions';
@@ -72,7 +67,6 @@ class Diff extends Component {
     ).isRequired,
     title: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -118,7 +112,7 @@ class Diff extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       this.props.pathname !== nextProps.pathname ||
       this.props.one !== nextProps.one ||
@@ -141,9 +135,7 @@ class Diff extends Component {
    */
   onSelectView(event, { value }) {
     this.props.history.push(
-      `${this.props.pathname}?one=${this.props.one}&two=${
-        this.props.two
-      }&view=${value}`,
+      `${this.props.pathname}?one=${this.props.one}&two=${this.props.two}&view=${value}`,
     );
   }
 
@@ -156,9 +148,7 @@ class Diff extends Component {
    */
   onChangeOne(event, { value }) {
     this.props.history.push(
-      `${this.props.pathname}?one=${value}&two=${this.props.two}&view=${
-        this.props.view
-      }`,
+      `${this.props.pathname}?one=${value}&two=${this.props.two}&view=${this.props.view}`,
     );
   }
 
@@ -171,9 +161,7 @@ class Diff extends Component {
    */
   onChangeTwo(event, { value }) {
     this.props.history.push(
-      `${this.props.pathname}?one=${this.props.one}&two=${value}&view=${
-        this.props.view
-      }`,
+      `${this.props.pathname}?one=${this.props.one}&two=${value}&view=${this.props.view}`,
     );
   }
 

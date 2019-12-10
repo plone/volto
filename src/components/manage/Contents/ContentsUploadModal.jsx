@@ -23,12 +23,7 @@ import { concat, filter, map } from 'lodash';
 import moment from 'moment';
 import filesize from 'filesize';
 import { readAsDataURL } from 'promise-file-reader';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { createContent } from '../../../actions';
 
@@ -64,7 +59,6 @@ class ContentsUploadModal extends Component {
     open: PropTypes.bool.isRequired,
     onOk: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -90,7 +84,7 @@ class ContentsUploadModal extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.request.loading && nextProps.request.loaded) {
       this.props.onOk();
       this.setState({

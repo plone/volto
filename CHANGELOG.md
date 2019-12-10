@@ -6,12 +6,171 @@
 
 - Added animations for router tranitions @nzambello
 - New tiles chooser @sneridagh
+- Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
 
 ### Changes
+
+- Remove "documentDescription" class in table block @sverbois
+
+## 4.0.0-alpha.17 (2019-12-03)
+
+### Internal
+
+- Revert eslint upgrade, because of problems with the react-app preset typescript settings @sneridagh
+
+## 4.0.0-alpha.16 (2019-12-02)
+
+### Changes
+
+- Fix small CSS issues in Blocks @sneridagh
+
+### Internal
+
+- Pin Guillotina docker image @sneridagh
+- Forked `react-helmet` since it seems unmaintained. Now it's a Named import in helpers. @sneridagh
+- Update internal dependencies, fix "unmet peer dependencies" console logs by adding the peer dependencies to the local dependencies @sneridagh
+- Update some dependencies, including: react-router, eslint engine and plugins/config and others @sneridagh
+- Lodash improvements for decrease bundle size @sneridagh
+
+## 4.0.0-alpha.15 (2019-11-27)
+
+### Internal
+
+- Export the resetContent action @pnicolli
+- Fix toolbar collapsed color @sneridagh
+- Minor CSS fixes @sneridagh
+- Remove @testing-library/cypress dep, as it breaks builds if the internal cypress release is different than the one in this package @sneridagh
+
+## 4.0.0-alpha.14 (2019-11-24)
+
+### Internal
+
+- Proper config for stylelint-prettier integration, add husky integration and scripts for stylelint, review stylelint rules @sneridagh
+
+## 4.0.0-alpha.13 (2019-11-23)
+
+### Internal
+
+- Upgrade autoprefixer, remove deprecated `browsers` option, move to `browserlist` in `package.json` @sneridagh
+- Upgrade react and react-dom to 16.12.0 @pnicolli
+- Upgrade Cypress to 3.6.1 @timo
+
+## 4.0.0-alpha.12 (2019-11-13)
+
+### Changes
+
+- Add loading animation for save and edit buttons in toolbar @pgrunewald
+- Move Body class depending on content type to `App` component in order to make it available everywhere @sneridagh
+- Add root class name to `Tags` component @sneridagh
+
+## 4.0.0-alpha.11 (2019-11-08)
+
+### Added
+
+- Improved `ObjectBrowser` API to allow arbitrary field names and a custom `onSelectItem` @sneridagh
+
+### Changes
+
+- Fix icon in `TextWidget` @sneridagh
+- impprove documentation for `Icon` @jackahl
+- Fix ability to develop Volto itself (as and addon with a mrs.developer checkout) inside a Volto project @sneridagh
+
+### Internal
+
+- Add internationalization section to docs @pgrunewald
+
+### Internal
+
+- Set Cypress viewport width to 1280px @timo
+
+## 4.0.0-alpha.10 (2019-10-31)
+
+### Added
+
+- Add Node 12 support @timo
+
+### Changes
+
+- Removed wrapper `p` tag from image block in edit mode for better layout purposes @sneridagh
+- Make SelectWidget more robust @robgietema
+- Add image to listing view @robgietema
+- Fix `SchemaWidget` @robgietema
+- Move styles import to a separate file @pnicolli
+- Fix crash when user enters only whitespace in required fields @JeffersonBledsoe
+- Fix the _real_ focus thief in new tiles @sneridagh
+
+### Internal
+
+- Report port number on startup @fredvd
+- Retry Cypress tests two times before failing @timo
+- Add waitForResourceToLoad to Cypress @timo
+- Add use cases to README @timo
+- Re-enabled Guillotina tests @sneridagh
+- Remove Docker build from tests @sneridagh
+- Removed Enzyme @pnicolli
+- Added testing-library (react and cypress) @pnicolli
+- Tiles -> Blocks renaming @sneridagh
+
+## 4.0.0-alpha.9 (2019-10-09)
+
+### Changes
+
+- Rename `blockID` to `id` for view block components, to unify naming in edit-view @sneridagh
+- Change the order of the widget decider algorithm to `choices` is chosen before the vocabularies one @sneridagh
+- Remove old messages container since it's not used anymore @sneridagh
+- Improve the Pastanaga Editor block wrapper container layout, deprecating the hack `.ui.wrapper > *` @sneridagh
+- Fix `ArrayWidget` and amend users control panel arrays instantiations @sneridagh
+
+## 4.0.0-alpha.8 (2019-10-05)
+
+### Added
+
+- Upgrade react-intl to latest version @sneridagh
+
+### Changes
+
+- Fix `DefaultView.jsx` warning on missing key @sneridagh
+
+### Internal
+
+- Enable run yarn install on git checkout and git pull in husky @sneridagh
+- Disable Cypress blocks tests @sneridagh
+- Remove dockerized unit tests @timo
+- Add Cypress link test for text blocks @timo
+
+## 4.0.0-alpha.7 (2019-10-02)
+
+### Added
+
+- Add CSS class names to block chooser @timo
+- Add Cypress tests for blocks @timo @rodrigo @jakahl
+
+### Changes
+
+- Fix page jump on edit route @sneridagh
+- Fixes to users and groups controlpanel i18n strings @nileshgulia1
+
+### Internal
+
+- Change the general naming of the documentation to `developer` documentation @sneridagh
+- Add `blockID` prop to block tiles render view, this is handy for some blocks use cases @sneridagh
+- Fix flaky Cypress test @sneridagh
+
+## 4.0.0-alpha.6 (2019-09-30)
+
+### Added
+
+- Transfer focus management and keyboard navigation to the tiles engine @sneridagh
+
+### Changes
+
+- Slight amendment to Blocks chooser styling @sneridagh
+- The default view for content types `DocumentView.jsx` has been renamed to a more appropiate `DefaultView.jsx` @sneridagh
 
 ### Internal
 
 - Add complete husky config @sneridagh
+- Add COC.md file @timo
 
 ## 4.0.0-alpha.5 (2019-09-28)
 
@@ -37,8 +196,9 @@
 
 ### Internal
 
-- fix cypress test for file Upload @jackahl
+- Fix cypress test for file Upload @jackahl
 - Dependencies upgrades (router, redux) @sneridagh
+- Enhance Cypress createContent keyword to create files and images @timo
 - Fix docs build locally @sneridagh
 
 ## 4.0.0-alpha.3 (2019-09-22)

@@ -2,7 +2,7 @@
 
 exports[`renders a text widget component 1`] = `
 <div
-  className="inline field"
+  className="inline field text"
   id="field-my-field"
 >
   <div

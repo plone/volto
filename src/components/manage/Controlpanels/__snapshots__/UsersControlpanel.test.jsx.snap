@@ -13,16 +13,12 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui segment primary"
     >
-      <span>
-        Users and groups settings
-      </span>
+      Users and groups settings
     </div>
     <div
       className="ui segment"
     >
-      <span>
-        Users
-      </span>
+      Users
     </div>
     <div
       className="ui segment"
@@ -50,6 +46,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               <i
                 aria-hidden="true"
                 className="search icon"
+                onClick={[Function]}
               />
             </button>
           </div>
@@ -75,16 +72,12 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               <th
                 className=""
               >
-                <span>
-                  User name
-                </span>
+                User name
               </th>
               <th
                 className=""
               >
-                <span>
-                  Actions
-                </span>
+                Actions
               </th>
             </tr>
           </thead>
@@ -97,7 +90,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui clearing segment actions"
     >
-      ADD NEW USER
+      Add new user
       <button
         className="ui basic primary right floated button"
         onClick={[Function]}
@@ -128,9 +121,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui segment"
     >
-      <span>
-        Groups
-      </span>
+      Groups
     </div>
     <div
       className="ui segment"
@@ -158,6 +149,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               <i
                 aria-hidden="true"
                 className="search icon"
+                onClick={[Function]}
               />
             </button>
           </div>
@@ -183,16 +175,12 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               <th
                 className=""
               >
-                <span>
-                  Groupname
-                </span>
+                Groupname
               </th>
               <th
                 className=""
               >
-                <span>
-                  Actions
-                </span>
+                Actions
               </th>
             </tr>
           </thead>
@@ -205,7 +193,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui clearing segment actions"
     >
-      ADD NEW GROUP
+      Add new group
       <button
         className="ui basic primary right floated button"
         onClick={[Function]}
