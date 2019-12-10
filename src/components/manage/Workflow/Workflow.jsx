@@ -202,7 +202,7 @@ class Workflow extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getWorkflow(this.props.pathname);
   }
 
@@ -212,7 +212,7 @@ class Workflow extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.getWorkflow(nextProps.pathname);
     }

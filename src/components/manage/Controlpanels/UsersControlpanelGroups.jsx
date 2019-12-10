@@ -9,13 +9,12 @@ import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import trashSVG from '@plone/volto/icons/delete.svg';
 import { Icon } from '@plone/volto/components';
 
-@injectIntl
 /**
  * UsersControlpanelGroups class.
  * @class UsersControlpanelGroups
  * @extends Component
  */
-export default class UsersControlpanelGroups extends Component {
+class UsersControlpanelGroups extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -100,3 +99,5 @@ export default class UsersControlpanelGroups extends Component {
     );
   }
 }
+
+export default injectIntl(UsersControlpanelGroups);

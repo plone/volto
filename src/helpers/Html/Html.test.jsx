@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Html from './Html';
 
-jest.mock('react-helmet', () => ({
+jest.mock('../Helmet/Helmet', () => ({
   rewind: () => ({
     base: {
       toComponent: () => '',

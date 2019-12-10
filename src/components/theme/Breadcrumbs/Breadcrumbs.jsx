@@ -51,7 +51,7 @@ class Breadcrumbs extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getBreadcrumbs(getBaseUrl(this.props.pathname));
   }
 
@@ -61,7 +61,7 @@ class Breadcrumbs extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.getBreadcrumbs(getBaseUrl(nextProps.pathname));
     }

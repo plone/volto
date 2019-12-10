@@ -10,6 +10,7 @@ const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
 const { map } = require('lodash');
 const glob = require('glob').sync;
@@ -139,6 +140,27 @@ module.exports = {
           name: dev,
         },
       });
+
+      config.plugins.unshift(
+        new LodashModuleReplacementPlugin({
+          shorthands: true,
+          cloning: true,
+          currying: true,
+          caching: true,
+          collections: true,
+          exotics: true,
+          guards: true,
+          metadata: true,
+          deburring: true,
+          unicode: true,
+          chaining: true,
+          memoizing: true,
+          coercions: true,
+          flattening: true,
+          paths: true,
+          placeholders: true,
+        }),
+      );
     }
 
     if (target === 'node') {

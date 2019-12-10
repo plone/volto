@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -107,7 +107,7 @@ class Register extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.loading && nextProps.loaded) {
       toast.success(
         <Toast

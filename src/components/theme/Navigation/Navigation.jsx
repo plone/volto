@@ -69,7 +69,7 @@ class Navigation extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getNavigation(getBaseUrl(this.props.pathname));
   }
 
@@ -79,7 +79,7 @@ class Navigation extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.getNavigation(getBaseUrl(nextProps.pathname));
     }

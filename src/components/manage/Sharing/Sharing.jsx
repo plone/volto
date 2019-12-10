@@ -4,7 +4,7 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
@@ -132,7 +132,7 @@ class SharingComponent extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       this.props.getSharing(getBaseUrl(this.props.pathname), this.state.search);
     }
