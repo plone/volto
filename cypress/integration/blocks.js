@@ -52,8 +52,8 @@ if (Cypress.env('API') !== 'guillotina') {
         .click()
         .type('https://youtu.be/T6J3d35oIAY')
         .type('{enter}');
-      cy.get('.toolbar > :nth-child(4) > .ui').click();
       cy.get('#toolbar-save').click();
+      cy.get('.block.video');
     });
 
     // it('Add image block', () => {
