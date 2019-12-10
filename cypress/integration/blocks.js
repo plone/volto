@@ -36,7 +36,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#page-document p').contains('My text');
     });
 
-    it.only('add video block', () => {
+    it('add video block', () => {
       cy.get(`.block.title [data-contents]`)
         .clear()
         .type('My title');
