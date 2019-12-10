@@ -2,7 +2,7 @@
 
 exports[`Tags renders with tags 1`] = `
 <div
-  className="ui container"
+  className="ui container tags"
 >
   <a
     className="ui label"

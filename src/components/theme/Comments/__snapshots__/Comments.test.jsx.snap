@@ -108,11 +108,6 @@ exports[`Comments renders a comments component 1`] = `
                     onChange={[Function]}
                     onInput={[Function]}
                     rows={3}
-                    style={
-                      Object {
-                        "resize": "",
-                      }
-                    }
                     value=""
                   />
                 </div>

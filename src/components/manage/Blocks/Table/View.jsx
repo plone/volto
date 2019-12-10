@@ -17,7 +17,7 @@ import { settings } from '~/config';
  * @extends Component
  */
 const View = ({ data }) => (
-  <p className="documentDescription">
+  <p>
     {data && data.table && (
       <Table
         fixed={data.table.fixed}

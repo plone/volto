@@ -5,9 +5,7 @@
  */
 
 export Api from '@plone/volto/helpers/Api/Api';
-export {
-  getAPIResourceWithAuth,
-} from '@plone/volto/helpers/Api/APIResourceWithAuth';
+export { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
 export Html from '@plone/volto/helpers/Html/Html';
 export {
   getAuthToken,
@@ -38,3 +36,5 @@ export {
   getVocabFromItems,
 } from '@plone/volto/helpers/Vocabularies/Vocabularies';
 export AlignBlock from '@plone/volto/helpers/AlignBlock/AlignBlock';
+
+export Helmet from './Helmet/Helmet';

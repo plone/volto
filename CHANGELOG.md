@@ -4,19 +4,65 @@
 
 ### Added
 
-### Changes
-
-## 4.0.0-alpha.12 (2019-11-10)
-
-### Added
-
+- Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
+- Automatically switch sidebar on block change @robgietema
 - Implementation of `Portuguese (BR)` translation @LeuAlmeida
 
-## 4.0.0 (unreleased)
+### Changes
 
-### Added
+- Remove "documentDescription" class in table block @sverbois
+- General toolbar CSS fixes @sneridagh
+
+## 4.0.0-alpha.17 (2019-12-03)
+
+### Internal
+
+- Revert eslint upgrade, because of problems with the react-app preset typescript settings @sneridagh
+
+## 4.0.0-alpha.16 (2019-12-02)
 
 ### Changes
+
+- Fix small CSS issues in Blocks @sneridagh
+
+### Internal
+
+- Pin Guillotina docker image @sneridagh
+- Forked `react-helmet` since it seems unmaintained. Now it's a Named import in helpers. @sneridagh
+- Update internal dependencies, fix "unmet peer dependencies" console logs by adding the peer dependencies to the local dependencies @sneridagh
+- Update some dependencies, including: react-router, eslint engine and plugins/config and others @sneridagh
+- Lodash improvements for decrease bundle size @sneridagh
+
+## 4.0.0-alpha.15 (2019-11-27)
+
+### Internal
+
+- Export the resetContent action @pnicolli
+- Fix toolbar collapsed color @sneridagh
+- Minor CSS fixes @sneridagh
+- Remove @testing-library/cypress dep, as it breaks builds if the internal cypress release is different than the one in this package @sneridagh
+
+## 4.0.0-alpha.14 (2019-11-24)
+
+### Internal
+
+- Proper config for stylelint-prettier integration, add husky integration and scripts for stylelint, review stylelint rules @sneridagh
+
+## 4.0.0-alpha.13 (2019-11-23)
+
+### Internal
+
+- Upgrade autoprefixer, remove deprecated `browsers` option, move to `browserlist` in `package.json` @sneridagh
+- Upgrade react and react-dom to 16.12.0 @pnicolli
+- Upgrade Cypress to 3.6.1 @timo
+
+## 4.0.0-alpha.12 (2019-11-13)
+
+### Changes
+
+- Add loading animation for save and edit buttons in toolbar @pgrunewald
+- Move Body class depending on content type to `App` component in order to make it available everywhere @sneridagh
+- Add root class name to `Tags` component @sneridagh
 
 ## 4.0.0-alpha.11 (2019-11-08)
 
@@ -27,12 +73,16 @@
 ### Changes
 
 - Fix icon in `TextWidget` @sneridagh
-- impprove documentation for `Icon` @jackahl
+- Improve documentation for `Icon` @jackahl
 - Fix ability to develop Volto itself (as and addon with a mrs.developer checkout) inside a Volto project @sneridagh
 
 ### Internal
 
 - Add internationalization section to docs @pgrunewald
+
+### Internal
+
+- Set Cypress viewport width to 1280px @timo
 
 ## 4.0.0-alpha.10 (2019-10-31)
 

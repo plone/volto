@@ -71,6 +71,7 @@ function handleStateChangeOnClient(classList) {
   });
 }
 
-export default withSideEffect(reducePropsToState, handleStateChangeOnClient)(
-  BodyClass,
-);
+export default withSideEffect(
+  reducePropsToState,
+  handleStateChangeOnClient,
+)(BodyClass);

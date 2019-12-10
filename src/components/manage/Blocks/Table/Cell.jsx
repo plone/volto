@@ -88,7 +88,7 @@ class Cell extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       nextProps.isTableBlockSelected !== this.props.isTableBlockSelected &&
       this.props.cell === 0 &&

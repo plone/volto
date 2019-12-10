@@ -17,24 +17,24 @@ Array [
         className="ui pointing secondary attached tabular formtabs menu"
       >
         <a
-          className="item"
+          className="active item"
           onClick={[Function]}
         >
           Document
         </a>
         <a
-          className="active item"
+          className="item"
           onClick={[Function]}
         >
           Block
         </a>
       </div>
       <div
-        className="ui bottom attached segment tab tab-wrapper"
+        className="ui bottom attached segment active tab tab-wrapper"
         id="sidebar-metadata"
       />
       <div
-        className="ui bottom attached segment active tab tab-wrapper"
+        className="ui bottom attached segment tab tab-wrapper"
         id="sidebar-properties"
       >
         <svg
