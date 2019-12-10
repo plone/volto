@@ -213,7 +213,7 @@ class Edit extends Component {
               'full-width': this.props.data.align === 'full',
             })}
           >
-            {data.url.match('youtube') ? (
+            {data.url.match('youtu') ? (
               <>
                 <div className="ui blocker" />
                 {data.url.match('list') ? (

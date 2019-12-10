@@ -29,7 +29,7 @@ const View = ({ data }) => (
           'full-width': data.align === 'full',
         })}
       >
-        {data.url.match('youtube') ? (
+        {data.url.match('youtu') ? (
           <>
             {data.url.match('list') ? (
               <Embed
