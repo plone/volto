@@ -202,14 +202,6 @@ msgstr "イメージを選択"
 msgid "Choose Target"
 msgstr "ターゲットを選択"
 
-#: components/manage/Sidebar/ObjectBrowserBody
-msgid "ChooseImage"
-msgstr "イメージ選択"
-
-#: components/manage/Sidebar/ObjectBrowserBody
-msgid "ChooseTargetLink"
-msgstr "ターゲットリンク選択"
-
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "メニューを閉じる"
