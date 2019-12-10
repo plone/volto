@@ -22,6 +22,7 @@ import {
   persistAuthToken,
   generateSitemap,
   getAPIResourceWithAuth,
+  AnimationWrapper,
 } from './helpers';
 
 import userSession from './reducers/userSession/userSession';
@@ -106,7 +107,9 @@ server
           const markup = renderToString(
             <Provider store={store}>
               <StaticRouter context={context} location={req.url}>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
+                <AnimationWrapper>
+                  <ReduxAsyncConnect routes={routes} helpers={api} />
+                </AnimationWrapper>
               </StaticRouter>
             </Provider>,
           );
