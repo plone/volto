@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { isInternalURL, flattenToAppURL } from '../../helpers';
+import { connect } from 'react-redux';
 
 const styles = {
   code: {
@@ -121,12 +124,39 @@ const blocks = {
     )),
 };
 
-const entities = {
-  LINK: (children, entity, { key }) => (
-    <a key={key} href={entity.url}>
+const LinkEntity = connect(state => ({
+  token: state.userSession.token,
+}))(({ token, key, url, target, download, children }) => {
+  const to = token ? url : target || url;
+  if (download) {
+    return token ? (
+      <Link key={key} to={flattenToAppURL(to)}>
+        {children}
+      </Link>
+    ) : (
+      <a key={key} href={download}>
+        {children}
+      </a>
+    );
+  }
+  return isInternalURL(to) ? (
+    <Link key={key} to={flattenToAppURL(to)}>
+      {children}
+    </Link>
+  ) : (
+    <a key={key} href={to} target="_blank" rel="noopener noreferrer">
       {children}
     </a>
+  );
+});
+
+const entities = {
+  LINK: (children, props, { key }) => (
+    <LinkEntity key={key} {...props}>
+      {children}
+    </LinkEntity>
   ),
+
   IMAGE: (children, entity, { key }) => (
     <img key={key} src={entity.src} alt={entity.alt} />
   ),
