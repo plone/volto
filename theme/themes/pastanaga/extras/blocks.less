@@ -34,6 +34,12 @@
   border-color: rgba(120, 192, 215, 0.375);
 }
 
+.block.video,
+.block.image {
+  /* This fixes two left floated items in a row */
+  clear: both;
+}
+
 .ui.drag.block:not(:last-child) {
   margin-bottom: 2rem;
 }
