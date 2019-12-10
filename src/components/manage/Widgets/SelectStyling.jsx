@@ -44,7 +44,7 @@ export const customSelectStyles = {
   control: (styles, state) => ({
     ...styles,
     border: 'none',
-    borderBottom: '1px solid #c7d5c8',
+    borderBottom: '1px solid #c7d5d8',
     boxShadow: 'none',
     borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
     minHeight: '60px',
@@ -54,7 +54,7 @@ export const customSelectStyles = {
     top: null,
     marginTop: 0,
     boxShadow: 'none',
-    borderBottom: '1px solid #c7d5c8',
+    borderBottom: '1px solid #c7d5d8',
   }),
   indicatorSeparator: styles => ({
     ...styles,
