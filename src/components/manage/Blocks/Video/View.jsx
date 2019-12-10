@@ -65,7 +65,7 @@ const View = ({ data }) => (
                 autoplay={false}
               />
             ) : (
-              <div>test</div>
+              <div className="invalidVideoFormat" />
             )}
           </>
         )}

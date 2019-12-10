@@ -254,7 +254,8 @@ class Edit extends Component {
                   <div>
                     <Message>
                       <center>
-                        <Icon name={videoSVG} size="100px" color="#b8c6c8" />
+                        Please enter a valid URL by deleting the block and
+                        adding a new video block.
                       </center>
                     </Message>
                   </div>
