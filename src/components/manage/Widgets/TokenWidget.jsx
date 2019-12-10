@@ -9,7 +9,7 @@ import { Form, Grid, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
 import { connect } from 'react-redux';
 import { components } from 'react-select';
-import AsyncCreatableSelect from 'react-select/lib/AsyncCreatable';
+import AsyncCreatableSelect from 'react-select/async-creatable';
 
 import {
   getVocabFromHint,

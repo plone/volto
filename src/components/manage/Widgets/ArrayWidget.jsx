@@ -10,7 +10,7 @@ import { isObject, map } from 'lodash';
 import { connect } from 'react-redux';
 import { components } from 'react-select';
 import AsyncPaginate from 'react-select-async-paginate';
-import CreatableSelect from 'react-select/lib/Creatable';
+import CreatableSelect from 'react-select/creatable';
 
 import {
   getVocabFromHint,
