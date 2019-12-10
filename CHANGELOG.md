@@ -5,6 +5,7 @@
 ### Added
 
 - Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
+- Automatically switch sidebar on block change @robgietema
 
 ### Changes
 
@@ -70,7 +71,7 @@
 ### Changes
 
 - Fix icon in `TextWidget` @sneridagh
-- impprove documentation for `Icon` @jackahl
+- Improve documentation for `Icon` @jackahl
 - Fix ability to develop Volto itself (as and addon with a mrs.developer checkout) inside a Volto project @sneridagh
 
 ### Internal
