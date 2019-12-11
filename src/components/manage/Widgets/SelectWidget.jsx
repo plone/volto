@@ -159,15 +159,16 @@ class SelectWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (this.vocabBaseUrl) {
+    if (!this.props.choices && this.vocabBaseUrl) {
       this.props.getVocabulary(this.vocabBaseUrl);
     }
   }
 
-  vocabBaseUrl =
-    getVocabFromHint(this.props) ||
-    getVocabFromField(this.props) ||
-    getVocabFromItems(this.props);
+  vocabBaseUrl = !this.props.choices
+    ? getVocabFromHint(this.props) ||
+      getVocabFromField(this.props) ||
+      getVocabFromItems(this.props)
+    : '';
 
   /**
    * Initiate search with new query
@@ -363,11 +364,20 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => {
-      const vocabBaseUrl =
-        getVocabFromHint(props) ||
-        getVocabFromField(props) ||
-        getVocabFromItems(props);
+      const vocabBaseUrl = !props.choices
+        ? getVocabFromHint(props) ||
+          getVocabFromField(props) ||
+          getVocabFromItems(props)
+        : '';
       const vocabState = state.vocabularies[vocabBaseUrl];
+
+      // If the schema already has the choices in it, then do not try to get the vocab,
+      // even if there is one
+      if (props.choices) {
+        return {
+          choices: props.choices,
+        };
+      }
 
       if (vocabState) {
         return {

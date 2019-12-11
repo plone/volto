@@ -118,7 +118,7 @@ class TokenWidget extends Component {
   }
 
   /**
-   * Initiate search with new query
+   * Load options from the vocabulary endpoint
    * @method loadOptions
    * @param {string} search Search query.
    * @param {string} previousOptions The previous options rendered.
