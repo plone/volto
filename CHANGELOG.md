@@ -23,6 +23,7 @@
 - Fix file and link redirect views @robgietema
 - Restrict moment.js locales to available languages @tisto @robgietema
 - Fix history view @robgietema
+- Add test for indexable Blocks @timo
 
 ## 4.0.0-alpha.17 (2019-12-03)
 
