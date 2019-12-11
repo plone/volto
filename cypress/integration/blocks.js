@@ -36,37 +36,36 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#page-document p').contains('My text');
     });
 
-
     it.only('add listing block and add new items', () => {
       cy.get(`.block.title [data-contents]`)
         .clear()
         .type('My page');
-  cy.get('.block.inner.text .public-DraftEditor-content').click();
-  cy.get('.ui.basic.icon.button.block-add-button').click();
-  cy.get('.title')
+      cy.get('.block.inner.text .public-DraftEditor-content').click();
+      cy.get('.ui.basic.icon.button.block-add-button').click();
+      cy.get('.title')
         .contains('common')
         .click();
-        cy.get('.ui.basic.icon.button.listing')
+      cy.get('.ui.basic.icon.button.listing')
         .contains('Listing')
         .click();
-        cy.get('.css-hnwiky.react-select__control')
+      cy.get('.css-hnwiky.react-select__control')
         .contains('Add criteria')
         .click()
-       .type('title {enter}');
-       cy.get('.ui.fluid.input').click()
-      .type('page{enter}');
+        .type('title {enter}');
+      cy.get('.ui.fluid.input')
+        .click()
+        .type('page{enter}');
       //  cy.get('.css-hnwiky.react-select__control')
       //  .contains('Add criteria')
       //  .click()
       //  .type('title {enter}');
       //  cy.get(':nth-child(2) > :nth-child(2) > .ui > input')
-       
+
       //  .click()
       //  .type('title {enter}');
       cy.get('#toolbar-save').click();
       cy.get('.block.listing');
     });
-
 
     // it('Add image block', () => {
     //   // Add image block
