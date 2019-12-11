@@ -15,6 +15,7 @@
 - Fix bug that lead to crashing the view when deleting the last row of a table
 - Fix file and link redirect views @robgietema
 - Restrict moment.js locales to available languages @tisto @robgietema
+- Fix history view @robgietema
 
 ## 4.0.0-alpha.17 (2019-12-03)
 
