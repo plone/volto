@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const ConditionalLink = props => {
-  if (props.condition) {
+const ConditionalLink = ({ condition, ...props }) => {
+  if (condition) {
     return <Link {...props}>{props.children}</Link>;
   } else {
     return props.children;

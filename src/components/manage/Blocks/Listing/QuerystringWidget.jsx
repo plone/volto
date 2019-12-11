@@ -252,7 +252,10 @@ class QuerystringWidget extends Component {
               theme={selectTheme}
               components={{ DropdownIndicator, Option }}
               onChange={data => {
-                this.onChangeValue(index, map(data, item => item.value));
+                this.onChangeValue(
+                  index,
+                  map(data, item => item.value),
+                );
               }}
               isMulti={true}
               value={map(row.v, value => ({
@@ -333,7 +336,7 @@ class QuerystringWidget extends Component {
               {indexes &&
                 !isEmpty(indexes) &&
                 map(value, (row, index) => (
-                  <Form.Group>
+                  <Form.Group key={index}>
                     <div className="main-fields-wrapper">
                       <Form.Field
                         style={{ flex: '1 0 auto', marginRight: '10px' }}
@@ -419,7 +422,10 @@ class QuerystringWidget extends Component {
                       {!this.props.indexes[row.i].operators[row.o].widget && (
                         <Button
                           onClick={event => {
-                            onChange(id, remove(value, (v, i) => i !== index));
+                            onChange(
+                              id,
+                              remove(value, (v, i) => i !== index),
+                            );
                             event.preventDefault();
                           }}
                           style={{
@@ -437,7 +443,10 @@ class QuerystringWidget extends Component {
                     {this.props.indexes[row.i].operators[row.o].widget && (
                       <Button
                         onClick={event => {
-                          onChange(id, remove(value, (v, i) => i !== index));
+                          onChange(
+                            id,
+                            remove(value, (v, i) => i !== index),
+                          );
                           event.preventDefault();
                         }}
                         style={{

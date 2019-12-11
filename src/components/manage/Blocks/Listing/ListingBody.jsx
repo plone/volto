@@ -37,7 +37,7 @@ const ListingItem = ({ data, properties, intl, isEditMode }) => {
       {listingItems.length > 0 ? (
         <>
           {listingItems.map(item => (
-            <div className="listing-item" key={item.UID}>
+            <div className="listing-item" key={item['@id']}>
               <ConditionalLink
                 to={flattenToAppURL(item['@id'])}
                 condition={!isEditMode}
@@ -63,7 +63,7 @@ const ListingItem = ({ data, properties, intl, isEditMode }) => {
           ))}
         </>
       ) : (
-        <div className="listing">
+        <div className="listing message">
           {data?.query?.length === 0 && (
             <FormattedMessage
               id="No items found in this container."

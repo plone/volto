@@ -14,7 +14,7 @@ const View = ({ data, properties, block }) => {
 View.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
   properties: PropTypes.objectOf(PropTypes.any).isRequired,
-  block: PropTypes.string.isRequired,
+  block: PropTypes.string,
 };
 
 export default View;

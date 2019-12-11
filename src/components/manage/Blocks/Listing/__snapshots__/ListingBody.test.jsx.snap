@@ -2,7 +2,7 @@
 
 exports[`renders a ListingBody component 1`] = `
 <div
-  className="listing"
+  className="listing message"
 >
   No results found.
 </div>
