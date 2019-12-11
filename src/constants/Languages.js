@@ -3,7 +3,7 @@
  * @module constants/Languages
  */
 
-export default {
+module.exports = {
   en: 'English',
   de: 'Deutsch',
   nl: 'Nederlands',
