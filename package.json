@@ -321,7 +321,7 @@
     "semantic-ui-less": "2.4.1",
     "semantic-ui-react": "0.88.1",
     "semver": "5.6.0",
-    "serialize-javascript": "1.5.0",
+    "serialize-javascript": "2.1.1",
     "start-server-and-test": "1.10.6",
     "style-loader": "0.23.0",
     "stylelint": "11.1.1",
