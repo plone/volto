@@ -22,17 +22,17 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Add text block', () => {
-      cy.get(`.block.title [data-contents]`)
-        .clear()
-        .type('My title');
+      // fill text block
       cy.get('.block.inner.text .public-DraftEditor-content')
         .click()
         .type('My text')
         .get('span[data-text]')
         .contains('My text');
 
+      // save
       cy.get('#toolbar-save').click();
 
+      // check if view contains text block
       cy.get('#page-document p').contains('My text');
     });
 
