@@ -13,6 +13,11 @@
 - Remove "documentDescription" class in table block @sverbois
 - General toolbar more and personal tools menu CSS fixes @sneridagh
 - Fix bug that lead to crashing the view when deleting the last row of a table
+- Fix Select widget bug if the field has already the options in the `choices` schema, do not trigger the vocabulary request @sneridagh
+
+### Internal
+
+- Updated to react-select v3 @robdayz
 - Fix file and link redirect views @robgietema
 - Restrict moment.js locales to available languages @tisto @robgietema
 
