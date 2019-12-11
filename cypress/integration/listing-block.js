@@ -11,7 +11,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('?fullobjects');
     });
 
-    it.only('check type criterions of listing block', () => {
+    it('check type criterions of listing block', () => {
       //Given I am logged in as site owner
       //   And a document  Test Document
       //   And a news_item  Test News Item
@@ -39,7 +39,9 @@ if (Cypress.env('API') !== 'guillotina') {
         .contains('Add criteria')
         .click()
         .type('Type{enter}');
-      cy.get('.css-hnwiky.react-select__control')
+      cy.get(
+        '.css-9t8fgp.react-select__indicator.react-select__dropdown-indicator',
+      )
         .first()
 
         .click({ force: true })
@@ -53,15 +55,35 @@ if (Cypress.env('API') !== 'guillotina') {
       );
     });
 
-    it('test review state criterion of listing block', () => {
+    it.only('test review state criterion of listing block', () => {
       //Given
       // I am logged in as site owner
       // And a published document  Published Document
       // And a private document  Private Document
       // And a listing block
-      // When I set the listing block's review state criterion to  private
+      // When I set the listing block'sreview state criterion to  private
       // Then the collection should contain  Private Document
       // And the collection should not contain  Published Document
+
+      cy.createContent('Document', 'published-document', 'Published Document');
+      cy.createContent('Document', 'private-document', 'Private Document');
+
+      cy.visit('/my-page/edit');
+      cy.get('.block.inner.text .public-DraftEditor-content').click();
+      cy.get('.ui.basic.icon.button.block-add-button').click();
+      cy.get('.title')
+        .contains('common')
+        .click();
+      cy.get('.ui.basic.icon.button.listing')
+        .contains('Listing')
+        .click();
+      cy.get('.css-hnwiky.react-select__control')
+        .contains('Add criteria')
+        .click()
+        .type('review state{enter}');
+      cy.get('.react-select__input')
+        .first()
+        .click();
     });
   });
 }
