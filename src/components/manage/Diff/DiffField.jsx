@@ -18,8 +18,6 @@ import { Api } from '../../../helpers';
 import configureStore from '../../../store';
 import { DefaultView } from '../../../components/';
 
-const history = __CLIENT__ ? createBrowserHistory() : {};
-
 /**
  * Diff field component.
  * @function DiffField
@@ -43,6 +41,7 @@ const DiffField = ({ one, two, contentOne, contentTwo, view, schema }) => {
         break;
       case 'json':
         const api = new Api();
+        const history = createBrowserHistory();
         const store = configureStore(window.__data, history, api);
         parts = diffWords(
           ReactDOMServer.renderToStaticMarkup(
