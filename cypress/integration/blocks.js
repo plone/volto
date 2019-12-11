@@ -18,7 +18,7 @@ if (Cypress.env('API') !== 'guillotina') {
 
       cy.get('#toolbar-save').click();
 
-      cy.get('#page-document').should('have.text', 'My Page');
+      cy.get('#page-document').should('have.text', 'My title');
     });
 
     it('Add text block', () => {
