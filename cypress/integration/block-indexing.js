@@ -24,7 +24,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#content-core').contains('Noam Chomsky');
     });
 
-    it.only('Index Text Block', () => {
+    it('Index Text Block', () => {
       // GIVEN: A page with a text block with the content 'Noam Avram Chomsky'
       cy.get(`.block.title [data-contents]`)
         .clear()
