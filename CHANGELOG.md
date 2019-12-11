@@ -9,6 +9,8 @@
 ### Changes
 
 - Remove "documentDescription" class in table block @sverbois
+- Added possibility to work with vimeo-videos instead of youtube-videos in the video block @wkbkhard
+- Fixed Issue 1021: typing in a "wrong" URL leads to error @wkbkhard
 
 ## 4.0.0-alpha.17 (2019-12-03)
 
