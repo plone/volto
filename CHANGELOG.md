@@ -6,7 +6,7 @@
 
 - Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
 - Automatically switch sidebar on block change @robgietema
-- Fix file and link redirect views @robgietema
+- Japanese translation @terapyon
 
 ### Changes
 
@@ -18,6 +18,8 @@
 ### Internal
 
 - Updated to react-select v3 @robdayz
+- Fix file and link redirect views @robgietema
+- Restrict moment.js locales to available languages @tisto @robgietema
 
 ## 4.0.0-alpha.17 (2019-12-03)
 
