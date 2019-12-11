@@ -257,6 +257,34 @@ button {
   }
 }
 
+@keyframes routertransitionfade {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.01;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes routertransitionenter {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.01;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .animation-wrapper {
   // match the main wrapper CSS to achieve same functionality but an element below.
   display: flex;
@@ -265,19 +293,25 @@ button {
 
   .content-area {
     position: relative;
-    opacity: 0.7;
-    transition: opacity 0.1s;
   }
 
   &.entering {
     .content-area {
-      opacity: 0.7;
+      animation-direction: alternate;
+      animation-duration: 0.25s;
+      animation-iteration-count: 1;
+      animation-name: routertransitionfade;
+      animation-timing-function: ease-out;
     }
   }
 
   &.entered {
     .content-area {
-      opacity: 1;
+      animation-direction: alternate;
+      animation-duration: 0.25s;
+      animation-iteration-count: 1;
+      animation-name: routertransitionenter;
+      animation-timing-function: ease-in;
     }
   }
 }
