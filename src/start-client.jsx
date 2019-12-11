@@ -5,9 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from 'redux-connect';
 import routes from '~/routes';
-
-import 'semantic-ui-less/semantic.less';
-import '../theme/themes/pastanaga/extras/extras.less';
+import '~/theme';
 
 import configureStore from './store';
 import { Api, persistAuthToken, ScrollToTop } from './helpers';

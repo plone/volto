@@ -14,7 +14,9 @@ export {
   persistAuthToken,
 } from '@plone/volto/helpers/AuthToken/AuthToken';
 export {
+  addAppURL,
   flattenToAppURL,
+  isInternalURL,
   getBaseUrl,
   getIcon,
   getView,
@@ -25,10 +27,10 @@ export {
   getLayoutFieldname,
 } from '@plone/volto/helpers/Content/Content';
 export {
-  getTilesFieldname,
-  getTilesLayoutFieldname,
-  hasTilesData,
-} from '@plone/volto/helpers/Tiles/Tiles';
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+  hasBlocksData,
+} from '@plone/volto/helpers/Blocks/Blocks';
 export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 export {
@@ -37,4 +39,6 @@ export {
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers/Vocabularies/Vocabularies';
-export AlignTile from '@plone/volto/helpers/AlignTile/AlignTile';
+export AlignBlock from '@plone/volto/helpers/AlignBlock/AlignBlock';
+
+export Helmet from './Helmet/Helmet';

@@ -20,6 +20,7 @@ export {
   getContent,
   orderContent,
   sortContent,
+  resetContent,
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
@@ -57,7 +58,6 @@ export {
   updateSharing,
   getSharing,
 } from '@plone/volto/actions/sharing/sharing';
-export { getTiles } from '@plone/volto/actions/tiles/tiles';
 export { getTypes } from '@plone/volto/actions/types/types';
 export {
   createUser,
@@ -83,3 +83,4 @@ export {
   transitionWorkflow,
 } from '@plone/volto/actions/workflow/workflow';
 export { getQuerystring } from './querystring/querystring';
+export { setSidebarTab } from './sidebar/sidebar';

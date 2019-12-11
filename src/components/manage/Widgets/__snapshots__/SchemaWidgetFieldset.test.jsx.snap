@@ -21,6 +21,7 @@ exports[`renders a contents item component 1`] = `
     <i
       aria-hidden="true"
       className="blue write square large icon"
+      onClick={[Function]}
     />
   </button>
   <button
@@ -30,6 +31,7 @@ exports[`renders a contents item component 1`] = `
     <i
       aria-hidden="true"
       className="red close large icon"
+      onClick={[Function]}
     />
   </button>
 </div>

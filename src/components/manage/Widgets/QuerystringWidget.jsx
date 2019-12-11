@@ -18,13 +18,17 @@ import {
 import { filter, remove, toPairs, groupBy, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { getQuerystring } from '../../../actions';
-import Select, { components } from 'react-select';
+import Select from 'react-select';
 import { Icon } from '@plone/volto/components';
 
-import downSVG from '@plone/volto/icons/down-key.svg';
-import upSVG from '@plone/volto/icons/up-key.svg';
-import checkSVG from '@plone/volto/icons/check.svg';
 import clearSVG from '../../../icons/clear.svg';
+
+import {
+  Option,
+  DropdownIndicator,
+  selectTheme,
+  customSelectStyles,
+} from './SelectStyling';
 
 const messages = defineMessages({
   default: {
@@ -52,86 +56,6 @@ const messages = defineMessages({
     defaultMessage: 'Required',
   },
 });
-
-const Option = props => {
-  return (
-    <components.Option {...props}>
-      <div>{props.label}</div>
-      {props.isFocused && !props.isSelected && (
-        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
-      )}
-      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
-    </components.Option>
-  );
-};
-
-const DropdownIndicator = props => {
-  return (
-    <components.DropdownIndicator {...props}>
-      {props.selectProps.menuIsOpen ? (
-        <Icon name={upSVG} size="24px" color="#007bc1" />
-      ) : (
-        <Icon name={downSVG} size="24px" color="#007bc1" />
-      )}
-    </components.DropdownIndicator>
-  );
-};
-
-const selectTheme = theme => ({
-  ...theme,
-  borderRadius: 0,
-  colors: {
-    ...theme.colors,
-    primary25: 'hotpink',
-    primary: '#b8c6c8',
-  },
-});
-
-const customSelectStyles = {
-  control: (styles, state) => ({
-    ...styles,
-    border: 'none',
-    borderBottom: '1px solid #c7d5d8',
-    boxShadow: 'none',
-    borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
-    height: '60px',
-  }),
-  menu: (styles, state) => ({
-    ...styles,
-    top: null,
-    marginTop: 0,
-    boxShadow: 'none',
-    borderBottom: '1px solid #c7d5d8',
-  }),
-  indicatorSeparator: styles => ({
-    ...styles,
-    width: null,
-  }),
-  valueContainer: styles => ({
-    ...styles,
-    paddingLeft: 0,
-  }),
-  dropdownIndicator: styles => ({
-    paddingRight: 0,
-  }),
-  option: (styles, state) => ({
-    ...styles,
-    backgroundColor: null,
-    height: '50px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '14px 12px',
-    color: state.isSelected
-      ? '#007bc1'
-      : state.isFocused
-      ? '#4a4a4a'
-      : 'inherit',
-    ':active': {
-      backgroundColor: null,
-    },
-  }),
-};
 
 /**
  * QuerystringWidget component class.

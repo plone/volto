@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { isInternalURL, flattenToAppURL } from '../../helpers';
+import { connect } from 'react-redux';
 
 const styles = {
   code: {
@@ -64,13 +67,32 @@ const getAtomic = (children, { data, keys }) =>
  * Note that children can be maped to render a list or do other cool stuff
  */
 const blocks = {
-  // Rendering blocks like this along with cleanup results in a single p tag for each paragraph
-  // adding an empty block closes current paragraph and starts a new one
-  // unstyled: (children, { keys }) => (
-  //   <p key={keys[0]}>{addBreaklines(children)}</p>
-  // ),
-  unstyled: (children, { keys }) =>
-    children.map(child => <p key={keys[0]}>{child}</p>),
+  unstyled: (children, { keys }) => {
+    const processedChildren = children.map(chunks =>
+      chunks.map(child => {
+        if (Array.isArray(child)) {
+          return child.map((subchild, index) => {
+            if (typeof subchild === 'string') {
+              const last = subchild.split('\n').length - 1;
+              return subchild.split('\n').map((item, index) => (
+                <React.Fragment key={index}>
+                  {item}
+                  {index !== last && <br />}
+                </React.Fragment>
+              ));
+            } else {
+              return subchild;
+            }
+          });
+        } else {
+          return child;
+        }
+      }),
+    );
+    return processedChildren.map(
+      chunk => chunk && <p key={keys[0]}>{chunk}</p>,
+    );
+  },
   atomic: getAtomic,
   blockquote: (children, { keys }) => (
     <blockquote key={keys[0]}>{addBreaklines(children)}</blockquote>
@@ -102,12 +124,39 @@ const blocks = {
     )),
 };
 
-const entities = {
-  LINK: (children, entity, { key }) => (
-    <a key={key} href={entity.url}>
+const LinkEntity = connect(state => ({
+  token: state.userSession.token,
+}))(({ token, key, url, target, download, children }) => {
+  const to = token ? url : target || url;
+  if (download) {
+    return token ? (
+      <Link key={key} to={flattenToAppURL(to)}>
+        {children}
+      </Link>
+    ) : (
+      <a key={key} href={download}>
+        {children}
+      </a>
+    );
+  }
+  return isInternalURL(to) ? (
+    <Link key={key} to={flattenToAppURL(to)}>
+      {children}
+    </Link>
+  ) : (
+    <a key={key} href={to} target="_blank" rel="noopener noreferrer">
       {children}
     </a>
+  );
+});
+
+const entities = {
+  LINK: (children, props, { key }) => (
+    <LinkEntity key={key} {...props}>
+      {children}
+    </LinkEntity>
   ),
+
   IMAGE: (children, entity, { key }) => (
     <img key={key} src={entity.src} alt={entity.alt} />
   ),

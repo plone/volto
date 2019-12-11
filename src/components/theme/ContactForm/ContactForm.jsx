@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
@@ -115,7 +115,7 @@ class ContactForm extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.loading && nextProps.loaded) {
       toast.success(
         <Toast
@@ -172,7 +172,7 @@ class ContactForm extends Component {
           <Form
             onSubmit={this.onSubmit}
             onCancel={this.onCancel}
-            formData={{ tilesLayoutFieldname: {} }}
+            formData={{ blocksLayoutFieldname: {} }}
             submitLabel={this.props.intl.formatMessage(messages.send)}
             resetAfterSubmit
             title={this.props.intl.formatMessage(messages.contactForm)}
