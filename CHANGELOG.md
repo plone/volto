@@ -20,6 +20,7 @@
 - Updated to react-select v3 @robdayz
 - Fix file and link redirect views @robgietema
 - Restrict moment.js locales to available languages @tisto @robgietema
+- Fix history view @robgietema
 
 ## 4.0.0-alpha.17 (2019-12-03)
 
