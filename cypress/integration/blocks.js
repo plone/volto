@@ -36,6 +36,63 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#page-document p').contains('My text');
     });
 
+    it('Add Listing block', () => {
+      cy.visit('/my-page');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('?fullobjects');
+
+      cy.createContent('Document', 'my-page-test', 'My Page Test', 'my-page');
+      cy.createContent('News Item', 'my-news', 'My News', 'my-page');
+      cy.createContent('Folder', 'my-folder', 'My Folder', 'my-page');
+
+      cy.visit('/my-page/edit');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('?fullobjects');
+
+      cy.get(`.block.title [data-contents]`)
+        .clear()
+        .type('My title');
+
+      //add listing block
+      cy.get('.block.text [contenteditable]').click();
+      cy.get('button.block-add-button').click();
+      cy.get('.blocks-chooser .title')
+        .contains('common')
+        .click();
+      cy.get('.blocks-chooser .common')
+        .contains('Listing')
+        .click();
+
+      //verify
+      cy.get(`.block.listing .listing-body:first-of-type`).contains(
+        'My Page Test',
+      );
+
+      //save
+      cy.get('#toolbar-save').click();
+
+      //test after save
+      cy.get('#page-document .listing-body:first-of-type').contains(
+        'My Page Test',
+      );
+      cy.get('#page-document .listing-item:first-of-type a').should(
+        'have.attr',
+        'href',
+        '/my-page/my-page-test',
+      );
+
+      //     .click()
+      //     .type(
+      //       `https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png{enter}`,
+      //     );
+    });
+
     // it('Add image block', () => {
     //   // Add image block
     //   cy.get('.block.text [contenteditable]').click();
