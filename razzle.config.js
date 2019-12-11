@@ -21,6 +21,7 @@ const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
 const projectRootPath = path.resolve('.');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
+const languages = require('./src/constants/Languages');
 
 module.exports = {
   plugins: ['bundle-analyzer'],
@@ -124,10 +125,9 @@ module.exports = {
       config.plugins.unshift(
         // restrict moment.js locales to en/de
         // see https://github.com/jmblog/how-to-optimize-momentjs-with-webpack for details
-<<<<<<< HEAD
         new webpack.ContextReplacementPlugin(
           /moment[/\\]locale$/,
-          /en|de|nl|it/,
+          new RegExp(Object.keys(languages).join('|')),
         ),
         new LodashModuleReplacementPlugin({
           shorthands: true,
@@ -147,9 +147,6 @@ module.exports = {
           paths: true,
           placeholders: true,
         }),
-=======
-        new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en|de|nl|it/),
->>>>>>> Add nl/it to moment js config.
       );
     }
 

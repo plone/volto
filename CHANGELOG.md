@@ -6,7 +6,6 @@
 
 - Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
 - Automatically switch sidebar on block change @robgietema
-- Fix file and link redirect views @robgietema
 - Japanese translation @terapyon
 
 ### Changes
@@ -14,6 +13,8 @@
 - Remove "documentDescription" class in table block @sverbois
 - General toolbar more and personal tools menu CSS fixes @sneridagh
 - Fix bug that lead to crashing the view when deleting the last row of a table
+- Fix file and link redirect views @robgietema
+- Restrict moment.js locales to available languages @tisto @robgietema
 
 ## 4.0.0-alpha.17 (2019-12-03)
 
@@ -259,7 +260,6 @@
 
 ### Changes
 
-- Restrict moment.js locales to en/de/nl/it @tisto
 - Add a delay when filtering content in folder contents so it doesn't overload backend @vangheem
 - Small UX/UI fixes @sneridagh
 - Fix query string search in subjects vocab field @gomez
