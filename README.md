@@ -288,6 +288,10 @@ If you want to use Guillotina as backend to run the tests you should run:
 $ yarn ci:start-api-plone-guillotina
 ```
 
+## Translations
+
+You can contribute to translate Volto into severals languages at [Transifex.net](https://www.transifex.com/plone/plone5/volto-pot/).
+
 ## License
 
 MIT License. Copyrights hold the [Plone Foundation](https://plone.org/foundation).
