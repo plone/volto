@@ -5,6 +5,9 @@
 ### Added
 
 - Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
+- Automatically switch sidebar on block change @robgietema
+- Fix file and link redirect views @robgietema
+- Japanese translation @terapyon
 
 ### Changes
 
@@ -12,6 +15,8 @@
 
 - Upgrade autoprefixer, remove deprecated `browsers` option, move to `browserlist` in `package.json` @sneridagh
 - Remove "documentDescription" class in table block @sverbois
+- General toolbar more and personal tools menu CSS fixes @sneridagh
+- Fix bug that lead to crashing the view when deleting the last row of a table
 
 ## 4.0.0-alpha.17 (2019-12-03)
 
@@ -73,7 +78,7 @@
 ### Changes
 
 - Fix icon in `TextWidget` @sneridagh
-- impprove documentation for `Icon` @jackahl
+- Improve documentation for `Icon` @jackahl
 - Fix ability to develop Volto itself (as and addon with a mrs.developer checkout) inside a Volto project @sneridagh
 
 ### Internal
