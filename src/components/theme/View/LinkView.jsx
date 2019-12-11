@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet, isInternalURL } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 
@@ -46,7 +46,11 @@ class LinkView extends Component {
    */
   UNSAFE_componentWillMount() {
     if (!this.props.token) {
-      this.props.history.replace(this.props.content.remoteUrl);
+      if (isInternalURL(this.props.content.remoteUrl)) {
+        this.props.history.replace(this.props.content.remoteUrl);
+      } else {
+        document.location.href = this.props.content.remoteUrl;
+      }
     }
   }
 
@@ -57,8 +61,12 @@ class LinkView extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.props.pathname && !nextProps.token) {
-      nextProps.history.replace(nextProps.content.remoteUrl);
+    if (!this.props.token) {
+      if (isInternalURL(this.props.content.remoteUrl)) {
+        this.props.history.replace(this.props.content.remoteUrl);
+      } else {
+        document.location.href = this.props.content.remoteUrl;
+      }
     }
   }
 
@@ -80,9 +88,19 @@ class LinkView extends Component {
         {this.props.content.remoteUrl && (
           <span>
             The link address is:
-            <Link to={this.props.content.remoteUrl}>
-              {this.props.content.remoteUrl}
-            </Link>
+            {isInternalURL(this.props.content.remoteUrl) ? (
+              <Link to={this.props.content.remoteUrl}>
+                {this.props.content.remoteUrl}
+              </Link>
+            ) : (
+              <a
+                href={this.props.content.remoteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {this.props.content.remoteUrl}
+              </a>
+            )}
           </span>
         )}
       </Container>

@@ -1,129 +1,112 @@
+# Manabu TERADA <terada@cmscom.jp> 2019
+# Peacock <peacock0803sz@gmail.com> 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-12-10T22:06:19.954Z\n"
-"Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
-"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
+"PO-Revision-Date: 2019-11-15 12:06+0900\n"
+"Last-Translator: Manabu TERADA <terada@cmscom.jp>\n"
+"Language: ja\n"
+"Language-Team: Plone Japanese Team <https://github.com/plonejp>\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"MIME-Version: 1.0\n"
+"Language-Code: ja\n"
+"Language-Name: Japanese\n"
 "Preferred-Encodings: utf-8\n"
-"Domain: volto\n"
+"X-Is-Fallback-For: ja-jp\n"
 
 #: components/theme/Footer/Footer
-# defaultMessage: Accessibility
 msgid "Accessibility"
-msgstr ""
+msgstr "アクセシビリティ"
 
 #: components/theme/Register/Register
-# defaultMessage: Account Registration Completed
 msgid "Account Registration Completed"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Account activation completed
 msgid "Account activation completed"
 msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
-# defaultMessage: Action
 msgid "Action"
-msgstr ""
+msgstr "アクション"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Actions
 msgid "Actions"
-msgstr ""
+msgstr "アクション"
 
 #: components/manage/Toolbar/Types
-# defaultMessage: Add Content...
 msgid "Add Content"
-msgstr ""
+msgstr "新規追加"
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Add User
 msgid "Add User"
-msgstr ""
+msgstr "ユーザを追加"
 
 #: components/manage/Blocks/Description/Edit
-# defaultMessage: Add a description…
 msgid "Add a description…"
-msgstr ""
+msgstr "説明を追加..."
 
 #: components/manage/Form/Form
-# defaultMessage: Add block...
 msgid "Add block..."
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Add field
 msgid "Add field"
-msgstr ""
+msgstr "フィールドを追加"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Add fieldset
 msgid "Add fieldset"
-msgstr ""
+msgstr "フィールドセットを追加"
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Add group
 msgid "Add group"
-msgstr ""
+msgstr "グループを追加"
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Add new group
 msgid "Add new group"
-msgstr ""
+msgstr "新しいグループを追加"
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Add new user
 msgid "Add new user"
-msgstr ""
+msgstr "新しいユーザを追加"
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Add to Groups
 msgid "Add to Groups"
-msgstr ""
+msgstr "グループに追加"
 
 #: components/manage/Add/Add
-# defaultMessage: Add {type}
 msgid "Add {type}"
-msgstr ""
+msgstr "{type} を追加"
 
 #: components/manage/Sidebar/ImageSidebar
-# defaultMessage: Alignment
 msgid "Alignment"
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: All
 msgid "All"
-msgstr ""
+msgstr "すべて"
 
 #: components/manage/Sidebar/ImageSidebar
-# defaultMessage: Alt text
 msgid "Alt text"
-msgstr ""
+msgstr "代替テキスト"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Are you sure you want to delete this field?
 msgid "Are you sure you want to delete this field?"
-msgstr ""
+msgstr "このフィールドを削除しますか？"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Are you sure you want to delete this fieldset including all fields?
 msgid "Are you sure you want to delete this fieldset including all fields?"
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: Ascending
 msgid "Ascending"
-msgstr ""
+msgstr "昇順"
 
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/Controlpanel
@@ -137,37 +120,30 @@ msgstr ""
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
-# defaultMessage: Back
 msgid "Back"
-msgstr ""
+msgstr "戻る"
 
 #: components/manage/Diff/Diff
-# defaultMessage: Base
 msgid "Base"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
-# defaultMessage: Block
 msgid "Block"
-msgstr ""
+msgstr "ブロック"
 
 #: components/theme/Login/Login
-# defaultMessage: Both email address and password are case sensitive, check that caps lock is not enabled.
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: Browse
 msgid "Browse"
-msgstr ""
+msgstr "参照"
 
 #: components/manage/Blocks/Image/Edit
-# defaultMessage: Browse the site, drop an image, or type an URL
 msgid "Browse the site, drop an image, or type an URL"
-msgstr ""
+msgstr "参照"
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator.
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr ""
 
@@ -181,143 +157,117 @@ msgstr ""
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
 #: components/theme/Login/Login
-# defaultMessage: Cancel
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Cell
 msgid "Cell"
 msgstr ""
 
 #: components/manage/History/History
-# defaultMessage: Change Note
 msgid "Change Note"
-msgstr ""
+msgstr "変更メモ"
 
 #: components/manage/Preferences/ChangePassword
-# defaultMessage: Change Password
 msgid "Change Password"
-msgstr ""
+msgstr "パスワードを変更"
 
 #: components/manage/Contents/ContentsWorkflowModal
-# defaultMessage: Change State
 msgid "Change State"
-msgstr ""
+msgstr "状態を変更"
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
-# defaultMessage: Changes saved
 msgid "Changes saved"
-msgstr ""
+msgstr "変更が保存されました"
 
 #: components/manage/Controlpanels/Controlpanel
-# defaultMessage: Changes saved.
 msgid "Changes saved."
-msgstr ""
+msgstr "変更が保存されました"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Checkbox
 msgid "Checkbox"
-msgstr ""
+msgstr "チェックボックス"
 
 #: components/manage/Widgets/SelectWidget
-# defaultMessage: Choices
 msgid "Choices"
 msgstr ""
 
 #: components/manage/Sidebar/ObjectBrowserBody
-# defaultMessage: Choose Image
 msgid "Choose Image"
-msgstr ""
+msgstr "イメージを選択"
 
 #: components/manage/Sidebar/ObjectBrowserBody
-# defaultMessage: Choose Target
 msgid "Choose Target"
-msgstr ""
+msgstr "ターゲットを選択"
 
 #: components/theme/Navigation/Navigation
-# defaultMessage: Close menu
 msgid "Close menu"
-msgstr ""
+msgstr "メニューを閉じる"
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
-# defaultMessage: Comment
 msgid "Comment"
-msgstr ""
+msgstr "コメント"
 
 #: components/manage/Controlpanels/ModerateComments
-# defaultMessage: Commenter
 msgid "Commenter"
-msgstr ""
+msgstr "投稿者"
 
 #: components/manage/Diff/Diff
-# defaultMessage: Compare
 msgid "Compare"
-msgstr ""
+msgstr "比較"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Confirm password
 msgid "Confirm password"
-msgstr ""
+msgstr "パスワードを確認"
 
 #: components/theme/Footer/Footer
-# defaultMessage: Contact
 msgid "Contact"
-msgstr ""
+msgstr "お問い合わせ"
 
 #: components/theme/ContactForm/ContactForm
-# defaultMessage: Contact form
 msgid "Contact form"
-msgstr ""
+msgstr "お問い合わせフォーム"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Contents
 msgid "Contents"
-msgstr ""
+msgstr "コンテンツ"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
-# defaultMessage: Copy
 msgid "Copy"
-msgstr ""
+msgstr "コピー"
 
 #: components/theme/Footer/Footer
-# defaultMessage: Copyright
 msgid "Copyright"
-msgstr ""
+msgstr "著作権"
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: Copyright statement or other rights information on this item.
 msgid "Copyright statement or other rights information on this item."
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: Creators
 msgid "Creators"
-msgstr ""
+msgstr "作成者"
 
 #: components/manage/Preferences/ChangePassword
-# defaultMessage: Current password
 msgid "Current password"
-msgstr ""
+msgstr "現在のパスワード"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
-# defaultMessage: Cut
 msgid "Cut"
-msgstr ""
+msgstr "カット"
 
 #: components/manage/Controlpanels/ModerateComments
-# defaultMessage: Date
 msgid "Date"
-msgstr ""
+msgstr "日付"
 
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
@@ -339,7 +289,6 @@ msgstr ""
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 #: components/theme/Register/Register
-# defaultMessage: Default
 msgid "Default"
 msgstr ""
 
@@ -350,34 +299,28 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
 #: components/theme/Comments/Comments
-# defaultMessage: Delete
 msgid "Delete"
-msgstr ""
+msgstr "削除"
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Delete Group
 msgid "Delete Group"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Delete User
 msgid "Delete User"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Delete col
 msgid "Delete col"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Delete row
 msgid "Delete row"
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: Descending
 msgid "Descending"
-msgstr ""
+msgstr "降順"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/UsersControlpanel
@@ -389,594 +332,481 @@ msgstr ""
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
-# defaultMessage: Description
 msgid "Description"
-msgstr ""
+msgstr "説明"
 
 #: components/manage/Diff/Diff
-# defaultMessage: Diff
 msgid "Diff"
 msgstr ""
 
 #: components/manage/Diff/Diff
-# defaultMessage: Difference between revision {one} and {two} of {title}
 msgid "Difference between revision {one} and {two} of {title}"
 msgstr ""
 
 #: components/theme/Footer/Footer
-# defaultMessage: Distributed under the {license}.
 msgid "Distributed under the {license}."
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Divide each row into separate cells
 msgid "Divide each row into separate cells"
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: Do you really want to delete the following items?
 msgid "Do you really want to delete the following items?"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Do you really want to delete the group {groupname}?
 msgid "Do you really want to delete the group {groupname}?"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Do you really want to delete the user {username}?
 msgid "Do you really want to delete the user {username}?"
 msgstr ""
 
 #: components/manage/Delete/Delete
-# defaultMessage: Do you really want to delete this item?
 msgid "Do you really want to delete this item?"
 msgstr ""
 
 #: components/manage/Sidebar/Sidebar
-# defaultMessage: Document
 msgid "Document"
-msgstr ""
+msgstr "ページ"
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
-# defaultMessage: E-mail
 msgid "E-mail"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: E-mail addresses do not match.
 msgid "E-mail addresses do not match."
-msgstr ""
+msgstr "E-mail アドレスが見つかりません。"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/Comments
-# defaultMessage: Edit
 msgid "Edit"
-msgstr ""
+msgstr "編集"
 
 #: components/theme/Comments/CommentEditModal
-# defaultMessage: Edit comment
 msgid "Edit comment"
-msgstr ""
+msgstr "コメントを編集"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Edit field
 msgid "Edit field"
-msgstr ""
+msgstr "フィールドを編集"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Edit fieldset
 msgid "Edit fieldset"
-msgstr ""
+msgstr "フィールドセットを編集"
 
 #: components/manage/Edit/Edit
-# defaultMessage: Edit {title}
 msgid "Edit {title}"
-msgstr ""
+msgstr "{title} を編集"
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Email
 msgid "Email"
-msgstr ""
+msgstr "メール"
 
 #: components/theme/ContactForm/ContactForm
-# defaultMessage: Email sent
 msgid "Email sent"
-msgstr ""
+msgstr "メール送信"
 
 #: components/manage/Blocks/Maps/Edit
-# defaultMessage: Enter Map URL
 msgid "Enter Map URL"
-msgstr ""
+msgstr "地図URLを入力"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
-# defaultMessage: Enter URL or title
 msgid "Enter URL or title"
-msgstr ""
+msgstr "URLまたはタイトルを入力"
 
 #: components/manage/Blocks/Video/Edit
-# defaultMessage: Enter Video URL
 msgid "Enter Video URL"
-msgstr ""
+msgstr "ビデオURLを入力"
 
 #: components/theme/Register/Register
-# defaultMessage: Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
-# defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
-msgstr ""
+msgstr "氏名（フルネーム）を入力。例： Hanako Suzuki や 山田太郎 "
 
 #: components/manage/Preferences/ChangePassword
-# defaultMessage: Enter your current password.
 msgid "Enter your current password."
-msgstr ""
+msgstr "現在のパスワードを入力"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your email address for verification.
 msgid "Enter your email address for verification."
-msgstr ""
+msgstr "確認するためにあなたのメールアドレスを入力してください"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Enter your new password. Minimum 5 characters.
 msgid "Enter your new password. Minimum 5 characters."
-msgstr ""
+msgstr "新しいパスワードを入力。（5文字以上）"
 
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
-# defaultMessage: Error
 msgid "Error"
-msgstr ""
+msgstr "エラー"
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: Exclude from navigation
 msgid "Exclude from navigation"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: Expiration Date
 msgid "Expiration Date"
-msgstr ""
+msgstr "ナビゲーションに含まない"
 
 #: components/manage/Sidebar/ImageSidebar
-# defaultMessage: External URL
 msgid "External URL"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: File size
 msgid "File size"
-msgstr ""
+msgstr "ファイルサイズ"
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: Filename
 msgid "Filename"
-msgstr ""
+msgstr "ファイル名"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Filter…
 msgid "Filter…"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Fixed width table cells
 msgid "Fixed width table cells"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
-# defaultMessage: From
 msgid "From"
-msgstr ""
+msgstr "メールアドレス"
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
-# defaultMessage: Full Name
 msgid "Full Name"
-msgstr ""
+msgstr "氏名"
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Fullname
 msgid "Fullname"
-msgstr ""
+msgstr "氏名"
 
 #: components/theme/Footer/Footer
-# defaultMessage: GNU GPL license
 msgid "GNU GPL license"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Group created
 msgid "Group created"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Groupname
 msgid "Groupname"
-msgstr ""
+msgstr "グループ名"
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Groups
 msgid "Groups"
 msgstr ""
 
 #: components/manage/History/History
-# defaultMessage: History of {title}
 msgid "History of {title}"
-msgstr ""
+msgstr "{title} の履歴"
 
 #: components/manage/Contents/Contents
 #: components/theme/Breadcrumbs/Breadcrumbs
-# defaultMessage: Home
 msgid "Home"
-msgstr ""
+msgstr "ホーム"
 
 #: components/manage/Preferences/PersonalInformation
-# defaultMessage: Home page
 msgid "Home page"
-msgstr ""
+msgstr "ホーム"
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: If selected, this item will not appear in the navigation tree
 msgid "If selected, this item will not appear in the navigation tree"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: If this date is in the future, the content will not show up in listings and searches until this date.
 msgid "If this date is in the future, the content will not show up in listings and searches until this date."
 msgstr ""
 
 #: components/theme/NotFound/NotFound
-# defaultMessage: If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}.
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr ""
 
 #: components/theme/Login/Login
-# defaultMessage: If you have forgotten your password, {forgotpassword}
 msgid "If you have forgotten your password, {forgotpassword}"
 msgstr ""
 
 #: components/theme/Login/Login
-# defaultMessage: If you you do not have an account here, head over to the {registrationform}.
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr ""
 
 #: components/manage/Sidebar/ImageSidebar
-# defaultMessage: Image
 msgid "Image"
-msgstr ""
+msgstr "画像"
 
 #: components/manage/Controlpanels/Controlpanel
-# defaultMessage: Info
 msgid "Info"
-msgstr ""
+msgstr "情報"
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: Inherit permissions from higher levels
 msgid "Inherit permissions from higher levels"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Insert col after
 msgid "Insert col after"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Insert col before
 msgid "Insert col before"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Insert row after
 msgid "Insert row after"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Insert row before
 msgid "Insert row before"
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item(s) copied.
 msgid "Item(s) copied."
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: Item(s) cut.
 msgid "Item(s) cut."
 msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
-# defaultMessage: Item(s) pasted.
 msgid "Item(s) pasted."
-msgstr ""
+msgstr "アイテムがペーストされました"
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
-# defaultMessage: Items must be unique.
 msgid "Items must be unique."
 msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences
-# defaultMessage: Language
 msgid "Language"
-msgstr ""
+msgstr "言語"
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: Last modified
 msgid "Last modified"
-msgstr ""
+msgstr "最終変更"
 
 #: components/manage/Sidebar/ImageSidebar
-# defaultMessage: Link to
 msgid "Link to"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
-# defaultMessage: Location
 msgid "Location"
-msgstr ""
+msgstr "位置"
 
 #: components/theme/Login/Login
-# defaultMessage: Login Name
 msgid "Log In"
-msgstr ""
+msgstr "ログイン"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
-# defaultMessage: Log in
 msgid "Log in"
-msgstr ""
+msgstr "ログイン"
 
 #: components/theme/Login/Login
-# defaultMessage: Login Failed
 msgid "Login Failed"
-msgstr ""
+msgstr "ログインに失敗しました"
 
 #: components/theme/Login/Login
-# defaultMessage: Login Name
 msgid "Login Name"
-msgstr ""
+msgstr "ログイン名"
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Make the table compact
 msgid "Make the table compact"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-# defaultMessage: Embed code error, please follow the instructions and try again.
 msgid "Maps data error"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-# defaultMessage: Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it.
 msgid "Maps instructions"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
-# defaultMessage: Message
 msgid "Message"
-msgstr ""
+msgstr "メッセージ"
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
-# defaultMessage: Minimum length is {len}.
 msgid "Minimum length is {len}."
 msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
-# defaultMessage: Moderate comments
 msgid "Moderate comments"
-msgstr ""
+msgstr "コメントのモデレート"
 
 #: components/manage/Contents/ContentsItem
-# defaultMessage: Move to bottom of folder
 msgid "Move to bottom of folder"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
-# defaultMessage: Move to top of folder
 msgid "Move to top of folder"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: My email address is
 msgid "My email address is"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
-# defaultMessage: Name
 msgid "Name"
-msgstr ""
+msgstr "名前"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: New password
 msgid "New password"
-msgstr ""
+msgstr "新しいパスワード"
 
 #: components/manage/Sidebar/ImageSidebar
-# defaultMessage: No image selected
 msgid "No image selected"
 msgstr ""
 
 #: components/manage/Widgets/ReferenceWidget
-# defaultMessage: No results found.
 msgid "No results found."
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: None
 msgid "None"
-msgstr ""
+msgstr "None"
 
 #: components/manage/Delete/Delete
-# defaultMessage: Ok
 msgid "Ok"
 msgstr ""
 
 #: components/manage/Sidebar/ImageSidebar
-# defaultMessage: Open in a new tab
 msgid "Open in a new tab"
-msgstr ""
+msgstr "新しいタブで開く"
 
 #: components/theme/Navigation/Navigation
-# defaultMessage: Open menu
 msgid "Open menu"
 msgstr ""
 
 #: components/manage/Sidebar/ImageSidebar
-# defaultMessage: Origin
 msgid "Origin"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
-# defaultMessage: Password
 msgid "Password"
-msgstr ""
+msgstr "パスワード"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Passwords do not match.
 msgid "Passwords do not match."
-msgstr ""
+msgstr "パスワードが一致しません"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
-# defaultMessage: Paste
 msgid "Paste"
-msgstr ""
+msgstr "ペースト"
 
 #: components/manage/Preferences/PersonalInformation
-# defaultMessage: Personal Information
 msgid "Personal Information"
 msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences
-# defaultMessage: Personal Preferences
 msgid "Personal Preferences"
-msgstr ""
+msgstr "個人別設定"
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Please fill out the form below to set your password.
 msgid "Please fill out the form below to set your password."
 msgstr ""
 
 #: components/theme/Footer/Footer
-# defaultMessage: Plone Foundation
 msgid "Plone Foundation"
 msgstr ""
 
 #: components/theme/Logo/Logo
-# defaultMessage: Plone Site
 msgid "Plone Site"
-msgstr ""
+msgstr "Ploneサイト"
 
 #: components/theme/Footer/Footer
-# defaultMessage: Plone{reg} Open Source CMS/WCM
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
-# defaultMessage: Portrait
 msgid "Portrait"
-msgstr ""
+msgstr "顔写真"
 
 #: components/theme/Footer/Footer
-# defaultMessage: Powered by Plone & Python
 msgid "Powered by Plone & Python"
 msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
-# defaultMessage: Preferences
 msgid "Preferences"
-msgstr ""
+msgstr "個人設定"
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: Preview
 msgid "Preview"
-msgstr ""
+msgstr "プレビュー"
 
 #: components/manage/Toolbar/PersonalTools
-# defaultMessage: Profile
 msgid "Profile"
 msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: Properties
 msgid "Properties"
-msgstr ""
+msgstr "プロパティ"
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: Publishing Date
 msgid "Publishing Date"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Re-enter the password. Make sure the passwords are identical.
 msgid "Re-enter the password. Make sure the passwords are identical."
 msgstr ""
 
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
-# defaultMessage: Read More…
 msgid "Read More…"
-msgstr ""
+msgstr "もっと読む"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Rearrange items by…
 msgid "Rearrange items by…"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Reduce complexity
 msgid "Reduce complexity"
 msgstr ""
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Register/Register
-# defaultMessage: Register
 msgid "Register"
-msgstr ""
+msgstr "登録"
 
 #: components/theme/Register/Register
-# defaultMessage: Registration form
 msgid "Registration form"
-msgstr ""
+msgstr "登録フォーム"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
-# defaultMessage: Rename
 msgid "Rename"
-msgstr ""
+msgstr "名前の変更"
 
 #: components/manage/Contents/ContentsRenameModal
-# defaultMessage: Rename items
 msgid "Rename items"
-msgstr ""
+msgstr "名前の変更"
 
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -985,35 +815,29 @@ msgstr ""
 #: components/manage/Widgets/TextareaWidget
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
-# defaultMessage: Required
 msgid "Required"
-msgstr ""
+msgstr "必須"
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
-# defaultMessage: Required input is missing.
 msgid "Required input is missing."
-msgstr ""
+msgstr "必須"
 
 #: components/manage/History/History
-# defaultMessage: Revert to this revision
 msgid "Revert to this revision"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Richtext
 msgid "Richtext"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: Rights
 msgid "Rights"
-msgstr ""
+msgstr "権利"
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Roles
 msgid "Roles"
-msgstr ""
+msgstr "ロール"
 
 #: components/manage/Add/Add
 #: components/manage/Blocks/Video/Edit
@@ -1022,87 +846,70 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-# defaultMessage: Save
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: components/theme/SearchWidget/SearchWidget
-# defaultMessage: Search
 msgid "Search"
-msgstr ""
+msgstr "検索"
 
 #: components/theme/SearchWidget/SearchWidget
-# defaultMessage: Search Site
 msgid "Search Site"
-msgstr ""
+msgstr "検索"
 
 #: components/manage/Sidebar/ObjectBrowserBody
-# defaultMessage: Search content
 msgid "Search content"
-msgstr ""
+msgstr "検索"
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: Search for user or group
 msgid "Search for user or group"
-msgstr ""
+msgstr "検索"
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Search group...
 msgid "Search group..."
-msgstr ""
+msgstr "検索"
 
 #: components/theme/Search/Search
-# defaultMessage: Search results
 msgid "Search results"
-msgstr ""
+msgstr "検索"
 
 #: components/theme/Search/Search
-# defaultMessage: Search results for {term}
 msgid "Search results for {term}"
-msgstr ""
+msgstr "検索"
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Search users...
 msgid "Search users..."
-msgstr ""
+msgstr "検索"
 
 #: components/manage/Contents/Contents
-# defaultMessage: Select columns to show
 msgid "Select columns to show"
 msgstr ""
 
 #: components/manage/Contents/ContentsWorkflowModal
-# defaultMessage: Select the transition to be used for modifying the items state.
 msgid "Select the transition to be used for modifying the items state."
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Selection
 msgid "Selection"
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: Select…
 msgid "Select…"
-msgstr ""
+msgstr "選択…"
 
 #: components/theme/ContactForm/ContactForm
-# defaultMessage: Send
 msgid "Send"
-msgstr ""
+msgstr "送る"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Set my password
 msgid "Set my password"
-msgstr ""
+msgstr "パスワードを設定"
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Set your password
 msgid "Set your password"
-msgstr ""
+msgstr "パスワードを設定"
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: Sharing for {title}
 msgid "Sharing for {title}"
 msgstr ""
 
@@ -1113,72 +920,59 @@ msgstr ""
 #: components/manage/Widgets/TextareaWidget
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
-# defaultMessage: Short Name
 msgid "Short Name"
-msgstr ""
+msgstr "ショートネーム"
 
 #: components/manage/Contents/ContentsRenameModal
-# defaultMessage: Short name
 msgid "Short name"
-msgstr ""
+msgstr "ショートネーム"
 
 #: components/theme/Login/Login
-# defaultMessage: Sign in to start session
 msgid "Sign in to start session"
 msgstr ""
 
 #: components/theme/Logo/Logo
-# defaultMessage: Site
 msgid "Site"
-msgstr ""
+msgstr "サイト"
 
 #: components/theme/NotFound/NotFound
-# defaultMessage: Site Administration
 msgid "Site Administration"
-msgstr ""
+msgstr "サイト管理"
 
 #: components/theme/Footer/Footer
-# defaultMessage: Site Map
 msgid "Site Map"
-msgstr ""
+msgstr "サイトマップ"
 
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
-# defaultMessage: Site Setup
 msgid "Site Setup"
-msgstr ""
+msgstr "サイト設定"
 
 #: components/manage/Blocks/Video/Edit
-# defaultMessage: Specify a youtube video or playlist url
 msgid "Specify a youtube video or playlist url"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Start password reset
 msgid "Start password reset"
-msgstr ""
+msgstr "パスワード再設定を開始"
 
 #: components/manage/Contents/Contents
 #: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
-# defaultMessage: State
 msgid "State"
-msgstr ""
+msgstr "状態"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: String
 msgid "String"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Stripe alternate rows with color
 msgid "Stripe alternate rows with color"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
-# defaultMessage: Subject
 msgid "Subject"
-msgstr ""
+msgstr "件名"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -1187,79 +981,64 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/theme/ContactForm/ContactForm
-# defaultMessage: Success
 msgid "Success"
-msgstr ""
+msgstr "成功"
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Table
 msgid "Table"
-msgstr ""
+msgstr "テーブル"
 
 #: components/manage/Blocks/Table/Edit
-# defaultMessage: Table color inverted
 msgid "Table color inverted"
 msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
-# defaultMessage: Tags
 msgid "Tags"
-msgstr ""
+msgstr "タグ"
 
 #: components/manage/Contents/ContentsTagsModal
-# defaultMessage: Tags to add
 msgid "Tags to add"
-msgstr ""
+msgstr "追加するタグ"
 
 #: components/manage/Contents/ContentsTagsModal
-# defaultMessage: Tags to remove
 msgid "Tags to remove"
-msgstr ""
+msgstr "削除をするタグ"
 
 #: components/manage/Widgets/SchemaWidget
-# defaultMessage: Text
 msgid "Text"
-msgstr ""
+msgstr "テキスト"
 
 #: components/theme/NotFound/NotFound
-# defaultMessage: Thank you.
 msgid "Thank you."
-msgstr ""
+msgstr "ありがとうございます。"
 
 #: components/manage/Preferences/PersonalInformation
-# defaultMessage: The URL for your external home page, if you have one.
 msgid "The URL for your external home page, if you have one."
 msgstr ""
 
 #: components/theme/Register/Register
-# defaultMessage: The registration process has been successful. Please check your e-mail inbox for information on how activate your account.
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
-# defaultMessage: The user portrait/avatar
 msgid "The user portrait/avatar"
 msgstr ""
 
 #: components/theme/Footer/Footer
-# defaultMessage: The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends.
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr ""
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
-# defaultMessage: There were some errors.
 msgid "There were some errors."
 msgstr ""
 
 #: components/manage/Contents/ContentsRenameModal
-# defaultMessage: This name will be displayed in the URL.
 msgid "This name will be displayed in the URL."
-msgstr ""
+msgstr "この名前はURLの一部として使用されます"
 
 #: components/theme/NotFound/NotFound
-# defaultMessage: This page does not seem to exist…
 msgid "This page does not seem to exist…"
 msgstr ""
 
@@ -1275,49 +1054,40 @@ msgstr ""
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 #: components/theme/View/TabularView
-# defaultMessage: Title
 msgid "Title"
-msgstr ""
+msgstr "タイトル"
 
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
-# defaultMessage: Type
 msgid "Type"
-msgstr ""
+msgstr "タイプ"
 
 #: components/manage/Blocks/Text/Edit
-# defaultMessage: Type text…
 msgid "Type text…"
 msgstr ""
 
 #: components/manage/Blocks/Title/Edit
-# defaultMessage: Type the title…
 msgid "Type the title…"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
-# defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: Upload
 msgid "Upload"
-msgstr ""
+msgstr "アップロード"
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: Upload files
 msgid "Upload files"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: Upload {count, plural, one {# file} other {# files}}
 msgid "Upload {count, plural, one {# file} other {# files}}"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
-# defaultMessage: Uploading files
 msgid "Uploading files"
 msgstr ""
 
@@ -1328,251 +1098,201 @@ msgstr ""
 #: components/manage/Widgets/TextareaWidget
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
-# defaultMessage: Used for programmatic access to the fieldset.
 msgid "Used for programmatic access to the fieldset."
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: User created
 msgid "User created"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: User name
 msgid "User name"
-msgstr ""
+msgstr "ユーザ名"
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Username
 msgid "Username"
-msgstr ""
+msgstr "ユーザ名"
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Users
 msgid "Users"
-msgstr ""
+msgstr "ユーザ"
 
 #: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: Users and groups settings
 msgid "Users and groups settings"
-msgstr ""
+msgstr "ユーザとグループの設定"
 
 #: components/manage/Controlpanels/Controlpanels
-# defaultMessage: Version Overview
 msgid "Version Overview"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
-# defaultMessage: View
 msgid "View"
-msgstr ""
+msgstr "表示"
 
 #: components/manage/History/History
-# defaultMessage: View changes
 msgid "View changes"
-msgstr ""
+msgstr "表示"
 
 #: components/manage/History/History
-# defaultMessage: View this revision
 msgid "View this revision"
-msgstr ""
+msgstr "表示"
 
 #: components/manage/Display/Display
-# defaultMessage: View
 msgid "Viewmode"
-msgstr ""
+msgstr "表示"
 
 #: components/theme/NotFound/NotFound
-# defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
-# defaultMessage: We will use this address if you need to recover your password
 msgid "We will use this address if you need to recover your password"
-msgstr ""
+msgstr "あなたのパスワードを回復する必要がある場合、このアドレスが使われます。"
 
 #: components/manage/History/History
-# defaultMessage: What
 msgid "What"
 msgstr ""
 
 #: components/manage/History/History
-# defaultMessage: When
 msgid "When"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
-# defaultMessage: When this date is reached, the content will nolonger be visible in listings and searches.
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
 msgstr ""
 
 #: components/manage/History/History
-# defaultMessage: Who
 msgid "Who"
 msgstr ""
 
 #: components/manage/Workflow/Workflow
-# defaultMessage: Workflow updated.
 msgid "Workflow updated."
 msgstr ""
 
 #: components/theme/Comments/Comments
-# defaultMessage: You can add a comment by filling out the form below. Plain text formatting.
 msgid "You can add a comment by filling out the form below. Plain text formatting."
 msgstr ""
 
 #: components/manage/Sharing/Sharing
-# defaultMessage: You can control who can view and edit your item using the list below.
 msgid "You can control who can view and edit your item using the list below."
 msgstr ""
 
 #: components/manage/Diff/Diff
-# defaultMessage: You can view the difference of the revisions below.
 msgid "You can view the difference of the revisions below."
 msgstr ""
 
 #: components/manage/History/History
-# defaultMessage: You can view the history of your item below.
 msgid "You can view the history of your item below."
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Your email is required for reset your password.
 msgid "Your email is required for reset your password."
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
-# defaultMessage: Your location - either city and country - or in a company setting, where your office is located.
 msgid "Your location - either city and country - or in a company setting, where your office is located."
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
-# defaultMessage: Your password has been set successfully. You may now {link} with your new password.
 msgid "Your password has been set successfully. You may now {link} with your new password."
 msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences
-# defaultMessage: Your preferred language
 msgid "Your preferred language"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Forgot your password?
 msgid "box_forgot_password_option"
-msgstr ""
+msgstr "パスワードを忘れた？"
 
 #: config/Blocks
-# defaultMessage: Common
 msgid "common"
 msgstr ""
 
 #: config/Blocks
-# defaultMessage: Description
 msgid "description"
-msgstr ""
+msgstr "説明"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password.
 msgid "description_lost_password"
-msgstr ""
+msgstr "安全上の理由で、パスワードは暗号化されて保管されており、それをメールで送ることはできません。パスワードを再設定するには下記のフォームに記入してください。パスワード再設定の処理を開始するように登録すれば、指定されたメールアドレスにＥメールが送られます。"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Your password reset request has been mailed. It should arrive in your mailbox shortly. When you receive the message, visit the address it contains to reset your password.
 msgid "description_sent_password"
-msgstr ""
+msgstr "パスワード再設定のお願いをメール送信しました。まもなくあなたのメールボックスに届くはずです。メッセージを受け取ったら、その中にあるパスワード再設定用のURLにアクセスしてください。"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: Password reset confirmation sent
 msgid "heading_sent_password"
-msgstr ""
+msgstr "パスワード再設定の確認が送られました"
 
 #: config/Blocks
-# defaultMessage: Hero
 msgid "hero"
 msgstr ""
 
 #: config/Blocks
-# defaultMessage: HTML
 msgid "html"
-msgstr ""
+msgstr "HTML"
 
 #: config/Blocks
-# defaultMessage: Image
 msgid "image"
-msgstr ""
+msgstr "画像"
 
 #: components/theme/PasswordReset/RequestPasswordReset
-# defaultMessage: My email address is
 msgid "label_my_email_address_is"
-msgstr ""
+msgstr "私のメールアドレスは"
 
 #: config/Blocks
-# defaultMessage: Maps
 msgid "maps"
-msgstr ""
+msgstr "地図"
 
 #: config/Blocks
-# defaultMessage: Media
 msgid "media"
-msgstr ""
+msgstr "メディア"
 
 #: config/Blocks
-# defaultMessage: Most used
 msgid "mostUsed"
 msgstr ""
 
 #: components/theme/Login/Login
-# defaultMessage: registration form
 msgid "registration form"
 msgstr ""
 
 #: config/Blocks
-# defaultMessage: Table
 msgid "table"
-msgstr ""
+msgstr "テーブル"
 
 #: config/Blocks
-# defaultMessage: Text
 msgid "text"
-msgstr ""
+msgstr "テキスト"
 
 #: config/Blocks
-# defaultMessage: Title
 msgid "title"
-msgstr ""
+msgstr "タイトル"
 
 #: config/Blocks
-# defaultMessage: Video
 msgid "video"
-msgstr ""
+msgstr "ビデオ"
 
 #: components/theme/Login/Login
-# defaultMessage: we can send you a new one
 msgid "we can send you a new one"
 msgstr ""
 
 #: components/manage/Contents/Contents
-# defaultMessage: {count} selected
 msgid "{count} selected"
 msgstr ""
 
 #: components/manage/Actions/Actions
-# defaultMessage: {title} copied.
 msgid "{title} copied."
 msgstr ""
 
 #: components/manage/Actions/Actions
-# defaultMessage: {title} cut.
 msgid "{title} cut."
 msgstr ""
 
 #: components/manage/Actions/Actions
-# defaultMessage: {title} has been deleted.
 msgid "{title} has been deleted."
 msgstr ""
 
 #: components/theme/Comments/Comments
-# defaultMessage: {user} says:
 msgid "{user} says:"
 msgstr ""
