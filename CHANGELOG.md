@@ -8,7 +8,7 @@
 - Automatically switch sidebar on block change @robgietema
 - Fix file and link redirect views @robgietema
 - Japanese translation @terapyon
-- Add new line in text blocks tests @rodfersou
+- Add tests for new line in text blocks @rodfersou
 
 ### Changes
 
