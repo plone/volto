@@ -11,7 +11,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('?fullobjects');
     });
 
-    it('Add title block', () => {
+    /*it('Add title block', () => {
       cy.get(`.block.title [data-contents]`)
         .clear()
         .type('My title');
@@ -34,7 +34,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#toolbar-save').click();
 
       cy.get('#page-document p').contains('My text');
-    });
+    });*/
 
     it('Add Listing block', () => {
       cy.visit('/my-page');
@@ -69,7 +69,7 @@ if (Cypress.env('API') !== 'guillotina') {
         .contains('Listing')
         .click();
 
-      //verify
+      //verify before save
       cy.get(`.block.listing .listing-body:first-of-type`).contains(
         'My Page Test',
       );
@@ -87,10 +87,62 @@ if (Cypress.env('API') !== 'guillotina') {
         '/my-page/my-page-test',
       );
 
-      //     .click()
-      //     .type(
-      //       `https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png{enter}`,
-      //     );
+      //return on edit to apply some filters...
+      cy.visit('/my-page/edit');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('?fullobjects');
+
+      //select listing block
+      cy.get('.ui.block.listing').click();
+
+      //add short-name criteria
+      cy.get('.sidebar-listing-data .fields')
+        .contains('Add criteria')
+        .click();
+      cy.get(
+        '.sidebar-listing-data .fields:first-of-type .field:first-of-type .react-select__menu .react-select__option',
+      )
+        .contains('Short name (id)')
+        .click();
+      //short-name is..
+
+      cy.get(
+        '.sidebar-listing-data .fields:first-of-type .main-fields-wrapper .field:last-of-type',
+      ).click();
+      cy.get(
+        '.sidebar-listing-data .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
+      )
+        .contains('Is')
+        .click();
+
+      cy.get('.sidebar-listing-data .fields:first-of-type > .field input')
+        .clear()
+        .type('my-page-test');
+
+      //verify, before save, if in list there's the page with id my-page-test
+      cy.get(`.block.listing .listing-body:first-of-type`).contains(
+        'My Page Test',
+      );
+      //verify, before save, if in list there isn't the News with title My News
+      cy.get(`.block.listing .listing-body`)
+        .contains('My News')
+        .should('not.exist');
+
+      //save
+      cy.get('#toolbar-save').click();
+
+      //test after save
+      cy.get('#page-document .listing-body:first-of-type').contains(
+        'My Page Test',
+      );
+      cy.get('#page-document .listing-item:first-of-type a').should(
+        'have.attr',
+        'href',
+        '/my-page/my-page-test',
+      );
     });
 
     // it('Add image block', () => {
