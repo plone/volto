@@ -18,7 +18,7 @@ import { Api } from '../../../helpers';
 import configureStore from '../../../store';
 import { DefaultView } from '../../../components/';
 
-const history = createBrowserHistory();
+const history = __CLIENT__ ? createBrowserHistory() : {};
 
 /**
  * Diff field component.
