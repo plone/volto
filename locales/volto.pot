@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-12-12T13:04:57.180Z\n"
+"POT-Creation-Date: 2019-12-12T14:22:09.816Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1182,6 +1182,11 @@ msgstr ""
 msgid "Specify a youtube video or playlist url"
 msgstr ""
 
+#: components/manage/Diff/Diff
+# defaultMessage: Split
+msgid "Split"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Start password reset
 msgid "Start password reset"
@@ -1322,6 +1327,11 @@ msgstr ""
 #: components/manage/Blocks/Title/Edit
 # defaultMessage: Type the title…
 msgid "Type the title…"
+msgstr ""
+
+#: components/manage/Diff/Diff
+# defaultMessage: Unified
+msgid "Unified"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit

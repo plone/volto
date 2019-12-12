@@ -969,6 +969,10 @@ msgstr ""
 msgid "Specify a youtube video or playlist url"
 msgstr ""
 
+#: components/manage/Diff/Diff
+msgid "Split"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
 msgstr ""
@@ -1085,6 +1089,10 @@ msgstr ""
 
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
+msgstr ""
+
+#: components/manage/Diff/Diff
+msgid "Unified"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit

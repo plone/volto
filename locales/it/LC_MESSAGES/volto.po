@@ -969,6 +969,10 @@ msgstr "Configurazione del sito"
 msgid "Specify a youtube video or playlist url"
 msgstr "Specifica l'URL di un video o una playlist di YouTube"
 
+#: components/manage/Diff/Diff
+msgid "Split"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
 msgstr "Rinnova la password"
@@ -1086,6 +1090,10 @@ msgstr "Digita testo…"
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr "Digita il titolo…"
+
+#: components/manage/Diff/Diff
+msgid "Unified"
+msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView

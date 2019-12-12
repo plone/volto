@@ -984,6 +984,10 @@ msgstr "Seiteneinstellungen"
 msgid "Specify a youtube video or playlist url"
 msgstr "Geben Sie ein YouTube-Video oder eine YouTube-Playlist URL ein"
 
+#: components/manage/Diff/Diff
+msgid "Split"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
 msgstr "E-Mail anfordern"
@@ -1101,6 +1105,10 @@ msgstr "Text eingeben…"
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr "Titel eingeben…"
+
+#: components/manage/Diff/Diff
+msgid "Unified"
+msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
