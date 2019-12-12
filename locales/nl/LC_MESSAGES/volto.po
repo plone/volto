@@ -728,6 +728,10 @@ msgstr ""
 msgid "No results found."
 msgstr ""
 
+#: components/manage/Widgets/ReferenceWidget
+msgid "No value"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "None"
 msgstr "Niks"

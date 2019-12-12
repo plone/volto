@@ -709,6 +709,10 @@ msgstr "Nessuna immagine selezionata"
 msgid "No results found."
 msgstr "La ricerca non ha prodotto risultati."
 
+#: components/manage/Widgets/ReferenceWidget
+msgid "No value"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "None"
 msgstr "Nessuno"

@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2019-12-12 10:59-0400\n"
+"PO-Revision-Date: 2019-12-12 11:09-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -718,6 +718,10 @@ msgstr "Ninguna imagen seleccionada"
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "La búsqueda no produjo resultados."
+
+#: components/manage/Widgets/ReferenceWidget
+msgid "No value"
+msgstr "Sin valor"
 
 #: components/manage/Contents/Contents
 msgid "None"
