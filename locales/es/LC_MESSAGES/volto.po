@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2019-12-12 13:24-0400\n"
+"PO-Revision-Date: 2019-12-12 15:46-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -702,6 +702,10 @@ msgstr "Mensaje"
 msgid "Minimum length is {len}."
 msgstr "El tamaño mínimo es {len}."
 
+#: components/manage/Controlpanels/Controlpanels
+msgid "Moderate Comments"
+msgstr "Moderar Comentarios"
+
 #: components/manage/Controlpanels/ModerateComments
 msgid "Moderate comments"
 msgstr "Moderar comentarios"
@@ -1210,6 +1214,10 @@ msgstr "Nombre de usuario"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users"
 msgstr "Usuarios"
+
+#: components/manage/Controlpanels/Controlpanels
+msgid "Users and Groups"
+msgstr "Usuarios y Grupos"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"

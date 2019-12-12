@@ -707,6 +707,10 @@ msgstr ""
 msgid "Minimum length is {len}."
 msgstr "Minimale Länge ist {len}"
 
+#: components/manage/Controlpanels/Controlpanels
+msgid "Moderate Comments"
+msgstr ""
+
 #: components/manage/Controlpanels/ModerateComments
 msgid "Moderate comments"
 msgstr "Kommentare moderieren"
@@ -1215,6 +1219,10 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users"
 msgstr "Nutzer"
+
+#: components/manage/Controlpanels/Controlpanels
+msgid "Users and Groups"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
