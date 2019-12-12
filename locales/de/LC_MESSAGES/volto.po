@@ -933,6 +933,10 @@ msgstr "Nutzer suchen..."
 msgid "Select columns to show"
 msgstr "Spalten wählen die angezeigt werden"
 
+#: components/manage/Widgets/QuerystringWidget
+msgid "Select criteria"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Wählen Sie den Statuswechsel, der benutzt werden soll, um den Status des Artikels zu ändern."

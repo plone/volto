@@ -918,6 +918,10 @@ msgstr "Cerca utenti..."
 msgid "Select columns to show"
 msgstr "Seleziona le colonne da mostrare"
 
+#: components/manage/Widgets/QuerystringWidget
+msgid "Select criteria"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Seleziona la transizione da effettuare per cambiare lo stato del contenuto."

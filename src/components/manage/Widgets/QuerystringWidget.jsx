@@ -51,6 +51,10 @@ const messages = defineMessages({
     id: 'Required',
     defaultMessage: 'Required',
   },
+  selectCriteria: {
+    id: 'Select criteria',
+    defaultMessage: 'Select criteria',
+  },
 });
 
 const Option = props => {
@@ -517,7 +521,9 @@ class QuerystringWidget extends Component {
                     disabled={onEdit !== null}
                     className="react-select-container"
                     classNamePrefix="react-select"
-                    placeholder="Select criteria"
+                    placeholder={this.props.intl.formatMessage(
+                      messages.selectCriteria,
+                    )}
                     options={map(
                       toPairs(groupBy(toPairs(indexes), item => item[1].group)),
                       group => ({
