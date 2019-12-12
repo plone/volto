@@ -475,6 +475,10 @@ msgstr "Errore"
 msgid "Exclude from navigation"
 msgstr "Escludi dalla navigazione"
 
+#: components/manage/Sidebar/Sidebar
+msgid "Expand sidebar"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
 msgstr "Data di scadenza"
@@ -1006,6 +1010,10 @@ msgstr "Nome Breve"
 #: components/manage/Contents/ContentsRenameModal
 msgid "Short name"
 msgstr "Nome breve"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Shrink sidebar"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "Sign in to start session"

@@ -490,6 +490,10 @@ msgstr "Fehler"
 msgid "Exclude from navigation"
 msgstr "Von der Navigation ausschließen"
 
+#: components/manage/Sidebar/Sidebar
+msgid "Expand sidebar"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
 msgstr "Ablaufdatum"
@@ -1021,6 +1025,10 @@ msgstr "Kurzname"
 #: components/manage/Contents/ContentsRenameModal
 msgid "Short name"
 msgstr "Kurzname"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Shrink sidebar"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "Sign in to start session"

@@ -21,6 +21,14 @@ const messages = defineMessages({
     id: 'Block',
     defaultMessage: 'Block',
   },
+  shrinkSidebar: {
+    id: 'Shrink sidebar',
+    defaultMessage: 'Shrink sidebar',
+  },
+  expandSidebar: {
+    id: 'Expand sidebar',
+    defaultMessage: 'Expand sidebar',
+  },
 });
 
 /**
@@ -80,7 +88,11 @@ class Sidebar extends Component {
         />
         <div className={cx('sidebar-container', { collapsed: !expanded })}>
           <Button
-            aria-label={expanded ? 'Shrink sidebar' : 'Expand sidebar'}
+            aria-label={
+              expanded
+                ? this.props.intl.formatMessage(messages.shrinkSidebar)
+                : this.props.intl.formatMessage(messages.expandSidebar)
+            }
             className={
               this.props.content && this.props.content.review_state
                 ? `${this.props.content.review_state} trigger`

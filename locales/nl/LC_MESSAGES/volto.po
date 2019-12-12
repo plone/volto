@@ -494,6 +494,10 @@ msgstr ""
 msgid "Exclude from navigation"
 msgstr "Sluit uit van de navigatiestructuur"
 
+#: components/manage/Sidebar/Sidebar
+msgid "Expand sidebar"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
 msgstr "Vervaldatum"
@@ -1025,6 +1029,10 @@ msgstr ""
 #: components/manage/Contents/ContentsRenameModal
 msgid "Short name"
 msgstr "Korte naam"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Shrink sidebar"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "Sign in to start session"
