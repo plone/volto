@@ -300,6 +300,7 @@ msgstr "Default"
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
+#: components/manage/Widgets/TextareaWidget
 #: components/manage/Widgets/TextWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
