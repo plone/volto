@@ -7,7 +7,7 @@ import Edit from './Edit';
 
 const mockStore = configureStore();
 
-test('renders an edit image block component', () => {
+test('renders an edit video block component', () => {
   const store = mockStore({
     intl: {
       locale: 'en',
