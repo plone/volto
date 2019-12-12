@@ -168,6 +168,7 @@ msgid "Cell"
 msgstr "Celda"
 
 #: components/manage/Blocks/Maps/Edit
+#: components/manage/Blocks/Video/Edit
 msgid "Center"
 msgstr "Centro"
 
@@ -496,6 +497,7 @@ msgid "From"
 msgstr "De"
 
 #: components/manage/Blocks/Maps/Edit
+#: components/manage/Blocks/Video/Edit
 msgid "Full"
 msgstr "Completo"
 
@@ -617,6 +619,7 @@ msgid "Last modified"
 msgstr "Última modificación"
 
 #: components/manage/Blocks/Maps/Edit
+#: components/manage/Blocks/Video/Edit
 msgid "Left"
 msgstr "Izquierda"
 
@@ -851,6 +854,7 @@ msgid "Richtext"
 msgstr "Texto formateado"
 
 #: components/manage/Blocks/Maps/Edit
+#: components/manage/Blocks/Video/Edit
 msgid "Right"
 msgstr "Derecha"
 

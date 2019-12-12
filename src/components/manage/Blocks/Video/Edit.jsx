@@ -21,6 +21,22 @@ const messages = defineMessages({
     id: 'Save',
     defaultMessage: 'Save',
   },
+  left: {
+    id: 'Left',
+    defaultMessage: 'Left',
+  },
+  right: {
+    id: 'Right',
+    defaultMessage: 'Right',
+  },
+  center: {
+    id: 'Center',
+    defaultMessage: 'Center',
+  },
+  full: {
+    id: 'Full',
+    defaultMessage: 'Full',
+  },
   VideoFormDescription: {
     id: 'Specify a youtube video or playlist url',
     defaultMessage: 'Specify a youtube video or playlist url',
@@ -153,7 +169,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Left"
+                aria-label={this.props.intl.formatMessage(messages.left)}
                 onClick={this.onAlignBlock.bind(this, 'left')}
                 active={data.align === 'left'}
               >
@@ -164,7 +180,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Right"
+                aria-label={this.props.intl.formatMessage(messages.right)}
                 onClick={this.onAlignBlock.bind(this, 'right')}
                 active={data.align === 'right'}
               >
@@ -175,7 +191,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Center"
+                aria-label={this.props.intl.formatMessage(messages.center)}
                 onClick={this.onAlignBlock.bind(this, 'center')}
                 active={data.align === 'center' || !data.align}
               >
@@ -186,7 +202,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Full"
+                aria-label={this.props.intl.formatMessage(messages.full)}
                 onClick={this.onAlignBlock.bind(this, 'full')}
                 active={data.align === 'full'}
               >
