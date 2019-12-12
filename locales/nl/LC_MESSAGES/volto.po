@@ -679,6 +679,10 @@ msgid "Log in"
 msgstr "Inloggen"
 
 #: components/theme/Login/Login
+msgid "Login"
+msgstr ""
+
+#: components/theme/Login/Login
 msgid "Login Failed"
 msgstr ""
 

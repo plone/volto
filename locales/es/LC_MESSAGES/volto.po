@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2019-12-12 12:39-0400\n"
+"PO-Revision-Date: 2019-12-12 13:13-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -667,6 +667,10 @@ msgstr "Inicio de Sesión"
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 msgid "Log in"
+msgstr "Inicio de sesión"
+
+#: components/theme/Login/Login
+msgid "Login"
 msgstr "Inicio de sesión"
 
 #: components/theme/Login/Login
