@@ -1322,6 +1322,10 @@ msgstr "Testo"
 msgid "title"
 msgstr "Titolo"
 
+#: components/manage/Toolbar/PersonalTools
+msgid "user avatar"
+msgstr ""
+
 #: config/Blocks
 msgid "video"
 msgstr "Video"

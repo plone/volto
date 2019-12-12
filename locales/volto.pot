@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-12-12T14:42:28.403Z\n"
+"POT-Creation-Date: 2019-12-12T14:54:24.150Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1614,6 +1614,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Title
 msgid "title"
+msgstr ""
+
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: user avatar
+msgid "user avatar"
 msgstr ""
 
 #: config/Blocks

@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2019-12-12 10:40-0400\n"
+"PO-Revision-Date: 2019-12-12 10:48-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -1331,6 +1331,10 @@ msgstr "Texto"
 #: config/Blocks
 msgid "title"
 msgstr "Título"
+
+#: components/manage/Toolbar/PersonalTools
+msgid "user avatar"
+msgstr "avatar de usuario"
 
 #: config/Blocks
 msgid "video"
