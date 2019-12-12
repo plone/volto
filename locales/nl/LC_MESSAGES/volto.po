@@ -52,6 +52,10 @@ msgstr ""
 msgid "Actions"
 msgstr "Acties"
 
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Add"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Add Content"
 msgstr ""
@@ -1225,6 +1229,7 @@ msgid "Users"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and Groups"
 msgstr ""
 
