@@ -771,6 +771,7 @@ msgid "Password"
 msgstr "Contraseña"
 
 #: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
 msgid "Password reset"
 msgstr "Restablecer contraseña"
 

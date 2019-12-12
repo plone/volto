@@ -780,6 +780,7 @@ msgid "Password"
 msgstr "Wachtwoord"
 
 #: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
 msgid "Password reset"
 msgstr ""
 
