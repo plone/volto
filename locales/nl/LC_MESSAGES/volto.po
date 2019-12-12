@@ -541,6 +541,10 @@ msgid "Groups"
 msgstr ""
 
 #: components/manage/History/History
+msgid "History"
+msgstr ""
+
+#: components/manage/History/History
 msgid "History of {title}"
 msgstr "Geschiedenis van {title}"
 
