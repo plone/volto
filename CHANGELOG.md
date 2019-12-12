@@ -12,7 +12,6 @@
 
 ### Added
 
-- Added translations to spanish @macagua
 - Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
 - Automatically switch sidebar on block change @robgietema
 - Japanese translation @terapyon
