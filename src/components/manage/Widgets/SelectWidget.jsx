@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { map, find, isBoolean, isObject } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import Select, { components } from 'react-select';
+import Select from 'react-select';
 import AsyncPaginate from 'react-select-async-paginate';
 
 import {
@@ -19,12 +19,15 @@ import {
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
+
 import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
 
-import downSVG from '@plone/volto/icons/down-key.svg';
-import upSVG from '@plone/volto/icons/up-key.svg';
-import checkSVG from '@plone/volto/icons/check.svg';
+import {
+  Option,
+  DropdownIndicator,
+  selectTheme,
+  customSelectStyles,
+} from './SelectStyling';
 
 const messages = defineMessages({
   default: {
@@ -56,86 +59,6 @@ const messages = defineMessages({
     defaultMessage: 'Required',
   },
 });
-
-const Option = props => {
-  return (
-    <components.Option {...props}>
-      <div>{props.label}</div>
-      {props.isFocused && !props.isSelected && (
-        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
-      )}
-      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
-    </components.Option>
-  );
-};
-
-const DropdownIndicator = props => {
-  return (
-    <components.DropdownIndicator {...props}>
-      {props.selectProps.menuIsOpen ? (
-        <Icon name={upSVG} size="24px" color="#007bc1" />
-      ) : (
-        <Icon name={downSVG} size="24px" color="#007bc1" />
-      )}
-    </components.DropdownIndicator>
-  );
-};
-
-const selectTheme = theme => ({
-  ...theme,
-  borderRadius: 0,
-  colors: {
-    ...theme.colors,
-    primary25: 'hotpink',
-    primary: '#b8c6c8',
-  },
-});
-
-const customSelectStyles = {
-  control: (styles, state) => ({
-    ...styles,
-    border: 'none',
-    borderBottom: '1px solid #c7d5d8',
-    boxShadow: 'none',
-    borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
-    height: '60px',
-  }),
-  menu: (styles, state) => ({
-    ...styles,
-    top: null,
-    marginTop: 0,
-    boxShadow: 'none',
-    borderBottom: '1px solid #c7d5d8',
-  }),
-  indicatorSeparator: styles => ({
-    ...styles,
-    width: null,
-  }),
-  valueContainer: styles => ({
-    ...styles,
-    paddingLeft: 0,
-  }),
-  dropdownIndicator: styles => ({
-    paddingRight: 0,
-  }),
-  option: (styles, state) => ({
-    ...styles,
-    backgroundColor: null,
-    height: '50px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '14px 12px',
-    color: state.isSelected
-      ? '#007bc1'
-      : state.isFocused
-      ? '#4a4a4a'
-      : 'inherit',
-    ':active': {
-      backgroundColor: null,
-    },
-  }),
-};
 
 function getDefaultValues(choices, value) {
   if (!isObject(value) && isBoolean(value)) {
@@ -236,15 +159,16 @@ class SelectWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (this.vocabBaseUrl) {
+    if (!this.props.choices && this.vocabBaseUrl) {
       this.props.getVocabulary(this.vocabBaseUrl);
     }
   }
 
-  vocabBaseUrl =
-    getVocabFromHint(this.props) ||
-    getVocabFromField(this.props) ||
-    getVocabFromItems(this.props);
+  vocabBaseUrl = !this.props.choices
+    ? getVocabFromHint(this.props) ||
+      getVocabFromField(this.props) ||
+      getVocabFromItems(this.props)
+    : '';
 
   /**
    * Initiate search with new query
@@ -440,11 +364,20 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => {
-      const vocabBaseUrl =
-        getVocabFromHint(props) ||
-        getVocabFromField(props) ||
-        getVocabFromItems(props);
+      const vocabBaseUrl = !props.choices
+        ? getVocabFromHint(props) ||
+          getVocabFromField(props) ||
+          getVocabFromItems(props)
+        : '';
       const vocabState = state.vocabularies[vocabBaseUrl];
+
+      // If the schema already has the choices in it, then do not try to get the vocab,
+      // even if there is one
+      if (props.choices) {
+        return {
+          choices: props.choices,
+        };
+      }
 
       if (vocabState) {
         return {

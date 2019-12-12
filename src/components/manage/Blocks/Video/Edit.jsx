@@ -213,28 +213,54 @@ class Edit extends Component {
               'full-width': this.props.data.align === 'full',
             })}
           >
-            <div className="ui blocker" />
-            {data.url.match('list') ? (
-              <Embed
-                url={`https://www.youtube.com/embed/videoseries?list=${
-                  data.url.match(/^.*\?list=(.*)$/)[1]
-                }`}
-                icon="arrow right"
-                defaultActive
-                autoplay={false}
-              />
+            {data.url.match('youtu') ? (
+              <>
+                <div className="ui blocker" />
+                {data.url.match('list') ? (
+                  <Embed
+                    url={`https://www.youtube.com/embed/videoseries?list=${
+                      data.url.match(/^.*\?list=(.*)$/)[1]
+                    }`}
+                    icon="arrow right"
+                    defaultActive
+                    autoplay={false}
+                  />
+                ) : (
+                  <Embed
+                    id={
+                      data.url.match(/.be\//)
+                        ? data.url.match(/^.*\.be\/(.*)/)[1]
+                        : data.url.match(/^.*\?v=(.*)$/)[1]
+                    }
+                    source="youtube"
+                    icon="arrow right"
+                    defaultActive
+                    autoplay={false}
+                  />
+                )}
+              </>
             ) : (
-              <Embed
-                id={
-                  data.url.match(/.be\//)
-                    ? data.url.match(/^.*\.be\/(.*)/)[1]
-                    : data.url.match(/^.*\?v=(.*)$/)[1]
-                }
-                source="youtube"
-                icon="arrow right"
-                defaultActive
-                autoplay={false}
-              />
+              <>
+                <div className="ui blocker" />
+                {data.url.match('vimeo') ? (
+                  <Embed
+                    id={data.url.match(/^.*\.com\/(.*)/)[1]}
+                    source="vimeo"
+                    icon="arrow right"
+                    defaultActive
+                    autoplay={false}
+                  />
+                ) : (
+                  <div>
+                    <Message>
+                      <center>
+                        Please enter a valid URL by deleting the block and
+                        adding a new video block.
+                      </center>
+                    </Message>
+                  </div>
+                )}
+              </>
             )}
           </div>
         ) : (

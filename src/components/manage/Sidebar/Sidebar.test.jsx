@@ -13,6 +13,9 @@ test('renders a sidebar component', () => {
       locale: 'en',
       messages: {},
     },
+    sidebar: {
+      tab: 0,
+    },
   });
   const component = renderer.create(
     <Provider store={store}>
