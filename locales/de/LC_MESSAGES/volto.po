@@ -182,6 +182,7 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
 msgid "Center"
 msgstr ""
 
@@ -524,6 +525,7 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
 msgid "Full"
 msgstr ""
 
@@ -662,6 +664,7 @@ msgstr "Letzte Änderung"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
 msgid "Left"
 msgstr ""
 
@@ -919,6 +922,7 @@ msgstr "Richtext"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
 msgid "Right"
 msgstr ""
 

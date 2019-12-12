@@ -177,6 +177,7 @@ msgstr "Celda"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
 msgid "Center"
 msgstr "Centro"
 
@@ -519,6 +520,7 @@ msgstr "De"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
 msgid "Full"
 msgstr "Completo"
 
@@ -657,6 +659,7 @@ msgstr "Última modificación"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
 msgid "Left"
 msgstr "Izquierda"
 
@@ -914,6 +917,7 @@ msgstr "Texto formateado"
 
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
 msgid "Right"
 msgstr "Derecha"
 
