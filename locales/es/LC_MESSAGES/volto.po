@@ -8,12 +8,12 @@ msgstr ""
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
 "PO-Revision-Date: 2019-12-03 05:42-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
-"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
-"MIME-Version: 1.0\n"
 "Language: es\n"
+"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
 "Language-Code: es\n"
 "Language-Name: Español\n"
 "Preferred-Encodings: utf-8\n"
@@ -136,9 +136,7 @@ msgstr "Bloque"
 
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
-msgstr ""
-"Tanto la dirección de correo electrónico y la contraseña son sensible a "
-"mayúsculas, verifique que la tecla Caps Lock no este habilitada."
+msgstr "Tanto la dirección de correo electrónico y la contraseña son sensible a mayúsculas, verifique que la tecla Caps Lock no este habilitada."
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
@@ -378,9 +376,7 @@ msgstr "Documento"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr ""
-"Arrastre y suelte los archivos desde su computador en esta área o haga clic "
-"al botón “Seleccionar”."
+msgstr "Arrastre y suelte los archivos desde su computador en esta área o haga clic al botón “Seleccionar”."
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
@@ -957,9 +953,7 @@ msgstr "Configuración del sitio"
 
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
-msgstr ""
-"Especifica la dirección URL de un vídeo o una lista de reproducción de "
-"youtube"
+msgstr "Especifica la dirección URL de un vídeo o una lista de reproducción de youtube"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
@@ -1200,9 +1194,7 @@ msgstr "La dirección de correo electrónico es necesaria para restablecer su co
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr ""
-"Su ubicación, ya sea ciudad y país, o en un entorno de empresa, donde se "
-"encuentra su oficina."
+msgstr "Su ubicación, ya sea ciudad y país, o en un entorno de empresa, donde se encuentra su oficina."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Your password has been set successfully. You may now {link} with your new password."
@@ -1220,25 +1212,21 @@ msgstr "¿Olvidaste tu contraseña?"
 msgid "common"
 msgstr "Común"
 
+#: components/manage/Blocks/Block/Edit
+msgid "delete"
+msgstr "eliminar"
+
 #: config/Blocks
 msgid "description"
 msgstr "Descripción"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_lost_password"
-msgstr ""
-"Por razones de seguridad, las contraseñas se almacenan en forma cifrada y, "
-"por lo tanto, no se le pueden enviar. Si desea restablecer su contraseña, "
-"complete el siguiente formulario: se enviarán más instrucciones para "
-"completar el proceso a la dirección de correo electrónico que especificó al "
-"registrarse."
+msgstr "Por razones de seguridad, las contraseñas se almacenan en forma cifrada y, por lo tanto, no se le pueden enviar. Si desea restablecer su contraseña, complete el siguiente formulario: se enviarán más instrucciones para completar el proceso a la dirección de correo electrónico que especificó al registrarse."
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_sent_password"
-msgstr ""
-"Se han enviado las instrucciones para restablecer su contraseña. Deben "
-"llegar a su bandeja de entrada pronto. Una vez que reciba el mensaje, visite "
-"la dirección indicada para restablecer la contraseña."
+msgstr "Se han enviado las instrucciones para restablecer su contraseña. Deben llegar a su bandeja de entrada pronto. Una vez que reciba el mensaje, visite la dirección indicada para restablecer la contraseña."
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"

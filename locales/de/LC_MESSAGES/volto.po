@@ -1217,6 +1217,10 @@ msgstr "Passwort vergessen?"
 msgid "common"
 msgstr ""
 
+#: components/manage/Blocks/Block/Edit
+msgid "delete"
+msgstr ""
+
 #: config/Blocks
 msgid "description"
 msgstr "Beschreibung"
