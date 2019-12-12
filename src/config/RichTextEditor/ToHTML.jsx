@@ -64,13 +64,32 @@ const getAtomic = (children, { data, keys }) =>
  * Note that children can be maped to render a list or do other cool stuff
  */
 const blocks = {
-  // Rendering blocks like this along with cleanup results in a single p tag for each paragraph
-  // adding an empty block closes current paragraph and starts a new one
-  // unstyled: (children, { keys }) => (
-  //   <p key={keys[0]}>{addBreaklines(children)}</p>
-  // ),
-  unstyled: (children, { keys }) =>
-    children.map(child => <p key={keys[0]}>{child}</p>),
+  unstyled: (children, { keys }) => {
+    const processedChildren = children.map(chunks =>
+      chunks.map(child => {
+        if (Array.isArray(child)) {
+          return child.map((subchild, index) => {
+            if (typeof subchild === 'string') {
+              const last = subchild.split('\n').length - 1;
+              return subchild.split('\n').map((item, index) => (
+                <React.Fragment key={index}>
+                  {item}
+                  {index !== last && <br />}
+                </React.Fragment>
+              ));
+            } else {
+              return subchild;
+            }
+          });
+        } else {
+          return child;
+        }
+      }),
+    );
+    return processedChildren.map(
+      chunk => chunk && <p key={keys[0]}>{chunk}</p>,
+    );
+  },
   atomic: getAtomic,
   blockquote: (children, { keys }) => (
     <blockquote key={keys[0]}>{addBreaklines(children)}</blockquote>
