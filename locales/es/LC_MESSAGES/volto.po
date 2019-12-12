@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2019-12-12 12:19-0400\n"
+"PO-Revision-Date: 2019-12-12 12:39-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -137,6 +137,10 @@ msgstr "Bloque"
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr "Tanto la dirección de correo electrónico y la contraseña son sensible a mayúsculas, verifique que la tecla Caps Lock no este habilitada."
+
+#: components/theme/Breadcrumbs/Breadcrumbs
+msgid "Breadcrumbs"
+msgstr "Barra de ruta"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"

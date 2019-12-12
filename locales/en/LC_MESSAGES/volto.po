@@ -128,6 +128,10 @@ msgstr ""
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr ""
 
+#: components/theme/Breadcrumbs/Breadcrumbs
+msgid "Breadcrumbs"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
 msgstr ""
