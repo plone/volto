@@ -172,6 +172,10 @@ msgstr "Abbrechen"
 msgid "Cell"
 msgstr ""
 
+#: components/manage/Blocks/Maps/Edit
+msgid "Center"
+msgstr ""
+
 #: components/manage/History/History
 msgid "Change Note"
 msgstr "Änderungsnotiz"
@@ -496,6 +500,10 @@ msgstr ""
 msgid "From"
 msgstr ""
 
+#: components/manage/Blocks/Maps/Edit
+msgid "Full"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
@@ -509,6 +517,10 @@ msgstr ""
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
 msgstr "GNU-GPL-Lizenz"
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Google Maps Embedded Block"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Group created"
@@ -608,6 +620,10 @@ msgstr "Sprache"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Letzte Änderung"
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Left"
+msgstr ""
 
 #: components/manage/Sidebar/ImageSidebar
 msgid "Link to"
@@ -838,6 +854,10 @@ msgstr "Durch diese Version ersetzen"
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
 msgstr "Richtext"
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Right"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Rights"

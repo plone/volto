@@ -6,20 +6,20 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2019-12-03 05:42-0400\n"
+"PO-Revision-Date: 2019-12-12 07:59-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
-"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"Language-Team: ES <LL@li.org>\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
+"X-Generator: Virtaal 0.7.1\n"
 "Language-Code: es\n"
 "Language-Name: Español\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
 "X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
-"X-Generator: Virtaal 0.7.1\n"
 
 #: components/theme/Footer/Footer
 msgid "Accessibility"
@@ -166,6 +166,10 @@ msgstr "Cancelar"
 #: components/manage/Blocks/Table/Edit
 msgid "Cell"
 msgstr "Celda"
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Center"
+msgstr "Centro"
 
 #: components/manage/History/History
 msgid "Change Note"
@@ -348,7 +352,7 @@ msgstr "Diferencias entre la revisión {one} y {two} del {title}"
 
 #: components/theme/Footer/Footer
 msgid "Distributed under the {license}."
-msgstr "Distribuido bajo la {license}"
+msgstr "Distribuido bajo la {license}."
 
 #: components/manage/Blocks/Table/Edit
 msgid "Divide each row into separate cells"
@@ -491,6 +495,10 @@ msgstr "Celdas de tabla de ancho fijo"
 msgid "From"
 msgstr "De"
 
+#: components/manage/Blocks/Maps/Edit
+msgid "Full"
+msgstr "Completo"
+
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
@@ -504,6 +512,10 @@ msgstr "Nombre completo"
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
 msgstr "licencia GNU GPL"
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Google Maps Embedded Block"
+msgstr "Bloque incrustado de Google Maps"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Group created"
@@ -532,7 +544,7 @@ msgstr "Página personal"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If selected, this item will not appear in the navigation tree"
-msgstr "Si es seleccionado, este elemento no aparecerá en el árbol de navegación del sitio."
+msgstr "Si es seleccionado, este elemento no aparecerá en el árbol de navegación del sitio"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If this date is in the future, the content will not show up in listings and searches until this date."
@@ -544,7 +556,7 @@ msgstr "Si usted esta seguro de haber ingresado la dirección web correcta pero 
 
 #: components/theme/Login/Login
 msgid "If you have forgotten your password, {forgotpassword}"
-msgstr "Si usted ha perdido su contraseña, {forgotpassword}."
+msgstr "Si usted ha perdido su contraseña, {forgotpassword}"
 
 #: components/theme/Login/Login
 msgid "If you you do not have an account here, head over to the {registrationform}."
@@ -604,6 +616,10 @@ msgstr "Idioma"
 msgid "Last modified"
 msgstr "Última modificación"
 
+#: components/manage/Blocks/Maps/Edit
+msgid "Left"
+msgstr "Izquierda"
+
 #: components/manage/Sidebar/ImageSidebar
 msgid "Link to"
 msgstr "Enlazar a"
@@ -648,7 +664,7 @@ msgstr "Mensaje"
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
-msgstr "El tamaño mínimo es {len}"
+msgstr "El tamaño mínimo es {len}."
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Moderate comments"
@@ -833,6 +849,10 @@ msgstr "Revertir a esta revisión"
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
 msgstr "Texto formateado"
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Right"
+msgstr "Derecha"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Rights"
@@ -1202,7 +1222,7 @@ msgstr "Su contraseña ha sido restablecida exitosamente. Usted puede {link} usa
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Your preferred language"
-msgstr "Su idioma preferido."
+msgstr "Su idioma preferido"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
@@ -1286,7 +1306,7 @@ msgstr "podemos enviarte una nueva"
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"
-msgstr "{count} seleccionado."
+msgstr "{count} seleccionado"
 
 #: components/manage/Actions/Actions
 msgid "{title} copied."

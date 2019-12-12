@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-12-12T11:38:58.574Z\n"
+"POT-Creation-Date: 2019-12-12T12:03:13.036Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -188,6 +188,11 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Cell
 msgid "Cell"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Center
+msgid "Center"
 msgstr ""
 
 #: components/manage/History/History
@@ -582,6 +587,11 @@ msgstr ""
 msgid "From"
 msgstr ""
 
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Full
+msgid "Full"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
@@ -597,6 +607,11 @@ msgstr ""
 #: components/theme/Footer/Footer
 # defaultMessage: GNU GPL license
 msgid "GNU GPL license"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Google Maps Embedded Block
+msgid "Google Maps Embedded Block"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -720,6 +735,11 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Last modified
 msgid "Last modified"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Left
+msgid "Left"
 msgstr ""
 
 #: components/manage/Sidebar/ImageSidebar
@@ -1003,6 +1023,11 @@ msgstr ""
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Richtext
 msgid "Richtext"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Right
+msgid "Right"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal

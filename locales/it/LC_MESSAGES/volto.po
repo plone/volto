@@ -157,6 +157,10 @@ msgstr "Annulla"
 msgid "Cell"
 msgstr "Cella"
 
+#: components/manage/Blocks/Maps/Edit
+msgid "Center"
+msgstr ""
+
 #: components/manage/History/History
 msgid "Change Note"
 msgstr "Cambia Nota"
@@ -481,6 +485,10 @@ msgstr "Celle della tabella a larghezza fissata"
 msgid "From"
 msgstr "Da"
 
+#: components/manage/Blocks/Maps/Edit
+msgid "Full"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
@@ -494,6 +502,10 @@ msgstr ""
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
 msgstr "licenza GNU GPL"
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Google Maps Embedded Block"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Group created"
@@ -593,6 +605,10 @@ msgstr "Lingua"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Ultima modifica"
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Left"
+msgstr ""
 
 #: components/manage/Sidebar/ImageSidebar
 msgid "Link to"
@@ -823,6 +839,10 @@ msgstr "Ripristina questa versione"
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
 msgstr "Testo formattato"
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Right"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Rights"
