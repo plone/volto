@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2019-12-12 11:09-0400\n"
+"PO-Revision-Date: 2019-12-12 11:26-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -209,6 +209,10 @@ msgstr "Seleccione imagen"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Choose Target"
 msgstr "Seleccione destino"
+
+#: components/manage/Widgets/SelectWidget
+msgid "Close"
+msgstr "Cerrar"
 
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
@@ -720,6 +724,7 @@ msgid "No results found."
 msgstr "La búsqueda no produjo resultados."
 
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectWidget
 msgid "No value"
 msgstr "Sin valor"
 

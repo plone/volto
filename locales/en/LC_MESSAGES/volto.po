@@ -200,6 +200,10 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
+#: components/manage/Widgets/SelectWidget
+msgid "Close"
+msgstr ""
+
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr ""
@@ -710,6 +714,7 @@ msgid "No results found."
 msgstr ""
 
 #: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectWidget
 msgid "No value"
 msgstr ""
 
