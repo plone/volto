@@ -761,6 +761,10 @@ msgid "Password"
 msgstr "Password"
 
 #: components/theme/PasswordReset/PasswordReset
+msgid "Password reset"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
 msgid "Passwords do not match."
 msgstr "Le password non corrispondono."
 
