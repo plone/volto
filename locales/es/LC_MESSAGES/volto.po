@@ -312,6 +312,7 @@ msgstr "Por defecto"
 #: components/manage/Delete/Delete
 #: components/manage/Widgets/TextareaWidget
 #: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "Eliminar"
