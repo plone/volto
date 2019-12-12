@@ -742,6 +742,10 @@ msgstr ""
 msgid "No value"
 msgstr ""
 
+#: components/manage/Workflow/Workflow
+msgid "No workflow"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "None"
 msgstr "Niks"

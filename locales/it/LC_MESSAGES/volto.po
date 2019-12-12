@@ -723,6 +723,10 @@ msgstr "La ricerca non ha prodotto risultati."
 msgid "No value"
 msgstr ""
 
+#: components/manage/Workflow/Workflow
+msgid "No workflow"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "None"
 msgstr "Nessuno"
