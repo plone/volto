@@ -39,28 +39,6 @@ describe('Add Content Tests', () => {
       cy.contains('This is the text');
     }
   });
-  it('As a site administrator I can add a new line to a text block using shift + enter', function() {
-    cy.visit('/');
-    cy.get('#toolbar-add').click();
-    cy.get('#toolbar-add-document').click();
-    cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
-      .type('This is a page')
-      .get('.documentFirstHeading span[data-text]')
-      .contains('This is a page');
-    //when I select a text-block and hit shift+enter or ctrl+enter
-    cy.get('.block.inner.text:nth-child(2n) .public-DraftEditor-content')
-      .type('First line;{shift}{enter}')
-      .type('Second line;{control}{enter}')
-      .type('Third line.')
-      .get('span[data-text]')
-      .contains(`First line;
-Second line;
-Third line.`);
-    //then the block should not be deselected
-    cy.get('.block.inner.text:nth-child(2n) .block.text.selected');
-    //then there should not be a new block created
-    cy.get('.block.inner.text:nth-child(3n)').should('not.exist');
-  });
   it('As a site administrator I can add a file', function() {
     cy.visit('/');
     cy.get('#toolbar-add').click();
