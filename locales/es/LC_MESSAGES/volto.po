@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2019-12-12 10:31-0400\n"
+"PO-Revision-Date: 2019-12-12 10:40-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -515,9 +515,17 @@ msgstr "Nombre completo"
 msgid "GNU GPL license"
 msgstr "licencia GNU GPL"
 
+#: components/manage/Sharing/Sharing
+msgid "Global role"
+msgstr "Rol global"
+
 #: components/manage/Blocks/Maps/Edit
 msgid "Google Maps Embedded Block"
 msgstr "Bloque incrustado de Google Maps"
+
+#: components/manage/Sharing/Sharing
+msgid "Group"
+msgstr "Grupo"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Group created"
@@ -579,6 +587,10 @@ msgstr "Información"
 #: components/manage/Sharing/Sharing
 msgid "Inherit permissions from higher levels"
 msgstr "Hereda los permisos de niveles superiores"
+
+#: components/manage/Sharing/Sharing
+msgid "Inherited value"
+msgstr "Valor heredado"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Insert col after"
@@ -941,6 +953,10 @@ msgid "Set your password"
 msgstr "Defina su contraseña"
 
 #: components/manage/Sharing/Sharing
+msgid "Sharing"
+msgstr "Compartir"
+
+#: components/manage/Sharing/Sharing
 msgid "Sharing for {title}"
 msgstr "Compartir para {title}"
 
@@ -1139,6 +1155,10 @@ msgstr "Cargando archivos"
 #: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
 msgstr "Usado para acceso programático al conjunto de campos."
+
+#: components/manage/Sharing/Sharing
+msgid "User"
+msgstr "Usuario"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "User created"

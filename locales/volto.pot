@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-12-12T14:33:18.212Z\n"
+"POT-Creation-Date: 2019-12-12T14:42:28.403Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -611,9 +611,19 @@ msgstr ""
 msgid "GNU GPL license"
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Global role
+msgid "Global role"
+msgstr ""
+
 #: components/manage/Blocks/Maps/Edit
 # defaultMessage: Google Maps Embedded Block
 msgid "Google Maps Embedded Block"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Group
+msgid "Group"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -690,6 +700,11 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
 msgid "Inherit permissions from higher levels"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Inherited value
+msgid "Inherited value"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
@@ -1136,6 +1151,11 @@ msgid "Set your password"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
+# defaultMessage: Sharing
+msgid "Sharing"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
 # defaultMessage: Sharing for {title}
 msgid "Sharing for {title}"
 msgstr ""
@@ -1374,6 +1394,11 @@ msgstr ""
 #: components/manage/Widgets/WysiwygWidget
 # defaultMessage: Used for programmatic access to the fieldset.
 msgid "Used for programmatic access to the fieldset."
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: User
+msgid "User"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel

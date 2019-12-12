@@ -520,8 +520,16 @@ msgstr ""
 msgid "GNU GPL license"
 msgstr "GNU-GPL-Lizenz"
 
+#: components/manage/Sharing/Sharing
+msgid "Global role"
+msgstr ""
+
 #: components/manage/Blocks/Maps/Edit
 msgid "Google Maps Embedded Block"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Group"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -584,6 +592,10 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 msgid "Inherit permissions from higher levels"
 msgstr "Berechtigungen von übergeordneten Ordnern übernehmen"
+
+#: components/manage/Sharing/Sharing
+msgid "Inherited value"
+msgstr ""
 
 #: components/manage/Blocks/Table/Edit
 msgid "Insert col after"
@@ -946,6 +958,10 @@ msgid "Set your password"
 msgstr "Setzen Sie Ihr Passwort"
 
 #: components/manage/Sharing/Sharing
+msgid "Sharing"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
 msgid "Sharing for {title}"
 msgstr "Freigabe für"
 
@@ -1144,6 +1160,10 @@ msgstr "Dateien hochladen"
 #: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
 msgstr "Wir für den programmierten Zugriff auf das Fieldset verwendet."
+
+#: components/manage/Sharing/Sharing
+msgid "User"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "User created"
