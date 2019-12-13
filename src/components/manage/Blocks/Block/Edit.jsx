@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
+import { connect } from 'react-redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -13,6 +14,7 @@ import { blocks } from '~/config';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import cx from 'classnames';
+import { setSidebarTab } from '../../../../actions';
 
 import withObjectBrowser from '../../Sidebar/ObjectBrowser';
 import Icon from '../../../../components/theme/Icon/Icon';
@@ -125,6 +127,9 @@ class Edit extends Component {
     ) {
       this.blockNode.current.focus();
     }
+    if (this.props.selected) {
+      this.props.setSidebarTab(blocks.blocksConfig?.[type]?.sidebarBar || 0);
+    }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -137,6 +142,9 @@ class Edit extends Component {
       this.blockNode.current
     ) {
       this.blockNode.current.focus();
+    }
+    if (!this.props.selected && nextProps.selected) {
+      this.props.setSidebarTab(blocks.blocksConfig?.[type]?.sidebarTab || 0);
     }
   }
 
@@ -257,4 +265,5 @@ export default compose(
     connectDragSource: connect.dragSource(),
     connectDragPreview: connect.dragPreview(),
   })),
+  connect(null, { setSidebarTab }),
 )(Edit);

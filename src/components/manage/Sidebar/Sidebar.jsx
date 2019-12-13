@@ -5,12 +5,15 @@
 
 import React, { Component, Fragment } from 'react';
 import { Button, Tab } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import cookie from 'react-cookie';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { BodyClass } from '../../../helpers';
 import { Icon } from '../../../components';
 import forbiddenSVG from '../../../icons/forbidden.svg';
+import { setSidebarTab } from '../../../actions';
 
 const messages = defineMessages({
   document: {
@@ -53,6 +56,7 @@ class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.onToggleExpanded = this.onToggleExpanded.bind(this);
+    this.onTabChange = this.onTabChange.bind(this);
     this.state = {
       expanded: cookie.load('sidebar_expanded') !== 'false',
     };
@@ -71,6 +75,17 @@ class Sidebar extends Component {
     this.setState({
       expanded: !this.state.expanded,
     });
+  }
+
+  /**
+   * On tab change
+   * @method onTabChange
+   * @param {Object} event Event object
+   * @param {Object} data Data object
+   * @returns {undefined}
+   */
+  onTabChange(event, data) {
+    this.props.setSidebarTab(data.activeIndex);
   }
 
   /**
@@ -110,7 +125,8 @@ class Sidebar extends Component {
             }}
             className="tabs-wrapper"
             renderActiveOnly={false}
-            defaultActiveIndex={1}
+            activeIndex={this.props.tab}
+            onTabChange={this.onTabChange}
             panes={[
               {
                 menuItem: this.props.intl.formatMessage(messages.document),
@@ -147,4 +163,12 @@ class Sidebar extends Component {
   }
 }
 
-export default injectIntl(Sidebar);
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      tab: state.sidebar.tab,
+    }),
+    { setSidebarTab },
+  ),
+)(Sidebar);
