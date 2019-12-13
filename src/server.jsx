@@ -16,6 +16,7 @@ import nlLocale from '~/../locales/nl.json';
 import deLocale from '~/../locales/de.json';
 import enLocale from '~/../locales/en.json';
 import jaLocale from '~/../locales/ja.json';
+import esLocale from '~/../locales/es.json';
 
 import {
   Html,
@@ -41,6 +42,7 @@ const locales = {
   nl: nlLocale,
   de: deLocale,
   ja: jaLocale,
+  es: esLocale,
 };
 
 const server = express();

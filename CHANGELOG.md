@@ -4,6 +4,8 @@
 
 ### Added
 
+- Added translations to spanish @macagua
+
 ### Changes
 
 ## 4.0.0-alpha.18 (2019-12-12)
@@ -13,6 +15,7 @@
 - Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
 - Automatically switch sidebar on block change @robgietema
 - Japanese translation @terapyon
+
 
 ### Changes
 
