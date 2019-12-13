@@ -11,7 +11,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('?fullobjects');
     });
 
-    /*it('Add title block', () => {
+    it('Add title block', () => {
       cy.get(`.block.title [data-contents]`)
         .clear()
         .type('My title');
@@ -34,7 +34,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#toolbar-save').click();
 
       cy.get('#page-document p').contains('My text');
-    });*/
+    });
 
     it('Add Listing block', () => {
       cy.visit('/my-page');
@@ -343,6 +343,9 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#page-document .listing-body:first-of-type')
         .contains('Document outside Folder')
         .should('not.exist');
+    });
+    it('Listing block - Test Criteria: Location Navigation path', () => {
+      /*not implemented because Navigation ui is not yet developed in Listing Block sidebar*/
     });
     // it('Add image block', () => {
     //   // Add image block
