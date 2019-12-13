@@ -14,6 +14,7 @@ exports[`renders a view video component 1`] = `
       <i
         aria-hidden="true"
         className="arrow right icon"
+        onClick={[Function]}
       />
       <div
         className="embed"

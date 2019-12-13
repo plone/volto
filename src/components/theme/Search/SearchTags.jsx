@@ -37,7 +37,7 @@ class SearchTags extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getVocabulary(vocabulary);
   }
 

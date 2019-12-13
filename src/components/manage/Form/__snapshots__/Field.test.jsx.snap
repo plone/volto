@@ -71,6 +71,7 @@ exports[`Field renders a field with a specific id 1`] = `
           <i
             aria-hidden="true"
             className="blue write square large icon"
+            onClick={[Function]}
           />
         </button>
         <button
@@ -80,6 +81,7 @@ exports[`Field renders a field with a specific id 1`] = `
           <i
             aria-hidden="true"
             className="red close large icon"
+            onClick={[Function]}
           />
         </button>
       </div>
@@ -94,6 +96,7 @@ exports[`Field renders a field with a specific id 1`] = `
           <i
             aria-hidden="true"
             className="plus large icon"
+            onClick={[Function]}
           />
         </button>
       </div>
@@ -131,6 +134,7 @@ exports[`Field renders a field with a specific id 1`] = `
                 <i
                   aria-hidden="true"
                   className="blue plus large icon"
+                  onClick={[Function]}
                 />
               </button>
             </div>

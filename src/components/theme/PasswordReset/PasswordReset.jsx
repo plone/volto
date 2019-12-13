@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { Container } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
@@ -134,7 +134,7 @@ class PasswordReset extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {}
+  UNSAFE_componentWillMount() {}
 
   /**
    * Component will receive props
@@ -142,7 +142,7 @@ class PasswordReset extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.loading && nextProps.loaded) {
       this.setState({ isSuccessful: true });
     }

@@ -29,27 +29,45 @@ const View = ({ data }) => (
           'full-width': data.align === 'full',
         })}
       >
-        {data.url.match('list') ? (
-          <Embed
-            url={`https://www.youtube.com/embed/videoseries?list=${
-              data.url.match(/^.*\?list=(.*)$/)[1]
-            }`}
-            icon="arrow right"
-            defaultActive
-            autoplay={false}
-          />
+        {data.url.match('youtu') ? (
+          <>
+            {data.url.match('list') ? (
+              <Embed
+                url={`https://www.youtube.com/embed/videoseries?list=${
+                  data.url.match(/^.*\?list=(.*)$/)[1]
+                }`}
+                icon="arrow right"
+                defaultActive
+                autoplay={false}
+              />
+            ) : (
+              <Embed
+                id={
+                  data.url.match(/.be\//)
+                    ? data.url.match(/^.*\.be\/(.*)/)[1]
+                    : data.url.match(/^.*\?v=(.*)$/)[1]
+                }
+                source="youtube"
+                icon="arrow right"
+                defaultActive
+                autoplay={false}
+              />
+            )}
+          </>
         ) : (
-          <Embed
-            id={
-              data.url.match(/.be\//)
-                ? data.url.match(/^.*\.be\/(.*)/)[1]
-                : data.url.match(/^.*\?v=(.*)$/)[1]
-            }
-            source="youtube"
-            icon="arrow right"
-            defaultActive
-            autoplay={false}
-          />
+          <>
+            {data.url.match('vimeo') ? (
+              <Embed
+                id={data.url.match(/^.*\.com\/(.*)/)[1]}
+                source="vimeo"
+                icon="arrow right"
+                defaultActive
+                autoplay={false}
+              />
+            ) : (
+              <div className="invalidVideoFormat" />
+            )}
+          </>
         )}
       </div>
     )}

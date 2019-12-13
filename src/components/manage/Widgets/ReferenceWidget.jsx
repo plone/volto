@@ -122,7 +122,7 @@ class ReferenceWidget extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.resetSearchContent();
   }
 
@@ -132,7 +132,7 @@ class ReferenceWidget extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({
       choices: {
         ...fromPairs(
