@@ -53,6 +53,7 @@ msgid "Actions"
 msgstr "Acties"
 
 #: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Widgets/SchemaWidget
 msgid "Add"
 msgstr ""
 
