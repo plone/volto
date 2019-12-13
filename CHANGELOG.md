@@ -4,14 +4,33 @@
 
 ### Added
 
-- Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
-- Automatically switch sidebar on block change @robgietema
 - Implementation of `Portuguese (BR)` translation @LeuAlmeida
 
 ### Changes
 
+## 4.0.0-alpha.18 (2019-12-12)
+
+### Added
+
+- Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
+- Automatically switch sidebar on block change @robgietema
+- Japanese translation @terapyon
+
+### Changes
+
 - Remove "documentDescription" class in table block @sverbois
-- General toolbar CSS fixes @sneridagh
+- Added possibility to work with vimeo-videos instead of youtube-videos in the video block @wkbkhard
+- Fixed Issue 1021: typing in a "wrong" URL leads to error @wkbkhard
+- General toolbar more and personal tools menu CSS fixes @sneridagh
+- Fix bug that lead to crashing the view when deleting the last row of a table
+- Fix Select widget bug if the field has already the options in the `choices` schema, do not trigger the vocabulary request @sneridagh
+
+### Internal
+
+- Updated to react-select v3 @robdayz
+- Fix file and link redirect views @robgietema
+- Restrict moment.js locales to available languages @tisto @robgietema
+- Fix history view @robgietema
 
 ## 4.0.0-alpha.17 (2019-12-03)
 

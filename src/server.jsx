@@ -15,6 +15,7 @@ import routes from '~/routes';
 import nlLocale from '~/../locales/nl.json';
 import deLocale from '~/../locales/de.json';
 import enLocale from '~/../locales/en.json';
+import jaLocale from '~/../locales/ja.json';
 import ptBrLocale from '~/../locales/ptBR.json';
 
 import {
@@ -40,6 +41,8 @@ const locales = {
   en: enLocale,
   nl: nlLocale,
   de: deLocale,
+  ja: jaLocale,
+  pt: ptBrLocale,
 };
 
 const server = express();
