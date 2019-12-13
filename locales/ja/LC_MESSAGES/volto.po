@@ -40,6 +40,11 @@ msgstr "アクション"
 msgid "Actions"
 msgstr "アクション"
 
+#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Widgets/SchemaWidget
+msgid "Add"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Add Content"
 msgstr "新規追加"
@@ -135,6 +140,10 @@ msgstr "ブロック"
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr ""
 
+#: components/theme/Breadcrumbs/Breadcrumbs
+msgid "Breadcrumbs"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
 msgstr "参照"
@@ -162,6 +171,12 @@ msgstr "キャンセル"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Cell"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
+msgid "Center"
 msgstr ""
 
 #: components/manage/History/History
@@ -201,6 +216,10 @@ msgstr "イメージを選択"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Choose Target"
 msgstr "ターゲットを選択"
+
+#: components/manage/Widgets/SelectWidget
+msgid "Close"
+msgstr ""
 
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
@@ -298,6 +317,10 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
+#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "削除"
@@ -386,6 +409,7 @@ msgstr "E-mail アドレスが見つかりません。"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Widgets/CheckboxWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "編集"
@@ -460,6 +484,10 @@ msgstr "エラー"
 msgid "Exclude from navigation"
 msgstr ""
 
+#: components/manage/Sidebar/Sidebar
+msgid "Expand sidebar"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
 msgstr "ナビゲーションに含まない"
@@ -488,6 +516,12 @@ msgstr ""
 msgid "From"
 msgstr "メールアドレス"
 
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
+msgid "Full"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
@@ -502,6 +536,18 @@ msgstr "氏名"
 msgid "GNU GPL license"
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+msgid "Global role"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Google Maps Embedded Block"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Group"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Group created"
 msgstr ""
@@ -512,6 +558,10 @@ msgstr "グループ名"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Groups"
+msgstr ""
+
+#: components/manage/History/History
+msgid "History"
 msgstr ""
 
 #: components/manage/History/History
@@ -559,6 +609,10 @@ msgstr "情報"
 msgid "Inherit permissions from higher levels"
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+msgid "Inherited value"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Insert col after"
 msgstr ""
@@ -601,6 +655,12 @@ msgstr "言語"
 msgid "Last modified"
 msgstr "最終変更"
 
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
+msgid "Left"
+msgstr ""
+
 #: components/manage/Sidebar/ImageSidebar
 msgid "Link to"
 msgstr ""
@@ -617,6 +677,10 @@ msgstr "ログイン"
 #: components/theme/Login/Login
 msgid "Log in"
 msgstr "ログイン"
+
+#: components/theme/Login/Login
+msgid "Login"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "Login Failed"
@@ -645,6 +709,10 @@ msgstr "メッセージ"
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+msgid "Moderate Comments"
 msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
@@ -681,6 +749,15 @@ msgstr ""
 msgid "No results found."
 msgstr ""
 
+#: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectWidget
+msgid "No value"
+msgstr ""
+
+#: components/manage/Workflow/Workflow
+msgid "No workflow"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "None"
 msgstr "None"
@@ -705,6 +782,11 @@ msgstr ""
 #: components/theme/Login/Login
 msgid "Password"
 msgstr "パスワード"
+
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "Password reset"
+msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Passwords do not match."
@@ -831,6 +913,12 @@ msgstr ""
 msgid "Richtext"
 msgstr ""
 
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
+msgid "Right"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Rights"
 msgstr "権利"
@@ -885,6 +973,10 @@ msgstr "検索"
 msgid "Select columns to show"
 msgstr ""
 
+#: components/manage/Widgets/QuerystringWidget
+msgid "Select criteria"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
 msgstr ""
@@ -910,6 +1002,10 @@ msgid "Set your password"
 msgstr "パスワードを設定"
 
 #: components/manage/Sharing/Sharing
+msgid "Sharing"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
 msgid "Sharing for {title}"
 msgstr ""
 
@@ -926,6 +1022,10 @@ msgstr "ショートネーム"
 #: components/manage/Contents/ContentsRenameModal
 msgid "Short name"
 msgstr "ショートネーム"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Shrink sidebar"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "Sign in to start session"
@@ -950,6 +1050,10 @@ msgstr "サイト設定"
 
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
+msgstr ""
+
+#: components/manage/Diff/Diff
+msgid "Split"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -1070,6 +1174,10 @@ msgstr ""
 msgid "Type the title…"
 msgstr ""
 
+#: components/manage/Diff/Diff
+msgid "Unified"
+msgstr ""
+
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
 msgid "Unknown Block"
@@ -1101,6 +1209,10 @@ msgstr ""
 msgid "Used for programmatic access to the fieldset."
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+msgid "User"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "User created"
 msgstr ""
@@ -1116,6 +1228,11 @@ msgstr "ユーザ名"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users"
 msgstr "ユーザ"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Users and Groups"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
@@ -1209,6 +1326,10 @@ msgstr "パスワードを忘れた？"
 msgid "common"
 msgstr ""
 
+#: components/manage/Blocks/Block/Edit
+msgid "delete"
+msgstr ""
+
 #: config/Blocks
 msgid "description"
 msgstr "説明"
@@ -1268,6 +1389,10 @@ msgstr "テキスト"
 #: config/Blocks
 msgid "title"
 msgstr "タイトル"
+
+#: components/manage/Toolbar/PersonalTools
+msgid "user avatar"
+msgstr ""
 
 #: config/Blocks
 msgid "video"
