@@ -9,6 +9,8 @@ const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
 const webpack = require('webpack');
+const { GenerateSW } = require('workbox-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
@@ -161,6 +163,41 @@ module.exports = {
 
     config.module.rules.push(LESSLOADER);
     config.module.rules.push(SVGLOADER);
+    config.plugins.push(new GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+      runtimeCaching: [
+        {
+          urlPattern: /images/,
+          handler: 'cacheFirst'
+        },
+        {
+          urlPattern: new RegExp(
+            '^https://fonts.(?:googleapis|gstatic).com/(.*)'
+          ),
+          handler: 'cacheFirst'
+        },
+        {
+          urlPattern: /.*/,
+          handler: 'networkFirst'
+        }
+      ]
+    }),
+    new WebpackPwaManifest({
+      name: 'Volto App',
+      short_name: 'Volto',
+      description: 'A Volto App which Uses Plone As Backend',
+      theme_color: '#ffffff',
+      background_color: '#000000',
+      inject: false,
+      fingerprints: false,
+      icons: [
+        {
+          src: path.resolve('public/favicon.ico'),
+          sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+        }
+      ]
+    }))
 
     // Don't load config|variables|overrides) files with file-loader
     // Don't load SVGs from ./src/icons with file-loader
@@ -215,7 +252,9 @@ module.exports = {
             ] = path.resolve(filename);
           } else {
             console.log(
-              `The file ${filename} doesn't exist in the volto package (${targetPath}), unable to customize.`,
+              `The file ${filename} 
+              doesn't exist in the volto package (${targetPath}),
+               unable to customize.`,
             );
           }
         },
