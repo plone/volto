@@ -193,7 +193,7 @@ module.exports = {
       fingerprints: false,
       icons: [
         {
-          src: path.resolve('public/favicon.ico'),
+          src: path.resolve('public/Logo.png'),
           sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
         }
       ]

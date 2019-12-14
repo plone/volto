@@ -29,3 +29,7 @@ export default () => {
     document.getElementById('main'),
   );
 };
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js');
+}
