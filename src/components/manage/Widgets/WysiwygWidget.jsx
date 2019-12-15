@@ -322,7 +322,7 @@ class WysiwygWidget extends Component {
           {description && (
             <Grid.Row stretched>
               <Grid.Column stretched width="12">
-                <span className="help">{description}</span>
+                <p className="help">{description}</p>
               </Grid.Column>
             </Grid.Row>
           )}

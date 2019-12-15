@@ -8,6 +8,8 @@
 
 ### Changes
 
+- Fix wysiwyg widget help tag, for styling consistency @tiberiuichim
+
 ## 4.0.0-alpha.18 (2019-12-12)
 
 ### Added
