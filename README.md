@@ -290,7 +290,8 @@ $ yarn ci:start-api-plone-guillotina
 
 ## Translations
 
-You can contribute to translate Volto into severals languages at [Transifex.net](https://www.transifex.com/plone/plone5/volto-pot/).
+If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://docs.voltocms.com/customizing/i18n/).
+
 
 ## License
 
