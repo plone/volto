@@ -836,6 +836,7 @@ msgstr "Powered by Plone & Python"
 msgid "Preferences"
 msgstr ""
 
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Voorvertoning"
@@ -1045,6 +1046,10 @@ msgstr "Sitemap"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Source"
 msgstr ""
 
 #: components/manage/Blocks/Video/Edit

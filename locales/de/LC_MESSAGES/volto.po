@@ -845,6 +845,7 @@ msgstr "Powered by Plone & Python"
 msgid "Preferences"
 msgstr "Einstellungen"
 
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Vorschau"
@@ -1055,6 +1056,10 @@ msgstr "Übersicht"
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "Seiteneinstellungen"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Source"
+msgstr ""
 
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"

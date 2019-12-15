@@ -837,6 +837,7 @@ msgstr ""
 msgid "Preferences"
 msgstr "個人設定"
 
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "プレビュー"
@@ -1047,6 +1048,10 @@ msgstr "サイトマップ"
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "サイト設定"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Source"
+msgstr ""
 
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"

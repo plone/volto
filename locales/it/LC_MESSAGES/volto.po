@@ -830,6 +830,7 @@ msgstr "Realizzato con Plone &amp; Python"
 msgid "Preferences"
 msgstr ""
 
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Anteprima"
@@ -1040,6 +1041,10 @@ msgstr "Mappa del sito"
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "Configurazione del sito"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Source"
+msgstr ""
 
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"

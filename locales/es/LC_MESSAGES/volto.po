@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2019-12-12 17:27-0400\n"
+"PO-Revision-Date: 2019-12-15 02:18-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -840,6 +840,7 @@ msgstr "Hecho con Plone & Python"
 msgid "Preferences"
 msgstr "Preferencias"
 
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Vista previa"
@@ -1050,6 +1051,10 @@ msgstr "Mapa del sitio"
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "Configuración del sitio"
+
+#: components/manage/Blocks/HTML/Edit
+msgid "Source"
+msgstr "Fuente"
 
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
