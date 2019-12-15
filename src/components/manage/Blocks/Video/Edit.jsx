@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Button, Input, Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 
@@ -270,8 +270,10 @@ class Edit extends Component {
                   <div>
                     <Message>
                       <center>
-                        Please enter a valid URL by deleting the block and
-                        adding a new video block.
+                        <FormattedMessage
+                          id="Please enter a valid URL by deleting the block and adding a new video block."
+                          defaultMessage="Please enter a valid URL by deleting the block and adding a new video block."
+                        />
                       </center>
                     </Message>
                   </div>

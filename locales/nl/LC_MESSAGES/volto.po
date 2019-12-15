@@ -821,6 +821,10 @@ msgstr "Persoonlijke voorkeuren"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Gebruikers die verantwoordelijk zijn voor de inhoud van dit item. De eindverantwoordelijke vermeldt u als eerste."
 
+#: components/manage/Blocks/Video/Edit
+msgid "Please enter a valid URL by deleting the block and adding a new video block."
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
 msgstr ""

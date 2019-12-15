@@ -802,6 +802,10 @@ msgstr "Preferenze Personali"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Persone responsabili della creazione del contenuto di questo elemento. Inserisci un elenco di nomi, uno per riga. L'autore principale dovrebbe essere messo al primo posto."
 
+#: components/manage/Blocks/Video/Edit
+msgid "Please enter a valid URL by deleting the block and adding a new video block."
+msgstr ""
+
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
 msgstr "Completa il seguente modulo per reimpostare la tua password."
