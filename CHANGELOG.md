@@ -8,6 +8,10 @@
 
 ### Changes
 
+### Internal
+
+- Upgrade version pin for lxml, for compatibility with Python3.8
+
 ## 4.0.0-alpha.18 (2019-12-12)
 
 ### Added
