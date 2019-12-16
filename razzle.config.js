@@ -8,6 +8,7 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
@@ -20,6 +21,7 @@ const eslintLoaderFinder = makeLoaderFinder('eslint-loader');
 const projectRootPath = path.resolve('.');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
+const languages = require('./src/constants/Languages');
 
 module.exports = {
   plugins: ['bundle-analyzer'],
@@ -121,6 +123,12 @@ module.exports = {
         }),
       );
       config.plugins.unshift(
+        // restrict moment.js locales to en/de
+        // see https://github.com/jmblog/how-to-optimize-momentjs-with-webpack for details
+        new webpack.ContextReplacementPlugin(
+          /moment[/\\]locale$/,
+          new RegExp(Object.keys(languages).join('|')),
+        ),
         new LodashModuleReplacementPlugin({
           shorthands: true,
           cloning: true,

@@ -62,6 +62,10 @@ const customSelectStyles = {
     boxShadow: 'none',
     borderBottom: '2px solid #b8c6c8',
   }),
+  menuList: (styles, state) => ({
+    ...styles,
+    maxHeight: '400px',
+  }),
   indicatorSeparator: styles => ({
     ...styles,
     width: null,

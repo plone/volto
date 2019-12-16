@@ -81,3 +81,4 @@ export {
   transitionWorkflow,
 } from '@plone/volto/actions/workflow/workflow';
 export { getQuerystring } from './querystring/querystring';
+export { setSidebarTab } from './sidebar/sidebar';
