@@ -7,9 +7,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
-import { Card, Container, Image, Icon } from 'semantic-ui-react';
-import { FormattedMessage } from 'react-intl';
-import { Button, Header, Modal } from 'semantic-ui-react';
+import { Container, Image, GridColumn } from 'semantic-ui-react';
+import { Button, Modal, Grid } from 'semantic-ui-react';
+import { Icon } from '../../../components';
+
+import openSVG from '../../../icons/open.svg';
+import aheadSVG from '../../../icons/ahead.svg';
+import backSVG from '../../../icons/back.svg';
 
 /**
  * Album view component class.
@@ -17,7 +21,6 @@ import { Button, Header, Modal } from 'semantic-ui-react';
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-
 class AlbumView extends Component {
   constructor(props) {
     super(props);
@@ -26,8 +29,15 @@ class AlbumView extends Component {
       openIndex: undefined,
     };
 
+    this.closeModal = this.closeModal.bind(this);
     this.nextImage = this.nextImage.bind(this);
     this.prevImage = this.prevImage.bind(this);
+  }
+
+  closeModal() {
+    this.setState({
+      openIndex: -1,
+    });
   }
 
   nextImage() {
@@ -48,7 +58,6 @@ class AlbumView extends Component {
 
   render() {
     const { content } = this.props;
-    console.log(this.state);
     return (
       <Container className="view-wrapper">
         <Helmet title={content.title} />
@@ -60,18 +69,20 @@ class AlbumView extends Component {
             )}
           </header>
           <section id="content-core">
-            <Image.Group size="small">
+            <Image.Group size="medium">
               {content.items.map((item, index) => (
                 <span key={item.url}>
                   {item.image && (
                     <Modal
+                      className="gallery"
+                      onClose={this.closeModal}
                       open={this.state.openIndex === index}
                       trigger={
                         <Image
                           alt={
                             item.image_caption ? item.image_caption : item.title
                           }
-                          src={item.image.scales.thumb.download}
+                          src={item.image.scales.preview.download}
                           onClick={() => {
                             this.setState({
                               openIndex: index,
@@ -79,32 +90,74 @@ class AlbumView extends Component {
                           }}
                         />
                       }
+                      closeIcon
                     >
-                      <Modal.Header>{item.title}</Modal.Header>
-                      <button onClick={this.nextImage}>
-                        <Icon name="left arrow" />
-                      </button>
-                      <Modal.Content image>
-                        <Image
-                          wrapped
-                          size="large"
-                          alt={
-                            item.image_caption ? item.image_caption : item.title
-                          }
-                          src={item.image.scales.large.download}
-                        />
-                        <Modal.Description>
-                          <p>{item.description}</p>
-                        </Modal.Description>
-                      </Modal.Content>
-                      <button onClick={this.nextImage}>
-                        <Icon name="right arrow" />
-                      </button>
+                      <Modal.Header>
+                        <Grid>
+                          <Grid.Row>
+                            <GridColumn width={10}>{item.title}</GridColumn>
+                            <GridColumn width={2} textAlign="right">
+                              <Link
+                                to={item.url}
+                                title={item['@type']}
+                                onClick={this.closeModal}
+                              >
+                                <Icon size="30px" fitted name={openSVG} />
+                              </Link>
+                            </GridColumn>
+                          </Grid.Row>
+                        </Grid>
+                      </Modal.Header>
+                      <Grid centered verticalAlign="middle">
+                        <Grid.Row>
+                          <Grid.Column width={2} textAlign="center">
+                            <Button
+                              className="gallery noborder"
+                              onClick={this.nextImage}
+                              style={{ margin: 0 }}
+                            >
+                              <Icon
+                                name={backSVG}
+                                className="circled"
+                                size="30px"
+                                style={{ margin: 0 }}
+                              />
+                            </Button>
+                          </Grid.Column>
+                          <Grid.Column width={8}>
+                            <Modal.Content image>
+                              <Image
+                                wrapped
+                                alt={
+                                  item.image_caption
+                                    ? item.image_caption
+                                    : item.title
+                                }
+                                src={item.image.scales.large.download}
+                              />
+                              <Modal.Description>
+                                <p>{item.description}</p>
+                              </Modal.Description>
+                            </Modal.Content>
+                          </Grid.Column>
+                          <Grid.Column width={2} textAlign="center">
+                            <Button
+                              onClick={this.nextImage}
+                              className="gallery noborder"
+                              style={{ margin: 0 }}
+                            >
+                              <Icon
+                                name={aheadSVG}
+                                className="circled"
+                                size="30px"
+                                style={{ margin: 0 }}
+                              />
+                            </Button>
+                          </Grid.Column>
+                        </Grid.Row>
+                      </Grid>
                     </Modal>
                   )}
-                  <Link to={item.url} title={item['@type']}>
-                    {item.title}
-                  </Link>
                 </span>
               ))}
             </Image.Group>

@@ -3,6 +3,7 @@
  * @module components
  * @example import { Field } from 'components';
  */
+
 export Anontools from '@plone/volto/components/theme/Anontools/Anontools';
 export Breadcrumbs from '@plone/volto/components/theme/Breadcrumbs/Breadcrumbs';
 export ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
@@ -28,6 +29,7 @@ export Search from '@plone/volto/components/theme/Search/Search';
 export SearchTags from '@plone/volto/components/theme/Search/SearchTags';
 export TabularView from '@plone/volto/components/theme/View/TabularView';
 export View from '@plone/volto/components/theme/View/View';
+export AlbumView from '@plone/volto/components/theme/View/AlbumView';
 export Comments from '@plone/volto/components/theme/Comments/Comments';
 export CommentEditModal from '@plone/volto/components/theme/Comments/CommentEditModal';
 export SocialSharing from '@plone/volto/components/theme/SocialSharing/SocialSharing';
