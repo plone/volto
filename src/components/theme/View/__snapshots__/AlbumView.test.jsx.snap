@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an gallery view component 1`] = `
+<div
+  className="ui container view-wrapper"
+>
+  <article
+    id="content"
+  >
+    <header>
+      <h1
+        className="documentFirstHeading"
+      >
+        Hello World!
+      </h1>
+      <p
+        className="documentDescription"
+      >
+        Hi
+      </p>
+    </header>
+    <section
+      id="content-core"
+    >
+      <div
+        className="ui medium images"
+      >
+        <span>
+          <img
+            className="ui image"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            src="file:///preview.jpg"
+          />
+        </span>
+        <span>
+          <img
+            className="ui image"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            src="file:///preview.jpg"
+          />
+        </span>
+      </div>
+    </section>
+  </article>
+</div>
+`;

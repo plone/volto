@@ -70,96 +70,99 @@ class AlbumView extends Component {
           </header>
           <section id="content-core">
             <Image.Group size="medium">
-              {content.items.map((item, index) => (
-                <span key={item.url}>
-                  {item.image && (
-                    <Modal
-                      className="gallery"
-                      onClose={this.closeModal}
-                      open={this.state.openIndex === index}
-                      trigger={
-                        <Image
-                          alt={
-                            item.image_caption ? item.image_caption : item.title
-                          }
-                          src={item.image.scales.preview.download}
-                          onClick={() => {
-                            this.setState({
-                              openIndex: index,
-                            });
-                          }}
-                        />
-                      }
-                      closeIcon
-                    >
-                      <Modal.Header>
-                        <Grid>
+              {content.items &&
+                content.items.map((item, index) => (
+                  <span key={item.url}>
+                    {item.image && (
+                      <Modal
+                        className="gallery"
+                        onClose={this.closeModal}
+                        open={this.state.openIndex === index}
+                        trigger={
+                          <Image
+                            alt={
+                              item.image_caption
+                                ? item.image_caption
+                                : item.title
+                            }
+                            src={item.image.scales.preview.download}
+                            onClick={() => {
+                              this.setState({
+                                openIndex: index,
+                              });
+                            }}
+                          />
+                        }
+                        closeIcon
+                      >
+                        <Modal.Header>
+                          <Grid>
+                            <Grid.Row>
+                              <GridColumn width={10}>{item.title}</GridColumn>
+                              <GridColumn width={2} textAlign="right">
+                                <Link
+                                  to={item.url}
+                                  title={item['@type']}
+                                  onClick={this.closeModal}
+                                >
+                                  <Icon size="30px" fitted name={openSVG} />
+                                </Link>
+                              </GridColumn>
+                            </Grid.Row>
+                          </Grid>
+                        </Modal.Header>
+                        <Grid centered verticalAlign="middle">
                           <Grid.Row>
-                            <GridColumn width={10}>{item.title}</GridColumn>
-                            <GridColumn width={2} textAlign="right">
-                              <Link
-                                to={item.url}
-                                title={item['@type']}
-                                onClick={this.closeModal}
+                            <Grid.Column width={2} textAlign="center">
+                              <Button
+                                className="gallery noborder"
+                                onClick={this.nextImage}
+                                style={{ margin: 0 }}
                               >
-                                <Icon size="30px" fitted name={openSVG} />
-                              </Link>
-                            </GridColumn>
+                                <Icon
+                                  name={backSVG}
+                                  className="circled"
+                                  size="30px"
+                                  style={{ margin: 0 }}
+                                />
+                              </Button>
+                            </Grid.Column>
+                            <Grid.Column width={8}>
+                              <Modal.Content image>
+                                <Image
+                                  wrapped
+                                  alt={
+                                    item.image_caption
+                                      ? item.image_caption
+                                      : item.title
+                                  }
+                                  src={item.image.scales.large.download}
+                                />
+                                <Modal.Description>
+                                  <p>{item.description}</p>
+                                </Modal.Description>
+                              </Modal.Content>
+                            </Grid.Column>
+                            <Grid.Column width={2} textAlign="center">
+                              <Button
+                                onClick={this.nextImage}
+                                className="gallery noborder"
+                                style={{ margin: 0 }}
+                              >
+                                <Icon
+                                  name={aheadSVG}
+                                  className="circled"
+                                  size="30px"
+                                  style={{ margin: 0 }}
+                                />
+                              </Button>
+                            </Grid.Column>
                           </Grid.Row>
                         </Grid>
-                      </Modal.Header>
-                      <Grid centered verticalAlign="middle">
-                        <Grid.Row>
-                          <Grid.Column width={2} textAlign="center">
-                            <Button
-                              className="gallery noborder"
-                              onClick={this.nextImage}
-                              style={{ margin: 0 }}
-                            >
-                              <Icon
-                                name={backSVG}
-                                className="circled"
-                                size="30px"
-                                style={{ margin: 0 }}
-                              />
-                            </Button>
-                          </Grid.Column>
-                          <Grid.Column width={8}>
-                            <Modal.Content image>
-                              <Image
-                                wrapped
-                                alt={
-                                  item.image_caption
-                                    ? item.image_caption
-                                    : item.title
-                                }
-                                src={item.image.scales.large.download}
-                              />
-                              <Modal.Description>
-                                <p>{item.description}</p>
-                              </Modal.Description>
-                            </Modal.Content>
-                          </Grid.Column>
-                          <Grid.Column width={2} textAlign="center">
-                            <Button
-                              onClick={this.nextImage}
-                              className="gallery noborder"
-                              style={{ margin: 0 }}
-                            >
-                              <Icon
-                                name={aheadSVG}
-                                className="circled"
-                                size="30px"
-                                style={{ margin: 0 }}
-                              />
-                            </Button>
-                          </Grid.Column>
-                        </Grid.Row>
-                      </Grid>
-                    </Modal>
-                  )}
-                </span>
-              ))}
+                      </Modal>
+                    )}
+                  </span>
+                ))}
             </Image.Group>
           </section>
         </article>
