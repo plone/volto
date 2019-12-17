@@ -748,6 +748,10 @@ msgstr ""
 msgid "Name"
 msgstr "名前"
 
+#: error
+msgid "Navigate back"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
@@ -1074,6 +1078,10 @@ msgstr "サイトマップ"
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "サイト設定"
+
+#: error
+msgid "Sorry, something went wrong with your request"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Source"
@@ -1405,8 +1413,16 @@ msgstr "メディア"
 msgid "mostUsed"
 msgstr ""
 
+#: error
+msgid "or try a different page."
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "registration form"
+msgstr ""
+
+#: error
+msgid "return to the site root"
 msgstr ""
 
 #: config/Blocks

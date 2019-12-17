@@ -741,6 +741,10 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+#: error
+msgid "Navigate back"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
@@ -1066,6 +1070,10 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
+msgstr ""
+
+#: error
+msgid "Sorry, something went wrong with your request"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
@@ -1398,8 +1406,16 @@ msgstr ""
 msgid "mostUsed"
 msgstr ""
 
+#: error
+msgid "or try a different page."
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "registration form"
+msgstr ""
+
+#: error
+msgid "return to the site root"
 msgstr ""
 
 #: config/Blocks

@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2019-12-17 02:29-0400\n"
+"PO-Revision-Date: 2019-12-17 09:34-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -751,6 +751,10 @@ msgstr "Mi dirección de correo electrónico es"
 msgid "Name"
 msgstr "Nombre"
 
+#: error
+msgid "Navigate back"
+msgstr "Navegar hacia atrás"
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
@@ -1077,6 +1081,10 @@ msgstr "Mapa del sitio"
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "Configuración del sitio"
+
+#: error
+msgid "Sorry, something went wrong with your request"
+msgstr "Lo siento, algo estuvo mal con su solicitud"
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Source"
@@ -1408,9 +1416,17 @@ msgstr "Multimedia"
 msgid "mostUsed"
 msgstr "Más usado"
 
+#: error
+msgid "or try a different page."
+msgstr "o intente con una página diferente."
+
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "formulario de registro"
+
+#: error
+msgid "return to the site root"
+msgstr "regrese al directorio raíz del sitio"
 
 #: config/Blocks
 msgid "table"

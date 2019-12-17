@@ -741,6 +741,10 @@ msgstr "Il mio indirizzo email è"
 msgid "Name"
 msgstr "Nome"
 
+#: error
+msgid "Navigate back"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
@@ -1067,6 +1071,10 @@ msgstr "Mappa del sito"
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "Configurazione del sito"
+
+#: error
+msgid "Sorry, something went wrong with your request"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 msgid "Source"
@@ -1398,9 +1406,17 @@ msgstr ""
 msgid "mostUsed"
 msgstr ""
 
+#: error
+msgid "or try a different page."
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "form di registrazione"
+
+#: error
+msgid "return to the site root"
+msgstr ""
 
 #: config/Blocks
 msgid "table"
