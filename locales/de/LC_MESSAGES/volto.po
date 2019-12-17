@@ -449,6 +449,10 @@ msgstr ""
 msgid "Email sent"
 msgstr ""
 
+#: components/manage/Blocks/Maps/View
+msgid "Embeded Google Maps"
+msgstr ""
+
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter Map URL"
 msgstr ""

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-12-17T06:08:54.395Z\n"
+"POT-Creation-Date: 2019-12-17T07:15:57.762Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -520,6 +520,11 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Email sent
 msgid "Email sent"
+msgstr ""
+
+#: components/manage/Blocks/Maps/View
+# defaultMessage: Embeded Google Maps
+msgid "Embeded Google Maps"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit

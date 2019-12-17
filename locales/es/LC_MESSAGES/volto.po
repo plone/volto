@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2019-12-16 12:50-0400\n"
+"PO-Revision-Date: 2019-12-17 02:29-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language: es\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -443,6 +443,10 @@ msgstr "Correo electrónico"
 #: components/theme/ContactForm/ContactForm
 msgid "Email sent"
 msgstr "Correo electrónico enviado"
+
+#: components/manage/Blocks/Maps/View
+msgid "Embeded Google Maps"
+msgstr "Insertar Google Maps"
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter Map URL"
