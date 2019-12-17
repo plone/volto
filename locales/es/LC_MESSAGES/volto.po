@@ -764,6 +764,7 @@ msgstr "Ninguna imagen seleccionada"
 msgid "No results found."
 msgstr "La búsqueda no produjo resultados."
 
+#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectWidget
 msgid "No value"

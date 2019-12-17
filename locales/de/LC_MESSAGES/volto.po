@@ -769,6 +769,7 @@ msgstr ""
 msgid "No results found."
 msgstr "Keine Ergebnisse gefunden."
 
+#: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectWidget
 msgid "No value"
