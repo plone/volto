@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-12-15T06:59:56.241Z\n"
+"POT-Creation-Date: 2019-12-17T05:21:38.974Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -41,6 +41,7 @@ msgid "Actions"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add
 msgid "Add"
@@ -299,6 +300,7 @@ msgid "Contact form"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
 # defaultMessage: Contents
 msgid "Contents"
 msgstr ""
@@ -483,6 +485,7 @@ msgstr ""
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/CheckboxWidget
 #: components/theme/Comments/Comments
 # defaultMessage: Edit
@@ -866,6 +869,11 @@ msgstr ""
 msgid "Moderate comments"
 msgstr ""
 
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: More
+msgid "More"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 # defaultMessage: Move to bottom of folder
 msgid "Move to bottom of folder"
@@ -970,6 +978,11 @@ msgstr ""
 #: components/manage/Preferences/PersonalPreferences
 # defaultMessage: Personal Preferences
 msgid "Personal Preferences"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Personal tools
+msgid "Personal tools"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1247,6 +1260,11 @@ msgstr ""
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
 msgid "Shrink sidebar"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Shrink toolbar
+msgid "Shrink toolbar"
 msgstr ""
 
 #: components/theme/Login/Login

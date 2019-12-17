@@ -34,6 +34,7 @@ msgid "Actions"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 msgid "Add"
 msgstr ""
@@ -246,6 +247,7 @@ msgid "Contact form"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
 msgid "Contents"
 msgstr ""
 
@@ -402,6 +404,7 @@ msgstr ""
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/CheckboxWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
@@ -712,6 +715,10 @@ msgstr ""
 msgid "Moderate comments"
 msgstr ""
 
+#: components/manage/Toolbar/Toolbar
+msgid "More"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 msgid "Move to bottom of folder"
 msgstr ""
@@ -796,6 +803,10 @@ msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Personal Preferences"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+msgid "Personal tools"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1023,6 +1034,10 @@ msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+msgid "Shrink toolbar"
 msgstr ""
 
 #: components/theme/Login/Login

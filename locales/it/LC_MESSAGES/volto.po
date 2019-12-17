@@ -34,6 +34,7 @@ msgid "Actions"
 msgstr "Azioni"
 
 #: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 msgid "Add"
 msgstr ""
@@ -246,6 +247,7 @@ msgid "Contact form"
 msgstr "Form di contatto"
 
 #: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
 msgid "Contents"
 msgstr "Contenuti"
 
@@ -402,6 +404,7 @@ msgstr "Gli indirizzi e-mail non corrispondono"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/CheckboxWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
@@ -712,6 +715,10 @@ msgstr ""
 msgid "Moderate comments"
 msgstr "Moderazione commenti"
 
+#: components/manage/Toolbar/Toolbar
+msgid "More"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 msgid "Move to bottom of folder"
 msgstr "Sposta in fondo alla cartella"
@@ -797,6 +804,10 @@ msgstr "Informazioni Personali"
 #: components/manage/Preferences/PersonalPreferences
 msgid "Personal Preferences"
 msgstr "Preferenze Personali"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Personal tools"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
@@ -1023,6 +1034,10 @@ msgstr "Nome breve"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+msgid "Shrink toolbar"
 msgstr ""
 
 #: components/theme/Login/Login

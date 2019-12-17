@@ -41,6 +41,7 @@ msgid "Actions"
 msgstr "アクション"
 
 #: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 msgid "Add"
 msgstr ""
@@ -253,6 +254,7 @@ msgid "Contact form"
 msgstr "お問い合わせフォーム"
 
 #: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
 msgid "Contents"
 msgstr "コンテンツ"
 
@@ -409,6 +411,7 @@ msgstr "E-mail アドレスが見つかりません。"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/CheckboxWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
@@ -719,6 +722,10 @@ msgstr ""
 msgid "Moderate comments"
 msgstr "コメントのモデレート"
 
+#: components/manage/Toolbar/Toolbar
+msgid "More"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 msgid "Move to bottom of folder"
 msgstr ""
@@ -804,6 +811,10 @@ msgstr ""
 #: components/manage/Preferences/PersonalPreferences
 msgid "Personal Preferences"
 msgstr "個人別設定"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Personal tools"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
@@ -1030,6 +1041,10 @@ msgstr "ショートネーム"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+msgid "Shrink toolbar"
 msgstr ""
 
 #: components/theme/Login/Login
