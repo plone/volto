@@ -557,6 +557,7 @@ msgid "Groups"
 msgstr ""
 
 #: components/manage/History/History
+#: components/manage/Toolbar/More
 msgid "History"
 msgstr ""
 
@@ -805,6 +806,7 @@ msgstr ""
 msgid "Personal Preferences"
 msgstr ""
 
+#: components/manage/Toolbar/More
 #: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
 msgstr ""

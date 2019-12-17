@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-12-17T05:21:38.974Z\n"
+"POT-Creation-Date: 2019-12-17T06:08:54.395Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -673,6 +673,7 @@ msgid "Groups"
 msgstr ""
 
 #: components/manage/History/History
+#: components/manage/Toolbar/More
 # defaultMessage: History
 msgid "History"
 msgstr ""
@@ -980,6 +981,7 @@ msgstr ""
 msgid "Personal Preferences"
 msgstr ""
 
+#: components/manage/Toolbar/More
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal tools
 msgid "Personal tools"
