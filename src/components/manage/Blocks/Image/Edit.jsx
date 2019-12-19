@@ -14,7 +14,6 @@ import cx from 'classnames';
 import Dropzone from 'react-dropzone';
 
 import { settings } from '~/config';
-import withObjectBrowser from '../../Sidebar/ObjectBrowser';
 
 import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
@@ -75,7 +74,7 @@ class Edit extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       this.props.request.loading &&
       nextProps.request.loaded &&
@@ -233,6 +232,7 @@ class Edit extends Component {
                   this.props.onChangeBlock(this.props.block, {
                     ...this.props.data,
                     url: '',
+                    align: '',
                   })
                 }
               >
@@ -320,7 +320,6 @@ class Edit extends Component {
 }
 
 export default compose(
-  withObjectBrowser,
   injectIntl,
   connect(
     state => ({

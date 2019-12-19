@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { Container, Image } from 'semantic-ui-react';
@@ -41,7 +41,7 @@ const DefaultView = ({ content, intl }) => {
       <Helmet title={content.title} />
       {map(content[blocksLayoutFieldname].items, block => {
         const Block =
-          blocks.blocksConfig[(content[blocksFieldname]?.[block]?.['@type'])]?.[
+          blocks.blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.[
             'view'
           ] || null;
         return Block !== null ? (

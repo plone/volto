@@ -109,7 +109,7 @@ class View extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.listActions(getBaseUrl(this.props.pathname));
     this.props.getContent(
       getBaseUrl(this.props.pathname),
@@ -123,7 +123,7 @@ class View extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.listActions(getBaseUrl(nextProps.pathname));
       this.props.getContent(
@@ -215,19 +215,14 @@ class View extends Component {
         <BodyClass
           className={
             RenderedView.displayName
-              ? `view-${this.cleanViewName(RenderedView.displayName)}`
+              ? `view-${this.cleanViewName(
+                  RenderedView.displayName
+                    .replace('injectIntl(', '')
+                    .toLowerCase(),
+                )}`
               : null
           }
         />
-
-        {/* Body class depending on content type */}
-        {this.props.content && this.props.content['@type'] && (
-          <BodyClass
-            className={`contenttype-${this.props.content['@type']
-              .replace(' ', '-')
-              .toLowerCase()}`}
-          />
-        )}
 
         <RenderedView
           content={this.props.content}

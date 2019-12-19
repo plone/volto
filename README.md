@@ -68,7 +68,7 @@ We recommend Plone as backend of choice for Volto.
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use:
 
 ```shell
-$ docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
+$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.voltodemo" -e ZCML="kitconcept.voltodemo.cors" plone
 ```
 
 or as an alternative if you have experience with Plone and you have all the
@@ -162,23 +162,35 @@ $ yarn
 Either using a Docker image
 
 ```shell
-$ docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
+$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.voltodemo" -e ZCML="kitconcept.voltodemo.cors" plone
+```
+
+or using the convenience makefile command:
+
+```shell
+$ make start-backend-docker
 ```
 
 or running Plone on your machine (advanced), additional dependencies might be
-required only for Plone experienced integrators/developers. Check the [Plone
+required, only for Plone experienced integrators/developers. Check the [Plone
 Installation Documentation](https://docs.plone.org/manage/installing/installation.html).
 
 ```shell
-$ cd api
 $ make build-backend
 ```
+
 #### Guillotina (experimental)
 
 It still doesn't support the full API/features that Plone provides.
 
 ```shell
 $ docker-compose -f g-api/docker-compose.yml up -d
+```
+
+or using the convenience makefile command:
+
+```shell
+$ make start-backend-docker-guillotina
 ```
 
 ### Run frontend

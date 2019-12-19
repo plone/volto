@@ -43,6 +43,7 @@ exports[`Delete renders a delete component 1`] = `
           <i
             aria-hidden="true"
             className="arrow right icon"
+            onClick={[Function]}
           />
         </button>
         <button
@@ -54,6 +55,7 @@ exports[`Delete renders a delete component 1`] = `
           <i
             aria-hidden="true"
             className="remove icon"
+            onClick={[Function]}
           />
         </button>
       </div>

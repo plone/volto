@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Container, Button, Table } from 'semantic-ui-react';
 import moment from 'moment';
@@ -84,7 +84,7 @@ class ModerateComments extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.searchContent('', {
       portal_type: 'Discussion Item',
       fullobjects: true,
@@ -97,7 +97,7 @@ class ModerateComments extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
       this.props.searchContent('', {
         portal_type: 'Discussion Item',

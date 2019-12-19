@@ -3,8 +3,8 @@
 Volto can be installed in any operating system assuming that the requirements
 are met:
 
-- [Node.js LTS (10.x)](https://nodejs.org/)
-- [Python 2.7.x](https://python.org/) or
+- [Node.js LTS (12.x)](https://nodejs.org/)
+- [Python 3.7.x / 2.7.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina
   docker images)
 
@@ -77,21 +77,22 @@ Here are the detailed instructions:
     https://docs.docker.com/docker-for-mac/install/
 
 3. Check that docker is installed correctly, open a new terminal and type:
-```
+
+```shell
 $ docker ps
 ```
-  should not throw an error and show the current running containers.
 
-## Install and run the ready to use Plone API Docker container
+should not throw an error and show the current running containers.
 
-We need the backend for Volto running in our machine, so there's an image ready
-for it published in the Docker Hub. You can run it right away by issuing:
+## Run a Volto ready Plone Docker container
 
+We need Plone meet some requirements in order to fully support Volto.
+There's a package `kitconcept.voltodemo` that does all the heavy lifting for you.
+You can run an standard Plone docker container with the proper configuration using `kitconcept.voltodemo` right away by issuing:
+
+```shell
+$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.voltodemo" -e ZCML="kitconcept.voltodemo.cors" plone
 ```
-$ docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
-```
-from the command line. There's also a `docker-compose` config ready to run in
-any Volto project boilerplate (see next section).
 
 ## Install Volto
 

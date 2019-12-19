@@ -5,16 +5,16 @@
  */
 
 export Api from '@plone/volto/helpers/Api/Api';
-export {
-  getAPIResourceWithAuth,
-} from '@plone/volto/helpers/Api/APIResourceWithAuth';
+export { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
 export Html from '@plone/volto/helpers/Html/Html';
 export {
   getAuthToken,
   persistAuthToken,
 } from '@plone/volto/helpers/AuthToken/AuthToken';
 export {
+  addAppURL,
   flattenToAppURL,
+  isInternalURL,
   getBaseUrl,
   getIcon,
   getView,
@@ -38,3 +38,5 @@ export {
   getVocabFromItems,
 } from '@plone/volto/helpers/Vocabularies/Vocabularies';
 export AlignBlock from '@plone/volto/helpers/AlignBlock/AlignBlock';
+
+export Helmet from './Helmet/Helmet';

@@ -46,6 +46,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               <i
                 aria-hidden="true"
                 className="search icon"
+                onClick={[Function]}
               />
             </button>
           </div>
@@ -148,6 +149,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               <i
                 aria-hidden="true"
                 className="search icon"
+                onClick={[Function]}
               />
             </button>
           </div>

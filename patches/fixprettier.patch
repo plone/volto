@@ -1,0 +1,11 @@
+--- node_modules/prettier/index.js	2019-11-14 20:05:13.844000000 +0100
++++ index-patched.js	2019-11-15 23:35:37.326000000 +0100
+@@ -37420,7 +37420,7 @@
+ var type$9 = "markup";
+ var group$8 = "CSS";
+ var extensions$9 = [
+-	".less"
++	".less", "overrides"
+ ];
+ var tmScope$9 = "source.css.less";
+ var aceMode$9 = "less";

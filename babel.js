@@ -2,6 +2,7 @@ module.exports = function(api) {
   api.cache(true);
   const presets = ['razzle/babel'];
   const plugins = [
+    'lodash',
     '@babel/plugin-proposal-function-bind',
     '@babel/plugin-proposal-do-expressions',
     '@babel/plugin-proposal-export-default-from',
