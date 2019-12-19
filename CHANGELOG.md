@@ -17,7 +17,6 @@
 - Automatically switch sidebar on block change @robgietema
 - Japanese translation @terapyon
 
-
 ### Changes
 
 - Remove "documentDescription" class in table block @sverbois
