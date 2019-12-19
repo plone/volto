@@ -4,7 +4,6 @@
 
 ### Added
 
-- Added translations to Portuguese @emansije
 - Implementation of `Portuguese (BR)` translation @LeuAlmeida
 - Added translations to spanish @macagua
 
