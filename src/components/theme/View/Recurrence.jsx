@@ -29,7 +29,9 @@ const findRecurrence = props => {
     if (!days.includes(',')) {
       for (let i = 1; i <= parseInt(count); i++) {
         reccDates.push(
-          firstDate._d
+          firstDate
+            .day(days)
+            ._d.toString()
             .toString()
             .substring(0, 15)
             .concat(
@@ -38,6 +40,28 @@ const findRecurrence = props => {
                 .substring(0, 15)}${newDates.endTime}`,
             ),
         );
+        firstDate.add(7, 'days');
+        endDate.add(7, 'days');
+      }
+    } else if (days.includes(',')) {
+      let splitDays = days.split(',');
+      for (let i = 1; i <= parseInt(count); i++) {
+        for (let j = 0; j < splitDays.length; j++) {
+          reccDates.push(
+            firstDate
+              .day(splitDays[j])
+              ._d.toString()
+              .toString()
+              .substring(0, 15)
+              .concat(
+                ` from ${
+                  newDates.startTime
+                } to ${endDate._d.toString().substring(0, 15)}${
+                  newDates.endTime
+                }`,
+              ),
+          );
+        }
         firstDate.add(7, 'days');
         endDate.add(7, 'days');
       }
