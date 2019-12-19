@@ -9,6 +9,8 @@
 
 ### Changes
 
+- empty text blocks are shown as <br /> in the view.
+
 ## 4.0.0-alpha.18 (2019-12-12)
 
 ### Added
