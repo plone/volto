@@ -51,9 +51,9 @@ class Breadcrumbs extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  UNSAFE_componentWillMount() {
-    this.props.getBreadcrumbs(getBaseUrl(this.props.pathname));
-  }
+  // UNSAFE_componentWillMount() {
+  //   this.props.getBreadcrumbs(getBaseUrl(this.props.pathname));
+  // }
 
   /**
    * Component will receive props
@@ -61,11 +61,11 @@ class Breadcrumbs extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.props.pathname) {
-      this.props.getBreadcrumbs(getBaseUrl(nextProps.pathname));
-    }
-  }
+  // UNSAFE_componentWillReceiveProps(nextProps) {
+  //   if (nextProps.pathname !== this.props.pathname) {
+  //     this.props.getBreadcrumbs(getBaseUrl(nextProps.pathname));
+  //   }
+  // }
 
   /**
    * Render method.

@@ -119,7 +119,11 @@ export function getContent(url, version = null, subrequest = null) {
     subrequest,
     request: {
       op: 'get',
-      path: `${url}${version ? `/@history/${version}` : ''}?fullobjects`,
+      path: `${url}${
+        version ? `/@history/${version}` : ''
+      }?fullobjects&expand=breadcrumbs,navigation,actions,workflow`,
+      // should also include ``types`` here, but it explicitely raises
+      // Unauthorized for anonymous in plone.restapi
     },
   };
 }

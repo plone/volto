@@ -7,6 +7,7 @@ import {
   TRANSITION_WORKFLOW,
   GET_WORKFLOW,
   GET_WORKFLOW_MULTIPLE,
+  GET_CONTENT,
 } from '../../constants/ActionTypes';
 
 const initialState = {
@@ -47,6 +48,7 @@ export default function content(state = initialState, action = {}) {
     case `${GET_WORKFLOW}_PENDING`:
     case `${GET_WORKFLOW_MULTIPLE}_PENDING`:
     case `${TRANSITION_WORKFLOW}_PENDING`:
+    case `${GET_CONTENT}_PENDING`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -57,11 +59,13 @@ export default function content(state = initialState, action = {}) {
       };
     case `${GET_WORKFLOW}_SUCCESS`:
     case `${TRANSITION_WORKFLOW}_SUCCESS`:
+    case `${GET_CONTENT}_SUCCESS`:
+      const result = action.result['@components']?.workflow || action.result;
       return {
         ...state,
-        history: action.result.history ? action.result.history : state.history,
-        transitions: action.result.transitions
-          ? action.result.transitions
+        history: result.history ? result.history : state.history,
+        transitions: result.transitions
+          ? result.transitions
           : state.transitions,
         [getRequestKey(action.type)]: {
           loading: false,
@@ -81,6 +85,7 @@ export default function content(state = initialState, action = {}) {
       };
     case `${GET_WORKFLOW}_FAIL`:
     case `${TRANSITION_WORKFLOW}_FAIL`:
+    case `${GET_CONTENT}_FAIL`:
       return {
         ...state,
         history: [],

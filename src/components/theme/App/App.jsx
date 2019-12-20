@@ -169,32 +169,32 @@ export const __test__ = connect(
 
 export default compose(
   asyncConnect([
-    {
-      key: 'breadcrumbs',
-      promise: ({ location, store: { dispatch } }) => {
-        __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
-      },
-    },
+    // {
+    //   key: 'breadcrumbs',
+    //   promise: ({ location, store: { dispatch } }) => {
+    //     __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
+    //   },
+    // },
     {
       key: 'content',
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getContent(getBaseUrl(location.pathname))),
     },
-    {
-      key: 'navigation',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getNavigation(getBaseUrl(location.pathname))),
-    },
+    // {
+    //   key: 'navigation',
+    //   promise: ({ location, store: { dispatch } }) =>
+    //     __SERVER__ && dispatch(getNavigation(getBaseUrl(location.pathname))),
+    // },
     {
       key: 'types',
       promise: ({ location, store: { dispatch } }) =>
         __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
     },
-    {
-      key: 'workflow',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
-    },
+    // {
+    //   key: 'workflow',
+    //   promise: ({ location, store: { dispatch } }) =>
+    //     __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
+    // },
   ]),
   connect((state, props) => ({ pathname: props.location.pathname }), {}),
 )(App);

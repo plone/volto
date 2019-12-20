@@ -6,7 +6,7 @@
 import { map } from 'lodash';
 import { settings } from '~/config';
 
-import { GET_NAVIGATION } from '../../constants/ActionTypes';
+import { GET_NAVIGATION, GET_CONTENT } from '../../constants/ActionTypes';
 
 const initialState = {
   error: null,
@@ -40,11 +40,21 @@ function getRecursiveItems(items) {
 export default function navigation(state = initialState, action = {}) {
   switch (action.type) {
     case `${GET_NAVIGATION}_PENDING`:
+    case `${GET_CONTENT}_PENDING`:
       return {
         ...state,
         error: null,
         loaded: false,
         loading: true,
+      };
+    case `${GET_NAVIGATION}_FAIL`:
+    case `${GET_CONTENT}_FAIL`:
+      return {
+        ...state,
+        error: action.error,
+        items: [],
+        loaded: false,
+        loading: false,
       };
     case `${GET_NAVIGATION}_SUCCESS`:
       return {
@@ -54,12 +64,12 @@ export default function navigation(state = initialState, action = {}) {
         loaded: true,
         loading: false,
       };
-    case `${GET_NAVIGATION}_FAIL`:
+    case `${GET_CONTENT}_SUCCESS`:
       return {
         ...state,
-        error: action.error,
-        items: [],
-        loaded: false,
+        error: null,
+        items: getRecursiveItems(action.result['@components'].navigation.items),
+        loaded: true,
         loading: false,
       };
     default:

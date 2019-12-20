@@ -195,9 +195,9 @@ class Workflow extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  UNSAFE_componentWillMount() {
-    this.props.getWorkflow(this.props.pathname);
-  }
+  // UNSAFE_componentWillMount() {
+  //   this.props.getWorkflow(this.props.pathname);
+  // }
 
   /**
    * Component will receive props
@@ -206,11 +206,11 @@ class Workflow extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.props.pathname) {
-      this.props.getWorkflow(nextProps.pathname);
-    }
+    // if (nextProps.pathname !== this.props.pathname) {
+    //   this.props.getWorkflow(nextProps.pathname);
+    // }
     if (!this.props.loaded && nextProps.loaded) {
-      this.props.getWorkflow(nextProps.pathname);
+      // this.props.getWorkflow(nextProps.pathname);
       this.props.getContent(nextProps.pathname);
     }
   }

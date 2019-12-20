@@ -3,7 +3,7 @@
  * @module reducers/actions/actions
  */
 
-import { LIST_ACTIONS } from '../../constants/ActionTypes';
+import { LIST_ACTIONS, GET_CONTENT } from '../../constants/ActionTypes';
 
 const initialState = {
   error: null,
@@ -29,6 +29,7 @@ const initialState = {
 export default function actions(state = initialState, action = {}) {
   switch (action.type) {
     case `${LIST_ACTIONS}_PENDING`:
+    case `${GET_CONTENT}_PENDING`:
       return {
         ...state,
         error: null,
@@ -36,14 +37,17 @@ export default function actions(state = initialState, action = {}) {
         loading: true,
       };
     case `${LIST_ACTIONS}_SUCCESS`:
+    case `${GET_CONTENT}_SUCCESS`:
+      const result = action.result['@components']?.actions || action.result;
       return {
         ...state,
         error: null,
-        actions: action.result,
+        actions: result,
         loaded: true,
         loading: false,
       };
     case `${LIST_ACTIONS}_FAIL`:
+    case `${GET_CONTENT}_FAIL`:
       return {
         ...state,
         error: action.error,

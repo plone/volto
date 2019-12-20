@@ -6,7 +6,7 @@
 import { map } from 'lodash';
 import { settings } from '~/config';
 
-import { GET_BREADCRUMBS } from '../../constants/ActionTypes';
+import { GET_BREADCRUMBS, GET_CONTENT } from '../../constants/ActionTypes';
 
 const initialState = {
   error: null,
@@ -25,11 +25,21 @@ const initialState = {
 export default function breadcrumbs(state = initialState, action = {}) {
   switch (action.type) {
     case `${GET_BREADCRUMBS}_PENDING`:
+    case `${GET_CONTENT}_PENDING`:
       return {
         ...state,
         error: null,
         loaded: false,
         loading: true,
+      };
+    case `${GET_BREADCRUMBS}_FAIL`:
+    case `${GET_CONTENT}_FAIL`:
+      return {
+        ...state,
+        error: action.error,
+        items: [],
+        loaded: false,
+        loading: false,
       };
     case `${GET_BREADCRUMBS}_SUCCESS`:
       return {
@@ -42,12 +52,15 @@ export default function breadcrumbs(state = initialState, action = {}) {
         loaded: true,
         loading: false,
       };
-    case `${GET_BREADCRUMBS}_FAIL`:
+    case `${GET_CONTENT}_SUCCESS`:
       return {
         ...state,
-        error: action.error,
-        items: [],
-        loaded: false,
+        error: null,
+        items: map(action.result['@components'].breadcrumbs.items, item => ({
+          title: item.title,
+          url: item['@id'].replace(settings.apiPath, ''),
+        })),
+        loaded: true,
         loading: false,
       };
     default:
