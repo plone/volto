@@ -41,7 +41,7 @@ export const settings = {
   ToHTMLRenderers,
   ToHTMLOptions,
   imageObjects: ['Image'],
-  minimizeNetworkFetch: true,
+  minimizeNetworkFetch: false,
 };
 
 export const widgets = {

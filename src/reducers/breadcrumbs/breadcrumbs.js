@@ -70,16 +70,21 @@ export default function breadcrumbs(state = initialState, action = {}) {
         loading: false,
       };
     case `${GET_CONTENT}_SUCCESS`:
-      return {
-        ...state,
-        error: null,
-        items: map(action.result['@components'].breadcrumbs.items, item => ({
-          title: item.title,
-          url: item['@id'].replace(settings.apiPath, ''),
-        })),
-        loaded: true,
-        loading: false,
-      };
+      return settings.minimizeNetworkFetch
+        ? {
+            ...state,
+            error: null,
+            items: map(
+              action.result['@components'].breadcrumbs.items,
+              item => ({
+                title: item.title,
+                url: item['@id'].replace(settings.apiPath, ''),
+              }),
+            ),
+            loaded: true,
+            loading: false,
+          }
+        : state;
     default:
       return state;
   }
