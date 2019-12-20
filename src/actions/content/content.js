@@ -12,6 +12,7 @@ import {
   RESET_CONTENT,
 } from '../../constants/ActionTypes';
 import { nestContent } from '../../helpers';
+import { settings } from '~/config';
 
 /**
  * Create content function.
@@ -114,6 +115,9 @@ export function sortContent(url, on, order) {
  * @returns {Object} Get content action
  */
 export function getContent(url, version = null, subrequest = null) {
+  const expand = settings.minimizeNetworkFetch
+    ? '&expand=breadcrumbs,navigation,actions,workflow'
+    : '';
   return {
     type: GET_CONTENT,
     subrequest,
@@ -121,7 +125,7 @@ export function getContent(url, version = null, subrequest = null) {
       op: 'get',
       path: `${url}${
         version ? `/@history/${version}` : ''
-      }?fullobjects&expand=breadcrumbs,navigation,actions,workflow`,
+      }?fullobjects${expand}`,
       // should also include ``types`` here, but it explicitely raises
       // Unauthorized for anonymous in plone.restapi
     },

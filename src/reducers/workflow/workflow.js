@@ -9,6 +9,7 @@ import {
   GET_WORKFLOW_MULTIPLE,
   GET_CONTENT,
 } from '../../constants/ActionTypes';
+import { settings } from '~/config';
 
 const initialState = {
   get: {
@@ -48,7 +49,6 @@ export default function content(state = initialState, action = {}) {
     case `${GET_WORKFLOW}_PENDING`:
     case `${GET_WORKFLOW_MULTIPLE}_PENDING`:
     case `${TRANSITION_WORKFLOW}_PENDING`:
-    case `${GET_CONTENT}_PENDING`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -57,15 +57,24 @@ export default function content(state = initialState, action = {}) {
           error: null,
         },
       };
+    case `${GET_CONTENT}_PENDING`:
+      return settings.minimizeNetworkFetch
+        ? {
+            ...state,
+            [getRequestKey(action.type)]: {
+              loading: true,
+              loaded: false,
+              error: null,
+            },
+          }
+        : state;
     case `${GET_WORKFLOW}_SUCCESS`:
     case `${TRANSITION_WORKFLOW}_SUCCESS`:
-    case `${GET_CONTENT}_SUCCESS`:
-      const result = action.result['@components']?.workflow || action.result;
       return {
         ...state,
-        history: result.history ? result.history : state.history,
-        transitions: result.transitions
-          ? result.transitions
+        history: action.result.history ? action.result.history : state.history,
+        transitions: action.result.transitions
+          ? action.result.transitions
           : state.transitions,
         [getRequestKey(action.type)]: {
           loading: false,
@@ -73,6 +82,23 @@ export default function content(state = initialState, action = {}) {
           error: null,
         },
       };
+    case `${GET_CONTENT}_SUCCESS`:
+      return settings.minimizeNetworkFetch
+        ? {
+            ...state,
+            history: action.result['@components'].workflow.history
+              ? action.result['@components'].workflow.history
+              : state.history,
+            transitions: action.result.transitions
+              ? action.result.transitions
+              : state.transitions,
+            [getRequestKey(action.type)]: {
+              loading: false,
+              loaded: true,
+              error: null,
+            },
+          }
+        : state;
     case `${GET_WORKFLOW_MULTIPLE}_SUCCESS`:
       return {
         ...state,
@@ -85,7 +111,6 @@ export default function content(state = initialState, action = {}) {
       };
     case `${GET_WORKFLOW}_FAIL`:
     case `${TRANSITION_WORKFLOW}_FAIL`:
-    case `${GET_CONTENT}_FAIL`:
       return {
         ...state,
         history: [],
@@ -96,6 +121,19 @@ export default function content(state = initialState, action = {}) {
           error: action.error,
         },
       };
+    case `${GET_CONTENT}_FAIL`:
+      return settings.minimizeNetworkFetch
+        ? {
+            ...state,
+            history: [],
+            transitions: [],
+            [getRequestKey(action.type)]: {
+              loading: false,
+              loaded: false,
+              error: action.error,
+            },
+          }
+        : state;
     case `${GET_WORKFLOW_MULTIPLE}_FAIL`:
       return {
         ...state,

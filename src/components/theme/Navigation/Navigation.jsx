@@ -13,6 +13,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
 import { getBaseUrl } from '../../../helpers';
+import { settings } from '~/config';
 
 import { getNavigation } from '../../../actions';
 
@@ -69,9 +70,10 @@ class Navigation extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  // UNSAFE_componentWillMount() {
-  //   this.props.getNavigation(getBaseUrl(this.props.pathname));
-  // }
+  UNSAFE_componentWillMount() {
+    if (!settings.minimizeNetworkFetch)
+      this.props.getNavigation(getBaseUrl(this.props.pathname));
+  }
 
   /**
    * Component will receive props
@@ -79,11 +81,14 @@ class Navigation extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  // UNSAFE_componentWillReceiveProps(nextProps) {
-  //   if (nextProps.pathname !== this.props.pathname) {
-  //     this.props.getNavigation(getBaseUrl(nextProps.pathname));
-  //   }
-  // }
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (
+      !settings.minimizeNetworkFetch &&
+      nextProps.pathname !== this.props.pathname
+    ) {
+      this.props.getNavigation(getBaseUrl(nextProps.pathname));
+    }
+  }
 
   /**
    * Check if menu is active

@@ -40,15 +40,22 @@ function getRecursiveItems(items) {
 export default function navigation(state = initialState, action = {}) {
   switch (action.type) {
     case `${GET_NAVIGATION}_PENDING`:
-    case `${GET_CONTENT}_PENDING`:
       return {
         ...state,
         error: null,
         loaded: false,
         loading: true,
       };
+    case `${GET_CONTENT}_PENDING`:
+      return settings.minimizeNetworkFetch
+        ? {
+            ...state,
+            error: null,
+            loaded: false,
+            loading: true,
+          }
+        : state;
     case `${GET_NAVIGATION}_FAIL`:
-    case `${GET_CONTENT}_FAIL`:
       return {
         ...state,
         error: action.error,
@@ -56,6 +63,16 @@ export default function navigation(state = initialState, action = {}) {
         loaded: false,
         loading: false,
       };
+    case `${GET_CONTENT}_FAIL`:
+      return settings.minimizeNetworkFetch
+        ? {
+            ...state,
+            error: action.error,
+            items: [],
+            loaded: false,
+            loading: false,
+          }
+        : state;
     case `${GET_NAVIGATION}_SUCCESS`:
       return {
         ...state,
@@ -65,13 +82,17 @@ export default function navigation(state = initialState, action = {}) {
         loading: false,
       };
     case `${GET_CONTENT}_SUCCESS`:
-      return {
-        ...state,
-        error: null,
-        items: getRecursiveItems(action.result['@components'].navigation.items),
-        loaded: true,
-        loading: false,
-      };
+      return settings.minimizeNetworkFetch
+        ? {
+            ...state,
+            error: null,
+            items: getRecursiveItems(
+              action.result['@components'].navigation.items,
+            ),
+            loaded: true,
+            loading: false,
+          }
+        : state;
     default:
       return state;
   }

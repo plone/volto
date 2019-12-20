@@ -25,15 +25,22 @@ const initialState = {
 export default function breadcrumbs(state = initialState, action = {}) {
   switch (action.type) {
     case `${GET_BREADCRUMBS}_PENDING`:
-    case `${GET_CONTENT}_PENDING`:
       return {
         ...state,
         error: null,
         loaded: false,
         loading: true,
       };
+    case `${GET_CONTENT}_PENDING`:
+      return settings.minimizeNetworkFetch
+        ? {
+            ...state,
+            error: null,
+            loaded: false,
+            loading: true,
+          }
+        : state;
     case `${GET_BREADCRUMBS}_FAIL`:
-    case `${GET_CONTENT}_FAIL`:
       return {
         ...state,
         error: action.error,
@@ -41,6 +48,16 @@ export default function breadcrumbs(state = initialState, action = {}) {
         loaded: false,
         loading: false,
       };
+    case `${GET_CONTENT}_FAIL`:
+      return settings.minimizeNetworkFetch
+        ? {
+            ...state,
+            error: action.error,
+            items: [],
+            loaded: false,
+            loading: false,
+          }
+        : state;
     case `${GET_BREADCRUMBS}_SUCCESS`:
       return {
         ...state,
