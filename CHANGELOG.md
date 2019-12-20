@@ -5,12 +5,22 @@
 ### Added
 
 - Added translations to Portuguese @emansije
+
+### Changes
+
+- Added more i18n improvements @macagua
+
+## 4.0.0-alpha.19 (2019-12-20)
+
+### Added
+
 - Implementation of `Portuguese (BR)` translation @LeuAlmeida
 - Added translations to spanish @macagua
 
 ### Changes
 
-- Added more i18n improvements @macagua
+- empty text blocks are shown as <br /> in the view.
+- Fix double fetch due to asyncConnect being executed in browser too @robgietema @sneridagh
 
 ## 4.0.0-alpha.18 (2019-12-12)
 
