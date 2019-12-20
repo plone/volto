@@ -86,7 +86,7 @@ export default function content(state = initialState, action = {}) {
       return settings.minimizeNetworkFetch
         ? {
             ...state,
-            history: action.result['@components'].workflow.history
+            history: action.result['@components']?.workflow?.history
               ? action.result['@components'].workflow.history
               : state.history,
             transitions: action.result.transitions
