@@ -4,6 +4,7 @@
  */
 
 import { LIST_ACTIONS, GET_CONTENT } from '../../constants/ActionTypes';
+import { settings } from '~/config';
 
 const initialState = {
   error: null,
@@ -29,25 +30,40 @@ const initialState = {
 export default function actions(state = initialState, action = {}) {
   switch (action.type) {
     case `${LIST_ACTIONS}_PENDING`:
-    case `${GET_CONTENT}_PENDING`:
       return {
         ...state,
         error: null,
         loaded: false,
         loading: true,
       };
+    case `${GET_CONTENT}_PENDING`:
+      return settings.minimizeNetworkFetch
+        ? {
+            ...state,
+            error: null,
+            loaded: false,
+            loading: true,
+          }
+        : state;
     case `${LIST_ACTIONS}_SUCCESS`:
-    case `${GET_CONTENT}_SUCCESS`:
-      const result = action.result['@components']?.actions || action.result;
       return {
         ...state,
         error: null,
-        actions: result,
+        actions: action.result,
         loaded: true,
         loading: false,
       };
+    case `${GET_CONTENT}_SUCCESS`:
+      return settings.minimizeNetworkFetch
+        ? {
+            ...state,
+            error: null,
+            actions: action.result['@components'].actions,
+            loaded: true,
+            loading: false,
+          }
+        : state;
     case `${LIST_ACTIONS}_FAIL`:
-    case `${GET_CONTENT}_FAIL`:
       return {
         ...state,
         error: action.error,
@@ -55,6 +71,16 @@ export default function actions(state = initialState, action = {}) {
         loaded: false,
         loading: false,
       };
+    case `${GET_CONTENT}_FAIL`:
+      return settings.minimizeNetworkFetch
+        ? {
+            ...state,
+            error: action.error,
+            actions: {},
+            loaded: false,
+            loading: false,
+          }
+        : state;
     default:
       return state;
   }
