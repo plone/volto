@@ -89,8 +89,8 @@ export default function content(state = initialState, action = {}) {
             history: action.result['@components']?.workflow?.history
               ? action.result['@components'].workflow.history
               : state.history,
-            transitions: action.result.transitions
-              ? action.result.transitions
+            transitions: action.result['@components']?.workflow?.transitions
+              ? action.result['@components']?.workflow?.transitions
               : state.transitions,
             [getRequestKey(action.type)]: {
               loading: false,
