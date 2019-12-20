@@ -10,7 +10,7 @@ import { compose } from 'redux';
 import { Portal } from 'react-portal';
 import { injectIntl } from 'react-intl';
 import qs from 'query-string';
-import { views } from '~/config';
+import { views, settings } from '~/config';
 
 import { Comments, Tags, Toolbar } from '../../../components';
 import { listActions, getContent } from '../../../actions';
@@ -110,7 +110,8 @@ class View extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillMount() {
-    this.props.listActions(getBaseUrl(this.props.pathname));
+    !settings.minimizeNetworkFetch &&
+      this.props.listActions(getBaseUrl(this.props.pathname));
     this.props.getContent(
       getBaseUrl(this.props.pathname),
       this.props.versionId,
@@ -125,7 +126,8 @@ class View extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.listActions(getBaseUrl(nextProps.pathname));
+      !settings.minimizeNetworkFetch &&
+        this.props.listActions(getBaseUrl(nextProps.pathname));
       this.props.getContent(
         getBaseUrl(nextProps.pathname),
         this.props.versionId,

@@ -21,6 +21,7 @@ import StandardWrapper from './StandardWrapper';
 import { getTypes, listActions } from '../../../actions';
 import { Icon } from '../../../components';
 import { BodyClass, getBaseUrl } from '../../../helpers';
+import { settings } from '~/config';
 
 import pastanagaSmall from './pastanaga-small.svg';
 import pastanagalogo from './pastanaga.svg';
@@ -114,7 +115,8 @@ class Toolbar extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.listActions(getBaseUrl(this.props.pathname));
+    !settings.minimizeNetworkFetch &&
+      this.props.listActions(getBaseUrl(this.props.pathname));
     this.props.getTypes(getBaseUrl(this.props.pathname));
     document.addEventListener('mousedown', this.handleClickOutside, false);
   }
@@ -127,7 +129,8 @@ class Toolbar extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.listActions(getBaseUrl(nextProps.pathname));
+      !settings.minimizeNetworkFetch &&
+        this.props.listActions(getBaseUrl(nextProps.pathname));
       this.props.getTypes(getBaseUrl(nextProps.pathname));
     }
   }
