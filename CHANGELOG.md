@@ -19,6 +19,8 @@
 - empty text blocks are shown as <br /> in the view.
 - Fix double fetch due to asyncConnect being executed in browser too @robgietema @sneridagh
 
+- Fix wysiwyg widget help tag, for styling consistency @tiberiuichim
+
 ## 4.0.0-alpha.18 (2019-12-12)
 
 ### Added
