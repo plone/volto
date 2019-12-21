@@ -32,6 +32,8 @@ export const settings = {
   internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
   websockets: process.env.RAZZLE_WEBSOCKETS || false,
   minimizeNetworkFetch: true,
+  // should also include ``types`` here, but it explicitely raises Unauthorized
+  // for anonymous in plone.restapi
   contentExpand: ['breadcrumbs', 'navigation', 'actions', 'workflow'],
   nonContentRoutes,
   extendedBlockRenderMap,

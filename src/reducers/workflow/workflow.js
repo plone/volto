@@ -83,7 +83,7 @@ export default function content(state = initialState, action = {}) {
         },
       };
     case `${GET_CONTENT}_SUCCESS`:
-      return settings.minimizeNetworkFetch
+      return !action.subrequest && settings.minimizeNetworkFetch
         ? {
             ...state,
             history: action.result['@components']?.workflow?.history

@@ -54,7 +54,7 @@ export default function actions(state = initialState, action = {}) {
         loading: false,
       };
     case `${GET_CONTENT}_SUCCESS`:
-      return settings.minimizeNetworkFetch
+      return !action.subrequest && settings.minimizeNetworkFetch
         ? {
             ...state,
             error: null,

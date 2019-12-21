@@ -127,8 +127,6 @@ export function getContent(url, version = null, subrequest = null) {
       path: `${url}${
         version ? `/@history/${version}` : ''
       }?fullobjects${expand}`,
-      // should also include ``types`` here, but it explicitely raises
-      // Unauthorized for anonymous in plone.restapi
     },
   };
 }
