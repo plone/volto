@@ -15,6 +15,7 @@ import {
   ORDER_CONTENT,
   RESET_CONTENT,
 } from '../../constants/ActionTypes';
+import { settings } from '../../config';
 
 describe('Content action', () => {
   describe('createContent', () => {
@@ -134,6 +135,19 @@ describe('Content action', () => {
   });
 
   describe('getContent', () => {
+    it('should create an action to get content with expand', () => {
+      settings.minimizeNetworkFetch = true;
+      const url = 'http://localhost';
+      const action = getContent(url);
+
+      expect(action.type).toEqual(GET_CONTENT);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(
+        `${url}?fullobjects&expand=breadcrumbs,navigation,actions,workflow`,
+      );
+      settings.minimizeNetworkFetch = false;
+    });
+
     it('should create an action to get content', () => {
       const url = 'http://localhost';
       const action = getContent(url);
