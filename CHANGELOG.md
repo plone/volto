@@ -12,6 +12,7 @@
 
 - Implementation of `Portuguese (BR)` translation @LeuAlmeida
 - Added translations to spanish @macagua
+- Added ``settings.contentExpand`` and ``settings.minimizeNetworkFetch``, tweaked action calls and reducers, to allow synchronized UI updates @tiberiuichim
 
 ### Changes
 
