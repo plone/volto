@@ -115,9 +115,10 @@ export function sortContent(url, on, order) {
  * @returns {Object} Get content action
  */
 export function getContent(url, version = null, subrequest = null) {
-  const expand = settings.minimizeNetworkFetch
-    ? '&expand=breadcrumbs,navigation,actions,workflow'
-    : '';
+  const expand =
+    !subrequest && settings.minimizeNetworkFetch
+      ? `&expand=${settings.contentExpand.join(',')}`
+      : '';
   return {
     type: GET_CONTENT,
     subrequest,

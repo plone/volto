@@ -31,6 +31,8 @@ export const settings = {
   // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
   internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
   websockets: process.env.RAZZLE_WEBSOCKETS || false,
+  minimizeNetworkFetch: true,
+  contentExpand: ['breadcrumbs', 'navigation', 'actions', 'workflow'],
   nonContentRoutes,
   extendedBlockRenderMap,
   blockStyleFn,
@@ -41,7 +43,6 @@ export const settings = {
   ToHTMLRenderers,
   ToHTMLOptions,
   imageObjects: ['Image'],
-  minimizeNetworkFetch: false,
 };
 
 export const widgets = {
