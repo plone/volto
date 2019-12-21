@@ -58,7 +58,7 @@ export default function content(state = initialState, action = {}) {
         },
       };
     case `${GET_CONTENT}_PENDING`:
-      return settings.minimizeNetworkFetch
+      return !action.subrequest && settings.minimizeNetworkFetch
         ? {
             ...state,
             [getRequestKey(action.type)]: {
@@ -122,7 +122,7 @@ export default function content(state = initialState, action = {}) {
         },
       };
     case `${GET_CONTENT}_FAIL`:
-      return settings.minimizeNetworkFetch
+      return !action.subrequest && settings.minimizeNetworkFetch
         ? {
             ...state,
             history: [],

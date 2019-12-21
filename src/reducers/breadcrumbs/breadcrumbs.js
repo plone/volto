@@ -32,7 +32,7 @@ export default function breadcrumbs(state = initialState, action = {}) {
         loading: true,
       };
     case `${GET_CONTENT}_PENDING`:
-      return settings.minimizeNetworkFetch
+      return !action.subrequest && settings.minimizeNetworkFetch
         ? {
             ...state,
             error: null,
@@ -49,7 +49,7 @@ export default function breadcrumbs(state = initialState, action = {}) {
         loading: false,
       };
     case `${GET_CONTENT}_FAIL`:
-      return settings.minimizeNetworkFetch
+      return !action.subrequest && settings.minimizeNetworkFetch
         ? {
             ...state,
             error: action.error,
