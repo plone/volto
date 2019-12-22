@@ -4,11 +4,21 @@
 
 ### Added
 
+### Changes
+
+- Fix wysiwyg widget help tag, for styling consistency @tiberiuichim
+
+## 4.0.0-alpha.19 (2019-12-20)
+
+### Added
+
+- Implementation of `Portuguese (BR)` translation @LeuAlmeida
 - Added translations to spanish @macagua
 
 ### Changes
 
-- Fix wysiwyg widget help tag, for styling consistency @tiberiuichim
+- empty text blocks are shown as <br /> in the view.
+- Fix double fetch due to asyncConnect being executed in browser too @robgietema @sneridagh
 
 ## 4.0.0-alpha.18 (2019-12-12)
 
@@ -17,7 +27,6 @@
 - Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
 - Automatically switch sidebar on block change @robgietema
 - Japanese translation @terapyon
-
 
 ### Changes
 

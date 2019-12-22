@@ -8,5 +8,6 @@ module.exports = {
   de: 'Deutsch',
   nl: 'Nederlands',
   ja: '日本語',
+  ptBR: 'Português (Brasil)',
   es: 'Spanish',
 };
