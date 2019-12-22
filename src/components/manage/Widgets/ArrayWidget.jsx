@@ -30,7 +30,7 @@ import {
  * @class ArrayWidget
  * @extends Component
  */
-class ArrayWidget extends Component {
+export class ArrayWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.

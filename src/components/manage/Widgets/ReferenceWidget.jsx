@@ -26,7 +26,7 @@ const messages = defineMessages({
  * @class ReferenceWidget
  * @extends Component
  */
-class ReferenceWidget extends Component {
+export class ReferenceWidget extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
