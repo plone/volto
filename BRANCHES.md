@@ -4,3 +4,4 @@
 - ``origin/wysiwyg_desc_styling`` - fix richtext help styling
 - ``origin/disable_submit`` - disables save button on click
 - ``tiberiuichim/sync_update`` - synced update of UI
+- ``origin/fix_querystring_ssr_edit`` - fix querystring SSR edit
