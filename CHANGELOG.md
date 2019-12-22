@@ -10,6 +10,8 @@
 
 - Export connected widget classes, to allow extending @tiberiuichim
 
+- Fix SSR rendering of Querystring Widget @tiberiuichim
+
 ## 4.0.0-alpha.19 (2019-12-20)
 
 ### Added

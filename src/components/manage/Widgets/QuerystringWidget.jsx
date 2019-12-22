@@ -263,6 +263,9 @@ export class QuerystringWidget extends Component {
       intl,
     } = this.props;
 
+    // SSR fallback
+    if (Object.keys(indexes).length === 0) return '';
+
     const schema = {
       fieldsets: [
         {
