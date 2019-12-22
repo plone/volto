@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Export connected widget classes, to allow extending @tiberiuichim
+
 ## 4.0.0-alpha.19 (2019-12-20)
 
 ### Added
