@@ -5,6 +5,7 @@
 
 import PropTypes from 'prop-types';
 import redraft from 'redraft';
+import React from 'react';
 
 import { settings } from '~/config';
 
@@ -14,9 +15,11 @@ import { settings } from '~/config';
  * @extends Component
  */
 const View = ({ data }) =>
-  data.text
-    ? redraft(data.text, settings.ToHTMLRenderers, settings.ToHTMLOptions)
-    : '';
+  data.text ? (
+    redraft(data.text, settings.ToHTMLRenderers, settings.ToHTMLOptions)
+  ) : (
+    <br />
+  );
 
 /**
  * Property types.
