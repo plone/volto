@@ -9,6 +9,7 @@
 ### Changes
 
 - Added more i18n improvements @macagua
+- Disable submit button on save, to avoid multiple content creation @tiberiuichim
 
 ## 4.0.0-alpha.19 (2019-12-20)
 
