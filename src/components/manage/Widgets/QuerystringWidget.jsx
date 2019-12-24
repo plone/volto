@@ -263,9 +263,6 @@ class QuerystringWidget extends Component {
       intl,
     } = this.props;
 
-    // SSR fallback
-    if (Object.keys(indexes).length === 0) return '';
-
     const schema = {
       fieldsets: [
         {
@@ -297,7 +294,7 @@ class QuerystringWidget extends Component {
       required: ['id', 'title'],
     };
 
-    return (
+    return Object.keys(indexes).length ? (
       <Form.Field
         inline
         required={required}
@@ -491,6 +488,8 @@ class QuerystringWidget extends Component {
           )}
         </Grid>
       </Form.Field>
+    ) : (
+      ''
     );
   }
 }
