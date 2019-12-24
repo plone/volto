@@ -7,6 +7,7 @@
 ### Changes
 
 - Disable submit button on save, to avoid multiple content creation @tiberiuichim
+- Fix focus on sidebar @robgietema
 
 ## 4.0.0-alpha.19 (2019-12-20)
 

@@ -563,7 +563,7 @@ class Form extends Component {
                     <Field
                       {...schema.properties[field]}
                       id={field}
-                      focus={index === 0}
+                      focus={false}
                       value={this.state.formData[field]}
                       required={schema.required.indexOf(field) !== -1}
                       onChange={this.onChangeField}
