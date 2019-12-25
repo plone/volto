@@ -15,6 +15,7 @@
 
 - Disable submit button on save, to avoid multiple content creation @tiberiuichim
 - Fix focus on sidebar @robgietema
+- Fix a problem with Querystring selections when vocab doesn't have current index value @tiberiuichim
 
 ## 4.0.0-alpha.19 (2019-12-20)
 
