@@ -6,6 +6,7 @@
 
 ### Changes
 
+- Fix wysiwyg widget help tag, for styling consistency @tiberiuichim
 - Disable submit button on save, to avoid multiple content creation @tiberiuichim
 
 - Export connected widget classes, to allow extending @tiberiuichim
