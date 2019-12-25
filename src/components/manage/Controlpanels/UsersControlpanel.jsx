@@ -77,6 +77,10 @@ const messages = defineMessages({
     id: 'Delete Group',
     defaultMessage: 'Delete Group',
   },
+  add: {
+    id: 'Add',
+    defaultMessage: 'Add',
+  },
   addUserButtonTitle: {
     id: 'Add new user',
     defaultMessage: 'Add new user',
@@ -144,6 +148,10 @@ const messages = defineMessages({
   groupCreated: {
     id: 'Group created',
     defaultMessage: 'Group created',
+  },
+  usersAndGroups: {
+    id: 'Users and Groups',
+    defaultMessage: 'Users and Groups',
   },
 });
 
@@ -588,7 +596,9 @@ class UsersControlpanel extends Component {
       : '';
     return (
       <Container className="users-control-panel">
-        <Helmet title="Users and Groups" />
+        <Helmet
+          title={this.props.intl.formatMessage(messages.usersAndGroups)}
+        />
         <div className="container">
           <Confirm
             open={this.state.showDelete}
@@ -832,7 +842,12 @@ class UsersControlpanel extends Component {
                 this.setState({ showAddUser: true });
               }}
             >
-              <Icon name={addSvg} size="30px" color="#007eb1" title="Add" />
+              <Icon
+                name={addSvg}
+                size="30px"
+                color="#007eb1"
+                title={this.props.intl.formatMessage(messages.add)}
+              />
             </Button>
           </Segment>
           <Divider />
@@ -899,7 +914,12 @@ class UsersControlpanel extends Component {
                 this.setState({ showAddGroup: true });
               }}
             >
-              <Icon name={addSvg} size="30px" color="#007eb1" title="Add" />
+              <Icon
+                name={addSvg}
+                size="30px"
+                color="#007eb1"
+                title={this.props.intl.formatMessage(messages.add)}
+              />
             </Button>
           </Segment>
         </Segment.Group>
