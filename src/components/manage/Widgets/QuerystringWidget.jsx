@@ -206,7 +206,7 @@ class QuerystringWidget extends Component {
               }}
               isMulti={true}
               value={map(row.v, value => ({
-                label: values[value].title,
+                label: (values[value] && values[value].title) || value,
                 value,
               }))}
             />
