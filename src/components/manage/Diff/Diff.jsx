@@ -36,6 +36,14 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  split: {
+    id: 'Split',
+    defaultMessage: 'Split',
+  },
+  unified: {
+    id: 'Unified',
+    defaultMessage: 'Unified',
+  },
 });
 
 /**
@@ -214,8 +222,14 @@ class Diff extends Component {
             <Button.Group>
               {map(
                 [
-                  { id: 'split', label: 'Split' },
-                  { id: 'unified', label: 'Unified' },
+                  {
+                    id: 'split',
+                    label: this.props.intl.formatMessage(messages.split),
+                  },
+                  {
+                    id: 'unified',
+                    label: this.props.intl.formatMessage(messages.unified),
+                  },
                 ],
                 view => (
                   <Button

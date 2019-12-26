@@ -4,10 +4,18 @@
 
 ### Added
 
+- Added translations to Portuguese @emansije
+
 ### Changes
 
 - Fix wysiwyg widget help tag, for styling consistency @tiberiuichim
+- Added more i18n improvements @macagua
 - Disable submit button on save, to avoid multiple content creation @tiberiuichim
+- Fix focus on sidebar @robgietema
+
+### Internal
+
+- Upgrade version pin for lxml, for compatibility with Python3.8
 
 ## 4.0.0-alpha.19 (2019-12-20)
 

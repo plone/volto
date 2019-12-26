@@ -4,9 +4,11 @@
  */
 
 import React, { Component } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Form, Grid, Label } from 'semantic-ui-react';
 import { isObject, map } from 'lodash';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import AsyncPaginate from 'react-select-async-paginate';
 import CreatableSelect from 'react-select/creatable';
@@ -24,6 +26,13 @@ import {
   selectTheme,
   customSelectStyles,
 } from './SelectStyling';
+
+const messages = defineMessages({
+  no_value: {
+    id: 'No value',
+    defaultMessage: 'No value',
+  },
+});
 
 /**
  * ArrayWidget component class.
@@ -214,7 +223,12 @@ class ArrayWidget extends Component {
                             value: option[0],
                             label: option[1],
                           })),
-                          { label: 'No value', value: 'no-value' },
+                          {
+                            label: this.props.intl.formatMessage(
+                              messages.no_value,
+                            ),
+                            value: 'no-value',
+                          },
                         ]
                       : []
                   }
@@ -246,21 +260,24 @@ class ArrayWidget extends Component {
   }
 }
 
-export default connect(
-  (state, props) => {
-    const vocabBaseUrl =
-      getVocabFromHint(props) ||
-      getVocabFromField(props) ||
-      getVocabFromItems(props);
-    const vocabState = state.vocabularies[vocabBaseUrl];
-    if (vocabState) {
-      return {
-        choices: vocabState.items,
-        itemsTotal: vocabState.itemsTotal,
-        loading: Boolean(vocabState.loading),
-      };
-    }
-    return {};
-  },
-  { getVocabulary },
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => {
+      const vocabBaseUrl =
+        getVocabFromHint(props) ||
+        getVocabFromField(props) ||
+        getVocabFromItems(props);
+      const vocabState = state.vocabularies[vocabBaseUrl];
+      if (vocabState) {
+        return {
+          choices: vocabState.items,
+          itemsTotal: vocabState.itemsTotal,
+          loading: Boolean(vocabState.loading),
+        };
+      }
+      return {};
+    },
+    { getVocabulary },
+  ),
 )(ArrayWidget);
