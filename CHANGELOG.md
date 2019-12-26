@@ -15,6 +15,7 @@
 ### Internal
 
 - Upgrade version pin for lxml, for compatibility with Python3.8
+- Add tests for new line in text blocks @rodfersou
 
 ## 4.0.0-alpha.19 (2019-12-20)
 
@@ -35,7 +36,6 @@
 - Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
 - Automatically switch sidebar on block change @robgietema
 - Japanese translation @terapyon
-- Add tests for new line in text blocks @rodfersou
 
 ### Changes
 
