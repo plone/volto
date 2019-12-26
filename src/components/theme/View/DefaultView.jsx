@@ -41,7 +41,7 @@ const DefaultView = ({ content, intl }) => {
       <Helmet title={content.title} />
       {map(content[blocksLayoutFieldname].items, block => {
         const Block =
-          blocks.blocksConfig[(content[blocksFieldname]?.[block]?.['@type'])]?.[
+          blocks.blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.[
             'view'
           ] || null;
         return Block !== null ? (

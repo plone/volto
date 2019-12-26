@@ -185,7 +185,4 @@ ListingData.propTypes = {
   openObjectBrowser: PropTypes.func.isRequired,
 };
 
-export default compose(
-  withObjectBrowser,
-  injectIntl,
-)(ListingData);
+export default compose(withObjectBrowser, injectIntl)(ListingData);
