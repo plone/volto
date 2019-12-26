@@ -103,6 +103,7 @@ const blocksConfig = {
     restricted: true,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
+    sidebarTab: 0,
     security: {
       addPermission: [],
       view: [],
@@ -118,6 +119,7 @@ const blocksConfig = {
     restricted: true,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
+    sidebarTab: 0,
     security: {
       addPermission: [],
       view: [],
@@ -133,6 +135,7 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
+    sidebarTab: 0,
     security: {
       addPermission: [],
       view: [],
@@ -147,6 +150,7 @@ const blocksConfig = {
     edit: EditImageBlock,
     restricted: false,
     mostUsed: true,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],
@@ -175,6 +179,7 @@ const blocksConfig = {
     edit: EditVideoBlock,
     restricted: false,
     mostUsed: true,
+    sidebarTab: 0,
     security: {
       addPermission: [],
       view: [],
@@ -190,6 +195,7 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
+    sidebarTab: 0,
     security: {
       addPermission: [],
       view: [],
@@ -204,6 +210,7 @@ const blocksConfig = {
     edit: EditMapBlock,
     restricted: false,
     mostUsed: false,
+    sidebarTab: 0,
     security: {
       addPermission: [],
       view: [],
@@ -218,6 +225,7 @@ const blocksConfig = {
     edit: EditHTMLBlock,
     restricted: false,
     mostUsed: false,
+    sidebarTab: 0,
     security: {
       addPermission: [],
       view: [],
@@ -233,6 +241,7 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     blockHasOwnFocusManagement: true,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],

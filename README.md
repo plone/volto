@@ -288,6 +288,11 @@ If you want to use Guillotina as backend to run the tests you should run:
 $ yarn ci:start-api-plone-guillotina
 ```
 
+## Translations
+
+If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://docs.voltocms.com/customizing/i18n/).
+
+
 ## License
 
 MIT License. Copyrights hold the [Plone Foundation](https://plone.org/foundation).

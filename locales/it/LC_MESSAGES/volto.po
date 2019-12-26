@@ -33,6 +33,12 @@ msgstr "Azione"
 msgid "Actions"
 msgstr "Azioni"
 
+#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/SchemaWidget
+msgid "Add"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Add Content"
 msgstr ""
@@ -132,6 +138,10 @@ msgstr ""
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr ""
 
+#: components/theme/Breadcrumbs/Breadcrumbs
+msgid "Breadcrumbs"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
 msgstr "Sfoglia"
@@ -160,6 +170,12 @@ msgstr "Annulla"
 #: components/manage/Blocks/Table/Edit
 msgid "Cell"
 msgstr "Cella"
+
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
+msgid "Center"
+msgstr ""
 
 #: components/manage/History/History
 msgid "Change Note"
@@ -199,6 +215,10 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
+#: components/manage/Widgets/SelectWidget
+msgid "Close"
+msgstr ""
+
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Chiudi menu"
@@ -235,6 +255,7 @@ msgid "Contained items"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
 msgid "Contents"
 msgstr "Contenuti"
 
@@ -303,6 +324,10 @@ msgstr "Default"
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
+#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "Elimina"
@@ -391,6 +416,8 @@ msgstr "Gli indirizzi e-mail non corrispondono"
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/CheckboxWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "Modifica"
@@ -418,6 +445,10 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 msgid "Email sent"
 msgstr "Email inviata"
+
+#: components/manage/Blocks/Maps/View
+msgid "Embeded Google Maps"
+msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter Map URL"
@@ -465,6 +496,10 @@ msgstr "Errore"
 msgid "Exclude from navigation"
 msgstr "Escludi dalla navigazione"
 
+#: components/manage/Sidebar/Sidebar
+msgid "Expand sidebar"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
 msgstr "Data di scadenza"
@@ -493,6 +528,12 @@ msgstr "Celle della tabella a larghezza fissata"
 msgid "From"
 msgstr "Da"
 
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
+msgid "Full"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
@@ -507,6 +548,18 @@ msgstr ""
 msgid "GNU GPL license"
 msgstr "licenza GNU GPL"
 
+#: components/manage/Sharing/Sharing
+msgid "Global role"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Google Maps Embedded Block"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Group"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Group created"
 msgstr ""
@@ -517,6 +570,11 @@ msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Groups"
+msgstr ""
+
+#: components/manage/History/History
+#: components/manage/Toolbar/More
+msgid "History"
 msgstr ""
 
 #: components/manage/History/History
@@ -564,6 +622,10 @@ msgstr "Info"
 msgid "Inherit permissions from higher levels"
 msgstr "Eredita i permessi dai livelli superiori"
 
+#: components/manage/Sharing/Sharing
+msgid "Inherited value"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Insert col after"
 msgstr "Inserisci colonna dopo"
@@ -610,6 +672,12 @@ msgstr "Lingua"
 msgid "Last modified"
 msgstr "Ultima modifica"
 
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
+msgid "Left"
+msgstr ""
+
 #: components/manage/Sidebar/ImageSidebar
 msgid "Link to"
 msgstr "Link a"
@@ -630,6 +698,10 @@ msgstr "Log In"
 #: components/theme/Login/Login
 msgid "Log in"
 msgstr "Log in"
+
+#: components/theme/Login/Login
+msgid "Login"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "Login Failed"
@@ -660,9 +732,17 @@ msgstr "Messaggio"
 msgid "Minimum length is {len}."
 msgstr "La lunghezza minima è {len}"
 
+#: components/manage/Controlpanels/Controlpanels
+msgid "Moderate Comments"
+msgstr ""
+
 #: components/manage/Controlpanels/ModerateComments
 msgid "Moderate comments"
 msgstr "Moderazione commenti"
+
+#: components/manage/Toolbar/Toolbar
+msgid "More"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to bottom of folder"
@@ -680,6 +760,10 @@ msgstr "Il mio indirizzo email è"
 #: components/theme/ContactForm/ContactForm
 msgid "Name"
 msgstr "Nome"
+
+#: error
+msgid "Navigate back"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -701,6 +785,16 @@ msgstr "La ricerca non ha prodotto risultati."
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "No selection"
+msgstr ""
+
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectWidget
+msgid "No value"
+msgstr ""
+
+#: components/manage/Workflow/Workflow
+msgid "No workflow"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -729,6 +823,11 @@ msgid "Password"
 msgstr "Password"
 
 #: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "Password reset"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
 msgid "Passwords do not match."
 msgstr "Le password non corrispondono."
 
@@ -745,9 +844,18 @@ msgstr "Informazioni Personali"
 msgid "Personal Preferences"
 msgstr "Preferenze Personali"
 
+#: components/manage/Toolbar/More
+#: components/manage/Toolbar/Toolbar
+msgid "Personal tools"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Persone responsabili della creazione del contenuto di questo elemento. Inserisci un elenco di nomi, uno per riga. L'autore principale dovrebbe essere messo al primo posto."
+
+#: components/manage/Blocks/Video/Edit
+msgid "Please enter a valid URL by deleting the block and adding a new video block."
+msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
@@ -777,6 +885,7 @@ msgstr "Realizzato con Plone &amp; Python"
 msgid "Preferences"
 msgstr ""
 
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Anteprima"
@@ -865,6 +974,12 @@ msgstr "Ripristina questa versione"
 msgid "Richtext"
 msgstr "Testo formattato"
 
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
+msgid "Right"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Rights"
 msgstr "Diritti"
@@ -919,6 +1034,10 @@ msgstr "Cerca utenti..."
 msgid "Select columns to show"
 msgstr "Seleziona le colonne da mostrare"
 
+#: components/manage/Widgets/QuerystringWidget
+msgid "Select criteria"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Seleziona la transizione da effettuare per cambiare lo stato del contenuto."
@@ -944,6 +1063,10 @@ msgid "Set your password"
 msgstr "Specifica la tua password"
 
 #: components/manage/Sharing/Sharing
+msgid "Sharing"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
 msgid "Sharing for {title}"
 msgstr "Condivisioni di {title}"
 
@@ -960,6 +1083,14 @@ msgstr "Nome Breve"
 #: components/manage/Contents/ContentsRenameModal
 msgid "Short name"
 msgstr "Nome breve"
+
+#: components/manage/Sidebar/Sidebar
+msgid "Shrink sidebar"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+msgid "Shrink toolbar"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "Sign in to start session"
@@ -982,10 +1113,15 @@ msgstr "Mappa del sito"
 msgid "Site Setup"
 msgstr "Configurazione del sito"
 
+#: error
+msgid "Sorry, something went wrong with your request"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
 msgstr ""
 
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Listing/ListingData
 msgid "Source"
 msgstr ""
@@ -993,6 +1129,10 @@ msgstr ""
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
 msgstr "Specifica l'URL di un video o una playlist di YouTube"
+
+#: components/manage/Diff/Diff
+msgid "Split"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
@@ -1112,6 +1252,10 @@ msgstr "Digita testo…"
 msgid "Type the title…"
 msgstr "Digita il titolo…"
 
+#: components/manage/Diff/Diff
+msgid "Unified"
+msgstr ""
+
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
 msgid "Unknown Block"
@@ -1143,6 +1287,10 @@ msgstr "Caricamento dei files"
 msgid "Used for programmatic access to the fieldset."
 msgstr "Usato per l'accesso programmatico al set di campi."
 
+#: components/manage/Sharing/Sharing
+msgid "User"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "User created"
 msgstr ""
@@ -1158,6 +1306,11 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users"
 msgstr "Utenti"
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Users and Groups"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
@@ -1251,6 +1404,10 @@ msgstr "Hai dimenticato la tua password?"
 msgid "common"
 msgstr ""
 
+#: components/manage/Blocks/Block/Edit
+msgid "delete"
+msgstr ""
+
 #: config/Blocks
 msgid "description"
 msgstr "Descrizione"
@@ -1295,9 +1452,17 @@ msgstr ""
 msgid "mostUsed"
 msgstr ""
 
+#: error
+msgid "or try a different page."
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "form di registrazione"
+
+#: error
+msgid "return to the site root"
+msgstr ""
 
 #: config/Blocks
 msgid "table"
@@ -1310,6 +1475,10 @@ msgstr "Testo"
 #: config/Blocks
 msgid "title"
 msgstr "Titolo"
+
+#: components/manage/Toolbar/PersonalTools
+msgid "user avatar"
+msgstr ""
 
 #: config/Blocks
 msgid "video"

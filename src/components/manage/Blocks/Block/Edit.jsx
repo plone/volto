@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
+import { connect } from 'react-redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -13,6 +14,7 @@ import { blocks } from '~/config';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import cx from 'classnames';
+import { setSidebarTab } from '../../../../actions';
 
 import withObjectBrowser from '../../Sidebar/ObjectBrowser';
 import Icon from '../../../../components/theme/Icon/Icon';
@@ -23,6 +25,10 @@ const messages = defineMessages({
   unknownBlock: {
     id: 'Unknown Block',
     defaultMessage: 'Unknown Block {block}',
+  },
+  delete: {
+    id: 'delete',
+    defaultMessage: 'delete',
   },
 });
 
@@ -121,6 +127,9 @@ class Edit extends Component {
     ) {
       this.blockNode.current.focus();
     }
+    if (this.props.selected) {
+      this.props.setSidebarTab(blocks.blocksConfig?.[type]?.sidebarBar || 0);
+    }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -133,6 +142,9 @@ class Edit extends Component {
       this.blockNode.current
     ) {
       this.blockNode.current.focus();
+    }
+    if (!this.props.selected && nextProps.selected) {
+      this.props.setSidebarTab(blocks.blocksConfig?.[type]?.sidebarTab || 0);
     }
   }
 
@@ -232,7 +244,7 @@ class Edit extends Component {
               basic
               onClick={() => this.props.onDeleteBlock(id)}
               className="delete-button"
-              aria-label="delete"
+              aria-label={this.props.intl.formatMessage(messages.delete)}
             >
               <Icon name={trashSVG} size="18px" />
             </Button>
@@ -253,4 +265,5 @@ export default compose(
     connectDragSource: connect.dragSource(),
     connectDragPreview: connect.dragPreview(),
   })),
+  connect(null, { setSidebarTab }),
 )(Edit);

@@ -33,9 +33,7 @@ export {
   updateControlpanel,
 } from '@plone/volto/actions/controlpanels/controlpanels';
 export { getDiff } from '@plone/volto/actions/diff/diff';
-export {
-  emailNotification,
-} from '@plone/volto/actions/emailNotification/emailNotification';
+export { emailNotification } from '@plone/volto/actions/emailNotification/emailNotification';
 export {
   createGroup,
   deleteGroup,
@@ -88,6 +86,5 @@ export {
   transitionWorkflow,
 } from '@plone/volto/actions/workflow/workflow';
 export { getQuerystring } from '@plone/volto/actions/querystring/querystring';
-export {
-  getQueryStringResults,
-} from '@plone/volto/actions/querystringsearch/querystringsearch';
+export { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
+export { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
