@@ -4,17 +4,54 @@
 
 ### Added
 
+- Added translations to Portuguese @emansije
+
+### Changes
+
+- Added more i18n improvements @macagua
+- Disable submit button on save, to avoid multiple content creation @tiberiuichim
+- Fix focus on sidebar @robgietema
+
+### Internal
+
+- Upgrade version pin for lxml, for compatibility with Python3.8
+
+## 4.0.0-alpha.19 (2019-12-20)
+
+### Added
+
+- Implementation of `Portuguese (BR)` translation @LeuAlmeida
+- Added translations to spanish @macagua
+
+### Changes
+
+- empty text blocks are shown as <br /> in the view.
+- Fix double fetch due to asyncConnect being executed in browser too @robgietema @sneridagh
+
+## 4.0.0-alpha.18 (2019-12-12)
+
+### Added
+
 - Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
 - Automatically switch sidebar on block change @robgietema
-- Fix file and link redirect views @robgietema
 - Japanese translation @terapyon
 - Add tests for new line in text blocks @rodfersou
 
 ### Changes
 
 - Remove "documentDescription" class in table block @sverbois
+- Added possibility to work with vimeo-videos instead of youtube-videos in the video block @wkbkhard
+- Fixed Issue 1021: typing in a "wrong" URL leads to error @wkbkhard
 - General toolbar more and personal tools menu CSS fixes @sneridagh
 - Fix bug that lead to crashing the view when deleting the last row of a table
+- Fix Select widget bug if the field has already the options in the `choices` schema, do not trigger the vocabulary request @sneridagh
+
+### Internal
+
+- Updated to react-select v3 @robdayz
+- Fix file and link redirect views @robgietema
+- Restrict moment.js locales to available languages @tisto @robgietema
+- Fix history view @robgietema
 
 ## 4.0.0-alpha.17 (2019-12-03)
 

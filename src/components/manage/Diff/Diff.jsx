@@ -17,7 +17,12 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 
 import { getDiff, getSchema, getHistory } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
+import {
+  getBaseUrl,
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+  hasBlocksData,
+} from '../../../helpers';
 import { DiffField, Icon, Toolbar } from '../../../components';
 
 import backSVG from '../../../icons/back.svg';
@@ -30,6 +35,14 @@ const messages = defineMessages({
   back: {
     id: 'Back',
     defaultMessage: 'Back',
+  },
+  split: {
+    id: 'Split',
+    defaultMessage: 'Split',
+  },
+  unified: {
+    id: 'Unified',
+    defaultMessage: 'Unified',
   },
 });
 
@@ -58,7 +71,7 @@ class Diff extends Component {
         '@id': PropTypes.string,
       }),
     ).isRequired,
-    history: PropTypes.arrayOf(
+    historyEntries: PropTypes.arrayOf(
       PropTypes.shape({
         version: PropTypes.number,
         time: PropTypes.string,
@@ -172,7 +185,7 @@ class Diff extends Component {
    */
   render() {
     const versions = map(
-      filter(this.props.history, entry => 'version' in entry),
+      filter(this.props.historyEntries, entry => 'version' in entry),
       (entry, index) => ({
         text: `${index === 0 ? 'Current' : entry.version} (${moment(
           entry.time,
@@ -209,8 +222,14 @@ class Diff extends Component {
             <Button.Group>
               {map(
                 [
-                  { id: 'split', label: 'Split' },
-                  { id: 'unified', label: 'Unified' },
+                  {
+                    id: 'split',
+                    label: this.props.intl.formatMessage(messages.split),
+                  },
+                  {
+                    id: 'unified',
+                    label: this.props.intl.formatMessage(messages.unified),
+                  },
                 ],
                 view => (
                   <Button
@@ -226,7 +245,7 @@ class Diff extends Component {
             </Button.Group>
           </Grid.Column>
         </Grid>
-        {this.props.history.length > 0 && (
+        {this.props.historyEntries.length > 0 && (
           <Table basic="very">
             <Table.Header>
               <Table.Row>
@@ -263,7 +282,9 @@ class Diff extends Component {
                 !isEqual(
                   this.props.data[0][field],
                   this.props.data[1][field],
-                ) && (
+                ) &&
+                field !== getBlocksFieldname(this.props.data[0]) &&
+                field !== getBlocksLayoutFieldname(this.props.data[0]) && (
                   <DiffField
                     key={field}
                     one={this.props.data[0][field]}
@@ -273,6 +294,30 @@ class Diff extends Component {
                   />
                 ),
             ),
+          )}
+        {this.props.schema &&
+          this.props.data.length > 0 &&
+          hasBlocksData(this.props.data[0]) &&
+          (!isEqual(
+            this.props.data[0][getBlocksFieldname(this.props.data[0])],
+            this.props.data[1][getBlocksFieldname(this.props.data[1])],
+          ) ||
+            !isEqual(
+              this.props.data[0][getBlocksLayoutFieldname(this.props.data[0])],
+              this.props.data[1][getBlocksLayoutFieldname(this.props.data[1])],
+            )) && (
+            <DiffField
+              one={this.props.data[0][getBlocksFieldname(this.props.data[0])]}
+              two={this.props.data[1][getBlocksFieldname(this.props.data[1])]}
+              contentOne={this.props.data[0]}
+              contentTwo={this.props.data[1]}
+              schema={
+                this.props.schema.properties[
+                  getBlocksFieldname(this.props.data[0])
+                ]
+              }
+              view={this.props.view}
+            />
           )}
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
@@ -304,7 +349,7 @@ export default compose(
   connect(
     (state, props) => ({
       data: state.diff.data,
-      history: state.history.entries,
+      historyEntries: state.history.entries,
       schema: state.schema.schema,
       pathname: props.location.pathname,
       one: qs.parse(props.location.search).one,
