@@ -50,6 +50,26 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  sharing: {
+    id: 'Sharing',
+    defaultMessage: 'Sharing',
+  },
+  user: {
+    id: 'User',
+    defaultMessage: 'User',
+  },
+  group: {
+    id: 'Group',
+    defaultMessage: 'Group',
+  },
+  globalRole: {
+    id: 'Global role',
+    defaultMessage: 'Global role',
+  },
+  inheritedValue: {
+    id: 'Inherited value',
+    defaultMessage: 'Inherited value',
+  },
 });
 
 /**
@@ -247,7 +267,7 @@ class SharingComponent extends Component {
   render() {
     return (
       <Container id="page-sharing">
-        <Helmet title="Sharing" />
+        <Helmet title={this.props.intl.formatMessage(messages.sharing)} />
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage
@@ -296,7 +316,11 @@ class SharingComponent extends Component {
                     <Table.Cell>
                       <Icon
                         name={entry.type === 'user' ? 'user' : 'users'}
-                        title={entry.type === 'user' ? 'User' : 'Group'}
+                        title={
+                          entry.type === 'user'
+                            ? this.props.intl.formatMessage(messages.user)
+                            : this.props.intl.formatMessage(messages.group)
+                        }
                       />{' '}
                       {entry.title}
                       {entry.login && ` (${entry.login})`}
@@ -306,7 +330,9 @@ class SharingComponent extends Component {
                         {entry.roles[role.id] === 'global' && (
                           <Icon
                             name="check circle outline"
-                            title="Global role"
+                            title={this.props.intl.formatMessage(
+                              messages.globalRole,
+                            )}
                             color="blue"
                           />
                         )}
@@ -314,7 +340,9 @@ class SharingComponent extends Component {
                           <Icon
                             name="check circle outline"
                             color="green"
-                            title="Inherited value"
+                            title={this.props.intl.formatMessage(
+                              messages.inheritedValue,
+                            )}
                           />
                         )}
                         {typeof entry.roles[role.id] === 'boolean' && (
