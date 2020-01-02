@@ -7,7 +7,29 @@
 ### Changes
 
 - Disable all all styling when copying text from another source (e.g. MS Word) into a text block.
+## 4.0.0-alpha.21 (2020-01-02)
+
+### Changes
+
+- Fix failing test on Footer due to year change in Copyright notice @sneridagh
+
+## 4.0.0-alpha.20 (2020-01-02)
+
+### Added
+
+- Added translations to Portuguese @emansije
+
+### Changes
+
+- Fix wysiwyg widget help tag, for styling consistency @tiberiuichim
+- Added more i18n improvements @macagua
 - Disable submit button on save, to avoid multiple content creation @tiberiuichim
+- Fix focus on sidebar @robgietema
+
+### Internal
+
+- Upgrade version pin for lxml, for compatibility with Python3.8
+- Bump handlebars from 4.1.2 to 4.3.0 @timo
 
 ## 4.0.0-alpha.19 (2019-12-20)
 
