@@ -2,9 +2,9 @@
 
 ## 4.0.0 (unreleased)
 
-### Added
-
 ### Changes
+
+- Fix failing test on Footer due to year change in Copyright notice @sneridagh
 
 ## 4.0.0-alpha.20 (2020-01-02)
 
