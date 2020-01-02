@@ -8,6 +8,7 @@
 
 ### Changes
 
+- Fix wysiwyg widget help tag, for styling consistency @tiberiuichim
 - Added more i18n improvements @macagua
 - Disable submit button on save, to avoid multiple content creation @tiberiuichim
 - Fix focus on sidebar @robgietema
