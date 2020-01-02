@@ -6,6 +6,7 @@
 
 ### Changes
 
+- Disable all all styling when copying text from another source (e.g. MS Word) into a text block.
 - Disable submit button on save, to avoid multiple content creation @tiberiuichim
 
 ## 4.0.0-alpha.19 (2019-12-20)
@@ -17,7 +18,7 @@
 
 ### Changes
 
-- empty text blocks are shown as <br /> in the view.
+- empty text blocks are shown as `<br />` in the view.
 - Fix double fetch due to asyncConnect being executed in browser too @robgietema @sneridagh
 
 ## 4.0.0-alpha.18 (2019-12-12)
