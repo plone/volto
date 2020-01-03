@@ -16,6 +16,7 @@
 
 - Fix SSR rendering of Querystring Widget @tiberiuichim
 
+- Added more i18n improvements @macagua
 - Disable submit button on save, to avoid multiple content creation @tiberiuichim
 - Fix focus on sidebar @robgietema
 - Fix a problem with Querystring selections when vocab doesn't have current index value @tiberiuichim
@@ -23,6 +24,7 @@
 ### Internal
 
 - Upgrade version pin for lxml, for compatibility with Python3.8
+- Bump handlebars from 4.1.2 to 4.3.0 @timo
 
 ## 4.0.0-alpha.19 (2019-12-20)
 
