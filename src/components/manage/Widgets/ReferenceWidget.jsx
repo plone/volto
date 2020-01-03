@@ -19,6 +19,10 @@ const messages = defineMessages({
     id: 'No results found.',
     defaultMessage: 'No results found.',
   },
+  no_value: {
+    id: 'No value',
+    defaultMessage: 'No value',
+  },
 });
 
 /**
@@ -108,7 +112,7 @@ export class ReferenceWidget extends Component {
               },
               novalue: {
                 key: 'novalue',
-                text: 'No value',
+                text: this.props.intl.formatMessage(messages.no_value),
                 value: 'novalue',
                 data: null,
               },
@@ -160,7 +164,7 @@ export class ReferenceWidget extends Component {
         ),
         novalue: {
           key: 'novalue',
-          text: 'No value',
+          text: this.props.intl.formatMessage(messages.no_value),
           value: 'novalue',
           data: null,
         },

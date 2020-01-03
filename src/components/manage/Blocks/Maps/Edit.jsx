@@ -22,6 +22,26 @@ const messages = defineMessages({
     id: 'Enter Map URL',
     defaultMessage: 'Enter Map URL',
   },
+  left: {
+    id: 'Left',
+    defaultMessage: 'Left',
+  },
+  right: {
+    id: 'Right',
+    defaultMessage: 'Right',
+  },
+  center: {
+    id: 'Center',
+    defaultMessage: 'Center',
+  },
+  full: {
+    id: 'Full',
+    defaultMessage: 'Full',
+  },
+  GoogleMapsEmbeddedBlock: {
+    id: 'Google Maps Embedded Block',
+    defaultMessage: 'Google Maps Embedded Block',
+  },
 });
 
 /**
@@ -166,7 +186,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Left"
+                aria-label={this.props.intl.formatMessage(messages.left)}
                 onClick={() => this.onAlignBlock('left')}
                 active={this.props.data.align === 'left'}
               >
@@ -177,7 +197,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Right"
+                aria-label={this.props.intl.formatMessage(messages.right)}
                 onClick={() => this.onAlignBlock('right')}
                 active={this.props.data.align === 'right'}
               >
@@ -188,7 +208,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Center"
+                aria-label={this.props.intl.formatMessage(messages.center)}
                 onClick={() => this.onAlignBlock('center')}
                 active={
                   this.props.data.align === 'center' || !this.props.data.align
@@ -201,7 +221,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Full"
+                aria-label={this.props.intl.formatMessage(messages.full)}
                 onClick={() => this.onAlignBlock('full')}
                 active={this.props.data.align === 'full'}
               >
@@ -244,7 +264,9 @@ class Edit extends Component {
             })}
           >
             <iframe
-              title="Google Maps Embedded Block"
+              title={this.props.intl.formatMessage(
+                messages.GoogleMapsEmbeddedBlock,
+              )}
               src={this.props.data.url}
               className="google-map"
               frameBorder="0"

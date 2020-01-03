@@ -4,9 +4,12 @@
 
 ### Added
 
+- Added translations to Portuguese @emansije
+
 ### Changes
 
 - Fix wysiwyg widget help tag, for styling consistency @tiberiuichim
+- Added more i18n improvements @macagua
 - Disable submit button on save, to avoid multiple content creation @tiberiuichim
 
 - Export connected widget classes, to allow extending @tiberiuichim
@@ -16,6 +19,10 @@
 - Disable submit button on save, to avoid multiple content creation @tiberiuichim
 - Fix focus on sidebar @robgietema
 - Fix a problem with Querystring selections when vocab doesn't have current index value @tiberiuichim
+
+### Internal
+
+- Upgrade version pin for lxml, for compatibility with Python3.8
 
 ## 4.0.0-alpha.19 (2019-12-20)
 

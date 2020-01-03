@@ -23,6 +23,10 @@ const messages = defineMessages({
     id: 'Home',
     defaultMessage: 'Home',
   },
+  breadcrumbs: {
+    id: 'Breadcrumbs',
+    defaultMessage: 'Breadcrumbs',
+  },
 });
 
 /**
@@ -81,7 +85,7 @@ class Breadcrumbs extends Component {
     return (
       <Segment
         role="navigation"
-        aria-label="Breadcrumbs"
+        aria-label={this.props.intl.formatMessage(messages.breadcrumbs)}
         className="breadcrumbs"
         secondary
         vertical
