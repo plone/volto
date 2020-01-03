@@ -2,8 +2,6 @@
 
 ## 4.0.0 (unreleased)
 
-### Added
-
 ### Changes
 
 - Disable all all styling when copying text from another source (e.g. MS Word) into a text block @jackahl
