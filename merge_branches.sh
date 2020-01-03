@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 git fetch --all
 git pull
 git merge origin/export_components
