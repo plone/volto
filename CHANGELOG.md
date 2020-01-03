@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Avoid console warnings in QuerystringWidget @tiberich
+
 ## 4.0.0-alpha.21 (2020-01-02)
 
 ### Changes
