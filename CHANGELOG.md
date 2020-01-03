@@ -6,6 +6,7 @@
 
 ### Changes
 
+- Disable all all styling when copying text from another source (e.g. MS Word) into a text block.
 - Avoid console warnings in QuerystringWidget @tiberich
 
 ## 4.0.0-alpha.21 (2020-01-02)
@@ -41,7 +42,7 @@
 
 ### Changes
 
-- empty text blocks are shown as <br /> in the view.
+- empty text blocks are shown as `<br />` in the view.
 - Fix double fetch due to asyncConnect being executed in browser too @robgietema @sneridagh
 
 ## 4.0.0-alpha.18 (2019-12-12)
