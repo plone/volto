@@ -6,7 +6,7 @@
 
 ### Changes
 
-- Disable all all styling when copying text from another source (e.g. MS Word) into a text block.
+- Disable all all styling when copying text from another source (e.g. MS Word) into a text block @jackahl
 - Avoid console warnings in QuerystringWidget @tiberich
 
 ## 4.0.0-alpha.21 (2020-01-02)
