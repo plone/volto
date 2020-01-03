@@ -169,17 +169,17 @@ module.exports = {
       runtimeCaching: [
         {
           urlPattern: /images/,
-          handler: 'cacheFirst'
+          handler: 'CacheFirst'
         },
         {
           urlPattern: new RegExp(
             '^https://fonts.(?:googleapis|gstatic).com/(.*)'
           ),
-          handler: 'cacheFirst'
+          handler: 'CacheFirst'
         },
         {
           urlPattern: /.*/,
-          handler: 'networkFirst'
+          handler: 'NetworkFirst'
         }
       ]
     }),
