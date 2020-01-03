@@ -338,7 +338,7 @@ export class QuerystringWidget extends Component {
                 </div>
               )}
               {map(value, (row, index) => (
-                <Form.Group>
+                <Form.Group key={index}>
                   <Form.Field width={4}>
                     <Select
                       id={`field-${id}`}

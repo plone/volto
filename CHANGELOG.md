@@ -4,6 +4,20 @@
 
 ### Added
 
+### Changes
+
+- Avoid console warnings in QuerystringWidget @tiberich
+
+## 4.0.0-alpha.21 (2020-01-02)
+
+### Changes
+
+- Fix failing test on Footer due to year change in Copyright notice @sneridagh
+
+## 4.0.0-alpha.20 (2020-01-02)
+
+### Added
+
 - Added translations to Portuguese @emansije
 
 ### Changes
@@ -16,6 +30,7 @@
 
 - Fix SSR rendering of Querystring Widget @tiberiuichim
 
+- Fix wysiwyg widget help tag, for styling consistency @tiberiuichim
 - Added more i18n improvements @macagua
 - Disable submit button on save, to avoid multiple content creation @tiberiuichim
 - Fix focus on sidebar @robgietema
