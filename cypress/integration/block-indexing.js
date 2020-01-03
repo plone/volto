@@ -11,24 +11,8 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('?fullobjects');
     });
 
-    it('Index Title Block', () => {
-      cy.get(`.block.title [data-contents]`)
-        .clear()
-        .type('Noam Chomsky');
-      cy.get('#toolbar-save').click();
-
-      cy.get('input[name="SearchableText"]')
-        .clear()
-        .type('Noam');
-      cy.get('button[aria-label="Search"]').click();
-      cy.get('#content-core').contains('Noam Chomsky');
-    });
-
     it('Index Text Block', () => {
       // GIVEN: A page with a text block with the content 'Noam Avram Chomsky'
-      cy.get(`.block.title [data-contents]`)
-        .clear()
-        .type('My Title');
       cy.get('.block.inner.text .public-DraftEditor-content')
         .click()
         .type('Noam Avram Chomsky')
@@ -43,7 +27,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('button[aria-label="Search"]').click();
 
       // THEN: The search results should contain the page 'Noam Avram Chomsky'
-      cy.get('#content-core').contains('My Title');
+      cy.get('#content-core').contains('My Page');
     });
   });
 }
