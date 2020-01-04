@@ -233,8 +233,8 @@ class AddLinkForm extends Component {
           />
         </div>
         <ul style={{ margin: 0, paddingLeft: '35px' }}>
-          {map(this.props.search, item => (
-            <li style={{ padding: '5px' }}>
+          {map(this.props.search, (item, ix) => (
+            <li style={{ padding: '5px' }} key={ix}>
               <button
                 style={{ cursor: 'pointer' }}
                 onClick={e => this.onSelectItem(e, addAppURL(item['@id']))}

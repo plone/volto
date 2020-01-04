@@ -6,12 +6,14 @@
 
 ### Changes
 
+- Avoid console warnings in AddLinkForm.jsx @tiberiuichim
+
 ## 4.0.0-alpha.22 (2020-01-04)
 
 ### Changes
 
 - Disable all styling when copying text from another source (e.g. MS Word) into a text block @jackahl
-- Avoid console warnings in QuerystringWidget @tiberich
+- Avoid console warnings in QuerystringWidget @tiberiuichim
 - Fix body classname based on the current content type @sneridagh
 
 ## 4.0.0-alpha.21 (2020-01-02)
