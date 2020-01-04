@@ -203,5 +203,11 @@ export default compose(
         dispatch(getWorkflow(getBaseUrl(location.pathname))),
     },
   ]),
-  connect((state, props) => ({ pathname: props.location.pathname }), {}),
+  connect(
+    (state, props) => ({
+      pathname: props.location.pathname,
+      content: state.content.data,
+    }),
+    {},
+  ),
 )(App);

@@ -8,6 +8,14 @@
 
 - Avoid console warnings in QuerystringWidget @tiberich
 
+## 4.0.0-alpha.22 (2020-01-04)
+
+### Changes
+
+- Disable all styling when copying text from another source (e.g. MS Word) into a text block @jackahl
+- Avoid console warnings in QuerystringWidget @tiberich
+- Fix body classname based on the current content type @sneridagh
+
 ## 4.0.0-alpha.21 (2020-01-02)
 
 ### Changes
@@ -51,7 +59,7 @@
 
 ### Changes
 
-- empty text blocks are shown as <br /> in the view.
+- empty text blocks are shown as `<br />` in the view.
 - Fix double fetch due to asyncConnect being executed in browser too @robgietema @sneridagh
 
 - Fix wysiwyg widget help tag, for styling consistency @tiberiuichim
