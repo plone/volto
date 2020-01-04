@@ -152,6 +152,9 @@ if (Cypress.env('API') !== 'guillotina') {
         .click();
 
       //********  add short-name criteria filter
+      cy.get('.sidebar-container .tabs-wrapper .menu .item')
+        .contains('Block')
+        .click();
       cy.get('.sidebar-listing-data .fields')
         .contains('Add criteria')
         .click();
@@ -242,6 +245,9 @@ if (Cypress.env('API') !== 'guillotina') {
         .click();
 
       //********  add location criteria filter
+      cy.get('.sidebar-container .tabs-wrapper .menu .item')
+        .contains('Block')
+        .click();
       cy.get('.sidebar-listing-data .fields')
         .contains('Add criteria')
         .click();
@@ -331,6 +337,9 @@ if (Cypress.env('API') !== 'guillotina') {
         .click();
 
       //********  add location criteria filter
+      cy.get('.sidebar-container .tabs-wrapper .menu .item')
+        .contains('Block')
+        .click();
       cy.get('.sidebar-listing-data .fields')
         .contains('Add criteria')
         .click();
