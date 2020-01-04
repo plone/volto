@@ -170,6 +170,7 @@
 ### Added
 
 - Added translations to Portuguese @emansije
+- Added PWA feature to volto @iFlameing
 
 ### Changes
 
