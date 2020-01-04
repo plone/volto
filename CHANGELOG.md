@@ -4,8 +4,9 @@
 
 ### Changes
 
-- Disable all all styling when copying text from another source (e.g. MS Word) into a text block @jackahl
+- Disable all styling when copying text from another source (e.g. MS Word) into a text block @jackahl
 - Avoid console warnings in QuerystringWidget @tiberich
+- Fix body classname based on the current content type @sneridagh
 
 ## 4.0.0-alpha.21 (2020-01-02)
 
