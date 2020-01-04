@@ -7,6 +7,7 @@
 - ``origin/master`` - the latest Volto
 - ``origin/fix_querystring_missing_value`` - fix another querystring problem
 - ``origin/fix_querystring_child_warning`` - small fix for a querystring warning
+- ``origin/missing_key_in_addlinkform`` - small fix
 
 NOTE: also update ``merge_branches.sh`` script, to keep the ``kitchen_sink``
 branch up to date with latest changes
