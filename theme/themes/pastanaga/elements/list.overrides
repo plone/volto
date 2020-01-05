@@ -7,8 +7,9 @@
 }
 
 .ui.inverted.list .item a:not(.ui) {
-  color: @white!important;
+  color: @white !important;
 }
+
 .ui.grid > .row > .navigation.column {
   margin-top: unit(-@relativeBig * 1.5, em);
 

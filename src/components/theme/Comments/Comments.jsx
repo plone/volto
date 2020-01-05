@@ -31,6 +31,14 @@ const messages = defineMessages({
     id: 'Default',
     defaultMessage: 'Default',
   },
+  delete: {
+    id: 'Delete',
+    defaultMessage: 'Delete',
+  },
+  edit: {
+    id: 'Edit',
+    defaultMessage: 'Edit',
+  },
 });
 
 /**
@@ -96,7 +104,7 @@ class Comments extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.listComments(getBaseUrl(this.props.pathname));
   }
 
@@ -106,7 +114,7 @@ class Comments extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       nextProps.pathname !== this.props.pathname ||
       (this.props.addRequest.loading && nextProps.addRequest.loaded) ||
@@ -216,7 +224,7 @@ class Comments extends Component {
               {item.text.data}
               {item.is_deletable && (
                 <Button
-                  aria-label="Delete"
+                  aria-label={this.props.intl.formatMessage(messages.delete)}
                   onClick={this.onDelete}
                   value={item['@id'].replace(settings.apiPath, '')}
                   color="red"
@@ -227,7 +235,7 @@ class Comments extends Component {
               )}
               {item.is_editable && (
                 <Button
-                  aria-label="Edit"
+                  aria-label={this.props.intl.formatMessage(messages.edit)}
                   onClick={this.onEdit}
                   floated="right"
                   value={{

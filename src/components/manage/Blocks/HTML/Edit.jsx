@@ -10,11 +10,23 @@ import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-markup';
 import { Button } from 'semantic-ui-react';
 import pretty from 'pretty';
+import { defineMessages, injectIntl } from 'react-intl';
 
 import { Icon } from '../../../../components';
 import showSVG from '../../../../icons/show.svg';
 import clearSVG from '../../../../icons/clear.svg';
 import codeSVG from '../../../../icons/code.svg';
+
+const messages = defineMessages({
+  source: {
+    id: 'Source',
+    defaultMessage: 'Source',
+  },
+  preview: {
+    id: 'Preview',
+    defaultMessage: 'Preview',
+  },
+});
 
 /**
  * Edit html block class.
@@ -71,7 +83,7 @@ class Edit extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.selected) {
       this.codeEditor._input.focus();
     }
@@ -126,7 +138,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Source"
+                aria-label={this.props.intl.formatMessage(messages.source)}
                 active={!this.state.isPreview}
                 onClick={this.onCodeEditor}
               >
@@ -137,7 +149,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Preview"
+                aria-label={this.props.intl.formatMessage(messages.preview)}
                 active={this.state.isPreview}
                 onClick={this.onPreview}
               >
@@ -173,4 +185,4 @@ class Edit extends Component {
   }
 }
 
-export default Edit;
+export default injectIntl(Edit);

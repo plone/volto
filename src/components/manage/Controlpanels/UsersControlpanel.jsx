@@ -4,7 +4,7 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose, bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
@@ -77,6 +77,10 @@ const messages = defineMessages({
     id: 'Delete Group',
     defaultMessage: 'Delete Group',
   },
+  add: {
+    id: 'Add',
+    defaultMessage: 'Add',
+  },
   addUserButtonTitle: {
     id: 'Add new user',
     defaultMessage: 'Add new user',
@@ -145,37 +149,12 @@ const messages = defineMessages({
     id: 'Group created',
     defaultMessage: 'Group created',
   },
+  usersAndGroups: {
+    id: 'Users and Groups',
+    defaultMessage: 'Users and Groups',
+  },
 });
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    roles: state.roles.roles,
-    users: state.users.users,
-    groups: state.groups.groups,
-    description: state.description,
-    pathname: props.location.pathname,
-    deleteRequest: state.users.delete,
-    createRequest: state.users.create,
-    deleteGroupRequest: state.groups.delete,
-    createGroupRequest: state.groups.create,
-  }),
-  dispatch =>
-    bindActionCreators(
-      {
-        listRoles,
-        listUsers,
-        deleteUser,
-        createUser,
-        listGroups,
-        deleteGroup,
-        createGroup,
-        updateUser,
-        updateGroup,
-      },
-      dispatch,
-    ),
-)
 /**
  * UsersControlpanel class.
  * @class UsersControlpanel
@@ -269,7 +248,7 @@ class UsersControlpanel extends Component {
     this.props.listGroups();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
       (this.props.createRequest.loading && nextProps.createRequest.loaded)
@@ -617,7 +596,9 @@ class UsersControlpanel extends Component {
       : '';
     return (
       <Container className="users-control-panel">
-        <Helmet title="Users and Groups" />
+        <Helmet
+          title={this.props.intl.formatMessage(messages.usersAndGroups)}
+        />
         <div className="container">
           <Confirm
             open={this.state.showDelete}
@@ -861,7 +842,12 @@ class UsersControlpanel extends Component {
                 this.setState({ showAddUser: true });
               }}
             >
-              <Icon name={addSvg} size="30px" color="#007eb1" title="Add" />
+              <Icon
+                name={addSvg}
+                size="30px"
+                color="#007eb1"
+                title={this.props.intl.formatMessage(messages.add)}
+              />
             </Button>
           </Segment>
           <Divider />
@@ -928,7 +914,12 @@ class UsersControlpanel extends Component {
                 this.setState({ showAddGroup: true });
               }}
             >
-              <Icon name={addSvg} size="30px" color="#007eb1" title="Add" />
+              <Icon
+                name={addSvg}
+                size="30px"
+                color="#007eb1"
+                title={this.props.intl.formatMessage(messages.add)}
+              />
             </Button>
           </Segment>
         </Segment.Group>
@@ -983,10 +974,28 @@ export default compose(
     (state, props) => ({
       roles: state.roles.roles,
       users: state.users.users,
-      entries: state.users.users,
-      groupEntries: state.groups.groups,
+      groups: state.groups.groups,
+      description: state.description,
       pathname: props.location.pathname,
+      deleteRequest: state.users.delete,
+      createRequest: state.users.create,
+      deleteGroupRequest: state.groups.delete,
+      createGroupRequest: state.groups.create,
     }),
-    { listRoles, listUsers },
+    dispatch =>
+      bindActionCreators(
+        {
+          listRoles,
+          listUsers,
+          deleteUser,
+          createUser,
+          listGroups,
+          deleteGroup,
+          createGroup,
+          updateUser,
+          updateGroup,
+        },
+        dispatch,
+      ),
   ),
 )(UsersControlpanel);

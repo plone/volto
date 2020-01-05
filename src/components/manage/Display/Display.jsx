@@ -62,6 +62,10 @@ const customSelectStyles = {
     boxShadow: 'none',
     borderBottom: '2px solid #b8c6c8',
   }),
+  menuList: (styles, state) => ({
+    ...styles,
+    maxHeight: '400px',
+  }),
   indicatorSeparator: styles => ({
     ...styles,
     width: null,
@@ -133,7 +137,7 @@ class DisplaySelect extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getSchema(this.props.type);
   }
 
@@ -143,7 +147,7 @@ class DisplaySelect extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.getSchema(nextProps.type);
     }

@@ -35,6 +35,10 @@ const messages = defineMessages({
     id: 'Required',
     defaultMessage: 'Required',
   },
+  delete: {
+    id: 'Delete',
+    defaultMessage: 'Delete',
+  },
 });
 
 /**
@@ -182,7 +186,7 @@ class TextWidget extends Component {
                     <IconOld name="write square" size="large" color="blue" />
                   </button>
                   <button
-                    aria-label="Delete"
+                    aria-label={this.props.intl.formatMessage(messages.delete)}
                     className="item ui noborder button"
                     onClick={() => onDelete(id)}
                   >

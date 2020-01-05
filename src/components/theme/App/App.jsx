@@ -70,7 +70,10 @@ class App extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    // // console.log(nextProps.pathname === this.props.pathname);
+    // console.log(this.props.pathname);
+    // console.log(nextProps.pathname);
     if (nextProps.pathname !== this.props.pathname) {
       if (this.state.hasError) {
         this.setState({ hasError: false });
@@ -104,6 +107,15 @@ class App extends Component {
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
+
+        {/* Body class depending on content type */}
+        {this.props.content && this.props.content['@type'] && (
+          <BodyClass
+            className={`contenttype-${this.props.content['@type']
+              .replace(' ', '-')
+              .toLowerCase()}`}
+          />
+        )}
 
         {/* Body class depending on sections */}
         <BodyClass
@@ -148,7 +160,10 @@ class App extends Component {
 }
 
 export const __test__ = connect(
-  (state, props) => ({ pathname: props.location.pathname }),
+  (state, props) => ({
+    pathname: props.location.pathname,
+    content: state.content.data,
+  }),
   {},
 )(App);
 
@@ -156,32 +171,36 @@ export default compose(
   asyncConnect([
     {
       key: 'breadcrumbs',
-      promise: ({ location, store: { dispatch } }) =>
-        dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
+      promise: ({ location, store: { dispatch } }) => {
+        __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
+      },
     },
     {
       key: 'content',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(getContent(getBaseUrl(location.pathname))),
+        __SERVER__ && dispatch(getContent(getBaseUrl(location.pathname))),
     },
     {
       key: 'navigation',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(getNavigation(getBaseUrl(location.pathname))),
+        __SERVER__ && dispatch(getNavigation(getBaseUrl(location.pathname))),
     },
     {
       key: 'types',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(getTypes(getBaseUrl(location.pathname))),
+        __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
     },
     {
       key: 'workflow',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(getWorkflow(getBaseUrl(location.pathname))),
+        __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
     },
   ]),
   connect(
-    (state, props) => ({ pathname: props.location.pathname }),
+    (state, props) => ({
+      pathname: props.location.pathname,
+      content: state.content.data,
+    }),
     {},
   ),
 )(App);

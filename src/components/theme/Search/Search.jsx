@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
 import { FormattedMessage } from 'react-intl';
@@ -75,7 +75,7 @@ class Search extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.doSearch(
       this.props.searchableText,
       this.props.subject,
@@ -89,7 +89,7 @@ class Search extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps = nextProps => {
+  UNSAFE_componentWillReceiveProps = nextProps => {
     if (
       nextProps.searchableText !== this.props.searchableText ||
       nextProps.subject !== this.props.subject

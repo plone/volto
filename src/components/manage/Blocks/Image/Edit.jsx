@@ -74,7 +74,7 @@ class Edit extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       this.props.request.loading &&
       nextProps.request.loaded &&
@@ -232,6 +232,7 @@ class Edit extends Component {
                   this.props.onChangeBlock(this.props.block, {
                     ...this.props.data,
                     url: '',
+                    align: '',
                   })
                 }
               >

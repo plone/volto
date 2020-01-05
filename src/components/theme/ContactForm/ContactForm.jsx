@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
@@ -115,7 +115,7 @@ class ContactForm extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.loading && nextProps.loaded) {
       toast.success(
         <Toast
@@ -159,7 +159,7 @@ class ContactForm extends Component {
     return (
       <div id="contact-form">
         <Container>
-          <Helmet title="Contact form" />
+          <Helmet title={this.props.intl.formatMessage(messages.contactForm)} />
           {this.props.error && (
             <Message
               icon="warning"

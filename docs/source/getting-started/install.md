@@ -91,7 +91,7 @@ There's a package `kitconcept.voltodemo` that does all the heavy lifting for you
 You can run an standard Plone docker container with the proper configuration using `kitconcept.voltodemo` right away by issuing:
 
 ```shell
-$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.voltodemo" -e ZCML="kitconcept.voltodemo.cors" plone/plone
+$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.voltodemo" -e ZCML="kitconcept.voltodemo.cors" plone
 ```
 
 ## Install Volto

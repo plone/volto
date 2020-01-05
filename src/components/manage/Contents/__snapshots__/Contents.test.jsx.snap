@@ -33,6 +33,7 @@ exports[`Contents renders a contents component 1`] = `
                 <i
                   aria-hidden="true"
                   className="upload icon"
+                  onClick={[Function]}
                   title="Upload"
                 />
               </a>
@@ -47,6 +48,7 @@ exports[`Contents renders a contents component 1`] = `
                 <i
                   aria-hidden="true"
                   className="text cursor icon"
+                  onClick={[Function]}
                   title="Rename"
                 />
               </a>
@@ -57,6 +59,7 @@ exports[`Contents renders a contents component 1`] = `
                 <i
                   aria-hidden="true"
                   className="random icon"
+                  onClick={[Function]}
                   title="State"
                 />
               </a>
@@ -67,6 +70,7 @@ exports[`Contents renders a contents component 1`] = `
                 <i
                   aria-hidden="true"
                   className="tags icon"
+                  onClick={[Function]}
                   title="Tags"
                 />
               </a>
@@ -77,6 +81,7 @@ exports[`Contents renders a contents component 1`] = `
                 <i
                   aria-hidden="true"
                   className="setting icon"
+                  onClick={[Function]}
                   title="Properties"
                 />
               </a>
@@ -91,6 +96,7 @@ exports[`Contents renders a contents component 1`] = `
                 <i
                   aria-hidden="true"
                   className="cut icon"
+                  onClick={[Function]}
                   title="Cut"
                 />
               </a>
@@ -101,6 +107,7 @@ exports[`Contents renders a contents component 1`] = `
                 <i
                   aria-hidden="true"
                   className="copy icon"
+                  onClick={[Function]}
                   title="Copy"
                 />
               </a>
@@ -111,6 +118,7 @@ exports[`Contents renders a contents component 1`] = `
                 <i
                   aria-hidden="true"
                   className="paste icon"
+                  onClick={[Function]}
                   title="Paste"
                 />
               </a>
@@ -121,6 +129,7 @@ exports[`Contents renders a contents component 1`] = `
                 <i
                   aria-hidden="true"
                   className="trash icon"
+                  onClick={[Function]}
                   title="Delete"
                 />
               </a>
@@ -169,6 +178,7 @@ exports[`Contents renders a contents component 1`] = `
                 <i
                   aria-hidden="true"
                   className="home icon"
+                  onClick={[Function]}
                 />
               </a>
               <div
@@ -195,6 +205,7 @@ exports[`Contents renders a contents component 1`] = `
               tabIndex={0}
             >
               <div
+                aria-atomic={true}
                 aria-live="polite"
                 className="text"
                 role="alert"
@@ -223,6 +234,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     Title
                   </div>
@@ -234,6 +246,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="blue check square icon"
+                      onClick={[Function]}
                     />
                     Last modified
                   </div>
@@ -245,6 +258,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="blue check square icon"
+                      onClick={[Function]}
                     />
                     Publication date
                   </div>
@@ -256,6 +270,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="blue check square icon"
+                      onClick={[Function]}
                     />
                     Review state
                   </div>
@@ -267,6 +282,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     ID
                   </div>
@@ -278,6 +294,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     Expiration date
                   </div>
@@ -289,6 +306,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     Created on
                   </div>
@@ -300,6 +318,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     Tags
                   </div>
@@ -311,6 +330,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     Type
                   </div>
@@ -322,6 +342,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     Folder
                   </div>
@@ -333,6 +354,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     Excluded from navigation
                   </div>
@@ -344,6 +366,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     Object Size
                   </div>
@@ -355,6 +378,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     Last comment date
                   </div>
@@ -366,6 +390,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     Total comments
                   </div>
@@ -377,6 +402,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     End Date
                   </div>
@@ -388,6 +414,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     Description
                   </div>
@@ -399,6 +426,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     Creator
                   </div>
@@ -410,6 +438,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     Location
                   </div>
@@ -421,6 +450,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     UID
                   </div>
@@ -432,6 +462,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     Start Date
                   </div>
@@ -443,6 +474,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="square outline icon"
+                      onClick={[Function]}
                     />
                     Type
                   </div>
@@ -476,6 +508,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="sort content ascending icon"
+                      onClick={[Function]}
                     />
                     <div
                       className="menu transition"
@@ -493,6 +526,7 @@ exports[`Contents renders a contents component 1`] = `
                         <i
                           aria-hidden="true"
                           className="dropdown icon"
+                          onClick={[Function]}
                         />
                         ID
                         <div
@@ -506,6 +540,7 @@ exports[`Contents renders a contents component 1`] = `
                             <i
                               aria-hidden="true"
                               className="sort alphabet ascending icon"
+                              onClick={[Function]}
                             />
                              
                             Ascending
@@ -518,6 +553,7 @@ exports[`Contents renders a contents component 1`] = `
                             <i
                               aria-hidden="true"
                               className="sort alphabet descending icon"
+                              onClick={[Function]}
                             />
                              
                             Descending
@@ -532,6 +568,7 @@ exports[`Contents renders a contents component 1`] = `
                         <i
                           aria-hidden="true"
                           className="dropdown icon"
+                          onClick={[Function]}
                         />
                         Title
                         <div
@@ -545,6 +582,7 @@ exports[`Contents renders a contents component 1`] = `
                             <i
                               aria-hidden="true"
                               className="sort alphabet ascending icon"
+                              onClick={[Function]}
                             />
                              
                             Ascending
@@ -557,6 +595,7 @@ exports[`Contents renders a contents component 1`] = `
                             <i
                               aria-hidden="true"
                               className="sort alphabet descending icon"
+                              onClick={[Function]}
                             />
                              
                             Descending
@@ -571,6 +610,7 @@ exports[`Contents renders a contents component 1`] = `
                         <i
                           aria-hidden="true"
                           className="dropdown icon"
+                          onClick={[Function]}
                         />
                         Publication date
                         <div
@@ -584,6 +624,7 @@ exports[`Contents renders a contents component 1`] = `
                             <i
                               aria-hidden="true"
                               className="sort alphabet ascending icon"
+                              onClick={[Function]}
                             />
                              
                             Ascending
@@ -596,6 +637,7 @@ exports[`Contents renders a contents component 1`] = `
                             <i
                               aria-hidden="true"
                               className="sort alphabet descending icon"
+                              onClick={[Function]}
                             />
                              
                             Descending
@@ -610,6 +652,7 @@ exports[`Contents renders a contents component 1`] = `
                         <i
                           aria-hidden="true"
                           className="dropdown icon"
+                          onClick={[Function]}
                         />
                         Created on
                         <div
@@ -623,6 +666,7 @@ exports[`Contents renders a contents component 1`] = `
                             <i
                               aria-hidden="true"
                               className="sort alphabet ascending icon"
+                              onClick={[Function]}
                             />
                              
                             Ascending
@@ -635,6 +679,7 @@ exports[`Contents renders a contents component 1`] = `
                             <i
                               aria-hidden="true"
                               className="sort alphabet descending icon"
+                              onClick={[Function]}
                             />
                              
                             Descending
@@ -649,6 +694,7 @@ exports[`Contents renders a contents component 1`] = `
                         <i
                           aria-hidden="true"
                           className="dropdown icon"
+                          onClick={[Function]}
                         />
                         Last modified
                         <div
@@ -662,6 +708,7 @@ exports[`Contents renders a contents component 1`] = `
                             <i
                               aria-hidden="true"
                               className="sort alphabet ascending icon"
+                              onClick={[Function]}
                             />
                              
                             Ascending
@@ -674,6 +721,7 @@ exports[`Contents renders a contents component 1`] = `
                             <i
                               aria-hidden="true"
                               className="sort alphabet descending icon"
+                              onClick={[Function]}
                             />
                              
                             Descending
@@ -688,6 +736,7 @@ exports[`Contents renders a contents component 1`] = `
                         <i
                           aria-hidden="true"
                           className="dropdown icon"
+                          onClick={[Function]}
                         />
                         Type
                         <div
@@ -701,6 +750,7 @@ exports[`Contents renders a contents component 1`] = `
                             <i
                               aria-hidden="true"
                               className="sort alphabet ascending icon"
+                              onClick={[Function]}
                             />
                              
                             Ascending
@@ -713,6 +763,7 @@ exports[`Contents renders a contents component 1`] = `
                             <i
                               aria-hidden="true"
                               className="sort alphabet descending icon"
+                              onClick={[Function]}
                             />
                              
                             Descending
@@ -739,6 +790,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="black square outline icon"
+                      onClick={[Function]}
                     />
                     <div
                       className="menu transition"
@@ -756,6 +808,7 @@ exports[`Contents renders a contents component 1`] = `
                         <i
                           aria-hidden="true"
                           className="blue check square icon"
+                          onClick={[Function]}
                         />
                          
                         All
@@ -768,6 +821,7 @@ exports[`Contents renders a contents component 1`] = `
                         <i
                           aria-hidden="true"
                           className="square outline icon"
+                          onClick={[Function]}
                         />
                          
                         None
@@ -791,6 +845,7 @@ exports[`Contents renders a contents component 1`] = `
                         <i
                           aria-hidden="true"
                           className="search icon"
+                          onClick={[Function]}
                         />
                       </div>
                       <div
@@ -882,6 +937,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="file outline icon"
+                      onClick={[Function]}
                     />
                      
                     Blog
@@ -925,6 +981,7 @@ exports[`Contents renders a contents component 1`] = `
                     tabIndex={0}
                   >
                     <div
+                      aria-atomic={true}
                       aria-live="polite"
                       className="text"
                       role="alert"
@@ -945,6 +1002,7 @@ exports[`Contents renders a contents component 1`] = `
                         <i
                           aria-hidden="true"
                           className="write icon"
+                          onClick={[Function]}
                         />
                          
                         Edit
@@ -957,6 +1015,7 @@ exports[`Contents renders a contents component 1`] = `
                         <i
                           aria-hidden="true"
                           className="eye icon"
+                          onClick={[Function]}
                         />
                          
                         View
@@ -972,6 +1031,7 @@ exports[`Contents renders a contents component 1`] = `
                         <i
                           aria-hidden="true"
                           className="cut icon"
+                          onClick={[Function]}
                         />
                          
                         Cut
@@ -984,6 +1044,7 @@ exports[`Contents renders a contents component 1`] = `
                         <i
                           aria-hidden="true"
                           className="copy icon"
+                          onClick={[Function]}
                         />
                          
                         Copy
@@ -996,6 +1057,7 @@ exports[`Contents renders a contents component 1`] = `
                         <i
                           aria-hidden="true"
                           className="trash icon"
+                          onClick={[Function]}
                         />
                          
                         Delete
@@ -1011,6 +1073,7 @@ exports[`Contents renders a contents component 1`] = `
                         <i
                           aria-hidden="true"
                           className="arrow up icon"
+                          onClick={[Function]}
                         />
                          
                         Move to top of folder
@@ -1023,6 +1086,7 @@ exports[`Contents renders a contents component 1`] = `
                         <i
                           aria-hidden="true"
                           className="arrow down icon"
+                          onClick={[Function]}
                         />
                          
                         Move to bottom of folder

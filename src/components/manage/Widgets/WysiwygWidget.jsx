@@ -42,6 +42,10 @@ const messages = defineMessages({
     id: 'Required',
     defaultMessage: 'Required',
   },
+  delete: {
+    id: 'Delete',
+    defaultMessage: 'Delete',
+  },
 });
 
 /**
@@ -287,7 +291,7 @@ class WysiwygWidget extends Component {
                     <Icon name="write square" size="large" color="blue" />
                   </button>
                   <button
-                    aria-label="Delete"
+                    aria-label={this.props.intl.formatMessage(messages.delete)}
                     className="item ui noborder button"
                     onClick={() => onDelete(id)}
                   >
@@ -322,7 +326,7 @@ class WysiwygWidget extends Component {
           {description && (
             <Grid.Row stretched>
               <Grid.Column stretched width="12">
-                <span className="help">{description}</span>
+                <p className="help">{description}</p>
               </Grid.Column>
             </Grid.Row>
           )}
