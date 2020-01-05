@@ -2,6 +2,10 @@
 
 ## 4.0.0 (unreleased)
 
+### Added
+
+- Support for indexable blocks (requires plone.restapi 6.1.0) @timo
+
 ### Changes
 
 - Disable all all styling when copying text from another source (e.g. MS Word) into a text block @jackahl
@@ -66,7 +70,6 @@
 - Fix file and link redirect views @robgietema
 - Restrict moment.js locales to available languages @tisto @robgietema
 - Fix history view @robgietema
-- Add test for indexable Blocks @timo
 
 ## 4.0.0-alpha.17 (2019-12-03)
 
