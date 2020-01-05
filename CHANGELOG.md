@@ -4,6 +4,8 @@
 
 ### Added
 
+- Support for indexable blocks (requires plone.restapi 6.1.0) @timo
+
 ### Changes
 
 - More cleaning the body classname from the current displayname view @sneridagh
