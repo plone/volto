@@ -4,7 +4,8 @@
 
 ### Added
 
-- Added listing tile @pnicolli @rodfersou @sneridagh
+- Added listing block @pnicolli @rodfersou @sneridagh @giuliaghisini
+
 ### Changes
 
 - More cleaning the body classname from the current displayname view @sneridagh
