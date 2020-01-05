@@ -1,9 +1,14 @@
 describe('Add Content Tests', () => {
   beforeEach(() => {
     cy.autologin();
+    cy.visit('/');
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('?fullobjects');
   });
   it('As a site administrator I can add a page', function() {
-    cy.visit('/');
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
     cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
@@ -19,7 +24,6 @@ describe('Add Content Tests', () => {
     }
   });
   it('As a site administrator I can add a page with text', function() {
-    cy.visit('/');
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
     cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
@@ -40,7 +44,6 @@ describe('Add Content Tests', () => {
     }
   });
   it('As a site administrator I can add a file', function() {
-    cy.visit('/');
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-file').click();
 
@@ -79,12 +82,18 @@ describe('Add Content Tests', () => {
         .contains('file.pdf');
     }
     cy.get('#toolbar-save').click();
-    cy.visit('/contents');
+    cy.url().should('include', '/file.pdf')
+
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('?fullobjects');
+
     cy.contains('This is a file');
   });
 
   it('As a site administrator I can add an image', function() {
-    cy.visit('/');
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-image').click();
 
@@ -123,14 +132,20 @@ describe('Add Content Tests', () => {
       });
     }
     cy.get('#toolbar-save').click();
-    cy.visit('/contents');
+    cy.url().should('include', '/image.png')
+
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('?fullobjects');
+
     cy.contains('This is an image');
   });
 
   // Plone only tests
   if (Cypress.env('API') === 'plone') {
     it('As a site administrator I can add a news item', function() {
-      cy.visit('/');
       cy.get('#toolbar-add').click();
       cy.get('#toolbar-add-news-item').click();
       cy.get('input[name="title"]')
@@ -144,7 +159,6 @@ describe('Add Content Tests', () => {
       );
     });
     it('As a site administrator I can add a folder', function() {
-      cy.visit('/');
       cy.get('#toolbar-add').click();
       cy.get('#toolbar-add-folder').click();
 
