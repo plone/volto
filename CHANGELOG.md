@@ -5,6 +5,7 @@
 ### Added
 
 - Added listing block @pnicolli @rodfersou @sneridagh @giuliaghisini
+- Support for indexable blocks (requires plone.restapi 6.1.0) @timo
 
 ### Changes
 
