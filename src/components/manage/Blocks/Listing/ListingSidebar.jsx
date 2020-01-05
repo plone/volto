@@ -5,7 +5,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 
 import ListingData from './ListingData';
 
-const GridSidebar = props => {
+const ListingSidebar = props => {
   return (
     <Segment.Group raised>
       <header className="header pulled">
@@ -19,10 +19,10 @@ const GridSidebar = props => {
   );
 };
 
-GridSidebar.propTypes = {
+ListingSidebar.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
   block: PropTypes.string.isRequired,
   onChangeBlock: PropTypes.func.isRequired,
 };
 
-export default injectIntl(GridSidebar);
+export default injectIntl(ListingSidebar);

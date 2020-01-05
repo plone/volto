@@ -3,18 +3,26 @@ import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { SidebarPortal } from '@plone/volto/components';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 import ListingSidebar from './ListingSidebar';
 import ListingBody from './ListingBody';
 
-const Edit = ({ data, onChangeBlock, block, selected, properties }) => {
+const Edit = ({
+  data,
+  onChangeBlock,
+  block,
+  selected,
+  properties,
+  pathname,
+}) => {
   // componentDidMount
   React.useEffect(() => {
     if (!data.query) {
       onChangeBlock(block, {
         ...data,
         query: [],
-        block: block,
+        block,
       });
     }
     /* eslint-disable react-hooks/exhaustive-deps */
@@ -36,6 +44,7 @@ const Edit = ({ data, onChangeBlock, block, selected, properties }) => {
         data={data}
         properties={properties}
         block={block}
+        path={getBaseUrl(pathname)}
         isEditMode
       />
       <SidebarPortal selected={selected}>
@@ -57,6 +66,7 @@ Edit.propTypes = {
   onSelectBlock: PropTypes.func.isRequired,
   items: PropTypes.arrayOf(PropTypes.any),
   properties: PropTypes.objectOf(PropTypes.any).isRequired,
+  pathname: PropTypes.string.isRequired,
 };
 
 export default injectIntl(Edit);

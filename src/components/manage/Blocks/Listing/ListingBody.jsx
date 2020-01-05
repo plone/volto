@@ -10,7 +10,7 @@ import { settings } from '~/config';
 
 import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
 
-const ListingItem = ({ data, properties, intl, isEditMode }) => {
+const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
   const querystringResults = useSelector(
     state => state.querystringsearch.subrequests,
   );
@@ -18,9 +18,11 @@ const ListingItem = ({ data, properties, intl, isEditMode }) => {
 
   React.useEffect(() => {
     if (data?.query?.length > 0) {
-      dispatch(getQueryStringResults({ ...data, fullobjects: 1 }, data.block));
+      dispatch(
+        getQueryStringResults(path, { ...data, fullobjects: 1 }, data.block),
+      );
     }
-  }, [dispatch, data, data.block]);
+  }, [dispatch, data, data.block, path]);
 
   const folderItems = properties.is_folderish ? properties.items : [];
 
@@ -82,9 +84,10 @@ const ListingItem = ({ data, properties, intl, isEditMode }) => {
   );
 };
 
-ListingItem.propTypes = {
+ListingBody.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
+  path: PropTypes.string.isRequired,
   isEditMode: PropTypes.bool,
 };
 
-export default injectIntl(ListingItem);
+export default injectIntl(ListingBody);
