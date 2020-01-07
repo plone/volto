@@ -154,6 +154,7 @@ class Edit extends Component {
         filteredState = filterEditorState(
           {
             blocks: [],
+            styles: [],
             entities: [
               {
                 type: 'LINK',
