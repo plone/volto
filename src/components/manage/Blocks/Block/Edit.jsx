@@ -265,8 +265,5 @@ export default compose(
     connectDragSource: connect.dragSource(),
     connectDragPreview: connect.dragPreview(),
   })),
-  connect(
-    null,
-    { setSidebarTab },
-  ),
+  connect(null, { setSidebarTab }),
 )(Edit);
