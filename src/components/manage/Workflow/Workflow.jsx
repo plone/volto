@@ -26,6 +26,10 @@ const messages = defineMessages({
     id: 'Workflow updated.',
     defaultMessage: 'Workflow updated.',
   },
+  messageNoWorkflow: {
+    id: 'No workflow',
+    defaultMessage: 'No workflow',
+  },
 });
 
 const Placeholder = props => {
@@ -195,7 +199,7 @@ class Workflow extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getWorkflow(this.props.pathname);
   }
 
@@ -205,7 +209,7 @@ class Workflow extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.getWorkflow(nextProps.pathname);
     }
@@ -308,7 +312,12 @@ class Workflow extends Component {
           defaultValue={
             this.props.content.review_state
               ? selectedOption
-              : { label: 'No workflow', value: 'noworkflow' }
+              : {
+                  label: this.props.intl.formatMessage(
+                    messages.messageNoWorkflow,
+                  ),
+                  value: 'noworkflow',
+                }
           }
           isSearchable={false}
         />

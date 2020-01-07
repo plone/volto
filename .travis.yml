@@ -44,10 +44,10 @@ install:
   - yarn install --frozen-lockfile
   - yarn cy:install
 script:
-  - yarn run prettier
-  - yarn run lint
-  - yarn run code-analysis:i18n
   - if [ "$TEST_SUITE" == "unit" ]; then
+    yarn run prettier &&
+    yarn run lint &&
+    yarn run code-analysis:i18n &&
     yarn test:ci;
     fi
   - if [ "$TEST_SUITE" == "guillotina" ]; then

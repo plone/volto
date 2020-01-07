@@ -19,6 +19,10 @@ const messages = defineMessages({
     id: 'No results found.',
     defaultMessage: 'No results found.',
   },
+  no_value: {
+    id: 'No value',
+    defaultMessage: 'No value',
+  },
 });
 
 /**
@@ -108,7 +112,7 @@ class ReferenceWidget extends Component {
               },
               novalue: {
                 key: 'novalue',
-                text: 'No value',
+                text: this.props.intl.formatMessage(messages.no_value),
                 value: 'novalue',
                 data: null,
               },
@@ -122,7 +126,7 @@ class ReferenceWidget extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.resetSearchContent();
   }
 
@@ -132,7 +136,7 @@ class ReferenceWidget extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({
       choices: {
         ...fromPairs(
@@ -160,7 +164,7 @@ class ReferenceWidget extends Component {
         ),
         novalue: {
           key: 'novalue',
-          text: 'No value',
+          text: this.props.intl.formatMessage(messages.no_value),
           value: 'novalue',
           data: null,
         },

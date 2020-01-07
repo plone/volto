@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -25,6 +25,10 @@ const messages = defineMessages({
   back: {
     id: 'Back',
     defaultMessage: 'Back',
+  },
+  history: {
+    id: 'History',
+    defaultMessage: 'History',
   },
 });
 
@@ -87,7 +91,7 @@ class History extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.revertRequest.loading && nextProps.revertRequest.loaded) {
       this.props.getHistory(getBaseUrl(this.props.pathname));
     }
@@ -119,7 +123,7 @@ class History extends Component {
     reverse(entries);
     return (
       <Container id="page-history">
-        <Helmet title="History" />
+        <Helmet title={this.props.intl.formatMessage(messages.history)} />
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage

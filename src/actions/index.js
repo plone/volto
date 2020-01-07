@@ -20,6 +20,7 @@ export {
   getContent,
   orderContent,
   sortContent,
+  resetContent,
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
@@ -82,3 +83,4 @@ export {
   transitionWorkflow,
 } from '@plone/volto/actions/workflow/workflow';
 export { getQuerystring } from './querystring/querystring';
+export { setSidebarTab } from './sidebar/sidebar';

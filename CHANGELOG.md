@@ -5,8 +5,130 @@
 ### Added
 
 - Add ResolveUID support @timo
+- Support for indexable blocks (requires plone.restapi 6.1.0) @timo
 
 ### Changes
+
+- More cleaning the body classname from the current displayname view @sneridagh
+
+## 4.0.0-alpha.22 (2020-01-04)
+
+### Changes
+
+- Disable all styling when copying text from another source (e.g. MS Word) into a text block @jackahl
+- Avoid console warnings in QuerystringWidget @tiberich
+- Fix body classname based on the current content type @sneridagh
+
+## 4.0.0-alpha.21 (2020-01-02)
+
+### Changes
+
+- Fix failing test on Footer due to year change in Copyright notice @sneridagh
+
+## 4.0.0-alpha.20 (2020-01-02)
+
+### Added
+
+- Added translations to Portuguese @emansije
+
+### Changes
+
+- Fix wysiwyg widget help tag, for styling consistency @tiberiuichim
+- Added more i18n improvements @macagua
+- Disable submit button on save, to avoid multiple content creation @tiberiuichim
+- Fix focus on sidebar @robgietema
+
+### Internal
+
+- Upgrade version pin for lxml, for compatibility with Python3.8
+- Bump handlebars from 4.1.2 to 4.3.0 @timo
+
+## 4.0.0-alpha.19 (2019-12-20)
+
+### Added
+
+- Implementation of `Portuguese (BR)` translation @LeuAlmeida
+- Added translations to spanish @macagua
+
+### Changes
+
+- empty text blocks are shown as `<br />` in the view.
+- Fix double fetch due to asyncConnect being executed in browser too @robgietema @sneridagh
+
+## 4.0.0-alpha.18 (2019-12-12)
+
+### Added
+
+- Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
+- Automatically switch sidebar on block change @robgietema
+- Japanese translation @terapyon
+
+### Changes
+
+- Remove "documentDescription" class in table block @sverbois
+- Added possibility to work with vimeo-videos instead of youtube-videos in the video block @wkbkhard
+- Fixed Issue 1021: typing in a "wrong" URL leads to error @wkbkhard
+- General toolbar more and personal tools menu CSS fixes @sneridagh
+- Fix bug that lead to crashing the view when deleting the last row of a table
+- Fix Select widget bug if the field has already the options in the `choices` schema, do not trigger the vocabulary request @sneridagh
+
+### Internal
+
+- Updated to react-select v3 @robdayz
+- Fix file and link redirect views @robgietema
+- Restrict moment.js locales to available languages @tisto @robgietema
+- Fix history view @robgietema
+
+## 4.0.0-alpha.17 (2019-12-03)
+
+### Internal
+
+- Revert eslint upgrade, because of problems with the react-app preset typescript settings @sneridagh
+
+## 4.0.0-alpha.16 (2019-12-02)
+
+### Changes
+
+- Fix small CSS issues in Blocks @sneridagh
+
+### Internal
+
+- Pin Guillotina docker image @sneridagh
+- Forked `react-helmet` since it seems unmaintained. Now it's a Named import in helpers. @sneridagh
+- Update internal dependencies, fix "unmet peer dependencies" console logs by adding the peer dependencies to the local dependencies @sneridagh
+- Update some dependencies, including: react-router, eslint engine and plugins/config and others @sneridagh
+- Lodash improvements for decrease bundle size @sneridagh
+
+## 4.0.0-alpha.15 (2019-11-27)
+
+### Internal
+
+- Export the resetContent action @pnicolli
+- Fix toolbar collapsed color @sneridagh
+- Minor CSS fixes @sneridagh
+- Remove @testing-library/cypress dep, as it breaks builds if the internal cypress release is different than the one in this package @sneridagh
+
+## 4.0.0-alpha.14 (2019-11-24)
+
+### Internal
+
+- Proper config for stylelint-prettier integration, add husky integration and scripts for stylelint, review stylelint rules @sneridagh
+
+## 4.0.0-alpha.13 (2019-11-23)
+
+### Internal
+
+- Upgrade autoprefixer, remove deprecated `browsers` option, move to `browserlist` in `package.json` @sneridagh
+- Upgrade react and react-dom to 16.12.0 @pnicolli
+- Upgrade Cypress to 3.6.1 @timo
+
+## 4.0.0-alpha.12 (2019-11-13)
+
+### Changes
+
+- Add loading animation for save and edit buttons in toolbar @pgrunewald
+- Move Body class depending on content type to `App` component in order to make it available everywhere @sneridagh
+- Add root class name to `Tags` component @sneridagh
 
 ## 4.0.0-alpha.11 (2019-11-08)
 
@@ -17,12 +139,16 @@
 ### Changes
 
 - Fix icon in `TextWidget` @sneridagh
-- impprove documentation for `Icon` @jackahl
+- Improve documentation for `Icon` @jackahl
 - Fix ability to develop Volto itself (as and addon with a mrs.developer checkout) inside a Volto project @sneridagh
 
 ### Internal
 
 - Add internationalization section to docs @pgrunewald
+
+### Internal
+
+- Set Cypress viewport width to 1280px @timo
 
 ## 4.0.0-alpha.10 (2019-10-31)
 

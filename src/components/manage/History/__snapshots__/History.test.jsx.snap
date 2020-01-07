@@ -136,6 +136,7 @@ exports[`History renders a history component 1`] = `
               tabIndex={0}
             >
               <div
+                aria-atomic={true}
                 aria-live="polite"
                 className="text"
                 role="alert"

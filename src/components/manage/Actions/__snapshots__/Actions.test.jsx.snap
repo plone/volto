@@ -17,6 +17,7 @@ exports[`Actions renders an actions component 1`] = `
     <i
       aria-hidden="true"
       className="lightning big icon"
+      onClick={[Function]}
     />
      
     Actions
@@ -37,6 +38,7 @@ exports[`Actions renders an actions component 1`] = `
       <i
         aria-hidden="true"
         className="cut icon"
+        onClick={[Function]}
       />
       <span
         className="text"
@@ -52,6 +54,7 @@ exports[`Actions renders an actions component 1`] = `
       <i
         aria-hidden="true"
         className="copy icon"
+        onClick={[Function]}
       />
       <span
         className="text"
@@ -67,6 +70,7 @@ exports[`Actions renders an actions component 1`] = `
       <i
         aria-hidden="true"
         className="trash icon"
+        onClick={[Function]}
       />
       Delete
     </a>
@@ -78,6 +82,7 @@ exports[`Actions renders an actions component 1`] = `
       <i
         aria-hidden="true"
         className="text cursor icon"
+        onClick={[Function]}
       />
       <span
         className="text"

@@ -1,9 +1,14 @@
 describe('Add Content Tests', () => {
   beforeEach(() => {
     cy.autologin();
+    cy.visit('/');
+    cy.waitForResourceToLoad('@navigation');
+    cy.waitForResourceToLoad('@breadcrumbs');
+    cy.waitForResourceToLoad('@actions');
+    cy.waitForResourceToLoad('@types');
+    cy.waitForResourceToLoad('?fullobjects');
   });
   it('As a site administrator I can add a page', function() {
-    cy.visit('/');
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
     cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
@@ -19,7 +24,6 @@ describe('Add Content Tests', () => {
     }
   });
   it('As a site administrator I can add a page with text', function() {
-    cy.visit('/');
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-document').click();
     cy.get('.documentFirstHeading > .public-DraftStyleDefault-block')
@@ -39,10 +43,8 @@ describe('Add Content Tests', () => {
       cy.contains('This is the text');
     }
   });
-
   if (Cypress.env('API') === 'plone') {
     it('As a site administrator I can add a file', function() {
-      cy.visit('/');
       cy.get('#toolbar-add').click();
       cy.get('#toolbar-add-file').click();
 
@@ -56,25 +58,44 @@ describe('Add Content Tests', () => {
         .type('This is a file')
         .should('have.value', 'This is a file');
 
-      cy.fixture('file.pdf', 'base64').then(fileContent => {
-        cy.get('#field-file').upload(
-          { fileContent, fileName: 'file.pdf', mimeType: 'application/pdf' },
-          { subjectType: 'input' },
-        );
-      });
-      cy.get('#field-file')
-        .parent()
-        .parent()
-        .contains('file.pdf');
-
+      if (Cypress.env('API') === 'guillotina') {
+        // Guillotina wants the file handler instead than the base64 encoding
+        cy.fixture('file.pdf').then(fileContent => {
+          cy.get('#field-file').upload(
+            { fileContent, fileName: 'file.pdf', mimeType: 'application/pdf' },
+            { subjectType: 'input' },
+          );
+          cy.get('#field-file')
+            .parent()
+            .parent()
+            .contains('file.pdf');
+        });
+      } else {
+        cy.fixture('file.pdf', 'base64').then(fileContent => {
+          cy.get('#field-file').upload(
+            { fileContent, fileName: 'file.pdf', mimeType: 'application/pdf' },
+            { subjectType: 'input' },
+          );
+        });
+        cy.get('#field-file')
+          .parent()
+          .parent()
+          .contains('file.pdf');
+      }
       cy.get('#toolbar-save').click();
-      cy.visit('/contents');
+      cy.url().should('include', '/file.pdf');
+
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('?fullobjects');
+
       cy.contains('This is a file');
     });
   }
   if (Cypress.env('API') === 'plone') {
     it('As a site administrator I can add an image', function() {
-      cy.visit('/');
       cy.get('#toolbar-add').click();
       cy.get('#toolbar-add-image').click();
 
@@ -88,19 +109,39 @@ describe('Add Content Tests', () => {
         .type('This is an image')
         .should('have.value', 'This is an image');
 
-      cy.fixture('image.png', 'base64').then(fileContent => {
-        cy.get('#field-image').upload(
-          { fileContent, fileName: 'image.png', mimeType: 'image/png' },
-          { subjectType: 'input' },
-        );
-        cy.get('#field-image')
-          .parent()
-          .parent()
-          .contains('image.png');
-      });
-
+      if (Cypress.env('API') === 'guillotina') {
+        // Guillotina wants the file handler instead than the base64 encoding
+        cy.fixture('image.png').then(fileContent => {
+          cy.get('#field-image').upload(
+            { fileContent, fileName: 'image.png', mimeType: 'image/png' },
+            { subjectType: 'input' },
+          );
+          cy.get('#field-image')
+            .parent()
+            .parent()
+            .contains('image.png');
+        });
+      } else {
+        cy.fixture('image.png', 'base64').then(fileContent => {
+          cy.get('#field-image').upload(
+            { fileContent, fileName: 'image.png', mimeType: 'image/png' },
+            { subjectType: 'input' },
+          );
+          cy.get('#field-image')
+            .parent()
+            .parent()
+            .contains('image.png');
+        });
+      }
       cy.get('#toolbar-save').click();
-      cy.visit('/contents');
+      cy.url().should('include', '/image.png');
+
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('?fullobjects');
+
       cy.contains('This is an image');
     });
   }
@@ -108,7 +149,6 @@ describe('Add Content Tests', () => {
   // Plone only tests
   if (Cypress.env('API') === 'plone') {
     it('As a site administrator I can add a news item', function() {
-      cy.visit('/');
       cy.get('#toolbar-add').click();
       cy.get('#toolbar-add-news-item').click();
       cy.get('input[name="title"]')
@@ -122,7 +162,6 @@ describe('Add Content Tests', () => {
       );
     });
     it('As a site administrator I can add a folder', function() {
-      cy.visit('/');
       cy.get('#toolbar-add').click();
       cy.get('#toolbar-add-folder').click();
 

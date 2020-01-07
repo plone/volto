@@ -52,6 +52,7 @@ exports[`renders an array widget component 1`] = `
             value=""
           />
           <div
+            aria-atomic={true}
             aria-live="polite"
             className="default text"
             role="alert"
