@@ -9,6 +9,7 @@
 ### Changes
 
 - More cleaning the body classname from the current displayname view @sneridagh
+- Make it possible to paste links into text-blocks @jackahl
 
 ## 4.0.0-alpha.22 (2020-01-04)
 
