@@ -4,9 +4,12 @@
 
 ### Added
 
+- Support for indexable blocks (requires plone.restapi 6.1.0) @timo
+
 ### Changes
 
 - Avoid console warnings in AddLinkForm.jsx @tiberiuichim
+- More cleaning the body classname from the current displayname view @sneridagh
 
 ## 4.0.0-alpha.22 (2020-01-04)
 
