@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add ResolveUID support @timo
+
 ### Changes
 
 ## 4.0.0-alpha.11 (2019-11-08)
