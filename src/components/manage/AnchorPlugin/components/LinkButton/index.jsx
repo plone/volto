@@ -7,6 +7,7 @@ import Icon from '../../../../../components/theme/Icon/Icon';
 
 import linkSVG from '../../../../../icons/link.svg';
 import unlinkSVG from '../../../../../icons/unlink.svg';
+import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
 /**
  * Add link form class.
@@ -21,6 +22,7 @@ class LinkButton extends Component {
     ownTheme: PropTypes.shape({}).isRequired,
     onRemoveLinkAtSelection: PropTypes.func.isRequired,
     onOverrideContent: PropTypes.func.isRequired,
+    openObjectBrowser: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -34,11 +36,12 @@ class LinkButton extends Component {
   onAddLinkClick = e => {
     e.preventDefault();
     e.stopPropagation();
-    const { ownTheme, placeholder, onOverrideContent } = this.props;
-    const content = props => (
-      <AddLinkForm {...props} placeholder={placeholder} theme={ownTheme} />
-    );
-    onOverrideContent(content);
+    const { ownTheme, placeholder, onOverrideContent, openObjectBrowser } = this.props;
+    openObjectBrowser({ mode: 'link' });
+//     const content = props => (
+//       <AddLinkForm {...props} placeholder={placeholder} theme={ownTheme} />
+//     );
+//     onOverrideContent(content);
   };
 
   /**
@@ -80,4 +83,4 @@ class LinkButton extends Component {
   }
 }
 
-export default LinkButton;
+export default withObjectBrowser(LinkButton);
