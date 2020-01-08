@@ -307,6 +307,7 @@ class WysiwygWidget extends Component {
                     ]}
                     blockRenderMap={settings.extendedBlockRenderMap}
                     blockStyleFn={settings.blockStyleFn}
+                    customStyleMap={settings.customStyleMap}
                   />
                 ) : (
                   <div className="DraftEditor-root" />

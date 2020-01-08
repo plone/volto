@@ -90,7 +90,7 @@ const blocks = {
       }),
     );
     return processedChildren.map(
-      chunk => chunk && <p key={keys[0]}>{chunk}</p>,
+      (chunk, index) => chunk && <p key={keys[index]}>{chunk}</p>,
     );
   },
   atomic: getAtomic,
