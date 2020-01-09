@@ -153,8 +153,8 @@ class Edit extends Component {
         let filteredState = editorState;
         filteredState = filterEditorState(
           {
-            blocks: [],
-            styles: [],
+            blocks: ['unordered-list-item', 'ordered-list-item'],
+            styles: ['BOLD', 'ITALIC'],
             entities: [
               {
                 type: 'LINK',
