@@ -5,6 +5,7 @@
 ### Added
 
 - Support for indexable blocks (requires plone.restapi 6.1.0) @timo
+- Set alt tag of image when selecting image in image block @robgietema
 
 ### Changes
 
