@@ -65,7 +65,13 @@ const View = ({ data }) => (
                 autoplay={false}
               />
             ) : (
-              <div className="invalidVideoFormat" />
+              <>
+                {data.url.match('.mp4') ? (
+                  <video src={data.url} controls type="video/mp4" />
+                ) : (
+                  <div className="invalidVideoFormat" />
+                )}
+              </>
             )}
           </>
         )}
