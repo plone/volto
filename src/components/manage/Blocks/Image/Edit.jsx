@@ -86,6 +86,7 @@ class Edit extends Component {
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
         url: nextProps.content['@id'],
+        alt: nextProps.content.title,
       });
     }
   }
