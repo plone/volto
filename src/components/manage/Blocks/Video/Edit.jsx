@@ -267,16 +267,23 @@ class Edit extends Component {
                     autoplay={false}
                   />
                 ) : (
-                  <div>
-                    <Message>
-                      <center>
-                        <FormattedMessage
-                          id="Please enter a valid URL by deleting the block and adding a new video block."
-                          defaultMessage="Please enter a valid URL by deleting the block and adding a new video block."
-                        />
-                      </center>
-                    </Message>
-                  </div>
+                  <>
+                    <div className="ui blocker" />
+                    {data.url.match('.mp4') ? (
+                      <video src={data.url} controls type="video/mp4" />
+                    ) : (
+                      <div>
+                        <Message>
+                          <center>
+                            <FormattedMessage
+                              id="Please enter a valid URL by deleting the block and adding a new video block."
+                              defaultMessage="Please enter a valid URL by deleting the block and adding a new video block."
+                            />
+                          </center>
+                        </Message>
+                      </div>
+                    )}
+                  </>
                 )}
               </>
             )}
