@@ -240,6 +240,7 @@
     "draft-js-inline-toolbar-plugin": "2.0.1",
     "draft-js-plugins-editor": "2.0.4",
     "draft-js-plugins-utils": "2.0.3",
+    "draftjs-filters": "2.3.0",
     "eslint": "5.16.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-prettier": "4.1.0",

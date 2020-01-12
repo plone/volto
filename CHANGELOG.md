@@ -6,10 +6,12 @@
 
 - Add ResolveUID support @timo
 - Support for indexable blocks (requires plone.restapi 6.1.0) @timo
+- Set alt tag of image when selecting image in image block @robgietema
 
 ### Changes
 
 - More cleaning the body classname from the current displayname view @sneridagh
+- Make it possible to paste links, lists, b and i Elements into text-blocks @jackahl
 
 ## 4.0.0-alpha.22 (2020-01-04)
 
