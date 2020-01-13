@@ -20,6 +20,10 @@ import ptLocale from '~/../locales/pt.json';
 import ptBRLocale from '~/../locales/pt_BR.json';
 import esLocale from '~/../locales/es.json';
 
+import Loadable from 'react-loadable';
+import { getBundles } from 'react-loadable/webpack';
+import stats from '../dist/react-loadable.json';
+
 import {
   Html,
   Api,
@@ -111,21 +115,30 @@ server
       loadOnServer({ store, location, routes, api })
         .then(() => {
           const context = {};
+          const modules = [];
           const markup = renderToString(
-            <Provider store={store}>
-              <StaticRouter context={context} location={req.url}>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
-              </StaticRouter>
-            </Provider>,
+            <Loadable.Capture report={moduleName => modules.push(moduleName)}>
+              <Provider store={store}>
+                <StaticRouter context={context} location={req.url}>
+                  <ReduxAsyncConnect routes={routes} helpers={api} />
+                </StaticRouter>
+              </Provider>
+            </Loadable.Capture>,
           );
 
+          let bundles = getBundles(stats, modules);
           if (context.url) {
             res.redirect(context.url);
           } else {
             res.status(200).send(
               `<!doctype html>
                 ${renderToString(
-                  <Html assets={assets} markup={markup} store={store} />,
+                  <Html
+                    assets={assets}
+                    markup={markup}
+                    store={store}
+                    bundles={bundles}
+                  />,
                 )}
               `,
             );

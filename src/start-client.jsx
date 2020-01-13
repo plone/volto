@@ -7,6 +7,8 @@ import { ReduxAsyncConnect } from 'redux-connect';
 import routes from '~/routes';
 import '~/theme';
 
+import Loadable from 'react-loadable';
+
 import configureStore from './store';
 import { Api, persistAuthToken, ScrollToTop } from './helpers';
 
@@ -17,15 +19,16 @@ export default () => {
 
   const store = configureStore(window.__data, history, api);
   persistAuthToken(store);
-
-  hydrate(
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <ScrollToTop>
-          <ReduxAsyncConnect routes={routes} helpers={api} />
-        </ScrollToTop>
-      </ConnectedRouter>
-    </Provider>,
-    document.getElementById('main'),
-  );
+  Loadable.preloadReady().then(() => {
+    hydrate(
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <ScrollToTop>
+            <ReduxAsyncConnect routes={routes} helpers={api} />
+          </ScrollToTop>
+        </ConnectedRouter>
+      </Provider>,
+      document.getElementById('main'),
+    );
+  });
 };

@@ -57,10 +57,10 @@ class Html extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { assets, markup, store } = this.props;
+    const { assets, markup, store, bundles } = this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
-
+    const sanitizedBundles = bundles.filter(b => b !== undefined);
     return (
       <html lang="en">
         <head>
@@ -77,6 +77,9 @@ class Html extends Component {
           {assets.client.css ? (
             <link rel="stylesheet" href={assets.client.css} />
           ) : null}
+          {sanitizedBundles.map(b => (
+            <script key={b.publicPath} src={b.publicPath} />
+          ))}
           {process.env.NODE_ENV === 'production' ? (
             <script src={assets.client.js} defer />
           ) : (

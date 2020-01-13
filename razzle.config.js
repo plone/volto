@@ -4,6 +4,7 @@
 /* eslint no-console: 0 */
 /* eslint no-param-reassign: 0 */
 /* eslint no-unused-vars: 0 */
+const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
@@ -146,6 +147,9 @@ module.exports = {
           flattening: true,
           paths: true,
           placeholders: true,
+        }),
+        new ReactLoadablePlugin({
+          filename: path.resolve(__dirname, 'dist', 'react-loadable.json'),
         }),
       );
     }
