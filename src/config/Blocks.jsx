@@ -2,6 +2,7 @@ import { defineMessages } from 'react-intl';
 
 import ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
 import ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
+import ViewToCBlock from '@plone/volto/components/manage/Blocks/ToC/View';
 import ViewTextBlock from '@plone/volto/components/manage/Blocks/Text/View';
 import ViewImageBlock from '@plone/volto/components/manage/Blocks/Image/View';
 import ViewVideoBlock from '@plone/volto/components/manage/Blocks/Video/View';
@@ -12,6 +13,7 @@ import ViewTableBlock from '@plone/volto/components/manage/Blocks/Table/View';
 
 import EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
 import EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
+import EditToCBlock from '@plone/volto/components/manage/Blocks/ToC/Edit';
 import EditTextBlock from '@plone/volto/components/manage/Blocks/Text/Edit';
 import EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
 import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
@@ -29,6 +31,7 @@ import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import heroSVG from '@plone/volto/icons/hero.svg';
 import tableSVG from '@plone/volto/icons/table.svg';
+import tocSVG from '@plone/volto/icons/list-bullet.svg';
 
 defineMessages({
   title: {
@@ -42,6 +45,10 @@ defineMessages({
   text: {
     id: 'text',
     defaultMessage: 'Text',
+  },
+  toc: {
+    id: 'toc',
+    defaultMessage: 'Table of Contents',
   },
   image: {
     id: 'image',
@@ -162,6 +169,21 @@ const blocksConfig = {
     edit: EditVideoBlock,
     restricted: false,
     mostUsed: true,
+    sidebarTab: 0,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  },
+  toc: {
+    id: 'toc',
+    title: 'Table of Contents',
+    icon: tocSVG,
+    group: 'common',
+    view: ViewToCBlock,
+    edit: EditToCBlock,
+    restricted: false,
+    mostUsed: false,
     sidebarTab: 0,
     security: {
       addPermission: [],
