@@ -57,7 +57,7 @@ export function persistAuthToken(store) {
               store.dispatch(
                 push(
                   `/logout?return_url=${
-                    store.getState().routing.locationBeforeTransitions.pathname
+                    store.getState().router.location.pathname
                   }`,
                 ),
               );
