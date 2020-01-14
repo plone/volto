@@ -1049,20 +1049,24 @@ class Contents extends Component {
                         )}
                       />
                       <Dropdown.Menu scrolling>
-                        {map(this.state.index.order, index => (
-                          <Dropdown.Item
-                            key={index}
-                            value={index}
-                            onClick={this.onSelectIndex}
-                          >
-                            {this.state.index.values[index].selected ? (
-                              <Icon name="check square" color="blue" />
-                            ) : (
-                              <Icon name="square outline" />
-                            )}
-                            {this.state.index.values[index].label}
-                          </Dropdown.Item>
-                        ))}
+                        {map(
+                          this.state.index.order,
+                          index =>
+                            index !== 'sortable_title' && (
+                              <Dropdown.Item
+                                key={index}
+                                value={index}
+                                onClick={this.onSelectIndex}
+                              >
+                                {this.state.index.values[index].selected ? (
+                                  <Icon name="check square" color="blue" />
+                                ) : (
+                                  <Icon name="square outline" />
+                                )}
+                                {this.state.index.values[index].label}
+                              </Dropdown.Item>
+                            ),
+                        )}
                       </Dropdown.Menu>
                     </Dropdown.Menu>
                   </Dropdown>
@@ -1211,6 +1215,7 @@ class Contents extends Component {
                             />
                           ),
                       )}
+
                       <Table.HeaderCell textAlign="right">
                         <FormattedMessage
                           id="Actions"

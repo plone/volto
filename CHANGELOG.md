@@ -11,6 +11,7 @@
 
 - More cleaning the body classname from the current displayname view @sneridagh
 - Make it possible to paste links, lists, b and i Elements into text-blocks @jackahl
+- remove title option from shown columns dropdown in contents view, as it is always shown anyways
 
 ## 4.0.0-alpha.22 (2020-01-04)
 

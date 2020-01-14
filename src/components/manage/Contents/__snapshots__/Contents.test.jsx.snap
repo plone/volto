@@ -233,18 +233,6 @@ exports[`Contents renders a contents component 1`] = `
                   >
                     <i
                       aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
-                    />
-                    Title
-                  </div>
-                  <div
-                    className="item"
-                    onClick={[Function]}
-                    role="option"
-                  >
-                    <i
-                      aria-hidden="true"
                       className="blue check square icon"
                       onClick={[Function]}
                     />
