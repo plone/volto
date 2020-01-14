@@ -66,6 +66,26 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.video');
     });
 
+    it('add video block with mp4 video', () => {
+      cy.get(`.block.title [data-contents]`)
+        .clear()
+        .type('My title');
+      cy.get('.block.inner.text .public-DraftEditor-content').click();
+      cy.get('.ui.basic.icon.button.block-add-button').click();
+      cy.get('.title')
+        .contains('media')
+        .click();
+      cy.get('.ui.basic.icon.button.video')
+        .contains('video')
+        .click();
+      cy.get('.toolbar > .ui > input')
+        .click()
+        .type('https://1.videolyser.de/videos/1714848/11745228_hd.mp4')
+        .type('{enter}');
+      cy.get('#toolbar-save').click();
+      cy.get('.block.video');
+    });
+
     // it('Add image block', () => {
     //   // Add image block
     //   cy.get('.block.text [contenteditable]').click();
