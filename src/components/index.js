@@ -88,6 +88,7 @@ export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChoos
 
 export EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
 export EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
+export EditToCBlock from '@plone/volto/components/manage/Blocks/ToC/Edit';
 export EditTextBlock from '@plone/volto/components/manage/Blocks/Text/Edit';
 export EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
 export EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
@@ -99,6 +100,7 @@ export EditHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/Edit';
 
 export ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
 export ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
+export ViewToCBlock from '@plone/volto/components/manage/Blocks/ToC/View';
 export ViewTextBlock from '@plone/volto/components/manage/Blocks/Text/View';
 export ViewImageBlock from '@plone/volto/components/manage/Blocks/Image/View';
 export ViewVideoBlock from '@plone/volto/components/manage/Blocks/Video/View';

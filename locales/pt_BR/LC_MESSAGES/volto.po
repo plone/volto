@@ -1136,6 +1136,10 @@ msgstr "Tabela"
 msgid "Table color inverted"
 msgstr "Cor da tabela invertida"
 
+#: components/manage/Blocks/ToC/View
+msgid "Table of Contents"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags"
@@ -1437,6 +1441,10 @@ msgstr "texto"
 #: config/Blocks
 msgid "title"
 msgstr "título"
+
+#: config/Blocks
+msgid "toc"
+msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
