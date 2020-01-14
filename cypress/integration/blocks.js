@@ -83,11 +83,19 @@ if (Cypress.env('API') !== 'guillotina') {
         .type('https://1.videolyser.de/videos/1714848/11745228_hd.mp4')
         .type('{enter}');
       cy.get('#toolbar-save').click();
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('?fullobjects');
+      
       cy.get('.block.video video').should(
         'have.attr',
         'src',
         'https://1.videolyser.de/videos/1714848/11745228_hd.mp4',
       );
+      
+      cy.visit('/my-page/edit');
     });
 
     // it('Add image block', () => {
