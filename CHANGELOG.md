@@ -4,9 +4,14 @@
 
 ### Added
 
-- Added customStyleMap param to Editor of draftjs @giuliaghisini
-
 ### Changes
+
+## 4.0.0-alpha.24 (2020-01-14)
+
+### Added
+
+- Added customStyleMap param to Editor of draftjs @giuliaghisini
+- Added Table of Contents block @robgietema
 
 ## 4.0.0-alpha.23 (2020-01-14)
 
@@ -14,7 +19,6 @@
 
 - Support for indexable blocks (requires plone.restapi 6.1.0) @timo
 - Set alt tag of image when selecting image in image block @robgietema
-- Added Table of Contents block @robgietema
 
 ### Changes
 
