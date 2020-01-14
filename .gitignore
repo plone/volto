@@ -37,6 +37,7 @@ api/pip-selfcheck.json
 /bin
 /lib
 include
+share
 .Python
 
 # Tests

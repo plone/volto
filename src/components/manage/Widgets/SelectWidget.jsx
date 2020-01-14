@@ -50,6 +50,10 @@ const messages = defineMessages({
     id: 'Description',
     defaultMessage: 'Description',
   },
+  close: {
+    id: 'Close',
+    defaultMessage: 'Close',
+  },
   choices: {
     id: 'Choices',
     defaultMessage: 'Choices',
@@ -57,6 +61,10 @@ const messages = defineMessages({
   required: {
     id: 'Required',
     defaultMessage: 'Required',
+  },
+  no_value: {
+    id: 'No value',
+    defaultMessage: 'No value',
   },
 });
 
@@ -73,7 +81,10 @@ function getDefaultValues(choices, value) {
       : {};
   }
   if (value === 'no-value') {
-    return { label: 'No value', value: 'no-value' };
+    return {
+      label: this.props.intl.formatMessage(messages.no_value),
+      value: 'no-value',
+    };
   }
   if (isObject(value)) {
     return { label: value.title, value: value.token };
@@ -291,7 +302,7 @@ class SelectWidget extends Component {
                     <IconOld name="write square" size="large" color="blue" />
                   </button>
                   <button
-                    aria-label="Close"
+                    aria-label={this.props.intl.formatMessage(messages.close)}
                     className="item ui noborder button"
                     onClick={() => onDelete(id)}
                   >
@@ -326,7 +337,10 @@ class SelectWidget extends Component {
                       value: option[0],
                       label: option[1],
                     })),
-                    { label: 'No value', value: 'no-value' },
+                    {
+                      label: this.props.intl.formatMessage(messages.no_value),
+                      value: 'no-value',
+                    },
                   ]}
                   styles={customSelectStyles}
                   theme={selectTheme}
