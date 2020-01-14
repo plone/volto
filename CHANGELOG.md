@@ -3,7 +3,8 @@
 ## 4.0.0 (unreleased)
 
 ### Added
-- added customStyleMap param to Editor of draftjs
+
+- Added customStyleMap param to Editor of draftjs @giuliaghisini
 
 ### Changes
 
