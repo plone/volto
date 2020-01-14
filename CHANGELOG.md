@@ -4,6 +4,8 @@
 
 ### Added
 
+- German translation updated @timo
+
 ### Changes
 
 ## 4.0.0-alpha.25 (2020-01-14)
