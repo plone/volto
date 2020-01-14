@@ -26,7 +26,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#page-document p').contains('My text');
     });
 
-    it('add video block with youtube video', () => {
+    it('Add Video Block with YouTube Video', () => {
       cy.get(`.block.title [data-contents]`)
         .clear()
         .type('My title');
@@ -46,7 +46,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.video');
     });
 
-    it('add video block with vimeo video', () => {
+    it('Add Video Block with Vimeo Video', () => {
       cy.get(`.block.title [data-contents]`)
         .clear()
         .type('My title');
@@ -386,6 +386,34 @@ if (Cypress.env('API') !== 'guillotina') {
     it('Listing block - Test Criteria: Location Navigation path', () => {
       /*not implemented because Navigation ui is not yet developed in Listing Block sidebar*/
     });
+
+    it('Add Video Block with MP4 Video', () => {
+      cy.get(`.block.title [data-contents]`)
+        .clear()
+        .type('My title');
+      cy.get('.block.inner.text .public-DraftEditor-content').click();
+      cy.get('.ui.basic.icon.button.block-add-button').click();
+      cy.get('.title')
+        .contains('media')
+        .click();
+      cy.get('.ui.basic.icon.button.video')
+        .contains('video')
+        .click();
+      cy.get('.toolbar > .ui > input')
+        .click()
+        .type('https://1.videolyser.de/videos/1714848/11745228_hd.mp4')
+        .type('{enter}');
+      cy.get('#toolbar-save').click();
+
+      cy.get('.block.video video').should(
+        'have.attr',
+        'src',
+        'https://1.videolyser.de/videos/1714848/11745228_hd.mp4',
+      );
+
+      cy.visit('/my-page/edit');
+    });
+
     // it('Add image block', () => {
     //   // Add image block
     //   cy.get('.block.text [contenteditable]').click();

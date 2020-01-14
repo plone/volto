@@ -42,6 +42,7 @@ export const settings = {
   ToHTMLOptions,
   imageObjects: ['Image'],
   listingPreviewImageField: 'image',
+  customStyleMap: null,
 };
 
 export const widgets = {

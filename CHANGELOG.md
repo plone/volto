@@ -5,18 +5,31 @@
 ### Added
 
 - Added listing block @pnicolli @rodfersou @sneridagh @giuliaghisini
-- Support for indexable blocks (requires plone.restapi 6.1.0) @timo
+- Added customStyleMap param to Editor of draftjs @giuliaghisini
 
 ### Changes
 
+## 4.0.0-alpha.23 (2020-01-14)
+
+### Added
+
+- Support for indexable blocks (requires plone.restapi 6.1.0) @timo
+- Set alt tag of image when selecting image in image block @robgietema
+
+### Changes
+
+- Avoid console warnings in AddLinkForm.jsx @tiberiuichim
 - More cleaning the body classname from the current displayname view @sneridagh
+- Make it possible to paste links, lists, b and i Elements into text-blocks
+  @jackahl
+- added option to include mp4 files from a remote source in video Block @steffenri @jackahl
 
 ## 4.0.0-alpha.22 (2020-01-04)
 
 ### Changes
 
 - Disable all styling when copying text from another source (e.g. MS Word) into a text block @jackahl
-- Avoid console warnings in QuerystringWidget @tiberich
+- Avoid console warnings in QuerystringWidget @tiberiuichim
 - Fix body classname based on the current content type @sneridagh
 
 ## 4.0.0-alpha.21 (2020-01-02)

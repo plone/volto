@@ -4729,6 +4729,11 @@ draft-js@0.10.5:
     immutable "~3.7.4"
     object-assign "^4.1.0"
 
+draftjs-filters@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/draftjs-filters/-/draftjs-filters-2.3.0.tgz#75b4a52458d40c099fbccbc0a03973bd5be882e2"
+  integrity sha512-Yi4G3zbbJwrTxFCtCooXLuIeThrY4YFvRrrL3Ck+zYi1V1/3z+j+QXHE/tNa182eb7Tq7t0AxNKE+mOFlqG8tw==
+
 duplexer3@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/duplexer3/-/duplexer3-0.1.4.tgz#ee01dd1cac0ed3cbc7fdbea37dc0a8f1ce002ce2"
