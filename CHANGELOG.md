@@ -6,6 +6,11 @@
 
 ### Changes
 
+
+### Internal
+
+- Add commitzen @timo
+   
 ## 4.0.0-alpha.25 (2020-01-14)
 
 ### Added
