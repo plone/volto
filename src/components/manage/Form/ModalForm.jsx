@@ -14,12 +14,7 @@ import {
   Message,
   Modal,
 } from 'semantic-ui-react';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { Field } from '../../../components';
 
@@ -76,7 +71,6 @@ class ModalForm extends Component {
     onCancel: PropTypes.func,
     open: PropTypes.bool,
     submitLabel: PropTypes.string,
-    intl: intlShape.isRequired,
     loading: PropTypes.bool,
     className: PropTypes.string,
   };

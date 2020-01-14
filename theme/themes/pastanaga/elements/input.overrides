@@ -27,6 +27,13 @@
     }
   }
 
+  &.text {
+    .toolbar {
+      display: block;
+      margin-top: 18px;
+    }
+  }
+
   &.textarea {
     .wrapper,
     .toolbar {

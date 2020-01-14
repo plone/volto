@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-09-25T17:38:43.927Z\n"
+"POT-Creation-Date: 2019-12-17T20:38:19.520Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -12,16 +12,6 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
-
-#: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: ADD NEW GROUP
-msgid "ADD NEW GROUP"
-msgstr ""
-
-#: components/manage/Controlpanels/UsersControlpanel
-# defaultMessage: ADD NEW USER
-msgid "ADD NEW USER"
-msgstr ""
 
 #: components/theme/Footer/Footer
 # defaultMessage: Accessibility
@@ -51,13 +41,30 @@ msgid "Actions"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Add
+msgid "Add"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+# defaultMessage: Add Content...
+msgid "Add Content"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Add User
 msgid "Add User"
 msgstr ""
 
-#: components/manage/Tiles/Description/Edit
+#: components/manage/Blocks/Description/Edit
 # defaultMessage: Add a description…
 msgid "Add a description…"
+msgstr ""
+
+#: components/manage/Form/Form
+# defaultMessage: Add block...
+msgid "Add block..."
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -75,9 +82,14 @@ msgstr ""
 msgid "Add group"
 msgstr ""
 
-#: components/manage/Form/Form
-# defaultMessage: Add tile...
-msgid "Add tile..."
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Add new group
+msgid "Add new group"
+msgstr ""
+
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Add new user
+msgid "Add new user"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -141,9 +153,19 @@ msgstr ""
 msgid "Base"
 msgstr ""
 
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Block
+msgid "Block"
+msgstr ""
+
 #: components/theme/Login/Login
 # defaultMessage: Both email address and password are case sensitive, check that caps lock is not enabled.
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
+msgstr ""
+
+#: components/theme/Breadcrumbs/Breadcrumbs
+# defaultMessage: Breadcrumbs
+msgid "Breadcrumbs"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
@@ -151,7 +173,7 @@ msgstr ""
 msgid "Browse"
 msgstr ""
 
-#: components/manage/Tiles/Image/Edit
+#: components/manage/Blocks/Image/Edit
 # defaultMessage: Browse the site, drop an image, or type an URL
 msgid "Browse the site, drop an image, or type an URL"
 msgstr ""
@@ -175,9 +197,16 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 # defaultMessage: Cell
 msgid "Cell"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
+# defaultMessage: Center
+msgid "Center"
 msgstr ""
 
 #: components/manage/History/History
@@ -227,14 +256,9 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
-#: components/manage/Sidebar/ObjectBrowserBody
-# defaultMessage: Choose Image
-msgid "ChooseImage"
-msgstr ""
-
-#: components/manage/Sidebar/ObjectBrowserBody
-# defaultMessage: Choose Target
-msgid "ChooseTargetLink"
+#: components/manage/Widgets/SelectWidget
+# defaultMessage: Close
+msgid "Close"
 msgstr ""
 
 #: components/theme/Navigation/Navigation
@@ -276,6 +300,7 @@ msgid "Contact form"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
 # defaultMessage: Contents
 msgid "Contents"
 msgstr ""
@@ -349,6 +374,10 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
+#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 # defaultMessage: Delete
 msgid "Delete"
@@ -364,12 +393,12 @@ msgstr ""
 msgid "Delete User"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 # defaultMessage: Delete col
 msgid "Delete col"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 # defaultMessage: Delete row
 msgid "Delete row"
 msgstr ""
@@ -379,8 +408,8 @@ msgstr ""
 msgid "Descending"
 msgstr ""
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -408,7 +437,7 @@ msgstr ""
 msgid "Distributed under the {license}."
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 # defaultMessage: Divide each row into separate cells
 msgid "Divide each row into separate cells"
 msgstr ""
@@ -433,6 +462,11 @@ msgstr ""
 msgid "Do you really want to delete this item?"
 msgstr ""
 
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Document
+msgid "Document"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Drag and drop files from your computer onto this area or click the “Browse” button.
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -451,6 +485,8 @@ msgstr ""
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/CheckboxWidget
 #: components/theme/Comments/Comments
 # defaultMessage: Edit
 msgid "Edit"
@@ -486,7 +522,12 @@ msgstr ""
 msgid "Email sent"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
+#: components/manage/Blocks/Maps/View
+# defaultMessage: Embeded Google Maps
+msgid "Embeded Google Maps"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
 # defaultMessage: Enter Map URL
 msgid "Enter Map URL"
 msgstr ""
@@ -496,7 +537,7 @@ msgstr ""
 msgid "Enter URL or title"
 msgstr ""
 
-#: components/manage/Tiles/Video/Edit
+#: components/manage/Blocks/Video/Edit
 # defaultMessage: Enter Video URL
 msgid "Enter Video URL"
 msgstr ""
@@ -542,6 +583,11 @@ msgstr ""
 msgid "Exclude from navigation"
 msgstr ""
 
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Expand sidebar
+msgid "Expand sidebar"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Expiration Date
 msgid "Expiration Date"
@@ -567,7 +613,7 @@ msgstr ""
 msgid "Filter…"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 # defaultMessage: Fixed width table cells
 msgid "Fixed width table cells"
 msgstr ""
@@ -575,6 +621,13 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: From
 msgid "From"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
+# defaultMessage: Full
+msgid "Full"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -594,6 +647,21 @@ msgstr ""
 msgid "GNU GPL license"
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Global role
+msgid "Global role"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Google Maps Embedded Block
+msgid "Google Maps Embedded Block"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Group
+msgid "Group"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Group created
 msgid "Group created"
@@ -607,6 +675,12 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Groups
 msgid "Groups"
+msgstr ""
+
+#: components/manage/History/History
+#: components/manage/Toolbar/More
+# defaultMessage: History
+msgid "History"
 msgstr ""
 
 #: components/manage/History/History
@@ -665,22 +739,27 @@ msgstr ""
 msgid "Inherit permissions from higher levels"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Sharing/Sharing
+# defaultMessage: Inherited value
+msgid "Inherited value"
+msgstr ""
+
+#: components/manage/Blocks/Table/Edit
 # defaultMessage: Insert col after
 msgid "Insert col after"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 # defaultMessage: Insert col before
 msgid "Insert col before"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 # defaultMessage: Insert row after
 msgid "Insert row after"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 # defaultMessage: Insert row before
 msgid "Insert row before"
 msgstr ""
@@ -717,6 +796,13 @@ msgstr ""
 msgid "Last modified"
 msgstr ""
 
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
+# defaultMessage: Left
+msgid "Left"
+msgstr ""
+
 #: components/manage/Sidebar/ImageSidebar
 # defaultMessage: Link to
 msgid "Link to"
@@ -739,6 +825,11 @@ msgid "Log in"
 msgstr ""
 
 #: components/theme/Login/Login
+# defaultMessage: Login
+msgid "Login"
+msgstr ""
+
+#: components/theme/Login/Login
 # defaultMessage: Login Failed
 msgid "Login Failed"
 msgstr ""
@@ -748,17 +839,17 @@ msgstr ""
 msgid "Login Name"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 # defaultMessage: Make the table compact
 msgid "Make the table compact"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
+#: components/manage/Blocks/Maps/Edit
 # defaultMessage: Embed code error, please follow the instructions and try again.
 msgid "Maps data error"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
+#: components/manage/Blocks/Maps/Edit
 # defaultMessage: Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it.
 msgid "Maps instructions"
 msgstr ""
@@ -768,20 +859,25 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: components/manage/Sidebar/Sidebar
-# defaultMessage: Metadata
-msgid "Metadata"
-msgstr ""
-
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 # defaultMessage: Minimum length is {len}.
 msgid "Minimum length is {len}."
 msgstr ""
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Moderate Comments
+msgid "Moderate Comments"
+msgstr ""
+
 #: components/manage/Controlpanels/ModerateComments
 # defaultMessage: Moderate comments
 msgid "Moderate comments"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: More
+msgid "More"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -805,6 +901,11 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+#: error
+# defaultMessage: Navigate back
+msgid "Navigate back"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: New password
@@ -819,6 +920,18 @@ msgstr ""
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."
+msgstr ""
+
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectWidget
+# defaultMessage: No value
+msgid "No value"
+msgstr ""
+
+#: components/manage/Workflow/Workflow
+# defaultMessage: No workflow
+msgid "No workflow"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -853,6 +966,12 @@ msgid "Password"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Password reset
+msgid "Password reset"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Passwords do not match.
 msgid "Passwords do not match."
 msgstr ""
@@ -873,9 +992,20 @@ msgstr ""
 msgid "Personal Preferences"
 msgstr ""
 
+#: components/manage/Toolbar/More
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Personal tools
+msgid "Personal tools"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
+msgstr ""
+
+#: components/manage/Blocks/Video/Edit
+# defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
+msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
@@ -908,14 +1038,24 @@ msgstr ""
 msgid "Powered by Plone & Python"
 msgstr ""
 
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Preferences
+msgid "Preferences"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Preview
 msgid "Preview"
 msgstr ""
 
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: Profile
+msgid "Profile"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
-#: components/manage/Sidebar/Sidebar
 # defaultMessage: Properties
 msgid "Properties"
 msgstr ""
@@ -942,7 +1082,7 @@ msgstr ""
 msgid "Rearrange items by…"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 # defaultMessage: Reduce complexity
 msgid "Reduce complexity"
 msgstr ""
@@ -996,6 +1136,13 @@ msgstr ""
 msgid "Richtext"
 msgstr ""
 
+#: components/manage/Blocks/Maps/Edit
+#: components/manage/Blocks/Video/Edit
+#: helpers/AlignBlock/AlignBlock
+# defaultMessage: Right
+msgid "Right"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Rights
 msgid "Rights"
@@ -1007,12 +1154,12 @@ msgid "Roles"
 msgstr ""
 
 #: components/manage/Add/Add
+#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/Video/Edit
 # defaultMessage: Save
 msgid "Save"
 msgstr ""
@@ -1062,6 +1209,11 @@ msgstr ""
 msgid "Select columns to show"
 msgstr ""
 
+#: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Select criteria
+msgid "Select criteria"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Select the transition to be used for modifying the items state.
 msgid "Select the transition to be used for modifying the items state."
@@ -1093,6 +1245,11 @@ msgid "Set your password"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
+# defaultMessage: Sharing
+msgid "Sharing"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
 # defaultMessage: Sharing for {title}
 msgid "Sharing for {title}"
 msgstr ""
@@ -1111,6 +1268,16 @@ msgstr ""
 #: components/manage/Contents/ContentsRenameModal
 # defaultMessage: Short name
 msgid "Short name"
+msgstr ""
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Shrink sidebar
+msgid "Shrink sidebar"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Shrink toolbar
+msgid "Shrink toolbar"
 msgstr ""
 
 #: components/theme/Login/Login
@@ -1134,13 +1301,29 @@ msgid "Site Map"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
 msgid "Site Setup"
 msgstr ""
 
-#: components/manage/Tiles/Video/Edit
+#: error
+# defaultMessage: Sorry, something went wrong with your request
+msgid "Sorry, something went wrong with your request"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+# defaultMessage: Source
+msgid "Source"
+msgstr ""
+
+#: components/manage/Blocks/Video/Edit
 # defaultMessage: Specify a youtube video or playlist url
 msgid "Specify a youtube video or playlist url"
+msgstr ""
+
+#: components/manage/Diff/Diff
+# defaultMessage: Split
+msgid "Split"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -1149,6 +1332,7 @@ msgid "Start password reset"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 # defaultMessage: State
 msgid "State"
@@ -1159,7 +1343,7 @@ msgstr ""
 msgid "String"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 # defaultMessage: Stripe alternate rows with color
 msgid "Stripe alternate rows with color"
 msgstr ""
@@ -1180,12 +1364,12 @@ msgstr ""
 msgid "Success"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 # defaultMessage: Table
 msgid "Table"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 # defaultMessage: Table color inverted
 msgid "Table color inverted"
 msgstr ""
@@ -1252,10 +1436,10 @@ msgstr ""
 msgid "This page does not seem to exist…"
 msgstr ""
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1274,14 +1458,25 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: components/manage/Tiles/Text/Edit
+#: components/manage/Blocks/Text/Edit
 # defaultMessage: Type text…
 msgid "Type text…"
 msgstr ""
 
-#: components/manage/Tiles/Title/Edit
+#: components/manage/Blocks/Title/Edit
 # defaultMessage: Type the title…
 msgid "Type the title…"
+msgstr ""
+
+#: components/manage/Diff/Diff
+# defaultMessage: Unified
+msgid "Unified"
+msgstr ""
+
+#: components/manage/Blocks/Block/Edit
+#: components/theme/View/DefaultView
+# defaultMessage: Unknown Block {block}
+msgid "Unknown Block"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -1315,6 +1510,11 @@ msgstr ""
 msgid "Used for programmatic access to the fieldset."
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: User
+msgid "User"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: User created
 msgid "User created"
@@ -1333,6 +1533,12 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Users
 msgid "Users"
+msgstr ""
+
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Users and Groups
+msgid "Users and Groups"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -1358,6 +1564,11 @@ msgstr ""
 #: components/manage/History/History
 # defaultMessage: View this revision
 msgid "View this revision"
+msgstr ""
+
+#: components/manage/Display/Display
+# defaultMessage: View
+msgid "Viewmode"
 msgstr ""
 
 #: components/theme/NotFound/NotFound
@@ -1440,12 +1651,17 @@ msgstr ""
 msgid "box_forgot_password_option"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 # defaultMessage: Common
 msgid "common"
 msgstr ""
 
-#: config/Tiles
+#: components/manage/Blocks/Block/Edit
+# defaultMessage: delete
+msgid "delete"
+msgstr ""
+
+#: config/Blocks
 # defaultMessage: Description
 msgid "description"
 msgstr ""
@@ -1465,17 +1681,17 @@ msgstr ""
 msgid "heading_sent_password"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 # defaultMessage: Hero
 msgid "hero"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 # defaultMessage: HTML
 msgid "html"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 # defaultMessage: Image
 msgid "image"
 msgstr ""
@@ -1485,19 +1701,24 @@ msgstr ""
 msgid "label_my_email_address_is"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 # defaultMessage: Maps
 msgid "maps"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 # defaultMessage: Media
 msgid "media"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 # defaultMessage: Most used
 msgid "mostUsed"
+msgstr ""
+
+#: error
+# defaultMessage: or try a different page.
+msgid "or try a different page."
 msgstr ""
 
 #: components/theme/Login/Login
@@ -1505,22 +1726,32 @@ msgstr ""
 msgid "registration form"
 msgstr ""
 
-#: config/Tiles
+#: error
+# defaultMessage: return to the site root
+msgid "return to the site root"
+msgstr ""
+
+#: config/Blocks
 # defaultMessage: Table
 msgid "table"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 # defaultMessage: Text
 msgid "text"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 # defaultMessage: Title
 msgid "title"
 msgstr ""
 
-#: config/Tiles
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: user avatar
+msgid "user avatar"
+msgstr ""
+
+#: config/Blocks
 # defaultMessage: Video
 msgid "video"
 msgstr ""

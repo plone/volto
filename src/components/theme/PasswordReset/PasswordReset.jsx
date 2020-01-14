@@ -8,14 +8,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { Container } from 'semantic-ui-react';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { Form } from '../../../components';
 import { setInitialPassword } from '../../../actions';
@@ -88,6 +83,10 @@ const messages = defineMessages({
     defaultMessage:
       'Your password has been set successfully. You may now {link} with your new password.',
   },
+  passwordReset: {
+    id: 'Password reset',
+    defaultMessage: 'Password reset',
+  },
 });
 
 /**
@@ -107,7 +106,6 @@ class PasswordReset extends Component {
     error: PropTypes.string,
     token: PropTypes.string.isRequired,
     setInitialPassword: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -140,7 +138,7 @@ class PasswordReset extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {}
+  UNSAFE_componentWillMount() {}
 
   /**
    * Component will receive props
@@ -148,7 +146,7 @@ class PasswordReset extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.loading && nextProps.loaded) {
       this.setState({ isSuccessful: true });
     }
@@ -223,7 +221,9 @@ class PasswordReset extends Component {
     if (this.props.token) {
       return (
         <div id="page-password-reset">
-          <Helmet title="Password reset" />
+          <Helmet
+            title={this.props.intl.formatMessage(messages.passwordReset)}
+          />
           <Container>
             <Form
               title={this.props.intl.formatMessage(messages.title)}

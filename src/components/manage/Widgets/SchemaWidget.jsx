@@ -10,13 +10,17 @@ import { compose } from 'redux';
 import { concat, findIndex, map, omit, slice, without } from 'lodash';
 import move from 'lodash-move';
 import { Confirm, Form, Grid, Icon, Message, Segment } from 'semantic-ui-react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
 import { Field, ModalForm, SchemaWidgetFieldset } from '../../../components';
 
 const messages = defineMessages({
+  add: {
+    id: 'Add',
+    defaultMessage: 'Add',
+  },
   addField: {
     id: 'Add field',
     defaultMessage: 'Add field',
@@ -131,7 +135,6 @@ class SchemaWidget extends Component {
     /**
      * Intl object
      */
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -396,10 +399,11 @@ class SchemaWidget extends Component {
    * @method onShowAddField
    * @returns {undefined}
    */
-  onShowAddField() {
+  onShowAddField(event) {
     this.setState({
       addField: true,
     });
+    event.preventDefault();
   }
 
   /**
@@ -407,10 +411,11 @@ class SchemaWidget extends Component {
    * @method onShowAddFieldset
    * @returns {undefined}
    */
-  onShowAddFieldset() {
+  onShowAddFieldset(event) {
     this.setState({
       addFieldset: true,
     });
+    event.preventDefault();
   }
 
   /**
@@ -562,13 +567,15 @@ class SchemaWidget extends Component {
                 onOrderFieldset={this.onOrderFieldset}
               />
             ))}
-            <button
-              aria-label="Add"
-              className="item"
-              onClick={this.onShowAddFieldset}
-            >
-              <Icon name="plus" size="large" />
-            </button>
+            <div className="item">
+              <button
+                aria-label={this.props.intl.formatMessage(messages.add)}
+                className="item ui noborder button"
+                onClick={this.onShowAddFieldset}
+              >
+                <Icon name="plus" size="large" />
+              </button>
+            </div>
           </div>
           {map(
             value.fieldsets[this.state.currentFieldset].fields,
@@ -594,9 +601,9 @@ class SchemaWidget extends Component {
                   </div>
                   <div className="toolbar">
                     <button
-                      aria-label="Add"
+                      aria-label={this.props.intl.formatMessage(messages.add)}
                       id="addfield"
-                      className="item"
+                      className="item ui noborder button"
                       onClick={this.onShowAddField}
                     >
                       <Icon name="plus" color="blue" size="large" />

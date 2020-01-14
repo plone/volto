@@ -4,7 +4,7 @@
  */
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
 import trashSVG from '../../../icons/delete.svg';
 import { Icon } from '../../../components';
@@ -33,7 +33,6 @@ export default class UsersControlpanelUser extends Component {
       }),
     ).isRequired,
     onDelete: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**

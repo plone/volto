@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Form, Grid, Label, Dropdown } from 'semantic-ui-react';
 import { compact, concat, fromPairs, map, values, uniqBy } from 'lodash';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { settings } from '~/config';
 
 import { resetSearchContent, searchContent } from '../../../actions';
@@ -18,6 +18,10 @@ const messages = defineMessages({
   no_results_found: {
     id: 'No results found.',
     defaultMessage: 'No results found.',
+  },
+  no_value: {
+    id: 'No value',
+    defaultMessage: 'No value',
   },
 });
 
@@ -54,7 +58,6 @@ class ReferenceWidget extends Component {
         description: PropTypes.string,
       }),
     ),
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -109,7 +112,7 @@ class ReferenceWidget extends Component {
               },
               novalue: {
                 key: 'novalue',
-                text: 'No value',
+                text: this.props.intl.formatMessage(messages.no_value),
                 value: 'novalue',
                 data: null,
               },
@@ -123,7 +126,7 @@ class ReferenceWidget extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.resetSearchContent();
   }
 
@@ -133,7 +136,7 @@ class ReferenceWidget extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({
       choices: {
         ...fromPairs(
@@ -161,7 +164,7 @@ class ReferenceWidget extends Component {
         ),
         novalue: {
           key: 'novalue',
-          text: 'No value',
+          text: this.props.intl.formatMessage(messages.no_value),
           value: 'novalue',
           data: null,
         },

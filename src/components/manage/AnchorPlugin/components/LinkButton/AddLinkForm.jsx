@@ -11,9 +11,10 @@ import EditorUtils from 'draft-js-plugins-utils';
 import { connect } from 'react-redux';
 import { map } from 'lodash';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
 import { resetSearchContent, searchContent } from '../../../../../actions';
+import { addAppURL } from '../../../../../helpers';
 import URLUtils from '../../utils/URLUtils';
 
 const messages = defineMessages({
@@ -44,7 +45,6 @@ class AddLinkForm extends Component {
         description: PropTypes.string,
       }),
     ),
-    intl: intlShape.isRequired,
   };
 
   static defaultProps = {
@@ -237,7 +237,7 @@ class AddLinkForm extends Component {
             <li style={{ padding: '5px' }}>
               <button
                 style={{ cursor: 'pointer' }}
-                onClick={e => this.onSelectItem(e, item['@id'])}
+                onClick={e => this.onSelectItem(e, addAppURL(item['@id']))}
                 title={item['@id']}
                 role="link"
               >

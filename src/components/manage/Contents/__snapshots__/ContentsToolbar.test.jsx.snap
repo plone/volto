@@ -11,6 +11,7 @@ exports[`ContentsToolbar renders a contents toolbar component 1`] = `
     <i
       aria-hidden="true"
       className="red remove big icon"
+      onClick={[Function]}
       title="Cancel"
     />
   </a>

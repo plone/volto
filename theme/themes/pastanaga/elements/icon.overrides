@@ -899,16 +899,45 @@ i.icon.talk.outline:before {
 }
 
 /* Messages */
-i.icon.help.circle:before { content: "\f059"; }
-i.icon.info.circle:before { content: "\f05a"; }
-i.icon.warning.circle:before { content: "\f06a"; }
-i.icon.warning.sign:before { content: "\f071"; }
-i.icon.announcement:before { content: @icon-megaphone; }
-i.icon.help:before { content: "\f128"; }
-i.icon.info:before { content: "\f129"; }
-i.icon.warning:before { content: @icon-error; }
-i.icon.birthday:before { content: "\f1fd"; }
-i.icon.help.circle.outline:before { content: "\f29c"; }
+i.icon.help.circle:before {
+  content: '\f059';
+}
+
+i.icon.info.circle:before {
+  content: '\f05a';
+}
+
+i.icon.warning.circle:before {
+  content: '\f06a';
+}
+
+i.icon.warning.sign:before {
+  content: '\f071';
+}
+
+i.icon.announcement:before {
+  content: @icon-megaphone;
+}
+
+i.icon.help:before {
+  content: '\f128';
+}
+
+i.icon.info:before {
+  content: '\f129';
+}
+
+i.icon.warning:before {
+  content: @icon-error;
+}
+
+i.icon.birthday:before {
+  content: '\f1fd';
+}
+
+i.icon.help.circle.outline:before {
+  content: '\f29c';
+}
 
 /* Users */
 i.icon.user:before {

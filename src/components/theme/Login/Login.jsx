@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
@@ -17,12 +17,7 @@ import {
   Segment,
   Grid,
 } from 'semantic-ui-react';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
 
@@ -42,6 +37,10 @@ const messages = defineMessages({
   loginName: {
     id: 'Login Name',
     defaultMessage: 'Login Name',
+  },
+  Login: {
+    id: 'Login',
+    defaultMessage: 'Login',
   },
   password: {
     id: 'Password',
@@ -85,7 +84,6 @@ class Login extends Component {
     }),
     loading: PropTypes.bool,
     token: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
-    intl: intlShape.isRequired,
     returnUrl: PropTypes.string,
   };
 
@@ -118,7 +116,7 @@ class Login extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.token) {
       this.props.history.push(this.props.returnUrl || '/');
       if (toast.isActive('loginFailed')) {
@@ -167,7 +165,7 @@ class Login extends Component {
   render() {
     return (
       <div id="page-login">
-        <Helmet title="Login" />
+        <Helmet title={this.props.intl.formatMessage(messages.Login)} />
         <Container text>
           <Form method="post" onSubmit={this.onLogin}>
             <Segment.Group raised>

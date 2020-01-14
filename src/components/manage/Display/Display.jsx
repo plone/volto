@@ -7,6 +7,7 @@ import { getSchema, updateContent, getContent } from '../../../actions';
 import layouts from '../../../constants/Layouts';
 import { getLayoutFieldname } from '../../../helpers';
 import { Icon } from '../../../components';
+import { FormattedMessage } from 'react-intl';
 
 import downSVG from '../../../icons/down-key.svg';
 import upSVG from '../../../icons/up-key.svg';
@@ -60,6 +61,10 @@ const customSelectStyles = {
     marginTop: 0,
     boxShadow: 'none',
     borderBottom: '2px solid #b8c6c8',
+  }),
+  menuList: (styles, state) => ({
+    ...styles,
+    maxHeight: '400px',
   }),
   indicatorSeparator: styles => ({
     ...styles,
@@ -132,7 +137,7 @@ class DisplaySelect extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getSchema(this.props.type);
   }
 
@@ -142,7 +147,7 @@ class DisplaySelect extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.getSchema(nextProps.type);
     }
@@ -182,7 +187,9 @@ class DisplaySelect extends Component {
 
     return (
       <Fragment>
-        <label htmlFor="display-select">View</label>
+        <label htmlFor="display-select">
+          <FormattedMessage id="Viewmode" defaultMessage="View" />
+        </label>
         <Select
           name="display-select"
           className="react-select-container"

@@ -5,10 +5,10 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Input, Label } from 'semantic-ui-react';
+import { Form, Grid, Input, Label, Icon as IconOld } from 'semantic-ui-react';
 import { map } from 'lodash';
+import { defineMessages, injectIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
 
 const messages = defineMessages({
   default: {
@@ -35,6 +35,10 @@ const messages = defineMessages({
     id: 'Required',
     defaultMessage: 'Required',
   },
+  delete: {
+    id: 'Delete',
+    defaultMessage: 'Delete',
+  },
 });
 
 /**
@@ -59,7 +63,6 @@ class TextWidget extends Component {
     onChange: PropTypes.func,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
-    intl: intlShape.isRequired,
     icon: PropTypes.shape({
       xmlns: PropTypes.string,
       viewBox: PropTypes.string,
@@ -155,7 +158,7 @@ class TextWidget extends Component {
         inline
         required={required}
         error={error.length > 0}
-        className={description ? 'help' : ''}
+        className={description ? 'help text' : 'text'}
         id={`${fieldSet || 'field'}-${id}`}
       >
         <Grid>
@@ -176,15 +179,18 @@ class TextWidget extends Component {
             <Grid.Column width="8">
               {onEdit && (
                 <div className="toolbar">
-                  <button className="item" onClick={() => onEdit(id, schema)}>
-                    <Icon name="write square" size="large" color="blue" />
+                  <button
+                    className="item ui noborder button"
+                    onClick={() => onEdit(id, schema)}
+                  >
+                    <IconOld name="write square" size="large" color="blue" />
                   </button>
                   <button
-                    aria-label="Delete"
-                    className="item"
+                    aria-label={this.props.intl.formatMessage(messages.delete)}
+                    className="item ui noborder button"
                     onClick={() => onDelete(id)}
                   >
-                    <Icon name="close" size="large" color="red" />
+                    <IconOld name="close" size="large" color="red" />
                   </button>
                 </div>
               )}

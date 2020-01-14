@@ -21,7 +21,7 @@ import {
 } from './RichTextEditor/Blocks';
 import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
 import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
-import { groupTilesOrder, requiredTiles, tilesConfig } from './Tiles';
+import { groupBlocksOrder, requiredBlocks, blocksConfig } from './Blocks';
 
 export const settings = {
   host: process.env.HOST || 'localhost',
@@ -55,8 +55,8 @@ export const views = {
   errorViews,
 };
 
-export const tiles = {
-  requiredTiles,
-  tilesConfig,
-  groupTilesOrder,
+export const blocks = {
+  requiredBlocks,
+  blocksConfig,
+  groupBlocksOrder,
 };

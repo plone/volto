@@ -5,21 +5,32 @@
 
 import React, { Component, Fragment } from 'react';
 import { Button, Tab } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import cookie from 'react-cookie';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { BodyClass } from '../../../helpers';
 import { Icon } from '../../../components';
 import forbiddenSVG from '../../../icons/forbidden.svg';
+import { setSidebarTab } from '../../../actions';
 
 const messages = defineMessages({
-  metadata: {
-    id: 'Metadata',
-    defaultMessage: 'Metadata',
+  document: {
+    id: 'Document',
+    defaultMessage: 'Document',
   },
-  properties: {
-    id: 'Properties',
-    defaultMessage: 'Properties',
+  block: {
+    id: 'Block',
+    defaultMessage: 'Block',
+  },
+  shrinkSidebar: {
+    id: 'Shrink sidebar',
+    defaultMessage: 'Shrink sidebar',
+  },
+  expandSidebar: {
+    id: 'Expand sidebar',
+    defaultMessage: 'Expand sidebar',
   },
 });
 
@@ -34,9 +45,7 @@ class Sidebar extends Component {
    * @property {Object} propTypes Property types.
    * @static
    */
-  static propTypes = {
-    intl: intlShape.isRequired,
-  };
+  static propTypes = {};
 
   /**
    * Constructor
@@ -47,6 +56,7 @@ class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.onToggleExpanded = this.onToggleExpanded.bind(this);
+    this.onTabChange = this.onTabChange.bind(this);
     this.state = {
       expanded: cookie.load('sidebar_expanded') !== 'false',
     };
@@ -68,6 +78,17 @@ class Sidebar extends Component {
   }
 
   /**
+   * On tab change
+   * @method onTabChange
+   * @param {Object} event Event object
+   * @param {Object} data Data object
+   * @returns {undefined}
+   */
+  onTabChange(event, data) {
+    this.props.setSidebarTab(data.activeIndex);
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -82,7 +103,11 @@ class Sidebar extends Component {
         />
         <div className={cx('sidebar-container', { collapsed: !expanded })}>
           <Button
-            aria-label={expanded ? 'Shrink sidebar' : 'Expand sidebar'}
+            aria-label={
+              expanded
+                ? this.props.intl.formatMessage(messages.shrinkSidebar)
+                : this.props.intl.formatMessage(messages.expandSidebar)
+            }
             className={
               this.props.content && this.props.content.review_state
                 ? `${this.props.content.review_state} trigger`
@@ -100,10 +125,11 @@ class Sidebar extends Component {
             }}
             className="tabs-wrapper"
             renderActiveOnly={false}
-            defaultActiveIndex={1}
+            activeIndex={this.props.tab}
+            onTabChange={this.onTabChange}
             panes={[
               {
-                menuItem: this.props.intl.formatMessage(messages.metadata),
+                menuItem: this.props.intl.formatMessage(messages.document),
                 pane: (
                   <Tab.Pane
                     key="metadata"
@@ -113,7 +139,7 @@ class Sidebar extends Component {
                 ),
               },
               {
-                menuItem: this.props.intl.formatMessage(messages.properties),
+                menuItem: this.props.intl.formatMessage(messages.block),
                 pane: (
                   <Tab.Pane
                     key="properties"
@@ -137,4 +163,12 @@ class Sidebar extends Component {
   }
 }
 
-export default injectIntl(Sidebar);
+export default compose(
+  injectIntl,
+  connect(
+    state => ({
+      tab: state.sidebar.tab,
+    }),
+    { setSidebarTab },
+  ),
+)(Sidebar);

@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { keys, map, mapValues, omit, uniq, without } from 'lodash';
 import move from 'lodash-move';
+import isBoolean from 'lodash/isBoolean';
 import {
   Button,
   Container,
@@ -15,20 +16,20 @@ import {
   Tab,
   Message,
 } from 'semantic-ui-react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { Portal } from 'react-portal';
 
-import { EditTile, Icon, Field } from '../../../components';
-import { getTilesFieldname, getTilesLayoutFieldname } from '../../../helpers';
+import { EditBlock, Icon, Field } from '../../../components';
+import { getBlocksFieldname, getBlocksLayoutFieldname } from '../../../helpers';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
-  addTile: {
-    id: 'Add tile...',
-    defaultMessage: 'Add tile...',
+  addBlock: {
+    id: 'Add block...',
+    defaultMessage: 'Add block...',
   },
   required: {
     id: 'Required input is missing.',
@@ -83,14 +84,13 @@ class Form extends Component {
       properties: PropTypes.objectOf(PropTypes.any),
       definitions: PropTypes.objectOf(PropTypes.any),
       required: PropTypes.arrayOf(PropTypes.string),
-    }).isRequired,
+    }),
     formData: PropTypes.objectOf(PropTypes.any),
     pathname: PropTypes.string,
     onSubmit: PropTypes.func,
     onCancel: PropTypes.func,
     submitLabel: PropTypes.string,
     resetAfterSubmit: PropTypes.bool,
-    intl: intlShape.isRequired,
     title: PropTypes.string,
     error: PropTypes.shape({
       message: PropTypes.string,
@@ -99,7 +99,7 @@ class Form extends Component {
     hideActions: PropTypes.bool,
     description: PropTypes.string,
     visual: PropTypes.bool,
-    tiles: PropTypes.arrayOf(PropTypes.object),
+    blocks: PropTypes.arrayOf(PropTypes.object),
   };
 
   /**
@@ -119,8 +119,9 @@ class Form extends Component {
     loading: null,
     hideActions: false,
     visual: false,
-    tiles: [],
+    blocks: [],
     pathname: '',
+    schema: {},
   };
 
   /**
@@ -136,21 +137,21 @@ class Form extends Component {
       text: uuid(),
     };
     let { formData } = props;
-    const tilesFieldname = getTilesFieldname(formData);
-    const tilesLayoutFieldname = getTilesLayoutFieldname(formData);
+    const blocksFieldname = getBlocksFieldname(formData);
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
 
     if (formData === null) {
       // get defaults from schema
       formData = mapValues(props.schema.properties, 'default');
     }
     // defaults for block editor; should be moved to schema on server side
-    if (!formData[tilesLayoutFieldname]) {
-      formData[tilesLayoutFieldname] = {
+    if (!formData[blocksLayoutFieldname]) {
+      formData[blocksLayoutFieldname] = {
         items: [ids.title, ids.text],
       };
     }
-    if (!formData[tilesFieldname]) {
-      formData[tilesFieldname] = {
+    if (!formData[blocksFieldname]) {
+      formData[blocksFieldname] = {
         [ids.title]: {
           '@type': 'title',
         },
@@ -163,20 +164,20 @@ class Form extends Component {
       formData,
       errors: {},
       selected:
-        formData[tilesLayoutFieldname].items.length > 0
-          ? formData[tilesLayoutFieldname].items[0]
+        formData[blocksLayoutFieldname].items.length > 0
+          ? formData[blocksLayoutFieldname].items[0]
           : null,
     };
     this.onChangeField = this.onChangeField.bind(this);
-    this.onChangeTile = this.onChangeTile.bind(this);
-    this.onMutateTile = this.onMutateTile.bind(this);
-    this.onSelectTile = this.onSelectTile.bind(this);
-    this.onDeleteTile = this.onDeleteTile.bind(this);
-    this.onAddTile = this.onAddTile.bind(this);
-    this.onMoveTile = this.onMoveTile.bind(this);
+    this.onChangeBlock = this.onChangeBlock.bind(this);
+    this.onMutateBlock = this.onMutateBlock.bind(this);
+    this.onSelectBlock = this.onSelectBlock.bind(this);
+    this.onDeleteBlock = this.onDeleteBlock.bind(this);
+    this.onAddBlock = this.onAddBlock.bind(this);
+    this.onMoveBlock = this.onMoveBlock.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.onFocusPreviousTile = this.onFocusPreviousTile.bind(this);
-    this.onFocusNextTile = this.onFocusNextTile.bind(this);
+    this.onFocusPreviousBlock = this.onFocusPreviousBlock.bind(this);
+    this.onFocusNextBlock = this.onFocusNextBlock.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
@@ -191,25 +192,26 @@ class Form extends Component {
     this.setState({
       formData: {
         ...this.state.formData,
-        [id]: value || null,
+        // We need to catch also when the value equals false this fixes #888
+        [id]: value || (value !== undefined && isBoolean(value)) ? value : null,
       },
     });
   }
 
   /**
-   * Change tile handler
-   * @method onChangeTile
-   * @param {string} id Id of the tile
+   * Change block handler
+   * @method onChangeBlock
+   * @param {string} id Id of the block
    * @param {*} value Value of the field
    * @returns {undefined}
    */
-  onChangeTile(id, value) {
-    const tilesFieldname = getTilesFieldname(this.state.formData);
+  onChangeBlock(id, value) {
+    const blocksFieldname = getBlocksFieldname(this.state.formData);
     this.setState({
       formData: {
         ...this.state.formData,
-        [tilesFieldname]: {
-          ...this.state.formData[tilesFieldname],
+        [blocksFieldname]: {
+          ...this.state.formData[blocksFieldname],
           [id]: value || null,
         },
       },
@@ -217,34 +219,34 @@ class Form extends Component {
   }
 
   /**
-   * Change tile handler
-   * @method onMutateTile
-   * @param {string} id Id of the tile
+   * Change block handler
+   * @method onMutateBlock
+   * @param {string} id Id of the block
    * @param {*} value Value of the field
    * @returns {undefined}
    */
-  onMutateTile(id, value) {
-    const idTrailingTile = uuid();
-    const tilesFieldname = getTilesFieldname(this.state.formData);
-    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+  onMutateBlock(id, value) {
+    const idTrailingBlock = uuid();
+    const blocksFieldname = getBlocksFieldname(this.state.formData);
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
     const index =
-      this.state.formData[tilesLayoutFieldname].items.indexOf(id) + 1;
+      this.state.formData[blocksLayoutFieldname].items.indexOf(id) + 1;
 
     this.setState({
       formData: {
         ...this.state.formData,
-        [tilesFieldname]: {
-          ...this.state.formData[tilesFieldname],
+        [blocksFieldname]: {
+          ...this.state.formData[blocksFieldname],
           [id]: value || null,
-          [idTrailingTile]: {
+          [idTrailingBlock]: {
             '@type': 'text',
           },
         },
-        [tilesLayoutFieldname]: {
+        [blocksLayoutFieldname]: {
           items: [
-            ...this.state.formData[tilesLayoutFieldname].items.slice(0, index),
-            idTrailingTile,
-            ...this.state.formData[tilesLayoutFieldname].items.slice(index),
+            ...this.state.formData[blocksLayoutFieldname].items.slice(0, index),
+            idTrailingBlock,
+            ...this.state.formData[blocksLayoutFieldname].items.slice(index),
           ],
         },
       },
@@ -252,77 +254,80 @@ class Form extends Component {
   }
 
   /**
-   * Select tile handler
-   * @method onSelectTile
+   * Select block handler
+   * @method onSelectBlock
    * @param {string} id Id of the field
    * @returns {undefined}
    */
-  onSelectTile(id) {
+  onSelectBlock(id) {
     this.setState({
       selected: id,
     });
   }
 
   /**
-   * Delete tile handler
-   * @method onDeleteTile
+   * Delete block handler
+   * @method onDeleteBlock
    * @param {string} id Id of the field
    * @param {bool} selectPrev True if previous should be selected
    * @returns {undefined}
    */
-  onDeleteTile(id, selectPrev) {
-    const tilesFieldname = getTilesFieldname(this.state.formData);
-    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+  onDeleteBlock(id, selectPrev) {
+    const blocksFieldname = getBlocksFieldname(this.state.formData);
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
 
     this.setState({
       formData: {
         ...this.state.formData,
-        [tilesLayoutFieldname]: {
-          items: without(this.state.formData[tilesLayoutFieldname].items, id),
+        [blocksLayoutFieldname]: {
+          items: without(this.state.formData[blocksLayoutFieldname].items, id),
         },
-        [tilesFieldname]: omit(this.state.formData[tilesFieldname], [id]),
+        [blocksFieldname]: omit(this.state.formData[blocksFieldname], [id]),
       },
       selected: selectPrev
-        ? this.state.formData[tilesLayoutFieldname].items[
-            this.state.formData[tilesLayoutFieldname].items.indexOf(id) - 1
+        ? this.state.formData[blocksLayoutFieldname].items[
+            this.state.formData[blocksLayoutFieldname].items.indexOf(id) - 1
           ]
         : null,
     });
   }
 
   /**
-   * Add tile handler
-   * @method onAddTile
-   * @param {string} type Type of the tile
-   * @param {Number} index Index where to add the tile
-   * @returns {string} Id of the tile
+   * Add block handler
+   * @method onAddBlock
+   * @param {string} type Type of the block
+   * @param {Number} index Index where to add the block
+   * @returns {string} Id of the block
    */
-  onAddTile(type, index) {
+  onAddBlock(type, index) {
     const id = uuid();
-    const idTrailingTile = uuid();
-    const tilesFieldname = getTilesFieldname(this.state.formData);
-    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
-    const totalItems = this.state.formData[tilesLayoutFieldname].items.length;
+    const idTrailingBlock = uuid();
+    const blocksFieldname = getBlocksFieldname(this.state.formData);
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
+    const totalItems = this.state.formData[blocksLayoutFieldname].items.length;
     const insert = index === -1 ? totalItems : index;
 
     this.setState({
       formData: {
         ...this.state.formData,
-        [tilesLayoutFieldname]: {
+        [blocksLayoutFieldname]: {
           items: [
-            ...this.state.formData[tilesLayoutFieldname].items.slice(0, insert),
+            ...this.state.formData[blocksLayoutFieldname].items.slice(
+              0,
+              insert,
+            ),
             id,
-            ...(type !== 'text' ? [idTrailingTile] : []),
-            ...this.state.formData[tilesLayoutFieldname].items.slice(insert),
+            ...(type !== 'text' ? [idTrailingBlock] : []),
+            ...this.state.formData[blocksLayoutFieldname].items.slice(insert),
           ],
         },
-        [tilesFieldname]: {
-          ...this.state.formData[tilesFieldname],
+        [blocksFieldname]: {
+          ...this.state.formData[blocksFieldname],
           [id]: {
             '@type': type,
           },
           ...(type !== 'text' && {
-            [idTrailingTile]: {
+            [idTrailingBlock]: {
               '@type': 'text',
             },
           }),
@@ -348,7 +353,10 @@ class Form extends Component {
     map(this.props.schema.fieldsets, fieldset =>
       map(fieldset.fields, fieldId => {
         const field = this.props.schema.properties[fieldId];
-        const data = this.state.formData[fieldId];
+        var data = this.state.formData[fieldId];
+        if (typeof data === 'string' || data instanceof String) {
+          data = data.trim();
+        }
         if (this.props.schema.required.indexOf(fieldId) !== -1) {
           if (field.type !== 'boolean' && !data) {
             errors[fieldId] = errors[field] || [];
@@ -388,21 +396,21 @@ class Form extends Component {
   }
 
   /**
-   * Move tile handler
-   * @method onMoveTile
+   * Move block handler
+   * @method onMoveBlock
    * @param {number} dragIndex Drag index.
    * @param {number} hoverIndex Hover index.
    * @returns {undefined}
    */
-  onMoveTile(dragIndex, hoverIndex) {
-    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+  onMoveBlock(dragIndex, hoverIndex) {
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
 
     this.setState({
       formData: {
         ...this.state.formData,
-        [tilesLayoutFieldname]: {
+        [blocksLayoutFieldname]: {
           items: move(
-            this.state.formData[tilesLayoutFieldname].items,
+            this.state.formData[blocksLayoutFieldname].items,
             dragIndex,
             hoverIndex,
           ),
@@ -413,55 +421,55 @@ class Form extends Component {
 
   /**
    *
-   * @method onFocusPreviousTile
-   * @param {string} currentTile The id of the current tile
-   * @param {node} tileNode The id of the current tile
+   * @method onFocusPreviousBlock
+   * @param {string} currentBlock The id of the current block
+   * @param {node} blockNode The id of the current block
    * @returns {undefined}
    */
-  onFocusPreviousTile(currentTile, tileNode) {
-    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+  onFocusPreviousBlock(currentBlock, blockNode) {
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
     const currentIndex = this.state.formData[
-      tilesLayoutFieldname
-    ].items.indexOf(currentTile);
+      blocksLayoutFieldname
+    ].items.indexOf(currentBlock);
 
     if (currentIndex === 0) {
-      // We are already at the top tile don't do anything
+      // We are already at the top block don't do anything
       return;
     }
     const newindex = currentIndex - 1;
-    tileNode.blur();
+    blockNode.blur();
 
-    this.onSelectTile(
-      this.state.formData[tilesLayoutFieldname].items[newindex],
+    this.onSelectBlock(
+      this.state.formData[blocksLayoutFieldname].items[newindex],
     );
   }
 
   /**
    *
-   * @method onFocusNextTile
-   * @param {string} currentTile The id of the current tile
-   * @param {node} tileNode The id of the current tile
+   * @method onFocusNextBlock
+   * @param {string} currentBlock The id of the current block
+   * @param {node} blockNode The id of the current block
    * @returns {undefined}
    */
-  onFocusNextTile(currentTile, tileNode) {
-    const tilesLayoutFieldname = getTilesLayoutFieldname(this.state.formData);
+  onFocusNextBlock(currentBlock, blockNode) {
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
     const currentIndex = this.state.formData[
-      tilesLayoutFieldname
-    ].items.indexOf(currentTile);
+      blocksLayoutFieldname
+    ].items.indexOf(currentBlock);
 
     if (
       currentIndex ===
-      this.state.formData[tilesLayoutFieldname].items.length - 1
+      this.state.formData[blocksLayoutFieldname].items.length - 1
     ) {
-      // We are already at the bottom tile don't do anything
+      // We are already at the bottom block don't do anything
       return;
     }
 
     const newindex = currentIndex + 1;
-    tileNode.blur();
+    blockNode.blur();
 
-    this.onSelectTile(
-      this.state.formData[tilesLayoutFieldname].items[newindex],
+    this.onSelectBlock(
+      this.state.formData[blocksLayoutFieldname].items[newindex],
     );
   }
 
@@ -470,15 +478,15 @@ class Form extends Component {
    * parameter
    * @method handleKeyDown
    * @param {object} e Event
-   * @param {number} index Tile index
-   * @param {string} tile Tile type
-   * @param {node} node The tile node
+   * @param {number} index Block index
+   * @param {string} block Block type
+   * @param {node} node The block node
    * @returns {undefined}
    */
   handleKeyDown(
     e,
     index,
-    tile,
+    block,
     node,
     {
       disableEnter = false,
@@ -487,15 +495,15 @@ class Form extends Component {
     } = {},
   ) {
     if (e.key === 'ArrowUp' && !disableArrowUp) {
-      this.onFocusPreviousTile(tile, node);
+      this.onFocusPreviousBlock(block, node);
       e.preventDefault();
     }
     if (e.key === 'ArrowDown' && !disableArrowDown) {
-      this.onFocusNextTile(tile, node);
+      this.onFocusNextBlock(block, node);
       e.preventDefault();
     }
     if (e.key === 'Enter' && !disableEnter) {
-      this.onAddTile('text', index + 1);
+      this.onAddBlock('text', index + 1);
       e.preventDefault();
     }
   }
@@ -508,33 +516,33 @@ class Form extends Component {
   render() {
     const { schema, onCancel, onSubmit } = this.props;
     const { formData } = this.state;
-    const tilesFieldname = getTilesFieldname(formData);
-    const tilesLayoutFieldname = getTilesLayoutFieldname(formData);
-    const renderTiles = formData[tilesLayoutFieldname].items;
-    const tilesDict = formData[tilesFieldname];
+    const blocksFieldname = getBlocksFieldname(formData);
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+    const renderBlocks = formData[blocksLayoutFieldname].items;
+    const blocksDict = formData[blocksFieldname];
     return this.props.visual ? (
-      <div className="ui wrapper">
-        {map(renderTiles, (tile, index) => (
-          <EditTile
-            id={tile}
+      <div className="ui container">
+        {map(renderBlocks, (block, index) => (
+          <EditBlock
+            id={block}
             index={index}
-            type={tilesDict[tile]['@type']}
-            key={tile}
+            type={blocksDict[block]['@type']}
+            key={block}
             handleKeyDown={this.handleKeyDown}
-            onAddTile={this.onAddTile}
-            onChangeTile={this.onChangeTile}
-            onMutateTile={this.onMutateTile}
+            onAddBlock={this.onAddBlock}
+            onChangeBlock={this.onChangeBlock}
+            onMutateBlock={this.onMutateBlock}
             onChangeField={this.onChangeField}
-            onDeleteTile={this.onDeleteTile}
-            onSelectTile={this.onSelectTile}
-            onMoveTile={this.onMoveTile}
-            onFocusPreviousTile={this.onFocusPreviousTile}
-            onFocusNextTile={this.onFocusNextTile}
+            onDeleteBlock={this.onDeleteBlock}
+            onSelectBlock={this.onSelectBlock}
+            onMoveBlock={this.onMoveBlock}
+            onFocusPreviousBlock={this.onFocusPreviousBlock}
+            onFocusNextBlock={this.onFocusNextBlock}
             properties={formData}
-            data={tilesDict[tile]}
+            data={blocksDict[block]}
             pathname={this.props.pathname}
-            tile={tile}
-            selected={this.state.selected === tile}
+            block={block}
+            selected={this.state.selected === block}
           />
         ))}
         <Portal
@@ -545,25 +553,26 @@ class Form extends Component {
             onSubmit={this.onSubmit}
             error={keys(this.state.errors).length > 0}
           >
-            {map(schema.fieldsets, item => [
-              <Segment secondary attached key={item.title}>
-                {item.title}
-              </Segment>,
-              <Segment attached key={`fieldset-contents-${item.title}`}>
-                {map(item.fields, (field, index) => (
-                  <Field
-                    {...schema.properties[field]}
-                    id={field}
-                    focus={index === 0}
-                    value={this.state.formData[field]}
-                    required={schema.required.indexOf(field) !== -1}
-                    onChange={this.onChangeField}
-                    key={field}
-                    error={this.state.errors[field]}
-                  />
-                ))}
-              </Segment>,
-            ])}
+            {schema &&
+              map(schema.fieldsets, item => [
+                <Segment secondary attached key={item.title}>
+                  {item.title}
+                </Segment>,
+                <Segment attached key={`fieldset-contents-${item.title}`}>
+                  {map(item.fields, (field, index) => (
+                    <Field
+                      {...schema.properties[field]}
+                      id={field}
+                      focus={false}
+                      value={this.state.formData[field]}
+                      required={schema.required.indexOf(field) !== -1}
+                      onChange={this.onChangeField}
+                      key={field}
+                      error={this.state.errors[field]}
+                    />
+                  ))}
+                </Segment>,
+              ])}
           </UiForm>
         </Portal>
       </div>
@@ -575,7 +584,7 @@ class Form extends Component {
           error={keys(this.state.errors).length > 0}
         >
           <Segment.Group raised>
-            {schema.fieldsets.length > 1 && (
+            {schema && schema.fieldsets.length > 1 && (
               <Tab
                 menu={{
                   secondary: true,
@@ -609,7 +618,7 @@ class Form extends Component {
                 }))}
               />
             )}
-            {schema.fieldsets.length === 1 && (
+            {schema && schema.fieldsets.length === 1 && (
               <Segment>
                 {this.props.title && (
                   <Segment className="primary">{this.props.title}</Segment>
@@ -694,4 +703,4 @@ class Form extends Component {
   }
 }
 
-export default injectIntl(Form, { withRef: true });
+export default injectIntl(Form, { forwardRef: true });

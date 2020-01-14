@@ -4,7 +4,7 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose, bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
@@ -17,15 +17,11 @@ import {
   Table,
   Container,
   Divider,
+  Button,
 } from 'semantic-ui-react';
 import { find, map, isEqual } from 'lodash';
 import { toast } from 'react-toastify';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import {
   createUser,
@@ -43,7 +39,7 @@ import {
   ModalForm,
   Toolbar,
   UsersControlpanelUser,
-  Icon as AddIcon,
+  Icon,
   UsersControlpanelGroups,
   Toast,
 } from '../../../components';
@@ -81,13 +77,17 @@ const messages = defineMessages({
     id: 'Delete Group',
     defaultMessage: 'Delete Group',
   },
+  add: {
+    id: 'Add',
+    defaultMessage: 'Add',
+  },
   addUserButtonTitle: {
-    id: 'ADD NEW USER',
-    defaultMessage: 'ADD NEW USER',
+    id: 'Add new user',
+    defaultMessage: 'Add new user',
   },
   addGroupsButtonTitle: {
-    id: 'ADD NEW GROUP',
-    defaultMessage: 'ADD NEW GROUP',
+    id: 'Add new group',
+    defaultMessage: 'Add new group',
   },
   addUserFormTitle: {
     id: 'Add User',
@@ -149,37 +149,12 @@ const messages = defineMessages({
     id: 'Group created',
     defaultMessage: 'Group created',
   },
+  usersAndGroups: {
+    id: 'Users and Groups',
+    defaultMessage: 'Users and Groups',
+  },
 });
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    roles: state.roles.roles,
-    users: state.users.users,
-    groups: state.groups.groups,
-    description: state.description,
-    pathname: props.location.pathname,
-    deleteRequest: state.users.delete,
-    createRequest: state.users.create,
-    deleteGroupRequest: state.groups.delete,
-    createGroupRequest: state.groups.create,
-  }),
-  dispatch =>
-    bindActionCreators(
-      {
-        listRoles,
-        listUsers,
-        deleteUser,
-        createUser,
-        listGroups,
-        deleteGroup,
-        createGroup,
-        updateUser,
-        updateGroup,
-      },
-      dispatch,
-    ),
-)
 /**
  * UsersControlpanel class.
  * @class UsersControlpanel
@@ -219,7 +194,6 @@ class UsersControlpanel extends Component {
         groupname: PropTypes.string,
       }),
     ).isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -274,7 +248,7 @@ class UsersControlpanel extends Component {
     this.props.listGroups();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) ||
       (this.props.createRequest.loading && nextProps.createRequest.loaded)
@@ -621,8 +595,10 @@ class UsersControlpanel extends Component {
       ? this.state.groupToDelete.id
       : '';
     return (
-      <Container>
-        <Helmet title="Users and Groups" />
+      <Container className="users-control-panel">
+        <Helmet
+          title={this.props.intl.formatMessage(messages.usersAndGroups)}
+        />
         <div className="container">
           <Confirm
             open={this.state.showDelete}
@@ -720,9 +696,7 @@ class UsersControlpanel extends Component {
                     messages.addUserFormRolesTitle,
                   ),
                   type: 'array',
-                  items: {
-                    choices: this.props.roles.map(role => [role.id, role.id]),
-                  },
+                  choices: this.props.roles.map(role => [role.id, role.id]),
                   description: '',
                 },
                 groups: {
@@ -730,12 +704,7 @@ class UsersControlpanel extends Component {
                     messages.addUserGroupNameTitle,
                   ),
                   type: 'array',
-                  items: {
-                    choices: this.props.groups.map(group => [
-                      group.id,
-                      group.id,
-                    ]),
-                  },
+                  choices: this.props.groups.map(group => [group.id, group.id]),
                   description: '',
                 },
               },
@@ -796,9 +765,7 @@ class UsersControlpanel extends Component {
                     messages.addGroupsFormRolesTitle,
                   ),
                   type: 'array',
-                  items: {
-                    choices: this.props.roles.map(role => [role.id, role.id]),
-                  },
+                  choices: this.props.roles.map(role => [role.id, role.id]),
                   description: '',
                 },
               },
@@ -867,16 +834,21 @@ class UsersControlpanel extends Component {
           </Form>
           <Segment clearing className="actions">
             {this.props.intl.formatMessage(messages.addUserButtonTitle)}
-            <AddIcon
-              name={addSvg}
-              size="30px"
-              color="#007eb1"
-              title="Add"
+            <Button
+              basic
+              primary
+              floated="right"
               onClick={() => {
                 this.setState({ showAddUser: true });
               }}
-              className="icon-adduser"
-            />
+            >
+              <Icon
+                name={addSvg}
+                size="30px"
+                color="#007eb1"
+                title={this.props.intl.formatMessage(messages.add)}
+              />
+            </Button>
           </Segment>
           <Divider />
           <Segment>
@@ -934,16 +906,21 @@ class UsersControlpanel extends Component {
           </Form>
           <Segment clearing className="actions">
             {this.props.intl.formatMessage(messages.addGroupsButtonTitle)}
-            <AddIcon
-              name={addSvg}
-              size="30px"
-              color="#007eb1"
-              title="Add"
+            <Button
+              basic
+              primary
+              floated="right"
               onClick={() => {
                 this.setState({ showAddGroup: true });
               }}
-              className="icon-adduser"
-            />
+            >
+              <Icon
+                name={addSvg}
+                size="30px"
+                color="#007eb1"
+                title={this.props.intl.formatMessage(messages.add)}
+              />
+            </Button>
           </Segment>
         </Segment.Group>
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
@@ -953,7 +930,7 @@ class UsersControlpanel extends Component {
             inner={
               <>
                 <Link to="/controlpanel" className="item">
-                  <AddIcon
+                  <Icon
                     name={backSVG}
                     className="contents circled"
                     size="30px"
@@ -966,7 +943,7 @@ class UsersControlpanel extends Component {
                   aria-label={this.props.intl.formatMessage(messages.save)}
                   onClick={this.onSubmit}
                 >
-                  <AddIcon
+                  <Icon
                     name={saveSVG}
                     className="circled"
                     size="30px"
@@ -974,7 +951,7 @@ class UsersControlpanel extends Component {
                   />
                 </button>
                 <button className="cancel" onClick={this.onCancel}>
-                  <AddIcon
+                  <Icon
                     name={clearSVG}
                     className="circled"
                     aria-label={this.props.intl.formatMessage(messages.cancel)}
@@ -997,10 +974,28 @@ export default compose(
     (state, props) => ({
       roles: state.roles.roles,
       users: state.users.users,
-      entries: state.users.users,
-      groupEntries: state.groups.groups,
+      groups: state.groups.groups,
+      description: state.description,
       pathname: props.location.pathname,
+      deleteRequest: state.users.delete,
+      createRequest: state.users.create,
+      deleteGroupRequest: state.groups.delete,
+      createGroupRequest: state.groups.create,
     }),
-    { listRoles, listUsers },
+    dispatch =>
+      bindActionCreators(
+        {
+          listRoles,
+          listUsers,
+          deleteUser,
+          createUser,
+          listGroups,
+          deleteGroup,
+          createGroup,
+          updateUser,
+          updateGroup,
+        },
+        dispatch,
+      ),
   ),
 )(UsersControlpanel);

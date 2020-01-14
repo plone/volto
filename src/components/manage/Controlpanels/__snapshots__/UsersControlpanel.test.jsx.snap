@@ -2,7 +2,7 @@
 
 exports[`UsersControlpanel renders a user control component 1`] = `
 <div
-  className="ui container"
+  className="ui container users-control-panel"
 >
   <div
     className="container"
@@ -13,16 +13,12 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui segment primary"
     >
-      <span>
-        Users and groups settings
-      </span>
+      Users and groups settings
     </div>
     <div
       className="ui segment"
     >
-      <span>
-        Users
-      </span>
+      Users
     </div>
     <div
       className="ui segment"
@@ -50,6 +46,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               <i
                 aria-hidden="true"
                 className="search icon"
+                onClick={[Function]}
               />
             </button>
           </div>
@@ -75,16 +72,12 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               <th
                 className=""
               >
-                <span>
-                  User name
-                </span>
+                User name
               </th>
               <th
                 className=""
               >
-                <span>
-                  Actions
-                </span>
+                Actions
               </th>
             </tr>
           </thead>
@@ -97,25 +90,30 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui clearing segment actions"
     >
-      ADD NEW USER
-      <svg
-        className="icon icon-adduser"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<title>Add</title>undefined",
-          }
-        }
+      Add new user
+      <button
+        className="ui basic primary right floated button"
         onClick={[Function]}
-        style={
-          Object {
-            "fill": "#007eb1",
-            "height": "30px",
-            "width": "auto",
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<title>Add</title>undefined",
+            }
           }
-        }
-        viewBox=""
-        xmlns=""
-      />
+          onClick={null}
+          style={
+            Object {
+              "fill": "#007eb1",
+              "height": "30px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </button>
     </div>
     <div
       className="ui divider"
@@ -123,9 +121,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui segment"
     >
-      <span>
-        Groups
-      </span>
+      Groups
     </div>
     <div
       className="ui segment"
@@ -153,6 +149,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               <i
                 aria-hidden="true"
                 className="search icon"
+                onClick={[Function]}
               />
             </button>
           </div>
@@ -178,16 +175,12 @@ exports[`UsersControlpanel renders a user control component 1`] = `
               <th
                 className=""
               >
-                <span>
-                  Groupname
-                </span>
+                Groupname
               </th>
               <th
                 className=""
               >
-                <span>
-                  Actions
-                </span>
+                Actions
               </th>
             </tr>
           </thead>
@@ -200,25 +193,30 @@ exports[`UsersControlpanel renders a user control component 1`] = `
     <div
       className="ui clearing segment actions"
     >
-      ADD NEW GROUP
-      <svg
-        className="icon icon-adduser"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<title>Add</title>undefined",
-          }
-        }
+      Add new group
+      <button
+        className="ui basic primary right floated button"
         onClick={[Function]}
-        style={
-          Object {
-            "fill": "#007eb1",
-            "height": "30px",
-            "width": "auto",
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<title>Add</title>undefined",
+            }
           }
-        }
-        viewBox=""
-        xmlns=""
-      />
+          onClick={null}
+          style={
+            Object {
+              "fill": "#007eb1",
+              "height": "30px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </button>
     </div>
   </div>
   <div

@@ -8,10 +8,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Container } from 'semantic-ui-react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
 import { Form, Icon, Toolbar, Toast } from '../../../components';
@@ -59,7 +59,6 @@ class Controlpanel extends Component {
       schema: PropTypes.object,
       title: PropTypes.string,
     }),
-    intl: intlShape.isRequired,
     pathname: PropTypes.string.isRequired,
   };
 
@@ -89,7 +88,7 @@ class Controlpanel extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getControlpanel(this.props.id);
   }
 
@@ -99,7 +98,7 @@ class Controlpanel extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       toast.info(
         <Toast

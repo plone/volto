@@ -46,9 +46,7 @@ exports[`TabularView renders a summary view component 1`] = `
             href="/item"
             onClick={[Function]}
           >
-            <span>
-              Read More…
-            </span>
+            Read More…
           </a>
         </p>
       </article>

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import qs from 'query-string';
 import { views } from '~/config';
 
@@ -86,7 +86,6 @@ class View extends Component {
        */
       status: PropTypes.number,
     }),
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -110,7 +109,7 @@ class View extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.listActions(getBaseUrl(this.props.pathname));
     this.props.getContent(
       getBaseUrl(this.props.pathname),
@@ -124,7 +123,7 @@ class View extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.listActions(getBaseUrl(nextProps.pathname));
       this.props.getContent(
@@ -176,7 +175,9 @@ class View extends Component {
   cleanViewName = dirtyDisplayName =>
     dirtyDisplayName
       .replace('Connect(', '')
+      .replace('injectIntl(', '')
       .replace(')', '')
+      .replace('connect(', '')
       .toLowerCase();
 
   /**
@@ -212,6 +213,7 @@ class View extends Component {
 
     return (
       <div id="view">
+        {/* Body class if displayName in component is set */}
         <BodyClass
           className={
             RenderedView.displayName

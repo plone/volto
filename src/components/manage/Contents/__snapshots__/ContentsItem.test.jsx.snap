@@ -36,6 +36,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
       <i
         aria-hidden="true"
         className="file text outline icon"
+        onClick={[Function]}
       />
        
       Blog
@@ -61,6 +62,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
       tabIndex={0}
     >
       <div
+        aria-atomic={true}
         aria-live="polite"
         className="text"
         role="alert"
@@ -81,11 +83,10 @@ exports[`ContentsItem renders a contents item component 1`] = `
           <i
             aria-hidden="true"
             className="write icon"
+            onClick={[Function]}
           />
            
-          <span>
-            Edit
-          </span>
+          Edit
         </a>
         <a
           className="item"
@@ -95,11 +96,10 @@ exports[`ContentsItem renders a contents item component 1`] = `
           <i
             aria-hidden="true"
             className="eye icon"
+            onClick={[Function]}
           />
            
-          <span>
-            View
-          </span>
+          View
         </a>
         <div
           className="divider"
@@ -112,11 +112,10 @@ exports[`ContentsItem renders a contents item component 1`] = `
           <i
             aria-hidden="true"
             className="cut icon"
+            onClick={[Function]}
           />
            
-          <span>
-            Cut
-          </span>
+          Cut
         </div>
         <div
           className="item"
@@ -126,11 +125,10 @@ exports[`ContentsItem renders a contents item component 1`] = `
           <i
             aria-hidden="true"
             className="copy icon"
+            onClick={[Function]}
           />
            
-          <span>
-            Copy
-          </span>
+          Copy
         </div>
         <div
           className="item"
@@ -140,11 +138,10 @@ exports[`ContentsItem renders a contents item component 1`] = `
           <i
             aria-hidden="true"
             className="trash icon"
+            onClick={[Function]}
           />
            
-          <span>
-            Delete
-          </span>
+          Delete
         </div>
         <div
           className="divider"
@@ -157,11 +154,10 @@ exports[`ContentsItem renders a contents item component 1`] = `
           <i
             aria-hidden="true"
             className="arrow up icon"
+            onClick={[Function]}
           />
            
-          <span>
-            Move to top of folder
-          </span>
+          Move to top of folder
         </div>
         <div
           className="item"
@@ -171,11 +167,10 @@ exports[`ContentsItem renders a contents item component 1`] = `
           <i
             aria-hidden="true"
             className="arrow down icon"
+            onClick={[Function]}
           />
            
-          <span>
-            Move to bottom of folder
-          </span>
+          Move to bottom of folder
         </div>
       </div>
     </div>

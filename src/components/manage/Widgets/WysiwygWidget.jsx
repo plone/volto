@@ -13,7 +13,7 @@ import redraft from 'redraft';
 import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
 import { settings } from '~/config';
 
@@ -41,6 +41,10 @@ const messages = defineMessages({
   required: {
     id: 'Required',
     defaultMessage: 'Required',
+  },
+  delete: {
+    id: 'Delete',
+    defaultMessage: 'Delete',
   },
 });
 
@@ -108,7 +112,6 @@ class WysiwygWidget extends Component {
     /**
      * Internationalization
      */
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -282,14 +285,14 @@ class WysiwygWidget extends Component {
               {onEdit && (
                 <div className="toolbar">
                   <button
-                    className="item"
+                    className="item ui noborder button"
                     onClick={() => onEdit(id, this.schema)}
                   >
                     <Icon name="write square" size="large" color="blue" />
                   </button>
                   <button
-                    aria-label="Delete"
-                    className="item"
+                    aria-label={this.props.intl.formatMessage(messages.delete)}
+                    className="item ui noborder button"
                     onClick={() => onDelete(id)}
                   >
                     <Icon name="close" size="large" color="red" />
@@ -323,7 +326,7 @@ class WysiwygWidget extends Component {
           {description && (
             <Grid.Row stretched>
               <Grid.Column stretched width="12">
-                <span className="help">{description}</span>
+                <p className="help">{description}</p>
               </Grid.Column>
             </Grid.Row>
           )}

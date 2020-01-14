@@ -15,6 +15,7 @@ build
 .DS_Store
 .idea
 lighthouse-report.html
+.vscode/
 .#*
 *~
 
@@ -36,6 +37,7 @@ api/pip-selfcheck.json
 /bin
 /lib
 include
+share
 .Python
 
 # Tests
@@ -55,3 +57,4 @@ cypress/screenshots
 
 # Local environment setup
 .env
+.vscode

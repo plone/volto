@@ -3,12 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import {
-  defineMessages,
-  FormattedMessage,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Segment } from 'semantic-ui-react';
 import { join } from 'lodash';
 import { searchContent } from '@plone/volto/actions';
@@ -31,14 +26,6 @@ const messages = defineMessages({
     id: 'Search content',
     defaultMessage: 'Search content',
   },
-  ChooseImage: {
-    id: 'Choose Image',
-    defaultMessage: 'Choose Image',
-  },
-  ChooseTargetLink: {
-    id: 'Choose Target',
-    defaultMessage: 'Choose Target',
-  },
 });
 
 function getParentURL(url) {
@@ -60,14 +47,15 @@ class ObjectBrowserBody extends Component {
    * @static
    */
   static propTypes = {
-    tile: PropTypes.string.isRequired,
+    block: PropTypes.string.isRequired,
     mode: PropTypes.string.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
     searchSubrequests: PropTypes.objectOf(PropTypes.any).isRequired,
     searchContent: PropTypes.func.isRequired,
     closeObjectBrowser: PropTypes.func.isRequired,
-    onChangeTile: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
+    onChangeBlock: PropTypes.func.isRequired,
+    onSelectItem: PropTypes.func,
+    dataName: PropTypes.string,
   };
 
   /**
@@ -78,6 +66,8 @@ class ObjectBrowserBody extends Component {
   static defaultProps = {
     image: '',
     href: '',
+    onSelectItem: null,
+    dataName: null,
   };
 
   /**
@@ -139,7 +129,7 @@ class ObjectBrowserBody extends Component {
           sort_on: 'getObjPositionInParent',
           metadata_fields: '_all',
         },
-        `${this.props.tile}-${mode}`,
+        `${this.props.block}-${mode}`,
       );
     } else {
       this.props.searchContent(
@@ -149,14 +139,9 @@ class ObjectBrowserBody extends Component {
           sort_on: 'getObjPositionInParent',
           metadata_fields: '_all',
         },
-        `${this.props.tile}-${mode}`,
+        `${this.props.block}-${mode}`,
       );
     }
-  };
-
-  onChangeField = (name, value) => {
-    this.setState({ [name]: value });
-    this.onChangeTileData(name, value);
   };
 
   getIcon = icon => {
@@ -193,7 +178,7 @@ class ObjectBrowserBody extends Component {
         sort_on: 'getObjPositionInParent',
         metadata_fields: '_all',
       },
-      `${this.props.tile}-${this.props.mode}`,
+      `${this.props.block}-${this.props.mode}`,
     );
     const parent = `${join(id.split('/').slice(0, -1), '/')}` || '/';
     this.setState(() => ({
@@ -216,7 +201,7 @@ class ObjectBrowserBody extends Component {
             SearchableText: `${text}*`,
             metadata_fields: '_all',
           },
-          `${this.props.tile}-${this.props.mode}`,
+          `${this.props.block}-${this.props.mode}`,
         )
       : this.props.searchContent(
           '/',
@@ -225,34 +210,56 @@ class ObjectBrowserBody extends Component {
             sort_on: 'getObjPositionInParent',
             metadata_fields: '_all',
           },
-          `${this.props.tile}-${this.props.mode}`,
+          `${this.props.block}-${this.props.mode}`,
         );
   };
 
-  onSelectItem = url => {
-    if (this.props.mode === 'image') {
-      this.props.onChangeTile(this.props.tile, {
-        ...this.props.data,
+  onSelectItem = (url, title) => {
+    const { block, data, mode, dataName, onChangeBlock } = this.props;
+
+    const updateState = mode => {
+      switch (mode) {
+        case 'image':
+          this.setState({
+            selectedImage: url,
+            currentImageFolder: getParentURL(url),
+          });
+          break;
+        case 'link':
+          this.setState({
+            selectedHref: url,
+            currentLinkFolder: getParentURL(url),
+          });
+          break;
+        default:
+          break;
+      }
+    };
+
+    if (dataName) {
+      onChangeBlock(block, {
+        ...data,
+        [dataName]: url,
+      });
+    } else if (this.props.onSelectItem) {
+      this.props.onSelectItem(url);
+    } else if (mode === 'image') {
+      onChangeBlock(block, {
+        ...data,
         url: `${settings.apiPath}${url}`,
+        alt: title,
       });
-      this.setState({
-        selectedImage: url,
-        currentImageFolder: getParentURL(url),
-      });
-    } else {
-      this.props.onChangeTile(this.props.tile, {
-        ...this.props.data,
+    } else if (mode === 'link') {
+      onChangeBlock(block, {
+        ...data,
         href: url,
       });
-      this.setState({
-        selectedHref: url,
-        currentLinkFolder: getParentURL(url),
-      });
     }
+    updateState(mode);
   };
 
-  onChangeTileData = (key, value) => {
-    this.props.onChangeTile(this.props.tile, {
+  onChangeBlockData = (key, value) => {
+    this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       [key]: value,
     });
@@ -264,10 +271,10 @@ class ObjectBrowserBody extends Component {
         this.navigateTo(item['@id']);
       }
       if (settings.imageObjects.includes(item['@type'])) {
-        this.onSelectItem(item['@id']);
+        this.onSelectItem(item['@id'], item.title);
       }
     } else {
-      this.onSelectItem(item['@id']);
+      this.onSelectItem(item['@id'], item.title);
     }
   };
 
@@ -277,11 +284,11 @@ class ObjectBrowserBody extends Component {
         this.navigateTo(item['@id']);
       }
       if (settings.imageObjects.includes(item['@type'])) {
-        this.onSelectItem(item['@id']);
+        this.onSelectItem(item['@id'], item.title);
         this.props.closeObjectBrowser();
       }
     } else {
-      this.onSelectItem(item['@id']);
+      this.onSelectItem(item['@id'], item.title);
       this.props.closeObjectBrowser();
     }
   };
@@ -333,14 +340,14 @@ class ObjectBrowserBody extends Component {
             ) : this.props.mode === 'image' ? (
               <h2>
                 <FormattedMessage
-                  id="ChooseImage"
+                  id="Choose Image"
                   defaultMessage="Choose Image"
                 />
               </h2>
             ) : (
               <h2>
                 <FormattedMessage
-                  id="ChooseTargetLink"
+                  id="Choose Target"
                   defaultMessage="Choose Target"
                 />
               </h2>
@@ -358,7 +365,7 @@ class ObjectBrowserBody extends Component {
           <ObjectBrowserNav
             currentSearchResults={
               this.props.searchSubrequests[
-                `${this.props.tile}-${this.props.mode}`
+                `${this.props.block}-${this.props.mode}`
               ]
             }
             selected={

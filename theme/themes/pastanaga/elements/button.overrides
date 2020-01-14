@@ -42,11 +42,29 @@
 .ui.basic.secondary.button {
   box-shadow: none !important;
 
-  &:hover {
+  &:hover,
+  &:active {
+    background: transparent !important;
     box-shadow: none !important;
   }
 }
 
 .ui.basic.secondary.button {
   color: @brown !important;
+}
+
+.ui.noborder.button {
+  padding: 0 !important;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: initial;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.ui.noborder.button:not(.icon) > .icon:not(.button):not(.dropdown) {
+  margin: 0;
 }

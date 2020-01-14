@@ -8,16 +8,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Container, Button, Table } from 'semantic-ui-react';
 import moment from 'moment';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { deleteComment, searchContent } from '../../../actions';
 import { CommentEditModal, Icon, Toolbar } from '../../../components';
@@ -29,6 +24,10 @@ const messages = defineMessages({
   back: {
     id: 'Back',
     defaultMessage: 'Back',
+  },
+  ModerateComments: {
+    id: 'Moderate comments',
+    defaultMessage: 'Moderate comments',
   },
 });
 
@@ -63,7 +62,6 @@ class ModerateComments extends Component {
       loaded: PropTypes.bool,
     }).isRequired,
     pathname: PropTypes.string.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -90,7 +88,7 @@ class ModerateComments extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.searchContent('', {
       portal_type: 'Discussion Item',
       fullobjects: true,
@@ -103,7 +101,7 @@ class ModerateComments extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
       this.props.searchContent('', {
         portal_type: 'Discussion Item',
@@ -183,7 +181,9 @@ class ModerateComments extends Component {
           id={this.state.editId}
           text={this.state.editText}
         />
-        <Helmet title="Moderate comments" />
+        <Helmet
+          title={this.props.intl.formatMessage(messages.ModerateComments)}
+        />
         <Container>
           <article id="content">
             <header>

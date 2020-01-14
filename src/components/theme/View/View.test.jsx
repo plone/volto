@@ -20,8 +20,8 @@ jest.mock('./TabularView', () => {
   dummyComponent.displayName = 'dummyComponent';
   return dummyComponent;
 });
-jest.mock('./DocumentView', () => {
-  const dummyComponent = jest.fn(() => <div id="DocumentView" />);
+jest.mock('./DefaultView', () => {
+  const dummyComponent = jest.fn(() => <div id="DefaultView" />);
   dummyComponent.displayName = 'dummyComponent';
   return dummyComponent;
 });

@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Icon, Label, Checkbox } from 'semantic-ui-react';
 import { map } from 'lodash';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
 const messages = defineMessages({
   default: {
@@ -33,6 +33,14 @@ const messages = defineMessages({
   required: {
     id: 'Required',
     defaultMessage: 'Required',
+  },
+  edit: {
+    id: 'Edit',
+    defaultMessage: 'Edit',
+  },
+  delete: {
+    id: 'Delete',
+    defaultMessage: 'Delete',
   },
 });
 
@@ -100,15 +108,15 @@ const CheckboxWidget = ({
               {onEdit && (
                 <div className="toolbar">
                   <button
-                    aria-label="Edit"
-                    className="item"
+                    aria-label={this.props.intl.formatMessage(messages.edit)}
+                    className="item ui noborder button"
                     onClick={() => onEdit(id, schema)}
                   >
                     <Icon name="write square" size="large" color="blue" />
                   </button>
                   <button
-                    aria-label="Delete"
-                    className="item"
+                    aria-label={this.props.intl.formatMessage(messages.delete)}
+                    className="item ui noborder button"
                     onClick={() => onDelete(id)}
                   >
                     <Icon name="close" size="large" color="red" />
@@ -166,7 +174,6 @@ CheckboxWidget.propTypes = {
   onChange: PropTypes.func,
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
-  intl: intlShape.isRequired,
 };
 
 /**

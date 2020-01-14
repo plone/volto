@@ -8,14 +8,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { Container } from 'semantic-ui-react';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { Form } from '../../../components';
 import { resetPassword } from '../../../actions';
@@ -46,6 +41,10 @@ const messages = defineMessages({
     id: 'Your email is required for reset your password.',
     defaultMessage: 'Your email is required for reset your password.',
   },
+  passwordReset: {
+    id: 'Password reset',
+    defaultMessage: 'Password reset',
+  },
 });
 
 /**
@@ -64,7 +63,6 @@ class RequestPasswordReset extends Component {
     loaded: PropTypes.bool.isRequired,
     error: PropTypes.string,
     resetPassword: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -97,7 +95,7 @@ class RequestPasswordReset extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {}
+  UNSAFE_componentWillMount() {}
 
   /**
    * Component will receive props
@@ -105,7 +103,7 @@ class RequestPasswordReset extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.loading && nextProps.loaded) {
       this.setState({ isSuccessful: true });
     }
@@ -169,7 +167,7 @@ class RequestPasswordReset extends Component {
 
     return (
       <div id="page-password-reset">
-        <Helmet title="Password reset" />
+        <Helmet title={this.props.intl.formatMessage(messages.passwordReset)} />
         <Container>
           <Form
             title={this.props.intl.formatMessage(messages.title)}
