@@ -4,7 +4,7 @@
 
 ### Added
 
-### Changes
+- German translation for TOC @timo
 
 ## 4.0.0-alpha.24 (2020-01-14)
 
