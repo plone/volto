@@ -4,6 +4,8 @@
 
 ### Added
 
+- Added customStyleMap param to Editor of draftjs @giuliaghisini
+
 ### Changes
 
 ## 4.0.0-alpha.23 (2020-01-14)
