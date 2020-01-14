@@ -26,7 +26,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#page-document p').contains('My text');
     });
 
-    it('add video block with youtube video', () => {
+    it('Add Video Block with YouTube Video', () => {
       cy.get(`.block.title [data-contents]`)
         .clear()
         .type('My title');
@@ -46,7 +46,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.video');
     });
 
-    it('add video block with vimeo video', () => {
+    it('Add Video Block with Vimeo Video', () => {
       cy.get(`.block.title [data-contents]`)
         .clear()
         .type('My title');
@@ -66,7 +66,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.video');
     });
 
-    it('add video block with mp4 video', () => {
+    it('Add Video Block with MP4 Video', () => {
       cy.get(`.block.title [data-contents]`)
         .clear()
         .type('My title');
