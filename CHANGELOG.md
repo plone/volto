@@ -15,6 +15,7 @@
 
 ### Changes
 
+- Avoid console warnings in AddLinkForm.jsx @tiberiuichim
 - More cleaning the body classname from the current displayname view @sneridagh
 - Make it possible to paste links, lists, b and i Elements into text-blocks
   @jackahl
@@ -25,7 +26,7 @@
 ### Changes
 
 - Disable all styling when copying text from another source (e.g. MS Word) into a text block @jackahl
-- Avoid console warnings in QuerystringWidget @tiberich
+- Avoid console warnings in QuerystringWidget @tiberiuichim
 - Fix body classname based on the current content type @sneridagh
 
 ## 4.0.0-alpha.21 (2020-01-02)
