@@ -16,6 +16,7 @@ Array [
     >
       <a
         href="#a"
+        onClick={[Function]}
       >
         Heading 1
       </a>
@@ -27,6 +28,7 @@ Array [
     >
       <a
         href="#b"
+        onClick={[Function]}
       >
         Heading 2
       </a>

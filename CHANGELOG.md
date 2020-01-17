@@ -11,6 +11,7 @@
 ### Changes
 
 - Fix removing links in blocks @robgietema
+- Fix ToC anchor links in Firefox @robgietema
 
 ## 4.0.0-alpha.26 (2020-01-15)
 
