@@ -6,9 +6,6 @@ import LinkButton from './components/LinkButton';
 import linkStrategy, { matchesEntityType } from './linkStrategy';
 import linkStyles from './linkStyles.module.css';
 
-import { convertToRaw } from 'draft-js';
-import redraft from 'redraft';
-
 function removeEntity(editorState) {
   const contentState = editorState.getCurrentContent();
   const selectionState = editorState.getSelection();

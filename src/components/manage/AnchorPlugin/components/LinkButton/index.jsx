@@ -7,8 +7,6 @@ import Icon from '../../../../../components/theme/Icon/Icon';
 
 import linkSVG from '../../../../../icons/link.svg';
 import unlinkSVG from '../../../../../icons/unlink.svg';
-import { convertToRaw } from 'draft-js';
-import redraft from 'redraft';
 
 /**
  * Add link form class.
