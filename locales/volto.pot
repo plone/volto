@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-12-17T20:38:19.520Z\n"
+"POT-Creation-Date: 2020-01-14T19:48:00.968Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1374,6 +1374,11 @@ msgstr ""
 msgid "Table color inverted"
 msgstr ""
 
+#: components/manage/Blocks/ToC/View
+# defaultMessage: Table of Contents
+msgid "Table of Contents"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
 # defaultMessage: Tags
@@ -1744,6 +1749,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Title
 msgid "title"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Table of Contents
+msgid "toc"
 msgstr ""
 
 #: components/manage/Toolbar/PersonalTools

@@ -212,6 +212,7 @@ class Edit extends Component {
           ]}
           blockRenderMap={settings.extendedBlockRenderMap}
           blockStyleFn={settings.blockStyleFn}
+          customStyleMap={settings.customStyleMap}
           placeholder={this.props.intl.formatMessage(messages.text)}
           handleReturn={e => {
             if (isSoftNewlineEvent(e)) {
