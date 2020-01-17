@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 
-import reducers from '~/reducers';
+import reducers, { errors } from '~/reducers';
 
 import { api, crashReporter } from './middleware';
 
@@ -16,10 +16,12 @@ const configureStore = (initialState, history, apiHelper) => {
       api(apiHelper),
     ),
   );
+
   const store = createStore(
     combineReducers({
       router: connectRouter(history),
       ...reducers,
+      errors,
     }),
     initialState,
     middlewares,

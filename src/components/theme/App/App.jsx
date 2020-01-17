@@ -19,7 +19,13 @@ import cx from 'classnames';
 
 import Error from '../../../error';
 
-import { Breadcrumbs, Footer, Header, Icon } from '../../../components';
+import {
+  Breadcrumbs,
+  Footer,
+  Header,
+  Icon,
+  GenericErrorsToast,
+} from '../../../components';
 import { BodyClass, getBaseUrl, getView } from '../../../helpers';
 import {
   getBreadcrumbs,
@@ -154,6 +160,7 @@ class App extends Component {
             />
           }
         />
+        <GenericErrorsToast />
       </Fragment>
     );
   }
@@ -200,6 +207,7 @@ export default compose(
     (state, props) => ({
       pathname: props.location.pathname,
       content: state.content.data,
+      errors: state.errors,
     }),
     {},
   ),

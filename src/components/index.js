@@ -35,6 +35,7 @@ export Tags from '@plone/volto/components/theme/Tags/Tags';
 export Register from '@plone/volto/components/theme/Register/Register';
 export PasswordReset from '@plone/volto/components/theme/PasswordReset/PasswordReset';
 export RequestPasswordReset from '@plone/volto/components/theme/PasswordReset/RequestPasswordReset';
+export GenericErrorsToast from '@plone/volto/components/theme/GenericErrorsToast/GenericErrorsToast';
 
 export Actions from '@plone/volto/components/manage/Actions/Actions';
 export Add from '@plone/volto/components/manage/Add/Add';

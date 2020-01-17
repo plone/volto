@@ -67,4 +67,5 @@ const reducers = {
   workflow,
 };
 
+export errors from '@plone/volto/reducers/errors/errors';
 export default reducers;
