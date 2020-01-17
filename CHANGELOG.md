@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix ToC anchor links in Firefox @robgietema
+
 ## 4.0.0-alpha.27 (2020-01-17)
 
 ### Changes
