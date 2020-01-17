@@ -2,9 +2,9 @@
 
 ## 4.0.0 (unreleased)
 
-### Added
-
 ### Changes
+
+- Fix removing links in blocks @robgietema
 
 ## 4.0.0-alpha.26 (2020-01-15)
 
@@ -40,7 +40,6 @@
   @jackahl
 - added option to include mp4 files from a remote source in video Block @steffenri @jackahl
 - Make it possible to paste links, lists, b and i Elements into text-blocks @jackahl
-- Fix removing links in blocks @robgietema
 
 ## 4.0.0-alpha.22 (2020-01-04)
 
