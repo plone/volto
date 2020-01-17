@@ -7,6 +7,8 @@ import Icon from '../../../../../components/theme/Icon/Icon';
 
 import linkSVG from '../../../../../icons/link.svg';
 import unlinkSVG from '../../../../../icons/unlink.svg';
+import { convertToRaw } from 'draft-js';
+import redraft from 'redraft';
 
 /**
  * Add link form class.
@@ -16,7 +18,6 @@ import unlinkSVG from '../../../../../icons/unlink.svg';
 class LinkButton extends Component {
   static propTypes = {
     placeholder: PropTypes.string,
-    store: PropTypes.shape({}).isRequired,
     theme: PropTypes.shape({}).isRequired,
     ownTheme: PropTypes.shape({}).isRequired,
     onRemoveLinkAtSelection: PropTypes.func.isRequired,
@@ -49,7 +50,7 @@ class LinkButton extends Component {
   render() {
     const { theme, onRemoveLinkAtSelection } = this.props;
     const hasLinkSelected = EditorUtils.hasEntity(
-      this.props.store.getEditorState(),
+      this.props.getEditorState(),
       'LINK',
     );
     const className = hasLinkSelected
@@ -65,7 +66,13 @@ class LinkButton extends Component {
         <button
           className={className}
           onClick={
-            hasLinkSelected ? onRemoveLinkAtSelection : this.onAddLinkClick
+            hasLinkSelected
+              ? () =>
+                  onRemoveLinkAtSelection(
+                    this.props.setEditorState,
+                    this.props.getEditorState,
+                  )
+              : this.onAddLinkClick
           }
           type="button"
         >
