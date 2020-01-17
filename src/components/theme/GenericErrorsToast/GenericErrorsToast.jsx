@@ -7,10 +7,10 @@ import { groupBy } from 'lodash';
 
 const GenericErrorsToast = props => {
   const { clearErrors, errors } = props;
-  const hasErorrs = errors.length === 0;
+  const hasErrors = errors.length === 0;
   useEffect(() => {
     clearErrors();
-  }, [hasErorrs, clearErrors]);
+  }, [hasErrors, clearErrors]);
 
   return props.errors.length
     ? toast.info(
