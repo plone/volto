@@ -4,11 +4,34 @@
 
 ### Added
 
-- German translation updated @timo
-
 ### Changes
 
 - fix bug in TokenWidget and ArrayWidget when removing all elements. @giuliaghisini
+
+## 4.0.0-alpha.29 (2020-01-18)
+
+### Changes
+
+- Remove dangling reference to external data in Image block not used anymore, causing confusion and lead to dead (and wrong) code @sneridagh
+- Remove last remains of the append secondary actions, remove Image block toolbar. Update i18n, fix small issues in Image block @sneridagh
+
+## 4.0.0-alpha.28 (2020-01-17)
+
+### Changes
+
+- Fix ToC anchor links in Firefox @robgietema
+
+## 4.0.0-alpha.27 (2020-01-17)
+
+### Changes
+
+- Fix removing links in blocks @robgietema
+
+## 4.0.0-alpha.26 (2020-01-15)
+
+### Added
+
+- German translation updated @timo
 
 ## 4.0.0-alpha.25 (2020-01-14)
 
@@ -37,6 +60,7 @@
 - Make it possible to paste links, lists, b and i Elements into text-blocks
   @jackahl
 - added option to include mp4 files from a remote source in video Block @steffenri @jackahl
+- Make it possible to paste links, lists, b and i Elements into text-blocks @jackahl
 
 ## 4.0.0-alpha.22 (2020-01-04)
 
