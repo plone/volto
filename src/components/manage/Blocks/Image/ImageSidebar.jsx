@@ -55,6 +55,7 @@ const ImageSidebar = ({
   onChangeBlock,
   openObjectBrowser,
   required = false,
+  resetSubmitUrl,
   intl,
 }) => {
   const [activeAccIndex, setActiveAccIndex] = useState(0);
@@ -106,8 +107,18 @@ const ImageSidebar = ({
                 title={intl.formatMessage(messages.Origin)}
                 required={false}
                 value={data.url.split('/').slice(-1)[0]}
-                icon={navTreeSVG}
-                iconAction={() => openObjectBrowser()}
+                icon={data.url ? clearSVG : navTreeSVG}
+                iconAction={
+                  data.url
+                    ? () => {
+                        resetSubmitUrl();
+                        onChangeBlock(block, {
+                          ...data,
+                          url: '',
+                        });
+                      }
+                    : () => openObjectBrowser()
+                }
                 onChange={() => {}}
               />
             )}
@@ -118,12 +129,14 @@ const ImageSidebar = ({
                 required={false}
                 value={data.url}
                 icon={clearSVG}
-                iconAction={() =>
+                iconAction={() => {
+                  resetSubmitUrl();
+
                   onChangeBlock(block, {
                     ...data,
                     url: '',
-                  })
-                }
+                  });
+                }}
                 onChange={() => {}}
               />
             )}
@@ -132,6 +145,13 @@ const ImageSidebar = ({
               title={intl.formatMessage(messages.AltText)}
               required={false}
               value={data.alt}
+              icon={data.alt ? clearSVG : null}
+              iconAction={() =>
+                onChangeBlock(block, {
+                  ...data,
+                  alt: '',
+                })
+              }
               onChange={(name, value) => {
                 onChangeBlock(block, {
                   ...data,
@@ -225,6 +245,7 @@ ImageSidebar.propTypes = {
   block: PropTypes.string.isRequired,
   onChangeBlock: PropTypes.func.isRequired,
   openObjectBrowser: PropTypes.func.isRequired,
+  resetSubmitUrl: PropTypes.func.isRequired,
 };
 
 export default injectIntl(ImageSidebar);
