@@ -6,6 +6,10 @@
 
 ### Changes
 
+### Internal
+
+- Pin PyYAML to fix the broken docs generation @sneridagh
+
 ## 4.0.0-alpha.28 (2020-01-17)
 
 ### Changes
