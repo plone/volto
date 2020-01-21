@@ -109,7 +109,7 @@ export ViewVideoBlock from '@plone/volto/components/manage/Blocks/Video/View';
 export ViewMapBlock from '@plone/volto/components/manage/Blocks/Maps/View';
 export ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
 
-export ImageSidebar from '@plone/volto/components/manage/Sidebar/ImageSidebar';
+export ImageSidebar from '@plone/volto/components/manage/Blocks/Image/ImageSidebar';
 
 export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
 export More from '@plone/volto/components/manage/Toolbar/More';
