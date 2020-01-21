@@ -4,16 +4,129 @@
 
 ### Added
 
+### Changes
+
+## 4.0.0-alpha.29 (2020-01-18)
+
+### Changes
+
+- Remove dangling reference to external data in Image block not used anymore, causing confusion and lead to dead (and wrong) code @sneridagh
+- Remove last remains of the append secondary actions, remove Image block toolbar. Update i18n, fix small issues in Image block @sneridagh
+
+## 4.0.0-alpha.28 (2020-01-17)
+
+### Changes
+
+- Fix ToC anchor links in Firefox @robgietema
+
+## 4.0.0-alpha.27 (2020-01-17)
+
+### Changes
+
+- Fix removing links in blocks @robgietema
+
+## 4.0.0-alpha.26 (2020-01-15)
+
+### Added
+
+- German translation updated @timo
+
+## 4.0.0-alpha.25 (2020-01-14)
+
+### Added
+
+- German translation for TOC @timo
+
+## 4.0.0-alpha.24 (2020-01-14)
+
+### Added
+
+- Added customStyleMap param to Editor of draftjs @giuliaghisini
+- Added Table of Contents block @robgietema
+
+## 4.0.0-alpha.23 (2020-01-14)
+
+### Added
+
+- Support for indexable blocks (requires plone.restapi 6.1.0) @timo
+- Set alt tag of image when selecting image in image block @robgietema
+
+### Changes
+
+- Avoid console warnings in AddLinkForm.jsx @tiberiuichim
+- More cleaning the body classname from the current displayname view @sneridagh
+- Make it possible to paste links, lists, b and i Elements into text-blocks
+  @jackahl
+- added option to include mp4 files from a remote source in video Block @steffenri @jackahl
+- Make it possible to paste links, lists, b and i Elements into text-blocks @jackahl
+
+## 4.0.0-alpha.22 (2020-01-04)
+
+### Changes
+
+- Disable all styling when copying text from another source (e.g. MS Word) into a text block @jackahl
+- Avoid console warnings in QuerystringWidget @tiberiuichim
+- Fix body classname based on the current content type @sneridagh
+
+## 4.0.0-alpha.21 (2020-01-02)
+
+### Changes
+
+- Fix failing test on Footer due to year change in Copyright notice @sneridagh
+
+## 4.0.0-alpha.20 (2020-01-02)
+
+### Added
+
+- Added translations to Portuguese @emansije
+
+### Changes
+
+- Fix wysiwyg widget help tag, for styling consistency @tiberiuichim
+- Added more i18n improvements @macagua
+- Disable submit button on save, to avoid multiple content creation @tiberiuichim
+- Fix focus on sidebar @robgietema
+
+### Internal
+
+- Upgrade version pin for lxml, for compatibility with Python3.8
+- Bump handlebars from 4.1.2 to 4.3.0 @timo
+
+## 4.0.0-alpha.19 (2019-12-20)
+
+### Added
+
+- Implementation of `Portuguese (BR)` translation @LeuAlmeida
+- Added translations to spanish @macagua
+
+### Changes
+
+- empty text blocks are shown as `<br />` in the view.
+- Fix double fetch due to asyncConnect being executed in browser too @robgietema @sneridagh
+
+## 4.0.0-alpha.18 (2019-12-12)
+
+### Added
+
 - Added CTRL+ENTER feature in text blocks by default. It creates a newline inside the same text chunk (`<p>`) @sneridagh
 - Automatically switch sidebar on block change @robgietema
-- Fix file and link redirect views @robgietema
 - Japanese translation @terapyon
 
 ### Changes
 
 - Remove "documentDescription" class in table block @sverbois
+- Added possibility to work with vimeo-videos instead of youtube-videos in the video block @wkbkhard
+- Fixed Issue 1021: typing in a "wrong" URL leads to error @wkbkhard
 - General toolbar more and personal tools menu CSS fixes @sneridagh
 - Fix bug that lead to crashing the view when deleting the last row of a table
+- Fix Select widget bug if the field has already the options in the `choices` schema, do not trigger the vocabulary request @sneridagh
+
+### Internal
+
+- Updated to react-select v3 @robdayz
+- Fix file and link redirect views @robgietema
+- Restrict moment.js locales to available languages @tisto @robgietema
+- Fix history view @robgietema
 
 ## 4.0.0-alpha.17 (2019-12-03)
 

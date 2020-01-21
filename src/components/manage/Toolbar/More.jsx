@@ -1,6 +1,13 @@
+/**
+ * More component.
+ * @module components/manage/Toolbar/More
+ */
+
 import React, { Component } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { find } from 'lodash';
 
@@ -9,6 +16,17 @@ import { getBaseUrl } from '../../../helpers';
 
 import rightArrowSVG from '../../../icons/right-key.svg';
 import userSVG from '../../../icons/user.svg';
+
+const messages = defineMessages({
+  personalTools: {
+    id: 'Personal tools',
+    defaultMessage: 'Personal tools',
+  },
+  history: {
+    id: 'History',
+    defaultMessage: 'History',
+  },
+});
 
 /**
  * More container class.
@@ -68,7 +86,7 @@ class More extends Component {
           <h2>{this.props.content.title}</h2>
           <button
             className="more-user"
-            aria-label="Personal tools"
+            aria-label={this.props.intl.formatMessage(messages.personalTools)}
             onClick={() => this.push('personalTools')}
             tabIndex={0}
           >
@@ -97,7 +115,9 @@ class More extends Component {
                   </button>
                 </Link>
               ) : (
-                <button aria-label="History">
+                <button
+                  aria-label={this.props.intl.formatMessage(messages.history)}
+                >
                   <div>
                     <span className="pastanaga-menu-label">
                       {historyAction.title}
@@ -124,11 +144,14 @@ class More extends Component {
   }
 }
 
-export default connect(
-  (state, props) => ({
-    actions: state.actions.actions,
-    pathname: props.pathname,
-    content: state.content.data,
-  }),
-  {},
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      actions: state.actions.actions,
+      pathname: props.pathname,
+      content: state.content.data,
+    }),
+    {},
+  ),
 )(More);

@@ -42,23 +42,23 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
                 className="eight wide column"
               >
                 <div
-                  className="css-10nd86i react-select-container"
+                  className="react-select-container css-2b097c-container"
                   id="field-language"
                   onKeyDown={[Function]}
                 >
                   <div
-                    className="css-hnwiky react-select__control"
+                    className="react-select__control css-1ard45z-control"
                     onMouseDown={[Function]}
                     onTouchEnd={[Function]}
                   >
                     <div
-                      className="css-1dvrfad react-select__value-container react-select__value-container--has-value"
+                      className="react-select__value-container react-select__value-container--has-value css-1dvrfad"
                     >
                       <div
-                        className="css-xp4uvy react-select__single-value"
+                        className="react-select__single-value css-1uccc91-singleValue"
                       />
                       <div
-                        className="css-1g6gooi"
+                        className="css-b8ldur-Input"
                       >
                         <div
                           className="react-select__input"
@@ -86,6 +86,7 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
                                 "boxSizing": "content-box",
                                 "color": "inherit",
                                 "fontSize": "inherit",
+                                "label": "input",
                                 "opacity": 1,
                                 "outline": 0,
                                 "padding": 0,
@@ -115,14 +116,14 @@ exports[`PersonalPreferences renders a personal preferences component 1`] = `
                       </div>
                     </div>
                     <div
-                      className="css-1wy0on6 react-select__indicators"
+                      className="react-select__indicators css-1hb7zxy-IndicatorsContainer"
                     >
                       <span
-                        className="css-hba3sr react-select__indicator-separator"
+                        className="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
                       />
                       <div
                         aria-hidden="true"
-                        className="css-9t8fgp react-select__indicator react-select__dropdown-indicator"
+                        className="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
                         onMouseDown={[Function]}
                         onTouchEnd={[Function]}
                       >
