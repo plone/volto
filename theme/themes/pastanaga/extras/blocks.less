@@ -653,3 +653,98 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     }
   }
 }
+
+// Listing Block
+.listing {
+  .items-preview {
+    color: @teal;
+    text-align: center;
+  }
+}
+
+.listing.message {
+  padding: 1.5em;
+  background: #f9edbe;
+  color: #613a00;
+  text-align: center;
+}
+
+.listing-item,
+.listing-item a {
+  display: flex;
+  width: 100%;
+  @media only screen and (max-width: (@largestMobileScreen)) {
+    flex-direction: column;
+  }
+}
+
+.listing-item {
+  margin-bottom: 20px;
+
+  img {
+    width: 15%;
+    margin-right: 20px;
+    @media only screen and (max-width: (@largestMobileScreen)) {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  .image-placeholder {
+    display: flex;
+    width: 15%;
+    justify-content: center;
+    margin-right: 20px;
+
+    img {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  a {
+    p {
+      color: @textColor;
+    }
+  }
+  @media only screen and (max-width: (@largestMobileScreen)) {
+    h3 {
+      margin-top: 1em;
+    }
+  }
+}
+
+.sidebar-listing-data {
+  &.ui.form.segment {
+    padding-bottom: 20px;
+  }
+
+  .simple-field-name {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .fields {
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    border-bottom: 1px dotted @borderColor;
+  }
+
+  .fields:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .main-fields-wrapper {
+    display: flex;
+    width: 100%;
+    flex: 1 0 auto;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+  }
+
+  .button .icon {
+    margin: 0 !important;
+  }
+}

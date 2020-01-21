@@ -4,6 +4,8 @@
 
 ### Added
 
+- Added listing block @pnicolli @rodfersou @sneridagh @giuliaghisini
+
 ### Changes
 
 ## 4.0.0-alpha.29 (2020-01-18)
