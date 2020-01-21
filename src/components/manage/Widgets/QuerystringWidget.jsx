@@ -366,7 +366,7 @@ class QuerystringWidget extends Component {
                       components={{ DropdownIndicator, Option }}
                       value={{
                         value: row.i,
-                        label: indexes[row.i].title,
+                        label: indexes[row?.i]?.title,
                       }}
                       onChange={data =>
                         onChange(

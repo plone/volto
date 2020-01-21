@@ -418,7 +418,7 @@ class Toolbar extends Component {
                   messages.shrinkToolbar,
                 )}
                 className={cx({
-                  [this.props.content.review_state]:
+                  [this.props.content?.review_state]:
                     this.props.content && this.props.content.review_state,
                 })}
                 onClick={this.handleShrink}
