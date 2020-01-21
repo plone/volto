@@ -9,6 +9,7 @@
 ### Changes
 
 - fix bug in TokenWidget and ArrayWidget when removing all elements. @giuliaghisini
+- fix listing block customization @giuliaghisini
 
 ## 4.0.0-alpha.29 (2020-01-18)
 
