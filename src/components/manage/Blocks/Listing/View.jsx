@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ListingBody from './ListingBody';
+import { ListingBlockBody as ListingBody } from '@plone/volto/components';
 
-const View = ({ data, properties, block }) => {
+const View = ({ data, properties, block, path }) => {
   return (
     <div className="block listing">
-      <ListingBody data={data} properties={properties} block={block} />
+      <ListingBody
+        data={data}
+        properties={properties}
+        block={block}
+        path={path}
+      />
     </div>
   );
 };

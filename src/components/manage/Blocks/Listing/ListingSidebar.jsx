@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Segment } from 'semantic-ui-react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-import ListingData from './ListingData';
+import { ListingBlockData as ListingData } from '@plone/volto/components';
 
 const ListingSidebar = props => {
   return (

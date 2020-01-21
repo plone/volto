@@ -14,7 +14,7 @@ import QuerystringWidget, {
   selectTheme,
   DropdownIndicator,
   Option,
-} from './QuerystringWidget';
+} from '@plone/volto/components/manage/Blocks/Listing/QuerystringWidget';
 
 const messages = defineMessages({
   Source: {

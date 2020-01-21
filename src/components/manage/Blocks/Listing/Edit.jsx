@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
-import { SidebarPortal } from '@plone/volto/components';
+import {
+  SidebarPortal,
+  ListingBlockBody as ListingBody,
+  ListingBlockSidebar as ListingSidebar,
+} from '@plone/volto/components';
 import { getBaseUrl } from '@plone/volto/helpers';
-
-import ListingSidebar from './ListingSidebar';
-import ListingBody from './ListingBody';
 
 const Edit = ({
   data,
