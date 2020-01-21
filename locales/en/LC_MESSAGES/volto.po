@@ -55,6 +55,10 @@ msgstr ""
 msgid "Add block..."
 msgstr ""
 
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Add criteria"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr ""
@@ -246,6 +250,10 @@ msgstr ""
 msgid "Contact form"
 msgstr ""
 
+#: components/manage/Blocks/Listing/Edit
+msgid "Contained items"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
@@ -267,6 +275,10 @@ msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Criteria"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -630,6 +642,10 @@ msgstr ""
 msgid "Insert row before"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Item batch size"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr ""
@@ -664,6 +680,10 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "Link to"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Listing"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -754,8 +774,17 @@ msgstr ""
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingBody
+msgid "No items found in this container."
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "No selection"
 msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
@@ -925,6 +954,18 @@ msgstr ""
 msgid "Required input is missing."
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Results limit"
+msgstr ""
+
+#: components/manage/Blocks/Listing/Edit
+msgid "Results preview"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Reversed order"
+msgstr ""
+
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr ""
@@ -1076,7 +1117,12 @@ msgstr ""
 msgid "Sorry, something went wrong with your request"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Sort on"
+msgstr ""
+
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Listing/ListingData
 msgid "Source"
 msgstr ""
 

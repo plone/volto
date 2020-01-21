@@ -63,6 +63,10 @@ msgstr "Adicionar uma descrição..."
 msgid "Add block..."
 msgstr "Adicionar bloco..."
 
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Add criteria"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr "Adicionar campo"
@@ -254,6 +258,10 @@ msgstr "Contacto"
 msgid "Contact form"
 msgstr "Formulário de contacto"
 
+#: components/manage/Blocks/Listing/Edit
+msgid "Contained items"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
@@ -276,6 +284,10 @@ msgstr "Declaração de copyright ou outras informações de direitos sobre este
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
 msgstr "Auteurs"
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Criteria"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
@@ -638,6 +650,10 @@ msgstr "Inserir linha após"
 msgid "Insert row before"
 msgstr "Inserir linha antes"
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Item batch size"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Item(ns) copiado(s)."
@@ -673,6 +689,10 @@ msgstr "Esquerda"
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "Link to"
 msgstr "Ligar a"
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Listing"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -762,9 +782,18 @@ msgstr "Nova senha"
 msgid "No image selected"
 msgstr "Nenhuma imagem seleccionada"
 
+#: components/manage/Blocks/Listing/ListingBody
+msgid "No items found in this container."
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "Não foram encontrados quaisquer resultados."
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "No selection"
+msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -933,6 +962,18 @@ msgstr "Obrigatório"
 msgid "Required input is missing."
 msgstr "Falta informação obrigatória."
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Results limit"
+msgstr ""
+
+#: components/manage/Blocks/Listing/Edit
+msgid "Results preview"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Reversed order"
+msgstr ""
+
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr "Reverter para esta revisão"
@@ -1084,7 +1125,12 @@ msgstr "Configuração do Sítio"
 msgid "Sorry, something went wrong with your request"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Sort on"
+msgstr ""
+
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Listing/ListingData
 msgid "Source"
 msgstr ""
 

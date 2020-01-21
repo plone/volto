@@ -62,6 +62,10 @@ msgstr "説明を追加..."
 msgid "Add block..."
 msgstr "ブロックを追加..."
 
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Add criteria"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr "フィールドを追加"
@@ -253,6 +257,10 @@ msgstr "お問い合わせ"
 msgid "Contact form"
 msgstr "お問い合わせフォーム"
 
+#: components/manage/Blocks/Listing/Edit
+msgid "Contained items"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
@@ -275,6 +283,10 @@ msgstr "このアイテムの著作権宣言文または他の権利情報"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
 msgstr "作成者"
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Criteria"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
@@ -637,6 +649,10 @@ msgstr "下に行を追加"
 msgid "Insert row before"
 msgstr "上に行を追加"
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Item batch size"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "アイテムがコピーされました。"
@@ -672,6 +688,10 @@ msgstr ""
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "Link to"
 msgstr "リンク先"
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Listing"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -761,9 +781,18 @@ msgstr "新しいパスワード"
 msgid "No image selected"
 msgstr "画像が選択されていません"
 
+#: components/manage/Blocks/Listing/ListingBody
+msgid "No items found in this container."
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "結果が見つかりません"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "No selection"
+msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -932,6 +961,18 @@ msgstr "必須"
 msgid "Required input is missing."
 msgstr "必須"
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Results limit"
+msgstr ""
+
+#: components/manage/Blocks/Listing/Edit
+msgid "Results preview"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Reversed order"
+msgstr ""
+
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr "このリビジョンに戻す"
@@ -1083,7 +1124,12 @@ msgstr "サイト設定"
 msgid "Sorry, something went wrong with your request"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Sort on"
+msgstr ""
+
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Listing/ListingData
 msgid "Source"
 msgstr ""
 
