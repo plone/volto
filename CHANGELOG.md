@@ -6,6 +6,8 @@
 
 ### Changes
 
+- fix `SelectWidget`, when there is a vocabulary and no choices @sneridagh
+
 ## 4.0.0-alpha.30 (2020-01-22)
 
 ### Added
