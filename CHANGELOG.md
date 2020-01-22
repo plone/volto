@@ -2,8 +2,6 @@
 
 ## 4.0.0 (unreleased)
 
-### Added
-
 ### Changes
 
 - fix `SelectWidget`, when there is a vocabulary and no choices @sneridagh
