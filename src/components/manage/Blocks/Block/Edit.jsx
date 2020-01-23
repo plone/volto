@@ -26,6 +26,10 @@ const messages = defineMessages({
     id: 'Unknown Block',
     defaultMessage: 'Unknown Block {block}',
   },
+  delete: {
+    id: 'delete',
+    defaultMessage: 'delete',
+  },
 });
 
 const itemSource = {
@@ -240,7 +244,7 @@ class Edit extends Component {
               basic
               onClick={() => this.props.onDeleteBlock(id)}
               className="delete-button"
-              aria-label="delete"
+              aria-label={this.props.intl.formatMessage(messages.delete)}
             >
               <Icon name={trashSVG} size="18px" />
             </Button>
@@ -261,8 +265,5 @@ export default compose(
     connectDragSource: connect.dragSource(),
     connectDragPreview: connect.dragPreview(),
   })),
-  connect(
-    null,
-    { setSidebarTab },
-  ),
+  connect(null, { setSidebarTab }),
 )(Edit);

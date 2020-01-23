@@ -36,6 +36,14 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  split: {
+    id: 'Split',
+    defaultMessage: 'Split',
+  },
+  unified: {
+    id: 'Unified',
+    defaultMessage: 'Unified',
+  },
 });
 
 /**
@@ -140,9 +148,7 @@ class Diff extends Component {
    */
   onSelectView(event, { value }) {
     this.props.history.push(
-      `${this.props.pathname}?one=${this.props.one}&two=${
-        this.props.two
-      }&view=${value}`,
+      `${this.props.pathname}?one=${this.props.one}&two=${this.props.two}&view=${value}`,
     );
   }
 
@@ -155,9 +161,7 @@ class Diff extends Component {
    */
   onChangeOne(event, { value }) {
     this.props.history.push(
-      `${this.props.pathname}?one=${value}&two=${this.props.two}&view=${
-        this.props.view
-      }`,
+      `${this.props.pathname}?one=${value}&two=${this.props.two}&view=${this.props.view}`,
     );
   }
 
@@ -170,9 +174,7 @@ class Diff extends Component {
    */
   onChangeTwo(event, { value }) {
     this.props.history.push(
-      `${this.props.pathname}?one=${this.props.one}&two=${value}&view=${
-        this.props.view
-      }`,
+      `${this.props.pathname}?one=${this.props.one}&two=${value}&view=${this.props.view}`,
     );
   }
 
@@ -220,8 +222,14 @@ class Diff extends Component {
             <Button.Group>
               {map(
                 [
-                  { id: 'split', label: 'Split' },
-                  { id: 'unified', label: 'Unified' },
+                  {
+                    id: 'split',
+                    label: this.props.intl.formatMessage(messages.split),
+                  },
+                  {
+                    id: 'unified',
+                    label: this.props.intl.formatMessage(messages.unified),
+                  },
                 ],
                 view => (
                   <Button

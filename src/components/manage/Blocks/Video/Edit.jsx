@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Button, Input, Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 
@@ -20,6 +20,22 @@ const messages = defineMessages({
   save: {
     id: 'Save',
     defaultMessage: 'Save',
+  },
+  left: {
+    id: 'Left',
+    defaultMessage: 'Left',
+  },
+  right: {
+    id: 'Right',
+    defaultMessage: 'Right',
+  },
+  center: {
+    id: 'Center',
+    defaultMessage: 'Center',
+  },
+  full: {
+    id: 'Full',
+    defaultMessage: 'Full',
   },
   VideoFormDescription: {
     id: 'Specify a youtube video or playlist url',
@@ -153,7 +169,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Left"
+                aria-label={this.props.intl.formatMessage(messages.left)}
                 onClick={this.onAlignBlock.bind(this, 'left')}
                 active={data.align === 'left'}
               >
@@ -164,7 +180,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Right"
+                aria-label={this.props.intl.formatMessage(messages.right)}
                 onClick={this.onAlignBlock.bind(this, 'right')}
                 active={data.align === 'right'}
               >
@@ -175,7 +191,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Center"
+                aria-label={this.props.intl.formatMessage(messages.center)}
                 onClick={this.onAlignBlock.bind(this, 'center')}
                 active={data.align === 'center' || !data.align}
               >
@@ -186,7 +202,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Full"
+                aria-label={this.props.intl.formatMessage(messages.full)}
                 onClick={this.onAlignBlock.bind(this, 'full')}
                 active={data.align === 'full'}
               >
@@ -251,14 +267,24 @@ class Edit extends Component {
                     autoplay={false}
                   />
                 ) : (
-                  <div>
-                    <Message>
-                      <center>
-                        Please enter a valid URL by deleting the block and
-                        adding a new video block.
-                      </center>
-                    </Message>
-                  </div>
+                  <>
+                    <div className="ui blocker" />
+                    {data.url.match('.mp4') ? (
+                      // eslint-disable-next-line jsx-a11y/media-has-caption
+                      <video src={data.url} controls type="video/mp4" />
+                    ) : (
+                      <div>
+                        <Message>
+                          <center>
+                            <FormattedMessage
+                              id="Please enter a valid URL by deleting the block and adding a new video block."
+                              defaultMessage="Please enter a valid URL by deleting the block and adding a new video block."
+                            />
+                          </center>
+                        </Message>
+                      </div>
+                    )}
+                  </>
                 )}
               </>
             )}

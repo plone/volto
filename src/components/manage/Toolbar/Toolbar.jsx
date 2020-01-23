@@ -4,9 +4,11 @@
  */
 
 import React, { Component } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import cookie from 'react-cookie';
 import { filter, find } from 'lodash';
@@ -30,6 +32,33 @@ import addSVG from '../../../icons/add-document.svg';
 import moreSVG from '../../../icons/more.svg';
 import userSVG from '../../../icons/user.svg';
 import clearSVG from '../../../icons/clear.svg';
+
+const messages = defineMessages({
+  edit: {
+    id: 'Edit',
+    defaultMessage: 'Edit',
+  },
+  contents: {
+    id: 'Contents',
+    defaultMessage: 'Contents',
+  },
+  add: {
+    id: 'Add',
+    defaultMessage: 'Add',
+  },
+  more: {
+    id: 'More',
+    defaultMessage: 'More',
+  },
+  personalTools: {
+    id: 'Personal tools',
+    defaultMessage: 'Personal tools',
+  },
+  shrinkToolbar: {
+    id: 'Shrink toolbar',
+    defaultMessage: 'Shrink toolbar',
+  },
+});
 
 const toolbarComponents = {
   personalTools: { component: PersonalTools, wrapper: null },
@@ -296,7 +325,9 @@ class Toolbar extends Component {
                   <>
                     {editAction && (
                       <Link
-                        aria-label="Edit"
+                        aria-label={this.props.intl.formatMessage(
+                          messages.edit,
+                        )}
                         className="edit"
                         to={`${path}/edit`}
                       >
@@ -306,7 +337,12 @@ class Toolbar extends Component {
                     {this.props.content &&
                       this.props.content.is_folderish &&
                       folderContentsAction && (
-                        <Link aria-label="Contents" to={`${path}/contents`}>
+                        <Link
+                          aria-label={this.props.intl.formatMessage(
+                            messages.contents,
+                          )}
+                          to={`${path}/contents`}
+                        >
                           <Icon name={folderSVG} size="30px" />
                         </Link>
                       )}
@@ -315,7 +351,9 @@ class Toolbar extends Component {
                       this.props.types.length > 0 && (
                         <button
                           className="add"
-                          aria-label="Add"
+                          aria-label={this.props.intl.formatMessage(
+                            messages.add,
+                          )}
                           onClick={e => this.toggleMenu(e, 'types')}
                           tabIndex={0}
                           id="toolbar-add"
@@ -326,7 +364,7 @@ class Toolbar extends Component {
                     <div className="toolbar-button-spacer" />
                     <button
                       className="more"
-                      aria-label="More"
+                      aria-label={this.props.intl.formatMessage(messages.more)}
                       onClick={e => this.toggleMenu(e, 'more')}
                       tabIndex={0}
                       id="toolbar-more"
@@ -358,7 +396,9 @@ class Toolbar extends Component {
                 {!this.props.hideDefaultViewButtons && (
                   <button
                     className="user"
-                    aria-label="Personal tools"
+                    aria-label={this.props.intl.formatMessage(
+                      messages.personalTools,
+                    )}
                     onClick={e => this.toggleMenu(e, 'personalTools')}
                     tabIndex={0}
                     id="toolbar-personal"
@@ -374,10 +414,12 @@ class Toolbar extends Component {
             </div>
             <div className="toolbar-handler">
               <button
-                aria-label="Shrink toolbar"
+                aria-label={this.props.intl.formatMessage(
+                  messages.shrinkToolbar,
+                )}
                 className={cx({
-                  [this.props.content.review_state]:
-                    this.props.content && this.props.content.review_state,
+                  [this.props.content?.review_state]: this.props.content
+                    ?.review_state,
                 })}
                 onClick={this.handleShrink}
               />
@@ -390,13 +432,16 @@ class Toolbar extends Component {
   }
 }
 
-export default connect(
-  (state, props) => ({
-    actions: state.actions.actions,
-    token: state.userSession.token,
-    content: state.content.data,
-    pathname: props.pathname,
-    types: filter(state.types.types, 'addable'),
-  }),
-  { getTypes, listActions },
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      actions: state.actions.actions,
+      token: state.userSession.token,
+      content: state.content.data,
+      pathname: props.pathname,
+      types: filter(state.types.types, 'addable'),
+    }),
+    { getTypes, listActions },
+  ),
 )(Toolbar);

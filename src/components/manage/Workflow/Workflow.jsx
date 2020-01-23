@@ -26,6 +26,10 @@ const messages = defineMessages({
     id: 'Workflow updated.',
     defaultMessage: 'Workflow updated.',
   },
+  messageNoWorkflow: {
+    id: 'No workflow',
+    defaultMessage: 'No workflow',
+  },
 });
 
 const Placeholder = props => {
@@ -308,7 +312,12 @@ class Workflow extends Component {
           defaultValue={
             this.props.content.review_state
               ? selectedOption
-              : { label: 'No workflow', value: 'noworkflow' }
+              : {
+                  label: this.props.intl.formatMessage(
+                    messages.messageNoWorkflow,
+                  ),
+                  value: 'noworkflow',
+                }
           }
           isSearchable={false}
         />

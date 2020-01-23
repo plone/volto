@@ -4,9 +4,14 @@
  * @example import { getSchema } from 'actions';
  */
 
-export { listActions } from './actions/actions';
-export { getBreadcrumbs } from './breadcrumbs/breadcrumbs';
-export { copy, cut, copyContent, moveContent } from './clipboard/clipboard';
+export { listActions } from '@plone/volto/actions/actions/actions';
+export { getBreadcrumbs } from '@plone/volto/actions/breadcrumbs/breadcrumbs';
+export {
+  copy,
+  cut,
+  copyContent,
+  moveContent,
+} from '@plone/volto/actions/clipboard/clipboard';
 export {
   addComment,
   deleteComment,
@@ -28,9 +33,7 @@ export {
   updateControlpanel,
 } from '@plone/volto/actions/controlpanels/controlpanels';
 export { getDiff } from '@plone/volto/actions/diff/diff';
-export {
-  emailNotification,
-} from '@plone/volto/actions/emailNotification/emailNotification';
+export { emailNotification } from '@plone/volto/actions/emailNotification/emailNotification';
 export {
   createGroup,
   deleteGroup,
@@ -82,5 +85,6 @@ export {
   getWorkflow,
   transitionWorkflow,
 } from '@plone/volto/actions/workflow/workflow';
-export { getQuerystring } from './querystring/querystring';
-export { setSidebarTab } from './sidebar/sidebar';
+export { getQuerystring } from '@plone/volto/actions/querystring/querystring';
+export { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
+export { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
