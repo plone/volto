@@ -88,6 +88,7 @@ msgid "Add {type}"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alignment"
 msgstr ""
 
@@ -96,6 +97,7 @@ msgid "All"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr ""
 
@@ -505,6 +507,7 @@ msgid "Expiration Date"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
 msgstr ""
 
@@ -611,6 +614,7 @@ msgid "If you you do not have an account here, head over to the {registrationfor
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr ""
 
@@ -672,6 +676,10 @@ msgstr ""
 msgid "Last modified"
 msgstr ""
 
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "Lead Image"
+msgstr ""
+
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
@@ -679,6 +687,7 @@ msgid "Left"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Link to"
 msgstr ""
 
@@ -774,6 +783,14 @@ msgstr ""
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in Lead Image content field"
+msgstr ""
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in image content field"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
 msgstr ""
@@ -806,6 +823,7 @@ msgid "Ok"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Open in a new tab"
 msgstr ""
 
@@ -814,6 +832,7 @@ msgid "Open menu"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
 msgstr ""
 
@@ -1267,6 +1286,10 @@ msgstr "Unknown Block {block}"
 
 #: components/manage/Contents/Contents
 msgid "Upload"
+msgstr ""
+
+#: components/manage/Blocks/LeadImage/Edit
+msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
