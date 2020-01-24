@@ -32,6 +32,7 @@ test('renders a Lead Image block Sidebar component', () => {
         pathname="/news"
         onChangeBlock={() => {}}
         openObjectBrowser={() => {}}
+        onChangeField={() => {}}
       />
     </Provider>,
   );

@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Update video block to the sidebar and get the image block look and feel @sneridagh
+
 ## 4.0.0-alpha.32 (2020-01-24)
 
 ### Added

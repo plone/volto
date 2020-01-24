@@ -1,3 +1,5 @@
+import VideoSidebar from './manage/Blocks/Video/VideoSidebar';
+
 /**
  * Point of contact for component modules.
  * @module components
@@ -114,6 +116,7 @@ export ListingBlockData from '@plone/volto/components/manage/Blocks/Listing/List
 export ListingBlockSidebar from '@plone/volto/components/manage/Blocks/Listing/ListingSidebar';
 
 export ImageSidebar from '@plone/volto/components/manage/Blocks/Image/ImageSidebar';
+export VideoSidebar from '@plone/volto/components/manage/Blocks/Video/VideoSidebar';
 export LeadImageSidebar from '@plone/volto/components/manage/Blocks/LeadImage/LeadImageSidebar';
 
 export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
