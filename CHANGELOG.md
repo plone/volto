@@ -4,6 +4,8 @@
 
 ### Added
 
+- Lead image behavior block @sneridagh sponsored by CMSCOM.jp @terapyon
+
 ### Changes
 
 ## 4.0.0-alpha.31 (2020-01-22)
