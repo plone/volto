@@ -13,6 +13,7 @@
 ### Internal
 
 - Upgrade to Plone 5.2.1, add `Products.PloneHotfix20200121` @sneridagh
+- Force global use of `browserslist` package to get rid of message on build @sneridagh
 
 ## 4.0.0-alpha.31 (2020-01-22)
 
