@@ -88,6 +88,7 @@ msgid "Add {type}"
 msgstr "Aggiungi {type}"
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alignment"
 msgstr "Allineamento"
 
@@ -96,6 +97,7 @@ msgid "All"
 msgstr "Tutti"
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr "Testo alternativo"
 
@@ -505,6 +507,7 @@ msgid "Expiration Date"
 msgstr "Data di scadenza"
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
 msgstr "URL esterno"
 
@@ -611,6 +614,7 @@ msgid "If you you do not have an account here, head over to the {registrationfor
 msgstr "Se non ti sei ancora iscritto, compila il {registrationform} per diventare un collaboratore."
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "Immagine"
 
@@ -672,6 +676,10 @@ msgstr "Lingua"
 msgid "Last modified"
 msgstr "Ultima modifica"
 
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "Lead Image"
+msgstr ""
+
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
@@ -679,6 +687,7 @@ msgid "Left"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Link to"
 msgstr "Link a"
 
@@ -774,6 +783,14 @@ msgstr "Nuova password"
 msgid "No image selected"
 msgstr "Nessuna immagine selezionata"
 
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in Lead Image content field"
+msgstr ""
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in image content field"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
 msgstr ""
@@ -806,6 +823,7 @@ msgid "Ok"
 msgstr "Ok"
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Open in a new tab"
 msgstr "Apri in un nuovo tab"
 
@@ -814,6 +832,7 @@ msgid "Open menu"
 msgstr "Apri menu"
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
 msgstr "Origine"
 
@@ -1268,6 +1287,10 @@ msgstr ""
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Carica"
+
+#: components/manage/Blocks/LeadImage/Edit
+msgid "Upload a lead image in the 'Lead Image' content field."
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"

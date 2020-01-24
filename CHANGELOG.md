@@ -4,9 +4,11 @@
 
 ### Added
 
-- Make login component honors the returnUrl prop if called from any pathname @sneridagh
+- Lead image behavior block @sneridagh sponsored by CMSCOM.jp @terapyon
 
 ### Changes
+
+- Make login component honors the returnUrl prop if called from any pathname @sneridagh
 
 ## 4.0.0-alpha.31 (2020-01-22)
 
