@@ -41,17 +41,15 @@ const View = ({ data, detached }) => (
               alt={data.alt || ''}
             />
           );
-          if (data.external) {
-            const isReallyExternal =
-              (data.external.startsWith('http') ||
-                data.external.startsWith('https')) &&
-              !data.external.includes(settings.apiPath);
-
-            if (isReallyExternal) {
+          if (data.href) {
+            if (
+              (data.href.startsWith('http') || data.href.startsWith('https')) &&
+              !data.href.includes(settings.apiPath)
+            ) {
               return (
                 <a
                   target={data.openLinkInNewTab ? '_blank' : null}
-                  href={data.external}
+                  href={data.href}
                 >
                   {image}
                 </a>
@@ -59,22 +57,13 @@ const View = ({ data, detached }) => (
             } else {
               return (
                 <Link
-                  to={data.external.replace(settings.apiPath, '')}
+                  to={data.href.replace(settings.apiPath, '')}
                   target={data.openLinkInNewTab ? '_blank' : null}
                 >
                   {image}
                 </Link>
               );
             }
-          } else if (data.href) {
-            return (
-              <Link
-                to={data.href}
-                target={data.openLinkInNewTab ? '_blank' : null}
-              >
-                {image}
-              </Link>
-            );
           } else {
             return image;
           }

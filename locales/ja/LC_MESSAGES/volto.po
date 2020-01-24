@@ -62,6 +62,10 @@ msgstr "説明を追加..."
 msgid "Add block..."
 msgstr "ブロックを追加..."
 
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Add criteria"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr "フィールドを追加"
@@ -90,7 +94,7 @@ msgstr "グループに追加"
 msgid "Add {type}"
 msgstr "{type} を追加"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "Alignment"
 msgstr "配置"
 
@@ -98,7 +102,7 @@ msgstr "配置"
 msgid "All"
 msgstr "すべて"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "Alt text"
 msgstr "代替テキスト"
 
@@ -253,6 +257,10 @@ msgstr "お問い合わせ"
 msgid "Contact form"
 msgstr "お問い合わせフォーム"
 
+#: components/manage/Blocks/Listing/Edit
+msgid "Contained items"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
@@ -275,6 +283,10 @@ msgstr "このアイテムの著作権宣言文または他の権利情報"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
 msgstr "作成者"
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Criteria"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
@@ -499,7 +511,7 @@ msgstr ""
 msgid "Expiration Date"
 msgstr "ナビゲーションに含まない"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "External URL"
 msgstr "外部URL"
 
@@ -605,7 +617,7 @@ msgstr ""
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "Image"
 msgstr "画像"
 
@@ -636,6 +648,10 @@ msgstr "下に行を追加"
 #: components/manage/Blocks/Table/Edit
 msgid "Insert row before"
 msgstr "上に行を追加"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Item batch size"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
@@ -669,9 +685,13 @@ msgstr "最終変更"
 msgid "Left"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "Link to"
 msgstr "リンク先"
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Listing"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -757,13 +777,22 @@ msgstr ""
 msgid "New password"
 msgstr "新しいパスワード"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
 msgstr "画像が選択されていません"
 
+#: components/manage/Blocks/Listing/ListingBody
+msgid "No items found in this container."
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "結果が見つかりません"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "No selection"
+msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -783,7 +812,7 @@ msgstr "None"
 msgid "Ok"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "Open in a new tab"
 msgstr "新しいタブで開く"
 
@@ -791,7 +820,7 @@ msgstr "新しいタブで開く"
 msgid "Open menu"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "Origin"
 msgstr "参照元"
 
@@ -931,6 +960,18 @@ msgstr "必須"
 #: components/manage/Form/ModalForm
 msgid "Required input is missing."
 msgstr "必須"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Results limit"
+msgstr ""
+
+#: components/manage/Blocks/Listing/Edit
+msgid "Results preview"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Reversed order"
+msgstr ""
 
 #: components/manage/History/History
 msgid "Revert to this revision"
@@ -1083,7 +1124,12 @@ msgstr "サイト設定"
 msgid "Sorry, something went wrong with your request"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Sort on"
+msgstr ""
+
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Listing/ListingData
 msgid "Source"
 msgstr ""
 

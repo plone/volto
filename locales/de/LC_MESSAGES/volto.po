@@ -70,6 +70,10 @@ msgstr "Beschreibung hinzufügen…"
 msgid "Add block..."
 msgstr "Block hinzufügen"
 
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Add criteria"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr "Feld hinzufügen"
@@ -98,7 +102,7 @@ msgstr "Zu Gruppe hinzufügen"
 msgid "Add {type}"
 msgstr "{type} hinzufügen"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "Alignment"
 msgstr "Ausrichtung"
 
@@ -106,7 +110,7 @@ msgstr "Ausrichtung"
 msgid "All"
 msgstr "Alle"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "Alt text"
 msgstr "Alternative Text"
 
@@ -261,6 +265,10 @@ msgstr "Kontakt"
 msgid "Contact form"
 msgstr "Kontaktformular"
 
+#: components/manage/Blocks/Listing/Edit
+msgid "Contained items"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
@@ -283,6 +291,10 @@ msgstr "Informationen über die Urheber- und Nutzungsrechte an diesem Artikel."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
 msgstr "Ersteller"
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Criteria"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
@@ -507,7 +519,7 @@ msgstr "Sidebar vergrößern"
 msgid "Expiration Date"
 msgstr "Ablaufdatum"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "External URL"
 msgstr "Externe URL"
 
@@ -613,7 +625,7 @@ msgstr "Klicken Sie bitte hier, falls Sie Ihr Passwort vergessen haben: {forgotp
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr "Falls Sie noch keinen Zugang haben, {registrationform} Sie sich bitte zunächst."
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "Image"
 msgstr "Bild"
 
@@ -644,6 +656,10 @@ msgstr "Zeile danach einfügen"
 #: components/manage/Blocks/Table/Edit
 msgid "Insert row before"
 msgstr "Zeile davor einfügen"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Item batch size"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
@@ -677,9 +693,13 @@ msgstr "Letzte Änderung"
 msgid "Left"
 msgstr "Links"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "Link to"
 msgstr "Link auf"
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Listing"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -765,13 +785,22 @@ msgstr "Zurück navigieren"
 msgid "New password"
 msgstr "Neues Passwort"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
 msgstr "Kein Bild ausgewählt"
 
+#: components/manage/Blocks/Listing/ListingBody
+msgid "No items found in this container."
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "Keine Ergebnisse gefunden."
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "No selection"
+msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -791,7 +820,7 @@ msgstr "Keiner"
 msgid "Ok"
 msgstr "OK"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "Open in a new tab"
 msgstr "In neuem Browser-Tab öffnen"
 
@@ -799,7 +828,7 @@ msgstr "In neuem Browser-Tab öffnen"
 msgid "Open menu"
 msgstr "Menü öffnen"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "Origin"
 msgstr "Quelle"
 
@@ -939,6 +968,18 @@ msgstr "Notwendig"
 #: components/manage/Form/ModalForm
 msgid "Required input is missing."
 msgstr "Notwendige Eingabe fehlt."
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Results limit"
+msgstr ""
+
+#: components/manage/Blocks/Listing/Edit
+msgid "Results preview"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Reversed order"
+msgstr ""
 
 #: components/manage/History/History
 msgid "Revert to this revision"
@@ -1091,7 +1132,12 @@ msgstr "Seiteneinstellungen"
 msgid "Sorry, something went wrong with your request"
 msgstr "Entschuldigung, ein Fehler ist beim Ausführen Ihrer Anfrage aufgetreten"
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Sort on"
+msgstr ""
+
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Listing/ListingData
 msgid "Source"
 msgstr "Quelle"
 

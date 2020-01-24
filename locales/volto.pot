@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-01-14T19:48:00.968Z\n"
+"POT-Creation-Date: 2020-01-18T16:36:02.687Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -67,6 +67,11 @@ msgstr ""
 msgid "Add block..."
 msgstr ""
 
+#: components/manage/Blocks/Listing/QuerystringWidget
+# defaultMessage: Add criteria
+msgid "Add criteria"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add field
 msgid "Add field"
@@ -102,7 +107,7 @@ msgstr ""
 msgid "Add {type}"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr ""
@@ -112,7 +117,7 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr ""
@@ -299,6 +304,11 @@ msgstr ""
 msgid "Contact form"
 msgstr ""
 
+#: components/manage/Blocks/Listing/Edit
+# defaultMessage: Contained items
+msgid "Contained items"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Contents
@@ -325,6 +335,11 @@ msgstr ""
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Creators
 msgid "Creators"
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+# defaultMessage: Criteria
+msgid "Criteria"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -593,7 +608,7 @@ msgstr ""
 msgid "Expiration Date"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: External URL
 msgid "External URL"
 msgstr ""
@@ -724,7 +739,7 @@ msgstr ""
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: Image
 msgid "Image"
 msgstr ""
@@ -762,6 +777,11 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Insert row before
 msgid "Insert row before"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: Item batch size
+msgid "Item batch size"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -803,9 +823,14 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: Link to
 msgid "Link to"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingSidebar
+# defaultMessage: Listing
+msgid "Listing"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -912,14 +937,25 @@ msgstr ""
 msgid "New password"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingBody
+# defaultMessage: No items found in this container.
+msgid "No items found in this container."
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: No selection
+msgid "No selection"
 msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
@@ -944,7 +980,7 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr ""
@@ -954,7 +990,7 @@ msgstr ""
 msgid "Open menu"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
 msgstr ""
@@ -1124,6 +1160,21 @@ msgstr ""
 #: components/manage/Form/ModalForm
 # defaultMessage: Required input is missing.
 msgid "Required input is missing."
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: Results limit
+msgid "Results limit"
+msgstr ""
+
+#: components/manage/Blocks/Listing/Edit
+# defaultMessage: Results preview
+msgid "Results preview"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: Reversed order
+msgid "Reversed order"
 msgstr ""
 
 #: components/manage/History/History
@@ -1311,7 +1362,13 @@ msgstr ""
 msgid "Sorry, something went wrong with your request"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: Sort on
+msgid "Sort on"
+msgstr ""
+
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Listing/ListingData
 # defaultMessage: Source
 msgid "Source"
 msgstr ""
