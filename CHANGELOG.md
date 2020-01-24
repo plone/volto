@@ -6,6 +6,8 @@
 
 ### Changes
 
+- added new italian translations, added italian to available languages, translated some static string
+
 ## 4.0.0-alpha.31 (2020-01-22)
 
 ### Changes
