@@ -4,6 +4,8 @@
 
 ### Added
 
+- Make login component honors the returnUrl prop if called from any pathname @sneridagh
+
 ### Changes
 
 ## 4.0.0-alpha.31 (2020-01-22)
