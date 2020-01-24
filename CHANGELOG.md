@@ -10,6 +10,10 @@
 
 - Make login component honors the returnUrl prop if called from any pathname @sneridagh
 
+### Internal
+
+- Try to improve the realibility of the Cypress tests, reorganize commands @sneridagh
+
 ## 4.0.0-alpha.31 (2020-01-22)
 
 ### Changes

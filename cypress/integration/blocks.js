@@ -1,6 +1,8 @@
 if (Cypress.env('API') !== 'guillotina') {
   describe('Blocks Tests', () => {
     beforeEach(() => {
+      // Wait a bit to previous teardown to complete correctly because Heisenbug in this point
+      cy.wait(2000);
       cy.autologin();
       cy.createContent('Document', 'my-page', 'My Page');
       cy.visit('/my-page/edit');
