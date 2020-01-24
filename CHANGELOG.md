@@ -10,6 +10,10 @@
 
 - Make login component honors the returnUrl prop if called from any pathname @sneridagh
 
+### Internal
+
+- Upgrade to Plone 5.2.1, add `Products.PloneHotfix20200121` @sneridagh
+
 ## 4.0.0-alpha.31 (2020-01-22)
 
 ### Changes
