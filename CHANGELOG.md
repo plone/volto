@@ -7,6 +7,8 @@
 ### Changes
 
 - Updated Maps block to the sidebar and image block look and feel @sneridagh
+- Update video block to the sidebar and get the image block look and feel @sneridagh
+
 ### Internal
 
 - Fix and update to latest husky and lint-staged @sneridagh

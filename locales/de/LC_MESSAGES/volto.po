@@ -105,6 +105,7 @@ msgstr "{type} hinzufügen"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Alignment"
 msgstr "Ausrichtung"
 
@@ -190,7 +191,6 @@ msgid "Cell"
 msgstr "Zelle"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
 msgstr "Mittig"
@@ -476,10 +476,6 @@ msgstr "Eingebettete Google Maps Karte"
 msgid "Enter URL or title"
 msgstr "URL oder Titel eingeben"
 
-#: components/manage/Blocks/Video/Edit
-msgid "Enter Video URL"
-msgstr "Video-URL eingeben"
-
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Tragen Sie Ihre E-Mail-Adresse ein, mit der Sie sich künftig anmelden müssen. Wir respektieren den Datenschutz und werden die E-Mail-Adresse nicht an Dritte weitergeben und auch nirgends anzeigen."
@@ -552,7 +548,6 @@ msgid "From"
 msgstr "Von"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Full"
 msgstr "Volle Breite"
@@ -701,7 +696,6 @@ msgid "Lead Image"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
 msgstr "Links"
@@ -709,6 +703,7 @@ msgstr "Links"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr "Link auf"
 
@@ -835,6 +830,10 @@ msgstr ""
 msgid "No value"
 msgstr "Kein Wert"
 
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "No video selected"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 msgid "No workflow"
 msgstr "Kein Workflow"
@@ -850,6 +849,7 @@ msgstr "OK"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Open in a new tab"
 msgstr "In neuem Browser-Tab öffnen"
 
@@ -1024,7 +1024,6 @@ msgid "Richtext"
 msgstr "Richtext"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
 msgstr "Rechte"
@@ -1038,7 +1037,6 @@ msgid "Roles"
 msgstr "Rollen"
 
 #: components/manage/Add/Add
-#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1297,6 +1295,10 @@ msgstr "Titel"
 msgid "Type"
 msgstr "Typ"
 
+#: components/manage/Blocks/Video/Edit
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr ""
+
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
 msgstr "Text eingeben…"
@@ -1376,6 +1378,14 @@ msgstr "Nutzer- und Gruppeneinstellungen"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
 msgstr "Versionsübersicht"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video URL"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 msgid "View"

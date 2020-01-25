@@ -203,7 +203,7 @@ const blocksConfig = {
     edit: EditVideoBlock,
     restricted: false,
     mostUsed: true,
-    sidebarTab: 0,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],

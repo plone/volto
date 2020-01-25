@@ -44,7 +44,10 @@ const View = ({ properties }) => {
               block.text?.blocks[0].type.indexOf('header-') === 0,
           ),
           block => (
-            <List.Item className={block.text.blocks[0].type}>
+            <List.Item
+              key={block.text.blocks[0].key}
+              className={block.text.blocks[0].type}
+            >
               <AnchorLink href={`#${block.text.blocks[0].key}`}>
                 {block.text.blocks[0].text}
               </AnchorLink>
