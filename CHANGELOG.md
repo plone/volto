@@ -5,6 +5,7 @@
 ### Added
 
 ### Changes
+- Deleted Empty Select Component @aryamanpuri
 
 ### Internal
 
