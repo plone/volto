@@ -7,6 +7,9 @@
 ### Changes
 
 - Updated Maps block to the sidebar and image block look and feel @sneridagh
+### Internal
+
+- Fix and update to latest husky and lint-staged @sneridagh
 
 ## 4.0.0-alpha.32 (2020-01-24)
 
