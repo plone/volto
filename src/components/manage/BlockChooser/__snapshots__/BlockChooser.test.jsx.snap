@@ -306,6 +306,34 @@ exports[`renders a BlockChooser component 1`] = `
             className="ui buttons"
           >
             <button
+              className="ui basic icon button leadimage"
+              onClick={[Function]}
+            >
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
+                onClick={null}
+                style={
+                  Object {
+                    "fill": "currentColor",
+                    "height": "36px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
+              />
+              Lead Image Field
+            </button>
+          </div>
+          <div
+            className="ui buttons"
+          >
+            <button
               className="ui basic icon button video"
               onClick={[Function]}
             >

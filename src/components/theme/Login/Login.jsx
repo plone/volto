@@ -318,7 +318,10 @@ export default compose(
       error: state.userSession.login.error,
       loading: state.userSession.login.loading,
       token: state.userSession.token,
-      returnUrl: qs.parse(props.location.search).return_url || '/',
+      returnUrl:
+        qs.parse(props.location.search).return_url ||
+        props.location.pathname.replace('/login', '') ||
+        '/',
     }),
     { login },
   ),

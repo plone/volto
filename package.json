@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "4.0.0-alpha.31",
+  "version": "4.0.0-alpha.32",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -338,5 +338,8 @@
     "webpack": "4.41.2",
     "xmlrpc": "1.3.2"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "resolutions": {
+    "browserslist": "4.8.3"
+  }
 }

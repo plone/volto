@@ -8,6 +8,22 @@
 
 - added new italian translations, added italian to available languages, translated some static string
 
+## 4.0.0-alpha.32 (2020-01-24)
+
+### Added
+
+- Lead image behavior block @sneridagh sponsored by CMSCOM.jp @terapyon
+
+### Changes
+
+- Make login component honors the returnUrl prop if called from any pathname @sneridagh
+
+### Internal
+
+- Try to improve the realibility of the Cypress tests, reorganize commands @sneridagh
+- Upgrade to Plone 5.2.1, add `Products.PloneHotfix20200121` @sneridagh
+- Force global use of `browserslist` package to get rid of message on build @sneridagh
+
 ## 4.0.0-alpha.31 (2020-01-22)
 
 ### Changes

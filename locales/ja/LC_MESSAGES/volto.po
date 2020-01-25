@@ -95,6 +95,7 @@ msgid "Add {type}"
 msgstr "{type} を追加"
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alignment"
 msgstr "配置"
 
@@ -103,6 +104,7 @@ msgid "All"
 msgstr "すべて"
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr "代替テキスト"
 
@@ -512,6 +514,7 @@ msgid "Expiration Date"
 msgstr "ナビゲーションに含まない"
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
 msgstr "外部URL"
 
@@ -618,6 +621,7 @@ msgid "If you you do not have an account here, head over to the {registrationfor
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "画像"
 
@@ -679,6 +683,10 @@ msgstr "言語"
 msgid "Last modified"
 msgstr "最終変更"
 
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "Lead Image"
+msgstr ""
+
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
@@ -686,6 +694,7 @@ msgid "Left"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Link to"
 msgstr "リンク先"
 
@@ -781,6 +790,14 @@ msgstr "新しいパスワード"
 msgid "No image selected"
 msgstr "画像が選択されていません"
 
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in Lead Image content field"
+msgstr ""
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in image content field"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
 msgstr ""
@@ -813,6 +830,7 @@ msgid "Ok"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Open in a new tab"
 msgstr "新しいタブで開く"
 
@@ -821,6 +839,7 @@ msgid "Open menu"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
 msgstr "参照元"
 
@@ -1275,6 +1294,10 @@ msgstr ""
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "アップロード"
+
+#: components/manage/Blocks/LeadImage/Edit
+msgid "Upload a lead image in the 'Lead Image' content field."
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
