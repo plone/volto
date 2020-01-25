@@ -1,5 +1,3 @@
-import VideoSidebar from './manage/Blocks/Video/VideoSidebar';
-
 /**
  * Point of contact for component modules.
  * @module components
