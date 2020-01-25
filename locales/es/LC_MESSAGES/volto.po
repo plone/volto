@@ -1157,7 +1157,7 @@ msgstr "Configuración del sitio"
 
 #: error
 msgid "Sorry, something went wrong with your request"
-msgstr "Lo siento, algo estuvo mal con su solicitud"
+msgstr "Lo siento, algo estuvo mal con su solicitud "
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
