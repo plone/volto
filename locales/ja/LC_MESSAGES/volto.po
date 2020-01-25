@@ -106,7 +106,6 @@ msgstr "すべて"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 msgid "Alt text"
 msgstr "代替テキスト"
 
@@ -512,7 +511,6 @@ msgstr "ナビゲーションに含まない"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 msgid "External URL"
 msgstr "外部URL"
 
@@ -784,7 +782,6 @@ msgid "New password"
 msgstr "新しいパスワード"
 
 #: components/manage/Blocks/Image/ImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 msgid "No image selected"
 msgstr "画像が選択されていません"
 
@@ -843,7 +840,6 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 msgid "Origin"
 msgstr "参照元"
 
@@ -1362,6 +1358,10 @@ msgstr ""
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Video"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video URL"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem

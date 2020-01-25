@@ -99,7 +99,6 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 msgid "Alt text"
 msgstr ""
 
@@ -505,7 +504,6 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 msgid "External URL"
 msgstr ""
 
@@ -777,7 +775,6 @@ msgid "New password"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 msgid "No image selected"
 msgstr ""
 
@@ -836,7 +833,6 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
-#: components/manage/Blocks/Video/VideoSidebar
 msgid "Origin"
 msgstr ""
 
@@ -1355,6 +1351,10 @@ msgstr ""
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Video"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video URL"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem

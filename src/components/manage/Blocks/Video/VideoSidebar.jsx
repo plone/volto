@@ -13,22 +13,6 @@ import downSVG from '@plone/volto/icons/down-key.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 
 const messages = defineMessages({
-  Video: {
-    id: 'Video',
-    defaultMessage: 'Video',
-  },
-  Origin: {
-    id: 'Origin',
-    defaultMessage: 'Origin',
-  },
-  AltText: {
-    id: 'Alt text',
-    defaultMessage: 'Alt text',
-  },
-  Align: {
-    id: 'Alignment',
-    defaultMessage: 'Alignment',
-  },
   LinkTo: {
     id: 'Link to',
     defaultMessage: 'Link to',
@@ -37,17 +21,13 @@ const messages = defineMessages({
     id: 'Open in a new tab',
     defaultMessage: 'Open in a new tab',
   },
-  NoImageSelected: {
-    id: 'No image selected',
-    defaultMessage: 'No image selected',
-  },
-  externalURL: {
-    id: 'External URL',
-    defaultMessage: 'External URL',
+  videoURL: {
+    id: 'Video URL',
+    defaultMessage: 'Video URL',
   },
 });
 
-const ImageSidebar = ({
+const VideoSidebar = ({
   data,
   block,
   onChangeBlock,
@@ -90,7 +70,7 @@ const ImageSidebar = ({
             {data.url && (
               <TextWidget
                 id="external"
-                title={intl.formatMessage(messages.externalURL)}
+                title={intl.formatMessage(messages.videoURL)}
                 required={false}
                 value={data.url}
                 icon={clearSVG}
@@ -187,7 +167,7 @@ const ImageSidebar = ({
   );
 };
 
-ImageSidebar.propTypes = {
+VideoSidebar.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
   block: PropTypes.string.isRequired,
   onChangeBlock: PropTypes.func.isRequired,
@@ -195,4 +175,4 @@ ImageSidebar.propTypes = {
   resetSubmitUrl: PropTypes.func.isRequired,
 };
 
-export default injectIntl(ImageSidebar);
+export default injectIntl(VideoSidebar);

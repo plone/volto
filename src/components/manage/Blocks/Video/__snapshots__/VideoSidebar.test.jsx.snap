@@ -33,7 +33,7 @@ exports[`renders an Image Block Sidebar component 1`] = `
               <label
                 htmlFor="field-external"
               >
-                External URL
+                Video URL
               </label>
             </div>
           </div>
