@@ -65,9 +65,10 @@ class Api {
             request.send(data);
           }
 
-          request.end((err, { body } = {}) =>
-            err ? reject(err) : resolve(body),
-          );
+          request.end((err, { body } = {}) => {
+            console.log(err.code);
+            return err ? reject(err) : resolve(body);
+          });
         });
         promise.request = request;
         return promise;
