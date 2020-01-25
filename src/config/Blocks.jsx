@@ -249,7 +249,7 @@ const blocksConfig = {
     edit: EditMapBlock,
     restricted: false,
     mostUsed: false,
-    sidebarTab: 0,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],
