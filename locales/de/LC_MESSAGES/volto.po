@@ -1162,7 +1162,7 @@ msgstr "Seiteneinstellungen"
 
 #: error
 msgid "Sorry, something went wrong with your request"
-msgstr "Entschuldigung, ein Fehler ist beim Ausführen Ihrer Anfrage aufgetreten"
+msgstr ""
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
