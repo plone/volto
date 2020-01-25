@@ -114,6 +114,7 @@ export ListingBlockData from '@plone/volto/components/manage/Blocks/Listing/List
 export ListingBlockSidebar from '@plone/volto/components/manage/Blocks/Listing/ListingSidebar';
 
 export ImageSidebar from '@plone/volto/components/manage/Blocks/Image/ImageSidebar';
+export MapsSidebar from '@plone/volto/components/manage/Blocks/Maps/MapsSidebar';
 export LeadImageSidebar from '@plone/volto/components/manage/Blocks/LeadImage/LeadImageSidebar';
 
 export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';

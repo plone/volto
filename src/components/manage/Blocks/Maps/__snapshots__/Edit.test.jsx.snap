@@ -5,7 +5,7 @@ exports[`renders an edit map block component 1`] = `
   className="block maps align center"
 >
   <div
-    className="video-inner"
+    className="maps-inner"
   >
     <iframe
       allowFullScreen={true}

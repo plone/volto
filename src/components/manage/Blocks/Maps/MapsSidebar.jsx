@@ -1,34 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
-import { Accordion, Grid, Segment } from 'semantic-ui-react';
+import { Grid, Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
-import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
+import { Icon, TextWidget } from '@plone/volto/components';
 import { AlignBlock } from '@plone/volto/helpers';
 
-import videoSVG from '@plone/volto/icons/videocamera.svg';
+import globeSVG from '@plone/volto/icons/globe.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
-import upSVG from '@plone/volto/icons/up-key.svg';
-import downSVG from '@plone/volto/icons/down-key.svg';
-import navTreeSVG from '@plone/volto/icons/nav.svg';
 
 const messages = defineMessages({
-  Video: {
-    id: 'Video',
-    defaultMessage: 'Video',
-  },
-  Origin: {
-    id: 'Origin',
-    defaultMessage: 'Origin',
-  },
-  AltText: {
-    id: 'Alt text',
-    defaultMessage: 'Alt text',
-  },
-  Align: {
-    id: 'Alignment',
-    defaultMessage: 'Alignment',
-  },
   LinkTo: {
     id: 'Link to',
     defaultMessage: 'Link to',
@@ -37,17 +18,13 @@ const messages = defineMessages({
     id: 'Open in a new tab',
     defaultMessage: 'Open in a new tab',
   },
-  NoImageSelected: {
-    id: 'No image selected',
-    defaultMessage: 'No image selected',
-  },
-  externalURL: {
-    id: 'External URL',
-    defaultMessage: 'External URL',
+  MapsURL: {
+    id: 'Maps URL',
+    defaultMessage: 'Maps URL',
   },
 });
 
-const ImageSidebar = ({
+const MapsSidebar = ({
   data,
   block,
   onChangeBlock,
@@ -56,20 +33,11 @@ const ImageSidebar = ({
   resetSubmitUrl,
   intl,
 }) => {
-  const [activeAccIndex, setActiveAccIndex] = useState(0);
-
-  function handleAccClick(e, titleProps) {
-    const { index } = titleProps;
-    const newIndex = activeAccIndex === index ? -1 : index;
-
-    setActiveAccIndex(newIndex);
-  }
-
   return (
     <Segment.Group raised>
       <header className="header pulled">
         <h2>
-          <FormattedMessage id="Video" defaultMessage="Video" />
+          <FormattedMessage id="Map" defaultMessage="Map" />
         </h2>
       </header>
 
@@ -77,10 +45,10 @@ const ImageSidebar = ({
         <>
           <Segment className="sidebar-metadata-container" secondary>
             <FormattedMessage
-              id="No video selected"
-              defaultMessage="No video selected"
+              id="No map selected"
+              defaultMessage="No map selected"
             />
-            <Icon name={videoSVG} size="100px" color="#b8c6c8" />
+            <Icon name={globeSVG} size="100px" color="#b8c6c8" />
           </Segment>
         </>
       )}
@@ -90,7 +58,7 @@ const ImageSidebar = ({
             {data.url && (
               <TextWidget
                 id="external"
-                title={intl.formatMessage(messages.externalURL)}
+                title={intl.formatMessage(messages.MapsURL)}
                 required={false}
                 value={data.url}
                 icon={clearSVG}
@@ -129,65 +97,13 @@ const ImageSidebar = ({
               </Grid>
             </Form.Field>
           </Segment>
-          {data.url.match('.mp4') && (
-            <Accordion fluid styled className="form">
-              <Accordion.Title
-                active={activeAccIndex === 0}
-                index={0}
-                onClick={handleAccClick}
-              >
-                Link Settings
-                {activeAccIndex === 0 ? (
-                  <Icon name={upSVG} size="20px" />
-                ) : (
-                  <Icon name={downSVG} size="20px" />
-                )}
-              </Accordion.Title>
-              <Accordion.Content active={activeAccIndex === 0}>
-                <TextWidget
-                  id="link"
-                  title={intl.formatMessage(messages.LinkTo)}
-                  required={false}
-                  value={data.href}
-                  icon={data.href ? clearSVG : navTreeSVG}
-                  iconAction={
-                    data.href
-                      ? () => {
-                          onChangeBlock(block, {
-                            ...data,
-                            href: '',
-                          });
-                        }
-                      : () => openObjectBrowser({ mode: 'link' })
-                  }
-                  onChange={(name, value) => {
-                    onChangeBlock(block, {
-                      ...data,
-                      href: value,
-                    });
-                  }}
-                />
-                <CheckboxWidget
-                  id="openLinkInNewTab"
-                  title={intl.formatMessage(messages.openLinkInNewTab)}
-                  value={data.openLinkInNewTab ? data.openLinkInNewTab : false}
-                  onChange={(name, value) => {
-                    onChangeBlock(block, {
-                      ...data,
-                      openLinkInNewTab: value,
-                    });
-                  }}
-                />
-              </Accordion.Content>
-            </Accordion>
-          )}
         </>
       )}
     </Segment.Group>
   );
 };
 
-ImageSidebar.propTypes = {
+MapsSidebar.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
   block: PropTypes.string.isRequired,
   onChangeBlock: PropTypes.func.isRequired,
@@ -195,4 +111,4 @@ ImageSidebar.propTypes = {
   resetSubmitUrl: PropTypes.func.isRequired,
 };
 
-export default injectIntl(ImageSidebar);
+export default injectIntl(MapsSidebar);

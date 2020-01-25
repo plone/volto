@@ -99,6 +99,7 @@ msgstr "Agregar {type}"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
 msgid "Alignment"
 msgstr "Alineamiento"
 
@@ -458,13 +459,13 @@ msgstr "Correo electrónico"
 msgid "Email sent"
 msgstr "Correo electrónico enviado"
 
+#: components/manage/Blocks/Maps/Edit
+msgid "Embed code error, please follow the instructions and try again."
+msgstr ""
+
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr "Insertar Google Maps"
-
-#: components/manage/Blocks/Maps/Edit
-msgid "Enter Map URL"
-msgstr "Ingrese la dirección URL del mapa"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
@@ -483,6 +484,10 @@ msgstr "Ingrese una dirección de correo electrónico. Este será el nombre de u
 #: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
 msgstr "Ingrese el nombre completo, por ejemplo Leonardo Caballero."
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Enter map Embed Code"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
@@ -698,6 +703,7 @@ msgstr "Izquierda"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
 msgid "Link to"
 msgstr "Enlazar a"
 
@@ -734,13 +740,13 @@ msgstr "Nombre de usuario"
 msgid "Make the table compact"
 msgstr "Hacer la tabla compacta"
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Maps data error"
-msgstr "Errores en los datos del mapa"
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Map"
+msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Maps instructions"
-msgstr "Instrucciones para el mapa"
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Maps URL"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -805,6 +811,10 @@ msgstr ""
 msgid "No items found in this container."
 msgstr ""
 
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "No map selected"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -834,6 +844,7 @@ msgstr "Ok"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
 msgid "Open in a new tab"
 msgstr "Abrir en un nueva pestaña"
 
@@ -885,6 +896,10 @@ msgstr "Las personas responsables de la creación del contenido de este elemento
 #: components/manage/Blocks/Video/Edit
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr "Por favor, ingrese una URL válida eliminando el bloque y agregando un nuevo bloque de vídeo."
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
+msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."

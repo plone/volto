@@ -17,7 +17,7 @@ test('renders an Image Block Sidebar component', () => {
   const component = renderer.create(
     <Provider store={store}>
       <MapsSidebar
-        data={{ url: 'video' }}
+        data={{ url: 'map' }}
         block="1234"
         pathname="/news"
         onChangeBlock={() => {}}
