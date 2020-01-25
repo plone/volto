@@ -3,16 +3,12 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import ImageSidebar from './ImageSidebar';
+import VideoSidebar from './VideoSidebar';
 
 const mockStore = configureStore();
 
 test('renders an Image Block Sidebar component', () => {
   const store = mockStore({
-    content: {
-      create: {},
-      data: {},
-    },
     intl: {
       locale: 'en',
       messages: {},
@@ -20,13 +16,12 @@ test('renders an Image Block Sidebar component', () => {
   });
   const component = renderer.create(
     <Provider store={store}>
-      <ImageSidebar
-        data={{ url: 'image', alt: 'alternate text' }}
+      <VideoSidebar
+        data={{ url: 'video' }}
         block="1234"
         pathname="/news"
         onChangeBlock={() => {}}
         openObjectBrowser={() => {}}
-        resetSubmitUrl={() => {}}
       />
     </Provider>,
   );

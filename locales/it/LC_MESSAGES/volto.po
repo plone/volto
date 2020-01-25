@@ -89,6 +89,7 @@ msgstr "Aggiungi {type}"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Alignment"
 msgstr "Allineamento"
 
@@ -174,7 +175,6 @@ msgid "Cell"
 msgstr "Cella"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
 msgstr ""
@@ -460,10 +460,6 @@ msgstr "Inserisci l'URL della mappa"
 msgid "Enter URL or title"
 msgstr "Inserisci un URL o un titolo"
 
-#: components/manage/Blocks/Video/Edit
-msgid "Enter Video URL"
-msgstr "Inserisci l'URL del video"
-
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Inserisci un indirizzo e-mail. Esso sarà il tuo nome utente. Rispettiamo la tua privacy: non daremo l'indirizzo a terzi, né verrà esposto nel portale."
@@ -532,7 +528,6 @@ msgid "From"
 msgstr "Da"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Full"
 msgstr ""
@@ -681,13 +676,13 @@ msgid "Lead Image"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr "Link a"
 
@@ -810,6 +805,10 @@ msgstr ""
 msgid "No value"
 msgstr ""
 
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "No video selected"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 msgid "No workflow"
 msgstr ""
@@ -824,6 +823,7 @@ msgstr "Ok"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Open in a new tab"
 msgstr "Apri in un nuovo tab"
 
@@ -994,7 +994,6 @@ msgid "Richtext"
 msgstr "Testo formattato"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
 msgstr ""
@@ -1008,7 +1007,6 @@ msgid "Roles"
 msgstr ""
 
 #: components/manage/Add/Add
-#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1267,6 +1265,10 @@ msgstr "Titolo"
 msgid "Type"
 msgstr "Tipo"
 
+#: components/manage/Blocks/Video/Edit
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr ""
+
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
 msgstr "Digita testo…"
@@ -1346,6 +1348,14 @@ msgstr "Impostazioni utenti e gruppi"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
 msgstr "Panoramica delle versioni"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video URL"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 msgid "View"
