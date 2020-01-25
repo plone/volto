@@ -80,7 +80,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.ui.basic.icon.button.video')
         .contains('video')
         .click();
-      cy.get('.toolbar > .ui > input')
+      cy.get('.toolbar-inner > .ui > input')
         .click()
         .type('https://1.videolyser.de/videos/1714848/11745228_hd.mp4')
         .type('{enter}');
