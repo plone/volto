@@ -89,6 +89,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Alignment"
 msgstr ""
 
@@ -98,6 +99,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Alt text"
 msgstr ""
 
@@ -174,7 +176,6 @@ msgid "Cell"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
 msgstr ""
@@ -460,10 +461,6 @@ msgstr ""
 msgid "Enter URL or title"
 msgstr ""
 
-#: components/manage/Blocks/Video/Edit
-msgid "Enter Video URL"
-msgstr ""
-
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr ""
@@ -508,6 +505,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "External URL"
 msgstr ""
 
@@ -532,7 +530,6 @@ msgid "From"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Full"
 msgstr ""
@@ -681,13 +678,13 @@ msgid "Lead Image"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr ""
 
@@ -780,6 +777,7 @@ msgid "New password"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "No image selected"
 msgstr ""
 
@@ -810,6 +808,10 @@ msgstr ""
 msgid "No value"
 msgstr ""
 
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "No video selected"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 msgid "No workflow"
 msgstr ""
@@ -824,6 +826,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Open in a new tab"
 msgstr ""
 
@@ -833,6 +836,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Origin"
 msgstr ""
 
@@ -994,7 +998,6 @@ msgid "Richtext"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
 msgstr ""
@@ -1008,7 +1011,6 @@ msgid "Roles"
 msgstr ""
 
 #: components/manage/Add/Add
-#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1267,6 +1269,10 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
+#: components/manage/Blocks/Video/Edit
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr ""
+
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
 msgstr ""
@@ -1345,6 +1351,10 @@ msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem

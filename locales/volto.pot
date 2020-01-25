@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-01-24T16:04:52.055Z\n"
+"POT-Creation-Date: 2020-01-25T08:51:46.563Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -109,6 +109,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr ""
@@ -120,6 +121,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr ""
@@ -210,7 +212,6 @@ msgid "Cell"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 # defaultMessage: Center
 msgid "Center"
@@ -554,11 +555,6 @@ msgstr ""
 msgid "Enter URL or title"
 msgstr ""
 
-#: components/manage/Blocks/Video/Edit
-# defaultMessage: Enter Video URL
-msgid "Enter Video URL"
-msgstr ""
-
 #: components/theme/Register/Register
 # defaultMessage: Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere.
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -612,6 +608,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: External URL
 msgid "External URL"
 msgstr ""
@@ -642,7 +639,6 @@ msgid "From"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 # defaultMessage: Full
 msgid "Full"
@@ -826,7 +822,6 @@ msgid "Lead Image"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 # defaultMessage: Left
 msgid "Left"
@@ -834,6 +829,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr ""
@@ -948,6 +944,7 @@ msgid "New password"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
 msgstr ""
@@ -985,6 +982,11 @@ msgstr ""
 msgid "No value"
 msgstr ""
 
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No video selected
+msgid "No video selected"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 # defaultMessage: No workflow
 msgid "No workflow"
@@ -1002,6 +1004,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr ""
@@ -1013,6 +1016,7 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Origin
 msgid "Origin"
 msgstr ""
@@ -1210,7 +1214,6 @@ msgid "Richtext"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 # defaultMessage: Right
 msgid "Right"
@@ -1227,7 +1230,6 @@ msgid "Roles"
 msgstr ""
 
 #: components/manage/Add/Add
-#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1542,6 +1544,11 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
+#: components/manage/Blocks/Video/Edit
+# defaultMessage: Type a Video (YouTube, Vimeo or mp4) URL
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr ""
+
 #: components/manage/Blocks/Text/Edit
 # defaultMessage: Type text…
 msgid "Type text…"
@@ -1638,6 +1645,11 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Version Overview
 msgid "Version Overview"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: Video
+msgid "Video"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
