@@ -12,6 +12,8 @@
 ### Internal
 
 - Fix and update to latest husky and lint-staged @sneridagh
+- Fix for i18n to use defaultMessages instead to default to the id @sneridagh
+- Update `babel-plugin-react-intl` to latest @sneridagh
 
 ## 4.0.0-alpha.32 (2020-01-24)
 

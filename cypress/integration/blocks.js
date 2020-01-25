@@ -35,10 +35,10 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.inner.text .public-DraftEditor-content').click();
       cy.get('.ui.basic.icon.button.block-add-button').click();
       cy.get('.title')
-        .contains('media')
+        .contains('Media')
         .click();
       cy.get('.ui.basic.icon.button.video')
-        .contains('video')
+        .contains('Video')
         .click();
       cy.get('.toolbar-inner > .ui > input')
         .click()
@@ -55,10 +55,10 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.inner.text .public-DraftEditor-content').click();
       cy.get('.ui.basic.icon.button.block-add-button').click();
       cy.get('.title')
-        .contains('media')
+        .contains('Media')
         .click();
       cy.get('.ui.basic.icon.button.video')
-        .contains('video')
+        .contains('Video')
         .click();
       cy.get('.toolbar-inner > .ui > input')
         .click()
@@ -75,10 +75,10 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.inner.text .public-DraftEditor-content').click();
       cy.get('.ui.basic.icon.button.block-add-button').click();
       cy.get('.title')
-        .contains('media')
+        .contains('Media')
         .click();
       cy.get('.ui.basic.icon.button.video')
-        .contains('video')
+        .contains('Video')
         .click();
       cy.get('.toolbar-inner > .ui > input')
         .click()
@@ -100,10 +100,10 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();
       cy.get('.blocks-chooser .title')
-        .contains('common')
+        .contains('Common')
         .click();
       cy.get('.blocks-chooser .common')
-        .contains('maps')
+        .contains('Maps')
         .click();
 
       // Fill maps block
@@ -149,7 +149,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();
       cy.get('.blocks-chooser .title')
-        .contains('common')
+        .contains('Common')
         .click();
       cy.get('.blocks-chooser .common')
         .contains('Listing')
@@ -201,7 +201,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();
       cy.get('.blocks-chooser .title')
-        .contains('common')
+        .contains('Common')
         .click();
       cy.get('.blocks-chooser .common')
         .contains('Listing')
@@ -294,7 +294,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();
       cy.get('.blocks-chooser .title')
-        .contains('common')
+        .contains('Common')
         .click();
       cy.get('.blocks-chooser .common')
         .contains('Listing')
@@ -386,7 +386,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();
       cy.get('.blocks-chooser .title')
-        .contains('common')
+        .contains('Common')
         .click();
       cy.get('.blocks-chooser .common')
         .contains('Listing')
