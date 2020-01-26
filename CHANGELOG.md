@@ -2,8 +2,6 @@
 
 ## 4.0.0 (unreleased)
 
-### Added
-
 ### Changes
 
 - Updated Maps block to the sidebar and image block look and feel @sneridagh
