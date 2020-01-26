@@ -7,6 +7,11 @@
 ### Changes
 
 - Fix token expiration/renewer timer, this fixes #674 @sneridagh
+
+## 4.0.0-alpha.33 (2020-01-26)
+
+### Changes
+
 - Updated Maps block to the sidebar and image block look and feel @sneridagh
 - Update video block to the sidebar and get the image block look and feel @sneridagh
 
