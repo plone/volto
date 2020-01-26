@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix token expiration/renewer timer, this fixes #674 @sneridagh
+
 ## 4.0.0-alpha.33 (2020-01-26)
 
 ### Changes
