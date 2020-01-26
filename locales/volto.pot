@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-01-25T17:41:47.816Z\n"
+"POT-Creation-Date: 2020-01-26T15:04:38.628Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -295,6 +295,11 @@ msgstr ""
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Confirm password
 msgid "Confirm password"
+msgstr ""
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: Connection refused
+msgid "Connection refused"
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -1495,6 +1500,8 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+#: components/theme/CorsError/CorsError
 #: components/theme/NotFound/NotFound
 # defaultMessage: Thank you.
 msgid "Thank you."
@@ -1503,6 +1510,16 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: The URL for your external home page, if you have one.
 msgid "The URL for your external home page, if you have one."
+msgstr ""
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object API_PATH or the RAZZLE_API_PATH Volto's enviroment variable.
+msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object API_PATH or the RAZZLE_API_PATH Volto's enviroment variable."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+# defaultMessage: The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources.
+msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
 msgstr ""
 
 #: components/theme/Register/Register
@@ -1518,6 +1535,11 @@ msgstr ""
 #: components/theme/Footer/Footer
 # defaultMessage: The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends.
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+# defaultMessage: There is a configuration problem on the backend
+msgid "There is a configuration problem on the backend"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -1689,6 +1711,16 @@ msgstr ""
 #: components/manage/Display/Display
 # defaultMessage: View
 msgid "Viewmode"
+msgstr ""
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later.
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+# defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later.
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
 msgstr ""
 
 #: components/theme/NotFound/NotFound

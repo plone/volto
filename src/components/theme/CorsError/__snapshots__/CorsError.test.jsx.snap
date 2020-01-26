@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CorsError renders a not found component 1`] = `
+<div
+  className="ui container view-wrapper"
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "column",
+      "fontFamily": "Helvetica, sans-serif",
+      "fontSize": "20px",
+      "justifyContent": "center",
+    }
+  }
+>
+  <h1
+    style={
+      Object {
+        "lineHeight": "40px",
+        "textAlign": "center",
+      }
+    }
+  >
+    There is a configuration problem on the backend
+    <br />
+    <a
+      href="http://localhost:8080/Plone"
+    >
+      http://localhost:8080/Plone
+    </a>
+  </h1>
+  <p
+    className="description"
+    style={
+      Object {
+        "margin": "20px auto",
+        "textAlign": "center",
+        "width": "475px",
+      }
+    }
+  >
+    The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources.
+  </p>
+</div>
+`;

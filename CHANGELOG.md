@@ -4,6 +4,8 @@
 
 ### Added
 
+- Improvement of API requests error handling @sneridagh
+
 ### Changes
 
 - Updated Maps block to the sidebar and image block look and feel @sneridagh

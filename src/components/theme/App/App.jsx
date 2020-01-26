@@ -16,20 +16,21 @@ import split from 'lodash/split';
 import join from 'lodash/join';
 import trim from 'lodash/trim';
 import cx from 'classnames';
+import { views } from '~/config';
 
-import Error from '../../../error';
+import Error from '@plone/volto/error';
 
-import { Breadcrumbs, Footer, Header, Icon } from '../../../components';
-import { BodyClass, getBaseUrl, getView } from '../../../helpers';
+import { Breadcrumbs, Footer, Header, Icon } from '@plone/volto/components';
+import { BodyClass, getBaseUrl, getView } from '@plone/volto/helpers';
 import {
   getBreadcrumbs,
   getContent,
   getNavigation,
   getTypes,
   getWorkflow,
-} from '../../../actions';
+} from '@plone/volto/actions';
 
-import clearSVG from '../../../icons/clear.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 /**
  * @export
@@ -103,6 +104,7 @@ class App extends Component {
   render() {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
+    const ConnectionRefusedView = views.errorViews.ECONNREFUSED;
 
     return (
       <Fragment>
@@ -130,7 +132,9 @@ class App extends Component {
         <Breadcrumbs pathname={path} />
         <Segment basic className="content-area">
           <main>
-            {this.state.hasError ? (
+            {this.props.connectionRefused ? (
+              <ConnectionRefusedView />
+            ) : this.state.hasError ? (
               <Error
                 message={this.state.error.message}
                 stackTrace={this.state.errorInfo.componentStack}
@@ -163,6 +167,8 @@ export const __test__ = connect(
   (state, props) => ({
     pathname: props.location.pathname,
     content: state.content.data,
+    apiError: state.apierror.error,
+    connectionRefused: state.apierror.connectionRefused,
   }),
   {},
 )(App);
@@ -200,6 +206,8 @@ export default compose(
     (state, props) => ({
       pathname: props.location.pathname,
       content: state.content.data,
+      apiError: state.apierror.error,
+      connectionRefused: state.apierror.connectionRefused,
     }),
     {},
   ),

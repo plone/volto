@@ -31,6 +31,7 @@ describe('App', () => {
   it('renders a app component', () => {
     const store = mockStore({
       content: { data: { id: 'content', '@type': 'Document' } },
+      apierror: {},
     });
     const component = renderer.create(
       <Provider store={store}>

@@ -8,7 +8,11 @@ import jwtDecode from 'jwt-decode';
 
 import { settings } from '~/config';
 
-import { LOGIN } from '../constants/ActionTypes';
+import {
+  LOGIN,
+  RESET_APIERROR,
+  SET_APIERROR,
+} from '@plone/volto/constants/ActionTypes';
 
 let socket = null;
 
@@ -79,10 +83,19 @@ export default api => ({ dispatch, getState }) => next => action => {
         });
     actionPromise.then(
       result => {
+        // result has statusCode and headers for future feature implementations
+        const { body } = result;
+
+        if (getState().apierror.connectionRefused) {
+          next({
+            ...rest,
+            type: RESET_APIERROR,
+          });
+        }
         if (type === LOGIN && settings.websockets) {
-          cookie.save('auth_token', result.token, {
+          cookie.save('auth_token', body.token, {
             path: '/',
-            expires: new Date(jwtDecode(result.token).exp * 1000),
+            expires: new Date(jwtDecode(body.token).exp * 1000),
           });
           api.get('/@wstoken').then(res => {
             socket = new WebSocket(
@@ -106,9 +119,31 @@ export default api => ({ dispatch, getState }) => next => action => {
             };
           });
         }
-        return next({ ...rest, result, type: `${type}_SUCCESS` });
+        return next({ ...rest, result: body, type: `${type}_SUCCESS` });
       },
-      error => next({ ...rest, error, type: `${type}_FAIL` }),
+      error => {
+        // Response error is marked crossDomain if CORS error happen
+        // if (error.crossDomain) {
+        //   next({
+        //     ...rest,
+        //     error,
+        //     statusCode: 'CORSERROR',
+        //     connectionRefused: false,
+        //     type: SET_APIERROR,
+        //   });
+        // }
+        // Only SRR can set ECONNREFUSED
+        if (error.code === 'ECONNREFUSED') {
+          next({
+            ...rest,
+            error,
+            statusCode: error.code,
+            connectionRefused: true,
+            type: SET_APIERROR,
+          });
+        }
+        return next({ ...rest, error, type: `${type}_FAIL` });
+      },
     );
   }
 

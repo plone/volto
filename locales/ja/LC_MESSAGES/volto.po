@@ -252,6 +252,10 @@ msgstr "比較"
 msgid "Confirm password"
 msgstr "パスワードを確認"
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "Connection refused"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Contact"
 msgstr "お問い合わせ"
@@ -1234,12 +1238,22 @@ msgstr "削除をするタグ"
 msgid "Text"
 msgstr "テキスト"
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+#: components/theme/CorsError/CorsError
 #: components/theme/NotFound/NotFound
 msgid "Thank you."
 msgstr "ありがとうございます。"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
+msgstr ""
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object API_PATH or the RAZZLE_API_PATH Volto's enviroment variable."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
 msgstr ""
 
 #: components/theme/Register/Register
@@ -1252,6 +1266,10 @@ msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+msgid "There is a configuration problem on the backend"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -1394,6 +1412,14 @@ msgstr "表示"
 #: components/manage/Display/Display
 msgid "Viewmode"
 msgstr "表示"
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
+msgstr ""
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
