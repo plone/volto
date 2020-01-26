@@ -2,8 +2,6 @@
 
 ## 4.0.0 (unreleased)
 
-### Added
-
 ### Changes
 
 - Fix token expiration/renewer timer, this fixes #674 @sneridagh
