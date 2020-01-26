@@ -7,6 +7,87 @@
 ### Changes
 
 - Fix token expiration/renewer timer, this fixes #674 @sneridagh
+- Updated Maps block to the sidebar and image block look and feel @sneridagh
+- Update video block to the sidebar and get the image block look and feel @sneridagh
+
+### Internal
+
+- Fix and update to latest husky and lint-staged @sneridagh
+- Fix for i18n to use defaultMessages instead to default to the id @sneridagh
+- Update `babel-plugin-react-intl` to latest @sneridagh
+
+## 4.0.0-alpha.32 (2020-01-24)
+
+### Added
+
+- Lead image behavior block @sneridagh sponsored by CMSCOM.jp @terapyon
+
+### Changes
+
+- Make login component honors the returnUrl prop if called from any pathname @sneridagh
+
+### Internal
+
+- Try to improve the realibility of the Cypress tests, reorganize commands @sneridagh
+- Upgrade to Plone 5.2.1, add `Products.PloneHotfix20200121` @sneridagh
+- Force global use of `browserslist` package to get rid of message on build @sneridagh
+
+## 4.0.0-alpha.31 (2020-01-22)
+
+### Changes
+
+- fix `SelectWidget`, when there is a vocabulary and no choices @sneridagh
+
+## 4.0.0-alpha.30 (2020-01-22)
+
+### Added
+
+- Added listing block @pnicolli @rodfersou @sneridagh @giuliaghisini
+
+### Changes
+
+- fix bug in TokenWidget and ArrayWidget when removing all elements. @giuliaghisini
+- fix listing block customization @giuliaghisini
+- fix Querystring widgets failing to render if the `MultipleSelectionWidget` field applied is not included in the site vocabulary returned by `@querystring`. This applies to `Subject` field when the tag value is not there any more. @sneridagh
+- fix QueryString widget on creation when query is empty, fixed broken when editing after too @sneridagh
+
+## 4.0.0-alpha.29 (2020-01-18)
+
+### Changes
+
+- Remove dangling reference to external data in Image block not used anymore, causing confusion and lead to dead (and wrong) code @sneridagh
+- Remove last remains of the append secondary actions, remove Image block toolbar. Update i18n, fix small issues in Image block @sneridagh
+
+## 4.0.0-alpha.28 (2020-01-17)
+
+### Changes
+
+- Fix ToC anchor links in Firefox @robgietema
+
+## 4.0.0-alpha.27 (2020-01-17)
+
+### Changes
+
+- Fix removing links in blocks @robgietema
+
+## 4.0.0-alpha.26 (2020-01-15)
+
+### Added
+
+- German translation updated @timo
+
+## 4.0.0-alpha.25 (2020-01-14)
+
+### Added
+
+- German translation for TOC @timo
+
+## 4.0.0-alpha.24 (2020-01-14)
+
+### Added
+
+- Added customStyleMap param to Editor of draftjs @giuliaghisini
+- Added Table of Contents block @robgietema
 
 ## 4.0.0-alpha.23 (2020-01-14)
 
@@ -17,17 +98,19 @@
 
 ### Changes
 
+- Avoid console warnings in AddLinkForm.jsx @tiberiuichim
 - More cleaning the body classname from the current displayname view @sneridagh
 - Make it possible to paste links, lists, b and i Elements into text-blocks
   @jackahl
 - added option to include mp4 files from a remote source in video Block @steffenri @jackahl
+- Make it possible to paste links, lists, b and i Elements into text-blocks @jackahl
 
 ## 4.0.0-alpha.22 (2020-01-04)
 
 ### Changes
 
 - Disable all styling when copying text from another source (e.g. MS Word) into a text block @jackahl
-- Avoid console warnings in QuerystringWidget @tiberich
+- Avoid console warnings in QuerystringWidget @tiberiuichim
 - Fix body classname based on the current content type @sneridagh
 
 ## 4.0.0-alpha.21 (2020-01-02)

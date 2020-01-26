@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import ImageSidebar from './ImageSidebar';
+import ImageSidebar from '../Blocks/Image/ImageSidebar';
 
 const mockStore = configureStore();
 

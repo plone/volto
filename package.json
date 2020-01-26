@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "4.0.0-alpha.23",
+  "version": "4.0.0-alpha.32",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -171,26 +171,21 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,md}": [
-      "npx eslint --fix",
+      "npx eslint --max-warnings=0 --fix",
       "npx prettier --single-quote --write",
-      "git add",
       "yarn test:husky"
     ],
     "theme/**/*.{css,less}": [
-      "npx stylelint --fix",
-      "git add"
+      "npx stylelint --fix"
     ],
     "src/**/*.{css,less}": [
-      "npx stylelint --fix",
-      "git add"
+      "npx stylelint --fix"
     ],
     "theme/**/*.overrides": [
-      "npx stylelint --fix --syntax less",
-      "git add"
+      "npx stylelint --fix --syntax less"
     ],
     "src/**/*.overrides": [
-      "npx stylelint --fix --syntax less",
-      "git add"
+      "npx stylelint --fix --syntax less"
     ]
   },
   "engines": {
@@ -221,7 +216,7 @@
     "babel-eslint": "10.0.3",
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-plugin-lodash": "3.3.4",
-    "babel-plugin-react-intl": "3.0.1",
+    "babel-plugin-react-intl": "5.1.17",
     "babel-plugin-root-import": "6.1.0",
     "bundlesize": "0.18.0",
     "bundlewatch": "0.2.5",
@@ -235,10 +230,10 @@
     "cypress-plugin-retries": "1.5.0",
     "draft-js": "0.10.5",
     "draft-js-block-breakout-plugin": "2.0.1",
-    "draft-js-buttons": "2.0.1",
-    "draft-js-import-html": "1.2.1",
-    "draft-js-inline-toolbar-plugin": "2.0.1",
-    "draft-js-plugins-editor": "2.0.4",
+    "draft-js-buttons": "2.0.2",
+    "draft-js-import-html": "1.4.1",
+    "draft-js-inline-toolbar-plugin": "2.0.3",
+    "draft-js-plugins-editor": "2.1.1",
     "draft-js-plugins-utils": "2.0.3",
     "draftjs-filters": "2.3.0",
     "eslint": "5.16.0",
@@ -258,7 +253,7 @@
     "hamburgers": "1.1.3",
     "handlebars": "4.3.0",
     "history": "4.10.1",
-    "husky": "3.1.0",
+    "husky": "4.2.1",
     "jest-css-modules": "1.1.0",
     "jest-file": "1.0.0",
     "js-yaml": "3.13.1",
@@ -266,7 +261,7 @@
     "jwt-decode": "2.2.0",
     "less": "3.10.3",
     "less-loader": "5.0.0",
-    "lint-staged": "9.5.0",
+    "lint-staged": "10.0.2",
     "locale": "0.1.0",
     "lodash": "4.17.15",
     "lodash-move": "1.1.1",
@@ -289,6 +284,7 @@
     "razzle": "3.0.0",
     "razzle-plugin-bundle-analyzer": "1.1.3",
     "react": "16.12.0",
+    "react-anchor-link-smooth-scroll": "1.0.12",
     "react-animate-height": "2.0.17",
     "react-cookie": "1.0.5",
     "react-dnd": "5.0.0",
@@ -337,5 +333,8 @@
     "webpack": "4.41.2",
     "xmlrpc": "1.3.2"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "resolutions": {
+    "browserslist": "4.8.3"
+  }
 }

@@ -55,6 +55,10 @@ msgstr "Aggiungi una descrizione…"
 msgid "Add block..."
 msgstr ""
 
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Add criteria"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr "Aggiungi campo"
@@ -83,7 +87,10 @@ msgstr ""
 msgid "Add {type}"
 msgstr "Aggiungi {type}"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Alignment"
 msgstr "Allineamento"
 
@@ -91,7 +98,8 @@ msgstr "Allineamento"
 msgid "All"
 msgstr "Tutti"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr "Testo alternativo"
 
@@ -168,7 +176,6 @@ msgid "Cell"
 msgstr "Cella"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
 msgstr ""
@@ -246,6 +253,10 @@ msgstr "Contatti"
 msgid "Contact form"
 msgstr "Form di contatto"
 
+#: components/manage/Blocks/Listing/Edit
+msgid "Contained items"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
@@ -268,6 +279,10 @@ msgstr "Informazioni sul copyright o su altri diritti dell'elemento."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
 msgstr "Autori"
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Criteria"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
@@ -434,21 +449,17 @@ msgstr ""
 msgid "Email sent"
 msgstr "Email inviata"
 
+#: components/manage/Blocks/Maps/Edit
+msgid "Embed code error, please follow the instructions and try again."
+msgstr ""
+
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Enter Map URL"
-msgstr "Inserisci l'URL della mappa"
-
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
 msgstr "Inserisci un URL o un titolo"
-
-#: components/manage/Blocks/Video/Edit
-msgid "Enter Video URL"
-msgstr "Inserisci l'URL del video"
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -459,6 +470,10 @@ msgstr "Inserisci un indirizzo e-mail. Esso sarà il tuo nome utente. Rispettiam
 #: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
 msgstr "Inserisci il tuo nome completo, ad esempio Mario Rossi."
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Enter map Embed Code"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
@@ -492,7 +507,8 @@ msgstr ""
 msgid "Expiration Date"
 msgstr "Data di scadenza"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
 msgstr "URL esterno"
 
@@ -517,7 +533,6 @@ msgid "From"
 msgstr "Da"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Full"
 msgstr ""
@@ -598,7 +613,8 @@ msgstr "Se hai dimenticato la tua password, {forgotpassword}."
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr "Se non ti sei ancora iscritto, compila il {registrationform} per diventare un collaboratore."
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "Immagine"
 
@@ -630,6 +646,10 @@ msgstr "Inserisci riga sotto"
 msgid "Insert row before"
 msgstr "Inserisci riga sopra"
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Item batch size"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Elemento/i copiato/i."
@@ -656,15 +676,25 @@ msgstr "Lingua"
 msgid "Last modified"
 msgstr "Ultima modifica"
 
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "Lead Image"
+msgstr ""
+
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr "Link a"
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Listing"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -695,13 +725,13 @@ msgstr "Nome utente"
 msgid "Make the table compact"
 msgstr "Rendi la tabella compatta"
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Maps data error"
-msgstr "Errore nei dati delle mappe"
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Map"
+msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Maps instructions"
-msgstr "Istruzioni per le mappe"
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Maps URL"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -750,18 +780,43 @@ msgstr ""
 msgid "New password"
 msgstr "Nuova password"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
 msgstr "Nessuna immagine selezionata"
 
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in Lead Image content field"
+msgstr ""
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in image content field"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
+msgid "No items found in this container."
+msgstr ""
+
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "No map selected"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "La ricerca non ha prodotto risultati."
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "No selection"
+msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectWidget
 msgid "No value"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "No video selected"
 msgstr ""
 
 #: components/manage/Workflow/Workflow
@@ -776,7 +831,10 @@ msgstr "Nessuno"
 msgid "Ok"
 msgstr "Ok"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Open in a new tab"
 msgstr "Apri in un nuovo tab"
 
@@ -784,7 +842,8 @@ msgstr "Apri in un nuovo tab"
 msgid "Open menu"
 msgstr "Apri menu"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
 msgstr "Origine"
 
@@ -826,6 +885,10 @@ msgstr "Persone responsabili della creazione del contenuto di questo elemento. I
 
 #: components/manage/Blocks/Video/Edit
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
@@ -925,6 +988,18 @@ msgstr "Obbligatorio"
 msgid "Required input is missing."
 msgstr "Un campo richiesto è mancante."
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Results limit"
+msgstr ""
+
+#: components/manage/Blocks/Listing/Edit
+msgid "Results preview"
+msgstr "Anteprima dei risultati"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Reversed order"
+msgstr ""
+
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr "Ripristina questa versione"
@@ -934,7 +1009,6 @@ msgid "Richtext"
 msgstr "Testo formattato"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
 msgstr ""
@@ -948,7 +1022,6 @@ msgid "Roles"
 msgstr ""
 
 #: components/manage/Add/Add
-#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1076,7 +1149,12 @@ msgstr "Configurazione del sito"
 msgid "Sorry, something went wrong with your request"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Sort on"
+msgstr ""
+
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Listing/ListingData
 msgid "Source"
 msgstr ""
 
@@ -1127,6 +1205,10 @@ msgstr "Tabella"
 #: components/manage/Blocks/Table/Edit
 msgid "Table color inverted"
 msgstr "Tabella a colori invertiti"
+
+#: components/manage/Blocks/ToC/View
+msgid "Table of Contents"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
@@ -1198,6 +1280,10 @@ msgstr "Titolo"
 msgid "Type"
 msgstr "Tipo"
 
+#: components/manage/Blocks/Video/Edit
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr ""
+
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
 msgstr "Digita testo…"
@@ -1218,6 +1304,10 @@ msgstr ""
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Carica"
+
+#: components/manage/Blocks/LeadImage/Edit
+msgid "Upload a lead image in the 'Lead Image' content field."
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
@@ -1273,6 +1363,14 @@ msgstr "Impostazioni utenti e gruppi"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
 msgstr "Panoramica delle versioni"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video URL"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 msgid "View"
@@ -1429,6 +1527,10 @@ msgstr "Testo"
 #: config/Blocks
 msgid "title"
 msgstr "Titolo"
+
+#: config/Blocks
+msgid "toc"
+msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"

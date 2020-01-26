@@ -88,8 +88,10 @@ export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChoos
 
 export EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/Edit';
 export EditTitleBlock from '@plone/volto/components/manage/Blocks/Title/Edit';
+export EditToCBlock from '@plone/volto/components/manage/Blocks/ToC/Edit';
 export EditTextBlock from '@plone/volto/components/manage/Blocks/Text/Edit';
 export EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
+export EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit';
 export EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
 export EditBlock from '@plone/volto/components/manage/Blocks/Block/Edit';
 export EditHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/Edit';
@@ -99,15 +101,26 @@ export EditHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/Edit';
 
 export ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
 export ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
+export ViewToCBlock from '@plone/volto/components/manage/Blocks/ToC/View';
 export ViewTextBlock from '@plone/volto/components/manage/Blocks/Text/View';
 export ViewImageBlock from '@plone/volto/components/manage/Blocks/Image/View';
+export ViewListingBlock from '@plone/volto/components/manage/Blocks/Listing/View';
 export ViewVideoBlock from '@plone/volto/components/manage/Blocks/Video/View';
 export ViewMapBlock from '@plone/volto/components/manage/Blocks/Maps/View';
 export ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
 
-export ImageSidebar from '@plone/volto/components/manage/Sidebar/ImageSidebar';
+export ListingBlockBody from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
+export ListingBlockData from '@plone/volto/components/manage/Blocks/Listing/ListingData';
+export ListingBlockSidebar from '@plone/volto/components/manage/Blocks/Listing/ListingSidebar';
+
+export ImageSidebar from '@plone/volto/components/manage/Blocks/Image/ImageSidebar';
+export MapsSidebar from '@plone/volto/components/manage/Blocks/Maps/MapsSidebar';
+export VideoSidebar from '@plone/volto/components/manage/Blocks/Video/VideoSidebar';
+export LeadImageSidebar from '@plone/volto/components/manage/Blocks/LeadImage/LeadImageSidebar';
 
 export PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
 export More from '@plone/volto/components/manage/Toolbar/More';
 export Types from '@plone/volto/components/manage/Toolbar/Types';
 export Toast from '@plone/volto/components/manage/Toast/Toast';
+
+export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
