@@ -25,7 +25,7 @@ build-backend:  ## Build Plone 5.2
 	(cd api && virtualenv --clear --python=python3 .)
 	(cd api && bin/pip install --upgrade pip)
 	(cd api && bin/pip install -r requirements.txt)
-	(cd api && bin/buildout -c plone-5.2.x.cfg)
+	(cd api && bin/buildout)
 
 .PHONY: Build Plone 5.2 in specific port
 build-backend-withport:  ## Build Plone 5.2 with port

@@ -90,7 +90,7 @@ const blocks = {
       }),
     );
     return processedChildren.map(
-      chunk => chunk && <p key={keys[0]}>{chunk}</p>,
+      (chunk, index) => chunk && <p key={keys[index]}>{chunk}</p>,
     );
   },
   atomic: getAtomic,
@@ -100,15 +100,35 @@ const blocks = {
   'header-one': (children, { keys }) =>
     children.map((child, i) => <h1 key={keys[i]}>{child}</h1>),
   'header-two': (children, { keys }) =>
-    children.map((child, i) => <h2 key={keys[i]}>{child}</h2>),
+    children.map((child, i) => (
+      <h2 id={keys[i]} key={keys[i]}>
+        {child}
+      </h2>
+    )),
   'header-three': (children, { keys }) =>
-    children.map((child, i) => <h3 key={keys[i]}>{child}</h3>),
+    children.map((child, i) => (
+      <h3 id={keys[i]} key={keys[i]}>
+        {child}
+      </h3>
+    )),
   'header-four': (children, { keys }) =>
-    children.map((child, i) => <h4 key={keys[i]}>{child}</h4>),
+    children.map((child, i) => (
+      <h4 id={keys[i]} key={keys[i]}>
+        {child}
+      </h4>
+    )),
   'header-five': (children, { keys }) =>
-    children.map((child, i) => <h5 key={keys[i]}>{child}</h5>),
+    children.map((child, i) => (
+      <h5 id={keys[i]} key={keys[i]}>
+        {child}
+      </h5>
+    )),
   'header-six': (children, { keys }) =>
-    children.map((child, i) => <h6 key={keys[i]}>{child}</h6>),
+    children.map((child, i) => (
+      <h6 id={keys[i]} key={keys[i]}>
+        {child}
+      </h6>
+    )),
   'code-block': (children, { keys }) => (
     <pre key={keys[0]} style={styles.codeBlock}>
       {addBreaklines(children)}
