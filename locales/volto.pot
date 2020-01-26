@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2019-11-08T16:33:47.966Z\n"
+"POT-Creation-Date: 2020-01-25T17:41:47.816Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -40,6 +40,13 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
+#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/SchemaWidget
+# defaultMessage: Add
+msgid "Add"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 # defaultMessage: Add Content...
 msgid "Add Content"
@@ -58,6 +65,11 @@ msgstr ""
 #: components/manage/Form/Form
 # defaultMessage: Add block...
 msgid "Add block..."
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+# defaultMessage: Add criteria
+msgid "Add criteria"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -95,7 +107,10 @@ msgstr ""
 msgid "Add {type}"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr ""
@@ -105,7 +120,8 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Alt text
 msgid "Alt text"
 msgstr ""
@@ -156,6 +172,11 @@ msgstr ""
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr ""
 
+#: components/theme/Breadcrumbs/Breadcrumbs
+# defaultMessage: Breadcrumbs
+msgid "Breadcrumbs"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Browse
 msgid "Browse"
@@ -188,6 +209,12 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Cell
 msgid "Cell"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+#: helpers/AlignBlock/AlignBlock
+# defaultMessage: Center
+msgid "Center"
 msgstr ""
 
 #: components/manage/History/History
@@ -237,6 +264,11 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
+#: components/manage/Widgets/SelectWidget
+# defaultMessage: Close
+msgid "Close"
+msgstr ""
+
 #: components/theme/Navigation/Navigation
 # defaultMessage: Close menu
 msgid "Close menu"
@@ -275,7 +307,13 @@ msgstr ""
 msgid "Contact form"
 msgstr ""
 
+#: components/manage/Blocks/Listing/Edit
+# defaultMessage: Contained items
+msgid "Contained items"
+msgstr ""
+
 #: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
 # defaultMessage: Contents
 msgid "Contents"
 msgstr ""
@@ -300,6 +338,11 @@ msgstr ""
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Creators
 msgid "Creators"
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+# defaultMessage: Criteria
+msgid "Criteria"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -349,6 +392,10 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
+#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 # defaultMessage: Delete
 msgid "Delete"
@@ -456,6 +503,8 @@ msgstr ""
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/CheckboxWidget
 #: components/theme/Comments/Comments
 # defaultMessage: Edit
 msgid "Edit"
@@ -492,18 +541,18 @@ msgid "Email sent"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-# defaultMessage: Enter Map URL
-msgid "Enter Map URL"
+# defaultMessage: Embed code error, please follow the instructions and try again.
+msgid "Embed code error, please follow the instructions and try again."
+msgstr ""
+
+#: components/manage/Blocks/Maps/View
+# defaultMessage: Embeded Google Maps
+msgid "Embeded Google Maps"
 msgstr ""
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 # defaultMessage: Enter URL or title
 msgid "Enter URL or title"
-msgstr ""
-
-#: components/manage/Blocks/Video/Edit
-# defaultMessage: Enter Video URL
-msgid "Enter Video URL"
 msgstr ""
 
 #: components/theme/Register/Register
@@ -516,6 +565,11 @@ msgstr ""
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Enter map Embed Code
+msgid "Enter map Embed Code"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -547,12 +601,18 @@ msgstr ""
 msgid "Exclude from navigation"
 msgstr ""
 
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Expand sidebar
+msgid "Expand sidebar"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Expiration Date
 msgid "Expiration Date"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: External URL
 msgid "External URL"
 msgstr ""
@@ -582,6 +642,12 @@ msgstr ""
 msgid "From"
 msgstr ""
 
+#: components/manage/Blocks/Maps/Edit
+#: helpers/AlignBlock/AlignBlock
+# defaultMessage: Full
+msgid "Full"
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
@@ -599,6 +665,21 @@ msgstr ""
 msgid "GNU GPL license"
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: Global role
+msgid "Global role"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Google Maps Embedded Block
+msgid "Google Maps Embedded Block"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Group
+msgid "Group"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Group created
 msgid "Group created"
@@ -612,6 +693,12 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Groups
 msgid "Groups"
+msgstr ""
+
+#: components/manage/History/History
+#: components/manage/Toolbar/More
+# defaultMessage: History
+msgid "History"
 msgstr ""
 
 #: components/manage/History/History
@@ -655,7 +742,8 @@ msgstr ""
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Image
 msgid "Image"
 msgstr ""
@@ -668,6 +756,11 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 # defaultMessage: Inherit permissions from higher levels
 msgid "Inherit permissions from higher levels"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+# defaultMessage: Inherited value
+msgid "Inherited value"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
@@ -688,6 +781,11 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Insert row before
 msgid "Insert row before"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: Item batch size
+msgid "Item batch size"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -722,9 +820,28 @@ msgstr ""
 msgid "Last modified"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: Lead Image
+msgid "Lead Image"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+#: helpers/AlignBlock/AlignBlock
+# defaultMessage: Left
+msgid "Left"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingSidebar
+# defaultMessage: Listing
+msgid "Listing"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -744,6 +861,11 @@ msgid "Log in"
 msgstr ""
 
 #: components/theme/Login/Login
+# defaultMessage: Login
+msgid "Login"
+msgstr ""
+
+#: components/theme/Login/Login
 # defaultMessage: Login Failed
 msgid "Login Failed"
 msgstr ""
@@ -758,14 +880,14 @@ msgstr ""
 msgid "Make the table compact"
 msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-# defaultMessage: Embed code error, please follow the instructions and try again.
-msgid "Maps data error"
+#: components/manage/Blocks/Maps/MapsSidebar
+# defaultMessage: Map
+msgid "Map"
 msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-# defaultMessage: Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it.
-msgid "Maps instructions"
+#: components/manage/Blocks/Maps/MapsSidebar
+# defaultMessage: Maps URL
+msgid "Maps URL"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
@@ -779,9 +901,19 @@ msgstr ""
 msgid "Minimum length is {len}."
 msgstr ""
 
+#: components/manage/Controlpanels/Controlpanels
+# defaultMessage: Moderate Comments
+msgid "Moderate Comments"
+msgstr ""
+
 #: components/manage/Controlpanels/ModerateComments
 # defaultMessage: Moderate comments
 msgid "Moderate comments"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: More
+msgid "More"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -805,20 +937,68 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+#: error
+# defaultMessage: Navigate back
+msgid "Navigate back"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: New password
 msgid "New password"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: No image set in Lead Image content field
+msgid "No image set in Lead Image content field"
+msgstr ""
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+# defaultMessage: No image set in image content field
+msgid "No image set in image content field"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
+# defaultMessage: No items found in this container.
+msgid "No items found in this container."
+msgstr ""
+
+#: components/manage/Blocks/Maps/MapsSidebar
+# defaultMessage: No map selected
+msgid "No map selected"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
 msgid "No results found."
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: No selection
+msgid "No selection"
+msgstr ""
+
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectWidget
+# defaultMessage: No value
+msgid "No value"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No video selected
+msgid "No video selected"
+msgstr ""
+
+#: components/manage/Workflow/Workflow
+# defaultMessage: No workflow
+msgid "No workflow"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -831,7 +1011,10 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr ""
@@ -841,7 +1024,8 @@ msgstr ""
 msgid "Open menu"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
 msgstr ""
@@ -850,6 +1034,12 @@ msgstr ""
 #: components/theme/Login/Login
 # defaultMessage: Password
 msgid "Password"
+msgstr ""
+
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
+# defaultMessage: Password reset
+msgid "Password reset"
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
@@ -873,9 +1063,25 @@ msgstr ""
 msgid "Personal Preferences"
 msgstr ""
 
+#: components/manage/Toolbar/More
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Personal tools
+msgid "Personal tools"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first.
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
+msgstr ""
+
+#: components/manage/Blocks/Video/Edit
+# defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
+msgid "Please enter a valid URL by deleting the block and adding a new video block."
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it.
+msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
@@ -913,6 +1119,7 @@ msgstr ""
 msgid "Preferences"
 msgstr ""
 
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Preview
 msgid "Preview"
@@ -995,6 +1202,21 @@ msgstr ""
 msgid "Required input is missing."
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: Results limit
+msgid "Results limit"
+msgstr ""
+
+#: components/manage/Blocks/Listing/Edit
+# defaultMessage: Results preview
+msgid "Results preview"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: Reversed order
+msgid "Reversed order"
+msgstr ""
+
 #: components/manage/History/History
 # defaultMessage: Revert to this revision
 msgid "Revert to this revision"
@@ -1003,6 +1225,12 @@ msgstr ""
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Richtext
 msgid "Richtext"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+#: helpers/AlignBlock/AlignBlock
+# defaultMessage: Right
+msgid "Right"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1016,7 +1244,6 @@ msgid "Roles"
 msgstr ""
 
 #: components/manage/Add/Add
-#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1071,6 +1298,11 @@ msgstr ""
 msgid "Select columns to show"
 msgstr ""
 
+#: components/manage/Widgets/QuerystringWidget
+# defaultMessage: Select criteria
+msgid "Select criteria"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Select the transition to be used for modifying the items state.
 msgid "Select the transition to be used for modifying the items state."
@@ -1102,6 +1334,11 @@ msgid "Set your password"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
+# defaultMessage: Sharing
+msgid "Sharing"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
 # defaultMessage: Sharing for {title}
 msgid "Sharing for {title}"
 msgstr ""
@@ -1120,6 +1357,16 @@ msgstr ""
 #: components/manage/Contents/ContentsRenameModal
 # defaultMessage: Short name
 msgid "Short name"
+msgstr ""
+
+#: components/manage/Sidebar/Sidebar
+# defaultMessage: Shrink sidebar
+msgid "Shrink sidebar"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Shrink toolbar
+msgid "Shrink toolbar"
 msgstr ""
 
 #: components/theme/Login/Login
@@ -1148,9 +1395,30 @@ msgstr ""
 msgid "Site Setup"
 msgstr ""
 
+#: error
+# defaultMessage: Sorry, something went wrong with your request 
+msgid "Sorry, something went wrong with your request"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: Sort on
+msgid "Sort on"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Listing/ListingData
+# defaultMessage: Source
+msgid "Source"
+msgstr ""
+
 #: components/manage/Blocks/Video/Edit
 # defaultMessage: Specify a youtube video or playlist url
 msgid "Specify a youtube video or playlist url"
+msgstr ""
+
+#: components/manage/Diff/Diff
+# defaultMessage: Split
+msgid "Split"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -1199,6 +1467,11 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Table color inverted
 msgid "Table color inverted"
+msgstr ""
+
+#: components/manage/Blocks/ToC/View
+# defaultMessage: Table of Contents
+msgid "Table of Contents"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -1285,6 +1558,11 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
+#: components/manage/Blocks/Video/Edit
+# defaultMessage: Type a Video (YouTube, Vimeo or mp4) URL
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr ""
+
 #: components/manage/Blocks/Text/Edit
 # defaultMessage: Type text…
 msgid "Type text…"
@@ -1293,6 +1571,11 @@ msgstr ""
 #: components/manage/Blocks/Title/Edit
 # defaultMessage: Type the title…
 msgid "Type the title…"
+msgstr ""
+
+#: components/manage/Diff/Diff
+# defaultMessage: Unified
+msgid "Unified"
 msgstr ""
 
 #: components/manage/Blocks/Block/Edit
@@ -1304,6 +1587,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Upload
 msgid "Upload"
+msgstr ""
+
+#: components/manage/Blocks/LeadImage/Edit
+# defaultMessage: Upload a lead image in the 'Lead Image' content field.
+msgid "Upload a lead image in the 'Lead Image' content field."
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
@@ -1332,6 +1620,11 @@ msgstr ""
 msgid "Used for programmatic access to the fieldset."
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+# defaultMessage: User
+msgid "User"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: User created
 msgid "User created"
@@ -1352,6 +1645,12 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UsersControlpanel
+# defaultMessage: Users and Groups
+msgid "Users and Groups"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Users and groups settings
 msgid "Users and groups settings"
@@ -1360,6 +1659,16 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Version Overview
 msgid "Version Overview"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: Video
+msgid "Video"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: Video URL
+msgid "Video URL"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -1467,6 +1776,11 @@ msgstr ""
 msgid "common"
 msgstr ""
 
+#: components/manage/Blocks/Block/Edit
+# defaultMessage: delete
+msgid "delete"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Description
 msgid "description"
@@ -1522,9 +1836,19 @@ msgstr ""
 msgid "mostUsed"
 msgstr ""
 
+#: error
+# defaultMessage: or try a different page.
+msgid "or try a different page."
+msgstr ""
+
 #: components/theme/Login/Login
 # defaultMessage: registration form
 msgid "registration form"
+msgstr ""
+
+#: error
+# defaultMessage: return to the site root
+msgid "return to the site root"
 msgstr ""
 
 #: config/Blocks
@@ -1540,6 +1864,16 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Title
 msgid "title"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Table of Contents
+msgid "toc"
+msgstr ""
+
+#: components/manage/Toolbar/PersonalTools
+# defaultMessage: user avatar
+msgid "user avatar"
 msgstr ""
 
 #: config/Blocks

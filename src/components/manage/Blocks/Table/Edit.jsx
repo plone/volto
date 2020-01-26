@@ -276,8 +276,6 @@ class Edit extends Component {
       table.rows[this.state.selected.row].cells[this.state.selected.cell].type;
     table.rows[this.state.selected.row].cells[this.state.selected.cell].type =
       type === 'header' ? 'data' : 'header';
-    console.log(type);
-    console.log(table);
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       table,
@@ -421,6 +419,16 @@ class Edit extends Component {
    */
   onDeleteRow() {
     const table = this.props.data.table;
+
+    if (this.state.selected.row === table.rows.length - 1) {
+      this.setState({
+        selected: {
+          row: this.state.selected.row - 1,
+          cell: this.state.selected.cell,
+        },
+      });
+    }
+
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
       table: {

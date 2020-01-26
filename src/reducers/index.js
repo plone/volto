@@ -20,10 +20,12 @@ import groups from '@plone/volto/reducers/groups/groups';
 import messages from '@plone/volto/reducers/messages/messages';
 import navigation from '@plone/volto/reducers/navigation/navigation';
 import querystring from '@plone/volto/reducers/querystring/querystring';
+import querystringsearch from './querystringsearch/querystringsearch';
 import roles from '@plone/volto/reducers/roles/roles';
 import schema from '@plone/volto/reducers/schema/schema';
 import search from '@plone/volto/reducers/search/search';
 import sharing from '@plone/volto/reducers/sharing/sharing';
+import sidebar from '@plone/volto/reducers/sidebar/sidebar';
 import types from '@plone/volto/reducers/types/types';
 import users from '@plone/volto/reducers/users/users';
 import userSession from '@plone/volto/reducers/userSession/userSession';
@@ -54,10 +56,12 @@ const reducers = {
   messages,
   navigation,
   querystring,
+  querystringsearch,
   roles,
   schema,
   search,
   sharing,
+  sidebar,
   types,
   users,
   userSession,

@@ -26,6 +26,10 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  history: {
+    id: 'History',
+    defaultMessage: 'History',
+  },
 });
 
 /**
@@ -119,7 +123,7 @@ class History extends Component {
     reverse(entries);
     return (
       <Container id="page-history">
-        <Helmet title="History" />
+        <Helmet title={this.props.intl.formatMessage(messages.history)} />
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage

@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { isInternalURL, flattenToAppURL } from '../../helpers';
+import { connect } from 'react-redux';
 
 const styles = {
   code: {
@@ -87,7 +90,7 @@ const blocks = {
       }),
     );
     return processedChildren.map(
-      chunk => chunk && <p key={keys[0]}>{chunk}</p>,
+      (chunk, index) => chunk && <p key={keys[index]}>{chunk}</p>,
     );
   },
   atomic: getAtomic,
@@ -97,15 +100,35 @@ const blocks = {
   'header-one': (children, { keys }) =>
     children.map((child, i) => <h1 key={keys[i]}>{child}</h1>),
   'header-two': (children, { keys }) =>
-    children.map((child, i) => <h2 key={keys[i]}>{child}</h2>),
+    children.map((child, i) => (
+      <h2 id={keys[i]} key={keys[i]}>
+        {child}
+      </h2>
+    )),
   'header-three': (children, { keys }) =>
-    children.map((child, i) => <h3 key={keys[i]}>{child}</h3>),
+    children.map((child, i) => (
+      <h3 id={keys[i]} key={keys[i]}>
+        {child}
+      </h3>
+    )),
   'header-four': (children, { keys }) =>
-    children.map((child, i) => <h4 key={keys[i]}>{child}</h4>),
+    children.map((child, i) => (
+      <h4 id={keys[i]} key={keys[i]}>
+        {child}
+      </h4>
+    )),
   'header-five': (children, { keys }) =>
-    children.map((child, i) => <h5 key={keys[i]}>{child}</h5>),
+    children.map((child, i) => (
+      <h5 id={keys[i]} key={keys[i]}>
+        {child}
+      </h5>
+    )),
   'header-six': (children, { keys }) =>
-    children.map((child, i) => <h6 key={keys[i]}>{child}</h6>),
+    children.map((child, i) => (
+      <h6 id={keys[i]} key={keys[i]}>
+        {child}
+      </h6>
+    )),
   'code-block': (children, { keys }) => (
     <pre key={keys[0]} style={styles.codeBlock}>
       {addBreaklines(children)}
@@ -121,12 +144,39 @@ const blocks = {
     )),
 };
 
-const entities = {
-  LINK: (children, entity, { key }) => (
-    <a key={key} href={entity.url}>
+const LinkEntity = connect(state => ({
+  token: state.userSession.token,
+}))(({ token, key, url, target, download, children }) => {
+  const to = token ? url : target || url;
+  if (download) {
+    return token ? (
+      <Link key={key} to={flattenToAppURL(to)}>
+        {children}
+      </Link>
+    ) : (
+      <a key={key} href={download}>
+        {children}
+      </a>
+    );
+  }
+  return isInternalURL(to) ? (
+    <Link key={key} to={flattenToAppURL(to)}>
+      {children}
+    </Link>
+  ) : (
+    <a key={key} href={to} target="_blank" rel="noopener noreferrer">
       {children}
     </a>
+  );
+});
+
+const entities = {
+  LINK: (children, props, { key }) => (
+    <LinkEntity key={key} {...props}>
+      {children}
+    </LinkEntity>
   ),
+
   IMAGE: (children, entity, { key }) => (
     <img key={key} src={entity.src} alt={entity.alt} />
   ),

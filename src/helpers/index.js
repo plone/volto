@@ -12,7 +12,9 @@ export {
   persistAuthToken,
 } from '@plone/volto/helpers/AuthToken/AuthToken';
 export {
+  addAppURL,
   flattenToAppURL,
+  isInternalURL,
   getBaseUrl,
   getIcon,
   getView,

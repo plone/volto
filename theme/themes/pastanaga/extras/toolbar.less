@@ -322,7 +322,7 @@
 
       &-content {
         position: fixed;
-        left: 84px;
+        left: 80px;
         width: 320px;
       }
 
@@ -422,6 +422,11 @@
       }
     }
 
+    .ui.container {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+    }
+
     header {
       display: flex;
       height: 60px;
@@ -467,6 +472,10 @@
       .ui.segment:not(.actions) {
         flex: 1 1 auto;
         overflow-y: auto;
+      }
+
+      .ui.clearing.segment.actions:after {
+        content: initial;
       }
     }
 

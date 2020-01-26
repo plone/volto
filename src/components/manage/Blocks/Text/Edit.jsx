@@ -13,7 +13,7 @@ import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
-
+import { filterEditorState } from 'draftjs-filters';
 import { settings } from '~/config';
 
 import { Icon, BlockChooser } from '../../../../components';
@@ -140,12 +140,33 @@ class Edit extends Component {
    * @returns {undefined}
    */
   onChange(editorState) {
+    const shouldFilterPaste =
+      editorState.getLastChangeType() === 'insert-fragment';
+
     if (
       !isEqual(
         convertToRaw(editorState.getCurrentContent()),
         convertToRaw(this.state.editorState.getCurrentContent()),
       )
     ) {
+      if (shouldFilterPaste) {
+        let filteredState = editorState;
+        filteredState = filterEditorState(
+          {
+            blocks: ['unordered-list-item', 'ordered-list-item'],
+            styles: ['BOLD', 'ITALIC'],
+            entities: [
+              {
+                type: 'LINK',
+                attributes: ['url'],
+              },
+            ],
+            whitespacedCharacters: [],
+          },
+          filteredState,
+        );
+        editorState = filteredState;
+      }
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
         text: convertToRaw(editorState.getCurrentContent()),
@@ -191,6 +212,7 @@ class Edit extends Component {
           ]}
           blockRenderMap={settings.extendedBlockRenderMap}
           blockStyleFn={settings.blockStyleFn}
+          customStyleMap={settings.customStyleMap}
           placeholder={this.props.intl.formatMessage(messages.text)}
           handleReturn={e => {
             if (isSoftNewlineEvent(e)) {
