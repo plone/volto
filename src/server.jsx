@@ -2,6 +2,7 @@ import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-intl-redux';
 import express from 'express';
+import proxy from 'http-proxy-middleware';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-connect';
@@ -35,6 +36,7 @@ import ErrorPage from './error';
 import languages from './constants/Languages';
 
 import configureStore from './store';
+// import { settings } from '~/config';
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
@@ -50,6 +52,14 @@ const locales = {
 };
 
 const server = express();
+if (__DEVELOPMENT__) {
+  server.use(
+    '/Plone',
+    proxy({
+      target: 'http://localhost:8080/',
+    }),
+  );
+}
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
