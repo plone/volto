@@ -3,10 +3,14 @@
  * @module components/manage/Widgets/DatetimeWidget
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Input, Label } from 'semantic-ui-react';
+import { Form, Grid, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
+import moment from 'moment';
+import { SingleDatePicker } from 'react-dates';
+import TimePicker from 'rc-time-picker';
+import 'rc-time-picker/assets/index.css';
 
 /**
  * DatetimeWidget component class.
@@ -22,48 +26,85 @@ const DatetimeWidget = ({
   value,
   onChange,
   fieldSet,
-}) => (
-  <Form.Field
-    inline
-    required={required}
-    error={error.length > 0}
-    className={description ? 'help' : ''}
-    id={`${fieldSet || 'field'}-${id}`}
-  >
-    <Grid>
-      <Grid.Row stretched>
-        <Grid.Column width="4">
-          <div className="wrapper">
-            <label htmlFor={`field-${id}`}>{title}</label>
-          </div>
-        </Grid.Column>
-        <Grid.Column width="8">
-          <Input
-            id={`field-${id}`}
-            name={id}
-            type="datetime-local"
-            value={value || ''}
-            onChange={({ target }) =>
-              onChange(id, target.value === '' ? undefined : target.value)
-            }
-          />
-          {map(error, message => (
-            <Label key={message} basic color="red" pointing>
-              {message}
-            </Label>
-          ))}
-        </Grid.Column>
-      </Grid.Row>
-      {description && (
+}) => {
+  const [focused, setFocused] = useState(false);
+  const [date, setDate] = useState(value ? moment(value) : moment());
+  const [time, setTime] = useState(value ? moment(value) : moment());
+
+  const onDateChange = date => {
+    setDate(date);
+    onDateTimeChange(date);
+  };
+
+  const onTimeChange = time => {
+    setTime(time);
+    onDateTimeChange();
+  };
+
+  const onDateTimeChange = () => {
+    let newDate = date;
+    newDate.hours(time.hours());
+    newDate.minutes(time.minutes());
+    newDate.seconds(0);
+    console.log(date.toISOString());
+    onChange(id, newDate.toISOString());
+  };
+
+  return (
+    <Form.Field
+      inline
+      required={required}
+      error={error.length > 0}
+      className={description ? 'help' : ''}
+      id={`${fieldSet || 'field'}-${id}`}
+    >
+      <Grid>
         <Grid.Row stretched>
-          <Grid.Column stretched width="12">
-            <p className="help">{description}</p>
+          <Grid.Column width="4">
+            <div className="wrapper">
+              <label htmlFor={`field-${id}`}>{title}</label>
+            </div>
+          </Grid.Column>
+          <Grid.Column width="8">
+            {/* <Input
+              id={`field-${id}`}
+              name={id}
+              type="datetime-local"
+              value={value || ''}
+              onChange={({ target }) =>
+                onChange(id, target.value === '' ? undefined : target.value)
+              }
+            /> */}
+            <SingleDatePicker
+              date={date}
+              onDateChange={date => onDateChange(date)}
+              focused={focused}
+              onFocusChange={({ focused }) => setFocused(focused)}
+              id={id}
+            />
+            <TimePicker
+              defaultValue={time}
+              onChange={time => onTimeChange(time)}
+              showSecond={false}
+            />
+            {map(error, message => (
+              <Label key={message} basic color="red" pointing>
+                {message}
+              </Label>
+            ))}
           </Grid.Column>
         </Grid.Row>
-      )}
-    </Grid>
-  </Form.Field>
-);
+        {description && (
+          <Grid.Row stretched>
+            <Grid.Column stretched width="12">
+              <p className="help">{description}</p>
+            </Grid.Column>
+          </Grid.Row>
+        )}
+      </Grid>
+    </Form.Field>
+  );
+};
 
 /**
  * Property types.

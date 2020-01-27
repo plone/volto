@@ -10,6 +10,9 @@ import '~/theme';
 import configureStore from './store';
 import { Api, persistAuthToken, ScrollToTop } from './helpers';
 
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+
 export const history = createBrowserHistory();
 
 export default () => {
