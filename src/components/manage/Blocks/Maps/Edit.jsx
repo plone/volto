@@ -9,18 +9,35 @@ import { Button, Input, Message } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import cx from 'classnames';
 
-import { Icon } from '../../../../components';
-import clearSVG from '../../../../icons/clear.svg';
-import imageLeftSVG from '../../../../icons/image-left.svg';
-import imageRightSVG from '../../../../icons/image-right.svg';
-import imageFitSVG from '../../../../icons/image-fit.svg';
-import imageFullSVG from '../../../../icons/image-full.svg';
-import globeSVG from '../../../../icons/globe.svg';
+import { Icon, SidebarPortal, MapsSidebar } from '@plone/volto/components';
+import clearSVG from '@plone/volto/icons/clear.svg';
+import aheadSVG from '@plone/volto/icons/ahead.svg';
+import mapsBlockSVG from '@plone/volto/components/manage/Blocks/Maps/block-maps.svg';
 
 const messages = defineMessages({
-  ImageBlockInputPlaceholder: {
-    id: 'Enter Map URL',
-    defaultMessage: 'Enter Map URL',
+  MapsBlockInputPlaceholder: {
+    id: 'Enter map Embed Code',
+    defaultMessage: 'Enter map Embed Code',
+  },
+  left: {
+    id: 'Left',
+    defaultMessage: 'Left',
+  },
+  right: {
+    id: 'Right',
+    defaultMessage: 'Right',
+  },
+  center: {
+    id: 'Center',
+    defaultMessage: 'Center',
+  },
+  full: {
+    id: 'Full',
+    defaultMessage: 'Full',
+  },
+  GoogleMapsEmbeddedBlock: {
+    id: 'Google Maps Embedded Block',
+    defaultMessage: 'Google Maps Embedded Block',
   },
 });
 
@@ -59,25 +76,11 @@ class Edit extends Component {
     super(props);
     this.getSrc = this.getSrc.bind(this);
     this.state = {
-      uploading: false,
       url: '',
       error: null,
     };
     this.onSubmitUrl = this.onSubmitUrl.bind(this);
     this.onKeyDownVariantMenuForm = this.onKeyDownVariantMenuForm.bind(this);
-  }
-
-  /**
-   * Align block handler
-   * @method onAlignBlock
-   * @param {string} align Alignment option
-   * @returns {undefined}
-   */
-  onAlignBlock(align) {
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
-      align,
-    });
   }
 
   /**
@@ -88,7 +91,7 @@ class Edit extends Component {
    */
   onChangeUrl = ({ target }) => {
     this.setState({
-      url: this.getSrc(target.value),
+      url: target.value,
     });
   };
 
@@ -101,7 +104,7 @@ class Edit extends Component {
   onSubmitUrl() {
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
-      url: this.state.url,
+      url: this.getSrc(this.state.url),
     });
   }
 
@@ -143,6 +146,12 @@ class Edit extends Component {
     return iframe[0].src;
   }
 
+  resetSubmitUrl = () => {
+    this.setState({
+      url: '',
+    });
+  };
+
   /**
    * Render method.
    * @method render
@@ -154,97 +163,21 @@ class Edit extends Component {
         className={cx(
           'block maps align',
           {
-            selected: this.props.selected,
             center: !Boolean(this.props.data.align),
           },
           this.props.data.align,
         )}
       >
-        {this.props.selected && !!this.props.data.url && (
-          <div className="toolbar">
-            <Button.Group>
-              <Button
-                icon
-                basic
-                aria-label="Left"
-                onClick={() => this.onAlignBlock('left')}
-                active={this.props.data.align === 'left'}
-              >
-                <Icon name={imageLeftSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                aria-label="Right"
-                onClick={() => this.onAlignBlock('right')}
-                active={this.props.data.align === 'right'}
-              >
-                <Icon name={imageRightSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                aria-label="Center"
-                onClick={() => this.onAlignBlock('center')}
-                active={
-                  this.props.data.align === 'center' || !this.props.data.align
-                }
-              >
-                <Icon name={imageFitSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                aria-label="Full"
-                onClick={() => this.onAlignBlock('full')}
-                active={this.props.data.align === 'full'}
-              >
-                <Icon name={imageFullSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <div className="separator" />
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() =>
-                  this.props.onChangeBlock(this.props.block, {
-                    ...this.props.data,
-                    url: '',
-                  })
-                }
-              >
-                <Icon name={clearSVG} size="24px" color="#e40166" />
-              </Button>
-            </Button.Group>
-          </div>
-        )}
-        {this.props.selected && !this.props.data.url && (
-          <div className="toolbar">
-            <Icon name={globeSVG} size="24px" />
-            <Input
-              onKeyDown={this.onKeyDownVariantMenuForm}
-              onChange={this.onChangeUrl}
-              placeholder={this.props.intl.formatMessage(
-                messages.ImageBlockInputPlaceholder,
-              )}
-            />
-          </div>
-        )}
         {this.props.data.url ? (
           <div
-            className={cx('video-inner', {
+            className={cx('maps-inner', {
               'full-width': this.props.data.align === 'full',
             })}
           >
             <iframe
-              title="Google Maps Embedded Block"
+              title={this.props.intl.formatMessage(
+                messages.GoogleMapsEmbeddedBlock,
+              )}
               src={this.props.data.url}
               className="google-map"
               frameBorder="0"
@@ -252,24 +185,68 @@ class Edit extends Component {
             />
           </div>
         ) : (
-          <div>
-            <Message>
-              <Icon name={globeSVG} size="100px" color="#b8c6c8" />
-              <FormattedMessage
-                id="Maps instructions"
-                defaultMessage="Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
-              />
-              {this.state.error && (
-                <span style={{ color: 'red' }}>
-                  <FormattedMessage
-                    id="Maps data error"
-                    defaultMessage="Embed code error, please follow the instructions and try again."
-                  />
-                </span>
-              )}
-            </Message>
-          </div>
+          <Message>
+            <center>
+              <img src={mapsBlockSVG} alt="" />
+              <div className="toolbar-inner">
+                <Input
+                  onKeyDown={this.onKeyDownVariantMenuForm}
+                  onChange={this.onChangeUrl}
+                  placeholder={this.props.intl.formatMessage(
+                    messages.MapsBlockInputPlaceholder,
+                  )}
+                  value={this.state.url}
+                  // Prevents propagation to the Dropzone and the opening
+                  // of the upload browser dialog
+                  onClick={e => e.stopPropagation()}
+                />
+                {this.state.url && (
+                  <Button.Group>
+                    <Button
+                      basic
+                      className="cancel"
+                      onClick={e => {
+                        e.stopPropagation();
+                        this.setState({ url: '' });
+                      }}
+                    >
+                      <Icon name={clearSVG} size="30px" />
+                    </Button>
+                  </Button.Group>
+                )}
+                <Button.Group>
+                  <Button
+                    basic
+                    primary
+                    onClick={e => {
+                      e.stopPropagation();
+                      this.onSubmitUrl();
+                    }}
+                  >
+                    <Icon name={aheadSVG} size="30px" />
+                  </Button>
+                </Button.Group>
+              </div>
+              <div className="message-text">
+                <FormattedMessage
+                  id="Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
+                  defaultMessage="Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
+                />
+                {this.state.error && (
+                  <div style={{ color: 'red' }}>
+                    <FormattedMessage
+                      id="Embed code error, please follow the instructions and try again."
+                      defaultMessage="Embed code error, please follow the instructions and try again."
+                    />
+                  </div>
+                )}
+              </div>
+            </center>
+          </Message>
         )}
+        <SidebarPortal selected={this.props.selected}>
+          <MapsSidebar {...this.props} resetSubmitUrl={this.resetSubmitUrl} />
+        </SidebarPortal>
       </div>
     );
   }

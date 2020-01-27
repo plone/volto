@@ -133,6 +133,7 @@ class Cell extends Component {
           ]}
           blockRenderMap={settings.extendedBlockRenderMap}
           blockStyleFn={settings.blockStyleFn}
+          customStyleMap={settings.customStyleMap}
           ref={node => {
             this.node = node;
           }}
