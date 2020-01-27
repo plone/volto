@@ -77,7 +77,7 @@ msgstr "Aggiungi un nuovo gruppo"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add new user"
-msgstr "Nuovo utente"
+msgstr "Aggiungi nuovo utente"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add to Groups"
@@ -793,7 +793,7 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
-msgstr "Nessuno elemento trovato in questo contenitore."
+msgstr "Nessun elemento trovato in questo contenitore."
 
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
@@ -856,10 +856,12 @@ msgid "Paste"
 msgstr "Incolla"
 
 #: components/manage/Preferences/PersonalInformation
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
 msgstr "Informazioni Personali"
 
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
 msgstr "Preferenze Personali"
 
@@ -1195,7 +1197,7 @@ msgstr "Tabella a colori invertiti"
 
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
-msgstr "Tabella dei contenuti"
+msgstr "Indice dei contenuti"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
@@ -1505,7 +1507,7 @@ msgstr "Titolo"
 
 #: config/Blocks
 msgid "toc"
-msgstr "Table of contents"
+msgstr "Indice dei contenuti"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
