@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix listing block sidebar focus @sneridagh
+
 ## 4.0.0-alpha.34 (2020-01-26)
 
 ### Changes
