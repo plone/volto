@@ -28,16 +28,64 @@ exports[`renders a datetime widget component 1`] = `
         className="eight wide column"
       >
         <div
-          className="ui input"
+          className="SingleDatePicker SingleDatePicker_1"
+        >
+          <div>
+            <div
+              className="SingleDatePickerInput SingleDatePickerInput_1 SingleDatePickerInput__withBorder SingleDatePickerInput__withBorder_2"
+            >
+              <div
+                className="DateInput DateInput_1"
+              >
+                <input
+                  aria-describedby="DateInput__screen-reader-message-my-field"
+                  aria-label="Date"
+                  autoComplete="off"
+                  className="DateInput_input DateInput_input_1"
+                  disabled={false}
+                  id="my-field"
+                  name="my-field"
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  placeholder="Date"
+                  readOnly={false}
+                  required={false}
+                  type="text"
+                  value="10/21/2019"
+                />
+                <p
+                  className="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
+                  id="DateInput__screen-reader-message-my-field"
+                >
+                  Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span
+          className="rc-time-picker"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onTouchStart={[Function]}
+          style={Object {}}
         >
           <input
-            id="field-my-field"
-            name="my-field"
+            className="rc-time-picker-input"
+            id=""
+            onBlur={[Function]}
             onChange={[Function]}
-            type="datetime-local"
-            value=""
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            readOnly={false}
+            type="text"
+            value="00:00"
           />
-        </div>
+          <span
+            className="rc-time-picker-icon"
+          />
+        </span>
       </div>
     </div>
   </div>
