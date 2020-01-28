@@ -109,6 +109,8 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Alignment
 msgid "Alignment"
 msgstr ""
@@ -210,7 +212,6 @@ msgid "Cell"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 # defaultMessage: Center
 msgid "Center"
@@ -539,24 +540,19 @@ msgstr ""
 msgid "Email sent"
 msgstr ""
 
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Embed code error, please follow the instructions and try again.
+msgid "Embed code error, please follow the instructions and try again."
+msgstr ""
+
 #: components/manage/Blocks/Maps/View
 # defaultMessage: Embeded Google Maps
 msgid "Embeded Google Maps"
 msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-# defaultMessage: Enter Map URL
-msgid "Enter Map URL"
-msgstr ""
-
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 # defaultMessage: Enter URL or title
 msgid "Enter URL or title"
-msgstr ""
-
-#: components/manage/Blocks/Video/Edit
-# defaultMessage: Enter Video URL
-msgid "Enter Video URL"
 msgstr ""
 
 #: components/theme/Register/Register
@@ -569,6 +565,11 @@ msgstr ""
 #: components/theme/Register/Register
 # defaultMessage: Enter full name, e.g. John Smith.
 msgid "Enter full name, e.g. John Smith."
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Enter map Embed Code
+msgid "Enter map Embed Code"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -642,7 +643,6 @@ msgid "From"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 # defaultMessage: Full
 msgid "Full"
@@ -826,7 +826,6 @@ msgid "Lead Image"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 # defaultMessage: Left
 msgid "Left"
@@ -834,6 +833,8 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
 msgid "Link to"
 msgstr ""
@@ -879,14 +880,14 @@ msgstr ""
 msgid "Make the table compact"
 msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-# defaultMessage: Embed code error, please follow the instructions and try again.
-msgid "Maps data error"
+#: components/manage/Blocks/Maps/MapsSidebar
+# defaultMessage: Map
+msgid "Map"
 msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-# defaultMessage: Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it.
-msgid "Maps instructions"
+#: components/manage/Blocks/Maps/MapsSidebar
+# defaultMessage: Maps URL
+msgid "Maps URL"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
@@ -967,6 +968,11 @@ msgstr ""
 msgid "No items found in this container."
 msgstr ""
 
+#: components/manage/Blocks/Maps/MapsSidebar
+# defaultMessage: No map selected
+msgid "No map selected"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 # defaultMessage: No results found.
@@ -983,6 +989,11 @@ msgstr ""
 #: components/manage/Widgets/SelectWidget
 # defaultMessage: No value
 msgid "No value"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: No video selected
+msgid "No video selected"
 msgstr ""
 
 #: components/manage/Workflow/Workflow
@@ -1002,6 +1013,8 @@ msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Open in a new tab
 msgid "Open in a new tab"
 msgstr ""
@@ -1066,6 +1079,11 @@ msgstr ""
 #: components/manage/Blocks/Video/Edit
 # defaultMessage: Please enter a valid URL by deleting the block and adding a new video block.
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+# defaultMessage: Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it.
+msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
@@ -1212,7 +1230,6 @@ msgid "Richtext"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 # defaultMessage: Right
 msgid "Right"
@@ -1229,7 +1246,6 @@ msgid "Roles"
 msgstr ""
 
 #: components/manage/Add/Add
-#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1382,7 +1398,7 @@ msgid "Site Setup"
 msgstr ""
 
 #: error
-# defaultMessage: Sorry, something went wrong with your request
+# defaultMessage: Sorry, something went wrong with your request 
 msgid "Sorry, something went wrong with your request"
 msgstr ""
 
@@ -1544,6 +1560,11 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
+#: components/manage/Blocks/Video/Edit
+# defaultMessage: Type a Video (YouTube, Vimeo or mp4) URL
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr ""
+
 #: components/manage/Blocks/Text/Edit
 # defaultMessage: Type text…
 msgid "Type text…"
@@ -1640,6 +1661,16 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanels
 # defaultMessage: Version Overview
 msgid "Version Overview"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: Video
+msgid "Video"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+# defaultMessage: Video URL
+msgid "Video URL"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem

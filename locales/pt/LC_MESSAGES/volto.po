@@ -97,6 +97,8 @@ msgstr "Adicionar {type}"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Alignment"
 msgstr "Alinhamento"
 
@@ -182,7 +184,6 @@ msgid "Cell"
 msgstr "Célula"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
 msgstr "Centro"
@@ -456,21 +457,17 @@ msgstr "Email"
 msgid "Email sent"
 msgstr "Email enviado"
 
+#: components/manage/Blocks/Maps/Edit
+msgid "Embed code error, please follow the instructions and try again."
+msgstr ""
+
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Enter Map URL"
-msgstr "Escreva o URL do mapa"
-
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
 msgstr "Escreva URL ou título"
-
-#: components/manage/Blocks/Video/Edit
-msgid "Enter Video URL"
-msgstr "Escreva o URL do vídeo"
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -481,6 +478,10 @@ msgstr "Escreva um endereço de email. Este será o seu nome de sessão. Respeit
 #: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
 msgstr "Escreva o nome completo. Por exemplo, José Silva."
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Enter map Embed Code"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
@@ -540,7 +541,6 @@ msgid "From"
 msgstr "De"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Full"
 msgstr "Cheio"
@@ -689,13 +689,14 @@ msgid "Lead Image"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
 msgstr "Esquerda"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr "Ligar a"
 
@@ -732,13 +733,13 @@ msgstr "Nome de utilizador"
 msgid "Make the table compact"
 msgstr "Compactar a tabela"
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Maps data error"
-msgstr "Erro de dados do Maps"
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Map"
+msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Maps instructions"
-msgstr "Instruções do Maps"
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Maps URL"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -803,6 +804,10 @@ msgstr ""
 msgid "No items found in this container."
 msgstr ""
 
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "No map selected"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -818,6 +823,10 @@ msgstr ""
 msgid "No value"
 msgstr "Sem qualquer valor"
 
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "No video selected"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 msgid "No workflow"
 msgstr "Sem fluxo de trabalho"
@@ -832,6 +841,8 @@ msgstr "Ok"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Open in a new tab"
 msgstr "Abrir num novo separador"
 
@@ -884,6 +895,10 @@ msgstr "Pessoas responsáveis pela criação de conteúdo deste item. Pro favor 
 
 #: components/manage/Blocks/Video/Edit
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
@@ -1004,7 +1019,6 @@ msgid "Richtext"
 msgstr "Richtext"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
 msgstr "Direita"
@@ -1018,7 +1032,6 @@ msgid "Roles"
 msgstr "Papéis"
 
 #: components/manage/Add/Add
-#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1277,6 +1290,10 @@ msgstr "Título"
 msgid "Type"
 msgstr "Tipo"
 
+#: components/manage/Blocks/Video/Edit
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr ""
+
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
 msgstr "Escreva texto..."
@@ -1356,6 +1373,14 @@ msgstr "Configurações de utilizadores e grupos"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
 msgstr "Resumo da Versão"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video URL"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 msgid "View"

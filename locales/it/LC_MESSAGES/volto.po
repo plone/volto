@@ -89,6 +89,8 @@ msgstr "Aggiungi {type}"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Alignment"
 msgstr "Allineamento"
 
@@ -174,7 +176,6 @@ msgid "Cell"
 msgstr "Cella"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
 msgstr "Centrato"
@@ -448,21 +449,17 @@ msgstr "Email"
 msgid "Email sent"
 msgstr "Email inviata"
 
+#: components/manage/Blocks/Maps/Edit
+msgid "Embed code error, please follow the instructions and try again."
+msgstr ""
+
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr "Google Maps incorporata"
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Enter Map URL"
-msgstr "Inserisci l'URL della mappa"
-
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
 msgstr "Inserisci un URL o un titolo"
-
-#: components/manage/Blocks/Video/Edit
-msgid "Enter Video URL"
-msgstr "Inserisci l'URL del video"
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -473,6 +470,10 @@ msgstr "Inserisci un indirizzo e-mail. Esso sarà il tuo nome utente. Rispettiam
 #: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
 msgstr "Inserisci il tuo nome completo, ad esempio Mario Rossi."
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Enter map Embed Code"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
@@ -532,7 +533,6 @@ msgid "From"
 msgstr "Da"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Full"
 msgstr "A tutta larghezza"
@@ -681,13 +681,14 @@ msgid "Lead Image"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
 msgstr "Sinistra"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr "Link a"
 
@@ -724,13 +725,13 @@ msgstr "Nome utente"
 msgid "Make the table compact"
 msgstr "Rendi la tabella compatta"
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Maps data error"
-msgstr "Errore nei dati delle mappe"
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Map"
+msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Maps instructions"
-msgstr "Istruzioni per le mappe"
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Maps URL"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -795,6 +796,10 @@ msgstr ""
 msgid "No items found in this container."
 msgstr "Nessun elemento trovato in questo contenitore."
 
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "No map selected"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -810,6 +815,10 @@ msgstr "Nessun elemento selezionato"
 msgid "No value"
 msgstr "Nessun valore"
 
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "No video selected"
+msgstr ""
+
 #: components/manage/Workflow/Workflow
 msgid "No workflow"
 msgstr "Nessun flusso"
@@ -824,6 +833,8 @@ msgstr "Ok"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Open in a new tab"
 msgstr "Apri in un nuovo tab"
 
@@ -877,6 +888,10 @@ msgstr "Persone responsabili della creazione del contenuto di questo elemento. I
 #: components/manage/Blocks/Video/Edit
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr "Inserisci un URL valido eliminando il blocco e aggiungendo un nuovo blocco di tipo video."
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
+msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
@@ -996,7 +1011,6 @@ msgid "Richtext"
 msgstr "Testo formattato"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
 msgstr "Destra"
@@ -1010,7 +1024,6 @@ msgid "Roles"
 msgstr "Ruoli"
 
 #: components/manage/Add/Add
-#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1269,6 +1282,10 @@ msgstr "Titolo"
 msgid "Type"
 msgstr "Tipo"
 
+#: components/manage/Blocks/Video/Edit
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr ""
+
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
 msgstr "Digita testo…"
@@ -1348,6 +1365,14 @@ msgstr "Impostazioni utenti e gruppi"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
 msgstr "Panoramica delle versioni"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video URL"
+msgstr ""
 
 #: components/manage/Contents/ContentsItem
 msgid "View"

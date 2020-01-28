@@ -189,6 +189,7 @@ const blocksConfig = {
     edit: EditListingBlock,
     restricted: false,
     mostUsed: true,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],
@@ -203,7 +204,7 @@ const blocksConfig = {
     edit: EditVideoBlock,
     restricted: false,
     mostUsed: true,
-    sidebarTab: 0,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],
@@ -249,7 +250,7 @@ const blocksConfig = {
     edit: EditMapBlock,
     restricted: false,
     mostUsed: false,
-    sidebarTab: 0,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],
