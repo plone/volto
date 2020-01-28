@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { getQueryStringResults } from '@plone/volto/actions';
-import DefaultTemplate from './DefaultTemplate';
+import { blocks } from '~/config';
 
 const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
   const querystringResults = useSelector(
@@ -29,10 +29,19 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
         []
       : folderItems;
 
+  const templateConfig = blocks?.blocksConfig?.listing?.templates;
+
+  let templateName =
+    data.template && Object.keys(templateConfig).indexOf(data.template) >= 0
+      ? data.template
+      : 'default';
+
+  const ListingBodyTemplate = templateConfig[templateName].template;
+
   return (
     <>
       {listingItems.length > 0 ? (
-        <DefaultTemplate
+        <ListingBodyTemplate
           items={listingItems}
           isEditMode={isEditMode}
           {...data}
