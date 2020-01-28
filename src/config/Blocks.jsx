@@ -189,6 +189,7 @@ const blocksConfig = {
     edit: EditListingBlock,
     restricted: false,
     mostUsed: true,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],
