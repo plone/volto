@@ -3,11 +3,11 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import ListingStyle from './ListingStyle';
+import TemplateWidget from './TemplateWidget';
 
 const mockStore = configureStore();
 
-test('renders an Listing Style Sidebar component', () => {
+test('renders an Listing Template Widget for Listing block Sidebar component', () => {
   const store = mockStore({
     intl: {
       locale: 'en',
@@ -17,7 +17,7 @@ test('renders an Listing Style Sidebar component', () => {
   });
   const component = renderer.create(
     <Provider store={store}>
-      <ListingStyle
+      <TemplateWidget
         id="dcdf1f42-645d-48f6-9531-357bdc2e1881"
         data={{
           '@type': 'listing',
