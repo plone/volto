@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix CSS when multiselection widgets have multiple items, then provoke a line jump @sneridagh
+
 ## 4.0.0-alpha.34 (2020-01-26)
 
 ### Changes
