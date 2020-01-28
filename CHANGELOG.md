@@ -4,6 +4,8 @@
 
 ### Added
 
+- Chose template for listing block.
+
 ### Changes
 
 - Fix listing block sidebar focus @sneridagh
