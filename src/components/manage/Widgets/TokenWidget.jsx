@@ -25,9 +25,8 @@ import {
   customSelectStyles,
 } from './SelectStyling';
 
-const AsyncCreatableSelect = loadable(
-  () => import('react-select/lib/AsyncCreatable'),
-  'components',
+const AsyncCreatable = loadable.lib(() =>
+  import('react-select/async-creatable'),
 );
 
 /**
@@ -179,18 +178,22 @@ class TokenWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              <AsyncCreatableSelect
-                className="react-select-container"
-                classNamePrefix="react-select"
-                defaultOptions={this.props.choices || []}
-                styles={customSelectStyles}
-                theme={selectTheme}
-                components={{ DropdownIndicator, Option }}
-                isMulti
-                value={selectedOption || []}
-                loadOptions={this.loadOptions}
-                onChange={this.handleChange}
-              />
+              <AsyncCreatable>
+                {({ default: AsyncCreatableSelect }) => (
+                  <AsyncCreatableSelect
+                    className="react-select-container"
+                    classNamePrefix="react-select"
+                    defaultOptions={this.props.choices || []}
+                    styles={customSelectStyles}
+                    theme={selectTheme}
+                    components={{ DropdownIndicator, Option }}
+                    isMulti
+                    value={selectedOption || []}
+                    loadOptions={this.loadOptions}
+                    onChange={this.handleChange}
+                  />
+                )}
+              </AsyncCreatable>
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
                   {message}

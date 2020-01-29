@@ -1,9 +1,9 @@
 /**
  * Point of contact for component modules.
+ * This file is used to avoid lazy loading components in tests.
  * @module components
  * @example import { Field } from 'components';
  */
-// import loadable from '@loadable/component';
 
 export App from './theme/App/App';
 export ContactForm from './theme/ContactForm/ContactForm';
@@ -36,7 +36,6 @@ export Add from './manage/Add/Add';
 export Edit from './manage/Edit/Edit';
 export Contents from './manage/Contents/Contents';
 export Sharing from './manage/Sharing/Sharing';
-export Toast from './manage/Toast/Toast';
 export Controlpanel from './manage/Controlpanels/Controlpanel';
 export Controlpanels from './manage/Controlpanels/Controlpanels';
 export ModerateComments from './manage/Controlpanels/ModerateComments';
@@ -96,25 +95,38 @@ export BlockChooser from './manage/BlockChooser/BlockChooser';
 
 export EditDescriptionBlock from './manage/Blocks/Description/Edit';
 export EditTitleBlock from './manage/Blocks/Title/Edit';
+export EditToCBlock from './manage/Blocks/ToC/Edit';
 export EditTextBlock from './manage/Blocks/Text/Edit';
 export EditImageBlock from './manage/Blocks/Image/Edit';
+export EditListingBlock from './manage/Blocks/Listing/Edit';
 export EditVideoBlock from './manage/Blocks/Video/Edit';
 export EditBlock from './manage/Blocks/Block/Edit';
 export EditHeroImageLeftBlock from './manage/Blocks/HeroImageLeft/Edit';
-export ViewHeroImageLeftBlock from './manage/Blocks/HeroImageLeft/View';
 export EditMapBlock from './manage/Blocks/Maps/Edit';
 export EditHTMLBlock from './manage/Blocks/HTML/Edit';
 
 export ViewDescriptionBlock from './manage/Blocks/Description/View';
 export ViewTitleBlock from './manage/Blocks/Title/View';
+export ViewToCBlock from './manage/Blocks/ToC/View';
 export ViewTextBlock from './manage/Blocks/Text/View';
 export ViewImageBlock from './manage/Blocks/Image/View';
+export ViewListingBlock from './manage/Blocks/Listing/View';
 export ViewVideoBlock from './manage/Blocks/Video/View';
+export ViewHeroImageLeftBlock from './manage/Blocks/HeroImageLeft/View';
 export ViewMapBlock from './manage/Blocks/Maps/View';
 export ViewHTMLBlock from './manage/Blocks/HTML/View';
 
-export ImageSidebar from './manage/Sidebar/ImageSidebar';
+export ListingBlockBody from './manage/Blocks/Listing/ListingBody';
+export ListingBlockData from './manage/Blocks/Listing/ListingData';
+export ListingBlockSidebar from './manage/Blocks/Listing/ListingSidebar';
 
+export ImageSidebar from './manage/Blocks/Image/ImageSidebar';
+export MapsSidebar from './manage/Blocks/Maps/MapsSidebar';
+export VideoSidebar from './manage/Blocks/Video/VideoSidebar';
+export LeadImageSidebar from './manage/Blocks/LeadImage/LeadImageSidebar';
+
+export ConditionalLink from './manage/ConditionalLink/ConditionalLink';
 export PersonalTools from './manage/Toolbar/PersonalTools';
 export More from './manage/Toolbar/More';
 export Types from './manage/Toolbar/Types';
+export Toast from './manage/Toast/Toast';

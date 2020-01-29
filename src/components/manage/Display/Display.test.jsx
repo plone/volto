@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { wait } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
@@ -8,7 +9,7 @@ import Display from './Display';
 const mockStore = configureStore();
 
 describe('Display', () => {
-  it('renders an actions component', () => {
+  it('renders an actions component', async () => {
     const store = mockStore({
       content: {
         update: { loaded: true },
@@ -29,7 +30,8 @@ describe('Display', () => {
         <Display pathname="/test" />
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    await wait(() => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
   });
 });

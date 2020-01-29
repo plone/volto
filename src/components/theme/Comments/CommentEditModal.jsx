@@ -8,12 +8,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
-// import loadable from '@loadable/component';
 
 import { updateComment } from '@plone/volto/actions';
 import { ModalForm } from '@plone/volto/components';
-
-// const ModalForm = loadable(() => import('../../manage/Form/ModalForm'));
 
 const messages = defineMessages({
   editComment: {

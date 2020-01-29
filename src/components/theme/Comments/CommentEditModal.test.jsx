@@ -1,8 +1,7 @@
-import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
+import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { render, wait } from '@testing-library/react';
 
 import CommentEditModal from './CommentEditModal';
 
@@ -13,7 +12,7 @@ jest.mock('../../manage/Form/ModalForm', () =>
 );
 
 describe('CommentEditModal', () => {
-  it('renders a comment edit modal component', async () => {
+  it('renders a comment edit modal component', () => {
     const store = mockStore({
       comments: {
         update: {
@@ -26,7 +25,7 @@ describe('CommentEditModal', () => {
         messages: {},
       },
     });
-    const { container } = render(
+    const component = renderer.create(
       <Provider store={store}>
         <CommentEditModal
           open
@@ -37,9 +36,7 @@ describe('CommentEditModal', () => {
         />
       </Provider>,
     );
-    expect(container).toBeEmpty();
-    await wait(() => {
-      expect(container.firstChild).toMatchSnapshot();
-    });
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
   });
 });

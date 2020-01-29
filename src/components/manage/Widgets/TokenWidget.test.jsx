@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { wait } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
@@ -7,7 +8,7 @@ import TokenWidget from './TokenWidget';
 
 const mockStore = configureStore();
 
-test('renders a token widget component', () => {
+test('renders a token widget component', async () => {
   const store = mockStore({
     intl: {
       locale: 'en',
@@ -30,6 +31,7 @@ test('renders a token widget component', () => {
       />
     </Provider>,
   );
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+  await wait(() => {
+    expect(component.toJSON()).toMatchSnapshot();
+  });
 });

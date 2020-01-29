@@ -25,8 +25,7 @@ import {
 } from '@plone/volto/actions';
 import { settings } from '~/config';
 
-const Select = loadable(() => import('react-select'));
-const components = loadable(() => import('react-select'), 'components');
+const ReactSelect = loadable.lib(() => import('react-select'));
 
 const messages = defineMessages({
   messageUpdated: {
@@ -40,7 +39,11 @@ const messages = defineMessages({
 });
 
 const Placeholder = props => {
-  return <components.Placeholder {...props} />;
+  return (
+    <ReactSelect>
+      {({ components }) => <components.Placeholder {...props} />}
+    </ReactSelect>
+  );
 };
 
 const SingleValue = ({ children, ...props }) => {
@@ -55,10 +58,14 @@ const SingleValue = ({ children, ...props }) => {
     borderRadius: '50%',
   };
   return (
-    <components.SingleValue {...props}>
-      <span style={stateDecorator} />
-      {children}
-    </components.SingleValue>
+    <ReactSelect>
+      {({ components }) => (
+        <components.SingleValue {...props}>
+          <span style={stateDecorator} />
+          {children}
+        </components.SingleValue>
+      )}
+    </ReactSelect>
   );
 };
 
@@ -81,26 +88,36 @@ const Option = props => {
         : null,
   };
   return (
-    <components.Option {...props}>
-      <span style={stateDecorator} />
-      <div style={{ marginRight: 'auto' }}>{props.label}</div>
-      {props.isFocused && !props.isSelected && (
-        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+    <ReactSelect>
+      {({ components }) => (
+        <components.Option {...props}>
+          <span style={stateDecorator} />
+          <div style={{ marginRight: 'auto' }}>{props.label}</div>
+          {props.isFocused && !props.isSelected && (
+            <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+          )}
+          {props.isSelected && (
+            <Icon name={checkSVG} size="24px" color="#007bc1" />
+          )}
+        </components.Option>
       )}
-      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
-    </components.Option>
+    </ReactSelect>
   );
 };
 
 const DropdownIndicator = props => {
   return (
-    <components.DropdownIndicator {...props}>
-      {props.selectProps.menuIsOpen ? (
-        <Icon name={upSVG} size="24px" color="#007bc1" />
-      ) : (
-        <Icon name={downSVG} size="24px" color="#007bc1" />
+    <ReactSelect>
+      {({ components }) => (
+        <components.DropdownIndicator {...props}>
+          {props.selectProps.menuIsOpen ? (
+            <Icon name={upSVG} size="24px" color="#007bc1" />
+          ) : (
+            <Icon name={downSVG} size="24px" color="#007bc1" />
+          )}
+        </components.DropdownIndicator>
       )}
-    </components.DropdownIndicator>
+    </ReactSelect>
   );
 };
 
@@ -298,36 +315,45 @@ class Workflow extends Component {
         <label htmlFor="state-select">
           <FormattedMessage id="State" defaultMessage="State" />
         </label>
-        <Select
-          name="display-select"
-          className="react-select-container"
-          classNamePrefix="react-select"
-          isDisabled={
-            !this.props.content.review_state ||
-            this.props.transitions.length === 0
-          }
-          options={uniqBy(
-            this.props.transitions.map(transition =>
-              getWorkflowMapping(transition['@id']),
-            ),
-            'label',
-          ).concat(selectedOption)}
-          styles={customSelectStyles}
-          theme={selectTheme}
-          components={{ DropdownIndicator, Placeholder, Option, SingleValue }}
-          onChange={this.transition}
-          defaultValue={
-            this.props.content.review_state
-              ? selectedOption
-              : {
-                  label: this.props.intl.formatMessage(
-                    messages.messageNoWorkflow,
-                  ),
-                  value: 'noworkflow',
-                }
-          }
-          isSearchable={false}
-        />
+        <ReactSelect>
+          {({ default: Select }) => (
+            <Select
+              name="display-select"
+              className="react-select-container"
+              classNamePrefix="react-select"
+              isDisabled={
+                !this.props.content.review_state ||
+                this.props.transitions.length === 0
+              }
+              options={uniqBy(
+                this.props.transitions.map(transition =>
+                  getWorkflowMapping(transition['@id']),
+                ),
+                'label',
+              ).concat(selectedOption)}
+              styles={customSelectStyles}
+              theme={selectTheme}
+              components={{
+                DropdownIndicator,
+                Placeholder,
+                Option,
+                SingleValue,
+              }}
+              onChange={this.transition}
+              defaultValue={
+                this.props.content.review_state
+                  ? selectedOption
+                  : {
+                      label: this.props.intl.formatMessage(
+                        messages.messageNoWorkflow,
+                      ),
+                      value: 'noworkflow',
+                    }
+              }
+              isSearchable={false}
+            />
+          )}
+        </ReactSelect>
       </Fragment>
     );
   }

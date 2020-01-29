@@ -31,7 +31,7 @@ const AsyncPaginate = loadable(
   'components',
 );
 const CreatableSelect = loadable(
-  () => import('react-select/lib/Creatable'),
+  () => import('react-select/creatable'),
   'components',
 );
 
