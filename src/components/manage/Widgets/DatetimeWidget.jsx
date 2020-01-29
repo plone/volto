@@ -10,10 +10,45 @@ import { map } from 'lodash';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import TimePicker from 'rc-time-picker';
+import leftKey from '../../../icons/left-key.svg';
+import rightKey from '../../../icons/right-key.svg';
+import { Icon } from '../../../components';
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
+
 import 'rc-time-picker/assets/index.css';
+
+const PrevIcon = () => (
+  <div
+    style={{
+      color: '#000',
+      left: '22px',
+      padding: '5px',
+      position: 'absolute',
+      top: '15px',
+    }}
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+    tabIndex="0"
+  >
+    <Icon name={leftKey} size="30px" />
+  </div>
+);
+const NextIcon = () => (
+  <div
+    style={{
+      color: '#000',
+      right: '22px',
+      padding: '5px',
+      position: 'absolute',
+      top: '15px',
+    }}
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+    tabIndex="0"
+  >
+    <Icon name={rightKey} size="30px" />
+  </div>
+);
 
 /**
  * DatetimeWidget component class
@@ -111,19 +146,29 @@ class DatetimeWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              <SingleDatePicker
-                date={datetime}
-                onDateChange={this.onDateChange}
-                focused={focused}
-                onFocusChange={this.onFocusChange}
-                id={id}
-              />
-              <TimePicker
-                defaultValue={datetime}
-                onChange={this.onTimeChange}
-                allowEmpty={false}
-                showSecond={false}
-              />
+              <div>
+                <div className="ui input">
+                  <SingleDatePicker
+                    date={datetime}
+                    onDateChange={this.onDateChange}
+                    focused={focused}
+                    numberOfMonths={1}
+                    onFocusChange={this.onFocusChange}
+                    noBorder
+                    navPrev={<PrevIcon />}
+                    navNext={<NextIcon />}
+                    id={id}
+                  />
+                </div>
+                <div className="ui input">
+                  <TimePicker
+                    defaultValue={datetime}
+                    onChange={this.onTimeChange}
+                    allowEmpty={false}
+                    showSecond={false}
+                  />
+                </div>
+              </div>
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
                   {message}
