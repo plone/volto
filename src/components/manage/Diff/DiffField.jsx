@@ -9,6 +9,14 @@ import { join, map } from 'lodash';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 import moment from 'moment';
+import ReactDOMServer from 'react-dom/server';
+import { Provider } from 'react-intl-redux';
+import { createBrowserHistory } from 'history';
+import { ConnectedRouter } from 'connected-react-router';
+
+import { Api } from '../../../helpers';
+import configureStore from '../../../store';
+import { DefaultView } from '../../../components/';
 
 /**
  * Diff field component.
@@ -18,7 +26,7 @@ import moment from 'moment';
  * @param {Object} schema Field schema
  * @returns {string} Markup of the component.
  */
-const DiffField = ({ one, two, view, schema }) => {
+const DiffField = ({ one, two, contentOne, contentTwo, view, schema }) => {
   let parts;
   if (schema.widget) {
     switch (schema.widget) {
@@ -29,6 +37,27 @@ const DiffField = ({ one, two, view, schema }) => {
         parts = diffWords(
           moment(one).format('LLLL'),
           moment(two).format('LLLL'),
+        );
+        break;
+      case 'json':
+        const api = new Api();
+        const history = createBrowserHistory();
+        const store = configureStore(window.__data, history, api);
+        parts = diffWords(
+          ReactDOMServer.renderToStaticMarkup(
+            <Provider store={store}>
+              <ConnectedRouter history={history}>
+                <DefaultView content={contentOne} />
+              </ConnectedRouter>
+            </Provider>,
+          ),
+          ReactDOMServer.renderToStaticMarkup(
+            <Provider store={store}>
+              <ConnectedRouter history={history}>
+                <DefaultView content={contentTwo} />
+              </ConnectedRouter>
+            </Provider>,
+          ),
         );
         break;
       case 'textarea':
@@ -124,6 +153,8 @@ const DiffField = ({ one, two, view, schema }) => {
 DiffField.propTypes = {
   one: PropTypes.any.isRequired,
   two: PropTypes.any.isRequired,
+  contentOne: PropTypes.any,
+  contentTwo: PropTypes.any,
   view: PropTypes.string.isRequired,
   schema: PropTypes.shape({
     widget: PropTypes.string,

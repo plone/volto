@@ -214,7 +214,7 @@ class ObjectBrowserBody extends Component {
         );
   };
 
-  onSelectItem = url => {
+  onSelectItem = (url, title) => {
     const { block, data, mode, dataName, onChangeBlock } = this.props;
 
     const updateState = mode => {
@@ -247,6 +247,7 @@ class ObjectBrowserBody extends Component {
       onChangeBlock(block, {
         ...data,
         url: `${settings.apiPath}${url}`,
+        alt: title,
       });
     } else if (mode === 'link') {
       onChangeBlock(block, {
@@ -270,10 +271,10 @@ class ObjectBrowserBody extends Component {
         this.navigateTo(item['@id']);
       }
       if (settings.imageObjects.includes(item['@type'])) {
-        this.onSelectItem(item['@id']);
+        this.onSelectItem(item['@id'], item.title);
       }
     } else {
-      this.onSelectItem(item['@id']);
+      this.onSelectItem(item['@id'], item.title);
     }
   };
 
@@ -283,11 +284,11 @@ class ObjectBrowserBody extends Component {
         this.navigateTo(item['@id']);
       }
       if (settings.imageObjects.includes(item['@type'])) {
-        this.onSelectItem(item['@id']);
+        this.onSelectItem(item['@id'], item.title);
         this.props.closeObjectBrowser();
       }
     } else {
-      this.onSelectItem(item['@id']);
+      this.onSelectItem(item['@id'], item.title);
       this.props.closeObjectBrowser();
     }
   };

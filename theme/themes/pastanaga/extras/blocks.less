@@ -63,6 +63,11 @@
   align-items: center;
   justify-content: center;
 
+  .message-text {
+    margin-top: 20px;
+    color: #767676;
+  }
+
   span {
     margin-top: 20px;
   }
@@ -73,6 +78,10 @@
     width: 100%;
     height: 45vh;
   }
+}
+
+.block.video video {
+  width: 100%;
 }
 
 .block.align.left {
@@ -262,7 +271,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
   .toolbar-inner {
     display: flex;
-    min-width: 430px;
+    width: 430px;
     height: 40px;
     padding: 4px;
     background-color: rgba(255, 255, 255, 0.975);
@@ -613,6 +622,10 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     .icon {
       margin-bottom: 10px !important;
     }
+
+    &.table {
+      border: none;
+    }
   }
 
   .ui.accordion {
@@ -647,5 +660,100 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     &:hover {
       background-color: transparent !important;
     }
+  }
+}
+
+// Listing Block
+.listing {
+  .items-preview {
+    color: @teal;
+    text-align: center;
+  }
+}
+
+.listing.message {
+  padding: 1.5em;
+  background: #f9edbe;
+  color: #613a00;
+  text-align: center;
+}
+
+.listing-item,
+.listing-item a {
+  display: flex;
+  width: 100%;
+  @media only screen and (max-width: (@largestMobileScreen)) {
+    flex-direction: column;
+  }
+}
+
+.listing-item {
+  margin-bottom: 20px;
+
+  img {
+    width: 15%;
+    margin-right: 20px;
+    @media only screen and (max-width: (@largestMobileScreen)) {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  .image-placeholder {
+    display: flex;
+    width: 15%;
+    justify-content: center;
+    margin-right: 20px;
+
+    img {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  a {
+    p {
+      color: @textColor;
+    }
+  }
+  @media only screen and (max-width: (@largestMobileScreen)) {
+    h3 {
+      margin-top: 1em;
+    }
+  }
+}
+
+.sidebar-listing-data {
+  &.ui.form.segment {
+    padding-bottom: 20px;
+  }
+
+  .simple-field-name {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .fields {
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    border-bottom: 1px dotted @borderColor;
+  }
+
+  .fields:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .main-fields-wrapper {
+    display: flex;
+    width: 100%;
+    flex: 1 0 auto;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+  }
+
+  .button .icon {
+    margin: 0 !important;
   }
 }

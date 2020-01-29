@@ -40,6 +40,14 @@ const messages = defineMessages({
     id: 'Version Overview',
     defaultMessage: 'Version Overview',
   },
+  moderatecomments: {
+    id: 'Moderate Comments',
+    defaultMessage: 'Moderate Comments',
+  },
+  usersandgroups: {
+    id: 'Users and Groups',
+    defaultMessage: 'Users and Groups',
+  },
 });
 
 /**
@@ -85,12 +93,12 @@ class Controlpanels extends Component {
         {
           '@id': '/moderate-comments',
           group: 'Content',
-          title: 'Moderate Comments',
+          title: this.props.intl.formatMessage(messages.moderatecomments),
         },
         {
           '@id': '/users',
           group: 'Users',
-          title: 'Users and Groups',
+          title: this.props.intl.formatMessage(messages.usersandgroups),
         },
       ]),
       controlpanel => ({

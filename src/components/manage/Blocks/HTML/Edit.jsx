@@ -10,6 +10,7 @@ import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-markup';
 import { Button } from 'semantic-ui-react';
 import loadable from '@loadable/component';
+import { defineMessages, injectIntl } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
 import showSVG from '@plone/volto/icons/show.svg';
@@ -17,6 +18,17 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 
 const pretty = loadable(() => import('pretty'));
+
+const messages = defineMessages({
+  source: {
+    id: 'Source',
+    defaultMessage: 'Source',
+  },
+  preview: {
+    id: 'Preview',
+    defaultMessage: 'Preview',
+  },
+});
 
 /**
  * Edit html block class.
@@ -128,7 +140,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Source"
+                aria-label={this.props.intl.formatMessage(messages.source)}
                 active={!this.state.isPreview}
                 onClick={this.onCodeEditor}
               >
@@ -139,7 +151,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
-                aria-label="Preview"
+                aria-label={this.props.intl.formatMessage(messages.preview)}
                 active={this.state.isPreview}
                 onClick={this.onPreview}
               >
@@ -175,4 +187,4 @@ class Edit extends Component {
   }
 }
 
-export default Edit;
+export default injectIntl(Edit);

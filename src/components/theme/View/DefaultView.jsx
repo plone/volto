@@ -17,6 +17,7 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
+  getBaseUrl,
 } from '@plone/volto/helpers';
 
 const messages = defineMessages({
@@ -32,7 +33,7 @@ const messages = defineMessages({
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-const DefaultView = ({ content, intl }) => {
+const DefaultView = ({ content, intl, location }) => {
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
@@ -41,7 +42,7 @@ const DefaultView = ({ content, intl }) => {
       <Helmet title={content.title} />
       {map(content[blocksLayoutFieldname].items, block => {
         const Block =
-          blocks.blocksConfig[(content[blocksFieldname]?.[block]?.['@type'])]?.[
+          blocks.blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.[
             'view'
           ] || null;
         return Block !== null ? (
@@ -50,6 +51,7 @@ const DefaultView = ({ content, intl }) => {
             id={block}
             properties={content}
             data={content[blocksFieldname][block]}
+            path={getBaseUrl(location.pathname)}
           />
         ) : (
           <div key={block}>

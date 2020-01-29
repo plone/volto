@@ -94,9 +94,6 @@ export const Contents = loadable(() =>
 export const Sharing = loadable(() =>
   import('@plone/volto/components/manage/Sharing/Sharing'),
 );
-export const Toast = loadable(() =>
-  import('@plone/volto/components/manage/Toast/Toast'),
-);
 export const Controlpanel = loadable(() =>
   import('@plone/volto/components/manage/Controlpanels/Controlpanel'),
 );
@@ -264,11 +261,17 @@ export const EditDescriptionBlock = loadable(() =>
 export const EditTitleBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Title/Edit'),
 );
+export const EditToCBlock = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/ToC/Edit'),
+);
 export const EditTextBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Text/Edit'),
 );
 export const EditImageBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Image/Edit'),
+);
+export const EditListingBlock = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/Listing/Edit'),
 );
 export const EditVideoBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Video/Edit'),
@@ -278,9 +281,6 @@ export const EditBlock = loadable(() =>
 );
 export const EditHeroImageLeftBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/HeroImageLeft/Edit'),
-);
-export const ViewHeroImageLeftBlock = loadable(() =>
-  import('@plone/volto/components/manage/Blocks/HeroImageLeft/View'),
 );
 export const EditMapBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Maps/Edit'),
@@ -295,14 +295,23 @@ export const ViewDescriptionBlock = loadable(() =>
 export const ViewTitleBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Title/View'),
 );
+export const ViewToCBlock = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/ToC/View'),
+);
 export const ViewTextBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Text/View'),
 );
 export const ViewImageBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Image/View'),
 );
+export const ViewListingBlock = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/Listing/View'),
+);
 export const ViewVideoBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Video/View'),
+);
+export const ViewHeroImageLeftBlock = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/HeroImageLeft/View'),
 );
 export const ViewMapBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Maps/View'),
@@ -311,10 +320,32 @@ export const ViewHTMLBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/HTML/View'),
 );
 
-export const ImageSidebar = loadable(() =>
-  import('@plone/volto/components/manage/Sidebar/ImageSidebar'),
+export const ListingBlockBody = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/Listing/ListingBody'),
+);
+export const ListingBlockData = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/Listing/ListingData'),
+);
+export const ListingBlockSidebar = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/Listing/ListingSidebar'),
 );
 
+export const ImageSidebar = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/Image/ImageSidebar'),
+);
+export const MapsSidebar = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/Maps/MapsSidebar'),
+);
+export const VideoSidebar = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/Video/VideoSidebar'),
+);
+export const LeadImageSidebar = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/LeadImage/LeadImageSidebar'),
+);
+
+export const ConditionalLink = loadable(() =>
+  import('@plone/volto/components/manage/ConditionalLink/ConditionalLink'),
+);
 export const PersonalTools = loadable(() =>
   import('@plone/volto/components/manage/Toolbar/PersonalTools'),
 );
@@ -323,4 +354,7 @@ export const More = loadable(() =>
 );
 export const Types = loadable(() =>
   import('@plone/volto/components/manage/Toolbar/Types'),
+);
+export const Toast = loadable(() =>
+  import('@plone/volto/components/manage/Toast/Toast'),
 );

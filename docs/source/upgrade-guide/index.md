@@ -21,9 +21,13 @@ First, update your `package.json` to Volto 4.x.x.
   }
 ```
 
-### Rebuild `yarn.lock` in Alpha 17
+### ImageSidebar moved to Image Block directory in Alpha 29
 
-Due to changes in the dependency tree, it's required to reset `yarn.lock` file by deleting it before upgrading to Volto alpha 17.
+For better resource grouping, the `ImageSidebar` component has been moved to the `Image` block component directory: `components/manage/Blocks/Image`
+
+### Copy `yarn.lock` from volto-starter-kit in Alpha 17
+
+Due to changes in the dependency tree, it's required to use an specific `yarn.lock` file by deleting it and copy the one here: https://github.com/plone/volto-starter-kit/blob/master/yarn.lock before upgrading to Volto alpha 17.
 
 ### Forked Helmet into Volto core
 

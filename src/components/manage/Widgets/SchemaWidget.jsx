@@ -23,6 +23,10 @@ import {
 const ModalForm = loadable(() => import('../Form/ModalForm'));
 
 const messages = defineMessages({
+  add: {
+    id: 'Add',
+    defaultMessage: 'Add',
+  },
   addField: {
     id: 'Add field',
     defaultMessage: 'Add field',
@@ -571,7 +575,7 @@ class SchemaWidget extends Component {
             ))}
             <div className="item">
               <button
-                aria-label="Add"
+                aria-label={this.props.intl.formatMessage(messages.add)}
                 className="item ui noborder button"
                 onClick={this.onShowAddFieldset}
               >
@@ -603,7 +607,7 @@ class SchemaWidget extends Component {
                   </div>
                   <div className="toolbar">
                     <button
-                      aria-label="Add"
+                      aria-label={this.props.intl.formatMessage(messages.add)}
                       id="addfield"
                       className="item ui noborder button"
                       onClick={this.onShowAddField}

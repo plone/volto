@@ -25,6 +25,10 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
+  ModerateComments: {
+    id: 'Moderate comments',
+    defaultMessage: 'Moderate comments',
+  },
 });
 
 /**
@@ -177,7 +181,9 @@ class ModerateComments extends Component {
           id={this.state.editId}
           text={this.state.editText}
         />
-        <Helmet title="Moderate comments" />
+        <Helmet
+          title={this.props.intl.formatMessage(messages.ModerateComments)}
+        />
         <Container>
           <article id="content">
             <header>

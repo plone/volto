@@ -205,6 +205,7 @@ class Edit extends Component {
                   className="save"
                   aria-label={this.props.intl.formatMessage(messages.save)}
                   onClick={() => this.form.current.onSubmit()}
+                  disabled={this.props.updateRequest.loading}
                   loading={this.props.updateRequest.loading}
                 >
                   <Icon

@@ -15,98 +15,20 @@ import {
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers';
+
 import { getVocabulary } from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components';
 
-import downSVG from '@plone/volto/icons/down-key.svg';
-import upSVG from '@plone/volto/icons/up-key.svg';
-import checkSVG from '@plone/volto/icons/check.svg';
+import {
+  Option,
+  DropdownIndicator,
+  selectTheme,
+  customSelectStyles,
+} from './SelectStyling';
 
-const components = loadable(() => import('react-select'), 'components');
 const AsyncCreatableSelect = loadable(
   () => import('react-select/lib/AsyncCreatable'),
   'components',
 );
-
-const Option = props => {
-  return (
-    <components.Option {...props}>
-      <div>{props.label}</div>
-      {props.isFocused && !props.isSelected && (
-        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
-      )}
-      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
-    </components.Option>
-  );
-};
-
-const DropdownIndicator = props => {
-  return (
-    <components.DropdownIndicator {...props}>
-      {props.selectProps.menuIsOpen ? (
-        <Icon name={upSVG} size="24px" color="#007bc1" />
-      ) : (
-        <Icon name={downSVG} size="24px" color="#007bc1" />
-      )}
-    </components.DropdownIndicator>
-  );
-};
-
-const selectTheme = theme => ({
-  ...theme,
-  borderRadius: 0,
-  colors: {
-    ...theme.colors,
-    primary25: 'hotpink',
-    primary: '#b8c6c8',
-  },
-});
-
-const customSelectStyles = {
-  control: (styles, state) => ({
-    ...styles,
-    border: 'none',
-    borderBottom: '1px solid #c7d5d8',
-    boxShadow: 'none',
-    borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
-    height: '60px',
-  }),
-  menu: (styles, state) => ({
-    ...styles,
-    top: null,
-    marginTop: 0,
-    boxShadow: 'none',
-    borderBottom: '1px solid #c7d5d8',
-  }),
-  indicatorSeparator: styles => ({
-    ...styles,
-    width: null,
-  }),
-  valueContainer: styles => ({
-    ...styles,
-    paddingLeft: 0,
-  }),
-  dropdownIndicator: styles => ({
-    paddingRight: 0,
-  }),
-  option: (styles, state) => ({
-    ...styles,
-    backgroundColor: null,
-    height: '50px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '14px 12px',
-    color: state.isSelected
-      ? '#007bc1'
-      : state.isFocused
-      ? '#4a4a4a'
-      : 'inherit',
-    ':active': {
-      backgroundColor: null,
-    },
-  }),
-};
 
 /**
  * TokenWidget component class.
@@ -202,7 +124,7 @@ class TokenWidget extends Component {
   }
 
   /**
-   * Initiate search with new query
+   * Load options from the vocabulary endpoint
    * @method loadOptions
    * @param {string} search Search query.
    * @param {string} previousOptions The previous options rendered.
@@ -227,7 +149,10 @@ class TokenWidget extends Component {
    */
   handleChange(selectedOption) {
     this.setState({ selectedOption });
-    this.props.onChange(this.props.id, selectedOption.map(item => item.value));
+    this.props.onChange(
+      this.props.id,
+      selectedOption ? selectedOption.map(item => item.value) : null,
+    );
   }
 
   /**

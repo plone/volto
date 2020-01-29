@@ -86,6 +86,7 @@ class Edit extends Component {
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
         url: nextProps.content['@id'],
+        alt: nextProps.content.title,
       });
     }
   }
@@ -154,6 +155,12 @@ class Edit extends Component {
     });
   };
 
+  resetSubmitUrl = () => {
+    this.setState({
+      url: '',
+    });
+  };
+
   /**
    * Drop handler
    * @method onDrop
@@ -208,56 +215,27 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { data } = this.props;
+
     return (
       <div
         className={cx(
           'block image align',
           {
-            center: !Boolean(this.props.data.align),
+            center: !Boolean(data.align),
           },
-          this.props.data.align,
+          data.align,
         )}
       >
-        {this.props.selected && !!this.props.data.url && (
-          <div className="toolbar">
-            {this.props.appendActions && <>{this.props.appendActions}</>}
-            {this.props.detached && this.props.appendActions && (
-              <div className="separator" />
-            )}
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() =>
-                  this.props.onChangeBlock(this.props.block, {
-                    ...this.props.data,
-                    url: '',
-                    align: '',
-                  })
-                }
-              >
-                <Icon name={clearSVG} size="24px" color="#e40166" />
-              </Button>
-            </Button.Group>
-            {this.props.appendSecondaryActions && (
-              <>{this.props.appendSecondaryActions}</>
-            )}
-          </div>
-        )}
-        {this.props.selected &&
-          !this.props.data.url &&
-          this.props.appendSecondaryActions && (
-            <div className="toolbar">{this.props.appendSecondaryActions}</div>
-          )}
-        {this.props.data.url ? (
+        {data.url ? (
           <img
-            className={cx({ 'full-width': this.props.data.align === 'full' })}
+            className={cx({ 'full-width': data.align === 'full' })}
             src={
-              this.props.data.url.includes(settings.apiPath)
-                ? `${flattenToAppURL(this.props.data.url)}/@@images/image`
-                : this.props.data.url
+              data.url.includes(settings.apiPath)
+                ? `${flattenToAppURL(data.url)}/@@images/image`
+                : data.url
             }
-            alt={this.props.data.alt || ''}
+            alt={data.alt || ''}
           />
         ) : (
           <div>
@@ -289,19 +267,34 @@ class Edit extends Component {
                       placeholder={this.props.intl.formatMessage(
                         messages.ImageBlockInputPlaceholder,
                       )}
+                      value={this.state.url}
                       // Prevents propagation to the Dropzone and the opening
                       // of the upload browser dialog
                       onClick={e => e.stopPropagation()}
                     />
                     {this.state.url && (
                       <Button.Group>
-                        <Button basic className="cancel">
+                        <Button
+                          basic
+                          className="cancel"
+                          onClick={e => {
+                            e.stopPropagation();
+                            this.setState({ url: '' });
+                          }}
+                        >
                           <Icon name={clearSVG} size="30px" />
                         </Button>
                       </Button.Group>
                     )}
                     <Button.Group>
-                      <Button basic primary>
+                      <Button
+                        basic
+                        primary
+                        onClick={e => {
+                          e.stopPropagation();
+                          this.onSubmitUrl();
+                        }}
+                      >
                         <Icon name={aheadSVG} size="30px" />
                       </Button>
                     </Button.Group>
@@ -312,7 +305,7 @@ class Edit extends Component {
           </div>
         )}
         <SidebarPortal selected={this.props.selected}>
-          <ImageSidebar {...this.props} />
+          <ImageSidebar {...this.props} resetSubmitUrl={this.resetSubmitUrl} />
         </SidebarPortal>
       </div>
     );

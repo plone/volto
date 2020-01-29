@@ -179,7 +179,9 @@ class View extends Component {
   cleanViewName = dirtyDisplayName =>
     dirtyDisplayName
       .replace('Connect(', '')
+      .replace('injectIntl(', '')
       .replace(')', '')
+      .replace('connect(', '')
       .toLowerCase();
 
   /**
@@ -219,11 +221,7 @@ class View extends Component {
         <BodyClass
           className={
             RenderedView.displayName
-              ? `view-${this.cleanViewName(
-                  RenderedView.displayName
-                    .replace('injectIntl(', '')
-                    .toLowerCase(),
-                )}`
+              ? `view-${this.cleanViewName(RenderedView.displayName)}`
               : null
           }
         />

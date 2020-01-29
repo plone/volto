@@ -41,6 +41,10 @@ const messages = defineMessages({
     id: 'Your email is required for reset your password.',
     defaultMessage: 'Your email is required for reset your password.',
   },
+  passwordReset: {
+    id: 'Password reset',
+    defaultMessage: 'Password reset',
+  },
 });
 
 /**
@@ -163,7 +167,7 @@ class RequestPasswordReset extends Component {
 
     return (
       <div id="page-password-reset">
-        <Helmet title="Password reset" />
+        <Helmet title={this.props.intl.formatMessage(messages.passwordReset)} />
         <Container>
           <Form
             title={this.props.intl.formatMessage(messages.title)}

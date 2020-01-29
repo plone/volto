@@ -159,7 +159,7 @@ class ContactForm extends Component {
     return (
       <div id="contact-form">
         <Container>
-          <Helmet title="Contact form" />
+          <Helmet title={this.props.intl.formatMessage(messages.contactForm)} />
           {this.props.error && (
             <Message
               icon="warning"

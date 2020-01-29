@@ -149,7 +149,7 @@ class Register extends Component {
   render() {
     return (
       <div id="page-register">
-        <Helmet title="Register" />
+        <Helmet title={this.props.intl.formatMessage(messages.register)} />
         <Form
           onSubmit={this.onSubmit}
           title={this.props.intl.formatMessage(messages.title)}

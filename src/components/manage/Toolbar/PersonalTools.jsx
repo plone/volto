@@ -1,3 +1,7 @@
+/**
+ * PersonalTools container.
+ * @module components/manage/Toolbar/PersonalTools
+ */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -21,6 +25,10 @@ const messages = defineMessages({
   profile: {
     id: 'Profile',
     defaultMessage: 'Profile',
+  },
+  userAvatar: {
+    id: 'user avatar',
+    defaultMessage: 'user avatar',
   },
 });
 
@@ -95,7 +103,10 @@ class PersonalTools extends Component {
         </header>
         <div className={cx('avatar', { default: !this.props.user.portrait })}>
           {this.props.user.portrait ? (
-            <img src={this.props.user.portrait} alt="user avatar" />
+            <img
+              src={this.props.user.portrait}
+              alt={this.props.intl.formatMessage(messages.userAvatar)}
+            />
           ) : (
             <Icon name={cameraSVG} size="96px" />
           )}

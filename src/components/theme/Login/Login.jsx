@@ -37,6 +37,10 @@ const messages = defineMessages({
     id: 'Login Name',
     defaultMessage: 'Login Name',
   },
+  Login: {
+    id: 'Login',
+    defaultMessage: 'Login',
+  },
   password: {
     id: 'Password',
     defaultMessage: 'Password',
@@ -160,7 +164,7 @@ class Login extends Component {
   render() {
     return (
       <div id="page-login">
-        <Helmet title="Login" />
+        <Helmet title={this.props.intl.formatMessage(messages.Login)} />
         <Container text>
           <Form method="post" onSubmit={this.onLogin}>
             <Segment.Group raised>
@@ -313,7 +317,10 @@ export default compose(
       error: state.userSession.login.error,
       loading: state.userSession.login.loading,
       token: state.userSession.token,
-      returnUrl: qs.parse(props.location.search).return_url || '/',
+      returnUrl:
+        qs.parse(props.location.search).return_url ||
+        props.location.pathname.replace('/login', '') ||
+        '/',
     }),
     { login },
   ),
