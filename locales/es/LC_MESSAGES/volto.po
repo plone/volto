@@ -877,10 +877,12 @@ msgid "Paste"
 msgstr "Pegar"
 
 #: components/manage/Preferences/PersonalInformation
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
 msgstr "Información Personal"
 
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
 msgstr "Preferencias Personales"
 

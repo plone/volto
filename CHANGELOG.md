@@ -6,6 +6,8 @@
 
 ### Changes
 
+- added new italian translations, added italian to available languages, translated some static string
+- updated italian translations
 - Fix listing block sidebar focus @sneridagh
 - Fix getBaseUrl helper method to not match inner occurrences of nonContentRoutes @sneridagh
 
