@@ -44,7 +44,7 @@ exports[`renders a listing block querystring widget component 1`] = `
               onKeyDown={[Function]}
             >
               <div
-                className="react-select__control css-1qc0zss-control"
+                className="react-select__control css-1ard45z-control"
                 onMouseDown={[Function]}
                 onTouchEnd={[Function]}
               >
