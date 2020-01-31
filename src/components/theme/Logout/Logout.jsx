@@ -55,7 +55,13 @@ class Logout extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    return <Login location={{ query: this.props.location.query }} />;
+    console.log(this.props.location);
+    return (
+      <Login
+        location={{ query: this.props.location.query }}
+        navigateBackTo="/"
+      />
+    );
   }
 }
 

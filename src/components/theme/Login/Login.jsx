@@ -85,6 +85,7 @@ class Login extends Component {
     loading: PropTypes.bool,
     token: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
     returnUrl: PropTypes.string,
+    navigateBackTo: PropTypes.string,
   };
 
   /**
@@ -97,6 +98,7 @@ class Login extends Component {
     loading: null,
     token: null,
     returnUrl: null,
+    navigateBackTo: null,
   };
 
   /**
@@ -117,8 +119,11 @@ class Login extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
     if (nextProps.token) {
-      this.props.history.push(this.props.returnUrl || '/');
+      this.props.history.push(
+        this.props.navigateBackTo || this.props.returnUrl || '/',
+      );
       if (toast.isActive('loginFailed')) {
         toast.dismiss('loginFailed');
       }
