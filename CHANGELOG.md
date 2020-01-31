@@ -2,8 +2,6 @@
 
 ## 4.0.0 (unreleased)
 
-### Added
-
 ### Changes
 
 - Fix CSS when multiselection widgets have multiple items, then provoke a line jump @sneridagh
