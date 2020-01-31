@@ -875,10 +875,12 @@ msgid "Paste"
 msgstr "Colar"
 
 #: components/manage/Preferences/PersonalInformation
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
 msgstr "Informação Pessoal"
 
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
 msgstr "Preferências Pessoais"
 
