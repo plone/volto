@@ -6,6 +6,7 @@
 
 ### Changes
 
+- Fix CSS when multiselection widgets have multiple items, then provoke a line jump @sneridagh
 - added new italian translations, added italian to available languages, translated some static string
 - updated italian translations
 - Fix listing block sidebar focus @sneridagh
