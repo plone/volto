@@ -29,10 +29,10 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
         []
       : folderItems;
 
-  const templateConfig = blocks?.blocksConfig?.listing?.templates;
+  const templateConfig = blocks.blocksConfig.listing.templates;
 
   let templateName =
-    data.template && Object.keys(templateConfig).indexOf(data.template) >= 0
+    data.template && !!templateConfig[data.template]
       ? data.template
       : 'default';
 

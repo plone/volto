@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid, Form } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import Select from 'react-select';
-
 import { blocks } from '~/config';
-import { compose } from 'redux';
-import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 
 import {
   customSelectStyles,
@@ -84,7 +81,6 @@ TemplateWidget.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
   block: PropTypes.string.isRequired,
   onChangeBlock: PropTypes.func.isRequired,
-  openObjectBrowser: PropTypes.func.isRequired,
 };
 
-export default compose(withObjectBrowser, injectIntl)(TemplateWidget);
+export default injectIntl(TemplateWidget);

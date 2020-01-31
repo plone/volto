@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { blocks } from '~/config';
-import { compose } from 'redux';
-import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import TemplateWidget from './TemplateWidget';
 
 const ListingStyle = ({ data, block, onChangeBlock, required = false }) => {
-  const templatesConfig = blocks?.blocksConfig?.listing?.templates;
+  const templatesConfig = blocks.blocksConfig.listing.templates;
 
   if (templatesConfig && Object.keys(templatesConfig).length > 1) {
     return (
@@ -29,7 +26,6 @@ ListingStyle.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
   block: PropTypes.string.isRequired,
   onChangeBlock: PropTypes.func.isRequired,
-  openObjectBrowser: PropTypes.func.isRequired,
 };
 
-export default compose(withObjectBrowser)(ListingStyle);
+export default ListingStyle;
