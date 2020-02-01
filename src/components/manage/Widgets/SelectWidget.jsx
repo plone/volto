@@ -170,16 +170,10 @@ class SelectWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (!this.props.choices && this.vocabBaseUrl) {
-      this.props.getVocabulary(this.vocabBaseUrl);
+    if (!this.props.choices && this.props.vocabBaseUrl) {
+      this.props.getVocabulary(this.props.vocabBaseUrl);
     }
   }
-
-  vocabBaseUrl = !this.props.choices
-    ? getVocabFromHint(this.props) ||
-      getVocabFromField(this.props) ||
-      getVocabFromItems(this.props)
-    : '';
 
   /**
    * Initiate search with new query
@@ -191,7 +185,7 @@ class SelectWidget extends Component {
    */
   loadOptions = (search, previousOptions, additional) => {
     const offset = this.state.search !== search ? 0 : additional.offset;
-    this.props.getVocabulary(this.vocabBaseUrl, search, offset);
+    this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
     this.setState({ search });
     return {
       options: this.props.choices,
@@ -310,7 +304,7 @@ class SelectWidget extends Component {
                   </button>
                 </div>
               )}
-              {this.vocabBaseUrl ? (
+              {this.props.vocabBaseUrl ? (
                 <AsyncPaginate
                   className="react-select-container"
                   classNamePrefix="react-select"
@@ -333,7 +327,7 @@ class SelectWidget extends Component {
                   className="react-select-container"
                   classNamePrefix="react-select"
                   options={[
-                    ...choices.map(option => ({
+                    ...map(choices, option => ({
                       value: option[0],
                       label: option[1],
                     })),
@@ -391,14 +385,19 @@ export default compose(
         return {
           choices: props.choices,
         };
-      }
-
-      if (vocabState) {
+      } else if (vocabState) {
         return {
+          vocabBaseUrl,
           vocabState,
           choices: vocabState.items,
           itemsTotal: vocabState.itemsTotal,
           loading: Boolean(vocabState.loading),
+        };
+        // There is a moment that vocabState is not there yet, so we need to pass the
+        // vocabBaseUrl to the component.
+      } else if (vocabBaseUrl) {
+        return {
+          vocabBaseUrl,
         };
       }
       return {};

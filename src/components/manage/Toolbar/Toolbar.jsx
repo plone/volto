@@ -58,6 +58,14 @@ const messages = defineMessages({
     id: 'Shrink toolbar',
     defaultMessage: 'Shrink toolbar',
   },
+  personalInformation: {
+    id: 'Personal Information',
+    defaultMessage: 'Personal Information',
+  },
+  personalPreferences: {
+    id: 'Personal Preferences',
+    defaultMessage: 'Personal Preferences',
+  },
 });
 
 const toolbarComponents = {
@@ -67,11 +75,13 @@ const toolbarComponents = {
   profile: {
     component: PersonalInformation,
     wrapper: StandardWrapper,
+    wrapperTitle: messages.personalInformation,
     hideToolbarBody: true,
   },
   preferences: {
     component: PersonalPreferences,
     wrapper: StandardWrapper,
+    wrapperTitle: messages.personalPreferences,
     hideToolbarBody: true,
   },
 };
@@ -274,10 +284,16 @@ class Toolbar extends Component {
                   const WrapperComponent = toolbarComponents[component].wrapper;
                   const haveActions =
                     toolbarComponents[component].hideToolbarBody;
+                  const title =
+                    toolbarComponents[component].wrapperTitle &&
+                    this.props.intl.formatMessage(
+                      toolbarComponents[component].wrapperTitle,
+                    );
                   if (WrapperComponent) {
                     return (
                       <WrapperComponent
                         componentName={component}
+                        componentTitle={title}
                         pathname={this.props.pathname}
                         loadComponent={this.loadComponent}
                         unloadComponent={this.unloadComponent}
@@ -418,8 +434,8 @@ class Toolbar extends Component {
                   messages.shrinkToolbar,
                 )}
                 className={cx({
-                  [this.props.content.review_state]:
-                    this.props.content && this.props.content.review_state,
+                  [this.props.content?.review_state]: this.props.content
+                    ?.review_state,
                 })}
                 onClick={this.handleShrink}
               />

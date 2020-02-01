@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { map, filter } from 'lodash';
 import { List } from 'semantic-ui-react';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 import {
   getBlocksFieldname,
@@ -43,10 +44,13 @@ const View = ({ properties }) => {
               block.text?.blocks[0].type.indexOf('header-') === 0,
           ),
           block => (
-            <List.Item className={block.text.blocks[0].type}>
-              <a href={`#${block.text.blocks[0].key}`}>
+            <List.Item
+              key={block.text.blocks[0].key}
+              className={block.text.blocks[0].type}
+            >
+              <AnchorLink href={`#${block.text.blocks[0].key}`}>
                 {block.text.blocks[0].text}
-              </a>
+              </AnchorLink>
             </List.Item>
           ),
         )}
