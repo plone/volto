@@ -43,7 +43,7 @@ export const settings = {
   imageObjects: ['Image'],
   listingPreviewImageField: 'image',
   customStyleMap: null,
-  notSupportedBrowsers: ['ie', 'node'], // 'node' is required since it means that the client has experienced a problem.
+  notSupportedBrowsers: ['ie'],
 };
 
 export const widgets = {
