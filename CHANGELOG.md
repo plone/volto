@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix unable to login from /logout page (#1147) @sneridagh
+
 ## 4.0.0-alpha.35 (2020-01-31)
 
 ### Changes
