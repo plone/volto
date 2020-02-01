@@ -108,6 +108,8 @@ msgstr "Voeg {type} toe"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Alignment"
 msgstr ""
 
@@ -193,7 +195,6 @@ msgid "Cell"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
 msgstr ""
@@ -467,20 +468,16 @@ msgstr ""
 msgid "Email sent"
 msgstr ""
 
+#: components/manage/Blocks/Maps/Edit
+msgid "Embed code error, please follow the instructions and try again."
+msgstr ""
+
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Enter Map URL"
-msgstr ""
-
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
-msgstr ""
-
-#: components/manage/Blocks/Video/Edit
-msgid "Enter Video URL"
 msgstr ""
 
 #: components/theme/Register/Register
@@ -492,6 +489,10 @@ msgstr ""
 #: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
 msgstr "Vul de volledige naam in, bijvoorbeeld Jan Smit."
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Enter map Embed Code"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
@@ -551,7 +552,6 @@ msgid "From"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Full"
 msgstr ""
@@ -700,13 +700,14 @@ msgid "Lead Image"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr ""
 
@@ -743,12 +744,12 @@ msgstr "Gebruikersnaam"
 msgid "Make the table compact"
 msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Maps data error"
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Map"
 msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Maps instructions"
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Maps URL"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
@@ -814,6 +815,10 @@ msgstr ""
 msgid "No items found in this container."
 msgstr ""
 
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "No map selected"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
@@ -827,6 +832,10 @@ msgstr ""
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectWidget
 msgid "No value"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "No video selected"
 msgstr ""
 
 #: components/manage/Workflow/Workflow
@@ -843,6 +852,8 @@ msgstr "Ok"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Open in a new tab"
 msgstr ""
 
@@ -875,10 +886,12 @@ msgid "Paste"
 msgstr "Plakken"
 
 #: components/manage/Preferences/PersonalInformation
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
 msgstr "Persoonlijke gegevens"
 
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
 msgstr "Persoonlijke voorkeuren"
 
@@ -893,6 +906,10 @@ msgstr "Gebruikers die verantwoordelijk zijn voor de inhoud van dit item. De ein
 
 #: components/manage/Blocks/Video/Edit
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
@@ -1013,7 +1030,6 @@ msgid "Richtext"
 msgstr ""
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
 msgstr ""
@@ -1027,7 +1043,6 @@ msgid "Roles"
 msgstr ""
 
 #: components/manage/Add/Add
-#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1286,6 +1301,10 @@ msgstr "Titel"
 msgid "Type"
 msgstr "Type"
 
+#: components/manage/Blocks/Video/Edit
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr ""
+
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
 msgstr ""
@@ -1364,6 +1383,14 @@ msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video URL"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem

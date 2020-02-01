@@ -7,9 +7,34 @@
 ### Changes
 - Deleted Empty Select Component @aryamanpuri
 
+## 4.0.0-alpha.35 (2020-01-31)
+
+### Changes
+
+- Fix CSS when multiselection widgets have multiple items, then provoke a line jump @sneridagh
+- added new italian translations, added italian to available languages, translated some static string
+- updated italian translations
+- Fix listing block sidebar focus @sneridagh
+- Fix getBaseUrl helper method to not match inner occurrences of nonContentRoutes @sneridagh
+
+## 4.0.0-alpha.34 (2020-01-26)
+
+### Changes
+
+- Fix token expiration/renewer timer, this fixes #674 @sneridagh
+
+## 4.0.0-alpha.33 (2020-01-26)
+
+### Changes
+
+- Updated Maps block to the sidebar and image block look and feel @sneridagh
+- Update video block to the sidebar and get the image block look and feel @sneridagh
+
 ### Internal
 
 - Fix and update to latest husky and lint-staged @sneridagh
+- Fix for i18n to use defaultMessages instead to default to the id @sneridagh
+- Update `babel-plugin-react-intl` to latest @sneridagh
 
 ## 4.0.0-alpha.32 (2020-01-24)
 

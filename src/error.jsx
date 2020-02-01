@@ -27,7 +27,7 @@ const Error = ({ message, stackTrace }) => (
     {/* TODO: Replace inline styling with a CSS class, inline style only for __SERVER__ */}
     <h2>
       <FormattedMessage
-        id="Sorry, something went wrong with your request&nbsp;"
+        id="Sorry, something went wrong with your request"
         defaultMessage="Sorry, something went wrong with your request&nbsp;"
       />
     </h2>
