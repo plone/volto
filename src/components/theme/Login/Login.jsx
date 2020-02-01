@@ -119,7 +119,6 @@ class Login extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     if (nextProps.token) {
       this.props.history.push(
         this.props.navigateBackTo || this.props.returnUrl || '/',
