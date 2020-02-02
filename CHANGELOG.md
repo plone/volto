@@ -9,6 +9,7 @@
 - Fix unable to login from /logout page (#1147) @sneridagh
 - Fix sitemap.xml by increasing the batch size @robgietema
 - Browser detect feature, adding a deprecation message for ancient browsers in the `App` component @sneridagh
+- Fix shift return in tables @robgietema
 
 ## 4.0.0-alpha.35 (2020-01-31)
 
