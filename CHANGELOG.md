@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix sitemap.xml by increasing the batch size @robgietema
+
 ## 4.0.0-alpha.35 (2020-01-31)
 
 ### Changes
