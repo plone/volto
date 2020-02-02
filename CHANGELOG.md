@@ -7,6 +7,7 @@
 ### Changes
 
 - Fix sitemap.xml by increasing the batch size @robgietema
+- Browser detect feature, adding a deprecation message for ancient browsers in the `App` component @sneridagh
 
 ## 4.0.0-alpha.35 (2020-01-31)
 
