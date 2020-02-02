@@ -6,6 +6,7 @@
 
 ### Changes
 
+- Fix unable to login from /logout page (#1147) @sneridagh
 - Fix sitemap.xml by increasing the batch size @robgietema
 - Browser detect feature, adding a deprecation message for ancient browsers in the `App` component @sneridagh
 
