@@ -1418,6 +1418,10 @@ msgstr "Chi"
 msgid "Workflow updated."
 msgstr "Workflow aggiornato."
 
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "You are using an outdated browser"
+msgstr ""
+
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
 msgstr "Puoi aggiungere un commento compilando la form sotto. Utilizza il testo semplice."
@@ -1461,6 +1465,10 @@ msgstr "Comuni"
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
 msgstr "Elimina"
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "deprecated_browser_notice_message"
+msgstr ""
 
 #: config/Blocks
 msgid "description"
