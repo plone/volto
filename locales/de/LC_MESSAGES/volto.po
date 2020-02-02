@@ -882,10 +882,12 @@ msgid "Paste"
 msgstr "Einfügen"
 
 #: components/manage/Preferences/PersonalInformation
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
 msgstr "Persönliche Informationen"
 
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
 msgstr "Meine Einstellungen"
 
@@ -1431,6 +1433,10 @@ msgstr "Wer"
 msgid "Workflow updated."
 msgstr "Arbeitsablauf aktualisiert."
 
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "You are using an outdated browser"
+msgstr ""
+
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
 msgstr "Sie können einen Kommentar abgeben wenn Sie das untenstehende Formular ausfüllen. Plain-Text-Formatierung."
@@ -1474,6 +1480,10 @@ msgstr "Allgemein"
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
 msgstr "Löschen"
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "deprecated_browser_notice_message"
+msgstr ""
 
 #: config/Blocks
 msgid "description"

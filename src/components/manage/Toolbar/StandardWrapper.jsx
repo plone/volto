@@ -20,7 +20,7 @@ const StandardWrapper = props => {
           <Icon name={backSVG} size="30px" />
         </button>
         <div className="vertical divider" />
-        <h2>{props.componentName}</h2>
+        <h2>{props.componentTitle || props.componentName}</h2>
       </header>
       {props.children}
     </div>
@@ -29,6 +29,7 @@ const StandardWrapper = props => {
 
 StandardWrapper.propTypes = {
   componentName: PropTypes.string.isRequired,
+  componentTitle: PropTypes.string,
   unloadComponent: PropTypes.func.isRequired,
   loadComponent: PropTypes.func.isRequired,
   closeMenu: PropTypes.func.isRequired,

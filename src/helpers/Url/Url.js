@@ -13,7 +13,17 @@ import { settings } from '~/config';
  * @return {string} Base url of content object.
  */
 export const getBaseUrl = memoize(url => {
-  let adjustedUrl = settings.nonContentRoutes.reduce(
+  // We allow settings.nonContentRoutes to have strings (that are supposed to match
+  // ending strings of pathnames, so we are converting them to RegEx to match also
+  const normalized_nonContentRoutes = settings.nonContentRoutes.map(item => {
+    if (item.test) {
+      return item;
+    } else {
+      return new RegExp(item + '$');
+    }
+  });
+
+  let adjustedUrl = normalized_nonContentRoutes.reduce(
     (acc, item) => acc.replace(item, ''),
     url,
   );

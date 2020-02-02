@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-01-25T17:41:47.816Z\n"
+"POT-Creation-Date: 2020-02-02T09:49:09.803Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1054,11 +1054,13 @@ msgid "Paste"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
+#: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Information
 msgid "Personal Information"
 msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Preferences
 msgid "Personal Preferences"
 msgstr ""
@@ -1726,6 +1728,11 @@ msgstr ""
 msgid "Workflow updated."
 msgstr ""
 
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+# defaultMessage: You are using an outdated browser
+msgid "You are using an outdated browser"
+msgstr ""
+
 #: components/theme/Comments/Comments
 # defaultMessage: You can add a comment by filling out the form below. Plain text formatting.
 msgid "You can add a comment by filling out the form below. Plain text formatting."
@@ -1779,6 +1786,11 @@ msgstr ""
 #: components/manage/Blocks/Block/Edit
 # defaultMessage: delete
 msgid "delete"
+msgstr ""
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+# defaultMessage: You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser.
+msgid "deprecated_browser_notice_message"
 msgstr ""
 
 #: config/Blocks

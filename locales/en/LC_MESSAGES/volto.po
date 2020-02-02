@@ -867,10 +867,12 @@ msgid "Paste"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
 msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
 msgstr ""
 
@@ -1416,6 +1418,10 @@ msgstr ""
 msgid "Workflow updated."
 msgstr ""
 
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "You are using an outdated browser"
+msgstr ""
+
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
 msgstr ""
@@ -1458,6 +1464,10 @@ msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
+msgstr ""
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "deprecated_browser_notice_message"
 msgstr ""
 
 #: config/Blocks
