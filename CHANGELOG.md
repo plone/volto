@@ -2,8 +2,6 @@
 
 ## 4.0.0 (unreleased)
 
-### Added
-
 ### Changes
 
 - Fix unable to login from /logout page (#1147) @sneridagh
