@@ -57,9 +57,13 @@ const locales = {
 const server = express();
 if (__DEVELOPMENT__) {
   server.use(
-    '/Plone',
+    '/api',
     proxy({
-      target: 'http://localhost:8080/',
+      target: 'http://localhost:8080',
+      pathRewrite: {
+        '^/api':
+          '/VirtualHostBase/http/localhost:3000/Plone/VirtualHostRoot/_vh_api',
+      },
     }),
   );
 }
