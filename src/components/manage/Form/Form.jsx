@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { keys, map, mapValues, omit, uniq, without } from 'lodash';
+import { isEmpty, keys, map, mapValues, omit, uniq, without } from 'lodash';
 import move from 'lodash-move';
 import isBoolean from 'lodash/isBoolean';
 import {
@@ -145,12 +145,17 @@ class Form extends Component {
       formData = mapValues(props.schema.properties, 'default');
     }
     // defaults for block editor; should be moved to schema on server side
-    if (!formData[blocksLayoutFieldname]) {
+    // Adding fallback in case the fields are empty, so we are sure that the edit form
+    // shows at least the default blocks
+    if (
+      !formData[blocksLayoutFieldname] ||
+      isEmpty(formData[blocksLayoutFieldname].items)
+    ) {
       formData[blocksLayoutFieldname] = {
         items: [ids.title, ids.text],
       };
     }
-    if (!formData[blocksFieldname]) {
+    if (!formData[blocksFieldname] || isEmpty(formData[blocksFieldname])) {
       formData[blocksFieldname] = {
         [ids.title]: {
           '@type': 'title',
