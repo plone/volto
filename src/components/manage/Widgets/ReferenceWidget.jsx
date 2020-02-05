@@ -43,7 +43,7 @@ class ReferenceWidget extends Component {
     required: PropTypes.bool,
     multiple: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
-    value: PropTypes.oneOf([
+    value: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.object),
       PropTypes.object,
     ]),
@@ -71,7 +71,7 @@ class ReferenceWidget extends Component {
     error: [],
     search: [],
     value: null,
-    multiple: false,
+    multiple: true,
   };
 
   /**
@@ -83,6 +83,7 @@ class ReferenceWidget extends Component {
   constructor(props) {
     super(props);
     this.onSearchChange = this.onSearchChange.bind(this);
+
     this.state = {
       choices: props.value
         ? props.multiple
@@ -94,7 +95,7 @@ class ReferenceWidget extends Component {
                   text: value.title,
                   value: value['@id'],
                   label: {
-                    content: value['@id'].replace(settings.apiPath, ''),
+                    content: value['@id']?.replace(settings.apiPath, ''),
                   },
                   data: value,
                 },
@@ -106,7 +107,7 @@ class ReferenceWidget extends Component {
                 text: props.value.title,
                 value: props.value['@id'],
                 label: {
-                  content: props.value['@id'].replace(settings.apiPath, ''),
+                  content: props.value['@id']?.replace(settings.apiPath, ''),
                 },
                 data: props.value,
               },
@@ -179,6 +180,7 @@ class ReferenceWidget extends Component {
    * @param {object} data Event data.
    * @returns {undefined}
    */
+
   onSearchChange(event, data) {
     if (data.searchQuery && data.searchQuery !== '') {
       this.props.searchContent('', {
@@ -206,6 +208,21 @@ class ReferenceWidget extends Component {
       onChange,
       fieldSet,
     } = this.props;
+    console.log('value', value);
+    console.log(
+      'value elab',
+      multiple
+        ? value
+          ? map(value, item =>
+              item && item['@id']
+                ? item['@id'].replace(settings.apiPath, '')
+                : item,
+            )
+          : []
+        : value
+        ? value['@id']?.replace(settings.apiPath, '')
+        : '',
+    );
     return (
       <Form.Field
         inline
@@ -231,25 +248,28 @@ class ReferenceWidget extends Component {
                 noResultsMessage={this.props.intl.formatMessage(
                   messages.no_results_found,
                 )}
+                multiple={multiple}
                 value={
                   multiple
                     ? value
                       ? map(value, item =>
-                          item['@id'].replace(settings.apiPath, ''),
+                          item && item['@id']
+                            ? item['@id'].replace(settings.apiPath, '')
+                            : item,
                         )
                       : []
                     : value
-                    ? value['@id'].replace(settings.apiPath, '')
+                    ? value['@id']?.replace(settings.apiPath, '')
                     : ''
                 }
-                onChange={(event, data) =>
-                  onChange(
+                onChange={(event, data) => {
+                  return onChange(
                     id,
                     multiple
                       ? map(data.value, item => this.state.choices[item].data)
                       : this.state.choices[data.value].data,
-                  )
-                }
+                  );
+                }}
                 onSearchChange={this.onSearchChange}
               />
               {map(error, message => (
