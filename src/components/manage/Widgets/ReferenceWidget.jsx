@@ -5,25 +5,24 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Form, Grid, Label, Dropdown } from 'semantic-ui-react';
-import { compact, concat, fromPairs, map, values, uniqBy } from 'lodash';
-import { defineMessages, injectIntl } from 'react-intl';
-import { settings } from '~/config';
 
-import { resetSearchContent, searchContent } from '../../../actions';
+import { Form, Grid, Label, Button } from 'semantic-ui-react';
+import { map } from 'lodash';
+import { injectIntl } from 'react-intl';
 
-const messages = defineMessages({
-  no_results_found: {
-    id: 'No results found.',
-    defaultMessage: 'No results found.',
-  },
-  no_value: {
-    id: 'No value',
-    defaultMessage: 'No value',
-  },
-});
+import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+
+// const messages = defineMessages({
+//   no_results_found: {
+//     id: 'No results found.',
+//     defaultMessage: 'No results found.',
+//   },
+//   no_value: {
+//     id: 'No value',
+//     defaultMessage: 'No value',
+//   },
+// });
 
 /**
  * ReferenceWidget component class.
@@ -37,27 +36,20 @@ class ReferenceWidget extends Component {
    * @static
    */
   static propTypes = {
+    openObjectBrowser: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired,
+
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
     required: PropTypes.bool,
     multiple: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
-    value: PropTypes.oneOf([
+    value: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.object),
       PropTypes.object,
     ]),
     onChange: PropTypes.func.isRequired,
-    resetSearchContent: PropTypes.func.isRequired,
-    searchContent: PropTypes.func.isRequired,
-    search: PropTypes.arrayOf(
-      PropTypes.shape({
-        '@id': PropTypes.string,
-        '@type': PropTypes.string,
-        title: PropTypes.string,
-        description: PropTypes.string,
-      }),
-    ),
   };
 
   /**
@@ -80,55 +72,45 @@ class ReferenceWidget extends Component {
    * @param {Object} props Component properties
    * @constructs Actions
    */
-  constructor(props) {
-    super(props);
-    this.onSearchChange = this.onSearchChange.bind(this);
-    this.state = {
-      choices: props.value
-        ? props.multiple
-          ? fromPairs(
-              map(props.value, value => [
-                value['@id'],
-                {
-                  key: value['@id'],
-                  text: value.title,
-                  value: value['@id'],
-                  label: {
-                    content: value['@id'].replace(settings.apiPath, ''),
-                  },
-                  data: value,
-                },
-              ]),
-            )
-          : {
-              [props.value['@id']]: {
-                key: props.value['@id'],
-                text: props.value.title,
-                value: props.value['@id'],
-                label: {
-                  content: props.value['@id'].replace(settings.apiPath, ''),
-                },
-                data: props.value,
-              },
-              novalue: {
-                key: 'novalue',
-                text: this.props.intl.formatMessage(messages.no_value),
-                value: 'novalue',
-                data: null,
-              },
-            }
-        : {},
-    };
-  }
-
-  /**
-   * Component will mount
-   * @method componentWillMount
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillMount() {
-    this.props.resetSearchContent();
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     choices: props.value
+  //       ? props.multiple
+  //         ? fromPairs(
+  //             map(props.value, value => [
+  //               value['@id'],
+  //               {
+  //                 key: value['@id'],
+  //                 text: value.title,
+  //                 value: value['@id'],
+  //                 label: {
+  //                   content: value['@id'].replace(settings.apiPath, ''),
+  //                 },
+  //                 data: value,
+  //               },
+  //             ]),
+  //           )
+  //         : {
+  //             [props.value['@id']]: {
+  //               key: props.value['@id'],
+  //               text: props.value.title,
+  //               value: props.value['@id'],
+  //               label: {
+  //                 content: props.value['@id'].replace(settings.apiPath, ''),
+  //               },
+  //               data: props.value,
+  //             },
+  //             novalue: {
+  //               key: 'novalue',
+  //               text: this.props.intl.formatMessage(messages.no_value),
+  //               value: 'novalue',
+  //               data: null,
+  //             },
+  //           }
+  //       : {},
+  //   };
+  // }
 
   /**
    * Component will receive props
@@ -137,56 +119,39 @@ class ReferenceWidget extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    this.setState({
-      choices: {
-        ...fromPairs(
-          map(
-            uniqBy(
-              map(compact(concat(nextProps.value, nextProps.search)), item => ({
-                ...item,
-                '@id': item['@id'].replace(settings.apiPath, ''),
-              })),
-              '@id',
-            ),
-            value => [
-              value['@id'],
-              {
-                key: value['@id'],
-                text: value.title,
-                value: value['@id'],
-                label: {
-                  content: value['@id'],
-                },
-                data: value,
-              },
-            ],
-          ),
-        ),
-        novalue: {
-          key: 'novalue',
-          text: this.props.intl.formatMessage(messages.no_value),
-          value: 'novalue',
-          data: null,
-        },
-      },
-    });
-  }
-
-  /**
-   * On search change handler
-   * @method onSearchChange
-   * @param {object} event Event object.
-   * @param {object} data Event data.
-   * @returns {undefined}
-   */
-  onSearchChange(event, data) {
-    if (data.searchQuery && data.searchQuery !== '') {
-      this.props.searchContent('', {
-        Title: `*${data.searchQuery}*`,
-      });
-    } else {
-      this.props.resetSearchContent();
-    }
+    // this.setState({
+    //   choices: {
+    //     ...fromPairs(
+    //       map(
+    //         uniqBy(
+    //           map(compact(concat(nextProps.value, nextProps.search)), item => ({
+    //             ...item,
+    //             '@id': item['@id'].replace(settings.apiPath, ''),
+    //           })),
+    //           '@id',
+    //         ),
+    //         value => [
+    //           value['@id'],
+    //           {
+    //             key: value['@id'],
+    //             text: value.title,
+    //             value: value['@id'],
+    //             label: {
+    //               content: value['@id'],
+    //             },
+    //             data: value,
+    //           },
+    //         ],
+    //       ),
+    //     ),
+    //     novalue: {
+    //       key: 'novalue',
+    //       text: this.props.intl.formatMessage(messages.no_value),
+    //       value: 'novalue',
+    //       data: null,
+    //     },
+    //   },
+    // });
   }
 
   /**
@@ -196,16 +161,19 @@ class ReferenceWidget extends Component {
    */
   render() {
     const {
+      openObjectBrowser,
       id,
       title,
       required,
       description,
       error,
-      value,
-      multiple,
-      onChange,
+      // value,
+      // multiple,
+      // onChange,
+      // onChangeBlock,
       fieldSet,
     } = this.props;
+
     return (
       <Form.Field
         inline
@@ -222,10 +190,17 @@ class ReferenceWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
+              <Button
+                onClick={() => openObjectBrowser({ mode: 'link' })}
+                type="button"
+              >
+                Open
+              </Button>
+              {/*               
               <Dropdown
                 options={values(this.state.choices)}
                 placeholder={title}
-                search
+                
                 selection
                 fluid
                 noResultsMessage={this.props.intl.formatMessage(
@@ -251,7 +226,7 @@ class ReferenceWidget extends Component {
                   )
                 }
                 onSearchChange={this.onSearchChange}
-              />
+              /> */}
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
                   {message}
@@ -272,12 +247,13 @@ class ReferenceWidget extends Component {
   }
 }
 
-export default compose(
-  injectIntl,
-  connect(
-    state => ({
-      search: state.search.items,
-    }),
-    { resetSearchContent, searchContent },
-  ),
-)(ReferenceWidget);
+const defaultComponentProps = {
+  data: { url: '/' },
+  onChangeBlock: () => {},
+  block: 'referenceWidget',
+};
+
+const RFW = compose(withObjectBrowser, injectIntl)(ReferenceWidget);
+export default function(props) {
+  return <RFW {...defaultComponentProps} {...props}></RFW>;
+}

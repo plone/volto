@@ -78,6 +78,7 @@ class ObjectBrowserBody extends Component {
    */
   constructor(props) {
     super(props);
+    console.log('openobjectbrowser props', this.props, props);
     this.state = {
       currentFolder: this.props.data.url
         ? getParentURL(this.props.data.url)
