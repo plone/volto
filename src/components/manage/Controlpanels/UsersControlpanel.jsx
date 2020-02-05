@@ -113,6 +113,10 @@ const messages = defineMessages({
     id: 'Add to Groups',
     defaultMessage: 'Add to Groups',
   },
+  addGroupsFormGroupNameTitle: {
+    id: 'Groupname',
+    defaultMessage: 'Groupname',
+  },
   addGroupsFormDescriptionTitle: {
     id: 'Description',
     defaultMessage: 'Description',
@@ -749,7 +753,9 @@ class UsersControlpanel extends Component {
                   description: '',
                 },
                 groupname: {
-                  title: 'groupname',
+                  title: this.props.intl.formatMessage(
+                    messages.addGroupsFormGroupNameTitle,
+                  ),
                   type: 'string',
                   description: '',
                 },

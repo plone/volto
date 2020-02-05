@@ -6,7 +6,25 @@
 
 ### Changes
 
+## 4.0.0-alpha.36 (2020-02-03)
+
+### Changes
+
+- Fix unable to login from /logout page (#1147) @sneridagh
+- Fix sitemap.xml by increasing the batch size @robgietema
+- Browser detect feature, adding a deprecation message for ancient browsers in the `App` component @sneridagh
+- Adding fallback in the edit form, in case the blocks related fields are empty, so we are sure that the edit form shows at least the default blocks @sneridagh
+- Fix shift return in tables @robgietema
+
+## 4.0.0-alpha.35 (2020-01-31)
+
+### Changes
+
+- Fix CSS when multiselection widgets have multiple items, then provoke a line jump @sneridagh
+- added new italian translations, added italian to available languages, translated some static string
+- updated italian translations
 - Fix listing block sidebar focus @sneridagh
+- Fix getBaseUrl helper method to not match inner occurrences of nonContentRoutes @sneridagh
 
 ## 4.0.0-alpha.34 (2020-01-26)
 

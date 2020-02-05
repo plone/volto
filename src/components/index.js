@@ -83,6 +83,7 @@ export TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 export Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 export WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 export Workflow from '@plone/volto/components/manage/Workflow/Workflow';
+export OutdatedBrowser from '@plone/volto/components/theme/OutdatedBrowser/OutdatedBrowser';
 
 export BlockChooser from '@plone/volto/components/manage/BlockChooser/BlockChooser';
 
