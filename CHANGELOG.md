@@ -8,6 +8,10 @@
 
 - Hide Blocks fields in Layout fieldset in Add/Edit forms @pnicolli
 
+### Internal
+
+- Added forest.eea.europa.eu as deployed Volto in production @tiberiuichim
+
 ## 4.0.0-alpha.36 (2020-02-03)
 
 ### Changes
