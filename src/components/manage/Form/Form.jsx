@@ -5,7 +5,16 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isEmpty, keys, map, mapValues, omit, uniq, without } from 'lodash';
+import {
+  findIndex,
+  isEmpty,
+  keys,
+  map,
+  mapValues,
+  omit,
+  uniq,
+  without,
+} from 'lodash';
 import move from 'lodash-move';
 import isBoolean from 'lodash/isBoolean';
 import {
@@ -20,8 +29,11 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { v4 as uuid } from 'uuid';
 import { Portal } from 'react-portal';
 
-import { EditBlock, Icon, Field } from '../../../components';
-import { getBlocksFieldname, getBlocksLayoutFieldname } from '../../../helpers';
+import { EditBlock, Icon, Field } from '@plone/volto/components';
+import {
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+} from '@plone/volto/helpers';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -514,17 +526,46 @@ class Form extends Component {
   }
 
   /**
+   * Removed blocks and blocks_layout fields from the form.
+   * @method removeBlocksLayoutFields
+   * @param {object} schema The schema definition of the form.
+   * @returns A modified copy of the given schema.
+   */
+  removeBlocksLayoutFields = schema => {
+    const newSchema = { ...schema };
+    const layoutFieldsetIndex = findIndex(
+      newSchema.fieldsets,
+      fieldset => fieldset.id === 'layout',
+    );
+    if (layoutFieldsetIndex > -1) {
+      const layoutFields = newSchema.fieldsets[layoutFieldsetIndex].fields;
+      newSchema.fieldsets[layoutFieldsetIndex].fields = layoutFields.filter(
+        field => field !== 'blocks' && field !== 'blocks_layout',
+      );
+      if (newSchema.fieldsets[layoutFieldsetIndex].fields.length === 0) {
+        newSchema.fieldsets = [
+          ...newSchema.fieldsets.slice(0, layoutFieldsetIndex),
+          ...newSchema.fieldsets.slice(layoutFieldsetIndex + 1),
+        ];
+      }
+    }
+    return newSchema;
+  };
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    const { schema, onCancel, onSubmit } = this.props;
+    const { schema: originalSchema, onCancel, onSubmit } = this.props;
     const { formData } = this.state;
     const blocksFieldname = getBlocksFieldname(formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
     const renderBlocks = formData[blocksLayoutFieldname].items;
     const blocksDict = formData[blocksFieldname];
+    const schema = this.removeBlocksLayoutFields(originalSchema);
+
     return this.props.visual ? (
       <div className="ui container">
         {map(renderBlocks, (block, index) => (
