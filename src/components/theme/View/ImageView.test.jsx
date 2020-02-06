@@ -9,6 +9,8 @@ test('renders an image view component', () => {
         title: 'Hello World!',
         description: 'Hi',
         image: {
+          size: 123123,
+          download: 'file:///preview.jpg',
           scales: {
             preview: {
               download: 'file:///preview.jpg',

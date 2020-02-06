@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Include link and size info to the full size image in `ImageView` view component @sneridagh
+
 ## 4.0.0-alpha.36 (2020-02-03)
 
 ### Changes
