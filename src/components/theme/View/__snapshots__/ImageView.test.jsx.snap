@@ -21,9 +21,7 @@ exports[`renders an image view component 1`] = `
       alt="Hello World!"
       src="file:///preview.jpg"
     />
-    <figcaption
-      class="discreet"
-    >
+    <figcaption>
       Size: 123 kB
         —  
       Click to download full sized image

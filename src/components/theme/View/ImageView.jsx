@@ -33,7 +33,7 @@ const ImageView = ({ content }) => (
         alt={content.title}
         src={flattenToAppURL(content.image.scales.preview.download)}
       />
-      <figcaption class="discreet">
+      <figcaption>
         <FormattedMessage
           id="Size: {size}"
           defaultMessage="Size: {size}"
