@@ -6,6 +6,8 @@
 
 ### Changes
 
+- In the Display menu, only show views that are implemented @pnicolli
+
 ## 4.0.0-alpha.36 (2020-02-03)
 
 ### Changes
