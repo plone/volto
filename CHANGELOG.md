@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Hide Blocks fields in Layout fieldset in Add/Edit forms @pnicolli
+
 ## 4.0.0-alpha.36 (2020-02-03)
 
 ### Changes
