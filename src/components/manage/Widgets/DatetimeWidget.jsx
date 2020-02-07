@@ -166,6 +166,7 @@ class DatetimeWidget extends Component {
                     onChange={this.onTimeChange}
                     allowEmpty={false}
                     showSecond={false}
+                    focusOnOpen
                   />
                 </div>
               </div>
