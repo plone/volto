@@ -168,7 +168,7 @@ class DatetimeWidget extends Component {
             </Grid.Column>
             <Grid.Column width="8">
               <div>
-                <div className="ui input">
+                <div className="ui input date-input">
                   <SingleDatePicker
                     date={datetime}
                     onDateChange={this.onDateChange}
@@ -185,7 +185,7 @@ class DatetimeWidget extends Component {
                   />
                 </div>
                 {!dateOnly && (
-                  <div className="ui input">
+                  <div className="ui input time-input">
                     <TimePicker
                       defaultValue={datetime}
                       onChange={this.onTimeChange}
