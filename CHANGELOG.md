@@ -6,6 +6,7 @@
 
 ### Changes
 
+- In the Display menu, only show views that are implemented @pnicolli
 - Hide Blocks fields in Layout fieldset in Add/Edit forms @pnicolli
 
 ### Internal
