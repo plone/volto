@@ -129,7 +129,7 @@ class DisplaySelect extends Component {
   state = {
     selectedOption: {
       value: this.props.layout,
-      label: layouts[this.props.layout],
+      label: layouts[this.props.layout] || this.props.layout,
     },
   };
 
