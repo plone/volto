@@ -50,6 +50,12 @@ const NextIcon = () => (
   </div>
 );
 
+const defaultTimeDateOnly = {
+  hour: 12,
+  minute: 0,
+  second: 0,
+};
+
 /**
  * DatetimeWidget component class
  * @class DatetimeWidget
@@ -65,9 +71,14 @@ class DatetimeWidget extends Component {
   constructor(props) {
     super(props);
 
+    let datetime = this.props.value ? moment(this.props.value) : moment();
+    if (!this.props.value && this.props.dateOnly) {
+      datetime.set(defaultTimeDateOnly);
+    }
+
     this.state = {
       focused: false,
-      datetime: this.props.value ? moment(this.props.value) : moment(),
+      datetime,
     };
   }
 
@@ -84,6 +95,7 @@ class DatetimeWidget extends Component {
           year: date.year(),
           month: date.month(),
           date: date.date(),
+          ...(this.props.dateOnly ? defaultTimeDateOnly : {}),
         }),
       }),
       () => this.onDateTimeChange(),
@@ -134,6 +146,7 @@ class DatetimeWidget extends Component {
       description,
       error,
       fieldSet,
+      dateOnly,
       intl,
     } = this.props;
     const { datetime, focused } = this.state;
@@ -171,16 +184,20 @@ class DatetimeWidget extends Component {
                     id={id}
                   />
                 </div>
-                <div className="ui input">
-                  <TimePicker
-                    defaultValue={datetime}
-                    onChange={this.onTimeChange}
-                    allowEmpty={false}
-                    showSecond={false}
-                    format={moment.localeData(intl.locale).longDateFormat('LT')}
-                    focusOnOpen
-                  />
-                </div>
+                {!dateOnly && (
+                  <div className="ui input">
+                    <TimePicker
+                      defaultValue={datetime}
+                      onChange={this.onTimeChange}
+                      allowEmpty={false}
+                      showSecond={false}
+                      format={moment
+                        .localeData(intl.locale)
+                        .longDateFormat('LT')}
+                      focusOnOpen
+                    />
+                  </div>
+                )}
               </div>
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
@@ -213,6 +230,7 @@ DatetimeWidget.propTypes = {
   description: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
+  dateOnly: PropTypes.bool,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
@@ -226,6 +244,7 @@ DatetimeWidget.defaultProps = {
   description: null,
   required: false,
   error: [],
+  dateOnly: false,
   value: null,
 };
 
