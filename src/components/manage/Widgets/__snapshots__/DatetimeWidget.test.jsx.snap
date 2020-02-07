@@ -42,13 +42,13 @@ exports[`renders a datetime widget component 1`] = `
                     className="DateInput DateInput_1"
                   >
                     <input
-                      aria-describedby="DateInput__screen-reader-message-my-field"
+                      aria-describedby="DateInput__screen-reader-message-my-field-date"
                       aria-label="Date"
                       autoComplete="off"
                       className="DateInput_input DateInput_input_1"
                       disabled={false}
-                      id="my-field"
-                      name="my-field"
+                      id="my-field-date"
+                      name="my-field-date"
                       onChange={[Function]}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
@@ -60,7 +60,7 @@ exports[`renders a datetime widget component 1`] = `
                     />
                     <p
                       className="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
-                      id="DateInput__screen-reader-message-my-field"
+                      id="DateInput__screen-reader-message-my-field-date"
                     >
                       Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
                     </p>
@@ -81,7 +81,7 @@ exports[`renders a datetime widget component 1`] = `
             >
               <input
                 className="rc-time-picker-input"
-                id=""
+                id="my-field-time"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}

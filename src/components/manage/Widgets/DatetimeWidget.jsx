@@ -183,7 +183,7 @@ class DatetimeWidget extends Component {
                       .longDateFormat('L')}
                     navPrev={<PrevIcon />}
                     navNext={<NextIcon />}
-                    id={id}
+                    id={`${id}-date`}
                   />
                 </div>
                 {!dateOnly && (
@@ -193,6 +193,8 @@ class DatetimeWidget extends Component {
                       onChange={this.onTimeChange}
                       allowEmpty={false}
                       showSecond={false}
+                      use12Hours={intl.locale === 'en'}
+                      id={`${id}-time`}
                       format={moment
                         .localeData(intl.locale)
                         .longDateFormat('LT')}
