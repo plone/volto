@@ -313,6 +313,10 @@ msgstr "Huidig wachtwoord"
 msgid "Cut"
 msgstr "Knippen"
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Daily"
+msgstr ""
+
 #: components/manage/Controlpanels/ModerateComments
 msgid "Date"
 msgstr ""
@@ -454,6 +458,10 @@ msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Edit fieldset"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Edit recurrence"
 msgstr ""
 
 #: components/manage/Edit/Edit
@@ -665,6 +673,22 @@ msgstr ""
 msgid "Insert row before"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Interval Daily"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Interval Monthly"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Interval Weekly"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Interval Yearly"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Item batch size"
 msgstr ""
@@ -769,6 +793,14 @@ msgstr ""
 msgid "Moderate comments"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Monday and Friday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Monthly"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 msgid "More"
 msgstr ""
@@ -845,6 +877,10 @@ msgstr ""
 #: components/manage/Contents/Contents
 msgid "None"
 msgstr "Niks"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Occurences"
+msgstr ""
 
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -972,6 +1008,18 @@ msgstr "Lees verder…"
 msgid "Rearrange items by…"
 msgstr "Items rangschikken op…"
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Recurrence ends"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Recurrence ends after"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Recurrence ends on"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
 msgstr ""
@@ -993,6 +1041,14 @@ msgstr "Naam wijzigen"
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr "Naam wijzigen"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Repeat"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Repeat every"
+msgstr ""
 
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1417,6 +1473,14 @@ msgstr "Onze excuses voor het ongemak, maar de pagina die u probeerde te bereike
 msgid "We will use this address if you need to recover your password"
 msgstr "Wij gebruiken dit adres wanneer u uw wachtwoord wilt terugkrijgen"
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekly"
+msgstr ""
+
 #: components/manage/History/History
 msgid "What"
 msgstr "Wat"
@@ -1435,6 +1499,10 @@ msgstr "Wie"
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Yearly"
 msgstr ""
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser

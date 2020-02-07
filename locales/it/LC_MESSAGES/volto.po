@@ -294,6 +294,10 @@ msgstr "Password corrente"
 msgid "Cut"
 msgstr "Taglia"
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Daily"
+msgstr "Giornaliera"
+
 #: components/manage/Controlpanels/ModerateComments
 msgid "Date"
 msgstr "Data"
@@ -436,6 +440,10 @@ msgstr "Modifica campo"
 #: components/manage/Widgets/SchemaWidget
 msgid "Edit fieldset"
 msgstr "Modifica insieme di campi"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Edit recurrence"
+msgstr "Modifica le regole"
 
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
@@ -646,6 +654,22 @@ msgstr "Inserisci riga sotto"
 msgid "Insert row before"
 msgstr "Inserisci riga sopra"
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Interval Daily"
+msgstr "giorni"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Interval Monthly"
+msgstr "mesi"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Interval Weekly"
+msgstr "settimane"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Interval Yearly"
+msgstr "anni"
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Item batch size"
 msgstr "Risultati per pagina"
@@ -750,6 +774,14 @@ msgstr "Modera i commenti"
 msgid "Moderate comments"
 msgstr "Moderazione dei commenti"
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Monday and Friday"
+msgstr "lunedi e venerdì"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Monthly"
+msgstr "Mensile"
+
 #: components/manage/Toolbar/Toolbar
 msgid "More"
 msgstr "Altro"
@@ -826,6 +858,10 @@ msgstr "Nessun flusso"
 #: components/manage/Contents/Contents
 msgid "None"
 msgstr "Nessuno"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Occurences"
+msgstr "occorrenze"
 
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -953,6 +989,18 @@ msgstr "Leggi il resto…"
 msgid "Rearrange items by…"
 msgstr "Riordina elementi per…"
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Recurrence ends"
+msgstr "Termina"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Recurrence ends after"
+msgstr "dopo"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Recurrence ends on"
+msgstr "il"
+
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
 msgstr "Riduci complicità"
@@ -974,6 +1022,14 @@ msgstr "Rinomina"
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
 msgstr "Rinomina elementi"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Repeat"
+msgstr "Tipo di ricorrenza"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Repeat every"
+msgstr "Ogni"
 
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1398,6 +1454,14 @@ msgstr "Ci scusiamo per l'inconveniente, la pagina cui stai provando ad accedere
 msgid "We will use this address if you need to recover your password"
 msgstr "Useremo questo indirizzo email nel caso dovessi recuperare la tua password"
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekday"
+msgstr "giorno feriale (lunedì-venerdì)"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekly"
+msgstr "Settimanale"
+
 #: components/manage/History/History
 msgid "What"
 msgstr "Cosa"
@@ -1417,6 +1481,10 @@ msgstr "Chi"
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Workflow aggiornato."
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Yearly"
+msgstr "Annuale"
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"

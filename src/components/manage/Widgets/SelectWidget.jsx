@@ -320,33 +320,35 @@ class SelectWidget extends Component {
                   }}
                 />
               ) : (
-                <Select
-                  id={`field-${id}`}
-                  name={id}
-                  disabled={onEdit !== null}
-                  className="react-select-container"
-                  classNamePrefix="react-select"
-                  options={[
-                    ...map(choices, option => ({
-                      value: option[0],
-                      label: option[1],
-                    })),
-                    {
-                      label: this.props.intl.formatMessage(messages.no_value),
-                      value: 'no-value',
-                    },
-                  ]}
-                  styles={customSelectStyles}
-                  theme={selectTheme}
-                  components={{ DropdownIndicator, Option }}
-                  defaultValue={getDefaultValues(choices, value)}
-                  onChange={data =>
-                    onChange(
-                      id,
-                      data.value === 'no-value' ? undefined : data.value,
-                    )
-                  }
-                />
+                <>
+                  <Select
+                    id={`field-${id}`}
+                    name={id}
+                    disabled={onEdit !== null}
+                    className="react-select-container"
+                    classNamePrefix="react-select"
+                    options={[
+                      ...map(choices, option => ({
+                        value: option[0],
+                        label: option[1],
+                      })),
+                      {
+                        label: this.props.intl.formatMessage(messages.no_value),
+                        value: 'no-value',
+                      },
+                    ]}
+                    styles={customSelectStyles}
+                    theme={selectTheme}
+                    components={{ DropdownIndicator, Option }}
+                    defaultValue={getDefaultValues(choices, value)}
+                    onChange={data =>
+                      onChange(
+                        id,
+                        data.value === 'no-value' ? undefined : data.value,
+                      )
+                    }
+                  />
+                </>
               )}
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>

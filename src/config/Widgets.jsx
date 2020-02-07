@@ -12,6 +12,7 @@ import TextareaWidget from '@plone/volto/components/manage/Widgets/TextareaWidge
 import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
+import RecurrenceWidget from '@plone/volto/components/manage/Widgets/RecurrenceWidget';
 
 // Widgets mapping
 export const widgetMapping = {
@@ -19,6 +20,7 @@ export const widgetMapping = {
     schema: SchemaWidget,
     subjects: TokenWidget,
     query: QuerystringWidget,
+    recurrence: RecurrenceWidget,
   },
   widget: {
     richtext: WysiwygWidget,

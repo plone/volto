@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-02-02T09:49:09.803Z\n"
+"POT-Creation-Date: 2020-02-07T11:51:12.785Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -357,6 +357,11 @@ msgstr ""
 msgid "Cut"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: Daily
+msgid "Daily"
+msgstr ""
+
 #: components/manage/Controlpanels/ModerateComments
 # defaultMessage: Date
 msgid "Date"
@@ -523,6 +528,11 @@ msgstr ""
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Edit fieldset
 msgid "Edit fieldset"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: Edit recurrence
+msgid "Edit recurrence"
 msgstr ""
 
 #: components/manage/Edit/Edit
@@ -783,6 +793,26 @@ msgstr ""
 msgid "Insert row before"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: days
+msgid "Interval Daily"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: Month(s)
+msgid "Interval Monthly"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: week(s)
+msgid "Interval Weekly"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: year(s)
+msgid "Interval Yearly"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 # defaultMessage: Item batch size
 msgid "Item batch size"
@@ -911,6 +941,16 @@ msgstr ""
 msgid "Moderate comments"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: Monday and Friday
+msgid "Monday and Friday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: Monthly
+msgid "Monthly"
+msgstr ""
+
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: More
 msgid "More"
@@ -1004,6 +1044,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: None
 msgid "None"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: occurrence(s)
+msgid "Occurences"
 msgstr ""
 
 #: components/manage/Delete/Delete
@@ -1160,6 +1205,21 @@ msgstr ""
 msgid "Rearrange items by…"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: Ends
+msgid "Recurrence ends"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: after
+msgid "Recurrence ends after"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: on
+msgid "Recurrence ends on"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Reduce complexity
 msgid "Reduce complexity"
@@ -1185,6 +1245,16 @@ msgstr ""
 #: components/manage/Contents/ContentsRenameModal
 # defaultMessage: Rename items
 msgid "Rename items"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: Repeat
+msgid "Repeat"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: Repeat every
+msgid "Repeat every"
 msgstr ""
 
 #: components/manage/Widgets/CheckboxWidget
@@ -1703,6 +1773,16 @@ msgstr ""
 msgid "We will use this address if you need to recover your password"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: Weekday
+msgid "Weekday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: Weekly
+msgid "Weekly"
+msgstr ""
+
 #: components/manage/History/History
 # defaultMessage: What
 msgid "What"
@@ -1726,6 +1806,11 @@ msgstr ""
 #: components/manage/Workflow/Workflow
 # defaultMessage: Workflow updated.
 msgid "Workflow updated."
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: Yearly
+msgid "Yearly"
 msgstr ""
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
