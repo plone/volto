@@ -79,6 +79,14 @@ defineMessages({
     id: 'html',
     defaultMessage: 'HTML',
   },
+  leadimage: {
+    id: 'leadimage',
+    defaultMessage: 'Lead Image Field',
+  },
+  listing: {
+    id: 'listing',
+    defaultMessage: 'Elenco',
+  },
   // Groups
   mostUsed: {
     id: 'mostUsed',
