@@ -237,6 +237,10 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
+#: components/theme/View/ImageView
+msgid "Click to download full sized image"
+msgstr ""
+
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr ""
@@ -1165,6 +1169,10 @@ msgstr "Sitemap"
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "<<<<<<< HEAD"
+
+#: components/theme/View/ImageView
+msgid "Size: {size}"
+msgstr ""
 
 #: error
 msgid "Sorry, something went wrong with your request"

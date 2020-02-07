@@ -225,6 +225,10 @@ msgstr "イメージを選択"
 msgid "Choose Target"
 msgstr "ターゲットを選択"
 
+#: components/theme/View/ImageView
+msgid "Click to download full sized image"
+msgstr ""
+
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr ""
@@ -1153,6 +1157,10 @@ msgstr "サイトマップ"
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "サイト設定"
+
+#: components/theme/View/ImageView
+msgid "Size: {size}"
+msgstr ""
 
 #: error
 msgid "Sorry, something went wrong with your request"

@@ -233,6 +233,10 @@ msgstr "Bild auswählen"
 msgid "Choose Target"
 msgstr "Ziel auswählen"
 
+#: components/theme/View/ImageView
+msgid "Click to download full sized image"
+msgstr ""
+
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr "Schließen"
@@ -1161,6 +1165,10 @@ msgstr "Übersicht"
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "Seiteneinstellungen"
+
+#: components/theme/View/ImageView
+msgid "Size: {size}"
+msgstr ""
 
 #: error
 msgid "Sorry, something went wrong with your request"
