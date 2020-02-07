@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { injectIntl } from 'react-intl';
 import { Form, Grid, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
 import moment from 'moment';
@@ -89,17 +90,18 @@ class DatetimeWidget extends Component {
    * @returns {undefined}
    */
   onDateChange = date => {
-    this.setState(
-      prevState => ({
-        datetime: prevState.datetime.set({
-          year: date.year(),
-          month: date.month(),
-          date: date.date(),
-          ...(this.props.dateOnly ? defaultTimeDateOnly : {}),
+    if (date)
+      this.setState(
+        prevState => ({
+          datetime: prevState.datetime.set({
+            year: date.year(),
+            month: date.month(),
+            date: date.date(),
+            ...(this.props.dateOnly ? defaultTimeDateOnly : {}),
+          }),
         }),
-      }),
-      () => this.onDateTimeChange(),
-    );
+        () => this.onDateTimeChange(),
+      );
   };
 
   /**
@@ -248,4 +250,4 @@ DatetimeWidget.defaultProps = {
   value: null,
 };
 
-export default DatetimeWidget;
+export default injectIntl(DatetimeWidget);
