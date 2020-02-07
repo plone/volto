@@ -127,7 +127,15 @@ class DatetimeWidget extends Component {
   onFocusChange = ({ focused }) => this.setState({ focused });
 
   render() {
-    const { id, title, required, description, error, fieldSet } = this.props;
+    const {
+      id,
+      title,
+      required,
+      description,
+      error,
+      fieldSet,
+      intl,
+    } = this.props;
     const { datetime, focused } = this.state;
 
     return (
@@ -155,6 +163,9 @@ class DatetimeWidget extends Component {
                     numberOfMonths={1}
                     onFocusChange={this.onFocusChange}
                     noBorder
+                    displayFormat={moment
+                      .localeData(intl.locale)
+                      .longDateFormat('L')}
                     navPrev={<PrevIcon />}
                     navNext={<NextIcon />}
                     id={id}
@@ -166,6 +177,7 @@ class DatetimeWidget extends Component {
                     onChange={this.onTimeChange}
                     allowEmpty={false}
                     showSecond={false}
+                    format={moment.localeData(intl.locale).longDateFormat('LT')}
                     focusOnOpen
                   />
                 </div>
