@@ -237,6 +237,10 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
+#: components/theme/View/ImageView
+msgid "Click to download full sized image"
+msgstr ""
+
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr ""
@@ -1166,6 +1170,10 @@ msgstr "Sitemap"
 msgid "Site Setup"
 msgstr "<<<<<<< HEAD"
 
+#: components/theme/View/ImageView
+msgid "Size: {size}"
+msgstr ""
+
 #: error
 msgid "Sorry, something went wrong with your request"
 msgstr ""
@@ -1437,6 +1445,10 @@ msgstr "Wie"
 msgid "Workflow updated."
 msgstr ""
 
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "You are using an outdated browser"
+msgstr ""
+
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
 msgstr ""
@@ -1479,6 +1491,10 @@ msgstr ""
 
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
+msgstr ""
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "deprecated_browser_notice_message"
 msgstr ""
 
 #: config/Blocks

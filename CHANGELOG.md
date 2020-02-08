@@ -7,6 +7,24 @@
 ### Changes
 - Deleted Empty Select Component @aryamanpuri
 
+- Include link and size info to the full size image in `ImageView` view component @sneridagh
+- In the Display menu, only show views that are implemented @pnicolli
+- Hide Blocks fields in Layout fieldset in Add/Edit forms @pnicolli
+
+### Internal
+
+- Added forest.eea.europa.eu as deployed Volto in production @tiberiuichim
+
+## 4.0.0-alpha.36 (2020-02-03)
+
+### Changes
+
+- Fix unable to login from /logout page (#1147) @sneridagh
+- Fix sitemap.xml by increasing the batch size @robgietema
+- Browser detect feature, adding a deprecation message for ancient browsers in the `App` component @sneridagh
+- Adding fallback in the edit form, in case the blocks related fields are empty, so we are sure that the edit form shows at least the default blocks @sneridagh
+- Fix shift return in tables @robgietema
+
 ## 4.0.0-alpha.35 (2020-01-31)
 
 ### Changes

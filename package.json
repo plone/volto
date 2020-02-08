@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "4.0.0-alpha.35",
+  "version": "4.0.0-alpha.36",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -228,6 +228,7 @@
     "cypress-axe": "0.4.1",
     "cypress-file-upload": "3.5.0",
     "cypress-plugin-retries": "1.5.0",
+    "detect-browser": "4.8.0",
     "draft-js": "0.10.5",
     "draft-js-block-breakout-plugin": "2.0.1",
     "draft-js-buttons": "2.0.2",
@@ -275,6 +276,7 @@
     "postcss-overrides": "3.1.4",
     "prettier": "1.19.1",
     "pretty": "2.0.0",
+    "pretty-bytes": "5.3.0",
     "prismjs": "1.17.1",
     "promise-file-reader": "1.0.2",
     "prop-types": "15.7.2",

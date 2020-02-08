@@ -233,6 +233,10 @@ msgstr "Bild auswählen"
 msgid "Choose Target"
 msgstr "Ziel auswählen"
 
+#: components/theme/View/ImageView
+msgid "Click to download full sized image"
+msgstr ""
+
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr "Schließen"
@@ -1162,6 +1166,10 @@ msgstr "Übersicht"
 msgid "Site Setup"
 msgstr "Seiteneinstellungen"
 
+#: components/theme/View/ImageView
+msgid "Size: {size}"
+msgstr ""
+
 #: error
 msgid "Sorry, something went wrong with your request"
 msgstr "Entschuldigung, ein Fehler ist beim Ausführen Ihrer Anfrage aufgetreten "
@@ -1433,6 +1441,10 @@ msgstr "Wer"
 msgid "Workflow updated."
 msgstr "Arbeitsablauf aktualisiert."
 
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "You are using an outdated browser"
+msgstr ""
+
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
 msgstr "Sie können einen Kommentar abgeben wenn Sie das untenstehende Formular ausfüllen. Plain-Text-Formatierung."
@@ -1476,6 +1488,10 @@ msgstr "Allgemein"
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
 msgstr "Löschen"
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "deprecated_browser_notice_message"
+msgstr ""
 
 #: config/Blocks
 msgid "description"
