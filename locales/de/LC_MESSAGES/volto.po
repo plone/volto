@@ -70,6 +70,10 @@ msgstr "Beschreibung hinzufügen…"
 msgid "Add block..."
 msgstr "Block hinzufügen"
 
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Add criteria"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
 msgstr "Feld hinzufügen"
@@ -98,7 +102,10 @@ msgstr "Zu Gruppe hinzufügen"
 msgid "Add {type}"
 msgstr "{type} hinzufügen"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Alignment"
 msgstr "Ausrichtung"
 
@@ -106,7 +113,8 @@ msgstr "Ausrichtung"
 msgid "All"
 msgstr "Alle"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr "Alternative Text"
 
@@ -183,7 +191,6 @@ msgid "Cell"
 msgstr "Zelle"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
 msgstr "Mittig"
@@ -226,6 +233,10 @@ msgstr "Bild auswählen"
 msgid "Choose Target"
 msgstr "Ziel auswählen"
 
+#: components/theme/View/ImageView
+msgid "Click to download full sized image"
+msgstr ""
+
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr "Schließen"
@@ -261,6 +272,10 @@ msgstr "Kontakt"
 msgid "Contact form"
 msgstr "Kontaktformular"
 
+#: components/manage/Blocks/Listing/Edit
+msgid "Contained items"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
@@ -283,6 +298,10 @@ msgstr "Informationen über die Urheber- und Nutzungsrechte an diesem Artikel."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
 msgstr "Ersteller"
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Criteria"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
@@ -449,21 +468,17 @@ msgstr "E-Mail"
 msgid "Email sent"
 msgstr "E-Mail versendet"
 
+#: components/manage/Blocks/Maps/Edit
+msgid "Embed code error, please follow the instructions and try again."
+msgstr ""
+
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr "Eingebettete Google Maps Karte"
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Enter Map URL"
-msgstr "Karten-URL eingeben"
-
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
 msgstr "URL oder Titel eingeben"
-
-#: components/manage/Blocks/Video/Edit
-msgid "Enter Video URL"
-msgstr "Video-URL eingeben"
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -474,6 +489,10 @@ msgstr "Tragen Sie Ihre E-Mail-Adresse ein, mit der Sie sich künftig anmelden m
 #: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
 msgstr "Tragen Sie bitte Ihren vollen Namen ein."
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Enter map Embed Code"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
@@ -507,7 +526,8 @@ msgstr "Sidebar vergrößern"
 msgid "Expiration Date"
 msgstr "Ablaufdatum"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
 msgstr "Externe URL"
 
@@ -532,7 +552,6 @@ msgid "From"
 msgstr "Von"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Full"
 msgstr "Volle Breite"
@@ -613,7 +632,8 @@ msgstr "Klicken Sie bitte hier, falls Sie Ihr Passwort vergessen haben: {forgotp
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr "Falls Sie noch keinen Zugang haben, {registrationform} Sie sich bitte zunächst."
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "Bild"
 
@@ -645,6 +665,10 @@ msgstr "Zeile danach einfügen"
 msgid "Insert row before"
 msgstr "Zeile davor einfügen"
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Item batch size"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "Artikel kopiert."
@@ -671,15 +695,25 @@ msgstr "Sprache"
 msgid "Last modified"
 msgstr "Letzte Änderung"
 
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "Lead Image"
+msgstr ""
+
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
 msgstr "Links"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr "Link auf"
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Listing"
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -710,13 +744,13 @@ msgstr "Benutzername"
 msgid "Make the table compact"
 msgstr "Tabelle kompakt darstellen"
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Maps data error"
-msgstr "Fehler bei der Karte"
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Map"
+msgstr ""
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Maps instructions"
-msgstr "Maps Anleitung"
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Maps URL"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -765,19 +799,44 @@ msgstr "Zurück navigieren"
 msgid "New password"
 msgstr "Neues Passwort"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
 msgstr "Kein Bild ausgewählt"
 
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in Lead Image content field"
+msgstr ""
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in image content field"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
+msgid "No items found in this container."
+msgstr ""
+
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "No map selected"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "Keine Ergebnisse gefunden."
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "No selection"
+msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectWidget
 msgid "No value"
 msgstr "Kein Wert"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "No video selected"
+msgstr ""
 
 #: components/manage/Workflow/Workflow
 msgid "No workflow"
@@ -791,7 +850,10 @@ msgstr "Keiner"
 msgid "Ok"
 msgstr "OK"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Open in a new tab"
 msgstr "In neuem Browser-Tab öffnen"
 
@@ -799,7 +861,8 @@ msgstr "In neuem Browser-Tab öffnen"
 msgid "Open menu"
 msgstr "Menü öffnen"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
 msgstr "Quelle"
 
@@ -823,10 +886,12 @@ msgid "Paste"
 msgstr "Einfügen"
 
 #: components/manage/Preferences/PersonalInformation
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
 msgstr "Persönliche Informationen"
 
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
 msgstr "Meine Einstellungen"
 
@@ -842,6 +907,10 @@ msgstr "Eine Liste von Personen, die an der Erstellung dieses Artikels beteiligt
 #: components/manage/Blocks/Video/Edit
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
 msgstr "Geben Sie eine gültige URL "
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
+msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
@@ -940,6 +1009,18 @@ msgstr "Notwendig"
 msgid "Required input is missing."
 msgstr "Notwendige Eingabe fehlt."
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Results limit"
+msgstr ""
+
+#: components/manage/Blocks/Listing/Edit
+msgid "Results preview"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Reversed order"
+msgstr ""
+
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr "Durch diese Version ersetzen"
@@ -949,7 +1030,6 @@ msgid "Richtext"
 msgstr "Richtext"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
 msgstr "Rechte"
@@ -963,7 +1043,6 @@ msgid "Roles"
 msgstr "Rollen"
 
 #: components/manage/Add/Add
-#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1087,11 +1166,20 @@ msgstr "Übersicht"
 msgid "Site Setup"
 msgstr "Seiteneinstellungen"
 
+#: components/theme/View/ImageView
+msgid "Size: {size}"
+msgstr ""
+
 #: error
 msgid "Sorry, something went wrong with your request"
-msgstr "Entschuldigung, ein Fehler ist beim Ausführen Ihrer Anfrage aufgetreten"
+msgstr "Entschuldigung, ein Fehler ist beim Ausführen Ihrer Anfrage aufgetreten "
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Sort on"
+msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Listing/ListingData
 msgid "Source"
 msgstr "Quelle"
 
@@ -1217,6 +1305,10 @@ msgstr "Titel"
 msgid "Type"
 msgstr "Typ"
 
+#: components/manage/Blocks/Video/Edit
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr ""
+
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
 msgstr "Text eingeben…"
@@ -1237,6 +1329,10 @@ msgstr "Unbekannter Block"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Hochladen"
+
+#: components/manage/Blocks/LeadImage/Edit
+msgid "Upload a lead image in the 'Lead Image' content field."
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
@@ -1293,6 +1389,14 @@ msgstr "Nutzer- und Gruppeneinstellungen"
 msgid "Version Overview"
 msgstr "Versionsübersicht"
 
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video URL"
+msgstr ""
+
 #: components/manage/Contents/ContentsItem
 msgid "View"
 msgstr "Anzeigen"
@@ -1337,6 +1441,10 @@ msgstr "Wer"
 msgid "Workflow updated."
 msgstr "Arbeitsablauf aktualisiert."
 
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "You are using an outdated browser"
+msgstr ""
+
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
 msgstr "Sie können einen Kommentar abgeben wenn Sie das untenstehende Formular ausfüllen. Plain-Text-Formatierung."
@@ -1380,6 +1488,10 @@ msgstr "Allgemein"
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
 msgstr "Löschen"
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "deprecated_browser_notice_message"
+msgstr ""
 
 #: config/Blocks
 msgid "description"

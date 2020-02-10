@@ -5,6 +5,8 @@ import ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Descript
 import ViewToCBlock from '@plone/volto/components/manage/Blocks/ToC/View';
 import ViewTextBlock from '@plone/volto/components/manage/Blocks/Text/View';
 import ViewImageBlock from '@plone/volto/components/manage/Blocks/Image/View';
+import ViewLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/View';
+import ViewListingBlock from '@plone/volto/components/manage/Blocks/Listing/View';
 import ViewVideoBlock from '@plone/volto/components/manage/Blocks/Video/View';
 import ViewHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/View';
 import ViewMapBlock from '@plone/volto/components/manage/Blocks/Maps/View';
@@ -16,6 +18,8 @@ import EditDescriptionBlock from '@plone/volto/components/manage/Blocks/Descript
 import EditToCBlock from '@plone/volto/components/manage/Blocks/ToC/Edit';
 import EditTextBlock from '@plone/volto/components/manage/Blocks/Text/Edit';
 import EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
+import EditLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/Edit';
+import EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit';
 import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
 import EditHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/Edit';
 import EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
@@ -31,6 +35,7 @@ import globeSVG from '@plone/volto/icons/globe.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import heroSVG from '@plone/volto/icons/hero.svg';
 import tableSVG from '@plone/volto/icons/table.svg';
+import listBulletSVG from '@plone/volto/icons/list-bullet.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
 
 defineMessages({
@@ -160,6 +165,36 @@ const blocksConfig = {
       view: [],
     },
   },
+  leadimage: {
+    id: 'leadimage',
+    title: 'Lead Image Field',
+    icon: cameraSVG,
+    group: 'media',
+    view: ViewLeadImageBlock,
+    edit: EditLeadImageBlock,
+    restricted: false,
+    mostUsed: false,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  },
+  listing: {
+    id: 'listing',
+    title: 'Listing',
+    icon: listBulletSVG,
+    group: 'common',
+    view: ViewListingBlock,
+    edit: EditListingBlock,
+    restricted: false,
+    mostUsed: true,
+    sidebarTab: 1,
+    security: {
+      addPermission: [],
+      view: [],
+    },
+  },
   video: {
     id: 'video',
     title: 'Video',
@@ -169,7 +204,7 @@ const blocksConfig = {
     edit: EditVideoBlock,
     restricted: false,
     mostUsed: true,
-    sidebarTab: 0,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],
@@ -215,7 +250,7 @@ const blocksConfig = {
     edit: EditMapBlock,
     restricted: false,
     mostUsed: false,
-    sidebarTab: 0,
+    sidebarTab: 1,
     security: {
       addPermission: [],
       view: [],

@@ -20,18 +20,18 @@ import Types from './Types';
 import PersonalInformation from '../Preferences/PersonalInformation';
 import PersonalPreferences from '../Preferences/PersonalPreferences';
 import StandardWrapper from './StandardWrapper';
-import { getTypes, listActions } from '../../../actions';
-import { Icon } from '../../../components';
-import { BodyClass, getBaseUrl } from '../../../helpers';
+import { getTypes, listActions } from '@plone/volto/actions';
+import { Icon } from '@plone/volto/components';
+import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
 
 import pastanagaSmall from './pastanaga-small.svg';
 import pastanagalogo from './pastanaga.svg';
-import penSVG from '../../../icons/pen.svg';
-import folderSVG from '../../../icons/folder.svg';
-import addSVG from '../../../icons/add-document.svg';
-import moreSVG from '../../../icons/more.svg';
-import userSVG from '../../../icons/user.svg';
-import clearSVG from '../../../icons/clear.svg';
+import penSVG from '@plone/volto/icons/pen.svg';
+import folderSVG from '@plone/volto/icons/folder.svg';
+import addSVG from '@plone/volto/icons/add-document.svg';
+import moreSVG from '@plone/volto/icons/more.svg';
+import userSVG from '@plone/volto/icons/user.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   edit: {
@@ -58,6 +58,14 @@ const messages = defineMessages({
     id: 'Shrink toolbar',
     defaultMessage: 'Shrink toolbar',
   },
+  personalInformation: {
+    id: 'Personal Information',
+    defaultMessage: 'Personal Information',
+  },
+  personalPreferences: {
+    id: 'Personal Preferences',
+    defaultMessage: 'Personal Preferences',
+  },
 });
 
 const toolbarComponents = {
@@ -67,11 +75,13 @@ const toolbarComponents = {
   profile: {
     component: PersonalInformation,
     wrapper: StandardWrapper,
+    wrapperTitle: messages.personalInformation,
     hideToolbarBody: true,
   },
   preferences: {
     component: PersonalPreferences,
     wrapper: StandardWrapper,
+    wrapperTitle: messages.personalPreferences,
     hideToolbarBody: true,
   },
 };
@@ -274,10 +284,16 @@ class Toolbar extends Component {
                   const WrapperComponent = toolbarComponents[component].wrapper;
                   const haveActions =
                     toolbarComponents[component].hideToolbarBody;
+                  const title =
+                    toolbarComponents[component].wrapperTitle &&
+                    this.props.intl.formatMessage(
+                      toolbarComponents[component].wrapperTitle,
+                    );
                   if (WrapperComponent) {
                     return (
                       <WrapperComponent
                         componentName={component}
+                        componentTitle={title}
                         pathname={this.props.pathname}
                         loadComponent={this.loadComponent}
                         unloadComponent={this.unloadComponent}
@@ -418,8 +434,8 @@ class Toolbar extends Component {
                   messages.shrinkToolbar,
                 )}
                 className={cx({
-                  [this.props.content.review_state]:
-                    this.props.content && this.props.content.review_state,
+                  [this.props.content?.review_state]: this.props.content
+                    ?.review_state,
                 })}
                 onClick={this.handleShrink}
               />

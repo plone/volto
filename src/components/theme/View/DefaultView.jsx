@@ -17,7 +17,8 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
-} from '../../../helpers';
+  getBaseUrl,
+} from '@plone/volto/helpers';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -32,7 +33,7 @@ const messages = defineMessages({
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-const DefaultView = ({ content, intl }) => {
+const DefaultView = ({ content, intl, location }) => {
   const blocksFieldname = getBlocksFieldname(content);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
@@ -50,6 +51,7 @@ const DefaultView = ({ content, intl }) => {
             id={block}
             properties={content}
             data={content[blocksFieldname][block]}
+            path={getBaseUrl(location.pathname)}
           />
         ) : (
           <div key={block}>
