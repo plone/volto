@@ -63,7 +63,7 @@ exports[`renders an event view component with all props 1`] = `
         <span
           className="start-time"
         >
-          8:50 PM
+          3:20 PM
         </span>
       </span>
        to 
@@ -81,10 +81,69 @@ exports[`renders an event view component with all props 1`] = `
         <span
           className="end-time"
         >
-          8:50 PM
+          3:20 PM
         </span>
       </span>
     </p>
+    <div
+      className="ui dividing sub header"
+    >
+      All dates
+    </div>
+    <div
+      className="ui list"
+      role="list"
+    >
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        Jun 23, 2019
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        Jun 30, 2019
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        Jul 7, 2019
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        Jul 14, 2019
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        Jul 21, 2019
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        Jul 28, 2019
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+        role="listitem"
+      >
+        Aug 4, 2019
+      </div>
+    </div>
     <div
       className="ui dividing sub header"
     >
@@ -189,13 +248,13 @@ exports[`renders an event view component with only required props 1`] = `
       <span
         className="start-time"
       >
-        8:50 PM
+        3:20 PM
       </span>
        to 
       <span
         className="end-time"
       >
-        9:50 PM
+        4:20 PM
       </span>
     </p>
   </div>

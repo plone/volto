@@ -18,7 +18,7 @@ exports[`different day, not whole day 1`] = `
     <span
       className="start-time"
     >
-      5:25 PM
+      11:55 AM
     </span>
   </span>
    to 
@@ -36,7 +36,7 @@ exports[`different day, not whole day 1`] = `
     <span
       className="end-time"
     >
-      8:50 PM
+      3:20 PM
     </span>
   </span>
 </p>
@@ -81,13 +81,13 @@ exports[`same day, not whole day, not open end 1`] = `
   <span
     className="start-time"
   >
-    5:25 PM
+    11:55 AM
   </span>
    to 
   <span
     className="end-time"
   >
-    8:50 PM
+    3:20 PM
   </span>
 </p>
 `;
@@ -105,7 +105,7 @@ exports[`same day, not whole day, open end 1`] = `
   <span
     className="start-time"
   >
-    5:25 PM
+    11:55 AM
   </span>
 </p>
 `;

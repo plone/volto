@@ -4,6 +4,8 @@
 
 ### Added
 
+- Event type view @nileshgulia1 @pnicolli
+
 ### Changes
 
 - Include link and size info to the full size image in `ImageView` view component @sneridagh
@@ -444,7 +446,6 @@
 - Add sidebar support for components @sneridagh
 - Add Volto version number in control panel @nzambello
 - Remove Mosaic component @tisto
-- Event type view @nileshgulia1 @pnicolli
 - Added toast component in actions @nzambello
 - Added translations to italian @nzambello
 - Add table tile @robgietema

@@ -8,8 +8,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { Container, Image, Segment, Header, List } from 'semantic-ui-react';
 
-import { EventWhen } from './EventWhen';
-import Recurrence from './Recurrence';
+import { EventWhen, Recurrence } from './EventWhen';
 
 /**
  * EventView view component class.
@@ -51,11 +50,12 @@ const EventView = ({ content }) => (
         open_end={content.open_end}
       />
       {content.recurrence && (
-        <Recurrence
-          recurrence={content.recurrence}
-          start={content.start}
-          end={content.end}
-        />
+        <>
+          <Header dividing sub>
+            All dates
+          </Header>
+          <Recurrence recurrence={content.recurrence} start={content.start} />
+        </>
       )}
       {content.location && (
         <>

@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { List } from 'semantic-ui-react';
 import moment from 'moment';
 import cx from 'classnames';
+import { RRule } from 'rrule';
 
-const datesForDisplay = (start, end) => {
+export const datesForDisplay = (start, end) => {
   const mStart = moment(start);
   const mEnd = moment(end);
   if (!mStart.isValid() || !mEnd.isValid()) {
@@ -21,7 +23,7 @@ const datesForDisplay = (start, end) => {
   };
 };
 
-const EventWhen = ({ start, end, whole_day, open_end }) => {
+export const EventWhen = ({ start, end, whole_day, open_end }) => {
   const datesInfo = datesForDisplay(start, end);
   if (!datesInfo) {
     console.warn('EventWhen: Received invalid start or end date.');
@@ -99,4 +101,23 @@ EventWhen.propTypes = {
   open_end: PropTypes.bool,
 };
 
-export { EventWhen, datesForDisplay };
+export const Recurrence = ({ recurrence, start }) => {
+  const rrule = new RRule({
+    ...RRule.parseString(recurrence),
+    dtstart: new Date(start),
+  });
+
+  return (
+    <List
+      items={rrule
+        .all()
+        .map(date => datesForDisplay(date))
+        .map(date => date.startDate)}
+    />
+  );
+};
+
+Recurrence.propTypes = {
+  recurrence: PropTypes.string.isRequired,
+  start: PropTypes.string.isRequired,
+};

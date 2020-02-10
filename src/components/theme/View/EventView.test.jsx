@@ -20,7 +20,7 @@ test('renders an event view component with all props', () => {
         event_url: 'https://www.example.com',
         location: 'Volto, Plone',
         open_end: false,
-        recurrence: null,
+        recurrence: 'RRULE:FREQ=DAILY;INTERVAL=7;COUNT=7',
         start: '2019-06-23T15:20:00+00:00',
         subjects: ['Guillotina', 'Volto'],
         whole_day: false,
