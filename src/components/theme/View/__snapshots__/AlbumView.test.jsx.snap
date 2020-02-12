@@ -23,30 +23,44 @@ exports[`renders an gallery view component 1`] = `
       id="content-core"
     >
       <div
-        className="ui medium images"
+        className="ui doubling stackable four column grid"
       >
-        <span>
-          <img
-            className="ui image"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            src="file:///preview.jpg"
-          />
-        </span>
-        <span>
-          <img
-            className="ui image"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            src="file:///preview.jpg"
-          />
-        </span>
+        <div
+          className="column"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <div
+            className="ui segment imageborder"
+          >
+            <img
+              className="ui middle aligned image"
+              onClick={[Function]}
+              src="file:///preview.jpg"
+            />
+          </div>
+        </div>
+        <div
+          className="column"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <div
+            className="ui segment imageborder"
+          >
+            <img
+              className="ui middle aligned image"
+              onClick={[Function]}
+              src="file:///preview.jpg"
+            />
+          </div>
+        </div>
       </div>
     </section>
   </article>
