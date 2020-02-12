@@ -55,6 +55,7 @@ export const customSelectStyles = {
     marginTop: 0,
     boxShadow: 'none',
     borderBottom: '1px solid #c7d5d8',
+    zIndex: 2,
   }),
   indicatorSeparator: styles => ({
     ...styles,
