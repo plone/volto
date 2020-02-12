@@ -1043,6 +1043,10 @@ msgstr ""
 msgid "Repeat every"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Repeat on"
+msgstr ""
+
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget

@@ -1035,6 +1035,10 @@ msgstr "Tipo di ricorrenza"
 msgid "Repeat every"
 msgstr "Ogni"
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Repeat on"
+msgstr ""
+
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
