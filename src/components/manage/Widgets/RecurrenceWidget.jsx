@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { RRule, RRuleSet, rrulestr } from 'rrule';
+
 import { isEqual } from 'lodash';
 import moment from 'moment';
 import {
@@ -17,6 +18,7 @@ import {
   Segment,
   Modal,
   Radio,
+  Checkbox,
 } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { map } from 'lodash';
@@ -61,6 +63,10 @@ const messages = defineMessages({
     id: 'Repeat every',
     defaultMessage: 'Repeat every',
   },
+  repeatOn: {
+    id: 'Repeat on',
+    defaultMessage: 'Repeat on',
+  },
   interval_daily: {
     id: 'Interval Daily',
     defaultMessage: 'days',
@@ -93,12 +99,22 @@ const YEARLY = 'yearly';
 const OPTIONS = {
   frequences: {
     [DAILY]: { rrule: RRule.DAILY, interval: true },
-    [MONDAYFRIDAY]: { rrule: RRule.WEEKLY, interval: false },
-    [WEEKDAYS]: { rrule: RRule.WEEKLY, interval: false },
-    [WEEKLY]: { rrule: RRule.WEEKLY, interval: true },
+    [MONDAYFRIDAY]: { rrule: RRule.WEEKLY },
+    [WEEKDAYS]: { rrule: RRule.WEEKLY },
+    [WEEKLY]: { rrule: RRule.WEEKLY, interval: true, byday: true },
     [MONTHLY]: { rrule: RRule.MONTHLY, interval: true },
     [YEARLY]: { rrule: RRule.YEARLY, interval: true },
   },
+};
+
+const Days = {
+  MO: RRule.MO,
+  TU: RRule.TU,
+  WE: RRule.WE,
+  TH: RRule.TH,
+  FR: RRule.FR,
+  SA: RRule.SA,
+  SU: RRule.SU,
 };
 
 /**
@@ -183,6 +199,7 @@ class RecurrenceWidget extends Component {
 
     console.log(props.value);
     console.log(this.state.rruleSet);
+
     // console.log('to text:', this.state.rruleSet.toText());
 
     //console.log('rrule', rruleSet.rrules()[0]); //get rrule
@@ -393,7 +410,6 @@ class RecurrenceWidget extends Component {
                           value={formValues.freq}
                           onChange={this.onChangeRule}
                         />
-
                         {OPTIONS.frequences[formValues.freq].interval && (
                           <Form.Field inline className="text">
                             <Grid>
@@ -431,7 +447,34 @@ class RecurrenceWidget extends Component {
                             </Grid>
                           </Form.Field>
                         )}
+                        {/***** byday *****/}
 
+                        {OPTIONS.frequences[formValues.freq].byday && (
+                          <Form.Field inline className="text">
+                            <Grid>
+                              <Grid.Row stretched>
+                                <Grid.Column width="4">
+                                  <div className="wrapper">
+                                    <label htmlFor="interval">
+                                      {intl.formatMessage(messages.repeatOn)}
+                                    </label>
+                                  </div>
+                                </Grid.Column>
+                                <Grid.Column width="8">
+                                  {Object.keys(Days).map(d => (
+                                    <Checkbox
+                                      key={d}
+                                      label={{
+                                        children: d,
+                                      }}
+                                      value={d}
+                                    />
+                                  ))}
+                                </Grid.Column>
+                              </Grid.Row>
+                            </Grid>
+                          </Form.Field>
+                        )}
                         {/*-- ends after N recurrence or date --*/}
                         <Form.Field inline className="text">
                           <Grid>
@@ -540,6 +583,12 @@ class RecurrenceWidget extends Component {
                           <div key={date.toString()}>{date.toString()}</div>
                         );
                       })}
+                      {/* <List
+      items={rrule
+        .all()
+        .map(date => datesForDisplay(date))
+        .map(date => date.startDate)}
+    /> */}
                     </Segment>
                   </Modal.Description>
                 </Modal.Content>
