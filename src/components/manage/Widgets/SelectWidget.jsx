@@ -87,7 +87,10 @@ function getDefaultValues(choices, value) {
     };
   }
   if (isObject(value)) {
-    return { label: value.title, value: value.token };
+    return {
+      label: value.title !== 'None' && value.title ? value.title : value.token,
+      value: value.token,
+    };
   }
   if (value && choices.length > 0) {
     return { label: find(choices, o => o[0] === value)[1], value };
@@ -320,35 +323,37 @@ class SelectWidget extends Component {
                   }}
                 />
               ) : (
-                <>
-                  <Select
-                    id={`field-${id}`}
-                    name={id}
-                    disabled={onEdit !== null}
-                    className="react-select-container"
-                    classNamePrefix="react-select"
-                    options={[
-                      ...map(choices, option => ({
-                        value: option[0],
-                        label: option[1],
-                      })),
-                      {
-                        label: this.props.intl.formatMessage(messages.no_value),
-                        value: 'no-value',
-                      },
-                    ]}
-                    styles={customSelectStyles}
-                    theme={selectTheme}
-                    components={{ DropdownIndicator, Option }}
-                    defaultValue={getDefaultValues(choices, value)}
-                    onChange={data =>
-                      onChange(
-                        id,
-                        data.value === 'no-value' ? undefined : data.value,
-                      )
-                    }
-                  />
-                </>
+                <Select
+                  id={`field-${id}`}
+                  name={id}
+                  disabled={onEdit !== null}
+                  className="react-select-container"
+                  classNamePrefix="react-select"
+                  options={[
+                    ...map(choices, option => ({
+                      value: option[0],
+                      label:
+                        // Fix "None" on the serializer, to remove when fixed in p.restapi
+                        option[1] !== 'None' && option[1]
+                          ? option[1]
+                          : option[0],
+                    })),
+                    {
+                      label: this.props.intl.formatMessage(messages.no_value),
+                      value: 'no-value',
+                    },
+                  ]}
+                  styles={customSelectStyles}
+                  theme={selectTheme}
+                  components={{ DropdownIndicator, Option }}
+                  defaultValue={getDefaultValues(choices, value)}
+                  onChange={data =>
+                    onChange(
+                      id,
+                      data.value === 'no-value' ? undefined : data.value,
+                    )
+                  }
+                />
               )}
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>

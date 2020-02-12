@@ -264,6 +264,11 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
+#: components/theme/View/ImageView
+# defaultMessage: Click to download full sized image
+msgid "Click to download full sized image"
+msgstr ""
+
 #: components/manage/Widgets/SelectWidget
 # defaultMessage: Close
 msgid "Close"
@@ -1465,6 +1470,11 @@ msgstr ""
 #: components/manage/Toolbar/PersonalTools
 # defaultMessage: Site Setup
 msgid "Site Setup"
+msgstr ""
+
+#: components/theme/View/ImageView
+# defaultMessage: Size: {size}
+msgid "Size: {size}"
 msgstr ""
 
 #: error
