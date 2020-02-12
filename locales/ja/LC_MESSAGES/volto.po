@@ -229,6 +229,10 @@ msgstr "イメージを選択"
 msgid "Choose Target"
 msgstr "ターゲットを選択"
 
+#: components/theme/View/ImageView
+msgid "Click to download full sized image"
+msgstr ""
+
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr ""
@@ -1171,6 +1175,10 @@ msgstr "サイトマップ"
 msgid "Site Setup"
 msgstr "サイト設定"
 
+#: components/theme/View/ImageView
+msgid "Size: {size}"
+msgstr ""
+
 #: error
 msgid "Sorry, something went wrong with your request"
 msgstr ""
@@ -1446,6 +1454,10 @@ msgstr ""
 msgid "Workflow updated."
 msgstr ""
 
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "You are using an outdated browser"
+msgstr ""
+
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
 msgstr ""
@@ -1488,6 +1500,10 @@ msgstr "一般"
 
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
+msgstr ""
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "deprecated_browser_notice_message"
 msgstr ""
 
 #: config/Blocks

@@ -6,8 +6,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Editor from 'draft-js-plugins-editor';
-import { convertFromRaw, EditorState } from 'draft-js';
+import { convertFromRaw, EditorState, RichUtils } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
+import { includes } from 'lodash';
 
 import { settings } from '~/config';
 
@@ -134,6 +136,31 @@ class Cell extends Component {
           blockRenderMap={settings.extendedBlockRenderMap}
           blockStyleFn={settings.blockStyleFn}
           customStyleMap={settings.customStyleMap}
+          handleReturn={e => {
+            if (isSoftNewlineEvent(e)) {
+              this.onChange(
+                RichUtils.insertSoftNewline(this.state.editorState),
+              );
+              return 'handled';
+            }
+            if (!this.props.detached) {
+              const selectionState = this.state.editorState.getSelection();
+              const anchorKey = selectionState.getAnchorKey();
+              const currentContent = this.state.editorState.getCurrentContent();
+              const currentContentBlock = currentContent.getBlockForKey(
+                anchorKey,
+              );
+              const blockType = currentContentBlock.getType();
+              if (!includes(settings.listBlockTypes, blockType)) {
+                this.props.onSelectBlock(
+                  this.props.onAddBlock('text', this.props.index + 1),
+                );
+                return 'handled';
+              }
+              return 'un-handled';
+            }
+            return {};
+          }}
           ref={node => {
             this.node = node;
           }}

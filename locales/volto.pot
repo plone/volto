@@ -269,6 +269,11 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
+#: components/theme/View/ImageView
+# defaultMessage: Click to download full sized image
+msgid "Click to download full sized image"
+msgstr ""
+
 #: components/manage/Widgets/SelectWidget
 # defaultMessage: Close
 msgid "Close"
@@ -1418,6 +1423,11 @@ msgstr ""
 msgid "Site Setup"
 msgstr ""
 
+#: components/theme/View/ImageView
+# defaultMessage: Size: {size}
+msgid "Size: {size}"
+msgstr ""
+
 #: error
 # defaultMessage: Sorry, something went wrong with your request 
 msgid "Sorry, something went wrong with your request"
@@ -1754,6 +1764,11 @@ msgstr ""
 msgid "Workflow updated."
 msgstr ""
 
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+# defaultMessage: You are using an outdated browser
+msgid "You are using an outdated browser"
+msgstr ""
+
 #: components/theme/Comments/Comments
 # defaultMessage: You can add a comment by filling out the form below. Plain text formatting.
 msgid "You can add a comment by filling out the form below. Plain text formatting."
@@ -1807,6 +1822,11 @@ msgstr ""
 #: components/manage/Blocks/Block/Edit
 # defaultMessage: delete
 msgid "delete"
+msgstr ""
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+# defaultMessage: You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser.
+msgid "deprecated_browser_notice_message"
 msgstr ""
 
 #: config/Blocks
