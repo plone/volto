@@ -145,6 +145,10 @@ msgstr "比較元"
 msgid "Block"
 msgstr "ブロック"
 
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Block style"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr "メールアドレスとパスワードは大文字小文字が区別されます。Caps Lockキーの状態に注意してください。"
@@ -262,6 +266,10 @@ msgstr "お問い合わせフォーム"
 
 #: components/manage/Blocks/Listing/Edit
 msgid "Contained items"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Content"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -692,8 +700,17 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Link more"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingMore
+msgid "Link title"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Listing/ListingMore
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
@@ -1231,6 +1248,10 @@ msgstr "追加するタグ"
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags to remove"
 msgstr "削除をするタグ"
+
+#: components/manage/Blocks/Listing/TemplateWidget
+msgid "Template"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-01-30T09:08:13.798Z\n"
+"POT-Creation-Date: 2020-02-12T14:52:32.391Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -167,6 +167,11 @@ msgstr ""
 msgid "Block"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingSidebar
+# defaultMessage: Block style
+msgid "Block style"
+msgstr ""
+
 #: components/theme/Login/Login
 # defaultMessage: Both email address and password are case sensitive, check that caps lock is not enabled.
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -310,6 +315,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/Edit
 # defaultMessage: Contained items
 msgid "Contained items"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingSidebar
+# defaultMessage: Content
+msgid "Content"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -831,8 +841,19 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingSidebar
+# defaultMessage: Link more
+msgid "Link more"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingMore
+# defaultMessage: Link Title
+msgid "Link title"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Listing/ListingMore
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
@@ -1490,6 +1511,11 @@ msgstr ""
 #: components/manage/Contents/ContentsTagsModal
 # defaultMessage: Tags to remove
 msgid "Tags to remove"
+msgstr ""
+
+#: components/manage/Blocks/Listing/TemplateWidget
+# defaultMessage: Template
+msgid "Template"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
