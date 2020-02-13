@@ -228,6 +228,10 @@ msgstr "Seleccione imagen"
 msgid "Choose Target"
 msgstr "Seleccione destino"
 
+#: components/theme/View/ImageView
+msgid "Click to download full sized image"
+msgstr ""
+
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr "Cerrar"
@@ -877,10 +881,12 @@ msgid "Paste"
 msgstr "Pegar"
 
 #: components/manage/Preferences/PersonalInformation
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
 msgstr "Información Personal"
 
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
 msgstr "Preferencias Personales"
 
@@ -1155,6 +1161,10 @@ msgstr "Mapa del sitio"
 msgid "Site Setup"
 msgstr "Configuración del sitio"
 
+#: components/theme/View/ImageView
+msgid "Size: {size}"
+msgstr ""
+
 #: error
 msgid "Sorry, something went wrong with your request"
 msgstr "Lo siento, algo estuvo mal con su solicitud "
@@ -1426,6 +1436,10 @@ msgstr "Quien"
 msgid "Workflow updated."
 msgstr "Flujo de trabajo actualizado."
 
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "You are using an outdated browser"
+msgstr ""
+
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
 msgstr "Usted puede agregar un comentario completando el formulario a continuación. Utilice formato de texto sin formato."
@@ -1469,6 +1483,10 @@ msgstr "Común"
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
 msgstr "eliminar"
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "deprecated_browser_notice_message"
+msgstr ""
 
 #: config/Blocks
 msgid "description"

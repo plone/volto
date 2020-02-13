@@ -117,6 +117,7 @@ class Login extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
+    console.log(this.props.returnUrl);
     if (nextProps.token) {
       this.props.history.push(this.props.returnUrl || '/');
       if (toast.isActive('loginFailed')) {
@@ -320,7 +321,9 @@ export default compose(
       token: state.userSession.token,
       returnUrl:
         qs.parse(props.location.search).return_url ||
-        props.location.pathname.replace('/login', '') ||
+        props.location.pathname
+          .replace(/\/login$/, '')
+          .replace(/\/logout$/, '') ||
         '/',
     }),
     { login },

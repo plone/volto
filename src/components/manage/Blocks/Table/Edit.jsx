@@ -644,7 +644,10 @@ class Edit extends Component {
                           cellIndex === this.state.selected.cell
                         }
                         isTableBlockSelected={this.props.selected}
+                        onAddBlock={this.props.onAddBlock}
+                        onSelectBlock={this.props.onSelectBlock}
                         onChange={this.onChangeCell}
+                        index={this.props.index}
                       />
                     </Table.Cell>
                   ))}

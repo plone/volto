@@ -8,6 +8,46 @@
 
 ### Changes
 
+- Include link and size info to the full size image in `ImageView` view component @sneridagh
+- In the Display menu, only show views that are implemented @pnicolli
+- Hide Blocks fields in Layout fieldset in Add/Edit forms @pnicolli
+- Fallback for non existing layout views registered in `constants/Layouts` when selected in the widget @sneridagh
+- Fix select widget for array inline choices fields and `z-index` problem @sneridagh
+
+### Internal
+
+- Added forest.eea.europa.eu as deployed Volto in production @tiberiuichim
+
+## 4.0.0-alpha.36 (2020-02-03)
+
+### Changes
+
+- Fix unable to login from /logout page (#1147) @sneridagh
+- Fix sitemap.xml by increasing the batch size @robgietema
+- Browser detect feature, adding a deprecation message for ancient browsers in the `App` component @sneridagh
+- Adding fallback in the edit form, in case the blocks related fields are empty, so we are sure that the edit form shows at least the default blocks @sneridagh
+- Fix shift return in tables @robgietema
+
+## 4.0.0-alpha.35 (2020-01-31)
+
+### Changes
+
+- Fix CSS when multiselection widgets have multiple items, then provoke a line jump @sneridagh
+- added new italian translations, added italian to available languages, translated some static string
+- updated italian translations
+- Fix listing block sidebar focus @sneridagh
+- Fix getBaseUrl helper method to not match inner occurrences of nonContentRoutes @sneridagh
+
+## 4.0.0-alpha.34 (2020-01-26)
+
+### Changes
+
+- Fix token expiration/renewer timer, this fixes #674 @sneridagh
+
+## 4.0.0-alpha.33 (2020-01-26)
+
+### Changes
+
 - Updated Maps block to the sidebar and image block look and feel @sneridagh
 - Update video block to the sidebar and get the image block look and feel @sneridagh
 
