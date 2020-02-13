@@ -85,7 +85,7 @@ defineMessages({
   },
   listing: {
     id: 'listing',
-    defaultMessage: 'Elenco',
+    defaultMessage: 'Listing',
   },
   // Groups
   mostUsed: {
