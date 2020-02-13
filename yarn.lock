@@ -11819,17 +11819,17 @@ razzle@3.0.0:
     webpack-node-externals "^1.7.2"
     webpackbar "^3.1.5"
 
-rc-align@^3.0.0-alpha.3:
-  version "3.0.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/rc-align/-/rc-align-3.0.0-alpha.8.tgz#2f076c1a26804818d2e09661d46f6e45d15cb21d"
-  integrity sha512-k0a3U5dfA9wQ/IAr4V8DNs/IFLBb3nD3ShteypX8hnASdbbFBbZCa0s/258OO4S94rwDgiBaFtkWQKyEyxJLxA==
+rc-align@^2.4.0:
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/rc-align/-/rc-align-2.4.5.tgz#c941a586f59d1017f23a428f0b468663fb7102ab"
+  integrity sha512-nv9wYUYdfyfK+qskThf4BQUSIadeI/dCsfaMZfNEoxm9HwOIioQ+LyqmMK6jWHAZQgOzMLaqawhuBXlF63vgjw==
   dependencies:
-    classnames "2.x"
+    babel-runtime "^6.26.0"
     dom-align "^1.7.0"
-    rc-util "^4.12.0"
-    resize-observer-polyfill "^1.5.1"
+    prop-types "^15.5.8"
+    rc-util "^4.0.4"
 
-rc-animate@^2.10.2:
+rc-animate@2.x:
   version "2.10.2"
   resolved "https://registry.yarnpkg.com/rc-animate/-/rc-animate-2.10.2.tgz#217fdc76ff26cbf425a5caf87cc8a36ba4598456"
   integrity sha512-cE/A7piAzoWFSgUD69NmmMraqCeqVBa51UErod8NS3LUEqWfppSVagHfa0qHAlwPVPiIBg3emRONyny3eiH0Dg==
@@ -11842,29 +11842,43 @@ rc-animate@^2.10.2:
     rc-util "^4.15.3"
     react-lifecycles-compat "^3.0.4"
 
-rc-time-picker@4.0.0-alpha.2:
-  version "4.0.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/rc-time-picker/-/rc-time-picker-4.0.0-alpha.2.tgz#d36ccb1e5179dfa0de79492b3b98ae0750c3001c"
-  integrity sha512-56hgnYQksyKmlDSmpJrW0/XwmyZOWPwFWVnsRxZtfDaQMfudJl2aNGWPWnO/lmcbqqW/hXDdiuL1znMnFSURWQ==
+rc-time-picker@3.7.3:
+  version "3.7.3"
+  resolved "https://registry.yarnpkg.com/rc-time-picker/-/rc-time-picker-3.7.3.tgz#65a8de904093250ae9c82b02a4905e0f995e23e2"
+  integrity sha512-Lv1Mvzp9fRXhXEnRLO4nW6GLNxUkfAZ3RsiIBsWjGjXXvMNjdr4BX/ayElHAFK0DoJqOhm7c5tjmIYpEOwcUXg==
   dependencies:
     classnames "2.x"
     moment "2.x"
+    prop-types "^15.5.8"
     raf "^3.4.1"
-    rc-trigger "^4.0.0-alpha.4"
+    rc-trigger "^2.2.0"
+    react-lifecycles-compat "^3.0.4"
 
-rc-trigger@^4.0.0-alpha.4:
-  version "4.0.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/rc-trigger/-/rc-trigger-4.0.0-alpha.8.tgz#d872bc6a200e35baa0c97343be7f3b16c93012f5"
-  integrity sha512-apK07cDTOQqMXSNSAc2NdDpinkJcfjVC0gTjDivEM9Oj2w3whFlwwxAmyK8WVgKPrjmP+Ler9+9AzP65SWo3Jw==
+rc-trigger@^2.2.0:
+  version "2.6.5"
+  resolved "https://registry.yarnpkg.com/rc-trigger/-/rc-trigger-2.6.5.tgz#140a857cf28bd0fa01b9aecb1e26a50a700e9885"
+  integrity sha512-m6Cts9hLeZWsTvWnuMm7oElhf+03GOjOLfTuU0QmdB9ZrW7jR2IpI5rpNM7i9MvAAlMAmTx5Zr7g3uu/aMvZAw==
   dependencies:
+    babel-runtime "6.x"
     classnames "^2.2.6"
     prop-types "15.x"
-    raf "^3.4.1"
-    rc-align "^3.0.0-alpha.3"
-    rc-animate "^2.10.2"
-    rc-util "^4.15.2"
+    rc-align "^2.4.0"
+    rc-animate "2.x"
+    rc-util "^4.4.0"
+    react-lifecycles-compat "^3.0.4"
 
-rc-util@^4.12.0, rc-util@^4.15.2, rc-util@^4.15.3:
+rc-util@^4.0.4, rc-util@^4.4.0:
+  version "4.19.0"
+  resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-4.19.0.tgz#f3b5e3a02cc0a667d127784068e1236c095dbcbf"
+  integrity sha512-mptALlLwpeczS3nrv83DbwJNeupolbuvlIEjcvimSiWI8NUBjpF0HgG3kWp1RymiuiRCNm9yhaXqDz0a99dpgQ==
+  dependencies:
+    add-dom-event-listener "^1.1.0"
+    babel-runtime "6.x"
+    prop-types "^15.5.10"
+    react-lifecycles-compat "^3.0.4"
+    shallowequal "^1.1.0"
+
+rc-util@^4.15.3:
   version "4.16.1"
   resolved "https://registry.yarnpkg.com/rc-util/-/rc-util-4.16.1.tgz#bf9070ab219a69624c047026a8c68f71225396a2"
   integrity sha512-nYwXV8hqOVpjpuCBckq57LM2W8HzfUGVm8xcbbHqH8SJeQk4EhLZY1mA/vJcEiz9Q1tN9ImrqengyF8FVc8ZJQ==
@@ -12757,11 +12771,6 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
-
-resize-observer-polyfill@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
-  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
 
 resolve-cwd@^2.0.0:
   version "2.0.0"
