@@ -185,6 +185,7 @@
 
 - Implementation of `Portuguese (BR)` translation @LeuAlmeida
 - Added translations to spanish @macagua
+- Added AlbumView @wkbktill @alexbueckig
 
 ### Changes
 
