@@ -110,5 +110,9 @@
 .ui.segment.imageborder {
   display: flex;
   height: 100%;
+}
+
+ui.segment.listing-item {
+  display: flex;
   align-items: center;
 }
