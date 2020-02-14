@@ -51,6 +51,7 @@
 - Fix on creating a new block, it should show the sidebar block properties (#1167) @sneridagh
 - Send only the changed fields on PATCH (edit content) operations @sneridagh
 - Japanese translation @terapyon
+- Fixes for `lisiting view` e.g. floating and item intend @wkbkhard
 
 ### Internal
 
