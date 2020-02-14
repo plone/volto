@@ -19,6 +19,7 @@
 ### Internal
 
 - Added forest.eea.europa.eu as deployed Volto in production @tiberiuichim
+- Added `yarnhook` to the build @sneridagh
 
 ## 4.0.0-alpha.36 (2020-02-03)
 
