@@ -106,3 +106,8 @@
 .users-control-panel .ui.clearing.segment.actions {
   text-transform: uppercase;
 }
+
+ui.segment.listing-item {
+  display: flex;
+  align-items: center;
+}
