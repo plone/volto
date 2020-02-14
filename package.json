@@ -1,6 +1,7 @@
 {
   "name": "@plone/volto",
   "description": "Volto",
+  "type": "module",
   "maintainers": [
     {
       "name": "Plone Foundation",
