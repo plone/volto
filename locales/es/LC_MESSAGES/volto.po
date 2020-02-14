@@ -1481,6 +1481,34 @@ msgid "Weekday"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget
+msgid "Weekday FR"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekday MO"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekday SA"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekday SU"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekday TH"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekday TU"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekday WE"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
 msgid "Weekly"
 msgstr ""
 

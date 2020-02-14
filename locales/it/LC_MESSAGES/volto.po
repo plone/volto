@@ -1037,7 +1037,7 @@ msgstr "Ogni"
 
 #: components/manage/Widgets/RecurrenceWidget
 msgid "Repeat on"
-msgstr ""
+msgstr "Ripeti ogni"
 
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1469,6 +1469,34 @@ msgstr "Useremo questo indirizzo email nel caso dovessi recuperare la tua passwo
 #: components/manage/Widgets/RecurrenceWidget
 msgid "Weekday"
 msgstr "giorno feriale (lunedì-venerdì)"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekday FR"
+msgstr "Ven"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekday MO"
+msgstr "Lun"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekday SA"
+msgstr "Sab"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekday SU"
+msgstr "Dom"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekday TH"
+msgstr "Gio"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekday TU"
+msgstr "Mar"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weekday WE"
+msgstr "Mer"
 
 #: components/manage/Widgets/RecurrenceWidget
 msgid "Weekly"

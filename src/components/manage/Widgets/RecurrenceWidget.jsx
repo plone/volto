@@ -87,6 +87,14 @@ const messages = defineMessages({
   recurrenceEndsCount: { id: 'Recurrence ends after', defaultMessage: 'after' },
   recurrenceEndsUntil: { id: 'Recurrence ends on', defaultMessage: 'on' },
   occurrences: { id: 'Occurences', defaultMessage: 'occurrence(s)' },
+
+  weekday_MO: { id: 'Weekday MO', defaultMessage: 'MON' },
+  weekday_TU: { id: 'Weekday TU', defaultMessage: 'TUE' },
+  weekday_WE: { id: 'Weekday WE', defaultMessage: 'WEN' },
+  weekday_TH: { id: 'Weekday TH', defaultMessage: 'THU' },
+  weekday_FR: { id: 'Weekday FR', defaultMessage: 'FRI' },
+  weekday_SA: { id: 'Weekday SA', defaultMessage: 'SAT' },
+  weekday_SU: { id: 'Weekday SU', defaultMessage: 'SUN' },
 });
 
 const DAILY = 'daily';
@@ -188,8 +196,8 @@ class RecurrenceWidget extends Component {
       );
     }
 
-    console.log('all set', rruleSet.rrules()[0].all());
-    console.log('all rrule', rruleSet.rrules()[0].all());
+    // console.log('all set', rruleSet.rrules()[0].all());
+    // console.log('all rrule', rruleSet.rrules()[0].all());
 
     this.state = {
       open: false,
@@ -197,6 +205,7 @@ class RecurrenceWidget extends Component {
       formValues: this.getFormValues(rruleSet),
     };
 
+    console.log(Days);
     console.log(props.value);
     console.log(this.state.rruleSet);
 
@@ -255,6 +264,7 @@ class RecurrenceWidget extends Component {
               formValues['freq'] = MONDAYFRIDAY;
             }
           }
+          formValues[option] = value ? value : [];
           break;
         default:
           formValues[option] = value;
@@ -315,6 +325,7 @@ class RecurrenceWidget extends Component {
         }
 
         break;
+
       default: //do nothing
     }
 
@@ -343,6 +354,19 @@ class RecurrenceWidget extends Component {
         console.log('---toString', this.state.rruleSet.toString());
       },
     );
+  };
+
+  toggleWeekDay = dayName => {
+    var day = Days[dayName];
+    var byweekday = [...this.state.formValues.byweekday];
+
+    var i = byweekday.indexOf(day.weekday);
+    if (i >= 0) {
+      byweekday.splice(i, 1);
+    } else {
+      byweekday.push(day.weekday);
+    }
+    this.onChangeRule('byweekday', byweekday);
   };
 
   render() {
@@ -393,7 +417,7 @@ class RecurrenceWidget extends Component {
                 </Modal.Header>
                 <Modal.Content scrolling>
                   <Modal.Description>
-                    {JSON.stringify(rruleSet.options)}
+                    {JSON.stringify(rruleSet._rrule[0].options)}
 
                     <br />
                     <br />
@@ -461,15 +485,25 @@ class RecurrenceWidget extends Component {
                                   </div>
                                 </Grid.Column>
                                 <Grid.Column width="8">
-                                  {Object.keys(Days).map(d => (
-                                    <Checkbox
-                                      key={d}
-                                      label={{
-                                        children: d,
-                                      }}
-                                      value={d}
-                                    />
-                                  ))}
+                                  <Button.Group basic>
+                                    {Object.keys(Days).map(d => (
+                                      <Button
+                                        key={d}
+                                        active={
+                                          formValues.byweekday.indexOf(
+                                            Days[d].weekday,
+                                          ) >= 0
+                                        }
+                                        type="button"
+                                        content={intl.formatMessage(
+                                          messages['weekday_' + d],
+                                        )}
+                                        onClick={() => {
+                                          this.toggleWeekDay(d);
+                                        }}
+                                      />
+                                    ))}
+                                  </Button.Group>
                                 </Grid.Column>
                               </Grid.Row>
                             </Grid>

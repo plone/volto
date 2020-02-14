@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-02-12T15:02:19.972Z\n"
+"POT-Creation-Date: 2020-02-14T15:20:25.130Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1791,6 +1791,41 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget
 # defaultMessage: Weekday
 msgid "Weekday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: FRI
+msgid "Weekday FR"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: MON
+msgid "Weekday MO"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: SAT
+msgid "Weekday SA"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: SUN
+msgid "Weekday SU"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: THU
+msgid "Weekday TH"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: TUE
+msgid "Weekday TU"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: WEN
+msgid "Weekday WE"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget
