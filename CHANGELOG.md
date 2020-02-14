@@ -4,7 +4,7 @@
 
 ### Added
 
-- Chose template for listing block.
+- Chose template for listing block @giuliaghisini
 - Event type view @nileshgulia1 @pnicolli
 
 ### Changes
