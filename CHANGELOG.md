@@ -9,6 +9,7 @@
 - Include link and size info to the full size image in `ImageView` view component @sneridagh
 - In the Display menu, only show views that are implemented @pnicolli
 - Hide Blocks fields in Layout fieldset in Add/Edit forms @pnicolli
+- Updated italian translations @nzambello
 - Fallback for non existing layout views registered in `constants/Layouts` when selected in the widget @sneridagh
 - Fix select widget for array inline choices fields and `z-index` problem @sneridagh
 
