@@ -15,6 +15,7 @@
 - Updated italian translations @nzambello
 - Fallback for non existing layout views registered in `constants/Layouts` when selected in the widget @sneridagh
 - Fix select widget for array inline choices fields and `z-index` problem @sneridagh
+- Improve UX of the edit block Image component @sneridagh
 
 ### Internal
 
