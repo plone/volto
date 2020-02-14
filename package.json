@@ -100,6 +100,7 @@
     "setupFiles": [
       "./test-setup.js"
     ],
+    "globalSetup": "./global-test-setup.js",
     "globals": {
       "__DEV__": true
     }
@@ -317,6 +318,7 @@
     "redux-mock-store": "1.5.3",
     "redux-thunk": "2.3.0",
     "release-it": "12.4.3",
+    "rrule": "2.6.4",
     "semantic-ui-less": "2.4.1",
     "semantic-ui-react": "0.88.1",
     "semver": "5.6.0",
