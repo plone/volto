@@ -1542,6 +1542,14 @@ msgid "label_my_email_address_is"
 msgstr "Mi dirección de correo electrónico es"
 
 #: config/Blocks
+msgid "leadimage"
+msgstr ""
+
+#: config/Blocks
+msgid "listing"
+msgstr ""
+
+#: config/Blocks
 msgid "maps"
 msgstr "Mapas"
 
