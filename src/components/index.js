@@ -18,6 +18,7 @@ export DefaultView from '@plone/volto/components/theme/View/DefaultView';
 export FileView from '@plone/volto/components/theme/View/FileView';
 export ImageView from '@plone/volto/components/theme/View/ImageView';
 export NewsItemView from '@plone/volto/components/theme/View/NewsItemView';
+export EventView from '@plone/volto/components/theme/View/EventView';
 export ListingView from '@plone/volto/components/theme/View/ListingView';
 export Login from '@plone/volto/components/theme/Login/Login';
 export Logout from '@plone/volto/components/theme/Logout/Logout';

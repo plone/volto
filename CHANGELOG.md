@@ -4,6 +4,8 @@
 
 ### Added
 
+- Event type view @nileshgulia1 @pnicolli
+
 ### Changes
 
 - Include link and size info to the full size image in `ImageView` view component @sneridagh
