@@ -1264,7 +1264,10 @@ class Contents extends Component {
             pathname={this.props.pathname}
             hideDefaultViewButtons
             inner={
-              <Link to={`${path}`}>
+              <Link
+                to={`${path}`}
+                aria-label={this.props.intl.formatMessage(messages.back)}
+              >
                 <IconNext
                   name={backSVG}
                   className="contents circled"
