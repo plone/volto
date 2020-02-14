@@ -16,10 +16,12 @@
 - Fallback for non existing layout views registered in `constants/Layouts` when selected in the widget @sneridagh
 - Fix select widget for array inline choices fields and `z-index` problem @sneridagh
 - Improve UX of the edit block Image component @sneridagh
+- Fix on creating a new block, it should show the sidebar block properties (#1167) @sneridagh
 
 ### Internal
 
 - Added forest.eea.europa.eu as deployed Volto in production @tiberiuichim
+- Add SemanticUI responsive variables to the responsive utils @sneridagh
 - Added `yarnhook` to the build @sneridagh
 
 ## 4.0.0-alpha.36 (2020-02-03)
