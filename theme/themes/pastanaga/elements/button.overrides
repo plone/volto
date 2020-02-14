@@ -68,3 +68,11 @@
 .ui.noborder.button:not(.icon) > .icon:not(.button):not(.dropdown) {
   margin: 0;
 }
+
+.ui.button.gallery {
+  background-color: transparent;
+
+  .icon.circled {
+    margin: 0;
+  }
+}
