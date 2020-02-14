@@ -11,6 +11,7 @@
 - Hide Blocks fields in Layout fieldset in Add/Edit forms @pnicolli
 - Fallback for non existing layout views registered in `constants/Layouts` when selected in the widget @sneridagh
 - Fix select widget for array inline choices fields and `z-index` problem @sneridagh
+- Fixes for `lisiting view` e.g. floating and item intend @wkbkhard
 
 ### Internal
 
