@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import { EventWhen } from './EventWhen';
+import { When } from './EventDatesInfo';
 
 test('different day, whole day', () => {
   const component = renderer.create(
-    <EventWhen
+    <When
       start="2019-06-23T11:55:00+00:00"
       end="2019-06-24T15:20:00+00:00"
       whole_day={true}
@@ -18,7 +18,7 @@ test('different day, whole day', () => {
 
 test('different day, not whole day', () => {
   const component = renderer.create(
-    <EventWhen
+    <When
       start="2019-06-23T11:55:00+00:00"
       end="2019-06-24T15:20:00+00:00"
       whole_day={false}
@@ -31,7 +31,7 @@ test('different day, not whole day', () => {
 
 test('same day, whole day', () => {
   const component = renderer.create(
-    <EventWhen
+    <When
       start="2019-06-23T11:55:00+00:00"
       end="2019-06-23T15:20:00+00:00"
       whole_day={true}
@@ -44,7 +44,7 @@ test('same day, whole day', () => {
 
 test('same day, not whole day, open end', () => {
   const component = renderer.create(
-    <EventWhen
+    <When
       start="2019-06-23T11:55:00+00:00"
       end="2019-06-23T15:20:00+00:00"
       whole_day={false}
@@ -57,7 +57,7 @@ test('same day, not whole day, open end', () => {
 
 test('same day, not whole day, not open end', () => {
   const component = renderer.create(
-    <EventWhen
+    <When
       start="2019-06-23T11:55:00+00:00"
       end="2019-06-23T15:20:00+00:00"
       whole_day={false}

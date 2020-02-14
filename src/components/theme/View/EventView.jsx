@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { Container, Image, Segment, Header, List } from 'semantic-ui-react';
 
-import { EventWhen, Recurrence } from './EventWhen';
+import { When, Recurrence } from './EventDatesInfo';
 
 /**
  * EventView view component class.
@@ -43,7 +43,7 @@ const EventView = ({ content }) => (
       <Header dividing sub>
         When
       </Header>
-      <EventWhen
+      <When
         start={content.start}
         end={content.end}
         whole_day={content.whole_day}

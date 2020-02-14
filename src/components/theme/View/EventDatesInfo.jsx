@@ -23,7 +23,7 @@ export const datesForDisplay = (start, end) => {
   };
 };
 
-export const EventWhen = ({ start, end, whole_day, open_end }) => {
+export const When = ({ start, end, whole_day, open_end }) => {
   const datesInfo = datesForDisplay(start, end);
   if (!datesInfo) {
     console.warn('EventWhen: Received invalid start or end date.');
@@ -94,7 +94,7 @@ export const EventWhen = ({ start, end, whole_day, open_end }) => {
   );
 };
 
-EventWhen.propTypes = {
+When.propTypes = {
   start: PropTypes.string.isRequired,
   end: PropTypes.string,
   whole_day: PropTypes.bool,
