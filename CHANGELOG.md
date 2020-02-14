@@ -15,6 +15,7 @@
 - Updated italian translations @nzambello
 - Fallback for non existing layout views registered in `constants/Layouts` when selected in the widget @sneridagh
 - Fix select widget for array inline choices fields and `z-index` problem @sneridagh
+- Fix on creating a new block, it should show the sidebar block properties (#1167) @sneridagh
 
 ### Internal
 
