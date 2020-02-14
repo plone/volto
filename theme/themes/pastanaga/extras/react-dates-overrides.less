@@ -45,8 +45,22 @@ td.CalendarDay__today {
 //   top: 0 !important;
 // }
 
-.DayPickerKeyboardShortcuts_show__bottomRight::before {
-  border-right-color: @linkColor;
+.DayPickerKeyboardShortcuts_show__bottomRight {
+  width: 2.5rem;
+  height: 2.5rem;
+
+  &::before {
+    border-top-width: 2.5rem;
+    border-right-width: 2.5rem;
+    border-right-color: @linkColor;
+  }
+
+  &:hover,
+  &:focus {
+    &::before {
+      border-right: 2.5rem solid lighten(@linkColor, 5);
+    }
+  }
 }
 
 .DayPicker.DayPicker__withBorder {
