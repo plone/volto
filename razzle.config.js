@@ -166,6 +166,7 @@ module.exports = {
     config.plugins.push(new GenerateSW({
       clientsClaim: true,
       skipWaiting: true,
+      importWorkboxFrom: 'cdn',
       runtimeCaching: [
         {
           urlPattern: /images/,

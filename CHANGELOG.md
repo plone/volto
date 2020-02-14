@@ -6,6 +6,7 @@
 
 - Chose template for listing block @giuliaghisini
 - Event type view @nileshgulia1 @pnicolli
+- Added PWA feature to volto @iFlameing
 
 ### Changes
 
@@ -156,7 +157,7 @@
 ### Changes
 
 - Disable all styling when copying text from another source (e.g. MS Word) into a text block @jackahl
-- Avoid console warnings in QuerystringWidget @tiberiuichim
+- Avoid console warnings in QuerystringWidget @tiberich
 - Fix body classname based on the current content type @sneridagh
 
 ## 4.0.0-alpha.21 (2020-01-02)
@@ -170,8 +171,6 @@
 ### Added
 
 - Added translations to Portuguese @emansije
-- Added PWA feature to volto @iFlameing
-
 ### Changes
 
 - Fix wysiwyg widget help tag, for styling consistency @tiberiuichim
