@@ -1,5 +1,5 @@
 # Translators:
-# Léu Almeida <leo@webid.net.br>, 2019
+# Léu Almeida, LeuAlmeida <leo@webid.net.br>, 2019
 # Emanuel Angelo, emansije <emanuel.angelo@gmail.com>, 2019
 msgid ""
 msgstr ""
@@ -1502,7 +1502,6 @@ msgstr "comum"
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
 msgstr "eliminar"
-
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
