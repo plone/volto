@@ -7,7 +7,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
 "PO-Revision-Date: 2017-02-28 08:52+0100\n"
-"Last-Translator: Emanuel Angelo, emansije <emanuel.angelo@gmail.com>, 2019\n"
+"Last-Translator: Léu Almeida <leo@webid.net.br>, 2019\n"
 "Language: pt-BR\n"
 "Language-Team: Portuguese (https://www.transifex.com/plone/teams/14552/pt/)\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,7 +65,7 @@ msgstr "Adicionar bloco..."
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
-msgstr ""
+msgstr "Adicionar critério"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
@@ -148,7 +148,7 @@ msgstr "Bloco"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Block style"
-msgstr ""
+msgstr "Estilo do bloco"
 
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -232,7 +232,7 @@ msgstr "Escolha Alvo"
 
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
-msgstr ""
+msgstr "Clique para baixar a imagem em tamanho real"
 
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
@@ -271,16 +271,16 @@ msgstr "Formulário de contacto"
 
 #: components/manage/Blocks/Listing/Edit
 msgid "Contained items"
-msgstr ""
+msgstr "Itens contidos"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
-msgstr ""
+msgstr "Conteúdo"
 
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
-msgstr "Conteúdo"
+msgstr "Conteúdos"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
@@ -302,7 +302,7 @@ msgstr "Auteurs"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Criteria"
-msgstr ""
+msgstr "Critério"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
@@ -426,16 +426,16 @@ msgstr "Documento"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr "Arraste e largue ficheiros do seu computador para esta área ou clique no botão “Procurar”."
+msgstr "Arraste e solte arquivos do seu computador para esta área ou clique no botão “Procurar”."
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 msgid "E-mail"
-msgstr "E-mail adres"
+msgstr "Endereço de E-mail"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
-msgstr "Os endereços de e-mail não coincidem."
+msgstr "Os e-mails não coincidem."
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
@@ -471,15 +471,15 @@ msgstr "Email enviado"
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Embed code error, please follow the instructions and try again."
-msgstr ""
+msgstr "Erro no embed, por favor, siga as instruções e tente novamente."
 
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
-msgstr ""
+msgstr "Inserido com Google Maps"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
-msgstr "Escreva URL ou título"
+msgstr "Digite a URL ou título"
 
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
@@ -493,20 +493,20 @@ msgstr "Escreva o nome completo. Por exemplo, José Silva."
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter map Embed Code"
-msgstr ""
+msgstr "Inserir embed do mapa"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
-msgstr "Escreva a senha actual."
+msgstr "Digite a senha atual."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your email address for verification."
-msgstr "Escreva o seu endereço de email para verificação."
+msgstr "Digite o seu endereço de email para verificação."
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Enter your new password. Minimum 5 characters."
-msgstr "Escreva uma senha nova. Mínimo de 5 caracteres."
+msgstr "Digite uma senha nova. Mínimo de 5 caracteres."
 
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
@@ -542,7 +542,7 @@ msgstr "Nome de ficheiro"
 
 #: components/manage/Contents/Contents
 msgid "Filter…"
-msgstr "Filtro..."
+msgstr "Filtro…"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
@@ -668,7 +668,7 @@ msgstr "Inserir linha antes"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Item batch size"
-msgstr ""
+msgstr "Tamanho do lote do item"
 
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
@@ -698,7 +698,7 @@ msgstr "Última modificação"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
-msgstr ""
+msgstr "Imagem Principal"
 
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
@@ -707,11 +707,11 @@ msgstr "Esquerda"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Link more"
-msgstr ""
+msgstr "Link mais"
 
 #: components/manage/Blocks/Listing/ListingMore
 msgid "Link title"
-msgstr ""
+msgstr "Link título"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -723,7 +723,7 @@ msgstr "Ligar a"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
-msgstr ""
+msgstr "Listagem"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -756,11 +756,11 @@ msgstr "Compactar a tabela"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
-msgstr ""
+msgstr "Mapa"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Maps URL"
-msgstr ""
+msgstr "URL dos mapas"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -781,7 +781,7 @@ msgstr "Moderar comentários"
 
 #: components/manage/Toolbar/Toolbar
 msgid "More"
-msgstr ""
+msgstr "Mais"
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to bottom of folder"
@@ -802,7 +802,7 @@ msgstr "Nome"
 
 #: error
 msgid "Navigate back"
-msgstr ""
+msgstr "Navegação para retornar"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
@@ -815,19 +815,19 @@ msgstr "Nenhuma imagem seleccionada"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in Lead Image content field"
-msgstr ""
+msgstr "Nenhuma imagem definida como Imagem Principal do campo do conteúdo"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in image content field"
-msgstr ""
+msgstr "Nenhuma imagem definida como imagem do campo do conteúdo"
 
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
-msgstr ""
+msgstr "Nenhum item encontrado neste container."
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
-msgstr ""
+msgstr "Nenhum mapa selecionado."
 
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
@@ -836,7 +836,7 @@ msgstr "Não foram encontrados quaisquer resultados."
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "No selection"
-msgstr ""
+msgstr "Sem seleção"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -846,7 +846,7 @@ msgstr "Sem qualquer valor"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No video selected"
-msgstr ""
+msgstr "Nenhum vídeo selecionado."
 
 #: components/manage/Workflow/Workflow
 msgid "No workflow"
@@ -908,7 +908,7 @@ msgstr "Preferências Pessoais"
 #: components/manage/Toolbar/More
 #: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
-msgstr ""
+msgstr "Ferramentas pessoais"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
@@ -916,11 +916,11 @@ msgstr "Pessoas responsáveis pela criação de conteúdo deste item. Pro favor 
 
 #: components/manage/Blocks/Video/Edit
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr ""
+msgstr "Digite um URL válido excluindo o bloco e adicionando um novo bloco de vídeo."
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
-msgstr ""
+msgstr "Digite o Código de incorporação fornecido pelo Google Maps -> Compartilhar -> Mapa de incorporação. Ele deve conter o código <iframe>."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
@@ -1021,15 +1021,15 @@ msgstr "Falta informação obrigatória."
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Results limit"
-msgstr ""
+msgstr "Limites de resultado"
 
 #: components/manage/Blocks/Listing/Edit
 msgid "Results preview"
-msgstr ""
+msgstr "Visualização dos Resultados"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Reversed order"
-msgstr ""
+msgstr "Pedido estornado"
 
 #: components/manage/History/History
 msgid "Revert to this revision"
@@ -1153,7 +1153,7 @@ msgstr "Encolher barra lateral"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Shrink toolbar"
-msgstr ""
+msgstr "Encolher toolbar"
 
 #: components/theme/Login/Login
 msgid "Sign in to start session"
@@ -1178,20 +1178,20 @@ msgstr "Configuração do Sítio"
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
-msgstr ""
+msgstr "Tamanho: {size}"
 
 #: error
 msgid "Sorry, something went wrong with your request"
-msgstr ""
+msgstr "Desculpe, algo deu errado com a sua solicitação"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
-msgstr ""
+msgstr "Classificar em"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Listing/ListingData
 msgid "Source"
-msgstr ""
+msgstr "Fonte"
 
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
@@ -1243,7 +1243,7 @@ msgstr "Cor da tabela invertida"
 
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
-msgstr ""
+msgstr "Tabela de Conteúdo"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
@@ -1260,7 +1260,7 @@ msgstr "Etiquetas a remover"
 
 #: components/manage/Blocks/Listing/TemplateWidget
 msgid "Template"
-msgstr ""
+msgstr "Template"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
@@ -1321,7 +1321,7 @@ msgstr "Tipo"
 
 #: components/manage/Blocks/Video/Edit
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
-msgstr ""
+msgstr "Digite a URL de um vídeo (YouTube, Vimeo ou mp4)"
 
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
@@ -1346,7 +1346,7 @@ msgstr "Enviar"
 
 #: components/manage/Blocks/LeadImage/Edit
 msgid "Upload a lead image in the 'Lead Image' content field."
-msgstr ""
+msgstr "Faça o upload de uma imagem principal no campo de conteúdo 'Imagem Principal'"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
@@ -1405,11 +1405,11 @@ msgstr "Resumo da Versão"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Video"
-msgstr ""
+msgstr "Vídeo"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Video URL"
-msgstr ""
+msgstr "URL do Vídeo"
 
 #: components/manage/Contents/ContentsItem
 msgid "View"
@@ -1457,7 +1457,7 @@ msgstr "Fluxo de trabalho actualizado."
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
-msgstr ""
+msgstr "Você está usando um navegador desatualizado"
 
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
@@ -1503,9 +1503,10 @@ msgstr "comum"
 msgid "delete"
 msgstr "eliminar"
 
+
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
-msgstr ""
+msgstr "deprecated_browser_notice_message"
 
 #: config/Blocks
 msgid "description"
@@ -1513,15 +1514,15 @@ msgstr "descrição"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_lost_password"
-msgstr ""
+msgstr "descricao_esqueceu_a_senha"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_sent_password"
-msgstr ""
+msgstr "descricao_senha_enviada"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
-msgstr ""
+msgstr "cabecalho_senha_enviada"
 
 #: config/Blocks
 msgid "hero"
@@ -1537,15 +1538,15 @@ msgstr "imagem"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
-msgstr ""
+msgstr "label_meu_email_é"
 
 #: config/Blocks
 msgid "leadimage"
-msgstr ""
+msgstr "imagem principal"
 
 #: config/Blocks
 msgid "listing"
-msgstr ""
+msgstr "listagem"
 
 #: config/Blocks
 msgid "maps"
@@ -1557,11 +1558,11 @@ msgstr "média"
 
 #: config/Blocks
 msgid "mostUsed"
-msgstr ""
+msgstr "maisUsado"
 
 #: error
 msgid "or try a different page."
-msgstr ""
+msgstr "ou tente uma página diferente"
 
 #: components/theme/Login/Login
 msgid "registration form"
@@ -1569,7 +1570,7 @@ msgstr "formulário de registo"
 
 #: error
 msgid "return to the site root"
-msgstr ""
+msgstr "voltar à página principal"
 
 #: config/Blocks
 msgid "table"
@@ -1585,7 +1586,7 @@ msgstr "título"
 
 #: config/Blocks
 msgid "toc"
-msgstr ""
+msgstr "toc"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
