@@ -23,12 +23,6 @@
 - Add SemanticUI responsive variables to the responsive utils @sneridagh
 - Added `yarnhook` to the build @sneridagh
 
-## 4.0.0-alpha.37 (2020-02-15)
-
-### Changes
-
-- Refactoring and implementing new `Portuguese (BR)` translation @LeuAlmeida
-
 ## 4.0.0-alpha.36 (2020-02-03)
 
 ### Changes
