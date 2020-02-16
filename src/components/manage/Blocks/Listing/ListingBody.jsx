@@ -1,14 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { ConditionalLink } from '@plone/volto/components';
 import { getQueryStringResults } from '@plone/volto/actions';
-import { flattenToAppURL } from '@plone/volto/helpers';
-import { settings } from '~/config';
-
-import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
+import { blocks } from '~/config';
 
 const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
   const querystringResults = useSelector(
@@ -34,36 +29,23 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
         []
       : folderItems;
 
+  const templateConfig = blocks.blocksConfig.listing.templates;
+
+  let templateName =
+    data.template && !!templateConfig[data.template]
+      ? data.template
+      : 'default';
+
+  const ListingBodyTemplate = templateConfig[templateName].template;
+
   return (
     <>
       {listingItems.length > 0 ? (
-        <>
-          {listingItems.map(item => (
-            <div className="listing-item" key={item['@id']}>
-              <ConditionalLink
-                to={flattenToAppURL(item['@id'])}
-                condition={!isEditMode}
-              >
-                {!item[settings.listingPreviewImageField] && (
-                  <img src={DefaultImageSVG} alt="" />
-                )}
-                {item[settings.listingPreviewImageField] && (
-                  <img
-                    src={flattenToAppURL(
-                      item[settings.listingPreviewImageField].scales.preview
-                        .download,
-                    )}
-                    alt={item.title}
-                  />
-                )}
-                <div className="listing-body">
-                  <h3>{item.title ? item.title : item.id}</h3>
-                  <p>{item.description}</p>
-                </div>
-              </ConditionalLink>
-            </div>
-          ))}
-        </>
+        <ListingBodyTemplate
+          items={listingItems}
+          isEditMode={isEditMode}
+          {...data}
+        />
       ) : (
         <div className="listing message">
           {data?.query?.length === 0 && (

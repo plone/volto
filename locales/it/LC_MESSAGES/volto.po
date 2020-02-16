@@ -37,7 +37,7 @@ msgstr "Azioni"
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 msgid "Add"
-msgstr ""
+msgstr "Aggiungi"
 
 #: components/manage/Toolbar/Types
 msgid "Add Content"
@@ -138,6 +138,10 @@ msgstr "Base"
 msgid "Block"
 msgstr "Blocco"
 
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Block style"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr "E-mail e passowrd distinguono entrambi le maiuscole dalle minuscole, verifica di non avere il Blocco maiuscole attivato."
@@ -218,6 +222,10 @@ msgstr "Seleziona un'immagine"
 msgid "Choose Target"
 msgstr "Seleziona la destinazione"
 
+#: components/theme/View/ImageView
+msgid "Click to download full sized image"
+msgstr "Clicca per scaricare l'immagine in dimensione originale"
+
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr "Chiudi"
@@ -256,6 +264,10 @@ msgstr "Form di contatto"
 #: components/manage/Blocks/Listing/Edit
 msgid "Contained items"
 msgstr "Elementi contenuti"
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Content"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
@@ -451,7 +463,7 @@ msgstr "Email inviata"
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Embed code error, please follow the instructions and try again."
-msgstr ""
+msgstr "Errore del codice incorporato, per favore segui le istruzioni e riprova."
 
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
@@ -473,7 +485,7 @@ msgstr "Inserisci il tuo nome completo, ad esempio Mario Rossi."
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter map Embed Code"
-msgstr ""
+msgstr "Inserisci il codice di incorporamento della mappa"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
@@ -678,15 +690,24 @@ msgstr "Ultima modifica"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
-msgstr ""
+msgstr "Immagine di testata"
 
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
 msgstr "Sinistra"
 
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Link more"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingMore
+msgid "Link title"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Listing/ListingMore
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
@@ -711,7 +732,7 @@ msgstr "Log in"
 
 #: components/theme/Login/Login
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 #: components/theme/Login/Login
 msgid "Login Failed"
@@ -727,11 +748,11 @@ msgstr "Rendi la tabella compatta"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
-msgstr ""
+msgstr "Mappa"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Maps URL"
-msgstr ""
+msgstr "URL di Maps"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -786,11 +807,11 @@ msgstr "Nessuna immagine selezionata"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in Lead Image content field"
-msgstr ""
+msgstr "Nessuna immagine impostata come Immagine di testata"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in image content field"
-msgstr ""
+msgstr "Nessuna immagine impostata"
 
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
@@ -798,7 +819,7 @@ msgstr "Nessun elemento trovato in questo contenitore."
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
-msgstr ""
+msgstr "Nessuna mappa selezionata"
 
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
@@ -817,7 +838,7 @@ msgstr "Nessun valore"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No video selected"
-msgstr ""
+msgstr "Nessun video selezionato"
 
 #: components/manage/Workflow/Workflow
 msgid "No workflow"
@@ -891,7 +912,7 @@ msgstr "Inserisci un URL valido eliminando il blocco e aggiungendo un nuovo bloc
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
-msgstr ""
+msgstr "Per favore inserisci il codice di incorporamento fornito da Google Maps -> Condividi -> Incorporare una mappa. Dovrebbe contenere un <iframe>."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
@@ -1147,6 +1168,10 @@ msgstr "Mappa del sito"
 msgid "Site Setup"
 msgstr "Configurazione del sito"
 
+#: components/theme/View/ImageView
+msgid "Size: {size}"
+msgstr "Dimensione: {size}"
+
 #: error
 msgid "Sorry, something went wrong with your request"
 msgstr "Spiacente, qualcosa è andato storto"
@@ -1225,6 +1250,10 @@ msgstr "Categorie da aggiungere"
 msgid "Tags to remove"
 msgstr "Categorie da rimuovere"
 
+#: components/manage/Blocks/Listing/TemplateWidget
+msgid "Template"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr "Testo"
@@ -1284,7 +1313,7 @@ msgstr "Tipo"
 
 #: components/manage/Blocks/Video/Edit
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
-msgstr ""
+msgstr "Digita l'URL di un Video (YouTube, Vimeo or mp4)"
 
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
@@ -1309,7 +1338,7 @@ msgstr "Carica"
 
 #: components/manage/Blocks/LeadImage/Edit
 msgid "Upload a lead image in the 'Lead Image' content field."
-msgstr ""
+msgstr "Carica un'Immagine di testata nel campo del contenuto."
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
@@ -1368,11 +1397,11 @@ msgstr "Panoramica delle versioni"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Video URL"
-msgstr ""
+msgstr "URL del video"
 
 #: components/manage/Contents/ContentsItem
 msgid "View"
@@ -1388,7 +1417,7 @@ msgstr "Mostra questa revisione"
 
 #: components/manage/Display/Display
 msgid "Viewmode"
-msgstr "Modalità visualizzazione"
+msgstr "Vista"
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
@@ -1420,7 +1449,7 @@ msgstr "Workflow aggiornato."
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
-msgstr ""
+msgstr "Stai usando un browser obsoleto"
 
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
@@ -1468,7 +1497,7 @@ msgstr "Elimina"
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
-msgstr ""
+msgstr "Stai usando {browsername} {browserversion} che è stato deprecato dal suo fornitore. Questo significa che non riceverà aggiornamenti di sicurezza e che non supporterà le attuali funzionalità del web moderno, danneggiando l'esperienza utente. Esegui l'upgrade a un browser moderno."
 
 #: config/Blocks
 msgid "description"
@@ -1488,7 +1517,7 @@ msgstr "Richiesta di conferma reimpostazione password spedita"
 
 #: config/Blocks
 msgid "hero"
-msgstr ""
+msgstr "Hero"
 
 #: config/Blocks
 msgid "html"
@@ -1503,12 +1532,20 @@ msgid "label_my_email_address_is"
 msgstr "Il mio indirizzo email è"
 
 #: config/Blocks
+msgid "leadimage"
+msgstr "Immagine di testata"
+
+#: config/Blocks
+msgid "listing"
+msgstr "Elenco"
+
+#: config/Blocks
 msgid "maps"
 msgstr "Mappa"
 
 #: config/Blocks
 msgid "media"
-msgstr ""
+msgstr "media"
 
 #: config/Blocks
 msgid "mostUsed"
