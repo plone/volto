@@ -10,6 +10,7 @@
 
 ### Changes
 
+- Fix the "jump" on the blocks editor on focusing blocks @sneridagh
 - Include link and size info to the full size image in `ImageView` view component @sneridagh
 - In the Display menu, only show views that are implemented @pnicolli
 - Hide Blocks fields in Layout fieldset in Add/Edit forms @pnicolli
