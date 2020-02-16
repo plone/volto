@@ -5,9 +5,9 @@ matrix:
     - name: 'Plone'
       python: 3.7
       env: TEST_SUITE=plone ZSERVER_PORT=55001
-    - name: 'Guillotina Tests'
-      python: 3.7
-      env: TEST_SUITE=guillotina
+    # - name: 'Guillotina Tests'
+    #   python: 3.7
+    #   env: TEST_SUITE=guillotina
     - name: 'Unit Tests'
       env: TEST_SUITE=unit
 cache:
