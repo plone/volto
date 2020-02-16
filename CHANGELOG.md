@@ -6,6 +6,7 @@
 
 - Chose template for listing block @giuliaghisini
 - Event type view @nileshgulia1 @pnicolli
+- Add permission check to edit form @sneridagh
 
 ### Changes
 

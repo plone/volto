@@ -14,13 +14,21 @@ import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import qs from 'query-string';
+import { find } from 'lodash';
 
-import { Form, Icon, Toolbar, Sidebar } from '../../../components';
-import { updateContent, getContent, getSchema } from '../../../actions';
-import { getBaseUrl, hasBlocksData } from '../../../helpers';
+import {
+  Forbidden,
+  Form,
+  Icon,
+  Toolbar,
+  Sidebar,
+  Unauthorized,
+} from '@plone/volto/components';
+import { updateContent, getContent, getSchema } from '@plone/volto/actions';
+import { getBaseUrl, hasBlocksData } from '@plone/volto/helpers';
 
-import saveSVG from '../../../icons/save.svg';
-import clearSVG from '../../../icons/clear.svg';
+import saveSVG from '@plone/volto/icons/save.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   edit: {
@@ -166,6 +174,16 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const editPermission = find(this.props.actions.object, { id: 'edit' });
+
+    if (!editPermission) {
+      if (this.props.token) {
+        return <Forbidden pathname={this.props.pathname} />;
+      } else {
+        return <Unauthorized pathname={this.props.pathname} />;
+      }
+    }
+
     return (
       <div id="page-edit">
         <Helmet
@@ -246,6 +264,8 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
+      actions: state.actions.actions,
+      token: state.userSession.token,
       content: state.content.data,
       schema: state.schema.schema,
       getRequest: state.content.get,
