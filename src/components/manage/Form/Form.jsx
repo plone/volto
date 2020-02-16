@@ -12,6 +12,7 @@ import {
   map,
   mapValues,
   omit,
+  pickBy,
   uniq,
   without,
 } from 'lodash';
@@ -34,6 +35,7 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers';
+import { difference } from '@plone/volto/helpers';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -103,6 +105,7 @@ class Form extends Component {
     onCancel: PropTypes.func,
     submitLabel: PropTypes.string,
     resetAfterSubmit: PropTypes.bool,
+    isEditForm: PropTypes.bool,
     title: PropTypes.string,
     error: PropTypes.shape({
       message: PropTypes.string,
@@ -125,6 +128,7 @@ class Form extends Component {
     onCancel: null,
     submitLabel: null,
     resetAfterSubmit: false,
+    isEditForm: false,
     title: null,
     description: null,
     error: null,
@@ -152,9 +156,12 @@ class Form extends Component {
     const blocksFieldname = getBlocksFieldname(formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
 
-    if (formData === null) {
-      // get defaults from schema
-      formData = mapValues(props.schema.properties, 'default');
+    if (!props.isEditForm) {
+      // It's a normal (add form), get defaults from schema
+      formData = {
+        ...mapValues(props.schema.properties, 'default'),
+        ...formData,
+      };
     }
     // defaults for block editor; should be moved to schema on server side
     // Adding fallback in case the fields are empty, so we are sure that the edit form
@@ -179,6 +186,7 @@ class Form extends Component {
     }
     this.state = {
       formData,
+      initialFormData: { ...formData },
       errors: {},
       selected:
         formData[blocksLayoutFieldname].items.length > 0
@@ -403,7 +411,13 @@ class Form extends Component {
         errors,
       });
     } else {
-      this.props.onSubmit(this.state.formData);
+      // Get only the values that have been modified (Edit forms), send all in case that
+      // it's an add form
+      if (this.props.isEditForm) {
+        this.props.onSubmit(this.getOnlyFormModifiedValues());
+      } else {
+        this.props.onSubmit(this.state.formData);
+      }
       if (this.props.resetAfterSubmit) {
         this.setState({
           formData: this.props.formData,
@@ -411,6 +425,24 @@ class Form extends Component {
       }
     }
   }
+
+  /**
+   * getOnlyFormModifiedValues handler
+   * It returns only the values of the fields that are have really changed since the
+   * form was loaded. Useful for edit forms and PATCH operations, when we only want to
+   * send the changed data.
+   * @method getOnlyFormModifiedValues
+   * @param {Object} event Event object.
+   * @returns {undefined}
+   */
+  getOnlyFormModifiedValues = () => {
+    const fieldsModified = Object.keys(
+      difference(this.state.formData, this.state.initialFormData),
+    );
+    return pickBy(this.state.formData, (value, key) =>
+      fieldsModified.includes(key),
+    );
+  };
 
   /**
    * Move block handler
