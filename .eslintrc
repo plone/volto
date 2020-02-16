@@ -18,6 +18,7 @@
   },
   "rules": {
     "import/no-unresolved": 1,
+    "no-console": 1,
     "prettier/prettier": [
       "error",
       { "trailingComma": "all", "singleQuote": true }
