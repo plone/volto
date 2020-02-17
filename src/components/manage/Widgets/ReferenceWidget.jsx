@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Form, Grid, Label, Dropdown } from 'semantic-ui-react';
+import { Form, Grid, Label, Dropdown, Popup, Icon } from 'semantic-ui-react';
 import { compact, concat, fromPairs, map, values, uniqBy } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { settings } from '~/config';
@@ -43,7 +43,7 @@ class ReferenceWidget extends Component {
     required: PropTypes.bool,
     multiple: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
-    value: PropTypes.oneOf([
+    value: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.object),
       PropTypes.object,
     ]),
@@ -71,7 +71,7 @@ class ReferenceWidget extends Component {
     error: [],
     search: [],
     value: null,
-    multiple: false,
+    multiple: true,
   };
 
   /**
@@ -83,6 +83,7 @@ class ReferenceWidget extends Component {
   constructor(props) {
     super(props);
     this.onSearchChange = this.onSearchChange.bind(this);
+
     this.state = {
       choices: props.value
         ? props.multiple
@@ -91,10 +92,10 @@ class ReferenceWidget extends Component {
                 value['@id'],
                 {
                   key: value['@id'],
-                  text: value.title,
+                  text: value['@id']?.replace(settings.apiPath, ''),
                   value: value['@id'],
                   label: {
-                    content: value['@id'].replace(settings.apiPath, ''),
+                    content: value.title,
                   },
                   data: value,
                 },
@@ -103,10 +104,10 @@ class ReferenceWidget extends Component {
           : {
               [props.value['@id']]: {
                 key: props.value['@id'],
-                text: props.value.title,
+                text: props.value?.replace(settings.apiPath, ''),
                 value: props.value['@id'],
                 label: {
-                  content: props.value['@id'].replace(settings.apiPath, ''),
+                  content: props.value.title,
                 },
                 data: props.value,
               },
@@ -152,10 +153,10 @@ class ReferenceWidget extends Component {
               value['@id'],
               {
                 key: value['@id'],
-                text: value.title,
+                text: value['@id']?.replace(settings.apiPath, ''),
                 value: value['@id'],
                 label: {
-                  content: value['@id'],
+                  content: value.title,
                 },
                 data: value,
               },
@@ -179,6 +180,7 @@ class ReferenceWidget extends Component {
    * @param {object} data Event data.
    * @returns {undefined}
    */
+
   onSearchChange(event, data) {
     if (data.searchQuery && data.searchQuery !== '') {
       this.props.searchContent('', {
@@ -188,6 +190,31 @@ class ReferenceWidget extends Component {
       this.props.resetSearchContent();
     }
   }
+  renderLabel = (item, index, defaultProps) => {
+    return (
+      <Popup
+        key={item.value}
+        content={
+          <>
+            <Icon name="home" /> {item.value}
+          </>
+        }
+        trigger={
+          defaultProps && (
+            <Label active={defaultProps.active}>
+              {item.label.content}
+              <Icon
+                name="delete"
+                onClick={event => {
+                  defaultProps.onRemove(event, defaultProps);
+                }}
+              />
+            </Label>
+          )
+        }
+      />
+    );
+  };
 
   /**
    * Render method.
@@ -206,6 +233,7 @@ class ReferenceWidget extends Component {
       onChange,
       fieldSet,
     } = this.props;
+
     return (
       <Form.Field
         inline
@@ -231,26 +259,30 @@ class ReferenceWidget extends Component {
                 noResultsMessage={this.props.intl.formatMessage(
                   messages.no_results_found,
                 )}
+                multiple={multiple}
                 value={
                   multiple
                     ? value
                       ? map(value, item =>
-                          item['@id'].replace(settings.apiPath, ''),
+                          item && item['@id']
+                            ? item['@id'].replace(settings.apiPath, '')
+                            : item,
                         )
                       : []
                     : value
-                    ? value['@id'].replace(settings.apiPath, '')
+                    ? value['@id']?.replace(settings.apiPath, '')
                     : ''
                 }
-                onChange={(event, data) =>
-                  onChange(
+                onChange={(event, data) => {
+                  return onChange(
                     id,
                     multiple
                       ? map(data.value, item => this.state.choices[item].data)
                       : this.state.choices[data.value].data,
-                  )
-                }
+                  );
+                }}
                 onSearchChange={this.onSearchChange}
+                renderLabel={this.renderLabel}
               />
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
