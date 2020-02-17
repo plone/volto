@@ -6,6 +6,7 @@
 
 - Chose template for listing block @giuliaghisini
 - Event type view @nileshgulia1 @pnicolli
+- Reference widget: show item title and path in search and hover itmes selected @giuliaghisini
 
 ### Changes
 
