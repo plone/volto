@@ -72,7 +72,9 @@ class DatetimeWidget extends Component {
   constructor(props) {
     super(props);
 
-    let datetime = this.props.value ? moment(this.props.value) : moment();
+    let datetime = this.props.value
+      ? moment(this.props.value).utc()
+      : moment().utc();
     if (!this.props.value && this.props.dateOnly) {
       datetime.set(defaultTimeDateOnly);
     }

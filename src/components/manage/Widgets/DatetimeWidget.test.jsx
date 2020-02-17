@@ -4,6 +4,7 @@ import DatetimeWidget from './DatetimeWidget';
 import moment from 'moment';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import TimePicker from 'rc-time-picker';
 
 const mockStore = configureStore();
 
@@ -26,4 +27,31 @@ test('renders a datetime widget component', () => {
   );
   const json = component.toJSON();
   expect(json).toMatchSnapshot();
+});
+
+test('datetime widget converts UTC date and adapt to local datetime', () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+  const component = renderer.create(
+    <Provider store={store}>
+      <DatetimeWidget
+        id="my-field"
+        title="My field"
+        onChange={() => {}}
+        value={'2020-02-10T15:01:00.000Z'}
+      />
+    </Provider>,
+  );
+  const componentInstance = component.root;
+  const componentTimeInput = componentInstance.findByType(TimePicker);
+
+  expect(componentTimeInput.props.defaultValue.toISOString()).toBe(
+    moment('2020-02-10T15:01:00')
+      .utc()
+      .toISOString(),
+  );
 });
