@@ -103,7 +103,7 @@ class Add extends Component {
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
-    if (blocks.initialBlocks[props.type]) {
+    if (blocks?.initialBlocks[props.type]) {
       this.initialBlocksLayout = blocks.initialBlocks[props.type].map(item =>
         uuid(),
       );

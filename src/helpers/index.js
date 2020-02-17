@@ -23,7 +23,6 @@ export { generateSitemap } from '@plone/volto/helpers/Sitemap/Sitemap';
 export {
   nestContent,
   getLayoutFieldname,
-  difference,
 } from '@plone/volto/helpers/Content/Content';
 export {
   getBlocksFieldname,
@@ -41,3 +40,4 @@ export {
 export AlignBlock from '@plone/volto/helpers/AlignBlock/AlignBlock';
 
 export Helmet from './Helmet/Helmet';
+export { difference } from '@plone/volto/helpers/Utils/Utils';

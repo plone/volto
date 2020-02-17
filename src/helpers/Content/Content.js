@@ -3,18 +3,7 @@
  * @module helpers/Content
  */
 
-import {
-  omitBy,
-  mapKeys,
-  pickBy,
-  map,
-  keys,
-  endsWith,
-  find,
-  transform,
-  isEqual,
-  isObject,
-} from 'lodash';
+import { omitBy, mapKeys, pickBy, map, keys, endsWith, find } from 'lodash';
 
 /**
  * Nest content.
@@ -54,21 +43,4 @@ export function nestContent(props) {
  */
 export function getLayoutFieldname(props) {
   return find(keys(props), key => endsWith(key, 'content_layout')) || 'layout';
-}
-
-/**
- * Deep diff between two object, using lodash
- * @param  {Object} object Object compared
- * @param  {Object} base   Object to compare with
- * @return {Object}        Return a new object who represent the diff
- */
-export function difference(object, base) {
-  return transform(object, (result, value, key) => {
-    if (!isEqual(value, base[key])) {
-      result[key] =
-        isObject(value) && isObject(base[key])
-          ? difference(value, base[key])
-          : value;
-    }
-  });
 }
