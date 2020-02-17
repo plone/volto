@@ -193,21 +193,24 @@ class ReferenceWidget extends Component {
   renderLabel = (item, index, defaultProps) => {
     return (
       <Popup
+        key={item.value}
         content={
           <>
             <Icon name="home" /> {item.value}
           </>
         }
         trigger={
-          <Label active={defaultProps && defaultProps.active}>
-            {item.label.content}
-            <Icon
-              name="delete"
-              onClick={event => {
-                defaultProps && defaultProps.onRemove(event, defaultProps);
-              }}
-            />
-          </Label>
+          defaultProps && (
+            <Label active={defaultProps.active}>
+              {item.label.content}
+              <Icon
+                name="delete"
+                onClick={event => {
+                  defaultProps.onRemove(event, defaultProps);
+                }}
+              />
+            </Label>
+          )
         }
       />
     );
