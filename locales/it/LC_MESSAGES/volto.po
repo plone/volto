@@ -138,6 +138,10 @@ msgstr "Base"
 msgid "Block"
 msgstr "Blocco"
 
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Block style"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr "E-mail e passowrd distinguono entrambi le maiuscole dalle minuscole, verifica di non avere il Blocco maiuscole attivato."
@@ -260,6 +264,10 @@ msgstr "Form di contatto"
 #: components/manage/Blocks/Listing/Edit
 msgid "Contained items"
 msgstr "Elementi contenuti"
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Content"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
@@ -689,8 +697,17 @@ msgstr "Immagine di testata"
 msgid "Left"
 msgstr "Sinistra"
 
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Link more"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingMore
+msgid "Link title"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Listing/ListingMore
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
@@ -1232,6 +1249,10 @@ msgstr "Categorie da aggiungere"
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags to remove"
 msgstr "Categorie da rimuovere"
+
+#: components/manage/Blocks/Listing/TemplateWidget
+msgid "Template"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"

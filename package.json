@@ -165,9 +165,9 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "post-checkout": "if [[ $HUSKY_GIT_PARAMS =~ 1$ ]]; then yarn install --frozen-lockfile; fi",
-      "post-merge": "yarn install --frozen-lockfile",
-      "post-rebase": "yarn install"
+      "post-checkout": "yarnhook",
+      "post-merge": "yarnhook",
+      "post-rebase": "yarnhook"
     }
   },
   "lint-staged": {
@@ -337,7 +337,8 @@
     "svgo-loader": "2.2.1",
     "tlds": "1.203.1",
     "webpack": "4.41.2",
-    "xmlrpc": "1.3.2"
+    "xmlrpc": "1.3.2",
+    "yarnhook": "0.4.3"
   },
   "devDependencies": {},
   "resolutions": {

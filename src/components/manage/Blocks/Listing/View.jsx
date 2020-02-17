@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import { ListingBlockBody as ListingBody } from '@plone/volto/components';
 
 const View = ({ data, properties, block, path }) => {
   return (
-    <div className="block listing">
+    <div className={cx('block listing', data.template)}>
       <ListingBody
         data={data}
         properties={properties}
