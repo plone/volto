@@ -7,6 +7,7 @@
 - Chose template for listing block @giuliaghisini
 - Event type view @nileshgulia1 @pnicolli
 - Add permission check to edit form @sneridagh
+- Add ability to define the starting blocks per content type @sneridagh
 - Reference widget: show item title and path in search and hover itmes selected @giuliaghisini
 
 ### Changes
@@ -20,6 +21,7 @@
 - Fix select widget for array inline choices fields and `z-index` problem @sneridagh
 - Improve UX of the edit block Image component @sneridagh
 - Fix on creating a new block, it should show the sidebar block properties (#1167) @sneridagh
+- Send only the changed fields on PATCH (edit content) operations @sneridagh
 
 ### Internal
 
