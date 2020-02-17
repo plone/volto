@@ -178,6 +178,7 @@ class Edit extends Component {
           }
         />
         <Form
+          isEditForm
           ref={this.form}
           schema={this.props.schema}
           formData={this.props.content}
