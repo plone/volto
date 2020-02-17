@@ -157,6 +157,10 @@ msgstr "Basis"
 msgid "Block"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Block style"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr ""
@@ -237,6 +241,10 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
+#: components/theme/View/ImageView
+msgid "Click to download full sized image"
+msgstr ""
+
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr ""
@@ -274,6 +282,10 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/Edit
 msgid "Contained items"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Content"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -704,8 +716,17 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Link more"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingMore
+msgid "Link title"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Listing/ListingMore
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
@@ -1166,6 +1187,10 @@ msgstr "Sitemap"
 msgid "Site Setup"
 msgstr "<<<<<<< HEAD"
 
+#: components/theme/View/ImageView
+msgid "Size: {size}"
+msgstr ""
+
 #: error
 msgid "Sorry, something went wrong with your request"
 msgstr ""
@@ -1243,6 +1268,10 @@ msgstr "Toe te voegen tags"
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags to remove"
 msgstr "Te verwijderen tags"
+
+#: components/manage/Blocks/Listing/TemplateWidget
+msgid "Template"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
@@ -1519,6 +1548,14 @@ msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
+msgstr ""
+
+#: config/Blocks
+msgid "leadimage"
+msgstr ""
+
+#: config/Blocks
+msgid "listing"
 msgstr ""
 
 #: config/Blocks

@@ -20,18 +20,18 @@ import Types from './Types';
 import PersonalInformation from '../Preferences/PersonalInformation';
 import PersonalPreferences from '../Preferences/PersonalPreferences';
 import StandardWrapper from './StandardWrapper';
-import { getTypes, listActions } from '../../../actions';
-import { Icon } from '../../../components';
-import { BodyClass, getBaseUrl } from '../../../helpers';
+import { getTypes, listActions } from '@plone/volto/actions';
+import { Icon } from '@plone/volto/components';
+import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
 
 import pastanagaSmall from './pastanaga-small.svg';
 import pastanagalogo from './pastanaga.svg';
-import penSVG from '../../../icons/pen.svg';
-import folderSVG from '../../../icons/folder.svg';
-import addSVG from '../../../icons/add-document.svg';
-import moreSVG from '../../../icons/more.svg';
-import userSVG from '../../../icons/user.svg';
-import clearSVG from '../../../icons/clear.svg';
+import penSVG from '@plone/volto/icons/pen.svg';
+import folderSVG from '@plone/volto/icons/folder.svg';
+import addSVG from '@plone/volto/icons/add-document.svg';
+import moreSVG from '@plone/volto/icons/more.svg';
+import userSVG from '@plone/volto/icons/user.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   edit: {
