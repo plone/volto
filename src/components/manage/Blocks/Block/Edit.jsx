@@ -138,6 +138,7 @@ class Edit extends Component {
       blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
     if (
       !blockHasOwnFocusManagement &&
+      nextProps.selected &&
       selected !== nextProps.selected &&
       this.blockNode.current
     ) {

@@ -86,3 +86,19 @@ const groupBlocksOrder = [
 ```
 
 You can change it (and add your own group) in your project configuration object.
+
+### initialBlocks - Initial Blocks per content type
+
+By default, the default blocks for all content types are a title block and a text block. You can override this and provide your own by modifying the configuration object:
+
+```js
+const initialBlocks = {};
+```
+
+and provide your own per content type, e.g:
+
+```js
+const initialBlocks = {
+    Document: ['leadimage', 'title', 'text', 'listing' ]
+};
+```

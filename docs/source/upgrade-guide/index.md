@@ -21,6 +21,22 @@ First, update your `package.json` to Volto 4.x.x.
   }
 ```
 
+### New initial blocks per content type setting in Alpha 37
+
+Not breaking change, but now there's a new setting in Blocks, `initialBlocks` where you can define a the initial blocks for all content types. You can override the default ('title' and a 'text' block) and provide your own by modifying the configuration object:
+
+```js
+const initialBlocks = {
+    Document: ['leadimage', 'title', 'text', 'listing' ]
+};
+```
+
+provide an empty object if you don't want to define any additional initial blocks and keep the default.
+
+```js
+const initialBlocks = {};
+```
+
 ### ImageSidebar moved to Image Block directory in Alpha 29
 
 For better resource grouping, the `ImageSidebar` component has been moved to the `Image` block component directory: `components/manage/Blocks/Image`

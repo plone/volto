@@ -4,11 +4,20 @@
 
 ### Added
 
+### Changes
+
+## 4.0.0-alpha.37 (2020-02-18)
+
+### Added
+
 - Chose template for listing block @giuliaghisini
 - Event type view @nileshgulia1 @pnicolli
+- Add ability to define the starting blocks per content type @sneridagh
+- Reference widget: show item title and path in search and hover itmes selected @giuliaghisini
 
 ### Changes
 
+- Fix the "jump" on the blocks editor on focusing blocks @sneridagh
 - Include link and size info to the full size image in `ImageView` view component @sneridagh
 - In the Display menu, only show views that are implemented @pnicolli
 - Hide Blocks fields in Layout fieldset in Add/Edit forms @pnicolli
@@ -17,6 +26,8 @@
 - Fix select widget for array inline choices fields and `z-index` problem @sneridagh
 - Improve UX of the edit block Image component @sneridagh
 - Fix on creating a new block, it should show the sidebar block properties (#1167) @sneridagh
+- Send only the changed fields on PATCH (edit content) operations @sneridagh
+- Japanese translation @terapyon
 
 ### Internal
 
