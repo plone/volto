@@ -10,7 +10,7 @@ import {
   GET_CONTENT,
   ORDER_CONTENT,
   RESET_CONTENT,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 import { nestContent } from '../../helpers';
 
 /**
