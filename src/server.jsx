@@ -138,7 +138,11 @@ server
           }
         })
         .catch(error => {
-          const errorPage = <ErrorPage message={error.message} />;
+          const errorPage = (
+            <Provider store={store}>
+              <ErrorPage message={error.message} />
+            </Provider>
+          );
 
           if (process.env.SENTRY_DSN) {
             Raven.captureException(error.message, {

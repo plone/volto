@@ -21,6 +21,7 @@
 
 - Chose template for listing block @giuliaghisini
 - Event type view @nileshgulia1 @pnicolli
+- Add permission check to edit form @sneridagh
 - Add ability to define the starting blocks per content type @sneridagh
 - Reference widget: show item title and path in search and hover itmes selected @giuliaghisini
 

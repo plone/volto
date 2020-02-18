@@ -547,6 +547,10 @@ msgstr "フィルター..."
 msgid "Fixed width table cells"
 msgstr "テーブルのセル幅を固定"
 
+#: components/theme/Forbidden/Forbidden
+msgid "Forbidden"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "From"
 msgstr "メールアドレス"
@@ -621,6 +625,7 @@ msgid "If this date is in the future, the content will not show up in listings a
 msgstr "日時が未来なら、このコンテンツはこの日時までリストアップや検索対象になりません。"
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "確かに正しいURLを入力したのにエラーになってしまう場合は、 {site_admin} に連絡してください。"
 
@@ -1163,6 +1168,7 @@ msgid "Site"
 msgstr "サイト"
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 msgid "Site Administration"
 msgstr "サイト管理"
 
@@ -1266,6 +1272,7 @@ msgid "Text"
 msgstr "テキスト"
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "ありがとうございます。"
 
@@ -1329,6 +1336,10 @@ msgstr "テキストを入力…"
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr "タイトルを入力…"
+
+#: components/theme/Unauthorized/Unauthorized
+msgid "Unauthorized"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Unified"
@@ -1430,6 +1441,10 @@ msgstr "表示モード"
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "不便をかけて申し訳ありませんが、アクセスしようとしたページはこのアドレスではありません。"
 
+#: components/theme/Forbidden/Forbidden
+msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
 msgstr "あなたのパスワードを回復する必要がある場合、このアドレスが使われます。"
@@ -1453,6 +1468,10 @@ msgstr "誰が"
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "ワークフローがアップデートされました"
+
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource, please {login} first."
+msgstr ""
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
@@ -1545,6 +1564,10 @@ msgstr "リード画像"
 #: config/Blocks
 msgid "listing"
 msgstr "リスティング"
+
+#: components/theme/Unauthorized/Unauthorized
+msgid "log in"
+msgstr ""
 
 #: config/Blocks
 msgid "maps"
