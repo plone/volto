@@ -83,6 +83,6 @@ if (Cypress.env('API') === 'plone') {
     //     'have.text',
     //     'My Page',
     //   );
-    });
+    // });
   });
 }
