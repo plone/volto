@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix and improve Error in SSR @sneridagh
+
 ## 4.0.0-alpha.37 (2020-02-18)
 
 ### Added
