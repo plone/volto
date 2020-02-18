@@ -3,7 +3,7 @@
  * @module actions/schema/schema
  */
 
-import { GET_SCHEMA } from '../../constants/ActionTypes';
+import { GET_SCHEMA } from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get schema function.

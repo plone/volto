@@ -12,7 +12,7 @@ import {
   UPDATE_PASSWORD,
   INITIAL_PASSWORD,
   RESET_PASSWORD,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Create user function.

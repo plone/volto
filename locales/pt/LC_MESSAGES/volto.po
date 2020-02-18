@@ -548,6 +548,10 @@ msgstr "Filtro..."
 msgid "Fixed width table cells"
 msgstr "Células de tabela de tamanho fixo."
 
+#: components/theme/Forbidden/Forbidden
+msgid "Forbidden"
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "From"
 msgstr "De"
@@ -622,6 +626,7 @@ msgid "If this date is in the future, the content will not show up in listings a
 msgstr "Se esta data estiver no futuro, o conteúdo não irá aparecer em listas nem em pesquisas até esta data."
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Se tiver a certeza que tem o endereço web correcto mas está a obter um erro, por favor contacte o {site_admin}."
 
@@ -1164,6 +1169,7 @@ msgid "Site"
 msgstr "Sítio"
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 msgid "Site Administration"
 msgstr "Administração do Sítio"
 
@@ -1267,6 +1273,7 @@ msgid "Text"
 msgstr "Texto"
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "Obrigado."
 
@@ -1330,6 +1337,10 @@ msgstr "Escreva texto..."
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr "Escreva o título..."
+
+#: components/theme/Unauthorized/Unauthorized
+msgid "Unauthorized"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Unified"
@@ -1431,6 +1442,10 @@ msgstr "Modo de visualização"
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Pedimos desculpa pela inconveniência, mas a página a que está a tentar aceder não está neste endereço. Pode usar as ligações abaixo para ajudar a encontrar o que procura."
 
+#: components/theme/Forbidden/Forbidden
+msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
 msgstr "Iremos usar este endereço se precisar de recuperar a sua senha"
@@ -1454,6 +1469,10 @@ msgstr "Quem"
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Fluxo de trabalho actualizado."
+
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource, please {login} first."
+msgstr ""
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
@@ -1545,6 +1564,10 @@ msgstr ""
 
 #: config/Blocks
 msgid "listing"
+msgstr ""
+
+#: components/theme/Unauthorized/Unauthorized
+msgid "log in"
 msgstr ""
 
 #: config/Blocks

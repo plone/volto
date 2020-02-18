@@ -14,7 +14,11 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
-import { Field, ModalForm, SchemaWidgetFieldset } from '../../../components';
+import {
+  Field,
+  ModalForm,
+  SchemaWidgetFieldset,
+} from '@plone/volto/components';
 
 const messages = defineMessages({
   add: {

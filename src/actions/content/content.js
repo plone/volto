@@ -10,8 +10,8 @@ import {
   GET_CONTENT,
   ORDER_CONTENT,
   RESET_CONTENT,
-} from '../../constants/ActionTypes';
-import { nestContent } from '../../helpers';
+} from '@plone/volto/constants/ActionTypes';
+import { nestContent } from '@plone/volto/helpers';
 
 /**
  * Create content function.
