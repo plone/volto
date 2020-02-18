@@ -35,7 +35,14 @@ class LinkButton extends Component {
     e.stopPropagation();
     const { ownTheme, placeholder, onOverrideContent } = this.props;
     const content = props => (
-      <AddLinkForm {...props} placeholder={placeholder} theme={ownTheme} />
+      <AddLinkForm
+        {...props}
+        placeholder={placeholder}
+        theme={ownTheme}
+        block="draft-js"
+        data={{ url: '' }}
+        onChangeBlock={() => {}}
+      />
     );
     onOverrideContent(content);
   };

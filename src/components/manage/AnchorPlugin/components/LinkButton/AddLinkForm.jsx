@@ -9,18 +9,25 @@ import { compose } from 'redux';
 import unionClassNames from 'union-class-names';
 import EditorUtils from 'draft-js-plugins-utils';
 import { connect } from 'react-redux';
-import { map } from 'lodash';
+
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
+import { Input, Form } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { resetSearchContent, searchContent } from '@plone/volto/actions';
-import { addAppURL } from '@plone/volto/helpers';
+
 import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
+
+import clearSVG from '@plone/volto/icons/clear.svg';
+import navTreeSVG from '@plone/volto/icons/nav.svg';
+
+import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+import { Icon } from '@plone/volto/components';
 
 const messages = defineMessages({
   placeholder: {
-    id: 'Enter URL or title',
-    defaultMessage: 'Enter URL or title',
+    id: 'Enter URL or select an item',
+    defaultMessage: 'Enter URL or select an item',
   },
 });
 
@@ -37,6 +44,7 @@ class AddLinkForm extends Component {
     theme: PropTypes.objectOf(PropTypes.any).isRequired,
     resetSearchContent: PropTypes.func.isRequired,
     searchContent: PropTypes.func.isRequired,
+    openObjectBrowser: PropTypes.func.isRequired,
     search: PropTypes.arrayOf(
       PropTypes.shape({
         '@id': PropTypes.string,
@@ -48,7 +56,7 @@ class AddLinkForm extends Component {
   };
 
   static defaultProps = {
-    placeholder: 'Enter URL or search for content',
+    placeholder: 'Enter URL or select an item',
     search: [],
   };
 
@@ -91,6 +99,8 @@ class AddLinkForm extends Component {
       doesNodeContainClick(this.linkFormContainer.current, e)
     )
       return;
+    if (this.linkFormContainer.current && this.props.isObjectBrowserOpen)
+      return;
     this.onClose();
   };
 
@@ -112,41 +122,13 @@ class AddLinkForm extends Component {
    * @param {Object} value Value
    * @returns {undefined}
    */
-  onChange({ target: { value } }) {
+  onChange(value) {
     const nextState = { value };
     if (this.state.isInvalid && URLUtils.isUrl(URLUtils.normalizeUrl(value))) {
       nextState.isInvalid = false;
     }
     this.setState(nextState);
-    if (value && value !== '') {
-      this.props.searchContent('', {
-        Title: `*${value}*`,
-      });
-    } else {
-      this.props.resetSearchContent();
-    }
   }
-
-  /**
-   * Select item handler
-   * @method onSelectItem
-   * @param {string} e event
-   * @param {string} url Url
-   * @returns {undefined}
-   */
-  onSelectItem = (e, url) => {
-    e.preventDefault();
-    this.setState({
-      value: url,
-      isInvalid: false,
-    });
-    this.props.resetSearchContent();
-    this.props.setEditorState(
-      EditorUtils.createLinkAtSelection(this.props.getEditorState(), url),
-    );
-    this.input.blur();
-    this.onClose();
-  };
 
   /**
    * Close handler
@@ -179,9 +161,11 @@ class AddLinkForm extends Component {
   onSubmit() {
     const { getEditorState, setEditorState } = this.props;
     let { value: url } = this.state;
+
     if (!URLUtils.isMail(URLUtils.normaliseMail(url))) {
       url = URLUtils.normalizeUrl(url);
-      if (!URLUtils.isUrl(url)) {
+
+      if (!URLUtils.isUrl(url) && !url.startsWith('/')) {
         this.setState({ isInvalid: true });
         return;
       }
@@ -189,7 +173,6 @@ class AddLinkForm extends Component {
       url = URLUtils.normaliseMail(url);
     }
     setEditorState(EditorUtils.createLinkAtSelection(getEditorState(), url));
-    this.input.blur();
     this.onClose();
   }
 
@@ -222,30 +205,43 @@ class AddLinkForm extends Component {
               <path d="M25.0107,16.5254 C24.2147,15.7294 23.2217,15.1324 22.1387,14.7984 C19.6417,14.0284 16.9477,14.6894 15.1107,16.5254 L14.0507,17.5864 L15.4647,19.0004 L16.5247,17.9394 C17.8357,16.6294 19.7587,16.1554 21.5497,16.7094 C22.3337,16.9514 23.0217,17.3644 23.5957,17.9394 C23.7777,18.1214 23.9527,18.3314 24.1307,18.5824 C24.8217,19.5564 25.1417,20.7514 25.0317,21.9444 C24.9237,23.1034 24.4137,24.1924 23.5957,25.0104 L19.3537,29.2534 C17.4047,31.2024 14.2317,31.2024 12.2817,29.2534 C11.3427,28.3134 10.8247,27.0574 10.8247,25.7174 C10.8247,24.3774 11.3427,23.1214 12.2817,22.1824 L10.8677,20.7684 C9.5507,22.0854 8.8247,23.8424 8.8247,25.7174 C8.8247,27.5924 9.5507,29.3504 10.8677,30.6674 C12.2327,32.0314 14.0257,32.7134 15.8177,32.7134 C17.6107,32.7134 19.4027,32.0314 20.7677,30.6674 L25.0107,26.4244 C26.1567,25.2774 26.8717,23.7524 27.0227,22.1294 C27.1777,20.4594 26.7297,18.7894 25.7617,17.4244 C25.5177,17.0814 25.2717,16.7874 25.0107,16.5254" />
             </g>
           </svg>
-          <input
-            className={className}
-            onChange={this.onChange}
-            onKeyDown={this.onKeyDown}
-            ref={this.onRef}
-            type="text"
-            value={value}
-            placeholder={this.props.intl.formatMessage(messages.placeholder)}
-          />
-        </div>
-        <ul style={{ margin: 0, paddingLeft: '35px' }}>
-          {map(this.props.search, item => (
-            <li style={{ padding: '5px' }} key={item['@id']}>
+          <Form.Field inline>
+            <div className="wrapper">
+              <Input
+                id={`field-link`}
+                name="link"
+                value={value || ''}
+                icon={value ? clearSVG : navTreeSVG}
+                onChange={({ target }) =>
+                  this.onChange(target.value === '' ? undefined : target.value)
+                }
+                placeholder={this.props.intl.formatMessage(
+                  messages.placeholder,
+                )}
+                onKeyDown={this.onKeyDown}
+                ref={this.onRef}
+              />
               <button
-                style={{ cursor: 'pointer' }}
-                onClick={e => this.onSelectItem(e, addAppURL(item['@id']))}
-                title={item['@id']}
-                role="link"
+                onClick={
+                  value
+                    ? () => {
+                        this.onChange('');
+                      }
+                    : () =>
+                        this.props.openObjectBrowser({
+                          mode: 'link',
+                          onSelectItem: url => {
+                            this.onChange(url);
+                            this.onSubmit();
+                          },
+                        })
+                }
               >
-                {item.title}
+                <Icon name={value ? clearSVG : navTreeSVG} size="18px" />
               </button>
-            </li>
-          ))}
-        </ul>
+            </div>
+          </Form.Field>
+        </div>
       </div>
     );
   }
@@ -253,6 +249,7 @@ class AddLinkForm extends Component {
 
 export default compose(
   injectIntl,
+  withObjectBrowser,
   connect(
     state => ({
       search: state.search.items,
