@@ -6,6 +6,10 @@
 
 ### Changes
 
+### Internal
+
+- Update to use ESLint 6 @timo
+
 ## 4.0.0-alpha.37 (2020-02-18)
 
 ### Added
