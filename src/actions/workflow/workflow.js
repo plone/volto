@@ -7,7 +7,7 @@ import {
   GET_WORKFLOW,
   GET_WORKFLOW_MULTIPLE,
   TRANSITION_WORKFLOW,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 import { settings } from '~/config';
 

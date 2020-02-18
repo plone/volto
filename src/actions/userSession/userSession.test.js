@@ -1,5 +1,5 @@
 import { login, loginRenew, logout } from './userSession';
-import { LOGIN, LOGIN_RENEW, LOGOUT } from '../../constants/ActionTypes';
+import { LOGIN, LOGIN_RENEW, LOGOUT } from '@plone/volto/constants/ActionTypes';
 
 describe('User session action', () => {
   describe('login', () => {

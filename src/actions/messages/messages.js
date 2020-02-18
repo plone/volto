@@ -8,7 +8,7 @@ import {
   ADD_MESSAGE,
   REMOVE_MESSAGE,
   PURGE_MESSAGES,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Add message function

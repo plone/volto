@@ -3,7 +3,10 @@
  * @module actions/sharing/sharing
  */
 
-import { UPDATE_SHARING, GET_SHARING } from '../../constants/ActionTypes';
+import {
+  UPDATE_SHARING,
+  GET_SHARING,
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Update sharing function.
