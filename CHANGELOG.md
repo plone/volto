@@ -21,6 +21,7 @@
 - Improve UX of the edit block Image component @sneridagh
 - Fix on creating a new block, it should show the sidebar block properties (#1167) @sneridagh
 - Send only the changed fields on PATCH (edit content) operations @sneridagh
+- Japanese translation @terapyon
 
 ### Internal
 
