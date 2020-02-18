@@ -1130,3 +1130,9 @@
 - Basic components (navigation, toolbar, breadcrumbs etc) @robgietema
 - Authentication including login / logout @robgietema
 - Setup build environment @robgietema
+
+## 4.0.0-alpha.36 (2020-02-03)
+
+### Added
+
+- Scrolling Functionality if there are many columns in table @sumukhah
