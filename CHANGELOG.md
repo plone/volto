@@ -69,7 +69,6 @@
 - Adding fallback in the edit form, in case the blocks related fields are empty, so we are sure that the edit form shows at least the default blocks @sneridagh
 - Fix shift return in tables @robgietema
 
-
 ## 4.0.0-alpha.35 (2020-01-31)
 
 ### Changes
