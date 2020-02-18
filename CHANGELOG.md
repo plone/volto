@@ -6,6 +6,10 @@
 
 ### Changes
 
+### Internal
+
+- Replace all relative paths to `@plone/volto` absolute paths to ensure you can override all the resources via component shadowing @sneridagh
+
 ## 4.0.0-alpha.37 (2020-02-18)
 
 ### Added
