@@ -45,9 +45,9 @@ import {
   moveContent,
   orderContent,
   sortContent,
-} from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
-import Indexes from '../../../constants/Indexes';
+} from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
+import Indexes from '@plone/volto/constants/Indexes';
 import {
   ContentsIndexHeader,
   ContentsItem,
@@ -60,10 +60,10 @@ import {
   Toolbar,
   Toast,
   Icon as IconNext,
-} from '../../../components';
+} from '@plone/volto/components';
 import { toast } from 'react-toastify';
 
-import backSVG from '../../../icons/back.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
 const messages = defineMessages({

@@ -17,18 +17,18 @@ import {
 } from 'semantic-ui-react';
 import { filter, remove, toPairs, groupBy, isEmpty, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import { getQuerystring } from '../../../actions';
+import { getQuerystring } from '@plone/volto/actions';
 import Select from 'react-select';
 import { Icon } from '@plone/volto/components';
 
-import clearSVG from '../../../icons/clear.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 import {
   Option,
   DropdownIndicator,
   selectTheme,
   customSelectStyles,
-} from './SelectStyling';
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 const messages = defineMessages({
   default: {

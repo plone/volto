@@ -12,8 +12,8 @@ import { Helmet } from '@plone/volto/helpers';
 import { Container } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { Form } from '../../../components';
-import { setInitialPassword } from '../../../actions';
+import { Form } from '@plone/volto/components';
+import { setInitialPassword } from '@plone/volto/actions';
 
 const messages = defineMessages({
   title: {
