@@ -14,7 +14,7 @@ import {
   GET_CONTENT,
   ORDER_CONTENT,
   RESET_CONTENT,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Content action', () => {
   describe('createContent', () => {

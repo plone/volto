@@ -3,7 +3,10 @@
  * @module actions/history/history
  */
 
-import { GET_HISTORY, REVERT_HISTORY } from '../../constants/ActionTypes';
+import {
+  GET_HISTORY,
+  REVERT_HISTORY,
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get history function.

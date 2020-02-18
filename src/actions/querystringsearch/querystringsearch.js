@@ -1,4 +1,4 @@
-import { GET_QUERYSTRING_RESULTS } from '../../constants/ActionTypes';
+import { GET_QUERYSTRING_RESULTS } from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get querystring results.

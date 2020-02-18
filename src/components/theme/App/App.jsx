@@ -17,7 +17,7 @@ import join from 'lodash/join';
 import trim from 'lodash/trim';
 import cx from 'classnames';
 
-import Error from '../../../error';
+import Error from '@plone/volto/error';
 
 import {
   Breadcrumbs,
@@ -25,17 +25,17 @@ import {
   Header,
   Icon,
   OutdatedBrowser,
-} from '../../../components';
-import { BodyClass, getBaseUrl, getView } from '../../../helpers';
+} from '@plone/volto/components';
+import { BodyClass, getBaseUrl, getView } from '@plone/volto/helpers';
 import {
   getBreadcrumbs,
   getContent,
   getNavigation,
   getTypes,
   getWorkflow,
-} from '../../../actions';
+} from '@plone/volto/actions';
 
-import clearSVG from '../../../icons/clear.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 /**
  * @export

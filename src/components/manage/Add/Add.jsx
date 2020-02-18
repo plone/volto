@@ -18,19 +18,19 @@ import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { settings } from '~/config';
 
-import { createContent, getSchema } from '../../../actions';
-import { Form, Icon, Toolbar, Sidebar } from '../../../components';
+import { createContent, getSchema } from '@plone/volto/actions';
+import { Form, Icon, Toolbar, Sidebar } from '@plone/volto/components';
 import {
   getBaseUrl,
   hasBlocksData,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '../../../helpers';
+} from '@plone/volto/helpers';
 
 import { blocks } from '~/config';
 
-import saveSVG from '../../../icons/save.svg';
-import clearSVG from '../../../icons/clear.svg';
+import saveSVG from '@plone/volto/icons/save.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   add: {

@@ -7,6 +7,22 @@
 ### Changes
 
 - Fix Scrolling Functionality if there are many columns in table @sumukhah
+- Fix `RichText` Widget on normal forms @sneridagh
+
+## 4.0.0-alpha.39 (2020-02-18)
+
+### Added
+
+- Add permission check to edit form @sneridagh
+
+### Changes
+
+- Fix and improve Error in SSR @sneridagh
+- Fix `LinkAnchorPlugin` press Enter key inside blocks with draftJS widgets @sneridagh
+
+### Internal
+
+- Replace all relative paths to `@plone/volto` absolute paths to ensure you can override all the resources via component shadowing @sneridagh
 
 ## 4.0.0-alpha.38 (2020-02-18)
 
