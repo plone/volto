@@ -14,7 +14,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { Link, withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { Form, Toolbar, Toast } from '../../';
+import { Form, Toolbar, Toast } from '@plone/volto/components';
 import { emailNotification } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 

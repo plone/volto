@@ -25,7 +25,7 @@ import {
   DropdownIndicator,
   selectTheme,
   customSelectStyles,
-} from './SelectStyling';
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 const messages = defineMessages({
   no_value: {

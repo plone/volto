@@ -15,7 +15,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
 import { Form, Toast } from '@plone/volto/components';
-import languages from '../../../constants/Languages';
+import languages from '@plone/volto/constants/Languages';
 
 const messages = defineMessages({
   personalPreferences: {

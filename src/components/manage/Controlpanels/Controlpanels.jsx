@@ -14,7 +14,7 @@ import { Helmet } from '@plone/volto/helpers';
 import { Container, Grid, Header, Icon, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import Icons from '../../../constants/ControlpanelIcons';
+import Icons from '@plone/volto/constants/ControlpanelIcons';
 import { listControlpanels } from '@plone/volto/actions';
 import {
   Icon as IconNext,

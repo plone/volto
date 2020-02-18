@@ -15,7 +15,7 @@ import { createBrowserHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
 
 import { Api } from '@plone/volto/helpers';
-import configureStore from '../../../store';
+import configureStore from '@plone/volto/store';
 import { DefaultView } from '@plone/volto/components/';
 
 /**

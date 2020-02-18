@@ -11,7 +11,7 @@ import {
   ORDER_CONTENT,
   RESET_CONTENT,
 } from '@plone/volto/constants/ActionTypes';
-import { nestContent } from '../../helpers';
+import { nestContent } from '@plone/volto/helpers';
 
 /**
  * Create content function.

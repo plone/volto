@@ -47,7 +47,7 @@ import {
   sortContent,
 } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
-import Indexes from '../../../constants/Indexes';
+import Indexes from '@plone/volto/constants/Indexes';
 import {
   ContentsIndexHeader,
   ContentsItem,

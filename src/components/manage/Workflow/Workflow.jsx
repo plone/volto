@@ -11,7 +11,7 @@ import { uniqBy } from 'lodash';
 import Select, { components } from 'react-select';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import getWorkflowMapping from '../../../constants/Workflows';
+import getWorkflowMapping from '@plone/volto/constants/Workflows';
 import { Icon } from '@plone/volto/components';
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
