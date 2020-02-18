@@ -2,10 +2,6 @@
 
 ## 4.0.0 (unreleased)
 
-### Added
-
-### Changes
-
 ### Internal
 
 - Update to use ESLint 6 @timo
