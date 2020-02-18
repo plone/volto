@@ -7,6 +7,7 @@
 ### Changes
 
 - Fix `RichText` Widget on normal forms @sneridagh
+- Fix Guillotina tests @bloodbare
 
 ## 4.0.0-alpha.39 (2020-02-18)
 
