@@ -10,8 +10,8 @@ import { compose } from 'redux';
 import { concat, filter, last, map, uniqBy } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { getWorkflow, transitionWorkflow } from '../../../actions';
-import { ModalForm } from '../../../components';
+import { getWorkflow, transitionWorkflow } from '@plone/volto/actions';
+import { ModalForm } from '@plone/volto/components';
 
 const messages = defineMessages({
   default: {

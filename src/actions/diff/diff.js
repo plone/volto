@@ -3,7 +3,7 @@
  * @module actions/diff/diff
  */
 
-import { GET_DIFF } from '../../constants/ActionTypes';
+import { GET_DIFF } from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get diff.

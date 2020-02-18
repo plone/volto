@@ -3,7 +3,7 @@
  * @module actions/search/search
  */
 
-import { LOGIN, LOGIN_RENEW, LOGOUT } from '../../constants/ActionTypes';
+import { LOGIN, LOGIN_RENEW, LOGOUT } from '@plone/volto/constants/ActionTypes';
 
 /**
  * Login function.

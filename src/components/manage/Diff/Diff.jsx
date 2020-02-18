@@ -16,16 +16,16 @@ import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 
-import { getDiff, getSchema, getHistory } from '../../../actions';
+import { getDiff, getSchema, getHistory } from '@plone/volto/actions';
 import {
   getBaseUrl,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
-} from '../../../helpers';
-import { DiffField, Icon, Toolbar } from '../../../components';
+} from '@plone/volto/helpers';
+import { DiffField, Icon, Toolbar } from '@plone/volto/components';
 
-import backSVG from '../../../icons/back.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   diff: {

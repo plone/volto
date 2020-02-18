@@ -3,7 +3,7 @@
  * @module reducers/actions/actions
  */
 
-import { LIST_ACTIONS } from '../../constants/ActionTypes';
+import { LIST_ACTIONS } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   error: null,
