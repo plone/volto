@@ -7,6 +7,7 @@
 ### Changes
 
 - Fix `RichText` Widget on normal forms @sneridagh
+- Fixes for `lisiting view` e.g. floating and item intend @wkbkhard
 
 ## 4.0.0-alpha.39 (2020-02-18)
 
@@ -51,7 +52,6 @@
 - Fix on creating a new block, it should show the sidebar block properties (#1167) @sneridagh
 - Send only the changed fields on PATCH (edit content) operations @sneridagh
 - Japanese translation @terapyon
-- Fixes for `lisiting view` e.g. floating and item intend @wkbkhard
 
 ### Internal
 
