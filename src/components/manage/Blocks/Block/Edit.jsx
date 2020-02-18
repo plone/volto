@@ -138,13 +138,19 @@ class Edit extends Component {
       blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
     if (
       !blockHasOwnFocusManagement &&
+      nextProps.selected &&
       selected !== nextProps.selected &&
       this.blockNode.current
     ) {
       this.blockNode.current.focus();
     }
-    if (!this.props.selected && nextProps.selected) {
-      this.props.setSidebarTab(blocks.blocksConfig?.[type]?.sidebarTab || 0);
+    if (
+      (!this.props.selected && nextProps.selected) ||
+      type !== nextProps.type
+    ) {
+      this.props.setSidebarTab(
+        blocks.blocksConfig?.[nextProps.type]?.sidebarTab || 0,
+      );
     }
   }
 

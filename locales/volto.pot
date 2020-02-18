@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-01-25T17:41:47.816Z\n"
+"POT-Creation-Date: 2020-02-15T19:21:36.804Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -167,6 +167,11 @@ msgstr ""
 msgid "Block"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingSidebar
+# defaultMessage: Block style
+msgid "Block style"
+msgstr ""
+
 #: components/theme/Login/Login
 # defaultMessage: Both email address and password are case sensitive, check that caps lock is not enabled.
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -264,6 +269,11 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
+#: components/theme/View/ImageView
+# defaultMessage: Click to download full sized image
+msgid "Click to download full sized image"
+msgstr ""
+
 #: components/manage/Widgets/SelectWidget
 # defaultMessage: Close
 msgid "Close"
@@ -310,6 +320,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/Edit
 # defaultMessage: Contained items
 msgid "Contained items"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingSidebar
+# defaultMessage: Content
+msgid "Content"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -831,8 +846,19 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingSidebar
+# defaultMessage: Link more
+msgid "Link more"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingMore
+# defaultMessage: Link Title
+msgid "Link title"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Listing/ListingMore
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 # defaultMessage: Link to
@@ -1054,11 +1080,13 @@ msgid "Paste"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
+#: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Information
 msgid "Personal Information"
 msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
 # defaultMessage: Personal Preferences
 msgid "Personal Preferences"
 msgstr ""
@@ -1395,6 +1423,11 @@ msgstr ""
 msgid "Site Setup"
 msgstr ""
 
+#: components/theme/View/ImageView
+# defaultMessage: Size: {size}
+msgid "Size: {size}"
+msgstr ""
+
 #: error
 # defaultMessage: Sorry, something went wrong with your request 
 msgid "Sorry, something went wrong with your request"
@@ -1488,6 +1521,11 @@ msgstr ""
 #: components/manage/Contents/ContentsTagsModal
 # defaultMessage: Tags to remove
 msgid "Tags to remove"
+msgstr ""
+
+#: components/manage/Blocks/Listing/TemplateWidget
+# defaultMessage: Template
+msgid "Template"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -1726,6 +1764,11 @@ msgstr ""
 msgid "Workflow updated."
 msgstr ""
 
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+# defaultMessage: You are using an outdated browser
+msgid "You are using an outdated browser"
+msgstr ""
+
 #: components/theme/Comments/Comments
 # defaultMessage: You can add a comment by filling out the form below. Plain text formatting.
 msgid "You can add a comment by filling out the form below. Plain text formatting."
@@ -1781,6 +1824,11 @@ msgstr ""
 msgid "delete"
 msgstr ""
 
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+# defaultMessage: You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser.
+msgid "deprecated_browser_notice_message"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Description
 msgid "description"
@@ -1819,6 +1867,16 @@ msgstr ""
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email address is
 msgid "label_my_email_address_is"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Lead Image Field
+msgid "leadimage"
+msgstr ""
+
+#: config/Blocks
+# defaultMessage: Listing
+msgid "listing"
 msgstr ""
 
 #: config/Blocks

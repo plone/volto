@@ -106,3 +106,9 @@
 .users-control-panel .ui.clearing.segment.actions {
   text-transform: uppercase;
 }
+
+.ui.segment.imageborder {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}

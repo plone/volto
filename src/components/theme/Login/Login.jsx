@@ -320,7 +320,9 @@ export default compose(
       token: state.userSession.token,
       returnUrl:
         qs.parse(props.location.search).return_url ||
-        props.location.pathname.replace('/login', '') ||
+        props.location.pathname
+          .replace(/\/login$/, '')
+          .replace(/\/logout$/, '') ||
         '/',
     }),
     { login },

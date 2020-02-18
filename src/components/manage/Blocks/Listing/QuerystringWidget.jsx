@@ -71,7 +71,7 @@ export const customSelectStyles = {
     borderBottom: '1px solid #c7d5d8',
     boxShadow: 'none',
     borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
-    height: '60px',
+    minHeight: '60px',
   }),
   menu: (styles, state) => ({
     ...styles,
@@ -235,7 +235,7 @@ class QuerystringWidget extends Component {
         );
       case 'MultipleSelectionWidget':
         return (
-          <Form.Field style={{ flex: '1 0 auto' }}>
+          <Form.Field style={{ flex: '1 0 auto', maxWidth: '93%' }}>
             <Select
               {...props}
               className="react-select-container"
