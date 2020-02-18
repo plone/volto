@@ -9,13 +9,13 @@ import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import cx from 'classnames';
 import { FormattedMessage, injectIntl, defineMessages } from 'react-intl';
-import { Icon } from '../../../components';
-import { getUser } from '../../../actions';
-import logoutSVG from '../../../icons/log-out.svg';
-import rightArrowSVG from '../../../icons/right-key.svg';
+import { Icon } from '@plone/volto/components';
+import { getUser } from '@plone/volto/actions';
+import logoutSVG from '@plone/volto/icons/log-out.svg';
+import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 
-import backSVG from '../../../icons/back.svg';
-import cameraSVG from '../../../icons/camera.svg';
+import backSVG from '@plone/volto/icons/back.svg';
+import cameraSVG from '@plone/volto/icons/camera.svg';
 
 const messages = defineMessages({
   preferences: {
