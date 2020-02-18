@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix `LinkAnchorPlugin` press Enter key inside blocks with draftJS widgets @sneridagh
+
 ## 4.0.0-alpha.38 (2020-02-18)
 
 ### Internal
