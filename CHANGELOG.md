@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix Scrolling Functionality if there are many columns in table @sumukhah
+
 ## 4.0.0-alpha.38 (2020-02-18)
 
 ### Internal
@@ -51,9 +53,6 @@
 - Adding fallback in the edit form, in case the blocks related fields are empty, so we are sure that the edit form shows at least the default blocks @sneridagh
 - Fix shift return in tables @robgietema
 
-### Changes
-
-- Fix Scrolling Functionality if there are many columns in table @sumukhah
 
 ## 4.0.0-alpha.35 (2020-01-31)
 
