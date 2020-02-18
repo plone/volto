@@ -8,6 +8,7 @@
 
 ### Changes
 
+- Fix and improve Error in SSR @sneridagh
 - Fix `LinkAnchorPlugin` press Enter key inside blocks with draftJS widgets @sneridagh
 
 ### Internal

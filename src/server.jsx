@@ -140,7 +140,9 @@ server
         .catch(error => {
           const errorPage = (
             <Provider store={store}>
-              <ErrorPage message={error.message} />
+              <StaticRouter context={{}} location={req.url}>
+                <ErrorPage message={error.message} />
+              </StaticRouter>
             </Provider>
           );
 
