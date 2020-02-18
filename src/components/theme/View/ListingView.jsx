@@ -20,7 +20,7 @@ const ListingView = ({ content }) => (
     <Helmet title={content.title} />
     <section id="content-core">
       {content.items.map(item => (
-        <Segment className="listing-item">
+        <Segment key={item.url} className="listing-item">
           <Container>
             <h2>
               <Link to={item.url} title={item['@type']}>
