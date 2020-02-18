@@ -15,7 +15,7 @@ import {
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers';
-import { getVocabulary } from '../../../actions';
+import { getVocabulary } from '@plone/volto/actions';
 
 import {
   Option,

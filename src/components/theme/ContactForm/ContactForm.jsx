@@ -15,8 +15,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { Form, Toolbar, Toast } from '../../';
-import { emailNotification } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
+import { emailNotification } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   send: {

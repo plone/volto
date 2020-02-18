@@ -14,9 +14,9 @@ import { Provider } from 'react-intl-redux';
 import { createBrowserHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
 
-import { Api } from '../../../helpers';
+import { Api } from '@plone/volto/helpers';
 import configureStore from '../../../store';
-import { DefaultView } from '../../../components/';
+import { DefaultView } from '@plone/volto/components/';
 
 /**
  * Diff field component.

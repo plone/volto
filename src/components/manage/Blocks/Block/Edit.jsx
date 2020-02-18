@@ -14,12 +14,12 @@ import { blocks } from '~/config';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import cx from 'classnames';
-import { setSidebarTab } from '../../../../actions';
+import { setSidebarTab } from '@plone/volto/actions';
 
 import withObjectBrowser from '../../Sidebar/ObjectBrowser';
-import Icon from '../../../../components/theme/Icon/Icon';
-import dragSVG from '../../../../icons/drag.svg';
-import trashSVG from '../../../../icons/delete.svg';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import dragSVG from '@plone/volto/icons/drag.svg';
+import trashSVG from '@plone/volto/icons/delete.svg';
 
 const messages = defineMessages({
   unknownBlock: {
