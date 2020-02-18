@@ -107,6 +107,11 @@
   text-transform: uppercase;
 }
 
+ui.segment.listing-item {
+  display: flex;
+  align-items: center;
+}
+
 .ui.segment.imageborder {
   display: flex;
   height: 100%;
