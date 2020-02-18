@@ -4,9 +4,12 @@
 
 ### Added
 
+- Add permission check to edit form @sneridagh
+
 ### Changes
 
 - Fix and improve Error in SSR @sneridagh
+- Fix `LinkAnchorPlugin` press Enter key inside blocks with draftJS widgets @sneridagh
 
 ### Internal
 
@@ -24,7 +27,6 @@
 
 - Chose template for listing block @giuliaghisini
 - Event type view @nileshgulia1 @pnicolli
-- Add permission check to edit form @sneridagh
 - Add ability to define the starting blocks per content type @sneridagh
 - Reference widget: show item title and path in search and hover itmes selected @giuliaghisini
 
