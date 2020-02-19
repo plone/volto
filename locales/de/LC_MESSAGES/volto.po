@@ -72,7 +72,7 @@ msgstr "Block hinzufügen"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
-msgstr ""
+msgstr "Kriterien hinzufügen"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
@@ -239,7 +239,7 @@ msgstr "Ziel auswählen"
 
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
-msgstr ""
+msgstr "Klicken um das Vollbild herunterzuladen"
 
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
@@ -278,7 +278,7 @@ msgstr "Kontaktformular"
 
 #: components/manage/Blocks/Listing/Edit
 msgid "Contained items"
-msgstr ""
+msgstr "Enthaltene Elemente"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
@@ -303,13 +303,21 @@ msgstr "Urheberrecht"
 msgid "Copyright statement or other rights information on this item."
 msgstr "Informationen über die Urheber- und Nutzungsrechte an diesem Artikel."
 
+#: components/manage/Contents/Contents
+msgid "Created on"
+msgstr "Erstellt am"
+
+#: components/manage/Contents/Contents
+msgid "Creator"
+msgstr "Ersteller"
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
 msgstr "Ersteller"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Criteria"
-msgstr ""
+msgstr "Kriterium"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
@@ -433,7 +441,7 @@ msgstr "Seite"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr "Drag & Drop Dateien von Ihrem Computer auf diesen Bereich oder drück den “Blättern” Knopf"
+msgstr "Ziehen Sie Dateien von Ihrem Computer auf diesen Bereich oder drücken Sie den “Durchsuchen”-Knopf."
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
@@ -478,11 +486,15 @@ msgstr "E-Mail versendet"
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Embed code error, please follow the instructions and try again."
-msgstr ""
+msgstr "Embeded code Fehler, bitte Anleitung folgen."
 
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
 msgstr "Eingebettete Google Maps Karte"
+
+#: components/manage/Contents/Contents
+msgid "End Date"
+msgstr "Enddatum"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
@@ -526,12 +538,20 @@ msgstr "Fehler"
 msgid "Exclude from navigation"
 msgstr "Von der Navigation ausschließen"
 
+#: components/manage/Contents/Contents
+msgid "Excluded from navigation"
+msgstr "Von Navigation ausgeschlossen"
+
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "Sidebar vergrößern"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
+msgstr "Ablaufdatum"
+
+#: components/manage/Contents/Contents
+msgid "Expiration date"
 msgstr "Ablaufdatum"
 
 #: components/manage/Blocks/Image/ImageSidebar
@@ -624,6 +644,10 @@ msgstr "Startseite"
 msgid "Home page"
 msgstr "Homepage"
 
+#: components/manage/Contents/Contents
+msgid "ID"
+msgstr "ID"
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If selected, this item will not appear in the navigation tree"
 msgstr "Bestimmt, ob der Artikel nicht in der Navigation auftauchen soll."
@@ -680,7 +704,7 @@ msgstr "Zeile davor einfügen"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Item batch size"
-msgstr ""
+msgstr "Batch-Grösse"
 
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
@@ -704,13 +728,17 @@ msgstr "Auswahl muss eindeutig sein."
 msgid "Language"
 msgstr "Sprache"
 
+#: components/manage/Contents/Contents
+msgid "Last comment date"
+msgstr "Letztes Kommentierdatum"
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Letzte Änderung"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
-msgstr ""
+msgstr "Teaser-Bild"
 
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
@@ -735,7 +763,7 @@ msgstr "Link auf"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
-msgstr ""
+msgstr "Auflistung"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -827,15 +855,15 @@ msgstr "Kein Bild ausgewählt"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in Lead Image content field"
-msgstr ""
+msgstr "Kein Teaser-Bild ausgewählt"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in image content field"
-msgstr ""
+msgstr "Kein Bild ausgewählt"
 
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
-msgstr ""
+msgstr "Leerer Ordner"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
@@ -848,7 +876,7 @@ msgstr "Keine Ergebnisse gefunden."
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "No selection"
-msgstr ""
+msgstr "Keine Auswahl"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -858,7 +886,7 @@ msgstr "Kein Wert"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No video selected"
-msgstr ""
+msgstr "Kein Video ausgewählt"
 
 #: components/manage/Workflow/Workflow
 msgid "No workflow"
@@ -867,6 +895,10 @@ msgstr "Kein Workflow"
 #: components/manage/Contents/Contents
 msgid "None"
 msgstr "Keiner"
+
+#: components/manage/Contents/Contents
+msgid "Object Size"
+msgstr "Grösse"
 
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -976,6 +1008,10 @@ msgstr "Profil"
 msgid "Properties"
 msgstr "Eigenschaften"
 
+#: components/manage/Contents/Contents
+msgid "Publication date"
+msgstr "Freigabedatum"
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Publishing Date"
 msgstr "Freigabedatum"
@@ -1047,6 +1083,10 @@ msgstr ""
 msgid "Revert to this revision"
 msgstr "Durch diese Version ersetzen"
 
+#: components/manage/Contents/Contents
+msgid "Review state"
+msgstr "Status"
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
 msgstr "Richtext"
@@ -1107,7 +1147,7 @@ msgstr "Nutzer suchen..."
 
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
-msgstr "Spalten wählen die angezeigt werden"
+msgstr "Anzuzeigende Spalten wählen"
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Select criteria"
@@ -1122,6 +1162,7 @@ msgid "Selection"
 msgstr "Auswahl"
 
 #: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
 msgid "Select…"
 msgstr "Wähle…"
 
@@ -1195,7 +1236,7 @@ msgstr "Seiteneinstellungen"
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
-msgstr ""
+msgstr "Grösse: {size}"
 
 #: error
 msgid "Sorry, something went wrong with your request"
@@ -1203,7 +1244,7 @@ msgstr "Entschuldigung, ein Fehler ist beim Ausführen Ihrer Anfrage aufgetreten
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
-msgstr ""
+msgstr "Sortieren nach"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Listing/ListingData
@@ -1217,6 +1258,10 @@ msgstr "Geben Sie ein YouTube-Video oder eine YouTube-Playlist URL ein"
 #: components/manage/Diff/Diff
 msgid "Split"
 msgstr "Aufsplitten"
+
+#: components/manage/Contents/Contents
+msgid "Start Date"
+msgstr "Anfangsdatum"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
@@ -1332,6 +1377,10 @@ msgstr "Die Seite existiert leider nicht…"
 msgid "Title"
 msgstr "Titel"
 
+#: components/manage/Contents/Contents
+msgid "Total comments"
+msgstr "Anzahl Komentare"
+
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 msgid "Type"
@@ -1368,7 +1417,7 @@ msgstr "Hochladen"
 
 #: components/manage/Blocks/LeadImage/Edit
 msgid "Upload a lead image in the 'Lead Image' content field."
-msgstr ""
+msgstr "Teaser-Bild erforderlich"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
@@ -1571,7 +1620,7 @@ msgstr "Meine E-Mail-Adresse lautet"
 
 #: config/Blocks
 msgid "leadimage"
-msgstr ""
+msgstr "Teaser-Bild"
 
 #: config/Blocks
 msgid "listing"

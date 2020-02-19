@@ -298,6 +298,14 @@ msgstr "Copyright"
 msgid "Copyright statement or other rights information on this item."
 msgstr "Información del copyright o otros derechos en este elemento."
 
+#: components/manage/Contents/Contents
+msgid "Created on"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Creator"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
 msgstr "Autores"
@@ -479,6 +487,10 @@ msgstr ""
 msgid "Embeded Google Maps"
 msgstr "Insertar Google Maps"
 
+#: components/manage/Contents/Contents
+msgid "End Date"
+msgstr ""
+
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
 msgstr "Ingrese una dirección URL o un título"
@@ -521,6 +533,10 @@ msgstr "Error"
 msgid "Exclude from navigation"
 msgstr "Excluir de la navegación"
 
+#: components/manage/Contents/Contents
+msgid "Excluded from navigation"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "Expandir barra lateral"
@@ -528,6 +544,10 @@ msgstr "Expandir barra lateral"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
 msgstr "Fecha de expiración"
+
+#: components/manage/Contents/Contents
+msgid "Expiration date"
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -619,6 +639,10 @@ msgstr "Inicio"
 msgid "Home page"
 msgstr "Página personal"
 
+#: components/manage/Contents/Contents
+msgid "ID"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If selected, this item will not appear in the navigation tree"
 msgstr "Si es seleccionado, este elemento no aparecerá en el árbol de navegación del sitio"
@@ -698,6 +722,10 @@ msgstr "Los elementos deben ser únicos."
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
 msgstr "Idioma"
+
+#: components/manage/Contents/Contents
+msgid "Last comment date"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
@@ -863,6 +891,10 @@ msgstr "Sin flujo de trabajo"
 msgid "None"
 msgstr "Ninguno"
 
+#: components/manage/Contents/Contents
+msgid "Object Size"
+msgstr ""
+
 #: components/manage/Delete/Delete
 msgid "Ok"
 msgstr "Ok"
@@ -971,6 +1003,10 @@ msgstr "Perfil"
 msgid "Properties"
 msgstr "Propiedades"
 
+#: components/manage/Contents/Contents
+msgid "Publication date"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Publishing Date"
 msgstr "Fecha de publicación"
@@ -1041,6 +1077,10 @@ msgstr ""
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr "Revertir a esta revisión"
+
+#: components/manage/Contents/Contents
+msgid "Review state"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
@@ -1117,6 +1157,7 @@ msgid "Selection"
 msgstr "Selección"
 
 #: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
 msgid "Select…"
 msgstr "Selecciona..."
 
@@ -1212,6 +1253,10 @@ msgstr "Especifica la dirección URL de un vídeo o una lista de reproducción d
 #: components/manage/Diff/Diff
 msgid "Split"
 msgstr "División"
+
+#: components/manage/Contents/Contents
+msgid "Start Date"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
@@ -1326,6 +1371,10 @@ msgstr "Esta página no existe..."
 #: components/theme/View/TabularView
 msgid "Title"
 msgstr "Título"
+
+#: components/manage/Contents/Contents
+msgid "Total comments"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView

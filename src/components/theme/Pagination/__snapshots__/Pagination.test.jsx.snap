@@ -65,7 +65,7 @@ exports[`Pagination renders page size options when specified 1`] = `
       onClick={[Function]}
     >
       Show
-      two points
+      :
     </div>
     <a
       className="active item"
