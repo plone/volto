@@ -10,6 +10,7 @@
 - Fix `RichText` Widget on normal forms @sneridagh
 - Fix Scrolling Functionality if there are many columns in table @sumukhah
 - Fix Guillotina tests @bloodbare
+- i18n in toolbar and folder contents view @ksuess
 
 ## 4.0.0-alpha.39 (2020-02-18)
 
