@@ -1203,6 +1203,7 @@ msgid "Set your password"
 msgstr "Setzen Sie Ihr Passwort"
 
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/More
 msgid "Sharing"
 msgstr "Freigabe"
 
@@ -1421,6 +1422,10 @@ msgstr "Text eingeben…"
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr "Titel eingeben…"
+
+#: components/manage/Contents/Contents
+msgid "UID"
+msgstr "UID"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"

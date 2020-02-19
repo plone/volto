@@ -1195,6 +1195,7 @@ msgid "Set your password"
 msgstr "パスワードを設定"
 
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/More
 msgid "Sharing"
 msgstr "共有"
 
@@ -1413,6 +1414,10 @@ msgstr "テキストを入力…"
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr "タイトルを入力…"
+
+#: components/manage/Contents/Contents
+msgid "UID"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"

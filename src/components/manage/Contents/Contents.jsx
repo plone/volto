@@ -172,6 +172,10 @@ const messages = defineMessages({
     id: 'ID',
     defaultMessage: 'ID',
   },
+  uid: {
+    id: 'UID',
+    defaultMessage: 'UID',
+  },
   reviewState: {
     id: 'Review state',
     defaultMessage: 'Review state',
