@@ -138,7 +138,13 @@ server
           }
         })
         .catch(error => {
-          const errorPage = <ErrorPage message={error.message} />;
+          const errorPage = (
+            <Provider store={store}>
+              <StaticRouter context={{}} location={req.url}>
+                <ErrorPage message={error.message} />
+              </StaticRouter>
+            </Provider>
+          );
 
           if (process.env.SENTRY_DSN) {
             Raven.captureException(error.message, {

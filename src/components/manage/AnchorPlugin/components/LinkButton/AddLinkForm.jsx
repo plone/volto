@@ -146,6 +146,7 @@ class AddLinkForm extends Component {
   onKeyDown(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
+      e.stopPropagation();
       this.onSubmit();
     } else if (e.key === 'Escape') {
       e.preventDefault();

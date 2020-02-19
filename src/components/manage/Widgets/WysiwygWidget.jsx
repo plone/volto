@@ -301,18 +301,21 @@ class WysiwygWidget extends Component {
               )}
               <div style={{ boxSizing: 'initial' }}>
                 {this.props.onChange ? (
-                  <Editor
-                    id={`field-${id}`}
-                    onChange={this.onChange}
-                    editorState={this.state.editorState}
-                    plugins={[
-                      this.state.inlineToolbarPlugin,
-                      ...settings.richTextEditorPlugins,
-                    ]}
-                    blockRenderMap={settings.extendedBlockRenderMap}
-                    blockStyleFn={settings.blockStyleFn}
-                    customStyleMap={settings.customStyleMap}
-                  />
+                  <>
+                    <Editor
+                      id={`field-${id}`}
+                      onChange={this.onChange}
+                      editorState={this.state.editorState}
+                      plugins={[
+                        this.state.inlineToolbarPlugin,
+                        ...settings.richTextEditorPlugins,
+                      ]}
+                      blockRenderMap={settings.extendedBlockRenderMap}
+                      blockStyleFn={settings.blockStyleFn}
+                      customStyleMap={settings.customStyleMap}
+                    />
+                    {this.props.onChange && <InlineToolbar />}
+                  </>
                 ) : (
                   <div className="DraftEditor-root" />
                 )}
@@ -331,7 +334,6 @@ class WysiwygWidget extends Component {
               </Grid.Column>
             </Grid.Row>
           )}
-          {this.props.onChange && <InlineToolbar />}
         </Grid>
       </Form.Field>
     );
