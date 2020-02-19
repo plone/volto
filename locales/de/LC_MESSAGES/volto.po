@@ -486,7 +486,7 @@ msgstr "E-Mail versendet"
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Embed code error, please follow the instructions and try again."
-msgstr "Embeded code Fehler, bitte Anleitung folgen."
+msgstr "Embeded-Code-Fehler, bitte Anleitung folgen."
 
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
