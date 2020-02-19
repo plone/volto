@@ -34,13 +34,17 @@ class LinkButton extends Component {
     e.preventDefault();
     e.stopPropagation();
     const { ownTheme, placeholder, onOverrideContent } = this.props;
+    const link = EditorUtils.getCurrentEntity(
+      this.props.getEditorState(),
+    ).getData()?.url;
+
     const content = props => (
       <AddLinkForm
         {...props}
         placeholder={placeholder}
         theme={ownTheme}
         block="draft-js"
-        data={{ url: '' }}
+        data={{ url: link || '' }}
         onChangeBlock={() => {}}
       />
     );
@@ -71,13 +75,14 @@ class LinkButton extends Component {
         <button
           className={className}
           onClick={
-            hasLinkSelected
-              ? () =>
-                  onRemoveLinkAtSelection(
-                    this.props.setEditorState,
-                    this.props.getEditorState,
-                  )
-              : this.onAddLinkClick
+            this.onAddLinkClick
+            // hasLinkSelected
+            //   ? () =>
+            //       onRemoveLinkAtSelection(
+            //         this.props.setEditorState,
+            //         this.props.getEditorState,
+            //       )
+            //   : this.onAddLinkClick
           }
           type="button"
         >

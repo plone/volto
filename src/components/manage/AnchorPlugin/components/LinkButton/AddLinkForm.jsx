@@ -8,13 +8,10 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import unionClassNames from 'union-class-names';
 import EditorUtils from 'draft-js-plugins-utils';
-import { connect } from 'react-redux';
 
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { Input, Form } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-
-import { resetSearchContent, searchContent } from '@plone/volto/actions';
 
 import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
@@ -42,34 +39,24 @@ class AddLinkForm extends Component {
     setEditorState: PropTypes.func.isRequired,
     onOverrideContent: PropTypes.func.isRequired,
     theme: PropTypes.objectOf(PropTypes.any).isRequired,
-    resetSearchContent: PropTypes.func.isRequired,
-    searchContent: PropTypes.func.isRequired,
     openObjectBrowser: PropTypes.func.isRequired,
-    search: PropTypes.arrayOf(
-      PropTypes.shape({
-        '@id': PropTypes.string,
-        '@type': PropTypes.string,
-        title: PropTypes.string,
-        description: PropTypes.string,
-      }),
-    ),
   };
 
   static defaultProps = {
     placeholder: 'Enter URL or select an item',
-    search: [],
   };
 
   /**
    * Constructor
    * @method constructor
    * @param {Object} props Component properties
-   * @constructs WysiwygEditor
+   * @constructs AddLinkForm
    */
   constructor(props) {
     super(props);
+
     this.state = {
-      value: '',
+      value: props.data.url || '',
       isInvalid: false,
     };
     this.onRef = this.onRef.bind(this);
@@ -85,7 +72,6 @@ class AddLinkForm extends Component {
    */
   componentDidMount() {
     this.input.focus();
-    this.props.resetSearchContent();
     document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
@@ -122,12 +108,23 @@ class AddLinkForm extends Component {
    * @param {Object} value Value
    * @returns {undefined}
    */
-  onChange(value) {
+  onChange(value, clear) {
     const nextState = { value };
-    if (this.state.isInvalid && URLUtils.isUrl(URLUtils.normalizeUrl(value))) {
-      nextState.isInvalid = false;
+    if (!clear) {
+      if (
+        this.state.isInvalid &&
+        URLUtils.isUrl(URLUtils.normalizeUrl(value))
+      ) {
+        nextState.isInvalid = false;
+      }
     }
     this.setState(nextState);
+
+    if (clear) {
+      this.props.setEditorState(
+        EditorUtils.removeLinkAtSelection(this.props.getEditorState()),
+      );
+    }
   }
 
   /**
@@ -165,14 +162,15 @@ class AddLinkForm extends Component {
 
     if (!URLUtils.isMail(URLUtils.normaliseMail(url))) {
       url = URLUtils.normalizeUrl(url);
-
       if (!URLUtils.isUrl(url) && !url.startsWith('/')) {
         this.setState({ isInvalid: true });
+
         return;
       }
     } else {
       url = URLUtils.normaliseMail(url);
     }
+
     setEditorState(EditorUtils.createLinkAtSelection(getEditorState(), url));
     this.onClose();
   }
@@ -212,7 +210,6 @@ class AddLinkForm extends Component {
                 id={`field-link`}
                 name="link"
                 value={value || ''}
-                icon={value ? clearSVG : navTreeSVG}
                 onChange={({ target }) =>
                   this.onChange(target.value === '' ? undefined : target.value)
                 }
@@ -226,7 +223,7 @@ class AddLinkForm extends Component {
                 onClick={
                   value
                     ? () => {
-                        this.onChange('');
+                        this.onChange('', true);
                       }
                     : () =>
                         this.props.openObjectBrowser({
@@ -248,13 +245,4 @@ class AddLinkForm extends Component {
   }
 }
 
-export default compose(
-  injectIntl,
-  withObjectBrowser,
-  connect(
-    state => ({
-      search: state.search.items,
-    }),
-    { resetSearchContent, searchContent },
-  ),
-)(AddLinkForm);
+export default compose(injectIntl, withObjectBrowser)(AddLinkForm);
