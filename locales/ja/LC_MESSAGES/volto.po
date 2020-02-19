@@ -241,6 +241,10 @@ msgstr "閉じる"
 msgid "Close menu"
 msgstr "メニューを閉じる"
 
+#: components/manage/Toolbar/Toolbar
+msgid "Collection"
+msgstr ""
+
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
@@ -551,6 +555,10 @@ msgstr ""
 msgid "External URL"
 msgstr "外部URL"
 
+#: components/manage/Toolbar/Toolbar
+msgid "File"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
 msgstr "ファイルサイズ"
@@ -741,6 +749,10 @@ msgstr "リード画像"
 msgid "Left"
 msgstr "左"
 
+#: components/manage/Toolbar/Toolbar
+msgid "Link"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Link more"
 msgstr "Link more (未翻訳)"
@@ -845,6 +857,10 @@ msgstr "元に戻る"
 msgid "New password"
 msgstr "新しいパスワード"
 
+#: components/manage/Toolbar/Toolbar
+msgid "News Item"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
 msgstr "画像が選択されていません"
@@ -915,6 +931,10 @@ msgstr "Open menu (未翻訳)"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
 msgstr "参照元"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Page"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login

@@ -242,6 +242,10 @@ msgstr "Fechar"
 msgid "Close menu"
 msgstr "Fechar menu"
 
+#: components/manage/Toolbar/Toolbar
+msgid "Collection"
+msgstr ""
+
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
@@ -552,6 +556,10 @@ msgstr ""
 msgid "External URL"
 msgstr "URL externo"
 
+#: components/manage/Toolbar/Toolbar
+msgid "File"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
 msgstr "Tamanho do ficheiro"
@@ -742,6 +750,10 @@ msgstr ""
 msgid "Left"
 msgstr "Esquerda"
 
+#: components/manage/Toolbar/Toolbar
+msgid "Link"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Link more"
 msgstr ""
@@ -846,6 +858,10 @@ msgstr ""
 msgid "New password"
 msgstr "Nova senha"
 
+#: components/manage/Toolbar/Toolbar
+msgid "News Item"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
 msgstr "Nenhuma imagem seleccionada"
@@ -916,6 +932,10 @@ msgstr "Abrir menu"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
 msgstr "Origem"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Page"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login

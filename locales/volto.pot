@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-02-19T09:39:03.562Z\n"
+"POT-Creation-Date: 2020-02-19T16:53:26.157Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -282,6 +282,11 @@ msgstr ""
 #: components/theme/Navigation/Navigation
 # defaultMessage: Close menu
 msgid "Close menu"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Collection
+msgid "Collection"
 msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
@@ -657,6 +662,11 @@ msgstr ""
 msgid "External URL"
 msgstr ""
 
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: File
+msgid "File"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: File size
 msgid "File size"
@@ -892,6 +902,11 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Link
+msgid "Link"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingSidebar
 # defaultMessage: Link more
 msgid "Link more"
@@ -1020,6 +1035,11 @@ msgstr ""
 msgid "New password"
 msgstr ""
 
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: News Item
+msgid "News Item"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
@@ -1105,6 +1125,11 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Page
+msgid "Page"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
