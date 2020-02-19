@@ -560,6 +560,10 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr ""
 
+#: components/manage/Contents/Contents
+msgid "Folder"
+msgstr ""
+
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
 msgstr ""

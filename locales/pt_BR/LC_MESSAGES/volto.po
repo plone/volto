@@ -568,6 +568,10 @@ msgstr "Filtro..."
 msgid "Fixed width table cells"
 msgstr "Células de tabela de tamanho fixo."
 
+#: components/manage/Contents/Contents
+msgid "Folder"
+msgstr ""
+
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
 msgstr ""

@@ -1,6 +1,6 @@
 # Translators:
 # Emanuel de Jesus <emanuel.angelo@gmail.com>, 2019
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
@@ -567,6 +567,10 @@ msgstr "Filtro..."
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
 msgstr "Células de tabela de tamanho fixo."
+
+#: components/manage/Contents/Contents
+msgid "Folder"
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"

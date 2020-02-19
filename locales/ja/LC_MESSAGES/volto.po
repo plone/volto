@@ -567,12 +567,12 @@ msgstr "フィルター..."
 msgid "Fixed width table cells"
 msgstr "テーブルのセル幅を固定"
 
-#: components/theme/Forbidden/Forbidden
-msgid "Forbidden"
-msgstr ""
-
 #: components/manage/Contents/Contents
 msgid "Folder"
+msgstr ""
+
+#: components/theme/Forbidden/Forbidden
+msgid "Forbidden"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm

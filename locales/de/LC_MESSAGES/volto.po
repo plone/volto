@@ -575,6 +575,10 @@ msgstr "Filter…"
 msgid "Fixed width table cells"
 msgstr "Tabellen-Zellen mit fester Breite"
 
+#: components/manage/Contents/Contents
+msgid "Folder"
+msgstr "Ordner"
+
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
 msgstr ""
@@ -1652,7 +1656,7 @@ msgstr "Registrierungsformular"
 
 #: error
 msgid "return to the site root"
-msgstr "Zum Seitenwurzel zurückkehren"
+msgstr "Zur Startseite zurückkehren"
 
 #: config/Blocks
 msgid "table"

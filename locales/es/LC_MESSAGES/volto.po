@@ -570,6 +570,10 @@ msgstr "Filtrar..."
 msgid "Fixed width table cells"
 msgstr "Celdas de tabla de ancho fijo"
 
+#: components/manage/Contents/Contents
+msgid "Folder"
+msgstr ""
+
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
 msgstr ""
