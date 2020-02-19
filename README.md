@@ -97,11 +97,13 @@ You can try a Volto online demo in [https://volto.kitconcept.com](https://volto.
 
 ## Volto in Production
 
-Volto is actively developed since 2017 and used in production since early 2018 on the following websites:
+Volto is actively developed since 2017 and used in production since 2018 on the following websites:
 
-- [VHS Ehrenamtsportal](https://vhs-ehrenamtsportal.de) (Website to help volunteers that help refugees for the [German Adult Education Association](https://www.dvv-vhs.de/en/home/), developed by [kitconcept GmbH](https://kitconcept.com))
-- [Zeelandia](https://zeelandia.de) (Corporate website for one of the leading backery ingrediences manufactors in Germany, developed by [kitconcept GmbH](https://kitconcept.com))
-- [Excellence at Humboldt-Universität zu Berlin](https://www.alles-beginnt-mit-einer-frage.de) (Website for the excellence initiative of the [Humboldt University Berlin](https://hu-berlin.de), developed by [kitconcept GmbH](https://kitconcept.com))
+- [VHS Ehrenamtsportal](https://vhs-ehrenamtsportal.de) (Website to help volunteers that help refugees for the [German Adult Education Association](https://www.dvv-vhs.de/en/home/), developed by [kitconcept GmbH](https://kitconcept.com), 2018)
+- [Zeelandia](https://zeelandia.de) (Corporate website for one of the leading backery ingrediences manufactors in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2019)
+- [Excellence at Humboldt-Universität zu Berlin](https://www.alles-beginnt-mit-einer-frage.de) (Website for the excellence initiative of the [Humboldt University Berlin](https://hu-berlin.de), developed by [kitconcept GmbH](https://kitconcept.com), 2019)
+- [Forest Information System for Europe](https://forest.eea.europa.eu) (Thematic website focusing on European forests, developed by [Eau de Web](https://www.eaudeweb.ro), 2019)
+- [Talke Carrer Website](https://karriere.talke.com/) (Carrer website for [Talke](https://www.talke.com), one of the leading a chemical and petrochemical logistics companies in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2020)
 - Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 
 ## Documentation
@@ -211,8 +213,7 @@ $ yarn test
 
 ### Releasing
 
-For ease the release process, a package that helps with the process is
-installed: `release-it`.
+For ease the release process, we use `release-it` utility that helps with the process.
 
 https://www.npmjs.com/package/release-it
 
@@ -220,8 +221,8 @@ For using it and start a release you need to fulfill the requirements:
 
 - Have permissions to push on master branch
 - Have permissions on the @plone org on npmjs.com
-- Have a environment variable (`GITHUB_TOKEN`) with a GitHub personal token to
-  write the Release page on GitHub (https://www.npmjs.com/package/release-it#github-releases)
+- Have a environment variable (`GITHUB_TOKEN`) with a GitHub personal token with permissions to
+  write the Volto Release page on GitHub (https://www.npmjs.com/package/release-it#github-releases)
 
 Then the command for release:
 

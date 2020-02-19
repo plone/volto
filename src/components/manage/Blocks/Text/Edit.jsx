@@ -16,8 +16,8 @@ import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
 import { settings } from '~/config';
 
-import { Icon, BlockChooser } from '../../../../components';
-import addSVG from '../../../../icons/circle-plus.svg';
+import { Icon, BlockChooser } from '@plone/volto/components';
+import addSVG from '@plone/volto/icons/circle-plus.svg';
 
 const messages = defineMessages({
   text: {
@@ -153,8 +153,8 @@ class Edit extends Component {
         let filteredState = editorState;
         filteredState = filterEditorState(
           {
-            blocks: [],
-            styles: [],
+            blocks: ['unordered-list-item', 'ordered-list-item'],
+            styles: ['BOLD', 'ITALIC'],
             entities: [
               {
                 type: 'LINK',
@@ -212,6 +212,7 @@ class Edit extends Component {
           ]}
           blockRenderMap={settings.extendedBlockRenderMap}
           blockStyleFn={settings.blockStyleFn}
+          customStyleMap={settings.customStyleMap}
           placeholder={this.props.intl.formatMessage(messages.text)}
           handleReturn={e => {
             if (isSoftNewlineEvent(e)) {

@@ -19,10 +19,11 @@ import { Icon, ImageSidebar, SidebarPortal } from '@plone/volto/components';
 import { createContent } from '@plone/volto/actions';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
 
-import imageBlockSVG from './block-image.svg';
+import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
+import uploadSVG from '@plone/volto/icons/upload.svg';
 
 const messages = defineMessages({
   ImageBlockInputPlaceholder: {
@@ -86,6 +87,7 @@ class Edit extends Component {
       this.props.onChangeBlock(this.props.block, {
         ...this.props.data,
         url: nextProps.content['@id'],
+        alt: nextProps.content.title,
       });
     }
   }
@@ -154,6 +156,12 @@ class Edit extends Component {
     });
   };
 
+  resetSubmitUrl = () => {
+    this.setState({
+      url: '',
+    });
+  };
+
   /**
    * Drop handler
    * @method onDrop
@@ -208,60 +216,31 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { data } = this.props;
+
     return (
       <div
         className={cx(
           'block image align',
           {
-            center: !Boolean(this.props.data.align),
+            center: !Boolean(data.align),
           },
-          this.props.data.align,
+          data.align,
         )}
       >
-        {this.props.selected && !!this.props.data.url && (
-          <div className="toolbar">
-            {this.props.appendActions && <>{this.props.appendActions}</>}
-            {this.props.detached && this.props.appendActions && (
-              <div className="separator" />
-            )}
-            <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={() =>
-                  this.props.onChangeBlock(this.props.block, {
-                    ...this.props.data,
-                    url: '',
-                    align: '',
-                  })
-                }
-              >
-                <Icon name={clearSVG} size="24px" color="#e40166" />
-              </Button>
-            </Button.Group>
-            {this.props.appendSecondaryActions && (
-              <>{this.props.appendSecondaryActions}</>
-            )}
-          </div>
-        )}
-        {this.props.selected &&
-          !this.props.data.url &&
-          this.props.appendSecondaryActions && (
-            <div className="toolbar">{this.props.appendSecondaryActions}</div>
-          )}
-        {this.props.data.url ? (
+        {data.url ? (
           <img
-            className={cx({ 'full-width': this.props.data.align === 'full' })}
+            className={cx({ 'full-width': data.align === 'full' })}
             src={
-              this.props.data.url.includes(settings.apiPath)
-                ? `${flattenToAppURL(this.props.data.url)}/@@images/image`
-                : this.props.data.url
+              data.url.includes(settings.apiPath)
+                ? `${flattenToAppURL(data.url)}/@@images/image`
+                : data.url
             }
-            alt={this.props.data.alt || ''}
+            alt={data.alt || ''}
           />
         ) : (
           <div>
-            <Dropzone onDrop={this.onDrop} className="dropzone">
+            <Dropzone disableClick onDrop={this.onDrop} className="dropzone">
               <Message>
                 {this.state.uploading && (
                   <Dimmer active>
@@ -283,25 +262,51 @@ class Edit extends Component {
                         <Icon name={navTreeSVG} size="24px" />
                       </Button>
                     </Button.Group>
+                    <Button.Group>
+                      <label className="ui button basic icon">
+                        <Icon name={uploadSVG} size="24px" />
+                        <input
+                          type="file"
+                          onChange={this.onUploadImage}
+                          style={{ display: 'none' }}
+                        />
+                      </label>
+                    </Button.Group>
                     <Input
                       onKeyDown={this.onKeyDownVariantMenuForm}
                       onChange={this.onChangeUrl}
                       placeholder={this.props.intl.formatMessage(
                         messages.ImageBlockInputPlaceholder,
                       )}
+                      value={this.state.url}
                       // Prevents propagation to the Dropzone and the opening
                       // of the upload browser dialog
                       onClick={e => e.stopPropagation()}
                     />
                     {this.state.url && (
                       <Button.Group>
-                        <Button basic className="cancel">
+                        <Button
+                          basic
+                          className="cancel"
+                          onClick={e => {
+                            e.stopPropagation();
+                            this.setState({ url: '' });
+                          }}
+                        >
                           <Icon name={clearSVG} size="30px" />
                         </Button>
                       </Button.Group>
                     )}
                     <Button.Group>
-                      <Button basic primary>
+                      <Button
+                        basic
+                        primary
+                        disabled={!this.state.url}
+                        onClick={e => {
+                          e.stopPropagation();
+                          this.onSubmitUrl();
+                        }}
+                      >
                         <Icon name={aheadSVG} size="30px" />
                       </Button>
                     </Button.Group>
@@ -312,7 +317,7 @@ class Edit extends Component {
           </div>
         )}
         <SidebarPortal selected={this.props.selected}>
-          <ImageSidebar {...this.props} />
+          <ImageSidebar {...this.props} resetSubmitUrl={this.resetSubmitUrl} />
         </SidebarPortal>
       </div>
     );

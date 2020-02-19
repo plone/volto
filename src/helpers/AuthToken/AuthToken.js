@@ -6,7 +6,8 @@
 import cookie from 'react-cookie';
 import jwtDecode from 'jwt-decode';
 
-import { loginRenew } from '../../actions';
+import { loginRenew } from '@plone/volto/actions';
+import { push } from 'connected-react-router';
 
 /**
  * Get auth token method.
@@ -53,13 +54,13 @@ export function persistAuthToken(store) {
               store.dispatch(loginRenew());
             } else {
               // Logout
-              /*
-              Router.push(
-                `/logout?return_url=${
-                  store.getState().routing.locationBeforeTransitions.pathname
-                }`,
+              store.dispatch(
+                push(
+                  `/logout?return_url=${
+                    store.getState().router.location.pathname
+                  }`,
+                ),
               );
-              */
             }
           }
         }, (jwtDecode(store.getState().userSession.token).exp * 1000 - new Date().getTime()) * 0.9);

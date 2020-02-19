@@ -6,8 +6,6 @@ import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { CheckboxWidget, Icon, TextWidget } from '@plone/volto/components';
 import { AlignBlock, flattenToAppURL } from '@plone/volto/helpers';
 
-import { settings } from '~/config';
-
 import imageSVG from '@plone/volto/icons/image.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
@@ -40,8 +38,8 @@ const messages = defineMessages({
     defaultMessage: 'Open in a new tab',
   },
   NoImageSelected: {
-    id: 'No image selected',
-    defaultMessage: 'No image selected',
+    id: 'No image set in image content field',
+    defaultMessage: 'No image set in image content field',
   },
   externalURL: {
     id: 'External URL',
@@ -49,12 +47,14 @@ const messages = defineMessages({
   },
 });
 
-const ImageSidebar = ({
+const LeadImageSidebar = ({
+  properties,
   data,
   block,
   onChangeBlock,
   openObjectBrowser,
   required = false,
+  onChangeField,
   intl,
 }) => {
   const [activeAccIndex, setActiveAccIndex] = useState(0);
@@ -70,73 +70,44 @@ const ImageSidebar = ({
     <Segment.Group raised>
       <header className="header pulled">
         <h2>
-          <FormattedMessage id="Image" defaultMessage="Image" />
+          <FormattedMessage id="Lead Image" defaultMessage="Lead Image" />
         </h2>
       </header>
 
-      {!data.url && (
+      {!properties.image && (
         <>
           <Segment className="sidebar-metadata-container" secondary>
             <FormattedMessage
-              id="No image selected"
-              defaultMessage="No image selected"
+              id="No image set in Lead Image content field"
+              defaultMessage="No image set in Lead Image content field"
             />
             <Icon name={imageSVG} size="100px" color="#b8c6c8" />
           </Segment>
         </>
       )}
-      {data.url && (
+      {properties.image && (
         <>
           <Segment className="sidebar-metadata-container" secondary>
-            {data.url.split('/').slice(-1)[0]}
-            {data.url.includes(settings.apiPath) && (
-              <img
-                src={`${flattenToAppURL(data.url)}/@@images/image/mini`}
-                alt={data.alt}
-              />
-            )}
-            {!data.url.includes(settings.apiPath) && (
-              <img src={data.url} alt={data.alt} style={{ width: '50%' }} />
-            )}
+            {properties.image.filename}
+            <img
+              src={
+                properties.image.data
+                  ? `data:${properties.image['content-type']};base64,${properties.image.data}`
+                  : flattenToAppURL(properties.image.scales.mini.download)
+              }
+              alt={properties.image_caption || ''}
+            />
           </Segment>
           <Segment className="form sidebar-image-data">
-            {data.url.includes(settings.apiPath) && (
-              <TextWidget
-                id="Origin"
-                title={intl.formatMessage(messages.Origin)}
-                required={false}
-                value={data.url.split('/').slice(-1)[0]}
-                icon={navTreeSVG}
-                iconAction={() => openObjectBrowser()}
-                onChange={() => {}}
-              />
-            )}
-            {!data.url.includes(settings.apiPath) && (
-              <TextWidget
-                id="external"
-                title={intl.formatMessage(messages.externalURL)}
-                required={false}
-                value={data.url}
-                icon={clearSVG}
-                iconAction={() =>
-                  onChangeBlock(block, {
-                    ...data,
-                    url: '',
-                  })
-                }
-                onChange={() => {}}
-              />
-            )}
             <TextWidget
               id="alt"
               title={intl.formatMessage(messages.AltText)}
               required={false}
-              value={data.alt}
+              value={properties.image_caption}
+              icon={properties.image_caption ? clearSVG : null}
+              iconAction={() => onChangeField('image_caption', '')}
               onChange={(name, value) => {
-                onChangeBlock(block, {
-                  ...data,
-                  alt: value,
-                });
+                onChangeField('image_caption', value);
               }}
             />
             <Form.Field inline required={required}>
@@ -220,11 +191,12 @@ const ImageSidebar = ({
   );
 };
 
-ImageSidebar.propTypes = {
+LeadImageSidebar.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
   block: PropTypes.string.isRequired,
   onChangeBlock: PropTypes.func.isRequired,
   openObjectBrowser: PropTypes.func.isRequired,
+  onChangeField: PropTypes.func.isRequired,
 };
 
-export default injectIntl(ImageSidebar);
+export default injectIntl(LeadImageSidebar);

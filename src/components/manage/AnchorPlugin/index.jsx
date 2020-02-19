@@ -51,21 +51,7 @@ export default (config = {}) => {
 
   const { theme = defaultTheme, placeholder, Link, linkTarget } = config;
 
-  const store = {
-    getEditorState: undefined,
-    setEditorState: undefined,
-  };
-
-  const data = {
-    url: '',
-  };
-
   return {
-    initialize: ({ getEditorState, setEditorState }) => {
-      store.getEditorState = getEditorState;
-      store.setEditorState = setEditorState;
-    },
-
     decorators: [
       {
         strategy: linkStrategy,
@@ -83,12 +69,11 @@ export default (config = {}) => {
       data,
       block: '',
       ownTheme: theme,
-      store,
       placeholder,
+      onRemoveLinkAtSelection: (setEditorState, getEditorState) =>
+        setEditorState(removeEntity(getEditorState())),
       onRemoveLinkAtSelection: () =>
         store.setEditorState(removeEntity(store.getEditorState())),
-      onChangeBlock: ( block, data ) =>
-        store.setEditorState(EditorUtils.createLinkAtSelection(store.getEditorState(), data.href)),
     }),
   };
 };

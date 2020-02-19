@@ -4,19 +4,196 @@
 
 ### Added
 
-- Support for indexable blocks (requires plone.restapi 6.1.0) @timo
+### Changes
+
+- Fix `RichText` Widget on normal forms @sneridagh
+- Fix Scrolling Functionality if there are many columns in table @sumukhah
+- Fix Guillotina tests @bloodbare
+
+## 4.0.0-alpha.39 (2020-02-18)
+
+### Added
+
+- Add permission check to edit form @sneridagh
 
 ### Changes
 
+- Fix and improve Error in SSR @sneridagh
+- Fix `LinkAnchorPlugin` press Enter key inside blocks with draftJS widgets @sneridagh
+
+### Internal
+
+- Replace all relative paths to `@plone/volto` absolute paths to ensure you can override all the resources via component shadowing @sneridagh
+
+## 4.0.0-alpha.38 (2020-02-18)
+
+### Internal
+
+- Update to use ESLint 6 @timo
+
+## 4.0.0-alpha.37 (2020-02-18)
+
+### Added
+
+- Chose template for listing block @giuliaghisini
+- Event type view @nileshgulia1 @pnicolli
+- Add ability to define the starting blocks per content type @sneridagh
+- Reference widget: show item title and path in search and hover itmes selected @giuliaghisini
+
+### Changes
+
+- Fix the "jump" on the blocks editor on focusing blocks @sneridagh
+- Include link and size info to the full size image in `ImageView` view component @sneridagh
+- In the Display menu, only show views that are implemented @pnicolli
+- Hide Blocks fields in Layout fieldset in Add/Edit forms @pnicolli
+- Updated italian translations @nzambello
+- Fallback for non existing layout views registered in `constants/Layouts` when selected in the widget @sneridagh
+- Fix select widget for array inline choices fields and `z-index` problem @sneridagh
+- Improve UX of the edit block Image component @sneridagh
+- Fix on creating a new block, it should show the sidebar block properties (#1167) @sneridagh
+- Send only the changed fields on PATCH (edit content) operations @sneridagh
+- Japanese translation @terapyon
+
+### Internal
+
+- Added forest.eea.europa.eu as deployed Volto in production @tiberiuichim
+- Add SemanticUI responsive variables to the responsive utils @sneridagh
+- Added `yarnhook` to the build @sneridagh
+
+## 4.0.0-alpha.36 (2020-02-03)
+
+### Changes
+
+- Fix unable to login from /logout page (#1147) @sneridagh
+- Fix sitemap.xml by increasing the batch size @robgietema
+- Browser detect feature, adding a deprecation message for ancient browsers in the `App` component @sneridagh
+- Adding fallback in the edit form, in case the blocks related fields are empty, so we are sure that the edit form shows at least the default blocks @sneridagh
+- Fix shift return in tables @robgietema
+
+## 4.0.0-alpha.35 (2020-01-31)
+
+### Changes
+
+- Fix CSS when multiselection widgets have multiple items, then provoke a line jump @sneridagh
+- added new italian translations, added italian to available languages, translated some static string
+- updated italian translations
+- Fix listing block sidebar focus @sneridagh
+- Fix getBaseUrl helper method to not match inner occurrences of nonContentRoutes @sneridagh
+
+## 4.0.0-alpha.34 (2020-01-26)
+
+### Changes
+
+- Fix token expiration/renewer timer, this fixes #674 @sneridagh
+
+## 4.0.0-alpha.33 (2020-01-26)
+
+### Changes
+
+- Updated Maps block to the sidebar and image block look and feel @sneridagh
+- Update video block to the sidebar and get the image block look and feel @sneridagh
+
+### Internal
+
+- Fix and update to latest husky and lint-staged @sneridagh
+- Fix for i18n to use defaultMessages instead to default to the id @sneridagh
+- Update `babel-plugin-react-intl` to latest @sneridagh
+
+## 4.0.0-alpha.32 (2020-01-24)
+
+### Added
+
+- Lead image behavior block @sneridagh sponsored by CMSCOM.jp @terapyon
+
+### Changes
+
+- Make login component honors the returnUrl prop if called from any pathname @sneridagh
+
+### Internal
+
+- Try to improve the realibility of the Cypress tests, reorganize commands @sneridagh
+- Upgrade to Plone 5.2.1, add `Products.PloneHotfix20200121` @sneridagh
+- Force global use of `browserslist` package to get rid of message on build @sneridagh
+
+## 4.0.0-alpha.31 (2020-01-22)
+
+### Changes
+
+- fix `SelectWidget`, when there is a vocabulary and no choices @sneridagh
+
+## 4.0.0-alpha.30 (2020-01-22)
+
+### Added
+
+- Added listing block @pnicolli @rodfersou @sneridagh @giuliaghisini
+
+### Changes
+
+- fix bug in TokenWidget and ArrayWidget when removing all elements. @giuliaghisini
+- fix listing block customization @giuliaghisini
+- fix Querystring widgets failing to render if the `MultipleSelectionWidget` field applied is not included in the site vocabulary returned by `@querystring`. This applies to `Subject` field when the tag value is not there any more. @sneridagh
+- fix QueryString widget on creation when query is empty, fixed broken when editing after too @sneridagh
+
+## 4.0.0-alpha.29 (2020-01-18)
+
+### Changes
+
+- Remove dangling reference to external data in Image block not used anymore, causing confusion and lead to dead (and wrong) code @sneridagh
+- Remove last remains of the append secondary actions, remove Image block toolbar. Update i18n, fix small issues in Image block @sneridagh
+
+## 4.0.0-alpha.28 (2020-01-17)
+
+### Changes
+
+- Fix ToC anchor links in Firefox @robgietema
+
+## 4.0.0-alpha.27 (2020-01-17)
+
+### Changes
+
+- Fix removing links in blocks @robgietema
+
+## 4.0.0-alpha.26 (2020-01-15)
+
+### Added
+
+- German translation updated @timo
+
+## 4.0.0-alpha.25 (2020-01-14)
+
+### Added
+
+- German translation for TOC @timo
+
+## 4.0.0-alpha.24 (2020-01-14)
+
+### Added
+
+- Added customStyleMap param to Editor of draftjs @giuliaghisini
+- Added Table of Contents block @robgietema
+
+## 4.0.0-alpha.23 (2020-01-14)
+
+### Added
+
+- Support for indexable blocks (requires plone.restapi 6.1.0) @timo
+- Set alt tag of image when selecting image in image block @robgietema
+
+### Changes
+
+- Avoid console warnings in AddLinkForm.jsx @tiberiuichim
 - More cleaning the body classname from the current displayname view @sneridagh
-- Make it possible to paste links into text-blocks @jackahl
+- Make it possible to paste links, lists, b and i Elements into text-blocks
+  @jackahl
+- added option to include mp4 files from a remote source in video Block @steffenri @jackahl
+- Make it possible to paste links, lists, b and i Elements into text-blocks @jackahl
 
 ## 4.0.0-alpha.22 (2020-01-04)
 
 ### Changes
 
 - Disable all styling when copying text from another source (e.g. MS Word) into a text block @jackahl
-- Avoid console warnings in QuerystringWidget @tiberich
+- Avoid console warnings in QuerystringWidget @tiberiuichim
 - Fix body classname based on the current content type @sneridagh
 
 ## 4.0.0-alpha.21 (2020-01-02)
@@ -49,6 +226,7 @@
 
 - Implementation of `Portuguese (BR)` translation @LeuAlmeida
 - Added translations to spanish @macagua
+- Added AlbumView @wkbktill @alexbueckig
 
 ### Changes
 

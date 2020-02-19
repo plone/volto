@@ -25,7 +25,7 @@ import {
   DropdownIndicator,
   selectTheme,
   customSelectStyles,
-} from './SelectStyling';
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 const messages = defineMessages({
   no_value: {
@@ -166,9 +166,10 @@ class ArrayWidget extends Component {
    */
   handleChange(selectedOption) {
     this.setState({ selectedOption });
+
     this.props.onChange(
       this.props.id,
-      selectedOption.map(item => item.value),
+      selectedOption ? selectedOption.map(item => item.value) : null,
     );
   }
 
