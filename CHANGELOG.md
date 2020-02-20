@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add pagination support to listing blocks @sneridagh
+
 ### Changes
 
 - Fix `RichText` Widget on normal forms @sneridagh

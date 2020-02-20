@@ -45,20 +45,95 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
 
   const ListingBodyTemplate = templateConfig[templateName].template;
 
-  function handlePaginationChange(e, { activePage }) {
+  function handleContentPaginationChange(e, { activePage }) {
     !isEditMode && window.scrollTo(0, 0);
     setCurrentPage(activePage);
     dispatch(getContent(path, null, null, activePage));
   }
 
+  function handleQueryPaginationChange(e, { activePage }) {
+    !isEditMode && window.scrollTo(0, 0);
+    setCurrentPage(activePage);
+    dispatch(
+      getQueryStringResults(
+        path,
+        { ...data, fullobjects: 1 },
+        data.block,
+        activePage,
+      ),
+    );
+  }
+
   return (
     <>
       {listingItems.length > 0 ? (
-        <ListingBodyTemplate
-          items={listingItems}
-          isEditMode={isEditMode}
-          {...data}
-        />
+        <>
+          <ListingBodyTemplate
+            items={listingItems}
+            isEditMode={isEditMode}
+            {...data}
+          />
+          {data?.query?.length === 0 &&
+            content.items_total > settings.defaultPageSize && (
+              <div className="pagination-wrapper">
+                <Pagination
+                  activePage={currentPage}
+                  totalPages={Math.ceil(
+                    content.items_total / settings.defaultPageSize,
+                  )}
+                  onPageChange={handleContentPaginationChange}
+                  firstItem={null}
+                  lastItem={null}
+                  prevItem={{
+                    content: <Icon name={paginationLeftSVG} size="18px" />,
+                    icon: true,
+                    'aria-disabled': !content.batching.prev,
+                    className: !content.batching.prev ? 'disabled' : null,
+                  }}
+                  nextItem={{
+                    content: <Icon name={paginationRightSVG} size="18px" />,
+                    icon: true,
+                    'aria-disabled': !content.batching.next,
+                    className: !content.batching.next ? 'disabled' : null,
+                  }}
+                />
+              </div>
+            )}
+          {data?.query?.length > 0 &&
+            querystringResults[data.block].total >
+              (data.b_size || settings.defaultPageSize) && (
+              <div className="pagination-wrapper">
+                <Pagination
+                  activePage={currentPage}
+                  totalPages={Math.ceil(
+                    querystringResults[data.block].total /
+                      (data.b_size || settings.defaultPageSize),
+                  )}
+                  onPageChange={handleQueryPaginationChange}
+                  firstItem={null}
+                  lastItem={null}
+                  prevItem={{
+                    content: <Icon name={paginationLeftSVG} size="18px" />,
+                    icon: true,
+                    'aria-disabled': !querystringResults[data.block].batching
+                      .prev,
+                    className: !querystringResults[data.block].batching.prev
+                      ? 'disabled'
+                      : null,
+                  }}
+                  nextItem={{
+                    content: <Icon name={paginationRightSVG} size="18px" />,
+                    icon: true,
+                    'aria-disabled': !querystringResults[data.block].batching
+                      .next,
+                    className: !querystringResults[data.block].batching.next
+                      ? 'disabled'
+                      : null,
+                  }}
+                />
+              </div>
+            )}
+        </>
       ) : (
         <div className="listing message">
           {data?.query?.length === 0 && (
@@ -73,31 +148,6 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
               defaultMessage="No results found."
             />
           )}
-        </div>
-      )}
-      {content.items_total > settings.defaultPageSize && (
-        <div className="pagination-wrapper">
-          <Pagination
-            activePage={currentPage}
-            totalPages={Math.ceil(
-              content.items_total / settings.defaultPageSize,
-            )}
-            onPageChange={handlePaginationChange}
-            firstItem={null}
-            lastItem={null}
-            prevItem={{
-              content: <Icon name={paginationLeftSVG} size="18px" />,
-              icon: true,
-              'aria-disabled': !content.batching.prev,
-              className: !content.batching.prev ? 'disabled' : null,
-            }}
-            nextItem={{
-              content: <Icon name={paginationRightSVG} size="18px" />,
-              icon: true,
-              'aria-disabled': !content.batching.next,
-              className: !content.batching.next ? 'disabled' : null,
-            }}
-          />
         </div>
       )}
     </>
