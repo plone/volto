@@ -50,7 +50,7 @@ class Anontools extends Component {
   render() {
     return (
       !this.props.token && (
-        <List floated="right" horizontal>
+        <List floated="right" horizontal className="anontools-view">
           {/* needs divs around links for a11y, and semanticui insists on using List as div role="list" instead of simply using <ul></ul> */}
           <div role="listitem" className="item">
             <Link
