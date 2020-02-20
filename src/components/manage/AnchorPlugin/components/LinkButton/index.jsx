@@ -36,7 +36,7 @@ class LinkButton extends Component {
     const { ownTheme, placeholder, onOverrideContent } = this.props;
     const link = EditorUtils.getCurrentEntity(
       this.props.getEditorState(),
-    ).getData()?.url;
+    )?.getData()?.url;
 
     const content = props => (
       <AddLinkForm

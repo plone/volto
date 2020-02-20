@@ -128,6 +128,21 @@ class AddLinkForm extends Component {
   }
 
   /**
+   * Clear handler
+   * @method clear
+   * @param {Object} value Value
+   * @returns {undefined}
+   */
+  clear() {
+    const nextState = { value: '' };
+    this.setState(nextState);
+
+    this.props.setEditorState(
+      EditorUtils.removeLinkAtSelection(this.props.getEditorState()),
+    );
+  }
+
+  /**
    * Close handler
    * @method onClose
    * @returns {undefined}
@@ -223,11 +238,12 @@ class AddLinkForm extends Component {
                 onClick={
                   value
                     ? () => {
-                        this.onChange('', true);
+                        this.clear();
                       }
                     : () =>
                         this.props.openObjectBrowser({
                           mode: 'link',
+                          overlay: true,
                           onSelectItem: url => {
                             this.onChange(url);
                             this.onSubmit();
