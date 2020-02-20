@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-02-19T17:29:09.455Z\n"
+"POT-Creation-Date: 2020-02-20T13:11:56.935Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1040,6 +1040,11 @@ msgstr ""
 msgid "News Item"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+# defaultMessage: No
+msgid "No"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
@@ -1094,6 +1099,7 @@ msgid "No workflow"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
 # defaultMessage: None
 msgid "None"
 msgstr ""
@@ -1882,6 +1888,11 @@ msgstr ""
 #: components/manage/Workflow/Workflow
 # defaultMessage: Workflow updated.
 msgid "Workflow updated."
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Yes
+msgid "Yes"
 msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized

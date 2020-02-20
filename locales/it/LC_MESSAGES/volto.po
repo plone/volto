@@ -854,6 +854,10 @@ msgstr "Nuova password"
 msgid "News Item"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+msgid "No"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
 msgstr "Nessuna immagine selezionata"
@@ -898,6 +902,7 @@ msgid "No workflow"
 msgstr "Nessun flusso"
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
 msgid "None"
 msgstr "Nessuno"
 
@@ -1543,6 +1548,10 @@ msgstr "Chi"
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Workflow aggiornato."
+
+#: components/manage/Contents/ContentsItem
+msgid "Yes"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."

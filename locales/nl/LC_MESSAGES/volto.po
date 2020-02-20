@@ -873,6 +873,10 @@ msgstr "Nieuw wachtwoord"
 msgid "News Item"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+msgid "No"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
 msgstr ""
@@ -917,6 +921,7 @@ msgid "No workflow"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
 msgid "None"
 msgstr "Niks"
 
@@ -1561,6 +1566,10 @@ msgstr "Wie"
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "Yes"
 msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
