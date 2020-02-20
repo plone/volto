@@ -2,10 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { getQueryStringResults } from '@plone/volto/actions';
-import { blocks } from '~/config';
+import { getContent, getQueryStringResults } from '@plone/volto/actions';
+import { Pagination } from 'semantic-ui-react';
+import { Icon } from '@plone/volto/components';
+import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
+import paginationRightSVG from '@plone/volto/icons/right-key.svg';
+
+import { blocks, settings } from '~/config';
 
 const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const content = useSelector(state => state.content.data);
   const querystringResults = useSelector(
     state => state.querystringsearch.subrequests,
   );
@@ -19,7 +26,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
     }
   }, [dispatch, data, data.block, path]);
 
-  const folderItems = properties.is_folderish ? properties.items : [];
+  const folderItems = content.is_folderish ? content.items : [];
 
   const listingItems =
     data?.query?.length > 0
@@ -37,6 +44,12 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
       : 'default';
 
   const ListingBodyTemplate = templateConfig[templateName].template;
+
+  function handlePaginationChange(e, { activePage }) {
+    !isEditMode && window.scrollTo(0, 0);
+    setCurrentPage(activePage);
+    dispatch(getContent(path, null, null, activePage));
+  }
 
   return (
     <>
@@ -60,6 +73,31 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
               defaultMessage="No results found."
             />
           )}
+        </div>
+      )}
+      {content.items_total > settings.defaultPageSize && (
+        <div className="pagination-wrapper">
+          <Pagination
+            activePage={currentPage}
+            totalPages={Math.ceil(
+              content.items_total / settings.defaultPageSize,
+            )}
+            onPageChange={handlePaginationChange}
+            firstItem={null}
+            lastItem={null}
+            prevItem={{
+              content: <Icon name={paginationLeftSVG} size="18px" />,
+              icon: true,
+              'aria-disabled': !content.batching.prev,
+              className: !content.batching.prev ? 'disabled' : null,
+            }}
+            nextItem={{
+              content: <Icon name={paginationRightSVG} size="18px" />,
+              icon: true,
+              'aria-disabled': !content.batching.next,
+              className: !content.batching.next ? 'disabled' : null,
+            }}
+          />
         </div>
       )}
     </>

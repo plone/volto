@@ -33,6 +33,11 @@ test('renders a ListingBody component', () => {
         },
       },
     },
+    content: {
+      data: {
+        is_folderish: true,
+      },
+    },
     intl: {
       locale: 'en',
       messages: {},
