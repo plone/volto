@@ -20,6 +20,7 @@ import EditTextBlock from '@plone/volto/components/manage/Blocks/Text/Edit';
 import EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
 import EditLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/Edit';
 import EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit';
+import DefaultListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/DefaultTemplate';
 import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
 import EditHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/Edit';
 import EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
@@ -78,6 +79,14 @@ defineMessages({
   html: {
     id: 'html',
     defaultMessage: 'HTML',
+  },
+  leadimage: {
+    id: 'leadimage',
+    defaultMessage: 'Lead Image Field',
+  },
+  listing: {
+    id: 'listing',
+    defaultMessage: 'Listing',
   },
   // Groups
   mostUsed: {
@@ -194,6 +203,9 @@ const blocksConfig = {
       addPermission: [],
       view: [],
     },
+    templates: {
+      default: { label: 'Default', template: DefaultListingBlockTemplate },
+    },
   },
   video: {
     id: 'video',
@@ -291,4 +303,6 @@ const blocksConfig = {
 
 const requiredBlocks = ['title'];
 
-export { groupBlocksOrder, requiredBlocks, blocksConfig };
+const initialBlocks = {};
+
+export { groupBlocksOrder, requiredBlocks, blocksConfig, initialBlocks };

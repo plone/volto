@@ -13,6 +13,7 @@ import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 import RecurrenceWidget from '@plone/volto/components/manage/Widgets/RecurrenceWidget';
+import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 
 // Widgets mapping
 export const widgetMapping = {
@@ -30,7 +31,7 @@ export const widgetMapping = {
     file: FileWidget,
   },
   vocabulary: {
-    // 'plone.app.vocabularies.Catalog': ReferenceWidget,
+    'plone.app.vocabularies.Catalog': ReferenceWidget,
   },
   choices: SelectWidget,
   type: {

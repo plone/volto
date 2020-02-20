@@ -28,15 +28,15 @@ import {
   persistAuthToken,
   generateSitemap,
   getAPIResourceWithAuth,
-} from './helpers';
+} from '@plone/volto/helpers';
 
-import userSession from './reducers/userSession/userSession';
+import userSession from '@plone/volto/reducers/userSession/userSession';
 
-import ErrorPage from './error';
+import ErrorPage from '@plone/volto/error';
 
-import languages from './constants/Languages';
+import languages from '@plone/volto/constants/Languages';
 
-import configureStore from './store';
+import configureStore from '@plone/volto/store';
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
@@ -138,7 +138,13 @@ server
           }
         })
         .catch(error => {
-          const errorPage = <ErrorPage message={error.message} />;
+          const errorPage = (
+            <Provider store={store}>
+              <StaticRouter context={{}} location={req.url}>
+                <ErrorPage message={error.message} />
+              </StaticRouter>
+            </Provider>
+          );
 
           if (process.env.SENTRY_DSN) {
             Raven.captureException(error.message, {

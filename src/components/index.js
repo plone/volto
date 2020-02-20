@@ -3,6 +3,7 @@
  * @module components
  * @example import { Field } from 'components';
  */
+
 export Anontools from '@plone/volto/components/theme/Anontools/Anontools';
 export Breadcrumbs from '@plone/volto/components/theme/Breadcrumbs/Breadcrumbs';
 export ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
@@ -18,16 +19,20 @@ export DefaultView from '@plone/volto/components/theme/View/DefaultView';
 export FileView from '@plone/volto/components/theme/View/FileView';
 export ImageView from '@plone/volto/components/theme/View/ImageView';
 export NewsItemView from '@plone/volto/components/theme/View/NewsItemView';
+export EventView from '@plone/volto/components/theme/View/EventView';
 export ListingView from '@plone/volto/components/theme/View/ListingView';
 export Login from '@plone/volto/components/theme/Login/Login';
 export Logout from '@plone/volto/components/theme/Logout/Logout';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
+export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
+export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 export Pagination from '@plone/volto/components/theme/Pagination/Pagination';
 export SummaryView from '@plone/volto/components/theme/View/SummaryView';
 export Search from '@plone/volto/components/theme/Search/Search';
 export SearchTags from '@plone/volto/components/theme/Search/SearchTags';
 export TabularView from '@plone/volto/components/theme/View/TabularView';
 export View from '@plone/volto/components/theme/View/View';
+export AlbumView from '@plone/volto/components/theme/View/AlbumView';
 export Comments from '@plone/volto/components/theme/Comments/Comments';
 export CommentEditModal from '@plone/volto/components/theme/Comments/CommentEditModal';
 export SocialSharing from '@plone/volto/components/theme/SocialSharing/SocialSharing';
@@ -112,6 +117,8 @@ export ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
 
 export ListingBlockBody from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
 export ListingBlockData from '@plone/volto/components/manage/Blocks/Listing/ListingData';
+export ListingBlockStyle from '@plone/volto/components/manage/Blocks/Listing/ListingStyle';
+export ListingBlockMore from '@plone/volto/components/manage/Blocks/Listing/ListingMore';
 export ListingBlockSidebar from '@plone/volto/components/manage/Blocks/Listing/ListingSidebar';
 
 export ImageSidebar from '@plone/volto/components/manage/Blocks/Image/ImageSidebar';

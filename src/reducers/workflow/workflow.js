@@ -7,7 +7,7 @@ import {
   TRANSITION_WORKFLOW,
   GET_WORKFLOW,
   GET_WORKFLOW_MULTIPLE,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   get: {
