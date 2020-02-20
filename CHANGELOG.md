@@ -6,7 +6,7 @@
 
 ### Changes
 - Deleted Empty Select Component @aryamanpuri
-
+- Hide login,register when in small viewport @nileshgulia1
 - Fix `RichText` Widget on normal forms @sneridagh
 - Fix Scrolling Functionality if there are many columns in table @sumukhah
 - Fix Guillotina tests @bloodbare
