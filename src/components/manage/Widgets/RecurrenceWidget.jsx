@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { RRule, RRuleSet, rrulestr } from 'rrule';
 
-import { isEqual } from 'lodash';
+import { isEqual, find } from 'lodash';
 import moment from 'moment';
 import {
   Form,
@@ -18,11 +18,17 @@ import {
   Segment,
   Modal,
   Radio,
-  Checkbox,
 } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { map } from 'lodash';
-import { SelectWidget, TextWidget } from '@plone/volto/components';
+import { SelectWidget } from '@plone/volto/components';
+import Select from 'react-select';
+import {
+  Option,
+  DropdownIndicator,
+  selectTheme,
+  customSelectStyles,
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 const messages = defineMessages({
   editRecurrence: {
@@ -95,6 +101,15 @@ const messages = defineMessages({
   weekday_FR: { id: 'Weekday FR', defaultMessage: 'FRI' },
   weekday_SA: { id: 'Weekday SA', defaultMessage: 'SAT' },
   weekday_SU: { id: 'Weekday SU', defaultMessage: 'SUN' },
+
+  bymonthDay: { id: 'Month day', defaultMessage: 'Day' },
+  ofTheMonth: { id: 'of the month', defaultMessage: 'of the month' },
+  bymonthDayNumber: { id: 'Weeek day of month', defaultMessage: 'The' },
+  first: { id: 'First', defaultMessage: 'First' },
+  second: { id: 'Second', defaultMessage: 'Second' },
+  third: { id: 'Third', defaultMessage: 'Third' },
+  fourth: { id: 'Fourth', defaultMessage: 'Fourth' },
+  last: { id: 'Last', defaultMessage: 'Last' },
 });
 
 const DAILY = 'daily';
@@ -104,13 +119,21 @@ const WEEKLY = 'weekly';
 const MONTHLY = 'monthly';
 const YEARLY = 'yearly';
 
+const ORDINAL_NUMBERS = {
+  '1': 'first',
+  '2': 'second',
+  '3': 'third',
+  '4': 'fourth',
+  '-1': 'last',
+};
+
 const OPTIONS = {
   frequences: {
     [DAILY]: { rrule: RRule.DAILY, interval: true },
     [MONDAYFRIDAY]: { rrule: RRule.WEEKLY },
     [WEEKDAYS]: { rrule: RRule.WEEKLY },
     [WEEKLY]: { rrule: RRule.WEEKLY, interval: true, byday: true },
-    [MONTHLY]: { rrule: RRule.MONTHLY, interval: true },
+    [MONTHLY]: { rrule: RRule.MONTHLY, interval: true, bymonth: true },
     [YEARLY]: { rrule: RRule.YEARLY, interval: true },
   },
 };
@@ -205,9 +228,8 @@ class RecurrenceWidget extends Component {
       formValues: this.getFormValues(rruleSet),
     };
 
-    console.log(Days);
-    console.log(props.value);
-    console.log(this.state.rruleSet);
+    // console.log(props.value);
+    // console.log(this.state.rruleSet);
 
     // console.log('to text:', this.state.rruleSet.toText());
 
@@ -227,56 +249,88 @@ class RecurrenceWidget extends Component {
   };
 
   getFormValues = rruleSet => {
-    let formValues = {};
+    console.log(rruleSet);
+    //default
+    let formValues = {
+      freq: DAILY,
+    };
     const rrule = rruleSet.rrules()[0];
-
-    Object.entries(rrule.options).forEach(([option, value]) => {
-      switch (option) {
-        case 'freq':
-          let freq = DAILY;
-          Object.entries(OPTIONS.frequences).forEach(([f, o]) => {
-            if (o.rrule === value) {
-              freq = f;
+    if (rrule) {
+      Object.entries(rrule.options).forEach(([option, value]) => {
+        switch (option) {
+          case 'freq':
+            let freq = DAILY;
+            Object.entries(OPTIONS.frequences).forEach(([f, o]) => {
+              if (o.rrule === value) {
+                freq = f;
+              }
+            });
+            formValues[option] = freq;
+            break;
+          case 'count':
+            if (value != null) {
+              formValues['recurrenceEnds'] = option;
+              formValues[option] = value;
             }
-          });
-          formValues[option] = freq;
-          break;
-        case 'count':
-          if (value != null) {
-            formValues['recurrenceEnds'] = option;
+            break;
+          case 'until':
+            if (value != null) {
+              formValues['recurrenceEnds'] = option;
+              formValues[option] = this.toISOString(value);
+            }
+            break;
+          case 'byweekday':
+            if (value && value.length > 0) {
+              var weekly = [0, 1, 2, 3, 4];
+              var mondayFriday = [0, 4];
+              if (isEqual(value, weekly)) {
+                formValues['freq'] = WEEKDAYS;
+              }
+              if (isEqual(value, mondayFriday)) {
+                formValues['freq'] = MONDAYFRIDAY;
+              }
+            }
+            formValues[option] = value ? value : [];
+            break;
+          case 'bymonthday':
+            if (value && value.length > 0) {
+              formValues['monthly'] = option;
+            }
             formValues[option] = value;
-          }
-          break;
-        case 'until':
-          if (value != null) {
-            formValues['recurrenceEnds'] = option;
-            formValues[option] = this.toISOString(value);
-          }
-          break;
-        case 'byweekday':
-          if (value.length > 0) {
-            var weekly = [0, 1, 2, 3, 4];
-            var mondayFriday = [0, 4];
-            if (isEqual(value, weekly)) {
-              formValues['freq'] = WEEKDAYS;
-            }
-            if (isEqual(value, mondayFriday)) {
-              formValues['freq'] = MONDAYFRIDAY;
-            }
-          }
-          formValues[option] = value ? value : [];
-          break;
-        default:
-          formValues[option] = value;
-      }
-    });
+            break;
+          // case 'byday':
+          //   if (value && value.length > 0) {
+          //     formValues['monthly'] = option;
+          //   }
+          //   formValues[option] = value;
+          //   break;
+          case 'bynweekday':
+            if (value && value.length > 0) {
+              //[weekDayNumber,orinal_number] -> translated is for example: [sunday, third] -> the third sunday of the month
+              formValues['monthly'] = option;
 
+              formValues['weekdayOfTheMonth'] = value[0][0];
+              formValues['weekdayOfTheMonthIndex'] = value[0][1];
+            }
+            formValues[option] = value;
+            break;
+          default:
+            formValues[option] = value;
+        }
+      });
+    }
     console.log('formValues', formValues);
     return formValues;
   };
 
   updateRruleSet = (rruleSet, rruleField, rruleValue, field, value) => {
-    var rruleOptions = Object.assign({}, rruleSet.rrules()[0].options);
+    console.log('updaterruleset', rruleSet, rruleSet.rrules());
+    var rrules = rruleSet.rrules();
+
+    var rruleOptions = Object.assign(
+      {},
+      rrules.length > 0 ? rrules[0].options : {},
+    );
     if (rruleField) {
       rruleOptions[rruleField] = rruleValue;
     }
@@ -323,7 +377,6 @@ class RecurrenceWidget extends Component {
           this.onChangeRule('until', this.toISOString(tomorrow.toDate()));
           this.onChangeRule('count', null); //default value
         }
-
         break;
 
       default: //do nothing
@@ -356,6 +409,10 @@ class RecurrenceWidget extends Component {
     );
   };
 
+  getDefaultSelectValue = (choices, value) => {
+    const element = find(choices, o => o.value === value);
+    return element ? element : {};
+  };
   toggleWeekDay = dayName => {
     var day = Days[dayName];
     var byweekday = [...this.state.formValues.byweekday];
@@ -371,7 +428,7 @@ class RecurrenceWidget extends Component {
 
   render() {
     const { open, dimmer, rruleSet, formValues } = this.state;
-    console.log('render');
+
     const {
       id,
       title,
@@ -384,6 +441,27 @@ class RecurrenceWidget extends Component {
       intl,
     } = this.props;
 
+    const inlineSelectStyles = {
+      ...customSelectStyles,
+      control: (styles, state) => ({
+        ...customSelectStyles.control(styles, state),
+        minWidth: '130px',
+      }),
+    };
+
+    const weekdayOfTheMonthList = [
+      ...map(Object.keys(Days), d => ({
+        value: Days[d].weekday,
+        label: intl.formatMessage(messages['weekday_' + d]),
+      })),
+    ];
+
+    const weekdayOfTheMonthIndexList = [
+      ...map(Object.keys(ORDINAL_NUMBERS), option => ({
+        value: parseInt(option),
+        label: intl.formatMessage(messages[ORDINAL_NUMBERS[option]]),
+      })),
+    ];
     return (
       <Form.Field
         inline
@@ -417,7 +495,7 @@ class RecurrenceWidget extends Component {
                 </Modal.Header>
                 <Modal.Content scrolling>
                   <Modal.Description>
-                    {JSON.stringify(rruleSet._rrule[0].options)}
+                    {/* {JSON.stringify(rruleSet._rrule[0].options)} */}
 
                     <br />
                     <br />
@@ -446,33 +524,37 @@ class RecurrenceWidget extends Component {
                                   </div>
                                 </Grid.Column>
                                 <Grid.Column width="8">
-                                  <Input
-                                    id="interval"
-                                    name="interval"
-                                    value={formValues.interval || ''}
-                                    onChange={({ target }) => {
-                                      this.onChangeRule(
-                                        target.id,
-                                        target.value === ''
-                                          ? undefined
-                                          : target.value,
-                                      );
-                                    }}
-                                  />
-                                  {formValues.freq && (
-                                    <span>
-                                      {intl.formatMessage(
-                                        messages['interval_' + formValues.freq],
-                                      )}
-                                    </span>
-                                  )}
+                                  <Form.Field inline>
+                                    <Input
+                                      id="interval"
+                                      name="interval"
+                                      value={formValues.interval || ''}
+                                      onChange={({ target }) => {
+                                        this.onChangeRule(
+                                          target.id,
+                                          target.value === ''
+                                            ? undefined
+                                            : target.value,
+                                        );
+                                      }}
+                                    />
+                                    {formValues.freq && (
+                                      <span>
+                                        {intl.formatMessage(
+                                          messages[
+                                            'interval_' + formValues.freq
+                                          ],
+                                        )}
+                                      </span>
+                                    )}
+                                  </Form.Field>
                                 </Grid.Column>
                               </Grid.Row>
                             </Grid>
                           </Form.Field>
                         )}
-                        {/***** byday *****/}
 
+                        {/***** byday *****/}
                         {OPTIONS.frequences[formValues.freq].byday && (
                           <Form.Field inline className="text">
                             <Grid>
@@ -509,6 +591,137 @@ class RecurrenceWidget extends Component {
                             </Grid>
                           </Form.Field>
                         )}
+
+                        {/***** bymonth *****/}
+                        {OPTIONS.frequences[formValues.freq].bymonth && (
+                          <Form.Field inline className="text">
+                            <Grid>
+                              <Grid.Row stretched>
+                                <Grid.Column width="4">
+                                  <div className="wrapper">
+                                    <label htmlFor="interval">
+                                      {intl.formatMessage(messages.repeatOn)}
+                                    </label>
+                                  </div>
+                                </Grid.Column>
+                                <Grid.Column width="8">
+                                  <Form.Group inline>
+                                    <Form.Field>
+                                      <Radio
+                                        label={intl.formatMessage(
+                                          messages.bymonthDay,
+                                        )}
+                                        name="monthly"
+                                        value="bymonthday"
+                                        checked={
+                                          formValues.monthly === 'bymonthday'
+                                        }
+                                        onChange={(e, { value }) =>
+                                          this.onChangeRule('monthly', value)
+                                        }
+                                      />
+                                    </Form.Field>
+                                    <Form.Field inline>
+                                      <Input
+                                        type="number"
+                                        id="bymonthday"
+                                        name="bymonthday"
+                                        value={formValues.bymonthday || ''}
+                                        onChange={({ target }) => {
+                                          this.onChangeRule(
+                                            target.id,
+                                            target.value === ''
+                                              ? undefined
+                                              : target.value,
+                                          );
+                                        }}
+                                      />
+
+                                      {intl.formatMessage(messages.ofTheMonth)}
+                                    </Form.Field>
+                                  </Form.Group>
+                                  <Form.Group inline>
+                                    <Form.Field>
+                                      <Radio
+                                        label={intl.formatMessage(
+                                          messages.bymonthDayNumber,
+                                        )}
+                                        name="monthly"
+                                        value="bynweekday"
+                                        checked={
+                                          formValues.monthly === 'bynweekday'
+                                        }
+                                        onChange={(e, { value }) =>
+                                          this.onChangeRule('monthly', value)
+                                        }
+                                      />
+                                    </Form.Field>
+                                    <Form.Field>
+                                      <Select
+                                        isDisabled={
+                                          FormData.monthly === 'bymonthday'
+                                        }
+                                        id="weekdayOfTheMonthIndex"
+                                        name="weekdayOfTheMonthIndex"
+                                        className="react-select-container"
+                                        classNamePrefix="react-select"
+                                        defaultValue={this.getDefaultSelectValue(
+                                          weekdayOfTheMonthIndexList,
+                                          formValues['weekdayOfTheMonthIndex'],
+                                        )}
+                                        options={weekdayOfTheMonthIndexList}
+                                        styles={inlineSelectStyles}
+                                        theme={selectTheme}
+                                        components={{
+                                          DropdownIndicator,
+                                          Option,
+                                        }}
+                                        onChange={data =>
+                                          this.onChangeRule(
+                                            'weekdayOfTheMonthIndex',
+                                            data.value,
+                                          )
+                                        }
+                                      />
+                                    </Form.Field>
+                                    <Form.Field>
+                                      <Select
+                                        isDisabled={
+                                          FormData.monthly === 'bymonthday'
+                                        }
+                                        id="weekdayOfTheMonth"
+                                        name="weekdayOfTheMonth"
+                                        className="react-select-container"
+                                        classNamePrefix="react-select"
+                                        defaultValue={this.getDefaultSelectValue(
+                                          weekdayOfTheMonthList,
+                                          formValues['weekdayOfTheMonth'],
+                                        )}
+                                        options={weekdayOfTheMonthList}
+                                        styles={inlineSelectStyles}
+                                        theme={selectTheme}
+                                        components={{
+                                          DropdownIndicator,
+                                          Option,
+                                        }}
+                                        onChange={data =>
+                                          this.onChangeRule(
+                                            'weekdayOfTheMonth',
+                                            data.value,
+                                          )
+                                        }
+                                      />
+                                    </Form.Field>
+                                    <Form.Field>
+                                      {intl.formatMessage(messages.ofTheMonth)}
+                                    </Form.Field>
+                                  </Form.Group>
+                                </Grid.Column>
+                              </Grid.Row>
+                            </Grid>
+                          </Form.Field>
+                        )}
+
                         {/*-- ends after N recurrence or date --*/}
                         <Form.Field inline className="text">
                           <Grid>
