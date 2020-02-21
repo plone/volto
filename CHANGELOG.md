@@ -39,7 +39,7 @@
 - Chose template for listing block @giuliaghisini
 - Event type view @nileshgulia1 @pnicolli
 - Add ability to define the starting blocks per content type @sneridagh
-- Reference widget: show item title and path in search and hover itmes selected @giuliaghisini
+- Reference widget: show item title and path in search and hover items selected @giuliaghisini
 
 ### Changes
 
