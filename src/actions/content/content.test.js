@@ -164,6 +164,17 @@ describe('Content action', () => {
       expect(action.request.op).toEqual('get');
       expect(action.request.path).toEqual(`${url}?fullobjects`);
     });
+
+    it('should create an action to get content with a pagination page', () => {
+      const url = 'http://localhost';
+      const action = getContent(url, null, null, 2);
+
+      expect(action.type).toEqual(GET_CONTENT);
+      expect(action.request.op).toEqual('get');
+      expect(action.request.path).toEqual(
+        `${url}?fullobjects&b_start=25&b_size=25`,
+      );
+    });
   });
 
   describe('resetContent', () => {

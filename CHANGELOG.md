@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add pagination support to listing blocks @sneridagh
+
 ### Changes
 - Deleted Empty Select Component @aryamanpuri
 
