@@ -10,7 +10,7 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
-## Upgrading to Volto 4.x
+## Upgrading to Volto 4.x.x
 
 First, update your `package.json` to Volto 4.x.x.
 
@@ -21,38 +21,252 @@ First, update your `package.json` to Volto 4.x.x.
   }
 ```
 
-### Tiles engine - Tiles configuration object
+### New initial blocks per content type setting in Alpha 37
 
-The tiles engine was updated and there are some important breaking changes, in case that
-you've developed custom tiles. The configuration object is now unified and expresses all
-the properties to model a tile. This is how a tile in the `defaultTiles` object looks
+Not breaking change, but now there's a new setting in Blocks, `initialBlocks` where you can define a the initial blocks for all content types. You can override the default ('title' and a 'text' block) and provide your own by modifying the configuration object:
+
+```js
+const initialBlocks = {
+    Document: ['leadimage', 'title', 'text', 'listing' ]
+};
+```
+
+provide an empty object if you don't want to define any additional initial blocks and keep the default.
+
+```js
+const initialBlocks = {};
+```
+
+### ImageSidebar moved to Image Block directory in Alpha 29
+
+For better resource grouping, the `ImageSidebar` component has been moved to the `Image` block component directory: `components/manage/Blocks/Image`
+
+### Copy `yarn.lock` from volto-starter-kit in Alpha 17
+
+Due to changes in the dependency tree, it's required to use an specific `yarn.lock` file by deleting it and copy the one here: https://github.com/plone/volto-starter-kit/blob/master/yarn.lock before upgrading to Volto alpha 17.
+
+### Forked Helmet into Volto core
+
+Due to the inactivity of the Helmet project, we decided to fork it to the core. It's part of the Volto helpers now. You have to update your imports accordingly. Please notice that now it's a named import:
+
+```diff
+--- a/src/components/Views/ReportView.jsx
++++ b/src/components/Views/ReportView.jsx
+@@ -1,6 +1,6 @@
+ import React from 'react';
+ import PropTypes from 'prop-types';
+-import Helmet from 'react-helmet';
++import { Helmet } from '@plone/volto/helpers';
+ import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+ import { format, parse } from 'date-fns';
+ import { filter, map } from 'lodash';
+```
+
+### Alpha 16 is a brownbag release
+
+There was a problem with the projects using Volto eslint config when upgrading to latest versions related to typescript, we will take of that in the near future. So skip this version.
+
+### Stylelint and prettier config in Alpha 14
+
+In your project's boilerplate, you need to update the stylelint and prettier configuration accordingly to the changes made in Alpha 14 in `package.json` like this:
+
+```diff
+diff --git a/package.json b/package.json
+index 7c8194c..5c63469 100644
+--- a/package.json
++++ b/package.json
+@@ -46,26 +46,51 @@
+   },
+   "prettier": {
+     "trailingComma": "all",
+-    "singleQuote": true
++    "singleQuote": true,
++    "overrides": [
++      {
++        "files": "*.overrides",
++        "options": {
++          "parser": "less"
++        }
++      }
++    ]
+   },
+   "stylelint": {
+     "extends": [
+-      "stylelint-config-standard",
+-      "stylelint-config-idiomatic-order",
+-      "./node_modules/prettier-stylelint/config.js"
+-    ]
++      "stylelint-config-idiomatic-order"
++    ],
++    "plugins": [
++      "stylelint-prettier"
++    ],
++    "rules": {
++      "prettier/prettier": true,
++      "rule-empty-line-before": [
++        "always-multi-line",
++        {
++          "except": [
++            "first-nested"
++          ],
++          "ignore": [
++            "after-comment"
++          ]
++        }
++      ]
++    },
++    "ignoreFiles": "theme/themes/default/**/*.overrides"
+   },
+   "engines": {
+     "node": "^10 || ^12"
+   },
+   "dependencies": {
+-    "@plone/volto": "4.0.0-alpha.10"
++    "@plone/volto": "4.0.0-alpha.14"
+   },
+   "devDependencies": {
+     "eslint-plugin-prettier": "3.0.1",
+-    "postcss-overrides": "3.1.4",
+-    "prettier": "1.17.0",
+-    "prettier-stylelint": "0.4.2"
++    "prettier": "1.19.1",
++    "stylelint-config-idiomatic-order": "6.2.0",
++    "stylelint-config-prettier": "6.0.0",
++    "stylelint-prettier": "1.1.1"
+   },
+   "resolutions": {
+     "@plone/volto/razzle/webpack-dev-server": "3.2.0"
+```
+
+!!! note
+    If you are linting activelly your project, the build might be broken after this update. You should run:
+    ```
+    $ yarn prettier:fix
+    $ yarn stylelint:fix
+    ```
+    then commit the changes.
+
+### openObjectBrowser API change in Alpha 11
+
+The API of the `ObjectBrowser` component changed in alpha 11 to make it more flexible.
+In case you had custom blocks using it, you have to update the call in case you were using a `link` mode:
+
+```diff
+@@ -42,7 +42,7 @@ const OtherComp = ({
+                     href: '',
+                   });
+                 }
+-              : () => openObjectBrowser('link')
++              : () => openObjectBrowser({ mode: 'link' })
+           }
+           onChange={(name, value) => {
+             onChangeBlock(block, {
+```
+
+See the [blocks section](../blocks/editcomponent.md#openobjectbrowser-handler-api) for more details.
+
+### Renaming Tiles into Blocks
+
+An internal renaming to use the term `Blocks` everywhere was done to unify naming through the code a and the documentation.
+
+Plone RESTAPI was updated to that purpose too, and running an upgrade step (do so in Plone's Addons control panel) is required in order to migrate the data. No step is required if you are using a brand new ZODB.
+
+This is the versions compatibility table across all the packages involved:
+
+Volto 4 - plone.restapi >= 5.0.0 - kitconcept.voltodemo >= 2.0
+
+!!! note
+    The renaming happened in Volto 4 alpha.10 and plone.restapi 5.0.0. Volto 4 alpha versions under that release use older versions of `plone.restapi` and `kitconcept.voltodemo`, however if you are using alpha releases it's recommended to upgrade to latest alpha or the final release of Volto 4.
+
+The project configuration should also be updated, in your `src/config.js`:
+
+```diff
+diff --git a/src/config.js b/src/config.js
+index f1fe9c2..9517c38 100644
+--- a/src/config.js
++++ b/src/config.js
+@@ -16,7 +16,7 @@ import {
+   settings as defaultSettings,
+   views as defaultViews,
+   widgets as defaultWidgets,
+-  tiles as defaultTiles,
++  blocks as defaultBlocks,
+ } from '@plone/volto/config';
+
+ export const settings = {
+@@ -31,6 +31,6 @@ export const widgets = {
+   ...defaultWidgets,
+ };
+
+-export const tiles = {
+-  ...defaultTiles,
++export const blocks = {
++  ...defaultBlocks,
+ };
+```
+
+### Add theme customization to your project
+
+Volto 4 now also expects a file named `src/theme.js` with this content by default:
+
+```js
+import 'semantic-ui-less/semantic.less';
+import '@plone/volto/../theme/themes/pastanaga/extras/extras.less';
+```
+
+### Remove enzyme configuration
+
+Enzyme has been removed, in favor of `@testing-library/react`, and the configuration should be removed in `package.json`:
+
+``` diff
+diff --git a/package.json b/package.json
+index 27c7f8d..8f5f088 100644
+--- a/package.json
++++ b/package.json
+@@ -44,9 +44,6 @@
+       "default",
+       "jest-junit"
+     ],
+-    "snapshotSerializers": [
+-      "enzyme-to-json/serializer"
+-    ],
+     "transform": {
+       "^.+\\.js(x)?$": "babel-jest",
+       "^.+\\.css$": "jest-css-modules",
+```
+
+### Blocks engine - Blocks configuration object
+
+The blocks engine was updated and there are some important breaking changes, in case that
+you've developed custom blocks. The configuration object is now unified and expresses all
+the properties to model a block. This is how a block in the `defaultBlocks` object looks
 like:
 
 ```js
-const defaultTiles = {
+const defaultBlocks = {
   title: {
-    id: 'title', // The name of the tile
-    title: 'Title', // The display name of the tile
-    icon: titleSVG, // The icon used
-    group: 'text', // The group (tiles now can be grouped)
-    view: ViewTitleTile, // The view mode component
-    edit: EditTitleTile, // The edit mode component
-    restricted: false, // If the tile is restricted, it won't show in menus
-    mostUsed: false, // A meta group `most used`, appearing at the top
-    tileHasOwnFocusManagement: false, // Set this to true if the tile manages its own focus
+    id: 'title', // The name (id) of the block
+    title: 'Title', // The display name of the block
+    icon: titleSVG, // The icon used in the block chooser
+    group: 'text', // The group (blocks can be grouped, displayed in the chooser)
+    view: ViewTitleBlock, // The view mode component
+    edit: EditTitleBlock, // The edit mode component
+    restricted: false, // If the block is restricted, it won't show in in the chooser
+    mostUsed: false, // A meta group `most used`, appearing at the top of the chooser
+    blockHasOwnFocusManagement: false, // Set this to true if the block manages its own focus
     security: {
-      addPermission: [], // Future proof (not implemented yet) add permission role(s)
-      view: [], // Future proof (not implemented yet) view role(s)
+      addPermission: [], // Future proof (not implemented yet) add user permission role(s)
+      view: [], // Future proof (not implemented yet) view user role(s)
     },
   },
   ...
 ```
 
-There is an additional object `groupTilesOrder` that contains an array with the order
-that the tiles group should appear:
+There is an additional object `groupBlocksOrder` that contains an array with the order
+that the blocks group should appear:
 
 ```js
-const groupTilesOrder = [
+const groupBlocksOrder = [
   { id: 'mostUsed', title: 'Most used' },
   { id: 'text', title: 'Text' },
   { id: 'media', title: 'Media' },
@@ -60,27 +274,27 @@ const groupTilesOrder = [
 ];
 ```
 
-You should adapt and merge the configuration of your own custom tiles to match the
-`defaultTiles` and `groupTilesOrder` one. You can modify the order of the groups and
+You should adapt and merge the configuration of your own custom blocks to match the
+`defaultBlocks` and `groupBlocksOrder` one. You can modify the order of the groups and
 create your own as well.
 
-### Tiles engine - Simplification of the edit tiles wrapper
+### Blocks engine - Simplification of the edit blocks wrapper
 
-The edit tile wrapper boilerplate was quite big, and for bootstrap an edit tile you had to copy it from an existing tile. Now all this boilerplate has been transferred to the Tiles Engine, so bootstrapping the edit component of a tile is easier and do not require any pre-existing code.
+The edit block wrapper boilerplate was quite big, and for bootstrap an edit block you had to copy it from an existing block. Now all this boilerplate has been transferred to the Blocks Engine, so bootstrapping the edit component of a block is easier and do not require any pre-existing code.
 
-In order to upgrade your tiles you should simplify the outter `<div>` (took as example the Title tile):
+In order to upgrade your blocks you should simplify the outter `<div>` (took as example the Title block):
 
 ``` diff
---- a/src/components/manage/Tiles/Title/Edit.jsx
-+++ b/src/components/manage/Tiles/Title/Edit.jsx
+--- a/src/components/manage/Blocks/Title/Edit.jsx
++++ b/src/components/manage/Blocks/Title/Edit.jsx
 @@ -138,11 +138,7 @@ class Edit extends Component {
        return <div />;
      }
      return (
 -      <div
 -        role="presentation"
--        onClick={() => this.props.onSelectTile(this.props.tile)}
--        className={cx('tile title', { selected: this.props.selected })}
+-        onClick={() => this.props.onSelectBlock(this.props.block)}
+-        className={cx('block title', { selected: this.props.selected })}
 -      >
 +      <>
          <Editor
@@ -97,9 +311,9 @@ In order to upgrade your tiles you should simplify the outter `<div>` (took as e
  }
 ```
 
-The tiles engine now takes care for the keyboard navigation of the tiles, so you need to remove the outter `<div>` from your custom tile, then your tile doesn't have to react to the change on `this.props.selected` either, because it's also something that the tiles engine already does for you.
+The blocks engine now takes care for the keyboard navigation of the blocks, so you need to remove the outter `<div>` from your custom block, then your block doesn't have to react to the change on `this.props.selected` either, because it's also something that the blocks engine already does for you.
 
-The focus management is also transferred to the engine, so no needed for your tile to manage the focus. However, if your tile does indeed require to manage its own focus, then you should mark it with the `tileHasOwnFocusManagement` property in the tiles configuration object:
+The focus management is also transferred to the engine, so no needed for your block to manage the focus. However, if your block does indeed require to manage its own focus, then you should mark it with the `blockHasOwnFocusManagement` property in the blocks configuration object:
 
 ``` js hl_lines="10"
     text: {
@@ -107,11 +321,11 @@ The focus management is also transferred to the engine, so no needed for your ti
       title: 'Text',
       icon: textSVG,
       group: 'text',
-      view: ViewTextTile,
-      edit: EditTextTile,
+      view: ViewTextBlock,
+      edit: EditTextBlock,
       restricted: false,
       mostUsed: false,
-      tileHasOwnFocusManagement: true,
+      blockHasOwnFocusManagement: true,
       security: {
         addPermission: [],
         view: [],
@@ -122,6 +336,11 @@ The focus management is also transferred to the engine, so no needed for your ti
 ### Default view renaming
 
 The default view for content types `DocumentView.jsx` has been renamed to a more appropiate `DefaultView.jsx`. This view contains the code for rendering blocks in case the content type has been Blocks enabled. Enable Blocks on your content types by composing the view of your content type using `DefaultView` component.
+
+### Deprecations
+
+- The old messages container has been removed since it's not used anymore by Volto. We changed it to use `Toast` library.
+- Improve the Pastanaga Editor block wrapper container layout, deprecating the hack `.ui.wrapper > *`.
 
 ## Upgrading to Volto 3.x
 
@@ -156,38 +375,38 @@ They all use `react-select` third party library for render it.
 
 ## Upgrading to Volto 2.x
 
-### Improved Tiles HOC
+### Improved Blocks HOC
 
-The Tiles HOC (High Order Component) was changed to lift off some of the
-features from the tiles themselves and now it takes care of them by its own.
+The Blocks HOC (High Order Component) was changed to lift off some of the
+features from the blocks themselves and now it takes care of them by its own.
 
-- The delete tile feature was moved to it
-- The keylisteners for navigating through tiles was moved to it
-- The properties passed down to the tiles are improved and documented
+- The delete block feature was moved to it
+- The keylisteners for navigating through blocks was moved to it
+- The properties passed down to the blocks are improved and documented
 
-This change only applies to your existing tiles, you have to update them
-accordingly by delete the trash icon and action from the end of your tiles
+This change only applies to your existing blocks, you have to update them
+accordingly by delete the trash icon and action from the end of your blocks
 
 ```js
 {this.props.selected && (
   <Button
     icon
     basic
-    onClick={() => this.props.onDeleteTile(this.props.tile)}
-    className="tile-delete-button"
+    onClick={() => this.props.onDeleteBlock(this.props.block)}
+    className="block-delete-button"
   >
     <Icon name={trashSVG} size="18px" />
   </Button>
 )}
 ```
 
-Modify the parent element of your tile making this changes:
+Modify the parent element of your block making this changes:
 
 ```js
 <div
   role="presentation"
-  onClick={() => this.props.onSelectTile(this.props.tile)}
-  className={cx('tile hero', {
+  onClick={() => this.props.onSelectBlock(this.props.block)}
+  className={cx('block hero', {
     selected: this.props.selected,
   })}
   tabIndex={0}
@@ -195,7 +414,7 @@ Modify the parent element of your tile making this changes:
     this.props.handleKeyDown(
       e,
       this.props.index,
-      this.props.tile,
+      this.props.block,
       this.node
     )
   }
@@ -205,14 +424,14 @@ Modify the parent element of your tile making this changes:
 >
 ```
 
-- Add the keylisteners to the parent element of your tile
+- Add the keylisteners to the parent element of your block
 
 ```js
   onKeyDown={e =>
     this.props.handleKeyDown(
       e,
       this.props.index,
-      this.props.tile,
+      this.props.block,
       this.node
     )
   }
@@ -232,7 +451,7 @@ Modify the parent element of your tile making this changes:
   role="presentation"
 ```
 
-Take a look into the implementation of the default Volto tiles to get a grasp
+Take a look into the implementation of the default Volto blocks to get a grasp
 on all the edge cases related to keyboard navigation and how to deal with them.
 
 ### Reordering of the internal CSS, added an extra

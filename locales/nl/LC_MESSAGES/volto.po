@@ -52,6 +52,12 @@ msgstr ""
 msgid "Actions"
 msgstr "Acties"
 
+#: components/manage/Controlpanels/UsersControlpanel
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/SchemaWidget
+msgid "Add"
+msgstr ""
+
 #: components/manage/Toolbar/Types
 msgid "Add Content"
 msgstr ""
@@ -60,8 +66,16 @@ msgstr ""
 msgid "Add User"
 msgstr ""
 
-#: components/manage/Tiles/Description/Edit
+#: components/manage/Blocks/Description/Edit
 msgid "Add a description…"
+msgstr ""
+
+#: components/manage/Form/Form
+msgid "Add block..."
+msgstr ""
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Add criteria"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -84,10 +98,6 @@ msgstr ""
 msgid "Add new user"
 msgstr ""
 
-#: components/manage/Form/Form
-msgid "Add tile..."
-msgstr ""
-
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add to Groups"
 msgstr ""
@@ -96,7 +106,10 @@ msgstr ""
 msgid "Add {type}"
 msgstr "Voeg {type} toe"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Alignment"
 msgstr ""
 
@@ -104,7 +117,8 @@ msgstr ""
 msgid "All"
 msgstr "Alles"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr ""
 
@@ -143,15 +157,23 @@ msgstr "Basis"
 msgid "Block"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Block style"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
+msgstr ""
+
+#: components/theme/Breadcrumbs/Breadcrumbs
+msgid "Breadcrumbs"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
 msgstr "Bladeren"
 
-#: components/manage/Tiles/Image/Edit
+#: components/manage/Blocks/Image/Edit
 msgid "Browse the site, drop an image, or type an URL"
 msgstr ""
 
@@ -172,8 +194,13 @@ msgstr "Standaard worden de rechten overgenomen van de bovenliggende map.  Als u
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Cell"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+#: helpers/AlignBlock/AlignBlock
+msgid "Center"
 msgstr ""
 
 #: components/manage/History/History
@@ -214,12 +241,12 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
-#: components/manage/Sidebar/ObjectBrowserBody
-msgid "ChooseImage"
+#: components/theme/View/ImageView
+msgid "Click to download full sized image"
 msgstr ""
 
-#: components/manage/Sidebar/ObjectBrowserBody
-msgid "ChooseTargetLink"
+#: components/manage/Widgets/SelectWidget
+msgid "Close"
 msgstr ""
 
 #: components/theme/Navigation/Navigation
@@ -253,7 +280,16 @@ msgstr "Contact"
 msgid "Contact form"
 msgstr ""
 
+#: components/manage/Blocks/Listing/Edit
+msgid "Contained items"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Content"
+msgstr ""
+
 #: components/manage/Contents/Contents
+#: components/manage/Toolbar/Toolbar
 msgid "Contents"
 msgstr "Inhoud"
 
@@ -274,6 +310,10 @@ msgstr "Auteursrechten of andere rechtsinformatie van dit item."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
 msgstr "Auteurs"
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Criteria"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
@@ -318,6 +358,10 @@ msgstr "Standaard"
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
 #: components/manage/Delete/Delete
+#: components/manage/Widgets/CheckboxWidget
+#: components/manage/Widgets/TextareaWidget
+#: components/manage/Widgets/TextWidget
+#: components/manage/Widgets/WysiwygWidget
 #: components/theme/Comments/Comments
 msgid "Delete"
 msgstr "Verwijderen"
@@ -330,11 +374,11 @@ msgstr ""
 msgid "Delete User"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Delete col"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Delete row"
 msgstr ""
 
@@ -342,8 +386,8 @@ msgstr ""
 msgid "Descending"
 msgstr "Aflopend"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -367,7 +411,7 @@ msgstr "Verschil tussen revisie {one} en {two} van {title}"
 msgid "Distributed under the {license}."
 msgstr "Gedistribueerd onder de {license}."
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Divide each row into separate cells"
 msgstr ""
 
@@ -406,6 +450,8 @@ msgstr ""
 
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ModerateComments
+#: components/manage/Toolbar/Toolbar
+#: components/manage/Widgets/CheckboxWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "Bewerken"
@@ -434,16 +480,16 @@ msgstr ""
 msgid "Email sent"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
-msgid "Enter Map URL"
+#: components/manage/Blocks/Maps/Edit
+msgid "Embed code error, please follow the instructions and try again."
+msgstr ""
+
+#: components/manage/Blocks/Maps/View
+msgid "Embeded Google Maps"
 msgstr ""
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
-msgstr ""
-
-#: components/manage/Tiles/Video/Edit
-msgid "Enter Video URL"
 msgstr ""
 
 #: components/theme/Register/Register
@@ -455,6 +501,10 @@ msgstr ""
 #: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
 msgstr "Vul de volledige naam in, bijvoorbeeld Jan Smit."
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Enter map Embed Code"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
@@ -480,11 +530,16 @@ msgstr ""
 msgid "Exclude from navigation"
 msgstr "Sluit uit van de navigatiestructuur"
 
+#: components/manage/Sidebar/Sidebar
+msgid "Expand sidebar"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
 msgstr "Vervaldatum"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
 msgstr ""
 
@@ -500,12 +555,21 @@ msgstr "Bestandsnaam"
 msgid "Filter…"
 msgstr "Filter…"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
+msgstr ""
+
+#: components/theme/Forbidden/Forbidden
+msgid "Forbidden"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+#: helpers/AlignBlock/AlignBlock
+msgid "Full"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -522,6 +586,18 @@ msgstr ""
 msgid "GNU GPL license"
 msgstr "GNU GPL licentie"
 
+#: components/manage/Sharing/Sharing
+msgid "Global role"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Google Maps Embedded Block"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
+msgid "Group"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Group created"
 msgstr ""
@@ -532,6 +608,11 @@ msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Groups"
+msgstr ""
+
+#: components/manage/History/History
+#: components/manage/Toolbar/More
+msgid "History"
 msgstr ""
 
 #: components/manage/History/History
@@ -556,6 +637,7 @@ msgid "If this date is in the future, the content will not show up in listings a
 msgstr "Wanneer deze datum in de toekomst is zal de inhoud niet langer zichtbaar zijn in lijsten en zoekresultaten totdat deze datum bereikt is."
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Indien u er zeker van bent dat u het webadres goed heeft, maar toch een foutmelding krijgt, neem dan contact op met {site_admin}."
 
@@ -567,7 +649,8 @@ msgstr ""
 msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr ""
 
@@ -579,20 +662,28 @@ msgstr ""
 msgid "Inherit permissions from higher levels"
 msgstr "Rechten overnemen van bovenliggende map"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Sharing/Sharing
+msgid "Inherited value"
+msgstr ""
+
+#: components/manage/Blocks/Table/Edit
 msgid "Insert col after"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert col before"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert row after"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Insert row before"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Item batch size"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -621,8 +712,33 @@ msgstr "Taal"
 msgid "Last modified"
 msgstr "Laatst gewijzigd"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "Lead Image"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+#: helpers/AlignBlock/AlignBlock
+msgid "Left"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Link more"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingMore
+msgid "Link title"
+msgstr ""
+
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Listing"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
@@ -639,6 +755,10 @@ msgid "Log in"
 msgstr "Inloggen"
 
 #: components/theme/Login/Login
+msgid "Login"
+msgstr ""
+
+#: components/theme/Login/Login
 msgid "Login Failed"
 msgstr ""
 
@@ -646,16 +766,16 @@ msgstr ""
 msgid "Login Name"
 msgstr "Gebruikersnaam"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
-msgid "Maps data error"
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Map"
 msgstr ""
 
-#: components/manage/Tiles/Maps/Edit
-msgid "Maps instructions"
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Maps URL"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
@@ -667,8 +787,16 @@ msgstr ""
 msgid "Minimum length is {len}."
 msgstr "Minimum lengte is {len}"
 
+#: components/manage/Controlpanels/Controlpanels
+msgid "Moderate Comments"
+msgstr ""
+
 #: components/manage/Controlpanels/ModerateComments
 msgid "Moderate comments"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+msgid "More"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -688,17 +816,56 @@ msgstr ""
 msgid "Name"
 msgstr "Naam"
 
+#: error
+msgid "Navigate back"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
 msgstr "Nieuw wachtwoord"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
 msgstr ""
 
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in Lead Image content field"
+msgstr ""
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in image content field"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
+msgid "No items found in this container."
+msgstr ""
+
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "No map selected"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "No selection"
+msgstr ""
+
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/ReferenceWidget
+#: components/manage/Widgets/SelectWidget
+msgid "No value"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "No video selected"
+msgstr ""
+
+#: components/manage/Workflow/Workflow
+msgid "No workflow"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -709,7 +876,10 @@ msgstr "Niks"
 msgid "Ok"
 msgstr "Ok"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Open in a new tab"
 msgstr ""
 
@@ -717,7 +887,8 @@ msgstr ""
 msgid "Open menu"
 msgstr ""
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
 msgstr ""
 
@@ -725,6 +896,11 @@ msgstr ""
 #: components/theme/Login/Login
 msgid "Password"
 msgstr "Wachtwoord"
+
+#: components/theme/PasswordReset/PasswordReset
+#: components/theme/PasswordReset/RequestPasswordReset
+msgid "Password reset"
+msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Passwords do not match."
@@ -736,16 +912,31 @@ msgid "Paste"
 msgstr "Plakken"
 
 #: components/manage/Preferences/PersonalInformation
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
 msgstr "Persoonlijke gegevens"
 
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
 msgstr "Persoonlijke voorkeuren"
+
+#: components/manage/Toolbar/More
+#: components/manage/Toolbar/Toolbar
+msgid "Personal tools"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "Gebruikers die verantwoordelijk zijn voor de inhoud van dit item. De eindverantwoordelijke vermeldt u als eerste."
+
+#: components/manage/Blocks/Video/Edit
+msgid "Please enter a valid URL by deleting the block and adding a new video block."
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
+msgstr ""
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
@@ -775,6 +966,7 @@ msgstr "Powered by Plone & Python"
 msgid "Preferences"
 msgstr ""
 
+#: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Voorvertoning"
@@ -806,7 +998,7 @@ msgstr "Lees verder…"
 msgid "Rearrange items by…"
 msgstr "Items rangschikken op…"
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
 msgstr ""
 
@@ -843,12 +1035,29 @@ msgstr ""
 msgid "Required input is missing."
 msgstr "Verplichte waarde mist."
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Results limit"
+msgstr ""
+
+#: components/manage/Blocks/Listing/Edit
+msgid "Results preview"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Reversed order"
+msgstr ""
+
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr "Deze rivisie herstellen"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
+msgstr ""
+
+#: components/manage/Blocks/Maps/Edit
+#: helpers/AlignBlock/AlignBlock
+msgid "Right"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
@@ -865,7 +1074,6 @@ msgstr ""
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
-#: components/manage/Tiles/Video/Edit
 msgid "Save"
 msgstr "Opslaan"
 
@@ -905,6 +1113,10 @@ msgstr ""
 msgid "Select columns to show"
 msgstr "Selecteer de te tonen kolommen"
 
+#: components/manage/Widgets/QuerystringWidget
+msgid "Select criteria"
+msgstr ""
+
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Selecteer welke overgang moet worden gebruikt voor het wijzigen van de status van de items."
@@ -930,6 +1142,10 @@ msgid "Set your password"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
+msgid "Sharing"
+msgstr ""
+
+#: components/manage/Sharing/Sharing
 msgid "Sharing for {title}"
 msgstr "Delen van {title}"
 
@@ -947,6 +1163,14 @@ msgstr ""
 msgid "Short name"
 msgstr "Korte naam"
 
+#: components/manage/Sidebar/Sidebar
+msgid "Shrink sidebar"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+msgid "Shrink toolbar"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "Sign in to start session"
 msgstr ""
@@ -956,6 +1180,7 @@ msgid "Site"
 msgstr "Website"
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 msgid "Site Administration"
 msgstr "Sitebeheerder"
 
@@ -966,10 +1191,31 @@ msgstr "Sitemap"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
+msgstr "<<<<<<< HEAD"
+
+#: components/theme/View/ImageView
+msgid "Size: {size}"
 msgstr ""
 
-#: components/manage/Tiles/Video/Edit
+#: error
+msgid "Sorry, something went wrong with your request"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Sort on"
+msgstr ""
+
+#: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Listing/ListingData
+msgid "Source"
+msgstr ""
+
+#: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
+msgstr ""
+
+#: components/manage/Diff/Diff
+msgid "Split"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -986,7 +1232,7 @@ msgstr "Status"
 msgid "String"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Stripe alternate rows with color"
 msgstr ""
 
@@ -1004,12 +1250,16 @@ msgstr ""
 msgid "Success"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Table"
 msgstr ""
 
-#: components/manage/Tiles/Table/Edit
+#: components/manage/Blocks/Table/Edit
 msgid "Table color inverted"
+msgstr ""
+
+#: components/manage/Blocks/ToC/View
+msgid "Table of Contents"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -1025,11 +1275,16 @@ msgstr "Toe te voegen tags"
 msgid "Tags to remove"
 msgstr "Te verwijderen tags"
 
+#: components/manage/Blocks/Listing/TemplateWidget
+msgid "Template"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr ""
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "Bedankt."
 
@@ -1062,10 +1317,10 @@ msgstr "Deze naam wordt getoond in de URL."
 msgid "This page does not seem to exist…"
 msgstr "Het spijt ons, maar deze pagina bestaat niet…"
 
+#: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/UsersControlpanel
-#: components/manage/Tiles/HeroImageLeft/Edit
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
 #: components/manage/Widgets/SchemaWidget
@@ -1082,15 +1337,27 @@ msgstr "Titel"
 msgid "Type"
 msgstr "Type"
 
-#: components/manage/Tiles/Text/Edit
+#: components/manage/Blocks/Video/Edit
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr ""
+
+#: components/manage/Blocks/Text/Edit
 msgid "Type text…"
 msgstr ""
 
-#: components/manage/Tiles/Title/Edit
+#: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr ""
 
-#: components/manage/Tiles/Tile/Edit
+#: components/theme/Unauthorized/Unauthorized
+msgid "Unauthorized"
+msgstr ""
+
+#: components/manage/Diff/Diff
+msgid "Unified"
+msgstr ""
+
+#: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
 msgid "Unknown Block"
 msgstr ""
@@ -1098,6 +1365,10 @@ msgstr ""
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Upload"
+
+#: components/manage/Blocks/LeadImage/Edit
+msgid "Upload a lead image in the 'Lead Image' content field."
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
@@ -1121,6 +1392,10 @@ msgstr "Bestanden uploaden"
 msgid "Used for programmatic access to the fieldset."
 msgstr ""
 
+#: components/manage/Sharing/Sharing
+msgid "User"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "User created"
 msgstr ""
@@ -1137,12 +1412,25 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/UsersControlpanel
+msgid "Users and Groups"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video"
+msgstr ""
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video URL"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
@@ -1164,6 +1452,10 @@ msgstr ""
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Onze excuses voor het ongemak, maar de pagina die u probeerde te bereiken bestaat niet. U kunt onderstaande links gebruiken om proberen te vinden wat u zocht."
+
+#: components/theme/Forbidden/Forbidden
+msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
@@ -1187,6 +1479,14 @@ msgstr "Wie"
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
+msgstr ""
+
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource, please {login} first."
+msgstr ""
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "You are using an outdated browser"
 msgstr ""
 
 #: components/theme/Comments/Comments
@@ -1225,11 +1525,19 @@ msgstr "De taal van uw voorkeur"
 msgid "box_forgot_password_option"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "common"
 msgstr ""
 
-#: config/Tiles
+#: components/manage/Blocks/Block/Edit
+msgid "delete"
+msgstr ""
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "deprecated_browser_notice_message"
+msgstr ""
+
+#: config/Blocks
 msgid "description"
 msgstr ""
 
@@ -1245,15 +1553,15 @@ msgstr ""
 msgid "heading_sent_password"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "hero"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "html"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "image"
 msgstr ""
 
@@ -1261,35 +1569,63 @@ msgstr ""
 msgid "label_my_email_address_is"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
+msgid "leadimage"
+msgstr ""
+
+#: config/Blocks
+msgid "listing"
+msgstr ""
+
+#: components/theme/Unauthorized/Unauthorized
+msgid "log in"
+msgstr ""
+
+#: config/Blocks
 msgid "maps"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "media"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "mostUsed"
+msgstr ""
+
+#: error
+msgid "or try a different page."
 msgstr ""
 
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr ""
 
-#: config/Tiles
+#: error
+msgid "return to the site root"
+msgstr ""
+
+#: config/Blocks
 msgid "table"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "text"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
 msgid "title"
 msgstr ""
 
-#: config/Tiles
+#: config/Blocks
+msgid "toc"
+msgstr ""
+
+#: components/manage/Toolbar/PersonalTools
+msgid "user avatar"
+msgstr ""
+
+#: config/Blocks
 msgid "video"
 msgstr ""
 

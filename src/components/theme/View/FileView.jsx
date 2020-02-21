@@ -5,10 +5,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { Container } from 'semantic-ui-react';
 
-import { flattenToAppURL } from '../../../helpers';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
  * File view component class.

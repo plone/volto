@@ -103,10 +103,10 @@ const Field = (props, { intl }) => {
   const Widget =
     getWidgetByFieldId(props.id) ||
     getWidgetByName(props.widget) ||
+    getWidgetByChoices(props) ||
     getWidgetByVocabulary(props.vocabulary) ||
     getWidgetByVocabularyFromHint(props) ||
     getWidgetByType(props.type) ||
-    getWidgetByChoices(props) ||
     getWidgetDefault();
 
   if (props.onOrder) {

@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`sidebar portal is not rendered when the tile is not selected 1`] = `<Fragment />`;
+exports[`sidebar portal is not rendered when the block is not selected 1`] = `<React.Fragment />`;
 
-exports[`sidebar portal is rendered when the tile is selected 1`] = `
-<Fragment>
+exports[`sidebar portal is rendered when the block is selected 1`] = `
+<React.Fragment>
   <Portal
     node={null}
   >
@@ -31,5 +31,5 @@ exports[`sidebar portal is rendered when the tile is selected 1`] = `
       </div>
     </div>
   </Portal>
-</Fragment>
+</React.Fragment>
 `;

@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
@@ -12,8 +12,8 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { Form, Toast } from '../../../components';
-import { createUser } from '../../../actions';
+import { Form, Toast } from '@plone/volto/components';
+import { createUser } from '@plone/volto/actions';
 
 const messages = defineMessages({
   title: {
@@ -107,7 +107,7 @@ class Register extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.loading && nextProps.loaded) {
       toast.success(
         <Toast
@@ -149,7 +149,7 @@ class Register extends Component {
   render() {
     return (
       <div id="page-register">
-        <Helmet title="Register" />
+        <Helmet title={this.props.intl.formatMessage(messages.register)} />
         <Form
           onSubmit={this.onSubmit}
           title={this.props.intl.formatMessage(messages.title)}

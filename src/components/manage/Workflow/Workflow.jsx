@@ -11,20 +11,28 @@ import { uniqBy } from 'lodash';
 import Select, { components } from 'react-select';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import getWorkflowMapping from '../../../constants/Workflows';
-import { Icon } from '../../../components';
-import downSVG from '../../../icons/down-key.svg';
-import upSVG from '../../../icons/up-key.svg';
-import checkSVG from '../../../icons/check.svg';
+import getWorkflowMapping from '@plone/volto/constants/Workflows';
+import { Icon } from '@plone/volto/components';
+import downSVG from '@plone/volto/icons/down-key.svg';
+import upSVG from '@plone/volto/icons/up-key.svg';
+import checkSVG from '@plone/volto/icons/check.svg';
 
-import { getContent, getWorkflow, transitionWorkflow } from '../../../actions';
+import {
+  getContent,
+  getWorkflow,
+  transitionWorkflow,
+} from '@plone/volto/actions';
 import { settings } from '~/config';
-import { Toast } from '../../../components';
+import { Toast } from '@plone/volto/components';
 
 const messages = defineMessages({
   messageUpdated: {
     id: 'Workflow updated.',
     defaultMessage: 'Workflow updated.',
+  },
+  messageNoWorkflow: {
+    id: 'No workflow',
+    defaultMessage: 'No workflow',
   },
 });
 
@@ -195,7 +203,7 @@ class Workflow extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getWorkflow(this.props.pathname);
   }
 
@@ -205,7 +213,7 @@ class Workflow extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.getWorkflow(nextProps.pathname);
     }
@@ -308,7 +316,12 @@ class Workflow extends Component {
           defaultValue={
             this.props.content.review_state
               ? selectedOption
-              : { label: 'No workflow', value: 'noworkflow' }
+              : {
+                  label: this.props.intl.formatMessage(
+                    messages.messageNoWorkflow,
+                  ),
+                  value: 'noworkflow',
+                }
           }
           isSearchable={false}
         />

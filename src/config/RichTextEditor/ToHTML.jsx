@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
+import { connect } from 'react-redux';
 
 const styles = {
   code: {
@@ -64,13 +67,32 @@ const getAtomic = (children, { data, keys }) =>
  * Note that children can be maped to render a list or do other cool stuff
  */
 const blocks = {
-  // Rendering blocks like this along with cleanup results in a single p tag for each paragraph
-  // adding an empty block closes current paragraph and starts a new one
-  // unstyled: (children, { keys }) => (
-  //   <p key={keys[0]}>{addBreaklines(children)}</p>
-  // ),
-  unstyled: (children, { keys }) =>
-    children.map(child => <p key={keys[0]}>{child}</p>),
+  unstyled: (children, { keys }) => {
+    const processedChildren = children.map(chunks =>
+      chunks.map(child => {
+        if (Array.isArray(child)) {
+          return child.map((subchild, index) => {
+            if (typeof subchild === 'string') {
+              const last = subchild.split('\n').length - 1;
+              return subchild.split('\n').map((item, index) => (
+                <React.Fragment key={index}>
+                  {item}
+                  {index !== last && <br />}
+                </React.Fragment>
+              ));
+            } else {
+              return subchild;
+            }
+          });
+        } else {
+          return child;
+        }
+      }),
+    );
+    return processedChildren.map(
+      (chunk, index) => chunk && <p key={keys[index]}>{chunk}</p>,
+    );
+  },
   atomic: getAtomic,
   blockquote: (children, { keys }) => (
     <blockquote key={keys[0]}>{addBreaklines(children)}</blockquote>
@@ -78,15 +100,35 @@ const blocks = {
   'header-one': (children, { keys }) =>
     children.map((child, i) => <h1 key={keys[i]}>{child}</h1>),
   'header-two': (children, { keys }) =>
-    children.map((child, i) => <h2 key={keys[i]}>{child}</h2>),
+    children.map((child, i) => (
+      <h2 id={keys[i]} key={keys[i]}>
+        {child}
+      </h2>
+    )),
   'header-three': (children, { keys }) =>
-    children.map((child, i) => <h3 key={keys[i]}>{child}</h3>),
+    children.map((child, i) => (
+      <h3 id={keys[i]} key={keys[i]}>
+        {child}
+      </h3>
+    )),
   'header-four': (children, { keys }) =>
-    children.map((child, i) => <h4 key={keys[i]}>{child}</h4>),
+    children.map((child, i) => (
+      <h4 id={keys[i]} key={keys[i]}>
+        {child}
+      </h4>
+    )),
   'header-five': (children, { keys }) =>
-    children.map((child, i) => <h5 key={keys[i]}>{child}</h5>),
+    children.map((child, i) => (
+      <h5 id={keys[i]} key={keys[i]}>
+        {child}
+      </h5>
+    )),
   'header-six': (children, { keys }) =>
-    children.map((child, i) => <h6 key={keys[i]}>{child}</h6>),
+    children.map((child, i) => (
+      <h6 id={keys[i]} key={keys[i]}>
+        {child}
+      </h6>
+    )),
   'code-block': (children, { keys }) => (
     <pre key={keys[0]} style={styles.codeBlock}>
       {addBreaklines(children)}
@@ -102,12 +144,39 @@ const blocks = {
     )),
 };
 
-const entities = {
-  LINK: (children, entity, { key }) => (
-    <a key={key} href={entity.url}>
+const LinkEntity = connect(state => ({
+  token: state.userSession.token,
+}))(({ token, key, url, target, download, children }) => {
+  const to = token ? url : target || url;
+  if (download) {
+    return token ? (
+      <Link key={key} to={flattenToAppURL(to)}>
+        {children}
+      </Link>
+    ) : (
+      <a key={key} href={download}>
+        {children}
+      </a>
+    );
+  }
+  return isInternalURL(to) ? (
+    <Link key={key} to={flattenToAppURL(to)}>
+      {children}
+    </Link>
+  ) : (
+    <a key={key} href={to} target="_blank" rel="noopener noreferrer">
       {children}
     </a>
+  );
+});
+
+const entities = {
+  LINK: (children, props, { key }) => (
+    <LinkEntity key={key} {...props}>
+      {children}
+    </LinkEntity>
   ),
+
   IMAGE: (children, entity, { key }) => (
     <img key={key} src={entity.src} alt={entity.alt} />
   ),

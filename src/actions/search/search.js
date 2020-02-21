@@ -8,7 +8,7 @@ import { compact, concat, isArray, join, map, pickBy, toPairs } from 'lodash';
 import {
   RESET_SEARCH_CONTENT,
   SEARCH_CONTENT,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Search content function.
@@ -43,7 +43,10 @@ export function searchContent(url, options, subrequest = null) {
     arrayOptions
       ? join(
           map(pickBy(arrayOptions), (item, key) =>
-            join(item.map(value => `${key}:list=${value}`), '&'),
+            join(
+              item.map(value => `${key}:list=${value}`),
+              '&',
+            ),
           ),
           '&',
         )

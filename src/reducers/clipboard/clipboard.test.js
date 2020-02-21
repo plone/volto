@@ -4,7 +4,7 @@ import {
   CUT,
   COPY_CONTENT,
   MOVE_CONTENT,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Clipboard reducer', () => {
   it('should return the initial state', () => {

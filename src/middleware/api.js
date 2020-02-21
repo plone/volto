@@ -8,7 +8,7 @@ import jwtDecode from 'jwt-decode';
 
 import { settings } from '~/config';
 
-import { LOGIN } from '../constants/ActionTypes';
+import { LOGIN } from '@plone/volto/constants/ActionTypes';
 
 let socket = null;
 

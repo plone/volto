@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Select, { components } from 'react-select';
 
-import { getSchema, updateContent, getContent } from '../../../actions';
-import layouts from '../../../constants/Layouts';
-import { getLayoutFieldname } from '../../../helpers';
-import { Icon } from '../../../components';
+import { getSchema, updateContent, getContent } from '@plone/volto/actions';
+import layouts from '@plone/volto/constants/Layouts';
+import { getLayoutFieldname } from '@plone/volto/helpers';
+import { Icon } from '@plone/volto/components';
 import { FormattedMessage } from 'react-intl';
+import { views } from '~/config';
 
-import downSVG from '../../../icons/down-key.svg';
-import upSVG from '../../../icons/up-key.svg';
-import checkSVG from '../../../icons/check.svg';
+import downSVG from '@plone/volto/icons/down-key.svg';
+import upSVG from '@plone/volto/icons/up-key.svg';
+import checkSVG from '@plone/volto/icons/check.svg';
 
 const Option = props => {
   return (
@@ -61,6 +62,10 @@ const customSelectStyles = {
     marginTop: 0,
     boxShadow: 'none',
     borderBottom: '2px solid #b8c6c8',
+  }),
+  menuList: (styles, state) => ({
+    ...styles,
+    maxHeight: '400px',
   }),
   indicatorSeparator: styles => ({
     ...styles,
@@ -124,7 +129,7 @@ class DisplaySelect extends Component {
   state = {
     selectedOption: {
       value: this.props.layout,
-      label: layouts[this.props.layout],
+      label: layouts[this.props.layout] || this.props.layout,
     },
   };
 
@@ -133,7 +138,7 @@ class DisplaySelect extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getSchema(this.props.type);
   }
 
@@ -143,7 +148,7 @@ class DisplaySelect extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.getSchema(nextProps.type);
     }
@@ -190,10 +195,16 @@ class DisplaySelect extends Component {
           name="display-select"
           className="react-select-container"
           classNamePrefix="react-select"
-          options={this.props.layouts.map(item => ({
-            value: item,
-            label: layouts[item] || item,
-          }))}
+          options={this.props.layouts
+            .filter(
+              layout =>
+                Object.keys(views.contentTypesViews).includes(layout) ||
+                Object.keys(views.layoutViews).includes(layout),
+            )
+            .map(item => ({
+              value: item,
+              label: layouts[item] || item,
+            }))}
           styles={customSelectStyles}
           theme={selectTheme}
           components={{ DropdownIndicator, Option }}

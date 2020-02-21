@@ -4,7 +4,7 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
@@ -23,11 +23,11 @@ import {
 import jwtDecode from 'jwt-decode';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { updateSharing, getSharing } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
-import { Icon as IconNext, Toolbar } from '../../../components';
+import { updateSharing, getSharing } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
+import { Icon as IconNext, Toolbar } from '@plone/volto/components';
 
-import backSVG from '../../../icons/back.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   searchForUserOrGroup: {
@@ -49,6 +49,26 @@ const messages = defineMessages({
   back: {
     id: 'Back',
     defaultMessage: 'Back',
+  },
+  sharing: {
+    id: 'Sharing',
+    defaultMessage: 'Sharing',
+  },
+  user: {
+    id: 'User',
+    defaultMessage: 'User',
+  },
+  group: {
+    id: 'Group',
+    defaultMessage: 'Group',
+  },
+  globalRole: {
+    id: 'Global role',
+    defaultMessage: 'Global role',
+  },
+  inheritedValue: {
+    id: 'Inherited value',
+    defaultMessage: 'Inherited value',
   },
 });
 
@@ -132,7 +152,7 @@ class SharingComponent extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       this.props.getSharing(getBaseUrl(this.props.pathname), this.state.search);
     }
@@ -247,7 +267,7 @@ class SharingComponent extends Component {
   render() {
     return (
       <Container id="page-sharing">
-        <Helmet title="Sharing" />
+        <Helmet title={this.props.intl.formatMessage(messages.sharing)} />
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage
@@ -296,7 +316,11 @@ class SharingComponent extends Component {
                     <Table.Cell>
                       <Icon
                         name={entry.type === 'user' ? 'user' : 'users'}
-                        title={entry.type === 'user' ? 'User' : 'Group'}
+                        title={
+                          entry.type === 'user'
+                            ? this.props.intl.formatMessage(messages.user)
+                            : this.props.intl.formatMessage(messages.group)
+                        }
                       />{' '}
                       {entry.title}
                       {entry.login && ` (${entry.login})`}
@@ -306,7 +330,9 @@ class SharingComponent extends Component {
                         {entry.roles[role.id] === 'global' && (
                           <Icon
                             name="check circle outline"
-                            title="Global role"
+                            title={this.props.intl.formatMessage(
+                              messages.globalRole,
+                            )}
                             color="blue"
                           />
                         )}
@@ -314,7 +340,9 @@ class SharingComponent extends Component {
                           <Icon
                             name="check circle outline"
                             color="green"
-                            title="Inherited value"
+                            title={this.props.intl.formatMessage(
+                              messages.inheritedValue,
+                            )}
                           />
                         )}
                         {typeof entry.roles[role.id] === 'boolean' && (

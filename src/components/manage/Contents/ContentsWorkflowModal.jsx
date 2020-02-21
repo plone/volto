@@ -10,8 +10,8 @@ import { compose } from 'redux';
 import { concat, filter, last, map, uniqBy } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { getWorkflow, transitionWorkflow } from '../../../actions';
-import { ModalForm } from '../../../components';
+import { getWorkflow, transitionWorkflow } from '@plone/volto/actions';
+import { ModalForm } from '@plone/volto/components';
 
 const messages = defineMessages({
   default: {
@@ -77,7 +77,7 @@ class ContentsWorkflowModal extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getWorkflow(this.props.items);
   }
 
@@ -87,7 +87,7 @@ class ContentsWorkflowModal extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.request.loading && nextProps.request.loaded) {
       this.props.onOk();
     }

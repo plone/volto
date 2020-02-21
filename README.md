@@ -41,8 +41,8 @@ First get all the requirements installed on your system.
 
 ### Prerequisites
 
-- [Node.js LTS (10.x)](https://nodejs.org/)
-- [Python 2.7.x](https://python.org/) or
+- [Node.js LTS (12.x)](https://nodejs.org/)
+- [Python 3.7.x / 2.7.x](https://python.org/) or
 - [Docker](https://www.docker.com/get-started) (if using the Plone/Guillotina docker images)
 
 ### Create Volto App
@@ -68,7 +68,7 @@ We recommend Plone as backend of choice for Volto.
 You can bootstrap a ready Docker Plone container with all the dependencies and ready for Volto use:
 
 ```shell
-$ docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
+$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.voltodemo" -e ZCML="kitconcept.voltodemo.cors" plone
 ```
 
 or as an alternative if you have experience with Plone and you have all the
@@ -94,6 +94,17 @@ Go to [http://localhost:3000](http://localhost:3000) in your browser.
 ## Demo
 
 You can try a Volto online demo in [https://volto.kitconcept.com](https://volto.kitconcept.com)
+
+## Volto in Production
+
+Volto is actively developed since 2017 and used in production since 2018 on the following websites:
+
+- [VHS Ehrenamtsportal](https://vhs-ehrenamtsportal.de) (Website to help volunteers that help refugees for the [German Adult Education Association](https://www.dvv-vhs.de/en/home/), developed by [kitconcept GmbH](https://kitconcept.com), 2018)
+- [Zeelandia](https://zeelandia.de) (Corporate website for one of the leading backery ingrediences manufactors in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2019)
+- [Excellence at Humboldt-Universität zu Berlin](https://www.alles-beginnt-mit-einer-frage.de) (Website for the excellence initiative of the [Humboldt University Berlin](https://hu-berlin.de), developed by [kitconcept GmbH](https://kitconcept.com), 2019)
+- [Forest Information System for Europe](https://forest.eea.europa.eu) (Thematic website focusing on European forests, developed by [Eau de Web](https://www.eaudeweb.ro), 2019)
+- [Talke Carrer Website](https://karriere.talke.com/) (Carrer website for [Talke](https://www.talke.com), one of the leading a chemical and petrochemical logistics companies in Germany, developed by [kitconcept GmbH](https://kitconcept.com), 2020)
+- Please create a new [issue](https://github.com/plone/volto/issues/new) or [pull request](https://github.com/plone/volto/pulls) to add your Volto-site here!
 
 ## Documentation
 
@@ -125,6 +136,9 @@ flavors: Chrome, Firefox, Safari, Edge.
 
 We do not guarantee that browsers who were deprecated by their vendors (e.g. Internet Explorer 11) will be supported by Volto in the future.
 
+## Upgrades
+
+You can find the upgrade guide here: https://docs.voltocms.com/upgrade-guide/
 
 ## Volto Development
 
@@ -150,23 +164,35 @@ $ yarn
 Either using a Docker image
 
 ```shell
-$ docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
+$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.voltodemo" -e ZCML="kitconcept.voltodemo.cors" plone
+```
+
+or using the convenience makefile command:
+
+```shell
+$ make start-backend-docker
 ```
 
 or running Plone on your machine (advanced), additional dependencies might be
-required only for Plone experienced integrators/developers. Check the [Plone
+required, only for Plone experienced integrators/developers. Check the [Plone
 Installation Documentation](https://docs.plone.org/manage/installing/installation.html).
 
 ```shell
-$ cd api
-$ ./bootstrap.sh
+$ make build-backend
 ```
+
 #### Guillotina (experimental)
 
 It still doesn't support the full API/features that Plone provides.
 
 ```shell
 $ docker-compose -f g-api/docker-compose.yml up -d
+```
+
+or using the convenience makefile command:
+
+```shell
+$ make start-backend-docker-guillotina
 ```
 
 ### Run frontend
@@ -187,8 +213,7 @@ $ yarn test
 
 ### Releasing
 
-For ease the release process, a package that helps with the process is
-installed: `release-it`.
+For ease the release process, we use `release-it` utility that helps with the process.
 
 https://www.npmjs.com/package/release-it
 
@@ -196,8 +221,8 @@ For using it and start a release you need to fulfill the requirements:
 
 - Have permissions to push on master branch
 - Have permissions on the @plone org on npmjs.com
-- Have a environment variable (`GITHUB_TOKEN`) with a GitHub personal token to
-  write the Release page on GitHub (https://www.npmjs.com/package/release-it#github-releases)
+- Have a environment variable (`GITHUB_TOKEN`) with a GitHub personal token with permissions to
+  write the Volto Release page on GitHub (https://www.npmjs.com/package/release-it#github-releases)
 
 Then the command for release:
 
@@ -242,7 +267,7 @@ $ make start-test-backend
 Start the Volto frontend:
 
 ```shell
-$ make start-test-backend
+$ make start-test-frontend
 ```
 
 Open Cypress and start acceptance tests:
@@ -263,6 +288,11 @@ If you want to use Guillotina as backend to run the tests you should run:
 ```shell
 $ yarn ci:start-api-plone-guillotina
 ```
+
+## Translations
+
+If you would like contribute to translate Volto into several languages, please, read the [Internationalization (i18n) guide](https://docs.voltocms.com/customizing/i18n/).
+
 
 ## License
 

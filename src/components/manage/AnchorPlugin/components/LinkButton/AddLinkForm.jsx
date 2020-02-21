@@ -13,8 +13,9 @@ import { map } from 'lodash';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { resetSearchContent, searchContent } from '../../../../../actions';
-import URLUtils from '../../utils/URLUtils';
+import { resetSearchContent, searchContent } from '@plone/volto/actions';
+import { addAppURL } from '@plone/volto/helpers';
+import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 const messages = defineMessages({
   placeholder: {
@@ -163,6 +164,7 @@ class AddLinkForm extends Component {
   onKeyDown(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
+      e.stopPropagation();
       this.onSubmit();
     } else if (e.key === 'Escape') {
       e.preventDefault();
@@ -233,10 +235,10 @@ class AddLinkForm extends Component {
         </div>
         <ul style={{ margin: 0, paddingLeft: '35px' }}>
           {map(this.props.search, item => (
-            <li style={{ padding: '5px' }}>
+            <li style={{ padding: '5px' }} key={item['@id']}>
               <button
                 style={{ cursor: 'pointer' }}
-                onClick={e => this.onSelectItem(e, item['@id'])}
+                onClick={e => this.onSelectItem(e, addAppURL(item['@id']))}
                 title={item['@id']}
                 role="link"
               >

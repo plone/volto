@@ -10,19 +10,19 @@ import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { concat, filter, last, map, uniqBy } from 'lodash';
 import { Portal } from 'react-portal';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { Container, Grid, Header, Icon, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import Icons from '../../../constants/ControlpanelIcons';
-import { listControlpanels } from '../../../actions';
+import Icons from '@plone/volto/constants/ControlpanelIcons';
+import { listControlpanels } from '@plone/volto/actions';
 import {
   Icon as IconNext,
   Toolbar,
   VersionOverview,
-} from '../../../components';
+} from '@plone/volto/components';
 
-import backSVG from '../../../icons/back.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   sitesetup: {
@@ -36,6 +36,14 @@ const messages = defineMessages({
   versionoverview: {
     id: 'Version Overview',
     defaultMessage: 'Version Overview',
+  },
+  moderatecomments: {
+    id: 'Moderate Comments',
+    defaultMessage: 'Moderate Comments',
+  },
+  usersandgroups: {
+    id: 'Users and Groups',
+    defaultMessage: 'Users and Groups',
   },
 });
 
@@ -67,7 +75,7 @@ class Controlpanels extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.listControlpanels();
   }
 
@@ -82,12 +90,12 @@ class Controlpanels extends Component {
         {
           '@id': '/moderate-comments',
           group: 'Content',
-          title: 'Moderate Comments',
+          title: this.props.intl.formatMessage(messages.moderatecomments),
         },
         {
           '@id': '/users',
           group: 'Users',
-          title: 'Users and Groups',
+          title: this.props.intl.formatMessage(messages.usersandgroups),
         },
       ]),
       controlpanel => ({

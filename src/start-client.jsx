@@ -5,12 +5,10 @@ import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from 'redux-connect';
 import routes from '~/routes';
+import '~/theme';
 
-import 'semantic-ui-less/semantic.less';
-import '../theme/themes/pastanaga/extras/extras.less';
-
-import configureStore from './store';
-import { Api, persistAuthToken, ScrollToTop } from './helpers';
+import configureStore from '@plone/volto/store';
+import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
 
 export const history = createBrowserHistory();
 

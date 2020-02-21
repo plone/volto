@@ -1,3 +1,7 @@
+/**
+ * PersonalTools container.
+ * @module components/manage/Toolbar/PersonalTools
+ */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -5,13 +9,13 @@ import { Link } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import cx from 'classnames';
 import { FormattedMessage, injectIntl, defineMessages } from 'react-intl';
-import { Icon } from '../../../components';
-import { getUser } from '../../../actions';
-import logoutSVG from '../../../icons/log-out.svg';
-import rightArrowSVG from '../../../icons/right-key.svg';
+import { Icon } from '@plone/volto/components';
+import { getUser } from '@plone/volto/actions';
+import logoutSVG from '@plone/volto/icons/log-out.svg';
+import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 
-import backSVG from '../../../icons/back.svg';
-import cameraSVG from '../../../icons/camera.svg';
+import backSVG from '@plone/volto/icons/back.svg';
+import cameraSVG from '@plone/volto/icons/camera.svg';
 
 const messages = defineMessages({
   preferences: {
@@ -21,6 +25,10 @@ const messages = defineMessages({
   profile: {
     id: 'Profile',
     defaultMessage: 'Profile',
+  },
+  userAvatar: {
+    id: 'user avatar',
+    defaultMessage: 'user avatar',
   },
 });
 
@@ -95,7 +103,10 @@ class PersonalTools extends Component {
         </header>
         <div className={cx('avatar', { default: !this.props.user.portrait })}>
           {this.props.user.portrait ? (
-            <img src={this.props.user.portrait} alt="user avatar" />
+            <img
+              src={this.props.user.portrait}
+              alt={this.props.intl.formatMessage(messages.userAvatar)}
+            />
           ) : (
             <Icon name={cameraSVG} size="96px" />
           )}

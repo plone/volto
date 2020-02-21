@@ -5,19 +5,20 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { Container, Image } from 'semantic-ui-react';
 import { map } from 'lodash';
 
-import { settings, tiles } from '~/config';
+import { settings, blocks } from '~/config';
 
 import {
-  getTilesFieldname,
-  getTilesLayoutFieldname,
-  hasTilesData,
-} from '../../../helpers';
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+  hasBlocksData,
+  getBaseUrl,
+} from '@plone/volto/helpers';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -32,29 +33,30 @@ const messages = defineMessages({
  * @param {Object} content Content object.
  * @returns {string} Markup of the component.
  */
-const DefaultView = ({ content, intl }) => {
-  const tilesFieldname = getTilesFieldname(content);
-  const tilesLayoutFieldname = getTilesLayoutFieldname(content);
+const DefaultView = ({ content, intl, location }) => {
+  const blocksFieldname = getBlocksFieldname(content);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
 
-  return hasTilesData(content) ? (
-    <div id="page-document" className="ui wrapper">
+  return hasBlocksData(content) ? (
+    <div id="page-document" className="ui container">
       <Helmet title={content.title} />
-      {map(content[tilesLayoutFieldname].items, tile => {
-        const Tile =
-          tiles.tilesConfig[(content[tilesFieldname]?.[tile]?.['@type'])]?.[
+      {map(content[blocksLayoutFieldname].items, block => {
+        const Block =
+          blocks.blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.[
             'view'
           ] || null;
-        return Tile !== null ? (
-          <Tile
-            key={tile}
-            id={tile}
+        return Block !== null ? (
+          <Block
+            key={block}
+            id={block}
             properties={content}
-            data={content[tilesFieldname][tile]}
+            data={content[blocksFieldname][block]}
+            path={getBaseUrl(location.pathname)}
           />
         ) : (
-          <div key={tile}>
+          <div key={block}>
             {intl.formatMessage(messages.unknownBlock, {
-              block: content[tilesFieldname]?.[tile]?.['@type'],
+              block: content[blocksFieldname]?.[block]?.['@type'],
             })}
           </div>
         );

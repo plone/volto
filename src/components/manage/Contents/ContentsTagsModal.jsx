@@ -10,8 +10,8 @@ import { compose } from 'redux';
 import { without, union, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { updateContent } from '../../../actions';
-import { ModalForm } from '../../../components';
+import { updateContent } from '@plone/volto/actions';
+import { ModalForm } from '@plone/volto/components';
 
 const messages = defineMessages({
   default: {
@@ -77,7 +77,7 @@ class ContentsTagsModal extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.request.loading && nextProps.request.loaded) {
       this.props.onOk();
     }

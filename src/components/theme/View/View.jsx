@@ -12,9 +12,13 @@ import { injectIntl } from 'react-intl';
 import qs from 'query-string';
 import { views } from '~/config';
 
-import { Comments, Tags, Toolbar } from '../../../components';
-import { listActions, getContent } from '../../../actions';
-import { BodyClass, getBaseUrl, getLayoutFieldname } from '../../../helpers';
+import { Comments, Tags, Toolbar } from '@plone/volto/components';
+import { listActions, getContent } from '@plone/volto/actions';
+import {
+  BodyClass,
+  getBaseUrl,
+  getLayoutFieldname,
+} from '@plone/volto/helpers';
 
 /**
  * View container class.
@@ -109,7 +113,7 @@ class View extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.listActions(getBaseUrl(this.props.pathname));
     this.props.getContent(
       getBaseUrl(this.props.pathname),
@@ -123,7 +127,7 @@ class View extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.listActions(getBaseUrl(nextProps.pathname));
       this.props.getContent(
@@ -175,7 +179,9 @@ class View extends Component {
   cleanViewName = dirtyDisplayName =>
     dirtyDisplayName
       .replace('Connect(', '')
+      .replace('injectIntl(', '')
       .replace(')', '')
+      .replace('connect(', '')
       .toLowerCase();
 
   /**
@@ -219,15 +225,6 @@ class View extends Component {
               : null
           }
         />
-
-        {/* Body class depending on content type */}
-        {this.props.content && this.props.content['@type'] && (
-          <BodyClass
-            className={`contenttype-${this.props.content['@type']
-              .replace(' ', '-')
-              .toLowerCase()}`}
-          />
-        )}
 
         <RenderedView
           content={this.props.content}

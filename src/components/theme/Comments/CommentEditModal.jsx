@@ -9,8 +9,8 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { updateComment } from '../../../actions';
-import { ModalForm } from '../../../components';
+import { updateComment } from '@plone/volto/actions';
+import { ModalForm } from '@plone/volto/components';
 
 const messages = defineMessages({
   editComment: {
@@ -78,7 +78,7 @@ class CommentEditModal extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.request.loading && nextProps.request.loaded) {
       this.props.onOk();
     }

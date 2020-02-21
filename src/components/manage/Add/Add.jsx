@@ -5,28 +5,32 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { keys } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
+import { Button } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { settings } from '~/config';
 
-import { createContent, getSchema } from '../../../actions';
-import { Form, Icon, Toolbar, Sidebar } from '../../../components';
+import { createContent, getSchema } from '@plone/volto/actions';
+import { Form, Icon, Toolbar, Sidebar } from '@plone/volto/components';
 import {
   getBaseUrl,
-  hasTilesData,
-  getTilesFieldname,
-  getTilesLayoutFieldname,
-} from '../../../helpers';
+  hasBlocksData,
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
+} from '@plone/volto/helpers';
 
-import saveSVG from '../../../icons/save.svg';
-import clearSVG from '../../../icons/clear.svg';
+import { blocks } from '~/config';
+
+import saveSVG from '@plone/volto/icons/save.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   add: {
@@ -98,6 +102,19 @@ class Add extends Component {
     super(props);
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+
+    if (blocks?.initialBlocks[props.type]) {
+      this.initialBlocksLayout = blocks.initialBlocks[props.type].map(item =>
+        uuid(),
+      );
+      this.initialBlocks = this.initialBlocksLayout.reduce(
+        (acc, value, index) => ({
+          ...acc,
+          [value]: { '@type': blocks.initialBlocks[props.type][index] },
+        }),
+        {},
+      );
+    }
   }
 
   /**
@@ -115,7 +132,7 @@ class Add extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       this.props.createRequest.loading &&
       nextProps.createRequest.loaded &&
@@ -162,7 +179,7 @@ class Add extends Component {
    */
   render() {
     if (this.props.schemaRequest.loaded) {
-      const visual = hasTilesData(this.props.schema.properties);
+      const visual = hasBlocksData(this.props.schema.properties);
 
       return (
         <div id="page-add">
@@ -175,8 +192,11 @@ class Add extends Component {
             ref={this.form}
             schema={this.props.schema}
             formData={{
-              [getTilesFieldname(this.props.schema.properties)]: null,
-              [getTilesLayoutFieldname(this.props.schema.properties)]: null,
+              [getBlocksFieldname(this.props.schema.properties)]: this
+                .initialBlocks,
+              [getBlocksLayoutFieldname(this.props.schema.properties)]: {
+                items: this.initialBlocksLayout,
+              },
             }}
             onSubmit={this.onSubmit}
             hideActions
@@ -193,11 +213,12 @@ class Add extends Component {
               hideDefaultViewButtons
               inner={
                 <>
-                  <button
+                  <Button
                     id="toolbar-save"
                     className="save"
                     aria-label={this.props.intl.formatMessage(messages.save)}
                     onClick={() => this.form.current.onSubmit()}
+                    loading={this.props.createRequest.loading}
                   >
                     <Icon
                       name={saveSVG}
@@ -205,8 +226,8 @@ class Add extends Component {
                       size="30px"
                       title={this.props.intl.formatMessage(messages.save)}
                     />
-                  </button>
-                  <button className="cancel" onClick={() => this.onCancel()}>
+                  </Button>
+                  <Button className="cancel" onClick={() => this.onCancel()}>
                     <Icon
                       name={clearSVG}
                       className="circled"
@@ -216,7 +237,7 @@ class Add extends Component {
                       size="30px"
                       title={this.props.intl.formatMessage(messages.cancel)}
                     />
-                  </button>
+                  </Button>
                 </>
               }
             />

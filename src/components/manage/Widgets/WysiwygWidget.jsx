@@ -42,6 +42,10 @@ const messages = defineMessages({
     id: 'Required',
     defaultMessage: 'Required',
   },
+  delete: {
+    id: 'Delete',
+    defaultMessage: 'Delete',
+  },
 });
 
 /**
@@ -281,14 +285,14 @@ class WysiwygWidget extends Component {
               {onEdit && (
                 <div className="toolbar">
                   <button
-                    className="item"
+                    className="item ui noborder button"
                     onClick={() => onEdit(id, this.schema)}
                   >
                     <Icon name="write square" size="large" color="blue" />
                   </button>
                   <button
-                    aria-label="Delete"
-                    className="item"
+                    aria-label={this.props.intl.formatMessage(messages.delete)}
+                    className="item ui noborder button"
                     onClick={() => onDelete(id)}
                   >
                     <Icon name="close" size="large" color="red" />
@@ -297,17 +301,21 @@ class WysiwygWidget extends Component {
               )}
               <div style={{ boxSizing: 'initial' }}>
                 {this.props.onChange ? (
-                  <Editor
-                    id={`field-${id}`}
-                    onChange={this.onChange}
-                    editorState={this.state.editorState}
-                    plugins={[
-                      this.state.inlineToolbarPlugin,
-                      ...settings.richTextEditorPlugins,
-                    ]}
-                    blockRenderMap={settings.extendedBlockRenderMap}
-                    blockStyleFn={settings.blockStyleFn}
-                  />
+                  <>
+                    <Editor
+                      id={`field-${id}`}
+                      onChange={this.onChange}
+                      editorState={this.state.editorState}
+                      plugins={[
+                        this.state.inlineToolbarPlugin,
+                        ...settings.richTextEditorPlugins,
+                      ]}
+                      blockRenderMap={settings.extendedBlockRenderMap}
+                      blockStyleFn={settings.blockStyleFn}
+                      customStyleMap={settings.customStyleMap}
+                    />
+                    {this.props.onChange && <InlineToolbar />}
+                  </>
                 ) : (
                   <div className="DraftEditor-root" />
                 )}
@@ -322,11 +330,10 @@ class WysiwygWidget extends Component {
           {description && (
             <Grid.Row stretched>
               <Grid.Column stretched width="12">
-                <span className="help">{description}</span>
+                <p className="help">{description}</p>
               </Grid.Column>
             </Grid.Row>
           )}
-          {this.props.onChange && <InlineToolbar />}
         </Grid>
       </Form.Field>
     );
