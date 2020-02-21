@@ -134,7 +134,7 @@ const OPTIONS = {
     [WEEKDAYS]: { rrule: RRule.WEEKLY },
     [WEEKLY]: { rrule: RRule.WEEKLY, interval: true, byday: true },
     [MONTHLY]: { rrule: RRule.MONTHLY, interval: true, bymonth: true },
-    [YEARLY]: { rrule: RRule.YEARLY, interval: true },
+    [YEARLY]: { rrule: RRule.YEARLY, interval: true, byyear: true },
   },
 };
 
@@ -248,6 +248,19 @@ class RecurrenceWidget extends Component {
     return date.toISOString().split('T')[0];
   };
 
+  getFreq = number => {
+    let freq = DAILY;
+    Object.entries(OPTIONS.frequences).forEach(([f, o]) => {
+      if (o.rrule === number) {
+        freq = f;
+      }
+    });
+    return freq;
+  };
+
+  /**
+   * Called on init, to populate form values
+   * */
   getFormValues = rruleSet => {
     console.log(rruleSet);
     //default
@@ -256,16 +269,11 @@ class RecurrenceWidget extends Component {
     };
     const rrule = rruleSet.rrules()[0];
     if (rrule) {
+      var freq = this.getFreq(rrule.options.freq);
       Object.entries(rrule.options).forEach(([option, value]) => {
         switch (option) {
           case 'freq':
-            let freq = DAILY;
-            Object.entries(OPTIONS.frequences).forEach(([f, o]) => {
-              if (o.rrule === value) {
-                freq = f;
-              }
-            });
-            formValues[option] = freq;
+            formValues[option] = this.getFreq(value);
             break;
           case 'count':
             if (value != null) {
@@ -298,19 +306,25 @@ class RecurrenceWidget extends Component {
             }
             formValues[option] = value;
             break;
-          // case 'byday':
-          //   if (value && value.length > 0) {
-          //     formValues['monthly'] = option;
-          //   }
-          //   formValues[option] = value;
-          //   break;
           case 'bynweekday':
             if (value && value.length > 0) {
               //[weekDayNumber,orinal_number] -> translated is for example: [sunday, third] -> the third sunday of the month
-              formValues['monthly'] = 'byweekday';
+
+              if (freq === MONTHLY) {
+                formValues['monthly'] = 'byweekday';
+              }
+              if (freq === YEARLY) {
+                formValues['yearly'] = 'byday';
+              }
               formValues['weekdayOfTheMonth'] = value[0][0];
               formValues['weekdayOfTheMonthIndex'] = value[0][1];
             }
+            break;
+          case 'bymonth':
+            if (freq === YEARLY) {
+              formValues['yearly'] = 'byday';
+            }
+            formValues['monthOfTheYear'] = value[0];
             break;
           default:
             formValues[option] = value;
@@ -322,14 +336,14 @@ class RecurrenceWidget extends Component {
   };
 
   updateRruleSet = (rruleSet, rruleField, rruleValue, field, value) => {
-    console.log(
-      'updateRruleSet',
-      rruleSet,
-      rruleField,
-      rruleValue,
-      field,
-      value,
-    );
+    // console.log(
+    //   'updateRruleSet',
+    //   rruleSet,
+    //   rruleField,
+    //   rruleValue,
+    //   field,
+    //   value,
+    // );
     //console.log('updaterruleset', rruleSet, rruleSet.rrules());
     var rrules = rruleSet.rrules();
 
@@ -342,6 +356,9 @@ class RecurrenceWidget extends Component {
     }
 
     rruleOptions.bynweekday = null;
+    rruleOptions.byhour = null;
+    rruleOptions.byminute = null;
+    rruleOptions.bysecond = null;
 
     var dstart =
       field === 'dtstart' ? value : Object.assign({}, rruleSet.dtstart());
@@ -400,7 +417,7 @@ class RecurrenceWidget extends Component {
         isRruleOption = false;
 
         if (value === 'bymonthday') {
-          this.onChangeRule('bymonthday', [20]); //default value
+          this.onChangeRule('bymonthday', [moment().date()]); //default value
           this.onChangeRule('byweekday', null); //default value
         }
         if (value === 'byweekday') {
@@ -418,24 +435,40 @@ class RecurrenceWidget extends Component {
       case 'weekdayOfTheMonth':
         isRruleOption = false;
         var weekday = this.getWeekday(value); // get new day
+        console.log(this.state.rruleSet.rrules()[0].origOptions);
         var n = this.state.rruleSet.rrules()[0].origOptions.byweekday[0].n;
         //set nth value
         this.onChangeRule('byweekday', [weekday.nth(n)]);
         break;
+
+      case 'yearly':
+        isRruleOption = false;
+
+        if (value === 'bymonthday') {
+          this.onChangeRule('bymonthday', [moment().date()]); //default value
+          this.onChangeRule('byweekday', null); //default value
+          this.onChangeRule('bymonth', null); //default value
+        }
+        if (value === 'byday') {
+          console.log('change byweekday', value);
+          this.onChangeRule('monthOfTheYear', [moment().month() + 1]); //default value
+          this.onChangeRule('bymonthday', null); //default value
+          this.onChangeRule('byweekday', [Days.MO.nth(1)]); //default value
+        }
+        break;
+      case 'monthOfTheYear':
+        isRruleOption = false;
+        this.onChangeRule('bymonth', value);
+        var d = this.state.rruleSet.rrules()[0].origOptions.byweekday;
+        this.onChangeRule('byweekday', d);
+        break;
       default: //do nothing
     }
 
-    // var rruleSet = this.state.rruleSet;
-
-    // /*update rruleSet */
-    // if (isRruleOption) {
-    //   rruleSet = this.updateRruleSet(this.state.rruleSet, field, value);
-    // }
-
     this.setState(
       prevState => {
-        console.log('prevState', prevState);
-        console.log('field', field, 'value', value);
+        // console.log('prevState', prevState);
+        // console.log('field', field, 'value', value);
         var rruleSet = prevState.rruleSet;
         if (isRruleOption) {
           rruleSet = this.updateRruleSet(rruleSet, field, value);
@@ -480,7 +513,6 @@ class RecurrenceWidget extends Component {
       description,
       error,
       value,
-      onChange,
       fieldSet,
       intl,
     } = this.props;
@@ -504,6 +536,12 @@ class RecurrenceWidget extends Component {
       ...map(Object.keys(ORDINAL_NUMBERS), option => ({
         value: parseInt(option),
         label: intl.formatMessage(messages[ORDINAL_NUMBERS[option]]),
+      })),
+    ];
+    const monthList = [
+      ...map(moment.months(), (m, i) => ({
+        value: i + 1,
+        label: m,
       })),
     ];
     return (
@@ -539,10 +577,6 @@ class RecurrenceWidget extends Component {
                 </Modal.Header>
                 <Modal.Content scrolling>
                   <Modal.Description>
-                    {/* {JSON.stringify(rruleSet._rrule[0].options)} */}
-
-                    <br />
-                    <br />
                     <Segment>
                       <Form>
                         <SelectWidget
@@ -792,6 +826,190 @@ class RecurrenceWidget extends Component {
                                       }
                                     >
                                       {intl.formatMessage(messages.ofTheMonth)}
+                                    </Form.Field>
+                                  </Form.Group>
+                                </Grid.Column>
+                              </Grid.Row>
+                            </Grid>
+                          </Form.Field>
+                        )}
+
+                        {/***** byyear *****/}
+                        {OPTIONS.frequences[formValues.freq].byyear && (
+                          <Form.Field inline className="text">
+                            <Grid>
+                              <Grid.Row stretched>
+                                <Grid.Column width="4">
+                                  <div className="wrapper">
+                                    <label htmlFor="interval">
+                                      {intl.formatMessage(messages.repeatOn)}
+                                    </label>
+                                  </div>
+                                </Grid.Column>
+                                <Grid.Column width="8">
+                                  <Form.Group inline>
+                                    <Form.Field>
+                                      <Radio
+                                        label=""
+                                        name="yearly"
+                                        value="bymonthday"
+                                        checked={
+                                          formValues.yearly === 'bymonthday'
+                                        }
+                                        onChange={(e, { value }) =>
+                                          this.onChangeRule('yearly', value)
+                                        }
+                                      />
+                                    </Form.Field>
+                                    <Form.Field
+                                      inline
+                                      disabled={
+                                        formValues.yearly !== 'bymonthday'
+                                      }
+                                    >
+                                      {intl.formatMessage(messages.bymonthDay)}
+                                    </Form.Field>
+                                    <Form.Field
+                                      inline
+                                      disabled={
+                                        formValues.yearly !== 'bymonthday'
+                                      }
+                                    >
+                                      <Input
+                                        type="number"
+                                        id="bymonthday"
+                                        name="bymonthday"
+                                        value={formValues.bymonthday || ''}
+                                        onChange={({ target }) => {
+                                          this.onChangeRule(
+                                            target.id,
+                                            target.value === ''
+                                              ? undefined
+                                              : target.value,
+                                          );
+                                        }}
+                                      />
+                                    </Form.Field>
+                                    <Form.Field
+                                      inline
+                                      disabled={
+                                        formValues.yearly !== 'bymonthday'
+                                      }
+                                    >
+                                      select del mese
+                                    </Form.Field>
+                                  </Form.Group>
+                                  <Form.Group inline>
+                                    <Form.Field>
+                                      <Radio
+                                        label=""
+                                        name="yearly"
+                                        value="byday"
+                                        checked={formValues.yearly === 'byday'}
+                                        onChange={(e, { value }) =>
+                                          this.onChangeRule('yearly', value)
+                                        }
+                                      />
+                                    </Form.Field>
+                                    <Form.Field
+                                      disabled={formValues.yearly !== 'byday'}
+                                    >
+                                      {intl.formatMessage(
+                                        messages.bymonthDayNumber,
+                                      )}
+                                    </Form.Field>
+
+                                    <Form.Field
+                                      disabled={formValues.yearly !== 'byday'}
+                                    >
+                                      <Select
+                                        id="weekdayOfTheMonthIndex"
+                                        name="weekdayOfTheMonthIndex"
+                                        className="react-select-container"
+                                        classNamePrefix="react-select"
+                                        defaultValue={this.getDefaultSelectValue(
+                                          weekdayOfTheMonthIndexList,
+                                          formValues['weekdayOfTheMonthIndex'],
+                                        )}
+                                        options={weekdayOfTheMonthIndexList}
+                                        styles={inlineSelectStyles}
+                                        theme={selectTheme}
+                                        components={{
+                                          DropdownIndicator,
+                                          Option,
+                                        }}
+                                        onChange={data =>
+                                          this.onChangeRule(
+                                            'weekdayOfTheMonthIndex',
+                                            data.value,
+                                          )
+                                        }
+                                      />
+                                    </Form.Field>
+                                    <Form.Field
+                                      disabled={formValues.yearly !== 'byday'}
+                                    >
+                                      <Select
+                                        isDisabled={
+                                          formValues.yearly !== 'byday'
+                                        }
+                                        id="weekdayOfTheMonth"
+                                        name="weekdayOfTheMonth"
+                                        className="react-select-container"
+                                        classNamePrefix="react-select"
+                                        defaultValue={this.getDefaultSelectValue(
+                                          weekdayOfTheMonthList,
+                                          formValues['weekdayOfTheMonth'],
+                                        )}
+                                        options={weekdayOfTheMonthList}
+                                        styles={inlineSelectStyles}
+                                        theme={selectTheme}
+                                        components={{
+                                          DropdownIndicator,
+                                          Option,
+                                        }}
+                                        onChange={data =>
+                                          this.onChangeRule(
+                                            'weekdayOfTheMonth',
+                                            data.value,
+                                          )
+                                        }
+                                      />
+                                    </Form.Field>
+                                    <Form.Field
+                                      disabled={formValues.yearly !== 'byday'}
+                                    >
+                                      {intl.formatMessage(messages.ofTheMonth)}
+                                    </Form.Field>
+                                    <Form.Field
+                                      disabled={formValues.yearly !== 'byday'}
+                                    >
+                                      <Select
+                                        isDisabled={
+                                          formValues.yearly !== 'byday'
+                                        }
+                                        id="monthOfTheYear"
+                                        name="monthOfTheYear"
+                                        className="react-select-container"
+                                        classNamePrefix="react-select"
+                                        defaultValue={this.getDefaultSelectValue(
+                                          monthList,
+                                          formValues['monthOfTheYear'],
+                                        )}
+                                        options={monthList}
+                                        styles={inlineSelectStyles}
+                                        theme={selectTheme}
+                                        components={{
+                                          DropdownIndicator,
+                                          Option,
+                                        }}
+                                        onChange={data =>
+                                          this.onChangeRule(
+                                            'monthOfTheYear',
+                                            data.value,
+                                          )
+                                        }
+                                      />
                                     </Form.Field>
                                   </Form.Group>
                                 </Grid.Column>
