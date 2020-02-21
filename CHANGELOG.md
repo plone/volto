@@ -4,8 +4,42 @@
 
 ### Added
 
+### Changes
+- Deleted Empty Select Component @aryamanpuri
+
+- Fix `RichText` Widget on normal forms @sneridagh
+- Fix Scrolling Functionality if there are many columns in table @sumukhah
+- Fix Guillotina tests @bloodbare
+
+## 4.0.0-alpha.39 (2020-02-18)
+
+### Added
+
+- Add permission check to edit form @sneridagh
+
+### Changes
+
+- Fix and improve Error in SSR @sneridagh
+- Fix `LinkAnchorPlugin` press Enter key inside blocks with draftJS widgets @sneridagh
+
+### Internal
+
+- Replace all relative paths to `@plone/volto` absolute paths to ensure you can override all the resources via component shadowing @sneridagh
+
+## 4.0.0-alpha.38 (2020-02-18)
+
+### Internal
+
+- Update to use ESLint 6 @timo
+
+## 4.0.0-alpha.37 (2020-02-18)
+
+### Added
+
 - Chose template for listing block @giuliaghisini
 - Event type view @nileshgulia1 @pnicolli
+- Add ability to define the starting blocks per content type @sneridagh
+- Reference widget: show item title and path in search and hover items selected @giuliaghisini
 
 ### Changes
 
@@ -18,6 +52,8 @@
 - Fix select widget for array inline choices fields and `z-index` problem @sneridagh
 - Improve UX of the edit block Image component @sneridagh
 - Fix on creating a new block, it should show the sidebar block properties (#1167) @sneridagh
+- Send only the changed fields on PATCH (edit content) operations @sneridagh
+- Japanese translation @terapyon
 
 ### Internal
 

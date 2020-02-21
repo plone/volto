@@ -12,8 +12,8 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { Form, Toast } from '../../../components';
-import { createUser } from '../../../actions';
+import { Form, Toast } from '@plone/volto/components';
+import { createUser } from '@plone/volto/actions';
 
 const messages = defineMessages({
   title: {

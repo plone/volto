@@ -15,11 +15,11 @@ import { Container } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 
-import { Form, Icon, Toast, Toolbar } from '../../../components';
-import { updatePassword } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
+import { Form, Icon, Toast, Toolbar } from '@plone/volto/components';
+import { updatePassword } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
 
-import backSVG from '../../../icons/back.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   changePassword: {
