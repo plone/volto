@@ -307,12 +307,10 @@ class RecurrenceWidget extends Component {
           case 'bynweekday':
             if (value && value.length > 0) {
               //[weekDayNumber,orinal_number] -> translated is for example: [sunday, third] -> the third sunday of the month
-              formValues['monthly'] = option;
-
+              formValues['monthly'] = 'byweekday';
               formValues['weekdayOfTheMonth'] = value[0][0];
               formValues['weekdayOfTheMonthIndex'] = value[0][1];
             }
-            formValues[option] = value;
             break;
           default:
             formValues[option] = value;
@@ -324,7 +322,15 @@ class RecurrenceWidget extends Component {
   };
 
   updateRruleSet = (rruleSet, rruleField, rruleValue, field, value) => {
-    console.log('updaterruleset', rruleSet, rruleSet.rrules());
+    console.log(
+      'updateRruleSet',
+      rruleSet,
+      rruleField,
+      rruleValue,
+      field,
+      value,
+    );
+    //console.log('updaterruleset', rruleSet, rruleSet.rrules());
     var rrules = rruleSet.rrules();
 
     var rruleOptions = Object.assign(
@@ -334,6 +340,8 @@ class RecurrenceWidget extends Component {
     if (rruleField) {
       rruleOptions[rruleField] = rruleValue;
     }
+
+    rruleOptions.bynweekday = null;
 
     var dstart =
       field === 'dtstart' ? value : Object.assign({}, rruleSet.dtstart());
@@ -349,6 +357,16 @@ class RecurrenceWidget extends Component {
       }
     }
     return set;
+  };
+
+  getWeekday = number => {
+    var day = null;
+    Object.keys(Days).map(d => {
+      if (Days[d].weekday === number) {
+        day = Days[d];
+      }
+    });
+    return day;
   };
 
   onChangeRule = (field, _value) => {
@@ -378,7 +396,32 @@ class RecurrenceWidget extends Component {
           this.onChangeRule('count', null); //default value
         }
         break;
+      case 'monthly':
+        isRruleOption = false;
 
+        if (value === 'bymonthday') {
+          this.onChangeRule('bymonthday', [20]); //default value
+          this.onChangeRule('byweekday', null); //default value
+        }
+        if (value === 'byweekday') {
+          console.log('change byweekday', value);
+          this.onChangeRule('byweekday', [Days.MO.nth(1)]); //default value
+          this.onChangeRule('bymonthday', null); //default value
+        }
+        break;
+      case 'weekdayOfTheMonthIndex':
+        isRruleOption = false;
+        var week_day = this.state.rruleSet.rrules()[0].origOptions.byweekday[0]; //get day from state
+        //set nth value
+        this.onChangeRule('byweekday', [week_day.nth(value)]);
+        break;
+      case 'weekdayOfTheMonth':
+        isRruleOption = false;
+        var weekday = this.getWeekday(value); // get new day
+        var n = this.state.rruleSet.rrules()[0].origOptions.byweekday[0].n;
+        //set nth value
+        this.onChangeRule('byweekday', [weekday.nth(n)]);
+        break;
       default: //do nothing
     }
 
@@ -413,6 +456,7 @@ class RecurrenceWidget extends Component {
     const element = find(choices, o => o.value === value);
     return element ? element : {};
   };
+
   toggleWeekDay = dayName => {
     var day = Days[dayName];
     var byweekday = [...this.state.formValues.byweekday];
@@ -608,9 +652,7 @@ class RecurrenceWidget extends Component {
                                   <Form.Group inline>
                                     <Form.Field>
                                       <Radio
-                                        label={intl.formatMessage(
-                                          messages.bymonthDay,
-                                        )}
+                                        label=""
                                         name="monthly"
                                         value="bymonthday"
                                         checked={
@@ -621,7 +663,20 @@ class RecurrenceWidget extends Component {
                                         }
                                       />
                                     </Form.Field>
-                                    <Form.Field inline>
+                                    <Form.Field
+                                      inline
+                                      disabled={
+                                        formValues.monthly !== 'bymonthday'
+                                      }
+                                    >
+                                      {intl.formatMessage(messages.bymonthDay)}
+                                    </Form.Field>
+                                    <Form.Field
+                                      inline
+                                      disabled={
+                                        formValues.monthly !== 'bymonthday'
+                                      }
+                                    >
                                       <Input
                                         type="number"
                                         id="bymonthday"
@@ -636,31 +691,46 @@ class RecurrenceWidget extends Component {
                                           );
                                         }}
                                       />
-
+                                    </Form.Field>
+                                    <Form.Field
+                                      inline
+                                      disabled={
+                                        formValues.monthly !== 'bymonthday'
+                                      }
+                                    >
                                       {intl.formatMessage(messages.ofTheMonth)}
                                     </Form.Field>
                                   </Form.Group>
                                   <Form.Group inline>
                                     <Form.Field>
                                       <Radio
-                                        label={intl.formatMessage(
-                                          messages.bymonthDayNumber,
-                                        )}
+                                        label=""
                                         name="monthly"
-                                        value="bynweekday"
+                                        value="byweekday"
                                         checked={
-                                          formValues.monthly === 'bynweekday'
+                                          formValues.monthly === 'byweekday'
                                         }
                                         onChange={(e, { value }) =>
                                           this.onChangeRule('monthly', value)
                                         }
                                       />
                                     </Form.Field>
-                                    <Form.Field>
+                                    <Form.Field
+                                      disabled={
+                                        formValues.monthly !== 'byweekday'
+                                      }
+                                    >
+                                      {intl.formatMessage(
+                                        messages.bymonthDayNumber,
+                                      )}
+                                    </Form.Field>
+
+                                    <Form.Field
+                                      disabled={
+                                        formValues.monthly !== 'byweekday'
+                                      }
+                                    >
                                       <Select
-                                        isDisabled={
-                                          FormData.monthly === 'bymonthday'
-                                        }
                                         id="weekdayOfTheMonthIndex"
                                         name="weekdayOfTheMonthIndex"
                                         className="react-select-container"
@@ -684,10 +754,14 @@ class RecurrenceWidget extends Component {
                                         }
                                       />
                                     </Form.Field>
-                                    <Form.Field>
+                                    <Form.Field
+                                      disabled={
+                                        formValues.monthly !== 'byweekday'
+                                      }
+                                    >
                                       <Select
                                         isDisabled={
-                                          FormData.monthly === 'bymonthday'
+                                          formValues.monthly !== 'byweekday'
                                         }
                                         id="weekdayOfTheMonth"
                                         name="weekdayOfTheMonth"
@@ -712,7 +786,11 @@ class RecurrenceWidget extends Component {
                                         }
                                       />
                                     </Form.Field>
-                                    <Form.Field>
+                                    <Form.Field
+                                      disabled={
+                                        formValues.monthly !== 'byweekday'
+                                      }
+                                    >
                                       {intl.formatMessage(messages.ofTheMonth)}
                                     </Form.Field>
                                   </Form.Group>
@@ -739,9 +817,7 @@ class RecurrenceWidget extends Component {
                                 <Form.Group inline>
                                   <Form.Field>
                                     <Radio
-                                      label={intl.formatMessage(
-                                        messages.recurrenceEndsCount,
-                                      )}
+                                      label=""
                                       name="recurrenceEnds"
                                       value="count"
                                       checked={
@@ -755,15 +831,25 @@ class RecurrenceWidget extends Component {
                                       }
                                     />
                                   </Form.Field>
-                                  <Form.Field>
+                                  <Form.Field
+                                    disabled={
+                                      formValues.recurrenceEnds !== 'count'
+                                    }
+                                  >
+                                    {intl.formatMessage(
+                                      messages.recurrenceEndsCount,
+                                    )}
+                                  </Form.Field>
+                                  <Form.Field
+                                    disabled={
+                                      formValues.recurrenceEnds !== 'count'
+                                    }
+                                  >
                                     <Input
                                       id="count"
                                       name="count"
                                       size="mini"
                                       value={formValues.count || ''}
-                                      disabled={
-                                        formValues.recurrenceEnds !== 'count'
-                                      }
                                       onChange={({ target }) => {
                                         this.onChangeRule(
                                           target.id,
@@ -773,6 +859,13 @@ class RecurrenceWidget extends Component {
                                         );
                                       }}
                                     />
+                                  </Form.Field>
+                                  <Form.Field
+                                    disabled={
+                                      formValues.recurrenceEnds !== 'count'
+                                    }
+                                  >
+                                    {' '}
                                     {intl.formatMessage(messages.occurrences)}
                                   </Form.Field>
                                 </Form.Group>
@@ -780,9 +873,7 @@ class RecurrenceWidget extends Component {
                                   <Form.Field>
                                     <Radio
                                       id="recurrenceEnds"
-                                      label={intl.formatMessage(
-                                        messages.recurrenceEndsUntil,
-                                      )}
+                                      label=""
                                       name="recurrenceEnds"
                                       value="until"
                                       checked={
@@ -796,15 +887,25 @@ class RecurrenceWidget extends Component {
                                       }
                                     />
                                   </Form.Field>
-                                  <Form.Field>
+                                  <Form.Field
+                                    disabled={
+                                      formValues.recurrenceEnds !== 'until'
+                                    }
+                                  >
+                                    {intl.formatMessage(
+                                      messages.recurrenceEndsUntil,
+                                    )}
+                                  </Form.Field>
+                                  <Form.Field
+                                    disabled={
+                                      formValues.recurrenceEnds !== 'until'
+                                    }
+                                  >
                                     <Input
                                       id="until"
                                       type="date"
                                       name="until"
                                       value={formValues.until || ''}
-                                      disabled={
-                                        formValues.recurrenceEnds !== 'until'
-                                      }
                                       onChange={({ target }) => {
                                         this.onChangeRule(
                                           target.id,

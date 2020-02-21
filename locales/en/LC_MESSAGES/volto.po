@@ -544,12 +544,20 @@ msgstr ""
 msgid "Filter…"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "First"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
 msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Fourth"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
@@ -713,6 +721,10 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Last"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr ""
@@ -802,6 +814,10 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget
 msgid "Monday and Friday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Month day"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget
@@ -1150,6 +1166,10 @@ msgstr ""
 msgid "Search users..."
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Second"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
 msgstr ""
@@ -1350,6 +1370,10 @@ msgstr ""
 msgid "There were some errors."
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Third"
+msgstr ""
+
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
 msgstr ""
@@ -1500,6 +1524,10 @@ msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weeek day of month"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget
@@ -1672,6 +1700,10 @@ msgstr ""
 
 #: config/Blocks
 msgid "mostUsed"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "of the month"
 msgstr ""
 
 #: error

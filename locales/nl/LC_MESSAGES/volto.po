@@ -563,12 +563,20 @@ msgstr "Bestandsnaam"
 msgid "Filter…"
 msgstr "Filter…"
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "First"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
 msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Fourth"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
@@ -732,6 +740,10 @@ msgstr "Items moeten uniek zijn."
 msgid "Language"
 msgstr "Taal"
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Last"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Laatst gewijzigd"
@@ -821,6 +833,10 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget
 msgid "Monday and Friday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Month day"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget
@@ -1169,6 +1185,10 @@ msgstr "Zoekresultaten voor ${term}"
 msgid "Search users..."
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Second"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
 msgstr "Selecteer de te tonen kolommen"
@@ -1369,6 +1389,10 @@ msgstr "Het {plonecms} is {copyright} 2000-{current_year} door de {plonefoundati
 msgid "There were some errors."
 msgstr "Er zijn fouten opgetreden."
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Third"
+msgstr ""
+
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
 msgstr "Deze naam wordt getoond in de URL."
@@ -1520,6 +1544,10 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
 msgstr "Wij gebruiken dit adres wanneer u uw wachtwoord wilt terugkrijgen"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weeek day of month"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget
 msgid "Weekday"
@@ -1691,6 +1719,10 @@ msgstr ""
 
 #: config/Blocks
 msgid "mostUsed"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "of the month"
 msgstr ""
 
 #: error

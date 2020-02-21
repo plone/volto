@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-02-20T10:24:59.550Z\n"
+"POT-Creation-Date: 2020-02-21T09:18:26.781Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -657,6 +657,11 @@ msgstr ""
 msgid "Filter…"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: First
+msgid "First"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Fixed width table cells
 msgid "Fixed width table cells"
@@ -665,6 +670,11 @@ msgstr ""
 #: components/theme/Forbidden/Forbidden
 # defaultMessage: Forbidden
 msgid "Forbidden"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: Fourth
+msgid "Fourth"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
@@ -866,6 +876,11 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: Last
+msgid "Last"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Last modified
 msgid "Last modified"
@@ -976,6 +991,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget
 # defaultMessage: Monday and Friday
 msgid "Monday and Friday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: Day
+msgid "Month day"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget
@@ -1402,6 +1422,11 @@ msgstr ""
 msgid "Search users..."
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: Second
+msgid "Second"
+msgstr ""
+
 #: components/manage/Contents/Contents
 # defaultMessage: Select columns to show
 msgid "Select columns to show"
@@ -1647,6 +1672,11 @@ msgstr ""
 msgid "There were some errors."
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: Third
+msgid "Third"
+msgstr ""
+
 #: components/manage/Contents/ContentsRenameModal
 # defaultMessage: This name will be displayed in the URL.
 msgid "This name will be displayed in the URL."
@@ -1830,6 +1860,11 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: We will use this address if you need to recover your password
 msgid "We will use this address if you need to recover your password"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: The
+msgid "Weeek day of month"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget
@@ -2045,6 +2080,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Most used
 msgid "mostUsed"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+# defaultMessage: of the month
+msgid "of the month"
 msgstr ""
 
 #: error

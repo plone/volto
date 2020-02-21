@@ -544,6 +544,10 @@ msgstr "Nome del file"
 msgid "Filter…"
 msgstr "Filtra…"
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "First"
+msgstr "Primo"
+
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
 msgstr "Celle della tabella a larghezza fissata"
@@ -551,6 +555,10 @@ msgstr "Celle della tabella a larghezza fissata"
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
 msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Fourth"
+msgstr "Quarto"
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
@@ -713,6 +721,10 @@ msgstr "Gli elementi devono essere unici."
 msgid "Language"
 msgstr "Lingua"
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Last"
+msgstr "Ultimo"
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Ultima modifica"
@@ -803,6 +815,10 @@ msgstr "Moderazione dei commenti"
 #: components/manage/Widgets/RecurrenceWidget
 msgid "Monday and Friday"
 msgstr "lunedi e venerdì"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Month day"
+msgstr "Giorno"
 
 #: components/manage/Widgets/RecurrenceWidget
 msgid "Monthly"
@@ -1150,6 +1166,10 @@ msgstr "Risultati per {term}"
 msgid "Search users..."
 msgstr "Cerca utenti..."
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Second"
+msgstr "Secondo"
+
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
 msgstr "Seleziona le colonne da mostrare"
@@ -1350,6 +1370,10 @@ msgstr "{plonecms} è {copyright} 2000-{current_year} della {plonefoundation} ed
 msgid "There were some errors."
 msgstr "Ci sono stati degli errori."
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Third"
+msgstr "Terzo"
+
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
 msgstr "Questo nome verrà mostrato nell'URL."
@@ -1392,7 +1416,7 @@ msgstr "Digita il titolo…"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
-msgstr ""
+msgstr "Non autorizzato"
 
 #: components/manage/Diff/Diff
 msgid "Unified"
@@ -1496,11 +1520,15 @@ msgstr "Ci scusiamo per l'inconveniente, la pagina cui stai provando ad accedere
 
 #: components/theme/Forbidden/Forbidden
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
-msgstr ""
+msgstr "Ci scusiamo per l'incontentie, ma non hai il permesso di accedere a questa risorsa."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
 msgstr "Useremo questo indirizzo email nel caso dovessi recuperare la tua password"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weeek day of month"
+msgstr "Il"
 
 #: components/manage/Widgets/RecurrenceWidget
 msgid "Weekday"
@@ -1564,7 +1592,7 @@ msgstr "Annuale"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
-msgstr ""
+msgstr "Stai cercando di accedere ad una risorsa protetta, per visualizzarla devi {login}"
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
@@ -1673,6 +1701,10 @@ msgstr "media"
 #: config/Blocks
 msgid "mostUsed"
 msgstr "Più usati"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "of the month"
+msgstr "del mese"
 
 #: error
 msgid "or try a different page."

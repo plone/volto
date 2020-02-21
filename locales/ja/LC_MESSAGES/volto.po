@@ -551,12 +551,20 @@ msgstr "ファイル名"
 msgid "Filter…"
 msgstr "フィルター..."
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "First"
+msgstr ""
+
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
 msgstr "テーブルのセル幅を固定"
 
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Fourth"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
@@ -720,6 +728,10 @@ msgstr "アイテムはユニークである必要があります。"
 msgid "Language"
 msgstr "言語"
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Last"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "最終変更"
@@ -809,6 +821,10 @@ msgstr "コメントのモデレート"
 
 #: components/manage/Widgets/RecurrenceWidget
 msgid "Monday and Friday"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Month day"
 msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget
@@ -1157,6 +1173,10 @@ msgstr "検索"
 msgid "Search users..."
 msgstr "検索"
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Second"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
 msgstr "表示する列を選択"
@@ -1357,6 +1377,10 @@ msgstr "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundatio
 msgid "There were some errors."
 msgstr "いくつかのエラーが発生しました"
 
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Third"
+msgstr ""
+
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
 msgstr "この名前はURLの一部として使用されます"
@@ -1508,6 +1532,10 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
 msgstr "あなたのパスワードを回復する必要がある場合、このアドレスが使われます。"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "Weeek day of month"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget
 msgid "Weekday"
@@ -1680,6 +1708,10 @@ msgstr "メディア"
 #: config/Blocks
 msgid "mostUsed"
 msgstr "よく使う物"
+
+#: components/manage/Widgets/RecurrenceWidget
+msgid "of the month"
+msgstr ""
 
 #: error
 msgid "or try a different page."
