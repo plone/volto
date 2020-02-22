@@ -22,5 +22,6 @@ jobs:
     - run: yarn run lint
     - run: yarn run code-analysis:i18n
     - run: yarn test:ci
+    - run: make build-backend
       env:
         CI: true
