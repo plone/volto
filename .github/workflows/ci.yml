@@ -22,6 +22,5 @@ jobs:
     - run: yarn run lint
     - run: yarn run code-analysis:i18n
     - run: yarn test:ci
-    - run: yarn ci:cypress:run
       env:
         CI: true
