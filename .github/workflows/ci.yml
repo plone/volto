@@ -51,6 +51,7 @@ jobs:
     - run: pip install virtualenv
     - run: (cd api && virtualenv --clear --python=python3 .)
     - run: (cd api && bin/pip install --upgrade pip)
+    - run: (cd api && ls -al)
     - run: (cd api && bin/pip install -r requirements.txt)
     - run: (cd api && bin/buildout)
       env:
