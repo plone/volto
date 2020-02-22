@@ -7,8 +7,9 @@
 - Add pagination support to listing blocks @sneridagh
 
 ### Changes
-- Deleted Empty Select Component @aryamanpuri
 
+- Fix Video and Maps blocks hydration quirks on view mode @sneridagh
+- Deleted Empty Select Component @aryamanpuri
 - Fix `RichText` Widget on normal forms @sneridagh
 - Fix Scrolling Functionality if there are many columns in table @sumukhah
 - Fix Guillotina tests @bloodbare
