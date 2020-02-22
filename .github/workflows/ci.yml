@@ -27,6 +27,6 @@ jobs:
     - run: yarn run code-analysis:i18n
     - run: yarn test:ci
     - run: pip install virtualenv
-    - run: make build-backend
+    - run: (cd api && virtualenv --clear --python=python3 .)
       env:
         CI: true
