@@ -55,10 +55,6 @@
     [class*='or lower hidden']:not(.mobile) {
       display: none !important;
     }
-
-    .anontools-view {
-      display: none;
-    }
   }
   @media only screen and (min-width: @computerBreakpoint + @offset) and (max-width: @largestSmallMonitor + @offset) {
     .contentWidthMedia(@computerWidth, @computerGutter, -30px);

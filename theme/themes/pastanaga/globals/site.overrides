@@ -1,3 +1,10 @@
 /*******************************
         Global Overrides
 *******************************/
+body:not(.has-toolbar):not(.has-sidebar):not(.has-toolbar-collapsed):not(.has-sidebar-collapsed) {
+  @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+    .anontools-view {
+      display: none !important;
+    }
+  }
+}
