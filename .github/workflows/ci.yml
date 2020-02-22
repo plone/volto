@@ -55,11 +55,12 @@ jobs:
       working-directory: api
       run: ls -al
     - run: pip install virtualenv
-    - run: (cd api && virtualenv --clear --python=python3 .)
+    - name: create virtualenv
+      working-directory: api
+      run: virtualenv --clear --python=python3 .
     - name: debug
       working-directory: api
       run: ls -al
-    - run: (cd api && bin/pip install --upgrade pip)
     - name: debug
       run: ls -al
     - name: debug
