@@ -71,9 +71,9 @@ jobs:
       run: ls -al
     - name: pip install
       working-directory: api
-      run: bin/pip install -r requirements.txt
+      run: pip install -r requirements.txt
     - name: buildout
       working-directory: api
-      run: bin/buildout
+      run: buildout
       env:
         CI: true
