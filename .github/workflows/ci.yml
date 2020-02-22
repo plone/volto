@@ -52,11 +52,13 @@ jobs:
     - run: (cd api && virtualenv --clear --python=python3 .)
     - run: (cd api && bin/pip install --upgrade pip)
     - name: debug
-      working-directory: ${{ github.workspace }}
-      run: (cd api && ls -al)
+      working-directory: ${{ github.workspace }}/api
+      run: ls -al
     - name: pip install
-      working-directory: ${{ github.workspace }}
-      run: (cd api && bin/pip install -r requirements.txt)
-    - run: (cd api && bin/buildout)
+      working-directory: ${{ github.workspace }}/api
+      run: bin/pip install -r requirements.txt
+    - name: buildout
+      working-directory: ${{ github.workspace }}/api
+      run: bin/buildout
       env:
         CI: true
