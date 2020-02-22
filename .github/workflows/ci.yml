@@ -52,6 +52,8 @@ jobs:
     - run: (cd api && virtualenv --clear --python=python3 .)
     - run: (cd api && bin/pip install --upgrade pip)
     - name: debug
+      run: ls -al
+    - name: debug
       working-directory: ${{ github.workspace }}/api
       run: ls -al
     - name: pip install
