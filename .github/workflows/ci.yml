@@ -29,17 +29,22 @@ jobs:
         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-yarn-
-    # python
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
-      with:
-        python-version: ${{ matrix.python-version }}
+    # node install
     - run: yarn install --frozen-lockfile
     - run: yarn run prettier
     - run: yarn run lint
     - run: yarn run code-analysis:i18n
     - run: yarn test:ci
+    # python
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    # python install
     - run: pip install virtualenv
     - run: (cd api && virtualenv --clear --python=python3 .)
+    - run: (cd api && bin/pip install --upgrade pip)
+    - run: (cd api && bin/pip install -r requirements.txt)
+    - run: (cd api && bin/buildout)
       env:
         CI: true
