@@ -51,8 +51,14 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-pip-
     # python install
+    - name: debug
+      working-directory: api
+      run: ls -al
     - run: pip install virtualenv
     - run: (cd api && virtualenv --clear --python=python3 .)
+    - name: debug
+      working-directory: api
+      run: ls -al
     - run: (cd api && bin/pip install --upgrade pip)
     - name: debug
       run: ls -al
