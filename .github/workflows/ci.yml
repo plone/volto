@@ -37,9 +37,13 @@ jobs:
 
     # node install
     - run: yarn install --frozen-lockfile
+
+    # node code analysis
     - run: yarn run prettier
     - run: yarn run lint
     - run: yarn run code-analysis:i18n
+
+    # node test
     - run: yarn test:ci
 
     # python setup
