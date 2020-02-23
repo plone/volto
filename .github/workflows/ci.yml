@@ -16,11 +16,13 @@ jobs:
     - name: debug
       working-directory: api
       run: ls -al
-    # node
+
+    # node setup
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+
     # node cache
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
@@ -32,17 +34,20 @@ jobs:
         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-yarn-
+
     # node install
     - run: yarn install --frozen-lockfile
     - run: yarn run prettier
     - run: yarn run lint
     - run: yarn run code-analysis:i18n
     - run: yarn test:ci
-    # python
+
+    # python setup
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v1
       with:
         python-version: ${{ matrix.python-version }}
+
     # python cache
     - uses: actions/cache@v1
       with:
@@ -50,14 +55,9 @@ jobs:
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
         restore-keys: |
           ${{ runner.os }}-pip-
+
     # python install
-    - name: debug
-      working-directory: api
-      run: ls -al
     - run: pip install virtualenv
-    - name: debug
-      working-directory: api
-      run: ls -al
     - name: pip install
       working-directory: api
       run: pip install -r requirements.txt
