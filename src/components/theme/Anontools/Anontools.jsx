@@ -50,7 +50,7 @@ class Anontools extends Component {
   render() {
     return (
       !this.props.token && (
-        <Menu stackable pointing secondary floated="right">
+        <Menu pointing secondary floated="right">
           <div role="listitem" className="item">
             <Link
               to={`/login${

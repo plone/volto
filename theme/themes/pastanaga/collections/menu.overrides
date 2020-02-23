@@ -108,7 +108,7 @@
     margin: 0 0 0 40px;
     border: 0;
 
-    @media only screen and (max-width: @largestMobileScreen) {
+    @media only screen and (max-width: @largestTabletScreen) {
       margin-bottom: 20px;
       margin-left: 0;
     }
@@ -118,7 +118,7 @@
       margin: 0;
       text-transform: uppercase;
 
-      @media only screen and (min-width: @largestMobileScreen) {
+      @media only screen and (min-width: @largestTabletScreen) {
         padding: 1.7em 0 @relativeBig;
         margin: 0 unit(@relativeLarge * 2, em) 0 0;
       }
@@ -128,14 +128,16 @@
 
 .tools {
   .ui.secondary.pointing.menu {
+    margin: 0 @relativeMini 0 0;
+
     .item {
       // padding-top: @relativeMini;
       // padding-bottom: 0;
-      padding: @relativeMini 0 0;
-      text-transform: lowercase;
-      @media only screen and (min-width: @largestMobileScreen) {
+      padding: @relativeSmall 0 @relativeMini;
+      margin: 0 @relativeMini 0 0;
+      text-transform: none;
+      @media only screen and (min-width: @largestTabletScreen) {
         padding: 1.7em 0 @relativeBig;
-        margin: 0 @relativeMini 0 0;
       }
     }
   }
