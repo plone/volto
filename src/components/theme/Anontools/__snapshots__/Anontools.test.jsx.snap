@@ -2,8 +2,7 @@
 
 exports[`Anontools renders an anontools component when no token is specified 1`] = `
 <div
-  className="ui horizontal right floated list"
-  role="list"
+  className="ui pointing secondary stackable right floated menu"
 >
   <div
     className="item"

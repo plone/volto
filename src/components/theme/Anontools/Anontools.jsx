@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { List } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 
 import { settings } from '~/config';
@@ -50,8 +50,7 @@ class Anontools extends Component {
   render() {
     return (
       !this.props.token && (
-        <List floated="right" horizontal>
-          {/* needs divs around links for a11y, and semanticui insists on using List as div role="list" instead of simply using <ul></ul> */}
+        <Menu stackable pointing secondary floated="right">
           <div role="listitem" className="item">
             <Link
               to={`/login${
@@ -71,7 +70,7 @@ class Anontools extends Component {
               <FormattedMessage id="Register" defaultMessage="Register" />
             </Link>
           </div>
-        </List>
+        </Menu>
       )
     );
   }

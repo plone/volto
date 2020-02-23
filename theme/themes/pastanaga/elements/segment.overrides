@@ -8,13 +8,11 @@
 
 .ui.basic.segment .header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
 
   .logo-nav-wrapper {
     display: flex;
     flex: 1;
-    align-items: center;
 
     .logo {
       flex: 0 0 auto;
@@ -37,6 +35,11 @@
       @media only screen and (max-width: @largestMobileScreen) {
         overflow-x: initial;
       }
+
+      .ui.secondary.pointing.menu {
+        display: flex;
+        flex-wrap: wrap;
+      }
     }
   }
 
@@ -47,6 +50,18 @@
     .logo-nav-wrapper {
       align-items: initial;
       justify-content: space-between;
+    }
+  }
+
+  .tools {
+  }
+
+  .search {
+    form {
+      @media only screen and (min-width: @largestMobileScreen) {
+        padding: 1.7em 0 @relativeBig;
+        margin: 0 unit(@relativeLarge * 2, em) 0 0;
+      }
     }
   }
 }
