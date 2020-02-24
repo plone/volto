@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { getBaseUrl } from '../../../helpers';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   cancel: {

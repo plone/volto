@@ -142,3 +142,26 @@
     display: block;
   }
 }
+
+/* Pagination */
+.pagination-wrapper {
+  text-align: center;
+}
+
+.ui.pagination.menu {
+  border: none;
+  box-shadow: none;
+
+  .item {
+    color: @linkColor;
+
+    &:before {
+      display: none;
+    }
+  }
+
+  .active.item {
+    background: none;
+    color: @textColor;
+  }
+}

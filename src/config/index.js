@@ -21,7 +21,12 @@ import {
 } from './RichTextEditor/Blocks';
 import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
 import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
-import { groupBlocksOrder, requiredBlocks, blocksConfig } from './Blocks';
+import {
+  groupBlocksOrder,
+  requiredBlocks,
+  blocksConfig,
+  initialBlocks,
+} from './Blocks';
 
 export const settings = {
   host: process.env.HOST || 'localhost',
@@ -44,6 +49,7 @@ export const settings = {
   listingPreviewImageField: 'image',
   customStyleMap: null,
   notSupportedBrowsers: ['ie'],
+  defaultPageSize: 25,
 };
 
 export const widgets = {
@@ -62,4 +68,5 @@ export const blocks = {
   requiredBlocks,
   blocksConfig,
   groupBlocksOrder,
+  initialBlocks,
 };

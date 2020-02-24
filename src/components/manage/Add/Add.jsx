@@ -14,20 +14,23 @@ import { Button } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { settings } from '~/config';
 
-import { createContent, getSchema } from '../../../actions';
-import { Form, Icon, Toolbar, Sidebar } from '../../../components';
+import { createContent, getSchema } from '@plone/volto/actions';
+import { Form, Icon, Toolbar, Sidebar } from '@plone/volto/components';
 import {
   getBaseUrl,
   hasBlocksData,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '../../../helpers';
+} from '@plone/volto/helpers';
 
-import saveSVG from '../../../icons/save.svg';
-import clearSVG from '../../../icons/clear.svg';
+import { blocks } from '~/config';
+
+import saveSVG from '@plone/volto/icons/save.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   add: {
@@ -99,6 +102,19 @@ class Add extends Component {
     super(props);
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+
+    if (blocks?.initialBlocks[props.type]) {
+      this.initialBlocksLayout = blocks.initialBlocks[props.type].map(item =>
+        uuid(),
+      );
+      this.initialBlocks = this.initialBlocksLayout.reduce(
+        (acc, value, index) => ({
+          ...acc,
+          [value]: { '@type': blocks.initialBlocks[props.type][index] },
+        }),
+        {},
+      );
+    }
   }
 
   /**
@@ -176,8 +192,11 @@ class Add extends Component {
             ref={this.form}
             schema={this.props.schema}
             formData={{
-              [getBlocksFieldname(this.props.schema.properties)]: null,
-              [getBlocksLayoutFieldname(this.props.schema.properties)]: null,
+              [getBlocksFieldname(this.props.schema.properties)]: this
+                .initialBlocks,
+              [getBlocksLayoutFieldname(this.props.schema.properties)]: {
+                items: this.initialBlocksLayout,
+              },
             }}
             onSubmit={this.onSubmit}
             hideActions

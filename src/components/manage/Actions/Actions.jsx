@@ -12,9 +12,9 @@ import { Dropdown, Icon } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { cut, copy, copyContent, moveContent } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
-import { ContentsRenameModal, Toast } from '../../../components';
+import { cut, copy, copyContent, moveContent } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
+import { ContentsRenameModal, Toast } from '@plone/volto/components';
 
 const messages = defineMessages({
   cut: {

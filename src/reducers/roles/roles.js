@@ -3,7 +3,7 @@
  * @module reducers/roles/roles
  */
 
-import { LIST_ROLES } from '../../constants/ActionTypes';
+import { LIST_ROLES } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   error: null,

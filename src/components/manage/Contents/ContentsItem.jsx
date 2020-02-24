@@ -12,7 +12,7 @@ import moment from 'moment';
 import { DragSource, DropTarget } from 'react-dnd';
 import { FormattedMessage } from 'react-intl';
 
-import { getIcon } from '../../../helpers';
+import { getIcon } from '@plone/volto/helpers';
 
 /**
  * Contents item component class.

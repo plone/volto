@@ -12,10 +12,10 @@ import { Button } from 'semantic-ui-react';
 import pretty from 'pretty';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { Icon } from '../../../../components';
-import showSVG from '../../../../icons/show.svg';
-import clearSVG from '../../../../icons/clear.svg';
-import codeSVG from '../../../../icons/code.svg';
+import { Icon } from '@plone/volto/components';
+import showSVG from '@plone/volto/icons/show.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
+import codeSVG from '@plone/volto/icons/code.svg';
 
 const messages = defineMessages({
   source: {

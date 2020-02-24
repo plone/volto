@@ -6,7 +6,7 @@ import {
   GET_CONTENT,
   RESET_CONTENT,
   UPDATE_CONTENT,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Content reducer', () => {
   it('should return the initial state', () => {
