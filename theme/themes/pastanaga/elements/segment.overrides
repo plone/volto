@@ -27,6 +27,9 @@
     }
 
     .navigation {
+      // -ms-overflow-style: none; /* IE 10+ */
+      // overflow-x: auto;
+
       &::-webkit-scrollbar {
         height: 0; /* remove scrollbar space */
         background: transparent; /* optional: just make scrollbar invisible */

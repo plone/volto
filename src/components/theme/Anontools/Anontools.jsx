@@ -51,8 +51,9 @@ class Anontools extends Component {
     return (
       !this.props.token && (
         <Menu pointing secondary floated="right">
-          <div role="listitem" className="item">
+          <Menu.Item>
             <Link
+              aria-label="login"
               to={`/login${
                 this.props.content
                   ? `?return_url=${this.props.content['@id'].replace(
@@ -64,12 +65,12 @@ class Anontools extends Component {
             >
               <FormattedMessage id="Log in" defaultMessage="Log in" />
             </Link>
-          </div>
-          <div role="listitem" className="item">
-            <Link to="/register">
+          </Menu.Item>
+          <Menu.Item>
+            <Link aria-label="register" to="/register">
               <FormattedMessage id="Register" defaultMessage="Register" />
             </Link>
-          </div>
+          </Menu.Item>
         </Menu>
       )
     );

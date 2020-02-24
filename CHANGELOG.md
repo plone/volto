@@ -30,6 +30,7 @@
 - Fix Guillotina tests @bloodbare
 - Fix problem with not wrapped element in `Provider` store in `WysiwygWidget` component
   due that now, the links are wrapped with a connected component @sneridagh
+- Responsive header @ksuess
 
 ## 4.0.0-alpha.39 (2020-02-18)
 
