@@ -33,6 +33,11 @@ test('renders a ListingBody component', () => {
         },
       },
     },
+    content: {
+      data: {
+        is_folderish: true,
+      },
+    },
     intl: {
       locale: 'en',
       messages: {},
@@ -56,6 +61,7 @@ test('renders a ListingBody component', () => {
           properties={{ is_folderish: true }}
           block="1234"
           onChangeBlock={() => {}}
+          path={() => {}}
         />
       </MemoryRouter>
     </Provider>,

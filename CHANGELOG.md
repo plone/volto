@@ -6,6 +6,127 @@
 
 ### Changes
 
+## 4.0.0-alpha.40 (2020-02-24)
+
+### Added
+
+- Add pagination support to listing blocks @sneridagh
+
+### Changes
+
+- Fix Video and Maps blocks hydration quirks on view mode @sneridagh
+- Deleted Empty Select Component @aryamanpuri
+- Fix `RichText` Widget on normal forms @sneridagh
+- Fix Scrolling Functionality if there are many columns in table @sumukhah
+- Fix Guillotina tests @bloodbare
+- Fix problem with not wrapped element in `Provider` store in `WysiwygWidget` component
+  due that now, the links are wrapped with a connected component @sneridagh
+
+## 4.0.0-alpha.39 (2020-02-18)
+
+### Added
+
+- Add permission check to edit form @sneridagh
+
+### Changes
+
+- Fix and improve Error in SSR @sneridagh
+- Fix `LinkAnchorPlugin` press Enter key inside blocks with draftJS widgets @sneridagh
+
+### Internal
+
+- Replace all relative paths to `@plone/volto` absolute paths to ensure you can override all the resources via component shadowing @sneridagh
+
+## 4.0.0-alpha.38 (2020-02-18)
+
+### Internal
+
+- Update to use ESLint 6 @timo
+
+## 4.0.0-alpha.37 (2020-02-18)
+
+### Added
+
+- Chose template for listing block @giuliaghisini
+- Event type view @nileshgulia1 @pnicolli
+- Add ability to define the starting blocks per content type @sneridagh
+- Reference widget: show item title and path in search and hover items selected @giuliaghisini
+
+### Changes
+
+- Fix the "jump" on the blocks editor on focusing blocks @sneridagh
+- Include link and size info to the full size image in `ImageView` view component @sneridagh
+- In the Display menu, only show views that are implemented @pnicolli
+- Hide Blocks fields in Layout fieldset in Add/Edit forms @pnicolli
+- Updated italian translations @nzambello
+- Fallback for non existing layout views registered in `constants/Layouts` when selected in the widget @sneridagh
+- Fix select widget for array inline choices fields and `z-index` problem @sneridagh
+- Improve UX of the edit block Image component @sneridagh
+- Fix on creating a new block, it should show the sidebar block properties (#1167) @sneridagh
+- Send only the changed fields on PATCH (edit content) operations @sneridagh
+- Japanese translation @terapyon
+
+### Internal
+
+- Added forest.eea.europa.eu as deployed Volto in production @tiberiuichim
+- Add SemanticUI responsive variables to the responsive utils @sneridagh
+- Added `yarnhook` to the build @sneridagh
+
+## 4.0.0-alpha.36 (2020-02-03)
+
+### Changes
+
+- Fix unable to login from /logout page (#1147) @sneridagh
+- Fix sitemap.xml by increasing the batch size @robgietema
+- Browser detect feature, adding a deprecation message for ancient browsers in the `App` component @sneridagh
+- Adding fallback in the edit form, in case the blocks related fields are empty, so we are sure that the edit form shows at least the default blocks @sneridagh
+- Fix shift return in tables @robgietema
+
+## 4.0.0-alpha.35 (2020-01-31)
+
+### Changes
+
+- Fix CSS when multiselection widgets have multiple items, then provoke a line jump @sneridagh
+- added new italian translations, added italian to available languages, translated some static string
+- updated italian translations
+- Fix listing block sidebar focus @sneridagh
+- Fix getBaseUrl helper method to not match inner occurrences of nonContentRoutes @sneridagh
+
+## 4.0.0-alpha.34 (2020-01-26)
+
+### Changes
+
+- Fix token expiration/renewer timer, this fixes #674 @sneridagh
+
+## 4.0.0-alpha.33 (2020-01-26)
+
+### Changes
+
+- Updated Maps block to the sidebar and image block look and feel @sneridagh
+- Update video block to the sidebar and get the image block look and feel @sneridagh
+
+### Internal
+
+- Fix and update to latest husky and lint-staged @sneridagh
+- Fix for i18n to use defaultMessages instead to default to the id @sneridagh
+- Update `babel-plugin-react-intl` to latest @sneridagh
+
+## 4.0.0-alpha.32 (2020-01-24)
+
+### Added
+
+- Lead image behavior block @sneridagh sponsored by CMSCOM.jp @terapyon
+
+### Changes
+
+- Make login component honors the returnUrl prop if called from any pathname @sneridagh
+
+### Internal
+
+- Try to improve the realibility of the Cypress tests, reorganize commands @sneridagh
+- Upgrade to Plone 5.2.1, add `Products.PloneHotfix20200121` @sneridagh
+- Force global use of `browserslist` package to get rid of message on build @sneridagh
+
 ## 4.0.0-alpha.31 (2020-01-22)
 
 ### Changes
@@ -117,6 +238,7 @@
 
 - Implementation of `Portuguese (BR)` translation @LeuAlmeida
 - Added translations to spanish @macagua
+- Added AlbumView @wkbktill @alexbueckig
 
 ### Changes
 

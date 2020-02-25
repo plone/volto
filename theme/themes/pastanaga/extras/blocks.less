@@ -63,6 +63,11 @@
   align-items: center;
   justify-content: center;
 
+  .message-text {
+    margin-top: 20px;
+    color: #767676;
+  }
+
   span {
     margin-top: 20px;
   }
@@ -266,7 +271,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 
   .toolbar-inner {
     display: flex;
-    min-width: 430px;
+    width: 450px;
     height: 40px;
     padding: 4px;
     background-color: rgba(255, 255, 255, 0.975);
@@ -617,6 +622,10 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     .icon {
       margin-bottom: 10px !important;
     }
+
+    &.table {
+      border: none;
+    }
   }
 
   .ui.accordion {
@@ -715,7 +724,8 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
 }
 
 .sidebar-listing-data {
-  &.ui.form.segment {
+  &.ui.form.segment,
+  &.listing-style {
     padding-bottom: 20px;
   }
 

@@ -14,8 +14,8 @@ import request from 'superagent';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
-import { Form, Toast } from '../../../components';
-import languages from '../../../constants/Languages';
+import { Form, Toast } from '@plone/volto/components';
+import languages from '@plone/volto/constants/Languages';
 
 const messages = defineMessages({
   personalPreferences: {
@@ -155,8 +155,5 @@ class PersonalPreferences extends Component {
 
 export default compose(
   injectIntl,
-  connect(
-    null,
-    { updateIntl },
-  ),
+  connect(null, { updateIntl }),
 )(PersonalPreferences);

@@ -14,10 +14,10 @@ import { Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
-import { Form, Icon, Toolbar, Toast } from '../../../components';
-import { updateControlpanel, getControlpanel } from '../../../actions';
+import { Form, Icon, Toolbar, Toast } from '@plone/volto/components';
+import { updateControlpanel, getControlpanel } from '@plone/volto/actions';
 
-import backSVG from '../../../icons/back.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   changesSaved: {

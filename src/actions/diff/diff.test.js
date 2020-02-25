@@ -1,5 +1,5 @@
 import { getDiff } from './diff';
-import { GET_DIFF } from '../../constants/ActionTypes';
+import { GET_DIFF } from '@plone/volto/constants/ActionTypes';
 
 describe('Diff action', () => {
   describe('getDiff', () => {

@@ -9,41 +9,19 @@ import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Button, Input, Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 
-import { Icon } from '../../../../components';
-import imageLeftSVG from '../../../../icons/image-left.svg';
-import imageRightSVG from '../../../../icons/image-right.svg';
-import imageFitSVG from '../../../../icons/image-fit.svg';
-import imageFullSVG from '../../../../icons/image-full.svg';
-import videoSVG from '../../../../icons/videocamera.svg';
+import { Icon, SidebarPortal, VideoSidebar } from '@plone/volto/components';
+import clearSVG from '@plone/volto/icons/clear.svg';
+import aheadSVG from '@plone/volto/icons/ahead.svg';
+import videoBlockSVG from '@plone/volto/components/manage/Blocks/Video/block-video.svg';
 
 const messages = defineMessages({
-  save: {
-    id: 'Save',
-    defaultMessage: 'Save',
-  },
-  left: {
-    id: 'Left',
-    defaultMessage: 'Left',
-  },
-  right: {
-    id: 'Right',
-    defaultMessage: 'Right',
-  },
-  center: {
-    id: 'Center',
-    defaultMessage: 'Center',
-  },
-  full: {
-    id: 'Full',
-    defaultMessage: 'Full',
-  },
   VideoFormDescription: {
     id: 'Specify a youtube video or playlist url',
     defaultMessage: 'Specify a youtube video or playlist url',
   },
   VideoBlockInputPlaceholder: {
-    id: 'Enter Video URL',
-    defaultMessage: 'Enter Video URL',
+    id: 'Type a Video (YouTube, Vimeo or mp4) URL',
+    defaultMessage: 'Type a Video (YouTube, Vimeo or mp4) URL',
   },
 });
 
@@ -112,18 +90,11 @@ class Edit extends Component {
     });
   }
 
-  /**
-   * Align block handler
-   * @method onAlignBlock
-   * @param {string} align Alignment option
-   * @returns {undefined}
-   */
-  onAlignBlock(align) {
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
-      align,
+  resetSubmitUrl = () => {
+    this.setState({
+      url: '',
     });
-  }
+  };
 
   /**
    * Keydown handler on Variant Menu Form
@@ -163,66 +134,6 @@ class Edit extends Component {
           this.props.data.align,
         )}
       >
-        {this.props.selected && !!this.props.data.url && (
-          <div className="toolbar">
-            <Button.Group>
-              <Button
-                icon
-                basic
-                aria-label={this.props.intl.formatMessage(messages.left)}
-                onClick={this.onAlignBlock.bind(this, 'left')}
-                active={data.align === 'left'}
-              >
-                <Icon name={imageLeftSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                aria-label={this.props.intl.formatMessage(messages.right)}
-                onClick={this.onAlignBlock.bind(this, 'right')}
-                active={data.align === 'right'}
-              >
-                <Icon name={imageRightSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                aria-label={this.props.intl.formatMessage(messages.center)}
-                onClick={this.onAlignBlock.bind(this, 'center')}
-                active={data.align === 'center' || !data.align}
-              >
-                <Icon name={imageFitSVG} size="24px" />
-              </Button>
-            </Button.Group>
-            <Button.Group>
-              <Button
-                icon
-                basic
-                aria-label={this.props.intl.formatMessage(messages.full)}
-                onClick={this.onAlignBlock.bind(this, 'full')}
-                active={data.align === 'full'}
-              >
-                <Icon name={imageFullSVG} size="24px" />
-              </Button>
-            </Button.Group>
-          </div>
-        )}
-        {this.props.selected && !this.props.data.url && (
-          <div className="toolbar">
-            <Icon name={videoSVG} size="24px" />
-            <Input
-              onKeyDown={this.onKeyDownVariantMenuForm}
-              onChange={this.onChangeUrl}
-              placeholder={this.props.intl.formatMessage(
-                messages.VideoBlockInputPlaceholder,
-              )}
-            />
-          </div>
-        )}
         {data.url ? (
           <div
             className={cx('video-inner', {
@@ -290,14 +201,54 @@ class Edit extends Component {
             )}
           </div>
         ) : (
-          <div>
-            <Message>
-              <center>
-                <Icon name={videoSVG} size="100px" color="#b8c6c8" />
-              </center>
-            </Message>
-          </div>
+          <Message>
+            <center>
+              <img src={videoBlockSVG} alt="" />
+              <div className="toolbar-inner">
+                <Input
+                  onKeyDown={this.onKeyDownVariantMenuForm}
+                  onChange={this.onChangeUrl}
+                  placeholder={this.props.intl.formatMessage(
+                    messages.VideoBlockInputPlaceholder,
+                  )}
+                  value={this.state.url}
+                  // Prevents propagation to the Dropzone and the opening
+                  // of the upload browser dialog
+                  onClick={e => e.stopPropagation()}
+                />
+                {this.state.url && (
+                  <Button.Group>
+                    <Button
+                      basic
+                      className="cancel"
+                      onClick={e => {
+                        e.stopPropagation();
+                        this.setState({ url: '' });
+                      }}
+                    >
+                      <Icon name={clearSVG} size="30px" />
+                    </Button>
+                  </Button.Group>
+                )}
+                <Button.Group>
+                  <Button
+                    basic
+                    primary
+                    onClick={e => {
+                      e.stopPropagation();
+                      this.onSubmitUrl();
+                    }}
+                  >
+                    <Icon name={aheadSVG} size="30px" />
+                  </Button>
+                </Button.Group>
+              </div>
+            </center>
+          </Message>
         )}
+        <SidebarPortal selected={this.props.selected}>
+          <VideoSidebar {...this.props} resetSubmitUrl={this.resetSubmitUrl} />
+        </SidebarPortal>
       </div>
     );
   }

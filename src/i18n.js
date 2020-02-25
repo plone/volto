@@ -124,9 +124,7 @@ function poToJson() {
       JSON.stringify(
         zipObject(
           map(items, item => item.msgid),
-          map(items, item =>
-            item.msgstr[0] !== '' ? item.msgstr[0] : item.msgid,
-          ),
+          map(items, item => item.msgstr[0]),
         ),
       ),
     );

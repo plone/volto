@@ -1,6 +1,8 @@
 if (Cypress.env('API') !== 'guillotina') {
   describe('Blocks Tests', () => {
     beforeEach(() => {
+      // Wait a bit to previous teardown to complete correctly because Heisenbug in this point
+      cy.wait(2000);
       cy.autologin();
       cy.createContent('Document', 'my-page', 'My Page');
       cy.visit('/my-page/edit');
@@ -33,12 +35,12 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.inner.text .public-DraftEditor-content').click();
       cy.get('.ui.basic.icon.button.block-add-button').click();
       cy.get('.title')
-        .contains('media')
+        .contains('Media')
         .click();
       cy.get('.ui.basic.icon.button.video')
-        .contains('video')
+        .contains('Video')
         .click();
-      cy.get('.toolbar > .ui > input')
+      cy.get('.toolbar-inner > .ui > input')
         .click()
         .type('https://youtu.be/T6J3d35oIAY')
         .type('{enter}');
@@ -53,17 +55,71 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.inner.text .public-DraftEditor-content').click();
       cy.get('.ui.basic.icon.button.block-add-button').click();
       cy.get('.title')
-        .contains('media')
+        .contains('Media')
         .click();
       cy.get('.ui.basic.icon.button.video')
-        .contains('video')
+        .contains('Video')
         .click();
-      cy.get('.toolbar > .ui > input')
+      cy.get('.toolbar-inner > .ui > input')
         .click()
         .type('https://vimeo.com/85804536')
         .type('{enter}');
       cy.get('#toolbar-save').click();
       cy.get('.block.video');
+    });
+
+    it('Add Video Block with MP4 Video', () => {
+      cy.get(`.block.title [data-contents]`)
+        .clear()
+        .type('My title');
+      cy.get('.block.inner.text .public-DraftEditor-content').click();
+      cy.get('.ui.basic.icon.button.block-add-button').click();
+      cy.get('.title')
+        .contains('Media')
+        .click();
+      cy.get('.ui.basic.icon.button.video')
+        .contains('Video')
+        .click();
+      cy.get('.toolbar-inner > .ui > input')
+        .click()
+        .type('https://1.videolyser.de/videos/1714848/11745228_hd.mp4')
+        .type('{enter}');
+      cy.get('#toolbar-save').click();
+
+      cy.get('.block.video video').should(
+        'have.attr',
+        'src',
+        'https://1.videolyser.de/videos/1714848/11745228_hd.mp4',
+      );
+
+      cy.visit('/my-page/edit');
+    });
+
+    it('Add maps block', () => {
+      // Add maps block
+      cy.get('.block.text [contenteditable]').click();
+      cy.get('button.block-add-button').click();
+      cy.get('.blocks-chooser .title')
+        .contains('Common')
+        .click();
+      cy.get('.blocks-chooser .common')
+        .contains('Maps')
+        .click();
+
+      // Fill maps block
+      cy.get(`.block.maps .toolbar-inner .ui.input input`)
+        .type(
+          '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2525.497070288158!2d7.103133415464086!3d50.72926897951482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bee17434076fc7%3A0x2e99668f581378c8!2sRiesstra%C3%9Fe+21%2C+53113+Bonn!5e0!3m2!1sde!2sde!4v1561386702097!5m2!1sde!2sde" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>',
+        )
+        .type('{enter}');
+
+      // Save
+      cy.get('#toolbar-save').click();
+
+      // Check if Google maps shows up in the page view
+      cy.get('#page-document iframe')
+        .should('have.attr', 'src')
+        .should('include', 'maps');
     });
 
     it('Add Listing block', () => {
@@ -93,7 +149,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();
       cy.get('.blocks-chooser .title')
-        .contains('common')
+        .contains('Common')
         .click();
       cy.get('.blocks-chooser .common')
         .contains('Listing')
@@ -145,7 +201,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();
       cy.get('.blocks-chooser .title')
-        .contains('common')
+        .contains('Common')
         .click();
       cy.get('.blocks-chooser .common')
         .contains('Listing')
@@ -238,7 +294,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();
       cy.get('.blocks-chooser .title')
-        .contains('common')
+        .contains('Common')
         .click();
       cy.get('.blocks-chooser .common')
         .contains('Listing')
@@ -330,7 +386,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();
       cy.get('.blocks-chooser .title')
-        .contains('common')
+        .contains('Common')
         .click();
       cy.get('.blocks-chooser .common')
         .contains('Listing')
@@ -387,33 +443,6 @@ if (Cypress.env('API') !== 'guillotina') {
       /*not implemented because Navigation ui is not yet developed in Listing Block sidebar*/
     });
 
-    it('Add Video Block with MP4 Video', () => {
-      cy.get(`.block.title [data-contents]`)
-        .clear()
-        .type('My title');
-      cy.get('.block.inner.text .public-DraftEditor-content').click();
-      cy.get('.ui.basic.icon.button.block-add-button').click();
-      cy.get('.title')
-        .contains('media')
-        .click();
-      cy.get('.ui.basic.icon.button.video')
-        .contains('video')
-        .click();
-      cy.get('.toolbar > .ui > input')
-        .click()
-        .type('https://1.videolyser.de/videos/1714848/11745228_hd.mp4')
-        .type('{enter}');
-      cy.get('#toolbar-save').click();
-
-      cy.get('.block.video video').should(
-        'have.attr',
-        'src',
-        'https://1.videolyser.de/videos/1714848/11745228_hd.mp4',
-      );
-
-      cy.visit('/my-page/edit');
-    });
-
     // it('Add image block', () => {
     //   // Add image block
     //   cy.get('.block.text [contenteditable]').click();
@@ -467,31 +496,6 @@ if (Cypress.env('API') !== 'guillotina') {
     //   });
     // });
 
-    // it('Add video block', () => {
-    //   // Add video block
-    //   cy.get('.block.text [contenteditable]').click();
-    //   cy.get('button.block-add-button').click();
-    //   cy.get('.blocks-chooser .title')
-    //     .contains('media')
-    //     .click();
-    //   cy.get('.blocks-chooser .media')
-    //     .contains('video')
-    //     .click();
-
-    //   // Add YouTube URL to video block
-    //   cy.get(`.block.video .toolbar .ui.input input`)
-    //     .type('https://www.youtube.com/watch?v=QmkD2vLGA6Y')
-    //     .type('{enter}');
-
-    //   // Save
-    //   cy.get('#toolbar-save').click();
-
-    //   // Check if YouTube iframe is present
-    //   cy.get('#page-document iframe')
-    //     .should('have.attr', 'src')
-    //     .should('include', 'youtube.com/embed/QmkD2vLGA6Y');
-    // });
-
     // it('Add hero block', () => {
     //   // TODO: Implement react dropzone for this block to test the image
 
@@ -537,33 +541,6 @@ if (Cypress.env('API') !== 'guillotina') {
     //     // guillotina
     //     // cy.contains(expected);
     //   }
-    // });
-
-    // it('Add maps block', () => {
-    //   // Add maps block
-    //   cy.get('.block.text [contenteditable]').click();
-    //   cy.get('button.block-add-button').click();
-    //   cy.get('.blocks-chooser .title')
-    //     .contains('common')
-    //     .click();
-    //   cy.get('.blocks-chooser .common')
-    //     .contains('maps')
-    //     .click();
-
-    //   // Fill maps block
-    //   cy.get(`.block.maps .toolbar .ui.input input`)
-    //     .type(
-    //       '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2525.497070288158!2d7.103133415464086!3d50.72926897951482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bee17434076fc7%3A0x2e99668f581378c8!2sRiesstra%C3%9Fe+21%2C+53113+Bonn!5e0!3m2!1sde!2sde!4v1561386702097!5m2!1sde!2sde" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>',
-    //     )
-    //     .type('{enter}');
-
-    //   // Save
-    //   cy.get('#toolbar-save').click();
-
-    //   // Check if Google maps shows up in the page view
-    //   cy.get('#page-document iframe')
-    //     .should('have.attr', 'src')
-    //     .should('include', 'maps');
     // });
 
     // it('Add HTML block', () => {

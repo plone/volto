@@ -2,7 +2,7 @@ import { resetSearchContent, searchContent } from './search';
 import {
   RESET_SEARCH_CONTENT,
   SEARCH_CONTENT,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Search action', () => {
   describe('searchContent', () => {

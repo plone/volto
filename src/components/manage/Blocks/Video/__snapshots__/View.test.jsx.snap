@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a view video component 1`] = `
-<p
+<div
   className="block video align center"
 >
   <div
@@ -31,5 +31,5 @@ exports[`renders a view video component 1`] = `
       </div>
     </div>
   </div>
-</p>
+</div>
 `;
