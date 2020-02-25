@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fixes for the `LisingView` (Issue #1188, Listing View) @wkbkhard
+
 ## 4.0.0-alpha.40 (2020-02-24)
 
 ### Added
