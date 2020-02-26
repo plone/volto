@@ -6,6 +6,12 @@
 
 ### Changes
 
+- Responsive header @ksuess
+  - Anontools (login, register) wrapping under long navigation.
+  - Breaking change: Hamburger menu also on tablet.
+  - Mobile: compact display of anontools and search.
+
+
 ## 4.0.0-alpha.41 (2020-02-26)
 
 ### Changes
@@ -30,7 +36,6 @@
 - Fix Guillotina tests @bloodbare
 - Fix problem with not wrapped element in `Provider` store in `WysiwygWidget` component
   due that now, the links are wrapped with a connected component @sneridagh
-- Responsive header @ksuess
 
 ## 4.0.0-alpha.39 (2020-02-18)
 
