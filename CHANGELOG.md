@@ -5,12 +5,23 @@
 ### Added
 
 ### Changes
-- Deleted Empty Select Component @aryamanpuri
 
+## 4.0.0-alpha.40 (2020-02-24)
+
+### Added
+
+- Add pagination support to listing blocks @sneridagh
+
+### Changes
+
+- Fix Video and Maps blocks hydration quirks on view mode @sneridagh
+- Deleted Empty Select Component @aryamanpuri
 - Fix `RichText` Widget on normal forms @sneridagh
 - Fix Scrolling Functionality if there are many columns in table @sumukhah
 - Fix Guillotina tests @bloodbare
 - i18n in toolbar and folder contents view @ksuess
+- Fix problem with not wrapped element in `Provider` store in `WysiwygWidget` component
+  due that now, the links are wrapped with a connected component @sneridagh
 
 ## 4.0.0-alpha.39 (2020-02-18)
 
@@ -40,7 +51,7 @@
 - Chose template for listing block @giuliaghisini
 - Event type view @nileshgulia1 @pnicolli
 - Add ability to define the starting blocks per content type @sneridagh
-- Reference widget: show item title and path in search and hover itmes selected @giuliaghisini
+- Reference widget: show item title and path in search and hover items selected @giuliaghisini
 
 ### Changes
 

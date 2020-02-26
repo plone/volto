@@ -106,6 +106,8 @@ class Edit extends Component {
   static propTypes = {
     type: PropTypes.string.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
+    // properties is mapped to formData, so it's not connected to changes of the object
+    properties: PropTypes.objectOf(PropTypes.any).isRequired,
     selected: PropTypes.bool.isRequired,
     connectDragSource: PropTypes.func.isRequired,
     connectDragPreview: PropTypes.func.isRequired,
