@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a view map component 1`] = `
-<p
+<div
   className="block maps align center"
 >
   <div
@@ -15,5 +15,5 @@ exports[`renders a view map component 1`] = `
       title="Embeded Google Maps"
     />
   </div>
-</p>
+</div>
 `;

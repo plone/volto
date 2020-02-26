@@ -241,6 +241,10 @@ msgstr "閉じる"
 msgid "Close menu"
 msgstr "メニューを閉じる"
 
+#: components/manage/Toolbar/Toolbar
+msgid "Collection"
+msgstr ""
+
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
@@ -294,6 +298,14 @@ msgstr "著作権"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
 msgstr "このアイテムの著作権宣言文または他の権利情報"
+
+#: components/manage/Contents/Contents
+msgid "Created on"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Creator"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
@@ -476,6 +488,10 @@ msgstr "Embedコードがエラーです。説明を読んで再度実行して�
 msgid "Embeded Google Maps"
 msgstr "Embeded Google Maps (未翻訳)"
 
+#: components/manage/Contents/Contents
+msgid "End Date"
+msgstr ""
+
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
 msgstr "URLまたはタイトルを入力"
@@ -518,6 +534,10 @@ msgstr "エラー"
 msgid "Exclude from navigation"
 msgstr "ナビゲーションに含まない"
 
+#: components/manage/Contents/Contents
+msgid "Excluded from navigation"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "サイドバーを開く"
@@ -526,10 +546,18 @@ msgstr "サイドバーを開く"
 msgid "Expiration Date"
 msgstr "ナビゲーションに含まない"
 
+#: components/manage/Contents/Contents
+msgid "Expiration date"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
 msgstr "外部URL"
+
+#: components/manage/Toolbar/Toolbar
+msgid "File"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
@@ -546,6 +574,10 @@ msgstr "フィルター..."
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
 msgstr "テーブルのセル幅を固定"
+
+#: components/manage/Contents/Contents
+msgid "Folder"
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
@@ -615,6 +647,10 @@ msgstr "ホーム"
 #: components/manage/Preferences/PersonalInformation
 msgid "Home page"
 msgstr "ホーム"
+
+#: components/manage/Contents/Contents
+msgid "ID"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If selected, this item will not appear in the navigation tree"
@@ -696,6 +732,10 @@ msgstr "アイテムはユニークである必要があります。"
 msgid "Language"
 msgstr "言語"
 
+#: components/manage/Contents/Contents
+msgid "Last comment date"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "最終変更"
@@ -708,6 +748,10 @@ msgstr "リード画像"
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
 msgstr "左"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Link"
+msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Link more"
@@ -813,6 +857,14 @@ msgstr "元に戻る"
 msgid "New password"
 msgstr "新しいパスワード"
 
+#: components/manage/Toolbar/Toolbar
+msgid "News Item"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "No"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
 msgstr "画像が選択されていません"
@@ -857,8 +909,13 @@ msgid "No workflow"
 msgstr "ワークフローなし"
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
 msgid "None"
 msgstr "None"
+
+#: components/manage/Contents/Contents
+msgid "Object Size"
+msgstr ""
 
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -879,6 +936,10 @@ msgstr "Open menu (未翻訳)"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
 msgstr "参照元"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Page"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
@@ -968,6 +1029,10 @@ msgstr "プロフィール"
 msgid "Properties"
 msgstr "プロパティ"
 
+#: components/manage/Contents/Contents
+msgid "Publication date"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Publishing Date"
 msgstr "公開日付"
@@ -1038,6 +1103,10 @@ msgstr "逆順"
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr "このリビジョンに戻す"
+
+#: components/manage/Contents/Contents
+msgid "Review state"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
@@ -1114,6 +1183,7 @@ msgid "Selection"
 msgstr "Selection (未翻訳)"
 
 #: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
 msgid "Select…"
 msgstr "選択…"
 
@@ -1130,6 +1200,7 @@ msgid "Set your password"
 msgstr "パスワードを設定"
 
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/More
 msgid "Sharing"
 msgstr "共有"
 
@@ -1150,6 +1221,10 @@ msgstr "ショートネーム"
 #: components/manage/Contents/ContentsRenameModal
 msgid "Short name"
 msgstr "ショートネーム"
+
+#: components/theme/Pagination/Pagination
+msgid "Show"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
@@ -1205,6 +1280,10 @@ msgstr "YouTubeビデオまたはプレイリストURLを指定してくださ�
 #: components/manage/Diff/Diff
 msgid "Split"
 msgstr "分割"
+
+#: components/manage/Contents/Contents
+msgid "Start Date"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
@@ -1320,6 +1399,10 @@ msgstr "このページは存在しないようです…"
 msgid "Title"
 msgstr "タイトル"
 
+#: components/manage/Contents/Contents
+msgid "Total comments"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 msgid "Type"
@@ -1336,6 +1419,10 @@ msgstr "テキストを入力…"
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr "タイトルを入力…"
+
+#: components/manage/Contents/Contents
+msgid "UID"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
@@ -1468,6 +1555,10 @@ msgstr "誰が"
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "ワークフローがアップデートされました"
+
+#: components/manage/Contents/ContentsItem
+msgid "Yes"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."

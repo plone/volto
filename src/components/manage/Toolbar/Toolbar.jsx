@@ -66,6 +66,26 @@ const messages = defineMessages({
     id: 'Personal Preferences',
     defaultMessage: 'Personal Preferences',
   },
+  collection: {
+    id: 'Collection',
+    defaultMessage: 'Collection',
+  },
+  file: {
+    id: 'File',
+    defaultMessage: 'File',
+  },
+  link: {
+    id: 'Link',
+    defaultMessage: 'Link',
+  },
+  newsItem: {
+    id: 'News Item',
+    defaultMessage: 'News Item',
+  },
+  page: {
+    id: 'Page',
+    defaultMessage: 'Page',
+  },
 });
 
 const toolbarComponents = {
