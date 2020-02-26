@@ -6,6 +6,9 @@
 
 ### Changes
 
+- Use the ObjectBrowser for creating links in text editor (Issue #1098) @frapell
+
+
 ## 4.0.0-alpha.41 (2020-02-26)
 
 ### Changes
