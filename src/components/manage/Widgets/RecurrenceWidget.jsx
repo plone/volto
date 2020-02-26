@@ -148,6 +148,18 @@ const Days = {
   SU: RRule.SU,
 };
 
+const NoRRuleOptions = [
+  'recurrenceEnds',
+  'monthly',
+  'weekdayOfTheMonthIndex',
+  'weekdayOfTheMonth',
+  'yearly',
+  'monthOfTheYear',
+  'byhour',
+  'byminute',
+  'bysecond',
+  'bynmonthday',
+];
 /**
  * RecurrenceWidget component class.
  * @function RecurrenceWidget
@@ -210,23 +222,16 @@ class RecurrenceWidget extends Component {
     if (this.props.start) {
       var start = new Date(this.props.start);
 
-      rruleSet = this.updateRruleSet(
-        rruleSet,
-        'dtstart',
-        start,
-        'dtstart',
-        start,
-      );
+      rruleSet = this.updateRruleSet(rruleSet, null, 'dtstart', start);
     }
-
-    // console.log('all set', rruleSet.rrules()[0].all());
-    // console.log('all rrule', rruleSet.rrules()[0].all());
 
     this.state = {
       open: false,
       rruleSet: rruleSet,
       formValues: this.getFormValues(rruleSet),
     };
+    // console.log('all set', rruleSet.rrules()[0].all());
+    // console.log('all rrule', rruleSet.rrules()[0].all());
 
     // console.log(props.value);
     // console.log(this.state.rruleSet);
@@ -258,11 +263,20 @@ class RecurrenceWidget extends Component {
     return freq;
   };
 
+  getWeekday = number => {
+    var day = null;
+    Object.keys(Days).map(d => {
+      if (Days[d].weekday === number) {
+        day = Days[d];
+      }
+    });
+    return day;
+  };
+
   /**
    * Called on init, to populate form values
    * */
   getFormValues = rruleSet => {
-    console.log(rruleSet);
     //default
     let formValues = {
       freq: DAILY,
@@ -302,7 +316,12 @@ class RecurrenceWidget extends Component {
             break;
           case 'bymonthday':
             if (value && value.length > 0) {
-              formValues['monthly'] = option;
+              if (freq === MONTHLY) {
+                formValues['monthly'] = option;
+              }
+              if (freq === YEARLY) {
+                formValues['yearly'] = option;
+              }
             }
             formValues[option] = value;
             break;
@@ -324,41 +343,57 @@ class RecurrenceWidget extends Component {
             if (freq === YEARLY) {
               formValues['yearly'] = 'byday';
             }
-            formValues['monthOfTheYear'] = value[0];
+            formValues['monthOfTheYear'] = value ? value[0] : value;
             break;
+
           default:
             formValues[option] = value;
         }
       });
     }
-    console.log('formValues', formValues);
+
+    console.log('getFormValues elab', formValues);
     return formValues;
   };
 
-  updateRruleSet = (rruleSet, rruleField, rruleValue, field, value) => {
-    // console.log(
-    //   'updateRruleSet',
-    //   rruleSet,
-    //   rruleField,
-    //   rruleValue,
-    //   field,
-    //   value,
-    // );
-    //console.log('updaterruleset', rruleSet, rruleSet.rrules());
-    var rrules = rruleSet.rrules();
+  formValuesToRRuleOptions = formValues => {
+    var values = Object.assign({}, formValues);
 
-    var rruleOptions = Object.assign(
-      {},
-      rrules.length > 0 ? rrules[0].options : {},
-    );
-    if (rruleField) {
-      rruleOptions[rruleField] = rruleValue;
-    }
+    //remove NoRRuleOptions
+    NoRRuleOptions.map(opt => {
+      delete values[opt];
+    });
 
-    rruleOptions.bynweekday = null;
-    rruleOptions.byhour = null;
-    rruleOptions.byminute = null;
-    rruleOptions.bysecond = null;
+    //transform values for rrule
+    Object.keys(values).map(field => {
+      var value = values[field];
+      switch (field) {
+        case 'freq':
+          if (value) {
+            value = OPTIONS.frequences[value].rrule;
+          }
+          break;
+        case 'until':
+          value = value ? new Date(value) : null;
+          break;
+        default:
+          break;
+      }
+
+      if (value) {
+        //set value
+        values[field] = value;
+      } else {
+        //remove empty values
+        delete values[field];
+      }
+    });
+
+    return values;
+  };
+
+  updateRruleSet = (rruleSet, formValues, field, value) => {
+    var rruleOptions = this.formValuesToRRuleOptions(formValues);
 
     var dstart =
       field === 'dtstart' ? value : Object.assign({}, rruleSet.dtstart());
@@ -366,6 +401,7 @@ class RecurrenceWidget extends Component {
       field === 'exdates' ? value : Object.assign({}, rruleSet.exdates());
 
     let set = new RRuleSet();
+    console.log('updateRRuleset', formValues);
     set.rrule(new RRule(rruleOptions));
     set.dtstart(dstart);
     if (exdates) {
@@ -373,114 +409,158 @@ class RecurrenceWidget extends Component {
         set.exdate(exdates[i]);
       }
     }
+
     return set;
   };
 
-  getWeekday = number => {
-    var day = null;
-    Object.keys(Days).map(d => {
-      if (Days[d].weekday === number) {
-        day = Days[d];
-      }
-    });
-    return day;
-  };
-
-  onChangeRule = (field, _value) => {
-    console.log('---', field, _value, '----');
-
-    var value = _value;
-    var isRruleOption = true;
+  changeField = (formValues, field, value) => {
+    //get weekday from state.
+    var byweekday = this.state.rruleSet.rrules()[0].origOptions.byweekday;
 
     switch (field) {
-      case 'freq':
-        var freq = OPTIONS.frequences[_value];
-        this.onChangeRule('interval', 1);
-        value = freq.rrule;
-        break;
-      case 'until':
-        value = _value ? new Date(_value) : null;
-        break;
       case 'recurrenceEnds':
-        isRruleOption = false;
         if (value === 'count') {
-          this.onChangeRule('count', 1);
-          this.onChangeRule('until', null); //default value
+          formValues.count = 1;
+          formValues.until = null;
         }
         if (value === 'until') {
           var tomorrow = moment(new Date()).add(1, 'day');
-          this.onChangeRule('until', this.toISOString(tomorrow.toDate()));
-          this.onChangeRule('count', null); //default value
+          formValues.until = this.toISOString(tomorrow.toDate()); //default value
+          formValues.count = null; //default value
         }
         break;
-      case 'monthly':
-        isRruleOption = false;
+      case 'weekdayOfTheMonth':
+        var weekday = this.getWeekday(value); // get new day
+        var n = byweekday ? byweekday[0].n : 1;
+        //set nth value
+        formValues.byweekday = weekday ? [weekday.nth(n)] : null;
+        break;
+      case 'weekdayOfTheMonthIndex':
+        var week_day = byweekday
+          ? byweekday[0]
+          : this.getWeekday(moment().day()); //get day from state. If not set get current day
+        //set nth value
+        formValues.byweekday = value ? [week_day.nth(value)] : null;
+        break;
+      case 'monthOfTheYear':
+        formValues.bymonth = value;
+        var d = this.state.rruleSet.rrules()[0].origOptions.byweekday;
+        formValues.byweekday = d;
+        break;
+      default:
+        break;
+    }
+    return formValues;
+  };
 
+  onChangeRule = (field, value) => {
+    console.log('---onChangeRule: ', field, value);
+
+    var formValues = Object.assign({}, this.state.formValues);
+
+    switch (field) {
+      case 'freq':
+        formValues.interval = 1;
+        const fconfig = OPTIONS.frequences[value];
+        if (!fconfig.interval) {
+          formValues.interval = null;
+        }
+        if (!fconfig.byday) {
+          formValues.byweekday = null;
+        } else if (!fconfig.bymonth) {
+          formValues.monthly = null;
+          formValues.bymonthday = null;
+          formValues.byweekday = null;
+          formValues.weekdayOfTheMonth = null;
+          formValues.weekdayOfTheMonthIndex = null;
+          formValues.monthOfTheYear = null;
+        } else if (!fconfig.byyear) {
+          formValues.yearly = null;
+          formValues.bymonthday = null;
+          formValues.byweekday = null;
+          formValues.weekdayOfTheMonth = null;
+          formValues.weekdayOfTheMonthIndex = null;
+          formValues.monthOfTheYear = null;
+        }
+
+        break;
+      case 'recurrenceEnds':
+        formValues = this.changeField(formValues, field, value);
+        break;
+      case 'monthly':
         if (value === 'bymonthday') {
-          this.onChangeRule('bymonthday', [moment().date()]); //default value
-          this.onChangeRule('byweekday', null); //default value
+          formValues.bymonthday = [moment().date()]; //default value
+          formValues.byweekday = null; //default value
         }
         if (value === 'byweekday') {
-          console.log('change byweekday', value);
-          this.onChangeRule('byweekday', [Days.MO.nth(1)]); //default value
-          this.onChangeRule('bymonthday', null); //default value
+          formValues.bymonthday = null; //default value
+          formValues.byweekday = [Days.MO.nth(1)]; //default value
         }
         break;
       case 'weekdayOfTheMonthIndex':
-        isRruleOption = false;
-        var week_day = this.state.rruleSet.rrules()[0].origOptions.byweekday[0]; //get day from state
-        //set nth value
-        this.onChangeRule('byweekday', [week_day.nth(value)]);
+        formValues = this.changeField(formValues, field, value);
         break;
       case 'weekdayOfTheMonth':
-        isRruleOption = false;
-        var weekday = this.getWeekday(value); // get new day
-        console.log(this.state.rruleSet.rrules()[0].origOptions);
-        var n = this.state.rruleSet.rrules()[0].origOptions.byweekday[0].n;
-        //set nth value
-        this.onChangeRule('byweekday', [weekday.nth(n)]);
+        formValues = this.changeField(formValues, field, value);
         break;
-
       case 'yearly':
-        isRruleOption = false;
-
         if (value === 'bymonthday') {
-          this.onChangeRule('bymonthday', [moment().date()]); //default value
-          this.onChangeRule('byweekday', null); //default value
-          this.onChangeRule('bymonth', null); //default value
+          //sets bymonth and bymonthday in rruleset
+          formValues.bymonthday = [moment().date()]; //default value
+          formValues = this.changeField(formValues, 'monthOfTheYear', [
+            moment().month() + 1,
+          ]); //default value
+          formValues = this.changeField(formValues, 'weekdayOfTheMonth', null); //default value
+          formValues = this.changeField(
+            formValues,
+            'weekdayOfTheMonthIndex',
+            null,
+          ); //default value
         }
         if (value === 'byday') {
-          console.log('change byweekday', value);
-          this.onChangeRule('monthOfTheYear', [moment().month() + 1]); //default value
-          this.onChangeRule('bymonthday', null); //default value
-          this.onChangeRule('byweekday', [Days.MO.nth(1)]); //default value
+          formValues = this.changeField(formValues, 'bymonthday', null); //default value
+          formValues = this.changeField(
+            formValues,
+            'weekdayOfTheMonth',
+            moment().day(),
+          ); //default value
+          formValues = this.changeField(
+            formValues,
+            'weekdayOfTheMonthIndex',
+            1,
+          ); //default value
+          formValues = this.changeField(formValues, 'monthOfTheYear', [
+            moment().month() + 1,
+          ]); //default value
         }
         break;
+
       case 'monthOfTheYear':
-        isRruleOption = false;
-        this.onChangeRule('bymonth', value);
-        var d = this.state.rruleSet.rrules()[0].origOptions.byweekday;
-        this.onChangeRule('byweekday', d);
+        formValues = this.changeField(formValues, field, value);
         break;
       default: //do nothing
     }
 
+    formValues[field] = value;
+
     this.setState(
       prevState => {
         // console.log('prevState', prevState);
-        // console.log('field', field, 'value', value);
         var rruleSet = prevState.rruleSet;
-        if (isRruleOption) {
-          rruleSet = this.updateRruleSet(rruleSet, field, value);
-        }
+        rruleSet = this.updateRruleSet(rruleSet, formValues);
         return {
           ...prevState,
           rruleSet,
-          formValues: { ...prevState.formValues, [field]: _value },
+          formValues,
         };
       },
       () => {
-        console.log('---toString', this.state.rruleSet.toString());
+        // console.log(
+        //   '---setState after',
+        //   field,
+        //   value,
+        //   this.state.rruleSet.toString(),
+        // );
       },
     );
   };
@@ -577,6 +657,7 @@ class RecurrenceWidget extends Component {
                 </Modal.Header>
                 <Modal.Content scrolling>
                   <Modal.Description>
+                    {rruleSet.rrules()[0].toString()}
                     <Segment>
                       <Form>
                         <SelectWidget
@@ -896,7 +977,36 @@ class RecurrenceWidget extends Component {
                                         formValues.yearly !== 'bymonthday'
                                       }
                                     >
-                                      select del mese
+                                      <Select
+                                        isDisabled={
+                                          formValues.yearly !== 'bymonthday'
+                                        }
+                                        id="monthOfTheYear"
+                                        name="monthOfTheYear"
+                                        className="react-select-container"
+                                        classNamePrefix="react-select"
+                                        defaultValue={this.getDefaultSelectValue(
+                                          monthList,
+                                          formValues['monthOfTheYear'],
+                                        )}
+                                        value={this.getDefaultSelectValue(
+                                          monthList,
+                                          formValues['monthOfTheYear'],
+                                        )}
+                                        options={monthList}
+                                        styles={inlineSelectStyles}
+                                        theme={selectTheme}
+                                        components={{
+                                          DropdownIndicator,
+                                          Option,
+                                        }}
+                                        onChange={data =>
+                                          this.onChangeRule(
+                                            'monthOfTheYear',
+                                            data.value,
+                                          )
+                                        }
+                                      />
                                     </Form.Field>
                                   </Form.Group>
                                   <Form.Group inline>
@@ -961,6 +1071,10 @@ class RecurrenceWidget extends Component {
                                           weekdayOfTheMonthList,
                                           formValues['weekdayOfTheMonth'],
                                         )}
+                                        value={this.getDefaultSelectValue(
+                                          weekdayOfTheMonthList,
+                                          formValues['weekdayOfTheMonth'],
+                                        )}
                                         options={weekdayOfTheMonthList}
                                         styles={inlineSelectStyles}
                                         theme={selectTheme}
@@ -993,6 +1107,10 @@ class RecurrenceWidget extends Component {
                                         className="react-select-container"
                                         classNamePrefix="react-select"
                                         defaultValue={this.getDefaultSelectValue(
+                                          monthList,
+                                          formValues['monthOfTheYear'],
+                                        )}
+                                        value={this.getDefaultSelectValue(
                                           monthList,
                                           formValues['monthOfTheYear'],
                                         )}
