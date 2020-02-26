@@ -2,13 +2,12 @@
 
 ## 4.0.0 (unreleased)
 
-### Added
-
 ### Changes
 
 - Fixes for the `ListingView` (Issue #1188, Listing View) @wkbkhard
 - Fix date widgets on QueryString widget on listings and in the widget @sneridagh
 - Update German translation @tisto
+- i18n in toolbar and folder contents view @ksuess
 
 ## 4.0.0-alpha.40 (2020-02-24)
 
@@ -23,7 +22,6 @@
 - Fix `RichText` Widget on normal forms @sneridagh
 - Fix Scrolling Functionality if there are many columns in table @sumukhah
 - Fix Guillotina tests @bloodbare
-- i18n in toolbar and folder contents view @ksuess
 - Fix problem with not wrapped element in `Provider` store in `WysiwygWidget` component
   due that now, the links are wrapped with a connected component @sneridagh
 
