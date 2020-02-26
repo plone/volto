@@ -1,6 +1,5 @@
 import decorateComponentWithProps from 'decorate-component-with-props';
 import { EditorState, Modifier } from 'draft-js';
-import EditorUtils from 'draft-js-plugins-utils';
 
 import DefaultLink from './components/Link';
 import LinkButton from './components/LinkButton';
@@ -66,14 +65,13 @@ export default (config = {}) => {
     ],
 
     LinkButton: decorateComponentWithProps(LinkButton, {
-      data,
+      data: {},
       block: '',
       ownTheme: theme,
       placeholder,
       onRemoveLinkAtSelection: (setEditorState, getEditorState) =>
         setEditorState(removeEntity(getEditorState())),
-      onRemoveLinkAtSelection: () =>
-        store.setEditorState(removeEntity(store.getEditorState())),
+      onChangeBlock: () => {},
     }),
   };
 };

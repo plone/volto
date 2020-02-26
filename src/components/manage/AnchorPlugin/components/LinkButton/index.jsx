@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import unionClassNames from 'union-class-names';
 import EditorUtils from 'draft-js-plugins-utils';
-import AddLinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/AddLinkForm';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import linkSVG from '@plone/volto/icons/link.svg';
 import unlinkSVG from '@plone/volto/icons/unlink.svg';
@@ -16,31 +15,27 @@ import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrow
  */
 class LinkButton extends Component {
   static propTypes = {
-    placeholder: PropTypes.string,
     theme: PropTypes.shape({}).isRequired,
     ownTheme: PropTypes.shape({}).isRequired,
     onRemoveLinkAtSelection: PropTypes.func.isRequired,
-    onOverrideContent: PropTypes.func.isRequired,
     openObjectBrowser: PropTypes.func.isRequired,
-  };
-
-  static defaultProps = {
-    placeholder: '',
   };
 
   onMouseDown = event => {
     event.preventDefault();
   };
 
+  onSelectItem = url => {
+    this.props.setEditorState(
+      EditorUtils.createLinkAtSelection(this.props.getEditorState(), url),
+    );
+  };
+
   onAddLinkClick = e => {
     e.preventDefault();
     e.stopPropagation();
-    const { ownTheme, placeholder, onOverrideContent, openObjectBrowser } = this.props;
-    openObjectBrowser({ mode: 'link' });
-//     const content = props => (
-//       <AddLinkForm {...props} placeholder={placeholder} theme={ownTheme} />
-//     );
-//     onOverrideContent(content);
+    const { openObjectBrowser } = this.props;
+    openObjectBrowser({ mode: 'link', onSelectItem: this.onSelectItem });
   };
 
   /**
