@@ -2,9 +2,9 @@
 
 ## 4.0.0 (unreleased)
 
-### Added
-
 ### Changes
+
+- Revert "Fix Scrolling Functionality if there are many columns in table" since it has non desired secondary effects in the table block and other tables @sneridagh
 
 ## 4.0.0-alpha.41 (2020-02-26)
 
