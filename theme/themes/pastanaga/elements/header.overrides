@@ -10,13 +10,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-right: -@mini;
-  margin-left: -@mini;
-
-  & > * {
-    margin-right: @mini;
-    margin-left: @mini;
-  }
 
   .logo-nav-wrapper {
     display: flex;
@@ -66,6 +59,7 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-end;
+    margin-left: @huge;
 
     & > * {
       display: flex;
