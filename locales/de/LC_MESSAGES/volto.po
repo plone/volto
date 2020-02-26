@@ -72,7 +72,7 @@ msgstr "Block hinzufügen"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
-msgstr "Kriterim hinzufügen"
+msgstr "Kriterium hinzufügen"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
