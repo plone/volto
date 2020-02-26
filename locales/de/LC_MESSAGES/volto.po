@@ -72,7 +72,7 @@ msgstr "Block hinzufügen"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Add criteria"
-msgstr ""
+msgstr "Kriterium hinzufügen"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
@@ -155,7 +155,7 @@ msgstr "Block"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Block style"
-msgstr ""
+msgstr "Block Darstellung"
 
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -239,7 +239,7 @@ msgstr "Ziel auswählen"
 
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
-msgstr ""
+msgstr "Hier klicken um das Bild in der vollen Größe runterzuladen"
 
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
@@ -278,11 +278,11 @@ msgstr "Kontaktformular"
 
 #: components/manage/Blocks/Listing/Edit
 msgid "Contained items"
-msgstr ""
+msgstr "Hier enthaltene Objekte"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
-msgstr ""
+msgstr "Inhalt"
 
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
@@ -309,7 +309,7 @@ msgstr "Ersteller"
 
 #: components/manage/Blocks/Listing/QuerystringWidget
 msgid "Criteria"
-msgstr ""
+msgstr "Kriterium"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
@@ -478,7 +478,7 @@ msgstr "E-Mail versendet"
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Embed code error, please follow the instructions and try again."
-msgstr ""
+msgstr "Fehler beim Einbinden des Google Maps Codes. Bitte lesen Sie die Anweisungen und stellen Sie sicher dass Sie den korrekten Code verwenden."
 
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
@@ -500,7 +500,7 @@ msgstr "Tragen Sie bitte Ihren vollen Namen ein."
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Enter map Embed Code"
-msgstr ""
+msgstr "Karten-Einbettungscode eingeben"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
@@ -557,7 +557,7 @@ msgstr "Tabellen-Zellen mit fester Breite"
 
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
-msgstr ""
+msgstr "Verboten"
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
@@ -680,7 +680,7 @@ msgstr "Zeile davor einfügen"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Item batch size"
-msgstr ""
+msgstr "Anzahl der angezeigten Elemente"
 
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
@@ -710,7 +710,7 @@ msgstr "Letzte Änderung"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
-msgstr ""
+msgstr "Leadbild"
 
 #: components/manage/Blocks/Maps/Edit
 #: helpers/AlignBlock/AlignBlock
@@ -719,11 +719,11 @@ msgstr "Links"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Link more"
-msgstr ""
+msgstr "'Mehr' Link"
 
 #: components/manage/Blocks/Listing/ListingMore
 msgid "Link title"
-msgstr ""
+msgstr "Linktitel"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -735,7 +735,7 @@ msgstr "Link auf"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Listing"
-msgstr ""
+msgstr "Auflistung"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
@@ -768,11 +768,11 @@ msgstr "Tabelle kompakt darstellen"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
-msgstr ""
+msgstr "Karte"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Maps URL"
-msgstr ""
+msgstr "Karten URL"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -827,19 +827,19 @@ msgstr "Kein Bild ausgewählt"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in Lead Image content field"
-msgstr ""
+msgstr "Im Leadbild Feld wurde kein Bild gesetzt"
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in image content field"
-msgstr ""
+msgstr "Im Bild Feld wurde kein Bild gesetzt"
 
 #: components/manage/Blocks/Listing/ListingBody
 msgid "No items found in this container."
-msgstr ""
+msgstr "Keine Elemente gefunden"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
-msgstr ""
+msgstr "Keine Karte ausgewählt"
 
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
@@ -848,7 +848,7 @@ msgstr "Keine Ergebnisse gefunden."
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "No selection"
-msgstr ""
+msgstr "Keine Auswahl"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -858,7 +858,7 @@ msgstr "Kein Wert"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No video selected"
-msgstr ""
+msgstr "Kein Video ausgewählt"
 
 #: components/manage/Workflow/Workflow
 msgid "No workflow"
@@ -932,7 +932,7 @@ msgstr "Geben Sie eine gültige URL "
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
-msgstr ""
+msgstr "Bitte geben sie den Einbettungscode von Google Maps ein. Klicken Sie auf 'Teilen' und dann 'Karte einbetten'. Der Code sollte ein '<iframe>'-Element enthalten."
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
@@ -1033,15 +1033,15 @@ msgstr "Notwendige Eingabe fehlt."
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Results limit"
-msgstr ""
+msgstr "Anzahl der Ergebnisse einschränken"
 
 #: components/manage/Blocks/Listing/Edit
 msgid "Results preview"
-msgstr ""
+msgstr "Ergebnisvorschau"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Reversed order"
-msgstr ""
+msgstr "Sortierreihenfolge umkehren"
 
 #: components/manage/History/History
 msgid "Revert to this revision"
@@ -1191,7 +1191,7 @@ msgstr "Seiteneinstellungen"
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
-msgstr ""
+msgstr "Anzahl: {size}"
 
 #: error
 msgid "Sorry, something went wrong with your request"
@@ -1199,7 +1199,7 @@ msgstr "Entschuldigung, ein Fehler ist beim Ausführen Ihrer Anfrage aufgetreten
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
-msgstr ""
+msgstr "Sortieren nach"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Listing/ListingData
@@ -1273,7 +1273,7 @@ msgstr "Zu entfernende Tags"
 
 #: components/manage/Blocks/Listing/TemplateWidget
 msgid "Template"
-msgstr ""
+msgstr "Template"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
@@ -1335,7 +1335,7 @@ msgstr "Typ"
 
 #: components/manage/Blocks/Video/Edit
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
-msgstr ""
+msgstr "Geben Sie eine Video-URL (YouTube, Video oder MP4) ein"
 
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
@@ -1347,7 +1347,7 @@ msgstr "Titel eingeben…"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
-msgstr ""
+msgstr "Nicht autorisiert"
 
 #: components/manage/Diff/Diff
 msgid "Unified"
@@ -1364,7 +1364,7 @@ msgstr "Hochladen"
 
 #: components/manage/Blocks/LeadImage/Edit
 msgid "Upload a lead image in the 'Lead Image' content field."
-msgstr ""
+msgstr "Laden Sie ein Leadbild im 'Leadbild' Feld hoch."
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
@@ -1423,11 +1423,11 @@ msgstr "Versionsübersicht"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Video URL"
-msgstr ""
+msgstr "Video URL"
 
 #: components/manage/Contents/ContentsItem
 msgid "View"
@@ -1451,7 +1451,7 @@ msgstr "Entschuldigung, aber die Webseite die Sie versucht haben zu erreichen is
 
 #: components/theme/Forbidden/Forbidden
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
-msgstr ""
+msgstr "Entschuldigen Sie die Unanehmlichkeiten, aber Sie besitzen nicht die erforderlichen Rechte um diese Seite anzuzeigen."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
@@ -1479,11 +1479,11 @@ msgstr "Arbeitsablauf aktualisiert."
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
-msgstr ""
+msgstr "Sie versuchen eine geschützte Seite aufzurufen, bitte {login} zuert."
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
-msgstr ""
+msgstr "Sie verwenden einen veralteten Browser"
 
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
@@ -1531,7 +1531,7 @@ msgstr "Löschen"
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
-msgstr ""
+msgstr "Sie verwenden einen veralteten Browser, bitte aktualisieren Sie Ihre Browser."
 
 #: config/Blocks
 msgid "description"
@@ -1567,15 +1567,15 @@ msgstr "Meine E-Mail-Adresse lautet"
 
 #: config/Blocks
 msgid "leadimage"
-msgstr ""
+msgstr "leadimage"
 
 #: config/Blocks
 msgid "listing"
-msgstr ""
+msgstr "listing"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
-msgstr ""
+msgstr "Einloggen"
 
 #: config/Blocks
 msgid "maps"

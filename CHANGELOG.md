@@ -14,6 +14,7 @@
 
 ### Changes
 
+- Update German translation @tisto
 - Fix Video and Maps blocks hydration quirks on view mode @sneridagh
 - Deleted Empty Select Component @aryamanpuri
 - Fix `RichText` Widget on normal forms @sneridagh
