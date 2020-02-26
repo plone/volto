@@ -26,18 +26,22 @@ exports[`Header renders a header component 1`] = `
         />
       </div>
       <div
-        className="tools"
+        className="tools-search-wrapper"
       >
         <div
-          id="anontools"
-        />
-      </div>
-      <div
-        className="search"
-      >
+          className="tools"
+        >
+          <div
+            id="anontools"
+          />
+        </div>
         <div
-          id="searchwidget"
-        />
+          className="search"
+        >
+          <div
+            id="searchwidget"
+          />
+        </div>
       </div>
     </div>
   </div>

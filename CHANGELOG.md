@@ -6,6 +6,11 @@
 
 ### Changes
 
+- Responsive header @ksuess
+  - Anontools (login, register) wrapping under long navigation.
+  - Breaking change: Hamburger menu also on tablet.
+  - Mobile: compact display of anontools and search.
+
 ## 4.0.0-alpha.42 (2020-02-26)
 
 ### Changes
