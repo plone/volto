@@ -26,7 +26,7 @@ exports[`Header renders a header component 1`] = `
         />
       </div>
       <div
-        className="meta-wrapper"
+        className="tools-search-wrapper"
       >
         <div
           className="tools"

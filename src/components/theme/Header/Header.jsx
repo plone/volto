@@ -56,7 +56,7 @@ class Header extends Component {
               </div>
               <Navigation pathname={this.props.pathname} />
             </div>
-            <div className="meta-wrapper">
+            <div className="tools-search-wrapper">
               {!this.props.token && (
                 <div className="tools">
                   <Anontools />
