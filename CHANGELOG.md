@@ -6,6 +6,7 @@
 
 ### Changes
 
+- Fixes for the `ListingView` (Issue #1188, Listing View) @wkbkhard
 - Fix date widgets on QueryString widget on listings and in the widget @sneridagh
 - Update German translation @tisto
 

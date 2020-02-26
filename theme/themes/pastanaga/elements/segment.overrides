@@ -112,3 +112,8 @@
   height: 100%;
   align-items: center;
 }
+
+.ui.segment.listing-item {
+  display: flex;
+  align-items: center;
+}
