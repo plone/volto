@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix date widgets on QueryString widget on listings and in the widget @sneridagh
+
 ## 4.0.0-alpha.40 (2020-02-24)
 
 ### Added
