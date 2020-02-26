@@ -26,7 +26,6 @@
 - Fix Video and Maps blocks hydration quirks on view mode @sneridagh
 - Deleted Empty Select Component @aryamanpuri
 - Fix `RichText` Widget on normal forms @sneridagh
-- Fix Scrolling Functionality if there are many columns in table @sumukhah
 - Fix Guillotina tests @bloodbare
 - Fix problem with not wrapped element in `Provider` store in `WysiwygWidget` component
   due that now, the links are wrapped with a connected component @sneridagh
