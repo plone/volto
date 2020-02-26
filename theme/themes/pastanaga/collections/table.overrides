@@ -3,8 +3,6 @@
   td.selected {
     border: solid 1px rgba(120, 192, 215, 1) !important;
   }
-  display: block;
-  overflow-x: scroll;
 }
 
 /* Headers */
