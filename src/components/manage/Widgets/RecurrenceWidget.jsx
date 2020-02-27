@@ -182,6 +182,7 @@ class RecurrenceWidget extends Component {
     error: PropTypes.arrayOf(PropTypes.string),
     value: PropTypes.string,
     start: PropTypes.string,
+    end: PropTypes.string,
     onChange: PropTypes.func.isRequired,
   };
 
@@ -222,6 +223,7 @@ class RecurrenceWidget extends Component {
       ? rrulestr(props.value, { unfold: true, forceset: true })
       : new RRuleSet();
 
+    console.log('constructor start', this.props);
     if (this.props.start) {
       var start = new Date(this.props.start);
 
@@ -424,18 +426,29 @@ class RecurrenceWidget extends Component {
     //get weekday from state.
     var byweekday = this.state.rruleSet.rrules()[0].origOptions.byweekday;
     var currWeekday = this.getWeekday(moment().day() - 1);
-    var tomorrow = moment()
-      .add(1, 'days')
-      .toDate();
-    var nextWeek = moment()
-      .add(7, 'days')
-      .toDate();
-    var nextMonth = moment()
-      .add(1, 'months')
-      .toDate();
-    var nextYear = moment()
-      .add(1, 'years')
-      .toDate();
+    var tomorrow = this.toISOString(
+      moment()
+        .add(1, 'days')
+        .toDate(),
+    );
+    var nextWeek = this.toISOString(
+      moment()
+        .add(7, 'days')
+        .toDate(),
+    );
+    var nextMonth = this.toISOString(
+      moment()
+        .add(1, 'months')
+        .toDate(),
+    );
+    var nextYear = this.toISOString(
+      moment()
+        .add(1, 'years')
+        .toDate(),
+    );
+    var end = this.props.end
+      ? this.toISOString(new Date(this.props.end))
+      : null;
     formValues[field] = value;
 
     switch (field) {
@@ -464,11 +477,11 @@ class RecurrenceWidget extends Component {
         //set defaults
         switch (value) {
           case DAILY:
-            formValues.until = this.toISOString(tomorrow); //default value;
+            formValues.until = end ? end : tomorrow; //default value;
             break;
           case WEEKDAYS:
             formValues = this.changeField(formValues, 'byweekday', WEEKLY_DAYS);
-            formValues.until = this.toISOString(nextWeek); //default value;
+            formValues.until = end ? end : nextWeek; //default value;
             break;
           case MONDAYFRIDAY:
             formValues = this.changeField(
@@ -476,15 +489,15 @@ class RecurrenceWidget extends Component {
               'byweekday',
               MONDAYFRIDAY_DAYS,
             );
-            formValues.until = this.toISOString(nextWeek); //default value;
+            formValues.until = end ? end : nextWeek; //default value;
             break;
           case MONTHLY:
             formValues = this.changeField(formValues, 'monthly', 'bymonthday');
-            formValues.until = this.toISOString(nextMonth); //default value;
+            formValues.until = end ? end : nextMonth; //default value;
             break;
           case YEARLY:
             formValues = this.changeField(formValues, 'yearly', 'bymonthday');
-            formValues.until = this.toISOString(nextYear); //default value;
+            formValues.until = end ? end : nextYear; //default value;
             break;
           default:
             break;
@@ -498,7 +511,7 @@ class RecurrenceWidget extends Component {
           formValues.until = null;
         }
         if (value === 'until') {
-          formValues.until = this.toISOString(tomorrow); //default value
+          formValues.until = tomorrow; //default value
           formValues.count = null; //default value
         }
         break;
@@ -693,11 +706,11 @@ class RecurrenceWidget extends Component {
                 className="recurrence-form"
               >
                 <Modal.Header>
-                  {intl.formatMessage(messages.editRecurrence)}
+                  {intl.formatMessage(messages.editRecurrence)}{' '}
+                  {rruleSet.rrules()[0].toString()}
                 </Modal.Header>
                 <Modal.Content scrolling>
                   <Modal.Description>
-                    {rruleSet.rrules()[0].toString()}
                     <Segment>
                       <Form>
                         <SelectWidget
@@ -886,6 +899,9 @@ class RecurrenceWidget extends Component {
                                       }
                                     >
                                       <Select
+                                        isDisabled={
+                                          formValues.monthly !== 'byweekday'
+                                        }
                                         id="weekdayOfTheMonthIndex"
                                         name="weekdayOfTheMonthIndex"
                                         className="react-select-container"
@@ -1081,6 +1097,9 @@ class RecurrenceWidget extends Component {
                                       disabled={formValues.yearly !== 'byday'}
                                     >
                                       <Select
+                                        isDisabled={
+                                          formValues.yearly !== 'byday'
+                                        }
                                         id="weekdayOfTheMonthIndex"
                                         name="weekdayOfTheMonthIndex"
                                         className="react-select-container"
