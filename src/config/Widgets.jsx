@@ -12,7 +12,7 @@ import TextareaWidget from '@plone/volto/components/manage/Widgets/TextareaWidge
 import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
-import RecurrenceWidget from '@plone/volto/components/manage/Widgets/RecurrenceWidget';
+import RecurrenceWidget from '@plone/volto/components/manage/Widgets/RecurrenceWidget/RecurrenceWidget';
 import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
 
 // Widgets mapping
