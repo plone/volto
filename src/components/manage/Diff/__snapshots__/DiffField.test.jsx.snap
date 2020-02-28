@@ -30,7 +30,7 @@ exports[`DiffField renders a boolean field 1`] = `
         <span
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<span class=\\"deletion\\">Yes</span><span class=\\"addition\\">No</span>",
+              "__html": "<span class=\\"deletion\\">true</span><span class=\\"addition\\">false</span>",
             }
           }
         />
@@ -70,7 +70,7 @@ exports[`DiffField renders a boolean field with inverse values 1`] = `
         <span
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<span class=\\"deletion\\">No</span><span class=\\"addition\\">Yes</span>",
+              "__html": "<span class=\\"deletion\\">false</span><span class=\\"addition\\">true</span>",
             }
           }
         />
@@ -321,7 +321,7 @@ exports[`DiffField renders an array field 1`] = `
         <span
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<span>one, </span><span class=\\"deletion\\">two</span><span class=\\"addition\\">three</span>",
+              "__html": "<span>one,</span><span class=\\"deletion\\">two</span><span class=\\"addition\\">three</span>",
             }
           }
         />

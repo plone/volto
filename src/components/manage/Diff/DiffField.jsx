@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { diffWords } from 'diff';
+import { diffWords as dWords } from 'diff';
 import { join, map } from 'lodash';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
@@ -19,6 +19,16 @@ import configureStore from '@plone/volto/store';
 import { DefaultView } from '@plone/volto/components/';
 
 /**
+ * Enhanced diff words utility
+ * @function diffWords
+ * @param oneStr Field one
+ * @param twoStr Field two
+ */
+const diffWords = (oneStr, twoStr) => {
+  return dWords(String(oneStr), String(twoStr));
+};
+
+/**
  * Diff field component.
  * @function DiffField
  * @param {*} one Field one
@@ -31,7 +41,7 @@ const DiffField = ({ one, two, contentOne, contentTwo, view, schema }) => {
   if (schema.widget) {
     switch (schema.widget) {
       case 'richtext':
-        parts = diffWords(one.data, two.data);
+        parts = diffWords(one?.data, two?.data);
         break;
       case 'datetime':
         parts = diffWords(
@@ -65,10 +75,8 @@ const DiffField = ({ one, two, contentOne, contentTwo, view, schema }) => {
         parts = diffWords(one, two);
         break;
     }
-  } else if (schema.type === 'boolean') {
-    parts = diffWords(one ? 'Yes' : 'No', two ? 'Yes' : 'No');
-  } else if (schema.type === 'array') {
-    parts = diffWords(join(one, ', '), join(two, ', '));
+  } else if (schema.type === 'object') {
+    parts = diffWords(one?.filename, two?.filename);
   } else {
     parts = diffWords(one, two);
   }
