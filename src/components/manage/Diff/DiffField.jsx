@@ -37,7 +37,7 @@ const diffWords = (oneStr, twoStr) => {
  * @returns {string} Markup of the component.
  */
 const DiffField = ({ one, two, contentOne, contentTwo, view, schema }) => {
-  let parts;
+  let parts, oneArray, twoArray;
   if (schema.widget) {
     switch (schema.widget) {
       case 'richtext':
@@ -76,9 +76,13 @@ const DiffField = ({ one, two, contentOne, contentTwo, view, schema }) => {
         break;
     }
   } else if (schema.type === 'object') {
-    parts = diffWords(one?.filename, two?.filename);
+    parts = diffWords(one?.filename || one, two?.filename || two);
+  } else if (schema.type === 'array') {
+    oneArray = (one || []).map(i => i?.title || i);
+    twoArray = (two || []).map(j => j?.title || j);
+    parts = diffWords(oneArray, twoArray);
   } else {
-    parts = diffWords(one, two);
+    parts = diffWords(one?.title || one, two?.title || two);
   }
   return (
     <Table compact>
