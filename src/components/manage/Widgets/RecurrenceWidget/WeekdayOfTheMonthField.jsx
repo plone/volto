@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import moment from 'moment';
-import { Days } from './Constants';
+import { Days } from './Utils';
 import SelectInput from './SelectInput';
 import { Form } from 'semantic-ui-react';
 

@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Button } from 'semantic-ui-react';
 import moment from 'moment';
-import { Days } from './Constants';
+import { Days } from './Utils';
 
 /**
  * ByDayField component class.

@@ -21,12 +21,14 @@ import {
   FREQUENCES,
   WEEKLY_DAYS,
   MONDAYFRIDAY_DAYS,
-} from './Constants';
+  toISOString,
+} from './Utils';
 import IntervalField from './IntervalField';
 import ByDayField from './ByDayField';
 import EndField from './EndField';
 import ByMonthField from './ByMonthField';
 import ByYearField from './ByYearField';
+import Occurences from './Occurences';
 
 const messages = defineMessages({
   editRecurrence: {
@@ -150,10 +152,10 @@ class RecurrenceWidget extends Component {
       ? rrulestr(props.value, { unfold: true, forceset: true })
       : new RRuleSet();
 
-    console.log('constructor start', this.props);
+    console.log('constructor rruleSet', rruleSet);
     if (this.props.start) {
+      console.log('set dtstart');
       var start = new Date(this.props.start);
-
       rruleSet = this.updateRruleSet(rruleSet, null, 'dtstart', start);
     }
 
@@ -180,10 +182,6 @@ class RecurrenceWidget extends Component {
 
   show = dimmer => () => this.setState({ dimmer, open: true });
   close = () => this.setState({ open: false });
-
-  toISOString = date => {
-    return date.toISOString().split('T')[0];
-  };
 
   getFreq = number => {
     let freq = FREQUENCES.DAILY;
@@ -350,27 +348,29 @@ class RecurrenceWidget extends Component {
   };
 
   getDefaultUntil = freq => {
-    var end = this.props.end
-      ? this.toISOString(new Date(this.props.end))
-      : null;
+    var end = this.props.end ? new Date(this.props.end) : null;
     var tomorrow = this.toISOString(
       moment()
         .add(1, 'days')
+        .utc()
         .toDate(),
     );
     var nextWeek = this.toISOString(
       moment()
         .add(7, 'days')
+        .utc()
         .toDate(),
     );
     var nextMonth = this.toISOString(
       moment()
         .add(1, 'months')
+        .utc()
         .toDate(),
     );
     var nextYear = this.toISOString(
       moment()
         .add(1, 'years')
+        .utc()
         .toDate(),
     );
 
@@ -402,9 +402,11 @@ class RecurrenceWidget extends Component {
   };
 
   changeField = (formValues, field, value) => {
+    console.log('field', field, 'value', value);
     //get weekday from state.
     var byweekday = this.state.rruleSet.rrules()[0].origOptions.byweekday;
     var currWeekday = this.getWeekday(moment().day() - 1);
+    var currMonth = moment().month() + 1;
 
     formValues[field] = value;
 
@@ -519,7 +521,7 @@ class RecurrenceWidget extends Component {
           formValues = this.changeField(
             formValues,
             'monthOfTheYear',
-            moment().month() + 1,
+            currMonth,
           ); //default value: current month
           formValues = this.changeField(formValues, 'byweekday', null); //default value
         }
@@ -531,14 +533,13 @@ class RecurrenceWidget extends Component {
           formValues = this.changeField(
             formValues,
             'monthOfTheYear',
-            moment().month() + 1,
+            currMonth,
           ); //default value
         }
         break;
       default:
         break;
     }
-
     return formValues;
   };
 
@@ -567,6 +568,23 @@ class RecurrenceWidget extends Component {
         //   value,
         //   this.state.rruleSet.toString(),
         // );
+      },
+    );
+  };
+
+  exclude = date => {
+    this.setState(
+      prevState => {
+        // console.log('prevState', prevState);
+        var rruleSet = prevState.rruleSet;
+        rruleSet.exdate(new Date(date));
+        return {
+          ...prevState,
+          rruleSet,
+        };
+      },
+      () => {
+        console.log(this.state.rruleSet.all());
       },
     );
   };
@@ -615,7 +633,7 @@ class RecurrenceWidget extends Component {
               >
                 <Modal.Header>
                   {intl.formatMessage(messages.editRecurrence)}{' '}
-                  {rruleSet.rrules()[0].toString()}
+                  {rruleSet.toString()}
                 </Modal.Header>
                 <Modal.Content scrolling>
                   <Modal.Description>
@@ -694,19 +712,7 @@ class RecurrenceWidget extends Component {
                       </Form>
                     </Segment>
                     <Segment>
-                      elenco ricorrenze selezionate con bottone per
-                      disattivarle/attivarle
-                      {rruleSet.all().map(date => {
-                        return (
-                          <div key={date.toString()}>{date.toString()}</div>
-                        );
-                      })}
-                      {/* <List
-      items={rrule
-        .all()
-        .map(date => datesForDisplay(date))
-        .map(date => date.startDate)}
-    /> */}
+                      <Occurences rruleSet={rruleSet} exclude={this.exclude} />
                     </Segment>
                   </Modal.Description>
                 </Modal.Content>

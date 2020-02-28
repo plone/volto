@@ -36,3 +36,7 @@ export const OPTIONS = {
     [FREQUENCES.YEARLY]: { rrule: RRule.YEARLY, interval: true, byyear: true },
   },
 };
+
+export const toISOString = date => {
+  return date.toISOString().split('T')[0];
+};

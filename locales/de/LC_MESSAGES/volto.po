@@ -321,7 +321,7 @@ msgstr "Aktuelles Passwort"
 msgid "Cut"
 msgstr "Schneiden"
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
 msgstr ""
 
@@ -468,7 +468,7 @@ msgstr "Feld bearbeiten"
 msgid "Edit fieldset"
 msgstr "Fieldset bearbeiten"
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Edit recurrence"
 msgstr ""
 
@@ -559,7 +559,7 @@ msgstr "Dateiname"
 msgid "Filter…"
 msgstr "Filter…"
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "First"
 msgstr ""
 
@@ -571,7 +571,7 @@ msgstr "Tabellen-Zellen mit fester Breite"
 msgid "Forbidden"
 msgstr ""
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Fourth"
 msgstr ""
 
@@ -694,19 +694,19 @@ msgstr "Zeile danach einfügen"
 msgid "Insert row before"
 msgstr "Zeile davor einfügen"
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Daily"
 msgstr ""
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Monthly"
 msgstr ""
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Weekly"
 msgstr ""
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Interval Yearly"
 msgstr ""
 
@@ -736,7 +736,7 @@ msgstr "Auswahl muss eindeutig sein."
 msgid "Language"
 msgstr "Sprache"
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Last"
 msgstr ""
 
@@ -827,15 +827,15 @@ msgstr "Kommentare moderieren"
 msgid "Moderate comments"
 msgstr "Kommentare moderieren"
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monday and Friday"
 msgstr ""
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
 msgid "Month day"
 msgstr ""
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monthly"
 msgstr ""
 
@@ -916,7 +916,7 @@ msgstr "Kein Workflow"
 msgid "None"
 msgstr "Keiner"
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Occurences"
 msgstr ""
 
@@ -1046,15 +1046,15 @@ msgstr "Mehr…"
 msgid "Rearrange items by…"
 msgstr "Elemente sortieren nach…"
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends"
 msgstr ""
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends after"
 msgstr ""
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends on"
 msgstr ""
 
@@ -1080,15 +1080,15 @@ msgstr "Umbenennen"
 msgid "Rename items"
 msgstr "Artikel umbenennen"
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat"
 msgstr ""
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat every"
 msgstr ""
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat on"
 msgstr ""
 
@@ -1181,7 +1181,7 @@ msgstr "Suchergebnisse für {term}"
 msgid "Search users..."
 msgstr "Nutzer suchen..."
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
 msgstr ""
 
@@ -1196,6 +1196,10 @@ msgstr "Kriterium wählen"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Wählen Sie den Statuswechsel, der benutzt werden soll, um den Status des Artikels zu ändern."
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Selected dates"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
@@ -1294,6 +1298,10 @@ msgstr "Geben Sie ein YouTube-Video oder eine YouTube-Playlist URL ein"
 msgid "Split"
 msgstr "Aufsplitten"
 
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Start of the recurrence"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
 msgstr "E-Mail anfordern"
@@ -1385,7 +1393,7 @@ msgstr "{plonecms} {copyright} 2000-{current_year} {plonefoundation} und Freunde
 msgid "There were some errors."
 msgstr "Es sind Fehler aufgetreten."
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr ""
 
@@ -1541,43 +1549,15 @@ msgstr ""
 msgid "We will use this address if you need to recover your password"
 msgstr "Wir verwenden diese E-Mail Adresse wenn wir Ihr Passwort wiederherstellen müssen"
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Weeek day of month"
 msgstr ""
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Weekday"
 msgstr ""
 
-#: components/manage/Widgets/RecurrenceWidget
-msgid "Weekday FR"
-msgstr ""
-
-#: components/manage/Widgets/RecurrenceWidget
-msgid "Weekday MO"
-msgstr ""
-
-#: components/manage/Widgets/RecurrenceWidget
-msgid "Weekday SA"
-msgstr ""
-
-#: components/manage/Widgets/RecurrenceWidget
-msgid "Weekday SU"
-msgstr ""
-
-#: components/manage/Widgets/RecurrenceWidget
-msgid "Weekday TH"
-msgstr ""
-
-#: components/manage/Widgets/RecurrenceWidget
-msgid "Weekday TU"
-msgstr ""
-
-#: components/manage/Widgets/RecurrenceWidget
-msgid "Weekday WE"
-msgstr ""
-
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Weekly"
 msgstr ""
 
@@ -1601,7 +1581,7 @@ msgstr "Wer"
 msgid "Workflow updated."
 msgstr "Arbeitsablauf aktualisiert."
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
 msgstr ""
 
@@ -1717,7 +1697,8 @@ msgstr "Medien"
 msgid "mostUsed"
 msgstr "Häufig genutzt"
 
-#: components/manage/Widgets/RecurrenceWidget
+#: components/manage/Widgets/RecurrenceWidget/ByMonthDayField
+#: components/manage/Widgets/RecurrenceWidget/ByYearField
 msgid "of the month"
 msgstr ""
 
