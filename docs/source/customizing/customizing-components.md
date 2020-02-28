@@ -1,18 +1,18 @@
 # Customizing Components
 
-You are able to customize the existing Volto components using an easy pattern
-in the `customizations` folder. You have to identify and locate the component
-that you want to customize, let's say the Logo component in [Volto source
+You are able to customize the existing Volto components using a pattern called
+`component shadowing` using the `customizations` folder. You have to identify and locate
+the component that you want to customize, let's say the Logo component in [Volto source
 code](https://github.com/plone/volto/tree/master/src).
 
 !!! tip
-    Those familiar with Plone's JBOT customizing add-on will recognize this
-    pattern since it works the same way, except that here you have to create
-    exactly the same folder structure of the original instead of using the dotted
+    Those familiar with Plone's JBOT customizing add-on will recognize this pattern
+    since it works the same way, except that here you have to create exactly the same
+    folder structure hierarchy of the original component instead of using the dotted
     notation used in JBOT overrides.
 
-You can override virtually any component that lives inside the `src` folder and
-adapt it to your needs, without touching the original (source) one.
+You can override any component that lives inside Volto's `src` folder and
+adapt it to your needs, without touching the original (source) counterparts.
 Components are named in a semantic and approachable way.
 
 In order to identify them, you can use several approaches the main one using
@@ -28,8 +28,8 @@ the original component has in the Volto source code and place it inside the
 ## Customizing the Logo resource
 
 So, for example, if we want to replace the Logo which is located in
-Volto at `components/theme/Logo/Logo.svg`, the folder structure needs 
-to match the folder structure of Volto in the `customizations` folder. 
+Volto at `components/theme/Logo/Logo.svg`, the folder structure needs
+to match the folder structure of Volto in the `customizations` folder.
 So the final path of the new overridden component will
 be: `customizations/components/theme/Logo/Logo.svg`.
 
