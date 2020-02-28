@@ -596,5 +596,35 @@ if (Cypress.env('API') !== 'guillotina') {
     //   //   cy.contains(expected);
     //   // }
     // });
+
+    it.only('Add Table of Contents block', () => {
+      const h2 = 'expectedH2';
+      const h3 = 'expectedH3';
+
+      cy.get('.block.inner.text .public-DraftEditor-content')
+        .type(` ${h2}`)
+        .setSelection(` ${h2}`);
+      cy.get(
+        '#page-edit .draftJsToolbar__buttonWrapper__1Dmqh:nth-of-type(5)',
+      ).click();
+
+      // cy.get('.block.text [contenteditable]').click();
+      // cy.get('button.block-add-button').click();
+      // cy.get('.blocks-chooser .title')
+      //   .contains('Common')
+      //   .click();
+      // cy.get('.ui.buttons .button.toc').click();
+      // cy.get('.ui.drag.block.inner.toc')
+      //   .click()
+      //   .type('{enter}');
+
+      // cy.get('.block.text.selected')
+      //   .click()
+      //   .type(` ${h2}`);
+      // cy.get('.block.text.selected').setSelection(` ${h2}`);
+      // cy.get(
+      //   '#page-edit .draftJsToolbar__buttonWrapper__1Dmqh:nth-of-type(5)',
+      // ).click();
+    });
   });
 }
