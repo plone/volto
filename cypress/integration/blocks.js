@@ -568,33 +568,96 @@ if (Cypress.env('API') !== 'guillotina') {
     //   cy.get('#page-document pre').should('have.text', 'This is html');
     // });
 
-    // it('Add table block', () => {
-    //   // TODO: Figure out why there is an erro when add this block in cypress
+    it('Add table block', () => {
+      //   // TODO: Figure out why there is an erro when add this block in cypress
 
-    //   // const block = 'table';
-    //   // const expected = 'This is the html';
+      // const block = 'table';
+      // const expected = 'This is the html';
 
-    //   // Edit
-    //   cy.get('.block.text [contenteditable]').click();
-    //   cy.get('button.block-add-button').click();
-    //   cy.get('button.show-hidden-blocks').click();
-    //   // cy.get(`button.add-${block}-block`).click();
-    //   // cy.get(`.block.${block} .npm__react-simple-code-editor__textarea`).type(
-    //   //   `<h3>${expected}</h3>`,
-    //   // );
-    //   // cy.get(`.block.${block} [aria-label="Preview"]`).click();
-    //   // cy.get(`.block.${block} h3`).contains(expected);
+      // Edit
+      cy.get('.block.text [contenteditable]').click();
+      cy.get('button.block-add-button').click();
+      cy.get('.blocks-chooser .title')
+        .contains('Common')
+        .click();
+      cy.get('.ui.buttons .button.table').click();
+      cy.get('.celled.fixed.table tr th:first-child()')
+        .click()
+        .type('column 1 / row 1');
+      cy.get('.celled.fixed.table tr th:nth-child(2)')
+        .click()
+        .type('column 2 / row 1');
+      cy.get('.celled.fixed.table tr:nth-child(2) td:first-child()')
+        .click()
+        .type('column 1 / row 2');
+      cy.get('.celled.fixed.table tr:nth-child(2) td:nth-child(2)')
+        .click()
+        .type('column 2 / row 2');
+      cy.get('button[title="Insert col after"]').click();
+      cy.get('button[title="Insert row after"]').click();
+      cy.get('button[title="Insert row before"]').click();
+      cy.get('button[title="Insert col before"]').click();
+      // cy.get(`button.add-${block}-block`).click();
+      // cy.get(`.block.${block} .npm__react-simple-code-editor__textarea`).type(
+      //   `<h3>${expected}</h3>`,
+      // );
+      // cy.get(`.block.${block} [aria-label="Preview"]`).click();
+      // cy.get(`.block.${block} h3`).contains(expected);
 
-    //   // // Save
-    //   // cy.get('#toolbar-save').click();
+      // Save
+      cy.get('#toolbar-save').click();
 
-    //   // // View
-    //   // if (Cypress.env('API') === 'plone') {
-    //   //   cy.get('#page-document h3').should('have.text', expected);
-    //   // } else {
-    //   //   // guillotina
-    //   //   cy.contains(expected);
-    //   // }
-    // });
+      // View
+      cy.get('.celled.fixed.table tr th:first-child()').contains(
+        'column 1 / row 1',
+      );
+      cy.get('.celled.fixed.table tr th:nth-child(3)').contains(
+        'column 2 / row 1',
+      );
+      cy.get('.celled.fixed.table tr:nth-child(3) td:first-child()').contains(
+        'column 1 / row 2',
+      );
+      cy.get('.celled.fixed.table tr:nth-child(3) td:nth-child(3)').contains(
+        'column 2 / row 2',
+      );
+
+      // Edit
+      cy.visit('/my-page/edit');
+
+      cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click();
+
+      // without the second click the test fails. so this makes the test green.
+      cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click();
+      cy.get('button[title="Delete col"]').click();
+      cy.get('.celled.fixed.table tr:first-child() th:nth-child(3)').click();
+      cy.get('button[title="Delete col"]').click();
+      cy.get('.celled.fixed.table tr:nth-child(2) td:first-child()').click();
+      cy.get('button[title="Delete row"]').click();
+      cy.get('.celled.fixed.table tr:nth-child(3) td:first-child()').click();
+      cy.get('button[title="Delete row"]').click();
+
+      // Save
+      cy.get('#toolbar-save').click();
+
+      cy.get('.celled.fixed.table tr th:first-child()').contains(
+        'column 1 / row 1',
+      );
+      cy.get('.celled.fixed.table tr th:nth-child(2)').contains(
+        'column 2 / row 1',
+      );
+      cy.get('.celled.fixed.table tr:nth-child(2) td:first-child()').contains(
+        'column 1 / row 2',
+      );
+      cy.get('.celled.fixed.table tr:nth-child(2) td:nth-child(2)').contains(
+        'column 2 / row 2',
+      );
+
+      //   // if (Cypress.env('API') === 'plone') {
+      //   //   cy.get('#page-document h3').should('have.text', expected);
+      //   // } else {
+      //   //   // guillotina
+      //   //   cy.contains(expected);
+      // }
+    });
   });
 }
