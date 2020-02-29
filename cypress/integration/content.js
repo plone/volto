@@ -183,3 +183,29 @@ describe('Add Content Tests', () => {
     });
   }
 });
+
+describe('Contents', () => {
+  beforeEach(() => {
+    cy.autologin();
+    cy.createContent('Document', 'blog', 'Blog');
+    cy.visit('/blog');
+    cy.createContent('Document', 'january', 'January', '/blog');
+    cy.visit('/blog');
+    cy.createContent('Document', 'february', 'February', '/blog');
+  });
+  it('is sortable', function() {
+    cy.visit('/blog/contents');
+    cy.get('a[href^="/blog/"]')
+      .first()
+      .should(($a) => {
+        expect($a).to.contain('January')
+      });
+    cy.get('th:first-of-type > div.dropdown > div.menu > div.item:nth-child(2) > div.menu > div.item:first-child()')
+      .click({ force: true })
+      .get('a[href^="/blog/"]')
+      .first()
+      .should(($a) => {
+        expect($a).to.contain('February')
+      });
+  });
+})

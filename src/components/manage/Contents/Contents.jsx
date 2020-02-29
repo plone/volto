@@ -346,6 +346,8 @@ class Contents extends Component {
         })),
         selectedCount: defaultIndexes.length + 1,
       },
+      sort_on: 'getObjPositionInParent',
+      sort_order: 'ascending',
     };
     this.filterTimeout = null;
   }
@@ -568,6 +570,10 @@ class Contents extends Component {
    */
   onSortItems(event, { value }) {
     const values = value.split('|');
+    this.setState({
+      sort_on: values[0],
+      sort_order: values[1],
+    });
     this.props.sortContent(
       getBaseUrl(this.props.pathname),
       values[0],
@@ -772,7 +778,8 @@ class Contents extends Component {
   fetchContents(pathname) {
     this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
       'path.depth': 1,
-      sort_on: 'getObjPositionInParent',
+      sort_on: this.state.sort_on,
+      sort_order: this.state.sort_order,
       metadata_fields: '_all',
       ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
       b_size: this.state.pageSize,
@@ -1150,7 +1157,7 @@ class Contents extends Component {
                                 'EffectiveDate',
                                 'CreationDate',
                                 'ModificationDate',
-                                'Type',
+                                'portal_type',
                               ],
                               index => (
                                 <Dropdown.Item key={index}>
@@ -1159,7 +1166,7 @@ class Contents extends Component {
                                   <Dropdown.Menu>
                                     <Dropdown.Item
                                       onClick={this.onSortItems}
-                                      value={`${index}|ascending`}
+                                      value={`${Indexes[index].sort_on}|ascending`}
                                     >
                                       <Icon name="sort alphabet ascending" />{' '}
                                       <FormattedMessage
@@ -1169,7 +1176,7 @@ class Contents extends Component {
                                     </Dropdown.Item>
                                     <Dropdown.Item
                                       onClick={this.onSortItems}
-                                      value={`${index}|descending`}
+                                      value={`${Indexes[index].sort_on}|descending`}
                                     >
                                       <Icon name="sort alphabet descending" />{' '}
                                       <FormattedMessage
