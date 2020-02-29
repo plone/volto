@@ -6,6 +6,7 @@
 
 ### Changes
 
+- Fixes #982 - History compare/diff @avoinea
 - Responsive header @ksuess
   - Anontools (login, register) wrapping under long navigation.
   - Breaking change: Hamburger menu also on tablet.
