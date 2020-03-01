@@ -1140,7 +1140,12 @@ class Contents extends Component {
                     <Table.Row>
                       <Table.HeaderCell>
                         <Dropdown
-                          trigger={<Icon name="sort content ascending" />}
+                          trigger={
+                            <Icon
+                              name="sort content ascending"
+                              data-cy="sort"
+                            />
+                          }
                           icon={null}
                           simple
                         >
@@ -1160,13 +1165,14 @@ class Contents extends Component {
                                 'portal_type',
                               ],
                               index => (
-                                <Dropdown.Item key={index}>
+                                <Dropdown.Item key={index} data-cy={index}>
                                   <Icon name="dropdown" />
                                   <FormattedMessage id={Indexes[index].label} />
                                   <Dropdown.Menu>
                                     <Dropdown.Item
                                       onClick={this.onSortItems}
                                       value={`${Indexes[index].sort_on}|ascending`}
+                                      data-cy={`${Indexes[index].sort_on}|ascending`}
                                     >
                                       <Icon name="sort alphabet ascending" />{' '}
                                       <FormattedMessage
@@ -1177,6 +1183,7 @@ class Contents extends Component {
                                     <Dropdown.Item
                                       onClick={this.onSortItems}
                                       value={`${Indexes[index].sort_on}|descending`}
+                                      data-cy={`${Indexes[index].sort_on}|descending`}
                                     >
                                       <Icon name="sort alphabet descending" />{' '}
                                       <FormattedMessage

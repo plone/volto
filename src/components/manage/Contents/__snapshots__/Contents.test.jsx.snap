@@ -508,6 +508,7 @@ exports[`Contents renders a contents component 1`] = `
                     <i
                       aria-hidden="true"
                       className="sort content ascending icon"
+                      data-cy="sort"
                       onClick={[Function]}
                     />
                     <div
@@ -520,6 +521,7 @@ exports[`Contents renders a contents component 1`] = `
                       </div>
                       <div
                         className="item"
+                        data-cy="id"
                         onClick={[Function]}
                         role="option"
                       >
@@ -534,6 +536,7 @@ exports[`Contents renders a contents component 1`] = `
                         >
                           <div
                             className="item"
+                            data-cy="id|ascending"
                             onClick={[Function]}
                             role="option"
                           >
@@ -547,6 +550,7 @@ exports[`Contents renders a contents component 1`] = `
                           </div>
                           <div
                             className="item"
+                            data-cy="id|descending"
                             onClick={[Function]}
                             role="option"
                           >
@@ -562,6 +566,7 @@ exports[`Contents renders a contents component 1`] = `
                       </div>
                       <div
                         className="item"
+                        data-cy="sortable_title"
                         onClick={[Function]}
                         role="option"
                       >
@@ -576,6 +581,7 @@ exports[`Contents renders a contents component 1`] = `
                         >
                           <div
                             className="item"
+                            data-cy="sortable_title|ascending"
                             onClick={[Function]}
                             role="option"
                           >
@@ -589,6 +595,7 @@ exports[`Contents renders a contents component 1`] = `
                           </div>
                           <div
                             className="item"
+                            data-cy="sortable_title|descending"
                             onClick={[Function]}
                             role="option"
                           >
@@ -604,6 +611,7 @@ exports[`Contents renders a contents component 1`] = `
                       </div>
                       <div
                         className="item"
+                        data-cy="EffectiveDate"
                         onClick={[Function]}
                         role="option"
                       >
@@ -618,6 +626,7 @@ exports[`Contents renders a contents component 1`] = `
                         >
                           <div
                             className="item"
+                            data-cy="effective|ascending"
                             onClick={[Function]}
                             role="option"
                           >
@@ -631,6 +640,7 @@ exports[`Contents renders a contents component 1`] = `
                           </div>
                           <div
                             className="item"
+                            data-cy="effective|descending"
                             onClick={[Function]}
                             role="option"
                           >
@@ -646,6 +656,7 @@ exports[`Contents renders a contents component 1`] = `
                       </div>
                       <div
                         className="item"
+                        data-cy="CreationDate"
                         onClick={[Function]}
                         role="option"
                       >
@@ -660,6 +671,7 @@ exports[`Contents renders a contents component 1`] = `
                         >
                           <div
                             className="item"
+                            data-cy="created|ascending"
                             onClick={[Function]}
                             role="option"
                           >
@@ -673,6 +685,7 @@ exports[`Contents renders a contents component 1`] = `
                           </div>
                           <div
                             className="item"
+                            data-cy="created|descending"
                             onClick={[Function]}
                             role="option"
                           >
@@ -688,6 +701,7 @@ exports[`Contents renders a contents component 1`] = `
                       </div>
                       <div
                         className="item"
+                        data-cy="ModificationDate"
                         onClick={[Function]}
                         role="option"
                       >
@@ -702,6 +716,7 @@ exports[`Contents renders a contents component 1`] = `
                         >
                           <div
                             className="item"
+                            data-cy="modified|ascending"
                             onClick={[Function]}
                             role="option"
                           >
@@ -715,6 +730,7 @@ exports[`Contents renders a contents component 1`] = `
                           </div>
                           <div
                             className="item"
+                            data-cy="modified|descending"
                             onClick={[Function]}
                             role="option"
                           >
@@ -730,6 +746,7 @@ exports[`Contents renders a contents component 1`] = `
                       </div>
                       <div
                         className="item"
+                        data-cy="portal_type"
                         onClick={[Function]}
                         role="option"
                       >
@@ -744,6 +761,7 @@ exports[`Contents renders a contents component 1`] = `
                         >
                           <div
                             className="item"
+                            data-cy="portal_type|ascending"
                             onClick={[Function]}
                             role="option"
                           >
@@ -757,6 +775,7 @@ exports[`Contents renders a contents component 1`] = `
                           </div>
                           <div
                             className="item"
+                            data-cy="portal_type|descending"
                             onClick={[Function]}
                             role="option"
                           >
