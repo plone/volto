@@ -2,7 +2,7 @@ site_name: Volto developer documentation
 docs_dir: ./source
 site_dir: ./build
 repo_url: 'https://github.com/plone/volto'
-copyright: 'Made with ❤️ by the Volto Team - All code owned by the Plone Foundation'
+copyright: 'Made with ❤️ by Plone Community - All code owned by the Plone Foundation'
 theme:
   name: 'material'
   custom_dir: 'theme'
@@ -18,9 +18,7 @@ extra_css:
   - 'stylesheets/extra.css'
 
 nav:
-  - Introduction: 'introduction/introduction.md'
-  - Getting Started:
-      - Install Volto: 'getting-started/install.md'
+  - Getting Started: 'getting-started/install.md'
   - Configuration:
       - What is configurable?: 'configuration/how-to.md'
       - Richeditor settings: 'configuration/richeditor-settings.md'

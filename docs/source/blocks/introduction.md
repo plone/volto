@@ -3,13 +3,13 @@
 Volto features the Pastanaga Editor Engine, allowing you to visually compose a page using blocks.
 The editor allows you to add, modify, reorder and delete blocks given your requirements.
 Blocks provide the user the ability to display content in an specific way, although they can also define behavior and have specific features.
-Blocks are composed of two basic (and required) components: the Block edit and view components.
+Blocks are composed of two basic (and required) components: the block edit and view components.
 
-By default, Volto ships with the most basic set of Blocks: Title, Text, Image, Video, Maps, etc...
+By default, Volto ships with the most basic set of blocks: Title, Text, Image, Video, Maps, etc...
 
 !!! note
-    Volto Blocks are not enabled by default in Plone content types.
-    The interface for this behavior is `plone.restapi.behaviors.IBlocks`.
+    Volto Blocks are not enabled by default in Plone content types, in order to enable this feature, you should enable provided behavior in a per content type basis.
+    The programmatic name of the behavior is `volto.blocks`, or `Blocks` in the Behavior tab of the Dexterity Content Types control panel.
     If you are using the `kitconcept.voltodemo` package, it sets it up for you for the `Document` content type.
 
 ## How to manually enable Blocks on a content type
