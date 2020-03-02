@@ -211,8 +211,10 @@ describe('Contents', () => {
       .get('i[data-cy="sort"]')
       .click()
       .get('div.item[data-cy="id"]')
+      .should('be.visible')
       .trigger('mousover')
       .get('div.item[data-cy="id|ascending"]')
+      .should('be.visible')
       .click({force: true}); // TODO: occasional timeout problem while testing: click on invisible node
 
     cy.get('a[href^="/blog/"]')
