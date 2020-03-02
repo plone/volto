@@ -26,7 +26,7 @@ const Types = ({ types, pathname }) => {
                 className="item"
                 key={item.title}
               >
-                {item.title}
+                <FormattedMessage id={item.title} />
               </Link>
             </li>
           ))}

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { Container, Image } from 'semantic-ui-react';
 
-import { flattenToAppURL } from '../../../helpers';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
  * NewsItemView view component class.

@@ -1,5 +1,5 @@
 import { listRoles } from './roles';
-import { LIST_ROLES } from '../../constants/ActionTypes';
+import { LIST_ROLES } from '@plone/volto/constants/ActionTypes';
 
 describe('Roles action', () => {
   describe('listRoles', () => {

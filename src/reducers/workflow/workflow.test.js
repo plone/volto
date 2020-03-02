@@ -3,7 +3,7 @@ import {
   GET_WORKFLOW,
   GET_WORKFLOW_MULTIPLE,
   TRANSITION_WORKFLOW,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Workflow reducer', () => {
   it('should return the initial state', () => {

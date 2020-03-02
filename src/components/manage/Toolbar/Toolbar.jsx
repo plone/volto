@@ -14,24 +14,24 @@ import cookie from 'react-cookie';
 import { filter, find } from 'lodash';
 import cx from 'classnames';
 
-import More from './More';
-import PersonalTools from './PersonalTools';
-import Types from './Types';
-import PersonalInformation from '../Preferences/PersonalInformation';
-import PersonalPreferences from '../Preferences/PersonalPreferences';
-import StandardWrapper from './StandardWrapper';
-import { getTypes, listActions } from '../../../actions';
-import { Icon } from '../../../components';
-import { BodyClass, getBaseUrl } from '../../../helpers';
+import More from '@plone/volto/components/manage/Toolbar/More';
+import PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
+import Types from '@plone/volto/components/manage/Toolbar/Types';
+import PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
+import PersonalPreferences from '@plone/volto/components/manage/Preferences/PersonalPreferences';
+import StandardWrapper from '@plone/volto/components/manage/Toolbar/StandardWrapper';
+import { getTypes, listActions } from '@plone/volto/actions';
+import { Icon } from '@plone/volto/components';
+import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
 
-import pastanagaSmall from './pastanaga-small.svg';
-import pastanagalogo from './pastanaga.svg';
-import penSVG from '../../../icons/pen.svg';
-import folderSVG from '../../../icons/folder.svg';
-import addSVG from '../../../icons/add-document.svg';
-import moreSVG from '../../../icons/more.svg';
-import userSVG from '../../../icons/user.svg';
-import clearSVG from '../../../icons/clear.svg';
+import pastanagaSmall from '@plone/volto/components/manage/Toolbar/pastanaga-small.svg';
+import pastanagalogo from '@plone/volto/components/manage/Toolbar/pastanaga.svg';
+import penSVG from '@plone/volto/icons/pen.svg';
+import folderSVG from '@plone/volto/icons/folder.svg';
+import addSVG from '@plone/volto/icons/add-document.svg';
+import moreSVG from '@plone/volto/icons/more.svg';
+import userSVG from '@plone/volto/icons/user.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   edit: {
@@ -65,6 +65,26 @@ const messages = defineMessages({
   personalPreferences: {
     id: 'Personal Preferences',
     defaultMessage: 'Personal Preferences',
+  },
+  collection: {
+    id: 'Collection',
+    defaultMessage: 'Collection',
+  },
+  file: {
+    id: 'File',
+    defaultMessage: 'File',
+  },
+  link: {
+    id: 'Link',
+    defaultMessage: 'Link',
+  },
+  newsItem: {
+    id: 'News Item',
+    defaultMessage: 'News Item',
+  },
+  page: {
+    id: 'Page',
+    defaultMessage: 'Page',
   },
 });
 

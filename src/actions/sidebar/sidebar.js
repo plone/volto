@@ -3,7 +3,7 @@
  * @module actions/sidebar/sidebar
  */
 
-import { SET_SIDEBAR_TAB } from '../../constants/ActionTypes';
+import { SET_SIDEBAR_TAB } from '@plone/volto/constants/ActionTypes';
 
 /**
  * Set sidebar tab function.
