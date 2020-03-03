@@ -607,6 +607,9 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get(
         '#page-edit .draftJsToolbar__buttonWrapper__1Dmqh:nth-of-type(5)',
       ).click();
+      cy.get('#toolbar-save').click();
+      // cy.visit('/my-page/edit');
+      cy.get('.toolbar-actions .edit').click();
 
       // cy.get('.block.text [contenteditable]').click();
       // cy.get('button.block-add-button').click();
