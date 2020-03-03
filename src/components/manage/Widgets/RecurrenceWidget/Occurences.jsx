@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 import moment from 'moment';
 import cx from 'classnames';
-import { List, Button, Header } from 'semantic-ui-react';
+import { List, Button, Header, Label } from 'semantic-ui-react';
 import { toISOString } from './Utils';
 
 const messages = defineMessages({
@@ -19,6 +19,10 @@ const messages = defineMessages({
   start_of_recurrence: {
     id: 'Start of the recurrence',
     defaultMessage: 'Start of the recurrence',
+  },
+  additional_date: {
+    id: 'Additional date',
+    defaultMessage: 'Additional date',
   },
 });
 
@@ -43,6 +47,18 @@ const Occurences = ({ rruleSet, exclude, undoExclude, intl }) => {
       }
     });
     return excluded;
+  };
+
+  const isAdditional = date => {
+    var dateISO = toISOString(date);
+    var additional = false;
+    rruleSet.rdates().map(d => {
+      var dd = toISOString(d);
+      if (dd === dateISO) {
+        additional = true;
+      }
+    });
+    return additional;
   };
   let all = rruleSet.all();
 
@@ -93,6 +109,11 @@ const Occurences = ({ rruleSet, exclude, undoExclude, intl }) => {
               </List.Content>
               <List.Content className={cx({ excluded: excluded })}>
                 {formatDate(date)}
+                {isAdditional(date) && (
+                  <Label pointing="left" size="small" color="green">
+                    {intl.formatMessage(messages.additional_date)}
+                  </Label>
+                )}
               </List.Content>
             </List.Item>
           );

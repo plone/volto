@@ -7,11 +7,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { RRule, RRuleSet, rrulestr } from 'rrule';
 
-import { isEqual, map } from 'lodash';
+import { isEqual, map, find, concat } from 'lodash';
 
 import moment from 'moment';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Form, Grid, Label, Button, Segment, Modal } from 'semantic-ui-react';
+import {
+  Form,
+  Grid,
+  Label,
+  Button,
+  Segment,
+  Modal,
+  Header,
+  Input,
+} from 'semantic-ui-react';
 
 import { SelectWidget } from '@plone/volto/components';
 import { remove } from 'lodash';
@@ -91,6 +100,10 @@ const messages = defineMessages({
     id: 'Interval Yearly',
     defaultMessage: 'year(s)',
   },
+  add_date: {
+    id: 'Add date',
+    defaultMessage: 'Add date',
+  },
 });
 
 const NoRRuleOptions = [
@@ -105,6 +118,7 @@ const NoRRuleOptions = [
   'bysecond',
   'bynmonthday',
   'exdates',
+  'rdates',
 ];
 /**
  * RecurrenceWidget component class.
@@ -167,20 +181,6 @@ class RecurrenceWidget extends Component {
       rruleSet: rruleSet,
       formValues: this.getFormValues(rruleSet),
     };
-    // console.log('all set', rruleSet.rrules()[0].all());
-    // console.log('all rrule', rruleSet.rrules()[0].all());
-
-    // console.log(props.value);
-    // console.log(this.state.rruleSet);
-
-    // console.log('to text:', this.state.rruleSet.toText());
-
-    //console.log('rrule', rruleSet.rrules()[0]); //get rrule
-    //console.log('exrule', rruleSet.exrules()[0]); //get exrulex
-    //console.log('exdate', rruleSet.exdates()[0]); //get exrulex
-    //rdates() //Get list of included datetimes in this recurrence set.
-    //exdates() //Get list of excluded datetimes in this recurrence set.
-    // console.log('count', r.rrules()[0].options.count);
   }
 
   show = dimmer => () => this.setState({ dimmer, open: true });
@@ -333,19 +333,21 @@ class RecurrenceWidget extends Component {
     var rruleOptions = this.formValuesToRRuleOptions(formValues);
 
     var dstart =
-      field === 'dtstart' ? value : Object.assign({}, rruleSet.dtstart());
+      field === 'dtstart'
+        ? value
+        : Object.assign(new Date(), rruleSet.dtstart());
     var exdates =
-      field === 'exdates' ? value : Object.assign({}, rruleSet.exdates());
+      field === 'exdates' ? value : Object.assign([], rruleSet.exdates());
+
+    var rdates =
+      field === 'rdates' ? value : Object.assign([], rruleSet.rdates());
 
     let set = new RRuleSet();
-    //    console.log('updateRRuleset', formValues);
     set.rrule(new RRule(rruleOptions));
     set.dtstart(dstart);
-    if (exdates) {
-      for (var i = 0; i < exdates.length; i++) {
-        set.exdate(exdates[i]);
-      }
-    }
+
+    exdates.map(ex => set.exdate(ex));
+    rdates.map(r => set.rdate(r));
 
     return set;
   };
@@ -589,6 +591,27 @@ class RecurrenceWidget extends Component {
     this.onChangeRule('exdates', list);
   };
 
+  addDate = date => {
+    let all = concat(this.state.rruleSet.all(), this.state.rruleSet.exdates());
+
+    var simpleDate = moment(new Date(date))
+      .startOf('day')
+      .toDate()
+      .getTime();
+    var exists = find(all, e => {
+      var d = moment(e)
+        .startOf('day')
+        .toDate()
+        .getTime();
+      return d === simpleDate;
+    });
+    if (!exists) {
+      let list = this.state.rruleSet.rdates().slice(0);
+      list.push(new Date(date));
+      this.onChangeRule('rdates', list);
+    }
+  };
+
   render() {
     const { open, dimmer, rruleSet, formValues } = this.state;
 
@@ -717,6 +740,27 @@ class RecurrenceWidget extends Component {
                         exclude={this.exclude}
                         undoExclude={this.undoExclude}
                       />
+                    </Segment>
+                    <Segment>
+                      <Header as="h2">
+                        {intl.formatMessage(messages.add_date)}
+                      </Header>
+                      <Form.Field inline>
+                        <Input
+                          id="until"
+                          type="date"
+                          name="until"
+                          min={moment(rruleSet.rrules()[0].dtstart)
+                            .add(1, 'd')
+                            .utc()
+                            .format('YYYY-MM-DD')}
+                          onChange={({ target }) => {
+                            this.addDate(
+                              target.value === '' ? undefined : target.value,
+                            );
+                          }}
+                        />
+                      </Form.Field>
                     </Segment>
                   </Modal.Description>
                 </Modal.Content>
