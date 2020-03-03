@@ -16,7 +16,7 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { Field } from '../../../components';
+import { Field } from '@plone/volto/components';
 
 const messages = defineMessages({
   required: {

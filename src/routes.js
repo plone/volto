@@ -25,7 +25,7 @@ import {
   Search,
   Sharing,
   UsersControlpanel,
-} from './components';
+} from '@plone/volto/components';
 
 /**
  * Default routes array.

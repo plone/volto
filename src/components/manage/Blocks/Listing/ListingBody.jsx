@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { ConditionalLink } from '@plone/volto/components';
-import { getQueryStringResults } from '@plone/volto/actions';
-import { flattenToAppURL } from '@plone/volto/helpers';
-import { settings } from '~/config';
+import { getContent, getQueryStringResults } from '@plone/volto/actions';
+import { Pagination } from 'semantic-ui-react';
+import { Icon } from '@plone/volto/components';
+import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
+import paginationRightSVG from '@plone/volto/icons/right-key.svg';
 
-import DefaultImageSVG from '@plone/volto/components/manage/Blocks/Listing/default-image.svg';
+import { blocks, settings } from '~/config';
 
 const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const content = useSelector(state => state.content.data);
   const querystringResults = useSelector(
     state => state.querystringsearch.subrequests,
   );
@@ -24,7 +26,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
     }
   }, [dispatch, data, data.block, path]);
 
-  const folderItems = properties.is_folderish ? properties.items : [];
+  const folderItems = content.is_folderish ? content.items : [];
 
   const listingItems =
     data?.query?.length > 0
@@ -34,35 +36,103 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
         []
       : folderItems;
 
+  const templateConfig = blocks.blocksConfig.listing.templates;
+
+  let templateName =
+    data.template && !!templateConfig[data.template]
+      ? data.template
+      : 'default';
+
+  const ListingBodyTemplate = templateConfig[templateName].template;
+
+  function handleContentPaginationChange(e, { activePage }) {
+    !isEditMode && window.scrollTo(0, 0);
+    setCurrentPage(activePage);
+    dispatch(getContent(path, null, null, activePage));
+  }
+
+  function handleQueryPaginationChange(e, { activePage }) {
+    !isEditMode && window.scrollTo(0, 0);
+    setCurrentPage(activePage);
+    dispatch(
+      getQueryStringResults(
+        path,
+        { ...data, fullobjects: 1 },
+        data.block,
+        activePage,
+      ),
+    );
+  }
+
   return (
     <>
       {listingItems.length > 0 ? (
         <>
-          {listingItems.map(item => (
-            <div className="listing-item" key={item['@id']}>
-              <ConditionalLink
-                to={flattenToAppURL(item['@id'])}
-                condition={!isEditMode}
-              >
-                {!item[settings.listingPreviewImageField] && (
-                  <img src={DefaultImageSVG} alt="" />
-                )}
-                {item[settings.listingPreviewImageField] && (
-                  <img
-                    src={flattenToAppURL(
-                      item[settings.listingPreviewImageField].scales.preview
-                        .download,
-                    )}
-                    alt={item.title}
-                  />
-                )}
-                <div className="listing-body">
-                  <h3>{item.title ? item.title : item.id}</h3>
-                  <p>{item.description}</p>
-                </div>
-              </ConditionalLink>
-            </div>
-          ))}
+          <ListingBodyTemplate
+            items={listingItems}
+            isEditMode={isEditMode}
+            {...data}
+          />
+          {data?.query?.length === 0 &&
+            content.items_total > settings.defaultPageSize && (
+              <div className="pagination-wrapper">
+                <Pagination
+                  activePage={currentPage}
+                  totalPages={Math.ceil(
+                    content.items_total / settings.defaultPageSize,
+                  )}
+                  onPageChange={handleContentPaginationChange}
+                  firstItem={null}
+                  lastItem={null}
+                  prevItem={{
+                    content: <Icon name={paginationLeftSVG} size="18px" />,
+                    icon: true,
+                    'aria-disabled': !content.batching.prev,
+                    className: !content.batching.prev ? 'disabled' : null,
+                  }}
+                  nextItem={{
+                    content: <Icon name={paginationRightSVG} size="18px" />,
+                    icon: true,
+                    'aria-disabled': !content.batching.next,
+                    className: !content.batching.next ? 'disabled' : null,
+                  }}
+                />
+              </div>
+            )}
+          {data?.query?.length > 0 &&
+            querystringResults[data.block].total >
+              (data.b_size || settings.defaultPageSize) && (
+              <div className="pagination-wrapper">
+                <Pagination
+                  activePage={currentPage}
+                  totalPages={Math.ceil(
+                    querystringResults[data.block].total /
+                      (data.b_size || settings.defaultPageSize),
+                  )}
+                  onPageChange={handleQueryPaginationChange}
+                  firstItem={null}
+                  lastItem={null}
+                  prevItem={{
+                    content: <Icon name={paginationLeftSVG} size="18px" />,
+                    icon: true,
+                    'aria-disabled': !querystringResults[data.block].batching
+                      .prev,
+                    className: !querystringResults[data.block].batching.prev
+                      ? 'disabled'
+                      : null,
+                  }}
+                  nextItem={{
+                    content: <Icon name={paginationRightSVG} size="18px" />,
+                    icon: true,
+                    'aria-disabled': !querystringResults[data.block].batching
+                      .next,
+                    className: !querystringResults[data.block].batching.next
+                      ? 'disabled'
+                      : null,
+                  }}
+                />
+              </div>
+            )}
         </>
       ) : (
         <div className="listing message">

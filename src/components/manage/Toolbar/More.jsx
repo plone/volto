@@ -11,11 +11,11 @@ import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { find } from 'lodash';
 
-import { Icon, Display, Workflow } from '../../../components';
-import { getBaseUrl } from '../../../helpers';
+import { Icon, Display, Workflow } from '@plone/volto/components';
+import { getBaseUrl } from '@plone/volto/helpers';
 
-import rightArrowSVG from '../../../icons/right-key.svg';
-import userSVG from '../../../icons/user.svg';
+import rightArrowSVG from '@plone/volto/icons/right-key.svg';
+import userSVG from '@plone/volto/icons/user.svg';
 
 const messages = defineMessages({
   personalTools: {
@@ -25,6 +25,10 @@ const messages = defineMessages({
   history: {
     id: 'History',
     defaultMessage: 'History',
+  },
+  sharing: {
+    id: 'Sharing',
+    defaultMessage: 'Sharing',
   },
 });
 
@@ -107,7 +111,7 @@ class More extends Component {
                   <button>
                     <div>
                       <span className="pastanaga-menu-label">
-                        {historyAction.title}
+                        {this.props.intl.formatMessage(messages.history)}
                       </span>
                       <span className="pastanaga-menu-value" />
                     </div>
@@ -131,7 +135,7 @@ class More extends Component {
               <li>
                 <Link to={`${path}/sharing`}>
                   <button>
-                    {sharingAction.title}
+                    {this.props.intl.formatMessage(messages.sharing)}
                     <Icon name={rightArrowSVG} size="24px" />
                   </button>
                 </Link>

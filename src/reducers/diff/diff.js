@@ -3,7 +3,7 @@
  * @module reducers/diff/diff
  */
 
-import { GET_DIFF } from '../../constants/ActionTypes';
+import { GET_DIFF } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   error: null,

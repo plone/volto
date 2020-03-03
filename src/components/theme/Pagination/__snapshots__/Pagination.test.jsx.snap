@@ -64,7 +64,8 @@ exports[`Pagination renders page size options when specified 1`] = `
       className="item"
       onClick={[Function]}
     >
-      Show:
+      Show
+      :
     </div>
     <a
       className="active item"

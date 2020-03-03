@@ -1,6 +1,8 @@
-# Installing Volto
+# Getting Started
 
-Volto can be installed in any operating system assuming that the requirements
+## Installing Volto
+
+Volto can be installed in any operating system assuming that this requirements
 are met:
 
 - [Node.js LTS (12.x)](https://nodejs.org/)
@@ -29,10 +31,10 @@ $ source ~/.bash_profile
 $ nvm version
 ```
 
-4. Install latest NodeJS 10.x:
+4. Install a LTS version of NodeJS:
 ```
-$ nvm install 10.15.1
-$ nvm use 10.15.1
+$ nvm install 12.16.1
+$ nvm use 12.16.1
 ```
 
 5. Test NodeJS:
@@ -42,7 +44,7 @@ $ node -v
 
 ## Yarn (NodeJS package manager)
 
-Install the node package manager.
+Install the classic version, not the 2.x one, of the popular node package manager.
 
 1. Open a terminal and type:
 ```
@@ -57,11 +59,11 @@ $ yarn -v
 !!! tip Alternative methods
     You can install `yarn` using several approaches too, depending on the
     platform you are on. Take a look at the original `yarn`
-    [documentation](https://yarnpkg.com/lang/en/docs/install) for a list of them.
+    [documentation](https://classic.yarnpkg.com/lang/en/) for a list of them.
 
 ## Docker for Mac
 
-In order to run the API backend, it's better to start running it in a container.
+In order to run the API backend, in a quick an easy and hassle way, it's recommended to start running it in a container.
 
 Here are the detailed instructions:
 
@@ -96,7 +98,7 @@ $ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconc
 
 ## Install Volto
 
-Use the `create-volto-app`.
+Use the `create-volto-app` helper utility.
 
 1. Open a terminal and execute:
 ```
@@ -119,26 +121,26 @@ $ create-volto-app myvoltoapp
 ```
 
 3. Change directory to the newly created folder `myvoltoapp` (or the one you've
-   chosen). Then
+   chosen). Then:
 ```
 $ yarn start
 ```
 
-Volto should compile and be executed in development mode. Open a browser to
+This command will build an in-memory bundle and execute Volto in development mode. Open a browser to
 take a look at http://localhost:3000
 
-## Compile the production build
+## Build the production bundle
 
-In production enviroments, you can compile an static version of the app. The
+In production environments, you should build an static version of your (Volto) app. The
 app should be run in a node process (because of the server side rendering
-part), but also have a client part that is provided and deployed by the server
+part), but it also have a client part that is provided and deployed by the server
 side rendering process.
 
 1. Compile the app using the command:
 ```
 $ yarn build
 ```
-The resultant build is available in the `dist` folder.
+The resultant build is available in the `build` folder.
 
 2. Run the Volto Nodejs process
 ```
@@ -150,5 +152,4 @@ manually:
 ```
 $ NODE_ENV=production node build/server.js
 ```
-Volto will be available in http://localhost:3000
-
+Your production ready Volto will be available in http://localhost:3000

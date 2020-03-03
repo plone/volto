@@ -63,7 +63,7 @@ class ReferenceWidget extends Component {
     error: [],
     search: [],
     value: null,
-    multiple: false,
+    multiple: true,
   };
 
   /**
@@ -206,25 +206,28 @@ class ReferenceWidget extends Component {
                 noResultsMessage={this.props.intl.formatMessage(
                   messages.no_results_found,
                 )}
+                multiple={multiple}
                 value={
                   multiple
                     ? value
                       ? map(value, item =>
-                          item['@id'].replace(settings.apiPath, ''),
+                          item && item['@id']
+                            ? item['@id'].replace(settings.apiPath, '')
+                            : item,
                         )
                       : []
                     : value
-                    ? value['@id'].replace(settings.apiPath, '')
+                    ? value['@id']?.replace(settings.apiPath, '')
                     : ''
                 }
-                onChange={(event, data) =>
-                  onChange(
+                onChange={(event, data) => {
+                  return onChange(
                     id,
                     multiple
                       ? map(data.value, item => this.state.choices[item].data)
                       : this.state.choices[data.value].data,
-                  )
-                }
+                  );
+                }}
                 onSearchChange={this.onSearchChange}
               /> */}
               {map(error, message => (
