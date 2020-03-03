@@ -14,6 +14,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { Form, Grid, Label, Button, Segment, Modal } from 'semantic-ui-react';
 
 import { SelectWidget } from '@plone/volto/components';
+import { remove } from 'lodash';
 
 import {
   Days,
@@ -103,6 +104,7 @@ const NoRRuleOptions = [
   'byminute',
   'bysecond',
   'bynmonthday',
+  'exdates',
 ];
 /**
  * RecurrenceWidget component class.
@@ -145,8 +147,9 @@ class RecurrenceWidget extends Component {
    * @param {Object} props Component properties
    * @constructs Actions
    */
-  constructor(props) {
+  constructor(props, intl) {
     super(props);
+    moment.locale(this.props.intl.locale);
 
     let rruleSet = this.props.value
       ? rrulestr(props.value, { unfold: true, forceset: true })
@@ -230,7 +233,7 @@ class RecurrenceWidget extends Component {
           case 'until':
             if (value != null) {
               formValues['recurrenceEnds'] = option;
-              formValues[option] = this.toISOString(value);
+              formValues[option] = toISOString(value);
             }
             break;
           case 'byweekday':
@@ -335,7 +338,7 @@ class RecurrenceWidget extends Component {
       field === 'exdates' ? value : Object.assign({}, rruleSet.exdates());
 
     let set = new RRuleSet();
-    console.log('updateRRuleset', formValues);
+    //    console.log('updateRRuleset', formValues);
     set.rrule(new RRule(rruleOptions));
     set.dtstart(dstart);
     if (exdates) {
@@ -349,25 +352,25 @@ class RecurrenceWidget extends Component {
 
   getDefaultUntil = freq => {
     var end = this.props.end ? new Date(this.props.end) : null;
-    var tomorrow = this.toISOString(
+    var tomorrow = toISOString(
       moment()
         .add(1, 'days')
         .utc()
         .toDate(),
     );
-    var nextWeek = this.toISOString(
+    var nextWeek = toISOString(
       moment()
         .add(7, 'days')
         .utc()
         .toDate(),
     );
-    var nextMonth = this.toISOString(
+    var nextMonth = toISOString(
       moment()
         .add(1, 'months')
         .utc()
         .toDate(),
     );
-    var nextYear = this.toISOString(
+    var nextYear = toISOString(
       moment()
         .add(1, 'years')
         .utc()
@@ -554,7 +557,7 @@ class RecurrenceWidget extends Component {
       prevState => {
         // console.log('prevState', prevState);
         var rruleSet = prevState.rruleSet;
-        rruleSet = this.updateRruleSet(rruleSet, formValues);
+        rruleSet = this.updateRruleSet(rruleSet, formValues, field, value);
         return {
           ...prevState,
           rruleSet,
@@ -573,20 +576,17 @@ class RecurrenceWidget extends Component {
   };
 
   exclude = date => {
-    this.setState(
-      prevState => {
-        // console.log('prevState', prevState);
-        var rruleSet = prevState.rruleSet;
-        rruleSet.exdate(new Date(date));
-        return {
-          ...prevState,
-          rruleSet,
-        };
-      },
-      () => {
-        console.log(this.state.rruleSet.all());
-      },
-    );
+    let list = this.state.rruleSet.exdates().slice(0);
+    list.push(date);
+    this.onChangeRule('exdates', list);
+  };
+
+  undoExclude = date => {
+    let list = this.state.rruleSet.exdates().slice(0);
+    remove(list, e => {
+      return e.getTime() === date.getTime();
+    });
+    this.onChangeRule('exdates', list);
   };
 
   render() {
@@ -712,7 +712,11 @@ class RecurrenceWidget extends Component {
                       </Form>
                     </Segment>
                     <Segment>
-                      <Occurences rruleSet={rruleSet} exclude={this.exclude} />
+                      <Occurences
+                        rruleSet={rruleSet}
+                        exclude={this.exclude}
+                        undoExclude={this.undoExclude}
+                      />
                     </Segment>
                   </Modal.Description>
                 </Modal.Content>

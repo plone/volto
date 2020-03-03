@@ -32,10 +32,7 @@ const formatDate = d => {
  * @function Occurences
  * @returns {string} Markup of the component.
  */
-const Occurences = ({ rruleSet, exclude, intl }) => {
-  const undoExclude = date => {};
-  console.log('excluded', rruleSet.exdates());
-
+const Occurences = ({ rruleSet, exclude, undoExclude, intl }) => {
   const isExcluded = date => {
     var dateISO = toISOString(date);
     var excluded = false;
@@ -47,12 +44,22 @@ const Occurences = ({ rruleSet, exclude, intl }) => {
     });
     return excluded;
   };
+  let all = rruleSet.all();
+
+  rruleSet.exdates().map(date => {
+    if (all.indexOf(date) < 0) {
+      all.push(date);
+    }
+  });
+  all.sort((a, b) => {
+    return a > b ? 1 : -1;
+  });
 
   return (
     <div className="occurences">
       <Header as="h2">{intl.formatMessage(messages.selected_dates)}</Header>
       <List divided verticalAlign="middle">
-        {rruleSet.all().map((date, index) => {
+        {all.map((date, index) => {
           const excluded = isExcluded(date);
           return (
             <List.Item key={date.toString()}>
@@ -72,7 +79,7 @@ const Occurences = ({ rruleSet, exclude, intl }) => {
                     {excluded && (
                       <Button
                         icon="plus"
-                        color="primary"
+                        primary
                         compact
                         onClick={() => {
                           undoExclude(date);
