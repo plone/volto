@@ -600,6 +600,7 @@ if (Cypress.env('API') !== 'guillotina') {
     it.only('Add Table of Contents block', () => {
       const h2 = 'expectedH2';
 
+      //Add H2
       cy.get('.block.inner.text .public-DraftEditor-content')
         .type(` ${h2}`)
         .setSelection(` ${h2}`);
@@ -609,6 +610,8 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.block.inner.text .public-DraftEditor-content')
         .click()
         .type(' {enter}');
+
+      //Add TOC Block
       cy.get('.ui.basic.icon.button.block-add-button').click();
       cy.get('.title')
         .contains('Common')
@@ -616,7 +619,11 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.ui.basic.icon.button.toc')
         .contains('Table of Contents')
         .click();
+
+      //Save
       cy.get('#toolbar-save').click();
+
+      //View
       cy.get(' a').contains(` ${h2}`);
     });
   });
