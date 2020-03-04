@@ -443,32 +443,32 @@ if (Cypress.env('API') !== 'guillotina') {
       /*not implemented because Navigation ui is not yet developed in Listing Block sidebar*/
     });
 
-    // it('Add image block', () => {
-    //   // Add image block
-    //   cy.get('.block.text [contenteditable]').click();
-    //   cy.get('button.block-add-button').click();
-    //   cy.get('.blocks-chooser .title')
-    //     .contains('media')
-    //     .click();
-    //   cy.get('.blocks-chooser .media')
-    //     .contains('image')
-    //     .click();
+    it('Add image block', () => {
+      // Add image block
+      cy.get('.block.text [contenteditable]').click();
+      cy.get('button.block-add-button').click();
+      cy.get('.blocks-chooser .title')
+        .contains('Media')
+        .click();
+      cy.get('.blocks-chooser .media')
+        .contains('Image')
+        .click();
 
-    //   //Type in external image URL
-    //   cy.get(`.block.image center input`)
-    //     .click()
-    //     .type(
-    //       `https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png{enter}`,
-    //     );
+      //Type in external image URL
+      cy.get(`.toolbar-inner .ui.input`)
+        .click()
+        .type(
+          `https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png{enter}`,
+        );
 
-    //   cy.get('#toolbar-save').click();
+      cy.get('#toolbar-save').click();
 
-    //   cy.get('#page-document img').should(
-    //     'have.attr',
-    //     'src',
-    //     'https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png',
-    //   );
-    // });
+      cy.get('#page-document img').should(
+        'have.attr',
+        'src',
+        'https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png',
+      );
+    });
 
     // it('Add image via drag and drop', () => {
     //   const block = 'image';
@@ -496,105 +496,96 @@ if (Cypress.env('API') !== 'guillotina') {
     //   });
     // });
 
-    // it('Add hero block', () => {
-    //   // TODO: Implement react dropzone for this block to test the image
+    it('Add hero block', () => {
+      // TODO: Implement react dropzone for this block to test the image
 
-    //   const block = 'hero';
-    //   // const expectedFile = 'broccoli.jpg';
-    //   const expectedTitle = 'Volto';
-    //   const expectedDescription =
-    //     'React-based front-end for the Plone and Guillotina';
+      const block = 'hero';
+      // const expectedFile = 'broccoli.jpg';
+      const expectedTitle = 'Volto';
+      const expectedDescription =
+        'React-based front-end for the Plone and Guillotina';
 
-    //   // Edit
-    //   cy.get('.block.text [contenteditable]').click();
-    //   cy.get('button.block-add-button').click();
-    //   cy.get('button.show-hidden-blocks').click();
-    //   cy.get(`button.add-${block}-block`).click();
+      // Edit
+      cy.get('.block.text [contenteditable]').click();
+      cy.get('button.block-add-button').click();
+      cy.get('.blocks-chooser .title')
+        .contains('Common')
+        .click();
+      cy.get('.blocks-chooser .hero')
+        .contains('Hero')
+        .click();
 
-    //   // cy.fixture(expectedFile).then(fileContent => {
-    //   //   cy.get(`.block.${block} [data-cy="dropzone]`).upload(
-    //   //     { fileContent, expectedFile, mimeType: 'application/json' },
-    //   //     { subjectType: 'drag-n-drop' },
-    //   //   );
-    //   // });
-    //   cy.get(
-    //     `.block.${block} .title-editor > .public-DraftStyleDefault-block`,
-    //   ).type(expectedTitle);
-    //   cy.get(
-    //     `.block.${block} .description-editor > .public-DraftStyleDefault-block`,
-    //   ).type(expectedDescription);
+      // cy.fixture(expectedFile).then(fileContent => {
+      //   cy.get(`.block.${block} [data-cy="dropzone]`).upload(
+      //     { fileContent, expectedFile, mimeType: 'application/json' },
+      //     { subjectType: 'drag-n-drop' },
+      //   );
+      // });
+      cy.get(
+        `.block.${block} .title-editor > .public-DraftStyleDefault-block`,
+      ).type(`${expectedTitle}`);
+      cy.get(
+        `.block.${block} .description-editor > .public-DraftStyleDefault-block`,
+      ).type(`${expectedDescription}`);
 
-    //   cy.get(
-    //     `.block.${block} .title-editor > .public-DraftStyleDefault-block`,
-    //   ).contains(expectedTitle);
-    //   cy.get(
-    //     `.block.${block} .description-editor > .public-DraftStyleDefault-block`,
-    //   ).contains(expectedDescription);
+      // Save
+      cy.get('#toolbar-save').click();
 
-    //   // Save
-    //   // cy.get('#toolbar-save').click();
+      //View
+      cy.get(`.${block}-body h1`).contains(`${expectedTitle}`);
+      cy.get(`.${block}-body p`).contains(`${expectedDescription}`);
+    });
 
-    //   // View
-    //   if (Cypress.env('API') === 'plone') {
-    //     // cy.get('#page-document h1').should('have.text', expected);
-    //   } else {
-    //     // guillotina
-    //     // cy.contains(expected);
-    //   }
-    // });
+    it.only('Add HTML block', () => {
+      const expected = 'This is html';
 
-    // it('Add HTML block', () => {
-    //   // Add HTML block
-    //   cy.get('.block.text [contenteditable]').click();
-    //   cy.get('button.block-add-button').click();
-    //   cy.get('.blocks-chooser .title')
-    //     .contains('common')
-    //     .click();
-    //   cy.get('.blocks-chooser .common')
-    //     .contains('html')
-    //     .click();
+      // Add HTML block
+      cy.get('.block.text [contenteditable]').click();
+      cy.get('button.block-add-button').click();
+      cy.get('.blocks-chooser .title')
+        .contains('Common')
+        .click();
+      cy.get('.blocks-chooser .common')
+        .contains('HTML')
+        .click();
 
-    //   // Add HTML
-    //   cy.get(`.block.html .npm__react-simple-code-editor__textarea`).type(
-    //     `<pre>This is html</pre>`,
-    //   );
-    //   cy.get(`.block.html [aria-label="Preview"]`).click();
-    //   cy.get(`.block.html pre`).contains('This is html');
+      // Add HTML
+      cy.get(`.block.html .npm__react-simple-code-editor__textarea`).type(
+        `<pre>${expected}</pre>`,
+      );
+      cy.get(`.block.html [aria-label="Preview"]`).click();
+      cy.get(`.block.html pre`).contains(`${expected}`);
 
-    //   // Save
-    //   cy.get('#toolbar-save').click();
+      // Save
+      cy.get('#toolbar-save').click();
 
-    //   // Check if HTML is present in the page view
-    //   cy.get('#page-document pre').should('have.text', 'This is html');
-    // });
+      // Check if HTML is present in the page view
+      cy.get('#page-document pre').should('have.text', `${expected}`);
+    });
 
     // it('Add table block', () => {
-    //   // TODO: Figure out why there is an erro when add this block in cypress
-
-    //   // const block = 'table';
-    //   // const expected = 'This is the html';
-
-    //   // Edit
-    //   cy.get('.block.text [contenteditable]').click();
-    //   cy.get('button.block-add-button').click();
-    //   cy.get('button.show-hidden-blocks').click();
-    //   // cy.get(`button.add-${block}-block`).click();
-    //   // cy.get(`.block.${block} .npm__react-simple-code-editor__textarea`).type(
-    //   //   `<h3>${expected}</h3>`,
-    //   // );
-    //   // cy.get(`.block.${block} [aria-label="Preview"]`).click();
-    //   // cy.get(`.block.${block} h3`).contains(expected);
-
-    //   // // Save
-    //   // cy.get('#toolbar-save').click();
-
-    //   // // View
-    //   // if (Cypress.env('API') === 'plone') {
-    //   //   cy.get('#page-document h3').should('have.text', expected);
-    //   // } else {
-    //   //   // guillotina
-    //   //   cy.contains(expected);
-    //   // }
+    // TODO: Figure out why there is an erro when add this block in cypress
+    // const block = 'table';
+    // const expected = 'This is the html';
+    // Edit
+    // cy.get('.block.text [contenteditable]').click();
+    // cy.get('button.block-add-button').click();
+    // cy.get('button.show-hidden-blocks').click();
+    // cy.get(`button.add-${block}-block`).click();
+    // cy.get(`.block.${block} .npm__react-simple-code-editor__textarea`).type(
+    //   `<h3>${expected}</h3>`,
+    // );
+    // cy.get(`.block.${block} [aria-label="Preview"]`).click();
+    // cy.get(`.block.${block} h3`).contains(expected);
+    // // Save
+    // cy.get('#toolbar-save').click();
+    // // View
+    // if (Cypress.env('API') === 'plone') {
+    //   cy.get('#page-document h3').should('have.text', expected);
+    // } else {
+    //   // guillotina
+    //   cy.contains(expected);
+    // }
     // });
   });
 }
