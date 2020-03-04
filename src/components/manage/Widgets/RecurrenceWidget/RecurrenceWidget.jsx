@@ -32,6 +32,7 @@ import {
   WEEKLY_DAYS,
   MONDAYFRIDAY_DAYS,
   toISOString,
+  rrulei18n,
 } from './Utils';
 import IntervalField from './IntervalField';
 import ByDayField from './ByDayField';
@@ -44,6 +45,14 @@ const messages = defineMessages({
   editRecurrence: {
     id: 'Edit recurrence',
     defaultMessage: 'Edit recurrence',
+  },
+  save: {
+    id: 'Save recurrence',
+    defaultMessage: 'Save',
+  },
+  remove: {
+    id: 'Remove recurrence',
+    defaultMessage: 'Remove',
   },
   repeat: {
     id: 'Repeat',
@@ -180,6 +189,7 @@ class RecurrenceWidget extends Component {
       open: false,
       rruleSet: rruleSet,
       formValues: this.getFormValues(rruleSet),
+      RRULE_LANGUAGE: rrulei18n(this.props.intl),
     };
   }
 
@@ -612,8 +622,18 @@ class RecurrenceWidget extends Component {
     }
   };
 
+  save = () => {
+    var value = this.state.rruleSet.toString();
+    this.props.onChange(this.props.id, value);
+    this.close();
+  };
+
+  remove = () => {
+    this.props.onChange(this.props.id, null);
+  };
+
   render() {
-    const { open, dimmer, rruleSet, formValues } = this.state;
+    const { open, dimmer, rruleSet, formValues, RRULE_LANGUAGE } = this.state;
 
     const {
       id,
@@ -642,12 +662,42 @@ class RecurrenceWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              -----da togliere alla fine ---
-              {value}
-              <br /> ---------
-              <Button onClick={this.show('blurring')} type="button">
-                {intl.formatMessage(messages.editRecurrence)}
-              </Button>
+              {rruleSet.rrules()[0] && (
+                <>
+                  <Label>
+                    {rruleSet.rrules()[0]?.toText(
+                      t => {
+                        return RRULE_LANGUAGE.strings[t];
+                      },
+                      RRULE_LANGUAGE,
+                      RRULE_LANGUAGE.dateFormatter,
+                    )}
+                  </Label>
+                  <Segment>
+                    <Occurences
+                      rruleSet={rruleSet}
+                      exclude={this.exclude}
+                      undoExclude={this.undoExclude}
+                      showTitle={false}
+                      editOccurences={false}
+                    />
+                  </Segment>
+                </>
+              )}
+              <Button.Group>
+                <Button onClick={this.show('blurring')} type="button">
+                  {intl.formatMessage(messages.editRecurrence)}
+                </Button>
+                <Button
+                  onClick={() => {
+                    this.remove();
+                  }}
+                  type="button"
+                  color="red"
+                >
+                  {intl.formatMessage(messages.remove)}
+                </Button>
+              </Button.Group>
               <Modal
                 dimmer={dimmer}
                 open={open}
@@ -765,7 +815,14 @@ class RecurrenceWidget extends Component {
                   </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
-                  <Button primary>Proceed</Button>
+                  <Button
+                    primary
+                    onClick={() => {
+                      this.save();
+                    }}
+                  >
+                    {intl.formatMessage(messages.save)}
+                  </Button>
                 </Modal.Actions>
               </Modal>
               {map(error, message => (

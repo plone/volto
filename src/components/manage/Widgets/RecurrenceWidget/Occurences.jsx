@@ -36,7 +36,14 @@ const formatDate = d => {
  * @function Occurences
  * @returns {string} Markup of the component.
  */
-const Occurences = ({ rruleSet, exclude, undoExclude, intl }) => {
+const Occurences = ({
+  rruleSet,
+  exclude,
+  undoExclude,
+  intl,
+  showTitle,
+  editOccurences,
+}) => {
   const isExcluded = date => {
     var dateISO = toISOString(date);
     var excluded = false;
@@ -73,40 +80,44 @@ const Occurences = ({ rruleSet, exclude, undoExclude, intl }) => {
 
   return (
     <div className="occurences">
-      <Header as="h2">{intl.formatMessage(messages.selected_dates)}</Header>
+      {showTitle && (
+        <Header as="h2">{intl.formatMessage(messages.selected_dates)}</Header>
+      )}
       <List divided verticalAlign="middle">
         {all.map((date, index) => {
           const excluded = isExcluded(date);
           return (
             <List.Item key={date.toString()}>
-              <List.Content floated="right">
-                {index > 0 ? (
-                  <>
-                    {!excluded && (
-                      <Button
-                        icon="remove"
-                        color="red"
-                        compact
-                        onClick={() => {
-                          exclude(date);
-                        }}
-                      />
-                    )}
-                    {excluded && (
-                      <Button
-                        icon="plus"
-                        primary
-                        compact
-                        onClick={() => {
-                          undoExclude(date);
-                        }}
-                      />
-                    )}
-                  </>
-                ) : (
-                  intl.formatMessage(messages.start_of_recurrence)
-                )}
-              </List.Content>
+              {editOccurences && (
+                <List.Content floated="right">
+                  {index > 0 ? (
+                    <>
+                      {!excluded && (
+                        <Button
+                          icon="remove"
+                          color="red"
+                          compact
+                          onClick={() => {
+                            exclude(date);
+                          }}
+                        />
+                      )}
+                      {excluded && (
+                        <Button
+                          icon="plus"
+                          primary
+                          compact
+                          onClick={() => {
+                            undoExclude(date);
+                          }}
+                        />
+                      )}
+                    </>
+                  ) : (
+                    intl.formatMessage(messages.start_of_recurrence)
+                  )}
+                </List.Content>
+              )}
               <List.Content className={cx({ excluded: excluded })}>
                 {formatDate(date)}
                 {isAdditional(date) && (
@@ -130,6 +141,8 @@ const Occurences = ({ rruleSet, exclude, undoExclude, intl }) => {
  */
 Occurences.propTypes = {
   rruleSet: PropTypes.any.isRequired,
+  showTitle: PropTypes.bool,
+  editOccurences: PropTypes.bool,
 };
 
 /**
@@ -139,6 +152,8 @@ Occurences.propTypes = {
  */
 Occurences.defaultProps = {
   rruleSet: null,
+  showTitle: true,
+  editOccurences: true,
 };
 
 export default injectIntl(Occurences);
