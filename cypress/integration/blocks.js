@@ -569,11 +569,6 @@ if (Cypress.env('API') !== 'guillotina') {
     // });
 
     it('Add table block', () => {
-      //   // TODO: Figure out why there is an erro when add this block in cypress
-
-      // const block = 'table';
-      // const expected = 'This is the html';
-
       // Edit
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();
@@ -597,12 +592,6 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('button[title="Insert row after"]').click();
       cy.get('button[title="Insert row before"]').click();
       cy.get('button[title="Insert col before"]').click();
-      // cy.get(`button.add-${block}-block`).click();
-      // cy.get(`.block.${block} .npm__react-simple-code-editor__textarea`).type(
-      //   `<h3>${expected}</h3>`,
-      // );
-      // cy.get(`.block.${block} [aria-label="Preview"]`).click();
-      // cy.get(`.block.${block} h3`).contains(expected);
 
       // Save
       cy.get('#toolbar-save').click();
@@ -623,11 +612,11 @@ if (Cypress.env('API') !== 'guillotina') {
 
       // Edit
       cy.visit('/my-page/edit');
-
       cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click();
 
       // without the second click the test fails. so this makes the test green.
       cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click();
+
       cy.get('button[title="Delete col"]').click();
       cy.get('.celled.fixed.table tr:first-child() th:nth-child(3)').click();
       cy.get('button[title="Delete col"]').click();
@@ -639,6 +628,7 @@ if (Cypress.env('API') !== 'guillotina') {
       // Save
       cy.get('#toolbar-save').click();
 
+      //View
       cy.get('.celled.fixed.table tr th:first-child()').contains(
         'column 1 / row 1',
       );
