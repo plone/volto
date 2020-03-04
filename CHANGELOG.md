@@ -11,6 +11,7 @@
 - updated italian translations
 - Fix listing block sidebar focus @sneridagh
 - Fix getBaseUrl helper method to not match inner occurrences of nonContentRoutes @sneridagh
+- added Cypress Test for Table of Contents Block @steffenri
 
 ## 4.0.0-alpha.34 (2020-01-26)
 
