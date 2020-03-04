@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an Listing Data Sidebar component 1`] = `
+Array [
+  <div
+    className="inline field text"
+    id="field-linkTitle"
+  >
+    <div
+      className="ui grid"
+    >
+      <div
+        className="stretched row"
+      >
+        <div
+          className="four wide column"
+        >
+          <div
+            className="wrapper"
+          >
+            <label
+              htmlFor="field-linkTitle"
+            >
+              Link Title
+            </label>
+          </div>
+        </div>
+        <div
+          className="eight wide column"
+        >
+          <div
+            className="ui input"
+          >
+            <input
+              disabled={false}
+              id="field-linkTitle"
+              name="linkTitle"
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="inline field text"
+    id="field-linkHref"
+  >
+    <div
+      className="ui grid"
+    >
+      <div
+        className="stretched row"
+      >
+        <div
+          className="four wide column"
+        >
+          <div
+            className="wrapper"
+          >
+            <label
+              htmlFor="field-linkHref"
+            >
+              Link to
+            </label>
+          </div>
+        </div>
+        <div
+          className="eight wide column"
+        >
+          <div
+            className="ui icon input"
+          >
+            <input
+              disabled={false}
+              id="field-linkHref"
+              name="linkHref"
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+            <i
+              aria-hidden="true"
+              attributes={
+                Object {
+                  "viewBox": "",
+                  "xmlns": "",
+                }
+              }
+              className="icon"
+              onClick={[Function]}
+            />
+          </div>
+          <button
+            onClick={[Function]}
+          >
+            <svg
+              className="icon"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": undefined,
+                }
+              }
+              onClick={null}
+              style={
+                Object {
+                  "fill": "currentColor",
+                  "height": "18px",
+                  "width": "auto",
+                }
+              }
+              viewBox=""
+              xmlns=""
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;

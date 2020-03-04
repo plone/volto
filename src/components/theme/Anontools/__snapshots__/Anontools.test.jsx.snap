@@ -2,14 +2,14 @@
 
 exports[`Anontools renders an anontools component when no token is specified 1`] = `
 <div
-  className="ui horizontal right floated list"
-  role="list"
+  className="ui pointing secondary right floated menu"
 >
   <div
     className="item"
-    role="listitem"
+    onClick={[Function]}
   >
     <a
+      aria-label="login"
       href="/login?return_url=myid"
       onClick={[Function]}
     >
@@ -18,9 +18,10 @@ exports[`Anontools renders an anontools component when no token is specified 1`]
   </div>
   <div
     className="item"
-    role="listitem"
+    onClick={[Function]}
   >
     <a
+      aria-label="register"
       href="/register"
       onClick={[Function]}
     >

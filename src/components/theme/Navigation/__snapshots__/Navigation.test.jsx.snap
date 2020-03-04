@@ -5,7 +5,7 @@ exports[`Navigation renders a navigation component with an active item 1`] = `
   className="navigation"
 >
   <div
-    className="hamburger-wrapper mobile only"
+    className="hamburger-wrapper mobile tablet only"
   >
     <button
       aria-label="Open menu"
@@ -24,7 +24,7 @@ exports[`Navigation renders a navigation component with an active item 1`] = `
     </button>
   </div>
   <div
-    className="ui pointing secondary stackable tablet computer large screen widescreen only menu"
+    className="ui pointing secondary stackable computer large screen widescreen only menu"
     onClick={[Function]}
   >
     <a
@@ -50,7 +50,7 @@ exports[`Navigation renders a navigation component with an active item when its 
   className="navigation"
 >
   <div
-    className="hamburger-wrapper mobile only"
+    className="hamburger-wrapper mobile tablet only"
   >
     <button
       aria-label="Open menu"
@@ -69,7 +69,7 @@ exports[`Navigation renders a navigation component with an active item when its 
     </button>
   </div>
   <div
-    className="ui pointing secondary stackable tablet computer large screen widescreen only menu"
+    className="ui pointing secondary stackable computer large screen widescreen only menu"
     onClick={[Function]}
   >
     <a
@@ -95,7 +95,7 @@ exports[`Navigation renders a navigation component with only one active item eve
   className="navigation"
 >
   <div
-    className="hamburger-wrapper mobile only"
+    className="hamburger-wrapper mobile tablet only"
   >
     <button
       aria-label="Open menu"
@@ -114,7 +114,7 @@ exports[`Navigation renders a navigation component with only one active item eve
     </button>
   </div>
   <div
-    className="ui pointing secondary stackable tablet computer large screen widescreen only menu"
+    className="ui pointing secondary stackable computer large screen widescreen only menu"
     onClick={[Function]}
   >
     <a
@@ -147,7 +147,7 @@ exports[`Navigation renders a navigation component without active items 1`] = `
   className="navigation"
 >
   <div
-    className="hamburger-wrapper mobile only"
+    className="hamburger-wrapper mobile tablet only"
   >
     <button
       aria-label="Open menu"
@@ -166,7 +166,7 @@ exports[`Navigation renders a navigation component without active items 1`] = `
     </button>
   </div>
   <div
-    className="ui pointing secondary stackable tablet computer large screen widescreen only menu"
+    className="ui pointing secondary stackable computer large screen widescreen only menu"
     onClick={[Function]}
   >
     <a
