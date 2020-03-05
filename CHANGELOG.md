@@ -6,6 +6,8 @@
 
 ### Changes
 
+* Site settings styling fixed in the Controlpanel
+
 ## 4.0.0 (2020-03-01)
 
 ### Added
@@ -13,25 +15,25 @@
 Summary of the most important features in this final release. For more detailed information
 refer to all of them in https://github.com/plone/volto/releases
 
-- Improved Pastanaga Editor
-- New Pastanaga Editor sidebar
-- New mobile first toolbar
-- Developing blocks experience simplified
-- New Object Browser
-- Listing, TOC, Lead Image blocks
-- Improved existing blocks (Image, Video, Maps)
-- New blocks chooser and future proof blocks definitions
-- Definition of default Blocks per content type
-- Body classes like the Plone ones hinting content types, section and current view
-- New message system
-- React hooks support
-- Several internal libraries updated, including Redux, Router ones that support hooks as well
-- New locales (es, it, ja, pt, pt_BR)
+* Improved Pastanaga Editor
+* New Pastanaga Editor sidebar
+* New mobile first toolbar
+* Developing blocks experience simplified
+* New Object Browser
+* Listing, TOC, Lead Image blocks
+* Improved existing blocks (Image, Video, Maps)
+* New blocks chooser and future proof blocks definitions
+* Definition of default Blocks per content type
+* Body classes like the Plone ones hinting content types, section and current view
+* New message system
+* React hooks support
+* Several internal libraries updated, including Redux, Router ones that support hooks as well
+* New locales (es, it, ja, pt, pt_BR)
 
 ### Changes
 
-- Tons of bug fixes
-- Site settings styling fixed in the controlpanel
+* Tons of bug fixes
+
 
 ## 4.0.0-alpha.43 (2020-03-01)
 
