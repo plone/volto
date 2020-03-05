@@ -6,6 +6,10 @@
 
 ### Changes
 
+### Internal
+
+- Add commitlint @timo
+
 ## 4.0.0 (2020-03-01)
 
 ### Added
@@ -131,10 +135,6 @@ refer to all of them in https://github.com/plone/volto/releases
 - Browser detect feature, adding a deprecation message for ancient browsers in the `App` component @sneridagh
 - Adding fallback in the edit form, in case the blocks related fields are empty, so we are sure that the edit form shows at least the default blocks @sneridagh
 - Fix shift return in tables @robgietema
-
-### Internal
-
-- Add commitlint @timo
 
 ## 4.0.0-alpha.35 (2020-01-31)
 
