@@ -66,6 +66,7 @@ import { toast } from 'react-toastify';
 import backSVG from '@plone/volto/icons/back.svg';
 
 const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
+
 const messages = defineMessages({
   back: {
     id: 'Back',
@@ -154,6 +155,62 @@ const messages = defineMessages({
   success: {
     id: 'Success',
     defaultMessage: 'Success',
+  },
+  publicationDate: {
+    id: 'Publication date',
+    defaultMessage: 'Publication date',
+  },
+  createdOn: {
+    id: 'Created on',
+    defaultMessage: 'Created on',
+  },
+  expirationDate: {
+    id: 'Expiration date',
+    defaultMessage: 'Expiration date',
+  },
+  id: {
+    id: 'ID',
+    defaultMessage: 'ID',
+  },
+  uid: {
+    id: 'UID',
+    defaultMessage: 'UID',
+  },
+  reviewState: {
+    id: 'Review state',
+    defaultMessage: 'Review state',
+  },
+  folder: {
+    id: 'Folder',
+    defaultMessage: 'Folder',
+  },
+  excludedFromNavigation: {
+    id: 'Excluded from navigation',
+    defaultMessage: 'Excluded from navigation',
+  },
+  objectSize: {
+    id: 'Object Size',
+    defaultMessage: 'Object Size',
+  },
+  lastCommentedDate: {
+    id: 'Last comment date',
+    defaultMessage: 'Last comment date',
+  },
+  totalComments: {
+    id: 'Total comments',
+    defaultMessage: 'Total comments',
+  },
+  creator: {
+    id: 'Creator',
+    defaultMessage: 'Creator',
+  },
+  endDate: {
+    id: 'End Date',
+    defaultMessage: 'End Date',
+  },
+  startDate: {
+    id: 'Start Date',
+    defaultMessage: 'Start Date',
   },
 });
 
@@ -1060,7 +1117,11 @@ class Contents extends Component {
                             ) : (
                               <Icon name="square outline" />
                             )}
-                            {this.state.index.values[index].label}
+                            {this.props.intl.formatMessage({
+                              id: this.state.index.values[index].label,
+                              defaultMessage: this.state.index.values[index]
+                                .label,
+                            })}
                           </Dropdown.Item>
                         ))}
                       </Dropdown.Menu>
@@ -1094,7 +1155,7 @@ class Contents extends Component {
                               index => (
                                 <Dropdown.Item key={index}>
                                   <Icon name="dropdown" />
-                                  {Indexes[index].label}
+                                  <FormattedMessage id={Indexes[index].label} />
                                   <Dropdown.Menu>
                                     <Dropdown.Item
                                       onClick={this.onSortItems}
@@ -1264,7 +1325,10 @@ class Contents extends Component {
             pathname={this.props.pathname}
             hideDefaultViewButtons
             inner={
-              <Link to={`${path}`}>
+              <Link
+                to={`${path}`}
+                aria-label={this.props.intl.formatMessage(messages.back)}
+              >
                 <IconNext
                   name={backSVG}
                   className="contents circled"

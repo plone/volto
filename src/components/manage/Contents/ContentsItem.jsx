@@ -59,19 +59,28 @@ export const ContentsItemComponent = ({
         </Table.Cell>
         {map(indexes, index => (
           <Table.Cell key={index.id}>
-            {index.type === 'boolean' && (item[index.id] ? 'Yes' : 'No')}
+            {index.type === 'boolean' &&
+              (item[index.id] ? (
+                <FormattedMessage id="Yes" defaultMessage="Yes" />
+              ) : (
+                <FormattedMessage id="No" defaultMessage="No" />
+              ))}
             {index.type === 'string' && item[index.id]}
             {index.type === 'date' && (
               <span
                 title={
-                  item[index.id] !== 'None'
-                    ? moment(item[index.id]).format('LLLL')
-                    : 'None'
+                  item[index.id] !== 'None' ? (
+                    moment(item[index.id]).format('LLLL')
+                  ) : (
+                    <FormattedMessage id="None" defaultMessage="None" />
+                  )
                 }
               >
-                {item[index.id] !== 'None'
-                  ? moment(item[index.id]).fromNow()
-                  : 'None'}
+                {item[index.id] !== 'None' ? (
+                  moment(item[index.id]).fromNow()
+                ) : (
+                  <FormattedMessage id="None" defaultMessage="None" />
+                )}
               </span>
             )}
           </Table.Cell>
