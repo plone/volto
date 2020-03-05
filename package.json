@@ -146,6 +146,28 @@
     "Firefox ESR",
     "not ie < 9"
   ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "header-max-length": [
+        2,
+        "always",
+        100
+      ],
+      "type-enum": [
+        2,
+        "always",
+        [
+          "breaking",
+          "feature",
+          "fix",
+          "internal"
+        ]
+      ]
+    }
+  },
   "release-it": {
     "hooks": {
       "after:bump": "node changelogupdater.js bump ${version}",
