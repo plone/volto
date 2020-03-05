@@ -34,7 +34,6 @@ refer to all of them in https://github.com/plone/volto/releases
 
 * Tons of bug fixes
 
-
 ## 4.0.0-alpha.43 (2020-03-01)
 
 ### Changes
