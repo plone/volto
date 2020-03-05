@@ -234,6 +234,10 @@ msgstr "Chiudi"
 msgid "Close menu"
 msgstr "Chiudi menu"
 
+#: components/manage/Toolbar/Toolbar
+msgid "Collection"
+msgstr ""
+
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
@@ -287,6 +291,14 @@ msgstr "Copyright"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
 msgstr "Informazioni sul copyright o su altri diritti dell'elemento."
+
+#: components/manage/Contents/Contents
+msgid "Created on"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Creator"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
@@ -469,6 +481,10 @@ msgstr "Errore del codice incorporato, per favore segui le istruzioni e riprova.
 msgid "Embeded Google Maps"
 msgstr "Google Maps incorporata"
 
+#: components/manage/Contents/Contents
+msgid "End Date"
+msgstr ""
+
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
 msgstr "Inserisci un URL o un titolo"
@@ -511,6 +527,10 @@ msgstr "Errore"
 msgid "Exclude from navigation"
 msgstr "Escludi dalla navigazione"
 
+#: components/manage/Contents/Contents
+msgid "Excluded from navigation"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "Espandi la sidebar"
@@ -519,10 +539,18 @@ msgstr "Espandi la sidebar"
 msgid "Expiration Date"
 msgstr "Data di scadenza"
 
+#: components/manage/Contents/Contents
+msgid "Expiration date"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
 msgstr "URL esterno"
+
+#: components/manage/Toolbar/Toolbar
+msgid "File"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
@@ -539,6 +567,10 @@ msgstr "Filtra…"
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
 msgstr "Celle della tabella a larghezza fissata"
+
+#: components/manage/Contents/Contents
+msgid "Folder"
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
@@ -608,6 +640,10 @@ msgstr "Home"
 #: components/manage/Preferences/PersonalInformation
 msgid "Home page"
 msgstr "Pagina personale"
+
+#: components/manage/Contents/Contents
+msgid "ID"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If selected, this item will not appear in the navigation tree"
@@ -689,6 +725,10 @@ msgstr "Gli elementi devono essere unici."
 msgid "Language"
 msgstr "Lingua"
 
+#: components/manage/Contents/Contents
+msgid "Last comment date"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Ultima modifica"
@@ -701,6 +741,10 @@ msgstr "Immagine di testata"
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
 msgstr "Sinistra"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Link"
+msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Link more"
@@ -806,6 +850,14 @@ msgstr "Torna indietro"
 msgid "New password"
 msgstr "Nuova password"
 
+#: components/manage/Toolbar/Toolbar
+msgid "News Item"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "No"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
 msgstr "Nessuna immagine selezionata"
@@ -850,8 +902,13 @@ msgid "No workflow"
 msgstr "Nessun flusso"
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
 msgid "None"
 msgstr "Nessuno"
+
+#: components/manage/Contents/Contents
+msgid "Object Size"
+msgstr ""
 
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -872,6 +929,10 @@ msgstr "Apri menu"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
 msgstr "Origine"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Page"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
@@ -961,6 +1022,10 @@ msgstr "Profilo"
 msgid "Properties"
 msgstr "Proprietà"
 
+#: components/manage/Contents/Contents
+msgid "Publication date"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Publishing Date"
 msgstr "Data di pubblicazione"
@@ -1031,6 +1096,10 @@ msgstr "Ordine inverso"
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr "Ripristina questa versione"
+
+#: components/manage/Contents/Contents
+msgid "Review state"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
@@ -1107,6 +1176,7 @@ msgid "Selection"
 msgstr "Selezione"
 
 #: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
 msgid "Select…"
 msgstr "Seleziona…"
 
@@ -1123,6 +1193,7 @@ msgid "Set your password"
 msgstr "Specifica la tua password"
 
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/More
 msgid "Sharing"
 msgstr "Condivisione"
 
@@ -1143,6 +1214,10 @@ msgstr "Nome Breve"
 #: components/manage/Contents/ContentsRenameModal
 msgid "Short name"
 msgstr "Nome breve"
+
+#: components/theme/Pagination/Pagination
+msgid "Show"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
@@ -1198,6 +1273,10 @@ msgstr "Specifica l'URL di un video o una playlist di YouTube"
 #: components/manage/Diff/Diff
 msgid "Split"
 msgstr "Dividi"
+
+#: components/manage/Contents/Contents
+msgid "Start Date"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
@@ -1313,6 +1392,10 @@ msgstr "Questa pagina non esiste…"
 msgid "Title"
 msgstr "Titolo"
 
+#: components/manage/Contents/Contents
+msgid "Total comments"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 msgid "Type"
@@ -1329,6 +1412,10 @@ msgstr "Digita testo…"
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr "Digita il titolo…"
+
+#: components/manage/Contents/Contents
+msgid "UID"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
@@ -1461,6 +1548,10 @@ msgstr "Chi"
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Workflow aggiornato."
+
+#: components/manage/Contents/ContentsItem
+msgid "Yes"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."

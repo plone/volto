@@ -6,6 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
+import { injectIntl } from 'react-intl';
 
 const widthValues = [
   'one',
@@ -32,6 +33,7 @@ const widthValues = [
  * @returns {string} Markup of the component.
  */
 export const ContentsIndexHeaderComponent = ({
+  intl,
   width,
   label,
   connectDragSource,
@@ -44,7 +46,10 @@ export const ContentsIndexHeaderComponent = ({
         className={`${widthValues[width - 1]} wide`}
         style={{ opacity: isDragging ? 0.5 : 1, cursor: 'move' }}
       >
-        {label}
+        {intl.formatMessage({
+          id: label,
+          defaultMessage: label,
+        })}
       </th>,
     ),
   );
@@ -98,5 +103,5 @@ export default DropTarget(
       connectDragSource: connect.dragSource(),
       isDragging: monitor.isDragging(),
     }),
-  )(ContentsIndexHeaderComponent),
+  )(injectIntl(ContentsIndexHeaderComponent)),
 );

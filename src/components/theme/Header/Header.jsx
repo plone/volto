@@ -56,13 +56,15 @@ class Header extends Component {
               </div>
               <Navigation pathname={this.props.pathname} />
             </div>
-            {!this.props.token && (
-              <div className="tools">
-                <Anontools />
+            <div className="tools-search-wrapper">
+              {!this.props.token && (
+                <div className="tools">
+                  <Anontools />
+                </div>
+              )}
+              <div className="search">
+                <SearchWidget pathname={this.props.pathname} />
               </div>
-            )}
-            <div className="search">
-              <SearchWidget pathname={this.props.pathname} />
             </div>
           </div>
         </Container>
