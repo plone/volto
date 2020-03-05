@@ -4,6 +4,8 @@
 
 ### Added
 
+* Add possibility to get initialBlocks and initialBlocksLayout from backend @avoinea
+
 ### Changes
 
 ## 4.0.0 (2020-03-01)
