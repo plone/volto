@@ -6,7 +6,7 @@
 
 ### Changes
 
-* Site settings styling fixed in the Controlpanel
+- Site settings styling fixed in the Controlpanel
 
 ## 4.0.0 (2020-03-01)
 
