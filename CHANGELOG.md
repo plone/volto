@@ -4,6 +4,8 @@
 
 ### Added
 
+- Added date time widget @nzambello
+
 ### Changes
 
 ## 4.0.0 (2020-03-01)
@@ -108,7 +110,6 @@ refer to all of them in https://github.com/plone/volto/releases
 - Include link and size info to the full size image in `ImageView` view component @sneridagh
 - In the Display menu, only show views that are implemented @pnicolli
 - Hide Blocks fields in Layout fieldset in Add/Edit forms @pnicolli
-- Added date time widget @nzambello
 - Updated italian translations @nzambello
 - Fallback for non existing layout views registered in `constants/Layouts` when selected in the widget @sneridagh
 - Fix select widget for array inline choices fields and `z-index` problem @sneridagh
