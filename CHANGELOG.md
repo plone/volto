@@ -6,12 +6,13 @@
 
 ### Changes
 
-### Internal
-
-- Use kitconcept.volto as integration package @sneridagh
 - Japanese translation @terapyon
 - Site settings styling fixed in the Controlpanel
 - Increase ObjectBrowser limit per folder to 1000, partially fixes #1259 @sneridagh
+
+### Internal
+
+- Use kitconcept.volto as integration package @sneridagh
 
 ## 4.0.0 (2020-03-01)
 
