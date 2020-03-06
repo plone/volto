@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2020-02-18 18:00+0900\n"
+"PO-Revision-Date: 2020-03-02 14:43+0900\n"
 "Last-Translator: Manabu TERADA <terada@cmscom.jp>\n"
 "Language: ja\n"
 "Language-Team: Plone Japanese Team <https://github.com/plonejp>\n"
@@ -243,7 +243,7 @@ msgstr "メニューを閉じる"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Collection"
-msgstr ""
+msgstr "コレクション"
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
@@ -301,11 +301,11 @@ msgstr "このアイテムの著作権宣言文または他の権利情報"
 
 #: components/manage/Contents/Contents
 msgid "Created on"
-msgstr ""
+msgstr "作成日"
 
 #: components/manage/Contents/Contents
 msgid "Creator"
-msgstr ""
+msgstr "作成者"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
@@ -490,7 +490,7 @@ msgstr "Embeded Google Maps (未翻訳)"
 
 #: components/manage/Contents/Contents
 msgid "End Date"
-msgstr ""
+msgstr "終了日付"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
@@ -536,7 +536,7 @@ msgstr "ナビゲーションに含まない"
 
 #: components/manage/Contents/Contents
 msgid "Excluded from navigation"
-msgstr ""
+msgstr "ナビゲーションから除く"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
@@ -544,11 +544,11 @@ msgstr "サイドバーを開く"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
-msgstr "ナビゲーションに含まない"
+msgstr "満了日付"
 
 #: components/manage/Contents/Contents
 msgid "Expiration date"
-msgstr ""
+msgstr "満了日付"
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -557,7 +557,7 @@ msgstr "外部URL"
 
 #: components/manage/Toolbar/Toolbar
 msgid "File"
-msgstr ""
+msgstr "ファイル"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
@@ -577,11 +577,11 @@ msgstr "テーブルのセル幅を固定"
 
 #: components/manage/Contents/Contents
 msgid "Folder"
-msgstr ""
+msgstr "フォルダ"
 
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
-msgstr ""
+msgstr "Forbidden(未翻訳)"
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
@@ -650,7 +650,7 @@ msgstr "ホーム"
 
 #: components/manage/Contents/Contents
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If selected, this item will not appear in the navigation tree"
@@ -734,7 +734,7 @@ msgstr "言語"
 
 #: components/manage/Contents/Contents
 msgid "Last comment date"
-msgstr ""
+msgstr "最終コメント日付"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
@@ -751,7 +751,7 @@ msgstr "左"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Link"
-msgstr ""
+msgstr "リンク"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Link more"
@@ -859,11 +859,11 @@ msgstr "新しいパスワード"
 
 #: components/manage/Toolbar/Toolbar
 msgid "News Item"
-msgstr ""
+msgstr "ニュース"
 
 #: components/manage/Contents/ContentsItem
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
@@ -915,7 +915,7 @@ msgstr "None"
 
 #: components/manage/Contents/Contents
 msgid "Object Size"
-msgstr ""
+msgstr "オブジェクトサイズ"
 
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -939,7 +939,7 @@ msgstr "参照元"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Page"
-msgstr ""
+msgstr "ページ"
 
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
@@ -1031,7 +1031,7 @@ msgstr "プロパティ"
 
 #: components/manage/Contents/Contents
 msgid "Publication date"
-msgstr ""
+msgstr "公開日付"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Publishing Date"
@@ -1106,7 +1106,7 @@ msgstr "このリビジョンに戻す"
 
 #: components/manage/Contents/Contents
 msgid "Review state"
-msgstr ""
+msgstr "審査状態"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
@@ -1224,7 +1224,7 @@ msgstr "ショートネーム"
 
 #: components/theme/Pagination/Pagination
 msgid "Show"
-msgstr ""
+msgstr "表示件数"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
@@ -1283,7 +1283,7 @@ msgstr "分割"
 
 #: components/manage/Contents/Contents
 msgid "Start Date"
-msgstr ""
+msgstr "開始日付"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
@@ -1401,7 +1401,7 @@ msgstr "タイトル"
 
 #: components/manage/Contents/Contents
 msgid "Total comments"
-msgstr ""
+msgstr "コメント計"
 
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
@@ -1422,11 +1422,11 @@ msgstr "タイトルを入力…"
 
 #: components/manage/Contents/Contents
 msgid "UID"
-msgstr ""
+msgstr "UID"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
-msgstr ""
+msgstr "Unauthorized(未翻訳)"
 
 #: components/manage/Diff/Diff
 msgid "Unified"
@@ -1530,7 +1530,7 @@ msgstr "不便をかけて申し訳ありませんが、アクセスしようと
 
 #: components/theme/Forbidden/Forbidden
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
-msgstr ""
+msgstr "We apologize for the inconvenience, but you don't have permissions on this resource.(未翻訳)"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
@@ -1558,11 +1558,11 @@ msgstr "ワークフローがアップデートされました"
 
 #: components/manage/Contents/ContentsItem
 msgid "Yes"
-msgstr ""
+msgstr "Yes"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
-msgstr ""
+msgstr "You are trying to access a protected resource, please {login} first.(未翻訳)"
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
@@ -1658,7 +1658,7 @@ msgstr "リスティング"
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "log in"
-msgstr ""
+msgstr "ログイン"
 
 #: config/Blocks
 msgid "maps"
