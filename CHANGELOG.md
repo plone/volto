@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Increase ObjectBrowser limit per folder to 1000, partially fixes #1259 @sneridagh
+
 ## 4.0.0 (2020-03-01)
 
 ### Added
