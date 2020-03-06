@@ -6,6 +6,10 @@
 
 ### Changes
 
+### Internal
+
+- Use kitconcept.volto as integration package @sneridagh
+
 ## 4.0.0 (2020-03-01)
 
 ### Added
