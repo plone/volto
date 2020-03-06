@@ -203,10 +203,8 @@ class Add extends Component {
             ref={this.form}
             schema={this.props.schema}
             formData={{
-              [getBlocksFieldname(this.props.schema.properties)]: initialBlocks,
-              [getBlocksLayoutFieldname(
-                this.props.schema.properties,
-              )]: initialBlocksLayout,
+              [blocksFieldname]: initialBlocks,
+              [blocksLayoutFieldname]: initialBlocksLayout,
             }}
             onSubmit={this.onSubmit}
             hideActions
