@@ -128,6 +128,7 @@ class ObjectBrowserBody extends Component {
           'path.depth': 1,
           sort_on: 'getObjPositionInParent',
           metadata_fields: '_all',
+          b_size: 1000,
         },
         `${this.props.block}-${mode}`,
       );
@@ -138,6 +139,7 @@ class ObjectBrowserBody extends Component {
           'path.depth': 1,
           sort_on: 'getObjPositionInParent',
           metadata_fields: '_all',
+          b_size: 1000,
         },
         `${this.props.block}-${mode}`,
       );
@@ -177,6 +179,7 @@ class ObjectBrowserBody extends Component {
         'path.depth': 1,
         sort_on: 'getObjPositionInParent',
         metadata_fields: '_all',
+        b_size: 1000,
       },
       `${this.props.block}-${this.props.mode}`,
     );
