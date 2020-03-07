@@ -26,7 +26,7 @@ import {
   DropdownIndicator,
   selectTheme,
   customSelectStyles,
-} from './SelectStyling';
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 const Select = loadable(() => import('react-select'));
 const AsyncPaginate = loadable(
@@ -92,7 +92,10 @@ function getDefaultValues(choices, value) {
     };
   }
   if (isObject(value)) {
-    return { label: value.title, value: value.token };
+    return {
+      label: value.title !== 'None' && value.title ? value.title : value.token,
+      value: value.token,
+    };
   }
   if (value && choices.length > 0) {
     return { label: find(choices, o => o[0] === value)[1], value };
@@ -334,7 +337,11 @@ class SelectWidget extends Component {
                   options={[
                     ...map(choices, option => ({
                       value: option[0],
-                      label: option[1],
+                      label:
+                        // Fix "None" on the serializer, to remove when fixed in p.restapi
+                        option[1] !== 'None' && option[1]
+                          ? option[1]
+                          : option[0],
                     })),
                     {
                       label: this.props.intl.formatMessage(messages.no_value),

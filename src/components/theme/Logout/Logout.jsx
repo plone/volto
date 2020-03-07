@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import qs from 'query-string';
 
-import Login from '../Login/Login';
+import { Login } from '@plone/volto/components';
 import { logout, purgeMessages } from '@plone/volto/actions';
 
 /**

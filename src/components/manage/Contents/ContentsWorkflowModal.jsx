@@ -9,12 +9,9 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { concat, filter, last, map, uniqBy } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import loadable from '@loadable/component';
 
 import { getWorkflow, transitionWorkflow } from '@plone/volto/actions';
-// import { ModalForm } from '@plone/volto/components';
-
-const ModalForm = loadable(() => import('../Form/ModalForm'));
+import { ModalForm } from '@plone/volto/components';
 
 const messages = defineMessages({
   default: {

@@ -22,7 +22,6 @@ import {
 import { find, map, isEqual } from 'lodash';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import loadable from '@loadable/component';
 
 import {
   createUser,
@@ -37,21 +36,17 @@ import {
 } from '@plone/volto/actions';
 import { getBaseUrl } from '@plone/volto/helpers';
 import {
-  // ModalForm,
-  // Toolbar,
+  ModalForm,
+  Toolbar,
   UsersControlpanelUser,
   Icon,
   UsersControlpanelGroups,
-  // Toast,
+  Toast,
 } from '@plone/volto/components';
 import addSvg from '@plone/volto/icons/circle-plus.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
-
-const ModalForm = loadable(() => import('../Form/ModalForm'));
-const Toast = loadable(() => import('../Toast/Toast'));
-const Toolbar = loadable(() => import('../Toolbar/Toolbar'));
 
 const messages = defineMessages({
   searchUsers: {
@@ -117,6 +112,10 @@ const messages = defineMessages({
   addUserGroupNameTitle: {
     id: 'Add to Groups',
     defaultMessage: 'Add to Groups',
+  },
+  addGroupsFormGroupNameTitle: {
+    id: 'Groupname',
+    defaultMessage: 'Groupname',
   },
   addGroupsFormDescriptionTitle: {
     id: 'Description',
@@ -754,7 +753,9 @@ class UsersControlpanel extends Component {
                   description: '',
                 },
                 groupname: {
-                  title: 'groupname',
+                  title: this.props.intl.formatMessage(
+                    messages.addGroupsFormGroupNameTitle,
+                  ),
                   type: 'string',
                   description: '',
                 },

@@ -12,7 +12,7 @@ import { Portal } from 'react-portal';
 import cx from 'classnames';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import Cell from './Cell';
+import Cell from '@plone/volto/components/manage/Blocks/Table/Cell';
 import { Field, Icon } from '@plone/volto/components';
 
 import rowSVG from '@plone/volto/icons/row.svg';
@@ -644,7 +644,10 @@ class Edit extends Component {
                           cellIndex === this.state.selected.cell
                         }
                         isTableBlockSelected={this.props.selected}
+                        onAddBlock={this.props.onAddBlock}
+                        onSelectBlock={this.props.onSelectBlock}
                         onChange={this.onChangeCell}
+                        index={this.props.index}
                       />
                     </Table.Cell>
                   ))}

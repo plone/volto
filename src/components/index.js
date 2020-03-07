@@ -20,6 +20,12 @@ export const Logout = loadable(() =>
 export const NotFound = loadable(() =>
   import('@plone/volto/components/theme/NotFound/NotFound'),
 );
+export const Forbidden = loadable(() =>
+  import('@plone/volto/components/theme/Forbidden/Forbidden'),
+);
+export const Unauthorized = loadable(() =>
+  import('@plone/volto/components/theme/Unauthorized/Unauthorized'),
+);
 export const Search = loadable(() =>
   import('@plone/volto/components/theme/Search/Search'),
 );
@@ -59,6 +65,9 @@ export const SummaryView = loadable(() =>
 export const TabularView = loadable(() =>
   import('@plone/volto/components/theme/View/TabularView'),
 );
+export const AlbumView = loadable(() =>
+  import('@plone/volto/components/theme/View/AlbumView'),
+);
 export const Comments = loadable(() =>
   import('@plone/volto/components/theme/Comments/Comments'),
 );
@@ -77,6 +86,9 @@ export const SearchTags = loadable(() =>
 export const CommentEditModal = loadable(() =>
   import('@plone/volto/components/theme/Comments/CommentEditModal'),
 );
+export const OutdatedBrowser = loadable(() =>
+  import('@plone/volto/components/theme/OutdatedBrowser/OutdatedBrowser'),
+);
 
 // CMSUI
 export const Toolbar = loadable(() =>
@@ -93,6 +105,9 @@ export const Contents = loadable(() =>
 );
 export const Sharing = loadable(() =>
   import('@plone/volto/components/manage/Sharing/Sharing'),
+);
+export const Toast = loadable(() =>
+  import('@plone/volto/components/manage/Toast/Toast'),
 );
 export const Controlpanel = loadable(() =>
   import('@plone/volto/components/manage/Controlpanels/Controlpanel'),
@@ -261,17 +276,11 @@ export const EditDescriptionBlock = loadable(() =>
 export const EditTitleBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Title/Edit'),
 );
-export const EditToCBlock = loadable(() =>
-  import('@plone/volto/components/manage/Blocks/ToC/Edit'),
-);
 export const EditTextBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Text/Edit'),
 );
 export const EditImageBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Image/Edit'),
-);
-export const EditListingBlock = loadable(() =>
-  import('@plone/volto/components/manage/Blocks/Listing/Edit'),
 );
 export const EditVideoBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Video/Edit'),
@@ -282,11 +291,20 @@ export const EditBlock = loadable(() =>
 export const EditHeroImageLeftBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/HeroImageLeft/Edit'),
 );
+export const ViewHeroImageLeftBlock = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/HeroImageLeft/View'),
+);
 export const EditMapBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Maps/Edit'),
 );
 export const EditHTMLBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/HTML/Edit'),
+);
+export const EditToCBlock = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/ToC/Edit'),
+);
+export const EditListingBlock = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/Listing/Edit'),
 );
 
 export const ViewDescriptionBlock = loadable(() =>
@@ -295,29 +313,26 @@ export const ViewDescriptionBlock = loadable(() =>
 export const ViewTitleBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Title/View'),
 );
-export const ViewToCBlock = loadable(() =>
-  import('@plone/volto/components/manage/Blocks/ToC/View'),
-);
 export const ViewTextBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Text/View'),
 );
 export const ViewImageBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Image/View'),
 );
-export const ViewListingBlock = loadable(() =>
-  import('@plone/volto/components/manage/Blocks/Listing/View'),
-);
 export const ViewVideoBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Video/View'),
-);
-export const ViewHeroImageLeftBlock = loadable(() =>
-  import('@plone/volto/components/manage/Blocks/HeroImageLeft/View'),
 );
 export const ViewMapBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Maps/View'),
 );
 export const ViewHTMLBlock = loadable(() =>
   import('@plone/volto/components/manage/Blocks/HTML/View'),
+);
+export const ViewToCBlock = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/ToC/View'),
+);
+export const ViewListingBlock = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/Listing/View'),
 );
 
 export const ListingBlockBody = loadable(() =>
@@ -326,6 +341,12 @@ export const ListingBlockBody = loadable(() =>
 export const ListingBlockData = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Listing/ListingData'),
 );
+export const ListingBlockStyle = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/Listing/ListingStyle'),
+);
+export const ListingBlockMore = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/Listing/ListingMore'),
+);
 export const ListingBlockSidebar = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Listing/ListingSidebar'),
 );
@@ -333,19 +354,10 @@ export const ListingBlockSidebar = loadable(() =>
 export const ImageSidebar = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Image/ImageSidebar'),
 );
-export const MapsSidebar = loadable(() =>
-  import('@plone/volto/components/manage/Blocks/Maps/MapsSidebar'),
-);
-export const VideoSidebar = loadable(() =>
-  import('@plone/volto/components/manage/Blocks/Video/VideoSidebar'),
-);
 export const LeadImageSidebar = loadable(() =>
   import('@plone/volto/components/manage/Blocks/LeadImage/LeadImageSidebar'),
 );
 
-export const ConditionalLink = loadable(() =>
-  import('@plone/volto/components/manage/ConditionalLink/ConditionalLink'),
-);
 export const PersonalTools = loadable(() =>
   import('@plone/volto/components/manage/Toolbar/PersonalTools'),
 );
@@ -355,6 +367,6 @@ export const More = loadable(() =>
 export const Types = loadable(() =>
   import('@plone/volto/components/manage/Toolbar/Types'),
 );
-export const Toast = loadable(() =>
-  import('@plone/volto/components/manage/Toast/Toast'),
+export const ConditionalLink = loadable(() =>
+  import('@plone/volto/components/manage/ConditionalLink/ConditionalLink'),
 );

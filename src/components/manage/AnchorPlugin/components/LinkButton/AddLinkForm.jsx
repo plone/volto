@@ -15,7 +15,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 
 import { resetSearchContent, searchContent } from '@plone/volto/actions';
 import { addAppURL } from '@plone/volto/helpers';
-import URLUtils from '../../utils/URLUtils';
+import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 const messages = defineMessages({
   placeholder: {
@@ -164,6 +164,7 @@ class AddLinkForm extends Component {
   onKeyDown(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
+      e.stopPropagation();
       this.onSubmit();
     } else if (e.key === 'Escape') {
       e.preventDefault();

@@ -13,7 +13,7 @@ import cx from 'classnames';
 import { BodyClass } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import forbiddenSVG from '@plone/volto/icons/forbidden.svg';
-import { setSidebarTab } from '../../../actions';
+import { setSidebarTab } from '@plone/volto/actions';
 
 const messages = defineMessages({
   document: {

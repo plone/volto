@@ -3,7 +3,7 @@
  * @module reducers/types/types
  */
 
-import { GET_TYPES } from '../../constants/ActionTypes';
+import { GET_TYPES } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   error: null,

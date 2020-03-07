@@ -51,6 +51,39 @@ default_blocks:
   Document:
   - type: title
   - type: text
+layouts:
+  Document:
+  - default
+  - document_view
+  - layout_view
+  News:
+  - default
+  - document_view
+  - layout_view
+  Event:
+  - default
+  - document_view
+  - layout_view
+  Image:
+  - default
+  - document_view
+  - layout_view
+  File:
+  - default
+  - document_view
+  - layout_view
+  Link:
+  - default
+  - document_view
+  - layout_view
+  CMSFolder:
+  - default
+  - listing_view
+  - event_listing
+  - album_view
+  - summary_view
+  - full_view
+  - layout_view
 workflows:
   basic:
     initial_state: private

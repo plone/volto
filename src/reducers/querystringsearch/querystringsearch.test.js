@@ -1,5 +1,5 @@
 import querystringsearch from './querystringsearch';
-import { GET_QUERYSTRING_RESULTS } from '../../constants/ActionTypes';
+import { GET_QUERYSTRING_RESULTS } from '@plone/volto/constants/ActionTypes';
 
 describe('Querystring reducer', () => {
   it('should return the initial state', () => {

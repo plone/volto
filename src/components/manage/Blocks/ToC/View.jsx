@@ -13,7 +13,7 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '../../../../helpers';
+} from '@plone/volto/helpers';
 
 /**
  * View toc block class.
