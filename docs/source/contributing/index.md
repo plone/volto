@@ -1,12 +1,13 @@
-# Contributing guidelines
+# Basic design principles
 
-Since the very beginning, Volto has been developed with several directives in mind,
+Since the very beginning, Volto has been developed with a set of principles in mind,
 brought from the years of experience developing Plone core and implementing projects on
 it.
 
-## Prime directive
+## Approachability
 
-Volto has to be 100% approachable by someone with zero Plone or Python knowledge.
+Volto has to be 100% approachable by someone with zero Plone or Python knowledge. This
+is the main Votlo principle.
 
 That means this someone has to be able to run, test and use Volto (and thus Plone), and
 ultimatelly customize a simple project without any problem and without having to touch
