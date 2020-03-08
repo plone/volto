@@ -119,6 +119,8 @@ export ViewHTMLBlock from './manage/Blocks/HTML/View';
 export ListingBlockBody from './manage/Blocks/Listing/ListingBody';
 export ListingBlockData from './manage/Blocks/Listing/ListingData';
 export ListingBlockSidebar from './manage/Blocks/Listing/ListingSidebar';
+export ListingBlockStyle from '@plone/volto/components/manage/Blocks/Listing/ListingStyle';
+export ListingBlockMore from '@plone/volto/components/manage/Blocks/Listing/ListingMore';
 
 export ImageSidebar from './manage/Blocks/Image/ImageSidebar';
 export MapsSidebar from './manage/Blocks/Maps/MapsSidebar';

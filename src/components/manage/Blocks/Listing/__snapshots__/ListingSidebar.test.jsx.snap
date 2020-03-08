@@ -627,3 +627,467 @@ exports[`renders a Grid Block Sidebar component 1`] = `
   </div>
 </div>
 `;
+
+exports[`renders a Listing Block Sidebar component 1`] = `
+<div
+  class="ui raised segments"
+>
+  <header
+    class="header pulled"
+  >
+    <h2>
+      Listing
+    </h2>
+  </header>
+  <div
+    class="accordion ui fluid styled form"
+  >
+    <div
+      class="active title"
+    >
+      Content
+      <svg
+        class="icon"
+        style="height: 20px; width: auto; fill: currentColor;"
+        viewBox=""
+        xmlns=""
+      />
+    </div>
+    <div
+      class="content active"
+    >
+      <div
+        class="ui segment form sidebar-listing-data"
+      >
+        <div
+          class="inline field"
+          id="field-source"
+        >
+          <div
+            class="ui grid"
+          >
+            <div
+              class="stretched row"
+            >
+              <div
+                class="twelve wide column"
+              >
+                <div
+                  class="simple-field-name"
+                >
+                  Criteria
+                </div>
+              </div>
+            </div>
+            <div
+              class="stretched row"
+            >
+              <div
+                class="twelve wide column"
+              >
+                <div
+                  class="fields"
+                >
+                  <div
+                    class="field"
+                    style="flex: 1 0 auto;"
+                  >
+                    <div
+                      class="react-select-container css-2b097c-container"
+                      id="field-source"
+                    >
+                      <div
+                        class="react-select__control css-1ard45z-control"
+                      >
+                        <div
+                          class="react-select__value-container css-1dvrfad"
+                        >
+                          <div
+                            class="react-select__placeholder css-1wa3eu0-placeholder"
+                          >
+                            Add criteria
+                          </div>
+                          <div
+                            class="css-b8ldur-Input"
+                          >
+                            <div
+                              class="react-select__input"
+                              style="display: inline-block;"
+                            >
+                              <input
+                                aria-autocomplete="list"
+                                autocapitalize="none"
+                                autocomplete="off"
+                                autocorrect="off"
+                                id="react-select-2-input"
+                                spellcheck="false"
+                                style="box-sizing: content-box; width: 2px; border: 0px; font-size: inherit; opacity: 1; outline: 0; padding: 0px;"
+                                tabindex="0"
+                                type="text"
+                                value=""
+                              />
+                              <div
+                                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="react-select__indicators css-1hb7zxy-IndicatorsContainer"
+                        >
+                          <span
+                            class="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
+                          />
+                          <div
+                            aria-hidden="true"
+                            class="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
+                          >
+                            <svg
+                              class="icon"
+                              style="height: 24px; width: auto; fill: #007bc1;"
+                              viewBox=""
+                              xmlns=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <input
+                        name="source"
+                        type="hidden"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="inline field"
+          id="field-listingblock-sort-on"
+        >
+          <div
+            class="ui grid"
+          >
+            <div
+              class="stretched row"
+            >
+              <div
+                class="four wide column"
+              >
+                <div
+                  class="wrapper"
+                >
+                  <label
+                    for="select-listingblock-sort-on"
+                  >
+                    Sort on
+                  </label>
+                </div>
+              </div>
+              <div
+                class="eight wide column"
+              >
+                <div
+                  class="react-select-container css-2b097c-container"
+                  id="select-listingblock-sort-on"
+                >
+                  <div
+                    class="react-select__control css-1ard45z-control"
+                  >
+                    <div
+                      class="react-select__value-container react-select__value-container--has-value css-1dvrfad"
+                    >
+                      <div
+                        class="react-select__single-value css-1uccc91-singleValue"
+                      >
+                        No selection
+                      </div>
+                      <div
+                        class="css-b8ldur-Input"
+                      >
+                        <div
+                          class="react-select__input"
+                          style="display: inline-block;"
+                        >
+                          <input
+                            aria-autocomplete="list"
+                            autocapitalize="none"
+                            autocomplete="off"
+                            autocorrect="off"
+                            id="react-select-3-input"
+                            spellcheck="false"
+                            style="box-sizing: content-box; width: 2px; border: 0px; font-size: inherit; opacity: 1; outline: 0; padding: 0px;"
+                            tabindex="0"
+                            type="text"
+                            value=""
+                          />
+                          <div
+                            style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="react-select__indicators css-1hb7zxy-IndicatorsContainer"
+                    >
+                      <span
+                        class="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
+                      />
+                      <div
+                        aria-hidden="true"
+                        class="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
+                      >
+                        <svg
+                          class="icon"
+                          style="height: 24px; width: auto; fill: #007bc1;"
+                          viewBox=""
+                          xmlns=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <input
+                    name="select-listingblock-sort-on"
+                    type="hidden"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="inline field"
+          id="field-listingblock-sort-on-reverse"
+        >
+          <div
+            class="ui grid"
+          >
+            <div
+              class="stretched row"
+            >
+              <div
+                class="twelve wide column"
+              >
+                <div
+                  class="wrapper"
+                >
+                  <div
+                    class="ui fitted checkbox"
+                  >
+                    <input
+                      class="hidden"
+                      name="field-listingblock-sort-on-reverse"
+                      readonly=""
+                      tabindex="0"
+                      type="checkbox"
+                      value=""
+                    />
+                    <label />
+                  </div>
+                  <label
+                    class="ui basic horizontal label"
+                    for="field-listingblock-sort-on-reverse"
+                  >
+                    Reversed order
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="inline field text"
+          id="field-limit"
+        >
+          <div
+            class="ui grid"
+          >
+            <div
+              class="stretched row"
+            >
+              <div
+                class="four wide column"
+              >
+                <div
+                  class="wrapper"
+                >
+                  <label
+                    for="field-limit"
+                  >
+                    Results limit
+                  </label>
+                </div>
+              </div>
+              <div
+                class="eight wide column"
+              >
+                <div
+                  class="ui input"
+                >
+                  <input
+                    id="field-limit"
+                    name="limit"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="inline field text"
+          id="field-itembatchsize"
+        >
+          <div
+            class="ui grid"
+          >
+            <div
+              class="stretched row"
+            >
+              <div
+                class="four wide column"
+              >
+                <div
+                  class="wrapper"
+                >
+                  <label
+                    for="field-itembatchsize"
+                  >
+                    Item batch size
+                  </label>
+                </div>
+              </div>
+              <div
+                class="eight wide column"
+              >
+                <div
+                  class="ui input"
+                >
+                  <input
+                    id="field-itembatchsize"
+                    name="itembatchsize"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="title"
+    >
+      Link more
+      <svg
+        class="icon"
+        style="height: 20px; width: auto; fill: currentColor;"
+        viewBox=""
+        xmlns=""
+      />
+    </div>
+    <div
+      class="content"
+    >
+      <div
+        class="inline field text"
+        id="field-linkTitle"
+      >
+        <div
+          class="ui grid"
+        >
+          <div
+            class="stretched row"
+          >
+            <div
+              class="four wide column"
+            >
+              <div
+                class="wrapper"
+              >
+                <label
+                  for="field-linkTitle"
+                >
+                  Link Title
+                </label>
+              </div>
+            </div>
+            <div
+              class="eight wide column"
+            >
+              <div
+                class="ui input"
+              >
+                <input
+                  id="field-linkTitle"
+                  name="linkTitle"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="inline field text"
+        id="field-linkHref"
+      >
+        <div
+          class="ui grid"
+        >
+          <div
+            class="stretched row"
+          >
+            <div
+              class="four wide column"
+            >
+              <div
+                class="wrapper"
+              >
+                <label
+                  for="field-linkHref"
+                >
+                  Link to
+                </label>
+              </div>
+            </div>
+            <div
+              class="eight wide column"
+            >
+              <div
+                class="ui icon input"
+              >
+                <input
+                  id="field-linkHref"
+                  name="linkHref"
+                  type="text"
+                  value=""
+                />
+                <i
+                  aria-hidden="true"
+                  attributes="[object Object]"
+                  class="icon"
+                />
+              </div>
+              <button>
+                <svg
+                  class="icon"
+                  style="height: 18px; width: auto; fill: currentColor;"
+                  viewBox=""
+                  xmlns=""
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -40,7 +40,7 @@ describe('ContentsRenameModal', () => {
         />
       </Provider>,
     );
-    expect(container).toBeEmpty();
+
     await wait(() => {
       expect(container.firstChild).toMatchSnapshot();
     });
