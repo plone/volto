@@ -6,6 +6,7 @@ it.
 
 - Approachability
 - Developer experience first
+- Volto UI/UX is Pastanaga UI
 - Do not overengineer things
 - Each feature has only one way of doing it
 - Frontend and backend are meant to be decoupled
@@ -49,6 +50,12 @@ removal of them in such a big and old project is normal it's like it is, nobody 
 take the blame on it.
 
 In Volto we have a blank page in front of us. Let's work to keep it clean and shiny.
+
+## Volto UI/UX is Pastanaga UI
+
+Volto has its own UI/UX design, it's Pastanaga UI. It was conceived from scratch to
+match nowadays trends and to give fresh air what a content management system user
+experience should be.
 
 ## Do not overengineer things
 
