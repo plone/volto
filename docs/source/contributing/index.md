@@ -4,6 +4,15 @@ Since the very beginning, Volto has been developed with a set of principles in m
 brought from the years of experience developing Plone core and implementing projects on
 it.
 
+- Approachability
+- Developer experience first
+- Do not overengineer things
+- Each feature has only one way of doing it
+- Frontend and backend are meant to be decoupled
+- Focus on the UI/UX implementation and upcoming challenges
+
+Following you can find the reasoning behind these principles.
+
 ## Approachability
 
 Volto has to be 100% approachable by someone with zero Plone or Python knowledge. This
