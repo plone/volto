@@ -10,6 +10,7 @@
 - Japanese translation @terapyon
 - Site settings styling fixed in the Controlpanel
 - Increase ObjectBrowser limit per folder to 1000, partially fixes #1259 @sneridagh
+- Deprecate `utils.less` as it's a leftover and it collides with some use cases depending on the viewport, see: #1265
 
 ### Internal
 
