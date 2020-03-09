@@ -2,8 +2,6 @@
 
 ## 4.0.1 (unreleased)
 
-### Added
-
 ### Changes
 
 - Fixes #1262 - SSR support for "undetected" browsers
