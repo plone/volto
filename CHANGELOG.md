@@ -5,6 +5,7 @@
 ### Added
 
 - Added animations for router tranitions @nzambello
+
 ### Changes
 
 - Improve the UX of the listing block when queries are running @sneridagh
