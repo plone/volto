@@ -30,6 +30,7 @@ export {
   hasBlocksData,
 } from '@plone/volto/helpers/Blocks/Blocks';
 export BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
+export ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 export AnimationWrapper from '@plone/volto/helpers/AnimationWrapper/AnimationWrapper';
 export {
   getBoolean,
