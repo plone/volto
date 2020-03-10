@@ -21,8 +21,8 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
 
-import { Icon } from '../../../components';
-import { login } from '../../../actions';
+import { Icon } from '@plone/volto/components';
+import { login } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
 
@@ -117,7 +117,6 @@ class Login extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log(this.props.returnUrl);
     if (nextProps.token) {
       this.props.history.push(this.props.returnUrl || '/');
       if (toast.isActive('loginFailed')) {

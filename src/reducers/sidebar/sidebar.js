@@ -3,7 +3,7 @@
  * @module reducers/sidebar/sidebar
  */
 
-import { SET_SIDEBAR_TAB } from '../../constants/ActionTypes';
+import { SET_SIDEBAR_TAB } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   tab: 0,

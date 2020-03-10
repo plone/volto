@@ -12,9 +12,9 @@ import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
-import { getBaseUrl } from '../../../helpers';
+import { getBaseUrl } from '@plone/volto/helpers';
 
-import { getNavigation } from '../../../actions';
+import { getNavigation } from '@plone/volto/actions';
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -127,7 +127,7 @@ class Navigation extends Component {
   render() {
     return (
       <nav className="navigation">
-        <div className="hamburger-wrapper mobile only">
+        <div className="hamburger-wrapper mobile tablet only">
           <button
             className={cx('hamburger hamburger--collapse', {
               'is-active': this.state.isMobileMenuOpen,
@@ -165,7 +165,7 @@ class Navigation extends Component {
           className={
             this.state.isMobileMenuOpen
               ? 'open'
-              : 'tablet computer large screen widescreen only'
+              : 'computer large screen widescreen only'
           }
           onClick={this.closeMobileMenu}
         >

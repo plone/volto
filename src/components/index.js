@@ -24,6 +24,8 @@ export ListingView from '@plone/volto/components/theme/View/ListingView';
 export Login from '@plone/volto/components/theme/Login/Login';
 export Logout from '@plone/volto/components/theme/Logout/Logout';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
+export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
+export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 export Pagination from '@plone/volto/components/theme/Pagination/Pagination';
 export SummaryView from '@plone/volto/components/theme/View/SummaryView';
 export Search from '@plone/volto/components/theme/Search/Search';
@@ -115,6 +117,8 @@ export ViewHTMLBlock from '@plone/volto/components/manage/Blocks/HTML/View';
 
 export ListingBlockBody from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
 export ListingBlockData from '@plone/volto/components/manage/Blocks/Listing/ListingData';
+export ListingBlockStyle from '@plone/volto/components/manage/Blocks/Listing/ListingStyle';
+export ListingBlockMore from '@plone/volto/components/manage/Blocks/Listing/ListingMore';
 export ListingBlockSidebar from '@plone/volto/components/manage/Blocks/Listing/ListingSidebar';
 
 export ImageSidebar from '@plone/volto/components/manage/Blocks/Image/ImageSidebar';

@@ -8,7 +8,7 @@ import { compact, concat, isArray, join, map, pickBy, toPairs } from 'lodash';
 import {
   RESET_SEARCH_CONTENT,
   SEARCH_CONTENT,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Search content function.
