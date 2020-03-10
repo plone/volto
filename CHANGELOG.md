@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Improve the UX of the listing block when queries are running @sneridagh
+
 ## 4.0.1 (2020-03-09)
 
 ### Changes
