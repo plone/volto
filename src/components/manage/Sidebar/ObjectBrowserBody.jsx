@@ -78,24 +78,18 @@ class ObjectBrowserBody extends Component {
    */
   constructor(props) {
     super(props);
-    console.log('openobjectbrowser props', this.props, props);
+    const {
+      data: { url, href, hrefs },
+    } = this.props;
+    const link =
+      Array.isArray(hrefs) && hrefs.length > 0 ? hrefs[hrefs.length - 1] : href;
     this.state = {
-      currentFolder: this.props.data.url
-        ? getParentURL(this.props.data.url)
-        : '/',
-      currentImageFolder: this.props.data.url
-        ? getParentURL(this.props.data.url)
-        : '/',
-      currentLinkFolder: this.props.data.href
-        ? getParentURL(this.props.data.href)
-        : '/',
+      currentFolder: url ? getParentURL(url) : '/',
+      currentImageFolder: url ? getParentURL(url) : '/',
+      currentLinkFolder: link ? getParentURL(link) : '/',
       parentFolder: '',
-      selectedImage: this.props.data.url
-        ? this.props.data.url.replace(settings.apiPath, '')
-        : '',
-      selectedHref: this.props.data.href
-        ? this.props.data.href.replace(settings.apiPath, '')
-        : '',
+      selectedImage: url ? url.replace(settings.apiPath, '') : '',
+      selectedHref: link ? link.replace(settings.apiPath, '') : '',
       showSearchInput: false,
     };
   }
@@ -232,6 +226,9 @@ class ObjectBrowserBody extends Component {
             currentLinkFolder: getParentURL(url),
           });
           break;
+        case 'multi':
+          // TODO
+          break;
         default:
           break;
       }
@@ -243,7 +240,7 @@ class ObjectBrowserBody extends Component {
         [dataName]: url,
       });
     } else if (this.props.onSelectItem) {
-      this.props.onSelectItem(url);
+      this.props.onSelectItem(url, title);
     } else if (mode === 'image') {
       onChangeBlock(block, {
         ...data,
@@ -255,6 +252,8 @@ class ObjectBrowserBody extends Component {
         ...data,
         href: url,
       });
+    } else if (mode === 'multi') {
+      // TODO
     }
     updateState(mode);
   };

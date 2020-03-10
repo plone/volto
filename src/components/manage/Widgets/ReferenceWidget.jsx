@@ -251,12 +251,13 @@ class ReferenceWidget extends Component {
 }
 
 const defaultComponentProps = {
-  data: { url: '/' },
+  data: { hrefs: ['/'] },
   onChangeBlock: () => {},
   block: 'referenceWidget',
 };
 
 const RFW = compose(withObjectBrowser, injectIntl)(ReferenceWidget);
+
 export default function(props) {
   return <RFW {...defaultComponentProps} {...props}></RFW>;
 }
