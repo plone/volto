@@ -597,7 +597,7 @@ if (Cypress.env('API') !== 'guillotina') {
     //   // }
     // });
 
-    it.only('Add Table of Contents block', () => {
+    it('Add Table of Contents block', () => {
       //Add H2
       cy.get('.block.inner.text .public-DraftEditor-content')
         .type('expectedH2')
