@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add `flattenHTMLToAppURL` helper method for remove api url from TinyMCE generated HTML @cekk
+
 ### Changes
 
 - Improve the UX of the listing block when queries are running @sneridagh
