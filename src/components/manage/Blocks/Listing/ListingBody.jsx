@@ -28,6 +28,9 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
 
   const folderItems = content.is_folderish ? content.items : [];
 
+  const loadingQuery =
+    data?.query?.length > 0 && querystringResults?.[data.block]?.loading;
+
   const listingItems =
     data?.query?.length > 0
       ? (querystringResults &&
@@ -142,7 +145,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
               defaultMessage="No items found in this container."
             />
           )}
-          {data?.query?.length > 0 && (
+          {!loadingQuery && data?.query?.length > 0 && (
             <FormattedMessage
               id="No results found."
               defaultMessage="No results found."

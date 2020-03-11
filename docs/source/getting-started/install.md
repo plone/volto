@@ -86,14 +86,28 @@ $ docker ps
 
 should not throw an error and show the current running containers.
 
-## Run a Volto ready Plone Docker container
+## Get Plone ready for Volto
 
-We need Plone meet some requirements in order to fully support Volto.
-There's a package `kitconcept.voltodemo` that does all the heavy lifting for you.
-You can run an standard Plone docker container with the proper configuration using `kitconcept.voltodemo` right away by issuing:
+In order to fully support all Volto features, Plone needs to be prepared for Volto. This
+involves configuration, add-ons installation and some patches to the core.
+
+There's a package published called `kitconcept.volto` that does all the heavy lifting
+for you and it's ready to use in your own projects.
+
+!!! note
+    However, this package is oppinionated and might not fit your needs, so if you
+    want to use your own integration package instead, just take a look to the features
+    it provides and extract the ones you need for your project and tailor your own
+    integration package.
+
+        https://github.com/kitconcept/kitconcept.volto
+
+### Run a Volto ready Plone Docker container
+
+You can run an standard Plone docker container with the proper configuration using `kitconcept.volto` right away by issuing:
 
 ```shell
-$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.voltodemo" -e ZCML="kitconcept.voltodemo.cors" plone
+$ docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" -e PROFILES="kitconcept.volto:default-homepage" plone
 ```
 
 ## Install Volto
