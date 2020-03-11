@@ -7,7 +7,7 @@
 ### Changes
 
 - Improve the UX of the listing block when queries are running @sneridagh
-- updated table of content cypress test @steffenri
+- Added table of content cypress test @steffenri
 
 ## 4.0.1 (2020-03-09)
 
@@ -158,7 +158,6 @@ refer to all of them in https://github.com/plone/volto/releases
 - updated italian translations
 - Fix listing block sidebar focus @sneridagh
 - Fix getBaseUrl helper method to not match inner occurrences of nonContentRoutes @sneridagh
-- added Cypress Test for Table of Contents Block @steffenri
 
 ## 4.0.0-alpha.34 (2020-01-26)
 
