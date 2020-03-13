@@ -5,6 +5,7 @@
 ### Added
 
 - Add `flattenHTMLToAppURL` helper method for remove api url from TinyMCE generated HTML @cekk
+- Add development mode global @sneridagh
 
 ### Changes
 
