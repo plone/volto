@@ -97,6 +97,11 @@ class Controlpanels extends Component {
           group: 'Users',
           title: this.props.intl.formatMessage(messages.usersandgroups),
         },
+        {
+          '@id': '/site',
+          group: 'Allgemein',
+          title: this.props.intl.formatMessage(messages.sitesetup),
+        },
       ]),
       controlpanel => ({
         ...controlpanel,

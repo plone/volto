@@ -59,6 +59,7 @@ export UsersControlpanelGroups from '@plone/volto/components/manage/Controlpanel
 export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';
 export Delete from '@plone/volto/components/manage/Delete/Delete';
 export UsersControlpanelUser from '@plone/volto/components/manage/Controlpanels/UsersControlpanelUser';
+export SiteControlpanel from '@plone/volto/components/manage/Controlpanels/SiteControlpanel';
 export Diff from '@plone/volto/components/manage/Diff/Diff';
 export DiffField from '@plone/volto/components/manage/Diff/DiffField';
 export Display from '@plone/volto/components/manage/Display/Display';

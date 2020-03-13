@@ -25,6 +25,7 @@ import {
   Search,
   Sharing,
   UsersControlpanel,
+  SiteControlpanel,
 } from '@plone/volto/components';
 
 /**
@@ -58,6 +59,10 @@ export const defaultRoutes = [
     path: '/controlpanel',
     exact: true,
     component: Controlpanels,
+  },
+  {
+    path: '/controlpanel/site',
+    component: SiteControlpanel,
   },
   {
     path: '/controlpanel/moderate-comments',
