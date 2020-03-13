@@ -115,6 +115,14 @@ module.exports = {
       ],
     };
 
+    if (dev) {
+      config.plugins.unshift(
+        new webpack.DefinePlugin({
+          __DEVELOPMENT__: true,
+        }),
+      );
+    }
+
     if (target === 'web') {
       config.plugins.unshift(
         new webpack.DefinePlugin({
