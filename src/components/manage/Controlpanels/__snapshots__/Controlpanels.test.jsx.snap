@@ -221,6 +221,46 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
           </div>
         </div>
       </div>
+      <div
+        className="ui secondary segment"
+      >
+        Allgemein
+      </div>
+      <div
+        className="ui attached segment"
+      >
+        <div
+          className="ui six column grid"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="column"
+            >
+              <a
+                href="/controlpanel/site"
+                onClick={[Function]}
+              >
+                <h3
+                  className="ui icon center aligned header"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="browser icon"
+                    onClick={[Function]}
+                  />
+                  <div
+                    className="content"
+                  >
+                    Site Setup
+                  </div>
+                </h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div
       className="ui raised segments"
