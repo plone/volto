@@ -19,6 +19,7 @@ extra_css:
 
 nav:
   - Getting Started: 'getting-started/install.md'
+  - Design principles: 'design-principles/index.md'
   - Configuration:
       - What is configurable?: 'configuration/how-to.md'
       - Richeditor settings: 'configuration/richeditor-settings.md'
@@ -56,7 +57,8 @@ nav:
       - Routing: 'developer-guidelines/routing.md'
       - Linting: 'developer-guidelines/linting.md'
       - Language features: 'developer-guidelines/language-features.md'
-  - Contributing: 'contributing/index.md'
+  - Contributing:
+      - Guidelines: 'contributing/guidelines.md'
 
 markdown_extensions:
   - admonition
