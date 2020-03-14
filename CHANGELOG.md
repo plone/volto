@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix for #1267 - Link inside text for content-type without blocks breaks the site @sneridagh
+
 ## 4.1.0 (2020-03-13)
 
 ### Added
