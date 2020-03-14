@@ -29,10 +29,7 @@ import {
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 const Select = loadable(() => import('react-select'));
-const AsyncPaginate = loadable(
-  () => import('react-select-async-paginate'),
-  'components',
-);
+const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
 
 const messages = defineMessages({
   default: {

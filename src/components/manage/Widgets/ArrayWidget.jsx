@@ -26,14 +26,8 @@ import {
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
-const AsyncPaginate = loadable(
-  () => import('react-select-async-paginate'),
-  'components',
-);
-const CreatableSelect = loadable(
-  () => import('react-select/creatable'),
-  'components',
-);
+const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
+const CreatableSelect = loadable(() => import('react-select/creatable'));
 
 const messages = defineMessages({
   select: {
