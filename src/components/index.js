@@ -354,6 +354,12 @@ export const ListingBlockSidebar = loadable(() =>
 export const ImageSidebar = loadable(() =>
   import('@plone/volto/components/manage/Blocks/Image/ImageSidebar'),
 );
+export const MapsSidebar = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/Maps/MapsSidebar'),
+);
+export const VideoSidebar = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/Video/VideoSidebar'),
+);
 export const LeadImageSidebar = loadable(() =>
   import('@plone/volto/components/manage/Blocks/LeadImage/LeadImageSidebar'),
 );

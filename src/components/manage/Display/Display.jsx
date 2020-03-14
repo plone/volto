@@ -14,30 +14,39 @@ import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
 
-const Select = loadable(() => import('react-select'));
-const components = loadable(() => import('react-select'), 'components');
+const ReactSelect = loadable.lib(() => import('react-select'));
 
 const Option = props => {
   return (
-    <components.Option {...props}>
-      <div>{props.label}</div>
-      {props.isFocused && !props.isSelected && (
-        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+    <ReactSelect>
+      {({ components }) => (
+        <components.Option {...props}>
+          <div>{props.label}</div>
+          {props.isFocused && !props.isSelected && (
+            <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+          )}
+          {props.isSelected && (
+            <Icon name={checkSVG} size="24px" color="#007bc1" />
+          )}
+        </components.Option>
       )}
-      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
-    </components.Option>
+    </ReactSelect>
   );
 };
 
 const DropdownIndicator = props => {
   return (
-    <components.DropdownIndicator {...props}>
-      {props.selectProps.menuIsOpen ? (
-        <Icon name={upSVG} size="24px" color="#007bc1" />
-      ) : (
-        <Icon name={downSVG} size="24px" color="#007bc1" />
+    <ReactSelect>
+      {({ components }) => (
+        <components.DropdownIndicator {...props}>
+          {props.selectProps.menuIsOpen ? (
+            <Icon name={upSVG} size="24px" color="#007bc1" />
+          ) : (
+            <Icon name={downSVG} size="24px" color="#007bc1" />
+          )}
+        </components.DropdownIndicator>
       )}
-    </components.DropdownIndicator>
+    </ReactSelect>
   );
 };
 
@@ -194,27 +203,31 @@ class DisplaySelect extends Component {
         <label htmlFor="display-select">
           <FormattedMessage id="Viewmode" defaultMessage="View" />
         </label>
-        <Select
-          name="display-select"
-          className="react-select-container"
-          classNamePrefix="react-select"
-          options={this.props.layouts
-            .filter(
-              layout =>
-                Object.keys(views.contentTypesViews).includes(layout) ||
-                Object.keys(views.layoutViews).includes(layout),
-            )
-            .map(item => ({
-              value: item,
-              label: layouts[item] || item,
-            }))}
-          styles={customSelectStyles}
-          theme={selectTheme}
-          components={{ DropdownIndicator, Option }}
-          onChange={this.setLayout}
-          defaultValue={selectedOption}
-          isSearchable={false}
-        />
+        <ReactSelect>
+          {({ default: Select }) => (
+            <Select
+              name="display-select"
+              className="react-select-container"
+              classNamePrefix="react-select"
+              options={this.props.layouts
+                .filter(
+                  layout =>
+                    Object.keys(views.contentTypesViews).includes(layout) ||
+                    Object.keys(views.layoutViews).includes(layout),
+                )
+                .map(item => ({
+                  value: item,
+                  label: layouts[item] || item,
+                }))}
+              styles={customSelectStyles}
+              theme={selectTheme}
+              components={{ DropdownIndicator, Option }}
+              onChange={this.setLayout}
+              defaultValue={selectedOption}
+              isSearchable={false}
+            />
+          )}
+        </ReactSelect>
       </Fragment>
     );
   }

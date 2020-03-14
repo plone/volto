@@ -20,7 +20,9 @@ export DefaultView from './theme/View/DefaultView';
 export FileView from './theme/View/FileView';
 export ImageView from './theme/View/ImageView';
 export NewsItemView from './theme/View/NewsItemView';
+export EventView from './theme/View/EventView';
 export ListingView from './theme/View/ListingView';
+export AlbumView from './theme/View/AlbumView';
 export SummaryView from './theme/View/SummaryView';
 export TabularView from './theme/View/TabularView';
 export Comments from './theme/Comments/Comments';
@@ -29,6 +31,9 @@ export SocialSharing from './theme/SocialSharing/SocialSharing';
 export Pagination from './theme/Pagination/Pagination';
 export SearchTags from './theme/Search/SearchTags';
 export CommentEditModal from './theme/Comments/CommentEditModal';
+export OutdatedBrowser from './theme/OutdatedBrowser/OutdatedBrowser';
+export Forbidden from './theme/Forbidden/Forbidden';
+export Unauthorized from './theme/Unauthorized/Unauthorized';
 
 // CMSUI
 export Toolbar from './manage/Toolbar/Toolbar';

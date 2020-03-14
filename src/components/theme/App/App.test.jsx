@@ -26,6 +26,9 @@ jest.mock('semantic-ui-react', () => ({
   Container: jest.fn(() => <div id="container" />),
 }));
 jest.mock('../Footer/Footer', () => jest.fn(() => <div id="footer" />));
+jest.mock('../OutdatedBrowser/OutdatedBrowser', () =>
+  jest.fn(() => <div id="outdatedbrowser" />),
+);
 
 describe('App', () => {
   it('renders a app component', () => {

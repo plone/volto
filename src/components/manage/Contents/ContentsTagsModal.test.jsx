@@ -39,7 +39,7 @@ describe('ContentsTagsModal', () => {
         />
       </Provider>,
     );
-    expect(container).toBeEmpty();
+
     await wait(() => {
       expect(container.firstChild).toMatchSnapshot();
     });
