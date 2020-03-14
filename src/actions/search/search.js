@@ -43,7 +43,10 @@ export function searchContent(url, options, subrequest = null) {
     arrayOptions
       ? join(
           map(pickBy(arrayOptions), (item, key) =>
-            join(item.map(value => `${key}:list=${value}`), '&'),
+            join(
+              item.map(value => `${key}:list=${value}`),
+              '&',
+            ),
           ),
           '&',
         )
