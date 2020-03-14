@@ -56,6 +56,9 @@ export const ImageView = loadable(() =>
 export const NewsItemView = loadable(() =>
   import('@plone/volto/components/theme/View/NewsItemView'),
 );
+export const EventView = loadable(() =>
+  import('@plone/volto/components/theme/View/EventView'),
+);
 export const ListingView = loadable(() =>
   import('@plone/volto/components/theme/View/ListingView'),
 );
