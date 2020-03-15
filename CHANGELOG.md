@@ -1,14 +1,33 @@
 # Change Log
 
-## 4.0.1 (unreleased)
+## 4.1.1 (unreleased)
 
 ### Added
 
 ### Changes
 
+- Fix for #1267 - Link inside text for content-type without blocks breaks the site @sneridagh
+
+## 4.1.0 (2020-03-13)
+
+### Added
+
+- Add `flattenHTMLToAppURL` helper method for remove api url from TinyMCE generated HTML @cekk
+- Add development mode global @sneridagh
+
+### Changes
+
+- Improve the UX of the listing block when queries are running @sneridagh
+
+## 4.0.1 (2020-03-09)
+
+### Changes
+
+- Fixes #1262 - SSR support for "undetected" browsers
 - Japanese translation @terapyon
 - Site settings styling fixed in the Controlpanel
 - Increase ObjectBrowser limit per folder to 1000, partially fixes #1259 @sneridagh
+- Deprecate `utils.less` as it's a leftover and it collides with some use cases depending on the viewport, see: #1265
 
 ### Internal
 
