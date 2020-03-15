@@ -4385,10 +4385,10 @@ cypress-file-upload@3.5.0:
   resolved "https://registry.yarnpkg.com/cypress-file-upload/-/cypress-file-upload-3.5.0.tgz#7ff6294a3be68adcac72bc1fa25c75c57e0701fc"
   integrity sha512-MgrsP4C2pUMvHqixH33OtXHNKkwQZV6ny0fu+APDTEP9O/uuKFh3sYcnPNU6XGfuC85/RmqVNw21ZQyyT+S5IQ==
 
-cypress-plugin-retries@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/cypress-plugin-retries/-/cypress-plugin-retries-1.5.0.tgz#717cdfd7f2a8f07f218eb23e93ff6f7aa4c95029"
-  integrity sha512-nSJx4RkbeQFGjsymPWabn7i2GmxULUu9SqtiJqoVFa1XfVtQC1Uoogxj/zZzhrWYwYJ2183xslb9HqQV6bafFQ==
+cypress-plugin-retries@1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/cypress-plugin-retries/-/cypress-plugin-retries-1.5.2.tgz#21d5247cd77013b95bbfdd914f2de66f91f76a2e"
+  integrity sha512-o1xVIGtv4WvNVxoVJ2X08eAuvditPHrePRzHqhwwHbMKu3C2rtxCdanRCZdO5fjh8ww+q4v4V0e9GmysbOvu3A==
   dependencies:
     chalk "^3.0.0"
 
