@@ -16,7 +16,6 @@ cache:
   directories:
     - $HOME/buildout-cache
     - ~/.cache
-sudo: required
 addons:
   apt:
     packages:
