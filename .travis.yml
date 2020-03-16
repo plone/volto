@@ -36,7 +36,7 @@ before_install:
     echo "download-cache = $HOME/buildout-cache/downloads" >> $HOME/.buildout/default.cfg;
     echo "eggs-directory = $HOME/buildout-cache/eggs" >> $HOME/.buildout/default.cfg;
     fi
-
+  - npm install -g surge
 install:
   - if [ "$TEST_SUITE" == "plone" ]; then
     make build-backend;
@@ -56,6 +56,14 @@ script:
   - if [ "$TEST_SUITE" == "plone" ]; then
     yarn ci:cypress:run;
     fi
+after_script:
+- mkdir cypress-results
+- mv cypress/videos cypress-results
+- ls -al cypress-results
+deploy:
+  provider: surge
+  project: ./cypress-results/
+  domain: volto.surge.sh 
 after_success:
   - if [ "$TEST_SUITE" == "plone" ]; then
     yarn run bundlewatch;
