@@ -1,4 +1,5 @@
 language: python
+os: linux
 dist: xenial
 jobs:
   include:
