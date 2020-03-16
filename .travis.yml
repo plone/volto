@@ -60,10 +60,7 @@ after_script:
 - mkdir cypress-results
 - mv cypress/videos cypress-results
 - ls -al cypress-results
-deploy:
-  provider: surge
-  project: ./cypress-results/
-  domain: volto.surge.sh 
+- surge cypress-results volto.surge.sh
 after_success:
   - if [ "$TEST_SUITE" == "plone" ]; then
     yarn run bundlewatch;
