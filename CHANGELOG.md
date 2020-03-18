@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.1.2 (unreleased)
+
+### Added
+
+### Changes
+
 ## 4.1.1 (2020-03-18)
 
 ### Changes
