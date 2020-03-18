@@ -8,6 +8,10 @@
 
 - Fix for #1267 - Link inside text for content-type without blocks breaks the site @sneridagh
 
+### Internal
+
+- Upgrade to Cypress 4 @timo
+
 ## 4.1.0 (2020-03-13)
 
 ### Added
