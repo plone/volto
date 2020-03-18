@@ -7,6 +7,7 @@
 ### Changes
 
 - Fix for #1267 - Link inside text for content-type without blocks breaks the site @sneridagh
+- Japanese translation @terapyon
 
 ### Internal
 
