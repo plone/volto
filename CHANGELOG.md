@@ -2,8 +2,6 @@
 
 ## 4.1.1 (unreleased)
 
-### Added
-
 ### Changes
 
 - Fix for #1267 - Link inside text for content-type without blocks breaks the site @sneridagh
