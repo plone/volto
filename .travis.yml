@@ -58,7 +58,7 @@ script:
     fi
 after_script:
 - mkdir cypress-results
-- mv cypress/videos/* cypress-results
+- mv cypress/videos cypress-results
 - ls -al cypress-results
 - surge cypress-results volto.surge.sh
 after_success:
