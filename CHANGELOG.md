@@ -6,6 +6,8 @@
 
 ### Changes
 
+- Fix typo for Japanese translation @terapyon
+
 ## 4.1.1 (2020-03-18)
 
 ### Changes
