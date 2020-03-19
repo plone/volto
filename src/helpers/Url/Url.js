@@ -95,6 +95,19 @@ export function flattenToAppURL(url) {
 }
 
 /**
+ * Flatten to app server HTML - Given a text if it contains some urls that starts
+ * with the API server URL this method flattens it (removes) the server part.
+ * TODO: Update it when implementing non-root based app location (on a
+ * directory other than /, eg. /myapp)
+ * @method flattenHTMLToAppURL
+ * @param {string} html Some html snippet
+ * @returns {string} Same HTML with Flattened URLs to the app server
+ */
+export function flattenHTMLToAppURL(html) {
+  return html.replace(new RegExp(settings.apiPath, 'g'), '');
+}
+
+/**
  * Add the app url
  * @method addAppURL
  * @param {string} url URL of the object

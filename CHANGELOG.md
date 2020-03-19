@@ -1,10 +1,49 @@
 # Change Log
 
-## 4.0.1 (unreleased)
+## 4.1.2 (unreleased)
 
 ### Added
 
 ### Changes
+
+- Fix typo for Japanese translation @terapyon
+
+## 4.1.1 (2020-03-18)
+
+### Changes
+
+- Fix for #1267 - Link inside text for content-type without blocks breaks the site @sneridagh
+- Japanese translation @terapyon
+- Fix production mode for newly created `__DEVELOPMENT__` global @sneridagh
+
+### Internal
+
+- Upgrade to Cypress 4 @timo
+
+## 4.1.0 (2020-03-13)
+
+### Added
+
+- Add `flattenHTMLToAppURL` helper method for remove api url from TinyMCE generated HTML @cekk
+- Add development mode global @sneridagh
+
+### Changes
+
+- Improve the UX of the listing block when queries are running @sneridagh
+
+## 4.0.1 (2020-03-09)
+
+### Changes
+
+- Fixes #1262 - SSR support for "undetected" browsers
+- Japanese translation @terapyon
+- Site settings styling fixed in the Controlpanel
+- Increase ObjectBrowser limit per folder to 1000, partially fixes #1259 @sneridagh
+- Deprecate `utils.less` as it's a leftover and it collides with some use cases depending on the viewport, see: #1265
+
+### Internal
+
+- Use kitconcept.volto as integration package @sneridagh
 
 ## 4.0.0 (2020-03-01)
 
@@ -13,24 +52,24 @@
 Summary of the most important features in this final release. For more detailed information
 refer to all of them in https://github.com/plone/volto/releases
 
-* Improved Pastanaga Editor
-* New Pastanaga Editor sidebar
-* New mobile first toolbar
-* Developing blocks experience simplified
-* New Object Browser
-* Listing, TOC, Lead Image blocks
-* Improved existing blocks (Image, Video, Maps)
-* New blocks chooser and future proof blocks definitions
-* Definition of default Blocks per content type
-* Body classes like the Plone ones hinting content types, section and current view
-* New message system
-* React hooks support
-* Several internal libraries updated, including Redux, Router ones that support hooks as well
-* New locales (es, it, ja, pt, pt_BR)
+- Improved Pastanaga Editor
+- New Pastanaga Editor sidebar
+- New mobile first toolbar
+- Developing blocks experience simplified
+- New Object Browser
+- Listing, TOC, Lead Image blocks
+- Improved existing blocks (Image, Video, Maps)
+- New blocks chooser and future proof blocks definitions
+- Definition of default Blocks per content type
+- Body classes like the Plone ones hinting content types, section and current view
+- New message system
+- React hooks support
+- Several internal libraries updated, including Redux, Router ones that support hooks as well
+- New locales (es, it, ja, pt, pt_BR)
 
 ### Changes
 
-* Tons of bug fixes
+- Tons of bug fixes
 
 ## 4.0.0-alpha.43 (2020-03-01)
 
