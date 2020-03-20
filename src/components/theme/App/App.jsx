@@ -12,6 +12,7 @@ import { Segment } from 'semantic-ui-react';
 import Raven from 'raven-js';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
+import cookie from 'react-cookie';
 import split from 'lodash/split';
 import join from 'lodash/join';
 import trim from 'lodash/trim';
@@ -24,7 +25,7 @@ import {
   Footer,
   Header,
   Icon,
-  OutdatedBrowser,
+  Messages,
 } from '@plone/volto/components';
 import { BodyClass, getBaseUrl, getView } from '@plone/volto/helpers';
 import {
@@ -36,6 +37,17 @@ import {
 } from '@plone/volto/actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
+import { settings } from '~/config';
+
+import { updateIntl } from 'react-intl-redux';
+
+import deLocale from '~/../locales/de.json';
+import enLocale from '~/../locales/en.json';
+
+const locales = {
+  en: enLocale,
+  de: deLocale,
+};
 
 /**
  * @export
@@ -50,6 +62,7 @@ class App extends Component {
    */
   static propTypes = {
     pathname: PropTypes.string.isRequired,
+    updateIntl: PropTypes.func.isRequired,
   };
 
   state = {
@@ -69,6 +82,23 @@ class App extends Component {
     if (__CLIENT__ && process.env.SENTRY_DSN) {
       Raven.config(process.env.SENTRY_DSN).install();
     }
+
+    // const detectedLang = (navigator.language || navigator.userLanguage).substring(0, 2);
+
+    if (this.props.pathname === '/' && settings.isMultilingual) {
+      const currentLanguage = cookie.load('lang') || settings.defaultLanguage;
+      const redirectToLanguage = settings.supportedLanguages.includes(
+        currentLanguage,
+      )
+        ? currentLanguage
+        : settings.defaultLanguage;
+
+      this.props.updateIntl({
+        locale: redirectToLanguage,
+        messages: locales[redirectToLanguage],
+      });
+      this.props.history.push(`/${redirectToLanguage}`);
+    }
   }
 
   /**
@@ -77,10 +107,22 @@ class App extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    // // console.log(nextProps.pathname === this.props.pathname);
-    // console.log(this.props.pathname);
-    // console.log(nextProps.pathname);
     if (nextProps.pathname !== this.props.pathname) {
+      if (nextProps.pathname === '/' && settings.isMultilingual) {
+        const currentLanguage = cookie.load('lang') || settings.defaultLanguage;
+        const redirectToLanguage = settings.supportedLanguages.includes(
+          currentLanguage,
+        )
+          ? currentLanguage
+          : settings.defaultLanguage;
+
+        this.props.updateIntl({
+          locale: redirectToLanguage,
+          messages: locales[redirectToLanguage],
+        });
+        this.props.history.push(`/${redirectToLanguage}`);
+      }
+
       if (this.state.hasError) {
         this.setState({ hasError: false });
       }
@@ -131,12 +173,11 @@ class App extends Component {
             siteroot: this.props.pathname === '/',
           })}
         />
-
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
         <Segment basic className="content-area">
           <main>
-            <OutdatedBrowser />
+            <Messages />
             {this.state.hasError ? (
               <Error
                 message={this.state.error.message}
@@ -152,7 +193,6 @@ class App extends Component {
           position={toast.POSITION.BOTTOM_CENTER}
           hideProgressBar
           transition={Slide}
-          autoClose={5000}
           closeButton={
             <Icon
               className="toast-dismiss-action"
@@ -178,9 +218,8 @@ export default compose(
   asyncConnect([
     {
       key: 'breadcrumbs',
-      promise: ({ location, store: { dispatch } }) => {
-        __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
-      },
+      promise: ({ location, store: { dispatch } }) =>
+        __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
     },
     {
       key: 'content',
@@ -189,8 +228,8 @@ export default compose(
     },
     {
       key: 'navigation',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getNavigation(getBaseUrl(location.pathname))),
+      promise: ({ location, store: { dispatch, getState } }) =>
+        __SERVER__ && dispatch(getNavigation(getState().intl.locale, 2)),
     },
     {
       key: 'types',
@@ -208,6 +247,8 @@ export default compose(
       pathname: props.location.pathname,
       content: state.content.data,
     }),
-    {},
+    {
+      updateIntl,
+    },
   ),
 )(App);
