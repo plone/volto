@@ -25,6 +25,8 @@ import {
   Search,
   Sharing,
   UsersControlpanel,
+  DexterityContentTypes,
+  DexterityContentType,
 } from '@plone/volto/components';
 
 /**
@@ -62,6 +64,14 @@ export const defaultRoutes = [
   {
     path: '/controlpanel/moderate-comments',
     component: ModerateComments,
+  },
+  {
+    path: '/controlpanel/dexterity-types/:id',
+    component: DexterityContentType,
+  },
+  {
+    path: '/controlpanel/dexterity-types',
+    component: DexterityContentTypes,
   },
   {
     path: '/controlpanel/users',

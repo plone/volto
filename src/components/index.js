@@ -3,7 +3,6 @@
  * @module components
  * @example import { Field } from 'components';
  */
-
 export Anontools from '@plone/volto/components/theme/Anontools/Anontools';
 export Breadcrumbs from '@plone/volto/components/theme/Breadcrumbs/Breadcrumbs';
 export ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
@@ -54,6 +53,8 @@ export ContentsTagsModal from '@plone/volto/components/manage/Contents/ContentsT
 export Controlpanel from '@plone/volto/components/manage/Controlpanels/Controlpanel';
 export Controlpanels from '@plone/volto/components/manage/Controlpanels/Controlpanels';
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
+export DexterityContentType from '@plone/volto/components/manage/Controlpanels/DexterityContentType';
+export DexterityContentTypes from '@plone/volto/components/manage/Controlpanels/DexterityContentTypes';
 export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/UsersControlpanel';
 export UsersControlpanelGroups from '@plone/volto/components/manage/Controlpanels/UsersControlpanelGroups';
 export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';

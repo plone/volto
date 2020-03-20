@@ -41,6 +41,10 @@ const messages = defineMessages({
     id: 'Moderate Comments',
     defaultMessage: 'Moderate Comments',
   },
+  dexteritytypes: {
+    id: 'Dexterity Content Types',
+    defaultMessage: 'Dexterity Content Types',
+  },
   usersandgroups: {
     id: 'Users and Groups',
     defaultMessage: 'Users and Groups',
@@ -91,6 +95,11 @@ class Controlpanels extends Component {
           '@id': '/moderate-comments',
           group: 'Content',
           title: this.props.intl.formatMessage(messages.moderatecomments),
+        },
+        {
+          '@id': '/dexterity-types',
+          group: 'Content',
+          title: this.props.intl.formatMessage(messages.dexteritytypes),
         },
         {
           '@id': '/users',
