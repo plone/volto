@@ -28,15 +28,15 @@ import {
   persistAuthToken,
   generateSitemap,
   getAPIResourceWithAuth,
-} from './helpers';
+} from '@plone/volto/helpers';
 
-import userSession from './reducers/userSession/userSession';
+import userSession from '@plone/volto/reducers/userSession/userSession';
 
-import ErrorPage from './error';
+import ErrorPage from '@plone/volto/error';
 
-import languages from './constants/Languages';
+import languages from '@plone/volto/constants/Languages';
 
-import configureStore from './store';
+import configureStore from '@plone/volto/store';
 
 const supported = new locale.Locales(keys(languages), 'en');
 const locales = {
