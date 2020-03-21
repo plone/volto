@@ -5,6 +5,7 @@
 
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const ADD_TRANSLATION = 'ADD_TRANSLATION';
 export const COPY = 'COPY';
 export const COPY_CONTENT = 'COPY_CONTENT';
 export const CREATE_CONTENT = 'CREATE_CONTENT';

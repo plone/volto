@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { filter, map } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 
-const Types = ({ types, pathname }) => {
+const Types = ({ types, pathname, content }) => {
   return types.length > 0 ? (
     <div className="menu-more pastanaga-menu">
       <header>
@@ -30,6 +30,23 @@ const Types = ({ types, pathname }) => {
               </Link>
             </li>
           ))}
+        </ul>
+        <ul>
+          <li>++++++</li>
+          <li>
+            <Link
+              to={{
+                pathname: `${pathname}/add`,
+                search: '?type=Document',
+                state: {
+                  translationOf: content['UID'],
+                },
+              }}
+              className="item"
+            >
+              Translate to EN
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

@@ -78,6 +78,7 @@ class Add extends Component {
       loaded: PropTypes.bool,
     }).isRequired,
     type: PropTypes.string,
+    location: PropTypes.objectOf(PropTypes.any),
   };
 
   /**
@@ -158,6 +159,10 @@ class Add extends Component {
         ? keys(this.props.schema.definitions)
         : null,
       '@type': this.props.type,
+      ...(settings.isMultilingual &&
+        this.props.location.state.translationOf && {
+          translationOf: this.props.location.state.translationOf,
+        }),
     });
   }
 
