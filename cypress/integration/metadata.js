@@ -1,6 +1,7 @@
 if (Cypress.env('API') === 'plone') {
   describe('Add Content Tests', () => {
     beforeEach(() => {
+      cy.visit('/');
       cy.autologin();
       cy.visit('/');
       cy.waitForResourceToLoad('@navigation');
@@ -16,20 +17,25 @@ if (Cypress.env('API') === 'plone') {
         .type('My Page')
         .get('.documentFirstHeading span[data-text]')
         .contains('My Page');
-      cy.get('input[name="effective"]').type("2050-12-24T12:00");
+      cy.get('input[name="effective"]').type('2050-12-24T12:00');
       cy.get('#toolbar-save').click();
-      cy.get('body.view-viewview #page-document .documentFirstHeading').should('have.text', 'My Page');
+      cy.get('body.view-viewview #page-document .documentFirstHeading').should(
+        'have.text',
+        'My Page',
+      );
       cy.url().should('contain', '/my-page');
 
-      cy.get('.edit').click()
+      cy.get('.edit').click();
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('?fullobjects');
 
-      cy.get('input[name="effective"]').should('have.value', "2050-12-24T12:00:00");
+      cy.get('input[name="effective"]').should(
+        'have.value',
+        '2050-12-24T12:00:00',
+      );
     });
   });
 }
-  

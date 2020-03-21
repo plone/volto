@@ -1,6 +1,7 @@
 if (Cypress.env('API') !== 'guillotina') {
   describe('createContent Tests', () => {
     beforeEach(() => {
+      cy.visit('/');
       cy.autologin();
     });
 

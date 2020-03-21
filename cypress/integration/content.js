@@ -1,5 +1,6 @@
 describe('Add Content Tests', () => {
   beforeEach(() => {
+    cy.visit('/');
     cy.autologin();
   });
   it('As a site administrator I can add a page', function() {

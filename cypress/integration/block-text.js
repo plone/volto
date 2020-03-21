@@ -1,6 +1,7 @@
 if (Cypress.env('API') !== 'guillotina') {
   describe('Text Block Tests', () => {
     beforeEach(() => {
+      cy.visit('/');
       cy.autologin();
       cy.createContent('Document', 'my-page', 'My Page');
       cy.visit('/my-page/edit');

@@ -1,5 +1,5 @@
 describe('Autologin Tests', () => {
-  it('As a site administrator I can add a page', function() {
+  it('Autologin', function() {
     let api_url, user, password;
     if (Cypress.env('API') === 'guillotina') {
       api_url = 'http://localhost:8081/db/container';
@@ -10,6 +10,7 @@ describe('Autologin Tests', () => {
       user = 'admin';
       password = 'secret';
     }
+    cy.visit('/');
 
     cy.request({
       method: 'POST',

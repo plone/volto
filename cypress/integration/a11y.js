@@ -2,6 +2,7 @@ if (Cypress.env('API') !== 'guillotina') {
   describe('Accessibility Tests', () => {
     beforeEach(() => {
       cy.visit('/');
+      cy.wait(1000);
       cy.injectAxe(); // make sure axe is available on the page
     });
 
