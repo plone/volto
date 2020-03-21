@@ -122,6 +122,12 @@ module.exports = {
           __DEVELOPMENT__: true,
         }),
       );
+    } else {
+      config.plugins.unshift(
+        new webpack.DefinePlugin({
+          __DEVELOPMENT__: false,
+        }),
+      );
     }
 
     if (target === 'web') {

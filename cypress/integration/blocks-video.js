@@ -13,6 +13,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('?fullobjects');
     });
+
     it('Add Video Block with YouTube Video', () => {
       cy.get(`.block.title [data-contents]`)
         .clear()
@@ -53,6 +54,7 @@ if (Cypress.env('API') !== 'guillotina') {
         .type('My title');
       cy.get('.block.inner.text .public-DraftEditor-content').click();
       cy.get('.ui.basic.icon.button.block-add-button').click();
+
       cy.get('.ui.basic.icon.button.video')
         .contains('Video')
         .click();

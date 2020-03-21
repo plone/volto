@@ -1,12 +1,20 @@
 # Change Log
 
-## 4.1.1 (unreleased)
+## 4.1.2 (unreleased)
 
 ### Added
 
 ### Changes
 
+- Fix typo for Japanese translation @terapyon
+
+## 4.1.1 (2020-03-18)
+
+### Changes
+
 - Fix for #1267 - Link inside text for content-type without blocks breaks the site @sneridagh
+- Japanese translation @terapyon
+- Fix production mode for newly created `__DEVELOPMENT__` global @sneridagh
 
 ### Internal
 
