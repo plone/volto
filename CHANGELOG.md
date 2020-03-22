@@ -7,6 +7,7 @@
 ### Changes
 
 - Fix typo for Japanese translation @terapyon
+- Fix refresh of the `Breadcrumbs` and `Navigation` components on calling `/login` and `/logout` @sneridagh
 
 ## 4.1.1 (2020-03-18)
 

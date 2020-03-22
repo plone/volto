@@ -66,7 +66,10 @@ class Breadcrumbs extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.props.pathname) {
+    if (
+      nextProps.pathname !== this.props.pathname ||
+      nextProps.pathname === '' // We are in the root (probably in the login/logout form)
+    ) {
       this.props.getBreadcrumbs(getBaseUrl(nextProps.pathname));
     }
   }
