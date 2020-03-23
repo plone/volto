@@ -9,6 +9,10 @@
 - Fix typo for Japanese translation @terapyon
 - Fix refresh of the `Breadcrumbs` and `Navigation` components on calling `/login` and `/logout` @sneridagh
 
+## Internal
+
+- Upgrade critical Plone 5.2.1 deps in api folder @sneridagh
+
 ## 4.1.1 (2020-03-18)
 
 ### Changes
