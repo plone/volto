@@ -77,12 +77,12 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
             {...data}
           />
           {data?.query?.length === 0 &&
-            content.items_total > settings.defaultPageSize && (
+            content.items_total > (data.b_size || settings.defaultPageSize) && (
               <div className="pagination-wrapper">
                 <Pagination
                   activePage={currentPage}
                   totalPages={Math.ceil(
-                    content.items_total / settings.defaultPageSize,
+                    content.items_total / (data.b_size || settings.defaultPageSize),
                   )}
                   onPageChange={handleContentPaginationChange}
                   firstItem={null}
