@@ -8,6 +8,7 @@
 
 - Fix typo for Japanese translation @terapyon
 - Fix refresh of the `Breadcrumbs` and `Navigation` components on calling `/login` and `/logout` @sneridagh
+- Fix listing "show more" link rendering conditions @nzambello
 
 ## Internal
 
