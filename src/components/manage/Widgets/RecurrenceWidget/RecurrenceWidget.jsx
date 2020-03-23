@@ -142,13 +142,12 @@ class RecurrenceWidget extends Component {
    */
   static propTypes = {
     id: PropTypes.string.isRequired,
+    formData: PropTypes.object,
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     value: PropTypes.string,
-    start: PropTypes.string,
-    end: PropTypes.string,
     onChange: PropTypes.func.isRequired,
   };
 
@@ -178,13 +177,6 @@ class RecurrenceWidget extends Component {
       ? rrulestr(props.value, { unfold: true, forceset: true })
       : new RRuleSet();
 
-    console.log('constructor rruleSet', rruleSet);
-    if (this.props.start) {
-      console.log('set dtstart');
-      var start = new Date(this.props.start);
-      rruleSet = this.updateRruleSet(rruleSet, null, 'dtstart', start);
-    }
-
     this.state = {
       open: false,
       rruleSet: rruleSet,
@@ -193,7 +185,56 @@ class RecurrenceWidget extends Component {
     };
   }
 
-  show = dimmer => () => this.setState({ dimmer, open: true });
+  componentDidUpdate(prevProps, prevState) {
+    console.log('didupdate');
+    if (prevProps.formData.start !== this.props.formData.start) {
+      this.setState({
+        rruleSet: this.setRecurrenceStart(
+          this.state.rruleSet,
+          this.props.formData.start,
+        ),
+      });
+    }
+  }
+
+  shouldComponentUpdate(nextProps, nextSate) {
+    console.log('shouldComponentUpdate', nextProps);
+    return nextProps.formData.start !== this.props.formData.start;
+  }
+
+  editRecurrence = () => {
+    // let rruleSet = this.state.rruleSet;
+    // if (this.props.formData?.start) {
+    //   this.setState({
+    //     rruleSet: this.setRecurrenceStart(rruleSet, this.props.formData.start),
+    //   });
+    // }
+    // return rruleSet;
+  };
+
+  setRecurrenceStart = (rruleSet, start) => {
+    console.log('set dtstart', start);
+    var _start = this.getUTCDate(start)
+      .set({
+        hour: 0,
+        minute: 0,
+        second: 0,
+      })
+      .toDate();
+    rruleSet = this.updateRruleSet(rruleSet, null, 'dtstart', _start);
+    return rruleSet;
+  };
+
+  getUTCDate = date => {
+    return date.match(/T(.)*(-|\+|Z)/g)
+      ? moment(date).utc()
+      : moment(`${date}Z`).utc();
+  };
+
+  show = dimmer => () => {
+    this.setState({ dimmer, open: true });
+    this.editRecurrence();
+  };
   close = () => this.setState({ open: false });
 
   getFreq = number => {
@@ -353,8 +394,9 @@ class RecurrenceWidget extends Component {
       field === 'rdates' ? value : Object.assign([], rruleSet.rdates());
 
     let set = new RRuleSet();
-    set.rrule(new RRule(rruleOptions));
     set.dtstart(dstart);
+    rruleOptions.dtstart = dstart;
+    set.rrule(new RRule(rruleOptions));
 
     exdates.map(ex => set.exdate(ex));
     rdates.map(r => set.rdate(r));
@@ -363,7 +405,9 @@ class RecurrenceWidget extends Component {
   };
 
   getDefaultUntil = freq => {
-    var end = this.props.end ? new Date(this.props.end) : null;
+    var end = this.props.formData?.end
+      ? new Date(this.props.formData.end)
+      : null;
     var tomorrow = toISOString(
       moment()
         .add(1, 'days')
@@ -641,7 +685,6 @@ class RecurrenceWidget extends Component {
       required,
       description,
       error,
-      value,
       fieldSet,
       intl,
     } = this.props;
@@ -684,6 +727,7 @@ class RecurrenceWidget extends Component {
                   </Segment>
                 </>
               )}
+              ---{this.state.rruleSet?.toString()}
               <Button.Group>
                 <Button onClick={this.show('blurring')} type="button">
                   {intl.formatMessage(messages.editRecurrence)}
@@ -709,110 +753,112 @@ class RecurrenceWidget extends Component {
                   {rruleSet.toString()}
                 </Modal.Header>
                 <Modal.Content scrolling>
-                  <Modal.Description>
-                    <Segment>
-                      <Form>
-                        <SelectWidget
-                          id="freq"
-                          title={intl.formatMessage(messages.repeat)}
-                          getVocabulary={() => {}}
-                          getVocabularyTokenTitle={() => {}}
-                          choices={Object.keys(OPTIONS.frequences).map(t => {
-                            return [t, intl.formatMessage(messages[t])];
-                          })}
-                          value={formValues.freq}
-                          onChange={this.onChangeRule}
+                  {rruleSet.rrules().length > 0 && (
+                    <Modal.Description>
+                      <Segment>
+                        <Form>
+                          <SelectWidget
+                            id="freq"
+                            title={intl.formatMessage(messages.repeat)}
+                            getVocabulary={() => {}}
+                            getVocabularyTokenTitle={() => {}}
+                            choices={Object.keys(OPTIONS.frequences).map(t => {
+                              return [t, intl.formatMessage(messages[t])];
+                            })}
+                            value={formValues.freq}
+                            onChange={this.onChangeRule}
+                          />
+                          {OPTIONS.frequences[formValues.freq].interval && (
+                            <IntervalField
+                              label={intl.formatMessage(messages.repeatEvery)}
+                              labelAfter={
+                                formValues.freq &&
+                                intl.formatMessage(
+                                  messages['interval_' + formValues.freq],
+                                )
+                              }
+                              value={formValues.interval}
+                              onChange={this.onChangeRule}
+                            />
+                          )}
+
+                          {/***** byday *****/}
+                          {OPTIONS.frequences[formValues.freq].byday && (
+                            <ByDayField
+                              label={intl.formatMessage(messages.repeatOn)}
+                              value={formValues.byweekday}
+                              onChange={this.onChangeRule}
+                            />
+                          )}
+
+                          {/***** bymonth *****/}
+                          {OPTIONS.frequences[formValues.freq].bymonth && (
+                            <ByMonthField
+                              label={intl.formatMessage(messages.repeatOn)}
+                              value={formValues.monthly}
+                              bymonthday={formValues.bymonthday}
+                              weekdayOfTheMonthIndex={
+                                formValues.weekdayOfTheMonthIndex
+                              }
+                              weekdayOfTheMonth={formValues.weekdayOfTheMonth}
+                              onChange={this.onChangeRule}
+                            />
+                          )}
+
+                          {/***** byyear *****/}
+                          {OPTIONS.frequences[formValues.freq].byyear && (
+                            <ByYearField
+                              label={intl.formatMessage(messages.repeatOn)}
+                              value={formValues.yearly}
+                              bymonthday={formValues.bymonthday}
+                              monthOfTheYear={formValues.monthOfTheYear}
+                              weekdayOfTheMonthIndex={
+                                formValues.weekdayOfTheMonthIndex
+                              }
+                              weekdayOfTheMonth={formValues.weekdayOfTheMonth}
+                              onChange={this.onChangeRule}
+                            />
+                          )}
+
+                          {/*-- ends after N recurrence or date --*/}
+                          <EndField
+                            value={formValues.recurrenceEnds}
+                            count={formValues.count}
+                            until={formValues.until}
+                            onChange={this.onChangeRule}
+                          />
+                        </Form>
+                      </Segment>
+                      <Segment>
+                        <Occurences
+                          rruleSet={rruleSet}
+                          exclude={this.exclude}
+                          undoExclude={this.undoExclude}
                         />
-                        {OPTIONS.frequences[formValues.freq].interval && (
-                          <IntervalField
-                            label={intl.formatMessage(messages.repeatEvery)}
-                            labelAfter={
-                              formValues.freq &&
-                              intl.formatMessage(
-                                messages['interval_' + formValues.freq],
-                              )
-                            }
-                            value={formValues.interval}
-                            onChange={this.onChangeRule}
+                      </Segment>
+                      <Segment>
+                        <Header as="h2">
+                          {intl.formatMessage(messages.add_date)}
+                        </Header>
+                        <Form.Field inline>
+                          <Input
+                            id="until"
+                            type="date"
+                            name="until"
+                            min={moment(rruleSet.rrules()[0].dtstart)
+                              .add(1, 'd')
+                              .utc()
+                              .format('YYYY-MM-DD')}
+                            onChange={({ target }) => {
+                              this.addDate(
+                                target.value === '' ? undefined : target.value,
+                              );
+                            }}
                           />
-                        )}
-
-                        {/***** byday *****/}
-                        {OPTIONS.frequences[formValues.freq].byday && (
-                          <ByDayField
-                            label={intl.formatMessage(messages.repeatOn)}
-                            value={formValues.byweekday}
-                            onChange={this.onChangeRule}
-                          />
-                        )}
-
-                        {/***** bymonth *****/}
-                        {OPTIONS.frequences[formValues.freq].bymonth && (
-                          <ByMonthField
-                            label={intl.formatMessage(messages.repeatOn)}
-                            value={formValues.monthly}
-                            bymonthday={formValues.bymonthday}
-                            weekdayOfTheMonthIndex={
-                              formValues.weekdayOfTheMonthIndex
-                            }
-                            weekdayOfTheMonth={formValues.weekdayOfTheMonth}
-                            onChange={this.onChangeRule}
-                          />
-                        )}
-
-                        {/***** byyear *****/}
-                        {OPTIONS.frequences[formValues.freq].byyear && (
-                          <ByYearField
-                            label={intl.formatMessage(messages.repeatOn)}
-                            value={formValues.yearly}
-                            bymonthday={formValues.bymonthday}
-                            monthOfTheYear={formValues.monthOfTheYear}
-                            weekdayOfTheMonthIndex={
-                              formValues.weekdayOfTheMonthIndex
-                            }
-                            weekdayOfTheMonth={formValues.weekdayOfTheMonth}
-                            onChange={this.onChangeRule}
-                          />
-                        )}
-
-                        {/*-- ends after N recurrence or date --*/}
-                        <EndField
-                          value={formValues.recurrenceEnds}
-                          count={formValues.count}
-                          until={formValues.until}
-                          onChange={this.onChangeRule}
-                        />
-                      </Form>
-                    </Segment>
-                    <Segment>
-                      <Occurences
-                        rruleSet={rruleSet}
-                        exclude={this.exclude}
-                        undoExclude={this.undoExclude}
-                      />
-                    </Segment>
-                    <Segment>
-                      <Header as="h2">
-                        {intl.formatMessage(messages.add_date)}
-                      </Header>
-                      <Form.Field inline>
-                        <Input
-                          id="until"
-                          type="date"
-                          name="until"
-                          min={moment(rruleSet.rrules()[0].dtstart)
-                            .add(1, 'd')
-                            .utc()
-                            .format('YYYY-MM-DD')}
-                          onChange={({ target }) => {
-                            this.addDate(
-                              target.value === '' ? undefined : target.value,
-                            );
-                          }}
-                        />
-                      </Form.Field>
-                    </Segment>
-                  </Modal.Description>
+                        </Form.Field>
+                      </Segment>
+                    </Modal.Description>
+                  )}
                 </Modal.Content>
                 <Modal.Actions>
                   <Button

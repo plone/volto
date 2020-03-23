@@ -24,6 +24,14 @@ const messages = defineMessages({
     id: 'Additional date',
     defaultMessage: 'Additional date',
   },
+  other_items: {
+    id: 'others',
+    defaultMessage: 'others',
+  },
+  no_occurences: {
+    id: 'No occurences set',
+    defaultMessage: 'No occurences set',
+  },
 });
 
 const formatDate = d => {
@@ -44,6 +52,7 @@ const Occurences = ({
   showTitle,
   editOccurences,
 }) => {
+  let all = [];
   const isExcluded = date => {
     var dateISO = toISOString(date);
     var excluded = false;
@@ -67,19 +76,25 @@ const Occurences = ({
     });
     return additional;
   };
-  let all = rruleSet.all();
 
-  rruleSet.exdates().map(date => {
-    if (all.indexOf(date) < 0) {
-      all.push(date);
-    }
-  });
-  all.sort((a, b) => {
-    return a > b ? 1 : -1;
-  });
+  if (rruleSet) {
+    all = rruleSet.all();
+
+    rruleSet.exdates().map(date => {
+      if (all.indexOf(date) < 0) {
+        all.push(date);
+      }
+    });
+    all.sort((a, b) => {
+      return a > b ? 1 : -1;
+    });
+  }
+
+  const others = all.splice(100);
 
   return (
     <div className="occurences">
+      {all.length === 0 && <>{intl.formatMessage(messages.no_occurences)}</>}
       {showTitle && (
         <Header as="h2">{intl.formatMessage(messages.selected_dates)}</Header>
       )}
@@ -129,6 +144,15 @@ const Occurences = ({
             </List.Item>
           );
         })}
+        {others.length > 0 && (
+          <List.Item>
+            <List.Content>
+              {`... ${intl.formatMessage(messages.other_items)} ${
+                others.length
+              }`}
+            </List.Content>
+          </List.Item>
+        )}
       </List>
     </div>
   );
@@ -140,7 +164,7 @@ const Occurences = ({
  * @static
  */
 Occurences.propTypes = {
-  rruleSet: PropTypes.any.isRequired,
+  rruleSet: PropTypes.any,
   showTitle: PropTypes.bool,
   editOccurences: PropTypes.bool,
 };
