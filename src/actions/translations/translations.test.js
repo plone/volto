@@ -9,7 +9,7 @@ describe('Translations action', () => {
       const action = getTranslationLocator(url, lang);
 
       expect(action.type).toEqual(GET_TRANSLATION_LOCATOR);
-      expect(action.request.op).toEqual('post');
+      expect(action.request.op).toEqual('get');
       expect(action.request.path).toEqual(
         `${url}/@translation-locator?targetLanguage=${lang}`,
       );

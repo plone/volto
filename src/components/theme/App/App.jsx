@@ -41,13 +41,15 @@ import { settings } from '~/config';
 
 import { updateIntl } from 'react-intl-redux';
 
-import deLocale from '~/../locales/de.json';
-import enLocale from '~/../locales/en.json';
+let locales = {};
 
-const locales = {
-  en: enLocale,
-  de: deLocale,
-};
+if (settings) {
+  settings.supportedLanguages.forEach(lang => {
+    import(`~/../locales/${lang}.json`).then(locale => {
+      locales = { ...locales, [lang]: locale };
+    });
+  });
+}
 
 /**
  * @export

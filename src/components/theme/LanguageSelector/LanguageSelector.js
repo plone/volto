@@ -13,14 +13,17 @@ import { find, map } from 'lodash';
 import { updateIntl } from 'react-intl-redux';
 import { settings } from '~/config';
 
-import deLocale from '~/../locales/de.json';
-import enLocale from '~/../locales/en.json';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
-const locales = {
-  en: enLocale,
-  de: deLocale,
-};
+let locales = {};
+
+if (settings) {
+  settings.supportedLanguages.forEach(lang => {
+    import(`~/../locales/${lang}.json`).then(locale => {
+      locales = { ...locales, [lang]: locale };
+    });
+  });
+}
 
 const LanguageSelector = props => {
   const dispatch = useDispatch();
@@ -59,6 +62,7 @@ const LanguageSelector = props => {
                 props.onClickAction();
                 changeLanguage(lang);
               }}
+              key={`language-selector-${lang}`}
             >
               {lang}&nbsp;
             </Link>

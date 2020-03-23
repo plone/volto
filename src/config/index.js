@@ -50,8 +50,10 @@ export const settings = {
   customStyleMap: null,
   notSupportedBrowsers: ['ie'],
   defaultPageSize: 25,
-  isMultilingual: true,
-  supportedLanguages: ['en', 'de', 'ca'],
+  isMultilingual: false,
+  supportedLanguages: ['en'],
+  // isMultilingual: true,
+  // supportedLanguages: ['en', 'de', 'ca'],
   defaultLanguage: 'en',
 };
 
