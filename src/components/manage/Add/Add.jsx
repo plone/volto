@@ -160,8 +160,9 @@ class Add extends Component {
         : null,
       '@type': this.props.type,
       ...(settings.isMultilingual &&
-        this.props.location.state.translationOf && {
+        this.props.location?.state?.translationOf && {
           translationOf: this.props.location.state.translationOf,
+          language: this.props.location.state.language,
         }),
     });
   }

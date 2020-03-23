@@ -3,20 +3,20 @@
  * @module actions/translations/translations
  */
 
-import { ADD_TRANSLATION } from '@plone/volto/constants/ActionTypes';
+import { GET_TRANSLATION_LOCATOR } from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get translations function.
- * @function addTranslation
+ * @function getTranslationLocator
  * @param {string} url URL type.
  * @returns {Object} Get translations action.
  */
-export function addTranslation(url, lang) {
+export function getTranslationLocator(url, lang) {
   return {
-    type: ADD_TRANSLATION,
+    type: GET_TRANSLATION_LOCATOR,
     request: {
-      op: 'post',
-      path: `${url}/@translations`,
+      op: 'get',
+      path: `${url}/@translation-locator?targetLanguage=${lang}`,
     },
   };
 }

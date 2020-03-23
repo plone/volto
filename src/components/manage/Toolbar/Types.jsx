@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { filter, map } from 'lodash';
 import { FormattedMessage } from 'react-intl';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 const Types = ({ types, pathname, content }) => {
   return types.length > 0 ? (
@@ -32,14 +33,14 @@ const Types = ({ types, pathname, content }) => {
           ))}
         </ul>
         <ul>
-          <li>++++++</li>
           <li>
             <Link
               to={{
-                pathname: `${pathname}/add`,
-                search: '?type=Document',
+                pathname: `${pathname}/create-translation`,
                 state: {
-                  translationOf: content['UID'],
+                  type: content['@type'],
+                  translationOf: flattenToAppURL(content['@id']),
+                  language: 'ca',
                 },
               }}
               className="item"

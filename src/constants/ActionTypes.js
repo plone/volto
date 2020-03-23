@@ -5,7 +5,6 @@
 
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const ADD_MESSAGE = 'ADD_MESSAGE';
-export const ADD_TRANSLATION = 'ADD_TRANSLATION';
 export const COPY = 'COPY';
 export const COPY_CONTENT = 'COPY_CONTENT';
 export const CREATE_CONTENT = 'CREATE_CONTENT';
@@ -30,6 +29,7 @@ export const GET_QUERYSTRING = 'GET_QUERYSTRING';
 export const GET_QUERYSTRING_RESULTS = 'GET_QUERYSTRING_RESULTS';
 export const GET_SCHEMA = 'GET_SCHEMA';
 export const GET_SHARING = 'GET_SHARING';
+export const GET_TRANSLATION_LOCATOR = 'GET_TRANSLATION_LOCATOR';
 export const GET_TYPES = 'GET_TYPES';
 export const GET_USER = 'GET_USER';
 export const GET_VOCABULARY = 'GET_VOCABULARY';
