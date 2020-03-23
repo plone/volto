@@ -1,6 +1,6 @@
 /**
- * Dexterity Content Types component.
- * @module components/manage/Controlpanels/DexterityContentTypes
+ * Content Types component.
+ * @module components/manage/Controlpanels/ContentTypes
  */
 
 import React, { Component } from 'react';
@@ -10,7 +10,8 @@ import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { Helmet } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
-import { Container, Table } from 'semantic-ui-react';
+import { Container, Table, Checkbox } from 'semantic-ui-react';
+
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { Icon, Toolbar } from '@plone/volto/components';
 import { getId } from '@plone/volto/helpers';
@@ -21,18 +22,18 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
-  DexterityContentTypes: {
-    id: 'Dexterity Content Types',
-    defaultMessage: 'Dexterity Content Types',
+  ContentTypes: {
+    id: 'Content Types',
+    defaultMessage: 'Content Types',
   },
 });
 
 /**
- * DexterityContentTypes class.
- * @class DexterityContentTypes
+ * ContentTypes class.
+ * @class ContentTypes
  * @extends Component
  */
-class DexterityContentTypes extends Component {
+class ContentTypes extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -144,17 +145,17 @@ class DexterityContentTypes extends Component {
    */
   render() {
     return (
-      <div id="page-dexterity-content-types">
+      <div id="page-content-types">
         <Helmet
-          title={this.props.intl.formatMessage(messages.DexterityContentTypes)}
+          title={this.props.intl.formatMessage(messages.ContentTypes)}
         />
         <Container>
           <article id="content">
             <header>
               <h1 className="documentFirstHeading">
                 <FormattedMessage
-                  id="Dexterity Content Types"
-                  defaultMessage="Dexterity Content Types"
+                  id="Content Types"
+                  defaultMessage="Content Types"
                 />
               </h1>
             </header>
@@ -162,6 +163,8 @@ class DexterityContentTypes extends Component {
               <Table compact singleLine striped>
                 <Table.Header>
                   <Table.Row>
+                    <Table.HeaderCell>
+                    </Table.HeaderCell>
                     <Table.HeaderCell>
                       <FormattedMessage
                         id="Type name"
@@ -180,15 +183,19 @@ class DexterityContentTypes extends Component {
                   {this.props.items.map(item => (
                     <Table.Row key={item['@id']}>
                       <Table.Cell>
-                        <Link to={`/controlpanel/dexterity-types/${getId(item['@id'])}`}>
+                        <Checkbox
+                          value={item['@id']} />
+                      </Table.Cell>
+                      <Table.Cell>
+                        <Link to={`/controlpanel/content-types/${getId(item['@id'])}`}>
                           {item.title}
                         </Link>
                       </Table.Cell>
                       <Table.Cell>
-                        {item.title}
+                        {item.description}
                       </Table.Cell>
                       <Table.Cell>
-                        0
+                        {item.count}
                       </Table.Cell>
                     </Table.Row>
                   ))}
@@ -230,4 +237,4 @@ export default compose(
     }),
     { },
   ),
-)(DexterityContentTypes);
+)(ContentTypes);

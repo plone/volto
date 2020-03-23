@@ -1,6 +1,6 @@
 /**
- * Dexterity Content Type component.
- * @module components/manage/Controlpanels/DexterityContentType
+ * Content Type component.
+ * @module components/manage/Controlpanels/ContentType
  */
 
 import React, { Component } from 'react';
@@ -27,9 +27,9 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
-  DexterityContentType: {
-    id: 'Dexterity Content Type: {type}',
-    defaultMessage: 'Dexterity Content Type: {type}',
+  ContentType: {
+    id: 'Content Type: {type}',
+    defaultMessage: 'Content Type: {type}',
   },
   Type: {
     id: 'Type: {type}',
@@ -38,11 +38,11 @@ const messages = defineMessages({
 });
 
 /**
- * DexterityContentType class.
- * @class DexterityContentType
+ * ContentType class.
+ * @class ContentType
  * @extends Component
  */
-class DexterityContentType extends Component {
+class ContentType extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -190,9 +190,9 @@ class DexterityContentType extends Component {
       const visual = hasBlocksData(this.props.schema.properties);
 
       return (
-        <div id="page-dexterity-content-types">
+        <div id="page-content-types">
           <Helmet
-            title={this.props.intl.formatMessage(messages.DexterityContentType, {
+            title={this.props.intl.formatMessage(messages.ContentType, {
               type: this.props.type,
             })}
           />
@@ -224,7 +224,7 @@ class DexterityContentType extends Component {
             hideDefaultViewButtons
             inner={
               <Link
-                to="/controlpanel/dexterity-types"
+                to="/controlpanel/content-types"
                 className="item"
               >
                 <Icon
@@ -255,4 +255,4 @@ export default compose(
     }),
     { getSchema },
   ),
-)(DexterityContentType);
+)(ContentType);

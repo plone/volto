@@ -53,8 +53,8 @@ export ContentsTagsModal from '@plone/volto/components/manage/Contents/ContentsT
 export Controlpanel from '@plone/volto/components/manage/Controlpanels/Controlpanel';
 export Controlpanels from '@plone/volto/components/manage/Controlpanels/Controlpanels';
 export ModerateComments from '@plone/volto/components/manage/Controlpanels/ModerateComments';
-export DexterityContentType from '@plone/volto/components/manage/Controlpanels/DexterityContentType';
-export DexterityContentTypes from '@plone/volto/components/manage/Controlpanels/DexterityContentTypes';
+export ContentType from '@plone/volto/components/manage/Controlpanels/ContentType';
+export ContentTypes from '@plone/volto/components/manage/Controlpanels/ContentTypes';
 export UsersControlpanel from '@plone/volto/components/manage/Controlpanels/UsersControlpanel';
 export UsersControlpanelGroups from '@plone/volto/components/manage/Controlpanels/UsersControlpanelGroups';
 export VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';

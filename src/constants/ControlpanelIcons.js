@@ -4,6 +4,7 @@
  */
 
 export default {
+  'content-types': 'block layout',
   'date-and-time': 'calendar',
   language: 'translate',
   mail: 'mail',
