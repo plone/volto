@@ -45,7 +45,7 @@ let locales = {};
 
 if (settings) {
   settings.supportedLanguages.forEach(lang => {
-    import(`~/../locales/${lang}.json`).then(locale => {
+    import('~/../locales/' + lang + '.json').then(locale => {
       locales = { ...locales, [lang]: locale };
     });
   });

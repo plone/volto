@@ -15,7 +15,7 @@ exports[`LanguageSelector renders a language selector component 1`] = `
   </a>
   <a
     className=""
-    href="/http://mypage"
+    href="/ca"
     onClick={[Function]}
     title="Zur deutschen Webseite wechseln"
   >

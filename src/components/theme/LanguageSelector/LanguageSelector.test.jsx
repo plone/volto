@@ -9,7 +9,7 @@ import LanguageSelector from './LanguageSelector';
 jest.mock('~/config', () => ({
   settings: {
     isMultilingual: true,
-    supportedLanguages: ['de', 'es'],
+    supportedLanguages: ['de', 'ca'],
   },
 }));
 
@@ -26,7 +26,7 @@ describe('LanguageSelector', () => {
         data: {
           '@components': {
             translations: {
-              items: [{ language: 'ca', '@id': 'http://mypage' }],
+              items: [{ language: 'ca', '@id': '/ca' }],
             },
           },
         },

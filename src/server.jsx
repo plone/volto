@@ -33,11 +33,13 @@ import configureStore from '@plone/volto/store';
 
 let locales = {};
 
-settings.supportedLanguages.forEach(lang => {
-  import(`~/../locales/${lang}.json`).then(locale => {
-    locales = { ...locales, [lang]: locale };
+if (settings) {
+  settings.supportedLanguages.forEach(lang => {
+    import('~/../locales/' + lang + '.json').then(locale => {
+      locales = { ...locales, [lang]: locale };
+    });
   });
-});
+}
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 

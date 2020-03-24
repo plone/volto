@@ -88,7 +88,8 @@
     "moduleNameMapper": {
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
       "~/config": "<rootDir>/src/config",
-      "~/../locales/(.*)$": "<rootDir>/locales/$1"
+      "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
+      "(.*)/locales/(.*)": "<rootDir>/locales/$2"
     },
     "coverageThreshold": {
       "global": {
