@@ -185,44 +185,50 @@ class RecurrenceWidget extends Component {
     };
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log('didupdate');
-    if (prevProps.formData.start !== this.props.formData.start) {
-      this.setState({
-        rruleSet: this.setRecurrenceStart(
-          this.state.rruleSet,
-          this.props.formData.start,
-        ),
-      });
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log('didupdate');
+  //   if (prevProps.formData.start !== this.props.formData.start) {
+  //     this.setState({
+  //       rruleSet: this.setRecurrenceStart(
+  //         this.state.rruleSet,
+  //         this.props.formData.start,
+  //       ),
+  //     });
+  //   }
+  // }
 
-  shouldComponentUpdate(nextProps, nextSate) {
-    console.log('shouldComponentUpdate', nextProps);
-    return nextProps.formData.start !== this.props.formData.start;
-  }
+  // shouldComponentUpdate(nextProps, nextSate) {
+  //   console.log('shouldComponentUpdate', nextProps);
+  //   return nextProps.formData.start !== this.props.formData.start;
+  // }
 
   editRecurrence = () => {
-    // let rruleSet = this.state.rruleSet;
-    // if (this.props.formData?.start) {
-    //   this.setState({
-    //     rruleSet: this.setRecurrenceStart(rruleSet, this.props.formData.start),
-    //   });
-    // }
-    // return rruleSet;
+    console.log('editRecurrence ', this.props.formData);
+    this.setRecurrenceStartEnd();
   };
 
-  setRecurrenceStart = (rruleSet, start) => {
-    console.log('set dtstart', start);
-    var _start = this.getUTCDate(start)
+  setRecurrenceStartEnd = () => {
+    const start = this.props.formData?.start;
+    let _start = this.getUTCDate(start)
       .set({
         hour: 0,
         minute: 0,
         second: 0,
       })
       .toDate();
-    rruleSet = this.updateRruleSet(rruleSet, null, 'dtstart', _start);
-    return rruleSet;
+
+    this.setState(prevState => {
+      // console.log('prevState', prevState);
+      let rruleSet = prevState.rruleSet;
+      const formValues = this.getFormValues(rruleSet); //to set default values
+
+      rruleSet = this.updateRruleSet(rruleSet, formValues, 'dtstart', _start);
+      return {
+        ...prevState,
+        rruleSet,
+        formValues,
+      };
+    });
   };
 
   getUTCDate = date => {
@@ -264,8 +270,16 @@ class RecurrenceWidget extends Component {
     //default
     let formValues = {
       freq: FREQUENCES.DAILY,
+      interval: 1,
     };
+    formValues = this.changeField(
+      formValues,
+      'recurrenceEnds',
+      this.props.formData.end ? 'until' : 'count',
+    );
+
     const rrule = rruleSet.rrules()[0];
+
     if (rrule) {
       var freq = this.getFreq(rrule.options.freq);
 
@@ -382,11 +396,16 @@ class RecurrenceWidget extends Component {
 
   updateRruleSet = (rruleSet, formValues, field, value) => {
     var rruleOptions = this.formValuesToRRuleOptions(formValues);
-
+    console.log('rruleOptions', rruleOptions);
+    console.log('updateRruleSet', rruleSet.dtstart(), rruleSet);
     var dstart =
       field === 'dtstart'
         ? value
-        : Object.assign(new Date(), rruleSet.dtstart());
+        : rruleSet.dtstart()
+        ? rruleSet.dtstart()
+        : moment()
+            .utc()
+            .toDate();
     var exdates =
       field === 'exdates' ? value : Object.assign([], rruleSet.exdates());
 
@@ -401,12 +420,18 @@ class RecurrenceWidget extends Component {
     exdates.map(ex => set.exdate(ex));
     rdates.map(r => set.rdate(r));
 
+    console.log(set.all());
     return set;
   };
 
   getDefaultUntil = freq => {
+    console.log('getDefaultUntil', this.props.formData);
     var end = this.props.formData?.end
-      ? new Date(this.props.formData.end)
+      ? toISOString(
+          moment(this.props.formData.end)
+            .utc()
+            .toDate(),
+        )
       : null;
     var tomorrow = toISOString(
       moment()
@@ -463,7 +488,10 @@ class RecurrenceWidget extends Component {
   changeField = (formValues, field, value) => {
     console.log('field', field, 'value', value);
     //get weekday from state.
-    var byweekday = this.state.rruleSet.rrules()[0].origOptions.byweekday;
+    var byweekday =
+      this.state?.rruleSet?.rrules().length > 0
+        ? this.state.rruleSet.rrules()[0].origOptions.byweekday
+        : null;
     var currWeekday = this.getWeekday(moment().day() - 1);
     var currMonth = moment().month() + 1;
 
@@ -553,8 +581,6 @@ class RecurrenceWidget extends Component {
 
       case 'monthOfTheYear':
         formValues.bymonth = [value];
-        // var d = this.state.rruleSet.rrules()[0].origOptions.byweekday;
-        // formValues.byweekday = d;
         break;
 
       case 'monthly':
