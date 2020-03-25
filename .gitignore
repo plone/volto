@@ -31,6 +31,7 @@ lighthouse-report.html
 /api/src/
 /api/notebook/env/
 api/.Python
+api/pyvenv.cfg
 api/include
 api/lib
 api/pip-selfcheck.json

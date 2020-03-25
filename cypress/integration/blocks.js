@@ -648,6 +648,35 @@ if (Cypress.env('API') !== 'guillotina') {
       //   //   // guillotina
       //   //   cy.contains(expected);
       // }
+
+    it('Add Table of Contents block', () => {
+      //Add H2
+      cy.get('.block.inner.text .public-DraftEditor-content')
+        .type('expectedH2')
+        .setSelection('expectedH2');
+      cy.get(
+        '#page-edit .draftJsToolbar__buttonWrapper__1Dmqh:nth-of-type(5)',
+      ).click();
+      cy.get('.block.inner.text .public-DraftEditor-content')
+        .click()
+        .type(' {enter}');
+
+      //Add TOC Block
+      cy.get('.ui.basic.icon.button.block-add-button').click();
+      cy.get('.title')
+        .contains('Common')
+        .click();
+      cy.get('.ui.basic.icon.button.toc')
+        .contains('Table of Contents')
+        .click();
+
+      //Save
+      cy.get('#toolbar-save').click();
+
+      //View
+      cy.get('.ui.list a').contains('expectedH2');
+      cy.get('.ui.list div').should('have.class', 'header-two');
+
     });
   });
 }

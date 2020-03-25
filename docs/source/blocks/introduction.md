@@ -10,7 +10,7 @@ By default, Volto ships with the most basic set of blocks: Title, Text, Image, V
 !!! note
     Volto Blocks are not enabled by default in Plone content types, in order to enable this feature, you should enable provided behavior in a per content type basis.
     The programmatic name of the behavior is `volto.blocks`, or `Blocks` in the Behavior tab of the Dexterity Content Types control panel.
-    If you are using the `kitconcept.voltodemo` package, it sets it up for you for the `Document` content type.
+    If you are using the `kitconcept.volto` package, it sets it up for you for the `Document` content type.
 
 ## How to manually enable Blocks on a content type
 
