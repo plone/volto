@@ -9,7 +9,7 @@ import { settings } from '~/config';
 import {
   RESET_SEARCH_CONTENT,
   SEARCH_CONTENT,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   error: null,

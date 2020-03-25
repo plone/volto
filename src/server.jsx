@@ -10,6 +10,7 @@ import { keys } from 'lodash';
 import Raven from 'raven';
 import cookie, { plugToRequest } from 'react-cookie';
 import locale from 'locale';
+import { detect } from 'detect-browser';
 
 import routes from '~/routes';
 import nlLocale from '~/../locales/nl.json';
@@ -19,6 +20,7 @@ import jaLocale from '~/../locales/ja.json';
 import ptLocale from '~/../locales/pt.json';
 import ptBRLocale from '~/../locales/pt_BR.json';
 import esLocale from '~/../locales/es.json';
+import itLocale from '~/../locales/it.json';
 
 import {
   Html,
@@ -26,15 +28,15 @@ import {
   persistAuthToken,
   generateSitemap,
   getAPIResourceWithAuth,
-} from './helpers';
+} from '@plone/volto/helpers';
 
-import userSession from './reducers/userSession/userSession';
+import userSession from '@plone/volto/reducers/userSession/userSession';
 
-import ErrorPage from './error';
+import ErrorPage from '@plone/volto/error';
 
-import languages from './constants/Languages';
+import languages from '@plone/volto/constants/Languages';
 
-import configureStore from './store';
+import configureStore from '@plone/volto/store';
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
@@ -47,6 +49,7 @@ const locales = {
   pt: ptLocale,
   pt_BR: ptBRLocale,
   es: esLocale,
+  it: itLocale,
 };
 
 const server = express();
@@ -59,6 +62,8 @@ server
 
     const url = req.originalUrl || req.url;
     const location = parseUrl(url);
+
+    const browserdetect = detect(req.headers['user-agent']);
 
     const lang = new locale.Locales(
       cookie.load('lang') || req.headers['accept-language'],
@@ -76,6 +81,7 @@ server
         locale: lang,
         messages: locales[lang],
       },
+      browserdetect,
     };
     const history = createMemoryHistory({
       initialEntries: [req.url],
@@ -132,7 +138,13 @@ server
           }
         })
         .catch(error => {
-          const errorPage = <ErrorPage message={error.message} />;
+          const errorPage = (
+            <Provider store={store}>
+              <StaticRouter context={{}} location={req.url}>
+                <ErrorPage message={error.message} />
+              </StaticRouter>
+            </Provider>
+          );
 
           if (process.env.SENTRY_DSN) {
             Raven.captureException(error.message, {

@@ -14,7 +14,7 @@ import cx from 'classnames';
  * @extends Component
  */
 const View = ({ data }) => (
-  <p
+  <div
     className={cx(
       'block video align',
       {
@@ -65,13 +65,20 @@ const View = ({ data }) => (
                 autoplay={false}
               />
             ) : (
-              <div className="invalidVideoFormat" />
+              <>
+                {data.url.match('.mp4') ? (
+                  // eslint-disable-next-line jsx-a11y/media-has-caption
+                  <video src={data.url} controls type="video/mp4" />
+                ) : (
+                  <div className="invalidVideoFormat" />
+                )}
+              </>
             )}
           </>
         )}
       </div>
     )}
-  </p>
+  </div>
 );
 
 /**

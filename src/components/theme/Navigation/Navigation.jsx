@@ -12,9 +12,9 @@ import { Link } from 'react-router-dom';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
-import { getBaseUrl } from '../../../helpers';
+import { getBaseUrl } from '@plone/volto/helpers';
 
-import { getNavigation } from '../../../actions';
+import { getNavigation } from '@plone/volto/actions';
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -80,7 +80,10 @@ class Navigation extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.props.pathname) {
+    if (
+      nextProps.pathname !== this.props.pathname ||
+      nextProps.pathname === '' // We are in the root (probably in the login/logout form)
+    ) {
       this.props.getNavigation(getBaseUrl(nextProps.pathname));
     }
   }
@@ -127,7 +130,7 @@ class Navigation extends Component {
   render() {
     return (
       <nav className="navigation">
-        <div className="hamburger-wrapper mobile only">
+        <div className="hamburger-wrapper mobile tablet only">
           <button
             className={cx('hamburger hamburger--collapse', {
               'is-active': this.state.isMobileMenuOpen,
@@ -165,7 +168,7 @@ class Navigation extends Component {
           className={
             this.state.isMobileMenuOpen
               ? 'open'
-              : 'tablet computer large screen widescreen only'
+              : 'computer large screen widescreen only'
           }
           onClick={this.closeMobileMenu}
         >

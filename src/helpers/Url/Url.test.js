@@ -1,6 +1,12 @@
 import { settings } from '~/config';
 
-import { flattenToAppURL, getBaseUrl, getIcon, getView } from './Url';
+import {
+  flattenToAppURL,
+  flattenHTMLToAppURL,
+  getBaseUrl,
+  getIcon,
+  getView,
+} from './Url';
 
 describe('Url', () => {
   describe('getBaseUrl', () => {
@@ -10,8 +16,30 @@ describe('Url', () => {
     it('can remove a view name from a relative url', () => {
       expect(getBaseUrl('/contents')).toBe('');
     });
+    it('can remove a view name from a relative url', () => {
+      expect(getBaseUrl('/edit')).toBe('');
+    });
+    it('can remove a view name from a relative url', () => {
+      expect(getBaseUrl('/register')).toBe('');
+    });
+    it('can remove a view name from a relative url', () => {
+      expect(getBaseUrl('/password-reset')).toBe('');
+    });
+    it('can remove a view name from a relative url', () => {
+      expect(getBaseUrl('/password-reset/token')).toBe('');
+    });
     it('can remove a view name from a controlpanel url', () => {
       expect(getBaseUrl('/controlpanel/date-time')).toBe('');
+    });
+    it('it does not match inner parts, only last ones', () => {
+      expect(getBaseUrl('/bla/doh/history/doh/bla')).toBe(
+        '/bla/doh/history/doh/bla',
+      );
+    });
+    it('it does not match inner parts, only last ones II', () => {
+      expect(getBaseUrl('/bla/doh/sharing-my-test/doh/bla')).toBe(
+        '/bla/doh/sharing-my-test/doh/bla',
+      );
     });
   });
 
@@ -58,6 +86,14 @@ describe('Url', () => {
   describe('flattenToAppURL', () => {
     it('flattens a given URL to the app URL', () => {
       expect(flattenToAppURL(`${settings.apiPath}/edit`)).toBe('/edit');
+    });
+  });
+  describe('flattenHTMLToAppURL', () => {
+    it('flattens all occurences of the api URL from an html snippet', () => {
+      const html = `<a href="${settings.apiPath}/foo/bar">An internal link</a><a href="${settings.apiPath}/foo/baz">second link</a>`;
+      expect(flattenHTMLToAppURL(html)).toBe(
+        '<a href="/foo/bar">An internal link</a><a href="/foo/baz">second link</a>',
+      );
     });
   });
 });

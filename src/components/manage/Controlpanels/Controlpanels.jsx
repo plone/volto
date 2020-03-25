@@ -14,15 +14,15 @@ import { Helmet } from '@plone/volto/helpers';
 import { Container, Grid, Header, Icon, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import Icons from '../../../constants/ControlpanelIcons';
-import { listControlpanels } from '../../../actions';
+import Icons from '@plone/volto/constants/ControlpanelIcons';
+import { listControlpanels } from '@plone/volto/actions';
 import {
   Icon as IconNext,
   Toolbar,
   VersionOverview,
-} from '../../../components';
+} from '@plone/volto/components';
 
-import backSVG from '../../../icons/back.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   sitesetup: {
@@ -107,7 +107,7 @@ class Controlpanels extends Component {
     return (
       <div className="view-wrapper">
         <Helmet title={this.props.intl.formatMessage(messages.sitesetup)} />
-        <Container>
+        <Container className="controlpanel">
           <Segment.Group raised>
             <Segment className="primary">
               <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />

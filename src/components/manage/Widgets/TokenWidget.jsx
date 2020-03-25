@@ -15,14 +15,14 @@ import {
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers';
-import { getVocabulary } from '../../../actions';
+import { getVocabulary } from '@plone/volto/actions';
 
 import {
   Option,
   DropdownIndicator,
   selectTheme,
   customSelectStyles,
-} from './SelectStyling';
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 /**
  * TokenWidget component class.
@@ -145,7 +145,7 @@ class TokenWidget extends Component {
     this.setState({ selectedOption });
     this.props.onChange(
       this.props.id,
-      selectedOption.map(item => item.value),
+      selectedOption ? selectedOption.map(item => item.value) : null,
     );
   }
 

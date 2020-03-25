@@ -19,7 +19,7 @@ import searchSVG from '@plone/volto/icons/zoom.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import imageSVG from '@plone/volto/icons/image.svg';
 
-import ObjectBrowserNav from './ObjectBrowserNav';
+import ObjectBrowserNav from '@plone/volto/components/manage/Sidebar/ObjectBrowserNav';
 
 const messages = defineMessages({
   SearchInputPlaceholder: {
@@ -128,6 +128,7 @@ class ObjectBrowserBody extends Component {
           'path.depth': 1,
           sort_on: 'getObjPositionInParent',
           metadata_fields: '_all',
+          b_size: 1000,
         },
         `${this.props.block}-${mode}`,
       );
@@ -138,6 +139,7 @@ class ObjectBrowserBody extends Component {
           'path.depth': 1,
           sort_on: 'getObjPositionInParent',
           metadata_fields: '_all',
+          b_size: 1000,
         },
         `${this.props.block}-${mode}`,
       );
@@ -177,6 +179,7 @@ class ObjectBrowserBody extends Component {
         'path.depth': 1,
         sort_on: 'getObjPositionInParent',
         metadata_fields: '_all',
+        b_size: 1000,
       },
       `${this.props.block}-${this.props.mode}`,
     );
@@ -214,7 +217,7 @@ class ObjectBrowserBody extends Component {
         );
   };
 
-  onSelectItem = url => {
+  onSelectItem = (url, title) => {
     const { block, data, mode, dataName, onChangeBlock } = this.props;
 
     const updateState = mode => {
@@ -247,6 +250,7 @@ class ObjectBrowserBody extends Component {
       onChangeBlock(block, {
         ...data,
         url: `${settings.apiPath}${url}`,
+        alt: title,
       });
     } else if (mode === 'link') {
       onChangeBlock(block, {
@@ -270,10 +274,10 @@ class ObjectBrowserBody extends Component {
         this.navigateTo(item['@id']);
       }
       if (settings.imageObjects.includes(item['@type'])) {
-        this.onSelectItem(item['@id']);
+        this.onSelectItem(item['@id'], item.title);
       }
     } else {
-      this.onSelectItem(item['@id']);
+      this.onSelectItem(item['@id'], item.title);
     }
   };
 
@@ -283,11 +287,11 @@ class ObjectBrowserBody extends Component {
         this.navigateTo(item['@id']);
       }
       if (settings.imageObjects.includes(item['@type'])) {
-        this.onSelectItem(item['@id']);
+        this.onSelectItem(item['@id'], item.title);
         this.props.closeObjectBrowser();
       }
     } else {
-      this.onSelectItem(item['@id']);
+      this.onSelectItem(item['@id'], item.title);
       this.props.closeObjectBrowser();
     }
   };

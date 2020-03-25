@@ -50,17 +50,7 @@ export default (config = {}) => {
 
   const { theme = defaultTheme, placeholder, Link, linkTarget } = config;
 
-  const store = {
-    getEditorState: undefined,
-    setEditorState: undefined,
-  };
-
   return {
-    initialize: ({ getEditorState, setEditorState }) => {
-      store.getEditorState = getEditorState;
-      store.setEditorState = setEditorState;
-    },
-
     decorators: [
       {
         strategy: linkStrategy,
@@ -76,10 +66,9 @@ export default (config = {}) => {
 
     LinkButton: decorateComponentWithProps(LinkButton, {
       ownTheme: theme,
-      store,
       placeholder,
-      onRemoveLinkAtSelection: () =>
-        store.setEditorState(removeEntity(store.getEditorState())),
+      onRemoveLinkAtSelection: (setEditorState, getEditorState) =>
+        setEditorState(removeEntity(getEditorState())),
     }),
   };
 };

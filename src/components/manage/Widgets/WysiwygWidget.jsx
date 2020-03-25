@@ -6,6 +6,9 @@
 import React, { Component } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import Editor from 'draft-js-plugins-editor';
 import { stateFromHTML } from 'draft-js-import-html';
 import { convertToRaw, EditorState } from 'draft-js';
@@ -14,6 +17,8 @@ import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
 import { map } from 'lodash';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl } from 'react-intl';
+import configureStore from 'redux-mock-store';
+import { MemoryRouter } from 'react-router-dom';
 
 import { settings } from '~/config';
 
@@ -202,17 +207,29 @@ class WysiwygWidget extends Component {
    */
   onChange(editorState) {
     this.setState({ editorState });
+    const mockStore = configureStore();
+
     this.props.onChange(this.props.id, {
       'content-type': this.props.value
         ? this.props.value['content-type']
         : 'text/html',
       encoding: this.props.value ? this.props.value.encoding : 'utf8',
       data: ReactDOMServer.renderToStaticMarkup(
-        redraft(
-          convertToRaw(editorState.getCurrentContent()),
-          settings.ToHTMLRenderers,
-          settings.ToHTMLOptions,
-        ),
+        <Provider
+          store={mockStore({
+            userSession: {
+              token: this.props.token,
+            },
+          })}
+        >
+          <MemoryRouter>
+            {redraft(
+              convertToRaw(editorState.getCurrentContent()),
+              settings.ToHTMLRenderers,
+              settings.ToHTMLOptions,
+            )}
+          </MemoryRouter>
+        </Provider>,
       ),
     });
   }
@@ -301,17 +318,21 @@ class WysiwygWidget extends Component {
               )}
               <div style={{ boxSizing: 'initial' }}>
                 {this.props.onChange ? (
-                  <Editor
-                    id={`field-${id}`}
-                    onChange={this.onChange}
-                    editorState={this.state.editorState}
-                    plugins={[
-                      this.state.inlineToolbarPlugin,
-                      ...settings.richTextEditorPlugins,
-                    ]}
-                    blockRenderMap={settings.extendedBlockRenderMap}
-                    blockStyleFn={settings.blockStyleFn}
-                  />
+                  <>
+                    <Editor
+                      id={`field-${id}`}
+                      onChange={this.onChange}
+                      editorState={this.state.editorState}
+                      plugins={[
+                        this.state.inlineToolbarPlugin,
+                        ...settings.richTextEditorPlugins,
+                      ]}
+                      blockRenderMap={settings.extendedBlockRenderMap}
+                      blockStyleFn={settings.blockStyleFn}
+                      customStyleMap={settings.customStyleMap}
+                    />
+                    {this.props.onChange && <InlineToolbar />}
+                  </>
                 ) : (
                   <div className="DraftEditor-root" />
                 )}
@@ -326,15 +347,22 @@ class WysiwygWidget extends Component {
           {description && (
             <Grid.Row stretched>
               <Grid.Column stretched width="12">
-                <span className="help">{description}</span>
+                <p className="help">{description}</p>
               </Grid.Column>
             </Grid.Row>
           )}
-          {this.props.onChange && <InlineToolbar />}
         </Grid>
       </Form.Field>
     );
   }
 }
 
-export default injectIntl(WysiwygWidget);
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      token: state.userSession.token,
+    }),
+    {},
+  ),
+)(WysiwygWidget);

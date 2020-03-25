@@ -7,18 +7,18 @@ and flexibility beyond using the plain Volto project to build a site.
 
 We can build Volto add-on products and make them available as published
 packages (from public/private npm repositories), or as checkouts from git
-repositories using `mr-developer` helper.
+repositories using `mrs-developer` helper package.
 
 We can use them to easily reuse components across projects, like custom blocks,
 views, widgets, or any other Volto or React artifact.
 
-### Mr. Developer
+### Mrs. Developer
 
-Eric Brehault ported this amazing tool from Python, which provides a way to pull
+Eric Brehault ported this amazing Python tool, which provides a way to pull
 a package from git and set it up as a dependency for the current project
 codebase.
 
-https://www.npmjs.com/package/mr-developer
+https://www.npmjs.com/package/mrs-developer
 
 By doing this, you can develop both the project and the add-on product as if they
 were both part of the current codebase. Once the add-on development is done,
@@ -33,26 +33,26 @@ final ones from the very beginning.
 ### Add mr-developer dependency and related script
 
 ```
-$ yarn add mr-developer
+$ yarn add mrs-developer
 ```
 
 and in `package.json`:
 
 ```json
   "scripts": {
-    "develop": "mrdeveloper --config=jsconfig.json --no-config --output=addons",
+    "develop": "missdev --config=jsconfig.json --output=addons",
     ...
   }
 ```
 
-we can configure `mr-developer` to use any directory that you want. Here we are
+we can configure `mrs-developer` to use any directory that you want. Here we are
 telling it to create the directory `src/addons` and put the packages managed by
-`mr-developer` inside.
+`mrs-developer` inside.
 
-### mr.developer.json
+### mrs.developer.json
 
-This is the configuration file that instructs `mr-developer` from where it has
-to pull the packages. So, in `mr.developer.json`:
+This is the configuration file that instructs `mrs-developer` from where it has
+to pull the packages. So, in `mrs.developer.json`:
 
 ```json
 {
@@ -62,13 +62,12 @@ to pull the packages. So, in `mr.developer.json`:
 }
 ```
 
-If you want to know more about `mr-developer` config options, please refer to
-[its npm page](https://www.npmjs.com/package/mr-developer).
+If you want to know more about `mrs-developer` config options, please refer to
+[its npm page](https://www.npmjs.com/package/mrs-developer).
 
 ### jsconfig.json
 
-You can let `mr-developer` create this file for you or create it manually.
-By default, the script in the above section will *not* create it.
+You can let `mrs-developer` create this file for you or create it manually.
 
 ```json
 {

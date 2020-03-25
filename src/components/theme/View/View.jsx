@@ -12,9 +12,13 @@ import { injectIntl } from 'react-intl';
 import qs from 'query-string';
 import { views } from '~/config';
 
-import { Comments, Tags, Toolbar } from '../../../components';
-import { listActions, getContent } from '../../../actions';
-import { BodyClass, getBaseUrl, getLayoutFieldname } from '../../../helpers';
+import { Comments, Tags, Toolbar } from '@plone/volto/components';
+import { listActions, getContent } from '@plone/volto/actions';
+import {
+  BodyClass,
+  getBaseUrl,
+  getLayoutFieldname,
+} from '@plone/volto/helpers';
 
 /**
  * View container class.
@@ -175,7 +179,9 @@ class View extends Component {
   cleanViewName = dirtyDisplayName =>
     dirtyDisplayName
       .replace('Connect(', '')
+      .replace('injectIntl(', '')
       .replace(')', '')
+      .replace('connect(', '')
       .toLowerCase();
 
   /**
@@ -215,11 +221,7 @@ class View extends Component {
         <BodyClass
           className={
             RenderedView.displayName
-              ? `view-${this.cleanViewName(
-                  RenderedView.displayName
-                    .replace('injectIntl(', '')
-                    .toLowerCase(),
-                )}`
+              ? `view-${this.cleanViewName(RenderedView.displayName)}`
               : null
           }
         />

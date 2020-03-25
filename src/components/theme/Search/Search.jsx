@@ -15,9 +15,9 @@ import { Portal } from 'react-portal';
 import { Container } from 'semantic-ui-react';
 import qs from 'query-string';
 
-import { searchContent } from '../../../actions';
+import { searchContent } from '@plone/volto/actions';
 
-import { SearchTags, Toolbar } from '../../../components';
+import { SearchTags, Toolbar } from '@plone/volto/components';
 
 const toSearchOptions = (searchableText, subject, path) => {
   return {

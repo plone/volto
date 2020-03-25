@@ -1,5 +1,8 @@
 import { getHistory, revertHistory } from './history';
-import { GET_HISTORY, REVERT_HISTORY } from '../../constants/ActionTypes';
+import {
+  GET_HISTORY,
+  REVERT_HISTORY,
+} from '@plone/volto/constants/ActionTypes';
 
 describe('History action', () => {
   describe('getHistory', () => {

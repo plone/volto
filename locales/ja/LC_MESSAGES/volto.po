@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2019-11-15 12:06+0900\n"
+"PO-Revision-Date: 2020-03-19 14:02+0900\n"
 "Last-Translator: Manabu TERADA <terada@cmscom.jp>\n"
 "Language: ja\n"
 "Language-Team: Plone Japanese Team <https://github.com/plonejp>\n"
@@ -44,7 +44,7 @@ msgstr "アクション"
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 msgid "Add"
-msgstr ""
+msgstr "追加"
 
 #: components/manage/Toolbar/Types
 msgid "Add Content"
@@ -61,6 +61,10 @@ msgstr "説明を追加..."
 #: components/manage/Form/Form
 msgid "Add block..."
 msgstr "ブロックを追加..."
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Add criteria"
+msgstr "基準を追加"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Add field"
@@ -90,7 +94,10 @@ msgstr "グループに追加"
 msgid "Add {type}"
 msgstr "{type} を追加"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Alignment"
 msgstr "配置"
 
@@ -98,7 +105,8 @@ msgstr "配置"
 msgid "All"
 msgstr "すべて"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Alt text"
 msgstr "代替テキスト"
 
@@ -108,7 +116,7 @@ msgstr "このフィールドを削除しますか？"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Are you sure you want to delete this fieldset including all fields?"
-msgstr ""
+msgstr "Are you sure you want to delete this fieldset including all fields? (未翻訳)"
 
 #: components/manage/Contents/Contents
 msgid "Ascending"
@@ -137,13 +145,17 @@ msgstr "比較元"
 msgid "Block"
 msgstr "ブロック"
 
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Block style"
+msgstr "ブロックのスタイル"
+
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr "メールアドレスとパスワードは大文字小文字が区別されます。Caps Lockキーの状態に注意してください。"
 
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Breadcrumbs"
-msgstr ""
+msgstr "パンくず"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Browse"
@@ -175,10 +187,9 @@ msgid "Cell"
 msgstr "セル"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Center"
-msgstr ""
+msgstr "中央"
 
 #: components/manage/History/History
 msgid "Change Note"
@@ -208,7 +219,7 @@ msgstr "チェックボックス"
 
 #: components/manage/Widgets/SelectWidget
 msgid "Choices"
-msgstr ""
+msgstr "選択"
 
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Choose Image"
@@ -218,13 +229,21 @@ msgstr "イメージを選択"
 msgid "Choose Target"
 msgstr "ターゲットを選択"
 
+#: components/theme/View/ImageView
+msgid "Click to download full sized image"
+msgstr "クリックしてフルサイズ画像をダウンロード"
+
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
-msgstr ""
+msgstr "閉じる"
 
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "メニューを閉じる"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Collection"
+msgstr "コレクション"
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
@@ -253,6 +272,14 @@ msgstr "お問い合わせ"
 msgid "Contact form"
 msgstr "お問い合わせフォーム"
 
+#: components/manage/Blocks/Listing/Edit
+msgid "Contained items"
+msgstr "含まれるアイテム"
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Content"
+msgstr "コンテント"
+
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
@@ -272,9 +299,21 @@ msgstr "著作権"
 msgid "Copyright statement or other rights information on this item."
 msgstr "このアイテムの著作権宣言文または他の権利情報"
 
+#: components/manage/Contents/Contents
+msgid "Created on"
+msgstr "作成日"
+
+#: components/manage/Contents/Contents
+msgid "Creator"
+msgstr "作成者"
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
 msgstr "作成者"
+
+#: components/manage/Blocks/Listing/QuerystringWidget
+msgid "Criteria"
+msgstr "基準"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Current password"
@@ -374,7 +413,7 @@ msgstr "{license} の下で配布されています。"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Divide each row into separate cells"
-msgstr ""
+msgstr "列の区切り線を表示"
 
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
@@ -403,7 +442,7 @@ msgstr "ここにファイルをドラッグ、または「参照」ボタンを
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/Register/Register
 msgid "E-mail"
-msgstr ""
+msgstr "E-mail"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "E-mail addresses do not match."
@@ -441,31 +480,35 @@ msgstr "メール"
 msgid "Email sent"
 msgstr "メール送信"
 
+#: components/manage/Blocks/Maps/Edit
+msgid "Embed code error, please follow the instructions and try again."
+msgstr "Embedコードがエラーです。説明を読んで再度実行してください。"
+
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
-msgstr ""
+msgstr "埋め込まれたGoogle Maps"
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Enter Map URL"
-msgstr "地図URLを入力"
+#: components/manage/Contents/Contents
+msgid "End Date"
+msgstr "終了日付"
 
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
 msgstr "URLまたはタイトルを入力"
 
-#: components/manage/Blocks/Video/Edit
-msgid "Enter Video URL"
-msgstr "ビデオURLを入力"
-
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-msgstr ""
+msgstr "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere. (未翻訳)"
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/Register/Register
 msgid "Enter full name, e.g. John Smith."
 msgstr "氏名（フルネーム）を入力。例： Hanako Suzuki や 山田太郎 "
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Enter map Embed Code"
+msgstr "地図のEmbedコードを入力"
 
 #: components/manage/Preferences/ChangePassword
 msgid "Enter your current password."
@@ -489,19 +532,32 @@ msgstr "エラー"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Exclude from navigation"
-msgstr ""
+msgstr "ナビゲーションに含まない"
+
+#: components/manage/Contents/Contents
+msgid "Excluded from navigation"
+msgstr "ナビゲーションから除く"
 
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
-msgstr ""
+msgstr "サイドバーを開く"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
-msgstr "ナビゲーションに含まない"
+msgstr "満了日付"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Contents/Contents
+msgid "Expiration date"
+msgstr "満了日付"
+
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
 msgstr "外部URL"
+
+#: components/manage/Toolbar/Toolbar
+msgid "File"
+msgstr "ファイル"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
@@ -517,17 +573,24 @@ msgstr "フィルター..."
 
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
-msgstr ""
+msgstr "テーブルのセル幅を固定"
+
+#: components/manage/Contents/Contents
+msgid "Folder"
+msgstr "フォルダ"
+
+#: components/theme/Forbidden/Forbidden
+msgid "Forbidden"
+msgstr "Forbidden(未翻訳)"
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
 msgstr "メールアドレス"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Full"
-msgstr ""
+msgstr "フルサイズ"
 
 #: components/manage/Preferences/PersonalInformation
 #: components/theme/PasswordReset/PasswordReset
@@ -541,19 +604,19 @@ msgstr "氏名"
 
 #: components/theme/Footer/Footer
 msgid "GNU GPL license"
-msgstr ""
+msgstr "GNU GPL license"
 
 #: components/manage/Sharing/Sharing
 msgid "Global role"
-msgstr ""
+msgstr "グローバルロール"
 
 #: components/manage/Blocks/Maps/Edit
 msgid "Google Maps Embedded Block"
-msgstr ""
+msgstr "Google Maps Embedded Block (未翻訳)"
 
 #: components/manage/Sharing/Sharing
 msgid "Group"
-msgstr ""
+msgstr "グループ"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Group created"
@@ -570,7 +633,7 @@ msgstr "グループ"
 #: components/manage/History/History
 #: components/manage/Toolbar/More
 msgid "History"
-msgstr ""
+msgstr "履歴"
 
 #: components/manage/History/History
 msgid "History of {title}"
@@ -585,27 +648,33 @@ msgstr "ホーム"
 msgid "Home page"
 msgstr "ホーム"
 
+#: components/manage/Contents/Contents
+msgid "ID"
+msgstr "ID"
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If selected, this item will not appear in the navigation tree"
-msgstr ""
+msgstr "選ばれると、このアイテムはナビゲーションツリー内に現れません。"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If this date is in the future, the content will not show up in listings and searches until this date."
-msgstr ""
+msgstr "日時が未来なら、このコンテンツはこの日時までリストアップや検索対象になりません。"
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
-msgstr ""
+msgstr "確かに正しいURLを入力したのにエラーになってしまう場合は、 {site_admin} に連絡してください。"
 
 #: components/theme/Login/Login
 msgid "If you have forgotten your password, {forgotpassword}"
-msgstr ""
+msgstr "パスワードを忘れたら、 {forgotpassword}"
 
 #: components/theme/Login/Login
 msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr ""
+msgstr "アカウントを持っていない場合、ここが {registrationform} です。"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "画像"
 
@@ -619,7 +688,7 @@ msgstr "上位レベルからパーミッションを継承する"
 
 #: components/manage/Sharing/Sharing
 msgid "Inherited value"
-msgstr ""
+msgstr "継承された値"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Insert col after"
@@ -637,6 +706,10 @@ msgstr "下に行を追加"
 msgid "Insert row before"
 msgstr "上に行を追加"
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Item batch size"
+msgstr "1ページ表示件数"
+
 #: components/manage/Contents/Contents
 msgid "Item(s) copied."
 msgstr "アイテムがコピーされました。"
@@ -653,29 +726,56 @@ msgstr "アイテムがペーストされました。"
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Items must be unique."
-msgstr ""
+msgstr "アイテムはユニークである必要があります。"
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Language"
 msgstr "言語"
 
+#: components/manage/Contents/Contents
+msgid "Last comment date"
+msgstr "最終コメント日付"
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "最終変更"
 
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "Lead Image"
+msgstr "リード画像"
+
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
-msgstr ""
+msgstr "左"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Toolbar/Toolbar
+msgid "Link"
+msgstr "リンク"
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Link more"
+msgstr "「もっと見る」の設定"
+
+#: components/manage/Blocks/Listing/ListingMore
+msgid "Link title"
+msgstr "リンクタイトル"
+
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Listing/ListingMore
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
 msgstr "リンク先"
 
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Listing"
+msgstr "リスティング"
+
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
-msgstr "位置"
+msgstr "場所"
 
 #: components/theme/Login/Login
 msgid "Log In"
@@ -688,7 +788,7 @@ msgstr "ログイン"
 
 #: components/theme/Login/Login
 msgid "Login"
-msgstr ""
+msgstr "ログイン"
 
 #: components/theme/Login/Login
 msgid "Login Failed"
@@ -700,15 +800,15 @@ msgstr "ログイン名"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
-msgstr ""
+msgstr "コンパクトな表示"
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Maps data error"
-msgstr ""
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Map"
+msgstr "地図"
 
-#: components/manage/Blocks/Maps/Edit
-msgid "Maps instructions"
-msgstr ""
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "Maps URL"
+msgstr "地図URL"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -717,11 +817,11 @@ msgstr "メッセージ"
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
-msgstr ""
+msgstr "最小サイズは {len}　。"
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
-msgstr ""
+msgstr "コメントのモデレート"
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Moderate comments"
@@ -729,7 +829,7 @@ msgstr "コメントのモデレート"
 
 #: components/manage/Toolbar/Toolbar
 msgid "More"
-msgstr ""
+msgstr "もっと見る"
 
 #: components/manage/Contents/ContentsItem
 msgid "Move to bottom of folder"
@@ -741,7 +841,7 @@ msgstr "フォルダーの一番上に移動"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "My email address is"
-msgstr ""
+msgstr "私のE-mailアドレスは、"
 
 #: components/manage/Sharing/Sharing
 #: components/theme/ContactForm/ContactForm
@@ -750,50 +850,96 @@ msgstr "名前"
 
 #: error
 msgid "Navigate back"
-msgstr ""
+msgstr "元に戻る"
 
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "New password"
 msgstr "新しいパスワード"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Toolbar/Toolbar
+msgid "News Item"
+msgstr "ニュース"
+
+#: components/manage/Contents/ContentsItem
+msgid "No"
+msgstr "No"
+
+#: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
 msgstr "画像が選択されていません"
 
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in Lead Image content field"
+msgstr "コンテンツフィールドのリード画像がありません"
+
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+msgid "No image set in image content field"
+msgstr "コンテンツフィールドの画像がありません"
+
+#: components/manage/Blocks/Listing/ListingBody
+msgid "No items found in this container."
+msgstr "アイテムが見つかりませんでした"
+
+#: components/manage/Blocks/Maps/MapsSidebar
+msgid "No map selected"
+msgstr "マップが選択されていません"
+
+#: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "結果が見つかりません"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "No selection"
+msgstr "選択肢無し"
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
 #: components/manage/Widgets/SelectWidget
 msgid "No value"
-msgstr ""
+msgstr "値がありません"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "No video selected"
+msgstr "ビデオが選択されていません"
 
 #: components/manage/Workflow/Workflow
 msgid "No workflow"
-msgstr ""
+msgstr "ワークフローなし"
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
 msgid "None"
 msgstr "None"
 
+#: components/manage/Contents/Contents
+msgid "Object Size"
+msgstr "オブジェクトサイズ"
+
 #: components/manage/Delete/Delete
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Maps/MapsSidebar
+#: components/manage/Blocks/Video/VideoSidebar
 msgid "Open in a new tab"
 msgstr "新しいタブで開く"
 
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
-msgstr ""
+msgstr "Open menu (未翻訳)"
 
-#: components/manage/Sidebar/ImageSidebar
+#: components/manage/Blocks/Image/ImageSidebar
+#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
 msgstr "参照元"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Page"
+msgstr "ページ"
 
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
@@ -803,7 +949,7 @@ msgstr "パスワード"
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Password reset"
-msgstr ""
+msgstr "パスワードリセット"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Passwords do not match."
@@ -815,33 +961,39 @@ msgid "Paste"
 msgstr "ペースト"
 
 #: components/manage/Preferences/PersonalInformation
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
 msgstr "個人情報"
 
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
 msgstr "個人別設定"
 
 #: components/manage/Toolbar/More
 #: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
-msgstr ""
+msgstr "個人設定"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
-msgstr ""
+msgstr "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first. (未翻訳)"
 
 #: components/manage/Blocks/Video/Edit
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr ""
+msgstr "ブロックを削除して新しいビデオブロックを追加して、正しいURLを入力してください。"
+
+#: components/manage/Blocks/Maps/Edit
+msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
+msgstr "「Google Maps -> 共有 -> 地図を埋め込む」で提供されるEmbedコードを入力してください。<iframe>コードが含まれています"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
-msgstr ""
+msgstr "パスワードをフォームに入力してください"
 
 #: components/theme/Footer/Footer
 msgid "Plone Foundation"
-msgstr ""
+msgstr "Plone Foundation"
 
 #: components/theme/Logo/Logo
 msgid "Plone Site"
@@ -849,7 +1001,7 @@ msgstr "Ploneサイト"
 
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
-msgstr ""
+msgstr "Plone{reg} Open Source CMS/WCM"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Portrait"
@@ -857,11 +1009,11 @@ msgstr "顔写真"
 
 #: components/theme/Footer/Footer
 msgid "Powered by Plone & Python"
-msgstr ""
+msgstr "Powered by Plone & Python"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
-msgstr "個人設定"
+msgstr "個別設定"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
@@ -877,6 +1029,10 @@ msgstr "プロフィール"
 msgid "Properties"
 msgstr "プロパティ"
 
+#: components/manage/Contents/Contents
+msgid "Publication date"
+msgstr "公開日付"
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Publishing Date"
 msgstr "公開日付"
@@ -884,7 +1040,7 @@ msgstr "公開日付"
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Re-enter the password. Make sure the passwords are identical."
-msgstr ""
+msgstr "パスワードを再入力してください。同じパスワードであることを確認してください。"
 
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
@@ -897,7 +1053,7 @@ msgstr "何で並べ替えますか"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
-msgstr ""
+msgstr "見出し行の背景色を変更しない"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Register/Register
@@ -932,19 +1088,34 @@ msgstr "必須"
 msgid "Required input is missing."
 msgstr "必須"
 
+#: components/manage/Blocks/Listing/ListingData
+msgid "Results limit"
+msgstr "最大件数"
+
+#: components/manage/Blocks/Listing/Edit
+msgid "Results preview"
+msgstr "結果のプレビュー"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Reversed order"
+msgstr "逆順"
+
 #: components/manage/History/History
 msgid "Revert to this revision"
 msgstr "このリビジョンに戻す"
 
+#: components/manage/Contents/Contents
+msgid "Review state"
+msgstr "審査状態"
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
-msgstr ""
+msgstr "Richtext"
 
 #: components/manage/Blocks/Maps/Edit
-#: components/manage/Blocks/Video/Edit
 #: helpers/AlignBlock/AlignBlock
 msgid "Right"
-msgstr ""
+msgstr "右"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Rights"
@@ -955,7 +1126,6 @@ msgid "Roles"
 msgstr "ロール"
 
 #: components/manage/Add/Add
-#: components/manage/Blocks/Video/Edit
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1002,17 +1172,18 @@ msgstr "表示する列を選択"
 
 #: components/manage/Widgets/QuerystringWidget
 msgid "Select criteria"
-msgstr ""
+msgstr "選択の基準"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
-msgstr ""
+msgstr "Select the transition to be used for modifying the items state. (未翻訳)"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
-msgstr ""
+msgstr "Selection (未翻訳)"
 
 #: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
 msgid "Select…"
 msgstr "選択…"
 
@@ -1029,8 +1200,9 @@ msgid "Set your password"
 msgstr "パスワードを設定"
 
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/More
 msgid "Sharing"
-msgstr ""
+msgstr "共有"
 
 #: components/manage/Sharing/Sharing
 msgid "Sharing for {title}"
@@ -1050,23 +1222,28 @@ msgstr "ショートネーム"
 msgid "Short name"
 msgstr "ショートネーム"
 
+#: components/theme/Pagination/Pagination
+msgid "Show"
+msgstr "表示件数"
+
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
-msgstr ""
+msgstr "サイドバーを閉じる"
 
 #: components/manage/Toolbar/Toolbar
 msgid "Shrink toolbar"
-msgstr ""
+msgstr "ツールバーを閉じる"
 
 #: components/theme/Login/Login
 msgid "Sign in to start session"
-msgstr ""
+msgstr "ログインしてセッションを開始"
 
 #: components/theme/Logo/Logo
 msgid "Site"
 msgstr "サイト"
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 msgid "Site Administration"
 msgstr "サイト管理"
 
@@ -1079,21 +1256,34 @@ msgstr "サイトマップ"
 msgid "Site Setup"
 msgstr "サイト設定"
 
+#: components/theme/View/ImageView
+msgid "Size: {size}"
+msgstr "サイズ: {size}"
+
 #: error
 msgid "Sorry, something went wrong with your request"
-msgstr ""
+msgstr "申し訳ありません。問題が発生したために処理できませんでした。"
+
+#: components/manage/Blocks/Listing/ListingData
+msgid "Sort on"
+msgstr "ソート順"
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Listing/ListingData
 msgid "Source"
-msgstr ""
+msgstr "ソース"
 
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
-msgstr ""
+msgstr "YouTubeビデオまたはプレイリストURLを指定してください。"
 
 #: components/manage/Diff/Diff
 msgid "Split"
-msgstr ""
+msgstr "分割"
+
+#: components/manage/Contents/Contents
+msgid "Start Date"
+msgstr "開始日付"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
@@ -1107,11 +1297,11 @@ msgstr "状態"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
-msgstr ""
+msgstr "String (未翻訳)"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Stripe alternate rows with color"
-msgstr ""
+msgstr "一行おきに背景色を付加"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
@@ -1133,7 +1323,11 @@ msgstr "テーブル"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Table color inverted"
-msgstr ""
+msgstr "テーブルの色を反転"
+
+#: components/manage/Blocks/ToC/View
+msgid "Table of Contents"
+msgstr "目次"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
@@ -1148,34 +1342,39 @@ msgstr "追加するタグ"
 msgid "Tags to remove"
 msgstr "削除をするタグ"
 
+#: components/manage/Blocks/Listing/TemplateWidget
+msgid "Template"
+msgstr "テンプレート"
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
 msgstr "テキスト"
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "ありがとうございます。"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
-msgstr ""
+msgstr "外部ホームページがあればURLを記載してください。"
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
-msgstr ""
+msgstr "The registration process has been successful. Please check your e-mail inbox for information on how activate your account. (未翻訳)"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The user portrait/avatar"
-msgstr ""
+msgstr "写真やアバターなどプロフィール画像を登録してください。"
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
-msgstr ""
+msgstr "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "There were some errors."
-msgstr ""
+msgstr "いくつかのエラーが発生しました"
 
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
@@ -1183,7 +1382,7 @@ msgstr "この名前はURLの一部として使用されます"
 
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
-msgstr ""
+msgstr "このページは存在しないようです…"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
@@ -1200,10 +1399,18 @@ msgstr ""
 msgid "Title"
 msgstr "タイトル"
 
+#: components/manage/Contents/Contents
+msgid "Total comments"
+msgstr "コメント計"
+
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 msgid "Type"
 msgstr "タイプ"
+
+#: components/manage/Blocks/Video/Edit
+msgid "Type a Video (YouTube, Vimeo or mp4) URL"
+msgstr "ビデオURLを入力 (YouTube, Vimeo or mp4)"
 
 #: components/manage/Blocks/Text/Edit
 msgid "Type text…"
@@ -1213,30 +1420,42 @@ msgstr "テキストを入力…"
 msgid "Type the title…"
 msgstr "タイトルを入力…"
 
+#: components/manage/Contents/Contents
+msgid "UID"
+msgstr "UID"
+
+#: components/theme/Unauthorized/Unauthorized
+msgid "Unauthorized"
+msgstr "Unauthorized(未翻訳)"
+
 #: components/manage/Diff/Diff
 msgid "Unified"
-msgstr ""
+msgstr "Unified (未翻訳)"
 
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
 msgid "Unknown Block"
-msgstr ""
+msgstr "不明なブロック"
 
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "アップロード"
 
+#: components/manage/Blocks/LeadImage/Edit
+msgid "Upload a lead image in the 'Lead Image' content field."
+msgstr "リード画像をコンテンツのフィールドにアップロード"
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
-msgstr ""
+msgstr "アップロードファイル"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload {count, plural, one {# file} other {# files}}"
-msgstr ""
+msgstr "Upload {count, plural, one {# file} other {# files}} (未翻訳)"
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "Uploading files"
-msgstr ""
+msgstr "ファイルをアップロードしています"
 
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1246,15 +1465,15 @@ msgstr ""
 #: components/manage/Widgets/TextWidget
 #: components/manage/Widgets/WysiwygWidget
 msgid "Used for programmatic access to the fieldset."
-msgstr ""
+msgstr "Used for programmatic access to the fieldset. (未翻訳)"
 
 #: components/manage/Sharing/Sharing
 msgid "User"
-msgstr ""
+msgstr "ユーザ"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "User created"
-msgstr ""
+msgstr "ユーザを作成しました"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "User name"
@@ -1271,7 +1490,7 @@ msgstr "ユーザ"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and Groups"
-msgstr ""
+msgstr "ユーザとグループ"
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Users and groups settings"
@@ -1279,7 +1498,15 @@ msgstr "ユーザとグループの設定"
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Version Overview"
-msgstr ""
+msgstr "バージョン情報"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video"
+msgstr "ビデオ"
+
+#: components/manage/Blocks/Video/VideoSidebar
+msgid "Video URL"
+msgstr "ビデオURL"
 
 #: components/manage/Contents/ContentsItem
 msgid "View"
@@ -1291,15 +1518,19 @@ msgstr "表示"
 
 #: components/manage/History/History
 msgid "View this revision"
-msgstr "表示"
+msgstr "この履歴を表示"
 
 #: components/manage/Display/Display
 msgid "Viewmode"
-msgstr "表示"
+msgstr "表示モード"
 
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
-msgstr ""
+msgstr "不便をかけて申し訳ありませんが、アクセスしようとしたページはこのアドレスではありません。"
+
+#: components/theme/Forbidden/Forbidden
+msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
+msgstr "We apologize for the inconvenience, but you don't have permissions on this resource.(未翻訳)"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
@@ -1307,55 +1538,67 @@ msgstr "あなたのパスワードを回復する必要がある場合、この
 
 #: components/manage/History/History
 msgid "What"
-msgstr ""
+msgstr "何を"
 
 #: components/manage/History/History
 msgid "When"
-msgstr ""
+msgstr "いつ"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "When this date is reached, the content will nolonger be visible in listings and searches."
-msgstr ""
+msgstr "When this date is reached, the content will nolonger be visible in listings and searches. (未翻訳)"
 
 #: components/manage/History/History
 msgid "Who"
-msgstr ""
+msgstr "誰が"
 
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
-msgstr ""
+msgstr "ワークフローがアップデートされました"
+
+#: components/manage/Contents/ContentsItem
+msgid "Yes"
+msgstr "Yes"
+
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource, please {login} first."
+msgstr "You are trying to access a protected resource, please {login} first.(未翻訳)"
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "You are using an outdated browser"
+msgstr "このブラウザには対応していません。"
 
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
-msgstr ""
+msgstr "You can add a comment by filling out the form below. Plain text formatting. (未翻訳)"
 
 #: components/manage/Sharing/Sharing
 msgid "You can control who can view and edit your item using the list below."
-msgstr ""
+msgstr "You can control who can view and edit your item using the list below. (未翻訳)"
 
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
-msgstr ""
+msgstr "You can view the difference of the revisions below. (未翻訳)"
 
 #: components/manage/History/History
 msgid "You can view the history of your item below."
-msgstr ""
+msgstr "You can view the history of your item below. (未翻訳)"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
-msgstr ""
+msgstr "Your email is required for reset your password. (未翻訳)"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr ""
+msgstr "あなたのいる場所を入力してください。国名や都市名あるいはオフィスの場所など"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Your password has been set successfully. You may now {link} with your new password."
-msgstr ""
+msgstr "Your password has been set successfully. You may now {link} with your new password. (未翻訳)"
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Your preferred language"
-msgstr ""
+msgstr "優先する言語"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
@@ -1367,7 +1610,11 @@ msgstr "一般"
 
 #: components/manage/Blocks/Block/Edit
 msgid "delete"
-msgstr ""
+msgstr "削除"
+
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "deprecated_browser_notice_message"
+msgstr "サポート対象外のブラウザです"
 
 #: config/Blocks
 msgid "description"
@@ -1387,7 +1634,7 @@ msgstr "パスワード再設定の確認が送られました"
 
 #: config/Blocks
 msgid "hero"
-msgstr ""
+msgstr "ヒーロー"
 
 #: config/Blocks
 msgid "html"
@@ -1400,6 +1647,18 @@ msgstr "画像"
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr "私のメールアドレスは"
+
+#: config/Blocks
+msgid "leadimage"
+msgstr "リード画像"
+
+#: config/Blocks
+msgid "listing"
+msgstr "リスティング"
+
+#: components/theme/Unauthorized/Unauthorized
+msgid "log in"
+msgstr "ログイン"
 
 #: config/Blocks
 msgid "maps"
@@ -1415,7 +1674,7 @@ msgstr "よく使う物"
 
 #: error
 msgid "or try a different page."
-msgstr ""
+msgstr "または、他のページを試してください。"
 
 #: components/theme/Login/Login
 msgid "registration form"
@@ -1423,7 +1682,7 @@ msgstr "登録フォーム"
 
 #: error
 msgid "return to the site root"
-msgstr ""
+msgstr "サイトルートに戻ってください。"
 
 #: config/Blocks
 msgid "table"
@@ -1437,9 +1696,13 @@ msgstr "テキスト"
 msgid "title"
 msgstr "タイトル"
 
+#: config/Blocks
+msgid "toc"
+msgstr "目次"
+
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"
-msgstr ""
+msgstr "ユーザアイコン"
 
 #: config/Blocks
 msgid "video"
@@ -1447,7 +1710,7 @@ msgstr "ビデオ"
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"
-msgstr ""
+msgstr "こちらからメール送信できます。"
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"

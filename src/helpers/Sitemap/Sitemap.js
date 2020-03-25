@@ -20,7 +20,7 @@ export const generateSitemap = req =>
   new Promise(resolve => {
     const url = `${req.protocol}://${req.get('Host')}`;
     const request = superagent.get(
-      `${settings.apiPath}/@search?metadata_fields=modified`,
+      `${settings.apiPath}/@search?metadata_fields=modified&b_size=100000000`,
     );
     request.set('Accept', 'application/json');
     const authToken = cookie.load('auth_token');
