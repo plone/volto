@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose, bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import {
   Container,
@@ -19,6 +19,7 @@ import {
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import {
+  getTypes,
   createType,
 } from '@plone/volto/actions';
 import {
@@ -82,11 +83,15 @@ class ContentTypes extends Component {
    * @static
    */
   static propTypes = {
+    getTypes: PropTypes.func.isRequired,
+    createType: PropTypes.func.isRequired,
     types: PropTypes.arrayOf(
       PropTypes.shape({
         '@id': PropTypes.string,
+        addable: PropTypes.bool,
+        title: PropTypes.string,
       }),
-    ).isRequired,
+    ),
     pathname: PropTypes.string.isRequired,
   };
 
@@ -109,7 +114,7 @@ class ContentTypes extends Component {
   }
 
   /**
-   * Component did mount
+   * Component will mount
    * @method componentDidMount
    * @returns {undefined}
    */
@@ -117,12 +122,14 @@ class ContentTypes extends Component {
 
   }
 
+
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (
-      this.props.createTypeRequest.loading &&
-      nextProps.createTypeRequest.loaded
-    ) {
+    if (this.props.createTypeRequest.loading && nextProps.createTypeRequest.loaded) {
+      this.props.getTypes(getBaseUrl(this.props.pathname));
       this.onAddTypeSuccess();
+    }
+    if (this.props.createTypeRequest.loading && nextProps.createTypeRequest.error) {
+      this.onAddTypeError(nextProps.createTypeRequest.error);
     }
   }
 
@@ -161,7 +168,7 @@ class ContentTypes extends Component {
    * @returns {undefined}
    */
   onAddTypeSuccess() {
-    // this.state.addTypeSetFormDataCallback({});
+    this.state.addTypeSetFormDataCallback({ });
     this.setState({
       showAddType: false,
       addTypeError: undefined,
@@ -326,12 +333,9 @@ export default compose(
       pathname: props.location.pathname,
       createTypeRequest: state.types.create,
     }),
-    dispatch =>
-      bindActionCreators(
-        {
-          createType,
-        },
-        dispatch,
-      ),
+    {
+      getTypes,
+      createType
+    },
   ),
 )(ContentTypes);
