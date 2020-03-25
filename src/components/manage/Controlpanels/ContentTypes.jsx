@@ -6,18 +6,36 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
+import { compose, bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { Helmet } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
-import { Container, Table, Checkbox } from 'semantic-ui-react';
-
+import {
+  Container,
+  Table,
+  Segment,
+  Button,
+} from 'semantic-ui-react';
+import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { Icon, Toolbar } from '@plone/volto/components';
+import {
+  createType,
+} from '@plone/volto/actions';
+import {
+  Icon,
+  ModalForm,
+  Toolbar,
+  Toast,
+} from '@plone/volto/components';
 import { getId } from '@plone/volto/helpers';
+import addSvg from '@plone/volto/icons/circle-plus.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
+  add: {
+    id: 'Add',
+    defaultMessage: 'Add',
+  },
   back: {
     id: 'Back',
     defaultMessage: 'Back',
@@ -25,6 +43,30 @@ const messages = defineMessages({
   ContentTypes: {
     id: 'Content Types',
     defaultMessage: 'Content Types',
+  },
+  addTypeFormTitle: {
+    id: "Add new content type",
+    defaultMessage: "Add new content type",
+  },
+  addTypeButtonTitle: {
+    id: "Add new content type",
+    defaultMessage: "Add new content type",
+  },
+  addTypeFormTitleTitle: {
+    id: "Title",
+    defaultMessage: "Title",
+  },
+  addTypeFormDescriptionTitle: {
+    id: "Description",
+    defaultMessage: "Description"
+  },
+  success: {
+    id: 'Success',
+    defaultMessage: 'Success',
+  },
+  typeCreated: {
+    id: 'Content type created',
+    defaultMessage: 'Content type created',
   },
 });
 
@@ -40,7 +82,7 @@ class ContentTypes extends Component {
    * @static
    */
   static propTypes = {
-    items: PropTypes.arrayOf(
+    types: PropTypes.arrayOf(
       PropTypes.shape({
         '@id': PropTypes.string,
       }),
@@ -56,86 +98,82 @@ class ContentTypes extends Component {
    */
   constructor(props) {
     super(props);
-    this.onDelete = this.onDelete.bind(this);
-    this.onEdit = this.onEdit.bind(this);
-    this.onEditOk = this.onEditOk.bind(this);
-    this.onEditCancel = this.onEditCancel.bind(this);
+    this.onAddTypeSubmit = this.onAddTypeSubmit.bind(this);
+    this.onAddTypeError = this.onAddTypeError.bind(this);
+    this.onAddTypeSuccess = this.onAddTypeSuccess.bind(this);
+
     this.state = {
-      showEdit: false,
-      editId: null,
-      editText: null,
+      showAddType: false,
+      addTypeError: '',
     };
   }
 
   /**
-   * Component will mount
-   * @method componentWillMount
+   * Component did mount
+   * @method componentDidMount
    * @returns {undefined}
    */
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
 
   }
 
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
   UNSAFE_componentWillReceiveProps(nextProps) {
-
+    if (
+      this.props.createTypeRequest.loading &&
+      nextProps.createTypeRequest.loaded
+    ) {
+      this.onAddTypeSuccess();
+    }
   }
 
   /**
-   * Delete handler
-   * @method onDelete
-   * @param {Object} event Event object.
-   * @param {string} value Delete value.
+   *
+   *
+   * @param {object} data Form data from the ModalForm.
+   * @param {func} callback to set new form data in the ModalForm
+   * @memberof ContentTypes
    * @returns {undefined}
    */
-  onDelete(event, { value }) {
-
-  }
-
-  /**
-   * Edit handler
-   * @method onEdit
-   * @param {Object} event Event object.
-   * @param {string} value Delete value.
-   * @returns {undefined}
-   */
-  onEdit(event, { value }) {
+  onAddTypeSubmit(data, callback) {
+    this.props.createType(data);
     this.setState({
-      showEdit: true,
-      editId: value.id,
-      editText: value.text,
+      addTypeSetFormDataCallback: callback,
     });
   }
 
   /**
-   * On edit ok
-   * @method onEditOk
+   * Handle Errors after createType()
+   *
+   * @param {*} error object. Requires the property .message
+   * @memberof ContentTypes
    * @returns {undefined}
    */
-  onEditOk() {
+  onAddTypeError(error) {
     this.setState({
-      showEdit: false,
-      editId: null,
-      editText: null,
+      addTypeError: error.message,
     });
   }
 
   /**
-   * On edit cancel
-   * @method onEditCancel
+   * Handle Success after createType()
+   *
+   * @memberof ContentTypes
    * @returns {undefined}
    */
-  onEditCancel() {
+  onAddTypeSuccess() {
+    // this.state.addTypeSetFormDataCallback({});
     this.setState({
-      showEdit: false,
-      editId: null,
-      editText: null,
+      showAddType: false,
+      addTypeError: undefined,
+      addTypeSetFormDataCallback: undefined,
     });
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.typeCreated)}
+      />,
+    );
   }
 
   /**
@@ -145,13 +183,53 @@ class ContentTypes extends Component {
    */
   render() {
     return (
-      <div id="page-content-types">
+      <Container className="types-control-panel">
         <Helmet
           title={this.props.intl.formatMessage(messages.ContentTypes)}
         />
+        <div className="container">
+          <ModalForm
+            open={this.state.showAddType}
+            className="modal"
+            onSubmit={this.onAddTypeSubmit}
+            submitError={this.state.addTypeError}
+            onCancel={() => this.setState({ showAddType: false })}
+            title={this.props.intl.formatMessage(messages.addTypeFormTitle)}
+            loading={this.props.createTypeRequest.loading}
+            schema={{
+              fieldsets: [
+                {
+                  id: 'default',
+                  title: 'Content type',
+                  fields: [
+                    'title',
+                    'description',
+                  ],
+                },
+              ],
+              properties: {
+                title: {
+                  title: this.props.intl.formatMessage(
+                    messages.addTypeFormTitleTitle,
+                  ),
+                  type: 'string',
+                  description: '',
+                },
+                description: {
+                  title: this.props.intl.formatMessage(
+                    messages.addTypeFormDescriptionTitle,
+                  ),
+                  type: 'string',
+                  description: '',
+                },
+              },
+              required: ['title'],
+            }}
+          />
+        </div>
         <Container>
           <article id="content">
-            <header>
+              <header>
               <h1 className="documentFirstHeading">
                 <FormattedMessage
                   id="Content Types"
@@ -163,8 +241,6 @@ class ContentTypes extends Component {
               <Table compact singleLine striped>
                 <Table.Header>
                   <Table.Row>
-                    <Table.HeaderCell>
-                    </Table.HeaderCell>
                     <Table.HeaderCell>
                       <FormattedMessage
                         id="Type name"
@@ -180,12 +256,8 @@ class ContentTypes extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {this.props.items.map(item => (
+                  {this.props.types.map(item => (
                     <Table.Row key={item['@id']}>
-                      <Table.Cell>
-                        <Checkbox
-                          value={item['@id']} />
-                      </Table.Cell>
                       <Table.Cell>
                         <Link to={`/controlpanel/content-types/${getId(item['@id'])}`}>
                           {item.title}
@@ -203,6 +275,24 @@ class ContentTypes extends Component {
               </Table>
             </section>
           </article>
+          <Segment clearing className="actions">
+            {this.props.intl.formatMessage(messages.addTypeButtonTitle)}
+            <Button
+              basic
+              primary
+              floated="right"
+              onClick={() => {
+                this.setState({ showAddType: true });
+              }}
+            >
+              <Icon
+                name={addSvg}
+                size="30px"
+                color="#007eb1"
+                title={this.props.intl.formatMessage(messages.add)}
+              />
+            </Button>
+          </Segment>
         </Container>
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
@@ -223,7 +313,7 @@ class ContentTypes extends Component {
             }
           />
         </Portal>
-      </div>
+        </Container>
     );
   }
 }
@@ -232,9 +322,16 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      items: state.types.types,
+      types: state.types.types,
       pathname: props.location.pathname,
+      createTypeRequest: state.types.create,
     }),
-    { },
+    dispatch =>
+      bindActionCreators(
+        {
+          createType,
+        },
+        dispatch,
+      ),
   ),
 )(ContentTypes);

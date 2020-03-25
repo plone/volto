@@ -61,7 +61,10 @@ export {
   updateSharing,
   getSharing,
 } from '@plone/volto/actions/sharing/sharing';
-export { getTypes } from '@plone/volto/actions/types/types';
+export {
+  getTypes,
+  createType,
+} from '@plone/volto/actions/types/types';
 export {
   createUser,
   deleteUser,

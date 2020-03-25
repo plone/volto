@@ -3,12 +3,20 @@
  * @module reducers/types/types
  */
 
-import { GET_TYPES } from '@plone/volto/constants/ActionTypes';
+import {
+  GET_TYPES,
+  CREATE_TYPE,
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   error: null,
   loaded: false,
   loading: false,
+  create: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
   types: [],
 };
 
@@ -21,6 +29,7 @@ const initialState = {
  */
 export default function types(state = initialState, action = {}) {
   switch (action.type) {
+    case `${CREATE_TYPE}_PENDING`:
     case `${GET_TYPES}_PENDING`:
       return {
         ...state,
@@ -28,6 +37,7 @@ export default function types(state = initialState, action = {}) {
         loading: true,
         loaded: false,
       };
+    case `${CREATE_TYPE}_SUCCESS`:
     case `${GET_TYPES}_SUCCESS`:
       return {
         ...state,
@@ -36,6 +46,7 @@ export default function types(state = initialState, action = {}) {
         loaded: true,
         types: action.result,
       };
+    case `${CREATE_TYPE}_FAIL`:
     case `${GET_TYPES}_FAIL`:
       return {
         ...state,

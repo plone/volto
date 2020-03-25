@@ -3,7 +3,10 @@
  * @module actions/types/types
  */
 
-import { GET_TYPES } from '@plone/volto/constants/ActionTypes';
+import {
+  GET_TYPES,
+  CREATE_TYPE,
+ } from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get types function.
@@ -22,5 +25,22 @@ export function getTypes(url) {
         },
       });
     }
+  };
+}
+
+/**
+ * Create type function.
+ * @function createType
+ * @param {Object} data Type data.
+ * @returns {Object} Create type action.
+ */
+export function createType(data) {
+  return {
+    type: CREATE_TYPE,
+    request: {
+      op: 'post',
+      path: '/@types',
+      data,
+    },
   };
 }
