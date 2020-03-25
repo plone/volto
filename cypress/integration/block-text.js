@@ -28,7 +28,7 @@ if (Cypress.env('API') !== 'guillotina') {
         .and('include', 'https://google.com');
     });
 
-    it('As a site administrator I can add a new line to a text block using shift + enter', function() {
+    it('As editor I can add a new line to a text block using shift + enter', function() {
       cy.visit('/');
       cy.get('#toolbar-add').click();
       cy.get('#toolbar-add-document').click();
@@ -47,8 +47,6 @@ Second line;
 Third line.`);
       //then the block should not be deselected
       cy.get('.block.inner.text:nth-child(2n) .block.text.selected');
-      //then there still should not have <BR> tag
-      cy.get('.block.inner.text:nth-child(2n) br').should('not.exist');
       //then there should not be a new block created
       cy.get('.block.inner.text:nth-child(3n)').should('not.exist');
 
