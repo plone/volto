@@ -12,7 +12,6 @@ import { Segment } from 'semantic-ui-react';
 import Raven from 'raven-js';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
-import cookie from 'react-cookie';
 import split from 'lodash/split';
 import join from 'lodash/join';
 import trim from 'lodash/trim';
@@ -37,19 +36,7 @@ import {
 } from '@plone/volto/actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
-import { settings } from '~/config';
-
-import { updateIntl } from 'react-intl-redux';
-
-let locales = {};
-
-if (settings) {
-  settings.supportedLanguages.forEach(lang => {
-    import('~/../locales/' + lang + '.json').then(locale => {
-      locales = { ...locales, [lang]: locale };
-    });
-  });
-}
+import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
 
 /**
  * @export
@@ -64,7 +51,6 @@ class App extends Component {
    */
   static propTypes = {
     pathname: PropTypes.string.isRequired,
-    updateIntl: PropTypes.func.isRequired,
   };
 
   state = {
@@ -84,23 +70,6 @@ class App extends Component {
     if (__CLIENT__ && process.env.SENTRY_DSN) {
       Raven.config(process.env.SENTRY_DSN).install();
     }
-
-    // const detectedLang = (navigator.language || navigator.userLanguage).substring(0, 2);
-
-    if (this.props.pathname === '/' && settings.isMultilingual) {
-      const currentLanguage = cookie.load('lang') || settings.defaultLanguage;
-      const redirectToLanguage = settings.supportedLanguages.includes(
-        currentLanguage,
-      )
-        ? currentLanguage
-        : settings.defaultLanguage;
-
-      this.props.updateIntl({
-        locale: redirectToLanguage,
-        messages: locales[redirectToLanguage],
-      });
-      this.props.history.push(`/${redirectToLanguage}`);
-    }
   }
 
   /**
@@ -110,21 +79,6 @@ class App extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      if (nextProps.pathname === '/' && settings.isMultilingual) {
-        const currentLanguage = cookie.load('lang') || settings.defaultLanguage;
-        const redirectToLanguage = settings.supportedLanguages.includes(
-          currentLanguage,
-        )
-          ? currentLanguage
-          : settings.defaultLanguage;
-
-        this.props.updateIntl({
-          locale: redirectToLanguage,
-          messages: locales[redirectToLanguage],
-        });
-        this.props.history.push(`/${redirectToLanguage}`);
-      }
-
       if (this.state.hasError) {
         this.setState({ hasError: false });
       }
@@ -177,19 +131,21 @@ class App extends Component {
         />
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
-        <Segment basic className="content-area">
-          <main>
-            <Messages />
-            {this.state.hasError ? (
-              <Error
-                message={this.state.error.message}
-                stackTrace={this.state.errorInfo.componentStack}
-              />
-            ) : (
-              renderRoutes(this.props.route.routes)
-            )}
-          </main>
-        </Segment>
+        <MultilingualRedirector pathname={this.props.pathname}>
+          <Segment basic className="content-area">
+            <main>
+              <Messages />
+              {this.state.hasError ? (
+                <Error
+                  message={this.state.error.message}
+                  stackTrace={this.state.errorInfo.componentStack}
+                />
+              ) : (
+                renderRoutes(this.props.route.routes)
+              )}
+            </main>
+          </Segment>
+        </MultilingualRedirector>
         <Footer />
         <ToastContainer
           position={toast.POSITION.BOTTOM_CENTER}
@@ -249,8 +205,6 @@ export default compose(
       pathname: props.location.pathname,
       content: state.content.data,
     }),
-    {
-      updateIntl,
-    },
+    {},
   ),
 )(App);
