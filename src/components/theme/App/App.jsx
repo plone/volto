@@ -18,6 +18,7 @@ import trim from 'lodash/trim';
 import cx from 'classnames';
 
 import Error from '@plone/volto/error';
+import { Helmet } from '@plone/volto/helpers';
 
 import {
   Breadcrumbs,
@@ -131,6 +132,7 @@ class App extends Component {
             siteroot: this.props.pathname === '/',
           })}
         />
+        <Helmet title={this.props.content.title} />
 
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
