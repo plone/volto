@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add Multilingual Support @sneridagh
+
 ### Changes
 
 - Fix typo for Japanese translation @terapyon

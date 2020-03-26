@@ -52,8 +52,6 @@ export const settings = {
   defaultPageSize: 25,
   isMultilingual: false,
   supportedLanguages: ['en'],
-  // isMultilingual: true,
-  // supportedLanguages: ['en', 'de', 'ca'],
   defaultLanguage: 'en',
 };
 
