@@ -34,6 +34,7 @@
     "test": "razzle test --env=jsdom",
     "test:ci": "CI=true razzle test --env=jsdom",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "start:prod": "NODE_ENV=production node build/server.js",
     "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
