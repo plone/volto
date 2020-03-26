@@ -6,21 +6,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { compose, bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import {
+  Confirm,
   Container,
   Table,
-  Segment,
   Button,
+  Dropdown,
 } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import {
   getTypes,
   createType,
+  deleteType,
 } from '@plone/volto/actions';
 import {
   Icon,
@@ -31,6 +33,7 @@ import {
 import { getId } from '@plone/volto/helpers';
 import addSvg from '@plone/volto/icons/circle-plus.svg';
 import backSVG from '@plone/volto/icons/back.svg';
+import trashSVG from '@plone/volto/icons/delete.svg';
 
 const messages = defineMessages({
   add: {
@@ -40,6 +43,14 @@ const messages = defineMessages({
   back: {
     id: 'Back',
     defaultMessage: 'Back',
+  },
+  yes: {
+    id: "Yes",
+    defaultMessage: "Yes",
+  },
+  no: {
+    id: "No",
+    defaultMessage: "No",
   },
   ContentTypes: {
     id: 'Content Types',
@@ -69,6 +80,14 @@ const messages = defineMessages({
     id: 'Content type created',
     defaultMessage: 'Content type created',
   },
+  deleteConfirmTitle: {
+    id: 'Delete Type',
+    defaultMessage: 'Delete Type',
+  },
+  typeDeleted: {
+    id: 'Content type deleted',
+    defaultMessage: 'Content type deleted',
+  },
 });
 
 /**
@@ -85,6 +104,7 @@ class ContentTypes extends Component {
   static propTypes = {
     getTypes: PropTypes.func.isRequired,
     createType: PropTypes.func.isRequired,
+    deleteType: PropTypes.func.isRequired,
     types: PropTypes.arrayOf(
       PropTypes.shape({
         '@id': PropTypes.string,
@@ -106,10 +126,16 @@ class ContentTypes extends Component {
     this.onAddTypeSubmit = this.onAddTypeSubmit.bind(this);
     this.onAddTypeError = this.onAddTypeError.bind(this);
     this.onAddTypeSuccess = this.onAddTypeSuccess.bind(this);
+    this.onDelete = this.onDelete.bind(this);
+    this.onDeleteCancel = this.onDeleteCancel.bind(this);
+    this.onDeleteOk = this.onDeleteOk.bind(this);
+    this.onDeleteTypeSuccess = this.onDeleteTypeSuccess.bind(this);
 
     this.state = {
       showAddType: false,
       addTypeError: '',
+      showDelete: false,
+      typeToDelete: undefined,
     };
   }
 
@@ -124,6 +150,7 @@ class ContentTypes extends Component {
 
 
   UNSAFE_componentWillReceiveProps(nextProps) {
+    // Create
     if (this.props.createTypeRequest.loading && nextProps.createTypeRequest.loaded) {
       this.props.getTypes(getBaseUrl(this.props.pathname));
       this.onAddTypeSuccess();
@@ -131,11 +158,17 @@ class ContentTypes extends Component {
     if (this.props.createTypeRequest.loading && nextProps.createTypeRequest.error) {
       this.onAddTypeError(nextProps.createTypeRequest.error);
     }
+
+    // Delete
+    if (this.props.deleteTypeRequest.loading && nextProps.deleteTypeRequest.loaded) {
+      this.props.getTypes(getBaseUrl(this.props.pathname));
+      this.onDeleteTypeSuccess();
+    }
   }
 
+  /** Add  */
+
   /**
-   *
-   *
    * @param {object} data Form data from the ModalForm.
    * @param {func} callback to set new form data in the ModalForm
    * @memberof ContentTypes
@@ -183,6 +216,68 @@ class ContentTypes extends Component {
     );
   }
 
+  /** Delete */
+    /**
+   *
+   *
+   * @param {*} event Event object.
+   * @param {*} { value }
+   * @memberof ContentTypes
+   * @returns {undefined}
+   */
+  onDelete(event, { value }) {
+    if (value) {
+      this.setState({
+        showDelete: true,
+        typeToDelete: value,
+      });
+    }
+  }
+
+  /**
+   * On delete ok
+   * @method onDeleteOk
+   * @memberof ContentTypes
+   * @returns {undefined}
+   */
+  onDeleteOk() {
+    const tid = getId(this.state.typeToDelete);
+    this.props.deleteType(tid);
+    this.setState({
+      showDelete: false,
+      typeToDelete: undefined
+    });
+  }
+
+  /**
+   * On delete cancel
+   * @method onDeleteCancel
+   * @memberof ContentTypes
+   * @returns {undefined}
+   */
+  onDeleteCancel() {
+    this.setState({
+      showDelete: false,
+      typeToDelete: undefined
+    });
+  }
+
+    /**
+   * Handle Success after deleteType()
+   *
+   * @method onDeleteTypeSuccess
+   * @memberof ContentTypes
+   * @returns {undefined}
+   */
+  onDeleteTypeSuccess() {
+    toast.success(
+      <Toast
+        success
+        title={this.props.intl.formatMessage(messages.success)}
+        content={this.props.intl.formatMessage(messages.typeDeleted)}
+      />,
+    );
+  }
   /**
    * Render method.
    * @method render
@@ -195,6 +290,29 @@ class ContentTypes extends Component {
           title={this.props.intl.formatMessage(messages.ContentTypes)}
         />
         <div className="container">
+          <Confirm
+            open={this.state.showDelete}
+            header={this.props.intl.formatMessage(messages.deleteConfirmTitle)}
+            cancelButton={this.props.intl.formatMessage(messages.no)}
+            confirmButton={this.props.intl.formatMessage(messages.yes)}
+            content={
+              (
+                <div className="content">
+                  <ul className="content">
+                    <FormattedMessage
+                      id="Do you really want to delete the type {typename}?"
+                      defaultMessage="Do you really want to delete type {typename}?"
+                      values={{
+                        typename: <b>{getId(this.state.typeToDelete || "")}</b>,
+                      }}
+                    />
+                  </ul>
+                </div>
+              )
+            }
+            onCancel={this.onDeleteCancel}
+            onConfirm={this.onDeleteOk}
+          />
           <ModalForm
             open={this.state.showAddType}
             className="modal"
@@ -250,15 +368,32 @@ class ContentTypes extends Component {
                   <Table.Row>
                     <Table.HeaderCell>
                       <FormattedMessage
-                        id="Type name"
-                        defaultMessage="Type name"
+                        id="Type"
+                        defaultMessage="Type"
                       />
                     </Table.HeaderCell>
                     <Table.HeaderCell>
                       <FormattedMessage id="Description" defaultMessage="Description" />
                     </Table.HeaderCell>
                     <Table.HeaderCell>
-                      <FormattedMessage id="# of items" defaultMessage="# of items" />
+                      <FormattedMessage id="Items" defaultMessage="Items" />
+                    </Table.HeaderCell>
+                    <Table.HeaderCell textAlign="right">
+                      <Button
+                        basic
+                        primary
+                        floated="right"
+                        onClick={() => {
+                          this.setState({ showAddType: true });
+                        }}
+                      >
+                        <Icon
+                          name={addSvg}
+                          size="15px"
+                          color="#007eb1"
+                          title={this.props.intl.formatMessage(messages.addTypeButtonTitle)}
+                        />
+                      </Button>
                     </Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
@@ -276,30 +411,25 @@ class ContentTypes extends Component {
                       <Table.Cell>
                         {item.count}
                       </Table.Cell>
+                      <Table.Cell textAlign="right">
+                        <Dropdown icon="ellipsis horizontal">
+                          <Dropdown.Menu className="left">
+                            <Dropdown.Item
+                              onClick={this.onDelete}
+                              value={item['@id']}
+                            >
+                              <Icon name={trashSVG} size="15px" />
+                              <FormattedMessage id="Delete" defaultMessage="Delete" />
+                            </Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </Table.Cell>
                     </Table.Row>
                   ))}
                 </Table.Body>
               </Table>
             </section>
           </article>
-          <Segment clearing className="actions">
-            {this.props.intl.formatMessage(messages.addTypeButtonTitle)}
-            <Button
-              basic
-              primary
-              floated="right"
-              onClick={() => {
-                this.setState({ showAddType: true });
-              }}
-            >
-              <Icon
-                name={addSvg}
-                size="30px"
-                color="#007eb1"
-                title={this.props.intl.formatMessage(messages.add)}
-              />
-            </Button>
-          </Segment>
         </Container>
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
@@ -332,10 +462,12 @@ export default compose(
       types: state.types.types,
       pathname: props.location.pathname,
       createTypeRequest: state.types.create,
+      deleteTypeRequest: state.types.delete,
     }),
     {
       getTypes,
-      createType
+      createType,
+      deleteType,
     },
   ),
 )(ContentTypes);

@@ -6,6 +6,7 @@
 import {
   GET_TYPES,
   CREATE_TYPE,
+  DELETE_TYPE,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -13,6 +14,11 @@ const initialState = {
   loaded: false,
   loading: false,
   create: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  delete: {
     loaded: false,
     loading: false,
     error: null,
@@ -38,6 +44,15 @@ export default function types(state = initialState, action = {}) {
           error: null,
         }
       }
+    case `${DELETE_TYPE}_PENDING`:
+      return {
+        ...state,
+        delete: {
+          loaded: false,
+          loading: true,
+          error: null,
+        }
+      }
     case `${GET_TYPES}_PENDING`:
       return {
         ...state,
@@ -49,6 +64,15 @@ export default function types(state = initialState, action = {}) {
       return {
         ...state,
         create: {
+          loaded: true,
+          loading: false,
+          error: null,
+        }
+      }
+    case `${DELETE_TYPE}_SUCCESS`:
+      return {
+        ...state,
+        delete: {
           loaded: true,
           loading: false,
           error: null,
@@ -66,6 +90,15 @@ export default function types(state = initialState, action = {}) {
       return {
         ...state,
         create: {
+          loaded: false,
+          loading: false,
+          error: action.error,
+        }
+      }
+    case `${DELETE_TYPE}_FAIL`:
+      return {
+        ...state,
+        delete: {
           loaded: false,
           loading: false,
           error: action.error,

@@ -6,6 +6,7 @@
 import {
   GET_TYPES,
   CREATE_TYPE,
+  DELETE_TYPE,
  } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -41,6 +42,22 @@ export function createType(data) {
       op: 'post',
       path: '/@types',
       data,
+    },
+  };
+}
+
+/**
+ * Delete type function.
+ * @function deleteType
+ * @param {string} id Type id
+ * @returns {Object} Delete type action.
+ */
+export function deleteType(tid) {
+  return {
+    type: DELETE_TYPE,
+    request: {
+      op: 'del',
+      path: `/@types/${tid}`,
     },
   };
 }

@@ -64,6 +64,7 @@ export {
 export {
   getTypes,
   createType,
+  deleteType,
 } from '@plone/volto/actions/types/types';
 export {
   createUser,

@@ -31,6 +31,7 @@ export const GET_SCHEMA = 'GET_SCHEMA';
 export const GET_SHARING = 'GET_SHARING';
 export const GET_TYPES = 'GET_TYPES';
 export const CREATE_TYPE = "CREATE_TYPE";
+export const DELETE_TYPE = "DELETE_TYPE";
 export const GET_USER = 'GET_USER';
 export const GET_VOCABULARY = 'GET_VOCABULARY';
 export const GET_VOCABULARY_TOKEN_TITLE = 'GET_VOCABULARY_TOKEN_TITLE';
