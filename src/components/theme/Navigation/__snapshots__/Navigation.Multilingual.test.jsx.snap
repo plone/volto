@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navigation renders a navigation component with an active item 1`] = `
+exports[`Navigation Multilingual renders a navigation component with an active item 1`] = `
 <nav
   className="navigation"
 >
@@ -28,9 +28,17 @@ exports[`Navigation renders a navigation component with an active item 1`] = `
     onClick={[Function]}
   >
     <a
+      aria-current={null}
+      className="item"
+      href="/en"
+      onClick={[Function]}
+    >
+      Home
+    </a>
+    <a
       aria-current="page"
       className="item active"
-      href="/blog"
+      href="/en/blog"
       onClick={[Function]}
       style={Object {}}
     >
@@ -48,7 +56,7 @@ exports[`Navigation renders a navigation component with an active item 1`] = `
 </nav>
 `;
 
-exports[`Navigation renders a navigation component with an active item when its subchildren are accessed 1`] = `
+exports[`Navigation Multilingual renders a navigation component with an active item when its subchildren are accessed 1`] = `
 <nav
   className="navigation"
 >
@@ -76,9 +84,17 @@ exports[`Navigation renders a navigation component with an active item when its 
     onClick={[Function]}
   >
     <a
+      aria-current={null}
+      className="item"
+      href="/en"
+      onClick={[Function]}
+    >
+      Home
+    </a>
+    <a
       aria-current="page"
       className="item active"
-      href="/blog"
+      href="/en/blog"
       onClick={[Function]}
       style={Object {}}
     >
@@ -96,7 +112,7 @@ exports[`Navigation renders a navigation component with an active item when its 
 </nav>
 `;
 
-exports[`Navigation renders a navigation component with only one active item even if there are similar item names 1`] = `
+exports[`Navigation Multilingual renders a navigation component with only one active item even if there are similar item names 1`] = `
 <nav
   className="navigation"
 >
@@ -124,9 +140,17 @@ exports[`Navigation renders a navigation component with only one active item eve
     onClick={[Function]}
   >
     <a
+      aria-current={null}
+      className="item"
+      href="/en"
+      onClick={[Function]}
+    >
+      Home
+    </a>
+    <a
       aria-current="page"
       className="item active"
-      href="/blog"
+      href="/en/blog"
       onClick={[Function]}
       style={Object {}}
     >
@@ -135,7 +159,7 @@ exports[`Navigation renders a navigation component with only one active item eve
     <a
       aria-current={null}
       className="item"
-      href="/blog-of-mine"
+      href="/en/blog-of-mine"
       onClick={[Function]}
     >
       Blog of mine
@@ -152,7 +176,7 @@ exports[`Navigation renders a navigation component with only one active item eve
 </nav>
 `;
 
-exports[`Navigation renders a navigation component without active items 1`] = `
+exports[`Navigation Multilingual renders a navigation component without active items 1`] = `
 <nav
   className="navigation"
 >
@@ -182,7 +206,15 @@ exports[`Navigation renders a navigation component without active items 1`] = `
     <a
       aria-current={null}
       className="item"
-      href="/blog"
+      href="/en"
+      onClick={[Function]}
+    >
+      Home
+    </a>
+    <a
+      aria-current={null}
+      className="item"
+      href="/en/blog"
       onClick={[Function]}
     >
       Blog

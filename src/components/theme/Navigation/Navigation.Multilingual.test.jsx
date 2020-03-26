@@ -3,17 +3,27 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { settings } from '~/config';
 
 import Navigation from './Navigation';
 
+beforeAll(() => {
+  settings.isMultilingual = true;
+});
+
+afterAll(() => {
+  settings.isMultilingual = false;
+});
+
 const mockStore = configureStore();
 
-describe('Navigation', () => {
+describe('Navigation Multilingual', () => {
   it('renders a navigation component without active items', () => {
     const store = mockStore({
       navigation: {
         items: [
-          { title: 'Blog', url: '/blog' },
+          { title: 'Home', url: '/en' },
+          { title: 'Blog', url: '/en/blog' },
           { title: 'Users', url: '/users' },
         ],
       },
@@ -25,8 +35,8 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
-          <Navigation pathname="/" />
+        <MemoryRouter initialEntries={[{ pathname: '/en/bla' }]}>
+          <Navigation pathname="/en/bla" />
         </MemoryRouter>
       </Provider>,
     );
@@ -38,7 +48,8 @@ describe('Navigation', () => {
     const store = mockStore({
       navigation: {
         items: [
-          { title: 'Blog', url: '/blog' },
+          { title: 'Home', url: '/en' },
+          { title: 'Blog', url: '/en/blog' },
           { title: 'Users', url: '/users' },
         ],
       },
@@ -50,8 +61,8 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter initialEntries={[{ pathname: '/blog' }]}>
-          <Navigation pathname="/blog" />
+        <MemoryRouter initialEntries={[{ pathname: '/en/blog' }]}>
+          <Navigation pathname="/en/blog" />
         </MemoryRouter>
       </Provider>,
     );
@@ -63,7 +74,8 @@ describe('Navigation', () => {
     const store = mockStore({
       navigation: {
         items: [
-          { title: 'Blog', url: '/blog' },
+          { title: 'Home', url: '/en' },
+          { title: 'Blog', url: '/en/blog' },
           { title: 'Users', url: '/users' },
         ],
       },
@@ -75,8 +87,8 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter initialEntries={[{ pathname: '/blog/2017/12/27' }]}>
-          <Navigation pathname="/blog/2017/12/27" />
+        <MemoryRouter initialEntries={[{ pathname: '/en/blog/2017/12/27' }]}>
+          <Navigation pathname="/en/blog/2017/12/27" />
         </MemoryRouter>
       </Provider>,
     );
@@ -88,8 +100,9 @@ describe('Navigation', () => {
     const store = mockStore({
       navigation: {
         items: [
-          { title: 'Blog', url: '/blog' },
-          { title: 'Blog of mine', url: '/blog-of-mine' },
+          { title: 'Home', url: '/en' },
+          { title: 'Blog', url: '/en/blog' },
+          { title: 'Blog of mine', url: '/en/blog-of-mine' },
           { title: 'Users', url: '/users' },
         ],
       },
@@ -101,8 +114,8 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter initialEntries={[{ pathname: '/blog' }]}>
-          <Navigation pathname="/blog" />
+        <MemoryRouter initialEntries={[{ pathname: '/en/blog' }]}>
+          <Navigation pathname="/en/blog" />
         </MemoryRouter>
       </Provider>,
     );
