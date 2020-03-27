@@ -9,6 +9,10 @@ import { defineMessages, injectIntl } from 'react-intl';
 import moment from 'moment';
 import cx from 'classnames';
 import { List, Button, Header, Label } from 'semantic-ui-react';
+import { Icon } from '@plone/volto/components';
+import addSVG from '@plone/volto/icons/circle-plus.svg';
+import trashSVG from '@plone/volto/icons/delete.svg';
+
 import { toISOString } from './Utils';
 
 const messages = defineMessages({
@@ -31,6 +35,14 @@ const messages = defineMessages({
   no_occurences: {
     id: 'No occurences set',
     defaultMessage: 'No occurences set',
+  },
+  exclude: {
+    id: 'Exclude this occurence',
+    defaultMessage: 'Exclude this occurence',
+  },
+  include: {
+    id: 'Include this occurence',
+    defaultMessage: 'Include this occurence',
   },
 });
 
@@ -109,23 +121,29 @@ const Occurences = ({
                     <>
                       {!excluded && (
                         <Button
-                          icon="remove"
-                          color="red"
-                          compact
+                          basic
+                          icon
+                          className="exclude-button"
                           onClick={() => {
                             exclude(date);
                           }}
-                        />
+                          aria-label={intl.formatMessage(messages.exclude)}
+                        >
+                          <Icon name={trashSVG} size="18px" />
+                        </Button>
                       )}
                       {excluded && (
                         <Button
-                          icon="plus"
-                          primary
-                          compact
+                          basic
+                          icon
+                          className="include-button"
                           onClick={() => {
                             undoExclude(date);
                           }}
-                        />
+                          aria-label={intl.formatMessage(messages.include)}
+                        >
+                          <Icon name={addSVG} size="24px" />
+                        </Button>
                       )}
                     </>
                   ) : (
@@ -136,7 +154,11 @@ const Occurences = ({
               <List.Content className={cx({ excluded: excluded })}>
                 {formatDate(date)}
                 {isAdditional(date) && (
-                  <Label pointing="left" size="small" color="green">
+                  <Label
+                    pointing="left"
+                    size="small"
+                    color={excluded ? 'grey' : 'green'}
+                  >
                     {intl.formatMessage(messages.additional_date)}
                   </Label>
                 )}

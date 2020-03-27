@@ -211,7 +211,6 @@ class RecurrenceWidget extends Component {
   // }
 
   editRecurrence = () => {
-    console.log('editRecurrence ', this.props.formData);
     this.setRecurrenceStartEnd();
   };
 
@@ -222,7 +221,6 @@ class RecurrenceWidget extends Component {
       .toDate();
 
     this.setState(prevState => {
-      // console.log('prevState', prevState);
       let rruleSet = prevState.rruleSet;
       const formValues = this.getFormValues(rruleSet); //to set default values
 
@@ -431,8 +429,6 @@ class RecurrenceWidget extends Component {
   };
 
   getDefaultUntil = freq => {
-    console.log('getDefaultUntil', this.props.formData);
-
     var end = this.props.formData?.end
       ? toISOString(this.getUTCDate(this.props.formData.end).toDate())
       : null;
@@ -703,6 +699,11 @@ class RecurrenceWidget extends Component {
 
   remove = () => {
     this.props.onChange(this.props.id, null);
+    let rruleSet = new RRuleSet();
+    this.setState({
+      rruleSet: rruleSet,
+      formValues: this.getFormValues(rruleSet),
+    });
   };
 
   render() {
@@ -779,7 +780,6 @@ class RecurrenceWidget extends Component {
               >
                 <Modal.Header>
                   {intl.formatMessage(messages.editRecurrence)}{' '}
-                  {rruleSet.toString()}
                 </Modal.Header>
                 <Modal.Content scrolling>
                   {rruleSet.rrules().length > 0 && (
