@@ -16,6 +16,7 @@ export {
   flattenHTMLToAppURL,
   flattenToAppURL,
   isInternalURL,
+  getParentUrl,
   getBaseUrl,
   getIcon,
   getView,

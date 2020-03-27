@@ -62,16 +62,16 @@ export const defaultRoutes = [
     component: Controlpanels,
   },
   {
-    path: '/controlpanel/moderate-comments',
-    component: ModerateComments,
-  },
-  {
-    path: '/controlpanel/content-types/:id',
+    path: '/controlpanel/dexterity-types/:id',
     component: ContentType,
   },
   {
-    path: '/controlpanel/content-types',
+    path: '/controlpanel/dexterity-types',
     component: ContentTypes,
+  },
+  {
+    path: '/controlpanel/moderate-comments',
+    component: ModerateComments,
   },
   {
     path: '/controlpanel/users',

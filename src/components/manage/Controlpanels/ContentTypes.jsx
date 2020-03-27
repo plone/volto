@@ -401,7 +401,7 @@ class ContentTypes extends Component {
                   {this.props.types.map(item => (
                     <Table.Row key={item['@id']}>
                       <Table.Cell>
-                        <Link to={`/controlpanel/content-types/${getId(item['@id'])}`}>
+                        <Link to={`/controlpanel/dexterity-types/${getId(item['@id'])}`}>
                           {item.title}
                         </Link>
                       </Table.Cell>

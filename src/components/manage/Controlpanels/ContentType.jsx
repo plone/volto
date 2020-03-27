@@ -7,34 +7,35 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Link } from 'react-router-dom';
-import { Helmet } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
-import { Container } from 'semantic-ui-react';
+import { Container, Button } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { getSchema } from '@plone/volto/actions';
 import { Form } from '@plone/volto/components';
 import { Icon, Toolbar } from '@plone/volto/components';
 import {
   getId,
+  Helmet,
+  getParentUrl,
   hasBlocksData,
- } from '@plone/volto/helpers';
+} from '@plone/volto/helpers';
 
-import backSVG from '@plone/volto/icons/back.svg';
+import saveSVG from '@plone/volto/icons/save.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
-  back: {
-    id: 'Back',
-    defaultMessage: 'Back',
-  },
   ContentType: {
     id: 'Content Type: {type}',
     defaultMessage: 'Content Type: {type}',
   },
-  Type: {
-    id: 'Type: {type}',
-    defaultMessage: 'Type: {type}',
-  }
+  save: {
+    id: 'Save',
+    defaultMessage: 'Save',
+  },
+  cancel: {
+    id: 'Cancel',
+    defaultMessage: 'Cancel',
+  },
 });
 
 /**
@@ -59,11 +60,11 @@ class ContentType extends Component {
     }).isRequired,
   };
 
-    /**
-   * Default properties
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
+  /**
+ * Default properties
+ * @property {Object} defaultProps Default properties.
+ * @static
+ */
   static defaultProps = {
     schema: null,
     type: 'Default',
@@ -77,11 +78,9 @@ class ContentType extends Component {
    */
   constructor(props) {
     super(props);
-    this.onDelete = this.onDelete.bind(this);
-    this.onEdit = this.onEdit.bind(this);
-    this.onEditOk = this.onEditOk.bind(this);
-    this.onEditCancel = this.onEditCancel.bind(this);
+    this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+
     this.state = {
       showEdit: false,
       editId: null,
@@ -98,35 +97,13 @@ class ContentType extends Component {
     this.props.getSchema(this.props.type);
   }
 
-
   /**
-   * Component will mount
-   * @method componentWillMount
+   * Cancel handler
+   * @method onCancel
    * @returns {undefined}
    */
-  UNSAFE_componentWillMount() {
-
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-
-  }
-
-  /**
-   * Delete handler
-   * @method onDelete
-   * @param {Object} event Event object.
-   * @param {string} value Delete value.
-   * @returns {undefined}
-   */
-  onDelete(event, { value }) {
-
+  onCancel() {
+    this.props.history.push(getParentUrl(this.props.pathname));
   }
 
   /**
@@ -140,47 +117,6 @@ class ContentType extends Component {
   }
 
   /**
-   * Edit handler
-   * @method onEdit
-   * @param {Object} event Event object.
-   * @param {string} value Delete value.
-   * @returns {undefined}
-   */
-  onEdit(event, { value }) {
-    this.setState({
-      showEdit: true,
-      editId: value.id,
-      editText: value.text,
-    });
-  }
-
-  /**
-   * On edit ok
-   * @method onEditOk
-   * @returns {undefined}
-   */
-  onEditOk() {
-    this.setState({
-      showEdit: false,
-      editId: null,
-      editText: null,
-    });
-  }
-
-  /**
-   * On edit cancel
-   * @method onEditCancel
-   * @returns {undefined}
-   */
-  onEditCancel() {
-    this.setState({
-      showEdit: false,
-      editId: null,
-      editText: null,
-    });
-  }
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -188,55 +124,70 @@ class ContentType extends Component {
   render() {
     if (this.props.schemaRequest.loaded) {
       const visual = hasBlocksData(this.props.schema.properties);
-
       return (
-        <div id="page-content-types">
+        <div id="page-dexterity-types">
           <Helmet
             title={this.props.intl.formatMessage(messages.ContentType, {
               type: this.props.type,
             })}
           />
           <Container>
-          <article id="content">
-            <header>
-              <h1 className="documentFirstHeading">
-                <FormattedMessage
-                  id="Type: {type}"
-                  defaultMessage="Type: {type}"
-                  values={{ type: this.props.type }}
+            <article id="content">
+              <header>
+                <h1 className="documentFirstHeading">
+                  <FormattedMessage
+                    id="Type: {type}"
+                    defaultMessage="Type: {type}"
+                    values={{ type: this.props.type }}
+                  />
+                </h1>
+              </header>
+              <section id="content-core">
+                <Form
+                  schema={this.props.schema}
+                  onSubmit={this.onSubmit}
+                  hideActions
+                  pathname={this.props.pathname}
+                  visual={visual}
                 />
-              </h1>
-            </header>
-            <section id="content-core">
-            </section>
-          </article>
-        </Container>
-        <Form
-          schema={this.props.schema}
-          onSubmit={this.onSubmit}
-          hideActions
-          pathname={this.props.pathname}
-          visual={visual}
-        />
-        <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
-          <Toolbar
-            pathname={this.props.pathname}
-            hideDefaultViewButtons
-            inner={
-              <Link
-                to="/controlpanel/content-types"
-                className="item"
-              >
-                <Icon
-                  name={backSVG}
-                  className="contents circled"
-                  size="30px"
-                  title={this.props.intl.formatMessage(messages.back)}
-                />
-              </Link>
-            }
-          />
-        </Portal>
+              </section>
+            </article>
+          </Container>
+          <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
+            <Toolbar
+              pathname={this.props.pathname}
+              hideDefaultViewButtons
+              inner={
+                <>
+                  <Button
+                    id="toolbar-save"
+                    className="save"
+                    aria-label={this.props.intl.formatMessage(messages.save)}
+                    onClick={() => this.form.current.onSubmit()}
+                  // loading={this.props.createRequest.loading}
+                  >
+                    <Icon
+                      name={saveSVG}
+                      className="circled"
+                      size="30px"
+                      title={this.props.intl.formatMessage(messages.save)}
+                    />
+                  </Button>
+                  <Button className="cancel" onClick={() => this.onCancel()}>
+                    <Icon
+                      name={clearSVG}
+                      className="circled"
+                      aria-label={this.props.intl.formatMessage(
+                        messages.cancel,
+                      )}
+                      size="30px"
+                      title={this.props.intl.formatMessage(messages.cancel)}
+                    />
+                  </Button>
+                </>
+              }
+            />
+          </Portal>
         </div>
       );
     }
