@@ -37,6 +37,7 @@
 ### Changes
 
 - Improve the UX of the listing block when queries are running @sneridagh
+- Added table of content cypress test @steffenri
 
 ## 4.0.1 (2020-03-09)
 

@@ -28,72 +28,72 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#page-document p').contains('My text');
     });
 
-    it('Add Video Block with YouTube Video', () => {
-      cy.get(`.block.title [data-contents]`)
-        .clear()
-        .type('My title');
-      cy.get('.block.inner.text .public-DraftEditor-content').click();
-      cy.get('.ui.basic.icon.button.block-add-button').click();
-      cy.get('.title')
-        .contains('Media')
-        .click();
-      cy.get('.ui.basic.icon.button.video')
-        .contains('Video')
-        .click();
-      cy.get('.toolbar-inner > .ui > input')
-        .click()
-        .type('https://youtu.be/T6J3d35oIAY')
-        .type('{enter}');
-      cy.get('#toolbar-save').click();
-      cy.get('.block.video');
-    });
+    // it('Add Video Block with YouTube Video', () => {
+    //   cy.get(`.block.title [data-contents]`)
+    //     .clear()
+    //     .type('My title');
+    //   cy.get('.block.inner.text .public-DraftEditor-content').click();
+    //   cy.get('.ui.basic.icon.button.block-add-button').click();
+    //   cy.get('.title')
+    //     .contains('Media')
+    //     .click();
+    //   cy.get('.ui.basic.icon.button.video')
+    //     .contains('Video')
+    //     .click();
+    //   cy.get('.toolbar-inner > .ui > input')
+    //     .click()
+    //     .type('https://youtu.be/T6J3d35oIAY')
+    //     .type('{enter}');
+    //   cy.get('#toolbar-save').click();
+    //   cy.get('.block.video');
+    // });
 
-    it('Add Video Block with Vimeo Video', () => {
-      cy.get(`.block.title [data-contents]`)
-        .clear()
-        .type('My title');
-      cy.get('.block.inner.text .public-DraftEditor-content').click();
-      cy.get('.ui.basic.icon.button.block-add-button').click();
-      cy.get('.title')
-        .contains('Media')
-        .click();
-      cy.get('.ui.basic.icon.button.video')
-        .contains('Video')
-        .click();
-      cy.get('.toolbar-inner > .ui > input')
-        .click()
-        .type('https://vimeo.com/85804536')
-        .type('{enter}');
-      cy.get('#toolbar-save').click();
-      cy.get('.block.video');
-    });
+    // it('Add Video Block with Vimeo Video', () => {
+    //   cy.get(`.block.title [data-contents]`)
+    //     .clear()
+    //     .type('My title');
+    //   cy.get('.block.inner.text .public-DraftEditor-content').click();
+    //   cy.get('.ui.basic.icon.button.block-add-button').click();
+    //   cy.get('.title')
+    //     .contains('Media')
+    //     .click();
+    //   cy.get('.ui.basic.icon.button.video')
+    //     .contains('Video')
+    //     .click();
+    //   cy.get('.toolbar-inner > .ui > input')
+    //     .click()
+    //     .type('https://vimeo.com/85804536')
+    //     .type('{enter}');
+    //   cy.get('#toolbar-save').click();
+    //   cy.get('.block.video');
+    // });
 
-    it('Add Video Block with MP4 Video', () => {
-      cy.get(`.block.title [data-contents]`)
-        .clear()
-        .type('My title');
-      cy.get('.block.inner.text .public-DraftEditor-content').click();
-      cy.get('.ui.basic.icon.button.block-add-button').click();
-      cy.get('.title')
-        .contains('Media')
-        .click();
-      cy.get('.ui.basic.icon.button.video')
-        .contains('Video')
-        .click();
-      cy.get('.toolbar-inner > .ui > input')
-        .click()
-        .type('https://1.videolyser.de/videos/1714848/11745228_hd.mp4')
-        .type('{enter}');
-      cy.get('#toolbar-save').click();
+    // it('Add Video Block with MP4 Video', () => {
+    //   cy.get(`.block.title [data-contents]`)
+    //     .clear()
+    //     .type('My title');
+    //   cy.get('.block.inner.text .public-DraftEditor-content').click();
+    //   cy.get('.ui.basic.icon.button.block-add-button').click();
+    //   cy.get('.title')
+    //     .contains('Media')
+    //     .click();
+    //   cy.get('.ui.basic.icon.button.video')
+    //     .contains('Video')
+    //     .click();
+    //   cy.get('.toolbar-inner > .ui > input')
+    //     .click()
+    //     .type('https://1.videolyser.de/videos/1714848/11745228_hd.mp4')
+    //     .type('{enter}');
+    //   cy.get('#toolbar-save').click();
 
-      cy.get('.block.video video').should(
-        'have.attr',
-        'src',
-        'https://1.videolyser.de/videos/1714848/11745228_hd.mp4',
-      );
+    //   cy.get('.block.video video').should(
+    //     'have.attr',
+    //     'src',
+    //     'https://1.videolyser.de/videos/1714848/11745228_hd.mp4',
+    //   );
 
-      cy.visit('/my-page/edit');
-    });
+    //   cy.visit('/my-page/edit');
+    // });
 
     it('Add maps block', () => {
       // Add maps block
@@ -596,5 +596,34 @@ if (Cypress.env('API') !== 'guillotina') {
     //   //   cy.contains(expected);
     //   // }
     // });
+
+    it('Add Table of Contents block', () => {
+      //Add H2
+      cy.get('.block.inner.text .public-DraftEditor-content')
+        .type('expectedH2')
+        .setSelection('expectedH2');
+      cy.get(
+        '#page-edit .draftJsToolbar__buttonWrapper__1Dmqh:nth-of-type(5)',
+      ).click();
+      cy.get('.block.inner.text .public-DraftEditor-content')
+        .click()
+        .type(' {enter}');
+
+      //Add TOC Block
+      cy.get('.ui.basic.icon.button.block-add-button').click();
+      cy.get('.title')
+        .contains('Common')
+        .click();
+      cy.get('.ui.basic.icon.button.toc')
+        .contains('Table of Contents')
+        .click();
+
+      //Save
+      cy.get('#toolbar-save').click();
+
+      //View
+      cy.get('.ui.list a').contains('expectedH2');
+      cy.get('.ui.list div').should('have.class', 'header-two');
+    });
   });
 }
