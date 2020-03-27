@@ -51,6 +51,10 @@ msgstr "Adicionar"
 msgid "Add Content"
 msgstr "Adicionar Conteúdo"
 
+#: components/manage/Toolbar/Types
+msgid "Add Translation..."
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
 msgstr "Adicionar Utilizador"
@@ -1402,6 +1406,10 @@ msgstr "Título"
 
 #: components/manage/Contents/Contents
 msgid "Total comments"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+msgid "Translate to {lang}"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
