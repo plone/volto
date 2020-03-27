@@ -8,6 +8,7 @@
 
 - Fix typo for Japanese translation @terapyon
 - Fix refresh of the `Breadcrumbs` and `Navigation` components on calling `/login` and `/logout` @sneridagh
+- Adjust implementation of the download link behavior for files @sneridagh
 
 ## Internal
 
