@@ -174,7 +174,16 @@ class RecurrenceWidget extends Component {
     moment.locale(this.props.intl.locale);
 
     let rruleSet = this.props.value
-      ? rrulestr(props.value, { unfold: true, forceset: true })
+      ? rrulestr(props.value, {
+          //unfold: true,
+          compatible: true,
+          forceset: true,
+          dtstart: props.formData.start
+            ? this.getUTCDate(props.formData.start)
+                .startOf('day')
+                .toDate()
+            : null,
+        })
       : new RRuleSet();
 
     this.state = {
@@ -210,11 +219,7 @@ class RecurrenceWidget extends Component {
   setRecurrenceStartEnd = () => {
     const start = this.props.formData?.start;
     let _start = this.getUTCDate(start)
-      .set({
-        hour: 0,
-        minute: 0,
-        second: 0,
-      })
+      .startOf('day')
       .toDate();
 
     this.setState(prevState => {
@@ -376,7 +381,12 @@ class RecurrenceWidget extends Component {
           }
           break;
         case 'until':
-          value = value ? new Date(value) : null;
+          value = value
+            ? moment(new Date(value))
+                .endOf('day')
+                .utc()
+                .toDate()
+            : null;
           break;
         default:
           break;
@@ -396,8 +406,6 @@ class RecurrenceWidget extends Component {
 
   updateRruleSet = (rruleSet, formValues, field, value) => {
     var rruleOptions = this.formValuesToRRuleOptions(formValues);
-    console.log('rruleOptions', rruleOptions);
-    console.log('updateRruleSet', rruleSet.dtstart(), rruleSet);
     var dstart =
       field === 'dtstart'
         ? value
@@ -412,15 +420,15 @@ class RecurrenceWidget extends Component {
     var rdates =
       field === 'rdates' ? value : Object.assign([], rruleSet.rdates());
 
-    let set = new RRuleSet();
-    set.dtstart(dstart);
     rruleOptions.dtstart = dstart;
+
+    let set = new RRuleSet();
+    //set.dtstart(dstart);
     set.rrule(new RRule(rruleOptions));
 
     exdates.map(ex => set.exdate(ex));
     rdates.map(r => set.rdate(r));
 
-    console.log(set.all());
     return set;
   };
 
@@ -435,24 +443,28 @@ class RecurrenceWidget extends Component {
       : null;
     var tomorrow = toISOString(
       moment()
+        .endOf('day')
         .add(1, 'days')
         .utc()
         .toDate(),
     );
     var nextWeek = toISOString(
       moment()
+        .endOf('day')
         .add(7, 'days')
         .utc()
         .toDate(),
     );
     var nextMonth = toISOString(
       moment()
+        .endOf('day')
         .add(1, 'months')
         .utc()
         .toDate(),
     );
     var nextYear = toISOString(
       moment()
+        .endOf('day')
         .add(1, 'years')
         .utc()
         .toDate(),
@@ -868,9 +880,9 @@ class RecurrenceWidget extends Component {
                         </Header>
                         <Form.Field inline>
                           <Input
-                            id="until"
+                            id="addDate"
                             type="date"
-                            name="until"
+                            name="addDate"
                             min={moment(rruleSet.rrules()[0].dtstart)
                               .add(1, 'd')
                               .utc()

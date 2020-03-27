@@ -31,7 +31,7 @@ const IntervalField = ({ label, labelAfter, value, onChange }) => {
                 onChange={({ target }) => {
                   onChange(
                     target.id,
-                    target.value === '' ? undefined : target.value,
+                    target.value === '' ? undefined : parseInt(target.value),
                   );
                 }}
               />
