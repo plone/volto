@@ -220,11 +220,6 @@ class RecurrenceWidget extends Component {
     }
   }
 
-  // shouldComponentUpdate(nextProps, nextSate) {
-  //   console.log('shouldComponentUpdate', nextProps);
-  //   return nextProps.formData.start !== this.props.formData.start;
-  // }
-
   editRecurrence = () => {
     this.setRecurrenceStartEnd();
   };
@@ -371,7 +366,7 @@ class RecurrenceWidget extends Component {
       });
     }
 
-    console.log('getFormValues elab', formValues);
+    //  console.log('getFormValues elab', formValues);
     return formValues;
   };
 
@@ -500,7 +495,7 @@ class RecurrenceWidget extends Component {
   };
 
   changeField = (formValues, field, value) => {
-    console.log('field', field, 'value', value);
+    //  console.log('field', field, 'value', value);
     //get weekday from state.
     var byweekday =
       this.state?.rruleSet?.rrules().length > 0
@@ -643,32 +638,20 @@ class RecurrenceWidget extends Component {
   };
 
   onChangeRule = (field, value) => {
-    console.log('---onChangeRule: ', field, value);
+    //console.log('---onChangeRule: ', field, value);
 
     var formValues = Object.assign({}, this.state.formValues);
-
     formValues = this.changeField(formValues, field, value);
 
-    this.setState(
-      prevState => {
-        // console.log('prevState', prevState);
-        var rruleSet = prevState.rruleSet;
-        rruleSet = this.updateRruleSet(rruleSet, formValues, field, value);
-        return {
-          ...prevState,
-          rruleSet,
-          formValues,
-        };
-      },
-      () => {
-        // console.log(
-        //   '---setState after',
-        //   field,
-        //   value,
-        //   this.state.rruleSet.toString(),
-        // );
-      },
-    );
+    this.setState(prevState => {
+      var rruleSet = prevState.rruleSet;
+      rruleSet = this.updateRruleSet(rruleSet, formValues, field, value);
+      return {
+        ...prevState,
+        rruleSet,
+        formValues,
+      };
+    });
   };
 
   exclude = date => {
