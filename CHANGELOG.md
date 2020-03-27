@@ -8,6 +8,7 @@
 
 - Fix typo for Japanese translation @terapyon
 - Fix refresh of the `Breadcrumbs` and `Navigation` components on calling `/login` and `/logout` @sneridagh
+- Breaking: change component to where page title is set to `App.jsx` @jackahl
 
 ## Internal
 
