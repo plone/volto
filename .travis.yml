@@ -52,7 +52,7 @@ script:
     yarn test:ci;
     fi
   - if [ "$TEST_SUITE" == "guillotina" ]; then
-    yarn ci:cypress:run:guillotina;
+    # yarn ci:cypress:run:guillotina;
     fi
   - if [ "$TEST_SUITE" == "plone" ]; then
     yarn ci:cypress:run;
