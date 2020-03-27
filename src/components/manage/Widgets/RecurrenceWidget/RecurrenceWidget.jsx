@@ -194,17 +194,31 @@ class RecurrenceWidget extends Component {
     };
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log('didupdate');
-  //   if (prevProps.formData.start !== this.props.formData.start) {
-  //     this.setState({
-  //       rruleSet: this.setRecurrenceStart(
-  //         this.state.rruleSet,
-  //         this.props.formData.start,
-  //       ),
-  //     });
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (this.props.value) {
+      if (prevProps.formData?.start !== this.props.formData?.start) {
+        let start = this.getUTCDate(this.props.formData?.start)
+          .startOf('day')
+          .toDate();
+
+        this.setState(prevState => {
+          let rruleSet = prevState.rruleSet;
+
+          rruleSet = this.updateRruleSet(
+            rruleSet,
+            prevState.formValues,
+            'dtstart',
+            start,
+          );
+
+          return {
+            ...prevState,
+            rruleSet,
+          };
+        });
+      }
+    }
+  }
 
   // shouldComponentUpdate(nextProps, nextSate) {
   //   console.log('shouldComponentUpdate', nextProps);
@@ -223,7 +237,7 @@ class RecurrenceWidget extends Component {
 
     this.setState(prevState => {
       let rruleSet = prevState.rruleSet;
-      const formValues = this.getFormValues(rruleSet); //to set default values
+      const formValues = this.getFormValues(rruleSet); //to set default values, included end
 
       rruleSet = this.updateRruleSet(rruleSet, formValues, 'dtstart', _start);
       return {
