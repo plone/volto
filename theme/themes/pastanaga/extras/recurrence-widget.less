@@ -1,33 +1,47 @@
+.recurrence-widget {
+  padding-top: 1em;
+}
+
+.recurrence-widget,
 .recurrence-form {
-  .ui.basic.button.exclude-button {
-    border: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+  .ui.basic.button {
+    &.edit-recurrence,
+    &.exclude-button,
+    &.include-button,
+    &.save {
+      border: none;
+      -webkit-box-shadow: none !important;
+      box-shadow: none !important;
 
-    &:hover,
-    &:focus {
-      -webkit-box-shadow: none;
-      box-shadow: none;
-      color: #e40166 !important;
+      &:hover,
+      &:focus {
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+      }
     }
-  }
 
-  .ui.basic.button.include-button {
-    border: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+    &.exclude-button {
+      &:hover,
+      &:focus {
+        color: @darkHotPink!important;
+      }
+    }
 
-    &:hover,
-    &:focus {
-      -webkit-box-shadow: none;
-      box-shadow: none;
-      color: #826a6a !important ;
+    &.include-button {
+      &:hover,
+      &:focus {
+        color: #826a6a !important ;
+      }
+    }
+
+    &.save {
+      color: @teal-blue!important;
     }
   }
 
   /*Excluded dates*/
   .excluded {
-    text-decoration: line-through;
     color: @grey;
+    text-decoration: line-through;
   }
 }

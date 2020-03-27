@@ -5,11 +5,10 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { RRule, RRuleSet, rrulestr } from 'rrule';
-
-import { isEqual, map, find, concat } from 'lodash';
-
 import moment from 'moment';
+import { RRule, RRuleSet, rrulestr } from 'rrule';
+import cx from 'classnames';
+import { isEqual, map, find, concat, remove } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import {
   Form,
@@ -22,8 +21,10 @@ import {
   Input,
 } from 'semantic-ui-react';
 
-import { SelectWidget } from '@plone/volto/components';
-import { remove } from 'lodash';
+import { SelectWidget, Icon } from '@plone/volto/components';
+import saveSVG from '@plone/volto/icons/save.svg';
+import editingSVG from '@plone/volto/icons/editing.svg';
+import trashSVG from '@plone/volto/icons/delete.svg';
 
 import {
   Days,
@@ -724,7 +725,7 @@ class RecurrenceWidget extends Component {
         inline
         required={required}
         error={error.length > 0}
-        className={description ? 'help' : ''}
+        className={cx('recurrence-widget', description ? 'help' : '')}
         id={`${fieldSet || 'field'}-${id}`}
       >
         <Grid>
@@ -757,21 +758,40 @@ class RecurrenceWidget extends Component {
                   </Segment>
                 </>
               )}
-              ---{this.state.rruleSet?.toString()}
-              <Button.Group>
-                <Button onClick={this.show('blurring')} type="button">
-                  {intl.formatMessage(messages.editRecurrence)}
+
+              <div>
+                <Button
+                  basic
+                  color="blue"
+                  className="edit-recurrence"
+                  onClick={this.show('blurring')}
+                  type="button"
+                  aria-label={intl.formatMessage(messages.editRecurrence)}
+                >
+                  <Icon
+                    name={editingSVG}
+                    size="20px"
+                    title={intl.formatMessage(messages.editRecurrence)}
+                  />
                 </Button>
                 <Button
+                  basic
+                  color="pink"
+                  className="edit-recurrence"
                   onClick={() => {
                     this.remove();
                   }}
                   type="button"
-                  color="red"
+                  aria-label={intl.formatMessage(messages.remove)}
                 >
-                  {intl.formatMessage(messages.remove)}
+                  <Icon
+                    name={trashSVG}
+                    size="20px"
+                    title={intl.formatMessage(messages.remove)}
+                  />
                 </Button>
-              </Button.Group>
+              </div>
+
               <Modal
                 dimmer={dimmer}
                 open={open}
@@ -891,12 +911,19 @@ class RecurrenceWidget extends Component {
                 </Modal.Content>
                 <Modal.Actions>
                   <Button
-                    primary
+                    className="save"
+                    basic
                     onClick={() => {
                       this.save();
                     }}
+                    aria-label={intl.formatMessage(messages.save)}
                   >
-                    {intl.formatMessage(messages.save)}
+                    <Icon
+                      name={saveSVG}
+                      className="circled"
+                      size="30px"
+                      title={intl.formatMessage(messages.save)}
+                    />
                   </Button>
                 </Modal.Actions>
               </Modal>
