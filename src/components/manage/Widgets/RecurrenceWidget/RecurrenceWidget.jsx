@@ -175,8 +175,7 @@ class RecurrenceWidget extends Component {
 
     let rruleSet = this.props.value
       ? rrulestr(props.value, {
-          //unfold: true,
-          compatible: true,
+          compatible: true, //If set to True, the parser will operate in RFC-compatible mode. Right now it means that unfold will be turned on, and if a DTSTART is found, it will be considered the first recurrence instance, as documented in the RFC.
           forceset: true,
           dtstart: props.formData.start
             ? this.getUTCDate(props.formData.start)
@@ -383,7 +382,6 @@ class RecurrenceWidget extends Component {
         case 'until':
           value = value
             ? moment(new Date(value))
-                .endOf('day')
                 .utc()
                 .toDate()
             : null;
@@ -434,37 +432,30 @@ class RecurrenceWidget extends Component {
 
   getDefaultUntil = freq => {
     console.log('getDefaultUntil', this.props.formData);
+
     var end = this.props.formData?.end
-      ? toISOString(
-          moment(this.props.formData.end)
-            .utc()
-            .toDate(),
-        )
+      ? toISOString(this.getUTCDate(this.props.formData.end).toDate())
       : null;
     var tomorrow = toISOString(
       moment()
-        .endOf('day')
         .add(1, 'days')
         .utc()
         .toDate(),
     );
     var nextWeek = toISOString(
       moment()
-        .endOf('day')
         .add(7, 'days')
         .utc()
         .toDate(),
     );
     var nextMonth = toISOString(
       moment()
-        .endOf('day')
         .add(1, 'months')
         .utc()
         .toDate(),
     );
     var nextYear = toISOString(
       moment()
-        .endOf('day')
         .add(1, 'years')
         .utc()
         .toDate(),
