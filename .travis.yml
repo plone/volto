@@ -11,6 +11,8 @@ jobs:
       env: TEST_SUITE=guillotina
     - name: 'Unit Tests'
       env: TEST_SUITE=unit
+  allow_failures:
+    - env: TEST_SUITE=guillotina
 cache:
   pip: true
   yarn: true
