@@ -794,6 +794,7 @@ class RecurrenceWidget extends Component {
                 open={open}
                 onClose={this.close}
                 className="recurrence-form"
+                closeIcon
               >
                 <Modal.Header>
                   {intl.formatMessage(messages.editRecurrence)}{' '}
