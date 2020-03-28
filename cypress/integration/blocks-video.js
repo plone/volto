@@ -15,9 +15,12 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Add Video Block with YouTube Video', () => {
+      // given a volto page
       cy.get(`.block.title [data-contents]`)
         .clear()
         .type('My title');
+
+      // when I create a video block with a YouTube video
       cy.get('.block.inner.text .public-DraftEditor-content').click();
       cy.get('.ui.basic.icon.button.block-add-button').click();
       cy.get('.ui.basic.icon.button.video')
@@ -28,7 +31,16 @@ if (Cypress.env('API') !== 'guillotina') {
         .type('https://youtu.be/T6J3d35oIAY')
         .type('{enter}');
       cy.get('#toolbar-save').click();
-      cy.get('.block.video');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('?fullobjects');
+
+      // then the page view should contain an embedded YouTube video
+      cy.get('.block.video iframe')
+        .should('have.attr', 'src')
+        .and('match', /\/\/www.youtube.com\/embed\/T6J3d35oIAY/);
     });
 
     it('Add Video Block with Vimeo Video', () => {
