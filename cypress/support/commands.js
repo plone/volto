@@ -1,3 +1,4 @@
+import 'cypress-file-upload';
 // --- AUTOLOGIN -------------------------------------------------------------
 Cypress.Commands.add('autologin', () => {
   let api_url, user, password;
