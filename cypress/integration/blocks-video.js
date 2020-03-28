@@ -44,9 +44,12 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Add Video Block with Vimeo Video', () => {
+      // given a volto page
       cy.get(`.block.title [data-contents]`)
         .clear()
         .type('My title');
+
+      // when I create a video block with a Vimeo video
       cy.get('.block.inner.text .public-DraftEditor-content').click();
       cy.get('.ui.basic.icon.button.block-add-button').click();
       cy.get('.ui.basic.icon.button.video')
@@ -57,16 +60,22 @@ if (Cypress.env('API') !== 'guillotina') {
         .type('https://vimeo.com/85804536')
         .type('{enter}');
       cy.get('#toolbar-save').click();
-      cy.get('.block.video');
+
+      // then the page view should contain an embedded Vimeo video
+      cy.get('.block.video iframe')
+        .should('have.attr', 'src')
+        .and('match', /\/\/player.vimeo.com\/video\/85804536/);
     });
 
     it('Add Video Block with MP4 Video', () => {
+      // given a volto page
       cy.get(`.block.title [data-contents]`)
         .clear()
         .type('My title');
+
+      // when I create a video block with an MP4 video
       cy.get('.block.inner.text .public-DraftEditor-content').click();
       cy.get('.ui.basic.icon.button.block-add-button').click();
-
       cy.get('.ui.basic.icon.button.video')
         .contains('Video')
         .click();
@@ -76,13 +85,12 @@ if (Cypress.env('API') !== 'guillotina') {
         .type('{enter}');
       cy.get('#toolbar-save').click();
 
+      // then the page view should contain an embedded MP4 video
       cy.get('.block.video video').should(
         'have.attr',
         'src',
         'https://1.videolyser.de/videos/1714848/11745228_hd.mp4',
       );
-
-      cy.visit('/my-page/edit');
     });
   });
 }
