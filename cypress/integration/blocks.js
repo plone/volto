@@ -384,6 +384,59 @@ if (Cypress.env('API') !== 'guillotina') {
       /*not implemented because Navigation ui is not yet developed in Listing Block sidebar*/
     });
 
+    // it('Add image block', () => {
+    //   // Add image block
+    //   cy.get('.block.text [contenteditable]').click();
+    //   cy.get('button.block-add-button').click();
+    //   cy.get('.blocks-chooser .title')
+    //     .contains('media')
+    //     .click();
+    //   cy.get('.blocks-chooser .media')
+    //     .contains('image')
+    //     .click();
+
+    //   //Type in external image URL
+    //   cy.get(`.block.image center input`)
+    //     .click()
+    //     .type(
+    //       `https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png{enter}`,
+    //     );
+
+    //   cy.get('#toolbar-save').click();
+
+    //   cy.get('#page-document img').should(
+    //     'have.attr',
+    //     'src',
+    //     'https://github.com/plone/volto/raw/master/docs/logos/volto-colorful.png',
+    //   );
+    // });
+
+    // it('Add image via drag and drop', () => {
+    //   const block = 'image';
+
+    //   // Add image Block
+    //   cy.get('.block.text [contenteditable]').click();
+    //   cy.get('button.block-add-button').click();
+    //   cy.get('.blocks-chooser .title')
+    //     .contains('media')
+    //     .click();
+    //   cy.get(
+    //     '.content.active.blocks-list .ui.buttons:first-child button',
+    //   ).click();
+
+    //   const fileName = 'image.png';
+    //   cy.fixture(fileName).then(fileContent => {
+    //     cy.get(`.ui.block.${block} .dropzone`).upload(
+    //       {
+    //         fileContent,
+    //         fileName,
+    //         mimeType: 'application/png',
+    //       },
+    //       { subjectType: 'drag-n-drop' },
+    //     );
+    //   });
+    // });
+
     // it('Add hero block', () => {
     //   // TODO: Implement react dropzone for this block to test the image
 
