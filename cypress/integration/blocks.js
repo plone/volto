@@ -3,6 +3,7 @@ if (Cypress.env('API') !== 'guillotina') {
     beforeEach(() => {
       // Wait a bit to previous teardown to complete correctly because Heisenbug in this point
       cy.wait(2000);
+      // given a logged in editor and a page in edit mode
       cy.autologin();
       cy.createContent('Document', 'my-page', 'My Page');
       cy.visit('/my-page/edit');
@@ -11,25 +12,30 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('?fullobjects');
+      cy.get(`.block.title [data-contents]`);
     });
 
     it('Add text block', () => {
-      // fill text block
+      // when I add a text block
       cy.get('.block.inner.text .public-DraftEditor-content')
         .click()
         .type('My text')
         .get('span[data-text]')
         .contains('My text');
-
-      // save
       cy.get('#toolbar-save').click();
+      cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('?fullobjects');
 
-      // check if view contains text block
+      // then the page view should contain the text block
       cy.get('#page-document p').contains('My text');
     });
 
     it('Add maps block', () => {
-      // Add maps block
+      // when I add a maps block
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();
       cy.get('.blocks-chooser .title')
@@ -38,21 +44,23 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.blocks-chooser .common')
         .contains('Maps')
         .click();
-
-      // Fill maps block
       cy.get(`.block.maps .toolbar-inner .ui.input input`)
         .type(
           '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2525.497070288158!2d7.103133415464086!3d50.72926897951482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bee17434076fc7%3A0x2e99668f581378c8!2sRiesstra%C3%9Fe+21%2C+53113+Bonn!5e0!3m2!1sde!2sde!4v1561386702097!5m2!1sde!2sde" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>',
         )
         .type('{enter}');
-
-      // Save
       cy.get('#toolbar-save').click();
+      cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('?fullobjects');
 
-      // Check if Google maps shows up in the page view
+      // then the page view should contain the maps block
       cy.get('#page-document iframe')
         .should('have.attr', 'src')
-        .should('include', 'maps');
+        .and('match', /\/\/www.google.com\/maps\/embed\?pb=/);
     });
 
     it('Add Listing block', () => {
@@ -531,10 +539,10 @@ if (Cypress.env('API') !== 'guillotina') {
     // });
 
     it('Add Table of Contents block', () => {
-      //Add H2
+      // given a text block with a H2 headline
       cy.get('.block.inner.text .public-DraftEditor-content')
-        .type('expectedH2')
-        .setSelection('expectedH2');
+        .type('This is a H2 Headline')
+        .setSelection('This is a H2 Headline');
       cy.get(
         '#page-edit .draftJsToolbar__buttonWrapper__1Dmqh:nth-of-type(5)',
       ).click();
@@ -542,7 +550,7 @@ if (Cypress.env('API') !== 'guillotina') {
         .click()
         .type(' {enter}');
 
-      //Add TOC Block
+      // when I add a ToC block
       cy.get('.ui.basic.icon.button.block-add-button').click();
       cy.get('.title')
         .contains('Common')
@@ -550,13 +558,22 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.ui.basic.icon.button.toc')
         .contains('Table of Contents')
         .click();
-
-      //Save
       cy.get('#toolbar-save').click();
+      cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('?fullobjects');
 
-      //View
-      cy.get('.ui.list a').contains('expectedH2');
-      cy.get('.ui.list div').should('have.class', 'header-two');
+      // then the ToC block should contain the H2 headline
+      cy.get('.block.table-of-contents .ui.list a').contains(
+        'This is a H2 Headline',
+      );
+      cy.get('.block.table-of-contents .ui.list div').should(
+        'have.class',
+        'header-two',
+      );
     });
   });
 }
