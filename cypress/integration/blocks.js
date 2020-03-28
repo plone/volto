@@ -431,30 +431,32 @@ if (Cypress.env('API') !== 'guillotina') {
     //   }
     // });
 
-    // it('Add HTML block', () => {
-    //   // Add HTML block
-    //   cy.get('.block.text [contenteditable]').click();
-    //   cy.get('button.block-add-button').click();
-    //   cy.get('.blocks-chooser .title')
-    //     .contains('common')
-    //     .click();
-    //   cy.get('.blocks-chooser .common')
-    //     .contains('html')
-    //     .click();
+    it('Add HTML block', () => {
+      // when I add a maps block
+      cy.get('.block.text [contenteditable]').click();
+      cy.get('button.block-add-button').click();
+      cy.get('.blocks-chooser .title')
+        .contains('Common')
+        .click();
+      cy.get('.blocks-chooser .common')
+        .contains('HTML')
+        .click();
+      cy.get(`.block.html .npm__react-simple-code-editor__textarea`).type(
+        `<pre>This is HTML</pre>`,
+      );
+      cy.get(`.block.html [aria-label="Preview"]`).click();
+      cy.get(`.block.html pre`).contains('This is HTML');
+      cy.get('#toolbar-save').click();
+      cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('?fullobjects');
 
-    //   // Add HTML
-    //   cy.get(`.block.html .npm__react-simple-code-editor__textarea`).type(
-    //     `<pre>This is html</pre>`,
-    //   );
-    //   cy.get(`.block.html [aria-label="Preview"]`).click();
-    //   cy.get(`.block.html pre`).contains('This is html');
-
-    //   // Save
-    //   cy.get('#toolbar-save').click();
-
-    //   // Check if HTML is present in the page view
-    //   cy.get('#page-document pre').should('have.text', 'This is html');
-    // });
+      // Check if HTML is present in the page view
+      cy.get('#page-document pre').should('have.text', 'This is HTML');
+    });
 
     // it('Add table block', () => {
     //   // TODO: Figure out why there is an erro when add this block in cypress
