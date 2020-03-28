@@ -1,8 +1,7 @@
 if (Cypress.env('API') !== 'guillotina') {
   describe('Blocks Tests', () => {
     beforeEach(() => {
-      // Wait a bit to previous teardown to complete correctly because Heisenbug in this point
-      cy.wait(2000);
+      // given a logged in editor and a page in edit mode
       cy.visit('/');
       cy.autologin();
       cy.createContent('Document', 'my-page', 'My Page');
@@ -12,6 +11,11 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('?fullobjects');
+    });
+
+    afterEach(() => {
+      // Wait a bit to previous teardown to complete correctly because Heisenbug in this point
+      // cy.wait(2000);
     });
 
     it('Add Video Block with YouTube Video', () => {
@@ -31,6 +35,8 @@ if (Cypress.env('API') !== 'guillotina') {
         .type('https://youtu.be/T6J3d35oIAY')
         .type('{enter}');
       cy.get('#toolbar-save').click();
+      cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
@@ -60,6 +66,7 @@ if (Cypress.env('API') !== 'guillotina') {
         .type('https://vimeo.com/85804536')
         .type('{enter}');
       cy.get('#toolbar-save').click();
+      cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
       // then the page view should contain an embedded Vimeo video
       cy.get('.block.video iframe')
@@ -84,6 +91,7 @@ if (Cypress.env('API') !== 'guillotina') {
         .type('https://1.videolyser.de/videos/1714848/11745228_hd.mp4')
         .type('{enter}');
       cy.get('#toolbar-save').click();
+      cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
 
       // then the page view should contain an embedded MP4 video
       cy.get('.block.video video').should(
