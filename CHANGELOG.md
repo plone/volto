@@ -13,6 +13,7 @@
 ## Internal
 
 - Upgrade critical Plone 5.2.1 deps in api folder @sneridagh
+- Improve Cypress Video Block tests @sneridagh @timo
 
 ## 4.1.1 (2020-03-18)
 
