@@ -7,7 +7,7 @@
 ### Changes
 
 - Fix typo for Japanese translation @terapyon
-- Fix refresh of the `Breadcrumbs` and `Navigation` components on calling `/login` and `/logout` @sneridagh
+- Fix refresh of the `Navigation` component on calling `/login` and `/logout` @sneridagh
 - Adjust implementation of the download link behavior for files @sneridagh
 - Fix Maps block to use maps-inner instead of video-inner class @timo
 - Add div with class "table-of-contents" to ToC block @timo
