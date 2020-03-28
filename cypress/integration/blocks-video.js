@@ -11,6 +11,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('?fullobjects');
+      cy.get(`.block.title [data-contents]`);
     });
 
     afterEach(() => {
@@ -19,11 +20,6 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Add Video Block with YouTube Video', () => {
-      // given a volto page
-      cy.get(`.block.title [data-contents]`)
-        .clear()
-        .type('My title');
-
       // when I create a video block with a YouTube video
       cy.get('.block.inner.text .public-DraftEditor-content').click();
       cy.get('.ui.basic.icon.button.block-add-button').click();
@@ -50,11 +46,6 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Add Video Block with Vimeo Video', () => {
-      // given a volto page
-      cy.get(`.block.title [data-contents]`)
-        .clear()
-        .type('My title');
-
       // when I create a video block with a Vimeo video
       cy.get('.block.inner.text .public-DraftEditor-content').click();
       cy.get('.ui.basic.icon.button.block-add-button').click();
@@ -75,11 +66,6 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Add Video Block with MP4 Video', () => {
-      // given a volto page
-      cy.get(`.block.title [data-contents]`)
-        .clear()
-        .type('My title');
-
       // when I create a video block with an MP4 video
       cy.get('.block.inner.text .public-DraftEditor-content').click();
       cy.get('.ui.basic.icon.button.block-add-button').click();
