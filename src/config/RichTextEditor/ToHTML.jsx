@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { isInternalURL, flattenToAppURL } from '../../helpers';
+import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 
 const styles = {
@@ -146,8 +146,8 @@ const blocks = {
 
 const LinkEntity = connect(state => ({
   token: state.userSession.token,
-}))(({ token, key, url, target, download, children }) => {
-  const to = token ? url : target || url;
+}))(({ token, key, url, target, targetUrl, download, children }) => {
+  const to = token ? url : targetUrl || url;
   if (download) {
     return token ? (
       <Link key={key} to={flattenToAppURL(to)}>
@@ -164,7 +164,7 @@ const LinkEntity = connect(state => ({
       {children}
     </Link>
   ) : (
-    <a key={key} href={to} target="_blank" rel="noopener noreferrer">
+    <a key={key} href={to} target={target} rel="noopener noreferrer">
       {children}
     </a>
   );

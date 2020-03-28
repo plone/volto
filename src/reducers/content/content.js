@@ -14,7 +14,7 @@ import {
   ORDER_CONTENT,
   RESET_CONTENT,
   UPDATE_CONTENT,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   create: {

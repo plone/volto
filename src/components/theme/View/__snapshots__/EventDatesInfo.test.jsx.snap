@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`different day, not whole day 1`] = `
+<p
+  className="event-when"
+>
+  <span
+    className="start"
+  >
+    <span
+      className="start-date"
+    >
+      Jun 23, 2019
+    </span>
+    <span>
+       
+    </span>
+    <span
+      className="start-time"
+    >
+      11:55 AM
+    </span>
+  </span>
+   to 
+  <span
+    className="end"
+  >
+    <span
+      className="end-date"
+    >
+      Jun 24, 2019
+    </span>
+    <span>
+       
+    </span>
+    <span
+      className="end-time"
+    >
+      3:20 PM
+    </span>
+  </span>
+</p>
+`;
+
+exports[`different day, whole day 1`] = `
+<p
+  className="event-when whole-day"
+>
+  <span
+    className="start"
+  >
+    <span
+      className="start-date"
+    >
+      Jun 23, 2019
+    </span>
+  </span>
+   to 
+  <span
+    className="end"
+  >
+    <span
+      className="end-date"
+    >
+      Jun 24, 2019
+    </span>
+  </span>
+</p>
+`;
+
+exports[`same day, not whole day, not open end 1`] = `
+<p
+  className="event-when same-day"
+>
+  <span
+    className="start-date"
+  >
+    Jun 23, 2019
+  </span>
+   from 
+  <span
+    className="start-time"
+  >
+    11:55 AM
+  </span>
+   to 
+  <span
+    className="end-time"
+  >
+    3:20 PM
+  </span>
+</p>
+`;
+
+exports[`same day, not whole day, open end 1`] = `
+<p
+  className="event-when same-day open-end"
+>
+  <span
+    className="start-date"
+  >
+    Jun 23, 2019
+  </span>
+   from 
+  <span
+    className="start-time"
+  >
+    11:55 AM
+  </span>
+</p>
+`;
+
+exports[`same day, whole day 1`] = `
+<p
+  className="event-when same-day whole-day"
+>
+  <span
+    className="start-date"
+  >
+    Jun 23, 2019
+  </span>
+</p>
+`;

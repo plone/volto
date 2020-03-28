@@ -1,5 +1,5 @@
 import roles from './roles';
-import { LIST_ROLES } from '../../constants/ActionTypes';
+import { LIST_ROLES } from '@plone/volto/constants/ActionTypes';
 
 describe('Roles reducer', () => {
   it('should return the initial state', () => {

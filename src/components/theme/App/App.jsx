@@ -20,7 +20,13 @@ import { views } from '~/config';
 
 import Error from '@plone/volto/error';
 
-import { Breadcrumbs, Footer, Header, Icon } from '@plone/volto/components';
+import {
+  Breadcrumbs,
+  Footer,
+  Header,
+  Icon,
+  OutdatedBrowser,
+} from '@plone/volto/components';
 import { BodyClass, getBaseUrl, getView } from '@plone/volto/helpers';
 import {
   getBreadcrumbs,
@@ -132,6 +138,7 @@ class App extends Component {
         <Breadcrumbs pathname={path} />
         <Segment basic className="content-area">
           <main>
+            <OutdatedBrowser />
             {this.props.connectionRefused ? (
               <ConnectionRefusedView />
             ) : this.state.hasError ? (

@@ -1,10 +1,205 @@
 # Change Log
 
-## 4.0.0 (unreleased)
+## 4.1.2 (unreleased)
 
 ### Added
 
 - Improvement of API requests error handling @sneridagh
+
+### Changes
+
+- Fix typo for Japanese translation @terapyon
+- Fix refresh of the `Breadcrumbs` and `Navigation` components on calling `/login` and `/logout` @sneridagh
+- Adjust implementation of the download link behavior for files @sneridagh
+- Fix Maps block to use maps-inner instead of video-inner class @timo
+- Add div with class "table-of-contents" to ToC block @timo
+
+## Internal
+
+- Upgrade critical Plone 5.2.1 deps in api folder @sneridagh
+- Improve Cypress Video Block tests @sneridagh @timo
+
+## 4.1.1 (2020-03-18)
+
+### Changes
+
+- Fix for #1267 - Link inside text for content-type without blocks breaks the site @sneridagh
+- Japanese translation @terapyon
+- Fix production mode for newly created `__DEVELOPMENT__` global @sneridagh
+
+### Internal
+
+- Upgrade to Cypress 4 @timo
+
+## 4.1.0 (2020-03-13)
+
+### Added
+
+- Add `flattenHTMLToAppURL` helper method for remove api url from TinyMCE generated HTML @cekk
+- Add development mode global @sneridagh
+
+### Changes
+
+- Improve the UX of the listing block when queries are running @sneridagh
+- Added table of content cypress test @steffenri
+
+## 4.0.1 (2020-03-09)
+
+### Changes
+
+- Fixes #1262 - SSR support for "undetected" browsers
+- Japanese translation @terapyon
+- Site settings styling fixed in the Controlpanel
+- Increase ObjectBrowser limit per folder to 1000, partially fixes #1259 @sneridagh
+- Deprecate `utils.less` as it's a leftover and it collides with some use cases depending on the viewport, see: #1265
+
+### Internal
+
+- Use kitconcept.volto as integration package @sneridagh
+
+## 4.0.0 (2020-03-01)
+
+### Added
+
+Summary of the most important features in this final release. For more detailed information
+refer to all of them in https://github.com/plone/volto/releases
+
+- Improved Pastanaga Editor
+- New Pastanaga Editor sidebar
+- New mobile first toolbar
+- Developing blocks experience simplified
+- New Object Browser
+- Listing, TOC, Lead Image blocks
+- Improved existing blocks (Image, Video, Maps)
+- New blocks chooser and future proof blocks definitions
+- Definition of default Blocks per content type
+- Body classes like the Plone ones hinting content types, section and current view
+- New message system
+- React hooks support
+- Several internal libraries updated, including Redux, Router ones that support hooks as well
+- New locales (es, it, ja, pt, pt_BR)
+
+### Changes
+
+- Tons of bug fixes
+
+## 4.0.0-alpha.43 (2020-03-01)
+
+### Changes
+
+- Fixes #982 - History compare/diff @avoinea
+- Responsive header @ksuess
+  - Anontools (login, register) wrapping under long navigation.
+  - Breaking change: Hamburger menu also on tablet.
+  - Mobile: compact display of anontools and search.
+
+## 4.0.0-alpha.42 (2020-02-26)
+
+### Changes
+
+- Revert "Fix Scrolling Functionality if there are many columns in table" since it has non desired secondary effects in the table block and other tables @sneridagh
+
+## 4.0.0-alpha.41 (2020-02-26)
+
+### Changes
+
+- Fixes for the `ListingView` (Issue #1188, Listing View) @wkbkhard
+- Fix date widgets on QueryString widget on listings and in the widget @sneridagh
+- Update German translation @tisto
+- i18n in toolbar and folder contents view @ksuess
+
+## 4.0.0-alpha.40 (2020-02-24)
+
+### Added
+
+- Add pagination support to listing blocks @sneridagh
+
+### Changes
+
+- Fix Video and Maps blocks hydration quirks on view mode @sneridagh
+- Deleted Empty Select Component @aryamanpuri
+- Fix `RichText` Widget on normal forms @sneridagh
+- Fix Guillotina tests @bloodbare
+- Fix problem with not wrapped element in `Provider` store in `WysiwygWidget` component
+  due that now, the links are wrapped with a connected component @sneridagh
+
+## 4.0.0-alpha.39 (2020-02-18)
+
+### Added
+
+- Add permission check to edit form @sneridagh
+
+### Changes
+
+- Fix and improve Error in SSR @sneridagh
+- Fix `LinkAnchorPlugin` press Enter key inside blocks with draftJS widgets @sneridagh
+
+### Internal
+
+- Replace all relative paths to `@plone/volto` absolute paths to ensure you can override all the resources via component shadowing @sneridagh
+
+## 4.0.0-alpha.38 (2020-02-18)
+
+### Internal
+
+- Update to use ESLint 6 @timo
+
+## 4.0.0-alpha.37 (2020-02-18)
+
+### Added
+
+- Chose template for listing block @giuliaghisini
+- Event type view @nileshgulia1 @pnicolli
+- Add ability to define the starting blocks per content type @sneridagh
+- Reference widget: show item title and path in search and hover items selected @giuliaghisini
+
+### Changes
+
+- Fix the "jump" on the blocks editor on focusing blocks @sneridagh
+- Include link and size info to the full size image in `ImageView` view component @sneridagh
+- In the Display menu, only show views that are implemented @pnicolli
+- Hide Blocks fields in Layout fieldset in Add/Edit forms @pnicolli
+- Updated italian translations @nzambello
+- Fallback for non existing layout views registered in `constants/Layouts` when selected in the widget @sneridagh
+- Fix select widget for array inline choices fields and `z-index` problem @sneridagh
+- Improve UX of the edit block Image component @sneridagh
+- Fix on creating a new block, it should show the sidebar block properties (#1167) @sneridagh
+- Send only the changed fields on PATCH (edit content) operations @sneridagh
+- Japanese translation @terapyon
+
+### Internal
+
+- Added forest.eea.europa.eu as deployed Volto in production @tiberiuichim
+- Add SemanticUI responsive variables to the responsive utils @sneridagh
+- Added `yarnhook` to the build @sneridagh
+
+## 4.0.0-alpha.36 (2020-02-03)
+
+### Changes
+
+- Fix unable to login from /logout page (#1147) @sneridagh
+- Fix sitemap.xml by increasing the batch size @robgietema
+- Browser detect feature, adding a deprecation message for ancient browsers in the `App` component @sneridagh
+- Adding fallback in the edit form, in case the blocks related fields are empty, so we are sure that the edit form shows at least the default blocks @sneridagh
+- Fix shift return in tables @robgietema
+
+## 4.0.0-alpha.35 (2020-01-31)
+
+### Changes
+
+- Fix CSS when multiselection widgets have multiple items, then provoke a line jump @sneridagh
+- added new italian translations, added italian to available languages, translated some static string
+- updated italian translations
+- Fix listing block sidebar focus @sneridagh
+- Fix getBaseUrl helper method to not match inner occurrences of nonContentRoutes @sneridagh
+
+## 4.0.0-alpha.34 (2020-01-26)
+
+### Changes
+
+- Fix token expiration/renewer timer, this fixes #674 @sneridagh
+
+## 4.0.0-alpha.33 (2020-01-26)
 
 ### Changes
 
@@ -144,6 +339,7 @@
 
 - Implementation of `Portuguese (BR)` translation @LeuAlmeida
 - Added translations to spanish @macagua
+- Added AlbumView @wkbktill @alexbueckig
 
 ### Changes
 

@@ -10,8 +10,9 @@ import {
   GET_CONTENT,
   ORDER_CONTENT,
   RESET_CONTENT,
-} from '../../constants/ActionTypes';
-import { nestContent } from '../../helpers';
+} from '@plone/volto/constants/ActionTypes';
+import { nestContent } from '@plone/volto/helpers';
+import { settings } from '~/config';
 
 /**
  * Create content function.
@@ -113,13 +114,23 @@ export function sortContent(url, on, order) {
  * @param {string} subrequest Key of the subrequest.
  * @returns {Object} Get content action
  */
-export function getContent(url, version = null, subrequest = null) {
+export function getContent(
+  url,
+  version = null,
+  subrequest = null,
+  page = null,
+) {
+  const qs = page
+    ? `?fullobjects&b_start=${settings.defaultPageSize * (page - 1)}&b_size=${
+        settings.defaultPageSize
+      }`
+    : '?fullobjects';
   return {
     type: GET_CONTENT,
     subrequest,
     request: {
       op: 'get',
-      path: `${url}${version ? `/@history/${version}` : ''}?fullobjects`,
+      path: `${url}${version ? `/@history/${version}` : ''}${qs}`,
     },
   };
 }

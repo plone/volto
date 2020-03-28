@@ -9,6 +9,7 @@ import { intlReducer } from 'react-intl-redux';
 import actions from '@plone/volto/reducers/actions/actions';
 import apierror from '@plone/volto/reducers/apierror/apierror';
 import breadcrumbs from '@plone/volto/reducers/breadcrumbs/breadcrumbs';
+import browserdetect from '@plone/volto/reducers/browserdetect/browserdetect';
 import comments from '@plone/volto/reducers/comments/comments';
 import content from '@plone/volto/reducers/content/content';
 import controlpanels from '@plone/volto/reducers/controlpanels/controlpanels';
@@ -21,7 +22,7 @@ import groups from '@plone/volto/reducers/groups/groups';
 import messages from '@plone/volto/reducers/messages/messages';
 import navigation from '@plone/volto/reducers/navigation/navigation';
 import querystring from '@plone/volto/reducers/querystring/querystring';
-import querystringsearch from './querystringsearch/querystringsearch';
+import querystringsearch from '@plone/volto/reducers/querystringsearch/querystringsearch';
 import roles from '@plone/volto/reducers/roles/roles';
 import schema from '@plone/volto/reducers/schema/schema';
 import search from '@plone/volto/reducers/search/search';
@@ -46,6 +47,7 @@ const reducers = {
   actions,
   apierror,
   breadcrumbs,
+  browserdetect,
   comments,
   content,
   controlpanels,
