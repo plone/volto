@@ -16,6 +16,7 @@
 
 - Upgrade critical Plone 5.2.1 deps in api folder @sneridagh
 - Improve Cypress Video Block tests @sneridagh @timo
+- Run `yarn i18n` on any JSX change @sneridagh
 
 ## 4.1.1 (2020-03-18)
 
