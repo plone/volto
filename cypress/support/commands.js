@@ -103,7 +103,7 @@ Cypress.Commands.add(
             ],
           },
         },
-      }).then(response => console.log(`${contentType} created`));
+      }).then(() => console.log(`${contentType} created`));
     }
   },
 );

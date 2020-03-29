@@ -140,6 +140,10 @@ const messages = defineMessages({
     id: 'Select columns to show',
     defaultMessage: 'Select columns to show',
   },
+  sort: {
+    id: 'sort',
+    defaultMessage: 'sort',
+  },
   state: {
     id: 'State',
     defaultMessage: 'State',
@@ -1140,12 +1144,11 @@ class Contents extends Component {
                     <Table.Row>
                       <Table.HeaderCell>
                         <Dropdown
-                          trigger={
-                            <Icon
-                              name="sort content ascending"
-                              data-cy="sort"
-                            />
-                          }
+                          trigger={<Icon name="sort content ascending" />}
+                          className="sort-icon"
+                          aria-label={this.props.intl.formatMessage(
+                            messages.sort,
+                          )}
                           icon={null}
                           simple
                         >
@@ -1165,14 +1168,17 @@ class Contents extends Component {
                                 'portal_type',
                               ],
                               index => (
-                                <Dropdown.Item key={index} data-cy={index}>
+                                <Dropdown.Item
+                                  key={index}
+                                  className={`sort_${index}`}
+                                >
                                   <Icon name="dropdown" />
                                   <FormattedMessage id={Indexes[index].label} />
                                   <Dropdown.Menu>
                                     <Dropdown.Item
                                       onClick={this.onSortItems}
                                       value={`${Indexes[index].sort_on}|ascending`}
-                                      data-cy={`${Indexes[index].sort_on}|ascending`}
+                                      className={`sort_${Indexes[index].sort_on}_ascending`}
                                     >
                                       <Icon name="sort alphabet ascending" />{' '}
                                       <FormattedMessage
@@ -1183,7 +1189,7 @@ class Contents extends Component {
                                     <Dropdown.Item
                                       onClick={this.onSortItems}
                                       value={`${Indexes[index].sort_on}|descending`}
-                                      data-cy={`${Indexes[index].sort_on}|descending`}
+                                      className={`sort_${Indexes[index].sort_on}_descending`}
                                     >
                                       <Icon name="sort alphabet descending" />{' '}
                                       <FormattedMessage

@@ -1677,6 +1677,10 @@ msgstr "form di registrazione"
 msgid "return to the site root"
 msgstr "ritorna alla radice del sito"
 
+#: components/manage/Contents/Contents
+msgid "sort"
+msgstr ""
+
 #: config/Blocks
 msgid "table"
 msgstr "Tabella"
