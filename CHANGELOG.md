@@ -15,6 +15,7 @@
 - Add Multilingual Support @sneridagh
 
 ## 4.1.2 (2020-03-30)
+- /contents (folder content view) is sortable @ksuess
 
 ### Changes
 
