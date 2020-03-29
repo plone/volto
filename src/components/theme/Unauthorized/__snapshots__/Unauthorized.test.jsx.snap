@@ -7,6 +7,9 @@ exports[`Unauthorized renders a not found component 1`] = `
   <h1>
     Unauthorized
   </h1>
+  <h3>
+    You are not authorized to access this resource
+  </h3>
   <p
     className="description"
   >

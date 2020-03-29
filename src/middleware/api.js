@@ -14,6 +14,8 @@ import {
   SET_APIERROR,
 } from '@plone/volto/constants/ActionTypes';
 
+const ACTIONS_RAISING_ERRORS = ['GET_CONTENT', 'UPDATE_CONTENT'];
+
 let socket = null;
 
 /**
@@ -123,15 +125,16 @@ export default api => ({ dispatch, getState }) => next => action => {
       },
       error => {
         // Response error is marked crossDomain if CORS error happen
-        // if (error.crossDomain) {
-        //   next({
-        //     ...rest,
-        //     error,
-        //     statusCode: 'CORSERROR',
-        //     connectionRefused: false,
-        //     type: SET_APIERROR,
-        //   });
-        // }
+        if (error.crossDomain) {
+          next({
+            ...rest,
+            error,
+            statusCode: 'CORSERROR',
+            connectionRefused: false,
+            type: SET_APIERROR,
+          });
+        }
+
         // Only SRR can set ECONNREFUSED
         if (error.code === 'ECONNREFUSED') {
           next({
@@ -141,6 +144,19 @@ export default api => ({ dispatch, getState }) => next => action => {
             connectionRefused: true,
             type: SET_APIERROR,
           });
+        }
+
+        if (ACTIONS_RAISING_ERRORS.includes(action.type)) {
+          if (error.response.statusCode === 401) {
+            next({
+              ...rest,
+              error,
+              statusCode: error.response,
+              message: error.response.body.message,
+              connectionRefused: false,
+              type: SET_APIERROR,
+            });
+          }
         }
         return next({ ...rest, error, type: `${type}_FAIL` });
       },

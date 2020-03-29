@@ -6,6 +6,7 @@ describe('apierror reducer', () => {
     expect(apierror()).toEqual({
       error: null,
       statusCode: null,
+      message: null,
       connectionRefused: false,
     });
   });
@@ -18,6 +19,7 @@ describe('apierror reducer', () => {
           code: 'ECONNREFUSED',
         },
         statusCode: 'ECONNREFUSED',
+        message: null,
         connectionRefused: true,
       }),
     ).toEqual({
@@ -26,6 +28,7 @@ describe('apierror reducer', () => {
       },
       statusCode: 'ECONNREFUSED',
       connectionRefused: true,
+      message: null,
     });
   });
 
@@ -38,6 +41,7 @@ describe('apierror reducer', () => {
       error: null,
       statusCode: null,
       connectionRefused: false,
+      message: null,
     });
   });
 });

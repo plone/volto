@@ -11,6 +11,8 @@ import NotFoundView from '@plone/volto/components/theme/NotFound/NotFound';
 import ConnectionRefused from '@plone/volto/components/theme/ConnectionRefused/ConnectionRefused';
 import CorsError from '@plone/volto/components/theme/CorsError/CorsError';
 import AlbumView from '@plone/volto/components/theme/View/AlbumView';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
+import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
 
 // Layout View Registry
 export const layoutViews = {
@@ -34,6 +36,8 @@ export const defaultView = DefaultView;
 
 export const errorViews = {
   '404': NotFoundView,
+  '401': Unauthorized,
+  '403': Forbidden,
   ECONNREFUSED: ConnectionRefused,
   corsError: CorsError,
 };

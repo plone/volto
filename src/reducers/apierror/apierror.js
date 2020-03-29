@@ -12,6 +12,7 @@ const initialState = {
   error: null,
   statusCode: null,
   connectionRefused: false,
+  message: null,
 };
 
 /**
@@ -28,6 +29,7 @@ export default function apierror(state = initialState, action = {}) {
         ...state,
         error: action.error,
         statusCode: action.statusCode,
+        message: action.message,
         connectionRefused: action.connectionRefused,
       };
     case RESET_APIERROR:
@@ -35,6 +37,7 @@ export default function apierror(state = initialState, action = {}) {
         ...state,
         error: null,
         statusCode: null,
+        message: null,
         connectionRefused: false,
       };
     default:

@@ -15,6 +15,9 @@ describe('Unauthorized', () => {
         locale: 'en',
         messages: {},
       },
+      apierror: {
+        message: 'You are not authorized to access this resource',
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
