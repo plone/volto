@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-03-29T18:12:14.033Z\n"
+"POT-Creation-Date: 2020-03-29T21:39:55.554Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2058,6 +2058,11 @@ msgstr ""
 #: error
 # defaultMessage: return to the site root
 msgid "return to the site root"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: sort
+msgid "sort"
 msgstr ""
 
 #: config/Blocks
