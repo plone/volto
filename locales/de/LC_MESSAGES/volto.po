@@ -60,7 +60,7 @@ msgstr "Inhalte hinzufügen"
 
 #: components/manage/Toolbar/Types
 msgid "Add Translation..."
-msgstr ""
+msgstr "Übersetzen..."
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
@@ -1417,7 +1417,7 @@ msgstr "Anzahl Komentare"
 
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
-msgstr ""
+msgstr "Auf {lang} übersetzen"
 
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
