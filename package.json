@@ -176,6 +176,9 @@
       "npx prettier --single-quote --write",
       "yarn test:husky"
     ],
+    "src/**/*.{jsx}": [
+      "yarn i18n"
+    ],
     "theme/**/*.{css,less}": [
       "npx stylelint --fix"
     ],
