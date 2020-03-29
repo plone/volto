@@ -191,7 +191,6 @@ class View extends Component {
    */
   render() {
     if (this.props.error && !this.props.connectionRefused) {
-      console.log(this.props.error.status);
       let FoundView;
       if (this.props.error.status === undefined) {
         // For some reason, while development and if CORS is in place and the
