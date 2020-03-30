@@ -2,8 +2,6 @@
 
 ## 4.1.2 (unreleased)
 
-### Added
-
 ### Changes
 
 - Fix typo for Japanese translation @terapyon
