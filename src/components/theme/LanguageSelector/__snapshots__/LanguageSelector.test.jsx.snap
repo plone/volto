@@ -8,7 +8,7 @@ exports[`LanguageSelector renders a language selector component 1`] = `
     className=""
     href="/de"
     onClick={[Function]}
-    title="Zur deutschen Webseite wechseln"
+    title="Deutsch"
   >
     de
      
@@ -17,7 +17,7 @@ exports[`LanguageSelector renders a language selector component 1`] = `
     className=""
     href="/ca"
     onClick={[Function]}
-    title="Zur deutschen Webseite wechseln"
+    title="Català"
   >
     ca
      

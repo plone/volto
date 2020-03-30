@@ -15,17 +15,4 @@ describe('Translations action', () => {
       );
     });
   });
-
-  // describe('revertHistory', () => {
-  //   it('should create an action to revert history', () => {
-  //     const url = 'http://localhost';
-  //     const version = 0;
-  //     const action = revertHistory(url, version);
-
-  //     expect(action.type).toEqual(REVERT_HISTORY);
-  //     expect(action.request.op).toEqual('patch');
-  //     expect(action.request.path).toEqual(`${url}/@history`);
-  //     expect(action.request.data).toEqual({ version });
-  //   });
-  // });
 });

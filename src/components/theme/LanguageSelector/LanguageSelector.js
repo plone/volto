@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import cx from 'classnames';
 import { find, map } from 'lodash';
 import { updateIntl } from 'react-intl-redux';
+import langmap from 'langmap';
 import { settings } from '~/config';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
@@ -57,7 +58,7 @@ const LanguageSelector = props => {
               to={
                 translation ? flattenToAppURL(translation['@id']) : `/${lang}`
               }
-              title="Zur deutschen Webseite wechseln"
+              title={langmap[lang].nativeName}
               onClick={() => {
                 props.onClickAction();
                 changeLanguage(lang);

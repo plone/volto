@@ -151,6 +151,7 @@ class App extends Component {
           position={toast.POSITION.BOTTOM_CENTER}
           hideProgressBar
           transition={Slide}
+          autoClose={5000}
           closeButton={
             <Icon
               className="toast-dismiss-action"
@@ -186,8 +187,8 @@ export default compose(
     },
     {
       key: 'navigation',
-      promise: ({ location, store: { dispatch, getState } }) =>
-        __SERVER__ && dispatch(getNavigation(getState().intl.locale, 2)),
+      promise: ({ location, store: { dispatch } }) =>
+        __SERVER__ && dispatch(getNavigation(getBaseUrl(location.pathname))),
     },
     {
       key: 'types',
