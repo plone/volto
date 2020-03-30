@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -178,6 +178,9 @@
       "npx eslint --max-warnings=0 --fix",
       "npx prettier --single-quote --write",
       "yarn test:husky"
+    ],
+    "src/**/*.{jsx}": [
+      "yarn i18n"
     ],
     "theme/**/*.{css,less}": [
       "npx stylelint --fix"
