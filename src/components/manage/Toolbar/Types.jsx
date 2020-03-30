@@ -45,7 +45,7 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
                 }),
               ) && currentLanguage !== lang,
           );
-          console.log(translationsLeft);
+
           return (
             !isEmpty(translationsLeft) && (
               <>
