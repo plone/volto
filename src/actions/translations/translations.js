@@ -16,7 +16,7 @@ export function getTranslationLocator(url, lang) {
     type: GET_TRANSLATION_LOCATOR,
     request: {
       op: 'get',
-      path: `${url}/@translation-locator?targetLanguage=${lang}`,
+      path: `${url}/@translation-locator?target_language=${lang}`,
     },
   };
 }

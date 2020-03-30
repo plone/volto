@@ -161,7 +161,7 @@ class Add extends Component {
       '@type': this.props.type,
       ...(settings.isMultilingual &&
         this.props.location?.state?.translationOf && {
-          translationOf: this.props.location.state.translationOf,
+          translation_of: this.props.location.state.translationOf,
           language: this.props.location.state.language,
         }),
     });

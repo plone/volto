@@ -11,7 +11,7 @@ describe('Translations action', () => {
       expect(action.type).toEqual(GET_TRANSLATION_LOCATOR);
       expect(action.request.op).toEqual('get');
       expect(action.request.path).toEqual(
-        `${url}/@translation-locator?targetLanguage=${lang}`,
+        `${url}/@translation-locator?target_language=${lang}`,
       );
     });
   });
