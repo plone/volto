@@ -132,3 +132,6 @@ export Types from '@plone/volto/components/manage/Toolbar/Types';
 export Toast from '@plone/volto/components/manage/Toast/Toast';
 
 export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
+
+export CreateTranslation from '@plone/volto/components/manage/Multilingual/CreateTranslation';
+export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';

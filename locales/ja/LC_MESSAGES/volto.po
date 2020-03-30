@@ -50,6 +50,10 @@ msgstr "追加"
 msgid "Add Content"
 msgstr "新規追加"
 
+#: components/manage/Toolbar/Types
+msgid "Add Translation..."
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
 msgstr "ユーザを追加"
@@ -1402,6 +1406,10 @@ msgstr "タイトル"
 #: components/manage/Contents/Contents
 msgid "Total comments"
 msgstr "コメント計"
+
+#: components/manage/Toolbar/Types
+msgid "Translate to {lang}"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView

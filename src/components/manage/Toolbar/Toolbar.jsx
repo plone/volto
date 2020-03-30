@@ -91,7 +91,7 @@ const messages = defineMessages({
 const toolbarComponents = {
   personalTools: { component: PersonalTools, wrapper: null },
   more: { component: More, wrapper: null },
-  types: { component: Types, wrapper: null },
+  types: { component: Types, wrapper: null, contentAsProps: true },
   profile: {
     component: PersonalInformation,
     wrapper: StandardWrapper,
@@ -344,6 +344,11 @@ class Toolbar extends Component {
                         theToolbar={this.theToolbar}
                         key={`personalToolsComponent-${index}`}
                         closeMenu={this.closeMenu}
+                        content={
+                          toolbarComponents[component].contentAsProps
+                            ? this.props.content
+                            : null
+                        }
                       />
                     );
                   }

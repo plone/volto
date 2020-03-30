@@ -4,6 +4,8 @@
 
 ### Added
 
+- Add Multilingual Support @sneridagh
+
 ### Changes
 
 ## 4.1.2 (2020-03-30)

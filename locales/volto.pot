@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-03-19T05:03:26.061Z\n"
+"POT-Creation-Date: 2020-03-29T18:12:14.033Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -50,6 +50,11 @@ msgstr ""
 #: components/manage/Toolbar/Types
 # defaultMessage: Add Content...
 msgid "Add Content"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+# defaultMessage: Add Translation...
+msgid "Add Translation..."
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -1699,6 +1704,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Total comments
 msgid "Total comments"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+# defaultMessage: Translate to {lang}
+msgid "Translate to {lang}"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
