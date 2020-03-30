@@ -19,15 +19,14 @@ export function setupGuillotina() {
     body: { id: 'cms' },
   }).then(response => console.log('cms add-on installed'));
 
+  cy.request({
+    method: 'POST',
+    url: `${api_url}/container/@addons`,
+    headers,
+    body: { id: 'dbusers' },
+  }).then(response => console.log('dbusers add-on installed'));
+
   // guillotina_dbusers is no longer installed in the guillotina_cms docker image
-  //
-  // cy.request({
-  //   method: 'POST',
-  //   url: `${api_url}/container/@addons`,
-  //   headers,
-  //   body: { id: 'dbusers' },
-  // }).then(response => console.log('dbusers add-on installed'));
-  //
   // cy.request({
   //   method: 'POST',
   //   url: `${api_url}/container/users`,
@@ -39,7 +38,7 @@ export function setupGuillotina() {
   //     password: 'secret',
   //   },
   // }).then(response => console.log('default user created'));
-  //
+
   // cy.request({
   //   method: 'POST',
   //   url: `${api_url}/container/@sharing`,
