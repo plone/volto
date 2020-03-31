@@ -20,6 +20,7 @@
     "import/no-unresolved": 1,
     "no-alert": 1,
     "no-debugger": 1,
+    "camelcase": [2, {"properties": "always"}],
     "prettier/prettier": [
       "error",
       { "trailingComma": "all", "singleQuote": true }
