@@ -8,6 +8,8 @@
 
 ### Changes
 
+- Fixed link view @robgietema
+
 ## 4.2.0 (2020-03-31)
 
 ### Added
