@@ -4,6 +4,8 @@
 
 ### Added
 
+- Added recursive workflow changes @robgietema
+
 ### Changes
 
 ## 4.2.0 (2020-03-31)
