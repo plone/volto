@@ -207,6 +207,10 @@ msgstr "パスワードを変更"
 msgid "Change State"
 msgstr "状態を変更"
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change workflow state recursively"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
