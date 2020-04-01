@@ -1,18 +1,47 @@
 # Change Log
 
-## 4.1.2 (unreleased)
+## 4.3.1 (unreleased)
 
 ### Added
 
 ### Changes
 
+### Internal
+
+- Cypress test for Table Block @steffenri
+
+## 4.3.0 (2020-04-01)
+
+### Added
+
+- Added recursive workflow changes @robgietema
+
+### Changes
+
+- Fixed link view @robgietema
+
+## 4.2.0 (2020-03-31)
+
+### Added
+
+- Add Multilingual Support @sneridagh
+
+## 4.1.2 (2020-03-30)
+
+### Changes
+
 - Fix typo for Japanese translation @terapyon
-- Fix refresh of the `Breadcrumbs` and `Navigation` components on calling `/login` and `/logout` @sneridagh
+- Fix refresh of the `Navigation` component on calling `/login` and `/logout` @sneridagh
+- Adjust implementation of the download link behavior for files @sneridagh
+- Fix Maps block to use maps-inner instead of video-inner class @timo
+- Add div with class "table-of-contents" to ToC block @timo
 
 ## Internal
 
 - Upgrade critical Plone 5.2.1 deps in api folder @sneridagh
-- Cypress test for Table Block @steffenri
+- Improve Cypress Video Block tests @sneridagh @timo
+- Run `yarn i18n` on any JSX change @sneridagh
+- Add link mailto Cypress test @timo
 
 ## 4.1.1 (2020-03-18)
 

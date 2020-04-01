@@ -39,7 +39,8 @@ before_install:
   - npm install -g surge
 install:
   - if [ "$TEST_SUITE" == "plone" ]; then
-    make build-backend;
+    (cd api && pip install -r requirements.txt) &&
+    (cd api && buildout)
     fi
   - yarn install --frozen-lockfile
   - yarn cy:install

@@ -10,6 +10,7 @@ import {
   Contents,
   Controlpanel,
   Controlpanels,
+  CreateTranslation,
   Edit,
   Diff,
   Delete,
@@ -94,6 +95,10 @@ export const defaultRoutes = [
   {
     path: '/**/add',
     component: Add,
+  },
+  {
+    path: '/**/create-translation',
+    component: CreateTranslation,
   },
   {
     path: '/**/contents',

@@ -51,6 +51,10 @@ msgstr "Adicionar"
 msgid "Add Content"
 msgstr "Adicionar conteúdo"
 
+#: components/manage/Toolbar/Types
+msgid "Add Translation..."
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
 msgstr "Adicionar usuário"
@@ -203,6 +207,10 @@ msgstr "Alterar senha"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change State"
 msgstr "Alterar estado"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change workflow state recursively"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -1402,6 +1410,10 @@ msgstr "Título"
 
 #: components/manage/Contents/Contents
 msgid "Total comments"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+msgid "Translate to {lang}"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget

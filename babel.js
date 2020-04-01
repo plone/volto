@@ -16,6 +16,7 @@ module.exports = function(api) {
     ['@babel/plugin-proposal-pipeline-operator', { proposal: 'minimal' }],
     '@babel/plugin-proposal-throw-expressions',
     '@babel/plugin-syntax-import-meta',
+    '@babel/plugin-syntax-dynamic-import',
     [
       '@babel/plugin-proposal-decorators',
       {

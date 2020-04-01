@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "4.1.1",
+  "version": "4.3.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -34,6 +34,7 @@
     "test": "razzle test --env=jsdom",
     "test:ci": "CI=true razzle test --env=jsdom",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "start:prod": "NODE_ENV=production node build/server.js",
     "prettier": "./node_modules/.bin/prettier --single-quote --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "prettier:fix": "./node_modules/.bin/prettier --single-quote --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
@@ -87,7 +88,9 @@
     },
     "moduleNameMapper": {
       "@plone/volto/(.*)$": "<rootDir>/src/$1",
-      "~/config": "<rootDir>/src/config"
+      "~/config": "<rootDir>/src/config",
+      "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
+      "(.*)/locales/(.*)": "<rootDir>/locales/$2"
     },
     "coverageThreshold": {
       "global": {
@@ -176,6 +179,9 @@
       "npx prettier --single-quote --write",
       "yarn test:husky"
     ],
+    "src/**/*.{jsx}": [
+      "yarn i18n"
+    ],
     "theme/**/*.{css,less}": [
       "npx stylelint --fix"
     ],
@@ -207,6 +213,7 @@
     "@babel/plugin-proposal-optional-chaining": "7.7.4",
     "@babel/plugin-proposal-pipeline-operator": "7.7.4",
     "@babel/plugin-proposal-throw-expressions": "7.7.4",
+    "@babel/plugin-syntax-dynamic-import": "7.8.3",
     "@babel/plugin-syntax-import-meta": "7.7.4",
     "@babel/preset-stage-0": "7.0.0",
     "@testing-library/jest-dom": "4.2.4",
@@ -261,6 +268,7 @@
     "js-yaml": "3.13.1",
     "jsonwebtoken": "8.3.0",
     "jwt-decode": "2.2.0",
+    "langmap": "0.0.16",
     "less": "3.10.3",
     "less-loader": "5.0.0",
     "lint-staged": "10.0.2",

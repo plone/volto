@@ -22,6 +22,10 @@ const messages = defineMessages({
     id: 'Change State',
     defaultMessage: 'Change State',
   },
+  includeChildrenTitle: {
+    id: 'Change workflow state recursively',
+    defaultMessage: 'Change workflow state recursively',
+  },
   stateDescription: {
     id: 'Select the transition to be used for modifying the items state.',
     defaultMessage:
@@ -99,7 +103,7 @@ class ContentsWorkflowModal extends Component {
    * @param {string} state New state
    * @returns {undefined}
    */
-  onSubmit({ state }) {
+  onSubmit({ state, include_children }) {
     if (!state) {
       return;
     }
@@ -114,6 +118,7 @@ class ContentsWorkflowModal extends Component {
         ),
         x => last(x.split('/')) === state,
       ),
+      include_children,
     );
   }
 
@@ -136,7 +141,7 @@ class ContentsWorkflowModal extends Component {
               {
                 id: 'default',
                 title: this.props.intl.formatMessage(messages.default),
-                fields: ['state'],
+                fields: ['state', 'include_children'],
               },
             ],
             properties: {
@@ -158,6 +163,12 @@ class ContentsWorkflowModal extends Component {
                   ),
                   y => [last(y['@id'].split('/')), y.title],
                 ),
+              },
+              include_children: {
+                title: this.props.intl.formatMessage(
+                  messages.includeChildrenTitle,
+                ),
+                type: 'boolean',
               },
             },
             required: [],
