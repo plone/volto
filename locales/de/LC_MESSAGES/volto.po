@@ -1704,6 +1704,10 @@ msgstr "Registrierungsformular"
 msgid "return to the site root"
 msgstr "Zur Startseite zurückkehren"
 
+#: components/manage/Contents/Contents
+msgid "sort"
+msgstr "sortieren"
+
 #: config/Blocks
 msgid "table"
 msgstr "Tabelle"

@@ -1696,6 +1696,10 @@ msgstr "登録フォーム"
 msgid "return to the site root"
 msgstr "サイトルートに戻ってください。"
 
+#: components/manage/Contents/Contents
+msgid "sort"
+msgstr ""
+
 #: config/Blocks
 msgid "table"
 msgstr "テーブル"

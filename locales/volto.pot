@@ -2065,6 +2065,11 @@ msgstr ""
 msgid "return to the site root"
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: sort
+msgid "sort"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Table
 msgid "table"

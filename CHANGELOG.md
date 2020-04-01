@@ -5,6 +5,7 @@
 ### Added
 
 - Added recursive workflow changes @robgietema
+- /contents (folder content view) is sortable @ksuess
 
 ### Changes
 
