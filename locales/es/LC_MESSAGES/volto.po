@@ -1699,6 +1699,10 @@ msgstr "formulario de registro"
 msgid "return to the site root"
 msgstr "regrese al directorio raíz del sitio"
 
+#: components/manage/Contents/Contents
+msgid "sort"
+msgstr ""
+
 #: config/Blocks
 msgid "table"
 msgstr "Tabla"
