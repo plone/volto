@@ -21,6 +21,7 @@
     "no-alert": 1,
     "no-debugger": 1,
     "camelcase": [2, {"properties": "always"}],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "prettier/prettier": [
       "error",
       { "trailingComma": "all", "singleQuote": true }
