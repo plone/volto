@@ -217,7 +217,7 @@ msgstr "Statusänderung"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
-msgstr ""
+msgstr "Ändere Status rekursiv"
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
