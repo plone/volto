@@ -1685,6 +1685,10 @@ msgstr ""
 msgid "return to the site root"
 msgstr ""
 
+#: components/manage/Contents/Contents
+msgid "sort"
+msgstr ""
+
 #: config/Blocks
 msgid "table"
 msgstr ""

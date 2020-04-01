@@ -4,6 +4,8 @@
 
 ### Added
 
+- /contents (folder content view) is sortable @ksuess
+
 ### Changes
 
 ## 4.2.0 (2020-03-31)
