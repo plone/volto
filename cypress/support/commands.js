@@ -19,10 +19,24 @@ Cypress.Commands.add('autologin', () => {
   }).then(response => cy.setCookie('auth_token', response.body.token));
 });
 
+// --- Workflow --------------------------------------------------------------
+Cypress.Commands.add('workflow', (path, transitionTo) => {
+  const auth = {
+    user: 'admin',
+    pass: 'secret',
+  };
+  cy.request({
+    method: 'POST',
+    url: `http://localhost:55001/plone/${path}/@workflow/${transitionTo}`,
+    headers: { Accept: 'application/json' },
+    auth: auth,
+  });
+});
+
 // --- CREATE CONTENT --------------------------------------------------------
 Cypress.Commands.add(
   'createContent',
-  (contentType, contentId, contentTitle, path = '') => {
+  (contentType, contentId, contentTitle, path = '', remoteUrl = '') => {
     let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
       api_url = 'http://localhost:8081/db/container';
@@ -36,7 +50,7 @@ Cypress.Commands.add(
         user: 'admin',
         pass: 'secret',
       };
-    };
+    }
     if (contentType === 'File') {
       cy.request({
         method: 'POST',
@@ -77,6 +91,22 @@ Cypress.Commands.add(
             filename: 'image.png',
             'content-type': 'image/png',
           },
+        },
+      });
+    }
+    if (contentType === 'Link') {
+      cy.request({
+        method: 'POST',
+        url: `${api_url}/${path}`,
+        headers: {
+          Accept: 'application/json',
+        },
+        auth: auth,
+        body: {
+          '@type': contentType,
+          id: contentId,
+          title: contentTitle,
+          remoteUrl: remoteUrl,
         },
       });
     }
