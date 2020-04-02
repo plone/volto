@@ -11,19 +11,19 @@ describe('Sitemap', () => {
   it('renders a sitemap component', () => {
     const store = mockStore({
       navigation: {
-        '@id': 'http://localhost:8080/Plone/@navigation',
+        url: 'http://localhost:8080/Plone/@navigation',
         items: [
           {
-            '@id': 'http://localhost:8080/Plone/page-1',
+            url: 'http://localhost:8080/Plone/page-1',
             description: '',
             items: [
               {
-                '@id': 'http://localhost:8080/Plone/page-1/page-1-2',
+                url: 'http://localhost:8080/Plone/page-1/page-1-2',
                 description: '',
                 title: 'Page 1-2',
               },
               {
-                '@id': 'http://localhost:8080/Plone/page-1/page-1-3',
+                url: 'http://localhost:8080/Plone/page-1/page-1-3',
                 description: '',
                 title: 'Page 1-3',
               },
@@ -31,7 +31,7 @@ describe('Sitemap', () => {
             title: 'Page 1-3',
           },
           {
-            '@id': 'http://localhost:8080/Plone/page-2',
+            url: 'http://localhost:8080/Plone/page-2',
             description: '',
             title: 'Page 2',
           },

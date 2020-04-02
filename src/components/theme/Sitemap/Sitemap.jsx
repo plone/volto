@@ -55,10 +55,10 @@ class Sitemap extends Component {
       <ul>
         {items.map(item => (
           <li
-            key={item['@id']}
+            key={item.url}
             className={item.items?.length > 0 ? 'with-children' : ''}
           >
-            <Link to={item['@id']}>{item.title}</Link>
+            <Link to={item.url}>{item.title}</Link>
             {item.items && this.renderItems(item.items)}
           </li>
         ))}
