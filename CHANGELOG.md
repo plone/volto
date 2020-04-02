@@ -16,7 +16,7 @@
 
 ### Changes
 
-- Fixed link view @robgietema
+- Fixed ssr link view @robgietema
 
 ## 4.2.0 (2020-03-31)
 
