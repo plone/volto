@@ -48,7 +48,7 @@ class LinkView extends Component {
     if (!this.props.token) {
       if (isInternalURL(this.props.content.remoteUrl)) {
         this.props.history.replace(this.props.content.remoteUrl);
-      } else {
+      } else if (!__SERVER__) {
         window.location.href = this.props.content.remoteUrl;
       }
     }
@@ -64,7 +64,7 @@ class LinkView extends Component {
     if (!this.props.token) {
       if (isInternalURL(this.props.content.remoteUrl)) {
         this.props.history.replace(this.props.content.remoteUrl);
-      } else {
+      } else if (!__SERVER__) {
         window.location.href = this.props.content.remoteUrl;
       }
     }
