@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Container } from 'semantic-ui-react';
 import { Helmet } from '@plone/volto/helpers';
-//import { searchContent } from '@plone/volto/actions';
 import { Link } from 'react-router-dom';
 
 import { getNavigation } from '@plone/volto/actions';
@@ -34,7 +33,6 @@ class Sitemap extends Component {
    */
   static propTypes = {
     getNavigation: PropTypes.func.isRequired,
-    //searchContent: PropTypes.func.isRequired,
   };
 
   /**
@@ -43,40 +41,9 @@ class Sitemap extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillMount() {
-    //this.fetchContents();
     this.props.getNavigation('/', 4);
   }
 
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    // if (this.props.searchRequest.loading && nextProps.searchRequest.loaded) {
-    //   this.setState({
-    //     items: nextProps.items,
-    //   });
-    // }
-  }
-
-  /**
-   * Fetch contents handler
-   * @method fetchContents
-   * @param {string} pathname Pathname to fetch contents.
-   * @returns {undefined}
-   */
-
-  // fetchContents() {
-  //   this.props.searchContent('/', {
-  //     //'path.depth': 50,
-  //     //   sort_on: this.state.sort_on,
-  //     // sort_order: this.state.sort_order,
-  //     metadata_fields: 'modified',
-  //     b_size: 100000000,
-  //   });
-  // }
   /**
    * Render method.
    * @method render
@@ -87,7 +54,10 @@ class Sitemap extends Component {
     return (
       <ul>
         {items.map(item => (
-          <li key={item['@id']}>
+          <li
+            key={item['@id']}
+            className={item.items?.length > 0 ? 'with-children' : ''}
+          >
             <Link to={item['@id']}>{item.title}</Link>
             {item.items && this.renderItems(item.items)}
           </li>
