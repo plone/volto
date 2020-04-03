@@ -138,6 +138,10 @@ msgstr ""
 msgid "Block"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Block style"
+msgstr ""
+
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
 msgstr ""
@@ -218,6 +222,10 @@ msgstr ""
 msgid "Choose Target"
 msgstr ""
 
+#: components/theme/View/ImageView
+msgid "Click to download full sized image"
+msgstr ""
+
 #: components/manage/Widgets/SelectWidget
 msgid "Close"
 msgstr ""
@@ -255,6 +263,10 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/Edit
 msgid "Contained items"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Content"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -685,8 +697,17 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
+#: components/manage/Blocks/Listing/ListingSidebar
+msgid "Link more"
+msgstr ""
+
+#: components/manage/Blocks/Listing/ListingMore
+msgid "Link title"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/Listing/ListingMore
 #: components/manage/Blocks/Maps/MapsSidebar
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "Link to"
@@ -867,10 +888,12 @@ msgid "Paste"
 msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
 msgstr ""
 
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
 msgstr ""
 
@@ -1145,6 +1168,10 @@ msgstr ""
 msgid "Site Setup"
 msgstr ""
 
+#: components/theme/View/ImageView
+msgid "Size: {size}"
+msgstr ""
+
 #: error
 msgid "Sorry, something went wrong with your request"
 msgstr ""
@@ -1221,6 +1248,10 @@ msgstr ""
 
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags to remove"
+msgstr ""
+
+#: components/manage/Blocks/Listing/TemplateWidget
+msgid "Template"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -1416,6 +1447,10 @@ msgstr ""
 msgid "Workflow updated."
 msgstr ""
 
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "You are using an outdated browser"
+msgstr ""
+
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
 msgstr ""
@@ -1460,6 +1495,10 @@ msgstr ""
 msgid "delete"
 msgstr ""
 
+#: components/theme/OutdatedBrowser/OutdatedBrowser
+msgid "deprecated_browser_notice_message"
+msgstr ""
+
 #: config/Blocks
 msgid "description"
 msgstr ""
@@ -1490,6 +1529,14 @@ msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
+msgstr ""
+
+#: config/Blocks
+msgid "leadimage"
+msgstr ""
+
+#: config/Blocks
+msgid "listing"
 msgstr ""
 
 #: config/Blocks

@@ -14,9 +14,18 @@ exports[`renders an image view component 1`] = `
   >
     Hi
   </p>
-  <img
-    alt="Hello World!"
-    src="file:///preview.jpg"
-  />
+  <a
+    href="file:///preview.jpg"
+  >
+    <img
+      alt="Hello World!"
+      src="file:///preview.jpg"
+    />
+    <figcaption>
+      Size: 123 kB
+        —  
+      Click to download full sized image
+    </figcaption>
+  </a>
 </div>
 `;
