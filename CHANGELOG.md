@@ -1,6 +1,6 @@
 # Change Log
 
-## 4.3.1 (unreleased)
+## 4.4.1 (unreleased)
 
 ### Breaking
 
@@ -10,6 +10,16 @@
 
 ### Internal
 
+## 4.4.0 (2020-04-03)
+
+### Added
+
+- /contents (folder content view) is sortable @ksuess
+
+### Changes
+
+- Fix conversion from DraftJS to HTML using redraft for atomic entities (IMAGE) @sneridagh
+
 ## 4.3.0 (2020-04-01)
 
 ### Feature
@@ -18,7 +28,7 @@
 
 ### Bugfix
 
-- Fixed link view @robgietema
+- Fixed ssr link view @robgietema
 
 ## 4.2.0 (2020-03-31)
 
