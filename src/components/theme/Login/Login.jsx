@@ -21,8 +21,8 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
 
-import { Icon } from '../../../components';
-import { login } from '../../../actions';
+import { Icon } from '@plone/volto/components';
+import { getNavigation, login } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
 
@@ -137,7 +137,13 @@ class Login extends Component {
     }
   }
 
+  UNSAFE_componentWillMount() {
+    this.props.getNavigation('/');
+  }
+
   componentWillUnmount() {
+    this.props.getNavigation('/');
+
     if (toast.isActive('loginFailed')) {
       toast.dismiss('loginFailed');
     }
@@ -325,6 +331,6 @@ export default compose(
           .replace(/\/logout$/, '') ||
         '/',
     }),
-    { login },
+    { login, getNavigation },
   ),
 )(Login);

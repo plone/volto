@@ -14,12 +14,12 @@ import { blocks } from '~/config';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import cx from 'classnames';
-import { setSidebarTab } from '../../../../actions';
+import { setSidebarTab } from '@plone/volto/actions';
 
-import withObjectBrowser from '../../Sidebar/ObjectBrowser';
-import Icon from '../../../../components/theme/Icon/Icon';
-import dragSVG from '../../../../icons/drag.svg';
-import trashSVG from '../../../../icons/delete.svg';
+import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import dragSVG from '@plone/volto/icons/drag.svg';
+import trashSVG from '@plone/volto/icons/delete.svg';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -106,6 +106,8 @@ class Edit extends Component {
   static propTypes = {
     type: PropTypes.string.isRequired,
     data: PropTypes.objectOf(PropTypes.any).isRequired,
+    // properties is mapped to formData, so it's not connected to changes of the object
+    properties: PropTypes.objectOf(PropTypes.any).isRequired,
     selected: PropTypes.bool.isRequired,
     connectDragSource: PropTypes.func.isRequired,
     connectDragPreview: PropTypes.func.isRequired,

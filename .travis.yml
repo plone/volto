@@ -1,13 +1,14 @@
 language: python
+os: linux
 dist: xenial
-matrix:
+jobs:
   include:
     - name: 'Plone'
       python: 3.7
       env: TEST_SUITE=plone ZSERVER_PORT=55001
-    # - name: 'Guillotina Tests'
-    #   python: 3.7
-    #   env: TEST_SUITE=guillotina
+    - name: 'Guillotina Tests'
+      python: 3.7
+      env: TEST_SUITE=guillotina
     - name: 'Unit Tests'
       env: TEST_SUITE=unit
 cache:
@@ -16,7 +17,6 @@ cache:
   directories:
     - $HOME/buildout-cache
     - ~/.cache
-sudo: required
 addons:
   apt:
     packages:
@@ -36,10 +36,11 @@ before_install:
     echo "download-cache = $HOME/buildout-cache/downloads" >> $HOME/.buildout/default.cfg;
     echo "eggs-directory = $HOME/buildout-cache/eggs" >> $HOME/.buildout/default.cfg;
     fi
-
+  - npm install -g surge
 install:
   - if [ "$TEST_SUITE" == "plone" ]; then
-    make build-backend;
+    (cd api && pip install -r requirements.txt) &&
+    (cd api && buildout)
     fi
   - yarn install --frozen-lockfile
   - yarn cy:install
@@ -56,6 +57,12 @@ script:
   - if [ "$TEST_SUITE" == "plone" ]; then
     yarn ci:cypress:run;
     fi
+after_script:
+  - mkdir cypress-results
+  - mv cypress/videos cypress-results
+  - ls -al cypress-results
+  - surge cypress-results volto.surge.sh
+  - echo "Cypress Videos uploaded to http://volto.surge.sh/videos/blocks.js.mp4"
 after_success:
   - if [ "$TEST_SUITE" == "plone" ]; then
     yarn run bundlewatch;

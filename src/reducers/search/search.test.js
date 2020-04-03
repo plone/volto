@@ -3,7 +3,7 @@ import search from './search';
 import {
   RESET_SEARCH_CONTENT,
   SEARCH_CONTENT,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Search reducer', () => {
   it('should return the initial state', () => {

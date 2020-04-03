@@ -1,5 +1,5 @@
 import types from './types';
-import { GET_TYPES } from '../../constants/ActionTypes';
+import { GET_TYPES } from '@plone/volto/constants/ActionTypes';
 
 describe('Types reducer', () => {
   it('should return the initial state', () => {

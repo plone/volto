@@ -24,6 +24,8 @@ export ListingView from '@plone/volto/components/theme/View/ListingView';
 export Login from '@plone/volto/components/theme/Login/Login';
 export Logout from '@plone/volto/components/theme/Logout/Logout';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
+export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
+export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 export Pagination from '@plone/volto/components/theme/Pagination/Pagination';
 export SummaryView from '@plone/volto/components/theme/View/SummaryView';
 export Search from '@plone/volto/components/theme/Search/Search';
@@ -130,3 +132,6 @@ export Types from '@plone/volto/components/manage/Toolbar/Types';
 export Toast from '@plone/volto/components/manage/Toast/Toast';
 
 export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
+
+export CreateTranslation from '@plone/volto/components/manage/Multilingual/CreateTranslation';
+export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';

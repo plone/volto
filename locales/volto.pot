@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-02-15T19:21:36.804Z\n"
+"POT-Creation-Date: 2020-04-02T08:24:09.388Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -50,6 +50,11 @@ msgstr ""
 #: components/manage/Toolbar/Types
 # defaultMessage: Add Content...
 msgid "Add Content"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+# defaultMessage: Add Translation...
+msgid "Add Translation..."
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -237,6 +242,11 @@ msgstr ""
 msgid "Change State"
 msgstr ""
 
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Change workflow state recursively
+msgid "Change workflow state recursively"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -282,6 +292,11 @@ msgstr ""
 #: components/theme/Navigation/Navigation
 # defaultMessage: Close menu
 msgid "Close menu"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Collection
+msgid "Collection"
 msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
@@ -348,6 +363,16 @@ msgstr ""
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Copyright statement or other rights information on this item.
 msgid "Copyright statement or other rights information on this item."
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Created on
+msgid "Created on"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Creator
+msgid "Creator"
 msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
@@ -565,6 +590,11 @@ msgstr ""
 msgid "Embeded Google Maps"
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: End Date
+msgid "End Date"
+msgstr ""
+
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 # defaultMessage: Enter URL or title
 msgid "Enter URL or title"
@@ -616,6 +646,11 @@ msgstr ""
 msgid "Exclude from navigation"
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: Excluded from navigation
+msgid "Excluded from navigation"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Expand sidebar
 msgid "Expand sidebar"
@@ -626,10 +661,20 @@ msgstr ""
 msgid "Expiration Date"
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: Expiration date
+msgid "Expiration date"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: External URL
 msgid "External URL"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: File
+msgid "File"
 msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
@@ -650,6 +695,16 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 # defaultMessage: Fixed width table cells
 msgid "Fixed width table cells"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Folder
+msgid "Folder"
+msgstr ""
+
+#: components/theme/Forbidden/Forbidden
+# defaultMessage: Forbidden
+msgid "Forbidden"
 msgstr ""
 
 #: components/theme/ContactForm/ContactForm
@@ -732,6 +787,11 @@ msgstr ""
 msgid "Home page"
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: ID
+msgid "ID"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: If selected, this item will not appear in the navigation tree
 msgid "If selected, this item will not appear in the navigation tree"
@@ -743,6 +803,7 @@ msgid "If this date is in the future, the content will not show up in listings a
 msgstr ""
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 # defaultMessage: If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}.
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr ""
@@ -830,6 +891,11 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: Last comment date
+msgid "Last comment date"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Last modified
 msgid "Last modified"
@@ -844,6 +910,11 @@ msgstr ""
 #: helpers/AlignBlock/AlignBlock
 # defaultMessage: Left
 msgid "Left"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Link
+msgid "Link"
 msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
@@ -974,6 +1045,16 @@ msgstr ""
 msgid "New password"
 msgstr ""
 
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: News Item
+msgid "News Item"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: No
+msgid "No"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 # defaultMessage: No image selected
 msgid "No image selected"
@@ -1028,8 +1109,14 @@ msgid "No workflow"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
 # defaultMessage: None
 msgid "None"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Object Size
+msgid "Object Size"
 msgstr ""
 
 #: components/manage/Delete/Delete
@@ -1054,6 +1141,11 @@ msgstr ""
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 # defaultMessage: Origin
 msgid "Origin"
+msgstr ""
+
+#: components/manage/Toolbar/Toolbar
+# defaultMessage: Page
+msgid "Page"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -1164,6 +1256,11 @@ msgstr ""
 msgid "Properties"
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: Publication date
+msgid "Publication date"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 # defaultMessage: Publishing Date
 msgid "Publishing Date"
@@ -1248,6 +1345,11 @@ msgstr ""
 #: components/manage/History/History
 # defaultMessage: Revert to this revision
 msgid "Revert to this revision"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Review state
+msgid "Review state"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -1342,6 +1444,7 @@ msgid "Selection"
 msgstr ""
 
 #: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
 # defaultMessage: Select…
 msgid "Select…"
 msgstr ""
@@ -1362,6 +1465,7 @@ msgid "Set your password"
 msgstr ""
 
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/More
 # defaultMessage: Sharing
 msgid "Sharing"
 msgstr ""
@@ -1387,6 +1491,11 @@ msgstr ""
 msgid "Short name"
 msgstr ""
 
+#: components/theme/Pagination/Pagination
+# defaultMessage: Show
+msgid "Show"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 # defaultMessage: Shrink sidebar
 msgid "Shrink sidebar"
@@ -1408,6 +1517,7 @@ msgid "Site"
 msgstr ""
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Site Administration
 msgid "Site Administration"
 msgstr ""
@@ -1452,6 +1562,11 @@ msgstr ""
 #: components/manage/Diff/Diff
 # defaultMessage: Split
 msgid "Split"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: Start Date
+msgid "Start Date"
 msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -1534,6 +1649,7 @@ msgid "Text"
 msgstr ""
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Thank you.
 msgid "Thank you."
 msgstr ""
@@ -1590,6 +1706,16 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
+#: components/manage/Contents/Contents
+# defaultMessage: Total comments
+msgid "Total comments"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+# defaultMessage: Translate to {lang}
+msgid "Translate to {lang}"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
@@ -1609,6 +1735,16 @@ msgstr ""
 #: components/manage/Blocks/Title/Edit
 # defaultMessage: Type the title…
 msgid "Type the title…"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: UID
+msgid "UID"
+msgstr ""
+
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: Unauthorized
+msgid "Unauthorized"
 msgstr ""
 
 #: components/manage/Diff/Diff
@@ -1734,6 +1870,11 @@ msgstr ""
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr ""
 
+#: components/theme/Forbidden/Forbidden
+# defaultMessage: We apologize for the inconvenience, but you don't have permissions on this resource.
+msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
+msgstr ""
+
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: We will use this address if you need to recover your password
 msgid "We will use this address if you need to recover your password"
@@ -1762,6 +1903,16 @@ msgstr ""
 #: components/manage/Workflow/Workflow
 # defaultMessage: Workflow updated.
 msgid "Workflow updated."
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Yes
+msgid "Yes"
+msgstr ""
+
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: You are trying to access a protected resource, please {login} first.
+msgid "You are trying to access a protected resource, please {login} first."
 msgstr ""
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -1879,6 +2030,11 @@ msgstr ""
 msgid "listing"
 msgstr ""
 
+#: components/theme/Unauthorized/Unauthorized
+# defaultMessage: log in
+msgid "log in"
+msgstr ""
+
 #: config/Blocks
 # defaultMessage: Maps
 msgid "maps"
@@ -1907,6 +2063,11 @@ msgstr ""
 #: error
 # defaultMessage: return to the site root
 msgid "return to the site root"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: sort
+msgid "sort"
 msgstr ""
 
 #: config/Blocks

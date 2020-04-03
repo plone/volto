@@ -10,6 +10,7 @@ import {
   Contents,
   Controlpanel,
   Controlpanels,
+  CreateTranslation,
   Edit,
   Diff,
   Delete,
@@ -25,7 +26,7 @@ import {
   Search,
   Sharing,
   UsersControlpanel,
-} from './components';
+} from '@plone/volto/components';
 
 /**
  * Default routes array.
@@ -94,6 +95,10 @@ export const defaultRoutes = [
   {
     path: '/**/add',
     component: Add,
+  },
+  {
+    path: '/**/create-translation',
+    component: CreateTranslation,
   },
   {
     path: '/**/contents',
