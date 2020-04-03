@@ -36,7 +36,7 @@ Cypress.Commands.add(
         user: 'admin',
         pass: 'secret',
       };
-    };
+    }
     if (contentType === 'File') {
       cy.request({
         method: 'POST',
@@ -80,7 +80,9 @@ Cypress.Commands.add(
         },
       });
     }
-    if (['Document', 'News Item', 'CMSFolder'].includes(contentType)) {
+    if (
+      ['Document', 'Folder', 'News Item', 'CMSFolder'].includes(contentType)
+    ) {
       cy.request({
         method: 'POST',
         url: `${api_url}/${path}`,
