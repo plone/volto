@@ -6,16 +6,19 @@
 
 ### Feature
 
+- /sitemap to view sitemap based on @navigation with depth 4 @giuliaghisini
+
 ### Bugfix
 
 ### Internal
+
+- Improve the i18n script, only write the pot file if it's really different
 
 ## 4.4.0 (2020-04-03)
 
 ### Feature
 
 - /contents (folder content view) is sortable @ksuess
-- /sitemap to view sitemap based on @navigation with depth 4 @giuliaghisini
 
 ### Bugfix
 
