@@ -12,11 +12,11 @@
 
 ## 4.4.0 (2020-04-03)
 
-### Added
+### Feature
 
 - /contents (folder content view) is sortable @ksuess
 
-### Changes
+### Bugfix
 
 - Fix conversion from DraftJS to HTML using redraft for atomic entities (IMAGE) @sneridagh
 
