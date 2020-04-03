@@ -2,40 +2,44 @@
 
 ## 4.4.1 (unreleased)
 
-### Added
+### Breaking
 
-### Changes
+### Feature
+
+### Bugfix
+
+### Internal
 
 ## 4.4.0 (2020-04-03)
 
-### Added
+### Feature
 
 - /contents (folder content view) is sortable @ksuess
 - /sitemap to view sitemap based on @navigation with depth 4 @giuliaghisini
 
-### Changes
+### Bugfix
 
 - Fix conversion from DraftJS to HTML using redraft for atomic entities (IMAGE) @sneridagh
 
 ## 4.3.0 (2020-04-01)
 
-### Added
+### Feature
 
 - Added recursive workflow changes @robgietema
 
-### Changes
+### Bugfix
 
 - Fixed ssr link view @robgietema
 
 ## 4.2.0 (2020-03-31)
 
-### Added
+### Feature
 
 - Add Multilingual Support @sneridagh
 
 ## 4.1.2 (2020-03-30)
 
-### Changes
+### Bugfix
 
 - Fix typo for Japanese translation @terapyon
 - Fix refresh of the `Navigation` component on calling `/login` and `/logout` @sneridagh
@@ -43,7 +47,7 @@
 - Fix Maps block to use maps-inner instead of video-inner class @timo
 - Add div with class "table-of-contents" to ToC block @timo
 
-## Internal
+### Internal
 
 - Upgrade critical Plone 5.2.1 deps in api folder @sneridagh
 - Improve Cypress Video Block tests @sneridagh @timo
@@ -52,7 +56,7 @@
 
 ## 4.1.1 (2020-03-18)
 
-### Changes
+### Bugfix
 
 - Fix for #1267 - Link inside text for content-type without blocks breaks the site @sneridagh
 - Japanese translation @terapyon
@@ -64,19 +68,19 @@
 
 ## 4.1.0 (2020-03-13)
 
-### Added
+### Feature
 
 - Add `flattenHTMLToAppURL` helper method for remove api url from TinyMCE generated HTML @cekk
 - Add development mode global @sneridagh
 
-### Changes
+### Bugfix
 
 - Improve the UX of the listing block when queries are running @sneridagh
 - Added table of content cypress test @steffenri
 
 ## 4.0.1 (2020-03-09)
 
-### Changes
+### Bugfix
 
 - Fixes #1262 - SSR support for "undetected" browsers
 - Japanese translation @terapyon
@@ -90,7 +94,7 @@
 
 ## 4.0.0 (2020-03-01)
 
-### Added
+### Feature
 
 Summary of the most important features in this final release. For more detailed information
 refer to all of them in https://github.com/plone/volto/releases
@@ -110,7 +114,7 @@ refer to all of them in https://github.com/plone/volto/releases
 - Several internal libraries updated, including Redux, Router ones that support hooks as well
 - New locales (es, it, ja, pt, pt_BR)
 
-### Changes
+### Bugfixes
 
 - Tons of bug fixes
 
