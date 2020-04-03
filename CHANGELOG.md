@@ -8,6 +8,8 @@
 
 ### Changes
 
+- Fix conversion from DraftJS to HTML using redraft for atomic entities (IMAGE) @sneridagh
+
 ## 4.3.0 (2020-04-01)
 
 ### Added
