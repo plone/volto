@@ -1276,6 +1276,10 @@ msgstr "Sitemap"
 msgid "Site Setup"
 msgstr "<<<<<<< HEAD"
 
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Size: {size}"
 msgstr ""

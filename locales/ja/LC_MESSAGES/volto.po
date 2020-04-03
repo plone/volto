@@ -1264,6 +1264,10 @@ msgstr "サイトマップ"
 msgid "Site Setup"
 msgstr "サイト設定"
 
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Size: {size}"
 msgstr "サイズ: {size}"

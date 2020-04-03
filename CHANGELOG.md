@@ -11,6 +11,7 @@
 ### Added
 
 - /contents (folder content view) is sortable @ksuess
+- /sitemap to view sitemap based on @navigation with depth 4 @giuliaghisini
 
 ### Changes
 

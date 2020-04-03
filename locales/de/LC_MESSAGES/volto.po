@@ -1272,6 +1272,10 @@ msgstr "Übersicht"
 msgid "Site Setup"
 msgstr "Seiteneinstellungen"
 
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Size: {size}"
 msgstr "Grösse: {size}"
