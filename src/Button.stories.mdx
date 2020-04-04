@@ -1,0 +1,16 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import Icon from './components/theme/Icon/Icon';
+import homeSVG from './icons/home.svg';
+
+<Meta title="Icon" component={Icon} />
+
+# Icon
+
+With `MDX` we can define a story for `Checkbox` right in the middle of our
+markdown documentation.
+
+<Preview>
+  <Story name="Basic">
+    <Icon name={homeSVG} />
+  </Story>
+</Preview>
