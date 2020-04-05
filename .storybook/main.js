@@ -23,7 +23,14 @@ const SVGLOADER = {
 
 module.exports = {
   stories: ['../src/**/*.stories.mdx'],
-  addons: ['@storybook/addon-docs', '@storybook/addon-viewport/register'],
+  addons: [
+    '@storybook/addon-docs',
+    '@storybook/addon-viewport/register',
+    '@storybook/addon-a11y/register',
+    '@storybook/addon-knobs/register',
+    '@storybook/addon-actions',
+    '@storybook/addon-storysource',
+  ],
   // webpackFinal: config => console.dir(config, { depth: null }) || config,
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
@@ -33,7 +40,6 @@ module.exports = {
     // Make whatever fine-grained changes you need
     config.module.rules.push(SVGLOADER);
     const fileLoader = config.module.rules.find(fileLoaderFinder);
-    console.log(fileLoader);
     fileLoader.exclude = [/\.(config|variables|overrides)$/, /icons\/.*\.svg$/];
 
     // Return the altered config
