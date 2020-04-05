@@ -56,7 +56,9 @@ class ArrayWidget extends Component {
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     getVocabulary: PropTypes.func.isRequired,
-    choices: PropTypes.arrayOf(PropTypes.object),
+    choices: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+    ),
     loading: PropTypes.bool,
     items: PropTypes.shape({
       vocabulary: PropTypes.object,
@@ -124,7 +126,7 @@ class ArrayWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (this.vocabBaseUrl) {
+    if (!(this.props.items && this.props.items.choices) && this.vocabBaseUrl) {
       this.props.getVocabulary(this.vocabBaseUrl);
     }
   }
@@ -201,7 +203,7 @@ class ArrayWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              {this.vocabBaseUrl ? (
+              {!(this.props.items && this.props.items.choices) && this.vocabBaseUrl ? (
                 <AsyncPaginate
                   className="react-select-container"
                   classNamePrefix="react-select"
@@ -282,7 +284,13 @@ export default compose(
         getVocabFromField(props) ||
         getVocabFromItems(props);
       const vocabState = state.vocabularies[vocabBaseUrl];
-      if (vocabState) {
+      // If the schema already has the choices in it, then do not try to get the vocab,
+      // even if there is one
+      if (props.items && props.items.choices) {
+          return {
+            choices: props.items.choices,
+          };
+      } else if (vocabState) {
         return {
           choices: vocabState.items,
           itemsTotal: vocabState.itemsTotal,
