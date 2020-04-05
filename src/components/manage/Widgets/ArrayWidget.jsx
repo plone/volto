@@ -126,7 +126,7 @@ class ArrayWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (!(this.props.items && this.props.items.choices) && this.vocabBaseUrl) {
+    if (!this.props.items?.choices && this.vocabBaseUrl) {
       this.props.getVocabulary(this.vocabBaseUrl);
     }
   }
@@ -203,7 +203,7 @@ class ArrayWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              {!(this.props.items && this.props.items.choices) && this.vocabBaseUrl ? (
+              {!this.props.items?.choices && this.vocabBaseUrl ? (
                 <AsyncPaginate
                   className="react-select-container"
                   classNamePrefix="react-select"
@@ -286,7 +286,7 @@ export default compose(
       const vocabState = state.vocabularies[vocabBaseUrl];
       // If the schema already has the choices in it, then do not try to get the vocab,
       // even if there is one
-      if (props.items && props.items.choices) {
+      if (props.items?.choices) {
           return {
             choices: props.items.choices,
           };
