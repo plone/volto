@@ -76,6 +76,7 @@ import zoomSVG from '@plone/volto/icons/zoom.svg';
 import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
 import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
 import checkboxIndeterminateSVG from '@plone/volto/icons/checkbox-indeterminate.svg';
+import configurationSVG from '@plone/volto/icons/configuration-app.svg';
 import sortDownSVG from '@plone/volto/icons/sort-down.svg';
 import sortUpSVG from '@plone/volto/icons/sort-up.svg';
 import downKeySVG from '@plone/volto/icons/down-key.svg';
@@ -431,6 +432,7 @@ class Contents extends Component {
    */
   onSelect(event) {
     const id = event.target.getAttribute('value');
+    console.log(id, 'this is id for selected');
     if (indexOf(this.state.selected, id) === -1) {
       this.setState({
         selected: concat(this.state.selected, id),
@@ -1015,8 +1017,8 @@ class Contents extends Component {
                     <Menu.Item onClick={this.upload}>
                       <Icon
                         name={uploadSVG}
-                        size="17px"
                         color="#007eb1"
+                        size="24px"
                         title={this.props.intl.formatMessage(messages.upload)}
                       />
                     </Menu.Item>
@@ -1025,32 +1027,32 @@ class Contents extends Component {
                     <Menu.Item onClick={this.rename} disabled={!selected}>
                       <Icon
                         name={renameSVG}
-                        size="17px"
                         color="#826a6a"
+                        size="24px"
                         title={this.props.intl.formatMessage(messages.rename)}
                       />
                     </Menu.Item>
                     <Menu.Item onClick={this.workflow} disabled={!selected}>
                       <Icon
                         name={semaphoreSVG}
-                        size="17px"
                         color="#826a6a"
+                        size="24px"
                         title={this.props.intl.formatMessage(messages.state)}
                       />
                     </Menu.Item>
                     <Menu.Item onClick={this.tags} disabled={!selected}>
                       <Icon
                         name={tagSVG}
-                        size="17px"
                         color="#826a6a"
+                        size="24px"
                         title={this.props.intl.formatMessage(messages.tags)}
                       />
                     </Menu.Item>
                     <Menu.Item onClick={this.properties} disabled={!selected}>
                       <Icon
                         name={propertiesSVG}
-                        size="17px"
                         color="#826a6a"
+                        size="24px"
                         title={this.props.intl.formatMessage(
                           messages.properties,
                         )}
@@ -1061,16 +1063,16 @@ class Contents extends Component {
                     <Menu.Item onClick={this.cut} disabled={!selected}>
                       <Icon
                         name={cutSVG}
-                        size="17px"
                         color="#826a6a"
+                        size="24px"
                         title={this.props.intl.formatMessage(messages.cut)}
                       />
                     </Menu.Item>
                     <Menu.Item onClick={this.copy} disabled={!selected}>
                       <Icon
                         name={copySVG}
-                        size="17px"
                         color="#826a6a"
+                        size="24px"
                         title={this.props.intl.formatMessage(messages.copy)}
                       />
                     </Menu.Item>
@@ -1080,16 +1082,16 @@ class Contents extends Component {
                     >
                       <Icon
                         name={pasteSVG}
-                        size="17px"
                         color="#826a6a"
+                        size="24px"
                         title={this.props.intl.formatMessage(messages.paste)}
                       />
                     </Menu.Item>
                     <Menu.Item onClick={this.delete} disabled={!selected}>
                       <Icon
                         name={deleteSVG}
-                        size="20px"
                         color="#e40166"
+                        size="24px"
                         title={this.props.intl.formatMessage(messages.delete)}
                       />
                     </Menu.Item>
@@ -1106,7 +1108,7 @@ class Contents extends Component {
                         value={this.state.filter}
                         onChange={this.onChangeFilter}
                       />
-                      <Icon name={zoomSVG} size="25px" color="#007eb1" />
+                      <Icon name={zoomSVG} size="24px" color="#007eb1" />
                       <div className="results" />
                     </div>
                   </Menu.Menu>
@@ -1143,8 +1145,8 @@ class Contents extends Component {
                   </Breadcrumb>
                   <Dropdown
                     item
-                    icon={<Icon name={moreSVG} size={15} />}
-                    className="right"
+                    icon={<Icon name={moreSVG} size="24px" color="#826a6a" />}
+                    className="right floating"
                   >
                     <Dropdown.Menu className="left">
                       <Dropdown.Header
@@ -1160,9 +1162,13 @@ class Contents extends Component {
                             onClick={this.onSelectIndex}
                           >
                             {this.state.index.values[index].selected ? (
-                              <Icon name={checkboxCheckedSVG} color="blue" />
+                              <Icon
+                                name={checkboxCheckedSVG}
+                                size="20px"
+                                color="#007eb1"
+                              />
                             ) : (
-                              <Icon name={checkboxUncheckedSVG} />
+                              <Icon name={checkboxUncheckedSVG} size="20px" />
                             )}
                             {this.props.intl.formatMessage({
                               id: this.state.index.values[index].label,
@@ -1180,7 +1186,13 @@ class Contents extends Component {
                     <Table.Row>
                       <Table.HeaderCell>
                         <Dropdown
-                          trigger={<Icon name={sortDownSVG} />}
+                          trigger={
+                            <Icon
+                              name={configurationSVG}
+                              size="24px"
+                              color="#826a6a"
+                            />
+                          }
                           className="sort-icon"
                           aria-label={this.props.intl.formatMessage(
                             messages.sort,
@@ -1208,7 +1220,7 @@ class Contents extends Component {
                                   key={index}
                                   className={`sort_${index}`}
                                 >
-                                  <Icon name={downKeySVG} />
+                                  <Icon name={downKeySVG} size="24px" />
                                   <FormattedMessage id={Indexes[index].label} />
                                   <Dropdown.Menu>
                                     <Dropdown.Item
@@ -1216,7 +1228,7 @@ class Contents extends Component {
                                       value={`${Indexes[index].sort_on}|ascending`}
                                       className={`sort_${Indexes[index].sort_on}_ascending`}
                                     >
-                                      <Icon name={sortDownSVG} />{' '}
+                                      <Icon name={sortDownSVG} size="24px" />{' '}
                                       <FormattedMessage
                                         id="Ascending"
                                         defaultMessage="Ascending"
@@ -1227,7 +1239,7 @@ class Contents extends Component {
                                       value={`${Indexes[index].sort_on}|descending`}
                                       className={`sort_${Indexes[index].sort_on}_descending`}
                                     >
-                                      <Icon name={sortUpSVG} />{' '}
+                                      <Icon name={sortUpSVG} size="24px" />{' '}
                                       <FormattedMessage
                                         id="Descending"
                                         defaultMessage="Descending"
@@ -1254,10 +1266,10 @@ class Contents extends Component {
                               }
                               color={
                                 this.state.selected.length > 0
-                                  ? 'blue'
-                                  : 'black'
+                                  ? '#007eb1'
+                                  : '#826a6a'
                               }
-                              size="14"
+                              size="20px"
                             />
                           }
                           icon={null}
@@ -1269,11 +1281,15 @@ class Contents extends Component {
                               )}
                             />
                             <Dropdown.Item onClick={this.onSelectAll}>
-                              <Icon name={checkboxCheckedSVG} color="blue" />{' '}
+                              <Icon
+                                name={checkboxCheckedSVG}
+                                color="#007eb1"
+                                size="20px"
+                              />{' '}
                               <FormattedMessage id="All" defaultMessage="All" />
                             </Dropdown.Item>
                             <Dropdown.Item onClick={this.onSelectNone}>
-                              <Icon name={checkboxUncheckedSVG} />{' '}
+                              <Icon name={checkboxUncheckedSVG} size="20px" />{' '}
                               <FormattedMessage
                                 id="None"
                                 defaultMessage="None"
@@ -1287,7 +1303,7 @@ class Contents extends Component {
                               )}
                             />
                             <Input
-                              icon={<Icon name={zoomSVG} size={15} />}
+                              icon={<Icon name={zoomSVG} size="24px" />}
                               iconPosition="left"
                               className="search"
                               placeholder={this.props.intl.formatMessage(
@@ -1301,7 +1317,11 @@ class Contents extends Component {
                                   value={item}
                                   onClick={this.onDeselect}
                                 >
-                                  <Icon name={deleteSVG} color="#e40166" />{' '}
+                                  <Icon
+                                    name={deleteSVG}
+                                    color="#e40166"
+                                    size="24px"
+                                  />{' '}
                                   {this.getFieldById(item, 'title')}
                                 </Dropdown.Item>
                               ))}
@@ -1312,7 +1332,7 @@ class Contents extends Component {
                       <Table.HeaderCell
                         width={Math.ceil(16 / this.state.index.selectedCount)}
                       >
-                        <FormattedMessage id="Title" defaultMessage="Title" />
+                        <FormattedMessage id="Title" defaultMessage="NAME" />
                       </Table.HeaderCell>
                       {map(
                         this.state.index.order,

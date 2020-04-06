@@ -76,8 +76,9 @@ export const ContentsItemComponent = ({
             <div>
               <Icon
                 name={dragSVG}
-                size={15}
-                className="grey content drag handle"
+                size="24px"
+                color="#878f93"
+                className="content drag handle"
               />
             </div>,
           )}
@@ -85,15 +86,18 @@ export const ContentsItemComponent = ({
         <Table.Cell>
           <Icon
             name={selected ? checkboxCheckedSVG : checkboxUncheckedSVG}
-            color={selected ? 'blue' : 'black'}
-            size={15}
+            color={selected ? '#007eb1' : '#826a6a'}
+            size="20px"
             value={item['@id']}
             onClick={onClick}
           />
         </Table.Cell>
         <Table.Cell>
           <Link to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}>
-            <Icon name={getIcon(item['@type'], item.is_folderish)} size={12} />{' '}
+            <Icon
+              name={getIcon(item['@type'], item.is_folderish)}
+              size="16px"
+            />{' '}
             {item.title}
           </Link>
         </Table.Cell>
@@ -126,39 +130,39 @@ export const ContentsItemComponent = ({
           </Table.Cell>
         ))}
         <Table.Cell textAlign="right">
-          <Dropdown icon={<Icon name={moreSVG} size={20} color="blue" />}>
+          <Dropdown icon={<Icon name={moreSVG} size="24px" color="#007eb1" />}>
             <Dropdown.Menu className="left">
               <Link className="item" to={`${item['@id']}/edit`}>
-                <Icon name={editingSVG} color="blue" />{' '}
+                <Icon name={editingSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="Edit" defaultMessage="Edit" />
               </Link>
               <Link className="item" to={item['@id']}>
-                <Icon name={showSVG} color="blue" />{' '}
+                <Icon name={showSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="View" defaultMessage="View" />
               </Link>
               <Dropdown.Divider />
               <Dropdown.Item onClick={onCut} value={item['@id']}>
-                <Icon name={cutSVG} color="blue" />{' '}
+                <Icon name={cutSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="Cut" defaultMessage="Cut" />
               </Dropdown.Item>
               <Dropdown.Item onClick={onCopy} value={item['@id']}>
-                <Icon name={copySVG} color="blue" />{' '}
+                <Icon name={copySVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="Copy" defaultMessage="Copy" />
               </Dropdown.Item>
               <Dropdown.Item onClick={onDelete} value={item['@id']}>
-                <Icon name={deleteSVG} color="#e40166" />{' '}
+                <Icon name={deleteSVG} color="#e40166" size="24px" />{' '}
                 <FormattedMessage id="Delete" defaultMessage="Delete" />
               </Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown.Item onClick={onMoveToTop} value={order}>
-                <Icon name={moveUpSVG} color="blue" />{' '}
+                <Icon name={moveUpSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage
                   id="Move to top of folder"
                   defaultMessage="Move to top of folder"
                 />
               </Dropdown.Item>
               <Dropdown.Item onClick={onMoveToBottom} value={order}>
-                <Icon name={moveDownSVG} color="blue" />{' '}
+                <Icon name={moveDownSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage
                   id="Move to bottom of folder"
                   defaultMessage="Move to bottom of folder"

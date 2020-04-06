@@ -18,7 +18,7 @@
 @headerBackground: #FAF8F8;
 @headerFontWeight: @normal;
 @headerTextTransform: uppercase;
-@headerColor: #777776;
+@headerColor: #878f93;
 @borderRadius: 0;
 @borderCollapse: collapse;
 
