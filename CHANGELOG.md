@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix use case for non-multilingual setups and on projects on lang loading @sneridagh
+
 ### Internal
 
 ## 4.5.0 (2020-04-06)

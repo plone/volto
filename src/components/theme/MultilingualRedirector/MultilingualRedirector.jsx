@@ -10,7 +10,7 @@ let locales = {};
 if (settings) {
   settings.supportedLanguages.forEach(lang => {
     import('~/../locales/' + lang + '.json').then(locale => {
-      locales = { ...locales, [lang]: locale };
+      locales = { ...locales, [lang]: locale.default };
     });
   });
 }
@@ -28,7 +28,8 @@ const MultilingualRedirector = props => {
   React.useEffect(() => {
     // ToDo: Add means to support language negotiation (with config)
     // const detectedLang = (navigator.language || navigator.userLanguage).substring(0, 2);
-    if (pathname === '/') {
+    if (settings.isMultilingual && pathname === '/') {
+      console.log(redirectToLanguage);
       dispatch(
         updateIntl({
           locale: redirectToLanguage,
