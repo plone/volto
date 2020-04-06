@@ -1689,6 +1689,10 @@ msgstr ""
 msgid "registration form"
 msgstr ""
 
+#: components/theme/Search/Search
+msgid "results found"
+msgstr ""
+
 #: error
 msgid "return to the site root"
 msgstr ""

@@ -1699,6 +1699,10 @@ msgstr "o intente con una página diferente."
 msgid "registration form"
 msgstr "formulario de registro"
 
+#: components/theme/Search/Search
+msgid "results found"
+msgstr ""
+
 #: error
 msgid "return to the site root"
 msgstr "regrese al directorio raíz del sitio"

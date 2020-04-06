@@ -7,6 +7,7 @@
 ### Feature
 
 - /sitemap to view sitemap based on @navigation with depth 4 @giuliaghisini
+- pagination on site search results @giuliaghisini
 
 ### Bugfix
 

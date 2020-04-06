@@ -1704,6 +1704,10 @@ msgstr "versuchen Sie eine andere Seite."
 msgid "registration form"
 msgstr "Registrierungsformular"
 
+#: components/theme/Search/Search
+msgid "results found"
+msgstr ""
+
 #: error
 msgid "return to the site root"
 msgstr "Zur Startseite zurückkehren"
