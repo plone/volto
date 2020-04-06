@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Typo in German translations @steffenri
+
 ## 4.5.0 (2020-04-06)
 
 ### Feature
