@@ -207,6 +207,10 @@ msgstr "パスワードを変更"
 msgid "Change State"
 msgstr "状態を変更"
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change workflow state recursively"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1260,6 +1264,10 @@ msgstr "サイトマップ"
 msgid "Site Setup"
 msgstr "サイト設定"
 
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Size: {size}"
 msgstr "サイズ: {size}"
@@ -1691,6 +1699,10 @@ msgstr "登録フォーム"
 #: error
 msgid "return to the site root"
 msgstr "サイトルートに戻ってください。"
+
+#: components/manage/Contents/Contents
+msgid "sort"
+msgstr ""
 
 #: config/Blocks
 msgid "table"

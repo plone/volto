@@ -45,7 +45,9 @@ docs-serve:
 	(cd docs && ../bin/mkdocs serve)
 
 docs-build:
-	python3 -m venv .
+	# The build in netlify breaks because they have not installed ensurepip
+	# So we should continue using virtualenv
+	virtualenv --python=python3 .
 	./bin/pip install -r requirements-docs.txt
 	(cd docs && ../bin/mkdocs build)
 

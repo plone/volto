@@ -215,6 +215,10 @@ msgstr "Passwort ändern"
 msgid "Change State"
 msgstr "Statusänderung"
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change workflow state recursively"
+msgstr "Ändere Status rekursiv"
+
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1268,6 +1272,10 @@ msgstr "Übersicht"
 msgid "Site Setup"
 msgstr "Seiteneinstellungen"
 
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Size: {size}"
 msgstr "Grösse: {size}"
@@ -1699,6 +1707,10 @@ msgstr "Registrierungsformular"
 #: error
 msgid "return to the site root"
 msgstr "Zur Startseite zurückkehren"
+
+#: components/manage/Contents/Contents
+msgid "sort"
+msgstr "sortieren"
 
 #: config/Blocks
 msgid "table"

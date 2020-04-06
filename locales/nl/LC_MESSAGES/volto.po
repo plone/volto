@@ -219,6 +219,10 @@ msgstr "Wachtwoord wijzigen"
 msgid "Change State"
 msgstr "Status wijzigen"
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change workflow state recursively"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1272,6 +1276,10 @@ msgstr "Sitemap"
 msgid "Site Setup"
 msgstr "<<<<<<< HEAD"
 
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Size: {size}"
 msgstr ""
@@ -1702,6 +1710,10 @@ msgstr ""
 
 #: error
 msgid "return to the site root"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "sort"
 msgstr ""
 
 #: config/Blocks

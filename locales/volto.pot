@@ -242,6 +242,11 @@ msgstr ""
 msgid "Change State"
 msgstr ""
 
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Change workflow state recursively
+msgid "Change workflow state recursively"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -1528,6 +1533,11 @@ msgstr ""
 msgid "Site Setup"
 msgstr ""
 
+#: components/theme/Sitemap/Sitemap
+# defaultMessage: Sitemap
+msgid "Sitemap"
+msgstr ""
+
 #: components/theme/View/ImageView
 # defaultMessage: Size: {size}
 msgid "Size: {size}"
@@ -2058,6 +2068,11 @@ msgstr ""
 #: error
 # defaultMessage: return to the site root
 msgid "return to the site root"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: sort
+msgid "sort"
 msgstr ""
 
 #: config/Blocks
