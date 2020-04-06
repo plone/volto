@@ -2,8 +2,6 @@
 
 ## 4.5.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - pagination on site search results @giuliaghisini
