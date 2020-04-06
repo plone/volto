@@ -11,10 +11,11 @@
 ### Bugfix
 
 - Fix ArrayWidget to support static supermodel vocabulary @datakurre
+- Bring back the OutdatedBrowser component, it got removed in a bad merge :( @sneridagh
 
 ### Internal
 
-- Improve the i18n script, only write the pot file if it's really different
+- Improve the i18n script, only write the pot file if it's really different @sneridagh
 
 ## 4.4.0 (2020-04-03)
 
