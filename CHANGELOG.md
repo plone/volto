@@ -2,8 +2,6 @@
 
 ## 4.4.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - /sitemap to view sitemap based on @navigation with depth 4 @giuliaghisini
