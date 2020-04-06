@@ -29,6 +29,8 @@ export {
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
+  postControlpanel,
+  deleteControlpanel,
   listControlpanels,
   updateControlpanel,
 } from '@plone/volto/actions/controlpanels/controlpanels';
@@ -63,8 +65,6 @@ export {
 } from '@plone/volto/actions/sharing/sharing';
 export {
   getTypes,
-  createType,
-  deleteType,
 } from '@plone/volto/actions/types/types';
 export {
   createUser,

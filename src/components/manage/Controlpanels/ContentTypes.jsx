@@ -10,6 +10,7 @@ import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { Helmet, getBaseUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
+import { last } from 'lodash';
 import {
   Confirm,
   Container,
@@ -20,16 +21,16 @@ import {
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import {
-  getTypes,
-  createType,
-  deleteType,
-} from '@plone/volto/actions';
-import {
   Icon,
   ModalForm,
   Toolbar,
   Toast,
 } from '@plone/volto/components';
+import {
+  getControlpanel,
+  postControlpanel,
+  deleteControlpanel,
+} from '@plone/volto/actions';
 import { getId } from '@plone/volto/helpers';
 import addSvg from '@plone/volto/icons/circle-plus.svg';
 import backSVG from '@plone/volto/icons/back.svg';
@@ -102,17 +103,30 @@ class ContentTypes extends Component {
    * @static
    */
   static propTypes = {
-    getTypes: PropTypes.func.isRequired,
-    createType: PropTypes.func.isRequired,
-    deleteType: PropTypes.func.isRequired,
-    types: PropTypes.arrayOf(
-      PropTypes.shape({
-        '@id': PropTypes.string,
-        addable: PropTypes.bool,
-        title: PropTypes.string,
-      }),
-    ),
+    id: PropTypes.string.isRequired,
+    getControlpanel: PropTypes.func.isRequired,
+    postControlpanel: PropTypes.func.isRequired,
+    deleteControlpanel: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
+    postRequest: PropTypes.shape({
+      loading: PropTypes.bool,
+      loaded: PropTypes.bool,
+    }).isRequired,
+    deleteRequest: PropTypes.shape({
+      loading: PropTypes.bool,
+      loaded: PropTypes.bool,
+    }).isRequired,
+    controlpanel: PropTypes.shape({
+      '@id': PropTypes.string,
+      items: PropTypes.arrayOf(
+        PropTypes.shape({
+          '@id': PropTypes.string,
+          title: PropTypes.string,
+          description: PropTypes.string,
+          count: PropTypes.integer,
+        })
+      )
+    })
   };
 
   /**
@@ -141,27 +155,26 @@ class ContentTypes extends Component {
 
   /**
    * Component will mount
-   * @method componentDidMount
+   * @method componentWillMount
    * @returns {undefined}
    */
-  componentDidMount() {
-
+  UNSAFE_componentWillMount() {
+    this.props.getControlpanel(this.props.id);
   }
-
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     // Create
-    if (this.props.createTypeRequest.loading && nextProps.createTypeRequest.loaded) {
-      this.props.getTypes(getBaseUrl(this.props.pathname));
+    if (this.props.postRequest.loading && nextProps.postRequest.loaded) {
+      this.props.getControlpanel(this.props.id);
       this.onAddTypeSuccess();
     }
-    if (this.props.createTypeRequest.loading && nextProps.createTypeRequest.error) {
-      this.onAddTypeError(nextProps.createTypeRequest.error);
+    if (this.props.postRequest.loading && nextProps.postRequest.error) {
+      this.onAddTypeError(nextProps.postRequest.error);
     }
 
     // Delete
-    if (this.props.deleteTypeRequest.loading && nextProps.deleteTypeRequest.loaded) {
-      this.props.getTypes(getBaseUrl(this.props.pathname));
+    if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
+      this.props.getControlpanel(this.props.id);
       this.onDeleteTypeSuccess();
     }
   }
@@ -175,14 +188,14 @@ class ContentTypes extends Component {
    * @returns {undefined}
    */
   onAddTypeSubmit(data, callback) {
-    this.props.createType(data);
+    this.props.postControlpanel(this.props.id, data);
     this.setState({
       addTypeSetFormDataCallback: callback,
     });
   }
 
   /**
-   * Handle Errors after createType()
+   * Handle Errors after postControlpanel()
    *
    * @param {*} error object. Requires the property .message
    * @memberof ContentTypes
@@ -195,7 +208,7 @@ class ContentTypes extends Component {
   }
 
   /**
-   * Handle Success after createType()
+   * Handle Success after postControlpanel()
    *
    * @memberof ContentTypes
    * @returns {undefined}
@@ -241,8 +254,8 @@ class ContentTypes extends Component {
    * @returns {undefined}
    */
   onDeleteOk() {
-    const tid = getId(this.state.typeToDelete);
-    this.props.deleteType(tid);
+    const item = getId(this.state.typeToDelete);
+    this.props.deleteControlpanel(this.props.id, item);
     this.setState({
       showDelete: false,
       typeToDelete: undefined
@@ -263,7 +276,7 @@ class ContentTypes extends Component {
   }
 
     /**
-   * Handle Success after deleteType()
+   * Handle Success after deleteControlpanel()
    *
    * @method onDeleteTypeSuccess
    * @memberof ContentTypes
@@ -284,6 +297,9 @@ class ContentTypes extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    if (!this.props.controlpanel) {
+      return <div />;
+    }
     return (
       <Container className="types-control-panel">
         <Helmet
@@ -320,7 +336,7 @@ class ContentTypes extends Component {
             submitError={this.state.addTypeError}
             onCancel={() => this.setState({ showAddType: false })}
             title={this.props.intl.formatMessage(messages.addTypeFormTitle)}
-            loading={this.props.createTypeRequest.loading}
+            loading={this.props.postRequest.loading}
             schema={{
               fieldsets: [
                 {
@@ -398,7 +414,7 @@ class ContentTypes extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {this.props.types.map(item => (
+                  {this.props.controlpanel.items.map(item => (
                     <Table.Row key={item['@id']}>
                       <Table.Cell>
                         <Link to={`/controlpanel/dexterity-types/${getId(item['@id'])}`}>
@@ -459,15 +475,16 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      types: state.types.types,
+      controlpanel: state.controlpanels.controlpanel,
+      postRequest: state.controlpanels.post,
+      deleteRequest: state.controlpanels.delete,
       pathname: props.location.pathname,
-      createTypeRequest: state.types.create,
-      deleteTypeRequest: state.types.delete,
+      id: last(props.location.pathname.split('/')),
     }),
     {
-      getTypes,
-      createType,
-      deleteType,
+      getControlpanel,
+      postControlpanel,
+      deleteControlpanel,
     },
   ),
 )(ContentTypes);
