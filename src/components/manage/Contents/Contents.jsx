@@ -59,11 +59,20 @@ import {
   Pagination,
   Toolbar,
   Toast,
-  Icon as IconNext,
 } from '@plone/volto/components';
+import IconNext from '@plone/volto/components/theme/Icon/Icon';
 import { toast } from 'react-toastify';
 
 import backSVG from '@plone/volto/icons/back.svg';
+import cutSVG from '@plone/volto/icons/cut.svg';
+import deleteSVG from '@plone/volto/icons/delete.svg';
+import copySVG from '@plone/volto/icons/copy.svg';
+import tagSVG from '@plone/volto/icons/tag.svg';
+import renameSVG from '@plone/volto/icons/rename.svg';
+import semaphoreSVG from '@plone/volto/icons/semaphore.svg';
+import uploadSVG from '@plone/volto/icons/upload.svg';
+import propertiesSVG from '@plone/volto/icons/properties.svg';
+import pasteSVG from '@plone/volto/icons/paste.svg';
 
 const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
 
@@ -998,34 +1007,44 @@ class Contents extends Component {
                 <Menu stackable attached>
                   <Menu.Menu>
                     <Menu.Item onClick={this.upload}>
-                      <Icon
-                        name="upload"
+                      <IconNext
+                        name={uploadSVG}
+                        size="17px"
+                        color="#007eb1"
                         title={this.props.intl.formatMessage(messages.upload)}
                       />
                     </Menu.Item>
                   </Menu.Menu>
                   <Menu.Menu>
                     <Menu.Item onClick={this.rename} disabled={!selected}>
-                      <Icon
-                        name="text cursor"
+                      <IconNext
+                        name={renameSVG}
+                        size="17px"
+                        color="#826a6a"
                         title={this.props.intl.formatMessage(messages.rename)}
                       />
                     </Menu.Item>
                     <Menu.Item onClick={this.workflow} disabled={!selected}>
-                      <Icon
-                        name="random"
+                      <IconNext
+                        name={semaphoreSVG}
+                        size="17px"
+                        color="#826a6a"
                         title={this.props.intl.formatMessage(messages.state)}
                       />
                     </Menu.Item>
                     <Menu.Item onClick={this.tags} disabled={!selected}>
-                      <Icon
-                        name="tags"
+                      <IconNext
+                        name={tagSVG}
+                        size="17px"
+                        color="#826a6a"
                         title={this.props.intl.formatMessage(messages.tags)}
                       />
                     </Menu.Item>
                     <Menu.Item onClick={this.properties} disabled={!selected}>
-                      <Icon
-                        name="setting"
+                      <IconNext
+                        name={propertiesSVG}
+                        size="17px"
+                        color="#826a6a"
                         title={this.props.intl.formatMessage(
                           messages.properties,
                         )}
@@ -1034,14 +1053,18 @@ class Contents extends Component {
                   </Menu.Menu>
                   <Menu.Menu>
                     <Menu.Item onClick={this.cut} disabled={!selected}>
-                      <Icon
-                        name="cut"
+                      <IconNext
+                        name={cutSVG}
+                        size="17px"
+                        color="#826a6a"
                         title={this.props.intl.formatMessage(messages.cut)}
                       />
                     </Menu.Item>
                     <Menu.Item onClick={this.copy} disabled={!selected}>
-                      <Icon
-                        name="copy"
+                      <IconNext
+                        name={copySVG}
+                        size="17px"
+                        color="#826a6a"
                         title={this.props.intl.formatMessage(messages.copy)}
                       />
                     </Menu.Item>
@@ -1049,14 +1072,18 @@ class Contents extends Component {
                       onClick={this.paste}
                       disabled={!this.props.action}
                     >
-                      <Icon
-                        name="paste"
+                      <IconNext
+                        name={pasteSVG}
+                        size="17px"
+                        color="#826a6a"
                         title={this.props.intl.formatMessage(messages.paste)}
                       />
                     </Menu.Item>
                     <Menu.Item onClick={this.delete} disabled={!selected}>
-                      <Icon
-                        name="trash"
+                      <IconNext
+                        name={deleteSVG}
+                        size="20px"
+                        color="#e40166"
                         title={this.props.intl.formatMessage(messages.delete)}
                       />
                     </Menu.Item>

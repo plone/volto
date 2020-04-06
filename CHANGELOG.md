@@ -5,6 +5,7 @@
 ### Added
 
 - /contents (folder content view) is sortable @ksuess
+- Updated the (folder content icons to Pastanaga Icons) @iFlameing
 
 ### Changes
 
