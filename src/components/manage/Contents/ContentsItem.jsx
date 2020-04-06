@@ -4,15 +4,48 @@
  */
 
 import React from 'react';
-import { Icon, Table, Dropdown } from 'semantic-ui-react';
+import { Table, Dropdown } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import moment from 'moment';
 import { DragSource, DropTarget } from 'react-dnd';
 import { FormattedMessage } from 'react-intl';
+import { Icon } from '@plone/volto/components';
+import moreSVG from '@plone/volto/icons/more.svg';
+import addDocumentSVG from '@plone/volto/icons/add-document.svg';
+import linkSVG from '@plone/volto/icons/link.svg';
+import calendarSVG from '@plone/volto/icons/calendar.svg';
+import folderSVG from '@plone/volto/icons/folder.svg';
+import fileSVG from '@plone/volto/icons/file.svg';
+import imageSVG from '@plone/volto/icons/image.svg';
+import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
+import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
+import cutSVG from '@plone/volto/icons/cut.svg';
+import deleteSVG from '@plone/volto/icons/delete.svg';
+import copySVG from '@plone/volto/icons/copy.svg';
+import showSVG from '@plone/volto/icons/show.svg';
+import moveUpSVG from '@plone/volto/icons/move-up.svg';
+import moveDownSVG from '@plone/volto/icons/move-down.svg';
+import editingSVG from '@plone/volto/icons/editing.svg';
+import dragSVG from '@plone/volto/icons/drag.svg';
 
-import { getIcon } from '@plone/volto/helpers';
+export function getIcon(type, isFolderish) {
+  switch (type) {
+    case 'Document':
+      return addDocumentSVG;
+    case 'Image':
+      return imageSVG;
+    case 'File':
+      return fileSVG;
+    case 'Link':
+      return linkSVG;
+    case 'Event':
+      return calendarSVG;
+    default:
+      return isFolderish ? folderSVG : fileSVG;
+  }
+}
 
 /**
  * Contents item component class.
@@ -40,20 +73,27 @@ export const ContentsItemComponent = ({
       <tr key={item['@id']} style={{ opacity: isDragging ? 0 : 1 }}>
         <Table.Cell>
           {connectDragSource(
-            <i aria-hidden="true" className="grey content icon drag handle" />,
+            <div>
+              <Icon
+                name={dragSVG}
+                size={15}
+                className="grey content drag handle"
+              />
+            </div>,
           )}
         </Table.Cell>
         <Table.Cell>
           <Icon
-            name={selected ? 'check square' : 'square outline'}
+            name={selected ? checkboxCheckedSVG : checkboxUncheckedSVG}
             color={selected ? 'blue' : 'black'}
+            size={15}
             value={item['@id']}
             onClick={onClick}
           />
         </Table.Cell>
         <Table.Cell>
           <Link to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}>
-            <Icon name={getIcon(item['@type'], item.is_folderish)} />{' '}
+            <Icon name={getIcon(item['@type'], item.is_folderish)} size={12} />{' '}
             {item.title}
           </Link>
         </Table.Cell>
@@ -86,39 +126,39 @@ export const ContentsItemComponent = ({
           </Table.Cell>
         ))}
         <Table.Cell textAlign="right">
-          <Dropdown icon="ellipsis horizontal">
+          <Dropdown icon={<Icon name={moreSVG} size={20} color="blue" />}>
             <Dropdown.Menu className="left">
               <Link className="item" to={`${item['@id']}/edit`}>
-                <Icon name="write" />{' '}
+                <Icon name={editingSVG} color="blue" />{' '}
                 <FormattedMessage id="Edit" defaultMessage="Edit" />
               </Link>
               <Link className="item" to={item['@id']}>
-                <Icon name="eye" />{' '}
+                <Icon name={showSVG} color="blue" />{' '}
                 <FormattedMessage id="View" defaultMessage="View" />
               </Link>
               <Dropdown.Divider />
               <Dropdown.Item onClick={onCut} value={item['@id']}>
-                <Icon name="cut" />{' '}
+                <Icon name={cutSVG} color="blue" />{' '}
                 <FormattedMessage id="Cut" defaultMessage="Cut" />
               </Dropdown.Item>
               <Dropdown.Item onClick={onCopy} value={item['@id']}>
-                <Icon name="copy" />{' '}
+                <Icon name={copySVG} color="blue" />{' '}
                 <FormattedMessage id="Copy" defaultMessage="Copy" />
               </Dropdown.Item>
               <Dropdown.Item onClick={onDelete} value={item['@id']}>
-                <Icon name="trash" />{' '}
+                <Icon name={deleteSVG} color="#e40166" />{' '}
                 <FormattedMessage id="Delete" defaultMessage="Delete" />
               </Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown.Item onClick={onMoveToTop} value={order}>
-                <Icon name="arrow up" />{' '}
+                <Icon name={moveUpSVG} color="blue" />{' '}
                 <FormattedMessage
                   id="Move to top of folder"
                   defaultMessage="Move to top of folder"
                 />
               </Dropdown.Item>
               <Dropdown.Item onClick={onMoveToBottom} value={order}>
-                <Icon name="arrow down" />{' '}
+                <Icon name={moveDownSVG} color="blue" />{' '}
                 <FormattedMessage
                   id="Move to bottom of folder"
                   defaultMessage="Move to bottom of folder"
