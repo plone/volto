@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix ArrayWidget to support static supermodel vocabulary @datakurre
+
 ### Internal
 
 - Improve the i18n script, only write the pot file if it's really different
