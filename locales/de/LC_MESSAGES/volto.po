@@ -1630,7 +1630,7 @@ msgstr "Löschen"
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
-msgstr "Sie verwenden einen veralteten Browser, bitte aktualisieren Sie Ihre Browser."
+msgstr "Sie verwenden einen veralteten Browser, bitte aktualisieren Sie Ihren Browser."
 
 #: config/Blocks
 msgid "description"
