@@ -36,7 +36,7 @@ let locales = {};
 if (settings) {
   settings.supportedLanguages.forEach(lang => {
     import('~/../locales/' + lang + '.json').then(locale => {
-      locales = { ...locales, [lang]: locale };
+      locales = { ...locales, [lang]: locale.default };
     });
   });
 }
@@ -59,7 +59,9 @@ server
     const browserdetect = detect(req.headers['user-agent']);
 
     const lang = new locale.Locales(
-      cookie.load('lang') || req.headers['accept-language'],
+      cookie.load('lang') ||
+        settings.defaultLanguage ||
+        req.headers['accept-language'],
     )
       .best(supported)
       .toString();
