@@ -16,7 +16,6 @@ import {
   Container,
   Dropdown,
   Menu,
-  Icon,
   Input,
   Segment,
   Table,
@@ -59,8 +58,8 @@ import {
   Pagination,
   Toolbar,
   Toast,
+  Icon,
 } from '@plone/volto/components';
-import IconNext from '@plone/volto/components/theme/Icon/Icon';
 import { toast } from 'react-toastify';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -73,7 +72,14 @@ import semaphoreSVG from '@plone/volto/icons/semaphore.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
 import propertiesSVG from '@plone/volto/icons/properties.svg';
 import pasteSVG from '@plone/volto/icons/paste.svg';
-
+import zoomSVG from '@plone/volto/icons/zoom.svg';
+import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
+import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
+import checkboxIndeterminateSVG from '@plone/volto/icons/checkbox-indeterminate.svg';
+import sortDownSVG from '@plone/volto/icons/sort-down.svg';
+import sortUpSVG from '@plone/volto/icons/sort-up.svg';
+import downKeySVG from '@plone/volto/icons/down-key.svg';
+import moreSVG from '@plone/volto/icons/more.svg';
 const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
 
 const messages = defineMessages({
@@ -1007,7 +1013,7 @@ class Contents extends Component {
                 <Menu stackable attached>
                   <Menu.Menu>
                     <Menu.Item onClick={this.upload}>
-                      <IconNext
+                      <Icon
                         name={uploadSVG}
                         size="17px"
                         color="#007eb1"
@@ -1017,7 +1023,7 @@ class Contents extends Component {
                   </Menu.Menu>
                   <Menu.Menu>
                     <Menu.Item onClick={this.rename} disabled={!selected}>
-                      <IconNext
+                      <Icon
                         name={renameSVG}
                         size="17px"
                         color="#826a6a"
@@ -1025,7 +1031,7 @@ class Contents extends Component {
                       />
                     </Menu.Item>
                     <Menu.Item onClick={this.workflow} disabled={!selected}>
-                      <IconNext
+                      <Icon
                         name={semaphoreSVG}
                         size="17px"
                         color="#826a6a"
@@ -1033,7 +1039,7 @@ class Contents extends Component {
                       />
                     </Menu.Item>
                     <Menu.Item onClick={this.tags} disabled={!selected}>
-                      <IconNext
+                      <Icon
                         name={tagSVG}
                         size="17px"
                         color="#826a6a"
@@ -1041,7 +1047,7 @@ class Contents extends Component {
                       />
                     </Menu.Item>
                     <Menu.Item onClick={this.properties} disabled={!selected}>
-                      <IconNext
+                      <Icon
                         name={propertiesSVG}
                         size="17px"
                         color="#826a6a"
@@ -1053,7 +1059,7 @@ class Contents extends Component {
                   </Menu.Menu>
                   <Menu.Menu>
                     <Menu.Item onClick={this.cut} disabled={!selected}>
-                      <IconNext
+                      <Icon
                         name={cutSVG}
                         size="17px"
                         color="#826a6a"
@@ -1061,7 +1067,7 @@ class Contents extends Component {
                       />
                     </Menu.Item>
                     <Menu.Item onClick={this.copy} disabled={!selected}>
-                      <IconNext
+                      <Icon
                         name={copySVG}
                         size="17px"
                         color="#826a6a"
@@ -1072,7 +1078,7 @@ class Contents extends Component {
                       onClick={this.paste}
                       disabled={!this.props.action}
                     >
-                      <IconNext
+                      <Icon
                         name={pasteSVG}
                         size="17px"
                         color="#826a6a"
@@ -1080,7 +1086,7 @@ class Contents extends Component {
                       />
                     </Menu.Item>
                     <Menu.Item onClick={this.delete} disabled={!selected}>
-                      <IconNext
+                      <Icon
                         name={deleteSVG}
                         size="20px"
                         color="#e40166"
@@ -1090,18 +1096,17 @@ class Contents extends Component {
                   </Menu.Menu>
                   <Menu.Menu position="right">
                     <div className="ui right aligned category search item">
-                      <div className="ui transparent icon input">
-                        <Input
-                          className="prompt"
-                          type="text"
-                          placeholder={this.props.intl.formatMessage(
-                            messages.filter,
-                          )}
-                          value={this.state.filter}
-                          onChange={this.onChangeFilter}
-                        />
-                        <i className="search link icon" />
-                      </div>
+                      <Input
+                        type="text"
+                        transparent
+                        placeholder={this.props.intl.formatMessage(
+                          messages.filter,
+                        )}
+                        size="small"
+                        value={this.state.filter}
+                        onChange={this.onChangeFilter}
+                      />
+                      <Icon name={zoomSVG} size="25px" color="#007eb1" />
                       <div className="results" />
                     </div>
                   </Menu.Menu>
@@ -1113,7 +1118,7 @@ class Contents extends Component {
                       className="section"
                       title={this.props.intl.formatMessage(messages.home)}
                     >
-                      <Icon name="home" />
+                      HOME
                     </Link>
                     {this.props.breadcrumbs.map(
                       (breadcrumb, index, breadcrumbs) => [
@@ -1136,7 +1141,11 @@ class Contents extends Component {
                       ],
                     )}
                   </Breadcrumb>
-                  <Dropdown item icon="ellipsis horizontal" className="right">
+                  <Dropdown
+                    item
+                    icon={<Icon name={moreSVG} size={15} />}
+                    className="right"
+                  >
                     <Dropdown.Menu className="left">
                       <Dropdown.Header
                         content={this.props.intl.formatMessage(
@@ -1151,9 +1160,9 @@ class Contents extends Component {
                             onClick={this.onSelectIndex}
                           >
                             {this.state.index.values[index].selected ? (
-                              <Icon name="check square" color="blue" />
+                              <Icon name={checkboxCheckedSVG} color="blue" />
                             ) : (
-                              <Icon name="square outline" />
+                              <Icon name={checkboxUncheckedSVG} />
                             )}
                             {this.props.intl.formatMessage({
                               id: this.state.index.values[index].label,
@@ -1171,7 +1180,7 @@ class Contents extends Component {
                     <Table.Row>
                       <Table.HeaderCell>
                         <Dropdown
-                          trigger={<Icon name="sort content ascending" />}
+                          trigger={<Icon name={sortDownSVG} />}
                           className="sort-icon"
                           aria-label={this.props.intl.formatMessage(
                             messages.sort,
@@ -1199,7 +1208,7 @@ class Contents extends Component {
                                   key={index}
                                   className={`sort_${index}`}
                                 >
-                                  <Icon name="dropdown" />
+                                  <Icon name={downKeySVG} />
                                   <FormattedMessage id={Indexes[index].label} />
                                   <Dropdown.Menu>
                                     <Dropdown.Item
@@ -1207,7 +1216,7 @@ class Contents extends Component {
                                       value={`${Indexes[index].sort_on}|ascending`}
                                       className={`sort_${Indexes[index].sort_on}_ascending`}
                                     >
-                                      <Icon name="sort alphabet ascending" />{' '}
+                                      <Icon name={sortDownSVG} />{' '}
                                       <FormattedMessage
                                         id="Ascending"
                                         defaultMessage="Ascending"
@@ -1218,7 +1227,7 @@ class Contents extends Component {
                                       value={`${Indexes[index].sort_on}|descending`}
                                       className={`sort_${Indexes[index].sort_on}_descending`}
                                     >
-                                      <Icon name="sort alphabet descending" />{' '}
+                                      <Icon name={sortUpSVG} />{' '}
                                       <FormattedMessage
                                         id="Descending"
                                         defaultMessage="Descending"
@@ -1237,17 +1246,18 @@ class Contents extends Component {
                             <Icon
                               name={
                                 this.state.selected.length === 0
-                                  ? 'square outline'
+                                  ? checkboxUncheckedSVG
                                   : this.state.selected.length ===
                                     this.state.items.length
-                                  ? 'check square'
-                                  : 'minus square'
+                                  ? checkboxCheckedSVG
+                                  : checkboxIndeterminateSVG
                               }
                               color={
                                 this.state.selected.length > 0
                                   ? 'blue'
                                   : 'black'
                               }
+                              size="14"
                             />
                           }
                           icon={null}
@@ -1259,11 +1269,11 @@ class Contents extends Component {
                               )}
                             />
                             <Dropdown.Item onClick={this.onSelectAll}>
-                              <Icon name="check square" color="blue" />{' '}
+                              <Icon name={checkboxCheckedSVG} color="blue" />{' '}
                               <FormattedMessage id="All" defaultMessage="All" />
                             </Dropdown.Item>
                             <Dropdown.Item onClick={this.onSelectNone}>
-                              <Icon name="square outline" />{' '}
+                              <Icon name={checkboxUncheckedSVG} />{' '}
                               <FormattedMessage
                                 id="None"
                                 defaultMessage="None"
@@ -1277,7 +1287,7 @@ class Contents extends Component {
                               )}
                             />
                             <Input
-                              icon="search"
+                              icon={<Icon name={zoomSVG} size={15} />}
                               iconPosition="left"
                               className="search"
                               placeholder={this.props.intl.formatMessage(
@@ -1291,7 +1301,7 @@ class Contents extends Component {
                                   value={item}
                                   onClick={this.onDeselect}
                                 >
-                                  <Icon name="delete" />{' '}
+                                  <Icon name={deleteSVG} color="#e40166" />{' '}
                                   {this.getFieldById(item, 'title')}
                                 </Dropdown.Item>
                               ))}
@@ -1376,7 +1386,7 @@ class Contents extends Component {
                 to={`${path}`}
                 aria-label={this.props.intl.formatMessage(messages.back)}
               >
-                <IconNext
+                <Icon
                   name={backSVG}
                   className="contents circled"
                   size="30px"
