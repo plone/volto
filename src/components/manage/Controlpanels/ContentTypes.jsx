@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { Helmet, getBaseUrl } from '@plone/volto/helpers';
+import { Helmet, getParentUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { last } from 'lodash';
 import {
@@ -16,6 +16,7 @@ import {
   Container,
   Table,
   Button,
+  Segment,
   Dropdown,
 } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
@@ -379,6 +380,7 @@ class ContentTypes extends Component {
               </h1>
             </header>
             <section id="content-core">
+            <Segment.Group>
               <Table compact singleLine striped>
                 <Table.Header>
                   <Table.Row>
@@ -395,21 +397,7 @@ class ContentTypes extends Component {
                       <FormattedMessage id="Items" defaultMessage="Items" />
                     </Table.HeaderCell>
                     <Table.HeaderCell textAlign="right">
-                      <Button
-                        basic
-                        primary
-                        floated="right"
-                        onClick={() => {
-                          this.setState({ showAddType: true });
-                        }}
-                      >
-                        <Icon
-                          name={addSvg}
-                          size="15px"
-                          color="#007eb1"
-                          title={this.props.intl.formatMessage(messages.addTypeButtonTitle)}
-                        />
-                      </Button>
+                    <FormattedMessage id="Actions" defaultMessage="Actions" />
                     </Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
@@ -444,6 +432,25 @@ class ContentTypes extends Component {
                   ))}
                 </Table.Body>
               </Table>
+              <Segment className="actions" clearing>
+                {this.props.intl.formatMessage(messages.addTypeFormTitle)}
+                <Button
+                  basic
+                  primary
+                  floated="right"
+                  onClick={() => {
+                    this.setState({ showAddType: true });
+                  }}
+                >
+                  <Icon
+                    name={addSvg}
+                    size="30px"
+                    color="#007eb1"
+                    title={this.props.intl.formatMessage(messages.addTypeButtonTitle)}
+                  />
+                </Button>
+              </Segment>
+              </Segment.Group>
             </section>
           </article>
         </Container>
@@ -453,7 +460,7 @@ class ContentTypes extends Component {
             hideDefaultViewButtons
             inner={
               <Link
-                to="/controlpanel"
+                to={getParentUrl(this.props.pathname)}
                 className="item"
               >
                 <Icon

@@ -10,7 +10,6 @@ import {
   LIST_CONTROLPANELS,
   UPDATE_CONTROLPANEL,
 } from '@plone/volto/constants/ActionTypes';
-
 /**
  * Get controlpanel function.
  * @function getControlpanel

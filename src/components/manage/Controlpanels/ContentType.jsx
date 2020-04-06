@@ -7,34 +7,30 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { Link } from 'react-router-dom';
+import { Helmet, getParentUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
-import { Container, Button } from 'semantic-ui-react';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { getSchema } from '@plone/volto/actions';
-import { Form } from '@plone/volto/components';
-import { Icon, Toolbar } from '@plone/volto/components';
-import {
-  getId,
-  Helmet,
-  getParentUrl,
-  hasBlocksData,
-} from '@plone/volto/helpers';
+import { Container } from 'semantic-ui-react';
+import { defineMessages, injectIntl } from 'react-intl';
+import { toast } from 'react-toastify';
+import { last, nth, join } from 'lodash';
+import { Form, Icon, Toolbar, Toast } from '@plone/volto/components';
+import { getControlpanel, updateControlpanel } from '@plone/volto/actions';
 
-import saveSVG from '@plone/volto/icons/save.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
-  ContentType: {
-    id: 'Content Type: {type}',
-    defaultMessage: 'Content Type: {type}',
+  changesSaved: {
+    id: 'Changes saved.',
+    defaultMessage: 'Changes saved.',
   },
-  save: {
-    id: 'Save',
-    defaultMessage: 'Save',
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
   },
-  cancel: {
-    id: 'Cancel',
-    defaultMessage: 'Cancel',
+  info: {
+    id: 'Info',
+    defaultMessage: 'Info',
   },
 });
 
@@ -50,51 +46,79 @@ class ContentType extends Component {
    * @static
    */
   static propTypes = {
-    pathname: PropTypes.string.isRequired,
-    type: PropTypes.string,
-    getSchema: PropTypes.func.isRequired,
-    schema: PropTypes.objectOf(PropTypes.any),
-    schemaRequest: PropTypes.shape({
+    updateControlpanel: PropTypes.func.isRequired,
+    getControlpanel: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
+    parent: PropTypes.string.isRequired,
+    updateRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
     }).isRequired,
+    controlpanel: PropTypes.shape({
+      '@id': PropTypes.string,
+      data: PropTypes.object,
+      schema: PropTypes.object,
+      title: PropTypes.string,
+    }),
+    pathname: PropTypes.string.isRequired,
   };
 
   /**
- * Default properties
- * @property {Object} defaultProps Default properties.
- * @static
- */
+   * Default properties.
+   * @property {Object} defaultProps Default properties.
+   * @static
+   */
   static defaultProps = {
-    schema: null,
-    type: 'Default',
+    controlpanel: null,
   };
 
   /**
    * Constructor
    * @method constructor
    * @param {Object} props Component properties
-   * @constructs Types
+   * @constructs ContentType
    */
   constructor(props) {
     super(props);
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-
-    this.state = {
-      showEdit: false,
-      editId: null,
-      editText: null,
-    };
   }
 
   /**
-   * Component did mount
-   * @method componentDidMount
+   * Component will mount
+   * @method componentWillMount
    * @returns {undefined}
    */
-  componentDidMount() {
-    this.props.getSchema(this.props.type);
+  UNSAFE_componentWillMount() {
+    this.props.getControlpanel(join([this.props.parent, this.props.id], '/'));
+  }
+
+  /**
+   * Component will receive props
+   * @method componentWillReceiveProps
+   * @param {Object} nextProps Next properties
+   * @returns {undefined}
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
+      toast.info(
+        <Toast
+          info
+          title={this.props.intl.formatMessage(messages.info)}
+          content={this.props.intl.formatMessage(messages.changesSaved)}
+        />,
+      );
+    }
+  }
+
+  /**
+   * Submit handler
+   * @method onSubmit
+   * @param {object} data Form data.
+   * @returns {undefined}
+   */
+  onSubmit(data) {
+    this.props.updateControlpanel(this.props.controlpanel['@id'], data);
   }
 
   /**
@@ -107,84 +131,38 @@ class ContentType extends Component {
   }
 
   /**
-   * Submit handler
-   * @method onSubmit
-   * @param {object} data Form data.
-   * @returns {undefined}
-   */
-  onSubmit(data) {
-
-  }
-
-  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    if (this.props.schemaRequest.loaded) {
-      const visual = hasBlocksData(this.props.schema.properties);
+    if (this.props.controlpanel) {
       return (
-        <div id="page-dexterity-types">
-          <Helmet
-            title={this.props.intl.formatMessage(messages.ContentType, {
-              type: this.props.type,
-            })}
-          />
+        <div id="page-controlpanel">
+          <Helmet title={this.props.controlpanel.title} />
           <Container>
-            <article id="content">
-              <header>
-                <h1 className="documentFirstHeading">
-                  <FormattedMessage
-                    id="Type: {type}"
-                    defaultMessage="Type: {type}"
-                    values={{ type: this.props.type }}
-                  />
-                </h1>
-              </header>
-              <section id="content-core">
-                <Form
-                  schema={this.props.schema}
-                  onSubmit={this.onSubmit}
-                  hideActions
-                  pathname={this.props.pathname}
-                  visual={visual}
-                />
-              </section>
-            </article>
+            <Form
+              title={this.props.controlpanel.title}
+              schema={this.props.controlpanel.schema}
+              formData={this.props.controlpanel.data}
+              onSubmit={this.onSubmit}
+              onCancel={this.onCancel}
+              loading={this.props.updateRequest.loading}
+            />
           </Container>
           <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
               inner={
-                <>
-                  <Button
-                    id="toolbar-save"
-                    className="save"
-                    aria-label={this.props.intl.formatMessage(messages.save)}
-                    onClick={() => this.form.current.onSubmit()}
-                  // loading={this.props.createRequest.loading}
-                  >
-                    <Icon
-                      name={saveSVG}
-                      className="circled"
-                      size="30px"
-                      title={this.props.intl.formatMessage(messages.save)}
-                    />
-                  </Button>
-                  <Button className="cancel" onClick={() => this.onCancel()}>
-                    <Icon
-                      name={clearSVG}
-                      className="circled"
-                      aria-label={this.props.intl.formatMessage(
-                        messages.cancel,
-                      )}
-                      size="30px"
-                      title={this.props.intl.formatMessage(messages.cancel)}
-                    />
-                  </Button>
-                </>
+                <Link to={getParentUrl(this.props.pathname)} className="item">
+                  <Icon
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
               }
             />
           </Portal>
@@ -199,11 +177,12 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
-      schemaRequest: state.schema,
-      schema: state.schema.schema,
+      controlpanel: state.controlpanels.controlpanel,
+      updateRequest: state.controlpanels.update,
       pathname: props.location.pathname,
-      type: getId(props.location.pathname),
+      id: last(props.location.pathname.split('/')),
+      parent: nth(props.location.pathname.split('/'), -2),
     }),
-    { getSchema },
+    { getControlpanel, updateControlpanel },
   ),
 )(ContentType);
