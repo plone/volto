@@ -1689,6 +1689,10 @@ msgstr "oppure prova una pagina diversa."
 msgid "registration form"
 msgstr "form di registrazione"
 
+#: components/theme/Search/Search
+msgid "results found"
+msgstr ""
+
 #: error
 msgid "return to the site root"
 msgstr "ritorna alla radice del sito"

@@ -6,6 +6,8 @@
 
 ### Feature
 
+- pagination on site search results @giuliaghisini
+
 ### Bugfix
 
 - Fix use case for non-multilingual setups and on projects on lang loading @sneridagh
@@ -13,6 +15,7 @@
 ### Internal
 
 - Typo in German translations @steffenri
+- Complete more Italian translations @nzambello
 
 ## 4.5.0 (2020-04-06)
 
