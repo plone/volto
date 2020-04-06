@@ -1,8 +1,18 @@
 # Change Log
 
-## 4.4.1 (unreleased)
+## 4.5.1 (unreleased)
 
 ### Breaking
+
+### Feature
+
+### Bugfix
+
+- Fix use case for non-multilingual setups and on projects on lang loading @sneridagh
+
+### Internal
+
+## 4.5.0 (2020-04-06)
 
 ### Feature
 
@@ -11,10 +21,11 @@
 ### Bugfix
 
 - Fix ArrayWidget to support static supermodel vocabulary @datakurre
+- Bring back the OutdatedBrowser component, it got removed in a bad merge :( @sneridagh
 
 ### Internal
 
-- Improve the i18n script, only write the pot file if it's really different
+- Improve the i18n script, only write the pot file if it's really different @sneridagh
 
 ## 4.4.0 (2020-04-03)
 
