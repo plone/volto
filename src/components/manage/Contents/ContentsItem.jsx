@@ -76,7 +76,7 @@ export const ContentsItemComponent = ({
             <div>
               <Icon
                 name={dragSVG}
-                size="24px"
+                size="20px"
                 color="#878f93"
                 className="content drag handle"
               />
@@ -84,13 +84,21 @@ export const ContentsItemComponent = ({
           )}
         </Table.Cell>
         <Table.Cell>
-          <Icon
-            name={selected ? checkboxCheckedSVG : checkboxUncheckedSVG}
-            color={selected ? '#007eb1' : '#826a6a'}
-            size="20px"
-            value={item['@id']}
-            onClick={onClick}
-          />
+          {selected ? (
+            <Icon
+              name={checkboxCheckedSVG}
+              color="#007eb1"
+              size="20px"
+              onClick={e => onClick(e, item['@id'])}
+            />
+          ) : (
+            <Icon
+              name={checkboxUncheckedSVG}
+              color="#826a6a"
+              size="20px"
+              onClick={e => onClick(e, item['@id'])}
+            />
+          )}
         </Table.Cell>
         <Table.Cell>
           <Link to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}>

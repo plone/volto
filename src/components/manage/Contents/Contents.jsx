@@ -430,9 +430,7 @@ class Contents extends Component {
    * @param {object} event Event object
    * @returns {undefined}
    */
-  onSelect(event) {
-    const id = event.target.getAttribute('value');
-    console.log(id, 'this is id for selected');
+  onSelect(event, id) {
     if (indexOf(this.state.selected, id) === -1) {
       this.setState({
         selected: concat(this.state.selected, id),
@@ -1012,7 +1010,7 @@ class Contents extends Component {
             )}
             <section id="content-core">
               <Segment.Group raised>
-                <Menu stackable attached>
+                <Menu secondary attached className="menu-override">
                   <Menu.Menu>
                     <Menu.Item onClick={this.upload}>
                       <Icon
