@@ -10,6 +10,7 @@ import {
   Contents,
   Controlpanel,
   Controlpanels,
+  CreateTranslation,
   Edit,
   Diff,
   Delete,
@@ -23,6 +24,7 @@ import {
   Register,
   RequestPasswordReset,
   Search,
+  Sitemap,
   Sharing,
   UsersControlpanel,
   ContentTypes,
@@ -47,6 +49,10 @@ export const defaultRoutes = [
   {
     path: '/logout',
     component: Logout,
+  },
+  {
+    path: '/sitemap',
+    component: Sitemap,
   },
   {
     path: '/search',
@@ -104,6 +110,10 @@ export const defaultRoutes = [
   {
     path: '/**/add',
     component: Add,
+  },
+  {
+    path: '/**/create-translation',
+    component: CreateTranslation,
   },
   {
     path: '/**/contents',
