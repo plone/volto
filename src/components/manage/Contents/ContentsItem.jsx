@@ -11,7 +11,7 @@ import { map } from 'lodash';
 import moment from 'moment';
 import { DragSource, DropTarget } from 'react-dnd';
 import { FormattedMessage } from 'react-intl';
-import { Icon } from '@plone/volto/components';
+import { Icon, Circle } from '@plone/volto/components';
 import moreSVG from '@plone/volto/icons/more.svg';
 import addDocumentSVG from '@plone/volto/icons/add-document.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
@@ -44,6 +44,23 @@ export function getIcon(type, isFolderish) {
       return calendarSVG;
     default:
       return isFolderish ? folderSVG : fileSVG;
+  }
+}
+
+function capitalise(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function getColor(string) {
+  switch (string) {
+    case 'private':
+      return '#ed4033';
+    case 'published':
+      return '#007bc1';
+    case 'intranet':
+      return '#51aa55';
+    default:
+      return '#f6a808';
   }
 }
 
@@ -117,7 +134,17 @@ export const ContentsItemComponent = ({
               ) : (
                 <FormattedMessage id="No" defaultMessage="No" />
               ))}
-            {index.type === 'string' && item[index.id]}
+            {index.type === 'string' &&
+              index.id !== 'review_state' &&
+              item[index.id]}
+            {index.id === 'review_state' && (
+              <div>
+                <span>
+                  <Circle color={getColor(item[index.id])} size="15px" />
+                </span>
+                {item[index.id] ? capitalise(item[index.id]) : null}
+              </div>
+            )}
             {index.type === 'date' && (
               <span
                 title={
