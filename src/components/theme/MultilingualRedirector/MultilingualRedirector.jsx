@@ -29,7 +29,6 @@ const MultilingualRedirector = props => {
     // ToDo: Add means to support language negotiation (with config)
     // const detectedLang = (navigator.language || navigator.userLanguage).substring(0, 2);
     if (settings.isMultilingual && pathname === '/') {
-      console.log(redirectToLanguage);
       dispatch(
         updateIntl({
           locale: redirectToLanguage,
