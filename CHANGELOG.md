@@ -1,16 +1,91 @@
 # Change Log
 
-## 4.1.2 (unreleased)
+## 4.6.1 (unreleased)
 
-### Added
+### Breaking
 
-### Changes
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 4.6.0 (2020-04-06)
+
+### Feature
+
+- pagination on site search results @giuliaghisini
+
+### Bugfix
+
+- Fix use case for non-multilingual setups and on projects on lang loading @sneridagh
+
+### Internal
+
+- Typo in German translations @steffenri
+- Complete more Italian translations @nzambello
+
+## 4.5.0 (2020-04-06)
+
+### Feature
+
+- /sitemap to view sitemap based on @navigation with depth 4 @giuliaghisini
+
+### Bugfix
+
+- Fix ArrayWidget to support static supermodel vocabulary @datakurre
+- Bring back the OutdatedBrowser component, it got removed in a bad merge :( @sneridagh
+
+### Internal
+
+- Improve the i18n script, only write the pot file if it's really different @sneridagh
+
+## 4.4.0 (2020-04-03)
+
+### Feature
+
+- /contents (folder content view) is sortable @ksuess
+
+### Bugfix
+
+- Fix conversion from DraftJS to HTML using redraft for atomic entities (IMAGE) @sneridagh
+
+## 4.3.0 (2020-04-01)
+
+### Feature
+
+- Added recursive workflow changes @robgietema
+
+### Bugfix
+
+- Fixed ssr link view @robgietema
+
+## 4.2.0 (2020-03-31)
+
+### Feature
+
+- Add Multilingual Support @sneridagh
+
+## 4.1.2 (2020-03-30)
+
+### Bugfix
 
 - Fix typo for Japanese translation @terapyon
+- Fix refresh of the `Navigation` component on calling `/login` and `/logout` @sneridagh
+- Adjust implementation of the download link behavior for files @sneridagh
+- Fix Maps block to use maps-inner instead of video-inner class @timo
+- Add div with class "table-of-contents" to ToC block @timo
+
+### Internal
+
+- Upgrade critical Plone 5.2.1 deps in api folder @sneridagh
+- Improve Cypress Video Block tests @sneridagh @timo
+- Run `yarn i18n` on any JSX change @sneridagh
+- Add link mailto Cypress test @timo
 
 ## 4.1.1 (2020-03-18)
 
-### Changes
+### Bugfix
 
 - Fix for #1267 - Link inside text for content-type without blocks breaks the site @sneridagh
 - Japanese translation @terapyon
@@ -22,18 +97,19 @@
 
 ## 4.1.0 (2020-03-13)
 
-### Added
+### Feature
 
 - Add `flattenHTMLToAppURL` helper method for remove api url from TinyMCE generated HTML @cekk
 - Add development mode global @sneridagh
 
-### Changes
+### Bugfix
 
 - Improve the UX of the listing block when queries are running @sneridagh
+- Added table of content cypress test @steffenri
 
 ## 4.0.1 (2020-03-09)
 
-### Changes
+### Bugfix
 
 - Fixes #1262 - SSR support for "undetected" browsers
 - Japanese translation @terapyon
@@ -47,7 +123,7 @@
 
 ## 4.0.0 (2020-03-01)
 
-### Added
+### Feature
 
 Summary of the most important features in this final release. For more detailed information
 refer to all of them in https://github.com/plone/volto/releases
@@ -67,7 +143,7 @@ refer to all of them in https://github.com/plone/volto/releases
 - Several internal libraries updated, including Redux, Router ones that support hooks as well
 - New locales (es, it, ja, pt, pt_BR)
 
-### Changes
+### Bugfixes
 
 - Tons of bug fixes
 

@@ -32,7 +32,7 @@ const View = ({ data, intl }) => (
     )}
   >
     <div
-      className={cx('video-inner', {
+      className={cx('maps-inner', {
         'full-width': data.align === 'full',
       })}
     >
