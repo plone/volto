@@ -1265,6 +1265,10 @@ msgstr "Mapa do Sítio"
 msgid "Site Setup"
 msgstr "Configuração do Sítio"
 
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Size: {size}"
 msgstr ""
