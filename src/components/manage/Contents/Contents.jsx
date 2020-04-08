@@ -1016,7 +1016,12 @@ class Contents extends Component {
                     <Popup
                       trigger={
                         <Menu.Item onClick={this.upload}>
-                          <Icon name={uploadSVG} color="#007eb1" size="24px" />
+                          <Icon
+                            name={uploadSVG}
+                            color="#007eb1"
+                            size="24px"
+                            className="upload"
+                          />
                         </Menu.Item>
                       }
                       position="top center"
@@ -1028,7 +1033,12 @@ class Contents extends Component {
                     <Popup
                       trigger={
                         <Menu.Item onClick={this.rename} disabled={!selected}>
-                          <Icon name={renameSVG} color="#826a6a" size="24px" />
+                          <Icon
+                            name={renameSVG}
+                            color="#826a6a"
+                            size="24px"
+                            className="rename"
+                          />
                         </Menu.Item>
                       }
                       position="top center"
@@ -1042,6 +1052,7 @@ class Contents extends Component {
                             name={semaphoreSVG}
                             color="#826a6a"
                             size="24px"
+                            className="semaphore"
                           />
                         </Menu.Item>
                       }
@@ -1052,7 +1063,12 @@ class Contents extends Component {
                     <Popup
                       trigger={
                         <Menu.Item onClick={this.tags} disabled={!selected}>
-                          <Icon name={tagSVG} color="#826a6a" size="24px" />
+                          <Icon
+                            name={tagSVG}
+                            color="#826a6a"
+                            size="24px"
+                            className="tag"
+                          />
                         </Menu.Item>
                       }
                       position="top center"
@@ -1070,6 +1086,7 @@ class Contents extends Component {
                             name={propertiesSVG}
                             color="#826a6a"
                             size="24px"
+                            className="properties"
                           />
                         </Menu.Item>
                       }
@@ -1084,7 +1101,12 @@ class Contents extends Component {
                     <Popup
                       trigger={
                         <Menu.Item onClick={this.cut} disabled={!selected}>
-                          <Icon name={cutSVG} color="#826a6a" size="24px" />
+                          <Icon
+                            name={cutSVG}
+                            color="#826a6a"
+                            size="24px"
+                            className="cut"
+                          />
                         </Menu.Item>
                       }
                       position="top center"
@@ -1094,7 +1116,12 @@ class Contents extends Component {
                     <Popup
                       trigger={
                         <Menu.Item onClick={this.copy} disabled={!selected}>
-                          <Icon name={copySVG} color="#826a6a" size="24px" />
+                          <Icon
+                            name={copySVG}
+                            color="#826a6a"
+                            size="24px"
+                            className="copy"
+                          />
                         </Menu.Item>
                       }
                       position="top center"
@@ -1108,7 +1135,12 @@ class Contents extends Component {
                           onClick={this.paste}
                           disabled={!this.props.action}
                         >
-                          <Icon name={pasteSVG} color="#826a6a" size="24px" />
+                          <Icon
+                            name={pasteSVG}
+                            color="#826a6a"
+                            size="24px"
+                            className="paste"
+                          />
                         </Menu.Item>
                       }
                       position="top center"
@@ -1119,7 +1151,12 @@ class Contents extends Component {
                     <Popup
                       trigger={
                         <Menu.Item onClick={this.delete} disabled={!selected}>
-                          <Icon name={deleteSVG} color="#e40166" size="24px" />
+                          <Icon
+                            name={deleteSVG}
+                            color="#e40166"
+                            size="24px"
+                            className="delete"
+                          />
                         </Menu.Item>
                       }
                       position="top center"
@@ -1139,7 +1176,12 @@ class Contents extends Component {
                         value={this.state.filter}
                         onChange={this.onChangeFilter}
                       />
-                      <Icon name={zoomSVG} size="24px" color="#007eb1" />
+                      <Icon
+                        name={zoomSVG}
+                        size="24px"
+                        color="#007eb1"
+                        className="zoom"
+                      />
                       <div className="results" />
                     </div>
                   </Menu.Menu>

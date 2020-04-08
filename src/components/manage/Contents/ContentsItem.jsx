@@ -106,6 +106,7 @@ export const ContentsItemComponent = ({
               name={checkboxCheckedSVG}
               color="#007eb1"
               size="20px"
+              className="checked"
               onClick={e => onClick(e, item['@id'])}
             />
           ) : (
@@ -113,6 +114,7 @@ export const ContentsItemComponent = ({
               name={checkboxUncheckedSVG}
               color="#826a6a"
               size="20px"
+              className="unchecked"
               onClick={e => onClick(e, item['@id'])}
             />
           )}

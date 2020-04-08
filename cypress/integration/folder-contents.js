@@ -17,8 +17,8 @@ if (Cypress.env('API') !== 'guillotina') {
 
     it('Renaming via folder contents view', () => {
       // when I rename a content object
-      cy.get('i[value="/my-folder/my-document"]').click();
-      cy.get('i[title="Rename"]').click();
+      cy.get('svg[class="icon unchecked"]').click();
+      cy.get('svg[class="icon rename"]').click();
       cy.get('input[name="0_title"]')
         .clear()
         .type('Brand new document title');
