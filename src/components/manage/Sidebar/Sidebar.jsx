@@ -14,6 +14,8 @@ import { BodyClass } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import forbiddenSVG from '@plone/volto/icons/forbidden.svg';
 import { setSidebarTab } from '@plone/volto/actions';
+import fullscreenSVG from '@plone/volto/icons/fullscreen.svg';
+import minimizeScreenSVG from '@plone/volto/icons/back-down.svg';
 
 const messages = defineMessages({
   document: {
@@ -56,14 +58,48 @@ class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.onToggleExpanded = this.onToggleExpanded.bind(this);
+    this.onToggleFullSize = this.onToggleFullSize.bind(this);
     this.onTabChange = this.onTabChange.bind(this);
     this.state = {
       expanded: cookie.load('sidebar_expanded') !== 'false',
+      size: 0,
+      showFull: true,
+      showFullToolbarExpanded: true,
     };
   }
 
   /**
+   * on component did mount check for toolbar expanded
+   */
+  componentDidMount() {
+    this.chechForToolbarExpanded();
+  }
+
+  /**
+   * check for toolbar expanded
+   * set listener for expand/minimize to adjust width of sidenav
+   * @returns {undefined}
+   */
+  chechForToolbarExpanded() {
+    const toolbarParent = document.querySelector('#toolbar');
+    const toolbarHandler = toolbarParent.getElementsByClassName(
+      'toolbar-handler',
+    )[0];
+    const toolbar = toolbarParent.getElementsByClassName('toolbar')[0];
+    let isExpanded = toolbar.classList.contains('expanded');
+    this.setState({ showFullToolbarExpanded: isExpanded });
+
+    toolbarHandler.addEventListener('click', ev => {
+      setTimeout(() => {
+        isExpanded = toolbar.classList.contains('expanded');
+        this.setState({ showFullToolbarExpanded: isExpanded });
+      });
+    });
+  }
+
+  /**
    * On toggle expanded handler
+   * also reset sidebar since this has mimized it
    * @method onToggleExpanded
    * @returns {undefined}
    */
@@ -75,6 +111,53 @@ class Sidebar extends Component {
     this.setState({
       expanded: !this.state.expanded,
     });
+    this.resetFullSizeSidebar();
+  }
+
+  /**
+   * Remove fullsize classes
+   * Reset state
+   */
+  resetFullSizeSidebar() {
+    if (!this.state.expanded) {
+      const currentResizer = document.querySelector('#sidebar');
+      const sidebarContainer = currentResizer.getElementsByClassName(
+        'sidebar-container',
+      )[0];
+      sidebarContainer.classList.remove('full-size');
+      sidebarContainer.classList.remove('no-toolbar');
+
+      this.setState({
+        showFull: true,
+      });
+    }
+  }
+
+  /**
+   * Set width of sibar to 100% minus the width of the toolbar or reset to
+   * initial size, by adding css classes
+   */
+  onToggleFullSize() {
+    const currentResizer = document.querySelector('#sidebar');
+    const sidebarContainer = currentResizer.getElementsByClassName(
+      'sidebar-container',
+    )[0];
+
+    if (this.state.showFull) {
+      sidebarContainer.classList.add('full-size');
+      if (!this.state.showFullToolbarExpanded) {
+        sidebarContainer.classList.add('no-toolbar');
+      } else {
+        sidebarContainer.classList.remove('no-toolbar');
+      }
+    } else {
+      sidebarContainer.classList.remove('full-size');
+      sidebarContainer.classList.remove('no-toolbar');
+    }
+
+    this.setState(prevState => ({
+      showFull: !prevState.showFull,
+    }));
   }
 
   /**
@@ -101,7 +184,10 @@ class Sidebar extends Component {
         <BodyClass
           className={expanded ? 'has-sidebar' : 'has-sidebar-collapsed'}
         />
-        <div className={cx('sidebar-container', { collapsed: !expanded })}>
+        <div
+          className={cx('sidebar-container', { collapsed: !expanded })}
+          style={this.state.size > 0 ? { width: this.state.size } : null}
+        >
           <Button
             aria-label={
               expanded
@@ -115,6 +201,16 @@ class Sidebar extends Component {
             }
             onClick={this.onToggleExpanded}
           />
+          <Button
+            className="full-size-sidenav-btn"
+            onClick={this.onToggleFullSize}
+            aria-label="full-screen-sidenav"
+          >
+            <Icon
+              className="full-size-icon"
+              name={this.state.showFull ? fullscreenSVG : minimizeScreenSVG}
+            />
+          </Button>
           <Tab
             menu={{
               secondary: true,
