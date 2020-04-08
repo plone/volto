@@ -13,14 +13,7 @@ import locale from 'locale';
 import { detect } from 'detect-browser';
 
 import routes from '~/routes';
-import nlLocale from '~/../locales/nl.json';
-import deLocale from '~/../locales/de.json';
-import enLocale from '~/../locales/en.json';
-import jaLocale from '~/../locales/ja.json';
-import ptLocale from '~/../locales/pt.json';
-import ptBRLocale from '~/../locales/pt_BR.json';
-import esLocale from '~/../locales/es.json';
-import itLocale from '~/../locales/it.json';
+import { settings } from '~/config';
 
 import {
   Html,
@@ -38,19 +31,19 @@ import languages from '@plone/volto/constants/Languages';
 
 import configureStore from '@plone/volto/store';
 
+let locales = {};
+
+if (settings) {
+  settings.supportedLanguages.forEach(lang => {
+    import('~/../locales/' + lang + '.json').then(locale => {
+      locales = { ...locales, [lang]: locale.default };
+    });
+  });
+}
+
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
 const supported = new locale.Locales(keys(languages), 'en');
-const locales = {
-  en: enLocale,
-  nl: nlLocale,
-  de: deLocale,
-  ja: jaLocale,
-  pt: ptLocale,
-  pt_BR: ptBRLocale,
-  es: esLocale,
-  it: itLocale,
-};
 
 const server = express();
 server
@@ -66,7 +59,9 @@ server
     const browserdetect = detect(req.headers['user-agent']);
 
     const lang = new locale.Locales(
-      cookie.load('lang') || req.headers['accept-language'],
+      cookie.load('lang') ||
+        settings.defaultLanguage ||
+        req.headers['accept-language'],
     )
       .best(supported)
       .toString();
@@ -77,7 +72,7 @@ server
       userSession: { ...userSession(), token: authToken },
       form: req.body,
       intl: {
-        defaultLocale: 'en',
+        defaultLocale: settings.defaultLanguage,
         locale: lang,
         messages: locales[lang],
       },

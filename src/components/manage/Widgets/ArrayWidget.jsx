@@ -28,6 +28,10 @@ import {
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 const messages = defineMessages({
+  select: {
+    id: 'Select…',
+    defaultMessage: 'Select…',
+  },
   no_value: {
     id: 'No value',
     defaultMessage: 'No value',
@@ -52,7 +56,9 @@ class ArrayWidget extends Component {
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     getVocabulary: PropTypes.func.isRequired,
-    choices: PropTypes.arrayOf(PropTypes.object),
+    choices: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+    ),
     loading: PropTypes.bool,
     items: PropTypes.shape({
       vocabulary: PropTypes.object,
@@ -120,7 +126,7 @@ class ArrayWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (this.vocabBaseUrl) {
+    if (!this.props.items?.choices && this.vocabBaseUrl) {
       this.props.getVocabulary(this.vocabBaseUrl);
     }
   }
@@ -197,7 +203,7 @@ class ArrayWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              {this.vocabBaseUrl ? (
+              {!this.props.items?.choices && this.vocabBaseUrl ? (
                 <AsyncPaginate
                   className="react-select-container"
                   classNamePrefix="react-select"
@@ -231,12 +237,20 @@ class ArrayWidget extends Component {
                             value: 'no-value',
                           },
                         ]
-                      : []
+                      : [
+                          {
+                            label: this.props.intl.formatMessage(
+                              messages.no_value,
+                            ),
+                            value: 'no-value',
+                          },
+                        ]
                   }
                   styles={customSelectStyles}
                   theme={selectTheme}
                   components={{ DropdownIndicator, Option }}
                   value={selectedOption || []}
+                  placeholder={this.props.intl.formatMessage(messages.select)}
                   onChange={this.handleChange}
                   isMulti
                 />
@@ -270,7 +284,13 @@ export default compose(
         getVocabFromField(props) ||
         getVocabFromItems(props);
       const vocabState = state.vocabularies[vocabBaseUrl];
-      if (vocabState) {
+      // If the schema already has the choices in it, then do not try to get the vocab,
+      // even if there is one
+      if (props.items?.choices) {
+        return {
+          choices: props.items.choices,
+        };
+      } else if (vocabState) {
         return {
           choices: vocabState.items,
           itemsTotal: vocabState.itemsTotal,

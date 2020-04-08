@@ -1,6 +1,13 @@
 import { settings } from '~/config';
 
-import { flattenToAppURL, getBaseUrl, getIcon, getView, isCmsUi } from './Url';
+import {
+  flattenToAppURL,
+  flattenHTMLToAppURL,
+  getBaseUrl,
+  getIcon,
+  getView,
+  isCmsUi,
+} from './Url';
 
 describe('Url', () => {
   describe('getBaseUrl', () => {
@@ -94,6 +101,15 @@ describe('Url', () => {
 
     it('returns false on non-cms-ui views', () => {
       expect(isCmsUi('/mycontent')).toBe(false);
+    });
+  });
+
+  describe('flattenHTMLToAppURL', () => {
+    it('flattens all occurences of the api URL from an html snippet', () => {
+      const html = `<a href="${settings.apiPath}/foo/bar">An internal link</a><a href="${settings.apiPath}/foo/baz">second link</a>`;
+      expect(flattenHTMLToAppURL(html)).toBe(
+        '<a href="/foo/bar">An internal link</a><a href="/foo/baz">second link</a>',
+      );
     });
   });
 });
