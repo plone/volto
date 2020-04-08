@@ -19,6 +19,7 @@ import {
   Input,
   Segment,
   Table,
+  Popup,
 } from 'semantic-ui-react';
 import {
   concat,
@@ -1012,87 +1013,119 @@ class Contents extends Component {
               <Segment.Group raised>
                 <Menu secondary attached className="menu-override">
                   <Menu.Menu>
-                    <Menu.Item onClick={this.upload}>
-                      <Icon
-                        name={uploadSVG}
-                        color="#007eb1"
-                        size="24px"
-                        title={this.props.intl.formatMessage(messages.upload)}
-                      />
-                    </Menu.Item>
+                    <Popup
+                      trigger={
+                        <Menu.Item onClick={this.upload}>
+                          <Icon name={uploadSVG} color="#007eb1" size="24px" />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(messages.upload)}
+                      size="mini"
+                    />
                   </Menu.Menu>
                   <Menu.Menu>
-                    <Menu.Item onClick={this.rename} disabled={!selected}>
-                      <Icon
-                        name={renameSVG}
-                        color="#826a6a"
-                        size="24px"
-                        title={this.props.intl.formatMessage(messages.rename)}
-                      />
-                    </Menu.Item>
-                    <Menu.Item onClick={this.workflow} disabled={!selected}>
-                      <Icon
-                        name={semaphoreSVG}
-                        color="#826a6a"
-                        size="24px"
-                        title={this.props.intl.formatMessage(messages.state)}
-                      />
-                    </Menu.Item>
-                    <Menu.Item onClick={this.tags} disabled={!selected}>
-                      <Icon
-                        name={tagSVG}
-                        color="#826a6a"
-                        size="24px"
-                        title={this.props.intl.formatMessage(messages.tags)}
-                      />
-                    </Menu.Item>
-                    <Menu.Item onClick={this.properties} disabled={!selected}>
-                      <Icon
-                        name={propertiesSVG}
-                        color="#826a6a"
-                        size="24px"
-                        title={this.props.intl.formatMessage(
-                          messages.properties,
-                        )}
-                      />
-                    </Menu.Item>
+                    <Popup
+                      trigger={
+                        <Menu.Item onClick={this.rename} disabled={!selected}>
+                          <Icon name={renameSVG} color="#826a6a" size="24px" />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(messages.rename)}
+                      size="mini"
+                    />
+                    <Popup
+                      trigger={
+                        <Menu.Item onClick={this.workflow} disabled={!selected}>
+                          <Icon
+                            name={semaphoreSVG}
+                            color="#826a6a"
+                            size="24px"
+                          />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(messages.state)}
+                      size="mini"
+                    />
+                    <Popup
+                      trigger={
+                        <Menu.Item onClick={this.tags} disabled={!selected}>
+                          <Icon name={tagSVG} color="#826a6a" size="24px" />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(messages.tags)}
+                      size="mini"
+                    />
+
+                    <Popup
+                      trigger={
+                        <Menu.Item
+                          onClick={this.properties}
+                          disabled={!selected}
+                        >
+                          <Icon
+                            name={propertiesSVG}
+                            color="#826a6a"
+                            size="24px"
+                          />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(
+                        messages.properties,
+                      )}
+                      size="mini"
+                    />
                   </Menu.Menu>
                   <Menu.Menu>
-                    <Menu.Item onClick={this.cut} disabled={!selected}>
-                      <Icon
-                        name={cutSVG}
-                        color="#826a6a"
-                        size="24px"
-                        title={this.props.intl.formatMessage(messages.cut)}
-                      />
-                    </Menu.Item>
-                    <Menu.Item onClick={this.copy} disabled={!selected}>
-                      <Icon
-                        name={copySVG}
-                        color="#826a6a"
-                        size="24px"
-                        title={this.props.intl.formatMessage(messages.copy)}
-                      />
-                    </Menu.Item>
-                    <Menu.Item
-                      onClick={this.paste}
-                      disabled={!this.props.action}
-                    >
-                      <Icon
-                        name={pasteSVG}
-                        color="#826a6a"
-                        size="24px"
-                        title={this.props.intl.formatMessage(messages.paste)}
-                      />
-                    </Menu.Item>
-                    <Menu.Item onClick={this.delete} disabled={!selected}>
-                      <Icon
-                        name={deleteSVG}
-                        color="#e40166"
-                        size="24px"
-                        title={this.props.intl.formatMessage(messages.delete)}
-                      />
-                    </Menu.Item>
+                    <Popup
+                      trigger={
+                        <Menu.Item onClick={this.cut} disabled={!selected}>
+                          <Icon name={cutSVG} color="#826a6a" size="24px" />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(messages.cut)}
+                      size="mini"
+                    />
+                    <Popup
+                      trigger={
+                        <Menu.Item onClick={this.copy} disabled={!selected}>
+                          <Icon name={copySVG} color="#826a6a" size="24px" />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(messages.copy)}
+                      size="mini"
+                    />
+
+                    <Popup
+                      trigger={
+                        <Menu.Item
+                          onClick={this.paste}
+                          disabled={!this.props.action}
+                        >
+                          <Icon name={pasteSVG} color="#826a6a" size="24px" />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(messages.paste)}
+                      size="mini"
+                    />
+
+                    <Popup
+                      trigger={
+                        <Menu.Item onClick={this.delete} disabled={!selected}>
+                          <Icon name={deleteSVG} color="#e40166" size="24px" />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(messages.delete)}
+                      size="mini"
+                    />
                   </Menu.Menu>
                   <Menu.Menu position="right">
                     <div className="ui right aligned category search item">

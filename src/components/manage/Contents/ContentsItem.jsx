@@ -121,7 +121,7 @@ export const ContentsItemComponent = ({
           <Link to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}>
             <Icon
               name={getIcon(item['@type'], item.is_folderish)}
-              size="16px"
+              size="12px"
             />{' '}
             {item.title}
           </Link>
