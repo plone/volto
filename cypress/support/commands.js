@@ -94,6 +94,7 @@ Cypress.Commands.add(
         },
       });
     }
+<<<<<<< HEAD
     if (contentType === 'Link') {
       cy.request({
         method: 'POST',
@@ -111,6 +112,11 @@ Cypress.Commands.add(
       });
     }
     if (['Document', 'News Item', 'CMSFolder'].includes(contentType)) {
+=======
+    if (
+      ['Document', 'Folder', 'News Item', 'CMSFolder'].includes(contentType)
+    ) {
+>>>>>>> master
       cy.request({
         method: 'POST',
         url: `${api_url}/${path}`,

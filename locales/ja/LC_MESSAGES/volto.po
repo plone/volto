@@ -1696,6 +1696,10 @@ msgstr "または、他のページを試してください。"
 msgid "registration form"
 msgstr "登録フォーム"
 
+#: components/theme/Search/Search
+msgid "results found"
+msgstr ""
+
 #: error
 msgid "return to the site root"
 msgstr "サイトルートに戻ってください。"

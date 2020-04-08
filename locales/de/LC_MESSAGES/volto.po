@@ -1638,7 +1638,7 @@ msgstr "Löschen"
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
-msgstr "Sie verwenden einen veralteten Browser, bitte aktualisieren Sie Ihre Browser."
+msgstr "Sie verwenden einen veralteten Browser, bitte aktualisieren Sie Ihren Browser."
 
 #: config/Blocks
 msgid "description"
@@ -1703,6 +1703,10 @@ msgstr "versuchen Sie eine andere Seite."
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "Registrierungsformular"
+
+#: components/theme/Search/Search
+msgid "results found"
+msgstr ""
 
 #: error
 msgid "return to the site root"

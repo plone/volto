@@ -24,7 +24,7 @@ import {
   Footer,
   Header,
   Icon,
-  Messages,
+  OutdatedBrowser,
 } from '@plone/volto/components';
 import { BodyClass, getBaseUrl, getView } from '@plone/volto/helpers';
 import {
@@ -134,7 +134,7 @@ class App extends Component {
         <MultilingualRedirector pathname={this.props.pathname}>
           <Segment basic className="content-area">
             <main>
-              <Messages />
+              <OutdatedBrowser />
               {this.state.hasError ? (
                 <Error
                   message={this.state.error.message}
