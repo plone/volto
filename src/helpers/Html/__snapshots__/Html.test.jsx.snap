@@ -26,13 +26,10 @@ exports[`Html renders a html component 1`] = `
       name="apple-mobile-web-app-capable"
     />
     <link
-      href="style.css"
-      rel="stylesheet"
-    />
-    <script
-      crossOrigin="true"
-      defer={true}
-      src="bundle.js"
+      as="script"
+      data-chunk="client"
+      href="http://localhost:3001/static/js/runtime~client.js"
+      rel="preload"
     />
   </head>
   <body
@@ -53,6 +50,11 @@ exports[`Html renders a html component 1`] = `
     />
     <div
       id="sidebar"
+    />
+    <script
+      async={true}
+      crossOrigin="true"
+      src="bundle.js"
     />
     <script
       charSet="UTF-8"

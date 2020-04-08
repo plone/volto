@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added basic lazy loading dependencies and boilerplate @sneridagh
+
 ### Bugfix
 
 ### Internal
