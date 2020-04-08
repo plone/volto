@@ -951,7 +951,7 @@ class Contents extends Component {
     const path = getBaseUrl(this.props.pathname);
 
     return (
-      <Container id="page-contents">
+      <Container id="page-contents" className="folder-contents">
         <Helmet title={this.props.intl.formatMessage(messages.contents)} />
         <div className="container">
           <article id="content">
@@ -1011,8 +1011,8 @@ class Contents extends Component {
             )}
             <section id="content-core">
               <Segment.Group raised>
-                <Menu secondary attached className="menu-override">
-                  <Menu.Menu>
+                <Menu secondary attached className="top-menu">
+                  <Menu.Menu className="top-menu-menu">
                     <Popup
                       trigger={
                         <Menu.Item onClick={this.upload}>
@@ -1024,7 +1024,7 @@ class Contents extends Component {
                       size="mini"
                     />
                   </Menu.Menu>
-                  <Menu.Menu>
+                  <Menu.Menu className="top-menu-menu">
                     <Popup
                       trigger={
                         <Menu.Item onClick={this.rename} disabled={!selected}>
@@ -1127,7 +1127,7 @@ class Contents extends Component {
                       size="mini"
                     />
                   </Menu.Menu>
-                  <Menu.Menu position="right">
+                  <Menu.Menu position="right" className="top-menu-searchbox">
                     <div className="ui right aligned category search item">
                       <Input
                         type="text"
