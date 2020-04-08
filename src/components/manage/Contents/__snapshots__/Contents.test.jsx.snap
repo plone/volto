@@ -2,7 +2,7 @@
 
 exports[`Contents renders a contents component 1`] = `
 <div
-  className="ui container"
+  className="ui container folder-contents"
   id="page-contents"
 >
   <div
@@ -21,10 +21,10 @@ exports[`Contents renders a contents component 1`] = `
           className="ui raised segments"
         >
           <div
-            className="ui secondary attached menu-override menu"
+            className="ui secondary attached top-menu menu"
           >
             <div
-              className="menu"
+              className="menu top-menu-menu"
             >
               <a
                 className="item"
@@ -35,7 +35,7 @@ exports[`Contents renders a contents component 1`] = `
                 onMouseLeave={[Function]}
               >
                 <svg
-                  className="icon"
+                  className="icon upload"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": undefined,
@@ -55,7 +55,7 @@ exports[`Contents renders a contents component 1`] = `
               </a>
             </div>
             <div
-              className="menu"
+              className="menu top-menu-menu"
             >
               <a
                 className="disabled item"
@@ -66,7 +66,7 @@ exports[`Contents renders a contents component 1`] = `
                 onMouseLeave={[Function]}
               >
                 <svg
-                  className="icon"
+                  className="icon rename"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": undefined,
@@ -93,7 +93,7 @@ exports[`Contents renders a contents component 1`] = `
                 onMouseLeave={[Function]}
               >
                 <svg
-                  className="icon"
+                  className="icon semaphore"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": undefined,
@@ -120,7 +120,7 @@ exports[`Contents renders a contents component 1`] = `
                 onMouseLeave={[Function]}
               >
                 <svg
-                  className="icon"
+                  className="icon tag"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": undefined,
@@ -147,7 +147,7 @@ exports[`Contents renders a contents component 1`] = `
                 onMouseLeave={[Function]}
               >
                 <svg
-                  className="icon"
+                  className="icon properties"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": undefined,
@@ -178,7 +178,7 @@ exports[`Contents renders a contents component 1`] = `
                 onMouseLeave={[Function]}
               >
                 <svg
-                  className="icon"
+                  className="icon cut"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": undefined,
@@ -205,7 +205,7 @@ exports[`Contents renders a contents component 1`] = `
                 onMouseLeave={[Function]}
               >
                 <svg
-                  className="icon"
+                  className="icon copy"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": undefined,
@@ -232,7 +232,7 @@ exports[`Contents renders a contents component 1`] = `
                 onMouseLeave={[Function]}
               >
                 <svg
-                  className="icon"
+                  className="icon paste"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": undefined,
@@ -259,7 +259,7 @@ exports[`Contents renders a contents component 1`] = `
                 onMouseLeave={[Function]}
               >
                 <svg
-                  className="icon"
+                  className="icon delete"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": undefined,
@@ -279,7 +279,7 @@ exports[`Contents renders a contents component 1`] = `
               </a>
             </div>
             <div
-              className="right menu"
+              className="right menu top-menu-searchbox"
             >
               <div
                 className="ui right aligned category search item"
@@ -295,7 +295,7 @@ exports[`Contents renders a contents component 1`] = `
                   />
                 </div>
                 <svg
-                  className="icon"
+                  className="icon zoom"
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": undefined,
@@ -1674,7 +1674,7 @@ exports[`Contents renders a contents component 1`] = `
                   className=""
                 >
                   <svg
-                    className="icon"
+                    className="icon unchecked"
                     dangerouslySetInnerHTML={
                       Object {
                         "__html": undefined,
