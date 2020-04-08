@@ -78,6 +78,9 @@
     ]
   },
   "jest": {
+    "testMatch": [
+      "<rootDir>/src/**/?(*.)+(spec|test).[jt]s?(x)"
+    ],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",
       "^.+\\.css$": "jest-css-modules",
