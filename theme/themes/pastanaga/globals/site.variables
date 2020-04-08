@@ -9,6 +9,9 @@
 @fontName          : 'Poppins';
 
 @googleFontSizes   : '300,400,500,700,400italic,700italic';
+@toolbalWidth: 80px;
+@toolbalWidthMin: 20px;
+@fullSizeIcon: 1.4em;
 
 
 /*-------------------

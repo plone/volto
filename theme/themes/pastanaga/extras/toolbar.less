@@ -175,7 +175,7 @@
       justify-content: center;
 
       button {
-        width: 80px;
+        width: @toolbalWidth;
         height: 20px;
         padding: 0;
         border: 0;
@@ -272,23 +272,23 @@
 
   @media only screen and (min-width: @largestMobileScreen) {
     .toolbar {
-      width: 20px;
+      width: @toolbalWidthMin;
       height: 100%;
       flex-direction: row;
       justify-content: flex-end;
       transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 
       & + .pusher {
-        margin-right: 20px;
+        margin-right: @toolbalWidthMin;
         transition: margin-right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
       }
 
       &.expanded {
-        width: 80px;
+        width: @toolbalWidth;
         height: 100%;
 
         & + .pusher {
-          margin-right: 80px;
+          margin-right: @toolbalWidth;
           transition: margin-right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
         }
 
@@ -322,7 +322,7 @@
 
       &-content {
         position: fixed;
-        left: 80px;
+        left: @toolbalWidth;
         width: 320px;
       }
 
@@ -383,14 +383,14 @@
 
       &-handler {
         display: flex;
-        width: 20px;
+        width: @toolbalWidthMin;
         height: 100%;
         flex-direction: column;
         justify-content: center;
 
         button {
-          width: 20px;
-          height: 80px;
+          width: @toolbalWidthMin;
+          height: @toolbalWidth;
 
           &::before {
             left: 8px;
