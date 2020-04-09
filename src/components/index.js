@@ -4,6 +4,21 @@
  * @example import { Field } from 'components';
  */
 
+/**
+Proposals of tree for components folder
+
+components
+ |-blocks
+ |-controlpanels
+ |-views
+ |-widgets
+ |-Toolbar
+ |-Header
+
+or completely flat...
+
+*/
+
 //  Do not lazy load them, since it has not much sense (they will live in the main chunk)
 export App from '@plone/volto/components/theme/App/App';
 export View from '@plone/volto/components/theme/View/View';
