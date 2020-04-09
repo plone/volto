@@ -16,7 +16,6 @@ import {
   Container,
   Table,
   Button,
-  Segment,
   Dropdown,
 } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
@@ -33,7 +32,8 @@ import {
   deleteControlpanel,
 } from '@plone/volto/actions';
 import { getId } from '@plone/volto/helpers';
-import addSvg from '@plone/volto/icons/circle-plus.svg';
+
+import addSVG from '@plone/volto/icons/add-document.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 import editSVG from '@plone/volto/icons/pen.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
@@ -393,84 +393,64 @@ class ContentTypes extends Component {
               </h1>
             </header>
             <section id="content-core">
-              <Segment.Group>
-                <Table compact singleLine striped>
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.HeaderCell>
-                        <FormattedMessage
-                          id="Type"
-                          defaultMessage="Type"
-                        />
-                      </Table.HeaderCell>
-                      <Table.HeaderCell>
-                        <FormattedMessage id="Description" defaultMessage="Description" />
-                      </Table.HeaderCell>
-                      <Table.HeaderCell>
-                        <FormattedMessage id="Items" defaultMessage="Items" />
-                      </Table.HeaderCell>
-                      <Table.HeaderCell textAlign="right">
-                        <FormattedMessage id="Actions" defaultMessage="Actions" />
-                      </Table.HeaderCell>
+              <Table compact singleLine striped>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>
+                      <FormattedMessage
+                        id="Type"
+                        defaultMessage="Type"
+                      />
+                    </Table.HeaderCell>
+                    <Table.HeaderCell>
+                      <FormattedMessage id="Description" defaultMessage="Description" />
+                    </Table.HeaderCell>
+                    <Table.HeaderCell>
+                      <FormattedMessage id="Items" defaultMessage="Items" />
+                    </Table.HeaderCell>
+                    <Table.HeaderCell textAlign="right">
+                      <FormattedMessage id="Actions" defaultMessage="Actions" />
+                    </Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  {this.props.controlpanel.items.map(item => (
+                    <Table.Row key={item['@id']}>
+                      <Table.Cell>
+                        <Link to={`${this.props.pathname}/${item['id']}`}>
+                          {item.title}
+                        </Link>
+                      </Table.Cell>
+                      <Table.Cell>
+                        {item.description}
+                      </Table.Cell>
+                      <Table.Cell>
+                        {item.count}
+                      </Table.Cell>
+                      <Table.Cell textAlign="right">
+                        <Dropdown icon="ellipsis horizontal">
+                          <Dropdown.Menu className="left">
+                            <Dropdown.Item
+                              onClick={this.onEdit}
+                              value={`${this.props.pathname}/${item['id']}`}
+                            >
+                              <Icon name={editSVG} size="15px" />
+                              <FormattedMessage id="Edit" defaultMessage="Edit" />
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                              onClick={this.onDelete}
+                              value={item['@id']}
+                            >
+                              <Icon name={trashSVG} size="15px" />
+                              <FormattedMessage id="Delete" defaultMessage="Delete" />
+                            </Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </Table.Cell>
                     </Table.Row>
-                  </Table.Header>
-                  <Table.Body>
-                    {this.props.controlpanel.items.map(item => (
-                      <Table.Row key={item['@id']}>
-                        <Table.Cell>
-                          <Link to={`${this.props.pathname}/${item['id']}`}>
-                            {item.title}
-                          </Link>
-                        </Table.Cell>
-                        <Table.Cell>
-                          {item.description}
-                        </Table.Cell>
-                        <Table.Cell>
-                          {item.count}
-                        </Table.Cell>
-                        <Table.Cell textAlign="right">
-                          <Dropdown icon="ellipsis horizontal">
-                            <Dropdown.Menu className="left">
-                              <Dropdown.Item
-                                onClick={this.onEdit}
-                                value={`${this.props.pathname}/${item['id']}`}
-                              >
-                                <Icon name={editSVG} size="15px" />
-                                <FormattedMessage id="Edit" defaultMessage="Edit" />
-                              </Dropdown.Item>
-                              <Dropdown.Item
-                                onClick={this.onDelete}
-                                value={item['@id']}
-                              >
-                                <Icon name={trashSVG} size="15px" />
-                                <FormattedMessage id="Delete" defaultMessage="Delete" />
-                              </Dropdown.Item>
-                            </Dropdown.Menu>
-                          </Dropdown>
-                        </Table.Cell>
-                      </Table.Row>
-                    ))}
-                  </Table.Body>
-                </Table>
-                <Segment className="actions" clearing>
-                  {this.props.intl.formatMessage(messages.addTypeFormTitle)}
-                  <Button
-                    basic
-                    primary
-                    floated="right"
-                    onClick={() => {
-                      this.setState({ showAddType: true });
-                    }}
-                  >
-                    <Icon
-                      name={addSvg}
-                      size="30px"
-                      color="#007eb1"
-                      title={this.props.intl.formatMessage(messages.addTypeButtonTitle)}
-                    />
-                  </Button>
-                </Segment>
-              </Segment.Group>
+                  ))}
+                </Table.Body>
+              </Table>
             </section>
           </article>
         </Container>
@@ -479,17 +459,30 @@ class ContentTypes extends Component {
             pathname={this.props.pathname}
             hideDefaultViewButtons
             inner={
-              <Link
-                to={getParentUrl(this.props.pathname)}
-                className="item"
-              >
-                <Icon
-                  name={backSVG}
-                  className="contents circled"
-                  size="30px"
-                  title={this.props.intl.formatMessage(messages.back)}
-                />
-              </Link>
+              <>
+                <Link to={getParentUrl(this.props.pathname)} className="item">
+                  <Icon
+                    name={backSVG}
+                    size="30px"
+                    className="contents circled"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
+                <Button
+                  className="add"
+                  aria-label={this.props.intl.formatMessage(messages.add)}
+                  tabIndex={0}
+                  id="toolbar-add"
+                  onClick={() => {
+                    this.setState({ showAddType: true });
+                  }}
+                >
+                  <Icon
+                    name={addSVG}
+                    title={this.props.intl.formatMessage(messages.addTypeButtonTitle)}
+                  />
+                </Button>
+              </>
             }
           />
         </Portal>
