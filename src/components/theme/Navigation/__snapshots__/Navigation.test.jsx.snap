@@ -28,13 +28,16 @@ exports[`Navigation renders a navigation component with an active item 1`] = `
     onClick={[Function]}
   >
     <a
+      aria-current="page"
       className="item active"
       href="/blog"
       onClick={[Function]}
+      style={Object {}}
     >
       Blog
     </a>
     <a
+      aria-current={null}
       className="item"
       href="/users"
       onClick={[Function]}
@@ -73,13 +76,16 @@ exports[`Navigation renders a navigation component with an active item when its 
     onClick={[Function]}
   >
     <a
+      aria-current="page"
       className="item active"
       href="/blog"
       onClick={[Function]}
+      style={Object {}}
     >
       Blog
     </a>
     <a
+      aria-current={null}
       className="item"
       href="/users"
       onClick={[Function]}
@@ -118,13 +124,16 @@ exports[`Navigation renders a navigation component with only one active item eve
     onClick={[Function]}
   >
     <a
+      aria-current="page"
       className="item active"
       href="/blog"
       onClick={[Function]}
+      style={Object {}}
     >
       Blog
     </a>
     <a
+      aria-current={null}
       className="item"
       href="/blog-of-mine"
       onClick={[Function]}
@@ -132,6 +141,7 @@ exports[`Navigation renders a navigation component with only one active item eve
       Blog of mine
     </a>
     <a
+      aria-current={null}
       className="item"
       href="/users"
       onClick={[Function]}
@@ -170,6 +180,7 @@ exports[`Navigation renders a navigation component without active items 1`] = `
     onClick={[Function]}
   >
     <a
+      aria-current={null}
       className="item"
       href="/blog"
       onClick={[Function]}
@@ -177,6 +188,7 @@ exports[`Navigation renders a navigation component without active items 1`] = `
       Blog
     </a>
     <a
+      aria-current={null}
       className="item"
       href="/users"
       onClick={[Function]}

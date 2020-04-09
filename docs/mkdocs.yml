@@ -22,6 +22,7 @@ nav:
   - Configuration:
       - What is configurable?: 'configuration/how-to.md'
       - Richeditor settings: 'configuration/richeditor-settings.md'
+      - Multilingual: 'configuration/multilingual.md'
   - Semantic UI:
       - About Semantic UI: 'semantic-ui/about-semantic.md'
       - Semantic UI Theming: 'semantic-ui/semanticui-theming.md'

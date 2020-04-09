@@ -140,6 +140,10 @@ const messages = defineMessages({
     id: 'Select columns to show',
     defaultMessage: 'Select columns to show',
   },
+  sort: {
+    id: 'sort',
+    defaultMessage: 'sort',
+  },
   state: {
     id: 'State',
     defaultMessage: 'State',
@@ -346,6 +350,8 @@ class Contents extends Component {
         })),
         selectedCount: defaultIndexes.length + 1,
       },
+      sort_on: 'getObjPositionInParent',
+      sort_order: 'ascending',
     };
     this.filterTimeout = null;
   }
@@ -568,6 +574,10 @@ class Contents extends Component {
    */
   onSortItems(event, { value }) {
     const values = value.split('|');
+    this.setState({
+      sort_on: values[0],
+      sort_order: values[1],
+    });
     this.props.sortContent(
       getBaseUrl(this.props.pathname),
       values[0],
@@ -772,7 +782,8 @@ class Contents extends Component {
   fetchContents(pathname) {
     this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
       'path.depth': 1,
-      sort_on: 'getObjPositionInParent',
+      sort_on: this.state.sort_on,
+      sort_order: this.state.sort_order,
       metadata_fields: '_all',
       ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
       b_size: this.state.pageSize,
@@ -1134,6 +1145,10 @@ class Contents extends Component {
                       <Table.HeaderCell>
                         <Dropdown
                           trigger={<Icon name="sort content ascending" />}
+                          className="sort-icon"
+                          aria-label={this.props.intl.formatMessage(
+                            messages.sort,
+                          )}
                           icon={null}
                           simple
                         >
@@ -1150,16 +1165,20 @@ class Contents extends Component {
                                 'EffectiveDate',
                                 'CreationDate',
                                 'ModificationDate',
-                                'Type',
+                                'portal_type',
                               ],
                               index => (
-                                <Dropdown.Item key={index}>
+                                <Dropdown.Item
+                                  key={index}
+                                  className={`sort_${index}`}
+                                >
                                   <Icon name="dropdown" />
                                   <FormattedMessage id={Indexes[index].label} />
                                   <Dropdown.Menu>
                                     <Dropdown.Item
                                       onClick={this.onSortItems}
-                                      value={`${index}|ascending`}
+                                      value={`${Indexes[index].sort_on}|ascending`}
+                                      className={`sort_${Indexes[index].sort_on}_ascending`}
                                     >
                                       <Icon name="sort alphabet ascending" />{' '}
                                       <FormattedMessage
@@ -1169,7 +1188,8 @@ class Contents extends Component {
                                     </Dropdown.Item>
                                     <Dropdown.Item
                                       onClick={this.onSortItems}
-                                      value={`${index}|descending`}
+                                      value={`${Indexes[index].sort_on}|descending`}
+                                      className={`sort_${Indexes[index].sort_on}_descending`}
                                     >
                                       <Icon name="sort alphabet descending" />{' '}
                                       <FormattedMessage
