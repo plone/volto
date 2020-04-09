@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Show save/cancel on control panels @avoinea #850
+
 ### Internal
 
 - Make Jest only looks up in `src` folder @sneridagh
