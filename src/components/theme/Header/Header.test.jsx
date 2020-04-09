@@ -17,6 +17,9 @@ jest.mock('../Anontools/Anontools', () =>
 jest.mock('../Navigation/Navigation', () =>
   jest.fn(() => <div id="navigation" />),
 );
+jest.mock('../LanguageSelector/LanguageSelector', () =>
+  jest.fn(() => <div id="language-selector" />),
+);
 
 describe('Header', () => {
   it('renders a header component', () => {

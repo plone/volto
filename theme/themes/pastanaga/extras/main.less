@@ -262,12 +262,20 @@ button {
   }
 }
 
-@import 'utils';
+//Controlpanel
+.controlpanel .ui .grid h3 {
+  flex-direction: column;
+}
+
+// Deprecated as per https://github.com/plone/volto/issues/1265
+// @import 'utils';
 @import 'toolbar';
 @import 'draftjs';
 @import 'blocks';
 @import 'sidebar';
 @import 'react-dates-overrides';
 @import 'time-picker-overrides';
+@import 'sitemap';
+@import 'search';
 
 .loadUIOverrides();

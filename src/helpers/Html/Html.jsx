@@ -39,11 +39,10 @@ class Html extends Component {
    * @static
    */
   static propTypes = {
-    assets: PropTypes.shape({
-      styles: PropTypes.object,
-      javascript: PropTypes.shape({
-        main: PropTypes.string,
-      }),
+    extractor: PropTypes.shape({
+      getLinkElements: PropTypes.func.isRequired,
+      getScriptElements: PropTypes.func.isRequired,
+      getStyleElements: PropTypes.func.isRequired,
     }).isRequired,
     markup: PropTypes.string.isRequired,
     store: PropTypes.shape({
@@ -57,7 +56,7 @@ class Html extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { assets, markup, store } = this.props;
+    const { extractor, markup, store } = this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
 
@@ -74,19 +73,23 @@ class Html extends Component {
           <link rel="shortcut icon" href="/favicon.ico" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
-          {assets.client.css ? (
-            <link rel="stylesheet" href={assets.client.css} />
-          ) : null}
-          {process.env.NODE_ENV === 'production' ? (
-            <script src={assets.client.js} defer />
-          ) : (
-            <script src={assets.client.js} defer crossOrigin="true" />
+          <>{extractor.getLinkElements()}</>
+          {/* Styles in DEV are loaded with Webpack's style-loader, in production,
+              they need to be static*/}
+          {process.env.NODE_ENV === 'production' && (
+            <>{extractor.getStyleElements()}</>
           )}
         </head>
         <body className={bodyClass}>
           <div role="navigation" aria-label="Toolbar" id="toolbar" />
           <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
           <div id="sidebar" />
+          {extractor.getScriptElements().map(elem =>
+            React.cloneElement(elem, {
+              crossOrigin:
+                process.env.NODE_ENV === 'production' ? undefined : 'true',
+            }),
+          )}
           <script
             dangerouslySetInnerHTML={{
               __html: `window.__data=${serialize(store.getState())};`,

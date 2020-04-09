@@ -25,7 +25,7 @@ const View = ({ properties }) => {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
 
   return (
-    <>
+    <div className="block table-of-contents">
       <h2>
         <FormattedMessage
           id="Table of Contents"
@@ -55,7 +55,7 @@ const View = ({ properties }) => {
           ),
         )}
       </List>
-    </>
+    </div>
   );
 };
 
