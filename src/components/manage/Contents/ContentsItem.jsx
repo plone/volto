@@ -123,7 +123,7 @@ export const ContentsItemComponent = ({
           <Link to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}>
             <Icon
               name={getIcon(item['@type'], item.is_folderish)}
-              size="12px"
+              size="13px"
             />{' '}
             {item.title}
           </Link>
@@ -158,7 +158,7 @@ export const ContentsItemComponent = ({
                 }
               >
                 {item[index.id] !== 'None' ? (
-                  moment(item[index.id]).fromNow()
+                  moment(item[index.id]).format('YYYY-MM-DD')
                 ) : (
                   <FormattedMessage id="None" defaultMessage="None" />
                 )}
@@ -173,32 +173,52 @@ export const ContentsItemComponent = ({
                 <Icon name={editingSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="Edit" defaultMessage="Edit" />
               </Link>
-              <Link className="item" to={item['@id']}>
+              <Link className="item right-dropdown" to={item['@id']}>
                 <Icon name={showSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="View" defaultMessage="View" />
               </Link>
               <Dropdown.Divider />
-              <Dropdown.Item onClick={onCut} value={item['@id']}>
+              <Dropdown.Item
+                onClick={onCut}
+                value={item['@id']}
+                className="right-dropdown"
+              >
                 <Icon name={cutSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="Cut" defaultMessage="Cut" />
               </Dropdown.Item>
-              <Dropdown.Item onClick={onCopy} value={item['@id']}>
+              <Dropdown.Item
+                onClick={onCopy}
+                value={item['@id']}
+                className="right-dropdown"
+              >
                 <Icon name={copySVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="Copy" defaultMessage="Copy" />
               </Dropdown.Item>
-              <Dropdown.Item onClick={onDelete} value={item['@id']}>
+              <Dropdown.Item
+                onClick={onDelete}
+                value={item['@id']}
+                className="right-dropdown"
+              >
                 <Icon name={deleteSVG} color="#e40166" size="24px" />{' '}
                 <FormattedMessage id="Delete" defaultMessage="Delete" />
               </Dropdown.Item>
               <Dropdown.Divider />
-              <Dropdown.Item onClick={onMoveToTop} value={order}>
+              <Dropdown.Item
+                onClick={onMoveToTop}
+                value={order}
+                className="right-dropdown"
+              >
                 <Icon name={moveUpSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage
                   id="Move to top of folder"
                   defaultMessage="Move to top of folder"
                 />
               </Dropdown.Item>
-              <Dropdown.Item onClick={onMoveToBottom} value={order}>
+              <Dropdown.Item
+                onClick={onMoveToBottom}
+                value={order}
+                className="right-dropdown"
+              >
                 <Icon name={moveDownSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage
                   id="Move to bottom of folder"

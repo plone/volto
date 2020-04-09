@@ -969,6 +969,7 @@ class Contents extends Component {
               }
               onCancel={this.onDeleteCancel}
               onConfirm={this.onDeleteOk}
+              size="none"
             />
             <ContentsUploadModal
               open={this.state.showUpload}
@@ -1015,7 +1016,7 @@ class Contents extends Component {
                   <Menu.Menu className="top-menu-menu">
                     <Popup
                       trigger={
-                        <Menu.Item onClick={this.upload}>
+                        <Menu.Item onClick={this.upload} className="upload">
                           <Icon
                             name={uploadSVG}
                             color="#007eb1"
@@ -1035,7 +1036,7 @@ class Contents extends Component {
                         <Menu.Item onClick={this.rename} disabled={!selected}>
                           <Icon
                             name={renameSVG}
-                            color="#826a6a"
+                            color={selected ? '#826a6a' : 'grey'}
                             size="24px"
                             className="rename"
                           />
@@ -1050,7 +1051,7 @@ class Contents extends Component {
                         <Menu.Item onClick={this.workflow} disabled={!selected}>
                           <Icon
                             name={semaphoreSVG}
-                            color="#826a6a"
+                            color={selected ? '#826a6a' : 'grey'}
                             size="24px"
                             className="semaphore"
                           />
@@ -1065,7 +1066,7 @@ class Contents extends Component {
                         <Menu.Item onClick={this.tags} disabled={!selected}>
                           <Icon
                             name={tagSVG}
-                            color="#826a6a"
+                            color={selected ? '#826a6a' : 'grey'}
                             size="24px"
                             className="tag"
                           />
@@ -1084,7 +1085,7 @@ class Contents extends Component {
                         >
                           <Icon
                             name={propertiesSVG}
-                            color="#826a6a"
+                            color={selected ? '#826a6a' : 'grey'}
                             size="24px"
                             className="properties"
                           />
@@ -1103,7 +1104,7 @@ class Contents extends Component {
                         <Menu.Item onClick={this.cut} disabled={!selected}>
                           <Icon
                             name={cutSVG}
-                            color="#826a6a"
+                            color={selected ? '#826a6a' : 'grey'}
                             size="24px"
                             className="cut"
                           />
@@ -1118,7 +1119,7 @@ class Contents extends Component {
                         <Menu.Item onClick={this.copy} disabled={!selected}>
                           <Icon
                             name={copySVG}
-                            color="#826a6a"
+                            color={selected ? '#826a6a' : 'grey'}
                             size="24px"
                             className="copy"
                           />
@@ -1137,7 +1138,7 @@ class Contents extends Component {
                         >
                           <Icon
                             name={pasteSVG}
-                            color="#826a6a"
+                            color={selected ? '#826a6a' : 'grey'}
                             size="24px"
                             className="paste"
                           />
@@ -1153,7 +1154,7 @@ class Contents extends Component {
                         <Menu.Item onClick={this.delete} disabled={!selected}>
                           <Icon
                             name={deleteSVG}
-                            color="#e40166"
+                            color={selected ? '#e40166' : 'grey'}
                             size="24px"
                             className="delete"
                           />
@@ -1219,7 +1220,7 @@ class Contents extends Component {
                   <Dropdown
                     item
                     icon={<Icon name={moreSVG} size="24px" color="#826a6a" />}
-                    className="right floating"
+                    className="right floating moresvg"
                   >
                     <Dropdown.Menu className="left">
                       <Dropdown.Header

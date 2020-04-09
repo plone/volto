@@ -27,7 +27,7 @@ exports[`Contents renders a contents component 1`] = `
               className="menu top-menu-menu"
             >
               <a
-                className="item"
+                className="item upload"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -75,7 +75,7 @@ exports[`Contents renders a contents component 1`] = `
                   onClick={null}
                   style={
                     Object {
-                      "fill": "#826a6a",
+                      "fill": "grey",
                       "height": "24px",
                       "width": "auto",
                     }
@@ -102,7 +102,7 @@ exports[`Contents renders a contents component 1`] = `
                   onClick={null}
                   style={
                     Object {
-                      "fill": "#826a6a",
+                      "fill": "grey",
                       "height": "24px",
                       "width": "auto",
                     }
@@ -129,7 +129,7 @@ exports[`Contents renders a contents component 1`] = `
                   onClick={null}
                   style={
                     Object {
-                      "fill": "#826a6a",
+                      "fill": "grey",
                       "height": "24px",
                       "width": "auto",
                     }
@@ -156,7 +156,7 @@ exports[`Contents renders a contents component 1`] = `
                   onClick={null}
                   style={
                     Object {
-                      "fill": "#826a6a",
+                      "fill": "grey",
                       "height": "24px",
                       "width": "auto",
                     }
@@ -187,7 +187,7 @@ exports[`Contents renders a contents component 1`] = `
                   onClick={null}
                   style={
                     Object {
-                      "fill": "#826a6a",
+                      "fill": "grey",
                       "height": "24px",
                       "width": "auto",
                     }
@@ -214,7 +214,7 @@ exports[`Contents renders a contents component 1`] = `
                   onClick={null}
                   style={
                     Object {
-                      "fill": "#826a6a",
+                      "fill": "grey",
                       "height": "24px",
                       "width": "auto",
                     }
@@ -241,7 +241,7 @@ exports[`Contents renders a contents component 1`] = `
                   onClick={null}
                   style={
                     Object {
-                      "fill": "#826a6a",
+                      "fill": "grey",
                       "height": "24px",
                       "width": "auto",
                     }
@@ -268,7 +268,7 @@ exports[`Contents renders a contents component 1`] = `
                   onClick={null}
                   style={
                     Object {
-                      "fill": "#e40166",
+                      "fill": "grey",
                       "height": "24px",
                       "width": "auto",
                     }
@@ -346,7 +346,7 @@ exports[`Contents renders a contents component 1`] = `
             </div>
             <div
               aria-expanded={false}
-              className="ui item dropdown right floating"
+              className="ui item dropdown right floating moresvg"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -1710,7 +1710,7 @@ exports[`Contents renders a contents component 1`] = `
                       style={
                         Object {
                           "fill": "currentColor",
-                          "height": "12px",
+                          "height": "13px",
                           "width": "auto",
                         }
                       }
@@ -1727,7 +1727,7 @@ exports[`Contents renders a contents component 1`] = `
                   <span
                     title="Sunday, April 23, 2017 3:38 AM"
                   >
-                    a few seconds ago
+                    Sunday, April 23, 2017 3:38 AM
                   </span>
                 </td>
                 <td
@@ -1736,7 +1736,7 @@ exports[`Contents renders a contents component 1`] = `
                   <span
                     title="Sunday, April 23, 2017 3:38 AM"
                   >
-                    a few seconds ago
+                    Sunday, April 23, 2017 3:38 AM
                   </span>
                 </td>
                 <td
@@ -1832,7 +1832,7 @@ exports[`Contents renders a contents component 1`] = `
                         Edit
                       </a>
                       <a
-                        className="item"
+                        className="item right-dropdown"
                         href="/blog"
                         onClick={[Function]}
                       >
@@ -1861,7 +1861,7 @@ exports[`Contents renders a contents component 1`] = `
                         className="divider"
                       />
                       <div
-                        className="item"
+                        className="item right-dropdown"
                         onClick={[Function]}
                         role="option"
                       >
@@ -1887,7 +1887,7 @@ exports[`Contents renders a contents component 1`] = `
                         Cut
                       </div>
                       <div
-                        className="item"
+                        className="item right-dropdown"
                         onClick={[Function]}
                         role="option"
                       >
@@ -1913,7 +1913,7 @@ exports[`Contents renders a contents component 1`] = `
                         Copy
                       </div>
                       <div
-                        className="item"
+                        className="item right-dropdown"
                         onClick={[Function]}
                         role="option"
                       >
@@ -1942,7 +1942,7 @@ exports[`Contents renders a contents component 1`] = `
                         className="divider"
                       />
                       <div
-                        className="item"
+                        className="item right-dropdown"
                         onClick={[Function]}
                         role="option"
                       >
@@ -1968,7 +1968,7 @@ exports[`Contents renders a contents component 1`] = `
                         Move to top of folder
                       </div>
                       <div
-                        className="item"
+                        className="item right-dropdown"
                         onClick={[Function]}
                         role="option"
                       >
