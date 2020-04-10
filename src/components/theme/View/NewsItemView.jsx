@@ -5,7 +5,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
 import { Container, Image } from 'semantic-ui-react';
 
 import { flattenToAppURL, flattenHTMLToAppURL } from '@plone/volto/helpers';
@@ -18,7 +17,6 @@ import { flattenToAppURL, flattenHTMLToAppURL } from '@plone/volto/helpers';
  */
 const NewsItemView = ({ content }) => (
   <Container className="view-wrapper">
-    <Helmet title={content.title} />
     {content.title && (
       <h1 className="documentFirstHeading">
         {content.title}
