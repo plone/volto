@@ -25,6 +25,7 @@ import {
   Header,
   Icon,
   OutdatedBrowser,
+  AppExtras,
 } from '@plone/volto/components';
 import { BodyClass, getBaseUrl, getView } from '@plone/volto/helpers';
 import {
@@ -160,6 +161,7 @@ class App extends Component {
             />
           }
         />
+        <AppExtras />
       </Fragment>
     );
   }
