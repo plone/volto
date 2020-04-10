@@ -10,6 +10,7 @@
 
 - Added basic lazy loading dependencies and boilerplate @sneridagh
 - Added date time widget @nzambello
+- Add meta description tags and meta generator @sneridagh
 
 ### Bugfix
 
