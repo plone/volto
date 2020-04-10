@@ -33,5 +33,20 @@ if (Cypress.env('API') !== 'guillotina') {
         .should('have.attr', 'href')
         .and('eq', '/my-folder/brand-new-document-title/contents');
     });
+
+    it.only('Adding Publication date via folder contetns view', () => {
+      cy.get('svg[class="icon unchecked"]').click();
+      cy.get('svg[class="icon properties"]').click();
+      cy.get('input[name="effective"]')
+        .clear()
+        .type('2017-06-01T08:30');
+      cy.get('.modal button[title="Save"]').click();
+
+      // then the new publication date should show up in the folder contents
+      cy.get('#content-core table')
+        .contains('2017-06-01')
+        .should('have.attr', 'title')
+        .and('eq', 'Thursday, June 1, 2017 8:30 AM');
+    });
   });
 }
