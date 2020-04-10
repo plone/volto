@@ -13,6 +13,7 @@
 ### Internal
 
 - Make Jest only looks up in `src` folder @sneridagh
+- Re-arrange `components/index.js` @sneridagh
 
 ## 4.6.0 (2020-04-06)
 
