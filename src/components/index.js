@@ -6,6 +6,7 @@ import loadable from '@loadable/component';
 
 //  Do not lazy load them, since it has not much sense (they will live in the main chunk)
 export App from '@plone/volto/components/theme/App/App';
+export AppExtras from '@plone/volto/components/theme/AppExtras/AppExtras';
 export View from '@plone/volto/components/theme/View/View';
 export Header from '@plone/volto/components/theme/Header/Header';
 export Logo from '@plone/volto/components/theme/Logo/Logo';

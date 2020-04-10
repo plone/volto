@@ -44,6 +44,8 @@ nav:
       - Anatomy: 'blocks/anatomy.md'
       - Settings: 'blocks/settings.md'
       - Edit components: 'blocks/editcomponent.md'
+  - Recipes:
+      - App component insertion point: 'recipes/appextras.md'
   - Deploying:
       - Simple deployment: 'deploying/simple.md'
       - Using PM2: 'deploying/pm2.md'
