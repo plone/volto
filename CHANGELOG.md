@@ -7,10 +7,13 @@
 ### Feature
 
 - Full screen right sidebar @rexalex #1345
+- Added basic lazy loading dependencies and boilerplate @sneridagh
 
 ### Bugfix
 
 ### Internal
+
+- Make Jest only looks up in `src` folder @sneridagh
 
 ## 4.6.0 (2020-04-06)
 
