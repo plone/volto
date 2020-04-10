@@ -6,7 +6,12 @@
 
 ### Changes
 
+### Added
+
+- Added Dexterity Types Controlpanel @avoinea
+
 ### Feature
+
 
 - Added basic lazy loading dependencies and boilerplate @sneridagh
 - Added date time widget @nzambello
