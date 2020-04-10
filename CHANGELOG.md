@@ -13,6 +13,7 @@
 
 - Added date time widget @nzambello
 - Add meta description tags and meta generator @sneridagh
+- Add lang property in `html` tag depending on the site/content language @sneridagh
 
 ### Bugfix
 
