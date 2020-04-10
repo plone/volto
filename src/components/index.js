@@ -3,6 +3,9 @@
  * @module components
  * @example import { Field } from 'components';
  */
+
+import loadable from '@loadable/component';
+
 export Anontools from '@plone/volto/components/theme/Anontools/Anontools';
 export Breadcrumbs from '@plone/volto/components/theme/Breadcrumbs/Breadcrumbs';
 export ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
@@ -75,7 +78,11 @@ export PersonalPreferences from '@plone/volto/components/manage/Preferences/Pers
 export PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
 export ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
-export DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
+
+export const DatetimeWidget = loadable(() =>
+  import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
+);
+
 export FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
 export PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
 export ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
