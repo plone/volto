@@ -59,8 +59,10 @@ function getColor(string) {
       return '#007bc1';
     case 'intranet':
       return '#51aa55';
-    default:
+    case 'draft':
       return '#f6a808';
+    default:
+      return 'grey';
   }
 }
 
@@ -144,7 +146,9 @@ export const ContentsItemComponent = ({
                 <span>
                   <Circle color={getColor(item[index.id])} size="15px" />
                 </span>
-                {item[index.id] ? capitalise(item[index.id]) : null}
+                {item[index.id]
+                  ? capitalise(item[index.id])
+                  : 'No workflow state'}
               </div>
             )}
             {index.type === 'date' && (
