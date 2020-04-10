@@ -1240,9 +1240,14 @@ class Contents extends Component {
                                 name={checkboxCheckedSVG}
                                 size="20px"
                                 color="#007eb1"
+                                className={this.state.index.values[index].label}
                               />
                             ) : (
-                              <Icon name={checkboxUncheckedSVG} size="20px" />
+                              <Icon
+                                name={checkboxUncheckedSVG}
+                                className={this.state.index.values[index].label}
+                                size="20px"
+                              />
                             )}
                             {this.props.intl.formatMessage({
                               id: this.state.index.values[index].label,
