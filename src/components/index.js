@@ -4,6 +4,8 @@
  * @example import { Field } from 'components';
  */
 
+import loadable from '@loadable/component';
+
 export Anontools from '@plone/volto/components/theme/Anontools/Anontools';
 export Breadcrumbs from '@plone/volto/components/theme/Breadcrumbs/Breadcrumbs';
 export ContactForm from '@plone/volto/components/theme/ContactForm/ContactForm';
@@ -23,6 +25,7 @@ export EventView from '@plone/volto/components/theme/View/EventView';
 export ListingView from '@plone/volto/components/theme/View/ListingView';
 export Login from '@plone/volto/components/theme/Login/Login';
 export Logout from '@plone/volto/components/theme/Logout/Logout';
+export Sitemap from '@plone/volto/components/theme/Sitemap/Sitemap';
 export NotFound from '@plone/volto/components/theme/NotFound/NotFound';
 export Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
 export Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
@@ -73,7 +76,11 @@ export PersonalPreferences from '@plone/volto/components/manage/Preferences/Pers
 export PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
 export ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
-export DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
+
+export const DatetimeWidget = loadable(() =>
+  import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
+);
+
 export FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
 export PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
 export ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
@@ -132,3 +139,6 @@ export Types from '@plone/volto/components/manage/Toolbar/Types';
 export Toast from '@plone/volto/components/manage/Toast/Toast';
 
 export ConditionalLink from '@plone/volto/components/manage/ConditionalLink/ConditionalLink';
+
+export CreateTranslation from '@plone/volto/components/manage/Multilingual/CreateTranslation';
+export LanguageSelector from '@plone/volto/components/theme/LanguageSelector/LanguageSelector';

@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 
 import {
   Anontools,
+  LanguageSelector,
   Logo,
   Navigation,
   SearchWidget,
@@ -57,6 +58,7 @@ class Header extends Component {
               <Navigation pathname={this.props.pathname} />
             </div>
             <div className="tools-search-wrapper">
+              <LanguageSelector />
               {!this.props.token && (
                 <div className="tools">
                   <Anontools />
