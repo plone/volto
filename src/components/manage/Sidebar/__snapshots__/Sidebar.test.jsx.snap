@@ -4,12 +4,37 @@ exports[`renders a sidebar component 1`] = `
 Array [
   <div
     className="sidebar-container"
+    style={null}
   >
     <button
       aria-label="Shrink sidebar"
       className="ui button trigger"
       onClick={[Function]}
     />
+    <button
+      aria-label="full-screen-sidenav"
+      className="ui button full-size-sidenav-btn"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon full-size-icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "currentColor",
+            "height": "36px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </button>
     <div
       className="tabs-wrapper"
     >

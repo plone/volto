@@ -69,35 +69,6 @@ class Sidebar extends Component {
   }
 
   /**
-   * on component did mount check for toolbar expanded
-   */
-  componentDidMount() {
-    this.chechForToolbarExpanded();
-  }
-
-  /**
-   * check for toolbar expanded
-   * set listener for expand/minimize to adjust width of sidenav
-   * @returns {undefined}
-   */
-  chechForToolbarExpanded() {
-    const toolbarParent = document.querySelector('#toolbar');
-    const toolbarHandler = toolbarParent.getElementsByClassName(
-      'toolbar-handler',
-    )[0];
-    const toolbar = toolbarParent.getElementsByClassName('toolbar')[0];
-    let isExpanded = toolbar.classList.contains('expanded');
-    this.setState({ showFullToolbarExpanded: isExpanded });
-
-    toolbarHandler.addEventListener('click', ev => {
-      setTimeout(() => {
-        isExpanded = toolbar.classList.contains('expanded');
-        this.setState({ showFullToolbarExpanded: isExpanded });
-      });
-    });
-  }
-
-  /**
    * On toggle expanded handler
    * also reset sidebar since this has mimized it
    * @method onToggleExpanded
@@ -145,7 +116,7 @@ class Sidebar extends Component {
 
     if (this.state.showFull) {
       sidebarContainer.classList.add('full-size');
-      if (!this.state.showFullToolbarExpanded) {
+      if (!this.props.toolbarExpanded) {
         sidebarContainer.classList.add('no-toolbar');
       } else {
         sidebarContainer.classList.remove('no-toolbar');
@@ -264,6 +235,7 @@ export default compose(
   connect(
     state => ({
       tab: state.sidebar.tab,
+      toolbarExpanded: state.toolbar.expanded,
     }),
     { setSidebarTab },
   ),

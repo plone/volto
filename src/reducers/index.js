@@ -33,6 +33,7 @@ import users from '@plone/volto/reducers/users/users';
 import userSession from '@plone/volto/reducers/userSession/userSession';
 import vocabularies from '@plone/volto/reducers/vocabularies/vocabularies';
 import workflow from '@plone/volto/reducers/workflow/workflow';
+import toolbar from '@plone/volto/reducers/toolbar/toolbar';
 
 /**
  * Root reducer.
@@ -71,6 +72,7 @@ const reducers = {
   userSession,
   vocabularies,
   workflow,
+  toolbar,
 };
 
 export default reducers;

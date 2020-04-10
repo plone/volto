@@ -20,7 +20,11 @@ import Types from '@plone/volto/components/manage/Toolbar/Types';
 import PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
 import PersonalPreferences from '@plone/volto/components/manage/Preferences/PersonalPreferences';
 import StandardWrapper from '@plone/volto/components/manage/Toolbar/StandardWrapper';
-import { getTypes, listActions } from '@plone/volto/actions';
+import {
+  getTypes,
+  listActions,
+  setExpandedToolbar,
+} from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
 
@@ -175,6 +179,7 @@ class Toolbar extends Component {
   componentDidMount() {
     this.props.listActions(getBaseUrl(this.props.pathname));
     this.props.getTypes(getBaseUrl(this.props.pathname));
+    this.props.setExpandedToolbar(this.state.expanded);
     document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
@@ -205,7 +210,10 @@ class Toolbar extends Component {
       expires: new Date((2 ** 31 - 1) * 1000),
       path: '/',
     });
-    this.setState(state => ({ expanded: !state.expanded }));
+    this.setState(
+      state => ({ expanded: !state.expanded }),
+      () => this.props.setExpandedToolbar(this.state.expanded),
+    );
   };
 
   closeMenu = () =>
@@ -483,6 +491,6 @@ export default compose(
       pathname: props.pathname,
       types: filter(state.types.types, 'addable'),
     }),
-    { getTypes, listActions },
+    { getTypes, listActions, setExpandedToolbar },
   ),
 )(Toolbar);
