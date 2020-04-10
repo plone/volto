@@ -13,6 +13,7 @@
 ### Internal
 
 - Make Jest only looks up in `src` folder @sneridagh
+- Added a patch for Razzle Jest config generator to include `modulePathIgnorePatterns` option @sneridagh
 
 ## 4.6.0 (2020-04-06)
 
