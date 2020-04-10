@@ -4,11 +4,13 @@
 
 ### Breaking
 
+- Change component to where page title is set to `View.jsx`, remove all `Helmet` calls from inner views @jackahl
+- Added basic lazy loading dependencies and boilerplate @sneridagh
+
 ### Changes
 
 ### Feature
 
-- Added basic lazy loading dependencies and boilerplate @sneridagh
 - Added date time widget @nzambello
 - Add meta description tags and meta generator @sneridagh
 
@@ -81,7 +83,6 @@
 
 - Fix typo for Japanese translation @terapyon
 - Fix refresh of the `Breadcrumbs` and `Navigation` components on calling `/login` and `/logout` @sneridagh
-- Breaking: change component to where page title is set to `App.jsx` @jackahl
 - Fix refresh of the `Navigation` component on calling `/login` and `/logout` @sneridagh
 - Adjust implementation of the download link behavior for files @sneridagh
 - Fix Maps block to use maps-inner instead of video-inner class @timo
