@@ -4,7 +4,7 @@ Overriding existing views works exactly the same as components. Override the
 summary view so that the `Read more...` text is gone and is replaced by the
 rich text content.
 
-```js hl_lines="46 47 48 49"
+```js hl_lines="44 45 46"
 /**
  * Summary view component.
  * @module components/theme/View/SummaryView
