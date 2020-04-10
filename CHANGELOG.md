@@ -4,12 +4,12 @@
 
 ### Breaking
 
-- Added date time widget @nzambello
-
 ### Changes
+
 ### Feature
 
 - Added basic lazy loading dependencies and boilerplate @sneridagh
+- Added date time widget @nzambello
 
 ### Bugfix
 
