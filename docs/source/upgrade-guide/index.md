@@ -67,6 +67,13 @@ describe("CustomComponent", () => {
   });
 ```
 
+### Helmet title now it's centralized in `View.jsx`
+
+All the calls for update the title in the document performed by `Helmet` are now
+centralized in the `View.jsx` components. It's recommended to remove all the Helmet
+calls for updating the title from your components specially if you are using some of the
+SEO addons for Volto, since not doing that could interfere with them.
+
 ## Upgrading to Volto 4.x.x
 
 First, update your `package.json` to Volto 4.x.x.
