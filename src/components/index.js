@@ -2,6 +2,7 @@
  * Point of contact for component modules.
  * @module components
  */
+import loadable from '@loadable/component';
 
 //  Do not lazy load them, since it has not much sense (they will live in the main chunk)
 export App from '@plone/volto/components/theme/App/App';
@@ -78,7 +79,8 @@ export More from '@plone/volto/components/manage/Toolbar/More';
 export Types from '@plone/volto/components/manage/Toolbar/Types';
 export Toast from '@plone/volto/components/manage/Toast/Toast';
 
-// Remove from index, since we don't want them to end up in the main chunk
+// Potentially could ve removed from index, since they are internal components and
+// we don't want them to end up in the main chunk
 export Form from '@plone/volto/components/manage/Form/Form';
 export Field from '@plone/volto/components/manage/Form/Field';
 export SearchTags from '@plone/volto/components/theme/Search/SearchTags';
@@ -96,7 +98,11 @@ export DiffField from '@plone/volto/components/manage/Diff/DiffField';
 
 export ArrayWidget from '@plone/volto/components/manage/Widgets/ArrayWidget';
 export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidget';
-export DatetimeWidget from '@plone/volto/components/manage/Widgets/DatetimeWidget';
+
+export const DatetimeWidget = loadable(() =>
+  import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
+);
+
 export FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
 export PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
 export ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
