@@ -1,7 +1,7 @@
 import toolbar from './toolbar';
 import { EXPAND_TOOLBAR } from '@plone/volto/constants/ActionTypes';
 
-describe('Sidebar reducer', () => {
+describe('Toolbar reducer', () => {
   it('should return the initial state', () => {
     expect(toolbar()).toEqual({
       expanded: false,
