@@ -1,4 +1,4 @@
-# Basic design principles
+# Design principles
 
 Since the very beginning, Volto has been developed with a set of principles in mind,
 brought from the years of experience developing Plone core and implementing projects on
@@ -6,11 +6,13 @@ it.
 
 - Approachability
 - Developer experience first
+- Customization and extensibility
 - Volto UI/UX is Pastanaga UI
 - Do not overengineer things
 - Each feature has only one way of doing it
 - Frontend and backend are meant to be decoupled
 - Focus on the UI/UX implementation and upcoming challenges
+- Semantic versioning
 
 Following you can find the reasoning behind these principles.
 
@@ -51,6 +53,17 @@ take the blame on it.
 
 In Volto we have a blank page in front of us. Let's work to keep it clean and shiny.
 
+## Customization and extensibility
+
+Volto should ensure customization every core component via "component shadowing",
+whenever it is possible.
+
+Extensibility should also be a requirement on Volto core and in every new added feature,
+whenever it applies. Volto have to ensure that it can be "pluggable" and provide enough
+"insertion points" providing addons a way to extend or enhance the core features.
+However, Volto core should not be at the service of the add-ons, nor compromise any of
+the other manifesto points because of it.
+
 ## Volto UI/UX is Pastanaga UI
 
 Volto has its own UI/UX design, it's Pastanaga UI. It was conceived from scratch to
@@ -89,3 +102,8 @@ Volto is a frontend UI implementation of a CMS backend. We need to focus on this
 of focusing on the relationship with the backend(s). JS world advances quick, and we
 have to keep pace with it. React's own async (Suspense) mode it's on its way, and that
 will change enough things in React world and we have to keep up with these changes.
+
+## Semantic versioning
+
+Volto follows semantic versioning policy. So everybody can easily tell if a released
+version contains a breaking change, a feature or a minor fix.

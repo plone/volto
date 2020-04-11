@@ -17,6 +17,7 @@
 - Lazy load `pretty` library, used in the HTML block @sneridagh
 - Lazy load `Raven` library @sneridagh
 - Lazy load `React Select` library @sneridagh
+- Lazy load Raven library @sneridagh
 
 ### Bugfix
 
@@ -103,6 +104,7 @@
 - Improve Cypress Video Block tests @sneridagh @timo
 - Run `yarn i18n` on any JSX change @sneridagh
 - Add link mailto Cypress test @timo
+- Added design guidelines manifesto @sneridagh
 
 ## 4.1.1 (2020-03-18)
 
