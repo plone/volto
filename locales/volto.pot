@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-03-02T05:43:46.715Z\n"
+"POT-Creation-Date: 2020-04-06T17:55:23.440Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -50,6 +50,11 @@ msgstr ""
 #: components/manage/Toolbar/Types
 # defaultMessage: Add Content...
 msgid "Add Content"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+# defaultMessage: Add Translation...
+msgid "Add Translation..."
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -235,6 +240,11 @@ msgstr ""
 #: components/manage/Contents/ContentsWorkflowModal
 # defaultMessage: Change State
 msgid "Change State"
+msgstr ""
+
+#: components/manage/Contents/ContentsWorkflowModal
+# defaultMessage: Change workflow state recursively
+msgid "Change workflow state recursively"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -1523,6 +1533,11 @@ msgstr ""
 msgid "Site Setup"
 msgstr ""
 
+#: components/theme/Sitemap/Sitemap
+# defaultMessage: Sitemap
+msgid "Sitemap"
+msgstr ""
+
 #: components/theme/View/ImageView
 # defaultMessage: Size: {size}
 msgid "Size: {size}"
@@ -1699,6 +1714,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Total comments
 msgid "Total comments"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+# defaultMessage: Translate to {lang}
+msgid "Translate to {lang}"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -2045,9 +2065,19 @@ msgstr ""
 msgid "registration form"
 msgstr ""
 
+#: components/theme/Search/Search
+# defaultMessage: results
+msgid "results found"
+msgstr ""
+
 #: error
 # defaultMessage: return to the site root
 msgid "return to the site root"
+msgstr ""
+
+#: components/manage/Contents/Contents
+# defaultMessage: sort
+msgid "sort"
 msgstr ""
 
 #: config/Blocks

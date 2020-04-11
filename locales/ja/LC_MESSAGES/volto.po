@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2020-03-02 14:43+0900\n"
+"PO-Revision-Date: 2020-03-19 14:02+0900\n"
 "Last-Translator: Manabu TERADA <terada@cmscom.jp>\n"
 "Language: ja\n"
 "Language-Team: Plone Japanese Team <https://github.com/plonejp>\n"
@@ -49,6 +49,10 @@ msgstr "追加"
 #: components/manage/Toolbar/Types
 msgid "Add Content"
 msgstr "新規追加"
+
+#: components/manage/Toolbar/Types
+msgid "Add Translation..."
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
@@ -202,6 +206,10 @@ msgstr "パスワードを変更"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change State"
 msgstr "状態を変更"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change workflow state recursively"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -413,7 +421,7 @@ msgstr "{license} の下で配布されています。"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Divide each row into separate cells"
-msgstr "Divide each row into separate cells (未翻訳)"
+msgstr "列の区切り線を表示"
 
 #: components/manage/Contents/Contents
 msgid "Do you really want to delete the following items?"
@@ -486,7 +494,7 @@ msgstr "Embedコードがエラーです。説明を読んで再度実行して�
 
 #: components/manage/Blocks/Maps/View
 msgid "Embeded Google Maps"
-msgstr "Embeded Google Maps (未翻訳)"
+msgstr "埋め込まれたGoogle Maps"
 
 #: components/manage/Contents/Contents
 msgid "End Date"
@@ -755,7 +763,7 @@ msgstr "リンク"
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Link more"
-msgstr "Link more (未翻訳)"
+msgstr "「もっと見る」の設定"
 
 #: components/manage/Blocks/Listing/ListingMore
 msgid "Link title"
@@ -775,7 +783,7 @@ msgstr "リスティング"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Location"
-msgstr "位置"
+msgstr "場所"
 
 #: components/theme/Login/Login
 msgid "Log In"
@@ -800,7 +808,7 @@ msgstr "ログイン名"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
-msgstr "コンパクトテーブル"
+msgstr "コンパクトな表示"
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "Map"
@@ -973,7 +981,7 @@ msgstr "個人別設定"
 #: components/manage/Toolbar/More
 #: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
-msgstr "Personal tools (未翻訳)"
+msgstr "個人設定"
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
@@ -1013,7 +1021,7 @@ msgstr "Powered by Plone & Python"
 
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
-msgstr "個人設定"
+msgstr "個別設定"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
@@ -1053,7 +1061,7 @@ msgstr "何で並べ替えますか"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Reduce complexity"
-msgstr "Reduce complexity (未翻訳)"
+msgstr "見出し行の背景色を変更しない"
 
 #: components/theme/Anontools/Anontools
 #: components/theme/Register/Register
@@ -1256,13 +1264,17 @@ msgstr "サイトマップ"
 msgid "Site Setup"
 msgstr "サイト設定"
 
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Size: {size}"
 msgstr "サイズ: {size}"
 
 #: error
 msgid "Sorry, something went wrong with your request"
-msgstr "Sorry, something went wrong with your request (未翻訳)"
+msgstr "申し訳ありません。問題が発生したために処理できませんでした。"
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "Sort on"
@@ -1301,7 +1313,7 @@ msgstr "String (未翻訳)"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Stripe alternate rows with color"
-msgstr "Stripe alternate rows with color (未翻訳)"
+msgstr "一行おきに背景色を付加"
 
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
@@ -1357,7 +1369,7 @@ msgstr "ありがとうございます。"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
-msgstr "The URL for your external home page, if you have one. (未翻訳)"
+msgstr "外部ホームページがあればURLを記載してください。"
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
@@ -1365,7 +1377,7 @@ msgstr "The registration process has been successful. Please check your e-mail i
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The user portrait/avatar"
-msgstr "The user portrait/avatar (未翻訳)"
+msgstr "写真やアバターなどプロフィール画像を登録してください。"
 
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
@@ -1402,6 +1414,10 @@ msgstr "タイトル"
 #: components/manage/Contents/Contents
 msgid "Total comments"
 msgstr "コメント計"
+
+#: components/manage/Toolbar/Types
+msgid "Translate to {lang}"
+msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
@@ -1590,7 +1606,7 @@ msgstr "Your email is required for reset your password. (未翻訳)"
 
 #: components/manage/Preferences/PersonalInformation
 msgid "Your location - either city and country - or in a company setting, where your office is located."
-msgstr "Your location - either city and country - or in a company setting, where your office is located. (未翻訳)"
+msgstr "あなたのいる場所を入力してください。国名や都市名あるいはオフィスの場所など"
 
 #: components/theme/PasswordReset/PasswordReset
 msgid "Your password has been set successfully. You may now {link} with your new password."
@@ -1598,7 +1614,7 @@ msgstr "Your password has been set successfully. You may now {link} with your ne
 
 #: components/manage/Preferences/PersonalPreferences
 msgid "Your preferred language"
-msgstr "Your preferred language (未翻訳)"
+msgstr "優先する言語"
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
@@ -1614,7 +1630,7 @@ msgstr "削除"
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
-msgstr "deprecated_browser_notice_message (未翻訳)"
+msgstr "サポート対象外のブラウザです"
 
 #: config/Blocks
 msgid "description"
@@ -1674,15 +1690,23 @@ msgstr "よく使う物"
 
 #: error
 msgid "or try a different page."
-msgstr "or try a different page. (未翻訳)"
+msgstr "または、他のページを試してください。"
 
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "登録フォーム"
 
+#: components/theme/Search/Search
+msgid "results found"
+msgstr ""
+
 #: error
 msgid "return to the site root"
 msgstr "サイトルートに戻ってください。"
+
+#: components/manage/Contents/Contents
+msgid "sort"
+msgstr ""
 
 #: config/Blocks
 msgid "table"

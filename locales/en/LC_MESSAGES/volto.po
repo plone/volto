@@ -43,6 +43,10 @@ msgstr ""
 msgid "Add Content"
 msgstr ""
 
+#: components/manage/Toolbar/Types
+msgid "Add Translation..."
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
 msgstr ""
@@ -194,6 +198,10 @@ msgstr ""
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change State"
+msgstr ""
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change workflow state recursively"
 msgstr ""
 
 #: components/manage/Preferences/ChangePassword
@@ -1249,6 +1257,10 @@ msgstr ""
 msgid "Site Setup"
 msgstr ""
 
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Size: {size}"
 msgstr ""
@@ -1394,6 +1406,10 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Total comments"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+msgid "Translate to {lang}"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -1673,8 +1689,16 @@ msgstr ""
 msgid "registration form"
 msgstr ""
 
+#: components/theme/Search/Search
+msgid "results found"
+msgstr ""
+
 #: error
 msgid "return to the site root"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "sort"
 msgstr ""
 
 #: config/Blocks
