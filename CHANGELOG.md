@@ -17,7 +17,6 @@
 - Lazy load `pretty` library, used in the HTML block @sneridagh
 - Lazy load `Raven` library @sneridagh
 - Lazy load `React Select` library @sneridagh
-- Lazy load Raven library @sneridagh
 
 ### Bugfix
 
