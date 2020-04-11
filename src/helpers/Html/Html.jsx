@@ -85,18 +85,18 @@ class Html extends Component {
           <div role="navigation" aria-label="Toolbar" id="toolbar" />
           <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
           <div id="sidebar" />
-          {extractor.getScriptElements().map(elem =>
-            React.cloneElement(elem, {
-              crossOrigin:
-                process.env.NODE_ENV === 'production' ? undefined : 'true',
-            }),
-          )}
           <script
             dangerouslySetInnerHTML={{
               __html: `window.__data=${serialize(store.getState())};`,
             }}
             charSet="UTF-8"
           />
+          {extractor.getScriptElements().map(elem =>
+            React.cloneElement(elem, {
+              crossOrigin:
+                process.env.NODE_ENV === 'production' ? undefined : 'true',
+            }),
+          )}
         </body>
       </html>
     );
