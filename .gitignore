@@ -29,8 +29,10 @@ lighthouse-report.html
 /api/parts/
 /api/share/python-wheels/
 /api/src/
+/api/venv/
 /api/notebook/env/
 api/.Python
+api/pyvenv.cfg
 api/include
 api/lib
 api/pip-selfcheck.json
