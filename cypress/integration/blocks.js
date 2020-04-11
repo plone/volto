@@ -431,7 +431,7 @@ if (Cypress.env('API') !== 'guillotina') {
     //   }
     // });
 
-    it('Add HTML block', () => {
+    it.only('Add HTML block', () => {
       // when I add a maps block
       cy.get('.block.text [contenteditable]').click();
       cy.get('button.block-add-button').click();

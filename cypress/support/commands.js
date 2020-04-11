@@ -11,12 +11,16 @@ Cypress.Commands.add('autologin', () => {
     password = 'secret';
   }
 
-  cy.request({
-    method: 'POST',
-    url: `${api_url}/@login`,
-    headers: { Accept: 'application/json' },
-    body: { login: user, password: password },
-  }).then(response => cy.setCookie('auth_token', response.body.token));
+  cy.visit('/');
+
+  return cy
+    .request({
+      method: 'POST',
+      url: `${api_url}/@login`,
+      headers: { Accept: 'application/json' },
+      body: { login: user, password: password },
+    })
+    .then(response => cy.setCookie('auth_token', response.body.token));
 });
 
 // --- CREATE CONTENT --------------------------------------------------------
