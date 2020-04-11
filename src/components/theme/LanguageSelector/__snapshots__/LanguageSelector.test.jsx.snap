@@ -20,7 +20,7 @@ exports[`LanguageSelector renders a language selector component 1`] = `
     title="Español"
   >
     es
-
+    
   </a>
 </div>
 `;
