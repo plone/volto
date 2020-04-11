@@ -50,7 +50,7 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={[{ pathname: '/blog' }]}>
           <Navigation pathname="/blog" />
         </MemoryRouter>
       </Provider>,
@@ -75,7 +75,7 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={[{ pathname: '/blog/2017/12/27' }]}>
           <Navigation pathname="/blog/2017/12/27" />
         </MemoryRouter>
       </Provider>,
@@ -101,7 +101,7 @@ describe('Navigation', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={[{ pathname: '/blog' }]}>
           <Navigation pathname="/blog" />
         </MemoryRouter>
       </Provider>,

@@ -25,6 +25,7 @@ import {
   Header,
   Icon,
   OutdatedBrowser,
+  AppExtras,
 } from '@plone/volto/components';
 import { BodyClass, getBaseUrl, getView } from '@plone/volto/helpers';
 import {
@@ -36,6 +37,7 @@ import {
 } from '@plone/volto/actions';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
+import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
 
 /**
  * @export
@@ -77,9 +79,6 @@ class App extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    // // console.log(nextProps.pathname === this.props.pathname);
-    // console.log(this.props.pathname);
-    // console.log(nextProps.pathname);
     if (nextProps.pathname !== this.props.pathname) {
       if (this.state.hasError) {
         this.setState({ hasError: false });
@@ -131,22 +130,23 @@ class App extends Component {
             siteroot: this.props.pathname === '/',
           })}
         />
-
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
-        <Segment basic className="content-area">
-          <main>
-            <OutdatedBrowser />
-            {this.state.hasError ? (
-              <Error
-                message={this.state.error.message}
-                stackTrace={this.state.errorInfo.componentStack}
-              />
-            ) : (
-              renderRoutes(this.props.route.routes)
-            )}
-          </main>
-        </Segment>
+        <MultilingualRedirector pathname={this.props.pathname}>
+          <Segment basic className="content-area">
+            <main>
+              <OutdatedBrowser />
+              {this.state.hasError ? (
+                <Error
+                  message={this.state.error.message}
+                  stackTrace={this.state.errorInfo.componentStack}
+                />
+              ) : (
+                renderRoutes(this.props.route.routes)
+              )}
+            </main>
+          </Segment>
+        </MultilingualRedirector>
         <Footer />
         <ToastContainer
           position={toast.POSITION.BOTTOM_CENTER}
@@ -161,6 +161,7 @@ class App extends Component {
             />
           }
         />
+        <AppExtras />
       </Fragment>
     );
   }
@@ -178,9 +179,8 @@ export default compose(
   asyncConnect([
     {
       key: 'breadcrumbs',
-      promise: ({ location, store: { dispatch } }) => {
-        __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname)));
-      },
+      promise: ({ location, store: { dispatch } }) =>
+        __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
     },
     {
       key: 'content',

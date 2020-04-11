@@ -42,8 +42,8 @@ export const blocks = {
 We start by importing both view and edit components of our recently created custom block.
 
 !!! note
-Notice the `@package` alias.
-You can use it when importing modules/components from your own project.
+    Notice the `@package` alias.
+    You can use it when importing modules/components from your own project.
 
 Then you define the block, using the object described in the example.
 
@@ -66,13 +66,13 @@ Our new block should be ready to use in the editor.
 
 ## Other block options
 
-The configuration object also exposes this options
+The configuration object also exposes these options
 
-### requiredBlocks
+### requiredBlocks - The required (mandatory, cannot be removed) blocks
 
 This option is used to make the tiles not removable. By default, the Title block is not removable (you won't be able to delete it as the remove handler is not present).
 
-## groupBlocksOrder
+### groupBlocksOrder - The blocks chooser group order
 
 This option is used to define the order of the groups in the blocks chooser. By default:
 
