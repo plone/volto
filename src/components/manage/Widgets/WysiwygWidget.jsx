@@ -18,6 +18,7 @@ import { map } from 'lodash';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import { defineMessages, injectIntl } from 'react-intl';
 import configureStore from 'redux-mock-store';
+import { MemoryRouter } from 'react-router-dom';
 
 import { settings } from '~/config';
 
@@ -221,11 +222,13 @@ class WysiwygWidget extends Component {
             },
           })}
         >
-          {redraft(
-            convertToRaw(editorState.getCurrentContent()),
-            settings.ToHTMLRenderers,
-            settings.ToHTMLOptions,
-          )}
+          <MemoryRouter>
+            {redraft(
+              convertToRaw(editorState.getCurrentContent()),
+              settings.ToHTMLRenderers,
+              settings.ToHTMLOptions,
+            )}
+          </MemoryRouter>
         </Provider>,
       ),
     });
