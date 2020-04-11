@@ -16,6 +16,9 @@
 
 ### Bugfix
 
+- Lazy load `EventView.jsx`, splitting out all its big dependencies (Luxon) along with it @sneridagh
+- Fix listing "show more" link rendering conditions @nzambello
+
 ### Internal
 
 - Make Jest only looks up in `src` folder @sneridagh

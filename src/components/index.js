@@ -48,7 +48,11 @@ export CreateTranslation from '@plone/volto/components/manage/Multilingual/Creat
 export FileView from '@plone/volto/components/theme/View/FileView';
 export ImageView from '@plone/volto/components/theme/View/ImageView';
 export NewsItemView from '@plone/volto/components/theme/View/NewsItemView';
-export EventView from '@plone/volto/components/theme/View/EventView';
+
+export const EventView = loadable(() =>
+  import('@plone/volto/components/theme/View/EventView'),
+);
+
 export ListingView from '@plone/volto/components/theme/View/ListingView';
 export SummaryView from '@plone/volto/components/theme/View/SummaryView';
 export TabularView from '@plone/volto/components/theme/View/TabularView';
