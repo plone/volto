@@ -11,10 +11,6 @@ describe('Autologin Tests', () => {
       password = 'secret';
     }
 
-    // Since the introduction of the lazy loaded react-select, this is required
-    // Not doing so, the cookie is not being set properly
-    cy.visit('/');
-
     cy.request({
       method: 'POST',
       url: `${api_url}/@login`,
@@ -23,7 +19,6 @@ describe('Autologin Tests', () => {
     }).then(response => cy.setCookie('auth_token', response.body.token));
 
     cy.visit('/');
-
     cy.get('#toolbar-personal').click();
     cy.get('#toolbar-logout');
   });

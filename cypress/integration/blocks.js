@@ -115,7 +115,7 @@ if (Cypress.env('API') !== 'guillotina') {
       );
     });
 
-    it.only('Listing block - Test Criteria: short-name', () => {
+    it('Listing block - Test Criteria: short-name', () => {
       cy.visit('/my-page');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');

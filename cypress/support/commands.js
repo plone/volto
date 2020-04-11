@@ -11,8 +11,6 @@ Cypress.Commands.add('autologin', () => {
     password = 'secret';
   }
 
-  cy.visit('/');
-
   return cy
     .request({
       method: 'POST',
