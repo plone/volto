@@ -42,7 +42,7 @@ Cypress.Commands.add(
       };
     }
     if (contentType === 'File') {
-      cy.request({
+      return cy.request({
         method: 'POST',
         url: `${api_url}/${path}`,
         headers: {
@@ -63,7 +63,7 @@ Cypress.Commands.add(
       });
     }
     if (contentType === 'Image') {
-      cy.request({
+      return cy.request({
         method: 'POST',
         url: `${api_url}/${path}`,
         headers: {
@@ -87,29 +87,31 @@ Cypress.Commands.add(
     if (
       ['Document', 'Folder', 'News Item', 'CMSFolder'].includes(contentType)
     ) {
-      cy.request({
-        method: 'POST',
-        url: `${api_url}/${path}`,
-        headers: {
-          Accept: 'application/json',
-        },
-        auth: auth,
-        body: {
-          '@type': contentType,
-          id: contentId,
-          title: contentTitle,
-          blocks: {
-            'd3f1c443-583f-4e8e-a682-3bf25752a300': { '@type': 'title' },
-            '7624cf59-05d0-4055-8f55-5fd6597d84b0': { '@type': 'text' },
+      return cy
+        .request({
+          method: 'POST',
+          url: `${api_url}/${path}`,
+          headers: {
+            Accept: 'application/json',
           },
-          blocks_layout: {
-            items: [
-              'd3f1c443-583f-4e8e-a682-3bf25752a300',
-              '7624cf59-05d0-4055-8f55-5fd6597d84b0',
-            ],
+          auth: auth,
+          body: {
+            '@type': contentType,
+            id: contentId,
+            title: contentTitle,
+            blocks: {
+              'd3f1c443-583f-4e8e-a682-3bf25752a300': { '@type': 'title' },
+              '7624cf59-05d0-4055-8f55-5fd6597d84b0': { '@type': 'text' },
+            },
+            blocks_layout: {
+              items: [
+                'd3f1c443-583f-4e8e-a682-3bf25752a300',
+                '7624cf59-05d0-4055-8f55-5fd6597d84b0',
+              ],
+            },
           },
-        },
-      }).then(() => console.log(`${contentType} created`));
+        })
+        .then(() => console.log(`${contentType} created`));
     }
   },
 );

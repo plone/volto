@@ -32,7 +32,7 @@ if (Cypress.env('API') === 'plone') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('?fullobjects');
+      cy.waitForResourceToLoad('my-page?fullobjects');
 
       cy.get('input#effective-date').should('have.value', '12/24/2050');
       cy.get('input#effective-time').should('have.value', '10:00 AM');
