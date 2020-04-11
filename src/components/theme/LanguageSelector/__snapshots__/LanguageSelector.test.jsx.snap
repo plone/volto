@@ -15,11 +15,11 @@ exports[`LanguageSelector renders a language selector component 1`] = `
   </a>
   <a
     className=""
-    href="/ca"
+    href="/es"
     onClick={[Function]}
-    title="Català"
+    title="Español"
   >
-    ca
+    es
      
   </a>
 </div>
