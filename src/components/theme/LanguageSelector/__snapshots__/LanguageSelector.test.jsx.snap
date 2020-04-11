@@ -19,7 +19,8 @@ exports[`LanguageSelector renders a language selector component 1`] = `
     onClick={[Function]}
     title="Español"
   >
-    es     
+    es
+     
   </a>
 </div>
 `;
