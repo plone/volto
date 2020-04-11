@@ -1,8 +1,8 @@
-site_name: Volto developer documentation
+site_name: Volto Developer Documentation
 docs_dir: ./source
 site_dir: ./build
 repo_url: 'https://github.com/plone/volto'
-copyright: 'Made with ❤️ by Plone Community - All code owned by the Plone Foundation'
+copyright: 'Made with ❤️ by the Plone Community - All code owned by the Plone Foundation'
 theme:
   name: 'material'
   custom_dir: 'theme'
@@ -50,7 +50,7 @@ nav:
   - Deploying:
       - Simple deployment: 'deploying/simple.md'
       - Using PM2: 'deploying/pm2.md'
-      - Using apache: "deploying/apache.md"
+      - Using apache: 'deploying/apache.md'
   - Upgrade Guide: 'upgrade-guide/index.md'
   - Developer Guidelines:
       - Accessibility: 'developer-guidelines/accessibility-guidelines.md'

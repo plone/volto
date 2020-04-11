@@ -22,6 +22,7 @@
 - Re-arrange `components/index.js` @sneridagh
 - Added a patch for Razzle Jest config generator to include `modulePathIgnorePatterns` option @sneridagh
 - Fix Travis random no sound card found error @sneridagh
+- docs: add release documentation
 
 ## 4.6.0 (2020-04-06)
 
