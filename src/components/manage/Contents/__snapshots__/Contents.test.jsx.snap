@@ -396,7 +396,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Title"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -421,7 +421,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Last modified"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -446,7 +446,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Publication date"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -471,7 +471,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Review state"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -496,7 +496,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon ID"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -521,7 +521,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Expiration date"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -546,7 +546,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Created on"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -571,7 +571,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Tags"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -596,7 +596,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Type"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -621,7 +621,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Folder"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -646,7 +646,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Excluded from navigation"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -671,7 +671,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Object Size"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -696,7 +696,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Last comment date"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -721,7 +721,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Total comments"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -746,7 +746,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon End Date"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -771,7 +771,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Description"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -796,7 +796,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Creator"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -821,7 +821,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Location"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -846,7 +846,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon UID"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -871,7 +871,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Start Date"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
@@ -896,7 +896,7 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon"
+                      className="icon Type"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
