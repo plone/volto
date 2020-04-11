@@ -100,6 +100,7 @@
 - Improve Cypress Video Block tests @sneridagh @timo
 - Run `yarn i18n` on any JSX change @sneridagh
 - Add link mailto Cypress test @timo
+- Added design guidelines manifesto @sneridagh
 
 ## 4.1.1 (2020-03-18)
 
