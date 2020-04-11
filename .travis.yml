@@ -52,9 +52,11 @@ script:
     yarn test:ci;
     fi
   - if [ "$TEST_SUITE" == "guillotina" ]; then
+    echo -e 'pcm.!default {\n type hw\n card 0\n}\n\nctl.!default {\n type hw\n card 0\n}' > ~/.asoundrc;
     yarn ci:cypress:run:guillotina;
     fi
   - if [ "$TEST_SUITE" == "plone" ]; then
+    echo -e 'pcm.!default {\n type hw\n card 0\n}\n\nctl.!default {\n type hw\n card 0\n}' > ~/.asoundrc;
     yarn ci:cypress:run;
     fi
 after_script:

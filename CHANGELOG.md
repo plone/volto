@@ -4,9 +4,15 @@
 
 ### Breaking
 
+- Added basic lazy loading dependencies and boilerplate @sneridagh
+- Change component to where page title is set to `View.jsx`, remove all `Helmet` calls from inner views @jackahl
+
 ### Feature
 
-- Added basic lazy loading dependencies and boilerplate @sneridagh
+- Added date time widget @nzambello
+- Add meta description tags and meta generator @sneridagh
+- Add lang property in `html` tag depending on the site/content language @sneridagh
+- Add `App.jsx` component insertion point @sneridagh
 
 ### Bugfix
 
@@ -15,6 +21,10 @@
 ### Internal
 
 - Make Jest only looks up in `src` folder @sneridagh
+- Re-arrange `components/index.js` @sneridagh
+- Added a patch for Razzle Jest config generator to include `modulePathIgnorePatterns` option @sneridagh
+- Fix Travis random no sound card found error @sneridagh
+- docs: add release documentation
 
 ## 4.6.0 (2020-04-06)
 
