@@ -67,6 +67,9 @@ jobs:
         env:
           CI: true
 
-      # cypress acceptance tests
+      # # cypress acceptance tests
+      # - name: Cypress acceptance tests
+      #   uses: cypress-io/github-action@v1
+
       - name: Cypress acceptance tests
-        uses: cypress-io/github-action@v1
+        run: yarn ci:cypress:run
