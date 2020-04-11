@@ -14,6 +14,7 @@
 - Add lang property in `html` tag depending on the site/content language @sneridagh
 - Add `App.jsx` component insertion point @sneridagh
 - Lazy load `EventView.jsx`, splitting out all its big dependencies (Luxon) along with it @sneridagh
+- Lazy load `pretty` library, used in the HTML block @sneridagh
 
 ### Bugfix
 
