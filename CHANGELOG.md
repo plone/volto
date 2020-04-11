@@ -17,6 +17,8 @@
 
 ### Bugfix
 
+- Fix listing "show more" link rendering conditions @nzambello
+
 ### Internal
 
 - Make Jest only looks up in `src` folder @sneridagh
