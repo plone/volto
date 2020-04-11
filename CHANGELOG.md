@@ -7,8 +7,6 @@
 - Added basic lazy loading dependencies and boilerplate @sneridagh
 - Change component to where page title is set to `View.jsx`, remove all `Helmet` calls from inner views @jackahl
 
-### Changes
-
 ### Feature
 
 - Added date time widget @nzambello
