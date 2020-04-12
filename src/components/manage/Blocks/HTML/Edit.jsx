@@ -17,7 +17,7 @@ import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 
-const pretty = loadable(() => import('pretty'));
+const Pretty = loadable.lib(() => import('pretty'));
 
 const messages = defineMessages({
   source: {
@@ -105,6 +105,8 @@ class Edit extends Component {
     this.setState({ code });
   }
 
+  pretty = React.createRef();
+
   /**
    * Preview mode handler
    * @method onPreview
@@ -113,7 +115,7 @@ class Edit extends Component {
   onPreview() {
     this.setState({
       isPreview: !this.state.isPreview,
-      code: pretty(this.state.code),
+      code: this.pretty.current.default(this.state.code),
     });
   }
 
@@ -134,6 +136,7 @@ class Edit extends Component {
   render() {
     return (
       <>
+        <Pretty ref={this.pretty} />
         {this.props.selected && !!this.state.code && (
           <div className="toolbar">
             <Button.Group>

@@ -67,6 +67,42 @@ describe("CustomComponent", () => {
   });
 ```
 
+This is also another pattern used in Volto core for testing, you can transform your test
+in async aware like this:
+
+```diff
+--- a/src/components/manage/Preferences/PersonalPreferences.test.jsx
++++ b/src/components/manage/Preferences/PersonalPreferences.test.jsx
+@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
+ import { Provider } from 'react-intl-redux';
+ import configureStore from 'redux-mock-store';
+ import { MemoryRouter } from 'react-router-dom';
++import { wait } from '@testing-library/react';
+
+ import PersonalPreferences from './PersonalPreferences';
+
+@@ -13,7 +14,7 @@ jest.mock('react-portal', () => ({
+ }));
+
+ describe('PersonalPreferences', () => {
+-  it('renders a personal preferences component', () => {
++  it('renders a personal preferences component', async () => {
+     const store = mockStore({
+       intl: {
+         locale: 'en',
+@@ -36,7 +37,8 @@ describe('PersonalPreferences', () => {
+         </MemoryRouter>
+       </Provider>,
+     );
+-    const json = component.toJSON();
+-    expect(json).toMatchSnapshot();
++    await wait(() => {
++      expect(component.toJSON()).toMatchSnapshot();
++    });
+   });
+ });
+```
+
 ### Helmet title now it's centralized in `View.jsx`
 
 All the calls for update the title in the document performed by `Helmet` are now
