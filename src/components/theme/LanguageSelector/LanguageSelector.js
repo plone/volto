@@ -12,6 +12,8 @@ import cx from 'classnames';
 import { find, map } from 'lodash';
 import { updateIntl } from 'react-intl-redux';
 import langmap from 'langmap';
+import { Helmet } from '@plone/volto/helpers';
+
 import { settings } from '~/config';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
@@ -47,30 +49,30 @@ const LanguageSelector = props => {
     );
   }
 
-  return (
-    settings.isMultilingual && (
-      <div className="language-selector">
-        {map(settings.supportedLanguages, lang => {
-          const translation = find(translations, { language: lang });
-          return (
-            <Link
-              className={cx({ selected: lang === currentLang })}
-              to={
-                translation ? flattenToAppURL(translation['@id']) : `/${lang}`
-              }
-              title={langmap[lang].nativeName}
-              onClick={() => {
-                props.onClickAction();
-                changeLanguage(lang);
-              }}
-              key={`language-selector-${lang}`}
-            >
-              {lang}&nbsp;
-            </Link>
-          );
-        })}
-      </div>
-    )
+  return settings.isMultilingual ? (
+    <div className="language-selector">
+      {map(settings.supportedLanguages, lang => {
+        const translation = find(translations, { language: lang });
+        return (
+          <Link
+            className={cx({ selected: lang === currentLang })}
+            to={translation ? flattenToAppURL(translation['@id']) : `/${lang}`}
+            title={langmap[lang].nativeName}
+            onClick={() => {
+              props.onClickAction();
+              changeLanguage(lang);
+            }}
+            key={`language-selector-${lang}`}
+          >
+            {lang}&nbsp;
+          </Link>
+        );
+      })}
+    </div>
+  ) : (
+    <Helmet>
+      <html lang={settings.defaultLanguage} />
+    </Helmet>
   );
 };
 

@@ -2,7 +2,6 @@ if (Cypress.env('API') !== 'guillotina') {
   describe('Blocks Tests', () => {
     beforeEach(() => {
       // given a logged in editor and a page in edit mode
-      cy.visit('/');
       cy.autologin();
       cy.createContent('Document', 'my-page', 'My Page');
       cy.visit('/my-page/edit');
@@ -10,7 +9,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('?fullobjects');
+      cy.waitForResourceToLoad('my-page?fullobjects');
       cy.get(`.block.title [data-contents]`);
     });
 
@@ -37,7 +36,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('?fullobjects');
+      cy.waitForResourceToLoad('my-page?fullobjects');
 
       // then the page view should contain an embedded YouTube video
       cy.get('.block.video iframe')
