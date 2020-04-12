@@ -58,6 +58,10 @@ msgstr "Hinzufügen"
 msgid "Add Content"
 msgstr "Inhalte hinzufügen"
 
+#: components/manage/Toolbar/Types
+msgid "Add Translation..."
+msgstr "Übersetzen..."
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
 msgstr "Benutzer hinzufügen"
@@ -180,6 +184,7 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
@@ -210,6 +215,10 @@ msgstr "Passwort ändern"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change State"
 msgstr "Statusänderung"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change workflow state recursively"
+msgstr "Ändere Status rekursiv"
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -1134,6 +1143,7 @@ msgid "Roles"
 msgstr "Rollen"
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1263,6 +1273,10 @@ msgstr "Übersicht"
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "Seiteneinstellungen"
+
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr ""
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
@@ -1410,6 +1424,10 @@ msgstr "Titel"
 #: components/manage/Contents/Contents
 msgid "Total comments"
 msgstr "Anzahl Komentare"
+
+#: components/manage/Toolbar/Types
+msgid "Translate to {lang}"
+msgstr "Auf {lang} übersetzen"
 
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
@@ -1622,7 +1640,7 @@ msgstr "Löschen"
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
-msgstr "Sie verwenden einen veralteten Browser, bitte aktualisieren Sie Ihre Browser."
+msgstr "Sie verwenden einen veralteten Browser, bitte aktualisieren Sie Ihren Browser."
 
 #: config/Blocks
 msgid "description"
@@ -1688,9 +1706,17 @@ msgstr "versuchen Sie eine andere Seite."
 msgid "registration form"
 msgstr "Registrierungsformular"
 
+#: components/theme/Search/Search
+msgid "results found"
+msgstr ""
+
 #: error
 msgid "return to the site root"
 msgstr "Zur Startseite zurückkehren"
+
+#: components/manage/Contents/Contents
+msgid "sort"
+msgstr "sortieren"
 
 #: config/Blocks
 msgid "table"

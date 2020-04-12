@@ -12,6 +12,7 @@ export const nonContentRoutes = [
   '/layout',
   '/login',
   '/logout',
+  '/sitemap',
   '/register',
   '/sharing',
   '/search',
@@ -24,4 +25,5 @@ export const nonContentRoutes = [
   '/register',
   /\/password-reset\/.*$/,
   '/password-reset',
+  '/create-translation',
 ];

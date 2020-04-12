@@ -11,35 +11,42 @@ Cypress.Commands.add('autologin', () => {
     password = 'secret';
   }
 
-  cy.request({
-    method: 'POST',
-    url: `${api_url}/@login`,
-    headers: { Accept: 'application/json' },
-    body: { login: user, password: password },
-  }).then(response => cy.setCookie('auth_token', response.body.token));
+  return cy
+    .request({
+      method: 'POST',
+      url: `${api_url}/@login`,
+      headers: { Accept: 'application/json' },
+      body: { login: user, password: password },
+    })
+    .then(response => cy.setCookie('auth_token', response.body.token));
 });
 
 // --- CREATE CONTENT --------------------------------------------------------
 Cypress.Commands.add(
   'createContent',
   (contentType, contentId, contentTitle, path = '') => {
-    let api_url;
+    let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
       api_url = 'http://localhost:8081/db/container';
+      auth = {
+        user: 'root',
+        pass: 'root',
+      };
     } else {
       api_url = 'http://localhost:55001/plone';
+      auth = {
+        user: 'admin',
+        pass: 'secret',
+      };
     }
     if (contentType === 'File') {
-      cy.request({
+      return cy.request({
         method: 'POST',
         url: `${api_url}/${path}`,
         headers: {
           Accept: 'application/json',
         },
-        auth: {
-          user: 'admin',
-          pass: 'secret',
-        },
+        auth: auth,
         body: {
           '@type': contentType,
           id: contentId,
@@ -54,16 +61,13 @@ Cypress.Commands.add(
       });
     }
     if (contentType === 'Image') {
-      cy.request({
+      return cy.request({
         method: 'POST',
         url: `${api_url}/${path}`,
         headers: {
           Accept: 'application/json',
         },
-        auth: {
-          user: 'admin',
-          pass: 'secret',
-        },
+        auth: auth,
         body: {
           '@type': contentType,
           id: contentId,
@@ -78,33 +82,34 @@ Cypress.Commands.add(
         },
       });
     }
-    if (contentType === 'Document' || contentType === 'News Item') {
-      cy.request({
-        method: 'POST',
-        url: `${api_url}/${path}`,
-        headers: {
-          Accept: 'application/json',
-        },
-        auth: {
-          user: 'admin',
-          pass: 'secret',
-        },
-        body: {
-          '@type': contentType,
-          id: contentId,
-          title: contentTitle,
-          blocks: {
-            'd3f1c443-583f-4e8e-a682-3bf25752a300': { '@type': 'title' },
-            '7624cf59-05d0-4055-8f55-5fd6597d84b0': { '@type': 'text' },
+    if (
+      ['Document', 'Folder', 'News Item', 'CMSFolder'].includes(contentType)
+    ) {
+      return cy
+        .request({
+          method: 'POST',
+          url: `${api_url}/${path}`,
+          headers: {
+            Accept: 'application/json',
           },
-          blocks_layout: {
-            items: [
-              'd3f1c443-583f-4e8e-a682-3bf25752a300',
-              '7624cf59-05d0-4055-8f55-5fd6597d84b0',
-            ],
+          auth: auth,
+          body: {
+            '@type': contentType,
+            id: contentId,
+            title: contentTitle,
+            blocks: {
+              'd3f1c443-583f-4e8e-a682-3bf25752a300': { '@type': 'title' },
+              '7624cf59-05d0-4055-8f55-5fd6597d84b0': { '@type': 'text' },
+            },
+            blocks_layout: {
+              items: [
+                'd3f1c443-583f-4e8e-a682-3bf25752a300',
+                '7624cf59-05d0-4055-8f55-5fd6597d84b0',
+              ],
+            },
           },
-        },
-      });
+        })
+        .then(() => console.log(`${contentType} created`));
     }
   },
 );

@@ -120,11 +120,16 @@ export function getContent(
   subrequest = null,
   page = null,
 ) {
-  const qs = page
+  let qs = page
     ? `?fullobjects&b_start=${settings.defaultPageSize * (page - 1)}&b_size=${
         settings.defaultPageSize
       }`
     : '?fullobjects';
+
+  if (settings.isMultilingual) {
+    qs = qs + '&expand=translations';
+  }
+
   return {
     type: GET_CONTENT,
     subrequest,
