@@ -20,7 +20,10 @@
 
 ### Bugfix
 
+- Show save/cancel on control panels @avoinea #850
 - Fix listing "show more" link rendering conditions @nzambello
+
+
 
 ### Internal
 
