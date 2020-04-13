@@ -18,6 +18,10 @@ exports[`Html renders a html component 1`] = `
       rel="shortcut icon"
     />
     <meta
+      content="Volto - http://plone.org"
+      name="generator"
+    />
+    <meta
       content="width=device-width, initial-scale=1"
       name="viewport"
     />
@@ -52,17 +56,17 @@ exports[`Html renders a html component 1`] = `
       id="sidebar"
     />
     <script
-      async={true}
-      crossOrigin="true"
-      src="bundle.js"
-    />
-    <script
       charSet="UTF-8"
       dangerouslySetInnerHTML={
         Object {
           "__html": "window.__data=undefined;",
         }
       }
+    />
+    <script
+      async={true}
+      crossOrigin="true"
+      src="bundle.js"
     />
   </body>
 </html>

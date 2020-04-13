@@ -9,13 +9,15 @@ import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-markup';
 import { Button } from 'semantic-ui-react';
-import pretty from 'pretty';
+import loadable from '@loadable/component';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
 import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
+
+const Pretty = loadable.lib(() => import('pretty'));
 
 const messages = defineMessages({
   source: {
@@ -103,6 +105,8 @@ class Edit extends Component {
     this.setState({ code });
   }
 
+  pretty = React.createRef();
+
   /**
    * Preview mode handler
    * @method onPreview
@@ -111,7 +115,7 @@ class Edit extends Component {
   onPreview() {
     this.setState({
       isPreview: !this.state.isPreview,
-      code: pretty(this.state.code),
+      code: this.pretty.current.default(this.state.code),
     });
   }
 
@@ -132,6 +136,7 @@ class Edit extends Component {
   render() {
     return (
       <>
+        <Pretty ref={this.pretty} />
         {this.props.selected && !!this.state.code && (
           <div className="toolbar">
             <Button.Group>

@@ -1,13 +1,13 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { render, wait } from '@testing-library/react';
 
 import ListingSidebar from './ListingSidebar';
 
 const mockStore = configureStore();
 
-test('renders a Grid Block Sidebar component', () => {
+test('renders a Listing Block Sidebar component', async () => {
   const store = mockStore({
     querystring: { sortable_indexes: {} },
     intl: {
@@ -15,7 +15,7 @@ test('renders a Grid Block Sidebar component', () => {
       messages: {},
     },
   });
-  const component = renderer.create(
+  const { container } = render(
     <Provider store={store}>
       <ListingSidebar
         id="dcdf1f42-645d-48f6-9531-357bdc2e1881"
@@ -35,6 +35,7 @@ test('renders a Grid Block Sidebar component', () => {
       />
     </Provider>,
   );
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+  await wait(() => {
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });

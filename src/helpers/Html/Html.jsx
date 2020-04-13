@@ -71,6 +71,7 @@ class Html extends Component {
           {head.script.toComponent()}
 
           <link rel="shortcut icon" href="/favicon.ico" />
+          <meta name="generator" content="Volto - http://plone.org" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <>{extractor.getLinkElements()}</>
@@ -84,18 +85,18 @@ class Html extends Component {
           <div role="navigation" aria-label="Toolbar" id="toolbar" />
           <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
           <div id="sidebar" />
-          {extractor.getScriptElements().map(elem =>
-            React.cloneElement(elem, {
-              crossOrigin:
-                process.env.NODE_ENV === 'production' ? undefined : 'true',
-            }),
-          )}
           <script
             dangerouslySetInnerHTML={{
               __html: `window.__data=${serialize(store.getState())};`,
             }}
             charSet="UTF-8"
           />
+          {extractor.getScriptElements().map(elem =>
+            React.cloneElement(elem, {
+              crossOrigin:
+                process.env.NODE_ENV === 'production' ? undefined : 'true',
+            }),
+          )}
         </body>
       </html>
     );
