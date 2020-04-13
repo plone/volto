@@ -14,6 +14,25 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get(`.block.title [data-contents]`);
     });
 
+    it('As editor I can add a text block', () => {
+      // when I add a text block
+      cy.get('.block.inner.text .public-DraftEditor-content')
+        .click()
+        .type('My text')
+        .get('span[data-text]')
+        .contains('My text');
+      cy.get('#toolbar-save').click();
+      cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('my-page?fullobjects');
+
+      // then the page view should contain the text block
+      cy.get('#page-document p').contains('My text');
+    });
+
     it('As editor I can add a link to a text block', function() {
       cy.get('.documentFirstHeading > .public-DraftStyleDefault-block');
 
