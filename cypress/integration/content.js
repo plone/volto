@@ -92,7 +92,11 @@ describe('Add Content Tests', () => {
     cy.get('#toolbar-save').click();
 
     // then a new file should have been created
-    cy.url().should('eq', Cypress.config().baseUrl + '/file.pdf');
+    if (Cypress.env('API') === 'guillotina') {
+      cy.url().should('eq', Cypress.config().baseUrl + '/my-file');
+    } else {
+      cy.url().should('eq', Cypress.config().baseUrl + '/file.pdf');
+    }
     cy.contains('My File');
   });
 
@@ -136,8 +140,11 @@ describe('Add Content Tests', () => {
       });
     }
     cy.get('#toolbar-save').click();
-    cy.url().should('eq', Cypress.config().baseUrl + '/image.png');
-
+    if (Cypress.env('API') === 'guillotina') {
+      cy.url().should('eq', Cypress.config().baseUrl + '/my-image');
+    } else {
+      cy.url().should('eq', Cypress.config().baseUrl + '/image.png');
+    }
     cy.contains('My image');
   });
 
