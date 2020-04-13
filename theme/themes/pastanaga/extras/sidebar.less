@@ -18,6 +18,19 @@
   }
 }
 
+.ui.button.full-size-sidenav-btn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: calc(1.4em - (@fullSizeIcon - 1em)/2) 1em;
+	background: transparent;
+}
+
+.full-size-icon {
+	color: #bac5c7;
+	height: @fullSizeIcon !important;
+}
+
 .sidebar-container {
   position: fixed;
   z-index: 100;
@@ -29,6 +42,7 @@
   box-shadow: 0 1px 2px 0 #c7d5d8;
   transition: right 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
     height 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+    width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045),
     top 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 
   &.collapsed {
@@ -39,6 +53,14 @@
       transition: opacity 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
     }
   }
+
+	&.full-size {
+	  width: calc(100% - @toolbalWidth);
+
+		&.no-toolbar {
+			width: calc(100% - @toolbalWidthMin);
+		}
+	}
 
   .ui.raised.segments {
     display: flex;
