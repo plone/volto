@@ -27,6 +27,8 @@ import {
   Sitemap,
   Sharing,
   UsersControlpanel,
+  ContentTypes,
+  ContentType,
 } from '@plone/volto/components';
 
 /**
@@ -64,6 +66,14 @@ export const defaultRoutes = [
     path: '/controlpanel',
     exact: true,
     component: Controlpanels,
+  },
+  {
+    path: '/controlpanel/dexterity-types/:id',
+    component: ContentType,
+  },
+  {
+    path: '/controlpanel/dexterity-types',
+    component: ContentTypes,
   },
   {
     path: '/controlpanel/moderate-comments',

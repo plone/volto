@@ -33,6 +33,26 @@ export const getBaseUrl = memoize(url => {
 });
 
 /**
+ * Get parent url.
+ * @function getParentUrl
+ * @param {string} url Url to be parsed.
+ * @return {string} Parent url of content object.
+ */
+export const getParentUrl = memoize(url => {
+  return url.substring(0, url.lastIndexOf('/'));
+});
+
+/**
+ * Get id from url.
+ * @function getId
+ * @param {string} url Url to be parsed.
+ * @return {string} Id of content object.
+ */
+export function getId(url) {
+  return last(url.replace(/\?.*$/, '').split('/'));
+}
+
+/**
  * Get view of an url.
  * @function getView
  * @param {string} url Url to be parsed.
