@@ -10,8 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { map, find, isBoolean, isObject } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import Select from 'react-select';
-import AsyncPaginate from 'react-select-async-paginate';
+import loadable from '@loadable/component';
 
 import {
   getBoolean,
@@ -28,6 +27,9 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+const Select = loadable(() => import('react-select'));
+const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
 
 const messages = defineMessages({
   default: {

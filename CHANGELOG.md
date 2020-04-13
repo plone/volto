@@ -1,26 +1,47 @@
 # Change Log
 
-## 4.6.1 (unreleased)
+## 5.0.1 (unreleased)
 
 ### Breaking
 
-### Changes
-
-### Added
-
-- Added Dexterity Types Controlpanel @avoinea
-
 ### Feature
 
-
-- Added basic lazy loading dependencies and boilerplate @sneridagh
-- Added date time widget @nzambello
+- Added Dexterity Types Controlpanel @avoinea
 
 ### Bugfix
 
 ### Internal
 
+## 5.0.0 (2020-04-12)
+
+### Breaking
+
+- Added basic lazy loading dependencies and boilerplate @sneridagh
+- Change component to where page title is set to `View.jsx`, remove all `Helmet` calls from inner views @jackahl
+
+### Feature
+
+- Added date time widget @nzambello
+- Add meta description tags and meta generator @sneridagh
+- Add lang property in `html` tag depending on the site/content language @sneridagh
+- Add `App.jsx` component insertion point @sneridagh
+- Lazy load `EventView.jsx`, splitting out all its big dependencies (Luxon) along with it @sneridagh
+- Lazy load `pretty` library, used in the HTML block @sneridagh
+- Lazy load `Raven` library @sneridagh
+- Lazy load `React Select` library @sneridagh
+
+### Bugfix
+
+- Show save/cancel on control panels @avoinea #850
+- Fix listing "show more" link rendering conditions @nzambello
+
+### Internal
+
 - Make Jest only looks up in `src` folder @sneridagh
+- Re-arrange `components/index.js` @sneridagh
+- Added a patch for Razzle Jest config generator to include `modulePathIgnorePatterns` option @sneridagh
+- Fix Travis random no sound card found error @sneridagh
+- docs: add release documentation @tisto
 
 ## 4.6.0 (2020-04-06)
 
@@ -83,6 +104,7 @@
 ### Bugfix
 
 - Fix typo for Japanese translation @terapyon
+- Fix refresh of the `Breadcrumbs` and `Navigation` components on calling `/login` and `/logout` @sneridagh
 - Fix refresh of the `Navigation` component on calling `/login` and `/logout` @sneridagh
 - Adjust implementation of the download link behavior for files @sneridagh
 - Fix Maps block to use maps-inner instead of video-inner class @timo
@@ -94,6 +116,7 @@
 - Improve Cypress Video Block tests @sneridagh @timo
 - Run `yarn i18n` on any JSX change @sneridagh
 - Add link mailto Cypress test @timo
+- Added design guidelines manifesto @sneridagh
 
 ## 4.1.1 (2020-03-18)
 

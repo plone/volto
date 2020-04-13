@@ -184,6 +184,7 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
@@ -1142,6 +1143,7 @@ msgid "Roles"
 msgstr "Rollen"
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form

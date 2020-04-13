@@ -179,6 +179,7 @@ msgstr "Por defecto, los permisos desde el contenedor de este elemento son hered
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
@@ -1137,6 +1138,7 @@ msgid "Roles"
 msgstr "Roles"
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form

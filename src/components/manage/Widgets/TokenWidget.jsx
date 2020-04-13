@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Form, Grid, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
 import { connect } from 'react-redux';
-import AsyncCreatableSelect from 'react-select/async-creatable';
+import loadable from '@loadable/component';
 
 import {
   getVocabFromHint,
@@ -23,6 +23,10 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+const AsyncCreatable = loadable.lib(() =>
+  import('react-select/async-creatable'),
+);
 
 /**
  * TokenWidget component class.
@@ -173,18 +177,22 @@ class TokenWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              <AsyncCreatableSelect
-                className="react-select-container"
-                classNamePrefix="react-select"
-                defaultOptions={this.props.choices || []}
-                styles={customSelectStyles}
-                theme={selectTheme}
-                components={{ DropdownIndicator, Option }}
-                isMulti
-                value={selectedOption || []}
-                loadOptions={this.loadOptions}
-                onChange={this.handleChange}
-              />
+              <AsyncCreatable>
+                {({ default: AsyncCreatableSelect }) => (
+                  <AsyncCreatableSelect
+                    className="react-select-container"
+                    classNamePrefix="react-select"
+                    defaultOptions={this.props.choices || []}
+                    styles={customSelectStyles}
+                    theme={selectTheme}
+                    components={{ DropdownIndicator, Option }}
+                    isMulti
+                    value={selectedOption || []}
+                    loadOptions={this.loadOptions}
+                    onChange={this.handleChange}
+                  />
+                )}
+              </AsyncCreatable>
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
                   {message}

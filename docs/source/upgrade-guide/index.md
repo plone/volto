@@ -10,6 +10,106 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
+## Upgrading to Volto 5.x.x
+
+First, update the `package.json` of your Volto project to Volto 5.x.x.
+
+```json
+  "dependencies": {
+    "@plone/volto": "5.0.0",
+    ...
+  }
+```
+
+### New lazy loading boilerplate
+
+Volto is now capable of splitting and lazy load components. This allows for better
+performance and reduced bundle sizes, the client also has to parse and load less code,
+improving the user experience, specially on mobile devices.
+
+The boilerplate includes changes in the structural foundation of Volto itself. So if you
+have updated in your projects any of these components:
+
+- `src/helpers/Html/Html.jsx`
+- `src/components/theme/App/App.jsx`
+- `src/server.jsx`
+- `src/client.jsx`
+
+you should adapt them to the newests changes in Volto source code. You can do that by
+diffing the new ones with yours.
+
+### Testing lazy load components
+
+The whole process has been designed to have a minimal impact in existing projects.
+However, only a thing should be changed in your components tests. Specially if your components are composed of original Volto components (not SemanticUI ones, though).
+
+You should adapt them by mocking the Volto component or resolve (await) for them in an
+async construction before the test is fired. See this Codepen example:
+
+https://codesandbox.io/s/loadable-async-tests-l2bx9
+
+```js
+import React from "react";
+import { render } from "@testing-library/react";
+import App from "./App";
+import { Component1, Component2 } from "./components";
+
+describe("CustomComponent", () => {
+  it("rendered lazily", async () => {
+    const { container, getByText } = render(<App />);
+
+    await Component1;
+    await Component2;
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(getByText("Component1"));
+    expect(getByText("Component2"));
+  });
+```
+
+This is also another pattern used in Volto core for testing, you can transform your test
+in async aware like this:
+
+```diff
+--- a/src/components/manage/Preferences/PersonalPreferences.test.jsx
++++ b/src/components/manage/Preferences/PersonalPreferences.test.jsx
+@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
+ import { Provider } from 'react-intl-redux';
+ import configureStore from 'redux-mock-store';
+ import { MemoryRouter } from 'react-router-dom';
++import { wait } from '@testing-library/react';
+
+ import PersonalPreferences from './PersonalPreferences';
+
+@@ -13,7 +14,7 @@ jest.mock('react-portal', () => ({
+ }));
+
+ describe('PersonalPreferences', () => {
+-  it('renders a personal preferences component', () => {
++  it('renders a personal preferences component', async () => {
+     const store = mockStore({
+       intl: {
+         locale: 'en',
+@@ -36,7 +37,8 @@ describe('PersonalPreferences', () => {
+         </MemoryRouter>
+       </Provider>,
+     );
+-    const json = component.toJSON();
+-    expect(json).toMatchSnapshot();
++    await wait(() => {
++      expect(component.toJSON()).toMatchSnapshot();
++    });
+   });
+ });
+```
+
+### Helmet title now it's centralized in `View.jsx`
+
+All the calls for update the title in the document performed by `Helmet` are now
+centralized in the `View.jsx` components. It's recommended to remove all the Helmet
+calls for updating the title from your components specially if you are using some of the
+SEO addons for Volto, since not doing that could interfere with them.
+
 ## Upgrading to Volto 4.x.x
 
 First, update your `package.json` to Volto 4.x.x.

@@ -10,8 +10,7 @@ import { Form, Grid, Label } from 'semantic-ui-react';
 import { isObject, map } from 'lodash';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import AsyncPaginate from 'react-select-async-paginate';
-import CreatableSelect from 'react-select/creatable';
+import loadable from '@loadable/component';
 
 import {
   getVocabFromHint,
@@ -26,6 +25,9 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
+const CreatableSelect = loadable(() => import('react-select/creatable'));
 
 const messages = defineMessages({
   select: {

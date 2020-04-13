@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "4.6.0",
+  "version": "5.0.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -28,6 +28,7 @@
     "react"
   ],
   "scripts": {
+    "postinstall": "yarn patches",
     "analyze": "BUNDLE_ANALYZE=true razzle build",
     "start": "razzle start",
     "build": "razzle build",
@@ -45,7 +46,8 @@
     "lint:fix": "./node_modules/eslint/bin/eslint.js --fix 'src/**/*.{js,jsx,json}'",
     "i18n": "rm -rf build/messages && NODE_ENV=production node src/i18n.js",
     "code-analysis:i18n": "yarn i18n && git diff -G'^[^\"POT]' --exit-code",
-    "patches": "patch -p0 -N node_modules/stylelint/lib/getPostcssResult.js < patches/fixstylelint.patch || true",
+    "stylelint:patches": "patch -p0 -N node_modules/stylelint/lib/getPostcssResult.js < patches/fixstylelint.patch || true",
+    "patches": "/bin/bash patches/patchit.sh > /dev/null 2>&1 ||true",
     "cypress:open": "CYPRESS_API=plone cypress open",
     "cypress:open:guillotina": "CYPRESS_API=guillotina cypress open",
     "cypress:run": "CYPRESS_API=plone CYPRESS_RETRIES=2 cypress run",
@@ -78,8 +80,8 @@
     ]
   },
   "jest": {
-    "testMatch": [
-      "<rootDir>/src/**/?(*.)+(spec|test).[jt]s?(x)"
+    "modulePathIgnorePatterns": [
+      "api"
     ],
     "transform": {
       "^.+\\.js(x)?$": "babel-jest",

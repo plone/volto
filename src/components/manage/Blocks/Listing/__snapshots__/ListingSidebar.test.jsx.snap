@@ -1,189 +1,122 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a Grid Block Sidebar component 1`] = `
+exports[`renders a Listing Block Sidebar component 1`] = `
 <div
-  className="ui raised segments"
+  class="ui raised segments"
 >
   <header
-    className="header pulled"
+    class="header pulled"
   >
     <h2>
       Listing
     </h2>
   </header>
   <div
-    className="accordion ui fluid styled form"
+    class="accordion ui fluid styled form"
   >
     <div
-      className="active title"
-      onClick={[Function]}
+      class="active title"
     >
       Content
       <svg
-        className="icon"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": undefined,
-          }
-        }
-        onClick={null}
-        style={
-          Object {
-            "fill": "currentColor",
-            "height": "20px",
-            "width": "auto",
-          }
-        }
+        class="icon"
+        style="height: 20px; width: auto; fill: currentColor;"
         viewBox=""
         xmlns=""
       />
     </div>
     <div
-      className="content active"
+      class="content active"
     >
       <div
-        className="ui segment form sidebar-listing-data"
+        class="ui segment form sidebar-listing-data"
       >
         <div
-          className="inline field"
+          class="inline field"
           id="field-source"
         >
           <div
-            className="ui grid"
+            class="ui grid"
           >
             <div
-              className="stretched row"
+              class="stretched row"
             >
               <div
-                className="twelve wide column"
+                class="twelve wide column"
               >
                 <div
-                  className="simple-field-name"
+                  class="simple-field-name"
                 >
                   Criteria
                 </div>
               </div>
             </div>
             <div
-              className="stretched row"
+              class="stretched row"
             >
               <div
-                className="twelve wide column"
+                class="twelve wide column"
               >
                 <div
-                  className="fields"
+                  class="fields"
                 >
                   <div
-                    className="field"
-                    style={
-                      Object {
-                        "flex": "1 0 auto",
-                      }
-                    }
+                    class="field"
+                    style="flex: 1 0 auto;"
                   >
                     <div
-                      className="react-select-container css-2b097c-container"
+                      class="react-select-container css-2b097c-container"
                       id="field-source"
-                      onKeyDown={[Function]}
                     >
                       <div
-                        className="react-select__control css-1ard45z-control"
-                        onMouseDown={[Function]}
-                        onTouchEnd={[Function]}
+                        class="react-select__control css-1ard45z-control"
                       >
                         <div
-                          className="react-select__value-container css-1dvrfad"
+                          class="react-select__value-container css-1dvrfad"
                         >
                           <div
-                            className="react-select__placeholder css-1wa3eu0-placeholder"
+                            class="react-select__placeholder css-1wa3eu0-placeholder"
                           >
                             Add criteria
                           </div>
                           <div
-                            className="css-b8ldur-Input"
+                            class="css-b8ldur-Input"
                           >
                             <div
-                              className="react-select__input"
-                              style={
-                                Object {
-                                  "display": "inline-block",
-                                }
-                              }
+                              class="react-select__input"
+                              style="display: inline-block;"
                             >
                               <input
                                 aria-autocomplete="list"
-                                autoCapitalize="none"
-                                autoComplete="off"
-                                autoCorrect="off"
-                                disabled={false}
+                                autocapitalize="none"
+                                autocomplete="off"
+                                autocorrect="off"
                                 id="react-select-2-input"
-                                onBlur={[Function]}
-                                onChange={[Function]}
-                                onFocus={[Function]}
-                                spellCheck="false"
-                                style={
-                                  Object {
-                                    "background": 0,
-                                    "border": 0,
-                                    "boxSizing": "content-box",
-                                    "color": "inherit",
-                                    "fontSize": "inherit",
-                                    "label": "input",
-                                    "opacity": 1,
-                                    "outline": 0,
-                                    "padding": 0,
-                                    "width": "1px",
-                                  }
-                                }
-                                tabIndex="0"
+                                spellcheck="false"
+                                style="box-sizing: content-box; width: 2px; border: 0px; font-size: inherit; opacity: 1; outline: 0; padding: 0px;"
+                                tabindex="0"
                                 type="text"
                                 value=""
                               />
                               <div
-                                style={
-                                  Object {
-                                    "height": 0,
-                                    "left": 0,
-                                    "overflow": "scroll",
-                                    "position": "absolute",
-                                    "top": 0,
-                                    "visibility": "hidden",
-                                    "whiteSpace": "pre",
-                                  }
-                                }
-                              >
-                                
-                              </div>
+                                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+                              />
                             </div>
                           </div>
                         </div>
                         <div
-                          className="react-select__indicators css-1hb7zxy-IndicatorsContainer"
+                          class="react-select__indicators css-1hb7zxy-IndicatorsContainer"
                         >
                           <span
-                            className="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
+                            class="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
                           />
                           <div
                             aria-hidden="true"
-                            className="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
-                            onMouseDown={[Function]}
-                            onTouchEnd={[Function]}
+                            class="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
                           >
                             <svg
-                              className="icon"
-                              dangerouslySetInnerHTML={
-                                Object {
-                                  "__html": undefined,
-                                }
-                              }
-                              onClick={null}
-                              style={
-                                Object {
-                                  "fill": "#007bc1",
-                                  "height": "24px",
-                                  "width": "auto",
-                                }
-                              }
+                              class="icon"
+                              style="height: 24px; width: auto; fill: #007bc1;"
                               viewBox=""
                               xmlns=""
                             />
@@ -203,134 +136,84 @@ exports[`renders a Grid Block Sidebar component 1`] = `
           </div>
         </div>
         <div
-          className="inline field"
+          class="inline field"
           id="field-listingblock-sort-on"
         >
           <div
-            className="ui grid"
+            class="ui grid"
           >
             <div
-              className="stretched row"
+              class="stretched row"
             >
               <div
-                className="four wide column"
+                class="four wide column"
               >
                 <div
-                  className="wrapper"
+                  class="wrapper"
                 >
                   <label
-                    htmlFor="select-listingblock-sort-on"
+                    for="select-listingblock-sort-on"
                   >
                     Sort on
                   </label>
                 </div>
               </div>
               <div
-                className="eight wide column"
+                class="eight wide column"
               >
                 <div
-                  className="react-select-container css-2b097c-container"
+                  class="react-select-container css-2b097c-container"
                   id="select-listingblock-sort-on"
-                  onKeyDown={[Function]}
                 >
                   <div
-                    className="react-select__control css-1ard45z-control"
-                    onMouseDown={[Function]}
-                    onTouchEnd={[Function]}
+                    class="react-select__control css-1ard45z-control"
                   >
                     <div
-                      className="react-select__value-container react-select__value-container--has-value css-1dvrfad"
+                      class="react-select__value-container react-select__value-container--has-value css-1dvrfad"
                     >
                       <div
-                        className="react-select__single-value css-1uccc91-singleValue"
+                        class="react-select__single-value css-1uccc91-singleValue"
                       >
                         No selection
                       </div>
                       <div
-                        className="css-b8ldur-Input"
+                        class="css-b8ldur-Input"
                       >
                         <div
-                          className="react-select__input"
-                          style={
-                            Object {
-                              "display": "inline-block",
-                            }
-                          }
+                          class="react-select__input"
+                          style="display: inline-block;"
                         >
                           <input
                             aria-autocomplete="list"
-                            autoCapitalize="none"
-                            autoComplete="off"
-                            autoCorrect="off"
-                            disabled={false}
+                            autocapitalize="none"
+                            autocomplete="off"
+                            autocorrect="off"
                             id="react-select-3-input"
-                            onBlur={[Function]}
-                            onChange={[Function]}
-                            onFocus={[Function]}
-                            spellCheck="false"
-                            style={
-                              Object {
-                                "background": 0,
-                                "border": 0,
-                                "boxSizing": "content-box",
-                                "color": "inherit",
-                                "fontSize": "inherit",
-                                "label": "input",
-                                "opacity": 1,
-                                "outline": 0,
-                                "padding": 0,
-                                "width": "1px",
-                              }
-                            }
-                            tabIndex="0"
+                            spellcheck="false"
+                            style="box-sizing: content-box; width: 2px; border: 0px; font-size: inherit; opacity: 1; outline: 0; padding: 0px;"
+                            tabindex="0"
                             type="text"
                             value=""
                           />
                           <div
-                            style={
-                              Object {
-                                "height": 0,
-                                "left": 0,
-                                "overflow": "scroll",
-                                "position": "absolute",
-                                "top": 0,
-                                "visibility": "hidden",
-                                "whiteSpace": "pre",
-                              }
-                            }
-                          >
-                            
-                          </div>
+                            style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+                          />
                         </div>
                       </div>
                     </div>
                     <div
-                      className="react-select__indicators css-1hb7zxy-IndicatorsContainer"
+                      class="react-select__indicators css-1hb7zxy-IndicatorsContainer"
                     >
                       <span
-                        className="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
+                        class="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
                       />
                       <div
                         aria-hidden="true"
-                        className="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
-                        onMouseDown={[Function]}
-                        onTouchEnd={[Function]}
+                        class="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
                       >
                         <svg
-                          className="icon"
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": undefined,
-                            }
-                          }
-                          onClick={null}
-                          style={
-                            Object {
-                              "fill": "#007bc1",
-                              "height": "24px",
-                              "width": "auto",
-                            }
-                          }
+                          class="icon"
+                          style="height: 24px; width: auto; fill: #007bc1;"
                           viewBox=""
                           xmlns=""
                         />
@@ -348,43 +231,37 @@ exports[`renders a Grid Block Sidebar component 1`] = `
           </div>
         </div>
         <div
-          className="inline field"
+          class="inline field"
           id="field-listingblock-sort-on-reverse"
         >
           <div
-            className="ui grid"
+            class="ui grid"
           >
             <div
-              className="stretched row"
+              class="stretched row"
             >
               <div
-                className="twelve wide column"
+                class="twelve wide column"
               >
                 <div
-                  className="wrapper"
+                  class="wrapper"
                 >
                   <div
-                    className="ui fitted checkbox"
-                    onChange={[Function]}
-                    onClick={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseUp={[Function]}
+                    class="ui fitted checkbox"
                   >
                     <input
-                      checked={false}
-                      className="hidden"
-                      disabled={false}
+                      class="hidden"
                       name="field-listingblock-sort-on-reverse"
-                      readOnly={true}
-                      tabIndex={0}
+                      readonly=""
+                      tabindex="0"
                       type="checkbox"
+                      value=""
                     />
                     <label />
                   </div>
                   <label
-                    className="ui basic horizontal label"
-                    htmlFor="field-listingblock-sort-on-reverse"
-                    onClick={[Function]}
+                    class="ui basic horizontal label"
+                    for="field-listingblock-sort-on-reverse"
                   >
                     Reversed order
                   </label>
@@ -394,39 +271,37 @@ exports[`renders a Grid Block Sidebar component 1`] = `
           </div>
         </div>
         <div
-          className="inline field text"
+          class="inline field text"
           id="field-limit"
         >
           <div
-            className="ui grid"
+            class="ui grid"
           >
             <div
-              className="stretched row"
+              class="stretched row"
             >
               <div
-                className="four wide column"
+                class="four wide column"
               >
                 <div
-                  className="wrapper"
+                  class="wrapper"
                 >
                   <label
-                    htmlFor="field-limit"
+                    for="field-limit"
                   >
                     Results limit
                   </label>
                 </div>
               </div>
               <div
-                className="eight wide column"
+                class="eight wide column"
               >
                 <div
-                  className="ui input"
+                  class="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-limit"
                     name="limit"
-                    onChange={[Function]}
                     type="text"
                     value=""
                   />
@@ -436,39 +311,37 @@ exports[`renders a Grid Block Sidebar component 1`] = `
           </div>
         </div>
         <div
-          className="inline field text"
+          class="inline field text"
           id="field-itembatchsize"
         >
           <div
-            className="ui grid"
+            class="ui grid"
           >
             <div
-              className="stretched row"
+              class="stretched row"
             >
               <div
-                className="four wide column"
+                class="four wide column"
               >
                 <div
-                  className="wrapper"
+                  class="wrapper"
                 >
                   <label
-                    htmlFor="field-itembatchsize"
+                    for="field-itembatchsize"
                   >
                     Item batch size
                   </label>
                 </div>
               </div>
               <div
-                className="eight wide column"
+                class="eight wide column"
               >
                 <div
-                  className="ui input"
+                  class="ui input"
                 >
                   <input
-                    disabled={false}
                     id="field-itembatchsize"
                     name="itembatchsize"
-                    onChange={[Function]}
                     type="text"
                     value=""
                   />
@@ -480,66 +353,51 @@ exports[`renders a Grid Block Sidebar component 1`] = `
       </div>
     </div>
     <div
-      className="title"
-      onClick={[Function]}
+      class="title"
     >
       Link more
       <svg
-        className="icon"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": undefined,
-          }
-        }
-        onClick={null}
-        style={
-          Object {
-            "fill": "currentColor",
-            "height": "20px",
-            "width": "auto",
-          }
-        }
+        class="icon"
+        style="height: 20px; width: auto; fill: currentColor;"
         viewBox=""
         xmlns=""
       />
     </div>
     <div
-      className="content"
+      class="content"
     >
       <div
-        className="inline field text"
+        class="inline field text"
         id="field-linkTitle"
       >
         <div
-          className="ui grid"
+          class="ui grid"
         >
           <div
-            className="stretched row"
+            class="stretched row"
           >
             <div
-              className="four wide column"
+              class="four wide column"
             >
               <div
-                className="wrapper"
+                class="wrapper"
               >
                 <label
-                  htmlFor="field-linkTitle"
+                  for="field-linkTitle"
                 >
                   Link Title
                 </label>
               </div>
             </div>
             <div
-              className="eight wide column"
+              class="eight wide column"
             >
               <div
-                className="ui input"
+                class="ui input"
               >
                 <input
-                  disabled={false}
                   id="field-linkTitle"
                   name="linkTitle"
-                  onChange={[Function]}
                   type="text"
                   value=""
                 />
@@ -549,72 +407,50 @@ exports[`renders a Grid Block Sidebar component 1`] = `
         </div>
       </div>
       <div
-        className="inline field text"
+        class="inline field text"
         id="field-linkHref"
       >
         <div
-          className="ui grid"
+          class="ui grid"
         >
           <div
-            className="stretched row"
+            class="stretched row"
           >
             <div
-              className="four wide column"
+              class="four wide column"
             >
               <div
-                className="wrapper"
+                class="wrapper"
               >
                 <label
-                  htmlFor="field-linkHref"
+                  for="field-linkHref"
                 >
                   Link to
                 </label>
               </div>
             </div>
             <div
-              className="eight wide column"
+              class="eight wide column"
             >
               <div
-                className="ui icon input"
+                class="ui icon input"
               >
                 <input
-                  disabled={false}
                   id="field-linkHref"
                   name="linkHref"
-                  onChange={[Function]}
                   type="text"
                   value=""
                 />
                 <i
                   aria-hidden="true"
-                  attributes={
-                    Object {
-                      "viewBox": "",
-                      "xmlns": "",
-                    }
-                  }
-                  className="icon"
-                  onClick={[Function]}
+                  attributes="[object Object]"
+                  class="icon"
                 />
               </div>
-              <button
-                onClick={[Function]}
-              >
+              <button>
                 <svg
-                  className="icon"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": undefined,
-                    }
-                  }
-                  onClick={null}
-                  style={
-                    Object {
-                      "fill": "currentColor",
-                      "height": "18px",
-                      "width": "auto",
-                    }
-                  }
+                  class="icon"
+                  style="height: 18px; width: auto; fill: currentColor;"
                   viewBox=""
                   xmlns=""
                 />

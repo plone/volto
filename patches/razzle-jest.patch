@@ -1,0 +1,10 @@
+--- original.js	2020-04-10 14:58:18.196596708 +0200
++++ changed.js	2020-04-10 14:57:56.640916416 +0200
+@@ -58,6 +58,7 @@
+     'transform',
+     'transformIgnorePatterns',
+     'reporters',
++    'modulePathIgnorePatterns',
+   ];
+   if (overrides) {
+     supportedKeys.forEach(key => {
