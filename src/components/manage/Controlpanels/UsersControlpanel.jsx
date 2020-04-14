@@ -804,6 +804,7 @@ class UsersControlpanel extends Component {
                     messages.searchUsers,
                   )}
                   onChange={this.onChangeSearch}
+                  id="user-search-input"
                 />
               </Form.Field>
             </Form>
@@ -857,6 +858,7 @@ class UsersControlpanel extends Component {
                 name={addSvg}
                 size="30px"
                 color="#007eb1"
+                className="addSVG"
                 title={this.props.intl.formatMessage(messages.add)}
               />
             </Button>
@@ -875,6 +877,7 @@ class UsersControlpanel extends Component {
                     messages.searchGroups,
                   )}
                   onChange={this.onChangeSearch}
+                  id="group-search-input"
                 />
               </Form.Field>
             </Form>
@@ -929,6 +932,7 @@ class UsersControlpanel extends Component {
                 name={addSvg}
                 size="30px"
                 color="#007eb1"
+                classname="addgroupSVG"
                 title={this.props.intl.formatMessage(messages.add)}
               />
             </Button>
