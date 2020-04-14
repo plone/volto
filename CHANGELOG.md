@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Show new added user in user control panel @iFlameing #1271
+
 ### Internal
 
 ## 5.0.0 (2020-04-12)
