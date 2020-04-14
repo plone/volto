@@ -37,10 +37,12 @@ msgstr "Acção"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Actions"
 msgstr "Acções"
 
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
@@ -82,6 +84,10 @@ msgstr "Adicionar conjunto de campos"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add group"
 msgstr "Adicionar grupo"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Add new content type"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add new group"
@@ -128,6 +134,8 @@ msgid "Ascending"
 msgstr "Ascendente"
 
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/ModerateComments
@@ -177,6 +185,7 @@ msgstr "Por predefinição, as permissões do contentor deste item são herdadas
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -219,6 +228,7 @@ msgstr ""
 msgid "Changes saved"
 msgstr "Alterações guardadas"
 
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Changes saved."
 msgstr "Alterações guardadas."
@@ -288,6 +298,18 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Content Types"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Content type created"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Content type deleted"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -364,6 +386,7 @@ msgstr "Predefinido"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
@@ -379,6 +402,10 @@ msgstr "Eliminar"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete Group"
 msgstr "Eliminar Grupo"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Delete Type"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete User"
@@ -397,6 +424,7 @@ msgid "Descending"
 msgstr "Descendente"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -433,6 +461,10 @@ msgstr "Quer mesmo eliminar os itens seguintes?"
 msgid "Do you really want to delete the group {groupname}?"
 msgstr "Quer mesmo eliminar o grupo {groupname}?"
 
+#: components/manage/Controlpanels/ContentTypes
+msgid "Do you really want to delete the type {typename}?"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Do you really want to delete the user {username}?"
 msgstr "Quer mesmo eliminar o utilizador {username}?"
@@ -459,6 +491,7 @@ msgid "E-mail addresses do not match."
 msgstr "Os endereços de e-mail não coincidem."
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/CheckboxWidget
@@ -688,6 +721,7 @@ msgstr "Se não tem uma conta aqui, dirija-se a {registrationform}."
 msgid "Image"
 msgstr "Imagem"
 
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
 msgstr "Informação"
@@ -732,6 +766,10 @@ msgstr "Item(ns) cortado(s)."
 #: components/manage/Contents/Contents
 msgid "Item(s) pasted."
 msgstr "Item(ns) colado(s)."
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Items"
+msgstr ""
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
@@ -872,6 +910,7 @@ msgid "News Item"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 msgid "No"
 msgstr ""
 
@@ -1136,6 +1175,7 @@ msgid "Roles"
 msgstr "Papéis"
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -1324,6 +1364,7 @@ msgstr "Assunto"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -1402,6 +1443,7 @@ msgstr "Esta página não parece existir..."
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1422,6 +1464,7 @@ msgstr ""
 msgid "Translate to {lang}"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 msgid "Type"
@@ -1576,6 +1619,7 @@ msgid "Workflow updated."
 msgstr "Fluxo de trabalho actualizado."
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 msgid "Yes"
 msgstr ""
 

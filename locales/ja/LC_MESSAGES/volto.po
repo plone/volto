@@ -36,10 +36,12 @@ msgstr "アクション"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Actions"
 msgstr "アクション"
 
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
@@ -81,6 +83,10 @@ msgstr "フィールドセットを追加"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add group"
 msgstr "グループを追加"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Add new content type"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add new group"
@@ -127,6 +133,8 @@ msgid "Ascending"
 msgstr "昇順"
 
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/ModerateComments
@@ -176,6 +184,7 @@ msgstr "デフォルトでは、このアイテムのコンテナからのパー
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -218,6 +227,7 @@ msgstr ""
 msgid "Changes saved"
 msgstr "変更が保存されました"
 
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Changes saved."
 msgstr "変更が保存されました"
@@ -288,6 +298,18 @@ msgstr "含まれるアイテム"
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
 msgstr "コンテント"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Content Types"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Content type created"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Content type deleted"
+msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
@@ -363,6 +385,7 @@ msgstr "基本"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
@@ -378,6 +401,10 @@ msgstr "削除"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete Group"
 msgstr "グループを削除"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Delete Type"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete User"
@@ -396,6 +423,7 @@ msgid "Descending"
 msgstr "降順"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -432,6 +460,10 @@ msgstr "以下のアイテムを削除してよろしいですか?"
 msgid "Do you really want to delete the group {groupname}?"
 msgstr "グループ {groupname} を削除してよろしいですか?"
 
+#: components/manage/Controlpanels/ContentTypes
+msgid "Do you really want to delete the type {typename}?"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Do you really want to delete the user {username}?"
 msgstr "ユーザ {username} を削除してよろしいですか?"
@@ -458,6 +490,7 @@ msgid "E-mail addresses do not match."
 msgstr "E-mail アドレスが見つかりません。"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/CheckboxWidget
@@ -687,6 +720,7 @@ msgstr "アカウントを持っていない場合、ここが {registrationform
 msgid "Image"
 msgstr "画像"
 
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
 msgstr "情報"
@@ -731,6 +765,10 @@ msgstr "アイテムがカットされました。"
 #: components/manage/Contents/Contents
 msgid "Item(s) pasted."
 msgstr "アイテムがペーストされました。"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Items"
+msgstr ""
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
@@ -871,6 +909,7 @@ msgid "News Item"
 msgstr "ニュース"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 msgid "No"
 msgstr "No"
 
@@ -1135,6 +1174,7 @@ msgid "Roles"
 msgstr "ロール"
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -1323,6 +1363,7 @@ msgstr "件名"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -1401,6 +1442,7 @@ msgstr "このページは存在しないようです…"
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1421,6 +1463,7 @@ msgstr "コメント計"
 msgid "Translate to {lang}"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 msgid "Type"
@@ -1575,6 +1618,7 @@ msgid "Workflow updated."
 msgstr "ワークフローがアップデートされました"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 msgid "Yes"
 msgstr "Yes"
 
