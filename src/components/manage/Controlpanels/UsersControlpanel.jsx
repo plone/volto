@@ -646,6 +646,7 @@ class UsersControlpanel extends Component {
             }
             onCancel={this.onDeleteCancel}
             onConfirm={this.onDeleteOk}
+            size="none"
           />
           <ModalForm
             open={this.state.showAddUser}
