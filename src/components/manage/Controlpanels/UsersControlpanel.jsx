@@ -415,7 +415,9 @@ class UsersControlpanel extends Component {
    * @returns {undefined}
    */
   onAddUserSubmit(data, callback) {
-    this.props.createUser(data);
+    const newData = { ...data };
+    newData.roles = [data.roles];
+    this.props.createUser(newData);
     this.setState({
       addUserSetFormDataCallback: callback,
     });
@@ -470,7 +472,9 @@ class UsersControlpanel extends Component {
    * @returns {undefined}
    */
   onAddGroupSubmit(data, callback) {
-    this.props.createGroup(data);
+    const newData = { ...data };
+    newData.roles = [data.roles];
+    this.props.createGroup(newData);
     this.setState({
       addGroupSetFormDataCallback: callback,
     });
@@ -825,7 +829,7 @@ class UsersControlpanel extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {this.state.entries.map(user => (
+                  {this.props.users.map(user => (
                     <UsersControlpanelUser
                       key={user.id}
                       onDelete={this.delete}
