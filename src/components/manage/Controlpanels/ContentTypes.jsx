@@ -11,21 +11,10 @@ import { Link } from 'react-router-dom';
 import { Helmet, getParentUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { last } from 'lodash';
-import {
-  Confirm,
-  Container,
-  Table,
-  Button,
-  Dropdown,
-} from 'semantic-ui-react';
+import { Confirm, Container, Table, Button, Dropdown } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import {
-  Icon,
-  ModalForm,
-  Toolbar,
-  Toast,
-} from '@plone/volto/components';
+import { Icon, ModalForm, Toolbar, Toast } from '@plone/volto/components';
 import {
   getControlpanel,
   postControlpanel,
@@ -48,32 +37,32 @@ const messages = defineMessages({
     defaultMessage: 'Back',
   },
   yes: {
-    id: "Yes",
-    defaultMessage: "Yes",
+    id: 'Yes',
+    defaultMessage: 'Yes',
   },
   no: {
-    id: "No",
-    defaultMessage: "No",
+    id: 'No',
+    defaultMessage: 'No',
   },
   ContentTypes: {
     id: 'Content Types',
     defaultMessage: 'Content Types',
   },
   addTypeFormTitle: {
-    id: "Add new content type",
-    defaultMessage: "Add new content type",
+    id: 'Add new content type',
+    defaultMessage: 'Add new content type',
   },
   addTypeButtonTitle: {
-    id: "Add new content type",
-    defaultMessage: "Add new content type",
+    id: 'Add new content type',
+    defaultMessage: 'Add new content type',
   },
   addTypeFormTitleTitle: {
-    id: "Title",
-    defaultMessage: "Title",
+    id: 'Title',
+    defaultMessage: 'Title',
   },
   addTypeFormDescriptionTitle: {
-    id: "Description",
-    defaultMessage: "Description"
+    id: 'Description',
+    defaultMessage: 'Description',
   },
   success: {
     id: 'Success',
@@ -126,9 +115,9 @@ class ContentTypes extends Component {
           title: PropTypes.string,
           description: PropTypes.string,
           count: PropTypes.integer,
-        })
-      )
-    })
+        }),
+      ),
+    }),
   };
 
   /**
@@ -245,13 +234,13 @@ class ContentTypes extends Component {
 
   /** Delete */
   /**
- *
- *
- * @param {*} event Event object.
- * @param {*} { value }
- * @memberof ContentTypes
- * @returns {undefined}
- */
+   *
+   *
+   * @param {*} event Event object.
+   * @param {*} { value }
+   * @memberof ContentTypes
+   * @returns {undefined}
+   */
   onDelete(event, { value }) {
     if (value) {
       this.setState({
@@ -272,7 +261,7 @@ class ContentTypes extends Component {
     this.props.deleteControlpanel(this.props.id, item);
     this.setState({
       showDelete: false,
-      typeToDelete: undefined
+      typeToDelete: undefined,
     });
   }
 
@@ -285,17 +274,17 @@ class ContentTypes extends Component {
   onDeleteCancel() {
     this.setState({
       showDelete: false,
-      typeToDelete: undefined
+      typeToDelete: undefined,
     });
   }
 
   /**
- * Handle Success after deleteControlpanel()
- *
- * @method onDeleteTypeSuccess
- * @memberof ContentTypes
- * @returns {undefined}
- */
+   * Handle Success after deleteControlpanel()
+   *
+   * @method onDeleteTypeSuccess
+   * @memberof ContentTypes
+   * @returns {undefined}
+   */
   onDeleteTypeSuccess() {
     toast.success(
       <Toast
@@ -316,9 +305,7 @@ class ContentTypes extends Component {
     }
     return (
       <Container className="types-control-panel">
-        <Helmet
-          title={this.props.intl.formatMessage(messages.ContentTypes)}
-        />
+        <Helmet title={this.props.intl.formatMessage(messages.ContentTypes)} />
         <div className="container">
           <Confirm
             open={this.state.showDelete}
@@ -326,19 +313,17 @@ class ContentTypes extends Component {
             cancelButton={this.props.intl.formatMessage(messages.no)}
             confirmButton={this.props.intl.formatMessage(messages.yes)}
             content={
-              (
-                <div className="content">
-                  <ul className="content">
-                    <FormattedMessage
-                      id="Do you really want to delete the type {typename}?"
-                      defaultMessage="Do you really want to delete type {typename}?"
-                      values={{
-                        typename: <b>{getId(this.state.typeToDelete || "")}</b>,
-                      }}
-                    />
-                  </ul>
-                </div>
-              )
+              <div className="content">
+                <ul className="content">
+                  <FormattedMessage
+                    id="Do you really want to delete the type {typename}?"
+                    defaultMessage="Do you really want to delete type {typename}?"
+                    values={{
+                      typename: <b>{getId(this.state.typeToDelete || '')}</b>,
+                    }}
+                  />
+                </ul>
+              </div>
             }
             onCancel={this.onDeleteCancel}
             onConfirm={this.onDeleteOk}
@@ -356,10 +341,7 @@ class ContentTypes extends Component {
                 {
                   id: 'default',
                   title: 'Content type',
-                  fields: [
-                    'title',
-                    'description',
-                  ],
+                  fields: ['title', 'description'],
                 },
               ],
               properties: {
@@ -397,13 +379,13 @@ class ContentTypes extends Component {
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>
-                      <FormattedMessage
-                        id="Type"
-                        defaultMessage="Type"
-                      />
+                      <FormattedMessage id="Type" defaultMessage="Type" />
                     </Table.HeaderCell>
                     <Table.HeaderCell>
-                      <FormattedMessage id="Description" defaultMessage="Description" />
+                      <FormattedMessage
+                        id="Description"
+                        defaultMessage="Description"
+                      />
                     </Table.HeaderCell>
                     <Table.HeaderCell>
                       <FormattedMessage id="Items" defaultMessage="Items" />
@@ -421,12 +403,8 @@ class ContentTypes extends Component {
                           {item.title}
                         </Link>
                       </Table.Cell>
-                      <Table.Cell>
-                        {item.description}
-                      </Table.Cell>
-                      <Table.Cell>
-                        {item.count}
-                      </Table.Cell>
+                      <Table.Cell>{item.description}</Table.Cell>
+                      <Table.Cell>{item.count}</Table.Cell>
                       <Table.Cell textAlign="right">
                         <Dropdown icon="ellipsis horizontal">
                           <Dropdown.Menu className="left">
@@ -435,14 +413,20 @@ class ContentTypes extends Component {
                               value={`${this.props.pathname}/${item['id']}`}
                             >
                               <Icon name={editSVG} size="15px" />
-                              <FormattedMessage id="Edit" defaultMessage="Edit" />
+                              <FormattedMessage
+                                id="Edit"
+                                defaultMessage="Edit"
+                              />
                             </Dropdown.Item>
                             <Dropdown.Item
                               onClick={this.onDelete}
                               value={item['@id']}
                             >
                               <Icon name={trashSVG} size="15px" />
-                              <FormattedMessage id="Delete" defaultMessage="Delete" />
+                              <FormattedMessage
+                                id="Delete"
+                                defaultMessage="Delete"
+                              />
                             </Dropdown.Item>
                           </Dropdown.Menu>
                         </Dropdown>
@@ -479,7 +463,9 @@ class ContentTypes extends Component {
                 >
                   <Icon
                     name={addSVG}
-                    title={this.props.intl.formatMessage(messages.addTypeButtonTitle)}
+                    title={this.props.intl.formatMessage(
+                      messages.addTypeButtonTitle,
+                    )}
                   />
                 </Button>
               </>

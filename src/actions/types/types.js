@@ -3,9 +3,7 @@
  * @module actions/types/types
  */
 
-import {
-  GET_TYPES,
- } from '@plone/volto/constants/ActionTypes';
+import { GET_TYPES } from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get types function.
