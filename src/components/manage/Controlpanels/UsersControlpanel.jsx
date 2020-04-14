@@ -283,7 +283,7 @@ class UsersControlpanel extends Component {
       this.onAddGroupError(nextProps.createRequest.error);
     }
     this.setState({
-      entries: map(nextProps.entries, entry => {
+      entries: map(nextProps.users, entry => {
         const values = find(this.state.entries, { id: entry.id });
         return {
           ...entry,
@@ -829,7 +829,7 @@ class UsersControlpanel extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {this.props.users.map(user => (
+                  {this.state.entries.map(user => (
                     <UsersControlpanelUser
                       key={user.id}
                       onDelete={this.delete}
