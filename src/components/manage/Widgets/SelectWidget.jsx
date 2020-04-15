@@ -331,6 +331,7 @@ class SelectWidget extends Component {
                   disabled={onEdit !== null}
                   className="react-select-container"
                   classNamePrefix="react-select"
+                  isMulti={id === 'roles' || id === 'groups'}
                   options={[
                     ...map(choices, option => ({
                       value: option[0],
@@ -348,13 +349,24 @@ class SelectWidget extends Component {
                   styles={customSelectStyles}
                   theme={selectTheme}
                   components={{ DropdownIndicator, Option }}
-                  defaultValue={getDefaultValues(choices, value)}
-                  onChange={data =>
-                    onChange(
+                  defaultValue={
+                    id === 'roles' || id === 'groups'
+                      ? null
+                      : getDefaultValues(choices, value)
+                  }
+                  onChange={data => {
+                    let dataValue = [];
+                    if (Array.isArray(data)) {
+                      for (let obj of data) {
+                        dataValue.push(obj.value);
+                      }
+                      return onChange(id, dataValue);
+                    }
+                    return onChange(
                       id,
                       data.value === 'no-value' ? undefined : data.value,
-                    )
-                  }
+                    );
+                  }}
                 />
               )}
               {map(error, message => (

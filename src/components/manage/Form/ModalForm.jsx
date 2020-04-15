@@ -16,7 +16,9 @@ import {
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { Field } from '@plone/volto/components';
+import { Field, Icon } from '@plone/volto/components';
+import aheadSVG from '@plone/volto/icons/ahead.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   required: {
@@ -250,7 +252,9 @@ class ModalForm extends Component {
             circular
             primary
             floated="right"
-            icon="arrow right"
+            icon={
+              <Icon name={aheadSVG} className="contents circled" size="30px" />
+            }
             aria-label={
               this.props.submitLabel
                 ? this.props.submitLabel
@@ -270,7 +274,7 @@ class ModalForm extends Component {
               basic
               circular
               secondary
-              icon="remove"
+              icon={<Icon name={clearSVG} className="circled" size="30px" />}
               aria-label={this.props.intl.formatMessage(messages.cancel)}
               title={this.props.intl.formatMessage(messages.cancel)}
               floated="right"
