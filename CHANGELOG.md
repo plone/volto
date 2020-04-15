@@ -8,6 +8,9 @@
 
 ### Bugfix
 
+- Fixes for contact form @nzambello
+
+
 ### Internal
 
 ## 5.0.0 (2020-04-12)
