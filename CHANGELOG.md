@@ -8,6 +8,7 @@
 
 ### Bugfix
 
+- Show new added user in user control panel @iFlameing #1271
 - Fixes for contact form @nzambello
 
 

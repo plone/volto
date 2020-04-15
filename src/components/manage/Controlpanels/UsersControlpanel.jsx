@@ -283,7 +283,7 @@ class UsersControlpanel extends Component {
       this.onAddGroupError(nextProps.createRequest.error);
     }
     this.setState({
-      entries: map(nextProps.entries, entry => {
+      entries: map(nextProps.users, entry => {
         const values = find(this.state.entries, { id: entry.id });
         return {
           ...entry,
@@ -415,7 +415,9 @@ class UsersControlpanel extends Component {
    * @returns {undefined}
    */
   onAddUserSubmit(data, callback) {
-    this.props.createUser(data);
+    const newData = { ...data };
+    newData.roles = [data.roles];
+    this.props.createUser(newData);
     this.setState({
       addUserSetFormDataCallback: callback,
     });
@@ -470,7 +472,9 @@ class UsersControlpanel extends Component {
    * @returns {undefined}
    */
   onAddGroupSubmit(data, callback) {
-    this.props.createGroup(data);
+    const newData = { ...data };
+    newData.roles = [data.roles];
+    this.props.createGroup(newData);
     this.setState({
       addGroupSetFormDataCallback: callback,
     });
@@ -642,6 +646,7 @@ class UsersControlpanel extends Component {
             }
             onCancel={this.onDeleteCancel}
             onConfirm={this.onDeleteOk}
+            size="none"
           />
           <ModalForm
             open={this.state.showAddUser}
@@ -799,6 +804,7 @@ class UsersControlpanel extends Component {
                     messages.searchUsers,
                   )}
                   onChange={this.onChangeSearch}
+                  id="user-search-input"
                 />
               </Form.Field>
             </Form>
@@ -852,6 +858,7 @@ class UsersControlpanel extends Component {
                 name={addSvg}
                 size="30px"
                 color="#007eb1"
+                className="addSVG"
                 title={this.props.intl.formatMessage(messages.add)}
               />
             </Button>
@@ -870,6 +877,7 @@ class UsersControlpanel extends Component {
                     messages.searchGroups,
                   )}
                   onChange={this.onChangeSearch}
+                  id="group-search-input"
                 />
               </Form.Field>
             </Form>
@@ -924,6 +932,7 @@ class UsersControlpanel extends Component {
                 name={addSvg}
                 size="30px"
                 color="#007eb1"
+                classname="addgroupSVG"
                 title={this.props.intl.formatMessage(messages.add)}
               />
             </Button>

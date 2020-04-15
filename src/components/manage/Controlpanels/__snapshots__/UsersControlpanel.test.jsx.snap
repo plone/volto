@@ -34,6 +34,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
             className="ui action input"
           >
             <input
+              id="user-search-input"
               name="SearchableText"
               onChange={[Function]}
               placeholder="Search users..."
@@ -96,7 +97,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
         onClick={[Function]}
       >
         <svg
-          className="icon"
+          className="icon addSVG"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<title>Add</title>undefined",
@@ -137,6 +138,7 @@ exports[`UsersControlpanel renders a user control component 1`] = `
             className="ui action input"
           >
             <input
+              id="group-search-input"
               name="SearchableText"
               onChange={[Function]}
               placeholder="Search group..."
