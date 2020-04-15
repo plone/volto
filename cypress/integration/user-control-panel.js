@@ -28,7 +28,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('input[id="field-password"]')
         .clear()
         .type('test@test');
-      cy.get('.arrow').click();
+      cy.get('button[title="Save"]').click();
 
       // then the user section must contains a fullname when I searched the
       // same with the same username
