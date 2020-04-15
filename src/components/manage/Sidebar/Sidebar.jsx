@@ -14,8 +14,8 @@ import { BodyClass } from '@plone/volto/helpers';
 import { Icon } from '@plone/volto/components';
 import forbiddenSVG from '@plone/volto/icons/forbidden.svg';
 import { setSidebarTab } from '@plone/volto/actions';
-import fullscreenSVG from '@plone/volto/icons/fullscreen.svg';
-import minimizeScreenSVG from '@plone/volto/icons/back-down.svg';
+import expandSVG from '@plone/volto/icons/left-key.svg';
+import collapseSVG from '@plone/volto/icons/right-key.svg';
 
 const messages = defineMessages({
   document: {
@@ -179,7 +179,7 @@ class Sidebar extends Component {
           >
             <Icon
               className="full-size-icon"
-              name={this.state.showFull ? fullscreenSVG : minimizeScreenSVG}
+              name={this.state.showFull ? expandSVG : collapseSVG}
             />
           </Button>
           <Tab

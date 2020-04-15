@@ -19,16 +19,15 @@
 }
 
 .ui.button.full-size-sidenav-btn {
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: calc(1.4em - (@fullSizeIcon - 1em)/2) 1em;
-	background: transparent;
+  position: absolute;
+  top: 0;
+  padding: 12px 6px;
+  background: transparent;
 }
 
 .full-size-icon {
-	color: #bac5c7;
-	height: @fullSizeIcon !important;
+  height: @fullSizeIcon !important;
+  color: #bac5c7;
 }
 
 .sidebar-container {
@@ -54,13 +53,13 @@
     }
   }
 
-	&.full-size {
-	  width: calc(100% - @toolbalWidth);
+  &.full-size {
+    width: calc(100% - @toolbalWidth);
 
-		&.no-toolbar {
-			width: calc(100% - @toolbalWidthMin);
-		}
-	}
+    &.no-toolbar {
+      width: calc(100% - @toolbalWidthMin);
+    }
+  }
 
   .ui.raised.segments {
     display: flex;
@@ -130,6 +129,10 @@
 
   .tabs-wrapper {
     height: 100%;
+
+    .formtabs.menu {
+      margin-left: 36px;
+    }
   }
 
   .tab-forbidden {
