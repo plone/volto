@@ -13,7 +13,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@types');
     });
 
-    it.only('Should add User to controlPanel', () => {
+    it('Should add User to controlPanel', () => {
       // when I added a user from controlPanel
       cy.get('.addSVG').click();
       cy.get('input[id="field-username"]')
@@ -24,7 +24,7 @@ if (Cypress.env('API') !== 'guillotina') {
         .type('Alok Kumar');
       cy.get('input[id ="field-email"]')
         .clear()
-        .type('ialokkumarsingh0@gmail.com');
+        .type('info@example.com');
       cy.get('input[id="field-password"]')
         .clear()
         .type('test@test');
