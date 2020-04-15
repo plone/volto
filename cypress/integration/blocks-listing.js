@@ -113,8 +113,9 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get(`.block.listing .listing-body:first-of-type`).contains('Page One');
 
       // set effective date (reverse order)
-      cy.get('#select-listingblock-sort-on').click();
-      cy.get('#select-listingblock-sort-on #react-select-8-option-2-1').click();
+      cy.get('#select-listingblock-sort-on')
+        .click()
+        .type('Effective date {enter}');
       cy.get('input[name="field-listingblock-sort-on-reverse"]')
         .check({ force: true })
         .should('be.checked');
