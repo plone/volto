@@ -66,6 +66,72 @@ if (Cypress.env('API') !== 'guillotina') {
       );
     });
 
+    it('Add Listing Block: sort by effective date', () => {
+      cy.visit('/my-page');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('my-page?fullobjects');
+
+      // given a page with two pages
+      cy.createContent('Document', 'page-one', 'Page One', 'my-page');
+      cy.setWorkflow({
+        path: 'my-page/page-one',
+        review_state: 'publish',
+        effective: '2018-01-01T08:00:00',
+      });
+      cy.createContent('Document', 'page-two', 'Page Two', 'my-page');
+      cy.setWorkflow({
+        path: 'my-page/page-two',
+        review_state: 'publish',
+        effective: '2019-01-01T08:00:00',
+      });
+
+      cy.visit('/my-page/edit');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('my-page?fullobjects');
+
+      cy.get(`.block.title [data-contents]`)
+        .clear()
+        .type('My title');
+
+      //add listing block
+      cy.get('.block.text [contenteditable]').click();
+      cy.get('button.block-add-button').click();
+      cy.get('.blocks-chooser .title')
+        .contains('Common')
+        .click();
+      cy.get('.blocks-chooser .common')
+        .contains('Listing')
+        .click();
+
+      //verify before save
+      cy.get(`.block.listing .listing-body:first-of-type`).contains('Page One');
+
+      // set effective date (reverse order)
+      cy.get('#select-listingblock-sort-on')
+        .click()
+        .type('Effective date {enter}');
+      cy.get('input[name="field-listingblock-sort-on-reverse"]')
+        .check({ force: true })
+        .should('be.checked');
+
+      //save
+      cy.get('#toolbar-save').click();
+
+      //test after save
+      cy.get('#page-document .listing-body:first-of-type').contains('Page One');
+      cy.get('#page-document .listing-item:first-of-type a').should(
+        'have.attr',
+        'href',
+        '/my-page/page-one',
+      );
+    });
+
     it('Listing block - Test Criteria: short-name', () => {
       cy.visit('/my-page');
       cy.waitForResourceToLoad('@navigation');
