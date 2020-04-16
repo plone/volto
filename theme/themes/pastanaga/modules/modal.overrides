@@ -12,6 +12,18 @@
 
 .ui.modal {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  margin: 0 auto;
+}
+
+.ui.modal.gallery {
+  padding-bottom: 1em;
+
+  .image.content {
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      margin-bottom: 16px;
+    }
+  }
 }

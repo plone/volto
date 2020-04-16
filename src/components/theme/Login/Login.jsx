@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
@@ -17,17 +17,12 @@ import {
   Segment,
   Grid,
 } from 'semantic-ui-react';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 import { withRouter } from 'react-router-dom';
 
-import { Icon } from '../../../components';
-import { login } from '../../../actions';
+import { Icon } from '@plone/volto/components';
+import { getNavigation, login } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
 
@@ -42,6 +37,10 @@ const messages = defineMessages({
   loginName: {
     id: 'Login Name',
     defaultMessage: 'Login Name',
+  },
+  Login: {
+    id: 'Login',
+    defaultMessage: 'Login',
   },
   password: {
     id: 'Password',
@@ -85,7 +84,6 @@ class Login extends Component {
     }),
     loading: PropTypes.bool,
     token: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
-    intl: intlShape.isRequired,
     returnUrl: PropTypes.string,
   };
 
@@ -118,7 +116,7 @@ class Login extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.token) {
       this.props.history.push(this.props.returnUrl || '/');
       if (toast.isActive('loginFailed')) {
@@ -139,7 +137,13 @@ class Login extends Component {
     }
   }
 
+  UNSAFE_componentWillMount() {
+    this.props.getNavigation('/');
+  }
+
   componentWillUnmount() {
+    this.props.getNavigation('/');
+
     if (toast.isActive('loginFailed')) {
       toast.dismiss('loginFailed');
     }
@@ -167,7 +171,7 @@ class Login extends Component {
   render() {
     return (
       <div id="page-login">
-        <Helmet title="Login" />
+        <Helmet title={this.props.intl.formatMessage(messages.Login)} />
         <Container text>
           <Form method="post" onSubmit={this.onLogin}>
             <Segment.Group raised>
@@ -320,8 +324,13 @@ export default compose(
       error: state.userSession.login.error,
       loading: state.userSession.login.loading,
       token: state.userSession.token,
-      returnUrl: qs.parse(props.location.search).return_url || '/',
+      returnUrl:
+        qs.parse(props.location.search).return_url ||
+        props.location.pathname
+          .replace(/\/login$/, '')
+          .replace(/\/logout$/, '') ||
+        '/',
     }),
-    { login },
+    { login, getNavigation },
   ),
 )(Login);

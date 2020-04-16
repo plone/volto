@@ -9,7 +9,7 @@ import {
   GET_GROUP,
   LIST_GROUPS,
   UPDATE_GROUP,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Create group function.
@@ -65,13 +65,18 @@ export function getGroup(id) {
  * @function listGroups
  * @returns {Object} List groups action
  */
-export function listGroups() {
+export function listGroups(query) {
   return {
     type: LIST_GROUPS,
-    request: {
-      op: 'get',
-      path: '/@groups',
-    },
+    request: query
+      ? {
+          op: 'get',
+          path: `/@groups?query=${query}`,
+        }
+      : {
+          op: 'get',
+          path: '/@groups',
+        },
   };
 }
 

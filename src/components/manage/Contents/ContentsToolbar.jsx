@@ -9,9 +9,9 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
-import { getBaseUrl } from '../../../helpers';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   cancel: {
@@ -33,7 +33,6 @@ class ContentsToolbar extends Component {
    */
   static propTypes = {
     pathname: PropTypes.string.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**

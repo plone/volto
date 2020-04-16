@@ -9,30 +9,35 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { asyncConnect } from 'redux-connect';
 import { Segment } from 'semantic-ui-react';
-import Raven from 'raven-js';
 import { renderRoutes } from 'react-router-config';
 import { Slide, ToastContainer, toast } from 'react-toastify';
+import split from 'lodash/split';
+import join from 'lodash/join';
+import trim from 'lodash/trim';
+import cx from 'classnames';
+import loadable from '@loadable/component';
 
-import Error from '../../../error';
+import Error from '@plone/volto/error';
 
 import {
   Breadcrumbs,
   Footer,
   Header,
   Icon,
-  Messages,
-} from '../../../components';
-import { BodyClass, getBaseUrl, getView } from '../../../helpers';
+  OutdatedBrowser,
+  AppExtras,
+} from '@plone/volto/components';
+import { BodyClass, getBaseUrl, getView } from '@plone/volto/helpers';
 import {
   getBreadcrumbs,
   getContent,
   getNavigation,
   getTypes,
   getWorkflow,
-  purgeMessages,
-} from '../../../actions';
+} from '@plone/volto/actions';
 
-import clearSVG from '../../../icons/clear.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
+import MultilingualRedirector from '../MultilingualRedirector/MultilingualRedirector';
 
 /**
  * @export
@@ -47,7 +52,6 @@ class App extends Component {
    */
   static propTypes = {
     pathname: PropTypes.string.isRequired,
-    purgeMessages: PropTypes.func.isRequired,
   };
 
   state = {
@@ -65,6 +69,7 @@ class App extends Component {
    */
   componentDidMount() {
     if (__CLIENT__ && process.env.SENTRY_DSN) {
+      const Raven = loadable(() => import('raven-js'));
       Raven.config(process.env.SENTRY_DSN).install();
     }
   }
@@ -74,10 +79,8 @@ class App extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.purgeMessages();
-
       if (this.state.hasError) {
         this.setState({ hasError: false });
       }
@@ -94,6 +97,7 @@ class App extends Component {
   componentDidCatch(error, info) {
     this.setState({ hasError: true, error, errorInfo: info });
     if (__CLIENT__ && process.env.SENTRY_DSN) {
+      const Raven = loadable(() => import('raven-js'));
       Raven.captureException(error, { extra: info });
     }
   }
@@ -110,21 +114,41 @@ class App extends Component {
     return (
       <Fragment>
         <BodyClass className={`view-${action}view`} />
+
+        {/* Body class depending on content type */}
+        {this.props.content && this.props.content['@type'] && (
+          <BodyClass
+            className={`contenttype-${this.props.content['@type']
+              .replace(' ', '-')
+              .toLowerCase()}`}
+          />
+        )}
+
+        {/* Body class depending on sections */}
+        <BodyClass
+          className={cx({
+            [trim(join(split(this.props.pathname, '/'), ' section-'))]:
+              this.props.pathname !== '/',
+            siteroot: this.props.pathname === '/',
+          })}
+        />
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
-        <Segment basic className="content-area">
-          <main>
-            <Messages />
-            {this.state.hasError ? (
-              <Error
-                message={this.state.error.message}
-                stackTrace={this.state.errorInfo.componentStack}
-              />
-            ) : (
-              renderRoutes(this.props.route.routes)
-            )}
-          </main>
-        </Segment>
+        <MultilingualRedirector pathname={this.props.pathname}>
+          <Segment basic className="content-area">
+            <main>
+              <OutdatedBrowser />
+              {this.state.hasError ? (
+                <Error
+                  message={this.state.error.message}
+                  stackTrace={this.state.errorInfo.componentStack}
+                />
+              ) : (
+                renderRoutes(this.props.route.routes)
+              )}
+            </main>
+          </Segment>
+        </MultilingualRedirector>
         <Footer />
         <ToastContainer
           position={toast.POSITION.BOTTOM_CENTER}
@@ -139,14 +163,18 @@ class App extends Component {
             />
           }
         />
+        <AppExtras />
       </Fragment>
     );
   }
 }
 
 export const __test__ = connect(
-  (state, props) => ({ pathname: props.location.pathname }),
-  { purgeMessages },
+  (state, props) => ({
+    pathname: props.location.pathname,
+    content: state.content.data,
+  }),
+  {},
 )(App);
 
 export default compose(
@@ -154,31 +182,34 @@ export default compose(
     {
       key: 'breadcrumbs',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
+        __SERVER__ && dispatch(getBreadcrumbs(getBaseUrl(location.pathname))),
     },
     {
       key: 'content',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(getContent(getBaseUrl(location.pathname))),
+        __SERVER__ && dispatch(getContent(getBaseUrl(location.pathname))),
     },
     {
       key: 'navigation',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(getNavigation(getBaseUrl(location.pathname))),
+        __SERVER__ && dispatch(getNavigation(getBaseUrl(location.pathname))),
     },
     {
       key: 'types',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(getTypes(getBaseUrl(location.pathname))),
+        __SERVER__ && dispatch(getTypes(getBaseUrl(location.pathname))),
     },
     {
       key: 'workflow',
       promise: ({ location, store: { dispatch } }) =>
-        dispatch(getWorkflow(getBaseUrl(location.pathname))),
+        __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
     },
   ]),
   connect(
-    (state, props) => ({ pathname: props.location.pathname }),
-    { purgeMessages },
+    (state, props) => ({
+      pathname: props.location.pathname,
+      content: state.content.data,
+    }),
+    {},
   ),
 )(App);

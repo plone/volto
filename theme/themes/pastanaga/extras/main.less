@@ -183,11 +183,6 @@ button {
   display: inline-block;
 }
 
-// Header
-.tools {
-  margin-right: 1em;
-}
-
 // Comments
 .comments {
   margin-top: 20px;
@@ -321,10 +316,30 @@ button {
   }
 }
 
-@import 'utils';
+.users-control-panel .table {
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+    height: 3px; /* scrollbar height */
+    background: transparent; /* optional: just make scrollbar invisible */
+  }
+}
+
+//Controlpanel
+.controlpanel .ui .grid h3 {
+  flex-direction: column;
+}
+
+// Deprecated as per https://github.com/plone/volto/issues/1265
+// @import 'utils';
 @import 'toolbar';
 @import 'draftjs';
-@import 'tiles';
+@import 'blocks';
 @import 'sidebar';
+@import 'react-dates-overrides';
+@import 'time-picker-overrides';
+@import 'sitemap';
+@import 'search';
 
 .loadUIOverrides();

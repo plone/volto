@@ -5,7 +5,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
   className="view-wrapper"
 >
   <div
-    className="ui container"
+    className="ui container controlpanel"
   >
     <div
       className="ui raised segments"
@@ -13,9 +13,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
       <div
         className="ui segment primary"
       >
-        <span>
-          Site Setup
-        </span>
+        Site Setup
       </div>
       <div
         className="ui secondary segment"
@@ -44,6 +42,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <i
                     aria-hidden="true"
                     className="calendar icon"
+                    onClick={[Function]}
                   />
                   <div
                     className="content"
@@ -66,6 +65,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <i
                     aria-hidden="true"
                     className="setting icon"
+                    onClick={[Function]}
                   />
                   <div
                     className="content"
@@ -127,6 +127,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <i
                     aria-hidden="true"
                     className="write icon"
+                    onClick={[Function]}
                   />
                   <div
                     className="content"
@@ -149,6 +150,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <i
                     aria-hidden="true"
                     className="comments icon"
+                    onClick={[Function]}
                   />
                   <div
                     className="content"
@@ -188,6 +190,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <i
                     aria-hidden="true"
                     className="lock icon"
+                    onClick={[Function]}
                   />
                   <div
                     className="content"
@@ -227,6 +230,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <i
                     aria-hidden="true"
                     className="users icon"
+                    onClick={[Function]}
                   />
                   <div
                     className="content"
@@ -246,9 +250,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
       <div
         className="ui segment primary"
       >
-        <span>
-          Version Overview
-        </span>
+        Version Overview
       </div>
       <div
         className="ui attached segment"

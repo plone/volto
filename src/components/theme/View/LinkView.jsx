@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { isInternalURL } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 
@@ -44,9 +44,13 @@ class LinkView extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (!this.props.token) {
-      this.props.history.replace(this.props.content.remoteUrl);
+      if (isInternalURL(this.props.content.remoteUrl)) {
+        this.props.history.replace(this.props.content.remoteUrl);
+      } else if (!__SERVER__) {
+        window.location.href = this.props.content.remoteUrl;
+      }
     }
   }
 
@@ -56,9 +60,13 @@ class LinkView extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.props.pathname && !nextProps.token) {
-      nextProps.history.replace(nextProps.content.remoteUrl);
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (!this.props.token) {
+      if (isInternalURL(this.props.content.remoteUrl)) {
+        this.props.history.replace(this.props.content.remoteUrl);
+      } else if (!__SERVER__) {
+        window.location.href = this.props.content.remoteUrl;
+      }
     }
   }
 
@@ -70,7 +78,6 @@ class LinkView extends Component {
   render() {
     return (
       <Container id="page-document">
-        <Helmet title={this.props.content.title} />
         <h1 className="documentFirstHeading">{this.props.content.title}</h1>
         {this.props.content.description && (
           <p className="documentDescription">
@@ -80,9 +87,19 @@ class LinkView extends Component {
         {this.props.content.remoteUrl && (
           <span>
             The link address is:
-            <Link to={this.props.content.remoteUrl}>
-              {this.props.content.remoteUrl}
-            </Link>
+            {isInternalURL(this.props.content.remoteUrl) ? (
+              <Link to={this.props.content.remoteUrl}>
+                {this.props.content.remoteUrl}
+              </Link>
+            ) : (
+              <a
+                href={this.props.content.remoteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {this.props.content.remoteUrl}
+              </a>
+            )}
           </span>
         )}
       </Container>

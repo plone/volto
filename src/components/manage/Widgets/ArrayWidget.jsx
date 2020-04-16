@@ -4,13 +4,13 @@
  */
 
 import React, { Component } from 'react';
+import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Form, Grid, Label } from 'semantic-ui-react';
 import { isObject, map } from 'lodash';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { components } from 'react-select';
-import AsyncPaginate from 'react-select-async-paginate';
-import CreatableSelect from 'react-select/lib/Creatable';
+import loadable from '@loadable/component';
 
 import {
   getVocabFromHint,
@@ -18,94 +18,27 @@ import {
   getVocabFromItems,
 } from '@plone/volto/helpers';
 import { getVocabulary } from '@plone/volto/actions';
-import { Icon } from '@plone/volto/components';
 
-import downSVG from '@plone/volto/icons/down-key.svg';
-import upSVG from '@plone/volto/icons/up-key.svg';
-import checkSVG from '@plone/volto/icons/check.svg';
+import {
+  Option,
+  DropdownIndicator,
+  selectTheme,
+  customSelectStyles,
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
 
-const Option = props => {
-  return (
-    <components.Option {...props}>
-      <div>{props.label}</div>
-      {props.isFocused && !props.isSelected && (
-        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
-      )}
-      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
-    </components.Option>
-  );
-};
+const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
+const CreatableSelect = loadable(() => import('react-select/creatable'));
 
-const DropdownIndicator = props => {
-  return (
-    <components.DropdownIndicator {...props}>
-      {props.selectProps.menuIsOpen ? (
-        <Icon name={upSVG} size="24px" color="#007bc1" />
-      ) : (
-        <Icon name={downSVG} size="24px" color="#007bc1" />
-      )}
-    </components.DropdownIndicator>
-  );
-};
-
-const selectTheme = theme => ({
-  ...theme,
-  borderRadius: 0,
-  colors: {
-    ...theme.colors,
-    primary25: 'hotpink',
-    primary: '#b8c6c8',
+const messages = defineMessages({
+  select: {
+    id: 'Select…',
+    defaultMessage: 'Select…',
+  },
+  no_value: {
+    id: 'No value',
+    defaultMessage: 'No value',
   },
 });
-
-const customSelectStyles = {
-  control: (styles, state) => ({
-    ...styles,
-    border: 'none',
-    borderBottom: '1px solid #c7d5c8',
-    boxShadow: 'none',
-    borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
-    height: '60px',
-  }),
-  menu: (styles, state) => ({
-    ...styles,
-    top: null,
-    marginTop: 0,
-    boxShadow: 'none',
-    borderBottom: '1px solid #c7d5c8',
-  }),
-  indicatorSeparator: styles => ({
-    ...styles,
-    width: null,
-  }),
-  valueContainer: styles => ({
-    ...styles,
-    paddingLeft: 0,
-  }),
-  dropdownIndicator: styles => ({
-    paddingRight: 0,
-  }),
-  option: (styles, state) => ({
-    ...styles,
-    backgroundColor: null,
-    height: '50px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '14px 12px',
-    color: state.isSelected
-      ? '#007bc1'
-      : state.isFocused
-      ? '#4a4a4a'
-      : 'inherit',
-    ':active': {
-      backgroundColor: null,
-    },
-  }),
-};
-
-const getChoices = choices =>
-  choices ? choices.map(item => ({ label: item, value: item })) : [];
 
 /**
  * ArrayWidget component class.
@@ -125,7 +58,9 @@ class ArrayWidget extends Component {
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     getVocabulary: PropTypes.func.isRequired,
-    choices: PropTypes.arrayOf(PropTypes.object),
+    choices: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+    ),
     loading: PropTypes.bool,
     items: PropTypes.shape({
       vocabulary: PropTypes.object,
@@ -193,7 +128,7 @@ class ArrayWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (this.vocabBaseUrl) {
+    if (!this.props.items?.choices && this.vocabBaseUrl) {
       this.props.getVocabulary(this.vocabBaseUrl);
     }
   }
@@ -239,7 +174,11 @@ class ArrayWidget extends Component {
    */
   handleChange(selectedOption) {
     this.setState({ selectedOption });
-    this.props.onChange(this.props.id, selectedOption.map(item => item.value));
+
+    this.props.onChange(
+      this.props.id,
+      selectedOption ? selectedOption.map(item => item.value) : null,
+    );
   }
 
   /**
@@ -266,7 +205,7 @@ class ArrayWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              {this.vocabBaseUrl ? (
+              {!this.props.items?.choices && this.vocabBaseUrl ? (
                 <AsyncPaginate
                   className="react-select-container"
                   classNamePrefix="react-select"
@@ -287,12 +226,33 @@ class ArrayWidget extends Component {
                   className="react-select-container"
                   classNamePrefix="react-select"
                   options={
-                    this.props.choices || getChoices(this.props.default) || []
+                    this.props.choices
+                      ? [
+                          ...this.props.choices.map(option => ({
+                            value: option[0],
+                            label: option[1],
+                          })),
+                          {
+                            label: this.props.intl.formatMessage(
+                              messages.no_value,
+                            ),
+                            value: 'no-value',
+                          },
+                        ]
+                      : [
+                          {
+                            label: this.props.intl.formatMessage(
+                              messages.no_value,
+                            ),
+                            value: 'no-value',
+                          },
+                        ]
                   }
                   styles={customSelectStyles}
                   theme={selectTheme}
                   components={{ DropdownIndicator, Option }}
                   value={selectedOption || []}
+                  placeholder={this.props.intl.formatMessage(messages.select)}
                   onChange={this.handleChange}
                   isMulti
                 />
@@ -317,21 +277,30 @@ class ArrayWidget extends Component {
   }
 }
 
-export default connect(
-  (state, props) => {
-    const vocabBaseUrl =
-      getVocabFromHint(props) ||
-      getVocabFromField(props) ||
-      getVocabFromItems(props);
-    const vocabState = state.vocabularies[vocabBaseUrl];
-    if (vocabState) {
-      return {
-        choices: vocabState.items,
-        itemsTotal: vocabState.itemsTotal,
-        loading: Boolean(vocabState.loading),
-      };
-    }
-    return {};
-  },
-  { getVocabulary },
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => {
+      const vocabBaseUrl =
+        getVocabFromHint(props) ||
+        getVocabFromField(props) ||
+        getVocabFromItems(props);
+      const vocabState = state.vocabularies[vocabBaseUrl];
+      // If the schema already has the choices in it, then do not try to get the vocab,
+      // even if there is one
+      if (props.items?.choices) {
+        return {
+          choices: props.items.choices,
+        };
+      } else if (vocabState) {
+        return {
+          choices: vocabState.items,
+          itemsTotal: vocabState.itemsTotal,
+          loading: Boolean(vocabState.loading),
+        };
+      }
+      return {};
+    },
+    { getVocabulary },
+  ),
 )(ArrayWidget);

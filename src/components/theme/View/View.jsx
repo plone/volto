@@ -8,13 +8,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl } from 'react-intl';
+import { Helmet } from '@plone/volto/helpers';
 import qs from 'query-string';
 import { views } from '~/config';
 
-import { Comments, Tags, Toolbar } from '../../../components';
-import { listActions, getContent } from '../../../actions';
-import { BodyClass, getBaseUrl, getLayoutFieldname } from '../../../helpers';
+import { Comments, Tags, Toolbar } from '@plone/volto/components';
+import { listActions, getContent } from '@plone/volto/actions';
+import {
+  BodyClass,
+  getBaseUrl,
+  getLayoutFieldname,
+} from '@plone/volto/helpers';
 
 /**
  * View container class.
@@ -86,7 +91,6 @@ class View extends Component {
        */
       status: PropTypes.number,
     }),
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -110,7 +114,7 @@ class View extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.listActions(getBaseUrl(this.props.pathname));
     this.props.getContent(
       getBaseUrl(this.props.pathname),
@@ -124,7 +128,7 @@ class View extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.listActions(getBaseUrl(nextProps.pathname));
       this.props.getContent(
@@ -176,7 +180,9 @@ class View extends Component {
   cleanViewName = dirtyDisplayName =>
     dirtyDisplayName
       .replace('Connect(', '')
+      .replace('injectIntl(', '')
       .replace(')', '')
+      .replace('connect(', '')
       .toLowerCase();
 
   /**
@@ -212,6 +218,14 @@ class View extends Component {
 
     return (
       <div id="view">
+        <Helmet>
+          {this.props.content.language && (
+            <html lang={this.props.content.language} />
+          )}
+          <title>{this.props.content.title}</title>
+          <meta name="description" content={this.props.content.description} />
+        </Helmet>
+        {/* Body class if displayName in component is set */}
         <BodyClass
           className={
             RenderedView.displayName
@@ -219,14 +233,12 @@ class View extends Component {
               : null
           }
         />
-
         <RenderedView
           content={this.props.content}
           location={this.props.location}
           token={this.props.token}
           history={this.props.history}
         />
-
         {this.props.content.subjects &&
           this.props.content.subjects.length > 0 && (
             <Tags tags={this.props.content.subjects} />
@@ -241,7 +253,6 @@ class View extends Component {
         {this.props.content.allow_discussion && (
           <Comments pathname={this.props.pathname} />
         )}
-
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar pathname={this.props.pathname} inner={<span />} />
         </Portal>

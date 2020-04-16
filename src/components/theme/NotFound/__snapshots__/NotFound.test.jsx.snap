@@ -5,35 +5,25 @@ exports[`NotFound renders a not found component 1`] = `
   className="ui container view-wrapper"
 >
   <h1>
-    <span>
-      This page does not seem to exist…
-    </span>
+    This page does not seem to exist…
   </h1>
   <p
     className="description"
   >
-    <span>
-      We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
-    </span>
+    We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
   </p>
   <p>
-    <span>
-      If you are certain you have the correct web address but are encountering an error, please contact the 
-      <a
-        href="/contact-form"
-        onClick={[Function]}
-      >
-        <span>
-          Site Administration
-        </span>
-      </a>
-      .
-    </span>
+    If you are certain you have the correct web address but are encountering an error, please contact the 
+    <a
+      href="/contact-form"
+      onClick={[Function]}
+    >
+      Site Administration
+    </a>
+    .
   </p>
   <p>
-    <span>
-      Thank you.
-    </span>
+    Thank you.
   </p>
 </div>
 `;

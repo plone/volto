@@ -8,7 +8,7 @@ import {
   UPDATE_USER,
   INITIAL_PASSWORD,
   RESET_PASSWORD,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Users reducer', () => {
   it('should return the initial state', () => {

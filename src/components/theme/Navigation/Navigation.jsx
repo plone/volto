@@ -5,16 +5,16 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isMatch } from 'lodash';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Link } from 'react-router-dom';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { NavLink } from 'react-router-dom';
+import { defineMessages, injectIntl } from 'react-intl';
 import { Menu } from 'semantic-ui-react';
 import cx from 'classnames';
-import { getBaseUrl } from '../../../helpers';
+import { getBaseUrl } from '@plone/volto/helpers';
+import { settings } from '~/config';
 
-import { getNavigation } from '../../../actions';
+import { getNavigation } from '@plone/volto/actions';
 
 const messages = defineMessages({
   closeMobileMenu: {
@@ -47,7 +47,7 @@ class Navigation extends Component {
         url: PropTypes.string,
       }),
     ).isRequired,
-    intl: intlShape.isRequired,
+    lang: PropTypes.string.isRequired,
   };
 
   /**
@@ -70,7 +70,7 @@ class Navigation extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getNavigation(getBaseUrl(this.props.pathname));
   }
 
@@ -80,23 +80,10 @@ class Navigation extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.getNavigation(getBaseUrl(nextProps.pathname));
     }
-  }
-
-  /**
-   * Check if menu is active
-   * @method isActive
-   * @param {string} url Url of the navigation item.
-   * @returns {bool} Is menu active?
-   */
-  isActive(url) {
-    return (
-      (url === '' && this.props.pathname === '/') ||
-      (url !== '' && isMatch(this.props.pathname.split('/'), url.split('/')))
-    );
   }
 
   /**
@@ -126,9 +113,11 @@ class Navigation extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const { lang } = this.props;
+
     return (
       <nav className="navigation">
-        <div className="hamburger-wrapper mobile only">
+        <div className="hamburger-wrapper mobile tablet only">
           <button
             className={cx('hamburger hamburger--collapse', {
               'is-active': this.state.isMobileMenuOpen,
@@ -166,18 +155,24 @@ class Navigation extends Component {
           className={
             this.state.isMobileMenuOpen
               ? 'open'
-              : 'tablet computer large screen widescreen only'
+              : 'computer large screen widescreen only'
           }
           onClick={this.closeMobileMenu}
         >
           {this.props.items.map(item => (
-            <Link
+            <NavLink
               to={item.url === '' ? '/' : item.url}
               key={item.url}
-              className={this.isActive(item.url) ? 'item active' : 'item'}
+              className="item"
+              activeClassName="active"
+              exact={
+                settings.isMultilingual
+                  ? item.url === `/${lang}`
+                  : item.url === ''
+              }
             >
               {item.title}
-            </Link>
+            </NavLink>
           ))}
         </Menu>
       </nav>
@@ -190,6 +185,7 @@ export default compose(
   connect(
     state => ({
       items: state.navigation.items,
+      lang: state.intl.locale,
     }),
     { getNavigation },
   ),

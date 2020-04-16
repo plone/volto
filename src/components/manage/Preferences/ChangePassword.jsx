@@ -5,21 +5,21 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 import { Portal } from 'react-portal';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { Container } from 'semantic-ui-react';
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
 
-import { Form, Icon, Toast, Toolbar } from '../../../components';
-import { updatePassword } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
+import { Form, Icon, Toast, Toolbar } from '@plone/volto/components';
+import { updatePassword } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
 
-import backSVG from '../../../icons/back.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   changePassword: {
@@ -85,7 +85,6 @@ class ChangePassword extends Component {
     loading: PropTypes.bool.isRequired,
     updatePassword: PropTypes.func.isRequired,
     pathname: PropTypes.string.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getVocabulary } from '../../../actions';
+import { getVocabulary } from '@plone/volto/actions';
 
 const vocabulary = 'plone.app.vocabularies.Keywords';
 
@@ -37,7 +37,7 @@ class SearchTags extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getVocabulary(vocabulary);
   }
 

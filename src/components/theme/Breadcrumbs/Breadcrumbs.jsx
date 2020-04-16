@@ -9,11 +9,11 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
-import { getBreadcrumbs } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
+import { getBreadcrumbs } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 import homeSVG from '@plone/volto/icons/home.svg';
 
@@ -21,6 +21,10 @@ const messages = defineMessages({
   home: {
     id: 'Home',
     defaultMessage: 'Home',
+  },
+  breadcrumbs: {
+    id: 'Breadcrumbs',
+    defaultMessage: 'Breadcrumbs',
   },
 });
 
@@ -44,7 +48,6 @@ class Breadcrumbs extends Component {
         url: PropTypes.string,
       }),
     ).isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -52,7 +55,7 @@ class Breadcrumbs extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getBreadcrumbs(getBaseUrl(this.props.pathname));
   }
 
@@ -62,7 +65,7 @@ class Breadcrumbs extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.getBreadcrumbs(getBaseUrl(nextProps.pathname));
     }
@@ -77,7 +80,7 @@ class Breadcrumbs extends Component {
     return (
       <Segment
         role="navigation"
-        aria-label="Breadcrumbs"
+        aria-label={this.props.intl.formatMessage(messages.breadcrumbs)}
         className="breadcrumbs"
         secondary
         vertical

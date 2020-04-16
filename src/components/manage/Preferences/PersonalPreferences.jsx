@@ -11,11 +11,11 @@ import { updateIntl } from 'react-intl-redux';
 import { map, keys } from 'lodash';
 import cookie from 'react-cookie';
 import request from 'superagent';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
-import { Form, Toast } from '../../../components';
-import languages from '../../../constants/Languages';
+import { Form, Toast } from '@plone/volto/components';
+import languages from '@plone/volto/constants/Languages';
 
 const messages = defineMessages({
   personalPreferences: {
@@ -61,7 +61,6 @@ class PersonalPreferences extends Component {
    */
   static propTypes = {
     updateIntl: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
     closeMenu: PropTypes.func.isRequired,
   };
 
@@ -156,8 +155,5 @@ class PersonalPreferences extends Component {
 
 export default compose(
   injectIntl,
-  connect(
-    null,
-    { updateIntl },
-  ),
+  connect(null, { updateIntl }),
 )(PersonalPreferences);

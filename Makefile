@@ -22,10 +22,17 @@ build-frontend:
 
 .PHONY: Build Plone 5.2
 build-backend:  ## Build Plone 5.2
-	(cd api && virtualenv --clear --python=python3 .)
+	(cd api && python3 -m venv .)
 	(cd api && bin/pip install --upgrade pip)
 	(cd api && bin/pip install -r requirements.txt)
-	(cd api && bin/buildout -c plone-5.2.x.cfg)
+	(cd api && bin/buildout)
+
+.PHONY: Build Plone 5.2 in specific port
+build-backend-withport:  ## Build Plone 5.2 with port
+	(cd api && python3 -m venv .)
+	(cd api && bin/pip install --upgrade pip)
+	(cd api && bin/pip install -r requirements.txt)
+	(cd api && bin/buildout instance:http-address=$(INSTANCE_PORT))
 
 dist:
 	yarn
@@ -34,24 +41,21 @@ dist:
 test:
 	(cd api && bin/test)
 
-bin/pip:
-	virtualenv --clear --python=python3 .
-	bin/pip install -r requirements-docs.txt
-
 docs-serve:
 	(cd docs && ../bin/mkdocs serve)
 
-docs-build: bin/pip
+docs-build:
+	# The build in netlify breaks because they have not installed ensurepip
+	# So we should continue using virtualenv
+	virtualenv --python=python3 .
+	./bin/pip install -r requirements-docs.txt
 	(cd docs && ../bin/mkdocs build)
 
 start-frontend: dist
 	yarn start:prod
 
-start-api-docker:
-	docker-compose -f api/docker-compose.yml up
-
 start-backend-docker:
-	docker run --rm -it -p 8080:8080 kitconcept/plone.restapi:latest
+	docker run -it --rm --name=plone -p 8080:8080 -e SITE=Plone -e ADDONS="kitconcept.volto" -e ZCML="kitconcept.volto.cors" plone
 
 start-backend-docker-guillotina:
 	docker-compose -f g-api/docker-compose.yml up -d
@@ -60,7 +64,7 @@ stop-backend-docker-guillotina:
 	docker-compose -f g-api/docker-compose.yml down
 
 test-acceptance-server:
-	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.voltodemo,kitconcept.voltodemo.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.voltodemo:default ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.volto,kitconcept.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 test-acceptance-guillotina:
 	docker-compose -f g-api/docker-compose.yml up > /dev/null
@@ -77,7 +81,7 @@ start-backend: ## Start Plone Backend
 .PHONY: start-test-backend
 start-test-backend: ## Start Test Plone Backend
 	@echo "$(GREEN)==> Start Test Plone Backend$(RESET)"
-	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.voltodemo,kitconcept.voltodemo.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.voltodemo:default ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
+	ZSERVER_PORT=55001 CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,kitconcept.volto,kitconcept.volto.cors APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,kitconcept.volto:default-homepage ./api/bin/robot-server plone.app.robotframework.testing.PLONE_ROBOT_TESTING
 
 .PHONY: start-test-frontend
 start-test-frontend: ## Start Test Volto Frontend
@@ -88,5 +92,10 @@ start-test-frontend: ## Start Test Volto Frontend
 start-test: ## Start Test
 	@echo "$(GREEN)==> Start Test$(RESET)"
 	yarn cypress:open
+
+.PHONY: start-test-all
+start-test-all: ## Start Test
+	@echo "$(GREEN)==> Start Test$(RESET)"
+	yarn ci:cypress:run
 
 .PHONY: all start test-acceptance

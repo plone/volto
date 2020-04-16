@@ -8,10 +8,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { isEmpty, map } from 'lodash';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
-import { updateContent } from '../../../actions';
-import { ModalForm } from '../../../components';
+import { updateContent } from '@plone/volto/actions';
+import { ModalForm } from '@plone/volto/components';
 
 const messages = defineMessages({
   properties: {
@@ -93,7 +93,6 @@ class ContentsPropertiesModal extends Component {
     open: PropTypes.bool.isRequired,
     onOk: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -113,7 +112,7 @@ class ContentsPropertiesModal extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.request.loading && nextProps.request.loaded) {
       this.props.onOk();
     }

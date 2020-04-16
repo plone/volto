@@ -9,9 +9,8 @@ import { Icon as IconOld, Form, Grid, Label } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { map, find, isBoolean, isObject } from 'lodash';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import Select, { components } from 'react-select';
-import AsyncPaginate from 'react-select-async-paginate';
+import { defineMessages, injectIntl } from 'react-intl';
+import loadable from '@loadable/component';
 
 import {
   getBoolean,
@@ -19,12 +18,18 @@ import {
   getVocabFromField,
   getVocabFromItems,
 } from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
+
 import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
 
-import downSVG from '@plone/volto/icons/down-key.svg';
-import upSVG from '@plone/volto/icons/up-key.svg';
-import checkSVG from '@plone/volto/icons/check.svg';
+import {
+  Option,
+  DropdownIndicator,
+  selectTheme,
+  customSelectStyles,
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+const Select = loadable(() => import('react-select'));
+const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
 
 const messages = defineMessages({
   default: {
@@ -47,6 +52,10 @@ const messages = defineMessages({
     id: 'Description',
     defaultMessage: 'Description',
   },
+  close: {
+    id: 'Close',
+    defaultMessage: 'Close',
+  },
   choices: {
     id: 'Choices',
     defaultMessage: 'Choices',
@@ -55,87 +64,11 @@ const messages = defineMessages({
     id: 'Required',
     defaultMessage: 'Required',
   },
-});
-
-const Option = props => {
-  return (
-    <components.Option {...props}>
-      <div>{props.label}</div>
-      {props.isFocused && !props.isSelected && (
-        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
-      )}
-      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
-    </components.Option>
-  );
-};
-
-const DropdownIndicator = props => {
-  return (
-    <components.DropdownIndicator {...props}>
-      {props.selectProps.menuIsOpen ? (
-        <Icon name={upSVG} size="24px" color="#007bc1" />
-      ) : (
-        <Icon name={downSVG} size="24px" color="#007bc1" />
-      )}
-    </components.DropdownIndicator>
-  );
-};
-
-const selectTheme = theme => ({
-  ...theme,
-  borderRadius: 0,
-  colors: {
-    ...theme.colors,
-    primary25: 'hotpink',
-    primary: '#b8c6c8',
+  no_value: {
+    id: 'No value',
+    defaultMessage: 'No value',
   },
 });
-
-const customSelectStyles = {
-  control: (styles, state) => ({
-    ...styles,
-    border: 'none',
-    borderBottom: '1px solid #c7d5d8',
-    boxShadow: 'none',
-    borderBottomStyle: state.menuIsOpen ? 'dotted' : 'solid',
-    height: '60px',
-  }),
-  menu: (styles, state) => ({
-    ...styles,
-    top: null,
-    marginTop: 0,
-    boxShadow: 'none',
-    borderBottom: '1px solid #c7d5d8',
-  }),
-  indicatorSeparator: styles => ({
-    ...styles,
-    width: null,
-  }),
-  valueContainer: styles => ({
-    ...styles,
-    paddingLeft: 0,
-  }),
-  dropdownIndicator: styles => ({
-    paddingRight: 0,
-  }),
-  option: (styles, state) => ({
-    ...styles,
-    backgroundColor: null,
-    height: '50px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '14px 12px',
-    color: state.isSelected
-      ? '#007bc1'
-      : state.isFocused
-      ? '#4a4a4a'
-      : 'inherit',
-    ':active': {
-      backgroundColor: null,
-    },
-  }),
-};
 
 function getDefaultValues(choices, value) {
   if (!isObject(value) && isBoolean(value)) {
@@ -150,12 +83,18 @@ function getDefaultValues(choices, value) {
       : {};
   }
   if (value === 'no-value') {
-    return { label: 'No value', value: 'no-value' };
+    return {
+      label: this.props.intl.formatMessage(messages.no_value),
+      value: 'no-value',
+    };
   }
   if (isObject(value)) {
-    return { label: value.title, value: value.token };
+    return {
+      label: value.title !== 'None' && value.title ? value.title : value.token,
+      value: value.token,
+    };
   }
-  if (value) {
+  if (value && choices.length > 0) {
     return { label: find(choices, o => o[0] === value)[1], value };
   } else {
     return {};
@@ -200,7 +139,6 @@ class SelectWidget extends Component {
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     itemsTotal: PropTypes.number,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -237,15 +175,10 @@ class SelectWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (this.vocabBaseUrl) {
-      this.props.getVocabulary(this.vocabBaseUrl);
+    if (!this.props.choices && this.props.vocabBaseUrl) {
+      this.props.getVocabulary(this.props.vocabBaseUrl);
     }
   }
-
-  vocabBaseUrl =
-    getVocabFromHint(this.props) ||
-    getVocabFromField(this.props) ||
-    getVocabFromItems(this.props);
 
   /**
    * Initiate search with new query
@@ -257,7 +190,7 @@ class SelectWidget extends Component {
    */
   loadOptions = (search, previousOptions, additional) => {
     const offset = this.state.search !== search ? 0 : additional.offset;
-    this.props.getVocabulary(this.vocabBaseUrl, search, offset);
+    this.props.getVocabulary(this.props.vocabBaseUrl, search, offset);
     this.setState({ search });
     return {
       options: this.props.choices,
@@ -361,19 +294,22 @@ class SelectWidget extends Component {
             <Grid.Column width="8">
               {onEdit && (
                 <div className="toolbar">
-                  <button className="item" onClick={() => onEdit(id, schema)}>
+                  <button
+                    onClick={() => onEdit(id, schema)}
+                    className="item ui noborder button"
+                  >
                     <IconOld name="write square" size="large" color="blue" />
                   </button>
                   <button
-                    aria-label="Close"
-                    className="item"
+                    aria-label={this.props.intl.formatMessage(messages.close)}
+                    className="item ui noborder button"
                     onClick={() => onDelete(id)}
                   >
                     <IconOld name="close" size="large" color="red" />
                   </button>
                 </div>
               )}
-              {this.vocabBaseUrl ? (
+              {this.props.vocabBaseUrl ? (
                 <AsyncPaginate
                   className="react-select-container"
                   classNamePrefix="react-select"
@@ -396,11 +332,18 @@ class SelectWidget extends Component {
                   className="react-select-container"
                   classNamePrefix="react-select"
                   options={[
-                    ...choices.map(option => ({
+                    ...map(choices, option => ({
                       value: option[0],
-                      label: option[1],
+                      label:
+                        // Fix "None" on the serializer, to remove when fixed in p.restapi
+                        option[1] !== 'None' && option[1]
+                          ? option[1]
+                          : option[0],
                     })),
-                    { label: 'No value', value: 'no-value' },
+                    {
+                      label: this.props.intl.formatMessage(messages.no_value),
+                      value: 'no-value',
+                    },
                   ]}
                   styles={customSelectStyles}
                   theme={selectTheme}
@@ -438,17 +381,32 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => {
-      const vocabBaseUrl =
-        getVocabFromHint(props) ||
-        getVocabFromField(props) ||
-        getVocabFromItems(props);
+      const vocabBaseUrl = !props.choices
+        ? getVocabFromHint(props) ||
+          getVocabFromField(props) ||
+          getVocabFromItems(props)
+        : '';
       const vocabState = state.vocabularies[vocabBaseUrl];
-      if (vocabState) {
+
+      // If the schema already has the choices in it, then do not try to get the vocab,
+      // even if there is one
+      if (props.choices) {
         return {
+          choices: props.choices,
+        };
+      } else if (vocabState) {
+        return {
+          vocabBaseUrl,
           vocabState,
           choices: vocabState.items,
           itemsTotal: vocabState.itemsTotal,
           loading: Boolean(vocabState.loading),
+        };
+        // There is a moment that vocabState is not there yet, so we need to pass the
+        // vocabBaseUrl to the component.
+      } else if (vocabBaseUrl) {
+        return {
+          vocabBaseUrl,
         };
       }
       return {};

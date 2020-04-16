@@ -7,7 +7,6 @@ databases:
     dsn: postgresql://guillotina@postgres:5432/guillotina
     pool_size: 100
 applications:
-- guillotina_dbusers
 - guillotina_cms
 - guillotina.contrib.cache
 - guillotina.contrib.swagger
@@ -48,10 +47,43 @@ cors:
   - "*"
   allow_credentials: true
   max_age: 3660
-default_tiles:
+default_blocks:
   Document:
   - type: title
   - type: text
+layouts:
+  Document:
+  - default
+  - document_view
+  - layout_view
+  News:
+  - default
+  - document_view
+  - layout_view
+  Event:
+  - default
+  - document_view
+  - layout_view
+  Image:
+  - default
+  - document_view
+  - layout_view
+  File:
+  - default
+  - document_view
+  - layout_view
+  Link:
+  - default
+  - document_view
+  - layout_view
+  CMSFolder:
+  - default
+  - listing_view
+  - event_listing
+  - album_view
+  - summary_view
+  - full_view
+  - layout_view
 workflows:
   basic:
     initial_state: private

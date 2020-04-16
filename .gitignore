@@ -16,6 +16,8 @@ build
 .idea
 lighthouse-report.html
 .vscode/
+.#*
+*~
 
 # Python
 /api/eggs/
@@ -27,14 +29,17 @@ lighthouse-report.html
 /api/parts/
 /api/share/python-wheels/
 /api/src/
+/api/venv/
 /api/notebook/env/
 api/.Python
+api/pyvenv.cfg
 api/include
 api/lib
 api/pip-selfcheck.json
 /bin
 /lib
 include
+share
 .Python
 
 # Tests
@@ -54,3 +59,4 @@ cypress/screenshots
 
 # Local environment setup
 .env
+.vscode

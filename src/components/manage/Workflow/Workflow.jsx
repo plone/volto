@@ -8,28 +8,42 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { uniqBy } from 'lodash';
-import Select, { components } from 'react-select';
+import loadable from '@loadable/component';
 import { toast } from 'react-toastify';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import getWorkflowMapping from '../../../constants/Workflows';
-import { Icon } from '../../../components';
-import downSVG from '../../../icons/down-key.svg';
-import upSVG from '../../../icons/up-key.svg';
-import checkSVG from '../../../icons/check.svg';
-
-import { getContent, getWorkflow, transitionWorkflow } from '../../../actions';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import getWorkflowMapping from '@plone/volto/constants/Workflows';
+import { Icon, Toast } from '@plone/volto/components';
 import { settings } from '~/config';
-import { Toast } from '../../../components';
+
+import {
+  getContent,
+  getWorkflow,
+  transitionWorkflow,
+} from '@plone/volto/actions';
+
+import downSVG from '@plone/volto/icons/down-key.svg';
+import upSVG from '@plone/volto/icons/up-key.svg';
+import checkSVG from '@plone/volto/icons/check.svg';
+
+const ReactSelect = loadable.lib(() => import('react-select'));
 
 const messages = defineMessages({
   messageUpdated: {
     id: 'Workflow updated.',
     defaultMessage: 'Workflow updated.',
   },
+  messageNoWorkflow: {
+    id: 'No workflow',
+    defaultMessage: 'No workflow',
+  },
 });
 
 const Placeholder = props => {
-  return <components.Placeholder {...props} />;
+  return (
+    <ReactSelect>
+      {({ components }) => <components.Placeholder {...props} />}
+    </ReactSelect>
+  );
 };
 
 const SingleValue = ({ children, ...props }) => {
@@ -44,10 +58,14 @@ const SingleValue = ({ children, ...props }) => {
     borderRadius: '50%',
   };
   return (
-    <components.SingleValue {...props}>
-      <span style={stateDecorator} />
-      {children}
-    </components.SingleValue>
+    <ReactSelect>
+      {({ components }) => (
+        <components.SingleValue {...props}>
+          <span style={stateDecorator} />
+          {children}
+        </components.SingleValue>
+      )}
+    </ReactSelect>
   );
 };
 
@@ -70,26 +88,36 @@ const Option = props => {
         : null,
   };
   return (
-    <components.Option {...props}>
-      <span style={stateDecorator} />
-      <div style={{ marginRight: 'auto' }}>{props.label}</div>
-      {props.isFocused && !props.isSelected && (
-        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+    <ReactSelect>
+      {({ components }) => (
+        <components.Option {...props}>
+          <span style={stateDecorator} />
+          <div style={{ marginRight: 'auto' }}>{props.label}</div>
+          {props.isFocused && !props.isSelected && (
+            <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+          )}
+          {props.isSelected && (
+            <Icon name={checkSVG} size="24px" color="#007bc1" />
+          )}
+        </components.Option>
       )}
-      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
-    </components.Option>
+    </ReactSelect>
   );
 };
 
 const DropdownIndicator = props => {
   return (
-    <components.DropdownIndicator {...props}>
-      {props.selectProps.menuIsOpen ? (
-        <Icon name={upSVG} size="24px" color="#007bc1" />
-      ) : (
-        <Icon name={downSVG} size="24px" color="#007bc1" />
+    <ReactSelect>
+      {({ components }) => (
+        <components.DropdownIndicator {...props}>
+          {props.selectProps.menuIsOpen ? (
+            <Icon name={upSVG} size="24px" color="#007bc1" />
+          ) : (
+            <Icon name={downSVG} size="24px" color="#007bc1" />
+          )}
+        </components.DropdownIndicator>
       )}
-    </components.DropdownIndicator>
+    </ReactSelect>
   );
 };
 
@@ -172,7 +200,6 @@ class Workflow extends Component {
         title: PropTypes.string,
       }),
     ),
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -196,7 +223,7 @@ class Workflow extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getWorkflow(this.props.pathname);
   }
 
@@ -206,7 +233,7 @@ class Workflow extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
       this.props.getWorkflow(nextProps.pathname);
     }
@@ -285,32 +312,48 @@ class Workflow extends Component {
 
     return (
       <Fragment>
-        <label htmlFor="state-select">State</label>
-        <Select
-          name="display-select"
-          className="react-select-container"
-          classNamePrefix="react-select"
-          isDisabled={
-            !this.props.content.review_state ||
-            this.props.transitions.length === 0
-          }
-          options={uniqBy(
-            this.props.transitions.map(transition =>
-              getWorkflowMapping(transition['@id']),
-            ),
-            'label',
-          ).concat(selectedOption)}
-          styles={customSelectStyles}
-          theme={selectTheme}
-          components={{ DropdownIndicator, Placeholder, Option, SingleValue }}
-          onChange={this.transition}
-          defaultValue={
-            this.props.content.review_state
-              ? selectedOption
-              : { label: 'No workflow', value: 'noworkflow' }
-          }
-          isSearchable={false}
-        />
+        <label htmlFor="state-select">
+          <FormattedMessage id="State" defaultMessage="State" />
+        </label>
+        <ReactSelect>
+          {({ default: Select }) => (
+            <Select
+              name="display-select"
+              className="react-select-container"
+              classNamePrefix="react-select"
+              isDisabled={
+                !this.props.content.review_state ||
+                this.props.transitions.length === 0
+              }
+              options={uniqBy(
+                this.props.transitions.map(transition =>
+                  getWorkflowMapping(transition['@id']),
+                ),
+                'label',
+              ).concat(selectedOption)}
+              styles={customSelectStyles}
+              theme={selectTheme}
+              components={{
+                DropdownIndicator,
+                Placeholder,
+                Option,
+                SingleValue,
+              }}
+              onChange={this.transition}
+              defaultValue={
+                this.props.content.review_state
+                  ? selectedOption
+                  : {
+                      label: this.props.intl.formatMessage(
+                        messages.messageNoWorkflow,
+                      ),
+                      value: 'noworkflow',
+                    }
+              }
+              isSearchable={false}
+            />
+          )}
+        </ReactSelect>
       </Fragment>
     );
   }

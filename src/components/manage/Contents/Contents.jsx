@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Portal } from 'react-portal';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import {
   Breadcrumb,
@@ -34,12 +34,7 @@ import {
 import move from 'lodash-move';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import {
   searchContent,
@@ -50,9 +45,9 @@ import {
   moveContent,
   orderContent,
   sortContent,
-} from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
-import Indexes from '../../../constants/Indexes';
+} from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
+import Indexes from '@plone/volto/constants/Indexes';
 import {
   ContentsIndexHeader,
   ContentsItem,
@@ -65,12 +60,13 @@ import {
   Toolbar,
   Toast,
   Icon as IconNext,
-} from '../../../components';
+} from '@plone/volto/components';
 import { toast } from 'react-toastify';
 
-import backSVG from '../../../icons/back.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
+
 const messages = defineMessages({
   back: {
     id: 'Back',
@@ -144,6 +140,10 @@ const messages = defineMessages({
     id: 'Select columns to show',
     defaultMessage: 'Select columns to show',
   },
+  sort: {
+    id: 'sort',
+    defaultMessage: 'sort',
+  },
   state: {
     id: 'State',
     defaultMessage: 'State',
@@ -159,6 +159,62 @@ const messages = defineMessages({
   success: {
     id: 'Success',
     defaultMessage: 'Success',
+  },
+  publicationDate: {
+    id: 'Publication date',
+    defaultMessage: 'Publication date',
+  },
+  createdOn: {
+    id: 'Created on',
+    defaultMessage: 'Created on',
+  },
+  expirationDate: {
+    id: 'Expiration date',
+    defaultMessage: 'Expiration date',
+  },
+  id: {
+    id: 'ID',
+    defaultMessage: 'ID',
+  },
+  uid: {
+    id: 'UID',
+    defaultMessage: 'UID',
+  },
+  reviewState: {
+    id: 'Review state',
+    defaultMessage: 'Review state',
+  },
+  folder: {
+    id: 'Folder',
+    defaultMessage: 'Folder',
+  },
+  excludedFromNavigation: {
+    id: 'Excluded from navigation',
+    defaultMessage: 'Excluded from navigation',
+  },
+  objectSize: {
+    id: 'Object Size',
+    defaultMessage: 'Object Size',
+  },
+  lastCommentedDate: {
+    id: 'Last comment date',
+    defaultMessage: 'Last comment date',
+  },
+  totalComments: {
+    id: 'Total comments',
+    defaultMessage: 'Total comments',
+  },
+  creator: {
+    id: 'Creator',
+    defaultMessage: 'Creator',
+  },
+  endDate: {
+    id: 'End Date',
+    defaultMessage: 'End Date',
+  },
+  startDate: {
+    id: 'Start Date',
+    defaultMessage: 'Start Date',
   },
 });
 
@@ -216,7 +272,6 @@ class Contents extends Component {
     ).isRequired,
     total: PropTypes.number.isRequired,
     pathname: PropTypes.string.isRequired,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -295,6 +350,8 @@ class Contents extends Component {
         })),
         selectedCount: defaultIndexes.length + 1,
       },
+      sort_on: 'getObjPositionInParent',
+      sort_order: 'ascending',
     };
     this.filterTimeout = null;
   }
@@ -304,7 +361,7 @@ class Contents extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.fetchContents();
   }
 
@@ -314,7 +371,7 @@ class Contents extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       (this.props.clipboardRequest.loading &&
         nextProps.clipboardRequest.loaded) ||
@@ -517,6 +574,10 @@ class Contents extends Component {
    */
   onSortItems(event, { value }) {
     const values = value.split('|');
+    this.setState({
+      sort_on: values[0],
+      sort_order: values[1],
+    });
     this.props.sortContent(
       getBaseUrl(this.props.pathname),
       values[0],
@@ -721,7 +782,8 @@ class Contents extends Component {
   fetchContents(pathname) {
     this.props.searchContent(getBaseUrl(pathname || this.props.pathname), {
       'path.depth': 1,
-      sort_on: 'getObjPositionInParent',
+      sort_on: this.state.sort_on,
+      sort_order: this.state.sort_order,
       metadata_fields: '_all',
       ...(this.state.filter && { SearchableText: `${this.state.filter}*` }),
       b_size: this.state.pageSize,
@@ -1066,7 +1128,11 @@ class Contents extends Component {
                             ) : (
                               <Icon name="square outline" />
                             )}
-                            {this.state.index.values[index].label}
+                            {this.props.intl.formatMessage({
+                              id: this.state.index.values[index].label,
+                              defaultMessage: this.state.index.values[index]
+                                .label,
+                            })}
                           </Dropdown.Item>
                         ))}
                       </Dropdown.Menu>
@@ -1079,6 +1145,10 @@ class Contents extends Component {
                       <Table.HeaderCell>
                         <Dropdown
                           trigger={<Icon name="sort content ascending" />}
+                          className="sort-icon"
+                          aria-label={this.props.intl.formatMessage(
+                            messages.sort,
+                          )}
                           icon={null}
                           simple
                         >
@@ -1095,16 +1165,20 @@ class Contents extends Component {
                                 'EffectiveDate',
                                 'CreationDate',
                                 'ModificationDate',
-                                'Type',
+                                'portal_type',
                               ],
                               index => (
-                                <Dropdown.Item key={index}>
+                                <Dropdown.Item
+                                  key={index}
+                                  className={`sort_${index}`}
+                                >
                                   <Icon name="dropdown" />
-                                  {Indexes[index].label}
+                                  <FormattedMessage id={Indexes[index].label} />
                                   <Dropdown.Menu>
                                     <Dropdown.Item
                                       onClick={this.onSortItems}
-                                      value={`${index}|ascending`}
+                                      value={`${Indexes[index].sort_on}|ascending`}
+                                      className={`sort_${Indexes[index].sort_on}_ascending`}
                                     >
                                       <Icon name="sort alphabet ascending" />{' '}
                                       <FormattedMessage
@@ -1114,7 +1188,8 @@ class Contents extends Component {
                                     </Dropdown.Item>
                                     <Dropdown.Item
                                       onClick={this.onSortItems}
-                                      value={`${index}|descending`}
+                                      value={`${Indexes[index].sort_on}|descending`}
+                                      className={`sort_${Indexes[index].sort_on}_descending`}
                                     >
                                       <Icon name="sort alphabet descending" />{' '}
                                       <FormattedMessage
@@ -1270,7 +1345,10 @@ class Contents extends Component {
             pathname={this.props.pathname}
             hideDefaultViewButtons
             inner={
-              <Link to={`${path}`}>
+              <Link
+                to={`${path}`}
+                aria-label={this.props.intl.formatMessage(messages.back)}
+              >
                 <IconNext
                   name={backSVG}
                   className="contents circled"

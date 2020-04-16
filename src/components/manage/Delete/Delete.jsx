@@ -5,22 +5,17 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import { Button, Container, List, Segment } from 'semantic-ui-react';
-import {
-  FormattedMessage,
-  defineMessages,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 
-import { deleteContent, getContent } from '../../../actions';
-import { Toolbar } from '../../../components';
+import { deleteContent, getContent } from '@plone/volto/actions';
+import { Toolbar } from '@plone/volto/components';
 
 const messages = defineMessages({
   delete: {
@@ -60,7 +55,6 @@ class Delete extends Component {
       title: PropTypes.string,
     }),
     returnUrl: PropTypes.string,
-    intl: intlShape.isRequired,
   };
 
   /**
@@ -90,7 +84,7 @@ class Delete extends Component {
    * @method componentWillMount
    * @returns {undefined}
    */
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.getContent(this.props.pathname.split('/delete')[0]);
   }
 
@@ -100,7 +94,7 @@ class Delete extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.deleteRequest.loading && nextProps.deleteRequest.loaded) {
       this.props.history.push(
         this.props.returnUrl ||

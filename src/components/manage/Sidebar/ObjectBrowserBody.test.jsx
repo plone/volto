@@ -3,11 +3,11 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
-import ImageSidebar from './ImageSidebar';
+import ImageSidebar from '../Blocks/Image/ImageSidebar';
 
 const mockStore = configureStore();
 
-test('renders an Image Tile Sidebar component', () => {
+test('renders an Image Block Sidebar component', () => {
   const store = mockStore({
     content: {
       create: {},
@@ -22,9 +22,9 @@ test('renders an Image Tile Sidebar component', () => {
     <Provider store={store}>
       <ImageSidebar
         data={{ url: 'image' }}
-        tile="1234"
+        block="1234"
         pathname="/news"
-        onChangeTile={() => {}}
+        onChangeBlock={() => {}}
         openObjectBrowser={() => {}}
       />
     </Provider>,

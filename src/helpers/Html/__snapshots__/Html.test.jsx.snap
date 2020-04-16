@@ -18,6 +18,10 @@ exports[`Html renders a html component 1`] = `
       rel="shortcut icon"
     />
     <meta
+      content="Volto - http://plone.org"
+      name="generator"
+    />
+    <meta
       content="width=device-width, initial-scale=1"
       name="viewport"
     />
@@ -26,13 +30,10 @@ exports[`Html renders a html component 1`] = `
       name="apple-mobile-web-app-capable"
     />
     <link
-      href="style.css"
-      rel="stylesheet"
-    />
-    <script
-      crossOrigin="true"
-      defer={true}
-      src="bundle.js"
+      as="script"
+      data-chunk="client"
+      href="http://localhost:3001/static/js/runtime~client.js"
+      rel="preload"
     />
   </head>
   <body
@@ -61,6 +62,11 @@ exports[`Html renders a html component 1`] = `
           "__html": "window.__data=undefined;",
         }
       }
+    />
+    <script
+      async={true}
+      crossOrigin="true"
+      src="bundle.js"
     />
   </body>
 </html>

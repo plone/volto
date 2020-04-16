@@ -1,4 +1,6 @@
-import DocumentView from '@plone/volto/components/theme/View/DocumentView';
+import loadable from '@loadable/component';
+
+import DefaultView from '@plone/volto/components/theme/View/DefaultView';
 import FileView from '@plone/volto/components/theme/View/FileView';
 import ImageView from '@plone/volto/components/theme/View/ImageView';
 import ListingView from '@plone/volto/components/theme/View/ListingView';
@@ -7,6 +9,11 @@ import SummaryView from '@plone/volto/components/theme/View/SummaryView';
 import TabularView from '@plone/volto/components/theme/View/TabularView';
 import LinkView from '@plone/volto/components/theme/View/LinkView';
 import NotFoundView from '@plone/volto/components/theme/NotFound/NotFound';
+import AlbumView from '@plone/volto/components/theme/View/AlbumView';
+
+const EventView = loadable(() =>
+  import('@plone/volto/components/theme/View/EventView'),
+);
 
 // Layout View Registry
 export const layoutViews = {
@@ -14,6 +21,7 @@ export const layoutViews = {
   tabular_view: TabularView,
   listing_view: ListingView,
   link_redirect_view: LinkView,
+  album_view: AlbumView,
 };
 
 // Content Types View Registry
@@ -21,10 +29,11 @@ export const contentTypesViews = {
   'News Item': NewsItemView,
   File: FileView,
   Image: ImageView,
+  Event: EventView,
 };
 
 // Default view
-export const defaultView = DocumentView;
+export const defaultView = DefaultView;
 
 export const errorViews = {
   '404': NotFoundView,

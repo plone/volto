@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders an Image Tile Sidebar component 1`] = `
+exports[`renders an Image Block Sidebar component 1`] = `
 <div
   className="ui raised segments"
 >
@@ -8,9 +8,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
     className="header pulled"
   >
     <h2>
-      <span>
-        Image
-      </span>
+      Image
     </h2>
   </header>
   <div
@@ -18,7 +16,6 @@ exports[`renders an Image Tile Sidebar component 1`] = `
   >
     image
     <img
-      alt=""
       src="image"
       style={
         Object {
@@ -31,7 +28,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
     className="ui segment form sidebar-image-data"
   >
     <div
-      className="inline field"
+      className="inline field text"
       id="field-external"
     >
       <div
@@ -76,6 +73,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
                   }
                 }
                 className="icon"
+                onClick={[Function]}
               />
             </div>
             <button
@@ -105,7 +103,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
       </div>
     </div>
     <div
-      className="inline field"
+      className="inline field text"
       id="field-alt"
     >
       <div
@@ -164,9 +162,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
               <label
                 htmlFor="field-align"
               >
-                <span>
-                  Alignment
-                </span>
+                Alignment
               </label>
             </div>
           </div>
@@ -323,7 +319,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
       className="content active"
     >
       <div
-        className="inline field"
+        className="inline field text"
         id="field-link"
       >
         <div
@@ -368,6 +364,7 @@ exports[`renders an Image Tile Sidebar component 1`] = `
                     }
                   }
                   className="icon"
+                  onClick={[Function]}
                 />
               </div>
               <button

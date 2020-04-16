@@ -22,13 +22,11 @@ import {
 import plugins, { inlineToolbarButtons } from './RichTextEditor/Plugins';
 import FromHTMLCustomBlockFn from './RichTextEditor/FromHTML';
 import {
-  customTiles,
-  defaultTilesViewMap,
-  defaultTilesEditMap,
-  messagesTiles,
-  requiredTiles,
-  sidebarComponents,
-} from './Tiles';
+  groupBlocksOrder,
+  requiredBlocks,
+  blocksConfig,
+  initialBlocks,
+} from './Blocks';
 
 export const settings = {
   host: process.env.HOST || 'localhost',
@@ -48,6 +46,13 @@ export const settings = {
   ToHTMLRenderers,
   ToHTMLOptions,
   imageObjects: ['Image'],
+  listingPreviewImageField: 'image',
+  customStyleMap: null,
+  notSupportedBrowsers: ['ie'],
+  defaultPageSize: 25,
+  isMultilingual: false,
+  supportedLanguages: ['en'],
+  defaultLanguage: 'en',
 };
 
 export const widgets = {
@@ -62,11 +67,9 @@ export const views = {
   errorViews,
 };
 
-export const tiles = {
-  customTiles,
-  defaultTilesViewMap,
-  defaultTilesEditMap,
-  messagesTiles,
-  requiredTiles,
-  sidebarComponents,
+export const blocks = {
+  requiredBlocks,
+  blocksConfig,
+  groupBlocksOrder,
+  initialBlocks,
 };
