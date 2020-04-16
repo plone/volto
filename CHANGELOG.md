@@ -2,17 +2,10 @@
 
 ## 5.0.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Show new added user in user control panel @iFlameing #1271
 - Fixes for contact form @nzambello
-
-
-### Internal
 
 ## 5.0.0 (2020-04-12)
 
