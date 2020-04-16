@@ -594,7 +594,7 @@ class Form extends Component {
     const { formData } = this.state;
     const blocksFieldname = getBlocksFieldname(formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
-    const renderBlocks = formData[blocksLayoutFieldname].items;
+    const renderBlocks = formData[blocksLayoutFieldname]?.items;
     const blocksDict = formData[blocksFieldname];
     const schema = this.removeBlocksLayoutFields(originalSchema);
 
