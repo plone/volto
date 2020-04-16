@@ -4,7 +4,7 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
@@ -268,6 +268,7 @@ class AddonsControlpanel extends Component {
             <a
               href="http://docs.plone.org/manage/installing/installing_addons.html"
               target="_blank"
+              rel="noopener noreferrer"
             >
               Installing a third party add-on
             </a>

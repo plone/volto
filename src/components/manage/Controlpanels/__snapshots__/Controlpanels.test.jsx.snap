@@ -88,6 +88,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
                   <i
                     aria-hidden="true"
                     className="setting icon"
+                    onClick={[Function]}
                   />
                   <div
                     className="content"

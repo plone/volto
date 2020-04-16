@@ -13,7 +13,7 @@ export {
   moveContent,
 } from '@plone/volto/actions/clipboard/clipboard';
 export {
-  installAddons,
+  installAddon,
   listAddons,
   uninstallAddon,
   upgradeAddon,

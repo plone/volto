@@ -10,9 +10,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
     <div
       className="ui segment primary"
     >
-      <span>
-        Add-ons Settings
-      </span>
+      Add-ons Settings
     </div>
     <div
       className="ui attached message"
@@ -20,13 +18,9 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
       <div
         className="header"
       >
-        <span>
-          Updates available
-        </span>
+        Updates available
       </div>
-      <span>
-        Update installed addons
-      </span>
+      Update installed addons
     </div>
     <div
       className="ui segment"
@@ -34,16 +28,13 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
       <h3
         className="ui header"
       >
-        <span>
-          Activate and deactivate add-ons in the lists below.
-        </span>
+        Activate and deactivate add-ons in the lists below.
       </h3>
-      <span>
-        To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
-      </span>
+      To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
        
       <a
         href="http://docs.plone.org/manage/installing/installing_addons.html"
+        rel="noopener noreferrer"
         target="_blank"
       >
         Installing a third party add-on
@@ -53,9 +44,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
     <div
       className="ui secondary segment"
     >
-      <span>
-        Installed
-      </span>
+      Installed
       :
       <div
         className="ui circular label"
@@ -82,9 +71,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
             <span
               className="updateText"
             >
-              <span>
-                Update
-              </span>
+              Update
             </span>
             <svg
               className="icon accordionToggle"
@@ -121,26 +108,20 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
                 onClick={[Function]}
                 value="plone.app.whatever"
               >
-                <span>
-                  Update
-                </span>
+                Update
               </button>
               <button
                 className="ui basic negative button uninstallAction"
                 onClick={[Function]}
                 value="plone.app.whatever"
               >
-                <span>
-                  Uninstall
-                </span>
+                Uninstall
               </button>
             </div>
             <div
               className="version"
             >
-              <span>
-                Installed version
-              </span>
+              Installed version
               :   
               1.0.0
             </div>
@@ -154,9 +135,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
     <div
       className="ui secondary segment"
     >
-      <span>
-        Available
-      </span>
+      Available
       :
       <div
         className="ui circular label"
@@ -215,17 +194,13 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
                 onClick={[Function]}
                 value="plone.app.somethingelse"
               >
-                <span>
-                  Install
-                </span>
+                Install
               </button>
             </div>
             <div
               className="version"
             >
-              <span>
-                Latest version
-              </span>
+              Latest version
               :  
               1.0.0
             </div>
