@@ -33,11 +33,19 @@ msgstr "Azione"
 msgid "Actions"
 msgstr "Azioni"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Activate and deactivate"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 msgid "Add"
 msgstr "Aggiungi"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Add Addons"
+msgstr ""
 
 #: components/manage/Toolbar/Types
 msgid "Add Content"
@@ -91,6 +99,10 @@ msgstr "Aggiungi ai gruppi"
 msgid "Add {type}"
 msgstr "Aggiungi {type}"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Add-ons Settings"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -119,7 +131,12 @@ msgstr "Sicuro di voler eliminare questo insieme di campi compresi tutti i campi
 msgid "Ascending"
 msgstr "Crescente"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Available"
+msgstr ""
+
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/ModerateComments
@@ -708,6 +725,18 @@ msgstr "Inserisci riga sotto"
 msgid "Insert row before"
 msgstr "Inserisci riga sopra"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Install"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Installed"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Installed version"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Item batch size"
 msgstr "Risultati per pagina"
@@ -741,6 +770,10 @@ msgstr "Data ultimo commento"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Ultima modifica"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Latest version"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
@@ -895,6 +928,10 @@ msgstr "La ricerca non ha prodotto risultati."
 #: components/manage/Blocks/Listing/ListingData
 msgid "No selection"
 msgstr "Nessun elemento selezionato"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "No uninstall profile"
+msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
 #: components/manage/Widgets/ReferenceWidget
@@ -1443,10 +1480,30 @@ msgstr "Non autorizzato"
 msgid "Unified"
 msgstr "Unificato"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Uninstall"
+msgstr ""
+
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
 msgid "Unknown Block"
 msgstr "Blocco sconosciuto"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update installed addons"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update installed addons:"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Updates available"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Upload"

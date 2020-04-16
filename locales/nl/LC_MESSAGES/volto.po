@@ -52,10 +52,18 @@ msgstr ""
 msgid "Actions"
 msgstr "Acties"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Activate and deactivate"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 msgid "Add"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Add Addons"
 msgstr ""
 
 #: components/manage/Toolbar/Types
@@ -110,6 +118,10 @@ msgstr ""
 msgid "Add {type}"
 msgstr "Voeg {type} toe"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Add-ons Settings"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -138,7 +150,12 @@ msgstr ""
 msgid "Ascending"
 msgstr "Oplopend"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Available"
+msgstr ""
+
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/ModerateComments
@@ -727,6 +744,18 @@ msgstr ""
 msgid "Insert row before"
 msgstr ""
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Install"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Installed"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Installed version"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Item batch size"
 msgstr ""
@@ -760,6 +789,10 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Laatst gewijzigd"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Latest version"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
@@ -913,6 +946,10 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "No selection"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "No uninstall profile"
 msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
@@ -1462,9 +1499,29 @@ msgstr ""
 msgid "Unified"
 msgstr ""
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Uninstall"
+msgstr ""
+
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
 msgid "Unknown Block"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update installed addons"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update installed addons:"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Updates available"
 msgstr ""
 
 #: components/manage/Contents/Contents

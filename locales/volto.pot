@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-04-09T10:32:12.722Z\n"
+"POT-Creation-Date: 2020-04-16T10:57:01.330Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -40,11 +40,21 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Activate and deactivate add-ons in the lists below.
+msgid "Activate and deactivate"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add
 msgid "Add"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+msgid "Add Addons"
 msgstr ""
 
 #: components/manage/Toolbar/Types
@@ -112,6 +122,11 @@ msgstr ""
 msgid "Add {type}"
 msgstr ""
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons Settings
+msgid "Add-ons Settings"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -146,7 +161,13 @@ msgstr ""
 msgid "Ascending"
 msgstr ""
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Available
+msgid "Available"
+msgstr ""
+
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/ModerateComments
@@ -860,6 +881,21 @@ msgstr ""
 msgid "Insert row before"
 msgstr ""
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Install
+msgid "Install"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installed
+msgid "Installed"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installed version
+msgid "Installed version"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 # defaultMessage: Item batch size
 msgid "Item batch size"
@@ -900,6 +936,11 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Last modified
 msgid "Last modified"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Latest version
+msgid "Latest version"
 msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1090,6 +1131,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/ListingData
 # defaultMessage: No selection
 msgid "No selection"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: This addon does not provide an uninstall profile.
+msgid "No uninstall profile"
 msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
@@ -1759,10 +1805,35 @@ msgstr ""
 msgid "Unified"
 msgstr ""
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Uninstall
+msgid "Uninstall"
+msgstr ""
+
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update
+msgid "Update"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update installed addons
+msgid "Update installed addons"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update installed addons:
+msgid "Update installed addons:"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Updates available
+msgid "Updates available"
 msgstr ""
 
 #: components/manage/Contents/Contents

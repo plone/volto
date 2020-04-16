@@ -41,11 +41,19 @@ msgstr "Acção"
 msgid "Actions"
 msgstr "Acções"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Activate and deactivate"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 msgid "Add"
 msgstr "Adicionar"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Add Addons"
+msgstr ""
 
 #: components/manage/Toolbar/Types
 msgid "Add Content"
@@ -99,6 +107,10 @@ msgstr "Adicionar a Grupos"
 msgid "Add {type}"
 msgstr "Adicionar {type}"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Add-ons Settings"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -127,7 +139,12 @@ msgstr "Tem a certeza que quer eliminar este conjunto de campos incluindo todos 
 msgid "Ascending"
 msgstr "Ascendente"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Available"
+msgstr ""
+
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/ModerateComments
@@ -716,6 +733,18 @@ msgstr "Inserir linha após"
 msgid "Insert row before"
 msgstr "Inserir linha antes"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Install"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Installed"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Installed version"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Item batch size"
 msgstr ""
@@ -749,6 +778,10 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Última modificação"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Latest version"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
@@ -902,6 +935,10 @@ msgstr "Não foram encontrados quaisquer resultados."
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "No selection"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "No uninstall profile"
 msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
@@ -1451,10 +1488,30 @@ msgstr ""
 msgid "Unified"
 msgstr "Unificado"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Uninstall"
+msgstr ""
+
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
 msgid "Unknown Block"
 msgstr "Bloco Desconhecido"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update installed addons"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update installed addons:"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Updates available"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Upload"
