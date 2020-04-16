@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { Portal } from 'react-portal';
 import {
@@ -88,26 +88,12 @@ const messages = defineMessages({
   },
 });
 
-@injectIntl
-@connect(
-  (state, props) => ({
-    installedAddons: state.addons.installedAddons,
-    availableAddons: state.addons.availableAddons,
-    upgradableAddons: state.addons.upgradableAddons,
-    pathname: props.location.pathname,
-  }),
-  dispatch =>
-    bindActionCreators(
-      { installAddon, listAddons, uninstallAddon, upgradeAddon },
-      dispatch,
-    ),
-)
 /**
  * AddonsControlpanel class.
  * @class AddonsControlpanel
  * @extends Component
  */
-export default class AddonsControlpanel extends Component {
+class AddonsControlpanel extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -460,3 +446,16 @@ export default class AddonsControlpanel extends Component {
     );
   }
 }
+
+export default compose(
+  injectIntl,
+  connect(
+    (state, props) => ({
+      installedAddons: state.addons.installedAddons,
+      availableAddons: state.addons.availableAddons,
+      upgradableAddons: state.addons.upgradableAddons,
+      pathname: props.location.pathname,
+    }),
+    { installAddon, listAddons, uninstallAddon, upgradeAddon },
+  ),
+)(AddonsControlpanel);
