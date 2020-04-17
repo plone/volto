@@ -1187,14 +1187,14 @@ class Contents extends Component {
                     </div>
                   </Menu.Menu>
                 </Menu>
-                <Segment secondary attached>
+                <Segment secondary attached moreSVG>
                   <Breadcrumb>
                     <Link
                       to="/contents"
                       className="section"
                       title={this.props.intl.formatMessage(messages.home)}
                     >
-                      HOME
+                      {this.props.intl.formatMessage(messages.home)}
                     </Link>
                     {this.props.breadcrumbs.map(
                       (breadcrumb, index, breadcrumbs) => [
@@ -1234,6 +1234,7 @@ class Contents extends Component {
                             key={index}
                             value={index}
                             onClick={this.onSelectIndex}
+                            className="iconAlign"
                           >
                             {this.state.index.values[index].selected ? (
                               <Icon
@@ -1249,11 +1250,14 @@ class Contents extends Component {
                                 size="20px"
                               />
                             )}
-                            {this.props.intl.formatMessage({
-                              id: this.state.index.values[index].label,
-                              defaultMessage: this.state.index.values[index]
-                                .label,
-                            })}
+                            <span>
+                              {' '}
+                              {this.props.intl.formatMessage({
+                                id: this.state.index.values[index].label,
+                                defaultMessage: this.state.index.values[index]
+                                  .label,
+                              })}
+                            </span>
                           </Dropdown.Item>
                         ))}
                       </Dropdown.Menu>
@@ -1297,7 +1301,7 @@ class Contents extends Component {
                               index => (
                                 <Dropdown.Item
                                   key={index}
-                                  className={`sort_${index}`}
+                                  className={`sort_${index} iconAlign`}
                                 >
                                   <Icon name={downKeySVG} size="24px" />
                                   <FormattedMessage id={Indexes[index].label} />
@@ -1305,7 +1309,7 @@ class Contents extends Component {
                                     <Dropdown.Item
                                       onClick={this.onSortItems}
                                       value={`${Indexes[index].sort_on}|ascending`}
-                                      className={`sort_${Indexes[index].sort_on}_ascending`}
+                                      className={`sort_${Indexes[index].sort_on}_ascending iconAlign`}
                                     >
                                       <Icon name={sortDownSVG} size="24px" />{' '}
                                       <FormattedMessage
@@ -1316,7 +1320,7 @@ class Contents extends Component {
                                     <Dropdown.Item
                                       onClick={this.onSortItems}
                                       value={`${Indexes[index].sort_on}|descending`}
-                                      className={`sort_${Indexes[index].sort_on}_descending`}
+                                      className={`sort_${Indexes[index].sort_on}_descending iconAlign`}
                                     >
                                       <Icon name={sortUpSVG} size="24px" />{' '}
                                       <FormattedMessage

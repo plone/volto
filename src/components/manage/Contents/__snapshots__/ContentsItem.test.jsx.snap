@@ -58,11 +58,12 @@ exports[`ContentsItem renders a contents item component 1`] = `
     className=""
   >
     <a
+      className="iconAlign"
       href="/blog"
       onClick={[Function]}
     >
       <svg
-        className="icon"
+        className="icon iconMargin"
         dangerouslySetInnerHTML={
           Object {
             "__html": undefined,
@@ -72,7 +73,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
         style={
           Object {
             "fill": "currentColor",
-            "height": "13px",
+            "height": "20px",
             "width": "auto",
           }
         }
@@ -80,7 +81,10 @@ exports[`ContentsItem renders a contents item component 1`] = `
         xmlns=""
       />
        
-      Blog
+      <span>
+         
+        Blog
+      </span>
     </a>
   </td>
   <td
@@ -130,7 +134,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
         className="menu transition left"
       >
         <a
-          className="item"
+          className="item iconAlign"
           href="/blog/edit"
           onClick={[Function]}
         >
@@ -156,7 +160,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
           Edit
         </a>
         <a
-          className="item right-dropdown"
+          className="item right-dropdown iconAlign"
           href="/blog"
           onClick={[Function]}
         >
@@ -185,7 +189,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
           className="divider"
         />
         <div
-          className="item right-dropdown"
+          className="item right-dropdown iconAlign"
           onClick={[Function]}
           role="option"
         >
@@ -211,7 +215,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
           Cut
         </div>
         <div
-          className="item right-dropdown"
+          className="item right-dropdown iconAlign"
           onClick={[Function]}
           role="option"
         >
@@ -237,7 +241,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
           Copy
         </div>
         <div
-          className="item right-dropdown"
+          className="item right-dropdown iconAlign"
           onClick={[Function]}
           role="option"
         >
@@ -266,7 +270,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
           className="divider"
         />
         <div
-          className="item right-dropdown"
+          className="item right-dropdown iconAlign"
           onClick={[Function]}
           role="option"
         >
@@ -292,7 +296,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
           Move to top of folder
         </div>
         <div
-          className="item right-dropdown"
+          className="item right-dropdown iconAlign"
           onClick={[Function]}
           role="option"
         >
