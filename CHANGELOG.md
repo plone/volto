@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Translated labels in Eventi View @nzambello
+
 ## 5.0.1 (2020-04-16)
 
 ### Bugfix
