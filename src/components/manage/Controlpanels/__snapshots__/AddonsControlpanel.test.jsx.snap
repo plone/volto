@@ -74,7 +74,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
               Update
             </span>
             <svg
-              className="icon accordionToggle"
+              className="icon accordionToggle Whatever"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": undefined,
@@ -160,7 +160,7 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
           >
             Something Else
             <svg
-              className="icon accordionToggle"
+              className="icon accordionToggle Something Else"
               dangerouslySetInnerHTML={
                 Object {
                   "__html": undefined,

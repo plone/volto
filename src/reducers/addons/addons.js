@@ -54,9 +54,7 @@ export default function addons(state = initialState, action = {}) {
         loaded: false,
         loading: true,
       };
-    case `${INSTALL_ADDON}_SUCCESS`:
     case `${LIST_ADDONS}_SUCCESS`:
-    case `${UNINSTALL_ADDON}_SUCCESS`:
       return {
         ...state,
         error: null,
@@ -69,6 +67,14 @@ export default function addons(state = initialState, action = {}) {
         upgradableAddons: action.result.items
           .filter(elem => elem.upgrade_info.available === true)
           .sort(addonsSorter),
+        loaded: true,
+        loading: false,
+      };
+    case `${INSTALL_ADDON}_SUCCESS`:
+    case `${UNINSTALL_ADDON}_SUCCESS`:
+      return {
+        ...state,
+        error: null,
         loaded: true,
         loading: false,
       };

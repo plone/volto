@@ -306,7 +306,7 @@ class AddonsControlpanel extends Component {
                           : circleBottomSVG
                       }
                       size="23px"
-                      className="accordionToggle"
+                      className={`accordionToggle ${item.title}`}
                     />
                   </Accordion.Title>
                   <Accordion.Content
@@ -380,7 +380,7 @@ class AddonsControlpanel extends Component {
                           : circleBottomSVG
                       }
                       size="23px"
-                      className="accordionToggle"
+                      className={`accordionToggle ${item.title}`}
                     />
                   </Accordion.Title>
                   <Accordion.Content
