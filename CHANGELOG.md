@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Enable internal API proxy for not to rely on CORS on development @sneridagh
+
 ### Bugfix
 
 ### Internal

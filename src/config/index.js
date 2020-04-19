@@ -37,7 +37,7 @@ export const settings = {
   // In production, the proxy is disabled, make sure you specify an apiPath that does
   // not require CORS to work.
   apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:3000/api', // for Plone
-  proxyToApiPath: 'http://localhost:8080', // Not used if apiPath is not http://localhost:3000/api
+  proxyToApiPath: 'http://localhost:8080/Plone', // Not used if apiPath is not http://localhost:3000/api
   // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8000', // for Volto reference
   // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
   internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
