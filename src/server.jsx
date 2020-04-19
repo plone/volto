@@ -13,6 +13,7 @@ import locale from 'locale';
 import { detect } from 'detect-browser';
 import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
+import { createProxyMiddleware } from 'http-proxy-middleware';
 
 import routes from '~/routes';
 import { settings } from '~/config';
@@ -46,6 +47,20 @@ if (settings) {
 const supported = new locale.Locales(keys(languages), 'en');
 
 const server = express();
+// Internal proxy to bypass CORS while developing.
+// For the sake of simplicty, we only allow http://localhost:3000/api as the proxied api path
+if (__DEVELOPMENT__ && settings.apiPath.endsWith('http://localhost:3000/api')) {
+  server.use(
+    '/api',
+    createProxyMiddleware({
+      target: settings.proxyToApiPath,
+      pathRewrite: {
+        '^/api':
+          '/VirtualHostBase/http/localhost:3000/Plone/VirtualHostRoot/_vh_api',
+      },
+    }),
+  );
+}
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
