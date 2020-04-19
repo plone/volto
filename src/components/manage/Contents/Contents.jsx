@@ -11,6 +11,7 @@ import { Portal } from 'react-portal';
 import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import {
+  Button,
   Breadcrumb,
   Confirm,
   Container,
@@ -1016,11 +1017,16 @@ class Contents extends Component {
                   <Menu.Menu className="top-menu-menu">
                     <Popup
                       trigger={
-                        <Menu.Item onClick={this.upload} className="upload">
+                        <Menu.Item
+                          icon
+                          as={Button}
+                          onClick={this.upload}
+                          className="upload"
+                        >
                           <Icon
                             name={uploadSVG}
                             color="#007eb1"
-                            size="24px"
+                            size="28px"
                             className="upload"
                           />
                         </Menu.Item>
@@ -1033,11 +1039,16 @@ class Contents extends Component {
                   <Menu.Menu className="top-menu-menu">
                     <Popup
                       trigger={
-                        <Menu.Item onClick={this.rename} disabled={!selected}>
+                        <Menu.Item
+                          icon
+                          as={Button}
+                          onClick={this.rename}
+                          disabled={!selected}
+                        >
                           <Icon
                             name={renameSVG}
                             color={selected ? '#826a6a' : 'grey'}
-                            size="24px"
+                            size="28px"
                             className="rename"
                           />
                         </Menu.Item>
@@ -1048,11 +1059,16 @@ class Contents extends Component {
                     />
                     <Popup
                       trigger={
-                        <Menu.Item onClick={this.workflow} disabled={!selected}>
+                        <Menu.Item
+                          icon
+                          as={Button}
+                          onClick={this.workflow}
+                          disabled={!selected}
+                        >
                           <Icon
                             name={semaphoreSVG}
                             color={selected ? '#826a6a' : 'grey'}
-                            size="24px"
+                            size="28px"
                             className="semaphore"
                           />
                         </Menu.Item>
@@ -1063,11 +1079,16 @@ class Contents extends Component {
                     />
                     <Popup
                       trigger={
-                        <Menu.Item onClick={this.tags} disabled={!selected}>
+                        <Menu.Item
+                          icon
+                          as={Button}
+                          onClick={this.tags}
+                          disabled={!selected}
+                        >
                           <Icon
                             name={tagSVG}
                             color={selected ? '#826a6a' : 'grey'}
-                            size="24px"
+                            size="28px"
                             className="tag"
                           />
                         </Menu.Item>
@@ -1080,13 +1101,15 @@ class Contents extends Component {
                     <Popup
                       trigger={
                         <Menu.Item
+                          icon
+                          as={Button}
                           onClick={this.properties}
                           disabled={!selected}
                         >
                           <Icon
                             name={propertiesSVG}
                             color={selected ? '#826a6a' : 'grey'}
-                            size="24px"
+                            size="28px"
                             className="properties"
                           />
                         </Menu.Item>
@@ -1098,14 +1121,19 @@ class Contents extends Component {
                       size="mini"
                     />
                   </Menu.Menu>
-                  <Menu.Menu>
+                  <Menu.Menu className="top-menu-menu">
                     <Popup
                       trigger={
-                        <Menu.Item onClick={this.cut} disabled={!selected}>
+                        <Menu.Item
+                          icon
+                          as={Button}
+                          onClick={this.cut}
+                          disabled={!selected}
+                        >
                           <Icon
                             name={cutSVG}
                             color={selected ? '#826a6a' : 'grey'}
-                            size="24px"
+                            size="28px"
                             className="cut"
                           />
                         </Menu.Item>
@@ -1116,11 +1144,16 @@ class Contents extends Component {
                     />
                     <Popup
                       trigger={
-                        <Menu.Item onClick={this.copy} disabled={!selected}>
+                        <Menu.Item
+                          icon
+                          as={Button}
+                          onClick={this.copy}
+                          disabled={!selected}
+                        >
                           <Icon
                             name={copySVG}
                             color={selected ? '#826a6a' : 'grey'}
-                            size="24px"
+                            size="28px"
                             className="copy"
                           />
                         </Menu.Item>
@@ -1133,13 +1166,15 @@ class Contents extends Component {
                     <Popup
                       trigger={
                         <Menu.Item
+                          icon
+                          as={Button}
                           onClick={this.paste}
                           disabled={!this.props.action}
                         >
                           <Icon
                             name={pasteSVG}
                             color={selected ? '#826a6a' : 'grey'}
-                            size="24px"
+                            size="28px"
                             className="paste"
                           />
                         </Menu.Item>
@@ -1151,11 +1186,16 @@ class Contents extends Component {
 
                     <Popup
                       trigger={
-                        <Menu.Item onClick={this.delete} disabled={!selected}>
+                        <Menu.Item
+                          icon
+                          as={Button}
+                          onClick={this.delete}
+                          disabled={!selected}
+                        >
                           <Icon
                             name={deleteSVG}
                             color={selected ? '#e40166' : 'grey'}
-                            size="24px"
+                            size="28px"
                             className="delete"
                           />
                         </Menu.Item>
@@ -1179,7 +1219,7 @@ class Contents extends Component {
                       />
                       <Icon
                         name={zoomSVG}
-                        size="24px"
+                        size="30px"
                         color="#007eb1"
                         className="zoom"
                       />
@@ -1187,7 +1227,7 @@ class Contents extends Component {
                     </div>
                   </Menu.Menu>
                 </Menu>
-                <Segment secondary attached moreSVG>
+                <Segment secondary attached className="contents-breadcrumbs">
                   <Breadcrumb>
                     <Link
                       to="/contents"
@@ -1219,7 +1259,7 @@ class Contents extends Component {
                   </Breadcrumb>
                   <Dropdown
                     item
-                    icon={<Icon name={moreSVG} size="24px" color="#826a6a" />}
+                    icon={<Icon name={moreSVG} size="28px" color="#826a6a" />}
                     className="right floating moresvg"
                   >
                     <Dropdown.Menu className="left">
@@ -1239,7 +1279,7 @@ class Contents extends Component {
                             {this.state.index.values[index].selected ? (
                               <Icon
                                 name={checkboxCheckedSVG}
-                                size="20px"
+                                size="24px"
                                 color="#007eb1"
                                 className={this.state.index.values[index].label}
                               />
@@ -1247,7 +1287,7 @@ class Contents extends Component {
                               <Icon
                                 name={checkboxUncheckedSVG}
                                 className={this.state.index.values[index].label}
-                                size="20px"
+                                size="24px"
                               />
                             )}
                             <span>
@@ -1272,7 +1312,7 @@ class Contents extends Component {
                           trigger={
                             <Icon
                               name={configurationSVG}
-                              size="24px"
+                              size="28px"
                               color="#826a6a"
                             />
                           }
@@ -1303,7 +1343,7 @@ class Contents extends Component {
                                   key={index}
                                   className={`sort_${index} iconAlign`}
                                 >
-                                  <Icon name={downKeySVG} size="24px" />
+                                  <Icon name={downKeySVG} size="28px" />
                                   <FormattedMessage id={Indexes[index].label} />
                                   <Dropdown.Menu>
                                     <Dropdown.Item
@@ -1311,7 +1351,7 @@ class Contents extends Component {
                                       value={`${Indexes[index].sort_on}|ascending`}
                                       className={`sort_${Indexes[index].sort_on}_ascending iconAlign`}
                                     >
-                                      <Icon name={sortDownSVG} size="24px" />{' '}
+                                      <Icon name={sortDownSVG} size="28px" />{' '}
                                       <FormattedMessage
                                         id="Ascending"
                                         defaultMessage="Ascending"
@@ -1322,7 +1362,7 @@ class Contents extends Component {
                                       value={`${Indexes[index].sort_on}|descending`}
                                       className={`sort_${Indexes[index].sort_on}_descending iconAlign`}
                                     >
-                                      <Icon name={sortUpSVG} size="24px" />{' '}
+                                      <Icon name={sortUpSVG} size="28px" />{' '}
                                       <FormattedMessage
                                         id="Descending"
                                         defaultMessage="Descending"
@@ -1352,7 +1392,7 @@ class Contents extends Component {
                                   ? '#007eb1'
                                   : '#826a6a'
                               }
-                              size="20px"
+                              size="24px"
                             />
                           }
                           icon={null}
@@ -1367,12 +1407,12 @@ class Contents extends Component {
                               <Icon
                                 name={checkboxCheckedSVG}
                                 color="#007eb1"
-                                size="20px"
+                                size="24px"
                               />{' '}
                               <FormattedMessage id="All" defaultMessage="All" />
                             </Dropdown.Item>
                             <Dropdown.Item onClick={this.onSelectNone}>
-                              <Icon name={checkboxUncheckedSVG} size="20px" />{' '}
+                              <Icon name={checkboxUncheckedSVG} size="24px" />{' '}
                               <FormattedMessage
                                 id="None"
                                 defaultMessage="None"
@@ -1386,7 +1426,7 @@ class Contents extends Component {
                               )}
                             />
                             <Input
-                              icon={<Icon name={zoomSVG} size="24px" />}
+                              icon={<Icon name={zoomSVG} size="28px" />}
                               iconPosition="left"
                               className="search"
                               placeholder={this.props.intl.formatMessage(
@@ -1403,7 +1443,7 @@ class Contents extends Component {
                                   <Icon
                                     name={deleteSVG}
                                     color="#e40166"
-                                    size="24px"
+                                    size="28px"
                                   />{' '}
                                   {this.getFieldById(item, 'title')}
                                 </Dropdown.Item>

@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Table, Dropdown } from 'semantic-ui-react';
+import { Button, Dropdown, Table } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
@@ -104,21 +104,33 @@ export const ContentsItemComponent = ({
         </Table.Cell>
         <Table.Cell>
           {selected ? (
-            <Icon
-              name={checkboxCheckedSVG}
-              color="#007eb1"
-              size="20px"
-              className="checked"
+            <Button
+              icon
+              basic
+              aria-label="Unchecked"
               onClick={e => onClick(e, item['@id'])}
-            />
+            >
+              <Icon
+                name={checkboxCheckedSVG}
+                color="#007eb1"
+                size="24px"
+                className="checked"
+              />
+            </Button>
           ) : (
-            <Icon
-              name={checkboxUncheckedSVG}
-              color="#826a6a"
-              size="20px"
-              className="unchecked"
+            <Button
+              icon
+              basic
+              aria-label="Checked"
               onClick={e => onClick(e, item['@id'])}
-            />
+            >
+              <Icon
+                name={checkboxUncheckedSVG}
+                color="#826a6a"
+                size="24px"
+                className="unchecked"
+              />
+            </Button>
           )}
         </Table.Cell>
         <Table.Cell>

@@ -35,24 +35,30 @@ exports[`ContentsItem renders a contents item component 1`] = `
   <td
     className=""
   >
-    <svg
-      className="icon unchecked"
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": undefined,
-        }
-      }
+    <button
+      aria-label="Checked"
+      className="ui basic icon button"
       onClick={[Function]}
-      style={
-        Object {
-          "fill": "#826a6a",
-          "height": "20px",
-          "width": "auto",
+    >
+      <svg
+        className="icon unchecked"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
         }
-      }
-      viewBox=""
-      xmlns=""
-    />
+        onClick={null}
+        style={
+          Object {
+            "fill": "#826a6a",
+            "height": "24px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </button>
   </td>
   <td
     className=""

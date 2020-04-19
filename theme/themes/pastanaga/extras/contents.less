@@ -1,24 +1,46 @@
 .folder-contents {
+  .ui.icon.button,
+  .ui.icon.button:hover {
+    background: transparent !important;
+    box-shadow: none;
+  }
+
+  .ui.compact.table td {
+    padding: 10px;
+  }
+
   .ui.menu.top-menu {
+    padding: 10px 0;
     border-bottom: 4px solid #c7d5d8;
   }
 
   .ui.menu .menu.top-menu-menu {
-    border-right: 2px solid #b8c6c8;
+    border-right: 1px solid #b8c6c8;
+
+    .ui.icon.button {
+      padding: 10px;
+      margin-left: 4px;
+      border-radius: 1px;
+      color: @brown !important;
+
+      &:hover {
+        background-color: #edf1f2 !important;
+      }
+    }
   }
 
   .ui.menu .menu.top-menu-searchbox {
-    border-left: 2px solid #b8c6c8;
+    border-left: 1px solid #b8c6c8;
+  }
+
+  .ui.secondary.attached.segment.contents-breadcrumbs {
+    display: flex;
+    justify-content: space-between;
   }
 
   .ui.menu .item.upload:hover,
   .ui.menu .item.paste:hover {
     background: none;
-  }
-
-  .ui.dropdown.moresvg {
-    position: relative;
-    top: -20px;
   }
 
   .ui.dropdown .menu > .item.left-dropdown > svg {

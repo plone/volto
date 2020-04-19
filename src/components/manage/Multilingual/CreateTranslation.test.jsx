@@ -9,7 +9,7 @@ import CreateTranslation from './CreateTranslation';
 jest.mock('~/config', () => ({
   settings: {
     isMultilingual: true,
-    supportedLanguages: ['de', 'ca'],
+    supportedLanguages: ['de', 'es'],
   },
 }));
 
@@ -23,7 +23,7 @@ describe('CreateTranslation', () => {
         messages: {},
       },
       translations: {
-        translationLocation: '/ca',
+        translationLocation: '/es',
       },
     });
     const component = renderer.create(
@@ -33,7 +33,7 @@ describe('CreateTranslation', () => {
             location={{
               pathname: '/blog-post',
               state: {
-                language: 'ca',
+                language: 'es',
                 translationOf: '/en/page-en',
               },
             }}
