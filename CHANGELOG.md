@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added Print CSS
+
 ### Bugfix
 
 ### Internal
