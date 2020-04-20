@@ -346,7 +346,7 @@ exports[`Contents renders a contents component 1`] = `
             </div>
             <div
               aria-expanded={false}
-              className="ui item dropdown right floating moresvg"
+              className="ui item dropdown right floating"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -424,6 +424,34 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
+                      className="icon Review state"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "#007eb1",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
+                    />
+                    <span>
+                       
+                      Review state
+                    </span>
+                  </div>
+                  <div
+                    className="item iconAlign"
+                    onClick={[Function]}
+                    role="option"
+                  >
+                    <svg
                       className="icon Last modified"
                       dangerouslySetInnerHTML={
                         Object {
@@ -472,34 +500,6 @@ exports[`Contents renders a contents component 1`] = `
                     <span>
                        
                       Publication date
-                    </span>
-                  </div>
-                  <div
-                    className="item iconAlign"
-                    onClick={[Function]}
-                    role="option"
-                  >
-                    <svg
-                      className="icon Review state"
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": undefined,
-                        }
-                      }
-                      onClick={null}
-                      style={
-                        Object {
-                          "fill": "#007eb1",
-                          "height": "24px",
-                          "width": "auto",
-                        }
-                      }
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <span>
-                       
-                      Review state
                     </span>
                   </div>
                   <div
@@ -1668,6 +1668,17 @@ exports[`Contents renders a contents component 1`] = `
                     }
                   }
                 >
+                  Review state
+                </th>
+                <th
+                  className="four wide"
+                  style={
+                    Object {
+                      "cursor": "move",
+                      "opacity": 1,
+                    }
+                  }
+                >
                   Last modified
                 </th>
                 <th
@@ -1680,17 +1691,6 @@ exports[`Contents renders a contents component 1`] = `
                   }
                 >
                   Publication date
-                </th>
-                <th
-                  className="four wide"
-                  style={
-                    Object {
-                      "cursor": "move",
-                      "opacity": 1,
-                    }
-                  }
-                >
-                  Review state
                 </th>
                 <th
                   className="right aligned"
@@ -1712,25 +1712,36 @@ exports[`Contents renders a contents component 1`] = `
                 <td
                   className=""
                 >
-                  <div>
-                    <svg
-                      className="icon content drag handle"
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": undefined,
-                        }
+                  <div
+                    style={
+                      Object {
+                        "display": "inline-block",
                       }
-                      onClick={null}
-                      style={
-                        Object {
-                          "fill": "#878f93",
-                          "height": "20px",
-                          "width": "auto",
+                    }
+                  >
+                    <button
+                      className="ui basic icon button"
+                      onClick={[Function]}
+                    >
+                      <svg
+                        className="icon content drag handle"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
                         }
-                      }
-                      viewBox=""
-                      xmlns=""
-                    />
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "#878f93",
+                            "height": "20px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                    </button>
                   </div>
                 </td>
                 <td
@@ -1779,7 +1790,7 @@ exports[`Contents renders a contents component 1`] = `
                       onClick={null}
                       style={
                         Object {
-                          "fill": "currentColor",
+                          "fill": "#878f93",
                           "height": "20px",
                           "width": "auto",
                         }
@@ -1793,24 +1804,6 @@ exports[`Contents renders a contents component 1`] = `
                       Blog
                     </span>
                   </a>
-                </td>
-                <td
-                  className=""
-                >
-                  <span
-                    title="Sunday, April 23, 2017 3:38 AM"
-                  >
-                    Sunday, April 23, 2017 3:38 AM
-                  </span>
-                </td>
-                <td
-                  className=""
-                >
-                  <span
-                    title="Sunday, April 23, 2017 3:38 AM"
-                  >
-                    Sunday, April 23, 2017 3:38 AM
-                  </span>
                 </td>
                 <td
                   className=""
@@ -1838,11 +1831,29 @@ exports[`Contents renders a contents component 1`] = `
                   </div>
                 </td>
                 <td
+                  className=""
+                >
+                  <span
+                    title="Sunday, April 23, 2017 3:38 AM"
+                  >
+                    Sunday, April 23, 2017 3:38 AM
+                  </span>
+                </td>
+                <td
+                  className=""
+                >
+                  <span
+                    title="Sunday, April 23, 2017 3:38 AM"
+                  >
+                    Sunday, April 23, 2017 3:38 AM
+                  </span>
+                </td>
+                <td
                   className="right aligned"
                 >
                   <div
                     aria-expanded={false}
-                    className="ui dropdown"
+                    className="ui dropdown row-actions"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onClick={[Function]}

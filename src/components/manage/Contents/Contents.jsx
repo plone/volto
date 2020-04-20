@@ -83,7 +83,7 @@ import sortDownSVG from '@plone/volto/icons/sort-down.svg';
 import sortUpSVG from '@plone/volto/icons/sort-up.svg';
 import downKeySVG from '@plone/volto/icons/down-key.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
-const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
+const defaultIndexes = ['review_state', 'ModificationDate', 'EffectiveDate'];
 
 const messages = defineMessages({
   back: {
@@ -1260,7 +1260,7 @@ class Contents extends Component {
                   <Dropdown
                     item
                     icon={<Icon name={moreSVG} size="28px" color="#826a6a" />}
-                    className="right floating moresvg"
+                    className="right floating"
                   >
                     <Dropdown.Menu className="left">
                       <Dropdown.Header

@@ -92,13 +92,15 @@ export const ContentsItemComponent = ({
       <tr key={item['@id']} style={{ opacity: isDragging ? 0 : 1 }}>
         <Table.Cell>
           {connectDragSource(
-            <div>
-              <Icon
-                name={dragSVG}
-                size="20px"
-                color="#878f93"
-                className="content drag handle"
-              />
+            <div style={{ display: 'inline-block' }}>
+              <Button icon basic>
+                <Icon
+                  name={dragSVG}
+                  size="20px"
+                  color="#878f93"
+                  className="content drag handle"
+                />
+              </Button>
             </div>,
           )}
         </Table.Cell>
@@ -142,6 +144,7 @@ export const ContentsItemComponent = ({
               name={getIcon(item['@type'], item.is_folderish)}
               size="20px"
               className="iconMargin"
+              color="#878f93"
             />{' '}
             <span> {item.title}</span>
           </Link>
@@ -187,7 +190,10 @@ export const ContentsItemComponent = ({
           </Table.Cell>
         ))}
         <Table.Cell textAlign="right">
-          <Dropdown icon={<Icon name={moreSVG} size="24px" color="#007eb1" />}>
+          <Dropdown
+            className="row-actions"
+            icon={<Icon name={moreSVG} size="24px" color="#007eb1" />}
+          >
             <Dropdown.Menu className="left">
               <Link className="item iconAlign" to={`${item['@id']}/edit`}>
                 <Icon name={editingSVG} color="#007eb1" size="24px" />{' '}

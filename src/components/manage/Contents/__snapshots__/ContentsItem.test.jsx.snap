@@ -11,25 +11,36 @@ exports[`ContentsItem renders a contents item component 1`] = `
   <td
     className=""
   >
-    <div>
-      <svg
-        className="icon content drag handle"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": undefined,
-          }
+    <div
+      style={
+        Object {
+          "display": "inline-block",
         }
-        onClick={null}
-        style={
-          Object {
-            "fill": "#878f93",
-            "height": "20px",
-            "width": "auto",
+      }
+    >
+      <button
+        className="ui basic icon button"
+        onClick={[Function]}
+      >
+        <svg
+          className="icon content drag handle"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
           }
-        }
-        viewBox=""
-        xmlns=""
-      />
+          onClick={null}
+          style={
+            Object {
+              "fill": "#878f93",
+              "height": "20px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </button>
     </div>
   </td>
   <td
@@ -78,7 +89,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
         onClick={null}
         style={
           Object {
-            "fill": "currentColor",
+            "fill": "#878f93",
             "height": "20px",
             "width": "auto",
           }
@@ -103,7 +114,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
   >
     <div
       aria-expanded={false}
-      className="ui dropdown"
+      className="ui dropdown row-actions"
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
