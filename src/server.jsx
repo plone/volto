@@ -52,7 +52,7 @@ const server = express();
 if (__DEVELOPMENT__ && settings.apiPath.endsWith('http://localhost:3000/api')) {
   const parsedURL = parseUrl(settings.proxyToApiPath);
   const serverURL = `${parsedURL.protocol}//${parsedURL.host}`;
-  const instancePath = `${parsedURL.pathname}`;
+  const instancePath = parsedURL.pathname;
   server.use(
     '/api',
     createProxyMiddleware({
