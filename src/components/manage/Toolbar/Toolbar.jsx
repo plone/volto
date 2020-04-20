@@ -86,6 +86,10 @@ const messages = defineMessages({
     id: 'Page',
     defaultMessage: 'Page',
   },
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
+  },
 });
 
 const toolbarComponents = {
@@ -377,7 +381,8 @@ class Toolbar extends Component {
                     )}
                     {this.props.content &&
                       this.props.content.is_folderish &&
-                      folderContentsAction && (
+                      folderContentsAction &&
+                      !this.props.pathname.endsWith('/contents') && (
                         <Link
                           aria-label={this.props.intl.formatMessage(
                             messages.contents,
@@ -385,6 +390,24 @@ class Toolbar extends Component {
                           to={`${path}/contents`}
                         >
                           <Icon name={folderSVG} size="30px" />
+                        </Link>
+                      )}
+                    {this.props.content &&
+                      this.props.content.is_folderish &&
+                      folderContentsAction &&
+                      this.props.pathname.endsWith('/contents') && (
+                        <Link
+                          to={`${path}`}
+                          aria-label={this.props.intl.formatMessage(
+                            messages.back,
+                          )}
+                        >
+                          <Icon
+                            name={clearSVG}
+                            className="contents circled"
+                            size="30px"
+                            title={this.props.intl.formatMessage(messages.back)}
+                          />
                         </Link>
                       )}
                     {this.props.content &&

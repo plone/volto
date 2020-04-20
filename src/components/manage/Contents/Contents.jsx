@@ -1026,7 +1026,7 @@ class Contents extends Component {
                           <Icon
                             name={uploadSVG}
                             color="#007eb1"
-                            size="28px"
+                            size="24px"
                             className="upload"
                           />
                         </Menu.Item>
@@ -1048,7 +1048,7 @@ class Contents extends Component {
                           <Icon
                             name={renameSVG}
                             color={selected ? '#826a6a' : 'grey'}
-                            size="28px"
+                            size="24px"
                             className="rename"
                           />
                         </Menu.Item>
@@ -1068,7 +1068,7 @@ class Contents extends Component {
                           <Icon
                             name={semaphoreSVG}
                             color={selected ? '#826a6a' : 'grey'}
-                            size="28px"
+                            size="24px"
                             className="semaphore"
                           />
                         </Menu.Item>
@@ -1088,7 +1088,7 @@ class Contents extends Component {
                           <Icon
                             name={tagSVG}
                             color={selected ? '#826a6a' : 'grey'}
-                            size="28px"
+                            size="24px"
                             className="tag"
                           />
                         </Menu.Item>
@@ -1109,7 +1109,7 @@ class Contents extends Component {
                           <Icon
                             name={propertiesSVG}
                             color={selected ? '#826a6a' : 'grey'}
-                            size="28px"
+                            size="24px"
                             className="properties"
                           />
                         </Menu.Item>
@@ -1133,7 +1133,7 @@ class Contents extends Component {
                           <Icon
                             name={cutSVG}
                             color={selected ? '#826a6a' : 'grey'}
-                            size="28px"
+                            size="24px"
                             className="cut"
                           />
                         </Menu.Item>
@@ -1153,7 +1153,7 @@ class Contents extends Component {
                           <Icon
                             name={copySVG}
                             color={selected ? '#826a6a' : 'grey'}
-                            size="28px"
+                            size="24px"
                             className="copy"
                           />
                         </Menu.Item>
@@ -1174,7 +1174,7 @@ class Contents extends Component {
                           <Icon
                             name={pasteSVG}
                             color={selected ? '#826a6a' : 'grey'}
-                            size="28px"
+                            size="24px"
                             className="paste"
                           />
                         </Menu.Item>
@@ -1195,7 +1195,7 @@ class Contents extends Component {
                           <Icon
                             name={deleteSVG}
                             color={selected ? '#e40166' : 'grey'}
-                            size="28px"
+                            size="24px"
                             className="delete"
                           />
                         </Menu.Item>
@@ -1259,7 +1259,7 @@ class Contents extends Component {
                   </Breadcrumb>
                   <Dropdown
                     item
-                    icon={<Icon name={moreSVG} size="28px" color="#826a6a" />}
+                    icon={<Icon name={moreSVG} size="24px" color="#826a6a" />}
                     className="right floating"
                   >
                     <Dropdown.Menu className="left">
@@ -1312,7 +1312,7 @@ class Contents extends Component {
                           trigger={
                             <Icon
                               name={configurationSVG}
-                              size="28px"
+                              size="24px"
                               color="#826a6a"
                             />
                           }
@@ -1343,7 +1343,7 @@ class Contents extends Component {
                                   key={index}
                                   className={`sort_${index} iconAlign`}
                                 >
-                                  <Icon name={downKeySVG} size="28px" />
+                                  <Icon name={downKeySVG} size="24px" />
                                   <FormattedMessage id={Indexes[index].label} />
                                   <Dropdown.Menu>
                                     <Dropdown.Item
@@ -1351,7 +1351,7 @@ class Contents extends Component {
                                       value={`${Indexes[index].sort_on}|ascending`}
                                       className={`sort_${Indexes[index].sort_on}_ascending iconAlign`}
                                     >
-                                      <Icon name={sortDownSVG} size="28px" />{' '}
+                                      <Icon name={sortDownSVG} size="24px" />{' '}
                                       <FormattedMessage
                                         id="Ascending"
                                         defaultMessage="Ascending"
@@ -1362,7 +1362,7 @@ class Contents extends Component {
                                       value={`${Indexes[index].sort_on}|descending`}
                                       className={`sort_${Indexes[index].sort_on}_descending iconAlign`}
                                     >
-                                      <Icon name={sortUpSVG} size="28px" />{' '}
+                                      <Icon name={sortUpSVG} size="24px" />{' '}
                                       <FormattedMessage
                                         id="Descending"
                                         defaultMessage="Descending"
@@ -1426,7 +1426,7 @@ class Contents extends Component {
                               )}
                             />
                             <Input
-                              icon={<Icon name={zoomSVG} size="28px" />}
+                              icon={<Icon name={zoomSVG} size="24px" />}
                               iconPosition="left"
                               className="search"
                               placeholder={this.props.intl.formatMessage(
@@ -1443,7 +1443,7 @@ class Contents extends Component {
                                   <Icon
                                     name={deleteSVG}
                                     color="#e40166"
-                                    size="28px"
+                                    size="24px"
                                   />{' '}
                                   {this.getFieldById(item, 'title')}
                                 </Dropdown.Item>
@@ -1508,14 +1508,16 @@ class Contents extends Component {
                   </Table.Body>
                 </Table>
 
-                <Pagination
-                  current={this.state.currentPage}
-                  total={Math.ceil(this.props.total / this.state.pageSize)}
-                  pageSize={this.state.pageSize}
-                  pageSizes={[15, 30, 50]}
-                  onChangePage={this.onChangePage}
-                  onChangePageSize={this.onChangePageSize}
-                />
+                <div className="contents-pagination">
+                  <Pagination
+                    current={this.state.currentPage}
+                    total={Math.ceil(this.props.total / this.state.pageSize)}
+                    pageSize={this.state.pageSize}
+                    pageSizes={[15, 30, 50]}
+                    onChangePage={this.onChangePage}
+                    onChangePageSize={this.onChangePageSize}
+                  />
+                </div>
               </Segment.Group>
             </section>
           </article>
@@ -1523,7 +1525,6 @@ class Contents extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
-            hideDefaultViewButtons
             inner={
               <Link
                 to={`${path}`}

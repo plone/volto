@@ -45,7 +45,7 @@ exports[`Contents renders a contents component 1`] = `
                   style={
                     Object {
                       "fill": "#007eb1",
-                      "height": "28px",
+                      "height": "24px",
                       "width": "auto",
                     }
                   }
@@ -76,7 +76,7 @@ exports[`Contents renders a contents component 1`] = `
                   style={
                     Object {
                       "fill": "grey",
-                      "height": "28px",
+                      "height": "24px",
                       "width": "auto",
                     }
                   }
@@ -103,7 +103,7 @@ exports[`Contents renders a contents component 1`] = `
                   style={
                     Object {
                       "fill": "grey",
-                      "height": "28px",
+                      "height": "24px",
                       "width": "auto",
                     }
                   }
@@ -130,7 +130,7 @@ exports[`Contents renders a contents component 1`] = `
                   style={
                     Object {
                       "fill": "grey",
-                      "height": "28px",
+                      "height": "24px",
                       "width": "auto",
                     }
                   }
@@ -157,7 +157,7 @@ exports[`Contents renders a contents component 1`] = `
                   style={
                     Object {
                       "fill": "grey",
-                      "height": "28px",
+                      "height": "24px",
                       "width": "auto",
                     }
                   }
@@ -188,7 +188,7 @@ exports[`Contents renders a contents component 1`] = `
                   style={
                     Object {
                       "fill": "grey",
-                      "height": "28px",
+                      "height": "24px",
                       "width": "auto",
                     }
                   }
@@ -215,7 +215,7 @@ exports[`Contents renders a contents component 1`] = `
                   style={
                     Object {
                       "fill": "grey",
-                      "height": "28px",
+                      "height": "24px",
                       "width": "auto",
                     }
                   }
@@ -242,7 +242,7 @@ exports[`Contents renders a contents component 1`] = `
                   style={
                     Object {
                       "fill": "grey",
-                      "height": "28px",
+                      "height": "24px",
                       "width": "auto",
                     }
                   }
@@ -269,7 +269,7 @@ exports[`Contents renders a contents component 1`] = `
                   style={
                     Object {
                       "fill": "grey",
-                      "height": "28px",
+                      "height": "24px",
                       "width": "auto",
                     }
                   }
@@ -372,7 +372,7 @@ exports[`Contents renders a contents component 1`] = `
                 style={
                   Object {
                     "fill": "#826a6a",
-                    "height": "28px",
+                    "height": "24px",
                     "width": "auto",
                   }
                 }
@@ -1017,7 +1017,7 @@ exports[`Contents renders a contents component 1`] = `
                       style={
                         Object {
                           "fill": "#826a6a",
-                          "height": "28px",
+                          "height": "24px",
                           "width": "auto",
                         }
                       }
@@ -1048,7 +1048,7 @@ exports[`Contents renders a contents component 1`] = `
                           style={
                             Object {
                               "fill": "currentColor",
-                              "height": "28px",
+                              "height": "24px",
                               "width": "auto",
                             }
                           }
@@ -1075,7 +1075,7 @@ exports[`Contents renders a contents component 1`] = `
                               style={
                                 Object {
                                   "fill": "currentColor",
-                                  "height": "28px",
+                                  "height": "24px",
                                   "width": "auto",
                                 }
                               }
@@ -1101,7 +1101,7 @@ exports[`Contents renders a contents component 1`] = `
                               style={
                                 Object {
                                   "fill": "currentColor",
-                                  "height": "28px",
+                                  "height": "24px",
                                   "width": "auto",
                                 }
                               }
@@ -1129,7 +1129,7 @@ exports[`Contents renders a contents component 1`] = `
                           style={
                             Object {
                               "fill": "currentColor",
-                              "height": "28px",
+                              "height": "24px",
                               "width": "auto",
                             }
                           }
@@ -1156,7 +1156,7 @@ exports[`Contents renders a contents component 1`] = `
                               style={
                                 Object {
                                   "fill": "currentColor",
-                                  "height": "28px",
+                                  "height": "24px",
                                   "width": "auto",
                                 }
                               }
@@ -1182,7 +1182,7 @@ exports[`Contents renders a contents component 1`] = `
                               style={
                                 Object {
                                   "fill": "currentColor",
-                                  "height": "28px",
+                                  "height": "24px",
                                   "width": "auto",
                                 }
                               }
@@ -1210,7 +1210,7 @@ exports[`Contents renders a contents component 1`] = `
                           style={
                             Object {
                               "fill": "currentColor",
-                              "height": "28px",
+                              "height": "24px",
                               "width": "auto",
                             }
                           }
@@ -1237,7 +1237,7 @@ exports[`Contents renders a contents component 1`] = `
                               style={
                                 Object {
                                   "fill": "currentColor",
-                                  "height": "28px",
+                                  "height": "24px",
                                   "width": "auto",
                                 }
                               }
@@ -1263,7 +1263,7 @@ exports[`Contents renders a contents component 1`] = `
                               style={
                                 Object {
                                   "fill": "currentColor",
-                                  "height": "28px",
+                                  "height": "24px",
                                   "width": "auto",
                                 }
                               }
@@ -1291,7 +1291,7 @@ exports[`Contents renders a contents component 1`] = `
                           style={
                             Object {
                               "fill": "currentColor",
-                              "height": "28px",
+                              "height": "24px",
                               "width": "auto",
                             }
                           }
@@ -1318,7 +1318,7 @@ exports[`Contents renders a contents component 1`] = `
                               style={
                                 Object {
                                   "fill": "currentColor",
-                                  "height": "28px",
+                                  "height": "24px",
                                   "width": "auto",
                                 }
                               }
@@ -1344,7 +1344,7 @@ exports[`Contents renders a contents component 1`] = `
                               style={
                                 Object {
                                   "fill": "currentColor",
-                                  "height": "28px",
+                                  "height": "24px",
                                   "width": "auto",
                                 }
                               }
@@ -1372,7 +1372,7 @@ exports[`Contents renders a contents component 1`] = `
                           style={
                             Object {
                               "fill": "currentColor",
-                              "height": "28px",
+                              "height": "24px",
                               "width": "auto",
                             }
                           }
@@ -1399,7 +1399,7 @@ exports[`Contents renders a contents component 1`] = `
                               style={
                                 Object {
                                   "fill": "currentColor",
-                                  "height": "28px",
+                                  "height": "24px",
                                   "width": "auto",
                                 }
                               }
@@ -1425,7 +1425,7 @@ exports[`Contents renders a contents component 1`] = `
                               style={
                                 Object {
                                   "fill": "currentColor",
-                                  "height": "28px",
+                                  "height": "24px",
                                   "width": "auto",
                                 }
                               }
@@ -1453,7 +1453,7 @@ exports[`Contents renders a contents component 1`] = `
                           style={
                             Object {
                               "fill": "currentColor",
-                              "height": "28px",
+                              "height": "24px",
                               "width": "auto",
                             }
                           }
@@ -1480,7 +1480,7 @@ exports[`Contents renders a contents component 1`] = `
                               style={
                                 Object {
                                   "fill": "currentColor",
-                                  "height": "28px",
+                                  "height": "24px",
                                   "width": "auto",
                                 }
                               }
@@ -1506,7 +1506,7 @@ exports[`Contents renders a contents component 1`] = `
                               style={
                                 Object {
                                   "fill": "currentColor",
-                                  "height": "28px",
+                                  "height": "24px",
                                   "width": "auto",
                                 }
                               }
@@ -1640,7 +1640,7 @@ exports[`Contents renders a contents component 1`] = `
                           style={
                             Object {
                               "fill": "currentColor",
-                              "height": "28px",
+                              "height": "24px",
                               "width": "auto",
                             }
                           }
@@ -2084,8 +2084,12 @@ exports[`Contents renders a contents component 1`] = `
             </tbody>
           </table>
           <div
-            className="Pagination"
-          />
+            className="contents-pagination"
+          >
+            <div
+              className="Pagination"
+            />
+          </div>
         </div>
       </section>
     </article>
