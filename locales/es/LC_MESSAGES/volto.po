@@ -140,6 +140,7 @@ msgstr "Ascendente"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 msgid "Back"
 msgstr "Volver"
