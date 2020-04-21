@@ -27,7 +27,6 @@ import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
 
 import aheadSVG from '@plone/volto/icons/ahead.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   login: {
@@ -35,8 +34,8 @@ const messages = defineMessages({
     defaultMessage: 'Log in',
   },
   loginName: {
-    id: 'Login Name',
-    defaultMessage: 'Login Name',
+    id: 'Type your Email',
+    defaultMessage: 'Type your Email',
   },
   Login: {
     id: 'Login',
@@ -176,12 +175,9 @@ class Login extends Component {
           <Form method="post" onSubmit={this.onLogin}>
             <Segment.Group raised>
               <Segment className="primary">
-                <FormattedMessage id="Log In" defaultMessage="Login Name" />
-              </Segment>
-              <Segment secondary>
                 <FormattedMessage
-                  id="Sign in to start session"
-                  defaultMessage="Sign in to start session"
+                  id="Sign in to Volto"
+                  defaultMessage="Sign in to Volto"
                 />
               </Segment>
               <Segment className="form">
@@ -192,8 +188,8 @@ class Login extends Component {
                         <div className="wrapper">
                           <label htmlFor="login">
                             <FormattedMessage
-                              id="Login Name"
-                              defaultMessage="Login Name"
+                              id="Email"
+                              defaultMessage="Email"
                             />
                           </label>
                         </div>
@@ -208,27 +204,6 @@ class Login extends Component {
                           )}
                           autoFocus
                         />
-                      </Grid.Column>
-                    </Grid.Row>
-                    <Grid.Row stretched>
-                      <Grid.Column stretched width="12">
-                        <p className="help">
-                          <FormattedMessage
-                            id="If you you do not have an account here, head over to the {registrationform}."
-                            defaultMessage="If you you do not have an account here, head over to the {registrationform}."
-                            values={{
-                              registrationform: (
-                                /* eslint-disable jsx-a11y/tabindex-no-positive */
-                                <Link to="/register" tabIndex={1}>
-                                  <FormattedMessage
-                                    id="registration form"
-                                    defaultMessage="registration form"
-                                  />
-                                </Link>
-                              ),
-                            }}
-                          />
-                        </p>
                       </Grid.Column>
                     </Grid.Row>
                   </Grid>
@@ -263,13 +238,13 @@ class Login extends Component {
                         <p className="help">
                           <FormattedMessage
                             id="If you have forgotten your password, {forgotpassword}"
-                            defaultMessage="If you have forgotten your password, {forgotpassword}"
+                            defaultMessage="Forgot password?  Ask for a new {forgotpassword}"
                             values={{
                               forgotpassword: (
                                 <Link to="/password-reset">
                                   <FormattedMessage
-                                    id="we can send you a new one"
-                                    defaultMessage="we can send you a new one"
+                                    id="new password"
+                                    defaultMessage="new password"
                                   />
                                 </Link>
                               ),
@@ -282,6 +257,12 @@ class Login extends Component {
                 </Form.Field>
               </Segment>
               <Segment className="actions" clearing>
+                <Button basic primary>
+                  {/* eslint-disable jsx-a11y/tabindex-no-positive */}
+                  <Link to="/register" tabIndex={1}>
+                    <FormattedMessage id="SignUp" defaultMessage="SignUp" />
+                  </Link>
+                </Button>
                 <Button
                   basic
                   primary
@@ -293,19 +274,6 @@ class Login extends Component {
                   loading={this.props.loading}
                 >
                   <Icon className="circled" name={aheadSVG} size="30px" />
-                </Button>
-
-                <Button
-                  basic
-                  secondary
-                  id="login-form-cancel"
-                  as={Link}
-                  to="/"
-                  aria-label={this.props.intl.formatMessage(messages.cancel)}
-                  title={this.props.intl.formatMessage(messages.cancel)}
-                  floated="right"
-                >
-                  <Icon className="circled" name={clearSVG} size="30px" />
                 </Button>
               </Segment>
             </Segment.Group>

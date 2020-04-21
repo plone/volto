@@ -18,12 +18,7 @@ exports[`Login renders a login component 1`] = `
         <div
           className="ui segment primary"
         >
-          Login Name
-        </div>
-        <div
-          className="ui secondary segment"
-        >
-          Sign in to start session
+          Sign in to Volto
         </div>
         <div
           className="ui segment form"
@@ -46,7 +41,7 @@ exports[`Login renders a login component 1`] = `
                     <label
                       htmlFor="login"
                     >
-                      Login Name
+                      Email
                     </label>
                   </div>
                 </div>
@@ -61,31 +56,10 @@ exports[`Login renders a login component 1`] = `
                       id="login"
                       name="login"
                       onChange={[Function]}
-                      placeholder="Login Name"
+                      placeholder="Type your Email"
                       type="text"
                     />
                   </div>
-                </div>
-              </div>
-              <div
-                className="stretched row"
-              >
-                <div
-                  className="stretched twelve wide column"
-                >
-                  <p
-                    className="help"
-                  >
-                    If you you do not have an account here, head over to the 
-                    <a
-                      href="/register"
-                      onClick={[Function]}
-                      tabIndex={1}
-                    >
-                      registration form
-                    </a>
-                    .
-                  </p>
                 </div>
               </div>
             </div>
@@ -138,12 +112,12 @@ exports[`Login renders a login component 1`] = `
                   <p
                     className="help"
                   >
-                    If you have forgotten your password, 
+                    Forgot password?  Ask for a new 
                     <a
                       href="/password-reset"
                       onClick={[Function]}
                     >
-                      we can send you a new one
+                      new password
                     </a>
                   </p>
                 </div>
@@ -154,6 +128,18 @@ exports[`Login renders a login component 1`] = `
         <div
           className="ui clearing segment actions"
         >
+          <button
+            className="ui basic primary button"
+            onClick={[Function]}
+          >
+            <a
+              href="/register"
+              onClick={[Function]}
+              tabIndex={1}
+            >
+              SignUp
+            </a>
+          </button>
           <button
             aria-label="Log in"
             className="ui basic primary right floated button"
@@ -181,34 +167,6 @@ exports[`Login renders a login component 1`] = `
               xmlns=""
             />
           </button>
-          <a
-            aria-label="Cancel"
-            className="ui basic secondary right floated button"
-            href="/"
-            id="login-form-cancel"
-            onClick={[Function]}
-            role="button"
-            title="Cancel"
-          >
-            <svg
-              className="icon circled"
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": undefined,
-                }
-              }
-              onClick={null}
-              style={
-                Object {
-                  "fill": "currentColor",
-                  "height": "30px",
-                  "width": "auto",
-                }
-              }
-              viewBox=""
-              xmlns=""
-            />
-          </a>
         </div>
       </div>
     </form>
