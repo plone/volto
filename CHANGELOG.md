@@ -6,7 +6,7 @@
 
 ### Feature
 
-- Added Print CSS
+- Added Print CSS @iFlameing #1289
 
 ### Bugfix
 
