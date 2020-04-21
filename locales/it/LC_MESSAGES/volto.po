@@ -475,6 +475,7 @@ msgid "Edit {title}"
 msgstr "Modifica {title}"
 
 #: components/manage/Controlpanels/UsersControlpanel
+#: components/theme/Login/Login
 msgid "Email"
 msgstr "Email"
 
@@ -671,10 +672,6 @@ msgstr "Se sei sicuro di aver inserito l'indirizzo corretto ma ottieni comunque 
 msgid "If you have forgotten your password, {forgotpassword}"
 msgstr "Se hai dimenticato la tua password, {forgotpassword}."
 
-#: components/theme/Login/Login
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr "Se non ti sei ancora iscritto, compila il {registrationform} per diventare un collaboratore."
-
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -779,10 +776,6 @@ msgstr "Elenco"
 msgid "Location"
 msgstr "Luogo"
 
-#: components/theme/Login/Login
-msgid "Log In"
-msgstr "Log In"
-
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 msgid "Log in"
@@ -795,10 +788,6 @@ msgstr "Login"
 #: components/theme/Login/Login
 msgid "Login Failed"
 msgstr "Accesso fallito"
-
-#: components/theme/Login/Login
-msgid "Login Name"
-msgstr "Nome utente"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
@@ -1238,8 +1227,12 @@ msgid "Shrink toolbar"
 msgstr "Riduci la toolbar"
 
 #: components/theme/Login/Login
-msgid "Sign in to start session"
-msgstr "Accedi per iniziare la sessione"
+msgid "Sign in to Volto"
+msgstr ""
+
+#: components/theme/Login/Login
+msgid "SignUp"
+msgstr ""
 
 #: components/theme/Logo/Logo
 msgid "Site"
@@ -1430,6 +1423,10 @@ msgstr "Digita testo…"
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr "Digita il titolo…"
+
+#: components/theme/Login/Login
+msgid "Type your Email"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "UID"
@@ -1683,13 +1680,13 @@ msgstr "media"
 msgid "mostUsed"
 msgstr "Più usati"
 
+#: components/theme/Login/Login
+msgid "new password"
+msgstr ""
+
 #: error
 msgid "or try a different page."
 msgstr "oppure prova una pagina diversa."
-
-#: components/theme/Login/Login
-msgid "registration form"
-msgstr "form di registrazione"
 
 #: components/theme/Search/Search
 msgid "results found"
@@ -1726,10 +1723,6 @@ msgstr "Avatar dell'utente"
 #: config/Blocks
 msgid "video"
 msgstr "Video"
-
-#: components/theme/Login/Login
-msgid "we can send you a new one"
-msgstr "possiamo spedirtene una nuova"
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"

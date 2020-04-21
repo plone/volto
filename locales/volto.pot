@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-04-09T10:32:12.722Z\n"
+"POT-Creation-Date: 2020-04-21T12:58:59.982Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -572,6 +572,7 @@ msgid "Edit {title}"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
+#: components/theme/Login/Login
 # defaultMessage: Email
 msgid "Email"
 msgstr ""
@@ -810,13 +811,8 @@ msgid "If you are certain you have the correct web address but are encountering 
 msgstr ""
 
 #: components/theme/Login/Login
-# defaultMessage: If you have forgotten your password, {forgotpassword}
+# defaultMessage: Forgot password?  Ask for a new {forgotpassword}
 msgid "If you have forgotten your password, {forgotpassword}"
-msgstr ""
-
-#: components/theme/Login/Login
-# defaultMessage: If you you do not have an account here, head over to the {registrationform}.
-msgid "If you you do not have an account here, head over to the {registrationform}."
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
@@ -947,11 +943,6 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
-#: components/theme/Login/Login
-# defaultMessage: Login Name
-msgid "Log In"
-msgstr ""
-
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 # defaultMessage: Log in
@@ -966,11 +957,6 @@ msgstr ""
 #: components/theme/Login/Login
 # defaultMessage: Login Failed
 msgid "Login Failed"
-msgstr ""
-
-#: components/theme/Login/Login
-# defaultMessage: Login Name
-msgid "Login Name"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
@@ -1509,8 +1495,13 @@ msgid "Shrink toolbar"
 msgstr ""
 
 #: components/theme/Login/Login
-# defaultMessage: Sign in to start session
-msgid "Sign in to start session"
+# defaultMessage: Sign in to Volto
+msgid "Sign in to Volto"
+msgstr ""
+
+#: components/theme/Login/Login
+# defaultMessage: SignUp
+msgid "SignUp"
 msgstr ""
 
 #: components/theme/Logo/Logo
@@ -1742,6 +1733,11 @@ msgstr ""
 #: components/manage/Blocks/Title/Edit
 # defaultMessage: Type the title…
 msgid "Type the title…"
+msgstr ""
+
+#: components/theme/Login/Login
+# defaultMessage: Type your Email
+msgid "Type your Email"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -2057,14 +2053,14 @@ msgstr ""
 msgid "mostUsed"
 msgstr ""
 
+#: components/theme/Login/Login
+# defaultMessage: new password
+msgid "new password"
+msgstr ""
+
 #: error
 # defaultMessage: or try a different page.
 msgid "or try a different page."
-msgstr ""
-
-#: components/theme/Login/Login
-# defaultMessage: registration form
-msgid "registration form"
 msgstr ""
 
 #: components/theme/Search/Search
@@ -2110,11 +2106,6 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Video
 msgid "video"
-msgstr ""
-
-#: components/theme/Login/Login
-# defaultMessage: we can send you a new one
-msgid "we can send you a new one"
 msgstr ""
 
 #: components/manage/Contents/Contents

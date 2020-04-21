@@ -483,6 +483,7 @@ msgid "Edit {title}"
 msgstr "Editar {title}"
 
 #: components/manage/Controlpanels/UsersControlpanel
+#: components/theme/Login/Login
 msgid "Email"
 msgstr "Email"
 
@@ -679,10 +680,6 @@ msgstr "Se tiver a certeza que tem o endereço web correcto mas está a obter um
 msgid "If you have forgotten your password, {forgotpassword}"
 msgstr "Se se esqueceu da sua senha, {forgotpassword}"
 
-#: components/theme/Login/Login
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr "Se não tem uma conta aqui, dirija-se a {registrationform}."
-
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -787,10 +784,6 @@ msgstr ""
 msgid "Location"
 msgstr "Localização"
 
-#: components/theme/Login/Login
-msgid "Log In"
-msgstr "Iniciar sessão"
-
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 msgid "Log in"
@@ -803,10 +796,6 @@ msgstr "Iniciar sessão"
 #: components/theme/Login/Login
 msgid "Login Failed"
 msgstr "Falhou o início de sessão"
-
-#: components/theme/Login/Login
-msgid "Login Name"
-msgstr "Nome de utilizador"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
@@ -1246,8 +1235,12 @@ msgid "Shrink toolbar"
 msgstr ""
 
 #: components/theme/Login/Login
-msgid "Sign in to start session"
-msgstr "Inicie a sessão"
+msgid "Sign in to Volto"
+msgstr ""
+
+#: components/theme/Login/Login
+msgid "SignUp"
+msgstr ""
 
 #: components/theme/Logo/Logo
 msgid "Site"
@@ -1438,6 +1431,10 @@ msgstr "Escreva texto..."
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr "Escreva o título..."
+
+#: components/theme/Login/Login
+msgid "Type your Email"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "UID"
@@ -1691,13 +1688,13 @@ msgstr "média"
 msgid "mostUsed"
 msgstr "maisUsado"
 
+#: components/theme/Login/Login
+msgid "new password"
+msgstr ""
+
 #: error
 msgid "or try a different page."
 msgstr ""
-
-#: components/theme/Login/Login
-msgid "registration form"
-msgstr "formulário de registo"
 
 #: components/theme/Search/Search
 msgid "results found"
@@ -1734,10 +1731,6 @@ msgstr "avatar do utilizador"
 #: config/Blocks
 msgid "video"
 msgstr "vídeo"
-
-#: components/theme/Login/Login
-msgid "we can send you a new one"
-msgstr "podemos enviar-lhe uma nova"
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"

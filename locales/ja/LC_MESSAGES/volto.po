@@ -482,6 +482,7 @@ msgid "Edit {title}"
 msgstr "{title} を編集"
 
 #: components/manage/Controlpanels/UsersControlpanel
+#: components/theme/Login/Login
 msgid "Email"
 msgstr "メール"
 
@@ -678,10 +679,6 @@ msgstr "確かに正しいURLを入力したのにエラーになってしまう
 msgid "If you have forgotten your password, {forgotpassword}"
 msgstr "パスワードを忘れたら、 {forgotpassword}"
 
-#: components/theme/Login/Login
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr "アカウントを持っていない場合、ここが {registrationform} です。"
-
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -786,10 +783,6 @@ msgstr "リスティング"
 msgid "Location"
 msgstr "場所"
 
-#: components/theme/Login/Login
-msgid "Log In"
-msgstr "ログイン"
-
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 msgid "Log in"
@@ -802,10 +795,6 @@ msgstr "ログイン"
 #: components/theme/Login/Login
 msgid "Login Failed"
 msgstr "ログインに失敗しました"
-
-#: components/theme/Login/Login
-msgid "Login Name"
-msgstr "ログイン名"
 
 #: components/manage/Blocks/Table/Edit
 msgid "Make the table compact"
@@ -1245,8 +1234,12 @@ msgid "Shrink toolbar"
 msgstr "ツールバーを閉じる"
 
 #: components/theme/Login/Login
-msgid "Sign in to start session"
-msgstr "ログインしてセッションを開始"
+msgid "Sign in to Volto"
+msgstr ""
+
+#: components/theme/Login/Login
+msgid "SignUp"
+msgstr ""
 
 #: components/theme/Logo/Logo
 msgid "Site"
@@ -1437,6 +1430,10 @@ msgstr "テキストを入力…"
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr "タイトルを入力…"
+
+#: components/theme/Login/Login
+msgid "Type your Email"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "UID"
@@ -1690,13 +1687,13 @@ msgstr "メディア"
 msgid "mostUsed"
 msgstr "よく使う物"
 
+#: components/theme/Login/Login
+msgid "new password"
+msgstr ""
+
 #: error
 msgid "or try a different page."
 msgstr "または、他のページを試してください。"
-
-#: components/theme/Login/Login
-msgid "registration form"
-msgstr "登録フォーム"
 
 #: components/theme/Search/Search
 msgid "results found"
@@ -1733,10 +1730,6 @@ msgstr "ユーザアイコン"
 #: config/Blocks
 msgid "video"
 msgstr "ビデオ"
-
-#: components/theme/Login/Login
-msgid "we can send you a new one"
-msgstr "こちらからメール送信できます。"
 
 #: components/manage/Contents/Contents
 msgid "{count} selected"

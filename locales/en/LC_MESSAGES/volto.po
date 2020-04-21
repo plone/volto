@@ -475,6 +475,7 @@ msgid "Edit {title}"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
+#: components/theme/Login/Login
 msgid "Email"
 msgstr ""
 
@@ -671,10 +672,6 @@ msgstr ""
 msgid "If you have forgotten your password, {forgotpassword}"
 msgstr ""
 
-#: components/theme/Login/Login
-msgid "If you you do not have an account here, head over to the {registrationform}."
-msgstr ""
-
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
@@ -779,10 +776,6 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
-#: components/theme/Login/Login
-msgid "Log In"
-msgstr ""
-
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 msgid "Log in"
@@ -794,10 +787,6 @@ msgstr ""
 
 #: components/theme/Login/Login
 msgid "Login Failed"
-msgstr ""
-
-#: components/theme/Login/Login
-msgid "Login Name"
 msgstr ""
 
 #: components/manage/Blocks/Table/Edit
@@ -1238,7 +1227,11 @@ msgid "Shrink toolbar"
 msgstr ""
 
 #: components/theme/Login/Login
-msgid "Sign in to start session"
+msgid "Sign in to Volto"
+msgstr ""
+
+#: components/theme/Login/Login
+msgid "SignUp"
 msgstr ""
 
 #: components/theme/Logo/Logo
@@ -1429,6 +1422,10 @@ msgstr ""
 
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
+msgstr ""
+
+#: components/theme/Login/Login
+msgid "Type your Email"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -1683,12 +1680,12 @@ msgstr ""
 msgid "mostUsed"
 msgstr ""
 
-#: error
-msgid "or try a different page."
+#: components/theme/Login/Login
+msgid "new password"
 msgstr ""
 
-#: components/theme/Login/Login
-msgid "registration form"
+#: error
+msgid "or try a different page."
 msgstr ""
 
 #: components/theme/Search/Search
@@ -1725,10 +1722,6 @@ msgstr ""
 
 #: config/Blocks
 msgid "video"
-msgstr ""
-
-#: components/theme/Login/Login
-msgid "we can send you a new one"
 msgstr ""
 
 #: components/manage/Contents/Contents
