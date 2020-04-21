@@ -48,17 +48,17 @@ const supported = new locale.Locales(keys(languages), 'en');
 
 const server = express();
 // Internal proxy to bypass CORS while developing.
-// For the sake of simplicty, we only allow http://localhost:3000/api as the proxied api path
-if (__DEVELOPMENT__ && settings.apiPath.endsWith('http://localhost:3000/api')) {
-  const parsedURL = parseUrl(settings.proxyToApiPath);
-  const serverURL = `${parsedURL.protocol}//${parsedURL.host}`;
-  const instancePath = parsedURL.pathname;
+if (__DEVELOPMENT__ && settings.proxyToApiPath) {
+  const apiPathURL = parseUrl(settings.apiPath);
+  const proxyURL = parseUrl(settings.proxyToApiPath);
+  const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
+  const instancePath = proxyURL.pathname;
   server.use(
     '/api',
     createProxyMiddleware({
       target: serverURL,
       pathRewrite: {
-        '^/api': `/VirtualHostBase/http/localhost:3000${instancePath}/VirtualHostRoot/_vh_api`,
+        '^/api': `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
       },
     }),
   );
