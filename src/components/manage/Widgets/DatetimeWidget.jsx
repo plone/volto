@@ -165,6 +165,7 @@ class DatetimeWidget extends Component {
       error,
       fieldSet,
       dateOnly,
+      noPastDates,
       intl,
     } = this.props;
     const { datetime, isDefault, focused } = this.state;
@@ -196,8 +197,7 @@ class DatetimeWidget extends Component {
                     onDateChange={this.onDateChange}
                     focused={focused}
                     numberOfMonths={1}
-                    enableOutsideDays
-                    isOutsideRange={() => false}
+                    {...(noPastDates ? {} : { isOutsideRange: () => false })}
                     onFocusChange={this.onFocusChange}
                     noBorder
                     displayFormat={moment
@@ -261,6 +261,7 @@ DatetimeWidget.propTypes = {
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
   dateOnly: PropTypes.bool,
+  noPastDates: PropTypes.bool,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
@@ -275,6 +276,7 @@ DatetimeWidget.defaultProps = {
   required: false,
   error: [],
   dateOnly: false,
+  noPastDates: false,
   value: null,
 };
 
