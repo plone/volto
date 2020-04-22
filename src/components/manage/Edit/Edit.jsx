@@ -16,13 +16,15 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import qs from 'query-string';
 import { find } from 'lodash';
+import { toast } from 'react-toastify';
 
 import {
   Forbidden,
   Form,
   Icon,
-  Toolbar,
   Sidebar,
+  Toast,
+  Toolbar,
   Unauthorized,
 } from '@plone/volto/components';
 import {
@@ -48,6 +50,10 @@ const messages = defineMessages({
   cancel: {
     id: 'Cancel',
     defaultMessage: 'Cancel',
+  },
+  error: {
+    id: 'Error',
+    defaultMessage: 'Error',
   },
 });
 
@@ -148,6 +154,16 @@ class Edit extends Component {
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       this.props.history.push(
         this.props.returnUrl || getBaseUrl(this.props.pathname),
+      );
+    }
+
+    if (nextProps.updateRequest.error) {
+      toast.error(
+        <Toast
+          error
+          title={this.props.intl.formatMessage(messages.error)}
+          content={`${nextProps.updateRequest.error.status} ${nextProps.updateRequest.error.response?.body?.message}`}
+        />,
       );
     }
   }
@@ -288,6 +304,7 @@ export const __test__ = compose(
       getRequest: state.content.get,
       schemaRequest: state.schema,
       updateRequest: state.content.update,
+      createRequest: state.content.create,
       pathname: props.location.pathname,
       returnUrl: qs.parse(props.location.search).return_url,
     }),
