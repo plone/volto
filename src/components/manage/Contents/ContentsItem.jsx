@@ -13,7 +13,7 @@ import { DragSource, DropTarget } from 'react-dnd';
 import { FormattedMessage } from 'react-intl';
 import { Icon, Circle } from '@plone/volto/components';
 import moreSVG from '@plone/volto/icons/more.svg';
-import addDocumentSVG from '@plone/volto/icons/add-document.svg';
+import documentSVG from '@plone/volto/icons/content-existing.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import calendarSVG from '@plone/volto/icons/calendar.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
@@ -33,7 +33,8 @@ import dragSVG from '@plone/volto/icons/drag.svg';
 export function getIcon(type, isFolderish) {
   switch (type) {
     case 'Document':
-      return addDocumentSVG;
+    case 'News Item':
+      return documentSVG;
     case 'Image':
       return imageSVG;
     case 'File':
