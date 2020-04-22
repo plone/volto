@@ -6,8 +6,10 @@
 
 ### Feature
 
+- Full screen right sidebar @rexalex #1345
 - Enable internal API proxy for not to rely on CORS on development @sneridagh
 - Added Print CSS @iFlameing #1289
+
 
 ### Bugfix
 

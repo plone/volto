@@ -16,6 +16,9 @@ test('renders a sidebar component', () => {
     sidebar: {
       tab: 0,
     },
+    toolbar: {
+      expanded: false,
+    },
   });
   const component = renderer.create(
     <Provider store={store}>
