@@ -6,14 +6,17 @@
 
 ### Feature
 
+- Full screen right sidebar @rexalex #1345
 - Enable internal API proxy for not to rely on CORS on development @sneridagh
 - Added Print CSS @iFlameing #1289
+
 
 ### Bugfix
 
 - Japanese translation @terapyon
 - Fix `ArrayWidget` to support multiselect schema `schema.List`/`schema.Set`-> `schema.Choice` hardcoded (not using vocabularies) combination @sneridagh
 - Remove Back button from control panels, since it's redundant @sneridagh
+- Show past dates in date time widget calendar @nzambello
 
 ### Internal
 
@@ -93,6 +96,7 @@
 ### Feature
 
 - /contents (folder content view) is sortable @ksuess
+- Updated the (folder content icons to Pastanaga Icons) @iFlameing
 
 ### Bugfix
 
