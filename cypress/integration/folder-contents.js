@@ -7,9 +7,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.visit('/');
       cy.autologin();
       cy.createContent('Folder', 'my-folder', 'My Folder');
-      cy.createContent('Folder', 'my-folder-2', 'MY Second Folder');
       cy.createContent('Document', 'my-document', 'My Document', 'my-folder');
-      cy.createContent('Document', 'my-document', 'My Document', 'my-folder-2');
       cy.visit('/my-folder/contents');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
@@ -36,38 +34,6 @@ if (Cypress.env('API') !== 'guillotina') {
         .and('eq', '/my-folder/brand-new-document-title/contents');
     });
 
-    it('Adding Publication date via folder contetns view', () => {
-      cy.get('svg[class="icon unchecked"]').click();
-      cy.get('svg[class="icon properties"]').click();
-      cy.get('input[name="effective"]')
-        .clear()
-        .type('2017-06-01T08:30');
-      cy.get('.modal button[title="Save"]').click();
-
-      // then the new publication date should show up in the folder contents
-      cy.get('#content-core table')
-        .contains('2017-06-01')
-        .should('have.attr', 'title')
-        .and('eq', 'Thursday, June 1, 2017 8:30 AM');
-    });
-
-    it('Adding Expiration date via folder content view', () => {
-      cy.get('svg[class="icon unchecked"]').click();
-      cy.get('svg[class="icon properties"]').click();
-      cy.get('input[name="expires"]')
-        .clear()
-        .type('2017-06-20T08:30');
-      cy.get('.modal button[title="Save"]').click();
-      cy.get('.right.floating').click();
-      cy.get('.icon.Expiration').click();
-
-      // Then the new Expiration date should show up in the folder contents
-      cy.get('#content-core table')
-        .contains('2017-06-20')
-        .should('have.attr', 'title')
-        .and('eq', 'Tuesday, June 20, 2017 8:30 AM');
-    });
-
     it('Copying the content in the same folder', () => {
       cy.get('svg[class="icon unchecked"]').click();
       cy.get('svg[class="icon copy"]').click();
@@ -76,23 +42,47 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Cuting the item and pasting into others', () => {
-      cy.get('svg[class="icon unchecked"]').click();
+      cy.createContent('Document', 'child', 'My Child', 'my-folder');
+      cy.visit('my-folder/contents');
+      cy.get('tbody>tr:nth-child(2) .unchecked').click();
       cy.get('svg[class="icon cut"]').click();
-      cy.visit('/my-folder/my-folder-2/contents');
-
+      cy.get('tbody>tr:nth-child(1) .iconAlign > span').click();
       cy.get('svg[class="icon paste"]').click();
 
-      cy.get('#content-core table')
-        .contains('My Document')
-        .should('have.attr', 'href')
-        .and('eq', '/my-folder-2/my-document/contents');
+      //then their should be a My child
+      cy.get('#content-core table').contains('My Child');
     });
 
-    it.only('Deleting a item from a folder', () => {
+    it('Deleting a item from a folder', () => {
       cy.get('svg[class="icon unchecked"]').click();
       cy.get('svg[class="icon delete"]').click();
       cy.get('.ui.primary.button').click();
+
+      // then the folder content must be empty
       cy.get('.icon.unchecked').should('have.length', 0);
+    });
+
+    it('Changing Content State', () => {
+      // when changing the state from private to publish
+      cy.createContent(
+        'Document',
+        'child',
+        'My Child',
+        'my-folder/my-document',
+      );
+      cy.get('svg[class="icon unchecked"]').click();
+      cy.get('svg[class="icon semaphore"]').click();
+      cy.get('#field-state')
+        .click()
+        .type('Publish{enter}');
+      cy.get('.fitted.checkbox').click();
+      cy.get('button[title="Save"]').click();
+
+      // then the content must change its state from private to publish
+      // and its child also
+      cy.get('#content-core table').contains('Published');
+      cy.visit('/my-folder/my-document/contents');
+      cy.get('#content-core table').contains('Published');
     });
   });
 }
