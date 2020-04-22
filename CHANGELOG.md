@@ -10,6 +10,7 @@
 
 ### Bugfix
 
+- Japanese translation @terapyon
 - Fix `ArrayWidget` to support multiselect schema `schema.List`/`schema.Set`-> `schema.Choice` hardcoded (not using vocabularies) combination @sneridagh
 
 ### Internal
