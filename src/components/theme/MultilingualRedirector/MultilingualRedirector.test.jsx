@@ -9,7 +9,7 @@ import MultilingualRedirector from './MultilingualRedirector';
 jest.mock('~/config', () => ({
   settings: {
     isMultilingual: true,
-    supportedLanguages: ['de', 'ca'],
+    supportedLanguages: ['de', 'es'],
   },
 }));
 
