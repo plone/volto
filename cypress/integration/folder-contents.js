@@ -36,36 +36,37 @@ if (Cypress.env('API') !== 'guillotina') {
         .and('eq', '/my-folder/brand-new-document-title/contents');
     });
 
-    it('Adding Publication date via folder contetns view', () => {
+    // Removing dates related tests until the
+    it('Adding Publication date via folder contents view', () => {
       cy.get('svg[class="icon unchecked"]').click();
       cy.get('svg[class="icon properties"]').click();
-      cy.get('input[name="effective"]')
-        .clear()
-        .type('2017-06-01T08:30');
+      cy.get('input#effective-date').type('{selectall}12/24/2050{esc}');
+      cy.get('input#effective-time').type('{downarrow}');
+      cy.get('.rc-time-picker-panel-input').type('{selectall}10:00 AM{esc}');
       cy.get('.modal button[title="Save"]').click();
 
       // then the new publication date should show up in the folder contents
       cy.get('#content-core table')
-        .contains('2017-06-01')
+        .contains('12/24/2050')
         .should('have.attr', 'title')
-        .and('eq', 'Thursday, June 1, 2017 8:30 AM');
+        .and('eq', 'Saturday, December 24, 2050 10:00 AM');
     });
 
     it('Adding Expiration date via folder content view', () => {
       cy.get('svg[class="icon unchecked"]').click();
       cy.get('svg[class="icon properties"]').click();
-      cy.get('input[name="expires"]')
-        .clear()
-        .type('2017-06-20T08:30');
+      cy.get('input#expires-date').type('{selectall}12/24/2050{esc}');
+      cy.get('input#expires-time').type('{downarrow}');
+      cy.get('.rc-time-picker-panel-input').type('{selectall}10:00 AM{esc}');
       cy.get('.modal button[title="Save"]').click();
       cy.get('.right.floating').click();
       cy.get('.icon.Expiration').click();
 
       // Then the new Expiration date should show up in the folder contents
       cy.get('#content-core table')
-        .contains('2017-06-20')
+        .contains('12/24/2050')
         .should('have.attr', 'title')
-        .and('eq', 'Tuesday, June 20, 2017 8:30 AM');
+        .and('eq', 'Saturday, December 24, 2050 10:00 AM');
     });
 
     it('Copying the content in the same folder', () => {
@@ -78,8 +79,8 @@ if (Cypress.env('API') !== 'guillotina') {
     it('Cuting the item and pasting into others', () => {
       cy.get('svg[class="icon unchecked"]').click();
       cy.get('svg[class="icon cut"]').click();
-      cy.visit('/my-folder/my-folder-2/contents');
-
+      cy.get('[href="/my-folder-2"]').click();
+      cy.get('[aria-label="Contents"]').click();
       cy.get('svg[class="icon paste"]').click();
 
       cy.get('#content-core table')
@@ -88,7 +89,7 @@ if (Cypress.env('API') !== 'guillotina') {
         .and('eq', '/my-folder-2/my-document/contents');
     });
 
-    it.only('Deleting a item from a folder', () => {
+    it('Deleting a item from a folder', () => {
       cy.get('svg[class="icon unchecked"]').click();
       cy.get('svg[class="icon delete"]').click();
       cy.get('.ui.primary.button').click();
