@@ -11,7 +11,6 @@
 - Added Print CSS @iFlameing #1289
 - Added error handling for Add and Edit forms #1392 @nzambello
 
-
 ### Bugfix
 
 - Japanese translation @terapyon
