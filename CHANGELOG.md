@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix `ArrayWidget` to support multiselect schema `schema.List`/`schema.Set`-> `schema.Choice` hardcoded (not using vocabularies) combination @sneridagh
+
 ### Internal
 
 ## 5.0.1 (2020-04-16)
