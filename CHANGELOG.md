@@ -6,6 +6,7 @@
 
 ### Feature
 
+- Enable internal API proxy for not to rely on CORS on development @sneridagh
 - Added Print CSS @iFlameing #1289
 
 ### Bugfix
