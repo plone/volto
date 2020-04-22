@@ -115,7 +115,7 @@ class ArrayWidget extends Component {
       selectedOption: props.value
         ? props.value.map(item =>
             isObject(item)
-              ? { label: item.title, value: item.token }
+              ? { label: item.title || item.token, value: item.token }
               : { label: item, value: item },
           )
         : [],
