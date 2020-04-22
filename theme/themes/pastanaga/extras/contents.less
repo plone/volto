@@ -1,0 +1,95 @@
+.folder-contents {
+  .ui.icon.button,
+  .ui.icon.button:hover {
+    background: transparent !important;
+    box-shadow: none;
+  }
+
+  .ui.compact.table td {
+    padding: 8px;
+
+    .row-actions {
+      height: 24px;
+      padding-top: 4px;
+    }
+  }
+
+  .ui.dropdown .menu > .item {
+    display: flex;
+    align-items: center;
+  }
+
+  .ui.dropdown > .left.menu .menu {
+    margin: 0 !important;
+  }
+
+  .ui.menu.top-menu {
+    padding: 10px 0;
+    border-bottom: 4px solid #c7d5d8;
+  }
+
+  .ui.menu .menu.top-menu-menu {
+    border-right: 1px solid #b8c6c8;
+
+    .ui.icon.button {
+      padding: 10px;
+      margin-left: 4px;
+      border-radius: 1px;
+      color: @brown !important;
+
+      &:hover {
+        background-color: #edf1f2 !important;
+      }
+    }
+  }
+
+  .ui.menu .menu.top-menu-searchbox {
+    border-left: 1px solid #b8c6c8;
+  }
+
+  .ui.secondary.attached.segment.contents-breadcrumbs {
+    display: flex;
+    justify-content: space-between;
+
+    .ui.dropdown {
+      height: 28px;
+    }
+  }
+
+  .ui.menu .item.upload:hover,
+  .ui.menu .item.paste:hover {
+    background: none;
+  }
+
+  .ui.dropdown .menu > .item.left-dropdown > svg {
+    position: relative;
+    top: 3px;
+  }
+
+  .ui.table .iconAlign,
+  .ui.dropdown .menu > .item.iconAlign {
+    display: flex;
+    align-items: center;
+    padding-top: 4px;
+  }
+
+  .ui.table .iconMargin {
+    margin-right: 0.3em;
+  }
+}
+
+.contents-pagination {
+  .ui.secondary.menu .item {
+    color: #878f93;
+  }
+
+  .ui.secondary.menu a.item,
+  .ui.secondary.menu a.item.active {
+    color: @linkColor;
+  }
+
+  .ui.secondary.menu a.item:hover,
+  .ui.secondary.menu a.item.active {
+    background-color: #edf1f2 !important;
+  }
+}

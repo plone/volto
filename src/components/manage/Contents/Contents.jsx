@@ -11,15 +11,16 @@ import { Portal } from 'react-portal';
 import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import {
+  Button,
   Breadcrumb,
   Confirm,
   Container,
   Dropdown,
   Menu,
-  Icon,
   Input,
   Segment,
   Table,
+  Popup,
 } from 'semantic-ui-react';
 import {
   concat,
@@ -59,13 +60,30 @@ import {
   Pagination,
   Toolbar,
   Toast,
-  Icon as IconNext,
+  Icon,
 } from '@plone/volto/components';
 import { toast } from 'react-toastify';
 
 import backSVG from '@plone/volto/icons/back.svg';
-
-const defaultIndexes = ['ModificationDate', 'EffectiveDate', 'review_state'];
+import cutSVG from '@plone/volto/icons/cut.svg';
+import deleteSVG from '@plone/volto/icons/delete.svg';
+import copySVG from '@plone/volto/icons/copy.svg';
+import tagSVG from '@plone/volto/icons/tag.svg';
+import renameSVG from '@plone/volto/icons/rename.svg';
+import semaphoreSVG from '@plone/volto/icons/semaphore.svg';
+import uploadSVG from '@plone/volto/icons/upload.svg';
+import propertiesSVG from '@plone/volto/icons/properties.svg';
+import pasteSVG from '@plone/volto/icons/paste.svg';
+import zoomSVG from '@plone/volto/icons/zoom.svg';
+import checkboxUncheckedSVG from '@plone/volto/icons/checkbox-unchecked.svg';
+import checkboxCheckedSVG from '@plone/volto/icons/checkbox-checked.svg';
+import checkboxIndeterminateSVG from '@plone/volto/icons/checkbox-indeterminate.svg';
+import configurationSVG from '@plone/volto/icons/configuration-app.svg';
+import sortDownSVG from '@plone/volto/icons/sort-down.svg';
+import sortUpSVG from '@plone/volto/icons/sort-up.svg';
+import downKeySVG from '@plone/volto/icons/down-key.svg';
+import moreSVG from '@plone/volto/icons/more.svg';
+const defaultIndexes = ['review_state', 'ModificationDate', 'EffectiveDate'];
 
 const messages = defineMessages({
   back: {
@@ -414,8 +432,7 @@ class Contents extends Component {
    * @param {object} event Event object
    * @returns {undefined}
    */
-  onSelect(event) {
-    const id = event.target.getAttribute('value');
+  onSelect(event, id) {
     if (indexOf(this.state.selected, id) === -1) {
       this.setState({
         selected: concat(this.state.selected, id),
@@ -935,7 +952,7 @@ class Contents extends Component {
     const path = getBaseUrl(this.props.pathname);
 
     return (
-      <Container id="page-contents">
+      <Container id="page-contents" className="folder-contents">
         <Helmet title={this.props.intl.formatMessage(messages.contents)} />
         <div className="container">
           <article id="content">
@@ -953,6 +970,7 @@ class Contents extends Component {
               }
               onCancel={this.onDeleteCancel}
               onConfirm={this.onDeleteOk}
+              size="none"
             />
             <ContentsUploadModal
               open={this.state.showUpload}
@@ -995,98 +1013,228 @@ class Contents extends Component {
             )}
             <section id="content-core">
               <Segment.Group raised>
-                <Menu stackable attached>
-                  <Menu.Menu>
-                    <Menu.Item onClick={this.upload}>
-                      <Icon
-                        name="upload"
-                        title={this.props.intl.formatMessage(messages.upload)}
-                      />
-                    </Menu.Item>
+                <Menu secondary attached className="top-menu">
+                  <Menu.Menu className="top-menu-menu">
+                    <Popup
+                      trigger={
+                        <Menu.Item
+                          icon
+                          as={Button}
+                          onClick={this.upload}
+                          className="upload"
+                        >
+                          <Icon
+                            name={uploadSVG}
+                            color="#007eb1"
+                            size="24px"
+                            className="upload"
+                          />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(messages.upload)}
+                      size="mini"
+                    />
                   </Menu.Menu>
-                  <Menu.Menu>
-                    <Menu.Item onClick={this.rename} disabled={!selected}>
-                      <Icon
-                        name="text cursor"
-                        title={this.props.intl.formatMessage(messages.rename)}
-                      />
-                    </Menu.Item>
-                    <Menu.Item onClick={this.workflow} disabled={!selected}>
-                      <Icon
-                        name="random"
-                        title={this.props.intl.formatMessage(messages.state)}
-                      />
-                    </Menu.Item>
-                    <Menu.Item onClick={this.tags} disabled={!selected}>
-                      <Icon
-                        name="tags"
-                        title={this.props.intl.formatMessage(messages.tags)}
-                      />
-                    </Menu.Item>
-                    <Menu.Item onClick={this.properties} disabled={!selected}>
-                      <Icon
-                        name="setting"
-                        title={this.props.intl.formatMessage(
-                          messages.properties,
-                        )}
-                      />
-                    </Menu.Item>
+                  <Menu.Menu className="top-menu-menu">
+                    <Popup
+                      trigger={
+                        <Menu.Item
+                          icon
+                          as={Button}
+                          onClick={this.rename}
+                          disabled={!selected}
+                        >
+                          <Icon
+                            name={renameSVG}
+                            color={selected ? '#826a6a' : 'grey'}
+                            size="24px"
+                            className="rename"
+                          />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(messages.rename)}
+                      size="mini"
+                    />
+                    <Popup
+                      trigger={
+                        <Menu.Item
+                          icon
+                          as={Button}
+                          onClick={this.workflow}
+                          disabled={!selected}
+                        >
+                          <Icon
+                            name={semaphoreSVG}
+                            color={selected ? '#826a6a' : 'grey'}
+                            size="24px"
+                            className="semaphore"
+                          />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(messages.state)}
+                      size="mini"
+                    />
+                    <Popup
+                      trigger={
+                        <Menu.Item
+                          icon
+                          as={Button}
+                          onClick={this.tags}
+                          disabled={!selected}
+                        >
+                          <Icon
+                            name={tagSVG}
+                            color={selected ? '#826a6a' : 'grey'}
+                            size="24px"
+                            className="tag"
+                          />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(messages.tags)}
+                      size="mini"
+                    />
+
+                    <Popup
+                      trigger={
+                        <Menu.Item
+                          icon
+                          as={Button}
+                          onClick={this.properties}
+                          disabled={!selected}
+                        >
+                          <Icon
+                            name={propertiesSVG}
+                            color={selected ? '#826a6a' : 'grey'}
+                            size="24px"
+                            className="properties"
+                          />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(
+                        messages.properties,
+                      )}
+                      size="mini"
+                    />
                   </Menu.Menu>
-                  <Menu.Menu>
-                    <Menu.Item onClick={this.cut} disabled={!selected}>
-                      <Icon
-                        name="cut"
-                        title={this.props.intl.formatMessage(messages.cut)}
-                      />
-                    </Menu.Item>
-                    <Menu.Item onClick={this.copy} disabled={!selected}>
-                      <Icon
-                        name="copy"
-                        title={this.props.intl.formatMessage(messages.copy)}
-                      />
-                    </Menu.Item>
-                    <Menu.Item
-                      onClick={this.paste}
-                      disabled={!this.props.action}
-                    >
-                      <Icon
-                        name="paste"
-                        title={this.props.intl.formatMessage(messages.paste)}
-                      />
-                    </Menu.Item>
-                    <Menu.Item onClick={this.delete} disabled={!selected}>
-                      <Icon
-                        name="trash"
-                        title={this.props.intl.formatMessage(messages.delete)}
-                      />
-                    </Menu.Item>
+                  <Menu.Menu className="top-menu-menu">
+                    <Popup
+                      trigger={
+                        <Menu.Item
+                          icon
+                          as={Button}
+                          onClick={this.cut}
+                          disabled={!selected}
+                        >
+                          <Icon
+                            name={cutSVG}
+                            color={selected ? '#826a6a' : 'grey'}
+                            size="24px"
+                            className="cut"
+                          />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(messages.cut)}
+                      size="mini"
+                    />
+                    <Popup
+                      trigger={
+                        <Menu.Item
+                          icon
+                          as={Button}
+                          onClick={this.copy}
+                          disabled={!selected}
+                        >
+                          <Icon
+                            name={copySVG}
+                            color={selected ? '#826a6a' : 'grey'}
+                            size="24px"
+                            className="copy"
+                          />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(messages.copy)}
+                      size="mini"
+                    />
+
+                    <Popup
+                      trigger={
+                        <Menu.Item
+                          icon
+                          as={Button}
+                          onClick={this.paste}
+                          disabled={!this.props.action}
+                        >
+                          <Icon
+                            name={pasteSVG}
+                            color={selected ? '#826a6a' : 'grey'}
+                            size="24px"
+                            className="paste"
+                          />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(messages.paste)}
+                      size="mini"
+                    />
+
+                    <Popup
+                      trigger={
+                        <Menu.Item
+                          icon
+                          as={Button}
+                          onClick={this.delete}
+                          disabled={!selected}
+                        >
+                          <Icon
+                            name={deleteSVG}
+                            color={selected ? '#e40166' : 'grey'}
+                            size="24px"
+                            className="delete"
+                          />
+                        </Menu.Item>
+                      }
+                      position="top center"
+                      content={this.props.intl.formatMessage(messages.delete)}
+                      size="mini"
+                    />
                   </Menu.Menu>
-                  <Menu.Menu position="right">
+                  <Menu.Menu position="right" className="top-menu-searchbox">
                     <div className="ui right aligned category search item">
-                      <div className="ui transparent icon input">
-                        <Input
-                          className="prompt"
-                          type="text"
-                          placeholder={this.props.intl.formatMessage(
-                            messages.filter,
-                          )}
-                          value={this.state.filter}
-                          onChange={this.onChangeFilter}
-                        />
-                        <i className="search link icon" />
-                      </div>
+                      <Input
+                        type="text"
+                        transparent
+                        placeholder={this.props.intl.formatMessage(
+                          messages.filter,
+                        )}
+                        size="small"
+                        value={this.state.filter}
+                        onChange={this.onChangeFilter}
+                      />
+                      <Icon
+                        name={zoomSVG}
+                        size="30px"
+                        color="#007eb1"
+                        className="zoom"
+                      />
                       <div className="results" />
                     </div>
                   </Menu.Menu>
                 </Menu>
-                <Segment secondary attached>
+                <Segment secondary attached className="contents-breadcrumbs">
                   <Breadcrumb>
                     <Link
                       to="/contents"
                       className="section"
                       title={this.props.intl.formatMessage(messages.home)}
                     >
-                      <Icon name="home" />
+                      {this.props.intl.formatMessage(messages.home)}
                     </Link>
                     {this.props.breadcrumbs.map(
                       (breadcrumb, index, breadcrumbs) => [
@@ -1109,7 +1257,11 @@ class Contents extends Component {
                       ],
                     )}
                   </Breadcrumb>
-                  <Dropdown item icon="ellipsis horizontal" className="right">
+                  <Dropdown
+                    item
+                    icon={<Icon name={moreSVG} size="24px" color="#826a6a" />}
+                    className="right floating"
+                  >
                     <Dropdown.Menu className="left">
                       <Dropdown.Header
                         content={this.props.intl.formatMessage(
@@ -1122,17 +1274,30 @@ class Contents extends Component {
                             key={index}
                             value={index}
                             onClick={this.onSelectIndex}
+                            className="iconAlign"
                           >
                             {this.state.index.values[index].selected ? (
-                              <Icon name="check square" color="blue" />
+                              <Icon
+                                name={checkboxCheckedSVG}
+                                size="24px"
+                                color="#007eb1"
+                                className={this.state.index.values[index].label}
+                              />
                             ) : (
-                              <Icon name="square outline" />
+                              <Icon
+                                name={checkboxUncheckedSVG}
+                                className={this.state.index.values[index].label}
+                                size="24px"
+                              />
                             )}
-                            {this.props.intl.formatMessage({
-                              id: this.state.index.values[index].label,
-                              defaultMessage: this.state.index.values[index]
-                                .label,
-                            })}
+                            <span>
+                              {' '}
+                              {this.props.intl.formatMessage({
+                                id: this.state.index.values[index].label,
+                                defaultMessage: this.state.index.values[index]
+                                  .label,
+                              })}
+                            </span>
                           </Dropdown.Item>
                         ))}
                       </Dropdown.Menu>
@@ -1144,7 +1309,13 @@ class Contents extends Component {
                     <Table.Row>
                       <Table.HeaderCell>
                         <Dropdown
-                          trigger={<Icon name="sort content ascending" />}
+                          trigger={
+                            <Icon
+                              name={configurationSVG}
+                              size="24px"
+                              color="#826a6a"
+                            />
+                          }
                           className="sort-icon"
                           aria-label={this.props.intl.formatMessage(
                             messages.sort,
@@ -1170,17 +1341,17 @@ class Contents extends Component {
                               index => (
                                 <Dropdown.Item
                                   key={index}
-                                  className={`sort_${index}`}
+                                  className={`sort_${index} iconAlign`}
                                 >
-                                  <Icon name="dropdown" />
+                                  <Icon name={downKeySVG} size="24px" />
                                   <FormattedMessage id={Indexes[index].label} />
                                   <Dropdown.Menu>
                                     <Dropdown.Item
                                       onClick={this.onSortItems}
                                       value={`${Indexes[index].sort_on}|ascending`}
-                                      className={`sort_${Indexes[index].sort_on}_ascending`}
+                                      className={`sort_${Indexes[index].sort_on}_ascending iconAlign`}
                                     >
-                                      <Icon name="sort alphabet ascending" />{' '}
+                                      <Icon name={sortDownSVG} size="24px" />{' '}
                                       <FormattedMessage
                                         id="Ascending"
                                         defaultMessage="Ascending"
@@ -1189,9 +1360,9 @@ class Contents extends Component {
                                     <Dropdown.Item
                                       onClick={this.onSortItems}
                                       value={`${Indexes[index].sort_on}|descending`}
-                                      className={`sort_${Indexes[index].sort_on}_descending`}
+                                      className={`sort_${Indexes[index].sort_on}_descending iconAlign`}
                                     >
-                                      <Icon name="sort alphabet descending" />{' '}
+                                      <Icon name={sortUpSVG} size="24px" />{' '}
                                       <FormattedMessage
                                         id="Descending"
                                         defaultMessage="Descending"
@@ -1210,17 +1381,18 @@ class Contents extends Component {
                             <Icon
                               name={
                                 this.state.selected.length === 0
-                                  ? 'square outline'
+                                  ? checkboxUncheckedSVG
                                   : this.state.selected.length ===
                                     this.state.items.length
-                                  ? 'check square'
-                                  : 'minus square'
+                                  ? checkboxCheckedSVG
+                                  : checkboxIndeterminateSVG
                               }
                               color={
                                 this.state.selected.length > 0
-                                  ? 'blue'
-                                  : 'black'
+                                  ? '#007eb1'
+                                  : '#826a6a'
                               }
+                              size="24px"
                             />
                           }
                           icon={null}
@@ -1232,11 +1404,15 @@ class Contents extends Component {
                               )}
                             />
                             <Dropdown.Item onClick={this.onSelectAll}>
-                              <Icon name="check square" color="blue" />{' '}
+                              <Icon
+                                name={checkboxCheckedSVG}
+                                color="#007eb1"
+                                size="24px"
+                              />{' '}
                               <FormattedMessage id="All" defaultMessage="All" />
                             </Dropdown.Item>
                             <Dropdown.Item onClick={this.onSelectNone}>
-                              <Icon name="square outline" />{' '}
+                              <Icon name={checkboxUncheckedSVG} size="24px" />{' '}
                               <FormattedMessage
                                 id="None"
                                 defaultMessage="None"
@@ -1250,7 +1426,7 @@ class Contents extends Component {
                               )}
                             />
                             <Input
-                              icon="search"
+                              icon={<Icon name={zoomSVG} size="24px" />}
                               iconPosition="left"
                               className="search"
                               placeholder={this.props.intl.formatMessage(
@@ -1264,7 +1440,11 @@ class Contents extends Component {
                                   value={item}
                                   onClick={this.onDeselect}
                                 >
-                                  <Icon name="delete" />{' '}
+                                  <Icon
+                                    name={deleteSVG}
+                                    color="#e40166"
+                                    size="24px"
+                                  />{' '}
                                   {this.getFieldById(item, 'title')}
                                 </Dropdown.Item>
                               ))}
@@ -1275,7 +1455,7 @@ class Contents extends Component {
                       <Table.HeaderCell
                         width={Math.ceil(16 / this.state.index.selectedCount)}
                       >
-                        <FormattedMessage id="Title" defaultMessage="Title" />
+                        <FormattedMessage id="Title" defaultMessage="NAME" />
                       </Table.HeaderCell>
                       {map(
                         this.state.index.order,
@@ -1328,14 +1508,16 @@ class Contents extends Component {
                   </Table.Body>
                 </Table>
 
-                <Pagination
-                  current={this.state.currentPage}
-                  total={Math.ceil(this.props.total / this.state.pageSize)}
-                  pageSize={this.state.pageSize}
-                  pageSizes={[15, 30, 50]}
-                  onChangePage={this.onChangePage}
-                  onChangePageSize={this.onChangePageSize}
-                />
+                <div className="contents-pagination">
+                  <Pagination
+                    current={this.state.currentPage}
+                    total={Math.ceil(this.props.total / this.state.pageSize)}
+                    pageSize={this.state.pageSize}
+                    pageSizes={[15, 30, 50]}
+                    onChangePage={this.onChangePage}
+                    onChangePageSize={this.onChangePageSize}
+                  />
+                </div>
               </Segment.Group>
             </section>
           </article>
@@ -1343,13 +1525,12 @@ class Contents extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
-            hideDefaultViewButtons
             inner={
               <Link
                 to={`${path}`}
                 aria-label={this.props.intl.formatMessage(messages.back)}
               >
-                <IconNext
+                <Icon
                   name={backSVG}
                   className="contents circled"
                   size="30px"

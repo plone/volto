@@ -2,7 +2,7 @@
 
 exports[`Contents renders a contents component 1`] = `
 <div
-  className="ui container"
+  className="ui container folder-contents"
   id="page-contents"
 >
   <div
@@ -21,142 +21,297 @@ exports[`Contents renders a contents component 1`] = `
           className="ui raised segments"
         >
           <div
-            className="ui stackable attached menu"
+            className="ui secondary attached top-menu menu"
           >
             <div
-              className="menu"
+              className="menu top-menu-menu"
             >
-              <a
-                className="item"
+              <button
+                className="ui button icon item upload"
+                onBlur={[Function]}
                 onClick={[Function]}
+                onFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
-                <i
-                  aria-hidden="true"
-                  className="upload icon"
-                  onClick={[Function]}
-                  title="Upload"
+                <svg
+                  className="icon upload"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "#007eb1",
+                      "height": "24px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
                 />
-              </a>
+              </button>
             </div>
             <div
-              className="menu"
+              className="menu top-menu-menu"
             >
-              <a
-                className="disabled item"
+              <button
+                className="ui button disabled icon item"
+                onBlur={[Function]}
                 onClick={[Function]}
+                onFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
-                <i
-                  aria-hidden="true"
-                  className="text cursor icon"
-                  onClick={[Function]}
-                  title="Rename"
+                <svg
+                  className="icon rename"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "grey",
+                      "height": "24px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
                 />
-              </a>
-              <a
-                className="disabled item"
+              </button>
+              <button
+                className="ui button disabled icon item"
+                onBlur={[Function]}
                 onClick={[Function]}
+                onFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
-                <i
-                  aria-hidden="true"
-                  className="random icon"
-                  onClick={[Function]}
-                  title="State"
+                <svg
+                  className="icon semaphore"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "grey",
+                      "height": "24px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
                 />
-              </a>
-              <a
-                className="disabled item"
+              </button>
+              <button
+                className="ui button disabled icon item"
+                onBlur={[Function]}
                 onClick={[Function]}
+                onFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
-                <i
-                  aria-hidden="true"
-                  className="tags icon"
-                  onClick={[Function]}
-                  title="Tags"
+                <svg
+                  className="icon tag"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "grey",
+                      "height": "24px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
                 />
-              </a>
-              <a
-                className="disabled item"
+              </button>
+              <button
+                className="ui button disabled icon item"
+                onBlur={[Function]}
                 onClick={[Function]}
+                onFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
-                <i
-                  aria-hidden="true"
-                  className="setting icon"
-                  onClick={[Function]}
-                  title="Properties"
+                <svg
+                  className="icon properties"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "grey",
+                      "height": "24px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
                 />
-              </a>
+              </button>
             </div>
             <div
-              className="menu"
+              className="menu top-menu-menu"
             >
-              <a
-                className="disabled item"
+              <button
+                className="ui button disabled icon item"
+                onBlur={[Function]}
                 onClick={[Function]}
+                onFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
-                <i
-                  aria-hidden="true"
-                  className="cut icon"
-                  onClick={[Function]}
-                  title="Cut"
+                <svg
+                  className="icon cut"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "grey",
+                      "height": "24px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
                 />
-              </a>
-              <a
-                className="disabled item"
+              </button>
+              <button
+                className="ui button disabled icon item"
+                onBlur={[Function]}
                 onClick={[Function]}
+                onFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
-                <i
-                  aria-hidden="true"
-                  className="copy icon"
-                  onClick={[Function]}
-                  title="Copy"
+                <svg
+                  className="icon copy"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "grey",
+                      "height": "24px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
                 />
-              </a>
-              <a
-                className="item"
+              </button>
+              <button
+                className="ui button icon item"
+                onBlur={[Function]}
                 onClick={[Function]}
+                onFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
-                <i
-                  aria-hidden="true"
-                  className="paste icon"
-                  onClick={[Function]}
-                  title="Paste"
+                <svg
+                  className="icon paste"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "grey",
+                      "height": "24px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
                 />
-              </a>
-              <a
-                className="disabled item"
+              </button>
+              <button
+                className="ui button disabled icon item"
+                onBlur={[Function]}
                 onClick={[Function]}
+                onFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
-                <i
-                  aria-hidden="true"
-                  className="trash icon"
-                  onClick={[Function]}
-                  title="Delete"
+                <svg
+                  className="icon delete"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "grey",
+                      "height": "24px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
                 />
-              </a>
+              </button>
             </div>
             <div
-              className="right menu"
+              className="right menu top-menu-searchbox"
             >
               <div
                 className="ui right aligned category search item"
               >
                 <div
-                  className="ui transparent icon input"
+                  className="ui small transparent input"
                 >
-                  <div
-                    className="ui input prompt"
-                  >
-                    <input
-                      onChange={[Function]}
-                      placeholder="Filter…"
-                      type="text"
-                      value=""
-                    />
-                  </div>
-                  <i
-                    className="search link icon"
+                  <input
+                    onChange={[Function]}
+                    placeholder="Filter…"
+                    type="text"
+                    value=""
                   />
                 </div>
+                <svg
+                  className="icon zoom"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": undefined,
+                    }
+                  }
+                  onClick={null}
+                  style={
+                    Object {
+                      "fill": "#007eb1",
+                      "height": "30px",
+                      "width": "auto",
+                    }
+                  }
+                  viewBox=""
+                  xmlns=""
+                />
                 <div
                   className="results"
                 />
@@ -164,7 +319,7 @@ exports[`Contents renders a contents component 1`] = `
             </div>
           </div>
           <div
-            className="ui secondary attached segment"
+            className="ui secondary attached segment contents-breadcrumbs"
           >
             <div
               className="ui breadcrumb"
@@ -175,11 +330,7 @@ exports[`Contents renders a contents component 1`] = `
                 onClick={[Function]}
                 title="Home"
               >
-                <i
-                  aria-hidden="true"
-                  className="home icon"
-                  onClick={[Function]}
-                />
+                Home
               </a>
               <div
                 className="divider"
@@ -195,7 +346,7 @@ exports[`Contents renders a contents component 1`] = `
             </div>
             <div
               aria-expanded={false}
-              className="ui item dropdown right"
+              className="ui item dropdown right floating"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -210,10 +361,23 @@ exports[`Contents renders a contents component 1`] = `
                 className="text"
                 role="alert"
               />
-              <i
-                aria-hidden="true"
-                className="ellipsis horizontal icon"
+              <svg
+                className="icon"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": undefined,
+                  }
+                }
                 onClick={[Function]}
+                style={
+                  Object {
+                    "fill": "#826a6a",
+                    "height": "24px",
+                    "width": "auto",
+                  }
+                }
+                viewBox=""
+                xmlns=""
               />
               <div
                 className="menu transition left"
@@ -227,256 +391,592 @@ exports[`Contents renders a contents component 1`] = `
                   className="scrolling menu transition"
                 >
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Title"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Title
+                    <span>
+                       
+                      Title
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="blue check square icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Review state"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "#007eb1",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Last modified
+                    <span>
+                       
+                      Review state
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="blue check square icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Last modified"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "#007eb1",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Publication date
+                    <span>
+                       
+                      Last modified
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="blue check square icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Publication date"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "#007eb1",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Review state
+                    <span>
+                       
+                      Publication date
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon ID"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    ID
+                    <span>
+                       
+                      ID
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Expiration date"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Expiration date
+                    <span>
+                       
+                      Expiration date
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Created on"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Created on
+                    <span>
+                       
+                      Created on
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Tags"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Tags
+                    <span>
+                       
+                      Tags
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Type"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Type
+                    <span>
+                       
+                      Type
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Folder"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Folder
+                    <span>
+                       
+                      Folder
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Excluded from navigation"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Excluded from navigation
+                    <span>
+                       
+                      Excluded from navigation
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Object Size"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Object Size
+                    <span>
+                       
+                      Object Size
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Last comment date"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Last comment date
+                    <span>
+                       
+                      Last comment date
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Total comments"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Total comments
+                    <span>
+                       
+                      Total comments
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon End Date"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    End Date
+                    <span>
+                       
+                      End Date
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Description"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Description
+                    <span>
+                       
+                      Description
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Creator"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Creator
+                    <span>
+                       
+                      Creator
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Location"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Location
+                    <span>
+                       
+                      Location
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon UID"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    UID
+                    <span>
+                       
+                      UID
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Start Date"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Start Date
+                    <span>
+                       
+                      Start Date
+                    </span>
                   </div>
                   <div
-                    className="item"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
-                    <i
-                      aria-hidden="true"
-                      className="square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon Type"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "currentColor",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
-                    Type
+                    <span>
+                       
+                      Type
+                    </span>
                   </div>
                 </div>
               </div>
@@ -506,10 +1006,23 @@ exports[`Contents renders a contents component 1`] = `
                     role="listbox"
                     tabIndex={0}
                   >
-                    <i
-                      aria-hidden="true"
-                      className="sort content ascending icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "#826a6a",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
                     <div
                       className="menu transition"
@@ -520,41 +1033,80 @@ exports[`Contents renders a contents component 1`] = `
                         Rearrange items by…
                       </div>
                       <div
-                        className="item sort_id"
+                        className="item sort_id iconAlign"
                         onClick={[Function]}
                         role="option"
                       >
-                        <i
-                          aria-hidden="true"
-                          className="dropdown icon"
-                          onClick={[Function]}
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "currentColor",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
                         />
                         ID
                         <div
                           className="menu transition"
                         >
                           <div
-                            className="item sort_id_ascending"
+                            className="item sort_id_ascending iconAlign"
                             onClick={[Function]}
                             role="option"
                           >
-                            <i
-                              aria-hidden="true"
-                              className="sort alphabet ascending icon"
-                              onClick={[Function]}
+                            <svg
+                              className="icon"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": undefined,
+                                }
+                              }
+                              onClick={null}
+                              style={
+                                Object {
+                                  "fill": "currentColor",
+                                  "height": "24px",
+                                  "width": "auto",
+                                }
+                              }
+                              viewBox=""
+                              xmlns=""
                             />
                              
                             Ascending
                           </div>
                           <div
-                            className="item sort_id_descending"
+                            className="item sort_id_descending iconAlign"
                             onClick={[Function]}
                             role="option"
                           >
-                            <i
-                              aria-hidden="true"
-                              className="sort alphabet descending icon"
-                              onClick={[Function]}
+                            <svg
+                              className="icon"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": undefined,
+                                }
+                              }
+                              onClick={null}
+                              style={
+                                Object {
+                                  "fill": "currentColor",
+                                  "height": "24px",
+                                  "width": "auto",
+                                }
+                              }
+                              viewBox=""
+                              xmlns=""
                             />
                              
                             Descending
@@ -562,41 +1114,80 @@ exports[`Contents renders a contents component 1`] = `
                         </div>
                       </div>
                       <div
-                        className="item sort_sortable_title"
+                        className="item sort_sortable_title iconAlign"
                         onClick={[Function]}
                         role="option"
                       >
-                        <i
-                          aria-hidden="true"
-                          className="dropdown icon"
-                          onClick={[Function]}
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "currentColor",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
                         />
                         Title
                         <div
                           className="menu transition"
                         >
                           <div
-                            className="item sort_sortable_title_ascending"
+                            className="item sort_sortable_title_ascending iconAlign"
                             onClick={[Function]}
                             role="option"
                           >
-                            <i
-                              aria-hidden="true"
-                              className="sort alphabet ascending icon"
-                              onClick={[Function]}
+                            <svg
+                              className="icon"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": undefined,
+                                }
+                              }
+                              onClick={null}
+                              style={
+                                Object {
+                                  "fill": "currentColor",
+                                  "height": "24px",
+                                  "width": "auto",
+                                }
+                              }
+                              viewBox=""
+                              xmlns=""
                             />
                              
                             Ascending
                           </div>
                           <div
-                            className="item sort_sortable_title_descending"
+                            className="item sort_sortable_title_descending iconAlign"
                             onClick={[Function]}
                             role="option"
                           >
-                            <i
-                              aria-hidden="true"
-                              className="sort alphabet descending icon"
-                              onClick={[Function]}
+                            <svg
+                              className="icon"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": undefined,
+                                }
+                              }
+                              onClick={null}
+                              style={
+                                Object {
+                                  "fill": "currentColor",
+                                  "height": "24px",
+                                  "width": "auto",
+                                }
+                              }
+                              viewBox=""
+                              xmlns=""
                             />
                              
                             Descending
@@ -604,41 +1195,80 @@ exports[`Contents renders a contents component 1`] = `
                         </div>
                       </div>
                       <div
-                        className="item sort_EffectiveDate"
+                        className="item sort_EffectiveDate iconAlign"
                         onClick={[Function]}
                         role="option"
                       >
-                        <i
-                          aria-hidden="true"
-                          className="dropdown icon"
-                          onClick={[Function]}
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "currentColor",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
                         />
                         Publication date
                         <div
                           className="menu transition"
                         >
                           <div
-                            className="item sort_effective_ascending"
+                            className="item sort_effective_ascending iconAlign"
                             onClick={[Function]}
                             role="option"
                           >
-                            <i
-                              aria-hidden="true"
-                              className="sort alphabet ascending icon"
-                              onClick={[Function]}
+                            <svg
+                              className="icon"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": undefined,
+                                }
+                              }
+                              onClick={null}
+                              style={
+                                Object {
+                                  "fill": "currentColor",
+                                  "height": "24px",
+                                  "width": "auto",
+                                }
+                              }
+                              viewBox=""
+                              xmlns=""
                             />
                              
                             Ascending
                           </div>
                           <div
-                            className="item sort_effective_descending"
+                            className="item sort_effective_descending iconAlign"
                             onClick={[Function]}
                             role="option"
                           >
-                            <i
-                              aria-hidden="true"
-                              className="sort alphabet descending icon"
-                              onClick={[Function]}
+                            <svg
+                              className="icon"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": undefined,
+                                }
+                              }
+                              onClick={null}
+                              style={
+                                Object {
+                                  "fill": "currentColor",
+                                  "height": "24px",
+                                  "width": "auto",
+                                }
+                              }
+                              viewBox=""
+                              xmlns=""
                             />
                              
                             Descending
@@ -646,41 +1276,80 @@ exports[`Contents renders a contents component 1`] = `
                         </div>
                       </div>
                       <div
-                        className="item sort_CreationDate"
+                        className="item sort_CreationDate iconAlign"
                         onClick={[Function]}
                         role="option"
                       >
-                        <i
-                          aria-hidden="true"
-                          className="dropdown icon"
-                          onClick={[Function]}
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "currentColor",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
                         />
                         Created on
                         <div
                           className="menu transition"
                         >
                           <div
-                            className="item sort_created_ascending"
+                            className="item sort_created_ascending iconAlign"
                             onClick={[Function]}
                             role="option"
                           >
-                            <i
-                              aria-hidden="true"
-                              className="sort alphabet ascending icon"
-                              onClick={[Function]}
+                            <svg
+                              className="icon"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": undefined,
+                                }
+                              }
+                              onClick={null}
+                              style={
+                                Object {
+                                  "fill": "currentColor",
+                                  "height": "24px",
+                                  "width": "auto",
+                                }
+                              }
+                              viewBox=""
+                              xmlns=""
                             />
                              
                             Ascending
                           </div>
                           <div
-                            className="item sort_created_descending"
+                            className="item sort_created_descending iconAlign"
                             onClick={[Function]}
                             role="option"
                           >
-                            <i
-                              aria-hidden="true"
-                              className="sort alphabet descending icon"
-                              onClick={[Function]}
+                            <svg
+                              className="icon"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": undefined,
+                                }
+                              }
+                              onClick={null}
+                              style={
+                                Object {
+                                  "fill": "currentColor",
+                                  "height": "24px",
+                                  "width": "auto",
+                                }
+                              }
+                              viewBox=""
+                              xmlns=""
                             />
                              
                             Descending
@@ -688,41 +1357,80 @@ exports[`Contents renders a contents component 1`] = `
                         </div>
                       </div>
                       <div
-                        className="item sort_ModificationDate"
+                        className="item sort_ModificationDate iconAlign"
                         onClick={[Function]}
                         role="option"
                       >
-                        <i
-                          aria-hidden="true"
-                          className="dropdown icon"
-                          onClick={[Function]}
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "currentColor",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
                         />
                         Last modified
                         <div
                           className="menu transition"
                         >
                           <div
-                            className="item sort_modified_ascending"
+                            className="item sort_modified_ascending iconAlign"
                             onClick={[Function]}
                             role="option"
                           >
-                            <i
-                              aria-hidden="true"
-                              className="sort alphabet ascending icon"
-                              onClick={[Function]}
+                            <svg
+                              className="icon"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": undefined,
+                                }
+                              }
+                              onClick={null}
+                              style={
+                                Object {
+                                  "fill": "currentColor",
+                                  "height": "24px",
+                                  "width": "auto",
+                                }
+                              }
+                              viewBox=""
+                              xmlns=""
                             />
                              
                             Ascending
                           </div>
                           <div
-                            className="item sort_modified_descending"
+                            className="item sort_modified_descending iconAlign"
                             onClick={[Function]}
                             role="option"
                           >
-                            <i
-                              aria-hidden="true"
-                              className="sort alphabet descending icon"
-                              onClick={[Function]}
+                            <svg
+                              className="icon"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": undefined,
+                                }
+                              }
+                              onClick={null}
+                              style={
+                                Object {
+                                  "fill": "currentColor",
+                                  "height": "24px",
+                                  "width": "auto",
+                                }
+                              }
+                              viewBox=""
+                              xmlns=""
                             />
                              
                             Descending
@@ -730,41 +1438,80 @@ exports[`Contents renders a contents component 1`] = `
                         </div>
                       </div>
                       <div
-                        className="item sort_portal_type"
+                        className="item sort_portal_type iconAlign"
                         onClick={[Function]}
                         role="option"
                       >
-                        <i
-                          aria-hidden="true"
-                          className="dropdown icon"
-                          onClick={[Function]}
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "currentColor",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
                         />
                         Type
                         <div
                           className="menu transition"
                         >
                           <div
-                            className="item sort_portal_type_ascending"
+                            className="item sort_portal_type_ascending iconAlign"
                             onClick={[Function]}
                             role="option"
                           >
-                            <i
-                              aria-hidden="true"
-                              className="sort alphabet ascending icon"
-                              onClick={[Function]}
+                            <svg
+                              className="icon"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": undefined,
+                                }
+                              }
+                              onClick={null}
+                              style={
+                                Object {
+                                  "fill": "currentColor",
+                                  "height": "24px",
+                                  "width": "auto",
+                                }
+                              }
+                              viewBox=""
+                              xmlns=""
                             />
                              
                             Ascending
                           </div>
                           <div
-                            className="item sort_portal_type_descending"
+                            className="item sort_portal_type_descending iconAlign"
                             onClick={[Function]}
                             role="option"
                           >
-                            <i
-                              aria-hidden="true"
-                              className="sort alphabet descending icon"
-                              onClick={[Function]}
+                            <svg
+                              className="icon"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": undefined,
+                                }
+                              }
+                              onClick={null}
+                              style={
+                                Object {
+                                  "fill": "currentColor",
+                                  "height": "24px",
+                                  "width": "auto",
+                                }
+                              }
+                              viewBox=""
+                              xmlns=""
                             />
                              
                             Descending
@@ -788,10 +1535,23 @@ exports[`Contents renders a contents component 1`] = `
                     role="listbox"
                     tabIndex={0}
                   >
-                    <i
-                      aria-hidden="true"
-                      className="black square outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "#826a6a",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
                     <div
                       className="menu transition"
@@ -806,10 +1566,23 @@ exports[`Contents renders a contents component 1`] = `
                         onClick={[Function]}
                         role="option"
                       >
-                        <i
-                          aria-hidden="true"
-                          className="blue check square icon"
-                          onClick={[Function]}
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "#007eb1",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
                         />
                          
                         All
@@ -819,10 +1592,23 @@ exports[`Contents renders a contents component 1`] = `
                         onClick={[Function]}
                         role="option"
                       >
-                        <i
-                          aria-hidden="true"
-                          className="square outline icon"
-                          onClick={[Function]}
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "currentColor",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
                         />
                          
                         None
@@ -843,10 +1629,23 @@ exports[`Contents renders a contents component 1`] = `
                           placeholder="Filter…"
                           type="text"
                         />
-                        <i
-                          aria-hidden="true"
-                          className="search icon"
-                          onClick={[Function]}
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "currentColor",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
                         />
                       </div>
                       <div
@@ -858,7 +1657,18 @@ exports[`Contents renders a contents component 1`] = `
                 <th
                   className="four wide"
                 >
-                  Title
+                  NAME
+                </th>
+                <th
+                  className="four wide"
+                  style={
+                    Object {
+                      "cursor": "move",
+                      "opacity": 1,
+                    }
+                  }
+                >
+                  Review state
                 </th>
                 <th
                   className="four wide"
@@ -883,17 +1693,6 @@ exports[`Contents renders a contents component 1`] = `
                   Publication date
                 </th>
                 <th
-                  className="four wide"
-                  style={
-                    Object {
-                      "cursor": "move",
-                      "opacity": 1,
-                    }
-                  }
-                >
-                  Review state
-                </th>
-                <th
                   className="right aligned"
                 >
                   Actions
@@ -913,44 +1712,131 @@ exports[`Contents renders a contents component 1`] = `
                 <td
                   className=""
                 >
-                  <i
-                    aria-hidden="true"
-                    className="grey content icon drag handle"
-                  />
+                  <div
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                  >
+                    <button
+                      className="ui basic icon button"
+                      onClick={[Function]}
+                    >
+                      <svg
+                        className="icon content drag handle"
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": undefined,
+                          }
+                        }
+                        onClick={null}
+                        style={
+                          Object {
+                            "fill": "#878f93",
+                            "height": "20px",
+                            "width": "auto",
+                          }
+                        }
+                        viewBox=""
+                        xmlns=""
+                      />
+                    </button>
+                  </div>
                 </td>
                 <td
                   className=""
                 >
-                  <i
-                    aria-hidden="true"
-                    className="black square outline icon"
+                  <button
+                    aria-label="Checked"
+                    className="ui basic icon button"
                     onClick={[Function]}
-                    value="/blog"
-                  />
+                  >
+                    <svg
+                      className="icon unchecked"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "#826a6a",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
+                    />
+                  </button>
                 </td>
                 <td
                   className=""
                 >
                   <a
+                    className="iconAlign"
                     href="/blog"
                     onClick={[Function]}
                   >
-                    <i
-                      aria-hidden="true"
-                      className="file outline icon"
-                      onClick={[Function]}
+                    <svg
+                      className="icon iconMargin"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
+                      onClick={null}
+                      style={
+                        Object {
+                          "fill": "#878f93",
+                          "height": "20px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
                      
-                    Blog
+                    <span>
+                       
+                      Blog
+                    </span>
                   </a>
                 </td>
                 <td
                   className=""
                 >
+                  <div>
+                    <span>
+                      <svg
+                        height="10"
+                        style={
+                          Object {
+                            "marginRight": 5,
+                          }
+                        }
+                        width="10"
+                      >
+                        <circle
+                          cx="5"
+                          cy="5"
+                          fill="#ed4033"
+                          r="4"
+                        />
+                      </svg>
+                    </span>
+                    Private
+                  </div>
+                </td>
+                <td
+                  className=""
+                >
                   <span
                     title="Sunday, April 23, 2017 3:38 AM"
                   >
-                    a few seconds ago
+                    Sunday, April 23, 2017 3:38 AM
                   </span>
                 </td>
                 <td
@@ -959,20 +1845,15 @@ exports[`Contents renders a contents component 1`] = `
                   <span
                     title="Sunday, April 23, 2017 3:38 AM"
                   >
-                    a few seconds ago
+                    Sunday, April 23, 2017 3:38 AM
                   </span>
-                </td>
-                <td
-                  className=""
-                >
-                  private
                 </td>
                 <td
                   className="right aligned"
                 >
                   <div
                     aria-expanded={false}
-                    className="ui dropdown"
+                    className="ui dropdown row-actions"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onClick={[Function]}
@@ -987,36 +1868,75 @@ exports[`Contents renders a contents component 1`] = `
                       className="text"
                       role="alert"
                     />
-                    <i
-                      aria-hidden="true"
-                      className="ellipsis horizontal icon"
+                    <svg
+                      className="icon"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": undefined,
+                        }
+                      }
                       onClick={[Function]}
+                      style={
+                        Object {
+                          "fill": "#007eb1",
+                          "height": "24px",
+                          "width": "auto",
+                        }
+                      }
+                      viewBox=""
+                      xmlns=""
                     />
                     <div
                       className="menu transition left"
                     >
                       <a
-                        className="item"
+                        className="item iconAlign"
                         href="/blog/edit"
                         onClick={[Function]}
                       >
-                        <i
-                          aria-hidden="true"
-                          className="write icon"
-                          onClick={[Function]}
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "#007eb1",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
                         />
                          
                         Edit
                       </a>
                       <a
-                        className="item"
+                        className="item right-dropdown iconAlign"
                         href="/blog"
                         onClick={[Function]}
                       >
-                        <i
-                          aria-hidden="true"
-                          className="eye icon"
-                          onClick={[Function]}
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "#007eb1",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
                         />
                          
                         View
@@ -1025,40 +1945,79 @@ exports[`Contents renders a contents component 1`] = `
                         className="divider"
                       />
                       <div
-                        className="item"
+                        className="item right-dropdown iconAlign"
                         onClick={[Function]}
                         role="option"
                       >
-                        <i
-                          aria-hidden="true"
-                          className="cut icon"
-                          onClick={[Function]}
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "#007eb1",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
                         />
                          
                         Cut
                       </div>
                       <div
-                        className="item"
+                        className="item right-dropdown iconAlign"
                         onClick={[Function]}
                         role="option"
                       >
-                        <i
-                          aria-hidden="true"
-                          className="copy icon"
-                          onClick={[Function]}
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "#007eb1",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
                         />
                          
                         Copy
                       </div>
                       <div
-                        className="item"
+                        className="item right-dropdown iconAlign"
                         onClick={[Function]}
                         role="option"
                       >
-                        <i
-                          aria-hidden="true"
-                          className="trash icon"
-                          onClick={[Function]}
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "#e40166",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
                         />
                          
                         Delete
@@ -1067,27 +2026,53 @@ exports[`Contents renders a contents component 1`] = `
                         className="divider"
                       />
                       <div
-                        className="item"
+                        className="item right-dropdown iconAlign"
                         onClick={[Function]}
                         role="option"
                       >
-                        <i
-                          aria-hidden="true"
-                          className="arrow up icon"
-                          onClick={[Function]}
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "#007eb1",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
                         />
                          
                         Move to top of folder
                       </div>
                       <div
-                        className="item"
+                        className="item right-dropdown iconAlign"
                         onClick={[Function]}
                         role="option"
                       >
-                        <i
-                          aria-hidden="true"
-                          className="arrow down icon"
-                          onClick={[Function]}
+                        <svg
+                          className="icon"
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": undefined,
+                            }
+                          }
+                          onClick={null}
+                          style={
+                            Object {
+                              "fill": "#007eb1",
+                              "height": "24px",
+                              "width": "auto",
+                            }
+                          }
+                          viewBox=""
+                          xmlns=""
                         />
                          
                         Move to bottom of folder
@@ -1099,8 +2084,12 @@ exports[`Contents renders a contents component 1`] = `
             </tbody>
           </table>
           <div
-            className="Pagination"
-          />
+            className="contents-pagination"
+          >
+            <div
+              className="Pagination"
+            />
+          </div>
         </div>
       </section>
     </article>

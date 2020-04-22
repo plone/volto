@@ -15,23 +15,30 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
       </header>
       <div className="pastanaga-menu-list">
         <ul>
-          {map(filter(types), item => (
-            <li key={item['@id']}>
-              <Link
-                to={`${pathname}/add?type=${
-                  item['@id'].split('@types/')[1]
-                }`.replace(/\/\//g, '/')}
-                id={`toolbar-add-${item['@id']
-                  .split('@types/')[1]
-                  .toLowerCase()
-                  .replace(' ', '-')}`}
-                className="item"
-                key={item.title}
-              >
-                <FormattedMessage id={item.title} />
-              </Link>
-            </li>
-          ))}
+          {map(filter(types), item => {
+            // Strip the type for the item we want to add
+            const contentTypeToAdd = item['@id'].split('@types/')[1];
+            // If we are in the root or in /contents, we need to strip the preceeding / and /contents
+            const currentPath =
+              pathname === '/' || pathname === '/contents' ? '' : pathname;
+            // Finally build the route URL
+            const addContentTypeRoute = `${currentPath}/add?type=${contentTypeToAdd}`;
+            return (
+              <li key={item['@id']}>
+                <Link
+                  to={addContentTypeRoute}
+                  id={`toolbar-add-${item['@id']
+                    .split('@types/')[1]
+                    .toLowerCase()
+                    .replace(' ', '-')}`}
+                  className="item"
+                  key={item.title}
+                >
+                  <FormattedMessage id={item.title} />
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
       {settings.isMultilingual &&
