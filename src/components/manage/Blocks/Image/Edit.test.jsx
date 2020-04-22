@@ -38,6 +38,7 @@ test('renders an edit image block component', () => {
         onFocusNextBlock={() => {}}
         handleKeyDown={() => {}}
         index={1}
+        openObjectBrowser={() => {}}
       />
     </Provider>,
   );
