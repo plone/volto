@@ -28,10 +28,17 @@ import {
   initialBlocks,
 } from './Blocks';
 
+const host = process.env.HOST || 'localhost';
+const port = process.env.PORT || '3000';
+
 export const settings = {
-  host: process.env.HOST || 'localhost',
-  port: process.env.PORT || '3000',
-  apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8080/Plone', // for Plone
+  host,
+  port,
+  // Internal proxy to bypass CORS *while developing*. Not intended for production use.
+  // In production, the proxy is disabled, make sure you specify an apiPath that does
+  // not require CORS to work.
+  apiPath: process.env.RAZZLE_API_PATH || `http://${host}:${port}/api`, // for Plone
+  devProxyToApiPath: 'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
   // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8000', // for Volto reference
   // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
   internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,

@@ -61,7 +61,7 @@ test('renders a ListingBody component', () => {
           properties={{ is_folderish: true }}
           block="1234"
           onChangeBlock={() => {}}
-          path={() => {}}
+          path="/"
         />
       </MemoryRouter>
     </Provider>,
