@@ -1,14 +1,23 @@
 # Change Log
 
-## 5.0.1 (unreleased)
+## 5.0.2 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+- Added Print CSS @iFlameing #1289
+
 ### Bugfix
 
 ### Internal
+
+## 5.0.1 (2020-04-16)
+
+### Bugfix
+
+- Show new added user in user control panel @iFlameing #1271
+- Fixes for contact form @nzambello
 
 ## 5.0.0 (2020-04-12)
 
