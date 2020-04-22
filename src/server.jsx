@@ -48,9 +48,9 @@ const supported = new locale.Locales(keys(languages), 'en');
 
 const server = express();
 // Internal proxy to bypass CORS while developing.
-if (__DEVELOPMENT__ && settings.proxyToApiPath) {
+if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
   const apiPathURL = parseUrl(settings.apiPath);
-  const proxyURL = parseUrl(settings.proxyToApiPath);
+  const proxyURL = parseUrl(settings.devProxyToApiPath);
   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
   const instancePath = proxyURL.pathname;
   server.use(
