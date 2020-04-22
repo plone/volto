@@ -199,11 +199,13 @@ exports[`renders an event view component with all props 1`] = `
     <div
       className="ui dividing sub header"
     >
-      Web
+      Website
     </div>
     <p>
       <a
         href="https://www.example.com"
+        rel="noopener noreferrer"
+        target="_blank"
       >
         Visit external website
       </a>

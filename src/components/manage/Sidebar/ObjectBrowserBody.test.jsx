@@ -26,6 +26,7 @@ test('renders an Image Block Sidebar component', () => {
         pathname="/news"
         onChangeBlock={() => {}}
         openObjectBrowser={() => {}}
+        resetSubmitUrl={() => {}}
       />
     </Provider>,
   );
