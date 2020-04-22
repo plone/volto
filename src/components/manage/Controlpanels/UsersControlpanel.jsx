@@ -45,8 +45,6 @@ import {
 } from '@plone/volto/components';
 import addSvg from '@plone/volto/icons/circle-plus.svg';
 import backSVG from '@plone/volto/icons/back.svg';
-import saveSVG from '@plone/volto/icons/save.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   searchUsers: {
@@ -947,33 +945,12 @@ class UsersControlpanel extends Component {
                 <Link to="/controlpanel" className="item">
                   <Icon
                     name={backSVG}
-                    className="contents circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.back)}
-                  />
-                </Link>
-                <button
-                  id="toolbar-save"
-                  className="save"
-                  aria-label={this.props.intl.formatMessage(messages.save)}
-                  onClick={this.onSubmit}
-                >
-                  <Icon
-                    name={saveSVG}
-                    className="circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.save)}
-                  />
-                </button>
-                <button className="cancel" onClick={this.onCancel}>
-                  <Icon
-                    name={clearSVG}
-                    className="circled"
                     aria-label={this.props.intl.formatMessage(messages.cancel)}
+                    className="contents circled"
                     size="30px"
                     title={this.props.intl.formatMessage(messages.cancel)}
                   />
-                </button>
+                </Link>
               </>
             }
           />

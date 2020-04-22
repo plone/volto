@@ -13,6 +13,7 @@
 
 - Japanese translation @terapyon
 - Fix `ArrayWidget` to support multiselect schema `schema.List`/`schema.Set`-> `schema.Choice` hardcoded (not using vocabularies) combination @sneridagh
+- Remove Back button from control panels, since it's redundant @sneridagh
 
 ### Internal
 
