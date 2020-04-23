@@ -4,10 +4,9 @@
 
 ### Breaking
 
-- Improvement of API requests error handling @sneridagh
-
-### Changes
 ### Feature
+
+- Improvement of API requests error handling @sneridagh
 
 ### Bugfix
 
