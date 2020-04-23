@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-04-22T16:38:10.424Z\n"
+"POT-Creation-Date: 2020-04-22T19:27:59.447Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -635,6 +635,8 @@ msgstr ""
 msgid "Enter your new password. Minimum 5 characters."
 msgstr ""
 
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm

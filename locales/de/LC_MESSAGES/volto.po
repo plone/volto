@@ -541,6 +541,8 @@ msgstr "Tragen Sie zur Überprüfung Ihre E-Mail-Adresse ein."
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Geben Sie ihr neues Passwort ein. Mindestens 5 Zeichen."
 
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm

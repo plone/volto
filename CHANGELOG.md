@@ -9,6 +9,7 @@
 - Full screen right sidebar @rexalex #1345
 - Enable internal API proxy for not to rely on CORS on development @sneridagh
 - Added Print CSS @iFlameing #1289
+- Added error handling for Add and Edit forms #1392 @nzambello
 
 
 ### Bugfix

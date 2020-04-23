@@ -17,9 +17,10 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { settings } from '~/config';
+import { toast } from 'react-toastify';
 
 import { createContent, getSchema } from '@plone/volto/actions';
-import { Form, Icon, Toolbar, Sidebar } from '@plone/volto/components';
+import { Form, Icon, Toolbar, Sidebar, Toast } from '@plone/volto/components';
 import {
   getBaseUrl,
   hasBlocksData,
@@ -44,6 +45,10 @@ const messages = defineMessages({
   cancel: {
     id: 'Cancel',
     defaultMessage: 'Cancel',
+  },
+  error: {
+    id: 'Error',
+    defaultMessage: 'Error',
   },
 });
 
@@ -142,6 +147,16 @@ class Add extends Component {
       this.props.history.push(
         this.props.returnUrl ||
           nextProps.content['@id'].replace(settings.apiPath, ''),
+      );
+    }
+
+    if (nextProps.createRequest.error) {
+      toast.error(
+        <Toast
+          error
+          title={this.props.intl.formatMessage(messages.error)}
+          content={`${nextProps.createRequest.error.status}:  ${nextProps.createRequest.error.response?.body?.message}`}
+        />,
       );
     }
   }
