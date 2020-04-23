@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-04-22T19:27:59.447Z\n"
+"POT-Creation-Date: 2020-04-23T17:59:48.896Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1677,8 +1677,8 @@ msgid "The URL for your external home page, if you have one."
 msgstr ""
 
 #: components/theme/ConnectionRefused/ConnectionRefused
-# defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object API_PATH or the RAZZLE_API_PATH Volto's enviroment variable.
-msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object API_PATH or the RAZZLE_API_PATH Volto's enviroment variable."
+# defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
+msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
 msgstr ""
 
 #: components/theme/CorsError/CorsError
