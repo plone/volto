@@ -22,18 +22,30 @@ export const getAPIResourceWithAuth = req =>
     } else {
       apiPath = settings.apiPath;
     }
-    const request = superagent
-      .get(`${apiPath}${req.path}`)
-      .responseType('blob');
-    const authToken = cookie.load('auth_token');
-    if (authToken) {
-      request.set('Authorization', `Bearer ${authToken}`);
-    }
-    request.end((error, res = {}) => {
-      if (error) {
-        resolve(res || error);
-      } else {
-        resolve(res);
+    let imagesTimeout = 100;
+    const get = () => {
+      const request =
+        req.path.match(/(.*)\/@@images\/(.*)/) && imagesTimeout < 2000
+          ? superagent
+              .get(`${apiPath}${req.path}`)
+              .redirects(0)  // retry instead redirect to wait async scales
+              .responseType('blob')
+          : superagent.get(`${apiPath}${req.path}`).responseType('blob');
+      const authToken = cookie.load('auth_token');
+      if (authToken) {
+        request.set('Authorization', `Bearer ${authToken}`);
       }
-    });
+      request.end((error, res = {}) => {
+        if (error && res.status === 302) {
+          // retry instead redirect to wait async scales
+          setTimeout(get, imagesTimeout);
+          imagesTimeout += 100;
+        } else if (error) {
+          resolve(res || error);
+        } else {
+          resolve(res);
+        }
+      });
+    };
+    get();
   });
