@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-04-22T19:27:59.447Z\n"
+"POT-Creation-Date: 2020-04-23T15:25:31.978Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -353,11 +353,6 @@ msgstr ""
 #: components/manage/Blocks/Listing/ListingSidebar
 # defaultMessage: Content
 msgid "Content"
-msgstr ""
-
-#: components/manage/Controlpanels/ContentTypes
-# defaultMessage: Content Types
-msgid "Content Types"
 msgstr ""
 
 #: components/manage/Controlpanels/ContentTypes

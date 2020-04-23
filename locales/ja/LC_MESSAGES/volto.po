@@ -301,10 +301,6 @@ msgid "Content"
 msgstr "コンテント"
 
 #: components/manage/Controlpanels/ContentTypes
-msgid "Content Types"
-msgstr ""
-
-#: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
 msgstr ""
 
