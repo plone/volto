@@ -414,7 +414,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Title
                     </span>
                   </div>
@@ -442,7 +442,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Review state
                     </span>
                   </div>
@@ -470,7 +470,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Last modified
                     </span>
                   </div>
@@ -498,7 +498,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Publication date
                     </span>
                   </div>
@@ -526,7 +526,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       ID
                     </span>
                   </div>
@@ -554,7 +554,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Expiration date
                     </span>
                   </div>
@@ -582,7 +582,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Created on
                     </span>
                   </div>
@@ -610,7 +610,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Tags
                     </span>
                   </div>
@@ -638,7 +638,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Type
                     </span>
                   </div>
@@ -666,7 +666,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Folder
                     </span>
                   </div>
@@ -694,7 +694,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Excluded from navigation
                     </span>
                   </div>
@@ -722,7 +722,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Object Size
                     </span>
                   </div>
@@ -750,7 +750,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Last comment date
                     </span>
                   </div>
@@ -778,7 +778,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Total comments
                     </span>
                   </div>
@@ -806,7 +806,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       End Date
                     </span>
                   </div>
@@ -834,7 +834,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Description
                     </span>
                   </div>
@@ -862,7 +862,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Creator
                     </span>
                   </div>
@@ -890,7 +890,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Location
                     </span>
                   </div>
@@ -918,7 +918,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       UID
                     </span>
                   </div>
@@ -946,7 +946,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Start Date
                     </span>
                   </div>
@@ -974,7 +974,7 @@ exports[`Contents renders a contents component 1`] = `
                       xmlns=""
                     />
                     <span>
-
+                       
                       Type
                     </span>
                   </div>
@@ -1800,7 +1800,7 @@ exports[`Contents renders a contents component 1`] = `
                     />
                      
                     <span>
-
+                       
                       Blog
                     </span>
                   </a>

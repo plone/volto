@@ -6,6 +6,18 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { __test__ as App } from './App';
 
+jest.mock('~/config', () => ({
+  settings: {
+    nonContentRoutes: [],
+    supportedLanguages: ['en'],
+  },
+  views: {
+    errorViews: {
+      ECONNREFUSED: () => <div className="ECONNREFUSED" />,
+    },
+  },
+}));
+
 const mockStore = configureStore();
 
 jest.mock('../../manage/Toolbar/Toolbar', () =>

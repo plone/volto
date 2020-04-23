@@ -99,7 +99,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
       />
        
       <span>
-
+         
         Blog
       </span>
     </a>

@@ -5,6 +5,12 @@ import { Provider } from 'react-intl-redux';
 
 import ConnectionRefused from './ConnectionRefused';
 
+jest.mock('~/config', () => ({
+  settings: {
+    apiPath: 'http://localhost:8080/Plone',
+  },
+}));
+
 const mockStore = configureStore();
 
 global.__DEVELOPMENT__ = true;
