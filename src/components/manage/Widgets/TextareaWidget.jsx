@@ -6,7 +6,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
-import { map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 
 const messages = defineMessages({
@@ -139,11 +138,11 @@ const TextareaWidget = ({
                 onChange(id, target.value === '' ? undefined : target.value)
               }
             />
-            {map(error, message => (
-              <Label key={message} basic color="red" pointing>
-                {message}
+            {error.length > 0 && (
+              <Label key={error} basic color="red" pointing>
+                {error}
               </Label>
-            ))}
+            )}
           </Grid.Column>
         </Grid.Row>
         {description && (
