@@ -247,7 +247,7 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                   class="wrapper"
                 >
                   <div
-                    class="ui fitted checkbox"
+                    class="ui checkbox"
                   >
                     <input
                       class="hidden"
@@ -257,14 +257,10 @@ exports[`renders a Listing Block Sidebar component 1`] = `
                       type="checkbox"
                       value=""
                     />
-                    <label />
+                    <label>
+                      Reversed order
+                    </label>
                   </div>
-                  <label
-                    class="ui basic horizontal label"
-                    for="field-listingblock-sort-on-reverse"
-                  >
-                    Reversed order
-                  </label>
                 </div>
               </div>
             </div>

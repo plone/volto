@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Make label of checkboxwidget clickable @pbauer #1414
+
 ### Internal
 
 ## 5.1.0 (2020-04-23)
