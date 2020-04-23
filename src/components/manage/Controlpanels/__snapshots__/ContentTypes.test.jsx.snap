@@ -17,7 +17,7 @@ exports[`ContentTypes renders dexterity content-types controlpanel component 1`]
         <h1
           className="documentFirstHeading"
         >
-          Content Types
+          Dexterity Content Types
         </h1>
       </header>
       <section

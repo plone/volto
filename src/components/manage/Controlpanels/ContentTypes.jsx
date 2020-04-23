@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { Helmet, getParentUrl } from '@plone/volto/helpers';
+import { getParentUrl } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { last } from 'lodash';
 import { Confirm, Container, Table, Button, Dropdown } from 'semantic-ui-react';
@@ -43,10 +43,6 @@ const messages = defineMessages({
   no: {
     id: 'No',
     defaultMessage: 'No',
-  },
-  ContentTypes: {
-    id: 'Content Types',
-    defaultMessage: 'Content Types',
   },
   addTypeFormTitle: {
     id: 'Add new content type',
@@ -305,7 +301,6 @@ class ContentTypes extends Component {
     }
     return (
       <Container className="types-control-panel">
-        <Helmet title={this.props.intl.formatMessage(messages.ContentTypes)} />
         <div className="container">
           <Confirm
             open={this.state.showDelete}
@@ -368,10 +363,7 @@ class ContentTypes extends Component {
           <article id="content">
             <header>
               <h1 className="documentFirstHeading">
-                <FormattedMessage
-                  id="Content Types"
-                  defaultMessage="Content Types"
-                />
+                {this.props.controlpanel.title}
               </h1>
             </header>
             <section id="content-core">
