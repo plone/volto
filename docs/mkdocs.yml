@@ -1,8 +1,8 @@
-site_name: Volto developer documentation
+site_name: Volto Developer Documentation
 docs_dir: ./source
 site_dir: ./build
 repo_url: 'https://github.com/plone/volto'
-copyright: 'Made with ❤️ by Plone Community - All code owned by the Plone Foundation'
+copyright: 'Made with ❤️ by the Plone Community - All code owned by the Plone Foundation'
 theme:
   name: 'material'
   custom_dir: 'theme'
@@ -19,9 +19,11 @@ extra_css:
 
 nav:
   - Getting Started: 'getting-started/install.md'
+  - Design principles: 'design-principles/index.md'
   - Configuration:
       - What is configurable?: 'configuration/how-to.md'
       - Richeditor settings: 'configuration/richeditor-settings.md'
+      - Multilingual: 'configuration/multilingual.md'
   - Semantic UI:
       - About Semantic UI: 'semantic-ui/about-semantic.md'
       - Semantic UI Theming: 'semantic-ui/semanticui-theming.md'
@@ -43,10 +45,14 @@ nav:
       - Anatomy: 'blocks/anatomy.md'
       - Settings: 'blocks/settings.md'
       - Edit components: 'blocks/editcomponent.md'
+  - Recipes:
+      - App component insertion point: 'recipes/appextras.md'
+      - Lazy loading and code splitting: 'recipes/lazyload.md'
+      - Overriding i18n messages: 'recipes/overridei18n'
   - Deploying:
       - Simple deployment: 'deploying/simple.md'
       - Using PM2: 'deploying/pm2.md'
-      - Using apache: "deploying/apache.md"
+      - Using apache: 'deploying/apache.md'
   - Upgrade Guide: 'upgrade-guide/index.md'
   - Developer Guidelines:
       - Accessibility: 'developer-guidelines/accessibility-guidelines.md'
@@ -56,7 +62,8 @@ nav:
       - Routing: 'developer-guidelines/routing.md'
       - Linting: 'developer-guidelines/linting.md'
       - Language features: 'developer-guidelines/language-features.md'
-  - Contributing: 'contributing/index.md'
+  - Contributing:
+      - Guidelines: 'contributing/guidelines.md'
 
 markdown_extensions:
   - admonition

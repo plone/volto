@@ -6,6 +6,7 @@
 
 export { listActions } from '@plone/volto/actions/actions/actions';
 export { getBreadcrumbs } from '@plone/volto/actions/breadcrumbs/breadcrumbs';
+export { setExpandedToolbar } from '@plone/volto/actions/toolbar/toolbar';
 export {
   copy,
   cut,
@@ -88,3 +89,4 @@ export {
 export { getQuerystring } from '@plone/volto/actions/querystring/querystring';
 export { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
 export { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
+export { getTranslationLocator } from '@plone/volto/actions/translations/translations';

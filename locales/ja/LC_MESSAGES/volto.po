@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2020-03-19 14:02+0900\n"
+"PO-Revision-Date: 2020-04-22 21:11+0900\n"
 "Last-Translator: Manabu TERADA <terada@cmscom.jp>\n"
 "Language: ja\n"
 "Language-Team: Plone Japanese Team <https://github.com/plonejp>\n"
@@ -49,6 +49,10 @@ msgstr "追加"
 #: components/manage/Toolbar/Types
 msgid "Add Content"
 msgstr "新規追加"
+
+#: components/manage/Toolbar/Types
+msgid "Add Translation..."
+msgstr "翻訳コンテンツを追加..."
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
@@ -133,6 +137,7 @@ msgstr "昇順"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 msgid "Back"
 msgstr "戻る"
@@ -172,6 +177,7 @@ msgstr "デフォルトでは、このアイテムのコンテナからのパー
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
@@ -202,6 +208,10 @@ msgstr "パスワードを変更"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change State"
 msgstr "状態を変更"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change workflow state recursively"
+msgstr "下位階層のワークフローの状態も変更する"
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -527,6 +537,8 @@ msgstr "確認するためにあなたのメールアドレスを入力してく
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "新しいパスワードを入力。（5文字以上）"
 
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1130,6 +1142,7 @@ msgid "Roles"
 msgstr "ロール"
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1259,6 +1272,10 @@ msgstr "サイトマップ"
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "サイト設定"
+
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr "サイトマップ"
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
@@ -1420,6 +1437,10 @@ msgstr "タイトル"
 #: components/manage/Contents/Contents
 msgid "Total comments"
 msgstr "コメント計"
+
+#: components/manage/Toolbar/Types
+msgid "Translate to {lang}"
+msgstr "{lang} に翻訳する"
 
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
@@ -1654,6 +1675,38 @@ msgstr "安全上の理由で、パスワードは暗号化されて保管され
 msgid "description_sent_password"
 msgstr "パスワード再設定のお願いをメール送信しました。まもなくあなたのメールボックスに届くはずです。メッセージを受け取ったら、その中にあるパスワード再設定用のURLにアクセスしてください。"
 
+#: components/theme/View/EventView
+msgid "event_alldates"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_attendees"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_contactname"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_contactphone"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_website"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_what"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_when"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_where"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
 msgstr "パスワード再設定の確認が送られました"
@@ -1706,9 +1759,17 @@ msgstr "または、他のページを試してください。"
 msgid "registration form"
 msgstr "登録フォーム"
 
+#: components/theme/Search/Search
+msgid "results found"
+msgstr "件 見つかりました"
+
 #: error
 msgid "return to the site root"
 msgstr "サイトルートに戻ってください。"
+
+#: components/manage/Contents/Contents
+msgid "sort"
+msgstr "並べ替え"
 
 #: config/Blocks
 msgid "table"
@@ -1733,6 +1794,10 @@ msgstr "ユーザアイコン"
 #: config/Blocks
 msgid "video"
 msgstr "ビデオ"
+
+#: components/theme/View/EventView
+msgid "visit_external_website"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"

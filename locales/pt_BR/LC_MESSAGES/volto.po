@@ -51,6 +51,10 @@ msgstr "Adicionar"
 msgid "Add Content"
 msgstr "Adicionar conteúdo"
 
+#: components/manage/Toolbar/Types
+msgid "Add Translation..."
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
 msgstr "Adicionar usuário"
@@ -134,6 +138,7 @@ msgstr "Ascendente"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 msgid "Back"
 msgstr "Voltar"
@@ -173,6 +178,7 @@ msgstr "Por padrão, as permissões do contêiner deste item são herdadas. Se v
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
@@ -203,6 +209,10 @@ msgstr "Alterar senha"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change State"
 msgstr "Alterar estado"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change workflow state recursively"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -528,6 +538,8 @@ msgstr "Escreva o seu endereço de email para verificação."
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Escreva uma senha nova. Mínimo de 5 caracteres."
 
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1131,6 +1143,7 @@ msgid "Roles"
 msgstr "Papéis"
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1260,6 +1273,10 @@ msgstr "Mapa do Sítio"
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "Configuração do Sítio"
+
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr ""
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
@@ -1420,6 +1437,10 @@ msgstr "Título"
 
 #: components/manage/Contents/Contents
 msgid "Total comments"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+msgid "Translate to {lang}"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -1655,6 +1676,38 @@ msgstr ""
 msgid "description_sent_password"
 msgstr ""
 
+#: components/theme/View/EventView
+msgid "event_alldates"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_attendees"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_contactname"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_contactphone"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_website"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_what"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_when"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_where"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
 msgstr ""
@@ -1707,8 +1760,16 @@ msgstr ""
 msgid "registration form"
 msgstr "formulário de registo"
 
+#: components/theme/Search/Search
+msgid "results found"
+msgstr ""
+
 #: error
 msgid "return to the site root"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "sort"
 msgstr ""
 
 #: config/Blocks
@@ -1734,6 +1795,10 @@ msgstr "avatar do usuário"
 #: config/Blocks
 msgid "video"
 msgstr "vídeo"
+
+#: components/theme/View/EventView
+msgid "visit_external_website"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"

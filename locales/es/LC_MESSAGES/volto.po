@@ -53,6 +53,10 @@ msgstr "Agregar"
 msgid "Add Content"
 msgstr "Agregar contenido"
 
+#: components/manage/Toolbar/Types
+msgid "Add Translation..."
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
 msgstr "Agregar Usuario"
@@ -136,6 +140,7 @@ msgstr "Ascendente"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 msgid "Back"
 msgstr "Volver"
@@ -175,6 +180,7 @@ msgstr "Por defecto, los permisos desde el contenedor de este elemento son hered
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
@@ -205,6 +211,10 @@ msgstr "Cambiar Contraseña"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change State"
 msgstr "Cambiar Estado"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change workflow state recursively"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -530,6 +540,8 @@ msgstr "Ingrese su dirección de correo electrónico para verificar."
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Ingrese su nueva contraseña. Mínimo 5 caracteres."
 
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1133,6 +1145,7 @@ msgid "Roles"
 msgstr "Roles"
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1262,6 +1275,10 @@ msgstr "Mapa del sitio"
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "Configuración del sitio"
+
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr ""
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
@@ -1422,6 +1439,10 @@ msgstr "Título"
 
 #: components/manage/Contents/Contents
 msgid "Total comments"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+msgid "Translate to {lang}"
 msgstr ""
 
 #: components/manage/Widgets/SchemaWidget
@@ -1657,6 +1678,38 @@ msgstr "Por razones de seguridad, las contraseñas se almacenan en forma cifrada
 msgid "description_sent_password"
 msgstr "Se han enviado las instrucciones para restablecer su contraseña. Deben llegar a su bandeja de entrada pronto. Una vez que reciba el mensaje, visite la dirección indicada para restablecer la contraseña."
 
+#: components/theme/View/EventView
+msgid "event_alldates"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_attendees"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_contactname"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_contactphone"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_website"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_what"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_when"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_where"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
 msgstr "Solicitud de confirmación de restablecimiento de contraseña enviada"
@@ -1709,9 +1762,17 @@ msgstr "o intente con una página diferente."
 msgid "registration form"
 msgstr "formulario de registro"
 
+#: components/theme/Search/Search
+msgid "results found"
+msgstr ""
+
 #: error
 msgid "return to the site root"
 msgstr "regrese al directorio raíz del sitio"
+
+#: components/manage/Contents/Contents
+msgid "sort"
+msgstr ""
 
 #: config/Blocks
 msgid "table"
@@ -1736,6 +1797,10 @@ msgstr "avatar de usuario"
 #: config/Blocks
 msgid "video"
 msgstr "Vídeo"
+
+#: components/theme/View/EventView
+msgid "visit_external_website"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"

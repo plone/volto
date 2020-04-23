@@ -17,9 +17,10 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { settings } from '~/config';
+import { toast } from 'react-toastify';
 
 import { createContent, getSchema } from '@plone/volto/actions';
-import { Form, Icon, Toolbar, Sidebar } from '@plone/volto/components';
+import { Form, Icon, Toolbar, Sidebar, Toast } from '@plone/volto/components';
 import {
   getBaseUrl,
   hasBlocksData,
@@ -44,6 +45,10 @@ const messages = defineMessages({
   cancel: {
     id: 'Cancel',
     defaultMessage: 'Cancel',
+  },
+  error: {
+    id: 'Error',
+    defaultMessage: 'Error',
   },
 });
 
@@ -78,6 +83,7 @@ class Add extends Component {
       loaded: PropTypes.bool,
     }).isRequired,
     type: PropTypes.string,
+    location: PropTypes.objectOf(PropTypes.any),
   };
 
   /**
@@ -143,6 +149,16 @@ class Add extends Component {
           nextProps.content['@id'].replace(settings.apiPath, ''),
       );
     }
+
+    if (nextProps.createRequest.error) {
+      toast.error(
+        <Toast
+          error
+          title={this.props.intl.formatMessage(messages.error)}
+          content={`${nextProps.createRequest.error.status}:  ${nextProps.createRequest.error.response?.body?.message}`}
+        />,
+      );
+    }
   }
 
   /**
@@ -158,6 +174,11 @@ class Add extends Component {
         ? keys(this.props.schema.definitions)
         : null,
       '@type': this.props.type,
+      ...(settings.isMultilingual &&
+        this.props.location?.state?.translationOf && {
+          translation_of: this.props.location.state.translationOf,
+          language: this.props.location.state.language,
+        }),
     });
   }
 

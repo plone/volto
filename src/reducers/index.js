@@ -28,11 +28,13 @@ import schema from '@plone/volto/reducers/schema/schema';
 import search from '@plone/volto/reducers/search/search';
 import sharing from '@plone/volto/reducers/sharing/sharing';
 import sidebar from '@plone/volto/reducers/sidebar/sidebar';
+import translations from '@plone/volto/reducers/translations/translations';
 import types from '@plone/volto/reducers/types/types';
 import users from '@plone/volto/reducers/users/users';
 import userSession from '@plone/volto/reducers/userSession/userSession';
 import vocabularies from '@plone/volto/reducers/vocabularies/vocabularies';
 import workflow from '@plone/volto/reducers/workflow/workflow';
+import toolbar from '@plone/volto/reducers/toolbar/toolbar';
 
 /**
  * Root reducer.
@@ -66,11 +68,13 @@ const reducers = {
   search,
   sharing,
   sidebar,
+  translations,
   types,
   users,
   userSession,
   vocabularies,
   workflow,
+  toolbar,
 };
 
 export default reducers;
