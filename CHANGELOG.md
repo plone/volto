@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Add crossorigin to the preload resources tags while in development @sneridagh
+
 ## 5.1.0 (2020-04-23)
 
 ### Breaking
