@@ -138,6 +138,7 @@ msgstr "Crescente"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 msgid "Back"
 msgstr "Indietro"
@@ -558,6 +559,8 @@ msgstr "Inserisci la tua mail per verifica."
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Inserisci la tua nuova password. Minimo 5 caratteri."
 
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1683,6 +1686,38 @@ msgstr "Per ragioni di sicurezza, le password vengono memorizzate in forma critt
 msgid "description_sent_password"
 msgstr "La istruzioni per reimpostare la tua password sono state inviate. Dovrebbero arrivare a breve nella tua casella di posta. Una volta ricevuto il messaggio, visita l'indirizzo indicato per reimpostare la password."
 
+#: components/theme/View/EventView
+msgid "event_alldates"
+msgstr "Tutte le date"
+
+#: components/theme/View/EventView
+msgid "event_attendees"
+msgstr "Partecipanti"
+
+#: components/theme/View/EventView
+msgid "event_contactname"
+msgstr "Nome del contatto"
+
+#: components/theme/View/EventView
+msgid "event_contactphone"
+msgstr "Telefono del contatto"
+
+#: components/theme/View/EventView
+msgid "event_website"
+msgstr "Sito web"
+
+#: components/theme/View/EventView
+msgid "event_what"
+msgstr "Cosa"
+
+#: components/theme/View/EventView
+msgid "event_when"
+msgstr "Quando"
+
+#: components/theme/View/EventView
+msgid "event_where"
+msgstr "Dove"
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
 msgstr "Richiesta di conferma reimpostazione password spedita"
@@ -1737,7 +1772,7 @@ msgstr "form di registrazione"
 
 #: components/theme/Search/Search
 msgid "results found"
-msgstr ""
+msgstr "risultati trovati"
 
 #: error
 msgid "return to the site root"
@@ -1770,6 +1805,10 @@ msgstr "Avatar dell'utente"
 #: config/Blocks
 msgid "video"
 msgstr "Video"
+
+#: components/theme/View/EventView
+msgid "visit_external_website"
+msgstr "Visita il sito web"
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"

@@ -7,12 +7,24 @@
 ### Feature
 
 - Added Dexterity Types Controlpanel @avoinea
+- Full screen right sidebar @rexalex #1345
+- Enable internal API proxy for not to rely on CORS on development @sneridagh
 - Added Print CSS @iFlameing #1289
+- Added error handling for Add and Edit forms #1392 @nzambello
+
 
 
 ### Bugfix
 
+- Japanese translation @terapyon
+- Fix `ArrayWidget` to support multiselect schema `schema.List`/`schema.Set`-> `schema.Choice` hardcoded (not using vocabularies) combination @sneridagh
+- Remove Back button from control panels, since it's redundant @sneridagh
+- Show past dates in date time widget calendar @nzambello
+
 ### Internal
+
+- Translated labels in Eventi View @nzambello
+- Improve i18n script, so shadowed components are not overriding their original translations. For the record, any override of i18n messages, should be done somewhere else (eg. config object) @sneridagh
 
 ## 5.0.1 (2020-04-16)
 
@@ -87,6 +99,7 @@
 ### Feature
 
 - /contents (folder content view) is sortable @ksuess
+- Updated the (folder content icons to Pastanaga Icons) @iFlameing
 
 ### Bugfix
 

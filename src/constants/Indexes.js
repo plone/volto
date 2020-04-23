@@ -5,6 +5,7 @@
 
 export default {
   sortable_title: { label: 'Title', type: 'string', sort_on: 'sortable_title' },
+  review_state: { label: 'Review state', type: 'string' },
   ModificationDate: {
     label: 'Last modified',
     type: 'date',
@@ -15,7 +16,6 @@ export default {
     type: 'date',
     sort_on: 'effective',
   },
-  review_state: { label: 'Review state', type: 'string' },
   id: { label: 'ID', type: 'string', sort_on: 'id' },
   ExpirationDate: { label: 'Expiration date', type: 'date' },
   CreationDate: { label: 'Created on', type: 'date', sort_on: 'created' },

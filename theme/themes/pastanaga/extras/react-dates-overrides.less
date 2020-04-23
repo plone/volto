@@ -41,10 +41,6 @@ td.CalendarDay__today {
   font-weight: bold;
 }
 
-// .SingleDatePicker_picker {
-//   top: 0 !important;
-// }
-
 .DayPickerKeyboardShortcuts_show__bottomRight {
   width: 2.5rem;
   height: 2.5rem;
@@ -74,10 +70,20 @@ td.CalendarDay__today {
   display: none;
 }
 
-.CalendarMonth_caption {
-  padding-bottom: 15px;
-  margin-bottom: 45px;
-  border-bottom: 1px solid #edf1f2;
+.default-date {
+  .DateInput {
+    input.DateInput_input[type='text'] {
+      color: @lightGrey;
+    }
+  }
+}
+
+.CalendarMonth {
+  .CalendarMonth_caption {
+    padding-bottom: 22px;
+    margin-bottom: 45px;
+    border-bottom: 1px solid #edf1f2;
+  }
 }
 
 .CalendarMonth_caption strong {

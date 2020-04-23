@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-04-14T07:36:21.376Z\n"
+"POT-Creation-Date: 2020-04-22T19:27:59.447Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -166,6 +166,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Back
 msgid "Back"
@@ -673,6 +674,8 @@ msgstr ""
 msgid "Enter your new password. Minimum 5 characters."
 msgstr ""
 
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -2053,6 +2056,46 @@ msgstr ""
 msgid "description_sent_password"
 msgstr ""
 
+#: components/theme/View/EventView
+# defaultMessage: All dates
+msgid "event_alldates"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Attendees
+msgid "event_attendees"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Contact Name
+msgid "event_contactname"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Contact Phone
+msgid "event_contactphone"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Website
+msgid "event_website"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: What
+msgid "event_what"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: When
+msgid "event_when"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Where
+msgid "event_where"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Password reset confirmation sent
 msgid "heading_sent_password"
@@ -2161,6 +2204,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Video
 msgid "video"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Visit external website
+msgid "visit_external_website"
 msgstr ""
 
 #: components/theme/Login/Login
