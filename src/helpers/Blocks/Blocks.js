@@ -12,7 +12,12 @@ import { endsWith, find, keys } from 'lodash';
  * @return {string} Field name of the blocks
  */
 export function getBlocksFieldname(props) {
-  return find(keys(props), key => endsWith(key, 'blocks')) || 'blocks';
+  return (
+    find(
+      keys(props),
+      key => key !== 'volto.blocks' && endsWith(key, 'blocks'),
+    ) || 'blocks'
+  );
 }
 
 /**
@@ -23,7 +28,10 @@ export function getBlocksFieldname(props) {
  */
 export function getBlocksLayoutFieldname(props) {
   return (
-    find(keys(props), key => endsWith(key, 'blocks_layout')) || 'blocks_layout'
+    find(
+      keys(props),
+      key => key !== 'volto.blocks' && endsWith(key, 'blocks_layout'),
+    ) || 'blocks_layout'
   );
 }
 
@@ -34,5 +42,10 @@ export function getBlocksLayoutFieldname(props) {
  * @return {boolean} True if it has blocks data.
  */
 export function hasBlocksData(props) {
-  return find(keys(props), key => endsWith(key, 'blocks')) !== undefined;
+  return (
+    find(
+      keys(props),
+      key => key !== 'volto.blocks' && endsWith(key, 'blocks'),
+    ) !== undefined
+  );
 }
