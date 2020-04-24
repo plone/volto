@@ -215,11 +215,11 @@ msgstr "Passwort ändern"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change State"
-msgstr "Statusänderung"
+msgstr "Arbeitsablauf-Status ändern"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
-msgstr "Ändere Status rekursiv"
+msgstr "Arbeitlauf-Status für alle Unterobjekte ebenfalls ändern"
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -341,7 +341,7 @@ msgstr "Aktuelles Passwort"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
-msgstr "Schneiden"
+msgstr "Ausschneiden"
 
 #: components/manage/Controlpanels/ModerateComments
 msgid "Date"
@@ -1126,7 +1126,7 @@ msgstr "Durch diese Version ersetzen"
 
 #: components/manage/Contents/Contents
 msgid "Review state"
-msgstr "Status"
+msgstr "Arbeitsablauf"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
@@ -1197,7 +1197,7 @@ msgstr "Kriterium wählen"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
-msgstr "Wählen Sie den Statuswechsel, der benutzt werden soll, um den Status des Artikels zu ändern."
+msgstr "Arbeitsablauf-Status für Seite wählen."
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
