@@ -425,7 +425,9 @@ exports[`renders an Image Block Sidebar component 1`] = `
                     tabIndex={0}
                     type="checkbox"
                   />
-                  <label>
+                  <label
+                    for="field-openLinkInNewTab"
+                  >
                     Open in a new tab
                   </label>
                 </div>

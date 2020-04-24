@@ -33,7 +33,9 @@ exports[`renders a checkbox widget component 1`] = `
               tabIndex={0}
               type="checkbox"
             />
-            <label>
+            <label
+              for="field-my-field"
+            >
               My field
             </label>
           </div>
