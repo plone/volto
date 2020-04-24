@@ -148,6 +148,13 @@ export const ContentsItemComponent = ({
               color="#878f93"
             />{' '}
             <span> {item.title}</span>
+            {item.ExpirationDate !== 'None' &&
+              new Date(item.ExpirationDate).getTime() >
+                new Date().getTime() && (
+                <Button size="mini" color="red" className="buttonMargin">
+                  <FormattedMessage id="Expires" defaultMessage="Expires" />
+                </Button>
+              )}
           </Link>
         </Table.Cell>
         {map(indexes, index => (
