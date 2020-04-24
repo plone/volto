@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Improve German translations for folder contents view @timo
+
 ### Internal
 
 - Add crossorigin to the preload resources tags while in development @sneridagh
