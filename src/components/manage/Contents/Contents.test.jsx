@@ -28,6 +28,18 @@ jest.mock('moment', () =>
 describe('Contents', () => {
   it('renders a contents component', () => {
     const store = mockStore({
+      actions: {
+        actions: {
+          document_actions: [],
+          object: [
+            {
+              icon: '',
+              id: 'folderContents',
+              title: 'Contents',
+            },
+          ],
+        },
+      },
       search: {
         items: [
           {

@@ -7,6 +7,7 @@
 ### Feature
 
 - Improvement of API requests error handling @sneridagh
+- Unauthorized on folder contents if no proper credentials @sneridagh
 
 ### Bugfix
 
