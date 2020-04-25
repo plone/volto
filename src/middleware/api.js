@@ -14,8 +14,6 @@ import {
   SET_APIERROR,
 } from '@plone/volto/constants/ActionTypes';
 
-const ACTIONS_RAISING_ERRORS = ['GET_CONTENT', 'UPDATE_CONTENT'];
-
 let socket = null;
 
 /**
@@ -154,7 +152,7 @@ export default api => ({ dispatch, getState }) => next => action => {
           });
 
           // The rest
-        } else if (ACTIONS_RAISING_ERRORS.includes(action.type)) {
+        } else if (settings.actions_raising_api_errors.includes(action.type)) {
           if (error.response.statusCode === 401) {
             next({
               ...rest,
