@@ -7,14 +7,16 @@ import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 /**
  * unauthorized function.
  * @function Unauthorized
  * @returns {string} Markup of the unauthorized page.
  */
-const Unauthorized = ({ pathname }) => {
+const Unauthorized = () => {
   const error_message = useSelector(state => state.apierror.message);
+  let location = useLocation();
 
   return (
     <Container className="view-wrapper">
@@ -28,7 +30,7 @@ const Unauthorized = ({ pathname }) => {
           defaultMessage="You are trying to access a protected resource, please {login} first."
           values={{
             login: (
-              <Link to={`${pathname}/login`}>
+              <Link to={`${location.pathname}/login`}>
                 <FormattedMessage id="log in" defaultMessage="log in" />
               </Link>
             ),

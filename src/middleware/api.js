@@ -85,9 +85,6 @@ export default api => ({ dispatch, getState }) => next => action => {
         });
     actionPromise.then(
       result => {
-        // result has statusCode and headers for future feature implementations
-        const { body } = result;
-
         if (getState().apierror.connectionRefused) {
           next({
             ...rest,
@@ -95,9 +92,9 @@ export default api => ({ dispatch, getState }) => next => action => {
           });
         }
         if (type === LOGIN && settings.websockets) {
-          cookie.save('auth_token', body.token, {
+          cookie.save('auth_token', result.token, {
             path: '/',
-            expires: new Date(jwtDecode(body.token).exp * 1000),
+            expires: new Date(jwtDecode(result.token).exp * 1000),
           });
           api.get('/@wstoken').then(res => {
             socket = new WebSocket(
@@ -121,20 +118,9 @@ export default api => ({ dispatch, getState }) => next => action => {
             };
           });
         }
-        return next({ ...rest, result: body, type: `${type}_SUCCESS` });
+        return next({ ...rest, result, type: `${type}_SUCCESS` });
       },
       error => {
-        // Response error is marked crossDomain if CORS error happen
-        if (error.crossDomain) {
-          next({
-            ...rest,
-            error,
-            statusCode: 'CORSERROR',
-            connectionRefused: false,
-            type: SET_APIERROR,
-          });
-        }
-
         // Only SRR can set ECONNREFUSED
         if (error.code === 'ECONNREFUSED') {
           next({
@@ -146,7 +132,29 @@ export default api => ({ dispatch, getState }) => next => action => {
           });
         }
 
-        if (ACTIONS_RAISING_ERRORS.includes(action.type)) {
+        // Response error is marked crossDomain if CORS error happen
+        else if (error.crossDomain) {
+          next({
+            ...rest,
+            error,
+            statusCode: 'CORSERROR',
+            connectionRefused: false,
+            type: SET_APIERROR,
+          });
+        }
+
+        // Gateway timeout
+        else if (error.response.statusCode === 504) {
+          next({
+            ...rest,
+            error,
+            statusCode: error.code,
+            connectionRefused: true,
+            type: SET_APIERROR,
+          });
+
+          // The rest
+        } else if (ACTIONS_RAISING_ERRORS.includes(action.type)) {
           if (error.response.statusCode === 401) {
             next({
               ...rest,
