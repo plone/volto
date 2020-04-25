@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Improvement of API requests error handling @sneridagh
+
 ### Bugfix
 
 ### Internal
