@@ -11,6 +11,8 @@
 
 ### Bugfix
 
+- Make label of checkboxwidget clickable @pbauer #1414
+
 ### Internal
 
 - Add crossorigin to the preload resources tags while in development @sneridagh
