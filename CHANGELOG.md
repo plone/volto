@@ -7,12 +7,16 @@
 ### Feature
 
 - Improvement of API requests error handling @sneridagh
+- Unauthorized on folder contents if no proper credentials @sneridagh
 
 ### Bugfix
 
 ### Internal
 
 - Add crossorigin to the preload resources tags while in development @sneridagh
+- Permissions in contents and Edit @sneridagh
+- Fix the error on content Edit no credentials now shows `Unauthorized` @sneridagh
+- Improve console server output showing info @sneridagh
 
 ## 5.1.0 (2020-04-23)
 
