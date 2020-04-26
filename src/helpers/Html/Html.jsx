@@ -10,6 +10,10 @@ import serialize from 'serialize-javascript';
 import { join } from 'lodash';
 import { BodyClass } from '@plone/volto/helpers';
 
+import MacroHead from '@plone/volto/helpers/Html/MacroHead';
+import MacroBeforeBody from '@plone/volto/helpers/Html/MacroBeforeBody';
+import MacroAfterBody from '@plone/volto/helpers/Html/MacroAfterBody';
+
 /**
  * Html class.
  * Wrapper component containing HTML metadata and boilerplate tags.
@@ -86,8 +90,10 @@ class Html extends Component {
           {process.env.NODE_ENV === 'production' && (
             <>{extractor.getStyleElements()}</>
           )}
+          <MacroHead />
         </head>
         <body className={bodyClass}>
+          <MacroBeforeBody />
           <div role="navigation" aria-label="Toolbar" id="toolbar" />
           <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
           <div id="sidebar" />
@@ -104,6 +110,7 @@ class Html extends Component {
                 process.env.NODE_ENV === 'production' ? undefined : 'true',
             }),
           )}
+          <MacroAfterBody />
         </body>
       </html>
     );

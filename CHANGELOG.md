@@ -19,6 +19,7 @@
 - Permissions in contents and Edit @sneridagh
 - Fix the error on content Edit no credentials now shows `Unauthorized` @sneridagh
 - Improve console server output showing info @sneridagh
+- Added macros to customize Html @nzambello
 
 ## 5.1.0 (2020-04-23)
 
