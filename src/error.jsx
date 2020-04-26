@@ -19,13 +19,12 @@ const Error = ({ message, stackTrace }) => {
   return (
     <div
       style={{
-        fontFamily: __SERVER__ ? 'Helvetica, sans-serif' : null,
-        fontSize: __SERVER__ ? '20px' : '16px',
+        fontFamily: 'Helvetica, sans-serif',
+        fontSize: '20px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        height: __SERVER__ ? '100vh' : null,
       }}
     >
       {/* TODO: Replace inline styling with a CSS class, inline style only for __SERVER__ */}
@@ -38,16 +37,14 @@ const Error = ({ message, stackTrace }) => {
       <strong style={{ color: 'red' }}>{message}</strong>
       <pre>{stackTrace}</pre>
       <span style={{ textAlign: 'center' }}>
-        {__CLIENT__ && (
-          <p>
-            <button onClick={() => history.goBack()}>
-              <FormattedMessage
-                id="Navigate back"
-                defaultMessage="Navigate back"
-              />
-            </button>
-          </p>
-        )}
+        <p>
+          <button onClick={() => history.goBack()}>
+            <FormattedMessage
+              id="Navigate back"
+              defaultMessage="Navigate back"
+            />
+          </button>
+        </p>
         <p>
           <a href="/">
             <FormattedMessage

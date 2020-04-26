@@ -48,6 +48,7 @@ nav:
   - Recipes:
       - App component insertion point: 'recipes/appextras.md'
       - Lazy loading and code splitting: 'recipes/lazyload.md'
+      - Overriding i18n messages: 'recipes/overridei18n'
   - Deploying:
       - Simple deployment: 'deploying/simple.md'
       - Using PM2: 'deploying/pm2.md'

@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Helmet } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
 import { Button, Container } from 'semantic-ui-react';
@@ -17,7 +17,6 @@ import { toast } from 'react-toastify';
 import { Form, Icon, Toolbar, Toast } from '@plone/volto/components';
 import { updateControlpanel, getControlpanel } from '@plone/volto/actions';
 
-import backSVG from '@plone/volto/icons/back.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -168,14 +167,6 @@ class Controlpanel extends Component {
               hideDefaultViewButtons
               inner={
                 <>
-                  <Link to="/controlpanel" className="item">
-                    <Icon
-                      name={backSVG}
-                      className="contents circled"
-                      size="30px"
-                      title={this.props.intl.formatMessage(messages.back)}
-                    />
-                  </Link>
                   <Button
                     id="toolbar-save"
                     className="save"

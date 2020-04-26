@@ -8,7 +8,11 @@ import jwtDecode from 'jwt-decode';
 
 import { settings } from '~/config';
 
-import { LOGIN } from '@plone/volto/constants/ActionTypes';
+import {
+  LOGIN,
+  RESET_APIERROR,
+  SET_APIERROR,
+} from '@plone/volto/constants/ActionTypes';
 
 let socket = null;
 
@@ -79,6 +83,12 @@ export default api => ({ dispatch, getState }) => next => action => {
         });
     actionPromise.then(
       result => {
+        if (getState().apierror.connectionRefused) {
+          next({
+            ...rest,
+            type: RESET_APIERROR,
+          });
+        }
         if (type === LOGIN && settings.websockets) {
           cookie.save('auth_token', result.token, {
             path: '/',
@@ -108,7 +118,54 @@ export default api => ({ dispatch, getState }) => next => action => {
         }
         return next({ ...rest, result, type: `${type}_SUCCESS` });
       },
-      error => next({ ...rest, error, type: `${type}_FAIL` }),
+      error => {
+        // Only SRR can set ECONNREFUSED
+        if (error.code === 'ECONNREFUSED') {
+          next({
+            ...rest,
+            error,
+            statusCode: error.code,
+            connectionRefused: true,
+            type: SET_APIERROR,
+          });
+        }
+
+        // Response error is marked crossDomain if CORS error happen
+        else if (error.crossDomain) {
+          next({
+            ...rest,
+            error,
+            statusCode: 'CORSERROR',
+            connectionRefused: false,
+            type: SET_APIERROR,
+          });
+        }
+
+        // Gateway timeout
+        else if (error.response.statusCode === 504) {
+          next({
+            ...rest,
+            error,
+            statusCode: error.code,
+            connectionRefused: true,
+            type: SET_APIERROR,
+          });
+
+          // The rest
+        } else if (settings.actions_raising_api_errors.includes(action.type)) {
+          if (error.response.statusCode === 401) {
+            next({
+              ...rest,
+              error,
+              statusCode: error.response,
+              message: error.response.body.message,
+              connectionRefused: false,
+              type: SET_APIERROR,
+            });
+          }
+        }
+        return next({ ...rest, error, type: `${type}_FAIL` });
+      },
     );
   }
 
