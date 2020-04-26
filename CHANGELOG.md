@@ -12,6 +12,8 @@
 ### Bugfix
 
 - Make label of checkboxwidget clickable @pbauer #1414
+- Show new added user in user control panel @iFlameing #1271
+- Support multi selection in roles and groups and polish add user #1372
 
 ### Internal
 
