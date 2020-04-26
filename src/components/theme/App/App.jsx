@@ -208,8 +208,12 @@ export default compose(
     },
     {
       key: 'workflow',
-      promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname))),
+      promise: ({ location, store: { dispatch } }) => {
+        console.log('dispatch workflow action');
+        return (
+          __SERVER__ && dispatch(getWorkflow(getBaseUrl(location.pathname)))
+        );
+      },
     },
   ]),
   connect(

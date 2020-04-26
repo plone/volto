@@ -36,6 +36,7 @@ import move from 'lodash-move';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import { asyncConnect } from 'redux-connect';
 
 import {
   searchContent,
@@ -43,6 +44,7 @@ import {
   copy,
   copyContent,
   deleteContent,
+  listActions,
   moveContent,
   orderContent,
   sortContent,
@@ -955,7 +957,7 @@ class Contents extends Component {
       id: 'folderContents',
     });
 
-    return this.props.objectActions.length > 0 ? (
+    return this.props.token && this.props.objectActions.length > 0 ? (
       <>
         {folderContentsAction ? (
           <Container id="page-contents" className="folder-contents">
@@ -1600,35 +1602,84 @@ class Contents extends Component {
   }
 }
 
-export default compose(
-  DragDropContext(HTML5Backend),
+export const __test__ = compose(
   injectIntl,
   connect(
-    (state, props) => ({
-      items: state.search.items,
-      breadcrumbs: state.breadcrumbs.items,
-      total: state.search.total,
-      searchRequest: {
-        loading: state.search.loading,
-        loaded: state.search.loaded,
-      },
-      pathname: props.location.pathname,
-      action: state.clipboard.action,
-      source: state.clipboard.source,
-      clipboardRequest: state.clipboard.request,
-      deleteRequest: state.content.delete,
-      updateRequest: state.content.update,
-      objectActions: state.actions.actions.object,
-    }),
+    (state, props) => {
+      return {
+        token: state.userSession.token,
+        items: state.search.items,
+        breadcrumbs: state.breadcrumbs.items,
+        total: state.search.total,
+        searchRequest: {
+          loading: state.search.loading,
+          loaded: state.search.loaded,
+        },
+        pathname: props.location.pathname,
+        action: state.clipboard.action,
+        source: state.clipboard.source,
+        clipboardRequest: state.clipboard.request,
+        deleteRequest: state.content.delete,
+        updateRequest: state.content.update,
+        objectActions: state.actions.actions.object,
+      };
+    },
     {
       searchContent,
       cut,
       copy,
       copyContent,
       deleteContent,
+      listActions,
       moveContent,
       orderContent,
       sortContent,
     },
   ),
+)(Contents);
+
+export default compose(
+  DragDropContext(HTML5Backend),
+  injectIntl,
+  connect(
+    (state, props) => {
+      return {
+        token: state.userSession.token,
+        items: state.search.items,
+        breadcrumbs: state.breadcrumbs.items,
+        total: state.search.total,
+        searchRequest: {
+          loading: state.search.loading,
+          loaded: state.search.loaded,
+        },
+        pathname: props.location.pathname,
+        action: state.clipboard.action,
+        source: state.clipboard.source,
+        clipboardRequest: state.clipboard.request,
+        deleteRequest: state.content.delete,
+        updateRequest: state.content.update,
+        objectActions: state.actions.actions.object,
+      };
+    },
+    {
+      searchContent,
+      cut,
+      copy,
+      copyContent,
+      deleteContent,
+      listActions,
+      moveContent,
+      orderContent,
+      sortContent,
+    },
+  ),
+  asyncConnect([
+    {
+      key: 'actions',
+      // Dispatch async/await to make the operation syncronous, otherwise it returns
+      // before the promise is resolved
+      promise: async ({ location, store: { dispatch } }) =>
+        await dispatch(listActions(getBaseUrl(location.pathname))),
+    },
+  ]),
 )(Contents);

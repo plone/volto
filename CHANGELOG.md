@@ -14,6 +14,9 @@
 ### Internal
 
 - Add crossorigin to the preload resources tags while in development @sneridagh
+- Permissions in contents and Edit @sneridagh
+- Fix the error on content Edit no credentials now shows `Unauthorized` @sneridagh
+- Improve console server output showing info @sneridagh
 
 ## 5.1.0 (2020-04-23)
 

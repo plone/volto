@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import Contents from './Contents';
+import { __test__ as Contents } from './Contents';
 
 const mockStore = configureStore();
 
@@ -39,6 +39,9 @@ describe('Contents', () => {
             },
           ],
         },
+      },
+      userSession: {
+        token: '14134234123qwdaf',
       },
       search: {
         items: [
