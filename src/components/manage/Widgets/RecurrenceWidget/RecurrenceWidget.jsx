@@ -114,6 +114,10 @@ const messages = defineMessages({
     id: 'Add date',
     defaultMessage: 'Add date',
   },
+  select_date_to_add_to_recurrence: {
+    id: 'Select a date to add to recurrence',
+    defaultMessage: 'Select a date to add to recurrence',
+  },
 });
 
 const NoRRuleOptions = [
@@ -888,11 +892,15 @@ class RecurrenceWidget extends Component {
                         />
                       </Segment>
                       <Segment>
+                        <Header as="h2">
+                          {intl.formatMessage(messages.add_date)}
+                        </Header>
+
                         <DatetimeWidget
                           id="addDate"
-                          title={
-                            <h2>{intl.formatMessage(messages.add_date)}</h2>
-                          }
+                          title={intl.formatMessage(
+                            messages.select_date_to_add_to_recurrence,
+                          )}
                           dateOnly={true}
                           noPastDates={true}
                           onChange={(id, value) => {

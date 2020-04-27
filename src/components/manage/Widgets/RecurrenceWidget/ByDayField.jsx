@@ -17,8 +17,7 @@ import { Days } from './Utils';
 const ByDayField = ({ label, value, onChange }) => {
   const toggleWeekDay = dayName => {
     var day = Days[dayName];
-    var stateValue = this.state.formValues.byweekday;
-    var byweekday = stateValue ? [...stateValue] : [];
+    var byweekday = value ? [...value] : [];
 
     var i = byweekday.indexOf(day);
     if (i >= 0) {
