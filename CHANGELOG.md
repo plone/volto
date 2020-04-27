@@ -10,7 +10,7 @@
 
 ### Internal
 
-- Remove console log in workflow asyncaction :( @sneridagh
+- Remove console log in workflow asyncConnect :( @sneridagh
 
 ## 5.2.0 (2020-04-27)
 
