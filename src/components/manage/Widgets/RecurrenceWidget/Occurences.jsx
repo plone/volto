@@ -14,6 +14,7 @@ import addSVG from '@plone/volto/icons/circle-plus.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 
 import { toISOString } from './Utils';
+import { rrulestr } from 'rrule';
 
 const messages = defineMessages({
   selected_dates: {
@@ -110,6 +111,7 @@ const Occurences = ({
       {showTitle && (
         <Header as="h2">{intl.formatMessage(messages.selected_dates)}</Header>
       )}
+
       <List divided verticalAlign="middle">
         {all.map((date, index) => {
           const excluded = isExcluded(date);

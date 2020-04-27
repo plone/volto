@@ -344,6 +344,13 @@ class RecurrenceWidget extends Component {
               if (freq === FREQUENCES.YEARLY) {
                 formValues['yearly'] = option;
               }
+            } else {
+              if (freq === FREQUENCES.MONTHLY) {
+                formValues['monthly'] = null;
+              }
+              if (freq === FREQUENCES.YEARLY) {
+                formValues['yearly'] = null;
+              }
             }
             formValues[option] = value;
             break;
@@ -512,6 +519,7 @@ class RecurrenceWidget extends Component {
     var currWeekday = this.getWeekday(moment().day() - 1);
     var currMonth = moment().month() + 1;
 
+    var startWeekday = this.getWeekday(moment(formValues.dtstart).day() - 1);
     formValues[field] = value;
 
     switch (field) {
@@ -523,21 +531,16 @@ class RecurrenceWidget extends Component {
         if (!fconfig.interval) {
           formValues.interval = null;
         }
-        if (!fconfig.byday) {
-          formValues = this.changeField(formValues, 'byweekday', null);
-        } else if (!fconfig.bymonth) {
-          formValues = this.changeField(formValues, 'monthly', null);
-          formValues = this.changeField(formValues, 'bymonthday', null);
-          formValues = this.changeField(formValues, 'byweekday', null);
-          formValues = this.changeField(formValues, 'monthOfTheYear', null);
-        } else if (!fconfig.byyear) {
-          formValues = this.changeField(formValues, 'yearly', null);
-          formValues = this.changeField(formValues, 'bymonthday', null);
-          formValues = this.changeField(formValues, 'byweekday', null);
-          formValues = this.changeField(formValues, 'monthOfTheYear', null);
-        }
 
-        formValues.until = this.getDefaultUntil(value);
+        formValues = this.changeField(formValues, 'byweekday', null);
+        formValues = this.changeField(formValues, 'yearly', null);
+        formValues = this.changeField(formValues, 'bymonthday', null);
+        formValues = this.changeField(formValues, 'byweekday', null);
+        formValues = this.changeField(formValues, 'monthOfTheYear', null);
+
+        if (!formValues.until) {
+          formValues.until = this.getDefaultUntil(value);
+        }
 
         //set defaults
         switch (value) {
@@ -553,6 +556,12 @@ class RecurrenceWidget extends Component {
               MONDAYFRIDAY_DAYS,
             );
             break;
+          case FREQUENCES.WEEKLY:
+            formValues = this.changeField(formValues, 'byweekday', [
+              startWeekday,
+            ]);
+
+            break;
           case FREQUENCES.MONTHLY:
             formValues = this.changeField(formValues, 'monthly', 'bymonthday');
 
@@ -563,6 +572,7 @@ class RecurrenceWidget extends Component {
           default:
             break;
         }
+
         break;
 
       case 'recurrenceEnds':
@@ -582,7 +592,11 @@ class RecurrenceWidget extends Component {
         if (FREQUENCES.WEEKLY !== formValues.freq) {
           formValues.weekdayOfTheMonth = value ? value[0].weekday : null;
           formValues.weekdayOfTheMonthIndex = value ? value[0].n : null;
+        } else {
+          delete formValues.weekdayOfTheMonth;
+          delete formValues.weekdayOfTheMonthIndex;
         }
+
         break;
       case 'weekdayOfTheMonth':
         var weekday = this.getWeekday(value); // get new day
@@ -597,7 +611,11 @@ class RecurrenceWidget extends Component {
         break;
 
       case 'monthOfTheYear':
-        formValues.bymonth = [value];
+        if (value == null || value == undefined) {
+          delete formValues.bymonth;
+        } else {
+          formValues.bymonth = [value];
+        }
         break;
 
       case 'monthly':
@@ -646,8 +664,6 @@ class RecurrenceWidget extends Component {
   };
 
   onChangeRule = (field, value) => {
-    //console.log('---onChangeRule: ', field, value);
-
     var formValues = Object.assign({}, this.state.formValues);
     formValues = this.changeField(formValues, field, value);
 
