@@ -174,17 +174,26 @@ class RecurrenceWidget extends Component {
     super(props);
     moment.locale(this.props.intl.locale);
 
+    console.log(this.props.value, props.formData.start);
+
     let rruleSet = this.props.value
       ? rrulestr(props.value, {
           compatible: true, //If set to True, the parser will operate in RFC-compatible mode. Right now it means that unfold will be turned on, and if a DTSTART is found, it will be considered the first recurrence instance, as documented in the RFC.
           forceset: true,
-          dtstart: props.formData.start
-            ? this.getUTCDate(props.formData.start)
-                .startOf('day')
-                .toDate()
-            : null,
+          // dtstart: props.formData.start
+          //   ? this.getUTCDate(props.formData.start)
+          //       .startOf('day')
+          //       .toDate()
+          //   : null,
         })
       : new RRuleSet();
+
+    if (this.props.formData.start) {
+      let date = this.getUTCDate(props.formData.start)
+        .startOf('day')
+        .toDate();
+      rruleSet.dtstart(date);
+    }
 
     this.state = {
       open: false,
