@@ -2,10 +2,6 @@
 
 ## 5.1.1 (unreleased)
 
-### Breaking
-
-- Listing block: removed message 'No results found' only in view mode on public site, in editMode is still present. @giuliaghisini
-
 ### Feature
 
 - Improvement of API requests error handling @sneridagh
@@ -17,6 +13,7 @@
 - Make label of checkboxwidget clickable @pbauer #1414
 - Show new added user in user control panel @iFlameing #1271
 - Support multi selection in roles and groups and polish add user #1372
+- Listing block: removed message 'No results found' only in view mode on public site, in editMode is still present. @giuliaghisini
 
 ### Internal
 
