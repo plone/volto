@@ -1,5 +1,15 @@
 # Change Log
 
+## 5.2.2 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
 ## 5.2.1 (2020-04-27)
 
 ### Internal
