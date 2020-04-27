@@ -153,6 +153,7 @@ msgstr "Aufsteigend"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 msgid "Back"
 msgstr "Zurück"
@@ -192,6 +193,7 @@ msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ih
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
@@ -221,11 +223,11 @@ msgstr "Passwort ändern"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change State"
-msgstr "Statusänderung"
+msgstr "Arbeitsablauf-Status ändern"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
-msgstr "Ändere Status rekursiv"
+msgstr "Arbeitlauf-Status für alle Unterobjekte ebenfalls ändern"
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -288,6 +290,10 @@ msgstr "Vergleichen"
 msgid "Confirm password"
 msgstr "Passwort bestätigen"
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "Connection refused"
+msgstr ""
+
 #: components/theme/Footer/Footer
 msgid "Contact"
 msgstr "Kontakt"
@@ -347,7 +353,7 @@ msgstr "Aktuelles Passwort"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
 msgid "Cut"
-msgstr "Schneiden"
+msgstr "Ausschneiden"
 
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Daily"
@@ -555,6 +561,8 @@ msgstr "Tragen Sie zur Überprüfung Ihre E-Mail-Adresse ein."
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Geben Sie ihr neues Passwort ein. Mindestens 5 Zeichen."
 
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1222,7 +1230,7 @@ msgstr "Durch diese Version ersetzen"
 
 #: components/manage/Contents/Contents
 msgid "Review state"
-msgstr "Status"
+msgstr "Arbeitsablauf"
 
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
@@ -1242,6 +1250,7 @@ msgid "Roles"
 msgstr "Rollen"
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1300,7 +1309,7 @@ msgstr "Kriterium wählen"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
-msgstr "Wählen Sie den Statuswechsel, der benutzt werden soll, um den Status des Artikels zu ändern."
+msgstr "Arbeitsablauf-Status für Seite wählen."
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Selected dates"
@@ -1486,6 +1495,8 @@ msgstr "Template"
 msgid "Text"
 msgstr "Text"
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+#: components/theme/CorsError/CorsError
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
@@ -1494,6 +1505,14 @@ msgstr "Vielen Dank."
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
 msgstr "Die URL Ihrer externen Homepage, sollten Sie eine besitzen."
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
+msgstr ""
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
@@ -1506,6 +1525,10 @@ msgstr "Benutzer Portrait/Avatar"
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "{plonecms} {copyright} 2000-{current_year} {plonefoundation} und Freunde."
+
+#: components/theme/CorsError/CorsError
+msgid "There is a configuration problem on the backend"
+msgstr ""
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
@@ -1668,6 +1691,14 @@ msgstr "Diese revision ansehen"
 msgid "Viewmode"
 msgstr "Ansicht"
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
+msgstr ""
+
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Entschuldigung, aber die Webseite die Sie versucht haben zu erreichen ist hier nicht verfügbar. Bitte benutzen Sie die aufgeführten Verweise um zu finden was Sie gesucht haben."
@@ -1774,7 +1805,7 @@ msgstr "Löschen"
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
-msgstr "Sie verwenden einen veralteten Browser, bitte aktualisieren Sie Ihre Browser."
+msgstr "Sie verwenden einen veralteten Browser, bitte aktualisieren Sie Ihren Browser."
 
 #: config/Blocks
 msgid "description"
@@ -1787,6 +1818,38 @@ msgstr "Aus Sicherheitsgründen speichern wir Ihr Passwort verschlüsselt und k�
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "description_sent_password"
 msgstr "Der Link, um das Passwort neu zu setzen, wurde Ihnen zugesendet. Die E-Mail sollte in Kürze in Ihrem Postfach ankommen. Wenn Sie die Nachricht erhalten haben, klicken Sie auf den Link in der E-Mail, um zu der Webseite zu gelangen, wo Sie das Passwort neu setzen können."
+
+#: components/theme/View/EventView
+msgid "event_alldates"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_attendees"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_contactname"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_contactphone"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_website"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_what"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_when"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_where"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
@@ -1848,6 +1911,10 @@ msgstr ""
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "Registrierungsformular"
+
+#: components/theme/Search/Search
+msgid "results found"
+msgstr ""
 
 #: error
 msgid "return to the site root"
@@ -2008,6 +2075,10 @@ msgstr "Nutzer Avatar"
 #: config/Blocks
 msgid "video"
 msgstr "Video"
+
+#: components/theme/View/EventView
+msgid "visit_external_website"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"

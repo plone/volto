@@ -5,7 +5,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
 import { Container } from 'semantic-ui-react';
 
 import { flattenToAppURL } from '@plone/volto/helpers';
@@ -18,7 +17,6 @@ import { flattenToAppURL } from '@plone/volto/helpers';
  */
 const FileView = ({ content }) => (
   <Container className="view-wrapper">
-    <Helmet title={content.title} />
     <h1 className="documentFirstHeading">
       {content.title}
       {content.subtitle && ` - ${content.subtitle}`}

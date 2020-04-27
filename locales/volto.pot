@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-04-27T10:38:02.403Z\n"
+"POT-Creation-Date: 2020-04-23T17:59:48.896Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -167,6 +167,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Back
 msgid "Back"
@@ -215,6 +216,7 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
@@ -330,6 +332,11 @@ msgstr ""
 #: components/theme/PasswordReset/PasswordReset
 # defaultMessage: Confirm password
 msgid "Confirm password"
+msgstr ""
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: Connection refused
+msgid "Connection refused"
 msgstr ""
 
 #: components/theme/Footer/Footer
@@ -653,6 +660,8 @@ msgstr ""
 msgid "Enter your new password. Minimum 5 characters."
 msgstr ""
 
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1499,6 +1508,7 @@ msgid "Roles"
 msgstr ""
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1798,6 +1808,8 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+#: components/theme/CorsError/CorsError
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 # defaultMessage: Thank you.
@@ -1807,6 +1819,16 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 # defaultMessage: The URL for your external home page, if you have one.
 msgid "The URL for your external home page, if you have one."
+msgstr ""
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable.
+msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+# defaultMessage: The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources.
+msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
 msgstr ""
 
 #: components/theme/Register/Register
@@ -1822,6 +1844,11 @@ msgstr ""
 #: components/theme/Footer/Footer
 # defaultMessage: The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends.
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+# defaultMessage: There is a configuration problem on the backend
+msgid "There is a configuration problem on the backend"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -2020,6 +2047,16 @@ msgstr ""
 msgid "Viewmode"
 msgstr ""
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+# defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later.
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+# defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later.
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
+msgstr ""
+
 #: components/theme/NotFound/NotFound
 # defaultMessage: We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for.
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
@@ -2170,6 +2207,46 @@ msgstr ""
 msgid "description_sent_password"
 msgstr ""
 
+#: components/theme/View/EventView
+# defaultMessage: All dates
+msgid "event_alldates"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Attendees
+msgid "event_attendees"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Contact Name
+msgid "event_contactname"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Contact Phone
+msgid "event_contactphone"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Website
+msgid "event_website"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: What
+msgid "event_what"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: When
+msgid "event_when"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Where
+msgid "event_where"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: Password reset confirmation sent
 msgid "heading_sent_password"
@@ -2244,6 +2321,11 @@ msgstr ""
 #: components/theme/Login/Login
 # defaultMessage: registration form
 msgid "registration form"
+msgstr ""
+
+#: components/theme/Search/Search
+# defaultMessage: results
+msgid "results found"
 msgstr ""
 
 #: error
@@ -2444,6 +2526,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Video
 msgid "video"
+msgstr ""
+
+#: components/theme/View/EventView
+# defaultMessage: Visit external website
+msgid "visit_external_website"
 msgstr ""
 
 #: components/theme/Login/Login

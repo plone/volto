@@ -11,6 +11,9 @@ import Raven from 'raven';
 import cookie, { plugToRequest } from 'react-cookie';
 import locale from 'locale';
 import { detect } from 'detect-browser';
+import path from 'path';
+import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
+import { createProxyMiddleware } from 'http-proxy-middleware';
 
 import routes from '~/routes';
 import { settings } from '~/config';
@@ -36,16 +39,31 @@ let locales = {};
 if (settings) {
   settings.supportedLanguages.forEach(lang => {
     import('~/../locales/' + lang + '.json').then(locale => {
-      locales = { ...locales, [lang]: locale };
+      locales = { ...locales, [lang]: locale.default };
     });
   });
 }
 
-const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
-
 const supported = new locale.Locales(keys(languages), 'en');
 
 const server = express();
+// Internal proxy to bypass CORS while developing.
+if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
+  const apiPathURL = parseUrl(settings.apiPath);
+  const proxyURL = parseUrl(settings.devProxyToApiPath);
+  const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
+  const instancePath = proxyURL.pathname;
+  server.use(
+    '/api',
+    createProxyMiddleware({
+      target: serverURL,
+      pathRewrite: {
+        '^/api': `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
+      },
+      logLevel: 'silent',
+    }),
+  );
+}
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
@@ -59,7 +77,9 @@ server
     const browserdetect = detect(req.headers['user-agent']);
 
     const lang = new locale.Locales(
-      cookie.load('lang') || req.headers['accept-language'],
+      cookie.load('lang') ||
+        settings.defaultLanguage ||
+        req.headers['accept-language'],
     )
       .best(supported)
       .toString();
@@ -78,6 +98,12 @@ server
     };
     const history = createMemoryHistory({
       initialEntries: [req.url],
+    });
+
+    // @loadable/server extractor
+    const extractor = new ChunkExtractor({
+      statsFile: path.resolve('build/loadable-stats.json'),
+      entrypoints: ['client'],
     });
 
     // Create a new Redux store instance
@@ -111,11 +137,13 @@ server
         .then(() => {
           const context = {};
           const markup = renderToString(
-            <Provider store={store}>
-              <StaticRouter context={context} location={req.url}>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
-              </StaticRouter>
-            </Provider>,
+            <ChunkExtractorManager extractor={extractor}>
+              <Provider store={store}>
+                <StaticRouter context={context} location={req.url}>
+                  <ReduxAsyncConnect routes={routes} helpers={api} />
+                </StaticRouter>
+              </Provider>
+            </ChunkExtractorManager>,
           );
 
           if (context.url) {
@@ -124,7 +152,7 @@ server
             res.status(200).send(
               `<!doctype html>
                 ${renderToString(
-                  <Html assets={assets} markup={markup} store={store} />,
+                  <Html extractor={extractor} markup={markup} store={store} />,
                 )}
               `,
             );
@@ -156,4 +184,6 @@ server
     }
   });
 
+server.apiPath = settings.apiPath;
+server.devProxyToApiPath = settings.devProxyToApiPath;
 export default server;

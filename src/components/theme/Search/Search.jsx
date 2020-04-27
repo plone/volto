@@ -7,17 +7,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { asyncConnect } from 'redux-connect';
 import { FormattedMessage } from 'react-intl';
 import { Portal } from 'react-portal';
-import { Container } from 'semantic-ui-react';
+import { Container, Pagination } from 'semantic-ui-react';
 import qs from 'query-string';
 
+import { settings } from '~/config';
+import { Helmet } from '@plone/volto/helpers';
 import { searchContent } from '@plone/volto/actions';
+import { SearchTags, Toolbar, Icon } from '@plone/volto/components';
 
-import { SearchTags, Toolbar } from '@plone/volto/components';
+import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
+import paginationRightSVG from '@plone/volto/icons/right-key.svg';
 
 const toSearchOptions = (searchableText, subject, path) => {
   return {
@@ -70,6 +73,11 @@ class Search extends Component {
     path: null,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = { currentPage: 1 };
+  }
+
   /**
    * Component will mount
    * @method componentWillMount
@@ -112,10 +120,27 @@ class Search extends Component {
    */
 
   doSearch = (searchableText, subject, path) => {
+    this.setState({ currentPage: 1 });
     this.props.searchContent(
       '',
       toSearchOptions(searchableText, subject, path),
     );
+  };
+
+  handleQueryPaginationChange = (e, { activePage }) => {
+    window.scrollTo(0, 0);
+    this.setState({ currentPage: activePage }, () => {
+      const options = toSearchOptions(
+        qs.parse(this.props.location.search).SearchableText,
+        qs.parse(this.props.location.search).Subject,
+        qs.parse(this.props.location.search).path,
+      );
+
+      this.props.searchContent('', {
+        ...options,
+        b_start: (this.state.currentPage - 1) * settings.defaultPageSize,
+      });
+    });
   };
 
   /**
@@ -146,7 +171,18 @@ class Search extends Component {
                   />
                 )}
               </h1>
+
               <SearchTags />
+
+              {this.props.search?.items_total && (
+                <div className="items_total">
+                  {this.props.search.items_total}{' '}
+                  <FormattedMessage
+                    id="results found"
+                    defaultMessage="results"
+                  />
+                </div>
+              )}
             </header>
             <section id="content-core">
               {this.props.items.map(item => (
@@ -176,6 +212,36 @@ class Search extends Component {
                   <div className="visualClear" />
                 </article>
               ))}
+
+              {this.props.search?.batching && (
+                <div className="search-footer">
+                  <Pagination
+                    activePage={this.state.currentPage}
+                    totalPages={Math.ceil(
+                      this.props.search.items_total / settings.defaultPageSize,
+                    )}
+                    onPageChange={this.handleQueryPaginationChange}
+                    firstItem={null}
+                    lastItem={null}
+                    prevItem={{
+                      content: <Icon name={paginationLeftSVG} size="18px" />,
+                      icon: true,
+                      'aria-disabled': !this.props.search.batching.prev,
+                      className: !this.props.search.batching.prev
+                        ? 'disabled'
+                        : null,
+                    }}
+                    nextItem={{
+                      content: <Icon name={paginationRightSVG} size="18px" />,
+                      icon: true,
+                      'aria-disabled': !this.props.search.batching.next,
+                      className: !this.props.search.batching.next
+                        ? 'disabled'
+                        : null,
+                    }}
+                  />
+                </div>
+              )}
             </section>
           </article>
         </div>

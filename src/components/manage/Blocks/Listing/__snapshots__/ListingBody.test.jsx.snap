@@ -1,9 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a ListingBody component 1`] = `
-<div
-  className="listing message"
->
-  No results found.
-</div>
-`;
+exports[`renders a ListingBody component 1`] = `null`;

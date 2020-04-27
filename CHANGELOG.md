@@ -1,8 +1,120 @@
 # Change Log
 
-## 4.4.1 (unreleased)
+## 5.2.2 (unreleased)
 
 ### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 5.2.1 (2020-04-27)
+
+### Internal
+
+- Remove console log in workflow asyncConnect :( @sneridagh
+
+## 5.2.0 (2020-04-27)
+
+### Feature
+
+- Improvement of API requests error handling @sneridagh
+- Unauthorized on folder contents if no proper credentials @sneridagh
+
+### Bugfix
+
+- Improve German translations for folder contents view @timo
+- Make label of checkboxwidget clickable @pbauer #1414
+- Show new added user in user control panel @iFlameing #1271
+- Support multi selection in roles and groups and polish add user #1372
+- Listing block: removed message 'No results found' only in view mode on public site, in editMode is still present. @giuliaghisini
+
+### Internal
+
+- Add crossorigin to the preload resources tags while in development @sneridagh
+- Permissions in contents and Edit @sneridagh
+- Fix the error on content Edit no credentials now shows `Unauthorized` @sneridagh
+- Improve console server output showing info @sneridagh
+
+## 5.1.0 (2020-04-23)
+
+### Breaking
+
+### Feature
+
+- Full screen right sidebar @rexalex #1345
+- Enable internal API proxy for not to rely on CORS on development @sneridagh
+- Added Print CSS @iFlameing #1289
+- Added error handling for Add and Edit forms #1392 @nzambello
+
+### Bugfix
+
+- Japanese translation @terapyon
+- Fix `ArrayWidget` to support multiselect schema `schema.List`/`schema.Set`-> `schema.Choice` hardcoded (not using vocabularies) combination @sneridagh
+- Remove Back button from control panels, since it's redundant @sneridagh
+- Show past dates in date time widget calendar @nzambello
+
+### Internal
+
+- Translated labels in Eventi View @nzambello
+- Improve i18n script, so shadowed components are not overriding their original translations. For the record, any override of i18n messages, should be done somewhere else (eg. config object) @sneridagh
+
+## 5.0.1 (2020-04-16)
+
+### Bugfix
+
+- Show new added user in user control panel @iFlameing #1271
+- Fixes for contact form @nzambello
+
+## 5.0.0 (2020-04-12)
+
+### Breaking
+
+- Added basic lazy loading dependencies and boilerplate @sneridagh
+- Change component to where page title is set to `View.jsx`, remove all `Helmet` calls from inner views @jackahl
+
+### Feature
+
+- Added date time widget @nzambello
+- Add meta description tags and meta generator @sneridagh
+- Add lang property in `html` tag depending on the site/content language @sneridagh
+- Add `App.jsx` component insertion point @sneridagh
+- Lazy load `EventView.jsx`, splitting out all its big dependencies (Luxon) along with it @sneridagh
+- Lazy load `pretty` library, used in the HTML block @sneridagh
+- Lazy load `Raven` library @sneridagh
+- Lazy load `React Select` library @sneridagh
+
+### Bugfix
+
+- Show save/cancel on control panels @avoinea #850
+- Fix listing "show more" link rendering conditions @nzambello
+
+### Internal
+
+- Make Jest only looks up in `src` folder @sneridagh
+- Re-arrange `components/index.js` @sneridagh
+- Added a patch for Razzle Jest config generator to include `modulePathIgnorePatterns` option @sneridagh
+- Fix Travis random no sound card found error @sneridagh
+- docs: add release documentation @tisto
+
+## 4.6.0 (2020-04-06)
+
+### Feature
+
+- pagination on site search results @giuliaghisini
+
+### Bugfix
+
+- Fix use case for non-multilingual setups and on projects on lang loading @sneridagh
+
+### Internal
+
+- Typo in German translations @steffenri
+- Complete more Italian translations @nzambello
+
+## 4.5.0 (2020-04-06)
 
 ### Feature
 
@@ -10,15 +122,19 @@
 
 ### Bugfix
 
+- Fix ArrayWidget to support static supermodel vocabulary @datakurre
+- Bring back the OutdatedBrowser component, it got removed in a bad merge :( @sneridagh
+
 ### Internal
 
-- Improve the i18n script, only write the pot file if it's really different
+- Improve the i18n script, only write the pot file if it's really different @sneridagh
 
 ## 4.4.0 (2020-04-03)
 
 ### Feature
 
 - /contents (folder content view) is sortable @ksuess
+- Updated the (folder content icons to Pastanaga Icons) @iFlameing
 
 ### Bugfix
 
@@ -45,6 +161,7 @@
 ### Bugfix
 
 - Fix typo for Japanese translation @terapyon
+- Fix refresh of the `Breadcrumbs` and `Navigation` components on calling `/login` and `/logout` @sneridagh
 - Fix refresh of the `Navigation` component on calling `/login` and `/logout` @sneridagh
 - Adjust implementation of the download link behavior for files @sneridagh
 - Fix Maps block to use maps-inner instead of video-inner class @timo
@@ -56,6 +173,7 @@
 - Improve Cypress Video Block tests @sneridagh @timo
 - Run `yarn i18n` on any JSX change @sneridagh
 - Add link mailto Cypress test @timo
+- Added design guidelines manifesto @sneridagh
 
 ## 4.1.1 (2020-03-18)
 

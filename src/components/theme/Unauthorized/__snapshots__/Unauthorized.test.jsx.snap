@@ -7,12 +7,15 @@ exports[`Unauthorized renders a not found component 1`] = `
   <h1>
     Unauthorized
   </h1>
+  <h3>
+    You are not authorized to access this resource
+  </h3>
   <p
     className="description"
   >
     You are trying to access a protected resource, please 
     <a
-      href="/undefined/login"
+      href="//login"
       onClick={[Function]}
     >
       log in

@@ -146,6 +146,7 @@ msgstr "Ascendente"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 msgid "Back"
 msgstr "Voltar"
@@ -185,6 +186,7 @@ msgstr "Por predefinição, as permissões do contentor deste item são herdadas
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
@@ -280,6 +282,10 @@ msgstr "Comparar"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Confirm password"
 msgstr "Confirmar senha"
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "Connection refused"
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "Contact"
@@ -548,6 +554,8 @@ msgstr "Escreva o seu endereço de email para verificação."
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Escreva uma senha nova. Mínimo de 5 caracteres."
 
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1235,6 +1243,7 @@ msgid "Roles"
 msgstr "Papéis"
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1479,6 +1488,8 @@ msgstr ""
 msgid "Text"
 msgstr "Texto"
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+#: components/theme/CorsError/CorsError
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
@@ -1487,6 +1498,14 @@ msgstr "Obrigado."
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
 msgstr "O URL da sua página inicial externa, se tiver uma."
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
+msgstr ""
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
@@ -1499,6 +1518,10 @@ msgstr "Retrato/avatar do utilizador"
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "O {plonecms} tem {copyright} de 2000-{current_year} pela {plonefoundation} e amigos."
+
+#: components/theme/CorsError/CorsError
+msgid "There is a configuration problem on the backend"
+msgstr ""
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
@@ -1661,6 +1684,14 @@ msgstr "Ver esta revisão"
 msgid "Viewmode"
 msgstr "Modo de visualização"
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
+msgstr ""
+
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Pedimos desculpa pela inconveniência, mas a página a que está a tentar aceder não está neste endereço. Pode usar as ligações abaixo para ajudar a encontrar o que procura."
@@ -1781,6 +1812,38 @@ msgstr "descrição_senha_perdida"
 msgid "description_sent_password"
 msgstr "descrição_senha_enviada"
 
+#: components/theme/View/EventView
+msgid "event_alldates"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_attendees"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_contactname"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_contactphone"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_website"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_what"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_when"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_where"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
 msgstr "título_senha_enviada"
@@ -1841,6 +1904,10 @@ msgstr ""
 #: components/theme/Login/Login
 msgid "registration form"
 msgstr "formulário de registo"
+
+#: components/theme/Search/Search
+msgid "results found"
+msgstr ""
 
 #: error
 msgid "return to the site root"
@@ -2001,6 +2068,10 @@ msgstr "avatar do utilizador"
 #: config/Blocks
 msgid "video"
 msgstr "vídeo"
+
+#: components/theme/View/EventView
+msgid "visit_external_website"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"
