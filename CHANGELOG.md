@@ -2,12 +2,6 @@
 
 ## 5.2.1 (unreleased)
 
-### Breaking
-
-### Feature
-
-### Bugfix
-
 ### Internal
 
 - Remove console log in workflow asyncConnect :( @sneridagh
