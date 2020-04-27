@@ -4,6 +4,8 @@
 
 ### Breaking
 
+- Listing block: removed message 'No results found' only in view mode on public site, in editMode is still present. @giuliaghisini
+
 ### Feature
 
 - /sitemap to view sitemap based on @navigation with depth 4 @giuliaghisini
