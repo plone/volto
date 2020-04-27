@@ -22,6 +22,7 @@
 
 - Improvement of API requests error handling @sneridagh
 - Unauthorized on folder contents if no proper credentials @sneridagh
+- Adding Image Gallery template in Listing view @iFlameing
 
 ### Bugfix
 
