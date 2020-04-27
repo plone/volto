@@ -107,7 +107,7 @@ class Controlpanels extends Component {
     return (
       <div className="view-wrapper">
         <Helmet title={this.props.intl.formatMessage(messages.sitesetup)} />
-        <Container>
+        <Container className="controlpanel">
           <Segment.Group raised>
             <Segment className="primary">
               <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />

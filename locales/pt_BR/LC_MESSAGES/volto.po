@@ -51,6 +51,10 @@ msgstr "Adicionar"
 msgid "Add Content"
 msgstr "Adicionar conteúdo"
 
+#: components/manage/Toolbar/Types
+msgid "Add Translation..."
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
 msgstr "Adicionar usuário"
@@ -212,6 +216,10 @@ msgstr "Alterar senha"
 msgid "Change State"
 msgstr "Alterar estado"
 
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change workflow state recursively"
+msgstr ""
+
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
@@ -249,6 +257,10 @@ msgstr "Fechar"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Fechar menu"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Collection"
+msgstr ""
 
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
@@ -303,6 +315,14 @@ msgstr "Copyright"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
 msgstr "Declaração de copyright ou outras informações de direitos sobre este item."
+
+#: components/manage/Contents/Contents
+msgid "Created on"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Creator"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
@@ -493,6 +513,10 @@ msgstr ""
 msgid "Embeded Google Maps"
 msgstr ""
 
+#: components/manage/Contents/Contents
+msgid "End Date"
+msgstr ""
+
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
 msgstr "Escreva URL ou título"
@@ -535,6 +559,14 @@ msgstr "Erro"
 msgid "Exclude from navigation"
 msgstr "Excluir da navegação"
 
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Exclude this occurence"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Excluded from navigation"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "Expandir barra lateral"
@@ -543,10 +575,18 @@ msgstr "Expandir barra lateral"
 msgid "Expiration Date"
 msgstr "Data de vencimento"
 
+#: components/manage/Contents/Contents
+msgid "Expiration date"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
 msgstr "URL externo"
+
+#: components/manage/Toolbar/Toolbar
+msgid "File"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
@@ -567,6 +607,10 @@ msgstr ""
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
 msgstr "Células de tabela de tamanho fixo."
+
+#: components/manage/Contents/Contents
+msgid "Folder"
+msgstr ""
 
 #: components/theme/Forbidden/Forbidden
 msgid "Forbidden"
@@ -641,6 +685,10 @@ msgstr "Início"
 msgid "Home page"
 msgstr "Página inicial"
 
+#: components/manage/Contents/Contents
+msgid "ID"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If selected, this item will not appear in the navigation tree"
 msgstr "Se este item estiver seleccionado, não irá aparecer na árvore de navegação"
@@ -666,6 +714,10 @@ msgstr "Se não tem uma conta aqui, dirija-se a {registrationform}."
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "Imagem"
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "Include this occurence"
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
@@ -741,6 +793,10 @@ msgstr "Idioma"
 msgid "Last"
 msgstr ""
 
+#: components/manage/Contents/Contents
+msgid "Last comment date"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Última modificação"
@@ -753,6 +809,10 @@ msgstr ""
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
 msgstr "Esquerda"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Link"
+msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Link more"
@@ -870,6 +930,14 @@ msgstr ""
 msgid "New password"
 msgstr "Nova senha"
 
+#: components/manage/Toolbar/Toolbar
+msgid "News Item"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "No"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
 msgstr "Nenhuma imagem seleccionada"
@@ -888,6 +956,10 @@ msgstr ""
 
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "No occurences set"
 msgstr ""
 
 #: components/manage/Blocks/Listing/ListingBody
@@ -914,8 +986,13 @@ msgid "No workflow"
 msgstr "Sem fluxo de trabalho"
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
 msgid "None"
 msgstr "Nenhum"
+
+#: components/manage/Contents/Contents
+msgid "Object Size"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Occurences"
@@ -940,6 +1017,10 @@ msgstr "Abrir menu"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
 msgstr "Origem"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Page"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
@@ -1028,6 +1109,10 @@ msgstr "Perfil"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Properties"
 msgstr "Propriedades"
+
+#: components/manage/Contents/Contents
+msgid "Publication date"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Publishing Date"
@@ -1128,6 +1213,10 @@ msgstr ""
 msgid "Revert to this revision"
 msgstr "Reverter para esta revisão"
 
+#: components/manage/Contents/Contents
+msgid "Review state"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
 msgstr "Richtext"
@@ -1215,6 +1304,7 @@ msgid "Selection"
 msgstr "Selecção"
 
 #: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
 msgid "Select…"
 msgstr "Seleccionar..."
 
@@ -1231,6 +1321,7 @@ msgid "Set your password"
 msgstr "Defina a sua senha"
 
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/More
 msgid "Sharing"
 msgstr "Partilha"
 
@@ -1251,6 +1342,10 @@ msgstr "Nome Curto"
 #: components/manage/Contents/ContentsRenameModal
 msgid "Short name"
 msgstr "Nome curto"
+
+#: components/theme/Pagination/Pagination
+msgid "Show"
+msgstr ""
 
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
@@ -1282,6 +1377,10 @@ msgstr "Mapa do Sítio"
 msgid "Site Setup"
 msgstr "Configuração do Sítio"
 
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr ""
+
 #: components/theme/View/ImageView
 msgid "Size: {size}"
 msgstr ""
@@ -1306,6 +1405,10 @@ msgstr "Especifique um vídeo youtube ou um URL de um repertório (playlist)"
 #: components/manage/Diff/Diff
 msgid "Split"
 msgstr "Dividir"
+
+#: components/manage/Contents/Contents
+msgid "Start Date"
+msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Start of the recurrence"
@@ -1429,6 +1532,14 @@ msgstr "Esta página não parece existir..."
 msgid "Title"
 msgstr "Título"
 
+#: components/manage/Contents/Contents
+msgid "Total comments"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+msgid "Translate to {lang}"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 msgid "Type"
@@ -1445,6 +1556,10 @@ msgstr "Escreva texto..."
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr "Escreva o título..."
+
+#: components/manage/Contents/Contents
+msgid "UID"
+msgstr ""
 
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
@@ -1594,6 +1709,10 @@ msgstr "Fluxo de trabalho actualizado."
 msgid "Yearly"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+msgid "Yes"
+msgstr ""
+
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr ""
@@ -1713,6 +1832,10 @@ msgstr ""
 
 #: error
 msgid "or try a different page."
+msgstr ""
+
+#: components/manage/Widgets/RecurrenceWidget/Occurences
+msgid "others"
 msgstr ""
 
 #: components/theme/Login/Login
@@ -1849,6 +1972,10 @@ msgstr ""
 
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "sort"
 msgstr ""
 
 #: config/Blocks

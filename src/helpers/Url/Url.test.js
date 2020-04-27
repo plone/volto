@@ -1,6 +1,12 @@
 import { settings } from '~/config';
 
-import { flattenToAppURL, getBaseUrl, getIcon, getView } from './Url';
+import {
+  flattenToAppURL,
+  flattenHTMLToAppURL,
+  getBaseUrl,
+  getIcon,
+  getView,
+} from './Url';
 
 describe('Url', () => {
   describe('getBaseUrl', () => {
@@ -80,6 +86,14 @@ describe('Url', () => {
   describe('flattenToAppURL', () => {
     it('flattens a given URL to the app URL', () => {
       expect(flattenToAppURL(`${settings.apiPath}/edit`)).toBe('/edit');
+    });
+  });
+  describe('flattenHTMLToAppURL', () => {
+    it('flattens all occurences of the api URL from an html snippet', () => {
+      const html = `<a href="${settings.apiPath}/foo/bar">An internal link</a><a href="${settings.apiPath}/foo/baz">second link</a>`;
+      expect(flattenHTMLToAppURL(html)).toBe(
+        '<a href="/foo/bar">An internal link</a><a href="/foo/baz">second link</a>',
+      );
     });
   });
 });

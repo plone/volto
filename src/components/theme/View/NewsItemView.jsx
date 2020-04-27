@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { Container, Image } from 'semantic-ui-react';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL, flattenHTMLToAppURL } from '@plone/volto/helpers';
 
 /**
  * NewsItemView view component class.
@@ -42,7 +42,11 @@ const NewsItemView = ({ content }) => (
       />
     )}
     {content.text && (
-      <div dangerouslySetInnerHTML={{ __html: content.text.data }} />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: flattenHTMLToAppURL(content.text.data),
+        }}
+      />
     )}
   </Container>
 );

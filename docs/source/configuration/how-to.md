@@ -1,11 +1,6 @@
-!!! note
-    Under construction ;) sorry for the inconvenience. Please consider to
-    contribute to this documentation.
-
-
 # The configuration object
 
-Volto has a central configuration object used to parameterize Volto. It lives in Volto itself but can be customized in a per project basis.
+Volto has a central configuration object used to parameterize Volto. It lives in Volto itself but it can be customized in a per project basis.
 
 You can find it in Volto in the `src/config` module.
 
@@ -37,3 +32,6 @@ export const blocks = {
 ```
 
 It gets the default config from Volto and leave it available to you to customize it in your project.
+
+!!! note
+    This documentation is a work in progress. Please consider to contribute to this documentation.

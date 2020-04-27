@@ -60,8 +60,9 @@ const getList = ordered => (children, { depth, keys }) =>
 );
 */
 
-const getAtomic = (children, { data, keys }) =>
-  data.map((item, i) => <div key={keys[i]} {...data[i]} />);
+// Original recommended way to deal with atomics, this does not work with IMAGE
+// const getAtomic = (children, { data, keys }) =>
+//   data.map((item, i) => <div key={keys[i]} {...data[i]} />);
 
 /**
  * Note that children can be maped to render a list or do other cool stuff
@@ -93,7 +94,7 @@ const blocks = {
       (chunk, index) => chunk && <p key={keys[index]}>{chunk}</p>,
     );
   },
-  atomic: getAtomic,
+  atomic: children => children[0],
   blockquote: (children, { keys }) => (
     <blockquote key={keys[0]}>{addBreaklines(children)}</blockquote>
   ),
@@ -146,8 +147,8 @@ const blocks = {
 
 const LinkEntity = connect(state => ({
   token: state.userSession.token,
-}))(({ token, key, url, target, download, children }) => {
-  const to = token ? url : target || url;
+}))(({ token, key, url, target, targetUrl, download, children }) => {
+  const to = token ? url : targetUrl || url;
   if (download) {
     return token ? (
       <Link key={key} to={flattenToAppURL(to)}>
@@ -164,7 +165,7 @@ const LinkEntity = connect(state => ({
       {children}
     </Link>
   ) : (
-    <a key={key} href={to} target="_blank" rel="noopener noreferrer">
+    <a key={key} href={to} target={target} rel="noopener noreferrer">
       {children}
     </a>
   );

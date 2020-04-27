@@ -51,7 +51,7 @@ const DefaultView = ({ content, intl, location }) => {
             id={block}
             properties={content}
             data={content[blocksFieldname][block]}
-            path={getBaseUrl(location.pathname)}
+            path={getBaseUrl(location?.pathname || '')}
           />
         ) : (
           <div key={block}>

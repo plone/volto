@@ -4,15 +4,23 @@
  */
 
 export default {
-  sortable_title: { label: 'Title', type: 'string' },
-  ModificationDate: { label: 'Last modified', type: 'date' },
-  EffectiveDate: { label: 'Publication date', type: 'date' },
+  sortable_title: { label: 'Title', type: 'string', sort_on: 'sortable_title' },
+  ModificationDate: {
+    label: 'Last modified',
+    type: 'date',
+    sort_on: 'modified',
+  },
+  EffectiveDate: {
+    label: 'Publication date',
+    type: 'date',
+    sort_on: 'effective',
+  },
   review_state: { label: 'Review state', type: 'string' },
-  id: { label: 'ID', type: 'string' },
+  id: { label: 'ID', type: 'string', sort_on: 'id' },
   ExpirationDate: { label: 'Expiration date', type: 'date' },
-  CreationDate: { label: 'Created on', type: 'date' },
+  CreationDate: { label: 'Created on', type: 'date', sort_on: 'created' },
   Subject: { label: 'Tags', type: 'array' },
-  portal_type: { label: 'Type', type: 'string' },
+  portal_type: { label: 'Type', type: 'string', sort_on: 'portal_type' },
   is_folderish: { label: 'Folder', type: 'boolean' },
   exclude_from_nav: { label: 'Excluded from navigation', type: 'boolean' },
   getObjSize: { label: 'Object Size', type: 'string' },

@@ -23,11 +23,19 @@ Cypress.Commands.add('autologin', () => {
 Cypress.Commands.add(
   'createContent',
   (contentType, contentId, contentTitle, path = '') => {
-    let api_url;
+    let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
       api_url = 'http://localhost:8081/db/container';
+      auth = {
+        user: 'root',
+        pass: 'root',
+      };
     } else {
       api_url = 'http://localhost:55001/plone';
+      auth = {
+        user: 'admin',
+        pass: 'secret',
+      };
     }
     if (contentType === 'File') {
       cy.request({
@@ -36,10 +44,7 @@ Cypress.Commands.add(
         headers: {
           Accept: 'application/json',
         },
-        auth: {
-          user: 'admin',
-          pass: 'secret',
-        },
+        auth: auth,
         body: {
           '@type': contentType,
           id: contentId,
@@ -60,10 +65,7 @@ Cypress.Commands.add(
         headers: {
           Accept: 'application/json',
         },
-        auth: {
-          user: 'admin',
-          pass: 'secret',
-        },
+        auth: auth,
         body: {
           '@type': contentType,
           id: contentId,
@@ -78,17 +80,16 @@ Cypress.Commands.add(
         },
       });
     }
-    if (contentType === 'Document' || contentType === 'News Item') {
+    if (
+      ['Document', 'Folder', 'News Item', 'CMSFolder'].includes(contentType)
+    ) {
       cy.request({
         method: 'POST',
         url: `${api_url}/${path}`,
         headers: {
           Accept: 'application/json',
         },
-        auth: {
-          user: 'admin',
-          pass: 'secret',
-        },
+        auth: auth,
         body: {
           '@type': contentType,
           id: contentId,
@@ -104,7 +105,7 @@ Cypress.Commands.add(
             ],
           },
         },
-      });
+      }).then(() => console.log(`${contentType} created`));
     }
   },
 );

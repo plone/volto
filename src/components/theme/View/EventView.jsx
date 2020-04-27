@@ -5,7 +5,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import { Helmet, flattenHTMLToAppURL } from '@plone/volto/helpers';
 import { Container, Image, Segment, Header, List } from 'semantic-ui-react';
 
 import {
@@ -112,7 +112,11 @@ const EventView = ({ content }) => (
       )}
     </Segment>
     {content.text && (
-      <div dangerouslySetInnerHTML={{ __html: content.text.data }} />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: flattenHTMLToAppURL(content.text.data),
+        }}
+      />
     )}
   </Container>
 );

@@ -49,6 +49,10 @@ export const settings = {
   listingPreviewImageField: 'image',
   customStyleMap: null,
   notSupportedBrowsers: ['ie'],
+  defaultPageSize: 25,
+  isMultilingual: false,
+  supportedLanguages: ['en'],
+  defaultLanguage: 'en',
 };
 
 export const widgets = {

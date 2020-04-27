@@ -13,6 +13,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { getQuerystring } from '@plone/volto/actions';
 import Select, { components } from 'react-select';
 import { Icon } from '@plone/volto/components';
+import { format, parse } from 'date-fns';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
@@ -199,7 +200,11 @@ class QuerystringWidget extends Component {
       case 'DateWidget':
         return (
           <Form.Field style={{ flex: '1 0 auto' }}>
-            <Input type="date" {...props} />
+            <Input
+              type="date"
+              {...props}
+              value={format(parse(row.v), 'YYYY-MM-DD')}
+            />
           </Form.Field>
         );
       case 'DateRangeWidget': // 2 date inputs
@@ -209,7 +214,7 @@ class QuerystringWidget extends Component {
               <Input
                 type="date"
                 {...props}
-                value={row.v[0]}
+                value={format(parse(row.v[0]), 'YYYY-MM-DD')}
                 onChange={data =>
                   this.onChangeValue(index, [data.target.value, row.v[1]])
                 }
@@ -219,7 +224,7 @@ class QuerystringWidget extends Component {
               <Input
                 type="date"
                 {...props}
-                value={row.v[1]}
+                value={format(parse(row.v[1]), 'YYYY-MM-DD')}
                 onChange={data =>
                   this.onChangeValue(index, [row.v[0], data.target.value])
                 }
