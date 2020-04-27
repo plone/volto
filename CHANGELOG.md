@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Remove console log in workflow asyncaction :( @sneridagh
+
 ## 5.2.0 (2020-04-27)
 
 ### Feature
