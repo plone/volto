@@ -21,7 +21,7 @@ import {
   Input,
 } from 'semantic-ui-react';
 
-import { SelectWidget, Icon } from '@plone/volto/components';
+import { SelectWidget, Icon, DatetimeWidget } from '@plone/volto/components';
 import saveSVG from '@plone/volto/icons/save.svg';
 import editingSVG from '@plone/volto/icons/editing.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
@@ -174,8 +174,6 @@ class RecurrenceWidget extends Component {
     super(props);
     moment.locale(this.props.intl.locale);
 
-    console.log(this.props.value, props.formData.start);
-
     let rruleSet = this.props.value
       ? rrulestr(props.value, {
           compatible: true, //If set to True, the parser will operate in RFC-compatible mode. Right now it means that unfold will be turned on, and if a DTSTART is found, it will be considered the first recurrence instance, as documented in the RFC.
@@ -197,7 +195,6 @@ class RecurrenceWidget extends Component {
   }
 
   componentDidMount() {
-    console.log('didmount');
     this.setRecurrenceStartEnd();
   }
 
@@ -891,25 +888,17 @@ class RecurrenceWidget extends Component {
                         />
                       </Segment>
                       <Segment>
-                        <Header as="h2">
-                          {intl.formatMessage(messages.add_date)}
-                        </Header>
-                        <Form.Field inline>
-                          <Input
-                            id="addDate"
-                            type="date"
-                            name="addDate"
-                            min={moment(rruleSet.rrules()[0].dtstart)
-                              .add(1, 'd')
-                              .utc()
-                              .format('YYYY-MM-DD')}
-                            onChange={({ target }) => {
-                              this.addDate(
-                                target.value === '' ? undefined : target.value,
-                              );
-                            }}
-                          />
-                        </Form.Field>
+                        <DatetimeWidget
+                          id="addDate"
+                          title={
+                            <h2>{intl.formatMessage(messages.add_date)}</h2>
+                          }
+                          dateOnly={true}
+                          noPastDates={true}
+                          onChange={(id, value) => {
+                            this.addDate(value === '' ? undefined : value);
+                          }}
+                        />
                       </Segment>
                     </Modal.Description>
                   )}

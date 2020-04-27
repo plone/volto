@@ -7,6 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Form, Grid, Input, Radio } from 'semantic-ui-react';
+import DatetimeWidget from '../DatetimeWidget';
 
 const messages = defineMessages({
   recurrenceEnds: { id: 'Recurrence ends', defaultMessage: 'Ends' },
@@ -73,20 +74,15 @@ const EndField = ({ value, count, until, onChange, intl }) => {
                   onChange={(e, { value }) => onChange('recurrenceEnds', value)}
                 />
               </Form.Field>
+
               <Form.Field disabled={value !== 'until'}>
-                {intl.formatMessage(messages.recurrenceEndsUntil)}
-              </Form.Field>
-              <Form.Field disabled={value !== 'until'}>
-                <Input
+                <DatetimeWidget
                   id="until"
-                  type="date"
-                  name="until"
+                  title={intl.formatMessage(messages.recurrenceEndsUntil)}
+                  dateOnly={true}
                   value={until || ''}
-                  onChange={({ target }) => {
-                    onChange(
-                      target.id,
-                      target.value === '' ? undefined : target.value,
-                    );
+                  onChange={(id, value) => {
+                    onChange(id, value === '' ? undefined : value);
                   }}
                 />
               </Form.Field>
