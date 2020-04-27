@@ -9,7 +9,11 @@ import SummaryView from '@plone/volto/components/theme/View/SummaryView';
 import TabularView from '@plone/volto/components/theme/View/TabularView';
 import LinkView from '@plone/volto/components/theme/View/LinkView';
 import NotFoundView from '@plone/volto/components/theme/NotFound/NotFound';
+import ConnectionRefused from '@plone/volto/components/theme/ConnectionRefused/ConnectionRefused';
+import CorsError from '@plone/volto/components/theme/CorsError/CorsError';
 import AlbumView from '@plone/volto/components/theme/View/AlbumView';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
+import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
 
 const EventView = loadable(() =>
   import('@plone/volto/components/theme/View/EventView'),
@@ -37,4 +41,8 @@ export const defaultView = DefaultView;
 
 export const errorViews = {
   '404': NotFoundView,
+  '401': Unauthorized,
+  '403': Forbidden,
+  ECONNREFUSED: ConnectionRefused,
+  corsError: CorsError,
 };

@@ -60,6 +60,7 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
       pathRewrite: {
         '^/api': `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
       },
+      logLevel: 'silent',
     }),
   );
 }
@@ -183,4 +184,6 @@ server
     }
   });
 
+server.apiPath = settings.apiPath;
+server.devProxyToApiPath = settings.devProxyToApiPath;
 export default server;

@@ -2,28 +2,30 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { MemoryRouter } from 'react-router-dom';
 
-import Unauthorized from './Unauthorized';
+import CorsError from './CorsError';
+
+jest.mock('~/config', () => ({
+  settings: {
+    apiPath: 'http://localhost:8080/Plone',
+  },
+}));
 
 const mockStore = configureStore();
 
-describe('Unauthorized', () => {
+global.__DEVELOPMENT__ = true;
+
+describe('CorsError', () => {
   it('renders a not found component', () => {
     const store = mockStore({
       intl: {
         locale: 'en',
         messages: {},
       },
-      apierror: {
-        message: 'You are not authorized to access this resource',
-      },
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
-          <Unauthorized />
-        </MemoryRouter>
+        <CorsError />
       </Provider>,
     );
     const json = component.toJSON();

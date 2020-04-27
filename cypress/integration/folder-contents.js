@@ -75,7 +75,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#field-state')
         .click()
         .type('Publish{enter}');
-      cy.get('.fitted.checkbox').click();
+      cy.get('.checkbox').click();
       cy.get('button[title="Save"]').click();
 
       // then the content must change its state from private to publish

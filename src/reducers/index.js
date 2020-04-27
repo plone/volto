@@ -7,6 +7,7 @@ import { reducer as reduxAsyncConnect } from 'redux-connect';
 import { intlReducer } from 'react-intl-redux';
 
 import actions from '@plone/volto/reducers/actions/actions';
+import apierror from '@plone/volto/reducers/apierror/apierror';
 import breadcrumbs from '@plone/volto/reducers/breadcrumbs/breadcrumbs';
 import browserdetect from '@plone/volto/reducers/browserdetect/browserdetect';
 import comments from '@plone/volto/reducers/comments/comments';
@@ -46,6 +47,7 @@ const reducers = {
   intl: intlReducer,
   reduxAsyncConnect,
   actions,
+  apierror,
   breadcrumbs,
   browserdetect,
   comments,
