@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.1.1 (unreleased)
+## 5.2.0 (2020-04-27)
 
 ### Feature
 
