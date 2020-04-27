@@ -188,19 +188,17 @@ class RecurrenceWidget extends Component {
         })
       : new RRuleSet();
 
-    if (this.props.formData.start) {
-      let date = this.getUTCDate(props.formData.start)
-        .startOf('day')
-        .toDate();
-      rruleSet.dtstart(date);
-    }
-
     this.state = {
       open: false,
       rruleSet: rruleSet,
       formValues: this.getFormValues(rruleSet),
       RRULE_LANGUAGE: rrulei18n(this.props.intl),
     };
+  }
+
+  componentDidMount() {
+    console.log('didmount');
+    this.setRecurrenceStartEnd();
   }
 
   componentDidUpdate(prevProps) {
