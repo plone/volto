@@ -1,4 +1,5 @@
 import { defineMessages } from 'react-intl';
+import loadable from '@loadable/component';
 
 import ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
 import ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
@@ -21,7 +22,6 @@ import EditImageBlock from '@plone/volto/components/manage/Blocks/Image/Edit';
 import EditLeadImageBlock from '@plone/volto/components/manage/Blocks/LeadImage/Edit';
 import EditListingBlock from '@plone/volto/components/manage/Blocks/Listing/Edit';
 import DefaultListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/DefaultTemplate';
-import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 import EditVideoBlock from '@plone/volto/components/manage/Blocks/Video/Edit';
 import EditHeroImageLeftBlock from '@plone/volto/components/manage/Blocks/HeroImageLeft/Edit';
 import EditMapBlock from '@plone/volto/components/manage/Blocks/Maps/Edit';
@@ -39,6 +39,10 @@ import heroSVG from '@plone/volto/icons/hero.svg';
 import tableSVG from '@plone/volto/icons/table.svg';
 import listBulletSVG from '@plone/volto/icons/list-bullet.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
+
+const ImageGalleryListingBlockTemplate = loadable(() =>
+  import('@plone/volto/components/manage/Blocks/Listing/ImageGallery'),
+);
 
 defineMessages({
   title: {
