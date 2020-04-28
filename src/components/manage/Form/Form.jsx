@@ -214,24 +214,6 @@ class Form extends Component {
    * @returns {undefined}
    */
   onChangeField(id, value) {
-    let remlength = 140 - value.length;
-    if (remlength < 0) {
-      this.setState({
-        errors: {
-          ...this.state.errors,
-          [id]: `you have exceed word limit by ${remlength}`,
-        },
-      });
-    }
-    if (remlength > 0) {
-      let newSetErrors = this.state.errors;
-      delete newSetErrors[id];
-      this.setState({
-        errors: {
-          ...newSetErrors,
-        },
-      });
-    }
     this.setState({
       formData: {
         ...this.state.formData,
