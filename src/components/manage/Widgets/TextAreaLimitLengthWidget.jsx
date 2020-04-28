@@ -1,6 +1,6 @@
 /**
- * TextareaWidget component.
- * @module components/manage/Widgets/TextareaWidget
+ * TextAreaLimitLengthWidget component.
+ * @module components/manage/Widgets/TextAreaLimitLengthWidget
  */
 
 import React, { Component } from 'react';
@@ -40,8 +40,8 @@ const messages = defineMessages({
 });
 
 /**
- * TextareaWidget component class.
- * @function TextareaWidget
+ * TextAreaLimitLengthWidget component class.
+ * @class TextAreaLimitLengthWidget
  * @returns {string} Markup of the component.
  */
 class TextAreaLimitLengthWidget extends Component {
@@ -49,6 +49,12 @@ class TextAreaLimitLengthWidget extends Component {
     lengthError: '',
   };
 
+  /**
+   * Update lengthError
+   * @method onHandleChange
+   * @param (string, string)
+   * @returns {undefined}
+   */
   onHandleChange = (id, value) => {
     let remlength = 140 - value.length;
     if (remlength < 0) {
