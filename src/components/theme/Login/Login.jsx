@@ -26,6 +26,8 @@ import { getNavigation, login } from '@plone/volto/actions';
 import { toast } from 'react-toastify';
 import { Toast } from '@plone/volto/components';
 
+import { settings } from '~/config';
+
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -138,11 +140,19 @@ class Login extends Component {
   }
 
   UNSAFE_componentWillMount() {
-    this.props.getNavigation('/');
+    if (settings.isMultilingual) {
+      this.props.getNavigation(`/${this.props.lang}`, settings.navDepth);
+    } else {
+      this.props.getNavigation('/', settings.navDepth);
+    }
   }
 
   componentWillUnmount() {
-    this.props.getNavigation('/');
+    if (settings.isMultilingual) {
+      this.props.getNavigation(`/${this.props.lang}`, settings.navDepth);
+    } else {
+      this.props.getNavigation('/', settings.navDepth);
+    }
 
     if (toast.isActive('loginFailed')) {
       toast.dismiss('loginFailed');
@@ -321,6 +331,7 @@ export default compose(
   injectIntl,
   connect(
     (state, props) => ({
+      lang: state.intl.locale,
       error: state.userSession.login.error,
       loading: state.userSession.login.loading,
       token: state.userSession.token,
