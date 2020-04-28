@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import Contents from './Contents';
+import { __test__ as Contents } from './Contents';
 
 const mockStore = configureStore();
 
@@ -28,6 +28,21 @@ jest.mock('moment', () =>
 describe('Contents', () => {
   it('renders a contents component', () => {
     const store = mockStore({
+      actions: {
+        actions: {
+          document_actions: [],
+          object: [
+            {
+              icon: '',
+              id: 'folderContents',
+              title: 'Contents',
+            },
+          ],
+        },
+      },
+      userSession: {
+        token: '14134234123qwdaf',
+      },
       search: {
         items: [
           {

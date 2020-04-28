@@ -137,7 +137,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
               </div>
             )}
         </>
-      ) : (
+      ) : isEditMode ? (
         <div className="listing message">
           {data?.query?.length === 0 && (
             <FormattedMessage
@@ -152,7 +152,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
             />
           )}
         </div>
-      )}
+      ) : null}
     </>
   );
 };

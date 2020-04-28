@@ -74,8 +74,14 @@ class Html extends Component {
           <meta name="generator" content="Volto - http://plone.org" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
-          <>{extractor.getLinkElements()}</>
-          {/* Styles in DEV are loaded with Webpack's style-loader, in production,
+          {/* Add the crossorigin while in development */}
+          {extractor.getLinkElements().map(elem =>
+            React.cloneElement(elem, {
+              crossOrigin:
+                process.env.NODE_ENV === 'production' ? undefined : 'true',
+            }),
+          )}
+          {/* Styles in development are loaded with Webpack's style-loader, in production,
               they need to be static*/}
           {process.env.NODE_ENV === 'production' && (
             <>{extractor.getStyleElements()}</>
@@ -91,6 +97,7 @@ class Html extends Component {
             }}
             charSet="UTF-8"
           />
+          {/* Add the crossorigin while in development */}
           {extractor.getScriptElements().map(elem =>
             React.cloneElement(elem, {
               crossOrigin:
