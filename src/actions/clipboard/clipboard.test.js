@@ -4,7 +4,7 @@ import {
   MOVE_CONTENT,
   COPY,
   CUT,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Clipboard action', () => {
   describe('copyContent', () => {

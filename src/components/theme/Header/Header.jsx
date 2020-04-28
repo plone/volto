@@ -8,7 +8,13 @@ import { Container, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { Anontools, Logo, Navigation, SearchWidget } from '../../../components';
+import {
+  Anontools,
+  LanguageSelector,
+  Logo,
+  Navigation,
+  SearchWidget,
+} from '@plone/volto/components';
 
 /**
  * Header component class.
@@ -51,13 +57,16 @@ class Header extends Component {
               </div>
               <Navigation pathname={this.props.pathname} />
             </div>
-            {!this.props.token && (
-              <div className="tools">
-                <Anontools />
+            <div className="tools-search-wrapper">
+              <LanguageSelector />
+              {!this.props.token && (
+                <div className="tools">
+                  <Anontools />
+                </div>
+              )}
+              <div className="search">
+                <SearchWidget pathname={this.props.pathname} />
               </div>
-            )}
-            <div className="search">
-              <SearchWidget pathname={this.props.pathname} />
             </div>
           </div>
         </Container>

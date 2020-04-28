@@ -1,5 +1,5 @@
 import vocabularies from './vocabularies';
-import { GET_VOCABULARY } from '../../constants/ActionTypes';
+import { GET_VOCABULARY } from '@plone/volto/constants/ActionTypes';
 
 describe('Vocabularies reducer', () => {
   it('should return the initial state', () => {

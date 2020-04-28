@@ -8,7 +8,7 @@ import {
   MOVE_CONTENT,
   COPY,
   CUT,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Copy content function.

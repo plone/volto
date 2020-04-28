@@ -5,7 +5,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
   className="view-wrapper"
 >
   <div
-    className="ui container"
+    className="ui container controlpanel"
   >
     <div
       className="ui raised segments"

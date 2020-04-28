@@ -1,32 +1,45 @@
 import React from 'react';
-import { components } from 'react-select';
+import loadable from '@loadable/component';
+
 import { Icon } from '@plone/volto/components';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
 
+const ReactSelect = loadable.lib(() => import('react-select'));
+
 export const Option = props => {
   return (
-    <components.Option {...props}>
-      <div>{props.label}</div>
-      {props.isFocused && !props.isSelected && (
-        <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+    <ReactSelect>
+      {({ components }) => (
+        <components.Option {...props}>
+          <div>{props.label}</div>
+          {props.isFocused && !props.isSelected && (
+            <Icon name={checkSVG} size="24px" color="#b8c6c8" />
+          )}
+          {props.isSelected && (
+            <Icon name={checkSVG} size="24px" color="#007bc1" />
+          )}
+        </components.Option>
       )}
-      {props.isSelected && <Icon name={checkSVG} size="24px" color="#007bc1" />}
-    </components.Option>
+    </ReactSelect>
   );
 };
 
 export const DropdownIndicator = props => {
   return (
-    <components.DropdownIndicator {...props}>
-      {props.selectProps.menuIsOpen ? (
-        <Icon name={upSVG} size="24px" color="#007bc1" />
-      ) : (
-        <Icon name={downSVG} size="24px" color="#007bc1" />
+    <ReactSelect>
+      {({ components }) => (
+        <components.DropdownIndicator {...props}>
+          {props.selectProps.menuIsOpen ? (
+            <Icon name={upSVG} size="24px" color="#007bc1" />
+          ) : (
+            <Icon name={downSVG} size="24px" color="#007bc1" />
+          )}
+        </components.DropdownIndicator>
       )}
-    </components.DropdownIndicator>
+    </ReactSelect>
   );
 };
 

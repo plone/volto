@@ -1,5 +1,5 @@
 import diff from './diff';
-import { GET_DIFF } from '../../constants/ActionTypes';
+import { GET_DIFF } from '@plone/volto/constants/ActionTypes';
 
 describe('Diff reducer', () => {
   it('should return the initial state', () => {

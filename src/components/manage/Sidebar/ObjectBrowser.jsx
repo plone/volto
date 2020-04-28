@@ -1,6 +1,6 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import ObjectBrowserBody from './ObjectBrowserBody';
+import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 
 const DEFAULT_TIMEOUT = 500;
 

@@ -8,7 +8,7 @@ import {
   CUT,
   COPY_CONTENT,
   MOVE_CONTENT,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   action: null,

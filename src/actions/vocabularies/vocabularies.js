@@ -7,7 +7,7 @@ import { settings } from '~/config';
 import {
   GET_VOCABULARY,
   GET_VOCABULARY_TOKEN_TITLE,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get vocabulary given a URL (coming from a Schema) or from a vocabulary name.

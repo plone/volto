@@ -6,7 +6,7 @@
 import {
   GET_VOCABULARY,
   GET_VOCABULARY_TOKEN_TITLE,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 const initialState = {};
 

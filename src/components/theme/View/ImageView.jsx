@@ -5,7 +5,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
 import { Container } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
 import prettybytes from 'pretty-bytes';
@@ -20,7 +19,6 @@ import { flattenToAppURL } from '@plone/volto/helpers';
  */
 const ImageView = ({ content }) => (
   <Container className="view-wrapper">
-    <Helmet title={content.title} />
     <h1 className="documentFirstHeading">
       {content.title}
       {content.subtitle && ` - ${content.subtitle}`}

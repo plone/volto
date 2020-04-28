@@ -6,7 +6,7 @@
 import cookie from 'react-cookie';
 import jwtDecode from 'jwt-decode';
 
-import { loginRenew } from '../../actions';
+import { loginRenew } from '@plone/volto/actions';
 import { push } from 'connected-react-router';
 
 /**

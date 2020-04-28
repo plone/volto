@@ -1,19 +1,34 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { ContentsIndexHeaderComponent as ContentsIndexHeader } from './ContentsIndexHeader';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-intl-redux';
 
-test('renders a contents item component', () => {
-  const component = renderer.create(
-    <ContentsIndexHeader
-      width={1}
-      label="Title"
-      onOrderIndex={() => {}}
-      connectDragSource={x => x}
-      connectDropTarget={x => x}
-      order={1}
-      isDragging={false}
-    />,
-  );
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+import { ContentsIndexHeader } from '@plone/volto/components';
+
+const mockStore = configureStore();
+
+describe('ContentsIndexHeader', () => {
+  it('renders a contents titles component', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <ContentsIndexHeader
+          width={1}
+          label="Review state"
+          onOrderIndex={() => {}}
+          connectDragSource={x => x}
+          connectDropTarget={x => x}
+          order={1}
+          isDragging={false}
+        />
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
 });

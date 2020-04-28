@@ -25,7 +25,7 @@ import filesize from 'filesize';
 import { readAsDataURL } from 'promise-file-reader';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { createContent } from '../../../actions';
+import { createContent } from '@plone/volto/actions';
 
 const messages = defineMessages({
   cancel: {

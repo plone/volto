@@ -1,7 +1,7 @@
 version: '3'
 services:
   postgres:
-    image: postgres:10
+    image: postgres:9.6.16
     container_name: postgres_test
     environment:
         POSTGRES_DB: guillotina

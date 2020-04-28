@@ -5,17 +5,16 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Container, Image, GridColumn, Segment } from 'semantic-ui-react';
 import { Button, Modal, Grid } from 'semantic-ui-react';
-import { Icon } from '../../../components';
+import { Icon } from '@plone/volto/components';
 
-import openSVG from '../../../icons/open.svg';
-import aheadSVG from '../../../icons/ahead.svg';
-import backSVG from '../../../icons/back.svg';
+import openSVG from '@plone/volto/icons/open.svg';
+import aheadSVG from '@plone/volto/icons/ahead.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
-import { flattenToAppURL } from '../../../helpers';
+import { flattenToAppURL } from '@plone/volto/helpers';
 
 /**
  * Album view component class.
@@ -62,7 +61,6 @@ class AlbumView extends Component {
     const { content } = this.props;
     return (
       <Container className="view-wrapper">
-        <Helmet title={content.title} />
         <article id="content">
           <header>
             <h1 className="documentFirstHeading">{content.title}</h1>

@@ -3,7 +3,7 @@ import {
   ADD_MESSAGE,
   REMOVE_MESSAGE,
   PURGE_MESSAGES,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Messages reducer', () => {
   it('should return the initial state', () => {

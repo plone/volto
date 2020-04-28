@@ -9,7 +9,7 @@ import {
   DELETE_COMMENT,
   UPDATE_COMMENT,
   LIST_COMMENTS,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Comments action', () => {
   describe('addComment', () => {

@@ -33,8 +33,8 @@ import {
   listGroups,
   updateUser,
   updateGroup,
-} from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
+} from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
 import {
   ModalForm,
   Toolbar,
@@ -42,11 +42,9 @@ import {
   Icon,
   UsersControlpanelGroups,
   Toast,
-} from '../../../components';
-import addSvg from '../../../icons/circle-plus.svg';
-import backSVG from '../../../icons/back.svg';
-import saveSVG from '../../../icons/save.svg';
-import clearSVG from '../../../icons/clear.svg';
+} from '@plone/volto/components';
+import addSvg from '@plone/volto/icons/circle-plus.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   searchUsers: {
@@ -283,7 +281,7 @@ class UsersControlpanel extends Component {
       this.onAddGroupError(nextProps.createRequest.error);
     }
     this.setState({
-      entries: map(nextProps.entries, entry => {
+      entries: map(nextProps.users, entry => {
         const values = find(this.state.entries, { id: entry.id });
         return {
           ...entry,
@@ -642,6 +640,7 @@ class UsersControlpanel extends Component {
             }
             onCancel={this.onDeleteCancel}
             onConfirm={this.onDeleteOk}
+            size="none"
           />
           <ModalForm
             open={this.state.showAddUser}
@@ -799,6 +798,7 @@ class UsersControlpanel extends Component {
                     messages.searchUsers,
                   )}
                   onChange={this.onChangeSearch}
+                  id="user-search-input"
                 />
               </Form.Field>
             </Form>
@@ -852,6 +852,7 @@ class UsersControlpanel extends Component {
                 name={addSvg}
                 size="30px"
                 color="#007eb1"
+                className="addSVG"
                 title={this.props.intl.formatMessage(messages.add)}
               />
             </Button>
@@ -870,6 +871,7 @@ class UsersControlpanel extends Component {
                     messages.searchGroups,
                   )}
                   onChange={this.onChangeSearch}
+                  id="group-search-input"
                 />
               </Form.Field>
             </Form>
@@ -924,6 +926,7 @@ class UsersControlpanel extends Component {
                 name={addSvg}
                 size="30px"
                 color="#007eb1"
+                classname="addgroupSVG"
                 title={this.props.intl.formatMessage(messages.add)}
               />
             </Button>
@@ -938,33 +941,12 @@ class UsersControlpanel extends Component {
                 <Link to="/controlpanel" className="item">
                   <Icon
                     name={backSVG}
-                    className="contents circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.back)}
-                  />
-                </Link>
-                <button
-                  id="toolbar-save"
-                  className="save"
-                  aria-label={this.props.intl.formatMessage(messages.save)}
-                  onClick={this.onSubmit}
-                >
-                  <Icon
-                    name={saveSVG}
-                    className="circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.save)}
-                  />
-                </button>
-                <button className="cancel" onClick={this.onCancel}>
-                  <Icon
-                    name={clearSVG}
-                    className="circled"
                     aria-label={this.props.intl.formatMessage(messages.cancel)}
+                    className="contents circled"
                     size="30px"
                     title={this.props.intl.formatMessage(messages.cancel)}
                   />
-                </button>
+                </Link>
               </>
             }
           />

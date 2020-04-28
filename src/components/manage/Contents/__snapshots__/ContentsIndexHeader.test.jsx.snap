@@ -1,15 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a contents item component 1`] = `
-<th
-  className="one wide"
-  style={
-    Object {
-      "cursor": "move",
-      "opacity": 1,
-    }
-  }
->
-  Title
-</th>
-`;
+exports[`ContentsIndexHeader renders a contents titles component 1`] = `null`;

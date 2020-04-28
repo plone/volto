@@ -1,10 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders an edit toc block component 1`] = `
-Array [
+<div
+  className="block table-of-contents"
+>
   <h2>
     Table of Contents
-  </h2>,
+  </h2>
   <div
     className="ui bulleted list"
     role="list"
@@ -33,6 +35,6 @@ Array [
         Heading 2
       </a>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;

@@ -3,7 +3,7 @@
  * @module actions/navigation/navigation
  */
 
-import { GET_NAVIGATION } from '../../constants/ActionTypes';
+import { GET_NAVIGATION } from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get navigation.

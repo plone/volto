@@ -1,5 +1,5 @@
 import schema from './schema';
-import { GET_SCHEMA } from '../../constants/ActionTypes';
+import { GET_SCHEMA } from '@plone/volto/constants/ActionTypes';
 
 describe('Schema reducer', () => {
   it('should return the initial state', () => {

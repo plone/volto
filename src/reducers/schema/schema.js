@@ -5,7 +5,7 @@
 
 import { flatten, keys, pickBy, isArray, map, mapKeys, merge } from 'lodash';
 
-import { GET_SCHEMA } from '../../constants/ActionTypes';
+import { GET_SCHEMA } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   error: null,

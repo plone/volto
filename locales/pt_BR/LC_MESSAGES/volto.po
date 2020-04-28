@@ -51,6 +51,10 @@ msgstr "Adicionar"
 msgid "Add Content"
 msgstr "Adicionar conteúdo"
 
+#: components/manage/Toolbar/Types
+msgid "Add Translation..."
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
 msgstr "Adicionar usuário"
@@ -134,6 +138,7 @@ msgstr "Ascendente"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 msgid "Back"
 msgstr "Voltar"
@@ -173,6 +178,7 @@ msgstr "Por padrão, as permissões do contêiner deste item são herdadas. Se v
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
 #: components/manage/Edit/Edit
@@ -203,6 +209,10 @@ msgstr "Alterar senha"
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change State"
 msgstr "Alterar estado"
+
+#: components/manage/Contents/ContentsWorkflowModal
+msgid "Change workflow state recursively"
+msgstr ""
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -242,6 +252,10 @@ msgstr "Fechar"
 msgid "Close menu"
 msgstr "Fechar menu"
 
+#: components/manage/Toolbar/Toolbar
+msgid "Collection"
+msgstr ""
+
 #: components/manage/Controlpanels/ModerateComments
 #: components/theme/Comments/CommentEditModal
 #: components/theme/Comments/Comments
@@ -260,6 +274,10 @@ msgstr "Comparar"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Confirm password"
 msgstr "Confirmar senha"
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "Connection refused"
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "Contact"
@@ -295,6 +313,14 @@ msgstr "Copyright"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Copyright statement or other rights information on this item."
 msgstr "Declaração de copyright ou outras informações de direitos sobre este item."
+
+#: components/manage/Contents/Contents
+msgid "Created on"
+msgstr ""
+
+#: components/manage/Contents/Contents
+msgid "Creator"
+msgstr ""
 
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Creators"
@@ -477,6 +503,10 @@ msgstr "Erro no embed, por favor, siga as instruções e tente novamente."
 msgid "Embeded Google Maps"
 msgstr "Inserido com Google Maps"
 
+#: components/manage/Contents/Contents
+msgid "End Date"
+msgstr ""
+
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Enter URL or title"
 msgstr "Digite a URL ou título"
@@ -508,6 +538,8 @@ msgstr "Digite o seu endereço de email para verificação."
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Digite uma senha nova. Mínimo de 5 caracteres."
 
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -519,6 +551,10 @@ msgstr "Erro"
 msgid "Exclude from navigation"
 msgstr "Excluir da navegação"
 
+#: components/manage/Contents/Contents
+msgid "Excluded from navigation"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "Expandir barra lateral"
@@ -527,10 +563,18 @@ msgstr "Expandir barra lateral"
 msgid "Expiration Date"
 msgstr "Data de vencimento"
 
+#: components/manage/Contents/Contents
+msgid "Expiration date"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
 msgstr "URL externo"
+
+#: components/manage/Toolbar/Toolbar
+msgid "File"
+msgstr ""
 
 #: components/manage/Contents/ContentsUploadModal
 msgid "File size"
@@ -547,6 +591,14 @@ msgstr "Filtro…"
 #: components/manage/Blocks/Table/Edit
 msgid "Fixed width table cells"
 msgstr "Células de tabela de tamanho fixo."
+
+#: components/manage/Contents/Contents
+msgid "Folder"
+msgstr ""
+
+#: components/theme/Forbidden/Forbidden
+msgid "Forbidden"
+msgstr ""
 
 #: components/theme/ContactForm/ContactForm
 msgid "From"
@@ -613,6 +665,10 @@ msgstr "Início"
 msgid "Home page"
 msgstr "Página inicial"
 
+#: components/manage/Contents/Contents
+msgid "ID"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "If selected, this item will not appear in the navigation tree"
 msgstr "Se este item estiver seleccionado, não irá aparecer na árvore de navegação"
@@ -622,6 +678,7 @@ msgid "If this date is in the future, the content will not show up in listings a
 msgstr "Se esta data estiver no futuro, o conteúdo não irá aparecer em listas nem em pesquisas até esta data."
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 msgid "If you are certain you have the correct web address but are encountering an error, please contact the {site_admin}."
 msgstr "Se tiver a certeza que tem o endereço web correcto mas está a obter um erro, por favor contacte o {site_admin}."
 
@@ -692,6 +749,10 @@ msgstr "Os itens têm de ser únicos."
 msgid "Language"
 msgstr "Idioma"
 
+#: components/manage/Contents/Contents
+msgid "Last comment date"
+msgstr ""
+
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Última modificação"
@@ -704,6 +765,10 @@ msgstr "Imagem Principal"
 #: helpers/AlignBlock/AlignBlock
 msgid "Left"
 msgstr "Esquerda"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Link"
+msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Link more"
@@ -809,6 +874,14 @@ msgstr "Navegação para retornar"
 msgid "New password"
 msgstr "Nova senha"
 
+#: components/manage/Toolbar/Toolbar
+msgid "News Item"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "No"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "No image selected"
 msgstr "Nenhuma imagem seleccionada"
@@ -853,8 +926,13 @@ msgid "No workflow"
 msgstr "Sem fluxo de trabalho"
 
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsItem
 msgid "None"
 msgstr "Nenhum"
+
+#: components/manage/Contents/Contents
+msgid "Object Size"
+msgstr ""
 
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -875,6 +953,10 @@ msgstr "Abrir menu"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
 msgstr "Origem"
+
+#: components/manage/Toolbar/Toolbar
+msgid "Page"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/theme/Login/Login
@@ -964,6 +1046,10 @@ msgstr "Perfil"
 msgid "Properties"
 msgstr "Propriedades"
 
+#: components/manage/Contents/Contents
+msgid "Publication date"
+msgstr ""
+
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Publishing Date"
 msgstr "Data de Publicação"
@@ -1035,6 +1121,10 @@ msgstr "Pedido estornado"
 msgid "Revert to this revision"
 msgstr "Reverter para esta revisão"
 
+#: components/manage/Contents/Contents
+msgid "Review state"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
 msgstr "Richtext"
@@ -1053,6 +1143,7 @@ msgid "Roles"
 msgstr "Papéis"
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
@@ -1110,6 +1201,7 @@ msgid "Selection"
 msgstr "Selecção"
 
 #: components/manage/Contents/Contents
+#: components/manage/Widgets/ArrayWidget
 msgid "Select…"
 msgstr "Seleccionar..."
 
@@ -1126,6 +1218,7 @@ msgid "Set your password"
 msgstr "Defina a sua senha"
 
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/More
 msgid "Sharing"
 msgstr "Partilha"
 
@@ -1147,6 +1240,10 @@ msgstr "Nome Curto"
 msgid "Short name"
 msgstr "Nome curto"
 
+#: components/theme/Pagination/Pagination
+msgid "Show"
+msgstr ""
+
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
 msgstr "Encolher barra lateral"
@@ -1164,6 +1261,7 @@ msgid "Site"
 msgstr "Sítio"
 
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 msgid "Site Administration"
 msgstr "Administração do Sítio"
 
@@ -1175,6 +1273,10 @@ msgstr "Mapa do Sítio"
 #: components/manage/Toolbar/PersonalTools
 msgid "Site Setup"
 msgstr "Configuração do Sítio"
+
+#: components/theme/Sitemap/Sitemap
+msgid "Sitemap"
+msgstr ""
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
@@ -1200,6 +1302,10 @@ msgstr "Especifique um vídeo youtube ou um URL de um repertório (playlist)"
 #: components/manage/Diff/Diff
 msgid "Split"
 msgstr "Dividir"
+
+#: components/manage/Contents/Contents
+msgid "Start Date"
+msgstr ""
 
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
@@ -1266,13 +1372,24 @@ msgstr "Template"
 msgid "Text"
 msgstr "Texto"
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+#: components/theme/CorsError/CorsError
 #: components/theme/NotFound/NotFound
+#: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
 msgstr "Obrigado."
 
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
 msgstr "O URL da sua página inicial externa, se tiver uma."
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
+msgstr ""
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
@@ -1285,6 +1402,10 @@ msgstr "Retrato/avatar do usuário"
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "O {plonecms} tem {copyright} de 2000-{current_year} pela {plonefoundation} e amigos."
+
+#: components/theme/CorsError/CorsError
+msgid "There is a configuration problem on the backend"
+msgstr ""
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
@@ -1314,6 +1435,14 @@ msgstr "Esta página não parece existir..."
 msgid "Title"
 msgstr "Título"
 
+#: components/manage/Contents/Contents
+msgid "Total comments"
+msgstr ""
+
+#: components/manage/Toolbar/Types
+msgid "Translate to {lang}"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 msgid "Type"
@@ -1330,6 +1459,14 @@ msgstr "Escreva texto..."
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
 msgstr "Escreva o título..."
+
+#: components/manage/Contents/Contents
+msgid "UID"
+msgstr ""
+
+#: components/theme/Unauthorized/Unauthorized
+msgid "Unauthorized"
+msgstr ""
 
 #: components/manage/Diff/Diff
 msgid "Unified"
@@ -1427,9 +1564,21 @@ msgstr "Ver esta revisão"
 msgid "Viewmode"
 msgstr "Modo de visualização"
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
+msgstr ""
+
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Pedimos desculpa pela inconveniência, mas a página a que está a tentar aceder não está neste endereço. Pode usar as ligações abaixo para ajudar a encontrar o que procura."
+
+#: components/theme/Forbidden/Forbidden
+msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
+msgstr ""
 
 #: components/manage/Preferences/PersonalInformation
 msgid "We will use this address if you need to recover your password"
@@ -1454,6 +1603,14 @@ msgstr "Quem"
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
 msgstr "Fluxo de trabalho actualizado."
+
+#: components/manage/Contents/ContentsItem
+msgid "Yes"
+msgstr ""
+
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource, please {login} first."
+msgstr ""
 
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
@@ -1519,6 +1676,38 @@ msgstr "descricao_esqueceu_a_senha"
 msgid "description_sent_password"
 msgstr "descricao_senha_enviada"
 
+#: components/theme/View/EventView
+msgid "event_alldates"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_attendees"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_contactname"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_contactphone"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_website"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_what"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_when"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_where"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
 msgstr "cabecalho_senha_enviada"
@@ -1547,6 +1736,10 @@ msgstr "imagem principal"
 msgid "listing"
 msgstr "listagem"
 
+#: components/theme/Unauthorized/Unauthorized
+msgid "log in"
+msgstr ""
+
 #: config/Blocks
 msgid "maps"
 msgstr "mapas"
@@ -1567,9 +1760,17 @@ msgstr "ou tente uma página diferente"
 msgid "registration form"
 msgstr "formulário de registo"
 
+#: components/theme/Search/Search
+msgid "results found"
+msgstr ""
+
 #: error
 msgid "return to the site root"
 msgstr "voltar à página principal"
+
+#: components/manage/Contents/Contents
+msgid "sort"
+msgstr ""
 
 #: config/Blocks
 msgid "table"
@@ -1594,6 +1795,10 @@ msgstr "avatar do usuário"
 #: config/Blocks
 msgid "video"
 msgstr "vídeo"
+
+#: components/theme/View/EventView
+msgid "visit_external_website"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"

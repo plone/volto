@@ -9,8 +9,8 @@ import { Form, Grid, Input, Label, Button } from 'semantic-ui-react';
 import { map } from 'lodash';
 import { readAsDataURL } from 'promise-file-reader';
 
-import deleteSVG from '../../../icons/delete.svg';
-import { Icon } from '../../../components';
+import deleteSVG from '@plone/volto/icons/delete.svg';
+import { Icon } from '@plone/volto/components';
 
 /**
  * FileWidget component class.

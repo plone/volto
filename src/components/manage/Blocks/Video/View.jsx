@@ -14,7 +14,7 @@ import cx from 'classnames';
  * @extends Component
  */
 const View = ({ data }) => (
-  <p
+  <div
     className={cx(
       'block video align',
       {
@@ -78,7 +78,7 @@ const View = ({ data }) => (
         )}
       </div>
     )}
-  </p>
+  </div>
 );
 
 /**

@@ -5,10 +5,53 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import { defineMessages, injectIntl } from 'react-intl';
+import { flattenHTMLToAppURL } from '@plone/volto/helpers';
 import { Container, Image, Segment, Header, List } from 'semantic-ui-react';
 
-import { When, Recurrence } from './EventDatesInfo';
+import {
+  When,
+  Recurrence,
+} from '@plone/volto/components/theme/View/EventDatesInfo';
+
+const messages = defineMessages({
+  what: {
+    id: 'event_what',
+    defaultMessage: 'What',
+  },
+  when: {
+    id: 'event_when',
+    defaultMessage: 'When',
+  },
+  allDates: {
+    id: 'event_alldates',
+    defaultMessage: 'All dates',
+  },
+  where: {
+    id: 'event_where',
+    defaultMessage: 'Where',
+  },
+  contactName: {
+    id: 'event_contactname',
+    defaultMessage: 'Contact Name',
+  },
+  contactPhone: {
+    id: 'event_contactphone',
+    defaultMessage: 'Contact Phone',
+  },
+  attendees: {
+    id: 'event_attendees',
+    defaultMessage: 'Attendees',
+  },
+  website: {
+    id: 'event_website',
+    defaultMessage: 'Website',
+  },
+  visitWebsite: {
+    id: 'visit_external_website',
+    defaultMessage: 'Visit external website',
+  },
+});
 
 /**
  * EventView view component class.
@@ -16,9 +59,8 @@ import { When, Recurrence } from './EventDatesInfo';
  * @params {object} content Content object.
  * @returns {string} Markup of the component.
  */
-const EventView = ({ content }) => (
+const EventView = ({ intl, content }) => (
   <Container className="view-wrapper event-view">
-    <Helmet title={content.title} />
     {content.title && <h1 className="documentFirstHeading">{content.title}</h1>}
     {content.description && (
       <p className="documentDescription">{content.description}</p>
@@ -31,17 +73,16 @@ const EventView = ({ content }) => (
       />
     )}
     <Segment floated="right">
-      {/* TODO I18N INTL */}
       {content.subjects.length > 0 && (
         <>
           <Header dividing sub>
-            What
+            {intl.formatMessage(messages.what)}
           </Header>
           <List items={content.subjects} />
         </>
       )}
       <Header dividing sub>
-        When
+        {intl.formatMessage(messages.when)}
       </Header>
       <When
         start={content.start}
@@ -52,7 +93,7 @@ const EventView = ({ content }) => (
       {content.recurrence && (
         <>
           <Header dividing sub>
-            All dates
+            {intl.formatMessage(messages.allDates)}
           </Header>
           <Recurrence recurrence={content.recurrence} start={content.start} />
         </>
@@ -60,7 +101,7 @@ const EventView = ({ content }) => (
       {content.location && (
         <>
           <Header dividing sub>
-            Where
+            {intl.formatMessage(messages.where)}
           </Header>
           <p>{content.location}</p>
         </>
@@ -68,7 +109,7 @@ const EventView = ({ content }) => (
       {content.contact_name && (
         <>
           <Header dividing sub>
-            Contact Name
+            {intl.formatMessage(messages.contactName)}
           </Header>
           <p>
             {content.contact_email ? (
@@ -84,7 +125,7 @@ const EventView = ({ content }) => (
       {content.contact_phone && (
         <>
           <Header dividing sub>
-            Contact Phone
+            {intl.formatMessage(messages.contactPhone)}
           </Header>
           <p>{content.contact_phone}</p>
         </>
@@ -92,7 +133,7 @@ const EventView = ({ content }) => (
       {content.attendees.length > 0 && (
         <>
           <Header dividing sub>
-            Attendees
+            {intl.formatMessage(messages.attendees)}
           </Header>
           <List items={content.attendees} />
         </>
@@ -100,16 +141,26 @@ const EventView = ({ content }) => (
       {content.event_url && (
         <>
           <Header dividing sub>
-            Web
+            {intl.formatMessage(messages.website)}
           </Header>
           <p>
-            <a href={content.event_url}>Visit external website</a>
+            <a
+              href={content.event_url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {intl.formatMessage(messages.visitWebsite)}
+            </a>
           </p>
         </>
       )}
     </Segment>
     {content.text && (
-      <div dangerouslySetInnerHTML={{ __html: content.text.data }} />
+      <div
+        dangerouslySetInnerHTML={{
+          __html: flattenHTMLToAppURL(content.text.data),
+        }}
+      />
     )}
   </Container>
 );
@@ -141,4 +192,4 @@ EventView.propTypes = {
   }).isRequired,
 };
 
-export default EventView;
+export default injectIntl(EventView);

@@ -1,5 +1,5 @@
 import { emailNotification } from './emailNotification';
-import { EMAIL_NOTIFICATION } from '../../constants/ActionTypes';
+import { EMAIL_NOTIFICATION } from '@plone/volto/constants/ActionTypes';
 
 describe('Send email notification', () => {
   describe('emailNotification', () => {

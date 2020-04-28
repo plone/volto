@@ -14,8 +14,8 @@ import { Button, Container, List, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import qs from 'query-string';
 
-import { deleteContent, getContent } from '../../../actions';
-import { Toolbar } from '../../../components';
+import { deleteContent, getContent } from '@plone/volto/actions';
+import { Toolbar } from '@plone/volto/components';
 
 const messages = defineMessages({
   delete: {

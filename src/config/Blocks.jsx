@@ -303,4 +303,6 @@ const blocksConfig = {
 
 const requiredBlocks = ['title'];
 
-export { groupBlocksOrder, requiredBlocks, blocksConfig };
+const initialBlocks = {};
+
+export { groupBlocksOrder, requiredBlocks, blocksConfig, initialBlocks };

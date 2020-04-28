@@ -1,6 +1,7 @@
 language: python
+os: linux
 dist: xenial
-matrix:
+jobs:
   include:
     - name: 'Plone'
       python: 3.7
@@ -16,7 +17,6 @@ cache:
   directories:
     - $HOME/buildout-cache
     - ~/.cache
-sudo: required
 addons:
   apt:
     packages:
@@ -36,10 +36,11 @@ before_install:
     echo "download-cache = $HOME/buildout-cache/downloads" >> $HOME/.buildout/default.cfg;
     echo "eggs-directory = $HOME/buildout-cache/eggs" >> $HOME/.buildout/default.cfg;
     fi
-
+  - npm install -g surge
 install:
   - if [ "$TEST_SUITE" == "plone" ]; then
-    make build-backend;
+    (cd api && pip install -r requirements.txt) &&
+    (cd api && buildout)
     fi
   - yarn install --frozen-lockfile
   - yarn cy:install
@@ -51,11 +52,19 @@ script:
     yarn test:ci;
     fi
   - if [ "$TEST_SUITE" == "guillotina" ]; then
+    echo -e 'pcm.!default {\n type hw\n card 0\n}\n\nctl.!default {\n type hw\n card 0\n}' > ~/.asoundrc;
     yarn ci:cypress:run:guillotina;
     fi
   - if [ "$TEST_SUITE" == "plone" ]; then
+    echo -e 'pcm.!default {\n type hw\n card 0\n}\n\nctl.!default {\n type hw\n card 0\n}' > ~/.asoundrc;
     yarn ci:cypress:run;
     fi
+after_script:
+  - mkdir cypress-results
+  - mv cypress/videos cypress-results
+  - ls -al cypress-results
+  - surge cypress-results volto.surge.sh
+  - echo "Cypress Videos uploaded to http://volto.surge.sh/videos/blocks.js.mp4"
 after_success:
   - if [ "$TEST_SUITE" == "plone" ]; then
     yarn run bundlewatch;

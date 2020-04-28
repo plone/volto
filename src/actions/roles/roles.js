@@ -3,7 +3,7 @@
  * @module actions/roles/roles
  */
 
-import { LIST_ROLES } from '../../constants/ActionTypes';
+import { LIST_ROLES } from '@plone/volto/constants/ActionTypes';
 
 /**
  * List roles.
