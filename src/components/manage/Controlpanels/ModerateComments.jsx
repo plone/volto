@@ -14,11 +14,11 @@ import { Container, Button, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { deleteComment, searchContent } from '../../../actions';
-import { CommentEditModal, Icon, Toolbar } from '../../../components';
-import { getBaseUrl } from '../../../helpers';
+import { deleteComment, searchContent } from '@plone/volto/actions';
+import { CommentEditModal, Icon, Toolbar } from '@plone/volto/components';
+import { getBaseUrl } from '@plone/volto/helpers';
 
-import backSVG from '../../../icons/back.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   back: {

@@ -14,9 +14,9 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { Link, withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { Form, Toolbar, Toast } from '../../';
-import { emailNotification } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
+import { Form, Toolbar, Toast } from '@plone/volto/components';
+import { emailNotification } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   send: {
@@ -121,7 +121,7 @@ class ContactForm extends Component {
         <Toast
           success
           title={this.props.intl.formatMessage(messages.success)}
-          content={this.props.intl.formatMessage(messages.saved)}
+          content={this.props.intl.formatMessage(messages.messageSent)}
         />,
       );
     }

@@ -10,8 +10,7 @@ import { Form, Grid, Label } from 'semantic-ui-react';
 import { isObject, map } from 'lodash';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import AsyncPaginate from 'react-select-async-paginate';
-import CreatableSelect from 'react-select/creatable';
+import loadable from '@loadable/component';
 
 import {
   getVocabFromHint,
@@ -25,9 +24,16 @@ import {
   DropdownIndicator,
   selectTheme,
   customSelectStyles,
-} from './SelectStyling';
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
+const CreatableSelect = loadable(() => import('react-select/creatable'));
 
 const messages = defineMessages({
+  select: {
+    id: 'Select…',
+    defaultMessage: 'Select…',
+  },
   no_value: {
     id: 'No value',
     defaultMessage: 'No value',
@@ -52,7 +58,9 @@ class ArrayWidget extends Component {
     required: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     getVocabulary: PropTypes.func.isRequired,
-    choices: PropTypes.arrayOf(PropTypes.object),
+    choices: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+    ),
     loading: PropTypes.bool,
     items: PropTypes.shape({
       vocabulary: PropTypes.object,
@@ -107,7 +115,7 @@ class ArrayWidget extends Component {
       selectedOption: props.value
         ? props.value.map(item =>
             isObject(item)
-              ? { label: item.title, value: item.token }
+              ? { label: item.title || item.token, value: item.token }
               : { label: item, value: item },
           )
         : [],
@@ -120,7 +128,7 @@ class ArrayWidget extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    if (this.vocabBaseUrl) {
+    if (!this.props.items?.choices && this.vocabBaseUrl) {
       this.props.getVocabulary(this.vocabBaseUrl);
     }
   }
@@ -197,7 +205,7 @@ class ArrayWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              {this.vocabBaseUrl ? (
+              {!this.props.items?.choices && this.vocabBaseUrl ? (
                 <AsyncPaginate
                   className="react-select-container"
                   classNamePrefix="react-select"
@@ -222,7 +230,11 @@ class ArrayWidget extends Component {
                       ? [
                           ...this.props.choices.map(option => ({
                             value: option[0],
-                            label: option[1],
+                            label:
+                              // Fix "None" on the serializer, to remove when fixed in p.restapi
+                              option[1] !== 'None' && option[1]
+                                ? option[1]
+                                : option[0],
                           })),
                           {
                             label: this.props.intl.formatMessage(
@@ -231,12 +243,20 @@ class ArrayWidget extends Component {
                             value: 'no-value',
                           },
                         ]
-                      : []
+                      : [
+                          {
+                            label: this.props.intl.formatMessage(
+                              messages.no_value,
+                            ),
+                            value: 'no-value',
+                          },
+                        ]
                   }
                   styles={customSelectStyles}
                   theme={selectTheme}
                   components={{ DropdownIndicator, Option }}
                   value={selectedOption || []}
+                  placeholder={this.props.intl.formatMessage(messages.select)}
                   onChange={this.handleChange}
                   isMulti
                 />
@@ -270,7 +290,13 @@ export default compose(
         getVocabFromField(props) ||
         getVocabFromItems(props);
       const vocabState = state.vocabularies[vocabBaseUrl];
-      if (vocabState) {
+      // If the schema already has the choices in it, then do not try to get the vocab,
+      // even if there is one
+      if (props.items?.choices) {
+        return {
+          choices: props.items.choices,
+        };
+      } else if (vocabState) {
         return {
           choices: vocabState.items,
           itemsTotal: vocabState.itemsTotal,

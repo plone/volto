@@ -13,9 +13,9 @@ import { map } from 'lodash';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import { defineMessages, injectIntl } from 'react-intl';
 
-import { resetSearchContent, searchContent } from '../../../../../actions';
-import { addAppURL } from '../../../../../helpers';
-import URLUtils from '../../utils/URLUtils';
+import { resetSearchContent, searchContent } from '@plone/volto/actions';
+import { addAppURL } from '@plone/volto/helpers';
+import URLUtils from '@plone/volto/components/manage/AnchorPlugin/utils/URLUtils';
 
 const messages = defineMessages({
   placeholder: {
@@ -164,6 +164,7 @@ class AddLinkForm extends Component {
   onKeyDown(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
+      e.stopPropagation();
       this.onSubmit();
     } else if (e.key === 'Escape') {
       e.preventDefault();

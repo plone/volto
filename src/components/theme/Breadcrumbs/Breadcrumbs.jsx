@@ -12,8 +12,8 @@ import { Breadcrumb, Container, Segment } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { Icon } from '@plone/volto/components';
-import { getBreadcrumbs } from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
+import { getBreadcrumbs } from '@plone/volto/actions';
+import { getBaseUrl } from '@plone/volto/helpers';
 
 import homeSVG from '@plone/volto/icons/home.svg';
 

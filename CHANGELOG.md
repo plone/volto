@@ -1,21 +1,327 @@
 # Change Log
 
-## 4.0.0 (unreleased)
+## 5.2.2 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 5.2.1 (2020-04-27)
+
+### Internal
+
+- Remove console log in workflow asyncConnect :( @sneridagh
+
+## 5.2.0 (2020-04-27)
+
+### Feature
+
+- Improvement of API requests error handling @sneridagh
+- Unauthorized on folder contents if no proper credentials @sneridagh
+
+### Bugfix
+
+- Improve German translations for folder contents view @timo
+- Make label of checkboxwidget clickable @pbauer #1414
+- Show new added user in user control panel @iFlameing #1271
+- Support multi selection in roles and groups and polish add user #1372
+- Listing block: removed message 'No results found' only in view mode on public site, in editMode is still present. @giuliaghisini
+
+### Internal
+
+- Add crossorigin to the preload resources tags while in development @sneridagh
+- Permissions in contents and Edit @sneridagh
+- Fix the error on content Edit no credentials now shows `Unauthorized` @sneridagh
+- Improve console server output showing info @sneridagh
+
+## 5.1.0 (2020-04-23)
+
+### Breaking
+
+### Feature
+
+- Full screen right sidebar @rexalex #1345
+- Enable internal API proxy for not to rely on CORS on development @sneridagh
+- Added Print CSS @iFlameing #1289
+- Added error handling for Add and Edit forms #1392 @nzambello
+
+### Bugfix
+
+- Japanese translation @terapyon
+- Fix `ArrayWidget` to support multiselect schema `schema.List`/`schema.Set`-> `schema.Choice` hardcoded (not using vocabularies) combination @sneridagh
+- Remove Back button from control panels, since it's redundant @sneridagh
+- Show past dates in date time widget calendar @nzambello
+
+### Internal
+
+- Translated labels in Eventi View @nzambello
+- Improve i18n script, so shadowed components are not overriding their original translations. For the record, any override of i18n messages, should be done somewhere else (eg. config object) @sneridagh
+
+## 5.0.1 (2020-04-16)
+
+### Bugfix
+
+- Show new added user in user control panel @iFlameing #1271
+- Fixes for contact form @nzambello
+
+## 5.0.0 (2020-04-12)
+
+### Breaking
+
+- Added basic lazy loading dependencies and boilerplate @sneridagh
+- Change component to where page title is set to `View.jsx`, remove all `Helmet` calls from inner views @jackahl
+
+### Feature
+
+- Added date time widget @nzambello
+- Add meta description tags and meta generator @sneridagh
+- Add lang property in `html` tag depending on the site/content language @sneridagh
+- Add `App.jsx` component insertion point @sneridagh
+- Lazy load `EventView.jsx`, splitting out all its big dependencies (Luxon) along with it @sneridagh
+- Lazy load `pretty` library, used in the HTML block @sneridagh
+- Lazy load `Raven` library @sneridagh
+- Lazy load `React Select` library @sneridagh
+
+### Bugfix
+
+- Show save/cancel on control panels @avoinea #850
+- Fix listing "show more" link rendering conditions @nzambello
+
+### Internal
+
+- Make Jest only looks up in `src` folder @sneridagh
+- Re-arrange `components/index.js` @sneridagh
+- Added a patch for Razzle Jest config generator to include `modulePathIgnorePatterns` option @sneridagh
+- Fix Travis random no sound card found error @sneridagh
+- docs: add release documentation @tisto
+
+## 4.6.0 (2020-04-06)
+
+### Feature
+
+- pagination on site search results @giuliaghisini
+
+### Bugfix
+
+- Fix use case for non-multilingual setups and on projects on lang loading @sneridagh
+
+### Internal
+
+- Typo in German translations @steffenri
+- Complete more Italian translations @nzambello
+
+## 4.5.0 (2020-04-06)
+
+### Feature
+
+- /sitemap to view sitemap based on @navigation with depth 4 @giuliaghisini
+
+### Bugfix
+
+- Fix ArrayWidget to support static supermodel vocabulary @datakurre
+- Bring back the OutdatedBrowser component, it got removed in a bad merge :( @sneridagh
+
+### Internal
+
+- Improve the i18n script, only write the pot file if it's really different @sneridagh
+
+## 4.4.0 (2020-04-03)
+
+### Feature
+
+- /contents (folder content view) is sortable @ksuess
+- Updated the (folder content icons to Pastanaga Icons) @iFlameing
+
+### Bugfix
+
+- Fix conversion from DraftJS to HTML using redraft for atomic entities (IMAGE) @sneridagh
+
+## 4.3.0 (2020-04-01)
+
+### Feature
+
+- Added recursive workflow changes @robgietema
+
+### Bugfix
+
+- Fixed ssr link view @robgietema
+
+## 4.2.0 (2020-03-31)
+
+### Feature
+
+- Add Multilingual Support @sneridagh
+
+## 4.1.2 (2020-03-30)
+
+### Bugfix
+
+- Fix typo for Japanese translation @terapyon
+- Fix refresh of the `Breadcrumbs` and `Navigation` components on calling `/login` and `/logout` @sneridagh
+- Fix refresh of the `Navigation` component on calling `/login` and `/logout` @sneridagh
+- Adjust implementation of the download link behavior for files @sneridagh
+- Fix Maps block to use maps-inner instead of video-inner class @timo
+- Add div with class "table-of-contents" to ToC block @timo
+
+### Internal
+
+- Upgrade critical Plone 5.2.1 deps in api folder @sneridagh
+- Improve Cypress Video Block tests @sneridagh @timo
+- Run `yarn i18n` on any JSX change @sneridagh
+- Add link mailto Cypress test @timo
+- Added design guidelines manifesto @sneridagh
+
+## 4.1.1 (2020-03-18)
+
+### Bugfix
+
+- Fix for #1267 - Link inside text for content-type without blocks breaks the site @sneridagh
+- Japanese translation @terapyon
+- Fix production mode for newly created `__DEVELOPMENT__` global @sneridagh
+
+### Internal
+
+- Upgrade to Cypress 4 @timo
+
+## 4.1.0 (2020-03-13)
+
+### Feature
+
+- Add `flattenHTMLToAppURL` helper method for remove api url from TinyMCE generated HTML @cekk
+- Add development mode global @sneridagh
+
+### Bugfix
+
+- Improve the UX of the listing block when queries are running @sneridagh
+- Added table of content cypress test @steffenri
+
+## 4.0.1 (2020-03-09)
+
+### Bugfix
+
+- Fixes #1262 - SSR support for "undetected" browsers
+- Japanese translation @terapyon
+- Site settings styling fixed in the Controlpanel
+- Increase ObjectBrowser limit per folder to 1000, partially fixes #1259 @sneridagh
+- Deprecate `utils.less` as it's a leftover and it collides with some use cases depending on the viewport, see: #1265
+
+### Internal
+
+- Use kitconcept.volto as integration package @sneridagh
+
+## 4.0.0 (2020-03-01)
+
+### Feature
+
+Summary of the most important features in this final release. For more detailed information
+refer to all of them in https://github.com/plone/volto/releases
+
+- Improved Pastanaga Editor
+- New Pastanaga Editor sidebar
+- New mobile first toolbar
+- Developing blocks experience simplified
+- New Object Browser
+- Listing, TOC, Lead Image blocks
+- Improved existing blocks (Image, Video, Maps)
+- New blocks chooser and future proof blocks definitions
+- Definition of default Blocks per content type
+- Body classes like the Plone ones hinting content types, section and current view
+- New message system
+- React hooks support
+- Several internal libraries updated, including Redux, Router ones that support hooks as well
+- New locales (es, it, ja, pt, pt_BR)
+
+### Bugfixes
+
+- Tons of bug fixes
+
+## 4.0.0-alpha.43 (2020-03-01)
+
+### Changes
+
+- Fixes #982 - History compare/diff @avoinea
+- Responsive header @ksuess
+  - Anontools (login, register) wrapping under long navigation.
+  - Breaking change: Hamburger menu also on tablet.
+  - Mobile: compact display of anontools and search.
+
+## 4.0.0-alpha.42 (2020-02-26)
+
+### Changes
+
+- Revert "Fix Scrolling Functionality if there are many columns in table" since it has non desired secondary effects in the table block and other tables @sneridagh
+
+## 4.0.0-alpha.41 (2020-02-26)
+
+### Changes
+
+- Fixes for the `ListingView` (Issue #1188, Listing View) @wkbkhard
+- Fix date widgets on QueryString widget on listings and in the widget @sneridagh
+- Update German translation @tisto
+- i18n in toolbar and folder contents view @ksuess
+
+## 4.0.0-alpha.40 (2020-02-24)
+
+### Added
+
+- Add pagination support to listing blocks @sneridagh
+
+### Changes
+
+- Fix Video and Maps blocks hydration quirks on view mode @sneridagh
+- Deleted Empty Select Component @aryamanpuri
+- Fix `RichText` Widget on normal forms @sneridagh
+- Fix Guillotina tests @bloodbare
+- Fix problem with not wrapped element in `Provider` store in `WysiwygWidget` component
+  due that now, the links are wrapped with a connected component @sneridagh
+
+## 4.0.0-alpha.39 (2020-02-18)
+
+### Added
+
+- Add permission check to edit form @sneridagh
+
+### Changes
+
+- Fix and improve Error in SSR @sneridagh
+- Fix `LinkAnchorPlugin` press Enter key inside blocks with draftJS widgets @sneridagh
+
+### Internal
+
+- Replace all relative paths to `@plone/volto` absolute paths to ensure you can override all the resources via component shadowing @sneridagh
+
+## 4.0.0-alpha.38 (2020-02-18)
+
+### Internal
+
+- Update to use ESLint 6 @timo
+
+## 4.0.0-alpha.37 (2020-02-18)
 
 ### Added
 
 - Chose template for listing block @giuliaghisini
 - Event type view @nileshgulia1 @pnicolli
+- Add ability to define the starting blocks per content type @sneridagh
+- Reference widget: show item title and path in search and hover items selected @giuliaghisini
 
 ### Changes
 
+- Fix the "jump" on the blocks editor on focusing blocks @sneridagh
 - Include link and size info to the full size image in `ImageView` view component @sneridagh
 - In the Display menu, only show views that are implemented @pnicolli
 - Hide Blocks fields in Layout fieldset in Add/Edit forms @pnicolli
 - Updated italian translations @nzambello
 - Fallback for non existing layout views registered in `constants/Layouts` when selected in the widget @sneridagh
 - Fix select widget for array inline choices fields and `z-index` problem @sneridagh
+- Improve UX of the edit block Image component @sneridagh
 - Fix on creating a new block, it should show the sidebar block properties (#1167) @sneridagh
+- Send only the changed fields on PATCH (edit content) operations @sneridagh
+- Japanese translation @terapyon
 
 ### Internal
 

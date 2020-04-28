@@ -17,7 +17,7 @@ const DefaultTemplate = ({ items, linkMore, isEditMode }) => {
         {linkMore?.title || href}
       </ConditionalLink>
     );
-  } else {
+  } else if (href) {
     link = <a href={href}>{linkMore?.title || href}</a>;
   }
 

@@ -17,7 +17,7 @@ import {
   UPDATE_PASSWORD,
   INITIAL_PASSWORD,
   RESET_PASSWORD,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Users action', () => {
   describe('createUser', () => {

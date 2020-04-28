@@ -13,6 +13,7 @@ export {
 } from '@plone/volto/helpers/AuthToken/AuthToken';
 export {
   addAppURL,
+  flattenHTMLToAppURL,
   flattenToAppURL,
   isInternalURL,
   getBaseUrl,
@@ -40,3 +41,4 @@ export {
 export AlignBlock from '@plone/volto/helpers/AlignBlock/AlignBlock';
 
 export Helmet from './Helmet/Helmet';
+export { difference } from '@plone/volto/helpers/Utils/Utils';

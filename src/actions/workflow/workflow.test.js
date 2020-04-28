@@ -3,7 +3,7 @@ import {
   GET_WORKFLOW,
   GET_WORKFLOW_MULTIPLE,
   TRANSITION_WORKFLOW,
-} from '../../constants/ActionTypes';
+} from '@plone/volto/constants/ActionTypes';
 
 describe('Workflow action', () => {
   describe('getWorkflow', () => {
@@ -35,6 +35,7 @@ describe('Workflow action', () => {
 
       expect(action.type).toEqual(TRANSITION_WORKFLOW);
       expect(action.request.op).toEqual('post');
+      expect(action.request.data.include_children).toEqual(false);
       expect(action.request.path).toEqual(url);
     });
 

@@ -8,19 +8,35 @@ import PropTypes from 'prop-types';
 import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { asyncConnect } from 'redux-connect';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import qs from 'query-string';
+import { find } from 'lodash';
+import { toast } from 'react-toastify';
 
-import { Form, Icon, Toolbar, Sidebar } from '../../../components';
-import { updateContent, getContent, getSchema } from '../../../actions';
-import { getBaseUrl, hasBlocksData } from '../../../helpers';
+import {
+  Forbidden,
+  Form,
+  Icon,
+  Sidebar,
+  Toast,
+  Toolbar,
+  Unauthorized,
+} from '@plone/volto/components';
+import {
+  updateContent,
+  getContent,
+  getSchema,
+  listActions,
+} from '@plone/volto/actions';
+import { getBaseUrl, hasBlocksData } from '@plone/volto/helpers';
 
-import saveSVG from '../../../icons/save.svg';
-import clearSVG from '../../../icons/clear.svg';
+import saveSVG from '@plone/volto/icons/save.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   edit: {
@@ -34,6 +50,10 @@ const messages = defineMessages({
   cancel: {
     id: 'Cancel',
     defaultMessage: 'Cancel',
+  },
+  error: {
+    id: 'Error',
+    defaultMessage: 'Error',
   },
 });
 
@@ -70,6 +90,7 @@ class Edit extends Component {
       '@type': PropTypes.string,
     }),
     schema: PropTypes.objectOf(PropTypes.any),
+    objectActions: PropTypes.array,
   };
 
   /**
@@ -125,7 +146,7 @@ class Edit extends Component {
       }
     }
     // Hack for make the Plone site editable by Volto Editor without checkings
-    if (this.props.content['@type'] === 'Plone Site') {
+    if (this.props?.content?.['@type'] === 'Plone Site') {
       this.setState({
         visual: true,
       });
@@ -133,6 +154,16 @@ class Edit extends Component {
     if (this.props.updateRequest.loading && nextProps.updateRequest.loaded) {
       this.props.history.push(
         this.props.returnUrl || getBaseUrl(this.props.pathname),
+      );
+    }
+
+    if (nextProps.updateRequest.error) {
+      toast.error(
+        <Toast
+          error
+          title={this.props.intl.formatMessage(messages.error)}
+          content={`${nextProps.updateRequest.error.status} ${nextProps.updateRequest.error.response?.body?.message}`}
+        />,
       );
     }
   }
@@ -166,34 +197,60 @@ class Edit extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const editPermission = find(this.props.objectActions, { id: 'edit' });
+
     return (
       <div id="page-edit">
-        <Helmet
-          title={
-            this.props?.schema?.title
-              ? this.props.intl.formatMessage(messages.edit, {
-                  title: this.props.schema.title,
-                })
-              : null
-          }
-        />
-        <Form
-          ref={this.form}
-          schema={this.props.schema}
-          formData={this.props.content}
-          onSubmit={this.onSubmit}
-          hideActions
-          pathname={this.props.pathname}
-          visual={this.state.visual}
-          title={
-            this.props?.schema?.title
-              ? this.props.intl.formatMessage(messages.edit, {
-                  title: this.props.schema.title,
-                })
-              : null
-          }
-          loading={this.props.updateRequest.loading}
-        />
+        {this.props.objectActions.length > 0 && (
+          <>
+            {editPermission && (
+              <>
+                <Helmet
+                  title={
+                    this.props?.schema?.title
+                      ? this.props.intl.formatMessage(messages.edit, {
+                          title: this.props.schema.title,
+                        })
+                      : null
+                  }
+                />
+                <Form
+                  isEditForm
+                  ref={this.form}
+                  schema={this.props.schema}
+                  formData={this.props.content}
+                  onSubmit={this.onSubmit}
+                  hideActions
+                  pathname={this.props.pathname}
+                  visual={this.state.visual}
+                  title={
+                    this.props?.schema?.title
+                      ? this.props.intl.formatMessage(messages.edit, {
+                          title: this.props.schema.title,
+                        })
+                      : null
+                  }
+                  loading={this.props.updateRequest.loading}
+                />
+              </>
+            )}
+            {!editPermission && (
+              <>
+                {this.props.token ? (
+                  <Forbidden pathname={this.props.pathname} />
+                ) : (
+                  <Unauthorized pathname={this.props.pathname} />
+                )}
+              </>
+            )}
+
+            {editPermission && this.state.visual && (
+              <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
+                <Sidebar />
+              </Portal>
+            )}
+          </>
+        )}
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
@@ -231,21 +288,49 @@ class Edit extends Component {
             }
           />
         </Portal>
-        {this.state.visual && (
-          <Portal node={__CLIENT__ && document.getElementById('sidebar')}>
-            <Sidebar />
-          </Portal>
-        )}
       </div>
     );
   }
 }
 
-export default compose(
-  DragDropContext(HTML5Backend),
+export const __test__ = compose(
   injectIntl,
   connect(
     (state, props) => ({
+      objectActions: state.actions.actions.object,
+      token: state.userSession.token,
+      content: state.content.data,
+      schema: state.schema.schema,
+      getRequest: state.content.get,
+      schemaRequest: state.schema,
+      updateRequest: state.content.update,
+      createRequest: state.content.create,
+      pathname: props.location.pathname,
+      returnUrl: qs.parse(props.location.search).return_url,
+    }),
+    {
+      updateContent,
+      getContent,
+      getSchema,
+    },
+  ),
+)(Edit);
+
+export default compose(
+  DragDropContext(HTML5Backend),
+  injectIntl,
+  asyncConnect([
+    {
+      key: 'actions',
+      promise: async ({ location, store: { dispatch } }) => {
+        await dispatch(listActions(getBaseUrl(location.pathname)));
+      },
+    },
+  ]),
+  connect(
+    (state, props) => ({
+      objectActions: state.actions.actions.object,
+      token: state.userSession.token,
       content: state.content.data,
       schema: state.schema.schema,
       getRequest: state.content.get,

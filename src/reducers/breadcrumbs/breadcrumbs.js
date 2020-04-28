@@ -6,7 +6,7 @@
 import { map } from 'lodash';
 import { settings } from '~/config';
 
-import { GET_BREADCRUMBS } from '../../constants/ActionTypes';
+import { GET_BREADCRUMBS } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
   error: null,

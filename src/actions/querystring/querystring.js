@@ -3,7 +3,7 @@
  * @module actions/querystring/querystring
  */
 
-import { GET_QUERYSTRING } from '../../constants/ActionTypes';
+import { GET_QUERYSTRING } from '@plone/volto/constants/ActionTypes';
 
 /**
  * Get querystring.

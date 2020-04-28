@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import View from './View';
+import View from '@plone/volto/components/manage/Blocks/ToC/View';
 
 /**
  * Edit toc block class.

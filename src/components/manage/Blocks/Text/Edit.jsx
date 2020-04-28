@@ -16,8 +16,8 @@ import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
 import { settings } from '~/config';
 
-import { Icon, BlockChooser } from '../../../../components';
-import addSVG from '../../../../icons/circle-plus.svg';
+import { Icon, BlockChooser } from '@plone/volto/components';
+import addSVG from '@plone/volto/icons/circle-plus.svg';
 
 const messages = defineMessages({
   text: {

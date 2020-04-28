@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet, isInternalURL } from '@plone/volto/helpers';
+import { isInternalURL } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 
@@ -48,8 +48,8 @@ class LinkView extends Component {
     if (!this.props.token) {
       if (isInternalURL(this.props.content.remoteUrl)) {
         this.props.history.replace(this.props.content.remoteUrl);
-      } else {
-        document.location.href = this.props.content.remoteUrl;
+      } else if (!__SERVER__) {
+        window.location.href = this.props.content.remoteUrl;
       }
     }
   }
@@ -64,8 +64,8 @@ class LinkView extends Component {
     if (!this.props.token) {
       if (isInternalURL(this.props.content.remoteUrl)) {
         this.props.history.replace(this.props.content.remoteUrl);
-      } else {
-        document.location.href = this.props.content.remoteUrl;
+      } else if (!__SERVER__) {
+        window.location.href = this.props.content.remoteUrl;
       }
     }
   }
@@ -78,7 +78,6 @@ class LinkView extends Component {
   render() {
     return (
       <Container id="page-document">
-        <Helmet title={this.props.content.title} />
         <h1 className="documentFirstHeading">{this.props.content.title}</h1>
         {this.props.content.description && (
           <p className="documentDescription">

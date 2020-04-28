@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import unionClassNames from 'union-class-names';
 import EditorUtils from 'draft-js-plugins-utils';
-import AddLinkForm from './AddLinkForm';
-import Icon from '../../../../../components/theme/Icon/Icon';
+import AddLinkForm from '@plone/volto/components/manage/AnchorPlugin/components/LinkButton/AddLinkForm';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 
-import linkSVG from '../../../../../icons/link.svg';
-import unlinkSVG from '../../../../../icons/unlink.svg';
+import linkSVG from '@plone/volto/icons/link.svg';
+import unlinkSVG from '@plone/volto/icons/unlink.svg';
 
 /**
  * Add link form class.

@@ -1,5 +1,5 @@
 import userSession from './userSession';
-import { LOGIN, LOGOUT } from '../../constants/ActionTypes';
+import { LOGIN, LOGOUT } from '@plone/volto/constants/ActionTypes';
 
 describe('User session reducer', () => {
   it('should return the initial state', () => {

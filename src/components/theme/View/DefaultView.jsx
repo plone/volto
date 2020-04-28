@@ -5,7 +5,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import { Container, Image } from 'semantic-ui-react';
@@ -39,7 +38,6 @@ const DefaultView = ({ content, intl, location }) => {
 
   return hasBlocksData(content) ? (
     <div id="page-document" className="ui container">
-      <Helmet title={content.title} />
       {map(content[blocksLayoutFieldname].items, block => {
         const Block =
           blocks.blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.[
@@ -51,7 +49,7 @@ const DefaultView = ({ content, intl, location }) => {
             id={block}
             properties={content}
             data={content[blocksFieldname][block]}
-            path={getBaseUrl(location.pathname)}
+            path={getBaseUrl(location?.pathname || '')}
           />
         ) : (
           <div key={block}>
@@ -64,7 +62,6 @@ const DefaultView = ({ content, intl, location }) => {
     </div>
   ) : (
     <Container id="page-document">
-      <Helmet title={content.title} />
       <h1 className="documentFirstHeading">{content.title}</h1>
       {content.description && (
         <p className="documentDescription">{content.description}</p>

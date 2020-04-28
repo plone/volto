@@ -23,6 +23,7 @@ import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-ima
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
+import uploadSVG from '@plone/volto/icons/upload.svg';
 
 const messages = defineMessages({
   ImageBlockInputPlaceholder: {
@@ -239,7 +240,7 @@ class Edit extends Component {
           />
         ) : (
           <div>
-            <Dropzone onDrop={this.onDrop} className="dropzone">
+            <Dropzone disableClick onDrop={this.onDrop} className="dropzone">
               <Message>
                 {this.state.uploading && (
                   <Dimmer active>
@@ -260,6 +261,16 @@ class Edit extends Component {
                       >
                         <Icon name={navTreeSVG} size="24px" />
                       </Button>
+                    </Button.Group>
+                    <Button.Group>
+                      <label className="ui button basic icon">
+                        <Icon name={uploadSVG} size="24px" />
+                        <input
+                          type="file"
+                          onChange={this.onUploadImage}
+                          style={{ display: 'none' }}
+                        />
+                      </label>
                     </Button.Group>
                     <Input
                       onKeyDown={this.onKeyDownVariantMenuForm}
@@ -290,6 +301,7 @@ class Edit extends Component {
                       <Button
                         basic
                         primary
+                        disabled={!this.state.url}
                         onClick={e => {
                           e.stopPropagation();
                           this.onSubmitUrl();

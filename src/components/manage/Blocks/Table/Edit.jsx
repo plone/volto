@@ -12,12 +12,12 @@ import { Portal } from 'react-portal';
 import cx from 'classnames';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import Cell from './Cell';
-import { Field, Icon } from '../../../../components';
+import Cell from '@plone/volto/components/manage/Blocks/Table/Cell';
+import { Field, Icon } from '@plone/volto/components';
 
-import rowSVG from '../../../../icons/row.svg';
-import colSVG from '../../../../icons/column.svg';
-import deleteSVG from '../../../../icons/delete.svg';
+import rowSVG from '@plone/volto/icons/row.svg';
+import colSVG from '@plone/volto/icons/column.svg';
+import deleteSVG from '@plone/volto/icons/delete.svg';
 
 const getId = () => Math.floor(Math.random() * Math.pow(2, 24)).toString(32);
 

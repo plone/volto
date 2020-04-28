@@ -8,34 +8,46 @@ exports[`ListingView renders a listing_view component 1`] = `
   <section
     id="content-core"
   >
-    <article>
-      <h2>
-        <a
-          href="/item"
-          onClick={[Function]}
-          title="Document"
-        >
-          My item
-        </a>
-      </h2>
-      <p>
-        My item description
-      </p>
-    </article>
-    <article>
-      <h2>
-        <a
-          href="/item2"
-          onClick={[Function]}
-          title="Document"
-        >
-          Second item
-        </a>
-      </h2>
-      <p>
-        My second item description
-      </p>
-    </article>
+    <div
+      className="ui segment listing-item"
+    >
+      <div
+        className="ui container"
+      >
+        <h2>
+          <a
+            href="/item"
+            onClick={[Function]}
+            title="Document"
+          >
+            My item
+          </a>
+        </h2>
+        <p>
+          My item description
+        </p>
+      </div>
+    </div>
+    <div
+      className="ui segment listing-item"
+    >
+      <div
+        className="ui container"
+      >
+        <h2>
+          <a
+            href="/item2"
+            onClick={[Function]}
+            title="Document"
+          >
+            Second item
+          </a>
+        </h2>
+        <p>
+          My second item description
+        </p>
+      </div>
+    </div>
   </section>
 </div>
 `;

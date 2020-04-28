@@ -22,7 +22,7 @@ const messages = defineMessages({
  */
 
 const View = ({ data, intl }) => (
-  <p
+  <div
     className={cx(
       'block maps align',
       {
@@ -32,7 +32,7 @@ const View = ({ data, intl }) => (
     )}
   >
     <div
-      className={cx('video-inner', {
+      className={cx('maps-inner', {
         'full-width': data.align === 'full',
       })}
     >
@@ -44,7 +44,7 @@ const View = ({ data, intl }) => (
         allowFullScreen
       />
     </div>
-  </p>
+  </div>
 );
 
 /**

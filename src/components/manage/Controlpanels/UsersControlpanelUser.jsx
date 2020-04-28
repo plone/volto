@@ -6,16 +6,15 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Dropdown, Table, Checkbox } from 'semantic-ui-react';
-import trashSVG from '../../../icons/delete.svg';
-import { Icon } from '../../../components';
+import trashSVG from '@plone/volto/icons/delete.svg';
+import { Icon } from '@plone/volto/components';
 
-@injectIntl
 /**
  * UsersControlpanelUser class.
  * @class UsersControlpanelUser
  * @extends Component
  */
-export default class UsersControlpanelUser extends Component {
+class UsersControlpanelUser extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -64,7 +63,7 @@ export default class UsersControlpanelUser extends Component {
   render() {
     return (
       <Table.Row key={this.props.user.username}>
-        <Table.Cell>{this.props.user.fullname}</Table.Cell>
+        <Table.Cell className="fullname">{this.props.user.fullname}</Table.Cell>
         {this.props.roles.map(role => (
           <Table.Cell key={role.id}>
             <Checkbox
@@ -91,3 +90,5 @@ export default class UsersControlpanelUser extends Component {
     );
   }
 }
+
+export default injectIntl(UsersControlpanelUser);

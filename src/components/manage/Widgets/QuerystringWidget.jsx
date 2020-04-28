@@ -17,18 +17,21 @@ import {
 } from 'semantic-ui-react';
 import { filter, remove, toPairs, groupBy, isEmpty, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import { getQuerystring } from '../../../actions';
-import Select from 'react-select';
+import { getQuerystring } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
+import { format, parse } from 'date-fns';
+import loadable from '@loadable/component';
 
-import clearSVG from '../../../icons/clear.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 import {
   Option,
   DropdownIndicator,
   selectTheme,
   customSelectStyles,
-} from './SelectStyling';
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+const Select = loadable(() => import('react-select'));
 
 const messages = defineMessages({
   default: {
@@ -155,7 +158,11 @@ class QuerystringWidget extends Component {
       case 'DateWidget':
         return (
           <Form.Field width={4}>
-            <Input type="date" {...props} />
+            <Input
+              type="date"
+              {...props}
+              value={format(parse(row.v), 'YYYY-MM-DD')}
+            />
           </Form.Field>
         );
       case 'DateRangeWidget': // 2 date inputs
@@ -165,7 +172,7 @@ class QuerystringWidget extends Component {
               <Input
                 type="date"
                 {...props}
-                value={row.v[0]}
+                value={format(parse(row.v[0]), 'YYYY-MM-DD')}
                 onChange={data =>
                   this.onChangeValue(index, [data.target.value, row.v[1]])
                 }
@@ -175,7 +182,7 @@ class QuerystringWidget extends Component {
               <Input
                 type="date"
                 {...props}
-                value={row.v[1]}
+                value={format(parse(row.v[1]), 'YYYY-MM-DD')}
                 onChange={data =>
                   this.onChangeValue(index, [row.v[0], data.target.value])
                 }

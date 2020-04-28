@@ -26,6 +26,10 @@ const messages = defineMessages({
     id: 'History',
     defaultMessage: 'History',
   },
+  sharing: {
+    id: 'Sharing',
+    defaultMessage: 'Sharing',
+  },
 });
 
 /**
@@ -107,7 +111,7 @@ class More extends Component {
                   <button>
                     <div>
                       <span className="pastanaga-menu-label">
-                        {historyAction.title}
+                        {this.props.intl.formatMessage(messages.history)}
                       </span>
                       <span className="pastanaga-menu-value" />
                     </div>
@@ -131,7 +135,7 @@ class More extends Component {
               <li>
                 <Link to={`${path}/sharing`}>
                   <button>
-                    {sharingAction.title}
+                    {this.props.intl.formatMessage(messages.sharing)}
                     <Icon name={rightArrowSVG} size="24px" />
                   </button>
                 </Link>

@@ -1,5 +1,5 @@
 import { getTypes } from './types';
-import { GET_TYPES } from '../../constants/ActionTypes';
+import { GET_TYPES } from '@plone/volto/constants/ActionTypes';
 
 describe('Types action', () => {
   describe('getTypes', () => {

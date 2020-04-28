@@ -2,55 +2,6 @@
          Theme Overrides
 *******************************/
 
-.ui.basic.segment.header-wrapper {
-  margin-bottom: 0;
-}
-
-.ui.basic.segment .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  .logo-nav-wrapper {
-    display: flex;
-    flex: 1;
-    align-items: center;
-
-    .logo {
-      flex: 0 0 auto;
-    }
-
-    .navigation {
-      -ms-overflow-style: none; /* IE 10+ */
-      overflow-x: auto;
-
-      &::-webkit-scrollbar {
-        height: 0; /* remove scrollbar space */
-        background: transparent; /* optional: just make scrollbar invisible */
-      }
-
-      /* optional: show position indicator in red */
-      &::-webkit-scrollbar-thumb {
-        background: #f00;
-      }
-
-      @media only screen and (max-width: @largestMobileScreen) {
-        overflow-x: initial;
-      }
-    }
-  }
-
-  @media only screen and (max-width: @largestMobileScreen) {
-    flex-direction: column;
-    align-items: initial;
-
-    .logo-nav-wrapper {
-      align-items: initial;
-      justify-content: space-between;
-    }
-  }
-}
-
 .ui.basic.segment.content-area {
   flex: 1 0 auto; /* IE11 fix, can't barely use  flex: 1; */
   padding-right: 0;
@@ -110,5 +61,10 @@
 .ui.segment.imageborder {
   display: flex;
   height: 100%;
+  align-items: center;
+}
+
+.ui.segment.listing-item {
+  display: flex;
   align-items: center;
 }

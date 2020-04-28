@@ -14,18 +14,22 @@ import cookie from 'react-cookie';
 import { filter, find } from 'lodash';
 import cx from 'classnames';
 
-import More from './More';
-import PersonalTools from './PersonalTools';
-import Types from './Types';
-import PersonalInformation from '../Preferences/PersonalInformation';
-import PersonalPreferences from '../Preferences/PersonalPreferences';
-import StandardWrapper from './StandardWrapper';
-import { getTypes, listActions } from '@plone/volto/actions';
+import More from '@plone/volto/components/manage/Toolbar/More';
+import PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
+import Types from '@plone/volto/components/manage/Toolbar/Types';
+import PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
+import PersonalPreferences from '@plone/volto/components/manage/Preferences/PersonalPreferences';
+import StandardWrapper from '@plone/volto/components/manage/Toolbar/StandardWrapper';
+import {
+  getTypes,
+  listActions,
+  setExpandedToolbar,
+} from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
 import { BodyClass, getBaseUrl } from '@plone/volto/helpers';
 
-import pastanagaSmall from './pastanaga-small.svg';
-import pastanagalogo from './pastanaga.svg';
+import pastanagaSmall from '@plone/volto/components/manage/Toolbar/pastanaga-small.svg';
+import pastanagalogo from '@plone/volto/components/manage/Toolbar/pastanaga.svg';
 import penSVG from '@plone/volto/icons/pen.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import addSVG from '@plone/volto/icons/add-document.svg';
@@ -66,12 +70,36 @@ const messages = defineMessages({
     id: 'Personal Preferences',
     defaultMessage: 'Personal Preferences',
   },
+  collection: {
+    id: 'Collection',
+    defaultMessage: 'Collection',
+  },
+  file: {
+    id: 'File',
+    defaultMessage: 'File',
+  },
+  link: {
+    id: 'Link',
+    defaultMessage: 'Link',
+  },
+  newsItem: {
+    id: 'News Item',
+    defaultMessage: 'News Item',
+  },
+  page: {
+    id: 'Page',
+    defaultMessage: 'Page',
+  },
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
+  },
 });
 
 const toolbarComponents = {
   personalTools: { component: PersonalTools, wrapper: null },
   more: { component: More, wrapper: null },
-  types: { component: Types, wrapper: null },
+  types: { component: Types, wrapper: null, contentAsProps: true },
   profile: {
     component: PersonalInformation,
     wrapper: StandardWrapper,
@@ -155,6 +183,7 @@ class Toolbar extends Component {
   componentDidMount() {
     this.props.listActions(getBaseUrl(this.props.pathname));
     this.props.getTypes(getBaseUrl(this.props.pathname));
+    this.props.setExpandedToolbar(this.state.expanded);
     document.addEventListener('mousedown', this.handleClickOutside, false);
   }
 
@@ -185,7 +214,10 @@ class Toolbar extends Component {
       expires: new Date((2 ** 31 - 1) * 1000),
       path: '/',
     });
-    this.setState(state => ({ expanded: !state.expanded }));
+    this.setState(
+      state => ({ expanded: !state.expanded }),
+      () => this.props.setExpandedToolbar(this.state.expanded),
+    );
   };
 
   closeMenu = () =>
@@ -324,6 +356,11 @@ class Toolbar extends Component {
                         theToolbar={this.theToolbar}
                         key={`personalToolsComponent-${index}`}
                         closeMenu={this.closeMenu}
+                        content={
+                          toolbarComponents[component].contentAsProps
+                            ? this.props.content
+                            : null
+                        }
                       />
                     );
                   }
@@ -352,7 +389,8 @@ class Toolbar extends Component {
                     )}
                     {this.props.content &&
                       this.props.content.is_folderish &&
-                      folderContentsAction && (
+                      folderContentsAction &&
+                      !this.props.pathname.endsWith('/contents') && (
                         <Link
                           aria-label={this.props.intl.formatMessage(
                             messages.contents,
@@ -360,6 +398,24 @@ class Toolbar extends Component {
                           to={`${path}/contents`}
                         >
                           <Icon name={folderSVG} size="30px" />
+                        </Link>
+                      )}
+                    {this.props.content &&
+                      this.props.content.is_folderish &&
+                      folderContentsAction &&
+                      this.props.pathname.endsWith('/contents') && (
+                        <Link
+                          to={`${path}`}
+                          aria-label={this.props.intl.formatMessage(
+                            messages.back,
+                          )}
+                        >
+                          <Icon
+                            name={clearSVG}
+                            className="contents circled"
+                            size="30px"
+                            title={this.props.intl.formatMessage(messages.back)}
+                          />
                         </Link>
                       )}
                     {this.props.content &&
@@ -458,6 +514,6 @@ export default compose(
       pathname: props.pathname,
       types: filter(state.types.types, 'addable'),
     }),
-    { getTypes, listActions },
+    { getTypes, listActions, setExpandedToolbar },
   ),
 )(Toolbar);
