@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix `<html>` `lang` attribute @sneridagh
+
 ### Internal
 
 ## 5.2.1 (2020-04-27)
