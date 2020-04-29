@@ -287,11 +287,14 @@ module.exports = {
     if (packageJson.name !== '@plone/volto') {
       include.push(fs.realpathSync(`${voltoPath}/src`));
     }
-    packageJson.addons.forEach(addon =>
-      include.push(
-        fs.realpathSync(`${projectRootPath}/node_modules/${addon}/src`),
-      ),
-    );
+    // Add babel support external (ie. node_modules npm published packages)
+    if (packageJson.addons) {
+      packageJson.addons.forEach(addon =>
+        include.push(
+          fs.realpathSync(`${projectRootPath}/node_modules/${addon}/src`),
+        ),
+      );
+    }
 
     config.module.rules[babelRuleIndex] = Object.assign(
       config.module.rules[babelRuleIndex],
@@ -299,12 +302,10 @@ module.exports = {
         include,
       },
     );
-    console.log(config.module.rules[babelRuleIndex]);
 
     const addonsAsExternals = packageJson.addons.map(
       addon => new RegExp(addon),
     );
-    console.log(addonsAsExternals);
 
     config.externals =
       target === 'node'
@@ -316,6 +317,7 @@ module.exports = {
                 /\.(svg|png|jpg|jpeg|gif|ico)$/,
                 /\.(mp4|mp3|ogg|swf|webp)$/,
                 /\.(css|scss|sass|sss|less)$/,
+                // Add support for whitelist external (ie. node_modules npm published packages)
                 ...addonsAsExternals,
                 /^@plone\/volto/,
               ].filter(Boolean),
