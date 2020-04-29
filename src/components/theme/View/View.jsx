@@ -220,7 +220,7 @@ class View extends Component {
       <div id="view">
         <Helmet>
           {this.props.content.language && (
-            <html lang={this.props.content.language} />
+            <html lang={this.props.content.language.token} />
           )}
           <title>{this.props.content.title}</title>
           <meta name="description" content={this.props.content.description} />
