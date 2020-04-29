@@ -8,6 +8,14 @@ import Navigation from './Navigation';
 
 const mockStore = configureStore();
 
+jest.mock('~/config', () => ({
+  settings: {
+    nonContentRoutes: [],
+    supportedLanguages: ['en'],
+    navDepth: 1,
+  },
+}));
+
 describe('Navigation', () => {
   it('renders a navigation component without active items', () => {
     const store = mockStore({

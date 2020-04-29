@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add general @navigation endpoint depth setting @sneridagh
+
 ### Bugfix
 
 ### Internal
