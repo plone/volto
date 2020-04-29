@@ -303,9 +303,10 @@ module.exports = {
       },
     );
 
-    const addonsAsExternals = packageJson.addons.map(
-      addon => new RegExp(addon),
-    );
+    let addonsAsExternals = [];
+    if (packageJson.addons) {
+      addonsAsExternals = packageJson.addons.map(addon => new RegExp(addon));
+    }
 
     config.externals =
       target === 'node'
