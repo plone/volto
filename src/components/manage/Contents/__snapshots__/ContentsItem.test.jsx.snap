@@ -75,33 +75,37 @@ exports[`ContentsItem renders a contents item component 1`] = `
     className=""
   >
     <a
-      className="iconAlign"
+      className="iconAlignName"
       href="/blog"
       onClick={[Function]}
     >
-      <svg
-        className="icon iconMargin"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": undefined,
+      <div
+        className="expireAlign"
+      >
+        <svg
+          className="icon iconMargin"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
           }
-        }
-        onClick={null}
-        style={
-          Object {
-            "fill": "#878f93",
-            "height": "20px",
-            "width": "auto",
+          onClick={null}
+          style={
+            Object {
+              "fill": "#878f93",
+              "height": "20px",
+              "width": "auto",
+            }
           }
-        }
-        viewBox=""
-        xmlns=""
-      />
-       
-      <span>
+          viewBox=""
+          xmlns=""
+        />
          
-        Blog
-      </span>
+        <span>
+           
+          Blog
+        </span>
+      </div>
     </a>
   </td>
   <td

@@ -138,20 +138,22 @@ export const ContentsItemComponent = ({
         </Table.Cell>
         <Table.Cell>
           <Link
-            className="iconAlign"
+            className="iconAlignName"
             to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
           >
-            <Icon
-              name={getIcon(item['@type'], item.is_folderish)}
-              size="20px"
-              className="iconMargin"
-              color="#878f93"
-            />{' '}
-            <span> {item.title}</span>
+            <div className="expireAlign">
+              <Icon
+                name={getIcon(item['@type'], item.is_folderish)}
+                size="20px"
+                className="iconMargin"
+                color="#878f93"
+              />{' '}
+              <span> {item.title}</span>
+            </div>
             {item.ExpirationDate !== 'None' &&
               new Date(item.ExpirationDate).getTime() >
                 new Date().getTime() && (
-                <Button size="mini" color="red" className="buttonMargin">
+                <Button className="buttonMargin" size="mini">
                   <FormattedMessage id="Expires" defaultMessage="Expires" />
                 </Button>
               )}
