@@ -178,70 +178,56 @@ if (Cypress.env('API') !== 'guillotina') {
       // Save
       cy.get('#toolbar-save').click();
       cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
 
       //View
       cy.get('.celled.fixed.table tr th:first-child()').contains(
         'column 1 / row 1',
       );
-      cy.get('.celled.fixed.table tr th:nth-child(2)').contains(
-        'column 2 / row 1',
-      );
+      cy.get('th:nth-child(2)> p ').should('have.text', 'column 2 / row 1');
       cy.get('.celled.fixed.table tr:nth-child(2) td:first-child()').contains(
         'column 1 / row 2',
       );
       cy.get('.celled.fixed.table tr:nth-child(2) td:nth-child(2)').contains(
         'column 2 / row 2',
       );
+    });
 
-      //   // if (Cypress.env('API') === 'plone') {
-      //   //   cy.get('#page-document h3').should('have.text', expected);
-      //   // } else {
-      //   //   // guillotina
-      //   //   cy.contains(expected);
-      // }
+    it('Add Table of Contents block', () => {
+      // given a text block with a H2 headline
+      cy.get('.block.inner.text .public-DraftEditor-content')
+        .type('This is a H2 Headline')
+        .setSelection('This is a H2 Headline');
+      cy.get(
+        '#page-edit .draftJsToolbar__buttonWrapper__1Dmqh:nth-of-type(5)',
+      ).click();
+      cy.get('.block.inner.text .public-DraftEditor-content')
+        .click()
+        .type(' {enter}');
 
-      it('Add Table of Contents block', () => {
-        // given a text block with a H2 headline
-        cy.get('.block.inner.text .public-DraftEditor-content')
-          .type('This is a H2 Headline')
-          .setSelection('This is a H2 Headline');
-        cy.get(
-          '#page-edit .draftJsToolbar__buttonWrapper__1Dmqh:nth-of-type(5)',
-        ).click();
-        cy.get('.block.inner.text .public-DraftEditor-content')
-          .click()
-          .type(' {enter}');
+      // when I add a ToC block
+      cy.get('.ui.basic.icon.button.block-add-button').click();
+      cy.get('.title')
+        .contains('Common')
+        .click();
+      cy.get('.ui.basic.icon.button.toc')
+        .contains('Table of Contents')
+        .click();
+      cy.get('#toolbar-save').click();
+      cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+      cy.waitForResourceToLoad('@navigation');
+      cy.waitForResourceToLoad('@breadcrumbs');
+      cy.waitForResourceToLoad('@actions');
+      cy.waitForResourceToLoad('@types');
+      cy.waitForResourceToLoad('?fullobjects');
 
-        // when I add a ToC block
-        cy.get('.ui.basic.icon.button.block-add-button').click();
-        cy.get('.title')
-          .contains('Common')
-          .click();
-        cy.get('.ui.basic.icon.button.toc')
-          .contains('Table of Contents')
-          .click();
-        cy.get('#toolbar-save').click();
-        cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
-        cy.waitForResourceToLoad('@navigation');
-        cy.waitForResourceToLoad('@breadcrumbs');
-        cy.waitForResourceToLoad('@actions');
-        cy.waitForResourceToLoad('@types');
-        cy.waitForResourceToLoad('?fullobjects');
-
-        // then the ToC block should contain the H2 headline
-        cy.get('.block.table-of-contents .ui.list a').contains(
-          'This is a H2 Headline',
-        );
-        cy.get('.block.table-of-contents .ui.list div').should(
-          'have.class',
-          'header-two',
-        );
-      });
+      // then the ToC block should contain the H2 headline
+      cy.get('.block.table-of-contents .ui.list a').contains(
+        'This is a H2 Headline',
+      );
+      cy.get('.block.table-of-contents .ui.list div').should(
+        'have.class',
+        'header-two',
+      );
     });
   });
 }
