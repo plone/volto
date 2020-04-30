@@ -10,6 +10,8 @@
 
 ### Bugfix
 
+- Fix handling of external links in ToHTML config @nzambello
+
 ### Internal
 
 - Periodical upgrade of `browserlist` lib @sneridagh
