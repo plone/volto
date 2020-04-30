@@ -17,7 +17,7 @@ import trim from 'lodash/trim';
 import cx from 'classnames';
 import loadable from '@loadable/component';
 
-import { views } from '~/config';
+import { settings, views } from '~/config';
 
 import Error from '@plone/volto/error';
 
@@ -199,7 +199,10 @@ export default compose(
     {
       key: 'navigation',
       promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getNavigation(getBaseUrl(location.pathname))),
+        __SERVER__ &&
+        dispatch(
+          getNavigation(getBaseUrl(location.pathname), settings.navDepth),
+        ),
     },
     {
       key: 'types',

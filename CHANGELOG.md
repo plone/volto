@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.2.2 (unreleased)
+## 5.3.1 (unreleased)
 
 ### Breaking
 
@@ -11,6 +11,18 @@
 ### Bugfix
 
 ### Internal
+
+- Periodical upgrade of `browserlist` lib @sneridagh
+
+## 5.3.0 (2020-04-29)
+
+### Feature
+
+- Add general @navigation endpoint depth setting @sneridagh
+
+### Bugfix
+
+- Fix `<html>` `lang` attribute @sneridagh
 
 ## 5.2.1 (2020-04-27)
 
