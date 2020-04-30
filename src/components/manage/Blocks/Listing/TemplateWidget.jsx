@@ -2,15 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Form } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
-import Select from 'react-select';
+import loadable from '@loadable/component';
 import { blocks } from '~/config';
 
 import {
-  customSelectStyles,
-  selectTheme,
-  DropdownIndicator,
   Option,
-} from '@plone/volto/components/manage/Blocks/Listing/QuerystringWidget';
+  DropdownIndicator,
+  selectTheme,
+  customSelectStyles,
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+const Select = loadable(() => import('react-select'));
 
 const messages = defineMessages({
   Template: {

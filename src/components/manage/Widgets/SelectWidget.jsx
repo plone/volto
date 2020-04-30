@@ -10,8 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { map, find, isBoolean, isObject } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
-import Select from 'react-select';
-import AsyncPaginate from 'react-select-async-paginate';
+import loadable from '@loadable/component';
 
 import {
   getBoolean,
@@ -28,6 +27,9 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+const Select = loadable(() => import('react-select'));
+const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
 
 const messages = defineMessages({
   default: {
@@ -329,6 +331,7 @@ class SelectWidget extends Component {
                   disabled={onEdit !== null}
                   className="react-select-container"
                   classNamePrefix="react-select"
+                  isMulti={id === 'roles' || id === 'groups'}
                   options={[
                     ...map(choices, option => ({
                       value: option[0],
@@ -346,13 +349,24 @@ class SelectWidget extends Component {
                   styles={customSelectStyles}
                   theme={selectTheme}
                   components={{ DropdownIndicator, Option }}
-                  defaultValue={getDefaultValues(choices, value)}
-                  onChange={data =>
-                    onChange(
+                  defaultValue={
+                    id === 'roles' || id === 'groups'
+                      ? null
+                      : getDefaultValues(choices, value)
+                  }
+                  onChange={data => {
+                    let dataValue = [];
+                    if (Array.isArray(data)) {
+                      for (let obj of data) {
+                        dataValue.push(obj.value);
+                      }
+                      return onChange(id, dataValue);
+                    }
+                    return onChange(
                       id,
                       data.value === 'no-value' ? undefined : data.value,
-                    )
-                  }
+                    );
+                  }}
                 />
               )}
               {map(error, message => (

@@ -5,7 +5,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
 import { Link } from 'react-router-dom';
 import { Container, Image, GridColumn, Segment } from 'semantic-ui-react';
 import { Button, Modal, Grid } from 'semantic-ui-react';
@@ -62,7 +61,6 @@ class AlbumView extends Component {
     const { content } = this.props;
     return (
       <Container className="view-wrapper">
-        <Helmet title={content.title} />
         <article id="content">
           <header>
             <h1 className="documentFirstHeading">{content.title}</h1>

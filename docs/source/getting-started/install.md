@@ -102,6 +102,12 @@ for you and it's ready to use in your own projects.
 
         https://github.com/kitconcept/kitconcept.volto
 
+!!! tip
+    From Volto 5.1 and above, Volto features an internal proxy to your API server. So
+    you don't have to deal with CORS. It's enabled by default, pointing to the server
+    specified in the `devProxyToApiPath` Volto settings (http://localhost:8080/Plone).
+    See [here](../configuration/internalproxy.md) for more details.
+
 ### Run a Volto ready Plone Docker container
 
 You can run an standard Plone docker container with the proper configuration using `kitconcept.volto` right away by issuing:

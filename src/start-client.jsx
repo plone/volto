@@ -4,6 +4,7 @@ import { Provider } from 'react-intl-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from 'redux-connect';
+import { loadableReady } from '@loadable/component';
 import routes from '~/routes';
 import '~/theme';
 
@@ -18,14 +19,16 @@ export default () => {
   const store = configureStore(window.__data, history, api);
   persistAuthToken(store);
 
-  hydrate(
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <ScrollToTop>
-          <ReduxAsyncConnect routes={routes} helpers={api} />
-        </ScrollToTop>
-      </ConnectedRouter>
-    </Provider>,
-    document.getElementById('main'),
-  );
+  loadableReady(() => {
+    hydrate(
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <ScrollToTop>
+            <ReduxAsyncConnect routes={routes} helpers={api} />
+          </ScrollToTop>
+        </ConnectedRouter>
+      </Provider>,
+      document.getElementById('main'),
+    );
+  });
 };

@@ -33,11 +33,18 @@ function getMessages() {
   return reduce(
     concat(
       {},
-      ...map(glob('build/messages/src/**/*.json'), filename =>
-        map(JSON.parse(fs.readFileSync(filename, 'utf8')), message => ({
-          ...message,
-          filename: filename.match(/build\/messages\/src\/(.*).json$/)[1],
-        })),
+      ...map(
+        // We ignore the existing customized shadowed components ones, since most
+        // probably we won't be overriding them
+        // If so, we should do it in the config object or somewhere else
+        glob('build/messages/src/**/*.json', {
+          ignore: 'build/messages/src/customizations/**',
+        }),
+        filename =>
+          map(JSON.parse(fs.readFileSync(filename, 'utf8')), message => ({
+            ...message,
+            filename: filename.match(/build\/messages\/src\/(.*).json$/)[1],
+          })),
       ),
     ),
     (current, value) => {
@@ -176,10 +183,21 @@ ${map(pot.items, item => {
 console.log('Extracting messages from source files...');
 extractMessages();
 console.log('Synchronizing messages to pot file...');
-fs.writeFileSync(
-  'locales/volto.pot',
-  `${potHeader()}${messagesToPot(getMessages())}\n`,
+// We only write the pot file if it's really different
+const newPot = `${potHeader()}${messagesToPot(getMessages())}\n`.replace(
+  /"POT-Creation-Date:(.*)\\n"/,
+  '',
 );
+const oldPot = fs
+  .readFileSync('locales/volto.pot', 'utf8')
+  .replace(/"POT-Creation-Date:(.*)\\n"/, '');
+
+if (newPot !== oldPot) {
+  fs.writeFileSync(
+    'locales/volto.pot',
+    `${potHeader()}${messagesToPot(getMessages())}\n`,
+  );
+}
 console.log('Synchronizing messages to po files...');
 syncPoByPot();
 console.log('Generating the json files...');

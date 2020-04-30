@@ -2,13 +2,14 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { wait } from '@testing-library/react';
 
 import Workflow from './Workflow';
 
 const mockStore = configureStore();
 
 describe('Workflow', () => {
-  it('renders an empty workflow component', () => {
+  it('renders an empty workflow component', async () => {
     const store = mockStore({
       workflow: { history: [], transition: { loaded: true }, transitions: [] },
       intl: {
@@ -22,11 +23,12 @@ describe('Workflow', () => {
         <Workflow pathname="/test" />
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    await wait(() => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
   });
 
-  it('renders a workflow component', () => {
+  it('renders a workflow component', async () => {
     const store = mockStore({
       workflow: {
         history: [{ review_state: 'private' }],
@@ -44,7 +46,8 @@ describe('Workflow', () => {
         <Workflow pathname="/test" />
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    await wait(() => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
   });
 });

@@ -2,12 +2,13 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { wait } from '@testing-library/react';
 
 import SelectWidget from './SelectWidget';
 
 const mockStore = configureStore();
 
-test('renders a select widget component', () => {
+test('renders a select widget component', async () => {
   const store = mockStore({
     intl: {
       locale: 'en',
@@ -26,6 +27,7 @@ test('renders a select widget component', () => {
       <SelectWidget id="my-field" title="My field" onChange={() => {}} />
     </Provider>,
   );
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+  await wait(() => {
+    expect(component.toJSON()).toMatchSnapshot();
+  });
 });

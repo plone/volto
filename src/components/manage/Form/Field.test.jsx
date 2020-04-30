@@ -5,32 +5,41 @@ import { Provider } from 'react-intl-redux';
 
 import Field from './Field';
 
-const mockStore = configureStore();
+jest.mock('~/config', () => ({
+  settings: {
+    apiPath: 'http://localhost:8080/Plone',
+  },
+  widgets: {
+    id: {
+      schema: () => <div className="SchemaWidget" />,
+      subjects: () => <div className="TokenWidget" />,
+      query: () => <div className="QueryStringWidget" />,
+    },
+    widget: {
+      richtext: () => <div className="WysiwygWidget" />,
+      textarea: () => <div className="TextareaWidget" />,
+      datetime: () => <div className="DatetimeWidget" />,
+      password: () => <div className="PasswordWidget" />,
+      file: () => <div className="FileWidget" />,
+    },
+    vocabulary: {
+      'plone.app.vocabularies.Catalog': () => (
+        <div className="ReferenceWidget" />
+      ),
+    },
+    choices: () => <div className="SelectWidget" />,
+    type: {
+      boolean: () => <div className="CheckboxWidget" />,
+      array: () => <div className="ArrayWidget" />,
+      object: () => <div className="FileWidget" />,
+      datetime: () => <div className="DatetimeWidget" />,
+      password: () => <div className="PasswordWidget" />,
+    },
+    default: () => <div className="TextWidget" />,
+  },
+}));
 
-jest.mock('../Widgets/ArrayWidget', () =>
-  jest.fn(() => <div className="ArrayWidget" />),
-);
-jest.mock('../Widgets/CheckboxWidget', () =>
-  jest.fn(() => <div className="CheckboxWidget" />),
-);
-jest.mock('../Widgets/PasswordWidget', () =>
-  jest.fn(() => <div className="PasswordWidget" />),
-);
-jest.mock('../Widgets/SelectWidget', () =>
-  jest.fn(() => <div className="SelectWidget" />),
-);
-jest.mock('../Widgets/TextWidget', () =>
-  jest.fn(() => <div className="TextWidget" />),
-);
-jest.mock('../Widgets/TextareaWidget', () =>
-  jest.fn(() => <div className="TextareaWidget" />),
-);
-jest.mock('../Widgets/DatetimeWidget', () =>
-  jest.fn(() => <div className="DatetimeWidget" />),
-);
-jest.mock('../Widgets/WysiwygWidget', () =>
-  jest.fn(() => <div className="WysiwygWidget" />),
-);
+const mockStore = configureStore();
 
 describe('Field', () => {
   it('renders a field with a specific id', () => {

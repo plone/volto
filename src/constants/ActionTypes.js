@@ -5,6 +5,8 @@
 
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const SET_APIERROR = 'SET_APIERROR';
+export const RESET_APIERROR = 'RESET_APIERROR';
 export const COPY = 'COPY';
 export const COPY_CONTENT = 'COPY_CONTENT';
 export const CREATE_CONTENT = 'CREATE_CONTENT';
@@ -16,6 +18,7 @@ export const DELETE_CONTENT = 'DELETE_CONTENT';
 export const DELETE_GROUP = 'DELETE_GROUP';
 export const DELETE_USER = 'DELETE_USER';
 export const EMAIL_NOTIFICATION = 'EMAIL_NOTIFICATION';
+export const EXPAND_TOOLBAR = 'EXPAND_TOOLBAR';
 export const INITIAL_PASSWORD = 'INITIAL_PASSWORD';
 export const GET_BREADCRUMBS = 'GET_BREADCRUMBS';
 export const GET_CONTENT = 'GET_CONTENT';

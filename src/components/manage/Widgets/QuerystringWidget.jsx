@@ -18,9 +18,9 @@ import {
 import { filter, remove, toPairs, groupBy, isEmpty, map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import { getQuerystring } from '@plone/volto/actions';
-import Select from 'react-select';
 import { Icon } from '@plone/volto/components';
 import { format, parse } from 'date-fns';
+import loadable from '@loadable/component';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 
@@ -30,6 +30,8 @@ import {
   selectTheme,
   customSelectStyles,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
+
+const Select = loadable(() => import('react-select'));
 
 const messages = defineMessages({
   default: {

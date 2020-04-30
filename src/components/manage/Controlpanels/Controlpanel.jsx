@@ -7,17 +7,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Helmet } from '@plone/volto/helpers';
 import { Portal } from 'react-portal';
-import { Container } from 'semantic-ui-react';
+import { Button, Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
 import { Form, Icon, Toolbar, Toast } from '@plone/volto/components';
 import { updateControlpanel, getControlpanel } from '@plone/volto/actions';
 
-import backSVG from '@plone/volto/icons/back.svg';
+import saveSVG from '@plone/volto/icons/save.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   changesSaved: {
@@ -27,6 +28,14 @@ const messages = defineMessages({
   back: {
     id: 'Back',
     defaultMessage: 'Back',
+  },
+  save: {
+    id: 'Save',
+    defaultMessage: 'Save',
+  },
+  cancel: {
+    id: 'Cancel',
+    defaultMessage: 'Cancel',
   },
   info: {
     id: 'Info',
@@ -128,6 +137,7 @@ class Controlpanel extends Component {
   onCancel() {
     this.props.history.goBack();
   }
+  form = React.createRef();
 
   /**
    * Render method.
@@ -141,11 +151,13 @@ class Controlpanel extends Component {
           <Helmet title={this.props.controlpanel.title} />
           <Container>
             <Form
+              ref={this.form}
               title={this.props.controlpanel.title}
               schema={this.props.controlpanel.schema}
               formData={this.props.controlpanel.data}
               onSubmit={this.onSubmit}
               onCancel={this.onCancel}
+              hideActions
               loading={this.props.updateRequest.loading}
             />
           </Container>
@@ -154,14 +166,35 @@ class Controlpanel extends Component {
               pathname={this.props.pathname}
               hideDefaultViewButtons
               inner={
-                <Link to="/controlpanel" className="item">
-                  <Icon
-                    name={backSVG}
-                    className="contents circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.back)}
-                  />
-                </Link>
+                <>
+                  <Button
+                    id="toolbar-save"
+                    className="save"
+                    aria-label={this.props.intl.formatMessage(messages.save)}
+                    onClick={() => this.form.current.onSubmit()}
+                    disabled={this.props.updateRequest.loading}
+                    loading={this.props.updateRequest.loading}
+                  >
+                    <Icon
+                      name={saveSVG}
+                      className="circled"
+                      size="30px"
+                      title={this.props.intl.formatMessage(messages.save)}
+                    />
+                  </Button>
+                  <Button
+                    className="cancel"
+                    aria-label={this.props.intl.formatMessage(messages.cancel)}
+                    onClick={() => this.onCancel()}
+                  >
+                    <Icon
+                      name={clearSVG}
+                      className="circled"
+                      size="30px"
+                      title={this.props.intl.formatMessage(messages.cancel)}
+                    />
+                  </Button>
+                </>
               }
             />
           </Portal>

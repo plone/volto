@@ -10,6 +10,7 @@ const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
 const { map } = require('lodash');
@@ -137,6 +138,26 @@ module.exports = {
           __SERVER__: false,
         }),
       );
+
+      config.plugins.push(
+        new LoadablePlugin({
+          outputAsset: false,
+          writeToDisk: { filename: path.resolve(`${projectRootPath}/build`) },
+        }),
+      );
+
+      config.output.filename = dev
+        ? 'static/js/[name].js'
+        : 'static/js/[name].[chunkhash:8].js';
+
+      config.optimization = Object.assign({}, config.optimization, {
+        runtimeChunk: true,
+        splitChunks: {
+          chunks: 'all',
+          name: dev,
+        },
+      });
+
       config.plugins.unshift(
         // restrict moment.js locales to en/de
         // see https://github.com/jmblog/how-to-optimize-momentjs-with-webpack for details
