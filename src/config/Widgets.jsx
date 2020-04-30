@@ -20,10 +20,6 @@ export const DatetimeWidget = loadable(() =>
   import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
 );
 
-export const TextareaLimitLengthWidget = loadable(() =>
-  import('@plone/volto/components/manage/Widgets/TextAreaLimitLengthWidget'),
-);
-
 // Widgets mapping
 export const widgetMapping = {
   id: {
