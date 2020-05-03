@@ -7,6 +7,7 @@
 ### Feature
 
 - Add babel and externals support in Webpack for add-on infrastructure @sneridagh
+- Add default `src` alias for addons detecting if there is a released or a mrs-developer one @sneridagh
 
 ### Bugfix
 
