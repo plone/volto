@@ -149,15 +149,32 @@ class ContentType extends Component {
    */
   render() {
     if (this.props.controlpanel) {
+      let controlpanel = this.props.controlpanel;
+      if (controlpanel?.data?.filter_content_types === false) {
+        controlpanel.data.filter_content_types = { title: 'all', token: 'all' };
+      }
+      if (controlpanel?.data?.filter_content_types === true) {
+        if ((controlpanel?.data?.allowed_content_types || []).length) {
+          controlpanel.data.filter_content_types = {
+            title: 'some',
+            token: 'some',
+          };
+        } else {
+          controlpanel.data.filter_content_types = {
+            title: 'none',
+            token: 'none',
+          };
+        }
+      }
       return (
         <div id="page-controlpanel">
-          <Helmet title={this.props.controlpanel.title} />
+          <Helmet title={controlpanel.title} />
           <Form
             isEditForm
             ref={this.form}
-            title={this.props.controlpanel.title}
-            schema={this.props.controlpanel.schema}
-            formData={this.props.controlpanel.data}
+            title={controlpanel.title}
+            schema={controlpanel.schema}
+            formData={controlpanel.data}
             onSubmit={this.onSubmit}
             onCancel={this.onCancel}
             pathname={this.props.pathname}
