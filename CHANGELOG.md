@@ -7,6 +7,7 @@
 ### Feature
 
 - Add babel and externals support in Webpack for add-on infrastructure @sneridagh
+- Forward the images and files cache headers in Volto SSR passthrough @sneridagh
 
 ### Bugfix
 
