@@ -85,11 +85,11 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#content-core table').contains('Published');
     });
 
-    it('Sort method by creation field', () => {
+    it.only('Sort method by creation field', () => {
       // when sort method invoked using creation field
       cy.createContent('Document', 'child', 'My Child', 'my-folder');
       cy.visit('my-folder/contents');
-      cy.get('.icon.configurationSVG').click();
+      cy.get('.icon.configuration-svg').click();
       cy.get('.sort_CreationDate').invoke('trigger', 'mouseover');
       cy.get('.item.sort_created_descending').click({ force: true });
 
