@@ -114,6 +114,47 @@ Cypress.Commands.add(
   },
 );
 
+// --- SET WORKFLOW ----------------------------------------------------------
+Cypress.Commands.add(
+  'setWorkflow',
+  ({
+    path = '/',
+    actor = 'admin',
+    review_state = 'publish',
+    time = '1995-07-31T18:30:00',
+    title = '',
+    comment = '',
+    effective = '2018-01-21T08:00:00',
+    expires = '2019-01-21T08:00:00',
+    include_children = true,
+  }) => {
+    let api_url, auth;
+    api_url = 'http://localhost:55001/plone';
+    auth = {
+      user: 'admin',
+      pass: 'secret',
+    };
+    return cy.request({
+      method: 'POST',
+      url: `${api_url}/${path}/@workflow/${review_state}`,
+      headers: {
+        Accept: 'application/json',
+      },
+      auth: auth,
+      body: {
+        actor: actor,
+        review_state: review_state,
+        time: time,
+        title: title,
+        comment: comment,
+        effective: effective,
+        expires: expires,
+        include_children: include_children,
+      },
+    });
+  },
+);
+
 Cypress.Commands.add('waitForResourceToLoad', (fileName, type) => {
   const resourceCheckInterval = 40;
 

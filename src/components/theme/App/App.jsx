@@ -17,6 +17,8 @@ import trim from 'lodash/trim';
 import cx from 'classnames';
 import loadable from '@loadable/component';
 
+import { settings, views } from '~/config';
+
 import Error from '@plone/volto/error';
 
 import {
@@ -110,6 +112,7 @@ class App extends Component {
   render() {
     const path = getBaseUrl(this.props.pathname);
     const action = getView(this.props.pathname);
+    const ConnectionRefusedView = views.errorViews.ECONNREFUSED;
 
     return (
       <Fragment>
@@ -138,7 +141,9 @@ class App extends Component {
           <Segment basic className="content-area">
             <main>
               <OutdatedBrowser />
-              {this.state.hasError ? (
+              {this.props.connectionRefused ? (
+                <ConnectionRefusedView />
+              ) : this.state.hasError ? (
                 <Error
                   message={this.state.error.message}
                   stackTrace={this.state.errorInfo.componentStack}
@@ -173,6 +178,8 @@ export const __test__ = connect(
   (state, props) => ({
     pathname: props.location.pathname,
     content: state.content.data,
+    apiError: state.apierror.error,
+    connectionRefused: state.apierror.connectionRefused,
   }),
   {},
 )(App);
@@ -192,7 +199,10 @@ export default compose(
     {
       key: 'navigation',
       promise: ({ location, store: { dispatch } }) =>
-        __SERVER__ && dispatch(getNavigation(getBaseUrl(location.pathname))),
+        __SERVER__ &&
+        dispatch(
+          getNavigation(getBaseUrl(location.pathname), settings.navDepth),
+        ),
     },
     {
       key: 'types',
@@ -209,6 +219,8 @@ export default compose(
     (state, props) => ({
       pathname: props.location.pathname,
       content: state.content.data,
+      apiError: state.apierror.error,
+      connectionRefused: state.apierror.connectionRefused,
     }),
     {},
   ),

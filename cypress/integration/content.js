@@ -94,7 +94,7 @@ describe('Add Content Tests', () => {
     // then a new file should have been created
     if (Cypress.env('API') === 'guillotina') {
       cy.url().should('eq', Cypress.config().baseUrl + '/my-file');
-    } else {
+    } else {
       cy.url().should('eq', Cypress.config().baseUrl + '/file.pdf');
     }
     cy.contains('My File');

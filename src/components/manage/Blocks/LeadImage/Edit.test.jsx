@@ -34,6 +34,7 @@ test('renders an edit Lead Image block component', () => {
         onChangeBlock={() => {}}
         onChangeField={() => {}}
         index={1}
+        openObjectBrowser={() => {}}
       />
     </Provider>,
   );
