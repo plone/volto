@@ -827,6 +827,14 @@ msgstr ""
 msgid "Maps URL"
 msgstr ""
 
+#: components/manage/Form/Form
+msgid "Maximum length is {len}."
+msgstr ""
+
+#: components/manage/Form/Form
+msgid "Maximum value is {len}."
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr "Mensagem"
@@ -835,6 +843,10 @@ msgstr "Mensagem"
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
 msgstr "O comprimento mínimo é {len}."
+
+#: components/manage/Form/Form
+msgid "Minimum value is {len}."
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
@@ -1676,6 +1688,10 @@ msgstr "descrição_senha_perdida"
 msgid "description_sent_password"
 msgstr "descrição_senha_enviada"
 
+#: components/manage/Form/Form
+msgid "email"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr ""
@@ -1724,6 +1740,10 @@ msgstr "html"
 msgid "image"
 msgstr "imagem"
 
+#: components/manage/Form/Form
+msgid "integer"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr "etiqueta_meu_email_é"
@@ -1751,6 +1771,10 @@ msgstr "média"
 #: config/Blocks
 msgid "mostUsed"
 msgstr "maisUsado"
+
+#: components/manage/Form/Form
+msgid "number"
+msgstr ""
 
 #: error
 msgid "or try a different page."
@@ -1786,6 +1810,10 @@ msgstr "título"
 
 #: config/Blocks
 msgid "toc"
+msgstr ""
+
+#: components/manage/Form/Form
+msgid "url"
 msgstr ""
 
 #: components/manage/Toolbar/PersonalTools

@@ -826,6 +826,14 @@ msgstr "地図"
 msgid "Maps URL"
 msgstr "地図URL"
 
+#: components/manage/Form/Form
+msgid "Maximum length is {len}."
+msgstr ""
+
+#: components/manage/Form/Form
+msgid "Maximum value is {len}."
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr "メッセージ"
@@ -834,6 +842,10 @@ msgstr "メッセージ"
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
 msgstr "最小サイズは {len}　。"
+
+#: components/manage/Form/Form
+msgid "Minimum value is {len}."
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
@@ -1675,6 +1687,10 @@ msgstr "安全上の理由で、パスワードは暗号化されて保管され
 msgid "description_sent_password"
 msgstr "パスワード再設定のお願いをメール送信しました。まもなくあなたのメールボックスに届くはずです。メッセージを受け取ったら、その中にあるパスワード再設定用のURLにアクセスしてください。"
 
+#: components/manage/Form/Form
+msgid "email"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr ""
@@ -1723,6 +1739,10 @@ msgstr "HTML"
 msgid "image"
 msgstr "画像"
 
+#: components/manage/Form/Form
+msgid "integer"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr "私のメールアドレスは"
@@ -1750,6 +1770,10 @@ msgstr "メディア"
 #: config/Blocks
 msgid "mostUsed"
 msgstr "よく使う物"
+
+#: components/manage/Form/Form
+msgid "number"
+msgstr ""
 
 #: error
 msgid "or try a different page."
@@ -1786,6 +1810,10 @@ msgstr "タイトル"
 #: config/Blocks
 msgid "toc"
 msgstr "目次"
+
+#: components/manage/Form/Form
+msgid "url"
+msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"

@@ -819,6 +819,14 @@ msgstr "Mappa"
 msgid "Maps URL"
 msgstr "URL di Maps"
 
+#: components/manage/Form/Form
+msgid "Maximum length is {len}."
+msgstr ""
+
+#: components/manage/Form/Form
+msgid "Maximum value is {len}."
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr "Messaggio"
@@ -827,6 +835,10 @@ msgstr "Messaggio"
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
 msgstr "La lunghezza minima è {len}"
+
+#: components/manage/Form/Form
+msgid "Minimum value is {len}."
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
@@ -1668,6 +1680,10 @@ msgstr "Per ragioni di sicurezza, le password vengono memorizzate in forma critt
 msgid "description_sent_password"
 msgstr "La istruzioni per reimpostare la tua password sono state inviate. Dovrebbero arrivare a breve nella tua casella di posta. Una volta ricevuto il messaggio, visita l'indirizzo indicato per reimpostare la password."
 
+#: components/manage/Form/Form
+msgid "email"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr "Tutte le date"
@@ -1716,6 +1732,10 @@ msgstr "HTML"
 msgid "image"
 msgstr "Immagine"
 
+#: components/manage/Form/Form
+msgid "integer"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr "Il mio indirizzo email è"
@@ -1743,6 +1763,10 @@ msgstr "media"
 #: config/Blocks
 msgid "mostUsed"
 msgstr "Più usati"
+
+#: components/manage/Form/Form
+msgid "number"
+msgstr ""
 
 #: error
 msgid "or try a different page."
@@ -1779,6 +1803,10 @@ msgstr "Titolo"
 #: config/Blocks
 msgid "toc"
 msgstr "Indice dei contenuti"
+
+#: components/manage/Form/Form
+msgid "url"
+msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"

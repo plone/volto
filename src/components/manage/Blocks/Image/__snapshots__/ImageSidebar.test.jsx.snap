@@ -60,21 +60,15 @@ exports[`renders an Image Block Sidebar component 1`] = `
               <input
                 disabled={false}
                 id="field-external"
+                max={null}
+                maxLength={null}
+                min={null}
+                minLength={null}
                 name="external"
                 onChange={[Function]}
-                type="text"
+                step={null}
+                type=""
                 value="image"
-              />
-              <i
-                aria-hidden="true"
-                attributes={
-                  Object {
-                    "viewBox": "",
-                    "xmlns": "",
-                  }
-                }
-                className="icon"
-                onClick={[Function]}
               />
             </div>
             <button
@@ -135,21 +129,15 @@ exports[`renders an Image Block Sidebar component 1`] = `
               <input
                 disabled={false}
                 id="field-alt"
+                max={null}
+                maxLength={null}
+                min={null}
+                minLength={null}
                 name="alt"
                 onChange={[Function]}
-                type="text"
+                step={null}
+                type=""
                 value="alternate text"
-              />
-              <i
-                aria-hidden="true"
-                attributes={
-                  Object {
-                    "viewBox": "",
-                    "xmlns": "",
-                  }
-                }
-                className="icon"
-                onClick={[Function]}
               />
             </div>
             <button
@@ -384,21 +372,15 @@ exports[`renders an Image Block Sidebar component 1`] = `
                 <input
                   disabled={false}
                   id="field-link"
+                  max={null}
+                  maxLength={null}
+                  min={null}
+                  minLength={null}
                   name="link"
                   onChange={[Function]}
-                  type="text"
+                  step={null}
+                  type=""
                   value=""
-                />
-                <i
-                  aria-hidden="true"
-                  attributes={
-                    Object {
-                      "viewBox": "",
-                      "xmlns": "",
-                    }
-                  }
-                  className="icon"
-                  onClick={[Function]}
                 />
               </div>
               <button

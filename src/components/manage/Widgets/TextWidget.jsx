@@ -41,6 +41,11 @@ const messages = defineMessages({
   },
 });
 
+const typeTranslations = {
+  integer: 'number',
+  string: 'text',
+};
+
 /**
  * TextWidget component class.
  * @class TextWidget
@@ -69,6 +74,11 @@ class TextWidget extends Component {
       content: PropTypes.string,
     }),
     iconAction: PropTypes.func,
+    type: PropTypes.string,
+    minLength: PropTypes.number,
+    maxLength: PropTypes.number,
+    maximum: PropTypes.number,
+    minimum: PropTypes.number,
   };
 
   /**
@@ -87,6 +97,11 @@ class TextWidget extends Component {
     focus: false,
     icon: null,
     iconAction: null,
+    type: '',
+    minLength: null,
+    maxLength: null,
+    minimum: null,
+    maximum: null,
   };
 
   /**
@@ -120,6 +135,11 @@ class TextWidget extends Component {
       icon,
       iconAction,
       fieldSet,
+      type,
+      minLength,
+      maxLength,
+      minimum,
+      maximum,
     } = this.props;
 
     const schema = {
@@ -206,7 +226,18 @@ class TextWidget extends Component {
                 ref={node => {
                   this.node = node;
                 }}
-              />
+                type={typeTranslations[type] || type}
+                step={
+                  type === 'number' ? 'any' : type === 'integer' ? '1' : null
+                }
+                min={minimum || null}
+                max={maximum || null}
+              >
+                <input
+                  minLength={minLength || null}
+                  maxLength={maxLength || null}
+                />
+              </Input>
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
                   {message}

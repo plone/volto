@@ -53,6 +53,18 @@ const messages = defineMessages({
     id: 'Minimum length is {len}.',
     defaultMessage: 'Minimum length is {len}.',
   },
+  maxLength: {
+    id: 'Maximum length is {len}.',
+    defaultMessage: 'Maximum length is {len}.',
+  },
+  minimum: {
+    id: 'Minimum value is {len}.',
+    defaultMessage: 'Minimum value is {len}.',
+  },
+  maximum: {
+    id: 'Maximum value is {len}.',
+    defaultMessage: 'Maximum value is {len}.',
+  },
   uniqueItems: {
     id: 'Items must be unique.',
     defaultMessage: 'Items must be unique.',
@@ -60,6 +72,23 @@ const messages = defineMessages({
   save: {
     id: 'Save',
     defaultMessage: 'Save',
+  },
+  isNumber: {
+    id: 'number',
+    defaultMessage: 'Input must be number',
+  },
+  isInteger: {
+    id: 'integer',
+    defaultMessage: 'Input must be integer',
+  },
+  isValidEmail: {
+    id: 'email',
+    defaultMessage: 'Input must be valid email (something@domain.com)',
+  },
+  isValidURL: {
+    id: 'url',
+    defaultMessage:
+      'Input must be valid url (www.something.com or http(s)://www.something.com)',
   },
   cancel: {
     id: 'Cancel',
@@ -74,6 +103,141 @@ const messages = defineMessages({
     defaultMessage: 'There were some errors.',
   },
 });
+
+/**
+ * Will return the intl message if invalid
+ * @param {boolean} isValid
+ * @param {string} maxCriterion
+ * @param {string | number} valueToCompare can compare '47' < 50
+ * @param {Function} intlFunc
+ */
+const validationMessage = (isValid, maxCriterion, valueToCompare, intlFunc) =>
+  !isValid
+    ? intlFunc(messages[maxCriterion], {
+        len: valueToCompare,
+      })
+    : null;
+/**
+ * Returns if based on the criterion the value is lower or equal
+ * @param {string | number} value can compare '47' < 50
+ * @param {string | number} valueToCompare can compare '47' < 50
+ * @param {string} minCriterion
+ * @param {Function} intlFunc
+ */
+const isMaxPropertyValid = (value, valueToCompare, minCriterion, intlFunc) => {
+  const isValid = valueToCompare !== undefined ? value <= valueToCompare : true;
+  return validationMessage(isValid, minCriterion, valueToCompare, intlFunc);
+};
+/**
+ * Returns if based on the criterion the value is higher or equal
+ * @param {string | number} value can compare '47' < 50
+ * @param {string | number} valueToCompare can compare '47' < 50
+ * @param {string} minCriterion
+ * @param {Function} intlFunc
+ */
+const isMinPropertyValid = (value, valueToCompare, maxCriterion, intlFunc) => {
+  const isValid = valueToCompare !== undefined ? value >= valueToCompare : true;
+  return validationMessage(isValid, maxCriterion, valueToCompare, intlFunc);
+};
+
+const widgetValidation = {
+  email: {
+    isValidEmail: (emailValue, emailObj, intlFunc) => {
+      const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+      const isValid = emailRegex.test(emailValue);
+      return !isValid ? intlFunc(messages.isValidEmail) : null;
+    },
+    minLength: (emailValue, emailObj, intlFunc) =>
+      isMinPropertyValid(
+        emailValue.length,
+        emailObj.minLength,
+        'minLength',
+        intlFunc,
+      ),
+    maxLength: (emailValue, emailObj, intlFunc) =>
+      isMaxPropertyValid(
+        emailValue.length,
+        emailObj.maxLength,
+        'maxLength',
+        intlFunc,
+      ),
+  },
+  url: {
+    isValidURL: (urlValue, urlObj, intlFunc) => {
+      const urlRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/gm;
+      const isValid = urlRegex.test(urlValue);
+      return !isValid ? intlFunc(messages.isValidURL) : null;
+    },
+    minLength: (urlValue, urlObj, intlFunc) =>
+      isMinPropertyValid(
+        urlValue.length,
+        urlObj.minLength,
+        'minLength',
+        intlFunc,
+      ),
+    maxLength: (urlValue, urlObj, intlFunc) =>
+      isMaxPropertyValid(
+        urlValue.length,
+        urlObj.maxLength,
+        'maxLength',
+        intlFunc,
+      ),
+  },
+  password: {
+    minLength: (passwordValue, passwordObj, intlFunc) =>
+      isMinPropertyValid(
+        passwordValue.length,
+        passwordObj.minLength,
+        'minLength',
+        intlFunc,
+      ),
+    maxLength: (passwordValue, passwordObj, intlFunc) =>
+      isMaxPropertyValid(
+        passwordValue.length,
+        passwordObj.maxLength,
+        'maxLength',
+        intlFunc,
+      ),
+  },
+  string: {
+    minLength: (value, itemObj, intlFunc) =>
+      isMinPropertyValid(
+        value.length,
+        itemObj.minLength,
+        'minLength',
+        intlFunc,
+      ),
+    maxLength: (value, itemObj, intlFunc) =>
+      isMaxPropertyValid(
+        value.length,
+        itemObj.maxLengthj,
+        'maxLength',
+        intlFunc,
+      ),
+  },
+  number: {
+    isNumber: (value, itemObj, intlFunc) => {
+      const floatRegex = /^[+-]?\d+(\.\d+)?$/;
+      const isValid = !isNaN(value) && floatRegex.test(value);
+      return !isValid ? intlFunc(messages.isNumber) : null;
+    },
+    minimum: (value, itemObj, intlFunc) =>
+      isMinPropertyValid(value, itemObj.minimum, 'minimum', intlFunc),
+    maximum: (value, itemObj, intlFunc) =>
+      isMaxPropertyValid(value, itemObj.maximum, 'maximum', intlFunc),
+  },
+  integer: {
+    isInteger: (value, itemObj, intlFunc) => {
+      const intRegex = /^-?[0-9]+$/;
+      const isValid = !isNaN(value) && intRegex.test(value);
+      return !isValid ? intlFunc(messages.isInteger) : null;
+    },
+    minimum: (value, itemObj, intlFunc) =>
+      isMinPropertyValid(value, itemObj.minimum, 'minimum', intlFunc),
+    maximum: (value, itemObj, intlFunc) =>
+      isMaxPropertyValid(value, itemObj.maximum, 'maximum', intlFunc),
+  },
+};
 
 /**
  * Form container class.
@@ -365,7 +529,88 @@ class Form extends Component {
   }
 
   /**
-   * Submit handler
+   * Returns errors if obj has unique Items
+   * @param {Object} field
+   * @param {*} fieldData
+   * @returns {Object[string]} - list of errors
+   */
+  hasUniqueItems(field, fieldData) {
+    const errors = [];
+    if (
+      field.uniqueItems &&
+      fieldData &&
+      uniq(fieldData).length !== fieldData.length
+    ) {
+      errors.push(this.props.intl.formatMessage(messages.uniqueItems));
+    }
+    return errors;
+  }
+  /**
+   * If required fields are undefined, return list of errors
+   * @returns {Object[string]} - list of errors
+   */
+  validateRequiredFields() {
+    const errors = {};
+
+    map(this.props.schema.required, requiredField => {
+      if (!this.state.formData[requiredField]) {
+        errors[requiredField] = [];
+        errors[requiredField].push(
+          this.props.intl.formatMessage(messages.required),
+        );
+      }
+    });
+
+    return errors;
+  }
+  /**
+   * Return list of errors if field constraints are not respected
+   * (ex min, max, maxLength, email format, url format etc)
+   * each potential criterion has a validation process in widgetValidation
+   * !!ONLY fields with data will be tested (those undefined are ignored here)
+   * @returns {Object[string]} - list of errors
+   */
+  validateFieldsPerFieldset() {
+    const errors = this.validateRequiredFields();
+
+    map(this.props.schema.properties, (field, fieldId) => {
+      const fieldWidgetType = field.widget || field.type;
+      const widgetValidationCriteria = widgetValidation[fieldWidgetType]
+        ? Object.keys(widgetValidation[fieldWidgetType])
+        : [];
+      let fieldData = this.state.formData[fieldId];
+      // test each criterion ex maximum, isEmail, isUrl, maxLength etc
+      const fieldErrors = widgetValidationCriteria
+        .map(widgetCriterion => {
+          const errorMessage =
+            fieldData === undefined || fieldData === null
+              ? null
+              : widgetValidation[fieldWidgetType][widgetCriterion](
+                  fieldData,
+                  field,
+                  this.props.intl.formatMessage,
+                );
+          return errorMessage;
+        })
+        .filter(item => !!item);
+
+      const uniqueErrors = this.hasUniqueItems(field, fieldData);
+      const mergedErrors = [...fieldErrors, ...uniqueErrors];
+
+      if (mergedErrors.length > 0) {
+        errors[fieldId] = [
+          ...(errors[fieldId] || []),
+          ...fieldErrors,
+          ...uniqueErrors,
+        ];
+      }
+    });
+
+    return errors;
+  }
+
+  /**
+   * Submit handler also validate form and collect errors
    * @method onSubmit
    * @param {Object} event Event object.
    * @returns {undefined}
@@ -374,38 +619,8 @@ class Form extends Component {
     if (event) {
       event.preventDefault();
     }
-    const errors = {};
-    map(this.props.schema.fieldsets, fieldset =>
-      map(fieldset.fields, fieldId => {
-        const field = this.props.schema.properties[fieldId];
-        var data = this.state.formData[fieldId];
-        if (typeof data === 'string' || data instanceof String) {
-          data = data.trim();
-        }
-        if (this.props.schema.required.indexOf(fieldId) !== -1) {
-          if (field.type !== 'boolean' && !data) {
-            errors[fieldId] = errors[field] || [];
-            errors[fieldId].push(
-              this.props.intl.formatMessage(messages.required),
-            );
-          }
-          if (field.minLength && data.length < field.minLength) {
-            errors[fieldId] = errors[field] || [];
-            errors[fieldId].push(
-              this.props.intl.formatMessage(messages.minLength, {
-                len: field.minLength,
-              }),
-            );
-          }
-        }
-        if (field.uniqueItems && data && uniq(data).length !== data.length) {
-          errors[fieldId] = errors[field] || [];
-          errors[fieldId].push(
-            this.props.intl.formatMessage(messages.uniqueItems),
-          );
-        }
-      }),
-    );
+    const errors = this.validateFieldsPerFieldset();
+
     if (keys(errors).length > 0) {
       this.setState({
         errors,
@@ -647,6 +862,7 @@ class Form extends Component {
                       onChange={this.onChangeField}
                       key={field}
                       error={this.state.errors[field]}
+                      typeField={field.type}
                     />
                   ))}
                 </Segment>,
@@ -690,6 +906,7 @@ class Form extends Component {
                         onChange={this.onChangeField}
                         key={field}
                         error={this.state.errors[field]}
+                        typeField={field.type}
                       />
                     )),
                   ],
@@ -733,6 +950,7 @@ class Form extends Component {
                     onChange={this.onChangeField}
                     key={field}
                     error={this.state.errors[field]}
+                    typeField={field.type}
                   />
                 ))}
               </Segment>

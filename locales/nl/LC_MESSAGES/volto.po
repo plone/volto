@@ -838,6 +838,14 @@ msgstr ""
 msgid "Maps URL"
 msgstr ""
 
+#: components/manage/Form/Form
+msgid "Maximum length is {len}."
+msgstr ""
+
+#: components/manage/Form/Form
+msgid "Maximum value is {len}."
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr ""
@@ -846,6 +854,10 @@ msgstr ""
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
 msgstr "Minimum lengte is {len}"
+
+#: components/manage/Form/Form
+msgid "Minimum value is {len}."
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
@@ -1687,6 +1699,10 @@ msgstr ""
 msgid "description_sent_password"
 msgstr ""
 
+#: components/manage/Form/Form
+msgid "email"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr ""
@@ -1735,6 +1751,10 @@ msgstr ""
 msgid "image"
 msgstr ""
 
+#: components/manage/Form/Form
+msgid "integer"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr ""
@@ -1761,6 +1781,10 @@ msgstr ""
 
 #: config/Blocks
 msgid "mostUsed"
+msgstr ""
+
+#: components/manage/Form/Form
+msgid "number"
 msgstr ""
 
 #: error
@@ -1797,6 +1821,10 @@ msgstr ""
 
 #: config/Blocks
 msgid "toc"
+msgstr ""
+
+#: components/manage/Form/Form
+msgid "url"
 msgstr ""
 
 #: components/manage/Toolbar/PersonalTools

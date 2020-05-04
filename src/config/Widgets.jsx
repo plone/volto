@@ -15,6 +15,8 @@ import TextWidget from '@plone/volto/components/manage/Widgets/TextWidget';
 import TokenWidget from '@plone/volto/components/manage/Widgets/TokenWidget';
 import WysiwygWidget from '@plone/volto/components/manage/Widgets/WysiwygWidget';
 import ReferenceWidget from '@plone/volto/components/manage/Widgets/ReferenceWidget';
+import UrlWidget from '@plone/volto/components/manage/Widgets/UrlWidget';
+import EmailWidget from '@plone/volto/components/manage/Widgets/EmailWidget';
 
 export const DatetimeWidget = loadable(() =>
   import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
@@ -33,6 +35,8 @@ export const widgetMapping = {
     datetime: DatetimeWidget,
     password: PasswordWidget,
     file: FileWidget,
+    url: UrlWidget,
+    email: EmailWidget,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ReferenceWidget,
@@ -44,6 +48,8 @@ export const widgetMapping = {
     object: FileWidget,
     datetime: DatetimeWidget,
     password: PasswordWidget,
+    url: UrlWidget,
+    email: EmailWidget,
   },
 };
 
