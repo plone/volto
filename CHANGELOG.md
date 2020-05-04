@@ -7,6 +7,7 @@
 ### Feature
 
 - Added Dexterity Types Controlpanel @avoinea #1285
+- Add babel and externals support in Webpack for add-on infrastructure @sneridagh
 
 ### Bugfix
 
