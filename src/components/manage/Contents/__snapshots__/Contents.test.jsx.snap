@@ -1007,7 +1007,7 @@ exports[`Contents renders a contents component 1`] = `
                     tabIndex={0}
                   >
                     <svg
-                      className="icon configurationSVG"
+                      className="icon configuration-svg"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": undefined,
