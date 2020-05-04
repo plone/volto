@@ -18,7 +18,6 @@ import {
   Segment,
   Modal,
   Header,
-  Input,
 } from 'semantic-ui-react';
 
 import { SelectWidget, Icon, DatetimeWidget } from '@plone/volto/components';
@@ -233,7 +232,9 @@ class RecurrenceWidget extends Component {
   };
 
   setRecurrenceStartEnd = () => {
+    console.log(this.props);
     const start = this.props.formData?.start;
+
     let _start = this.getUTCDate(start)
       .startOf('day')
       .toDate();
@@ -275,7 +276,7 @@ class RecurrenceWidget extends Component {
 
   getWeekday = number => {
     var day = null;
-    Object.keys(Days).map(d => {
+    Object.keys(Days).forEach(d => {
       if (Days[d].weekday === number) {
         day = Days[d];
       }
@@ -292,6 +293,7 @@ class RecurrenceWidget extends Component {
       freq: FREQUENCES.DAILY,
       interval: 1,
     };
+    console.log(this.props.formData);
     formValues = this.changeField(
       formValues,
       'recurrenceEnds',
@@ -389,12 +391,12 @@ class RecurrenceWidget extends Component {
     var values = Object.assign({}, formValues);
 
     //remove NoRRuleOptions
-    NoRRuleOptions.map(opt => {
+    NoRRuleOptions.forEach(opt => {
       delete values[opt];
     });
 
     //transform values for rrule
-    Object.keys(values).map(field => {
+    Object.keys(values).forEach(field => {
       var value = values[field];
       switch (field) {
         case 'freq':
@@ -510,7 +512,7 @@ class RecurrenceWidget extends Component {
   };
 
   changeField = (formValues, field, value) => {
-    //  console.log('field', field, 'value', value);
+    //  git p.log('field', field, 'value', value);
     //get weekday from state.
     var byweekday =
       this.state?.rruleSet?.rrules().length > 0
@@ -611,7 +613,7 @@ class RecurrenceWidget extends Component {
         break;
 
       case 'monthOfTheYear':
-        if (value == null || value == undefined) {
+        if (value === null || value === undefined) {
           delete formValues.bymonth;
         } else {
           formValues.bymonth = [value];
@@ -629,7 +631,7 @@ class RecurrenceWidget extends Component {
             currWeekday.nth(1),
           ]); //default value
         }
-        if (value == null) {
+        if (value === null) {
           formValues = this.changeField(formValues, 'bymonthday', null); //default value
           formValues = this.changeField(formValues, 'byweekday', null); //default value
         }
@@ -768,6 +770,7 @@ class RecurrenceWidget extends Component {
                       RRULE_LANGUAGE.dateFormatter,
                     )}
                   </Label>
+
                   <Segment>
                     <Occurences
                       rruleSet={rruleSet}
