@@ -38,6 +38,7 @@ const EndField = ({ value, count, until, onChange, intl }) => {
                 <Radio
                   label=""
                   name="recurrenceEnds"
+                  id="recurrenceEndsCount"
                   value="count"
                   checked={value === 'count'}
                   onChange={(e, { value }) => onChange('recurrenceEnds', value)}
@@ -66,7 +67,7 @@ const EndField = ({ value, count, until, onChange, intl }) => {
             <Form.Group inline>
               <Form.Field>
                 <Radio
-                  id="recurrenceEnds"
+                  id="recurrenceEndsUntil"
                   label=""
                   name="recurrenceEnds"
                   value="until"

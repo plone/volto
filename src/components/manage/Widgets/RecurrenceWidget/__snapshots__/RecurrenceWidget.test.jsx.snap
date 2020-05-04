@@ -228,7 +228,7 @@ exports[`renders a recurrence widget component 1`] = `
           </button>
           <button
             aria-label="Remove"
-            className="ui pink basic button edit-recurrence"
+            className="ui pink basic button remove-recurrence"
             onClick={[Function]}
             type="button"
           >

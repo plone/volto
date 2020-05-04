@@ -800,22 +800,24 @@ class RecurrenceWidget extends Component {
                     title={intl.formatMessage(messages.editRecurrence)}
                   />
                 </Button>
-                <Button
-                  basic
-                  color="pink"
-                  className="edit-recurrence"
-                  onClick={() => {
-                    this.remove();
-                  }}
-                  type="button"
-                  aria-label={intl.formatMessage(messages.remove)}
-                >
-                  <Icon
-                    name={trashSVG}
-                    size="20px"
-                    title={intl.formatMessage(messages.remove)}
-                  />
-                </Button>
+                {this.props.value && (
+                  <Button
+                    basic
+                    color="pink"
+                    className="remove-recurrence"
+                    onClick={() => {
+                      this.remove();
+                    }}
+                    type="button"
+                    aria-label={intl.formatMessage(messages.remove)}
+                  >
+                    <Icon
+                      name={trashSVG}
+                      size="20px"
+                      title={intl.formatMessage(messages.remove)}
+                    />
+                  </Button>
+                )}
               </div>
 
               <Modal
