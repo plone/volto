@@ -2,8 +2,6 @@
 
 ## 5.3.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Add babel and externals support in Webpack for add-on infrastructure @sneridagh
