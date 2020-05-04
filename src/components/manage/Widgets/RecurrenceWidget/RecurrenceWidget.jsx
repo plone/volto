@@ -198,7 +198,9 @@ class RecurrenceWidget extends Component {
   }
 
   componentDidMount() {
-    this.setRecurrenceStartEnd();
+    if (this.props.value) {
+      this.setRecurrenceStartEnd();
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -232,7 +234,7 @@ class RecurrenceWidget extends Component {
   };
 
   setRecurrenceStartEnd = () => {
-    console.log(this.props);
+    console.log('setrecurrencestartend');
     const start = this.props.formData?.start;
 
     let _start = this.getUTCDate(start)

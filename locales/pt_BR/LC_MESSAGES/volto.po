@@ -1292,6 +1292,10 @@ msgstr "Pesquisar usuários..."
 msgid "Second"
 msgstr ""
 
+#: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
+msgid "Select a date to add to recurrence"
+msgstr ""
+
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
 msgstr "Seleccione colunas a apresentar"
