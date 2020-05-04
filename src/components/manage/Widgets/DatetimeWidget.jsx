@@ -11,6 +11,7 @@ import { map } from 'lodash';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import TimePicker from 'rc-time-picker';
+import cx from 'classnames';
 import leftKey from '../../../icons/left-key.svg';
 import rightKey from '../../../icons/right-key.svg';
 import { Icon } from '../../../components';
@@ -87,6 +88,11 @@ class DatetimeWidget extends Component {
 
     this.state = {
       focused: false,
+      isDefault:
+        datetime.toISOString() ===
+        moment()
+          .utc()
+          .toISOString(),
       datetime,
     };
   }
@@ -107,6 +113,7 @@ class DatetimeWidget extends Component {
             date: date.date(),
             ...(this.props.dateOnly ? defaultTimeDateOnly : {}),
           }),
+          isDefault: false,
         }),
         () => this.onDateTimeChange(),
       );
@@ -126,6 +133,7 @@ class DatetimeWidget extends Component {
           minutes: time.minutes(),
           seconds: 0,
         }),
+        isDefault: false,
       }),
       () => this.onDateTimeChange(),
     );
@@ -157,9 +165,10 @@ class DatetimeWidget extends Component {
       error,
       fieldSet,
       dateOnly,
+      noPastDates,
       intl,
     } = this.props;
-    const { datetime, focused } = this.state;
+    const { datetime, isDefault, focused } = this.state;
 
     return (
       <Form.Field
@@ -178,12 +187,17 @@ class DatetimeWidget extends Component {
             </Grid.Column>
             <Grid.Column width="8">
               <div>
-                <div className="ui input date-input">
+                <div
+                  className={cx('ui input date-input', {
+                    'default-date': isDefault,
+                  })}
+                >
                   <SingleDatePicker
                     date={datetime}
                     onDateChange={this.onDateChange}
                     focused={focused}
                     numberOfMonths={1}
+                    {...(noPastDates ? {} : { isOutsideRange: () => false })}
                     onFocusChange={this.onFocusChange}
                     noBorder
                     displayFormat={moment
@@ -195,7 +209,11 @@ class DatetimeWidget extends Component {
                   />
                 </div>
                 {!dateOnly && (
-                  <div className="ui input time-input">
+                  <div
+                    className={cx('ui input time-input', {
+                      'default-date': isDefault,
+                    })}
+                  >
                     <TimePicker
                       defaultValue={datetime}
                       onChange={this.onTimeChange}
@@ -243,6 +261,7 @@ DatetimeWidget.propTypes = {
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
   dateOnly: PropTypes.bool,
+  noPastDates: PropTypes.bool,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
@@ -257,6 +276,7 @@ DatetimeWidget.defaultProps = {
   required: false,
   error: [],
   dateOnly: false,
+  noPastDates: false,
   value: null,
 };
 

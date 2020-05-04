@@ -31,6 +31,7 @@ exports[`Html renders a html component 1`] = `
     />
     <link
       as="script"
+      crossOrigin="true"
       data-chunk="client"
       href="http://localhost:3001/static/js/runtime~client.js"
       rel="preload"

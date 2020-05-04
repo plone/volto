@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2020-03-19 14:02+0900\n"
+"PO-Revision-Date: 2020-04-22 21:11+0900\n"
 "Last-Translator: Manabu TERADA <terada@cmscom.jp>\n"
 "Language: ja\n"
 "Language-Team: Plone Japanese Team <https://github.com/plonejp>\n"
@@ -52,7 +52,7 @@ msgstr "新規追加"
 
 #: components/manage/Toolbar/Types
 msgid "Add Translation..."
-msgstr ""
+msgstr "翻訳コンテンツを追加..."
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add User"
@@ -137,6 +137,7 @@ msgstr "昇順"
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 msgid "Back"
 msgstr "戻る"
@@ -210,7 +211,7 @@ msgstr "状態を変更"
 
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Change workflow state recursively"
-msgstr ""
+msgstr "下位階層のワークフローの状態も変更する"
 
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -272,6 +273,10 @@ msgstr "比較"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Confirm password"
 msgstr "パスワードを確認"
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "Connection refused"
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "Contact"
@@ -532,6 +537,8 @@ msgstr "確認するためにあなたのメールアドレスを入力してく
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "新しいパスワードを入力。（5文字以上）"
 
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1268,7 +1275,7 @@ msgstr "サイト設定"
 
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
-msgstr ""
+msgstr "サイトマップ"
 
 #: components/theme/View/ImageView
 msgid "Size: {size}"
@@ -1364,6 +1371,8 @@ msgstr "テンプレート"
 msgid "Text"
 msgstr "テキスト"
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+#: components/theme/CorsError/CorsError
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
@@ -1372,6 +1381,14 @@ msgstr "ありがとうございます。"
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
 msgstr "外部ホームページがあればURLを記載してください。"
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
+msgstr ""
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
@@ -1384,6 +1401,10 @@ msgstr "写真やアバターなどプロフィール画像を登録してくだ
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
+
+#: components/theme/CorsError/CorsError
+msgid "There is a configuration problem on the backend"
+msgstr ""
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
@@ -1419,7 +1440,7 @@ msgstr "コメント計"
 
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
-msgstr ""
+msgstr "{lang} に翻訳する"
 
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
@@ -1542,6 +1563,14 @@ msgstr "この履歴を表示"
 msgid "Viewmode"
 msgstr "表示モード"
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
+msgstr ""
+
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "不便をかけて申し訳ありませんが、アクセスしようとしたページはこのアドレスではありません。"
@@ -1646,6 +1675,38 @@ msgstr "安全上の理由で、パスワードは暗号化されて保管され
 msgid "description_sent_password"
 msgstr "パスワード再設定のお願いをメール送信しました。まもなくあなたのメールボックスに届くはずです。メッセージを受け取ったら、その中にあるパスワード再設定用のURLにアクセスしてください。"
 
+#: components/theme/View/EventView
+msgid "event_alldates"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_attendees"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_contactname"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_contactphone"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_website"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_what"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_when"
+msgstr ""
+
+#: components/theme/View/EventView
+msgid "event_where"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
 msgstr "パスワード再設定の確認が送られました"
@@ -1700,7 +1761,7 @@ msgstr "登録フォーム"
 
 #: components/theme/Search/Search
 msgid "results found"
-msgstr ""
+msgstr "件 見つかりました"
 
 #: error
 msgid "return to the site root"
@@ -1708,7 +1769,7 @@ msgstr "サイトルートに戻ってください。"
 
 #: components/manage/Contents/Contents
 msgid "sort"
-msgstr ""
+msgstr "並べ替え"
 
 #: config/Blocks
 msgid "table"
@@ -1733,6 +1794,10 @@ msgstr "ユーザアイコン"
 #: config/Blocks
 msgid "video"
 msgstr "ビデオ"
+
+#: components/theme/View/EventView
+msgid "visit_external_website"
+msgstr ""
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"

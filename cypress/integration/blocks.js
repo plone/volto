@@ -15,25 +15,6 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get(`.block.title [data-contents]`);
     });
 
-    it('Add text block', () => {
-      // when I add a text block
-      cy.get('.block.inner.text .public-DraftEditor-content')
-        .click()
-        .type('My text')
-        .get('span[data-text]')
-        .contains('My text');
-      cy.get('#toolbar-save').click();
-      cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
-
-      // then the page view should contain the text block
-      cy.get('#page-document p').contains('My text');
-    });
-
     it('Add maps block', () => {
       // when I add a maps block
       cy.get('.block.text [contenteditable]').click();
@@ -421,6 +402,52 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get(`.${block}-body h1`).contains(`${expectedTitle}`);
       cy.get(`.${block}-body p`).contains(`${expectedDescription}`);
     });
+    // it('Add hero block', () => {
+    //   // TODO: Implement react dropzone for this block to test the image
+
+    //   const block = 'hero';
+    //   // const expectedFile = 'broccoli.jpg';
+    //   const expectedTitle = 'Volto';
+    //   const expectedDescription =
+    //     'React-based front-end for the Plone and Guillotina';
+
+    //   // Edit
+    //   cy.get('.block.text [contenteditable]').click();
+    //   cy.get('button.block-add-button').click();
+    //   cy.get('button.show-hidden-blocks').click();
+    //   cy.get(`button.add-${block}-block`).click();
+
+    //   // cy.fixture(expectedFile).then(fileContent => {
+    //   //   cy.get(`.block.${block} [data-cy="dropzone]`).upload(
+    //   //     { fileContent, expectedFile, mimeType: 'application/json' },
+    //   //     { subjectType: 'drag-n-drop' },
+    //   //   );
+    //   // });
+    //   cy.get(
+    //     `.block.${block} .title-editor > .public-DraftStyleDefault-block`,
+    //   ).type(expectedTitle);
+    //   cy.get(
+    //     `.block.${block} .description-editor > .public-DraftStyleDefault-block`,
+    //   ).type(expectedDescription);
+
+    //   cy.get(
+    //     `.block.${block} .title-editor > .public-DraftStyleDefault-block`,
+    //   ).contains(expectedTitle);
+    //   cy.get(
+    //     `.block.${block} .description-editor > .public-DraftStyleDefault-block`,
+    //   ).contains(expectedDescription);
+
+    //   // Save
+    //   // cy.get('#toolbar-save').click();
+
+    //   // View
+    //   if (Cypress.env('API') === 'plone') {
+    //     // cy.get('#page-document h1').should('have.text', expected);
+    //   } else {
+    //     // guillotina
+    //     // cy.contains(expected);
+    //   }
+    // });
 
     it('Add HTML block', () => {
       // when I add a maps block

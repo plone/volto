@@ -147,7 +147,7 @@ const blocks = {
 
 const LinkEntity = connect(state => ({
   token: state.userSession.token,
-}))(({ token, key, url, target, targetUrl, download, children }) => {
+}))(({ token, key, url, target = '_blank', targetUrl, download, children }) => {
   const to = token ? url : targetUrl || url;
   if (download) {
     return token ? (
