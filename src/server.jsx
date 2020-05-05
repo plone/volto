@@ -13,6 +13,7 @@ import locale from 'locale';
 import { detect } from 'detect-browser';
 import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
+import { createProxyMiddleware } from 'http-proxy-middleware';
 
 import routes from '~/routes';
 import { settings } from '~/config';
@@ -46,6 +47,23 @@ if (settings) {
 const supported = new locale.Locales(keys(languages), 'en');
 
 const server = express();
+// Internal proxy to bypass CORS while developing.
+if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
+  const apiPathURL = parseUrl(settings.apiPath);
+  const proxyURL = parseUrl(settings.devProxyToApiPath);
+  const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
+  const instancePath = proxyURL.pathname;
+  server.use(
+    '/api',
+    createProxyMiddleware({
+      target: serverURL,
+      pathRewrite: {
+        '^/api': `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
+      },
+      logLevel: 'silent',
+    }),
+  );
+}
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
@@ -105,13 +123,19 @@ server
       req.path.match(/(.*)\/@@download\/(.*)/)
     ) {
       getAPIResourceWithAuth(req).then(resource => {
-        res.set('Content-Type', resource.headers['content-type']);
-        if (resource.headers['content-disposition']) {
-          res.set(
-            'Content-Disposition',
-            resource.headers['content-disposition'],
-          );
+        function forwardHeaders(headers) {
+          headers.forEach(header => {
+            if (resource.headers[header]) {
+              res.set(header, resource.headers[header]);
+            }
+          });
         }
+        // Just forward the headers that we need
+        forwardHeaders([
+          'content-type',
+          'content-disposition',
+          'cache-control',
+        ]);
         res.send(resource.body);
       });
     } else {
@@ -166,4 +190,6 @@ server
     }
   });
 
+server.apiPath = settings.apiPath;
+server.devProxyToApiPath = settings.devProxyToApiPath;
 export default server;

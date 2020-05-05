@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.0.1 (unreleased)
+## 5.4.1 (unreleased)
 
 ### Breaking
 
@@ -8,9 +8,90 @@
 
 ### Bugfix
 
-- Show new added user in user control panel @iFlameing #1271
+### Internal
+
+## 5.4.0 (2020-05-04)
+
+### Feature
+
+- Add babel and externals support in Webpack for add-on infrastructure @sneridagh
+- Forward the images and files cache headers in Volto SSR passthrough @sneridagh
+
+### Bugfix
+
+- Fix handling of external links in ToHTML config @nzambello
 
 ### Internal
+
+- Periodical upgrade of `browserlist` lib @sneridagh
+
+## 5.3.0 (2020-04-29)
+
+### Feature
+
+- Add general @navigation endpoint depth setting @sneridagh
+
+### Bugfix
+
+- Fix `<html>` `lang` attribute @sneridagh
+
+## 5.2.1 (2020-04-27)
+
+### Internal
+
+- Remove console log in workflow asyncConnect :( @sneridagh
+
+## 5.2.0 (2020-04-27)
+
+### Feature
+
+- Improvement of API requests error handling @sneridagh
+- Unauthorized on folder contents if no proper credentials @sneridagh
+
+### Bugfix
+
+- Improve German translations for folder contents view @timo
+- Make label of checkboxwidget clickable @pbauer #1414
+- Show new added user in user control panel @iFlameing #1271
+- Support multi selection in roles and groups and polish add user #1372
+- Listing block: removed message 'No results found' only in view mode on public site, in editMode is still present. @giuliaghisini
+
+### Internal
+
+- Add crossorigin to the preload resources tags while in development @sneridagh
+- Permissions in contents and Edit @sneridagh
+- Fix the error on content Edit no credentials now shows `Unauthorized` @sneridagh
+- Improve console server output showing info @sneridagh
+
+## 5.1.0 (2020-04-23)
+
+### Breaking
+
+### Feature
+
+- Full screen right sidebar @rexalex #1345
+- Enable internal API proxy for not to rely on CORS on development @sneridagh
+- Added Print CSS @iFlameing #1289
+- Added error handling for Add and Edit forms #1392 @nzambello
+
+### Bugfix
+
+- Japanese translation @terapyon
+- Fix `ArrayWidget` to support multiselect schema `schema.List`/`schema.Set`-> `schema.Choice` hardcoded (not using vocabularies) combination @sneridagh
+- Remove Back button from control panels, since it's redundant @sneridagh
+- Show past dates in date time widget calendar @nzambello
+
+### Internal
+
+- Translated labels in Eventi View @nzambello
+- Improve i18n script, so shadowed components are not overriding their original translations. For the record, any override of i18n messages, should be done somewhere else (eg. config object) @sneridagh
+
+## 5.0.1 (2020-04-16)
+
+### Bugfix
+
+- Show new added user in user control panel @iFlameing #1271
+- Fixes for contact form @nzambello
 
 ## 5.0.0 (2020-04-12)
 
@@ -78,6 +159,7 @@
 ### Feature
 
 - /contents (folder content view) is sortable @ksuess
+- Updated the (folder content icons to Pastanaga Icons) @iFlameing
 
 ### Bugfix
 

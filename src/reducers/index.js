@@ -8,6 +8,7 @@ import { intlReducer } from 'react-intl-redux';
 
 import actions from '@plone/volto/reducers/actions/actions';
 import addons from '@plone/volto/reducers/addons/addons';
+import apierror from '@plone/volto/reducers/apierror/apierror';
 import breadcrumbs from '@plone/volto/reducers/breadcrumbs/breadcrumbs';
 import browserdetect from '@plone/volto/reducers/browserdetect/browserdetect';
 import comments from '@plone/volto/reducers/comments/comments';
@@ -34,6 +35,7 @@ import users from '@plone/volto/reducers/users/users';
 import userSession from '@plone/volto/reducers/userSession/userSession';
 import vocabularies from '@plone/volto/reducers/vocabularies/vocabularies';
 import workflow from '@plone/volto/reducers/workflow/workflow';
+import toolbar from '@plone/volto/reducers/toolbar/toolbar';
 
 /**
  * Root reducer.
@@ -47,6 +49,7 @@ const reducers = {
   reduxAsyncConnect,
   actions,
   addons,
+  apierror,
   breadcrumbs,
   browserdetect,
   comments,
@@ -73,6 +76,7 @@ const reducers = {
   userSession,
   vocabularies,
   workflow,
+  toolbar,
 };
 
 export default reducers;

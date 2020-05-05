@@ -147,6 +147,7 @@ msgstr ""
 #: components/manage/Preferences/PersonalInformation
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Sharing/Sharing
+#: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 msgid "Back"
 msgstr "Indietro"
@@ -282,6 +283,10 @@ msgstr "Confronta"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Confirm password"
 msgstr "Conferma password"
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "Connection refused"
+msgstr ""
 
 #: components/theme/Footer/Footer
 msgid "Contact"
@@ -542,6 +547,8 @@ msgstr "Inserisci la tua mail per verifica."
 msgid "Enter your new password. Minimum 5 characters."
 msgstr "Inserisci la tua nuova password. Minimo 5 caratteri."
 
+#: components/manage/Add/Add
+#: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
@@ -1394,6 +1401,8 @@ msgstr "Template"
 msgid "Text"
 msgstr "Testo"
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+#: components/theme/CorsError/CorsError
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
@@ -1402,6 +1411,14 @@ msgstr "Grazie."
 #: components/manage/Preferences/PersonalInformation
 msgid "The URL for your external home page, if you have one."
 msgstr "L'indirizzo della tua pagina personale esterna, se ne hai una."
+
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
+msgstr ""
 
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
@@ -1414,6 +1431,10 @@ msgstr "L'avatar/ritratto utente"
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 msgstr "{plonecms} è {copyright} 2000-{current_year} della {plonefoundation} ed amici."
+
+#: components/theme/CorsError/CorsError
+msgid "There is a configuration problem on the backend"
+msgstr ""
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
@@ -1592,6 +1613,14 @@ msgstr "Mostra questa revisione"
 msgid "Viewmode"
 msgstr "Vista"
 
+#: components/theme/ConnectionRefused/ConnectionRefused
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
+msgstr ""
+
+#: components/theme/CorsError/CorsError
+msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not configured properly right now. Please, try again later."
+msgstr ""
+
 #: components/theme/NotFound/NotFound
 msgid "We apologize for the inconvenience, but the page you were trying to access is not at this address. You can use the links below to help you find what you are looking for."
 msgstr "Ci scusiamo per l'inconveniente, la pagina cui stai provando ad accedere non esiste a questo indirizzo. Puoi usare il link qui sotto per trovare quello che stavi cercando."
@@ -1696,6 +1725,38 @@ msgstr "Per ragioni di sicurezza, le password vengono memorizzate in forma critt
 msgid "description_sent_password"
 msgstr "La istruzioni per reimpostare la tua password sono state inviate. Dovrebbero arrivare a breve nella tua casella di posta. Una volta ricevuto il messaggio, visita l'indirizzo indicato per reimpostare la password."
 
+#: components/theme/View/EventView
+msgid "event_alldates"
+msgstr "Tutte le date"
+
+#: components/theme/View/EventView
+msgid "event_attendees"
+msgstr "Partecipanti"
+
+#: components/theme/View/EventView
+msgid "event_contactname"
+msgstr "Nome del contatto"
+
+#: components/theme/View/EventView
+msgid "event_contactphone"
+msgstr "Telefono del contatto"
+
+#: components/theme/View/EventView
+msgid "event_website"
+msgstr "Sito web"
+
+#: components/theme/View/EventView
+msgid "event_what"
+msgstr "Cosa"
+
+#: components/theme/View/EventView
+msgid "event_when"
+msgstr "Quando"
+
+#: components/theme/View/EventView
+msgid "event_where"
+msgstr "Dove"
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
 msgstr "Richiesta di conferma reimpostazione password spedita"
@@ -1750,7 +1811,7 @@ msgstr "form di registrazione"
 
 #: components/theme/Search/Search
 msgid "results found"
-msgstr ""
+msgstr "risultati trovati"
 
 #: error
 msgid "return to the site root"
@@ -1783,6 +1844,10 @@ msgstr "Avatar dell'utente"
 #: config/Blocks
 msgid "video"
 msgstr "Video"
+
+#: components/theme/View/EventView
+msgid "visit_external_website"
+msgstr "Visita il sito web"
 
 #: components/theme/Login/Login
 msgid "we can send you a new one"

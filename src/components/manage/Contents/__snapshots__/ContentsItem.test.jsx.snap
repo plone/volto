@@ -11,35 +11,97 @@ exports[`ContentsItem renders a contents item component 1`] = `
   <td
     className=""
   >
-    <i
-      aria-hidden="true"
-      className="grey content icon drag handle"
-    />
+    <div
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <button
+        className="ui basic icon button"
+        onClick={[Function]}
+      >
+        <svg
+          className="icon content drag handle"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": undefined,
+            }
+          }
+          onClick={null}
+          style={
+            Object {
+              "fill": "#878f93",
+              "height": "20px",
+              "width": "auto",
+            }
+          }
+          viewBox=""
+          xmlns=""
+        />
+      </button>
+    </div>
   </td>
   <td
     className=""
   >
-    <i
-      aria-hidden="true"
-      className="black square outline icon"
+    <button
+      aria-label="Checked"
+      className="ui basic icon button"
       onClick={[Function]}
-      value="/blog"
-    />
+    >
+      <svg
+        className="icon unchecked"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "#826a6a",
+            "height": "24px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
+      />
+    </button>
   </td>
   <td
     className=""
   >
     <a
+      className="iconAlign"
       href="/blog"
       onClick={[Function]}
     >
-      <i
-        aria-hidden="true"
-        className="file text outline icon"
-        onClick={[Function]}
+      <svg
+        className="icon iconMargin"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
+        onClick={null}
+        style={
+          Object {
+            "fill": "#878f93",
+            "height": "20px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
       />
        
-      Blog
+      <span>
+         
+        Blog
+      </span>
     </a>
   </td>
   <td
@@ -52,7 +114,7 @@ exports[`ContentsItem renders a contents item component 1`] = `
   >
     <div
       aria-expanded={false}
-      className="ui dropdown"
+      className="ui dropdown row-actions"
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -67,36 +129,75 @@ exports[`ContentsItem renders a contents item component 1`] = `
         className="text"
         role="alert"
       />
-      <i
-        aria-hidden="true"
-        className="ellipsis horizontal icon"
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": undefined,
+          }
+        }
         onClick={[Function]}
+        style={
+          Object {
+            "fill": "#007eb1",
+            "height": "24px",
+            "width": "auto",
+          }
+        }
+        viewBox=""
+        xmlns=""
       />
       <div
         className="menu transition left"
       >
         <a
-          className="item"
+          className="item iconAlign"
           href="/blog/edit"
           onClick={[Function]}
         >
-          <i
-            aria-hidden="true"
-            className="write icon"
-            onClick={[Function]}
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#007eb1",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
           />
            
           Edit
         </a>
         <a
-          className="item"
+          className="item right-dropdown iconAlign"
           href="/blog"
           onClick={[Function]}
         >
-          <i
-            aria-hidden="true"
-            className="eye icon"
-            onClick={[Function]}
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#007eb1",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
           />
            
           View
@@ -105,40 +206,79 @@ exports[`ContentsItem renders a contents item component 1`] = `
           className="divider"
         />
         <div
-          className="item"
+          className="item right-dropdown iconAlign"
           onClick={[Function]}
           role="option"
         >
-          <i
-            aria-hidden="true"
-            className="cut icon"
-            onClick={[Function]}
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#007eb1",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
           />
            
           Cut
         </div>
         <div
-          className="item"
+          className="item right-dropdown iconAlign"
           onClick={[Function]}
           role="option"
         >
-          <i
-            aria-hidden="true"
-            className="copy icon"
-            onClick={[Function]}
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#007eb1",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
           />
            
           Copy
         </div>
         <div
-          className="item"
+          className="item right-dropdown iconAlign"
           onClick={[Function]}
           role="option"
         >
-          <i
-            aria-hidden="true"
-            className="trash icon"
-            onClick={[Function]}
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#e40166",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
           />
            
           Delete
@@ -147,27 +287,53 @@ exports[`ContentsItem renders a contents item component 1`] = `
           className="divider"
         />
         <div
-          className="item"
+          className="item right-dropdown iconAlign"
           onClick={[Function]}
           role="option"
         >
-          <i
-            aria-hidden="true"
-            className="arrow up icon"
-            onClick={[Function]}
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#007eb1",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
           />
            
           Move to top of folder
         </div>
         <div
-          className="item"
+          className="item right-dropdown iconAlign"
           onClick={[Function]}
           role="option"
         >
-          <i
-            aria-hidden="true"
-            className="arrow down icon"
-            onClick={[Function]}
+          <svg
+            className="icon"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": undefined,
+              }
+            }
+            onClick={null}
+            style={
+              Object {
+                "fill": "#007eb1",
+                "height": "24px",
+                "width": "auto",
+              }
+            }
+            viewBox=""
+            xmlns=""
           />
            
           Move to bottom of folder

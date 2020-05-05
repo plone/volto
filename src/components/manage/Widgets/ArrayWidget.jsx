@@ -115,7 +115,7 @@ class ArrayWidget extends Component {
       selectedOption: props.value
         ? props.value.map(item =>
             isObject(item)
-              ? { label: item.title, value: item.token }
+              ? { label: item.title || item.token, value: item.token }
               : { label: item, value: item },
           )
         : [],
@@ -230,7 +230,11 @@ class ArrayWidget extends Component {
                       ? [
                           ...this.props.choices.map(option => ({
                             value: option[0],
-                            label: option[1],
+                            label:
+                              // Fix "None" on the serializer, to remove when fixed in p.restapi
+                              option[1] !== 'None' && option[1]
+                                ? option[1]
+                                : option[0],
                           })),
                           {
                             label: this.props.intl.formatMessage(
