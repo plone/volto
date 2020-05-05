@@ -3,10 +3,9 @@
  * @module components/manage/Widgets/TextareaWidget
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Icon, Label, TextArea } from 'semantic-ui-react';
-import { map } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 
 const messages = defineMessages({
@@ -45,149 +44,118 @@ const messages = defineMessages({
  * @function TextareaWidget
  * @returns {string} Markup of the component.
  */
-class TextareaWidget extends Component {
-  state = {
-    lengthError: '',
-  };
-
-  onhandleChange = (id, value) => {
-    if (this.props.maxLength) {
-      let remlength = this.props.maxLength - value.length;
-      if (remlength < 0) {
-        this.setState({
-          lengthError: `You have exceed word limit by ${Math.abs(remlength)}`,
-        });
-      } else {
-        this.setState({
-          lengthError: '',
-        });
-      }
-    }
-    this.props.onChange(id, value);
-  };
-
-  render() {
-    const {
-      id,
-      title,
-      required,
-      description,
-      error,
-      value,
-      onEdit,
-      onDelete,
-      intl,
-      fieldSet,
-    } = this.props;
-    const { lengthError } = this.state;
-    const schema = {
-      fieldsets: [
-        {
-          id: 'default',
-          title: intl.formatMessage(messages.default),
-          fields: ['title', 'id', 'description', 'required'],
-        },
-      ],
-      properties: {
-        id: {
-          type: 'string',
-          title: intl.formatMessage(messages.idTitle),
-          description: intl.formatMessage(messages.idDescription),
-        },
-        title: {
-          type: 'string',
-          title: intl.formatMessage(messages.title),
-        },
-        description: {
-          type: 'string',
-          widget: 'textarea',
-          title: intl.formatMessage(messages.description),
-        },
-        required: {
-          type: 'boolean',
-          title: intl.formatMessage(messages.required),
-        },
+const TextareaWidget = ({
+  id,
+  title,
+  required,
+  description,
+  error,
+  value,
+  onChange,
+  onEdit,
+  onDelete,
+  intl,
+  fieldSet,
+}) => {
+  const schema = {
+    fieldsets: [
+      {
+        id: 'default',
+        title: intl.formatMessage(messages.default),
+        fields: ['title', 'id', 'description', 'required'],
       },
-      required: ['id', 'title'],
-    };
+    ],
+    properties: {
+      id: {
+        type: 'string',
+        title: intl.formatMessage(messages.idTitle),
+        description: intl.formatMessage(messages.idDescription),
+      },
+      title: {
+        type: 'string',
+        title: intl.formatMessage(messages.title),
+      },
+      description: {
+        type: 'string',
+        widget: 'textarea',
+        title: intl.formatMessage(messages.description),
+      },
+      required: {
+        type: 'boolean',
+        title: intl.formatMessage(messages.required),
+      },
+    },
+    required: ['id', 'title'],
+  };
 
-    return (
-      <Form.Field
-        inline
-        required={required}
-        error={error.length > 0}
-        className={description ? 'help textarea' : 'textarea'}
-        id={`${fieldSet || 'field'}-${id}`}
-      >
-        <Grid>
-          <Grid.Row stretched>
-            <Grid.Column width="4">
-              <div className="wrapper">
-                <label htmlFor={`field-${id}`}>
-                  {onEdit && (
-                    <i
-                      aria-hidden="true"
-                      className="grey bars icon drag handle"
-                    />
-                  )}
-                  {title}
-                </label>
+  return (
+    <Form.Field
+      inline
+      required={required}
+      error={error.length > 0}
+      className={description ? 'help textarea' : 'textarea'}
+      id={`${fieldSet || 'field'}-${id}`}
+    >
+      <Grid>
+        <Grid.Row stretched>
+          <Grid.Column width="4">
+            <div className="wrapper">
+              <label htmlFor={`field-${id}`}>
+                {onEdit && (
+                  <i
+                    aria-hidden="true"
+                    className="grey bars icon drag handle"
+                  />
+                )}
+                {title}
+              </label>
+            </div>
+          </Grid.Column>
+          <Grid.Column width="8">
+            {onEdit && (
+              <div className="toolbar">
+                <button
+                  className="item ui noborder button"
+                  onClick={() => onEdit(id, schema)}
+                >
+                  <Icon name="write square" size="large" color="blue" />
+                </button>
+                <button
+                  aria-label={this.props.intl.formatMessage(messages.delete)}
+                  className="item ui noborder button"
+                  onClick={() => onDelete(id)}
+                >
+                  <Icon name="close" size="large" color="red" />
+                </button>
               </div>
-            </Grid.Column>
-            <Grid.Column width="8">
-              {onEdit && (
-                <div className="toolbar">
-                  <button
-                    className="item ui noborder button"
-                    onClick={() => onEdit(id, schema)}
-                  >
-                    <Icon name="write square" size="large" color="blue" />
-                  </button>
-                  <button
-                    aria-label={this.props.intl.formatMessage(messages.delete)}
-                    className="item ui noborder button"
-                    onClick={() => onDelete(id)}
-                  >
-                    <Icon name="close" size="large" color="red" />
-                  </button>
-                </div>
-              )}
-              <TextArea
-                id={`field-${id}`}
-                name={id}
-                value={value || ''}
-                disabled={onEdit !== null}
-                onChange={({ target }) =>
-                  this.onhandleChange(
-                    id,
-                    target.value === '' ? undefined : target.value,
-                  )
-                }
-              />
-              {lengthError.length > 0 && (
-                <Label key={lengthError} basic color="red" pointing>
-                  {lengthError}
-                </Label>
-              )}
-              {map(error, message => (
-                <Label key={message} basic color="red" pointing>
-                  {message}
-                </Label>
-              ))}
+            )}
+            <TextArea
+              id={`field-${id}`}
+              name={id}
+              value={value || ''}
+              disabled={onEdit !== null}
+              onChange={({ target }) =>
+                onChange(id, target.value === '' ? undefined : target.value)
+              }
+            />
+            {error.length > 0 && (
+              <Label key={error} basic color="red" pointing>
+                {error}
+              </Label>
+            )}
+          </Grid.Column>
+        </Grid.Row>
+        {description && (
+          <Grid.Row stretched>
+            <Grid.Column stretched width="12">
+              <p className="help">{description}</p>
             </Grid.Column>
           </Grid.Row>
-          {description && (
-            <Grid.Row stretched>
-              <Grid.Column stretched width="12">
-                <p className="help">{description}</p>
-              </Grid.Column>
-            </Grid.Row>
-          )}
-        </Grid>
-      </Form.Field>
-    );
-  }
-}
+        )}
+      </Grid>
+    </Form.Field>
+  );
+};
 
 /**
  * Property types.
@@ -198,7 +166,6 @@ TextareaWidget.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
-  maxLength: PropTypes.number,
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.string,
@@ -215,7 +182,6 @@ TextareaWidget.propTypes = {
 TextareaWidget.defaultProps = {
   description: null,
   required: false,
-  maxLength: null,
   error: [],
   value: null,
   onChange: null,

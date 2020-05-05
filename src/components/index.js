@@ -108,6 +108,9 @@ export CheckboxWidget from '@plone/volto/components/manage/Widgets/CheckboxWidge
 export const DatetimeWidget = loadable(() =>
   import('@plone/volto/components/manage/Widgets/DatetimeWidget'),
 );
+export const TextareaLimitLengthWidget = loadable(() =>
+  import('@plone/volto/components/manage/Widgets/TextAreaLimitLengthWidget'),
+);
 
 export FileWidget from '@plone/volto/components/manage/Widgets/FileWidget';
 export PasswordWidget from '@plone/volto/components/manage/Widgets/PasswordWidget';
