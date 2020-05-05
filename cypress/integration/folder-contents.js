@@ -41,7 +41,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.icon.unchecked').should('have.length', 2);
     });
 
-    it.only('Cuting the item and pasting into others', () => {
+    it('Cuting the item and pasting into others', () => {
       cy.createContent('Document', 'child', 'My Child', 'my-folder');
       cy.visit('my-folder/contents');
       cy.get('tbody>tr:nth-child(2) .unchecked').click();
