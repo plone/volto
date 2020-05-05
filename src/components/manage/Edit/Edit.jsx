@@ -146,7 +146,7 @@ class Edit extends Component {
       }
     }
     // Hack for make the Plone site editable by Volto Editor without checkings
-    if (this.props.content['@type'] === 'Plone Site') {
+    if (this.props?.content?.['@type'] === 'Plone Site') {
       this.setState({
         visual: true,
       });
@@ -322,8 +322,8 @@ export default compose(
   asyncConnect([
     {
       key: 'actions',
-      promise: ({ location, store: { dispatch } }) => {
-        __SERVER__ && dispatch(listActions(getBaseUrl(location.pathname)));
+      promise: async ({ location, store: { dispatch } }) => {
+        await dispatch(listActions(getBaseUrl(location.pathname)));
       },
     },
   ]),

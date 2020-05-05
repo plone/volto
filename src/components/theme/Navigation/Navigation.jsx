@@ -71,7 +71,10 @@ class Navigation extends Component {
    * @returns {undefined}
    */
   UNSAFE_componentWillMount() {
-    this.props.getNavigation(getBaseUrl(this.props.pathname));
+    this.props.getNavigation(
+      getBaseUrl(this.props.pathname),
+      settings.navDepth,
+    );
   }
 
   /**
@@ -82,7 +85,10 @@ class Navigation extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.pathname !== this.props.pathname) {
-      this.props.getNavigation(getBaseUrl(nextProps.pathname));
+      this.props.getNavigation(
+        getBaseUrl(nextProps.pathname),
+        settings.navDepth,
+      );
     }
   }
 

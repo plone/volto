@@ -151,10 +151,10 @@ export const ContentsItemComponent = ({
               <span> {item.title}</span>
             </div>
             {item.ExpirationDate !== 'None' &&
-              new Date(item.ExpirationDate).getTime() >
+              new Date(item.ExpirationDate).getTime() <
                 new Date().getTime() && (
                 <Button className="buttonMargin" size="mini">
-                  <FormattedMessage id="Expires" defaultMessage="Expires" />
+                  <FormattedMessage id="Expired" defaultMessage="Expired" />
                 </Button>
               )}
           </Link>

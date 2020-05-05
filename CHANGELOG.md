@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.1.1 (unreleased)
+## 5.4.1 (unreleased)
 
 ### Breaking
 
@@ -10,7 +10,58 @@
 
 ### Internal
 
+## 5.4.0 (2020-05-04)
+
+### Feature
+
+- Add babel and externals support in Webpack for add-on infrastructure @sneridagh
+- Forward the images and files cache headers in Volto SSR passthrough @sneridagh
+
+### Bugfix
+
+- Fix handling of external links in ToHTML config @nzambello
+
+### Internal
+
+- Periodical upgrade of `browserlist` lib @sneridagh
+
+## 5.3.0 (2020-04-29)
+
+### Feature
+
+- Add general @navigation endpoint depth setting @sneridagh
+
+### Bugfix
+
+- Fix `<html>` `lang` attribute @sneridagh
+
+## 5.2.1 (2020-04-27)
+
+### Internal
+
+- Remove console log in workflow asyncConnect :( @sneridagh
+
+## 5.2.0 (2020-04-27)
+
+### Feature
+
+- Improvement of API requests error handling @sneridagh
+- Unauthorized on folder contents if no proper credentials @sneridagh
+
+### Bugfix
+
+- Improve German translations for folder contents view @timo
+- Make label of checkboxwidget clickable @pbauer #1414
+- Show new added user in user control panel @iFlameing #1271
+- Support multi selection in roles and groups and polish add user #1372
+- Listing block: removed message 'No results found' only in view mode on public site, in editMode is still present. @giuliaghisini
+
+### Internal
+
 - Add crossorigin to the preload resources tags while in development @sneridagh
+- Permissions in contents and Edit @sneridagh
+- Fix the error on content Edit no credentials now shows `Unauthorized` @sneridagh
+- Improve console server output showing info @sneridagh
 
 ## 5.1.0 (2020-04-23)
 

@@ -60,6 +60,7 @@ if (__DEVELOPMENT__ && settings.devProxyToApiPath) {
       pathRewrite: {
         '^/api': `/VirtualHostBase/http/${apiPathURL.hostname}:${apiPathURL.port}${instancePath}/VirtualHostRoot/_vh_api`,
       },
+      logLevel: 'silent',
     }),
   );
 }
@@ -122,13 +123,19 @@ server
       req.path.match(/(.*)\/@@download\/(.*)/)
     ) {
       getAPIResourceWithAuth(req).then(resource => {
-        res.set('Content-Type', resource.headers['content-type']);
-        if (resource.headers['content-disposition']) {
-          res.set(
-            'Content-Disposition',
-            resource.headers['content-disposition'],
-          );
+        function forwardHeaders(headers) {
+          headers.forEach(header => {
+            if (resource.headers[header]) {
+              res.set(header, resource.headers[header]);
+            }
+          });
         }
+        // Just forward the headers that we need
+        forwardHeaders([
+          'content-type',
+          'content-disposition',
+          'cache-control',
+        ]);
         res.send(resource.body);
       });
     } else {
@@ -183,4 +190,6 @@ server
     }
   });
 
+server.apiPath = settings.apiPath;
+server.devProxyToApiPath = settings.devProxyToApiPath;
 export default server;
