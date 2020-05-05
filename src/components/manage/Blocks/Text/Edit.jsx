@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 import Editor from 'draft-js-plugins-editor';
+import createMentionPlugin from 'draft-js-mention-plugin';
 import { convertFromRaw, convertToRaw, EditorState, RichUtils } from 'draft-js';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
@@ -15,9 +16,9 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
 import { settings } from '~/config';
-
 import { Icon, BlockChooser } from '@plone/volto/components';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
+import 'draft-js-mention-plugin/lib/plugin.css';
 
 const messages = defineMessages({
   text: {
@@ -25,6 +26,14 @@ const messages = defineMessages({
     defaultMessage: 'Type text…',
   },
 });
+
+var suggestionsFilter = function(searchValue, suggestions) {
+  var value = searchValue.toLowerCase();
+  var filteredSuggestions = suggestions.filter(function(suggestion) {
+    return !value || suggestion.name.toLowerCase().indexOf(value) > -1;
+  });
+  return filteredSuggestions;
+};
 
 /**
  * Edit text block class.
@@ -80,18 +89,33 @@ class Edit extends Component {
         editorState = EditorState.createEmpty();
       }
 
+      const mentionPlugin = createMentionPlugin({
+        mentionPrefix: '@',
+        entityMutability: 'MUTABLE',
+      });
+
+      const suggestions = Object.keys(this.props.properties).map(name => {
+        return {
+          name: name,
+        };
+      });
+
       const inlineToolbarPlugin = createInlineToolbarPlugin({
         structure: settings.richTextEditorInlineToolbarButtons,
       });
 
       this.state = {
         editorState,
+        mentionPlugin,
         inlineToolbarPlugin,
+        suggestions,
         addNewBlockOpened: false,
       };
     }
 
     this.onChange = this.onChange.bind(this);
+    this.onSearchChange = this.onSearchChange.bind(this);
+    this.onAddMention = this.onAddMention.bind(this);
   }
 
   /**
@@ -175,6 +199,20 @@ class Edit extends Component {
     this.setState({ editorState });
   }
 
+  /**
+   *
+   */
+  onSearchChange = ({ value }) => {
+    this.setState({
+      suggestions: suggestionsFilter(value, this.state.suggestions),
+    });
+  };
+
+  /**
+   *
+   */
+  onAddMention = ({ value }) => {};
+
   toggleAddNewBlock = () =>
     this.setState(state => ({ addNewBlockOpened: !state.addNewBlockOpened }));
 
@@ -200,6 +238,7 @@ class Edit extends Component {
     }
 
     const { InlineToolbar } = this.state.inlineToolbarPlugin;
+    const { MentionSuggestions } = this.state.mentionPlugin;
 
     return (
       <>
@@ -208,6 +247,7 @@ class Edit extends Component {
           editorState={this.state.editorState}
           plugins={[
             this.state.inlineToolbarPlugin,
+            this.state.mentionPlugin,
             ...settings.richTextEditorPlugins,
           ]}
           blockRenderMap={settings.extendedBlockRenderMap}
@@ -271,6 +311,11 @@ class Edit extends Component {
           ref={node => {
             this.node = node;
           }}
+        />
+        <MentionSuggestions
+          suggestions={this.state.suggestions}
+          onSearchChange={this.onSearchChange}
+          onAddMention={this.onAddMention}
         />
         <InlineToolbar />
         {!this.props.detached &&
