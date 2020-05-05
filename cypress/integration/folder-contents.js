@@ -46,7 +46,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.visit('my-folder/contents');
       cy.get('tbody>tr:nth-child(2) .unchecked').click();
       cy.get('svg[class="icon cut"]').click();
-      cy.get('tbody>tr:nth-child(1) .expireAlign > span').click();
+      cy.get('tbody>tr:nth-child(1) .expire-align > span').click();
       cy.get('svg[class="icon paste"]').click();
 
       //then their should be a My child

@@ -138,14 +138,14 @@ export const ContentsItemComponent = ({
         </Table.Cell>
         <Table.Cell>
           <Link
-            className="iconAlignName"
+            className="icon-align-name"
             to={`${item['@id']}${item.is_folderish ? '/contents' : ''}`}
           >
-            <div className="expireAlign">
+            <div className="expire-align">
               <Icon
                 name={getIcon(item['@type'], item.is_folderish)}
                 size="20px"
-                className="iconMargin"
+                className="icon-margin"
                 color="#878f93"
               />{' '}
               <span> {item.title}</span>
@@ -153,7 +153,7 @@ export const ContentsItemComponent = ({
             {item.ExpirationDate !== 'None' &&
               new Date(item.ExpirationDate).getTime() <
                 new Date().getTime() && (
-                <Button className="buttonMargin" size="mini">
+                <Button className="button-margin" size="mini">
                   <FormattedMessage id="Expired" defaultMessage="Expired" />
                 </Button>
               )}
@@ -205,11 +205,11 @@ export const ContentsItemComponent = ({
             icon={<Icon name={moreSVG} size="24px" color="#007eb1" />}
           >
             <Dropdown.Menu className="left">
-              <Link className="item iconAlign" to={`${item['@id']}/edit`}>
+              <Link className="item icon-align" to={`${item['@id']}/edit`}>
                 <Icon name={editingSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="Edit" defaultMessage="Edit" />
               </Link>
-              <Link className="item right-dropdown iconAlign" to={item['@id']}>
+              <Link className="item right-dropdown icon-align" to={item['@id']}>
                 <Icon name={showSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="View" defaultMessage="View" />
               </Link>
@@ -217,7 +217,7 @@ export const ContentsItemComponent = ({
               <Dropdown.Item
                 onClick={onCut}
                 value={item['@id']}
-                className="right-dropdown iconAlign"
+                className="right-dropdown icon-align"
               >
                 <Icon name={cutSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="Cut" defaultMessage="Cut" />
@@ -225,7 +225,7 @@ export const ContentsItemComponent = ({
               <Dropdown.Item
                 onClick={onCopy}
                 value={item['@id']}
-                className="right-dropdown iconAlign"
+                className="right-dropdown icon-align"
               >
                 <Icon name={copySVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage id="Copy" defaultMessage="Copy" />
@@ -233,7 +233,7 @@ export const ContentsItemComponent = ({
               <Dropdown.Item
                 onClick={onDelete}
                 value={item['@id']}
-                className="right-dropdown iconAlign"
+                className="right-dropdown icon-align"
               >
                 <Icon name={deleteSVG} color="#e40166" size="24px" />{' '}
                 <FormattedMessage id="Delete" defaultMessage="Delete" />
@@ -242,7 +242,7 @@ export const ContentsItemComponent = ({
               <Dropdown.Item
                 onClick={onMoveToTop}
                 value={order}
-                className="right-dropdown iconAlign"
+                className="right-dropdown icon-align"
               >
                 <Icon name={moveUpSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage
@@ -253,7 +253,7 @@ export const ContentsItemComponent = ({
               <Dropdown.Item
                 onClick={onMoveToBottom}
                 value={order}
-                className="right-dropdown iconAlign"
+                className="right-dropdown icon-align"
               >
                 <Icon name={moveDownSVG} color="#007eb1" size="24px" />{' '}
                 <FormattedMessage
