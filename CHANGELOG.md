@@ -1,13 +1,22 @@
 # Change Log
 
-## 5.3.1 (unreleased)
+## 5.4.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
 - Added Dexterity Types Controlpanel @avoinea #1285
+### Bugfix
+
+### Internal
+
+## 5.4.0 (2020-05-04)
+
+### Feature
+
 - Add babel and externals support in Webpack for add-on infrastructure @sneridagh
+- Forward the images and files cache headers in Volto SSR passthrough @sneridagh
 
 ### Bugfix
 
