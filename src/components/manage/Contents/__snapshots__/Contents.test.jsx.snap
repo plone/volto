@@ -396,34 +396,6 @@ exports[`Contents renders a contents component 1`] = `
                     role="option"
                   >
                     <svg
-                      className="icon Title"
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": undefined,
-                        }
-                      }
-                      onClick={null}
-                      style={
-                        Object {
-                          "fill": "currentColor",
-                          "height": "24px",
-                          "width": "auto",
-                        }
-                      }
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <span>
-                       
-                      Title
-                    </span>
-                  </div>
-                  <div
-                    className="item iconAlign"
-                    onClick={[Function]}
-                    role="option"
-                  >
-                    <svg
                       className="icon Review state"
                       dangerouslySetInnerHTML={
                         Object {
