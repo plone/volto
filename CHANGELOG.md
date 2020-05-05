@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Cypress tests upgraded for Image, Hero and HTML Block @steffenri @iFlameing
+
 ## 5.4.0 (2020-05-04)
 
 ### Feature
@@ -23,7 +25,6 @@
 
 ### Internal
 
-- Cypress tests upgraded for Image, Hero and HTML Block
 - Periodical upgrade of `browserlist` lib @sneridagh
 
 ## 5.3.0 (2020-04-29)
