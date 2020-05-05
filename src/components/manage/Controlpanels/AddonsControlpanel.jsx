@@ -12,9 +12,9 @@ import { Portal } from 'react-portal';
 import {
   Accordion,
   Button,
+  Container,
   Divider,
   Header,
-  Icon as StdIcon,
   Label,
   Message,
   Segment,
@@ -26,11 +26,11 @@ import {
   listAddons,
   uninstallAddon,
   upgradeAddon,
-} from '../../../actions';
-import { getBaseUrl } from '../../../helpers';
-import { Icon, Toolbar } from '../../../components';
-import circleBottomSVG from '../../../icons/circle-bottom.svg';
-import circleTopSVG from '../../../icons/circle-top.svg';
+} from '@plone/volto/actions';
+import { Icon, Toolbar } from '@plone/volto/components';
+import circleBottomSVG from '@plone/volto/icons/circle-bottom.svg';
+import circleTopSVG from '@plone/volto/icons/circle-top.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
   activateAndDeactivate: {
@@ -229,7 +229,7 @@ class AddonsControlpanel extends Component {
    */
   render() {
     return (
-      <div id="page-addons">
+      <Container id="page-addons" className="controlpanel-addons">
         <Helmet title="Addons" />
         <Segment.Group raised>
           <Segment className="primary">
@@ -305,8 +305,9 @@ class AddonsControlpanel extends Component {
                           ? circleTopSVG
                           : circleBottomSVG
                       }
-                      size="23px"
+                      size="24px"
                       className={`accordionToggle ${item.title}`}
+                      color="#878f93"
                     />
                   </Accordion.Title>
                   <Accordion.Content
@@ -431,19 +432,23 @@ class AddonsControlpanel extends Component {
         <Portal node={__CLIENT__ && document.getElementById('toolbar')}>
           <Toolbar
             pathname={this.props.pathname}
+            hideDefaultViewButtons
             inner={
-              <Link to={`${getBaseUrl(this.props.pathname)}`} className="item">
-                <StdIcon
-                  name="arrow left"
-                  size="big"
-                  color="blue"
-                  title={this.props.intl.formatMessage(messages.back)}
-                />
-              </Link>
+              <>
+                <Link to="/controlpanel" className="item">
+                  <Icon
+                    name={backSVG}
+                    aria-label={this.props.intl.formatMessage(messages.back)}
+                    className="contents circled"
+                    size="30px"
+                    title={this.props.intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              </>
             }
           />
         </Portal>
-      </div>
+      </Container>
     );
   }
 }
