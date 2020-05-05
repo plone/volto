@@ -4,7 +4,6 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
@@ -27,6 +26,7 @@ import {
   uninstallAddon,
   upgradeAddon,
 } from '@plone/volto/actions';
+import { Helmet } from '@plone/volto/helpers';
 import { Icon, Toolbar } from '@plone/volto/components';
 import circleBottomSVG from '@plone/volto/icons/circle-bottom.svg';
 import circleTopSVG from '@plone/volto/icons/circle-top.svg';

@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Addons control panel @esteele @iFlameing
+
 ### Bugfix
 
 ### Internal
@@ -892,7 +894,6 @@ refer to all of them in https://github.com/plone/volto/releases
 
 ### Added
 
-- Addons control panel @esteele
 - Upgrade to Razzle 3 @sneridagh
 - contact-form view @cekk
 - Add cypress setup for both Plone and Guillotina @sneridagh
