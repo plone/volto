@@ -41,12 +41,12 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.icon.unchecked').should('have.length', 2);
     });
 
-    it('Cuting the item and pasting into others', () => {
+    it.only('Cuting the item and pasting into others', () => {
       cy.createContent('Document', 'child', 'My Child', 'my-folder');
       cy.visit('my-folder/contents');
       cy.get('tbody>tr:nth-child(2) .unchecked').click();
       cy.get('svg[class="icon cut"]').click();
-      cy.get('tbody>tr:nth-child(1) .iconAlign > span').click();
+      cy.get('tbody>tr:nth-child(1) .expireAlign > span').click();
       cy.get('svg[class="icon paste"]').click();
 
       //then their should be a My child
