@@ -14,7 +14,6 @@ import addSVG from '@plone/volto/icons/circle-plus.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 
 import { toISOString } from './Utils';
-import { rrulestr } from 'rrule';
 
 const messages = defineMessages({
   selected_dates: {
@@ -69,7 +68,7 @@ const Occurences = ({
   const isExcluded = date => {
     var dateISO = toISOString(date);
     var excluded = false;
-    rruleSet.exdates().map(ex => {
+    rruleSet.exdates().forEach(ex => {
       var exISO = toISOString(ex);
       if (exISO === dateISO) {
         excluded = true;
@@ -81,7 +80,7 @@ const Occurences = ({
   const isAdditional = date => {
     var dateISO = toISOString(date);
     var additional = false;
-    rruleSet.rdates().map(d => {
+    rruleSet.rdates().forEach(d => {
       var dd = toISOString(d);
       if (dd === dateISO) {
         additional = true;
@@ -93,7 +92,7 @@ const Occurences = ({
   if (rruleSet) {
     all = rruleSet.all();
 
-    rruleSet.exdates().map(date => {
+    rruleSet.exdates().forEach(date => {
       if (all.indexOf(date) < 0) {
         all.push(date);
       }

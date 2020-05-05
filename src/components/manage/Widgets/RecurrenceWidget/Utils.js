@@ -110,16 +110,15 @@ export const rrulei18n = intl => {
     k => (strings[k] = intl.formatMessage(messages[k])),
   );
 
-  console.log('strings', strings);
   let dateFormat = strings.dateFormat
     .replace(new RegExp('\\[', 'g'), '${')
     .replace(new RegExp('\\]', 'g'), '}');
 
   const dateFormatter = (year, month, day) =>
     dateFormat
-      .replace('${year}', year)
-      .replace('${month}', month)
-      .replace('${day}', day);
+      .replace(/\$\{year\}/g, year)
+      .replace(/\$\{month\}/g, month)
+      .replace(/\$\{day\}/g, day);
   const LANGUAGE = {
     dayNames: moment.weekdays(),
     monthNames: moment.months(),

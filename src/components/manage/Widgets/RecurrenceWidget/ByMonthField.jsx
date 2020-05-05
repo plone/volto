@@ -5,13 +5,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { Form, Grid, Radio } from 'semantic-ui-react';
 import ByMonthDayField from './ByMonthDayField';
 import WeekdayOfTheMonthIndexField from './WeekdayOfTheMonthIndexField';
 import WeekdayOfTheMonthField from './WeekdayOfTheMonthField';
 
-const messages = defineMessages({});
 /**
  * ByMonthField component class.
  * @function ByMonthField
