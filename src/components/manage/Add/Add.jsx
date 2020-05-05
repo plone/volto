@@ -219,6 +219,9 @@ class Add extends Component {
                 items: this.initialBlocksLayout,
               },
             }}
+            requestError={
+              this.props.createRequest.error?.response?.body?.message
+            }
             onSubmit={this.onSubmit}
             hideActions
             pathname={this.props.pathname}

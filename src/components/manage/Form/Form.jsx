@@ -240,6 +240,24 @@ const widgetValidation = {
 };
 
 /**
+ * The string that comes my not be a valid JSON
+ * @param {string} requestItem
+ */
+const tryParseJSON = requestItem => {
+  let resultObj = null;
+  try {
+    resultObj = JSON.parse(requestItem);
+  } catch (e) {
+    try {
+      resultObj = JSON.parse(requestItem.replace(/'/g, '"'));
+    } catch (e) {
+      resultObj = null;
+    }
+  }
+  return resultObj;
+};
+
+/**
  * Form container class.
  * @class Form
  * @extends Component
@@ -279,6 +297,7 @@ class Form extends Component {
     description: PropTypes.string,
     visual: PropTypes.bool,
     blocks: PropTypes.arrayOf(PropTypes.object),
+    requestError: PropTypes.string,
   };
 
   /**
@@ -302,6 +321,7 @@ class Form extends Component {
     blocks: [],
     pathname: '',
     schema: {},
+    requestError: null,
   };
 
   /**
@@ -352,6 +372,7 @@ class Form extends Component {
       formData,
       initialFormData: { ...formData },
       errors: {},
+      activeIndex: 0,
       selected:
         formData[blocksLayoutFieldname].items.length > 0
           ? formData[blocksLayoutFieldname].items[0]
@@ -368,10 +389,78 @@ class Form extends Component {
     this.onFocusPreviousBlock = this.onFocusPreviousBlock.bind(this);
     this.onFocusNextBlock = this.onFocusNextBlock.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleTabChange = this.handleTabChange.bind(this);
   }
 
   /**
+   * The first Fieldset (Tab) that has any errors
+   * will be selected
+   * @param {Object[]} errors
+   * @param {string} errors[].field
+   * @param {string[]} errors[].message
+   * @returns {number} activeIndex
+   */
+  showFirstTabWithErrors(errors) {
+    let activeIndex = 0;
+
+    this.props.schema.fieldsets.some((fieldSet, index) => {
+      let foundfield = fieldSet.fields.some(fieldId => errors[fieldId]);
+
+      activeIndex = foundfield ? index : activeIndex;
+      return foundfield;
+    });
+
+    return activeIndex;
+  }
+
+  /**
+   * Create the errors object the same way it is done on Frontend validation
+   * @param {string} requestError form the server
+   * @returns {Object}
+   */
+  giveServerErrorsToCorrespondingFields(requestError) {
+    let errorsList = tryParseJSON(requestError);
+    const errors = {};
+
+    if (Array.isArray(errorsList) && errorsList.length > 0) {
+      errorsList.forEach(errorItem => {
+        errors[errorItem.field] = errors[errorItem.field]
+          ? errors[errorItem.field].push(errorItem.message)
+          : [errorItem.message];
+      });
+    }
+    return errors;
+  }
+
+  /**
+   * On updates caused by props change
+   * if errors from Backend come, these will be shown to their corresponding Fields
+   * also the first Tab to have any errors will be selected
+   * @param {Object} prevProps
+   */
+  componentDidUpdate(prevProps) {
+    let { requestError } = this.props;
+    let errors = {};
+    let activeIndex = 0;
+
+    if (prevProps.requestError !== this.props.requestError && requestError) {
+      errors = this.giveServerErrorsToCorrespondingFields(requestError);
+      activeIndex = this.showFirstTabWithErrors(errors);
+      this.setState({
+        errors,
+        activeIndex,
+      });
+    }
+  }
+
+  /**
+   * Tab selection is done only by setting activeIndex in state
+   */
+  handleTabChange = (e, { activeIndex }) => this.setState({ activeIndex });
+
+  /**
    * Change field handler
+   * also reset errors when editing fields
    * @method onChangeField
    * @param {string} id Id of the field
    * @param {*} value Value of the field
@@ -384,6 +473,7 @@ class Form extends Component {
         // We need to catch also when the value equals false this fixes #888
         [id]: value || (value !== undefined && isBoolean(value)) ? value : null,
       },
+      errors: {},
     });
   }
 
@@ -545,6 +635,7 @@ class Form extends Component {
     }
     return errors;
   }
+
   /**
    * If required fields are undefined, return list of errors
    * @returns {Object[string]} - list of errors
@@ -563,6 +654,7 @@ class Form extends Component {
 
     return errors;
   }
+
   /**
    * Return list of errors if field constraints are not respected
    * (ex min, max, maxLength, email format, url format etc)
@@ -619,6 +711,7 @@ class Form extends Component {
     if (event) {
       event.preventDefault();
     }
+
     const errors = this.validateFieldsPerFieldset();
 
     if (keys(errors).length > 0) {
@@ -887,6 +980,8 @@ class Form extends Component {
                   tabular: true,
                   className: 'formtabs',
                 }}
+                onTabChange={this.handleTabChange}
+                activeIndex={this.state.activeIndex}
                 panes={map(schema.fieldsets, item => ({
                   menuItem: item.title,
                   render: () => [
