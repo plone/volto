@@ -21,9 +21,6 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('textarea[id="field-description"]').type(
         'This is Page Content Type{enter}',
       );
-      cy.get('#field-allowed_content_types').type(
-        'event{enter}Page{enter},image{enter}',
-      );
       cy.get('#field-filter_content_types')
         .click()
         .type('all{enter}');
