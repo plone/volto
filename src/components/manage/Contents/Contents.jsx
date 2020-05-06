@@ -1352,6 +1352,7 @@ class Contents extends Component {
                                   name={configurationSVG}
                                   size="24px"
                                   color="#826a6a"
+                                  className="configuration-svg"
                                 />
                               }
                               className="sort-icon"
@@ -1379,7 +1380,7 @@ class Contents extends Component {
                                   index => (
                                     <Dropdown.Item
                                       key={index}
-                                      className={`sort_${index} iconAlign`}
+                                      className={`sort_${index} icon-align`}
                                     >
                                       <Icon name={downKeySVG} size="24px" />
                                       <FormattedMessage
@@ -1389,7 +1390,7 @@ class Contents extends Component {
                                         <Dropdown.Item
                                           onClick={this.onSortItems}
                                           value={`${Indexes[index].sort_on}|ascending`}
-                                          className={`sort_${Indexes[index].sort_on}_ascending iconAlign`}
+                                          className={`sort_${Indexes[index].sort_on}_ascending icon-align`}
                                         >
                                           <Icon
                                             name={sortDownSVG}
@@ -1403,7 +1404,7 @@ class Contents extends Component {
                                         <Dropdown.Item
                                           onClick={this.onSortItems}
                                           value={`${Indexes[index].sort_on}|descending`}
-                                          className={`sort_${Indexes[index].sort_on}_descending iconAlign`}
+                                          className={`sort_${Indexes[index].sort_on}_descending icon-align`}
                                         >
                                           <Icon name={sortUpSVG} size="24px" />{' '}
                                           <FormattedMessage
