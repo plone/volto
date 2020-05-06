@@ -79,20 +79,20 @@ class ObjectBrowserBody extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentFolder: this.props.data.url
+      currentFolder: this.props.data?.url
         ? getParentURL(this.props.data.url)
         : '/',
-      currentImageFolder: this.props.data.url
+      currentImageFolder: this.props.data?.url
         ? getParentURL(this.props.data.url)
         : '/',
-      currentLinkFolder: this.props.data.href
+      currentLinkFolder: this.props.data?.href
         ? getParentURL(this.props.data.href)
         : '/',
       parentFolder: '',
-      selectedImage: this.props.data.url
+      selectedImage: this.props.data?.url
         ? this.props.data.url.replace(settings.apiPath, '')
         : '',
-      selectedHref: this.props.data.href
+      selectedHref: this.props.data?.href
         ? this.props.data.href.replace(settings.apiPath, '')
         : '',
       showSearchInput: false,
@@ -217,7 +217,9 @@ class ObjectBrowserBody extends Component {
         );
   };
 
-  onSelectItem = (url, title) => {
+  onSelectItem = item => {
+    const url = item['@id'];
+    const title = item.title;
     const { block, data, mode, dataName, onChangeBlock } = this.props;
 
     const updateState = mode => {
@@ -245,7 +247,7 @@ class ObjectBrowserBody extends Component {
         [dataName]: url,
       });
     } else if (this.props.onSelectItem) {
-      this.props.onSelectItem(url);
+      this.props.onSelectItem(url, item);
     } else if (mode === 'image') {
       onChangeBlock(block, {
         ...data,
@@ -274,10 +276,10 @@ class ObjectBrowserBody extends Component {
         this.navigateTo(item['@id']);
       }
       if (settings.imageObjects.includes(item['@type'])) {
-        this.onSelectItem(item['@id'], item.title);
+        this.onSelectItem(item);
       }
     } else {
-      this.onSelectItem(item['@id'], item.title);
+      this.onSelectItem(item);
     }
   };
 
@@ -287,11 +289,11 @@ class ObjectBrowserBody extends Component {
         this.navigateTo(item['@id']);
       }
       if (settings.imageObjects.includes(item['@type'])) {
-        this.onSelectItem(item['@id'], item.title);
+        this.onSelectItem(item);
         this.props.closeObjectBrowser();
       }
     } else {
-      this.onSelectItem(item['@id'], item.title);
+      this.onSelectItem(item);
       this.props.closeObjectBrowser();
     }
   };
