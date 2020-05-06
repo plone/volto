@@ -91,7 +91,7 @@ server
       userSession: { ...userSession(), token: authToken },
       form: req.body,
       intl: {
-        defaultLocale: settings.defaultLanguage,
+        defaultLocale: 'en',
         locale: lang,
         messages: locales[lang],
       },
