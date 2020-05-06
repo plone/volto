@@ -595,6 +595,10 @@ msgstr "Vervaldatum"
 msgid "Expiration date"
 msgstr ""
 
+#: components/manage/Contents/ContentsItem
+msgid "Expired"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"

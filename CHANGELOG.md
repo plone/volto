@@ -6,9 +6,16 @@
 
 ### Feature
 
+- Added label expired if expiration date is smaller that current date #1413 @iFlameing
+- Added word limit widget @iFlameing
+
 ### Bugfix
 
 ### Internal
+
+- Cypress test for Table Block @steffenri @iFlameing
+- Cypress tests upgraded for Image, Hero and HTML Block @steffenri @iFlameing
+- Added cypress test for sort method in folder content #1035 @iFlameing
 
 ## 5.4.0 (2020-05-04)
 
@@ -20,6 +27,7 @@
 ### Bugfix
 
 - Fix handling of external links in ToHTML config @nzambello
+- Remove the title field from right dropdown in folder content view
 
 ### Internal
 
