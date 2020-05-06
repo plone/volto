@@ -446,9 +446,10 @@ class Form extends Component {
     let errors = {};
     let activeIndex = 0;
 
-    if (prevProps.requestError !== this.props.requestError && requestError) {
+    if (requestError && prevProps.requestError !== requestError) {
       errors = this.giveServerErrorsToCorrespondingFields(requestError);
       activeIndex = this.showFirstTabWithErrors(errors);
+
       this.setState({
         errors,
         activeIndex,
@@ -482,7 +483,6 @@ class Form extends Component {
   onBlurField(id, value) {
     if (!this.state.isFormPrestine) {
       const errors = this.validateFieldsPerFieldset();
-
       if (keys(errors).length > 0) {
         this.setState({
           errors,

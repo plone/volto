@@ -219,6 +219,9 @@ class Edit extends Component {
                   ref={this.form}
                   schema={this.props.schema}
                   formData={this.props.content}
+                  requestError={
+                    this.props.updateRequest.error?.response?.body?.message
+                  }
                   onSubmit={this.onSubmit}
                   hideActions
                   pathname={this.props.pathname}
