@@ -13,6 +13,7 @@
 
 ### Internal
 
+- Cypress test for Table Block @steffenri @iFlameing
 - Cypress tests upgraded for Image, Hero and HTML Block @steffenri @iFlameing
 - Added cypress test for sort method in folder content #1035 @iFlameing
 
