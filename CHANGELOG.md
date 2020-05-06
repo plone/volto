@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added label expired if expiration date is smaller that current date #1413 @iFlameing
+
 ### Bugfix
 
 ### Internal
