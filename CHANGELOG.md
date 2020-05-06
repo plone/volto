@@ -2,15 +2,11 @@
 
 ## 5.4.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Added label expired if expiration date is smaller that current date #1413 @iFlameing
 - Added word limit widget @iFlameing
 - Addons control panel @esteele @iFlameing
-
-### Bugfix
 
 ### Internal
 
