@@ -14,6 +14,7 @@ import { detect } from 'detect-browser';
 import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import { createProxyMiddleware } from 'http-proxy-middleware';
+import { updateIntl } from 'react-intl-redux';
 
 import routes from '~/routes';
 import { settings } from '~/config';
@@ -150,6 +151,18 @@ server
                 </StaticRouter>
               </Provider>
             </ChunkExtractorManager>,
+          );
+
+          // The content info is in the store at this point thanks to the asynconnect
+          // features, then we can force the current language coming from an SSR request
+          const updatedLang =
+            store.getState().content.data?.language?.token ||
+            settings.defaultLanguage;
+          store.dispatch(
+            updateIntl({
+              locale: updatedLang,
+              messages: locales[updatedLang],
+            }),
           );
 
           if (context.url) {
