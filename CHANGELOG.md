@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Add default `src` alias for addons detecting if there is a released or a mrs-developer one @sneridagh
+
 ## 5.5.0 (2020-05-06)
 
 ### Feature
