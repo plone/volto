@@ -7,6 +7,7 @@
 ### Feature
 
 - Added label expired if expiration date is smaller that current date #1413 @iFlameing
+- Added word limit widget @iFlameing
 
 ### Bugfix
 
@@ -78,7 +79,6 @@
 - Enable internal API proxy for not to rely on CORS on development @sneridagh
 - Added Print CSS @iFlameing #1289
 - Added error handling for Add and Edit forms #1392 @nzambello
-- Added word limit widget @iFlameing
 
 ### Bugfix
 
