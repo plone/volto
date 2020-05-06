@@ -94,7 +94,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('.item.sort_created_descending').click({ force: true });
 
       // then the last document created must be the firs element
-      cy.get('tbody>tr:nth-child(1) .iconAlign > span').should(
+      cy.get('tbody>tr:nth-child(1) .icon-align > span').should(
         'have.text',
         ' My Child',
       );
