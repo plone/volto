@@ -1,14 +1,32 @@
 # Change Log
 
-## 5.3.1 (unreleased)
+## 5.4.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+- Added label expired if expiration date is smaller that current date #1413 @iFlameing
+- Added word limit widget @iFlameing
+
+### Bugfix
+
+### Internal
+
+- Cypress tests upgraded for Image, Hero and HTML Block @steffenri @iFlameing
+- Added cypress test for sort method in folder content #1035 @iFlameing
+
+## 5.4.0 (2020-05-04)
+
+### Feature
+
+- Add babel and externals support in Webpack for add-on infrastructure @sneridagh
+- Forward the images and files cache headers in Volto SSR passthrough @sneridagh
+
 ### Bugfix
 
 - Fix handling of external links in ToHTML config @nzambello
+- Remove the title field from right dropdown in folder content view
 
 ### Internal
 

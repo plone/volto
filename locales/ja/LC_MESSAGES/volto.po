@@ -566,6 +566,10 @@ msgstr "満了日付"
 msgid "Expiration date"
 msgstr "満了日付"
 
+#: components/manage/Contents/ContentsItem
+msgid "Expired"
+msgstr ""
+
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "External URL"
