@@ -13,6 +13,7 @@
 
 ### Internal
 
+- Cypress test for Table Block @steffenri @iFlameing
 - Cypress tests upgraded for Image, Hero and HTML Block @steffenri @iFlameing
 - Added cypress test for sort method in folder content #1035 @iFlameing
 
@@ -171,10 +172,6 @@
 ### Bugfix
 
 - Fix conversion from DraftJS to HTML using redraft for atomic entities (IMAGE) @sneridagh
-
-### Internal
-
-- Cypress test for Table Block @steffenri
 
 ## 4.3.0 (2020-04-01)
 
