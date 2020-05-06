@@ -10,6 +10,8 @@
 
 ### Internal
 
+- Add default `src` alias for addons detecting if there is a released or a mrs-developer one @sneridagh
+
 ## 5.5.0 (2020-05-06)
 
 ### Feature
@@ -29,7 +31,6 @@
 ### Feature
 
 - Add babel and externals support in Webpack for add-on infrastructure @sneridagh
-- Add default `src` alias for addons detecting if there is a released or a mrs-developer one @sneridagh
 - Forward the images and files cache headers in Volto SSR passthrough @sneridagh
 
 ### Bugfix
