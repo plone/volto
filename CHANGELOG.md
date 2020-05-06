@@ -6,7 +6,11 @@
 
 ### Feature
 
+- Load the current object language on SSR, instead of relying on the cookie @sneridagh
+
 ### Bugfix
+
+- Correct the `defaultLanguage` intend in `react-intl-redux` configuration @sneridagh
 
 ### Internal
 
