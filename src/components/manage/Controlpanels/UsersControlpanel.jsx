@@ -941,10 +941,10 @@ class UsersControlpanel extends Component {
                 <Link to="/controlpanel" className="item">
                   <Icon
                     name={backSVG}
-                    aria-label={this.props.intl.formatMessage(messages.cancel)}
+                    aria-label={this.props.intl.formatMessage(messages.back)}
                     className="contents circled"
                     size="30px"
-                    title={this.props.intl.formatMessage(messages.cancel)}
+                    title={this.props.intl.formatMessage(messages.back)}
                   />
                 </Link>
               </>
