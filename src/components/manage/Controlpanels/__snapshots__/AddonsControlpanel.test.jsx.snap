@@ -2,6 +2,7 @@
 
 exports[`AddonsControlpanel renders an addon control component 1`] = `
 <div
+  className="ui container controlpanel-addons"
   id="page-addons"
 >
   <div
@@ -83,8 +84,8 @@ exports[`AddonsControlpanel renders an addon control component 1`] = `
               onClick={null}
               style={
                 Object {
-                  "fill": "currentColor",
-                  "height": "23px",
+                  "fill": "#878f93",
+                  "height": "24px",
                   "width": "auto",
                 }
               }

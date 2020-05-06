@@ -8,6 +8,7 @@
 
 - Added label expired if expiration date is smaller that current date #1413 @iFlameing
 - Added word limit widget @iFlameing
+- Addons control panel @esteele @iFlameing
 
 ### Bugfix
 
@@ -900,7 +901,6 @@ refer to all of them in https://github.com/plone/volto/releases
 
 ### Added
 
-- Addons control panel @esteele
 - Upgrade to Razzle 3 @sneridagh
 - contact-form view @cekk
 - Add cypress setup for both Plone and Guillotina @sneridagh
