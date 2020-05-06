@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Added cypress test for sort method in folder content #1035 @iFlameing
+
 ## 5.4.0 (2020-05-04)
 
 ### Feature

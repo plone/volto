@@ -84,5 +84,20 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.visit('/my-folder/my-document/contents');
       cy.get('#content-core table').contains('Published');
     });
+
+    it.only('Sort method by creation field', () => {
+      // when sort method invoked using creation field
+      cy.createContent('Document', 'child', 'My Child', 'my-folder');
+      cy.visit('my-folder/contents');
+      cy.get('.icon.configuration-svg').click();
+      cy.get('.sort_CreationDate').invoke('trigger', 'mouseover');
+      cy.get('.item.sort_created_descending').click({ force: true });
+
+      // then the last document created must be the firs element
+      cy.get('tbody>tr:nth-child(1) .iconAlign > span').should(
+        'have.text',
+        ' My Child',
+      );
+    });
   });
 }

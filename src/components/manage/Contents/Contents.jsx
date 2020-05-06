@@ -1346,6 +1346,7 @@ class Contents extends Component {
                                   name={configurationSVG}
                                   size="24px"
                                   color="#826a6a"
+                                  className="configuration-svg"
                                 />
                               }
                               className="sort-icon"
