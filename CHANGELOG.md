@@ -6,11 +6,15 @@
 
 ### Feature
 
+- Added label expired if expiration date is smaller that current date #1413 @iFlameing
+
 ### Bugfix
 
 ### Internal
 
 - Cypress test for Table Block @steffenri @iFlameing
+- Cypress tests upgraded for Image, Hero and HTML Block @steffenri @iFlameing
+- Added cypress test for sort method in folder content #1035 @iFlameing
 
 ## 5.4.0 (2020-05-04)
 
@@ -75,6 +79,7 @@
 - Enable internal API proxy for not to rely on CORS on development @sneridagh
 - Added Print CSS @iFlameing #1289
 - Added error handling for Add and Edit forms #1392 @nzambello
+- Added word limit widget @iFlameing
 
 ### Bugfix
 
