@@ -21,6 +21,8 @@ const PasswordWidget = ({
   error,
   value,
   onChange,
+  onBlur,
+  onClick,
   fieldSet,
   minLength,
   maxLength,
@@ -57,6 +59,10 @@ const PasswordWidget = ({
               onChange={({ target }) =>
                 onChange(id, target.value === '' ? undefined : target.value)
               }
+              onBlur={({ target }) =>
+                onBlur(id, target.value === '' ? undefined : target.value)
+              }
+              onClick={() => onClick()}
             >
               <input
                 minLength={minLength || null}

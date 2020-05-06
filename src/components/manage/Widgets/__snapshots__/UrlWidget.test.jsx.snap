@@ -35,7 +35,9 @@ exports[`renders an url widget component 1`] = `
             maxLength={null}
             minLength={null}
             name="test-url"
+            onBlur={[Function]}
             onChange={[Function]}
+            onClick={[Function]}
             type="url"
             value=""
           />

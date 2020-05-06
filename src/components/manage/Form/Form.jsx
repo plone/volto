@@ -371,6 +371,7 @@ class Form extends Component {
     this.state = {
       formData,
       initialFormData: { ...formData },
+      isFormPrestine: true,
       errors: {},
       activeIndex: 0,
       selected:
@@ -379,6 +380,8 @@ class Form extends Component {
           : null,
     };
     this.onChangeField = this.onChangeField.bind(this);
+    this.onBlurField = this.onBlurField.bind(this);
+    this.onClickInput = this.onClickInput.bind(this);
     this.onChangeBlock = this.onChangeBlock.bind(this);
     this.onMutateBlock = this.onMutateBlock.bind(this);
     this.onSelectBlock = this.onSelectBlock.bind(this);
@@ -389,7 +392,7 @@ class Form extends Component {
     this.onFocusPreviousBlock = this.onFocusPreviousBlock.bind(this);
     this.onFocusNextBlock = this.onFocusNextBlock.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleTabChange = this.handleTabChange.bind(this);
+    this.onTabChange = this.onTabChange.bind(this);
   }
 
   /**
@@ -414,7 +417,7 @@ class Form extends Component {
   }
 
   /**
-   * Create the errors object the same way it is done on Frontend validation
+   * Create the errors object from backend the same way it is done on Frontend validation
    * @param {string} requestError form the server
    * @returns {Object}
    */
@@ -456,24 +459,59 @@ class Form extends Component {
   /**
    * Tab selection is done only by setting activeIndex in state
    */
-  handleTabChange = (e, { activeIndex }) => this.setState({ activeIndex });
+  onTabChange(e, { activeIndex }) {
+    this.setState({ activeIndex });
+  }
+
+  /**
+   * If user clicks on input, the form will be not considered pristine
+   * this will avoid onBlur effects without interraction with the form
+   * @param {Object} e event
+   */
+  onClickInput(e) {
+    this.setState({ isFormPrestine: false });
+  }
+
+  /**
+   * Validate fields on blur
+   * @method onBlurField
+   * @param {string} id Id of the field
+   * @param {*} value Value of the field
+   * @returns {undefined}
+   */
+  onBlurField(id, value) {
+    if (!this.state.isFormPrestine) {
+      const errors = this.validateFieldsPerFieldset();
+
+      if (keys(errors).length > 0) {
+        this.setState({
+          errors,
+        });
+      }
+    }
+  }
 
   /**
    * Change field handler
-   * also reset errors when editing fields
+   * Remove errors for changed field
    * @method onChangeField
    * @param {string} id Id of the field
    * @param {*} value Value of the field
    * @returns {undefined}
    */
   onChangeField(id, value) {
-    this.setState({
-      formData: {
-        ...this.state.formData,
-        // We need to catch also when the value equals false this fixes #888
-        [id]: value || (value !== undefined && isBoolean(value)) ? value : null,
-      },
-      errors: {},
+    this.setState(prevState => {
+      const { errors, formData } = prevState;
+      delete errors[id];
+      return {
+        errors,
+        formData: {
+          ...formData,
+          // We need to catch also when the value equals false this fixes #888
+          [id]:
+            value || (value !== undefined && isBoolean(value)) ? value : null,
+        },
+      };
     });
   }
 
@@ -953,6 +991,8 @@ class Form extends Component {
                       value={this.state.formData[field]}
                       required={schema.required.indexOf(field) !== -1}
                       onChange={this.onChangeField}
+                      onBlur={this.onBlurField}
+                      onClick={this.onClickInput}
                       key={field}
                       error={this.state.errors[field]}
                       typeField={field.type}
@@ -980,7 +1020,7 @@ class Form extends Component {
                   tabular: true,
                   className: 'formtabs',
                 }}
-                onTabChange={this.handleTabChange}
+                onTabChange={this.onTabChange}
                 activeIndex={this.state.activeIndex}
                 panes={map(schema.fieldsets, item => ({
                   menuItem: item.title,
@@ -999,6 +1039,8 @@ class Form extends Component {
                         value={this.state.formData[field]}
                         required={schema.required.indexOf(field) !== -1}
                         onChange={this.onChangeField}
+                        onBlur={this.onBlurField}
+                        onClick={this.onClickInput}
                         key={field}
                         error={this.state.errors[field]}
                         typeField={field.type}
@@ -1043,6 +1085,8 @@ class Form extends Component {
                     value={this.state.formData[field]}
                     required={schema.required.indexOf(field) !== -1}
                     onChange={this.onChangeField}
+                    onBlur={this.onBlurField}
+                    onClick={this.onClickInput}
                     key={field}
                     error={this.state.errors[field]}
                     typeField={field.type}

@@ -39,7 +39,9 @@ Array [
               min={null}
               minLength={null}
               name="linkTitle"
+              onBlur={[Function]}
               onChange={[Function]}
+              onClick={[Function]}
               step={null}
               type=""
               value=""
@@ -86,7 +88,9 @@ Array [
               min={null}
               minLength={null}
               name="linkHref"
+              onBlur={[Function]}
               onChange={[Function]}
+              onClick={[Function]}
               step={null}
               type=""
               value=""

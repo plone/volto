@@ -36,7 +36,9 @@ exports[`renders an email widget component 1`] = `
             maxLength={null}
             minLength={null}
             name="test-email"
+            onBlur={[Function]}
             onChange={[Function]}
+            onClick={[Function]}
             type="email"
             value=""
           />
