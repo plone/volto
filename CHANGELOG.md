@@ -26,6 +26,7 @@
 ### Bugfix
 
 - Fix handling of external links in ToHTML config @nzambello
+- Remove the title field from right dropdown in folder content view
 
 ### Internal
 

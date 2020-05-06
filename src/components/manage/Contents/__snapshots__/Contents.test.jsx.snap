@@ -391,35 +391,7 @@ exports[`Contents renders a contents component 1`] = `
                   className="scrolling menu transition"
                 >
                   <div
-                    className="item icon-align"
-                    onClick={[Function]}
-                    role="option"
-                  >
-                    <svg
-                      className="icon Title"
-                      dangerouslySetInnerHTML={
-                        Object {
-                          "__html": undefined,
-                        }
-                      }
-                      onClick={null}
-                      style={
-                        Object {
-                          "fill": "currentColor",
-                          "height": "24px",
-                          "width": "auto",
-                        }
-                      }
-                      viewBox=""
-                      xmlns=""
-                    />
-                    <span>
-                       
-                      Title
-                    </span>
-                  </div>
-                  <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -447,7 +419,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -475,7 +447,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -503,7 +475,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -531,7 +503,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -559,7 +531,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -587,7 +559,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -615,7 +587,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -643,7 +615,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -671,7 +643,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -699,7 +671,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -727,7 +699,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -755,7 +727,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -783,7 +755,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -811,7 +783,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -839,7 +811,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -867,7 +839,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -895,7 +867,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -923,7 +895,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >
@@ -951,7 +923,7 @@ exports[`Contents renders a contents component 1`] = `
                     </span>
                   </div>
                   <div
-                    className="item icon-align"
+                    className="item iconAlign"
                     onClick={[Function]}
                     role="option"
                   >

@@ -1296,42 +1296,48 @@ class Contents extends Component {
                             )}
                           />
                           <Dropdown.Menu scrolling>
-                            {map(this.state.index.order, index => (
-                              <Dropdown.Item
-                                key={index}
-                                value={index}
-                                onClick={this.onSelectIndex}
-                                className="icon-align"
-                              >
-                                {this.state.index.values[index].selected ? (
-                                  <Icon
-                                    name={checkboxCheckedSVG}
-                                    size="24px"
-                                    color="#007eb1"
-                                    className={
-                                      this.state.index.values[index].label
-                                    }
-                                  />
-                                ) : (
-                                  <Icon
-                                    name={checkboxUncheckedSVG}
-                                    className={
-                                      this.state.index.values[index].label
-                                    }
-                                    size="24px"
-                                  />
-                                )}
-                                <span>
-                                  {' '}
-                                  {this.props.intl.formatMessage({
-                                    id: this.state.index.values[index].label,
-                                    defaultMessage: this.state.index.values[
-                                      index
-                                    ].label,
-                                  })}
-                                </span>
-                              </Dropdown.Item>
-                            ))}
+                            {map(
+                              filter(
+                                this.state.index.order,
+                                index => index !== 'sortable_title',
+                              ),
+                              index => (
+                                <Dropdown.Item
+                                  key={index}
+                                  value={index}
+                                  onClick={this.onSelectIndex}
+                                  className="iconAlign"
+                                >
+                                  {this.state.index.values[index].selected ? (
+                                    <Icon
+                                      name={checkboxCheckedSVG}
+                                      size="24px"
+                                      color="#007eb1"
+                                      className={
+                                        this.state.index.values[index].label
+                                      }
+                                    />
+                                  ) : (
+                                    <Icon
+                                      name={checkboxUncheckedSVG}
+                                      className={
+                                        this.state.index.values[index].label
+                                      }
+                                      size="24px"
+                                    />
+                                  )}
+                                  <span>
+                                    {' '}
+                                    {this.props.intl.formatMessage({
+                                      id: this.state.index.values[index].label,
+                                      defaultMessage: this.state.index.values[
+                                        index
+                                      ].label,
+                                    })}
+                                  </span>
+                                </Dropdown.Item>
+                              ),
+                            )}
                           </Dropdown.Menu>
                         </Dropdown.Menu>
                       </Dropdown>
