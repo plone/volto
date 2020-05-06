@@ -993,9 +993,9 @@ class Form extends Component {
                       onChange={this.onChangeField}
                       onBlur={this.onBlurField}
                       onClick={this.onClickInput}
+                      dateOnly={schema.properties[field].widget === 'date'}
                       key={field}
                       error={this.state.errors[field]}
-                      typeField={field.type}
                     />
                   ))}
                 </Segment>,
@@ -1041,9 +1041,9 @@ class Form extends Component {
                         onChange={this.onChangeField}
                         onBlur={this.onBlurField}
                         onClick={this.onClickInput}
+                        dateOnly={schema.properties[field].widget === 'date'}
                         key={field}
                         error={this.state.errors[field]}
-                        typeField={field.type}
                       />
                     )),
                   ],
@@ -1087,9 +1087,9 @@ class Form extends Component {
                     onChange={this.onChangeField}
                     onBlur={this.onBlurField}
                     onClick={this.onClickInput}
+                    dateOnly={schema.properties[field].widget === 'date'}
                     key={field}
                     error={this.state.errors[field]}
-                    typeField={field.type}
                   />
                 ))}
               </Segment>

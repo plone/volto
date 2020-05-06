@@ -145,7 +145,10 @@ class DatetimeWidget extends Component {
    * @returns {undefined}
    */
   onDateTimeChange = () => {
-    this.props.onChange(this.props.id, this.state.datetime.toISOString());
+    const dateValue = this.props.dateOnly
+      ? this.state.datetime.format('YYYY-MM-DD')
+      : this.state.datetime.toISOString();
+    this.props.onChange(this.props.id, dateValue);
   };
 
   /**
