@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.5.1 (unreleased)
+## 5.6.0 (2020-05-06)
 
 ### Feature
 
