@@ -30,7 +30,20 @@ const inline = {
   ),
 };
 
-const addBreaklines = children => children.map(child => [child, <br />]);
+const addBreaklines = children =>
+  children.map(child => {
+    return child[1].map(child => [child, <br />]);
+  });
+
+const splitBySoftLines = children =>
+  children.map(child => {
+    return child.map(item => {
+      if (Array.isArray(item)) {
+        return item[0].split('\n');
+      }
+      return item;
+    });
+  });
 
 // Returns how the default lists should be rendered
 const getList = ordered => (children, { depth, keys }) =>
@@ -96,7 +109,9 @@ const blocks = {
   },
   atomic: children => children[0],
   blockquote: (children, { keys }) => (
-    <blockquote key={keys[0]}>{addBreaklines(children)}</blockquote>
+    <blockquote key={keys[0]}>
+      {addBreaklines(splitBySoftLines(children))}
+    </blockquote>
   ),
   'header-one': (children, { keys }) =>
     children.map((child, i) => <h1 key={keys[i]}>{child}</h1>),
