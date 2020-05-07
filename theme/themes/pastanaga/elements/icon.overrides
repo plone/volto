@@ -3172,6 +3172,10 @@ i.icon.add:before {
   content: @icon-add-document;
 }
 
+i.icon.add-on:before {
+  content: @icon-add-on;
+}
+
 i.icon.exclamation.circle:before {
   content: '\f06a';
 }

@@ -228,6 +228,18 @@ module.exports = {
       });
     }
 
+    // If there's any addon, add the alias for the `src` folder
+    const addonsAliases = {};
+    if (packageJson.addons) {
+      const addons = packageJson.addons;
+      addons.forEach(addon => {
+        if (!(addon in jsconfigPaths)) {
+          const addonPath = `${projectRootPath}/node_modules/${addon}/src`;
+          addonsAliases[addon] = addonPath;
+        }
+      });
+    }
+
     const customizations = {};
     let { customizationPaths } = packageJson;
     if (!customizationPaths) {
@@ -264,6 +276,7 @@ module.exports = {
       ...customizations,
       ...config.resolve.alias,
       '../../theme.config$': `${projectRootPath}/theme/theme.config`,
+      ...addonsAliases,
       ...jsconfigPaths,
       '@plone/volto': `${voltoPath}/src`,
       // to be able to reference path uncustomized by webpack

@@ -14,6 +14,7 @@ import { detect } from 'detect-browser';
 import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import { createProxyMiddleware } from 'http-proxy-middleware';
+import { updateIntl } from 'react-intl-redux';
 
 import routes from '~/routes';
 import { settings } from '~/config';
@@ -90,7 +91,7 @@ server
       userSession: { ...userSession(), token: authToken },
       form: req.body,
       intl: {
-        defaultLocale: settings.defaultLanguage,
+        defaultLocale: 'en',
         locale: lang,
         messages: locales[lang],
       },
@@ -123,13 +124,19 @@ server
       req.path.match(/(.*)\/@@download\/(.*)/)
     ) {
       getAPIResourceWithAuth(req).then(resource => {
-        res.set('Content-Type', resource.headers['content-type']);
-        if (resource.headers['content-disposition']) {
-          res.set(
-            'Content-Disposition',
-            resource.headers['content-disposition'],
-          );
+        function forwardHeaders(headers) {
+          headers.forEach(header => {
+            if (resource.headers[header]) {
+              res.set(header, resource.headers[header]);
+            }
+          });
         }
+        // Just forward the headers that we need
+        forwardHeaders([
+          'content-type',
+          'content-disposition',
+          'cache-control',
+        ]);
         res.send(resource.body);
       });
     } else {
@@ -144,6 +151,18 @@ server
                 </StaticRouter>
               </Provider>
             </ChunkExtractorManager>,
+          );
+
+          // The content info is in the store at this point thanks to the asynconnect
+          // features, then we can force the current language coming from an SSR request
+          const updatedLang =
+            store.getState().content.data?.language?.token ||
+            settings.defaultLanguage;
+          store.dispatch(
+            updateIntl({
+              locale: updatedLang,
+              messages: locales[updatedLang],
+            }),
           );
 
           if (context.url) {

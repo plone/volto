@@ -14,6 +14,12 @@ export {
   moveContent,
 } from '@plone/volto/actions/clipboard/clipboard';
 export {
+  installAddon,
+  listAddons,
+  uninstallAddon,
+  upgradeAddon,
+} from './addons/addons';
+export {
   addComment,
   deleteComment,
   listComments,

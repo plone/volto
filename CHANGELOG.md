@@ -1,16 +1,54 @@
 # Change Log
 
-## 5.3.1 (unreleased)
+## 5.6.1 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+### Bugfix
+
+### Internal
+
+## 5.6.0 (2020-05-06)
+
+### Feature
+
+- Load the current object language on SSR, instead of relying on the cookie @sneridagh
+
+### Bugfix
+
+- Correct the `defaultLanguage` intend in `react-intl-redux` configuration @sneridagh
+
+### Internal
+
+- Add default `src` alias for addons detecting if there is a released or a mrs-developer one @sneridagh
+
+## 5.5.0 (2020-05-06)
+
+### Feature
+
+- Added label expired if expiration date is smaller that current date #1413 @iFlameing
+- Added word limit widget @iFlameing
+- Addons control panel @esteele @iFlameing
+
+### Internal
+
+- Cypress test for Table Block @steffenri @iFlameing
+- Cypress tests upgraded for Image, Hero and HTML Block @steffenri @iFlameing
+- Added cypress test for sort method in folder content #1035 @iFlameing
+
+## 5.4.0 (2020-05-04)
+
+### Feature
+
 - Add babel and externals support in Webpack for add-on infrastructure @sneridagh
+- Forward the images and files cache headers in Volto SSR passthrough @sneridagh
 
 ### Bugfix
 
 - Fix handling of external links in ToHTML config @nzambello
+- Remove the title field from right dropdown in folder content view
 
 ### Internal
 
