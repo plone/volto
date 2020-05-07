@@ -49,7 +49,7 @@ class ObjectBrowserBody extends Component {
   static propTypes = {
     block: PropTypes.string.isRequired,
     mode: PropTypes.string.isRequired,
-    data: PropTypes.objectOf(PropTypes.any).isRequired,
+    data: PropTypes.any.isRequired,
     searchSubrequests: PropTypes.objectOf(PropTypes.any).isRequired,
     searchContent: PropTypes.func.isRequired,
     closeObjectBrowser: PropTypes.func.isRequired,
@@ -79,22 +79,37 @@ class ObjectBrowserBody extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentFolder: this.props.data?.url
-        ? getParentURL(this.props.data.url)
-        : '/',
-      currentImageFolder: this.props.data?.url
-        ? getParentURL(this.props.data.url)
-        : '/',
-      currentLinkFolder: this.props.data?.href
-        ? getParentURL(this.props.data.href)
-        : '/',
+      currentFolder:
+        this.props.mode === 'multiple'
+          ? '/'
+          : this.props.data?.url
+          ? getParentURL(this.props.data.url)
+          : '/',
+      currentImageFolder:
+        this.props.mode === 'multiple'
+          ? '/'
+          : this.props.data?.url
+          ? getParentURL(this.props.data.url)
+          : '/',
+      currentLinkFolder:
+        this.props.mode === 'multiple'
+          ? '/'
+          : this.props.data?.href
+          ? getParentURL(this.props.data.href)
+          : '/',
       parentFolder: '',
-      selectedImage: this.props.data?.url
-        ? this.props.data.url.replace(settings.apiPath, '')
-        : '',
-      selectedHref: this.props.data?.href
-        ? this.props.data.href.replace(settings.apiPath, '')
-        : '',
+      selectedImage:
+        this.props.mode === 'multiple'
+          ? ''
+          : this.props.data?.url
+          ? this.props.data.url.replace(settings.apiPath, '')
+          : '',
+      selectedHref:
+        this.props.mode === 'multiple'
+          ? ''
+          : this.props.data?.href
+          ? this.props.data.href.replace(settings.apiPath, '')
+          : '',
       showSearchInput: false,
     };
   }
@@ -120,7 +135,11 @@ class ObjectBrowserBody extends Component {
 
   initialSearch = mode => {
     const currentSelected =
-      mode === 'image' ? this.state.selectedImage : this.state.selectedHref;
+      mode === 'multiple'
+        ? ''
+        : mode === 'image'
+        ? this.state.selectedImage
+        : this.state.selectedHref;
     if (currentSelected) {
       this.props.searchContent(
         getParentURL(currentSelected),
@@ -374,9 +393,16 @@ class ObjectBrowserBody extends Component {
               ]
             }
             selected={
-              this.props.mode === 'image'
-                ? this.state.selectedImage
-                : this.state.selectedHref
+              this.props.mode === 'multiple'
+                ? this.props.data
+                : [
+                    {
+                      '@id':
+                        this.props.mode === 'image'
+                          ? this.state.selectedImage
+                          : this.state.selectedHref,
+                    },
+                  ]
             }
             getIcon={this.getIcon}
             handleClickOnItem={this.handleClickOnItem}

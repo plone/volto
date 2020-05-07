@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { map, remove, find } from 'lodash';
+import { settings } from '~/config';
 import {
   Form,
   Grid,
@@ -44,9 +45,8 @@ class ObjectBrowserWidget extends Component {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
-    mode: PropTypes.string,
+    mode: PropTypes.string, //link,image,multiple
     required: PropTypes.bool,
-    multiple: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     value: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.object),
@@ -66,8 +66,7 @@ class ObjectBrowserWidget extends Component {
     required: false,
     error: [],
     value: null,
-    mode: 'link',
-    multiple: true,
+    mode: 'multiple',
   };
 
   constructor(props) {
@@ -78,16 +77,16 @@ class ObjectBrowserWidget extends Component {
   renderLabel(item) {
     return (
       <Popup
-        key={item['@id']}
+        key={item['@id'].replace(settings.apiPath, '')}
         content={
           <>
-            <OldIcon name="home" /> {item['@id']}
+            <OldIcon name="home" /> {item['@id'].replace(settings.apiPath, '')}
           </>
         }
         trigger={
           <Label>
             {item.title}
-            {this.props.multiple && (
+            {this.props.mode === 'multiple' && (
               <OldIcon
                 name="delete"
                 onClick={event => {
@@ -111,8 +110,20 @@ class ObjectBrowserWidget extends Component {
   };
 
   onChange = item => {
-    let value = this.props.multiple ? [...this.props.value] : [];
-    let exists = find(value, { '@id': item['@id'] });
+    let value = this.props.mode === 'multiple' ? [...this.props.value] : [];
+
+    let exists = false;
+    value.forEach(_item => {
+      if (
+        _item['@id'].replace(settings.apiPath, '') ===
+        item['@id'].replace(settings.apiPath, '')
+      ) {
+        exists = true;
+      }
+    });
+    //find(value, {
+    //   '@id': item['@id'].replace(settings.apiPath, ''),
+    // });
     if (!exists) {
       value.push(item);
       this.props.onChange(this.props.id, value);
@@ -126,6 +137,7 @@ class ObjectBrowserWidget extends Component {
       onSelectItem: (url, item) => {
         this.onChange(item);
       },
+      propDataName: 'value',
     });
   };
 
@@ -151,15 +163,16 @@ class ObjectBrowserWidget extends Component {
       description,
       error,
       value,
-      multiple,
+      mode,
       onEdit,
       fieldSet,
       onChange,
     } = this.props;
 
-    let icon = multiple || value.length == 0 ? navTreeSVG : clearSVG;
+    let icon =
+      mode === 'multiple' || value.length === 0 ? navTreeSVG : clearSVG;
     let iconAction =
-      multiple || value.length === 0
+      mode === 'multiple' || value.length === 0
         ? this.showObjectBrowser
         : e => {
             e.preventDefault();

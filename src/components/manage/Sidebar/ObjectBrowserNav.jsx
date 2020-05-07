@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Segment } from 'semantic-ui-react';
 import cx from 'classnames';
+import { find } from 'lodash';
 import { Icon } from '@plone/volto/components';
 import { settings } from '~/config';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
@@ -14,6 +15,19 @@ const ObjectBrowserNav = ({
   mode,
   navigateTo,
 }) => {
+  const isSelected = item => {
+    let ret = false;
+    selected.forEach(_item => {
+      if (
+        _item['@id'].replace(settings.apiPath, '') ===
+        item['@id'].replace(settings.apiPath, '')
+      ) {
+        ret = true;
+      }
+    });
+    return ret;
+  };
+
   return (
     <Segment as="ul" className="object-listing">
       {currentSearchResults &&
@@ -22,7 +36,7 @@ const ObjectBrowserNav = ({
             role="presentation"
             key={item.id}
             className={cx('', {
-              'selected-item': selected === item['@id'],
+              'selected-item': isSelected(item),
               disabled:
                 mode === 'image'
                   ? !settings.imageObjects.includes(item['@type']) &&
@@ -32,14 +46,14 @@ const ObjectBrowserNav = ({
             onClick={() => handleClickOnItem(item)}
             onDoubleClick={() => handleDoubleClickOnItem(item)}
           >
-            <span>
+            <span title={item['@id']}>
               {getIcon(item['@type'])}
-              {item.id}
+              {item.title}
             </span>
             {item.is_folderish && mode === 'image' && (
               <Icon name={rightArrowSVG} size="24px" />
             )}
-            {item.is_folderish && mode === 'link' && (
+            {item.is_folderish && (mode === 'link' || mode === 'multiple') && (
               <Button.Group>
                 <Button
                   basic
