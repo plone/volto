@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ImageGallery from 'react-image-gallery';
+import loadable from '@loadable/component';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import { settings } from '~/config';
 import { flattenToAppURL } from '@plone/volto/helpers';
 
-const ImageGalleryTemplate = ({ items, linkMore, isEditMode }) => {
-  let imageLink = items.map(item => {
+const ImageGallery = loadable(() => import('react-image-gallery'));
+
+const ImageGalleryTemplate = ({ items }) => {
+  const renderItems = items.filter(content =>
+    settings.imageObjects.includes(content['@type']),
+  );
+  const imagesInfo = renderItems.map(item => {
     return {
       original: flattenToAppURL(
         item[settings.listingPreviewImageField].scales.preview.download,
@@ -17,11 +22,7 @@ const ImageGalleryTemplate = ({ items, linkMore, isEditMode }) => {
     };
   });
 
-  return (
-    <>
-      <ImageGallery items={imageLink} lazyLoad />
-    </>
-  );
+  return renderItems.length > 0 && <ImageGallery items={imagesInfo} lazyLoad />;
 };
 
 ImageGalleryTemplate.propTypes = {

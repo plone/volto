@@ -1,5 +1,4 @@
 import { defineMessages } from 'react-intl';
-import loadable from '@loadable/component';
 
 import ViewTitleBlock from '@plone/volto/components/manage/Blocks/Title/View';
 import ViewDescriptionBlock from '@plone/volto/components/manage/Blocks/Description/View';
@@ -40,9 +39,7 @@ import tableSVG from '@plone/volto/icons/table.svg';
 import listBulletSVG from '@plone/volto/icons/list-bullet.svg';
 import tocSVG from '@plone/volto/icons/list-bullet.svg';
 
-const ImageGalleryListingBlockTemplate = loadable(() =>
-  import('@plone/volto/components/manage/Blocks/Listing/ImageGallery'),
-);
+import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 
 defineMessages({
   title: {
@@ -211,7 +208,7 @@ const blocksConfig = {
     templates: {
       default: { label: 'Default', template: DefaultListingBlockTemplate },
       imageGallery: {
-        label: 'imageGallery',
+        label: 'Image gallery',
         template: ImageGalleryListingBlockTemplate,
       },
     },
