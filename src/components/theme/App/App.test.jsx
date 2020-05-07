@@ -10,6 +10,7 @@ jest.mock('~/config', () => ({
   settings: {
     nonContentRoutes: [],
     supportedLanguages: ['en'],
+    navDepth: 1,
   },
   views: {
     errorViews: {

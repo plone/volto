@@ -61,6 +61,7 @@ export const settings = {
   isMultilingual: false,
   supportedLanguages: ['en'],
   defaultLanguage: 'en',
+  navDepth: 1,
 };
 
 export const widgets = {

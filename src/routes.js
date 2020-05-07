@@ -4,6 +4,7 @@
  */
 import {
   Add,
+  AddonsControlpanel,
   App,
   ChangePassword,
   ContactForm,
@@ -64,6 +65,10 @@ export const defaultRoutes = [
     path: '/controlpanel',
     exact: true,
     component: Controlpanels,
+  },
+  {
+    path: '/controlpanel/addons',
+    component: AddonsControlpanel,
   },
   {
     path: '/controlpanel/moderate-comments',
