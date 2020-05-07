@@ -41,6 +41,11 @@ const messages = defineMessages({
   },
 });
 
+const typeTranslations = {
+  integer: 'number',
+  string: 'text',
+};
+
 /**
  * TextWidget component class.
  * @class TextWidget
@@ -61,6 +66,8 @@ class TextWidget extends Component {
     value: PropTypes.string,
     focus: PropTypes.bool,
     onChange: PropTypes.func,
+    onBlur: PropTypes.func,
+    onClick: PropTypes.func,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     icon: PropTypes.shape({
@@ -69,6 +76,11 @@ class TextWidget extends Component {
       content: PropTypes.string,
     }),
     iconAction: PropTypes.func,
+    type: PropTypes.string,
+    minLength: PropTypes.number,
+    maxLength: PropTypes.number,
+    maximum: PropTypes.number,
+    minimum: PropTypes.number,
   };
 
   /**
@@ -81,12 +93,19 @@ class TextWidget extends Component {
     required: false,
     error: [],
     value: null,
-    onChange: null,
+    onChange: () => {},
+    onBlur: () => {},
+    onClick: () => {},
     onEdit: null,
     onDelete: null,
     focus: false,
     icon: null,
     iconAction: null,
+    type: '',
+    minLength: null,
+    maxLength: null,
+    minimum: null,
+    maximum: null,
   };
 
   /**
@@ -114,12 +133,19 @@ class TextWidget extends Component {
       error,
       value,
       onChange,
+      onBlur,
+      onClick,
       onEdit,
       onDelete,
       intl,
       icon,
       iconAction,
       fieldSet,
+      type,
+      minLength,
+      maxLength,
+      minimum,
+      maximum,
     } = this.props;
 
     const schema = {
@@ -203,10 +229,25 @@ class TextWidget extends Component {
                 onChange={({ target }) =>
                   onChange(id, target.value === '' ? undefined : target.value)
                 }
+                onBlur={({ target }) =>
+                  onBlur(id, target.value === '' ? undefined : target.value)
+                }
+                onClick={() => onClick()}
                 ref={node => {
                   this.node = node;
                 }}
-              />
+                type={typeTranslations[type] || type}
+                step={
+                  type === 'number' ? 'any' : type === 'integer' ? '1' : null
+                }
+                min={minimum || null}
+                max={maximum || null}
+              >
+                <input
+                  minLength={minLength || null}
+                  maxLength={maxLength || null}
+                />
+              </Input>
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
                   {message}

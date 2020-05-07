@@ -34,9 +34,16 @@ Array [
             <input
               disabled={false}
               id="field-linkTitle"
+              max={null}
+              maxLength={null}
+              min={null}
+              minLength={null}
               name="linkTitle"
+              onBlur={[Function]}
               onChange={[Function]}
-              type="text"
+              onClick={[Function]}
+              step={null}
+              type=""
               value=""
             />
           </div>
@@ -76,21 +83,17 @@ Array [
             <input
               disabled={false}
               id="field-linkHref"
+              max={null}
+              maxLength={null}
+              min={null}
+              minLength={null}
               name="linkHref"
+              onBlur={[Function]}
               onChange={[Function]}
-              type="text"
-              value=""
-            />
-            <i
-              aria-hidden="true"
-              attributes={
-                Object {
-                  "viewBox": "",
-                  "xmlns": "",
-                }
-              }
-              className="icon"
               onClick={[Function]}
+              step={null}
+              type=""
+              value=""
             />
           </div>
           <button

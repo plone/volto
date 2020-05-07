@@ -1,6 +1,6 @@
 /**
- * PasswordWidget component.
- * @module components/manage/Widgets/PassswordWidget
+ * UrlWidget component.
+ * @module components/manage/Widgets/UrlWidget
  */
 
 import React from 'react';
@@ -8,16 +8,15 @@ import PropTypes from 'prop-types';
 import { Form, Grid, Input, Label } from 'semantic-ui-react';
 import { map } from 'lodash';
 
-/**
- * PasswordWidget component class.
- * @function PasswordWidget
- * @returns {string} Markup of the component.
+/** UrlWidget function component
+ * @function UrlWidget
+ * @returns {string} Markup of the component
  */
-const PasswordWidget = ({
+const UrlWidget = ({
   id,
   title,
-  required,
   description,
+  required,
   error,
   value,
   onChange,
@@ -54,7 +53,7 @@ const PasswordWidget = ({
             <Input
               id={inputId}
               name={id}
-              type="password"
+              type="url"
               value={value || ''}
               onChange={({ target }) =>
                 onChange(id, target.value === '' ? undefined : target.value)
@@ -67,7 +66,6 @@ const PasswordWidget = ({
               <input
                 minLength={minLength || null}
                 maxLength={maxLength || null}
-                autoComplete="off"
               />
             </Input>
             {errorsList}
@@ -86,11 +84,11 @@ const PasswordWidget = ({
 };
 
 /**
- * Property types.
+ * Property types
  * @property {Object} propTypes Property types.
  * @static
  */
-PasswordWidget.propTypes = {
+UrlWidget.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
@@ -107,7 +105,7 @@ PasswordWidget.propTypes = {
  * @property {Object} defaultProps Default properties.
  * @static
  */
-PasswordWidget.defaultProps = {
+UrlWidget.defaultProps = {
   description: null,
   required: false,
   error: [],
@@ -116,4 +114,4 @@ PasswordWidget.defaultProps = {
   maxLength: null,
 };
 
-export default PasswordWidget;
+export default UrlWidget;

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-05-06T07:51:02.413Z\n"
+"POT-Creation-Date: 2020-05-07T08:49:16.433Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1042,6 +1042,16 @@ msgstr ""
 msgid "Maps URL"
 msgstr ""
 
+#: components/manage/Form/Form
+# defaultMessage: Maximum length is {len}.
+msgid "Maximum length is {len}."
+msgstr ""
+
+#: components/manage/Form/Form
+# defaultMessage: Maximum value is {len}.
+msgid "Maximum value is {len}."
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 # defaultMessage: Message
 msgid "Message"
@@ -1051,6 +1061,11 @@ msgstr ""
 #: components/manage/Form/ModalForm
 # defaultMessage: Minimum length is {len}.
 msgid "Minimum length is {len}."
+msgstr ""
+
+#: components/manage/Form/Form
+# defaultMessage: Minimum value is {len}.
+msgid "Minimum value is {len}."
 msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
@@ -2113,6 +2128,11 @@ msgstr ""
 msgid "description_sent_password"
 msgstr ""
 
+#: components/manage/Form/Form
+# defaultMessage: Input must be valid email (something@domain.com)
+msgid "email"
+msgstr ""
+
 #: components/theme/View/EventView
 # defaultMessage: All dates
 msgid "event_alldates"
@@ -2173,6 +2193,11 @@ msgstr ""
 msgid "image"
 msgstr ""
 
+#: components/manage/Form/Form
+# defaultMessage: Input must be integer
+msgid "integer"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 # defaultMessage: My email address is
 msgid "label_my_email_address_is"
@@ -2206,6 +2231,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Most used
 msgid "mostUsed"
+msgstr ""
+
+#: components/manage/Form/Form
+# defaultMessage: Input must be number
+msgid "number"
 msgstr ""
 
 #: error
@@ -2251,6 +2281,11 @@ msgstr ""
 #: config/Blocks
 # defaultMessage: Table of Contents
 msgid "toc"
+msgstr ""
+
+#: components/manage/Form/Form
+# defaultMessage: Input must be valid url (www.something.com or http(s)://www.something.com)
+msgid "url"
 msgstr ""
 
 #: components/manage/Toolbar/PersonalTools

@@ -54,21 +54,17 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
               <input
                 disabled={false}
                 id="field-alt"
+                max={null}
+                maxLength={null}
+                min={null}
+                minLength={null}
                 name="alt"
+                onBlur={[Function]}
                 onChange={[Function]}
-                type="text"
-                value="alternate text"
-              />
-              <i
-                aria-hidden="true"
-                attributes={
-                  Object {
-                    "viewBox": "",
-                    "xmlns": "",
-                  }
-                }
-                className="icon"
                 onClick={[Function]}
+                step={null}
+                type=""
+                value="alternate text"
               />
             </div>
             <button
@@ -303,21 +299,17 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                 <input
                   disabled={false}
                   id="field-link"
+                  max={null}
+                  maxLength={null}
+                  min={null}
+                  minLength={null}
                   name="link"
+                  onBlur={[Function]}
                   onChange={[Function]}
-                  type="text"
-                  value=""
-                />
-                <i
-                  aria-hidden="true"
-                  attributes={
-                    Object {
-                      "viewBox": "",
-                      "xmlns": "",
-                    }
-                  }
-                  className="icon"
                   onClick={[Function]}
+                  step={null}
+                  type=""
+                  value=""
                 />
               </div>
               <button

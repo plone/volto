@@ -866,6 +866,14 @@ msgstr ""
 msgid "Maps URL"
 msgstr ""
 
+#: components/manage/Form/Form
+msgid "Maximum length is {len}."
+msgstr ""
+
+#: components/manage/Form/Form
+msgid "Maximum value is {len}."
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr "Mensaje"
@@ -874,6 +882,10 @@ msgstr "Mensaje"
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
 msgstr "El tamaño mínimo es {len}."
+
+#: components/manage/Form/Form
+msgid "Minimum value is {len}."
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
@@ -1739,6 +1751,10 @@ msgstr "Por razones de seguridad, las contraseñas se almacenan en forma cifrada
 msgid "description_sent_password"
 msgstr "Se han enviado las instrucciones para restablecer su contraseña. Deben llegar a su bandeja de entrada pronto. Una vez que reciba el mensaje, visite la dirección indicada para restablecer la contraseña."
 
+#: components/manage/Form/Form
+msgid "email"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr ""
@@ -1787,6 +1803,10 @@ msgstr "HTML"
 msgid "image"
 msgstr "Imagen"
 
+#: components/manage/Form/Form
+msgid "integer"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr "Mi dirección de correo electrónico es"
@@ -1814,6 +1834,10 @@ msgstr "Multimedia"
 #: config/Blocks
 msgid "mostUsed"
 msgstr "Más usado"
+
+#: components/manage/Form/Form
+msgid "number"
+msgstr ""
 
 #: error
 msgid "or try a different page."
@@ -1849,6 +1873,10 @@ msgstr "Título"
 
 #: config/Blocks
 msgid "toc"
+msgstr ""
+
+#: components/manage/Form/Form
+msgid "url"
 msgstr ""
 
 #: components/manage/Toolbar/PersonalTools

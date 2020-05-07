@@ -871,6 +871,14 @@ msgstr "Karte"
 msgid "Maps URL"
 msgstr "Karten URL"
 
+#: components/manage/Form/Form
+msgid "Maximum length is {len}."
+msgstr ""
+
+#: components/manage/Form/Form
+msgid "Maximum value is {len}."
+msgstr ""
+
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
 msgstr "Nachricht"
@@ -879,6 +887,10 @@ msgstr "Nachricht"
 #: components/manage/Form/ModalForm
 msgid "Minimum length is {len}."
 msgstr "Minimale Länge ist {len}"
+
+#: components/manage/Form/Form
+msgid "Minimum value is {len}."
+msgstr ""
 
 #: components/manage/Controlpanels/Controlpanels
 msgid "Moderate Comments"
@@ -1744,6 +1756,10 @@ msgstr "Aus Sicherheitsgründen speichern wir Ihr Passwort verschlüsselt und k�
 msgid "description_sent_password"
 msgstr "Der Link, um das Passwort neu zu setzen, wurde Ihnen zugesendet. Die E-Mail sollte in Kürze in Ihrem Postfach ankommen. Wenn Sie die Nachricht erhalten haben, klicken Sie auf den Link in der E-Mail, um zu der Webseite zu gelangen, wo Sie das Passwort neu setzen können."
 
+#: components/manage/Form/Form
+msgid "email"
+msgstr ""
+
 #: components/theme/View/EventView
 msgid "event_alldates"
 msgstr ""
@@ -1792,6 +1808,10 @@ msgstr "HTML"
 msgid "image"
 msgstr "Bild"
 
+#: components/manage/Form/Form
+msgid "integer"
+msgstr ""
+
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_email_address_is"
 msgstr "Meine E-Mail-Adresse lautet"
@@ -1819,6 +1839,10 @@ msgstr "Medien"
 #: config/Blocks
 msgid "mostUsed"
 msgstr "Häufig genutzt"
+
+#: components/manage/Form/Form
+msgid "number"
+msgstr ""
 
 #: error
 msgid "or try a different page."
@@ -1855,6 +1879,10 @@ msgstr "Titel"
 #: config/Blocks
 msgid "toc"
 msgstr "Inhaltsverzeichnis"
+
+#: components/manage/Form/Form
+msgid "url"
+msgstr ""
 
 #: components/manage/Toolbar/PersonalTools
 msgid "user avatar"

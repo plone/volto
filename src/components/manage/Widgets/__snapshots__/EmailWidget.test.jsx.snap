@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a password widget component 1`] = `
+exports[`renders an email widget component 1`] = `
 <div
   className="inline field"
-  id="field-my-field"
+  id="field-test-email"
 >
   <div
     className="ui grid"
@@ -18,9 +18,9 @@ exports[`renders a password widget component 1`] = `
           className="wrapper"
         >
           <label
-            htmlFor="field-my-field"
+            htmlFor="field-test-email"
           >
-            My field
+            My Email
           </label>
         </div>
       </div>
@@ -32,14 +32,14 @@ exports[`renders a password widget component 1`] = `
         >
           <input
             autoComplete="off"
-            id="field-my-field"
+            id="field-test-email"
             maxLength={null}
             minLength={null}
-            name="my-field"
+            name="test-email"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
-            type="password"
+            type="email"
             value=""
           />
         </div>

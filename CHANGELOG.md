@@ -5,9 +5,11 @@
 ### Breaking
 
 ### Feature
-
+- Added missing components for Email and Url widgets #1246 @rexalex
+- Show backend validation errors on corresponding fields #1246 @rexalex
 ### Bugfix
-
+- Fixed front-end field validation #1246 @rexalex
+- Fixed date only widget rendering #1246 @rexalex
 ### Internal
 
 ## 5.6.0 (2020-05-06)

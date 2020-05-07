@@ -1,12 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import PasswordWidget from './PasswordWidget';
+import UrlWidget from './UrlWidget';
 
-test('renders a password widget component', () => {
+test('renders an url widget component', () => {
   const component = renderer.create(
-    <PasswordWidget
-      id="my-field"
-      title="My field"
+    <UrlWidget
+      id="test-url"
+      title="My Url"
       onChange={() => {}}
       onBlur={() => {}}
       onClick={() => {}}
