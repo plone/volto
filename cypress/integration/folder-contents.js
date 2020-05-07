@@ -46,7 +46,7 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.visit('my-folder/contents');
       cy.get('tbody>tr:nth-child(2) .unchecked').click();
       cy.get('svg[class="icon cut"]').click();
-      cy.get('tbody>tr:nth-child(1) .iconAlign > span').click();
+      cy.get('tbody>tr:nth-child(1) .expire-align > span').click();
       cy.get('svg[class="icon paste"]').click();
 
       //then their should be a My child
@@ -83,6 +83,21 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.get('#content-core table').contains('Published');
       cy.visit('/my-folder/my-document/contents');
       cy.get('#content-core table').contains('Published');
+    });
+
+    it('Sort method by creation field', () => {
+      // when sort method invoked using creation field
+      cy.createContent('Document', 'child', 'My Child', 'my-folder');
+      cy.visit('my-folder/contents');
+      cy.get('.icon.configuration-svg').click();
+      cy.get('.sort_CreationDate').invoke('trigger', 'mouseover');
+      cy.get('.item.sort_created_descending').click({ force: true });
+
+      // then the last document created must be the firs element
+      cy.get('tbody>tr:nth-child(1) .expire-align > span').should(
+        'have.text',
+        ' My Child',
+      );
     });
   });
 }
