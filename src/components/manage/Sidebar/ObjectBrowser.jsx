@@ -6,6 +6,17 @@ const DEFAULT_TIMEOUT = 500;
 
 const withObjectBrowser = WrappedComponent =>
   class extends React.Component {
+    /**
+     * Default properties
+     * @property {Object} defaultProps Default properties.
+     * @static
+     */
+    static defaultProps = {
+      onChangeBlock: () => {},
+      data: {},
+      block: new Date().getTime() + '',
+    };
+
     constructor() {
       super();
       this.state = { isObjectBrowserOpen: false };

@@ -6,19 +6,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { map } from 'lodash';
-import { Form, Grid, Label, Popup } from 'semantic-ui-react';
+import { map, remove, find } from 'lodash';
+import {
+  Form,
+  Grid,
+  Label,
+  Popup,
+  Icon as OldIcon,
+  Button,
+} from 'semantic-ui-react';
 
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
-import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
-  no_value: {
-    id: 'No value',
-    defaultMessage: 'No value',
+  placeholder: {
+    id: 'No items selected',
+    defaultMessage: 'No items selected',
   },
 });
 
@@ -39,7 +46,7 @@ class ObjectBrowserWidget extends Component {
     description: PropTypes.string,
     mode: PropTypes.string,
     required: PropTypes.bool,
-    //  multiple: PropTypes.bool, [TODO]
+    multiple: PropTypes.bool,
     error: PropTypes.arrayOf(PropTypes.string),
     value: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.object),
@@ -60,121 +67,76 @@ class ObjectBrowserWidget extends Component {
     error: [],
     value: null,
     mode: 'link',
-    // multiple: false,
+    multiple: true,
   };
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs Actions
-   */
   constructor(props) {
     super(props);
-
-    // this.state = {
-    //   choices: props.value
-    //     ? props.multiple
-    //       ? fromPairs(
-    //           map(props.value, value => [
-    //             value['@id'],
-    //             {
-    //               key: value['@id'],
-    //               text: value['@id']?.replace(settings.apiPath, ''),
-    //               value: value['@id'],
-    //               label: {
-    //                 content: value.title,
-    //               },
-    //               data: value,
-    //             },
-    //           ]),
-    //         )
-    //       : {
-    //           [props.value['@id']]: {
-    //             key: props.value['@id'],
-    //             text: props.value?.replace(settings.apiPath, ''),
-    //             value: props.value['@id'],
-    //             label: {
-    //               content: props.value.title,
-    //             },
-    //             data: props.value,
-    //           },
-    //           novalue: {
-    //             key: 'novalue',
-    //             text: this.props.intl.formatMessage(messages.no_value),
-    //             value: 'novalue',
-    //             data: null,
-    //           },
-    //         }
-    //     : {},
-    // };
+    this.selectedItemsRef = React.createRef();
+    this.placeholderRef = React.createRef();
   }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    // this.setState({
-    //   choices: {
-    //     ...fromPairs(
-    //       map(
-    //         uniqBy(
-    //           map(compact(concat(nextProps.value, nextProps.search)), item => ({
-    //             ...item,
-    //             '@id': item['@id'].replace(settings.apiPath, ''),
-    //           })),
-    //           '@id',
-    //         ),
-    //         value => [
-    //           value['@id'],
-    //           {
-    //             key: value['@id'],
-    //             text: value['@id']?.replace(settings.apiPath, ''),
-    //             value: value['@id'],
-    //             label: {
-    //               content: value.title,
-    //             },
-    //             data: value,
-    //           },
-    //         ],
-    //       ),
-    //     ),
-    //     novalue: {
-    //       key: 'novalue',
-    //       text: this.props.intl.formatMessage(messages.no_value),
-    //       value: 'novalue',
-    //       data: null,
-    //     },
-    //   },
-    // });
-  }
-
   renderLabel(item) {
     return (
       <Popup
-        key={item.value}
+        key={item['@id']}
         content={
           <>
-            <Icon name="home" /> {item.value}
+            <OldIcon name="home" /> {item['@id']}
           </>
         }
         trigger={
           <Label>
-            {item.label.content}
-            <Icon
-              name="delete"
-              onClick={event => {
-                console.log('[TODO]: remove item');
-              }}
-            />
+            {item.title}
+            {this.props.multiple && (
+              <OldIcon
+                name="delete"
+                onClick={event => {
+                  event.preventDefault();
+                  this.removeItem(item);
+                }}
+              />
+            )}
           </Label>
         }
       />
     );
   }
+
+  removeItem = item => {
+    let value = [...this.props.value];
+    remove(value, function(_item) {
+      return _item['@id'] === item['@id'];
+    });
+    this.props.onChange(this.props.id, value);
+  };
+
+  onChange = item => {
+    let value = this.props.multiple ? [...this.props.value] : [];
+    let exists = find(value, { '@id': item['@id'] });
+    if (!exists) {
+      value.push(item);
+      this.props.onChange(this.props.id, value);
+    }
+  };
+
+  showObjectBrowser = ev => {
+    ev.preventDefault();
+    this.props.openObjectBrowser({
+      mode: this.props.mode,
+      onSelectItem: (url, item) => {
+        this.onChange(item);
+      },
+    });
+  };
+
+  handleSelectedItemsRefClick = e => {
+    if (
+      e.target.contains(this.selectedItemsRef.current) ||
+      e.target.contains(this.placeholderRef.current)
+    ) {
+      this.showObjectBrowser(e);
+    }
+  };
 
   /**
    * Render method.
@@ -191,30 +153,17 @@ class ObjectBrowserWidget extends Component {
       value,
       multiple,
       onEdit,
-      onChange,
-      onDelete,
-      mode,
-      openObjectBrowser,
       fieldSet,
+      onChange,
     } = this.props;
-    console.log('value', value);
 
-    let icon = value && value.length > 0 ? clearSVG : navTreeSVG;
+    let icon = multiple || value.length == 0 ? navTreeSVG : clearSVG;
     let iconAction =
-      value && value.length > 0
-        ? ev => {
-            ev.preventDefault();
-            onChange(id, null);
-          }
-        : ev => {
-            ev.preventDefault();
-            openObjectBrowser({
-              mode: mode,
-              onSelectItem: (url, item) => {
-                multiple ? null : this.onChange(id, url, item); finire da qui
-                console.log('selected url', url, 'item', item);
-              },
-            });
+      multiple || value.length === 0
+        ? this.showObjectBrowser
+        : e => {
+            e.preventDefault();
+            onChange(id, []);
           };
 
     return (
@@ -241,17 +190,38 @@ class ObjectBrowserWidget extends Component {
               </div>
             </Grid.Column>
             <Grid.Column width="8">
-              {value.map(item => this.renderLabel(item))}
+              <div className="objectbrowser-field">
+                <div
+                  className="selected-values"
+                  onClick={this.handleSelectedItemsRefClick}
+                  onKeyDown={this.handleSelectedItemsRefClick}
+                  role="searchbox"
+                  tabIndex={0}
+                  ref={this.selectedItemsRef}
+                >
+                  {value.map(item => this.renderLabel(item))}
+
+                  {value.length === 0 && (
+                    <div className="placeholder" ref={this.placeholderRef}>
+                      {this.props.intl.formatMessage(messages.placeholder)}
+                    </div>
+                  )}
+                </div>
+
+                {/* <Button onClick={this.showObjectBrowser} className="action">
+                  <Icon name={navTreeSVG} size="18px" />
+                </Button> */}
+
+                <Button onClick={iconAction} className="action">
+                  <Icon name={icon} size="18px" />
+                </Button>
+              </div>
+
               {map(error, message => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>
               ))}
-              {icon && iconAction && (
-                <button onClick={iconAction}>
-                  <Icon name={icon} size="18px" />
-                </button>
-              )}
             </Grid.Column>
           </Grid.Row>
           {description && (
