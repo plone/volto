@@ -49,6 +49,10 @@ we can configure `mrs-developer` to use any directory that you want. Here we are
 telling it to create the directory `src/addons` and put the packages managed by
 `mrs-developer` inside.
 
+!!! note
+    You can use any name/directory in your project. We chose `addons` by convention for
+    all Volto add-ons.
+
 ### mrs.developer.json
 
 This is the configuration file that instructs `mrs-developer` from where it has
@@ -56,11 +60,22 @@ to pull the packages. So, in `mrs.developer.json`:
 
 ```json
 {
-  "@plone/my-volto-addon": {
-      "url": "git@github.com:plone/my-volto-addon.git"
+  "plone.my-volto-addon": {
+      "package": "@plone/my-volto-addon",
+      "url": "git@github.com:plone/my-volto-addon.git",
+      "path": "src"
   }
 }
 ```
+
+!!! warning
+    `mrs-developer` does not support scopes (`@` or `/` in the key for the definition of the
+    package). The suggestion is to remove the `@` and replace the `/` with `.`.
+
+!!! info
+    `package` property is optional, set it up only if your package has a scope. `src` is
+    required if the content of your addon is located in the `src` directory (recommended
+    by convention in all Volto add-on packages)
 
 If you want to know more about `mrs-developer` config options, please refer to
 [its npm page](https://www.npmjs.com/package/mrs-developer).
@@ -86,7 +101,10 @@ You can let `mrs-developer` create this file for you or create it manually.
     Please note that both `paths` and `baseUrl` are required to match your
     project layout.
 
-### Fix tests
+!!! tip
+    We recommend to use the `src` inside your package as a convention.
+
+### Fix test infrstructure
 
 We should let jest about our aliases and make them available to it to resolve
 them, so in `package.json`:

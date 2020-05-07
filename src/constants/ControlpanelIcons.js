@@ -18,4 +18,5 @@ export default {
   'moderate-comments': 'comments',
   security: 'lock',
   users: 'users',
+  addons: 'add-on',
 };

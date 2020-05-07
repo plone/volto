@@ -4,6 +4,7 @@
  */
 import {
   Add,
+  AddonsControlpanel,
   App,
   ChangePassword,
   ContactForm,
@@ -74,6 +75,10 @@ export const defaultRoutes = [
   {
     path: '/controlpanel/dexterity-types',
     component: ContentTypes,
+  },
+  {
+    path: '/controlpanel/addons',
+    component: AddonsControlpanel,
   },
   {
     path: '/controlpanel/moderate-comments',
