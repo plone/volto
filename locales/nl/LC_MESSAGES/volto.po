@@ -1252,6 +1252,10 @@ msgstr ""
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Selecteer welke overgang moet worden gebruikt voor het wijzigen van de status van de items."
 
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
 msgstr ""

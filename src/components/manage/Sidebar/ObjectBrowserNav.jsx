@@ -1,7 +1,6 @@
 import React from 'react';
-import { Button, Segment } from 'semantic-ui-react';
+import { Button, Segment, Popup, Icon as OldIcon } from 'semantic-ui-react';
 import cx from 'classnames';
-import { find } from 'lodash';
 import { Icon } from '@plone/volto/components';
 import { settings } from '~/config';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
@@ -49,7 +48,17 @@ const ObjectBrowserNav = ({
             onDoubleClick={() => handleDoubleClickOnItem(item)}
           >
             <span title={item['@id']}>
-              {getIcon(item['@type'])}
+              <Popup
+                key={item['@id']}
+                content={
+                  <>
+                    <OldIcon name="home" />{' '}
+                    {item['@id'].replace(settings.apiPath, '')}
+                  </>
+                }
+                trigger={<span>{getIcon(item['@type'])}</span>}
+              />
+
               {item.title}
             </span>
             {item.is_folderish && mode === 'image' && (

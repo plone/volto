@@ -13,6 +13,13 @@ exports[`renders a view image component 1`] = `
     <span
       title="/front-page"
     >
+      <span
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      />
       Welcome to Plone
     </span>
   </li>
@@ -25,6 +32,13 @@ exports[`renders a view image component 1`] = `
     <span
       title="/news"
     >
+      <span
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      />
       News
     </span>
   </li>

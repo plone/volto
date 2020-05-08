@@ -1240,6 +1240,10 @@ msgstr "選択の基準"
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Select the transition to be used for modifying the items state. (未翻訳)"
 
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
 msgstr "Selection (未翻訳)"

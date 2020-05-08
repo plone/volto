@@ -26,6 +26,10 @@ const messages = defineMessages({
     id: 'Search content',
     defaultMessage: 'Search content',
   },
+  SelectedItems: {
+    id: 'Selected items',
+    defaultMessage: 'Selected items',
+  },
 });
 
 function getParentURL(url) {
@@ -385,7 +389,12 @@ class ObjectBrowserBody extends Component {
             </button>
           </header>
           <Segment secondary>{this.state.currentFolder}</Segment>
-
+          {this.props.mode === 'multiple' && (
+            <Segment className="infos">
+              {this.props.intl.formatMessage(messages.SelectedItems)}:{' '}
+              {this.props.data?.length}
+            </Segment>
+          )}
           <ObjectBrowserNav
             currentSearchResults={
               this.props.searchSubrequests[

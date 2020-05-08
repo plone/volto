@@ -1233,6 +1233,10 @@ msgstr "Seleziona un criterio"
 msgid "Select the transition to be used for modifying the items state."
 msgstr "Seleziona la transizione da effettuare per cambiare lo stato del contenuto."
 
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Selected items"
+msgstr ""
+
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
 msgstr "Selezione"
