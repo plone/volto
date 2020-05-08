@@ -1,5 +1,15 @@
 # Change Log
 
+## 5.6.2 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
 ## 5.6.1 (2020-05-08)
 
 ### Bugfix
