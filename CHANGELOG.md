@@ -2,15 +2,9 @@
 
 ## 5.6.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
 - Enable `@querystringresults` action to use the new context aware query feature @sneridagh
-
-### Bugfix
-
-### Internal
 
 ## 5.6.1 (2020-05-08)
 
