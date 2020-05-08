@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- REALLY load the current object language on SSR, instead of relying on the cookie @sneridagh
+
 ### Internal
 
 - Pin some api devs (ZCatalog and p.namedfile improvements) @sneridagh
