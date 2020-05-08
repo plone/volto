@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Enable `@querystringresults` action to use the new context aware query feature @sneridagh
+
 ### Bugfix
 
 ### Internal

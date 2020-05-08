@@ -24,7 +24,7 @@ export function getQueryStringResults(path, data, subrequest, page) {
     subrequest,
     request: {
       op: 'post',
-      path: '/@querystring-search',
+      path: `${path}/@querystring-search`,
       data: {
         ...data,
         ...(!data.b_size && {
