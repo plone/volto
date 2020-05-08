@@ -250,4 +250,7 @@ class ObjectBrowserWidget extends Component {
   }
 }
 
+const ObjectBrowserWidgetMode = mode => <ObjectBrowserWidget mode={mode} />;
+
+export { ObjectBrowserWidgetMode };
 export default compose(injectIntl, withObjectBrowser)(ObjectBrowserWidget);
