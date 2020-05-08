@@ -7,6 +7,7 @@ import {
   GET_CONTROLPANEL,
   LIST_CONTROLPANELS,
   UPDATE_CONTROLPANEL,
+  SYSTEM_INFORMATION,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -54,6 +55,16 @@ export function updateControlpanel(url, data) {
       op: 'patch',
       path: url,
       data,
+    },
+  };
+}
+
+export function getSystemInformation() {
+  return {
+    type: SYSTEM_INFORMATION,
+    request: {
+      op: 'get',
+      path: '/@system',
     },
   };
 }

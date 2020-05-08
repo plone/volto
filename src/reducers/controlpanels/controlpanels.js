@@ -7,6 +7,7 @@ import {
   GET_CONTROLPANEL,
   LIST_CONTROLPANELS,
   UPDATE_CONTROLPANEL,
+  SYSTEM_INFORMATION,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -27,6 +28,7 @@ const initialState = {
   },
   controlpanel: null,
   controlpanels: [],
+  systeminformation: null,
 };
 
 /**
@@ -50,6 +52,7 @@ export default function controlpanels(state = initialState, action = {}) {
   switch (action.type) {
     case `${GET_CONTROLPANEL}_PENDING`:
     case `${LIST_CONTROLPANELS}_PENDING`:
+    case `${SYSTEM_INFORMATION}_PENDING`:
       return {
         ...state,
         controlpanel: null,
@@ -100,6 +103,27 @@ export default function controlpanels(state = initialState, action = {}) {
         },
         controlpanels: action.result,
       };
+    case `${SYSTEM_INFORMATION}_SUCCESS`: {
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+        systeminformation: action.result,
+      };
+    }
+    case `${SYSTEM_INFORMATION}_FAIL`: {
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: action.error,
+        },
+      };
+    }
     case `${GET_CONTROLPANEL}_FAIL`:
       return {
         ...state,
