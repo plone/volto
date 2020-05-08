@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix translation locator lookup in `CreateTranslation` component and remove the no longer needed store reducer @sneridagh
+
 ### Internal
 
 ## 5.7.0 (2020-05-08)
