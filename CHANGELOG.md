@@ -6,6 +6,8 @@
 
 ### Feature
 
+- implemented a new ObjectBrowserWidget @giuliaghisini
+
 ### Bugfix
 
 ### Internal
