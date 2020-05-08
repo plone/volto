@@ -2,10 +2,6 @@
 
 ## 5.6.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - REALLY load the current object language on SSR, instead of relying on the cookie @sneridagh
