@@ -32,7 +32,12 @@ const inline = {
 
 const addBreaklines = children =>
   children.map(child => {
-    return child[1].map(child => [child, <br />]);
+    return child[1].map(child => [
+      <React.Fragment key={child}>
+        {child}
+        <br />
+      </React.Fragment>,
+    ]);
   });
 
 const splitBySoftLines = children =>
