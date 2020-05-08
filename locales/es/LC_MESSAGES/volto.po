@@ -937,6 +937,10 @@ msgstr ""
 msgid "No items found in this container."
 msgstr ""
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "No items selected"
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
 msgstr ""

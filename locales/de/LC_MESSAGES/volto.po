@@ -942,6 +942,10 @@ msgstr "Im Bild Feld wurde kein Bild gesetzt"
 msgid "No items found in this container."
 msgstr "Keine Elemente gefunden"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "No items selected"
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
 msgstr "Keine Karte ausgewählt"

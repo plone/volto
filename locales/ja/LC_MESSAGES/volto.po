@@ -934,6 +934,10 @@ msgstr "コンテンツフィールドの画像がありません"
 msgid "No items found in this container."
 msgstr "アイテムが見つかりませんでした"
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "No items selected"
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
 msgstr "マップが選択されていません"

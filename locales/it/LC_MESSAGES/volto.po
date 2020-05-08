@@ -927,6 +927,10 @@ msgstr "Nessuna immagine impostata"
 msgid "No items found in this container."
 msgstr "Nessun elemento trovato in questo contenitore."
 
+#: components/manage/Widgets/ObjectBrowserWidget
+msgid "No items selected"
+msgstr ""
+
 #: components/manage/Blocks/Maps/MapsSidebar
 msgid "No map selected"
 msgstr "Nessuna mappa selezionata"
