@@ -10,8 +10,10 @@ exports[`renders a view image component 1`] = `
     onDoubleClick={[Function]}
     role="presentation"
   >
-    <span>
-      front-page
+    <span
+      title="/front-page"
+    >
+      Welcome to Plone
     </span>
   </li>
   <li
@@ -20,8 +22,10 @@ exports[`renders a view image component 1`] = `
     onDoubleClick={[Function]}
     role="presentation"
   >
-    <span>
-      news
+    <span
+      title="/news"
+    >
+      News
     </span>
   </li>
 </ul>

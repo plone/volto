@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { map, remove, find } from 'lodash';
+import { map, remove } from 'lodash';
 import { settings } from '~/config';
 import {
   Form,
@@ -65,7 +65,7 @@ class ObjectBrowserWidget extends Component {
     description: null,
     required: false,
     error: [],
-    value: null,
+    value: [],
     mode: 'multiple',
   };
 

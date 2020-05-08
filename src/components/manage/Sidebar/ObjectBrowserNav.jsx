@@ -17,14 +17,16 @@ const ObjectBrowserNav = ({
 }) => {
   const isSelected = item => {
     let ret = false;
-    selected.forEach(_item => {
-      if (
-        _item['@id'].replace(settings.apiPath, '') ===
-        item['@id'].replace(settings.apiPath, '')
-      ) {
-        ret = true;
-      }
-    });
+    if (selected) {
+      selected.forEach(_item => {
+        if (
+          _item['@id'].replace(settings.apiPath, '') ===
+          item['@id'].replace(settings.apiPath, '')
+        ) {
+          ret = true;
+        }
+      });
+    }
     return ret;
   };
 
