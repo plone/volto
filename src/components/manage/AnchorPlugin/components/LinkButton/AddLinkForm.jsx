@@ -200,11 +200,14 @@ class AddLinkForm extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { theme } = this.props;
     const { value, isInvalid } = this.state;
     const className = isInvalid
-      ? unionClassNames('ui input editor-link', theme.input, theme.inputInvalid)
-      : unionClassNames('ui input editor-link', theme.input);
+      ? unionClassNames(
+          'ui input editor-link',
+          'input-anchorlink-theme',
+          'input-anchorlink-theme-Invalid',
+        )
+      : unionClassNames('ui input editor-link', 'input-anchorlink-theme');
 
     return (
       <div className="link-form-container" ref={this.linkFormContainer}>

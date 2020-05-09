@@ -4,11 +4,15 @@
 
 ### Breaking
 
+- Removed support for CSS modules, since Razzle 3.1.0 do not support them @sneridagh
+
 ### Feature
 
 ### Bugfix
 
 ### Internal
+
+- Update to Razzle 3.1.0 @sneridagh
 
 ## 5.7.1 (2020-05-08)
 

@@ -758,3 +758,34 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
     margin: 0 !important;
   }
 }
+
+.link-form-container {
+  // ToDo: Improve CSS in anchor link component (previously from CSS module to normal theme)
+  .input-anchorlink-theme {
+    width: 240px;
+    height: 34px;
+    padding: 0 12px;
+    border: none;
+    background-color: transparent;
+    color: #444;
+    font-family: inherit;
+    font-size: 15px;
+  }
+
+  .input-anchorlink-theme:focus {
+    outline: none;
+  }
+
+  .input-anchorlink-theme::placeholder {
+    color: #888;
+  }
+
+  .input-anchorlink-theme-Invalid {
+    color: #e65757;
+  }
+
+  .link-anchorlink-theme {
+    color: #007eb1;
+    text-decoration: underline;
+  }
+}
