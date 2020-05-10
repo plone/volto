@@ -13,6 +13,8 @@
 ### Internal
 
 - Update to Razzle 3.1.0 @sneridagh
+- Update to React 16.13.1 @sneridagh
+- Removal of unused (and deprecated) @babel/preset-stage-0 @sneridagh
 
 ## 5.7.1 (2020-05-08)
 
