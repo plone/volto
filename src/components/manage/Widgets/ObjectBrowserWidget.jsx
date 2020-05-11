@@ -113,19 +113,26 @@ class ObjectBrowserWidget extends Component {
     let value = this.props.mode === 'multiple' ? [...this.props.value] : [];
 
     let exists = false;
-    value.forEach(_item => {
+    let index = -1;
+    value.forEach((_item, _index) => {
       if (
         _item['@id'].replace(settings.apiPath, '') ===
         item['@id'].replace(settings.apiPath, '')
       ) {
         exists = true;
+        index = _index;
       }
     });
     //find(value, {
     //   '@id': item['@id'].replace(settings.apiPath, ''),
     // });
     if (!exists) {
+      //add item
       value.push(item);
+      this.props.onChange(this.props.id, value);
+    } else {
+      //remove item
+      value.splice(index, 1);
       this.props.onChange(this.props.id, value);
     }
   };
