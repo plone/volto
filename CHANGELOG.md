@@ -2,13 +2,9 @@
 
 ## 5.7.2 (unreleased)
 
-### Breaking
-
 ### Feature
 
-### Bugfix
-
-### Internal
+- Adding Image Gallery template in Listing view @iFlameing
 
 ## 5.7.1 (2020-05-08)
 
@@ -37,7 +33,6 @@
 ### Feature
 
 - Load the current object language on SSR, instead of relying on the cookie @sneridagh
-- Adding Image Gallery template in Listing view @iFlameing
 
 ### Bugfix
 
