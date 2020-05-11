@@ -1,3 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders an Listing Template Widget for Listing block Sidebar component 1`] = `null`;
+exports[`renders an Listing Template Widget for Listing block Sidebar component 1`] = `
+<div
+  className="inline required field"
+  id="field-template"
+>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="stretched row"
+    >
+      <div
+        className="four wide column"
+      >
+        <div
+          className="wrapper"
+        >
+          <label
+            htmlFor="select-listingblock-template"
+          >
+            Template
+          </label>
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      />
+    </div>
+  </div>
+</div>
+`;

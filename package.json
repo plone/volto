@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "5.5.0",
+  "version": "5.8.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -315,6 +315,7 @@
     "react-dom": "16.12.0",
     "react-dropzone": "5.1.0",
     "react-fast-compare": "2.0.4",
+    "react-image-gallery": "1.0.7",
     "react-intl": "3.8.0",
     "react-intl-redux": "2.2.0",
     "react-medium-image-zoom": "3.0.15",

@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.5.1 (unreleased)
+## 5.8.1 (unreleased)
 
 ### Breaking
 
@@ -12,6 +12,48 @@
 - Fix blockquote style render error: unique key @iFlameing #1097
 
 ### Internal
+
+## 5.8.0 (2020-05-11)
+
+### Feature
+
+- Adding Image Gallery template in Listing view @iFlameing
+
+## 5.7.1 (2020-05-08)
+
+### Bugfix
+
+- Fix translation locator lookup in `CreateTranslation` component and remove the no longer needed store reducer @sneridagh
+
+## 5.7.0 (2020-05-08)
+
+### Feature
+
+- Enable `@querystringresults` action to use the new context aware query feature @sneridagh
+
+## 5.6.1 (2020-05-08)
+
+### Bugfix
+
+- REALLY load the current object language on SSR, instead of relying on the cookie @sneridagh
+
+### Internal
+
+- Pin some api devs (ZCatalog and p.namedfile improvements) @sneridagh
+
+## 5.6.0 (2020-05-06)
+
+### Feature
+
+- Load the current object language on SSR, instead of relying on the cookie @sneridagh
+
+### Bugfix
+
+- Correct the `defaultLanguage` intend in `react-intl-redux` configuration @sneridagh
+
+### Internal
+
+- Add default `src` alias for addons detecting if there is a released or a mrs-developer one @sneridagh
 
 ## 5.5.0 (2020-05-06)
 
