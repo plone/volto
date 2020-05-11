@@ -37,6 +37,7 @@
 ### Feature
 
 - Load the current object language on SSR, instead of relying on the cookie @sneridagh
+- Adding Image Gallery template in Listing view @iFlameing
 
 ### Bugfix
 
