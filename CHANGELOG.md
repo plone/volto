@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Add system information in controlpanel @iFlameing #1457
+
 ### Bugfix
 
 ### Internal
@@ -43,7 +45,6 @@
 ### Feature
 
 - Load the current object language on SSR, instead of relying on the cookie @sneridagh
-- Add system information in controlpanel @iFlameing #1457
 
 ### Bugfix
 
