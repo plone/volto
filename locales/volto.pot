@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-05-06T14:55:43.918Z\n"
+"POT-Creation-Date: 2020-05-12T07:21:28.623Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -2016,6 +2016,15 @@ msgstr ""
 #: components/manage/Display/Display
 # defaultMessage: View
 msgid "Viewmode"
+msgstr ""
+
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: You are running in "debug mode". This mode is intended for sites that
+        are under development. This allows many configuration changes to be
+        immediately visible, but will make your site run more slowly. To turn
+        off debug mode, stop the server, set "debug-mode=off" in your
+        buildout.cfg, re-run bin/buildout and then restart the server process.
+msgid "Warning Regarding debug mode"
 msgstr ""
 
 #: components/theme/ConnectionRefused/ConnectionRefused

@@ -40,6 +40,7 @@ export {
   deleteControlpanel,
   listControlpanels,
   updateControlpanel,
+  getSystemInformation,
 } from '@plone/volto/actions/controlpanels/controlpanels';
 export { getDiff } from '@plone/volto/actions/diff/diff';
 export { emailNotification } from '@plone/volto/actions/emailNotification/emailNotification';
