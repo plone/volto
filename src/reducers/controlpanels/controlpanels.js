@@ -5,6 +5,8 @@
 import { settings } from '~/config';
 import {
   GET_CONTROLPANEL,
+  POST_CONTROLPANEL,
+  DELETE_CONTROLPANEL,
   LIST_CONTROLPANELS,
   UPDATE_CONTROLPANEL,
   SYSTEM_INFORMATION,
@@ -22,6 +24,16 @@ const initialState = {
     error: null,
   },
   update: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  post: {
+    loaded: false,
+    loading: false,
+    error: null,
+  },
+  delete: {
     loaded: false,
     loading: false,
     error: null,
@@ -62,7 +74,9 @@ export default function controlpanels(state = initialState, action = {}) {
           error: null,
         },
       };
+    case `${POST_CONTROLPANEL}_PENDING`:
     case `${UPDATE_CONTROLPANEL}_PENDING`:
+    case `${DELETE_CONTROLPANEL}_PENDING`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -84,7 +98,9 @@ export default function controlpanels(state = initialState, action = {}) {
           error: null,
         },
       };
+    case `${POST_CONTROLPANEL}_SUCCESS`:
     case `${UPDATE_CONTROLPANEL}_SUCCESS`:
+    case `${DELETE_CONTROLPANEL}_SUCCESS`:
       return {
         ...state,
         [getRequestKey(action.type)]: {
@@ -144,7 +160,9 @@ export default function controlpanels(state = initialState, action = {}) {
           error: action.error,
         },
       };
+    case `${POST_CONTROLPANEL}_FAIL`:
     case `${UPDATE_CONTROLPANEL}_FAIL`:
+    case `${DELETE_CONTROLPANEL}_FAIL`:
       return {
         ...state,
         [getRequestKey(action.type)]: {

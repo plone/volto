@@ -7,8 +7,12 @@
 ### Feature
 
 - Add system information in controlpanel @iFlameing #1457
+- Added Dexterity Types Controlpanel @avoinea #1285
 
 ### Bugfix
+
+- Fix new lines inside blockquotes are not rendered @iFlameing #1249
+- Fix blockquote style render error: unique key @iFlameing #1097
 
 ### Internal
 

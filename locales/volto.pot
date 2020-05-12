@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-05-08T16:36:15.917Z\n"
+"POT-Creation-Date: 2020-05-12T07:21:28.623Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -35,6 +35,7 @@ msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Actions
 msgid "Actions"
@@ -45,6 +46,7 @@ msgstr ""
 msgid "Activate and deactivate"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
@@ -100,6 +102,11 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Add group
 msgid "Add group"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Add new content type
+msgid "Add new content type"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -168,6 +175,8 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/ModerateComments
@@ -227,6 +236,7 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -277,6 +287,7 @@ msgstr ""
 msgid "Changes saved"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 # defaultMessage: Changes saved.
 msgid "Changes saved."
@@ -370,6 +381,16 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Content type created
+msgid "Content type created"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Content type deleted
+msgid "Content type deleted"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Contents
@@ -456,6 +477,7 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
@@ -472,6 +494,11 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Delete Group
 msgid "Delete Group"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Delete Type
+msgid "Delete Type"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -495,6 +522,7 @@ msgid "Descending"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -538,6 +566,11 @@ msgstr ""
 msgid "Do you really want to delete the group {groupname}?"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Do you really want to delete type {typename}?
+msgid "Do you really want to delete the type {typename}?"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Do you really want to delete the user {username}?
 msgid "Do you really want to delete the user {username}?"
@@ -570,6 +603,7 @@ msgid "E-mail addresses do not match."
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/CheckboxWidget
@@ -859,6 +893,7 @@ msgstr ""
 msgid "Image"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 # defaultMessage: Info
 msgid "Info"
@@ -928,6 +963,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Item(s) pasted.
 msgid "Item(s) pasted."
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Items
+msgid "Items"
 msgstr ""
 
 #: components/manage/Form/Form
@@ -1106,6 +1146,7 @@ msgid "News Item"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
 msgstr ""
@@ -1434,6 +1475,7 @@ msgid "Roles"
 msgstr ""
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -1664,6 +1706,7 @@ msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -1776,6 +1819,7 @@ msgstr ""
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1799,6 +1843,7 @@ msgstr ""
 msgid "Translate to {lang}"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
@@ -2033,6 +2078,7 @@ msgid "Workflow updated."
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
 msgstr ""
