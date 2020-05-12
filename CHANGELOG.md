@@ -1,10 +1,10 @@
 # Change Log
 
-## 5.7.2 (unreleased)
+## 5.9.1 (unreleased)
 
 ### Breaking
 
-- Removed support for CSS modules, since Razzle 3.1.0 do not support them @sneridagh
+- Removed support for CSS modules, since Razzle 3.1.1 do not support them @sneridagh
 
 ### Feature
 
@@ -12,11 +12,32 @@
 
 ### Internal
 
-- Update to Razzle 3.1.0 @sneridagh
+- Update to Razzle 3.1.1 @sneridagh
 - Update to React 16.13.1 @sneridagh
 - Removal of unused (and deprecated) `@babel/preset-stage-0` @sneridagh
 - Update `react-redux` and friends @sneridagh
 - Update `connected-react-router` @sneridagh
+
+## 5.9.0 (2020-05-12)
+
+### Feature
+
+- Implemented a new ObjectBrowserWidget @giuliaghisini
+- Add system information in controlpanel @iFlameing #1457
+- Added Dexterity Types Controlpanel @avoinea #1285
+- Remember sort order of folder contents view. @ksuess
+
+### Bugfix
+
+- Fix new lines inside blockquotes are not rendered @iFlameing #1249
+- Fix blockquote style render error: unique key @iFlameing #1097
+- Added Dexterity control panel Cypress tests @iFlameing
+
+## 5.8.0 (2020-05-11)
+
+### Feature
+
+- Adding Image Gallery template in Listing view @iFlameing
 
 ## 5.7.1 (2020-05-08)
 

@@ -4,6 +4,7 @@
  */
 
 export default {
+  'dexterity-types': 'cube',
   'date-and-time': 'calendar',
   language: 'translate',
   mail: 'mail',
