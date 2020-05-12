@@ -255,11 +255,7 @@ exports[`Controlpanels renders a controlpanels component 1`] = `
       </div>
       <div
         className="ui attached segment"
-      >
-        <div
-          className="VersionOverview"
-        />
-      </div>
+      />
     </div>
   </div>
   <div
