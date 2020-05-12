@@ -12,6 +12,7 @@
 
 - Fix new lines inside blockquotes are not rendered @iFlameing #1249
 - Fix blockquote style render error: unique key @iFlameing #1097
+- Added Dexterity control panel Cypress tests @iFlameing
 
 ### Internal
 
