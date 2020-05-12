@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Added Dexterity Types Controlpanel @avoinea #1285
+
 ### Bugfix
 
 ### Internal

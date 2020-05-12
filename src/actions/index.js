@@ -36,6 +36,8 @@ export {
 } from '@plone/volto/actions/content/content';
 export {
   getControlpanel,
+  postControlpanel,
+  deleteControlpanel,
   listControlpanels,
   updateControlpanel,
 } from '@plone/volto/actions/controlpanels/controlpanels';

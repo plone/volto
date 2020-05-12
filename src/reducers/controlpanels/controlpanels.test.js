@@ -9,12 +9,22 @@ import {
 describe('Controlpanels reducer', () => {
   it('should return the initial state', () => {
     expect(controlpanels()).toEqual({
+      delete: {
+        error: null,
+        loaded: false,
+        loading: false,
+      },
       get: {
         loaded: false,
         loading: false,
         error: null,
       },
       list: {
+        loaded: false,
+        loading: false,
+        error: null,
+      },
+      post: {
         loaded: false,
         loading: false,
         error: null,
