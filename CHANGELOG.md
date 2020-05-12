@@ -2,11 +2,9 @@
 
 ## 5.8.1 (unreleased)
 
-### Breaking
-
 ### Feature
 
-- implemented a new ObjectBrowserWidget @giuliaghisini
+- Implemented a new ObjectBrowserWidget @giuliaghisini
 - Add system information in controlpanel @iFlameing #1457
 - Added Dexterity Types Controlpanel @avoinea #1285
 - Remember sort order of folder contents view. @ksuess
@@ -16,8 +14,6 @@
 - Fix new lines inside blockquotes are not rendered @iFlameing #1249
 - Fix blockquote style render error: unique key @iFlameing #1097
 - Added Dexterity control panel Cypress tests @iFlameing
-
-### Internal
 
 ## 5.8.0 (2020-05-11)
 
