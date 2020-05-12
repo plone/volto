@@ -29,6 +29,7 @@ msgstr "Azione"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Actions"
 msgstr "Azioni"
@@ -37,6 +38,7 @@ msgstr "Azioni"
 msgid "Activate and deactivate"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
@@ -82,6 +84,10 @@ msgstr "Aggiungi un nuovo insieme di campi"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add group"
 msgstr "Aggiungi un gruppo"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Add new content type"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add new group"
@@ -137,6 +143,8 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/ModerateComments
@@ -187,6 +195,7 @@ msgstr "Di norma, i permessi di questo elemento vengono ereditati dal contenitor
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -229,6 +238,7 @@ msgstr "Cambia stato di workflow ricorsivamente"
 msgid "Changes saved"
 msgstr "Modifiche salvate"
 
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Changes saved."
 msgstr "Modifiche salvate."
@@ -304,6 +314,14 @@ msgstr "Elementi contenuti"
 msgid "Content"
 msgstr "Contenuto"
 
+#: components/manage/Controlpanels/ContentTypes
+msgid "Content type created"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Content type deleted"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 msgid "Contents"
@@ -378,6 +396,7 @@ msgstr "Default"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
@@ -393,6 +412,10 @@ msgstr "Elimina"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete Group"
 msgstr "Elimina gruppo"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Delete Type"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete User"
@@ -411,6 +434,7 @@ msgid "Descending"
 msgstr "Decrescente"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -447,6 +471,10 @@ msgstr "Vuoi veramente eliminare i seguenti elementi?"
 msgid "Do you really want to delete the group {groupname}?"
 msgstr "Vuoi veramente eliminare il gruppo {groupname}?"
 
+#: components/manage/Controlpanels/ContentTypes
+msgid "Do you really want to delete the type {typename}?"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Do you really want to delete the user {username}?"
 msgstr "Vuoi veramente eliminare l'utente {username}?"
@@ -473,6 +501,7 @@ msgid "E-mail addresses do not match."
 msgstr "Gli indirizzi e-mail non corrispondono"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/CheckboxWidget
@@ -708,6 +737,7 @@ msgstr "Se non ti sei ancora iscritto, compila il {registrationform} per diventa
 msgid "Image"
 msgstr "Immagine"
 
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
 msgstr "Info"
@@ -764,6 +794,10 @@ msgstr "Elemento/i tagliato/i."
 #: components/manage/Contents/Contents
 msgid "Item(s) pasted."
 msgstr "Elemento/i incollato/i."
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Items"
+msgstr ""
 
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
@@ -908,6 +942,7 @@ msgid "News Item"
 msgstr "Notizia"
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 msgid "No"
 msgstr "No"
 
@@ -1180,6 +1215,7 @@ msgid "Roles"
 msgstr "Ruoli"
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -1372,6 +1408,7 @@ msgstr "Oggetto"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -1464,6 +1501,7 @@ msgstr "Questa pagina non esiste…"
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1484,6 +1522,7 @@ msgstr "Totale dei commenti"
 msgid "Translate to {lang}"
 msgstr "Traduci in {lang}"
 
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 msgid "Type"
@@ -1625,6 +1664,10 @@ msgstr "Mostra questa revisione"
 msgid "Viewmode"
 msgstr "Vista"
 
+#: components/manage/Controlpanels/VersionOverview
+msgid "Warning Regarding debug mode"
+msgstr ""
+
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
 msgstr ""
@@ -1666,6 +1709,7 @@ msgid "Workflow updated."
 msgstr "Workflow aggiornato."
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 msgid "Yes"
 msgstr "Si"
 

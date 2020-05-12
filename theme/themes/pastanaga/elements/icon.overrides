@@ -1382,7 +1382,7 @@ i.icon.ellipsis.vertical:before {
 }
 
 i.icon.cube:before {
-  content: '\f1b2';
+  content: @icon-content;
 }
 
 i.icon.cubes:before {
