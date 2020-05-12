@@ -17,6 +17,7 @@
 - Removal of unused (and deprecated) `@babel/preset-stage-0` @sneridagh
 - Update `react-redux` and friends @sneridagh
 - Update `connected-react-router` @sneridagh
+- Update low hanging fruits deps @sneridagh
 
 ## 5.9.0 (2020-05-12)
 
