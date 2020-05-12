@@ -6,6 +6,7 @@
 
 ### Feature
 
+- implemented a new ObjectBrowserWidget @giuliaghisini
 - Add system information in controlpanel @iFlameing #1457
 - Added Dexterity Types Controlpanel @avoinea #1285
 - Remember sort order of folder contents view. @ksuess
