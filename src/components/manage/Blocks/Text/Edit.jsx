@@ -18,12 +18,22 @@ import { filterEditorState } from 'draftjs-filters';
 import { settings } from '~/config';
 import { Icon, BlockChooser } from '@plone/volto/components';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
+import showSVG from '@plone/volto/icons/show.svg';
+import codeSVG from '@plone/volto/icons/code.svg';
 import 'draft-js-mention-plugin/lib/plugin.css';
 
 const messages = defineMessages({
   text: {
     id: 'Type text…',
     defaultMessage: 'Type text…',
+  },
+  source: {
+    id: 'Source',
+    defaultMessage: 'Source',
+  },
+  preview: {
+    id: 'Preview',
+    defaultMessage: 'Preview',
   },
 });
 
@@ -80,18 +90,22 @@ class Edit extends Component {
     super(props);
 
     if (!__SERVER__) {
-      let editorState;
+      let editorState,
+        hasMentions = false;
       if (props.data && props.data.text) {
         editorState = EditorState.createWithContent(
           convertFromRaw(props.data.text),
         );
+        if (!!props.data.text.entityMap) {
+          hasMentions = true;
+        }
       } else {
         editorState = EditorState.createEmpty();
       }
 
       const mentionPlugin = createMentionPlugin({
         mentionPrefix: '@',
-        entityMutability: 'MUTABLE',
+        entityMutability: 'IMMUTABLE',
       });
 
       const suggestions = Object.keys(this.props.properties).map(name => {
@@ -110,12 +124,16 @@ class Edit extends Component {
         inlineToolbarPlugin,
         suggestions,
         addNewBlockOpened: false,
+        isPreview: false,
+        hasMentions: hasMentions,
       };
     }
 
     this.onChange = this.onChange.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
     this.onAddMention = this.onAddMention.bind(this);
+    this.onPreview = this.onPreview.bind(this);
+    this.onCodeEditor = this.onCodeEditor.bind(this);
   }
 
   /**
@@ -211,7 +229,31 @@ class Edit extends Component {
   /**
    *
    */
-  onAddMention = ({ value }) => {};
+  onAddMention = ({ value }) => {
+    this.setState({
+      hasMentions: true,
+    });
+  };
+
+  /**
+   * Preview mode handler
+   * @method onPreview
+   * @returns {undefined}
+   */
+  onPreview() {
+    this.setState({
+      isPreview: !this.state.isPreview,
+    });
+  }
+
+  /**
+   * Code Editor mode handler
+   * @method onPreview
+   * @returns {undefined}
+   */
+  onCodeEditor() {
+    this.setState({ isPreview: !this.state.isPreview });
+  }
 
   toggleAddNewBlock = () =>
     this.setState(state => ({ addNewBlockOpened: !state.addNewBlockOpened }));
@@ -242,6 +284,32 @@ class Edit extends Component {
 
     return (
       <>
+        {this.props.selected && !!this.state.hasMentions && (
+          <div className="toolbar">
+            <Button.Group>
+              <Button
+                icon
+                basic
+                aria-label={this.props.intl.formatMessage(messages.source)}
+                active={!this.state.isPreview}
+                onClick={this.onCodeEditor}
+              >
+                <Icon name={codeSVG} size="24px" />
+              </Button>
+            </Button.Group>
+            <Button.Group>
+              <Button
+                icon
+                basic
+                aria-label={this.props.intl.formatMessage(messages.preview)}
+                active={this.state.isPreview}
+                onClick={this.onPreview}
+              >
+                <Icon name={showSVG} size="24px" />
+              </Button>
+            </Button.Group>
+          </div>
+        )}
         <Editor
           onChange={this.onChange}
           editorState={this.state.editorState}
