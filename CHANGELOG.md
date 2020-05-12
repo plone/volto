@@ -18,6 +18,7 @@
 - Update `react-redux` and friends @sneridagh
 - Update `connected-react-router` @sneridagh
 - Update low hanging fruits deps @sneridagh
+- Update style/less loaders and friends @sneridagh
 
 ## 5.9.0 (2020-05-12)
 
