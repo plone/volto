@@ -26,6 +26,14 @@
   }
 }
 
+#main {
+  .ui.basic.buttons .button,
+  .ui.basic.button {
+    -webkit-box-shadow: 0px 0px 0px @basicBorderSize transparent inset !important;
+    box-shadow: 0px 0px 0px @basicBorderSize transparent inset !important;
+  }
+}
+
 .ui.basic.button {
   padding: 0;
   border: 0;

@@ -37,15 +37,25 @@ msgstr "Acção"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Actions"
 msgstr "Acções"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Activate and deactivate"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 msgid "Add"
 msgstr "Adicionar"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Add Addons"
+msgstr ""
 
 #: components/manage/Toolbar/Types
 msgid "Add Content"
@@ -83,6 +93,10 @@ msgstr "Adicionar conjunto de campos"
 msgid "Add group"
 msgstr "Adicionar grupo"
 
+#: components/manage/Controlpanels/ContentTypes
+msgid "Add new content type"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Add new group"
 msgstr "Adicionar novo grupo"
@@ -98,6 +112,10 @@ msgstr "Adicionar a Grupos"
 #: components/manage/Add/Add
 msgid "Add {type}"
 msgstr "Adicionar {type}"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Add-ons Settings"
+msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -127,7 +145,14 @@ msgstr "Tem a certeza que quer eliminar este conjunto de campos incluindo todos 
 msgid "Ascending"
 msgstr "Ascendente"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Available"
+msgstr ""
+
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/ModerateComments
@@ -178,6 +203,7 @@ msgstr "Por predefinição, as permissões do contentor deste item são herdadas
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -220,6 +246,7 @@ msgstr ""
 msgid "Changes saved"
 msgstr "Alterações guardadas"
 
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Changes saved."
 msgstr "Alterações guardadas."
@@ -293,6 +320,14 @@ msgstr ""
 
 #: components/manage/Blocks/Listing/ListingSidebar
 msgid "Content"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Content type created"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Content type deleted"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -369,6 +404,7 @@ msgstr "Predefinido"
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
@@ -384,6 +420,10 @@ msgstr "Eliminar"
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete Group"
 msgstr "Eliminar Grupo"
+
+#: components/manage/Controlpanels/ContentTypes
+msgid "Delete Type"
+msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Delete User"
@@ -402,6 +442,7 @@ msgid "Descending"
 msgstr "Descendente"
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -438,6 +479,10 @@ msgstr "Quer mesmo eliminar os itens seguintes?"
 msgid "Do you really want to delete the group {groupname}?"
 msgstr "Quer mesmo eliminar o grupo {groupname}?"
 
+#: components/manage/Controlpanels/ContentTypes
+msgid "Do you really want to delete the type {typename}?"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 msgid "Do you really want to delete the user {username}?"
 msgstr "Quer mesmo eliminar o utilizador {username}?"
@@ -464,6 +509,7 @@ msgid "E-mail addresses do not match."
 msgstr "Os endereços de e-mail não coincidem."
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/CheckboxWidget
@@ -565,6 +611,10 @@ msgstr "Data de vencimento"
 
 #: components/manage/Contents/Contents
 msgid "Expiration date"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+msgid "Expired"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
@@ -695,6 +745,7 @@ msgstr "Se não tem uma conta aqui, dirija-se a {registrationform}."
 msgid "Image"
 msgstr "Imagem"
 
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 msgid "Info"
 msgstr "Informação"
@@ -723,6 +774,18 @@ msgstr "Inserir linha após"
 msgid "Insert row before"
 msgstr "Inserir linha antes"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Install"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Installed"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Installed version"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 msgid "Item batch size"
 msgstr ""
@@ -740,6 +803,10 @@ msgstr "Item(ns) cortado(s)."
 msgid "Item(s) pasted."
 msgstr "Item(ns) colado(s)."
 
+#: components/manage/Controlpanels/ContentTypes
+msgid "Items"
+msgstr ""
+
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 msgid "Items must be unique."
@@ -756,6 +823,10 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 msgid "Last modified"
 msgstr "Última modificação"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Latest version"
+msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Lead Image"
@@ -879,6 +950,7 @@ msgid "News Item"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 msgid "No"
 msgstr ""
 
@@ -909,6 +981,10 @@ msgstr "Não foram encontrados quaisquer resultados."
 
 #: components/manage/Blocks/Listing/ListingData
 msgid "No selection"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "No uninstall profile"
 msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
@@ -1143,6 +1219,7 @@ msgid "Roles"
 msgstr "Papéis"
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -1331,6 +1408,7 @@ msgstr "Assunto"
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -1423,6 +1501,7 @@ msgstr "Esta página não parece existir..."
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1443,6 +1522,7 @@ msgstr ""
 msgid "Translate to {lang}"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 msgid "Type"
@@ -1472,10 +1552,30 @@ msgstr ""
 msgid "Unified"
 msgstr "Unificado"
 
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Uninstall"
+msgstr ""
+
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
 msgid "Unknown Block"
 msgstr "Bloco Desconhecido"
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update installed addons"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Update installed addons:"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+msgid "Updates available"
+msgstr ""
 
 #: components/manage/Contents/Contents
 msgid "Upload"
@@ -1564,6 +1664,10 @@ msgstr "Ver esta revisão"
 msgid "Viewmode"
 msgstr "Modo de visualização"
 
+#: components/manage/Controlpanels/VersionOverview
+msgid "Warning Regarding debug mode"
+msgstr ""
+
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
 msgstr ""
@@ -1605,6 +1709,7 @@ msgid "Workflow updated."
 msgstr "Fluxo de trabalho actualizado."
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 msgid "Yes"
 msgstr ""
 

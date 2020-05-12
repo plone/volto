@@ -15,7 +15,7 @@ import { Container, Grid, Header, Icon, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import Icons from '@plone/volto/constants/ControlpanelIcons';
-import { listControlpanels } from '@plone/volto/actions';
+import { listControlpanels, getSystemInformation } from '@plone/volto/actions';
 import {
   Icon as IconNext,
   Toolbar,
@@ -77,6 +77,7 @@ class Controlpanels extends Component {
    */
   UNSAFE_componentWillMount() {
     this.props.listControlpanels();
+    this.props.getSystemInformation();
   }
 
   /**
@@ -87,6 +88,11 @@ class Controlpanels extends Component {
   render() {
     const controlpanels = map(
       concat(this.props.controlpanels, [
+        {
+          '@id': '/addons',
+          group: 'General',
+          title: 'Add-Ons',
+        },
         {
           '@id': '/moderate-comments',
           group: 'Content',
@@ -144,7 +150,9 @@ class Controlpanels extends Component {
               />
             </Segment>
             <Segment attached>
-              <VersionOverview />
+              {this.props.systemInformation ? (
+                <VersionOverview {...this.props.systemInformation} />
+              ) : null}
             </Segment>
           </Segment.Group>
         </Container>
@@ -175,7 +183,8 @@ export default compose(
     (state, props) => ({
       controlpanels: state.controlpanels.controlpanels,
       pathname: props.location.pathname,
+      systemInformation: state.controlpanels.systeminformation,
     }),
-    { listControlpanels },
+    { listControlpanels, getSystemInformation },
   ),
 )(Controlpanels);

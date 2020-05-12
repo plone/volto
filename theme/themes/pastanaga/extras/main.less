@@ -188,6 +188,70 @@ button {
   margin-top: 20px;
 }
 
+// Add-ons control panel
+#page-addons {
+  .secondary {
+    text-transform: uppercase;
+
+    .circular.label {
+      margin-left: 0.5em;
+    }
+  }
+
+  .title {
+    color: @black;
+    font-size: @14px;
+    text-transform: uppercase;
+
+    &.updateAvailable {
+      color: @teal;
+    }
+
+    .accordionToggle {
+      float: right;
+    }
+
+    .updateText {
+      margin-left: 5px;
+      font-size: @12px;
+      text-transform: none;
+
+      ::before {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+        background-color: @teal;
+        border-radius: 50%;
+        content: '';
+      }
+    }
+
+    .icon.accordionToggle {
+      color: @black;
+    }
+  }
+
+  .description {
+    margin-bottom: 1em;
+    color: @grey;
+  }
+
+  .installAction {
+    float: right;
+  }
+
+  .uninstallAction {
+    float: right;
+    // color: @negativeTextColor;
+  }
+
+  .version {
+    color: @tealTextColor;
+    font-size: @12px;
+  }
+}
+
 // Toasts
 .Toastify__toast-container {
   width: 480px;

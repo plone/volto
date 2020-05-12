@@ -35,6 +35,7 @@ api/.Python
 api/pyvenv.cfg
 api/include
 api/lib
+api/lib64
 api/pip-selfcheck.json
 /bin
 /lib

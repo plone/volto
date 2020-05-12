@@ -7,6 +7,7 @@ import { reducer as reduxAsyncConnect } from 'redux-connect';
 import { intlReducer } from 'react-intl-redux';
 
 import actions from '@plone/volto/reducers/actions/actions';
+import addons from '@plone/volto/reducers/addons/addons';
 import apierror from '@plone/volto/reducers/apierror/apierror';
 import breadcrumbs from '@plone/volto/reducers/breadcrumbs/breadcrumbs';
 import browserdetect from '@plone/volto/reducers/browserdetect/browserdetect';
@@ -28,7 +29,6 @@ import schema from '@plone/volto/reducers/schema/schema';
 import search from '@plone/volto/reducers/search/search';
 import sharing from '@plone/volto/reducers/sharing/sharing';
 import sidebar from '@plone/volto/reducers/sidebar/sidebar';
-import translations from '@plone/volto/reducers/translations/translations';
 import types from '@plone/volto/reducers/types/types';
 import users from '@plone/volto/reducers/users/users';
 import userSession from '@plone/volto/reducers/userSession/userSession';
@@ -47,6 +47,7 @@ const reducers = {
   intl: intlReducer,
   reduxAsyncConnect,
   actions,
+  addons,
   apierror,
   breadcrumbs,
   browserdetect,
@@ -68,7 +69,6 @@ const reducers = {
   search,
   sharing,
   sidebar,
-  translations,
   types,
   users,
   userSession,

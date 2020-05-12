@@ -1296,42 +1296,48 @@ class Contents extends Component {
                             )}
                           />
                           <Dropdown.Menu scrolling>
-                            {map(this.state.index.order, index => (
-                              <Dropdown.Item
-                                key={index}
-                                value={index}
-                                onClick={this.onSelectIndex}
-                                className="iconAlign"
-                              >
-                                {this.state.index.values[index].selected ? (
-                                  <Icon
-                                    name={checkboxCheckedSVG}
-                                    size="24px"
-                                    color="#007eb1"
-                                    className={
-                                      this.state.index.values[index].label
-                                    }
-                                  />
-                                ) : (
-                                  <Icon
-                                    name={checkboxUncheckedSVG}
-                                    className={
-                                      this.state.index.values[index].label
-                                    }
-                                    size="24px"
-                                  />
-                                )}
-                                <span>
-                                  {' '}
-                                  {this.props.intl.formatMessage({
-                                    id: this.state.index.values[index].label,
-                                    defaultMessage: this.state.index.values[
-                                      index
-                                    ].label,
-                                  })}
-                                </span>
-                              </Dropdown.Item>
-                            ))}
+                            {map(
+                              filter(
+                                this.state.index.order,
+                                index => index !== 'sortable_title',
+                              ),
+                              index => (
+                                <Dropdown.Item
+                                  key={index}
+                                  value={index}
+                                  onClick={this.onSelectIndex}
+                                  className="iconAlign"
+                                >
+                                  {this.state.index.values[index].selected ? (
+                                    <Icon
+                                      name={checkboxCheckedSVG}
+                                      size="24px"
+                                      color="#007eb1"
+                                      className={
+                                        this.state.index.values[index].label
+                                      }
+                                    />
+                                  ) : (
+                                    <Icon
+                                      name={checkboxUncheckedSVG}
+                                      className={
+                                        this.state.index.values[index].label
+                                      }
+                                      size="24px"
+                                    />
+                                  )}
+                                  <span>
+                                    {' '}
+                                    {this.props.intl.formatMessage({
+                                      id: this.state.index.values[index].label,
+                                      defaultMessage: this.state.index.values[
+                                        index
+                                      ].label,
+                                    })}
+                                  </span>
+                                </Dropdown.Item>
+                              ),
+                            )}
                           </Dropdown.Menu>
                         </Dropdown.Menu>
                       </Dropdown>
@@ -1346,6 +1352,7 @@ class Contents extends Component {
                                   name={configurationSVG}
                                   size="24px"
                                   color="#826a6a"
+                                  className="configuration-svg"
                                 />
                               }
                               className="sort-icon"
@@ -1373,7 +1380,7 @@ class Contents extends Component {
                                   index => (
                                     <Dropdown.Item
                                       key={index}
-                                      className={`sort_${index} iconAlign`}
+                                      className={`sort_${index} icon-align`}
                                     >
                                       <Icon name={downKeySVG} size="24px" />
                                       <FormattedMessage
@@ -1383,7 +1390,7 @@ class Contents extends Component {
                                         <Dropdown.Item
                                           onClick={this.onSortItems}
                                           value={`${Indexes[index].sort_on}|ascending`}
-                                          className={`sort_${Indexes[index].sort_on}_ascending iconAlign`}
+                                          className={`sort_${Indexes[index].sort_on}_ascending icon-align`}
                                         >
                                           <Icon
                                             name={sortDownSVG}
@@ -1397,7 +1404,7 @@ class Contents extends Component {
                                         <Dropdown.Item
                                           onClick={this.onSortItems}
                                           value={`${Indexes[index].sort_on}|descending`}
-                                          className={`sort_${Indexes[index].sort_on}_descending iconAlign`}
+                                          className={`sort_${Indexes[index].sort_on}_descending icon-align`}
                                         >
                                           <Icon name={sortUpSVG} size="24px" />{' '}
                                           <FormattedMessage

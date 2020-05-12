@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-04-23T17:59:48.896Z\n"
+"POT-Creation-Date: 2020-05-12T07:21:28.623Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -35,16 +35,28 @@ msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Actions
 msgid "Actions"
 msgstr ""
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Activate and deactivate add-ons in the lists below.
+msgid "Activate and deactivate"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/SchemaWidget
 # defaultMessage: Add
 msgid "Add"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: To make new add-ons show up here, add them to your buildout configuration, run buildout, and restart the server process. For detailed instructions see
+msgid "Add Addons"
 msgstr ""
 
 #: components/manage/Toolbar/Types
@@ -92,6 +104,11 @@ msgstr ""
 msgid "Add group"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Add new content type
+msgid "Add new content type"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Add new group
 msgid "Add new group"
@@ -110,6 +127,11 @@ msgstr ""
 #: components/manage/Add/Add
 # defaultMessage: Add {type}
 msgid "Add {type}"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Add-ons Settings
+msgid "Add-ons Settings"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
@@ -146,7 +168,15 @@ msgstr ""
 msgid "Ascending"
 msgstr ""
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Available
+msgid "Available"
+msgstr ""
+
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/ModerateComments
@@ -206,6 +236,7 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsToolbar
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Delete/Delete
@@ -256,6 +287,7 @@ msgstr ""
 msgid "Changes saved"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 # defaultMessage: Changes saved.
 msgid "Changes saved."
@@ -349,6 +381,16 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Content type created
+msgid "Content type created"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Content type deleted
+msgid "Content type deleted"
+msgstr ""
+
 #: components/manage/Contents/Contents
 #: components/manage/Toolbar/Toolbar
 # defaultMessage: Contents
@@ -435,6 +477,7 @@ msgstr ""
 
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/UsersControlpanelGroups
 #: components/manage/Controlpanels/UsersControlpanelUser
@@ -451,6 +494,11 @@ msgstr ""
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Delete Group
 msgid "Delete Group"
+msgstr ""
+
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Delete Type
+msgid "Delete Type"
 msgstr ""
 
 #: components/manage/Controlpanels/UsersControlpanel
@@ -474,6 +522,7 @@ msgid "Descending"
 msgstr ""
 
 #: components/manage/Blocks/HeroImageLeft/Edit
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -517,6 +566,11 @@ msgstr ""
 msgid "Do you really want to delete the group {groupname}?"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Do you really want to delete type {typename}?
+msgid "Do you really want to delete the type {typename}?"
+msgstr ""
+
 #: components/manage/Controlpanels/UsersControlpanel
 # defaultMessage: Do you really want to delete the user {username}?
 msgid "Do you really want to delete the user {username}?"
@@ -549,6 +603,7 @@ msgid "E-mail addresses do not match."
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/CheckboxWidget
@@ -673,6 +728,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 # defaultMessage: Expiration date
 msgid "Expiration date"
+msgstr ""
+
+#: components/manage/Contents/ContentsItem
+# defaultMessage: Expired
+msgid "Expired"
 msgstr ""
 
 #: components/manage/Blocks/Image/ImageSidebar
@@ -833,6 +893,7 @@ msgstr ""
 msgid "Image"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 # defaultMessage: Info
 msgid "Info"
@@ -868,6 +929,21 @@ msgstr ""
 msgid "Insert row before"
 msgstr ""
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Install
+msgid "Install"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installed
+msgid "Installed"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Installed version
+msgid "Installed version"
+msgstr ""
+
 #: components/manage/Blocks/Listing/ListingData
 # defaultMessage: Item batch size
 msgid "Item batch size"
@@ -889,6 +965,11 @@ msgstr ""
 msgid "Item(s) pasted."
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypes
+# defaultMessage: Items
+msgid "Items"
+msgstr ""
+
 #: components/manage/Form/Form
 #: components/manage/Form/ModalForm
 # defaultMessage: Items must be unique.
@@ -908,6 +989,11 @@ msgstr ""
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Last modified
 msgid "Last modified"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Latest version
+msgid "Latest version"
 msgstr ""
 
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -1060,6 +1146,7 @@ msgid "News Item"
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 # defaultMessage: No
 msgid "No"
 msgstr ""
@@ -1098,6 +1185,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/ListingData
 # defaultMessage: No selection
 msgid "No selection"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: This addon does not provide an uninstall profile.
+msgid "No uninstall profile"
 msgstr ""
 
 #: components/manage/Widgets/ArrayWidget
@@ -1383,6 +1475,7 @@ msgid "Roles"
 msgstr ""
 
 #: components/manage/Add/Add
+#: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Edit/Edit
@@ -1613,6 +1706,7 @@ msgstr ""
 
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalInformation
@@ -1725,6 +1819,7 @@ msgstr ""
 #: components/manage/Blocks/HeroImageLeft/Edit
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/UsersControlpanel
 #: components/manage/Widgets/CheckboxWidget
 #: components/manage/Widgets/QuerystringWidget
@@ -1748,6 +1843,7 @@ msgstr ""
 msgid "Translate to {lang}"
 msgstr ""
 
+#: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 # defaultMessage: Type
@@ -1784,10 +1880,35 @@ msgstr ""
 msgid "Unified"
 msgstr ""
 
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Uninstall
+msgid "Uninstall"
+msgstr ""
+
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/DefaultView
 # defaultMessage: Unknown Block {block}
 msgid "Unknown Block"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update
+msgid "Update"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update installed addons
+msgid "Update installed addons"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Update installed addons:
+msgid "Update installed addons:"
+msgstr ""
+
+#: components/manage/Controlpanels/AddonsControlpanel
+# defaultMessage: Updates available
+msgid "Updates available"
 msgstr ""
 
 #: components/manage/Contents/Contents
@@ -1897,6 +2018,15 @@ msgstr ""
 msgid "Viewmode"
 msgstr ""
 
+#: components/manage/Controlpanels/VersionOverview
+# defaultMessage: You are running in "debug mode". This mode is intended for sites that
+        are under development. This allows many configuration changes to be
+        immediately visible, but will make your site run more slowly. To turn
+        off debug mode, stop the server, set "debug-mode=off" in your
+        buildout.cfg, re-run bin/buildout and then restart the server process.
+msgid "Warning Regarding debug mode"
+msgstr ""
+
 #: components/theme/ConnectionRefused/ConnectionRefused
 # defaultMessage: We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later.
 msgid "We apologize for the inconvenience, but the backend of the site you are accessing is not available right now. Please, try again later."
@@ -1948,6 +2078,7 @@ msgid "Workflow updated."
 msgstr ""
 
 #: components/manage/Contents/ContentsItem
+#: components/manage/Controlpanels/ContentTypes
 # defaultMessage: Yes
 msgid "Yes"
 msgstr ""
