@@ -682,7 +682,10 @@ class Form extends Component {
     const errors = {};
 
     map(this.props.schema.required, requiredField => {
-      if (!this.state.formData[requiredField]) {
+      if (
+        this.props.schema.properties[requiredField]?.type !== 'boolean' &&
+        !this.state.formData[requiredField]
+      ) {
         errors[requiredField] = [];
         errors[requiredField].push(
           this.props.intl.formatMessage(messages.required),

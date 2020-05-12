@@ -103,10 +103,13 @@ class ModalForm extends Component {
     this.state = {
       currentTab: 0,
       errors: {},
+      isFormPrestine: true,
       formData: props.formData,
     };
     this.selectTab = this.selectTab.bind(this);
     this.onChangeField = this.onChangeField.bind(this);
+    this.onBlurField = this.onBlurField.bind(this);
+    this.onClickInput = this.onClickInput.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -124,6 +127,28 @@ class ModalForm extends Component {
         [id]: value,
       },
     });
+  }
+
+  /**
+   * If user clicks on input, the form will be not considered pristine
+   * this will avoid onBlur effects without interraction with the form
+   * @param {Object} e event
+   */
+  onClickInput(e) {
+    this.setState({ isFormPrestine: false });
+  }
+
+  /**
+   * Validate fields on blur
+   * @method onBlurField
+   * @param {string} id Id of the field
+   * @param {*} value Value of the field
+   * @returns {undefined}
+   */
+  onBlurField(id, value) {
+    if (!this.state.isFormPrestine) {
+      // TODO: validate required fields
+    }
   }
 
   /**
@@ -203,6 +228,8 @@ class ModalForm extends Component {
       value: this.state.formData[field],
       required: schema.required.indexOf(field) !== -1,
       onChange: this.onChangeField,
+      onBlur: this.onBlurField,
+      onClick: this.onClickInput,
     }));
 
     const state_errors = keys(this.state.errors).length > 0;
