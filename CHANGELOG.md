@@ -10,6 +10,9 @@
 
 ### Bugfix
 
+- Fix new lines inside blockquotes are not rendered @iFlameing #1249
+- Fix blockquote style render error: unique key @iFlameing #1097
+
 ### Internal
 
 ## 5.8.0 (2020-05-11)
