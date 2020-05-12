@@ -7,21 +7,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { map, remove } from 'lodash';
-import { settings } from '~/config';
-import {
-  Form,
-  Grid,
-  Label,
-  Popup,
-  Icon as OldIcon,
-  Button,
-} from 'semantic-ui-react';
 
+import { Form, Grid, Label, Popup, Button } from 'semantic-ui-react';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Icon } from '@plone/volto/components';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import homeSVG from '@plone/volto/icons/home.svg';
 
 const messages = defineMessages({
   placeholder: {
@@ -77,23 +71,34 @@ class ObjectBrowserWidget extends Component {
   renderLabel(item) {
     return (
       <Popup
-        key={item['@id'].replace(settings.apiPath, '')}
+        key={flattenToAppURL(item['@id'])}
         content={
           <>
-            <OldIcon name="home" /> {item['@id'].replace(settings.apiPath, '')}
+            <Icon name={homeSVG} size="18px" />
+            {flattenToAppURL(item['@id'])}
           </>
         }
         trigger={
           <Label>
             {item.title}
             {this.props.mode === 'multiple' && (
-              <OldIcon
-                name="delete"
+              <Icon
+                name={clearSVG}
+                size="12px"
+                className="right"
                 onClick={event => {
                   event.preventDefault();
                   this.removeItem(item);
                 }}
               />
+
+              // <OldIcon
+              //   name="delete"
+              //   onClick={event => {
+              //     event.preventDefault();
+              //     this.removeItem(item);
+              //   }}
+              // />
             )}
           </Label>
         }
@@ -115,16 +120,13 @@ class ObjectBrowserWidget extends Component {
     let exists = false;
     let index = -1;
     value.forEach((_item, _index) => {
-      if (
-        _item['@id'].replace(settings.apiPath, '') ===
-        item['@id'].replace(settings.apiPath, '')
-      ) {
+      if (flattenToAppURL(_item['@id']) === flattenToAppURL(item['@id'])) {
         exists = true;
         index = _index;
       }
     });
     //find(value, {
-    //   '@id': item['@id'].replace(settings.apiPath, ''),
+    //   '@id': flattenToAppURL(item['@id']),
     // });
     if (!exists) {
       //add item

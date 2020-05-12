@@ -8,6 +8,7 @@ import { Input, Segment } from 'semantic-ui-react';
 import { join } from 'lodash';
 import { searchContent } from '@plone/volto/actions';
 import { Icon } from '@plone/volto/components';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import { doesNodeContainClick } from 'semantic-ui-react/dist/commonjs/lib';
 
 import { settings } from '~/config';
@@ -33,10 +34,7 @@ const messages = defineMessages({
 });
 
 function getParentURL(url) {
-  return (
-    `${join(url.split('/').slice(0, -1), '/')}`.replace(settings.apiPath, '') ||
-    '/'
-  );
+  return flattenToAppURL(`${join(url.split('/').slice(0, -1), '/')}`) || '/';
 }
 
 /**
@@ -106,13 +104,13 @@ class ObjectBrowserBody extends Component {
         this.props.mode === 'multiple'
           ? ''
           : this.props.data?.url
-          ? this.props.data.url.replace(settings.apiPath, '')
+          ? flattenToAppURL(this.props.data.url)
           : '',
       selectedHref:
         this.props.mode === 'multiple'
           ? ''
           : this.props.data?.href
-          ? this.props.data.href.replace(settings.apiPath, '')
+          ? flattenToAppURL(this.props.data.href)
           : '',
       showSearchInput: false,
     };

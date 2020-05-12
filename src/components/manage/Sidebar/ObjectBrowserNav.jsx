@@ -1,9 +1,11 @@
 import React from 'react';
-import { Button, Segment, Popup, Icon as OldIcon } from 'semantic-ui-react';
+import { Button, Segment, Popup } from 'semantic-ui-react';
 import cx from 'classnames';
 import { Icon } from '@plone/volto/components';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import { settings } from '~/config';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
+import homeSVG from '@plone/volto/icons/home.svg';
 
 const ObjectBrowserNav = ({
   currentSearchResults,
@@ -18,10 +20,7 @@ const ObjectBrowserNav = ({
     let ret = false;
     if (selected) {
       selected.forEach(_item => {
-        if (
-          _item['@id'].replace(settings.apiPath, '') ===
-          item['@id'].replace(settings.apiPath, '')
-        ) {
+        if (flattenToAppURL(_item['@id']) === flattenToAppURL(item['@id'])) {
           ret = true;
         }
       });
@@ -52,8 +51,8 @@ const ObjectBrowserNav = ({
                 key={item['@id']}
                 content={
                   <>
-                    <OldIcon name="home" />{' '}
-                    {item['@id'].replace(settings.apiPath, '')}
+                    <Icon name={homeSVG} size="18px" />{' '}
+                    {flattenToAppURL(item['@id'])}
                   </>
                 }
                 trigger={<span>{getIcon(item['@type'])}</span>}
