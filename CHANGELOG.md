@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.8.1 (unreleased)
+## 5.9.1 (unreleased)
 
 ### Breaking
 
@@ -11,16 +11,24 @@
 - Fixed front-end field validation #1246 @rexalex
 - Fixed date only widget rendering #1246 @rexalex
 
+### Bugfix
+
+### Internal
+
+## 5.9.0 (2020-05-12)
+
+### Feature
+
+- Implemented a new ObjectBrowserWidget @giuliaghisini
 - Add system information in controlpanel @iFlameing #1457
 - Added Dexterity Types Controlpanel @avoinea #1285
+- Remember sort order of folder contents view. @ksuess
 
 ### Bugfix
 
 - Fix new lines inside blockquotes are not rendered @iFlameing #1249
 - Fix blockquote style render error: unique key @iFlameing #1097
 - Added Dexterity control panel Cypress tests @iFlameing
-
-### Internal
 
 ## 5.8.0 (2020-05-11)
 

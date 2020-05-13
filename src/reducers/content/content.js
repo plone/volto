@@ -153,6 +153,10 @@ export default function content(state = initialState, action = {}) {
           loading: false,
           loaded: true,
           error: null,
+          sort: {
+            on: action.sort?.on,
+            order: action.sort?.order,
+          },
         },
       };
     case `${CREATE_CONTENT}_FAIL`:
