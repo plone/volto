@@ -8,6 +8,7 @@
 
 - Add system information in controlpanel @iFlameing #1457
 - Added Dexterity Types Controlpanel @avoinea #1285
+- Added beautiful-dnd in core for edit form @iFlameing
 
 ### Bugfix
 
