@@ -40,6 +40,8 @@ dispatch(
 );
 ```
 
+More information about this: https://www.cypress.io/blog/2018/11/14/testing-redux-store/
+
 #### Volto settings
 
 You can modify on the fly the main Volto settings like this:
