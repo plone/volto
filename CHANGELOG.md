@@ -17,6 +17,7 @@
 - Update to Razzle 3.1.2 @sneridagh
 - Update to React 16.13.1 @sneridagh
 - Removal of unused (and deprecated) `@babel/preset-stage-0` @sneridagh
+- Update `react-router` @sneridagh
 - Update `react-redux` and friends @sneridagh
 - Update `connected-react-router` @sneridagh
 - Update low hanging fruits deps @sneridagh
