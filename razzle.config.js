@@ -69,7 +69,6 @@ module.exports = {
             {
               loader: 'less-loader',
               options: {
-                outputStyle: 'expanded',
                 sourceMap: true,
               },
             },
@@ -87,7 +86,6 @@ module.exports = {
             {
               loader: 'less-loader',
               options: {
-                outputStyle: 'expanded',
                 sourceMap: true,
               },
             },
