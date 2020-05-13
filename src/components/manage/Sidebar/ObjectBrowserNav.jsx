@@ -1,9 +1,11 @@
 import React from 'react';
-import { Button, Segment } from 'semantic-ui-react';
+import { Button, Segment, Popup } from 'semantic-ui-react';
 import cx from 'classnames';
 import { Icon } from '@plone/volto/components';
+import { flattenToAppURL } from '@plone/volto/helpers';
 import { settings } from '~/config';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
+import homeSVG from '@plone/volto/icons/home.svg';
 
 const ObjectBrowserNav = ({
   currentSearchResults,
@@ -14,6 +16,18 @@ const ObjectBrowserNav = ({
   mode,
   navigateTo,
 }) => {
+  const isSelected = item => {
+    let ret = false;
+    if (selected) {
+      selected.forEach(_item => {
+        if (flattenToAppURL(_item['@id']) === flattenToAppURL(item['@id'])) {
+          ret = true;
+        }
+      });
+    }
+    return ret;
+  };
+
   return (
     <Segment as="ul" className="object-listing">
       {currentSearchResults &&
@@ -22,7 +36,7 @@ const ObjectBrowserNav = ({
             role="presentation"
             key={item.id}
             className={cx('', {
-              'selected-item': selected === item['@id'],
+              'selected-item': isSelected(item),
               disabled:
                 mode === 'image'
                   ? !settings.imageObjects.includes(item['@type']) &&
@@ -32,14 +46,24 @@ const ObjectBrowserNav = ({
             onClick={() => handleClickOnItem(item)}
             onDoubleClick={() => handleDoubleClickOnItem(item)}
           >
-            <span>
-              {getIcon(item['@type'])}
-              {item.id}
+            <span title={item['@id']}>
+              <Popup
+                key={item['@id']}
+                content={
+                  <>
+                    <Icon name={homeSVG} size="18px" />{' '}
+                    {flattenToAppURL(item['@id'])}
+                  </>
+                }
+                trigger={<span>{getIcon(item['@type'])}</span>}
+              />
+
+              {item.title}
             </span>
             {item.is_folderish && mode === 'image' && (
               <Icon name={rightArrowSVG} size="24px" />
             )}
-            {item.is_folderish && mode === 'link' && (
+            {item.is_folderish && (mode === 'link' || mode === 'multiple') && (
               <Button.Group>
                 <Button
                   basic

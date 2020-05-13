@@ -98,6 +98,7 @@ export function orderContent(parent, url, delta, subset) {
 export function sortContent(url, on, order) {
   return {
     type: UPDATE_CONTENT,
+    sort: { on, order },
     request: {
       op: 'patch',
       path: url,
