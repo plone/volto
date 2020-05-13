@@ -135,8 +135,8 @@ class ModalForm extends Component {
   onSubmit(event) {
     event.preventDefault();
     const errors = {};
-    map(this.props.schema.fieldsets, fieldset =>
-      map(fieldset.fields, fieldId => {
+    map(this.props.schema.fieldsets, (fieldset) =>
+      map(fieldset.fields, (fieldId) => {
         const field = this.props.schema.properties[fieldId];
         const data = this.state.formData[fieldId];
         if (this.props.schema.required.indexOf(fieldId) !== -1) {
@@ -168,7 +168,7 @@ class ModalForm extends Component {
         errors,
       });
     } else {
-      let setFormDataCallback = formData => {
+      let setFormDataCallback = (formData) => {
         this.setState({ formData: formData });
       };
       this.props.onSubmit(this.state.formData, setFormDataCallback);
@@ -197,7 +197,7 @@ class ModalForm extends Component {
     const { schema, onCancel } = this.props;
     const currentFieldset = schema.fieldsets[this.state.currentTab];
 
-    const fields = map(currentFieldset.fields, field => ({
+    const fields = map(currentFieldset.fields, (field) => ({
       ...schema.properties[field],
       id: field,
       value: this.state.formData[field],
@@ -241,7 +241,7 @@ class ModalForm extends Component {
                 ))}
               </Menu>
             )}
-            {fields.map(field => (
+            {fields.map((field) => (
               <Field {...field} key={field.id} />
             ))}
           </UiForm>

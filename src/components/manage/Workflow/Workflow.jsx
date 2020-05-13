@@ -38,7 +38,7 @@ const messages = defineMessages({
   },
 });
 
-const Placeholder = props => {
+const Placeholder = (props) => {
   return (
     <ReactSelect>
       {({ components }) => <components.Placeholder {...props} />}
@@ -69,7 +69,7 @@ const SingleValue = ({ children, ...props }) => {
   );
 };
 
-const Option = props => {
+const Option = (props) => {
   const stateDecorator = {
     marginLeft: '10px',
     marginRight: '10px',
@@ -105,7 +105,7 @@ const Option = props => {
   );
 };
 
-const DropdownIndicator = props => {
+const DropdownIndicator = (props) => {
   return (
     <ReactSelect>
       {({ components }) => (
@@ -121,7 +121,7 @@ const DropdownIndicator = props => {
   );
 };
 
-const selectTheme = theme => ({
+const selectTheme = (theme) => ({
   ...theme,
   borderRadius: 0,
   colors: {
@@ -146,11 +146,11 @@ const customSelectStyles = {
     boxShadow: 'none',
     borderBottom: '2px solid #b8c6c8',
   }),
-  indicatorSeparator: styles => ({
+  indicatorSeparator: (styles) => ({
     ...styles,
     width: null,
   }),
-  valueContainer: styles => ({
+  valueContainer: (styles) => ({
     ...styles,
   }),
   option: (styles, state) => ({
@@ -249,7 +249,7 @@ class Workflow extends Component {
    * @param {string} event Event object
    * @returns {undefined}
    */
-  transition = selectedOption => {
+  transition = (selectedOption) => {
     this.props.transitionWorkflow(
       selectedOption.url.replace(settings.apiPath, ''),
     );
@@ -262,7 +262,7 @@ class Workflow extends Component {
     );
   };
 
-  selectValue = option => {
+  selectValue = (option) => {
     const stateDecorator = {
       marginLeft: '10px',
       marginRight: '10px',
@@ -281,7 +281,7 @@ class Workflow extends Component {
     );
   };
 
-  optionRenderer = option => {
+  optionRenderer = (option) => {
     const stateDecorator = {
       marginLeft: '10px',
       marginRight: '10px',
@@ -326,7 +326,7 @@ class Workflow extends Component {
                 this.props.transitions.length === 0
               }
               options={uniqBy(
-                this.props.transitions.map(transition =>
+                this.props.transitions.map((transition) =>
                   getWorkflowMapping(transition['@id']),
                 ),
                 'label',
@@ -362,7 +362,7 @@ class Workflow extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       loaded: state.workflow.transition.loaded,
       content: state.content.data,
       history: state.workflow.history,

@@ -162,7 +162,7 @@ const TextareaWidget = ({
                 {lengthError}
               </Label>
             )}
-            {map(error, message => (
+            {map(error, (message) => (
               <Label key={message} basic color="red" pointing>
                 {message}
               </Label>

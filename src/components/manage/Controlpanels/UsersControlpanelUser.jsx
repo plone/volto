@@ -64,7 +64,7 @@ class UsersControlpanelUser extends Component {
     return (
       <Table.Row key={this.props.user.username}>
         <Table.Cell className="fullname">{this.props.user.fullname}</Table.Cell>
-        {this.props.roles.map(role => (
+        {this.props.roles.map((role) => (
           <Table.Cell key={role.id}>
             <Checkbox
               checked={this.props.user.roles.includes(role.id)}

@@ -20,7 +20,7 @@ function removeEntity(editorState) {
   let entitySelection = null;
 
   contentBlock.findEntityRanges(
-    character => character.getEntity() === entity,
+    (character) => character.getEntity() === entity,
     (start, end) => {
       entitySelection = selectionState.merge({
         anchorOffset: start,

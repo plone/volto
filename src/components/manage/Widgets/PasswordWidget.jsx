@@ -47,7 +47,7 @@ const PasswordWidget = ({
               onChange(id, target.value === '' ? undefined : target.value)
             }
           />
-          {map(error, message => (
+          {map(error, (message) => (
             <Label key={message} basic color="red" pointing>
               {message}
             </Label>

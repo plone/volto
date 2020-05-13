@@ -14,8 +14,8 @@ import { settings } from '~/config';
  * @param {Object} req Request object
  * @return {string} The response with the image
  */
-export const getAPIResourceWithAuth = req =>
-  new Promise(resolve => {
+export const getAPIResourceWithAuth = (req) =>
+  new Promise((resolve) => {
     let apiPath = '';
     if (settings.internalApiPath && __SERVER__) {
       apiPath = settings.internalApiPath;

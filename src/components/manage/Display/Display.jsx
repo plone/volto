@@ -16,7 +16,7 @@ import checkSVG from '@plone/volto/icons/check.svg';
 
 const ReactSelect = loadable.lib(() => import('react-select'));
 
-const Option = props => {
+const Option = (props) => {
   return (
     <ReactSelect>
       {({ components }) => (
@@ -34,7 +34,7 @@ const Option = props => {
   );
 };
 
-const DropdownIndicator = props => {
+const DropdownIndicator = (props) => {
   return (
     <ReactSelect>
       {({ components }) => (
@@ -50,7 +50,7 @@ const DropdownIndicator = props => {
   );
 };
 
-const selectTheme = theme => ({
+const selectTheme = (theme) => ({
   ...theme,
   borderRadius: 0,
   colors: {
@@ -79,11 +79,11 @@ const customSelectStyles = {
     ...styles,
     maxHeight: '400px',
   }),
-  indicatorSeparator: styles => ({
+  indicatorSeparator: (styles) => ({
     ...styles,
     width: null,
   }),
-  valueContainer: styles => ({
+  valueContainer: (styles) => ({
     ...styles,
     // paddingLeft: 0,
   }),
@@ -175,20 +175,20 @@ class DisplaySelect extends Component {
    * @param {Object} event Event object
    * @returns {undefined}
    */
-  setLayout = selectedOption => {
+  setLayout = (selectedOption) => {
     this.props.updateContent(this.props.pathname, {
       layout: selectedOption.value,
     });
     this.setState({ selectedOption });
   };
 
-  selectValue = option => (
+  selectValue = (option) => (
     <Fragment>
       <span className="Select-value-label">{option.label}</span>
     </Fragment>
   );
 
-  optionRenderer = option => (
+  optionRenderer = (option) => (
     <Fragment>
       <span style={{ marginRight: 'auto' }}>{option.label}</span>
       <Icon name={checkSVG} size="24px" />
@@ -211,11 +211,11 @@ class DisplaySelect extends Component {
               classNamePrefix="react-select"
               options={this.props.layouts
                 .filter(
-                  layout =>
+                  (layout) =>
                     Object.keys(views.contentTypesViews).includes(layout) ||
                     Object.keys(views.layoutViews).includes(layout),
                 )
-                .map(item => ({
+                .map((item) => ({
                   value: item,
                   label: layouts[item] || item,
                 }))}
@@ -234,7 +234,7 @@ class DisplaySelect extends Component {
 }
 
 export default connect(
-  state => ({
+  (state) => ({
     loaded: state.content.update.loaded,
     layouts: state.schema.schema ? state.schema.schema.layouts : [],
     layout: state.content.data

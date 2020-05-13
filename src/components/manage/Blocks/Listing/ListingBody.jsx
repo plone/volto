@@ -12,9 +12,9 @@ import { blocks, settings } from '~/config';
 
 const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
   const [currentPage, setCurrentPage] = React.useState(1);
-  const content = useSelector(state => state.content.data);
+  const content = useSelector((state) => state.content.data);
   const querystringResults = useSelector(
-    state => state.querystringsearch.subrequests,
+    (state) => state.querystringsearch.subrequests,
   );
   const dispatch = useDispatch();
 

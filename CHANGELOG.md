@@ -20,6 +20,7 @@
 - Update low hanging fruits deps @sneridagh
 - Update style/less loaders and friends @sneridagh
 - Update stylelint and friends @sneridagh
+- Update prettier @sneridagh
 
 ## 5.9.0 (2020-05-12)
 

@@ -134,7 +134,7 @@ const CheckboxWidget = ({
                 label={<label for={`field-${id}`}>{title}</label>}
               />
             </div>
-            {map(error, message => (
+            {map(error, (message) => (
               <Label key={message} basic color="red" pointing>
                 {message}
               </Label>

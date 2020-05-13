@@ -18,7 +18,7 @@ export default () => {
         );
       console.log(`🎭 Volto started at http://${host}:${port} 🚀`);
     })
-    .on('error', e => {
+    .on('error', (e) => {
       console.error(e.message);
       throw e;
     });

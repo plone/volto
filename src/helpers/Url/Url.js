@@ -12,10 +12,10 @@ import { settings } from '~/config';
  * @param {string} url Url to be parsed.
  * @return {string} Base url of content object.
  */
-export const getBaseUrl = memoize(url => {
+export const getBaseUrl = memoize((url) => {
   // We allow settings.nonContentRoutes to have strings (that are supposed to match
   // ending strings of pathnames, so we are converting them to RegEx to match also
-  const normalized_nonContentRoutes = settings.nonContentRoutes.map(item => {
+  const normalized_nonContentRoutes = settings.nonContentRoutes.map((item) => {
     if (item.test) {
       return item;
     } else {
@@ -38,7 +38,7 @@ export const getBaseUrl = memoize(url => {
  * @param {string} url Url to be parsed.
  * @return {string} Parent url of content object.
  */
-export const getParentUrl = memoize(url => {
+export const getParentUrl = memoize((url) => {
   return url.substring(0, url.lastIndexOf('/'));
 });
 
