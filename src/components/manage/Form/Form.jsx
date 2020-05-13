@@ -683,7 +683,8 @@ class Form extends Component {
 
     map(this.props.schema.required, requiredField => {
       if (
-        this.props.schema.properties[requiredField]?.type !== 'boolean' &&
+        this.props.schema.properties[requiredField].type !== 'boolean' &&
+        !this.props.schema.properties[requiredField].readonly &&
         !this.state.formData[requiredField]
       ) {
         errors[requiredField] = [];
