@@ -4,7 +4,7 @@
 
 ### Breaking
 
-- Removed support for CSS modules, since Razzle 3.1.1 do not support them @sneridagh
+- Removed support for CSS modules, since Razzle 3.1.2 do not support them @sneridagh
 - Updated Volto dependencies - See https://docs.voltocms.com/upgrade-guide/for more information @sneridagh
 - Disabled `react-hooks/exhaustive-deps` rule from `eslint-plugin-react-hooks` since `useEffect` in some components in Volto *need* to not be dependant on some props updates @sneridagh
 
@@ -14,7 +14,7 @@
 
 ### Internal
 
-- Update to Razzle 3.1.1 @sneridagh
+- Update to Razzle 3.1.2 @sneridagh
 - Update to React 16.13.1 @sneridagh
 - Removal of unused (and deprecated) `@babel/preset-stage-0` @sneridagh
 - Update `react-redux` and friends @sneridagh
