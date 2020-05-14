@@ -179,6 +179,28 @@ Cypress.Commands.add('waitForResourceToLoad', (fileName, type) => {
   });
 });
 
+// --- CREATE CONTENT --------------------------------------------------------
+Cypress.Commands.add('setRegistry', (record, value) => {
+  let api_url, auth;
+  api_url = 'http://localhost:55001/plone';
+  auth = {
+    user: 'admin',
+    pass: 'secret',
+  };
+
+  return cy.request({
+    method: 'PATCH',
+    url: `${api_url}/@registry/`,
+    headers: {
+      Accept: 'application/json',
+    },
+    auth: auth,
+    body: {
+      [record]: value,
+    },
+  });
+});
+
 // Low level command reused by `setSelection` and low level command `setCursor`
 Cypress.Commands.add('selection', { prevSubject: true }, (subject, fn) => {
   cy.wrap(subject)
