@@ -371,8 +371,8 @@ class Contents extends Component {
         })),
         selectedCount: defaultIndexes.length + 1,
       },
-      sort_on: 'getObjPositionInParent',
-      sort_order: 'ascending',
+      sort_on: this.props.sort?.on || 'getObjPositionInParent',
+      sort_order: this.props.sort?.order || 'ascending',
     };
     this.filterTimeout = null;
   }
@@ -1616,6 +1616,7 @@ export const __test__ = compose(
       return {
         token: state.userSession.token,
         items: state.search.items,
+        sort: state.content.update.sort,
         breadcrumbs: state.breadcrumbs.items,
         total: state.search.total,
         searchRequest: {
@@ -1653,6 +1654,7 @@ export default compose(
       return {
         token: state.userSession.token,
         items: state.search.items,
+        sort: state.content.update.sort,
         breadcrumbs: state.breadcrumbs.items,
         total: state.search.total,
         searchRequest: {
