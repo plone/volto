@@ -23,6 +23,7 @@ import showSVG from '@plone/volto/icons/show.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import 'draft-js-mention-plugin/lib/plugin.css';
 
+
 const messages = defineMessages({
   text: {
     id: 'Type text…',
@@ -37,6 +38,7 @@ const messages = defineMessages({
     defaultMessage: 'Preview',
   },
 });
+
 
 /**
  * Edit text block class.
@@ -136,7 +138,8 @@ class Edit extends Component {
    */
   componentDidMount() {
     if (this.props.selected) {
-      this.node.focus();
+      // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
+      setTimeout(this.node.focus, 0);
     }
     document.addEventListener('mousedown', this.handleClickOutside, false);
   }
@@ -220,7 +223,7 @@ class Edit extends Component {
     this.setState({
       suggestions: suggestionsFilter(value, this.state.suggestions),
     });
-  }
+  };
 
   /**
    * On add mention
@@ -231,7 +234,7 @@ class Edit extends Component {
     this.setState({
       hasMentions: true,
     });
-  }
+  };
 
   /**
    * Preview mode handler
