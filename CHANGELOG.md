@@ -8,6 +8,8 @@
 
 ### Bugfix
 
+- Fix Bug in Form Component, that lead to site crash when transmitting a comment @jackahl #1475
+
 ### Internal
 
 ## 5.9.0 (2020-05-12)

@@ -711,8 +711,8 @@ class Form extends Component {
     const { formData, placeholderProps } = this.state;
     const blocksFieldname = getBlocksFieldname(formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
-    const renderBlocks = formData[blocksLayoutFieldname]?.items;
-    const blocksDict = formData[blocksFieldname];
+    const renderBlocks = formData?.[blocksLayoutFieldname]?.items;
+    const blocksDict = formData?.[blocksFieldname];
     const schema = this.removeBlocksLayoutFields(originalSchema);
 
     return this.props.visual ? (
@@ -899,7 +899,7 @@ class Form extends Component {
                   <Field
                     {...schema.properties[field]}
                     id={field}
-                    value={this.state.formData[field]}
+                    value={this.state.formData?.[field]}
                     required={schema.required.indexOf(field) !== -1}
                     onChange={this.onChangeField}
                     key={field}
