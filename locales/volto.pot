@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-05-12T17:30:17.300Z\n"
+"POT-Creation-Date: 2020-05-14T15:38:07.439Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1346,6 +1346,7 @@ msgid "Preferences"
 msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Text/Edit
 #: components/manage/Contents/ContentsUploadModal
 # defaultMessage: Preview
 msgid "Preview"
@@ -1668,6 +1669,7 @@ msgstr ""
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Listing/ListingData
+#: components/manage/Blocks/Text/Edit
 # defaultMessage: Source
 msgid "Source"
 msgstr ""

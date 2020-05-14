@@ -1112,6 +1112,7 @@ msgid "Preferences"
 msgstr "個別設定"
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Text/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "プレビュー"
@@ -1376,6 +1377,7 @@ msgstr "ソート順"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Listing/ListingData
+#: components/manage/Blocks/Text/Edit
 msgid "Source"
 msgstr "ソース"
 

@@ -1105,6 +1105,7 @@ msgid "Preferences"
 msgstr "Preferenze"
 
 #: components/manage/Blocks/HTML/Edit
+#: components/manage/Blocks/Text/Edit
 #: components/manage/Contents/ContentsUploadModal
 msgid "Preview"
 msgstr "Anteprima"
@@ -1369,6 +1370,7 @@ msgstr "Ordina per"
 
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Blocks/Listing/ListingData
+#: components/manage/Blocks/Text/Edit
 msgid "Source"
 msgstr "Sorgente"
 
