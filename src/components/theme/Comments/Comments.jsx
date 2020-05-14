@@ -202,6 +202,7 @@ class Comments extends Component {
           id={this.state.editId}
           text={this.state.editText}
         />
+        {console.log(this.props.items)}
         {this.props.items.map(item => [
           <div className="comment" key={item['@id']}>
             <Grid stackable>
@@ -221,7 +222,11 @@ class Comments extends Component {
               </Grid.Column>
             </Grid>
             <Segment clearing>
-              {item.text.data}
+              {item.text['mime-type'] === 'text/html' ? (
+                <div dangerouslySetInnerHTML={{ __html: item.text.data }} />
+              ) : (
+                item.text.data
+              )}
               {item.is_deletable && (
                 <Button
                   aria-label={this.props.intl.formatMessage(messages.delete)}
