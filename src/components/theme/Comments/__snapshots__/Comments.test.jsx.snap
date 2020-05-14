@@ -2,7 +2,7 @@
 
 exports[`Comments renders a comments component 1`] = `
 <div
-  className="comments"
+  className="ui container comments"
 >
   <div
     className="comment"
