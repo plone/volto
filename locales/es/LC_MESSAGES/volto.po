@@ -531,6 +531,10 @@ msgstr "Editar campo"
 msgid "Edit fieldset"
 msgstr "Editar conjunto de campo"
 
+#: components/manage/Blocks/Block/EditForm
+msgid "Edit values"
+msgstr ""
+
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "Editar {title}"
@@ -587,6 +591,7 @@ msgid "Enter your new password. Minimum 5 characters."
 msgstr "Ingrese su nueva contraseña. Mínimo 5 caracteres."
 
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/EditForm
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
@@ -1493,6 +1498,10 @@ msgstr "El {plonecms} es {copyright} 2000-{current_year} por la {plonefoundation
 
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
+msgstr ""
+
+#: components/manage/Blocks/Block/EditForm
+msgid "There were some errors"
 msgstr ""
 
 #: components/manage/Form/Form

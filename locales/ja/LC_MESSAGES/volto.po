@@ -528,6 +528,10 @@ msgstr "フィールドを編集"
 msgid "Edit fieldset"
 msgstr "フィールドセットを編集"
 
+#: components/manage/Blocks/Block/EditForm
+msgid "Edit values"
+msgstr ""
+
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "{title} を編集"
@@ -584,6 +588,7 @@ msgid "Enter your new password. Minimum 5 characters."
 msgstr "新しいパスワードを入力。（5文字以上）"
 
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/EditForm
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
@@ -1490,6 +1495,10 @@ msgstr "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundatio
 
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
+msgstr ""
+
+#: components/manage/Blocks/Block/EditForm
+msgid "There were some errors"
 msgstr ""
 
 #: components/manage/Form/Form

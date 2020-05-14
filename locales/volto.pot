@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2020-05-12T17:30:17.300Z\n"
+"POT-Creation-Date: 2020-05-14T06:07:43.861Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -627,6 +627,11 @@ msgstr ""
 msgid "Edit fieldset"
 msgstr ""
 
+#: components/manage/Blocks/Block/EditForm
+# defaultMessage: Edit values
+msgid "Edit values"
+msgstr ""
+
 #: components/manage/Edit/Edit
 # defaultMessage: Edit {title}
 msgid "Edit {title}"
@@ -696,6 +701,7 @@ msgid "Enter your new password. Minimum 5 characters."
 msgstr ""
 
 #: components/manage/Add/Add
+#: components/manage/Blocks/Block/EditForm
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Widgets/SchemaWidget
@@ -1808,6 +1814,11 @@ msgstr ""
 #: components/theme/CorsError/CorsError
 # defaultMessage: There is a configuration problem on the backend
 msgid "There is a configuration problem on the backend"
+msgstr ""
+
+#: components/manage/Blocks/Block/EditForm
+# defaultMessage: There were some errors
+msgid "There were some errors"
 msgstr ""
 
 #: components/manage/Form/Form
