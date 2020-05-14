@@ -13,6 +13,7 @@
 ### Internal
 
 - add a cypress function to set registry entries @jackahl
+- Added a cypress test for the comment @iFlameing
 
 ## 5.9.0 (2020-05-12)
 

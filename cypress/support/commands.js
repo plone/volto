@@ -24,7 +24,13 @@ Cypress.Commands.add('autologin', () => {
 // --- CREATE CONTENT --------------------------------------------------------
 Cypress.Commands.add(
   'createContent',
-  (contentType, contentId, contentTitle, path = '') => {
+  (
+    contentType,
+    contentId,
+    contentTitle,
+    path = '',
+    allow_discussion = false,
+  ) => {
     let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
       api_url = 'http://localhost:8081/db/container';
@@ -57,6 +63,7 @@ Cypress.Commands.add(
             filename: 'lorem.txt',
             'content-type': 'text/plain',
           },
+          allow_discussion: allow_discussion,
         },
       });
     }
