@@ -12,6 +12,8 @@
 
 ### Internal
 
+- add a cypress function to set registry entries @jackahl
+
 ## 5.9.0 (2020-05-12)
 
 ### Feature
