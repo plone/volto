@@ -226,6 +226,17 @@ class Form extends Component {
     });
   }
 
+  hideHandler = data => {
+    return (
+      data['@type'] === 'text' &&
+      (!data.text ||
+        (data.text &&
+          data.text.blocks &&
+          data.text.blocks.length === 1 &&
+          data.text.blocks[0].text === ''))
+    );
+  };
+
   /**
    * Change block handler
    * @method onChangeBlock
@@ -635,9 +646,11 @@ class Form extends Component {
                         <div
                           style={{
                             visibility:
-                              this.state.selected === block
+                              this.state.selected === block &&
+                              !this.hideHandler(blocksDict[block])
                                 ? 'visible'
                                 : 'hidden',
+                            display: 'inline-block',
                           }}
                           {...provided.dragHandleProps}
                           className="draggable"
