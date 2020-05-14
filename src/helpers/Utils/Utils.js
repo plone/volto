@@ -16,3 +16,17 @@ export function difference(object, base) {
     }
   });
 }
+
+/**
+ *
+ * @param {string} searchValue Value
+ * @param {array} suggestions Array of values
+ * @returns {array} Filtered Array by Value
+ */
+export function suggestionsFilter(searchValue, suggestions) {
+  var value = searchValue.toLowerCase();
+  var filteredSuggestions = suggestions.filter(function(suggestion) {
+    return !value || suggestion.name.toLowerCase().indexOf(value) > -1;
+  });
+  return filteredSuggestions;
+}

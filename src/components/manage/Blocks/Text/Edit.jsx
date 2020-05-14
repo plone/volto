@@ -17,6 +17,7 @@ import { includes, isEqual } from 'lodash';
 import { filterEditorState } from 'draftjs-filters';
 import { settings } from '~/config';
 import { Icon, BlockChooser } from '@plone/volto/components';
+import { suggestionsFilter } from '@plone/volto/helpers';
 import addSVG from '@plone/volto/icons/circle-plus.svg';
 import showSVG from '@plone/volto/icons/show.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
@@ -36,14 +37,6 @@ const messages = defineMessages({
     defaultMessage: 'Preview',
   },
 });
-
-var suggestionsFilter = function(searchValue, suggestions) {
-  var value = searchValue.toLowerCase();
-  var filteredSuggestions = suggestions.filter(function(suggestion) {
-    return !value || suggestion.name.toLowerCase().indexOf(value) > -1;
-  });
-  return filteredSuggestions;
-};
 
 /**
  * Edit text block class.
@@ -90,8 +83,8 @@ class Edit extends Component {
     super(props);
 
     if (!__SERVER__) {
-      let editorState,
-        hasMentions = false;
+      let editorState;
+      let hasMentions = false;
       if (props.data && props.data.text) {
         editorState = EditorState.createWithContent(
           convertFromRaw(props.data.text),
@@ -123,9 +116,9 @@ class Edit extends Component {
         mentionPlugin,
         inlineToolbarPlugin,
         suggestions,
+        hasMentions,
         addNewBlockOpened: false,
         isPreview: false,
-        hasMentions: hasMentions,
       };
     }
 
@@ -218,22 +211,27 @@ class Edit extends Component {
   }
 
   /**
-   *
+   * On search change
+   * @method onSearchChange
+   * @param {string} value Value
+   * @returns {undefined}
    */
-  onSearchChange = ({ value }) => {
+  onSearchChange({ value }) {
     this.setState({
       suggestions: suggestionsFilter(value, this.state.suggestions),
     });
-  };
+  }
 
   /**
-   *
+   * On add mention
+   * @method onAddMention
+   * @returns {undefined}
    */
-  onAddMention = ({ value }) => {
+  onAddMention() {
     this.setState({
       hasMentions: true,
     });
-  };
+  }
 
   /**
    * Preview mode handler
