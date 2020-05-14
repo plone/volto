@@ -25,6 +25,7 @@
 - Update stylelint and friends @sneridagh
 - Update prettier @sneridagh
 - Update eslint plugins @sneridagh
+- Update `cypress-axe`, `detectbrowser`, `lint-staged` and `release-it` @sneridagh
 
 ## 5.9.0 (2020-05-12)
 
