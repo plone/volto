@@ -2,10 +2,6 @@
 
 ## 5.9.1 (unreleased)
 
-### Breaking
-
-### Feature
-
 ### Bugfix
 
 - Fix Bug in Form Component, that lead to site crash when transmitting a comment @jackahl #1475
@@ -13,7 +9,7 @@
 
 ### Internal
 
-- add a cypress function to set registry entries @jackahl
+- Add a cypress function to set registry entries @jackahl
 
 ## 5.9.0 (2020-05-12)
 
