@@ -541,6 +541,7 @@ msgid "Edit fieldset"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditForm
+#: components/manage/Form/InlineForm
 msgid "Edit values"
 msgstr ""
 
@@ -603,6 +604,7 @@ msgstr "Geef een nieuw wachtwoord op. Minimaal 5 karakters."
 #: components/manage/Blocks/Block/EditForm
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
+#: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -1510,6 +1512,7 @@ msgid "There is a configuration problem on the backend"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditForm
+#: components/manage/Form/InlineForm
 msgid "There were some errors"
 msgstr ""
 

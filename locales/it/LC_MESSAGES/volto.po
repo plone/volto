@@ -522,6 +522,7 @@ msgid "Edit fieldset"
 msgstr "Modifica insieme di campi"
 
 #: components/manage/Blocks/Block/EditForm
+#: components/manage/Form/InlineForm
 msgid "Edit values"
 msgstr ""
 
@@ -584,6 +585,7 @@ msgstr "Inserisci la tua nuova password. Minimo 5 caratteri."
 #: components/manage/Blocks/Block/EditForm
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
+#: components/manage/Form/InlineForm
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
@@ -1491,6 +1493,7 @@ msgid "There is a configuration problem on the backend"
 msgstr ""
 
 #: components/manage/Blocks/Block/EditForm
+#: components/manage/Form/InlineForm
 msgid "There were some errors"
 msgstr ""
 
