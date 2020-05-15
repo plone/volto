@@ -1,23 +1,44 @@
 # Change Log
 
-## 5.8.1 (unreleased)
+## 5.9.2 (unreleased)
 
 ### Breaking
 
 ### Feature
 
+- Refactor createContent command to accept a single json object @iFlameing
+
+### Bugfix
+
+### Internal
+
+- Make available some internal artifacts (Router, Redux Store and Settings) to the Cypress acceptance tests, add docs @sneridagh
+
+## 5.9.1 (2020-05-15)
+
+### Bugfix
+
+- Fix Bug in Form Component, that lead to site crash when transmitting a comment @jackahl #1475
+- Fix for the long lasted issue when creating links in newly created text blocks not showing as links until you save @avoinea
+
+### Internal
+
+- Add a cypress function to set registry entries @jackahl
+
+## 5.9.0 (2020-05-12)
+
+### Feature
+
+- Implemented a new ObjectBrowserWidget @giuliaghisini
 - Add system information in controlpanel @iFlameing #1457
 - Added Dexterity Types Controlpanel @avoinea #1285
+- Remember sort order of folder contents view. @ksuess
 
 ### Bugfix
 
 - Fix new lines inside blockquotes are not rendered @iFlameing #1249
 - Fix blockquote style render error: unique key @iFlameing #1097
 - Added Dexterity control panel Cypress tests @iFlameing
-
-### Internal
-
-- Make available some internal artifacts (Router, Redux Store and Settings) to the Cypress acceptance tests, add docs @sneridagh
 
 ## 5.8.0 (2020-05-11)
 

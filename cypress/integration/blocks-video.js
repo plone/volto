@@ -3,7 +3,11 @@ if (Cypress.env('API') !== 'guillotina') {
     beforeEach(() => {
       // given a logged in editor and a page in edit mode
       cy.autologin();
-      cy.createContent('Document', 'my-page', 'My Page');
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'my-page',
+        contentTitle: 'My Page',
+      });
       cy.visit('/my-page/edit');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
