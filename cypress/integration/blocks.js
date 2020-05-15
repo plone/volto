@@ -5,7 +5,11 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.wait(2000);
       // given a logged in editor and a page in edit mode
       cy.autologin();
-      cy.createContent('Document', 'my-page', 'My Page');
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'my-page',
+        contentTitle: 'My Page',
+      });
       cy.visit('/my-page/edit');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
@@ -52,9 +56,24 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('my-page?fullobjects');
 
-      cy.createContent('Document', 'my-page-test', 'My Page Test', 'my-page');
-      cy.createContent('News Item', 'my-news', 'My News', 'my-page');
-      cy.createContent('Folder', 'my-folder', 'My Folder', 'my-page');
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'my-page-test',
+        contentTitle: 'My Page Test',
+        path: 'my-page',
+      });
+      cy.createContent({
+        contentType: 'News Item',
+        contentId: 'my-news',
+        contentTitle: 'My News',
+        path: 'my-page',
+      });
+      cy.createContent({
+        contentType: 'Folder',
+        contentId: 'my-folder',
+        contentTitle: 'My Folder',
+        path: 'my-page',
+      });
 
       cy.visit('/my-page/edit');
       cy.waitForResourceToLoad('@navigation');
@@ -104,9 +123,24 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('my-page?fullobjects');
 
-      cy.createContent('Document', 'my-page-test', 'My Page Test', 'my-page');
-      cy.createContent('News Item', 'my-news', 'My News', 'my-page');
-      cy.createContent('Folder', 'my-folder', 'My Folder', 'my-page');
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'my-page-test',
+        contentTitle: 'My Page Test',
+        path: 'my-page',
+      });
+      cy.createContent({
+        contentType: 'News Item',
+        contentId: 'my-news',
+        contentTitle: 'My News',
+        path: 'my-page',
+      });
+      cy.createContent({
+        contentType: 'Folder',
+        contentId: 'my-folder',
+        contentTitle: 'My Folder',
+        path: 'my-page',
+      });
 
       cy.visit('/my-page/edit');
       cy.waitForResourceToLoad('@navigation');
@@ -186,20 +220,26 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('my-page?fullobjects');
 
-      cy.createContent(
-        'Document',
-        'document-outside-folder',
-        'Document outside Folder',
-        'my-page',
-      );
-      cy.createContent('Document', 'my-folder', 'My Folder', 'my-page');
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'document-outside-folder',
+        contentTitle: 'Document outside Folder',
+        path: 'my-page',
+      });
 
-      cy.createContent(
-        'Document',
-        'document-within-folder',
-        'Document within Folder',
-        'my-page/my-folder',
-      );
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'my-folder',
+        contentTitle: 'My Folder',
+        path: 'my-page',
+      });
+
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'document-within-folder',
+        contentTitle: 'Document within Folder',
+        path: 'my-page/my-folder',
+      });
 
       cy.visit('/my-page/my-folder/edit');
       cy.waitForResourceToLoad('@navigation');
@@ -278,20 +318,26 @@ if (Cypress.env('API') !== 'guillotina') {
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('my-page?fullobjects');
 
-      cy.createContent(
-        'Document',
-        'document-outside-folder',
-        'Document outside Folder',
-        'my-page',
-      );
-      cy.createContent('Document', 'my-folder', 'My Folder', 'my-page');
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'document-outside-folder',
+        contentTitle: 'Document outside Folder',
+        path: 'my-page',
+      });
 
-      cy.createContent(
-        'Document',
-        'document-within-folder',
-        'Document within Folder',
-        'my-page/my-folder',
-      );
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'my-folder',
+        contentTitle: 'My Folder',
+        path: 'my-page',
+      });
+
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'document-within-folder',
+        contentTitle: 'Document within Folder',
+        path: 'my-page/my-folder',
+      });
 
       cy.visit('/my-page/my-folder/edit');
       cy.waitForResourceToLoad('@navigation');
