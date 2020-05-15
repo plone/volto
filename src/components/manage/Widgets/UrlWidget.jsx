@@ -96,6 +96,8 @@ UrlWidget.propTypes = {
   error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func,
+  onClick: PropTypes.func,
   minLength: PropTypes.number,
   maxLength: PropTypes.number,
 };
@@ -110,6 +112,9 @@ UrlWidget.defaultProps = {
   required: false,
   error: [],
   value: null,
+  onChange: () => {},
+  onBlur: () => {},
+  onClick: () => {},
   minLength: null,
   maxLength: null,
 };

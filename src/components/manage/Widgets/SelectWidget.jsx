@@ -130,12 +130,12 @@ class SelectWidget extends Component {
     widgetOptions: PropTypes.shape({
       vocabulary: PropTypes.object,
     }),
-    value: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.string,
-      PropTypes.bool,
-    ]),
+    value: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.bool]),
+    ),
     onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func,
+    onClick: PropTypes.func,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
     itemsTotal: PropTypes.number,
@@ -159,6 +159,9 @@ class SelectWidget extends Component {
     choices: [],
     loading: false,
     value: null,
+    onChange: () => {},
+    onBlur: () => {},
+    onClick: () => {},
     onEdit: null,
     onDelete: null,
   };
@@ -265,6 +268,8 @@ class SelectWidget extends Component {
       choices,
       value,
       onChange,
+      onBlur,
+      onClick,
       fieldSet,
     } = this.props;
 
@@ -355,6 +360,7 @@ class SelectWidget extends Component {
                       : getDefaultValues(choices, value)
                   }
                   onChange={data => {
+                    console.log('Select Widg data', data);
                     let dataValue = [];
                     if (Array.isArray(data)) {
                       for (let obj of data) {
@@ -364,9 +370,17 @@ class SelectWidget extends Component {
                     }
                     return onChange(
                       id,
-                      data.value === 'no-value' ? undefined : data.value,
+                      data
+                        ? data.value === 'no-value'
+                          ? undefined
+                          : data.value
+                        : null,
                     );
                   }}
+                  onBlur={({ target }) =>
+                    onBlur(id, target.value === '' ? undefined : target.value)
+                  }
+                  onClick={() => onClick()}
                 />
               )}
               {map(error, message => (

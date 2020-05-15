@@ -28,17 +28,11 @@ class UsersControlpanelGroups extends Component {
       groupname: PropTypes.string,
       roles: PropTypes.arrayOf(PropTypes.string),
     }).isRequired,
-    user: PropTypes.shape({
-      username: PropTypes.string,
-      fullname: PropTypes.string,
-      roles: PropTypes.arrayOf(PropTypes.string),
-    }).isRequired,
     roles: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string,
       }),
     ).isRequired,
-
     onDelete: PropTypes.func.isRequired,
   };
 
@@ -58,7 +52,6 @@ class UsersControlpanelGroups extends Component {
    * @param {*} { value }
    * @memberof UsersControlpanelUser
    */
-
   onChange(event, { value }) {
     const [group, role] = value.split('.');
     this.props.updateGroups(group, role);
