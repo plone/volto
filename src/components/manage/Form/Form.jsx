@@ -195,6 +195,7 @@ class Form extends Component {
         formData[blocksLayoutFieldname].items.length > 0
           ? formData[blocksLayoutFieldname].items[0]
           : null,
+      placeholderProps: {},
     };
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeBlock = this.onChangeBlock.bind(this);
@@ -604,7 +605,14 @@ class Form extends Component {
       return;
     }
     const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
-
+    this.setState({
+      placeholderProps: {
+        clientHeight: 0,
+        clientWidth: 0,
+        clientY: 0,
+        clientX: 0,
+      },
+    });
     this.setState({
       formData: {
         ...this.state.formData,
@@ -619,6 +627,44 @@ class Form extends Component {
     });
   };
 
+  onDragUpdate = update => {
+    if (!update.destination) {
+      return;
+    }
+    const draggableId = update.draggableId;
+    const destinationIndex = update.destination.index;
+
+    const queryAttr = 'data-rbd-draggable-id';
+    const domQuery = `[${queryAttr}='${draggableId}']`;
+    const draggedDOM = document.querySelector(domQuery);
+
+    if (!draggedDOM) {
+      return;
+    }
+    const { clientHeight, clientWidth } = draggedDOM;
+
+    const clientY =
+      parseFloat(window.getComputedStyle(draggedDOM.parentNode).paddingTop) +
+      [...draggedDOM.parentNode.children]
+        .slice(0, destinationIndex)
+        .reduce((total, curr) => {
+          const style = curr.currentStyle || window.getComputedStyle(curr);
+          const marginBottom = parseFloat(style.marginBottom);
+          return total + curr.clientHeight + marginBottom;
+        }, 0);
+
+    this.setState({
+      placeholderProps: {
+        clientHeight,
+        clientWidth,
+        clientY,
+        clientX: parseFloat(
+          window.getComputedStyle(draggedDOM.parentNode).paddingLeft,
+        ),
+      },
+    });
+  };
+
   /**
    * Render method.
    * @method render
@@ -626,7 +672,7 @@ class Form extends Component {
    */
   render() {
     const { schema: originalSchema, onCancel, onSubmit } = this.props;
-    const { formData } = this.state;
+    const { formData, placeholderProps } = this.state;
     const blocksFieldname = getBlocksFieldname(formData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
     const renderBlocks = formData[blocksLayoutFieldname]?.items;
@@ -635,7 +681,10 @@ class Form extends Component {
 
     return this.props.visual ? (
       <div className="ui container">
-        <DragDropContext onDragEnd={this.onDragEnd}>
+        <DragDropContext
+          onDragEnd={this.onDragEnd}
+          onDragUpdate={this.onDragUpdate}
+        >
           <Droppable droppableId="edit-form">
             {provided => (
               <div ref={provided.innerRef} {...provided.droppableProps}>
@@ -693,10 +742,12 @@ class Form extends Component {
                 {provided.placeholder && (
                   <div
                     style={{
-                      // position: 'absolute',
-                      left: 0,
-                      border: '1px dashed rgba(255,255,255,1)',
-                      borderRadius: 5,
+                      position: 'absolute',
+                      top: `${placeholderProps.clientY + 170}px`,
+                      left: `${placeholderProps.clientX + 170}px`,
+                      height: `${placeholderProps.clientHeight}px`,
+                      background: '#eee',
+                      width: `${placeholderProps.clientWidth}px`,
                     }}
                   />
                 )}
