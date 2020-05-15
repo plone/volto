@@ -6,6 +6,8 @@
 
 ### Feature
 
+- Refactor createContent command to accept a single json object @iFlameing
+
 ### Bugfix
 
 ### Internal
