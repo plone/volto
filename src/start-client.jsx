@@ -6,6 +6,7 @@ import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from 'redux-connect';
 import { loadableReady } from '@loadable/component';
 import routes from '~/routes';
+import { settings } from '~/config';
 import '~/theme';
 
 import configureStore from '@plone/volto/store';
@@ -18,6 +19,14 @@ export default () => {
 
   const store = configureStore(window.__data, history, api);
   persistAuthToken(store);
+
+  // On Cypress we expose the history, the store and the settings
+  // so we can access from Cypress and manipulate them
+  if (window.Cypress) {
+    window.appHistory = history;
+    window.store = store;
+    window.settings = settings;
+  }
 
   loadableReady(() => {
     hydrate(
