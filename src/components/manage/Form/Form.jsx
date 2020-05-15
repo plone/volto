@@ -606,12 +606,7 @@ class Form extends Component {
     }
     const blocksLayoutFieldname = getBlocksLayoutFieldname(this.state.formData);
     this.setState({
-      placeholderProps: {
-        clientHeight: 0,
-        clientWidth: 0,
-        clientY: 0,
-        clientX: 0,
-      },
+      placeholderProps: {},
     });
     this.setState({
       formData: {
@@ -623,6 +618,39 @@ class Form extends Component {
             destination.index,
           ),
         },
+      },
+    });
+  };
+
+  handleDragStart = event => {
+    const queryAttr = 'data-rbd-draggable-id';
+    const domQuery = `[${queryAttr}='${event.draggableId}']`;
+    const draggedDOM = document.querySelector(domQuery);
+
+    if (!draggedDOM) {
+      return;
+    }
+
+    const { clientHeight, clientWidth } = draggedDOM;
+    const sourceIndex = event.source.index;
+    var clientY =
+      parseFloat(window.getComputedStyle(draggedDOM.parentNode).paddingTop) +
+      [...draggedDOM.parentNode.children]
+        .slice(0, sourceIndex)
+        .reduce((total, curr) => {
+          const style = curr.currentStyle || window.getComputedStyle(curr);
+          const marginBottom = parseFloat(style.marginBottom);
+          return total + curr.clientHeight + marginBottom;
+        }, 0);
+
+    this.setState({
+      placeholderProps: {
+        clientHeight,
+        clientWidth,
+        clientY,
+        clientX: parseFloat(
+          window.getComputedStyle(draggedDOM.parentNode).paddingLeft,
+        ),
       },
     });
   };
@@ -642,16 +670,24 @@ class Form extends Component {
       return;
     }
     const { clientHeight, clientWidth } = draggedDOM;
+    const sourceIndex = update.source.index;
+    const childrenArray = [...draggedDOM.parentNode.children];
+    const movedItem = childrenArray[sourceIndex];
+    childrenArray.splice(sourceIndex, 1);
 
-    const clientY =
+    const updatedArray = [
+      ...childrenArray.slice(0, destinationIndex),
+      movedItem,
+      ...childrenArray.slice(destinationIndex + 1),
+    ];
+
+    var clientY =
       parseFloat(window.getComputedStyle(draggedDOM.parentNode).paddingTop) +
-      [...draggedDOM.parentNode.children]
-        .slice(0, destinationIndex)
-        .reduce((total, curr) => {
-          const style = curr.currentStyle || window.getComputedStyle(curr);
-          const marginBottom = parseFloat(style.marginBottom);
-          return total + curr.clientHeight + marginBottom;
-        }, 0);
+      updatedArray.slice(0, destinationIndex).reduce((total, curr) => {
+        const style = curr.currentStyle || window.getComputedStyle(curr);
+        const marginBottom = parseFloat(style.marginBottom);
+        return total + curr.clientHeight + marginBottom;
+      }, 0);
 
     this.setState({
       placeholderProps: {
@@ -683,10 +719,11 @@ class Form extends Component {
       <div className="ui container">
         <DragDropContext
           onDragEnd={this.onDragEnd}
+          onDragStart={this.handleDragStart}
           onDragUpdate={this.onDragUpdate}
         >
           <Droppable droppableId="edit-form">
-            {provided => (
+            {(provided, snapshot) => (
               <div ref={provided.innerRef} {...provided.droppableProps}>
                 {map(renderBlocks, (block, index) => (
                   <Draggable draggableId={block} index={index} key={block}>
@@ -739,15 +776,17 @@ class Form extends Component {
                   </Draggable>
                 ))}
                 {provided.placeholder}
-                {provided.placeholder && (
+                {!isEmpty(placeholderProps) && snapshot.isDraggingOver && (
                   <div
                     style={{
                       position: 'absolute',
                       top: `${placeholderProps.clientY + 170}px`,
                       left: `${placeholderProps.clientX + 170}px`,
                       height: `${placeholderProps.clientHeight}px`,
-                      background: '#eee',
+                      background: '#CFD8DC',
                       width: `${placeholderProps.clientWidth}px`,
+                      borderRadius: '3px',
+                      border: 'dashed 1px blue',
                     }}
                   />
                 )}
