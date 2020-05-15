@@ -642,22 +642,27 @@ class Form extends Component {
                 {map(renderBlocks, (block, index) => (
                   <Draggable draggableId={block} index={index} key={block}>
                     {provided => (
-                      <div ref={provided.innerRef} {...provided.draggableProps}>
-                        <div
-                          style={{
-                            visibility:
-                              this.state.selected === block &&
-                              !this.hideHandler(blocksDict[block])
-                                ? 'visible'
-                                : 'hidden',
-                            display: 'inline-block',
-                          }}
-                          {...provided.dragHandleProps}
-                          className="draggable"
-                        >
-                          <Icon name={dragSVG} size="18px" />
-                        </div>
-                        <div>
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        className={`block-editor-${blocksDict[block]['@type']}`}
+                      >
+                        <div style={{ position: 'relative' }}>
+                          <div
+                            style={{
+                              visibility:
+                                this.state.selected === block &&
+                                !this.hideHandler(blocksDict[block])
+                                  ? 'visible'
+                                  : 'hidden',
+                              display: 'inline-block',
+                            }}
+                            {...provided.dragHandleProps}
+                            className="drag handle wrapper"
+                          >
+                            <Icon name={dragSVG} size="18px" />
+                          </div>
+
                           <EditBlock
                             id={block}
                             index={index}
@@ -685,6 +690,16 @@ class Form extends Component {
                   </Draggable>
                 ))}
                 {provided.placeholder}
+                {provided.placeholder && (
+                  <div
+                    style={{
+                      // position: 'absolute',
+                      left: 0,
+                      border: '1px dashed rgba(255,255,255,1)',
+                      borderRadius: 5,
+                    }}
+                  />
+                )}
               </div>
             )}
           </Droppable>
