@@ -294,3 +294,21 @@ function setBaseAndExtent(...args) {
   document.getSelection().removeAllRanges();
   document.getSelection().setBaseAndExtent(...args);
 }
+
+Cypress.Commands.add('navigate', (route = '') => {
+  return cy
+    .window()
+    .its('appHistory')
+    .invoke('push', route);
+});
+
+Cypress.Commands.add('store', () => {
+  return cy
+    .window()
+    .its('store')
+    .invoke('getStore', '');
+});
+
+Cypress.Commands.add('settings', (key, value) => {
+  return cy.window().its('settings');
+});

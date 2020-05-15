@@ -12,6 +12,8 @@
 
 ### Internal
 
+- Make available some internal artifacts (Router, Redux Store and Settings) to the Cypress acceptance tests, add docs @sneridagh
+
 ## 5.9.1 (2020-05-15)
 
 ### Bugfix
