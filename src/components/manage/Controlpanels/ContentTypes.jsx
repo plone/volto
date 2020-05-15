@@ -26,6 +26,7 @@ import addSVG from '@plone/volto/icons/add-document.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 import editSVG from '@plone/volto/icons/pen.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
+import folderSVG from '@plone/volto/icons/folder.svg';
 
 const messages = defineMessages({
   add: {
@@ -128,6 +129,7 @@ class ContentTypes extends Component {
     this.onAddTypeError = this.onAddTypeError.bind(this);
     this.onAddTypeSuccess = this.onAddTypeSuccess.bind(this);
     this.onEdit = this.onEdit.bind(this);
+    this.addFields = this.addFields.bind(this);
     this.onDelete = this.onDelete.bind(this);
     this.onDeleteCancel = this.onDeleteCancel.bind(this);
     this.onDeleteOk = this.onDeleteOk.bind(this);
@@ -246,6 +248,18 @@ class ContentTypes extends Component {
     }
   }
 
+  /** Folder
+   * @param {Object} event Event object.
+   * @param {string} { value }
+   * @memberof ContentTypes
+   * @returns {undefined}
+   */
+  addFields(event, { value }) {
+    if (value) {
+      this.props.history.push(`${this.props.pathname}/${value}/fields`);
+    }
+  }
+
   /**
    * On delete ok
    * @method onDeleteOk
@@ -296,6 +310,7 @@ class ContentTypes extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    console.log('this.props', this.props);
     if (!this.props.controlpanel) {
       return <div />;
     }
@@ -418,6 +433,16 @@ class ContentTypes extends Component {
                               <FormattedMessage
                                 id="Delete"
                                 defaultMessage="Delete"
+                              />
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                              onClick={this.addFields}
+                              value={item['id']}
+                            >
+                              <Icon name={folderSVG} size="15px" />
+                              <FormattedMessage
+                                id="Fields"
+                                defaultMessage="Fields"
                               />
                             </Dropdown.Item>
                           </Dropdown.Menu>
