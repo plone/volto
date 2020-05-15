@@ -9,6 +9,7 @@
 ### Bugfix
 
 - Fix Bug in Form Component, that lead to site crash when transmitting a comment @jackahl #1475
+- Fix for the long lasted issue when creating links in newly created text blocks not showing as links until you save @avoinea
 
 ### Internal
 
