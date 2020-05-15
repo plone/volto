@@ -152,7 +152,8 @@ class Edit extends Component {
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (!this.props.selected && nextProps.selected) {
-      this.node.focus();
+      // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
+      setTimeout(this.node.focus, 0);
       this.setState({
         editorState: EditorState.moveFocusToEnd(this.state.editorState),
       });
@@ -160,14 +161,11 @@ class Edit extends Component {
   }
 
   /**
-   * Component will receive props
+   * Component will unmount
    * @method componentWillUnmount
    * @returns {undefined}
    */
   componentWillUnmount() {
-    if (this.props.selected) {
-      this.node.focus();
-    }
     document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 

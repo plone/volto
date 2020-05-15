@@ -24,7 +24,7 @@ Cypress.Commands.add('autologin', () => {
 // --- CREATE CONTENT --------------------------------------------------------
 Cypress.Commands.add(
   'createContent',
-  (contentType, contentId, contentTitle, path = '') => {
+  ({ contentType, contentId, contentTitle, path = '' }) => {
     let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
       api_url = 'http://localhost:8081/db/container';
@@ -176,6 +176,28 @@ Cypress.Commands.add('waitForResourceToLoad', (fileName, type) => {
     };
 
     checkIfResourceHasBeenLoaded();
+  });
+});
+
+// --- CREATE CONTENT --------------------------------------------------------
+Cypress.Commands.add('setRegistry', (record, value) => {
+  let api_url, auth;
+  api_url = 'http://localhost:55001/plone';
+  auth = {
+    user: 'admin',
+    pass: 'secret',
+  };
+
+  return cy.request({
+    method: 'PATCH',
+    url: `${api_url}/@registry/`,
+    headers: {
+      Accept: 'application/json',
+    },
+    auth: auth,
+    body: {
+      [record]: value,
+    },
   });
 });
 
