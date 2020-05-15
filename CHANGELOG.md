@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.9.1 (unreleased)
+## 5.9.1 (2020-05-15)
 
 ### Bugfix
 
