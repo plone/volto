@@ -199,7 +199,7 @@ class Edit extends Component {
 
     return (
       <div id="page-edit">
-        {this.props.objectActions.length > 0 && (
+        {this.props.objectActions?.length > 0 && (
           <>
             {editPermission && (
               <>
