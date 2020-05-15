@@ -124,15 +124,11 @@ class Edit extends Component {
   }
 
   /**
-   * Component will receive props
+   * Component will unmount
    * @method componentWillUnmount
    * @returns {undefined}
    */
   componentWillUnmount() {
-    if (this.props.selected) {
-      // See https://github.com/draft-js-plugins/draft-js-plugins/issues/800
-      setTimeout(this.node.focus, 0);
-    }
     document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
