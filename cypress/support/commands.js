@@ -24,7 +24,7 @@ Cypress.Commands.add('autologin', () => {
 // --- CREATE CONTENT --------------------------------------------------------
 Cypress.Commands.add(
   'createContent',
-  (contentType, contentId, contentTitle, path = '') => {
+  ({ contentType, contentId, contentTitle, path = '' }) => {
     let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
       api_url = 'http://localhost:8081/db/container';

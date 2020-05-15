@@ -2,7 +2,11 @@ if (Cypress.env('API') !== 'guillotina') {
   describe('Block Indexing Tests', () => {
     beforeEach(() => {
       cy.autologin();
-      cy.createContent('Document', 'my-page', 'My Page');
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'my-page',
+        contentTitle: 'My Page',
+      });
       cy.visit('/my-page/edit');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');

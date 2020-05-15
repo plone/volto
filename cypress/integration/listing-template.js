@@ -6,8 +6,17 @@ if (Cypress.env('API') !== 'guillotina') {
       // and the folder contents view
       cy.visit('/');
       cy.autologin();
-      cy.createContent('Folder', 'my-folder', 'My Folder');
-      cy.createContent('Document', 'my-document', 'My Document', 'my-folder');
+      cy.createContent({
+        contentType: 'Folder',
+        contentId: 'my-folder',
+        contentTitle: 'My Folder',
+      });
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'my-document',
+        contentTitle: 'My Document',
+        path: 'my-folder',
+      });
       cy.visit('/my-folder/my-document');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
