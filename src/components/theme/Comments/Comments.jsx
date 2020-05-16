@@ -202,7 +202,7 @@ class Comments extends Component {
           id={this.state.editId}
           text={this.state.editText}
         />
-        {console.log(this.props.items)}
+
         {this.props.items.map(item => [
           <div className="comment" key={item['@id']}>
             <Grid stackable>
