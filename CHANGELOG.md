@@ -7,6 +7,7 @@
 ### Feature
 
 - Refactor createContent command to accept a single json object @iFlameing
+- enable hyperlinks in comments when intelligent text is enabled for comments @jackahl
 
 ### Bugfix
 
