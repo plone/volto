@@ -4,7 +4,7 @@
 
 ### Breaking
 
-- Removed support for CSS modules, since Razzle 3.1.2 do not support them @sneridagh
+- Removed support for CSS modules, since Razzle 3.1.x do not support them @sneridagh
 - Updated Volto dependencies - See https://docs.voltocms.com/upgrade-guide/for more information @sneridagh
 - Disabled `react-hooks/exhaustive-deps` rule from `eslint-plugin-react-hooks` since `useEffect` in some components in Volto *need* to not be dependant on some props updates @sneridagh
 
@@ -26,6 +26,7 @@
 - Update prettier @sneridagh
 - Update eslint plugins @sneridagh
 - Update `cypress-axe`, `detectbrowser`, `lint-staged` and `release-it` @sneridagh
+
 ## 5.10.0 (2020-05-16)
 
 ### Feature
