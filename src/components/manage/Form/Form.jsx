@@ -716,115 +716,119 @@ class Form extends Component {
     const schema = this.removeBlocksLayoutFields(originalSchema);
 
     return this.props.visual ? (
-      <div className="ui container">
-        <DragDropContext
-          onDragEnd={this.onDragEnd}
-          onDragStart={this.handleDragStart}
-          onDragUpdate={this.onDragUpdate}
-        >
-          <Droppable droppableId="edit-form">
-            {(provided, snapshot) => (
-              <div ref={provided.innerRef} {...provided.droppableProps}>
-                {map(renderBlocks, (block, index) => (
-                  <Draggable draggableId={block} index={index} key={block}>
-                    {provided => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        className={`block-editor-${blocksDict[block]['@type']}`}
-                      >
-                        <div style={{ position: 'relative' }}>
-                          <div
-                            style={{
-                              visibility:
-                                this.state.selected === block &&
-                                !this.hideHandler(blocksDict[block])
-                                  ? 'visible'
-                                  : 'hidden',
-                              display: 'inline-block',
-                            }}
-                            {...provided.dragHandleProps}
-                            className="drag handle wrapper"
-                          >
-                            <Icon name={dragSVG} size="18px" />
-                          </div>
-
-                          <EditBlock
-                            id={block}
-                            index={index}
-                            type={blocksDict[block]['@type']}
-                            key={block}
-                            handleKeyDown={this.handleKeyDown}
-                            onAddBlock={this.onAddBlock}
-                            onChangeBlock={this.onChangeBlock}
-                            onMutateBlock={this.onMutateBlock}
-                            onChangeField={this.onChangeField}
-                            onDeleteBlock={this.onDeleteBlock}
-                            onSelectBlock={this.onSelectBlock}
-                            onMoveBlock={this.onMoveBlock}
-                            onFocusPreviousBlock={this.onFocusPreviousBlock}
-                            onFocusNextBlock={this.onFocusNextBlock}
-                            properties={formData}
-                            data={blocksDict[block]}
-                            pathname={this.props.pathname}
-                            block={block}
-                            selected={this.state.selected === block}
-                          />
-                        </div>
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-                {!isEmpty(placeholderProps) && snapshot.isDraggingOver && (
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: `${placeholderProps.clientY + 170}px`,
-                      left: `${placeholderProps.clientX + 170}px`,
-                      height: `${placeholderProps.clientHeight}px`,
-                      background: '#CFD8DC',
-                      width: `${placeholderProps.clientWidth}px`,
-                      borderRadius: '3px',
-                      border: 'dashed 1px blue',
-                    }}
-                  />
-                )}
-              </div>
-            )}
-          </Droppable>
-          <Portal
-            node={__CLIENT__ && document.getElementById('sidebar-metadata')}
+      // Removing this from SSR is important, since react-beautiful-dnd supports SSR,
+      // but draftJS don't like it much and the hydration gets messed up
+      !__SERVER__ && (
+        <div className="ui container">
+          <DragDropContext
+            onDragEnd={this.onDragEnd}
+            onDragStart={this.handleDragStart}
+            onDragUpdate={this.onDragUpdate}
           >
-            <UiForm
-              method="post"
-              onSubmit={this.onSubmit}
-              error={keys(this.state.errors).length > 0}
+            <Droppable droppableId="edit-form">
+              {(provided, snapshot) => (
+                <div ref={provided.innerRef} {...provided.droppableProps}>
+                  {map(renderBlocks, (block, index) => (
+                    <Draggable draggableId={block} index={index} key={block}>
+                      {provided => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          className={`block-editor-${blocksDict[block]['@type']}`}
+                        >
+                          <div style={{ position: 'relative' }}>
+                            <div
+                              style={{
+                                visibility:
+                                  this.state.selected === block &&
+                                  !this.hideHandler(blocksDict[block])
+                                    ? 'visible'
+                                    : 'hidden',
+                                display: 'inline-block',
+                              }}
+                              {...provided.dragHandleProps}
+                              className="drag handle wrapper"
+                            >
+                              <Icon name={dragSVG} size="18px" />
+                            </div>
+
+                            <EditBlock
+                              id={block}
+                              index={index}
+                              type={blocksDict[block]['@type']}
+                              key={block}
+                              handleKeyDown={this.handleKeyDown}
+                              onAddBlock={this.onAddBlock}
+                              onChangeBlock={this.onChangeBlock}
+                              onMutateBlock={this.onMutateBlock}
+                              onChangeField={this.onChangeField}
+                              onDeleteBlock={this.onDeleteBlock}
+                              onSelectBlock={this.onSelectBlock}
+                              onMoveBlock={this.onMoveBlock}
+                              onFocusPreviousBlock={this.onFocusPreviousBlock}
+                              onFocusNextBlock={this.onFocusNextBlock}
+                              properties={formData}
+                              data={blocksDict[block]}
+                              pathname={this.props.pathname}
+                              block={block}
+                              selected={this.state.selected === block}
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                  {!isEmpty(placeholderProps) && snapshot.isDraggingOver && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: `${placeholderProps.clientY + 170}px`,
+                        left: `${placeholderProps.clientX + 170}px`,
+                        height: `${placeholderProps.clientHeight}px`,
+                        background: '#CFD8DC',
+                        width: `${placeholderProps.clientWidth}px`,
+                        borderRadius: '3px',
+                        border: 'dashed 1px blue',
+                      }}
+                    />
+                  )}
+                </div>
+              )}
+            </Droppable>
+            <Portal
+              node={__CLIENT__ && document.getElementById('sidebar-metadata')}
             >
-              {schema &&
-                map(schema.fieldsets, item => [
-                  <Segment secondary attached key={item.title}>
-                    {item.title}
-                  </Segment>,
-                  <Segment attached key={`fieldset-contents-${item.title}`}>
-                    {map(item.fields, (field, index) => (
-                      <Field
-                        {...schema.properties[field]}
-                        id={field}
-                        focus={false}
-                        value={this.state.formData[field]}
-                        required={schema.required.indexOf(field) !== -1}
-                        onChange={this.onChangeField}
-                        key={field}
-                        error={this.state.errors[field]}
-                      />
-                    ))}
-                  </Segment>,
-                ])}
-            </UiForm>
-          </Portal>
-        </DragDropContext>
-      </div>
+              <UiForm
+                method="post"
+                onSubmit={this.onSubmit}
+                error={keys(this.state.errors).length > 0}
+              >
+                {schema &&
+                  map(schema.fieldsets, item => [
+                    <Segment secondary attached key={item.title}>
+                      {item.title}
+                    </Segment>,
+                    <Segment attached key={`fieldset-contents-${item.title}`}>
+                      {map(item.fields, (field, index) => (
+                        <Field
+                          {...schema.properties[field]}
+                          id={field}
+                          focus={false}
+                          value={this.state.formData[field]}
+                          required={schema.required.indexOf(field) !== -1}
+                          onChange={this.onChangeField}
+                          key={field}
+                          error={this.state.errors[field]}
+                        />
+                      ))}
+                    </Segment>,
+                  ])}
+              </UiForm>
+            </Portal>
+          </DragDropContext>
+        </div>
+      )
     ) : (
       <Container>
         <UiForm
