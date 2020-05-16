@@ -1,18 +1,45 @@
 # Change Log
 
-## 5.9.2 (unreleased)
+## 5.10.1 (unreleased)
 
 ### Breaking
 
-### Feature
+- Removed support for CSS modules, since Razzle 3.1.x do not support them @sneridagh
+- Updated Volto dependencies - See https://docs.voltocms.com/upgrade-guide/for more information @sneridagh
+- Disabled `react-hooks/exhaustive-deps` rule from `eslint-plugin-react-hooks` since `useEffect` in some components in Volto *need* to not be dependant on some props updates @sneridagh
 
-- Refactor createContent command to accept a single json object @iFlameing
+### Feature
 
 ### Bugfix
 
 ### Internal
 
+- Update to Razzle 3.1.2 @sneridagh
+- Update to React 16.13.1 @sneridagh
+- Removal of unused (and deprecated) `@babel/preset-stage-0` @sneridagh
+- Update `react-router` @sneridagh
+- Update `react-redux` and friends @sneridagh
+- Update `connected-react-router` @sneridagh
+- Update low hanging fruits deps @sneridagh
+- Update style/less loaders and friends @sneridagh
+- Update stylelint and friends @sneridagh
+- Update prettier @sneridagh
+- Update eslint plugins @sneridagh
+- Update `cypress-axe`, `detectbrowser`, `lint-staged` and `release-it` @sneridagh
+
+## 5.10.0 (2020-05-16)
+
+### Feature
+
+- Refactor createContent command to accept a single json object @iFlameing
+- enable hyperlinks in comments when intelligent text is enabled for comments @jackahl
+- Added InlineForm, a generic form implementation that can be used to edit, among others, block data. @tiberiuichim
+
+### Internal
+
 - Make available some internal artifacts (Router, Redux Store and Settings) to the Cypress acceptance tests, add docs @sneridagh
+- Added a cypress test for the comment @iFlameing
+- Add a cypress function to set registry entries @jackahl
 
 ## 5.9.1 (2020-05-15)
 
@@ -23,7 +50,7 @@
 
 ### Internal
 
-- Add a cypress function to set registry entries @jackahl
+- add a cypress function to set registry entries @jackahl
 
 ## 5.9.0 (2020-05-12)
 

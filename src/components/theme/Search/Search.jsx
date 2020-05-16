@@ -97,7 +97,7 @@ class Search extends Component {
    * @param {Object} nextProps Next properties
    * @returns {undefined}
    */
-  UNSAFE_componentWillReceiveProps = nextProps => {
+  UNSAFE_componentWillReceiveProps = (nextProps) => {
     if (
       nextProps.searchableText !== this.props.searchableText ||
       nextProps.subject !== this.props.subject
@@ -185,7 +185,7 @@ class Search extends Component {
               )}
             </header>
             <section id="content-core">
-              {this.props.items.map(item => (
+              {this.props.items.map((item) => (
                 <article className="tileItem" key={item['@id']}>
                   <h2 className="tileHeadline">
                     <Link

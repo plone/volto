@@ -21,7 +21,7 @@ import deleteSVG from '@plone/volto/icons/delete.svg';
 
 const getId = () => Math.floor(Math.random() * Math.pow(2, 24)).toString(32);
 
-const valueToDraft = value => ({
+const valueToDraft = (value) => ({
   blocks: [
     {
       data: {},
@@ -36,13 +36,13 @@ const valueToDraft = value => ({
   entityMap: {},
 });
 
-const emptyCell = type => ({
+const emptyCell = (type) => ({
   key: getId(),
   type: type || 'data',
   value: valueToDraft(''),
 });
 
-const emptyRow = cells => ({
+const emptyRow = (cells) => ({
   key: getId(),
   cells: map(cells, () => emptyCell()),
 });
@@ -401,7 +401,7 @@ class Edit extends Component {
       ...this.props.data,
       table: {
         ...table,
-        rows: map(table.rows, row => ({
+        rows: map(table.rows, (row) => ({
           ...row,
           cells: remove(
             row.cells,
@@ -660,7 +660,7 @@ class Edit extends Component {
           <Portal
             node={__CLIENT__ && document.getElementById('sidebar-properties')}
           >
-            <Form method="post" onSubmit={event => event.preventDefault()}>
+            <Form method="post" onSubmit={(event) => event.preventDefault()}>
               <Segment secondary attached>
                 <FormattedMessage id="Table" defaultMessage="Table" />
               </Segment>

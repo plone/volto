@@ -21,17 +21,17 @@ const v6 = `
   .replace(/\n/g, '')
   .trim();
 
-const ipRegex = opts =>
+const ipRegex = (opts) =>
   opts && opts.exact
     ? new RegExp(`(?:^${v4}$)|(?:^${v6}$)`)
     : new RegExp(`(?:${v4})|(?:${v6})`, 'g');
 
-ipRegex.v4 = opts =>
+ipRegex.v4 = (opts) =>
   opts && opts.exact ? new RegExp(`^${v4}$`) : new RegExp(v4, 'g');
-ipRegex.v6 = opts =>
+ipRegex.v6 = (opts) =>
   opts && opts.exact ? new RegExp(`^${v6}$`) : new RegExp(v6, 'g');
 
-export default _opts => {
+export default (_opts) => {
   const opts = Object.assign({ strict: true }, _opts);
   const protocol = `(?:(?:[a-z]+:)?//)${opts.strict ? '' : '?'}`;
   const auth = '(?:\\S+(?::\\S*)?@)?';

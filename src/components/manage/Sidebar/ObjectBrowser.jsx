@@ -4,7 +4,7 @@ import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrow
 
 const DEFAULT_TIMEOUT = 500;
 
-const withObjectBrowser = WrappedComponent =>
+const withObjectBrowser = (WrappedComponent) =>
   class extends React.Component {
     /**
      * Default properties

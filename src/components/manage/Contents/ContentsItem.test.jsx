@@ -40,9 +40,9 @@ describe('ContentsItem', () => {
             onMoveToTop={() => {}}
             onMoveToBottom={() => {}}
             onOrderItem={() => {}}
-            connectDragSource={x => x}
-            connectDragPreview={x => x}
-            connectDropTarget={x => x}
+            connectDragSource={(x) => x}
+            connectDragPreview={(x) => x}
+            connectDropTarget={(x) => x}
             order={1}
             isDragging={false}
           />

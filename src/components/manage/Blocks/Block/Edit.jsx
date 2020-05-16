@@ -105,14 +105,14 @@ class Edit extends Component {
       blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
     return (
-      <div className={` ui drag block inner ${type}`}>
+      <div className={`ui drag block inner ${type}`}>
         {Block !== null ? (
           <div
             role="presentation"
             onClick={() => this.props.onSelectBlock(this.props.id)}
             onKeyDown={
               !blockHasOwnFocusManagement
-                ? e =>
+                ? (e) =>
                     this.props.handleKeyDown(
                       e,
                       this.props.index,
@@ -133,7 +133,7 @@ class Edit extends Component {
         ) : (
           <div
             role="presentation"
-            onKeyDown={e =>
+            onKeyDown={(e) =>
               this.props.handleKeyDown(
                 e,
                 this.props.index,
