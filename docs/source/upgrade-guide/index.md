@@ -56,9 +56,11 @@ Add this key to the `jest.moduleNameMapper`:
 "jest":
   "moduleNameMapper": {
     "@plone/volto/babel": "<rootDir>/node_modules/@plone/volto/babel",
+    ...
+  }
 ```
 
-Since new Jest is a bit more picky.
+because new Jest is a bit more picky when importing externals.
 
 ### Prettier
 
@@ -77,6 +79,45 @@ of the styles order. It's recommended that you upgrade your local version of `pr
 
 Razzle does not support them anymore, so neither do we. If you need them, you could add
 a Webpack config in your local `razzle.config.js`.
+
+### Update your eslint config
+
+Introduced in the Volto 5 series, it's recommended that you update your local ESLint config. In the past, we used `.eslintrc` file to do so. In order to support automatically Volto addons, you should remove it and use a JS based config one `.eslintrc.js` with this contents:
+
+```js
+const path = require('path');
+const projectRootPath = path.resolve('.');
+const packageJson = require(path.join(projectRootPath, 'package.json'));
+
+// Extends ESlint configuration for adding the aliases to `src` directories in Volto addons
+const addonsAliases = [];
+if (packageJson.addons) {
+  const addons = packageJson.addons;
+  addons.forEach(addon => {
+    const addonPath = `${addon}/src`;
+    addonsAliases.push([addon, addonPath]);
+  });
+}
+
+module.exports = {
+  extends: './node_modules/@plone/volto/.eslintrc',
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@plone/volto', '@plone/volto/src'],
+          ...addonsAliases,
+          ['@package', './src'],
+        ],
+        extensions: ['.js', '.jsx', '.json'],
+      },
+      'babel-plugin-root-import': {
+        rootPathSuffix: 'src',
+      },
+    },
+  },
+};
+```
 
 ## Upgrading to Volto 5.x.x
 
