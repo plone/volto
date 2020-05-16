@@ -727,7 +727,11 @@ class Form extends Component {
           >
             <Droppable droppableId="edit-form">
               {(provided, snapshot) => (
-                <div ref={provided.innerRef} {...provided.droppableProps}>
+                <div
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                  style={{ position: 'relative' }}
+                >
                   {map(renderBlocks, (block, index) => (
                     <Draggable draggableId={block} index={index} key={block}>
                       {provided => (
@@ -779,17 +783,15 @@ class Form extends Component {
                     </Draggable>
                   ))}
                   {provided.placeholder}
-                  {!isEmpty(placeholderProps) && snapshot.isDraggingOver && (
+                  {!isEmpty(placeholderProps) && (
                     <div
                       style={{
                         position: 'absolute',
-                        top: `${placeholderProps.clientY + 170}px`,
-                        left: `${placeholderProps.clientX + 170}px`,
-                        height: `${placeholderProps.clientHeight}px`,
-                        background: '#CFD8DC',
+                        top: `${placeholderProps.clientY}px`,
+                        height: `${placeholderProps.clientHeight + 18}px`,
+                        background: '#eee',
                         width: `${placeholderProps.clientWidth}px`,
                         borderRadius: '3px',
-                        border: 'dashed 1px blue',
                       }}
                     />
                   )}
