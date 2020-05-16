@@ -375,8 +375,8 @@ class Form extends Component {
       event.preventDefault();
     }
     const errors = {};
-    map(this.props.schema.fieldsets, fieldset =>
-      map(fieldset.fields, fieldId => {
+    map(this.props.schema.fieldsets, (fieldset) =>
+      map(fieldset.fields, (fieldId) => {
         const field = this.props.schema.properties[fieldId];
         var data = this.state.formData[fieldId];
         if (typeof data === 'string' || data instanceof String) {
@@ -563,16 +563,16 @@ class Form extends Component {
    * @param {object} schema The schema definition of the form.
    * @returns A modified copy of the given schema.
    */
-  removeBlocksLayoutFields = schema => {
+  removeBlocksLayoutFields = (schema) => {
     const newSchema = { ...schema };
     const layoutFieldsetIndex = findIndex(
       newSchema.fieldsets,
-      fieldset => fieldset.id === 'layout',
+      (fieldset) => fieldset.id === 'layout',
     );
     if (layoutFieldsetIndex > -1) {
       const layoutFields = newSchema.fieldsets[layoutFieldsetIndex].fields;
       newSchema.fieldsets[layoutFieldsetIndex].fields = layoutFields.filter(
-        field => field !== 'blocks' && field !== 'blocks_layout',
+        (field) => field !== 'blocks' && field !== 'blocks_layout',
       );
       if (newSchema.fieldsets[layoutFieldsetIndex].fields.length === 0) {
         newSchema.fieldsets = [
@@ -632,7 +632,7 @@ class Form extends Component {
             error={keys(this.state.errors).length > 0}
           >
             {schema &&
-              map(schema.fieldsets, item => [
+              map(schema.fieldsets, (item) => [
                 <Segment secondary attached key={item.title}>
                   {item.title}
                 </Segment>,
@@ -671,7 +671,7 @@ class Form extends Component {
                   tabular: true,
                   className: 'formtabs',
                 }}
-                panes={map(schema.fieldsets, item => ({
+                panes={map(schema.fieldsets, (item) => ({
                   menuItem: item.title,
                   render: () => [
                     this.props.title && (
@@ -724,7 +724,7 @@ class Form extends Component {
                     content={this.props.error.message}
                   />
                 )}
-                {map(schema.fieldsets[0].fields, field => (
+                {map(schema.fieldsets[0].fields, (field) => (
                   <Field
                     {...schema.properties[field]}
                     id={field}

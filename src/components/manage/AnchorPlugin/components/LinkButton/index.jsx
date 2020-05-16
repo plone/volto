@@ -26,15 +26,15 @@ class LinkButton extends Component {
     placeholder: '',
   };
 
-  onMouseDown = event => {
+  onMouseDown = (event) => {
     event.preventDefault();
   };
 
-  onAddLinkClick = e => {
+  onAddLinkClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
     const { ownTheme, placeholder, onOverrideContent } = this.props;
-    const content = props => (
+    const content = (props) => (
       <AddLinkForm {...props} placeholder={placeholder} theme={ownTheme} />
     );
     onOverrideContent(content);

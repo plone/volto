@@ -21,18 +21,18 @@ import { flattenToAppURL } from '@plone/volto/helpers';
 let locales = {};
 
 if (settings) {
-  settings.supportedLanguages.forEach(lang => {
-    import('~/../locales/' + lang + '.json').then(locale => {
+  settings.supportedLanguages.forEach((lang) => {
+    import('~/../locales/' + lang + '.json').then((locale) => {
       locales = { ...locales, [lang]: locale.default };
     });
   });
 }
 
-const LanguageSelector = props => {
+const LanguageSelector = (props) => {
   const dispatch = useDispatch();
-  const currentLang = useSelector(state => state.intl.locale);
+  const currentLang = useSelector((state) => state.intl.locale);
   const translations = useSelector(
-    state => state.content.data?.['@components']?.translations?.items,
+    (state) => state.content.data?.['@components']?.translations?.items,
   );
 
   function changeLanguage(language) {
@@ -51,7 +51,7 @@ const LanguageSelector = props => {
 
   return settings.isMultilingual ? (
     <div className="language-selector">
-      {map(settings.supportedLanguages, lang => {
+      {map(settings.supportedLanguages, (lang) => {
         const translation = find(translations, { language: lang });
         return (
           <Link

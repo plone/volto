@@ -10,6 +10,74 @@ This upgrade guide lists all breaking changes in Volto and explains the
     dependencies might do when dealing with upgrades. We keep the generator up
     to date and in sync with current Volto release.
 
+## Upgrading to Volto 6.x.x
+
+First, update the `package.json` of your Volto project to Volto 6.x.x.
+
+```json
+  "dependencies": {
+    "@plone/volto": "6.0.0",
+    ...
+  }
+```
+
+### New Razzle version and related development dependencies
+
+The underlying Razzle package has been upgraded, and although that does not suppose any
+change in Volto itself, a lot of development dependencies have been upgraded and they should be updated in your local projects as well. Might be that the builds continue working if you don't update them, but it's better for you to do so for a better development experience.
+
+### Upgrade local dependencies versions
+
+You need to update `devDependencies` in `package.json` in your local environment:
+
+```json
+  "devDependencies": {
+    "eslint-plugin-prettier": "3.1.3",
+    "prettier": "2.0.5",
+    "stylelint-config-idiomatic-order": "8.1.0",
+    "stylelint-config-prettier": "8.0.1",
+    "stylelint-prettier": "1.1.2",
+  }
+```
+
+and remove entirely the `resolutions` key:
+
+```json
+  "resolutions": {
+    "@plone/volto/razzle/webpack-dev-server": "3.2.0"
+  }
+```
+
+### Update `package.json` config
+
+Add this key to the `jest.moduleNameMapper`:
+
+```json
+"jest":
+  "moduleNameMapper": {
+    "@plone/volto/babel": "<rootDir>/node_modules/@plone/volto/babel",
+```
+
+Since new Jest is a bit more picky.
+
+### Prettier
+
+Prettier has been updated, introducing some breaking formatting changes. It's recommended that you upgrade your local version of `prettier` and reformat your code with it using:
+
+`yarn prettier:fix`
+
+### Stylelint
+
+`stylelint` has been upgraded too, and it introduces some changes in the declaration
+of the styles order. It's recommended that you upgrade your local version of `prettier` and reformat your code with it using:
+
+`yarn stylelint:fix`
+
+### CSS modules are not supported anymore
+
+Razzle does not support them anymore, so neither do we. If you need them, you could add
+a Webpack config in your local `razzle.config.js`.
+
 ## Upgrading to Volto 5.x.x
 
 First, update the `package.json` of your Volto project to Volto 5.x.x.

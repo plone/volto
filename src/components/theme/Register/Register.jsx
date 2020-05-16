@@ -192,7 +192,7 @@ export default compose(
   withRouter,
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       loading: state.users.create.loading,
       loaded: state.users.create.loaded,
       error: state.users.create.error,

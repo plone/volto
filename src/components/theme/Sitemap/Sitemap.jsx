@@ -55,10 +55,10 @@ class Sitemap extends Component {
    * @returns {string} Markup for the component.
    */
 
-  renderItems = items => {
+  renderItems = (items) => {
     return (
       <ul>
-        {items.map(item => (
+        {items.map((item) => (
           <li
             key={item.url}
             className={item.items?.length > 0 ? 'with-children' : ''}
@@ -87,7 +87,7 @@ class Sitemap extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       items: state.navigation.items,
       lang: state.intl.locale,
     }),

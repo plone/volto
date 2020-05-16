@@ -88,11 +88,7 @@ class DatetimeWidget extends Component {
 
     this.state = {
       focused: false,
-      isDefault:
-        datetime.toISOString() ===
-        moment()
-          .utc()
-          .toISOString(),
+      isDefault: datetime.toISOString() === moment().utc().toISOString(),
       datetime,
     };
   }
@@ -103,10 +99,10 @@ class DatetimeWidget extends Component {
    * @param {Object} date updated momentjs Object for date
    * @returns {undefined}
    */
-  onDateChange = date => {
+  onDateChange = (date) => {
     if (date)
       this.setState(
-        prevState => ({
+        (prevState) => ({
           datetime: prevState.datetime.set({
             year: date.year(),
             month: date.month(),
@@ -125,9 +121,9 @@ class DatetimeWidget extends Component {
    * @param {Object} time updated momentjs Object for time
    * @returns {undefined}
    */
-  onTimeChange = time => {
+  onTimeChange = (time) => {
     this.setState(
-      prevState => ({
+      (prevState) => ({
         datetime: prevState.datetime.set({
           hours: time.hours(),
           minutes: time.minutes(),
@@ -229,7 +225,7 @@ class DatetimeWidget extends Component {
                   </div>
                 )}
               </div>
-              {map(error, message => (
+              {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>

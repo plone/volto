@@ -16,10 +16,10 @@ const ObjectBrowserNav = ({
   mode,
   navigateTo,
 }) => {
-  const isSelected = item => {
+  const isSelected = (item) => {
     let ret = false;
     if (selected) {
-      selected.forEach(_item => {
+      selected.forEach((_item) => {
         if (flattenToAppURL(_item['@id']) === flattenToAppURL(item['@id'])) {
           ret = true;
         }
@@ -31,7 +31,7 @@ const ObjectBrowserNav = ({
   return (
     <Segment as="ul" className="object-listing">
       {currentSearchResults &&
-        currentSearchResults.items.map(item => (
+        currentSearchResults.items.map((item) => (
           <li
             role="presentation"
             key={item.id}
@@ -68,7 +68,7 @@ const ObjectBrowserNav = ({
                 <Button
                   basic
                   icon
-                  onClick={e => {
+                  onClick={(e) => {
                     e.stopPropagation();
                     navigateTo(item['@id']);
                   }}

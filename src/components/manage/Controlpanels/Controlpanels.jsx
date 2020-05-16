@@ -104,7 +104,7 @@ class Controlpanels extends Component {
           title: this.props.intl.formatMessage(messages.usersandgroups),
         },
       ]),
-      controlpanel => ({
+      (controlpanel) => ({
         ...controlpanel,
         id: last(controlpanel['@id'].split('/')),
       }),
@@ -118,14 +118,14 @@ class Controlpanels extends Component {
             <Segment className="primary">
               <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />
             </Segment>
-            {map(groups, group => [
+            {map(groups, (group) => [
               <Segment key={`header-${group}`} secondary>
                 {group}
               </Segment>,
               <Segment key={`body-${group}`} attached>
                 <Grid columns={6}>
                   <Grid.Row>
-                    {map(filter(controlpanels, { group }), controlpanel => (
+                    {map(filter(controlpanels, { group }), (controlpanel) => (
                       <Grid.Column key={controlpanel.id}>
                         <Link to={`/controlpanel/${controlpanel.id}`}>
                           <Header as="h3" icon textAlign="center">

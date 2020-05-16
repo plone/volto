@@ -22,7 +22,7 @@ const getWidgetDefault = () => widgets.default;
  * @param {string} id Id
  * @returns {string} Widget component.
  */
-const getWidgetByFieldId = id => widgets.id[id] || null;
+const getWidgetByFieldId = (id) => widgets.id[id] || null;
 
 /**
  * Get widget by field's `widget` attribute
@@ -30,7 +30,7 @@ const getWidgetByFieldId = id => widgets.id[id] || null;
  * @param {string} widget Widget
  * @returns {string} Widget component.
  */
-const getWidgetByName = widget =>
+const getWidgetByName = (widget) =>
   typeof widget === 'string'
     ? widgets.widget[widget] || getWidgetDefault()
     : null;
@@ -41,7 +41,7 @@ const getWidgetByName = widget =>
  * @param {string} vocabulary Widget
  * @returns {string} Widget component.
  */
-const getWidgetByVocabulary = vocabulary =>
+const getWidgetByVocabulary = (vocabulary) =>
   vocabulary && vocabulary['@id']
     ? widgets.vocabulary[
         vocabulary['@id'].replace(`${settings.apiPath}/@vocabularies/`, '')
@@ -54,7 +54,7 @@ const getWidgetByVocabulary = vocabulary =>
  * @param {string} props Widget props
  * @returns {string} Widget component.
  */
-const getWidgetByVocabularyFromHint = props =>
+const getWidgetByVocabularyFromHint = (props) =>
   props.widgetOptions && props.widgetOptions.vocabulary
     ? widgets.vocabulary[
         props.widgetOptions.vocabulary['@id'].replace(
@@ -70,7 +70,7 @@ const getWidgetByVocabularyFromHint = props =>
  * @param {string} choices Widget
  * @returns {string} Widget component.
  */
-const getWidgetByChoices = props => {
+const getWidgetByChoices = (props) => {
   if (props.choices) {
     return widgets.choices;
   }
@@ -91,7 +91,7 @@ const getWidgetByChoices = props => {
  * @param {string} type Type
  * @returns {string} Widget component.
  */
-const getWidgetByType = type => widgets.type[type] || null;
+const getWidgetByType = (type) => widgets.type[type] || null;
 
 /**
  * Field component class.
@@ -125,7 +125,7 @@ const Field = (props, { intl }) => {
           monitor.getItem().order = hoverOrder;
         },
       },
-      connect => ({
+      (connect) => ({
         connectDropTarget: connect.dropTarget(),
       }),
     )(

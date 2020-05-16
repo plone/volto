@@ -4,11 +4,28 @@
 
 ### Breaking
 
+- Removed support for CSS modules, since Razzle 3.1.x do not support them @sneridagh
+- Updated Volto dependencies - See https://docs.voltocms.com/upgrade-guide/for more information @sneridagh
+- Disabled `react-hooks/exhaustive-deps` rule from `eslint-plugin-react-hooks` since `useEffect` in some components in Volto *need* to not be dependant on some props updates @sneridagh
+
 ### Feature
 
 ### Bugfix
 
 ### Internal
+
+- Update to Razzle 3.1.2 @sneridagh
+- Update to React 16.13.1 @sneridagh
+- Removal of unused (and deprecated) `@babel/preset-stage-0` @sneridagh
+- Update `react-router` @sneridagh
+- Update `react-redux` and friends @sneridagh
+- Update `connected-react-router` @sneridagh
+- Update low hanging fruits deps @sneridagh
+- Update style/less loaders and friends @sneridagh
+- Update stylelint and friends @sneridagh
+- Update prettier @sneridagh
+- Update eslint plugins @sneridagh
+- Update `cypress-axe`, `detectbrowser`, `lint-staged` and `release-it` @sneridagh
 
 ## 5.10.0 (2020-05-16)
 
