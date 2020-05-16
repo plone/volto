@@ -231,9 +231,7 @@ class Form extends Component {
     return (
       data['@type'] === 'text' &&
       (!data.text ||
-        (data.text &&
-          data.text.blocks &&
-          data.text.blocks.length === 1 &&
+        (data.text?.blocks?.length === 1 &&
           data.text.blocks[0].text === ''))
     );
   };
