@@ -13,6 +13,8 @@
 ### Internal
 
 - Make available some internal artifacts (Router, Redux Store and Settings) to the Cypress acceptance tests, add docs @sneridagh
+- Added a cypress test for the comment @iFlameing
+- Add a cypress function to set registry entries @jackahl
 
 ## 5.9.1 (2020-05-15)
 
@@ -24,8 +26,6 @@
 ### Internal
 
 - add a cypress function to set registry entries @jackahl
-- Added a cypress test for the comment @iFlameing
-- Add a cypress function to set registry entries @jackahl
 
 ## 5.9.0 (2020-05-12)
 
