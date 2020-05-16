@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.9.1 (unreleased)
+## 5.10.1 (unreleased)
 
 ### Breaking
 
@@ -26,6 +26,30 @@
 - Update prettier @sneridagh
 - Update eslint plugins @sneridagh
 - Update `cypress-axe`, `detectbrowser`, `lint-staged` and `release-it` @sneridagh
+## 5.10.0 (2020-05-16)
+
+### Feature
+
+- Refactor createContent command to accept a single json object @iFlameing
+- enable hyperlinks in comments when intelligent text is enabled for comments @jackahl
+- Added InlineForm, a generic form implementation that can be used to edit, among others, block data. @tiberiuichim
+
+### Internal
+
+- Make available some internal artifacts (Router, Redux Store and Settings) to the Cypress acceptance tests, add docs @sneridagh
+- Added a cypress test for the comment @iFlameing
+- Add a cypress function to set registry entries @jackahl
+
+## 5.9.1 (2020-05-15)
+
+### Bugfix
+
+- Fix Bug in Form Component, that lead to site crash when transmitting a comment @jackahl #1475
+- Fix for the long lasted issue when creating links in newly created text blocks not showing as links until you save @avoinea
+
+### Internal
+
+- add a cypress function to set registry entries @jackahl
 
 ## 5.9.0 (2020-05-12)
 

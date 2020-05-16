@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import moment from 'moment';
-import { Button, Grid, Segment } from 'semantic-ui-react';
+import { Button, Grid, Segment, Container } from 'semantic-ui-react';
 import { settings } from '~/config';
 
 import { addComment, deleteComment, listComments } from '@plone/volto/actions';
@@ -194,7 +194,7 @@ class Comments extends Component {
    */
   render() {
     return (
-      <div className="comments">
+      <Container className="comments">
         <CommentEditModal
           open={this.state.showEdit}
           onCancel={this.onEditCancel}
@@ -221,7 +221,11 @@ class Comments extends Component {
               </Grid.Column>
             </Grid>
             <Segment clearing>
-              {item.text.data}
+              {item.text['mime-type'] === 'text/html' ? (
+                <div dangerouslySetInnerHTML={{ __html: item.text.data }} />
+              ) : (
+                item.text.data
+              )}
               {item.is_deletable && (
                 <Button
                   aria-label={this.props.intl.formatMessage(messages.delete)}
@@ -273,7 +277,7 @@ class Comments extends Component {
             required: ['comment'],
           }}
         />
-      </div>
+      </Container>
     );
   }
 }
