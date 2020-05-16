@@ -1,11 +1,12 @@
 global.__CLIENT__ = true;
+global.__DEVELOPMENT__ = true;
 
 window.matchMedia =
   window.matchMedia ||
-  function() {
+  function () {
     return {
       matches: false,
-      addListener: function() {},
-      removeListener: function() {},
+      addListener: function () {},
+      removeListener: function () {},
     };
   };
