@@ -528,7 +528,6 @@ msgstr "フィールドを編集"
 msgid "Edit fieldset"
 msgstr "フィールドセットを編集"
 
-#: components/manage/Blocks/Block/EditForm
 #: components/manage/Form/InlineForm
 msgid "Edit values"
 msgstr ""
@@ -589,7 +588,6 @@ msgid "Enter your new password. Minimum 5 characters."
 msgstr "新しいパスワードを入力。（5文字以上）"
 
 #: components/manage/Add/Add
-#: components/manage/Blocks/Block/EditForm
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Form/InlineForm
@@ -1499,7 +1497,6 @@ msgstr "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundatio
 msgid "There is a configuration problem on the backend"
 msgstr ""
 
-#: components/manage/Blocks/Block/EditForm
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
 msgstr ""

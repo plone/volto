@@ -536,7 +536,6 @@ msgstr "Feld bearbeiten"
 msgid "Edit fieldset"
 msgstr "Fieldset bearbeiten"
 
-#: components/manage/Blocks/Block/EditForm
 #: components/manage/Form/InlineForm
 msgid "Edit values"
 msgstr ""
@@ -597,7 +596,6 @@ msgid "Enter your new password. Minimum 5 characters."
 msgstr "Geben Sie ihr neues Passwort ein. Mindestens 5 Zeichen."
 
 #: components/manage/Add/Add
-#: components/manage/Blocks/Block/EditForm
 #: components/manage/Edit/Edit
 #: components/manage/Form/Form
 #: components/manage/Form/InlineForm
@@ -1507,7 +1505,6 @@ msgstr "{plonecms} {copyright} 2000-{current_year} {plonefoundation} und Freunde
 msgid "There is a configuration problem on the backend"
 msgstr ""
 
-#: components/manage/Blocks/Block/EditForm
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
 msgstr ""
