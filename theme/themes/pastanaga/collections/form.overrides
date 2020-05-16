@@ -96,12 +96,3 @@
     color: #e40166 !important;
   }
 }
-
-// kasdjaksdjas
-.myclass {
-  color: red;
-
-  .myotherclass {
-    color: yellow;
-  }
-}
