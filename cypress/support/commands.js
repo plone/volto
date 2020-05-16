@@ -24,7 +24,13 @@ Cypress.Commands.add('autologin', () => {
 // --- CREATE CONTENT --------------------------------------------------------
 Cypress.Commands.add(
   'createContent',
-  (contentType, contentId, contentTitle, path = '') => {
+  ({
+    contentType,
+    contentId,
+    contentTitle,
+    path = '',
+    allow_discussion = false,
+  }) => {
     let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
       api_url = 'http://localhost:8081/db/container';
@@ -57,6 +63,7 @@ Cypress.Commands.add(
             filename: 'lorem.txt',
             'content-type': 'text/plain',
           },
+          allow_discussion: allow_discussion,
         },
       });
     }
@@ -107,6 +114,7 @@ Cypress.Commands.add(
                 '7624cf59-05d0-4055-8f55-5fd6597d84b0',
               ],
             },
+            allow_discussion: allow_discussion,
           },
         })
         .then(() => console.log(`${contentType} created`));
@@ -176,6 +184,28 @@ Cypress.Commands.add('waitForResourceToLoad', (fileName, type) => {
     };
 
     checkIfResourceHasBeenLoaded();
+  });
+});
+
+// --- CREATE CONTENT --------------------------------------------------------
+Cypress.Commands.add('setRegistry', (record, value) => {
+  let api_url, auth;
+  api_url = 'http://localhost:55001/plone';
+  auth = {
+    user: 'admin',
+    pass: 'secret',
+  };
+
+  return cy.request({
+    method: 'PATCH',
+    url: `${api_url}/@registry/`,
+    headers: {
+      Accept: 'application/json',
+    },
+    auth: auth,
+    body: {
+      [record]: value,
+    },
   });
 });
 
@@ -272,3 +302,21 @@ function setBaseAndExtent(...args) {
   document.getSelection().removeAllRanges();
   document.getSelection().setBaseAndExtent(...args);
 }
+
+Cypress.Commands.add('navigate', (route = '') => {
+  return cy
+    .window()
+    .its('appHistory')
+    .invoke('push', route);
+});
+
+Cypress.Commands.add('store', () => {
+  return cy
+    .window()
+    .its('store')
+    .invoke('getStore', '');
+});
+
+Cypress.Commands.add('settings', (key, value) => {
+  return cy.window().its('settings');
+});
