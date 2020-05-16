@@ -7,6 +7,7 @@
 ### Feature
 
 - Refactor createContent command to accept a single json object @iFlameing
+- enable hyperlinks in comments when intelligent text is enabled for comments @jackahl
 
 ### Bugfix
 
@@ -24,7 +25,6 @@
 ### Internal
 
 - add a cypress function to set registry entries @jackahl
-- enable hyperlinks in comments when intelligent text is enabled for comments @jackahl
 
 ## 5.9.0 (2020-05-12)
 
