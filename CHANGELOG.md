@@ -8,6 +8,7 @@
 
 - Refactor createContent command to accept a single json object @iFlameing
 - enable hyperlinks in comments when intelligent text is enabled for comments @jackahl
+- Added InlineForm, a generic form implementation that can be used to edit, among others, block data. @tiberiuichim
 
 ### Bugfix
 
