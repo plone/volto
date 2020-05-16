@@ -181,7 +181,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,md}": [
+    "src/**/*.{js,jsx,ts,tsx,json}": [
       "npx eslint --max-warnings=0 --fix",
       "npx prettier --single-quote --write",
       "yarn test:husky"
