@@ -12,6 +12,8 @@
 
 ### Bugfix
 
+- Fix local build when no RAZZLE_API_PATH is set @sneridagh
+
 ### Internal
 
 - Update to Razzle 3.1.2 @sneridagh
