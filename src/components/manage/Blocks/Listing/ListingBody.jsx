@@ -17,14 +17,15 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
     (state) => state.querystringsearch.subrequests,
   );
   const dispatch = useDispatch();
+  const queryLength = data?.query?.length || 0;
 
   React.useEffect(() => {
-    if (data?.query?.length > 0) {
+    if (queryLength > 0) {
       dispatch(
         getQueryStringResults(path, { ...data, fullobjects: 1 }, data.block),
       );
     }
-  }, [dispatch, data, data.block, path]);
+  }, [data, dispatch, path, queryLength]);
 
   const folderItems = content.is_folderish ? content.items : [];
 
