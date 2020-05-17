@@ -119,6 +119,16 @@ module.exports = {
 };
 ```
 
+### New wrappers in block editor
+
+We have improved the overall UX of the block drag and drop feature by using the library
+`react-beautiful-dnd` in the block editor. It introduces new wrappers (belonging to the
+lib machinery) in the structure. The original structure and class names are still in
+there (as children of these wrappers) to maintain maximum backwards compatibility. Those
+might be cleaned up in next major versions, so if for some reason you have customized
+the styling of your blocks in edit mode relying in the old structure, you might want to
+review and adapt them.
+
 ## Upgrading to Volto 5.x.x
 
 First, update the `package.json` of your Volto project to Volto 5.x.x.
