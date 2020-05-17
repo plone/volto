@@ -1,5 +1,5 @@
 global.__CLIENT__ = true;
-global.__DEVELOPMENT__ = true;
+global.__DEVELOPMENT__ = false;
 
 window.matchMedia =
   window.matchMedia ||
