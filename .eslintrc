@@ -20,11 +20,12 @@
     "import/no-unresolved": 1,
     "no-alert": 1,
     "no-debugger": 1,
-    "react-hooks/exhaustive-deps": 0,
     "prettier/prettier": [
       "error",
       { "trailingComma": "all", "singleQuote": true }
-    ]
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "settings": {
     "import/resolver": {
