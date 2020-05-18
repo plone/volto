@@ -15,6 +15,7 @@ import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import { updateIntl } from 'react-intl-redux';
+import { resetServerContext } from 'react-beautiful-dnd';
 
 import routes from '~/routes';
 import { settings } from '~/config';
@@ -156,6 +157,7 @@ server
           );
 
           const context = {};
+          resetServerContext();
           const markup = renderToString(
             <ChunkExtractorManager extractor={extractor}>
               <Provider store={store}>
