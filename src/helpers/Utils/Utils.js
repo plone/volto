@@ -25,7 +25,7 @@ export function difference(object, base) {
  */
 export function suggestionsFilter(searchValue, suggestions) {
   var value = searchValue.toLowerCase();
-  var filteredSuggestions = suggestions.filter(function(suggestion) {
+  var filteredSuggestions = suggestions.filter(function (suggestion) {
     return !value || suggestion.name.toLowerCase().indexOf(value) > -1;
   });
   return filteredSuggestions;

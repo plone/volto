@@ -23,7 +23,6 @@ import showSVG from '@plone/volto/icons/show.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
 import 'draft-js-mention-plugin/lib/plugin.css';
 
-
 const messages = defineMessages({
   text: {
     id: 'Type text…',
@@ -38,7 +37,6 @@ const messages = defineMessages({
     defaultMessage: 'Preview',
   },
 });
-
 
 /**
  * Edit text block class.
@@ -103,7 +101,7 @@ class Edit extends Component {
         entityMutability: 'IMMUTABLE',
       });
 
-      const suggestions = Object.keys(this.props.properties).map(name => {
+      const suggestions = Object.keys(this.props.properties).map((name) => {
         return {
           name: name,
         };
@@ -221,7 +219,7 @@ class Edit extends Component {
     this.setState({
       suggestions: suggestionsFilter(value, this.state.suggestions),
     });
-  };
+  }
 
   /**
    * On add mention
@@ -232,7 +230,7 @@ class Edit extends Component {
     this.setState({
       hasMentions: true,
     });
-  };
+  }
 
   /**
    * Preview mode handler
