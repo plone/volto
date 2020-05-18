@@ -13,6 +13,7 @@
 ### Bugfix
 
 - Fix local build when no RAZZLE_API_PATH is set @sneridagh
+- Fix Checkbox widget label htmlFor @nzambello
 
 ### Internal
 
