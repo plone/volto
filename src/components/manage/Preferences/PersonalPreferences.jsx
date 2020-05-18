@@ -88,7 +88,7 @@ class PersonalPreferences extends Component {
       path: '/',
     });
     request('GET', `/assets/locales/${data.language || 'en'}.json`).then(
-      locale => {
+      (locale) => {
         this.props.updateIntl({
           locale: locale.language || 'en',
           messages: locale.body,
@@ -141,7 +141,7 @@ class PersonalPreferences extends Component {
               ),
               title: this.props.intl.formatMessage(messages.language),
               type: 'string',
-              choices: map(keys(languages), lang => [lang, languages[lang]]),
+              choices: map(keys(languages), (lang) => [lang, languages[lang]]),
             },
           },
           required: [],

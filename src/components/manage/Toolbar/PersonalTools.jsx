@@ -64,7 +64,7 @@ class PersonalTools extends Component {
     this.props.getUser(this.props.userId);
   }
 
-  push = selector => {
+  push = (selector) => {
     this.setState(() => ({
       pushed: true,
     }));
@@ -151,7 +151,7 @@ class PersonalTools extends Component {
 
 export default injectIntl(
   connect(
-    state => ({
+    (state) => ({
       user: state.users.user,
       userId: state.userSession.token
         ? jwtDecode(state.userSession.token).sub

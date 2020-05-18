@@ -215,7 +215,7 @@ class Toolbar extends Component {
       path: '/',
     });
     this.setState(
-      state => ({ expanded: !state.expanded }),
+      (state) => ({ expanded: !state.expanded }),
       () => this.props.setExpandedToolbar(this.state.expanded),
     );
   };
@@ -223,7 +223,7 @@ class Toolbar extends Component {
   closeMenu = () =>
     this.setState(() => ({ showMenu: false, loadedComponents: [] }));
 
-  loadComponent = type => {
+  loadComponent = (type) => {
     const { loadedComponents } = this.state;
     if (!this.state.loadedComponents.includes(type)) {
       this.setState({
@@ -234,7 +234,7 @@ class Toolbar extends Component {
   };
 
   unloadComponent = () => {
-    this.setState(state => ({
+    this.setState((state) => ({
       loadedComponents: state.loadedComponents.slice(0, -1),
       hideToolbarBody:
         toolbarComponents[
@@ -250,12 +250,12 @@ class Toolbar extends Component {
     }
     // PersonalTools always shows at bottom
     if (selector === 'personalTools') {
-      this.setState(state => ({
+      this.setState((state) => ({
         showMenu: !state.showMenu,
         menuStyle: { bottom: 0 },
       }));
     } else {
-      this.setState(state => ({
+      this.setState((state) => ({
         showMenu: !state.showMenu,
         menuStyle: { top: 0, overflow: 'initial' },
       }));
@@ -263,7 +263,7 @@ class Toolbar extends Component {
     this.loadComponent(selector);
   };
 
-  handleClickOutside = e => {
+  handleClickOutside = (e) => {
     if (this.pusher && doesNodeContainClick(this.pusher, e)) return;
     this.closeMenu();
   };
@@ -300,12 +300,13 @@ class Toolbar extends Component {
             )}
             <div
               className="pusher-puller"
-              ref={node => (this.pusher = node)}
+              ref={(node) => (this.pusher = node)}
               style={{
                 transform: this.toolbarWindow.current
-                  ? `translateX(-${(this.state.loadedComponents.length - 1) *
-                      this.toolbarWindow.current.getBoundingClientRect()
-                        .width}px)`
+                  ? `translateX(-${
+                      (this.state.loadedComponents.length - 1) *
+                      this.toolbarWindow.current.getBoundingClientRect().width
+                    }px)`
                   : null,
               }}
             >
@@ -426,7 +427,7 @@ class Toolbar extends Component {
                           aria-label={this.props.intl.formatMessage(
                             messages.add,
                           )}
-                          onClick={e => this.toggleMenu(e, 'types')}
+                          onClick={(e) => this.toggleMenu(e, 'types')}
                           tabIndex={0}
                           id="toolbar-add"
                         >
@@ -437,7 +438,7 @@ class Toolbar extends Component {
                     <button
                       className="more"
                       aria-label={this.props.intl.formatMessage(messages.more)}
-                      onClick={e => this.toggleMenu(e, 'more')}
+                      onClick={(e) => this.toggleMenu(e, 'more')}
                       tabIndex={0}
                       id="toolbar-more"
                     >
@@ -471,7 +472,7 @@ class Toolbar extends Component {
                     aria-label={this.props.intl.formatMessage(
                       messages.personalTools,
                     )}
-                    onClick={e => this.toggleMenu(e, 'personalTools')}
+                    onClick={(e) => this.toggleMenu(e, 'personalTools')}
                     tabIndex={0}
                     id="toolbar-personal"
                   >

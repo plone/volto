@@ -71,10 +71,10 @@ const renderFullscreenButton = (onClick, isFullscreen) => {
 };
 
 const ImageGalleryTemplate = ({ items }) => {
-  const renderItems = items.filter(content =>
+  const renderItems = items.filter((content) =>
     settings.imageObjects.includes(content['@type']),
   );
-  const imagesInfo = renderItems.map(item => {
+  const imagesInfo = renderItems.map((item) => {
     return {
       original: flattenToAppURL(
         item[settings.listingPreviewImageField].scales.preview.download,

@@ -206,7 +206,7 @@ class Edit extends Component {
               onClick={() => this.props.onSelectBlock(this.props.id)}
               onKeyDown={
                 !blockHasOwnFocusManagement
-                  ? e =>
+                  ? (e) =>
                       this.props.handleKeyDown(
                         e,
                         this.props.index,
@@ -227,7 +227,7 @@ class Edit extends Component {
           ) : (
             <div
               role="presentation"
-              onKeyDown={e =>
+              onKeyDown={(e) =>
                 this.props.handleKeyDown(
                   e,
                   this.props.index,
@@ -266,7 +266,7 @@ class Edit extends Component {
 export default compose(
   injectIntl,
   withObjectBrowser,
-  DropTarget(ItemTypes.ITEM, itemTarget, connect => ({
+  DropTarget(ItemTypes.ITEM, itemTarget, (connect) => ({
     connectDropTarget: connect.dropTarget(),
   })),
   DragSource(ItemTypes.ITEM, itemSource, (connect, monitor) => ({

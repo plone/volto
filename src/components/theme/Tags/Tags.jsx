@@ -17,7 +17,7 @@ import { Container } from 'semantic-ui-react';
 const Tags = ({ tags }) =>
   tags && tags.length > 0 ? (
     <Container className="tags">
-      {tags.map(tag => (
+      {tags.map((tag) => (
         <Link className="ui label" to={`/search?Subject=${tag}`} key={tag}>
           {tag}
         </Link>

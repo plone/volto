@@ -135,7 +135,7 @@ class ObjectBrowserBody extends Component {
     document.removeEventListener('mousedown', this.handleClickOutside, false);
   }
 
-  initialSearch = mode => {
+  initialSearch = (mode) => {
     const currentSelected =
       mode === 'multiple'
         ? ''
@@ -167,7 +167,7 @@ class ObjectBrowserBody extends Component {
     }
   };
 
-  getIcon = icon => {
+  getIcon = (icon) => {
     switch (icon) {
       case 'Folder':
         return <Icon name={folderSVG} size="24px" />;
@@ -182,7 +182,7 @@ class ObjectBrowserBody extends Component {
     }
   };
 
-  handleClickOutside = e => {
+  handleClickOutside = (e) => {
     if (
       this.objectBrowser &&
       doesNodeContainClick(this.objectBrowser.current, e)
@@ -193,7 +193,7 @@ class ObjectBrowserBody extends Component {
 
   objectBrowser = React.createRef();
 
-  navigateTo = id => {
+  navigateTo = (id) => {
     this.props.searchContent(
       id,
       {
@@ -212,11 +212,11 @@ class ObjectBrowserBody extends Component {
   };
 
   toggleSearchInput = () =>
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       showSearchInput: !prevState.showSearchInput,
     }));
 
-  onSearch = e => {
+  onSearch = (e) => {
     const text = e.target.value;
     text.length > 2
       ? this.props.searchContent(
@@ -238,12 +238,12 @@ class ObjectBrowserBody extends Component {
         );
   };
 
-  onSelectItem = item => {
+  onSelectItem = (item) => {
     const url = item['@id'];
     const title = item.title;
     const { block, data, mode, dataName, onChangeBlock } = this.props;
 
-    const updateState = mode => {
+    const updateState = (mode) => {
       switch (mode) {
         case 'image':
           this.setState({
@@ -291,7 +291,7 @@ class ObjectBrowserBody extends Component {
     });
   };
 
-  handleClickOnItem = item => {
+  handleClickOnItem = (item) => {
     if (this.props.mode === 'image') {
       if (item.is_folderish) {
         this.navigateTo(item['@id']);
@@ -304,7 +304,7 @@ class ObjectBrowserBody extends Component {
     }
   };
 
-  handleDoubleClickOnItem = item => {
+  handleDoubleClickOnItem = (item) => {
     if (this.props.mode === 'image') {
       if (item.is_folderish) {
         this.navigateTo(item['@id']);
@@ -328,7 +328,7 @@ class ObjectBrowserBody extends Component {
     return ReactDOM.createPortal(
       <aside
         role="presentation"
-        onClick={e => {
+        onClick={(e) => {
           e.stopPropagation();
         }}
         ref={this.objectBrowser}
@@ -427,7 +427,7 @@ class ObjectBrowserBody extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       searchSubrequests: state.search.subrequests,
     }),
     { searchContent },

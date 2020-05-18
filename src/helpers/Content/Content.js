@@ -18,7 +18,7 @@ export function nestContent(props) {
 
   let nestedProps = props;
 
-  map(props['@static_behaviors'], behavior => {
+  map(props['@static_behaviors'], (behavior) => {
     const values = mapKeys(
       pickBy(nestedProps, (value, key) => key.indexOf(behavior) !== -1),
       (value, key) => key.replace(`${behavior}.`, ''),
@@ -42,5 +42,7 @@ export function nestContent(props) {
  * @return {string} Field name of the layout
  */
 export function getLayoutFieldname(props) {
-  return find(keys(props), key => endsWith(key, 'content_layout')) || 'layout';
+  return (
+    find(keys(props), (key) => endsWith(key, 'content_layout')) || 'layout'
+  );
 }

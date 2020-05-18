@@ -255,9 +255,9 @@ class Edit extends Component {
   }
 
   toggleAddNewBlock = () =>
-    this.setState(state => ({ addNewBlockOpened: !state.addNewBlockOpened }));
+    this.setState((state) => ({ addNewBlockOpened: !state.addNewBlockOpened }));
 
-  handleClickOutside = e => {
+  handleClickOutside = (e) => {
     if (
       this.props.blockNode.current &&
       doesNodeContainClick(this.props.blockNode.current, e)
@@ -321,7 +321,7 @@ class Edit extends Component {
           blockStyleFn={settings.blockStyleFn}
           customStyleMap={settings.customStyleMap}
           placeholder={this.props.intl.formatMessage(messages.text)}
-          handleReturn={e => {
+          handleReturn={(e) => {
             if (isSoftNewlineEvent(e)) {
               this.onChange(
                 RichUtils.insertSoftNewline(this.state.editorState),
@@ -375,7 +375,7 @@ class Edit extends Component {
               this.props.onFocusNextBlock(this.props.block, this.node);
             }
           }}
-          ref={node => {
+          ref={(node) => {
             this.node = node;
           }}
         />

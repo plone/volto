@@ -1,6 +1,6 @@
 import loadable from '@loadable/component';
 
-const crashReporter = store => next => action => {
+const crashReporter = (store) => (next) => (action) => {
   try {
     return next(action);
   } catch (error) {

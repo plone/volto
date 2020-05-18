@@ -134,7 +134,7 @@ class CommentEditModal extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       request: state.comments.update,
     }),
     { updateComment },

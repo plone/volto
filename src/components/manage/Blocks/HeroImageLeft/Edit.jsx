@@ -233,7 +233,7 @@ class Edit extends Component {
     this.setState({
       uploading: true,
     });
-    readAsDataURL(file).then(data => {
+    readAsDataURL(file).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
       this.props.createContent(getBaseUrl(this.props.pathname), {
         '@type': 'Image',
@@ -314,7 +314,7 @@ class Edit extends Component {
           )}
           <div className="hero-body">
             <Editor
-              ref={node => {
+              ref={(node) => {
                 this.titleEditor = node;
               }}
               onChange={this.onChangeTitle}
@@ -355,7 +355,7 @@ class Edit extends Component {
               }}
             />
             <Editor
-              ref={node => {
+              ref={(node) => {
                 this.descriptionEditor = node;
               }}
               onChange={this.onChangeDescription}
@@ -400,7 +400,7 @@ class Edit extends Component {
 export default compose(
   injectIntl,
   connect(
-    state => ({
+    (state) => ({
       request: state.content.create,
       content: state.content.data,
     }),

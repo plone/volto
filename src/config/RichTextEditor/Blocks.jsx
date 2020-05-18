@@ -12,7 +12,7 @@ const blockRenderMap = Map({
 
 const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
 
-const blockStyleFn = contentBlock => {
+const blockStyleFn = (contentBlock) => {
   const type = contentBlock.getType();
   if (type === 'callout') {
     return 'callout';
