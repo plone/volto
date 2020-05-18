@@ -1,6 +1,6 @@
 # Change Log
 
-## 5.10.1 (unreleased)
+## 6.0.0 (2020-05-18)
 
 ### Breaking
 
