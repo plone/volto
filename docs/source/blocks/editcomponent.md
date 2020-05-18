@@ -189,18 +189,16 @@ Returns the component widget with _mode_ passed as argument.
 
 The default mode for ObjectBrowserWidget is multiple. If you would like to use this widget with link or image mode as widget field for a specific field id (for example), you could specify in in config.js as:
 
-`
+```js
 export const widgets = {
-widgetMapping:{
-...widgetMapping,
-id:{
-...widgetMapping.id,
-my_image_field: ObjectBrowserWidgetMode('image'),
-my_link_field: ObjectBrowserWidgetMode('link'),
-}
-},
-
-    default: defaultWidget,
-
+  widgetMapping:{
+    ...widgetMapping,
+    id:{
+      ...widgetMapping.id,
+      my_image_field: ObjectBrowserWidgetMode('image'),
+      my_link_field: ObjectBrowserWidgetMode('link'),
+    }
+  },
+  default: defaultWidget,
 };
-`
+```
