@@ -24,7 +24,8 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
         getQueryStringResults(path, { ...data, fullobjects: 1 }, data.block),
       );
     }
-  }, [dispatch, data, data.block, path]);
+    /* eslint-disable react-hooks/exhaustive-deps */
+  }, [data]);
 
   const folderItems = content.is_folderish ? content.items : [];
 
