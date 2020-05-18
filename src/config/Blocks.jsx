@@ -311,4 +311,23 @@ const requiredBlocks = ['title'];
 
 const initialBlocks = {};
 
-export { groupBlocksOrder, requiredBlocks, blocksConfig, initialBlocks };
+const defaultBlock = {
+  type: 'text',
+  hasValue: ({ data }) => {
+    return (
+      !data.text ||
+      (data.text &&
+        data.text.blocks &&
+        data.text.blocks.length === 1 &&
+        data.text.blocks[0].text === '')
+    );
+  },
+};
+
+export {
+  groupBlocksOrder,
+  requiredBlocks,
+  blocksConfig,
+  initialBlocks,
+  defaultBlock,
+};

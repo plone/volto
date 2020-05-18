@@ -20,6 +20,7 @@ import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrow
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
+import { settings } from '~/config';
 
 const messages = defineMessages({
   unknownBlock: {
@@ -177,13 +178,10 @@ class Edit extends Component {
     const blockHasOwnFocusManagement =
       blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
+    const { defaultBlock } = settings;
     const hideHandler =
-      this.props.data['@type'] === 'text' &&
-      (!this.props.data.text ||
-        (this.props.data.text &&
-          this.props.data.text.blocks &&
-          this.props.data.text.blocks.length === 1 &&
-          this.props.data.text.blocks[0].text === ''));
+      this.props.data['@type'] === defaultBlock.type &&
+      defaultBlock.hasValue(this.props.data);
 
     return connectDropTarget(
       connectDragPreview(
