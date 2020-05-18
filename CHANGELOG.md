@@ -12,6 +12,7 @@
 
 ### Bugfix
 
+- Improve `isInternalURL` helper to match also anchors @sneridagh
 - Fix local build when no RAZZLE_API_PATH is set @sneridagh
 
 ### Internal
