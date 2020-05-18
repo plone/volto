@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 import { defineMessages, injectIntl } from 'react-intl';
-import { blocks } from '~/config';
+import { blocks, settings } from '~/config';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import cx from 'classnames';
@@ -20,7 +20,6 @@ import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrow
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
-import { settings } from '~/config';
 
 const messages = defineMessages({
   unknownBlock: {

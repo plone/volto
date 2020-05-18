@@ -26,6 +26,7 @@ import {
   requiredBlocks,
   blocksConfig,
   initialBlocks,
+  defaultBlock,
 } from './Blocks';
 
 const host = process.env.HOST || 'localhost';
@@ -68,6 +69,7 @@ export const settings = {
   supportedLanguages: ['en'],
   defaultLanguage: 'en',
   navDepth: 1,
+  defaultBlock,
 };
 
 export const widgets = {

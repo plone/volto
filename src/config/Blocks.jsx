@@ -315,6 +315,7 @@ const defaultBlock = {
   type: 'text',
   hasValue: ({ data }) => {
     return (
+      !data ||
       !data.text ||
       (data.text &&
         data.text.blocks &&
