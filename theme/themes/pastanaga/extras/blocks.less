@@ -1,3 +1,11 @@
+[data-rbd-draggable-context-id] {
+  margin-bottom: 2rem;
+}
+
+.block-editor-title .drag.handle.wrapper {
+  top: 5px;
+}
+
 // Here should be placed all blocks that receive (faked) focus
 .block:focus {
   outline: none;
@@ -40,6 +48,7 @@
   clear: both;
 }
 
+// Deprecated
 .ui.drag.block:not(:last-child) {
   margin-bottom: 2rem;
 }
@@ -149,6 +158,11 @@
   }
 }
 
+.draggable {
+  position: absolute;
+  top: 20px;
+  left: -32px;
+}
 // Hacks for the full width image
 body .ui.wrapper > .block.align.full,
 body.has-toolbar.has-sidebar .ui.wrapper > .ui.inner .block.align.full,
@@ -454,6 +468,7 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   }
 }
 
+// Deprecated
 .drag.block.title .drag.handle.wrapper {
   top: 5px;
 }

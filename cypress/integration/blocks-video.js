@@ -8,12 +8,13 @@ if (Cypress.env('API') !== 'guillotina') {
         contentId: 'my-page',
         contentTitle: 'My Page',
       });
-      cy.visit('/my-page/edit');
+      cy.visit('/my-page');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.navigate('/my-page/edit');
       cy.get(`.block.title [data-contents]`);
     });
 

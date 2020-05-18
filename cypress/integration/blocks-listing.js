@@ -10,21 +10,17 @@ if (Cypress.env('API') !== 'guillotina') {
         contentId: 'my-page',
         contentTitle: 'My Page',
       });
-      cy.visit('/my-page/edit');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
-      cy.get(`.block.title [data-contents]`);
-    });
-    it('Add Listing block', () => {
       cy.visit('/my-page');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.navigate('/my-page/edit');
+      cy.get(`.block.title [data-contents]`);
+    });
+
+    it('Add Listing block', () => {
       cy.createContent({
         contentType: 'Document',
         contentId: 'my-page-test',
@@ -44,12 +40,13 @@ if (Cypress.env('API') !== 'guillotina') {
         path: 'my-page',
       });
 
-      cy.visit('/my-page/edit');
+      cy.visit('/my-page');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.navigate('/my-page/edit');
 
       cy.get(`.block.title [data-contents]`)
         .clear()
@@ -85,13 +82,6 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Add Listing Block: sort by effective date', () => {
-      cy.visit('/my-page');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
-
       // given a page with two pages
       cy.createContent({
         contentType: 'Document',
@@ -116,12 +106,13 @@ if (Cypress.env('API') !== 'guillotina') {
         effective: '2019-01-01T08:00:00',
       });
 
-      cy.visit('/my-page/edit');
+      cy.visit('/my-page');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.navigate('/my-page/edit');
 
       cy.get(`.block.title [data-contents]`)
         .clear()
@@ -161,12 +152,6 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Listing block - Test Criteria: short-name', () => {
-      cy.visit('/my-page');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
       cy.createContent({
         contentType: 'Document',
         contentId: 'my-page-test',
@@ -186,12 +171,13 @@ if (Cypress.env('API') !== 'guillotina') {
         path: 'my-page',
       });
 
-      cy.visit('/my-page/edit');
+      cy.visit('/my-page');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.navigate('/my-page/edit');
 
       cy.get(`.block.title [data-contents]`)
         .clear()
@@ -257,13 +243,6 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Listing block - Test Criteria: Location relative', () => {
-      cy.visit('/my-page');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
-
       cy.createContent({
         contentType: 'Document',
         contentId: 'document-outside-folder',
@@ -285,12 +264,13 @@ if (Cypress.env('API') !== 'guillotina') {
         path: 'my-page/my-folder',
       });
 
-      cy.visit('/my-page/my-folder/edit');
+      cy.visit('/my-page/my-folder');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('my-folder?fullobjects');
+      cy.navigate('/my-page/my-folder/edit');
 
       cy.get(`.block.title [data-contents]`)
         .clear()
@@ -355,13 +335,6 @@ if (Cypress.env('API') !== 'guillotina') {
     });
 
     it('Listing block - Test Criteria: Location absolute', () => {
-      cy.visit('/my-page');
-      cy.waitForResourceToLoad('@navigation');
-      cy.waitForResourceToLoad('@breadcrumbs');
-      cy.waitForResourceToLoad('@actions');
-      cy.waitForResourceToLoad('@types');
-      cy.waitForResourceToLoad('my-page?fullobjects');
-
       cy.createContent({
         contentType: 'Document',
         contentId: 'document-outside-folder',
@@ -383,12 +356,13 @@ if (Cypress.env('API') !== 'guillotina') {
         path: 'my-page/my-folder',
       });
 
-      cy.visit('/my-page/my-folder/edit');
+      cy.visit('/my-page/my-folder');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('my-folder?fullobjects');
+      cy.navigate('/my-page/my-folder/edit');
 
       cy.get(`.block.title [data-contents]`)
         .clear()

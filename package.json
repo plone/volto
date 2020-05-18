@@ -181,7 +181,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,md}": [
+    "src/**/*.{js,jsx,ts,tsx,json}": [
       "npx eslint --max-warnings=0 --fix",
       "npx prettier --single-quote --write",
       "yarn test:husky"
@@ -309,7 +309,8 @@
     "rc-time-picker": "3.7.3",
     "react": "16.13.1",
     "react-anchor-link-smooth-scroll": "1.0.12",
-    "react-animate-height": "2.0.21",
+    "react-animate-height": "2.0.17",
+    "react-beautiful-dnd": "13.0.0",
     "react-cookie": "1.0.5",
     "react-dates": "21.5.1",
     "react-dnd": "5.0.0",

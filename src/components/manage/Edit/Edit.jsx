@@ -12,8 +12,6 @@ import { asyncConnect } from 'redux-connect';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button } from 'semantic-ui-react';
 import { Portal } from 'react-portal';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
 import qs from 'query-string';
 import { find } from 'lodash';
 import { toast } from 'react-toastify';
@@ -201,7 +199,7 @@ class Edit extends Component {
 
     return (
       <div id="page-edit">
-        {this.props.objectActions.length > 0 && (
+        {this.props.objectActions?.length > 0 && (
           <>
             {editPermission && (
               <>
@@ -317,7 +315,6 @@ export const __test__ = compose(
 )(Edit);
 
 export default compose(
-  DragDropContext(HTML5Backend),
   injectIntl,
   asyncConnect([
     {
