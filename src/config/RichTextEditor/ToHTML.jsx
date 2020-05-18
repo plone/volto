@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
+import { isEmpty } from 'lodash';
 
 const styles = {
   code: {
@@ -90,6 +91,10 @@ const blocks = {
     const processedChildren = children.map((chunks) =>
       chunks.map((child) => {
         if (Array.isArray(child)) {
+          // If it's empty is a blank paragraph, we want to add a <br /> in it
+          if (isEmpty(child)) {
+            return <br />;
+          }
           return child.map((subchild, index) => {
             if (typeof subchild === 'string') {
               const last = subchild.split('\n').length - 1;
