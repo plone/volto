@@ -26,7 +26,8 @@ const Edit = ({
         block,
       });
     }
-  }, [block, data, onChangeBlock]);
+    /* eslint-disable react-hooks/exhaustive-deps */
+  }, []);
 
   return (
     <>

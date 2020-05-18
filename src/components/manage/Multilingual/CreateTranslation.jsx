@@ -36,7 +36,8 @@ const CreateTranslation = (props) => {
       );
     };
     // On mount only
-  }, [dispatch, language, translationOf]);
+    /* eslint-disable react-hooks/exhaustive-deps */
+  }, []);
 
   return (
     translationLocation && (
