@@ -21,6 +21,9 @@ First, update the `package.json` of your Volto project to Volto 6.x.x.
   }
 ```
 
+!!! note
+    This release includes a number of changes to the internal dependencies. If you have problems building your project, might be that you need to remove your `node_modules` and, ultimately, remove also your `yarn.lock` file. Then run again `yarn` for rebuilding dependencies.
+
 ### New Razzle version and related development dependencies
 
 The underlying Razzle package has been upgraded, and although that does not suppose any
