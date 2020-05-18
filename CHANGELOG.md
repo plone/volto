@@ -12,6 +12,7 @@
 
 ### Bugfix
 
+- Improve `isInternalURL` helper to match also anchors @sneridagh
 - Fix local build when no RAZZLE_API_PATH is set @sneridagh
 - Fix `WysiwygWidget` redraft HTML conversion when creating an empty paragraph force a `<br />` on it @sneridagh
 

@@ -144,5 +144,9 @@ export function addAppURL(url) {
  * @returns {boolean} True if internal url
  */
 export function isInternalURL(url) {
-  return url.indexOf(settings.apiPath) !== -1 || url.charAt(0) === '/';
+  return (
+    url.indexOf(settings.apiPath) !== -1 ||
+    url.charAt(0) === '/' ||
+    url.startsWith('#')
+  );
 }
