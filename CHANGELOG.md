@@ -10,6 +10,8 @@
 
 ### Feature
 
+- The default block type for new blocks can be customized from a config file.
+
 ### Bugfix
 
 - Fix local build when no RAZZLE_API_PATH is set @sneridagh
