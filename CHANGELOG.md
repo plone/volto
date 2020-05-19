@@ -1,12 +1,21 @@
 # Change Log
 
-## 5.10.1 (unreleased)
+## 6.0.1 (unreleased)
+
+### Breaking
+
+### Feature
+
+### Bugfix
+
+### Internal
+
+## 6.0.0 (2020-05-18)
 
 ### Breaking
 
 - Removed support for CSS modules, since Razzle 3.1.x do not support them @sneridagh
 - Updated Volto dependencies - See https://docs.voltocms.com/upgrade-guide/ for more information @sneridagh
-- Disabled `react-hooks/exhaustive-deps` rule from `eslint-plugin-react-hooks` since `useEffect` in some components in Volto *need* to not be dependant on some props updates @sneridagh
 - By adding `react-beautiful-dnd` in the block editor we are introducing new wrappers
   (belonging to the lib machinery) in the structure. The original structure and class
   names are still in there for maintain maximum backwards compatibility. Those might be
