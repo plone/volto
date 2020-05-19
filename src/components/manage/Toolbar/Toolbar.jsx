@@ -36,7 +36,8 @@ import addSVG from '@plone/volto/icons/add-document.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
 import userSVG from '@plone/volto/icons/user.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
-import JoyRide from 'react-joyride';
+import JoyRide, { STATUS } from 'react-joyride';
+import { settings } from '~/config';
 
 const messages = defineMessages({
   edit: {
@@ -172,11 +173,10 @@ class Toolbar extends Component {
     menuComponents: [],
     loadedComponents: [],
     hideToolbarBody: false,
-    run: true,
+    run: cookie.load('guide') ? false : settings.guide,
   };
 
   steps = () => {
-    console.log('this is running');
     return [
       {
         content: (
@@ -356,6 +356,17 @@ class Toolbar extends Component {
     this.closeMenu();
   };
 
+  handleJoyrideCallback = (data) => {
+    const { status } = data;
+    if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
+      cookie.save('guide', 'true', {
+        expires: new Date((2 ** 31 - 1) * 1000),
+        path: '/',
+      });
+      this.setState({ run: false });
+    }
+  };
+
   /**
    * Render method.
    * @method render
@@ -367,7 +378,7 @@ class Toolbar extends Component {
     const folderContentsAction = find(this.props.actions.object, {
       id: 'folderContents',
     });
-    const { expanded } = this.state;
+    const { expanded, run } = this.state;
 
     return (
       this.props.token && (
@@ -465,7 +476,7 @@ class Toolbar extends Component {
                     steps={this.steps()}
                     continuous={true}
                     showSkipButton={true}
-                    run={true}
+                    run={run}
                     styles={{
                       tooltipContainer: {
                         textAlign: 'left',
@@ -477,6 +488,7 @@ class Toolbar extends Component {
                         marginRight: 400,
                       },
                     }}
+                    callback={this.handleJoyrideCallback}
                   />
                 </div>
                 {this.props.hideDefaultViewButtons && this.props.inner && (
