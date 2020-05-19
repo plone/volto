@@ -24,7 +24,7 @@ const ListingBody = ({ data, properties, intl, path, isEditMode }) => {
         getQueryStringResults(path, { ...data, fullobjects: 1 }, data.block),
       );
     }
-  }, [dispatch, data, data.block, path, data?.query?.length]);
+  }, [dispatch, data, data.block, path]);
 
   const folderItems = content.is_folderish ? content.items : [];
 
