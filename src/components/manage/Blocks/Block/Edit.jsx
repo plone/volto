@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 import { defineMessages, injectIntl } from 'react-intl';
-import { blocks, settings } from '~/config';
+import { blocks } from '~/config';
 import { Button } from 'semantic-ui-react';
 import includes from 'lodash/includes';
 import cx from 'classnames';
@@ -177,7 +177,7 @@ class Edit extends Component {
     const blockHasOwnFocusManagement =
       blocks.blocksConfig?.[type]?.['blockHasOwnFocusManagement'] || null;
 
-    const { defaultBlock } = settings;
+    const { defaultBlock } = blocks;
     const hideHandler =
       this.props.data['@type'] === defaultBlock.type &&
       defaultBlock.hasValue(this.props.data);

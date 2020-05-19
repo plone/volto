@@ -69,7 +69,6 @@ export const settings = {
   supportedLanguages: ['en'],
   defaultLanguage: 'en',
   navDepth: 1,
-  defaultBlock,
 };
 
 export const widgets = {
@@ -89,4 +88,5 @@ export const blocks = {
   blocksConfig,
   groupBlocksOrder,
   initialBlocks,
+  defaultBlock,
 };
