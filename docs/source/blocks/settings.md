@@ -5,7 +5,7 @@ Since Volto have its own set of default blocks, you should extend them by adding
 
 ## Configuring a new block
 
-So we add this lines to the `src/config.js`:
+So we add these lines to the file `src/config/Blocks.jsx`:
 
 ```js
 import MainSliderViewBlock from '@package/components/Blocks/MainSlider/View';
@@ -33,9 +33,15 @@ const customBlocks = {
   },
 };
 
-export const blocks = {
-  ...defaultBlocks,
-  blocksConfig: { ...defaultBlocks.blocksConfig, ...customBlocks },
+export {
+  groupBlocksOrder,
+  requiredBlocks,
+  blocksConfig: {
+    blocksConfig,
+    ...customBlocks
+  },
+  initialBlocks,
+  defaultBlock,
 };
 ```
 
@@ -100,5 +106,27 @@ and provide your own per content type, e.g:
 ```js
 const initialBlocks = {
     Document: ['leadimage', 'title', 'text', 'listing' ]
+};
+```
+
+### defaultBlock - Customizable default block type for new blocks
+
+Inside the file `src/config/Blocks.jsx` you can change the provided default block type ID as a string and an associated function that returns `true` for a data object when it is considered as representing a value, and `false` when the data passed in is considered as not being an actual value (so the block is empty).
+
+An example configuration for the Draft.js-based block editor:
+
+```js
+const defaultBlock = {
+  type: 'text',
+  hasValue: ({ data }) => {
+    return !(
+      !data ||
+      !data.text ||
+      (data.text &&
+        data.text.blocks &&
+        data.text.blocks.length === 1 &&
+        data.text.blocks[0].text === '')
+    );
+  },
 };
 ```

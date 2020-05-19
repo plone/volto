@@ -180,7 +180,7 @@ class Edit extends Component {
     const { defaultBlock } = blocks;
     const hideHandler =
       this.props.data['@type'] === defaultBlock.type &&
-      defaultBlock.hasValue(this.props.data);
+      !defaultBlock.hasValue(this.props.data);
 
     return connectDropTarget(
       connectDragPreview(
