@@ -2,13 +2,18 @@ if (Cypress.env('API') !== 'guillotina') {
   describe('Block Indexing Tests', () => {
     beforeEach(() => {
       cy.autologin();
-      cy.createContent('Document', 'my-page', 'My Page');
-      cy.visit('/my-page/edit');
+      cy.createContent({
+        contentType: 'Document',
+        contentId: 'my-page',
+        contentTitle: 'My Page',
+      });
+      cy.visit('/my-page');
       cy.waitForResourceToLoad('@navigation');
       cy.waitForResourceToLoad('@breadcrumbs');
       cy.waitForResourceToLoad('@actions');
       cy.waitForResourceToLoad('@types');
       cy.waitForResourceToLoad('my-page?fullobjects');
+      cy.navigate('/my-page/edit');
     });
 
     it('Index Text Block', () => {

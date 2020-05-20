@@ -7,7 +7,7 @@ import infoSVG from '@plone/volto/icons/info.svg';
 import errorSVG from '@plone/volto/icons/error.svg';
 import warningSVG from '@plone/volto/icons/warning.svg';
 
-const Toast = props => {
+const Toast = (props) => {
   function getIcon(props) {
     if (props.info) {
       return infoSVG;

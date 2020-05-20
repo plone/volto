@@ -216,7 +216,7 @@ class ModerateComments extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {this.props.items.map(item => (
+                  {this.props.items.map((item) => (
                     <Table.Row key={item['@id']}>
                       <Table.Cell>{item.author_name}</Table.Cell>
                       <Table.Cell>

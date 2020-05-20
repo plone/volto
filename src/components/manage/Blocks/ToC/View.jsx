@@ -37,13 +37,13 @@ const View = ({ properties }) => {
           filter(
             map(
               properties[blocksLayoutFieldname].items,
-              id => properties[blocksFieldname][id],
+              (id) => properties[blocksFieldname][id],
             ),
-            block =>
+            (block) =>
               block['@type'] === 'text' &&
               block.text?.blocks[0].type.indexOf('header-') === 0,
           ),
-          block => (
+          (block) => (
             <List.Item
               key={block.text.blocks[0].key}
               className={block.text.blocks[0].type}

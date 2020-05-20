@@ -113,7 +113,7 @@ class ArrayWidget extends Component {
     this.state = {
       search: '',
       selectedOption: props.value
-        ? props.value.map(item =>
+        ? props.value.map((item) =>
             isObject(item)
               ? { label: item.title || item.token, value: item.token }
               : { label: item, value: item },
@@ -177,7 +177,7 @@ class ArrayWidget extends Component {
 
     this.props.onChange(
       this.props.id,
-      selectedOption ? selectedOption.map(item => item.value) : null,
+      selectedOption ? selectedOption.map((item) => item.value) : null,
     );
   }
 
@@ -228,7 +228,7 @@ class ArrayWidget extends Component {
                   options={
                     this.props.choices
                       ? [
-                          ...this.props.choices.map(option => ({
+                          ...this.props.choices.map((option) => ({
                             value: option[0],
                             label:
                               // Fix "None" on the serializer, to remove when fixed in p.restapi
@@ -261,7 +261,7 @@ class ArrayWidget extends Component {
                   isMulti
                 />
               )}
-              {map(error, message => (
+              {map(error, (message) => (
                 <Label key={message} basic color="red" pointing>
                   {message}
                 </Label>

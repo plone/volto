@@ -15,7 +15,7 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
       </header>
       <div className="pastanaga-menu-list">
         <ul>
-          {map(filter(types), item => {
+          {map(filter(types), (item) => {
             // Strip the type for the item we want to add
             const contentTypeToAdd = item['@id'].split('@types/')[1];
             // If we are in the root or in /contents, we need to strip the preceeding / and /contents
@@ -45,7 +45,7 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
         (() => {
           const translationsLeft = filter(
             settings.supportedLanguages,
-            lang =>
+            (lang) =>
               !Boolean(
                 find(content['@components'].translations.items, {
                   language: lang,
@@ -64,7 +64,7 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
                 </header>
                 <div className="pastanaga-menu-list">
                   <ul>
-                    {map(translationsLeft, lang => (
+                    {map(translationsLeft, (lang) => (
                       <li>
                         <Link
                           to={{
@@ -111,7 +111,7 @@ Types.propTypes = {
 };
 
 export default connect(
-  state => ({
+  (state) => ({
     types: filter(state.types.types, 'addable'),
     currentLanguage: state.intl.locale,
   }),
